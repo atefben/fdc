@@ -1,0 +1,24 @@
+services:
+    fdc.admin.article:
+        class: FDC\AdminBundle\Admin\ArticleAdmin
+        arguments: [~, FDC\CoreBundle\Entity\Article, FDCAdminBundle:ArticleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: News, label: label.article, label_translator_strategy: 'sonata.admin.label.strategy.underscore'}
+        calls:
+          - [ setTranslationDomain, [FDCAdminBundle]]
+
+    fdc.admin.article_audio:
+        class: FDC\AdminBundle\Admin\ArticleAudioAdmin
+        arguments: [~, FDC\CoreBundle\Entity\ArticleAudio, FDCAdminBundle:ArticleAudioAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: News, label: ArticleAudio, , label_translator_strategy: 'sonata.admin.label.strategy.underscore', show_in_dashboard: false}
+        calls:
+          - [ setTranslationDomain, [FDCAdminBundle]]
+
+    fdc.admin.article_video:
+        class: FDC\AdminBundle\Admin\ArticleVideoAdmin
+        arguments: [~, FDC\CoreBundle\Entity\ArticleVideo, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: News, label: ArticleVideo, label_translator_strategy: 'sonata.admin.label.strategy.underscore', show_in_dashboard: false}
+        calls:
+          - [ setTranslationDomain, [FDCAdminBundle]]

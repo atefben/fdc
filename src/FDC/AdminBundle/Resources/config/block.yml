@@ -1,0 +1,8 @@
+services:
+    fdc_admin.block.sites:
+        class: FDC\AdminBundle\Block\FDCSiteBlockService
+        arguments: [ 'fdc_admin.block.sites', @templating ]
+        tags:
+            - { name: sonata.block }
+        calls:
+          - [ setSecurityContext, ['@security.context']]

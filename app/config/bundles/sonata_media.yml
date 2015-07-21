@@ -1,0 +1,45 @@
+parameters:
+    sonata.media.admin.media.class: Application\Sonata\MediaBundle\Admin\MediaAdmin
+  #  sonata.media.provider.file.class: Application\Sonata\MediaBundle\Provider\FileProvider
+
+sonata_media:
+    # if you don't use default namespace configuration
+    class:
+        media: Application\Sonata\MediaBundle\Entity\Media
+        gallery: Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media: Application\Sonata\MediaBundle\Entity\GalleryHasMedia
+    default_context: image
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
+    contexts:
+        image:  # the default context is mandatory
+            providers:
+            #    - sonata.media.provider.dailymotion
+            #    - sonata.media.provider.youtube
+                - sonata.media.provider.image
+            #    - sonata.media.provider.file
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+        audio:
+            providers:
+               - sonata.media.provider.file
+
+            formats:
+                mp3: { quality: 100 }
+
+        video:
+            providers:
+                - sonata.media.provider.file
+
+            formats:
+
+    cdn:
+        server:
+            path: /uploads/media
+
+    filesystem:
+        local:
+            directory:  %kernel.root_dir%/../web/uploads/media
+            create:     false

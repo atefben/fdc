@@ -1,0 +1,17 @@
+sonata_admin:
+    title: FDC Administration
+    security:
+        handler: sonata.admin.security.handler.acl
+        information:
+            WRITER:    [VIEW, LIST, CREATE]
+            EDITOR: [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE]
+            TRANSLATOR: [VIEW, EDIT, EXPORT]
+            ADMIN:    [MASTER]
+        # permissions not related to an object instance and also to be available when objects do not exist
+        # the DELETE admin permission means the user is allowed to batch delete objects
+        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
+        # permission related to the objects
+        object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
+    dashboard:
+        blocks: 
+            - { position: top, class: col-md-12, type: fdc_admin.block.sites }
