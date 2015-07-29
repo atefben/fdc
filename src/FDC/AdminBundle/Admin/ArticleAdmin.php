@@ -85,6 +85,7 @@ class ArticleAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('content', null, array('help'=>'Help Message'))
         //    ->add('content')
         ;
     }
