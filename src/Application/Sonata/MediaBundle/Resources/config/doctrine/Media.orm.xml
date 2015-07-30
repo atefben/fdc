@@ -17,7 +17,16 @@
             <generator strategy="AUTO"/>
         </id>
         
+        <one-to-many field="articleMainAudio" target-entity="FDC\CoreBundle\Entity\Article" mapped-by="headerAudio">
+        </one-to-many>
+        
+        <one-to-many field="articleMainVideo" target-entity="FDC\CoreBundle\Entity\Article" mapped-by="headerVideo">
+        </one-to-many>
+        
         <one-to-many field="articleAudios" target-entity="FDC\CoreBundle\Entity\ArticleAudio" mapped-by="audio">
+        </one-to-many>
+        
+        <one-to-many field="articleVideos" target-entity="FDC\CoreBundle\Entity\ArticleVideo" mapped-by="video">
         </one-to-many>
     </entity>
 </doctrine-mapping>

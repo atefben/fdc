@@ -16,6 +16,9 @@
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
+        
+        <one-to-one field="articleMainGallery" target-entity="FDC\CoreBundle\Entity\Article" mapped-by="headerGallery">
+        </one-to-one>
 
     </entity>
 </doctrine-mapping>

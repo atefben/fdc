@@ -31,14 +31,14 @@ class ArticleLock
     /**
      * @var ArticleVideo
      *
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="lock")
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="lock")
      */
     protected $articles;
     
     /**
      * @var Article
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="articleLockedBy")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="articleLocks")
      */
     protected $user;
     
@@ -174,5 +174,34 @@ class ArticleLock
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    /**
+     * Set articles
+     *
+     * @param \FDC\CoreBundle\Entity\Article $articles
+     * @return ArticleLock
+     */
+    public function setArticles(\FDC\CoreBundle\Entity\Article $articles = null)
+    {
+        $this->articles = $articles;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
     }
 }

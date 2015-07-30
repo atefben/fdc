@@ -10,7 +10,7 @@
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
-        <many-to-one field="translatable" target-entity="Application\Sonata\MediaBundle\Entity\Media" mapped-by="translations">
+        <many-to-one field="translatable" target-entity="Application\Sonata\MediaBundle\Entity\Media" inversed-by="translations">
         </many-to-one>
         
         <field name="copyright"         column="copyright"      type="string"   nullable="true" length="255"/>

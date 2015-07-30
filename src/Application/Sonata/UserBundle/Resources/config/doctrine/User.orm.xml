@@ -10,7 +10,7 @@
             <generator strategy="AUTO" />
         </id>
         
-        <one-to-many field="articleLocked" target-entity="FDC\CoreBundle\Entity\Article" mapped-by="lockedBy">
+        <one-to-many field="articleLocks" target-entity="FDC\CoreBundle\Entity\ArticleLock" mapped-by="user">
         </one-to-many>
         
         <many-to-many field="sites" target-entity="FDC\CoreBundle\Entity\Site">

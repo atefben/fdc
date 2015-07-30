@@ -253,4 +253,20 @@ class Site
     {
         return $this->articles;
     }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
+    }
 }

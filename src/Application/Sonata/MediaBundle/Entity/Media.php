@@ -36,7 +36,13 @@ class Media extends BaseMedia
     
     protected $articleMainImage;
     
+    protected $articleMainAudio;
+    
+    protected $articleMainVideo;
+    
     protected $articleAudios;
+    
+    protected $articleVideos;
     
     /**
      * @var ArrayCollection

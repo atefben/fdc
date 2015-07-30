@@ -29,14 +29,14 @@ class FilmAddressSchool
     /**
      * @var Country
      *
-     * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="filmAddressCountries")
+     * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="schoolsFilms")
      */
     private $address;
 
     /**
      * @var FilmFilm
      *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="countries")
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="schoolAddresses")
      */
     private $film;
 
@@ -60,4 +60,145 @@ class FilmAddressSchool
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return FilmAddressSchool
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return FilmAddressSchool
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return FilmAddressSchool
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set address
+     *
+     * @param \FDC\CoreBundle\Entity\FilmAddress $address
+     * @return FilmAddressSchool
+     */
+    public function setAddress(\FDC\CoreBundle\Entity\FilmAddress $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return \FDC\CoreBundle\Entity\FilmAddress 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set film
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilm $film
+     * @return FilmAddressSchool
+     */
+    public function setFilm(\FDC\CoreBundle\Entity\FilmFilm $film = null)
+    {
+        $this->film = $film;
+
+        return $this;
+    }
+
+    /**
+     * Get film
+     *
+     * @return \FDC\CoreBundle\Entity\FilmFilm 
+     */
+    public function getFilm()
+    {
+        return $this->film;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
+    }
 }

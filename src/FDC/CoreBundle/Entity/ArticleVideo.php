@@ -29,9 +29,16 @@ class ArticleVideo
     /**
      * @var Article
      *
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="videos")
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="footerVideos")
      */
     protected $article;
+    
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="articleVideos")
+     */
+    protected $video;
     
 
     /**
@@ -65,5 +72,28 @@ class ArticleVideo
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set video
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $video
+     * @return ArticleVideo
+     */
+    public function setVideo(\Application\Sonata\MediaBundle\Entity\Media $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getVideo()
+    {
+        return $this->video;
     }
 }

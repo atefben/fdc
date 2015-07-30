@@ -32,70 +32,6 @@ class Article
      */
     protected $id;
     
-     /**
-      * @var Application\Sonata\MediaBundle\Entity\Gallery
-      *
-      * @ORM\OneToOne(targetEntity="Theme")
-      */
-    protected $theme;
-    
-    /**
-     * @var ArticleLock
-     *
-     * @ORM\ManyToOne(targetEntity="ArticleLock", inversedBy="articles")
-     */
-    protected $lock;
-    
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToOne(targetEntity="Site", inversedBy="articles", cascade={"persist"})
-     * @ORM\JoinColumn(name="site_id", referencedColumnName="id", nullable=false)
-     */
-    protected $site;
-    
-    /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="articleMainAudio")
-     */
-    protected $headerAudio;
-    
-    /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="articleMainVideo")
-     */
-    protected $headerVideo;
-    
-    /**
-     * @var Application\Sonata\MediaBundle\Entity\Gallery
-     *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery", inversedBy="articleMainGallery")
-     */
-    protected $headerGallery;
-    
-    /**
-     * @var Application\Sonata\MediaBundle\Entity\Gallery
-     *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
-     */
-    protected $footerGallery;
-    
-    /**
-     * @var ArticleVideo
-     *
-     * @ORM\OneToMany(targetEntity="ArticleVideo", mappedBy="article")
-     */
-    protected $footerVideos;
-    
-    /**
-     * @var ArticleAudio
-     *
-     * @ORM\OneToMany(targetEntity="ArticleAudio", mappedBy="article")
-     */
-    protected $footerAudios;
-    
     /**
      * @var \DateTime
      *
@@ -129,6 +65,69 @@ class Article
      * @ORM\Column(name="updated_at", type="datetime")
      */
     protected $updatedAt;
+    
+     /**
+      * @var Application\Sonata\MediaBundle\Entity\Gallery
+      *
+      * @ORM\OneToOne(targetEntity="Theme")
+      */
+    protected $theme;
+        
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Gallery
+     *
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery", inversedBy="articleMainGallery")
+     */
+    protected $headerGallery;
+    
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Gallery
+     *
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
+     */
+    protected $footerGallery;
+    
+    /**
+     * @var ArticleLock
+     *
+     * @ORM\OneToMany(targetEntity="ArticleLock", mappedBy="articles")
+     */
+    protected $lock;
+    
+    /**
+     * @var Site
+     *
+     * @ORM\ManyToOne(targetEntity="Site", inversedBy="articles", cascade={"persist"})
+     */
+    protected $site;
+    
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="articleMainAudio")
+     */
+    protected $headerAudio;
+    
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="articleMainVideo")
+     */
+    protected $headerVideo;
+    
+    /**
+     * @var ArticleVideo
+     *
+     * @ORM\OneToMany(targetEntity="ArticleVideo", mappedBy="article")
+     */
+    protected $footerVideos;
+    
+    /**
+     * @var ArticleAudio
+     *
+     * @ORM\OneToMany(targetEntity="ArticleAudio", mappedBy="article")
+     */
+    protected $footerAudios;
     
     public function __construct()
     {
@@ -483,5 +482,44 @@ class Article
     public function getSite()
     {
         return $this->site;
+    }
+
+    /**
+     * Add lock
+     *
+     * @param \FDC\CoreBundle\Entity\ArticleLock $lock
+     * @return Article
+     */
+    public function addLock(\FDC\CoreBundle\Entity\ArticleLock $lock)
+    {
+        $this->lock[] = $lock;
+
+        return $this;
+    }
+
+    /**
+     * Remove lock
+     *
+     * @param \FDC\CoreBundle\Entity\ArticleLock $lock
+     */
+    public function removeLock(\FDC\CoreBundle\Entity\ArticleLock $lock)
+    {
+        $this->lock->removeElement($lock);
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
     }
 }

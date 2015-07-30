@@ -108,4 +108,335 @@ class FilmJury
      * @ORM\OneToMany(targetEntity="FilmPhoto", mappedBy="jury")
      */
     private $photos;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return FilmJury
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set festivalYear
+     *
+     * @param integer $festivalYear
+     * @return FilmJury
+     */
+    public function setFestivalYear($festivalYear)
+    {
+        $this->festivalYear = $festivalYear;
+
+        return $this;
+    }
+
+    /**
+     * Get festivalYear
+     *
+     * @return integer 
+     */
+    public function getFestivalYear()
+    {
+        return $this->festivalYear;
+    }
+
+    /**
+     * Set order
+     *
+     * @param string $order
+     * @return FilmJury
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return string 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * Set bioFilmVf
+     *
+     * @param string $bioFilmVf
+     * @return FilmJury
+     */
+    public function setBioFilmVf($bioFilmVf)
+    {
+        $this->bioFilmVf = $bioFilmVf;
+
+        return $this;
+    }
+
+    /**
+     * Get bioFilmVf
+     *
+     * @return string 
+     */
+    public function getBioFilmVf()
+    {
+        return $this->bioFilmVf;
+    }
+
+    /**
+     * Set bioFilmVa
+     *
+     * @param string $bioFilmVa
+     * @return FilmJury
+     */
+    public function setBioFilmVa($bioFilmVa)
+    {
+        $this->bioFilmVa = $bioFilmVa;
+
+        return $this;
+    }
+
+    /**
+     * Get bioFilmVa
+     *
+     * @return string 
+     */
+    public function getBioFilmVa()
+    {
+        return $this->bioFilmVa;
+    }
+
+    /**
+     * Set bioFilmVf2
+     *
+     * @param string $bioFilmVf2
+     * @return FilmJury
+     */
+    public function setBioFilmVf2($bioFilmVf2)
+    {
+        $this->bioFilmVf2 = $bioFilmVf2;
+
+        return $this;
+    }
+
+    /**
+     * Get bioFilmVf2
+     *
+     * @return string 
+     */
+    public function getBioFilmVf2()
+    {
+        return $this->bioFilmVf2;
+    }
+
+    /**
+     * Set bioFilmVa2
+     *
+     * @param string $bioFilmVa2
+     * @return FilmJury
+     */
+    public function setBioFilmVa2($bioFilmVa2)
+    {
+        $this->bioFilmVa2 = $bioFilmVa2;
+
+        return $this;
+    }
+
+    /**
+     * Get bioFilmVa2
+     *
+     * @return string 
+     */
+    public function getBioFilmVa2()
+    {
+        return $this->bioFilmVa2;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return FilmJury
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return FilmJury
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set person
+     *
+     * @param \FDC\CoreBundle\Entity\FilmPerson $person
+     * @return FilmJury
+     */
+    public function setPerson(\FDC\CoreBundle\Entity\FilmPerson $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \FDC\CoreBundle\Entity\FilmPerson 
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \FDC\CoreBundle\Entity\FilmJuryType $type
+     * @return FilmJury
+     */
+    public function setType(\FDC\CoreBundle\Entity\FilmJuryType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \FDC\CoreBundle\Entity\FilmJuryType 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set function
+     *
+     * @param \FDC\CoreBundle\Entity\FilmJuryFunction $function
+     * @return FilmJury
+     */
+    public function setFunction(\FDC\CoreBundle\Entity\FilmJuryFunction $function = null)
+    {
+        $this->function = $function;
+
+        return $this;
+    }
+
+    /**
+     * Get function
+     *
+     * @return \FDC\CoreBundle\Entity\FilmJuryFunction 
+     */
+    public function getFunction()
+    {
+        return $this->function;
+    }
+
+    /**
+     * Add photos
+     *
+     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
+     * @return FilmJury
+     */
+    public function addPhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
+    {
+        $this->photos[] = $photos;
+
+        return $this;
+    }
+
+    /**
+     * Remove photos
+     *
+     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
+     */
+    public function removePhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
+    {
+        $this->photos->removeElement($photos);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
+    }
 }

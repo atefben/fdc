@@ -65,5 +65,198 @@ class FilmJuryFunction
      *
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="function")
      */
-    private $photos;
+    private $juries;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->juries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return FilmJuryFunction
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set functionVf
+     *
+     * @param string $functionVf
+     * @return FilmJuryFunction
+     */
+    public function setFunctionVf($functionVf)
+    {
+        $this->functionVf = $functionVf;
+
+        return $this;
+    }
+
+    /**
+     * Get functionVf
+     *
+     * @return string 
+     */
+    public function getFunctionVf()
+    {
+        return $this->functionVf;
+    }
+
+    /**
+     * Set functionVa
+     *
+     * @param string $functionVa
+     * @return FilmJuryFunction
+     */
+    public function setFunctionVa($functionVa)
+    {
+        $this->functionVa = $functionVa;
+
+        return $this;
+    }
+
+    /**
+     * Get functionVa
+     *
+     * @return string 
+     */
+    public function getFunctionVa()
+    {
+        return $this->functionVa;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     * @return FilmJuryFunction
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return FilmJuryFunction
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return FilmJuryFunction
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add juries
+     *
+     * @param \FDC\CoreBundle\Entity\FilmJury $juries
+     * @return FilmJuryFunction
+     */
+    public function addJury(\FDC\CoreBundle\Entity\FilmJury $juries)
+    {
+        $this->juries[] = $juries;
+
+        return $this;
+    }
+
+    /**
+     * Remove juries
+     *
+     * @param \FDC\CoreBundle\Entity\FilmJury $juries
+     */
+    public function removeJury(\FDC\CoreBundle\Entity\FilmJury $juries)
+    {
+        $this->juries->removeElement($juries);
+    }
+
+    /**
+     * Get juries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJuries()
+    {
+        return $this->juries;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
+    }
 }

@@ -27,7 +27,7 @@ class ArticleAudio
     /**
      * @var Article
      *
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="audios")
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="footerAudios")
      */
     protected $article;
     

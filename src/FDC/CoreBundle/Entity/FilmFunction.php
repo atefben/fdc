@@ -62,7 +62,226 @@ class FilmFunction
     private $updatedAt;
     
     /**
-     * @ORM\OneToMany(targetEntity="FilmPerson", mappedBy="address")
+     * @ORM\OneToMany(targetEntity="FilmPerson", mappedBy="function")
      */
     private $persons;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="FilmAtelierGeneric", mappedBy="function")
+     */
+    private $filmAtelierGenerics;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->filmAtelierGenerics = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set functionVf
+     *
+     * @param string $functionVf
+     * @return FilmFunction
+     */
+    public function setFunctionVf($functionVf)
+    {
+        $this->functionVf = $functionVf;
+
+        return $this;
+    }
+
+    /**
+     * Get functionVf
+     *
+     * @return string 
+     */
+    public function getFunctionVf()
+    {
+        return $this->functionVf;
+    }
+
+    /**
+     * Set functionVa
+     *
+     * @param string $functionVa
+     * @return FilmFunction
+     */
+    public function setFunctionVa($functionVa)
+    {
+        $this->functionVa = $functionVa;
+
+        return $this;
+    }
+
+    /**
+     * Get functionVa
+     *
+     * @return string 
+     */
+    public function getFunctionVa()
+    {
+        return $this->functionVa;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     * @return FilmFunction
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return FilmFunction
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return FilmFunction
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add persons
+     *
+     * @param \FDC\CoreBundle\Entity\FilmPerson $persons
+     * @return FilmFunction
+     */
+    public function addPerson(\FDC\CoreBundle\Entity\FilmPerson $persons)
+    {
+        $this->persons[] = $persons;
+
+        return $this;
+    }
+
+    /**
+     * Remove persons
+     *
+     * @param \FDC\CoreBundle\Entity\FilmPerson $persons
+     */
+    public function removePerson(\FDC\CoreBundle\Entity\FilmPerson $persons)
+    {
+        $this->persons->removeElement($persons);
+    }
+
+    /**
+     * Get persons
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPersons()
+    {
+        return $this->persons;
+    }
+
+    /**
+     * Add filmAtelierGenerics
+     *
+     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics
+     * @return FilmFunction
+     */
+    public function addFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
+    {
+        $this->filmAtelierGenerics[] = $filmAtelierGenerics;
+
+        return $this;
+    }
+
+    /**
+     * Remove filmAtelierGenerics
+     *
+     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics
+     */
+    public function removeFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
+    {
+        $this->filmAtelierGenerics->removeElement($filmAtelierGenerics);
+    }
+
+    /**
+     * Get filmAtelierGenerics
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilmAtelierGenerics()
+    {
+        return $this->filmAtelierGenerics;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
+    }
 }
