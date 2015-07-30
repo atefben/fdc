@@ -1,4 +1,14 @@
-#INFORMATIONS
+#DEVELOPER INFORMATIONS
+
+## Database
+
+The database informations is available in [https://github.com/Ohwee/festival-cannes-2016/tree/master/src/FDC/CoreBundle/Resources/doc/sql][1].
+
+We use [MySQL Workbench][3] to create / generate the diagram png, the source file is FDC diagram.mwb.
+
+[1]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/FDC/CoreBundle/Resources/doc/sql
+[2]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/FDC/CoreBundle/Resources/doc/sqlFDC%20diagram.mwb
+[3]: https://www.mysql.fr/products/workbench/
 
 ##Entities
 
