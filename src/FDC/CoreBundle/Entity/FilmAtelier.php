@@ -360,11 +360,11 @@ class FilmAtelier
     private $filmAtelierGenerics;
 
     /**
-     * @var FilmPhoto
+     * @var FilmMedia
      *
-     * @ORM\OneToMany(targetEntity="FilmPhoto", mappedBy="filmAtelier")
+     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="filmAtelier")
      */
-    private $photos;
+    private $medias;
     
     /**
      * @var FilmCountry
@@ -393,7 +393,7 @@ class FilmAtelier
     {
         $this->minorProductions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->filmAtelierGenerics = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
         $this->countries = new \Doctrine\Common\Collections\ArrayCollection();
         $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1547,39 +1547,6 @@ class FilmAtelier
     }
 
     /**
-     * Add photos
-     *
-     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
-     * @return FilmAtelier
-     */
-    public function addPhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
-    {
-        $this->photos[] = $photos;
-
-        return $this;
-    }
-
-    /**
-     * Remove photos
-     *
-     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
-     */
-    public function removePhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
-    {
-        $this->photos->removeElement($photos);
-    }
-
-    /**
-     * Get photos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPhotos()
-    {
-        return $this->photos;
-    }
-
-    /**
      * Add countries
      *
      * @param \FDC\CoreBundle\Entity\FilmAtelierCountry $countries
@@ -1691,5 +1658,38 @@ class FilmAtelier
     public function preUpdate()
     {
         // Add your code here
+    }
+
+    /**
+     * Add medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     * @return FilmAtelier
+     */
+    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias[] = $medias;
+
+        return $this;
+    }
+
+    /**
+     * Remove medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     */
+    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias->removeElement($medias);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
     }
 }

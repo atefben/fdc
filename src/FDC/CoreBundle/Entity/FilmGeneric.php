@@ -135,15 +135,15 @@ class FilmGeneric
     private $functionId;
     
     /**
-     * @ORM\OneToMany(targetEntity="FilmPhoto", mappedBy="generic")
+     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="generic")
      */
-    private $photos;
+    private $medias;
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -525,38 +525,6 @@ class FilmGeneric
     }
 
     /**
-     * Add photos
-     *
-     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
-     * @return FilmGeneric
-     */
-    public function addPhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
-    {
-        $this->photos[] = $photos;
-
-        return $this;
-    }
-
-    /**
-     * Remove photos
-     *
-     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
-     */
-    public function removePhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
-    {
-        $this->photos->removeElement($photos);
-    }
-
-    /**
-     * Get photos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPhotos()
-    {
-        return $this->photos;
-    }
-    /**
      * @ORM\PrePersist
      */
     public function prePersist()
@@ -570,5 +538,38 @@ class FilmGeneric
     public function preUpdate()
     {
         // Add your code here
+    }
+
+    /**
+     * Add medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     * @return FilmGeneric
+     */
+    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias[] = $medias;
+
+        return $this;
+    }
+
+    /**
+     * Remove medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     */
+    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias->removeElement($medias);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
     }
 }

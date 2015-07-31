@@ -47,7 +47,8 @@
 .svn 
 .cvs 
 *~
-*.bak 
+*.bak
+*.mwb.beforefix
 *.swp 
 [Tt]humbs.db
 ._*

@@ -174,9 +174,9 @@ class FilmPerson
     private $awards;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmPhoto", mappedBy="person")
+     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="person")
      */
-    private $photos;
+    private $medias;
     
     /**
      * @ORM\OneToMany(targetEntity="CinefPerson", mappedBy="person")
@@ -191,7 +191,7 @@ class FilmPerson
         $this->filmGenerics = new \Doctrine\Common\Collections\ArrayCollection();
         $this->juries = new \Doctrine\Common\Collections\ArrayCollection();
         $this->awards = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
         $this->cinefPersons = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -765,39 +765,6 @@ class FilmPerson
     }
 
     /**
-     * Add photos
-     *
-     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
-     * @return FilmPerson
-     */
-    public function addPhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
-    {
-        $this->photos[] = $photos;
-
-        return $this;
-    }
-
-    /**
-     * Remove photos
-     *
-     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
-     */
-    public function removePhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
-    {
-        $this->photos->removeElement($photos);
-    }
-
-    /**
-     * Get photos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPhotos()
-    {
-        return $this->photos;
-    }
-
-    /**
      * Add cinefPersons
      *
      * @param \FDC\CoreBundle\Entity\CinefPerson $cinefPersons
@@ -843,5 +810,38 @@ class FilmPerson
     public function preUpdate()
     {
         // Add your code here
+    }
+
+    /**
+     * Add medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     * @return FilmPerson
+     */
+    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias[] = $medias;
+
+        return $this;
+    }
+
+    /**
+     * Remove medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     */
+    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias->removeElement($medias);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
     }
 }

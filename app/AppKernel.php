@@ -45,6 +45,7 @@ class AppKernel extends Kernel
             /* Application */
             new FDC\CoreBundle\FDCCoreBundle(),
             new FDC\AdminBundle\FDCAdminBundle(),
+            new FDC\SoifBundle\FDCSoifBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

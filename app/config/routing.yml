@@ -51,3 +51,8 @@ fdc_core:
     resource: "@FDCCoreBundle/Controller/"
     type:     annotation
     prefix:   /
+
+fdc_soif:
+    resource: "@FDCSoifBundle/Controller/"
+    type:     annotation
+    prefix:   /

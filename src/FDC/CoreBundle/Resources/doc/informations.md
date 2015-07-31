@@ -1,5 +1,22 @@
 #DEVELOPER INFORMATIONS
 
+## Environment - minimum configuration
+
+Php version : 5.4 (to support Traits)
+
+A mySQL Server
+
+### Php Extensions 
+- php-curl 
+- php-soap
+- php-intl
+
+###php.ini
+```
+soap.wsdl_cache_enabled = 1 ; caching the soap methods
+```
+
+
 ## Database
 
 The database informations is available in [https://github.com/Ohwee/festival-cannes-2016/tree/master/src/FDC/CoreBundle/Resources/doc/sql][1].

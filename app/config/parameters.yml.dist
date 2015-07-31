@@ -19,3 +19,12 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     locale:             fr
     locales: [fr, en, es, pt, ru, jp, cn, ar]
+    
+    # soif
+    soif_preprod_url: ~
+    soif_prod_url: ~
+    soif_url: '%soif_preprod_url%'
+    soif_login: ~
+    soif_password: ~
+    soif_upload_directory_hd: ~
+    soif_upload_directory_sd: ~

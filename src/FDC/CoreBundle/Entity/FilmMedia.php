@@ -7,20 +7,20 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 
 /**
- * FilmPhoto
+ * FilmMedia
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="generic_id", columns={"generic_id"}), @ORM\Index(name="jury_id", columns={"jury_id"}), @ORM\Index(name="film_id", columns={"film_id"}), @ORM\Index(name="festival_year", columns={"festival_year"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="title_vf", columns={"title_vf"}), @ORM\Index(name="title_va", columns={"title_va"}), @ORM\Index(name="type", columns={"type"}), @ORM\Index(name="file", columns={"file"})})
+ * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="generic_id", columns={"generic_id"}), @ORM\Index(name="jury_id", columns={"jury_id"}), @ORM\Index(name="film_id", columns={"film_id"}), @ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="title_vf", columns={"title_vf"}), @ORM\Index(name="title_va", columns={"title_va"}), @ORM\Index(name="type", columns={"type"}), @ORM\Index(name="file", columns={"file"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmPhoto
+class FilmMedia
 {
     use Time;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=60)
      * @ORM\Id
      */
     private $id;
@@ -103,11 +103,9 @@ class FilmPhoto
     private $titleVa;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="integer", options={"unsigned": true})
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="medias")
      */
-    private $festivalYear;
+    private $festival;
 
     /**
      * @var integer
@@ -117,47 +115,47 @@ class FilmPhoto
     private $photoTypeId;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="medias")
      */
     private $film;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="medias")
      */
     private $person;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmGeneric", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="FilmGeneric", inversedBy="medias")
      */
     private $generic;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmJury", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="FilmJury", inversedBy="medias")
      */
     private $jury;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmEvent", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="FilmEvent", inversedBy="medias")
      */
     private $event;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmFestivalPoster", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="FilmFestivalPoster", inversedBy="medias")
      */
     private $poster;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmAtelierGeneric", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="FilmAtelierGeneric", inversedBy="medias")
      */
     private $filmAtelierGeneric;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmAtelier", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="FilmAtelier", inversedBy="medias")
      */
     private $filmAtelier;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CinefPerson", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="CinefPerson", inversedBy="medias")
      */
     private $cinefPerson;
 
@@ -165,7 +163,7 @@ class FilmPhoto
      * Set id
      *
      * @param integer $id
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setId($id)
     {
@@ -188,7 +186,7 @@ class FilmPhoto
      * Set file
      *
      * @param string $file
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setFile($file)
     {
@@ -211,7 +209,7 @@ class FilmPhoto
      * Set noteVf
      *
      * @param string $noteVf
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setNoteVf($noteVf)
     {
@@ -234,7 +232,7 @@ class FilmPhoto
      * Set noteVa
      *
      * @param string $noteVa
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setNoteVa($noteVa)
     {
@@ -257,7 +255,7 @@ class FilmPhoto
      * Set copyright
      *
      * @param string $copyright
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setCopyright($copyright)
     {
@@ -280,7 +278,7 @@ class FilmPhoto
      * Set credits
      *
      * @param string $credits
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setCredits($credits)
     {
@@ -303,7 +301,7 @@ class FilmPhoto
      * Set type
      *
      * @param string $type
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setType($type)
     {
@@ -326,7 +324,7 @@ class FilmPhoto
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setCreatedAt($createdAt)
     {
@@ -349,7 +347,7 @@ class FilmPhoto
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -372,7 +370,7 @@ class FilmPhoto
      * Set internet
      *
      * @param string $internet
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setInternet($internet)
     {
@@ -395,7 +393,7 @@ class FilmPhoto
      * Set titleVf
      *
      * @param string $titleVf
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setTitleVf($titleVf)
     {
@@ -418,7 +416,7 @@ class FilmPhoto
      * Set titleVa
      *
      * @param string $titleVa
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setTitleVa($titleVa)
     {
@@ -438,33 +436,10 @@ class FilmPhoto
     }
 
     /**
-     * Set festivalYear
-     *
-     * @param integer $festivalYear
-     * @return FilmPhoto
-     */
-    public function setFestivalYear($festivalYear)
-    {
-        $this->festivalYear = $festivalYear;
-
-        return $this;
-    }
-
-    /**
-     * Get festivalYear
-     *
-     * @return integer 
-     */
-    public function getFestivalYear()
-    {
-        return $this->festivalYear;
-    }
-
-    /**
      * Set photoTypeId
      *
      * @param integer $photoTypeId
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setPhotoTypeId($photoTypeId)
     {
@@ -487,7 +462,7 @@ class FilmPhoto
      * Set film
      *
      * @param \FDC\CoreBundle\Entity\FilmFilm $film
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setFilm(\FDC\CoreBundle\Entity\FilmFilm $film = null)
     {
@@ -510,7 +485,7 @@ class FilmPhoto
      * Set person
      *
      * @param \FDC\CoreBundle\Entity\FilmPerson $person
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setPerson(\FDC\CoreBundle\Entity\FilmPerson $person = null)
     {
@@ -533,7 +508,7 @@ class FilmPhoto
      * Set generic
      *
      * @param \FDC\CoreBundle\Entity\FilmGeneric $generic
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setGeneric(\FDC\CoreBundle\Entity\FilmGeneric $generic = null)
     {
@@ -556,7 +531,7 @@ class FilmPhoto
      * Set jury
      *
      * @param \FDC\CoreBundle\Entity\FilmJury $jury
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setJury(\FDC\CoreBundle\Entity\FilmJury $jury = null)
     {
@@ -579,7 +554,7 @@ class FilmPhoto
      * Set event
      *
      * @param \FDC\CoreBundle\Entity\FilmEvent $event
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setEvent(\FDC\CoreBundle\Entity\FilmEvent $event = null)
     {
@@ -602,7 +577,7 @@ class FilmPhoto
      * Set poster
      *
      * @param \FDC\CoreBundle\Entity\FilmFestivalPoster $poster
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setPoster(\FDC\CoreBundle\Entity\FilmFestivalPoster $poster = null)
     {
@@ -625,7 +600,7 @@ class FilmPhoto
      * Set filmAtelierGeneric
      *
      * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGeneric
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGeneric = null)
     {
@@ -648,7 +623,7 @@ class FilmPhoto
      * Set filmAtelier
      *
      * @param \FDC\CoreBundle\Entity\FilmAtelier $filmAtelier
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setFilmAtelier(\FDC\CoreBundle\Entity\FilmAtelier $filmAtelier = null)
     {
@@ -671,7 +646,7 @@ class FilmPhoto
      * Set cinefPerson
      *
      * @param \FDC\CoreBundle\Entity\CinefPerson $cinefPerson
-     * @return FilmPhoto
+     * @return FilmMedia
      */
     public function setCinefPerson(\FDC\CoreBundle\Entity\CinefPerson $cinefPerson = null)
     {
@@ -689,19 +664,27 @@ class FilmPhoto
     {
         return $this->cinefPerson;
     }
+
     /**
-     * @ORM\PrePersist
+     * Set festival
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFestival $festival
+     * @return FilmMedia
      */
-    public function prePersist()
+    public function setFestival(\FDC\CoreBundle\Entity\FilmFestival $festival = null)
     {
-        // Add your code here
+        $this->festival = $festival;
+
+        return $this;
     }
 
     /**
-     * @ORM\PreUpdate
+     * Get festival
+     *
+     * @return \FDC\CoreBundle\Entity\FilmFestival 
      */
-    public function preUpdate()
+    public function getFestival()
     {
-        // Add your code here
+        return $this->festival;
     }
 }

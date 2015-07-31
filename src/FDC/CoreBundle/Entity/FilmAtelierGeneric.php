@@ -17,7 +17,7 @@ class FilmAtelierGeneric
     /**
      * @var string
      *
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -94,17 +94,17 @@ class FilmAtelierGeneric
     private $filmAtelier;
 
     /**
-     * @var FilmPhoto
+     * @var FilmMedia
      *
-     * @ORM\OneToMany(targetEntity="FilmPhoto", mappedBy="filmAtelierGeneric")
+     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="filmAtelierGeneric")
      */
-    private $photos;
+    private $medias;
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -348,35 +348,35 @@ class FilmAtelierGeneric
     }
 
     /**
-     * Add photos
+     * Add medias
      *
-     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
      * @return FilmAtelierGeneric
      */
-    public function addPhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
+    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
-        $this->photos[] = $photos;
+        $this->medias[] = $medias;
 
         return $this;
     }
 
     /**
-     * Remove photos
+     * Remove medias
      *
-     * @param \FDC\CoreBundle\Entity\FilmPhoto $photos
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
      */
-    public function removePhoto(\FDC\CoreBundle\Entity\FilmPhoto $photos)
+    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
-        $this->photos->removeElement($photos);
+        $this->medias->removeElement($medias);
     }
 
     /**
-     * Get photos
+     * Get medias
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPhotos()
+    public function getMedias()
     {
-        return $this->photos;
+        return $this->medias;
     }
 }

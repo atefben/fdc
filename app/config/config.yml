@@ -13,8 +13,9 @@ imports:
     - { resource: bundles/stof_doctrine_extensions.yml }
 
 parameters:
+    #sonata
     sonata.user.admin.user.class: Application\Sonata\UserBundle\Admin\Entity\UserAdmin
-
+    #security
     security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
 
 framework:
