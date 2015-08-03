@@ -1,10 +1,17 @@
 services:
+    fdc.soif.logger_manager:
+        class: FDC\SoifBundle\Manager\LoggerManager
+        calls:
+            - ['setSoifLog', ['%soif_log%']]
+            - ['setSoifLogDirectory', ['%soif_log_directory%']]
+
     fdc.soif.core_manager:
         abstract: true
         class: FDC\SoifBundle\Manager\CoreManager
         calls:
             - ['setEntityManager', ['@doctrine.orm.entity_manager']]
             - ['setLogger', ['@logger']]
+            - ['setSoifLogger', ['@fdc.soif.logger_manager']]
             - ['setUploadDirectoryHD', ['%soif_upload_directory_hd%']]
             - ['setUploadDirectorySD', ['%soif_upload_directory_sd%']]
             - ['setWebserviceUrl', ['%soif_url%']]

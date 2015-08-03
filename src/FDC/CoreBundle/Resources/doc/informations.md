@@ -1,4 +1,4 @@
-#DEVELOPER INFORMATIONS
+#Informations
 
 ## Environment - minimum configuration
 

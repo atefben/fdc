@@ -52,7 +52,6 @@ class FestivalManager extends CoreManager
             $this->throwException($msg, $exception);
         }
         $result = $result->GetFestivalResult->Resultats->FestivalDto;
-        var_dump($result);
         $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmFestival();
         $persist = ($entity->getId() === null) ? true : false;
 

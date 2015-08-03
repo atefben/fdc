@@ -10,7 +10,7 @@ use FDC\CoreBundle\Util\Time;
  * FilmPerson
  *
  * @ORM\Table(indexes={@ORM\Index(name="lastname_firstname", columns={"lastname", "firstname"}), @ORM\Index(name="FILM_PERSONNE_FI_1", columns={"nationality"}), @ORM\Index(name="FILM_PERSONNE_FI_2", columns={"nationality2"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="INTERNET", columns={"internet"}), @ORM\Index(name="pm_profession_va", columns={"job_va"}), @ORM\Index(name="pm_profession_vf", columns={"job_vf"})})
- * @ORM\Entity(repositoryClass="FDC\CoreBundle\Repository\FilmFifPersonneRepository")
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
 class FilmPerson

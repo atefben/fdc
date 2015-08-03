@@ -78,6 +78,14 @@ abstract class CoreManager
     protected $entityIdKey;
     
     /**
+     * soifLogger
+     * 
+     * @var mixed
+     * @access protected
+     */
+    protected $soifLogger;
+    
+    /**
      * wsParameterKey
      * 
      * @var mixed
@@ -103,6 +111,19 @@ abstract class CoreManager
     public function setEntityManager($em)
     {
         $this->em = $em;
+    }
+    
+    
+    /**
+     * setSoifLogger function.
+     * 
+     * @access public
+     * @param mixed $soifLogger
+     * @return void
+     */
+    public function setSoifLogger($soifLogger)
+    {
+        $this->soifLogger = $soifLogger;
     }
     
     /**
@@ -180,13 +201,20 @@ abstract class CoreManager
         
         try {
             $result = $this->client->$method($parameters);
+            
+            // create log output
+            $content = "Method : {$method}\n";
+            $content .= 'Parameters: '. implode(', ', $parameters). "\n";
+            $content .= "\n\n";
+            $content .= $this->client->__getLastResponse();
+            $this->soifLogger->write(date('Y_m_d__H_i_s'). '.log.xml', $content);
         } catch (SoapFault $e) { 
            $this->logger->err($e->getMessage());
         }
         
         return $result;
     }
-    
+
     /**
      * update function.
      * 
@@ -214,7 +242,6 @@ abstract class CoreManager
     {
         $msg = $method. ' start';
         $this->timer = microtime(true);
-        var_dump($this->timer);
         
         $this->logger->info($msg);
     }
