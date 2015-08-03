@@ -9,7 +9,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmMedia
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="generic_id", columns={"generic_id"}), @ORM\Index(name="jury_id", columns={"jury_id"}), @ORM\Index(name="film_id", columns={"film_id"}), @ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="title_vf", columns={"title_vf"}), @ORM\Index(name="title_va", columns={"title_va"}), @ORM\Index(name="type", columns={"type"}), @ORM\Index(name="file", columns={"file"})})
+ * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="generic_id", columns={"generic_id"}), @ORM\Index(name="jury_id", columns={"jury_id"}), @ORM\Index(name="film_id", columns={"film_id"}), @ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="title_vf", columns={"title_vf"}), @ORM\Index(name="title_va", columns={"title_va"}), @ORM\Index(name="type", columns={"type"}), @ORM\Index(name="file_d", columns={"file_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
@@ -25,12 +25,12 @@ class FilmMedia
      */
     private $id;
     
-    /**
+     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=80, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $file;
+    private $contentType;
 
     /**
      * @var string
@@ -113,6 +113,16 @@ class FilmMedia
      * @ORM\Column(type="integer", nullable=true)
      */
     private $photoTypeId;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="filmMedias")
+     */
+    private $file;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FilmMediaCategory", inversedBy="medias")
+     */
+    private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="medias")
@@ -180,29 +190,6 @@ class FilmMedia
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set file
-     *
-     * @param string $file
-     * @return FilmMedia
-     */
-    public function setFile($file)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return string 
-     */
-    public function getFile()
-    {
-        return $this->file;
     }
 
     /**
@@ -686,5 +673,104 @@ class FilmMedia
     public function getFestival()
     {
         return $this->festival;
+    }
+
+    /**
+     * Set contentType
+     *
+     * @param string $contentType
+     * @return FilmMedia
+     */
+    public function setContentType($contentType)
+    {
+        $this->contentType = $contentType;
+
+        return $this;
+    }
+
+    /**
+     * Get contentType
+     *
+     * @return string 
+     */
+    public function getContentType()
+    {
+        return $this->contentType;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMediaCategory $category
+     * @return FilmMedia
+     */
+    public function setCategory(\FDC\CoreBundle\Entity\FilmMediaCategory $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \FDC\CoreBundle\Entity\FilmMediaCategory 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return FilmMedia
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersistTime()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdateTime()
+    {
+        // Add your code here
     }
 }

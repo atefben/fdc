@@ -51,19 +51,20 @@ class FestivalManager extends CoreManager
             $exception = new MissingMandatoryParametersException($msg);
             $this->throwException($msg, $exception);
         }
+        // get the result - create / get entity
         $result = $result->GetFestivalResult->Resultats->FestivalDto;
         $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmFestival();
         $persist = ($entity->getId() === null) ? true : false;
 
-        // update entity
+        // set entity properties
         foreach ($this->mapper as $setter => $soapKey) {
             if (!isset($result->{$soapKey})) {
-                $this->logger->warn(__METHOD__. 'Key '. $soapKey. ' not found in WS Result');
+                $this->logger->warning(__METHOD__. 'Key '. $soapKey. ' not found in WS Result');
                 continue;
             }
             
             if (!method_exists($entity, $setter)) {
-                $this->logger->warn(__METHOD__. 'Method '. $setter. ' not found in Entity '. get_class($entity));
+                $this->logger->warning(__METHOD__. 'Method '. $setter. ' not found in Entity '. get_class($entity));
                 continue;
             }
             $entity->{$setter}($result->{$soapKey});

@@ -188,6 +188,38 @@ abstract class CoreManager
     }
     
     /**
+     * findRelatedEntity function.
+     * 
+     * @access public
+     * @param mixed $repository
+     * @param mixed $result
+     * @param mixed $key
+     * @param mixed $manager
+     * @return void
+     */
+    public function findRelatedEntity($repository, $result, $key, $manager)
+    {
+        if (isset($result->{$key})) {
+            // update the related entity
+            if ($manager !== null) {
+               $manager->updateEntity($result->{$key});
+            }
+            
+            // get the entity and update it
+            $entityRelated = $this->em->getRepository($repository)->findOneById($result->{$key});
+            if ($entityRelated === null) {
+                $this->logger->warning(__METHOD__. ' Entity '. substr(strstr($repository, ':'), 1). ' with id '. $result->{$key}. ' not found');
+            }
+            
+            return $entityRelated;
+        } else {
+            $this->logger->warning("Key {$key} not found in WS Result");
+        }
+        
+        return null;
+    }
+    
+    /**
      * soapCall function.
      * 
      * @access public

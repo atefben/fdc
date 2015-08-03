@@ -44,11 +44,18 @@ class Media extends BaseMedia
     
     protected $articleVideos;
     
+    protected $filmMedias;
+    
     /**
      * @var ArrayCollection
      *
      */
     protected $translations;
+    
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -58,10 +65,5 @@ class Media extends BaseMedia
     public function getId()
     {
         return $this->id;
-    }
-    
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
     }
 }

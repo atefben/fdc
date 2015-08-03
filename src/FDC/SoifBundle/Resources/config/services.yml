@@ -24,4 +24,11 @@ services:
     fdc.soif.media_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\MediaManager
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.media_stream_manager']
+
+    fdc.soif.media_stream_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\MediaStreamManager
         arguments: []
+        calls:
+            - ['setSonataMediaManager', ['@sonata.media.manager.media']]

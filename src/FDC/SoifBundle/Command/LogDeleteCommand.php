@@ -56,7 +56,7 @@ class LogDeleteCommand extends ContainerAwareCommand
             
             if (filemtime($soifLogDir. $file) <= $dateDelete->getTimestamp()) {
                 if (@unlink($soifLogDir. $file) === false) {
-                    $logger->warn(__METHOD__. 'Couldn\'t delete the soif log file : '. $soifLogDir. $file);
+                    $logger->warning(__METHOD__. 'Couldn\'t delete the soif log file : '. $soifLogDir. $file);
                 } else {
                     $logger->info('Soif log file deleted :'. $soifLogDir. $file);
                 }

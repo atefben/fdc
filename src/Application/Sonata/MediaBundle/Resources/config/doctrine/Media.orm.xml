@@ -17,6 +17,9 @@
             <generator strategy="AUTO"/>
         </id>
         
+        <one-to-many field="filmMedias" target-entity="FDC\CoreBundle\Entity\FilmMedia" mapped-by="file">
+        </one-to-many>
+        
         <one-to-many field="articleMainAudio" target-entity="FDC\CoreBundle\Entity\Article" mapped-by="headerAudio">
         </one-to-many>
         
