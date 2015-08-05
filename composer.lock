@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c9efb99dc2309fe2874d7a894b5d750f",
+    "hash": "9601755ac89bac61c628a122b1416842",
     "packages": [
         {
             "name": "a2lix/i18n-doctrine-bundle",
@@ -800,7 +800,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/c5ff0542772102ddd4e2fbe173e9ad40ad67c22f",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/817c2d233fde0fe85cb7e4d25d43fbfcd028aef8",
                 "reference": "c5ff0542772102ddd4e2fbe173e9ad40ad67c22f",
                 "shasum": ""
             },
@@ -1431,6 +1431,59 @@
                 "parameters management"
             ],
             "time": "2015-06-03 08:27:03"
+        },
+        {
+            "name": "infinite-networks/form-bundle",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/infinite-networks/InfiniteFormBundle.git",
+                "reference": "a521eadedb0b33fb5427baf9de780866b70bcc86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/infinite-networks/InfiniteFormBundle/zipball/a521eadedb0b33fb5427baf9de780866b70bcc86",
+                "reference": "a521eadedb0b33fb5427baf9de780866b70bcc86",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "~2.3",
+                "php": ">=5.3.2",
+                "symfony/form": "~2.3",
+                "symfony/framework-bundle": "~2.3"
+            },
+            "require-dev": {
+                "components/jquery": "*",
+                "components/qunit": "*",
+                "doctrine/doctrine-bundle": "~1.2",
+                "doctrine/orm": "~2.3",
+                "robloach/component-installer": "~0.1.1",
+                "symfony/phpunit-bridge": "^2.7",
+                "symfony/symfony": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Infinite\\FormBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Nagel",
+                    "email": "t.nagel@infinite.net.au"
+                }
+            ],
+            "description": "A collection of useful form types and extensions for Symfony2",
+            "time": "2015-06-18 23:07:37"
         },
         {
             "name": "jdorn/sql-formatter",

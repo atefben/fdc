@@ -14,7 +14,6 @@ use Imagine\Image\Box;
 
 use Symfony\Component\Validator\ExecutionContextInterface;
 
-
 abstract class Media implements MediaInterface
 {
     /**

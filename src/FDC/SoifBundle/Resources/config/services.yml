@@ -12,8 +12,6 @@ services:
             - ['setEntityManager', ['@doctrine.orm.entity_manager']]
             - ['setLogger', ['@logger']]
             - ['setSoifLogger', ['@fdc.soif.logger_manager']]
-            - ['setUploadDirectoryHD', ['%soif_upload_directory_hd%']]
-            - ['setUploadDirectorySD', ['%soif_upload_directory_sd%']]
             - ['setWebserviceUrl', ['%soif_url%']]
 
     fdc.soif.festival_manager:
@@ -32,3 +30,4 @@ services:
         arguments: []
         calls:
             - ['setSonataMediaManager', ['@sonata.media.manager.media']]
+            - ['setSoifUploadDirectory', ['%soif_upload_directory%']]

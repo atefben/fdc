@@ -10,13 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 
 /**
- * Article
+ * NewsArticleLock
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class ArticleLock
+class NewsArticleLock
 {
     use Time;
     /**
@@ -31,7 +31,7 @@ class ArticleLock
     /**
      * @var ArticleVideo
      *
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="lock")
+     * @ORM\ManyToOne(targetEntity="NewsArticle", inversedBy="lock")
      */
     protected $articles;
     

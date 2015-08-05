@@ -18,7 +18,7 @@ class FilmProjection
     use Time;
     
     /**
-     * @var string
+     * @var integer
      *
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id

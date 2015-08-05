@@ -54,14 +54,7 @@ class Site
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      */
     protected $slug;
-    
-    /**
-     * @var ArticleVideo
-     *
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="site")
-     */
-    protected $articles;
-    
+
     /**
      * @var \DateTime
      *
@@ -219,39 +212,6 @@ class Site
     public function getClassColor()
     {
         return $this->classColor;
-    }
-
-    /**
-     * Add articles
-     *
-     * @param \FDC\CoreBundle\Entity\Article $articles
-     * @return Site
-     */
-    public function addArticle(\FDC\CoreBundle\Entity\Article $articles)
-    {
-        $this->articles[] = $articles;
-
-        return $this;
-    }
-
-    /**
-     * Remove articles
-     *
-     * @param \FDC\CoreBundle\Entity\Article $articles
-     */
-    public function removeArticle(\FDC\CoreBundle\Entity\Article $articles)
-    {
-        $this->articles->removeElement($articles);
-    }
-
-    /**
-     * Get articles
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getArticles()
-    {
-        return $this->articles;
     }
 
     /**

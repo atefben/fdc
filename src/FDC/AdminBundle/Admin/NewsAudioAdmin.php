@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ArticleVideoAdmin extends Admin
+class NewsAudioAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,6 +17,10 @@ class ArticleVideoAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('publishedAt')
+            ->add('publishEndedAt')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -27,6 +31,10 @@ class ArticleVideoAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('publishedAt')
+            ->add('publishEndedAt')
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -44,6 +52,10 @@ class ArticleVideoAdmin extends Admin
     {
         $formMapper
             ->add('id')
+            ->add('publishedAt')
+            ->add('publishEndedAt')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -54,6 +66,10 @@ class ArticleVideoAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('publishedAt')
+            ->add('publishEndedAt')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }

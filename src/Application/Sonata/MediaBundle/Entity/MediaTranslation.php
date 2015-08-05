@@ -102,7 +102,7 @@ class MediaTranslation implements OneLocaleInterface
      */
     public function setCopyright($copyright)
     {
-        $this->copyright = copyright;
+        $this->copyright = $copyright;
 
         return $this;
     }

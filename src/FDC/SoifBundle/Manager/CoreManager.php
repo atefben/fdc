@@ -38,22 +38,6 @@ abstract class CoreManager
     protected $logger;
     
     /**
-     * uploadDirectoryHD
-     * 
-     * @var mixed
-     * @access protected
-     */
-    protected $uploadDirectoryHD;
-    
-    /**
-     * uploadDirectorySD
-     * 
-     * @var mixed
-     * @access protected
-     */
-    protected $uploadDirectorySD;
-    
-    /**
      * timer
      * 
      * @var mixed
@@ -113,7 +97,6 @@ abstract class CoreManager
         $this->em = $em;
     }
     
-    
     /**
      * setSoifLogger function.
      * 
@@ -136,30 +119,6 @@ abstract class CoreManager
     public function setLogger($logger)
     {
         $this->logger = $logger;
-    }
-    
-    /**
-     * setUploadDirectoryHD function.
-     * 
-     * @access public
-     * @param mixed $uploadDirectoryHD
-     * @return void
-     */
-    public function setUploadDirectoryHD($uploadDirectoryHD)
-    {
-        $this->uploadDirectoryHD = $uploadDirectoryHD;
-    }
-    
-    /**
-     * setUploadDirectorySD function.
-     * 
-     * @access public
-     * @param mixed $uploadDirectorySD
-     * @return void
-     */
-    public function setUploadDirectorySD($uploadDirectorySD)
-    {
-        $this->uploadDirectorySD = $uploadDirectorySD;
     }
     
     /**
@@ -241,7 +200,7 @@ abstract class CoreManager
             $content .= $this->client->__getLastResponse();
             $this->soifLogger->write(date('Y_m_d__H_i_s'). '.log.xml', $content);
         } catch (SoapFault $e) { 
-           $this->logger->err($e->getMessage());
+           $this->logger->error($e->getMessage());
         }
         
         return $result;

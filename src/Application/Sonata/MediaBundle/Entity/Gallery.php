@@ -28,7 +28,7 @@ class Gallery extends BaseGallery
      */
     protected $id;
     
-    protected $articleMainGallery;
+    protected $newsArticleHeader;
 
     /**
      * Get id

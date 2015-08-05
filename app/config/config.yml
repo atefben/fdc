@@ -45,12 +45,15 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'InfiniteFormBundle::collection_theme.html.twig'
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SonataAdminBundle ]
+    bundles:        [ SonataAdminBundle, FDCAdminBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

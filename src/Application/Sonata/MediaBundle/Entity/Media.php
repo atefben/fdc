@@ -13,7 +13,7 @@ namespace Application\Sonata\MediaBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Application\Sonata\MediaBundle\Entity\BaseMedia as BaseMedia;
+use Sonata\MediaBundle\Entity\BaseMedia as SonataBaseMedia;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -25,7 +25,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @author <yourname> <youremail>
  */
-class Media extends BaseMedia
+class Media extends SonataBaseMedia
 {
     use Translatable;
     
@@ -34,17 +34,9 @@ class Media extends BaseMedia
      */
     protected $id;
     
-    protected $articleMainImage;
-    
-    protected $articleMainAudio;
-    
-    protected $articleMainVideo;
-    
-    protected $articleAudios;
-    
-    protected $articleVideos;
-    
     protected $filmMedias;
+    
+    protected $newsWidgetAudios;
     
     /**
      * @var ArrayCollection

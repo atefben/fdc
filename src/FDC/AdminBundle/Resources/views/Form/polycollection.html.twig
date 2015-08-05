@@ -1,0 +1,21 @@
+{% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+
+
+{% block fdc_admin_news_article_widgets_infinite_form_polycollection_widget %}
+{% spaceless %}
+    {% set attr = attr|merge({
+        'data-form-widget': 'collection',
+    }) %}
+    {% if disabled %}
+    {% set attr = attr|merge({
+        'data-disabled': 1
+    }) %}
+    {% endif %}
+
+    {{ block('form_widget') }}
+    <a class="btn" data-prototype="{{ form_row(form.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i> Ajouter un texte</a>
+    <a class="btn" data-prototype="{{ form_row(form.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i> Ajouter un audio</a>
+    <a class="btn" data-prototype="{{ form_row(form.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i> Ajouter une image</a>
+    <a class="btn" data-prototype="{{ form_row(form.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i> Ajouter une video</a>
+{% endspaceless %}
+{% endblock %}

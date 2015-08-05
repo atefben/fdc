@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             /* CMS tools */
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
+            new Infinite\FormBundle\InfiniteFormBundle(),
             // sluggable
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             // translatable

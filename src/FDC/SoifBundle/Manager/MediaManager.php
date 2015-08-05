@@ -2,6 +2,8 @@
 
 namespace FDC\SoifBundle\Manager;
 
+use \Exception;
+
 use FDC\CoreBundle\Entity\FilmMedia;
 
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
@@ -85,25 +87,24 @@ class MediaManager extends CoreManager
         
         // verify result
         if (!isset($result->GetElementMultimediaResult->Resultats->ElementMultimediaDto)) {
-            $msg = __METHOD__. ' failed to parse results';
+            $msg = __METHOD__. ' - failed to parse results';
             $exception = new MissingMandatoryParametersException($msg);
             $this->throwException($msg, $exception);
         }
         $result = $result->GetElementMultimediaResult->Resultats->ElementMultimediaDto;
         
-        var_dump($result);
         $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmMedia();
         $persist = ($entity->getId() === null) ? true : false;
 
         // set entity properties
         foreach ($this->mapper as $setter => $soapKey) {
             if (!isset($result->{$soapKey})) {
-                $this->logger->warning(__METHOD__. ' Key '. $soapKey. ' not found in WS Result');
+                $this->logger->warning(__METHOD__. ' - Key '. $soapKey. ' not found in WS Result');
                 continue;
             }
             
             if (!method_exists($entity, $setter)) {
-                $this->logger->warning(__METHOD__. ' Method '. $setter. ' not found in Entity '. get_class($entity));
+                $this->logger->warning(__METHOD__. ' -  Method '. $setter. ' not found in Entity '. get_class($entity));
                 continue;
             }
             $entity->{$setter}($result->{$soapKey});
@@ -119,7 +120,7 @@ class MediaManager extends CoreManager
         }
         
         // set related media
-        $this->mediaStreamManager->updateEntity($entity, $result->{$this->entityIdKey});
+        $this->mediaStreamManager->updateEntity($entity, $result->{$this->entityIdKey}, $this->mimeToExtension($result->ContentType));
         
 
         // update entity
@@ -147,7 +148,9 @@ class MediaManager extends CoreManager
             case "image/jpeg":
                 return "jpg";
             default:
-                return "default";
+                $msg = __METHOD__. " - The mime type {$mimeType} is not supported.";
+                $exception = new Exception($msg);
+                $this->throwException($msg, $exception);
         }
     }
 }

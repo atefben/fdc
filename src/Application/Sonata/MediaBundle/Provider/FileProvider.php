@@ -15,7 +15,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 use Sonata\MediaBundle\Provider\FileProvider as SonataFileProvider;
 
-class FileProvider extends FileProvider
+class FileProvider extends SonataFileProvider
 {
     public function buildEditForm(FormMapper $formMapper)
     {
@@ -24,7 +24,17 @@ class FileProvider extends FileProvider
         $formMapper->add('authorName');
         $formMapper->add('cdnIsFlushable');
         $formMapper->add('description');
-      //  $formMapper->add('copyright');
+        $formMapper->add('translations', 'a2lix_translations', array(
+            'fields' => array(
+                // hide fields
+                'createdAt' => array(
+                    'display' => false
+                ),
+                'updatedAt' => array(
+                    'display' => false
+                )
+            )
+        ));
         $formMapper->add('binaryContent', 'file', array('required' => false));
     }
 }

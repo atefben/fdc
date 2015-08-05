@@ -30,5 +30,4 @@ parameters:
     soif_log_expiration: ~
     soif_login: ~
     soif_password: ~
-    soif_upload_directory_hd: ~
-    soif_upload_directory_sd: ~
+    soif_upload_directory: ~
