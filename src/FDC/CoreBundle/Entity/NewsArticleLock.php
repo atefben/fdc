@@ -144,45 +144,12 @@ class NewsArticleLock
     }
 
     /**
-     * Add articles
-     *
-     * @param \FDC\CoreBundle\Entity\Article $articles
-     * @return ArticleLock
-     */
-    public function addArticle(\FDC\CoreBundle\Entity\Article $articles)
-    {
-        $this->articles[] = $articles;
-
-        return $this;
-    }
-
-    /**
-     * Remove articles
-     *
-     * @param \FDC\CoreBundle\Entity\Article $articles
-     */
-    public function removeArticle(\FDC\CoreBundle\Entity\Article $articles)
-    {
-        $this->articles->removeElement($articles);
-    }
-
-    /**
-     * Get articles
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getArticles()
-    {
-        return $this->articles;
-    }
-
-    /**
      * Set articles
      *
-     * @param \FDC\CoreBundle\Entity\Article $articles
-     * @return ArticleLock
+     * @param \FDC\CoreBundle\Entity\NewsArticle $articles
+     * @return NewsArticleLock
      */
-    public function setArticles(\FDC\CoreBundle\Entity\Article $articles = null)
+    public function setArticles(\FDC\CoreBundle\Entity\NewsArticle $articles = null)
     {
         $this->articles = $articles;
 
@@ -190,18 +157,12 @@ class NewsArticleLock
     }
 
     /**
-     * @ORM\PrePersist
+     * Get articles
+     *
+     * @return \FDC\CoreBundle\Entity\NewsArticle 
      */
-    public function prePersist()
+    public function getArticles()
     {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        // Add your code here
+        return $this->articles;
     }
 }
