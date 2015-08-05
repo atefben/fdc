@@ -29,14 +29,14 @@ class NewsArticleLock
     protected $id;
     
     /**
-     * @var ArticleVideo
+     * @var NewsArticle
      *
      * @ORM\ManyToOne(targetEntity="NewsArticle", inversedBy="lock")
      */
     protected $articles;
     
     /**
-     * @var Article
+     * @var Application\Sonata\UserBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="articleLocks")
      */
