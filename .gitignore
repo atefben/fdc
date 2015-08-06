@@ -42,6 +42,7 @@
 
 #OS junk files
 # Exclude generated files
+.idea
 .DS_Store
 .DS_Store?
 .svn 

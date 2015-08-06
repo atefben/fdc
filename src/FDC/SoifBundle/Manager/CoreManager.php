@@ -5,6 +5,10 @@ namespace FDC\SoifBundle\Manager;
 use \SoapClient;
 use \SoapFault;
 
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
+
 /**
  * Abstract CoreManager class.
  * 
@@ -52,6 +56,14 @@ abstract class CoreManager
      * @access private
      */
     private $wsUrl;
+
+    /**
+     * wsMethod
+     * 
+     * @var mixed
+     * @access private
+     */
+    private $wsMethod;
     
     /**
      * entityIdKey
@@ -146,8 +158,31 @@ abstract class CoreManager
         return $this->em->getRepository($this->repository)->findOneBy($finder);
     }
     
+    
     /**
-     * findRelatedEntity function.
+     * getLocalesMapper function.
+     * 
+     * @access public
+     * @return void
+     */
+    public function getLocalesMapper()
+    {
+        $localesMapper = array(
+            'ARE' => 'ar',
+            'CHN' => 'cn',
+            'ESP' => 'es',
+            'FRA' => 'fr',
+            'GBR' => 'en',
+            'JPN' => 'jp',
+            'PRT' => 'pt',
+            'RUS' => 'ru'
+        );
+        
+        return $localesMapper;
+    }
+    
+    /**
+     * updateRelatedEntity function.
      * 
      * @access public
      * @param mixed $repository
@@ -156,7 +191,7 @@ abstract class CoreManager
      * @param mixed $manager
      * @return void
      */
-    public function findRelatedEntity($repository, $result, $key, $manager)
+    public function updateRelatedEntity($repository, $result, $key, $manager)
     {
         if (isset($result->{$key})) {
             // update the related entity
@@ -177,7 +212,7 @@ abstract class CoreManager
         
         return null;
     }
-    
+
     /**
      * soapCall function.
      * 

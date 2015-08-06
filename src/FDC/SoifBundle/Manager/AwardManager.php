@@ -2,19 +2,17 @@
 
 namespace FDC\SoifBundle\Manager;
 
-use \Exception;
-
-use FDC\CoreBundle\Entity\FilmMedia;
+use FDC\CoreBundle\Entity\FilmAward;
 
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
 
 /**
- * MediaManager class.
+ * AwardManager class.
  * 
  * @extends CoreManager
  * @author Antoine Mineau <a.mineau@ohwee.fr>
  */
-class MediaManager extends CoreManager
+class AwardManager extends CoreManager
 {
     /**
      * festivalManager
@@ -25,34 +23,35 @@ class MediaManager extends CoreManager
     private $festivalManager;
     
     /**
-     * mediaStreamManager
+     * prizeManager
      * 
      * @var mixed
      * @access private
      */
-    private $mediaStreamManager;
-
+    private $prizeManager;
+    
     /**
      * __construct function.
      * 
      * @access public
      * @return void
      */
-    public function __construct($festivalManager, $mediaStreamManager)
+    public function __construct($festivalManager, $prizeManager)
     {
         $this->festivalManager = $festivalManager;
-        $this->mediaStreamManager = $mediaStreamManager;
-        $this->repository = 'FDCCoreBundle:FilmMedia';
-        $this->wsMethod = 'GetElementMultimedia';
-        $this->wsParameterKey = 'idElementMultimedia';
-        $this->entityIdKey = 'IdSoif';
+        $this->prizeManager = $prizeManager;
+        $this->repository = 'FDCCoreBundle:FilmAward';
+        $this->wsMethod = 'GetAward';
+        $this->wsParameterKey = 'idAward';
+        $this->entityIdKey = 'Id';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
-            'setCopyright' => 'Copyright',
-            'setContentType' => 'ContentType',
-            'setTitleVf' => 'LibelleFr',
-            'setTitleVa' => 'LibelleEn',
-            'setType' => 'Type'
+            'setComment' => 'Commentaire',
+            'setExAequo' => 'ExAequo',
+            'setFilmMutual' => 'CommunFilm',
+            'setPersonMutual' => 'CommunPersonne',
+            'setPosition' => 'OrdreAffichage',
+            'setUnanimity' => 'Unanimite'
         );
         $this->mapperEntity = array(
             array(
@@ -62,10 +61,10 @@ class MediaManager extends CoreManager
                 'manager' => $this->festivalManager
             ),
             array(
-                'repository' => 'FDCCoreBundle:FilmMediaCategory',
-                'soapKey' => 'IdCategorie',
-                'setter' => 'setCategory',
-                'manager' => null
+                'repository' => 'FDCCoreBundle:FilmPrize',
+                'soapKey' => 'IdPrix',
+                'setter' => 'setPrize',
+                'manager' => $this->prizeManager
             )
         );
     }
@@ -84,30 +83,45 @@ class MediaManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
-        
+
         // verify result
-        if (!isset($result->GetElementMultimediaResult->Resultats->ElementMultimediaDto)) {
-            $msg = __METHOD__. ' - failed to parse results';
+        if (!isset($result->GetAwardResult->Resultats->RecompenseDto)) {
+            $msg = __METHOD__. ' failed to parse results';
             $exception = new MissingMandatoryParametersException($msg);
             $this->throwException($msg, $exception);
         }
-        $result = $result->GetElementMultimediaResult->Resultats->ElementMultimediaDto;
         
-        $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmMedia();
+        // get soifupdatedat
+        $soifUpdatedAt = null;
+        if (!isset($result->GetAwardResult->DateDerniereModification)) {
+            $this->logger->warning(__METHOD__. ' DateDerniereModification not found in WS Result');
+        } else {
+            $soifUpdatedAt = new \DateTime($result->GetAwardResult->DateDerniereModification);
+        }
+        
+        // get the result - create / get entity
+        $soifUpdatedAt = new \DateTime($result->GetAwardResult->DateDerniereModification);
+        $result = $result->GetAwardResult->Resultats->RecompenseDto;
+        $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmAward();
         $persist = ($entity->getId() === null) ? true : false;
 
         // set entity properties
         foreach ($this->mapper as $setter => $soapKey) {
             if (!isset($result->{$soapKey})) {
-                $this->logger->warning(__METHOD__. ' - Key '. $soapKey. ' not found in WS Result');
+                $this->logger->warning(__METHOD__. ' Key '. $soapKey. ' not found in WS Result');
                 continue;
             }
             
             if (!method_exists($entity, $setter)) {
-                $this->logger->warning(__METHOD__. ' -  Method '. $setter. ' not found in Entity '. get_class($entity));
+                $this->logger->warning(__METHOD__. ' Method '. $setter. ' not found in Entity '. get_class($entity));
                 continue;
             }
             $entity->{$setter}($result->{$soapKey});
+        }
+        
+        // set soif updated at
+        if ($soifUpdatedAt !== null)  {
+            $entity->setSoifUpdatedAt($soifUpdatedAt);
         }
         
         // set related entity
@@ -119,38 +133,10 @@ class MediaManager extends CoreManager
             }
         }
         
-        // set related media
-        $this->mediaStreamManager->updateEntity($entity, $result->{$this->entityIdKey}, $this->mimeToExtension($result->ContentType));
-        
-
         // update entity
         $this->update($entity, $persist);
         
         // end timer
         $this->end(__METHOD__);
-    }
-    
-    /**
-     * mimeToExtension function.
-     * 
-     * @access private
-     * @param mixed $mimeType
-     * @return void
-     */
-    private function mimeToExtension($mimeType) {
-        switch ($mimeType) {
-            case "application/pdf":
-                return "pdf";
-            case "image/gif":
-                return "gif";
-            case "image/png":
-                return "png";
-            case "image/jpeg":
-                return "jpg";
-            default:
-                $msg = __METHOD__. " - The mime type {$mimeType} is not supported.";
-                $exception = new Exception($msg);
-                $this->throwException($msg, $exception);
-        }
     }
 }

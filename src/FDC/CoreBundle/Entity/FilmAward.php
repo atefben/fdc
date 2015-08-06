@@ -9,7 +9,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmAward
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="prize_id", columns={"prize_id"}), @ORM\Index(name="festival_year", columns={"festival_year"}), @ORM\Index(name="importance", columns={"importance"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="prize_id", columns={"prize_id"}), @ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="position", columns={"position"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
@@ -28,37 +28,44 @@ class FilmAward
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", options={"unsigned": true})
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $festivalYear;
+    private $position;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $filmMutual;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $personMutual;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
-     */
-    private $importance;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $exAequo;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $unanimity;
 
     /**
-     * @var string
+     * @var text
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $comments;
+    private $comment;
 
     /**
      * @var \DateTime
@@ -73,6 +80,20 @@ class FilmAward
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $soifUpdatedAt;
+
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="awards")
+     */
+    private $festival;
 
     /**
      * @var FilmFilm
@@ -82,14 +103,19 @@ class FilmAward
     private $film;
 
     /**
+     * @var FilmPerson
+     *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="awards")
      */
     private $person;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmPrice", inversedBy="awards")
+     * @var FilmPrize
+     *
+     * @ORM\ManyToOne(targetEntity="FilmPrize", inversedBy="awards")
      */
     private $prize;
+    
 
     /**
      * Set id
@@ -115,49 +141,72 @@ class FilmAward
     }
 
     /**
-     * Set festivalYear
+     * Set position
      *
-     * @param integer $festivalYear
+     * @param integer $position
      * @return FilmAward
      */
-    public function setFestivalYear($festivalYear)
+    public function setPosition($position)
     {
-        $this->festivalYear = $festivalYear;
+        $this->position = $position;
 
         return $this;
     }
 
     /**
-     * Get festivalYear
+     * Get position
      *
      * @return integer 
      */
-    public function getFestivalYear()
+    public function getPosition()
     {
-        return $this->festivalYear;
+        return $this->position;
     }
 
     /**
-     * Set importance
+     * Set filmMutual
      *
-     * @param string $importance
+     * @param boolean $filmMutual
      * @return FilmAward
      */
-    public function setImportance($importance)
+    public function setFilmMutual($filmMutual)
     {
-        $this->importance = $importance;
+        $this->filmMutual = $filmMutual;
 
         return $this;
     }
 
     /**
-     * Get importance
+     * Get filmMutual
      *
-     * @return string 
+     * @return boolean 
      */
-    public function getImportance()
+    public function getFilmMutual()
     {
-        return $this->importance;
+        return $this->filmMutual;
+    }
+
+    /**
+     * Set personMutual
+     *
+     * @param boolean $personMutual
+     * @return FilmAward
+     */
+    public function setPersonMutual($personMutual)
+    {
+        $this->personMutual = $personMutual;
+
+        return $this;
+    }
+
+    /**
+     * Get personMutual
+     *
+     * @return boolean 
+     */
+    public function getPersonMutual()
+    {
+        return $this->personMutual;
     }
 
     /**
@@ -207,26 +256,26 @@ class FilmAward
     }
 
     /**
-     * Set comments
+     * Set comment
      *
-     * @param string $comments
+     * @param string $comment
      * @return FilmAward
      */
-    public function setComments($comments)
+    public function setComment($comment)
     {
-        $this->comments = $comments;
+        $this->comment = $comment;
 
         return $this;
     }
 
     /**
-     * Get comments
+     * Get comment
      *
      * @return string 
      */
-    public function getComments()
+    public function getComment()
     {
-        return $this->comments;
+        return $this->comment;
     }
 
     /**
@@ -273,6 +322,29 @@ class FilmAward
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFestival $festival
+     * @return FilmAward
+     */
+    public function setFestival(\FDC\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \FDC\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 
     /**
@@ -324,10 +396,10 @@ class FilmAward
     /**
      * Set prize
      *
-     * @param \FDC\CoreBundle\Entity\FilmPrice $prize
+     * @param \FDC\CoreBundle\Entity\FilmPrize $prize
      * @return FilmAward
      */
-    public function setPrize(\FDC\CoreBundle\Entity\FilmPrice $prize = null)
+    public function setPrize(\FDC\CoreBundle\Entity\FilmPrize $prize = null)
     {
         $this->prize = $prize;
 
@@ -337,16 +409,39 @@ class FilmAward
     /**
      * Get prize
      *
-     * @return \FDC\CoreBundle\Entity\FilmPrice 
+     * @return \FDC\CoreBundle\Entity\FilmPrize 
      */
     public function getPrize()
     {
         return $this->prize;
     }
+
+    /**
+     * Set soifUpdatedAt
+     *
+     * @param \DateTime $soifUpdatedAt
+     * @return FilmAward
+     */
+    public function setSoifUpdatedAt($soifUpdatedAt)
+    {
+        $this->soifUpdatedAt = $soifUpdatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get soifUpdatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getSoifUpdatedAt()
+    {
+        return $this->soifUpdatedAt;
+    }
     /**
      * @ORM\PrePersist
      */
-    public function prePersist()
+    public function prePersistTime()
     {
         // Add your code here
     }
@@ -354,7 +449,7 @@ class FilmAward
     /**
      * @ORM\PreUpdate
      */
-    public function preUpdate()
+    public function preUpdateTime()
     {
         // Add your code here
     }

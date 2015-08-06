@@ -7,11 +7,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
 /**
  * ImportMediaCommand class.
  * 
  * @extends ContainerAwareCommand
+ * @author Antoine Mineau <a.mineau@ohwee.fr>
  */
 class ImportMediaCommand extends ContainerAwareCommand
 {

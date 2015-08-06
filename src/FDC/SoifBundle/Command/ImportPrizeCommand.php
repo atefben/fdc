@@ -8,12 +8,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportFestivalCommand class.
+ * ImportPrizeCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author Antoine Mineau <a.mineau@ohwee.fr>
  */
-class ImportFestivalCommand extends ContainerAwareCommand
+class ImportPrizeCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -23,8 +23,8 @@ class ImportFestivalCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_festival')
-            ->setDescription('Imports the festival using the soif id')
+            ->setName('fdc:soif:import_prize')
+            ->setDescription('Imports the prize using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -41,7 +41,7 @@ class ImportFestivalCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.festival_manager');
+        $manager = $this->getContainer()->get('fdc.soif.prize_manager');
         $manager->updateEntity($id);
     }
 

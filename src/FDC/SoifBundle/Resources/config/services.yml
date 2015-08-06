@@ -1,10 +1,11 @@
 services:
+    #soif logger
     fdc.soif.logger_manager:
         class: FDC\SoifBundle\Manager\LoggerManager
         calls:
             - ['setSoifLog', ['%soif_log%']]
             - ['setSoifLogDirectory', ['%soif_log_directory%']]
-
+    #soif core
     fdc.soif.core_manager:
         abstract: true
         class: FDC\SoifBundle\Manager\CoreManager
@@ -13,6 +14,11 @@ services:
             - ['setLogger', ['@logger']]
             - ['setSoifLogger', ['@fdc.soif.logger_manager']]
             - ['setWebserviceUrl', ['%soif_url%']]
+    #soif children
+    fdc.soif.award_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\AwardManager
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.prize_manager']
 
     fdc.soif.festival_manager:
         parent: fdc.soif.core_manager
@@ -31,3 +37,8 @@ services:
         calls:
             - ['setSonataMediaManager', ['@sonata.media.manager.media']]
             - ['setSoifUploadDirectory', ['%soif_upload_directory%']]
+
+    fdc.soif.prize_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\PrizeManager
+        arguments: []

@@ -4,10 +4,6 @@ namespace FDC\SoifBundle\Manager;
 
 use \Exception;
 
-use FDC\CoreBundle\Entity\FilmFestival;
-
-use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
-
 /**
  * LoggerManager class.
  * 

@@ -2,20 +2,24 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 
 /**
- * FilmPrice
+ * FilmPrize
  *
- * @ORM\Table(indexes={@ORM\Index(name="importance", columns={"importance"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table(indexes={@ORM\Index(name="position", columns={"position"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmPrice
+class FilmPrize implements FilmPrizeInterface
 {
     use Time;
+    use Translatable;
 
     /**
      * @var string
@@ -24,27 +28,13 @@ class FilmPrice
      * @ORM\Id
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $titleVf;
     
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $titleVa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
-     */
-    private $importance;
+    private $type;
 
     /**
      * @var \DateTime
@@ -63,27 +53,47 @@ class FilmPrice
     /**
      * @var string
      *
-     * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $importance2;
+    private $position;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="prize")
      */
     private $awards;
+    
     /**
-     * Constructor
+     * @var ArrayCollection
      */
+    protected $translations;
+    
     public function __construct()
     {
-        $this->awards = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
+    /**
+     * getTranslationLocale function.
+     * 
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->translations as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+        
+        return null;
+    }
     /**
      * Set id
      *
      * @param integer $id
-     * @return FilmPrice
+     * @return FilmPrize
      */
     public function setId($id)
     {
@@ -103,79 +113,33 @@ class FilmPrice
     }
 
     /**
-     * Set titleVf
+     * Set type
      *
-     * @param string $titleVf
-     * @return FilmPrice
+     * @param integer $type
+     * @return FilmPrize
      */
-    public function setTitleVf($titleVf)
+    public function setType($type)
     {
-        $this->titleVf = $titleVf;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get titleVf
+     * Get type
      *
-     * @return string 
+     * @return integer 
      */
-    public function getTitleVf()
+    public function getType()
     {
-        return $this->titleVf;
-    }
-
-    /**
-     * Set titleVa
-     *
-     * @param string $titleVa
-     * @return FilmPrice
-     */
-    public function setTitleVa($titleVa)
-    {
-        $this->titleVa = $titleVa;
-
-        return $this;
-    }
-
-    /**
-     * Get titleVa
-     *
-     * @return string 
-     */
-    public function getTitleVa()
-    {
-        return $this->titleVa;
-    }
-
-    /**
-     * Set importance
-     *
-     * @param string $importance
-     * @return FilmPrice
-     */
-    public function setImportance($importance)
-    {
-        $this->importance = $importance;
-
-        return $this;
-    }
-
-    /**
-     * Get importance
-     *
-     * @return string 
-     */
-    public function getImportance()
-    {
-        return $this->importance;
+        return $this->type;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return FilmPrice
+     * @return FilmPrize
      */
     public function setCreatedAt($createdAt)
     {
@@ -198,7 +162,7 @@ class FilmPrice
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return FilmPrice
+     * @return FilmPrize
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -218,33 +182,33 @@ class FilmPrice
     }
 
     /**
-     * Set importance2
+     * Set position
      *
-     * @param string $importance2
-     * @return FilmPrice
+     * @param integer $position
+     * @return FilmPrize
      */
-    public function setImportance2($importance2)
+    public function setPosition($position)
     {
-        $this->importance2 = $importance2;
+        $this->position = $position;
 
         return $this;
     }
 
     /**
-     * Get importance2
+     * Get position
      *
-     * @return string 
+     * @return integer 
      */
-    public function getImportance2()
+    public function getPosition()
     {
-        return $this->importance2;
+        return $this->position;
     }
 
     /**
      * Add awards
      *
      * @param \FDC\CoreBundle\Entity\FilmAward $awards
-     * @return FilmPrice
+     * @return FilmPrize
      */
     public function addAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
@@ -271,20 +235,5 @@ class FilmPrice
     public function getAwards()
     {
         return $this->awards;
-    }
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        // Add your code here
     }
 }

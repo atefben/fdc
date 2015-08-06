@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
  * MediaStreamManager class.
  * 
  * @extends CoreManager
+ * @author Antoine Mineau <a.mineau@ohwee.fr>
  */
 class MediaStreamManager extends CoreManager
 {
@@ -120,6 +121,26 @@ class MediaStreamManager extends CoreManager
         
         if ($result === false) {
             $msg = __METHOD__. " - Impossible to create image from base 64 of {$this->wsParameterKey} : {$id}";
+            $exception = new Exception($msg);
+            $this->throwException($msg, $exception);
+        }
+        
+        if (in_array($extension, $extensionsImage)) {
+            switch ($extension) {
+                case 'jpg':
+                    $file = imagejpeg($result, $filename);
+                    break;
+                case 'gif':
+                    $file = imagegif($result, $filename);
+                    break;
+                case 'png':
+                    $file = imagepng($result, $filename);
+                    break;
+            }
+        }
+        
+        if ($file === false) {
+            $msg = __METHOD__. " - Impossible to create image from string {$this->wsParameterKey} : {$id}";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
         }
