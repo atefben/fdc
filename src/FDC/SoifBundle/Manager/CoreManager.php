@@ -251,7 +251,7 @@ abstract class CoreManager
             $content .= 'Parameters: '. implode(', ', $parameters). "\n";
             $content .= "\n\n";
             $content .= $this->client->__getLastResponse();
-            $this->soifLogger->write(date('Y_m_d__H_i_s'). '.log.xml', $content);
+            $this->soifLogger->write(date('Y_m_d__H_i_s'). '__'. $method. '.log.xml', $content);
             
             // check the object properties
             $resultObject = ($this->wsResultObjectKey === null) ? $result->{$this->wsResultKey} : $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
