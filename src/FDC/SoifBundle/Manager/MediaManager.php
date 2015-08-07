@@ -44,6 +44,8 @@ class MediaManager extends CoreManager
         $this->mediaStreamManager = $mediaStreamManager;
         $this->repository = 'FDCCoreBundle:FilmMedia';
         $this->wsMethod = 'GetElementMultimedia';
+        $this->wsResultKey = 'GetElementMultimediaResult';
+        $this->wsResultObjectKey = 'ElementMultimediaDto';
         $this->wsParameterKey = 'idElementMultimedia';
         $this->entityIdKey = 'IdSoif';
         $this->mapper = array(
@@ -84,45 +86,24 @@ class MediaManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
+        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
-        // verify result
-        if (!isset($result->GetElementMultimediaResult->Resultats->ElementMultimediaDto)) {
-            $msg = __METHOD__. ' - failed to parse results';
-            $exception = new MissingMandatoryParametersException($msg);
-            $this->throwException($msg, $exception);
-        }
-        $result = $result->GetElementMultimediaResult->Resultats->ElementMultimediaDto;
-        
-        $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmMedia();
+        // create / get entity
+        $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmMedia();
         $persist = ($entity->getId() === null) ? true : false;
 
+        // set soif last update time
+        $this->setSoifUpdatedAt($result, $entity);
+
         // set entity properties
-        foreach ($this->mapper as $setter => $soapKey) {
-            if (!isset($result->{$soapKey})) {
-                $this->logger->warning(__METHOD__. ' - Key '. $soapKey. ' not found in WS Result');
-                continue;
-            }
-            
-            if (!method_exists($entity, $setter)) {
-                $this->logger->warning(__METHOD__. ' -  Method '. $setter. ' not found in Entity '. get_class($entity));
-                continue;
-            }
-            $entity->{$setter}($result->{$soapKey});
-        }
+        $this->setEntityProperties($resultObject, $entity);
         
         // set related entity
-        foreach ($this->mapperEntity as $property) {
-            $property['manager'] = ($property['manager'] !== null) ? $property['manager'] : null;
-            $entityRelated = $this->updateRelatedEntity($property['repository'], $result, $property['soapKey'], $property['manager']);
-            if ($entityRelated !== null) {
-                $entity->{$property['setter']}($entityRelated);
-            }
-        }
+        $this->setEntityRelated($resultObject, $entity);
         
         // set related media
-        $this->mediaStreamManager->updateEntity($entity, $result->{$this->entityIdKey}, $this->mimeToExtension($result->ContentType));
+        $this->mediaStreamManager->updateEntity($entity, $resultObject->{$this->entityIdKey}, $this->mimeToExtension($resultObject->ContentType));
         
-
         // update entity
         $this->update($entity, $persist);
         

@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmPrize
@@ -20,6 +21,7 @@ class FilmPrize implements FilmPrizeInterface
 {
     use Time;
     use Translatable;
+    use Soif;
 
     /**
      * @var string
@@ -35,13 +37,6 @@ class FilmPrize implements FilmPrizeInterface
      * @ORM\Column(type="integer", nullable=true)
      */
     private $type;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $soifUpdatedAt;
     
     /**
      * @var string

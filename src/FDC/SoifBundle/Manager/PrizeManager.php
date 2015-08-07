@@ -7,8 +7,6 @@ use \Exception;
 use FDC\CoreBundle\Entity\FilmPrize;
 use FDC\CoreBundle\Entity\FilmPrizeTranslation;
 
-use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
-
 /**
  * PrizeManager class.
  * 
@@ -25,10 +23,12 @@ class PrizeManager extends CoreManager
      */
     public function __construct()
     {
-        $this->repository = 'FDCCoreBundle:FilmPrize';
-        $this->wsMethod = 'GetPrize';
-        $this->wsParameterKey = 'idPrix';
         $this->entityIdKey = 'Id';
+        $this->repository = 'FDCCoreBundle:FilmPrize';
+        $this->wsParameterKey = 'idPrix';
+        $this->wsMethod = 'GetPrize';
+        $this->wsResultKey = 'GetPrizeResult';
+        $this->wsResultObjectKey = 'PrixDto';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
             'setPosition' => 'OrdreGeneral',
@@ -62,55 +62,28 @@ class PrizeManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
-        // verify result
-        if (!isset($result->GetPrizeResult->Resultats->PrixDto)) {
-            $msg = __METHOD__. ' failed to parse results';
-            $exception = new MissingMandatoryParametersException($msg);
-            $this->throwException($msg, $exception);
-        }
+        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
-        // get soifupdatedat
-        $soifUpdatedAt = null;
-        if (!isset($result->GetPrizeResult->DateDerniereModification)) {
-            $this->logger->warning(__METHOD__. 'DateDerniereModification not found in WS Result');
-        } else {
-            $soifUpdatedAt = new \DateTime($result->GetPrizeResult->DateDerniereModification);
-        }
-        
-        // get the result - create / get entity
-        $result = $result->GetPrizeResult->Resultats->PrixDto;
-        $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmPrize();
+        // create / get entity
+        $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmPrize();
         $persist = ($entity->getId() === null) ? true : false;
-
-        // set entity properties
-        foreach ($this->mapper as $setter => $soapKey) {
-            if (!isset($result->{$soapKey})) {
-                $this->logger->warning(__METHOD__. 'Key '. $soapKey. ' not found in WS Result');
-                continue;
-            }
-            
-            if (!method_exists($entity, $setter)) {
-                $this->logger->warning(__METHOD__. 'Method '. $setter. ' not found in Entity '. get_class($entity));
-                continue;
-            }
-            $entity->{$setter}($result->{$soapKey});
-        }
         
-        // set soif updated at
-        if ($soifUpdatedAt !== null) {
-            $entity->setSoifUpdatedAt($soifUpdatedAt);
-        }
+        // set soif last update time
+        $this->setSoifUpdatedAt($result, $entity);
+        
+        // set entity properties
+        $this->setEntityProperties($resultObject, $entity);
         
         // set translations
         $localesMapper = $this->getLocalesMapper();
         foreach ($this->mapperTranslations as $key => $mapper) {
             $entityTranslations = $entity->getTranslations();
-            if (!isset($result->{$key}->{$mapper['result']})) {
+            if (!isset($resultObject->{$key}->{$mapper['result']})) {
                 $msg = __METHOD__. ' failed to parse results';
-                $exception = new MissingMandatoryParametersException($msg);
+                $exception = new Exception($msg);
                 $this->throwException($msg, $exception);
             }
-            $translations = $result->{$key}->{$mapper['result']};
+            $translations = $resultObject->{$key}->{$mapper['result']};
         
             foreach ($translations as $translation) {
                 if (!isset($localesMapper[$translation->CodeLangue])) {

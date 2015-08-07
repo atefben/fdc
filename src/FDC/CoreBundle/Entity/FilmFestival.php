@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmFestivalId
@@ -17,6 +18,7 @@ use FDC\CoreBundle\Util\Time;
 class FilmFestival
 {
     use Time;
+    use Soif;
 
     /**
      * @var integer

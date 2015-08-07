@@ -5,6 +5,7 @@ namespace FDC\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmMedia
@@ -16,6 +17,7 @@ use FDC\CoreBundle\Util\Time;
 class FilmMedia
 {
     use Time;
+    use Soif;
 
     /**
      * @var string

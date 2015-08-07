@@ -2,6 +2,7 @@
 
 namespace FDC\SoifBundle\Manager;
 
+use \Exception;
 use \SoapClient;
 use \SoapFault;
 
@@ -55,7 +56,24 @@ abstract class CoreManager
      * @var mixed
      * @access private
      */
-    private $wsUrl;
+    protected $wsUrl;
+
+    /**
+     * wsResultKey
+     * 
+     * @var mixed
+     * @access protected
+     */
+    protected $wsResultKey;
+    
+    
+    /**
+     * wsResultObjectKey
+     * 
+     * @var mixed
+     * @access protected
+     */
+    protected $wsResultObjectKey;
 
     /**
      * wsMethod
@@ -63,7 +81,7 @@ abstract class CoreManager
      * @var mixed
      * @access private
      */
-    private $wsMethod;
+    protected $wsMethod;
     
     /**
      * entityIdKey
@@ -234,11 +252,80 @@ abstract class CoreManager
             $content .= "\n\n";
             $content .= $this->client->__getLastResponse();
             $this->soifLogger->write(date('Y_m_d__H_i_s'). '.log.xml', $content);
+            
+            // check the object properties
+            $resultObject = ($this->wsResultObjectKey === null) ? $result->{$this->wsResultKey} : $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+            if (!isset($resultObject)) {
+                $msg = __METHOD__. ' failed to parse results';
+                $exception = new \Exception($msg);
+                $this->throwException($msg, $exception);
+            }
         } catch (SoapFault $e) { 
            $this->logger->error($e->getMessage());
         }
         
         return $result;
+    }
+    
+    /**
+     * setSoifUpdatedAt function.
+     * 
+     * @access public
+     * @param mixed $result
+     * @param mixed $entity
+     * @return void
+     */
+    public function setSoifUpdatedAt($result, $entity)
+    {
+        if (!isset($result->{$this->wsResultKey}->DateDerniereModification)) {
+            $this->logger->warning(__METHOD__. ' DateDerniereModification not found in WS Result');
+        } else {
+            $soifUpdatedAt = new \DateTime($result->{$this->wsResultKey}->DateDerniereModification);
+            $entity->setSoifUpdatedAt($soifUpdatedAt);
+        }
+    }
+    
+    /**
+     * setEntityProperties function.
+     * 
+     * @access public
+     * @param mixed $result
+     * @param mixed $entity
+     * @return void
+     */
+    public function setEntityProperties($result, $entity)
+    {
+        foreach ($this->mapper as $setter => $soapKey) {
+            if (!isset($result->{$soapKey})) {
+                $this->logger->warning(__METHOD__. ' Key '. $soapKey. ' not found in WS Result');
+                continue;
+            }
+            
+            if (!method_exists($entity, $setter)) {
+                $this->logger->warning(__METHOD__. ' Method '. $setter. ' not found in Entity '. get_class($entity));
+                continue;
+            }
+            $entity->{$setter}($result->{$soapKey});
+        }
+    }
+
+    /**
+     * setEntityRelated function.
+     * 
+     * @access public
+     * @param mixed $result
+     * @param mixed $entity
+     * @return void
+     */
+    public function setEntityRelated($result, $entity)
+    {
+        foreach ($this->mapperEntity as $property) {
+            $property['manager'] = ($property['manager'] !== null) ? $property['manager'] : null;
+            $entityRelated = $this->updateRelatedEntity($property['repository'], $result, $property['soapKey'], $property['manager']);
+            if ($entityRelated !== null) {
+                $entity->{$property['setter']}($entityRelated);
+            }
+        }
     }
 
     /**

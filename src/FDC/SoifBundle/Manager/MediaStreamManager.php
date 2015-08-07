@@ -41,6 +41,7 @@ class MediaStreamManager extends CoreManager
     public function __construct()
     {
         $this->wsParameterKey = 'idElementMultimedia';
+        $this->wsResultKey = 'GetStreamElementMultimediaResult';
     }
     
     /**
@@ -67,13 +68,6 @@ class MediaStreamManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall('GetStreamElementMultimedia', array($this->wsParameterKey => $id));
-        
-        // verify result
-        if (!isset($result->GetStreamElementMultimediaResult)) {
-            $msg = __METHOD__. ' - failed to parse results';
-            $exception = new MissingMandatoryParametersException($msg);
-            $this->throwException($msg, $exception);
-        }
         $base64 = $result->GetStreamElementMultimediaResult;
 
         // create file for sonata media
@@ -106,7 +100,7 @@ class MediaStreamManager extends CoreManager
      */
     private function createFileFromString($base64, $filename, $extension)
     {
-        $extensionsImage = array('jpg', 'gif', 'pdf', 'png');
+        $extensionsImage = array('jpg', 'gif', 'png');
         
         if ($extension == 'pdf')
             $result = file_put_contents($filename, $base64);
@@ -124,19 +118,24 @@ class MediaStreamManager extends CoreManager
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
         }
-        
-        if (in_array($extension, $extensionsImage)) {
-            switch ($extension) {
-                case 'jpg':
-                    $file = imagejpeg($result, $filename);
-                    break;
-                case 'gif':
-                    $file = imagegif($result, $filename);
-                    break;
-                case 'png':
-                    $file = imagepng($result, $filename);
-                    break;
-            }
+
+        switch ($extension) {
+            case 'jpg':
+                $file = imagejpeg($result, $filename);
+                break;
+            case 'gif':
+                $file = imagegif($result, $filename);
+                break;
+            case 'png':
+                $file = imagepng($result, $filename);
+                break;
+            case 'pdf':
+                return;
+            default:
+                $msg = __METHOD__. " - The extension handler {$extension} is not found.";
+                $exception = new Exception($msg);
+                $this->throwException($msg, $exception);
+                break;
         }
         
         if ($file === false) {

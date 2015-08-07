@@ -24,6 +24,9 @@ class FestivalManager extends CoreManager
     {
         $this->repository = 'FDCCoreBundle:FilmFestival';
         $this->wsParameterKey = 'idFestival';
+        $this->wsMethod = 'GetFestival';
+        $this->wsResultKey = 'GetFestivalResult';
+        $this->wsResultObjectKey = 'FestivalDto';
         $this->entityIdKey = 'Id';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
@@ -44,31 +47,18 @@ class FestivalManager extends CoreManager
         $this->start(__METHOD__);
 
         // call the ws
-        $result = $this->soapCall('GetFestival', array($this->wsParameterKey => $id));
-        // verify result
-        if (!isset($result->GetFestivalResult->Resultats->FestivalDto)) {
-            $msg = __METHOD__. ' failed to parse results';
-            $exception = new MissingMandatoryParametersException($msg);
-            $this->throwException($msg, $exception);
-        }
-        // get the result - create / get entity
-        $result = $result->GetFestivalResult->Resultats->FestivalDto;
-        $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmFestival();
+        $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
+        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+
+        // create / get entity
+        $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFestival();
         $persist = ($entity->getId() === null) ? true : false;
 
+        // set soif last update time
+       $this->setSoifUpdatedAt($result, $entity);
+        
         // set entity properties
-        foreach ($this->mapper as $setter => $soapKey) {
-            if (!isset($result->{$soapKey})) {
-                $this->logger->warning(__METHOD__. 'Key '. $soapKey. ' not found in WS Result');
-                continue;
-            }
-            
-            if (!method_exists($entity, $setter)) {
-                $this->logger->warning(__METHOD__. 'Method '. $setter. ' not found in Entity '. get_class($entity));
-                continue;
-            }
-            $entity->{$setter}($result->{$soapKey});
-        }
+        $this->setEntityProperties($resultObject, $entity);
         
         // update entity
         $this->update($entity, $persist);

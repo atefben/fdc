@@ -4,8 +4,6 @@ namespace FDC\SoifBundle\Manager;
 
 use FDC\CoreBundle\Entity\FilmAward;
 
-use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
-
 /**
  * AwardManager class.
  * 
@@ -42,6 +40,8 @@ class AwardManager extends CoreManager
         $this->prizeManager = $prizeManager;
         $this->repository = 'FDCCoreBundle:FilmAward';
         $this->wsMethod = 'GetAward';
+        $this->wsResultKey = 'GetAwardResult';
+        $this->wsResultObjectKey = 'RecompenseDto';
         $this->wsParameterKey = 'idAward';
         $this->entityIdKey = 'Id';
         $this->mapper = array(
@@ -83,55 +83,20 @@ class AwardManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
-
-        // verify result
-        if (!isset($result->GetAwardResult->Resultats->RecompenseDto)) {
-            $msg = __METHOD__. ' failed to parse results';
-            $exception = new MissingMandatoryParametersException($msg);
-            $this->throwException($msg, $exception);
-        }
+        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
-        // get soifupdatedat
-        $soifUpdatedAt = null;
-        if (!isset($result->GetAwardResult->DateDerniereModification)) {
-            $this->logger->warning(__METHOD__. ' DateDerniereModification not found in WS Result');
-        } else {
-            $soifUpdatedAt = new \DateTime($result->GetAwardResult->DateDerniereModification);
-        }
-        
-        // get the result - create / get entity
-        $soifUpdatedAt = new \DateTime($result->GetAwardResult->DateDerniereModification);
-        $result = $result->GetAwardResult->Resultats->RecompenseDto;
-        $entity = ($this->findOneById(array('id' => $result->{$this->entityIdKey}))) ?: new FilmAward();
+        // create / get entity
+        $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmAward();
         $persist = ($entity->getId() === null) ? true : false;
+        
+        // set soif last update time
+        $this->setSoifUpdatedAt($result, $entity);
 
         // set entity properties
-        foreach ($this->mapper as $setter => $soapKey) {
-            if (!isset($result->{$soapKey})) {
-                $this->logger->warning(__METHOD__. ' Key '. $soapKey. ' not found in WS Result');
-                continue;
-            }
-            
-            if (!method_exists($entity, $setter)) {
-                $this->logger->warning(__METHOD__. ' Method '. $setter. ' not found in Entity '. get_class($entity));
-                continue;
-            }
-            $entity->{$setter}($result->{$soapKey});
-        }
-        
-        // set soif updated at
-        if ($soifUpdatedAt !== null)  {
-            $entity->setSoifUpdatedAt($soifUpdatedAt);
-        }
+        $this->setEntityProperties($resultObject, $entity);
         
         // set related entity
-        foreach ($this->mapperEntity as $property) {
-            $property['manager'] = ($property['manager'] !== null) ? $property['manager'] : null;
-            $entityRelated = $this->updateRelatedEntity($property['repository'], $result, $property['soapKey'], $property['manager']);
-            if ($entityRelated !== null) {
-                $entity->{$property['setter']}($entityRelated);
-            }
-        }
+        $this->setEntityRelated($resultObject, $entity);
         
         // update entity
         $this->update($entity, $persist);
