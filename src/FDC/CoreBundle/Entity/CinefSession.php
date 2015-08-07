@@ -4,6 +4,8 @@ namespace FDC\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CoreBundle\Util\Time;
+
 /**
  * CinefSession
  *
@@ -13,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CinefSession
 {
+    use Time;
+
     /**
      * @var string
      *
@@ -20,13 +24,6 @@ class CinefSession
      * @ORM\Id
      */
     private $id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
 
     /**
      * @var \DateTime
@@ -62,23 +59,6 @@ class CinefSession
     private $cinefPersons;
 
     /**
-     *  @ORM\PrePersist
-     */
-    public function prePersist()
-    {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
-    }
-
-    /**
-     *  @ORM\PreUpdate
-     */
-    public function SetModifiedAt()
-    {
-        $this->updatedAt = new \DateTime();
-    }
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -106,29 +86,6 @@ class CinefSession
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return CinefSession
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**

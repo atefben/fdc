@@ -98,13 +98,6 @@ class PrizeManager extends CoreManager
         
         // set soif updated at
         if ($soifUpdatedAt !== null) {
-            var_dump(get_class($entity));
-            var_dump(get_class_methods($entity));
-            if (method_exists($entity, 'setSoifUpdatedAt')) {
-                var_dump('coucou');
-            } else {
-                var_dump('ggg');
-            }
             $entity->setSoifUpdatedAt($soifUpdatedAt);
         }
         

@@ -35,21 +35,14 @@ class FilmPrize implements FilmPrizeInterface
      * @ORM\Column(type="integer", nullable=true)
      */
     private $type;
-
+    
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
      */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
-
+    private $soifUpdatedAt;
+    
     /**
      * @var string
      *
@@ -133,52 +126,6 @@ class FilmPrize implements FilmPrizeInterface
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return FilmPrize
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return FilmPrize
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**

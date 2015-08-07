@@ -4,6 +4,8 @@ namespace FDC\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CoreBundle\Util\Time;
+
 /**
  * Pays
  *
@@ -13,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Country
 {
+    use Time;
+
     /**
      * @var string
      *
@@ -55,20 +59,6 @@ class Country
      * @ORM\Column(type="string", length=35, nullable=true)
      */
     private $languageEN;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAddress", mappedBy="country")
@@ -248,52 +238,6 @@ class Country
     public function getLanguageEN()
     {
         return $this->languageEN;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return Country
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return Country
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**

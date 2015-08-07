@@ -125,19 +125,4 @@ class FilmMinorProduction
     {
         return $this->film;
     }
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        // Add your code here
-    }
 }

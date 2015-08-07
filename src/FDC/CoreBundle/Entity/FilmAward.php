@@ -5,6 +5,7 @@ namespace FDC\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmAward
@@ -16,6 +17,7 @@ use FDC\CoreBundle\Util\Time;
 class FilmAward
 {
     use Time;
+    use Soif;
     
     /**
      * @var integer
@@ -66,27 +68,6 @@ class FilmAward
      * @ORM\Column(type="text", nullable=true)
      */
     private $comment;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $soifUpdatedAt;
 
     /**
      * @var FilmFestival
@@ -279,52 +260,6 @@ class FilmAward
     }
 
     /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return FilmAward
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return FilmAward
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
      * Set festival
      *
      * @param \FDC\CoreBundle\Entity\FilmFestival $festival
@@ -437,20 +372,5 @@ class FilmAward
     public function getSoifUpdatedAt()
     {
         return $this->soifUpdatedAt;
-    }
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersistTime()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdateTime()
-    {
-        // Add your code here
     }
 }

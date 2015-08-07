@@ -29,7 +29,7 @@ We use [MySQL Workbench][3] to create / generate the diagram png, the source fil
 
 ##Entities
 
-When using the global command or running it on translated entities (such as Article or Theme...)
+When using the following command or running it on entity
 
 ```
 php app/console doctrine:generate:entities
@@ -41,5 +41,6 @@ You should run right after to check the schema validation
 php app/console doctrine:schema:validate
 ```
 
-The translated entities might have duplicate properties (id, local, getter and setters) because we are using traits.
-In this case you have to remove manually each duplication.
+And also you should check if the entity uses traits you have to remove manually the duplicate properties / setters / getters
+
+This issue is opened on the doctrine bug tracker : http://www.doctrine-project.org/jira/browse/DDC-1825

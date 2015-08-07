@@ -2,8 +2,10 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use \Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
+
+use FDC\CoreBundle\Util\Time;
 
 /**
  * FilmAtelierGeneric
@@ -14,6 +16,8 @@ use Symfony\Component\Validator\Constraints\DateTime;
  */
 class FilmAtelierGeneric
 {
+    use Time;
+
     /**
      * @var string
      *
@@ -59,20 +63,6 @@ class FilmAtelierGeneric
     private $order;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
-
-    /**
      * @var FilmFunction
      *
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="filmAtelierGenerics")
@@ -104,7 +94,7 @@ class FilmAtelierGeneric
      */
     public function __construct()
     {
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medias = new ArrayCollection();
     }
 
     /**
@@ -230,52 +220,6 @@ class FilmAtelierGeneric
     public function getOrder()
     {
         return $this->order;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return FilmAtelierGeneric
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return FilmAtelierGeneric
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**

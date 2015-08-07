@@ -2,6 +2,7 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -31,11 +32,25 @@ class FilmFestival
      * @ORM\Column(type="integer")
      */
     private $year;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="festival")
+     */
+    private $awards;
+
     /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="festival")
      */
     private $medias;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->awards = new ArrayCollection();
+        $this->medias = new ArrayCollection();
+    }
 
     /**
      * Set id
@@ -82,19 +97,70 @@ class FilmFestival
     {
         return $this->year;
     }
+
     /**
-     * @ORM\PrePersist
+     * Add medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     * @return FilmFestival
      */
-    public function prePersist()
+    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
-        // Add your code here
+        $this->medias[] = $medias;
+
+        return $this;
     }
 
     /**
-     * @ORM\PreUpdate
+     * Remove medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
      */
-    public function preUpdate()
+    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
-        // Add your code here
+        $this->medias->removeElement($medias);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * Add awards
+     *
+     * @param \FDC\CoreBundle\Entity\FilmAward $awards
+     * @return FilmFestival
+     */
+    public function addAward(\FDC\CoreBundle\Entity\FilmAward $awards)
+    {
+        $this->awards[] = $awards;
+
+        return $this;
+    }
+
+    /**
+     * Remove awards
+     *
+     * @param \FDC\CoreBundle\Entity\FilmAward $awards
+     */
+    public function removeAward(\FDC\CoreBundle\Entity\FilmAward $awards)
+    {
+        $this->awards->removeElement($awards);
+    }
+
+    /**
+     * Get awards
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAwards()
+    {
+        return $this->awards;
     }
 }
