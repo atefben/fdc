@@ -2,6 +2,9 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -9,13 +12,14 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmJuryType
  *
- * @ORM\Table(indexes={@ORM\Index(name="order", columns={"order"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
 class FilmJuryType
 {
     use Time;
+    use Translatable;
 
     /**
      * @var integer
@@ -28,36 +32,22 @@ class FilmJuryType
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $juryTypeVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $juryTypeVa;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $order;
-
-    /**
-     * @var string
-     *
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="type")
      */
     private $juries;
+    
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->juries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
+        $this->juries = new ArrayCollection();
     }
 
     /**

@@ -25,6 +25,16 @@ services:
         class: FDC\SoifBundle\Manager\FestivalManager
         arguments: []
 
+    fdc.soif.jury_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\JuryManager
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.person_manager', '@fdc.soif.jury_function_manager']
+
+    fdc.soif.jury_function_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\JuryFunctionManager
+        arguments: []
+
     fdc.soif.media_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\MediaManager
@@ -37,6 +47,11 @@ services:
         calls:
             - ['setSonataMediaManager', ['@sonata.media.manager.media']]
             - ['setSoifUploadDirectory', ['%soif_upload_directory%']]
+
+    fdc.soif.person_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\PersonManager
+        arguments: []
 
     fdc.soif.prize_manager:
         parent: fdc.soif.core_manager

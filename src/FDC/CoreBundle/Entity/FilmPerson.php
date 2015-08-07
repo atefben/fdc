@@ -2,20 +2,27 @@
 
 namespace FDC\CoreBundle\Entity;
 
+
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmPerson
  *
- * @ORM\Table(indexes={@ORM\Index(name="lastname_firstname", columns={"lastname", "firstname"}), @ORM\Index(name="FILM_PERSONNE_FI_1", columns={"nationality"}), @ORM\Index(name="FILM_PERSONNE_FI_2", columns={"nationality2"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="INTERNET", columns={"internet"}), @ORM\Index(name="pm_profession_va", columns={"job_va"}), @ORM\Index(name="pm_profession_vf", columns={"job_vf"})})
+ * @ORM\Table(indexes={@ORM\Index(name="lastname_firstname", columns={"lastname", "firstname"}), @ORM\Index(name="nationality", columns={"nationality"}), @ORM\Index(name="nationality2", columns={"nationality2"}) })
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
 class FilmPerson
 {
     use Time;
+    use Translatable;
+    use Soif;
 
     /**
      * @var string
@@ -24,13 +31,6 @@ class FilmPerson
      * @ORM\Id
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $civility;
 
     /**
      * @var string
@@ -45,6 +45,13 @@ class FilmPerson
      * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $firstname;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $asianName;
 
     /**
      * @var string
@@ -59,69 +66,6 @@ class FilmPerson
      * @ORM\Column(type="string", length=3, nullable=true)
      */
     private $nationality2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=80, nullable=true)
-     */
-    private $jobVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=80, nullable=true)
-     */
-    private $jobVa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $qualification;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=80, nullable=true)
-     */
-    private $birthLocation;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $bioFilmVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $bioFilmVa;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $birthDate;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $inversionName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=false)
-     */
-    private $internet;
 
     /**
      * @var string
@@ -168,17 +112,42 @@ class FilmPerson
      * @ORM\OneToMany(targetEntity="CinefPerson", mappedBy="person")
      */
     private $cinefPersons;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->filmAtelierGenerics = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->filmGenerics = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->juries = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->awards = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->cinefPersons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->filmAtelierGenerics = new ArrayCollection();
+        $this->filmGenerics = new ArrayCollection();
+        $this->juries = new ArrayCollection();
+        $this->awards = new ArrayCollection();
+        $this->medias = new ArrayCollection();
+        $this->cinefPersons = new ArrayCollection();
+        $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * findTranslationByLocale function.
+     * 
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->translations as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+        
+        return null;
     }
 
     /**
@@ -202,29 +171,6 @@ class FilmPerson
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set civility
-     *
-     * @param string $civility
-     * @return FilmPerson
-     */
-    public function setCivility($civility)
-    {
-        $this->civility = $civility;
-
-        return $this;
-    }
-
-    /**
-     * Get civility
-     *
-     * @return string 
-     */
-    public function getCivility()
-    {
-        return $this->civility;
     }
 
     /**
@@ -317,213 +263,6 @@ class FilmPerson
     public function getNationality2()
     {
         return $this->nationality2;
-    }
-
-    /**
-     * Set jobVf
-     *
-     * @param string $jobVf
-     * @return FilmPerson
-     */
-    public function setJobVf($jobVf)
-    {
-        $this->jobVf = $jobVf;
-
-        return $this;
-    }
-
-    /**
-     * Get jobVf
-     *
-     * @return string 
-     */
-    public function getJobVf()
-    {
-        return $this->jobVf;
-    }
-
-    /**
-     * Set jobVa
-     *
-     * @param string $jobVa
-     * @return FilmPerson
-     */
-    public function setJobVa($jobVa)
-    {
-        $this->jobVa = $jobVa;
-
-        return $this;
-    }
-
-    /**
-     * Get jobVa
-     *
-     * @return string 
-     */
-    public function getJobVa()
-    {
-        return $this->jobVa;
-    }
-
-    /**
-     * Set qualification
-     *
-     * @param string $qualification
-     * @return FilmPerson
-     */
-    public function setQualification($qualification)
-    {
-        $this->qualification = $qualification;
-
-        return $this;
-    }
-
-    /**
-     * Get qualification
-     *
-     * @return string 
-     */
-    public function getQualification()
-    {
-        return $this->qualification;
-    }
-
-    /**
-     * Set birthLocation
-     *
-     * @param string $birthLocation
-     * @return FilmPerson
-     */
-    public function setBirthLocation($birthLocation)
-    {
-        $this->birthLocation = $birthLocation;
-
-        return $this;
-    }
-
-    /**
-     * Get birthLocation
-     *
-     * @return string 
-     */
-    public function getBirthLocation()
-    {
-        return $this->birthLocation;
-    }
-
-    /**
-     * Set bioFilmVf
-     *
-     * @param string $bioFilmVf
-     * @return FilmPerson
-     */
-    public function setBioFilmVf($bioFilmVf)
-    {
-        $this->bioFilmVf = $bioFilmVf;
-
-        return $this;
-    }
-
-    /**
-     * Get bioFilmVf
-     *
-     * @return string 
-     */
-    public function getBioFilmVf()
-    {
-        return $this->bioFilmVf;
-    }
-
-    /**
-     * Set bioFilmVa
-     *
-     * @param string $bioFilmVa
-     * @return FilmPerson
-     */
-    public function setBioFilmVa($bioFilmVa)
-    {
-        $this->bioFilmVa = $bioFilmVa;
-
-        return $this;
-    }
-
-    /**
-     * Get bioFilmVa
-     *
-     * @return string 
-     */
-    public function getBioFilmVa()
-    {
-        return $this->bioFilmVa;
-    }
-
-    /**
-     * Set birthDate
-     *
-     * @param \DateTime $birthDate
-     * @return FilmPerson
-     */
-    public function setBirthDate($birthDate)
-    {
-        $this->birthDate = $birthDate;
-
-        return $this;
-    }
-
-    /**
-     * Get birthDate
-     *
-     * @return \DateTime 
-     */
-    public function getBirthDate()
-    {
-        return $this->birthDate;
-    }
-
-    /**
-     * Set inversionName
-     *
-     * @param string $inversionName
-     * @return FilmPerson
-     */
-    public function setInversionName($inversionName)
-    {
-        $this->inversionName = $inversionName;
-
-        return $this;
-    }
-
-    /**
-     * Get inversionName
-     *
-     * @return string 
-     */
-    public function getInversionName()
-    {
-        return $this->inversionName;
-    }
-
-    /**
-     * Set internet
-     *
-     * @param string $internet
-     * @return FilmPerson
-     */
-    public function setInternet($internet)
-    {
-        $this->internet = $internet;
-
-        return $this;
-    }
-
-    /**
-     * Get internet
-     *
-     * @return string 
-     */
-    public function getInternet()
-    {
-        return $this->internet;
     }
 
     /**
@@ -768,5 +507,28 @@ class FilmPerson
     public function getMedias()
     {
         return $this->medias;
+    }
+
+    /**
+     * Set asianName
+     *
+     * @param boolean $asianName
+     * @return FilmPerson
+     */
+    public function setAsianName($asianName)
+    {
+        $this->asianName = $asianName;
+
+        return $this;
+    }
+
+    /**
+     * Get asianName
+     *
+     * @return boolean 
+     */
+    public function getAsianName()
+    {
+        return $this->asianName;
     }
 }

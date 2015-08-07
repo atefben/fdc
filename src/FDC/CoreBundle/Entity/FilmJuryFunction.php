@@ -2,6 +2,9 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\Interfaces\OneLocaleInterface;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -9,7 +12,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmJuryFonction
  *
- * @ORM\Table(indexes={@ORM\Index(name="function_vf", columns={"function_vf"}), @ORM\Index(name="function_va", columns={"function_va"}), @ORM\Index(name="order", columns={"order"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
@@ -24,27 +27,6 @@ class FilmJuryFunction
      * @ORM\Id
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $functionVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $functionVa;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $order;
     
     /**
      * @var string
@@ -52,12 +34,19 @@ class FilmJuryFunction
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="function")
      */
     private $juries;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->juries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
+        $this->juries = new ArrayCollection();
     }
 
     /**

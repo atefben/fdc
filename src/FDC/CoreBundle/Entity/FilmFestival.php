@@ -41,6 +41,11 @@ class FilmFestival
     private $awards;
 
     /**
+     * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="festival")
+     */
+    private $juries;
+
+    /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="festival")
      */
     private $medias;
@@ -51,6 +56,7 @@ class FilmFestival
     public function __construct()
     {
         $this->awards = new ArrayCollection();
+        $this->juries = new ArrayCollection();
         $this->medias = new ArrayCollection();
     }
 
@@ -164,5 +170,38 @@ class FilmFestival
     public function getAwards()
     {
         return $this->awards;
+    }
+
+    /**
+     * Add juries
+     *
+     * @param \FDC\CoreBundle\Entity\FilmJury $juries
+     * @return FilmFestival
+     */
+    public function addJury(\FDC\CoreBundle\Entity\FilmJury $juries)
+    {
+        $this->juries[] = $juries;
+
+        return $this;
+    }
+
+    /**
+     * Remove juries
+     *
+     * @param \FDC\CoreBundle\Entity\FilmJury $juries
+     */
+    public function removeJury(\FDC\CoreBundle\Entity\FilmJury $juries)
+    {
+        $this->juries->removeElement($juries);
+    }
+
+    /**
+     * Get juries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJuries()
+    {
+        return $this->juries;
     }
 }

@@ -54,14 +54,21 @@ class FilmPrize implements FilmPrizeInterface
      * @var ArrayCollection
      */
     protected $translations;
-    
+
+    /**
+     * __construct function.
+     * 
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
+        $this->awards = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
     /**
-     * getTranslationLocale function.
+     * findTranslationByLocale function.
      * 
      * @access public
      * @param mixed $locale
@@ -77,6 +84,7 @@ class FilmPrize implements FilmPrizeInterface
         
         return null;
     }
+
     /**
      * Set id
      *

@@ -4,16 +4,16 @@ namespace FDC\SoifBundle\Manager;
 
 use \Exception;
 
-use FDC\CoreBundle\Entity\FilmPrize;
-use FDC\CoreBundle\Entity\FilmPrizeTranslation;
+use FDC\CoreBundle\Entity\FilmPerson;
+use FDC\CoreBundle\Entity\FilmPersonTranslation;
 
 /**
- * PrizeManager class.
+ * PersonManager class.
  * 
  * @extends CoreManager
  * @author Antoine Mineau <a.mineau@ohwee.fr>
  */
-class PrizeManager extends CoreManager
+class PersonManager extends CoreManager
 {
     /**
      * __construct function.
@@ -24,27 +24,30 @@ class PrizeManager extends CoreManager
     public function __construct()
     {
         $this->entityIdKey = 'Id';
-        $this->repository = 'FDCCoreBundle:FilmPrize';
-        $this->wsParameterKey = 'idPrix';
-        $this->wsMethod = 'GetPrize';
-        $this->wsResultKey = 'GetPrizeResult';
-        $this->wsResultObjectKey = 'PrixDto';
+        $this->repository = 'FDCCoreBundle:FilmPerson';
+        $this->wsParameterKey = 'idPersonne';
+        $this->wsMethod = 'GetPersonne';
+        $this->wsResultKey = 'GetPersonneResult';
+        $this->wsResultObjectKey = 'PersonneDto';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
-            'setPosition' => 'OrdreGeneral',
-            'setType' => 'TypePrix'
+            'setAsianName' => 'IsAsianName',
+            'setNationality' => 'Nationalite',
+            'setNationality2' => 'NationaliteSecondaire',
+            'setLastname' => 'Nom',
+            'setFirstname' => 'Prenom'
         );
         $this->mapperTranslations = array(
-            'CategorieTraductions' => array(
-                'result' => 'CategoriePrixTraductionDto',
-                'setter' => 'setTitle',
+            'BiographieTraductions' => array(
+                'result' => 'BiographieTraductionDto',
+                'setter' => 'setBiography',
+                'wsKey' => 'Description'
+            ),
+            'ProfessionTraductions' => array(
+                'result' => 'ProfessionTraductionDto',
+                'setter' => 'setProfession',
                 'wsKey' => 'Libelle'
             ),
-            'TitreTraductions' => array(
-                'result' => 'TitreTraductionDto',
-                'setter' => 'setCategory',
-                'wsKey' => 'Titre'
-            )
         );
     }
     
@@ -54,6 +57,8 @@ class PrizeManager extends CoreManager
      * @access public
      * @param mixed $id
      * @return void
+     *
+     * @todo save PersonneFilmDto
      */
     public function updateEntity($id)
     {
@@ -65,7 +70,7 @@ class PrizeManager extends CoreManager
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
         // create / get entity
-        $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmPrize();
+        $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmPerson();
         $persist = ($entity->getId() === null) ? true : false;
         
         // set soif last update time
@@ -75,7 +80,7 @@ class PrizeManager extends CoreManager
         $this->setEntityProperties($resultObject, $entity);
         
         // set translations
-        $this->setEntityTranslations($resultObject, $entity, new FilmJuryTranslation());
+        $this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
         
         // update entity
         $this->update($entity, $persist);

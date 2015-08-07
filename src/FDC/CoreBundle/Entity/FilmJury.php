@@ -2,20 +2,26 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmJury
  *
- * @ORM\Table(indexes={@ORM\Index(name="festival_year", columns={"festival_year"}), @ORM\Index(name="CLEDETRI", columns={"CLEDETRI"}), @ORM\Index(name="updated_at", columns={"updated_at"}) })
+ * @ORM\Table(indexes={@ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="position", columns={"position"}) })
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
 class FilmJury
 {
     use Time;
+    use Translatable;
+    use Soif;
     
     /**
      * @var string
@@ -26,46 +32,18 @@ class FilmJury
     private $id;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(type="integer", options={"unsigned": true})
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $festivalYear;
+    private $position;
 
     /**
-     * @var string
+     * @var FilmFestival
      *
-     * @ORM\Column(name="CLEDETRI", type="decimal", precision=22, scale=0, nullable=true)
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="juries")
      */
-    private $order;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="BIO_FILMO_VF", type="text", nullable=true)
-     */
-    private $bioFilmVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="BIO_FILMO_VA", type="text", nullable=true)
-     */
-    private $bioFilmVa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="BIO_FILMO_VF2", type="text", nullable=true)
-     */
-    private $bioFilmVf2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="BIO_FILMO_VA2", type="text", nullable=true)
-     */
-    private $bioFilmVa2;
+    private $festival;
 
     /**
      * @var Person
@@ -94,12 +72,40 @@ class FilmJury
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="jury")
      */
     private $medias;
+    
     /**
-     * Constructor
+     * @var ArrayCollection
+     */
+    protected $translations;
+
+    /**
+     * __construct function.
+     * 
+     * @access public
+     * @return void
      */
     public function __construct()
     {
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medias = new ArrayCollection();
+        $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * findTranslationByLocale function.
+     * 
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->translations as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+        
+        return null;
     }
 
     /**
@@ -123,52 +129,6 @@ class FilmJury
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set festivalYear
-     *
-     * @param integer $festivalYear
-     * @return FilmJury
-     */
-    public function setFestivalYear($festivalYear)
-    {
-        $this->festivalYear = $festivalYear;
-
-        return $this;
-    }
-
-    /**
-     * Get festivalYear
-     *
-     * @return integer 
-     */
-    public function getFestivalYear()
-    {
-        return $this->festivalYear;
-    }
-
-    /**
-     * Set order
-     *
-     * @param string $order
-     * @return FilmJury
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return string 
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**
@@ -363,5 +323,51 @@ class FilmJury
     public function getMedias()
     {
         return $this->medias;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFestival $festival
+     * @return FilmJury
+     */
+    public function setFestival(\FDC\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \FDC\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return FilmJury
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

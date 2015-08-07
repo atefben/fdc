@@ -7,12 +7,12 @@ use \Exception;
 use Application\Sonata\MediaBundle\Entity\Media;
 
 /**
- * MediaStreamManager class.
+ * JuryFunctionManager class.
  * 
  * @extends CoreManager
  * @author Antoine Mineau <a.mineau@ohwee.fr>
  */
-class MediaStreamManager extends CoreManager
+class JuryFunctionManager extends CoreManager
 {
     /**
      * sonataMediaManager
@@ -38,28 +38,14 @@ class MediaStreamManager extends CoreManager
      */
     public function __construct()
     {
-        $this->wsParameterKey = 'idElementMultimedia';
-        $this->wsResultKey = 'GetStreamElementMultimediaResult';
-    }
-    
-    /**
-     * setSoifUploadDirectory function.
-     * 
-     * @access public
-     * @param mixed $soifUploadDirectory
-     * @return void
-     */
-    public function setSoifUploadDirectory($soifUploadDirectory)
-    {
-        $this->soifUploadDirectory = $soifUploadDirectory;
-    }
-    
-    public function setSonataMediaManager($sonataMediaManager)
-    {
-        $this->sonataMediaManager = $sonataMediaManager;
+        $this->repository = 'FDCCoreBundle:FilmJury';
+        $this->mapper = array(
+            'setId' => 'Id',
+            'setPosition' => 'OrdreAffichage'
+        );
     }
 
-    public function updateEntity($entity, $id, $extension, $provider = 'sonata.media.provider.image', $context = 'image')
+    public function updateEntity($entity, $id)
     {
         // start timer
         $this->start(__METHOD__);
