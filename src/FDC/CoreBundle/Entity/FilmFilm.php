@@ -2,77 +2,114 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CoreBundle\Util\Translation;
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmFilm
  *
- * @ORM\Table(indexes={@ORM\Index(name="production_address_id", columns={"production_address_id"}), @ORM\Index(name="distribution_address_id", columns={"distribution_address_id"}), @ORM\Index(name="press_address_id", columns={"press_address_id"}), @ORM\Index(name="press_internat_address_id", columns={"press_internat_address_id"}), @ORM\Index(name="event_address_id", columns={"event_address_id"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="festival_year", columns={"festival_year"})})
+ * @ORM\Table(indexes={@ORM\Index(name="production_address_id", columns={"production_address_id"}), @ORM\Index(name="distribution_address_id", columns={"distribution_address_id"}), @ORM\Index(name="press_address_id", columns={"press_address_id"}), @ORM\Index(name="press_internat_address_id", columns={"press_internat_address_id"}), @ORM\Index(name="event_address_id", columns={"event_address_id"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}) })
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmFilm
+class FilmFilm implements FilmFilmInterface
 {
+    use Translatable;
+    use Translation;
     use Time;
+    use Soif;
     
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=false, length=36)
+     * @ORM\Column(type="string", length=36)
      * @ORM\Id
      */
     private $id;
-
+    
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(type="integer", options={"unsigned": true})
+     * @ORM\Column(type="boolean")
      */
-    private $festivalYear;
-
+    private $directorFirst;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $restored;
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $titleVO;
-
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $titleVF;
-
+    private $titleVOAlphabet;
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=4, nullable=true)
      */
-    private $titleVA;
-
+    private $productionYear;
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=30)
-     */
-    private $courtlong;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="decimal", precision=22, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=22, scale=2)
      */
     private $duration;
+    
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $castingCommentary;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $website;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $galaId;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=1, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $filmFirst;
+    private $galaName;
+
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films")
+     */
+    private $festival;
+
 
     /**
      * @var string
@@ -80,13 +117,6 @@ class FilmFilm
      * @ORM\Column(type="string", length=1, nullable=true)
      */
     private $worldFirst;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=4, nullable=true)
-     */
-    private $productionYear;
 
     /**
      * @var string
@@ -186,19 +216,6 @@ class FilmFilm
      */
     private $color;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $website;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $gala;
 
     /**
      * @var string
@@ -213,6 +230,9 @@ class FilmFilm
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $subSelectionVA;
+    
+    
+    
 
     /**
      * @var Country
@@ -293,7 +313,7 @@ class FilmFilm
     private $minorProductions;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmCountry", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film")
      */
     private $countries;
     
@@ -313,26 +333,24 @@ class FilmFilm
     private $projections;
     
     /**
-     * @var FilmFilmTranslation
-     *
-     * @ORM\OneToMany(targetEntity="FilmFilmTranslation", mappedBy="film")
+     * @var ArrayCollection
      */
-    private $translations;
+    protected $translations;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->generics = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->awards = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->minorProductions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->countries = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->schoolAddresses = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->projections = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->generics = new ArrayCollection();
+        $this->awards = new ArrayCollection();
+        $this->medias = new ArrayCollection();
+        $this->minorProductions = new ArrayCollection();
+        $this->countries = new ArrayCollection();
+        $this->schoolAddresses = new ArrayCollection();
+        $this->languages = new ArrayCollection();
+        $this->projections = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -356,29 +374,6 @@ class FilmFilm
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set festivalYear
-     *
-     * @param integer $festivalYear
-     * @return FilmFilm
-     */
-    public function setFestivalYear($festivalYear)
-    {
-        $this->festivalYear = $festivalYear;
-
-        return $this;
-    }
-
-    /**
-     * Get festivalYear
-     *
-     * @return integer 
-     */
-    public function getFestivalYear()
-    {
-        return $this->festivalYear;
     }
 
     /**
@@ -888,6 +883,29 @@ class FilmFilm
     }
 
     /**
+     * Set festival
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFestival $festival
+     * @return FilmAward
+     */
+    public function setFestival(\FDC\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \FDC\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
+    }
+
+    /**
      * Set website
      *
      * @param string $website
@@ -1265,10 +1283,10 @@ class FilmFilm
     /**
      * Add countries
      *
-     * @param \FDC\CoreBundle\Entity\FilmCountry $countries
+     * @param \FDC\CoreBundle\Entity\FilmFilmCountry $countries
      * @return FilmFilm
      */
-    public function addCountry(\FDC\CoreBundle\Entity\FilmCountry $countries)
+    public function addCountry(\FDC\CoreBundle\Entity\FilmFilmCountry $countries)
     {
         $this->countries[] = $countries;
 
@@ -1278,9 +1296,9 @@ class FilmFilm
     /**
      * Remove countries
      *
-     * @param \FDC\CoreBundle\Entity\FilmCountry $countries
+     * @param \FDC\CoreBundle\Entity\FilmFilmCountry $countries
      */
-    public function removeCountry(\FDC\CoreBundle\Entity\FilmCountry $countries)
+    public function removeCountry(\FDC\CoreBundle\Entity\FilmFilmCountry $countries)
     {
         $this->countries->removeElement($countries);
     }
@@ -1395,39 +1413,6 @@ class FilmFilm
     }
 
     /**
-     * Add translations
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilmTranslation $translations
-     * @return FilmFilm
-     */
-    public function addTranslation(\FDC\CoreBundle\Entity\FilmFilmTranslation $translations)
-    {
-        $this->translations[] = $translations;
-
-        return $this;
-    }
-
-    /**
-     * Remove translations
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilmTranslation $translations
-     */
-    public function removeTranslation(\FDC\CoreBundle\Entity\FilmFilmTranslation $translations)
-    {
-        $this->translations->removeElement($translations);
-    }
-
-    /**
-     * Get translations
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
      * Add medias
      *
      * @param \FDC\CoreBundle\Entity\FilmMedia $medias
@@ -1458,5 +1443,143 @@ class FilmFilm
     public function getMedias()
     {
         return $this->medias;
+    }
+
+    /**
+     * Set directorFirst
+     *
+     * @param boolean $directorFirst
+     * @return FilmFilm
+     */
+    public function setDirectorFirst($directorFirst)
+    {
+        $this->directorFirst = $directorFirst;
+
+        return $this;
+    }
+
+    /**
+     * Get directorFirst
+     *
+     * @return boolean 
+     */
+    public function getDirectorFirst()
+    {
+        return $this->directorFirst;
+    }
+
+    /**
+     * Set restored
+     *
+     * @param boolean $restored
+     * @return FilmFilm
+     */
+    public function setRestored($restored)
+    {
+        $this->restored = $restored;
+
+        return $this;
+    }
+
+    /**
+     * Get restored
+     *
+     * @return boolean 
+     */
+    public function getRestored()
+    {
+        return $this->restored;
+    }
+
+    /**
+     * Set titleVOAlphabet
+     *
+     * @param string $titleVOAlphabet
+     * @return FilmFilm
+     */
+    public function setTitleVOAlphabet($titleVOAlphabet)
+    {
+        $this->titleVOAlphabet = $titleVOAlphabet;
+
+        return $this;
+    }
+
+    /**
+     * Get titleVOAlphabet
+     *
+     * @return string 
+     */
+    public function getTitleVOAlphabet()
+    {
+        return $this->titleVOAlphabet;
+    }
+
+    /**
+     * Set castingCommentary
+     *
+     * @param string $castingCommentary
+     * @return FilmFilm
+     */
+    public function setCastingCommentary($castingCommentary)
+    {
+        $this->castingCommentary = $castingCommentary;
+
+        return $this;
+    }
+
+    /**
+     * Get commentaryCasting
+     *
+     * @return string 
+     */
+    public function getCastingCommentary()
+    {
+        return $this->castingCommentary;
+    }
+
+    /**
+     * Set galaId
+     *
+     * @param integer $galaId
+     * @return FilmFilm
+     */
+    public function setGalaId($galaId)
+    {
+        $this->galaId = $galaId;
+
+        return $this;
+    }
+
+    /**
+     * Get galaId
+     *
+     * @return integer 
+     */
+    public function getGalaId()
+    {
+        return $this->galaId;
+    }
+
+    /**
+     * Set galaName
+     *
+     * @param string $galaName
+     * @return FilmFilm
+     */
+    public function setGalaName($galaName)
+    {
+        $this->galaName = $galaName;
+
+        return $this;
+    }
+
+    /**
+     * Get galaName
+     *
+     * @return string 
+     */
+    public function getGalaName()
+    {
+        return $this->galaName;
     }
 }

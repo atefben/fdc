@@ -13,7 +13,7 @@
         <one-to-many field="articleLocks" target-entity="FDC\CoreBundle\Entity\NewsArticleLock" mapped-by="user">
         </one-to-many>
         
-        <many-to-many field="sites" target-entity="FDC\CoreBundle\Entity\Site">
+        <many-to-many field="sites" target-entity="FDC\CoreBundle\Entity\Site" inversed-by="users">
         </many-to-many>
 
     </entity>

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
+use FDC\CoreBundle\Util\Translation;
 
 /**
  * FilmJury
@@ -22,6 +23,7 @@ class FilmJury
     use Time;
     use Translatable;
     use Soif;
+    use Translation;
     
     /**
      * @var string
@@ -41,28 +43,28 @@ class FilmJury
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="juries")
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="juries", cascade={"persist"})
      */
     private $festival;
 
     /**
      * @var Person
      *
-     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="juries")
+     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="juries", cascade={"persist"})
      */
     private $person;
 
     /**
      * @var FilmJuryType
      *
-     * @ORM\ManyToOne(targetEntity="FilmJuryType", inversedBy="juries")
+     * @ORM\ManyToOne(targetEntity="FilmJuryType", inversedBy="juries", cascade={"persist"})
      */
     private $type;
     
     /**
      * @var FilmJuryType
      *
-     * @ORM\ManyToOne(targetEntity="FilmJuryFunction", inversedBy="juries")
+     * @ORM\ManyToOne(targetEntity="FilmJuryFunction", inversedBy="juries", cascade={"persist"})
      */
     private $function;
 
@@ -88,24 +90,6 @@ class FilmJury
     {
         $this->medias = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * findTranslationByLocale function.
-     * 
-     * @access public
-     * @param mixed $locale
-     * @return void
-     */
-    public function findTranslationByLocale($locale)
-    {
-        foreach ($this->translations as $translation) {
-            if ($translation->getLocale() == $locale) {
-                return $translation;
-            }
-        }
-        
-        return null;
     }
 
     /**

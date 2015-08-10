@@ -14,7 +14,7 @@ use FDC\CoreBundle\Util\Soif;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FilmMedia
+class FilmMedia implements FilmMediaInterface
 {
     use Time;
     use Soif;

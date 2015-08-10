@@ -48,7 +48,7 @@ class FilmPersonFilmFilm
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FilmFunctions", inversedBy="team")
+     * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="team")
      */
     private $function;
 

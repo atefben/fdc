@@ -10,7 +10,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmAtelierGeneric
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="id_order", columns={"id", "order"}), @ORM\Index(name="order", columns={"order"}), @ORM\Index(name="function_id", columns={"function_id"})})
+ * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="id_position", columns={"id", "position"}), @ORM\Index(name="position", columns={"position"}) })
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
@@ -60,7 +60,7 @@ class FilmAtelierGeneric
      *
      * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $order;
+    private $position;
 
     /**
      * @var FilmFunction
@@ -197,29 +197,6 @@ class FilmAtelierGeneric
     public function getRoleVa()
     {
         return $this->roleVa;
-    }
-
-    /**
-     * Set order
-     *
-     * @param string $order
-     * @return FilmAtelierGeneric
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return string 
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**

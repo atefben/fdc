@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Translation;
 
 /**
  * FilmJuryType
@@ -20,6 +21,7 @@ class FilmJuryType
 {
     use Time;
     use Translatable;
+    use Translation;
 
     /**
      * @var integer
@@ -119,28 +121,6 @@ class FilmJuryType
         return $this->juryTypeVa;
     }
 
-    /**
-     * Set order
-     *
-     * @param integer $order
-     * @return FilmJuryType
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return integer 
-     */
-    public function getOrder()
-    {
-        return $this->order;
-    }
 
     /**
      * Add juries

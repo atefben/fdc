@@ -46,7 +46,7 @@ class FilmCategory
      *
      * @ORM\Column(type="integer")
      */
-    private $order;
+    private $position;
     
     /**
      * @var Film
@@ -137,29 +137,6 @@ class FilmCategory
     public function getNameEn()
     {
         return $this->nameEn;
-    }
-
-    /**
-     * Set order
-     *
-     * @param integer $order
-     * @return FilmCategory
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return integer 
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**

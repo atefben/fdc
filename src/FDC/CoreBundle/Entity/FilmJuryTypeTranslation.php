@@ -23,4 +23,27 @@ class FilmJuryTypeTranslation
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $name;
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return FilmJuryTypeTranslation
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }

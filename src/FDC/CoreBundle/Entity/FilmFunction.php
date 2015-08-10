@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 
 /**
- * FilmFonction
+ * FilmFunction
  *
- * @ORM\Table(indexes={@ORM\Index(name="function_vf", columns={"function_vf"}), @ORM\Index(name="function_va", columns={"function_va"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="order", columns={"order"})})
+ * @ORM\Table(indexes={@ORM\Index(name="function_vf", columns={"function_vf"}), @ORM\Index(name="function_va", columns={"function_va"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="position", columns={"position"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
@@ -45,7 +45,7 @@ class FilmFunction
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $order;
+    private $position;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmPerson", mappedBy="function")
@@ -119,29 +119,6 @@ class FilmFunction
     public function getFunctionVa()
     {
         return $this->functionVa;
-    }
-
-    /**
-     * Set order
-     *
-     * @param integer $order
-     * @return FilmFunction
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return integer 
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**

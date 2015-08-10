@@ -9,7 +9,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmEventType
  *
- * @ORM\Table(indexes={@ORM\Index(name="order", columns={"order"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="program", columns={"program"})})
+ * @ORM\Table(indexes={@ORM\Index(name="position", columns={"position"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="program", columns={"program"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
@@ -38,7 +38,7 @@ class FilmEventType
      *
      * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $order;
+    private $position;
 
     /**
      * @var string
@@ -85,29 +85,6 @@ class FilmEventType
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set order
-     *
-     * @param string $order
-     * @return FilmEventType
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return string 
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**

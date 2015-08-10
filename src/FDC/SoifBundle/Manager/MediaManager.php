@@ -6,8 +6,6 @@ use \Exception;
 
 use FDC\CoreBundle\Entity\FilmMedia;
 
-use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
-
 /**
  * MediaManager class.
  * 
@@ -87,6 +85,7 @@ class MediaManager extends CoreManager
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+         var_dump($result);
         
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmMedia();

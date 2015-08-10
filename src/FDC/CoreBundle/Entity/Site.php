@@ -54,6 +54,41 @@ class Site
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      */
     protected $slug;
+    
+    /**
+     * @var Site
+     *
+     * @ORM\ManyToMany(targetEntity="NewsAudio", mappedBy="sites")
+     */
+    protected $newsAudios;
+
+    /**
+     * @var Site
+     *
+     * @ORM\ManyToMany(targetEntity="NewsVideo", mappedBy="sites")
+     */
+    protected $newsVideos;
+
+    /**
+     * @var Site
+     *
+     * @ORM\ManyToMany(targetEntity="NewsImage", mappedBy="sites")
+     */
+    protected $newsImages;
+
+    /**
+     * @var Site
+     *
+     * @ORM\ManyToMany(targetEntity="NewsArticle", mappedBy="sites")
+     */
+    protected $newsArticles;
+    
+     /**
+     * @var Site
+     *
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="sites")
+     */
+    protected $users;
 
     /**
      * @var ArrayCollection

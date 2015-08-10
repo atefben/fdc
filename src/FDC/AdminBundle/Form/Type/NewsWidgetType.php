@@ -17,6 +17,8 @@ class NewsWidgetType extends BaseType
             'data'   => $this->getName(),
             'mapped' => false
         ));
+        
+        $builder->add('translations', 'a2lix_translations');
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)

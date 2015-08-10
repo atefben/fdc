@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
+use FDC\CoreBundle\Util\Translation;
 
 /**
  * FilmPerson
@@ -23,6 +24,7 @@ class FilmPerson
     use Time;
     use Translatable;
     use Soif;
+    use Translation;
 
     /**
      * @var string
@@ -130,24 +132,6 @@ class FilmPerson
         $this->medias = new ArrayCollection();
         $this->cinefPersons = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * findTranslationByLocale function.
-     * 
-     * @access public
-     * @param mixed $locale
-     * @return void
-     */
-    public function findTranslationByLocale($locale)
-    {
-        foreach ($this->translations as $translation) {
-            if ($translation->getLocale() == $locale) {
-                return $translation;
-            }
-        }
-        
-        return null;
     }
 
     /**

@@ -18,10 +18,11 @@ class FilmRoom
     use Time;
 
     /**
-     * @var string
+     * @var integer
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 

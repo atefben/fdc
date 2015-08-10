@@ -9,7 +9,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmProjection
  *
- * @ORM\Table(indexes={@ORM\Index(name="displayed_at", columns={"displayed_at"}), @ORM\Index(name="room_id", columns={"room_id"}), @ORM\Index(name="section_programming_vf", columns={"section_programming_vf"}), @ORM\Index(name="section_programming_va", columns={"section_programming_va"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table(indexes={@ORM\Index(name="displayed_at", columns={"displayed_at"}), @ORM\Index(name="section_programming_vf", columns={"section_programming_vf"}), @ORM\Index(name="section_programming_va", columns={"section_programming_va"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
@@ -20,7 +20,7 @@ class FilmProjection
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

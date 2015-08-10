@@ -71,7 +71,7 @@ class Country
     private $subtitleLanguageFilms;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmCountry", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="country")
      */
     private $countryFilms;
     
@@ -309,10 +309,10 @@ class Country
     /**
      * Add countryFilms
      *
-     * @param \FDC\CoreBundle\Entity\FilmCountry $countryFilms
+     * @param \FDC\CoreBundle\Entity\FilmFilmCountry $countryFilms
      * @return Country
      */
-    public function addCountryFilm(\FDC\CoreBundle\Entity\FilmCountry $countryFilms)
+    public function addCountryFilm(\FDC\CoreBundle\Entity\FilmFilmCountry $countryFilms)
     {
         $this->countryFilms[] = $countryFilms;
 
@@ -322,9 +322,9 @@ class Country
     /**
      * Remove countryFilms
      *
-     * @param \FDC\CoreBundle\Entity\FilmCountry $countryFilms
+     * @param \FDC\CoreBundle\Entity\FilmFilmCountry $countryFilms
      */
-    public function removeCountryFilm(\FDC\CoreBundle\Entity\FilmCountry $countryFilms)
+    public function removeCountryFilm(\FDC\CoreBundle\Entity\FilmFilmCountry $countryFilms)
     {
         $this->countryFilms->removeElement($countryFilms);
     }

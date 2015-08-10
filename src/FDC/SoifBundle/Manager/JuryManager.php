@@ -7,6 +7,8 @@ use \Exception;
 use FDC\CoreBundle\Entity\FilmJury;
 use FDC\CoreBundle\Entity\FilmJuryFunction;
 use FDC\CoreBundle\Entity\FilmJuryFunctionTranslation;
+use FDC\CoreBundle\Entity\FilmJuryType;
+use FDC\CoreBundle\Entity\FilmJuryTypeTranslation;
 use FDC\CoreBundle\Entity\FilmJuryTranslation;
 
 /**
@@ -32,15 +34,6 @@ class JuryManager extends CoreManager
      * @access private
      */
     private $personManager;
-    
-    /**
-     * juryFunctionManager
-     * 
-     * @var mixed
-     * @access private
-     */
-    private $juryFunctionManager;
-    
 
     /**
      * __construct function.
@@ -49,9 +42,10 @@ class JuryManager extends CoreManager
      * @param mixed $festivalManager
      * @return void
      */
-    public function __construct($festivalManager, $personManager, $juryFunctionManager)
+    public function __construct($festivalManager, $personManager)
     {
         $this->festivalManager = $festivalManager;
+        $this->personManager = $personManager;
         $this->repository = 'FDCCoreBundle:FilmJury';
         $this->wsMethod = 'GetJury';
         $this->wsResultKey = 'GetJuryResult';
@@ -74,20 +68,34 @@ class JuryManager extends CoreManager
                 'soapKey' => 'IdPersonne',
                 'setter' => 'setPerson',
                 'manager' => $this->personManager
-            ),
-           /* array(
-                'repository' => 'FDCCoreBundle:FilmJuryType',
-                'soapKey' => 'TypeJury',
-                'soapKeyIdentifier' => 'Id'
-                'setter' => 'setType',
-                'manager' => $this->juryTypeManager
-            ),*/
+            )
         );
         $this->mapperTranslations = array(
             'BiographiesTraductions' => array(
                 'result' => 'BiographieTraductionDto',
                 'setter' => 'setBiography',
                 'wsKey' => 'Description'
+            )
+        );
+        $this->mapperEntityTranslations = array(
+            'Fonction' => array(
+                'repository' => 'FDCCoreBundle:FilmJuryFunction',
+                'result' => 'FonctionTraductionDto',
+                'setter' => 'setFunction',
+                'setterTranslation' => 'setName',
+                'wsKey' => 'Libelle',
+                'entity' =>  new FilmJuryFunction(),
+                'entityTranslation' => new FilmJuryFunctionTranslation()
+            ),
+            'TypeJury' => array(
+                'repository' => 'FDCCoreBundle:FilmJuryType',
+                'result' => 'TypeJuryTraductionDto',
+                'setter' => 'setType',
+                'setterTranslation' => 'setName',
+                'wsKey' => 'Libelle',
+                'entity' =>  new FilmJuryType(),
+                'entityTranslation' => new FilmJuryTypeTranslation()
+                
             )
         );
     }
@@ -111,73 +119,21 @@ class JuryManager extends CoreManager
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmJury();
         $persist = ($entity->getId() === null) ? true : false;
-        
-        var_dump($resultObject);
-        
+
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
 
         // set entity properties
         $this->setEntityProperties($resultObject, $entity);
         
-        // set related entity
+        // set entity related
         $this->setEntityRelated($resultObject, $entity);
         
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmJuryTranslation());
         
-        // set function translation
-        
-        /*
-                        'Traductions' => array(
-                'result' => 'FonctionTraductionDto',
-                'setter' => 'setName',
-                'wsKey' => 'Libelle'
-            )
-            */
-        if (!isset($resultObject->Fonction)) {
-            $msg = __METHOD__. ' failed to parse results';
-            $exception = new Exception($msg);
-            $this->throwException($msg, $exception);
-        }
-        
-        $function = $this->em->getRepository('FDCCoreBundle:FilmJuryFunction')->findOneBy(array('id' => $resultObject->Fonction->Id));
-        $function = ($function !== null) ? $function : new FilmJuryFunction();
-        $function->setId($resultObject->Fonction->Id);
-        
-        if (!isset($resultObject->Fonction->Traductions) || !isset($resultObject->Fonction->Traductions->FonctionTraductionDto)) {
-            $msg = __METHOD__. ' failed to parse results';
-            $exception = new Exception($msg);
-            $this->throwException($msg, $exception);
-        }
-        // adapt this with previous comment
-        /*$localesMapper = $this->getLocalesMapper();
-        foreach ($this->mapperTranslations as $key => $mapper) {
-            $entityTranslations = $entity->getTranslations();
-            if (!isset($result->{$key}->{$mapper['result']})) {
-                $msg = __METHOD__. ' failed to parse results';
-                $exception = new Exception($msg);
-                $this->throwException($msg, $exception);
-            }
-            $translations = $result->{$key}->{$mapper['result']};
-        
-            foreach ($translations as $translation) {
-                if (!isset($localesMapper[$translation->CodeLangue])) {
-                    $this->logger->warn("the locales mapper {$translation->CodeLangue} doesn't exist");
-                    continue;
-                }
-                if (!isset($entityTranslation[$translation->CodeLangue])) {
-                    $entityTranslation[$translation->CodeLangue] = $entity->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
-                }
-                $entityTranslation[$translation->CodeLangue] = ($entityTranslation[$translation->CodeLangue] !== null) ? $entityTranslation[$translation->CodeLangue] : new FilmJuryFunctionTranslation();
-                $entityTranslation[$translation->CodeLangue]->{$mapper['setter']}($translation->{$mapper['wsKey']});
-                $entityTranslation[$translation->CodeLangue]->setLocale($localesMapper[$translation->CodeLangue]);
-                
-                if ($entityTranslation[$translation->CodeLangue]->getId() === null) {
-                    $entity->addTranslation($entityTranslation[$translation->CodeLangue]);
-                }
-            }
-        }*/
+        // set entity related translations
+        $this->setEntityRelatedTranslations($resultObject, $entity);
         
         // update entity
         $this->update($entity, $persist);

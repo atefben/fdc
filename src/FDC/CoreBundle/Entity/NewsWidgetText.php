@@ -20,33 +20,18 @@ use FDC\CoreBundle\Util\Time;
  */
 class NewsWidgetText extends NewsWidget
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=false)
-     */
-    private $content;
+    use Translatable;
     
     /**
-     * Set content
-     *
-     * @param string $content
-     * @return NewsWidgetText
+     * @var ArrayCollection
      */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
+    protected $translations;
 
     /**
-     * Get content
-     *
-     * @return string 
+     * Constructor
      */
-    public function getContent()
+    public function __construct()
     {
-        return $this->content;
+        $this->translations = new ArrayCollection();
     }
 }

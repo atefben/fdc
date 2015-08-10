@@ -211,7 +211,7 @@ abstract class CoreManager
      */
     public function updateRelatedEntity($repository, $result, $key, $manager)
     {
-        if (isset($result->{$key})) {
+        if (property_exists($result, $key)) {
             // update the related entity
             if ($manager !== null) {
                $manager->updateEntity($result->{$key});
@@ -255,7 +255,7 @@ abstract class CoreManager
             
             // check the object properties
             $resultObject = ($this->wsResultObjectKey === null) ? $result->{$this->wsResultKey} : $result->{$this->wsResultKey}->Resultats;
-            if (!isset($resultObject) || !isset($resultObject->{$this->wsResultObjectKey})) {
+            if (!isset($resultObject) || ($this->wsResultObjectKey !== null && !property_exists($resultObject, $this->wsResultObjectKey))) {
                 $msg = __METHOD__. ' failed to parse results';
                 $exception = new \Exception($msg);
                 $this->throwException($msg, $exception);
@@ -277,7 +277,7 @@ abstract class CoreManager
      */
     public function setSoifUpdatedAt($result, $entity)
     {
-        if (!isset($result->{$this->wsResultKey}->DateDerniereModification)) {
+        if (!property_exists($result->{$this->wsResultKey}, 'DateDerniereModification')) {
             $this->logger->warning(__METHOD__. ' DateDerniereModification not found in WS Result');
         } else {
             $soifUpdatedAt = new \DateTime($result->{$this->wsResultKey}->DateDerniereModification);
@@ -296,7 +296,7 @@ abstract class CoreManager
     public function setEntityProperties($result, $entity)
     {
         foreach ($this->mapper as $setter => $soapKey) {
-            if (!isset($result->{$soapKey})) {
+            if (!property_exists($result, $soapKey)) {
                 $this->logger->warning(__METHOD__. ' Key '. $soapKey. ' not found in WS Result');
                 continue;
             }
@@ -342,18 +342,19 @@ abstract class CoreManager
         $localesMapper = $this->getLocalesMapper();
         foreach ($this->mapperTranslations as $key => $mapper) {
             $entityTranslations = $entity->getTranslations();
-            if (!isset($result->{$key}->{$mapper['result']})) {
-                $msg = __METHOD__. ' failed to parse results';
-                $exception = new Exception($msg);
-                $this->throwException($msg, $exception);
+            if (!property_exists($result->{$key}, $mapper['result'])) {
+                $msg = __METHOD__. " {$key} / {$mapper['result']} not found";
+                $this->logger->warning($msg);
+                continue;
             }
+            
             $translations = $result->{$key}->{$mapper['result']};
-        
             foreach ($translations as $translation) {
                 if (!isset($localesMapper[$translation->CodeLangue])) {
                     $this->logger->warn("the locales mapper {$translation->CodeLangue} doesn't exist");
                     continue;
                 }
+
                 if (!isset($entityTranslation[$translation->CodeLangue])) {
                     $entityTranslation[$translation->CodeLangue] = $entity->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
                 }
@@ -366,6 +367,51 @@ abstract class CoreManager
                 }
             }
         }
+    }
+    
+    public function setEntityRelatedTranslations($result, $entity)
+    {
+        $localesMapper = $this->getLocalesMapper();
+        foreach ($this->mapperEntityTranslations as $key => $mapper) {
+            $entityTranslation = array();
+            
+            // check isset translations
+            if (!property_exists($result, $key) || !property_exists($result->{$key}->Traductions, $mapper['result'])) {
+                $msg = __METHOD__. " {$key} / {$mapper['result']} not found";
+                $this->logger->warning($msg);
+                continue;
+            }
+            
+            // get related entity
+            $translations = $result->{$key}->Traductions->{$mapper['result']};
+            $entityRelated = $this->em->getRepository($mapper['repository'])->findOneBy(array('id' => $result->{$key}->Id));
+            $entityRelated = ($entityRelated !== null) ? $entityRelated : clone $mapper['entity'];
+            $entityRelated->setId($result->{$key}->Id);
+            $entity->{$mapper['setter']}($entityRelated);
+            
+            // loop throught translations
+            foreach ($translations as $translation) {
+
+                if (!isset($localesMapper[$translation->CodeLangue])) {
+                    $this->logger->warning("the locales mapper {$translation->CodeLangue} doesn't exist");
+                    continue;
+                }
+                if (!isset($entityTranslation[$translation->CodeLangue])) {
+                    $entityTranslation[$translation->CodeLangue] = $entityRelated->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
+                }
+                
+                // set translations
+                $entityTranslation[$translation->CodeLangue] = ($entityTranslation[$translation->CodeLangue] !== null) ? $entityTranslation[$translation->CodeLangue] : clone $mapper['entityTranslation'];
+                $entityTranslation[$translation->CodeLangue]->{$mapper['setterTranslation']}($translation->{$mapper['wsKey']});
+                $entityTranslation[$translation->CodeLangue]->setLocale($localesMapper[$translation->CodeLangue]);
+                
+                // if new entity add translation to parent
+                if ($entityTranslation[$translation->CodeLangue]->getId() === null) {
+                    $entityRelated->addTranslation($entityTranslation[$translation->CodeLangue]);
+                }
+            }
+        }
+
     }
 
     /**

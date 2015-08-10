@@ -7,13 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 
 /**
- * FilmCountry
+ * FilmFilmCountry
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmCountry
+class FilmFilmCountry
 {
     use Time;
     

@@ -77,7 +77,7 @@ class NewsVideo
     /**
      * @var Site
      *
-     * @ORM\ManyToMany(targetEntity="Site")
+     * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsVideos")
      */
     protected $sites;
     

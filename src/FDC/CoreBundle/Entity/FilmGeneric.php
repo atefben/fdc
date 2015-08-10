@@ -9,7 +9,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmGeneric
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="film_id", columns={"film_id"}), @ORM\Index(name="function_vf", columns={"function_vf"}), @ORM\Index(name="function_va", columns={"function_va"}), @ORM\Index(name="role_vf", columns={"role_vf"}), @ORM\Index(name="role_va", columns={"role_va"}), @ORM\Index(name="order", columns={"order"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="function_id", columns={"function_id"})})
+ * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="film_id", columns={"film_id"}), @ORM\Index(name="function_vf", columns={"function_vf"}), @ORM\Index(name="function_va", columns={"function_va"}), @ORM\Index(name="role_vf", columns={"role_vf"}), @ORM\Index(name="role_va", columns={"role_va"}), @ORM\Index(name="position", columns={"position"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="function_id", columns={"function_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
@@ -107,11 +107,11 @@ class FilmGeneric
     private $roleVrus;
 
     /**
-     * @var string
+     * @var decimal
      *
      * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $order;
+    private $position;
 
     /**
      * @var integer
@@ -370,29 +370,6 @@ class FilmGeneric
     public function getRoleVrus()
     {
         return $this->roleVrus;
-    }
-
-    /**
-     * Set order
-     *
-     * @param string $order
-     * @return FilmGeneric
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return string 
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**

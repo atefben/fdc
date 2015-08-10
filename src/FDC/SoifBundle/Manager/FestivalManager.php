@@ -4,8 +4,6 @@ namespace FDC\SoifBundle\Manager;
 
 use FDC\CoreBundle\Entity\FilmFestival;
 
-use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
-
 /**
  * FestivalManager class.
  * 

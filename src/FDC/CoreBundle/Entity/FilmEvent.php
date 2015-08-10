@@ -9,7 +9,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmEvent
  *
- * @ORM\Table(indexes={@ORM\Index(name="festival_year", columns={"festival_year"}), @ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="event_type_id", columns={"event_type_id"}), @ORM\Index(name="order", columns={"order"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="pm_dateevent", columns={"starts_at", "order"})})
+ * @ORM\Table(indexes={@ORM\Index(name="festival_year", columns={"festival_year"}), @ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="event_type_id", columns={"event_type_id"}), @ORM\Index(name="position", columns={"position"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="pm_dateevent", columns={"position", "position"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
@@ -129,7 +129,7 @@ class FilmEvent
      *
      * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $order;
+    private $position;
 
     /**
      * @var string
@@ -459,29 +459,6 @@ class FilmEvent
     public function getDescriptionVa4()
     {
         return $this->descriptionVa4;
-    }
-
-    /**
-     * Set order
-     *
-     * @param string $order
-     * @return FilmEvent
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return string 
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**

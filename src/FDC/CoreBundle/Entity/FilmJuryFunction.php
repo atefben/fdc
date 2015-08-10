@@ -2,12 +2,13 @@
 
 namespace FDC\CoreBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\Interfaces\OneLocaleInterface;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Translation;
 
 /**
  * FilmJuryFonction
@@ -19,6 +20,8 @@ use FDC\CoreBundle\Util\Time;
 class FilmJuryFunction
 {
     use Time;
+    use Translatable;
+    use Translation;
 
     /**
      * @var integer
@@ -116,29 +119,6 @@ class FilmJuryFunction
     public function getFunctionVa()
     {
         return $this->functionVa;
-    }
-
-    /**
-     * Set order
-     *
-     * @param integer $order
-     * @return FilmJuryFunction
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return integer 
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**

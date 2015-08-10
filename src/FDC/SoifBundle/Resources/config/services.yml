@@ -25,10 +25,15 @@ services:
         class: FDC\SoifBundle\Manager\FestivalManager
         arguments: []
 
+    fdc.soif.film_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\FilmManager
+        arguments: ['@fdc.soif.festival_manager']
+
     fdc.soif.jury_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\JuryManager
-        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.person_manager', '@fdc.soif.jury_function_manager']
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.person_manager']
 
     fdc.soif.jury_function_manager:
         parent: fdc.soif.core_manager
