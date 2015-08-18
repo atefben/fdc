@@ -64,25 +64,38 @@ class NewsArticleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
-                ->add('header', 'sonata_type_model_list')
-                ->add('widgets', 'infinite_form_polycollection', array(
-                    'types' => array(
-                        'news_widget_text_type',
-                        'news_widget_audio_type',
-                        'news_widget_image_type',
-                        'news_widget_video_type',
-                    ),
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'prototype' => true,
-                    'by_reference' => false
-                ))
+            ->tab('test')
+                ->with('General')
+                    ->add('header', 'sonata_type_model_list')
+                  /*  ->add('widgets', 'infinite_form_polycollection', array(
+                        'types' => array(
+                            'news_widget_text_type',
+                            'news_widget_audio_type',
+                            'news_widget_image_type',
+                            'news_widget_video_type',
+                        ),
+                        'allow_add' => true,
+                        'allow_delete' => true,
+                        'prototype' => true,
+                        'by_reference' => false
+                    ))*/
                 ->end()
-            ->with('Options')
-                ->add('publishedAt')
-                ->add('publishEndedAt')
-                ->end();
+            ->end()
+            ->tab('Options')
+                ->with('Options', array(
+                    'class'       => 'col-md-8',
+                    'box_class'   => 'box box-solid box-danger',
+                    'description' => 'Lorem ipsum'
+                ))
+                    ->add('publishedAt', 'sonata_type_datetime_picker')
+                ->end()
+                ->with('test', array(
+                    'class'       => 'col-md-4',
+                    'box_class'   => 'box box-solid box-danger',
+                    'description' => 'Lorem ipsum'
+                ))
+                    ->add('publishEndedAt')
+            ->end()
         ;
     }
 

@@ -41,6 +41,7 @@ class FilmFunction
      * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="function")
      */
     private $filmPersons;
+
     
     /**
      * @ORM\OneToMany(targetEntity="FilmAtelierGeneric", mappedBy="function")

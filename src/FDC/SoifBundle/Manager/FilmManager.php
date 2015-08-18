@@ -303,6 +303,7 @@ class FilmManager extends CoreManager
         }
         
         // set persons (directors)
+        $persons = array();
         if (property_exists($resultObject, 'FilmRealisateurs') && property_exists($resultObject->FilmRealisateurs, 'RealisateurRefDto')) {
             $objects = $resultObject->FilmRealisateurs->RealisateurRefDto;
             // create an array when we get an object to standardize the code
@@ -313,32 +314,33 @@ class FilmManager extends CoreManager
             // create / update director
             foreach ($objects as $object) {
                 $ids[] = $object->Id;
-                $filmFilmPerson = $this->em->getRepository('FDCCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
-                $filmFilmPerson = ($filmFilmPerson !== null) ? $filmFilmPerson : new FilmFilmPerson();
+                $persons[$object->Id] = $this->em->getRepository('FDCCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
+                $persons[$object->Id] = ($persons[$object->Id] !== null) ? $persons[$object->Id] : new FilmFilmPerson();
                 
                 // set person
                 $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById($object->Id);
                 if ($person === null) {
                     $person = $this->personManager->updateEntity($object->Id);
                 }
-                $filmFilmPerson->setPerson($person);
+                $persons[$object->Id]->setPerson($person);
                 
                 // set function
                 $function = $this->em->getRepository('FDCCoreBundle:FilmFunction')->findOneById($object->IdFonction);
                 if ($function !== null) {
-                    $filmFilmPersonFunction = $this->em->getRepository('FDCCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $filmFilmPerson->getId(), 'function' => $object->IdFonction));
+                    $filmFilmPersonFunction = $this->em->getRepository('FDCCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $persons[$object->Id]->getId(), 'function' => $object->IdFonction));
                     $filmFilmPersonFunction = ($filmFilmPersonFunction !== null) ? $filmFilmPersonFunction : new FilmFilmPersonFunction();
                     $filmFilmPersonFunction->setFunction($function);
-                    $filmFilmPersonFunction->setFilmPerson($filmFilmPerson);
-                    $filmFilmPerson->addFunction($filmFilmPersonFunction);
+                    $filmFilmPersonFunction->setFilmPerson($persons[$object->Id]);
+                    $filmFilmPersonFunction->setPosition($object->OrdreAffichage);
+                    $persons[$object->Id]->addFunction($filmFilmPersonFunction);
                 } else {
                     $this->logger->error(__METHOD__. " {$id}, function {$object->IdFonction} not found");
                 }
                 
-                $filmFilmPerson->setPosition($object->OrdreAffichage);
+                $persons[$object->Id]->setPosition($object->OrdreAffichage);
                 
-                if ($filmFilmPerson->getId() === null) {
-                    $entity->addPerson($filmFilmPerson);
+                if ($persons[$object->Id]->getId() === null) {
+                    $entity->addPerson($persons[$object->Id]);
                 }
             }
         }
@@ -354,17 +356,20 @@ class FilmManager extends CoreManager
             $functions = array();
             foreach ($objects as $object) {
                 $ids[] = $object->Id;
+                $id = $object->Id;
                 $functionId = $object->IdFonction;
-                $filmFilmPerson = $this->em->getRepository('FDCCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
-                $filmFilmPerson = ($filmFilmPerson !== null) ? $filmFilmPerson : new FilmFilmPerson();
-                $filmFilmPerson->setPosition($object->Ordre);
+                $order = $object->Ordre;
+                if (!isset($persons[$object->Id])) {
+                    $persons[$object->Id] = $this->em->getRepository('FDCCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
+                    $persons[$object->Id] = ($persons[$object->Id] !== null) ? $persons[$object->Id] : new FilmFilmPerson();
+                }
                 
                 // find person
                 $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById($object->Id);
                 if ($person === null) {
                     $person = $this->personManager->updateEntity($object->Id);
                 }
-                $filmFilmPerson->setPerson($person);
+                $persons[$object->Id]->setPerson($person);
 
                 // set function
                 if (property_exists($object, 'FonctionsTraductions') && property_exists($object->FonctionsTraductions, 'FonctionTraductionDto')) {
@@ -372,7 +377,6 @@ class FilmManager extends CoreManager
                     $functions[$functionId] = (isset($functions[$functionId])) ?  $functions[$functionId] : $this->em->getRepository('FDCCoreBundle:FilmFunction')->findOneById($functionId);
                     // set function
                     if (!isset($functions[$functionId])) {
-                        var_dump($functionId);
                         $functions[$functionId] = new FilmFunction();
                         $functions[$functionId]->setId($functionId);
 
@@ -393,19 +397,19 @@ class FilmManager extends CoreManager
                             } else {
                                 $functions[$functionId]->addTranslation($functionTranslation);
                             }
-                           // $this->em->flush();
                         }
                     }
                     
-                    $filmFilmPersonFunction = $this->em->getRepository('FDCCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $filmFilmPerson->getId(), 'function' => $functionId));
+                    $filmFilmPersonFunction = $this->em->getRepository('FDCCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $persons[$id]->getId(), 'function' => $functionId));
                     $filmFilmPersonFunction = ($filmFilmPersonFunction !== null) ? $filmFilmPersonFunction : new FilmFilmPersonFunction();
                     $filmFilmPersonFunction->setFunction($functions[$functionId]);
-                    $filmFilmPersonFunction->setFilmPerson($filmFilmPerson);
-                    $filmFilmPerson->addFunction($filmFilmPersonFunction);
+                    $filmFilmPersonFunction->setFilmPerson($persons[$id]);
+                    $filmFilmPersonFunction->setPosition($order);
+                    $persons[$id]->addFunction($filmFilmPersonFunction);
                 }
                 
-                if ($filmFilmPerson->getId() === null) {
-                    $entity->addPerson($filmFilmPerson);
+                if ($persons[$id]->getId() === null) {
+                    $entity->addPerson($persons[$id]);
                 }
             }
         }
@@ -420,26 +424,28 @@ class FilmManager extends CoreManager
             // create / update person
             foreach ($objects as $object) {
                 $ids[] = $object->Id;
-                $filmFilmPerson = $this->em->getRepository('FDCCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
-                $filmFilmPerson = ($filmFilmPerson !== null) ? $filmFilmPerson : new FilmFilmPerson();
-                $filmFilmPerson->setPosition($object->OrdreAffichage);
+                if (!isset($persons[$object->Id])) {
+                    $persons[$object->Id] = $this->em->getRepository('FDCCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
+                    $persons[$object->Id] = ($persons[$object->Id] !== null) ? $persons[$object->Id] : new FilmFilmPerson();
+                }
                 
                 // find person
                 $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById($object->Id);
                 if ($person === null) {
                     $person = $this->personManager->updateEntity($object->Id);
                 }
-                $filmFilmPerson->setPerson($person);
-                $filmFilmPerson->setFilm($entity);
+                $persons[$object->Id]->setPerson($person);
+                $persons[$object->Id]->setFilm($entity);
                 
                 // set function
                 $function = $this->em->getRepository('FDCCoreBundle:FilmFunction')->findOneById($object->IdFonction);
                 if ($function !== null) {
-                    $filmFilmPersonFunction = $this->em->getRepository('FDCCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $filmFilmPerson->getId(), 'function' => $object->IdFonction));
+                    $filmFilmPersonFunction = $this->em->getRepository('FDCCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $persons[$object->Id]->getId(), 'function' => $object->IdFonction));
                     $filmFilmPersonFunction = ($filmFilmPersonFunction !== null) ? $filmFilmPersonFunction : new FilmFilmPersonFunction();
                     $filmFilmPersonFunction->setFunction($function);
-                    $filmFilmPersonFunction->setFilmPerson($filmFilmPerson);
-                    $filmFilmPerson->addFunction($filmFilmPersonFunction);
+                    $filmFilmPersonFunction->setFilmPerson($persons[$object->Id]);
+                    $filmFilmPersonFunction->setPosition($object->OrdreAffichage);
+                    $persons[$object->Id]->addFunction($filmFilmPersonFunction);
                 } else {
                     $this->logger->error(__METHOD__. " {$id}, function {$object->IdFonction} not found");
                 }
@@ -449,18 +455,18 @@ class FilmManager extends CoreManager
                 $properties = array('RoleEn', 'RoleFr');
                 
                 foreach ($langs as $lang) {
-                    $entityTranslation = $filmFilmPerson->findTranslationByLocale($lang);
+                    $entityTranslation = $persons[$object->Id]->findTranslationByLocale($lang);
                     $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmFilmPersonTranslation();
                     $entityTranslation->setRole($object->{'Role'. ucfirst($lang)});
                     $entityTranslation->setLocale($lang);
                     
                     if ($entityTranslation->getId() === null) {
-                        $filmFilmPerson->addTranslation($entityTranslation);
+                        $persons[$object->Id]->addTranslation($entityTranslation);
                     }
                 }
         
-                if ($filmFilmPerson->getId() === null) {
-                    $entity->addPerson($filmFilmPerson);
+                if ($persons[$object->Id]->getId() === null) {
+                    $entity->addPerson($persons[$object->Id]);
                 }
             }
         }

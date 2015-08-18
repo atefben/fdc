@@ -29,13 +29,6 @@ class FilmAtelierPerson
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $position;
     
     /**
      * @var FilmFilm
@@ -46,13 +39,6 @@ class FilmAtelierPerson
     private $film;
 
     /**
-     * @var FilmFunction
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="personsAtelier", cascade={"persist"})
-     */
-    private $function;
-
-    /**
      * @var FilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="personsAtelier", cascade={"persist"})
@@ -61,10 +47,18 @@ class FilmAtelierPerson
     private $person;
     
     /**
+     * @var FilmFilmPersonFunction
+     *
+     * @ORM\oneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmAtelier", cascade={"persist"})
+     */
+    private $functions;
+    
+    /**
      * Constructor
      */
     public function __construct()
     {
+        $this->functions = new ArrayCollection();
     }
 
     /**
@@ -78,35 +72,12 @@ class FilmAtelierPerson
     }
 
     /**
-     * Set position
-     *
-     * @param integer $position
-     * @return FilmFilmPerson
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer 
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
      * Set film
      *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $film
-     * @return FilmFilmPerson
+     * @param \FDC\CoreBundle\Entity\FilmAtelier $film
+     * @return FilmAtelierPerson
      */
-    public function setFilm(\FDC\CoreBundle\Entity\FilmFilm $film = null)
+    public function setFilm(\FDC\CoreBundle\Entity\FilmAtelier $film = null)
     {
         $this->film = $film;
 
@@ -116,7 +87,7 @@ class FilmAtelierPerson
     /**
      * Get film
      *
-     * @return \FDC\CoreBundle\Entity\FilmFilm 
+     * @return \FDC\CoreBundle\Entity\FilmAtelier 
      */
     public function getFilm()
     {
@@ -124,33 +95,10 @@ class FilmAtelierPerson
     }
 
     /**
-     * Set function
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFunction $function
-     * @return FilmFilmPerson
-     */
-    public function setFunction(\FDC\CoreBundle\Entity\FilmFunction $function = null)
-    {
-        $this->function = $function;
-
-        return $this;
-    }
-
-    /**
-     * Get function
-     *
-     * @return \FDC\CoreBundle\Entity\FilmFunction 
-     */
-    public function getFunction()
-    {
-        return $this->function;
-    }
-
-    /**
      * Set person
      *
      * @param \FDC\CoreBundle\Entity\FilmPerson $person
-     * @return FilmFilmPerson
+     * @return FilmAtelierPerson
      */
     public function setPerson(\FDC\CoreBundle\Entity\FilmPerson $person = null)
     {
@@ -167,5 +115,38 @@ class FilmAtelierPerson
     public function getPerson()
     {
         return $this->person;
+    }
+
+    /**
+     * Add functions
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions
+     * @return FilmAtelierPerson
+     */
+    public function addFunction(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions)
+    {
+        $this->functions[] = $functions;
+
+        return $this;
+    }
+
+    /**
+     * Remove functions
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions
+     */
+    public function removeFunction(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions)
+    {
+        $this->functions->removeElement($functions);
+    }
+
+    /**
+     * Get functions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFunctions()
+    {
+        return $this->functions;
     }
 }

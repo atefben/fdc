@@ -85,13 +85,6 @@ class FilmAtelier
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $productionCompanyName;
-    
-    /**
-     * @var string
-     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $budgetAcquired;
@@ -125,23 +118,11 @@ class FilmAtelier
     private $persons;
 
     /**
-     * @var FilmAddress
+     * @var FilmAtelierProductionCompany
      *
-     * @ORM\ManyToOne(targetEntity="FilmAddress")
+     * @ORM\OneToOne(targetEntity="FilmAtelierProductionCompany")
      */
-    private $productionAddress;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FilmAtelierMinorProduction", mappedBy="film")
-     */
-    private $minorProductions;
-
-    /**
-     * @var FilmAtelierGeneric
-     *
-     * @ORM\OneToMany(targetEntity="FilmAtelierGeneric", mappedBy="filmAtelier")
-     */
-    private $filmAtelierGenerics;
+    private $productionCompany;
 
     /**
      * @var FilmMedia
@@ -174,8 +155,6 @@ class FilmAtelier
      */
     public function __construct()
     {
-        $this->minorProductions = new ArrayCollection();
-        $this->filmAtelierGenerics = new ArrayCollection();
         $this->medias = new ArrayCollection();
         $this->countries = new ArrayCollection();
         $this->languages = new ArrayCollection();
@@ -367,29 +346,6 @@ class FilmAtelier
     }
 
     /**
-     * Set productionCompanyName
-     *
-     * @param string $productionCompanyName
-     * @return FilmAtelier
-     */
-    public function setProductionCompanyName($productionCompanyName)
-    {
-        $this->productionCompanyName = $productionCompanyName;
-
-        return $this;
-    }
-
-    /**
-     * Get productionCompanyName
-     *
-     * @return string 
-     */
-    public function getProductionCompanyName()
-    {
-        return $this->productionCompanyName;
-    }
-
-    /**
      * Set budgetAcquired
      *
      * @param string $budgetAcquired
@@ -436,6 +392,29 @@ class FilmAtelier
     }
 
     /**
+     * Set selectionSection
+     *
+     * @param \FDC\CoreBundle\Entity\FilmSelectionSection $selectionSection
+     * @return FilmAtelier
+     */
+    public function setSelectionSection(\FDC\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
+    {
+        $this->selectionSection = $selectionSection;
+
+        return $this;
+    }
+
+    /**
+     * Get selectionSection
+     *
+     * @return \FDC\CoreBundle\Entity\FilmSelectionSection 
+     */
+    public function getSelectionSection()
+    {
+        return $this->selectionSection;
+    }
+
+    /**
      * Set festival
      *
      * @param \FDC\CoreBundle\Entity\FilmFestival $festival
@@ -459,92 +438,59 @@ class FilmAtelier
     }
 
     /**
-     * Set productionAddress
+     * Add persons
      *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $productionAddress
+     * @param \FDC\CoreBundle\Entity\FilmAtelierPerson $persons
      * @return FilmAtelier
      */
-    public function setProductionAddress(\FDC\CoreBundle\Entity\FilmAddress $productionAddress = null)
+    public function addPerson(\FDC\CoreBundle\Entity\FilmAtelierPerson $persons)
     {
-        $this->productionAddress = $productionAddress;
+        $this->persons[] = $persons;
 
         return $this;
     }
 
     /**
-     * Get productionAddress
+     * Remove persons
      *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
+     * @param \FDC\CoreBundle\Entity\FilmAtelierPerson $persons
      */
-    public function getProductionAddress()
+    public function removePerson(\FDC\CoreBundle\Entity\FilmAtelierPerson $persons)
     {
-        return $this->productionAddress;
+        $this->persons->removeElement($persons);
     }
 
     /**
-     * Add minorProductions
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierMinorProduction $minorProductions
-     * @return FilmAtelier
-     */
-    public function addMinorProduction(\FDC\CoreBundle\Entity\FilmAtelierMinorProduction $minorProductions)
-    {
-        $this->minorProductions[] = $minorProductions;
-
-        return $this;
-    }
-
-    /**
-     * Remove minorProductions
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierMinorProduction $minorProductions
-     */
-    public function removeMinorProduction(\FDC\CoreBundle\Entity\FilmAtelierMinorProduction $minorProductions)
-    {
-        $this->minorProductions->removeElement($minorProductions);
-    }
-
-    /**
-     * Get minorProductions
+     * Get persons
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getMinorProductions()
+    public function getPersons()
     {
-        return $this->minorProductions;
+        return $this->persons;
     }
 
     /**
-     * Add filmAtelierGenerics
+     * Set productionCompany
      *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics
+     * @param \FDC\CoreBundle\Entity\FilmAtelierProductionCompany $productionCompany
      * @return FilmAtelier
      */
-    public function addFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
+    public function setProductionCompany(\FDC\CoreBundle\Entity\FilmAtelierProductionCompany $productionCompany = null)
     {
-        $this->filmAtelierGenerics[] = $filmAtelierGenerics;
+        $this->productionCompany = $productionCompany;
 
         return $this;
     }
 
     /**
-     * Remove filmAtelierGenerics
+     * Get productionCompany
      *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics
+     * @return \FDC\CoreBundle\Entity\FilmAtelierProductionCompany 
      */
-    public function removeFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
+    public function getProductionCompany()
     {
-        $this->filmAtelierGenerics->removeElement($filmAtelierGenerics);
-    }
-
-    /**
-     * Get filmAtelierGenerics
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFilmAtelierGenerics()
-    {
-        return $this->filmAtelierGenerics;
+        return $this->productionCompany;
     }
 
     /**
@@ -644,28 +590,5 @@ class FilmAtelier
     public function getLanguages()
     {
         return $this->languages;
-    }
-
-    /**
-     * Set selectionSection
-     *
-     * @param \FDC\CoreBundle\Entity\FilmSelectionSection $selectionSection
-     * @return FilmAtelier
-     */
-    public function setSelectionSection(\FDC\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
-    {
-        $this->selectionSection = $selectionSection;
-
-        return $this;
-    }
-
-    /**
-     * Get selectionSection
-     *
-     * @return \FDC\CoreBundle\Entity\FilmSelectionSection 
-     */
-    public function getSelectionSection()
-    {
-        return $this->selectionSection;
     }
 }

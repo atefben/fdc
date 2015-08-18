@@ -40,7 +40,7 @@ services:
     fdc.soif.film_atelier_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\FilmAtelierManager
-        arguments: ['@fdc.soif.festival_manager']
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.person_manager']
 
     fdc.soif.jury_manager:
         parent: fdc.soif.core_manager

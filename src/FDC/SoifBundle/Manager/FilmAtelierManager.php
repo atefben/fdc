@@ -5,6 +5,7 @@ namespace FDC\SoifBundle\Manager;
 use \DateTime;
 
 use FDC\CoreBundle\Entity\FilmAtelier;
+use FDC\CoreBundle\Entity\FilmAtelierPerson;
 use FDC\CoreBundle\Entity\FilmAtelierTranslation;
 
 /**
@@ -22,6 +23,14 @@ class FilmAtelierManager extends CoreManager
      * @access private
      */
     private $festivalManager;
+    
+    /**
+     * personManager
+     * 
+     * @var mixed
+     * @access private
+     */
+    private $personManager;
 
     /**
      * __construct function.
@@ -29,10 +38,11 @@ class FilmAtelierManager extends CoreManager
      * @access public
      * @return void
      */
-    public function __construct($festivalManager)
+    public function __construct($festivalManager, $personManager)
     {
         // managers
         $this->festivalManager = $festivalManager;
+        $this->personManager = $personManager;
 
         // soif parameters
         $this->repository = 'FDCCoreBundle:FilmAtelier';
@@ -133,25 +143,29 @@ class FilmAtelierManager extends CoreManager
             }
             
             foreach ($resultObject->IdRealisateurs as $director) {
-                $filmPerson = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneBy(array('person' => $director->int));
-                $filmPerson = ($filmPerson !== null) ? $person : $this->personManager->updateEntity($director->int);
+                $filmPerson = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneBy(array('id' => $director->int));
+                $filmPerson = ($filmPerson !== null) ? $filmPerson : $this->personManager->updateEntity($director->int);
                 
-                $filmAtelierPerson = $this->em->getRepository('FDCCoreBundle:FilmAtelierPerson')->findOneBy(array('film', $entity->getId(), 'person' => $director->int, 'function' => $director->IdFunction));
+                $filmAtelierPerson = $this->em->getRepository('FDCCoreBundle:FilmAtelierPerson')->findOneBy(array('film' => $entity->getId(), 'person' => $director->int));
                 $filmAtelierPerson = ($filmAtelierPerson !== null)  ? $filmAtelierPerson : new FilmAtelierPerson();
                 $filmAtelierPerson->setPerson($filmPerson);
                 
-                $filmFunction = $function = $this->em->getRepository('FDCCoreBundle:FilmFunction')->findOneById($object->IdFonction);
-                if ($function !== null) {
-                    $filmFilmPerson->setFunction($function);
+                // set function
+                if ($filmAtelierPerson->getFunctions()->count() == 0) {
+                    $functionTranslation = $this->em->getRepository('FDCCoreBundle:FilmFunctionTranslation')->findOneBy(array('locale' => 'en', 'name' => 'Director'));
+                    if ($functionTranslation === null) {
+                        $this->logger->error(__METHOD__. " {$id}, function translation Director not found");
+                    } else {
+                        $filmAtelierPersonFunction = new FilmAtelierPersonFunction();
+                        $filmAtelierPersonFunction->setFunction($functionTranslation->getFunction());
+                        $filmAtelierPerson->addFuntion($filmAtelierPersonFunction);
+                    }
                 }
-               // $function = $this->em->getRepository('FDCCoreBundle:FilmFunctionTranslation')->
-               // $entity->addPerson()
-                
             }
         }
-        // set persons (realisateurs)
-      //  if (property_exists($object, 'IdRealisateurs'))
-        //$persons = $entity->getPersons();
+        
+        // set production company
+        $filmAtelierProductionCompany = $this->em->getRepository()->findOneBy(array('name' => $resultObject->NomSocieteProduction));
         
         // set related entity
         $this->setEntityRelated($resultObject, $entity);

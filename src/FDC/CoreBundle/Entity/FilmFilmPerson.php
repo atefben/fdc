@@ -37,13 +37,6 @@ class FilmFilmPerson
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $position;
     
     /**
      * @var FilmFilm
@@ -54,19 +47,19 @@ class FilmFilmPerson
     private $film;
 
     /**
-     * @var FilmFilmPersonFunction
-     *
-     * @ORM\oneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"persist"})
-     */
-    private $functions;
-
-    /**
      * @var FilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="persons", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=false)
      */
     private $person;
+
+    /**
+     * @var FilmFilmPersonFunction
+     *
+     * @ORM\oneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"persist"})
+     */
+    private $functions;
 
     /**
      * @var ArrayCollection
@@ -90,29 +83,6 @@ class FilmFilmPerson
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set position
-     *
-     * @param integer $position
-     * @return FilmFilmPerson
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer 
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 
     /**
