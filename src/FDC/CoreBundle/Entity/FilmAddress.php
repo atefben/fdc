@@ -2,6 +2,7 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -26,12 +27,62 @@ class FilmAddress
      */
     private $id;
 
+
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $content;
+    private $postalCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $email;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $fax;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+     private $street;
+     
+     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+     private $website;
+     
+     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+     private $mobilePhone;
+     
+     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+     private $phone;
+     
+     /**
+      * @var string
+      *
+      * @ORM\Column(type="string", nullable=true)
+      */
+     private $city;
 
     /**
      * @var Country
@@ -39,13 +90,13 @@ class FilmAddress
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="addresses")
      */
     private $country;
+    
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\OneToMany(targetEntity="FilmContact", mappedBy="address")
      */
-    private $contactsOptionals;
+    private $contacts;
+
     
     /**
      * @ORM\OneToMany(targetEntity="FilmPerson", mappedBy="address")
@@ -91,14 +142,15 @@ class FilmAddress
      */
     public function __construct()
     {
-        $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->directorFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->schoolsFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->eventFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pressInternatFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pressFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->distributionFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productionFilms = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->persons = new ArrayCollection();
+        $this->directorFilms = new ArrayCollection();
+        $this->schoolsFilms = new ArrayCollection();
+        $this->eventFilms = new ArrayCollection();
+        $this->pressInternatFilms = new ArrayCollection();
+        $this->pressFilms = new ArrayCollection();
+        $this->distributionFilms = new ArrayCollection();
+        $this->productionFilms = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
     }
 
     /**
@@ -112,49 +164,187 @@ class FilmAddress
     }
 
     /**
-     * Set content
+     * Set postalCode
      *
-     * @param string $content
+     * @param string $postalCode
      * @return FilmAddress
      */
-    public function setContent($content)
+    public function setPostalCode($postalCode)
     {
-        $this->content = $content;
+        $this->postalCode = $postalCode;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get postalCode
      *
      * @return string 
      */
-    public function getContent()
+    public function getPostalCode()
     {
-        return $this->content;
+        return $this->postalCode;
     }
 
     /**
-     * Set contactsOptionals
+     * Set email
      *
-     * @param string $contactsOptionals
+     * @param string $email
      * @return FilmAddress
      */
-    public function setContactsOptionals($contactsOptionals)
+    public function setEmail($email)
     {
-        $this->contactsOptionals = $contactsOptionals;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get contactsOptionals
+     * Get email
      *
      * @return string 
      */
-    public function getContactsOptionals()
+    public function getEmail()
     {
-        return $this->contactsOptionals;
+        return $this->email;
+    }
+
+    /**
+     * Set fax
+     *
+     * @param string $fax
+     * @return FilmAddress
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @return string 
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * Set street
+     *
+     * @param string $street
+     * @return FilmAddress
+     */
+    public function setStreet($street)
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    /**
+     * Get street
+     *
+     * @return string 
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return FilmAddress
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set mobilePhone
+     *
+     * @param string $mobilePhone
+     * @return FilmAddress
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobilePhone = $mobilePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get mobilePhone
+     *
+     * @return string 
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobilePhone;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return FilmAddress
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return FilmAddress
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string 
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 
     /**
@@ -442,5 +632,38 @@ class FilmAddress
     public function getProductionFilms()
     {
         return $this->productionFilms;
+    }
+
+    /**
+     * Add contacts
+     *
+     * @param \FDC\CoreBundle\Entity\FilmContact $contact
+     * @return FilmAddress
+     */
+    public function addContact(\FDC\CoreBundle\Entity\FilmContact $contact)
+    {
+        $this->contacts[] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Remove contacts
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilm $contact
+     */
+    public function removeContact(\FDC\CoreBundle\Entity\FilmContact $contact)
+    {
+        $this->contacts->removeElement($contact);
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }

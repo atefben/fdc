@@ -2,20 +2,28 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CoreBundle\Util\Translation;
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmAtelier
  *
- * @ORM\Table(indexes={@ORM\Index(name="festival_year_title_vo", columns={"festival_year", "title_vo"}),@ORM\Index(name="internet", columns={"internet"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
 class FilmAtelier
 {
+    use Translatable;
+    use Translation;
     use Time;
+    use Soif;
 
     /**
      * @var string
@@ -28,37 +36,37 @@ class FilmAtelier
     /**
      * @var string
      *
-     * @ORM\Column(type="integer", options={"unsigned" = true})
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $festivalYear;
-
+    private $titleVO;
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $titleVo;
-
+    private $productionYear;
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $titleVf;
+    private $budgetEstimation;
+    
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $filmingDate;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $titleVa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $courtlong;
+    private $filmingPlace;
 
     /**
      * @var string
@@ -66,160 +74,27 @@ class FilmAtelier
      * @ORM\Column(type="decimal", precision=22, scale=2, nullable=true)
      */
     private $duration;
-
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=1, nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $premierFilm;
-
+    private $sessionName;
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=1, nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $premiereMondiale;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=4, nullable=true)
-     */
-    private $productionYear;
-
-    /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="FilmCategory", inversedBy="filmAteliers")
-     */
-    private $category;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $genre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $section;
-
+    private $productionCompanyName;
+    
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $synopsisVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $synopsisVf2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $synopsisVf3;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $synopsisVa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $synopsisVa2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $synopsisVa3;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $dialog1Vf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $dialogue2Vf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $dialogue3Vf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $dialog1Va;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $dialog2Va;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $dialog3Va;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=250, nullable=true)
-     */
-    private $previousEvent;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    private $exploitationCountry;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $internetDiffusion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $internet;
+    private $budgetAcquired;
 
     /**
      * @var string
@@ -227,6 +102,27 @@ class FilmAtelier
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $cinandoUrl;
+    
+    /**
+     * @var FilmSelectionSection
+     *
+     * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="filmAteliers")
+     */
+    private $selectionSection;
+    
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films")
+     */
+    private $festival;
+    
+    /**
+     * @var FilmAtelierPerson
+     *
+     * @ORM\OneToMany(targetEntity="FilmAtelierPerson", mappedBy="film", cascade={"persist"})
+     */
+    private $persons;
 
     /**
      * @var FilmAddress
@@ -234,104 +130,6 @@ class FilmAtelier
      * @ORM\ManyToOne(targetEntity="FilmAddress")
      */
     private $productionAddress;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress")
-     */
-    private $distributionAddress;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress")
-     */
-    private $pressFrAdress;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $addressPressInternatId;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress")
-     */
-    private $eventAddress;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress")
-     */
-    private $directorAddress;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=3, nullable=true)
-     */
-    private $subtitleLanguage;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $restaurantOwner;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=40, nullable=true)
-     */
-    private $restorationType;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $noDialog;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $color;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $gala;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $transitaireDepart;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $transitaireArrivee;
-    
-     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $productionInfos;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAtelierMinorProduction", mappedBy="film")
@@ -367,22 +165,21 @@ class FilmAtelier
     private $languages;
     
     /**
-     * @var FilmAtelierTranslation
-     *
-     * @ORM\OneToMany(targetEntity="FilmAtelierTranslation", mappedBy="film")
+     * @var ArrayCollection
      */
-    private $translations;
+    protected $translations;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->minorProductions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->filmAtelierGenerics = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->countries = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->minorProductions = new ArrayCollection();
+        $this->filmAtelierGenerics = new ArrayCollection();
+        $this->medias = new ArrayCollection();
+        $this->countries = new ArrayCollection();
+        $this->languages = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -409,118 +206,118 @@ class FilmAtelier
     }
 
     /**
-     * Set festivalYear
+     * Set titleVO
      *
-     * @param integer $festivalYear
+     * @param string $titleVO
      * @return FilmAtelier
      */
-    public function setFestivalYear($festivalYear)
+    public function setTitleVO($titleVO)
     {
-        $this->festivalYear = $festivalYear;
+        $this->titleVO = $titleVO;
 
         return $this;
     }
 
     /**
-     * Get festivalYear
+     * Get titleVO
+     *
+     * @return string 
+     */
+    public function getTitleVO()
+    {
+        return $this->titleVO;
+    }
+
+    /**
+     * Set productionYear
+     *
+     * @param integer $productionYear
+     * @return FilmAtelier
+     */
+    public function setProductionYear($productionYear)
+    {
+        $this->productionYear = $productionYear;
+
+        return $this;
+    }
+
+    /**
+     * Get productionYear
      *
      * @return integer 
      */
-    public function getFestivalYear()
+    public function getProductionYear()
     {
-        return $this->festivalYear;
+        return $this->productionYear;
     }
 
     /**
-     * Set titleVo
+     * Set budgetEstimation
      *
-     * @param string $titleVo
+     * @param string $budgetEstimation
      * @return FilmAtelier
      */
-    public function setTitleVo($titleVo)
+    public function setBudgetEstimation($budgetEstimation)
     {
-        $this->titleVo = $titleVo;
+        $this->budgetEstimation = $budgetEstimation;
 
         return $this;
     }
 
     /**
-     * Get titleVo
+     * Get budgetEstimation
      *
      * @return string 
      */
-    public function getTitleVo()
+    public function getBudgetEstimation()
     {
-        return $this->titleVo;
+        return $this->budgetEstimation;
     }
 
     /**
-     * Set titleVf
+     * Set filmingDate
      *
-     * @param string $titleVf
+     * @param \DateTime $filmingDate
      * @return FilmAtelier
      */
-    public function setTitleVf($titleVf)
+    public function setFilmingDate($filmingDate)
     {
-        $this->titleVf = $titleVf;
+        $this->filmingDate = $filmingDate;
 
         return $this;
     }
 
     /**
-     * Get titleVf
+     * Get filmingDate
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getTitleVf()
+    public function getFilmingDate()
     {
-        return $this->titleVf;
+        return $this->filmingDate;
     }
 
     /**
-     * Set titleVa
+     * Set filmingPlace
      *
-     * @param string $titleVa
+     * @param string $filmingPlace
      * @return FilmAtelier
      */
-    public function setTitleVa($titleVa)
+    public function setFilmingPlace($filmingPlace)
     {
-        $this->titleVa = $titleVa;
+        $this->filmingPlace = $filmingPlace;
 
         return $this;
     }
 
     /**
-     * Get titleVa
+     * Get filmingPlace
      *
      * @return string 
      */
-    public function getTitleVa()
+    public function getFilmingPlace()
     {
-        return $this->titleVa;
-    }
-
-    /**
-     * Set courtlong
-     *
-     * @param string $courtlong
-     * @return FilmAtelier
-     */
-    public function setCourtlong($courtlong)
-    {
-        $this->courtlong = $courtlong;
-
-        return $this;
-    }
-
-    /**
-     * Get courtlong
-     *
-     * @return string 
-     */
-    public function getCourtlong()
-    {
-        return $this->courtlong;
+        return $this->filmingPlace;
     }
 
     /**
@@ -547,486 +344,72 @@ class FilmAtelier
     }
 
     /**
-     * Set premierFilm
+     * Set sessionName
      *
-     * @param string $premierFilm
+     * @param string $sessionName
      * @return FilmAtelier
      */
-    public function setPremierFilm($premierFilm)
+    public function setSessionName($sessionName)
     {
-        $this->premierFilm = $premierFilm;
+        $this->sessionName = $sessionName;
 
         return $this;
     }
 
     /**
-     * Get premierFilm
+     * Get sessionName
      *
      * @return string 
      */
-    public function getPremierFilm()
+    public function getSessionName()
     {
-        return $this->premierFilm;
+        return $this->sessionName;
     }
 
     /**
-     * Set premiereMondiale
+     * Set productionCompanyName
      *
-     * @param string $premiereMondiale
+     * @param string $productionCompanyName
      * @return FilmAtelier
      */
-    public function setPremiereMondiale($premiereMondiale)
+    public function setProductionCompanyName($productionCompanyName)
     {
-        $this->premiereMondiale = $premiereMondiale;
+        $this->productionCompanyName = $productionCompanyName;
 
         return $this;
     }
 
     /**
-     * Get premiereMondiale
+     * Get productionCompanyName
      *
      * @return string 
      */
-    public function getPremiereMondiale()
+    public function getProductionCompanyName()
     {
-        return $this->premiereMondiale;
+        return $this->productionCompanyName;
     }
 
     /**
-     * Set productionYear
+     * Set budgetAcquired
      *
-     * @param string $productionYear
+     * @param string $budgetAcquired
      * @return FilmAtelier
      */
-    public function setProductionYear($productionYear)
+    public function setBudgetAcquired($budgetAcquired)
     {
-        $this->productionYear = $productionYear;
+        $this->budgetAcquired = $budgetAcquired;
 
         return $this;
     }
 
     /**
-     * Get productionYear
+     * Get budgetAcquired
      *
      * @return string 
      */
-    public function getProductionYear()
+    public function getBudgetAcquired()
     {
-        return $this->productionYear;
-    }
-
-    /**
-     * Set genre
-     *
-     * @param string $genre
-     * @return FilmAtelier
-     */
-    public function setGenre($genre)
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
-
-    /**
-     * Get genre
-     *
-     * @return string 
-     */
-    public function getGenre()
-    {
-        return $this->genre;
-    }
-
-    /**
-     * Set section
-     *
-     * @param string $section
-     * @return FilmAtelier
-     */
-    public function setSection($section)
-    {
-        $this->section = $section;
-
-        return $this;
-    }
-
-    /**
-     * Get section
-     *
-     * @return string 
-     */
-    public function getSection()
-    {
-        return $this->section;
-    }
-
-    /**
-     * Set synopsisVf
-     *
-     * @param string $synopsisVf
-     * @return FilmAtelier
-     */
-    public function setSynopsisVf($synopsisVf)
-    {
-        $this->synopsisVf = $synopsisVf;
-
-        return $this;
-    }
-
-    /**
-     * Get synopsisVf
-     *
-     * @return string 
-     */
-    public function getSynopsisVf()
-    {
-        return $this->synopsisVf;
-    }
-
-    /**
-     * Set synopsisVf2
-     *
-     * @param string $synopsisVf2
-     * @return FilmAtelier
-     */
-    public function setSynopsisVf2($synopsisVf2)
-    {
-        $this->synopsisVf2 = $synopsisVf2;
-
-        return $this;
-    }
-
-    /**
-     * Get synopsisVf2
-     *
-     * @return string 
-     */
-    public function getSynopsisVf2()
-    {
-        return $this->synopsisVf2;
-    }
-
-    /**
-     * Set synopsisVf3
-     *
-     * @param string $synopsisVf3
-     * @return FilmAtelier
-     */
-    public function setSynopsisVf3($synopsisVf3)
-    {
-        $this->synopsisVf3 = $synopsisVf3;
-
-        return $this;
-    }
-
-    /**
-     * Get synopsisVf3
-     *
-     * @return string 
-     */
-    public function getSynopsisVf3()
-    {
-        return $this->synopsisVf3;
-    }
-
-    /**
-     * Set synopsisVa
-     *
-     * @param string $synopsisVa
-     * @return FilmAtelier
-     */
-    public function setSynopsisVa($synopsisVa)
-    {
-        $this->synopsisVa = $synopsisVa;
-
-        return $this;
-    }
-
-    /**
-     * Get synopsisVa
-     *
-     * @return string 
-     */
-    public function getSynopsisVa()
-    {
-        return $this->synopsisVa;
-    }
-
-    /**
-     * Set synopsisVa2
-     *
-     * @param string $synopsisVa2
-     * @return FilmAtelier
-     */
-    public function setSynopsisVa2($synopsisVa2)
-    {
-        $this->synopsisVa2 = $synopsisVa2;
-
-        return $this;
-    }
-
-    /**
-     * Get synopsisVa2
-     *
-     * @return string 
-     */
-    public function getSynopsisVa2()
-    {
-        return $this->synopsisVa2;
-    }
-
-    /**
-     * Set synopsisVa3
-     *
-     * @param string $synopsisVa3
-     * @return FilmAtelier
-     */
-    public function setSynopsisVa3($synopsisVa3)
-    {
-        $this->synopsisVa3 = $synopsisVa3;
-
-        return $this;
-    }
-
-    /**
-     * Get synopsisVa3
-     *
-     * @return string 
-     */
-    public function getSynopsisVa3()
-    {
-        return $this->synopsisVa3;
-    }
-
-    /**
-     * Set dialog1Vf
-     *
-     * @param string $dialog1Vf
-     * @return FilmAtelier
-     */
-    public function setDialog1Vf($dialog1Vf)
-    {
-        $this->dialog1Vf = $dialog1Vf;
-
-        return $this;
-    }
-
-    /**
-     * Get dialog1Vf
-     *
-     * @return string 
-     */
-    public function getDialog1Vf()
-    {
-        return $this->dialog1Vf;
-    }
-
-    /**
-     * Set dialogue2Vf
-     *
-     * @param string $dialogue2Vf
-     * @return FilmAtelier
-     */
-    public function setDialogue2Vf($dialogue2Vf)
-    {
-        $this->dialogue2Vf = $dialogue2Vf;
-
-        return $this;
-    }
-
-    /**
-     * Get dialogue2Vf
-     *
-     * @return string 
-     */
-    public function getDialogue2Vf()
-    {
-        return $this->dialogue2Vf;
-    }
-
-    /**
-     * Set dialogue3Vf
-     *
-     * @param string $dialogue3Vf
-     * @return FilmAtelier
-     */
-    public function setDialogue3Vf($dialogue3Vf)
-    {
-        $this->dialogue3Vf = $dialogue3Vf;
-
-        return $this;
-    }
-
-    /**
-     * Get dialogue3Vf
-     *
-     * @return string 
-     */
-    public function getDialogue3Vf()
-    {
-        return $this->dialogue3Vf;
-    }
-
-    /**
-     * Set dialog1Va
-     *
-     * @param string $dialog1Va
-     * @return FilmAtelier
-     */
-    public function setDialog1Va($dialog1Va)
-    {
-        $this->dialog1Va = $dialog1Va;
-
-        return $this;
-    }
-
-    /**
-     * Get dialog1Va
-     *
-     * @return string 
-     */
-    public function getDialog1Va()
-    {
-        return $this->dialog1Va;
-    }
-
-    /**
-     * Set dialog2Va
-     *
-     * @param string $dialog2Va
-     * @return FilmAtelier
-     */
-    public function setDialog2Va($dialog2Va)
-    {
-        $this->dialog2Va = $dialog2Va;
-
-        return $this;
-    }
-
-    /**
-     * Get dialog2Va
-     *
-     * @return string 
-     */
-    public function getDialog2Va()
-    {
-        return $this->dialog2Va;
-    }
-
-    /**
-     * Set dialog3Va
-     *
-     * @param string $dialog3Va
-     * @return FilmAtelier
-     */
-    public function setDialog3Va($dialog3Va)
-    {
-        $this->dialog3Va = $dialog3Va;
-
-        return $this;
-    }
-
-    /**
-     * Get dialog3Va
-     *
-     * @return string 
-     */
-    public function getDialog3Va()
-    {
-        return $this->dialog3Va;
-    }
-
-    /**
-     * Set previousEvent
-     *
-     * @param string $previousEvent
-     * @return FilmAtelier
-     */
-    public function setPreviousEvent($previousEvent)
-    {
-        $this->previousEvent = $previousEvent;
-
-        return $this;
-    }
-
-    /**
-     * Get previousEvent
-     *
-     * @return string 
-     */
-    public function getPreviousEvent()
-    {
-        return $this->previousEvent;
-    }
-
-    /**
-     * Set exploitationCountry
-     *
-     * @param string $exploitationCountry
-     * @return FilmAtelier
-     */
-    public function setExploitationCountry($exploitationCountry)
-    {
-        $this->exploitationCountry = $exploitationCountry;
-
-        return $this;
-    }
-
-    /**
-     * Get exploitationCountry
-     *
-     * @return string 
-     */
-    public function getExploitationCountry()
-    {
-        return $this->exploitationCountry;
-    }
-
-    /**
-     * Set internetDiffusion
-     *
-     * @param string $internetDiffusion
-     * @return FilmAtelier
-     */
-    public function setInternetDiffusion($internetDiffusion)
-    {
-        $this->internetDiffusion = $internetDiffusion;
-
-        return $this;
-    }
-
-    /**
-     * Get internetDiffusion
-     *
-     * @return string 
-     */
-    public function getInternetDiffusion()
-    {
-        return $this->internetDiffusion;
-    }
-
-    /**
-     * Set internet
-     *
-     * @param string $internet
-     * @return FilmAtelier
-     */
-    public function setInternet($internet)
-    {
-        $this->internet = $internet;
-
-        return $this;
-    }
-
-    /**
-     * Get internet
-     *
-     * @return string 
-     */
-    public function getInternet()
-    {
-        return $this->internet;
+        return $this->budgetAcquired;
     }
 
     /**
@@ -1053,256 +436,26 @@ class FilmAtelier
     }
 
     /**
-     * Set addressPressInternatId
+     * Set festival
      *
-     * @param integer $addressPressInternatId
+     * @param \FDC\CoreBundle\Entity\FilmFestival $festival
      * @return FilmAtelier
      */
-    public function setAddressPressInternatId($addressPressInternatId)
+    public function setFestival(\FDC\CoreBundle\Entity\FilmFestival $festival = null)
     {
-        $this->addressPressInternatId = $addressPressInternatId;
+        $this->festival = $festival;
 
         return $this;
     }
 
     /**
-     * Get addressPressInternatId
+     * Get festival
      *
-     * @return integer 
+     * @return \FDC\CoreBundle\Entity\FilmFestival 
      */
-    public function getAddressPressInternatId()
+    public function getFestival()
     {
-        return $this->addressPressInternatId;
-    }
-
-    /**
-     * Set subtitleLanguage
-     *
-     * @param string $subtitleLanguage
-     * @return FilmAtelier
-     */
-    public function setSubtitleLanguage($subtitleLanguage)
-    {
-        $this->subtitleLanguage = $subtitleLanguage;
-
-        return $this;
-    }
-
-    /**
-     * Get subtitleLanguage
-     *
-     * @return string 
-     */
-    public function getSubtitleLanguage()
-    {
-        return $this->subtitleLanguage;
-    }
-
-    /**
-     * Set restaurantOwner
-     *
-     * @param string $restaurantOwner
-     * @return FilmAtelier
-     */
-    public function setRestaurantOwner($restaurantOwner)
-    {
-        $this->restaurantOwner = $restaurantOwner;
-
-        return $this;
-    }
-
-    /**
-     * Get restaurantOwner
-     *
-     * @return string 
-     */
-    public function getRestaurantOwner()
-    {
-        return $this->restaurantOwner;
-    }
-
-    /**
-     * Set restorationType
-     *
-     * @param string $restorationType
-     * @return FilmAtelier
-     */
-    public function setRestorationType($restorationType)
-    {
-        $this->restorationType = $restorationType;
-
-        return $this;
-    }
-
-    /**
-     * Get restorationType
-     *
-     * @return string 
-     */
-    public function getRestorationType()
-    {
-        return $this->restorationType;
-    }
-
-    /**
-     * Set noDialog
-     *
-     * @param string $noDialog
-     * @return FilmAtelier
-     */
-    public function setNoDialog($noDialog)
-    {
-        $this->noDialog = $noDialog;
-
-        return $this;
-    }
-
-    /**
-     * Get noDialog
-     *
-     * @return string 
-     */
-    public function getNoDialog()
-    {
-        return $this->noDialog;
-    }
-
-    /**
-     * Set color
-     *
-     * @param string $color
-     * @return FilmAtelier
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * Get color
-     *
-     * @return string 
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    /**
-     * Set gala
-     *
-     * @param string $gala
-     * @return FilmAtelier
-     */
-    public function setGala($gala)
-    {
-        $this->gala = $gala;
-
-        return $this;
-    }
-
-    /**
-     * Get gala
-     *
-     * @return string 
-     */
-    public function getGala()
-    {
-        return $this->gala;
-    }
-
-    /**
-     * Set transitaireDepart
-     *
-     * @param string $transitaireDepart
-     * @return FilmAtelier
-     */
-    public function setTransitaireDepart($transitaireDepart)
-    {
-        $this->transitaireDepart = $transitaireDepart;
-
-        return $this;
-    }
-
-    /**
-     * Get transitaireDepart
-     *
-     * @return string 
-     */
-    public function getTransitaireDepart()
-    {
-        return $this->transitaireDepart;
-    }
-
-    /**
-     * Set transitaireArrivee
-     *
-     * @param string $transitaireArrivee
-     * @return FilmAtelier
-     */
-    public function setTransitaireArrivee($transitaireArrivee)
-    {
-        $this->transitaireArrivee = $transitaireArrivee;
-
-        return $this;
-    }
-
-    /**
-     * Get transitaireArrivee
-     *
-     * @return string 
-     */
-    public function getTransitaireArrivee()
-    {
-        return $this->transitaireArrivee;
-    }
-
-    /**
-     * Set productionInfos
-     *
-     * @param string $productionInfos
-     * @return FilmAtelier
-     */
-    public function setProductionInfos($productionInfos)
-    {
-        $this->productionInfos = $productionInfos;
-
-        return $this;
-    }
-
-    /**
-     * Get productionInfos
-     *
-     * @return string 
-     */
-    public function getProductionInfos()
-    {
-        return $this->productionInfos;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \FDC\CoreBundle\Entity\FilmCategory $category
-     * @return FilmAtelier
-     */
-    public function setCategory(\FDC\CoreBundle\Entity\FilmCategory $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \FDC\CoreBundle\Entity\FilmCategory 
-     */
-    public function getCategory()
-    {
-        return $this->category;
+        return $this->festival;
     }
 
     /**
@@ -1326,98 +479,6 @@ class FilmAtelier
     public function getProductionAddress()
     {
         return $this->productionAddress;
-    }
-
-    /**
-     * Set distributionAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $distributionAddress
-     * @return FilmAtelier
-     */
-    public function setDistributionAddress(\FDC\CoreBundle\Entity\FilmAddress $distributionAddress = null)
-    {
-        $this->distributionAddress = $distributionAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get distributionAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getDistributionAddress()
-    {
-        return $this->distributionAddress;
-    }
-
-    /**
-     * Set pressFrAdress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $pressFrAdress
-     * @return FilmAtelier
-     */
-    public function setPressFrAdress(\FDC\CoreBundle\Entity\FilmAddress $pressFrAdress = null)
-    {
-        $this->pressFrAdress = $pressFrAdress;
-
-        return $this;
-    }
-
-    /**
-     * Get pressFrAdress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getPressFrAdress()
-    {
-        return $this->pressFrAdress;
-    }
-
-    /**
-     * Set eventAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $eventAddress
-     * @return FilmAtelier
-     */
-    public function setEventAddress(\FDC\CoreBundle\Entity\FilmAddress $eventAddress = null)
-    {
-        $this->eventAddress = $eventAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get eventAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getEventAddress()
-    {
-        return $this->eventAddress;
-    }
-
-    /**
-     * Set directorAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $directorAddress
-     * @return FilmAtelier
-     */
-    public function setDirectorAddress(\FDC\CoreBundle\Entity\FilmAddress $directorAddress = null)
-    {
-        $this->directorAddress = $directorAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get directorAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getDirectorAddress()
-    {
-        return $this->directorAddress;
     }
 
     /**
@@ -1487,6 +548,39 @@ class FilmAtelier
     }
 
     /**
+     * Add medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     * @return FilmAtelier
+     */
+    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias[] = $medias;
+
+        return $this;
+    }
+
+    /**
+     * Remove medias
+     *
+     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     */
+    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias->removeElement($medias);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
      * Add countries
      *
      * @param \FDC\CoreBundle\Entity\FilmAtelierCountry $countries
@@ -1553,68 +647,25 @@ class FilmAtelier
     }
 
     /**
-     * Add translations
+     * Set selectionSection
      *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierTranslation $translations
+     * @param \FDC\CoreBundle\Entity\FilmSelectionSection $selectionSection
      * @return FilmAtelier
      */
-    public function addTranslation(\FDC\CoreBundle\Entity\FilmAtelierTranslation $translations)
+    public function setSelectionSection(\FDC\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
     {
-        $this->translations[] = $translations;
+        $this->selectionSection = $selectionSection;
 
         return $this;
     }
 
     /**
-     * Remove translations
+     * Get selectionSection
      *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierTranslation $translations
+     * @return \FDC\CoreBundle\Entity\FilmSelectionSection 
      */
-    public function removeTranslation(\FDC\CoreBundle\Entity\FilmAtelierTranslation $translations)
+    public function getSelectionSection()
     {
-        $this->translations->removeElement($translations);
-    }
-
-    /**
-     * Get translations
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * Add medias
-     *
-     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
-     * @return FilmAtelier
-     */
-    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
-    {
-        $this->medias[] = $medias;
-
-        return $this;
-    }
-
-    /**
-     * Remove medias
-     *
-     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
-     */
-    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
-    {
-        $this->medias->removeElement($medias);
-    }
-
-    /**
-     * Get medias
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMedias()
-    {
-        return $this->medias;
+        return $this->selectionSection;
     }
 }

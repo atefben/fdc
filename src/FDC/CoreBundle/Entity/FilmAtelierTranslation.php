@@ -2,6 +2,8 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -16,83 +18,28 @@ use FDC\CoreBundle\Util\Time;
 class FilmAtelierTranslation
 {
     use Time;
+    use Translation;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=3, nullable=true)
-     */
-    private $language;
-
-    /**
-     * @var FilmTranslationType
-     *
-     * @ORM\ManyToOne(targetEntity="FilmTranslationType", inversedBy="filmAtelierTranslations")
-     */
-    private $type;
-
-   /**
-     * @var FilmAtelier
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAtelier", inversedBy="translations")
-     */
-    private $film;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $title;
-
+    
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $userId;
-
+    private $synopsis;
+    
     /**
-     * Get id
+     * @var text
      *
-     * @return integer 
+     * @ORM\Column(type="text", nullable=true)
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set language
-     *
-     * @param string $language
-     * @return FilmAtelierTranslation
-     */
-    public function setLanguage($language)
-    {
-        $this->language = $language;
-
-        return $this;
-    }
-
-    /**
-     * Get language
-     *
-     * @return string 
-     */
-    public function getLanguage()
-    {
-        return $this->language;
-    }
+    private $applicantNote;
 
     /**
      * Set title
@@ -118,71 +65,48 @@ class FilmAtelierTranslation
     }
 
     /**
-     * Set userId
+     * Set synopsis
      *
-     * @param integer $userId
+     * @param string $synopsis
      * @return FilmAtelierTranslation
      */
-    public function setUserId($userId)
+    public function setSynopsis($synopsis)
     {
-        $this->userId = $userId;
+        $this->synopsis = $synopsis;
 
         return $this;
     }
 
     /**
-     * Get userId
+     * Get synopsis
      *
-     * @return integer 
+     * @return string 
      */
-    public function getUserId()
+    public function getSynopsis()
     {
-        return $this->userId;
+        return $this->synopsis;
     }
 
     /**
-     * Set type
+     * Set applicantNote
      *
-     * @param \FDC\CoreBundle\Entity\FilmTranslationType $type
+     * @param string $applicantNote
      * @return FilmAtelierTranslation
      */
-    public function setType(\FDC\CoreBundle\Entity\FilmTranslationType $type = null)
+    public function setApplicantNote($applicantNote)
     {
-        $this->type = $type;
+        $this->applicantNote = $applicantNote;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get applicantNote
      *
-     * @return \FDC\CoreBundle\Entity\FilmTranslationType 
+     * @return string 
      */
-    public function getType()
+    public function getApplicantNote()
     {
-        return $this->type;
-    }
-
-    /**
-     * Set film
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAtelier $film
-     * @return FilmAtelierTranslation
-     */
-    public function setFilm(\FDC\CoreBundle\Entity\FilmAtelier $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAtelier 
-     */
-    public function getFilm()
-    {
-        return $this->film;
+        return $this->applicantNote;
     }
 }

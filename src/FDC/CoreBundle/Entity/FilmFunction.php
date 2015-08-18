@@ -2,50 +2,35 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Validator\Constraints as FDCAssert;
 
 /**
  * FilmFunction
  *
- * @ORM\Table(indexes={@ORM\Index(name="function_vf", columns={"function_vf"}), @ORM\Index(name="function_va", columns={"function_va"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="position", columns={"position"})})
+ * @ORM\Table(indexes={@ORM\Index(name="updated_at", columns={"updated_at"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
 class FilmFunction
 {
     use Time;
+    use Translatable;
+    use Translation;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=40, nullable=true)
-     */
-    private $functionVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=40, nullable=true)
-     */
-    private $functionVa;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $position;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmPerson", mappedBy="function")
@@ -53,16 +38,42 @@ class FilmFunction
     private $persons;
     
     /**
+     * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="function")
+     */
+    private $filmPersons;
+    
+    /**
      * @ORM\OneToMany(targetEntity="FilmAtelierGeneric", mappedBy="function")
      */
     private $filmAtelierGenerics;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->filmAtelierGenerics = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
+        $this->filmPersons = new ArrayCollection();
+        $this->persons = new ArrayCollection();
+        $this->filmAtelierGenerics = new ArrayCollection();
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return FilmFunction
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -73,52 +84,6 @@ class FilmFunction
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set functionVf
-     *
-     * @param string $functionVf
-     * @return FilmFunction
-     */
-    public function setFunctionVf($functionVf)
-    {
-        $this->functionVf = $functionVf;
-
-        return $this;
-    }
-
-    /**
-     * Get functionVf
-     *
-     * @return string 
-     */
-    public function getFunctionVf()
-    {
-        return $this->functionVf;
-    }
-
-    /**
-     * Set functionVa
-     *
-     * @param string $functionVa
-     * @return FilmFunction
-     */
-    public function setFunctionVa($functionVa)
-    {
-        $this->functionVa = $functionVa;
-
-        return $this;
-    }
-
-    /**
-     * Get functionVa
-     *
-     * @return string 
-     */
-    public function getFunctionVa()
-    {
-        return $this->functionVa;
     }
 
     /**
@@ -152,6 +117,39 @@ class FilmFunction
     public function getPersons()
     {
         return $this->persons;
+    }
+
+    /**
+     * Add filmPersons
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilmPersonFunction $filmPersons
+     * @return FilmFunction
+     */
+    public function addFilmPerson(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $filmPersons)
+    {
+        $this->filmPersons[] = $filmPersons;
+
+        return $this;
+    }
+
+    /**
+     * Remove filmPersons
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilmPersonFunction $filmPersons
+     */
+    public function removeFilmPerson(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $filmPersons)
+    {
+        $this->filmPersons->removeElement($filmPersons);
+    }
+
+    /**
+     * Get filmPersons
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilmPersons()
+    {
+        return $this->filmPersons;
     }
 
     /**

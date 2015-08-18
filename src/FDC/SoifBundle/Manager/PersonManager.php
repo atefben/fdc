@@ -87,5 +87,7 @@ class PersonManager extends CoreManager
         
         // end timer
         $this->end(__METHOD__);
+        
+        return $entity;
     }
 }

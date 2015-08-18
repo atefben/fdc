@@ -2,9 +2,14 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CoreBundle\Util\Translation;
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * Pays
@@ -15,7 +20,10 @@ use FDC\CoreBundle\Util\Time;
  */
 class Country
 {
+    use Translatable;
+    use Translation;
     use Time;
+    use Soif;
 
     /**
      * @var string
@@ -31,34 +39,6 @@ class Country
      * @ORM\Column(type="string", length=3)
      */
     private $iso;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=35, nullable=true)
-     */
-    private $nameFR;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=35, nullable=true)
-     */
-    private $nameEN;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=35, nullable=true)
-     */
-    private $languageFR;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=35, nullable=true)
-     */
-    private $languageEN;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAddress", mappedBy="country")
@@ -89,17 +69,24 @@ class Country
      * @ORM\OneToMany(targetEntity="FilmAtelierLanguage", mappedBy="country")
      */
     private $languageFilmAteliers;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->addresses = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->subtitleLanguageFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->countryFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->countryFilmAteliers = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->languageFilms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->languageFilmAteliers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->addresses = new ArrayCollection();
+        $this->subtitleLanguageFilms = new ArrayCollection();
+        $this->countryFilms = new ArrayCollection();
+        $this->countryFilmAteliers = new ArrayCollection();
+        $this->languageFilms = new ArrayCollection();
+        $this->languageFilmAteliers = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -146,98 +133,6 @@ class Country
     public function getIso()
     {
         return $this->iso;
-    }
-
-    /**
-     * Set nameFR
-     *
-     * @param string $nameFR
-     * @return Country
-     */
-    public function setNameFR($nameFR)
-    {
-        $this->nameFR = $nameFR;
-
-        return $this;
-    }
-
-    /**
-     * Get nameFR
-     *
-     * @return string 
-     */
-    public function getNameFR()
-    {
-        return $this->nameFR;
-    }
-
-    /**
-     * Set nameEN
-     *
-     * @param string $nameEN
-     * @return Country
-     */
-    public function setNameEN($nameEN)
-    {
-        $this->nameEN = $nameEN;
-
-        return $this;
-    }
-
-    /**
-     * Get nameEN
-     *
-     * @return string 
-     */
-    public function getNameEN()
-    {
-        return $this->nameEN;
-    }
-
-    /**
-     * Set languageFR
-     *
-     * @param string $languageFR
-     * @return Country
-     */
-    public function setLanguageFR($languageFR)
-    {
-        $this->languageFR = $languageFR;
-
-        return $this;
-    }
-
-    /**
-     * Get languageFR
-     *
-     * @return string 
-     */
-    public function getLanguageFR()
-    {
-        return $this->languageFR;
-    }
-
-    /**
-     * Set languageEN
-     *
-     * @param string $languageEN
-     * @return Country
-     */
-    public function setLanguageEN($languageEN)
-    {
-        $this->languageEN = $languageEN;
-
-        return $this;
-    }
-
-    /**
-     * Get languageEN
-     *
-     * @return string 
-     */
-    public function getLanguageEN()
-    {
-        return $this->languageEN;
     }
 
     /**

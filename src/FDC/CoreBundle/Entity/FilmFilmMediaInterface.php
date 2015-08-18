@@ -2,7 +2,12 @@
     
 namespace FDC\CoreBundle\Entity;
 
-interface FilmMediaInterface
+/**
+ * FilmFilmMediaInterface interface.
+ *
+ * @author Antoine Mineau <a.mineau@ohwee.fr>
+ */
+interface FilmFilmMediaInterface
 {
     // related to type
     const TYPE_DIRECTOR  = 15;

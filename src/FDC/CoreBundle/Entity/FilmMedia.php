@@ -10,11 +10,11 @@ use FDC\CoreBundle\Util\Soif;
 /**
  * FilmMedia
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="generic_id", columns={"generic_id"}), @ORM\Index(name="jury_id", columns={"jury_id"}), @ORM\Index(name="film_id", columns={"film_id"}), @ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="title_vf", columns={"title_vf"}), @ORM\Index(name="title_va", columns={"title_va"}), @ORM\Index(name="type", columns={"type"}), @ORM\Index(name="file_d", columns={"file_id"})})
+ * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="generic_id", columns={"generic_id"}), @ORM\Index(name="jury_id", columns={"jury_id"}), @ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="title_vf", columns={"title_vf"}), @ORM\Index(name="title_va", columns={"title_va"}), @ORM\Index(name="type", columns={"type"}), @ORM\Index(name="file_d", columns={"file_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FilmMedia implements FilmMediaInterface
+class FilmMedia
 {
     use Time;
     use Soif;
@@ -63,9 +63,9 @@ class FilmMedia implements FilmMediaInterface
     private $credits;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(type="string", length=1, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $type;
 
@@ -94,13 +94,6 @@ class FilmMedia implements FilmMediaInterface
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="medias")
      */
     private $festival;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $photoTypeId;
     
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="filmMedias")
@@ -111,11 +104,6 @@ class FilmMedia implements FilmMediaInterface
      * @ORM\ManyToOne(targetEntity="FilmMediaCategory", inversedBy="medias")
      */
     private $category;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="medias")
-     */
-    private $film;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="medias")
@@ -385,29 +373,6 @@ class FilmMedia implements FilmMediaInterface
     public function getPhotoTypeId()
     {
         return $this->photoTypeId;
-    }
-
-    /**
-     * Set film
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $film
-     * @return FilmMedia
-     */
-    public function setFilm(\FDC\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \FDC\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
     }
 
     /**

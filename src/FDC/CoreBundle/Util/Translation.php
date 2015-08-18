@@ -2,9 +2,13 @@
 
 namespace FDC\CoreBundle\Util;
 
+/**
+ * Translation trait.
+ *
+ * @author Antoine Mineau <a.mineau@ohwee.fr>
+ */
 trait Translation
 {
-
     /**
      * findTranslationByLocale function.
      * 

@@ -14,11 +14,18 @@ services:
             - ['setLogger', ['@logger']]
             - ['setSoifLogger', ['@fdc.soif.logger_manager']]
             - ['setWebserviceUrl', ['%soif_url%']]
+            - ['setValidator', ['@validator']]
+
     #soif children
     fdc.soif.award_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\AwardManager
         arguments: ['@fdc.soif.festival_manager', '@fdc.soif.prize_manager']
+
+    fdc.soif.country_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\CountryManager
+        arguments: []
 
     fdc.soif.festival_manager:
         parent: fdc.soif.core_manager
@@ -28,6 +35,11 @@ services:
     fdc.soif.film_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\FilmManager
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.media_manager', '@fdc.soif.person_manager']
+
+    fdc.soif.film_atelier_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\FilmAtelierManager
         arguments: ['@fdc.soif.festival_manager']
 
     fdc.soif.jury_manager:

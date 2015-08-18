@@ -65,7 +65,14 @@ abstract class CoreManager
      * @access protected
      */
     protected $wsResultKey;
-    
+
+    /**
+     * validator
+     * 
+     * @var mixed
+     * @access protected
+     */
+    protected $validator;
     
     /**
      * wsResultObjectKey
@@ -152,6 +159,18 @@ abstract class CoreManager
     }
     
     /**
+     * setValidator function.
+     * 
+     * @access public
+     * @param mixed $validator
+     * @return void
+     */
+    public function setValidator($validator)
+    {
+        $this->validator = $validator;
+    }
+    
+    /**
      * setWebserviceUrl function.
      * 
      * @access public
@@ -197,6 +216,30 @@ abstract class CoreManager
         );
         
         return $localesMapper;
+    }
+    
+    /**
+     * mimeToExtension function.
+     * 
+     * @access private
+     * @param mixed $mimeType
+     * @return void
+     */
+    public function mimeToExtension($mimeType) {
+        switch ($mimeType) {
+            case "application/pdf":
+                return "pdf";
+            case "image/gif":
+                return "gif";
+            case "image/png":
+                return "png";
+            case "image/jpeg":
+                return "jpg";
+            default:
+                $msg = __METHOD__. " - The mime type {$mimeType} is not supported.";
+                $exception = new Exception($msg);
+                $this->throwException($msg, $exception);
+        }
     }
     
     /**
@@ -341,8 +384,8 @@ abstract class CoreManager
     {
         $localesMapper = $this->getLocalesMapper();
         foreach ($this->mapperTranslations as $key => $mapper) {
-            $entityTranslations = $entity->getTranslations();
-            if (!property_exists($result->{$key}, $mapper['result'])) {
+            if (!property_exists($result, $key) || !isset($result->{$key}) ||
+                !property_exists($result->{$key}, $mapper['result'])) {
                 $msg = __METHOD__. " {$key} / {$mapper['result']} not found";
                 $this->logger->warning($msg);
                 continue;
@@ -350,20 +393,22 @@ abstract class CoreManager
             
             $translations = $result->{$key}->{$mapper['result']};
             foreach ($translations as $translation) {
-                if (!isset($localesMapper[$translation->CodeLangue])) {
-                    $this->logger->warn("the locales mapper {$translation->CodeLangue} doesn't exist");
+                // the iso field has different name in GetMovie it's IdLangue, other ws CodeLangue.
+                $iso = (property_exists($translation, 'CodeLangue')) ? $translation->CodeLangue : $translation->IdLangue;
+                if (!isset($localesMapper[$iso])) {
+                    $this->logger->warning(__METHOD__. " the locales mapper {$iso} doesn't exist");
                     continue;
                 }
 
-                if (!isset($entityTranslation[$translation->CodeLangue])) {
-                    $entityTranslation[$translation->CodeLangue] = $entity->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
+                if (!isset($entityTranslation[$iso])) {
+                    $entityTranslation[$iso] = $entity->findTranslationByLocale($localesMapper[$iso]);
                 }
-                $entityTranslation[$translation->CodeLangue] = ($entityTranslation[$translation->CodeLangue] !== null) ? $entityTranslation[$translation->CodeLangue] : clone $entityTranslationNew;
-                $entityTranslation[$translation->CodeLangue]->{$mapper['setter']}($translation->{$mapper['wsKey']});
-                $entityTranslation[$translation->CodeLangue]->setLocale($localesMapper[$translation->CodeLangue]);
+                $entityTranslation[$iso] = ($entityTranslation[$iso] !== null) ? $entityTranslation[$iso] : clone $entityTranslationNew;
+                $entityTranslation[$iso]->{$mapper['setter']}($translation->{$mapper['wsKey']});
+                $entityTranslation[$iso]->setLocale($localesMapper[$iso]);
                 
-                if ($entityTranslation[$translation->CodeLangue]->getId() === null) {
-                    $entity->addTranslation($entityTranslation[$translation->CodeLangue]);
+                if ($entityTranslation[$iso]->getId() === null) {
+                    $entity->addTranslation($entityTranslation[$iso]);
                 }
             }
         }
@@ -384,16 +429,18 @@ abstract class CoreManager
             
             // get related entity
             $translations = $result->{$key}->Traductions->{$mapper['result']};
-            $entityRelated = $this->em->getRepository($mapper['repository'])->findOneBy(array('id' => $result->{$key}->Id));
+            $identifier = (isset($mapper['wsIdentifier'])) ? $mapper['wsIdentifier'] : 'Id';
+            $entityRelated = $this->em->getRepository($mapper['repository'])->findOneBy(array('id' => $result->{$key}->{$identifier}));
             $entityRelated = ($entityRelated !== null) ? $entityRelated : clone $mapper['entity'];
-            $entityRelated->setId($result->{$key}->Id);
-            $entity->{$mapper['setter']}($entityRelated);
+            if ($entityRelated->getId() === null) {
+                $entityRelated->setId($result->{$key}->{$identifier});
+                $entity->{$mapper['setter']}($entityRelated);
+            }
             
             // loop throught translations
             foreach ($translations as $translation) {
-
                 if (!isset($localesMapper[$translation->CodeLangue])) {
-                    $this->logger->warning("the locales mapper {$translation->CodeLangue} doesn't exist");
+                    $this->logger->warning(__METHOD__. " the locales mapper {$translation->CodeLangue} doesn't exist");
                     continue;
                 }
                 if (!isset($entityTranslation[$translation->CodeLangue])) {
@@ -411,7 +458,6 @@ abstract class CoreManager
                 }
             }
         }
-
     }
 
     /**

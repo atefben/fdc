@@ -14,7 +14,7 @@ use FDC\CoreBundle\Util\Soif;
 /**
  * FilmFilm
  *
- * @ORM\Table(indexes={@ORM\Index(name="production_address_id", columns={"production_address_id"}), @ORM\Index(name="distribution_address_id", columns={"distribution_address_id"}), @ORM\Index(name="press_address_id", columns={"press_address_id"}), @ORM\Index(name="press_internat_address_id", columns={"press_internat_address_id"}), @ORM\Index(name="event_address_id", columns={"event_address_id"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}) })
+ * @ORM\Table(indexes={@ORM\Index(name="updated_at", columns={"updated_at"}) })
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
@@ -104,191 +104,30 @@ class FilmFilm implements FilmFilmInterface
     private $galaName;
 
     /**
+     * @var FilmSelection
+     *
+     * @ORM\ManyToOne(targetEntity="FilmSelection", inversedBy="films", cascade={"persist"})
+     */
+    private $selection;
+
+    /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films")
      */
     private $festival;
-
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $worldFirst;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $genre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $section;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $synopsisVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $synopsisVa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $dialogueVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $dialogueVa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=250, nullable=true)
-     */
-    private $previousEvent;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    private $exploitationCountries;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $internetDisplayed;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $internet;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $restaurantOwner;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(length=40, nullable=true)
-     */
-    private $restorationType;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $noDialog;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $color;
-
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $subSelectionVF;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $subSelectionVA;
     
+    /**
+     * @var FilmFilmPerson
+     *
+     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"persist"})
+     */
+    private $persons;
     
-    
-
     /**
-     * @var Country
-     *
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="subtitleLanguageFilms")
+     * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
      */
-    private $subtitleLanguage;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="productionFilms")
-     */
-    private $productionAddress;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="distributionFilms")
-     */
-    private $distributionAddress;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="pressFilms")
-     */
-    private $pressAddress;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="pressInternatFilms")
-     */
-    private $pressInternatAddress;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="eventFilms")
-     */
-    private $eventAddress;
-
-    /**
-     * @var FilmAddress
-     *
-     * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="directorFilms")
-     */
-    private $directorAddress;
-
-    /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="FilmCategory", inversedBy="films")
-     */
-    private $category;
+    private $contacts;
 
     /**
      * @var string
@@ -303,7 +142,7 @@ class FilmFilm implements FilmFilmInterface
     private $awards;
     
     /**
-     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"persist"})
      */
     private $medias;
 
@@ -316,16 +155,6 @@ class FilmFilm implements FilmFilmInterface
      * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film")
      */
     private $countries;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="FilmAddressSchool", mappedBy="film")
-     */
-    private $schoolAddresses;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="FilmLanguage", mappedBy="film")
-     */
-    private $languages;
 
     /**
      * @ORM\ManyToMany(targetEntity="FilmProjection", inversedBy="films")
@@ -1415,10 +1244,10 @@ class FilmFilm implements FilmFilmInterface
     /**
      * Add medias
      *
-     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     * @param \FDC\CoreBundle\Entity\FilmFilmMedia $medias
      * @return FilmFilm
      */
-    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    public function addMedia(\FDC\CoreBundle\Entity\FilmFilmMedia $medias)
     {
         $this->medias[] = $medias;
 
@@ -1428,9 +1257,9 @@ class FilmFilm implements FilmFilmInterface
     /**
      * Remove medias
      *
-     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
+     * @param \FDC\CoreBundle\Entity\FilmFilmMedia $medias
      */
-    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
+    public function removeMedia(\FDC\CoreBundle\Entity\FilmFilmMedia $medias)
     {
         $this->medias->removeElement($medias);
     }
@@ -1443,6 +1272,17 @@ class FilmFilm implements FilmFilmInterface
     public function getMedias()
     {
         return $this->medias;
+    }
+    
+    public function hasMedia($id)
+    {
+        foreach ($this->medias as $media) {
+            if ($media->getMedia() && $media->getMedia()->getId() == $id) {
+                return $media;
+            }
+        }
+        
+        return null;
     }
 
     /**
@@ -1581,5 +1421,95 @@ class FilmFilm implements FilmFilmInterface
     public function getGalaName()
     {
         return $this->galaName;
+    }
+
+    /**
+     * Set selection
+     *
+     * @param \FDC\CoreBundle\Entity\FilmSelection $selection
+     * @return FilmFilm
+     */
+    public function setSelection(\FDC\CoreBundle\Entity\FilmSelection $selection = null)
+    {
+        $this->selection = $selection;
+
+        return $this;
+    }
+
+    /**
+     * Get selection
+     *
+     * @return \FDC\CoreBundle\Entity\FilmSelection 
+     */
+    public function getSelection()
+    {
+        return $this->selection;
+    }
+
+    /**
+     * Add persons
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilmPerson $persons
+     * @return FilmFilm
+     */
+    public function addPerson(\FDC\CoreBundle\Entity\FilmFilmPerson $persons)
+    {
+        $persons->setFilm($this);
+        $this->persons[] = $persons;
+
+        return $this;
+    }
+
+    /**
+     * Remove persons
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilmPerson $persons
+     */
+    public function removePerson(\FDC\CoreBundle\Entity\FilmFilmPerson $persons)
+    {
+        $this->persons->removeElement($persons);
+    }
+
+    /**
+     * Get persons
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPersons()
+    {
+        return $this->persons;
+    }
+
+    /**
+     * Add contacts
+     *
+     * @param \FDC\CoreBundle\Entity\FilmContact $contacts
+     * @return FilmFilm
+     */
+    public function addContact(\FDC\CoreBundle\Entity\FilmContact $contacts)
+    {
+        $this->contacts[] = $contacts;
+
+        return $this;
+    }
+
+    /**
+     * Remove contacts
+     *
+     * @param \FDC\CoreBundle\Entity\FilmContact $contacts
+     */
+    public function removeContact(\FDC\CoreBundle\Entity\FilmContact $contacts)
+    {
+        $this->contacts->removeElement($contacts);
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }

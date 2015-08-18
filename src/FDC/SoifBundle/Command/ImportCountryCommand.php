@@ -8,12 +8,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportFilmCommand class.
+ * ImportCountryCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author Antoine Mineau <a.mineau@ohwee.fr>
  */
-class ImportFilmCommand extends ContainerAwareCommand
+class ImportCountryCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -21,11 +21,10 @@ class ImportFilmCommand extends ContainerAwareCommand
      * @access protected
      * @return void
      */
-    protected function configure()
-    {
+    protected function configure() {
         $this
-            ->setName('fdc:soif:import_film')
-            ->setDescription('Imports the film using the soif id')
+            ->setName('fdc:soif:import_country')
+            ->setDescription('Imports the country using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -38,12 +37,11 @@ class ImportFilmCommand extends ContainerAwareCommand
      * @param OutputInterface $output
      * @return void
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    protected function execute(InputInterface $input, OutputInterface $output) {
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.film_manager');
+        $manager = $this->getContainer()->get('fdc.soif.country_manager');
         $manager->updateEntity($id);
     }
 

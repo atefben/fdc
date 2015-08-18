@@ -85,7 +85,6 @@ class MediaManager extends CoreManager
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
-         var_dump($result);
         
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmMedia();
@@ -108,29 +107,7 @@ class MediaManager extends CoreManager
         
         // end timer
         $this->end(__METHOD__);
-    }
-    
-    /**
-     * mimeToExtension function.
-     * 
-     * @access private
-     * @param mixed $mimeType
-     * @return void
-     */
-    private function mimeToExtension($mimeType) {
-        switch ($mimeType) {
-            case "application/pdf":
-                return "pdf";
-            case "image/gif":
-                return "gif";
-            case "image/png":
-                return "png";
-            case "image/jpeg":
-                return "jpg";
-            default:
-                $msg = __METHOD__. " - The mime type {$mimeType} is not supported.";
-                $exception = new Exception($msg);
-                $this->throwException($msg, $exception);
-        }
+        
+        return $entity;
     }
 }
