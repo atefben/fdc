@@ -190,7 +190,7 @@ class FilmContact implements FilmContactInterface
     /**
      * Add subordinates
      *
-     * @param \FDC\CoreBundle\Entity\FilmFilmContact $subordinates
+     * @param \FDC\CoreBundle\Entity\FilmContact $subordinates
      * @return FilmContact
      */
     public function addSubordinate(\FDC\CoreBundle\Entity\FilmFilmContact $subordinates)
@@ -203,7 +203,7 @@ class FilmContact implements FilmContactInterface
     /**
      * Remove subordinates
      *
-     * @param \FDC\CoreBundle\Entity\FilmFilmContact $subordinates
+     * @param \FDC\CoreBundle\Entity\FilmContact $subordinates
      */
     public function removeSubordinate(\FDC\CoreBundle\Entity\FilmFilmContact $subordinates)
     {
