@@ -25,6 +25,13 @@ class NewsArticleTranslation
     protected $title;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $introduction;
+    
+    /**
      * @var NewsWidget
      *
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="newsArticle", cascade={"persist"})
@@ -65,6 +72,15 @@ class NewsArticleTranslation
      * @ORM\ManyToMany(targetEntity="Site")
      */
     protected $sites;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->widgets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Set theme
@@ -246,5 +262,28 @@ class NewsArticleTranslation
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Set introduction
+     *
+     * @param string $introduction
+     * @return NewsArticleTranslation
+     */
+    public function setIntroduction($introduction)
+    {
+        $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    /**
+     * Get introduction
+     *
+     * @return string 
+     */
+    public function getIntroduction()
+    {
+        return $this->introduction;
     }
 }

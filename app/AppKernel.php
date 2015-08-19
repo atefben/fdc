@@ -37,6 +37,7 @@ class AppKernel extends Kernel
             /* CMS tools */
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new Infinite\FormBundle\InfiniteFormBundle(),
+            new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
             // sluggable
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             // translatable

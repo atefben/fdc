@@ -65,11 +65,17 @@ class NewsArticleAdmin extends Admin
     {
         // https://github.com/a2lix/TranslationFormBundle/issues/155
         $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
+        $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'fields' => array(
-                    'title' => array(),
+                    'title' => array(
+                        'sonata_help' => 'X caractères max.'
+                    ),
+                    'introduction' => array(
+                        'field_type' => 'ckeditor'
+                    ),
                     'widgets' => array(
                         'field_type' => 'infinite_form_polycollection',
                         'types' => array(
@@ -104,11 +110,11 @@ class NewsArticleAdmin extends Admin
                         )
                     ),
                     'theme' => array(
-                      //  'field_type' => 'sonata_type_model_list',
-                      //  'sonata_field_description' => $ffds['theme'],
-                      //  'model_manager' => $themeAdmin->getModelManager(),
+                        'field_type' => 'sonata_type_model',
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
+                        'model_manager' => $themeAdmin->getModelManager(),
                         'class' => $themeAdmin->getClass(),
-                       // 'class' => 'FDCCoreBundle:Theme',
+                       //'class' => 'FDCCoreBundle:Theme',
                       //  'allow_add' => true,
                     )
                 )

@@ -16,3 +16,10 @@ services:
         arguments: [~, FDC\CoreBundle\Entity\Theme, FDCAdminBundle:ThemeAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Theme}
+
+    #dummy class to handle the sonata_type_model_list in translation issue : https://github.com/a2lix/TranslationFormBundle/issues/155
+    fdc.admin.translation_dummy:
+        class: FDC\AdminBundle\Admin\TranslationDummyAdmin
+        arguments: [~, FDC\CoreBundle\Entity\NewsArticleTranslation, FDCAdminBundle:TranslationDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Theme, show_in_dashboard: false}
