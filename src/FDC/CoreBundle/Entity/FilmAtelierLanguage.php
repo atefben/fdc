@@ -41,13 +41,6 @@ class FilmAtelierLanguage
     private $film;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $position;
-
-    /**
      * Get id
      *
      * @return integer 
@@ -55,29 +48,6 @@ class FilmAtelierLanguage
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set position
-     *
-     * @param integer $position
-     * @return FilmAtelierLanguage
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer 
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 
     /**

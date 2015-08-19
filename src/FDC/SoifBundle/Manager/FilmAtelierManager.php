@@ -5,8 +5,12 @@ namespace FDC\SoifBundle\Manager;
 use \DateTime;
 
 use FDC\CoreBundle\Entity\FilmAtelier;
+use FDC\CoreBundle\Entity\FilmAtelierCountry;
+use FDC\CoreBundle\Entity\FilmAtelierLanguage;
 use FDC\CoreBundle\Entity\FilmAtelierPerson;
 use FDC\CoreBundle\Entity\FilmAtelierTranslation;
+use FDC\CoreBundle\Entity\FilmAtelierProductionCompany;
+use FDC\CoreBundle\Entity\FilmAtelierProductionCompanyAddress;
 
 /**
  * FilmAtelierManager class.
@@ -163,9 +167,72 @@ class FilmAtelierManager extends CoreManager
                 }
             }
         }
-        
+
         // set production company
-        $filmAtelierProductionCompany = $this->em->getRepository()->findOneBy(array('name' => $resultObject->NomSocieteProduction));
+        $filmAtelierProductionCompany = $this->em->getRepository('FDCCoreBundle:FilmAtelierProductionCompany')->findOneBy(array('name' => $resultObject->NomSocieteProduction));
+        $filmAtelierProductionCompany = ($filmAtelierProductionCompany !== null) ? $filmAtelierProductionCompany : new FilmAtelierProductionCompany();
+        $filmAtelierProductionCompany->setName($resultObject->NomSocieteProduction);
+        
+        // set production company address
+        $filmAtelierProductionCompanyAddress = ($filmAtelierProductionCompany->getAddress() !== null) ? $filmAtelierProductionCompany->getAddress() : new FilmAtelierProductionCompanyAddress();
+        $filmAtelierProductionCompanyAddress->setPostalCode($resultObject->AdresseSocieteProduction->CodePostal);
+        $filmAtelierProductionCompanyAddress->setEmail($resultObject->AdresseSocieteProduction->Email);
+        $filmAtelierProductionCompanyAddress->setStreet($resultObject->AdresseSocieteProduction->Rue);
+        $filmAtelierProductionCompanyAddress->setWebsite($resultObject->AdresseSocieteProduction->SiteWeb);
+        $filmAtelierProductionCompanyAddress->setMobilePhone($resultObject->AdresseSocieteProduction->TelPortable);
+        $filmAtelierProductionCompanyAddress->setPhone($resultObject->AdresseSocieteProduction->Telephone);
+        $filmAtelierProductionCompanyAddress->setCity($resultObject->AdresseSocieteProduction->Ville);
+        
+        $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $resultObject->AdresseSocieteProduction->CodeIsoPays));
+        if ($country === null) {
+            $this->logger->error(__METHOD__. " {$id} Country with iso {$resultObject->AdresseSocieteProduction->CodeIsoPays} not found");
+        } else {
+            $filmAtelierProductionCompanyAddress->setCountry($country);
+        }
+        // @TODO: EtatsTraductions
+        $filmAtelierProductionCompany->setAddress($filmAtelierProductionCompanyAddress);
+        $entity->setProductionCompany($filmAtelierProductionCompany);
+        
+        
+        // set languages
+        foreach ($resultObject->LanguesTournage as $language) {
+            $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $language));
+            if ($country === null) {
+                $this->logger->error(__METHOD__. " {$id} Country with iso {$language} not found");
+            } else {
+                $filmAtelierLanguage = new FilmAtelierLanguage();
+                $filmAtelierLanguage->setFilm($entity);
+                $filmAtelierLanguage->setCountry($country);
+                
+                if (!$entity->getLanguages()->contains($filmAtelierLanguage)) {
+                    $entity->addLanguage($filmAtelierLanguage);
+                }
+            }
+        }
+        var_dump($resultObject);
+        // set countries
+        foreach ($resultObject->PaysTournage as $language) {
+            $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $language));
+            if ($country === null) {
+                $this->logger->error(__METHOD__. " {$id} Country with iso {$language} not found");
+            } else {
+                $filmAtelierCountry = new FilmAtelierCountry();
+                $filmAtelierCountry->setFilm($entity);
+                $filmAtelierCountry->setCountry($country);
+                
+                if (!$entity->getCountries()->contains($filmAtelierCountry)) {
+                    $entity->addCountry($filmAtelierCountry);
+                }
+            }
+        }
+    
+        // set selectionsection
+        $filmSelectionSection = $this->em->getRepository('FDCCoreBundle:FilmSelectionSection')->findOneBy(array('id' => $resultObject->IdSectionSelection));
+        if ($filmSelectionSection === null) {
+            $this->logger->error(__METHOD__. " {$id} FilmSelectionSection with id {$resultObject->IdSectionSelection} not found");
+        } else {
+            $entity->setSelectionSection($filmSelectionSection);
+        }
         
         // set related entity
         $this->setEntityRelated($resultObject, $entity);

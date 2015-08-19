@@ -36,9 +36,9 @@ class FilmAtelierProductionCompany
     private $name;
     
     /**
-     * @var FilmAddress
+     * @var FilmAtelierProductionCompanyAddress
      *
-     * @ORM\ManyToOne(targetEntity="FilmAddress")
+     * @ORM\OneToOne(targetEntity="FilmAtelierProductionCompanyAddress", cascade={"persist"})
      */
     private $address;
 
@@ -79,10 +79,10 @@ class FilmAtelierProductionCompany
     /**
      * Set address
      *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $address
+     * @param \FDC\CoreBundle\Entity\FilmAtelierProductionCompanyAddress $address
      * @return FilmAtelierProductionCompany
      */
-    public function setAddress(\FDC\CoreBundle\Entity\FilmAddress $address = null)
+    public function setAddress(\FDC\CoreBundle\Entity\FilmAtelierProductionCompanyAddress $address = null)
     {
         $this->address = $address;
 
@@ -92,7 +92,7 @@ class FilmAtelierProductionCompany
     /**
      * Get address
      *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
+     * @return \FDC\CoreBundle\Entity\FilmAtelierProductionCompanyAddress 
      */
     public function getAddress()
     {

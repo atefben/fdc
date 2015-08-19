@@ -12,13 +12,10 @@ class NewsWidgetType extends BaseType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('position');
         $builder->add('_type', 'hidden', array(
             'data'   => $this->getName(),
             'mapped' => false
         ));
-        
-        $builder->add('translations', 'a2lix_translations');
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)

@@ -67,7 +67,7 @@ class NewsArticleAdmin extends Admin
             ->tab('test')
                 ->with('General')
                     ->add('header', 'sonata_type_model_list')
-                  /*  ->add('widgets', 'infinite_form_polycollection', array(
+                    ->add('widgets', 'infinite_form_polycollection', array(
                         'types' => array(
                             'news_widget_text_type',
                             'news_widget_audio_type',
@@ -78,7 +78,7 @@ class NewsArticleAdmin extends Admin
                         'allow_delete' => true,
                         'prototype' => true,
                         'by_reference' => false
-                    ))*/
+                    ))
                 ->end()
             ->end()
             ->tab('Options')

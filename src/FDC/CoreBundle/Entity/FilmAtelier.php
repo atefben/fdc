@@ -120,7 +120,7 @@ class FilmAtelier
     /**
      * @var FilmAtelierProductionCompany
      *
-     * @ORM\OneToOne(targetEntity="FilmAtelierProductionCompany")
+     * @ORM\OneToOne(targetEntity="FilmAtelierProductionCompany", cascade={"persist"})
      */
     private $productionCompany;
 
@@ -134,14 +134,14 @@ class FilmAtelier
     /**
      * @var FilmCountry
      *
-     * @ORM\OneToMany(targetEntity="FilmAtelierCountry", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmAtelierCountry", mappedBy="film", cascade={"persist"})
      */
     private $countries;
     
     /**
      * @var FilmCountry
      *
-     * @ORM\OneToMany(targetEntity="FilmAtelierLanguage", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmAtelierLanguage", mappedBy="film", cascade={"persist"})
      */
     private $languages;
     

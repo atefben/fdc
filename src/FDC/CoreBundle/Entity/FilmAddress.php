@@ -90,7 +90,6 @@ class FilmAddress
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="addresses")
      */
     private $country;
-    
 
     /**
      * @ORM\OneToMany(targetEntity="FilmContact", mappedBy="address")
