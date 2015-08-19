@@ -8,12 +8,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportPosterCommand class.
+ * ImportFestivalPosterCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author Antoine Mineau <a.mineau@ohwee.fr>
  */
-class ImportFilmCommand extends ContainerAwareCommand
+class ImportFestivalPosterCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportFilmCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('fdc:soif:import_poster')
-            ->setDescription('Imports the poster using the soif id')
+            ->setName('fdc:soif:import_festival_poster')
+            ->setDescription('Imports the festival poster using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -43,7 +43,7 @@ class ImportFilmCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.poster_manager');
+        $manager = $this->getContainer()->get('fdc.soif.festival_poster_manager');
         $manager->updateEntity($id);
     }
 

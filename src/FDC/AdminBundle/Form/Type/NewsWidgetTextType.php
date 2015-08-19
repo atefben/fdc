@@ -13,7 +13,7 @@ class NewsWidgetTextType extends NewsWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('translations', 'a2lix_translations');
+        $builder->add('content');
     }
 
     public function getName()

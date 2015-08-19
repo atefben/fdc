@@ -29,6 +29,7 @@ class FilmFilmPerson
     use Time;
     use Translatable;
     use Translation;
+
     /**
      * @var integer
      *

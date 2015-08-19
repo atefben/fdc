@@ -63,11 +63,15 @@ class NewsArticleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        // https://github.com/a2lix/TranslationFormBundle/issues/155
+        $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
+
         $formMapper
-            ->tab('test')
-                ->with('General')
-                    ->add('header', 'sonata_type_model_list')
-                    ->add('widgets', 'infinite_form_polycollection', array(
+            ->add('translations', 'a2lix_translations', array(
+                'fields' => array(
+                    'title' => array(),
+                    'widgets' => array(
+                        'field_type' => 'infinite_form_polycollection',
                         'types' => array(
                             'news_widget_text_type',
                             'news_widget_audio_type',
@@ -77,25 +81,48 @@ class NewsArticleAdmin extends Admin
                         'allow_add' => true,
                         'allow_delete' => true,
                         'prototype' => true,
-                        'by_reference' => false
-                    ))
-                ->end()
+                        'by_reference' => false,
+                    ),
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
+                    'publishedAt' => array(
+                        'field_type' => 'sonata_type_datetime_picker',
+                        'format' => 'dd/MM/yyyy HH:mm',
+                        'attr' => array(
+                            'data-date-format' => 'dd/MM/yyyy HH:mm',
+                        )
+                    ),
+                    'publishEndedAt' => array(
+                        'field_type' => 'sonata_type_datetime_picker',
+                        'format' => 'dd/MM/yyyy HH:mm',
+                        'attr' => array(
+                            'data-date-format' => 'dd/MM/yyyy HH:mm',
+                        )
+                    ),
+                    'theme' => array(
+                      //  'field_type' => 'sonata_type_model_list',
+                      //  'sonata_field_description' => $ffds['theme'],
+                      //  'model_manager' => $themeAdmin->getModelManager(),
+                        'class' => $themeAdmin->getClass(),
+                       // 'class' => 'FDCCoreBundle:Theme',
+                      //  'allow_add' => true,
+                    )
+                )
+            ))
             ->end()
-            ->tab('Options')
-                ->with('Options', array(
-                    'class'       => 'col-md-8',
-                    'box_class'   => 'box box-solid box-danger',
-                    'description' => 'Lorem ipsum'
-                ))
-                    ->add('publishedAt', 'sonata_type_datetime_picker')
-                ->end()
-                ->with('test', array(
-                    'class'       => 'col-md-4',
-                    'box_class'   => 'box box-solid box-danger',
-                    'description' => 'Lorem ipsum'
-                ))
-                    ->add('publishEndedAt')
-            ->end()
+            /*->add('header', 'sonata_type_model_list')
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('publishEndedAt')
+            ->end()*/
         ;
     }
 

@@ -32,6 +32,11 @@ services:
         class: FDC\SoifBundle\Manager\FestivalManager
         arguments: []
 
+    fdc.soif.festival_poster_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\FestivalPosterManager
+        arguments: ['@fdc.soif.festival_manager']
+
     fdc.soif.film_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\FilmManager

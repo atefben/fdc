@@ -2,9 +2,14 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\Soif;
 
 /**
  * FilmFestivalPoster
@@ -13,9 +18,12 @@ use FDC\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmFestivalPoster
+class FilmFestivalPoster implements FilmFestivalPosterInterface
 {
     use Time;
+    use Translatable;
+    use Translation;
+    use Soif;
 
     /**
      * @var int
@@ -26,66 +34,38 @@ class FilmFestivalPoster
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="integer", options={"unsigned": true})
-     */
-    private $festivalYear;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $titleVf;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $titleVa;
-
-    /**
      * @var int
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $posterTypeId;
+    private $copyright;
+
+
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $descriptionVf;
-
+    private $media;
+    
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
+     * @var ArrayCollection
      */
-    private $descriptionVa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $internet;
-
-    /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="poster")
-     */
-    private $medias;
+    protected $translations;
+    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -109,29 +89,6 @@ class FilmFestivalPoster
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set festivalYear
-     *
-     * @param integer $festivalYear
-     * @return FilmFestivalPoster
-     */
-    public function setFestivalYear($festivalYear)
-    {
-        $this->festivalYear = $festivalYear;
-
-        return $this;
-    }
-
-    /**
-     * Get festivalYear
-     *
-     * @return integer 
-     */
-    public function getFestivalYear()
-    {
-        return $this->festivalYear;
     }
 
     /**
