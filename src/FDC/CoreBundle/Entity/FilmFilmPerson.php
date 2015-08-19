@@ -58,7 +58,7 @@ class FilmFilmPerson
     /**
      * @var FilmFilmPersonFunction
      *
-     * @ORM\oneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"persist"})
      */
     private $functions;
 
