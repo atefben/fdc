@@ -209,7 +209,7 @@ class FilmAtelierManager extends CoreManager
                 }
             }
         }
-        var_dump($resultObject);
+
         // set countries
         foreach ($resultObject->PaysTournage as $language) {
             $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $language));

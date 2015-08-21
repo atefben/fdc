@@ -87,7 +87,6 @@ class FilmManager extends CoreManager
             'setGalaId' => 'IdGala',
             'setGalaName' => 'NomGala'
         );
-        // @todo: titre francais / titre anglais - gala - 
         $this->mapperEntity = array(
             array(
                 'repository' => 'FDCCoreBundle:FilmFestival',
@@ -100,32 +99,13 @@ class FilmManager extends CoreManager
         $this->mapperTranslations = array(
             'FilmTraductions' => array(
                 'result' => 'FilmTraductionDto',
-                'setter' => 'setDialog',
-                'wsKey' => 'Dialogue'
-            ),
-            'FilmTraductions' => array(
-                'result' => 'FilmTraductionDto',
-                'setter' => 'setSynopsis',
-                'wsKey' => 'Synopsis'
-            ),
-            'FilmTraductions' => array(
-                'result' => 'FilmTraductionDto',
-                'setter' => 'setTitle',
-                'wsKey' => 'Titre'
+                'setters' => array(
+                    'setDialog' => 'Dialogue',
+                    'setSynopsis' => 'Synopsis',
+                    'setTitle' => 'Titre'
+                ),
+                'wsLangKey' => 'IdLangue'
             )
-        );
-        
-        $this->mapperEntityTranslations = array(
-            
-           /* 'SectionSelection' => array(
-                'repository' => 'FDCCoreBundle:FilmSelectionSubsection',
-                'result' => 'FilmSectionSousSelectionTraductionDto',
-                'setter' => 'addSection',
-                'setterTranslation' => 'setName',
-                'wsKey' => 'Libelle',
-                'entity' =>  new FilmSelectionSubsection(),
-                'entityTranslation' => new FilmSelectionSubsectionTranslation()
-            )*/
         );
     }
     
@@ -144,6 +124,7 @@ class FilmManager extends CoreManager
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        var_dump($resultObject);
 
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFilm();
@@ -183,7 +164,7 @@ class FilmManager extends CoreManager
         }
         
         // set film elements multimedia
-        /*if (property_exists($resultObject, 'FilmElementsMultimedias') && property_exists($resultObject->FilmElementsMultimedias, 'ElementMultimediaRefDto')) {
+        if (property_exists($resultObject, 'FilmElementsMultimedias') && property_exists($resultObject->FilmElementsMultimedias, 'ElementMultimediaRefDto')) {
             $filmFilmMedias = $entity->getMedias();
             foreach ($resultObject->FilmElementsMultimedias->ElementMultimediaRefDto as $filmFilmMedia) {
                 $entityRelated = $entity->hasMedia($filmFilmMedia->Id);
@@ -201,7 +182,7 @@ class FilmManager extends CoreManager
                     $entity->addMedia($entityRelated);
                 }
             }
-        }*/
+        }
         
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmFilmTranslation());

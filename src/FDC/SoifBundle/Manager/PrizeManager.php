@@ -37,13 +37,17 @@ class PrizeManager extends CoreManager
         $this->mapperTranslations = array(
             'CategorieTraductions' => array(
                 'result' => 'CategoriePrixTraductionDto',
-                'setter' => 'setTitle',
-                'wsKey' => 'Libelle'
+                'setters' => array(
+                    'setTitle' => 'Libelle'
+                ),
+                'wsLangKey' => 'CodeLangue'
             ),
             'TitreTraductions' => array(
                 'result' => 'TitreTraductionDto',
-                'setter' => 'setCategory',
-                'wsKey' => 'Titre'
+                'setters' => array(
+                    'setCategory' => 'Titre'
+                ),
+                'wsLangKey' => 'CodeLangue'
             )
         );
     }
@@ -75,7 +79,7 @@ class PrizeManager extends CoreManager
         $this->setEntityProperties($resultObject, $entity);
         
         // set translations
-        $this->setEntityTranslations($resultObject, $entity, new FilmJuryTranslation());
+        $this->setEntityTranslations($resultObject, $entity, new FilmPrizeTranslation());
         
         // update entity
         $this->update($entity, $persist);

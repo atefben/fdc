@@ -75,6 +75,7 @@ class MediaStreamManager extends CoreManager
         // update entity / generate thumbnails
         $media = $entity->getFile();
         $media = ($media === null) ? $this->sonataMediaManager->create() : $this->sonataMediaManager->find($media->getId());
+        $media->setSoifId($id);
         $media->setBinaryContent($filename);
         $media->setEnabled(true);
         $media->setProviderReference($filename);

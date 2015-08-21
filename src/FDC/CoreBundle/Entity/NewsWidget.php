@@ -39,7 +39,7 @@ abstract class NewsWidget
     /**
      * @var NewsArticle
      *
-     * @ORM\ManyToOne(targetEntity="NewsArticle", inversedBy="widgets")
+     * @ORM\ManyToOne(targetEntity="NewsArticleTranslation", inversedBy="widgets")
      */
     protected $newsArticle;
 
@@ -100,10 +100,10 @@ abstract class NewsWidget
     /**
      * Set newsArticle
      *
-     * @param \FDC\CoreBundle\Entity\NewsArticle $newsArticle
+     * @param \FDC\CoreBundle\Entity\NewsArticleTranslation $newsArticle
      * @return NewsWidget
      */
-    public function setNewsArticle(\FDC\CoreBundle\Entity\NewsArticle $newsArticle = null)
+    public function setNewsArticle(\FDC\CoreBundle\Entity\NewsArticleTranslation $newsArticle = null)
     {
         $this->newsArticle = $newsArticle;
 
@@ -113,7 +113,7 @@ abstract class NewsWidget
     /**
      * Get newsArticle
      *
-     * @return \FDC\CoreBundle\Entity\NewsArticle 
+     * @return \FDC\CoreBundle\Entity\NewsArticleTranslation 
      */
     public function getNewsArticle()
     {

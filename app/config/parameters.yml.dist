@@ -19,6 +19,7 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     locale:             fr
     locales: [fr, en, es, pt, ru, jp, cn, ar]
+    locales_admin: [fr, en]
     
     # soif
     soif_preprod_url: ~

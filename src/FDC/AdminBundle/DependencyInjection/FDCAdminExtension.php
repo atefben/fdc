@@ -27,7 +27,9 @@ class FDCAdminExtension extends Extension
         $configFiles = array(
             'admin.yml',
             'block.yml',
-            'form.yml'
+            'event.yml',
+            'form.yml',
+            'handler.yml'
         );
         
         foreach ($configFiles as $configFile) {

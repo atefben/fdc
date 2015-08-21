@@ -2,6 +2,7 @@
 
 namespace FDC\SoifBundle\Manager;
 
+use \DateTime;
 use \Exception;
 use \SoapClient;
 use \SoapFault;
@@ -348,6 +349,7 @@ abstract class CoreManager
                 $this->logger->warning(__METHOD__. ' Method '. $setter. ' not found in Entity '. get_class($entity));
                 continue;
             }
+            $result->{$soapKey} = (strpos($soapKey, 'Date') === false) ? $result->{$soapKey} : new DateTime($result->{$soapKey});
             $entity->{$setter}($result->{$soapKey});
         }
     }
@@ -366,6 +368,7 @@ abstract class CoreManager
             $property['manager'] = ($property['manager'] !== null) ? $property['manager'] : null;
             $entityRelated = $this->updateRelatedEntity($property['repository'], $result, $property['soapKey'], $property['manager']);
             if ($entityRelated !== null) {
+                var_dump('in');
                 $entity->{$property['setter']}($entityRelated);
             }
         }
@@ -392,23 +395,48 @@ abstract class CoreManager
             }
             
             $translations = $result->{$key}->{$mapper['result']};
-            foreach ($translations as $translation) {
-                // the iso field has different name in GetMovie it's IdLangue, other ws CodeLangue.
-                $iso = (property_exists($translation, 'CodeLangue')) ? $translation->CodeLangue : $translation->IdLangue;
-                if (!isset($localesMapper[$iso])) {
-                    $this->logger->warning(__METHOD__. " the locales mapper {$iso} doesn't exist");
-                    continue;
+            
+            // new translation mapper version
+            if (isset($mapper['setters'])) {
+                foreach ($translations as $translation) {
+                    // the iso field has different name in GetMovie it's IdLangue, other ws CodeLangue.
+                    $iso = (isset($mapper['wsLangKey'])) ? $translation->$mapper['wsLangKey'] : ((property_exists($translation, 'CodeLangue')) ? $translation->CodeLangue : $translation->IdLangue);
+                    if (!isset($localesMapper[$iso])) {
+                        $this->logger->warning(__METHOD__. " the locales mapper {$iso} doesn't exist");
+                        continue;
+                    }
+                    if (!isset($entityTranslation[$iso])) {
+                        $entityTranslation[$iso] = $entity->findTranslationByLocale($localesMapper[$iso]);
+                    }
+                    $entityTranslation[$iso] = ($entityTranslation[$iso] !== null) ? $entityTranslation[$iso] : clone $entityTranslationNew;
+                    foreach ($mapper['setters'] as $setter => $wsKey) {
+                        $entityTranslation[$iso]->{$setter}($translation->{$wsKey});
+                    }
+                    $entityTranslation[$iso]->setLocale($localesMapper[$iso]);
+                    if ($entityTranslation[$iso]->getId() === null) {
+                        $entity->addTranslation($entityTranslation[$iso]);
+                    }
                 }
-
-                if (!isset($entityTranslation[$iso])) {
-                    $entityTranslation[$iso] = $entity->findTranslationByLocale($localesMapper[$iso]);
-                }
-                $entityTranslation[$iso] = ($entityTranslation[$iso] !== null) ? $entityTranslation[$iso] : clone $entityTranslationNew;
-                $entityTranslation[$iso]->{$mapper['setter']}($translation->{$mapper['wsKey']});
-                $entityTranslation[$iso]->setLocale($localesMapper[$iso]);
-                
-                if ($entityTranslation[$iso]->getId() === null) {
-                    $entity->addTranslation($entityTranslation[$iso]);
+            } // old translation mapper version, @TODO: update manager constructor to use the new mapper version
+            else  {
+                foreach ($translations as $translation) {
+                    // the iso field has different name in GetMovie it's IdLangue, other ws CodeLangue.
+                    $iso = (isset($mapper['wsLangKey'])) ? $translation->$mapper['wsLangKey'] : ((property_exists($translation, 'CodeLangue')) ? $translation->CodeLangue : $translation->IdLangue);
+                    if (!isset($localesMapper[$iso])) {
+                        $this->logger->warning(__METHOD__. " the locales mapper {$iso} doesn't exist");
+                        continue;
+                    }
+                    var_dump(isset($entityTranslation[$iso]));
+                    var_dump($iso);
+                    if (!isset($entityTranslation[$iso])) {
+                        $entityTranslation[$iso] = $entity->findTranslationByLocale($localesMapper[$iso]);
+                    }
+                    $entityTranslation[$iso] = ($entityTranslation[$iso] !== null) ? $entityTranslation[$iso] : clone $entityTranslationNew;
+                    $entityTranslation[$iso]->{$mapper['setter']}($translation->{$mapper['wsKey']});
+                    $entityTranslation[$iso]->setLocale($localesMapper[$iso]);
+                    if ($entityTranslation[$iso]->getId() === null) {
+                        $entity->addTranslation($entityTranslation[$iso]);
+                    }
                 }
             }
         }

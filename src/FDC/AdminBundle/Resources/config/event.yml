@@ -1,0 +1,6 @@
+services:
+    fdc_admin.event.locale_listener:
+        class: FDC\AdminBundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }

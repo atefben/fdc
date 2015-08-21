@@ -40,7 +40,11 @@ class FilmFestivalPoster implements FilmFestivalPosterInterface
      */
     private $copyright;
 
-
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
     private $type;
 
     /**
@@ -53,7 +57,7 @@ class FilmFestivalPoster implements FilmFestivalPosterInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $media;
+    private $file;
     
     /**
      * @var ArrayCollection
@@ -92,173 +96,94 @@ class FilmFestivalPoster implements FilmFestivalPosterInterface
     }
 
     /**
-     * Set titleVf
+     * Set copyright
      *
-     * @param string $titleVf
+     * @param string $copyright
      * @return FilmFestivalPoster
      */
-    public function setTitleVf($titleVf)
+    public function setCopyright($copyright)
     {
-        $this->titleVf = $titleVf;
+        $this->copyright = $copyright;
 
         return $this;
     }
 
     /**
-     * Get titleVf
+     * Get copyright
      *
      * @return string 
      */
-    public function getTitleVf()
+    public function getCopyright()
     {
-        return $this->titleVf;
+        return $this->copyright;
     }
 
     /**
-     * Set titleVa
+     * Set festival
      *
-     * @param string $titleVa
+     * @param \FDC\CoreBundle\Entity\FilmFestival $festival
      * @return FilmFestivalPoster
      */
-    public function setTitleVa($titleVa)
+    public function setFestival(\FDC\CoreBundle\Entity\FilmFestival $festival = null)
     {
-        $this->titleVa = $titleVa;
+        $this->festival = $festival;
 
         return $this;
     }
 
     /**
-     * Get titleVa
+     * Get festival
      *
-     * @return string 
+     * @return \FDC\CoreBundle\Entity\FilmFestival 
      */
-    public function getTitleVa()
+    public function getFestival()
     {
-        return $this->titleVa;
+        return $this->festival;
     }
 
     /**
-     * Set posterTypeId
+     * Set file
      *
-     * @param integer $posterTypeId
+     * @param \Application\Sonata\MediaBundle\Entity\Media $media
      * @return FilmFestivalPoster
      */
-    public function setPosterTypeId($posterTypeId)
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
-        $this->posterTypeId = $posterTypeId;
+        $this->file = $file;
 
         return $this;
     }
 
     /**
-     * Get posterTypeId
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return FilmFestivalPoster
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
      *
      * @return integer 
      */
-    public function getPosterTypeId()
+    public function getType()
     {
-        return $this->posterTypeId;
-    }
-
-    /**
-     * Set descriptionVf
-     *
-     * @param string $descriptionVf
-     * @return FilmFestivalPoster
-     */
-    public function setDescriptionVf($descriptionVf)
-    {
-        $this->descriptionVf = $descriptionVf;
-
-        return $this;
-    }
-
-    /**
-     * Get descriptionVf
-     *
-     * @return string 
-     */
-    public function getDescriptionVf()
-    {
-        return $this->descriptionVf;
-    }
-
-    /**
-     * Set descriptionVa
-     *
-     * @param string $descriptionVa
-     * @return FilmFestivalPoster
-     */
-    public function setDescriptionVa($descriptionVa)
-    {
-        $this->descriptionVa = $descriptionVa;
-
-        return $this;
-    }
-
-    /**
-     * Get descriptionVa
-     *
-     * @return string 
-     */
-    public function getDescriptionVa()
-    {
-        return $this->descriptionVa;
-    }
-
-    /**
-     * Set internet
-     *
-     * @param string $internet
-     * @return FilmFestivalPoster
-     */
-    public function setInternet($internet)
-    {
-        $this->internet = $internet;
-
-        return $this;
-    }
-
-    /**
-     * Get internet
-     *
-     * @return string 
-     */
-    public function getInternet()
-    {
-        return $this->internet;
-    }
-
-    /**
-     * Add medias
-     *
-     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
-     * @return FilmFestivalPoster
-     */
-    public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
-    {
-        $this->medias[] = $medias;
-
-        return $this;
-    }
-
-    /**
-     * Remove medias
-     *
-     * @param \FDC\CoreBundle\Entity\FilmMedia $medias
-     */
-    public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
-    {
-        $this->medias->removeElement($medias);
-    }
-
-    /**
-     * Get medias
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMedias()
-    {
-        return $this->medias;
+        return $this->type;
     }
 }

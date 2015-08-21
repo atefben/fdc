@@ -40,14 +40,18 @@ class PersonManager extends CoreManager
         $this->mapperTranslations = array(
             'BiographieTraductions' => array(
                 'result' => 'BiographieTraductionDto',
-                'setter' => 'setBiography',
-                'wsKey' => 'Description'
+                'setters' => array(
+                    'setBiography' => 'Description'
+                ),
+                'wsLangKey' => 'CodeLangue'
             ),
             'ProfessionTraductions' => array(
                 'result' => 'ProfessionTraductionDto',
-                'setter' => 'setProfession',
-                'wsKey' => 'Libelle'
-            ),
+                'setters' => array(
+                    'setProfession' => 'Libelle'
+                ),
+                'wsLangkey' => 'CodeLangue'
+            )
         );
     }
     

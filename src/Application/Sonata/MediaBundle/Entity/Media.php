@@ -36,6 +36,8 @@ class Media extends SonataBaseMedia
     
     protected $filmMedias;
     
+    protected $soifId;
+    
     protected $newsWidgetAudios;
     
     /**
@@ -57,5 +59,15 @@ class Media extends SonataBaseMedia
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function setSoifId($soifId)
+    {
+        $this->soifId = $soifId;
+    }
+    
+    public function getSoifId()
+    {
+        return $this->soifId;
     }
 }

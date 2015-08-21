@@ -73,8 +73,10 @@ class JuryManager extends CoreManager
         $this->mapperTranslations = array(
             'BiographiesTraductions' => array(
                 'result' => 'BiographieTraductionDto',
-                'setter' => 'setBiography',
-                'wsKey' => 'Description'
+                'setters' => array(
+                    'setBiography' => 'Description'
+                ),
+                'wsLangKey' => 'CodeLangue'
             )
         );
         $this->mapperEntityTranslations = array(

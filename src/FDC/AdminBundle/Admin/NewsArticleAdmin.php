@@ -30,10 +30,6 @@ class NewsArticleAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 
@@ -44,10 +40,6 @@ class NewsArticleAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

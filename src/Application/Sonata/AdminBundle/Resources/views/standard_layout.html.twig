@@ -168,6 +168,7 @@ file that was distributed with this source code.
 
                             {% block sonata_top_nav_menu %}
                                 <div class="navbar-right">
+                                    {{ render(controller('FDCAdminBundle:Dashboard:localeSwitcher') )}}
                                     {% include 'FDCAdminBundle:Site:btn_modal.html.twig' %}
                                     <ul class="nav navbar-nav">
                                         <li class="dropdown">

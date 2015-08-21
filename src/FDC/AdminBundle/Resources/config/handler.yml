@@ -1,0 +1,4 @@
+services:
+    fdc_admin.handler.login:
+        parent: security.authentication.success_handler
+        class:  FDC\AdminBundle\Handler\LoginSuccessHandler

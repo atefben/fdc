@@ -21,7 +21,7 @@ parameters:
 
 framework:
     #esi:             ~
-    translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -50,6 +50,8 @@ twig:
         resources:
             - 'InfiniteFormBundle::collection_theme.html.twig'
             - 'SonataCoreBundle:Form:datepicker.html.twig'
+    globals:
+        locales_admin: "%locales_admin%"
 
 # Assetic Configuration
 assetic:

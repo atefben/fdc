@@ -5,6 +5,7 @@ namespace FDC\SoifBundle\Manager;
 use \Exception;
 
 use FDC\CoreBundle\Entity\FilmFestivalPoster;
+use FDC\CoreBundle\Entity\FilmFestivalPosterTranslation;
 
 /**
  * FestivalPosterManager class.
@@ -21,6 +22,14 @@ class FestivalPosterManager extends CoreManager
      * @access private
      */
     private $festivalManager;
+    
+    /**
+     * mediaStreamManager
+     * 
+     * @var mixed
+     * @access private
+     */
+    private $mediaStreamManager;
 
     /**
      * __construct function.
@@ -28,9 +37,10 @@ class FestivalPosterManager extends CoreManager
      * @access public
      * @return void
      */
-    public function __construct($festivalManager)
+    public function __construct($festivalManager, $mediaStreamManager)
     {
         $this->festivalManager = $festivalManager;
+        $this->mediaStreamManager = $mediaStreamManager;
         $this->entityIdKey = 'Id';
         $this->repository = 'FDCCoreBundle:FilmFestivalPoster';
         $this->wsParameterKey = 'idPoster';
@@ -40,13 +50,25 @@ class FestivalPosterManager extends CoreManager
         $this->mapper = array(
             'setId' => $this->entityIdKey,
             'setCopyright' => 'Droits',
+            'setType' => 'Type'
         );
         $this->mapperEntity = array(
             array(
                 'repository' => 'FDCCoreBundle:FilmFestival',
-                'soapKey' => 'IdFestival',
+                'soapKey' => 'FestivalId',
                 'setter' => 'setFestival',
                 'manager' => $this->festivalManager
+            )
+        );
+        
+        $this->mapperTranslations = array(
+            'TraductionElementMultimedias' => array(
+                'result' => 'TraductionElementMultimediaDto',
+                'setters' => array(
+                    'setDescription' => 'Description',
+                    'setTitle' => 'Libelle'
+                ),
+                'wsLangKey' => 'Culture'
             )
         );
     }
@@ -68,7 +90,6 @@ class FestivalPosterManager extends CoreManager
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
-        var_dump($result);
         var_dump($resultObject);
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFestivalPoster();
@@ -80,8 +101,11 @@ class FestivalPosterManager extends CoreManager
         // set entity properties
         $this->setEntityProperties($resultObject, $entity);
         
+        // set media
+        $media = $this->mediaStreamManager->updateEntity($entity, $resultObject->ElementMultimediaId, 'jpg');
+        
         // set translations
-        //$this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
+        $this->setEntityTranslations($resultObject, $entity, new FilmFestivalPosterTranslation());
         
         // set related entity
         $this->setEntityRelated($resultObject, $entity);

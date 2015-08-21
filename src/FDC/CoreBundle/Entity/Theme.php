@@ -31,6 +31,13 @@ class Theme
     protected $id;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    protected $name;
+    
+    /**
      * @var ArrayCollection
      *
      */
@@ -43,7 +50,7 @@ class Theme
     
     public function __toString() { 
         if ($this->getId()) { 
-            return $this->getTitle();
+            return $this->getName();
         } else {
             return substr(strrchr(get_class($this), '\\'), 1); 
         }
@@ -57,5 +64,28 @@ class Theme
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Theme
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

@@ -8,86 +8,57 @@ use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
 
 /**
- * FilmProjection
+ * FilmProjectionMedia
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmProjection
+class FilmProjectionMedia
 {
-    use Time;
-    use Soif;
-    
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
     
     /**
-     * @var DateTime
+     * @var FilmProjetionMedia
      *
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\ManyToOne(targetEntity="FilmProjection", cascade={"persist"})
      */
-    private $startsAt;
+    private $film;
     
     /**
-     * @var DateTime
+     * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="medias", cascade={"persist"})
      */
-    private $endsAt;
-
+    private $media;
+    
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $type;
-
-    /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
-     */
-    private $festival;
-
-    /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm")
-     */
-    private $film;
-
-    /**
-     * @var FilmRoom
-     *
-     * @ORM\ManyToOne(targetEntity="FilmProjectionRoom", inversedBy="projections", cascade={"persist"})
-     */
-    private $room;
-
-    /**
-     * @var FilmProjectionMedia
-     *
-     * @ORM\OneToMany(targetEntity="FilmProjectionMedia", mappedBy="media")
-     */
-    private $medias;
+    private $position;
     
     /**
-     * @ORM\ManyToMany(targetEntity="FilmFilm", mappedBy="projections")
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $films;
-
+    private $filename;
+    
     /**
-     * Constructor
+     * @var string
+     *
+     * @ORM\Column(type="integer", nullable=true)
      */
-    public function __construct()
-    {
-        $this->films = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $type;
 
     /**
      * Get id
@@ -194,10 +165,10 @@ class FilmProjection
     /**
      * Set room
      *
-     * @param \FDC\CoreBundle\Entity\FilmProjectionRoom $room
+     * @param \FDC\CoreBundle\Entity\FilmRoom $room
      * @return FilmProjection
      */
-    public function setRoom(\FDC\CoreBundle\Entity\FilmProjectionRoom $room = null)
+    public function setRoom(\FDC\CoreBundle\Entity\FilmRoom $room = null)
     {
         $this->room = $room;
 
@@ -207,7 +178,7 @@ class FilmProjection
     /**
      * Get room
      *
-     * @return \FDC\CoreBundle\Entity\FilmProjectionRoom 
+     * @return \FDC\CoreBundle\Entity\FilmRoom 
      */
     public function getRoom()
     {
@@ -268,51 +239,5 @@ class FilmProjection
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     * @return FilmProjection
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Add medias
-     *
-     * @param \FDC\CoreBundle\Entity\FilmProjectionMedia $medias
-     * @return FilmProjection
-     */
-    public function addMedia(\FDC\CoreBundle\Entity\FilmProjectionMedia $medias)
-    {
-        $this->medias[] = $medias;
-
-        return $this;
-    }
-
-    /**
-     * Remove medias
-     *
-     * @param \FDC\CoreBundle\Entity\FilmProjectionMedia $medias
-     */
-    public function removeMedia(\FDC\CoreBundle\Entity\FilmProjectionMedia $medias)
-    {
-        $this->medias->removeElement($medias);
-    }
-
-    /**
-     * Get medias
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMedias()
-    {
-        return $this->medias;
     }
 }

@@ -7,13 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 
 /**
- * FilmRoom
+ * FilmProjectionRoom
  *
- * @ORM\Table(indexes={@ORM\Index(name="created_at", columns={"created_at"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmRoom
+class FilmProjectionRoom
 {
     use Time;
 
@@ -22,7 +22,6 @@ class FilmRoom
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 

@@ -24,5 +24,28 @@ class NewsWidgetText extends NewsWidget
      * @ORM\Column(type="text", nullable=false)
      */
     private $content;
-    
+
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return NewsWidgetText
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
 }

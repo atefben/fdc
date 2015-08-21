@@ -8,3 +8,4 @@ sonata_block:
         sonata.block.service.text: # used to if you plan to use Sonata user routes
         #fdc blocks
         fdc_admin.block.sites: ~
+        fdc_admin.block.locale_switcher: ~
