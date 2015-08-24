@@ -1,8 +1,8 @@
 parameters:
     sonata.media.admin.media.class: Application\Sonata\MediaBundle\Admin\MediaAdmin
     sonata.media.admin.gallery.class: Application\Sonata\MediaBundle\Admin\GalleryAdmin
- #   sonata.media.provider.file.class: Application\Sonata\MediaBundle\Provider\FileProvider
-
+    sonata.media.provider.file.class: Application\Sonata\MediaBundle\Provider\FileProvider
+    sonata.media.provider.image.class: Application\Sonata\MediaBundle\Provider\ImageProvider
 sonata_media:
     # if you don't use default namespace configuration
     class:

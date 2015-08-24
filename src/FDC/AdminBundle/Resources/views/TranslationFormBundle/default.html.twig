@@ -1,11 +1,15 @@
 {% block fdc_admin_news_article_translations_a2lix_translations_widget %}
-    {% include 'FDCAdminBundle:TranslationFormBundle:translations_widget.html.twig' %}
+    {% include 'FDCAdminBundle:TranslationFormBundle:article.html.twig' %}
 {% endblock %}
 
 {% block fdc_admin_news_audio_translations_a2lix_translations_widget %}
-    {% include 'FDCAdminBundle:TranslationFormBundle:translations_widget.html.twig' %}
+    {% include 'FDCAdminBundle:TranslationFormBundle:article.html.twig' %}
 {% endblock %}
 
 {% block a2lix_translationsForms_widget %}
     {{ block('a2lix_translations_widget') }}
+{% endblock %}
+
+{% block sonata_media_admin_media_translations_a2lix_translations_widget %}
+    {% include 'FDCAdminBundle:TranslationFormBundle:media.html.twig' %}
 {% endblock %}

@@ -17,9 +17,10 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
-    locale:             fr
+    locale:             en
     locales: [fr, en, es, pt, ru, jp, cn, ar]
     locales_admin: [fr, en]
+    locale_default_translation: fr
     
     # soif
     soif_preprod_url: ~

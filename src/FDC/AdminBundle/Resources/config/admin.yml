@@ -24,6 +24,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Theme, show_in_dashboard: false}
 
+    fdc.admin.news_widget_image_dummy:
+        class: FDC\AdminBundle\Admin\NewsWidgetImageDummyAdmin
+        arguments: [~, FDC\CoreBundle\Entity\NewsWidgetImage, FDCAdminBundle:NewsWidgetImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
+
     fdc.admin.news_tag:
         class: FDC\AdminBundle\Admin\NewsTagAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsTag, FDCAdminBundle:NewsTagAdmin]

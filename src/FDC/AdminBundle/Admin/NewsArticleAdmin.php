@@ -63,9 +63,11 @@ class NewsArticleAdmin extends Admin
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
+                'label' => false,
+                'required_locales' => array('fr'),
                 'fields' => array(
                     'title' => array(
-                        'sonata_help' => 'X caractères max.'
+                        'sonata_help' => 'X caractères max.',
                     ),
                     'theme' => array(
                         'field_type' => 'sonata_type_model',

@@ -36,8 +36,9 @@ class Media extends SonataBaseMedia
 
     protected $soifId;
 
-    
     protected $filmMedias;
+    
+    protected $sites;
     
     protected $newsWidgetAudios;
     
@@ -50,6 +51,7 @@ class Media extends SonataBaseMedia
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->enabled = true;
     }
 
     /**
@@ -70,15 +72,5 @@ class Media extends SonataBaseMedia
     public function getSoifId()
     {
         return $this->soifId;
-    }
-
-    public function setAltAttribute($altAttribute)
-    {
-        $this->altAttribute = $altAttribute;
-    }
-    
-    public function getAltAttribute()
-    {
-        return $this->altAttribute;
     }
 }

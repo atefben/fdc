@@ -17,7 +17,7 @@
             <generator strategy="AUTO"/>
         </id>
         
-        <field name="soifId" type="string" column="soif_id">
+        <field name="soifId" type="string" column="soif_id" nullable="true">
         </field>
         
         <one-to-many field="filmMedias" target-entity="FDC\CoreBundle\Entity\FilmMedia" mapped-by="file">

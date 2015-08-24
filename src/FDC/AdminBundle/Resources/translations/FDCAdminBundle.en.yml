@@ -1,0 +1,12 @@
+nav:
+    site_modal: 'Open site selection'
+
+lang:
+    fr: 'French'
+    en: 'English'
+    cn: 'Chinese'
+    ar: 'Arab'
+    es: 'Spanish'
+    pt: 'Portuguese'
+    jp: 'Japanese'
+    ru: 'Russian'

@@ -1,2 +1,12 @@
 nav:
     site_modal: 'Ouvrir la sélection de site'
+
+lang:
+    fr: 'Francais'
+    en: 'Anglais'
+    cn: 'Chinois'
+    ar: 'Arabe'
+    es: 'Espagnol'
+    pt: 'Portugais'
+    jp: 'Japonais'
+    ru: 'Russe'
