@@ -1,25 +1,2 @@
-breadcrumb:
-    link_article_list: "Liste d'articles"
-
-group:
-    news: 'Actualités'
-
-label:
-    article: 'Article'
-
-list:
-    label_id: 'Identifiant'
-    label_title: 'Titre'
-    label_lock_user: 'Vérouillé par'
-    label__action: 'Actions'
-
-filter:
-    label_id: 'Identifiant'
-
-form:
-    label_translations: 'Traductions'
-    label_title: 'Titre'
-    label_content: 'Contenu'
-
 nav:
     site_modal: 'Ouvrir la sélection de site'

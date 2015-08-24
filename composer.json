@@ -33,7 +33,9 @@
         "infinite-networks/form-bundle": "^1.0",
         "sonata-project/seo-bundle": "^2.0",
         "Trsteel/ckeditor-bundle": "~1.8",
-        "jms/security-extra-bundle": "^1.5"
+        "jms/security-extra-bundle": "^1.5",
+        "jms/translation-bundle": "dev-master",
+        "jms/di-extra-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -30,6 +30,13 @@ class NewsArticleTranslation
      * @ORM\Column(type="text", nullable=true)
      */
     protected $introduction;
+
+    /**
+     * @var NewsTag
+     *
+     * @ORM\ManyToMany(targetEntity="NewsTag")
+     */
+    protected $tags;
     
     /**
      * @var NewsWidget
@@ -58,11 +65,11 @@ class NewsArticleTranslation
       * @ORM\OneToOne(targetEntity="Theme")
       */
     protected $theme;
-        
+
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Gallery
+     * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery", inversedBy="newsArticleHeader")
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="newsArticleHeader")
      */
     protected $header;
     
@@ -154,10 +161,10 @@ class NewsArticleTranslation
     /**
      * Set header
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Gallery $header
+     * @param \Application\Sonata\MediaBundle\Entity\Media $header
      * @return NewsArticle
      */
-    public function setHeader(\Application\Sonata\MediaBundle\Entity\Gallery $header = null)
+    public function setHeader(\Application\Sonata\MediaBundle\Entity\Media $header = null)
     {
         $this->header = $header;
 
@@ -167,7 +174,7 @@ class NewsArticleTranslation
     /**
      * Get header
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Gallery 
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getHeader()
     {
@@ -285,5 +292,48 @@ class NewsArticleTranslation
     public function getIntroduction()
     {
         return $this->introduction;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \FDC\CoreBundle\Entity\NewsTag $tags
+     * @return NewsArticleTranslation
+     */
+    public function addTag(\FDC\CoreBundle\Entity\NewsTag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \FDC\CoreBundle\Entity\NewsTag $tags
+     */
+    public function removeTag(\FDC\CoreBundle\Entity\NewsTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

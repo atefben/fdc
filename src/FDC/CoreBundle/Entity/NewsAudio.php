@@ -21,7 +21,7 @@ use FDC\CoreBundle\Util\Time;
 class NewsAudio
 {
     use Time;
-  //  use Translatable;
+    use Translatable;
 
     /**
      * @var integer
@@ -33,34 +33,6 @@ class NewsAudio
     protected $id;
     
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     */
-    protected $publishedAt;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     */
-    protected $publishEndedAt;
-    
-     /**
-      * @var Theme
-      *
-      * @ORM\OneToOne(targetEntity="Theme")
-      */
-    protected $theme;
-        
-    /**
-     * @var Application\Sonata\MediaBundle\Entity\Gallery
-     *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery", inversedBy="newsArticleHeader")
-     */
-    protected $header;
-    
-    /**
      * @var ArticleLock
      *
      * @ORM\OneToMany(targetEntity="NewsArticleLock", mappedBy="articles")
@@ -68,18 +40,9 @@ class NewsAudio
     protected $lock;
 
     /**
-     * @var Site
-     *
-     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="newsAudio")
+     * ArrayCollection
      */
-    protected $widgets;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsAudios")
-     */
-    protected $sites;
+    protected $translations;
     
     public function __construct()
     {
@@ -104,163 +67,5 @@ class NewsAudio
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set theme
-     *
-     * @param \FDC\CoreBundle\Entity\Theme $theme
-     * @return Article
-     */
-    public function setTheme(\FDC\CoreBundle\Entity\Theme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \FDC\CoreBundle\Entity\Theme 
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return Article
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publishEndedAt
-     *
-     * @param \DateTime $publishEndedAt
-     * @return Article
-     */
-    public function setPublishEndedAt($publishEndedAt)
-    {
-        $this->publishEndedAt = $publishEndedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishEndedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishEndedAt()
-    {
-        return $this->publishEndedAt;
-    }
-
-    /**
-     * Set header
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Gallery $header
-     * @return NewsArticle
-     */
-    public function setHeader(\Application\Sonata\MediaBundle\Entity\Gallery $header = null)
-    {
-        $this->header = $header;
-
-        return $this;
-    }
-
-    /**
-     * Get header
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Gallery 
-     */
-    public function getHeader()
-    {
-        return $this->header;
-    }
-
-    /**
-     * Add widgets
-     *
-     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
-     * @return NewsArticle
-     */
-    public function addWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $this->widgets[] = $widgets;
-
-        return $this;
-    }
-
-    /**
-     * Remove widgets
-     *
-     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
-     */
-    public function removeWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $this->widgets->removeElement($widgets);
-    }
-
-    /**
-     * Get widgets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getWidgets()
-    {
-        return $this->widgets;
-    }
-
-    /**
-     * Add sites
-     *
-     * @param \FDC\CoreBundle\Entity\Site $sites
-     * @return NewsArticle
-     */
-    public function addSite(\FDC\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \FDC\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\FDC\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSites()
-    {
-        return $this->sites;
     }
 }

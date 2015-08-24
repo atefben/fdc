@@ -26,7 +26,7 @@ class AppKernel extends Kernel
             new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\TranslationBundle\SonataTranslationBundle(),
-            new Sonata\SeoBundle\SonataSeoBundle(),
+           # new Sonata\SeoBundle\SonataSeoBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
@@ -35,13 +35,16 @@ class AppKernel extends Kernel
             /* Doctrine Fixtures */
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             /* CMS tools */
-            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new Infinite\FormBundle\InfiniteFormBundle(),
             new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
             // sluggable
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            // translatable
+            // Translations
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
+            new JMS\TranslationBundle\JMSTranslationBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new JMS\AopBundle\JMSAopBundle(),
             /* User Management */
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),

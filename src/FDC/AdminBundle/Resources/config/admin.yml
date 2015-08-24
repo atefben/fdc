@@ -5,7 +5,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsArticle}
 
-    fdcadmin.news_audio:
+    fdc.admin.news_audio:
         class: FDC\AdminBundle\Admin\NewsAudioAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsAudio, FDCAdminBundle:NewsAudioAdmin]
         tags:
@@ -23,3 +23,9 @@ services:
         arguments: [~, FDC\CoreBundle\Entity\NewsArticleTranslation, FDCAdminBundle:TranslationDummyAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Theme, show_in_dashboard: false}
+
+    fdc.admin.news_tag:
+        class: FDC\AdminBundle\Admin\NewsTagAdmin
+        arguments: [~, FDC\CoreBundle\Entity\NewsTag, FDCAdminBundle:NewsTagAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsTag}

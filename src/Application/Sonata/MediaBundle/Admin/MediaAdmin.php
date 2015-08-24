@@ -25,4 +25,26 @@ use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class MediaAdmin extends BaseMediaAdmin
 {
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $media = $this->getSubject();
+
+        if (!$media) {
+            $media = $this->getNewInstance();
+        }
+
+        if (!$media || !$media->getProviderName()) {
+            return;
+        }
+
+        $formMapper->getFormBuilder()->addModelTransformer(new ProviderDataTransformer($this->pool, $this->getClass()), true);
+
+        $provider = $this->pool->getProvider($media->getProviderName());
+
+        if ($media->getId()) {
+            $provider->buildEditForm($formMapper);
+        } else {
+            $provider->buildCreateForm($formMapper);
+        }
+    }
 }

@@ -11,16 +11,31 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class NewsAudioAdmin extends Admin
 {
     /**
+     * configure function.
+     * 
+     * @access public
+     * @return void
+     */
+    public function configure()
+    {
+        $this->setTemplate('edit', 'FDCAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('FDCAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
+    /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
             ->add('id')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 
@@ -31,10 +46,6 @@ class NewsAudioAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -50,12 +61,87 @@ class NewsAudioAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        // https://github.com/a2lix/TranslationFormBundle/issues/155
+        $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
+        $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsTag");
+        $mediaAdmin = $this->configurationPool->getAdminByClass("Application\\Sonata\\MediaBundle\\Entity\\Media");
+        $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
+
         $formMapper
-            ->add('id')
-            ->add('publishedAt')
+            ->add('translations', 'a2lix_translations', array(
+                'fields' => array(
+                    'title' => array(
+                        'sonata_help' => 'X caractères max.'
+                    ),
+                    'theme' => array(
+                        'field_type' => 'sonata_type_model',
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
+                        'model_manager' => $themeAdmin->getModelManager(),
+                        'class' => $themeAdmin->getClass(),
+                       //'class' => 'FDCCoreBundle:Theme',
+                      //  'allow_add' => true,
+                    ),
+                    'tags' => array(
+                        'field_type' => 'sonata_type_model',
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
+                        'model_manager' => $tagAdmin->getModelManager(),
+                        'class' => 'FDCCoreBundle:NewsTag',
+                        'multiple' => true,
+                    ),
+                    'header' => array(
+                        'field_type' => 'sonata_type_model_list',
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['header'],
+                        'model_manager' => $mediaAdmin->getModelManager(),
+                        'class' => $themeAdmin->getClass(),
+                    ),
+                    'introduction' => array(
+                        'field_type' => 'ckeditor'
+                    ),
+                    'widgets' => array(
+                        'field_type' => 'infinite_form_polycollection',
+                        'types' => array(
+                            'news_widget_text_type',
+                            'news_widget_audio_type',
+                            'news_widget_image_type',
+                            'news_widget_video_type',
+                        ),
+                        'allow_add' => true,
+                        'allow_delete' => true,
+                        'prototype' => true,
+                        'by_reference' => false,
+                    ),
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
+                    'publishedAt' => array(
+                        'field_type' => 'sonata_type_datetime_picker',
+                        'format' => 'dd/MM/yyyy HH:mm',
+                        'attr' => array(
+                            'data-date-format' => 'dd/MM/yyyy HH:mm',
+                        )
+                    ),
+                    'publishEndedAt' => array(
+                        'field_type' => 'sonata_type_datetime_picker',
+                        'format' => 'dd/MM/yyyy HH:mm',
+                        'attr' => array(
+                            'data-date-format' => 'dd/MM/yyyy HH:mm',
+                        )
+                    ),
+                )
+            ))
+            ->end()
+            /*->add('header', 'sonata_type_model_list')
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
             ->add('publishEndedAt')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->end()*/
         ;
     }
 
@@ -66,10 +152,6 @@ class NewsAudioAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 }

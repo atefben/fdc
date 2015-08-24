@@ -27,8 +27,6 @@ class Gallery extends BaseGallery
      * @var integer $id
      */
     protected $id;
-    
-    protected $newsArticleHeader;
 
     /**
      * Get id

@@ -18,20 +18,20 @@ class NewsWidgetImage extends NewsWidget
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
-    private $file;
+    private $gallery;
 
     /**
      * Set file
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @param \Application\Sonata\MediaBundle\Entity\Gallery $gallery
      * @return NewsWidgetImage
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setGallery(\Application\Sonata\MediaBundle\Entity\Gallery $gallery)
     {
-        $this->file = $file;
+        $this->gallery = $gallery;
 
         return $this;
     }
@@ -41,8 +41,8 @@ class NewsWidgetImage extends NewsWidget
      *
      * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
-    public function getFile()
+    public function getGallery()
     {
-        return $this->file;
+        return $this->gallery;
     }
 }

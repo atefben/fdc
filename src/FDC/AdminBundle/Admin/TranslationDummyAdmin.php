@@ -16,7 +16,9 @@ class TranslationDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('theme', 'sonata_type_model_list')
+            ->add('theme', 'sonata_type_model')
+            ->add('header', 'sonata_type_model_list')
+            ->add('tags', 'sonata_type_model')
         ;
     }
 }

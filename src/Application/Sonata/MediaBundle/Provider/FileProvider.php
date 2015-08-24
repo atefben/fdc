@@ -37,4 +37,10 @@ class FileProvider extends SonataFileProvider
         ));
         $formMapper->add('binaryContent', 'file', array('required' => false));
     }
+
+    public function buildMediaType(FormBuilder $formBuilder)
+    {
+        $formBuilder->add('binaryContent', 'file');
+        $formBuilder->add('altAttribute');
+    }
 }

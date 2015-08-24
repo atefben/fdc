@@ -8,19 +8,22 @@ services:
         class: FDC\AdminBundle\Form\Type\NewsWidgetTextType
         tags:
             - { name: form.type, alias: 'news_widget_text_type'}
-
+    # need to add scope prototype to avoid 
     fdc.form.news_widget_audio_type:
         scope: prototype
         class: FDC\AdminBundle\Form\Type\NewsWidgetAudioType
         tags:
             - { name: form.type, alias: 'news_widget_audio_type'}
         calls:
-            - ['setSonataAdmin', ['@sonata.media.admin.media']]
+            - ['setSonataAdmin', ['@sonata.media.admin.gallery']]
 
     fdc.form.news_widget_image_type:
-            class: FDC\AdminBundle\Form\Type\NewsWidgetImageType
-            tags:
-                - { name: form.type, alias: 'news_widget_image_type'}
+        scope: prototype
+        class: FDC\AdminBundle\Form\Type\NewsWidgetImageType
+        tags:
+            - { name: form.type, alias: 'news_widget_image_type'}
+        calls:
+            - ['setSonataAdmin', ['@sonata.media.admin.gallery']]
 
     fdc.form.news_widget_video_type:
             class: FDC\AdminBundle\Form\Type\NewsWidgetVideoType

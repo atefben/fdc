@@ -29,7 +29,8 @@ class FDCAdminExtension extends Extension
             'block.yml',
             'event.yml',
             'form.yml',
-            'handler.yml'
+            'handler.yml',
+            'twig.yml'
         );
         
         foreach ($configFiles as $configFile) {

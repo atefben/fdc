@@ -4,12 +4,13 @@ imports:
     - { resource: services.yml }
     - { resource: bundles/a2lix_translation_form.yml }
     - { resource: bundles/fos_user.yml }
+    - { resource: bundles/jms_translation.yml }
     - { resource: bundles/sonata_admin.yml }
     - { resource: bundles/sonata_block.yml }
     - { resource: bundles/sonata_doctrine_orm_admin.yml }
     - { resource: bundles/sonata_intl.yml }
     - { resource: bundles/sonata_media.yml }
-    - { resource: bundles/sonata_seo.yml }
+  #  - { resource: bundles/sonata_seo.yml }
     - { resource: bundles/sonata_translation.yml }
     - { resource: bundles/stof_doctrine_extensions.yml }
 

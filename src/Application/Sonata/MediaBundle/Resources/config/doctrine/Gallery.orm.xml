@@ -16,9 +16,6 @@
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
-        
-        <one-to-one field="newsArticleHeader" target-entity="FDC\CoreBundle\Entity\NewsArticle" mapped-by="header">
-        </one-to-one>
 
     </entity>
 </doctrine-mapping>

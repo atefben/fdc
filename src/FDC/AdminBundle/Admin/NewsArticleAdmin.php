@@ -57,6 +57,8 @@ class NewsArticleAdmin extends Admin
     {
         // https://github.com/a2lix/TranslationFormBundle/issues/155
         $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
+        $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsTag");
+        $mediaAdmin = $this->configurationPool->getAdminByClass("Application\\Sonata\\MediaBundle\\Entity\\Media");
         $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
 
         $formMapper
@@ -64,6 +66,27 @@ class NewsArticleAdmin extends Admin
                 'fields' => array(
                     'title' => array(
                         'sonata_help' => 'X caractères max.'
+                    ),
+                    'theme' => array(
+                        'field_type' => 'sonata_type_model',
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
+                        'model_manager' => $themeAdmin->getModelManager(),
+                        'class' => $themeAdmin->getClass(),
+                       //'class' => 'FDCCoreBundle:Theme',
+                      //  'allow_add' => true,
+                    ),
+                    'tags' => array(
+                        'field_type' => 'sonata_type_model',
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
+                        'model_manager' => $tagAdmin->getModelManager(),
+                        'class' => 'FDCCoreBundle:NewsTag',
+                        'multiple' => true,
+                    ),
+                    'header' => array(
+                        'field_type' => 'sonata_type_model_list',
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['header'],
+                        'model_manager' => $mediaAdmin->getModelManager(),
+                        'class' => $themeAdmin->getClass(),
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor'
@@ -101,14 +124,6 @@ class NewsArticleAdmin extends Admin
                             'data-date-format' => 'dd/MM/yyyy HH:mm',
                         )
                     ),
-                    'theme' => array(
-                        'field_type' => 'sonata_type_model',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
-                        'model_manager' => $themeAdmin->getModelManager(),
-                        'class' => $themeAdmin->getClass(),
-                       //'class' => 'FDCCoreBundle:Theme',
-                      //  'allow_add' => true,
-                    )
                 )
             ))
             ->end()
@@ -131,10 +146,6 @@ class NewsArticleAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 }

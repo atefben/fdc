@@ -8,10 +8,20 @@ class NewsWidgetImageType extends NewsWidgetType
 {
     protected $dataClass = 'FDC\\CoreBundle\\Entity\\NewsWidgetImage';
 
+    private $admin;
+    
+    public function setSonataAdmin($admin)
+    {
+        $this->admin = $admin;
+    }
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('file');
+       /* $builder->add('gallery', 'sonata_type_model_list', array(
+            'model_manager' => $this->admin->getModelManager(),
+            'class' => $this->admin->getClass()
+        ));*/
     }
 
     public function getName()

@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * LocaleSwitcherType class.
  * 
- * @extends BaseType
+ * extends BaseType
  */
 class LocaleSwitcherType extends BaseType
 {
