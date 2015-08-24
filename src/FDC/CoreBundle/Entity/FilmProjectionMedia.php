@@ -163,29 +163,6 @@ class FilmProjectionMedia
     }
 
     /**
-     * Set room
-     *
-     * @param \FDC\CoreBundle\Entity\FilmRoom $room
-     * @return FilmProjection
-     */
-    public function setRoom(\FDC\CoreBundle\Entity\FilmRoom $room = null)
-    {
-        $this->room = $room;
-
-        return $this;
-    }
-
-    /**
-     * Get room
-     *
-     * @return \FDC\CoreBundle\Entity\FilmRoom 
-     */
-    public function getRoom()
-    {
-        return $this->room;
-    }
-
-    /**
      * Add films
      *
      * @param \FDC\CoreBundle\Entity\FilmFilm $films
