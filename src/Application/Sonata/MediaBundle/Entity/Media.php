@@ -33,8 +33,6 @@ class Media extends SonataBaseMedia
      * @var integer $id
      */
     protected $id;
-    
-    protected $altAttribute;
 
     protected $soifId;
 

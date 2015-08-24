@@ -23,6 +23,10 @@ class MediaTranslation implements OneLocaleInterface
     private $copyright;
 
     private $translatable_id;
+
+    private $altAttribute;
+    
+    private $legend;
     
     /**
      * Set copyright

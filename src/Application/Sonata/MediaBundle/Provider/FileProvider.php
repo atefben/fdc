@@ -38,6 +38,18 @@ class FileProvider extends SonataFileProvider
         $formMapper->add('binaryContent', 'file', array('required' => false));
     }
 
+    public function buildCreateForm(FormMapper $formMapper)
+    {
+        die();
+        $formMapper->add('binaryContent', 'file', array(
+            'constraints' => array(
+                new NotBlank(),
+                new NotNull(),
+            ),
+        ));
+        $formMapper->add('translations');
+    }
+
     public function buildMediaType(FormBuilder $formBuilder)
     {
         $formBuilder->add('binaryContent', 'file');

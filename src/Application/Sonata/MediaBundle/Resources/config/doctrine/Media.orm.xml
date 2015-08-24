@@ -19,8 +19,6 @@
         
         <field name="soifId" type="string" column="soif_id">
         </field>
-        <field name="altAttribute" type="string" column="alt_attribute">
-        </field>
         
         <one-to-many field="filmMedias" target-entity="FDC\CoreBundle\Entity\FilmMedia" mapped-by="file">
         </one-to-many>
