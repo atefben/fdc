@@ -4,18 +4,23 @@ namespace FDC\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\NewsTranslation;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsArticleTranslation
+class NewsArticleTranslation implements NewsTranslationInterface
 {
     use Time;
     use Translation;
+    use NewsTranslation;
 
     /**
      * @var string
@@ -30,13 +35,14 @@ class NewsArticleTranslation
      * @ORM\Column(type="text", nullable=true)
      */
     protected $introduction;
-
+    
     /**
-     * @var NewsTag
+     * @var integer
      *
-     * @ORM\ManyToMany(targetEntity="NewsTag")
+     * @ORM\Column(type="integer", nullable=false)
+     * @Assert\NotBlank()
      */
-    protected $tags;
+    protected $status;
     
     /**
      * @var NewsWidget
@@ -62,14 +68,14 @@ class NewsArticleTranslation
      /**
       * @var Theme
       *
-      * @ORM\OneToOne(targetEntity="Theme")
+      * @ORM\ManyToOne(targetEntity="Theme")
       */
     protected $theme;
 
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="newsArticleHeader")
+     * @ORM\ManyToOne(targetEntity="Media")
      */
     protected $header;
     
@@ -81,12 +87,20 @@ class NewsArticleTranslation
     protected $sites;
 
     /**
+     * @var NewsTag
+     *
+     * @ORM\ManyToMany(targetEntity="NewsTag")
+     */
+    protected $tags;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->widgets = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->widgets = new ArrayCollection();
+        $this->sites = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -110,6 +124,29 @@ class NewsArticleTranslation
     public function getTheme()
     {
         return $this->theme;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return NewsArticleTranslation
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return NewsArticleTranslation
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**
@@ -161,10 +198,10 @@ class NewsArticleTranslation
     /**
      * Set header
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $header
+     * @param Media $header
      * @return NewsArticle
      */
-    public function setHeader(\Application\Sonata\MediaBundle\Entity\Media $header = null)
+    public function setHeader(Media $header = null)
     {
         $this->header = $header;
 
@@ -174,7 +211,7 @@ class NewsArticleTranslation
     /**
      * Get header
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return Media 
      */
     public function getHeader()
     {
@@ -312,6 +349,7 @@ class NewsArticleTranslation
      */
     public function addTag(\FDC\CoreBundle\Entity\NewsTag $tags)
     {
+        $tags->setNewsArticleTranslation($this);
         $this->tags[] = $tags;
 
         return $this;

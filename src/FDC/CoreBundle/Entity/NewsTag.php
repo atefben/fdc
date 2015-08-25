@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("name")
  */
 class NewsTag
 {
@@ -31,10 +33,21 @@ class NewsTag
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", unique=true)
+     * @Assert\NotBlank()
      */
     protected $name;
 
+    public function __toString()
+    {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+        
+        if ($this->getId()) {
+            $string = $this->getName();
+        }
+        
+        return $string;
+    }
     /**
      * Get id
      *

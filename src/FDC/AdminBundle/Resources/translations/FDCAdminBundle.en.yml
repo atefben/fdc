@@ -10,3 +10,11 @@ lang:
     pt: 'Portuguese'
     jp: 'Japanese'
     ru: 'Russian'
+
+news:
+    status:
+        draft: 'Draft'
+        translation_pending: 'Translation pending'
+        translation_validating: 'Translation validating'
+        published: 'Published'
+        deactivated: 'Deactivated'

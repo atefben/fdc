@@ -2,6 +2,8 @@
 
 namespace FDC\AdminBundle\Admin;
 
+use FDC\CoreBundle\Entity\NewsArticleTranslation;
+
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -40,6 +42,7 @@ class NewsArticleAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -62,6 +65,7 @@ class NewsArticleAdmin extends Admin
         $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
 
         $formMapper
+            ->add('tags', 'sonata_type_model', array('multiple' => true))
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'required_locales' => array('fr'),
@@ -74,15 +78,18 @@ class NewsArticleAdmin extends Admin
                         'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
                         'model_manager' => $themeAdmin->getModelManager(),
                         'class' => $themeAdmin->getClass(),
+                       // 'link_parameters' => array('context' => 'image')
                        //'class' => 'FDCCoreBundle:Theme',
                       //  'allow_add' => true,
                     ),
                     'tags' => array(
                         'field_type' => 'sonata_type_model',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
+                        'by_reference' => false,
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['tags'],
                         'model_manager' => $tagAdmin->getModelManager(),
                         'class' => 'FDCCoreBundle:NewsTag',
                         'multiple' => true,
+                        'required' => false
                     ),
                     'header' => array(
                         'field_type' => 'sonata_type_model_list',
@@ -126,6 +133,11 @@ class NewsArticleAdmin extends Admin
                             'data-date-format' => 'dd/MM/yyyy HH:mm',
                         )
                     ),
+                    'status' => array(
+                        'field_type' => 'choice',
+                        'choices' => NewsArticleTranslation::getStatuses(),
+                        'choice_translation_domain' => 'FDCAdminBundle'
+                    )
                 )
             ))
             ->end()

@@ -5,9 +5,10 @@
         {% set locale = translationsFields.vars.name %}
 
         <li {% if app.request.locale == locale %}class="active"{% endif %}>
-            <a {% if loop.index % 2 == 0 %}class="bg-green"{% else %}class="bg-red"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
-                {{ locale|capitalize }}
-                {% if form.vars.default_locale == locale %}[Default]{% endif %}
+            <a href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+                {% set langKey = 'lang.' ~ locale %}
+                {{ langKey|trans({}, 'FDCAdminBundle') }}
+                {% if form.vars.default_locale == locale %}(MASTER){% endif %}
                 {% if translationsFields.vars.required %}*{% endif %}
             </a>
         </li>
@@ -17,6 +18,7 @@
     <div class="a2lix_translationsFields tab-content">
     {% for translationsFields in form %}
         {% set locale = translationsFields.vars.name %}
+        {#{% if app.request.locale == locale %}#}
 
         <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if app.request.locale == locale %}active{% endif %}">
             <div class="row">
@@ -31,9 +33,7 @@
                             <div class="sonata-ba-collapsed-fields">
                                 {{ form_row(translationsFields.title) }}
                                 {{ form_row(translationsFields.theme) }}
-                                {{ form_row(translationsFields.tags) }}
-                                {{ form_row(translationsFields.header) }}
-                                {{ form_row(translationsFields.introduction) }}
+                                {{ form_row(translationsFields.alt) }}
                             </div>
                         </div>
                     </div>
@@ -47,29 +47,17 @@
                         </div>
                         <div class="box-body">
                             <div class="sonata-ba-collapsed-fields">
-                                 {{ form_row(translationsFields.publishedAt) }}
-                                 {{ form_row(translationsFields.publishEndedAt) }}
-                                 {{ form_row(translationsFields.status) }}
+                                {{ form_row(translationsFields.sites) }}
+                                {{ form_row(translationsFields.publishedAt) }}
+                                {{ form_row(translationsFields.publishEndedAt) }}
+                                {{ form_row(translationsFields.status) }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="box box-success">
-                        <div class="box-header">
-                            <h4 class="box-title">
-                                Modules éditoriaux
-                            </h4>
-                        </div>
-                        <div class="box-body">
-                            {{ form_widget(translationsFields.widgets) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+        {# {% endif %} #}
     {% endfor %}
     </div>
 </div>

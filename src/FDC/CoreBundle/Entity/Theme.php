@@ -9,12 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Theme
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("name")
  */
 class Theme
 {
@@ -33,7 +37,8 @@ class Theme
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
+     * @Assert\NotBlank()
      */
     protected $name;
     

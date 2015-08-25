@@ -3,19 +3,19 @@ services:
         class: FDC\AdminBundle\Admin\NewsArticleAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsArticle, FDCAdminBundle:NewsArticleAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsArticle}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsArticle, label_translator_strategy: sonata.admin.label.strategy.underscore}
 
     fdc.admin.news_audio:
         class: FDC\AdminBundle\Admin\NewsAudioAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsAudio, FDCAdminBundle:NewsAudioAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAudio}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAudio, label_translator_strategy: sonata.admin.label.strategy.underscore}
 
     fdc.admin.theme:
         class: FDC\AdminBundle\Admin\ThemeAdmin
         arguments: [~, FDC\CoreBundle\Entity\Theme, FDCAdminBundle:ThemeAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Theme}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
 
     #dummy class to handle the sonata_type_model_list in translation issue : https://github.com/a2lix/TranslationFormBundle/issues/155
     fdc.admin.translation_dummy:
@@ -34,4 +34,22 @@ services:
         class: FDC\AdminBundle\Admin\NewsTagAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsTag, FDCAdminBundle:NewsTagAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsTag}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsTag, label_translator_strategy: sonata.admin.label.strategy.underscore}
+
+    fdc.admin.media:
+        class: FDC\AdminBundle\Admin\MediaAdmin
+        arguments: [~, FDC\CoreBundle\Entity\Media, FDCAdminBundle:MediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Media}
+
+    fdc.admin.media_image:
+        class: FDC\AdminBundle\Admin\MediaImageAdmin
+        arguments: [~, FDC\CoreBundle\Entity\MediaImage, FDCAdminBundle:MediaImageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaImage, label_translator_strategy: 'sonata.admin.label.strategy.underscore'}
+
+    fdc.admin.media_audio:
+        class: FDC\AdminBundle\Admin\MediaAudioAdmin
+        arguments: [~, FDC\CoreBundle\Entity\MediaAudio, FDCAdminBundle:MediaAudioAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaAudio, label_translator_strategy: sonata.admin.label.strategy.underscore}

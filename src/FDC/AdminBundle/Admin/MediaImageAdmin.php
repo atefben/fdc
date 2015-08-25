@@ -1,28 +1,58 @@
 <?php
 
-/*
- * This file is part of the Sonata project.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+namespace FDC\AdminBundle\Admin;
 
-namespace Application\Sonata\MediaBundle\Provider;
+use FDC\CoreBundle\Entity\MediaImageTranslation;
 
+use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\MediaBundle\Provider\FileProvider as SonataFileProvider;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 
-class FileProvider extends SonataFileProvider
+class MediaImageAdmin extends Admin
 {
-    public function setTranslationsFields(FormMapper $formMapper)
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+        ;
+    }
+
+    /**
+     * @param ListMapper $listMapper
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
+        ;
+    }
+
+    /**
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
     {
         $locales = array('fr', 'en', 'es', 'pt', 'ru', 'jp', 'cn', 'ar');
-        $validationGroups = array('en');
+        $validationGroups = array();
         $formMapper->add('translations', 'a2lix_translations', array(
             'label' => false,
             'required_locales' => $validationGroups,
@@ -33,6 +63,11 @@ class FileProvider extends SonataFileProvider
                     ),
                 'updatedAt' => array(
                     'display' => false
+                ),
+                'file' => array(
+                    'field_type' => 'sonata_media_type',
+                    'provider' => 'sonata.media.provider.file',
+                    'context'  => 'image'
                 ),
                 'legend' => array(
                     'sonata_help' => 'X caractères max.',
@@ -91,28 +126,26 @@ class FileProvider extends SonataFileProvider
                     'multiple' => true,
                     'expanded' => true,
                     'class' => 'FDCCoreBundle:Site'
+                ),
+                'status' => array(
+                    'field_type' => 'choice',
+                    'choices' => MediaImageTranslation::getStatuses(),
+                    'choice_translation_domain' => 'FDCAdminBundle'
                 )
             )
         ))
         ->end();
     }
-    public function buildEditForm(FormMapper $formMapper)
-    {
-        $formMapper->add('binaryContent', 'file', array('required' => false));
-        $this->setTranslationsFields($formMapper);
-    }
 
-    public function buildCreateForm(FormMapper $formMapper)
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
     {
-//        $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
-  //      $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
-       // @TODO validation groups based on user locale  / roles 
-        $formMapper->add('binaryContent', 'file', array(
-            'constraints' => array(
-                new NotBlank(),
-                new NotNull(),
-            ),
-        ));
-        $this->setTranslationsFields($formMapper);
+        $showMapper
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+        ;
     }
 }

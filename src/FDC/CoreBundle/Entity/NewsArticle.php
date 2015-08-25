@@ -38,16 +38,58 @@ class NewsArticle
      * @ORM\OneToMany(targetEntity="NewsArticleLock", mappedBy="articles")
      */
     protected $lock;
+    
+    /**
+     * @var NewsTag
+     *
+     * @ORM\ManyToMany(targetEntity="NewsTag")
+     */
+    protected $tags;
 
     
     /**
      * ArrayCollection
      */
     protected $translations;
-    
+
+    /**
+     * Add tags
+     *
+     * @param \FDC\CoreBundle\Entity\NewsTag $tags
+     * @return NewsArticleTranslation
+     */
+    public function addTag(\FDC\CoreBundle\Entity\NewsTag $tags)
+    {
+        $tags->setNewsArticleTranslation($this);
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \FDC\CoreBundle\Entity\NewsTag $tags
+     */
+    public function removeTag(\FDC\CoreBundle\Entity\NewsTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
     
     public function __toString() {

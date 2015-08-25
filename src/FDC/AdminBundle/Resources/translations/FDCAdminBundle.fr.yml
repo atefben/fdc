@@ -10,3 +10,11 @@ lang:
     pt: 'Portugais'
     jp: 'Japonais'
     ru: 'Russe'
+
+news:
+    status:
+        draft: 'Brouillon'
+        translation_pending: 'En attente de traduction'
+        translation_validating: 'Traduction(s) à valider'
+        published: 'Publié'
+        deactivated: 'Désactivé'

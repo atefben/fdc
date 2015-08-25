@@ -6,10 +6,11 @@
     {% include 'FDCAdminBundle:TranslationFormBundle:article.html.twig' %}
 {% endblock %}
 
-{% block a2lix_translationsForms_widget %}
-    {{ block('a2lix_translations_widget') }}
+{% block fdc_admin_media_image_translations_a2lix_translations_widget %}
+    {% include 'FDCAdminBundle:TranslationFormBundle:media_image.html.twig' %}
 {% endblock %}
 
-{% block sonata_media_admin_media_translations_a2lix_translations_widget %}
-    {% include 'FDCAdminBundle:TranslationFormBundle:media.html.twig' %}
+
+{% block a2lix_translationsForms_widget %}
+    {{ block('a2lix_translations_widget') }}
 {% endblock %}

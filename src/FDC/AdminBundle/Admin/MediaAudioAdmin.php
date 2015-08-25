@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class NewsTagAdmin extends Admin
+class MediaAudioAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,7 +17,6 @@ class NewsTagAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
             ->add('createdAt')
             ->add('updatedAt')
         ;
@@ -30,7 +29,6 @@ class NewsTagAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('name')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_action', 'actions', array(
@@ -49,7 +47,9 @@ class NewsTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -60,7 +60,6 @@ class NewsTagAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('name')
             ->add('createdAt')
             ->add('updatedAt')
         ;

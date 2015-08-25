@@ -49,7 +49,7 @@ class NewsImage
      /**
       * @var Theme
       *
-      * @ORM\OneToOne(targetEntity="Theme")
+      * @ORM\ManyToOne(targetEntity="Theme")
       */
     protected $theme;
         
