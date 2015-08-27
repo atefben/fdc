@@ -35,6 +35,14 @@ class Gallery
      * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="gallery", cascade={"persist"})
      */
     private $medias;
+    
+    /**
+     * @var Media
+     *
+     * @ORM\manyToOne(targetEntity="NewsWidgetImage", inversedBy="gallery")
+     */
+    private $widget;
+
     /**
      * Constructor
      */

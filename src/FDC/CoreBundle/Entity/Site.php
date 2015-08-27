@@ -58,35 +58,21 @@ class Site
     /**
      * @var Site
      *
-     * @ORM\ManyToMany(targetEntity="NewsAudio", mappedBy="sites")
+     * @ORM\ManyToMany(targetEntity="NewsAudioTranslation", mappedBy="sites")
      */
     protected $newsAudios;
 
     /**
      * @var Site
      *
-     * @ORM\ManyToMany(targetEntity="NewsVideo", mappedBy="sites")
-     */
-    protected $newsVideos;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="NewsImage", mappedBy="sites")
-     */
-    protected $newsImages;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="NewsArticle", mappedBy="sites")
+     * @ORM\ManyToMany(targetEntity="NewsArticleTranslation", mappedBy="sites")
      */
     protected $newsArticles;
     
      /**
      * @var Site
      *
-     * @ORM\ManyToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="sites")
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="sites")
      */
     protected $users;
 

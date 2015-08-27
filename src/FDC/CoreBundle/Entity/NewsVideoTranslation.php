@@ -14,7 +14,7 @@ use FDC\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsAudioTranslation
+class NewsVideoTranslation
 {
     use Time;
     use Translation;
@@ -43,7 +43,7 @@ class NewsAudioTranslation
     /**
      * @var NewsWidget
      *
-     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="newsAudio", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="newsVideo", cascade={"persist"})
      */
     protected $widgets;
     

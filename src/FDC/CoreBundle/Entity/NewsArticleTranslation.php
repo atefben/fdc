@@ -27,14 +27,14 @@ class NewsArticleTranslation implements NewsTranslationInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $title;
+    private $title;
     
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $introduction;
+    private $introduction;
     
     /**
      * @var integer
@@ -42,56 +42,63 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @ORM\Column(type="integer", nullable=false)
      * @Assert\NotBlank()
      */
-    protected $status;
+    private $status;
     
     /**
      * @var NewsWidget
      *
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="newsArticle", cascade={"persist"})
      */
-    protected $widgets;
+    private $widgets;
     
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
      */
-    protected $publishedAt;
+    private $publishedAt;
     
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
      */
-    protected $publishEndedAt;
+    private $publishEndedAt;
     
      /**
       * @var Theme
       *
       * @ORM\ManyToOne(targetEntity="Theme")
       */
-    protected $theme;
+    private $theme;
 
     /**
      * @var MediaImage
      *
      * @ORM\ManyToOne(targetEntity="MediaImage")
      */
-    protected $header;
+    private $header;
     
     /**
      * @var Site
      *
-     * @ORM\ManyToMany(targetEntity="Site")
+     * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsArticles")
      */
-    protected $sites;
+    private $sites;
 
     /**
      * @var NewsTag
      *
      * @ORM\ManyToMany(targetEntity="NewsTag")
      */
-    protected $tags;
+    private $tags;
+
+    /**
+     * @var NewsAssociated
+     *
+     * @ORM\OneToOne(targetEntity="NewsAssociated", inversedBy="news")
+     */
+    private $newsAssociated;
 
     /**
      * Constructor
@@ -101,6 +108,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
         $this->widgets = new ArrayCollection();
         $this->sites = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->associations = new ArrayCollection();
     }
 
     /**
@@ -349,7 +357,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
      */
     public function addTag(\FDC\CoreBundle\Entity\NewsTag $tags)
     {
-        $tags->setNewsArticleTranslation($this);
         $this->tags[] = $tags;
 
         return $this;
@@ -373,5 +380,29 @@ class NewsArticleTranslation implements NewsTranslationInterface
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set newsAssociated
+     *
+     * @param \FDC\CoreBundle\Entity\NewsAssociated $newsAssociated
+     * @return NewsArticleTranslation
+     */
+    public function setNewsAssociated(\FDC\CoreBundle\Entity\NewsAssociated $newsAssociated = null)
+    {
+        $newsAssociated->setNews($this);
+        $this->newsAssociated = $newsAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Get newsAssociated
+     *
+     * @return \FDC\CoreBundle\Entity\NewsAssociated 
+     */
+    public function getNewsAssociated()
+    {
+        return $this->newsAssociated;
     }
 }

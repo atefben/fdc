@@ -18,36 +18,9 @@ use FDC\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsAudio
+class NewsAudio extends News
 {
-    use Time;
     use Translatable;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-    
-    /**
-     * @var ArticleLock
-     *
-     * @ORM\OneToMany(targetEntity="NewsArticleLock", mappedBy="articles")
-     */
-    protected $lock;
-
-    /**
-     * ArrayCollection
-     */
-    protected $translations;
-    
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
     
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
@@ -57,15 +30,5 @@ class NewsAudio
         }
         
         return $string;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

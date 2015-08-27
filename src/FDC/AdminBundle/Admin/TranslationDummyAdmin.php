@@ -21,6 +21,9 @@ class TranslationDummyAdmin extends Admin
             ->add('tags', 'sonata_type_model', array(
                 'multiple' => true,
             ))
+            ->add('newsAssociated', 'sonata_type_model_list', array(
+                'btn_list' => false
+            ))
         ;
     }
 }

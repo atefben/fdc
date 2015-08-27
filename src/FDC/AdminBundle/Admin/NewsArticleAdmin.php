@@ -60,8 +60,9 @@ class NewsArticleAdmin extends Admin
     {
         // https://github.com/a2lix/TranslationFormBundle/issues/155
         $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
+        $newsAssociatedAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsAssociated");
         $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsTag");
-        $mediaAdmin = $this->configurationPool->getAdminByClass("Application\\Sonata\\MediaBundle\\Entity\\Media");
+        $mediaImageAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\MediaImage");
         $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
 
         $formMapper
@@ -93,8 +94,8 @@ class NewsArticleAdmin extends Admin
                     'header' => array(
                         'field_type' => 'sonata_type_model_list',
                         'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['header'],
-                        'model_manager' => $mediaAdmin->getModelManager(),
-                        'class' => $mediaAdmin->getClass(),
+                        'model_manager' => $mediaImageAdmin->getModelManager(),
+                        'class' => $mediaImageAdmin->getClass(),
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor'
@@ -111,6 +112,13 @@ class NewsArticleAdmin extends Admin
                         'allow_delete' => true,
                         'prototype' => true,
                         'by_reference' => false,
+                    ),
+                    'newsAssociated' => array(
+                        'field_type' => 'sonata_type_model_list',
+                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['newsAssociated'],
+                        'model_manager' => $newsAssociatedAdmin->getModelManager(),
+                        'class' => $newsAssociatedAdmin->getClass(),
+                        'btn_list' => false
                     ),
                     'createdAt' => array(
                         'display' => false

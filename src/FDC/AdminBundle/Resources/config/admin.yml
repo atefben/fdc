@@ -65,3 +65,21 @@ services:
         arguments: [~, FDC\CoreBundle\Entity\GalleryMedia, FDCAdminBundle:GalleryMediaAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: GalleryMediaAdmin}
+
+    fdc.admin.news:
+        class: FDC\AdminBundle\Admin\NewsAdmin
+        arguments: [~, FDC\CoreBundle\Entity\News, FDCAdminBundle:NewsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News}
+
+    fdc.admin.news_associated:
+        class: FDC\AdminBundle\Admin\NewsAssociatedAdmin
+        arguments: [~, FDC\CoreBundle\Entity\NewsAssociated, FDCAdminBundle:NewsAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAssociated}
+
+    fdc.admin.news_associated_news:
+        class: FDC\AdminBundle\Admin\NewsAssociatedNewsAdmin
+        arguments: [~, FDC\CoreBundle\Entity\NewsAssociatedNews, FDCAdminBundle:NewsAssociatedNewsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAssociatedNews}

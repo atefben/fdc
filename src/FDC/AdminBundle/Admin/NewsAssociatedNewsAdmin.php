@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class GalleryAdmin extends Admin
+class NewsAssociatedNewsAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,6 +17,8 @@ class GalleryAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -27,6 +29,8 @@ class GalleryAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -43,13 +47,10 @@ class GalleryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('medias', 'sonata_type_collection', array(
-                'by_reference' => false,
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable' => 'position',
-            ));
+            ->add('association', 'sonata_type_model_list', array(
+                'btn_add' => false
+            ))
+        ;
     }
 
     /**
@@ -59,6 +60,8 @@ class GalleryAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }

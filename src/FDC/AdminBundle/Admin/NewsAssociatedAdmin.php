@@ -2,14 +2,26 @@
 
 namespace FDC\AdminBundle\Admin;
 
+use FDC\CoreBundle\Entity\NewsAssociatedNews;
+
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class GalleryAdmin extends Admin
+class NewsAssociatedAdmin extends Admin
 {
+    public function getNewInstance()
+    {
+       $instance = parent::getNewInstance();
+       
+       $instance->addAssociation(new NewsAssociatedNews());
+       $instance->addAssociation(new NewsAssociatedNews());
+
+       return $instance;
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -17,6 +29,8 @@ class GalleryAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -27,6 +41,8 @@ class GalleryAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -36,6 +52,7 @@ class GalleryAdmin extends Admin
             ))
         ;
     }
+    
 
     /**
      * @param FormMapper $formMapper
@@ -43,13 +60,15 @@ class GalleryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('medias', 'sonata_type_collection', array(
+            ->add('associations', 'sonata_type_collection', array(
                 'by_reference' => false,
+                'btn_add' => false,
+                'type_options' => array('btn_delete' => false),
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
-                'sortable' => 'position',
             ));
+        ;
     }
 
     /**
@@ -59,6 +78,8 @@ class GalleryAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }

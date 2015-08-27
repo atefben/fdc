@@ -46,21 +46,21 @@ abstract class NewsWidget
     /**
      * @var NewsAudio
      *
-     * @ORM\ManyToOne(targetEntity="NewsAudio", inversedBy="widgets")
+     * @ORM\ManyToOne(targetEntity="NewsAudioTranslation", inversedBy="widgets")
      */
     protected $newsAudio;
     
     /**
      * @var NewsImage
      *
-     * @ORM\ManyToOne(targetEntity="NewsImage", inversedBy="widgets")
+     * @ORM\ManyToOne(targetEntity="NewsImageTranslation", inversedBy="widgets")
      */
     protected $newsImage;
 
     /**
      * @var NewsVideo
      *
-     * @ORM\ManyToOne(targetEntity="NewsVideo", inversedBy="widgets")
+     * @ORM\ManyToOne(targetEntity="NewsVideoTranslation", inversedBy="widgets")
      */
     protected $newsVideo;
 
