@@ -83,3 +83,9 @@ services:
         arguments: [~, FDC\CoreBundle\Entity\NewsAssociatedNews, FDCAdminBundle:NewsAssociatedNewsAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAssociatedNews}
+
+    fdc.admin.news_article_translation_news_tag:
+        class: FDC\AdminBundle\Admin\NewsArticleTranslationNewsTagAdmin
+        arguments: [~, FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag, FDCAdminBundle:NewsArticleTranslationNewsTagAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsArticleTranslationNewsTag}

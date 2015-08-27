@@ -18,8 +18,8 @@ class TranslationDummyAdmin extends Admin
         $formMapper
             ->add('theme', 'sonata_type_model')
             ->add('header', 'sonata_type_model_list', array(), array('link_parameters' => array('edit' => 'list', 'context' => 'image')))
-            ->add('tags', 'sonata_type_model', array(
-                'multiple' => true,
+            ->add('tags', 'sonata_type_model_list', array(
+                'btn_list' => false
             ))
             ->add('newsAssociated', 'sonata_type_model_list', array(
                 'btn_list' => false

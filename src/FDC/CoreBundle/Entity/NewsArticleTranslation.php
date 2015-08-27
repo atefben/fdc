@@ -87,9 +87,9 @@ class NewsArticleTranslation implements NewsTranslationInterface
     private $sites;
 
     /**
-     * @var NewsTag
+     * @var NewsArticleTranslationNewsTag
      *
-     * @ORM\ManyToMany(targetEntity="NewsTag")
+     * @ORM\OneToOne(targetEntity="NewsArticleTranslationNewsTag", mappedBy="news")
      */
     private $tags;
 
@@ -350,39 +350,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
     }
 
     /**
-     * Add tags
-     *
-     * @param \FDC\CoreBundle\Entity\NewsTag $tags
-     * @return NewsArticleTranslation
-     */
-    public function addTag(\FDC\CoreBundle\Entity\NewsTag $tags)
-    {
-        $this->tags[] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param \FDC\CoreBundle\Entity\NewsTag $tags
-     */
-    public function removeTag(\FDC\CoreBundle\Entity\NewsTag $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
      * Set newsAssociated
      *
      * @param \FDC\CoreBundle\Entity\NewsAssociated $newsAssociated
@@ -404,5 +371,28 @@ class NewsArticleTranslation implements NewsTranslationInterface
     public function getNewsAssociated()
     {
         return $this->newsAssociated;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param \FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag $tags
+     * @return NewsArticleTranslation
+     */
+    public function setTags(\FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag $tags = null)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

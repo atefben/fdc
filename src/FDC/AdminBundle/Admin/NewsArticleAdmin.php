@@ -65,7 +65,7 @@ class NewsArticleAdmin extends Admin
         // https://github.com/a2lix/TranslationFormBundle/issues/155
         $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
         $newsAssociatedAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsAssociated");
-        $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsTag");
+        $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsArticleTranslationNewsTag");
         $mediaImageAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\MediaImage");
         $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
 
@@ -78,22 +78,18 @@ class NewsArticleAdmin extends Admin
                         'sonata_help' => 'X caractères max.',
                     ),
                     'theme' => array(
-                        'field_type' => 'sonata_type_model',
+                        'field_type' => 'sonata_type_model_list',
                         'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
                         'model_manager' => $themeAdmin->getModelManager(),
                         'class' => $themeAdmin->getClass(),
-                       // 'link_parameters' => array('context' => 'image')
-                       //'class' => 'FDCCoreBundle:Theme',
-                      //  'allow_add' => true,
+                        'btn_delete' => false
                     ),
                     'tags' => array(
-                        'field_type' => 'sonata_type_model',
-                        'by_reference' => false,
+                        'field_type' => 'sonata_type_model_list',
                         'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['tags'],
                         'model_manager' => $tagAdmin->getModelManager(),
                         'class' => $tagAdmin->getClass(),
-                        'multiple' => true,
-                        'required' => false
+                        'btn_list' => false
                     ),
                     'header' => array(
                         'field_type' => 'sonata_type_model_list',
