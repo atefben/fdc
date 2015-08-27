@@ -20,7 +20,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity({"news", "association"})
  */
 class NewsAssociatedNews
 {

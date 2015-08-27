@@ -12,6 +12,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class NewsArticleAdmin extends Admin
 {
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
+
     public function configure()
     {
         $this->setTemplate('edit', 'FDCAdminBundle:CRUD:edit_polycollection.html.twig');

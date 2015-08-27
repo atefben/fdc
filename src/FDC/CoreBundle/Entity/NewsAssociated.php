@@ -37,7 +37,6 @@ class NewsAssociated
      * @var NewsArticleTranslation
      *
      * @ORM\OneToOne(targetEntity="NewsArticleTranslation", mappedBy="newsAssociated")
-     * @Assert\Valid()
      */
     protected $news;
     
@@ -45,7 +44,6 @@ class NewsAssociated
      * @var NewsAssociatedNews
      *
      * @ORM\OneToMany(targetEntity="NewsAssociatedNews", mappedBy="news", cascade={"persist"})
-     * @Assert\Valid()
      */
     protected $associations;
     
