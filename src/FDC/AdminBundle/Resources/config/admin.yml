@@ -53,3 +53,15 @@ services:
         arguments: [~, FDC\CoreBundle\Entity\MediaAudio, FDCAdminBundle:MediaAudioAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: MediaAudio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+
+    fdc.admin.gallery:
+        class: FDC\AdminBundle\Admin\GalleryAdmin
+        arguments: [~, FDC\CoreBundle\Entity\Gallery, FDCAdminBundle:GalleryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Gallery}
+
+    fdc.admin.gallery_media:
+        class: FDC\AdminBundle\Admin\GalleryMediaAdmin
+        arguments: [~, FDC\CoreBundle\Entity\GalleryMedia, FDCAdminBundle:GalleryMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: GalleryMediaAdmin}

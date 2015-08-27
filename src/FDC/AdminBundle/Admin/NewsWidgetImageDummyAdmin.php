@@ -16,7 +16,13 @@ class NewsWidgetImageDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('gallery', 'sonata_type_model_list')
+            ->add('gallery', 'sonata_type_collection', array(
+            'by_reference' => false,
+        ), array(
+            'edit' => 'inline',
+            'inline' => 'table',
+            'sortable' => 'position',
+        ));
         ;
     }
 }

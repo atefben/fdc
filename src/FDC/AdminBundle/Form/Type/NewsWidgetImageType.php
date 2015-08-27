@@ -2,20 +2,15 @@
 
 namespace FDC\AdminBundle\Form\Type;
 
+use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
+
 use Symfony\Component\Form\FormBuilderInterface;
 
 class NewsWidgetImageType extends NewsWidgetType
 {
     protected $dataClass = 'FDC\\CoreBundle\\Entity\\NewsWidgetImage';
-
-    private $galleryDummyAdmin;
     
     private $newsWidgetImageDummyAdmin;
-    
-    public function setGalleryDummyAdmin($galleryDummyAdmin)
-    {
-        $this->galleryDummyAdmin = $galleryDummyAdmin;
-    }
     
     public function setNewsWidgetImageDummyAdmin($newsWidgetImageDummyAdmin)
     {
@@ -26,10 +21,23 @@ class NewsWidgetImageType extends NewsWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' => $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager' => $this->galleryDummyAdmin->getModelManager(),
-            'class' => $this->galleryDummyAdmin->getClass()
+            'sonata_field_description' =>  $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
+            'model_manager' => $this->newsWidgetImageDummyAdmin->getModelManager(),
+            'class' => $this->newsWidgetImageDummyAdmin->getClass(),
         ));
+       // $builder->add('medias', 'sonata_type_collection', array(
+           // 'sonata_field_description' =>  $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
+        //    'model_manager' => $this->newsWidgetImageDummyAdmin->getModelManager(),
+          //  'class' => $this->newsWidgetImageDummyAdmin->getClass(),
+       // ));
+       /* $builder->add('medias', 'sonata_type_collection', array(
+            'by_reference' => false,
+            'sonata_field_description' =>  $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
+        ), array(
+            'edit' => 'inline',
+            'inline' => 'table',
+            'sortable' => 'position',
+        ));*/
     }
 
     public function getName()

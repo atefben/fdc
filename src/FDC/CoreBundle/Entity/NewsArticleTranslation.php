@@ -73,9 +73,9 @@ class NewsArticleTranslation implements NewsTranslationInterface
     protected $theme;
 
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var MediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\ManyToOne(targetEntity="MediaImage")
      */
     protected $header;
     
@@ -198,10 +198,10 @@ class NewsArticleTranslation implements NewsTranslationInterface
     /**
      * Set header
      *
-     * @param Media $header
+     * @param MediaImage $header
      * @return NewsArticle
      */
-    public function setHeader(Media $header = null)
+    public function setHeader(MediaImage $header = null)
     {
         $this->header = $header;
 
@@ -211,7 +211,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
     /**
      * Get header
      *
-     * @return Media 
+     * @return MediaImage 
      */
     public function getHeader()
     {

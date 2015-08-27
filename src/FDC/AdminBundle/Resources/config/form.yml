@@ -23,7 +23,6 @@ services:
         tags:
             - { name: form.type, alias: 'news_widget_image_type'}
         calls:
-            - ['setGalleryDummyAdmin', ['@sonata.media.admin.gallery']]
             - ['setNewsWidgetImageDummyAdmin', ['@fdc.admin.news_widget_image_dummy']]
 
     fdc.form.news_widget_video_type:

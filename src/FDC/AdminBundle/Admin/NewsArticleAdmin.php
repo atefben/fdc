@@ -65,7 +65,6 @@ class NewsArticleAdmin extends Admin
         $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
 
         $formMapper
-            ->add('tags', 'sonata_type_model', array('multiple' => true))
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'required_locales' => array('fr'),
@@ -87,7 +86,7 @@ class NewsArticleAdmin extends Admin
                         'by_reference' => false,
                         'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['tags'],
                         'model_manager' => $tagAdmin->getModelManager(),
-                        'class' => 'FDCCoreBundle:NewsTag',
+                        'class' => $tagAdmin->getClass(),
                         'multiple' => true,
                         'required' => false
                     ),
@@ -95,7 +94,7 @@ class NewsArticleAdmin extends Admin
                         'field_type' => 'sonata_type_model_list',
                         'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['header'],
                         'model_manager' => $mediaAdmin->getModelManager(),
-                        'class' => $themeAdmin->getClass(),
+                        'class' => $mediaAdmin->getClass(),
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor'

@@ -28,7 +28,7 @@ class NewsTag
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
     
     /**
      * @var string
@@ -36,7 +36,7 @@ class NewsTag
      * @ORM\Column(name="name", type="string", unique=true)
      * @Assert\NotBlank()
      */
-    protected $name;
+    private $name;
 
     public function __toString()
     {
