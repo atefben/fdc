@@ -368,7 +368,6 @@ abstract class CoreManager
             $property['manager'] = ($property['manager'] !== null) ? $property['manager'] : null;
             $entityRelated = $this->updateRelatedEntity($property['repository'], $result, $property['soapKey'], $property['manager']);
             if ($entityRelated !== null) {
-                var_dump('in');
                 $entity->{$property['setter']}($entityRelated);
             }
         }
