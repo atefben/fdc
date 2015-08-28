@@ -17,9 +17,6 @@ class NewsTagAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 
@@ -30,9 +27,6 @@ class NewsTagAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('name')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -49,7 +43,9 @@ class NewsTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
+            ->add('translations', 'a2lix_translations', array(
+                
+            ))
         ;
     }
 
@@ -60,9 +56,6 @@ class NewsTagAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('name')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 }

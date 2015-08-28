@@ -1,0 +1,41 @@
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    <ul class="a2lix_translationsLocales nav nav-tabs">
+    {% for translationsFields in form %}
+        {% set locale = translationsFields.vars.name %}
+
+        <li {% if app.request.locale == locale %}class="active"{% endif %}>
+            <a {% if loop.index % 2 == 0 %}class="bg-green"{% else %}class="bg-red"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+                {{ locale|capitalize }}
+                {% if form.vars.default_locale == locale %}[Default]{% endif %}
+                {% if translationsFields.vars.required %}*{% endif %}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <div class="a2lix_translationsFields tab-content">
+    {% for translationsFields in form %}
+        {% set locale = translationsFields.vars.name %}
+
+        <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if app.request.locale == locale %}active{% endif %}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h4 class="box-title">
+                                Informations de base
+                            </h4>
+                        </div>
+                        <div class="box-body">
+                            <div class="sonata-ba-collapsed-fields">
+                                {{ form_row(translationsFields.name) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
