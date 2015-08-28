@@ -17,8 +17,7 @@ class NewsAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('title')
         ;
     }
 
@@ -29,8 +28,7 @@ class NewsAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('title', null, array('template' => 'FDCAdminBundle:Article:list_title.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -48,8 +46,6 @@ class NewsAdmin extends Admin
     {
         $formMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 
@@ -60,8 +56,6 @@ class NewsAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 }

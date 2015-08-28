@@ -3,7 +3,7 @@
 {% block field %}
 <div>
     {% set locale = (app.user.locale is not null) ? app.user.locale : app.request.locale %}
-    {% set translationLocale = object.translationByLocale(locale) %}
+    {% set translationLocale = object.findTranslationByLocale(locale) %}
     {% if translationLocale is not null %}
         {{ translationLocale.title }}
     {% endif %}

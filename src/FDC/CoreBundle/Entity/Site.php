@@ -68,13 +68,6 @@ class Site
      * @ORM\ManyToMany(targetEntity="NewsArticleTranslation", mappedBy="sites")
      */
     protected $newsArticles;
-    
-     /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="sites")
-     */
-    protected $users;
 
     /**
      * @var ArrayCollection

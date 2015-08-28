@@ -46,7 +46,7 @@ class NewsArticleAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title')
+            ->add('title', null, array('template' => 'FDCAdminBundle:Article:list_title.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -126,6 +126,11 @@ class NewsArticleAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
+                    'sites' => array(
+                        'class' => 'FDCCoreBundle:Site',
+                        'multiple' => true,
+                        'expanded' => true
+                    ),
                     'publishedAt' => array(
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
@@ -168,5 +173,20 @@ class NewsArticleAdmin extends Admin
         $showMapper
             ->add('id')
         ;
+    }
+    
+    public function prePersist($object)
+    {
+        $this->updateAction($object);
+    }
+
+    public function preUpdate($object)
+    {
+        $this->updateAction($object);
+    }
+    
+    public function updateAction($object)
+    {
+        
     }
 }

@@ -5,3 +5,9 @@ services:
             - { name: validator.constraint_validator, alias: fdc_validator_locale }
         calls:
             - ['setLocales', ['%locales%']]
+    fdc.listener.doctrine:
+        class: FDC\CoreBundle\Listener\DoctrineListener
+        tags:
+            - { name: doctrine.event_listener, event: onFlush }
+        calls:
+            - ['setLocaleDefaultTranslation', ['%locale_default_translation%']]
