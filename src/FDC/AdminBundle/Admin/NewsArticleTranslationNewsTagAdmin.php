@@ -47,7 +47,7 @@ class NewsArticleTranslationNewsTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('tags')
+            ->add('tags', 'sonata_type_model', array('multiple' => true))
         ;
     }
 
