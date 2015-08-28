@@ -7,17 +7,20 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
+use FDC\CoreBundle\Util\NewsTranslation;
 use FDC\CoreBundle\Util\Time;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsAudioTranslation
+class NewsAudioTranslation implements NewsTranslationInterface
 {
     use Time;
     use Translation;
+    use NewsTranslation;
 
     /**
      * @var string
@@ -34,11 +37,12 @@ class NewsAudioTranslation
     protected $introduction;
 
     /**
-     * @var NewsTag
+     * @var integer
      *
-     * @ORM\ManyToMany(targetEntity="NewsTag")
+     * @ORM\Column(type="integer", nullable=false)
+     * @Assert\NotBlank()
      */
-    protected $tags;
+    private $status;
     
     /**
      * @var NewsWidget
@@ -67,21 +71,42 @@ class NewsAudioTranslation
       * @ORM\OneToOne(targetEntity="Theme")
       */
     protected $theme;
-    
+
+    /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaAudio")
+     */
+    private $header;
+
     /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsAudios")
      */
-    protected $sites;
+    private $sites;
+
+    /**
+     * @var NewsArticleTranslationNewsTag
+     *
+     * @ORM\OneToOne(targetEntity="NewsArticleTranslationNewsTag", mappedBy="newsAudios")
+     */
+    private $tags;
+
+    /**
+     * @var NewsAssociated
+     *
+     * @ORM\OneToOne(targetEntity="NewsAssociated", inversedBy="newsAudios")
+     */
+    private $newsAssociated;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->widgets = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->widgets = new ArrayCollection();
+        $this->sites = new ArrayCollection();
     }
 
     /**
@@ -307,5 +332,87 @@ class NewsAudioTranslation
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return NewsAudioTranslation
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set header
+     *
+     * @param \FDC\CoreBundle\Entity\MediaAudio $header
+     * @return NewsAudioTranslation
+     */
+    public function setHeader(\FDC\CoreBundle\Entity\MediaAudio $header = null)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get header
+     *
+     * @return \FDC\CoreBundle\Entity\MediaAudio 
+     */
+    public function getHeader()
+    {
+        return $this->header;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param \FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag $tags
+     * @return NewsAudioTranslation
+     */
+    public function setTags(\FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag $tags = null)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Set newsAssociated
+     *
+     * @param \FDC\CoreBundle\Entity\NewsAssociated $newsAssociated
+     * @return NewsAudioTranslation
+     */
+    public function setNewsAssociated(\FDC\CoreBundle\Entity\NewsAssociated $newsAssociated = null)
+    {
+        $this->newsAssociated = $newsAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Get newsAssociated
+     *
+     * @return \FDC\CoreBundle\Entity\NewsAssociated 
+     */
+    public function getNewsAssociated()
+    {
+        return $this->newsAssociated;
     }
 }

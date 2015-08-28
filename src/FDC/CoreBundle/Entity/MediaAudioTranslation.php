@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
-use FDC\CoreBundle\Util\NewsTranslation;
+use FDC\CoreBundle\Util\MediaTranslation;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,10 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaAudioTranslation
+class MediaAudioTranslation implements MediaTranslationInterface
 {
     use Time;
     use Translation;
+    use MediaTranslation;
 
     /**
      * @var string
@@ -50,6 +51,13 @@ class MediaAudioTranslation
       * @ORM\ManyToOne(targetEntity="Theme")
       */
     private $theme;
+
+   /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $status;
 
     /**
      * @var string

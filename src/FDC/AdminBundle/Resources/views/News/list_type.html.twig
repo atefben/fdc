@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+<div>
+    {% if object is news_article %}
+        article
+    {% elseif object is news_audio %}
+        audio
+    {% endif %}
+</div>
+{% endblock %}

@@ -44,7 +44,7 @@ class NewsAssociatedNews
      /**
      * @var NewsArticle
      *
-     * @ORM\ManyToOne(targetEntity="NewsArticle")
+     * @ORM\ManyToOne(targetEntity="News")
      */
     protected $association;
     
@@ -104,7 +104,7 @@ class NewsAssociatedNews
      * @param \FDC\CoreBundle\Entity\NewsArticle $association
      * @return NewsAssociatedNews
      */
-    public function setAssociation(\FDC\CoreBundle\Entity\NewsArticle $association = null)
+    public function setAssociation(\FDC\CoreBundle\Entity\News $association = null)
     {
         $this->association = $association;
 
@@ -114,7 +114,7 @@ class NewsAssociatedNews
     /**
      * Get association
      *
-     * @return \FDC\CoreBundle\Entity\NewsArticle 
+     * @return \FDC\CoreBundle\Entity\News 
      */
     public function getAssociation()
     {

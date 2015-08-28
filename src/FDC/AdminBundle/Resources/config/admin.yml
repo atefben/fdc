@@ -18,9 +18,15 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
 
     #dummy class to handle the sonata_type_model_list in translation issue : https://github.com/a2lix/TranslationFormBundle/issues/155
-    fdc.admin.translation_dummy:
-        class: FDC\AdminBundle\Admin\TranslationDummyAdmin
-        arguments: [~, FDC\CoreBundle\Entity\NewsArticleTranslation, FDCAdminBundle:TranslationDummyAdmin]
+    fdc.admin.news_article_translation_dummy:
+        class: FDC\AdminBundle\Admin\NewsArticleTranslationDummyAdmin
+        arguments: [~, FDC\CoreBundle\Entity\NewsArticleTranslation, FDCAdminBundle:NewsArticleTranslationDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Theme, show_in_dashboard: false}
+
+    fdc.admin.news_audio_translation_dummy:
+        class: FDC\AdminBundle\Admin\NewsAudioTranslationDummyAdmin
+        arguments: [~, FDC\CoreBundle\Entity\NewsAudioTranslation, FDCAdminBundle:NewsAudioTranslationDummyAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Theme, show_in_dashboard: false}
 
@@ -34,13 +40,13 @@ services:
         class: FDC\AdminBundle\Admin\NewsTagAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsTag, FDCAdminBundle:NewsTagAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsTag, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsTag, label_translator_strategy: sonata.admin.label.strategy.underscore, show_in_dashboard: false}
 
     fdc.admin.media:
         class: FDC\AdminBundle\Admin\MediaAdmin
         arguments: [~, FDC\CoreBundle\Entity\Media, FDCAdminBundle:MediaAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Media}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Media, show_in_dashboard: false}
 
     fdc.admin.media_image:
         class: FDC\AdminBundle\Admin\MediaImageAdmin
@@ -58,34 +64,34 @@ services:
         class: FDC\AdminBundle\Admin\GalleryAdmin
         arguments: [~, FDC\CoreBundle\Entity\Gallery, FDCAdminBundle:GalleryAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Gallery}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Gallery, show_in_dashboard: false}
 
     fdc.admin.gallery_media:
         class: FDC\AdminBundle\Admin\GalleryMediaAdmin
         arguments: [~, FDC\CoreBundle\Entity\GalleryMedia, FDCAdminBundle:GalleryMediaAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: GalleryMediaAdmin}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: GalleryMediaAdmin, show_in_dashboard: false}
 
     fdc.admin.news:
         class: FDC\AdminBundle\Admin\NewsAdmin
         arguments: [~, FDC\CoreBundle\Entity\News, FDCAdminBundle:NewsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: News}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News, show_in_dashboard: false}
 
     fdc.admin.news_associated:
         class: FDC\AdminBundle\Admin\NewsAssociatedAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsAssociated, FDCAdminBundle:NewsAssociatedAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAssociated}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAssociated, show_in_dashboard: false}
 
     fdc.admin.news_associated_news:
         class: FDC\AdminBundle\Admin\NewsAssociatedNewsAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsAssociatedNews, FDCAdminBundle:NewsAssociatedNewsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAssociatedNews}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAssociatedNews, show_in_dashboard: false}
 
     fdc.admin.news_article_translation_news_tag:
         class: FDC\AdminBundle\Admin\NewsArticleTranslationNewsTagAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag, FDCAdminBundle:NewsArticleTranslationNewsTagAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsArticleTranslationNewsTag}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsArticleTranslationNewsTag, show_in_dashboard: false}

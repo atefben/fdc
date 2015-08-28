@@ -22,6 +22,7 @@ use FDC\CoreBundle\Util\Translation;
 class News
 {
     use Translation;
+    use Time;
     
     /**
      * @var integer
@@ -30,22 +31,50 @@ class News
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
     
     /**
      * @var ArticleLock
      *
      * @ORM\OneToMany(targetEntity="NewsArticleLock", mappedBy="articles")
      */
-    protected $lock;
+    private $lock;
     
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $title;
+    private $title;
+
+     /**
+      * @var Theme
+      *
+      * @ORM\ManyToOne(targetEntity="Theme")
+      */
+    private $theme;
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     */
+    private $publishedAt;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     */
+    private $publishEndedAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $status;
+
     /**
      * ArrayCollection
      */
@@ -64,6 +93,16 @@ class News
         }
         
         return $string;
+    }
+    
+    public static function getTypes()
+    {
+        return array(
+            'FDC\CoreBundle\Entity\NewsArticle' => 'article',
+            'FDC\CoreBundle\Entity\NewsAudio' => 'audio',
+            'FDC\CoreBundle\Entity\NewsImage' => 'image',
+            'FDC\CoreBundle\Entity\NewsVideo' => 'video'
+        );
     }
 
     /**
@@ -130,5 +169,97 @@ class News
     public function getLock()
     {
         return $this->lock;
+    }
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return News
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * Set publishEndedAt
+     *
+     * @param \DateTime $publishEndedAt
+     * @return News
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishEndedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \FDC\CoreBundle\Entity\Theme $theme
+     * @return News
+     */
+    public function setTheme(\FDC\CoreBundle\Entity\Theme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \FDC\CoreBundle\Entity\Theme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return News
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

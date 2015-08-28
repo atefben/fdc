@@ -20,7 +20,6 @@ use FDC\CoreBundle\Util\Time;
  */
 class NewsImage extends News
 {
-    use Time;
     use Translatable;
     
     public function __toString() {

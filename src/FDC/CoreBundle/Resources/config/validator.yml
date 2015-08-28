@@ -1,0 +1,7 @@
+services:
+    fdc.validator.locale:
+        class: FDC\CoreBundle\Validator\Constraints\LocaleValidator
+        tags:
+            - { name: validator.constraint_validator, alias: fdc_validator_locale }
+        calls:
+            - ['setLocales', ['%locales%']]

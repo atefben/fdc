@@ -2,6 +2,9 @@
 
 namespace FDC\AdminBundle\Admin;
 
+use FDC\CoreBundle\Entity\News;
+use FDC\CoreBundle\Entity\NewsArticle;
+
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -18,6 +21,26 @@ class NewsAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('title')
+            ->add('theme')
+            ->add('publishedAt')
+            ->add('publishEndedAt')
+            ->add('status')
+            ->add('type', 'doctrine_orm_callback', array(
+//                'callback'   => array($this, 'getWithOpenCommentFilter'),
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+
+                    $queryBuilder->where("{$alias} INSTANCE OF {$value['value']}");
+
+                    return true;
+                },
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => News::getTypes()
+                )
+            ))
         ;
     }
 
@@ -28,7 +51,12 @@ class NewsAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title', null, array('template' => 'FDCAdminBundle:Article:list_title.html.twig'))
+            ->add('title')
+            ->add('theme')
+            ->add('updatedAt')
+            ->add('publishedInterval', null, array('template' => 'FDCAdminBundle:News:list_published_interval.html.twig'))
+            ->add('status')
+            ->add('type', null, array('template' => 'FDCAdminBundle:News:list_type.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

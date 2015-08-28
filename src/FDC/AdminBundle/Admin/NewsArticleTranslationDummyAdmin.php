@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class TranslationDummyAdmin extends Admin
+class NewsArticleTranslationDummyAdmin extends Admin
 {
     /**
      * @param FormMapper $formMapper

@@ -1,0 +1,10 @@
+services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
+    fdc.twig.news_instance_of_extension:
+        class: FDC\CoreBundle\Twig\Extension\NewsInstanceOfExtension
+        tags:
+            - { name: twig.extension }

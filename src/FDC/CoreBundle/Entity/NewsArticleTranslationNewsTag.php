@@ -36,6 +36,14 @@ class NewsArticleTranslationNewsTag
      * @ORM\OneToOne(targetEntity="NewsArticleTranslation", inversedBy="tags")
      */
     private $news;
+
+    /**
+     * @var NewsAudioTranslation
+     *
+     * @ORM\OneToOne(targetEntity="NewsAudioTranslation", inversedBy="tags")
+     */
+    private $newsAudios;
+    
     
     /**
      * @var NewsTag

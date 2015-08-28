@@ -36,6 +36,11 @@ class NewsArticleAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('title')
+            ->add('theme')
+            ->add('publishedAt')
+            ->add('publishEndedAt')
+            ->add('status')
         ;
     }
 
@@ -46,7 +51,12 @@ class NewsArticleAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title', null, array('template' => 'FDCAdminBundle:Article:list_title.html.twig'))
+            ->add('title')
+            ->add('theme')
+            ->add('updatedAt')
+            ->add('publishedInterval', null, array('template' => 'FDCAdminBundle:News:list_published_interval.html.twig'))
+            ->add('status', null, array('template' => 'FDCAdminBundle:News:list_status.html.twig'))
+            ->add('type', null, array('template' => 'FDCAdminBundle:News:list_type.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -67,7 +77,7 @@ class NewsArticleAdmin extends Admin
         $newsAssociatedAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsAssociated");
         $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsArticleTranslationNewsTag");
         $mediaImageAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\MediaImage");
-        $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.translation_dummy');
+        $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.news_article_translation_dummy');
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
@@ -153,15 +163,6 @@ class NewsArticleAdmin extends Admin
                 )
             ))
             ->end()
-            /*->add('header', 'sonata_type_model_list')
-            ->add('publishedAt', 'sonata_type_datetime_picker', array(
-                'format' => 'dd/MM/yyyy HH:mm',
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
-            ))
-            ->add('publishEndedAt')
-            ->end()*/
         ;
     }
 

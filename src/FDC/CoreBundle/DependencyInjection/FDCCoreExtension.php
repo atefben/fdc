@@ -23,6 +23,14 @@ class FDCCoreExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $configFiles = array(
+            'listener.yml',
+            'twig.yml',
+            'validator.yml'
+        );
+        
+        foreach ($configFiles as $configFile) {
+            $loader->load($configFile);
+        }
     }
 }

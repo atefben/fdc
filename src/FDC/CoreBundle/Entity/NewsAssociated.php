@@ -39,6 +39,13 @@ class NewsAssociated
      * @ORM\OneToOne(targetEntity="NewsArticleTranslation", mappedBy="newsAssociated")
      */
     protected $news;
+
+    /**
+     * @var NewsArticleTranslation
+     *
+     * @ORM\OneToOne(targetEntity="NewsAudioTranslation", mappedBy="newsAssociated")
+     */
+    protected $newsAudios;
     
     /**
      * @var NewsAssociatedNews
