@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Translation;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -18,11 +19,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity("name")
  */
 class Theme
 {
     use Time;
+    use Translation;
     use Translatable;
 
     /**
@@ -32,15 +33,7 @@ class Theme
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
-     * @Assert\NotBlank()
-     */
-    protected $name;
+    private $id;
     
     /**
      * @var ArrayCollection
@@ -54,11 +47,15 @@ class Theme
     }
     
     public function __toString() { 
-        if ($this->getId()) { 
-            return $this->getName();
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getName();
         } else {
-            return substr(strrchr(get_class($this), '\\'), 1); 
+            $string = strval($this->getId());
         }
+        
+        return $string;
     }
 
     /**
@@ -69,28 +66,5 @@ class Theme
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Theme
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 }

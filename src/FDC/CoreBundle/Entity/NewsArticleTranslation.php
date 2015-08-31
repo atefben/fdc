@@ -37,14 +37,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
     private $introduction;
     
     /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false)
-     * @Assert\NotBlank()
-     */
-    private $status;
-    
-    /**
      * @var NewsWidget
      *
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="newsArticle", cascade={"persist"})
@@ -73,32 +65,11 @@ class NewsArticleTranslation implements NewsTranslationInterface
     private $theme;
 
     /**
-     * @var MediaImage
-     *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
-     */
-    private $header;
-    
-    /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsArticles")
      */
     private $sites;
-
-    /**
-     * @var NewsArticleTranslationNewsTag
-     *
-     * @ORM\OneToOne(targetEntity="NewsArticleTranslationNewsTag", mappedBy="news")
-     */
-    private $tags;
-
-    /**
-     * @var NewsAssociated
-     *
-     * @ORM\OneToOne(targetEntity="NewsAssociated", inversedBy="news")
-     */
-    private $newsAssociated;
 
     /**
      * Constructor
@@ -201,29 +172,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
     public function getPublishEndedAt()
     {
         return $this->publishEndedAt;
-    }
-
-    /**
-     * Set header
-     *
-     * @param MediaImage $header
-     * @return NewsArticle
-     */
-    public function setHeader(MediaImage $header = null)
-    {
-        $this->header = $header;
-
-        return $this;
-    }
-
-    /**
-     * Get header
-     *
-     * @return MediaImage 
-     */
-    public function getHeader()
-    {
-        return $this->header;
     }
 
     /**

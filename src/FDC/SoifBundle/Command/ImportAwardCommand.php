@@ -42,7 +42,7 @@ class ImportAwardCommand extends ContainerAwareCommand
         $id = $input->getArgument('id');
 
         $manager = $this->getContainer()->get('fdc.soif.award_manager');
-        $manager->updateEntity($id);
+        $manager->getModified($id);
     }
 
 }

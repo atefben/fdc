@@ -53,7 +53,7 @@ class FestivalManager extends CoreManager
         $persist = ($entity->getId() === null) ? true : false;
 
         // set soif last update time
-       $this->setSoifUpdatedAt($result, $entity);
+        $this->setSoifUpdatedAt($result, $entity);
         
         // set entity properties
         $this->setEntityProperties($resultObject, $entity);
@@ -65,5 +65,40 @@ class FestivalManager extends CoreManager
         $this->end(__METHOD__);
         
         return $entity;
+    }
+
+    public function getModified($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedFestivals';
+        $this->wsResultKey = 'GetModifiedFestivalsResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to));
+        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $entities = array();
+        $persists = array();
+        
+        foreach ($resultObject as $object) {
+            // create / get entity
+            $entity = ($this->findOneById(array('id' => $object->{$this->entityIdKey}))) ?: new FilmFestival();
+            $persists[] = ($entity->getId() === null) ? true : false;
+            
+            // set soif last update time
+            $this->setSoifUpdatedAt($result, $entity);
+            
+            // set entity properties
+            $this->setEntityProperties($object, $entity);
+            
+            $entities[] = $entity;
+        }
+        
+        // update entity
+        $this->updates($entities, $persists);
+        
+        // end timer
+        $this->end(__METHOD__);
     }
 }

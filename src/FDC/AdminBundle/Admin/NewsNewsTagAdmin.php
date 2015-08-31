@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class NewsAssociatedNewsAdmin extends Admin
+class NewsNewsTagAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -47,9 +47,7 @@ class NewsAssociatedNewsAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('association', 'sonata_type_model_list', array(
-                'btn_add' => false
-            ))
+            ->add('tags', 'sonata_type_model')
         ;
     }
 

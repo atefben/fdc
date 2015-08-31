@@ -44,7 +44,7 @@ class NewsTagAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                
+                'label' => false
             ))
         ;
     }

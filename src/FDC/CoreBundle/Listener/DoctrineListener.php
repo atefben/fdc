@@ -6,7 +6,7 @@ use Doctrine\ORM\Event\OnFlushEventArgs;
 
 use FDC\CoreBundle\Entity\NewsArticleTranslation;
 use FDC\CoreBundle\Entity\NewsAudioTranslation;
-
+use FDC\CoreBundle\Entity\ThemeTranslation;
 
 /**
  * DoctrineListener class.
@@ -57,6 +57,13 @@ class DoctrineListener
                 
                 $md = $em->getClassMetadata('FDC\CoreBundle\Entity\NewsArticle');
                 $uow->recomputeSingleEntityChangeSet($md, $article);
+            } else if ($entity instanceof ThemeTranslation && 
+                $entity->getLocale() == $this->localeDefaultTranslation) {
+                $theme = $entity->getTranslatable();
+                $theme->setName($entity->getName());
+                
+                $md = $em->getClassMetadata('FDC\CoreBundle\Entity\Theme');
+                $uow->recomputeSingleEntityChangeSet($md, $theme);
             }
         }
     }

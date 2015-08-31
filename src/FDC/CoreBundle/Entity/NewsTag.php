@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Translation;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -21,6 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class NewsTag
 {
     use Time;
+    use Translation;
     use Translatable;
     
     /**

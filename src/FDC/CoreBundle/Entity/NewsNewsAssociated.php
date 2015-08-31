@@ -15,13 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * NewsAssociatedNews
+ * NewsNewsAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsAssociatedNews
+class NewsNewsAssociated
 {
     use Time;
 
@@ -37,7 +37,7 @@ class NewsAssociatedNews
     /**
      * @var NewsAssociated
      *
-     * @ORM\ManyToOne(targetEntity="NewsAssociated", inversedBy="associations")
+     * @ORM\ManyToOne(targetEntity="News", inversedBy="associations")
      */
     protected $news;
     
@@ -78,10 +78,10 @@ class NewsAssociatedNews
     /**
      * Set news
      *
-     * @param \FDC\CoreBundle\Entity\NewsAssociated $news
+     * @param \FDC\CoreBundle\Entity\News $news
      * @return NewsAssociatedNews
      */
-    public function setNews(\FDC\CoreBundle\Entity\NewsAssociated $news = null)
+    public function setNews(\FDC\CoreBundle\Entity\News $news = null)
     {
         $this->news = $news;
 
@@ -91,7 +91,7 @@ class NewsAssociatedNews
     /**
      * Get news
      *
-     * @return \FDC\CoreBundle\Entity\NewsAssociated 
+     * @return \FDC\CoreBundle\Entity\News 
      */
     public function getNews()
     {
@@ -101,8 +101,8 @@ class NewsAssociatedNews
     /**
      * Set association
      *
-     * @param \FDC\CoreBundle\Entity\NewsArticle $association
-     * @return NewsAssociatedNews
+     * @param \FDC\CoreBundle\Entity\News $association
+     * @return NewsNewsAssociated
      */
     public function setAssociation(\FDC\CoreBundle\Entity\News $association = null)
     {

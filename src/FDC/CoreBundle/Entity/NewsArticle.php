@@ -22,6 +22,14 @@ class NewsArticle extends News
 {
     use Translatable;
     
+    /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     */
+    private $header;
+    
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
         
@@ -30,5 +38,28 @@ class NewsArticle extends News
         }
         
         return $string;
+    }
+
+    /**
+     * Set header
+     *
+     * @param MediaImage $header
+     * @return NewsArticle
+     */
+    public function setHeader(MediaImage $header = null)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get header
+     *
+     * @return MediaImage 
+     */
+    public function getHeader()
+    {
+        return $this->header;
     }
 }

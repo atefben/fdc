@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Translation;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * News
  *
@@ -72,8 +74,21 @@ class News
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=false)
+     * @Assert\NotBlank()
      */
     private $status;
+
+    /**
+     * @var NewsTag
+     *
+     * @ORM\OneToMany(targetEntity="NewsNewsTag", mappedBy="news", cascade={"persist"})
+     */
+    private $tags;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
+     */
+    private $associations;
 
     /**
      * ArrayCollection
@@ -83,6 +98,7 @@ class News
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
     
     public function __toString() {
@@ -261,5 +277,73 @@ class News
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \FDC\CoreBundle\Entity\NewsNewsTag $tags
+     * @return News
+     */
+    public function addTag(\FDC\CoreBundle\Entity\NewsNewsTag $tags)
+    {
+        $this->tags[] = $tags;
+        $tags->setNews($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \FDC\CoreBundle\Entity\NewsNewsTag $tags
+     */
+    public function removeTag(\FDC\CoreBundle\Entity\NewsNewsTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add associations
+     *
+     * @param \FDC\CoreBundle\Entity\NewsNewsAssociated $associations
+     * @return News
+     */
+    public function addAssociation(\FDC\CoreBundle\Entity\NewsNewsAssociated $associations)
+    {
+        $this->associations[] = $associations;
+        $associations->setNews($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove associations
+     *
+     * @param \FDC\CoreBundle\Entity\NewsNewsAssociated $associations
+     */
+    public function removeAssociation(\FDC\CoreBundle\Entity\NewsNewsAssociated $associations)
+    {
+        $this->associations->removeElement($associations);
+    }
+
+    /**
+     * Get associations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociations()
+    {
+        return $this->associations;
     }
 }

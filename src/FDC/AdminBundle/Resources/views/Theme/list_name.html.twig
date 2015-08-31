@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+<div>
+    {% set locale = (app.user.locale is not null) ? app.user.locale : app.request.locale %}
+    {% set translationLocale = object.findTranslationByLocale(locale) %}
+    {% if translationLocale is not null %}
+        {{ translationLocale.name }}
+    {% endif %}
+</div>
+{% endblock %}

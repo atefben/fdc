@@ -3,6 +3,7 @@
 namespace FDC\AdminBundle\Admin;
 
 use FDC\CoreBundle\Entity\NewsArticleTranslation;
+use FDC\CoreBundle\Entity\NewsNewsAssociated;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -15,6 +16,17 @@ class NewsArticleAdmin extends Admin
     protected $formOptions = array(
         'cascade_validation' => true
     );
+    
+    public function getNewInstance()
+    {
+       $instance = parent::getNewInstance();
+       
+       $instance->addAssociation(new NewsNewsAssociated());
+       $instance->addAssociation(new NewsNewsAssociated());
+
+       return $instance;
+    }
+
 
     public function configure()
     {
@@ -73,39 +85,24 @@ class NewsArticleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         // https://github.com/a2lix/TranslationFormBundle/issues/155
-        $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
+      /*  $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
         $newsAssociatedAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsAssociated");
         $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsArticleTranslationNewsTag");
         $mediaImageAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\MediaImage");
-        $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.news_article_translation_dummy');
+        $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.news_article_translation_dummy');*/
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
-                'required_locales' => array('fr'),
+                'required_locales' => array(),
                 'fields' => array(
                     'title' => array(
                         'sonata_help' => 'X caractères max.',
-                    ),
-                    'theme' => array(
-                        'field_type' => 'sonata_type_model_list',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
-                        'model_manager' => $themeAdmin->getModelManager(),
-                        'class' => $themeAdmin->getClass(),
-                        'btn_delete' => false
-                    ),
-                    'tags' => array(
-                        'field_type' => 'sonata_type_model_list',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['tags'],
-                        'model_manager' => $tagAdmin->getModelManager(),
-                        'class' => $tagAdmin->getClass(),
-                        'btn_list' => false
-                    ),
-                    'header' => array(
-                        'field_type' => 'sonata_type_model_list',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['header'],
-                        'model_manager' => $mediaImageAdmin->getModelManager(),
-                        'class' => $mediaImageAdmin->getClass(),
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor'
@@ -122,13 +119,6 @@ class NewsArticleAdmin extends Admin
                         'allow_delete' => true,
                         'prototype' => true,
                         'by_reference' => false,
-                    ),
-                    'newsAssociated' => array(
-                        'field_type' => 'sonata_type_model_list',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['newsAssociated'],
-                        'model_manager' => $newsAssociatedAdmin->getModelManager(),
-                        'class' => $newsAssociatedAdmin->getClass(),
-                        'btn_list' => false
                     ),
                     'createdAt' => array(
                         'display' => false
@@ -154,14 +144,37 @@ class NewsArticleAdmin extends Admin
                         'attr' => array(
                             'data-date-format' => 'dd/MM/yyyy HH:mm',
                         )
-                    ),
-                    'status' => array(
-                        'field_type' => 'choice',
-                        'choices' => NewsArticleTranslation::getStatuses(),
-                        'choice_translation_domain' => 'FDCAdminBundle'
                     )
                 )
             ))
+            ->add('status', 'choice', array(
+                'choices' => NewsArticleTranslation::getStatuses(),
+                'choice_translation_domain' => 'FDCAdminBundle'
+            ))
+            ->add('theme', 'sonata_type_model_list', array(
+                'required' => false,
+                'btn_delete' => false
+            ))
+            ->add('tags', 'sonata_type_collection', array(
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('header', 'sonata_type_model_list', array(
+                'required' => false
+            ))
+            ->add('associations', 'sonata_type_collection', array(
+                'by_reference' => false,
+                'btn_add' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->end()
         ;
     }

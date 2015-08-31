@@ -9,11 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("name")
  */
-class ThemeTranslation implements OneLocaleInterface
+class ThemeTranslation
 {
     use Time;
     use Translation;
@@ -21,30 +25,31 @@ class ThemeTranslation implements OneLocaleInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
+     * @Assert\NotBlank()
      */
-    protected $title;
+    protected $name;
 
     /**
-     * Set title
+     * Set name
      *
-     * @param string $title
-     * @return Article
+     * @param string $name
+     * @return Theme
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get name
      *
      * @return string 
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
 }

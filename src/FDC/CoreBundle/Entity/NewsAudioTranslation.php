@@ -64,13 +64,6 @@ class NewsAudioTranslation implements NewsTranslationInterface
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
      */
     protected $publishEndedAt;
-    
-     /**
-      * @var Theme
-      *
-      * @ORM\OneToOne(targetEntity="Theme")
-      */
-    protected $theme;
 
     /**
      * @var MediaImage
@@ -85,20 +78,6 @@ class NewsAudioTranslation implements NewsTranslationInterface
      * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsAudios")
      */
     private $sites;
-
-    /**
-     * @var NewsArticleTranslationNewsTag
-     *
-     * @ORM\OneToOne(targetEntity="NewsArticleTranslationNewsTag", mappedBy="newsAudios")
-     */
-    private $tags;
-
-    /**
-     * @var NewsAssociated
-     *
-     * @ORM\OneToOne(targetEntity="NewsAssociated", inversedBy="newsAudios")
-     */
-    private $newsAssociated;
 
     /**
      * Constructor

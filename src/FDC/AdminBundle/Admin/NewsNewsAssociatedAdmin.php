@@ -2,26 +2,14 @@
 
 namespace FDC\AdminBundle\Admin;
 
-use FDC\CoreBundle\Entity\NewsAssociatedNews;
-
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class NewsAssociatedAdmin extends Admin
+class NewsNewsAssociatedAdmin extends Admin
 {
-    public function getNewInstance()
-    {
-       $instance = parent::getNewInstance();
-       
-       $instance->addAssociation(new NewsAssociatedNews());
-       $instance->addAssociation(new NewsAssociatedNews());
-
-       return $instance;
-    }
-
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -52,7 +40,6 @@ class NewsAssociatedAdmin extends Admin
             ))
         ;
     }
-    
 
     /**
      * @param FormMapper $formMapper
@@ -60,14 +47,7 @@ class NewsAssociatedAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('associations', 'sonata_type_collection', array(
-                'by_reference' => false,
-                'btn_add' => false,
-                'type_options' => array('btn_delete' => false),
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-            ));
+            ->add('association')
         ;
     }
 

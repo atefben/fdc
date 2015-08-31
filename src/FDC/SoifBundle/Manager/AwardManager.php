@@ -104,4 +104,42 @@ class AwardManager extends CoreManager
         // end timer
         $this->end(__METHOD__);
     }
+    
+    public function getModified($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedAwards';
+        $this->wsResultKey = 'GetModifiedAwardsResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to));
+        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $entities = array();
+        $persists = array();
+        
+        foreach ($resultObject as $object) {
+            // create / get entity
+            $entity = ($this->findOneById(array('id' => $object->{$this->entityIdKey}))) ?: new FilmAward();
+            $persists[] = ($entity->getId() === null) ? true : false;
+            
+            // set soif last update time
+            $this->setSoifUpdatedAt($result, $entity);
+    
+            // set entity properties
+            $this->setEntityProperties($object, $entity);
+            
+            // set related entity
+            $this->setEntityRelated($object, $entity);
+            
+            $entities[] = $entity;
+        }
+        
+        // update entity
+        $this->updates($entities, $persists);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
 }

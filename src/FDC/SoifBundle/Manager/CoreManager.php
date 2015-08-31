@@ -504,6 +504,25 @@ abstract class CoreManager
     }
     
     /**
+     * updates function.
+     * 
+     * @access public
+     * @param mixed $entities
+     * @param mixed $persists
+     * @return void
+     */
+    public function updates($entities, $persists)
+    {
+        foreach ($entities as $key => $entity) {
+            if ($persists[$key]) {
+                $this->em->persist($entity);
+            }
+        }
+        
+        $this->em->flush();
+    }
+
+    /**
      * start function.
      * 
      * @access public
