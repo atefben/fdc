@@ -7,10 +7,27 @@ use Doctrine\ORM\Event\OnFlushEventArgs;
 use FDC\CoreBundle\Entity\NewsArticleTranslation;
 use FDC\CoreBundle\Entity\NewsAudioTranslation;
 
+
+/**
+ * DoctrineListener class.
+ */
 class DoctrineListener
 {
+    /**
+     * localeDefaultTranslation
+     * 
+     * @var mixed
+     * @access private
+     */
     private $localeDefaultTranslation;
 
+    /**
+     * setLocaleDefaultTranslation function.
+     * 
+     * @access public
+     * @param mixed $localeDefaultTranslation
+     * @return void
+     */
     public function setLocaleDefaultTranslation($localeDefaultTranslation)
     {
         $this->localeDefaultTranslation = $localeDefaultTranslation;
@@ -26,11 +43,9 @@ class DoctrineListener
         );
 
         foreach ($entities as $entity) {
-          //  var_dump($entity instanceof NewsArticleTranslation);
             if (($entity instanceof NewsAudioTranslation ||
                 $entity instanceof NewsArticleTranslation) &&
                 $entity->getLocale() == $this->localeDefaultTranslation) {
-                var_dump(get_class($entity));
                 $article = $entity->getTranslatable();
                 $article->setTitle($entity->getTitle());
                 $article->setTheme($entity->getTheme());
