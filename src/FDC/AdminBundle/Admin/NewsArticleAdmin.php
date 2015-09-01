@@ -209,9 +209,8 @@ class NewsArticleAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('translate', null, array(), array(
+            ->add('translate', null, array('required' => false), array(
                 'translation_domain' => 'FDCAdminBundle',
-                'required' => false
             ))
             ->end()
         ;
