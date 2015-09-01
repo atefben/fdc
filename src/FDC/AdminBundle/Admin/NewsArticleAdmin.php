@@ -17,6 +17,8 @@ class NewsArticleAdmin extends Admin
         'cascade_validation' => true
     );
     
+    protected $translationDomain = 'FDCAdminBundle';
+        
     public function getNewInstance()
     {
        $instance = parent::getNewInstance();
@@ -52,7 +54,6 @@ class NewsArticleAdmin extends Admin
             ->add('theme')
             ->add('publishedAt')
             ->add('publishEndedAt')
-            ->add('status')
         ;
     }
 
@@ -67,7 +68,7 @@ class NewsArticleAdmin extends Admin
             ->add('theme')
             ->add('updatedAt')
             ->add('publishedInterval', null, array('template' => 'FDCAdminBundle:News:list_published_interval.html.twig'))
-            ->add('status', null, array('template' => 'FDCAdminBundle:News:list_status.html.twig'))
+           // ->add('status', null, array('template' => 'FDCAdminBundle:News:list_status.html.twig'))
             ->add('type', null, array('template' => 'FDCAdminBundle:News:list_type.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -84,19 +85,14 @@ class NewsArticleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        // https://github.com/a2lix/TranslationFormBundle/issues/155
-      /*  $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
-        $newsAssociatedAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsAssociated");
-        $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsArticleTranslationNewsTag");
-        $mediaImageAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\MediaImage");
-        $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.news_article_translation_dummy');*/
-
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
+                'translation_domain' => 'FDCAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
                     'title' => array(
+                        'label' => 'form.label_title',
                         'sonata_help' => 'X caractères max.',
                         'locale_options' => array(
                             'fr' => array(
@@ -105,7 +101,8 @@ class NewsArticleAdmin extends Admin
                         )
                     ),
                     'introduction' => array(
-                        'field_type' => 'ckeditor'
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_introduction'
                     ),
                     'widgets' => array(
                         'field_type' => 'infinite_form_polycollection',
@@ -132,6 +129,7 @@ class NewsArticleAdmin extends Admin
                         'expanded' => true
                     ),
                     'publishedAt' => array(
+                        'label' => 'form.label_published_at',
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
@@ -139,17 +137,20 @@ class NewsArticleAdmin extends Admin
                         )
                     ),
                     'publishEndedAt' => array(
+                        'label' => 'form.label_publish_ended_at',
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
                             'data-date-format' => 'dd/MM/yyyy HH:mm',
                         )
-                    )
+                    ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'field_type' => 'choice',
+                        'choices' => NewsArticleTranslation::getStatuses(),
+                        'choice_translation_domain' => 'FDCAdminBundle'
+                    ),
                 )
-            ))
-            ->add('status', 'choice', array(
-                'choices' => NewsArticleTranslation::getStatuses(),
-                'choice_translation_domain' => 'FDCAdminBundle'
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'required' => false,
@@ -164,6 +165,7 @@ class NewsArticleAdmin extends Admin
                 )
             )
             ->add('header', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
                 'required' => false
             ))
             ->add('associations', 'sonata_type_collection', array(
@@ -175,6 +177,10 @@ class NewsArticleAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('translate', null, array(), array(
+                'translation_domain' => 'FDCAdminBundle',
+                'required' => false
+            ))
             ->end()
         ;
     }

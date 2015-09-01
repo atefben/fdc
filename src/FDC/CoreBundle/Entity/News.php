@@ -48,6 +48,13 @@ class News
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $title;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
+     */
+    private $translate;
 
      /**
       * @var Theme
@@ -71,14 +78,6 @@ class News
     private $publishEndedAt;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false)
-     * @Assert\NotBlank()
-     */
-    private $status;
-
-    /**
      * @var NewsTag
      *
      * @ORM\OneToMany(targetEntity="NewsNewsTag", mappedBy="news", cascade={"persist"})
@@ -89,7 +88,7 @@ class News
      * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
      */
     private $associations;
-
+    
     /**
      * ArrayCollection
      */
@@ -257,29 +256,6 @@ class News
     }
 
     /**
-     * Set status
-     *
-     * @param integer $status
-     * @return News
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return integer 
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
      * Add tags
      *
      * @param \FDC\CoreBundle\Entity\NewsNewsTag $tags
@@ -345,5 +321,28 @@ class News
     public function getAssociations()
     {
         return $this->associations;
+    }
+
+    /**
+     * Set translate
+     *
+     * @param boolean $translate
+     * @return News
+     */
+    public function setTranslate($translate)
+    {
+        $this->translate = $translate;
+
+        return $this;
+    }
+
+    /**
+     * Get translate
+     *
+     * @return boolean 
+     */
+    public function getTranslate()
+    {
+        return $this->translate;
     }
 }

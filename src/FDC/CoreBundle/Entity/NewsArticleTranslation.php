@@ -72,6 +72,14 @@ class NewsArticleTranslation implements NewsTranslationInterface
     private $sites;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     * @Assert\NotBlank()
+     */
+    private $status;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -103,29 +111,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
     public function getTheme()
     {
         return $this->theme;
-    }
-
-    /**
-     * Set status
-     *
-     * @param integer $status
-     * @return NewsArticleTranslation
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return NewsArticleTranslation
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 
     /**
@@ -342,5 +327,28 @@ class NewsArticleTranslation implements NewsTranslationInterface
     public function getTags()
     {
         return $this->tags;
+    }
+    
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return News
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -1,3 +1,4 @@
+{% trans_default_domain 'FDCAdminBundle' %}
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
     <ul class="a2lix_translationsLocales nav nav-tabs">
@@ -15,6 +16,9 @@
     </ul>
 
     <div class="a2lix_translationsFields tab-content">
+    {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations.unwrap() : null %}
+    {% set headerTranslations = (form.parent.children.header.vars.data is not null) ? form.parent.children.header.vars.data.translations.unwrap() : null %}
+    {% set newsNewsTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data.unwrap() : null %}
     {% for translationsFields in form %}
         {% set locale = translationsFields.vars.name %}
 
@@ -24,7 +28,7 @@
                     <div class="box box-success">
                         <div class="box-header">
                             <h4 class="box-title">
-                                Informations de base
+                                {{ 'group.main_infos'|trans }}
                             </h4>
                         </div>
                         {% if form.vars.default_locale == locale %}
@@ -46,8 +50,75 @@
                                         Theme
                                     </label>
                                     <div>
-                                        {{ form.parent.children.theme.vars.value }}
+                                        {% if themeTranslations is not null and
+                                            themeTranslations.get(locale) is not null %}
+                                            {{ themeTranslations.get(locale).name }}
+                                        {% endif %}
+                                        {% if form.parent.children.theme.vars.value is not null %}
+                                        <a target="_blank" href="{{ path('admin_fdc_core_theme_edit', {'id': form.parent.children.theme.vars.value}) }}">
+                                            modifier la traduction
+                                        </a>
+                                        {% endif %}
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Tags de recherche
+                                    </label>
+                                    <div>
+                                        {% if newsNewsTag is not null %}
+                                            {% for tmp in newsNewsTag %}
+                                                {% set tagTranslation = tmp.tag.translations.unwrap() %}
+                                                {% if tagTranslation.get(locale) is not null %}
+                                                <div>
+                                                    {{ tagTranslation.get(locale).name }}
+                                                    <a target="_blank" href="{{ path('admin_fdc_core_newstag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>  
+                                                </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <header>
+                                        Image principale
+                                    </header>
+                                    <div>
+                                        <label>
+                                            Légende
+                                        </label>
+                                        <span>
+                                        {% if headerTranslations is not null and 
+                                            headerTranslations.get(locale) is not null %}
+                                            {{ headerTranslations.get(locale).legend }}
+                                        {% endif %}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Alt
+                                        </label>
+                                        <span>
+                                        {% if headerTranslations is not null and 
+                                            headerTranslations.get(locale) is not null %}
+                                            {{ headerTranslations.get(locale).alt }}
+                                        {% endif %}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Copyright
+                                        </label>
+                                        <span>
+                                        {% if headerTranslations is not null and 
+                                            headerTranslations.get(locale) is not null %}
+                                            {{ headerTranslations.get(locale).copyright }}
+                                        {% endif %}
+                                        </span>
+                                    </div>
+                                    {% if form.parent.children.header.vars.value is not null %}
+                                    <a target="_blank" href="{{ path('admin_fdc_core_mediaimage_edit', {'id': form.parent.children.header.vars.value}) }}">modifier les traductions</a>  
+                                    {% endif %}
                                 </div>
                                 {{ form_row(translationsFields.introduction) }}
                             </div>
@@ -56,6 +127,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
+                    {% if form.vars.default_locale == locale %}
                     <div class="box box-success">
                         <div class="box-header">
                             <h4 class="box-title">
@@ -67,7 +139,8 @@
                                 {{ form_row(translationsFields.sites) }}
                                 {{ form_row(translationsFields.publishedAt) }}
                                 {{ form_row(translationsFields.publishEndedAt) }}
-                                {{ form_row(form.parent.children.status) }}
+                                {{ form_row(translationsFields.status) }}
+                                {{ form_row(form.parent.children.translate) }}
                             </div>
                             <div>
                                 <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
@@ -75,6 +148,103 @@
                             </div>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h4 class="box-title">
+                                Version française
+                            </h4>
+                        </div>
+                        <div class="box-body">
+                            <div class="sonata-ba-collapsed-fields">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Titre
+                                    </label>
+                                    {% if form.children.fr.vars.value is not null %}
+                                    <div>
+                                        {{ form.children.fr.vars.value.title }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Theme
+                                    </label>
+                                    <div>
+                                        {% if themeTranslations is not null and 
+                                            themeTranslations.get('fr') is not null %}
+                                            {{ themeTranslations.get('fr').name }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Tags de recherche
+                                    </label>
+                                    <div>
+                                        {% for tmp in newsNewsTag %}
+                                            {% set tagTranslation = tmp.tag.translations.unwrap() %}
+                                            {% if tagTranslation.get('fr') is not null %}
+                                            <div>
+                                                {{ tagTranslation.get('fr').name }}
+                                            </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <header>
+                                        Informations image principale
+                                    </header>
+                                    <div>
+                                        <label>
+                                            Légende
+                                        </label>
+                                        <span>
+                                        {% if headerTranslations is not null and 
+                                            headerTranslations.get('fr') is not null %}
+                                            {{ headerTranslations.get('fr').legend }}
+                                        {% endif %}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Alt
+                                        </label>
+                                        <span>
+                                        {% if headerTranslations is not null and 
+                                            headerTranslations.get('fr') is not null %}
+                                            {{ headerTranslations.get('fr').alt }}
+                                        {% endif %}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Copyright
+                                        </label>
+                                        <span>
+                                        {% if headerTranslations is not null and 
+                                            headerTranslations.get('fr') is not null %}
+                                            {{ headerTranslations.get('fr').copyright }}
+                                        {% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <header>
+                                        Chapeau
+                                    </header>
+                                    <div>
+                                        {% if form.children.fr.vars.value is not null %}
+                                        {{ form.children.fr.vars.value.introduction|raw }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="row">
@@ -91,6 +261,7 @@
                     </div>
                 </div>
             </div>
+            {% if form.vars.default_locale == locale %}
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-success">
@@ -105,6 +276,13 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+             <div class="row">
+                <div class="col-md-12">
+                    {{ form_row(translationsFields.status) }}
+                </div>
+            </div>
+            {% endif %}
         </div>
     {% endfor %}
     </div>

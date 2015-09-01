@@ -47,7 +47,7 @@ class NewsNewsTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('tags', 'sonata_type_model')
+            ->add('tag', 'sonata_type_model')
         ;
     }
 

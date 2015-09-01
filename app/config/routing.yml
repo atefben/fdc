@@ -41,6 +41,12 @@ sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
 
+
+JMSTranslationBundle_ui:
+    resource: @JMSTranslationBundle/Controller/
+    type:     annotation
+    prefix:   /admin/_trans
+
 #Application
 fdc_admin:
     resource: "@FDCAdminBundle/Controller/"

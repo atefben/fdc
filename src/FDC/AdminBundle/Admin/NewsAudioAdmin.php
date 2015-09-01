@@ -63,43 +63,24 @@ class NewsAudioAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        // https://github.com/a2lix/TranslationFormBundle/issues/155
-        $themeAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\Theme");
-        $newsAssociatedAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsAssociated");
-        $tagAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\NewsTag");
-        $mediaAudioAdmin = $this->configurationPool->getAdminByClass("FDC\\CoreBundle\\Entity\\MediaAudio");
-        $translationDummyAdmin = $this->configurationPool->getAdminByAdminCode('fdc.admin.news_audio_translation_dummy');
-
-        $formMapper
+$formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
-                'required_locales' => array('fr'),
+                'translation_domain' => 'FDCAdminBundle',
+                'required_locales' => array(),
                 'fields' => array(
                     'title' => array(
-                        'sonata_help' => 'X caractères max.'
-                    ),
-                    'theme' => array(
-                        'field_type' => 'sonata_type_model_list',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
-                        'model_manager' => $themeAdmin->getModelManager(),
-                        'class' => $themeAdmin->getClass(),
-                        'btn_delete' => false
-                    ),
-                    'tags' => array(
-                        'field_type' => 'sonata_type_model_list',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['tags'],
-                        'model_manager' => $tagAdmin->getModelManager(),
-                        'class' => $tagAdmin->getClass(),
-                        'btn_list' => false
-                    ),
-                    'header' => array(
-                        'field_type' => 'sonata_type_model_list',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['header'],
-                        'model_manager' => $mediaAudioAdmin->getModelManager(),
-                        'class' => $mediaAudioAdmin->getClass(),
+                        'label' => 'form.label_title',
+                        'sonata_help' => 'X caractères max.',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
                     ),
                     'introduction' => array(
-                        'field_type' => 'ckeditor'
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_introduction'
                     ),
                     'widgets' => array(
                         'field_type' => 'infinite_form_polycollection',
@@ -114,13 +95,6 @@ class NewsAudioAdmin extends Admin
                         'prototype' => true,
                         'by_reference' => false,
                     ),
-                    'newsAssociated' => array(
-                        'field_type' => 'sonata_type_model_list',
-                        'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['newsAssociated'],
-                        'model_manager' => $newsAssociatedAdmin->getModelManager(),
-                        'class' => $newsAssociatedAdmin->getClass(),
-                        'btn_list' => false
-                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -133,38 +107,58 @@ class NewsAudioAdmin extends Admin
                         'expanded' => true
                     ),
                     'publishedAt' => array(
+                        'label' => 'form.label_published_at',
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
                             'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        ),
-                        'required' => false
+                        )
                     ),
                     'publishEndedAt' => array(
+                        'label' => 'form.label_publish_ended_at',
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
                             'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        ),
-                        'required' => false
+                        )
                     ),
                     'status' => array(
+                        'label' => 'form.label_status',
                         'field_type' => 'choice',
                         'choices' => NewsAudioTranslation::getStatuses(),
                         'choice_translation_domain' => 'FDCAdminBundle'
-                    )
+                    ),
                 )
+            ))
+            ->add('theme', 'sonata_type_model_list', array(
+                'required' => false,
+                'btn_delete' => false
+            ))
+            ->add('tags', 'sonata_type_collection', array(
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('header', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_audio',
+                'required' => false
+            ))
+            ->add('associations', 'sonata_type_collection', array(
+                'by_reference' => false,
+                'btn_add' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('translate', null, array(), array(
+                'translation_domain' => 'FDCAdminBundle'
             ))
             ->end()
-            /*->add('header', 'sonata_type_model_list')
-            ->add('publishedAt', 'sonata_type_datetime_picker', array(
-                'format' => 'dd/MM/yyyy HH:mm',
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
-            ))
-            ->add('publishEndedAt')
-            ->end()*/
         ;
     }
 

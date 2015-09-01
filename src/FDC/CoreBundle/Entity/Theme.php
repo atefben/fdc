@@ -54,7 +54,6 @@ class Theme
         } else {
             $string = strval($this->getId());
         }
-        
         return $string;
     }
 

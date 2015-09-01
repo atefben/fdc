@@ -72,7 +72,7 @@ class MediaImageAdmin extends Admin
                 'legend' => array(
                     'sonata_help' => 'X caractères max.',
                     'locale_options' => array(
-                        'en' => array(
+                        'fr' => array(
                             'constraints' => array(
                                 new NotBlank()
                             )
@@ -90,7 +90,7 @@ class MediaImageAdmin extends Admin
                 'alt' => array(
                     'sonata_help' => 'X caractères max.',
                     'locale_options' => array(
-                        'en' => array(
+                        'fr' => array(
                             'constraints' => array(
                                 new NotBlank()
                             )

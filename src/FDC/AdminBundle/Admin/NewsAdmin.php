@@ -13,6 +13,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class NewsAdmin extends Admin
 {
+    protected $translationDomain = 'FDCAdminBundle';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -24,7 +26,7 @@ class NewsAdmin extends Admin
             ->add('theme')
             ->add('publishedAt')
             ->add('publishEndedAt')
-            ->add('status')
+           // ->add('status')
             ->add('type', 'doctrine_orm_callback', array(
 //                'callback'   => array($this, 'getWithOpenCommentFilter'),
                 'callback' => function($queryBuilder, $alias, $field, $value) {
@@ -55,7 +57,7 @@ class NewsAdmin extends Admin
             ->add('theme')
             ->add('updatedAt')
             ->add('publishedInterval', null, array('template' => 'FDCAdminBundle:News:list_published_interval.html.twig'))
-            ->add('status')
+           // ->add('status')
             ->add('type', null, array('template' => 'FDCAdminBundle:News:list_type.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(

@@ -45,7 +45,7 @@ class NewsNewsTag
      *
      * @ORM\ManyToOne(targetEntity="NewsTag")
      */
-    protected $tags;
+    protected $tag;
     
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
@@ -106,9 +106,9 @@ class NewsNewsTag
      * @param \FDC\CoreBundle\Entity\NewsTag $tags
      * @return NewsNewsTag
      */
-    public function setTags(\FDC\CoreBundle\Entity\NewsTag $tags = null)
+    public function setTag(\FDC\CoreBundle\Entity\NewsTag $tag = null)
     {
-        $this->tags = $tags;
+        $this->tag = $tag;
 
         return $this;
     }
@@ -118,8 +118,8 @@ class NewsNewsTag
      *
      * @return \FDC\CoreBundle\Entity\NewsTag 
      */
-    public function getTags()
+    public function getTag()
     {
-        return $this->tags;
+        return $this->tag;
     }
 }
