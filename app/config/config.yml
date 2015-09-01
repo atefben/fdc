@@ -53,6 +53,7 @@ twig:
             - 'SonataCoreBundle:Form:datepicker.html.twig'
     globals:
         locales_admin: "%locales_admin%"
+        locales: "%locales%"
 
 # Assetic Configuration
 assetic:

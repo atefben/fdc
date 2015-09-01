@@ -50,10 +50,44 @@ class NewsArticleAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('title')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+
+                    return true;
+                },
+                'field_type' => 'text'
+            ))
             ->add('theme')
             ->add('publishedAt')
             ->add('publishEndedAt')
+            ->add('status', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.status = :status');
+                    $queryBuilder->setParameter('status', $value['value']);
+
+                    return true;
+                },
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => NewsArticleTranslation::getStatuses(),
+                    'choice_translation_domain' => 'FDCAdminBundle'
+                ),
+            ))
+            ->add('translate')
         ;
     }
 
@@ -64,17 +98,15 @@ class NewsArticleAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title')
+            ->add('title', null, array('template' => 'FDCAdminBundle:News:list_title.html.twig'))
             ->add('theme')
             ->add('updatedAt')
             ->add('publishedInterval', null, array('template' => 'FDCAdminBundle:News:list_published_interval.html.twig'))
-           // ->add('status', null, array('template' => 'FDCAdminBundle:News:list_status.html.twig'))
+            ->add('status', null, array('template' => 'FDCAdminBundle:News:list_status.html.twig'))
             ->add('type', null, array('template' => 'FDCAdminBundle:News:list_type.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
+                    'edit_translations' => array('template' => 'FDCAdminBundle:CRUD:list__action_edit_translations.html.twig'),
                 )
             ))
         ;
@@ -193,20 +225,5 @@ class NewsArticleAdmin extends Admin
         $showMapper
             ->add('id')
         ;
-    }
-    
-    public function prePersist($object)
-    {
-        $this->updateAction($object);
-    }
-
-    public function preUpdate($object)
-    {
-        $this->updateAction($object);
-    }
-    
-    public function updateAction($object)
-    {
-        
     }
 }
