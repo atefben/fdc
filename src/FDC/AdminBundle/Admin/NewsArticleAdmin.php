@@ -66,8 +66,8 @@ class NewsArticleAdmin extends Admin
                 'field_type' => 'text'
             ))
             ->add('theme')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
+            ->add('publishedAt', 'doctrine_orm_datetime', array('field_type' => 'sonata_type_datetime_picker'))
+            ->add('publishEndedAt', 'doctrine_orm_datetime', array('field_type' => 'sonata_type_datetime_picker'))
             ->add('status', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
@@ -125,7 +125,7 @@ class NewsArticleAdmin extends Admin
                 'fields' => array(
                     'title' => array(
                         'label' => 'form.label_title',
-                        'sonata_help' => 'X caractères max.',
+                        'sonata_help' => 'form.helper_title',
                         'locale_options' => array(
                             'fr' => array(
                                 'required' => true
