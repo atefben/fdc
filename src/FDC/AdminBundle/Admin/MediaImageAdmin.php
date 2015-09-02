@@ -53,87 +53,87 @@ class MediaImageAdmin extends Admin
     {
         $locales = array('fr', 'en', 'es', 'pt', 'ru', 'jp', 'cn', 'ar');
         $validationGroups = array();
-        $formMapper->add('translations', 'a2lix_translations', array(
-            'label' => false,
-            'required_locales' => $validationGroups,
-            'fields' => array(
-                // remove fields not set by user
-                'createdAt' => array(
+        $formMapper
+            ->add('translations', 'a2lix_translations', array(
+                'label' => false,
+                'required_locales' => $validationGroups,
+                'fields' => array(
+                    // remove fields not set by user
+                    'createdAt' => array(
+                            'display' => false
+                        ),
+                    'updatedAt' => array(
                         'display' => false
                     ),
-                'updatedAt' => array(
-                    'display' => false
-                ),
-                'file' => array(
-                    'field_type' => 'sonata_media_type',
-                    'provider' => 'sonata.media.provider.file',
-                    'context'  => 'image'
-                ),
-                'legend' => array(
-                    'sonata_help' => 'X caractères max.',
-                    'locale_options' => array(
-                        'fr' => array(
-                            'constraints' => array(
-                                new NotBlank()
+                    'legend' => array(
+                        'sonata_help' => 'X caractères max.',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'constraints' => array(
+                                    new NotBlank()
+                                )
                             )
                         )
-                    )
-                ),
-                'theme' => array(
-                   // 'field_type' => 'sonata_type_model',
-                    //    'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
-                    //    'model_manager' => $themeAdmin->getModelManager(),
-                    //   'class' => $themeAdmin->getClass(),
-                       'class' => 'FDCCoreBundle:Theme',
-                      //  'allow_add' => true,  
-                ),
-                'alt' => array(
-                    'sonata_help' => 'X caractères max.',
-                    'locale_options' => array(
-                        'fr' => array(
-                            'constraints' => array(
-                                new NotBlank()
+                    ),
+                    'theme' => array(
+                       // 'field_type' => 'sonata_type_model',
+                        //    'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
+                        //    'model_manager' => $themeAdmin->getModelManager(),
+                        //   'class' => $themeAdmin->getClass(),
+                           'class' => 'FDCCoreBundle:Theme',
+                          //  'allow_add' => true,  
+                    ),
+                    'alt' => array(
+                        'sonata_help' => 'X caractères max.',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'constraints' => array(
+                                    new NotBlank()
+                                )
                             )
                         )
-                    )
-                ),
-                'copyright' => array(
-                    'sonata_help' => 'X caractères max.',
-                    'locale_options' => array(
-                        'fr' => array(
-                            'required' => false
+                    ),
+                    'copyright' => array(
+                        'sonata_help' => 'X caractères max.',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => false
+                            ),
+                            'en' => array(
+                                'required' => false
+                            )
+                        )
+                    ),
+                    'publishedAt' => array(
+                            'field_type' => 'sonata_type_datetime_picker',
+                            'format' => 'dd/MM/yyyy HH:mm',
+                            'attr' => array(
+                                'data-date-format' => 'dd/MM/yyyy HH:mm',
+                            )
                         ),
-                        'en' => array(
-                            'required' => false
-                        )
-                    )
-                ),
-                'publishedAt' => array(
+                    'publishEndedAt' => array(
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
                             'data-date-format' => 'dd/MM/yyyy HH:mm',
                         )
                     ),
-                'publishEndedAt' => array(
-                    'field_type' => 'sonata_type_datetime_picker',
-                    'format' => 'dd/MM/yyyy HH:mm',
-                    'attr' => array(
-                        'data-date-format' => 'dd/MM/yyyy HH:mm',
+                    'sites' => array(
+                        'multiple' => true,
+                        'expanded' => true,
+                        'class' => 'FDCCoreBundle:Site'
+                    ),
+                    'status' => array(
+                        'field_type' => 'choice',
+                        'choices' => MediaImageTranslation::getStatuses(),
+                        'choice_translation_domain' => 'FDCAdminBundle'
                     )
-                ),
-                'sites' => array(
-                    'multiple' => true,
-                    'expanded' => true,
-                    'class' => 'FDCCoreBundle:Site'
-                ),
-                'status' => array(
-                    'field_type' => 'choice',
-                    'choices' => MediaImageTranslation::getStatuses(),
-                    'choice_translation_domain' => 'FDCAdminBundle'
                 )
-            )
-        ))
+            ))
+            ->add('file', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'header_image'
+            ))
         ->end();
     }
 

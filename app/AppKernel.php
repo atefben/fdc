@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
+            new Application\Sonata\DoctrineORMAdminBundle\ApplicationSonataDoctrineORMAdminBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             /* Doctrine Fixtures */

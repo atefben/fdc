@@ -23,14 +23,6 @@ class MediaImageTranslation implements MediaTranslationInterface
     use MediaTranslation;
     
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
-     *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
-     */
-    private $file;
-
-    /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -230,29 +222,6 @@ class MediaImageTranslation implements MediaTranslationInterface
     public function getPublishEndedAt()
     {
         return $this->publishEndedAt;
-    }
-
-    /**
-     * Set file
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaImageTranslation
-     */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getFile()
-    {
-        return $this->file;
     }
 
     /**

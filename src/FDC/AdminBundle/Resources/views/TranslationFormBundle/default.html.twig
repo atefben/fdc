@@ -25,3 +25,13 @@
 {% block a2lix_translationsForms_widget %}
     {{ block('a2lix_translations_widget') }}
 {% endblock %}
+
+{% block fdc_admin_news_article_header_sonata_type_model_list_widget %}
+    <div class="fdc-sonata-media-ajax-display">
+    {% if form.parent.vars.value.header is not null and 
+        form.parent.vars.value.header.file is not null %}
+        {% media form.parent.vars.value.header.file, 'small' %} 
+    {% endif %}
+    </div>
+    {{ block('sonata_type_model_list_widget') }}
+{% endblock %}

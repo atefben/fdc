@@ -2,14 +2,14 @@ sonata_media:
     # if you don't use default namespace configuration
     class:
         media: Application\Sonata\MediaBundle\Entity\Media
-    default_context: image
+    default_context: header_image
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         pdf:
             providers:
                 - sonata.media.provider.file
             formats:
-        image:  # the default context is mandatory
+        header_image:  # the default context is mandatory
             providers:
                 - sonata.media.provider.image
 

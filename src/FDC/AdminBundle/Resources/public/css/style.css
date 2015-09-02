@@ -11,3 +11,8 @@
 .help-block {
     margin: 0 !important;
 }
+
+/* used to hide the sonata media img on ajax query */
+.fdc-sonata-media-ajax-hidden {
+    display: none;
+}

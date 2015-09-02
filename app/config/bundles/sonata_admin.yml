@@ -15,3 +15,5 @@ sonata_admin:
     dashboard:
         blocks: 
             - { position: top, class: col-md-12, type: fdc_admin.block.sites }
+    templates:
+        short_object_description:  'ApplicationSonataAdminBundle:Helper:short-object-description.html.twig'
