@@ -35,6 +35,7 @@
         {% media form.parent.vars.value.header.file, 'small' %} 
     {% endif %}
     </div>
+    {{ block('sonata_type_model_list_widget') }}
 {% endblock %}
 
 {# added clearfix #}
