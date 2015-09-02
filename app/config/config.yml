@@ -51,7 +51,6 @@ twig:
         resources:
             - 'InfiniteFormBundle::collection_theme.html.twig'
             - 'SonataCoreBundle:Form:datepicker.html.twig'
-            - 'SonataMediaBundle:Form:media_widgets.html.twig'
     globals:
         locales_admin: "%locales_admin%"
         locales: "%locales%"
