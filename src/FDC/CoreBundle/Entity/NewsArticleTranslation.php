@@ -86,77 +86,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
     {
         $this->widgets = new ArrayCollection();
         $this->sites = new ArrayCollection();
-        $this->tags = new ArrayCollection();
-        $this->associations = new ArrayCollection();
-    }
-
-    /**
-     * Set theme
-     *
-     * @param \FDC\CoreBundle\Entity\Theme $theme
-     * @return Article
-     */
-    public function setTheme(\FDC\CoreBundle\Entity\Theme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \FDC\CoreBundle\Entity\Theme 
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return Article
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publishEndedAt
-     *
-     * @param \DateTime $publishEndedAt
-     * @return Article
-     */
-    public function setPublishEndedAt($publishEndedAt)
-    {
-        $this->publishEndedAt = $publishEndedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishEndedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishEndedAt()
-    {
-        return $this->publishEndedAt;
     }
 
     /**
@@ -183,15 +112,106 @@ class NewsArticleTranslation implements NewsTranslationInterface
     }
 
     /**
+     * Set introduction
+     *
+     * @param string $introduction
+     * @return NewsArticleTranslation
+     */
+    public function setIntroduction($introduction)
+    {
+        $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    /**
+     * Get introduction
+     *
+     * @return string 
+     */
+    public function getIntroduction()
+    {
+        return $this->introduction;
+    }
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return NewsArticleTranslation
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * Set publishEndedAt
+     *
+     * @param \DateTime $publishEndedAt
+     * @return NewsArticleTranslation
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishEndedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return NewsArticleTranslation
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
      * Add widgets
      *
      * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
-     * @return NewsArticle
+     * @return NewsArticleTranslation
      */
-    public function addWidget(\FDC\CoreBundle\Entity\NewsWidget $widget)
+    public function addWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
     {
-        $widget->setNewsArticle($this);
-        $this->widgets[] = $widget;
+        $this->widgets[] = $widgets;
 
         return $this;
     }
@@ -217,10 +237,33 @@ class NewsArticleTranslation implements NewsTranslationInterface
     }
 
     /**
+     * Set theme
+     *
+     * @param \FDC\CoreBundle\Entity\Theme $theme
+     * @return NewsArticleTranslation
+     */
+    public function setTheme(\FDC\CoreBundle\Entity\Theme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \FDC\CoreBundle\Entity\Theme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
      * Add sites
      *
      * @param \FDC\CoreBundle\Entity\Site $sites
-     * @return NewsArticle
+     * @return NewsArticleTranslation
      */
     public function addSite(\FDC\CoreBundle\Entity\Site $sites)
     {
@@ -247,108 +290,5 @@ class NewsArticleTranslation implements NewsTranslationInterface
     public function getSites()
     {
         return $this->sites;
-    }
-
-    /**
-     * Set introduction
-     *
-     * @param string $introduction
-     * @return NewsArticleTranslation
-     */
-    public function setIntroduction($introduction)
-    {
-        $this->introduction = $introduction;
-
-        return $this;
-    }
-
-    /**
-     * Get introduction
-     *
-     * @return string 
-     */
-    public function getIntroduction()
-    {
-        return $this->introduction;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set newsAssociated
-     *
-     * @param \FDC\CoreBundle\Entity\NewsAssociated $newsAssociated
-     * @return NewsArticleTranslation
-     */
-    public function setNewsAssociated(\FDC\CoreBundle\Entity\NewsAssociated $newsAssociated = null)
-    {
-        $newsAssociated->setNews($this);
-        $this->newsAssociated = $newsAssociated;
-
-        return $this;
-    }
-
-    /**
-     * Get newsAssociated
-     *
-     * @return \FDC\CoreBundle\Entity\NewsAssociated 
-     */
-    public function getNewsAssociated()
-    {
-        return $this->newsAssociated;
-    }
-
-    /**
-     * Set tags
-     *
-     * @param \FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag $tags
-     * @return NewsArticleTranslation
-     */
-    public function setTags(\FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag $tags = null)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag 
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-    
-    /**
-     * Set status
-     *
-     * @param integer $status
-     * @return News
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return integer 
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 }

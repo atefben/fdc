@@ -89,79 +89,10 @@ class NewsAudioTranslation implements NewsTranslationInterface
     }
 
     /**
-     * Set theme
-     *
-     * @param \FDC\CoreBundle\Entity\Theme $theme
-     * @return Article
-     */
-    public function setTheme(\FDC\CoreBundle\Entity\Theme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \FDC\CoreBundle\Entity\Theme 
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return Article
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publishEndedAt
-     *
-     * @param \DateTime $publishEndedAt
-     * @return Article
-     */
-    public function setPublishEndedAt($publishEndedAt)
-    {
-        $this->publishEndedAt = $publishEndedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishEndedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishEndedAt()
-    {
-        return $this->publishEndedAt;
-    }
-
-    /**
      * Set title
      *
      * @param string $title
-     * @return NewsArticleTranslation
+     * @return NewsAudioTranslation
      */
     public function setTitle($title)
     {
@@ -181,77 +112,10 @@ class NewsAudioTranslation implements NewsTranslationInterface
     }
 
     /**
-     * Add widgets
-     *
-     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
-     * @return NewsArticle
-     */
-    public function addWidget(\FDC\CoreBundle\Entity\NewsWidget $widget)
-    {
-        $widget->setNewsArticle($this);
-        $this->widgets[] = $widget;
-
-        return $this;
-    }
-
-    /**
-     * Remove widgets
-     *
-     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
-     */
-    public function removeWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $this->widgets->removeElement($widgets);
-    }
-
-    /**
-     * Get widgets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getWidgets()
-    {
-        return $this->widgets;
-    }
-
-    /**
-     * Add sites
-     *
-     * @param \FDC\CoreBundle\Entity\Site $sites
-     * @return NewsArticle
-     */
-    public function addSite(\FDC\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \FDC\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\FDC\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSites()
-    {
-        return $this->sites;
-    }
-
-    /**
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsArticleTranslation
+     * @return NewsAudioTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -268,49 +132,6 @@ class NewsAudioTranslation implements NewsTranslationInterface
     public function getIntroduction()
     {
         return $this->introduction;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Add tags
-     *
-     * @param \FDC\CoreBundle\Entity\NewsTag $tags
-     * @return NewsArticleTranslation
-     */
-    public function addTag(\FDC\CoreBundle\Entity\NewsTag $tags)
-    {
-        $this->tags[] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param \FDC\CoreBundle\Entity\NewsTag $tags
-     */
-    public function removeTag(\FDC\CoreBundle\Entity\NewsTag $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 
     /**
@@ -337,6 +158,85 @@ class NewsAudioTranslation implements NewsTranslationInterface
     }
 
     /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return NewsAudioTranslation
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * Set publishEndedAt
+     *
+     * @param \DateTime $publishEndedAt
+     * @return NewsAudioTranslation
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishEndedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
+     * Add widgets
+     *
+     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
+     * @return NewsAudioTranslation
+     */
+    public function addWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
+    {
+        $this->widgets[] = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgets
+     *
+     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
+     */
+    public function removeWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
+    {
+        $this->widgets->removeElement($widgets);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
+    }
+
+    /**
      * Set header
      *
      * @param \FDC\CoreBundle\Entity\MediaAudio $header
@@ -360,38 +260,35 @@ class NewsAudioTranslation implements NewsTranslationInterface
     }
 
     /**
-     * Set tags
+     * Add sites
      *
-     * @param \FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag $tags
+     * @param \FDC\CoreBundle\Entity\Site $sites
      * @return NewsAudioTranslation
      */
-    public function setTags(\FDC\CoreBundle\Entity\NewsArticleTranslationNewsTag $tags = null)
+    public function addSite(\FDC\CoreBundle\Entity\Site $sites)
     {
-        $this->tags = $tags;
+        $this->sites[] = $sites;
 
         return $this;
     }
 
     /**
-     * Set newsAssociated
+     * Remove sites
      *
-     * @param \FDC\CoreBundle\Entity\NewsAssociated $newsAssociated
-     * @return NewsAudioTranslation
+     * @param \FDC\CoreBundle\Entity\Site $sites
      */
-    public function setNewsAssociated(\FDC\CoreBundle\Entity\NewsAssociated $newsAssociated = null)
+    public function removeSite(\FDC\CoreBundle\Entity\Site $sites)
     {
-        $this->newsAssociated = $newsAssociated;
-
-        return $this;
+        $this->sites->removeElement($sites);
     }
 
     /**
-     * Get newsAssociated
+     * Get sites
      *
-     * @return \FDC\CoreBundle\Entity\NewsAssociated 
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getNewsAssociated()
+    public function getSites()
     {
-        return $this->newsAssociated;
+        return $this->sites;
     }
 }
