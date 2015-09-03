@@ -30,8 +30,12 @@ We use [MySQL Workbench][3] to create / generate the diagram png, the source fil
 ## Initialization
 
 You have to configure the parameters.yml
+
 Have the mandatory php extensions and php.ini
-- Command : php app/console d:d:c && php app/console
+
+Launch the command : php app/console d:d:c && php app/console d:s:u --force && php app/console d:f:l
+
+You have to validate to load the fixtures in your database
 
 ## Bundles
 

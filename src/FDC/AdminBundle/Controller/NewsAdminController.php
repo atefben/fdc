@@ -7,9 +7,9 @@ use Sonata\AdminBundle\Controller\CRUDController;
 /**
  * NewsAdminController class.
  * 
- * @extends CRUDController
+ * \@extends CRUDController
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class NewsAdminController extends CRUDController
 {

@@ -7,9 +7,9 @@ use Sonata\AdminBundle\Controller\CRUDController;
 /**
  * ThemeAdminController class.
  * 
- * @extends CRUDController
+ * \@extends CRUDController
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class ThemeAdminController extends CRUDController
 {

@@ -17,9 +17,9 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * DashboardController class.
  * 
- * @extends Controller
+ * \@extends Controller
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  *
  * @Route("/dashboard")
  */
