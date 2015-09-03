@@ -13,6 +13,13 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 
+/**
+ * MediaAudioAdmin class.
+ * 
+ * \@extends Admin
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * \@company Ohwee
+ */
 class MediaAudioAdmin extends Admin
 {
     /**

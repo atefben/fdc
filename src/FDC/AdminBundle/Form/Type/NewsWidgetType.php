@@ -9,7 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * NewsWidgetType class.
  * 
- * @extends BaseType
+ * \@extends BaseType
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * \@company Ohwee
  */
 class NewsWidgetType extends BaseType
 {

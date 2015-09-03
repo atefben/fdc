@@ -9,9 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * NewsWidgetTextType class.
  * 
- * @extends NewsWidgetType
+ * \@extends NewsWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class NewsWidgetTextType extends NewsWidgetType
 {
@@ -36,7 +36,11 @@ class NewsWidgetTextType extends NewsWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('content', 'ckeditor');
+        $builder->add('content', 'ckeditor', array(
+            'attr' => array(
+                'class' => 'ckeditor'
+            )
+        ));
     }
     
     /**

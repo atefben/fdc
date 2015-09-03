@@ -12,9 +12,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
 /**
  * GalleryMediaAdmin class.
  * 
- * @extends Admin
+ * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class GalleryMediaAdmin extends Admin
 {

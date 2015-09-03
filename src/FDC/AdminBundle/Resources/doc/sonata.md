@@ -6,21 +6,12 @@ We use [Sonata Bundles](https://sonata-project.org) to  generate the admin.
 The media are handled by [Sonata Media Bundle](https://sonata-project.org/bundles/media/2-2/doc/index.html).
 
 
-##Bundle modifications
+## Translations
 
-FDC medias has translation on copyrights. We had to change the Sonata Media to handle this :
+We use http://jmsyst.com/bundles/JMSTranslationBundle to handle translations, a web interface is available on /admin/_trans, you need the ROLE_SONATA_ADMIN to access it.
 
-- I tried to change the BaseMedia.orm.xml mapper by removing the copyright field but after no properties were saved in database.
-- I tried to add a FileProvider in the extension Bundle but there is an issue with BaseProvider:transform when activating it in the sonata_media.yml.
+To extract the translations from the templates we use the following commands :
 
-So I had to modify the following files in SonataMediaBundle to have this custom behaviour :
+php app/console translation:extract fr --config=admin
 
-**Sonata\MediaBundle\Provider\FileProvider**
-
-method buildEditForm  - added translations / removed copyright field
-
-**Sonata\MediaBundle\Model\ModelInterface**
-
-setCopyright / getCopyright removed
-
-Those fields are handled in the MediaTranslation Entity instead of Media.
+php app/console translation:extract en --config=admin

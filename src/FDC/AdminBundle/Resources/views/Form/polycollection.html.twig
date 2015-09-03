@@ -1,3 +1,4 @@
+{% trans_default_domain 'FDCAdminBundle' %}
 {% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
 
 {% block infinite_form_polycollection_widget %}
@@ -12,10 +13,10 @@
     {% endif %}
 
     {{ block('form_widget') }}
-    <a class="btn btn-primary btn-add-fdc-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i> Ajouter un texte</a>
-    <a class="btn btn-primary btn-add-fdc-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i> Ajouter un audio</a>
-    <a class="btn btn-primary btn-add-fdc-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i> Ajouter une image</a>
-    <a class="btn btn-primary btn-add-fdc-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i> Ajouter une video</a>
+    <a class="btn btn-primary btn-add-fdc-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.text'|trans }}</a>
+    <a class="btn btn-primary btn-add-fdc-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.audio'|trans }}</a>
+    <a class="btn btn-primary btn-add-fdc-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.photo'|trans }}</a>
+    <a class="btn btn-primary btn-add-fdc-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.video'|trans }}</a>
 {% endspaceless %}
 {% endblock %}
 

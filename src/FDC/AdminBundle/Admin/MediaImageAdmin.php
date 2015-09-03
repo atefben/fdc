@@ -16,9 +16,9 @@ use Symfony\Component\Validator\Constraints\NotNull;
 /**
  * MediaImageAdmin class.
  * 
- * @extends Admin
+ * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class MediaImageAdmin extends Admin
 {

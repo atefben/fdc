@@ -11,9 +11,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
 /**
  * NewsNewsAssociatedAdmin class.
  * 
- * @extends Admin
+ * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class NewsNewsAssociatedAdmin extends Admin
 {

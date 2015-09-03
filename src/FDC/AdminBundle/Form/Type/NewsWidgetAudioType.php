@@ -7,9 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * NewsWidgetAudioType class.
  * 
- * @extends NewsWidgetType
+ * \@extends NewsWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class NewsWidgetAudioType extends NewsWidgetType
 {

@@ -9,9 +9,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * NewsWidgetImageType class.
  * 
- * @extends NewsWidgetType
+ * \@extends NewsWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class NewsWidgetImageType extends NewsWidgetType
 {

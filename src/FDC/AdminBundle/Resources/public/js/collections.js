@@ -77,10 +77,8 @@
 
             if (!event.isDefaultPrevented()) {
                 if (event.insertBefore) {
-                    console.log(1);
                     $row.insertBefore(event.insertBefore);
                 } else {
-                    console.log(2);
                     this.$collection.append($row);
                 }
             }

@@ -11,13 +11,12 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService;
 
-
 /**
  * FDCSiteBlockService class.
  * 
- * @extends BaseBlockService
+ * \@extends BaseBlockService
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class FDCSiteBlockService extends BaseBlockService
 {
