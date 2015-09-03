@@ -14,7 +14,7 @@ use FDC\CoreBundle\Util\Translation;
 /**
  * FilmPrize
  *
- * @ORM\Table(indexes={@ORM\Index(name="position", columns={"position"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */

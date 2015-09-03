@@ -3,7 +3,6 @@
 namespace FDC\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
-use A2lix\I18nDoctrineBundle\Doctrine\Interfaces\OneLocaleInterface;
 
 use FDC\CoreBundle\Util\Time;
 
@@ -14,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\HasLifecycleCallbacks()
  */
-class FilmPrizeTranslation //implements OneLocaleInterface
+class FilmPrizeTranslation
 {
     use Time;
     use Translation;
@@ -55,39 +54,6 @@ class FilmPrizeTranslation //implements OneLocaleInterface
     {
         return $this->title;
     }
-    
-    /**
-     * Get translated
-     *
-     * @return boolean 
-     */
-    public function getTranslated()
-    {
-        return $this->translated;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return ArticleTranslation
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
 
     /**
      * Set category
@@ -110,39 +76,5 @@ class FilmPrizeTranslation //implements OneLocaleInterface
     public function getCategory()
     {
         return $this->category;
-    }
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     * @return FilmPrizeTranslation
-     */
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Get locale
-     *
-     * @return string 
-     */
-    public function getLocale()
-    {
-        return $this->locale;
     }
 }

@@ -25,7 +25,6 @@ class NewsWidgetText extends NewsWidget
      */
     private $content;
 
-
     /**
      * Set content
      *
