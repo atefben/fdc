@@ -35,7 +35,6 @@ class DashboardController extends Controller
      * @Secure(roles="ROLE_ADMIN")
      * @Route("/set_cookie/{slug}")
      */
-     */
     public function setCookieAction($slug)
     {
         $response = new Response();
