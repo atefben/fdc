@@ -11,7 +11,8 @@ use FDC\CoreBundle\Entity\FilmPersonTranslation;
  * PersonManager class.
  * 
  * @extends CoreManager
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class PersonManager extends CoreManager
 {

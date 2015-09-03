@@ -15,13 +15,26 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
+ * DashboardController class.
+ * 
+ * @extends Controller
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
+ *
  * @Route("/dashboard")
  */
 class DashboardController extends Controller
-{
+{    
     /**
+     * setCookieAction function.
+     * 
+     * @access public
+     * @param mixed $slug
+     * @return void
+     *
      * @Secure(roles="ROLE_ADMIN")
      * @Route("/set_cookie/{slug}")
+     */
      */
     public function setCookieAction($slug)
     {

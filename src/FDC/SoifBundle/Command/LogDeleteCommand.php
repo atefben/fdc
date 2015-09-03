@@ -14,7 +14,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  * LogDeleteCommand class.
  * 
  * @extends ContainerAwareCommand
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class LogDeleteCommand extends ContainerAwareCommand
 {

@@ -10,7 +10,8 @@ use Application\Sonata\MediaBundle\Entity\Media;
  * MediaStreamManager class.
  * 
  * @extends CoreManager
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class MediaStreamManager extends CoreManager
 {

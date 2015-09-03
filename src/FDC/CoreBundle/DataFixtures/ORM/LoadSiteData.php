@@ -8,6 +8,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use FDC\CoreBundle\Entity\Site;
 
+
+/**
+ * LoadSiteData class.
+ * 
+ * @extends     AbstractFixture
+ * @implements  OrderedFixtureInterface
+ * @author      Antoine Mineau
+ * @company     Ohwee
+ */
 class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)

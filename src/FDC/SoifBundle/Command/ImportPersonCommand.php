@@ -11,7 +11,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  * ImportPersonCommand class.
  * 
  * @extends ContainerAwareCommand
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class ImportPersonCommand extends ContainerAwareCommand
 {

@@ -5,7 +5,8 @@ namespace FDC\CoreBundle\Entity;
 /**
  * FilmContactInterface interface.
  *
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 interface FilmContactInterface
 {

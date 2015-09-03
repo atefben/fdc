@@ -5,7 +5,8 @@ namespace FDC\CoreBundle\Entity;
 /**
  * FilmFestivalPosterInterface interface.
  *
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 interface FilmFestivalPosterInterface
 {

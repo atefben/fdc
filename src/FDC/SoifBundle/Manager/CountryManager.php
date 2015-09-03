@@ -9,7 +9,8 @@ use FDC\CoreBundle\Entity\CountryTranslation;
  * CountryManager class.
  * 
  * @extends CoreManager
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class CountryManager extends CoreManager
 {

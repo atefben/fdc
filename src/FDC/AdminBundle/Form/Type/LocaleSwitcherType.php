@@ -6,10 +6,13 @@ use Symfony\Component\Form\AbstractType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 /**
  * LocaleSwitcherType class.
  * 
- * extends BaseType
+ * @extends BaseType
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class LocaleSwitcherType extends BaseType
 {

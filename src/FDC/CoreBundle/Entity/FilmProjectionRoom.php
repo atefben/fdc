@@ -31,7 +31,7 @@ class FilmProjectionRoom
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $name;
-    
+
     /**
      * @var string
      *

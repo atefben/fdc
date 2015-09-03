@@ -9,6 +9,7 @@ use FDC\CoreBundle\Entity\FilmAward;
  * 
  * @extends CoreManager
  * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class AwardManager extends CoreManager
 {

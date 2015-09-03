@@ -13,6 +13,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 
+/**
+ * NewsAdmin class.
+ * 
+ * @extends Admin
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
+ */
 class NewsAdmin extends Admin
 {
     protected $translationDomain = 'FDCAdminBundle';

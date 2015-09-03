@@ -10,7 +10,8 @@ use Application\Sonata\MediaBundle\Entity\Media;
  * JuryFunctionManager class.
  * 
  * @extends CoreManager
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class JuryFunctionManager extends CoreManager
 {

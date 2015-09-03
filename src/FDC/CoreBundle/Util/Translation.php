@@ -5,7 +5,8 @@ namespace FDC\CoreBundle\Util;
 /**
  * Translation trait.
  *
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 trait Translation
 {

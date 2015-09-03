@@ -8,12 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportModifiedCommand class.
+ * Update class.
  * 
  * @extends ContainerAwareCommand
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
-class ImportModifiedCommand extends ContainerAwareCommand
+class UpdateCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -23,8 +24,8 @@ class ImportModifiedCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_modified')
-            ->setDescription('Imports the modified elements')
+            ->setName('fdc:soif:update')
+            ->setDescription('Update the database with SOIF call timestamp interval')
             ->addArgument('from', InputArgument::REQUIRED, 'the soif identifier')
             ->addArgument('to', InputArgument::REQUIRED, 'the soif identifier')
         ;

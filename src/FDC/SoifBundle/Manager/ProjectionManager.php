@@ -10,7 +10,8 @@ use FDC\CoreBundle\Entity\FilmProjectionRoom;
  * ProjectionManager class.
  * 
  * @extends CoreManager
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class ProjectionManager extends CoreManager
 {

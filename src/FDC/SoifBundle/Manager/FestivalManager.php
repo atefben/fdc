@@ -8,7 +8,8 @@ use FDC\CoreBundle\Entity\FilmFestival;
  * FestivalManager class.
  * 
  * @extends CoreManager
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class FestivalManager extends CoreManager
 {

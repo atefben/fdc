@@ -13,9 +13,9 @@ A mySQL Server
 
 ###php.ini
 ```
-soap.wsdl_cache_enabled = 1 ; caching the soap methods
+soap.wsdl_cache_enabled = 1; caching the soap methods
+memory_limit = 512M; at least 512mb for the thubmnail generations
 ```
-
 
 ## Database
 
@@ -26,6 +26,21 @@ We use [MySQL Workbench][3] to create / generate the diagram png, the source fil
 [1]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/FDC/CoreBundle/Resources/doc/sql
 [2]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/FDC/CoreBundle/Resources/doc/sqlFDC%20diagram.mwb
 [3]: https://www.mysql.fr/products/workbench/
+
+## Initialization
+
+You have to configure the parameters.yml
+Have the mandatory php extensions and php.ini
+- Command : php app/console d:d:c && php app/console
+
+## Bundles
+
+- FDCCoreBundle : The core of the project Entities, Repository
+- FDCAdminBundle : The admin of the project
+- FDCSoifBundle : The Soif mapper
+- Application Bundles : The bundles extension used in the project (mostly Sonata)
+
+#Development
 
 ##Entities
 

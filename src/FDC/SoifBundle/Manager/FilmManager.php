@@ -24,7 +24,8 @@ use FDC\CoreBundle\Entity\FilmSelectionSubsectionTranslation;
  * FilmManager class.
  * 
  * @extends CoreManager
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class FilmManager extends CoreManager
 {

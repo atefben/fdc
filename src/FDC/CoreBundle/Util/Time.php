@@ -4,6 +4,13 @@ namespace FDC\CoreBundle\Util;
 
 use \DateTime;
 
+
+/**
+ * Time trait.
+ *
+ * @author  Antoine Mineau
+ * @company Ohwee
+ */
 trait Time
 {
     /**

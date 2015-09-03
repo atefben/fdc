@@ -8,6 +8,14 @@ use Doctrine\Common\Persistence\ObjectManager;
 use FDC\CoreBundle\Entity\FilmFunction;
 use FDC\CoreBundle\Entity\FilmFunctionTranslation;
 
+
+/**
+ * LoadFilmFunctionData class.
+ * 
+ * @implements  FixtureInterface
+ * @author      Antoine Mineau
+ * @company     Ohwee
+ */
 class LoadFilmFunctionData implements FixtureInterface
 {
     public function load(ObjectManager $manager)

@@ -4,8 +4,23 @@ namespace FDC\CoreBundle\Util;
 
 use \DateTime;
 
+
+/**
+ * MediaTranslation trait.
+ *
+ * @author  Antoine Mineau
+ * @company Ohwee
+ */
 trait MediaTranslation
 {
+    
+    /**
+     * getStatuses function.
+     * 
+     * @access public
+     * @static
+     * @return void
+     */
     public static function getStatuses()
     {
         return array(

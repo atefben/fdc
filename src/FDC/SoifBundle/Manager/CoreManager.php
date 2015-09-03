@@ -16,6 +16,7 @@ use Symfony\Component\Console\Output\BufferedOutput;
  * 
  * @abstract
  * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 abstract class CoreManager
 {

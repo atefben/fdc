@@ -11,18 +11,42 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+
+/**
+ * LoadUserData class.
+ * 
+ * @extends     AbstractFixture
+ * @implements  OrderedFixtureInterface
+ * @implements  ContainerAwareInterface
+ * @author      Antoine Mineau
+ * @company     Ohwee
+ */
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
      */
     private $container;
-
+    
+    /**
+     * setContainer function.
+     * 
+     * @access public
+     * @param ContainerInterface $container (default: null)
+     * @return void
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
     }
 
+    /**
+     * load function.
+     * 
+     * @access public
+     * @param ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager)
     {
         $userManager = $this->container->get('fos_user.user_manager');

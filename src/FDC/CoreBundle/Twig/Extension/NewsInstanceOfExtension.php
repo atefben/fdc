@@ -10,8 +10,21 @@ use FDC\CoreBundle\Entity\NewsAudio;
 use FDC\CoreBundle\Entity\NewsImage;
 use FDC\CoreBundle\Entity\NewsVideo;
 
+/**
+ * NewsInstanceOfExtension class.
+ * 
+ * @extends Twig_Extension
+ * @author  Antoine Mineau
+ * @company Ohwee
+ */
 class NewsInstanceOfExtension extends Twig_Extension
 {
+    /**
+     * getTests function.
+     * 
+     * @access public
+     * @return void
+     */
     public function getTests()
     {
         return array(
@@ -22,6 +35,12 @@ class NewsInstanceOfExtension extends Twig_Extension
         );
     }
 
+    /**
+     * getName function.
+     * 
+     * @access public
+     * @return void
+     */
     public function getName()
     {
         return 'news_instance_of_extension';

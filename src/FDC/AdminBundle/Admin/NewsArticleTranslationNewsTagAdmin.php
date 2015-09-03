@@ -8,6 +8,14 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
+
+/**
+ * NewsArticleTranslationNewsTagAdmin class.
+ * 
+ * @extends Admin
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
+ */
 class NewsArticleTranslationNewsTagAdmin extends Admin
 {
     /**

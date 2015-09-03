@@ -11,7 +11,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  * ImportProjectionCommand class.
  * 
  * @extends ContainerAwareCommand
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class ImportProjectionCommand extends ContainerAwareCommand
 {

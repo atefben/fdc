@@ -4,6 +4,13 @@ namespace FDC\CoreBundle\Util;
 
 use \DateTime;
 
+
+/**
+ * Soif trait.
+ *
+ * @author  Antoine Mineau
+ * @company Ohwee
+ */
 trait Soif
 {
     /**

@@ -46,3 +46,27 @@ For example to delete log file older than 1 day, it will be :
 	soif_log_expiration: '1 day'
 	
 Check [here](http://php.net/manual/fr/dateinterval.createfromdatestring.php) for more informations on the format used.
+
+## examples
+
+    php app/console fdc:soif:import_media 002013c8-c64e-461a-955e-be7a7a22c166 -vvv
+
+    php app/console fdc:soif:import_festival 1 -vvv
+
+    php app/console fdc:soif:import_media_stream a68f9d7f-0e1a-4d92-8adc-de1ab98d16be  -vvv
+
+    php app/console fdc:soif:import_award 800 -vvv
+ 
+	php app/console fdc:soif:import_jury 559 -vvv
+	
+	php app/console fdc:soif:import_person 305589 -vvv
+	
+	php app/console fdc:soif:import_film 2de98426-32f6-4381-abd5-3508b969ec66 -vvv
+
+	php app/console fdc:soif:import_festival_poster 72115
+	
+	php app/console fdc:soif:import_projection 724
+	
+	php app/console fdc:soif:log_delete
+	
+	php app/console fdc:soif:update

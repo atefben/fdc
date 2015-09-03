@@ -4,6 +4,14 @@ namespace FDC\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+
+/**
+ * FilmPrizeRepository class.
+ * 
+ * @extends EntityRepository
+* @author   Antoine Mineau
+ * @company Ohwee
+ */
 class FilmPrizeRepository extends EntityRepository
 {
     public function findTranslations($locale)

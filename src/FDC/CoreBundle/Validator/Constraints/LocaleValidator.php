@@ -9,7 +9,8 @@ use Symfony\Component\Validator\ConstraintValidator;
  * LocaleValidator class.
  * 
  * @extends ConstraintValidator
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class LocaleValidator extends ConstraintValidator
 {

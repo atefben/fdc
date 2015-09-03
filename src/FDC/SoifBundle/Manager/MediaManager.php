@@ -10,7 +10,8 @@ use FDC\CoreBundle\Entity\FilmMedia;
  * MediaManager class.
  * 
  * @extends CoreManager
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class MediaManager extends CoreManager
 {

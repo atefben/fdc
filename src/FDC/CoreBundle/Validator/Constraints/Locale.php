@@ -10,7 +10,8 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  *
  * @extends Constraint
- * @author Antoine Mineau <a.mineau@ohwee.fr>
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * @company Ohwee
  */
 class Locale extends Constraint
 {
