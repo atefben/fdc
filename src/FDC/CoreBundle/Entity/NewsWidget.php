@@ -39,30 +39,9 @@ abstract class NewsWidget
     /**
      * @var NewsArticle
      *
-     * @ORM\ManyToOne(targetEntity="NewsArticleTranslation", inversedBy="widgets")
+     * @ORM\ManyToOne(targetEntity="News", inversedBy="widgets")
      */
-    protected $newsArticle;
-
-    /**
-     * @var NewsAudio
-     *
-     * @ORM\ManyToOne(targetEntity="NewsAudioTranslation", inversedBy="widgets")
-     */
-    protected $newsAudio;
-    
-    /**
-     * @var NewsImage
-     *
-     * @ORM\ManyToOne(targetEntity="NewsImageTranslation", inversedBy="widgets")
-     */
-    protected $newsImage;
-
-    /**
-     * @var NewsVideo
-     *
-     * @ORM\ManyToOne(targetEntity="NewsVideoTranslation", inversedBy="widgets")
-     */
-    protected $newsVideo;
+    protected $news;
 
     /**
      * Get id
@@ -98,94 +77,25 @@ abstract class NewsWidget
     }
 
     /**
-     * Set newsArticle
+     * Set news
      *
-     * @param \FDC\CoreBundle\Entity\NewsArticleTranslation $newsArticle
-     * @return NewsWidget
+     * @param \FDC\CoreBundle\Entity\News $news
+     * @return News
      */
-    public function setNewsArticle(\FDC\CoreBundle\Entity\NewsArticleTranslation $newsArticle = null)
+    public function setNews(\FDC\CoreBundle\Entity\News $news = null)
     {
-        $this->newsArticle = $newsArticle;
+        $this->news = $news;
 
         return $this;
     }
 
     /**
-     * Get newsArticle
+     * Get news
      *
-     * @return \FDC\CoreBundle\Entity\NewsArticleTranslation 
+     * @return \FDC\CoreBundle\Entity\News 
      */
-    public function getNewsArticle()
+    public function getNews()
     {
-        return $this->newsArticle;
-    }
-
-    /**
-     * Set newsAudio
-     *
-     * @param \FDC\CoreBundle\Entity\NewsAudio $newsAudio
-     * @return NewsWidget
-     */
-    public function setNewsAudio(\FDC\CoreBundle\Entity\NewsAudio $newsAudio = null)
-    {
-        $this->newsAudio = $newsAudio;
-
-        return $this;
-    }
-
-    /**
-     * Get newsAudio
-     *
-     * @return \FDC\CoreBundle\Entity\NewsAudio 
-     */
-    public function getNewsAudio()
-    {
-        return $this->newsAudio;
-    }
-
-    /**
-     * Set newsImage
-     *
-     * @param \FDC\CoreBundle\Entity\NewsImage $newsImage
-     * @return NewsWidget
-     */
-    public function setNewsImage(\FDC\CoreBundle\Entity\NewsImage $newsImage = null)
-    {
-        $this->newsImage = $newsImage;
-
-        return $this;
-    }
-
-    /**
-     * Get newsImage
-     *
-     * @return \FDC\CoreBundle\Entity\NewsImage 
-     */
-    public function getNewsImage()
-    {
-        return $this->newsImage;
-    }
-
-    /**
-     * Set newsVideo
-     *
-     * @param \FDC\CoreBundle\Entity\NewsVideo $newsVideo
-     * @return NewsWidget
-     */
-    public function setNewsVideo(\FDC\CoreBundle\Entity\NewsVideo $newsVideo = null)
-    {
-        $this->newsVideo = $newsVideo;
-
-        return $this;
-    }
-
-    /**
-     * Get newsVideo
-     *
-     * @return \FDC\CoreBundle\Entity\NewsVideo 
-     */
-    public function getNewsVideo()
-    {
-        return $this->newsVideo;
+        return $this->news;
     }
 }

@@ -143,19 +143,6 @@ class NewsArticleAdmin extends Admin
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_introduction'
                     ),
-                    'widgets' => array(
-                        'field_type' => 'infinite_form_polycollection',
-                        'types' => array(
-                            'news_widget_text_type',
-                            'news_widget_audio_type',
-                            'news_widget_image_type',
-                            'news_widget_video_type',
-                        ),
-                        'allow_add' => true,
-                        'allow_delete' => true,
-                        'prototype' => true,
-                        'by_reference' => false,
-                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -190,6 +177,18 @@ class NewsArticleAdmin extends Admin
                         'choice_translation_domain' => 'FDCAdminBundle'
                     ),
                 )
+            ))
+            ->add('widgets', 'infinite_form_polycollection', array(
+                'types' => array(
+                    'news_widget_text_type',
+                    'news_widget_audio_type',
+                    'news_widget_image_type',
+                    'news_widget_video_type',
+                ),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'required' => false,

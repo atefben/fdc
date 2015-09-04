@@ -35,10 +35,13 @@ class NewsWidgetType extends BaseType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('_type', 'hidden', array(
-            'data'   => $this->getName(),
-            'mapped' => false
-        ));
+        $builder
+            ->add('_type', 'hidden', array(
+                'data'   => $this->getName(),
+                'mapped' => false
+            ))
+            ->add('position', 'hidden')
+        ;
     }
     
     /**

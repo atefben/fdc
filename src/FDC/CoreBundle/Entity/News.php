@@ -83,6 +83,13 @@ class News
     private $associations;
     
     /**
+     * @var NewsWidget
+     *
+     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"persist"})
+     */
+    private $widgets;
+    
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -91,6 +98,7 @@ class News
     {
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->widgets = new ArrayCollection();
     }
     
     public function __toString() {
@@ -121,6 +129,41 @@ class News
     public function getId()
     {
         return $this->id;
+    }
+
+
+    /**
+     * Add widgets
+     *
+     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
+     * @return NewsArticleTranslation
+     */
+    public function addWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
+    {
+        $widgets->setNews($this);
+        $this->widgets[] = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgets
+     *
+     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
+     */
+    public function removeWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
+    {
+        $this->widgets->removeElement($widgets);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
     }
 
     /**

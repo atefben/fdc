@@ -37,13 +37,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
     private $introduction;
     
     /**
-     * @var NewsWidget
-     *
-     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="newsArticle", cascade={"persist"})
-     */
-    private $widgets;
-    
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
@@ -84,7 +77,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
      */
     public function __construct()
     {
-        $this->widgets = new ArrayCollection();
         $this->sites = new ArrayCollection();
     }
 
@@ -201,39 +193,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * Add widgets
-     *
-     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
-     * @return NewsArticleTranslation
-     */
-    public function addWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $this->widgets[] = $widgets;
-
-        return $this;
-    }
-
-    /**
-     * Remove widgets
-     *
-     * @param \FDC\CoreBundle\Entity\NewsWidget $widgets
-     */
-    public function removeWidget(\FDC\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $this->widgets->removeElement($widgets);
-    }
-
-    /**
-     * Get widgets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getWidgets()
-    {
-        return $this->widgets;
     }
 
     /**
