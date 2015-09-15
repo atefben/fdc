@@ -2,8 +2,12 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CoreBundle\Util\Translation;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
 
@@ -16,6 +20,8 @@ use FDC\CoreBundle\Util\Soif;
  */
 class FilmProjection
 {
+    use Translatable;
+    use Translation;
     use Time;
     use Soif;
     
@@ -49,6 +55,13 @@ class FilmProjection
     private $type;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $programmationSection;
+
+    /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
@@ -68,25 +81,49 @@ class FilmProjection
      * @ORM\ManyToOne(targetEntity="FilmProjectionRoom", inversedBy="projections", cascade={"persist"})
      */
     private $room;
+    
+    /**
+     * @var FilmProjectionProgrammationFilm
+     *
+     * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
+     */
+    private $programmationFilms;
+    
+    /**
+     * @var FilmProjectionProgrammationDynamic
+     *
+     * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationDynamic", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
+     */
+    private $programmationDynamics;
+    
+    /**
+     * @var FilmProjectionProgrammationFilmList
+     *
+     * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
+     */
+    private $programmationFilmsList;
 
     /**
      * @var FilmProjectionMedia
      *
-     * @ORM\OneToMany(targetEntity="FilmProjectionMedia", mappedBy="media")
+     * @ORM\OneToMany(targetEntity="FilmProjectionMedia", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      */
     private $medias;
-    
+
     /**
-     * @ORM\ManyToMany(targetEntity="FilmFilm", mappedBy="projections")
+     * @var ArrayCollection
      */
-    private $films;
+    protected $translations;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->films = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
+        $this->programmationFilms = new ArrayCollection();
+        $this->programmationDynamics= new ArrayCollection();
+        $this->programmationFilmsList = new ArrayCollection();
     }
 
     /**
@@ -98,6 +135,21 @@ class FilmProjection
     {
         return $this->id;
     }
+
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return FilmProjection
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
     /**
      * Set startsAt
@@ -166,29 +218,6 @@ class FilmProjection
     public function getFestival()
     {
         return $this->festival;
-    }
-
-    /**
-     * Set film
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $film
-     * @return FilmProjection
-     */
-    public function setFilm(\FDC\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \FDC\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
     }
 
     /**
@@ -271,19 +300,6 @@ class FilmProjection
     }
 
     /**
-     * Set id
-     *
-     * @param integer $id
-     * @return FilmProjection
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
      * Add medias
      *
      * @param \FDC\CoreBundle\Entity\FilmProjectionMedia $medias
@@ -292,6 +308,7 @@ class FilmProjection
     public function addMedia(\FDC\CoreBundle\Entity\FilmProjectionMedia $medias)
     {
         $this->medias[] = $medias;
+        $medias->setProjection($this);
 
         return $this;
     }
@@ -314,5 +331,163 @@ class FilmProjection
     public function getMedias()
     {
         return $this->medias;
+    }
+    
+    public function hasMedia($id)
+    {
+        foreach ($this->medias as $media) {
+            if ($media->getFile() && $media->getFile()->getId() == $id) {
+                return $media;
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     * Set programmationSection
+     *
+     * @param string $programmationSection
+     * @return FilmProjection
+     */
+    public function setProgrammationSection($programmationSection)
+    {
+        $this->programmationSection = $programmationSection;
+
+        return $this;
+    }
+
+    /**
+     * Get programmationSection
+     *
+     * @return string 
+     */
+    public function getProgrammationSection()
+    {
+        return $this->programmationSection;
+    }
+
+    /**
+     * Add programmationFilms
+     *
+     * @param \FDC\CoreBundle\Entity\FilmProjectionProgrammationFilm $programmationFilms
+     * @return FilmProjection
+     */
+    public function addProgrammationFilm(\FDC\CoreBundle\Entity\FilmProjectionProgrammationFilm $programmationFilms)
+    {
+        if ($this->programmationFilms->contains($programmationFilms)) {
+            return;
+        }
+
+        $this->programmationFilms[] = $programmationFilms;
+        $programmationFilms->setProjection($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove programmationFilms
+     *
+     * @param \FDC\CoreBundle\Entity\FilmProjectionProgrammationFilm $programmationFilms
+     */
+    public function removeProgrammationFilm(\FDC\CoreBundle\Entity\FilmProjectionProgrammationFilm $programmationFilms)
+    {
+        if (!$this->programmationFilms->contains($programmationFilms)) {
+            return;
+        }
+
+        $this->programmationFilms->removeElement($programmationFilms);
+    }
+
+    /**
+     * Get programmationFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProgrammationFilms()
+    {
+        return $this->programmationFilms;
+    }
+
+    /**
+     * Add programmationDynamics
+     *
+     * @param \FDC\CoreBundle\Entity\FilmProjectionProgrammationDynamic $programmationDynamics
+     * @return FilmProjection
+     */
+    public function addProgrammationDynamic(\FDC\CoreBundle\Entity\FilmProjectionProgrammationDynamic $programmationDynamics)
+    {
+        if ($this->programmationDynamics->contains($programmationDynamics)) {
+            return;
+        }
+        
+        $this->programmationDynamics[] = $programmationDynamics;
+
+        return $this;
+    }
+
+    /**
+     * Remove programmationDynamics
+     *
+     * @param \FDC\CoreBundle\Entity\FilmProjectionProgrammationDynamic $programmationDynamics
+     */
+    public function removeProgrammationDynamic(\FDC\CoreBundle\Entity\FilmProjectionProgrammationDynamic $programmationDynamics)
+    {
+        if (!$this->programmationDynamics->contains($programmationDynamics)) {
+            return;
+        }
+        
+        $this->programmationDynamics->removeElement($programmationDynamics);
+    }
+
+    /**
+     * Get programmationDynamics
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProgrammationDynamics()
+    {
+        return $this->programmationDynamics;
+    }
+
+    /**
+     * Add programmationFilmsList
+     *
+     * @param \FDC\CoreBundle\Entity\FilmProjectionProgrammationFilmList $programmationFilmsList
+     * @return FilmProjection
+     */
+    public function addProgrammationFilmsList(\FDC\CoreBundle\Entity\FilmProjectionProgrammationFilmList $programmationFilmsList)
+    {
+        if ($this->programmationFilmsList->contains($programmationFilmsList)) {
+            return;
+        }
+        
+        $this->programmationFilmsList[] = $programmationFilmsList;
+
+        return $this;
+    }
+
+    /**
+     * Remove programmationFilmsList
+     *
+     * @param \FDC\CoreBundle\Entity\FilmProjectionProgrammationFilmList $programmationFilmsList
+     */
+    public function removeProgrammationFilmsList(\FDC\CoreBundle\Entity\FilmProjectionProgrammationFilmList $programmationFilmsList)
+    {
+        if (!$this->programmationFilmsList->contains($programmationFilmsList)) {
+            return;
+        }
+        
+        $this->programmationFilmsList->removeElement($programmationFilmsList);
+    }
+
+    /**
+     * Get programmationFilmsList
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProgrammationFilmsList()
+    {
+        return $this->programmationFilmsList;
     }
 }

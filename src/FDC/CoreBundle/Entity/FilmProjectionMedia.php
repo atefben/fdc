@@ -24,20 +24,18 @@ class FilmProjectionMedia
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-    
+
     /**
-     * @var FilmProjetionMedia
-     *
-     * @ORM\ManyToOne(targetEntity="FilmProjection", cascade={"persist"})
-     */
-    private $film;
-    
-    /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
-     *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="medias", cascade={"persist"})
      */
-    private $media;
+    private $file;
+    
+    /**
+     * @var FilmProjection
+     *
+     * @ORM\ManyToOne(targetEntity="FilmProjection", inversedBy="medias", cascade={"persist"})
+     */
+    private $projection;
     
     /**
      * @var string
@@ -216,5 +214,97 @@ class FilmProjectionMedia
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return FilmProjectionMedia
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     * @return FilmProjectionMedia
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get filename
+     *
+     * @return string 
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * Set projection
+     *
+     * @param \FDC\CoreBundle\Entity\FilmProjection $projection
+     * @return FilmProjectionMedia
+     */
+    public function setProjection(\FDC\CoreBundle\Entity\FilmProjection $projection = null)
+    {
+        $this->projection = $projection;
+
+        return $this;
+    }
+
+    /**
+     * Get projection
+     *
+     * @return \FDC\CoreBundle\Entity\FilmProjection 
+     */
+    public function getProjection()
+    {
+        return $this->projection;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return FilmProjectionMedia
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }

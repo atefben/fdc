@@ -16,16 +16,18 @@ jQuery(document).ready(function($) {
             }
         },
         stop: function (event, ui) {
-            // position
-            var inputs = $('input[name$="[position]"]');
-            inputs.each(function(idx) {
-                $(this).val(idx + 1);
-            });
             // ckeditor
             var textareaId = ui.item.find('textarea').attr('id');
             if (typeof textareaId != 'undefined') {
                 CKEDITOR.replace( textareaId );
             }
         }
+    });
+    
+    $('form[action*="news"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
     });
 });

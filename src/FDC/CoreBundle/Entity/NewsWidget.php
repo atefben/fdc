@@ -20,6 +20,8 @@ use FDC\CoreBundle\Util\Time;
  */
 abstract class NewsWidget
 {
+    use Time;
+
     /**
      * @var integer
      *

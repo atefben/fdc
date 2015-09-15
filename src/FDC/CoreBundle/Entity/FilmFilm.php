@@ -988,29 +988,6 @@ class FilmFilm implements FilmFilmInterface
     }
 
     /**
-     * Set category
-     *
-     * @param \FDC\CoreBundle\Entity\FilmCategory $category
-     * @return FilmFilm
-     */
-    public function setCategory(\FDC\CoreBundle\Entity\FilmCategory $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \FDC\CoreBundle\Entity\FilmCategory 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
      * Add generics
      *
      * @param \FDC\CoreBundle\Entity\FilmGeneric $generics

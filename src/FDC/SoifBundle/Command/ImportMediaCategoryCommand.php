@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportJuryCommand class.
+ * ImportMediaCategoryCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportJuryCommand extends ContainerAwareCommand
+class ImportMediaCategoryCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportJuryCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_jury')
-            ->setDescription('Imports the jury using the soif id')
+            ->setName('fdc:soif:import_media_category')
+            ->setDescription('Imports the media category using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,7 +42,7 @@ class ImportJuryCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.jury_manager');
+        $manager = $this->getContainer()->get('fdc.soif.media_category_manager');
         $manager->updateEntity($id);
     }
 

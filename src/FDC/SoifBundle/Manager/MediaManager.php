@@ -30,6 +30,14 @@ class MediaManager extends CoreManager
      * @access private
      */
     private $mediaStreamManager;
+    
+    /**
+     * mediaCategoryManager
+     * 
+     * @var mixed
+     * @access private
+     */
+    private $mediaCategoryManager;
 
     /**
      * __construct function.
@@ -37,10 +45,11 @@ class MediaManager extends CoreManager
      * @access public
      * @return void
      */
-    public function __construct($festivalManager, $mediaStreamManager)
+    public function __construct($festivalManager, $mediaStreamManager, $mediaCategoryManager)
     {
         $this->festivalManager = $festivalManager;
         $this->mediaStreamManager = $mediaStreamManager;
+        $this->mediaCategoryManager = $mediaCategoryManager;
         $this->repository = 'FDCCoreBundle:FilmMedia';
         $this->wsMethod = 'GetElementMultimedia';
         $this->wsResultKey = 'GetElementMultimediaResult';
@@ -64,9 +73,9 @@ class MediaManager extends CoreManager
             ),
             array(
                 'repository' => 'FDCCoreBundle:FilmMediaCategory',
-                'soapKey' => 'IdCategorie',
+                'soapKey' => 'IdType',
                 'setter' => 'setCategory',
-                'manager' => null
+                'manager' => $this->mediaCategoryManager
             )
         );
     }
@@ -86,7 +95,6 @@ class MediaManager extends CoreManager
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
-        var_dump($resultObject);
         
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmMedia();

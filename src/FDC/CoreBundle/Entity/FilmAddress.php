@@ -2,9 +2,12 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CoreBundle\Util\Translation;
 use FDC\CoreBundle\Util\Time;
 
 /**
@@ -16,6 +19,8 @@ use FDC\CoreBundle\Util\Time;
  */
 class FilmAddress
 {
+    use Translatable;
+    use Translation;
     use Time;
 
     /**
@@ -26,7 +31,6 @@ class FilmAddress
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
 
     /**
      * @var string
@@ -136,6 +140,12 @@ class FilmAddress
      * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="productionAddress")
      */
     private $productionFilms;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
     /**
      * Constructor
      */
@@ -150,6 +160,7 @@ class FilmAddress
         $this->distributionFilms = new ArrayCollection();
         $this->productionFilms = new ArrayCollection();
         $this->contacts = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**

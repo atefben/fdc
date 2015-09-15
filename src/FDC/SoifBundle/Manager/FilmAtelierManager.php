@@ -11,6 +11,7 @@ use FDC\CoreBundle\Entity\FilmAtelierPerson;
 use FDC\CoreBundle\Entity\FilmAtelierTranslation;
 use FDC\CoreBundle\Entity\FilmAtelierProductionCompany;
 use FDC\CoreBundle\Entity\FilmAtelierProductionCompanyAddress;
+use FDC\CoreBundle\Entity\FilmAtelierProductionCompanyAddressTranslation;
 
 /**
  * FilmAtelierManager class.
@@ -190,21 +191,43 @@ class FilmAtelierManager extends CoreManager
         } else {
             $filmAtelierProductionCompanyAddress->setCountry($country);
         }
-        // @TODO: EtatsTraductions
+        
+        // set state translations
+        $translations = $resultObject->AdresseSocieteProduction->EtatsTraductions;
+        foreach ($translations as $translation) {
+            if (!isset($localesMapper[$translation->CodeLangue])) {
+                $this->logger->warning(__METHOD__. " the locales mapper {$translation->CodeLangue} doesn't exist");
+                continue;
+            }
+            
+            $entityTranslation = $filmAtelierProductionCompanyAddress->findTranslationByLocale($localesMapper[$role->CodeLangue]);
+            $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmAtelierProductionCompanyAddressTranslation();
+            $entityTranslation->setState($translation->Nom);
+            $entityTranslation->setLocale($localesMapper[$translation->CodeLangue]);
+            
+            if ($entityTranslation->getId() === null) {
+                $filmAtelierProductionCompanyAddress->addTranslation($entityTranslation);
+            }
+        }
+        
+        
         $filmAtelierProductionCompany->setAddress($filmAtelierProductionCompanyAddress);
         $entity->setProductionCompany($filmAtelierProductionCompany);
         
         
         // set languages
-        foreach ($resultObject->LanguesTournage as $language) {
-            $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $language));
-            if ($country === null) {
-                $this->logger->error(__METHOD__. " {$id} Country with iso {$language} not found");
-            } else {
-                $filmAtelierLanguage = new FilmAtelierLanguage();
-                $filmAtelierLanguage->setFilm($entity);
-                $filmAtelierLanguage->setCountry($country);
-                
+        foreach ($resultObject->LanguesTournage as $languages) {
+            foreach ($languages as $language) {
+                $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $language));
+                if ($country === null) {
+                    $this->logger->error(__METHOD__. " {$id} Country with iso {$language} not found");
+                    continue;
+                } else {
+                    $filmAtelierLanguage = new FilmAtelierLanguage();
+                    $filmAtelierLanguage->setFilm($entity);
+                    $filmAtelierLanguage->setCountry($country);
+                    
+                }
                 if (!$entity->getLanguages()->contains($filmAtelierLanguage)) {
                     $entity->addLanguage($filmAtelierLanguage);
                 }

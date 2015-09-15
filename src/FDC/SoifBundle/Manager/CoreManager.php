@@ -426,8 +426,7 @@ abstract class CoreManager
                         $this->logger->warning(__METHOD__. " the locales mapper {$iso} doesn't exist");
                         continue;
                     }
-                    var_dump(isset($entityTranslation[$iso]));
-                    var_dump($iso);
+
                     if (!isset($entityTranslation[$iso])) {
                         $entityTranslation[$iso] = $entity->findTranslationByLocale($localesMapper[$iso]);
                     }
@@ -442,6 +441,14 @@ abstract class CoreManager
         }
     }
     
+    /**
+     * setEntityRelatedTranslations function.
+     * 
+     * @access public
+     * @param mixed $result
+     * @param mixed $entity
+     * @return void
+     */
     public function setEntityRelatedTranslations($result, $entity)
     {
         $localesMapper = $this->getLocalesMapper();
@@ -552,9 +559,54 @@ abstract class CoreManager
         $this->logger->info($msg);
     }
     
+    /**
+     * throwException function.
+     * 
+     * @access public
+     * @param mixed $msg
+     * @param mixed $exception
+     * @return void
+     */
     public function throwException($msg, $exception)
     {
         $this->logger->critical($msg);
         throw new $exception;
+    }
+    
+    /**
+     * removeOldRelations function.
+     * 
+     * @access public
+     * @param mixed $collectionOld
+     * @param mixed $collectionNew
+     * @param mixed $entity
+     * @param mixed $remover
+     * @return void
+     */
+    public function removeOldRelations($collectionOld, $collectionNew, $entity, $remover)
+    {
+        foreach ($collectionOld as $obj) {
+            if (!$collectionNew->contains($obj)) {
+                $entity->{$remover}($obj);
+            }
+        }
+    }
+    
+    /**
+     * objectToArray function.
+     *
+     * SOIF / soapClient returns an object instead of an array with one element, this method fixes this issue
+     * 
+     * @access public
+     * @param mixed $object
+     * @return void
+     */
+    public function objectToArray($object)
+    {
+        if (gettype($object) == 'object') {
+            return array($object);
+        }
+        
+        return $object;
     }
 }

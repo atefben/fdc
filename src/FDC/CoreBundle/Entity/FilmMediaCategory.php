@@ -2,11 +2,13 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
-
-use Symfony\Component\Validator\Constraints\DateTime;
+use FDC\CoreBundle\Util\Translation;
 
 /**
  * FilmMediaCategory
@@ -18,6 +20,8 @@ use Symfony\Component\Validator\Constraints\DateTime;
 class FilmMediaCategory
 {
     use Time;
+    use Translatable;
+    use Translation;
 
     /**
      * @var integer
@@ -26,13 +30,6 @@ class FilmMediaCategory
      * @ORM\Id
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50)
-     */
-    private $name;
     
     /**
      * @var Film
@@ -42,10 +39,16 @@ class FilmMediaCategory
     private $medias;
 
     /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -69,52 +72,6 @@ class FilmMediaCategory
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return FilmMediaCategory
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set nameEn
-     *
-     * @param string $nameEn
-     * @return FilmMediaCategory
-     */
-    public function setNameEn($nameEn)
-    {
-        $this->nameEn = $nameEn;
-
-        return $this;
-    }
-
-    /**
-     * Get nameEn
-     *
-     * @return string 
-     */
-    public function getNameEn()
-    {
-        return $this->nameEn;
     }
 
     /**

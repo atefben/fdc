@@ -8,3 +8,8 @@ services:
         class: FDC\CoreBundle\Twig\Extension\NewsInstanceOfExtension
         tags:
             - { name: twig.extension }
+
+    fdc.twig.news_widget_instance_of_extension:
+        class: FDC\CoreBundle\Twig\Extension\NewsWidgetInstanceOfExtension
+        tags:
+            - { name: twig.extension }

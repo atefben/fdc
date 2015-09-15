@@ -32,16 +32,5 @@ class MediaImage extends Media
     {
         $this->translations = new ArrayCollection();
     }
-    
-    public function __toString()
-    {
-        $translationFr = $this->findTranslationByLocale('fr');
-     //   var_dump($translationFr);
 
-     /*   if ($translationFr !== null && $translationFr->getAlt() != null) {
-            return $translationFr->getAlt();
-        }*/
-        return '1';
-        //return strval($this->getId());
-    }
 }

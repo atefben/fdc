@@ -36,9 +36,20 @@ class NewsWidgetTextType extends NewsWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('content', 'ckeditor', array(
-            'attr' => array(
-                'class' => 'ckeditor'
+        $builder->add('translations', 'a2lix_translations', array(
+            'label' => false,
+            'translation_domain' => 'FDCAdminBundle',
+            'required_locales' => array(),
+            'fields' => array(
+                'content' => array(
+                    'field_type' => 'ckeditor'
+                ),
+                'createdAt' => array(
+                    'display' => false
+                ),
+                'updatedAt' => array(
+                    'display' => false
+                ),
             )
         ));
     }

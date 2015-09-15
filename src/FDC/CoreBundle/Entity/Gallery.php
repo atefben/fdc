@@ -39,9 +39,9 @@ class Gallery
     /**
      * @var Media
      *
-     * @ORM\manyToOne(targetEntity="NewsWidgetImage", inversedBy="gallery")
+     * @ORM\OneToMany(targetEntity="NewsWidgetImage", mappedBy="gallery")
      */
-    private $widget;
+    private $newsWidgetImages;
 
     /**
      * Constructor
@@ -49,6 +49,15 @@ class Gallery
     public function __construct()
     {
         $this->medias = new ArrayCollection();
+    }
+    
+    public function __toString()
+    {
+        if ($this->getId()) {
+            return strval($this->getId());
+        }
+        
+        return 'New Gallery';
     }
 
     /**
@@ -93,5 +102,38 @@ class Gallery
     public function getMedias()
     {
         return $this->medias;
+    }
+
+    /**
+     * Add newsWidgetImages
+     *
+     * @param \FDC\CoreBundle\Entity\NewsWidgetImage $newsWidgetImages
+     * @return Gallery
+     */
+    public function addNewsWidgetImage(\FDC\CoreBundle\Entity\NewsWidgetImage $newsWidgetImages)
+    {
+        $this->newsWidgetImages[] = $newsWidgetImages;
+
+        return $this;
+    }
+
+    /**
+     * Remove newsWidgetImages
+     *
+     * @param \FDC\CoreBundle\Entity\NewsWidgetImage $newsWidgetImages
+     */
+    public function removeNewsWidgetImage(\FDC\CoreBundle\Entity\NewsWidgetImage $newsWidgetImages)
+    {
+        $this->newsWidgetImages->removeElement($newsWidgetImages);
+    }
+
+    /**
+     * Get newsWidgetImages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNewsWidgetImages()
+    {
+        return $this->newsWidgetImages;
     }
 }

@@ -60,7 +60,12 @@ services:
     fdc.soif.media_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\MediaManager
-        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.media_stream_manager']
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.media_stream_manager', '@fdc.soif.media_category_manager']
+
+    fdc.soif.media_category_manager:
+        parent: fdc.soif.core_manager
+        class: FDC\SoifBundle\Manager\MediaCategoryManager
+        arguments: []
 
     fdc.soif.media_stream_manager:
         parent: fdc.soif.core_manager
@@ -83,4 +88,4 @@ services:
     fdc.soif.projection_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\ProjectionManager
-        arguments: ['@fdc.soif.festival_manager']
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.film_manager', '@fdc.soif.media_stream_manager']

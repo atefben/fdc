@@ -256,7 +256,15 @@
                             </h4>
                         </div>
                         <div class="box-body">
-                            {{ form_widget(form.parent.children.widgets) }}
+                            {% for widget in form.parent.children.widgets.children %}
+                            <div class="fdc-widget">
+                                {% if widget.vars.value is news_widget_text %}
+                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                {% else %}
+                                    {{ form_widget(widget) }}
+                                {% endif %}
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
