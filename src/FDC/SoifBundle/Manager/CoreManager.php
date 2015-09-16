@@ -208,7 +208,7 @@ abstract class CoreManager
     {
         $localesMapper = array(
             'ARE' => 'ar',
-            'CHN' => 'cn',
+            'CHI' => 'cn',
             'ESP' => 'es',
             'FRA' => 'fr',
             'GBR' => 'en',
