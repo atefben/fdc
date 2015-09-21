@@ -84,7 +84,7 @@ Check [here](http://php.net/manual/fr/dateinterval.createfromdatestring.php) for
  
 	php app/console fdc:soif:get_jury 559 -vvv
 	
-	php app/console fdc:soif:get_person 305589 -vvv
+	php app/console fdc:soif:get_person 305588 -vvv
 	
 	php app/console fdc:soif:get_film 2de98426-32f6-4381-abd5-3508b969ec66 -vvv
 
