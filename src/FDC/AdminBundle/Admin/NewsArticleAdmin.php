@@ -74,7 +74,6 @@ class NewsArticleAdmin extends Admin
             ))
             ->add('theme')
             ->add('publishedAt', 'doctrine_orm_datetime', array('field_type' => 'sonata_type_datetime_picker'))
-            ->add('publishEndedAt', 'doctrine_orm_datetime', array('field_type' => 'sonata_type_datetime_picker'))
             ->add('status', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {

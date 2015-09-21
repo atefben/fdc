@@ -168,6 +168,10 @@ class FilmProjectionMedia
      */
     public function addFilm(\FDC\CoreBundle\Entity\FilmFilm $films)
     {
+        if ($this->films->contains($films)) {
+            return;
+        }
+        
         $this->films[] = $films;
 
         return $this;
@@ -180,6 +184,10 @@ class FilmProjectionMedia
      */
     public function removeFilm(\FDC\CoreBundle\Entity\FilmFilm $films)
     {
+        if (!$this->films->contains($films)) {
+            return;
+        }
+
         $this->films->removeElement($films);
     }
 

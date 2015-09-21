@@ -995,6 +995,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addGeneric(\FDC\CoreBundle\Entity\FilmGeneric $generics)
     {
+        if ($this->generics->contains($generics)) {
+            return;
+        }
+        
         $this->generics[] = $generics;
 
         return $this;
@@ -1007,6 +1011,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeGeneric(\FDC\CoreBundle\Entity\FilmGeneric $generics)
     {
+        if (!$this->generics->contains($generics)) {
+            return;
+        }
+        
         $this->generics->removeElement($generics);
     }
 
@@ -1028,6 +1036,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
+        if ($this->awards->contains($awards)) {
+            return;
+        }
+        
         $this->awards[] = $awards;
 
         return $this;
@@ -1040,6 +1052,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
+        if (!$this->awards->contains($awards)) {
+            return;
+        }
+        
         $this->awards->removeElement($awards);
     }
 
@@ -1061,6 +1077,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addMinorProduction(\FDC\CoreBundle\Entity\FilmMinorProduction $minorProductions)
     {
+        if ($this->minorProductions->contains($minorProductions)) {
+            return;
+        }
+        
         $this->minorProductions[] = $minorProductions;
 
         return $this;
@@ -1073,6 +1093,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeMinorProduction(\FDC\CoreBundle\Entity\FilmMinorProduction $minorProductions)
     {
+        if (!$this->minorProductions->contains($minorProductions)) {
+            return;
+        }
+        
         $this->minorProductions->removeElement($minorProductions);
     }
 
@@ -1094,6 +1118,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addCountry(\FDC\CoreBundle\Entity\FilmFilmCountry $countries)
     {
+        if ($this->countries->contains($countries)) {
+            return;
+        }
+        
         $this->countries[] = $countries;
 
         return $this;
@@ -1106,6 +1134,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeCountry(\FDC\CoreBundle\Entity\FilmFilmCountry $countries)
     {
+        if (!$this->countries->contains($countries)) {
+            return;
+        }
+
         $this->countries->removeElement($countries);
     }
 
@@ -1127,6 +1159,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addSchoolAddress(\FDC\CoreBundle\Entity\FilmAddressSchool $schoolAddresses)
     {
+        if ($this->schoolAddresses->contains($schoolAddresses)) {
+            return;
+        }
+        
         $this->schoolAddresses[] = $schoolAddresses;
 
         return $this;
@@ -1139,6 +1175,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeSchoolAddress(\FDC\CoreBundle\Entity\FilmAddressSchool $schoolAddresses)
     {
+        if (!$this->schoolAddresses->contains($schoolAddresses)) {
+            return;
+        }
+        
         $this->schoolAddresses->removeElement($schoolAddresses);
     }
 
@@ -1160,6 +1200,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addLanguage(\FDC\CoreBundle\Entity\FilmLanguage $languages)
     {
+        if ($this->languages->contains($languages)) {
+            return;
+        }
+        
         $this->languages[] = $languages;
 
         return $this;
@@ -1172,6 +1216,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeLanguage(\FDC\CoreBundle\Entity\FilmLanguage $languages)
     {
+        if (!$this->languages->contains($languages)) {
+            return;
+        }
+        
         $this->languages->removeElement($languages);
     }
 
@@ -1193,6 +1241,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addProjection(\FDC\CoreBundle\Entity\FilmProjection $projections)
     {
+        if ($this->projections->contains($projections)) {
+            return;
+        }
+        
         $this->projections[] = $projections;
 
         return $this;
@@ -1205,6 +1257,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeProjection(\FDC\CoreBundle\Entity\FilmProjection $projections)
     {
+        if (!$this->projections->contains($projections)) {
+            return;
+        }
+        
         $this->projections->removeElement($projections);
     }
 
@@ -1226,6 +1282,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addMedia(\FDC\CoreBundle\Entity\FilmFilmMedia $medias)
     {
+        if ($this->medias->contains($medias)) {
+            return;
+        }
+        
         $this->medias[] = $medias;
 
         return $this;
@@ -1238,6 +1298,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeMedia(\FDC\CoreBundle\Entity\FilmFilmMedia $medias)
     {
+        if (!$this->medias->contains($medias)) {
+            return;
+        }
+        
         $this->medias->removeElement($medias);
     }
 
@@ -1431,6 +1495,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addPerson(\FDC\CoreBundle\Entity\FilmFilmPerson $persons)
     {
+        if ($this->persons->contains($persons)) {
+            return;
+        }
+        
         $persons->setFilm($this);
         $this->persons[] = $persons;
 
@@ -1444,6 +1512,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removePerson(\FDC\CoreBundle\Entity\FilmFilmPerson $persons)
     {
+        if (!$this->persons->contains($persons)) {
+            return;
+        }
+        
         $this->persons->removeElement($persons);
     }
 
@@ -1465,6 +1537,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function addContact(\FDC\CoreBundle\Entity\FilmContact $contacts)
     {
+        if ($this->contacts->contains($contacts)) {
+            return;
+        }
+        
         $this->contacts[] = $contacts;
 
         return $this;
@@ -1477,6 +1553,10 @@ class FilmFilm implements FilmFilmInterface
      */
     public function removeContact(\FDC\CoreBundle\Entity\FilmContact $contacts)
     {
+        if (!$this->contacts->contains($contacts)) {
+            return;
+        }
+        
         $this->contacts->removeElement($contacts);
     }
 

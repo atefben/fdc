@@ -2,7 +2,10 @@
 
 namespace FDC\SoifBundle\Manager;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use FDC\CoreBundle\Entity\FilmAward;
+use FDC\CoreBundle\Entity\FilmAwardAssociation;
 
 /**
  * AwardManager class.
@@ -28,6 +31,22 @@ class AwardManager extends CoreManager
      * @access private
      */
     private $prizeManager;
+
+    /**
+     * filmManager
+     * 
+     * @var mixed
+     * @access private
+     */
+    private $filmManager;
+
+    /**
+     * personManager
+     * 
+     * @var mixed
+     * @access private
+     */
+    private $personManager;
     
     /**
      * __construct function.
@@ -35,13 +54,13 @@ class AwardManager extends CoreManager
      * @access public
      * @return void
      */
-    public function __construct($festivalManager, $prizeManager)
+    public function __construct($festivalManager, $prizeManager, $filmManager, $personManager)
     {
         $this->festivalManager = $festivalManager;
         $this->prizeManager = $prizeManager;
+        $this->filmManager = $filmManager;
+        $this->personManager = $personManager;
         $this->repository = 'FDCCoreBundle:FilmAward';
-        $this->wsMethod = 'GetAward';
-        $this->wsResultKey = 'GetAwardResult';
         $this->wsResultObjectKey = 'RecompenseDto';
         $this->wsParameterKey = 'idAward';
         $this->entityIdKey = 'Id';
@@ -71,14 +90,17 @@ class AwardManager extends CoreManager
     }
     
     /**
-     * updateEntity function.
+     * getById function.
      * 
      * @access public
      * @param mixed $id
      * @return void
      */
-    public function updateEntity($id)
+    public function getById($id)
     {
+        $this->wsMethod = 'GetAward';
+        $this->wsResultKey = 'GetAwardResult';
+
         // start timer
         $this->start(__METHOD__);
 
@@ -86,9 +108,102 @@ class AwardManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
+        // set entity
+        $entity = $this->set($resultObject, $result);
+        
+        // save entity
+        $this->update($entity);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+    
+    /**
+     * getModified function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getModified($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedAwards';
+        $this->wsResultKey = 'GetModifiedAwardsResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        // verify if we have results
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
+            return;
+        }
+        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $entities = array();
+        
+        // set entities
+        foreach ($resultObjects as $resultObject) {
+            $entities[] = $this->set($resultObject, $result);
+        }
+        
+        // save entities
+        $this->updates($entities);
+        
+        
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+    
+    /**
+     * getRemoved function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getRemoved($from, $to)
+    {
+        $this->wsMethod = 'GetRemovedAwards';
+        $this->wsResultKey = 'GetRemovedAwardsResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        
+        // loop twice because results are returned in an array (int, long, etc...)
+        foreach ($resultObjects as $objs) {
+            foreach ($objs as $id) {
+                $this->remove($id);
+            }
+        }
+        
+        // save entities
+        $this->em->flush();
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * set function.
+     * 
+     * @access private
+     * @param mixed $object
+     * @param mixed $result
+     * @return void
+     */
+    private function set($resultObject, $result)
+    {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmAward();
-        $persist = ($entity->getId() === null) ? true : false;
         
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
@@ -99,48 +214,37 @@ class AwardManager extends CoreManager
         // set related entity
         $this->setEntityRelated($resultObject, $entity);
         
-        // update entity
-        $this->update($entity, $persist);
-        
-        // end timer
-        $this->end(__METHOD__);
-    }
-    
-    public function getModified($from, $to)
-    {
-        $this->wsMethod = 'GetModifiedAwards';
-        $this->wsResultKey = 'GetModifiedAwardsResult';
-         
-        // start timer
-        $this->start(__METHOD__);
-
-        // call the ws
-        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to));
-        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
-        $entities = array();
-        $persists = array();
-        
-        foreach ($resultObject as $object) {
-            // create / get entity
-            $entity = ($this->findOneById(array('id' => $object->{$this->entityIdKey}))) ?: new FilmAward();
-            $persists[] = ($entity->getId() === null) ? true : false;
+        // set associations
+        if (property_exists($resultObject, 'ListeFilmPersonne') && property_exists($resultObject->ListeFilmPersonne, 'RecompenseFilmPersonneDto')) {
+            $collectionNew = new ArrayCollection();
+            $resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto = $this->objectToArray($resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto);
+            foreach ($resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto as $obj) {
+                $entityRelated = $this->em->getRepository('FDCCoreBundle:FilmAwardAssociation')->findOneBy(array(
+                    'film' => $obj->Film,
+                    'person' => $obj->Persons,
+                    'position' => $obj->Ordre
+                ));
+                $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmAwardAssociation();
+                $entityRelated->setPosition($obj->Ordre);
+                $film = $this->em->getRepository('FDCCoreBundle:FilmFilm')->findOneById(array('id' => $obj->Film));
+                if ($film === null) {
+                    $film = $this->filmManager->getById($obj->Film);
+                }
+                $entityRelated->setFilm($film);
+                $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById(array('id' => $obj->Persons));
+                if ($person === null) {
+                    $person = $this->personManager->getById($obj->Persons);
+                }
+                $entityRelated->setPerson($person);
+                $entity->addAssociation($entityRelated);
+                // save in array all the entities
+                $collectionNew->add($entityRelated);
+            }
             
-            // set soif last update time
-            $this->setSoifUpdatedAt($result, $entity);
-    
-            // set entity properties
-            $this->setEntityProperties($object, $entity);
-            
-            // set related entity
-            $this->setEntityRelated($object, $entity);
-            
-            $entities[] = $entity;
+            // remove old relations
+            $this->removeOldRelations($entity->getAssociations(), $collectionNew, $entity, 'removeAssociation');
         }
-        
-        // update entity
-        $this->updates($entities, $persists);
-        
-        // end timer
-        $this->end(__METHOD__);
+
+        return $entity;
     }
 }

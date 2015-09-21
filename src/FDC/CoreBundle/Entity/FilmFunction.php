@@ -95,6 +95,10 @@ class FilmFunction
      */
     public function addPerson(\FDC\CoreBundle\Entity\FilmPerson $persons)
     {
+        if ($this->persons->contains($persons)) {
+            return;
+        }
+        
         $this->persons[] = $persons;
 
         return $this;
@@ -107,6 +111,10 @@ class FilmFunction
      */
     public function removePerson(\FDC\CoreBundle\Entity\FilmPerson $persons)
     {
+        if (!$this->persons->contains($persons)) {
+            return;
+        }
+        
         $this->persons->removeElement($persons);
     }
 
@@ -128,6 +136,10 @@ class FilmFunction
      */
     public function addFilmPerson(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $filmPersons)
     {
+        if ($this->filmPersons->contains($filmPersons)) {
+            return;
+        }
+        
         $this->filmPersons[] = $filmPersons;
 
         return $this;
@@ -140,6 +152,10 @@ class FilmFunction
      */
     public function removeFilmPerson(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $filmPersons)
     {
+        if (!$this->filmPersons->contains($filmPersons)) {
+            return;
+        }
+        
         $this->filmPersons->removeElement($filmPersons);
     }
 
@@ -161,6 +177,10 @@ class FilmFunction
      */
     public function addFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
     {
+        if ($this->filmAtelierGenerics->contains($filmAtelierGenerics)) {
+            return;
+        }
+        
         $this->filmAtelierGenerics[] = $filmAtelierGenerics;
 
         return $this;
@@ -173,6 +193,10 @@ class FilmFunction
      */
     public function removeFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
     {
+        if (!$this->filmAtelierGenerics->contains($filmAtelierGenerics)) {
+            return;
+        }
+        
         $this->filmAtelierGenerics->removeElement($filmAtelierGenerics);
     }
 

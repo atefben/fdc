@@ -102,6 +102,10 @@ class FilmSelection
      */
     public function addSection(\FDC\CoreBundle\Entity\FilmSelectionSection $sections)
     {
+        if ($this->sections->contains($sections)) {
+            return;
+        }
+        
         $sections->setSelection($this);
         $this->sections[] = $sections;
 
@@ -115,6 +119,10 @@ class FilmSelection
      */
     public function removeSection(\FDC\CoreBundle\Entity\FilmSelectionSection $sections)
     {
+        if (!$this->sections->contains($sections)) {
+            return;
+        }
+        
         $this->sections->removeElement($sections);
     }
 
@@ -136,6 +144,10 @@ class FilmSelection
      */
     public function addSubsection(\FDC\CoreBundle\Entity\FilmSelectionSubsection $subsections)
     {
+        if ($this->subsections->contains($subsections)) {
+            return;
+        }
+        
         $subsections->setSelection($this);
         $this->subsections[] = $subsections;
 
@@ -149,6 +161,10 @@ class FilmSelection
      */
     public function removeSubsection(\FDC\CoreBundle\Entity\FilmSelectionSubsection $subsections)
     {
+        if (!$this->subsections->contains($subsections)) {
+            return;
+        }
+        
         $this->subsections->removeElement($subsections);
     }
 

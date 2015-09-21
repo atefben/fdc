@@ -114,6 +114,10 @@ class FilmFestival
      */
     public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
+        if ($this->medias->contains($medias)) {
+            return;
+        }
+
         $this->medias[] = $medias;
 
         return $this;
@@ -126,6 +130,10 @@ class FilmFestival
      */
     public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
+        if (!$this->medias->contains($medias)) {
+            return;
+        }
+        
         $this->medias->removeElement($medias);
     }
 
@@ -147,6 +155,10 @@ class FilmFestival
      */
     public function addAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
+        if ($this->awards->contains($awards)) {
+            return;
+        }
+        
         $this->awards[] = $awards;
 
         return $this;
@@ -159,6 +171,10 @@ class FilmFestival
      */
     public function removeAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
+        if (!$this->awards->contains($awards)) {
+            return;
+        }
+        
         $this->awards->removeElement($awards);
     }
 
@@ -180,6 +196,10 @@ class FilmFestival
      */
     public function addJury(\FDC\CoreBundle\Entity\FilmJury $juries)
     {
+        if ($this->juries->contains($juries)) {
+            return;
+        }
+        
         $this->juries[] = $juries;
 
         return $this;
@@ -192,6 +212,10 @@ class FilmFestival
      */
     public function removeJury(\FDC\CoreBundle\Entity\FilmJury $juries)
     {
+        if (!$this->juries->contains($juries)) {
+            return;
+        }
+        
         $this->juries->removeElement($juries);
     }
 

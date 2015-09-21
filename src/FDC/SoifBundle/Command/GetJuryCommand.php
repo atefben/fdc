@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportFestivalCommand class.
+ * GetJuryCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportFestivalCommand extends ContainerAwareCommand
+class GetJuryCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportFestivalCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_festival')
-            ->setDescription('Imports the festival using the soif id')
+            ->setName('fdc:soif:get_jury')
+            ->setDescription('Get the jury using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,8 +42,8 @@ class ImportFestivalCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.festival_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.jury_manager');
+        $manager->getById($id);
     }
 
 }

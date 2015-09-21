@@ -70,8 +70,6 @@ class FilmManager extends CoreManager
         // soif parameters
         $this->repository = 'FDCCoreBundle:FilmFilm';
         $this->wsParameterKey = 'idFilm';
-        $this->wsMethod = 'GetMovie';
-        $this->wsResultKey = 'GetMovieResult';
         $this->wsResultObjectKey = 'FilmDto';
         $this->entityIdKey = 'Id';
         
@@ -112,14 +110,17 @@ class FilmManager extends CoreManager
     }
     
     /**
-     * updateEntity function.
+     * getById function.
      * 
      * @access public
      * @param mixed $id
      * @return void
      */
-    public function updateEntity($id)
+    public function getById($id)
     {
+        $this->wsMethod = 'GetMovie';
+        $this->wsResultKey = 'GetMovieResult';
+
         $localesMapper = $this->getLocalesMapper();
         
         // start timer
@@ -129,9 +130,93 @@ class FilmManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
 
+        // update entity
+        $entity = $this->set($resultObject, $result);
+        
+        // save entity
+        $this->update($entity);
+        
+        // end timer
+        $this->end(__METHOD__);
+        
+        return $entity;
+    }
+    
+    /**
+     * getByTimestamp function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getByTimestamp($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedMovies';
+        $this->wsResultKey = 'GetModifiedMoviesResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        // verify if we have results
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
+            return;
+        }
+        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $entities = array();
+        
+        // set entities
+        foreach ($resultObjects as $resultObject) {
+            $entities[] = $this->set($resultObject, $result);
+        }
+        
+        // save entities
+        $this->updates($entities);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * getRemoved function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getRemoved($from, $to)
+    {
+        $this->wsMethod = 'GetRemovedMovies';
+        $this->wsResultKey = 'GetRemovedMoviesResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        // verify if we have results
+        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        
+        // set entities
+        foreach ($resultObjects as $resultObject) {
+            $this->remove($resultObject);
+        }
+        
+        // save entities
+        $this->em->flush();
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+    
+    private function set($resultObject, $result)
+    {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFilm();
-        $persist = ($entity->getId() === null) ? true : false;
 
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
@@ -144,7 +229,7 @@ class FilmManager extends CoreManager
         
         // set film production country
         if (!property_exists($resultObject, 'FilmPaysProduction') || !property_exists($resultObject->FilmPaysProduction, 'PaysProductionDto')) {
-            $this->logger->warning(__METHOD__. " {$id} FilmPaysProduction not found");
+            $this->logger->warning(__METHOD__. "FilmPaysProduction not found");
         } else {
             // create an array when we get an object to standardize the code
             if (gettype($resultObject->FilmPaysProduction->PaysProductionDto) == 'object') {
@@ -156,7 +241,7 @@ class FilmManager extends CoreManager
                 // check if country already exists if not call the ws
                 $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $filmProdCountry->CodeIso));
                 if ($country === null) {
-                    $this->logger->warning(__METHOD__. " {$id} Country with iso {$filmProdCountry->CodeIso} not found");
+                    $this->logger->warning(__METHOD__. "Country with iso {$filmProdCountry->CodeIso} not found");
                     continue;
                 }
                 
@@ -168,7 +253,6 @@ class FilmManager extends CoreManager
         
         // set film elements multimedia
         if (property_exists($resultObject, 'FilmElementsMultimedias') && property_exists($resultObject->FilmElementsMultimedias, 'ElementMultimediaRefDto')) {
-            $filmFilmMedias = $entity->getMedias();
             foreach ($resultObject->FilmElementsMultimedias->ElementMultimediaRefDto as $filmFilmMedia) {
                 $entityRelated = $entity->hasMedia($filmFilmMedia->Id);
                 $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmFilmMedia();
@@ -177,7 +261,7 @@ class FilmManager extends CoreManager
                 $entityRelated->setPosition($filmFilmMedia->Ordre);
                 
                 // get the media
-                $filmMedia = $this->mediaManager->updateEntity($filmFilmMedia->Id);
+                $filmMedia = $this->mediaManager->getById($filmFilmMedia->Id);
                 $entityRelated->setMedia($filmMedia);
                 $entityRelated->setFilm($entity);
                 
@@ -235,7 +319,7 @@ class FilmManager extends CoreManager
                 $filmSelection->addSection($filmSelectionSection);
     
                 $festival = $this->em->getRepository('FDCCoreBundle:FilmFestival')->findOneBy(array('id' => $object->SectionSelection->IdFestival));
-                $festival = ($festival !== null) ? $festival : $this->festivalManager->updateEntity($object->SectionSelection->IdFestival);
+                $festival = ($festival !== null) ? $festival : $this->festivalManager->getById($object->SectionSelection->IdFestival);
                 if ($festival !== null) {
                     $filmSelectionSection->setFestival($festival);
                 }
@@ -308,7 +392,7 @@ class FilmManager extends CoreManager
                 // set person
                 $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById($object->Id);
                 if ($person === null) {
-                    $person = $this->personManager->updateEntity($object->Id);
+                    $person = $this->personManager->getById($object->Id);
                 }
                 $persons[$object->Id]->setPerson($person);
                 
@@ -322,7 +406,7 @@ class FilmManager extends CoreManager
                     $filmFilmPersonFunction->setPosition($object->OrdreAffichage);
                     $persons[$object->Id]->addFunction($filmFilmPersonFunction);
                 } else {
-                    $this->logger->error(__METHOD__. " {$id}, function {$object->IdFonction} not found");
+                    $this->logger->error(__METHOD__. "Function {$object->IdFonction} not found");
                 }
                 
                 $persons[$object->Id]->setPosition($object->OrdreAffichage);
@@ -355,7 +439,7 @@ class FilmManager extends CoreManager
                 // find person
                 $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById($object->Id);
                 if ($person === null) {
-                    $person = $this->personManager->updateEntity($object->Id);
+                    $person = $this->personManager->getById($object->Id);
                 }
                 $persons[$object->Id]->setPerson($person);
 
@@ -370,7 +454,7 @@ class FilmManager extends CoreManager
 
                         foreach ($objects as $object) {
                             if (!isset($localesMapper[$object->CodeLangue])) {
-                                $this->logger->warning(__METHOD__. " {$id} the locales mapper {$object->CodeLangue} doesn't exist");
+                                $this->logger->warning(__METHOD__. "The locales mapper {$object->CodeLangue} doesn't exist");
                                 continue;
                             }
                             $functionTranslation = new FilmFunctionTranslation();
@@ -379,7 +463,7 @@ class FilmManager extends CoreManager
                             $errors = $this->validator->validate($functionTranslation);
                             if (count($errors) > 0) {
                                 foreach ($errors as $error) {
-                                    $this->logger->error(__METHOD__. " {$id} function translation not valid, message : {$error->getMessage()}");
+                                    $this->logger->error(__METHOD__. "Function translation not valid, message : {$error->getMessage()}");
                                 }
                                 continue;
                             } else {
@@ -420,7 +504,7 @@ class FilmManager extends CoreManager
                 // find person
                 $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById($object->Id);
                 if ($person === null) {
-                    $person = $this->personManager->updateEntity($object->Id);
+                    $person = $this->personManager->getById($object->Id);
                 }
                 $persons[$object->Id]->setPerson($person);
                 $persons[$object->Id]->setFilm($entity);
@@ -435,7 +519,7 @@ class FilmManager extends CoreManager
                     $filmFilmPersonFunction->setPosition($object->OrdreAffichage);
                     $persons[$object->Id]->addFunction($filmFilmPersonFunction);
                 } else {
-                    $this->logger->error(__METHOD__. " {$id}, function {$object->IdFonction} not found");
+                    $this->logger->error(__METHOD__. "Function {$object->IdFonction} not found");
                 }
 
                 // set translations for roles
@@ -464,9 +548,6 @@ class FilmManager extends CoreManager
                 }
             }
         }
-        
-        // delete removed persons
-        //$this->removePerson($entity->getPersons(), $ids);
         
         // set contacts
         if (property_exists($resultObject, 'FilmContacts') && property_exists($resultObject->FilmContacts, 'ContactDto')) {
@@ -562,21 +643,6 @@ class FilmManager extends CoreManager
             }
         }
         
-        // update entity
-        $this->update($entity, $persist);
-        
-        // end timer
-        $this->end(__METHOD__);
-        
         return $entity;
-    }
-    
-    private function removePerson($entities, $ids)
-    {
-        foreach ($entities as $entity) {
-            if (!in_array($entity->getPerson()->getId(), $ids)) {
-                $this->em->remove($entity);
-            }
-        }
     }
 }

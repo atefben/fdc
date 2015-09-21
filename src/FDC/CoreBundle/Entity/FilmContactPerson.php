@@ -186,6 +186,10 @@ class FilmContactPerson
      */
     public function addSubordinate(\FDC\CoreBundle\Entity\FilmContactPerson $subordinates)
     {
+        if ($this->subordinates->contains($subordinates)) {
+            return;
+        }
+        
         $this->subordinates[] = $subordinates;
 
         return $this;
@@ -198,6 +202,10 @@ class FilmContactPerson
      */
     public function removeSubordinate(\FDC\CoreBundle\Entity\FilmContactPerson $subordinates)
     {
+        if (!$this->subordinates->contains($subordinates)) {
+            return;
+        }
+        
         $this->subordinates->removeElement($subordinates);
     }
 

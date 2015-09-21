@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportProjectionCommand class.
+ * GetAwardCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportProjectionCommand extends ContainerAwareCommand
+class GetAwardCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportProjectionCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_projection')
-            ->setDescription('Imports the projection using the soif id')
+            ->setName('fdc:soif:get_award')
+            ->setDescription('Get the award using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,8 +42,8 @@ class ImportProjectionCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.projection_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.award_manager');
+        $manager->getById($id);
     }
 
 }

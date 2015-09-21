@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportPrizeCommand class.
+ * GetCountryCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportPrizeCommand extends ContainerAwareCommand
+class GetCountryCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportPrizeCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_prize')
-            ->setDescription('Imports the prize using the soif id')
+            ->setName('fdc:soif:get_country')
+            ->setDescription('Get the country using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,8 +42,8 @@ class ImportPrizeCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.prize_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.country_manager');
+        $manager->getById($id);
     }
 
 }

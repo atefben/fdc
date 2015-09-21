@@ -24,8 +24,6 @@ class CountryManager extends CoreManager
     {
         // soif parameters
         $this->repository = 'FDCCoreBundle:Country';
-        $this->wsMethod = 'GetCountry';
-        $this->wsResultKey = 'GetCountryResult';
         $this->wsResultObjectKey = 'CountryDto';
         $this->wsParameterKey = 'idCountry';
         $this->entityIdKey = 'Id';
@@ -38,14 +36,17 @@ class CountryManager extends CoreManager
     }
     
     /**
-     * updateEntity function.
+     * getById function.
      * 
      * @access public
      * @param mixed $id
      * @return void
      */
-    public function updateEntity($id)
+    public function getById($id)
     {
+        $this->wsMethod = 'GetCountry';
+        $this->wsResultKey = 'GetCountryResult';
+
         // start timer
         $this->start(__METHOD__);
 
@@ -53,9 +54,99 @@ class CountryManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
+        // set entity
+        $entity = $this->set($resultObject, $result);
+        
+        // save entity
+        $this->update($entity);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+    
+    /**
+     * getModified function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getModified($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedCountry';
+        $this->wsResultKey = 'GetModifiedCountryResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        // verify if we have results
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
+            return;
+        }
+        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $entities = array();
+        
+        foreach ($resultObjects as $resultObject) {
+            $entities[] = $this->set($resultObject, $result);
+        }
+        
+        // save entities
+        $this->updates($entities);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * getRemoved function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getRemoved($from, $to)
+    {
+        $this->wsMethod = 'GetRemovedCountry';
+        $this->wsResultKey = 'GetRemovedCountryResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        
+        // loop twice because results are returned in an array (int, long, etc...)
+        foreach ($resultObjects as $objs) {
+            foreach ($objs as $id) {
+                $this->remove($id);
+            }
+        }
+        
+        // save entities
+        $this->em->flush();
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+    
+    /**
+     * set function.
+     * 
+     * @access private
+     * @param mixed $resultObject
+     * @param mixed $result
+     * @return void
+     */
+    private function set($resultObject, $result)
+    {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new Country();
-        $persist = ($entity->getId() === null) ? true : false;
         
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
@@ -78,49 +169,7 @@ class CountryManager extends CoreManager
                 $entity->addTranslation($entityTranslation);
             }
         }
-
-        // update entity
-        $this->update($entity, $persist);
         
-        // end timer
-        $this->end(__METHOD__);
-    }
-    
-    public function getModified($from, $to)
-    {
-        $this->wsMethod = 'GetModifiedCountry';
-        $this->wsResultKey = 'GetModifiedCountryResult';
-         
-        // start timer
-        $this->start(__METHOD__);
-
-        // call the ws
-        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to));
-        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
-        $entities = array();
-        $persists = array();
-        
-        foreach ($resultObject as $object) {
-            // create / get entity
-            $entity = ($this->findOneById(array('id' => $object->{$this->entityIdKey}))) ?: new FilmAward();
-            $persists[] = ($entity->getId() === null) ? true : false;
-            
-            // set soif last update time
-            $this->setSoifUpdatedAt($result, $entity);
-    
-            // set entity properties
-            $this->setEntityProperties($object, $entity);
-            
-            // set related entity
-            $this->setEntityRelated($object, $entity);
-            
-            $entities[] = $entity;
-        }
-        
-        // update entity
-        $this->updates($entities, $persists);
-        
-        // end timer
-        $this->end(__METHOD__);
+        return $entity;
     }
 }

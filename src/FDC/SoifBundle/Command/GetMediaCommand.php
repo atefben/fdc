@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportCountryCommand class.
+ * GetMediaCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportCountryCommand extends ContainerAwareCommand
+class GetMediaCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportCountryCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_country')
-            ->setDescription('Imports the country using the soif id')
+            ->setName('fdc:soif:get_media')
+            ->setDescription('Get the media using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,8 +42,8 @@ class ImportCountryCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.country_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.media_manager');
+        $manager->getById($id);
     }
 
 }

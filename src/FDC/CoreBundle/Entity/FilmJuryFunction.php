@@ -129,6 +129,10 @@ class FilmJuryFunction
      */
     public function addJury(\FDC\CoreBundle\Entity\FilmJury $juries)
     {
+        if ($this->juries->contains($juries)) {
+            return;
+        }
+        
         $this->juries[] = $juries;
 
         return $this;
@@ -141,6 +145,10 @@ class FilmJuryFunction
      */
     public function removeJury(\FDC\CoreBundle\Entity\FilmJury $juries)
     {
+        if (!$this->juries->contains($juries)) {
+            return;
+        }
+        
         $this->juries->removeElement($juries);
     }
 

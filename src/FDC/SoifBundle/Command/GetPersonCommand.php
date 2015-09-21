@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportMediaCommand class.
+ * GetPersonCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportMediaCommand extends ContainerAwareCommand
+class GetPersonCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportMediaCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_media')
-            ->setDescription('Imports the media using the soif id')
+            ->setName('fdc:soif:get_person')
+            ->setDescription('Get the person using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,8 +42,8 @@ class ImportMediaCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.media_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.person_manager');
+        $manager->getById($id);
     }
 
 }

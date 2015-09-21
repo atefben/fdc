@@ -55,12 +55,30 @@ class MediaStreamManager extends CoreManager
         $this->soifUploadDirectory = $soifUploadDirectory;
     }
     
+    /**
+     * setSonataMediaManager function.
+     * 
+     * @access public
+     * @param mixed $sonataMediaManager
+     * @return void
+     */
     public function setSonataMediaManager($sonataMediaManager)
     {
         $this->sonataMediaManager = $sonataMediaManager;
     }
 
-    public function updateEntity($entity, $id, $extension, $provider = 'sonata.media.provider.image', $context = 'image')
+    /**
+     * getById function.
+     * 
+     * @access public
+     * @param mixed $entity
+     * @param mixed $id
+     * @param mixed $extension
+     * @param string $provider (default: 'sonata.media.provider.image')
+     * @param string $context (default: 'image')
+     * @return void
+     */
+    public function getById($entity, $id, $extension, $provider = 'sonata.media.provider.image', $context = 'image')
     {
         // start timer
         $this->start(__METHOD__);

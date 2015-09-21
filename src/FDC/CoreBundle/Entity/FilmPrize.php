@@ -146,6 +146,10 @@ class FilmPrize implements FilmPrizeInterface
      */
     public function addAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
+        if ($this->awards->contains($awards)) {
+            return;
+        }
+
         $this->awards[] = $awards;
 
         return $this;
@@ -158,6 +162,10 @@ class FilmPrize implements FilmPrizeInterface
      */
     public function removeAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
+        if (!$this->awards->contains($awards)) {
+            return;
+        }
+        
         $this->awards->removeElement($awards);
     }
 

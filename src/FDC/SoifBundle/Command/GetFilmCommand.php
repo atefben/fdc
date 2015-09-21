@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportJuryCommand class.
+ * GetFilmCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportJuryCommand extends ContainerAwareCommand
+class GetFilmCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -22,10 +22,11 @@ class ImportJuryCommand extends ContainerAwareCommand
      * @access protected
      * @return void
      */
-    protected function configure() {
+    protected function configure()
+    {
         $this
-            ->setName('fdc:soif:import_jury')
-            ->setDescription('Imports the jury using the soif id')
+            ->setName('fdc:soif:get_film')
+            ->setDescription('Get the film using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -38,12 +39,13 @@ class ImportJuryCommand extends ContainerAwareCommand
      * @param OutputInterface $output
      * @return void
      */
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.jury_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.film_manager');
+        $manager->getById($id);
     }
 
 }

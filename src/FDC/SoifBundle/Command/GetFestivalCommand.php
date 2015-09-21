@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportMediaCategoryCommand class.
+ * GetFestivalCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportMediaCategoryCommand extends ContainerAwareCommand
+class GetFestivalCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportMediaCategoryCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_media_category')
-            ->setDescription('Imports the media category using the soif id')
+            ->setName('fdc:soif:get_festival')
+            ->setDescription('Get the festival using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,8 +42,8 @@ class ImportMediaCategoryCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.media_category_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.festival_manager');
+        $manager->getById($id);
     }
 
 }

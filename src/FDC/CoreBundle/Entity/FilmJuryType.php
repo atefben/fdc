@@ -76,53 +76,6 @@ class FilmJuryType
     }
 
     /**
-     * Set juryTypeVf
-     *
-     * @param string $juryTypeVf
-     * @return FilmJuryType
-     */
-    public function setJuryTypeVf($juryTypeVf)
-    {
-        $this->juryTypeVf = $juryTypeVf;
-
-        return $this;
-    }
-
-    /**
-     * Get juryTypeVf
-     *
-     * @return string 
-     */
-    public function getJuryTypeVf()
-    {
-        return $this->juryTypeVf;
-    }
-
-    /**
-     * Set juryTypeVa
-     *
-     * @param string $juryTypeVa
-     * @return FilmJuryType
-     */
-    public function setJuryTypeVa($juryTypeVa)
-    {
-        $this->juryTypeVa = $juryTypeVa;
-
-        return $this;
-    }
-
-    /**
-     * Get juryTypeVa
-     *
-     * @return string 
-     */
-    public function getJuryTypeVa()
-    {
-        return $this->juryTypeVa;
-    }
-
-
-    /**
      * Add juries
      *
      * @param \FDC\CoreBundle\Entity\FilmJury $juries
@@ -130,6 +83,10 @@ class FilmJuryType
      */
     public function addJury(\FDC\CoreBundle\Entity\FilmJury $juries)
     {
+        if ($this->juries->contains($juries)) {
+            return;
+        }
+
         $this->juries[] = $juries;
 
         return $this;
@@ -142,6 +99,10 @@ class FilmJuryType
      */
     public function removeJury(\FDC\CoreBundle\Entity\FilmJury $juries)
     {
+        if (!$this->juries->contains($juries)) {
+            return;
+        }
+        
         $this->juries->removeElement($juries);
     }
 

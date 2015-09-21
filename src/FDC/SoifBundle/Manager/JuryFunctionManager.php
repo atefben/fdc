@@ -46,7 +46,15 @@ class JuryFunctionManager extends CoreManager
         );
     }
 
-    public function updateEntity($entity, $id)
+    /**
+     * getById function.
+     * 
+     * @access public
+     * @param mixed $entity
+     * @param mixed $id
+     * @return void
+     */
+    public function getById($entity, $id)
     {
         // start timer
         $this->start(__METHOD__);

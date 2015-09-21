@@ -20,7 +20,7 @@ services:
     fdc.soif.award_manager:
         parent: fdc.soif.core_manager
         class: FDC\SoifBundle\Manager\AwardManager
-        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.prize_manager']
+        arguments: ['@fdc.soif.festival_manager', '@fdc.soif.prize_manager', '@fdc.soif.film_manager', '@fdc.soif.person_manager']
 
     fdc.soif.country_manager:
         parent: fdc.soif.core_manager

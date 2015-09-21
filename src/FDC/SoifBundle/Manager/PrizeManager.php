@@ -27,8 +27,6 @@ class PrizeManager extends CoreManager
         $this->entityIdKey = 'Id';
         $this->repository = 'FDCCoreBundle:FilmPrize';
         $this->wsParameterKey = 'idPrix';
-        $this->wsMethod = 'GetPrize';
-        $this->wsResultKey = 'GetPrizeResult';
         $this->wsResultObjectKey = 'PrixDto';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
@@ -54,14 +52,16 @@ class PrizeManager extends CoreManager
     }
     
     /**
-     * updateEntity function.
+     * getById function.
      * 
      * @access public
      * @param mixed $id
      * @return void
      */
-    public function updateEntity($id)
+    public function getById($id)
     {
+        $this->wsMethod = 'GetPrize';
+        $this->wsResultKey = 'GetPrizeResult';
         // start timer
         $this->start(__METHOD__);
 
@@ -69,6 +69,64 @@ class PrizeManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
+        // set entity
+        $entity = $this->set($resultObject, $result);
+        
+        // update entity
+        $this->update($entity);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * getModified function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getModified($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedPrizes';
+        $this->wsResultKey = 'GetModifiedPrizesResult';
+
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        // verify if we have results
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
+            return;
+        }
+        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $entities = array();
+        
+        // set entities
+        foreach ($resultObjects as $resultObject) {
+            $entities[] = $this->set($resultObject, $result);
+        }
+
+        // save entities
+        $this->updates($entities);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+    
+    /**
+     * set function.
+     * 
+     * @access private
+     * @param mixed $resultObject
+     * @param mixed $result
+     * @return void
+     */
+    private function set($resultObject, $result)
+    {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmPrize();
         $persist = ($entity->getId() === null) ? true : false;
@@ -82,10 +140,6 @@ class PrizeManager extends CoreManager
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmPrizeTranslation());
         
-        // update entity
-        $this->update($entity, $persist);
-        
-        // end timer
-        $this->end(__METHOD__);
+        return $entity;
     }
 }

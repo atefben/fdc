@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportFilmAtelierCommand class.
+ * GetMediaCategoryCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportFilmAtelierCommand extends ContainerAwareCommand
+class GetMediaCategoryCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportFilmAtelierCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_film_atelier')
-            ->setDescription('Imports the film atelier using the soif id')
+            ->setName('fdc:soif:get_media_category')
+            ->setDescription('Get the media category using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,8 +42,8 @@ class ImportFilmAtelierCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.film_atelier_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.media_category_manager');
+        $manager->getById($id);
     }
 
 }

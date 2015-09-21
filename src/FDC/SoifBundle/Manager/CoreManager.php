@@ -259,7 +259,7 @@ abstract class CoreManager
         if (property_exists($result, $key)) {
             // update the related entity
             if ($manager !== null) {
-               $manager->updateEntity($result->{$key});
+               $manager->getById($result->{$key});
             }
             
             // get the entity and update it
@@ -284,13 +284,12 @@ abstract class CoreManager
      * @param mixed $parameters
      * @return void
      */
-    public function soapCall($method, $parameters)
+    public function soapCall($method, $parameters, $hasResult = true)
     {
         $result = null;
         
         try {
             $result = $this->client->$method($parameters);
-            
             // create log output
             $content = "Method : {$method}\n";
             $content .= 'Parameters: '. implode(', ', $parameters). "\n";
@@ -300,8 +299,9 @@ abstract class CoreManager
             
             // check the object properties
             $resultObject = ($this->wsResultObjectKey === null) ? $result->{$this->wsResultKey} : $result->{$this->wsResultKey}->Resultats;
-            if (!isset($resultObject) || ($this->wsResultObjectKey !== null && !property_exists($resultObject, $this->wsResultObjectKey))) {
-                $msg = __METHOD__. ' failed to parse results';
+            if ($hasResult == true && 
+                (!isset($resultObject) || ($this->wsResultObjectKey !== null && !property_exists($resultObject, $this->wsResultObjectKey)))) {
+                $msg = __METHOD__. " failed to parse results for {$method} ". implode(',', $parameters);
                 $exception = new \Exception($msg);
                 $this->throwException($msg, $exception);
             }
@@ -500,15 +500,33 @@ abstract class CoreManager
      * 
      * @access public
      * @param mixed $entity
-     * @param bool $persist (default: false)
      * @return void
      */
-    public function update($entity, $persist = false)
+    public function update($entity)
     {
-        if ($persist) {
+        // if is new, persist entity
+        if ($entity->getCreatedAt() === null) {
             $this->em->persist($entity);
         }
         $this->em->flush();
+    }
+    
+
+    /**
+     * remove function.
+     * 
+     * @access public
+     * @param mixed $id
+     * @return void
+     */
+    public function remove($id)
+    {
+        $entity = $this->em->getRepository($this->repository)->findOneBy(array('id' => $id));
+        if ($entity !== null) {
+            $this->em->remove($entity);
+        } else {
+            $this->logger->info("{$this->repository} #{$id} can't be removed because it doesn't exist");
+        }
     }
     
     /**
@@ -516,13 +534,13 @@ abstract class CoreManager
      * 
      * @access public
      * @param mixed $entities
-     * @param mixed $persists
      * @return void
      */
-    public function updates($entities, $persists)
+    public function updates($entities)
     {
-        foreach ($entities as $key => $entity) {
-            if ($persists[$key]) {
+        foreach ($entities as $entity) {
+            // if is new, persist entity
+            if ($entity->getCreatedAt() === null) {
                 $this->em->persist($entity);
             }
         }

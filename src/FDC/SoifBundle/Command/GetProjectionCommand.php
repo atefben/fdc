@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ImportPersonCommand class.
+ * GetProjectionCommand class.
  * 
  * @extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-class ImportPersonCommand extends ContainerAwareCommand
+class GetProjectionCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -24,8 +24,8 @@ class ImportPersonCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:soif:import_person')
-            ->setDescription('Imports the person using the soif id')
+            ->setName('fdc:soif:get_projection')
+            ->setDescription('Get the projection using the soif id')
             ->addArgument('id', InputArgument::REQUIRED, 'the soif identifier')
         ;
     }
@@ -42,8 +42,8 @@ class ImportPersonCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('fdc.soif.person_manager');
-        $manager->updateEntity($id);
+        $manager = $this->getContainer()->get('fdc.soif.projection_manager');
+        $manager->getById($id);
     }
 
 }

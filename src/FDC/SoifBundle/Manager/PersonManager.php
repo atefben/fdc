@@ -27,8 +27,6 @@ class PersonManager extends CoreManager
         $this->entityIdKey = 'Id';
         $this->repository = 'FDCCoreBundle:FilmPerson';
         $this->wsParameterKey = 'idPersonne';
-        $this->wsMethod = 'GetPersonne';
-        $this->wsResultKey = 'GetPersonneResult';
         $this->wsResultObjectKey = 'PersonneDto';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
@@ -57,7 +55,7 @@ class PersonManager extends CoreManager
     }
     
     /**
-     * updateEntity function.
+     * getById function.
      * 
      * @access public
      * @param mixed $id
@@ -65,8 +63,10 @@ class PersonManager extends CoreManager
      *
      * @todo save PersonneFilmDto
      */
-    public function updateEntity($id)
+    public function getById($id)
     {
+        $this->wsMethod = 'GetPersonne';
+        $this->wsResultKey = 'GetPersonneResult';
         // start timer
         $this->start(__METHOD__);
 
@@ -74,9 +74,102 @@ class PersonManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
+        // set entity
+        $entity = $this->set($resultObject, $result);
+        
+        // update entity
+        $this->update($entity);
+        
+        // end timer
+        $this->end(__METHOD__);
+        
+        return $entity;
+    }
+
+    /**
+     * getModified function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getModified($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedPersons';
+        $this->wsResultKey = 'GetModifiedPersonsResult';
+
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        // verify if we have results
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
+            return;
+        }
+        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $entities = array();
+        
+        // set entities
+        foreach ($resultObjects as $resultObject) {
+            $entities[] = $this->set($resultObject, $result);
+        }
+
+        // save entities
+        $this->updates($entities);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * getRemoved function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getRemoved($from, $to)
+    {
+        $this->wsMethod = 'GetRemovedPersons';
+        $this->wsResultKey = 'GetRemovedPersonsResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        
+        // loop twice because results are returned in an array (int, long, etc...)
+        foreach ($resultObjects as $objs) {
+            foreach ($objs as $id) {
+                $this->remove($id);
+            }
+        }
+        
+        // save entities
+        $this->em->flush();
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * set function.
+     * 
+     * @access private
+     * @param mixed $resultObject
+     * @param mixed $result
+     * @return void
+     */
+    private function set($resultObject, $result)
+    {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmPerson();
-        $persist = ($entity->getId() === null) ? true : false;
         
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
@@ -86,12 +179,6 @@ class PersonManager extends CoreManager
         
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
-        
-        // update entity
-        $this->update($entity, $persist);
-        
-        // end timer
-        $this->end(__METHOD__);
         
         return $entity;
     }

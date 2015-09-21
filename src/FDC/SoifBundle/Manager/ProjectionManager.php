@@ -61,8 +61,6 @@ class ProjectionManager extends CoreManager
         $this->entityIdKey = 'Id';
         $this->repository = 'FDCCoreBundle:FilmProjection';
         $this->wsParameterKey = 'idAgenda';
-        $this->wsMethod = 'GetAgenda';
-        $this->wsResultKey = 'GetAgendaResult';
         $this->wsResultObjectKey = 'SeanceProgrammationDto';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
@@ -81,14 +79,17 @@ class ProjectionManager extends CoreManager
     }
     
     /**
-     * updateEntity function.
+     * getById function.
      * 
      * @access public
      * @param mixed $id
      * @return void
      */
-    public function updateEntity($id)
+    public function getById($id)
     {
+        $this->wsMethod = 'GetAgenda';
+        $this->wsResultKey = 'GetAgendaResult';
+
         // start timer
         $this->start(__METHOD__);
 
@@ -96,9 +97,100 @@ class ProjectionManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
+        // set entity
+        $entity = $this->set($result, $resultObject);
+        
+        // update entity
+        $this->update($entity);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * getModified function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getModified($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedAgenda';
+        $this->wsResultKey = 'GetModifiedAgendaResult';
+
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        // verify if we have results
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
+            return;
+        }
+        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $entities = array();
+        
+        // set entities
+        foreach ($resultObjects as $resultObject) {
+            $entities[] = $this->set($resultObject, $result);
+        }
+
+        // save entities
+        $this->updates($entities);
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * getRemoved function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getRemoved($from, $to)
+    {
+        $this->wsMethod = 'GetRemovedAgenda';
+        $this->wsResultKey = 'GetRemovedAgendaResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        
+        // loop twice because results are returned in an array (int, long, etc...)
+        foreach ($resultObjects as $objs) {
+            foreach ($objs as $id) {
+                $this->remove($id);
+            }
+        }
+        
+        // save entities
+        $this->em->flush();
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * set function.
+     * 
+     * @access private
+     * @param mixed $resultObject
+     * @param mixed $result
+     * @return void
+     */
+    private function set($resultObject, $result)
+    {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmProjection();
-        $persist = ($entity->getId() === null) ? true : false;
         $entity->setId($resultObject->{$this->entityIdKey});
         
         // set soif last update time
@@ -123,13 +215,13 @@ class ProjectionManager extends CoreManager
                 $entityRelated->setFilename($media->FileName);
                 $entityRelated->setType($media->IdType);
                 $entityRelated->setPosition($media->Ordre);
+                // set the media file
+                $this->mediaStreamManager->getById($entityRelated, $media->Id, $this->mimeToExtension($media->ContentType));
+                // save in entity
+                $entity->addMedia($entityRelated);
+                // save in array all the entities
+                $collectionNew->add($entityRelated);
             }
-            // set the media file
-            $this->mediaStreamManager->updateEntity($entityRelated, $media->Id, $this->mimeToExtension($media->ContentType));
-            // save in entity
-            $entity->addMedia($entityRelated);
-            // save in array all the entities
-            $collectionNew->add($entityRelated);
             
             // remove old relations
             $this->removeOldRelations($entity->getMedias(), $collectionNew, $entity, 'removeMedia');
@@ -208,7 +300,7 @@ class ProjectionManager extends CoreManager
                 // set film
                 $film = $this->em->getRepository('FDCCoreBundle:FilmFilm')->findOneBy(array('id' => $obj->IdFilm));
                 if ($film == null) {
-                    $film = $this->filmManager->updateEntity($obj->IdFilm);
+                    $film = $this->filmManager->getById($obj->IdFilm);
                 }
                 $programmationFilm->setFilm($film);
                 // set type
@@ -249,7 +341,7 @@ class ProjectionManager extends CoreManager
                 foreach ($obj->IdsFilm as $filmId) {
                     $film = $this->em->getRepository('FDCCoreBundle:FilmFilm')->findOneBy(array('id' => $filmId));
                     if ($film == null) {
-                        $film = $this->filmManager->updateEntity($filmId);
+                        $film = $this->filmManager->getById($filmId);
                     }
                     // save in entity
                     $programmationFilmList->addFilm($film);
@@ -281,30 +373,7 @@ class ProjectionManager extends CoreManager
             // delete collection to free memory
             unset($programmationFilmList);
         }
-
-        // update entity
-        $this->update($entity, $persist);
         
-        // end timer
-        $this->end(__METHOD__);
+        return $entity;
     }
-    
-    private function recursive_array_diff($a1, $a2) { 
-    $r = array(); 
-    foreach ($a1 as $k => $v) {
-        if (array_key_exists($k, $a2)) { 
-            if (is_array($v)) { 
-                $rad = recursive_array_diff($v, $a2[$k]); 
-                if (count($rad)) { $r[$k] = $rad; } 
-            } else { 
-                if ($v != $a2[$k]) { 
-                    $r[$k] = $v; 
-                }
-            }
-        } else { 
-            $r[$k] = $v; 
-        } 
-    } 
-    return $r; 
-}
 }

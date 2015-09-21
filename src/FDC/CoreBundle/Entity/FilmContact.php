@@ -195,6 +195,10 @@ class FilmContact implements FilmContactInterface
      */
     public function addSubordinate(\FDC\CoreBundle\Entity\FilmContact $subordinates)
     {
+        if ($this->subordinates->contains($subordinates)) {
+            return;
+        }
+        
         $this->subordinates[] = $subordinates;
 
         return $this;
@@ -207,6 +211,10 @@ class FilmContact implements FilmContactInterface
      */
     public function removeSubordinate(\FDC\CoreBundle\Entity\FilmContact $subordinates)
     {
+        if (!$this->subordinates->contains($subordinates)) {
+            return;
+        }
+        
         $this->subordinates->removeElement($subordinates);
     }
 
@@ -228,6 +236,10 @@ class FilmContact implements FilmContactInterface
      */
     public function addFilm(\FDC\CoreBundle\Entity\FilmFilm $films)
     {
+        if ($this->films->contains($films)) {
+            return;
+        }
+        
         $this->films[] = $films;
 
         return $this;
@@ -240,6 +252,10 @@ class FilmContact implements FilmContactInterface
      */
     public function removeFilm(\FDC\CoreBundle\Entity\FilmFilm $films)
     {
+        if (!$this->films->contains($films)) {
+            return;
+        }
+        
         $this->films->removeElement($films);
     }
 

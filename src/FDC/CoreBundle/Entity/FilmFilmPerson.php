@@ -140,6 +140,10 @@ class FilmFilmPerson
      */
     public function addFunction(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions)
     {
+        if ($this->functions->contains($functions)) {
+            return;
+        }
+        
         $functions->setFilmPerson($this);
         $this->functions[] = $functions;
 
@@ -153,6 +157,10 @@ class FilmFilmPerson
      */
     public function removeFunction(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions)
     {
+        if (!$this->functions->contains($functions)) {
+            return;
+        }
+        
         $this->functions->removeElement($functions);
     }
 

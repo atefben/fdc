@@ -515,6 +515,10 @@ class FilmEvent
      */
     public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
+        if ($this->medias->contains($medias)) {
+            return;
+        }
+        
         $this->medias[] = $medias;
 
         return $this;
@@ -527,6 +531,10 @@ class FilmEvent
      */
     public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
+        if (!$this->medias->contains($medias)) {
+            return;
+        }
+        
         $this->medias->removeElement($medias);
     }
 

@@ -421,6 +421,10 @@ class FilmAddress
      */
     public function addDirectorFilm(\FDC\CoreBundle\Entity\FilmFilm $directorFilms)
     {
+        if ($this->directorFilms->contains($directorFilms)) {
+            return;
+        }
+
         $this->directorFilms[] = $directorFilms;
 
         return $this;
@@ -433,6 +437,10 @@ class FilmAddress
      */
     public function removeDirectorFilm(\FDC\CoreBundle\Entity\FilmFilm $directorFilms)
     {
+        if (!$this->directorFilms->contains($directorFilms)) {
+            return;
+        }
+
         $this->directorFilms->removeElement($directorFilms);
     }
 
@@ -454,6 +462,10 @@ class FilmAddress
      */
     public function addSchoolsFilm(\FDC\CoreBundle\Entity\FilmAddressSchool $schoolsFilms)
     {
+        if ($this->schoolsFilms->contains($schoolsFilms)) {
+            return;
+        }
+        
         $this->schoolsFilms[] = $schoolsFilms;
 
         return $this;
@@ -466,6 +478,10 @@ class FilmAddress
      */
     public function removeSchoolsFilm(\FDC\CoreBundle\Entity\FilmAddressSchool $schoolsFilms)
     {
+        if (!$this->schoolsFilms->contains($schoolsFilms)) {
+            return;
+        }
+
         $this->schoolsFilms->removeElement($schoolsFilms);
     }
 
@@ -487,6 +503,10 @@ class FilmAddress
      */
     public function addEventFilm(\FDC\CoreBundle\Entity\FilmFilm $eventFilms)
     {
+        if ($this->eventFilms->contains($eventFilms)) {
+            return;
+        }
+
         $this->eventFilms[] = $eventFilms;
 
         return $this;
@@ -499,6 +519,10 @@ class FilmAddress
      */
     public function removeEventFilm(\FDC\CoreBundle\Entity\FilmFilm $eventFilms)
     {
+        if (!$this->eventFilms->contains($eventFilms)) {
+            return;
+        }
+
         $this->eventFilms->removeElement($eventFilms);
     }
 
@@ -520,6 +544,10 @@ class FilmAddress
      */
     public function addPressInternatFilm(\FDC\CoreBundle\Entity\FilmFilm $pressInternatFilms)
     {
+        if ($this->pressInternatFilms->contains($pressInternatFilms)) {
+            return;
+        }
+
         $this->pressInternatFilms[] = $pressInternatFilms;
 
         return $this;
@@ -532,6 +560,10 @@ class FilmAddress
      */
     public function removePressInternatFilm(\FDC\CoreBundle\Entity\FilmFilm $pressInternatFilms)
     {
+        if (!$this->pressInternatFilms->contains($pressInternatFilms)) {
+            return;
+        }
+
         $this->pressInternatFilms->removeElement($pressInternatFilms);
     }
 
@@ -553,6 +585,10 @@ class FilmAddress
      */
     public function addPressFilm(\FDC\CoreBundle\Entity\FilmFilm $pressFilms)
     {
+        if ($this->pressFilms->contains($pressFilms)) {
+            return;
+        }
+
         $this->pressFilms[] = $pressFilms;
 
         return $this;
@@ -565,6 +601,10 @@ class FilmAddress
      */
     public function removePressFilm(\FDC\CoreBundle\Entity\FilmFilm $pressFilms)
     {
+        if (!$this->pressFilms->contains($pressFilms)) {
+            return;
+        }
+
         $this->pressFilms->removeElement($pressFilms);
     }
 
@@ -586,6 +626,10 @@ class FilmAddress
      */
     public function addDistributionFilm(\FDC\CoreBundle\Entity\FilmFilm $distributionFilms)
     {
+        if ($this->distributionFilms->contains($distributionFilms)) {
+            return;
+        }
+
         $this->distributionFilms[] = $distributionFilms;
 
         return $this;
@@ -598,6 +642,10 @@ class FilmAddress
      */
     public function removeDistributionFilm(\FDC\CoreBundle\Entity\FilmFilm $distributionFilms)
     {
+        if (!$this->distributionFilms->contains($distributionFilms)) {
+            return;
+        }
+
         $this->distributionFilms->removeElement($distributionFilms);
     }
 
@@ -619,6 +667,10 @@ class FilmAddress
      */
     public function addProductionFilm(\FDC\CoreBundle\Entity\FilmFilm $productionFilms)
     {
+        if ($this->productionFilms->contains($productionFilms)) {
+            return;
+        }
+        
         $this->productionFilms[] = $productionFilms;
 
         return $this;
@@ -631,6 +683,9 @@ class FilmAddress
      */
     public function removeProductionFilm(\FDC\CoreBundle\Entity\FilmFilm $productionFilms)
     {
+        if (!$this->productionFilms->contains($productionFilms)) {
+            return;
+        }
         $this->productionFilms->removeElement($productionFilms);
     }
 
@@ -647,12 +702,16 @@ class FilmAddress
     /**
      * Add contacts
      *
-     * @param \FDC\CoreBundle\Entity\FilmContact $contact
+     * @param \FDC\CoreBundle\Entity\FilmContact $contacts
      * @return FilmAddress
      */
-    public function addContact(\FDC\CoreBundle\Entity\FilmContact $contact)
+    public function addContact(\FDC\CoreBundle\Entity\FilmContact $contacts)
     {
-        $this->contacts[] = $contact;
+        if ($this->contacts->contains($contacts)) {
+            return;
+        }
+
+        $this->contacts[] = $contacts;
 
         return $this;
     }
@@ -660,11 +719,15 @@ class FilmAddress
     /**
      * Remove contacts
      *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $contact
+     * @param \FDC\CoreBundle\Entity\FilmFilm $contacts
      */
-    public function removeContact(\FDC\CoreBundle\Entity\FilmContact $contact)
+    public function removeContact(\FDC\CoreBundle\Entity\FilmContact $contacts)
     {
-        $this->contacts->removeElement($contact);
+        if (!$this->contacts->contains($contacts)) {
+            return;
+        }
+        
+        $this->contacts->removeElement($contacts);
     }
 
     /**

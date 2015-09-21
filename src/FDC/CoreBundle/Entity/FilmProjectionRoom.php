@@ -100,6 +100,10 @@ class FilmProjectionRoom
      */
     public function addProjection(\FDC\CoreBundle\Entity\FilmProjection $projections)
     {
+        if ($this->projections->contains($projections)) {
+            return;
+        }
+
         $this->projections[] = $projections;
 
         return $this;
@@ -112,6 +116,10 @@ class FilmProjectionRoom
      */
     public function removeProjection(\FDC\CoreBundle\Entity\FilmProjection $projections)
     {
+        if (!$this->projections->contains($projections)) {
+            return;
+        }
+        
         $this->projections->removeElement($projections);
     }
 

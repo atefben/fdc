@@ -45,8 +45,6 @@ class FestivalPosterManager extends CoreManager
         $this->entityIdKey = 'Id';
         $this->repository = 'FDCCoreBundle:FilmFestivalPoster';
         $this->wsParameterKey = 'idPoster';
-        $this->wsMethod = 'GetPoster';
-        $this->wsResultKey = 'GetPosterResult';
         $this->wsResultObjectKey = 'PosterDto';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
@@ -75,7 +73,7 @@ class FestivalPosterManager extends CoreManager
     }
     
     /**
-     * updateEntity function.
+     * getById function.
      * 
      * @access public
      * @param mixed $id
@@ -83,8 +81,11 @@ class FestivalPosterManager extends CoreManager
      *
      * @todo save PersonneFilmDto
      */
-    public function updateEntity($id)
+    public function getById($id)
     {
+        $this->wsMethod = 'GetPoster';
+        $this->wsResultKey = 'GetPosterResult';
+
         // start timer
         $this->start(__METHOD__);
 
@@ -92,27 +93,11 @@ class FestivalPosterManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
 
-        // create / get entity
-        $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFestivalPoster();
-        $persist = ($entity->getId() === null) ? true : false;
+        // set entity
+        $entity = $this->set($resultObject, $result);
         
-        // set soif last update time
-        $this->setSoifUpdatedAt($result, $entity);
-        
-        // set entity properties
-        $this->setEntityProperties($resultObject, $entity);
-        
-        // set media
-        $media = $this->mediaStreamManager->updateEntity($entity, $resultObject->ElementMultimediaId, 'jpg');
-        
-        // set translations
-        $this->setEntityTranslations($resultObject, $entity, new FilmFestivalPosterTranslation());
-        
-        // set related entity
-        $this->setEntityRelated($resultObject, $entity);
-        
-        // update entity
-        $this->update($entity, $persist);
+        // save entity
+        $this->update($entity);
         
         // end timer
         $this->end(__METHOD__);
@@ -120,6 +105,14 @@ class FestivalPosterManager extends CoreManager
         return $entity;
     }
 
+    /**
+     * getModified function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
     public function getModified($from, $to)
     {
         $this->wsMethod = 'GetModifiedPosters';
@@ -129,38 +122,89 @@ class FestivalPosterManager extends CoreManager
         $this->start(__METHOD__);
 
         // call the ws
-        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to));
-        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        // verify if we have results
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
+            return;
+        }
+        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         $entities = array();
-        $persists = array();
         
-        foreach ($resultObject as $object) {
-            // create / get entity
-            $entity = ($this->findOneById(array('id' => $object->{$this->entityIdKey}))) ?: new FilmFestival();
-            $persists[] = ($entity->getId() === null) ? true : false;
-            
-            // set soif last update time
-            $this->setSoifUpdatedAt($result, $entity);
-            
-            // set entity properties
-            $this->setEntityProperties($object, $entity);
-            
-            // set media
-            $media = $this->mediaStreamManager->updateEntity($entity, $object->ElementMultimediaId, 'jpg');
-            
-            // set translations
-            $this->setEntityTranslations($object, $entity, new FilmFestivalPosterTranslation());
-            
-            // set related entity
-            $this->setEntityRelated($object, $entity);
-            
-            $entities[] = $entity;
+        // set entities
+        foreach ($resultObjects as $resultObject) {
+            $entities = $this->set($resultObject, $result);
         }
         
-        // update entity
-        $this->updates($entities, $persists);
+        // save entities
+        $this->updates($entities);
         
         // end timer
         $this->end(__METHOD__);
+    }
+
+    /**
+     * getRemoved function.
+     * 
+     * @access public
+     * @param mixed $from
+     * @param mixed $to
+     * @return void
+     */
+    public function getRemoved($from, $to)
+    {
+        $this->wsMethod = 'GetRemovedPoster';
+        $this->wsResultKey = 'GetRemovedPosterResult';
+         
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        
+        // loop twice because results are returned in an array (int, long, etc...)
+        foreach ($resultObjects as $objs) {
+            foreach ($objs as $id) {
+                $this->remove($id);
+            }
+        }
+        
+        // save entities
+        $this->em->flush();
+        
+        // end timer
+        $this->end(__METHOD__);
+    }
+    
+    /**
+     * set function.
+     * 
+     * @access private
+     * @param mixed $resultObject
+     * @param mixed $result
+     * @return void
+     */
+    private function set($resultObject, $result)
+    {
+        // create / get entity
+        $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFestivalPoster();
+        
+        // set soif last update time
+        $this->setSoifUpdatedAt($result, $entity);
+        
+        // set entity properties
+        $this->setEntityProperties($resultObject, $entity);
+        
+        // set media
+        $media = $this->mediaStreamManager->getById($entity, $resultObject->ElementMultimediaId, 'jpg');
+        
+        // set translations
+        $this->setEntityTranslations($resultObject, $entity, new FilmFestivalPosterTranslation());
+        
+        // set related entity
+        $this->setEntityRelated($resultObject, $entity);
+        
+        return $entity;
     }
 }

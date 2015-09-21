@@ -125,6 +125,10 @@ class FilmAtelierPerson
      */
     public function addFunction(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions)
     {
+        if ($this->functions->contains($functions)) {
+            return;
+        }
+        
         $this->functions[] = $functions;
 
         return $this;
@@ -137,6 +141,10 @@ class FilmAtelierPerson
      */
     public function removeFunction(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions)
     {
+        if (!$this->functions->contains($functions)) {
+            return;
+        }
+        
         $this->functions->removeElement($functions);
     }
 

@@ -2,6 +2,7 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -10,7 +11,7 @@ use FDC\CoreBundle\Util\Soif;
 /**
  * FilmAward
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="prize_id", columns={"prize_id"}), @ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="position", columns={"position"}), @ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table()
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
@@ -77,26 +78,25 @@ class FilmAward
     private $festival;
 
     /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="awards")
-     */
-    private $film;
-
-    /**
-     * @var FilmPerson
-     *
-     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="awards")
-     */
-    private $person;
-
-    /**
      * @var FilmPrize
      *
      * @ORM\ManyToOne(targetEntity="FilmPrize", inversedBy="awards")
      */
     private $prize;
-    
+
+    /**
+     * @var FilmAwardAssociation
+     *
+     * @ORM\oneToMany(targetEntity="FilmAwardAssociation", mappedBy="award", cascade={"persist"})
+     */
+    private $associations;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->associations = new ArrayCollection();
+    }
 
     /**
      * Set id
@@ -193,7 +193,7 @@ class FilmAward
     /**
      * Set exAequo
      *
-     * @param string $exAequo
+     * @param boolean $exAequo
      * @return FilmAward
      */
     public function setExAequo($exAequo)
@@ -206,7 +206,7 @@ class FilmAward
     /**
      * Get exAequo
      *
-     * @return string 
+     * @return boolean 
      */
     public function getExAequo()
     {
@@ -216,7 +216,7 @@ class FilmAward
     /**
      * Set unanimity
      *
-     * @param string $unanimity
+     * @param boolean $unanimity
      * @return FilmAward
      */
     public function setUnanimity($unanimity)
@@ -229,7 +229,7 @@ class FilmAward
     /**
      * Get unanimity
      *
-     * @return string 
+     * @return boolean 
      */
     public function getUnanimity()
     {
@@ -283,52 +283,6 @@ class FilmAward
     }
 
     /**
-     * Set film
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $film
-     * @return FilmAward
-     */
-    public function setFilm(\FDC\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \FDC\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
-    }
-
-    /**
-     * Set person
-     *
-     * @param \FDC\CoreBundle\Entity\FilmPerson $person
-     * @return FilmAward
-     */
-    public function setPerson(\FDC\CoreBundle\Entity\FilmPerson $person = null)
-    {
-        $this->person = $person;
-
-        return $this;
-    }
-
-    /**
-     * Get person
-     *
-     * @return \FDC\CoreBundle\Entity\FilmPerson 
-     */
-    public function getPerson()
-    {
-        return $this->person;
-    }
-
-    /**
      * Set prize
      *
      * @param \FDC\CoreBundle\Entity\FilmPrize $prize
@@ -352,25 +306,44 @@ class FilmAward
     }
 
     /**
-     * Set soifUpdatedAt
+     * Add associations
      *
-     * @param \DateTime $soifUpdatedAt
+     * @param \FDC\CoreBundle\Entity\FilmAwardAssociation $associations
      * @return FilmAward
      */
-    public function setSoifUpdatedAt($soifUpdatedAt)
+    public function addAssociation(\FDC\CoreBundle\Entity\FilmAwardAssociation $associations)
     {
-        $this->soifUpdatedAt = $soifUpdatedAt;
+        if ($this->associations->contains($associations)) {
+            return;
+        }
+        
+        $associations->setAward($this);
+        $this->associations[] = $associations;
 
         return $this;
     }
 
     /**
-     * Get soifUpdatedAt
+     * Remove associations
      *
-     * @return \DateTime 
+     * @param \FDC\CoreBundle\Entity\FilmAwardAssociation $associations
      */
-    public function getSoifUpdatedAt()
+    public function removeAssociation(\FDC\CoreBundle\Entity\FilmAwardAssociation $associations)
     {
-        return $this->soifUpdatedAt;
+        if (!$this->associations->contains($associations)) {
+            return;
+        }
+        
+        $this->associations->removeElement($associations);
+    }
+
+    /**
+     * Get associations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociations()
+    {
+        return $this->associations;
     }
 }

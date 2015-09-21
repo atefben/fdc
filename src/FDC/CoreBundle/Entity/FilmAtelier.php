@@ -445,6 +445,10 @@ class FilmAtelier
      */
     public function addPerson(\FDC\CoreBundle\Entity\FilmAtelierPerson $persons)
     {
+        if ($this->persons->contains($persons)) {
+            return;
+        }
+
         $this->persons[] = $persons;
 
         return $this;
@@ -457,6 +461,10 @@ class FilmAtelier
      */
     public function removePerson(\FDC\CoreBundle\Entity\FilmAtelierPerson $persons)
     {
+        if (!$this->persons->contains($persons)) {
+            return;
+        }
+        
         $this->persons->removeElement($persons);
     }
 
@@ -501,6 +509,10 @@ class FilmAtelier
      */
     public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
+        if ($this->medias->contains($medias)) {
+            return;
+        }
+        
         $this->medias[] = $medias;
 
         return $this;
@@ -513,6 +525,10 @@ class FilmAtelier
      */
     public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
+        if (!$this->medias->contains($medias)) {
+            return;
+        }
+        
         $this->medias->removeElement($medias);
     }
 
@@ -534,6 +550,10 @@ class FilmAtelier
      */
     public function addCountry(\FDC\CoreBundle\Entity\FilmAtelierCountry $countries)
     {
+        if ($this->countries->contains($countries)) {
+            return;
+        }
+        
         $this->countries[] = $countries;
 
         return $this;
@@ -546,6 +566,10 @@ class FilmAtelier
      */
     public function removeCountry(\FDC\CoreBundle\Entity\FilmAtelierCountry $countries)
     {
+        if (!$this->countries->contains($countries)) {
+            return;
+        }
+        
         $this->countries->removeElement($countries);
     }
 
@@ -567,6 +591,10 @@ class FilmAtelier
      */
     public function addLanguage(\FDC\CoreBundle\Entity\FilmAtelierLanguage $languages)
     {
+        if ($this->languages->contains($languages)) {
+            return;
+        }
+        
         $this->languages[] = $languages;
 
         return $this;
@@ -579,6 +607,10 @@ class FilmAtelier
      */
     public function removeLanguage(\FDC\CoreBundle\Entity\FilmAtelierLanguage $languages)
     {
+        if (!$this->languages->contains($languages)) {
+            return;
+        }
+        
         $this->languages->removeElement($languages);
     }
 

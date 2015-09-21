@@ -303,6 +303,10 @@ class FilmPerson
      */
     public function addFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
     {
+        if ($this->filmAtelierGenerics->contains($filmAtelierGenerics)) {
+            return;
+        }
+
         $this->filmAtelierGenerics[] = $filmAtelierGenerics;
 
         return $this;
@@ -315,6 +319,10 @@ class FilmPerson
      */
     public function removeFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
     {
+        if (!$this->filmAtelierGenerics->contains($filmAtelierGenerics)) {
+            return;
+        }
+
         $this->filmAtelierGenerics->removeElement($filmAtelierGenerics);
     }
 
@@ -336,6 +344,10 @@ class FilmPerson
      */
     public function addFilmGeneric(\FDC\CoreBundle\Entity\FilmGeneric $filmGenerics)
     {
+        if ($this->filmGenerics->contains($filmGenerics)) {
+            return;
+        }
+        
         $this->filmGenerics[] = $filmGenerics;
 
         return $this;
@@ -348,6 +360,10 @@ class FilmPerson
      */
     public function removeFilmGeneric(\FDC\CoreBundle\Entity\FilmGeneric $filmGenerics)
     {
+        if (!$this->filmGenerics->contains($filmGenerics)) {
+            return;
+        }
+        
         $this->filmGenerics->removeElement($filmGenerics);
     }
 
@@ -369,6 +385,10 @@ class FilmPerson
      */
     public function addJury(\FDC\CoreBundle\Entity\FilmJury $juries)
     {
+        if ($this->juries->contains($juries)) {
+            return;
+        }
+
         $this->juries[] = $juries;
 
         return $this;
@@ -381,6 +401,10 @@ class FilmPerson
      */
     public function removeJury(\FDC\CoreBundle\Entity\FilmJury $juries)
     {
+        if (!$this->juries->contains($juries)) {
+            return;
+        }
+
         $this->juries->removeElement($juries);
     }
 
@@ -402,6 +426,10 @@ class FilmPerson
      */
     public function addAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
+        if ($this->awards->contains($awards)) {
+            return;
+        }
+
         $this->awards[] = $awards;
 
         return $this;
@@ -414,6 +442,10 @@ class FilmPerson
      */
     public function removeAward(\FDC\CoreBundle\Entity\FilmAward $awards)
     {
+        if (!$this->awards->contains($awards)) {
+            return;
+        }
+
         $this->awards->removeElement($awards);
     }
 
@@ -435,6 +467,10 @@ class FilmPerson
      */
     public function addCinefPerson(\FDC\CoreBundle\Entity\CinefPerson $cinefPersons)
     {
+        if ($this->cinefPersons->contains($cinefPersons)) {
+            return;
+        }
+        
         $this->cinefPersons[] = $cinefPersons;
 
         return $this;
@@ -447,6 +483,10 @@ class FilmPerson
      */
     public function removeCinefPerson(\FDC\CoreBundle\Entity\CinefPerson $cinefPersons)
     {
+        if (!$this->cinefPersons->contains($cinefPersons)) {
+            return;
+        }
+
         $this->cinefPersons->removeElement($cinefPersons);
     }
 
@@ -468,6 +508,10 @@ class FilmPerson
      */
     public function addMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
+        if ($this->medias->contains($medias)) {
+            return;
+        }
+
         $this->medias[] = $medias;
 
         return $this;
@@ -480,6 +524,10 @@ class FilmPerson
      */
     public function removeMedia(\FDC\CoreBundle\Entity\FilmMedia $medias)
     {
+        if (!$this->medias->contains($medias)) {
+            return;
+        }
+
         $this->medias->removeElement($medias);
     }
 
