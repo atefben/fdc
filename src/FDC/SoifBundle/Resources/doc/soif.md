@@ -25,15 +25,40 @@ The soif commands uses many parameters, check the app/config/parameters.yml file
 	
 ##commands
 
+### GET
+
 To import a specific entity you have to use the import commands such as :
 	
-	php app/console fdc:soif:import_festival 1 -vvv
+	php app/console fdc:soif:get_festival 1 -vvv
 
 -vvv is for extra verbosity
 	
 All command use a mandatory parameter ID, which refers to the SOIF identifier.
 
-## crons
+### UPDATE
+
+To udpate all entities you have to use the following command with 2 mandatory arguments :
+
+    php app/console fdc:soif:update from to --entity=entity
+
+from - the beginning timestamp
+to - the end timestamp
+--entity - to update only a specific entity, the entity name must be given (award, film, film_atelier...)
+
+For example to update award from 1st January to 31st December 2015 you have to use :
+
+    php app/console fdc:soif:update 1420066800 1451602799 --entity=award
+
+Update command will call also GetRemoved, to remove the entities which were deleted between the timestamp interval.
+
+You can use websites such as :
+
+* http://www.timestamp.fr
+* http://www.epochconverter.com/
+
+To convert date into timestamp and vice versa.
+
+## logs
 
 A crontask can be set to delete log files automatically.
 
@@ -49,24 +74,24 @@ Check [here](http://php.net/manual/fr/dateinterval.createfromdatestring.php) for
 
 ## examples
 
-    php app/console fdc:soif:import_media 002013c8-c64e-461a-955e-be7a7a22c166 -vvv
+    php app/console fdc:soif:get_media 002013c8-c64e-461a-955e-be7a7a22c166 -vvv
 
-    php app/console fdc:soif:import_festival 1 -vvv
+    php app/console fdc:soif:get_festival 1 -vvv
 
-    php app/console fdc:soif:import_media_stream a68f9d7f-0e1a-4d92-8adc-de1ab98d16be  -vvv
+    php app/console fdc:soif:get_media_stream a68f9d7f-0e1a-4d92-8adc-de1ab98d16be  -vvv
 
-    php app/console fdc:soif:import_award 800 -vvv
+    php app/console fdc:soif:get_award 800 -vvv
  
-	php app/console fdc:soif:import_jury 559 -vvv
+	php app/console fdc:soif:get_jury 559 -vvv
 	
-	php app/console fdc:soif:import_person 305589 -vvv
+	php app/console fdc:soif:get_person 305589 -vvv
 	
-	php app/console fdc:soif:import_film 2de98426-32f6-4381-abd5-3508b969ec66 -vvv
+	php app/console fdc:soif:get_film 2de98426-32f6-4381-abd5-3508b969ec66 -vvv
 
-	php app/console fdc:soif:import_festival_poster 72115
+	php app/console fdc:soif:get_festival_poster 72115
 	
-	php app/console fdc:soif:import_projection 724
+	php app/console fdc:soif:get_projection 724
 	
 	php app/console fdc:soif:log_delete
 	
-	php app/console fdc:soif:update
+	php app/console fdc:soif:update 1420066800 1451602799 
