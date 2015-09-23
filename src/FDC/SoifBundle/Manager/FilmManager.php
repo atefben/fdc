@@ -128,6 +128,7 @@ class FilmManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
+        
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
 
         // update entity
@@ -165,7 +166,7 @@ class FilmManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities
@@ -199,7 +200,7 @@ class FilmManager extends CoreManager
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         // verify if we have results
-        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
         
         // set entities
         foreach ($resultObjects as $resultObject) {
@@ -529,23 +530,25 @@ class FilmManager extends CoreManager
                 }
 
                 // set translations for roles
-                $roles = $object->TraductionsRole->TraductionsRoleDto;
-                if (gettype($roles) == 'object') {
-                    $roles = array($roles);
-                }
-
-                foreach ($roles as $role) {
-                    if (!isset($localesMapper[$role->CodeLangue])) {
-                        $this->logger->warning(__METHOD__. " the locales mapper {$role->CodeLangue} doesn't exist");
-                        continue;
+                if (property_exists($object, 'TraductionsRole') && property_exists($object->TraductionsRole, 'TraductionsRoleDto')) {
+                    $roles = $object->TraductionsRole->TraductionsRoleDto;
+                    if (gettype($roles) == 'object') {
+                        $roles = array($roles);
                     }
-                    $entityTranslation = $persons[$object->Id]->findTranslationByLocale($localesMapper[$role->CodeLangue]);
-                    $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmFilmPersonTranslation();
-                    $entityTranslation->setRole($role->Traductionrole);
-                    $entityTranslation->setLocale($localesMapper[$role->CodeLangue]);
-                    
-                    if ($entityTranslation->getId() === null) {
-                        $persons[$object->Id]->addTranslation($entityTranslation);
+    
+                    foreach ($roles as $role) {
+                        if (!isset($localesMapper[$role->CodeLangue])) {
+                            $this->logger->warning(__METHOD__. " the locales mapper {$role->CodeLangue} doesn't exist");
+                            continue;
+                        }
+                        $entityTranslation = $persons[$object->Id]->findTranslationByLocale($localesMapper[$role->CodeLangue]);
+                        $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmFilmPersonTranslation();
+                        $entityTranslation->setRole($role->Traductionrole);
+                        $entityTranslation->setLocale($localesMapper[$role->CodeLangue]);
+                        
+                        if ($entityTranslation->getId() === null) {
+                            $persons[$object->Id]->addTranslation($entityTranslation);
+                        }
                     }
                 }
         

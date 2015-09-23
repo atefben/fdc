@@ -95,7 +95,7 @@ class ProjectionManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
-        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $resultObject = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         
         // set entity
         $entity = $this->set($result, $resultObject);
@@ -130,7 +130,7 @@ class ProjectionManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities

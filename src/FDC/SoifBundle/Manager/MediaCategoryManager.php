@@ -85,7 +85,7 @@ class MediaCategoryManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities
@@ -118,7 +118,7 @@ class MediaCategoryManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
-        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
         
         // loop twice because results are returned in an array (int, long, etc...)
         foreach ($resultObjects as $objs) {

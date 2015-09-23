@@ -102,7 +102,7 @@ class PrizeManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities

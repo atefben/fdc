@@ -141,7 +141,7 @@ class AwardManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
+        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities
@@ -176,7 +176,7 @@ class AwardManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
-        $resultObjects = $result->{$this->wsResultKey}->Resultats;
+        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
         
         // loop twice because results are returned in an array (int, long, etc...)
         foreach ($resultObjects as $objs) {
@@ -226,11 +226,12 @@ class AwardManager extends CoreManager
                 ));
                 $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmAwardAssociation();
                 $entityRelated->setPosition($obj->Ordre);
-                $film = $this->em->getRepository('FDCCoreBundle:FilmFilm')->findOneById(array('id' => $obj->Film));
-                if ($film === null) {
-                    $film = $this->filmManager->getById($obj->Film);
+                if ($obj->Film !== null) {
+                    $film = $this->em->getRepository('FDCCoreBundle:FilmFilm')->findOneById(array('id' => $obj->Film));
+                    $film = ($film !== null) ? $film : $this->filmManager->getById($obj->Film);
+                    
+                    $entityRelated->setFilm($film);
                 }
-                $entityRelated->setFilm($film);
                 $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById(array('id' => $obj->Persons));
                 if ($person === null) {
                     $person = $this->personManager->getById($obj->Persons);

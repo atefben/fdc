@@ -96,4 +96,10 @@ Check [here](http://php.net/manual/fr/dateinterval.createfromdatestring.php) for
 	
 	php app/console fdc:soif:log_delete
 	
-	php app/console fdc:soif:update --start=1420066800 --end=1451602799 
+	php app/console fdc:soif:update --start=1420066800 --end=1451602799
+
+## clean setup
+
+php app/console fdc:soif:update --start=0 --entity=country -vvv
+php app/console fdc:soif:update --start=0 --entity=festival -vvv
+php app/console fdc:soif:update --start=0 --entity=prize -vvv

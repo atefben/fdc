@@ -588,7 +588,7 @@ abstract class CoreManager
     public function throwException($msg, $exception)
     {
         $this->logger->critical($msg);
-        throw new $exception;
+     //   throw new $exception;
     }
     
     /**
