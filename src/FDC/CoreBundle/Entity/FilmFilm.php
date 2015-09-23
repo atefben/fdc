@@ -171,15 +171,17 @@ class FilmFilm implements FilmFilmInterface
      */
     public function __construct()
     {
+        $this->persons = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
         $this->generics = new ArrayCollection();
         $this->awards = new ArrayCollection();
         $this->medias = new ArrayCollection();
         $this->minorProductions = new ArrayCollection();
         $this->countries = new ArrayCollection();
-        $this->schoolAddresses = new ArrayCollection();
-        $this->languages = new ArrayCollection();
         $this->projections = new ArrayCollection();
         $this->translations = new ArrayCollection();
+        $this->schoolAddresses = new ArrayCollection();
+        $this->languages = new ArrayCollection();
     }
 
     /**

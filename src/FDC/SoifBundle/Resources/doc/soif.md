@@ -37,17 +37,19 @@ All command use a mandatory parameter ID, which refers to the SOIF identifier.
 
 ### UPDATE
 
-To udpate all entities you have to use the following command with 2 mandatory arguments :
+To udpate all entities you have to use the following command :
 
-    php app/console fdc:soif:update from to --entity=entity
-
-from - the beginning timestamp
-to - the end timestamp
---entity - to update only a specific entity, the entity name must be given (award, film, film_atelier...)
+    php app/console fdc:soif:update
+    
+There is 4 options :
+--start=TIMESTAMP The start timestamp (default : the database end_timestamp value from soif_task table)
+--end=TIMESTAMP   The end timestamp (default : the current timestamp)
+--entity=ENTITY   Will update only the specified entity
+--save            Will save the endtimestamp in the database
 
 For example to update award from 1st January to 31st December 2015 you have to use :
 
-    php app/console fdc:soif:update 1420066800 1451602799 --entity=award
+    php app/console fdc:soif:update --start=1420066800 --end=1451602799 --entity=award
 
 Update command will call also GetRemoved, to remove the entities which were deleted between the timestamp interval.
 
@@ -94,4 +96,4 @@ Check [here](http://php.net/manual/fr/dateinterval.createfromdatestring.php) for
 	
 	php app/console fdc:soif:log_delete
 	
-	php app/console fdc:soif:update 1420066800 1451602799 
+	php app/console fdc:soif:update --start=1420066800 --end=1451602799 

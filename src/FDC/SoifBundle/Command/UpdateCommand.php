@@ -2,8 +2,11 @@
 
 namespace FDC\SoifBundle\Command;
 
+use \DateTime;
+
+use FDC\CoreBundle\Entity\SoifTask;
+
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -18,19 +21,23 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
  */
 class UpdateCommand extends ContainerAwareCommand
 {
+    private $taskName = 'update';
+    
     /**
      * configure function.
      * 
      * @access protected
      * @return void
      */
-    protected function configure() {
+    protected function configure()
+    {
         $this
             ->setName('fdc:soif:update')
             ->setDescription('Update the database with SOIF call timestamp interval')
-            ->addArgument('from', InputArgument::REQUIRED, 'the soif identifier')
-            ->addArgument('to', InputArgument::REQUIRED, 'the soif identifier')
+            ->addOption('start', null, InputOption::VALUE_REQUIRED, 'the start timestamp')
+            ->addOption('end', null, InputOption::VALUE_REQUIRED, 'the end timestamp', time())
             ->addOption('entity', null, InputOption::VALUE_REQUIRED, 'If defined, will update the only entity selected')
+            ->addOption('save', null, InputOption::VALUE_NONE, 'If defined, will save the end timestamp in database')
         ;
     }
     
@@ -42,25 +49,40 @@ class UpdateCommand extends ContainerAwareCommand
      * @param OutputInterface $output
      * @return void
      */
-    protected function execute(InputInterface $input, OutputInterface $output) {
-
-        $from = $input->getArgument('from');
-        $to = $input->getArgument('to');
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+        $end = $input->getOption('end');
         $entity = $input->getOption('entity');
+        $save = $input->getOption('save');
         
+        // start
+        $start = $input->getOption('start');
+        if ($start === null) {
+            $soifTask = $em->getRepository('FDCCoreBundle:SoifTask')->findOneBy(array('taskName' => $this->taskName));
+            if ($soifTask === null) {
+                $msg = __METHOD__. " Couldn't find the taskName {$this->taskName} in table SoifTask";
+                $output->writeln($msg);
+                $this->logger->err($msg);
+                exit;
+            }
+            $start = $soifTask->getEndTimestamp();
+        }
+        
+        // managers
         $managers = array(
             $this->getContainer()->get('fdc.soif.country_manager'),
-            $this->getContainer()->get('fdc.soif.prize_manager'),
             $this->getContainer()->get('fdc.soif.festival_manager'),
             $this->getContainer()->get('fdc.soif.award_manager'),
-            $this->getContainer()->get('fdc.soif.person_manager'),
             $this->getContainer()->get('fdc.soif.festival_poster_manager'),
             $this->getContainer()->get('fdc.soif.film_atelier_manager'),
             $this->getContainer()->get('fdc.soif.film_manager'),
+            $this->getContainer()->get('fdc.soif.person_manager'),
             $this->getContainer()->get('fdc.soif.jury_manager'),
             $this->getContainer()->get('fdc.soif.projection_manager')
         );
         
+        // check if manager exist when targetting a specific entity
         if ($entity) {
             try {
                 $managers = array($this->getContainer()->get("fdc.soif.{$entity}_manager"));
@@ -70,9 +92,27 @@ class UpdateCommand extends ContainerAwareCommand
            }
         }
         
+        // call the managers
         foreach ($managers as $manager) {
-            $manager->getModified($from, $to);
-            $manager->getRemoved($from, $to);
+            $manager->getModified($start, $end);
+            $manager->getRemoved($start, $end);
+        }
+        
+        // save in database the end timestamp
+        if ($save !== null) {
+            $soifTask = $em->getRepository('FDCCoreBundle:SoifTask')->findOneBy(array('taskName' => $this->taskName));
+            $soifTask = ($soifTask !== null) ? $soifTask : new SoifTask();
+            
+            $dateTime = new DateTime();
+            $dateTime->setTimestamp((int)$end);
+            
+            $soifTask->setTaskName($this->taskName);
+            $soifTask->setEndTimestamp($dateTime);
+            
+            if ($soifTask->getId() == null) {
+                $em->persist($soifTask);
+            }
+            $em->flush();
         }
     }
 

@@ -68,7 +68,7 @@ class FilmPerson
      * @ORM\Column(type="string", length=3, nullable=true)
      */
     private $nationality2;
-
+    
     /**
      * @var string
      *
@@ -89,7 +89,14 @@ class FilmPerson
     private $filmAtelierGenerics;
 
     /**
-     * @var string
+     * @var FilmPersonFilmFilm
+     *
+     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="person", cascade={"persist"})
+     */
+    private $films;
+    
+    /**
+     * @var FilmGeneric
      *
      * @ORM\OneToMany(targetEntity="FilmGeneric", mappedBy="person")
      */
@@ -127,11 +134,22 @@ class FilmPerson
     {
         $this->filmAtelierGenerics = new ArrayCollection();
         $this->filmGenerics = new ArrayCollection();
+        $this->films = new ArrayCollection();
         $this->juries = new ArrayCollection();
         $this->awards = new ArrayCollection();
         $this->medias = new ArrayCollection();
         $this->cinefPersons = new ArrayCollection();
         $this->translations = new ArrayCollection();
+    }
+    
+    public function __toString()
+    {
+        return $this->getFullname();
+    }
+    
+    public function getFullName()
+    {
+        return $this->getFirstname(). ' '. $this->getLastname();
     }
 
     /**
@@ -376,6 +394,49 @@ class FilmPerson
     {
         return $this->filmGenerics;
     }
+
+    /**
+     * Add film
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilmPerson $films
+     * @return FilmPerson
+     */
+    public function addFilm(\FDC\CoreBundle\Entity\FilmFilmPerson $films)
+    {
+        if ($this->films->contains($films)) {
+            return;
+        }
+
+        $films->setPerson($this);
+        $this->films[] = $films;
+
+        return $this;
+    }
+
+    /**
+     * Remove film
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilmPerson $films
+     */
+    public function removeFilm(\FDC\CoreBundle\Entity\FilmFilmPerson $films)
+    {
+        if (!$this->films->contains($films)) {
+            return;
+        }
+
+        $this->films->removeElement($films);
+    }
+
+    /**
+     * Get films
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilms()
+    {
+        return $this->films;
+    }
+    
 
     /**
      * Add juries

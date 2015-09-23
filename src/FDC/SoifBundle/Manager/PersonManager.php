@@ -4,8 +4,14 @@ namespace FDC\SoifBundle\Manager;
 
 use \Exception;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use FDC\CoreBundle\Entity\FilmPerson;
 use FDC\CoreBundle\Entity\FilmPersonTranslation;
+use FDC\CoreBundle\Entity\FilmFilmPerson;
+use FDC\CoreBundle\Entity\FilmFilmPersonFunction;
+use FDC\CoreBundle\Entity\FilmFunction;
+use FDC\CoreBundle\Entity\FilmFunctionTranslation;
 
 /**
  * PersonManager class.
@@ -16,6 +22,7 @@ use FDC\CoreBundle\Entity\FilmPersonTranslation;
  */
 class PersonManager extends CoreManager
 {
+    
     /**
      * __construct function.
      * 
@@ -179,6 +186,82 @@ class PersonManager extends CoreManager
         
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
+        
+        // set films
+        if (property_exists($resultObject, 'PersonneFilms') && property_exists($resultObject->PersonneFilms, 'PersonneFilmDto')) {
+            $collection = new ArrayCollection();
+            $localesMapper = $this->getLocalesMapper();
+            $resultObject->PersonneFilms->PersonneFilmDto = $this->objectToArray($resultObject->PersonneFilms->PersonneFilmDto);
+            $collectionFunctions = new ArrayCollection();
+            foreach ($resultObject->PersonneFilms->PersonneFilmDto as $obj) {
+                $entityRelated = $this->em->getRepository('FDCCoreBundle:FilmFilmPerson')->findOneBy(array(
+                    'film' => $obj->IdFilm,
+                    'person' => $entity->getId(),
+                ));
+                $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmFilmPerson();
+                
+                $film = $this->em->getRepository('FDCCoreBundle:FilmFilm')->findOneById(array('id' => $obj->IdFilm));
+                if ($film === null) {
+                    $msg = __METHOD__. " Film {$obj->IdFilm} not found, call php app/console fdc:soif:get_film {$obj->IdFilm} to import it";
+                    $this->logger->warn($msg);
+                    continue;
+                }
+                if ($entity->getId() == 317542) {
+                    continue;
+                }
+                $entityRelated->setFilm($film);
+                // set functions
+                if (isset($obj->FonctionsTraductions) &&
+                    isset($obj->FonctionsTraductions->FonctionTraductionDto)  &&
+                    count($obj->FonctionsTraductions->FonctionTraductionDto) > 0) {
+                    $entityRelatedFunction = $this->em->getRepository('FDCCoreBundle:FilmFilmPersonFunction')->findOneBy(array(
+                        'filmPerson' => $entityRelated->getId(),
+                        'function' => $obj->IdFonction,
+                    ));
+                    $entityRelatedFunction = ($entityRelatedFunction !== null) ? $entityRelatedFunction : new FilmFilmPersonFunction();
+                    $function = $this->em->getRepository('FDCCoreBundle:FilmFunction')->findOneById(array('id' => $obj->IdFonction));
+                    if ($function === null) {
+                        $function = new FilmFunction();
+                    }
+                    $function->setId($obj->IdFonction);
+                    
+                    // loop through translations
+                    $entityTranslation = array();
+                    $translations = $obj->FonctionsTraductions->FonctionTraductionDto;
+                    foreach ($translations as $translation) {
+                        if (!isset($localesMapper[$translation->CodeLangue])) {
+                            $this->logger->warning(__METHOD__. " the locales mapper {$translation->CodeLangue} doesn't exist");
+                            continue;
+                        }
+                        if (!isset($entityTranslation[$translation->CodeLangue])) {
+                            $entityTranslation[$translation->CodeLangue] = $function->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
+                        }
+                        
+                        // set translations
+                        $entityTranslation[$translation->CodeLangue] = ($entityTranslation[$translation->CodeLangue] !== null) ? $entityTranslation[$translation->CodeLangue] : new FilmFunctionTranslation();
+                        $entityTranslation[$translation->CodeLangue]->setName($translation->Libelle);
+                        $entityTranslation[$translation->CodeLangue]->setLocale($localesMapper[$translation->CodeLangue]);
+                        
+                        // if new entity add translation to parent
+                        if ($entityTranslation[$translation->CodeLangue]->getId() === null) {
+                            $function->addTranslation($entityTranslation[$translation->CodeLangue]);
+                        }
+                    }
+                    $entityRelatedFunction->setFunction($function);
+                    $entityRelated->addFunction($entityRelatedFunction);
+                    $collectionFunctions->add($entityRelatedFunction);
+                    $this->removeOldRelations($entityRelated->getFunctions(), $collectionFunctions, $entityRelated, 'removeFunction');
+                }
+                $entity->addFilm($entityRelated);
+                // save in array all the entities
+                $collection->add($entityRelated);
+                
+                $this->update($entity);
+            }
+
+            // remove old relations
+            $this->removeOldRelations($entity->getFilms(), $collection, $entity, 'removeFilm');
+        }
         
         return $entity;
     }

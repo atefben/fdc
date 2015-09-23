@@ -2,6 +2,7 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -22,6 +23,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class FilmFilmPersonFunction
 {
     use Time;
+
     /**
      * @var integer
      *
@@ -53,6 +55,16 @@ class FilmFilmPersonFunction
      * @ORM\JoinColumn(name="film_person_id", referencedColumnName="id", nullable=false)
      */
     private $filmPerson;
+
+    /**
+     * __construct function.
+     * 
+     * @access public
+     * @return void
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Get id

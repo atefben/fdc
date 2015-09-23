@@ -2,6 +2,7 @@
 
 namespace FDC\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -59,6 +60,9 @@ class FilmSelection
      */
     public function __construct()
     {
+        $this->sections = new ArrayCollection();
+        $this->subsections = new ArrayCollection();
+        $this->films = new ArrayCollection();
     }
 
     /**

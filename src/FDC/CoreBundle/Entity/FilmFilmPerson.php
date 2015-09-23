@@ -7,8 +7,8 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use FDC\CoreBundle\Util\Translation;
 use FDC\CoreBundle\Util\Time;
+use FDC\CoreBundle\Util\Translation;
 
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -66,14 +66,38 @@ class FilmFilmPerson
      * @var ArrayCollection
      */
     protected $translations;
-    
+
     /**
      * Constructor
      */
     public function __construct()
     {
-         $this->translations = new ArrayCollection();
          $this->functions = new ArrayCollection();
+         $this->translations = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        $string = '';
+        if ($this->getPerson() !== null) {
+            $string = $this->getPerson()->getFullname(). ' - ';
+            if ($this->getFunctions() !== null) {
+                foreach ($this->getFunctions() as $key => $filmPersonFunction) {
+                    if ($filmPersonFunction->getFunction() !== null) {
+                        $translation  = $filmPersonFunction->getFunction()->findTranslationByLocale('fr');
+                        if ($translation !== null) {
+                            $string .= $translation->getName();
+                           
+                        }
+                        $string .= (($key + 1) < $this->getFunctions()->count()) ? ', ' : '';
+                    }
+                }
+            } else {
+                $string .= 'Non renseigné';
+            }
+        }
+        
+        return $string;
     }
 
     /**

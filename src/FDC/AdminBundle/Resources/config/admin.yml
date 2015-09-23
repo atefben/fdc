@@ -76,3 +76,15 @@ services:
         arguments: [~, FDC\CoreBundle\Entity\NewsNewsAssociated, FDCAdminBundle:NewsNewsAssociatedAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsNewsAssociated, show_in_dashboard: false}
+
+    fdc.admin.film_film:
+        class: FDC\AdminBundle\Admin\FilmFilmAdmin
+        arguments: [~, FDC\CoreBundle\Entity\FilmFilm, FDCAdminBundle:FilmFilmAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmFilm}
+
+    fdc.admin.film_person:
+        class: FDC\AdminBundle\Admin\FilmPersonAdmin
+        arguments: [~, FDC\CoreBundle\Entity\FilmPerson, FDCAdminBundle:FilmPersonAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmPerson}
