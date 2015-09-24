@@ -88,3 +88,15 @@ services:
         arguments: [~, FDC\CoreBundle\Entity\FilmPerson, FDCAdminBundle:FilmPersonAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmPerson}
+
+    fdc.admin.film_film_media:
+        class: FDC\AdminBundle\Admin\FilmFilmMediaAdmin
+        arguments: [~, FDC\CoreBundle\Entity\FilmFilmMedia, FDCAdminBundle:FilmFilmMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFilmMedia}
+
+    fdc.admin.film_media:
+        class: FDC\AdminBundle\Admin\FilmMediaAdmin
+        arguments: [~, FDC\CoreBundle\Entity\FilmMedia, FDCAdminBundle:FilmMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmMedia}

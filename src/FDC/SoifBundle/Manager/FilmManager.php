@@ -129,6 +129,10 @@ class FilmManager extends CoreManager
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
         
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->warn($this->wsMethod . " {$id} not found");
+            return null;
+        }
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
 
         // update entity
@@ -175,7 +179,7 @@ class FilmManager extends CoreManager
         }
         
         // save entities
-        $this->updates($entities);
+        $this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);
@@ -202,9 +206,18 @@ class FilmManager extends CoreManager
         // verify if we have results
         $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
         
-        // set entities
-        foreach ($resultObjects as $resultObject) {
-            $this->remove($resultObject);
+        // deleteMultiple objects
+        $this->deleteMultiple($resultObjects);
+        
+        // loop 3 times because results are returned that way
+        foreach ($resultObjects as $types) {
+            foreach ($types as $ids) {
+                // make sure we have an array even when one single result is returned
+                $ids = $this->mixedToArray($ids);
+                foreach ($ids as $id) {
+                    $this->remove($id);
+                }
+            }
         }
         
         // save entities
@@ -237,11 +250,8 @@ class FilmManager extends CoreManager
             $this->logger->warning(__METHOD__. "FilmPaysProduction not found");
         } else {
             // create an array when we get an object to standardize the code
-            if (gettype($resultObject->FilmPaysProduction->PaysProductionDto) == 'object') {
-                $resultObject->FilmPaysProduction->PaysProductionDto = array($resultObject->FilmPaysProduction->PaysProductionDto);
-            }
-            
-            $entityRelated = new FilmFilmCountry();
+            $resultObject->FilmPaysProduction->PaysProductionDto = $this->objectToArray($resultObject->FilmPaysProduction->PaysProductionDto);
+            $collection = new ArrayCollection();
             foreach ($resultObject->FilmPaysProduction->PaysProductionDto as $filmProdCountry) {
                 // check if country already exists if not call the ws
                 $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $filmProdCountry->CodeIso));
@@ -249,31 +259,49 @@ class FilmManager extends CoreManager
                     $this->logger->warning(__METHOD__. "Country with iso {$filmProdCountry->CodeIso} not found");
                     continue;
                 }
+                // find related entity
+                $entityRelated = $this->em->getRepository('FDCCoreBundle:FilmFilmCountry')->findOneBy(array(
+                    'film' => $entity,
+                    'country' => $country
+                ));
+                $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmFilmCountry();
                 
                 // set properties
-                $entity->setCountry($country);
-                $entity->setPosition($filmProdCountry->Ordre);
+                $entityRelated->setCountry($country);
+                $entityRelated->setPosition($filmProdCountry->Ordre);
+                
+                // set country
+                $entity->addCountry($entityRelated);
+                $collection->add($entityRelated);
             }
+            // remove old relations
+            $this->removeOldRelations($entity->getCountries(), $collection, $entity, 'removeCountry');
         }
         
         // set film elements multimedia
         if (property_exists($resultObject, 'FilmElementsMultimedias') && property_exists($resultObject->FilmElementsMultimedias, 'ElementMultimediaRefDto')) {
+            $collection = new ArrayCollection();
             foreach ($resultObject->FilmElementsMultimedias->ElementMultimediaRefDto as $filmFilmMedia) {
-                $entityRelated = $entity->hasMedia($filmFilmMedia->Id);
+                // find if filmMedia already exists
+                $entityRelated = $this->em->getRepository('FDCCoreBundle:FilmFilmMedia')->findOneBy(array(
+                    'film' => $entity,
+                    'media' => $filmFilmMedia->Id
+                ));
                 $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmFilmMedia();
                 $entityRelated->setFilename($filmFilmMedia->FileName);
                 $entityRelated->setType($filmFilmMedia->IdType);
                 $entityRelated->setPosition($filmFilmMedia->Ordre);
                 
-                // get the media
+                // get the related media
                 $filmMedia = $this->mediaManager->getById($filmFilmMedia->Id);
                 $entityRelated->setMedia($filmMedia);
-                $entityRelated->setFilm($entity);
                 
-                if ($entityRelated->getid() !== null) {
-                    $entity->addMedia($entityRelated);
-                }
+                // add media
+                $entity->addMedia($entityRelated);
+                $collection->add($entityRelated);
             }
+            // remove old relations
+            $this->removeOldRelations($entity->getMedias(), $collection, $entity, 'removeMedia');
         }
         
         // set translations
@@ -564,15 +592,18 @@ class FilmManager extends CoreManager
             }
             
             // create / update contact
+            $collection = new ArrayCollection();
             foreach ($objects as $object) {
                 $filmContact = $this->em->getRepository('FDCCoreBundle:FilmContact')->findOneBy(array('id' => $object->IdContact));
                 $filmContact = ($filmContact !== null) ? $filmContact : new FilmContact();
-                if ($filmContact->getId() === null) {
-                    $entity->addContact($filmContact);
-                }
+                
+                // set properties
                 $filmContact->setId($object->IdContact);
                 $filmContact->setType($object->TypesContactId);
                 $filmContact->setCompanyName($object->NomSociete);
+                
+                $entity->addContact($filmContact);
+                $collection->add($filmContact);
                 
                 // set address
                 if (property_exists($object, 'Adresse')) {
@@ -598,19 +629,21 @@ class FilmManager extends CoreManager
                     
                     // set state translations
                     $translations = $address->EtatsTraductions;
-                    foreach ($translations as $translation) {
-                        if (!isset($localesMapper[$translation->CodeLangue])) {
-                            $this->logger->warning(__METHOD__. " the locales mapper {$translation->CodeLangue} doesn't exist");
-                            continue;
-                        }
-                        
-                        $entityTranslation = $filmAddress->findTranslationByLocale($localesMapper[$role->CodeLangue]);
-                        $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmAddressTranslation();
-                        $entityTranslation->setState($translation->Nom);
-                        $entityTranslation->setLocale($localesMapper[$translation->CodeLangue]);
-                        
-                        if ($entityTranslation->getId() === null) {
-                            $filmAddress->addTranslation($entityTranslation);
+                    if (count($translations) > 0) {
+                        foreach ($translations as $translation) {
+                            if (!isset($localesMapper[$translation->CodeLangue])) {
+                                $this->logger->warning(__METHOD__. " the locales mapper {$translation->CodeLangue} doesn't exist");
+                                continue;
+                            }
+                            
+                            $entityTranslation = $filmAddress->findTranslationByLocale($localesMapper[$role->CodeLangue]);
+                            $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmAddressTranslation();
+                            $entityTranslation->setState($translation->Nom);
+                            $entityTranslation->setLocale($localesMapper[$translation->CodeLangue]);
+                            
+                            if ($entityTranslation->getId() === null) {
+                                $filmAddress->addTranslation($entityTranslation);
+                            }
                         }
                     }
                 }
@@ -633,9 +666,8 @@ class FilmManager extends CoreManager
                 // set subordinates
                 if (property_exists($object, 'ContactSecondaires') && property_exists($object->ContactSecondaires, 'PersonneContactSecondaireDto')) {
                     $subordinates = $object->ContactSecondaires->PersonneContactSecondaireDto;
-                    if (gettype($subordinates) == 'object') {
-                         $subordinates = array($subordinates);
-                    }
+                    $subordinates = $this->objectToArray($subordinates);
+                    $collectionSubordinates = new ArrayCollection();
                     foreach ($subordinates as $subordinate) {
                         $filmContactPersonSubordinate = $this->em->getRepository('FDCCoreBundle:FilmContactPerson')->findOneById(array('id' => $subordinate->Id));
                         $filmContactPersonSubordinate = ($filmContactPersonSubordinate !== null) ? $filmContactPersonSubordinate: new FilmContactPerson();
@@ -645,12 +677,13 @@ class FilmManager extends CoreManager
                         $filmContactPersonSubordinate->setFirstname($subordinate->Prenom);
                         $filmContactPersonSubordinate->setMobilePhone($subordinate->TelephonePortable);
                         
-                        if (!$filmContactPerson->getSubordinates()->contains($filmContactPersonSubordinate)) {
-                            $filmContactPerson->addSubordinate($filmContactPersonSubordinate);
-                        }
+                        $filmContactPerson->addSubordinate($filmContactPersonSubordinate);
+                        $collectionSubordinates->add($filmContactPerson);
                     }
+                    $this->removeOldRelations($filmContactPerson->getSubordinates(), $collectionSubordinates, $filmContactPerson, 'removeSubordinate');
                 }
             }
+            $this->removeOldRelations($entity->getContacts(), $collection, $entity, 'removeContact');
         }
         
         return $entity;

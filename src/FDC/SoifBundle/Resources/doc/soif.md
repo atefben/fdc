@@ -74,6 +74,16 @@ For example to delete log file older than 1 day, it will be :
 	
 Check [here](http://php.net/manual/fr/dateinterval.createfromdatestring.php) for more informations on the format used.
 
+## clean import
+
+You should at least call those commands before calling other webservices to get all the mandatories tables.
+
+    php app/console fdc:soif:update --start=0 --entity=country -vvv
+    php app/console fdc:soif:update --start=0 --entity=festival -vvv
+    php app/console fdc:soif:update --start=0 --entity=prize -vvv
+    
+    
+    
 ## examples
 
     php app/console fdc:soif:get_media 002013c8-c64e-461a-955e-be7a7a22c166 -vvv
@@ -97,9 +107,3 @@ Check [here](http://php.net/manual/fr/dateinterval.createfromdatestring.php) for
 	php app/console fdc:soif:log_delete
 	
 	php app/console fdc:soif:update --start=1420066800 --end=1451602799
-
-## clean setup
-
-php app/console fdc:soif:update --start=0 --entity=country -vvv
-php app/console fdc:soif:update --start=0 --entity=festival -vvv
-php app/console fdc:soif:update --start=0 --entity=prize -vvv

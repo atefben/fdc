@@ -51,7 +51,9 @@ class FilmFilmPerson
      * @var FilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="persons", cascade={"persist"})
-     * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=true)
+     *
+     * @TODO: set nullable false / true ? related to FDC_Questions_LOT1_20150923 point 4
      */
     private $person;
 

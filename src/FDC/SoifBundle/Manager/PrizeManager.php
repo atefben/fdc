@@ -111,7 +111,7 @@ class PrizeManager extends CoreManager
         }
 
         // save entities
-        $this->updates($entities);
+        $this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);

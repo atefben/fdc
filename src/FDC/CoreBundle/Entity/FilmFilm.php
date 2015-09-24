@@ -113,7 +113,7 @@ class FilmFilm implements FilmFilmInterface
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films")
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films", cascade={"persist"})
      */
     private $festival;
     
@@ -132,32 +132,33 @@ class FilmFilm implements FilmFilmInterface
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FilmGeneric", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmGeneric", mappedBy="film", cascade={"persist"})
      */
     private $generics;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="film", cascade={"persist"})
      */
     private $awards;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"persist"})
+     * @ORM\OrderBy({"position"="ASC"})
      */
     private $medias;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmMinorProduction", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmMinorProduction", mappedBy="film", cascade={"persist"})
      */
     private $minorProductions;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"persist"} )
      */
     private $countries;
 
     /**
-     * @ORM\ManyToMany(targetEntity="FilmProjection", inversedBy="films")
+     * @ORM\ManyToMany(targetEntity="FilmProjection", inversedBy="films", cascade={"persist"})
      */
     private $projections;
     
@@ -1124,6 +1125,7 @@ class FilmFilm implements FilmFilmInterface
             return;
         }
         
+        $countries->setFilm($this);
         $this->countries[] = $countries;
 
         return $this;
@@ -1287,6 +1289,7 @@ class FilmFilm implements FilmFilmInterface
         if ($this->medias->contains($medias)) {
             return;
         }
+        $medias->setFilm($this);
         
         $this->medias[] = $medias;
 

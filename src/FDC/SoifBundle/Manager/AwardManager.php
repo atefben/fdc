@@ -150,7 +150,7 @@ class AwardManager extends CoreManager
         }
         
         // save entities
-        $this->updates($entities);
+        $this->updateMultiple($entities);
         
         
         
@@ -178,12 +178,8 @@ class AwardManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
         
-        // loop twice because results are returned in an array (int, long, etc...)
-        foreach ($resultObjects as $objs) {
-            foreach ($objs as $id) {
-                $this->remove($id);
-            }
-        }
+        // delete objects
+        $this->deleteMultiple($resultObjects);
         
         // save entities
         $this->em->flush();
@@ -230,7 +226,9 @@ class AwardManager extends CoreManager
                     $film = $this->em->getRepository('FDCCoreBundle:FilmFilm')->findOneById(array('id' => $obj->Film));
                     $film = ($film !== null) ? $film : $this->filmManager->getById($obj->Film);
                     
-                    $entityRelated->setFilm($film);
+                    if ($film !== null) {
+                        $entityRelated->setFilm($film);
+                    }
                 }
                 $person = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneById(array('id' => $obj->Persons));
                 if ($person === null) {

@@ -9,6 +9,7 @@ use FDC\CoreBundle\Entity\FilmAtelierCountry;
 use FDC\CoreBundle\Entity\FilmAtelierLanguage;
 use FDC\CoreBundle\Entity\FilmAtelierPerson;
 use FDC\CoreBundle\Entity\FilmAtelierTranslation;
+use FDC\CoreBundle\Entity\FilmAtelierPersonFunction;
 use FDC\CoreBundle\Entity\FilmAtelierProductionCompany;
 use FDC\CoreBundle\Entity\FilmAtelierProductionCompanyAddress;
 use FDC\CoreBundle\Entity\FilmAtelierProductionCompanyAddressTranslation;
@@ -141,7 +142,7 @@ class FilmAtelierManager extends CoreManager
         }
         
         // save entities
-        $this->updates($entities);
+        $this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);
@@ -167,12 +168,8 @@ class FilmAtelierManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
         
-        // loop twice because results are returned in an array (int, long, etc...)
-        foreach ($resultObjects as $objs) {
-            foreach ($objs as $id) {
-                $this->remove($id);
-            }
-        }
+        // delete objects
+        $this->deleteMultiple($resultObjects);
         
         // save entities
         $this->em->flush();
@@ -193,6 +190,7 @@ class FilmAtelierManager extends CoreManager
     {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmAtelier();
+        $id = $resultObject->{$this->entityIdKey};
         
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
@@ -236,9 +234,7 @@ class FilmAtelierManager extends CoreManager
         // @todo realisateurs, probleme duplicate function film_person_translation link to film_function
         if (property_exists($resultObject, 'IdRealisateurs')) {
             // create an array when we get an object to standardize the code
-            if (gettype($resultObject->IdRealisateurs) == 'object') {
-                $resultObject->IdRealisateurs = array($resultObject->IdRealisateurs);
-            }
+            $resultObject->IdRealisateurs = $this->objectToArray($resultObject->IdRealisateurs);
             
             foreach ($resultObject->IdRealisateurs as $director) {
                 $filmPerson = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneBy(array('id' => $director->int));
@@ -255,8 +251,8 @@ class FilmAtelierManager extends CoreManager
                         $this->logger->error(__METHOD__. " {$id}, function translation Director not found");
                     } else {
                         $filmAtelierPersonFunction = new FilmAtelierPersonFunction();
-                        $filmAtelierPersonFunction->setFunction($functionTranslation->getFunction());
-                        $filmAtelierPerson->addFuntion($filmAtelierPersonFunction);
+                        $filmAtelierPersonFunction->setFunction($functionTranslation->getTranslatable());
+                        $filmAtelierPerson->addFunction($filmAtelierPersonFunction);
                     }
                 }
             }
@@ -309,6 +305,7 @@ class FilmAtelierManager extends CoreManager
         
         // set languages
         foreach ($resultObject->LanguesTournage as $languages) {
+            $languages = $this->mixedToArray($languages);
             foreach ($languages as $language) {
                 $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneBy(array('iso' => $language));
                 if ($country === null) {

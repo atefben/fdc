@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class FilmFilmAdmin extends Admin
+class FilmMediaAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,16 +17,15 @@ class FilmFilmAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('directorFirst')
-            ->add('restored')
-            ->add('titleVO')
-            ->add('titleVOAlphabet')
-            ->add('productionYear')
-            ->add('duration')
-            ->add('castingCommentary')
-            ->add('website')
-            ->add('galaId')
-            ->add('galaName')
+            ->add('contentType')
+            ->add('noteVf')
+            ->add('noteVa')
+            ->add('copyright')
+            ->add('credits')
+            ->add('type')
+            ->add('internet')
+            ->add('titleVf')
+            ->add('titleVa')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('soifUpdatedAt')
@@ -40,16 +39,15 @@ class FilmFilmAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('directorFirst')
-            ->add('restored')
-            ->add('titleVO')
-            ->add('titleVOAlphabet')
-            ->add('productionYear')
-            ->add('duration')
-            ->add('castingCommentary')
-            ->add('website')
-            ->add('galaId')
-            ->add('galaName')
+            ->add('contentType')
+            ->add('noteVf')
+            ->add('noteVa')
+            ->add('copyright')
+            ->add('credits')
+            ->add('type')
+            ->add('internet')
+            ->add('titleVf')
+            ->add('titleVa')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('soifUpdatedAt')
@@ -70,16 +68,15 @@ class FilmFilmAdmin extends Admin
     {
         $formMapper
             ->add('id')
-            ->add('directorFirst')
-            ->add('restored')
-            ->add('titleVO')
-            ->add('titleVOAlphabet')
-            ->add('productionYear')
-            ->add('duration')
-            ->add('castingCommentary')
-            ->add('website')
-            ->add('galaId')
-            ->add('galaName')
+            ->add('contentType')
+            ->add('noteVf')
+            ->add('noteVa')
+            ->add('copyright')
+            ->add('credits')
+            ->add('type')
+            ->add('internet')
+            ->add('titleVf')
+            ->add('titleVa')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('soifUpdatedAt')
@@ -93,24 +90,19 @@ class FilmFilmAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('directorFirst')
-            ->add('restored')
-            ->add('titleVO')
-            ->add('titleVOAlphabet')
-            //->add('translations')
-            ->add('productionYear')
-            ->add('duration')
-            ->add('castingCommentary')
-            ->add('website')
-            ->add('galaId')
-            ->add('galaName')
+            ->add('contentType')
+            ->add('noteVf')
+            ->add('noteVa')
+            ->add('copyright')
+            ->add('credits')
+            ->add('type')
+            ->add('internet')
+            ->add('titleVf')
+            ->add('titleVa')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('soifUpdatedAt')
-            ->add('persons')
-            ->add('medias', null, array(
-                'template' => 'FDCAdminBundle:FilmFilm:medias.html.twig'
-            ))
+            ->add('file')
         ;
     }
 }

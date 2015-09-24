@@ -289,6 +289,7 @@ abstract class CoreManager
         $result = null;
         
         try {
+            $this->logger->info('SOIF call: '. $method. ', params: '. implode(', ', $parameters));
             $result = $this->client->$method($parameters);
             // create log output
             $content = "Method : {$method}\n";
@@ -530,13 +531,13 @@ abstract class CoreManager
     }
     
     /**
-     * updates function.
+     * updateMultiple function.
      * 
      * @access public
      * @param mixed $entities
      * @return void
      */
-    public function updates($entities)
+    public function updateMultiple($entities)
     {
         foreach ($entities as $entity) {
             // if is new, persist entity
@@ -626,5 +627,42 @@ abstract class CoreManager
         }
         
         return $object;
+    }
+    
+    /**
+     * mixedToArray function.
+     * 
+     * @access public
+     * @param mixed $mixed
+     * @return void
+     */
+    public function mixedToArray($mixed)
+    {
+        if (gettype($mixed) !== 'array') {
+            $mixed = array($mixed);
+        }
+        
+        return $mixed;
+    }
+    
+    /**
+     * deleteMultiple function.
+     * 
+     * @access public
+     * @param mixed $objects
+     * @return void
+     */
+    public function deleteMultiple($objects)
+    {
+        // loop 3 times because results are returned that way
+        foreach ($objects as $types) {
+            foreach ($types as $ids) {
+                // make sure we have an array even when one single result is returned
+                $ids = $this->mixedToArray($ids);
+                foreach ($ids as $id) {
+                    $this->remove($id);
+                }
+            }
+        }
     }
 }

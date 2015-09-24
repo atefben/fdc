@@ -79,6 +79,12 @@ class PersonManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
+        
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->warn($this->wsMethod . " {$id} not found");
+            return null;
+        }
+
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
         // set entity
@@ -125,7 +131,7 @@ class PersonManager extends CoreManager
         }
 
         // save entities
-        $this->updates($entities);
+        $this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);
@@ -151,12 +157,8 @@ class PersonManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
         
-        // loop twice because results are returned in an array (int, long, etc...)
-        foreach ($resultObjects as $objs) {
-            foreach ($objs as $id) {
-                $this->remove($id);
-            }
-        }
+        // delete objects
+        $this->deleteMultiple($resultObjects);
         
         // save entities
         $this->em->flush();
@@ -204,9 +206,6 @@ class PersonManager extends CoreManager
                 if ($film === null) {
                     $msg = __METHOD__. " Film {$obj->IdFilm} not found, call php app/console fdc:soif:get_film {$obj->IdFilm} to import it";
                     $this->logger->warn($msg);
-                    continue;
-                }
-                if ($entity->getId() == 317542) {
                     continue;
                 }
                 $entityRelated->setFilm($film);

@@ -139,7 +139,7 @@ class ProjectionManager extends CoreManager
         }
 
         // save entities
-        $this->updates($entities);
+        $this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);
@@ -165,12 +165,8 @@ class ProjectionManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         $resultObjects = $result->{$this->wsResultKey}->Resultats;
         
-        // loop twice because results are returned in an array (int, long, etc...)
-        foreach ($resultObjects as $objs) {
-            foreach ($objs as $id) {
-                $this->remove($id);
-            }
-        }
+        // delete objects
+        $this->deleteMultiple($resultObjects);
         
         // save entities
         $this->em->flush();

@@ -47,9 +47,9 @@ class FilmAtelierPerson
     private $person;
     
     /**
-     * @var FilmFilmPersonFunction
+     * @var FilmAtelierPersonFunction
      *
-     * @ORM\oneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmAtelier", cascade={"persist"})
+     * @ORM\oneToMany(targetEntity="FilmAtelierPersonFunction", mappedBy="filmAtelier", cascade={"persist"})
      */
     private $functions;
     
@@ -120,10 +120,10 @@ class FilmAtelierPerson
     /**
      * Add functions
      *
-     * @param \FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions
+     * @param \FDC\CoreBundle\Entity\FilmAtelierPersonFunction $functions
      * @return FilmAtelierPerson
      */
-    public function addFunction(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions)
+    public function addFunction(\FDC\CoreBundle\Entity\FilmAtelierPersonFunction $functions)
     {
         if ($this->functions->contains($functions)) {
             return;
@@ -137,9 +137,9 @@ class FilmAtelierPerson
     /**
      * Remove functions
      *
-     * @param \FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions
+     * @param \FDC\CoreBundle\Entity\FilmAtelierPersonFunction $functions
      */
-    public function removeFunction(\FDC\CoreBundle\Entity\FilmFilmPersonFunction $functions)
+    public function removeFunction(\FDC\CoreBundle\Entity\FilmAtelierPersonFunction $functions)
     {
         if (!$this->functions->contains($functions)) {
             return;

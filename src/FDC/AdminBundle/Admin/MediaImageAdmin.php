@@ -139,7 +139,7 @@ class MediaImageAdmin extends Admin
             ))
             ->add('file', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'header_image'
+                'context'  => 'news_header_image'
             ))
         ->end();
     }
