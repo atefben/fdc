@@ -289,6 +289,12 @@ abstract class CoreManager
         $result = null;
         
         try {
+            /** 
+             * using keep_alive false to fix the error : 
+             * Notice: SoapClient::__doRequest(): send of 766 bytes failed with errno=32 Broken pipe
+             * https://bugs.php.net/bug.php?id=60329
+             */
+            $parameters['keep_alive'] = false;
             $this->logger->info('SOIF call: '. $method. ', params: '. implode(', ', $parameters));
             $result = $this->client->$method($parameters);
             // create log output
@@ -399,6 +405,7 @@ abstract class CoreManager
             
             // new translation mapper version
             if (isset($mapper['setters'])) {
+                $translations = $this->mixedToArray($translations);
                 foreach ($translations as $translation) {
                     // the iso field has different name in GetMovie it's IdLangue, other ws CodeLangue.
                     $iso = (isset($mapper['wsLangKey'])) ? $translation->$mapper['wsLangKey'] : ((property_exists($translation, 'CodeLangue')) ? $translation->CodeLangue : $translation->IdLangue);
@@ -610,25 +617,7 @@ abstract class CoreManager
             }
         }
     }
-    
-    /**
-     * objectToArray function.
-     *
-     * SOIF / soapClient returns an object instead of an array with one element, this method fixes this issue
-     * 
-     * @access public
-     * @param mixed $object
-     * @return void
-     */
-    public function objectToArray($object)
-    {
-        if (gettype($object) == 'object') {
-            return array($object);
-        }
-        
-        return $object;
-    }
-    
+
     /**
      * mixedToArray function.
      * 

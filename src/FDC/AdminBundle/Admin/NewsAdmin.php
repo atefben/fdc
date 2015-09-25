@@ -21,8 +21,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class NewsAdmin extends Admin
 {
-    protected $translationDomain = 'FDCAdminBundle';
-
     /**
      * @param DatagridMapper $datagridMapper
      */

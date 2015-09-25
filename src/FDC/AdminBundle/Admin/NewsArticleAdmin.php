@@ -23,8 +23,6 @@ class NewsArticleAdmin extends Admin
     protected $formOptions = array(
         'cascade_validation' => true
     );
-    
-    protected $translationDomain = 'FDCAdminBundle';
         
     public function getNewInstance()
     {
@@ -131,6 +129,7 @@ class NewsArticleAdmin extends Admin
                 'fields' => array(
                     'title' => array(
                         'label' => 'form.label_title',
+                        'translation_domain' => 'FDCAdminBundle',
                         'sonata_help' => 'form.helper_title',
                         'locale_options' => array(
                             'fr' => array(
@@ -140,7 +139,8 @@ class NewsArticleAdmin extends Admin
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_introduction'
+                        'label' => 'form.label_introduction',
+                        'translation_domain' => 'FDCAdminBundle'
                     ),
                     'createdAt' => array(
                         'display' => false
@@ -155,6 +155,7 @@ class NewsArticleAdmin extends Admin
                     ),
                     'publishedAt' => array(
                         'label' => 'form.label_published_at',
+                        'translation_domain' => 'FDCAdminBundle',
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
@@ -163,6 +164,7 @@ class NewsArticleAdmin extends Admin
                     ),
                     'publishEndedAt' => array(
                         'label' => 'form.label_publish_ended_at',
+                        'translation_domain' => 'FDCAdminBundle',
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
@@ -171,6 +173,7 @@ class NewsArticleAdmin extends Admin
                     ),
                     'status' => array(
                         'label' => 'form.label_status',
+                        'translation_domain' => 'FDCAdminBundle',
                         'field_type' => 'choice',
                         'choices' => NewsArticleTranslation::getStatuses(),
                         'choice_translation_domain' => 'FDCAdminBundle'
@@ -203,6 +206,7 @@ class NewsArticleAdmin extends Admin
             )
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
+                'translation_domain' => 'FDCAdminBundle',
                 'required' => false
             ))
             ->add('associations', 'sonata_type_collection', array(

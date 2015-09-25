@@ -170,7 +170,7 @@ class FilmManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities
@@ -204,7 +204,7 @@ class FilmManager extends CoreManager
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         // verify if we have results
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
         
         // deleteMultiple objects
         $this->deleteMultiple($resultObjects);
@@ -250,7 +250,7 @@ class FilmManager extends CoreManager
             $this->logger->warning(__METHOD__. "FilmPaysProduction not found");
         } else {
             // create an array when we get an object to standardize the code
-            $resultObject->FilmPaysProduction->PaysProductionDto = $this->objectToArray($resultObject->FilmPaysProduction->PaysProductionDto);
+            $resultObject->FilmPaysProduction->PaysProductionDto = $this->mixedToArray($resultObject->FilmPaysProduction->PaysProductionDto);
             $collection = new ArrayCollection();
             foreach ($resultObject->FilmPaysProduction->PaysProductionDto as $filmProdCountry) {
                 // check if country already exists if not call the ws
@@ -666,7 +666,7 @@ class FilmManager extends CoreManager
                 // set subordinates
                 if (property_exists($object, 'ContactSecondaires') && property_exists($object->ContactSecondaires, 'PersonneContactSecondaireDto')) {
                     $subordinates = $object->ContactSecondaires->PersonneContactSecondaireDto;
-                    $subordinates = $this->objectToArray($subordinates);
+                    $subordinates = $this->mixedToArray($subordinates);
                     $collectionSubordinates = new ArrayCollection();
                     foreach ($subordinates as $subordinate) {
                         $filmContactPersonSubordinate = $this->em->getRepository('FDCCoreBundle:FilmContactPerson')->findOneById(array('id' => $subordinate->Id));

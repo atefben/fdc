@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-09-01T15:55:28Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-09-25T15:36:48Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -11,14 +11,448 @@
         <target state="new">Action</target>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="0fa21438633c036c66fe20fa889917f262112c00" resname="Asian Name">
+        <source>Asian Name</source>
+        <target state="new">Asian Name</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1948b8a73d1cd0190740c5b39d682043e8e45d4f" resname="Association">
+        <source>Association</source>
+        <target state="new">Association</target>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="47130a515aaab3e8a2914f559bb626c6627ae932" resname="Budget Acquired">
+        <source>Budget Acquired</source>
+        <target state="new">Budget Acquired</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="64ad69b41d1cebeb9725ef1411c3bdb5bce10db8" resname="Budget Estimation">
+        <source>Budget Estimation</source>
+        <target state="new">Budget Estimation</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="640c4edfff41558858eff53e973be0b8befcf789" resname="Casting Commentary">
+        <source>Casting Commentary</source>
+        <target state="new">Casting Commentary</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c5f652d9e02e03fa1b12a440ac81d7e49d6d7aec" resname="Cinando Url">
+        <source>Cinando Url</source>
+        <target state="new">Cinando Url</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="863ed7dbce405adc108bd22f478d424cf5b1809c" resname="Content Type">
+        <source>Content Type</source>
+        <target state="new">Content Type</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a420abf6e89816696d0724f377c00c6447c28f0a" resname="Copyright">
+        <source>Copyright</source>
+        <target state="new">Copyright</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5db1542e683b0540dc5a4544657851d8020c91d9" resname="Created At">
+        <source>Created At</source>
+        <target state="new">Created At</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bfac50d6424b5166c3ee2808c85ae7c139b5182f" resname="Credits">
+        <source>Credits</source>
+        <target state="new">Credits</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="d87f47b47e4d5794d53fe0734c49417bd046cde0" resname="Dashboard">
         <source>Dashboard</source>
         <target state="new">Dashboard</target>
         <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="f5f30c561b14fd8c2842d872f745e52108436bf5" resname="Director First">
+        <source>Director First</source>
+        <target state="new">Director First</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1370004da76fa4f3b7a5180fd5436065ef4c7d5b" resname="Duration">
+        <source>Duration</source>
+        <target state="new">Duration</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2c3cafa4db3f3e1e51b3dff4303502dbe42b7a89" resname="File">
+        <source>File</source>
+        <target state="new">File</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a3cbb98ddf5ee976bc1c3be5221d66ce3ca2e867" resname="Filename">
+        <source>Filename</source>
+        <target state="new">Filename</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="347179a004c5e501c1007198c5b964c3c526ee19" resname="Film Atelier Batch">
+        <source>Film Atelier Batch</source>
+        <target state="new">Film Atelier Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c4d33942f3ac13f7ca9cf65ed9173017ecc8098a" resname="Film Atelier Create">
+        <source>Film Atelier Create</source>
+        <target state="new">Film Atelier Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c2abcebc557198645b1416f703b0e4d410f73eb0" resname="Film Atelier Delete">
+        <source>Film Atelier Delete</source>
+        <target state="new">Film Atelier Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="71722b688cf232d2fc45c31dcf6206f00fde8a7f" resname="Film Atelier Edit">
+        <source>Film Atelier Edit</source>
+        <target state="new">Film Atelier Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ea99cf903fe7b366681bb3baef49962dd7277a1d" resname="Film Atelier List">
+        <source>Film Atelier List</source>
+        <target state="new">Film Atelier List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b60a0e79be2c69e7007303e3dc4b24ca26234f1c" resname="Film Atelier Update">
+        <source>Film Atelier Update</source>
+        <target state="new">Film Atelier Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="264d9f3b7086fcff72f95f0199b71669cb257b18" resname="Film Film Batch">
+        <source>Film Film Batch</source>
+        <target state="new">Film Film Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3ca2b2a410f0599aca26fefcee9c3a5df525d1e6" resname="Film Film Create">
+        <source>Film Film Create</source>
+        <target state="new">Film Film Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="259318cf6c93eea3805b4202a4d9dcd276c1ff6a" resname="Film Film Delete">
+        <source>Film Film Delete</source>
+        <target state="new">Film Film Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d230a8b341a8407cace9fa30c6daf7b4d5a009c9" resname="Film Film Edit">
+        <source>Film Film Edit</source>
+        <target state="new">Film Film Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="54ec2459081844402082972505e7c89025c13bf9" resname="Film Film List">
+        <source>Film Film List</source>
+        <target state="new">Film Film List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d42f15fd766768d6a1447c8e4383ae161e8e8868" resname="Film Film Media Batch">
+        <source>Film Film Media Batch</source>
+        <target state="new">Film Film Media Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="aa1982f9d75b7a71f2b672373c845b2d64e00d7c" resname="Film Film Media Create">
+        <source>Film Film Media Create</source>
+        <target state="new">Film Film Media Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="589de6d17a2f9f37d922a1d7b30ed9d065bf2936" resname="Film Film Media Delete">
+        <source>Film Film Media Delete</source>
+        <target state="new">Film Film Media Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bea6d200374f0b3e429c6e08702c535324eec305" resname="Film Film Media Edit">
+        <source>Film Film Media Edit</source>
+        <target state="new">Film Film Media Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="858de347291ff8f4650dc37ad2563a5f2d818347" resname="Film Film Media List">
+        <source>Film Film Media List</source>
+        <target state="new">Film Film Media List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0a12e2c96fc765d428a1f489a43258fc7a989373" resname="Film Film Media Update">
+        <source>Film Film Media Update</source>
+        <target state="new">Film Film Media Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="928c08cd9e4a8885dce003941a0ced022d25aa86" resname="Film Film Update">
+        <source>Film Film Update</source>
+        <target state="new">Film Film Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5b020914794fd8f7428b470a21568b70ccf5e2a8" resname="Film Media Batch">
+        <source>Film Media Batch</source>
+        <target state="new">Film Media Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6d54943badf208a2059480fdb1ea4b4edaf873aa" resname="Film Media Create">
+        <source>Film Media Create</source>
+        <target state="new">Film Media Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a39b2b8e6b418bed30a4c2402f126a22f3dd1d18" resname="Film Media Delete">
+        <source>Film Media Delete</source>
+        <target state="new">Film Media Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="45170ab1e0342dbbde50c6e01a18c6ba024e072a" resname="Film Media Edit">
+        <source>Film Media Edit</source>
+        <target state="new">Film Media Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3a596477b1c5dd8ce4e28639352e19422acbed7e" resname="Film Media List">
+        <source>Film Media List</source>
+        <target state="new">Film Media List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3382b1534337f2fe9ac9a1164061bc357c6bc010" resname="Film Media Update">
+        <source>Film Media Update</source>
+        <target state="new">Film Media Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="26ed450cfdf52128d9e5af4a19c76266e7133094" resname="Film Person Batch">
+        <source>Film Person Batch</source>
+        <target state="new">Film Person Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b85d0f773f761eb6ba30f84feef6e55087257160" resname="Film Person Create">
+        <source>Film Person Create</source>
+        <target state="new">Film Person Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c6ae47cb58cc79937f36c3d5d7a0c29b1959597f" resname="Film Person Delete">
+        <source>Film Person Delete</source>
+        <target state="new">Film Person Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f3dd9a1371cb34b2d022153221a7e3c696b70ef0" resname="Film Person Edit">
+        <source>Film Person Edit</source>
+        <target state="new">Film Person Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="49a6c322d409bea2ec627da729d9278c962b8262" resname="Film Person List">
+        <source>Film Person List</source>
+        <target state="new">Film Person List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="336126bec3bf94c971b1ef835b9a7dd447b991f0" resname="Film Person Update">
+        <source>Film Person Update</source>
+        <target state="new">Film Person Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bce0d2843b42bce5d918907e0e44ad02321f5ab9" resname="Filming Date">
+        <source>Filming Date</source>
+        <target state="new">Filming Date</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="04ae2d8ebe2ffbc0ef4bb2fee9acfc4ad4d6b0f9" resname="Filming Place">
+        <source>Filming Place</source>
+        <target state="new">Filming Place</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cf23ba48c06d7e6d4b41a205bfb3cac3bb7b1e38" resname="Firstname">
+        <source>Firstname</source>
+        <target state="new">Firstname</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="13caf86b96417f52846a9e61b95ceed0296b6359" resname="Gala Id">
+        <source>Gala Id</source>
+        <target state="new">Gala Id</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="acf58c7dc5a50e7385c4e4b2b42ab512c02a1a9a" resname="Gala Name">
+        <source>Gala Name</source>
+        <target state="new">Gala Name</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9c30a3485a5887f1ba5abd2a291d304a01863e55" resname="Gallery">
+        <source>Gallery</source>
+        <target state="new">Gallery</target>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6cd54e3d00da1cc83dd10887a7788e94e378e435" resname="Gallery Batch">
+        <source>Gallery Batch</source>
+        <target state="new">Gallery Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="70f7deba3740e1fc77d2c6501b2bb5bd7f231c74" resname="Gallery Create">
+        <source>Gallery Create</source>
+        <target state="new">Gallery Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3ec490069b22d94a168e27ee360c488f9965fa0c" resname="Gallery Delete">
+        <source>Gallery Delete</source>
+        <target state="new">Gallery Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a337ef5f7a23c505802cb42e08e55de7256b62ca" resname="Gallery Edit">
+        <source>Gallery Edit</source>
+        <target state="new">Gallery Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e1996457163ff64dc98bbd75370c1ae2ea6a6327" resname="Gallery List">
+        <source>Gallery List</source>
+        <target state="new">Gallery List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="87983b5c17621c7f7229db2cc0f207a0ebf1dec2" resname="Gallery Media Batch">
+        <source>Gallery Media Batch</source>
+        <target state="new">Gallery Media Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="072484fef76f006e03a99015f81418e9fb917d4c" resname="Gallery Media Create">
+        <source>Gallery Media Create</source>
+        <target state="new">Gallery Media Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9d2877bb6db723174a663a4c9958f37b5d21f248" resname="Gallery Media Delete">
+        <source>Gallery Media Delete</source>
+        <target state="new">Gallery Media Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cbc387eafeb258691c605f8a9336bd1043020b19" resname="Gallery Media Edit">
+        <source>Gallery Media Edit</source>
+        <target state="new">Gallery Media Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ca3664efc76410a9ca4c43dd756423400fda8c61" resname="Gallery Media List">
+        <source>Gallery Media List</source>
+        <target state="new">Gallery Media List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e15bd53f8d5f1cbdfd3fa94547081622b2d84cf3" resname="Gallery Media Update">
+        <source>Gallery Media Update</source>
+        <target state="new">Gallery Media Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5f651c134fcd48b5be8166aaf999088a384938d3" resname="Gallery Update">
+        <source>Gallery Update</source>
+        <target state="new">Gallery Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="474ae52625b87d7628ae7b20a499329a99e07119" resname="Id">
         <source>Id</source>
         <target state="new">Id</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="66c06c11d179e39c42e5e800f99b57865822cf68" resname="Internet">
+        <source>Internet</source>
+        <target state="new">Internet</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="639860fbb86cea7f96e287fa3fecca62e4bb42f8" resname="Lastname">
+        <source>Lastname</source>
+        <target state="new">Lastname</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0c77aeece8c258113148c6fb487946bf97b34672" resname="Media">
+        <source>Media</source>
+        <target state="new">Media</target>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="510d4dfa72fa0304be09da6c3c29078666240a49" resname="Media Batch">
+        <source>Media Batch</source>
+        <target state="new">Media Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="81ff34ec0cac34b63ae2bd21cdae54adf395129a" resname="Media Create">
+        <source>Media Create</source>
+        <target state="new">Media Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f08fa0a21b0d5840b21fdbbf4dc99e6b846a44e7" resname="Media Delete">
+        <source>Media Delete</source>
+        <target state="new">Media Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d2761bd6ceb18da5970364a31f6d726d2707e1ce" resname="Media Edit">
+        <source>Media Edit</source>
+        <target state="new">Media Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2b11d163a493d21aab1dbaedb73e3c43ac8530bf" resname="Media List">
+        <source>Media List</source>
+        <target state="new">Media List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="53bf0f2b44088c4e262f7f123a4cdf15d73af00e" resname="Media Update">
+        <source>Media Update</source>
+        <target state="new">Media Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f93771bef524d9ff7cf710042499f16fd8560d9f" resname="Medias">
+        <source>Medias</source>
+        <target state="new">Medias</target>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1969ead537490c3bbaf406fab393be9acbe514c1" resname="Nationality">
+        <source>Nationality</source>
+        <target state="new">Nationality</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f44c9585ec0b1ccb6da98a19f46cd19a6ca2c1f2" resname="Nationality2">
+        <source>Nationality2</source>
+        <target state="new">Nationality2</target>
         <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
         <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
@@ -49,10 +483,137 @@
         <target state="new">News List</target>
         <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="53816534c80552667a6403ef66596d1abaaf60da" resname="News News Associated Batch">
+        <source>News News Associated Batch</source>
+        <target state="new">News News Associated Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d9f3cc19f99bb5c437c21eecefcc1510306b992e" resname="News News Associated Create">
+        <source>News News Associated Create</source>
+        <target state="new">News News Associated Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="30b2d9cb7b223eb43b2eeaba80d376c30b424ca2" resname="News News Associated Delete">
+        <source>News News Associated Delete</source>
+        <target state="new">News News Associated Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8ce34086f2d9c9e4e5ddcbbadac5170095bca537" resname="News News Associated Edit">
+        <source>News News Associated Edit</source>
+        <target state="new">News News Associated Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1d51ae0ba21440963da3da8c4e22e5b717012fe1" resname="News News Associated List">
+        <source>News News Associated List</source>
+        <target state="new">News News Associated List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bbed2633f44c99386a5504bbd1ddf68f5c063695" resname="News News Associated Update">
+        <source>News News Associated Update</source>
+        <target state="new">News News Associated Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="171a404b6004c969f6ac5a5ac5f47b2b42086683" resname="News News Tag Batch">
+        <source>News News Tag Batch</source>
+        <target state="new">News News Tag Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b4645271db30c743ae2e9e8606b2523c357ce783" resname="News News Tag Create">
+        <source>News News Tag Create</source>
+        <target state="new">News News Tag Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b797cea003519d76cf9e6d57c4c71cbe7f90f276" resname="News News Tag Delete">
+        <source>News News Tag Delete</source>
+        <target state="new">News News Tag Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8d3a7c98f21e5cb1b8efea83e7403a031927d253" resname="News News Tag Edit">
+        <source>News News Tag Edit</source>
+        <target state="new">News News Tag Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="845ac6099c32bded066975dd705c7c7b38c27b5d" resname="News News Tag List">
+        <source>News News Tag List</source>
+        <target state="new">News News Tag List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="87db233bfa4537061cc0270b1b64d4a1c8918fa7" resname="News News Tag Update">
+        <source>News News Tag Update</source>
+        <target state="new">News News Tag Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="1a06a14ba3daec92e601dc00c93c54ac4423ce0a" resname="News Update">
         <source>News Update</source>
         <target state="new">News Update</target>
         <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6751cacabfa2cff2b7317cd30db4279ea49493b3" resname="News Widget Image Batch">
+        <source>News Widget Image Batch</source>
+        <target state="new">News Widget Image Batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b4c7df09f52d561b021a71830d8e160b2c27fe7d" resname="News Widget Image Create">
+        <source>News Widget Image Create</source>
+        <target state="new">News Widget Image Create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2987679def666ded8307dc5ffdc11e874901c80c" resname="News Widget Image Delete">
+        <source>News Widget Image Delete</source>
+        <target state="new">News Widget Image Delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7e936ee58e4bd17d5ea56108f2c0a6ad22b51ea8" resname="News Widget Image Edit">
+        <source>News Widget Image Edit</source>
+        <target state="new">News Widget Image Edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8e23d09806ad2a5e300f8ef22ebdbfcec4759728" resname="News Widget Image List">
+        <source>News Widget Image List</source>
+        <target state="new">News Widget Image List</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0dd263bec5e6bd4c454eb4a547e9a7da292d8d49" resname="News Widget Image Update">
+        <source>News Widget Image Update</source>
+        <target state="new">News Widget Image Update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f811fee8e37c6a22afa00cf65b1186f930d79dd3" resname="Note Va">
+        <source>Note Va</source>
+        <target state="new">Note Va</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9c90f69c5e5fe9fa742969dfbd2cdb94d9292ba8" resname="Note Vf">
+        <source>Note Vf</source>
+        <target state="new">Note Vf</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f3cf96e919766ef2354bbbddd56e9cbb5f2792e8" resname="Persons">
+        <source>Persons</source>
+        <target state="new">Persons</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cf1c85adba548e8d681255278976584a7e4a44de" resname="Position">
+        <source>Position</source>
+        <target state="new">Position</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="48773926bdfea0792ca4a14427e978949ec39102" resname="Production Year">
+        <source>Production Year</source>
+        <target state="new">Production Year</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="a0bb5d3583e8707a1c83a3d0b28c20d1dd9f939e" resname="Publish Ended At">
         <source>Publish Ended At</source>
@@ -69,6 +630,41 @@
         <target state="new">Published Interval</target>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="b54d624624973900072c913477b4987cdfa9ec25" resname="Restored">
+        <source>Restored</source>
+        <target state="new">Restored</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c78beda2851b3c975fb0a229ae09e160d067eca9" resname="Session Name">
+        <source>Session Name</source>
+        <target state="new">Session Name</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f58305c26699826555e062647ae691ffc2eff9c1" resname="Soif Updated At">
+        <source>Soif Updated At</source>
+        <target state="new">Soif Updated At</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bae7d5be70820ed56467bd9a63744e23b47bd711" resname="Status">
+        <source>Status</source>
+        <target state="new">Status</target>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="982963c1c41cbed8cab073724749592fe35c532b" resname="Tag">
+        <source>Tag</source>
+        <target state="new">Tag</target>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="a797e30923ac1be590300ce6b08e63b4e6dc6688" resname="Theme">
         <source>Theme</source>
         <target state="new">Theme</target>
@@ -77,8 +673,45 @@
       </trans-unit>
       <trans-unit id="768e0c1c69573fb588f61f1308a015c11468e05f" resname="Title">
         <source>Title</source>
-        <target>Title</target>
+        <target state="new">Title</target>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="917c9d82d301827ce3d5a83190bab52e81e53e14" resname="Title V O">
+        <source>Title V O</source>
+        <target state="new">Title V O</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9834486615ef2ebfd88b9b17f8b47ccd73506619" resname="Title V O Alphabet">
+        <source>Title V O Alphabet</source>
+        <target state="new">Title V O Alphabet</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="844abe87c8a51b30dca84b434fbaf59bbb4d0775" resname="Title Va">
+        <source>Title Va</source>
+        <target state="new">Title Va</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9b12d54eef6735ff6ea8e438b53512d3d4ca6147" resname="Title Vf">
+        <source>Title Vf</source>
+        <target state="new">Title Vf</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2be17aa181d8226bfad83ce993e838fa79dcce4d" resname="Translate">
+        <source>Translate</source>
+        <target state="new">Translate</target>
         <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="3deb7456519697ecf4eefc455516c969a3681bae" resname="Type">
@@ -86,15 +719,88 @@
         <target state="new">Type</target>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
         <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="22714274a44dd11e75f243d16cb61d47837a91ed" resname="Updated At">
         <source>Updated At</source>
         <target state="new">Updated At</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2e8a57cc5c472f4ac3b071979a38e80db7e59e87" resname="Website">
+        <source>Website</source>
+        <target state="new">Website</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="6616e4d4787a6b08012bc1b29a451ae927e2eb03" resname="breadcrumb.link_dashboard">
         <source>breadcrumb.link_dashboard</source>
         <target state="new">breadcrumb.link_dashboard</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b359786035bed62a802ddcd735f88e85456ac575" resname="breadcrumb.link_media_audio_batch">
+        <source>breadcrumb.link_media_audio_batch</source>
+        <target state="new">breadcrumb.link_media_audio_batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ad8e2822a729dd55a9a16465bbabae48c08bf521" resname="breadcrumb.link_media_audio_create">
+        <source>breadcrumb.link_media_audio_create</source>
+        <target state="new">breadcrumb.link_media_audio_create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e7d238035c329a7e91e891e5f8d658312f1cbea6" resname="breadcrumb.link_media_audio_delete">
+        <source>breadcrumb.link_media_audio_delete</source>
+        <target state="new">breadcrumb.link_media_audio_delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1dee1c1b12db28da06aab962aa3094541cc385e9" resname="breadcrumb.link_media_audio_edit">
+        <source>breadcrumb.link_media_audio_edit</source>
+        <target state="new">breadcrumb.link_media_audio_edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8ae02790b839f9cbfac53da9c07428d60d18d075" resname="breadcrumb.link_media_audio_list">
+        <source>breadcrumb.link_media_audio_list</source>
+        <target state="new">breadcrumb.link_media_audio_list</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b4694afec2cc42a7584dc300d299b46e01ccb880" resname="breadcrumb.link_media_audio_update">
+        <source>breadcrumb.link_media_audio_update</source>
+        <target state="new">breadcrumb.link_media_audio_update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3213d712760ef6fb46ac7a6d995a74c1690743c2" resname="breadcrumb.link_media_image_batch">
+        <source>breadcrumb.link_media_image_batch</source>
+        <target state="new">breadcrumb.link_media_image_batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7ed505a659208cc0131fa45857c5fa4c115280f9" resname="breadcrumb.link_media_image_create">
+        <source>breadcrumb.link_media_image_create</source>
+        <target state="new">breadcrumb.link_media_image_create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="edeed60a82e6962b0be39394de029b34659344c7" resname="breadcrumb.link_media_image_delete">
+        <source>breadcrumb.link_media_image_delete</source>
+        <target state="new">breadcrumb.link_media_image_delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3089b76fa7340113b766776f936f17fa447788a3" resname="breadcrumb.link_media_image_edit">
+        <source>breadcrumb.link_media_image_edit</source>
+        <target state="new">breadcrumb.link_media_image_edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ca0115c089352a4542fbc5dd1205f6d7532ab9fd" resname="breadcrumb.link_media_image_list">
+        <source>breadcrumb.link_media_image_list</source>
+        <target state="new">breadcrumb.link_media_image_list</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d9e85d51f0e29f54e11bcb52866dbee90ddd33bd" resname="breadcrumb.link_media_image_update">
+        <source>breadcrumb.link_media_image_update</source>
+        <target state="new">breadcrumb.link_media_image_update</target>
         <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="68373c847a6e50bb62f7290b91667427b1d84cf0" resname="breadcrumb.link_news_article_batch">
@@ -127,19 +833,114 @@
         <target state="new">breadcrumb.link_news_article_update</target>
         <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="8f287b4ef5f43394080a217100c8d9aee44180d0" resname="breadcrumb.link_news_audio_batch">
+        <source>breadcrumb.link_news_audio_batch</source>
+        <target state="new">breadcrumb.link_news_audio_batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="dfaf3969dd7f405ee359cf12f54ce496b6b21841" resname="breadcrumb.link_news_audio_create">
+        <source>breadcrumb.link_news_audio_create</source>
+        <target state="new">breadcrumb.link_news_audio_create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8680a0c1aace9c61a15a111bbc5b22798ee359cc" resname="breadcrumb.link_news_audio_delete">
+        <source>breadcrumb.link_news_audio_delete</source>
+        <target state="new">breadcrumb.link_news_audio_delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8e7d3374af9de23f61f49cd4351a52416e944f4e" resname="breadcrumb.link_news_audio_edit">
+        <source>breadcrumb.link_news_audio_edit</source>
+        <target state="new">breadcrumb.link_news_audio_edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e3ef07ef8402a7271b819c644e265a2fde612f0c" resname="breadcrumb.link_news_audio_list">
+        <source>breadcrumb.link_news_audio_list</source>
+        <target state="new">breadcrumb.link_news_audio_list</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77fbb334a2e25684bfa41201d85ebc4c6167c743" resname="breadcrumb.link_news_audio_update">
+        <source>breadcrumb.link_news_audio_update</source>
+        <target state="new">breadcrumb.link_news_audio_update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e5d83a96a8c70b2c5bdbc93cce4d977959affe0f" resname="breadcrumb.link_news_tag_batch">
+        <source>breadcrumb.link_news_tag_batch</source>
+        <target state="new">breadcrumb.link_news_tag_batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f95fb37fca9f56e0d81be471b3218711f0a1c945" resname="breadcrumb.link_news_tag_create">
+        <source>breadcrumb.link_news_tag_create</source>
+        <target state="new">breadcrumb.link_news_tag_create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="11198ecce04e5d89555f84db3a7845d4fa9e832f" resname="breadcrumb.link_news_tag_delete">
+        <source>breadcrumb.link_news_tag_delete</source>
+        <target state="new">breadcrumb.link_news_tag_delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4805bfbdb81551144f4bd4e0b7a2103321787223" resname="breadcrumb.link_news_tag_edit">
+        <source>breadcrumb.link_news_tag_edit</source>
+        <target state="new">breadcrumb.link_news_tag_edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="69bb7351a058fa9b49873a284bbe280ea317767e" resname="breadcrumb.link_news_tag_list">
+        <source>breadcrumb.link_news_tag_list</source>
+        <target state="new">breadcrumb.link_news_tag_list</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="982710b39e28c0635c13708b8d12d8b287089ec5" resname="breadcrumb.link_news_tag_update">
+        <source>breadcrumb.link_news_tag_update</source>
+        <target state="new">breadcrumb.link_news_tag_update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="be0b238658cd79eb897879597a615f603902e934" resname="breadcrumb.link_theme_batch">
+        <source>breadcrumb.link_theme_batch</source>
+        <target state="new">breadcrumb.link_theme_batch</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4ab6821634e6f5a3c3547986dd21b280cfe5bffe" resname="breadcrumb.link_theme_create">
+        <source>breadcrumb.link_theme_create</source>
+        <target state="new">breadcrumb.link_theme_create</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="48d7dd9e6c25c8377cb9bb92ff2e8bb1f0da8830" resname="breadcrumb.link_theme_delete">
+        <source>breadcrumb.link_theme_delete</source>
+        <target state="new">breadcrumb.link_theme_delete</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d78856e3631d5509c26632453532f4779646afca" resname="breadcrumb.link_theme_edit">
+        <source>breadcrumb.link_theme_edit</source>
+        <target state="new">breadcrumb.link_theme_edit</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ed54a6b20d818e1696b18d3d9a6f91ab6069dd11" resname="breadcrumb.link_theme_list">
+        <source>breadcrumb.link_theme_list</source>
+        <target state="new">breadcrumb.link_theme_list</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5eb6cd7d25213966dcca7c88c0c6823d813d3936" resname="breadcrumb.link_theme_update">
+        <source>breadcrumb.link_theme_update</source>
+        <target state="new">breadcrumb.link_theme_update</target>
+        <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="25838906fc52e4c17c3f22769c9793f62c7841e4" resname="filter.label_created_at">
+        <source>filter.label_created_at</source>
+        <target state="new">filter.label_created_at</target>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="882776942c325f0ec06fc5a2a38f93cb2b183ec5" resname="filter.label_id">
         <source>filter.label_id</source>
         <target>Identifier</target>
         <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="9206d679cc781c0cef8a952871f9caeeb481e8ed" resname="filter.label_publish_ended_at">
-        <source>filter.label_publish_ended_at</source>
-        <target>filter.label_publish_ended_at</target>
-        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
-      </trans-unit>
       <trans-unit id="519c14bc2383b74286afdd8e4e202280e7558955" resname="filter.label_published_at">
         <source>filter.label_published_at</source>
         <target state="new">filter.label_published_at</target>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="42c286a02841e0d9a48add83f7c368c0e3ec8ab2" resname="filter.label_status">
+        <source>filter.label_status</source>
+        <target state="new">filter.label_status</target>
         <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="76f8f2718cecfe837343e8bbf1ec9bee9a816845" resname="filter.label_theme">
@@ -152,14 +953,63 @@
         <target state="new">filter.label_title</target>
         <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="8db6138987f5862d5f387fa46b490c5a15e5a514" resname="filter.label_translate">
+        <source>filter.label_translate</source>
+        <target state="new">filter.label_translate</target>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="52fac86eed4e95fd3f54a017eec8b44fb7cb1d26" resname="filter.label_updated_at">
+        <source>filter.label_updated_at</source>
+        <target state="new">filter.label_updated_at</target>
+        <jms:reference-file>doctrine-orm-admin-bundle/Builder/DatagridBuilder.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="64331ae18f3ffaa9b8fdde116e5890a69eb2539e" resname="form.label_associations">
         <source>form.label_associations</source>
         <target state="new">form.label_associations</target>
         <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="682ac5882f3f1b229a7bbae694425763909b5580" resname="form.label_file">
+        <source>form.label_file</source>
+        <target state="new">form.label_file</target>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7116e8cadc4f66aac8cf13e89661d3f6865fd95b" resname="form.label_header_audio">
+        <source>form.label_header_audio</source>
+        <target state="new">form.label_header_audio</target>
+        <jms:reference-file line="158">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ff584f82b52c4235efe99ed3da5f96ed099d5430" resname="form.label_header_image">
+        <source>form.label_header_image</source>
+        <target state="new">form.label_header_image</target>
+        <jms:reference-file line="208">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d46bc183f1e8aa58122bb4b5536d273b175c2af4" resname="form.label_introduction">
+        <source>form.label_introduction</source>
+        <target state="new">form.label_introduction</target>
+        <jms:reference-file line="142">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="91">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d9cdd4dcddd19128365e76982b406945a1b4b0d6" resname="form.label_publish_ended_at">
+        <source>form.label_publish_ended_at</source>
+        <target state="new">form.label_publish_ended_at</target>
+        <jms:reference-file line="166">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="128">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="036cc96f5a87f07208d210bae9118ba7fb6e225b" resname="form.label_published_at">
+        <source>form.label_published_at</source>
+        <target state="new">form.label_published_at</target>
+        <jms:reference-file line="157">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="119">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="dd75fb6b5adfc24a250a830c0f7824cfd9894a61" resname="form.label_status">
+        <source>form.label_status</source>
+        <target state="new">form.label_status</target>
+        <jms:reference-file line="175">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="137">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="488641586b8fe914b8c283f375339af46ee4c905" resname="form.label_tags">
         <source>form.label_tags</source>
-        <target>Tags</target>
+        <target state="new">form.label_tags</target>
         <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="913010379bf42f5d460456c55bd7b47239119c71" resname="form.label_theme">
@@ -167,19 +1017,55 @@
         <target state="new">form.label_theme</target>
         <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="d2163d032c7f47621b8e5901b37b95a1bbd0a16c" resname="form.label_title">
+        <source>form.label_title</source>
+        <target state="new">form.label_title</target>
+        <jms:reference-file line="131">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="80">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="a795d74a1c79464c2b4e38ded8b319fe2b2c8fb3" resname="form.label_translate">
         <source>form.label_translate</source>
         <target state="new">form.label_translate</target>
         <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="ad7f3b5abcf60cb27f8eea0e28987b3ccd48a5ac" resname="form.label_widgets">
+        <source>form.label_widgets</source>
+        <target state="new">form.label_widgets</target>
+        <jms:reference-file>admin-bundle/Form/FormMapper.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="4d73b5423bc8c919e85dbc040f0123debea16437" resname="group.main_infos">
         <source>group.main_infos</source>
-        <target>Main informations</target>
+        <target state="new">group.main_infos</target>
         <jms:reference-file line="31">views/TranslationFormBundle/article.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a9c76224345bb91c8f792e59dd3fb8b16101d5e8" resname="group.news.associations">
+        <source>group.news.associations</source>
+        <target state="new">group.news.associations</target>
+        <jms:reference-file line="278">views/TranslationFormBundle/article.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9f14da4b173ff80b28d4421f6a22709ea2e4b9a2" resname="group.news.french_version">
+        <source>group.news.french_version</source>
+        <target state="new">group.news.french_version</target>
+        <jms:reference-file line="155">views/TranslationFormBundle/article.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="503cbbc06f9a5c8780f4ee05f49a49071c18be56" resname="group.news.publish_parameters">
+        <source>group.news.publish_parameters</source>
+        <target state="new">group.news.publish_parameters</target>
+        <jms:reference-file line="134">views/TranslationFormBundle/article.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="024aac3871bbf2ea12a07c159908dd66c4a7af51" resname="group.news.widgets">
+        <source>group.news.widgets</source>
+        <target state="new">group.news.widgets</target>
+        <jms:reference-file line="255">views/TranslationFormBundle/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1706de171efc487ada66e0e74a5c1d16b710b3af" resname="list.label__action">
         <source>list.label__action</source>
         <target state="new">list.label__action</target>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9f30fa0e79538b21033e95fdd2217c9dd11bdfc3" resname="list.label_created_at">
+        <source>list.label_created_at</source>
+        <target state="new">list.label_created_at</target>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="0ddac6dabd4a0ad2d7a1f8175f9ccb8549b184fa" resname="list.label_id">
@@ -187,9 +1073,19 @@
         <target state="new">list.label_id</target>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="6ff897b72dbc2db3328a964623cd425f9efdf9ea" resname="list.label_name">
+        <source>list.label_name</source>
+        <target state="new">list.label_name</target>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="ca2c8f5b540896cf783b3787d88311db28a2addf" resname="list.label_published_interval">
         <source>list.label_published_interval</source>
         <target state="new">list.label_published_interval</target>
+        <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0129fa8311b6db16e84576b1a60a5d580b3125d2" resname="list.label_status">
+        <source>list.label_status</source>
+        <target state="new">list.label_status</target>
         <jms:reference-file>admin-bundle/Datagrid/ListMapper.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="5a62d58c938ab5eea6294b2cdf268b3d55e9f6c8" resname="list.label_theme">
@@ -214,37 +1110,67 @@
       </trans-unit>
       <trans-unit id="1e2421b5c753591e29b5594bf430165ccf5a71a1" resname="nav.site_modal">
         <source>nav.site_modal</source>
-        <target>Open site selection</target>
+        <target state="new">nav.site_modal</target>
         <jms:reference-file line="2">views/Site/btn_modal.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="71a3f3cac9743a2ca70e353dade87c8bf6c8d2b4" resname="news.status.deactivated">
         <source>news.status.deactivated</source>
-        <target>Deactivated</target>
+        <target state="new">news.status.deactivated</target>
         <jms:reference-file line="14">views/News/list_status.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="189312e09a7b0b9b71e3538659d0d497b37fae0a" resname="news.status.draft">
         <source>news.status.draft</source>
-        <target>Draft</target>
+        <target state="new">news.status.draft</target>
         <jms:reference-file line="6">views/News/list_status.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="69255c4a03a6af2f95fbf66828c2d7407bdf4c38" resname="news.status.published">
         <source>news.status.published</source>
-        <target>Published</target>
+        <target state="new">news.status.published</target>
         <jms:reference-file line="8">views/News/list_status.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6546b534c059b1208f33db23796d5e71e326badc" resname="news.status.translation_pending">
         <source>news.status.translation_pending</source>
-        <target>Translation pending</target>
+        <target state="new">news.status.translation_pending</target>
         <jms:reference-file line="10">views/News/list_status.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="de5647bc8418852caa8a0ce85e1db7f904b5fcb0" resname="news.status.translation_validating">
         <source>news.status.translation_validating</source>
-        <target>Translation validating</target>
+        <target state="new">news.status.translation_validating</target>
         <jms:reference-file line="12">views/News/list_status.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1b3b1248dba27c3f0f76a5ca06d8be9b87bf7a5a" resname="news.widget.audio">
+        <source>news.widget.audio</source>
+        <target state="new">news.widget.audio</target>
+        <jms:reference-file line="17">views/Form/polycollection.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7efb57414d4abf6382f8d8836dc3854ce02295a4" resname="news.widget.photo">
+        <source>news.widget.photo</source>
+        <target state="new">news.widget.photo</target>
+        <jms:reference-file line="18">views/Form/polycollection.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9914d89e5aa55d43926f72e9e9d071b4d7ad9fa2" resname="news.widget.text">
+        <source>news.widget.text</source>
+        <target state="new">news.widget.text</target>
+        <jms:reference-file line="16">views/Form/polycollection.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a303e4bd8563d1954493fd71b164cac00abfcec7" resname="news.widget.video">
+        <source>news.widget.video</source>
+        <target state="new">news.widget.video</target>
+        <jms:reference-file line="19">views/Form/polycollection.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="82ca8186822ddf823631fa1a42431616f87f8c49" resname="show.label_created_at">
+        <source>show.label_created_at</source>
+        <target state="new">show.label_created_at</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="904316df07539d86c84b9c37d4fd49a5583bc419" resname="show.label_id">
         <source>show.label_id</source>
         <target state="new">show.label_id</target>
+        <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4e626246f1e2032b45812cd99b4fc8088752c8f8" resname="show.label_updated_at">
+        <source>show.label_updated_at</source>
+        <target state="new">show.label_updated_at</target>
         <jms:reference-file>admin-bundle/Show/ShowMapper.php</jms:reference-file>
       </trans-unit>
     </body>

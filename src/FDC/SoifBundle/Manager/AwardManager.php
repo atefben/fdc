@@ -141,7 +141,7 @@ class AwardManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities
@@ -176,7 +176,7 @@ class AwardManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
         
         // delete objects
         $this->deleteMultiple($resultObjects);
@@ -213,7 +213,7 @@ class AwardManager extends CoreManager
         // set associations
         if (property_exists($resultObject, 'ListeFilmPersonne') && property_exists($resultObject->ListeFilmPersonne, 'RecompenseFilmPersonneDto')) {
             $collectionNew = new ArrayCollection();
-            $resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto = $this->objectToArray($resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto);
+            $resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto = $this->mixedToArray($resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto);
             foreach ($resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto as $obj) {
                 $entityRelated = $this->em->getRepository('FDCCoreBundle:FilmAwardAssociation')->findOneBy(array(
                     'film' => $obj->Film,

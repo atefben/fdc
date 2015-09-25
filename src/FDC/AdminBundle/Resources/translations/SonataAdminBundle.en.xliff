@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-09-01T15:26:18Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-09-25T15:34:27Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -15,6 +15,11 @@
         <source>action_delete</source>
         <target state="new">action_delete</target>
         <jms:reference-file>admin-bundle/Admin/Admin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a39673cbb92ca41053ed7b4c3773446516ecdcb9" resname="action_edit">
+        <source>action_edit</source>
+        <target state="new">action_edit</target>
+        <jms:reference-file line="3">views/CRUD/list__action_edit_translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6616e4d4787a6b08012bc1b29a451ae927e2eb03" resname="breadcrumb.link_dashboard">
         <source>breadcrumb.link_dashboard</source>

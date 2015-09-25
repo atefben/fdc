@@ -4,6 +4,7 @@ namespace FDC\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
@@ -41,7 +42,21 @@ class FilmAtelierProductionCompany
      * @ORM\OneToOne(targetEntity="FilmAtelierProductionCompanyAddress", cascade={"persist"})
      */
     private $address;
+    
+    /**
+     * @var FilmAtelier
+     *
+     * @ORM\OneToMany(targetEntity="FilmAtelier", mappedBy="productionCompany")
+     */
+    private $filmAtelier;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->filmAtelier = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -97,5 +112,38 @@ class FilmAtelierProductionCompany
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Add filmAtelier
+     *
+     * @param \FDC\CoreBundle\Entity\FilmAtelier $filmAtelier
+     * @return FilmAtelierProductionCompany
+     */
+    public function addFilmAtelier(\FDC\CoreBundle\Entity\FilmAtelier $filmAtelier)
+    {
+        $this->filmAtelier[] = $filmAtelier;
+
+        return $this;
+    }
+
+    /**
+     * Remove filmAtelier
+     *
+     * @param \FDC\CoreBundle\Entity\FilmAtelier $filmAtelier
+     */
+    public function removeFilmAtelier(\FDC\CoreBundle\Entity\FilmAtelier $filmAtelier)
+    {
+        $this->filmAtelier->removeElement($filmAtelier);
+    }
+
+    /**
+     * Get filmAtelier
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilmAtelier()
+    {
+        return $this->filmAtelier;
     }
 }

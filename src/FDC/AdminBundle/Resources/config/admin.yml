@@ -4,99 +4,141 @@ services:
         arguments: [~, FDC\CoreBundle\Entity\NewsArticle, FDCAdminBundle:NewsArticleAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsArticle, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.news_audio:
         class: FDC\AdminBundle\Admin\NewsAudioAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsAudio, FDCAdminBundle:NewsAudioAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsAudio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.theme:
         class: FDC\AdminBundle\Admin\ThemeAdmin
         arguments: [~, FDC\CoreBundle\Entity\Theme, FDCAdminBundle:ThemeAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.news_widget_image_dummy:
         class: FDC\AdminBundle\Admin\NewsWidgetImageDummyAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsWidgetImage, FDCAdminBundle:NewsWidgetImageDummyAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.news_tag:
         class: FDC\AdminBundle\Admin\NewsTagAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsTag, FDCAdminBundle:NewsTagAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsTag, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.media:
         class: FDC\AdminBundle\Admin\MediaAdmin
         arguments: [~, FDC\CoreBundle\Entity\Media, FDCAdminBundle:MediaAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Media, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.media_image:
         class: FDC\AdminBundle\Admin\MediaImageAdmin
         arguments: [~, FDC\CoreBundle\Entity\MediaImage, FDCAdminBundle:MediaImageAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaImage, label_translator_strategy: 'sonata.admin.label.strategy.underscore'}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaImage, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.media_audio:
         class: FDC\AdminBundle\Admin\MediaAudioAdmin
         arguments: [~, FDC\CoreBundle\Entity\MediaAudio, FDCAdminBundle:MediaAudioAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: MediaAudio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.gallery:
         class: FDC\AdminBundle\Admin\GalleryAdmin
         arguments: [~, FDC\CoreBundle\Entity\Gallery, FDCAdminBundle:GalleryAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Gallery, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.gallery_media:
         class: FDC\AdminBundle\Admin\GalleryMediaAdmin
         arguments: [~, FDC\CoreBundle\Entity\GalleryMedia, FDCAdminBundle:GalleryMediaAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: GalleryMediaAdmin, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.news:
         class: FDC\AdminBundle\Admin\NewsAdmin
         arguments: [~, FDC\CoreBundle\Entity\News, FDCAdminBundle:NewsAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.news_news_tag:
         class: FDC\AdminBundle\Admin\NewsNewsTagAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsNewsTag, FDCAdminBundle:NewsNewsTagAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsNewsTag}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.news_news_associated:
         class: FDC\AdminBundle\Admin\NewsNewsAssociatedAdmin
         arguments: [~, FDC\CoreBundle\Entity\NewsNewsAssociated, FDCAdminBundle:NewsNewsAssociatedAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsNewsAssociated, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.film_film:
         class: FDC\AdminBundle\Admin\FilmFilmAdmin
         arguments: [~, FDC\CoreBundle\Entity\FilmFilm, FDCAdminBundle:FilmFilmAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmFilm}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.film_person:
         class: FDC\AdminBundle\Admin\FilmPersonAdmin
         arguments: [~, FDC\CoreBundle\Entity\FilmPerson, FDCAdminBundle:FilmPersonAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmPerson}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.film_film_media:
         class: FDC\AdminBundle\Admin\FilmFilmMediaAdmin
         arguments: [~, FDC\CoreBundle\Entity\FilmFilmMedia, FDCAdminBundle:FilmFilmMediaAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFilmMedia}
+            - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmFilmMedia, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
 
     fdc.admin.film_media:
         class: FDC\AdminBundle\Admin\FilmMediaAdmin
         arguments: [~, FDC\CoreBundle\Entity\FilmMedia, FDCAdminBundle:FilmMediaAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmMedia}
+            - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmMedia, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]
+
+    fdc.admin.film_atelier:
+        class: FDC\AdminBundle\Admin\FilmAtelierAdmin
+        arguments: [~, FDC\CoreBundle\Entity\FilmAtelier, FDCAdminBundle:FilmAtelierAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmAtelier}
+        calls:
+             - [ setTranslationDomain, ['FDCAdminBundle']]

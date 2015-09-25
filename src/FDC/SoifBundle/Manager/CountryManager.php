@@ -87,7 +87,7 @@ class CountryManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         foreach ($resultObjects as $resultObject) {
@@ -119,7 +119,7 @@ class CountryManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
         
         // delete objects
         $this->deleteMultiple($resultObjects);

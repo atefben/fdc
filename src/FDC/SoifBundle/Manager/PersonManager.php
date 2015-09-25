@@ -122,7 +122,7 @@ class PersonManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities
@@ -155,7 +155,7 @@ class PersonManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
         
         // delete objects
         $this->deleteMultiple($resultObjects);
@@ -193,7 +193,7 @@ class PersonManager extends CoreManager
         if (property_exists($resultObject, 'PersonneFilms') && property_exists($resultObject->PersonneFilms, 'PersonneFilmDto')) {
             $collection = new ArrayCollection();
             $localesMapper = $this->getLocalesMapper();
-            $resultObject->PersonneFilms->PersonneFilmDto = $this->objectToArray($resultObject->PersonneFilms->PersonneFilmDto);
+            $resultObject->PersonneFilms->PersonneFilmDto = $this->mixedToArray($resultObject->PersonneFilms->PersonneFilmDto);
             $collectionFunctions = new ArrayCollection();
             foreach ($resultObject->PersonneFilms->PersonneFilmDto as $obj) {
                 $entityRelated = $this->em->getRepository('FDCCoreBundle:FilmFilmPerson')->findOneBy(array(

@@ -133,7 +133,7 @@ class FilmAtelierManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities
@@ -166,7 +166,7 @@ class FilmAtelierManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats);
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
         
         // delete objects
         $this->deleteMultiple($resultObjects);
@@ -232,27 +232,28 @@ class FilmAtelierManager extends CoreManager
         }
         
         // @todo realisateurs, probleme duplicate function film_person_translation link to film_function
-        if (property_exists($resultObject, 'IdRealisateurs')) {
+        if (property_exists($resultObject, 'IdRealisateurs') && property_exists($resultObject->IdRealisateurs, 'int')) {
             // create an array when we get an object to standardize the code
-            $resultObject->IdRealisateurs = $this->objectToArray($resultObject->IdRealisateurs);
-            
-            foreach ($resultObject->IdRealisateurs as $director) {
-                $filmPerson = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneBy(array('id' => $director->int));
-                $filmPerson = ($filmPerson !== null) ? $filmPerson : $this->personManager->getById($director->int);
-                
-                $filmAtelierPerson = $this->em->getRepository('FDCCoreBundle:FilmAtelierPerson')->findOneBy(array('film' => $entity->getId(), 'person' => $director->int));
-                $filmAtelierPerson = ($filmAtelierPerson !== null)  ? $filmAtelierPerson : new FilmAtelierPerson();
-                $filmAtelierPerson->setPerson($filmPerson);
-                
-                // set function
-                if ($filmAtelierPerson->getFunctions()->count() == 0) {
-                    $functionTranslation = $this->em->getRepository('FDCCoreBundle:FilmFunctionTranslation')->findOneBy(array('locale' => 'en', 'name' => 'Director'));
-                    if ($functionTranslation === null) {
-                        $this->logger->error(__METHOD__. " {$id}, function translation Director not found");
-                    } else {
-                        $filmAtelierPersonFunction = new FilmAtelierPersonFunction();
-                        $filmAtelierPersonFunction->setFunction($functionTranslation->getTranslatable());
-                        $filmAtelierPerson->addFunction($filmAtelierPersonFunction);
+            foreach ($resultObject->IdRealisateurs as $types) {
+                $types = $this->mixedToArray($types);
+                foreach ($types as $directorId) {
+                    $filmPerson = $this->em->getRepository('FDCCoreBundle:FilmPerson')->findOneBy(array('id' => $directorId));
+                    $filmPerson = ($filmPerson !== null) ? $filmPerson : $this->personManager->getById($directorId);
+                    
+                    $filmAtelierPerson = $this->em->getRepository('FDCCoreBundle:FilmAtelierPerson')->findOneBy(array('film' => $entity->getId(), 'person' => $directorId));
+                    $filmAtelierPerson = ($filmAtelierPerson !== null)  ? $filmAtelierPerson : new FilmAtelierPerson();
+                    $filmAtelierPerson->setPerson($filmPerson);
+                    
+                    // set function
+                    if ($filmAtelierPerson->getFunctions()->count() == 0) {
+                        $functionTranslation = $this->em->getRepository('FDCCoreBundle:FilmFunctionTranslation')->findOneBy(array('locale' => 'en', 'name' => 'Director'));
+                        if ($functionTranslation === null) {
+                            $this->logger->error(__METHOD__. " {$id}, function translation Director not found");
+                        } else {
+                            $filmAtelierPersonFunction = new FilmAtelierPersonFunction();
+                            $filmAtelierPersonFunction->setFunction($functionTranslation->getTranslatable());
+                            $filmAtelierPerson->addFunction($filmAtelierPersonFunction);
+                        }
                     }
                 }
             }

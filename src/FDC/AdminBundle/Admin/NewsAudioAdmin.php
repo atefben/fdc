@@ -70,7 +70,7 @@ class NewsAudioAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-$formMapper
+        $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'FDCAdminBundle',
@@ -78,6 +78,7 @@ $formMapper
                 'fields' => array(
                     'title' => array(
                         'label' => 'form.label_title',
+                        'translation_domain' => 'FDCAdminBundle',
                         'sonata_help' => 'X caractères max.',
                         'locale_options' => array(
                             'fr' => array(
@@ -87,7 +88,8 @@ $formMapper
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_introduction'
+                        'label' => 'form.label_introduction',
+                        'translation_domain' => 'FDCAdminBundle',
                     ),
                     'widgets' => array(
                         'field_type' => 'infinite_form_polycollection',
@@ -115,6 +117,7 @@ $formMapper
                     ),
                     'publishedAt' => array(
                         'label' => 'form.label_published_at',
+                        'translation_domain' => 'FDCAdminBundle',
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
@@ -123,6 +126,7 @@ $formMapper
                     ),
                     'publishEndedAt' => array(
                         'label' => 'form.label_publish_ended_at',
+                        'translation_domain' => 'FDCAdminBundle',
                         'field_type' => 'sonata_type_datetime_picker',
                         'format' => 'dd/MM/yyyy HH:mm',
                         'attr' => array(
@@ -131,6 +135,7 @@ $formMapper
                     ),
                     'status' => array(
                         'label' => 'form.label_status',
+                        'translation_domain' => 'FDCAdminBundle',
                         'field_type' => 'choice',
                         'choices' => NewsAudioTranslation::getStatuses(),
                         'choice_translation_domain' => 'FDCAdminBundle'
@@ -151,6 +156,7 @@ $formMapper
             )
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_audio',
+                'translation_domain' => 'FDCAdminBundle',
                 'required' => false
             ))
             ->add('associations', 'sonata_type_collection', array(

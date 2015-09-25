@@ -120,7 +120,7 @@ class FilmAtelier
     /**
      * @var FilmAtelierProductionCompany
      *
-     * @ORM\OneToOne(targetEntity="FilmAtelierProductionCompany", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmAtelierProductionCompany", cascade={"persist"})
      */
     private $productionCompany;
 

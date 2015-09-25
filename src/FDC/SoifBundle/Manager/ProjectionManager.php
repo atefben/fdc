@@ -95,7 +95,7 @@ class ProjectionManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
-        $resultObject = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
+        $resultObject = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         
         // set entity
         $entity = $this->set($result, $resultObject);
@@ -130,7 +130,7 @@ class ProjectionManager extends CoreManager
             $this->logger->info("No entities found for timestamp interval {$from} - > {$to} ");
             return;
         }
-        $resultObjects = $this->objectToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
         
         // set entities
@@ -203,7 +203,7 @@ class ProjectionManager extends CoreManager
             $collectionNew = new ArrayCollection();
             $filmProjectionMedias = $entity->getMedias();
             // verify type and set array as default
-            $resultObject->ElementsMultimediaSeance->ElementMultimediaRefDto = $this->objectToArray($resultObject->ElementsMultimediaSeance->ElementMultimediaRefDto);
+            $resultObject->ElementsMultimediaSeance->ElementMultimediaRefDto = $this->mixedToArray($resultObject->ElementsMultimediaSeance->ElementMultimediaRefDto);
             // loop through each element
             foreach ($resultObject->ElementsMultimediaSeance->ElementMultimediaRefDto as $media) {
                 $entityRelated = $entity->hasMedia($media->Id);
@@ -251,7 +251,7 @@ class ProjectionManager extends CoreManager
         if (property_exists($resultObject, 'DynamicProgrammationObject') && property_exists($resultObject->DynamicProgrammationObject, 'DynamicProgrammationObjectDto')) {
             $collectionNew = new ArrayCollection();
             // verify type and set array as default
-            $resultObject->DynamicProgrammationObject->DynamicProgrammationObjectDto = $this->objectToArray($resultObject->DynamicProgrammationObject->DynamicProgrammationObjectDto);
+            $resultObject->DynamicProgrammationObject->DynamicProgrammationObjectDto = $this->mixedToArray($resultObject->DynamicProgrammationObject->DynamicProgrammationObjectDto);
             foreach ($resultObject->DynamicProgrammationObject->DynamicProgrammationObjectDto as $obj) {
                 // create related entity
                 $programmationDynamic = $this->em->getRepository('FDCCoreBundle:FilmProjectionProgrammationDynamic')->findOneBy(array(
@@ -284,7 +284,7 @@ class ProjectionManager extends CoreManager
         if (property_exists($resultObject, 'FilmProgrammationObject') && property_exists($resultObject->FilmProgrammationObject, 'FilmProgrammationObjectDto')) {
             $collectionNew = new ArrayCollection();
             // verify type and set array as default
-            $resultObject->FilmProgrammationObject->FilmProgrammationObjectDto = $this->objectToArray($resultObject->FilmProgrammationObject->FilmProgrammationObjectDto);
+            $resultObject->FilmProgrammationObject->FilmProgrammationObjectDto = $this->mixedToArray($resultObject->FilmProgrammationObject->FilmProgrammationObjectDto);
             foreach ($resultObject->FilmProgrammationObject->FilmProgrammationObjectDto as $obj) {
                 // create / get related entity
                 $programmationFilm = $this->em->getRepository('FDCCoreBundle:FilmProjectionProgrammationFilm')->findOneBy(array(
@@ -324,7 +324,7 @@ class ProjectionManager extends CoreManager
             $collectionNew = new ArrayCollection();
             $collectionFilmsNew = new ArrayCollection();
             // verify type and set array as default
-            $resultObject->FilmsListProgrammationObject->FilmsListProgrammationObjectDto = $this->objectToArray($resultObject->FilmsListProgrammationObject->FilmsListProgrammationObjectDto);
+            $resultObject->FilmsListProgrammationObject->FilmsListProgrammationObjectDto = $this->mixedToArray($resultObject->FilmsListProgrammationObject->FilmsListProgrammationObjectDto);
             foreach ($resultObject->FilmsListProgrammationObject->FilmsListProgrammationObjectDto as $obj) {
                 // create related entity
                 $programmationFilmList = $this->em->getRepository('FDCCoreBundle:FilmProjectionProgrammationFilm')->findOneBy(array(
