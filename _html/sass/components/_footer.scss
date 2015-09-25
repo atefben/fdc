@@ -6,3 +6,128 @@
 
 // 1. Global
 // =========================
+
+footer * {
+  box-sizing: border-box;
+}
+
+footer {
+  background-color: $black;
+  padding: 40px 0;
+
+  h2 {
+    color: #fff;
+  }
+
+  h3 {
+    color: #fff;
+  }
+
+  .newsletter {
+    height: 150px;
+    padding: 50px 0;
+
+    form {
+      height: 100%;
+    }
+
+    #email {
+      border: 0;
+      display: inline-block;
+      height: 100%;
+      outline: none;
+      padding-left: 20px;
+      width: calc(100% - 165px);
+    }
+
+    #submit {
+      background: $black;
+      border: 1px solid #414141;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: $CamphorBold;
+      font-size: 0.750em;
+      height: 100%;
+      margin-left: 20px;
+      outline: none;
+      text-transform: uppercase;
+      width: 135px;
+      @include transition(all 0.3s $smoothTransition);
+
+      &:hover {
+        background-color: #fff;
+        border-color: #fff;
+        color: $black;
+      }
+    }
+  }
+
+  .social {
+    border: 1px solid #2b2b2b;
+    border-left: none;
+    border-right: none;
+    padding: 50px 0;
+  }
+
+  .footer-menu {
+    padding: 50px 0;
+
+    ul {
+      text-align: center;
+
+      li {
+        color: #fff;
+        display: inline-block;
+        font-family: $CamphorRegular;
+        font-size: 0.875em;
+        padding-right: 22px;
+        position: relative;
+
+        &.copyright {
+          opacity: 0.5;
+
+          &:after {
+            opacity: 1;
+          }
+        }
+
+        &:last-child {
+          padding-right: 0;
+
+          &:after {
+            display: none;
+          }
+        }
+
+        &:after {
+          background-color: #fff;
+          border-radius: 100%;
+          content: '';
+          display: block;
+          margin: -1px 0 0 0;
+          opacity: 0.5;
+          position: absolute;
+          right: 8px;
+          top: 50%;
+          height: 3px;
+          width: 3px;
+        }
+
+        a {
+          color: #fff;
+          opacity: 0.5;
+          @include transition(all 0.3s $smoothTransition);
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,17 @@
+{
+  "name": "Festival de Cannes",
+  "version": "0.1.0",
+  "authors": [
+    "clementgrellier <clementgrellier@gmail.com>"
+  ],
+  "main": "js/main.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "owl.carousel": "~2.0.0-beta.3"
+  }
+}
