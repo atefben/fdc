@@ -20,7 +20,6 @@ class FilmProjectionTranslation
     use Time;
     use Translation;
 
-    
     /**
      * @var string
      *

@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+
 /**
  * FilmFilmPersonTranslation
  *
@@ -24,6 +26,8 @@ class FilmFilmPersonTranslation
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"person_list", "person_show", "film_list", "film_show"})
      */
     private $role;
 

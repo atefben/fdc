@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -23,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Theme
 {
     use Time;
-    use Translation;
+    use TranslationByLocale;
     use Translatable;
 
     /**

@@ -8,6 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
@@ -21,6 +26,8 @@ class FilmPersonTranslation
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
      */
     protected $profession;
     
@@ -28,6 +35,8 @@ class FilmPersonTranslation
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
      */
     protected $biography;
 

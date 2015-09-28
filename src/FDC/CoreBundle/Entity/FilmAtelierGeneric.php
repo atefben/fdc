@@ -10,7 +10,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmAtelierGeneric
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="id_position", columns={"id", "position"}), @ORM\Index(name="position", columns={"position"}) })
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */

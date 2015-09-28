@@ -4,6 +4,10 @@ namespace FDC\CoreBundle\Util;
 
 use \DateTime;
 
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * Time trait.
@@ -17,6 +21,8 @@ trait Time
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
+     *
+     * @Groups({"time"})
      */
     private $createdAt;
 
@@ -24,6 +30,8 @@ trait Time
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
+     *
+     * @Groups({"time"})
      */
     private $updatedAt;
 

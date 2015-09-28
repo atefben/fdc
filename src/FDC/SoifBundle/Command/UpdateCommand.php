@@ -63,7 +63,7 @@ class UpdateCommand extends ContainerAwareCommand
             if ($soifTask === null) {
                 $msg = __METHOD__. " Couldn't find the taskName {$this->taskName} in table SoifTask";
                 $output->writeln($msg);
-                $this->logger->err($msg);
+                $this->getContainer()->get('logger')->error($msg);
                 exit;
             }
             $start = $soifTask->getEndTimestamp();
@@ -95,7 +95,10 @@ class UpdateCommand extends ContainerAwareCommand
         // call the managers
         foreach ($managers as $manager) {
             $manager->getModified($start, $end);
-            $manager->getRemoved($start, $end);
+            // verify if method exists before call because prize manager doenst have a getRemoved method
+            if (method_exists($manager, 'getRemoved')) {
+                $manager->getRemoved($start, $end);
+            }
         }
         
         // save in database the end timestamp

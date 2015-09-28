@@ -7,21 +7,28 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
+
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmFilm
  *
- * @ORM\Table(indexes={@ORM\Index(name="updated_at", columns={"updated_at"}) })
- * @ORM\Entity
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="FDC\CoreBundle\Repository\FilmFilmRepository")
  * @ORM\HasLifecycleCallbacks
+ *
  */
 class FilmFilm implements FilmFilmInterface
 {
     use Translatable;
-    use Translation;
+    use TranslationByLocale;
     use Time;
     use Soif;
     
@@ -30,6 +37,9 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="string", length=36)
      * @ORM\Id
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $id;
     
@@ -37,6 +47,9 @@ class FilmFilm implements FilmFilmInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $directorFirst;
     
@@ -44,6 +57,9 @@ class FilmFilm implements FilmFilmInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $restored;
     
@@ -51,6 +67,9 @@ class FilmFilm implements FilmFilmInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $titleVO;
     
@@ -58,6 +77,9 @@ class FilmFilm implements FilmFilmInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $titleVOAlphabet;
     
@@ -65,6 +87,9 @@ class FilmFilm implements FilmFilmInterface
      * @var string
      *
      * @ORM\Column(type="string", length=4, nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $productionYear;
     
@@ -72,6 +97,9 @@ class FilmFilm implements FilmFilmInterface
      * @var string
      *
      * @ORM\Column(type="decimal", precision=22, scale=2)
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $duration;
     
@@ -79,6 +107,9 @@ class FilmFilm implements FilmFilmInterface
      * @var text
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $castingCommentary;
     
@@ -86,6 +117,9 @@ class FilmFilm implements FilmFilmInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $website;
 
@@ -93,6 +127,9 @@ class FilmFilm implements FilmFilmInterface
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $galaId;
 
@@ -100,6 +137,9 @@ class FilmFilm implements FilmFilmInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $galaName;
 
@@ -107,6 +147,9 @@ class FilmFilm implements FilmFilmInterface
      * @var FilmSelection
      *
      * @ORM\ManyToOne(targetEntity="FilmSelection", inversedBy="films", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $selection;
 
@@ -114,6 +157,9 @@ class FilmFilm implements FilmFilmInterface
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $festival;
     
@@ -121,11 +167,17 @@ class FilmFilm implements FilmFilmInterface
      * @var FilmFilmPerson
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $persons;
     
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $contacts;
 
@@ -138,32 +190,50 @@ class FilmFilm implements FilmFilmInterface
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $awards;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"persist"})
      * @ORM\OrderBy({"position"="ASC"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $medias;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMinorProduction", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $minorProductions;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"persist"} )
+     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $countries;
 
     /**
      * @ORM\ManyToMany(targetEntity="FilmProjection", inversedBy="films", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $projections;
     
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     protected $translations;
 
@@ -827,167 +897,6 @@ class FilmFilm implements FilmFilmInterface
     public function getSubSelectionVA()
     {
         return $this->subSelectionVA;
-    }
-
-    /**
-     * Set subtitleLanguage
-     *
-     * @param \FDC\CoreBundle\Entity\Country $subtitleLanguage
-     * @return FilmFilm
-     */
-    public function setSubtitleLanguage(\FDC\CoreBundle\Entity\Country $subtitleLanguage = null)
-    {
-        $this->subtitleLanguage = $subtitleLanguage;
-
-        return $this;
-    }
-
-    /**
-     * Get subtitleLanguage
-     *
-     * @return \FDC\CoreBundle\Entity\Country 
-     */
-    public function getSubtitleLanguage()
-    {
-        return $this->subtitleLanguage;
-    }
-
-    /**
-     * Set productionAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $productionAddress
-     * @return FilmFilm
-     */
-    public function setProductionAddress(\FDC\CoreBundle\Entity\FilmAddress $productionAddress = null)
-    {
-        $this->productionAddress = $productionAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get productionAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getProductionAddress()
-    {
-        return $this->productionAddress;
-    }
-
-    /**
-     * Set distributionAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $distributionAddress
-     * @return FilmFilm
-     */
-    public function setDistributionAddress(\FDC\CoreBundle\Entity\FilmAddress $distributionAddress = null)
-    {
-        $this->distributionAddress = $distributionAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get distributionAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getDistributionAddress()
-    {
-        return $this->distributionAddress;
-    }
-
-    /**
-     * Set pressAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $pressAddress
-     * @return FilmFilm
-     */
-    public function setPressAddress(\FDC\CoreBundle\Entity\FilmAddress $pressAddress = null)
-    {
-        $this->pressAddress = $pressAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get pressAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getPressAddress()
-    {
-        return $this->pressAddress;
-    }
-
-    /**
-     * Set pressInternatAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $pressInternatAddress
-     * @return FilmFilm
-     */
-    public function setPressInternatAddress(\FDC\CoreBundle\Entity\FilmAddress $pressInternatAddress = null)
-    {
-        $this->pressInternatAddress = $pressInternatAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get pressInternatAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getPressInternatAddress()
-    {
-        return $this->pressInternatAddress;
-    }
-
-    /**
-     * Set eventAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $eventAddress
-     * @return FilmFilm
-     */
-    public function setEventAddress(\FDC\CoreBundle\Entity\FilmAddress $eventAddress = null)
-    {
-        $this->eventAddress = $eventAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get eventAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getEventAddress()
-    {
-        return $this->eventAddress;
-    }
-
-    /**
-     * Set directorAddress
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAddress $directorAddress
-     * @return FilmFilm
-     */
-    public function setDirectorAddress(\FDC\CoreBundle\Entity\FilmAddress $directorAddress = null)
-    {
-        $this->directorAddress = $directorAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get directorAddress
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAddress 
-     */
-    public function getDirectorAddress()
-    {
-        return $this->directorAddress;
     }
 
     /**

@@ -1,0 +1,6 @@
+nelmio_api_doc:
+    name: 'FDC Api documentation'
+    sandbox:
+        request_format:
+            formats:
+                json: application/json

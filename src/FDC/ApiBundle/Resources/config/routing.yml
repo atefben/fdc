@@ -1,0 +1,19 @@
+film:
+    type:     rest
+    resource: FDC\ApiBundle\Controller\FilmController
+
+film_award:
+    type:     rest
+    resource: FDC\ApiBundle\Controller\FilmAwardController
+
+film_person:
+    type:     rest
+    resource: FDC\ApiBundle\Controller\FilmPersonController
+
+film_projection:
+    type:     rest
+    resource: FDC\ApiBundle\Controller\FilmProjectionController
+
+film_prize:
+    type:     rest
+    resource: FDC\ApiBundle\Controller\FilmPrizeController

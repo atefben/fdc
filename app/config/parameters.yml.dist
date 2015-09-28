@@ -33,3 +33,6 @@ parameters:
     soif_login: ~
     soif_password: ~
     soif_upload_directory: ~
+    #api
+    api_version: '1.0'
+    api_page_offset: 10

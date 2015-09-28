@@ -3,12 +3,12 @@
 namespace FDC\CoreBundle\Util;
 
 /**
- * Translation trait.
+ * TranslationByLocale trait.
  *
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
-trait Translation
+trait TranslationByLocale
 {
     /**
      * findTranslationByLocale function.

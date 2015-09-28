@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 
 /**
  * MediaAudio
@@ -20,7 +20,7 @@ use FDC\CoreBundle\Util\Translation;
 class MediaImage extends Media
 {
     use Translatable;
-    use Translation;
+    use TranslationByLocale;
 
     /**
      * @var ArrayCollection

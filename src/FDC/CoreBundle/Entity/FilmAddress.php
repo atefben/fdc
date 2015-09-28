@@ -7,20 +7,20 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 use FDC\CoreBundle\Util\Time;
 
 /**
  * FilmAddress
  *
- * @ORM\Table(indexes={@ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
 class FilmAddress
 {
     use Translatable;
-    use Translation;
+    use TranslationByLocale;
     use Time;
 
     /**
@@ -99,47 +99,16 @@ class FilmAddress
      * @ORM\OneToMany(targetEntity="FilmContact", mappedBy="address")
      */
     private $contacts;
-
     
     /**
      * @ORM\OneToMany(targetEntity="FilmPerson", mappedBy="address")
      */
     private $persons;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="directorAddress")
-     */
-    private $directorFilms;
-    
+     
     /**
      * @ORM\OneToMany(targetEntity="FilmAddressSchool", mappedBy="address")
      */
     private $schoolsFilms;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="eventAddress")
-     */
-    private $eventFilms;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="pressInternatAddress")
-     */
-    private $pressInternatFilms;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="pressAddress")
-     */
-    private $pressFilms;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="distributionAddress")
-     */
-    private $distributionFilms;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="productionAddress")
-     */
-    private $productionFilms;
 
     /**
      * @var ArrayCollection
@@ -152,13 +121,7 @@ class FilmAddress
     public function __construct()
     {
         $this->persons = new ArrayCollection();
-        $this->directorFilms = new ArrayCollection();
         $this->schoolsFilms = new ArrayCollection();
-        $this->eventFilms = new ArrayCollection();
-        $this->pressInternatFilms = new ArrayCollection();
-        $this->pressFilms = new ArrayCollection();
-        $this->distributionFilms = new ArrayCollection();
-        $this->productionFilms = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
@@ -414,47 +377,6 @@ class FilmAddress
     }
 
     /**
-     * Add directorFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $directorFilms
-     * @return FilmAddress
-     */
-    public function addDirectorFilm(\FDC\CoreBundle\Entity\FilmFilm $directorFilms)
-    {
-        if ($this->directorFilms->contains($directorFilms)) {
-            return;
-        }
-
-        $this->directorFilms[] = $directorFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove directorFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $directorFilms
-     */
-    public function removeDirectorFilm(\FDC\CoreBundle\Entity\FilmFilm $directorFilms)
-    {
-        if (!$this->directorFilms->contains($directorFilms)) {
-            return;
-        }
-
-        $this->directorFilms->removeElement($directorFilms);
-    }
-
-    /**
-     * Get directorFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDirectorFilms()
-    {
-        return $this->directorFilms;
-    }
-
-    /**
      * Add schoolsFilms
      *
      * @param \FDC\CoreBundle\Entity\FilmAddressSchool $schoolsFilms
@@ -493,210 +415,6 @@ class FilmAddress
     public function getSchoolsFilms()
     {
         return $this->schoolsFilms;
-    }
-
-    /**
-     * Add eventFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $eventFilms
-     * @return FilmAddress
-     */
-    public function addEventFilm(\FDC\CoreBundle\Entity\FilmFilm $eventFilms)
-    {
-        if ($this->eventFilms->contains($eventFilms)) {
-            return;
-        }
-
-        $this->eventFilms[] = $eventFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove eventFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $eventFilms
-     */
-    public function removeEventFilm(\FDC\CoreBundle\Entity\FilmFilm $eventFilms)
-    {
-        if (!$this->eventFilms->contains($eventFilms)) {
-            return;
-        }
-
-        $this->eventFilms->removeElement($eventFilms);
-    }
-
-    /**
-     * Get eventFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getEventFilms()
-    {
-        return $this->eventFilms;
-    }
-
-    /**
-     * Add pressInternatFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $pressInternatFilms
-     * @return FilmAddress
-     */
-    public function addPressInternatFilm(\FDC\CoreBundle\Entity\FilmFilm $pressInternatFilms)
-    {
-        if ($this->pressInternatFilms->contains($pressInternatFilms)) {
-            return;
-        }
-
-        $this->pressInternatFilms[] = $pressInternatFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove pressInternatFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $pressInternatFilms
-     */
-    public function removePressInternatFilm(\FDC\CoreBundle\Entity\FilmFilm $pressInternatFilms)
-    {
-        if (!$this->pressInternatFilms->contains($pressInternatFilms)) {
-            return;
-        }
-
-        $this->pressInternatFilms->removeElement($pressInternatFilms);
-    }
-
-    /**
-     * Get pressInternatFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPressInternatFilms()
-    {
-        return $this->pressInternatFilms;
-    }
-
-    /**
-     * Add pressFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $pressFilms
-     * @return FilmAddress
-     */
-    public function addPressFilm(\FDC\CoreBundle\Entity\FilmFilm $pressFilms)
-    {
-        if ($this->pressFilms->contains($pressFilms)) {
-            return;
-        }
-
-        $this->pressFilms[] = $pressFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove pressFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $pressFilms
-     */
-    public function removePressFilm(\FDC\CoreBundle\Entity\FilmFilm $pressFilms)
-    {
-        if (!$this->pressFilms->contains($pressFilms)) {
-            return;
-        }
-
-        $this->pressFilms->removeElement($pressFilms);
-    }
-
-    /**
-     * Get pressFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPressFilms()
-    {
-        return $this->pressFilms;
-    }
-
-    /**
-     * Add distributionFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $distributionFilms
-     * @return FilmAddress
-     */
-    public function addDistributionFilm(\FDC\CoreBundle\Entity\FilmFilm $distributionFilms)
-    {
-        if ($this->distributionFilms->contains($distributionFilms)) {
-            return;
-        }
-
-        $this->distributionFilms[] = $distributionFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove distributionFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $distributionFilms
-     */
-    public function removeDistributionFilm(\FDC\CoreBundle\Entity\FilmFilm $distributionFilms)
-    {
-        if (!$this->distributionFilms->contains($distributionFilms)) {
-            return;
-        }
-
-        $this->distributionFilms->removeElement($distributionFilms);
-    }
-
-    /**
-     * Get distributionFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDistributionFilms()
-    {
-        return $this->distributionFilms;
-    }
-
-    /**
-     * Add productionFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $productionFilms
-     * @return FilmAddress
-     */
-    public function addProductionFilm(\FDC\CoreBundle\Entity\FilmFilm $productionFilms)
-    {
-        if ($this->productionFilms->contains($productionFilms)) {
-            return;
-        }
-        
-        $this->productionFilms[] = $productionFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove productionFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $productionFilms
-     */
-    public function removeProductionFilm(\FDC\CoreBundle\Entity\FilmFilm $productionFilms)
-    {
-        if (!$this->productionFilms->contains($productionFilms)) {
-            return;
-        }
-        $this->productionFilms->removeElement($productionFilms);
-    }
-
-    /**
-     * Get productionFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProductionFilms()
-    {
-        return $this->productionFilms;
     }
 
     /**

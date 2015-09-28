@@ -8,13 +8,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 use FDC\CoreBundle\Validator\Constraints as FDCAssert;
+
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * FilmFunction
  *
- * @ORM\Table(indexes={@ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
@@ -22,13 +24,15 @@ class FilmFunction
 {
     use Time;
     use Translatable;
-    use Translation;
+    use TranslationByLocale;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
+     * @Groups({"film_list", "film_show"})
      */
     private $id;
     
@@ -42,7 +46,6 @@ class FilmFunction
      */
     private $filmPersons;
 
-    
     /**
      * @ORM\OneToMany(targetEntity="FilmAtelierGeneric", mappedBy="function")
      */
@@ -50,6 +53,8 @@ class FilmFunction
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"film_list", "film_show"})
      */
     protected $translations;
 

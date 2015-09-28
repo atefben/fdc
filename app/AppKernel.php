@@ -26,13 +26,17 @@ class AppKernel extends Kernel
             new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\TranslationBundle\SonataTranslationBundle(),
-           # new Sonata\SeoBundle\SonataSeoBundle(),
+            # new Sonata\SeoBundle\SonataSeoBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\Sonata\DoctrineORMAdminBundle\ApplicationSonataDoctrineORMAdminBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
+            /* Api */
+            new FOS\RestBundle\FOSRestBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             /* Doctrine Fixtures */
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             /* CMS tools */
@@ -53,6 +57,7 @@ class AppKernel extends Kernel
             new FDC\CoreBundle\FDCCoreBundle(),
             new FDC\AdminBundle\FDCAdminBundle(),
             new FDC\SoifBundle\FDCSoifBundle(),
+            new FDC\ApiBundle\FDCApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

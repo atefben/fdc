@@ -8,7 +8,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
+
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
 
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -28,7 +33,7 @@ class FilmFilmPerson
 {
     use Time;
     use Translatable;
-    use Translation;
+    use TranslationByLocale;
 
     /**
      * @var integer
@@ -54,6 +59,8 @@ class FilmFilmPerson
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=true)
      *
      * @TODO: set nullable false / true ? related to FDC_Questions_LOT1_20150923 point 4
+     *
+     * @Groups({"film_list", "film_show"})
      */
     private $person;
 
@@ -61,11 +68,15 @@ class FilmFilmPerson
      * @var FilmFilmPersonFunction
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
      */
     private $functions;
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"film_list", "film_show"})
      */
     protected $translations;
 

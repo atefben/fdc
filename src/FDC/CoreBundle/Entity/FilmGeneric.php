@@ -9,7 +9,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmGeneric
  *
- * @ORM\Table(indexes={@ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="film_id", columns={"film_id"}), @ORM\Index(name="function_vf", columns={"function_vf"}), @ORM\Index(name="function_va", columns={"function_va"}), @ORM\Index(name="role_vf", columns={"role_vf"}), @ORM\Index(name="role_va", columns={"role_va"}), @ORM\Index(name="position", columns={"position"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="function_id", columns={"function_id"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */

@@ -53,6 +53,10 @@ fdc_admin:
     type:     annotation
     prefix:   /admin
 
+fdc_api:
+    resource: "@FDCApiBundle/Resources/config/routing.yml"
+    prefix:   /api
+
 fdc_core:
     resource: "@FDCCoreBundle/Controller/"
     type:     annotation
@@ -62,3 +66,7 @@ fdc_soif:
     resource: "@FDCSoifBundle/Controller/"
     type:     annotation
     prefix:   /
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

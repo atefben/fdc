@@ -2,10 +2,9 @@
 
 namespace FDC\CoreBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
-
 use Doctrine\ORM\Mapping as ORM;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use FDC\CoreBundle\Util\Time;
 
 /**

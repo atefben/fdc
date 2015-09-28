@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 
 /**
  * FilmPrize
@@ -23,7 +23,7 @@ class FilmPrize implements FilmPrizeInterface
     use Time;
     use Translatable;
     use Soif;
-    use Translation;
+    use TranslationByLocale;
 
     /**
      * @var string

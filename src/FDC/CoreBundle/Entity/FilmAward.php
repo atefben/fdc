@@ -84,6 +84,20 @@ class FilmAward
      */
     private $prize;
 
+   /**
+     * @var FilmPerson
+     *
+     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="awards")
+     */
+    private $person;
+
+   /**
+     * @var FilmFilm
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="awards")
+     */
+    private $film;
+
     /**
      * @var FilmAwardAssociation
      *
@@ -345,5 +359,51 @@ class FilmAward
     public function getAssociations()
     {
         return $this->associations;
+    }
+
+    /**
+     * Set person
+     *
+     * @param \FDC\CoreBundle\Entity\FilmPerson $person
+     * @return FilmAward
+     */
+    public function setPerson(\FDC\CoreBundle\Entity\FilmPerson $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \FDC\CoreBundle\Entity\FilmPerson 
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+
+    /**
+     * Set film
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilm $film
+     * @return FilmAward
+     */
+    public function setFilm(\FDC\CoreBundle\Entity\FilmFilm $film = null)
+    {
+        $this->film = $film;
+
+        return $this;
+    }
+
+    /**
+     * Get film
+     *
+     * @return \FDC\CoreBundle\Entity\FilmFilm 
+     */
+    public function getFilm()
+    {
+        return $this->film;
     }
 }

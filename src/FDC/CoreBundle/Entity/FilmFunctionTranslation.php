@@ -7,12 +7,12 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
-use FDC\CoreBundle\Validator\Constraints as FDCAssert;
+
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @FDCAssert\Locale
  */
 class FilmFunctionTranslation
 {
@@ -23,6 +23,8 @@ class FilmFunctionTranslation
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
      */
     protected $name;
 

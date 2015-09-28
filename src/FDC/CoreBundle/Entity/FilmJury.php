@@ -9,12 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 
 /**
  * FilmJury
  *
- * @ORM\Table(indexes={@ORM\Index(name="festival_id", columns={"festival_id"}), @ORM\Index(name="position", columns={"position"}) })
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
@@ -23,7 +23,7 @@ class FilmJury
     use Time;
     use Translatable;
     use Soif;
-    use Translation;
+    use TranslationByLocale;
     
     /**
      * @var string

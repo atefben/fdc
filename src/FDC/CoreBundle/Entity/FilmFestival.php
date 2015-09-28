@@ -8,8 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
- * FilmFestivalId
+ * FilmFestival
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -25,6 +28,9 @@ class FilmFestival
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $id;
 
@@ -32,6 +38,9 @@ class FilmFestival
      * @var integer
      *
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"film_list", "film_show"})
+     * 
      */
     private $year;
 

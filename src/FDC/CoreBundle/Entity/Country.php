@@ -7,21 +7,21 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
 
 /**
  * Pays
  *
- * @ORM\Table(indexes={@ORM\Index(name="updated_at", columns={"updated_at"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
 class Country
 {
     use Translatable;
-    use Translation;
+    use TranslationByLocale;
     use Time;
     use Soif;
 
@@ -44,11 +44,6 @@ class Country
      * @ORM\OneToMany(targetEntity="FilmAddress", mappedBy="country")
      */
     private $addresses;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="subtitleLanguage")
-     */
-    private $subtitleLanguageFilms;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="country")
@@ -81,7 +76,6 @@ class Country
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
-        $this->subtitleLanguageFilms = new ArrayCollection();
         $this->countryFilms = new ArrayCollection();
         $this->countryFilmAteliers = new ArrayCollection();
         $this->languageFilms = new ArrayCollection();
@@ -166,39 +160,6 @@ class Country
     public function getAddresses()
     {
         return $this->addresses;
-    }
-
-    /**
-     * Add subtitleLanguageFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $subtitleLanguageFilms
-     * @return Country
-     */
-    public function addSubtitleLanguageFilm(\FDC\CoreBundle\Entity\FilmFilm $subtitleLanguageFilms)
-    {
-        $this->subtitleLanguageFilms[] = $subtitleLanguageFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove subtitleLanguageFilms
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $subtitleLanguageFilms
-     */
-    public function removeSubtitleLanguageFilm(\FDC\CoreBundle\Entity\FilmFilm $subtitleLanguageFilms)
-    {
-        $this->subtitleLanguageFilms->removeElement($subtitleLanguageFilms);
-    }
-
-    /**
-     * Get subtitleLanguageFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSubtitleLanguageFilms()
-    {
-        return $this->subtitleLanguageFilms;
     }
 
     /**

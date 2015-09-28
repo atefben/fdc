@@ -8,6 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+
 /**
  * FilmFilmTranslation
  *
@@ -24,6 +29,8 @@ class FilmFilmTranslation
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"film_list"})
      */
     private $title;
     
@@ -31,6 +38,8 @@ class FilmFilmTranslation
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
      */
     private $dialog;
     
@@ -38,6 +47,8 @@ class FilmFilmTranslation
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
      */
     private $synopsis;
     
@@ -45,6 +56,8 @@ class FilmFilmTranslation
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_list", "film_show"})
      */
     private $programSection;
 

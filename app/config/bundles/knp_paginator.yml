@@ -1,0 +1,2 @@
+knp_paginator:
+    page_range: %api_page_offset% # default page range used in pagination control

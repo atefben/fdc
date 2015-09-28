@@ -1,0 +1,14 @@
+fos_rest:
+    routing_loader:
+        default_format: json
+        include_format: false
+    body_listener:
+        array_normalizer: fos_rest.normalizer.camel_keys
+    format_listener: true
+    param_fetcher_listener: true
+    body_listener: true
+    disable_csrf_role: ROLE_API
+    serializer:
+        serialize_null: true
+    view:
+        view_response_listener: 'force'

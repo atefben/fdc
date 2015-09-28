@@ -7,7 +7,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
 
@@ -21,7 +21,7 @@ use FDC\CoreBundle\Util\Soif;
 class FilmAtelier
 {
     use Translatable;
-    use Translation;
+    use TranslationByLocale;
     use Time;
     use Soif;
 

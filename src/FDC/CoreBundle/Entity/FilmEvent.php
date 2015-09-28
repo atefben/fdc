@@ -9,7 +9,7 @@ use FDC\CoreBundle\Util\Time;
 /**
  * FilmEvent
  *
- * @ORM\Table(indexes={@ORM\Index(name="festival_year", columns={"festival_year"}), @ORM\Index(name="person_id", columns={"person_id"}), @ORM\Index(name="event_type_id", columns={"event_type_id"}), @ORM\Index(name="position", columns={"position"}), @ORM\Index(name="internet", columns={"internet"}), @ORM\Index(name="updated_at", columns={"updated_at"}), @ORM\Index(name="pm_dateevent", columns={"position", "position"})})
+ * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */

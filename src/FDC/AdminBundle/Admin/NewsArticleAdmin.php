@@ -23,7 +23,10 @@ class NewsArticleAdmin extends Admin
     protected $formOptions = array(
         'cascade_validation' => true
     );
-        
+
+    protected $translationDomain = 'FDCAdminBundle';
+
+    
     public function getNewInstance()
     {
        $instance = parent::getNewInstance();

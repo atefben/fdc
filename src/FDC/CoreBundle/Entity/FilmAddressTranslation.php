@@ -6,6 +6,8 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CoreBundle\Util\Time;
+
 /**
  * FilmAddressTranslation
  *
@@ -15,6 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class FilmAddressTranslation
 {
+    use Time;
     use Translation;
 
     /**

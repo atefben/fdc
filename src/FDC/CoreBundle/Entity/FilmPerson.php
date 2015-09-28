@@ -2,7 +2,6 @@
 
 namespace FDC\CoreBundle\Entity;
 
-
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,12 +9,17 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
+
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * FilmPerson
  *
- * @ORM\Table(indexes={@ORM\Index(name="lastname_firstname", columns={"lastname", "firstname"}), @ORM\Index(name="nationality", columns={"nationality"}), @ORM\Index(name="nationality2", columns={"nationality2"}) })
+ * @ORM\Table()
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
@@ -24,13 +28,15 @@ class FilmPerson
     use Time;
     use Translatable;
     use Soif;
-    use Translation;
+    use TranslationByLocale;
 
     /**
      * @var string
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
+     * @Groups({"person_list", "person_show", "film_list", "film_show"})
      */
     private $id;
 
@@ -38,6 +44,8 @@ class FilmPerson
      * @var string
      *
      * @ORM\Column(type="string", length=40, nullable=true)
+     *
+     * @Groups({"person_list", "person_show", "film_list", "film_show"})
      */
     private $lastname;
 
@@ -45,6 +53,8 @@ class FilmPerson
      * @var string
      *
      * @ORM\Column(type="string", length=40, nullable=true)
+     *
+     * @Groups({"person_list", "person_show", "film_list", "film_show"})
      */
     private $firstname;
     
@@ -52,6 +62,8 @@ class FilmPerson
      * @var string
      *
      * @ORM\Column(type="boolean", nullable=true)
+     *
+     * @Groups({"person_list", "person_show", "film_list", "film_show"})
      */
     private $asianName;
 
@@ -59,6 +71,8 @@ class FilmPerson
      * @var string
      *
      * @ORM\Column(type="string", length=3, nullable=true)
+     *
+     * @Groups({"person_list", "person_show", "film_list", "film_show"})
      */
     private $nationality;
 
@@ -66,6 +80,8 @@ class FilmPerson
      * @var string
      *
      * @ORM\Column(type="string", length=3, nullable=true)
+     *
+     * @Groups({"person_list", "person_show", "film_list", "film_show"})
      */
     private $nationality2;
     
@@ -73,11 +89,15 @@ class FilmPerson
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="persons")
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $function;
     
     /**
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="persons")
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $address;
     
@@ -85,6 +105,8 @@ class FilmPerson
      * @var FilmAtelierGeneric
      *
      * @ORM\OneToMany(targetEntity="FilmAtelierGeneric", mappedBy="person")
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $filmAtelierGenerics;
 
@@ -92,6 +114,8 @@ class FilmPerson
      * @var FilmPersonFilmFilm
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="person", cascade={"persist"})
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $films;
     
@@ -99,31 +123,43 @@ class FilmPerson
      * @var FilmGeneric
      *
      * @ORM\OneToMany(targetEntity="FilmGeneric", mappedBy="person")
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $filmGenerics;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="person")
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $juries;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="person")
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $awards;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="person")
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $medias;
     
     /**
      * @ORM\OneToMany(targetEntity="CinefPerson", mappedBy="person")
+     *
+     * @Groups({"person_list", "person_show"})
      */
     private $cinefPersons;
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"person_list", "person_show", "film_show", "film_list"})
      */
     protected $translations;
 

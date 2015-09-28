@@ -7,9 +7,11 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
+
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * FilmProjection
@@ -21,7 +23,7 @@ use FDC\CoreBundle\Util\Soif;
 class FilmProjection
 {
     use Translatable;
-    use Translation;
+    use TranslationByLocale;
     use Time;
     use Soif;
     
@@ -30,6 +32,8 @@ class FilmProjection
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $id;
     
@@ -37,6 +41,8 @@ class FilmProjection
      * @var DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $startsAt;
     
@@ -44,6 +50,8 @@ class FilmProjection
      * @var DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $endsAt;
 
@@ -51,6 +59,8 @@ class FilmProjection
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $type;
 
@@ -58,6 +68,8 @@ class FilmProjection
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $programmationSection;
 
@@ -65,6 +77,8 @@ class FilmProjection
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $festival;
 
@@ -72,6 +86,8 @@ class FilmProjection
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm")
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $film;
 
@@ -79,6 +95,8 @@ class FilmProjection
      * @var FilmRoom
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionRoom", inversedBy="projections", cascade={"persist"})
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $room;
     
@@ -86,6 +104,8 @@ class FilmProjection
      * @var FilmProjectionProgrammationFilm
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $programmationFilms;
     
@@ -93,6 +113,8 @@ class FilmProjection
      * @var FilmProjectionProgrammationDynamic
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationDynamic", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $programmationDynamics;
     
@@ -100,6 +122,8 @@ class FilmProjection
      * @var FilmProjectionProgrammationFilmList
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $programmationFilmsList;
 
@@ -107,11 +131,15 @@ class FilmProjection
      * @var FilmProjectionMedia
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionMedia", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $medias;
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     protected $translations;
 
@@ -124,6 +152,7 @@ class FilmProjection
         $this->programmationFilms = new ArrayCollection();
         $this->programmationDynamics= new ArrayCollection();
         $this->programmationFilmsList = new ArrayCollection();
+        $his->medias = new ArrayCollection();
     }
 
     /**

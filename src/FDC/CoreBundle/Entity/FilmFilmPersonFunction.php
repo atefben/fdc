@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -45,6 +47,8 @@ class FilmFilmPersonFunction
      *
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="filmPersons", cascade={"persist"})
      * @ORM\JoinColumn(name="function_id", referencedColumnName="id", nullable=false)
+     *
+     * @Groups({"film_list", "film_show"})
      */
     private $function;
 

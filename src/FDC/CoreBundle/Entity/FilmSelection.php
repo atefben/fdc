@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use FDC\CoreBundle\Util\Time;
-use FDC\CoreBundle\Util\Translation;
+use FDC\CoreBundle\Util\TranslationByLocale;
 
 /**
  * FilmSelection
@@ -18,7 +18,7 @@ use FDC\CoreBundle\Util\Translation;
 class FilmSelection
 {
     use Time;
-    use Translation;
+    use TranslationByLocale;
 
     /**
      * @var integer

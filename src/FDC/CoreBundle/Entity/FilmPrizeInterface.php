@@ -6,8 +6,8 @@ namespace FDC\CoreBundle\Entity;
  * FilmPrizeInterface interface.
  *
  * @author      Antoine Mineau <a.mineau@ohwee.fr>
- * @description The available FilmPrize type (from the webservice doc)
- * @company     Ohwee
+ * \@description The available FilmPrize type (from the webservice doc)
+ * \@company     Ohwee
  */
 interface FilmPrizeInterface
 {
