@@ -8,6 +8,12 @@
 // 1. Global
 // =========================
 
+body {
+  font-family: $CamphorRegular;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
 ::-moz-selection {
     background: #fff;
     color: #000;
@@ -35,7 +41,52 @@
   vertical-align: middle;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 977px;
+}
 
+#main {
+  position: relative;
+
+  &:after {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.3s $smoothTransition);
+  }
+
+  &.overlay:after {
+    opacity: 0.6;
+    visibility: visible;
+  }
+}
+
+.title {
+  font-family: $PlayfairBold;
+  font-size: 1.125em;
+  font-weight: normal;
+  letter-spacing: 0.4em;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: $PlayfairItalic;
+  font-size: 0.875em;
+  font-weight: normal;
+  text-align: center;
+}
 
 
 // 2. Navigation

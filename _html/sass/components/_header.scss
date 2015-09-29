@@ -6,3 +6,172 @@
 
 // 1. Global
 // =========================
+
+header {
+  background-color: $dark;
+  width: 100%;
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    #top-bar {
+      display: none;
+    }
+
+    #logo-wrapper {
+      height: 50px;
+    }
+  }
+
+  #top-bar {
+    border-bottom: 1px solid #404040;
+    font-size: 0.750em;
+    height: 28px;
+    line-height: 28px;
+
+    .main-nav {
+      float: left;
+      font-family: $CamphorHeavy;
+
+      li {
+        display: inline-block;
+
+        a {
+          color: $grey;
+          display: block;
+          padding: 0 12px;
+          text-transform: uppercase;
+          @include transition(all 0.3s $smoothTransition);
+
+          &:hover, &.active {
+            color: $gold;
+          }
+
+          &.active {
+            background-color: $black;
+            border-right: 1px solid #404040;
+            padding-bottom: 1px;
+          }
+        }
+      }
+    }
+
+    .user-nav {
+      background-color: $black;
+      border-left: 1px solid #404040;
+      float: right;
+      font-family: $CamphorBold;
+      padding: 0 20px;
+
+      li {
+        display: inline-block;
+
+        a {
+          color: #fff;
+          display: block;
+          padding: 0 8px 1px 8px;
+          @include transition(all 0.3s $smoothTransition);
+        }
+      }
+    }
+  }
+
+  #logo-wrapper {
+    background-color: $black;
+    height: 160px;
+    @include transition(all 0.3s $smoothTransition);
+  }
+
+  #navigation {
+    background-color: $black;
+    border-bottom: 1px solid #404040;
+    border-top: 1px solid #404040;
+    height: 39px;
+    line-height: 39px;
+
+    ul {
+      float: left;
+
+      li {
+        display: inline-block;
+
+        a {
+          color: #fff;
+          display: block;
+          padding-right: 15px;
+          text-transform: uppercase;
+          @include transition(all 0.3s $smoothTransition);
+
+          &:hover, &.active {
+            color: $gold;
+          }
+        }
+
+        &.fade a {
+          color: $grey;
+        }
+
+        ul {
+          background-color: $black;
+          box-sizing: border-box;
+          margin-top: 1px;
+          opacity: 0;
+          padding-left: 100px;
+          position: absolute;
+          visibility: hidden;
+          width: 977px;
+          z-index: 10;
+          @include transition(all 0.3s $smoothTransition);
+
+          &:before {
+            background-color: $black;
+            border-bottom: 1px solid #404040;
+            content: '';
+            display: block;
+            height: 100%;
+            left: -100%;
+            position: absolute;
+            width: 300%;
+            z-index: 0;
+          }
+
+          li {
+            font-size: 0.750em;
+            position: relative;
+            z-index: 2;
+          }
+        }
+
+        &:hover ul {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &.main {
+        border-right: 1px solid #404040;
+        font-family: $CamphorHeavy;
+        font-size: 0.875em;
+      }
+
+      &.user {
+        font-family: $CamphorBold;
+        font-size: 0.750em;
+
+        li a {
+          color: $grey;
+          padding: 0 0 0 15px;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
