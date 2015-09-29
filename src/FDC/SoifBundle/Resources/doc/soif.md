@@ -78,11 +78,7 @@ Check [here](http://php.net/manual/fr/dateinterval.createfromdatestring.php) for
 
 You should at least call those commands before calling other webservices to get all the mandatories tables.
 
-    php app/console fdc:soif:update --start=0 --entity=country -vvv
-    php app/console fdc:soif:update --start=0 --entity=festival -vvv
-    php app/console fdc:soif:update --start=0 --entity=prize -vvv
-    
-    
+    php app/console fdc:soif:update --start=0 --entity=country -vvv && php app/console fdc:soif:update --start=0 --entity=festival -vvv && php app/console fdc:soif:update --start=0 --entity=prize -vvv
     
 ## examples
 

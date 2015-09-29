@@ -10,6 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\TranslationByLocale;
 
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * FilmJuryFonction
  *
@@ -28,6 +32,8 @@ class FilmJuryFunction
      *
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     private $id;
     
@@ -40,6 +46,8 @@ class FilmJuryFunction
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     protected $translations;
 

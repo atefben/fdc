@@ -71,15 +71,15 @@ class UpdateCommand extends ContainerAwareCommand
         
         // managers
         $managers = array(
-            $this->getContainer()->get('fdc.soif.country_manager'),
+           /* $this->getContainer()->get('fdc.soif.country_manager'),
             $this->getContainer()->get('fdc.soif.festival_manager'),
             $this->getContainer()->get('fdc.soif.award_manager'),
             $this->getContainer()->get('fdc.soif.festival_poster_manager'),
             $this->getContainer()->get('fdc.soif.film_atelier_manager'),
             $this->getContainer()->get('fdc.soif.film_manager'),
-            $this->getContainer()->get('fdc.soif.person_manager'),
+            $this->getContainer()->get('fdc.soif.person_manager'),*/
             $this->getContainer()->get('fdc.soif.jury_manager'),
-            $this->getContainer()->get('fdc.soif.projection_manager')
+           //$this->getContainer()->get('fdc.soif.projection_manager')
         );
         
         // check if manager exist when targetting a specific entity

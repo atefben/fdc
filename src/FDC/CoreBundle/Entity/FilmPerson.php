@@ -36,7 +36,11 @@ class FilmPerson
      * @ORM\Column(type="integer")
      * @ORM\Id
      *
-     * @Groups({"person_list", "person_show", "film_list", "film_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     private $id;
 
@@ -45,7 +49,11 @@ class FilmPerson
      *
      * @ORM\Column(type="string", length=40, nullable=true)
      *
-     * @Groups({"person_list", "person_show", "film_list", "film_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     private $lastname;
 
@@ -54,7 +62,11 @@ class FilmPerson
      *
      * @ORM\Column(type="string", length=40, nullable=true)
      *
-     * @Groups({"person_list", "person_show", "film_list", "film_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     private $firstname;
     
@@ -63,25 +75,33 @@ class FilmPerson
      *
      * @ORM\Column(type="boolean", nullable=true)
      *
-     * @Groups({"person_list", "person_show", "film_list", "film_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     private $asianName;
 
     /**
-     * @var string
+     * @ORM\ManyToOne(targetEntity="Country")
      *
-     * @ORM\Column(type="string", length=3, nullable=true)
-     *
-     * @Groups({"person_list", "person_show", "film_list", "film_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     private $nationality;
 
     /**
-     * @var string
+     * @ORM\ManyToOne(targetEntity="Country")
      *
-     * @ORM\Column(type="string", length=3, nullable=true)
-     *
-     * @Groups({"person_list", "person_show", "film_list", "film_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     private $nationality2;
     
@@ -90,25 +110,24 @@ class FilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="persons")
      *
-     * @Groups({"person_list", "person_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     private $function;
     
     /**
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="persons")
      *
-     * @Groups({"person_list", "person_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     private $address;
-    
-    /**
-     * @var FilmAtelierGeneric
-     *
-     * @ORM\OneToMany(targetEntity="FilmAtelierGeneric", mappedBy="person")
-     *
-     * @Groups({"person_list", "person_show"})
-     */
-    private $filmAtelierGenerics;
 
     /**
      * @var FilmPersonFilmFilm
@@ -118,15 +137,6 @@ class FilmPerson
      * @Groups({"person_list", "person_show"})
      */
     private $films;
-    
-    /**
-     * @var FilmGeneric
-     *
-     * @ORM\OneToMany(targetEntity="FilmGeneric", mappedBy="person")
-     *
-     * @Groups({"person_list", "person_show"})
-     */
-    private $filmGenerics;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="person")
@@ -159,7 +169,11 @@ class FilmPerson
     /**
      * @var ArrayCollection
      *
-     * @Groups({"person_list", "person_show", "film_show", "film_list"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     protected $translations;
 
@@ -168,8 +182,6 @@ class FilmPerson
      */
     public function __construct()
     {
-        $this->filmAtelierGenerics = new ArrayCollection();
-        $this->filmGenerics = new ArrayCollection();
         $this->films = new ArrayCollection();
         $this->juries = new ArrayCollection();
         $this->awards = new ArrayCollection();
@@ -258,52 +270,6 @@ class FilmPerson
     }
 
     /**
-     * Set nationality
-     *
-     * @param string $nationality
-     * @return FilmPerson
-     */
-    public function setNationality($nationality)
-    {
-        $this->nationality = $nationality;
-
-        return $this;
-    }
-
-    /**
-     * Get nationality
-     *
-     * @return string 
-     */
-    public function getNationality()
-    {
-        return $this->nationality;
-    }
-
-    /**
-     * Set nationality2
-     *
-     * @param string $nationality2
-     * @return FilmPerson
-     */
-    public function setNationality2($nationality2)
-    {
-        $this->nationality2 = $nationality2;
-
-        return $this;
-    }
-
-    /**
-     * Get nationality2
-     *
-     * @return string 
-     */
-    public function getNationality2()
-    {
-        return $this->nationality2;
-    }
-
-    /**
      * Set function
      *
      * @param \FDC\CoreBundle\Entity\FilmFunction $function
@@ -347,88 +313,6 @@ class FilmPerson
     public function getAddress()
     {
         return $this->address;
-    }
-
-    /**
-     * Add filmAtelierGenerics
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics
-     * @return FilmPerson
-     */
-    public function addFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
-    {
-        if ($this->filmAtelierGenerics->contains($filmAtelierGenerics)) {
-            return;
-        }
-
-        $this->filmAtelierGenerics[] = $filmAtelierGenerics;
-
-        return $this;
-    }
-
-    /**
-     * Remove filmAtelierGenerics
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics
-     */
-    public function removeFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
-    {
-        if (!$this->filmAtelierGenerics->contains($filmAtelierGenerics)) {
-            return;
-        }
-
-        $this->filmAtelierGenerics->removeElement($filmAtelierGenerics);
-    }
-
-    /**
-     * Get filmAtelierGenerics
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFilmAtelierGenerics()
-    {
-        return $this->filmAtelierGenerics;
-    }
-
-    /**
-     * Add filmGenerics
-     *
-     * @param \FDC\CoreBundle\Entity\FilmGeneric $filmGenerics
-     * @return FilmPerson
-     */
-    public function addFilmGeneric(\FDC\CoreBundle\Entity\FilmGeneric $filmGenerics)
-    {
-        if ($this->filmGenerics->contains($filmGenerics)) {
-            return;
-        }
-        
-        $this->filmGenerics[] = $filmGenerics;
-
-        return $this;
-    }
-
-    /**
-     * Remove filmGenerics
-     *
-     * @param \FDC\CoreBundle\Entity\FilmGeneric $filmGenerics
-     */
-    public function removeFilmGeneric(\FDC\CoreBundle\Entity\FilmGeneric $filmGenerics)
-    {
-        if (!$this->filmGenerics->contains($filmGenerics)) {
-            return;
-        }
-        
-        $this->filmGenerics->removeElement($filmGenerics);
-    }
-
-    /**
-     * Get filmGenerics
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFilmGenerics()
-    {
-        return $this->filmGenerics;
     }
 
     /**
@@ -659,5 +543,51 @@ class FilmPerson
     public function getAsianName()
     {
         return $this->asianName;
+    }
+
+    /**
+     * Set nationality
+     *
+     * @param \FDC\CoreBundle\Entity\Country $nationality
+     * @return FilmPerson
+     */
+    public function setNationality(\FDC\CoreBundle\Entity\Country $nationality = null)
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * Get nationality
+     *
+     * @return \FDC\CoreBundle\Entity\Country 
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * Set nationality2
+     *
+     * @param \FDC\CoreBundle\Entity\Country $nationality2
+     * @return FilmPerson
+     */
+    public function setNationality2(\FDC\CoreBundle\Entity\Country $nationality2 = null)
+    {
+        $this->nationality2 = $nationality2;
+
+        return $this;
+    }
+
+    /**
+     * Get nationality2
+     *
+     * @return \FDC\CoreBundle\Entity\Country 
+     */
+    public function getNationality2()
+    {
+        return $this->nationality2;
     }
 }

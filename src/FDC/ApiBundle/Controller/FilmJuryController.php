@@ -8,68 +8,66 @@ use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
-use JMS\Serializer\SerializationContext;
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * FilmAwardController class.
+ * FilmJuryController class.
  * 
  * \@extends FOSRestController
  */
-class FilmAwardController extends FOSRestController
+class FilmJuryController extends FOSRestController
 {
     /**
-     * Return an array of awards, can be filtered with page / offset parameters
+     * Return an array of juries, can be filtered with page / offset parameters
      *
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get all awards",
-     *   section="Awards",
+     *   description = "Get all juries",
+     *   section="Juries",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *   },
      *  output={
-     *      "class"="FDC\CoreBundle\Entity\FilmAward",
-     *      "groups"={"award_list"}
+     *      "class"="FDC\CoreBundle\Entity\FilmJury",
+     *      "groups"={"jury_list"}
      *  }
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
+     * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
      * @return View
      */
-    public function getAwardsAction(Paramfetcher $paramFetcher)
+    public function getJuriesAction(Paramfetcher $paramFetcher)
     {
-        // get parameters
-        $offset = ($paramFetcher->get('offset') !== null) ? (int)$paramFetcher->get('offset') : $this->container->getParameter('api_page_offset');
-        $offset = ($offset <= 10) ? $offset : 10;
-        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
-        $page = ($paramFetcher->get('page') !== null) ? (int)$paramFetcher->get('page') : 1;
+        // get festival
+        $festival = $this->get('fdc.api.core_manager')->getFestivalParameter($paramFetcher->get('festival_id'));
+        if ($festival === null) {
+            return $this->view(array(), 404);
+        }
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $dql = 'SELECT fa FROM FDCCoreBundle:FilmAward fa';
-        $query = $em->createQuery($dql);
+        $dql = 'SELECT fj FROM FDCCoreBundle:FilmJury fj WHERE fj.festival = :festival';
+        $query = $em
+            ->createQuery($dql)
+            ->setParameter('festival', $festival->getId());
         
-        // create pagination
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            $offset
-        );
+        // get items
+        $items = $this->get('fdc.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(array('award_list', 'time'));
-        $context->setVersion($version);
-        $view = $this->view($pagination->getItems(), 200);  
+        $groups = array('jury_list', 'time');
+        $context = $this->get('fdc.api.core_manager')->setContext($groups, $paramFetcher);
+        
+        // create view
+        $view = $this->view($items, 200);
         $view->setSerializationContext($context);
          
         return $view;
@@ -77,13 +75,13 @@ class FilmAwardController extends FOSRestController
 
     
     /**
-     * Return a single award by $id
+     * Return a single jury by $id
      *
      * @Rest\View()
      * @ApiDoc(
      *  resource = true,
-     *  description = "Get an award by $id",
-     *  section="Awards",
+     *  description = "Get a jury by $id",
+     *  section="Juries",
      *  statusCodes = {
      *     200 = "Returned when successful",
      *     204 = "Returned when no film is found"
@@ -93,12 +91,12 @@ class FilmAwardController extends FOSRestController
      *          "name"="id",
      *          "requirement"="[\s-+]",
      *          "dataType"="string",
-     *          "description"="The award identifier"
+     *          "description"="The jury identifier"
      *      }
      *  },
      *  output={
-     *      "class"="FDC\CoreBundle\Entity\FilmAward",
-     *      "groups"={"award_show"}
+     *      "class"="FDC\CoreBundle\Entity\FilmJury",
+     *      "groups"={"jury_show"}
      *  }
      * )
      *
@@ -106,7 +104,7 @@ class FilmAwardController extends FOSRestController
      *
      * @return View
      */
-    public function getAwardAction(Paramfetcher $paramFetcher, $id)
+    public function getJuryAction(Paramfetcher $paramFetcher, $id)
     {
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
         $em = $this->getDoctrine()->getManager();
@@ -117,7 +115,7 @@ class FilmAwardController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('award_show', 'time'));
+        $context->setGroups(array('jury_show', 'time'));
         $context->setVersion($version);
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);

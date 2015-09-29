@@ -27,7 +27,11 @@ class FilmPersonTranslation
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     protected $profession;
     
@@ -36,7 +40,11 @@ class FilmPersonTranslation
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+            "person_list", "person_show",
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+        })
      */
     protected $biography;
 

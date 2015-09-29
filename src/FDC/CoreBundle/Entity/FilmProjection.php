@@ -83,15 +83,6 @@ class FilmProjection
     private $festival;
 
     /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm")
-     *
-     * @Groups({"projection_list", "projection_show"})
-     */
-    private $film;
-
-    /**
      * @var FilmRoom
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionRoom", inversedBy="projections", cascade={"persist"})
@@ -152,7 +143,7 @@ class FilmProjection
         $this->programmationFilms = new ArrayCollection();
         $this->programmationDynamics= new ArrayCollection();
         $this->programmationFilmsList = new ArrayCollection();
-        $his->medias = new ArrayCollection();
+        $this->medias = new ArrayCollection();
     }
 
     /**
@@ -270,39 +261,6 @@ class FilmProjection
     public function getRoom()
     {
         return $this->room;
-    }
-
-    /**
-     * Add films
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $films
-     * @return FilmProjection
-     */
-    public function addFilm(\FDC\CoreBundle\Entity\FilmFilm $films)
-    {
-        $this->films[] = $films;
-
-        return $this;
-    }
-
-    /**
-     * Remove films
-     *
-     * @param \FDC\CoreBundle\Entity\FilmFilm $films
-     */
-    public function removeFilm(\FDC\CoreBundle\Entity\FilmFilm $films)
-    {
-        $this->films->removeElement($films);
-    }
-
-    /**
-     * Get films
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFilms()
-    {
-        return $this->films;
     }
 
     /**

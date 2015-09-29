@@ -66,7 +66,7 @@ class FilmProjectionController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('film_list', 'time'));
+        $context->setGroups(array('projection_list', 'time'));
         $context->setVersion($version);
         $view = $this->view($pagination->getItems(), 200);  
         $view->setSerializationContext($context);

@@ -111,11 +111,6 @@ class FilmMedia
     private $person;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmGeneric", inversedBy="medias")
-     */
-    private $generic;
-
-    /**
      * @ORM\ManyToOne(targetEntity="FilmJury", inversedBy="medias")
      */
     private $jury;
@@ -129,11 +124,6 @@ class FilmMedia
      * @ORM\ManyToOne(targetEntity="FilmFestivalPoster", inversedBy="medias")
      */
     private $poster;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="FilmAtelierGeneric", inversedBy="medias")
-     */
-    private $filmAtelierGeneric;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmAtelier", inversedBy="medias")
@@ -399,29 +389,6 @@ class FilmMedia
     }
 
     /**
-     * Set generic
-     *
-     * @param \FDC\CoreBundle\Entity\FilmGeneric $generic
-     * @return FilmMedia
-     */
-    public function setGeneric(\FDC\CoreBundle\Entity\FilmGeneric $generic = null)
-    {
-        $this->generic = $generic;
-
-        return $this;
-    }
-
-    /**
-     * Get generic
-     *
-     * @return \FDC\CoreBundle\Entity\FilmGeneric 
-     */
-    public function getGeneric()
-    {
-        return $this->generic;
-    }
-
-    /**
      * Set jury
      *
      * @param \FDC\CoreBundle\Entity\FilmJury $jury
@@ -488,29 +455,6 @@ class FilmMedia
     public function getPoster()
     {
         return $this->poster;
-    }
-
-    /**
-     * Set filmAtelierGeneric
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGeneric
-     * @return FilmMedia
-     */
-    public function setFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGeneric = null)
-    {
-        $this->filmAtelierGeneric = $filmAtelierGeneric;
-
-        return $this;
-    }
-
-    /**
-     * Get filmAtelierGeneric
-     *
-     * @return \FDC\CoreBundle\Entity\FilmAtelierGeneric 
-     */
-    public function getFilmAtelierGeneric()
-    {
-        return $this->filmAtelierGeneric;
     }
 
     /**

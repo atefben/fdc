@@ -17,3 +17,7 @@ film_projection:
 film_prize:
     type:     rest
     resource: FDC\ApiBundle\Controller\FilmPrizeController
+
+film_jury:
+    type: rest
+    resource: FDC\ApiBundle\Controller\FilmJuryController

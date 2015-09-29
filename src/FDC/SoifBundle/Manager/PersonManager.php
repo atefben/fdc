@@ -38,8 +38,6 @@ class PersonManager extends CoreManager
         $this->mapper = array(
             'setId' => $this->entityIdKey,
             'setAsianName' => 'IsAsianName',
-            'setNationality' => 'Nationalite',
-            'setNationality2' => 'NationaliteSecondaire',
             'setLastname' => 'Nom',
             'setFirstname' => 'Prenom'
         );
@@ -185,6 +183,24 @@ class PersonManager extends CoreManager
         
         // set entity properties
         $this->setEntityProperties($resultObject, $entity);
+        
+        // set nationality
+        $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneByIso($resultObject->Nationalite);
+        if ($country === null) {
+            $msg = __METHOD__. "Country {$resultObject->Nationalite} not found";
+            $this->logger->warn($msg);
+        } else {
+            $entity->setNationality($country);
+        }
+        
+        // set nationality2
+        $country = $this->em->getRepository('FDCCoreBundle:Country')->findOneByIso($resultObject->NationaliteSecondaire);
+        if ($country === null) {
+            $msg = __METHOD__. "Country {$resultObject->NationaliteSecondaire} not found";
+            $this->logger->warn($msg);
+        } else {
+            $entity->setNationality2($country);
+        }
         
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());

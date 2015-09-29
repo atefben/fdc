@@ -11,6 +11,9 @@ use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
 use FDC\CoreBundle\Util\TranslationByLocale;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * FilmJury
  *
@@ -30,6 +33,8 @@ class FilmJury
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     private $id;
 
@@ -37,6 +42,8 @@ class FilmJury
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     private $position;
 
@@ -44,6 +51,8 @@ class FilmJury
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="juries", cascade={"persist"})
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     private $festival;
 
@@ -51,6 +60,8 @@ class FilmJury
      * @var Person
      *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="juries", cascade={"persist"})
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     private $person;
 
@@ -58,6 +69,8 @@ class FilmJury
      * @var FilmJuryType
      *
      * @ORM\ManyToOne(targetEntity="FilmJuryType", inversedBy="juries", cascade={"persist"})
+     *
+     * @Groups({"jury_list", "jury_show"})s
      */
     private $type;
     
@@ -65,6 +78,8 @@ class FilmJury
      * @var FilmJuryType
      *
      * @ORM\ManyToOne(targetEntity="FilmJuryFunction", inversedBy="juries", cascade={"persist"})
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     private $function;
 
@@ -72,11 +87,15 @@ class FilmJury
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="jury")
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     private $medias;
     
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"jury_list", "jury_show"})
      */
     protected $translations;
 

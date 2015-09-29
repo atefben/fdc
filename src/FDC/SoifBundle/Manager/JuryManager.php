@@ -161,7 +161,7 @@ class JuryManager extends CoreManager
         }
         
         // save entities
-        $this->updateMultiple($entity);
+        $this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);
@@ -224,6 +224,9 @@ class JuryManager extends CoreManager
         
         // set entity related translations
         $this->setEntityRelatedTranslations($resultObject, $entity);
+        
+        // flush after added related entity 
+        $this->update($entity);
         
         return $entity;
     }

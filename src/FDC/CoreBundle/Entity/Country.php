@@ -82,6 +82,11 @@ class Country
         $this->languageFilmAteliers = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
+    
+    public function __toString()
+    {
+        return $this->getIso();
+    }
 
     /**
      * Set id

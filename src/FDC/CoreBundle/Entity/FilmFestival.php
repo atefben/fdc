@@ -29,7 +29,10 @@ class FilmFestival
      * @ORM\Column(type="integer")
      * @ORM\Id
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+       })
      * 
      */
     private $id;
@@ -39,7 +42,10 @@ class FilmFestival
      *
      * @ORM\Column(type="integer")
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+            "film_list", "film_show",
+            "jury_list", "jury_show"
+       })
      * 
      */
     private $year;
@@ -53,6 +59,12 @@ class FilmFestival
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="festival")
      */
     private $juries;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="festival")
+     */
+    private $films;
+    
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="festival")
@@ -236,5 +248,46 @@ class FilmFestival
     public function getJuries()
     {
         return $this->juries;
+    }
+
+    /**
+     * Add films
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilm $films
+     * @return FilmFestival
+     */
+    public function addFilm(\FDC\CoreBundle\Entity\FilmFilm $films)
+    {
+        if ($this->films->contains($films)) {
+            return;
+        }
+        
+        $this->films[] = $films;
+
+        return $this;
+    }
+
+    /**
+     * Remove films
+     *
+     * @param \FDC\CoreBundle\Entity\FilmFilm $films
+     */
+    public function removeFilm(\FDC\CoreBundle\Entity\FilmFilm $films)
+    {
+        if (!$this->films->contains($films)) {
+            return;
+        }
+        
+        $this->films->removeElement($films);
+    }
+
+    /**
+     * Get films
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilms()
+    {
+        return $this->films;
     }
 }

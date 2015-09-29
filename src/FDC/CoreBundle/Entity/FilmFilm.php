@@ -182,13 +182,6 @@ class FilmFilm implements FilmFilmInterface
     private $contacts;
 
     /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FilmGeneric", mappedBy="film", cascade={"persist"})
-     */
-    private $generics;
-
-    /**
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="film", cascade={"persist"})
      *
      * @Groups({"film_list", "film_show"})

@@ -47,11 +47,6 @@ class FilmFunction
     private $filmPersons;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmAtelierGeneric", mappedBy="function")
-     */
-    private $filmAtelierGenerics;
-
-    /**
      * @var ArrayCollection
      *
      * @Groups({"film_list", "film_show"})
@@ -66,7 +61,6 @@ class FilmFunction
         $this->translations = new ArrayCollection();
         $this->filmPersons = new ArrayCollection();
         $this->persons = new ArrayCollection();
-        $this->filmAtelierGenerics = new ArrayCollection();
     }
 
     /**
@@ -172,46 +166,5 @@ class FilmFunction
     public function getFilmPersons()
     {
         return $this->filmPersons;
-    }
-
-    /**
-     * Add filmAtelierGenerics
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics
-     * @return FilmFunction
-     */
-    public function addFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
-    {
-        if ($this->filmAtelierGenerics->contains($filmAtelierGenerics)) {
-            return;
-        }
-        
-        $this->filmAtelierGenerics[] = $filmAtelierGenerics;
-
-        return $this;
-    }
-
-    /**
-     * Remove filmAtelierGenerics
-     *
-     * @param \FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics
-     */
-    public function removeFilmAtelierGeneric(\FDC\CoreBundle\Entity\FilmAtelierGeneric $filmAtelierGenerics)
-    {
-        if (!$this->filmAtelierGenerics->contains($filmAtelierGenerics)) {
-            return;
-        }
-        
-        $this->filmAtelierGenerics->removeElement($filmAtelierGenerics);
-    }
-
-    /**
-     * Get filmAtelierGenerics
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFilmAtelierGenerics()
-    {
-        return $this->filmAtelierGenerics;
     }
 }
