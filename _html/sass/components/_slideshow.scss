@@ -1,0 +1,37 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.slideshow {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 40px;
+
+  .slideshow-img {
+    height: 555px;
+    overflow: hidden;
+    width: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .caption {
+    color: #666;
+    font-family: $CamphorRegular;
+    font-size: 0.750em;
+    margin: 20px 0;
+
+    strong {
+      color: #333;
+      font-family: $CamphorBold;
+      font-weight: normal;
+    }
+  }
+}

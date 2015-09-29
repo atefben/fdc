@@ -11,6 +11,10 @@ header {
   background-color: $dark;
   width: 100%;
 
+  #sticky-user {
+    display: none
+  }
+
   &.sticky {
     position: fixed;
     top: 0;
@@ -20,8 +24,84 @@ header {
       display: none;
     }
 
+    #sticky-user {
+      display: block;
+      float: right;
+      font-size: 0.750em;
+      margin-top: 18px;
+
+      .user-nav {
+        border: none;
+
+        a.search {
+          background: url('../img/svg/search.svg') no-repeat left 46%;
+          background-size: 15px;
+        }
+      }
+    }
+
     #logo-wrapper {
       height: 50px;
+
+      #logo {
+        width: 290px;
+
+        img {
+          float: left;
+          margin-top: -5px;
+          width: 72px;
+        }
+
+        h1 {
+          float: left;
+          font-size: 1.1em;
+          margin: 12px 0 0 30px;
+        }
+
+        h2 {
+          display: none;
+        }
+      }
+
+      #search, #partners {
+        display: none;
+      }
+    }
+  }
+
+  .user-nav {
+    background-color: $black;
+    border-left: 1px solid #404040;
+    float: right;
+    font-family: $CamphorBold;
+    padding: 0 20px 0 10px;
+
+    li {
+      display: inline-block;
+
+      a {
+        color: #fff;
+        display: block;
+        margin-right: 10px;
+        padding: 0 0px 1px 20px;
+        @include transition(all 0.3s $smoothTransition);
+
+        &.selection {
+          background: url('../img/svg/selection.svg') no-repeat left 48%;
+          background-size: 15px;
+        }
+
+        &.account {
+          background: url('../img/svg/account.svg') no-repeat left 46%;
+          background-size: 15px;
+        }
+
+        &.language {
+          background: url('../img/svg/language.svg') no-repeat left 48%;
+          padding-left: 30px;
+          background-size: 20px;
+        }
+      }
     }
   }
 
@@ -57,31 +137,76 @@ header {
         }
       }
     }
-
-    .user-nav {
-      background-color: $black;
-      border-left: 1px solid #404040;
-      float: right;
-      font-family: $CamphorBold;
-      padding: 0 20px;
-
-      li {
-        display: inline-block;
-
-        a {
-          color: #fff;
-          display: block;
-          padding: 0 8px 1px 8px;
-          @include transition(all 0.3s $smoothTransition);
-        }
-      }
-    }
   }
 
   #logo-wrapper {
     background-color: $black;
     height: 160px;
+    overflow: hidden;
     @include transition(all 0.3s $smoothTransition);
+
+    .container {
+      height: 100%;
+    }
+
+    #logo {
+      display: inline-block;
+      padding: 5px 100px 0 0;
+      text-align: center;
+      vertical-align: middle;
+      width: 215px;
+
+      h1 {
+        font-family: $CamphorBold;
+        font-size: 1.250em;
+        font-weight: normal;
+
+        a {
+          color: $gold;
+          text-transform: uppercase;
+        }
+      }
+
+      h2 {
+        font-family: $CamphorMedium;
+        font-size: 0.875em;
+        font-weight: normal;
+        margin-top: 5px;
+
+        a {
+          color: $gold;
+          text-transform: uppercase;
+        }
+      }
+
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 145px;
+      }
+    }
+
+    #partners {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    #search {
+      border: 1px solid #404040;
+      display: inline-block;
+      height: 63px;
+      position: relative;
+      vertical-align: middle;
+      width: 63px;
+
+      a {
+        background: url('../img/svg/search.svg') center no-repeat;
+        background-size: 35%;
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
 
   #navigation {
@@ -162,7 +287,22 @@ header {
 
         li a {
           color: $grey;
-          padding: 0 0 0 15px;
+          padding: 0 0 0 30px;
+
+          &.programmation {
+            background: url('../img/svg/programmation.svg') no-repeat 8% 47%;
+            background-size: 15px;
+          }
+
+          &.participate {
+            background: url('../img/svg/participate.svg') no-repeat 12% 47%;
+            background-size: 15px;
+          }
+
+          &.press {
+            background: url('../img/svg/press.svg') no-repeat 12% 47%;
+            background-size: 15px;
+          }
 
           &:hover {
             color: #fff;

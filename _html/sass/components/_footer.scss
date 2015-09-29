@@ -67,7 +67,76 @@ footer {
     border: 1px solid #2b2b2b;
     border-left: none;
     border-right: none;
-    padding: 50px 0;
+    overflow: hidden;
+    padding: 50px 0 45px 0;
+
+    p {
+      color: #fff;
+      float: left;
+      font-family: $CamphorBold;
+      font-size: 1.250em;
+      text-transform: uppercase;
+    }
+
+    ul {
+      float: right;
+
+      li {
+        display: inline-block;
+        margin-left: 25px;
+
+        a {
+          display: block;
+          height: 26px;
+          width: 26px;
+
+          &.app {
+            background: url('../img/svg/appli.svg') center no-repeat;
+            background-size: 26px;
+          }
+
+          &.facebook {
+            background: url('../img/svg/facebook.svg') center no-repeat;
+            background-size: 26px;
+          }
+
+          &.twitter {
+            background: url('../img/svg/twitter.svg') center no-repeat;
+            background-size: 22px;
+          }
+
+          &.instagram {
+            background: url('../img/svg/instagram.svg') center no-repeat;
+            background-size: 26px;
+          }
+
+          &.tumblr {
+            background: url('../img/svg/tumblr.svg') center no-repeat;
+            background-size: 26px;
+          }
+
+          &.rss {
+            background: url('../img/svg/rss.svg') center no-repeat;
+            background-size: 22px;
+          }
+
+          &.youtube {
+            background: url('../img/svg/youtube.svg') center no-repeat;
+            background-size: 24px;
+          }
+
+          &.dailymotion {
+            background: url('../img/svg/dailymotion.svg') center no-repeat;
+            background-size: 26px;
+          }
+
+          &.podcast {
+            background: url('../img/svg/podcast.svg') center no-repeat;
+            background-size: 26px;
+          }
+        }
+      }
+    }
   }
 
   .footer-menu {
