@@ -256,6 +256,9 @@
                             </h4>
                         </div>
                         <div class="box-body">
+                            {{  form_widget(form.parent.children.widgets) }}
+                        </div>
+                        {#<div class="box-body">
                             {% for widget in form.parent.children.widgets.children %}
                             <div class="fdc-widget">
                                 {% if widget.vars.value is news_widget_text %}
@@ -265,7 +268,7 @@
                                 {% endif %}
                             </div>
                             {% endfor %}
-                        </div>
+                        </div>#}
                     </div>
                 </div>
             </div>
