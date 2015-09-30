@@ -18,7 +18,8 @@ header {
   &.sticky {
     position: fixed;
     top: 0;
-    z-index: 10;
+    @include transform(translateZ(0));
+    z-index: 15;
 
     #top-bar {
       display: none;

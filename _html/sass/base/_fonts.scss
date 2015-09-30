@@ -4,9 +4,10 @@
 // 2. CamphorBold
 // 3. CamphorRegular
 // 4. CamphorMedium
-// 5. PlayfairRegular
-// 6. PlayfairBold
-// 7. PlayfairItalic
+// 5. CamphorItalic
+// 6. PlayfairRegular
+// 7. PlayfairBold
+// 8. PlayfairItalic
 // =========================
 
 
@@ -66,8 +67,21 @@
     font-style: normal;
 }
 
+// 5. CamphorItalic
+// =========================
 
-// 5. PlayfairRegular
+@font-face {
+    font-family: 'CamphorItalic';
+    src: url('../fonts/CamphorItalic/camphor+italic.eot');
+    src: url('../fonts/CamphorItalic/camphor+italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/CamphorItalic/camphor+italic.woff') format('woff'),
+         url('../fonts/CamphorItalic/camphor+italic.ttf') format('truetype'),
+         url('../fonts/CamphorItalic/camphor+italic.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// 9. PlayfairRegular
 // =========================
 
 @font-face {
@@ -81,7 +95,7 @@
     font-style: normal;
 }
 
-// 6. PlayfairBold
+// 7. PlayfairBold
 // =========================
 
 @font-face {
@@ -95,7 +109,7 @@
     font-style: normal;
 }
 
-// 7. PlayfairItalic
+// 8. PlayfairItalic
 // =========================
 
 @font-face {

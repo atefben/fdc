@@ -155,6 +155,34 @@
 #news {
   overflow: hidden;
   padding: 80px 0;
+
+  .filters {
+    padding-bottom: 70px;
+  }
+
+  .read-more {
+    border: 1px solid #d9d9d9;
+    color: #999;
+    display: block;
+    height: 55px;
+    font-family: $CamphorHeavy;
+    font-size: 0.625em;
+    line-height: 55px;
+    margin-top: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    @include transition(all 0.3s $smoothTransition);
+
+    strong {
+      color: #000;
+      font-weight: normal;
+    }
+
+    &:hover {
+      border-color: $dark;
+    }
+  }
   
   .container {
     position: relative;
@@ -166,8 +194,13 @@
     #timeline {
       position: absolute;
       right: 0;
-      top: 50px;
+      top: 120px;
       width: 40px;
+
+      &.stick {
+        position: fixed;
+        z-index: 10;
+      }
 
       a {
         border-left: 1px solid #e5e5e5;
@@ -315,18 +348,6 @@
         position: relative;
         width: 100%;
 
-        .picto {
-          background-color: #151515;
-          background-position: center;
-          background-repeat: no-repeat;
-          bottom: 8px;
-          height: 44px;
-          left: 10px;
-          position: absolute;
-          pointer-events: none;
-          width: 44px;
-        }
-
         a {
           display: block;
           height: 100%;
@@ -360,11 +381,51 @@
   }
 }
 
+.picto {
+  background-color: #151515;
+  background-position: center;
+  background-repeat: no-repeat;
+  bottom: 8px;
+  height: 44px;
+  left: 10px;
+  position: absolute;
+  pointer-events: none;
+  width: 44px;
+}
+
 
 // 4. Social Wall
 // =========================
 
 #social-wall {
+
+  #graph {
+    border-bottom: 1px solid #eaeaea;
+    height: 200px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    #hashtag {
+      color: $gold;
+      float: left;
+      font-family: $CamphorBold;
+      font-size: 0.750em;
+      height: 100%;
+      width: 97px;
+
+      img {
+        display: block;
+      }
+    }
+
+    svg {
+      display: block;
+      float: left;
+      width: 880px;
+    }
+  }
+
+
   #wall {
     border-bottom: 1px solid #eaeaea;
     overflow: hidden;
@@ -508,6 +569,7 @@
     float: left;
     font-family: $CamphorHeavy;
     font-size: 0.875em;
+    line-height: 20px;
     text-transform: uppercase;
   }
 
@@ -516,18 +578,52 @@
 
     li {
       display: inline-block;
-      margin-left: 25px;
+      margin-left: 15px;
 
       a {
         color: #999;
         display: block;
         font-family: $CamphorRegular;
         font-size: 0.875em;
-        padding-right: 20px;
+        line-height: 16px;
+        padding-right: 30px;
         @include transition(all 0.3s $smoothTransition);
 
         &:hover {
           color: $black;
+        }
+
+        &.facebook {
+          background: url('../img/svg/facebook-grey.svg') right top no-repeat;
+          background-size: 20px;
+          padding-right: 25px;
+        }
+
+        &.twitter {
+          background: url('../img/svg/twitter-grey.svg') right 15% no-repeat;
+          background-size: 18px;
+        }
+
+        &.instagram {
+          background: url('../img/svg/instagram-grey.svg') right top no-repeat;
+          background-size: 20px;
+        }
+
+        &.tumblr {
+          background: url('../img/svg/tumblr-grey.svg') right top no-repeat;
+          background-size: 20px;
+          padding-right: 25px;
+        }
+
+        &.youtube {
+          background: url('../img/svg/youtube-grey.svg') right top no-repeat;
+          background-size: 20px;
+        }
+
+        &.dailymotion {
+          background: url('../img/svg/dailymotion-grey.svg') right top no-repeat;
+          background-size: 20px;
+          padding-right: 25px;
         }
       }
     }
@@ -565,14 +661,117 @@
   #slider-videos {
     padding-top: 60px;
 
-    .vid {
-      background: $gold;
-      height: 400px;
-      width: 634px;
+    .owl-item {
+      opacity: 0.3;
+      @include transition(opacity 0.3s $smoothTransition);
+
+      .linkVid {
+        display: none;
+      }
+
+      &.center {
+        opacity: 1;
+
+        .linkVid {
+          display: block;
+        }
+      }
     }
 
-    .owl-nav {
-      display: none;
+    .vid {
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      width: 634px;
+
+      &:before {
+        background: rgba(0,0,0,0);
+        background: -moz-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(56%, rgba(0,0,0,0)), color-stop(57%, rgba(0,0,0,0)), color-stop(100%, rgba(20,20,20,0.8)));
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -o-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -ms-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+        content: '';
+        display: block;
+        height: 100%;
+        width: 102%;
+        position: absolute;
+        top: 0;
+        left: -1%;
+        z-index: 1;
+      }
+
+      .info {
+
+        .titleLink {
+          color: #fff;
+          display: block;
+          font-size: 0.875em;
+          margin-top: 3px;
+        }
+
+        span {
+          color: #666;
+          display: inline-block;
+          font-size: 0.625em;
+        }
+      }
+
+      img {
+        display: block;
+      }
+    }
+
+    
+  }
+}
+
+.sliderDrag {
+  .owl-nav {
+    display: none;
+  }
+
+  .linkVid {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .info {
+    bottom: 20px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+
+    .info-container {
+      color: #666;
+      float: left;
+      height: 44px;
+    }
+
+    .picto {
+      background-image: url('../img/svg/playlist.svg');
+      background-size: 16px;
+      bottom: auto;
+      float: left;
+      left: auto;
+      margin: 0 18px 0 20px;
+      position: relative;
+      top: auto;
+    }
+
+    .category {
+      color: $gold;
+      font-size: 0.625em;
+      letter-spacing: 0.1em;
+      margin-right: 12px;
+      text-transform: uppercase;
     }
   }
 }
@@ -593,9 +792,42 @@
     padding-top: 60px;
 
     .channel {
-      background: $gold;
       height: 185px;
+      overflow: hidden;
+      position: relative;
       width: 293px;
+
+      &:before {
+        background: rgba(0,0,0,0);
+        background: -moz-linear-gradient(top, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 85%);
+        background: -webkit-gradient(left top, left bottom, color-stop(25%, rgba(0,0,0,0)), color-stop(25%, rgba(0,0,0,0)), color-stop(85%, rgba(0,0,0,1)));
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 85%);
+        background: -o-linear-gradient(top, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 85%);
+        background: -ms-linear-gradient(top, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 85%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 85%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+        content: '';
+        display: block;
+        height: 100%;
+        width: 102%;
+        position: absolute;
+        top: 0;
+        left: -1%;
+        z-index: 1;
+      }
+
+      .info {
+        span {
+          color: #fff;
+          display: block;
+          font-size: 0.875em;
+          margin-top: 3px;
+        }
+      }
+
+      img {
+        display: block;
+      }
     }
 
     .owl-nav {
@@ -636,6 +868,7 @@
       font-family: $CamphorHeavy;
       font-size: 0.750em;
       text-transform: uppercase;
+      padding: 0 0 0 20px;
       @include transition(all 0.3s $smoothTransition);
 
       &:hover {
@@ -644,6 +877,16 @@
 
       &:first-child {
         margin-right: 45px;
+      }
+
+      &.seances {
+        background: url('../img/svg/calendar.svg') no-repeat left center;
+        background-size: 15px;
+      }
+
+      &.all {
+        background: url('../img/svg/arrow-right-gold.svg') no-repeat left center;
+        background-size: 15px;
       }
     }
   }
@@ -694,6 +937,7 @@
 
       a {
         color: $gold;
+        font-family: $CamphorItalic;
         font-size: 14px;
       }
     }
@@ -813,9 +1057,33 @@
 // =========================
 
 #prefooter {
-  background-color: #1f1f1f;
+  background: #1f1f1f url('../img/svg/palme-bg.svg') no-repeat center 20%;
+  background-size: 900px auto;
+  box-sizing: border-box;
+  height: 535px;
   padding-top: 70px;
   overflow: hidden;
+
+  .imgSlide {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    visibility: hidden;
+    width: 100%;
+    @include transition(all 0.7s $smoothTransition);
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 
   h2 {
     color: #fff;
@@ -832,6 +1100,49 @@
     color: #fff;
     font-size: 1.125em;
     margin-bottom: 50px;
+  }
+
+  ul {
+    text-align: center;
+
+    li {
+      display:inline-block;
+      padding-right: 50px;
+      position: relative;
+
+      &:after {
+        background-color: #fff;
+        border-radius: 100%;
+        content: '';
+        display: block;
+        margin: -1px 0 0 0;
+        opacity: 0.3;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        height: 3px;
+        width: 3px;
+      }
+
+      &:last-child {
+        padding-right: 0;
+
+        &:after {
+          display: none;
+        }
+      }
+
+      a {
+        color: #fff;
+        font-family: $PlayfairBold;
+        opacity: 0.3;
+        @include transition(all 0.3s $smoothTransition);
+
+        &:hover, &.active {
+          opacity: 1;
+        }
+      }
+    }
   }
 }
 

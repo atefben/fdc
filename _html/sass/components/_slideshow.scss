@@ -1,6 +1,7 @@
 //       SUMMARY TABLE     
 // =========================
 // 1. Global
+// 2. Override Chocolat
 // =========================
 
 
@@ -14,11 +15,160 @@
   .slideshow-img {
     height: 555px;
     overflow: hidden;
+    position: relative;
     width: 100%;
 
-    img {
-      display: block;
+    .images {
+      height: 100%;
+      position: relative;
       width: 100%;
+
+      &:before {
+        background: rgba(0,0,0,0);
+        background: -moz-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(56%, rgba(0,0,0,0)), color-stop(57%, rgba(0,0,0,0)), color-stop(100%, rgba(20,20,20,0.8)));
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -o-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -ms-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+        @include transition(all 0.3s $smoothTransition);
+      }
+    }
+
+    .thumbnails {
+      height: 64px;
+      bottom: 10px;
+      left: 10px;
+      position: absolute;
+      width: 861px;
+      z-index: 4;
+
+      .thumb {
+        background: $black;
+        box-sizing: border-box;
+        height: 64px;
+        position: relative;
+        width: 97px;
+        @include transition(all 0.3s $smoothTransition);
+
+        &:after {
+          border: 4px solid $gold;
+          box-sizing: border-box;
+          content: '';
+          display: block;
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          @include transition(all 0.3s $smoothTransition);
+        }
+
+        img {
+          opacity: 0.5;
+          @include transition(all 0.3s $smoothTransition);
+        }
+
+        &.active {
+
+          &:after {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          img {
+            opacity: 1;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          img {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .images .img {
+      display: block;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      width: 100%;
+      @include transition(all 0.5s $smoothTransition);
+
+      img {
+        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &:before {
+        background-color: #000;
+        content: '';
+        display: block;
+        height: 100%;
+        opacity: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+        width: 100%;
+        z-index: 2;
+        pointer-events: none;
+        @include transition(all 0.3s $smoothTransition);
+      }
+
+      &:after {
+        background: url('../img/svg/photo-white.svg') no-repeat center;
+        background-size: 25px;
+        border: 1px solid rgba(255, 255, 255, .35);
+        content: '';
+        display: block;
+        height: 80px;
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+        margin: -40px 0 0 -40px;
+        top: 50%;
+        visibility: hidden;
+        width: 80px;
+        z-index: 3;
+        @include transition(all 0.3s $smoothTransition);
+      }
+
+      &:hover {
+        &:before {
+          opacity: 0.6;
+          visibility: visible;
+        }
+
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
   }
 
@@ -35,3 +185,102 @@
     }
   }
 }
+
+// 2. Override Chocolat
+// =========================
+
+div.chocolat-wrapper {
+
+
+  .chocolat-bottom {
+    background: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+    line-height: initial;
+    padding: 0;
+    height: 100px;
+
+    .chocolat-pagination {
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
+      font-family: $CamphorBold;
+      font-size: 0.750em;
+      line-height: 100px;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      left: 0;
+      text-align: center;
+      width: 100px;
+    }
+
+    .chocolat-description {
+      box-sizing: border-box;
+      padding-top: 30px;
+      padding-left: 150px;
+      text-align: left;
+
+      h2 {
+        font-family: $CamphorBold;
+        font-size: 1em;
+        margin-bottom: 5px;
+      }
+
+      p {
+        color: #999;
+        font-size: 0.750em;
+      }
+    }
+  }
+
+  .chocolat-left {
+    background-color: $gold;
+    bottom: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    display: block;
+    top: auto;
+    left: auto;
+    right: 101px;
+    width: 100px;
+    height: 100px;
+    margin-top: 0;
+    z-index: 20;
+  }
+
+  .chocolat-right {
+    background-color: $gold;
+    bottom: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    display: block;
+    top: auto;
+    width: 100px;
+    height: 100px;
+    margin-top: 0;
+    z-index: 20;
+  }
+
+  .chocolat-content {
+    cursor: none;
+  }
+
+  .chocolat-top {
+    overflow: initial;
+    pointer-events: none;
+  }
+
+  .chocolat-close {
+    background: url('../img/svg/close-gold.svg') no-repeat center;
+    background-size: 15px;
+    border: 1px solid $gold;
+    cursor: none;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    z-index: 100;
+  }
+
+}
+
+
+
