@@ -135,7 +135,7 @@ class CoreManager
             $offset
         );
         
-        return $pagination;
+        return $pagination->getItems();
     }
     
     /**
