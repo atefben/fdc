@@ -11,6 +11,9 @@ use FDC\CoreBundle\Util\TranslationByLocale;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * FilmAtelier
  *
@@ -30,6 +33,8 @@ class FilmAtelier
      *
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $id;
 
@@ -37,6 +42,8 @@ class FilmAtelier
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $titleVO;
     
@@ -44,6 +51,8 @@ class FilmAtelier
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $productionYear;
     
@@ -51,6 +60,8 @@ class FilmAtelier
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $budgetEstimation;
     
@@ -58,6 +69,8 @@ class FilmAtelier
      * @var datetime
      *
      * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $filmingDate;
 
@@ -65,6 +78,8 @@ class FilmAtelier
      * @var text
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $filmingPlace;
 
@@ -72,6 +87,8 @@ class FilmAtelier
      * @var string
      *
      * @ORM\Column(type="decimal", precision=22, scale=2, nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $duration;
     
@@ -79,6 +96,8 @@ class FilmAtelier
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})s
      */
     private $sessionName;
     
@@ -86,6 +105,8 @@ class FilmAtelier
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $budgetAcquired;
 
@@ -93,6 +114,8 @@ class FilmAtelier
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $cinandoUrl;
     
@@ -100,6 +123,8 @@ class FilmAtelier
      * @var FilmSelectionSection
      *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="filmAteliers")
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $selectionSection;
     
@@ -107,6 +132,8 @@ class FilmAtelier
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films")
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $festival;
     
@@ -114,6 +141,8 @@ class FilmAtelier
      * @var FilmAtelierPerson
      *
      * @ORM\OneToMany(targetEntity="FilmAtelierPerson", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $persons;
 
@@ -121,6 +150,8 @@ class FilmAtelier
      * @var FilmAtelierProductionCompany
      *
      * @ORM\ManyToOne(targetEntity="FilmAtelierProductionCompany", cascade={"persist"})
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $productionCompany;
 
@@ -128,6 +159,8 @@ class FilmAtelier
      * @var FilmMedia
      *
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="filmAtelier")
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $medias;
     
@@ -135,6 +168,8 @@ class FilmAtelier
      * @var FilmCountry
      *
      * @ORM\OneToMany(targetEntity="FilmAtelierCountry", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $countries;
     
@@ -142,11 +177,15 @@ class FilmAtelier
      * @var FilmCountry
      *
      * @ORM\OneToMany(targetEntity="FilmAtelierLanguage", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $languages;
     
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     protected $translations;
 

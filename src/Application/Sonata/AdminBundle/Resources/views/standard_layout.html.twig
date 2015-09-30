@@ -258,6 +258,18 @@ file that was distributed with this source code.
                                                     </li>
                                                 {% endif %}
                                             {% endfor %}
+                                            {% block side_bar_li %}
+                                                <li>
+                                                    <a href="{{ path('fdc_admin_settings_index') }}">
+                                                        {{ 'settings'|trans({}, 'FDCAdminBundle') }}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('jms_translation_index') }}">
+                                                        {{ 'translation_back_office'|trans({}, 'FDCAdminBundle') }}
+                                                    </a>
+                                                </li>
+                                            {% endblock side_bar_li %}
                                         </ul>
                                     {% endif %}
                                 {% endblock side_bar_nav %}

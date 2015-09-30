@@ -20,6 +20,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FilmController extends FOSRestController
 {
+    private $repository = 'FDCCoreBundle:FilmFilm';
+
     /**
      * Return an array of films, can be filtered with page / offset parameters
      *
@@ -40,37 +42,36 @@ class FilmController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
+     * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
      * @return View
      */
     public function getFilmsAction(Paramfetcher $paramFetcher)
     {
-        // get parameters
-        $offset = ($paramFetcher->get('offset') !== null) ? (int)$paramFetcher->get('offset') : $this->container->getParameter('api_page_offset');
-        $offset = ($offset <= 10) ? $offset : 10;
-        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
-        $page = ($paramFetcher->get('page') !== null) ? (int)$paramFetcher->get('page') : 1;
+        // get festival
+        $festival = $this->get('fdc.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
+        if ($festival === null) {
+            return $this->view(array(), 404);
+        }
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $dql = 'SELECT ff FROM FDCCoreBundle:FilmFilm ff';
-        $query = $em->createQuery($dql);
-        
-        // create pagination
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            $offset
-        );
+        $dql = "SELECT ff FROM {$this->repository} ff WHERE ff.festival = :festival";
+        $query = $em
+            ->createQuery($dql)
+            ->setParameter('festival', $festival->getId());
+
+        // get items
+        $items = $this->get('fdc.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(array('film_list', 'time'));
-        $context->setVersion($version);
-        $view = $this->view($pagination->getItems(), 200);  
+        $groups = array('film_list', 'time');
+        $context = $this->get('fdc.api.core_manager')->setContext($groups, $paramFetcher);
+
+        // create view
+        $view = $this->view($items, 200);
         $view->setSerializationContext($context);
-         
+
         return $view;
     }
 
@@ -109,15 +110,7 @@ class FilmController extends FOSRestController
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 
         $em = $this->getDoctrine()->getManager();
-       // $film = $em->getRepository('FDCCoreBundle:FilmFilm')->findOneById($id);
-        
-        // create query
-        $em = $this->getDoctrine()->getManager();
-        $dql = 'SELECT ff FROM FDCCoreBundle:FilmFilm ff where ff.id = :id';
-        $query = $em
-            ->createQuery($dql)
-            ->setParameter('id', $id);
-        $film = $query->getOneOrNullResult();
+        $film = $em->getRepository($this->repository)->findOneById($id);
 
         // set context view
         $context = SerializationContext::create();

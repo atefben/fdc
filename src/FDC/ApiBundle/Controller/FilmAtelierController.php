@@ -5,38 +5,34 @@ namespace FDC\ApiBundle\Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
-use FOS\RestBundle\Routing\ClassResourceInterface;
 
-use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\Serializer\SerializationContext;
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-use Symfony\Component\HttpFoundation\Request;
-
 /**
- * FilmAwardController class.
- * 
+ * FilmAtelierController class.
+ *
  * \@extends FOSRestController
  */
-class FilmAwardController extends FOSRestController
+class FilmAtelierController extends FOSRestController
 {
-    private $repository = 'FDCCoreBundle:FilmAward';
+    private $repository = 'FDCCoreBundle:FilmAtelier';
 
     /**
-     * Return an array of awards, can be filtered with page / offset parameters
+     * Return an array of films atelier, can be filtered with page / offset parameters
      *
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get all awards",
-     *   section="Awards",
+     *   description = "Get all films",
+     *   section="Films",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *   },
      *  output={
-     *      "class"="FDC\CoreBundle\Entity\FilmAward",
-     *      "groups"={"award_list"}
+     *      "class"="FDC\CoreBundle\Entity\FilmAtelier",
+     *      "groups"={"film_list"}
      *  }
      * )
      *
@@ -47,7 +43,7 @@ class FilmAwardController extends FOSRestController
      *
      * @return View
      */
-    public function getAwardsAction(Paramfetcher $paramFetcher)
+    public function getFilmsAtelierAction(Paramfetcher $paramFetcher)
     {
         // get festival
         $festival = $this->get('fdc.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
@@ -66,7 +62,7 @@ class FilmAwardController extends FOSRestController
         $items = $this->get('fdc.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('award_list', 'time');
+        $groups = array('film_atelier_list', 'time');
         $context = $this->get('fdc.api.core_manager')->setContext($groups, $paramFetcher);
 
         // create view
@@ -76,30 +72,29 @@ class FilmAwardController extends FOSRestController
         return $view;
     }
 
-    
     /**
-     * Return a single award by $id
+     * Return a single film atelier by $id
      *
      * @Rest\View()
      * @ApiDoc(
      *  resource = true,
-     *  description = "Get an award by $id",
-     *  section="Awards",
+     *  description = "Get a film atelier by $id",
+     *  section="Films",
      *  statusCodes = {
      *     200 = "Returned when successful",
-     *     204 = "Returned when no film is found"
+     *     204 = "Returned when no film atelier is found"
      *  },
      *  requirements={
      *      {
      *          "name"="id",
      *          "requirement"="[\s-+]",
      *          "dataType"="string",
-     *          "description"="The award identifier"
+     *          "description"="The film atelier identifier"
      *      }
      *  },
      *  output={
-     *      "class"="FDC\CoreBundle\Entity\FilmAward",
-     *      "groups"={"award_show"}
+     *      "class"="FDC\CoreBundle\Entity\FilmAtelier",
+     *      "groups"={"film_atelier_show"}
      *  }
      * )
      *
@@ -107,22 +102,20 @@ class FilmAwardController extends FOSRestController
      *
      * @return View
      */
-    public function getAwardAction(Paramfetcher $paramFetcher, $id)
+    public function getFilmAction(Paramfetcher $paramFetcher, $id)
     {
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+
         $em = $this->getDoctrine()->getManager();
-        
-        // create query
-        $em = $this->getDoctrine()->getManager();
-        $projection = $em->getRepository($this->repository)->findOneById($id);
+        $film = $em->getRepository($this->repository)->findOneById($id);
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('award_show', 'time'));
+        $context->setGroups(array('film_atelier_show', 'time'));
         $context->setVersion($version);
-        $view = $this->view($projection, 200);
+        $view = $this->view($film, 200);
         $view->setSerializationContext($context);
-         
+
         return $view;
     }
 

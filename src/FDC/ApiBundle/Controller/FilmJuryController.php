@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FilmJuryController extends FOSRestController
 {
+    private $repository = 'FDCCoreBundle:FilmJury';
     /**
      * Return an array of juries, can be filtered with page / offset parameters
      *
@@ -47,14 +48,14 @@ class FilmJuryController extends FOSRestController
     public function getJuriesAction(Paramfetcher $paramFetcher)
     {
         // get festival
-        $festival = $this->get('fdc.api.core_manager')->getFestivalParameter($paramFetcher->get('festival_id'));
+        $festival = $this->get('fdc.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
         if ($festival === null) {
             return $this->view(array(), 404);
         }
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $dql = 'SELECT fj FROM FDCCoreBundle:FilmJury fj WHERE fj.festival = :festival';
+        $dql = "SELECT fj FROM {$this->repository} fj WHERE fj.festival = :festival";
         $query = $em
             ->createQuery($dql)
             ->setParameter('festival', $festival->getId());
@@ -111,7 +112,7 @@ class FilmJuryController extends FOSRestController
         
         // create query
         $em = $this->getDoctrine()->getManager();
-        $projection = $em->getRepository('FDCCoreBundle:FilmAward')->findOneById($id);
+        $projection = $em->getRepository($this->repository)->findOneById($id);
 
         // set context view
         $context = SerializationContext::create();

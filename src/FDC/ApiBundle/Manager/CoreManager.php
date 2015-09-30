@@ -93,22 +93,26 @@ class CoreManager
     }
 
     /**
-     * getFestivalParameter function.
+     * getFestivalSettings function.
      * 
      * @access public
      * @param mixed $festivalId
      * @return void
      */
-    public function getFestivalParameter($festivalId)
+    public function getFestivalSettings($festivalId)
     {
         if ($festivalId === null) {
-            $festival = $this->em->createQueryBuilder()
-                ->select('ff')
-                ->from('FDCCoreBundle:FilmFestival', 'ff')
-                ->orderBy('ff.id', 'desc')
+            $settings = $this->em->createQueryBuilder()
+                ->select('s')
+                ->from('FDCCoreBundle:Settings', 's')
+                ->orderBy('s.id', 'desc')
                 ->getQuery()
                 ->setMaxResults(1)
                 ->getSingleResult();
+            if ($settings === null) {
+                return null;
+            }
+            $festival = $this->em->getRepository('FDCCoreBundle:FilmFestival')->findOneByYear($settings->getYear());
         } else {
             $festival = $this->em->getRepository('FDCCoreBundle:FilmFestival')->findOneById($festivalId);
         }
@@ -151,7 +155,7 @@ class CoreManager
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->apiVersion;
 
         $context = SerializationContext::create();
-        $context->setGroups(array('jury_list', 'time'));
+        $context->setGroups($groups);
         $context->setVersion($version);
         
         return $context;

@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\TranslationByLocale;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -32,6 +35,8 @@ class News
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $id;
     
@@ -60,6 +65,8 @@ class News
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $publishedAt;
     
@@ -67,6 +74,8 @@ class News
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $publishEndedAt;
 
@@ -74,11 +83,15 @@ class News
      * @var NewsTag
      *
      * @ORM\OneToMany(targetEntity="NewsNewsTag", mappedBy="news", cascade={"persist"})
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $tags;
     
     /**
      * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $associations;
     
@@ -86,11 +99,15 @@ class News
      * @var NewsWidget
      *
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"persist"})
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $widgets;
-    
+
     /**
      * ArrayCollection
+     *
+     * @Groups({"news_list", "news_show"})
      */
     protected $translations;
 

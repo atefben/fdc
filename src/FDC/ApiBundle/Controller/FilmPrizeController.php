@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FilmPrizeController extends FOSRestController
 {
+    private $repository = 'FDCCoreBundle:FilmPrize';
     /**
      * Return an array of prizes, can be filtered with page / offset parameters
      *
@@ -46,32 +47,22 @@ class FilmPrizeController extends FOSRestController
      */
     public function getPrizesAction(Paramfetcher $paramFetcher)
     {
-        // get parameters
-        $offset = ($paramFetcher->get('offset') !== null) ? (int)$paramFetcher->get('offset') : $this->container->getParameter('api_page_offset');
-        $offset = ($offset <= 10) ? $offset : 10;
-        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
-        $page = ($paramFetcher->get('page') !== null) ? (int)$paramFetcher->get('page') : 1;
-
         // create query
         $em = $this->getDoctrine()->getManager();
-        $dql = 'SELECT fp FROM FDCCoreBundle:FilmPrize fp';
+        $dql = "SELECT fp FROM {$this->repository} fp";
         $query = $em->createQuery($dql);
-        
-        // create pagination
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            $offset
-        );
+
+        // get items
+        $items = $this->get('fdc.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(array('film_list', 'time'));
-        $context->setVersion($version);
-        $view = $this->view($pagination->getItems(), 200);  
+        $groups = array('prize_list', 'time');
+        $context = $this->get('fdc.api.core_manager')->setContext($groups, $paramFetcher);
+
+        // create view
+        $view = $this->view($items, 200);
         $view->setSerializationContext($context);
-         
+
         return $view;
     }
 
@@ -109,15 +100,14 @@ class FilmPrizeController extends FOSRestController
     public function getPrizeAction(Paramfetcher $paramFetcher, $id)
     {
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
-        $em = $this->getDoctrine()->getManager();
-        
+
         // create query
         $em = $this->getDoctrine()->getManager();
-        $projection = $em->getRepository('FDCCoreBundle:FilmPrize')->findOneById($id);
+        $projection = $em->getRepository($this->repository)->findOneById($id);
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('projection_show', 'time'));
+        $context->setGroups(array('prize_show', 'time'));
         $context->setVersion($version);
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);

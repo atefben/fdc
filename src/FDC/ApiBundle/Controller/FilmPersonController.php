@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FilmPersonController extends FOSRestController
 {
+    private $repository = 'FDCCoreBundle:FilmPerson';
     /**
      * Return a single person by $id
      *
@@ -55,7 +56,7 @@ class FilmPersonController extends FOSRestController
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 
         $em = $this->getDoctrine()->getManager();
-        $film = $em->getRepository('FDCCoreBundle:FilmFilm')->findOneById($id);
+        $film = $em->getRepository($this->repository)->findOneById($id);
 
         // set context view
         $context = SerializationContext::create();

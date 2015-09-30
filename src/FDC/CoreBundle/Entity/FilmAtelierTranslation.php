@@ -5,7 +5,11 @@ namespace FDC\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+
 use FDC\CoreBundle\Util\Time;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmAtelierTranslation
@@ -23,6 +27,8 @@ class FilmAtelierTranslation
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $title;
     
@@ -30,6 +36,8 @@ class FilmAtelierTranslation
      * @var text
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $synopsis;
     
@@ -37,6 +45,8 @@ class FilmAtelierTranslation
      * @var text
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"film_atelier_list", "film_atelier_show"})
      */
     private $applicantNote;
 

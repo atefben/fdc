@@ -27,3 +27,11 @@
 .fdc-sonata-media-ajax-hidden {
     display: none;
 }
+
+/* SETTINGS */
+
+/* form */
+form[name="fdc_adminbundle_settings"] {
+    width: 600px;
+    margin: 0 auto;
+}

@@ -12,61 +12,49 @@ use JMS\Serializer\SerializationContext;
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-use Symfony\Component\HttpFoundation\Request;
-
 /**
- * FilmAwardController class.
- * 
+ * NewsController class.
+ *
  * \@extends FOSRestController
  */
-class FilmAwardController extends FOSRestController
+class NewsController extends FOSRestController
 {
-    private $repository = 'FDCCoreBundle:FilmAward';
-
+    private $repository = 'FDCCoreBundle:NewsArticle';
     /**
-     * Return an array of awards, can be filtered with page / offset parameters
+     * Return an array of news, can be filtered with page / offset parameters
      *
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get all awards",
-     *   section="Awards",
+     *   description = "Get all news",
+     *   section="News",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *   },
      *  output={
-     *      "class"="FDC\CoreBundle\Entity\FilmAward",
-     *      "groups"={"award_list"}
+     *      "class"="FDC\CoreBundle\Entity\News",
+     *      "groups"={"news_list"}
      *  }
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
-     * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
      * @return View
      */
-    public function getAwardsAction(Paramfetcher $paramFetcher)
+    public function getNewsAction(Paramfetcher $paramFetcher)
     {
-        // get festival
-        $festival = $this->get('fdc.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
-        if ($festival === null) {
-            return $this->view(array(), 404);
-        }
-
         // create query
         $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT fa FROM {$this->repository} fa WHERE fa.festival = :festival";
-        $query = $em
-            ->createQuery($dql)
-            ->setParameter('festival', $festival->getId());
+        $dql = "SELECT n FROM {$this->repository} n";
+        $query = $em->createQuery($dql);
 
         // get items
         $items = $this->get('fdc.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('award_list', 'time');
+        $groups = array('news_list', 'time');
         $context = $this->get('fdc.api.core_manager')->setContext($groups, $paramFetcher);
 
         // create view
@@ -76,30 +64,30 @@ class FilmAwardController extends FOSRestController
         return $view;
     }
 
-    
+
     /**
-     * Return a single award by $id
+     * Return a single news by $id
      *
      * @Rest\View()
      * @ApiDoc(
      *  resource = true,
-     *  description = "Get an award by $id",
-     *  section="Awards",
+     *  description = "Get a news by $id",
+     *  section="News",
      *  statusCodes = {
      *     200 = "Returned when successful",
-     *     204 = "Returned when no film is found"
+     *     204 = "Returned when no news is found"
      *  },
      *  requirements={
      *      {
      *          "name"="id",
      *          "requirement"="[\s-+]",
      *          "dataType"="string",
-     *          "description"="The award identifier"
+     *          "description"="The news identifier"
      *      }
      *  },
      *  output={
-     *      "class"="FDC\CoreBundle\Entity\FilmAward",
-     *      "groups"={"award_show"}
+     *      "class"="FDC\CoreBundle\Entity\News",
+     *      "groups"={"news_show"}
      *  }
      * )
      *
@@ -107,22 +95,21 @@ class FilmAwardController extends FOSRestController
      *
      * @return View
      */
-    public function getAwardAction(Paramfetcher $paramFetcher, $id)
+    public function getNewAction(Paramfetcher $paramFetcher, $id)
     {
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
-        $em = $this->getDoctrine()->getManager();
-        
+
         // create query
         $em = $this->getDoctrine()->getManager();
         $projection = $em->getRepository($this->repository)->findOneById($id);
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('award_show', 'time'));
+        $context->setGroups(array('news_show', 'time'));
         $context->setVersion($version);
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);
-         
+
         return $view;
     }
 

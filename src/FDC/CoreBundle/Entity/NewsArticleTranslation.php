@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\NewsTranslation;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -26,6 +29,8 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $title;
     
@@ -33,6 +38,8 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $introduction;
     
@@ -40,6 +47,8 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $publishedAt;
     
@@ -47,6 +56,8 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $publishEndedAt;
     
@@ -54,6 +65,8 @@ class NewsArticleTranslation implements NewsTranslationInterface
       * @var Theme
       *
       * @ORM\ManyToOne(targetEntity="Theme")
+      *
+      * @Groups({"news_list", "news_show"})
       */
     private $theme;
 
@@ -61,6 +74,8 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsArticles")
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $sites;
 
@@ -69,6 +84,8 @@ class NewsArticleTranslation implements NewsTranslationInterface
      *
      * @ORM\Column(type="integer", nullable=false)
      * @Assert\NotBlank()
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $status;
 

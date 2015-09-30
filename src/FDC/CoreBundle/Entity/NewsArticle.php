@@ -2,14 +2,12 @@
 
 namespace FDC\CoreBundle\Entity;
 
-use \DateTime;
-
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use FDC\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * NewsArticle
@@ -26,6 +24,8 @@ class NewsArticle extends News
      * @var MediaImage
      *
      * @ORM\ManyToOne(targetEntity="MediaImage")
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $header;
     

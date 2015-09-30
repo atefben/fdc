@@ -11,9 +11,6 @@ use FDC\CoreBundle\Util\TranslationByLocale;
 use FDC\CoreBundle\Util\Time;
 use FDC\CoreBundle\Util\Soif;
 
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Exclude;
-use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
