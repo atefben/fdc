@@ -21,7 +21,7 @@ memory_limit = 512M; at least 512mb for the thubmnail generations
 
 The database informations is available in [https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sql][1].
 
-We use [MySQL Workbench][3] to create / generate the diagram png, the source file is Base diagram.mwb.
+We use [MySQL Workbench][3] to create / generate the diagram png, the source file is FDC diagram.mwb.
 
 [1]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sql
 [2]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sqlBase%20diagram.mwb
