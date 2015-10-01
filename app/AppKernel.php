@@ -54,10 +54,12 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             /* Application */
-            new FDC\CoreBundle\FDCCoreBundle(),
-            new FDC\AdminBundle\FDCAdminBundle(),
-            new FDC\SoifBundle\FDCSoifBundle(),
-            new FDC\ApiBundle\FDCApiBundle(),
+            new Base\CoreBundle\BaseCoreBundle(),
+            new Base\AdminBundle\BaseAdminBundle(),
+            new Base\SoifBundle\BaseSoifBundle(),
+            new Base\ApiBundle\BaseApiBundle(),
+            new FDC\CorporateBundle\FDCCorporateBundle(),
+            new FDC\EventBundle\FDCEventBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

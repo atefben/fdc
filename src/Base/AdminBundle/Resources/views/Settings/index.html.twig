@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block content %}
+    <h3>{{ 'settings'|trans({}, 'BaseAdminBundle') }}</h3>
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.festivalStartsAt) }}
+        {{ form_row(form.festivalEndsAt) }}
+        {{ form_row(form.save) }}
+    {{ form_end(form) }}
+{% endblock %}

@@ -6,4 +6,4 @@ a2lix_translation_form:
     required_locales: ['%locale_default_translation%']
     manager_registry: doctrine
     #templating: "A2lixTranslationFormBundle::default.html.twig"
-    templating: "FDCAdminBundle:TranslationFormBundle:default.html.twig"
+    templating: "BaseAdminBundle:TranslationFormBundle:default.html.twig"

@@ -1,0 +1,8 @@
+services:
+    Base.api.core_manager:
+        class: Base\ApiBundle\Manager\CoreManager
+        calls:
+            - ['setEntityManager', ['@doctrine.orm.entity_manager']]
+            - ['setApiVersion', ['%api_version%']]
+            - ['setApiPageOffset', ['%api_page_offset%']]
+            - ['setKnpPaginator', ['@knp_paginator']]

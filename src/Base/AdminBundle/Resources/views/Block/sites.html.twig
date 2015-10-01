@@ -1,0 +1,19 @@
+{% extends 'SonataBlockBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+<div class="row">
+    {% for site in sites %}
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <a href="{{ path('base_admin_dashboard_setcookie', { slug: site.slug }) }}">
+            {% set classColor = site.classColor|split('-') %}
+            <div class="info-box bg-{{ classColor[0] }}">
+              <span class="info-box-icon"><i class="fa fa-star-o"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">{{ site.name }}</span>
+              </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

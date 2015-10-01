@@ -1,0 +1,4 @@
+services:
+    base_admin.handler.login:
+        parent: security.authentication.success_handler
+        class:  Base\AdminBundle\Handler\LoginSuccessHandler

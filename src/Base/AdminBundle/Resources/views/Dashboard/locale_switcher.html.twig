@@ -1,0 +1,7 @@
+{% if app.user %}
+<form action="{{path('base_admin_dashboard_localeswitcher')}}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {{ form_rest(form) }}
+    <input type="submit" />
+</div>
+{% endif %}

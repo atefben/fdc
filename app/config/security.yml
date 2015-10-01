@@ -60,7 +60,7 @@ security:
                 use_forward:    false
                 check_path:     /admin/login_check
                 failure_path:   null
-                success_handler: fdc_admin.handler.login
+                success_handler: base_admin.handler.login
             logout:
                 path:           /admin/logout
             anonymous:          true

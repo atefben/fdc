@@ -61,7 +61,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SonataAdminBundle, FDCAdminBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

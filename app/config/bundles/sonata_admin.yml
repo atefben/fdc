@@ -14,6 +14,6 @@ sonata_admin:
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
     dashboard:
         blocks: 
-            - { position: top, class: col-md-12, type: fdc_admin.block.sites }
+            - { position: top, class: col-md-12, type: base_admin.block.sites }
     templates:
         short_object_description:  'ApplicationSonataAdminBundle:Helper:short-object-description.html.twig'

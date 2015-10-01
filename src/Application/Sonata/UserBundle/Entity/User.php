@@ -45,10 +45,10 @@ class User extends BaseUser
     /**
      * Add Site
      *
-     * @param \FDC\CoreBundle\Entity\Site $site
+     * @param \Base\CoreBundle\Entity\Site $site
      * @return Article
      */
-    public function addSite(\FDC\CoreBundle\Entity\Site $site)
+    public function addSite(\Base\CoreBundle\Entity\Site $site)
     {
         $this->sites[] = $site;
 
@@ -58,9 +58,9 @@ class User extends BaseUser
     /**
      * Remove site
      *
-     * @param \FDC\CoreBundle\Entity\Site $site
+     * @param \Base\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\FDC\CoreBundle\Entity\Site $site)
+    public function removeSite(\Base\CoreBundle\Entity\Site $site)
     {
         $this->sites->removeElement($site);
     }

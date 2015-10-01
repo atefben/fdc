@@ -1,0 +1,91 @@
+services:
+    #soif logger
+    Base.soif.logger_manager:
+        class: Base\SoifBundle\Manager\LoggerManager
+        calls:
+            - ['setSoifLog', ['%soif_log%']]
+            - ['setSoifLogDirectory', ['%soif_log_directory%']]
+    #soif core
+    Base.soif.core_manager:
+        abstract: true
+        class: Base\SoifBundle\Manager\CoreManager
+        calls:
+            - ['setEntityManager', ['@doctrine.orm.entity_manager']]
+            - ['setLogger', ['@logger']]
+            - ['setSoifLogger', ['@Base.soif.logger_manager']]
+            - ['setWebserviceUrl', ['%soif_url%']]
+            - ['setValidator', ['@validator']]
+
+    #soif children
+    Base.soif.award_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\AwardManager
+        arguments: ['@Base.soif.festival_manager', '@Base.soif.prize_manager', '@Base.soif.film_manager', '@Base.soif.person_manager']
+
+    Base.soif.country_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\CountryManager
+        arguments: []
+
+    Base.soif.festival_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\FestivalManager
+        arguments: []
+
+    Base.soif.festival_poster_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\FestivalPosterManager
+        arguments: ['@Base.soif.festival_manager', '@Base.soif.media_stream_manager']
+
+    Base.soif.film_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\FilmManager
+        arguments: ['@Base.soif.festival_manager', '@Base.soif.media_manager', '@Base.soif.person_manager']
+
+    Base.soif.film_atelier_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\FilmAtelierManager
+        arguments: ['@Base.soif.festival_manager', '@Base.soif.person_manager']
+
+    Base.soif.jury_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\JuryManager
+        arguments: ['@Base.soif.festival_manager', '@Base.soif.person_manager']
+
+    Base.soif.jury_function_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\JuryFunctionManager
+        arguments: []
+
+    Base.soif.media_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\MediaManager
+        arguments: ['@Base.soif.festival_manager', '@Base.soif.media_stream_manager', '@Base.soif.media_category_manager']
+
+    Base.soif.media_category_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\MediaCategoryManager
+        arguments: []
+
+    Base.soif.media_stream_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\MediaStreamManager
+        arguments: []
+        calls:
+            - ['setSonataMediaManager', ['@sonata.media.manager.media']]
+            - ['setSoifUploadDirectory', ['%soif_upload_directory%']]
+
+    Base.soif.person_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\PersonManager
+        arguments: []
+
+    Base.soif.prize_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\PrizeManager
+        arguments: []
+
+    Base.soif.projection_manager:
+        parent: Base.soif.core_manager
+        class: Base\SoifBundle\Manager\ProjectionManager
+        arguments: ['@Base.soif.festival_manager', '@Base.soif.film_manager', '@Base.soif.media_stream_manager']

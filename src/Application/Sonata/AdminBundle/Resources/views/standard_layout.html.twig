@@ -30,7 +30,7 @@ file that was distributed with this source code.
         {% block stylesheets %}
             {% stylesheets
                 '@SonataTranslationBundle/Resources/public/less/sonata-translation.less'
-                '@FDCAdminBundle/Resources/public/css/*.css'
+                '@BaseAdminBundle/Resources/public/css/*.css'
             %}
         
             <link rel="stylesheet" href="{{ asset_url }}" />
@@ -71,7 +71,7 @@ file that was distributed with this source code.
 
         {% endblock %}
         
-        {% set userSite = app.session.get('fdc_site') %}
+        {% set userSite = app.session.get('base_site') %}
         {% if userSite is not null %}
             <script type="text/javascript">
                 jQuery(document).ready(function() {
@@ -106,7 +106,7 @@ file that was distributed with this source code.
         </title>
     </head>
     <body {% block body_attributes %}class="sonata-bc skin-black fixed"{% endblock %}>
-        {% include 'FDCAdminBundle:Site:modal.html.twig' %}
+        {% include 'BaseAdminBundle:Site:modal.html.twig' %}
         {% block sonata_header %}
             <header class="header">
                 {% block sonata_header_noscript_warning %}
@@ -168,8 +168,8 @@ file that was distributed with this source code.
 
                             {% block sonata_top_nav_menu %}
                                 <div class="navbar-right">
-                                    {{ render(controller('FDCAdminBundle:Dashboard:localeSwitcher') )}}
-                                    {% include 'FDCAdminBundle:Site:btn_modal.html.twig' %}
+                                    {{ render(controller('BaseAdminBundle:Dashboard:localeSwitcher') )}}
+                                    {% include 'BaseAdminBundle:Site:btn_modal.html.twig' %}
                                     <ul class="nav navbar-nav">
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -260,13 +260,13 @@ file that was distributed with this source code.
                                             {% endfor %}
                                             {% block side_bar_li %}
                                                 <li>
-                                                    <a href="{{ path('fdc_admin_settings_index') }}">
-                                                        {{ 'settings'|trans({}, 'FDCAdminBundle') }}
+                                                    <a href="{{ path('base_admin_settings_index') }}">
+                                                        {{ 'settings'|trans({}, 'BaseAdminBundle') }}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ path('jms_translation_index') }}">
-                                                        {{ 'translation_back_office'|trans({}, 'FDCAdminBundle') }}
+                                                        {{ 'translation_back_office'|trans({}, 'BaseAdminBundle') }}
                                                     </a>
                                                 </li>
                                             {% endblock side_bar_li %}

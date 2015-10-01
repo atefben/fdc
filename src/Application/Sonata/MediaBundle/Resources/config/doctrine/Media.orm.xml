@@ -20,10 +20,10 @@
         <field name="soifId" type="string" column="soif_id" nullable="true">
         </field>
         
-        <one-to-many field="filmMedias" target-entity="FDC\CoreBundle\Entity\FilmMedia" mapped-by="file">
+        <one-to-many field="filmMedias" target-entity="Base\CoreBundle\Entity\FilmMedia" mapped-by="file">
         </one-to-many>
 
-        <one-to-many field="newsWidgetAudios" target-entity="FDC\CoreBundle\Entity\NewsWidgetAudio" mapped-by="file">
+        <one-to-many field="newsWidgetAudios" target-entity="Base\CoreBundle\Entity\NewsWidgetAudio" mapped-by="file">
         </one-to-many>
 
     </entity>

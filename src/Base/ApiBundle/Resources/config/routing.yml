@@ -1,0 +1,31 @@
+film:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmController
+
+film_atelier:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmAtelierController
+
+film_award:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmAwardController
+
+film_person:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmPersonController
+
+film_projection:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmProjectionController
+
+film_prize:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmPrizeController
+
+film_jury:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmJuryController
+
+news:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\NewsController

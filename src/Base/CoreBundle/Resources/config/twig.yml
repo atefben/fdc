@@ -1,0 +1,15 @@
+services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
+    Base.twig.news_instance_of_extension:
+        class: Base\CoreBundle\Twig\Extension\NewsInstanceOfExtension
+        tags:
+            - { name: twig.extension }
+
+    Base.twig.news_widget_instance_of_extension:
+        class: Base\CoreBundle\Twig\Extension\NewsWidgetInstanceOfExtension
+        tags:
+            - { name: twig.extension }
