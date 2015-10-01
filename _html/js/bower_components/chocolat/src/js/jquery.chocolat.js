@@ -592,9 +592,10 @@
 
             if (isImageZoomable && !isImageStretched) {
                 this.elems.domContainer.addClass('chocolat-zoomable');
-                //this.zoomIn(jQuery.Event( "click" ));
+                this.zoomIn(jQuery.Event( "click" ));
             }
             else {
+                this.zoomOut(0);
                 this.elems.domContainer.removeClass('chocolat-zoomable');
             }
         },

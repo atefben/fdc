@@ -267,6 +267,10 @@ div.chocolat-wrapper {
     pointer-events: none;
   }
 
+  .chocolat-img {
+    cursor: none!important;
+  }
+
   .chocolat-close {
     background: url('../img/svg/close-gold.svg') no-repeat center;
     background-size: 15px;

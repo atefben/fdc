@@ -29,9 +29,12 @@
 @import "components/footer";
 @import "components/slideshow";
 @import "components/filters";
+@import "components/audio";
+@import "components/video";
 
 
 // 4. Pages
 // =========================
 @import "pages/home";
+@import "pages/article";
 

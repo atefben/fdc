@@ -8,9 +8,40 @@
 // =========================
 
 a {
+  outline: none;
   text-decoration: none;
 }
 
+.button {
+  border: 1px solid #dfdfdf;
+  color: $gold;
+  display: inline-block;
+  font-family: $CamphorBold;
+  font-size: 0.688em;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 -6px;
+  padding: 0 20px 0 40px;
+  text-transform: uppercase;
+  @include transition(all 0.3s $smoothTransition);
 
+  &:hover {
+    background-color: $gold;
+    border-color: $gold;
+    color: #fff;
+  }
+}
+
+.buttons {
+  text-align: center;
+
+  &.square .button {
+    height: 73px;
+    line-height: 73px;
+    padding: 0;
+    text-align: center;
+    width: 73px;
+  }
+}
 
 
