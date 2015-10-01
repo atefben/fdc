@@ -48,7 +48,7 @@ class FilmProjectionController extends FOSRestController
     public function getProjectionsAction(Paramfetcher $paramFetcher)
     {
         // get festival
-        $festival = $this->get('Base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
+        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
         if ($festival === null) {
             return $this->view(array(), 404);
         }
@@ -61,11 +61,11 @@ class FilmProjectionController extends FOSRestController
             ->setParameter('festival', $festival->getId());
 
         // get items
-        $items = $this->get('Base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('projection_list', 'time');
-        $context = $this->get('Base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
 
         // create view
         $view = $this->view($items, 200);

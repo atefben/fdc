@@ -53,11 +53,11 @@ class FilmPrizeController extends FOSRestController
         $query = $em->createQuery($dql);
 
         // get items
-        $items = $this->get('Base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('prize_list', 'time');
-        $context = $this->get('Base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
 
         // create view
         $view = $this->view($items, 200);

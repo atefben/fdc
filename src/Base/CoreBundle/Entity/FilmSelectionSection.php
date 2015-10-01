@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslationByLocale;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * FilmSelectionSection
  *
@@ -28,6 +31,8 @@ class FilmSelectionSection
      *
      * @ORM\Column(type="string", length=255)
      * @ORM\Id
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     private $id;
     
@@ -35,6 +40,8 @@ class FilmSelectionSection
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     private $position;
     
@@ -54,6 +61,8 @@ class FilmSelectionSection
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     protected $translations;
 

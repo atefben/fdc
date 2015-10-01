@@ -25,7 +25,7 @@ class FilmJuryTypeTranslation
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"jury_list", "jury_show"})
+     * @Groups({"film_jury_type_list", "film_jury_type_show", "jury_list", "jury_show"})
      */
     protected $name;
 

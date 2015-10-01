@@ -4,11 +4,15 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslationByLocale;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 
 /**
  * FilmSelectionSubsection
@@ -29,12 +33,16 @@ class FilmSelectionSubsection
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     private $id;
     
     
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     protected $translations;
     

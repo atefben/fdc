@@ -1,14 +1,4 @@
-fdc_event:
-    resource: "@FDCEventBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-fdc_corporate:
-    resource: "@FDCCorporateBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-#Sonata Admin
+#admin
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin
@@ -18,7 +8,6 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
-#Sonata Media
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
     prefix: /media/gallery
@@ -51,13 +40,17 @@ sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
 
-
 JMSTranslationBundle_ui:
     resource: @JMSTranslationBundle/Controller/
     type:     annotation
     prefix:   /admin/_trans
 
-#Application
+#api
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+    
+#base
 base_admin:
     resource: "@BaseAdminBundle/Controller/"
     type:     annotation
@@ -77,6 +70,15 @@ base_soif:
     type:     annotation
     prefix:   /
 
-NelmioApiDocBundle:
-    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /api/doc
+# websites
+fdc_event:
+    resource: "@FDCEventBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    host:     %website_fdc_event_host%
+
+fdc_corporate:
+    resource: "@FDCCorporateBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    host:     %website_fdc_corporate_host%

@@ -42,13 +42,14 @@ class FilmJuryController extends FOSRestController
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      * @Rest\QueryParam(name="festival_id", description="The festival year")
+     * @Rest\QueryParam(name="type_id", description="The type id")
      *
      * @return View
      */
     public function getJuriesAction(Paramfetcher $paramFetcher)
     {
         // get festival
-        $festival = $this->get('Base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
+        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
         if ($festival === null) {
             return $this->view(array(), 404);
         }
@@ -56,16 +57,25 @@ class FilmJuryController extends FOSRestController
         // create query
         $em = $this->getDoctrine()->getManager();
         $dql = "SELECT fj FROM {$this->repository} fj WHERE fj.festival = :festival";
+        // if selection is defined, add it to the query
+        if ($type !== null) {
+            $dql .= ' AND fj.type = :type';
+        }
+
         $query = $em
             ->createQuery($dql)
             ->setParameter('festival', $festival->getId());
+        // if selection is defined, add it to the query
+        if ($type !== null) {
+            $query = $query->setParameter('type', $type);
+        }
         
         // get items
-        $items = $this->get('Base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('jury_list', 'time');
-        $context = $this->get('Base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
         
         // create view
         $view = $this->view($items, 200);

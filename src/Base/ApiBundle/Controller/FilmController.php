@@ -43,13 +43,17 @@ class FilmController extends FOSRestController
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      * @Rest\QueryParam(name="festival_id", description="The festival year")
+     * @Rest\QueryParam(name="selection_id", description="The festival year")
      *
      * @return View
      */
     public function getFilmsAction(Paramfetcher $paramFetcher)
     {
+        // parameters
+        $selection = $paramFetcher->get('selection_id');
+
         // get festival
-        $festival = $this->get('Base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
+        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
         if ($festival === null) {
             return $this->view(array(), 404);
         }
@@ -57,16 +61,25 @@ class FilmController extends FOSRestController
         // create query
         $em = $this->getDoctrine()->getManager();
         $dql = "SELECT ff FROM {$this->repository} ff WHERE ff.festival = :festival";
+        // if selection is defined, add it to the query
+        if ($selection !== null) {
+            $dql .= ' AND ff.selection = :selection';
+        }
+
         $query = $em
             ->createQuery($dql)
             ->setParameter('festival', $festival->getId());
+        // if selection is defined, add it to the query
+        if ($selection !== null) {
+            $query = $query->setParameter('selection', $selection);
+        }
 
         // get items
-        $items = $this->get('Base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('film_list', 'time');
-        $context = $this->get('Base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
 
         // create view
         $view = $this->view($items, 200);

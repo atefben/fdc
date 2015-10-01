@@ -8,6 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslationByLocale;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * FilmSelection
  *
@@ -26,6 +29,8 @@ class FilmSelection
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     private $id;
 
@@ -33,6 +38,8 @@ class FilmSelection
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     private $codeSignup;
 
@@ -40,6 +47,8 @@ class FilmSelection
      * @var FilmSelectionSection
      *
      * @ORM\OneToMany(targetEntity="FilmSelectionSection", mappedBy="selection", cascade={"persist"})
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     private $sections;
     
@@ -47,6 +56,8 @@ class FilmSelection
      * @var FilmSelectionSubsection
      *
      * @ORM\OneToMany(targetEntity="FilmSelectionSubsection", mappedBy="selection", cascade={"persist"})
+     *
+     * @Groups({"film_selection_list", "film_selection_show"})
      */
     private $subsections;
     

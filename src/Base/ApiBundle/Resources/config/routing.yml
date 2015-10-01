@@ -26,6 +26,14 @@ film_jury:
     type:       rest
     resource:   Base\ApiBundle\Controller\FilmJuryController
 
+film_jury_type:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmJuryTypeController
+
+film_selection:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmSelectionController
+
 news:
     type:       rest
     resource:   Base\ApiBundle\Controller\NewsController

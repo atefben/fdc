@@ -234,7 +234,6 @@ class FilmFilm implements FilmFilmInterface
     {
         $this->persons = new ArrayCollection();
         $this->contacts = new ArrayCollection();
-        $this->generics = new ArrayCollection();
         $this->awards = new ArrayCollection();
         $this->medias = new ArrayCollection();
         $this->minorProductions = new ArrayCollection();
@@ -887,47 +886,6 @@ class FilmFilm implements FilmFilmInterface
     public function getSubSelectionVA()
     {
         return $this->subSelectionVA;
-    }
-
-    /**
-     * Add generics
-     *
-     * @param \Base\CoreBundle\Entity\FilmGeneric $generics
-     * @return FilmFilm
-     */
-    public function addGeneric(\Base\CoreBundle\Entity\FilmGeneric $generics)
-    {
-        if ($this->generics->contains($generics)) {
-            return;
-        }
-        
-        $this->generics[] = $generics;
-
-        return $this;
-    }
-
-    /**
-     * Remove generics
-     *
-     * @param \Base\CoreBundle\Entity\FilmGeneric $generics
-     */
-    public function removeGeneric(\Base\CoreBundle\Entity\FilmGeneric $generics)
-    {
-        if (!$this->generics->contains($generics)) {
-            return;
-        }
-        
-        $this->generics->removeElement($generics);
-    }
-
-    /**
-     * Get generics
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGenerics()
-    {
-        return $this->generics;
     }
 
     /**

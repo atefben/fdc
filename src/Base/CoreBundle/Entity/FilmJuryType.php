@@ -32,7 +32,7 @@ class FilmJuryType
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
      *
-     * @Groups({"jury_list", "jury_show"})
+     * @Groups({"film_jury_type_list", "film_jury_type_show", "jury_list", "jury_show"})
      */
     private $id;
 
@@ -46,7 +46,7 @@ class FilmJuryType
     /**
      * @var ArrayCollection
      *
-     * @Groups({"jury_list", "jury_show"})
+     * @Groups({"film_jury_type_list", "film_jury_type_show", "jury_list", "jury_show"})
      */
     protected $translations;
 
