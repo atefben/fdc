@@ -8,6 +8,10 @@
 // 1. Global
 // =========================
 
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: $CamphorRegular;
   font-size: 16px;
@@ -48,6 +52,7 @@ body {
 }
 
 #main {
+  clear: both;
   position: relative;
 
   &:after {
@@ -71,22 +76,7 @@ body {
   }
 }
 
-.title {
-  font-family: $PlayfairBold;
-  font-size: 1.125em;
-  font-weight: normal;
-  letter-spacing: 0.4em;
-  margin-bottom: 15px;
-  text-align: center;
-  text-transform: uppercase;
-}
 
-.subtitle {
-  font-family: $PlayfairItalic;
-  font-size: 0.875em;
-  font-weight: normal;
-  text-align: center;
-}
 
 
 // 2. Navigation

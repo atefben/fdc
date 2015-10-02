@@ -175,7 +175,7 @@
   .caption {
     color: #666;
     font-family: $CamphorRegular;
-    font-size: 0.750em;
+    font-size: 0.750rem;
     margin: 20px 0;
 
     strong {
@@ -203,7 +203,7 @@ div.chocolat-wrapper {
     .chocolat-pagination {
       border-right: 1px solid rgba(255, 255, 255, 0.4);
       font-family: $CamphorBold;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       line-height: 100px;
       padding: 0;
       margin: 0;
@@ -221,13 +221,13 @@ div.chocolat-wrapper {
 
       h2 {
         font-family: $CamphorBold;
-        font-size: 1em;
+        font-size: 1rem;
         margin-bottom: 5px;
       }
 
       p {
         color: #999;
-        font-size: 0.750em;
+        font-size: 0.750rem;
       }
     }
   }

@@ -22,6 +22,8 @@
 
     <div id="main" class="single-article">
       <div class="container small-container">
+        <a href="#" class="nav prev"></a>
+        <a href="#" class="nav next"></a>
         <div class="info">
           <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
         </div>
@@ -31,8 +33,10 @@
           <a href="#" class="button">Imprimer</a>
         </div>
         <div class="single-photo">
-          <img src="img/article/001.jpg" alt="" />
-          <p class="caption">Maïwenn - Photocall © FDC / Théophile Delange</p>
+          <div class="photo-container">
+            <img src="img/article/001.jpg" alt="" />
+            <p class="caption">Maïwenn - Photocall © FDC / Théophile Delange</p>
+          </div>
         </div>
         <p class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</p>
         <div class="slideshow">
@@ -124,24 +128,32 @@
           <p>Cela fait vingt ans que je travaille l’image par le biais du reportage ou du documentaire pour me rapprocher de plus en plus de cette envie de cinéma qui ne m’a jamais quittée depuis l’adolescence.</p>
         </div>
         <div class="single-photo">
-          <img src="img/article/002.jpg" alt="" />
-          <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+          <div class="photo-container">
+            <img src="img/article/002.jpg" alt="" />
+            <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+          </div>
         </div>
         <div class="text">
           <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
           <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
         </div>
         <div class="single-photo">
-          <img src="img/article/003.jpg" alt="" />
-          <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+          <div class="photo-container">
+            <img src="img/article/003.jpg" alt="" />
+            <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+          </div>
         </div>
         <div class="half-photo">
-          <img src="img/article/005.jpg" alt="" />
-          <p class="caption">© FDC / Théophile Delange</p>
+          <div class="photo-container">
+            <img src="img/article/005.jpg" alt="" />
+            <p class="caption">© FDC / Théophile Delange</p>
+          </div>
         </div>
         <div class="half-photo">
-          <img src="img/article/006.jpg" alt="" />
-          <p class="caption">© FDC / Théophile Delange</p>
+          <div class="photo-container">
+            <img src="img/article/006.jpg" alt="" />
+            <p class="caption">© FDC / Théophile Delange</p>
+          </div>
         </div>
         <div class="author">Rédigé par Morgane Urbain</div>
       </div>

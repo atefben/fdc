@@ -108,7 +108,7 @@
         color: $gold;
         display: block;
         font-family: $CamphorHeavy;
-        font-size: 0.750em;
+        font-size: 0.750rem;
         letter-spacing: 0.1em;
         margin-bottom: 20px;
         text-transform: uppercase;
@@ -117,7 +117,7 @@
       h2 {
         color: #fff;
         font-family: $PlayfairRegular;
-        font-size: 2.750em;
+        font-size: 2.750rem;
         font-weight: normal;
       }
     }
@@ -176,7 +176,7 @@
     display: block;
     height: 55px;
     font-family: $CamphorHeavy;
-    font-size: 0.625em;
+    font-size: 0.625rem;
     line-height: 55px;
     margin-top: 25px;
     text-align: center;
@@ -218,7 +218,7 @@
         border-top: 1px dotted #e5e5e5;
         color: #adadad;
         font-family: $CamphorBold;
-        font-size: 0.625em;
+        font-size: 0.625rem;
         display: block;
         padding: 10px 0;
         text-align: center;
@@ -322,7 +322,7 @@
         color: #f3f3f3;
         display: inline-block;
         font-family: $CamphorBold;
-        font-size: 0.688em;
+        font-size: 0.688rem;
         text-align: center;
         width: 75px;
 
@@ -342,7 +342,7 @@
       color: $gold;
       float: left;
       font-family: $CamphorBold;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       height: 100%;
       width: 86px;
 
@@ -429,7 +429,7 @@
         .txt {
           background-color: #fff;
           font-family: $CamphorMedium;
-          font-size: 0.625em;
+          font-size: 0.625rem;
           height: 100%;
           width: 100%;
           @include transition(all 0.3s $smoothTransition);
@@ -470,7 +470,7 @@
 
         .side {
           p {
-            font-size: 1.6em;
+            font-size: 1rem;
             padding: 0 25px;
           }
 
@@ -501,7 +501,7 @@
     color: #333;
     float: left;
     font-family: $CamphorHeavy;
-    font-size: 0.875em;
+    font-size: 0.875rem;
     line-height: 20px;
     text-transform: uppercase;
   }
@@ -517,7 +517,7 @@
         color: #999;
         display: block;
         font-family: $CamphorRegular;
-        font-size: 0.875em;
+        font-size: 0.875rem;
         line-height: 16px;
         padding-right: 30px;
         @include transition(all 0.3s $smoothTransition);
@@ -586,7 +586,7 @@
     a {
       color: $gold;
       font-family: $CamphorHeavy;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       text-transform: uppercase;
     }
   }
@@ -624,14 +624,14 @@
         .titleLink {
           color: #fff;
           display: block;
-          font-size: 0.875em;
+          font-size: 0.875rem;
           margin-top: 3px;
         }
 
         span {
           color: #666;
           display: inline-block;
-          font-size: 0.625em;
+          font-size: 0.625rem;
         }
       }
 
@@ -702,7 +702,7 @@
 
     .category {
       color: $gold;
-      font-size: 0.625em;
+      font-size: 0.625rem;
       letter-spacing: 0.1em;
       margin-right: 12px;
       text-transform: uppercase;
@@ -762,7 +762,7 @@
         span {
           color: #fff;
           display: block;
-          font-size: 0.875em;
+          font-size: 0.875rem;
           margin-top: 3px;
         }
       }
@@ -808,7 +808,7 @@
     a {
       color: $gold;
       font-family: $CamphorHeavy;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       text-transform: uppercase;
       padding: 0 0 0 20px;
       @include transition(all 0.3s $smoothTransition);
@@ -845,7 +845,7 @@
       color: #fff;
       display: block;
       font-family: $CamphorHeavy;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       letter-spacing: 0.1em;
       margin-bottom: 20px;
       opacity: 0;
@@ -858,7 +858,7 @@
     h2 {
       color: #fff;
       font-family: $CamphorBold;
-      font-size: 3.750em;
+      font-size: 3.750rem;
       letter-spacing: 0.2em;
       margin-bottom: 20px;
       opacity: 0;
@@ -871,7 +871,7 @@
     .director {
       color: #fff;
       font-family: $CamphorRegular;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       opacity: 0;
       @include transition(all 0.3s $smoothTransition);
       @include transform(translateY(30px));
@@ -973,7 +973,7 @@
     h3 {
       color: #fff;
       font-family: $CamphorHeavy;
-      font-size: 0.875em;
+      font-size: 0.875rem;
       letter-spacing: 0.4em;
       line-height: 1.5em;
       position: relative;
@@ -1030,7 +1030,7 @@
   h2 {
     color: #fff;
     font-family: $CamphorHeavy;
-    font-size: 1.875em;
+    font-size: 1.875rem;
     font-weight: normal;
     letter-spacing: 0.2em;
     margin-bottom: 10px;
@@ -1040,7 +1040,7 @@
 
   h3 {
     color: #fff;
-    font-size: 1.125em;
+    font-size: 1.125rem;
     margin-bottom: 50px;
   }
 
