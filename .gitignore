@@ -40,6 +40,10 @@
 # Composer PHAR
 /composer.phar
 
+# GruntJS Task
+_html/node_modules/
+node_modules/
+
 #OS junk files
 # Exclude generated files
 .idea
