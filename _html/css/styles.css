@@ -1304,6 +1304,12 @@ div.chocolat-wrapper .chocolat-close {
   width: auto;
 }
 
+.single-article .actu_article_video {
+  margin-top: 50px !important;
+  width: 980px !important;
+  height: 610px;
+}
+
 #selection {
   background-color: #fff;
   left: 0;
