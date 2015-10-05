@@ -807,7 +807,6 @@ $(document).ready(function() {
           onInitialized: function() {
             var v = $(window).width() / 6 + "px";
             $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-
             $('#selection').addClass('open');
           }
         });
