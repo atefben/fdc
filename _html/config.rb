@@ -3,7 +3,7 @@ encoding         = "utf-8"
 http_path        = "/_html"
 css_dir          = "css"
 sass_dir         = "sass"
-images_dir       = "img"
+images_dir       = "../img"
 
 preferred_syntax = :scss
 relative_assets  = true
