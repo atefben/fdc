@@ -1030,6 +1030,9 @@ div.chocolat-wrapper .chocolat-close {
 .article_photo {
   padding-top: 50px;
 }
+.article_photo .slideshow-img .thumbnails {
+  width: 960px;
+}
 
 .filters {
   text-align: center;

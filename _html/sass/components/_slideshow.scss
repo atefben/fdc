@@ -286,9 +286,13 @@ div.chocolat-wrapper {
 
 }
 
-// 3. Override Article photo
+// 3. Override Article actu photo
 // =========================
 .article_photo{
     padding-top: 50px;
+    
+    .slideshow-img .thumbnails {
+        width: 960px;
+    }
 }
 
