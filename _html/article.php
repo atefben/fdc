@@ -26,6 +26,7 @@
         <a href="#" class="nav next"></a>
         <div class="info">
           <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
         </div>
         <h2 class="title-article">Enragés, polar hybride d'Eric Hannezo</h2>
         <div class="buttons">
@@ -133,6 +134,11 @@
             <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
           </div>
         </div>
+        <div class="quote">
+          <blockquote>
+            “J’ai découvert que Lambert avait une passion pour le film de genre”
+          </blockquote>
+        </div>
         <div class="text">
           <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
           <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
@@ -160,19 +166,59 @@
       <div class="share">
         <p>Partagez l'article</p>
         <div class="buttons square">
-          <a href="#" class="button">f</a>
-          <a href="#" class="button">t</a>
-          <a href="#" class="button">l</a>
-          <a href="#" class="button">e</a>
-          <a href="#" class="button">p</a>
+          <a href="#" class="button facebook"></a>
+          <a href="#" class="button twitter"></a>
+          <a href="#" class="button"></a>
+          <a href="#" class="button"></a>
+          <a href="#" class="button"></a>
         </div>
       </div>
       <div class="film">
         <div class="info-film">
-
+          <div class="wrapper">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <div class="poster">
+                  <img src="img/article/007.jpg" alt="" />
+                </div>
+                <div class="text-container">
+                  <span class="category">Un certain regard</span>
+                  <h3>Enragé</h3>
+                  <p class="director">Eric HANNEZO<p>
+                  <p>France - 2014</p>
+                  <p>1h35</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="programmation-film">
-
+          <div class="wrapper">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <span class="category">Programmation</span>
+                <ul>
+                  <li>
+                    <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
+                    <span class="location">Salle Debussy</span>
+                  </li>
+                  <li>
+                    <span class="type">Projection</span><span>15/07/2015</span><span>10h</span>
+                    <span class="location">Cinéma de la plage</span>
+                  </li>
+                  <li>
+                    <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
+                    <span class="location">Salle du Soixantième</span>
+                  </li>
+                  <li>
+                    <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
+                    <span class="location">Grand Théâtre Lumière</span>
+                  </li>
+                </ul>
+                <a href="#" class="button">Toute la programmation</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="container">

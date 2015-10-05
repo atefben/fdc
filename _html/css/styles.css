@@ -776,6 +776,7 @@ footer .footer-menu ul li a:hover {
   margin-bottom: 40px;
 }
 .slideshow .slideshow-img {
+  background-color: #000;
   height: 555px;
   overflow: hidden;
   position: relative;
@@ -879,6 +880,7 @@ footer .footer-menu ul li a:hover {
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .slideshow .slideshow-img .images .img img {
+  display: block;
   margin: 0 auto;
   max-width: 100%;
 }
@@ -2531,13 +2533,19 @@ article .image a {
   font-family: "CamphorMedium";
   text-align: center;
 }
-.single-article .info .category {
+.single-article .info .category, .single-article .info .update {
   color: #c8a461;
   display: inline-block;
   font-size: 0.625rem;
   letter-spacing: 0.1em;
   margin-right: 12px;
   text-transform: uppercase;
+}
+.single-article .info .update {
+  border-left: 1px solid #d0cfd0;
+  margin-left: 4px;
+  margin-right: 5px;
+  padding-left: 8px;
 }
 .single-article .info span {
   color: #666;
@@ -2617,6 +2625,18 @@ article .image a {
 .single-article .slideshow .thumbnails .thumb:after {
   border-color: #fff;
 }
+.single-article .quote {
+  width: 630px;
+  margin: 30px auto;
+}
+.single-article .quote blockquote {
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  color: #666;
+  font-size: 1.5rem;
+  padding: 40px 15px;
+  text-align: center;
+}
 .single-article .text {
   width: 630px;
   margin: 0 auto 70px auto;
@@ -2652,6 +2672,17 @@ article .image a {
   text-align: center;
   text-transform: uppercase;
 }
+.single-article .share a:hover {
+  background-color: #fff;
+}
+.single-article .share a.facebook {
+  background: url("../img/svg/facebook-gold.svg") no-repeat center;
+  background-size: 19px;
+}
+.single-article .share a.twitter {
+  background: url("../img/svg/twitter-gold.svg") no-repeat center;
+  background-size: 16px;
+}
 .single-article .film {
   height: 365px;
   overflow: hidden;
@@ -2659,14 +2690,119 @@ article .image a {
 .single-article .film .info-film {
   background-color: #2e2e2e;
   float: left;
+  color: #fff;
   height: 100%;
+  overflow: hidden;
   width: 50%;
+}
+.single-article .film .info-film .wrapper {
+  float: right;
+  height: 100%;
+  margin-right: 85px;
+  max-width: 470px;
+}
+.single-article .film .info-film .wrapper .category {
+  font-family: "CamphorBold";
+  font-size: 0.750rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.single-article .film .info-film .wrapper h3 {
+  font-family: "CamphorBold";
+  font-weight: normal;
+  font-size: 1.125rem;
+  margin: 20px 0 10px 0;
+  text-transform: uppercase;
+}
+.single-article .film .info-film .wrapper .poster {
+  display: inline-block;
+  margin-right: 65px;
+  vertical-align: middle;
+}
+.single-article .film .info-film .wrapper .text-container {
+  display: inline-block;
+  vertical-align: middle;
+}
+.single-article .film .info-film .wrapper p {
+  color: #bababa;
+  font-size: 0.813rem;
+  margin: 10px 0;
+}
+.single-article .film .info-film .wrapper p.director {
+  color: #c8a461;
+  font-family: "CamphorItalic";
+  font-size: 1rem;
+  margin-bottom: 35px;
+  position: relative;
+}
+.single-article .film .info-film .wrapper p.director:after {
+  background-color: #bababa;
+  bottom: -18px;
+  content: '';
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 27px;
 }
 .single-article .film .programmation-film {
   background-color: #141414;
   float: left;
   height: 100%;
+  overflow: hidden;
   width: 50%;
+}
+.single-article .film .programmation-film .wrapper {
+  color: #fff;
+  height: 100%;
+  float: left;
+  margin-left: 85px;
+  max-width: 470px;
+}
+.single-article .film .programmation-film .wrapper .category {
+  color: #c8a461;
+  font-family: "CamphorBold";
+  font-size: 0.750rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.single-article .film .programmation-film .wrapper ul {
+  padding: 38px 0 0 0;
+}
+.single-article .film .programmation-film .wrapper ul li {
+  display: inline-block;
+  font-size: 0.625rem;
+  width: 230px;
+}
+.single-article .film .programmation-film .wrapper ul li span {
+  margin-right: 8px;
+}
+.single-article .film .programmation-film .wrapper ul li span.type {
+  color: #787878;
+  text-transform: uppercase;
+}
+.single-article .film .programmation-film .wrapper ul li span.location {
+  display: block;
+  font-size: 0.875rem;
+  margin: 18px 0 40px 0;
+  position: relative;
+}
+.single-article .film .programmation-film .wrapper ul li span.location:after {
+  background-color: #525252;
+  bottom: -18px;
+  content: '';
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 27px;
+}
+.single-article .film .programmation-film .wrapper ul li:nth-child(3) span.location:after, .single-article .film .programmation-film .wrapper ul li:nth-child(4) span.location:after {
+  display: none;
+}
+.single-article .film .programmation-film .wrapper .button {
+  margin-left: 0px;
+  padding: 0 30px;
 }
 .single-article .nav {
   border: 1px solid #dfdfdf;

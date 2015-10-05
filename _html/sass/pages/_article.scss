@@ -171,7 +171,7 @@ article {
     font-family: $CamphorMedium;
     text-align: center;
 
-    .category {
+    .category, .update {
       color: $gold;
       display: inline-block;
       font-size: 0.625rem;
@@ -179,6 +179,14 @@ article {
       margin-right: 12px;
       text-transform: uppercase;
     }
+
+    .update {
+      border-left: 1px solid #d0cfd0;
+      margin-left: 4px;
+      margin-right: 5px;
+      padding-left: 8px;
+    }
+
 
     span {
       color: #666;
@@ -276,6 +284,20 @@ article {
     }
   }
 
+  .quote {
+    width: 630px;
+    margin: 30px auto;
+
+    blockquote {
+      border-bottom: 1px solid #e5e5e5;
+      border-top: 1px solid #e5e5e5;
+      color: #666;
+      font-size: 1.5rem;
+      padding: 40px 15px;
+      text-align: center;
+    }
+  }
+
   .text {
     width: 630px;
     margin: 0 auto 70px auto;
@@ -316,6 +338,20 @@ article {
       text-align: center;
       text-transform: uppercase;
     }
+
+    a:hover {
+      background-color: #fff;
+    }
+
+    a.facebook {
+      background: url('../img/svg/facebook-gold.svg') no-repeat center;
+      background-size: 19px;
+    }
+
+    a.twitter {
+      background: url('../img/svg/twitter-gold.svg') no-repeat center;
+      background-size: 16px;
+    }
   }
 
   .film {
@@ -325,17 +361,143 @@ article {
     .info-film {
       background-color: #2e2e2e;
       float: left;
+      color: #fff;
       height: 100%;
+      overflow: hidden;
       width: 50%;
+
+      .wrapper {
+        float: right;
+        height: 100%;
+        margin-right: 85px;
+        max-width: 470px;
+
+        .category {
+          font-family: $CamphorBold;
+          font-size: 0.750rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        h3 {
+          font-family: $CamphorBold;
+          font-weight: normal;
+          font-size: 1.125rem;
+          margin: 20px 0 10px 0;
+          text-transform: uppercase;
+        }
+
+        .poster {
+          display: inline-block;
+          margin-right: 65px;
+          vertical-align: middle;
+        }
+
+        .text-container {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        p {
+          color: #bababa;
+          font-size: 0.813rem;
+          margin: 10px 0;
+
+          &.director {
+            color: $gold;
+            font-family: $CamphorItalic;
+            font-size: 1rem;
+            margin-bottom: 35px;
+            position: relative;
+
+            &:after {
+              background-color: #bababa;
+              bottom: -18px;
+              content: '';
+              display: block;
+              height: 1px;
+              left: 0;
+              position: absolute;
+              width: 27px;
+            }
+          }
+        }
+      }
     }
 
     .programmation-film {
       background-color: #141414;
       float: left;
       height: 100%;
+      overflow: hidden;
       width: 50%;
-    }
 
+      .wrapper {
+        color: #fff;
+        height: 100%;
+        float: left;
+        margin-left: 85px;
+        max-width: 470px;
+
+        .category {
+          color: $gold;
+          font-family: $CamphorBold;
+          font-size: 0.750rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        ul {
+          padding: 38px 0 0 0;
+
+          li {
+            display: inline-block;
+            font-size: 0.625rem;
+            width: 230px;
+
+            span {
+              margin-right: 8px;
+
+              &.type {
+                color: #787878;
+                text-transform: uppercase;
+              }
+
+              &.location {
+                display: block;
+                font-size: 0.875rem;
+                margin: 18px 0 40px 0;
+                position: relative;
+
+                &:after {
+                  background-color: #525252;
+                  bottom: -18px;
+                  content: '';
+                  display: block;
+                  height: 1px;
+                  left: 0;
+                  position: absolute;
+                  width: 27px;
+                }
+              }
+            }
+
+            &:nth-child(3),
+            &:nth-child(4) {
+              span.location:after {
+                display: none;
+              }
+            }
+
+          }
+        }
+
+        .button {
+          margin-left: 0px;
+          padding: 0 30px;
+        }
+      }
+    }
     
   }
 
