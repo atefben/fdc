@@ -1274,6 +1274,26 @@ div.chocolat-wrapper .chocolat-close {
   width: auto;
 }
 
+.actu-article-audio {
+  margin-top: 50px !important;
+  height: 600px;
+  width: 980px !important;
+}
+.actu-article-audio .picto {
+  position: absolute;
+  bottom: 10px;
+}
+.actu-article-audio .info {
+  position: absolute;
+  margin-left: 56px;
+  bottom: 17px;
+}
+.actu-article-audio .wave-container {
+  margin: 0 0 0 309px;
+  position: absolute;
+  bottom: 10px;
+}
+
 .video-player {
   height: 400px;
   position: relative;

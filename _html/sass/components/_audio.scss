@@ -97,3 +97,25 @@
   }
 }
 
+// 2. Actualité Article audio 
+// =========================
+
+.actu-article-audio{
+    margin-top: 50px !important;
+    height: 600px;
+    width: 980px !important;
+    .picto{
+        position: absolute;
+        bottom: 10px;
+    }
+    .info{
+        position: absolute;
+        margin-left: 56px;
+        bottom: 17px;
+    }
+    .wave-container {
+        margin: 0 0 0 309px;
+        position: absolute;
+        bottom: 10px;
+    }
+}
