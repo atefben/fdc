@@ -3566,3 +3566,128 @@ article .image a {
   font-family: "CamphorItalic";
   font-size: 0.813rem;
 }
+
+.container-list {
+  width: 100%;
+  clear: both;
+}
+
+.categorie-items {
+  clear: both;
+}
+.categorie-items .titre-list-cat {
+  color: white;
+  padding: 2.5em;
+  border-bottom: rgba(128, 128, 128, 0.3) 1px solid;
+  border-top: rgba(128, 128, 128, 0.3) 1px solid;
+  font-size: 16px;
+}
+.categorie-items .titre-list-cat .titre-item {
+  text-align: center;
+  padding: 1em;
+  font-size: 14px;
+  width: 977px;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-family: 'CamphorItalic';
+}
+.categorie-items article {
+  height: auto;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  clear: both;
+  color: white;
+  width: 100%;
+  min-height: 405px;
+  background-size: cover;
+}
+.categorie-items article .fond_noir {
+  background-color: black;
+  width: 100%;
+  padding: 2em;
+  min-height: 405px;
+}
+.categorie-items article .fond_noir:hover {
+  background-color: rgba(0, 0, 0, 0.27);
+  width: 100%;
+  padding: 2em;
+  min-height: 405px;
+  transition: 1.5s;
+}
+.categorie-items article .contain_item {
+  width: 977px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.categorie-items article img {
+  float: left;
+  margin-right: 100px;
+}
+.categorie-items article .infos-item-list {
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 50px;
+}
+.categorie-items article .infos-item-list h3 {
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+.categorie-items article .infos-item-list em {
+  color: #c8a461;
+  font-style: italic;
+  display: block;
+  padding-bottom: 5px;
+  font-family: "PlayfairBold";
+}
+.categorie-items article .infos-item-list .date-item {
+  font-weight: 100;
+  padding-bottom: 5px;
+}
+.categorie-items article .infos-item-list .description-item {
+  padding-top: 2em;
+  line-height: 1.5;
+}
+
+.list-article {
+  background-color: black;
+}
+.list-article .clear {
+  clear: both;
+}
+.list-article .bandeau-list {
+  background-color: #141414;
+}
+.list-article .bandeau-list .bandeau-list-img {
+  height: 298px;
+}
+.list-article .bandeau-list .bandeau-list-img .titre-list-header {
+  color: white;
+  font-size: 28px;
+  padding-top: 121px;
+}
+.list-article .bandeau-list .bandeau-list-img .bandeau-lien {
+  color: #c8a461;
+  width: 209px;
+  margin: 0 auto;
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+.list-article .bandeau-list .sous-nav-list {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.list-article .bandeau-list .sous-nav-list a {
+  color: #686868;
+}
+.list-article .bandeau-list .sous-nav-list a.active {
+  color: #a98b54;
+}
+.list-article .bandeau-list .sous-nav-list li {
+  display: inline-block;
+  padding: 1em;
+  text-transform: uppercase;
+}
