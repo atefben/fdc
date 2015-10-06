@@ -15,6 +15,7 @@
 // 13. Player Audio
 // 14. Single Article
 // 15. Selection
+// 16. Single Movie
 // =========================
 
 
@@ -580,10 +581,12 @@ $(document).ready(function() {
       $(this).parents('.slideshow').find('.thumb').removeClass('active');
       $(this).parents('.slideshow').find('.images .img').removeClass('active');
 
-      var i = $(this).index();
+      var i = $(this).index(),
+          cap = $(this).find('.thumb').data('caption');
 
       $(this).find('.thumb').addClass('active');
-      $('.slideshow-img .images .img').eq(i).addClass('active');
+      $(this).parents('.slideshow').find('.caption').html(cap);
+      $(this).parents('.slideshow-img').find('.images .img').eq(i).addClass('active');
     });
 
     var slideshow = $('.slideshow .images').Chocolat({
@@ -728,6 +731,31 @@ $(document).ready(function() {
       }
     }
 
+    if($('.single-movie').length ) {
+      if(s > ($('.videos').offset().top - $('#nav-movie').height() - 100)) {
+        $('#nav-movie').addClass('sticky');
+      } else {
+        $('#nav-movie').removeClass('sticky');
+      }
+
+
+      var sections = $('*[data-section')
+        , nav = $('#nav-movie')
+        , nav_height = nav.outerHeight() + $('header').height();
+       
+        sections.each(function() {
+          var top = $(this).offset().top - nav_height,
+              bottom = top + $(this).outerHeight();
+       
+          if (s >= top && s <= bottom) {
+            nav.find('ul a').removeClass('active');
+
+            nav.find('a[href="#'+$(this).data('section')+'"]').addClass('active');
+          }
+        });
+
+    }
+
 
   });
 
@@ -739,6 +767,7 @@ $(document).ready(function() {
   if($('.audio-player').length) {
     $('.audio-player').each(function(i) {
       $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
+      var h = $(this).hasClass('bigger') ? 116 : 87;
       var wave = Object.create(WaveSurfer);
 
       wave.init({
@@ -746,7 +775,7 @@ $(document).ready(function() {
         waveColor: 'rgba(255, 255, 255, 0.5)',
         progressColor: '#c8a461',
         cursorWidth: 0,
-        height: 47
+        height: h
       });
 
       wave.load($(this).data('sound'));
@@ -866,6 +895,78 @@ $(document).ready(function() {
     }, 500);
   });
 
+  // 16. Single Movie
+  // =========================
 
+  if($('.single-movie').length) {
+    var sliderMovieVideos = $("#slider-movie-videos").owlCarousel({
+      nav: false,
+      dots: false,
+      smartSpeed: 500,
+      center: true,
+      loop: false,
+      margin: 50,
+      autoWidth: true,
+      onInitialized: function() {
+        var v = ($(window).width() - 977) / 2 + "px";
+        $('#slider-movie-videos .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+      }
+    });
+
+    sliderMovieVideos.owlCarousel();
+
+    $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
+      sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+    });
+
+    $('.gallery .thumbs a').on('click', function(e) {
+      e.preventDefault();
+      var i = $(this).index(),
+          cap = $(this).data('caption');
+
+      $('.gallery .img img').removeClass('active');
+      $('.gallery .img img').eq(i).addClass('active');
+
+      $('.gallery .thumbs a').removeClass('active');
+      $(this).addClass('active');
+
+      $('.gallery .caption').text(cap);
+    });
+
+    $('#nav-movie ul a').on('click', function (e) {
+      e.preventDefault();
+
+      $('#nav-movie ul a').removeClass('active');
+      $(this).addClass('active');
+
+      var $el = $(this)
+        , id = $el.attr('href').substr(1);
+     
+      $('html, body').animate({
+        scrollTop: $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height()
+      }, 500);
+    });
+
+    var sliderCompetition = $("#slider-competition").owlCarousel({
+      nav: false,
+      dots: false,
+      smartSpeed: 500,
+      center: true,
+      loop: false,
+      margin: 50,
+      autoWidth: true,
+      onInitialized: function() {
+        var v = ($(window).width() - 977) / 2 + "px";
+        $('#slider-competition .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+      }
+    });
+
+    sliderCompetition.owlCarousel();
+
+    $('body').on('click', '#slider-competition .owl-item', function(e) {
+      sliderCompetition.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+    });
+
+  }
 
 });

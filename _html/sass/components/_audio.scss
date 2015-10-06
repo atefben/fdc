@@ -11,8 +11,12 @@
   box-sizing: border-box;
   height: 87px;
   overflow: hidden;
-  padding: 20px;
+  padding: 0 20px;
   position: relative;
+
+  &.bigger {
+    height: 116px;
+  }
 
   .image {
     background-size: cover;
@@ -61,9 +65,9 @@
     vertical-align: middle;
     opacity: 1;
     position: relative;
-    height: 47px;
+    height: 100%;
     visibility: visible;
-    width: 280px;
+    width: calc(100% - 340px);
     @include transition(all 0.3s $smoothTransition);
 
     wave {
@@ -82,10 +86,28 @@
   }
 
   .info {
+    color: #666;
+    font-family: "CamphorMedium";
+    text-align: center;
     display: inline-block;
     position: relative;
     margin-left: 13px;
     vertical-align: middle;
+
+    .category {
+      color: $gold;
+      display: inline-block;
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+      margin-right: 12px;
+      text-transform: uppercase;
+    }
+
+    span {
+      color: #666;
+      display: inline-block;
+      font-size: 0.625rem;
+    }
 
     p {
       color: #fff;

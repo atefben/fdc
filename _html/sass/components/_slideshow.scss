@@ -51,7 +51,7 @@
       bottom: 10px;
       left: 10px;
       position: absolute;
-      width: 861px;
+      width: calc(100% - 10px);
       z-index: 4;
 
       .thumb {

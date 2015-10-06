@@ -31,7 +31,7 @@
         <h2 class="title-article">Enragés, polar hybride d'Eric Hannezo</h2>
         <div class="buttons">
           <a id="share-article" href="#" class="button">Partager</a>
-          <a href="#" class="button">Imprimer</a>
+          <a href="#" class="button print">Imprimer</a>
         </div>
         <div class="single-photo">
           <div class="photo-container">
@@ -98,8 +98,12 @@
           <div class="image" style="background-image: url(img/article/004.jpg);"></div>
           <div class="picto"></div>
           <div class="info">
-            <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <p>The Lobster</p>
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                <p>The Lobster</p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="text">
@@ -168,9 +172,9 @@
         <div class="buttons square">
           <a href="#" class="button facebook"></a>
           <a href="#" class="button twitter"></a>
-          <a href="#" class="button"></a>
-          <a href="#" class="button"></a>
-          <a href="#" class="button"></a>
+          <a href="#" class="button link"></a>
+          <a href="#" class="button email"></a>
+          <a href="#" class="button print"></a>
         </div>
       </div>
       <div class="film">

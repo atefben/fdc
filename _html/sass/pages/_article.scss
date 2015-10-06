@@ -124,6 +124,24 @@ article {
     width: 730px;
   }
 
+  .print {
+    background: url('../img/svg/print.svg') no-repeat 15% center;
+    background-size: 18px;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+
+  #share-article {
+    background: url('../img/svg/share.svg') no-repeat 13% 47%;
+    background-size: 18px;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+
   .focus {
     .title {
       margin: 50px 0;
@@ -352,6 +370,21 @@ article {
       background: url('../img/svg/twitter-gold.svg') no-repeat center;
       background-size: 16px;
     }
+
+    a.email {
+      background: url('../img/svg/mail.svg') no-repeat center;
+      background-size: 16px;
+    }
+
+    a.link {
+      background: url('../img/svg/link.svg') no-repeat center;
+      background-size: 16px;
+    }
+
+    a.print {
+      background: url('../img/svg/print.svg') no-repeat center;
+      background-size: 16px;
+    }
   }
 
   .film {
@@ -493,6 +526,7 @@ article {
         }
 
         .button {
+          border-color: $gold;
           margin-left: 0px;
           padding: 0 30px;
         }
