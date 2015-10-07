@@ -81,7 +81,7 @@ faite par Digimage Classics.</p>
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
-               <h2 class="title title-list-header">Cinema d'or</h2>
+               <h2 class="title title-list-header">Caméra d'or</h2>
                <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
 

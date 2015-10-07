@@ -25,7 +25,7 @@
     <div id="main" class="list-article">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Cinema d'or</h2>
+               <h2 class="title title-list-header">Caméra d'or</h2>
            </div>
       </div>
       <div class="container container-list">
@@ -42,7 +42,7 @@
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-cdo.jpg" alt="images films">
-                <div class="infos-item-list list-cinema-or">
+                <div class="infos-item-list list-camera-or">
                     <h3 class="title-item">Saul Fia</h3>
                     <h4 class="sub-title-item">(Le fils de paul)</h4>
                     <span class="nom-item">László NEMES </span>
@@ -58,7 +58,7 @@
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-cdo1.jpg" alt="images films">
-                <div class="infos-item-list list-cinema-or">
+                <div class="infos-item-list list-camera-or">
                     <h3 class="title-item">Masaan</h3>
                     <span class="nom-item">Neeraj GHAYWAN </span>
                     <span class="date-item">1h43</span>
@@ -70,7 +70,7 @@
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-cdo2.jpg" alt="images films">
-                <div class="infos-item-list list-cinema-or">
+                <div class="infos-item-list list-camera-or">
                     <h3 class="title-item">Je suis un soldat</h3>
                     <span class="nom-item">Laurent LARIVIÈRE</span>
                     <span class="date-item">1h36</span>
@@ -82,7 +82,7 @@
                 <div class="bck-hover">
                    <div class="contain_item">
                     <img src="img/films/cover-film-cdo3.jpg" alt="images films">
-                    <div class="infos-item-list list-cinema-or">
+                    <div class="infos-item-list list-camera-or">
                         <h3 class="title-item">Nahid</h3>
                         <span class="nom-item">Ida PANAHANDEH</span>
                         <span class="date-item">1h45</span>
