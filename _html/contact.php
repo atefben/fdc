@@ -33,13 +33,16 @@
         peuvent être prises en compte.</p>
         <div id="form">
           <form action="">
-            <input type="text" placeholder="Votre nom*" />
-            <input type="email" placeholder="Votre adresse email*" />
-            <input type="text" placeholder="Objet*" />
-            <textarea placeholder="Votre message*"></textarea>
+            <input type="text" name="name" placeholder="Votre nom*" data-error="Votre nom n'est pas renseigné" />
+            <input type="email" name="email" placeholder="Votre adresse email*"  data-error="L'adresse email n'est pas valide" />
+            <input type="text" name="object" placeholder="Objet*" data-error="L'objet de votre message n'est pas renseigné" />
+            <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné"></textarea>
             <span class="required">* Champs obligatoires</span>
             <input type="submit" value="Envoyer" />
           </form>
+          <div class="errors">
+            <ul></ul>
+          </div>
         </div>
       </div>
     </div>

@@ -117,6 +117,7 @@
             <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
             <p>The Lobster de Yoros Lanthinos</p>
           </div>
+          <a href="#" class="fullscreen"></a>
           <div class="wave-container"></div>
         </div>
         <div class="audio-player audio" data-sound="img/article/sound2.mp3">

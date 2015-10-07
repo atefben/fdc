@@ -46,6 +46,12 @@
     margin: 0 45px 0 0;
     position: relative;
     width: 293px;
+    @include transition(all 0.3s $smoothTransition);
+
+    &.trailer {
+      opacity: 0;
+      visibility: hidden;
+    }
 
     @include breakpoint(1600px) {
       margin-top: -20px;
@@ -67,6 +73,12 @@
     float: left;
     padding-top: 15px;
     width: 639px;
+    @include transition(all 0.3s $smoothTransition);
+
+    &.trailer {
+      opacity: 0;
+      visibility: hidden;
+    }
 
     @include breakpoint(1600px) {
       padding-top: 0;
@@ -148,6 +160,7 @@
     position: absolute;
     top: 0;
     width: 100%;
+    @include transition(all 0.5s $smoothTransition);
 
     @include breakpoint(1600px) {
       height: 510px;
@@ -159,6 +172,25 @@
 
     @include breakpoint(1024px) {
       height: 360px;
+    }
+
+    .trailer {
+      background-color: #000;
+      height: 100%;
+      opacity: 0;
+      left: 0;
+      position: absolute;
+      top: 0;
+      visibility: hidden;
+      width: 100%;
+      @include transition(all 0.5s $smoothTransition 1s);
+    }
+
+    &.trailer {
+      .trailer {
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     &:after {
@@ -228,6 +260,11 @@
       @include breakpoint(1024px) {
         top: 62px;
         margin-top: 0;
+      }
+
+      &.trailer {
+        opacity: 0;
+        visibility: hidden;
       }
 
       &.prev {

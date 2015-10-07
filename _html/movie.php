@@ -30,6 +30,7 @@
             <a class="programmation" href="#">Voir la programmation</a>
           </div>
         </div>
+        <div class="trailer"></div>
       </div>
       <div class="container container-top">
         <div class="poster video">

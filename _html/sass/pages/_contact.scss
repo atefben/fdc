@@ -105,6 +105,15 @@
       height: 50px;
       line-height: 50px;
 
+      &.invalid {
+        border-color: #e93939;
+        color: #e93939;
+      }
+
+      &.valid {
+        border-color: green;
+      }
+
       &[type="submit"] {
         border-color: $gold;
         color: $gold;
@@ -120,6 +129,32 @@
         &:hover {
           border-color: #000;
           color: #000;
+        }
+      }
+    }
+
+    .errors {
+      border: 1px solid #e93939;
+      color: #e93939;
+      clear: both;
+      font-size: 0.875rem;
+      opacity: 0;
+      padding: 20px;
+      visibility: hidden;
+
+      @include transition(all 0.3s $smoothTransition);
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      ul {
+        list-style-type: disc;
+        padding-left: 20px;
+
+        li {
+          margin-bottom: 5px;
         }
       }
     }
