@@ -3827,6 +3827,8 @@ article .image a {
 }
 .categorie-items .titre-document {
   color: #707070;
+  width: 958px;
+  margin: 0 auto;
 }
 .categorie-items .title-list-cat {
   color: #ffffff;
@@ -3849,6 +3851,14 @@ article .image a {
   margin: 10px auto;
   line-height: 1.5;
   font-family: 'CamphorItalic';
+}
+.categorie-items .sub-cat-title {
+  padding: 20px;
+  background-color: #656565;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 .categorie-items article {
   height: auto;
@@ -3884,6 +3894,9 @@ article .image a {
   max-width: 100%;
   margin: 0 auto;
 }
+.categorie-items article .contain_item .list-cinema-or .title-item {
+  padding-top: 85px;
+}
 .categorie-items article img {
   float: left;
   margin-right: 100px;
@@ -3895,21 +3908,22 @@ article .image a {
 }
 .categorie-items article .infos-item-list .title-item {
   text-transform: uppercase;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 .categorie-items article .infos-item-list .sub-title-item {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 .categorie-items article .infos-item-list .nom-item {
   color: #c8a461;
   font-style: italic;
   display: block;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   font-family: "PlayfairBold";
 }
 .categorie-items article .infos-item-list .date-item {
   font-weight: 100;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+  color: #656565;
 }
 .categorie-items article .infos-item-list .description-item {
   padding-top: 32px;
@@ -3918,6 +3932,18 @@ article .image a {
 .categorie-items article .infos-item-list .description-item strong {
   color: #c8a461;
   font-weight: 500;
+}
+.categorie-items article .infos-item-list .date-pres-item {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.categorie-items article .infos-item-list .heure-pres-item {
+  color: #656565;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .list-article {
@@ -3959,4 +3985,44 @@ article .image a {
   display: inline-block;
   padding: 16px;
   text-transform: uppercase;
+}
+
+.palmares-list .categorie-items article .contain-article {
+  vertical-align: text-top;
+}
+.palmares-list .categorie-items article .infos-item-list {
+  text-align: center;
+  padding-top: 50px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  padding-bottom: 82px;
+  padding-left: 100px;
+}
+.palmares-list .categorie-items article img {
+  float: none;
+  display: inline-block;
+}
+.palmares-list .categorie-items article .infos-item-list {
+  position: relative;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-img {
+  float: none;
+  margin-right: 0px;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 10px;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text:after {
+  content: "";
+  display: block;
+  height: 20px;
+  width: 2px;
+  padding: 0px;
+  position: relative;
+  left: 52px;
+  margin: 10px;
+  background-color: #434343;
 }

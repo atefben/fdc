@@ -1,0 +1,65 @@
+ //       SUMMARY TABLE     
+// =========================
+// 1. Global
+// 2. Bandeau
+// =========================
+
+
+// 1. Global
+// =========================
+
+.palmares-list{
+    .categorie-items {
+        article{
+            .contain-article{
+                vertical-align: text-top;
+            }
+            .infos-item-list{
+                    text-align: center;
+                    padding-top: 50px;
+                    display: inline-block;
+                    vertical-align: text-bottom;
+                    padding-bottom: 82px;
+                    padding-left: 100px;
+            }
+            img{
+                float: none;
+                display: inline-block;
+            }
+            .infos-item-list{
+                position: relative;
+                
+                .logo-palme-dor-container{
+                    .palme-dor-img{
+                        float: none;
+                        margin-right: 0px;
+                    }
+                    .palme-dor-text{
+                        display: block;
+                        text-transform: uppercase;
+                        letter-spacing: 3px;
+                        padding: 10px;
+                    }
+                    .palme-dor-text:after{
+                        content: "";
+                        display: block;
+                        height: 20px;
+                        width: 2px;
+                        padding: 0px;
+                        position: relative;
+                        left: 52px;
+                        margin: 10px;
+                        background-color: #434343;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+
+
+// 1. Bandeau
+// =========================

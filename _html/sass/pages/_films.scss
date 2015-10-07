@@ -17,6 +17,8 @@
     
     .titre-document{
         color:#707070;
+        width: 958px;
+        margin: 0 auto;
     }
     .title-list-cat{
         color: #ffffff;
@@ -40,6 +42,14 @@
             line-height : 1.5;
             font-family: 'CamphorItalic';
         }
+    }
+    .sub-cat-title{
+        padding: 20px;
+        background-color: #656565;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 3px;
     }
     article{
         height: auto;
@@ -69,6 +79,13 @@
             max-width: 100%;
             margin: 0 auto;
             
+            .list-cinema-or{
+                //Centrer les informations seulement pour la version Cinema Or
+                .title-item{
+                    padding-top: 85px;
+                }
+            }
+            
         }
         img{
             float: left;
@@ -81,21 +98,22 @@
             
             .title-item{
                 text-transform: uppercase;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
             }
             .sub-title-item{
-                padding-bottom: 5px;
+                padding-bottom: 10px;
             }
             .nom-item{
                 color:#c8a461;
                 font-style: italic;
                 display: block;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
                 font-family: "PlayfairBold";
             }
             .date-item{
                 font-weight: 100;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
+                color:#656565;
             }
             .description-item{
                 padding-top: 32px;
@@ -105,6 +123,18 @@
                     color:#c8a461;
                     font-weight: 500;
                 }
+            }
+            .date-pres-item{
+                text-transform: uppercase;
+                color: #fff;
+                letter-spacing: 3px;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+            .heure-pres-item{
+                color:#656565;
+                letter-spacing: 3px;
+                text-transform: uppercase;
             }
         }
     } 

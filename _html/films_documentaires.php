@@ -29,10 +29,10 @@
            </div>
            <ul class="sub-nav-list">
                <li><a href="#">Invité d'honneur</a></li>
-               <li><a href="#" class="active">Hommages</a></li>
+               <li><a href="#">Hommages</a></li>
                <li><a href="#">Copies restaurées </a></li>
                <li><a href="#">World cinema project</a></li>
-               <li><a href="#">Documentaires</a></li>
+               <li><a href="#" class="active">Documentaires</a></li>
            </ul> 
       </div>
       <div class="container container-list">
