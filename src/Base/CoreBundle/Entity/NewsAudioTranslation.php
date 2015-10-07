@@ -7,7 +7,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\NewsTranslation;
+use Base\CoreBundle\Util\Status;
 use Base\CoreBundle\Util\Time;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -20,7 +20,7 @@ class NewsAudioTranslation implements NewsTranslationInterface
 {
     use Time;
     use Translation;
-    use NewsTranslation;
+    use Status;
 
     /**
      * @var string

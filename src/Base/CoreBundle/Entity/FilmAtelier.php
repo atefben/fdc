@@ -167,7 +167,7 @@ class FilmAtelier
     /**
      * @var FilmCountry
      *
-     * @ORM\OneToMany(targetEntity="FilmAtelierCountry", mappedBy="film", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmAtelierCountry", mappedBy="film", cascade={"all"})
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
@@ -176,7 +176,7 @@ class FilmAtelier
     /**
      * @var FilmCountry
      *
-     * @ORM\OneToMany(targetEntity="FilmAtelierLanguage", mappedBy="film", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmAtelierLanguage", mappedBy="film", cascade={"all"})
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */

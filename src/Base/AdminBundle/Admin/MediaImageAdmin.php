@@ -87,7 +87,7 @@ class MediaImageAdmin extends Admin
                         //    'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
                         //    'model_manager' => $themeAdmin->getModelManager(),
                         //   'class' => $themeAdmin->getClass(),
-                           'class' => 'BaseCoreBundle:Theme',
+                           'class' => 'BaseCoreBundle:NewsTheme',
                           //  'allow_add' => true,  
                     ),
                     'alt' => array(

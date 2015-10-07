@@ -71,23 +71,23 @@ class UpdateCommand extends ContainerAwareCommand
         
         // managers
         $managers = array(
-            /*$this->getContainer()->get('Base.soif.country_manager'),
-            $this->getContainer()->get('Base.soif.festival_manager'),
-            $this->getContainer()->get('Base.soif.award_manager'),
-            $this->getContainer()->get('Base.soif.festival_poster_manager'),
-            $this->getContainer()->get('Base.soif.film_atelier_manager'),
-            $this->getContainer()->get('Base.soif.film_manager'),
-            $this->getContainer()->get('Base.soif.person_manager'),*/
-            $this->getContainer()->get('Base.soif.jury_manager'),
-          // $this->getContainer()->get('Base.soif.projection_manager')
+         //   $this->getContainer()->get('base.soif.country_manager'),
+         //   $this->getContainer()->get('base.soif.festival_manager'),
+           /* $this->getContainer()->get('base.soif.award_manager'),
+            $this->getContainer()->get('base.soif.festival_poster_manager'),*/
+            $this->getContainer()->get('base.soif.film_atelier_manager'),
+            /*$this->getContainer()->get('base.soif.film_manager'),
+            $this->getContainer()->get('base.soif.person_manager'),
+            $this->getContainer()->get('base.soif.jury_manager'),
+            $this->getContainer()->get('base.soif.projection_manager')*/
         );
         
         // check if manager exist when targetting a specific entity
         if ($entity) {
             try {
-                $managers = array($this->getContainer()->get("Base.soif.{$entity}_manager"));
+                $managers = array($this->getContainer()->get("base.soif.{$entity}_manager"));
             } catch (ServiceNotFoundException $e){
-                $output->writeln("The entity {$entity} and its related service Base.soif.{$entity}_manager are not found");
+                $output->writeln("The entity {$entity} and its related service base.soif.{$entity}_manager are not found");
                 exit;
            }
         }

@@ -57,7 +57,8 @@ class FilmJuryController extends FOSRestController
         // create query
         $em = $this->getDoctrine()->getManager();
         $dql = "SELECT fj FROM {$this->repository} fj WHERE fj.festival = :festival";
-        // if selection is defined, add it to the query
+        // if type is defined, add it to the query
+        $type = $paramFetcher->get('type_id');
         if ($type !== null) {
             $dql .= ' AND fj.type = :type';
         }
@@ -65,7 +66,7 @@ class FilmJuryController extends FOSRestController
         $query = $em
             ->createQuery($dql)
             ->setParameter('festival', $festival->getId());
-        // if selection is defined, add it to the query
+        // if type is defined, add it to the query
         if ($type !== null) {
             $query = $query->setParameter('type', $type);
         }

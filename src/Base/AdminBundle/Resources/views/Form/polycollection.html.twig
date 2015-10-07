@@ -13,33 +13,33 @@
     {% endif %}
 
     {{ block('form_widget') }}
-    <a class="btn btn-primary btn-add-Base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.text'|trans }}</a>
-    <a class="btn btn-primary btn-add-Base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.audio'|trans }}</a>
-    <a class="btn btn-primary btn-add-Base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.photo'|trans }}</a>
-    <a class="btn btn-primary btn-add-Base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.video'|trans }}</a>
+    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.text'|trans }}</a>
+    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.audio'|trans }}</a>
+    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.photo'|trans }}</a>
+    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.video'|trans }}</a>
 {% endspaceless %}
 {% endblock %}
 
 {% block news_widget_text_type_row %}
-    <div class="Base-widget">
+    <div class="base-widget">
         {{ form_row(form) }}
     </div>
 {% endblock %}
 
 {% block news_widget_audio_type_row %}
-    <div class="Base-widget">
+    <div class="base-widget">
         {{ form_row(form) }}
     </div>
 {% endblock %}
 
 {% block news_widget_image_type_row %}
-    <div class="Base-widget">
+    <div class="base-widget">
         {{ form_row(form) }}
     </div>
 {% endblock %}
 
 {% block news_widget_video_type_row %}
-    <div class="Base-widget">
+    <div class="base-widget">
         {{ form_row(form) }}
     </div>
 {% endblock %}

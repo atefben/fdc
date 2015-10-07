@@ -1,5 +1,5 @@
 services:
-    Base.validator.locale:
+    base.validator.locale:
         class: Base\CoreBundle\Validator\Constraints\LocaleValidator
         tags:
             - { name: validator.constraint_validator, alias: base_validator_locale }

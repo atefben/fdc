@@ -106,6 +106,12 @@ class AwardManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
+
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->warn($this->wsMethod . " {$id} not found");
+            return null;
+        }
+
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
         // set entity
@@ -151,8 +157,9 @@ class AwardManager extends CoreManager
         
         // save entities
         $this->updateMultiple($entities);
-        
-        
+
+        var_dump('save');
+        die();
         
         // end timer
         $this->end(__METHOD__);
@@ -225,7 +232,7 @@ class AwardManager extends CoreManager
                 if ($obj->Film !== null) {
                     $film = $this->em->getRepository('BaseCoreBundle:FilmFilm')->findOneById(array('id' => $obj->Film));
                     $film = ($film !== null) ? $film : $this->filmManager->getById($obj->Film);
-                    
+
                     if ($film !== null) {
                         $entityRelated->setFilm($film);
                     }

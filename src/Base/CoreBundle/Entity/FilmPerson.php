@@ -153,7 +153,7 @@ class FilmPerson
     private $awards;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="person")
+     * @ORM\OneToMany(targetEntity="FilmPersonMedia", mappedBy="person", cascade={"persist"})
      *
      * @Groups({"person_list", "person_show"})
      */
@@ -484,14 +484,15 @@ class FilmPerson
     /**
      * Add medias
      *
-     * @param \Base\CoreBundle\Entity\FilmMedia $medias
+     * @param \Base\CoreBundle\Entity\FilmPersonMedia $medias
      * @return FilmPerson
      */
-    public function addMedia(\Base\CoreBundle\Entity\FilmMedia $medias)
+    public function addMedia(\Base\CoreBundle\Entity\FilmPersonMedia $medias)
     {
         if ($this->medias->contains($medias)) {
             return;
         }
+        $medias->setPerson($this);
 
         $this->medias[] = $medias;
 
@@ -501,9 +502,9 @@ class FilmPerson
     /**
      * Remove medias
      *
-     * @param \Base\CoreBundle\Entity\FilmMedia $medias
+     * @param \Base\CoreBundle\Entity\FilmPersonMedia $medias
      */
-    public function removeMedia(\Base\CoreBundle\Entity\FilmMedia $medias)
+    public function removeMedia(\Base\CoreBundle\Entity\FilmPersonMedia $medias)
     {
         if (!$this->medias->contains($medias)) {
             return;

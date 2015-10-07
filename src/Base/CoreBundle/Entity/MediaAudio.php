@@ -7,8 +7,6 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Base\CoreBundle\Util\Time;
-
 /**
  * MediaAudio
  *

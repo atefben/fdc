@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("name")
  */
-class ThemeTranslation
+class NewsThemeTranslation
 {
     use Time;
     use Translation;

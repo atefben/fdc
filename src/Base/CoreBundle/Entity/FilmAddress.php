@@ -45,7 +45,14 @@ class FilmAddress
      * @ORM\Column(type="string", nullable=true)
      */
     private $email;
-    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position;
+
     /**
      * @var string
      *
@@ -226,6 +233,29 @@ class FilmAddress
     public function getStreet()
     {
         return $this->street;
+    }
+
+    /**
+     * Set position
+     *
+     * @param string $position
+     * @return FilmAddress
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 
     /**

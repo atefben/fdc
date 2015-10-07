@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-10-07T16:58:57Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="8d38addf57877482e7e10d08dfc9108d38092456" resname="form.label_akamai_id">
+        <source>form.label_akamai_id</source>
+        <target state="new">form.label_akamai_id</target>
+        <jms:reference-file line="66">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d3b5d837a121affbfebf9b63631a3f6a8684e51d" resname="form.label_web_tv_name">
+        <source>form.label_web_tv_name</source>
+        <target state="new">form.label_web_tv_name</target>
+        <jms:reference-file line="58">AdminBundle/Admin/WebTvAdmin.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

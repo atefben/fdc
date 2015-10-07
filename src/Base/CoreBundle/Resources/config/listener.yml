@@ -1,1 +1,5 @@
 services:
+  base.listener.media_video:
+        class: Base\CoreBundle\Listener\MediaVideoListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

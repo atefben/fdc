@@ -25,8 +25,8 @@ class FilmAtelierController extends FOSRestController
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get all films",
-     *   section="Films",
+     *   description = "Get all films ateliers",
+     *   section="Films Atelier",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *   },

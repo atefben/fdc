@@ -42,7 +42,7 @@ class GetPrizeCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('Base.soif.prize_manager');
+        $manager = $this->getContainer()->get('base.soif.prize_manager');
         $manager->getById($id);
     }
 

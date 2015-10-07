@@ -106,11 +106,6 @@ class FilmMedia
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="medias")
-     */
-    private $person;
-
-    /**
      * @ORM\ManyToOne(targetEntity="FilmJury", inversedBy="medias")
      */
     private $jury;

@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\MediaTranslation;
+use Base\CoreBundle\Util\Status;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -20,7 +20,7 @@ class MediaAudioTranslation implements MediaTranslationInterface
 {
     use Time;
     use Translation;
-    use MediaTranslation;
+    use Status;
 
     /**
      * @var string
@@ -48,7 +48,7 @@ class MediaAudioTranslation implements MediaTranslationInterface
      /**
       * @var Theme
       *
-      * @ORM\ManyToOne(targetEntity="Theme")
+      * @ORM\ManyToOne(targetEntity="NewsTheme")
       */
     private $theme;
 

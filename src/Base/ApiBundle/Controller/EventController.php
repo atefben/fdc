@@ -38,11 +38,18 @@ class EventController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
+     * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
      * @return View
      */
     public function getEventsAction(Paramfetcher $paramFetcher)
     {
+        // get festival
+        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
+        if ($festival === null) {
+            return $this->view(array(), 404);
+        }
+
         // create query
         $em = $this->getDoctrine()->getManager();
         $dql = "SELECT e FROM {$this->repository} e";

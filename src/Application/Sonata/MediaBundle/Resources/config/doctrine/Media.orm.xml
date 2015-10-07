@@ -23,6 +23,9 @@
         <one-to-many field="filmMedias" target-entity="Base\CoreBundle\Entity\FilmMedia" mapped-by="file">
         </one-to-many>
 
+        <one-to-many field="projectionMedias" target-entity="Base\CoreBundle\Entity\FilmProjectionMedia" mapped-by="file">
+        </one-to-many>
+
         <one-to-many field="newsWidgetAudios" target-entity="Base\CoreBundle\Entity\NewsWidgetAudio" mapped-by="file">
         </one-to-many>
 

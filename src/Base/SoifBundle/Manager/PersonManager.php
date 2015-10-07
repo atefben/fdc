@@ -7,6 +7,7 @@ use \Exception;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Base\CoreBundle\Entity\FilmPerson;
+use Base\CoreBundle\Entity\FilmPersonMedia;
 use Base\CoreBundle\Entity\FilmPersonTranslation;
 use Base\CoreBundle\Entity\FilmFilmPerson;
 use Base\CoreBundle\Entity\FilmFilmPersonFunction;
@@ -22,15 +23,23 @@ use Base\CoreBundle\Entity\FilmFunctionTranslation;
  */
 class PersonManager extends CoreManager
 {
-    
+    /**
+     * mediaManager
+     *
+     * @var mixed
+     * @access private
+     */
+    private $mediaManager;
+
     /**
      * __construct function.
      * 
      * @access public
      * @return void
      */
-    public function __construct()
+    public function __construct($mediaManager)
     {
+        $this->mediaManager = $mediaManager;
         $this->entityIdKey = 'Id';
         $this->repository = 'BaseCoreBundle:FilmPerson';
         $this->wsParameterKey = 'idPersonne';
@@ -204,7 +213,34 @@ class PersonManager extends CoreManager
         
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
-        
+
+        // set multimedias
+        if (property_exists($resultObject, 'PersonneElementsMultimedias') && property_exists($resultObject->PersonneElementsMultimedias, 'ElementMultimediaRefDto')) {
+            $collection = new ArrayCollection();
+            $resultObject->PersonneElementsMultimedias->ElementMultimediaRefDto = $this->mixedToArray($resultObject->PersonneElementsMultimedias->ElementMultimediaRefDto);
+            foreach ($resultObject->PersonneElementsMultimedias->ElementMultimediaRefDto as $filmPersonMedia) {
+                // find if filmMedia already exists
+                $entityRelated = $this->em->getRepository('BaseCoreBundle:FilmPersonMedia')->findOneBy(array(
+                    'person' => $entity,
+                    'media' => $filmPersonMedia->Id
+                ));
+                $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmPersonMedia();
+                $entityRelated->setFilename($filmPersonMedia->FileName);
+                $entityRelated->setType($filmPersonMedia->IdType);
+                $entityRelated->setPosition($filmPersonMedia->Ordre);
+
+                // get the related media
+                $filmMedia = $this->mediaManager->getById($filmPersonMedia->Id);
+                $entityRelated->setMedia($filmMedia);
+
+                // add media
+                $entity->addMedia($entityRelated);
+                $collection->add($entityRelated);
+            }
+            // remove old relations
+            $this->removeOldRelations($entity->getMedias(), $collection, $entity, 'removeMedia');
+        }
+
         // set films
         if (property_exists($resultObject, 'PersonneFilms') && property_exists($resultObject->PersonneFilms, 'PersonneFilmDto')) {
             $collection = new ArrayCollection();

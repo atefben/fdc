@@ -42,7 +42,7 @@ class GetFestivalCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('Base.soif.festival_manager');
+        $manager = $this->getContainer()->get('base.soif.festival_manager');
         $manager->getById($id);
     }
 

@@ -1,5 +1,5 @@
 services:
-    Base.api.core_manager:
+    base.api.core_manager:
         class: Base\ApiBundle\Manager\CoreManager
         calls:
             - ['setEntityManager', ['@doctrine.orm.entity_manager']]

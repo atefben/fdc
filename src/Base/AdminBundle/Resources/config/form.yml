@@ -1,15 +1,15 @@
 services:
-    Base.form.news_widget_type:
+    base.form.news_widget_type:
         class: Base\AdminBundle\Form\Type\NewsWidgetType
         tags:
             - { name: form.type, alias: 'news_widget_type'}
 
-    Base.form.news_widget_text_type:
+    base.form.news_widget_text_type:
         class: Base\AdminBundle\Form\Type\NewsWidgetTextType
         tags:
             - { name: form.type, alias: 'news_widget_text_type'}
     # need to add scope prototype to avoid 
-    Base.form.news_widget_audio_type:
+    base.form.news_widget_audio_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\NewsWidgetAudioType
         tags:
@@ -17,15 +17,15 @@ services:
         calls:
             - ['setSonataAdmin', ['@sonata.media.admin.gallery']]
 
-    Base.form.news_widget_image_type:
+    base.form.news_widget_image_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\NewsWidgetImageType
         tags:
             - { name: form.type, alias: 'news_widget_image_type'}
         calls:
-            - ['setNewsWidgetImageDummyAdmin', ['@Base.admin.news_widget_image_dummy']]
+            - ['setNewsWidgetImageDummyAdmin', ['@base.admin.news_widget_image_dummy']]
 
-    Base.form.news_widget_video_type:
+    base.form.news_widget_video_type:
             class: Base\AdminBundle\Form\Type\NewsWidgetVideoType
             tags:
                 - { name: form.type, alias: 'news_widget_video_type'}

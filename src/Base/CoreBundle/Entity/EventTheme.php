@@ -14,13 +14,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Theme
+ * EventTheme
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class Theme
+class EventTheme
 {
     use Time;
     use TranslationByLocale;
@@ -34,19 +34,19 @@ class Theme
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var ArrayCollection
      *
      */
     protected $translations;
-    
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
     }
-    
-    public function __toString() { 
+
+    public function __toString() {
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
@@ -60,7 +60,7 @@ class Theme
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {

@@ -135,6 +135,11 @@ class FilmProjection
     protected $translations;
 
     /**
+     * @ORM\ManyToMany(targetEntity="FilmFilm", mappedBy="projections")
+     */
+    private $films;
+
+    /**
      * Constructor
      */
     public function __construct()

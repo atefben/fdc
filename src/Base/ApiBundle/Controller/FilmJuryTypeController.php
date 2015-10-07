@@ -18,6 +18,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class FilmJuryTypeController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:FilmJuryType';
+
     /**
      * Return an array of jury types, can be filtered with page / offset parameters
      *
@@ -38,19 +39,14 @@ class FilmJuryTypeController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
-     * @Rest\QueryParam(name="type_id", description="The jury type")
      *
      * @return View
      */
     public function getJuryTypesAction(Paramfetcher $paramFetcher)
     {
-        // parameters
-        $type = $paramFetcher->get('type_id');
-
         // create query
         $em = $this->getDoctrine()->getManager();
         $dql = "SELECT fjp FROM {$this->repository} fjp";
-
         $query = $em->createQuery($dql);
 
         // get items

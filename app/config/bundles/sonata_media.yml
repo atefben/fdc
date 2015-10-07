@@ -40,6 +40,12 @@ sonata_media:
 
             formats:
 
+        media_video_image:
+            providers:
+                - sonata.media.provider.file
+
+            formats:
+
     cdn:
         server:
             path: /uploads/media

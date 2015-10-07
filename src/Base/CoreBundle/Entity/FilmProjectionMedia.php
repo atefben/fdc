@@ -26,7 +26,7 @@ class FilmProjectionMedia
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="medias", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="projectionMedias", cascade={"persist"})
      */
     private $file;
     

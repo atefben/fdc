@@ -133,6 +133,7 @@ class FilmManager extends CoreManager
             $this->logger->warn($this->wsMethod . " {$id} not found");
             return null;
         }
+
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
 
         // update entity
@@ -289,6 +290,7 @@ class FilmManager extends CoreManager
                 ));
                 $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmFilmMedia();
                 $entityRelated->setFilename($filmFilmMedia->FileName);
+                //@TODO GetTypeElementMultimedia
                 $entityRelated->setType($filmFilmMedia->IdType);
                 $entityRelated->setPosition($filmFilmMedia->Ordre);
                 
@@ -583,7 +585,7 @@ class FilmManager extends CoreManager
                 $entity->addPerson($persons[$object->Id]);
             }
         }
-        
+
         // set contacts
         if (property_exists($resultObject, 'FilmContacts') && property_exists($resultObject->FilmContacts, 'ContactDto')) {
             $objects = $resultObject->FilmContacts->ContactDto;
@@ -625,24 +627,29 @@ class FilmManager extends CoreManager
                     $filmAddress->setMobilePhone($address->TelPortable);
                     $filmAddress->setEmail($address->Email);
                     $filmAddress->setWebsite($address->SiteWeb);
+                    if (property_exists($filmAddress, 'Ordre')) {
+                        $filmAddress->setPosition($address->Ordre);
+                    }
                     $filmContact->setAddress($filmAddress);
                     
                     // set state translations
-                    $translations = $address->EtatsTraductions;
-                    if (count($translations) > 0) {
-                        foreach ($translations as $translation) {
-                            if (!isset($localesMapper[$translation->CodeLangue])) {
-                                $this->logger->warning(__METHOD__. " the locales mapper {$translation->CodeLangue} doesn't exist");
-                                continue;
-                            }
-                            
-                            $entityTranslation = $filmAddress->findTranslationByLocale($localesMapper[$role->CodeLangue]);
-                            $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmAddressTranslation();
-                            $entityTranslation->setState($translation->Nom);
-                            $entityTranslation->setLocale($localesMapper[$translation->CodeLangue]);
-                            
-                            if ($entityTranslation->getId() === null) {
-                                $filmAddress->addTranslation($entityTranslation);
+                    if (property_exists($address, 'EtatsTraductions') && property_exists($address->EtatsTraductions, 'EtatTraductionDto')) {
+                        $translations = $address->EtatsTraductions->EtatTraductionDto;
+                        if (count($translations) > 0) {
+                            foreach ($translations as $translation) {
+                                if (!isset($localesMapper[$translation->CodeLangue])) {
+                                    $this->logger->warning(__METHOD__ . " the locales mapper {$translation->CodeLangue} doesn't exist");
+                                    continue;
+                                }
+
+                                $entityTranslation = $filmAddress->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
+                                $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmAddressTranslation();
+                                $entityTranslation->setState($translation->Nom);
+                                $entityTranslation->setLocale($localesMapper[$translation->CodeLangue]);
+
+                                if ($entityTranslation->getId() === null) {
+                                    $filmAddress->addTranslation($entityTranslation);
+                                }
                             }
                         }
                     }

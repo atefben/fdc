@@ -212,6 +212,13 @@ class FilmFilm implements FilmFilmInterface
     private $countries;
 
     /**
+     * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({"trailer_list", "trailer_show"})
+     */
+    private $mediaVideos;
+
+    /**
      * @ORM\ManyToMany(targetEntity="FilmProjection", inversedBy="films", cascade={"persist"})
      *
      * @Groups({"film_list", "film_show"})
@@ -243,6 +250,12 @@ class FilmFilm implements FilmFilmInterface
         $this->schoolAddresses = new ArrayCollection();
         $this->languages = new ArrayCollection();
     }
+
+    public function __toString()
+    {
+        return $this->getTitleVO();
+    }
+
 
     /**
      * Set id
@@ -899,7 +912,8 @@ class FilmFilm implements FilmFilmInterface
         if ($this->awards->contains($awards)) {
             return;
         }
-        
+
+        $awards->setFilm($this);
         $this->awards[] = $awards;
 
         return $this;

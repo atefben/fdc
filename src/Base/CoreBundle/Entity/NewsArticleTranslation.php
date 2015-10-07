@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\NewsTranslation;
+use Base\CoreBundle\Util\Status;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -23,7 +23,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
 {
     use Time;
     use Translation;
-    use NewsTranslation;
+    use Status;
 
     /**
      * @var string
@@ -60,15 +60,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @Groups({"news_list", "news_show"})
      */
     private $publishEndedAt;
-    
-     /**
-      * @var Theme
-      *
-      * @ORM\ManyToOne(targetEntity="Theme")
-      *
-      * @Groups({"news_list", "news_show"})
-      */
-    private $theme;
 
     /**
      * @var Site

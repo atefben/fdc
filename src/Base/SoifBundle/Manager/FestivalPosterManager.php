@@ -91,6 +91,12 @@ class FestivalPosterManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
+
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->warn($this->wsMethod . " {$id} not found");
+            return null;
+        }
+
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
 
         // set entity

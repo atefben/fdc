@@ -42,7 +42,7 @@ class GetMediaCategoryCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('Base.soif.media_category_manager');
+        $manager = $this->getContainer()->get('base.soif.media_category_manager');
         $manager->getById($id);
     }
 

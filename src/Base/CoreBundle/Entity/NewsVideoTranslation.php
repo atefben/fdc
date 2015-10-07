@@ -63,7 +63,7 @@ class NewsVideoTranslation
      /**
       * @var Theme
       *
-      * @ORM\OneToOne(targetEntity="Theme")
+      * @ORM\OneToOne(targetEntity="NewsTheme")
       */
     protected $theme;
     
@@ -86,10 +86,10 @@ class NewsVideoTranslation
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\Theme $theme
+     * @param \Base\CoreBundle\Entity\NewsTheme $theme
      * @return Article
      */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
     {
         $this->theme = $theme;
 
@@ -99,7 +99,7 @@ class NewsVideoTranslation
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme
+     * @return \Base\CoreBundle\Entity\NewsTheme
      */
     public function getTheme()
     {

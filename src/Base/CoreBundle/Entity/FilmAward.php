@@ -8,6 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * FilmAward
  *
@@ -25,6 +28,8 @@ class FilmAward
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $id;
 
@@ -32,6 +37,8 @@ class FilmAward
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $position;
     
@@ -39,6 +46,8 @@ class FilmAward
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $filmMutual;
     
@@ -46,6 +55,8 @@ class FilmAward
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $personMutual;
 
@@ -53,6 +64,8 @@ class FilmAward
      * @var string
      *
      * @ORM\Column(type="boolean", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $exAequo;
 
@@ -60,6 +73,8 @@ class FilmAward
      * @var string
      *
      * @ORM\Column(type="boolean", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $unanimity;
 
@@ -67,6 +82,8 @@ class FilmAward
      * @var text
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $comment;
 
@@ -74,36 +91,39 @@ class FilmAward
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="awards")
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $festival;
+
+    /**
+     * @var FilmFilm
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="awards")
+     *
+     * @Groups({"award_list", "award_show"})
+     */
+    private $film;
+
 
     /**
      * @var FilmPrize
      *
      * @ORM\ManyToOne(targetEntity="FilmPrize", inversedBy="awards")
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $prize;
-
-   /**
-     * @var FilmPerson
-     *
-     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="awards")
-     */
-    private $person;
-
-   /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="awards")
-     */
-    private $film;
 
     /**
      * @var FilmAwardAssociation
      *
      * @ORM\oneToMany(targetEntity="FilmAwardAssociation", mappedBy="award", cascade={"persist"})
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $associations;
+
     /**
      * Constructor
      */
@@ -362,29 +382,6 @@ class FilmAward
     }
 
     /**
-     * Set person
-     *
-     * @param \Base\CoreBundle\Entity\FilmPerson $person
-     * @return FilmAward
-     */
-    public function setPerson(\Base\CoreBundle\Entity\FilmPerson $person = null)
-    {
-        $this->person = $person;
-
-        return $this;
-    }
-
-    /**
-     * Get person
-     *
-     * @return \Base\CoreBundle\Entity\FilmPerson
-     */
-    public function getPerson()
-    {
-        return $this->person;
-    }
-
-    /**
      * Set film
      *
      * @param \Base\CoreBundle\Entity\FilmFilm $film
@@ -400,7 +397,7 @@ class FilmAward
     /**
      * Get film
      *
-     * @return \Base\CoreBundle\Entity\FilmFilm
+     * @return \Base\CoreBundle\Entity\FilmFilm 
      */
     public function getFilm()
     {

@@ -64,12 +64,21 @@ class FilmFestival
      * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="festival")
      */
     private $films;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="festival")
+     */
+    private $events;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="festival")
      */
     private $medias;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="festival")
+     */
+    private $mediaVideos;
     
     /**
      * Constructor
@@ -79,6 +88,7 @@ class FilmFestival
         $this->awards = new ArrayCollection();
         $this->juries = new ArrayCollection();
         $this->medias = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     /**
@@ -289,5 +299,71 @@ class FilmFestival
     public function getFilms()
     {
         return $this->films;
+    }
+
+    /**
+     * Add events
+     *
+     * @param \Base\CoreBundle\Entity\Event $events
+     * @return FilmFestival
+     */
+    public function addEvent(\Base\CoreBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \Base\CoreBundle\Entity\Event $events
+     */
+    public function removeEvent(\Base\CoreBundle\Entity\Event $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * Add mediaVideos
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $mediaVideos
+     * @return FilmFestival
+     */
+    public function addMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
+    {
+        $this->mediaVideos[] = $mediaVideos;
+
+        return $this;
+    }
+
+    /**
+     * Remove mediaVideos
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $mediaVideos
+     */
+    public function removeMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
+    {
+        $this->mediaVideos->removeElement($mediaVideos);
+    }
+
+    /**
+     * Get mediaVideos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMediaVideos()
+    {
+        return $this->mediaVideos;
     }
 }

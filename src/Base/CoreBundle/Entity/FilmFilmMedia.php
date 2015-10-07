@@ -33,14 +33,14 @@ class FilmFilmMedia implements FilmFilmMediaInterface
     private $id;
     
     /**
-     * @var FilmJuryType
+     * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="medias", cascade={"persist"})
      */
     private $film;
     
     /**
-     * @var FilmJuryType
+     * @var FilmMedia
      *
      * @ORM\ManyToOne(targetEntity="FilmMedia", inversedBy="medias", cascade={"persist"})
      */

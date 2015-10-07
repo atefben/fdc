@@ -31,8 +31,10 @@ class Media extends SonataBaseMedia
 
     protected $soifId;
 
+    protected $projectionMedias;
+
     protected $filmMedias;
-    
+
     protected $sites;
     
     protected $newsWidgetAudios;

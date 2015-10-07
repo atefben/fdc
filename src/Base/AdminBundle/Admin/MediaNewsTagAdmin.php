@@ -8,14 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-/**
- * ThemeAdmin class.
- * 
- * \@extends Admin
- * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * \@company Ohwee
- */
-class ThemeAdmin extends Admin
+class MediaNewsTagAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -36,7 +29,8 @@ class ThemeAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('name')
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -53,17 +47,7 @@ class ThemeAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('translations', 'a2lix_translations', array(
-                'label' => false,
-                'fields' => array(
-                    'createdAt' => array(
-                        'display' => false
-                    ),
-                    'updatedAt' => array(
-                        'display' => false
-                    ),
-                )
-            ))
+            ->add('tag')
         ;
     }
 

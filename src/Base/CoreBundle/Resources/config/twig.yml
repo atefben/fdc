@@ -4,12 +4,12 @@ services:
         tags:
             - { name: twig.extension }
 
-    Base.twig.news_instance_of_extension:
+    base.twig.news_instance_of_extension:
         class: Base\CoreBundle\Twig\Extension\NewsInstanceOfExtension
         tags:
             - { name: twig.extension }
 
-    Base.twig.news_widget_instance_of_extension:
+    base.twig.news_widget_instance_of_extension:
         class: Base\CoreBundle\Twig\Extension\NewsWidgetInstanceOfExtension
         tags:
             - { name: twig.extension }

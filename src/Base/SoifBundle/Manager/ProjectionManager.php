@@ -5,6 +5,7 @@ namespace Base\SoifBundle\Manager;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Base\CoreBundle\Entity\FilmProjection;
+use Base\CoreBundle\Entity\ FilmProjectionTranslation;
 use Base\CoreBundle\Entity\FilmProjectionMedia;
 use Base\CoreBundle\Entity\FilmProjectionRoom;
 use Base\CoreBundle\Entity\FilmProjectionProgrammationDynamic;
@@ -95,10 +96,16 @@ class ProjectionManager extends CoreManager
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array($this->wsParameterKey => $id));
-        $resultObject = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
+
+        if (!isset($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey})) {
+            $this->logger->warn($this->wsMethod . " {$id} not found");
+            return null;
+        }
+
+        $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
         
         // set entity
-        $entity = $this->set($result, $resultObject);
+        $entity = $this->set($resultObject, $result);
         
         // update entity
         $this->update($entity);
@@ -185,6 +192,7 @@ class ProjectionManager extends CoreManager
      */
     private function set($resultObject, $result)
     {
+        $localesMapper = $this->getLocalesMapper();
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmProjection();
         $entity->setId($resultObject->{$this->entityIdKey});
@@ -235,7 +243,7 @@ class ProjectionManager extends CoreManager
         // set section programmation
         if (property_exists($resultObject, 'SectionProgrammation')) {
             $entity->setProgrammationSection($resultObject->SectionProgrammation->Libelle);
-            foreach ($resultObject->SectionProgrammation->Traductions as $translation) {
+            foreach ($resultObject->SectionProgrammation->Traductions->SectionProgrammationTraductionDto as $translation) {
                 $entityTranslation = $entity->findTranslationByLocale($translation->CodeLangue);
                 $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmProjectionTranslation();
                 $entityTranslation->setProgramSection($translation->Libelle);

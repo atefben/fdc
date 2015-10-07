@@ -44,7 +44,7 @@ class GetFestivalPosterCommand extends ContainerAwareCommand
 
         $id = $input->getArgument('id');
 
-        $manager = $this->getContainer()->get('Base.soif.festival_poster_manager');
+        $manager = $this->getContainer()->get('base.soif.festival_poster_manager');
         $manager->getById($id);
     }
 

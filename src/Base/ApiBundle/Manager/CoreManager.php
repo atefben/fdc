@@ -102,13 +102,7 @@ class CoreManager
     public function getFestivalSettings($festivalId)
     {
         if ($festivalId === null) {
-            $settings = $this->em->createQueryBuilder()
-                ->select('s')
-                ->from('BaseCoreBundle:Settings', 's')
-                ->orderBy('s.id', 'desc')
-                ->getQuery()
-                ->setMaxResults(1)
-                ->getSingleResult();
+            $settings = $this->em->getRepository('BaseCoreBundle:Settings')->getFestivalSettings();
             if ($settings === null) {
                 return null;
             }

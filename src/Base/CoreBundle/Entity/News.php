@@ -55,9 +55,9 @@ class News
     private $translate;
 
      /**
-      * @var Theme
+      * @var NewsTheme
       *
-      * @ORM\ManyToOne(targetEntity="Theme")
+      * @ORM\ManyToOne(targetEntity="NewsTheme")
       */
     private $theme;
     
@@ -265,10 +265,10 @@ class News
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\Theme $theme
+     * @param \Base\CoreBundle\Entity\NewsTheme $theme
      * @return News
      */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
     {
         $this->theme = $theme;
 

@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * FilmAwardAssociation
  *
@@ -23,6 +26,8 @@ class FilmAwardAssociation
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $id;
 
@@ -37,6 +42,8 @@ class FilmAwardAssociation
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="associations")
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $film;
 
@@ -44,6 +51,8 @@ class FilmAwardAssociation
      * @var FilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="associations")
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $person;
 
@@ -51,6 +60,8 @@ class FilmAwardAssociation
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $position;
 
