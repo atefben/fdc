@@ -4002,17 +4002,25 @@ article .image a {
 .categorie-items {
   clear: both;
 }
+.categorie-items .titre-document {
+  color: #707070;
+  width: 958px;
+  margin: 0 auto;
+}
 .categorie-items .title-list-cat {
   color: #ffffff;
   padding: 50px;
   border-bottom: #2c2c2c 1px solid;
   border-top: #2c2c2c 1px solid;
   font-size: 1rem;
+  text-align: center;
 }
 .categorie-items .title-list-cat .title {
   margin-bottom: 0px;
+  width: 549px;
+  margin: 0 auto;
 }
-.categorie-items .title-list-cat .titre-item {
+.categorie-items .title-list-cat .title-item {
   text-align: center;
   padding: 20px;
   font-size: 1rem;
@@ -4020,6 +4028,14 @@ article .image a {
   margin: 10px auto;
   line-height: 1.5;
   font-family: 'CamphorItalic';
+}
+.categorie-items .sub-cat-title {
+  padding: 20px;
+  background-color: #656565;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 .categorie-items article {
   height: auto;
@@ -4033,7 +4049,7 @@ article .image a {
   background-size: cover;
 }
 .categorie-items article .bck-hover {
-  background-color: #000000;
+  background-color: #141414;
   width: 100%;
   padding: 32px;
   min-height: 405px;
@@ -4048,12 +4064,15 @@ article .image a {
   box-sizing: border-box;
 }
 .categorie-items article .bck-hover:hover {
-  background-color: rgba(0, 0, 0, 0.27);
+  background-color: rgba(20, 20, 20, 0.08);
 }
 .categorie-items article .contain_item {
   width: 977px;
   max-width: 100%;
   margin: 0 auto;
+}
+.categorie-items article .contain_item .list-camera-or .title-item {
+  padding-top: 85px;
 }
 .categorie-items article img {
   float: left;
@@ -4064,20 +4083,24 @@ article .image a {
   vertical-align: middle;
   padding-top: 50px;
 }
-.categorie-items article .infos-item-list .titre-item {
+.categorie-items article .infos-item-list .title-item {
   text-transform: uppercase;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+}
+.categorie-items article .infos-item-list .sub-title-item {
+  padding-bottom: 10px;
 }
 .categorie-items article .infos-item-list .nom-item {
   color: #c8a461;
   font-style: italic;
   display: block;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   font-family: "PlayfairBold";
 }
 .categorie-items article .infos-item-list .date-item {
   font-weight: 100;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+  color: #656565;
 }
 .categorie-items article .infos-item-list .description-item {
   padding-top: 32px;
@@ -4087,18 +4110,30 @@ article .image a {
   color: #c8a461;
   font-weight: 500;
 }
+.categorie-items article .infos-item-list .date-pres-item {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.categorie-items article .infos-item-list .heure-pres-item {
+  color: #656565;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
 
 .list-article {
-  background-color: #000000;
+  background-color: #141414;
 }
 .list-article .bandeau-list {
-  background-color: #141414;
+  background-color: #202020;
 }
 .list-article .bandeau-list .bandeau-list-img {
   height: 298px;
   background-size: cover;
 }
-.list-article .bandeau-list .bandeau-list-img .titre-list-header {
+.list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
   font-size: 2rem;
   padding-top: 121px;
@@ -4333,4 +4368,44 @@ article .image a {
 .single-channel .owl-item.center .channel:after {
   opacity: 1;
   visibility: visible;
+}
+
+.palmares-list .categorie-items article .contain-article {
+  vertical-align: text-top;
+}
+.palmares-list .categorie-items article .infos-item-list {
+  text-align: center;
+  padding-top: 50px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  padding-bottom: 82px;
+  padding-left: 100px;
+}
+.palmares-list .categorie-items article img {
+  float: none;
+  display: inline-block;
+}
+.palmares-list .categorie-items article .infos-item-list {
+  position: relative;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-img {
+  float: none;
+  margin-right: 0px;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 10px;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text:after {
+  content: "";
+  display: block;
+  height: 20px;
+  width: 2px;
+  padding: 0px;
+  position: relative;
+  left: 52px;
+  margin: 10px;
+  background-color: #434343;
 }

@@ -15,16 +15,25 @@
 .categorie-items{ 
     clear: both;
     
+    .titre-document{
+        color:#707070;
+        width: 958px;
+        margin: 0 auto;
+    }
     .title-list-cat{
         color: #ffffff;
         padding: 50px;
         border-bottom: #2c2c2c 1px solid;
         border-top: #2c2c2c 1px solid;
         font-size: 1rem;
+        text-align: center;
+        
         .title{
             margin-bottom: 0px;
+            width: 549px;
+            margin: 0 auto;
         }
-        .titre-item{
+        .title-item{
             text-align: center;
             padding: 20px;
             font-size: 1rem;
@@ -33,6 +42,14 @@
             line-height : 1.5;
             font-family: 'CamphorItalic';
         }
+    }
+    .sub-cat-title{
+        padding: 20px;
+        background-color: #656565;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 3px;
     }
     article{
         height: auto;
@@ -46,7 +63,7 @@
         background-size: cover;
         
         .bck-hover{
-            background-color: #000000;
+            background-color: #141414;
             width: 100%;
             padding: 32px;
             min-height: 405px;
@@ -55,12 +72,19 @@
             box-sizing: border-box;
         }
         .bck-hover:hover{
-            background-color: rgba(0, 0, 0, 0.27);  
+            background-color: rgba(20, 20, 20, 0.08);  
         }
         .contain_item{
             width: 977px;
             max-width: 100%;
             margin: 0 auto;
+            
+            .list-camera-or{
+                //Centrer les informations seulement pour la version Camera Or
+                .title-item{
+                    padding-top: 85px;
+                }
+            }
             
         }
         img{
@@ -72,20 +96,24 @@
             vertical-align: middle;
             padding-top: 50px;
             
-            .titre-item{
+            .title-item{
                 text-transform: uppercase;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
+            }
+            .sub-title-item{
+                padding-bottom: 10px;
             }
             .nom-item{
                 color:#c8a461;
                 font-style: italic;
                 display: block;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
                 font-family: "PlayfairBold";
             }
             .date-item{
                 font-weight: 100;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
+                color:#656565;
             }
             .description-item{
                 padding-top: 32px;
@@ -96,6 +124,18 @@
                     font-weight: 500;
                 }
             }
+            .date-pres-item{
+                text-transform: uppercase;
+                color: #fff;
+                letter-spacing: 3px;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+            .heure-pres-item{
+                color:#656565;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+            }
         }
     } 
 }
@@ -103,16 +143,16 @@
 // 1. Bandeau
 // =========================
 .list-article{
-    background-color: #000000;
+    background-color: #141414;
     
     .bandeau-list{
-        background-color: #141414;
+        background-color: #202020;
         
         .bandeau-list-img{
             height: 298px;
             background-size: cover;
             
-            .titre-list-header{
+            .title-list-header{
                 color: #ffffff;
                 font-size: 2rem;
                 padding-top: 121px;
