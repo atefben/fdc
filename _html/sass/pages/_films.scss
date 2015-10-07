@@ -15,16 +15,23 @@
 .categorie-items{ 
     clear: both;
     
+    .titre-document{
+        color:#707070;
+    }
     .title-list-cat{
         color: #ffffff;
         padding: 50px;
         border-bottom: #2c2c2c 1px solid;
         border-top: #2c2c2c 1px solid;
         font-size: 1rem;
+        text-align: center;
+        
         .title{
             margin-bottom: 0px;
+            width: 549px;
+            margin: 0 auto;
         }
-        .titre-item{
+        .title-item{
             text-align: center;
             padding: 20px;
             font-size: 1rem;
@@ -46,7 +53,7 @@
         background-size: cover;
         
         .bck-hover{
-            background-color: #000000;
+            background-color: #141414;
             width: 100%;
             padding: 32px;
             min-height: 405px;
@@ -55,7 +62,7 @@
             box-sizing: border-box;
         }
         .bck-hover:hover{
-            background-color: rgba(0, 0, 0, 0.27);  
+            background-color: rgba(20, 20, 20, 0.08);  
         }
         .contain_item{
             width: 977px;
@@ -72,8 +79,11 @@
             vertical-align: middle;
             padding-top: 50px;
             
-            .titre-item{
+            .title-item{
                 text-transform: uppercase;
+                padding-bottom: 5px;
+            }
+            .sub-title-item{
                 padding-bottom: 5px;
             }
             .nom-item{
@@ -103,16 +113,16 @@
 // 1. Bandeau
 // =========================
 .list-article{
-    background-color: #000000;
+    background-color: #141414;
     
     .bandeau-list{
-        background-color: #141414;
+        background-color: #202020;
         
         .bandeau-list-img{
             height: 298px;
             background-size: cover;
             
-            .titre-list-header{
+            .title-list-header{
                 color: #ffffff;
                 font-size: 2rem;
                 padding-top: 121px;

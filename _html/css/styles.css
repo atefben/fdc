@@ -3825,17 +3825,23 @@ article .image a {
 .categorie-items {
   clear: both;
 }
+.categorie-items .titre-document {
+  color: #707070;
+}
 .categorie-items .title-list-cat {
   color: #ffffff;
   padding: 50px;
   border-bottom: #2c2c2c 1px solid;
   border-top: #2c2c2c 1px solid;
   font-size: 1rem;
+  text-align: center;
 }
 .categorie-items .title-list-cat .title {
   margin-bottom: 0px;
+  width: 549px;
+  margin: 0 auto;
 }
-.categorie-items .title-list-cat .titre-item {
+.categorie-items .title-list-cat .title-item {
   text-align: center;
   padding: 20px;
   font-size: 1rem;
@@ -3856,7 +3862,7 @@ article .image a {
   background-size: cover;
 }
 .categorie-items article .bck-hover {
-  background-color: #000000;
+  background-color: #141414;
   width: 100%;
   padding: 32px;
   min-height: 405px;
@@ -3871,7 +3877,7 @@ article .image a {
   box-sizing: border-box;
 }
 .categorie-items article .bck-hover:hover {
-  background-color: rgba(0, 0, 0, 0.27);
+  background-color: rgba(20, 20, 20, 0.08);
 }
 .categorie-items article .contain_item {
   width: 977px;
@@ -3887,8 +3893,11 @@ article .image a {
   vertical-align: middle;
   padding-top: 50px;
 }
-.categorie-items article .infos-item-list .titre-item {
+.categorie-items article .infos-item-list .title-item {
   text-transform: uppercase;
+  padding-bottom: 5px;
+}
+.categorie-items article .infos-item-list .sub-title-item {
   padding-bottom: 5px;
 }
 .categorie-items article .infos-item-list .nom-item {
@@ -3912,16 +3921,16 @@ article .image a {
 }
 
 .list-article {
-  background-color: #000000;
+  background-color: #141414;
 }
 .list-article .bandeau-list {
-  background-color: #141414;
+  background-color: #202020;
 }
 .list-article .bandeau-list .bandeau-list-img {
   height: 298px;
   background-size: cover;
 }
-.list-article .bandeau-list .bandeau-list-img .titre-list-header {
+.list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
   font-size: 2rem;
   padding-top: 121px;
