@@ -1,0 +1,89 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.video-player {
+  height: 400px;
+  position: relative;
+
+  .image {
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &:before {
+      background: rgba(0,0,0,0);
+      background: -moz-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+      background: -webkit-gradient(left top, left bottom, color-stop(56%, rgba(0,0,0,0)), color-stop(57%, rgba(0,0,0,0)), color-stop(100%, rgba(20,20,20,0.8)));
+      background: -webkit-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+      background: -o-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+      background: -ms-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+
+  .picto {
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+  }
+
+  .info {
+    color: #666;
+    height: 44px;
+    bottom: 20px;
+    left: 80px;
+    position: absolute;
+    z-index: 2;
+
+    .category {
+      color: #c8a461;
+      display: inline-block;
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+      margin-right: 12px;
+      text-transform: uppercase;
+    }
+
+    span {
+      color: #666;
+      display: inline-block;
+      font-size: 0.625rem;
+    }
+
+    p {
+      color: #fff;
+      font-family: $CamphorRegular;
+      font-size: 0.850rem;
+      text-align: left;
+      width: auto;
+    }
+  }
+}
+
+// 2. Article Actu Vidéo
+// =========================
+
+.single-article .actu_article_video{
+    margin-top: 50px !important;
+    width: 980px !important;
+    height: 610px;
+}

@@ -29,9 +29,18 @@
 @import "components/footer";
 @import "components/slideshow";
 @import "components/filters";
+@import "components/audio";
+@import "components/video";
+@import "components/selection";
 
 
 // 4. Pages
 // =========================
 @import "pages/home";
-
+@import "pages/article";
+@import "pages/movie";
+@import "pages/grids";
+@import "pages/contact";
+@import "pages/films";
+@import "pages/palmares";
+@import "pages/webtv";

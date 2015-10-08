@@ -28,7 +28,7 @@ header {
     #sticky-user {
       display: block;
       float: right;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       margin-top: 18px;
 
       .user-nav {
@@ -55,7 +55,7 @@ header {
 
         h1 {
           float: left;
-          font-size: 1.1em;
+          font-size: 1.1rem;
           margin: 12px 0 0 30px;
         }
 
@@ -108,7 +108,7 @@ header {
 
   #top-bar {
     border-bottom: 1px solid #404040;
-    font-size: 0.750em;
+    font-size: 0.750rem;
     height: 28px;
     line-height: 28px;
 
@@ -159,7 +159,7 @@ header {
 
       h1 {
         font-family: $CamphorBold;
-        font-size: 1.250em;
+        font-size: 1.250rem;
         font-weight: normal;
 
         a {
@@ -170,7 +170,7 @@ header {
 
       h2 {
         font-family: $CamphorMedium;
-        font-size: 0.875em;
+        font-size: 0.875rem;
         font-weight: normal;
         margin-top: 5px;
 
@@ -190,6 +190,28 @@ header {
     #partners {
       display: inline-block;
       vertical-align: middle;
+
+      img {
+        display: inline-block;
+        margin-right: 20px;
+        vertical-align: middle;
+
+        &.chopard {
+          margin-top: 10px;
+        }
+
+        &.oreal {
+          margin-top: 5px;
+        }
+
+        &.hp {
+
+        }
+
+        &.kering {
+          margin-top: -4px;
+        }
+      }
     }
 
     #search {
@@ -264,7 +286,7 @@ header {
           }
 
           li {
-            font-size: 0.750em;
+            font-size: 0.750rem;
             position: relative;
             z-index: 2;
           }
@@ -279,12 +301,12 @@ header {
       &.main {
         border-right: 1px solid #404040;
         font-family: $CamphorHeavy;
-        font-size: 0.875em;
+        font-size: 0.875rem;
       }
 
       &.user {
         font-family: $CamphorBold;
-        font-size: 0.750em;
+        font-size: 0.740rem;
 
         li a {
           color: $grey;

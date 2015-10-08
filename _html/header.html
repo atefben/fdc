@@ -37,10 +37,13 @@
         <h2><a href="/">11-12 Mai 2016</a></h2>
       </div>
       <div id="partners">
-
+        <img width="80" src="img/header/Logo_Chopard.svg" alt="Chopard" class="chopard" />
+        <img width="70" src="img/header/loreal.svg" alt="L'Oréal" class="oreal" />
+        <img width="25" src="img/header/hp.svg" alt="HP" class="hp" />
+        <img width="90" src="img/header/Kering-logo.svg" alt="Kering" class="kering" />
       </div>
       <div id="search">
-        <a href="#"></a>
+        <a href="#" class="search"></a>
       </div>
       <div id="sticky-user">
         <ul class="user-nav">
@@ -72,7 +75,7 @@
             </ul>
           </li>
           <li>
-            <a href="#">La Web TV</a>
+            <a href="webtv.php">La Web TV</a>
           </li>
           <li>
             <a href="#">Les Films</a>
@@ -100,5 +103,16 @@
         </ul>
       </nav>
     </div>
+  </div>
+  <div id="selection">
+    <h2 class="title">Ma sélection <strong>(<span></span>)</strong></h2>
+    <ul class="filters-selection">
+      <li><a href="#" data-selection='all' class="active">Tous</a></li>
+      <li><a href="#" data-selection='article'>Articles</a></li>
+      <li><a href="#" data-selection='video'>Vidéos</a></li>
+      <li><a href="#" data-selection='audio'>Audios</a></li>
+      <li><a href="#" data-selection='suggestion'>Suggestions</a></li>
+    </ul>
+    <div id="slider-selection" class="owl-carousel"></div>
   </div>
 </header>

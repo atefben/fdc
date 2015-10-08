@@ -8,6 +8,10 @@
 // 1. Global
 // =========================
 
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: $CamphorRegular;
   font-size: 16px;
@@ -48,6 +52,7 @@ body {
 }
 
 #main {
+  clear: both;
   position: relative;
 
   &:after {
@@ -71,22 +76,28 @@ body {
   }
 }
 
-.title {
-  font-family: $PlayfairBold;
-  font-size: 1.125em;
-  font-weight: normal;
-  letter-spacing: 0.4em;
-  margin-bottom: 15px;
-  text-align: center;
-  text-transform: uppercase;
+.shadow-bottom {
+  &:before {
+    background: rgba(0,0,0,0);
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 70%, rgba(20,20,20,0.8) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(56%, rgba(0,0,0,0)), color-stop(70%, rgba(0,0,0,0)), color-stop(100%, rgba(20,20,20,0.8)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 70%, rgba(20,20,20,0.8) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 70%, rgba(20,20,20,0.8) 100%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 70%, rgba(20,20,20,0.8) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 70%, rgba(20,20,20,0.8) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
 }
 
-.subtitle {
-  font-family: $PlayfairItalic;
-  font-size: 0.875em;
-  font-weight: normal;
-  text-align: center;
-}
+
 
 
 // 2. Navigation

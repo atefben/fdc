@@ -1,0 +1,260 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.audio-player {
+  box-sizing: border-box;
+  height: 87px;
+  overflow: hidden;
+  padding: 0 20px;
+  position: relative;
+
+  &.bigger {
+    height: 116px;
+  }
+
+  .image {
+    background-size: cover;
+    background-position: center;
+    left: -1%;
+    height: 102%;
+    position: absolute;
+    top: -1%;
+    width: 102%;
+    z-index: 0;
+    @include filter(blur(5px));
+  }
+
+  &:after {
+    background: url('../img/svg/loading.svg');
+    content: '';
+    display: block;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    right: 30%;
+    opacity: 0;
+    margin-top: -16px;
+    visibility: hidden;
+    width: 32px;
+    @include transition(all 0.3s $smoothTransition);
+  }
+
+  &.loading {
+    .wave-container {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .wave-container {
+    border-left: 1px solid rgba(255, 255, 255, .1);
+    border-right: 1px solid rgba(255, 255, 255, .1);
+    display: inline-block;
+    margin: 0 0 0 13px;
+    vertical-align: middle;
+    opacity: 1;
+    position: relative;
+    height: 100%;
+    visibility: visible;
+    width: calc(100% - 340px);
+    @include transition(all 0.3s $smoothTransition);
+
+    wave {
+      overflow: hidden!important;
+    }
+  }
+
+  .picto {
+    bottom: auto;
+    cursor: pointer;
+    left: auto;
+    display: inline-block;
+    position: relative;
+    pointer-events: initial;
+    vertical-align: middle;
+  }
+
+  .info {
+    color: #666;
+    font-family: "CamphorMedium";
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    margin-left: 13px;
+    vertical-align: middle;
+
+    .category {
+      color: $gold;
+      display: inline-block;
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+      margin-right: 12px;
+      text-transform: uppercase;
+    }
+
+    span {
+      color: #666;
+      display: inline-block;
+      font-size: 0.625rem;
+    }
+
+    p {
+      color: #fff;
+      font-family: $CamphorRegular;
+      font-size: 0.850rem;
+      text-align: left;
+      width: auto;
+    }
+  }
+
+  .fullscreen {
+    background: red;
+    bottom: 10px;
+    display: block;
+    height: 5px;
+    position: absolute;
+    right: 10px;
+    width: 5px;
+  }
+
+  @media only screen and (max-device-width: 1024px){
+    .fullscreen {
+      display: none;
+    }
+  }
+
+  &.full {
+    height: 100%;
+    margin-bottom: 0!important;
+    width: 100%!important;
+
+    .info, .picto {
+      display: none;
+    }
+
+    .top {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      height: 80px;
+      left: 0;
+      margin: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      .channels {
+        border-right: 1px solid rgba(255, 255, 255, 0.3);
+        display: block;
+        float: left;
+        height: 100%;
+        width: 80px;
+      }
+
+      .info {
+        display: block;
+        height: 100%;
+        float: left;
+
+        .category {
+          margin-left: 0;
+        }
+
+        p {
+          font-size: 1.125rem;
+        }
+      }
+
+      .buttons {
+        float: right;
+
+        .button {
+          border-color: rgba(255, 255, 255, 0.3);
+          border-top: none;
+          border-bottom: none;
+          height: 80px;
+          width: 80px;
+        }
+
+        a:hover {
+          background-color: #fff;
+        }
+
+        a.facebook {
+          background: url('../img/svg/facebook-gold.svg') no-repeat center;
+          background-size: 19px;
+        }
+
+        a.twitter {
+          background: url('../img/svg/twitter-gold.svg') no-repeat center;
+          background-size: 16px;
+        }
+
+        a.email {
+          background: url('../img/svg/mail.svg') no-repeat center;
+          background-size: 16px;
+        }
+
+        a.link {
+          background: url('../img/svg/link.svg') no-repeat center;
+          background-size: 16px;
+        }
+      }
+    }
+
+    .wave-container {
+
+    }
+
+    .bottom {
+      height: 80px;
+      left: 0;
+      margin: 0;
+      overflow: hidden;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+
+      .playpause {
+        background: green;
+        display: block;
+        float: left;
+        height: 100%;
+        width: 80px;
+      }
+    }
+  }
+}
+
+// 2. Actualité Article audio 
+// =========================
+
+.actu-article-audio{
+    margin-top: 50px !important;
+    height: 600px;
+    width: 980px !important;
+    .picto{
+        position: absolute;
+        bottom: 10px;
+    }
+    .info{
+        position: absolute;
+        margin-left: 56px;
+        bottom: 17px;
+    }
+    .wave-container {
+        margin: 0 0 0 309px;
+        position: absolute;
+        bottom: 10px;
+    }
+}

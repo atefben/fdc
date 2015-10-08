@@ -108,7 +108,7 @@
         color: $gold;
         display: block;
         font-family: $CamphorHeavy;
-        font-size: 0.750em;
+        font-size: 0.750rem;
         letter-spacing: 0.1em;
         margin-bottom: 20px;
         text-transform: uppercase;
@@ -117,7 +117,7 @@
       h2 {
         color: #fff;
         font-family: $PlayfairRegular;
-        font-size: 2.750em;
+        font-size: 2.750rem;
         font-weight: normal;
       }
     }
@@ -156,6 +156,20 @@
   overflow: hidden;
   padding: 80px 0;
 
+  #articles-wrapper {
+    overflow: hidden;
+    @include transition(opacity 0.3s $smoothTransition, max-height 1s $smoothTransition);
+
+    &.loading {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .slideshow .caption {
+    margin-top: 10px;
+  }
+
   .filters {
     padding-bottom: 70px;
   }
@@ -166,7 +180,7 @@
     display: block;
     height: 55px;
     font-family: $CamphorHeavy;
-    font-size: 0.625em;
+    font-size: 0.625rem;
     line-height: 55px;
     margin-top: 25px;
     text-align: center;
@@ -208,7 +222,7 @@
         border-top: 1px dotted #e5e5e5;
         color: #adadad;
         font-family: $CamphorBold;
-        font-size: 0.625em;
+        font-size: 0.625rem;
         display: block;
         padding: 10px 0;
         text-align: center;
@@ -255,130 +269,32 @@
         }
       }
     }
-
-    .articles {
-      overflow: hidden;
-
-      &.right {
-        .double {
-          float: right;
-        }
-      }
-
-      &.center {
-        article {
-          padding: 0;
-          width: 29%;
-
-          &:nth-child(2) {
-            margin: 0 6.5%;
-          }
-        }
-      }
-    }
-
-    article {
-      height: 305px;
-      box-sizing: border-box;
-      float: left;
-      padding-left: 45px;
-      width: 35%;
-
-      .info {
-        font-family: $CamphorMedium;
-        text-align: center;
-
-        a {
-          display: inline-block;
-          font-size: 0.625em;
-        }
-
-        .category {
-          color: $gold;
-          letter-spacing: 0.1em;
-          margin-right: 12px;
-          text-transform: uppercase;
-        }
-
-        span {
-          color: #666;
-          display: inline-block;
-          font-size: 0.625em;
-        }
-      }
-
-      h2 {
-        color: #333;
-        font-family: $PlayfairRegular;
-        font-size: 1.7em;
-        font-weight: normal;
-        line-height: 0.9em;
-        margin: 15px auto 0 auto;
-        text-align: center;
-
-        a {
-          color: #333;
-        }
-      }
-
-      &.double {
-
-        h2 {
-          font-size: 3.250em;
-          line-height: 1em;
-          margin-top: 20px;
-          max-width: 70%;
-        }
-
-        height: 575px;
-        padding-left: 0;
-        width: 65%;
-
-        .image {
-          height: 362px;
-          margin-bottom: 35px;
-        }
-      }
-
-      .image {
-        background-size: cover;
-        height: 165px;
-        margin-bottom: 20px;
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-
-        a {
-          display: block;
-          height: 100%;
-          left: 0;
-          position: absolute;
-          top: 0;
-          width: 100%;
-        }
-      }
-
-      &.article .picto {
-        background-image: url('../img/svg/article.svg');
-        background-size: 16px;
-      }
-
-      &.video .picto {
-        background-image: url('../img/svg/video.svg');
-        background-size: 22px;
-      }
-
-      &.audio .picto {
-        background-image: url('../img/svg/audio.svg');
-        background-size: 25px;
-      }
-
-      &.photo .picto {
-        background-image: url('../img/svg/photo.svg');
-        background-size: 22px;
-      }
-    }
   }
+}
+
+.article .picto {
+  background-image: url('../img/svg/article.svg');
+  background-size: 16px;
+}
+
+.video .picto {
+  background-image: url('../img/svg/video.svg');
+  background-size: 22px;
+}
+
+.audio .picto {
+  background-image: url('../img/svg/audio.svg');
+  background-size: 25px;
+}
+
+.photo .picto {
+  background-image: url('../img/svg/photo.svg');
+  background-size: 22px;
+}
+
+.playlist .picto {
+  background-image: url('../img/svg/playlist.svg');
+  background-size: 16px;
 }
 
 .picto {
@@ -403,15 +319,41 @@
     border-bottom: 1px solid #eaeaea;
     height: 200px;
     margin-bottom: 20px;
-    overflow: hidden;
+    position: relative;
+
+    ul {
+      left: 52px;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      li {
+        color: #f3f3f3;
+        display: inline-block;
+        font-family: $CamphorBold;
+        font-size: 0.688rem;
+        text-align: center;
+        width: 75px;
+
+        &.active {
+          color: #000;
+        }
+
+        span {
+          display: block;
+          font-family: $CamphorHeavy;
+          font-size: 14px;
+        }
+      }
+    }
 
     #hashtag {
       color: $gold;
       float: left;
       font-family: $CamphorBold;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       height: 100%;
-      width: 97px;
+      width: 86px;
 
       img {
         display: block;
@@ -421,7 +363,7 @@
     svg {
       display: block;
       float: left;
-      width: 880px;
+      width: 891px;
     }
   }
 
@@ -496,7 +438,7 @@
         .txt {
           background-color: #fff;
           font-family: $CamphorMedium;
-          font-size: 0.625em;
+          font-size: 0.625rem;
           height: 100%;
           width: 100%;
           @include transition(all 0.3s $smoothTransition);
@@ -537,7 +479,7 @@
 
         .side {
           p {
-            font-size: 1.6em;
+            font-size: 1rem;
             padding: 0 25px;
           }
 
@@ -568,7 +510,7 @@
     color: #333;
     float: left;
     font-family: $CamphorHeavy;
-    font-size: 0.875em;
+    font-size: 0.875rem;
     line-height: 20px;
     text-transform: uppercase;
   }
@@ -584,7 +526,7 @@
         color: #999;
         display: block;
         font-family: $CamphorRegular;
-        font-size: 0.875em;
+        font-size: 0.875rem;
         line-height: 16px;
         padding-right: 30px;
         @include transition(all 0.3s $smoothTransition);
@@ -653,30 +595,13 @@
     a {
       color: $gold;
       font-family: $CamphorHeavy;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       text-transform: uppercase;
     }
   }
 
   #slider-videos {
     padding-top: 60px;
-
-    .owl-item {
-      opacity: 0.3;
-      @include transition(opacity 0.3s $smoothTransition);
-
-      .linkVid {
-        display: none;
-      }
-
-      &.center {
-        opacity: 1;
-
-        .linkVid {
-          display: block;
-        }
-      }
-    }
 
     .vid {
       height: 400px;
@@ -708,14 +633,14 @@
         .titleLink {
           color: #fff;
           display: block;
-          font-size: 0.875em;
+          font-size: 0.875rem;
           margin-top: 3px;
         }
 
         span {
           color: #666;
           display: inline-block;
-          font-size: 0.625em;
+          font-size: 0.625rem;
         }
       }
 
@@ -729,6 +654,24 @@
 }
 
 .sliderDrag {
+  .owl-item {
+    opacity: 0.3;
+    @include transition(opacity 0.3s $smoothTransition);
+
+    .linkVid {
+      display: none;
+    }
+
+    &.center {
+      opacity: 1;
+
+      .linkVid {
+        display: block;
+      }
+    }
+  }
+
+
   .owl-nav {
     display: none;
   }
@@ -768,7 +711,7 @@
 
     .category {
       color: $gold;
-      font-size: 0.625em;
+      font-size: 0.625rem;
       letter-spacing: 0.1em;
       margin-right: 12px;
       text-transform: uppercase;
@@ -790,6 +733,14 @@
 
   #slider-channels {
     padding-top: 60px;
+
+    .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
+      opacity: 1;
+
+      .linkVid {
+        display: block;
+      }
+    }
 
     .channel {
       height: 185px;
@@ -820,7 +771,7 @@
         span {
           color: #fff;
           display: block;
-          font-size: 0.875em;
+          font-size: 0.875rem;
           margin-top: 3px;
         }
       }
@@ -866,7 +817,7 @@
     a {
       color: $gold;
       font-family: $CamphorHeavy;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       text-transform: uppercase;
       padding: 0 0 0 20px;
       @include transition(all 0.3s $smoothTransition);
@@ -903,7 +854,7 @@
       color: #fff;
       display: block;
       font-family: $CamphorHeavy;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       letter-spacing: 0.1em;
       margin-bottom: 20px;
       opacity: 0;
@@ -916,7 +867,7 @@
     h2 {
       color: #fff;
       font-family: $CamphorBold;
-      font-size: 3.750em;
+      font-size: 3.750rem;
       letter-spacing: 0.2em;
       margin-bottom: 20px;
       opacity: 0;
@@ -929,7 +880,7 @@
     .director {
       color: #fff;
       font-family: $CamphorRegular;
-      font-size: 0.750em;
+      font-size: 0.750rem;
       opacity: 0;
       @include transition(all 0.3s $smoothTransition);
       @include transform(translateY(30px));
@@ -1031,7 +982,7 @@
     h3 {
       color: #fff;
       font-family: $CamphorHeavy;
-      font-size: 0.875em;
+      font-size: 0.875rem;
       letter-spacing: 0.4em;
       line-height: 1.5em;
       position: relative;
@@ -1088,7 +1039,7 @@
   h2 {
     color: #fff;
     font-family: $CamphorHeavy;
-    font-size: 1.875em;
+    font-size: 1.875rem;
     font-weight: normal;
     letter-spacing: 0.2em;
     margin-bottom: 10px;
@@ -1098,7 +1049,7 @@
 
   h3 {
     color: #fff;
-    font-size: 1.125em;
+    font-size: 1.125rem;
     margin-bottom: 50px;
   }
 

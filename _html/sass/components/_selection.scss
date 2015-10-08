@@ -1,0 +1,135 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+#selection {
+  background-color: #fff;
+  left: 0;
+  max-height: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 185px;
+  width: 100%;
+  z-index: 15;
+
+  @include transition(all 0.5s $smoothTransition);
+
+  &.open {
+    max-height: 405px;
+    padding: 40px 0 30px 0;
+  }
+
+  h2 {
+    strong {
+      color: $gold;
+      font-weight: normal;
+    }
+  }
+
+  #slider-selection {
+
+    .owl-stage-outer {
+      overflow: initial;
+    }
+
+    .owl-item {
+      @include transition(margin-right 0.5s $smoothTransition);
+
+      &.fade {
+        margin-right: 0!important;
+        opacity: 0;
+        visibility: hidden;
+        width: 0!important;
+      }
+    }
+
+    .article {
+      height: 230px;
+      position: relative;
+      width: 212px;
+      @include transition(all 0.5s $smoothTransition);
+
+      &.deleted {
+        overflow: hidden;
+        width: 0;
+
+        .info, .delete {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      .delete {
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        content: '';
+        display: block;
+        height: 28px;
+        position: absolute;
+        right: -14px;
+        top: -14px;
+        width: 28px;
+      }
+
+      .category {
+        display: block;
+        margin: 0 auto;
+      }
+
+      article {
+        float: none;
+        height: 100%;
+        padding: 0;
+        width: 100%;
+
+        .image {
+          height: 133px;
+          margin-bottom: 15px;
+        }
+
+        .info h2 {
+          margin-top: 10px;
+
+          a {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .filters-selection {
+    margin-bottom: 50px;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      font-size: 0.625rem;
+      padding: 0 15px;
+
+      &:last-child {
+        border-left: 1px solid #ccc;
+      }
+
+      a {
+        color: #333;
+        font-family: $CamphorHeavy;
+        text-transform: uppercase;
+        @include transition(all 0.3s $smoothTransition);
+
+        &.active {
+          color: $gold;
+        }
+      }
+    }
+  }
+}
+
+.sticky #selection {
+  top: 50px;
+}

@@ -1,0 +1,132 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.grid {
+  padding-top: 60px;
+
+  h2.title {
+    color: #333;
+    font-family: $PlayfairBold;
+    font-size: 1.625rem;
+  }
+
+  .grid-sizer {
+    width: calc(100%/4);
+  }
+
+  .grid-wrapper {
+    margin-top: 60px;
+  }
+
+  .item {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    float: left;
+    position: relative;
+    width: calc(100%/4);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .info {
+      position: absolute;
+      bottom: 8px;
+      height: 44px;
+      left: 70px;
+      width: calc(100% - 70px);
+      z-index: 2;
+
+      .category {
+        color: $gold;
+        display: inline-block;
+        font-size: 0.625rem;
+        letter-spacing: 0.1em;
+        margin-right: 12px;
+        text-transform: uppercase;
+      }
+
+      span {
+        color: #9c9c9b;
+        display: inline-block;
+        font-size: 0.625rem;
+      }
+
+      p {
+        color: #fff;
+        font-family: $CamphorRegular;
+        font-size: 0.850rem;
+        text-align: left;
+        width: auto;
+      }
+    }
+  }
+
+  .item.w2 {
+    width: calc(200%/4);
+  }
+
+  .filter-actived .item.w2 {
+    width: calc(100%/6);
+  }
+}
+
+
+
+#gridPhotos {
+
+  @media screen and (min-width: 768px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/5);
+    }
+    .item {
+        width: calc(100%/5);
+    }
+    .item.w2 {
+        width: calc(200%/5);
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/6);
+    }
+    .item {
+        width: calc(100%/6);
+    }
+    .item.w2 {
+        width: calc(200%/6);
+    }
+  }
+}
+
+#gridAudios {
+  @media screen and (min-width: 1600px) {
+    /* 5 columns for larger screens */
+    .grid-sizer { width:calc(100%/5); }
+    .item { width:calc(100%/5); }
+    .item.w2 { width: calc(200%/5); }
+  }
+
+  @media screen and (min-width: 1920px) {
+    /* 5 columns for larger screens */
+    .grid-sizer { width: calc(100%/6); }
+    .item { width: calc(100%/6); }
+    .item.w2 { width: calc(200%/6); }
+  }
+}
+
+
+
+

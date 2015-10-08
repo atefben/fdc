@@ -29,7 +29,7 @@
               <span class="category">Rencontre</span>
               <h2>Xavier Dolan : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
             </div>
-            <a href="#" class="linkArticle"></a>
+            <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
             <img src="img/slider/slider02.jpg" alt="" />
@@ -37,7 +37,7 @@
               <span class="category">Rencontre</span>
               <h2>test</h2>
             </div>
-            <a href="#" class="linkArticle"></a>
+            <a href="article.php" class="linkArticle"></a>
           </div>
         </div>
       </div>
@@ -46,140 +46,144 @@
           <div class="content-news">
             <h2 class="title">L'actualité à la une</h2>
             <div class="filters">
-              <div id="filter-themes" class="filter">
+              <div id="theme" class="filter">
                 <span class="label">Thêmes :</span>
                 <span class="select">
-                  <span class="active">Tous</span>
-                  <span>Conférence de Presse</span>
-                  <span>Montée des marches</span>
+                  <span class="active" data-filter="all">Tous</span>
+                  <span data-filter="press">Conférence de Presse</span>
+                  <span data-filter="steps">Montée des marches</span>
                 </span>
               </div>
-              <div id="filter-formats" class="filter">
+              <div id="format" class="filter">
                 <span class="label">Formats :</span>
                 <span class="select">
-                  <span class="active">Tous</span>
-                  <span>Photo</span>
-                  <span>Vidéo</span>
-                  <span>Audio</span>
-                  <span>Article</span>
+                  <span class="active" data-filter="all">Tous</span>
+                  <span data-filter="photo">Photo</span>
+                  <span data-filter="video">Vidéo</span>
+                  <span data-filter="audio">Audio</span>
+                  <span data-filter="article">Article</span>
                 </span>
               </div>
             </div>
-            <div class="articles left">
-              <article class="article double">
-                <div class="image" style="background-image: url('img/articles/01.jpg')">
-                  <a href="#"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="#">Enragés, polar hybride d'Eric Hannezo</a></h2>
-                </div>
-              </article>
-              <article class="audio">
-                <div class="image" style="background-image: url('img/articles/02.jpg')">
-                  <a href="#"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="#">La Loi du Marché par Stéphane Brizé</a></h2>
-                </div>
-              </article>
-              <article class="video">
-                <div class="image" style="background-image: url('img/articles/03.jpg')">
-                  <a href="#"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="#">O PISEU (Office) de HONG Won-Chan</a></h2>
-                </div>
-              </article>
-            </div>
-
-            <div class="slideshow">
-              <div class="slideshow-img">
-                <div class="images">
-                  <div class="img active">
-                    <a class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
-                      <img src="img/slide001.jpg" alt="" />
-                    </a>
+            <div id="articles-wrapper">
+              <div class="articles left">
+                <article class="article double" data-format="article" data-theme="cinema">
+                  <div class="image" style="background-image: url('img/articles/01.jpg')">
+                    <a href="article.php"></a>
+                    <span class="picto"></span>
                   </div>
-                  <div class="img">
-                    <a class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                  <div class="info">
+                    <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
                   </div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                </div>
-                <div class="owl-carousel thumbnails">
-                  <div class="thumb active">
-                    <img src="img/thumb01.jpg" />
+                </article>
+                <article class="audio" data-format="audio" data-theme="press">
+                  <div class="image" style="background-image: url('img/articles/02.jpg')">
+                    <a href="article.php"></a>
+                    <span class="picto"></span>
                   </div>
-                  <div class="thumb">
-                    <img src="img/thumb01.jpg" />
+                  <div class="info">
+                    <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
                   </div>
-                  <div class="thumb">
-                    <img src="img/thumb01.jpg" />
+                </article>
+                <article class="video" data-format="video" data-theme="steps">
+                  <div class="image" style="background-image: url('img/articles/03.jpg')">
+                    <a href="article.php"></a>
+                    <span class="picto"></span>
                   </div>
-                  <div class="thumb">
-                    <img src="img/thumb01.jpg" />
+                  <div class="info">
+                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <h2><a href="article.php">O PISEU (Office) de HONG Won-Chan</a></h2>
                   </div>
-                  <div class="thumb">
-                    <img src="img/thumb01.jpg" />
-                  </div>
-                  <div class="thumb">
-                    <img src="img/thumb01.jpg" />
-                  </div>
-                  <div class="thumb">
-                    <img src="img/thumb01.jpg" />
-                  </div>
-                  <div class="thumb">
-                    <img src="img/thumb01.jpg" />
-                  </div>
-                  <div class="thumb">
-                    <img src="img/thumb01.jpg" />
-                  </div>
-                </div>
+                </article>
               </div>
-              <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
-            </div>
 
-            <div class="articles center">
-              <article class="article">
-                <div class="image" style="background-image: url('img/articles/03.jpg')">
-                  <a href="#"></a>
-                  <span class="picto"></span>
+              <div class="slideshow">
+                <div class="slideshow-img">
+                  <div class="images">
+                    <div class="img active">
+                      <a class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                        <img src="img/slide001.jpg" alt="" />
+                      </a>
+                    </div>
+                    <div class="img">
+                      <a class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                  </div>
+                  <div class="owl-carousel thumbnails">
+                    <div class="thumb active">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb" data-caption="test">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                  </div>
                 </div>
-                <div class="info">
-                  <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="#">Stéphane Brizé interroge la loi du marché</a></h2>
-                </div>
-              </article>
-              <article class="video">
-                <div class="image" style="background-image: url('img/articles/03.jpg')">
-                  <a href="#"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="#">Z de Costa-Gravas</a></h2>
-                </div>
-              </article>
-              <article class="photo">
-                <div class="image" style="background-image: url('img/articles/03.jpg')">
-                  <a href="#"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="#">Renaud, réalisateur indépendant canadien © Balint Porneczi / supported by [NEUS]</a></h2>
-                </div>
-              </article>
+                <h3>Portfolio du jour</h3>
+                <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
+              </div>
+
+              <div class="articles center">
+                <article class="article" data-format="article" data-theme="competition">
+                  <div class="image" style="background-image: url('img/articles/03.jpg')">
+                    <a href="article.php"></a>
+                    <span class="picto"></span>
+                  </div>
+                  <div class="info">
+                    <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                  </div>
+                </article>
+                <article class="video" data-format="video" data-theme="photocall">
+                  <div class="image" style="background-image: url('img/articles/03.jpg')">
+                    <a href="article.php"></a>
+                    <span class="picto"></span>
+                  </div>
+                  <div class="info">
+                    <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <h2><a href="article.php">Z de Costa-Gravas</a></h2>
+                  </div>
+                </article>
+                <article class="photo" data-format="photo" data-theme="photograph">
+                  <div class="image" style="background-image: url('img/articles/03.jpg')">
+                    <a href="article.php"></a>
+                    <span class="picto"></span>
+                  </div>
+                  <div class="info">
+                    <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi / supported by [NEUS]</a></h2>
+                  </div>
+                </article>
+              </div>
+
             </div>
 
             <a href="#" class="read-more">Afficher <strong>plus d'articles</strong></a>
@@ -205,12 +209,26 @@
       <div id="social-wall">
         <div class="container">
           <div id="graph">
+            <ul>
+              <li>sam<span>14</span></li>
+              <li>dim<span>15</span></li>
+              <li>lun<span>16</span></li>
+              <li>mar<span>17</span></li>
+              <li>mer<span>18</span></li>
+              <li>jeu<span>19</span></li>
+              <li>ven<span>20</span></li>
+              <li>sam<span>21</span></li>
+              <li>dim<span>22</span></li>
+              <li>lun<span>23</span></li>
+              <li>mar<span>24</span></li>
+              <li class="active">mer<span>25</span></li>
+            </ul>
             <div id="hashtag">
               <div class="vCenter">
                 <div class="vCenterKid"><img src="img/svg/palme.svg" width="70" />#Cannes2016</div>
               </div>
             </div>
-            <svg id="graphSVG" width="880" height="200"></svg>
+            <svg id="graphSVG" width="891" height="200"></svg>
           </div>
           <div id="wall">
             <div class="post big">
