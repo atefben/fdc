@@ -31,7 +31,7 @@
                <li><a href="palmares_competition.php">Compétition</a></li>
                <li><a href="palmares_uncertainregard.php" >Un certain regard</a></li>
                <li><a href="palmares_cinefondation.php">Cinéfondation</a></li>
-               <li><a href="palmares_camerador.php.php">Caméra d'or</a></li>
+               <li><a href="palmares_camerador.php">Caméra d'or</a></li>
                <li><a href="palmares_toutlepalmares.php" class="active">Tout le palmarès</a></li>
            </ul> 
       </div>

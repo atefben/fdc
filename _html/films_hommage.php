@@ -29,8 +29,8 @@
            </div>
            <ul class="sub-nav-list">
                <li><a href="#">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php" class="active">Copies restaurées </a></li>
+               <li><a href="films_hommage.php" class="active">Hommages</a></li>
+               <li><a href="films_copiesrestaurees.php">Copies restaurées </a></li>
                <li><a href="#">World cinema project</a></li>
                <li><a href="films_documentaires.php">Documentaires</a></li>
            </ul>  
