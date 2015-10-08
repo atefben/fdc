@@ -30,7 +30,7 @@
         <h2 class="title-article">The Lobster : Conférence de presse</h2>
         <div class="buttons">
           <a id="share-article" href="#" class="button">Partager</a>
-          <a href="#" class="button">Imprimer</a>
+          <a href="#" class="button print">Imprimer</a>
         </div>
 
         <div class="audio-player audio  actu-article-audio" data-sound="img/article/sound2.mp3">
@@ -46,11 +46,11 @@
       <div class="share">
         <p>Partagez l'article</p>
         <div class="buttons square">
-          <a href="#" class="button">f</a>
-          <a href="#" class="button">t</a>
-          <a href="#" class="button">l</a>
-          <a href="#" class="button">e</a>
-          <a href="#" class="button">p</a>
+          <a href="#" class="button facebook"></a>
+          <a href="#" class="button twitter"></a>
+          <a href="#" class="button link"></a>
+          <a href="#" class="button email"></a>
+          <a href="#" class="button print"></a>
         </div>
       </div>
       <div class="film">
