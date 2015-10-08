@@ -94,12 +94,52 @@
           <a href="#" class="button print"></a>
         </div>
       </div>
-      <div class="film">
+<div class="film">
         <div class="info-film">
-
+          <div class="wrapper">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <div class="poster">
+                  <img src="img/article/007.jpg" alt="">
+                </div>
+                <div class="text-container">
+                  <span class="category">Un certain regard</span>
+                  <h3>Enragé</h3>
+                  <p class="director">Eric HANNEZO</p><p>
+                  </p><p>France - 2014</p>
+                  <p>1h35</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="programmation-film">
-
+          <div class="wrapper">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <span class="category">Programmation</span>
+                <ul>
+                  <li>
+                    <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
+                    <span class="location">Salle Debussy</span>
+                  </li>
+                  <li>
+                    <span class="type">Projection</span><span>15/07/2015</span><span>10h</span>
+                    <span class="location">Cinéma de la plage</span>
+                  </li>
+                  <li>
+                    <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
+                    <span class="location">Salle du Soixantième</span>
+                  </li>
+                  <li>
+                    <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
+                    <span class="location">Grand Théâtre Lumière</span>
+                  </li>
+                </ul>
+                <a href="#" class="button">Toute la programmation</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="container">
