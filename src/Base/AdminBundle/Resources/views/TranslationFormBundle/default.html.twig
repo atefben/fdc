@@ -15,6 +15,14 @@
     {% include 'BaseAdminBundle:TranslationFormBundle:media_video.html.twig' %}
 {% endblock %}
 
+{% block base_admin_event_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:event.html.twig' %}
+{% endblock %}
+
+{% block base_admin_event_theme_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:theme.html.twig' with { 'admin_edit_theme_route' : 'admin_base_event_theme_edit'} %}
+{% endblock %}
+
 {% block base_admin_media_theme_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:theme.html.twig' %}
 {% endblock %}

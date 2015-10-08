@@ -52,9 +52,10 @@ class EventController extends FOSRestController
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT e FROM {$this->repository} e";
+        $dql = "SELECT e FROM {$this->repository} e WHERE e.festival = :festival";
 
-        $query = $em->createQuery($dql);
+        $query = $em->createQuery($dql)
+            ->setParameter('festival', $festival);
 
         // get items
         $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);

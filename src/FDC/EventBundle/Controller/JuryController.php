@@ -1,16 +1,18 @@
 <?php
 
-namespace FDC\CorporateBundle\Controller;
+namespace FDC\EventBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class DefaultController extends Controller
+/**
+ * @Route("/event")
+ */
+class JuryController extends Controller
 {
     /**
-     * @Route("/corporate")
-     * @Route("/")
+     * @Route("/juries")
      * @Template()
      */
     public function indexAction()

@@ -6,11 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class DefaultController extends Controller
+class ArchiveController extends Controller
 {
     /**
-     * @Route("/corporate")
-     * @Route("/")
+     * @Route("/archives")
      * @Template()
      */
     public function indexAction()

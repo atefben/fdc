@@ -261,12 +261,12 @@ file that was distributed with this source code.
                                             {% block side_bar_li %}
                                                 <li>
                                                     <a href="{{ path('base_admin_settings_index') }}">
-                                                        {{ 'settings'|trans({}, 'BaseAdminBundle') }}
+                                                        {{ 'dashboard.link.settings'|trans({}, 'BaseAdminBundle') }}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ path('jms_translation_index') }}">
-                                                        {{ 'translation_back_office'|trans({}, 'BaseAdminBundle') }}
+                                                        {{ 'dashboard.link.bo_translation'|trans({}, 'BaseAdminBundle') }}
                                                     </a>
                                                 </li>
                                             {% endblock side_bar_li %}

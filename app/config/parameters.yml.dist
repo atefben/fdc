@@ -36,6 +36,3 @@ parameters:
     #api
     api_version: '1.0'
     api_page_offset: 10
-    #websites
-    website_fdc_event_host: fdc_event.local
-    website_fdc_corporate_host: fdc_corporate.local 

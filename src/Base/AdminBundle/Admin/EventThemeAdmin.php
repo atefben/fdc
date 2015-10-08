@@ -47,9 +47,17 @@ class EventThemeAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('translations', 'a2lix_translations', array(
+                'label' => false,
+                'fields' => array(
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
+                )
+            ))
         ;
     }
 
