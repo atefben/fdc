@@ -103,6 +103,36 @@ header {
           background-size: 20px;
         }
       }
+
+      .sub-languages {
+        height: 0;
+        margin-left: 10px;
+        opacity: 0;
+        position: absolute;
+        top: 23px;
+        visibility: hidden;
+        @include transition(all 0.5s $smoothTransition);
+
+        li {
+          display: block;
+
+          a {
+            height: 23px;
+            opacity: 0.5;
+            @include transition(all 0.3s $smoothTransition);
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      &.lang:hover .sub-languages {
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 
@@ -216,10 +246,11 @@ header {
 
     #search {
       border: 1px solid #404040;
-      display: inline-block;
+      display: block;
+      float: right;
       height: 63px;
       position: relative;
-      vertical-align: middle;
+      margin-top: 47px;
       width: 63px;
 
       a {
@@ -279,9 +310,9 @@ header {
             content: '';
             display: block;
             height: 100%;
-            left: -100%;
+            left: -150%;
             position: absolute;
-            width: 300%;
+            width: 350%;
             z-index: 0;
           }
 
@@ -328,8 +359,20 @@ header {
           }
 
           &:hover {
-            color: #fff;
+            color: $gold;
           }
+        }
+
+        li ul li a {
+          color: #fff;
+          font-size: 0.750rem;
+          font-family: $CamphorHeavy;
+        }
+
+        .participate-wrapper ul {
+          left: auto;
+          margin-left: -760px;
+          text-align: right;
         }
       }
     }

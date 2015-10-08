@@ -63,7 +63,7 @@ $(document).ready(function() {
   // =========================
 
   // overlay on main menu : show submenu and overlay
-  $('.main>li').hover(function() {
+  $('.main>li, .user>li').hover(function() {
     $('#main').addClass('overlay');
     $('.main>li').not($(this)).addClass('fade');
   }, function() {
@@ -470,16 +470,6 @@ $(document).ready(function() {
     // 5. Slider Videos
     // =========================
 
-    function updatePosition() {
-      
-      setTimeout(function() {
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slider-videos .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-        $('#slider-channels .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-      }, 500);
-
-    }
-
     var sliderVideos = $("#slider-videos").owlCarousel({
       nav: false,
       dots: false,
@@ -489,7 +479,10 @@ $(document).ready(function() {
       autoWidth: true,
       loop: false,
       items: 1,
-      onInitialized: updatePosition()
+      onInitialized: function() {
+        var v = ($(window).width() - 977) / 2 + "px";
+        $('#slider-videos .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+      }
     });
 
     sliderVideos.owlCarousel();
@@ -509,7 +502,10 @@ $(document).ready(function() {
       loop: false,
       margin: 50,
       autoWidth: true,
-      onInitialized: updatePosition()
+      onInitialized: function() {
+        var v = ($(window).width() - 977) / 2 + "px";
+        $('#slider-channels .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+      }
     });
 
     sliderChannels.owlCarousel();
@@ -892,11 +888,12 @@ $(document).ready(function() {
 
   var sliderSelection = '';
 
-  function openSelection() {
+  function openSelection(callback) {
     $('#main').addClass('overlay');
 
     if(sliderSelection != '') sliderSelection.trigger('destroy.owl.carousel');
     $('#slider-selection').empty();
+    $('header .selection').addClass('opened');
 
     $.ajax({
       type: "GET",
@@ -922,15 +919,35 @@ $(document).ready(function() {
         });
 
         sliderSelection.owlCarousel();
+        callback();
       }
     });
     
   }
 
+  function closeSelection() {
+    $('#main').removeClass('overlay');
+    $('#selection').removeClass('open');
+    $('header .selection').removeClass('opened');
+  }
+
+  $('body').on('click', '#main.overlay', function(e) {
+    e.preventDefault();
+
+    closeSelection();
+  });
+
   $('header .selection').on('click', function(e) {
     e.preventDefault();
 
-    openSelection();
+    if($(this).hasClass('opened')) {
+      closeSelection();
+    } else {
+      openSelection(function() {
+
+      });
+    }
+    
   });
 
   // filters
@@ -970,10 +987,43 @@ $(document).ready(function() {
 
     $(this).parent().addClass('deleted');
     $(this).parent().parent().css('margin-right', 0);
+    var i = $(this).parent().parent().index();
 
     setTimeout(function() {
-      $that.parent().remove();
+      sliderSelection.trigger('del.owl.carousel', i);
+      sliderSelection.trigger('refresh.owl.carousel');
+      var v = ($(window).width() - 977) / 2 + "px";
+      $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
     }, 500);
+  });
+
+  // add an article 
+  $('body').on('click', '.read-later', function(e) {
+    e.preventDefault();
+    var $article = $(this).parents('article').clone().removeClass('double').wrapAll("<div class='article'></div>").parent().wrapAll('<div></div>').parent();
+        $article.find('.read-later').remove();
+        $article.find('div.article').append('<a href="#" class="delete"></a>');
+        $article = $article.html();
+
+    openSelection(function() {
+      $("#main").addClass('overlay');
+      $('header .selection').addClass('opened');
+      
+      setTimeout(function() {
+        sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item">' + $article + '</div>'), 0]);
+        sliderSelection.trigger('refresh.owl.carousel');
+        var v = ($(window).width() - 977) / 2 + "px";
+        $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+      }, 700);
+    });
+     
+  });
+
+  $('body').on('mouseover', '.read-later', function() {
+    $(this).find('span').css({
+      top: $(this).offset().top - $(window).scrollTop() - 59,
+      left: $(this).offset().left - 80
+    });
   });
 
   // 16. Single Movie

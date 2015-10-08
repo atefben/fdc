@@ -42,34 +42,35 @@
         </div>
       </div>
       <div id="news">
+        <h2 class="title">L'actualité à la une</h2>
+        <div class="filters">
+          <div id="theme" class="filter">
+            <span class="label">Thêmes :</span>
+            <span class="select">
+              <span class="active" data-filter="all">Tous</span>
+              <span data-filter="press">Conférence de Presse</span>
+              <span data-filter="steps">Montée des marches</span>
+            </span>
+          </div>
+          <div id="format" class="filter">
+            <span class="label">Formats :</span>
+            <span class="select">
+              <span class="active" data-filter="all">Tous</span>
+              <span data-filter="photo">Photo</span>
+              <span data-filter="video">Vidéo</span>
+              <span data-filter="audio">Audio</span>
+              <span data-filter="article">Article</span>
+            </span>
+          </div>
+        </div>
         <div class="container">
           <div class="content-news">
-            <h2 class="title">L'actualité à la une</h2>
-            <div class="filters">
-              <div id="theme" class="filter">
-                <span class="label">Thêmes :</span>
-                <span class="select">
-                  <span class="active" data-filter="all">Tous</span>
-                  <span data-filter="press">Conférence de Presse</span>
-                  <span data-filter="steps">Montée des marches</span>
-                </span>
-              </div>
-              <div id="format" class="filter">
-                <span class="label">Formats :</span>
-                <span class="select">
-                  <span class="active" data-filter="all">Tous</span>
-                  <span data-filter="photo">Photo</span>
-                  <span data-filter="video">Vidéo</span>
-                  <span data-filter="audio">Audio</span>
-                  <span data-filter="article">Article</span>
-                </span>
-              </div>
-            </div>
             <div id="articles-wrapper">
               <div class="articles left">
                 <article class="article double" data-format="article" data-theme="cinema">
                   <div class="image" style="background-image: url('img/articles/01.jpg')">
-                    <a href="article.php"></a>
+                    <a href="article.php" class="linkImage"></a>
+                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
                   </div>
                   <div class="info">
@@ -79,7 +80,8 @@
                 </article>
                 <article class="audio" data-format="audio" data-theme="press">
                   <div class="image" style="background-image: url('img/articles/02.jpg')">
-                    <a href="article.php"></a>
+                    <a href="article.php" class="linkImage"></a>
+                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
                   </div>
                   <div class="info">
@@ -89,7 +91,8 @@
                 </article>
                 <article class="video" data-format="video" data-theme="steps">
                   <div class="image" style="background-image: url('img/articles/03.jpg')">
-                    <a href="article.php"></a>
+                    <a href="article.php" class="linkImage"></a>
+                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
                   </div>
                   <div class="info">
@@ -154,7 +157,8 @@
               <div class="articles center">
                 <article class="article" data-format="article" data-theme="competition">
                   <div class="image" style="background-image: url('img/articles/03.jpg')">
-                    <a href="article.php"></a>
+                    <a href="article.php" class="linkImage"></a>
+                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
                   </div>
                   <div class="info">
@@ -164,7 +168,8 @@
                 </article>
                 <article class="video" data-format="video" data-theme="photocall">
                   <div class="image" style="background-image: url('img/articles/03.jpg')">
-                    <a href="article.php"></a>
+                    <a href="article.php" class="linkImage"></a>
+                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
                   </div>
                   <div class="info">
@@ -174,7 +179,8 @@
                 </article>
                 <article class="photo" data-format="photo" data-theme="photograph">
                   <div class="image" style="background-image: url('img/articles/03.jpg')">
-                    <a href="article.php"></a>
+                    <a href="article.php" class="linkImage"></a>
+                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
                   </div>
                   <div class="info">
