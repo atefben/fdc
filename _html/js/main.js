@@ -888,11 +888,12 @@ $(document).ready(function() {
 
   var sliderSelection = '';
 
-  function openSelection() {
+  function openSelection(callback) {
     $('#main').addClass('overlay');
-
+    console.log('coucou');
     if(sliderSelection != '') sliderSelection.trigger('destroy.owl.carousel');
     $('#slider-selection').empty();
+    $('header .selection').addClass('opened');
 
     $.ajax({
       type: "GET",
@@ -918,6 +919,7 @@ $(document).ready(function() {
         });
 
         sliderSelection.owlCarousel();
+        callback();
       }
     });
     
@@ -926,6 +928,7 @@ $(document).ready(function() {
   function closeSelection() {
     $('#main').removeClass('overlay');
     $('#selection').removeClass('open');
+    $('header .selection').removeClass('opened');
   }
 
   $('body').on('click', '#main.overlay', function(e) {
@@ -937,7 +940,14 @@ $(document).ready(function() {
   $('header .selection').on('click', function(e) {
     e.preventDefault();
 
-    openSelection();
+    if($(this).hasClass('opened')) {
+      closeSelection();
+    } else {
+      openSelection(function() {
+
+      });
+    }
+    
   });
 
   // filters
@@ -981,6 +991,28 @@ $(document).ready(function() {
     setTimeout(function() {
       $that.parent().remove();
     }, 500);
+  });
+
+  // add an article 
+  $('.read-later').on('click', function(e) {
+    e.preventDefault();
+    var $article = $(this).parents('article').clone().removeClass('double').wrapAll("<div class='article'></div>").parent().wrapAll('<div></div>').parent();
+        $article.find('.read-later').remove();
+        $article.find('div.article').append('<a href="#" class="delete"></a>');
+        $article = $article.html();
+
+    openSelection(function() {
+      $("#main").addClass('overlay');
+      $('header .selection').addClass('opened');
+      
+      setTimeout(function() {
+        sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item">' + $article + '</div>'), 0]);
+        sliderSelection.trigger('refresh.owl.carousel');
+        var v = ($(window).width() - 977) / 2 + "px";
+        $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+      }, 700);
+    });
+     
   });
 
   // 16. Single Movie
