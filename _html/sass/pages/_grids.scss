@@ -1,6 +1,9 @@
 //       SUMMARY TABLE     
 // =========================
 // 1. Global
+// 2. Photos
+// 3. Audios
+// 4. Articles
 // =========================
 
 
@@ -69,6 +72,10 @@
         width: auto;
       }
     }
+
+    .picto {
+      z-index: 2;
+    }
   }
 
   .item.w2 {
@@ -81,6 +88,8 @@
 }
 
 
+// 2. Photos
+// =========================
 
 #gridPhotos {
 
@@ -111,6 +120,10 @@
   }
 }
 
+
+// 3. Audios
+// =========================
+
 #gridAudios {
   @media screen and (min-width: 1600px) {
     /* 5 columns for larger screens */
@@ -128,5 +141,60 @@
 }
 
 
+// 4. Articles
+// =========================
+
+.all-articles {
+
+  .item {
+    height: 305px;
+
+    img {
+      margin: 0 auto 30px auto;
+      height: 167px;
+      max-width: 100%;
+      width: 265px;
+    }
+
+    article {
+      float: none;
+      padding: 0;
+      width: 100%;
+
+      .info {
+        color: #666;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        height: auto;
+        margin: 0 auto;
+        width: 80%;
+      }
+
+      .picto {
+        top: 110px;
+        left: 40px;
+      }
+    }
+
+    &.w2 {
+      height: 610px;
+
+      img {
+        height: 362px;
+        width: 573px;
+      }
+
+      h2 {
+        font-size: 2.250rem;
+      }
+
+      .picto {
+        left: 50px;
+        top: 300px;
+      }
+    }
+  }
+}
 
 

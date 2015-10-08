@@ -272,6 +272,12 @@ div.chocolat-wrapper {
 
   .chocolat-content {
     cursor: none;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 
   .chocolat-top {

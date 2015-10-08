@@ -65,7 +65,8 @@
       }
 
       .delete {
-        background-color: #fff;
+        background: #fff url('../img/svg/close.svg') no-repeat center;
+        background-size: 12px;
         border: 1px solid rgba(0, 0, 0, 0.3);
         content: '';
         display: block;

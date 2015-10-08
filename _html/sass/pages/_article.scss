@@ -9,7 +9,6 @@
 // =========================
 
 .articles {
-  overflow: hidden;
 
   &.right {
     article {
@@ -96,7 +95,7 @@ article {
     }
   }
 
-  &:hover .image:after {
+  &:hover .image .read-later {
     opacity: 1;
     visibility: visible;
   }
@@ -105,11 +104,10 @@ article {
     background-size: cover;
     height: 165px;
     margin-bottom: 20px;
-    overflow: hidden;
     position: relative;
     width: 100%;
 
-    &:after {
+    .read-later {
       background: #fff url('../img/svg/read-later.svg') no-repeat center;
       background-size: 20px;
       content: '';
@@ -119,13 +117,53 @@ article {
       visibility: hidden;
       width: 40px;
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 15px;
+      right: 15px;
 
       @include transition(all 0.3s $smoothTransition);
+
+      span {
+        background-color: $black;
+        position: absolute;
+        display: block;
+        font-family: $CamphorBold;
+        font-size: 0.625rem;
+        opacity: 0;
+        visibility: hidden;
+        height: 48px;
+        line-height: 48px;
+        width: 200px;
+        color: #fff;
+        letter-spacing: 0.1em;
+        top: -59px;
+        left: -80px;
+        z-index: 3;
+        text-align: center;
+        text-transform: uppercase;
+        @include transition(all 0.3s $smoothTransition);
+
+        &:after {
+          content: ' ';
+          height: 0;
+          position: absolute;
+          width: 0;
+
+          border: 7px solid transparent;
+          border-top-color: $black;
+          top: 100%;
+          left: 92px;
+        }
+      }
+
+      &:hover {
+        span {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
 
-    a {
+    .linkImage {
       display: block;
       height: 100%;
       left: 0;

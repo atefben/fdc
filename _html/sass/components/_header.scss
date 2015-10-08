@@ -216,10 +216,11 @@ header {
 
     #search {
       border: 1px solid #404040;
-      display: inline-block;
+      display: block;
+      float: right;
       height: 63px;
       position: relative;
-      vertical-align: middle;
+      margin-top: 47px;
       width: 63px;
 
       a {
