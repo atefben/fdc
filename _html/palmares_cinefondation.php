@@ -29,8 +29,8 @@
            </div>
            <ul class="sub-nav-list">
                <li><a href="#">Compétition</a></li>
-               <li><a href="#" class="active">Un certain regard</a></li>
-               <li><a href="#">Cinéfondation</a></li>
+               <li><a href="#">Un certain regard</a></li>
+               <li><a href="#" class="active">Cinéfondation</a></li>
                <li><a href="#">Caméra d'or</a></li>
                <li><a href="#">Tout le palmarès</a></li>
            </ul> 
@@ -40,73 +40,54 @@
             <article style="background-image:url()">
             <div class="bck-hover">
                <div class="contain_item">
-                <img src="img/palmares/cover-film-uncertainregard1.jpg" alt="images films">
+                <img src="img/palmares/cover-film-cinefondation1.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
                       <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
-                      <strong class="palme-dor-text verticalline">Prix un certain regard</strong>
+                      <strong class="palme-dor-text verticalline">Premier prix de la cinéfondation</strong>
                   </div>
-                    <h3 class="title-item">HRÚTAR</h3>
-                    <h4 class="sub-title-item">(béliers)</h4>
-                    <span class="nom-item">Grímur HAKONARSON</span>
+                    <h3 class="title-item">Share</h3>
+                    <span class="nom-item">Pippa BIANCO</span>
                 </div>
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-uncertainregard3.jpg)">
+            <article style="background-image:url()">
             <div class="bck-hover">
                <div class="contain_item">
-                <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">
+                <img src="img/palmares/cover-film-cinefondation2.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
                       <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
-                      <strong class="palme-dor-text verticalline">Prix de la mise en scène un certain regard</strong>
+                      <strong class="palme-dor-text verticalline">Deuxième prix de la cinéfondation</strong>
                   </div>
-                    <h3 class="title-item">KISHIBE NO TABI</h3>
-                    <h4 class="sub-title-item">(vers l’autre rive)</h4>
-                    <span class="nom-item">Kiyoshi KUROSAWA </span>
+                    <h3 class="title-item">Locas Perdinas</h3>
+                    <span class="nom-item">Ignacio JURICIC MERILLÁN</span>
                 </div>
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-uncertainregard3.jpg)">
+            <article style="background-image:url(img/palmares/hover-film-cinefondation3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
-                <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">
+                <img src="img/palmares/cover-film-cinefondation3.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
                       <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
-                      <strong class="palme-dor-text verticalline">Prix de la mise en scène un certain regard</strong>
+                      <strong class="palme-dor-text verticalline">Troisème prix de la cinéfondation</strong>
                   </div>
-                    <h3 class="title-item">KISHIBE NO TABI</h3>
-                    <h4 class="sub-title-item">(vers l’autre rive)</h4>
-                    <span class="nom-item">Kiyoshi KUROSAWA </span>
+                    <h3 class="title-item">victor xx</h3>
+                    <span class="nom-item">Ian GARRIDO LÓPEZ</span>
                 </div>
                </div>
             </div>
-            </article>
-            <article style="background-image:url(img/palmares/hover-film-uncertainregard3.jpg)">
-            <div class="bck-hover">
-               <div class="contain_item">
-                <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">
-                <div class="infos-item-list">
-                  <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
-                      <strong class="palme-dor-text verticalline">Prix de la mise en scène un certain regard</strong>
-                  </div>
-                    <h3 class="title-item">KISHIBE NO TABI</h3>
-                    <h4 class="sub-title-item">(vers l’autre rive)</h4>
-                    <span class="nom-item">Kiyoshi KUROSAWA </span>
-                </div>
-               </div>
-            </div>
-            </article>
-        </section> 
+            </article>   
+        </section>  
         </div>
 
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
-               <h2 class="title title-list-header">Camera d'or</h2>
+           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
+               <h2 class="title title-list-header">Cinéma de la plage</h2>
                <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
 
