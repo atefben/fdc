@@ -28,8 +28,8 @@
                <h2 class="title title-list-header">Le Palmares</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="#" class="active">Compétition</a></li>
-               <li><a href="#" >Un certain regard</a></li>
+               <li><a href="#">Compétition</a></li>
+               <li><a href="#" class="active">Un certain regard</a></li>
                <li><a href="#">Cinéfondation</a></li>
                <li><a href="#">Caméra d'or</a></li>
                <li><a href="#">Tout le palmarès</a></li>
