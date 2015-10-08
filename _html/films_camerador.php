@@ -13,6 +13,7 @@
 
     <!-- //// CSS \\\\ -->
     <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
     <link href='css/styles.css' rel="stylesheet">
   <style type="text/css">
         

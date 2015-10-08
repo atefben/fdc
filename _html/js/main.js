@@ -56,7 +56,6 @@ String.prototype.parseHashtag = function(twitter) {
   });
 };
 
-
 $(document).ready(function() {
 
   // 1. Main menu
@@ -486,6 +485,10 @@ $(document).ready(function() {
     });
 
     sliderVideos.owlCarousel();
+
+    sliderVideos.on('translated.owl.carousel', function(event) {
+      
+    });
 
     $('body').on('click', '#slider-videos .owl-item', function(e) {
       sliderVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
