@@ -4156,7 +4156,7 @@ article .image a {
   background-color: #202020;
 }
 .list-article .bandeau-list .bandeau-list-img {
-  height: 298px;
+  height: 365px;
   background-size: cover;
 }
 .list-article .bandeau-list .bandeau-list-img .title-list-header {
@@ -4195,22 +4195,30 @@ article .image a {
 }
 .palmares-list .categorie-items article .infos-item-list {
   text-align: center;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   display: inline-block;
-  vertical-align: text-bottom;
-  padding-bottom: 82px;
-  padding-left: 100px;
+  vertical-align: top;
+  /* padding-bottom: 82px; */
+  /* padding-left: 100px; */
 }
 .palmares-list .categorie-items article img {
   float: none;
   display: inline-block;
 }
+.palmares-list .categorie-items article .lot-item {
+  padding-top: 0px;
+}
 .palmares-list .categorie-items article .infos-item-list {
   position: relative;
+  width: 450px;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-img {
   float: none;
   margin-right: 0px;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-portrait {
+  margin: 0 auto;
+  padding-bottom: 10px;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text {
   display: block;
@@ -4218,15 +4226,13 @@ article .image a {
   letter-spacing: 3px;
   padding: 10px;
 }
-.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text:after {
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .verticalline:after {
   content: "";
   display: block;
   height: 20px;
   width: 2px;
   padding: 0px;
-  position: relative;
-  left: 52px;
-  margin: 10px;
+  margin: 10px auto;
   background-color: #434343;
 }
 

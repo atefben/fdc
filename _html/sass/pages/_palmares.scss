@@ -15,24 +15,32 @@
                 vertical-align: text-top;
             }
             .infos-item-list{
-                    text-align: center;
-                    padding-top: 50px;
-                    display: inline-block;
-                    vertical-align: text-bottom;
-                    padding-bottom: 82px;
-                    padding-left: 100px;
+                text-align: center;
+                /* padding-top: 50px; */
+                display: inline-block;
+                vertical-align: top;
+                /* padding-bottom: 82px; */
+                /* padding-left: 100px; */
             }
             img{
                 float: none;
                 display: inline-block;
             }
+            .lot-item{
+                padding-top: 0px;
+            }
             .infos-item-list{
                 position: relative;
+                width: 450px;
                 
                 .logo-palme-dor-container{
                     .palme-dor-img{
                         float: none;
                         margin-right: 0px;
+                    }
+                    .palme-dor-portrait{
+                        margin: 0 auto;
+                        padding-bottom: 10px;
                     }
                     .palme-dor-text{
                         display: block;
@@ -40,15 +48,13 @@
                         letter-spacing: 3px;
                         padding: 10px;
                     }
-                    .palme-dor-text:after{
+                    .verticalline:after{
                         content: "";
                         display: block;
                         height: 20px;
                         width: 2px;
                         padding: 0px;
-                        position: relative;
-                        left: 52px;
-                        margin: 10px;
+                        margin: 10px auto;
                         background-color: #434343;
                     }
                 }
