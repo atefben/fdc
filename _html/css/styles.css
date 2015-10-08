@@ -2909,9 +2909,6 @@ article .image .linkImage {
   color: #666;
   font-family: "CamphorRegular";
 }
-.single-article .slideshow .thumbnails .thumb:after {
-  border-color: #fff;
-}
 .single-article .quote {
   width: 630px;
   margin: 30px auto;
