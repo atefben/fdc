@@ -42,9 +42,11 @@ sonata_media:
 
         media_video_image:
             providers:
-                - sonata.media.provider.file
+                - sonata.media.provider.image
 
             formats:
+                mobile:  { width: 300, quality: 100 }
+                desktop: { width: 500, quality: 100 }
 
     cdn:
         server:

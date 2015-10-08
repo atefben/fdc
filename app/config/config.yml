@@ -6,6 +6,7 @@ imports:
     - { resource: bundles/nelmio_api_doc.yml }
     - { resource: bundles/fos_user.yml }
     - { resource: bundles/fos_rest.yml }
+    - { resource: bundles/jms_di_extra.yml }
     - { resource: bundles/jms_translation.yml }
     - { resource: bundles/sonata_admin.yml }
     - { resource: bundles/sonata_block.yml }

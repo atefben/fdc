@@ -77,7 +77,7 @@ class MediaVideo extends Media
      *
      * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
      *
-     * @Groups({"trailer_list", "trailer_show"})
+     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
      */
     private $image;
 
@@ -94,7 +94,7 @@ class MediaVideo extends Media
 
     /**
      * @var ArrayCollection
-     *
+     * @Groups({"web_tv_list", "web_tv_show"})
      */
     protected $translations;
 

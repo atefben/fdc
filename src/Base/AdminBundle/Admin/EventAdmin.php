@@ -113,6 +113,14 @@ class EventAdmin extends Admin
                 'prototype' => true,
                 'by_reference' => false,
             ))
+            ->add('tags', 'sonata_type_collection', array(
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('theme', 'sonata_type_model_list', array(
                 'required' => false,
                 'btn_delete' => false

@@ -46,8 +46,11 @@ class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
         $siteCcm->setClassColor('purple-light');
         $manager->persist($siteCcm);
         $this->addReference('site-ccm', $siteCcm);
-        
-        
+
+        $siteMobileStream = new Site();
+        $siteMobileStream->setName('Flux mobiles');
+        $manager->persist($siteMobileStream);
+
         $manager->flush();
     }
     

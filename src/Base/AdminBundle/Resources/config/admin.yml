@@ -186,3 +186,8 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base_admin.event_news_tag:
+        class: Base\AdminBundle\Admin\EventNewsTagAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventNewsTag, BaseAdminBundle:EventNewsTagAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventNewsTag}

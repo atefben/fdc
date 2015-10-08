@@ -95,6 +95,15 @@ class Event
     private $widgets;
 
     /**
+     * @var NewsTag
+     *
+     * @ORM\OneToMany(targetEntity="EventNewsTag", mappedBy="events", cascade={"persist"})
+     *
+     * @Groups({"event_list", "event_show"})
+     */
+    private $tags;
+
+    /**
      * ArrayCollection
      *
      * @Groups({"event_list", "event_show"})
@@ -287,5 +296,38 @@ class Event
     public function getWidgets()
     {
         return $this->widgets;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Base\CoreBundle\Entity\EventNewsTag $tags
+     * @return Event
+     */
+    public function addTag(\Base\CoreBundle\Entity\EventNewsTag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Base\CoreBundle\Entity\EventNewsTag $tags
+     */
+    public function removeTag(\Base\CoreBundle\Entity\EventNewsTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

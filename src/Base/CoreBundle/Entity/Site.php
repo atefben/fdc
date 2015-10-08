@@ -36,14 +36,14 @@ class Site
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     protected $name;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="class_color", type="string", length=255, nullable=false)
+     * @ORM\Column(name="class_color", type="string", length=255, nullable=true)
      */
     protected $classColor;
     
@@ -51,7 +51,7 @@ class Site
      * @var string
      *
      * @Gedmo\Slug(fields={"name"})
-     * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     protected $slug;
     

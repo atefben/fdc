@@ -34,6 +34,10 @@ film_projection:
     type:       rest
     resource:   Base\ApiBundle\Controller\FilmProjectionController
 
+film_trailer:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmTrailerController
+
 news:
     type:       rest
     resource:   Base\ApiBundle\Controller\NewsController
