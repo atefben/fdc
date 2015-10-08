@@ -63,7 +63,7 @@ $(document).ready(function() {
   // =========================
 
   // overlay on main menu : show submenu and overlay
-  $('.main>li').hover(function() {
+  $('.main>li, .user>li').hover(function() {
     $('#main').addClass('overlay');
     $('.main>li').not($(this)).addClass('fade');
   }, function() {
@@ -890,7 +890,7 @@ $(document).ready(function() {
 
   function openSelection(callback) {
     $('#main').addClass('overlay');
-    console.log('coucou');
+
     if(sliderSelection != '') sliderSelection.trigger('destroy.owl.carousel');
     $('#slider-selection').empty();
     $('header .selection').addClass('opened');
@@ -987,9 +987,13 @@ $(document).ready(function() {
 
     $(this).parent().addClass('deleted');
     $(this).parent().parent().css('margin-right', 0);
+    var i = $(this).parent().parent().index();
 
     setTimeout(function() {
-      $that.parent().remove();
+      sliderSelection.trigger('del.owl.carousel', i);
+      sliderSelection.trigger('refresh.owl.carousel');
+      var v = ($(window).width() - 977) / 2 + "px";
+      $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
     }, 500);
   });
 

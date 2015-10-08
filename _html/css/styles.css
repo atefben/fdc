@@ -447,6 +447,37 @@ header .user-nav li a.language {
   padding-left: 30px;
   background-size: 20px;
 }
+header .user-nav li .sub-languages {
+  height: 0;
+  margin-left: 10px;
+  opacity: 0;
+  position: absolute;
+  top: 23px;
+  visibility: hidden;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+header .user-nav li .sub-languages li {
+  display: block;
+}
+header .user-nav li .sub-languages li a {
+  height: 23px;
+  opacity: 0.5;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+header .user-nav li .sub-languages li a:hover {
+  opacity: 1;
+}
+header .user-nav li.lang:hover .sub-languages {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+}
 header #top-bar {
   border-bottom: 1px solid #404040;
   font-size: 0.750rem;
@@ -605,9 +636,9 @@ header #navigation ul li ul:before {
   content: '';
   display: block;
   height: 100%;
-  left: -100%;
+  left: -150%;
   position: absolute;
-  width: 300%;
+  width: 350%;
   z-index: 0;
 }
 header #navigation ul li ul li {
@@ -645,7 +676,17 @@ header #navigation ul.user li a.press {
   background-size: 15px;
 }
 header #navigation ul.user li a:hover {
+  color: #c8a461;
+}
+header #navigation ul.user li ul li a {
   color: #fff;
+  font-size: 0.750rem;
+  font-family: "CamphorHeavy";
+}
+header #navigation ul.user .participate-wrapper ul {
+  left: auto;
+  margin-left: -760px;
+  text-align: right;
 }
 
 footer * {
@@ -2739,7 +2780,7 @@ article .image .read-later span {
   letter-spacing: 0.1em;
   top: -59px;
   left: -80px;
-  z-index: 3;
+  z-index: 5;
   text-align: center;
   text-transform: uppercase;
   -moz-transform: translateY(6px);
