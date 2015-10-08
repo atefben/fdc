@@ -28,12 +28,12 @@
                <h2 class="title title-list-header">Le Palmares</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="#" class="active">Compétition</a></li>
-               <li><a href="#" >Un certain regard</a></li>
-               <li><a href="#">Cinéfondation</a></li>
-               <li><a href="#">Caméra d'or</a></li>
-               <li><a href="#">Tout le palmarès</a></li>
-           </ul> 
+               <li><a href="palmares_competition.php">Compétition</a></li>
+               <li><a href="palmares_uncertainregard.php" >Un certain regard</a></li>
+               <li><a href="palmares_cinefondation.php">Cinéfondation</a></li>
+               <li><a href="palmares_camerador.php.php">Caméra d'or</a></li>
+               <li><a href="palmares_toutlepalmares.php" class="active">Tout le palmarès</a></li>
+           </ul>  
       </div>
       <div class="container container-list">
         <section class="categorie-items">
