@@ -2,6 +2,7 @@
 // =========================
 // 1. Global
 // 2. Override Chocolat
+// 3. Override Article actu photo
 // =========================
 
 
@@ -308,9 +309,12 @@ div.chocolat-wrapper {
 // =========================
 .article_photo{
     padding-top: 50px;
-    
+    .slideshow-img {
+        height: 615px !important;
+    }    
     .slideshow-img .thumbnails {
         width: 960px;
     }
 }
+
 

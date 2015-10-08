@@ -1130,6 +1130,9 @@ div.chocolat-wrapper .chocolat-close {
 .article_photo {
   padding-top: 50px;
 }
+.article_photo .slideshow-img {
+  height: 615px !important;
+}
 .article_photo .slideshow-img .thumbnails {
   width: 960px;
 }
@@ -4580,4 +4583,42 @@ article .image .linkImage {
 .single-channel .owl-item.center .channel:after {
   opacity: 1;
   visibility: visible;
+}
+
+.sitemap h2 {
+  padding: 60px;
+  font-size: 28px;
+}
+.sitemap section {
+  background-color: #fff;
+  width: 1122px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.sitemap section article {
+  height: auto;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  margin-bottom: 100px;
+  position: relative;
+  width: 363px;
+  display: inline-block;
+  padding: 13px;
+  vertical-align: top;
+  text-align: center;
+}
+.sitemap section article .title {
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.sitemap section article a {
+  color: #c8a461;
+  text-transform: uppercase;
+}
+.sitemap section article li {
+  padding-bottom: 20px;
+  letter-spacing: 3px;
 }

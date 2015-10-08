@@ -26,7 +26,7 @@
     <h2 class="title">Plan du site</h2>
     <section class="legal-notice-container">
         <article class="legal-notice-item">
-            <h3 class="legal-notice-item-title">L'acutalité</h3>
+            <h3 class="title legal-notice-item-title">L'acutalité</h3>
             <ul>
               <li><a href="#">Jour après jour</a></li>
               <li><a href="#">Articles</a></li>
@@ -36,7 +36,7 @@
             </ul>
         </article>
         <article class="legal-notice-item">
-            <h3 class="legal-notice-item-title">Web tv</h3>
+            <h3 class="title legal-notice-item-title">Web tv</h3>
             <ul>
               <li><a href="#">En direct</a></li>
               <li><a href="#">Chaînes</a></li>
@@ -44,9 +44,9 @@
             </ul>
         </article>
         <article class="legal-notice-item">
-            <h3 class="legal-notice-item-title">Les films</h3>
+            <h3 class="title legal-notice-item-title">Les films</h3>
             <ul>
-              <li><a href="#">Séléection officielle</a></li>
+              <li><a href="#">Sélection officielle</a></li>
               <li><a href="#">Cannes classics</a></li>
               <li><a href="#">Cinéma de la plage</a></li>
               <li><a href="#">Caméra d'or</a></li>
@@ -57,7 +57,7 @@
             </ul>
         </article>
         <article class="legal-notice-item">
-            <h3 class="legal-notice-item-title">Jurys</h3>
+            <h3 class="title legal-notice-item-title">Jurys</h3>
             <ul>
               <li><a href="#">Longs métrages</a></li>
               <li><a href="#">Cinéfondation & court metrage</a></li>
@@ -66,7 +66,7 @@
             </ul>
         </article>
         <article class="legal-notice-item">
-            <h3 class="legal-notice-item-title">Le palmarès</h3>
+            <h3 class="title legal-notice-item-title">Le palmarès</h3>
             <ul>
                <li><a href="#">Compétition</a></li>
                <li><a href="#">Un certain regard</a></li>
@@ -76,7 +76,7 @@
             </ul>
         </article>
         <article class="legal-notice-item">
-            <h3 class="legal-notice-item-title">Les évènements</h3>
+            <h3 class="title legal-notice-item-title">Les évènements</h3>
             <ul>
                <li><a href="#">Lecçon</a></li>
                <li><a href="#">Expositions</a></li>
@@ -89,7 +89,7 @@
             </ul>
         </article>
         <article class="legal-notice-item">
-            <h3 class="legal-notice-item-title">Participer</h3>
+            <h3 class="title legal-notice-item-title">Participer</h3>
             <ul>
                 <li>
                     <a href="#">Préparer son séjour</a>
@@ -109,7 +109,7 @@
             </ul>
         </article>
         <article class="legal-notice-item">
-            <h3 class="legal-notice-item-title">Espace presse</h3>
+            <h3 class="title legal-notice-item-title">Espace presse</h3>
             <ul>
                 <li>
                     <a href="#">Accueil</a>
