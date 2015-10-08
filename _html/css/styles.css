@@ -1871,11 +1871,12 @@ div.chocolat-wrapper .chocolat-close {
 #news .container #timeline {
   position: absolute;
   right: 0;
-  top: 120px;
+  top: 0;
   width: 40px;
 }
 #news .container #timeline.stick {
   position: fixed;
+  top: 120px;
   z-index: 4;
 }
 #news .container #timeline a {

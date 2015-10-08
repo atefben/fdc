@@ -210,11 +210,12 @@
     #timeline {
       position: absolute;
       right: 0;
-      top: 120px;
+      top: 0;
       width: 40px;
 
       &.stick {
         position: fixed;
+        top: 120px;
         z-index: 4;
       }
 
