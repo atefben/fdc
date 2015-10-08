@@ -190,6 +190,28 @@ header {
     #partners {
       display: inline-block;
       vertical-align: middle;
+
+      img {
+        display: inline-block;
+        margin-right: 20px;
+        vertical-align: middle;
+
+        &.chopard {
+          margin-top: 10px;
+        }
+
+        &.oreal {
+          margin-top: 5px;
+        }
+
+        &.hp {
+
+        }
+
+        &.kering {
+          margin-top: -4px;
+        }
+      }
     }
 
     #search {

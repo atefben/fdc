@@ -121,7 +121,7 @@
                     <div class="thumb active">
                       <img src="img/thumb01.jpg" />
                     </div>
-                    <div class="thumb">
+                    <div class="thumb" data-caption="test">
                       <img src="img/thumb01.jpg" />
                     </div>
                     <div class="thumb">
@@ -147,6 +147,7 @@
                     </div>
                   </div>
                 </div>
+                <h3>Portfolio du jour</h3>
                 <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
               </div>
 

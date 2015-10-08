@@ -525,6 +525,20 @@ header #logo-wrapper #partners {
   display: inline-block;
   vertical-align: middle;
 }
+header #logo-wrapper #partners img {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+header #logo-wrapper #partners img.chopard {
+  margin-top: 10px;
+}
+header #logo-wrapper #partners img.oreal {
+  margin-top: 5px;
+}
+header #logo-wrapper #partners img.kering {
+  margin-top: -4px;
+}
 header #logo-wrapper #search {
   border: 1px solid #404040;
   display: inline-block;
@@ -972,6 +986,15 @@ footer .footer-menu ul li a:hover {
   color: #333;
   font-family: "CamphorBold";
   font-weight: normal;
+}
+.slideshow h3 {
+  color: #c8a461;
+  font-family: "CamphorBold";
+  font-weight: normal;
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  margin-top: 25px;
+  text-transform: uppercase;
 }
 
 div.chocolat-wrapper .chocolat-bottom {
@@ -1755,6 +1778,9 @@ div.chocolat-wrapper .chocolat-close {
 #news #articles-wrapper.loading {
   opacity: 0;
   visibility: hidden;
+}
+#news .slideshow .caption {
+  margin-top: 10px;
 }
 #news .filters {
   padding-bottom: 70px;
@@ -4164,6 +4190,46 @@ article .image a {
   text-transform: uppercase;
 }
 
+.palmares-list .categorie-items article .contain-article {
+  vertical-align: text-top;
+}
+.palmares-list .categorie-items article .infos-item-list {
+  text-align: center;
+  padding-top: 50px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  padding-bottom: 82px;
+  padding-left: 100px;
+}
+.palmares-list .categorie-items article img {
+  float: none;
+  display: inline-block;
+}
+.palmares-list .categorie-items article .infos-item-list {
+  position: relative;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-img {
+  float: none;
+  margin-right: 0px;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 10px;
+}
+.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text:after {
+  content: "";
+  display: block;
+  height: 20px;
+  width: 2px;
+  padding: 0px;
+  position: relative;
+  left: 52px;
+  margin: 10px;
+  background-color: #434343;
+}
+
 .webtv #live {
   background-color: #000;
   height: 300px;
@@ -4368,44 +4434,4 @@ article .image a {
 .single-channel .owl-item.center .channel:after {
   opacity: 1;
   visibility: visible;
-}
-
-.palmares-list .categorie-items article .contain-article {
-  vertical-align: text-top;
-}
-.palmares-list .categorie-items article .infos-item-list {
-  text-align: center;
-  padding-top: 50px;
-  display: inline-block;
-  vertical-align: text-bottom;
-  padding-bottom: 82px;
-  padding-left: 100px;
-}
-.palmares-list .categorie-items article img {
-  float: none;
-  display: inline-block;
-}
-.palmares-list .categorie-items article .infos-item-list {
-  position: relative;
-}
-.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-img {
-  float: none;
-  margin-right: 0px;
-}
-.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text {
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 10px;
-}
-.palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text:after {
-  content: "";
-  display: block;
-  height: 20px;
-  width: 2px;
-  padding: 0px;
-  position: relative;
-  left: 52px;
-  margin: 10px;
-  background-color: #434343;
 }

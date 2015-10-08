@@ -186,6 +186,16 @@
       font-weight: normal;
     }
   }
+
+  h3 {
+    color: $gold;
+    font-family: $CamphorBold;
+    font-weight: normal;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    margin-top: 25px;
+    text-transform: uppercase;
+  }
 }
 
 // 2. Override Chocolat
