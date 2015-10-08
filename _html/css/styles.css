@@ -1777,6 +1777,7 @@ div.chocolat-wrapper .chocolat-close {
   padding: 80px 0;
 }
 #news #articles-wrapper {
+  overflow: hidden;
   -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -1794,6 +1795,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 #news .read-more {
   border: 1px solid #d9d9d9;
+  clear: both;
   color: #999;
   display: block;
   height: 55px;
@@ -1830,7 +1832,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 #news .container #timeline.stick {
   position: fixed;
-  z-index: 10;
+  z-index: 4;
 }
 #news .container #timeline a {
   border-left: 1px solid #e5e5e5;
@@ -2623,6 +2625,9 @@ div.chocolat-wrapper .chocolat-close {
   opacity: 1;
 }
 
+.articles {
+  overflow: hidden;
+}
 .articles.right article {
   padding-left: 0;
   padding-right: 45px;
@@ -2721,7 +2726,7 @@ article .image .read-later {
 }
 article .image .read-later span {
   background-color: #141414;
-  position: absolute;
+  position: fixed;
   display: block;
   font-family: "CamphorBold";
   font-size: 0.625rem;
@@ -2737,10 +2742,14 @@ article .image .read-later span {
   z-index: 3;
   text-align: center;
   text-transform: uppercase;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transform: translateY(6px);
+  -ms-transform: translateY(6px);
+  -webkit-transform: translateY(6px);
+  transform: translateY(6px);
+  -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), -moz-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), -o-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 article .image .read-later span:after {
   content: ' ';
@@ -2755,6 +2764,10 @@ article .image .read-later span:after {
 article .image .read-later:hover span {
   opacity: 1;
   visibility: visible;
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
 }
 article .image .linkImage {
   display: block;

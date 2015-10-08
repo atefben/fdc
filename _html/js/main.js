@@ -994,7 +994,7 @@ $(document).ready(function() {
   });
 
   // add an article 
-  $('.read-later').on('click', function(e) {
+  $('body').on('click', '.read-later', function(e) {
     e.preventDefault();
     var $article = $(this).parents('article').clone().removeClass('double').wrapAll("<div class='article'></div>").parent().wrapAll('<div></div>').parent();
         $article.find('.read-later').remove();
@@ -1013,6 +1013,13 @@ $(document).ready(function() {
       }, 700);
     });
      
+  });
+
+  $('body').on('mouseover', '.read-later', function() {
+    $(this).find('span').css({
+      top: $(this).offset().top - $(window).scrollTop() - 59,
+      left: $(this).offset().left - 80
+    });
   });
 
   // 16. Single Movie
