@@ -76,12 +76,20 @@
   user-select: none;
 }
 
-.owl-carousel.owl-grab {
+.owl-grab {
   cursor: move;
-  cursor: -webkit-grab;
+  cursor: -webkit-grabbing;
   cursor: -o-grab;
   cursor: -ms-grab;
   cursor: grab;
+
+  .owl-item, .linkVid {
+    cursor: move;
+    cursor: -webkit-grabbing;
+    cursor: -o-grab;
+    cursor: -ms-grab;
+    cursor: grab;
+  }
 }
 
 .owl-carousel.owl-rtl {

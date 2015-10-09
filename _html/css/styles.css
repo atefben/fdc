@@ -153,9 +153,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   user-select: none;
 }
 
-.owl-carousel.owl-grab {
+.owl-grab {
   cursor: move;
-  cursor: -webkit-grab;
+  cursor: -webkit-grabbing;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+.owl-grab .owl-item, .owl-grab .linkVid {
+  cursor: move;
+  cursor: -webkit-grabbing;
   cursor: -o-grab;
   cursor: -ms-grab;
   cursor: grab;
