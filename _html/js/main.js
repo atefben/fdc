@@ -508,6 +508,11 @@ $(document).ready(function() {
 
     sliderChannels.owlCarousel();
 
+    sliderChannels.on('translated.owl.carousel', function(e) {
+      $('#slider-channels .owl-item').removeClass('previous');
+      $('#slider-channels .owl-item.center').prev().addClass('previous');
+    });
+
     $('body').on('click', '#slider-channels .owl-item', function(e) {
       sliderChannels.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });

@@ -742,7 +742,7 @@
   #slider-channels {
     padding-top: 60px;
 
-    .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
+    .owl-item.center + .owl-item, .owl-item.previous {
       opacity: 1;
 
       .linkVid {

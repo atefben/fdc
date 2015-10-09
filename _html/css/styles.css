@@ -2284,10 +2284,10 @@ div.chocolat-wrapper .chocolat-close {
 #channels #slider-channels {
   padding-top: 60px;
 }
-#channels #slider-channels .owl-item.center + .owl-item, #channels #slider-channels .owl-item.center + .owl-item + .owl-item {
+#channels #slider-channels .owl-item.center + .owl-item, #channels #slider-channels .owl-item.previous {
   opacity: 1;
 }
-#channels #slider-channels .owl-item.center + .owl-item .linkVid, #channels #slider-channels .owl-item.center + .owl-item + .owl-item .linkVid {
+#channels #slider-channels .owl-item.center + .owl-item .linkVid, #channels #slider-channels .owl-item.previous .linkVid {
   display: block;
 }
 #channels #slider-channels .channel {
