@@ -38,7 +38,7 @@
       </div>
       <div class="container container-list">
         <section class="categorie-items">
-            <article style="background-image:url()">
+            <article style="background-image:url(img/palmares/hover-film-cinefondation3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-cinefondation1.jpg" alt="images films">
@@ -53,7 +53,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/palmares/hover-film-cinefondation3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-cinefondation2.jpg" alt="images films">
