@@ -39,9 +39,9 @@
       <div class="container container-list">
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">Gentenaire orson welles</h2>
+                <h2 class="title">Centenaire orson welles</h2>
             </div>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-1.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film1.jpg" alt="images films">
@@ -79,7 +79,7 @@
                 <h2 class="title">Hommage a manoel de oliveira</h2>
                 <p class="title-item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente voluptatibus magnam culpa, ut quam est repellendus aliquam ipsum eos debitis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus consequuntur esse doloremque qui sunt vel voluptatem repudiandae eaque aliquid architecto.</p>
            </div>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-1.jpg)">
             <div class="bck-hover">
                 <div class="contain_item">
                     <img src="img/films/cover-film2.jpg" alt="images films">

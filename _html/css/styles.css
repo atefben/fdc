@@ -4131,7 +4131,6 @@ article .image .linkImage {
 .container-list {
   width: 100%;
   clear: both;
-  padding-bottom: 50px;
 }
 
 .categorie-items {
@@ -4271,16 +4270,16 @@ article .image .linkImage {
 .list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
   font-size: 2rem;
-  padding-top: 121px;
+  padding-top: 155px;
 }
 .list-article .bandeau-list .bandeau-list-img .bandeau-lien {
   color: #c8a461;
-  width: 209px;
+  width: 165px;
   margin: 0 auto;
   display: block;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 .list-article .bandeau-list .sub-nav-list {
   width: 1000px;
@@ -4289,6 +4288,7 @@ article .image .linkImage {
 }
 .list-article .bandeau-list .sub-nav-list a {
   color: #686868;
+  font-size: 0.8rem;
 }
 .list-article .bandeau-list .sub-nav-list a.active {
   color: #a98b54;
@@ -4583,6 +4583,7 @@ article .image .linkImage {
 .sitemap section article a {
   color: #c8a461;
   text-transform: uppercase;
+  font-size: 0.8rem;
 }
 .sitemap section article li {
   padding-bottom: 20px;

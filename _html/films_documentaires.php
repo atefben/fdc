@@ -41,7 +41,7 @@
             <div class="title-list-cat">
                 <h2 class="titre-document">Dans le cadre de Cannes Classics, seront projetés les documentaires sur le cinéma suivants :</h2>
             </div>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-documantaire2.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-documentaire1.jpg" alt="images films">
@@ -75,12 +75,12 @@
 CREATION DE LA PALME D’OR</h2>
 
            </div>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-documantaire2.jpg)">
             <div class="bck-hover">
                 <div class="contain_item">
                     <img src="img/films/cover-film-documentaire3.jpg" alt="images films">
                     <div class="infos-item-list">
-                        <h3 class="title-item">La légede de la palme d'or</h3>
+                        <h3 class="title-item">La légende de la palme d'or</h3>
                         <span class="nom-item">Alexis Veller</span>
                         <span class="date-item">2015 - 1h10</span>
                         <p class="description-item">Produit par AV productions.

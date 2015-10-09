@@ -10,7 +10,6 @@
 .container-list{
     width: 100%;
     clear: both;
-    padding-bottom: 50px;
 }
 .categorie-items{ 
     clear: both;
@@ -156,17 +155,17 @@
             .title-list-header{
                 color: #ffffff;
                 font-size: 2rem;
-                padding-top: 121px;
+                padding-top: 155px;
             }
             
             .bandeau-lien{
                 color: #c8a461;
-                width: 209px;
+                width: 165px;
                 margin: 0 auto;
                 display: block;
                 font-weight: 600;
                 text-transform: uppercase;
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
         }
         .sub-nav-list{
@@ -177,6 +176,7 @@
             
             a{
                 color:#686868;
+                font-size: 0.8rem;
             }
             
             a.active{

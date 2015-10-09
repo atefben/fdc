@@ -34,7 +34,7 @@
             <div class="title-list-cat">
                 <h2 class="titre-document">Les projections du Cinéma de la Plage, qui se jouent chaque soir sous les étoiles, sont ouvertes au public.</h2>
             </div>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-cdp2.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film_cdp1.jpg" alt="images films">
@@ -63,7 +63,7 @@
                    </div>
                 </div>
             </article>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-cdp2.jpg)">
                 <div class="bck-hover">
                    <div class="contain_item">
                     <img src="img/films/cover-film_cdp3.jpg" alt="images films">

@@ -39,7 +39,7 @@
                 <h2 class="title">Sélection officielle</h2>
             </div>
             <h3 class="sub-cat-title">En compétition</h3>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-cdo4.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-cdo.jpg" alt="images films">
@@ -55,7 +55,7 @@
         </section>
         <section class="categorie-items">
             <h3 class="sub-cat-title">Un certain regard</h3>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-cdo4.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-cdo1.jpg" alt="images films">
@@ -67,7 +67,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url()">
+            <article style="background-image:url(img/films/film-hover-cdo4.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-cdo2.jpg" alt="images films">
