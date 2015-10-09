@@ -479,17 +479,11 @@ $(document).ready(function() {
       loop: false,
       items: 1,
       onInitialized: function() {
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slider-videos .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+        $('#slider-videos .owl-stage').css({ 'margin-left': "-172px" });
       }
     });
 
     sliderVideos.owlCarousel();
-
-    sliderVideos.on('translated.owl.carousel', function(e) {
-      console.log(e);
-      console.log(sliderVideos);
-    });
 
     $('body').on('click', '#slider-videos .owl-item', function(e) {
       sliderVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
