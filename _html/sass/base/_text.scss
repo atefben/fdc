@@ -55,9 +55,9 @@ a {
 }
 
 .title {
-  font-family: $PlayfairBold;
+  font-family: $Playfair;
+  font-weight: 700;
   font-size: 1.125rem;
-  font-weight: normal;
   letter-spacing: 0.4em;
   margin-bottom: 15px;
   text-align: center;
@@ -65,7 +65,8 @@ a {
 }
 
 .subtitle {
-  font-family: $PlayfairItalic;
+  font-family: $Playfair;
+  font-style: italic;
   font-size: 0.875rem;
   font-weight: normal;
   text-align: center;

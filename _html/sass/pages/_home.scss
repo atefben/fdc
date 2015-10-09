@@ -116,9 +116,9 @@
 
       h2 {
         color: #fff;
-        font-family: $PlayfairRegular;
+        font-family: $Playfair;
         font-size: 2.750rem;
-        font-weight: normal;
+        font-weight: 400;
       }
     }
 
@@ -1093,7 +1093,8 @@
 
       a {
         color: #fff;
-        font-family: $PlayfairBold;
+        font-family: $Playfair;
+        font-weight: 700;
         opacity: 0.3;
         @include transition(all 0.3s $smoothTransition);
 

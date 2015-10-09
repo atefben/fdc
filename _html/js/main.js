@@ -486,8 +486,9 @@ $(document).ready(function() {
 
     sliderVideos.owlCarousel();
 
-    sliderVideos.on('translated.owl.carousel', function(event) {
-      
+    sliderVideos.on('translated.owl.carousel', function(e) {
+      console.log(e);
+      console.log(sliderVideos);
     });
 
     $('body').on('click', '#slider-videos .owl-item', function(e) {

@@ -54,27 +54,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-@font-face {
-  font-family: 'PlayfairRegular';
-  src: url("../fonts/PlayfairDisplay-Regular/PlayfairDisplay-Regular.eot");
-  src: url("../fonts/PlayfairDisplay-Regular/PlayfairDisplay-Regular?#iefix") format("embedded-opentype"), url("../fonts/PlayfairDisplay-Regular/PlayfairDisplay-Regular.woff") format("woff"), url("../fonts/PlayfairDisplay-Regular/PlayfairDisplay-Regular.ttf") format("truetype"), url("../fonts/PlayfairDisplay-Regular/PlayfairDisplay-Regular.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'PlayfairBold';
-  src: url("../fonts/PlayfairDisplay-Bold/PlayfairDisplay-Bold.eot");
-  src: url("../fonts/PlayfairDisplay-Bold/PlayfairDisplay-Bold?#iefix") format("embedded-opentype"), url("../fonts/PlayfairDisplay-Bold/PlayfairDisplay-Bold.woff") format("woff"), url("../fonts/PlayfairDisplay-Bold/PlayfairDisplay-Bold.ttf") format("truetype"), url("../fonts/PlayfairDisplay-Bold/PlayfairDisplay-Bold.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'PlayfairItalic';
-  src: url("../fonts/PlayfairDisplay-Italic/PlayfairDisplay-Italic.eot");
-  src: url("../fonts/PlayfairDisplay-Italic/PlayfairDisplay-Italic?#iefix") format("embedded-opentype"), url("../fonts/PlayfairDisplay-Italic/PlayfairDisplay-Italic.woff") format("woff"), url("../fonts/PlayfairDisplay-Italic/PlayfairDisplay-Italic.ttf") format("truetype"), url("../fonts/PlayfairDisplay-Italic/PlayfairDisplay-Italic.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
 .owl-carousel {
   display: none;
   width: 100%;
@@ -228,9 +207,9 @@ a {
 }
 
 .title {
-  font-family: "PlayfairBold";
+  font-family: "Playfair Display";
+  font-weight: 700;
   font-size: 1.125rem;
-  font-weight: normal;
   letter-spacing: 0.4em;
   margin-bottom: 15px;
   text-align: center;
@@ -238,7 +217,8 @@ a {
 }
 
 .subtitle {
-  font-family: "PlayfairItalic";
+  font-family: "Playfair Display";
+  font-style: italic;
   font-size: 0.875rem;
   font-weight: normal;
   text-align: center;
@@ -1763,9 +1743,9 @@ div.chocolat-wrapper .chocolat-close {
 }
 #sliderWrapper .owl-item .info h2 {
   color: #fff;
-  font-family: "PlayfairRegular";
+  font-family: "Playfair Display";
   font-size: 2.750rem;
-  font-weight: normal;
+  font-weight: 400;
 }
 #sliderWrapper .owl-item img {
   opacity: 0.2 !important;
@@ -2631,7 +2611,8 @@ div.chocolat-wrapper .chocolat-close {
 }
 #prefooter ul li a {
   color: #fff;
-  font-family: "PlayfairBold";
+  font-family: "Playfair Display";
+  font-weight: 700;
   opacity: 0.3;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -2688,9 +2669,9 @@ article .info span {
 }
 article h2 {
   color: #333;
-  font-family: "PlayfairRegular";
+  font-family: "Playfair Display";
   font-size: 1.125rem;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.3em;
   margin: 15px auto 0 auto;
   text-align: center;
@@ -2837,9 +2818,9 @@ article .image .linkImage {
 }
 .single-article .title-article {
   color: #333;
-  font-family: "PlayfairRegular";
+  font-family: "Playfair Display";
   font-size: 3rem;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.3em;
   margin: 20px auto;
   max-width: 700px;
@@ -3837,7 +3818,8 @@ article .image .linkImage {
 }
 .grid h2.title {
   color: #333;
-  font-family: "PlayfairBold";
+  font-family: "Playfair Display";
+  font-weight: 700;
   font-size: 1.625rem;
 }
 .grid .grid-sizer {
@@ -4002,8 +3984,9 @@ article .image .linkImage {
 }
 .contact h2.title {
   color: #333;
-  font-family: "PlayfairBold";
+  font-family: "Playfair Display";
   font-size: 1.625rem;
+  font-weight: 700;
   margin-bottom: 60px;
 }
 .contact .coords {
@@ -4236,7 +4219,8 @@ article .image .linkImage {
   font-style: italic;
   display: block;
   padding-bottom: 10px;
-  font-family: "PlayfairBold";
+  font-family: "Playfair Display";
+  font-weight: 700;
 }
 .categorie-items article .infos-item-list .date-item {
   font-weight: 100;
@@ -4507,8 +4491,9 @@ article .image .linkImage {
 }
 
 .list-channels #live h2 {
-  font-family: "PlayfairBold";
+  font-family: "Playfair Display";
   font-size: 1.750rem;
+  font-weight: 700;
   letter-spacing: 0.5em;
 }
 .list-channels #live .img {
