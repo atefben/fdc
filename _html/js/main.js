@@ -620,6 +620,15 @@ $(document).ready(function() {
 
   }
 
+  $('body').on('mouseover', '.chocolat-image', function() {
+    $(this).attr('data-title', $(this).attr('title'));
+    $(this).removeAttr('title');
+  });
+
+  $('body').on('mouseout', '.chocolat-image', function() {
+    $(this).attr('title', $(this).attr('data-title'));
+  });
+
   initSlideshows();
 
   $('body').on('mouseout', '.chocolat-content', function(){
