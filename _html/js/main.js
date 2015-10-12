@@ -19,6 +19,7 @@
 // 17. All Photos
 // 18. Contact
 // 19. Webtv
+// 20. FAQ
 // =========================
 
 
@@ -1394,5 +1395,20 @@ $(document).ready(function() {
     sliderTrailers.owlCarousel();
   }
 
+    
+  // 19. FAQ
+  // =========================
+    $(".faq-article-active").find("i.fa").removeClass("fa-plus").addClass("fa-minus");
+    $(".faq-container article").click(function(){
+        var i;
+        i = $(this).find("i.fa");
+        if($(this).hasClass("faq-article-active")){
+            $(this).removeClass("faq-article-active");
+             i.removeClass("fa-minus").addClass("fa-plus");
+        }else{
+            $(this).addClass("faq-article-active");
+            i.removeClass("fa-plus").addClass("fa-minus");
+        }
+    });
 
 });

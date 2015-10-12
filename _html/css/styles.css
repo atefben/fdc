@@ -4771,6 +4771,7 @@ article .image .linkImage {
   padding: 20px 18px;
   max-height: 100px;
   overflow: hidden;
+  transition: 1s;
 }
 .faq section article h3 {
   font-size: 1rem;
