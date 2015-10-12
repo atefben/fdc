@@ -42,7 +42,7 @@
             <div class="title-list-cat">
                 <h2 class="titre-document">Dans le cadre de Cannes Classics, seront projetés les documentaires sur le cinéma suivants :</h2>
             </div>
-            <article style="background-image:url(img/films/film-hover-documantaire2.jpg)">
+            <article style="background-image:url(img/films/film-hover-documantaire2.jpg)" contenteditable="">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-documentaire1.jpg" alt="images films">

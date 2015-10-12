@@ -4143,6 +4143,7 @@ article .image .linkImage {
   margin-bottom: 0px;
   width: 549px;
   margin: 0 auto;
+  font-size: 1rem;
 }
 .categorie-items .title-list-cat .title-item {
   text-align: center;
@@ -4162,7 +4163,7 @@ article .image .linkImage {
   letter-spacing: 3px;
 }
 .categorie-items article {
-  height: auto;
+  height: 418px;
   box-sizing: border-box;
   float: none;
   padding-left: 0px;
@@ -4176,7 +4177,8 @@ article .image .linkImage {
   background-color: #141414;
   width: 100%;
   padding: 32px;
-  min-height: 405px;
+  height: 418px;
+  display: table;
   -moz-transition-property: background;
   -o-transition-property: background;
   -webkit-transition-property: background;
@@ -4194,6 +4196,7 @@ article .image .linkImage {
   width: 977px;
   max-width: 100%;
   margin: 0 auto;
+  display: table;
 }
 .categorie-items article .contain_item .list-camera-or .title-item {
   padding-top: 85px;
@@ -4201,15 +4204,19 @@ article .image .linkImage {
 .categorie-items article img {
   float: left;
   margin-right: 100px;
+  margin-left: 70px;
 }
 .categorie-items article .infos-item-list {
   text-align: center;
   vertical-align: middle;
-  padding-top: 50px;
+  padding-top: 30px;
+  width: 848px;
+  display: table-cell;
 }
 .categorie-items article .infos-item-list .title-item {
   text-transform: uppercase;
   padding-bottom: 10px;
+  font-size: 0.88rem;
 }
 .categorie-items article .infos-item-list .sub-title-item {
   padding-bottom: 10px;
@@ -4221,15 +4228,18 @@ article .image .linkImage {
   padding-bottom: 10px;
   font-family: "Playfair Display";
   font-weight: 700;
+  font-size: 0.815rem;
 }
 .categorie-items article .infos-item-list .date-item {
   font-weight: 100;
   padding-bottom: 10px;
   color: #656565;
+  font-size: 0.7rem;
 }
 .categorie-items article .infos-item-list .description-item {
   padding-top: 32px;
   line-height: 1.5;
+  font-size: 0.88rem;
 }
 .categorie-items article .infos-item-list .description-item strong {
   color: #c8a461;
@@ -4260,7 +4270,7 @@ article .image .linkImage {
 }
 .list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
-  font-size: 2rem;
+  font-size: 1.75rem;
   padding-top: 155px;
 }
 .list-article .bandeau-list .bandeau-list-img .bandeau-lien {
@@ -4270,7 +4280,7 @@ article .image .linkImage {
   display: block;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 .list-article .bandeau-list .sub-nav-list {
   width: 1000px;
@@ -4295,18 +4305,22 @@ article .image .linkImage {
 }
 .palmares-list .categorie-items article .infos-item-list {
   text-align: center;
-  /* padding-top: 50px; */
-  display: inline-block;
-  vertical-align: top;
+  padding-top: 0px;
+  display: table-cell;
   /* padding-bottom: 82px; */
   /* padding-left: 100px; */
 }
 .palmares-list .categorie-items article img {
   float: none;
   display: inline-block;
+  margin-left: 0px;
 }
 .palmares-list .categorie-items article .lot-item {
   padding-top: 0px;
+}
+.palmares-list .categorie-items article .contain_item {
+  height: 336px;
+  width: 680px;
 }
 .palmares-list .categorie-items article .infos-item-list {
   position: relative;

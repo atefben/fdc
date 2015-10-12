@@ -16,18 +16,23 @@
             }
             .infos-item-list{
                 text-align: center;
-                /* padding-top: 50px; */
-                display: inline-block;
-                vertical-align: top;
+                padding-top: 0px;
+                display: table-cell;
+//                vertical-align: top;
                 /* padding-bottom: 82px; */
                 /* padding-left: 100px; */
             }
             img{
                 float: none;
                 display: inline-block;
+                margin-left: 0px;
             }
             .lot-item{
                 padding-top: 0px;
+            }
+            .contain_item{
+                height: 336px;
+                width: 680px;
             }
             .infos-item-list{
                 position: relative;
