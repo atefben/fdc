@@ -15,8 +15,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class WebTvRepository extends EntityRepository
 {
+    /**
+     * get an array of WebTvs of current $festival and verify publish date is between $dateTime
+     *
+     * @param $festival
+     * @param $dateTime
+     * @return mixed
+     */
     public function getApiWebTvs($festival, $dateTime)
     {
+
         return $this->createQueryBuilder('wt')
             ->join('wt.mediaVideos', 'mv')
             ->join('mv.sites', 's')
@@ -40,15 +48,20 @@ class WebTvRepository extends EntityRepository
             ->getQuery();
     }
 
-    public function getApiWebTv($festival, $dateTime, $id)
+    /**
+     * Get a webTv by $id and verify publish date is between $dateTime
+     * @param $id
+     * @param $dateTime
+     * @return mixed
+     */
+    public function getApiWebTv($id, $dateTime)
     {
         return $this->createQueryBuilder('wt')
             ->join('wt.mediaVideos', 'mv')
             ->join('mv.sites', 's')
             ->join('wt.translations', 'wtt')
             ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->andWhere('s.slug = :site')
+            ->where('s.slug = :site')
             ->andWhere('mv.inWebTv = :inWebTv')
             ->andWhere('mvt.locale = :locale')
             ->andWhere('mvt.status = :status')
@@ -58,12 +71,12 @@ class WebTvRepository extends EntityRepository
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
             ->andWhere('mv.id = :id')
             ->setParameter('id', $id)
-            ->setParameter('festival', $festival)
             ->setParameter('inWebTv', true)
             ->setParameter('locale', 'fr')
             ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
-            ->getQuery();
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 }

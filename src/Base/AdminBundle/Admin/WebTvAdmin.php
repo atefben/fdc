@@ -63,6 +63,12 @@ class WebTvAdmin extends Admin
                         'field_type' => 'choice',
                         'choices' => WebTvTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
                     )
                 ),
             ))

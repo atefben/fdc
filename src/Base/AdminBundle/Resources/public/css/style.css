@@ -1,8 +1,15 @@
 /* GLOBAL */
 
-/* fix entities list on small screen (add a scrollbar) */
-.box.box-primary {
-    overflow-x : auto;
+/* fix entities list on small screen (add a scrollbar), breaks the download button (must scroll to select the list) */
+.box .box-body {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.sonata-ba-list .pull-right {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
 
 /* remove margin on helper msg of form fields */

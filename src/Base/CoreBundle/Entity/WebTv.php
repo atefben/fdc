@@ -13,6 +13,8 @@ use Base\CoreBundle\Util\TranslationByLocale;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * WebTv
  *
@@ -48,6 +50,7 @@ class WebTv
      * @var ArrayCollection
      *
      * @Groups({"web_tv_list", "web_tv_show"})
+     * @Assert\Valid()
      */
     protected $translations;
 

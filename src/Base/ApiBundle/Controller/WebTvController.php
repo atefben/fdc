@@ -29,7 +29,7 @@ class WebTvController extends FOSRestController
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get all web tvs",
+     *   description = "Get web tvs of festival_id",
      *   section="Web Tvs",
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -62,15 +62,6 @@ class WebTvController extends FOSRestController
         // @TODO only where status is translated
 
         $query = $em->getRepository('BaseCoreBundle:WebTv')->getApiWebTvs($festival, new DateTime());
-       /* $dql = "SELECT wt FROM {$this->repository} wt JOIN wt.mediaVideos mv
-          WHERE mv.festival = :festival AND mv.inWebTv = :inWebTv";
-
-        $dql =
-
-        $query = $em
-            ->createQuery($dql)
-            ->setParameter('festival', $festival)
-            ->setParameter('inWebTv', true);*/
 
         // get items
         $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
@@ -95,7 +86,7 @@ class WebTvController extends FOSRestController
      * @Rest\View()
      * @ApiDoc(
      *  resource = true,
-     *  description = "Get a web tv by $id",
+     *  description = "Get a web tv by id",
      *  section="Web Tvs",
      *  statusCodes = {
      *     200 = "Returned when successful",
@@ -110,28 +101,22 @@ class WebTvController extends FOSRestController
      *      }
      *  },
      *  output={
-     *      "class"="Base\CoreBundle\Entity\FilmFilm",
+     *      "class"="Base\CoreBundle\Entity\WebTv",
      *      "groups"={"web_tv_show", "time"}
      *  }
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
-     * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
      * @return View
      */
     public function getWebTvAction(Paramfetcher $paramFetcher, $id)
     {
-        // get festival
-        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
-        if ($festival === null) {
-            return $this->view(array(), 404);
-        }
 
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 
         $em = $this->getDoctrine()->getManager();
-        $film = $em->getRepository($this->repository)->findOneById($id);
+        $entity = $em->getRepository('BaseCoreBundle:WebTv')->getApiWebTv($id, new DateTime());
 
         // set context view
         $groups = array('web_tv_list', 'time');
@@ -139,7 +124,8 @@ class WebTvController extends FOSRestController
         $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->setVersion($version);
 
-        $view = $this->view($film, 200);
+        $statusCode = ($entity !== null) ? 200 : 204;
+        $view = $this->view($entity, $statusCode);
         $view->setSerializationContext($context);
 
         return $view;
