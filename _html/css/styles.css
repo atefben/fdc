@@ -63,6 +63,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .owl-carousel .owl-stage {
+  cursor: move;
+  /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
   position: relative;
   -ms-touch-action: pan-Y;
 }
@@ -133,18 +138,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .owl-grab {
-  cursor: move;
-  cursor: -webkit-grabbing;
-  cursor: -o-grab;
-  cursor: -ms-grab;
-  cursor: grab;
+  cursor: grabbing !important;
+  cursor: -moz-grabbing !important;
+  cursor: -webkit-grabbing !important;
 }
-.owl-grab .owl-item, .owl-grab .linkVid {
-  cursor: move;
+.owl-grab .owl-item, .owl-grab .linkVid, .owl-grab .owl-stage {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
-  cursor: -o-grab;
-  cursor: -ms-grab;
-  cursor: grab;
 }
 
 .owl-carousel.owl-rtl {
