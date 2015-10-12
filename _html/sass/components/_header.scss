@@ -9,10 +9,17 @@
 
 header {
   background-color: $dark;
+  position: relative;
   width: 100%;
+  z-index: 3;
 
   #sticky-user {
-    display: none
+    font-size: 0.750rem;
+    opacity: 0;
+    visibility: hidden;
+    @include transform(translateY(-5px));
+    @include transition(opacity 0.3s $smoothTransition, transform 0.3s $smoothTransition);
+    transition-delay: 0;
   }
 
   &.sticky {
@@ -21,15 +28,17 @@ header {
     @include transform(translateZ(0));
     z-index: 15;
 
-    #top-bar {
+    #top-bar, h1 {
       display: none;
     }
 
     #sticky-user {
-      display: block;
+      opacity: 1;
+      visibility: visible;
+      @include transform(translateY(0));
       float: right;
-      font-size: 0.750rem;
       margin-top: 18px;
+      transition-delay: 0.5s;
 
       .user-nav {
         border: none;
@@ -53,14 +62,21 @@ header {
           width: 72px;
         }
 
-        h1 {
+        h2 {
+          display: none;
+        }
+
+        p.stick {
           float: left;
           font-size: 1.1rem;
           margin: 12px 0 0 30px;
-        }
+          opacity: 1;
+          visibility: visible;
 
-        h2 {
-          display: none;
+          &:after {
+            transition-delay: 0.4s;
+            width: 0;
+          }
         }
       }
 
@@ -187,7 +203,7 @@ header {
       vertical-align: middle;
       width: 215px;
 
-      h1 {
+      h1, p.stick {
         font-family: $CamphorBold;
         font-size: 1.250rem;
         font-weight: normal;
@@ -195,6 +211,25 @@ header {
         a {
           color: $gold;
           text-transform: uppercase;
+        }
+      }
+
+      p.stick {
+        opacity: 0;
+        visibility: hidden;
+        position: relative;
+
+        &:after {
+          content: '';
+          display: block;
+          background-color: $black;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          @include transition(width .5s $smoothTransition);
         }
       }
 
@@ -214,6 +249,7 @@ header {
         display: block;
         margin: 0 auto;
         width: 145px;
+        @include transition(width 0.3s $smoothTransition);
       }
     }
 

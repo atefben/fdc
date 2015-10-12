@@ -75,7 +75,7 @@
           left: 0;
           height: 100%;
           width: 100%;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.5s $smoothTransition);
         }
 
         img {
@@ -86,7 +86,7 @@
         &.active {
 
           &:after {
-            border-width: 4px;
+            border-width: 6px;
             opacity: 1;
             visibility: visible;
           }
@@ -100,7 +100,7 @@
           cursor: pointer;
 
           &:after {
-            border-width: 4px;
+            border-width: 6px;
             opacity: 1;
             visibility: visible;
           }
@@ -126,6 +126,7 @@
         display: block;
         margin: 0 auto;
         max-width: 100%;
+        @include transition(all 6s $smoothTransition);
       }
 
       &.active {
@@ -181,6 +182,10 @@
         &:after {
           opacity: 1;
           visibility: visible;
+        }
+
+        img {
+          @include transform(scale(1.1));
         }
       }
     }

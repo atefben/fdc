@@ -233,8 +233,11 @@
           <h2 class="title">Focus</h2>
           <div class="articles">
             <article class="article" data-format="article" data-theme="competition">
-              <div class="image" style="background-image: url('img/articles/03.jpg')">
-                <a href="article.php"></a>
+              <div class="image">
+                <div class="image-wrapper">
+                  <img src="img/articles/03.jpg" alt="" />
+                </div>
+                <a href="article.php" class="linkImage"></a>
                 <span class="picto"></span>
               </div>
               <div class="info">
@@ -243,8 +246,11 @@
               </div>
             </article>
             <article class="video" data-format="video" data-theme="photocall">
-              <div class="image" style="background-image: url('img/articles/03.jpg')">
-                <a href="article.php"></a>
+              <div class="image">
+                <div class="image-wrapper">
+                  <img src="img/articles/03.jpg" alt="" />
+                </div>
+                <a href="article.php" class="linkImage"></a>
                 <span class="picto"></span>
               </div>
               <div class="info">
@@ -258,8 +264,11 @@
           <h2 class="title">Le même jour</h2>
           <div class="articles center">
             <article class="article" data-format="article" data-theme="competition">
-              <div class="image" style="background-image: url('img/articles/03.jpg')">
-                <a href="article.php"></a>
+              <div class="image">
+                <div class="image-wrapper">
+                  <img src="img/articles/03.jpg" alt="" />
+                </div>
+                <a href="article.php" class="linkImage"></a>
                 <span class="picto"></span>
               </div>
               <div class="info">
@@ -268,8 +277,11 @@
               </div>
             </article>
             <article class="video" data-format="video" data-theme="photocall">
-              <div class="image" style="background-image: url('img/articles/03.jpg')">
-                <a href="article.php"></a>
+              <div class="image">
+                <div class="image-wrapper">
+                  <img src="img/articles/03.jpg" alt="" />
+                </div>
+                <a href="article.php" class="linkImage"></a>
                 <span class="picto"></span>
               </div>
               <div class="info">
@@ -278,8 +290,11 @@
               </div>
             </article>
             <article class="photo" data-format="photo" data-theme="photograph">
-              <div class="image" style="background-image: url('img/articles/03.jpg')">
-                <a href="article.php"></a>
+              <div class="image">
+                <div class="image-wrapper">
+                  <img src="img/articles/03.jpg" alt="" />
+                </div>
+                <a href="article.php" class="linkImage"></a>
                 <span class="picto"></span>
               </div>
               <div class="info">

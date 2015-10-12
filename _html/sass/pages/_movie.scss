@@ -49,8 +49,7 @@
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
-      opacity: 0;
-      visibility: hidden;
+      @include transform(translateY(350px));
     }
 
     @include breakpoint(1600px) {
@@ -76,8 +75,7 @@
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
-      opacity: 0;
-      visibility: hidden;
+      @include transform(translateY(350px));
     }
 
     @include breakpoint(1600px) {
@@ -191,6 +189,10 @@
         opacity: 1;
         visibility: visible;
       }
+
+      .links {
+        top: -60px;
+      }
     }
 
     &:after {
@@ -222,6 +224,7 @@
       left: 0;
       width: 100%;
       z-index: 2;
+      @include transition(all 0.3s $smoothTransition);
 
       a {
         color: #fff;
@@ -262,17 +265,23 @@
         margin-top: 0;
       }
 
-      &.trailer {
-        opacity: 0;
-        visibility: hidden;
-      }
-
       &.prev {
         left: 2%;
+
+        &.trailer {
+          background-color: transparent;
+          left: -85px;
+        }
       }
 
       &.next {
+        left: auto;
         right: 2%;
+
+        &.trailer {
+          background-color: transparent;
+          right: -85px;
+        }
       }
     }
   }
@@ -675,6 +684,12 @@
           line-height: 50px;
           margin: 15px 20px 0 0;
           padding: 0 40px;
+
+          &:hover {
+            background-color: transparent;
+            border-color: #fff;
+            color: $gold;
+          }
         }
       }
     }

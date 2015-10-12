@@ -101,8 +101,29 @@ article {
     visibility: visible;
   }
 
+  &:hover .image-wrapper img {
+    @include transform(scale(1.1) translateZ(0));
+  }
+
   .image {
-    background-size: cover;
+    .image-wrapper {
+      overflow: hidden;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+
+      img {
+        position: absolute;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        @include transition(all 0.7s $smoothTransition);
+      }
+      
+    }
+
     height: 165px;
     margin-bottom: 20px;
     position: relative;
@@ -120,6 +141,7 @@ article {
       position: absolute;
       top: 15px;
       right: 15px;
+      z-index: 1;
 
       @include transition(all 0.3s $smoothTransition);
 

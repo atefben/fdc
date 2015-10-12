@@ -91,35 +91,35 @@
     }
 
     &:nth-child(2) {
-      @include transition(opacity .3s $smoothTransition 0.2s, transform .3s $smoothTransition 0.2s, color .3s $smoothTransition);
+      @include transition(opacity .3s $smoothTransition 0.15s, transform .3s $smoothTransition 0.15s, color .3s $smoothTransition);
     }
 
     &:nth-child(3) {
-      @include transition(opacity .3s $smoothTransition 0.3s, transform .3s $smoothTransition 0.3s, color .3s $smoothTransition);
+      @include transition(opacity .3s $smoothTransition 0.2s, transform .3s $smoothTransition 0.2s, color .3s $smoothTransition);
     }
 
     &:nth-child(4) {
-      @include transition(opacity .3s $smoothTransition 0.4s, transform .3s $smoothTransition 0.4s, color .3s $smoothTransition);
+      @include transition(opacity .3s $smoothTransition 0.25s, transform .3s $smoothTransition 0.25s, color .3s $smoothTransition);
     }
 
     &:nth-child(5) {
-      @include transition(opacity .3s $smoothTransition 0.5s, transform .3s $smoothTransition 0.5s, color .3s $smoothTransition);
+      @include transition(opacity .3s $smoothTransition 0.3s, transform .3s $smoothTransition 0.3s, color .3s $smoothTransition);
     }
 
     &:nth-child(6) {
-      @include transition(opacity .3s $smoothTransition 0.6s, transform .3s $smoothTransition 0.6s, color .3s $smoothTransition);
+      @include transition(opacity .3s $smoothTransition 0.35s, transform .3s $smoothTransition 0.35s, color .3s $smoothTransition);
     }
 
     &:nth-child(7) {
-      @include transition(opacity .3s $smoothTransition 0.7s, transform .3s $smoothTransition 0.7s, color .3s $smoothTransition);
+      @include transition(opacity .3s $smoothTransition 0.4s, transform .3s $smoothTransition 0.4s, color .3s $smoothTransition);
     }
 
     &:nth-child(8) {
-      @include transition(opacity .3s $smoothTransition 0.8s, transform .3s $smoothTransition 0.8s, color .3s $smoothTransition);
+      @include transition(opacity .3s $smoothTransition 0.45s, transform .3s $smoothTransition 0.45s, color .3s $smoothTransition);
     }
 
     &:nth-child(9) {
-      @include transition(opacity .3s $smoothTransition 0.9s, transform .3s $smoothTransition 0.9s, color .3s $smoothTransition);
+      @include transition(opacity .3s $smoothTransition 0.5s, transform .3s $smoothTransition 0.5s, color .3s $smoothTransition);
     }
     
   }

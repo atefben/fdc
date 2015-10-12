@@ -70,7 +70,10 @@
             <div id="articles-wrapper">
               <div class="articles left">
                 <article class="article double" data-format="article" data-theme="cinema">
-                  <div class="image" style="background-image: url('img/articles/01.jpg')">
+                  <div class="image">
+                    <div class="image-wrapper">
+                      <img src="img/articles/01.jpg" alt="" />
+                    </div>
                     <a href="article.php" class="linkImage"></a>
                     <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
@@ -81,7 +84,10 @@
                   </div>
                 </article>
                 <article class="audio" data-format="audio" data-theme="press">
-                  <div class="image" style="background-image: url('img/articles/02.jpg')">
+                  <div class="image">
+                    <div class="image-wrapper">
+                      <img src="img/articles/02.jpg" alt="" />
+                    </div>
                     <a href="article.php" class="linkImage"></a>
                     <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
@@ -92,7 +98,10 @@
                   </div>
                 </article>
                 <article class="video" data-format="video" data-theme="steps">
-                  <div class="image" style="background-image: url('img/articles/03.jpg')">
+                  <div class="image">
+                    <div class="image-wrapper">
+                      <img src="img/articles/03.jpg" alt="" />
+                    </div>
                     <a href="article.php" class="linkImage"></a>
                     <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
@@ -158,7 +167,10 @@
 
               <div class="articles center">
                 <article class="article" data-format="article" data-theme="competition">
-                  <div class="image" style="background-image: url('img/articles/03.jpg')">
+                  <div class="image">
+                    <div class="image-wrapper">
+                      <img src="img/articles/03.jpg" alt="" />
+                    </div>
                     <a href="article.php" class="linkImage"></a>
                     <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
@@ -169,7 +181,10 @@
                   </div>
                 </article>
                 <article class="video" data-format="video" data-theme="photocall">
-                  <div class="image" style="background-image: url('img/articles/03.jpg')">
+                  <div class="image">
+                    <div class="image-wrapper">
+                      <img src="img/articles/03.jpg" alt="" />
+                    </div>
                     <a href="article.php" class="linkImage"></a>
                     <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
@@ -180,7 +195,10 @@
                   </div>
                 </article>
                 <article class="photo" data-format="photo" data-theme="photograph">
-                  <div class="image" style="background-image: url('img/articles/03.jpg')">
+                  <div class="image">
+                    <div class="image-wrapper">
+                      <img src="img/articles/03.jpg" alt="" />
+                    </div>
                     <a href="article.php" class="linkImage"></a>
                     <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                     <span class="picto"></span>
@@ -505,7 +523,10 @@
       </div>
       <div class="push-container">
         <div class="container">
-          <div class="push" style="background-image: url('img/push/push01.jpg');">
+          <div class="push">
+            <div class="image-wrapper">
+              <img src="img/push/push01.jpg" alt="" />
+            </div>
             <div class="vCenter">
               <div class="vCenterKid">
                 <h3>Le Jury</h3>
@@ -513,7 +534,10 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push" style="background-image: url('img/push/push02.jpg');">
+          <div class="push">
+            <div class="image-wrapper">
+              <img src="img/push/push02.jpg" alt="" />
+            </div>
             <div class="vCenter">
               <div class="vCenterKid">
                 <h3>Le palmares</h3>
@@ -521,7 +545,10 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push" style="background-image: url('img/push/push03.jpg');">
+          <div class="push">
+            <div class="image-wrapper">
+              <img src="img/push/push03.jpg" alt="" />
+            </div>
             <div class="vCenter">
               <div class="vCenterKid">
                 <h3>La programmation</h3>
@@ -533,7 +560,10 @@
       </div>
       <div class="push-container white">
         <div class="container">
-          <div class="push" style="background-image: url('img/push/push04.jpg');">
+          <div class="push">
+            <div class="image-wrapper">
+              <img src="img/push/push04.jpg" alt="" />
+            </div>
             <div class="vCenter">
               <div class="vCenterKid">
                 <h3>Espace presse</h3>
@@ -541,7 +571,10 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push right" style="background-image: url('img/push/push05.jpg');">
+          <div class="push right">
+            <div class="image-wrapper">
+              <img src="img/push/push05.jpg" alt="" />
+            </div>
             <div class="vCenter">
               <div class="vCenterKid">
                 <h3>Participer<br />au festival</h3>
@@ -549,7 +582,10 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push bigger" style="background-image: url('img/push/push06.jpg');">
+          <div class="push bigger">
+            <div class="image-wrapper">
+              <img src="img/push/push06.jpg" alt="" />
+            </div>
             <div class="vCenter">
               <div class="vCenterKid">
                 <h3>L'oeil du photographe</h3>
@@ -557,7 +593,10 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push center" style="background-image: url('img/push/push07.jpg');">
+          <div class="push center">
+            <div class="image-wrapper">
+              <img src="img/push/push07.jpg" alt="" />
+            </div>
             <div class="vCenter">
               <div class="vCenterKid">
                 <h3>Les évènements</h3>
@@ -565,7 +604,10 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push" style="background-image: url('img/push/push08.jpg');">
+          <div class="push">
+            <div class="image-wrapper">
+              <img src="img/push/push08.jpg" alt="" />
+            </div>
             <div class="vCenter">
               <div class="vCenterKid">
                 <h3>69 ans d'archives</h3>
