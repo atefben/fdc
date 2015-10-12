@@ -28,7 +28,7 @@
     <h2 class="title">Plan du site</h2>
     <section class="sitemap-container">
         <article class="sitemap-item">
-            <h3 class="title sitemap-item-title">L'acutalité</h3>
+            <h3 class="title sitemap-item-title">L'actualité</h3>
             <ul>
               <li><a href="#">Jour après jour</a></li>
               <li><a href="article.php">Articles</a></li>
@@ -48,10 +48,14 @@
         <article class="sitemap-item">
             <h3 class="title sitemap-item-title">Les films</h3>
             <ul>
-              <li><a href="#">Sélection officielle</a></li>
-              <li><a href="#">Cannes classics</a></li>
-              <li><a href="films_cinemadelaplage.php">Cinéma de la plage</a></li>
-              <li><a href="films_camerador.php">Caméra d'or</a></li> 
+                <li><a href="#">Compétition</a></li>
+                <li><a href="#">Un Certain Regard</a></li>
+                <li><a href="#">Hors Compétition</a></li>
+                <li><a href="#">Séances Spéciales</a></li>
+                <li><a href="#">Cinéfondation</a></li>
+                <li><a href="#">Courts Métrages</a></li>
+                <li><a href="#">Cannes Classics</a></li>
+                <li><a href="#">Cinéma de la Plage</a></li>
             </ul>
         </article>
         <article class="sitemap-item">
@@ -76,14 +80,13 @@
         <article class="sitemap-item">
             <h3 class="title sitemap-item-title">Les évènements</h3>
             <ul>
-               <li><a href="#">Lecçon</a></li>
+               <li><a href="#">Leçons</a></li>
                <li><a href="#">Expositions</a></li>
                <li><a href="#">Rendez-vous eutropéen</a></li>
-               <li><a href="#">Leçon de musique</a></li>
-               <li><a href="#">Leçon de cinéma</a></li>
-               <li><a href="#">Leçon d'acteur</a></li>
+               <li><a href="#">Leçons de musique</a></li>
+               <li><a href="#">Leçons de cinéma</a></li>
+               <li><a href="#">Leçons d'acteur</a></li>
                <li><a href="#">Hommages</a></li>
-               <li><a href="#">Village international</a></li> 
             </ul>
         </article>
         <article class="sitemap-item">
@@ -96,7 +99,7 @@
                     <a href="#">Festival mode d'emploi</a>
                 </li>
                 <li>
-                    <a href="#">Accès aus projections</a>
+                    <a href="#">Accès aux projections</a>
                 </li>
                 <li>
                     <a href="#">Partenaires</a>
@@ -125,7 +128,7 @@
                     <a href="#">Programmation</a>
                 </li>
                 <li>
-                    <a href="#">Médiathèsuqe</a>
+                    <a href="#">Médiathèque</a>
                 </li>
                 <li>
                     <a href="#">À télécharger</a>
