@@ -166,29 +166,6 @@ class MediaVideoTranslation implements MediaTranslationInterface
     }
 
     /**
-     * Set theme
-     *
-     * @param \Base\CoreBundle\Entity\Theme $theme
-     * @return MediaImageTranslation
-     */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \Base\CoreBundle\Entity\Theme
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
      * Set akamaiId
      *
      * @param integer $akamaiId
