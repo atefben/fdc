@@ -66,7 +66,9 @@ $(document).ready(function() {
     $('#main').addClass('overlay');
     $('.main>li').not($(this)).addClass('fade');
   }, function() {
-    $('#main').removeClass('overlay');
+    if(!$('#selection').hasClass('open')) {
+      $('#main').removeClass('overlay');
+    }
     $('.main li').removeClass('fade');
   });
 
