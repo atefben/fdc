@@ -51,6 +51,34 @@ class FilmFestival
     private $year;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $festivalStartsAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $festivalEndsAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $marcheDuFilmStartsAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $marcheduFilmEndsAt;
+
+    /**
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="festival")
      */
     private $awards;
@@ -365,5 +393,98 @@ class FilmFestival
     public function getMediaVideos()
     {
         return $this->mediaVideos;
+    }
+
+
+    /**
+     * Set festivalStartsAt
+     *
+     * @param \DateTime $festivalStartsAt
+     * @return FilmFestival
+     */
+    public function setFestivalStartsAt($festivalStartsAt)
+    {
+        $this->festivalStartsAt = $festivalStartsAt;
+
+        return $this;
+    }
+
+    /**
+     * Get festivalStartsAt
+     *
+     * @return \DateTime 
+     */
+    public function getFestivalStartsAt()
+    {
+        return $this->festivalStartsAt;
+    }
+
+    /**
+     * Set festivalEndsAt
+     *
+     * @param \DateTime $festivalEndsAt
+     * @return FilmFestival
+     */
+    public function setFestivalEndsAt($festivalEndsAt)
+    {
+        $this->festivalEndsAt = $festivalEndsAt;
+
+        return $this;
+    }
+
+    /**
+     * Get festivalEndsAt
+     *
+     * @return \DateTime 
+     */
+    public function getFestivalEndsAt()
+    {
+        return $this->festivalEndsAt;
+    }
+
+    /**
+     * Set marcheDuFilmStartsAt
+     *
+     * @param \DateTime $marcheDuFilmStartsAt
+     * @return FilmFestival
+     */
+    public function setMarcheDuFilmStartsAt($marcheDuFilmStartsAt)
+    {
+        $this->marcheDuFilmStartsAt = $marcheDuFilmStartsAt;
+
+        return $this;
+    }
+
+    /**
+     * Get marcheDuFilmStartsAt
+     *
+     * @return \DateTime 
+     */
+    public function getMarcheDuFilmStartsAt()
+    {
+        return $this->marcheDuFilmStartsAt;
+    }
+
+    /**
+     * Set marcheduFilmEndsAt
+     *
+     * @param \DateTime $marcheduFilmEndsAt
+     * @return FilmFestival
+     */
+    public function setMarcheduFilmEndsAt($marcheduFilmEndsAt)
+    {
+        $this->marcheduFilmEndsAt = $marcheduFilmEndsAt;
+
+        return $this;
+    }
+
+    /**
+     * Get marcheduFilmEndsAt
+     *
+     * @return \DateTime 
+     */
+    public function getMarcheduFilmEndsAt()
+    {
+        return $this->marcheduFilmEndsAt;
     }
 }

@@ -27,7 +27,11 @@ class FestivalManager extends CoreManager
         $this->entityIdKey = 'Id';
         $this->mapper = array(
             'setId' => $this->entityIdKey,
-            'setYear' => 'Annee'
+            'setYear' => 'Annee',
+            'setMarcheDuFilmStartsAt' => 'BeginingMarcheDuFilmDate',
+            'setMarcheDuFilmEndsAt' => 'EndingMarcheDuFilmDate',
+            'setFestivalStartsAt' => 'BeginingFestivalDate',
+            'setFestivalEndsAt' => 'EndingFestivalDate',
         );
     }
     

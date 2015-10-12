@@ -15,7 +15,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  */
 class FilmTrailerController extends FOSRestController
 {
-    private $repository = 'BaseCoreBundle:Film';
+    private $repository = 'BaseCoreBundle:FilmFilm';
     /**
      * Return an array of filmtrailers, can be filtered with page / offset parameters
      *

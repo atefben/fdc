@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -29,36 +31,32 @@ class Settings
     protected $id;
 
     /**
-     * @var datetime
+     * @var string
      *
-     * @ORM\Column(type="datetime", nullable=false)
-     *
-     * @Assert\NotBlank()
-     * @Assert\Date()
-     * @Assert\Expression(
-     *     "this.getFestivalStartsAt() <= this.getFestivalEndsAt()",
-     *     message="La date de début doit etre inférieure à la date de fin"
-     * )
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    protected $festivalStartsAt;
+    protected $name;
 
     /**
-     * @var datetime
+     * @var string
      *
-     * @ORM\Column(type="datetime", nullable=false)
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    protected $slug;
+
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="settings")
      *
      * @Assert\NotBlank()
-     * @Assert\Date()
-     * @Assert\Expression(
-     *     "this.getFestivalEndsAt() >= this.getFestivalStartsAt()",
-     *     message="La date de fin doit etre supérieure à la date de début"
-     * )
      */
-    protected $festivalEndsAt;
+    protected $festival;
 
     public function getYear()
     {
-        return $this->getFestivalStartsAt()->format('Y');
+        return $this->getFestival()->getFestivalStartsAt()->format('Y');
     }
 
     /**
@@ -72,48 +70,72 @@ class Settings
     }
 
     /**
-     * Set festivalStartsAt
+     * Set name
      *
-     * @param \DateTime $festivalStartsAt
+     * @param string $name
      * @return Settings
      */
-    public function setFestivalStartsAt($festivalStartsAt)
+    public function setName($name)
     {
-        $this->festivalStartsAt = $festivalStartsAt;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get festivalStartsAt
+     * Get name
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getFestivalStartsAt()
+    public function getName()
     {
-        return $this->festivalStartsAt;
+        return $this->name;
     }
 
     /**
-     * Set festivalEndsAt
+     * Set slug
      *
-     * @param \DateTime $festivalEndsAt
+     * @param string $slug
      * @return Settings
      */
-    public function setFestivalEndsAt($festivalEndsAt)
+    public function setSlug($slug)
     {
-        $this->festivalEndsAt = $festivalEndsAt;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Get festivalEndsAt
+     * Get slug
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getFestivalEndsAt()
+    public function getSlug()
     {
-        return $this->festivalEndsAt;
+        return $this->slug;
+    }
+    
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return Settings
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }
