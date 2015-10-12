@@ -4220,6 +4220,7 @@ article .image .linkImage {
 }
 .categorie-items article .infos-item-list .sub-title-item {
   padding-bottom: 10px;
+  font-size: 0.63rem;
 }
 .categorie-items article .infos-item-list .nom-item {
   color: #c8a461;
