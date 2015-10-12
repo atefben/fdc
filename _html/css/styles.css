@@ -4716,3 +4716,46 @@ article .image .linkImage {
   font-size: 0.89rem;
   color: #c8a461;
 }
+
+.legal-notice h2 {
+  padding: 60px;
+  font-size: 28px;
+}
+.legal-notice section {
+  background-color: #fff;
+  width: 630px;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #666666;
+  padding-bottom: 150px;
+}
+.legal-notice section .legal-notice-description {
+  padding-bottom: 40px;
+}
+.legal-notice section .legal-notice-responsable p strong {
+  font-family: "Camphor W01 Bold";
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.89rem;
+  color: #000;
+}
+.legal-notice section .legal-notice-responsable p:first-child {
+  padding-bottom: 18px;
+}
+.legal-notice section article {
+  height: auto;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  position: relative;
+  width: 100%;
+  padding-top: 42px;
+  line-height: 26px;
+}
+.legal-notice section article h4 {
+  font-family: "Camphor W01 Bold";
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.89rem;
+  color: #c8a461;
+}

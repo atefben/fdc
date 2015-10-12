@@ -1,0 +1,58 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.legal-notice{
+    h2{
+     padding: 60px; 
+        font-size: 28px;
+    }
+    section{
+        background-color: #fff;
+        width: 630px;
+        max-width: 100%;
+        margin: 0 auto;
+        color:#666666;
+        padding-bottom: 150px;
+        .legal-notice-description{
+            padding-bottom: 40px;
+        }
+        .legal-notice-responsable{
+            p{
+                strong{
+                    font-family: $CamphorBold;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
+                    font-size: 0.89rem;
+                    color: #000;
+                }
+            }
+            p:first-child{
+                padding-bottom: 18px;
+            }
+        }
+        article{
+            height: auto;
+            box-sizing: border-box;
+            float: none;
+            padding-left: 0px;
+            position: relative;
+            width: 100%;
+            padding-top: 42px;
+            line-height: 26px;
+            h4{
+                    font-family: $CamphorBold;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
+                    font-size: 0.89rem;
+                    color: #c8a461;
+            }
+            
+        }
+    }
+}
