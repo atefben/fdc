@@ -2,6 +2,8 @@
 
 namespace Base\ApiBundle\Manager;
 
+use Doctrine\ORM\NoResultException;
+
 use JMS\Serializer\SerializationContext;
 
 /**
@@ -102,7 +104,11 @@ class CoreManager
     public function getFestivalSettings($festivalId)
     {
         if ($festivalId === null) {
-            $settings = $this->em->getRepository('BaseCoreBundle:Settings')->getFestivalSettings();
+            try {
+                $settings = $this->em->getRepository('BaseCoreBundle:Settings')->getFestivalSettings();
+            } catch (NoResultException $e) {
+                return null;
+            }
             if ($settings === null) {
                 return null;
             }
