@@ -25,7 +25,8 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="faq">
+    <div id="main">
+    <div class="faq">
     <h2 class="title">FAQ</h2>
     <inside class="faq-menu">
         <ul>
@@ -114,6 +115,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
             </p>
         </article>
     </section>
+    </div>
     </div>
     <?php include('footer.html'); ?>
 
