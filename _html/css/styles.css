@@ -875,7 +875,7 @@ footer .footer-menu ul li a:hover {
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .slideshow .slideshow-img .thumbnails .thumb:after {
-  border: 4px solid #c8a461;
+  border: 0px solid #c8a461;
   box-sizing: border-box;
   content: '';
   display: block;
@@ -899,6 +899,7 @@ footer .footer-menu ul li a:hover {
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .slideshow .slideshow-img .thumbnails .thumb.active:after {
+  border-width: 4px;
   opacity: 1;
   visibility: visible;
 }
@@ -907,6 +908,11 @@ footer .footer-menu ul li a:hover {
 }
 .slideshow .slideshow-img .thumbnails .thumb:hover {
   cursor: pointer;
+}
+.slideshow .slideshow-img .thumbnails .thumb:hover:after {
+  border-width: 4px;
+  opacity: 1;
+  visibility: visible;
 }
 .slideshow .slideshow-img .thumbnails .thumb:hover img {
   opacity: 1;
@@ -950,6 +956,9 @@ footer .footer-menu ul li a:hover {
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.slideshow .slideshow-img .images .img a {
+  pointer-events: none;
 }
 .slideshow .slideshow-img .images .img:after {
   background: url("../img/svg/photo-white.svg") no-repeat center;
@@ -2845,6 +2854,9 @@ article .image .linkImage {
 }
 .single-article #share-article:hover {
   color: #c8a461;
+}
+.single-article #share-article:hover + .button {
+  border-left-color: #c8a461;
 }
 .single-article .focus .title {
   margin: 50px 0;
