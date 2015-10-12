@@ -202,7 +202,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
     {
         return $this->status;
     }
-    
+
     /**
      * Add sites
      *

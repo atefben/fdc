@@ -227,10 +227,10 @@ class MediaImageTranslation implements MediaTranslationInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\Theme $theme
+     * @param \Base\CoreBundle\Entity\NewsTheme $theme
      * @return MediaImageTranslation
      */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
     {
         $this->theme = $theme;
 
@@ -240,7 +240,7 @@ class MediaImageTranslation implements MediaTranslationInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme
+     * @return \Base\CoreBundle\Entity\NewsTheme
      */
     public function getTheme()
     {
