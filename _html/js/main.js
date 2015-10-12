@@ -312,13 +312,23 @@ $(document).ready(function() {
             stroke: '#c8a461',
             strokeWidth: 2,
             fill: '#fff',
-            opacity: 0
+            opacity: 0,
+            title: data[i]
           });
 
           circle.animate({opacity: 1}, 300);
 
           circle.mouseover(function() {
-            console.log($(this));
+            $('#tipGraph').text($(this)[0].attr('title'));
+            $('#tipGraph').css({
+              top: parseInt($(this)[0].attr('cy')) - 25 + "px",
+              left: $('#hashtag').width() + parseInt($(this)[0].attr('cx') - 15) + "px"
+            });
+            $('#tipGraph').addClass('show');
+          });
+
+          circle.mouseout(function() {
+            $('#tipGraph').removeClass('show');
           });
 
         }

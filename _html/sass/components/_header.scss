@@ -281,7 +281,7 @@ header {
           display: block;
           padding-right: 15px;
           text-transform: uppercase;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(color 0.3s $smoothTransition);
 
           &:hover, &.active {
             color: $gold;
@@ -346,16 +346,28 @@ header {
           &.programmation {
             background: url('../img/svg/programmation.svg') no-repeat 8% 47%;
             background-size: 15px;
+
+            &:hover {
+              background-image: url('../img/svg/programmation-gold.svg');
+            }
           }
 
           &.participate {
             background: url('../img/svg/participate.svg') no-repeat 12% 47%;
             background-size: 15px;
+
+            &:hover {
+              background-image: url('../img/svg/participate-gold.svg');
+            }
           }
 
           &.press {
             background: url('../img/svg/press.svg') no-repeat 12% 47%;
             background-size: 15px;
+
+            &:hover {
+              background-image: url('../img/svg/press-gold.svg');
+            }
           }
 
           &:hover {
