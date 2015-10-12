@@ -85,29 +85,6 @@ class MediaVideoAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.helper_alt',
                     ),
-                    'sites' => array(
-                        'class' => 'BaseCoreBundle:Site',
-                        'multiple' => true,
-                        'expanded' => true
-                    ),
-                    'publishedAt' => array(
-                        'label' => 'form.label_published_at',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        )
-                    ),
-                    'publishEndedAt' => array(
-                        'label' => 'form.label_publish_ended_at',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        )
-                    ),
                     'status' => array(
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
@@ -156,6 +133,25 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('webTv', 'sonata_type_model_list', array(
                 'required' => false
+            ))
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                ),
+                'required' => false
+            ))
+            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                ),
+                'required' => false
+            ))
+            ->add('sites', null, array(
+                'class' => 'BaseCoreBundle:Site',
+                'multiple' => true,
+                'expanded' => true
             ))
         ;
     }

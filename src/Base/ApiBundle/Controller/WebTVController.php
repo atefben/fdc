@@ -2,7 +2,12 @@
 
 namespace Base\ApiBundle\Controller;
 
+use \DateTime;
+
+use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
+
 use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 
@@ -12,6 +17,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  * WebTVController class.
  *
  * \@extends FOSRestController
+ *
  */
 class WebTvController extends FOSRestController
 {
@@ -19,6 +25,7 @@ class WebTvController extends FOSRestController
     /**
      * Return an array of web tvs, can be filtered with page / offset parameters
      *
+     * @Rest\Get("/web_tvs")
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
@@ -48,16 +55,22 @@ class WebTvController extends FOSRestController
             return $this->view(array(), 404);
         }
 
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+
         // create query
         $em = $this->getDoctrine()->getManager();
         // @TODO only where status is translated
-        $dql = "SELECT wt FROM {$this->repository} wt JOIN wt.mediaVideos mv
+
+        $query = $em->getRepository('BaseCoreBundle:WebTv')->getApiWebTvs($festival, new DateTime());
+       /* $dql = "SELECT wt FROM {$this->repository} wt JOIN wt.mediaVideos mv
           WHERE mv.festival = :festival AND mv.inWebTv = :inWebTv";
+
+        $dql =
 
         $query = $em
             ->createQuery($dql)
             ->setParameter('festival', $festival)
-            ->setParameter('inWebTv', true);
+            ->setParameter('inWebTv', true);*/
 
         // get items
         $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
@@ -65,6 +78,8 @@ class WebTvController extends FOSRestController
         // set context view
         $groups = array('web_tv_list', 'time');
         $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context->addExclusionStrategy(new StatusExclusionStrategy());
+        $context->setVersion($version);
 
         // create view
         $view = $this->view($items, 200);
@@ -76,6 +91,7 @@ class WebTvController extends FOSRestController
     /**
      * Return a single web tv by $id
      *
+     * @Rest\Get("/web_tv/{id}")
      * @Rest\View()
      * @ApiDoc(
      *  resource = true,
@@ -104,7 +120,7 @@ class WebTvController extends FOSRestController
      *
      * @return View
      */
-    public function getWebTvAction($id)
+    public function getWebTvAction(Paramfetcher $paramFetcher, $id)
     {
         // get festival
         $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
@@ -118,9 +134,11 @@ class WebTvController extends FOSRestController
         $film = $em->getRepository($this->repository)->findOneById($id);
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(array('film_show', 'time'));
+        $groups = array('web_tv_list', 'time');
+        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->setVersion($version);
+
         $view = $this->view($film, 200);
         $view->setSerializationContext($context);
 

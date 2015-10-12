@@ -56,9 +56,9 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.sites) }}
-                                    {{ form_row(translationsFields.publishedAt) }}
-                                    {{ form_row(translationsFields.publishEndedAt) }}
+                                    {{ form_row(form.parent.children.sites) }}
+                                    {{ form_row(form.parent.children.publishedAt) }}
+                                    {{ form_row(form.parent.children.publishEndedAt) }}
                                     {{ form_row(translationsFields.status) }}
                                 </div>
                             </div>

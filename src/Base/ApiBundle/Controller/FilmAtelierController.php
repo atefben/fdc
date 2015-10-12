@@ -22,6 +22,7 @@ class FilmAtelierController extends FOSRestController
     /**
      * Return an array of films atelier, can be filtered with page / offset parameters
      *
+     * @Rest\Get("/films_atelier")
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
@@ -75,6 +76,7 @@ class FilmAtelierController extends FOSRestController
     /**
      * Return a single film atelier by $id
      *
+     * @Rest\Get("/film_atelier/{id}")
      * @Rest\View()
      * @ApiDoc(
      *  resource = true,
@@ -102,7 +104,7 @@ class FilmAtelierController extends FOSRestController
      *
      * @return View
      */
-    public function getFilmAction(Paramfetcher $paramFetcher, $id)
+    public function getFilmAtelierAction(Paramfetcher $paramFetcher, $id)
     {
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 

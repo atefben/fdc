@@ -199,10 +199,10 @@ class EventTranslation implements NewsTranslationInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\Theme $theme
+     * @param \Base\CoreBundle\Entity\EventTheme $theme
      * @return NewsArticleTranslation
      */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\EventTheme $theme = null)
     {
         $this->theme = $theme;
 
@@ -212,7 +212,7 @@ class EventTranslation implements NewsTranslationInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme
+     * @return \Base\CoreBundle\Entity\EventTheme
      */
     public function getTheme()
     {

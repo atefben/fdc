@@ -17,7 +17,7 @@ use JMS\Serializer\Annotation\Since;
  * WebTv
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\WebTvRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class WebTv
