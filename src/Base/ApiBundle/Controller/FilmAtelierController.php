@@ -81,7 +81,7 @@ class FilmAtelierController extends FOSRestController
      * @ApiDoc(
      *  resource = true,
      *  description = "Get a film atelier by $id",
-     *  section="Films",
+     *  section="Films Atelier",
      *  statusCodes = {
      *     200 = "Returned when successful",
      *     204 = "Returned when no film atelier is found"

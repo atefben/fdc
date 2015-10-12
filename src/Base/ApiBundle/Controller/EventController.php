@@ -19,7 +19,7 @@ class EventController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:Event';
     /**
-     * Return an array of web tvs, can be filtered with page / offset parameters
+     * Return an array of events, can be filtered with page / offset parameters
      *
      * @Rest\View()
      * @ApiDoc(

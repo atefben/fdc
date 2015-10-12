@@ -23,7 +23,7 @@ class FilmTrailerController extends FOSRestController
      * @ApiDoc(
      *   resource = true,
      *   description = "Get all film trailers",
-     *   section="Web Tvs",
+     *   section="Trailers",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *   },
