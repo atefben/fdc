@@ -13,9 +13,9 @@
   max-height: 0;
   overflow: hidden;
   position: fixed;
-  top: 185px;
+  top: 230px;
   width: 100%;
-  z-index: 15;
+  z-index: 14;
 
   @include transition(all 0.5s $smoothTransition);
 
@@ -132,5 +132,5 @@
 }
 
 .sticky #selection {
-  top: 50px;
+  top: 91px;
 }

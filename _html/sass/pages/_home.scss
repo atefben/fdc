@@ -324,6 +324,42 @@
     margin-bottom: 20px;
     position: relative;
 
+    #tipGraph {
+      background-color: $gold;
+      color: #fff;
+      font-size: 0.625rem;
+      padding: 2px 10px;
+      font-family: $CamphorBold;
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      @include transform(translateY(10px));
+      @include transition(transform 0.3s $smoothTransition, opacity 0.3s $smoothTransition);
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+        @include transform(translateY(0));
+      }
+
+      &:after {
+        content: ' ';
+        height: 0;
+        position: absolute;
+        width: 0;
+
+        border: 4px solid transparent;
+        border-top-color: $gold;
+        top: 100%;
+        left: 35%;
+      }
+    }
+
+    circle {
+      cursor: pointer;
+    }
+
     ul {
       left: 52px;
       position: absolute;
@@ -810,6 +846,20 @@
 
   video {
     display: block;
+  }
+
+  .owl-item {
+    &:before {
+      content: '';
+      display: block;
+      opacity: 0.4;
+      background-color: #000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .links {

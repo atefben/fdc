@@ -32,7 +32,7 @@
             }
             .contain_item{
                 height: 336px;
-                width: 680px;
+                width: 677px;
             }
             .infos-item-list{
                 position: relative;
@@ -52,6 +52,7 @@
                         text-transform: uppercase;
                         letter-spacing: 3px;
                         padding: 10px;
+                        line-height: 20px;
                     }
                     .verticalline:after{
                         content: "";

@@ -66,7 +66,9 @@ $(document).ready(function() {
     $('#main').addClass('overlay');
     $('.main>li').not($(this)).addClass('fade');
   }, function() {
-    $('#main').removeClass('overlay');
+    if(!$('#selection').hasClass('open')) {
+      $('#main').removeClass('overlay');
+    }
     $('.main li').removeClass('fade');
   });
 
@@ -312,13 +314,23 @@ $(document).ready(function() {
             stroke: '#c8a461',
             strokeWidth: 2,
             fill: '#fff',
-            opacity: 0
+            opacity: 0,
+            title: data[i]
           });
 
           circle.animate({opacity: 1}, 300);
 
           circle.mouseover(function() {
-            console.log($(this));
+            $('#tipGraph').text($(this)[0].attr('title'));
+            $('#tipGraph').css({
+              top: parseInt($(this)[0].attr('cy')) - 25 + "px",
+              left: $('#hashtag').width() + parseInt($(this)[0].attr('cx') - 15) + "px"
+            });
+            $('#tipGraph').addClass('show');
+          });
+
+          circle.mouseout(function() {
+            $('#tipGraph').removeClass('show');
           });
 
         }
@@ -608,6 +620,15 @@ $(document).ready(function() {
 
   }
 
+  $('body').on('mouseover', '.chocolat-image', function() {
+    $(this).attr('data-title', $(this).attr('title'));
+    $(this).removeAttr('title');
+  });
+
+  $('body').on('mouseout', '.chocolat-image', function() {
+    $(this).attr('title', $(this).attr('data-title'));
+  });
+
   initSlideshows();
 
   $('body').on('mouseout', '.chocolat-content', function(){
@@ -732,7 +753,7 @@ $(document).ready(function() {
     }
 
     if($('#news').length) {
-      if(s > $('#news').offset().top + 50 && s < $('#social-wall').offset().top - 700) {
+      if(s > $('#news').offset().top + 50 && s < ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height())) {
         $('#timeline').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 60);
       } else {
         $('#timeline').removeClass('stick').css('left', 'auto');

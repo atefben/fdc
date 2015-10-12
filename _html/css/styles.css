@@ -63,6 +63,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .owl-carousel .owl-stage {
+  cursor: move;
+  /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
   position: relative;
   -ms-touch-action: pan-Y;
 }
@@ -133,18 +138,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .owl-grab {
-  cursor: move;
-  cursor: -webkit-grabbing;
-  cursor: -o-grab;
-  cursor: -ms-grab;
-  cursor: grab;
+  cursor: grabbing !important;
+  cursor: -moz-grabbing !important;
+  cursor: -webkit-grabbing !important;
 }
-.owl-grab .owl-item, .owl-grab .linkVid {
-  cursor: move;
+.owl-grab .owl-item, .owl-grab .linkVid, .owl-grab .owl-stage {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
-  cursor: -o-grab;
-  cursor: -ms-grab;
-  cursor: grab;
 }
 
 .owl-carousel.owl-rtl {
@@ -556,10 +557,10 @@ header #navigation ul li a {
   display: block;
   padding-right: 15px;
   text-transform: uppercase;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #navigation ul li a:hover, header #navigation ul li a.active {
   color: #c8a461;
@@ -576,7 +577,7 @@ header #navigation ul li ul {
   position: absolute;
   visibility: hidden;
   width: 977px;
-  z-index: 10;
+  z-index: 15;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -619,13 +620,22 @@ header #navigation ul.user li a.programmation {
   background: url("../img/svg/programmation.svg") no-repeat 8% 47%;
   background-size: 15px;
 }
+header #navigation ul.user li a.programmation:hover {
+  background-image: url("../img/svg/programmation-gold.svg");
+}
 header #navigation ul.user li a.participate {
   background: url("../img/svg/participate.svg") no-repeat 12% 47%;
   background-size: 15px;
 }
+header #navigation ul.user li a.participate:hover {
+  background-image: url("../img/svg/participate-gold.svg");
+}
 header #navigation ul.user li a.press {
   background: url("../img/svg/press.svg") no-repeat 12% 47%;
   background-size: 15px;
+}
+header #navigation ul.user li a.press:hover {
+  background-image: url("../img/svg/press-gold.svg");
 }
 header #navigation ul.user li a:hover {
   color: #c8a461;
@@ -865,7 +875,7 @@ footer .footer-menu ul li a:hover {
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .slideshow .slideshow-img .thumbnails .thumb:after {
-  border: 4px solid #c8a461;
+  border: 0px solid #c8a461;
   box-sizing: border-box;
   content: '';
   display: block;
@@ -889,6 +899,7 @@ footer .footer-menu ul li a:hover {
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .slideshow .slideshow-img .thumbnails .thumb.active:after {
+  border-width: 4px;
   opacity: 1;
   visibility: visible;
 }
@@ -897,6 +908,11 @@ footer .footer-menu ul li a:hover {
 }
 .slideshow .slideshow-img .thumbnails .thumb:hover {
   cursor: pointer;
+}
+.slideshow .slideshow-img .thumbnails .thumb:hover:after {
+  border-width: 4px;
+  opacity: 1;
+  visibility: visible;
 }
 .slideshow .slideshow-img .thumbnails .thumb:hover img {
   opacity: 1;
@@ -940,6 +956,9 @@ footer .footer-menu ul li a:hover {
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.slideshow .slideshow-img .images .img a {
+  pointer-events: none;
 }
 .slideshow .slideshow-img .images .img:after {
   background: url("../img/svg/photo-white.svg") no-repeat center;
@@ -1540,9 +1559,9 @@ div.chocolat-wrapper .chocolat-close {
   max-height: 0;
   overflow: hidden;
   position: fixed;
-  top: 185px;
+  top: 230px;
   width: 100%;
-  z-index: 15;
+  z-index: 14;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -1646,7 +1665,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 
 .sticky #selection {
-  top: 50px;
+  top: 91px;
 }
 
 #sliderWrapper {
@@ -1923,6 +1942,46 @@ div.chocolat-wrapper .chocolat-close {
   height: 200px;
   margin-bottom: 20px;
   position: relative;
+}
+#social-wall #graph #tipGraph {
+  background-color: #c8a461;
+  color: #fff;
+  font-size: 0.625rem;
+  padding: 2px 10px;
+  font-family: "Camphor W01 Bold";
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  -moz-transition: -moz-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: -o-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#social-wall #graph #tipGraph.show {
+  opacity: 1;
+  visibility: visible;
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+#social-wall #graph #tipGraph:after {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  border: 4px solid transparent;
+  border-top-color: #c8a461;
+  top: 100%;
+  left: 35%;
+}
+#social-wall #graph circle {
+  cursor: pointer;
 }
 #social-wall #graph ul {
   left: 52px;
@@ -2335,6 +2394,17 @@ div.chocolat-wrapper .chocolat-close {
 }
 #featured-movies video {
   display: block;
+}
+#featured-movies .owl-item:before {
+  content: '';
+  display: block;
+  opacity: 0.4;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 #featured-movies .links {
   bottom: 10%;
@@ -2795,6 +2865,9 @@ article .image .linkImage {
 }
 .single-article #share-article:hover {
   color: #c8a461;
+}
+.single-article #share-article:hover + .button {
+  border-left-color: #c8a461;
 }
 .single-article .focus .title {
   margin: 50px 0;
@@ -4151,7 +4224,7 @@ article .image .linkImage {
   font-size: 1rem;
   width: 977px;
   margin: 10px auto;
-  line-height: 1.5;
+  line-height: 26px;
   font-family: 'CamphorItalic';
 }
 .categorie-items .sub-cat-title {
@@ -4215,30 +4288,33 @@ article .image .linkImage {
 }
 .categorie-items article .infos-item-list .title-item {
   text-transform: uppercase;
-  padding-bottom: 10px;
+  padding-bottom: 4px;
   font-size: 0.88rem;
+  line-height: 16px;
 }
 .categorie-items article .infos-item-list .sub-title-item {
-  padding-bottom: 10px;
+  padding-bottom: 4px;
+  font-size: 0.63rem;
+  text-transform: uppercase;
 }
 .categorie-items article .infos-item-list .nom-item {
   color: #c8a461;
   font-style: italic;
   display: block;
-  padding-bottom: 10px;
+  padding-bottom: 4px;
   font-family: "Playfair Display";
   font-weight: 700;
   font-size: 0.815rem;
 }
 .categorie-items article .infos-item-list .date-item {
   font-weight: 100;
-  padding-bottom: 10px;
+  padding-bottom: 4px;
   color: #656565;
   font-size: 0.7rem;
 }
 .categorie-items article .infos-item-list .description-item {
   padding-top: 32px;
-  line-height: 1.5;
+  line-height: 26px;
   font-size: 0.88rem;
 }
 .categorie-items article .infos-item-list .description-item strong {
@@ -4321,7 +4397,7 @@ article .image .linkImage {
 }
 .palmares-list .categorie-items article .contain_item {
   height: 336px;
-  width: 680px;
+  width: 677px;
 }
 .palmares-list .categorie-items article .infos-item-list {
   position: relative;
@@ -4340,6 +4416,7 @@ article .image .linkImage {
   text-transform: uppercase;
   letter-spacing: 3px;
   padding: 10px;
+  line-height: 20px;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .verticalline:after {
   content: "";
@@ -4595,4 +4672,47 @@ article .image .linkImage {
 .sitemap section article li {
   padding-bottom: 20px;
   letter-spacing: 3px;
+}
+
+.legal-notice h2 {
+  padding: 60px;
+  font-size: 28px;
+}
+.legal-notice section {
+  background-color: #fff;
+  width: 630px;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #666666;
+  padding-bottom: 150px;
+}
+.legal-notice section .legal-notice-description {
+  padding-bottom: 40px;
+}
+.legal-notice section .legal-notice-responsable p strong {
+  font-family: "Camphor W01 Bold";
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.89rem;
+  color: #000;
+}
+.legal-notice section .legal-notice-responsable p:first-child {
+  padding-bottom: 18px;
+}
+.legal-notice section article {
+  height: auto;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  position: relative;
+  width: 100%;
+  padding-top: 42px;
+  line-height: 26px;
+}
+.legal-notice section article h4 {
+  font-family: "Camphor W01 Bold";
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.89rem;
+  color: #c8a461;
 }

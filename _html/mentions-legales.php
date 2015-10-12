@@ -30,7 +30,7 @@
        <h3 class="legal-notice-description">Ce site est réalisé et édité par Le Festival de Cannes 3 rue Amélie 75007 PARIS</h3>
        <div class="legal-notice-responsable">
            <p><strong>Responsables :</strong> Vinca Van Eecke</p>
-           <p><strong>Hébergement :</strong>Internet FR</p>
+           <p><strong>Hébergement :</strong> Internet FR</p>
        </div>
        <article class="legal-notice-art">
            <h4 class="legal-notice-art-title">Propritété intellectuelle :</h4>

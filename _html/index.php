@@ -237,6 +237,7 @@
               </div>
             </div>
             <svg id="graphSVG" width="891" height="200"></svg>
+            <div id="tipGraph"></div>
           </div>
           <div id="wall">
             <div class="post big">
