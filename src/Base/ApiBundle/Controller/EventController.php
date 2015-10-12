@@ -47,7 +47,7 @@ class EventController extends FOSRestController
         // get festival
         $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
         if ($festival === null) {
-            return $this->view(array(), 404);
+            return $this->view(array(), 200);
         }
 
         // create query

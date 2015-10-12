@@ -52,7 +52,7 @@ class FilmAwardController extends FOSRestController
         // get festival
         $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
         if ($festival === null) {
-            return $this->view(array(), 404);
+            return $this->view(array(), 200);
         }
 
         // create query
@@ -63,8 +63,9 @@ class FilmAwardController extends FOSRestController
             ->setParameter('festival', $festival->getId());
 
         // get items
+        var_dump('1');
         $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
-
+var_dump('2');
         // set context view
         $groups = array('award_list', 'time');
         $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);

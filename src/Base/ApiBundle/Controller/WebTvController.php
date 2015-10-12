@@ -52,7 +52,7 @@ class WebTvController extends FOSRestController
         // get festival
         $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
         if ($festival === null) {
-            return $this->view(array(), 404);
+            return $this->view(array(), 200);
         }
 
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
