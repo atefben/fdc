@@ -202,30 +202,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
     {
         return $this->status;
     }
-
-    /**
-     * Set theme
-     *
-     * @param \Base\CoreBundle\Entity\Theme $theme
-     * @return NewsArticleTranslation
-     */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \Base\CoreBundle\Entity\Theme
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
+    
     /**
      * Add sites
      *
