@@ -4373,7 +4373,7 @@ article .image .linkImage {
 }
 .palmares-list .categorie-items article .contain_item {
   height: 336px;
-  width: 680px;
+  width: 677px;
 }
 .palmares-list .categorie-items article .infos-item-list {
   position: relative;
@@ -4392,6 +4392,7 @@ article .image .linkImage {
   text-transform: uppercase;
   letter-spacing: 3px;
   padding: 10px;
+  line-height: 20px;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .verticalline:after {
   content: "";
