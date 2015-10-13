@@ -32,9 +32,17 @@
     }
     .faq-container{
         width: 733px;
-        display: inline-block;
+        display: none;
         vertical-align: top;
     }
+		.faq-active{
+				display: inline-block;
+		}
+		section[data-name="informations-generales"]{
+				top: 1px;
+			  opacity: 1;
+				display: inline-block;
+		}
     h2{
         padding: 60px; 
         font-size: 1.75rem ;
@@ -47,6 +55,10 @@
         margin: 0 auto;
         color:#666666;
         padding-bottom: 150px;
+				position: relative;
+				opacity: 0;
+				display: inline-block;
+				top: 200px;
         article{
             height: auto;
             box-sizing: border-box;
@@ -89,7 +101,7 @@
             
         }
         .faq-article-active{
-            max-height: 500px;
+            max-height: 5000px;
             h3{
                 color:#c8a461;
             }

@@ -4970,8 +4970,16 @@ article .image .linkImage {
 }
 .faq .faq-container {
   width: 733px;
-  display: inline-block;
+  display: none;
   vertical-align: top;
+}
+.faq .faq-active {
+  display: inline-block;
+}
+.faq section[data-name="informations-generales"] {
+  top: 1px;
+  opacity: 1;
+  display: inline-block;
 }
 .faq h2 {
   padding: 60px;
@@ -4984,6 +4992,10 @@ article .image .linkImage {
   margin: 0 auto;
   color: #666666;
   padding-bottom: 150px;
+  position: relative;
+  opacity: 0;
+  display: inline-block;
+  top: 200px;
 }
 .faq section article {
   height: auto;
@@ -5025,7 +5037,7 @@ article .image .linkImage {
   text-decoration: underline;
 }
 .faq section .faq-article-active {
-  max-height: 500px;
+  max-height: 5000px;
 }
 .faq section .faq-article-active h3 {
   color: #c8a461;
