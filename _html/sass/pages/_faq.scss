@@ -16,6 +16,8 @@
         vertical-align: top;
         box-sizing: border-box;
         margin-right: 29px;
+			 position: fixed;
+			    top: 393px;
         ul{
             border-right: 1px solid #dfdfdf;
             li{
@@ -65,6 +67,7 @@
 				opacity: 0;
 				display: inline-block;
 				top: 200px;
+			  margin-left: 240px;
         article{
             height: auto;
             box-sizing: border-box;

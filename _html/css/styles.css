@@ -5006,6 +5006,8 @@ article .image .linkImage {
   vertical-align: top;
   box-sizing: border-box;
   margin-right: 29px;
+  position: fixed;
+  top: 393px;
 }
 .faq .faq-menu ul {
   border-right: 1px solid #dfdfdf;
@@ -5054,6 +5056,7 @@ article .image .linkImage {
   opacity: 0;
   display: inline-block;
   top: 200px;
+  margin-left: 240px;
 }
 .faq section article {
   height: auto;

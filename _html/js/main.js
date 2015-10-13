@@ -1537,6 +1537,20 @@ $(document).ready(function() {
 							});
 					}
 			});
+		$(window).on('scroll', function() {
+				var s = $(window).scrollTop();
+				var h = $("#main").height()-900;
+			  console.log(h);
+			console.log(s);
+				if(s < h && s > 50) {
+					$(".faq-menu").css({position: "fixed", top: 250});
+				} else if(s > h ){
+					$(".faq-menu").css({position: "absolute",top:900});
+				} else if (s<50){
+					$(".faq-menu").css({position: "fixed", top: 393});
+				}
+		});
+
   }
 
 
