@@ -2731,10 +2731,11 @@ div.chocolat-wrapper .chocolat-close {
   text-align: center;
   visibility: hidden;
   width: 100%;
-  -moz-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  z-index: 0;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #prefooter .imgSlide img {
   display: block;
@@ -2751,6 +2752,8 @@ div.chocolat-wrapper .chocolat-close {
   font-weight: normal;
   letter-spacing: 0.2em;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
   text-align: center;
   text-transform: uppercase;
 }
@@ -2758,9 +2761,13 @@ div.chocolat-wrapper .chocolat-close {
   color: #fff;
   font-size: 1.125rem;
   margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
 }
 #prefooter ul {
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 #prefooter ul li {
   display: inline-block;

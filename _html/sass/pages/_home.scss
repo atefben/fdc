@@ -1112,7 +1112,8 @@
     text-align: center;
     visibility: hidden;
     width: 100%;
-    @include transition(all 0.7s $smoothTransition);
+    z-index: 0;
+    @include transition(all 0.8s $smoothTransition);
 
     img {
       display: block;
@@ -1132,6 +1133,8 @@
     font-weight: normal;
     letter-spacing: 0.2em;
     margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
     text-align: center;
     text-transform: uppercase;
   }
@@ -1140,10 +1143,14 @@
     color: #fff;
     font-size: 1.125rem;
     margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
   }
 
   ul {
     text-align: center;
+    position: relative;
+    z-index: 1;
 
     li {
       display:inline-block;

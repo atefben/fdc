@@ -629,8 +629,8 @@
           </ul>
           <div class="imgSlide active"><img src="img/prefooter/01.png" alt="" /></div>
           <div class="imgSlide"><img src="img/prefooter/02.png" alt="" /></div>
-          <div class="imgSlide"><img src="img/prefooter/01.png" alt="" /></div>
-          <div class="imgSlide"><img src="img/prefooter/01.png" alt="" /></div>
+          <div class="imgSlide"><img src="img/prefooter/03.png" alt="" /></div>
+          <div class="imgSlide"><img src="img/prefooter/04.png" alt="" /></div>
         </div>
       </div>
     </div>
