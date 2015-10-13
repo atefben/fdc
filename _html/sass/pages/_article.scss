@@ -11,6 +11,10 @@
 .articles {
   overflow: hidden;
 
+  &.nextDay {
+    height: 90px;
+  }
+
   &.right {
     article {
       padding-left: 0;

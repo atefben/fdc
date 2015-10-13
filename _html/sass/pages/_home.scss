@@ -181,6 +181,37 @@
     }
   }
 
+  #shd {
+    position: absolute;
+    bottom: 82px;
+    width: 104%;
+    height: 130px;
+    left: -7%;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+
+    &.show {
+      opacity: 0.8;
+      visibility: visible;
+    }
+
+    &:before {
+      background: #3E3E3E;
+      background: -moz-radial-gradient(center, ellipse cover,  #3E3E3E 0%, transparent 70%);
+      background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#3E3E3E), color-stop(70%,transparent));
+      background: -webkit-radial-gradient(center, ellipse cover,  #3E3E3E 0%,transparent 70%);
+      background: -o-radial-gradient(center, ellipse cover,  #3E3E3E 0%,transparent 70%);
+      background: -ms-radial-gradient(center, ellipse cover,  #3E3E3E 0%,transparent 70%);
+      background: radial-gradient(ellipse at center, #3E3E3E 0%, rgba(0, 0, 0, 0) 70%);
+      bottom: -74px;
+      top: auto;
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', endColorstr='#ffffff',GradientType=1 );
+
+    }
+  }
+
   .slideshow .caption {
     margin-top: 10px;
   }

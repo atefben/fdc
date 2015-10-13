@@ -229,6 +229,7 @@
             <a href="#" data-date="11" class="">mer<span class="day">11</span></a>
             <a href="#" data-date="10" class="">mar<span class="day">10</span></a>
           </div>
+          <div id="shd" class="shadow-bottom"></div>
         </div>
       </div>
 
