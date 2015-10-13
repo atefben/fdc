@@ -1,6 +1,6 @@
 //       SUMMARY TABLE     
 // =========================
-// 1. Global
+// 1. Prehome
 // 2. Slider
 // 3. News
 // 4. Social Wall
@@ -12,9 +12,33 @@
 // =========================
 
 
-// 1. Global
+// 1. Prehome
 // =========================
 
+#prehome-container {
+  position: relative;
+
+  #prehome {
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background:url(../img/prehome.jpg) top center;
+    background-size:cover;
+    pointer-events:none;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    @include transition(all 2s $smoothTransition);
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
 
 // 2. Slider
 // =========================

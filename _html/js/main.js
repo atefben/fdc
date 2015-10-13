@@ -1,26 +1,27 @@
 //       SUMMARY TABLE     
 // =========================
-// 1. Main menu
-// 2. Slider Home
-// 3. News
-// 4. Social Wall
-// 5. Slider Videos
-// 6. Slider Channels
-// 7. Slider Movies
-// 8. Prefooter
-// 9. Slideshow
-// 10. Filters
-// 11. Search
-// 12. Events on scroll
-// 13. Player Audio
-// 14. Single Article
-// 15. Selection
-// 16. Single Movie
-// 17. All Photos
-// 18. Contact
-// 19. Webtv
-// 20. FAQ
-// 21. Newsletter
+// 1. Prehome
+// 2. Main menu
+// 3. Slider Home
+// 4. News
+// 5. Social Wall
+// 6. Slider Videos
+// 7. Slider Channels
+// 8. Slider Movies
+// 9. Prefooter
+// 10. Slideshow
+// 11. Filters
+// 12. Search
+// 13. Events on scroll
+// 14. Player Audio
+// 15. Single Article
+// 16. Selection
+// 17. Single Movie
+// 18. All Photos
+// 19. Contact
+// 20. Webtv
+// 21. FAQ
+// 22. Newsletter
 // =========================
 
 
@@ -60,7 +61,26 @@ String.prototype.parseHashtag = function(twitter) {
 
 $(document).ready(function() {
 
-  // 1. Main menu
+  // 1. Prehome
+  // =========================
+
+  if($('.home').length) {
+
+    // todo : cookie
+    $('#prehome-container').height($(window).height());
+    $('#prehome').addClass('show');
+
+    setTimeout(function() {
+      $('html, body').animate({
+        scrollTop: $("header").offset().top
+      }, 800, function() {
+        $('#prehome-container').remove();
+        $('body,html').scrollTop(0);
+      });
+    }, 3000);
+  }
+
+  // 2. Main menu
   // =========================
 
   // overlay on main menu : show submenu and overlay
@@ -79,7 +99,7 @@ $(document).ready(function() {
 
   if($('.home').length) {
 
-    // 2. Slider Home
+    // 3. Slider Home
     // =========================
     var time = 7;
    
@@ -165,7 +185,7 @@ $(document).ready(function() {
       autoWidth: true
     });
 
-    // 3. News
+    // 4. News
     // =========================
 
     // load more
@@ -223,7 +243,7 @@ $(document).ready(function() {
     });
 
 
-    // 4. Social Wall
+    // 5. Social Wall
     // =========================
 
 
@@ -516,7 +536,7 @@ $(document).ready(function() {
 
   if($('.home').length || $('.webtv').length) {
 
-    // 5. Slider Videos
+    // 6. Slider Videos
     // =========================
 
     var sliderVideos = $("#slider-videos").owlCarousel({
@@ -539,7 +559,7 @@ $(document).ready(function() {
       sliderVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });
 
-    // 6. Slider Channels
+    // 7. Slider Channels
     // =========================
     
     var sliderChannels = $("#slider-channels").owlCarousel({
@@ -571,7 +591,7 @@ $(document).ready(function() {
 
   if($('.home').length) {
 
-    // 7. Slider Movies
+    // 8. Slider Movies
     // =========================
 
     function setHeightSlider() {
@@ -619,7 +639,7 @@ $(document).ready(function() {
     setHeightSlider();
 
 
-    // 8. Prefooter
+    // 9. Prefooter
     // =========================
 
     $('#prefooter a').on('mouseover', function(e) {
@@ -635,7 +655,7 @@ $(document).ready(function() {
 
   }
 
-  // 9. Slideshow
+  // 10. Slideshow
   // =========================
 
   function initSlideshows() {
@@ -697,7 +717,7 @@ $(document).ready(function() {
     $('.chocolat-close').css('left', e.clientX + 10).css('top', e.clientY);
   });
 
-  // 10. Filters
+  // 11. Filters
   // =========================
 
   // on click on a filter
@@ -763,7 +783,7 @@ $(document).ready(function() {
   });
 
 
-  // 11. Search
+  // 12. Search
   // =========================
 
   $('.search').on('click', function(e) {
@@ -773,13 +793,13 @@ $(document).ready(function() {
   });
 
 
-  // 12. Events on scroll
+  // 13. Events on scroll
   // =========================
 
   $(window).on('scroll', function() {
     var s = $(window).scrollTop();
 
-    if(s > 50) {
+    if(($('#prehome-container').length == 0 && s > 50) || ($('#prehome-container').length && s > $(window).height() + 10)) {
       $('header').addClass('sticky');
     } else {
       $('header').removeClass('sticky');
@@ -842,7 +862,7 @@ $(document).ready(function() {
 
   });
 
-  // 13. Player Audio
+  // 14. Player Audio
   // =========================
 
   var waves = [];
@@ -948,7 +968,7 @@ $(document).ready(function() {
     
   }
 
-  // 14. Single Article
+  // 15. Single Article
   // =========================
 
   if($('.single-article').length) {
@@ -961,7 +981,7 @@ $(document).ready(function() {
     });
   }
 
-  // 15. Selection
+  // 16. Selection
   // =========================
 
   var sliderSelection = '';
@@ -1104,7 +1124,7 @@ $(document).ready(function() {
     });
   });
 
-  // 16. Single Movie
+  // 17. Single Movie
   // =========================
 
   if($('.single-movie').length) {
@@ -1195,7 +1215,7 @@ $(document).ready(function() {
 
   }
 
-  // 17. All Photos
+  // 18. All Photos
   // =========================
 
   function setImages(grid, dom, init){     
@@ -1370,7 +1390,7 @@ $(document).ready(function() {
   }
 
 
-  // 18. Contact
+  // 19. Contact
   // =========================
 
   if($('.contact').length) {
@@ -1432,7 +1452,7 @@ $(document).ready(function() {
   }
   
 
-  // 19. Webtv
+  // 20. Webtv
   // =========================
 
   if($('.webtv').length) {
@@ -1461,7 +1481,7 @@ $(document).ready(function() {
   }
 
     
-  // 20. FAQ
+  // 21. FAQ
   // =========================
   if($('.faq').length) {
 			//open issue
@@ -1520,7 +1540,7 @@ $(document).ready(function() {
   }
 
 
-  // 21. Newsletter
+  // 22. Newsletter
   // =========================
 
   $('.newsletter #email').on('focus', function() {
@@ -1574,6 +1594,9 @@ $(document).ready(function() {
       setHeightSlider();
     }
     resizeGrid();
+    if($('#prehome-container').length) {
+      $('#prehome-container').height($(window).height());
+    }
   });
 
 });

@@ -269,6 +269,7 @@ body {
 }
 
 #main {
+  background-color: #fff;
   clear: both;
   position: relative;
 }
@@ -706,6 +707,7 @@ footer * {
 footer {
   background-color: #141414;
   padding: 40px 0;
+  position: relative;
 }
 footer h2 {
   color: #fff;
@@ -1348,6 +1350,13 @@ div.chocolat-wrapper .chocolat-close {
   top: 5%;
   right: 5%;
   width: 100px;
+  -moz-transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.close-button:hover {
+  border-color: #e8c27b;
 }
 
 .audio-player {
@@ -1754,6 +1763,32 @@ div.chocolat-wrapper .chocolat-close {
 
 .sticky #selection {
   top: 91px;
+}
+
+#prehome-container {
+  position: relative;
+}
+#prehome-container #prehome {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(../img/prehome.jpg) top center;
+  background-size: cover;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#prehome-container #prehome.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 #sliderWrapper {
@@ -2967,7 +3002,7 @@ article .image .image-wrapper {
   position: relative;
   height: 100%;
   width: 100%;
-  z-index: -1;
+  z-index: 0;
 }
 article .image .image-wrapper img {
   position: absolute;
