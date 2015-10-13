@@ -538,6 +538,19 @@ $(document).ready(function() {
     // 7. Slider Movies
     // =========================
 
+    function setHeightSlider() {
+     
+      var newHeight = $(window).height() - 90,
+          valueHeight = Math.round(($(window).width()/16)*9),
+          top = newHeight - valueHeight;
+
+      $('#featured-movies').height(newHeight);
+      $('#featured-movies video').css({
+        'top': top,
+        'height': valueHeight
+      });
+    }
+
     function handleEndVideo() {
       $('#slider-movies video').off('ended');
       $('#slider-movies .active video').on('ended',function(){
@@ -566,6 +579,9 @@ $(document).ready(function() {
       onTranslated: playNewVideo,
       onDrag: pauseVideo
     });
+
+    setHeightSlider();
+
 
     // 8. Prefooter
     // =========================
@@ -1300,8 +1316,6 @@ $(document).ready(function() {
         $grid.isotope('layout');
       });
 
-      $(window).resize(resizeGrid);
-
     }
   }
 
@@ -1456,6 +1470,17 @@ $(document).ready(function() {
 
       return false;
     }
+  });
+
+
+
+
+
+  $(window).on('resize', function() {
+    if($('.home').length) {
+      setHeightSlider();
+    }
+    resizeGrid();
   });
 
 });

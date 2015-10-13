@@ -2505,14 +2505,20 @@ div.chocolat-wrapper .chocolat-close {
   display: none;
 }
 
-#featured-movies video {
-  width: 100%;
+#featured-movies #slider-movies, #featured-movies .owl-stage-outer, #featured-movies .owl-stage, #featured-movies .owl-item, #featured-movies .owl-item > div {
+  height: 100%;
+}
+#featured-movies .owl-item > div {
+  overflow: hidden;
+  position: relative;
 }
 #featured-movies .owl-nav {
   display: none;
 }
 #featured-movies video {
   display: block;
+  left: 0;
+  position: absolute;
 }
 #featured-movies .owl-item:before {
   content: '';

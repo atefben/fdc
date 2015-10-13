@@ -851,8 +851,13 @@
 // =========================
 
 #featured-movies {
-  video {
-    width: 100%;
+  #slider-movies, .owl-stage-outer, .owl-stage, .owl-item, .owl-item>div {
+    height: 100%;
+  }
+
+  .owl-item>div {
+    overflow: hidden;
+    position: relative;
   }
 
   .owl-nav {
@@ -861,6 +866,8 @@
 
   video {
     display: block;
+    left: 0;
+    position: absolute;
   }
 
   .owl-item {
