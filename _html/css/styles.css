@@ -4980,6 +4980,12 @@ article .image .linkImage {
   font-size: 0.75rem;
   text-transform: uppercase;
   color: #dfdfdf;
+  transition: .5s;
+}
+.faq .faq-menu ul li:hover {
+  background-color: #fafafa;
+  color: #b2b2b2;
+  cursor: pointer;
 }
 .faq .faq-menu ul .active {
   background-color: #dfdfdf;
@@ -5053,8 +5059,15 @@ article .image .linkImage {
   color: #c8a461;
   text-decoration: underline;
 }
-.faq section .faq-article-active {
-  max-height: 5000px;
+.faq section article .fa:hover {
+  color: #c8a461;
+  transition: .5s;
+  cursor: pointer;
+}
+.faq section article h3:hover {
+  color: #c8a461;
+  transition: .5s;
+  cursor: pointer;
 }
 .faq section .faq-article-active h3 {
   color: #c8a461;

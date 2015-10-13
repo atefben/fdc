@@ -1469,11 +1469,15 @@ $(document).ready(function() {
         var i;
         i = $(this).find("i.fa");
         if($(this).hasClass("faq-article-active")){
-            $(this).removeClass("faq-article-active");
-             i.removeClass("fa-minus").addClass("fa-plus");
+            
+						$(this).animate({maxHeight:"100px"},100,function(){
+								$(this).removeClass("faq-article-active");
+								i.removeClass("fa-minus").addClass("fa-plus");
+						});
         }else{
             $(this).addClass("faq-article-active");
             i.removeClass("fa-plus").addClass("fa-minus");
+						$(this).animate({maxHeight:"5000px"},300);
         }
     });
 		//navigation
@@ -1499,7 +1503,7 @@ $(document).ready(function() {
 							$activeSection.animate({
 									top: "200px",
 									opacity:0
-							},1000,function(){
+							},500,function(){
 									$activeSection.css({display:'none'});
 									$newActiveSection.css({display:'inline-block'});
 									$activeSection.removeClass("faq-active");
@@ -1509,7 +1513,7 @@ $(document).ready(function() {
 									$newActiveSection.animate({
 											top:0,
 											opacity:1
-									},1000);
+									},500);
 							});
 					}
 			});

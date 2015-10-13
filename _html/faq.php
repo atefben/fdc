@@ -25,7 +25,8 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="faq">
+    <div id="main">
+    <div class="faq">
 				<h2 class="title">FAQ</h2>
 				<inside class="faq-menu">
 						<ul>
@@ -46,7 +47,7 @@
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Quelle est la date du prochain festival ?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article>
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Comment peut-on assister au festival ?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -119,7 +120,7 @@
             <div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (accreditation)</h3><i class="fa fa-plus"></i></div>
             <p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
         </article>
-        <article class="faq-article-active">
+        <article  >
             <div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
             <p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
             </br></br>
@@ -191,7 +192,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (service-en-ligne)</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article  >
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -263,7 +264,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (bagde-et-acces)</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article  >
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -335,7 +336,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (stands-et-pavillons)</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article  >
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -407,7 +408,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (projections)</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article  >
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -479,7 +480,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (producers-networks)</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article  >
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -551,7 +552,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (producers-workshop)</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article  >
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -623,7 +624,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (doc-corner)</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article  >
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -695,7 +696,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam? (documents-d-information)</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident. Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid, asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem. Dolor, repellat, placeat. Maxime, esse?</p>
 						</article>
-						<article class="faq-article-active">
+						<article  >
 								<div class="faq-question"><div class="faq-question"><h3 class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, laboriosam?</h3><i class="fa fa-plus"></i></div>
 								<p class="faq-description">L'inscription des films en Compétition (longs et courts métrages), Hors Compétition, Un Certain Regard et à la Cinéfondation pour le Festival de Cannes 2015 débutera en novembre 2014.
 								</br></br>
@@ -762,6 +763,7 @@ Pour toute question relative à l'inscription d'un film, merci de vous reporter 
 								</p>
 						</article>
 				</section>
+    </div>
     </div>
     <?php include('footer.html'); ?>
 

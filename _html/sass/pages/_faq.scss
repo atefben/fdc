@@ -23,7 +23,13 @@
                 font-size: 0.75rem;
                 text-transform: uppercase;
                 color: #dfdfdf;
+								transition: .5s;
             }
+						li:hover{
+								background-color: #fafafa;
+								color: #b2b2b2;
+								cursor: pointer;
+						}
             .active{
                 background-color: #dfdfdf;
                 color: #000;
@@ -98,10 +104,20 @@
                     text-decoration: underline;
                 }
             }
+						.fa:hover{
+								color:#c8a461;
+								transition: .5s;
+								cursor: pointer;
+						}
+						h3:hover{
+								color:#c8a461;
+								transition: .5s;
+								cursor: pointer;
+						}
             
         }
         .faq-article-active{
-            max-height: 5000px;
+//            max-height: 5000px;
             h3{
                 color:#c8a461;
             }
