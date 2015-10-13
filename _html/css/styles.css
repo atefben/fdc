@@ -1766,6 +1766,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 
 #prehome-container {
+  min-height: 600px;
   position: relative;
 }
 #prehome-container #prehome {
