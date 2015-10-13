@@ -26,9 +26,16 @@ footer {
   .newsletter {
     height: 150px;
     padding: 50px 0;
+    position: relative;
 
     form {
       height: 100%;
+      @include transition(all 0.3s $smoothTransition);
+
+      &.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
 
     #email {
@@ -38,6 +45,29 @@ footer {
       outline: none;
       padding-left: 20px;
       width: calc(100% - 165px);
+
+      &.error {
+        color: #e93939;
+      }
+    }
+
+    #confirmation {
+      color: #fff;
+      font-family: $Playfair;
+      font-size: 0.875rem;
+      line-height: 1.2em;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 55px;
+      text-align: center;
+      width: 100%;
+      @include transition(all 0.3s $smoothTransition);
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     #submit {

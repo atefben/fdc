@@ -716,9 +716,18 @@ footer h3 {
 footer .newsletter {
   height: 150px;
   padding: 50px 0;
+  position: relative;
 }
 footer .newsletter form {
   height: 100%;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+footer .newsletter form.hide {
+  opacity: 0;
+  visibility: hidden;
 }
 footer .newsletter #email {
   border: 0;
@@ -727,6 +736,29 @@ footer .newsletter #email {
   outline: none;
   padding-left: 20px;
   width: calc(100% - 165px);
+}
+footer .newsletter #email.error {
+  color: #e93939;
+}
+footer .newsletter #confirmation {
+  color: #fff;
+  font-family: "Playfair Display";
+  font-size: 0.875rem;
+  line-height: 1.2em;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 55px;
+  text-align: center;
+  width: 100%;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+footer .newsletter #confirmation.show {
+  opacity: 1;
+  visibility: visible;
 }
 footer .newsletter #submit {
   background: #141414;
