@@ -1248,7 +1248,6 @@ $(document).ready(function() {
           if(j<11){
               if(j==0 || j==3){
                   $($img[i]).closest('div').addClass('w2');
-                  $($img[i]).prop('srcset','http://dummyimage.com/640x404/00FF00/000.png 1x, http://dummyimage.com/1280x808/00FF00/000.png 2x');
               
               }
               j++;
@@ -1265,7 +1264,6 @@ $(document).ready(function() {
           if(j<31){
               if(j==0 || j==3 || j==12 || j==17 || j==25 ){
                   $($img[i]).closest('div').addClass('w2');
-                  $($img[i]).prop('srcset','http://dummyimage.com/640x404/FF00FF/000.png 1x, http://dummyimage.com/1280x808/00FF00/000.png 2x');
               }
               j++;
           }
@@ -1281,7 +1279,7 @@ $(document).ready(function() {
           if(j<16){
               if(j==0 || j==5 ||  j==15){
                   $($img[i]).closest('div').addClass('w2');
-                  $($img[i]).prop('srcset','http://dummyimage.com/640x404/FF00FF/000.png 1x, http://dummyimage.com/1280x808/00FF00/000.png 2x');
+                  
               }
               j++;
           }
@@ -1353,6 +1351,22 @@ $(document).ready(function() {
       });
 
     }
+
+    var filterValues = "";
+
+    // filters     
+    $('body').on('click', '#filters span', function() {
+
+      filterValues = "";
+
+      $('.filter .select .active').each(function() {
+        if($(this).data('filter') != 'all') {
+          filterValues += '.' + $(this).data('filter');
+        }
+      });
+      
+      $container.isotope({ filter: filterValues }); 
+    });
   }
 
 

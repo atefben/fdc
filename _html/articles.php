@@ -29,17 +29,17 @@
           <span class="label">Filtrer par :</span>
           <span class="select">
             <span class="active" data-filter="all">Date</span>
-            <span data-filter="press">Date 1</span>
-            <span data-filter="steps">Date 2</span>
+            <span data-filter="date1">Date 1</span>
+            <span data-filter="date">Date 2</span>
           </span>
         </div>
         <div id="theme" class="filter">
           <span class="select">
             <span class="active" data-filter="all">Thême</span>
-            <span data-filter="photo">Thême 1</span>
-            <span data-filter="video">Thême 2</span>
-            <span data-filter="audio">Thême 3</span>
-            <span data-filter="article">Thême 4</span>
+            <span data-filter="theme1">Thême 1</span>
+            <span data-filter="theme">Thême 2</span>
+            <span data-filter="theme">Thême 3</span>
+            <span data-filter="theme">Thême 4</span>
           </span>
         </div>
       </div>
@@ -55,7 +55,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -65,7 +65,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 date article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -75,7 +75,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -85,7 +85,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -95,7 +95,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -105,7 +105,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -115,7 +115,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -125,7 +125,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 date article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -135,7 +135,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -145,7 +145,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -155,7 +155,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -165,7 +165,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -175,7 +175,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -185,7 +185,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
@@ -195,7 +195,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item theme1 date1 theme article">
           <article class="article">
             <a href="article.php"><img src='img/articles/01.jpg' /></a>
             <span class="picto"></span>
