@@ -5068,7 +5068,7 @@ article .image .linkImage {
   width: 100%;
   padding-top: 0px;
   line-height: 26px;
-  border-top: 1px solid #282828;
+  border-top: 1px solid #c1c1c1;
   padding: 20px 18px;
   max-height: 100px;
   overflow: hidden;
@@ -5081,6 +5081,7 @@ article .image .linkImage {
   padding-bottom: 40px;
   width: 645px;
   display: inline-block;
+  letter-spacing: 1px;
 }
 .faq section article .fa {
   margin-bottom: 40px;
@@ -5093,17 +5094,18 @@ article .image .linkImage {
   color: #666666;
   font-size: 1rem;
   line-height: 26px;
+  padding-bottom: 75px;
 }
 .faq section article .faq-description a {
   color: #c8a461;
   text-decoration: underline;
 }
-.faq section article .fa:hover {
+.faq section article .faq-question:hover .fa {
   color: #c8a461;
   transition: .5s;
   cursor: pointer;
 }
-.faq section article h3:hover {
+.faq section article .faq-question:hover h3 {
   color: #c8a461;
   transition: .5s;
   cursor: pointer;
