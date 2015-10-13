@@ -1215,7 +1215,7 @@ $(document).ready(function() {
           min = nbImage * pourcentage * (x-1);
           nbAlea = Math.floor(Math.random() * (max-min)+min);
           nbRamdom[i] = nbAlea;
-          $($img[nbRamdom[i]]).closest('div').addClass('w2');    
+          $($img[nbRamdom[i]]).closest('div.item').addClass('w2');    
           i++;
           x++;
       }     
@@ -1242,12 +1242,12 @@ $(document).ready(function() {
         nbImage         = $img.length;
 
     function buildGrid(){
-      $($img).closest('div').removeClass('w2');
+      $($img).closest('div.item').removeClass('w2');
       if (window.matchMedia("(max-width: 1599px)").matches) {
         while(i<$img.length){
           if(j<11){
               if(j==0 || j==3){
-                  $($img[i]).closest('div').addClass('w2');
+                  $($img[i]).closest('div.item').addClass('w2');
               
               }
               j++;
@@ -1263,7 +1263,7 @@ $(document).ready(function() {
         while(i<$img.length){
           if(j<31){
               if(j==0 || j==3 || j==12 || j==17 || j==25 ){
-                  $($img[i]).closest('div').addClass('w2');
+                  $($img[i]).closest('div.item').addClass('w2');
               }
               j++;
           }
@@ -1278,7 +1278,7 @@ $(document).ready(function() {
         while(i<$img.length){
           if(j<16){
               if(j==0 || j==5 ||  j==15){
-                  $($img[i]).closest('div').addClass('w2');
+                  $($img[i]).closest('div.item').addClass('w2');
                   
               }
               j++;

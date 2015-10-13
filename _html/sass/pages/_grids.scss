@@ -150,11 +150,24 @@
   .item {
     height: 305px;
 
-    img {
+    .img {
       margin: 0 auto 30px auto;
       height: 167px;
       max-width: 100%;
+      overflow: hidden;
+      position: relative;
       width: 265px;
+
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        @include transition(all 0.8s $smoothTransition);
+      }
+    }
+
+    &:hover img {
+      @include transform(scale(1.1) translateZ(0));
     }
 
     article {
@@ -174,14 +187,14 @@
 
       .picto {
         top: 110px;
-        left: 40px;
+        left: 20px;
       }
     }
 
     &.w2 {
       height: 610px;
 
-      img {
+      .img {
         height: 362px;
         width: 573px;
       }
@@ -191,7 +204,7 @@
       }
 
       .picto {
-        left: 50px;
+        left: 20px;
         top: 300px;
       }
     }
