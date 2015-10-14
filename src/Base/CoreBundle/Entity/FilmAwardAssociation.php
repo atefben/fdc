@@ -36,13 +36,17 @@ class FilmAwardAssociation
      *
      * @ORM\ManyToOne(targetEntity="FilmAward", inversedBy="associations")
      *
+     * @Groups({
+     *  "film_list", "film_show"
+     * })
+     *
      */
     private $award;
     
     /**
      * @var FilmFilm
      *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="associations")
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="awards")
      *
      * @Groups({"award_list", "award_show"})
      */

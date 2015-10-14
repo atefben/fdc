@@ -34,7 +34,10 @@ class FilmPrize implements FilmPrizeInterface
      * @ORM\Column(type="integer")
      * @ORM\Id
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $id;
     
@@ -43,7 +46,10 @@ class FilmPrize implements FilmPrizeInterface
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $type;
     
@@ -52,7 +58,10 @@ class FilmPrize implements FilmPrizeInterface
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $position;
 
@@ -64,7 +73,10 @@ class FilmPrize implements FilmPrizeInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     protected $translations;
 

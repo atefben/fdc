@@ -26,7 +26,10 @@ class FilmPrizeTranslation
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     protected $title;
     
@@ -35,7 +38,10 @@ class FilmPrizeTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     protected $category;
     

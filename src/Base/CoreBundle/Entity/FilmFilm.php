@@ -214,12 +214,6 @@ class FilmFilm implements FilmFilmInterface
      * 
      */
     private $contacts;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="film", cascade={"persist"})
-     * 
-     */
-    private $awards;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"persist"})
@@ -253,7 +247,19 @@ class FilmFilm implements FilmFilmInterface
      * @Groups({"trailer_show"})
      */
     private $mediaVideos;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="film")
+     *
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
+     */
+    protected $awards;
+
     /**
      * @var ArrayCollection
      *
@@ -929,48 +935,6 @@ class FilmFilm implements FilmFilmInterface
     }
 
     /**
-     * Add awards
-     *
-     * @param \Base\CoreBundle\Entity\FilmAward $awards
-     * @return FilmFilm
-     */
-    public function addAward(\Base\CoreBundle\Entity\FilmAward $awards)
-    {
-        if ($this->awards->contains($awards)) {
-            return;
-        }
-
-        $awards->setFilm($this);
-        $this->awards[] = $awards;
-
-        return $this;
-    }
-
-    /**
-     * Remove awards
-     *
-     * @param \Base\CoreBundle\Entity\FilmAward $awards
-     */
-    public function removeAward(\Base\CoreBundle\Entity\FilmAward $awards)
-    {
-        if (!$this->awards->contains($awards)) {
-            return;
-        }
-        
-        $this->awards->removeElement($awards);
-    }
-
-    /**
-     * Get awards
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAwards()
-    {
-        return $this->awards;
-    }
-
-    /**
      * Add minorProductions
      *
      * @param \Base\CoreBundle\Entity\FilmMinorProduction $minorProductions
@@ -1464,5 +1428,38 @@ class FilmFilm implements FilmFilmInterface
     public function getMediaVideos()
     {
         return $this->mediaVideos;
+    }
+
+    /**
+     * Add awards
+     *
+     * @param \Base\CoreBundle\Entity\FilmAwardAssociation $awards
+     * @return FilmFilm
+     */
+    public function addAward(\Base\CoreBundle\Entity\FilmAwardAssociation $awards)
+    {
+        $this->awards[] = $awards;
+
+        return $this;
+    }
+
+    /**
+     * Remove awards
+     *
+     * @param \Base\CoreBundle\Entity\FilmAwardAssociation $awards
+     */
+    public function removeAward(\Base\CoreBundle\Entity\FilmAwardAssociation $awards)
+    {
+        $this->awards->removeElement($awards);
+    }
+
+    /**
+     * Get awards
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAwards()
+    {
+        return $this->awards;
     }
 }

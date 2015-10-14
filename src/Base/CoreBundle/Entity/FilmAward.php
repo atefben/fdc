@@ -29,7 +29,10 @@ class FilmAward
      * @ORM\Column(type="integer")
      * @ORM\Id
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $id;
 
@@ -38,7 +41,10 @@ class FilmAward
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $position;
     
@@ -47,7 +53,10 @@ class FilmAward
      *
      * @ORM\Column(type="boolean", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $filmMutual;
     
@@ -56,7 +65,10 @@ class FilmAward
      *
      * @ORM\Column(type="boolean", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $personMutual;
 
@@ -65,7 +77,10 @@ class FilmAward
      *
      * @ORM\Column(type="boolean", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $exAequo;
 
@@ -74,7 +89,10 @@ class FilmAward
      *
      * @ORM\Column(type="boolean", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $unanimity;
 
@@ -83,7 +101,10 @@ class FilmAward
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $comment;
 
@@ -99,7 +120,10 @@ class FilmAward
      *
      * @ORM\ManyToOne(targetEntity="FilmPrize", inversedBy="awards")
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     * "award_list", "award_show",
+     * "film_list", "film_show"
+     * })
      */
     private $prize;
 
