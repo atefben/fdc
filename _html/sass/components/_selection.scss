@@ -88,9 +88,14 @@
         padding: 0;
         width: 100%;
 
-        .image {
+        .image, .img {
           height: 133px;
           margin-bottom: 15px;
+          position: relative;
+
+          .picto {
+            z-index: 1;
+          }
         }
 
         .info h2 {
