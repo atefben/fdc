@@ -1277,7 +1277,6 @@ $(document).ready(function() {
           if(j<11){
               if(j==0 || j==3){
                   $($img[i]).closest('div.item').addClass('w2');
-              
               }
               j++;
           }
@@ -1362,6 +1361,16 @@ $(document).ready(function() {
 
         $grid.isotope('layout');
       });
+    }
+		
+		 if($('#gridWebtv').length){ 
+			 	$grid = $('#gridWebtv').imagesLoaded(function() {
+
+					$grid.isotope({
+						layoutMode: 'packery',
+						itemSelector: '.item'
+					});
+				});
     }
 
     if($('#gridAudios').length) {

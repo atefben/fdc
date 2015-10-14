@@ -43,14 +43,21 @@
 					<li><a href="#">Cinéma de la plage</a></li>
 				</ul>
 			</div>
+			<div>
+						<?php include('webtv_trailer_competition_detail.php'); ?>
+			</div>
     </div>
 
+   
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->
     <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="js/bower_components/owl.carousel/src/js/owl.carousel.js"></script>
     <script src="js/bower_components/chocolat/src/js/jquery.chocolat.js"></script>
+    <script src="js/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
+    <script src="js/bower_components/isotope-packery/packery-mode.pkgd.js"></script>
+    <script src="js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

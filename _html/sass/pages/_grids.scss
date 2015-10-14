@@ -92,7 +92,7 @@
 // 2. Photos
 // =========================
 
-#gridPhotos {
+#gridPhotos{
 
   @media screen and (min-width: 768px) {
     /* 5 columns for larger screens */
@@ -227,4 +227,34 @@
   }
 }
 
+// 5. Web TV
+// ============================
 
+#gridWebtv{
+
+  @media screen and (min-width: 768px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/4);
+    }
+    .item {
+        width: calc(100%/4);
+    }
+    .item.w2 {
+        width: calc(200%/4);
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/5);
+    }
+    .item {
+        width: calc(100%/5);
+    }
+    .item.w2 {
+        width: calc(200%/5);
+    }
+  }
+}
