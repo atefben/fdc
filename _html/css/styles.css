@@ -4414,7 +4414,35 @@ article .image .linkImage {
   top: 300px;
 }
 
+@media screen and (min-width: 320px) {
+  #gridWebtv {
+    /* 5 columns for larger screens */
+  }
+  #gridWebtv .grid-sizer {
+    width: calc(100%/1);
+  }
+  #gridWebtv .item {
+    width: calc(100%/1);
+  }
+  #gridWebtv .item.w2 {
+    width: calc(200%/1);
+  }
+}
 @media screen and (min-width: 768px) {
+  #gridWebtv {
+    /* 5 columns for larger screens */
+  }
+  #gridWebtv .grid-sizer {
+    width: calc(100%/3);
+  }
+  #gridWebtv .item {
+    width: calc(100%/3);
+  }
+  #gridWebtv .item.w2 {
+    width: calc(200%/3);
+  }
+}
+@media screen and (min-width: 1024px) {
   #gridWebtv {
     /* 5 columns for larger screens */
   }
