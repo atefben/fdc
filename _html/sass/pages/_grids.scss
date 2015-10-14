@@ -139,6 +139,10 @@
     .item { width: calc(100%/6); }
     .item.w2 { width: calc(200%/6); }
   }
+
+  .item {
+    cursor: pointer;
+  }
 }
 
 
