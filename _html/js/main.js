@@ -66,18 +66,22 @@ $(document).ready(function() {
 
   if($('.home').length) {
 
-    // todo : cookie
-    $('#prehome-container').height($(window).height());
-    $('#prehome').addClass('show');
+    if(!$.cookie('prehome')) {
+      $('#prehome-container').height($(window).height());
+      $('#prehome').addClass('show');
 
-    setTimeout(function() {
-      $('html, body').animate({
-        scrollTop: $("header").offset().top
-      }, 800, function() {
-        $('#prehome-container').remove();
-        $('body,html').scrollTop(0);
-      });
-    }, 3000);
+      setTimeout(function() {
+        $('html, body').animate({
+          scrollTop: $("header").offset().top
+        }, 800, function() {
+          $('#prehome-container').remove();
+          $('body,html').scrollTop(0);
+        });
+      }, 3000);
+      $.cookie('prehome', '1', { expires: 7 });
+    } else {
+      $('#prehome-container').remove();
+    }
   }
 
   // 2. Main menu

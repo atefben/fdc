@@ -645,6 +645,7 @@
     <script src="js/bower_components/owl.carousel/src/js/owl.carousel.js"></script>
     <script src="js/bower_components/chocolat/src/js/jquery.chocolat.js"></script>
     <script src="js/bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+    <script src="js/bower_components/jquery-cookie/jquery.cookie.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
