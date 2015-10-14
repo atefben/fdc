@@ -1415,7 +1415,7 @@ $(document).ready(function() {
         debug: false,
         dataType: 'html',
         path: function(index) {
-          return "audios" + index + ".html";
+          return $('#gridAudios').data('type') + index + ".html";
         }
       }, function(newElements, data, url){ 
         setGrid($grid, newElements,false);

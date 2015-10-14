@@ -43,7 +43,7 @@
           </span>
         </div>
       </div>
-      <div id="gridAudios" class="grid-wrapper">
+      <div id="gridAudios" class="grid-wrapper" data-type="articles">
         <div class="grid-sizer"></div>
         <div class="item theme1 date1 date theme article">
           <article class="article">
@@ -199,6 +199,7 @@
           </article>
         </div>
       </div>
+      <a id="next" href="articles2.html"></a>
     </div>
 
     <?php include('footer.html'); ?>
@@ -210,6 +211,7 @@
     <script src="js/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
     <script src="js/bower_components/isotope-packery/packery-mode.pkgd.js"></script>
     <script src="js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js"></script>
+    <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
