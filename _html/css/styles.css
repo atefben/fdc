@@ -1488,6 +1488,10 @@ div.chocolat-wrapper .chocolat-close {
   height: 100%;
   margin-bottom: 0 !important;
   width: 100% !important;
+  position: relative;
+  top: auto;
+  left: auto;
+  margin: 0;
 }
 .audio-player.full .info, .audio-player.full .picto {
   display: none;

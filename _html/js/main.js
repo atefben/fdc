@@ -919,62 +919,61 @@ $(document).ready(function() {
   }
 
   if($('.audio-player').length) {
-
     initAudioPlayers();
+  }
 
-    // show audioplayer on fullscreen
-    $('.audio-player .fullscreen').on('click', function(e) {
-      var i = $(this).parent().index('.audio-player'),
-          wave = waves[i];
+  // show audioplayer on fullscreen
+  $('body').on('click', '.audio-player .fullscreen', function(e) {
+    var i = $(this).parent().index('.audio-player'),
+        wave = waves[i];
 
-      e.preventDefault();
-      var audioPlayer = $(this).parent()[0];
+    e.preventDefault();
+    var audioPlayer = $(this).parent()[0];
 
-      if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
+    if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
 
-        if($(this).parent().hasClass('full')) {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-        }
-        else {
-
-          $(audioPlayer).addClass('full');
-
-          var info = $(audioPlayer).find('.info').html();
-          $(audioPlayer).append('<div class="top"><a href="#" class="channels"></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
-          $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
-          $(audioPlayer).append('<div class="bottom"><a href="#" class="playpause" data-action="play"></a></div>');
-
-          if (audioPlayer.requestFullscreen) {
-            audioPlayer.requestFullscreen();
-          } else if (audioPlayer.webkitRequestFullscreen) {
-            audioPlayer.webkitRequestFullscreen();
-          } else if (audioPlayer.mozRequestFullScreen) {
-            audioPlayer.mozRequestFullScreen();
-          } else if (audioPlayer.msRequestFullscreen) {
-            audioPlayer.msRequestFullscreen();
-          }
-
-          $('.playpause').on('click', function(e) {
-            e.preventDefault();
-            wave.playPause();
-          });
-
-          document.addEventListener("fullscreenchange", FShandler);
-          document.addEventListener("webkitfullscreenchange", FShandler);
-          document.addEventListener("mozfullscreenchange", FShandler);
-          document.addEventListener("MSFullscreenChange", FShandler);
+      if($(this).parent().hasClass('full')) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
         }
       }
-    });
-  }
+      else {
+
+        $(audioPlayer).addClass('full');
+
+        var info = $(audioPlayer).find('.info').html();
+        $(audioPlayer).append('<div class="top"><a href="#" class="channels"></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
+        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
+        $(audioPlayer).append('<div class="bottom"><a href="#" class="playpause" data-action="play"></a></div>');
+
+        if (audioPlayer.requestFullscreen) {
+          audioPlayer.requestFullscreen();
+        } else if (audioPlayer.webkitRequestFullscreen) {
+          audioPlayer.webkitRequestFullscreen();
+        } else if (audioPlayer.mozRequestFullScreen) {
+          audioPlayer.mozRequestFullScreen();
+        } else if (audioPlayer.msRequestFullscreen) {
+          audioPlayer.msRequestFullscreen();
+        }
+
+        $('.playpause').on('click', function(e) {
+          e.preventDefault();
+          wave.playPause();
+        });
+
+        document.addEventListener("fullscreenchange", FShandler);
+        document.addEventListener("webkitfullscreenchange", FShandler);
+        document.addEventListener("mozfullscreenchange", FShandler);
+        document.addEventListener("MSFullscreenChange", FShandler);
+      }
+    }
+  });
 
   // 15. Single Article
   // =========================
@@ -1389,7 +1388,7 @@ $(document).ready(function() {
 
         $grid.isotope('layout');
 
-        $('#gridAudios .item').on('click', function(e) {
+        $('body').on('click', '#gridAudios .item', function(e) {
 
           var s = $(e.target).data('sound'),
               img = $(e.target).find('img').attr('src'),
@@ -1407,6 +1406,20 @@ $(document).ready(function() {
           initAudioPlayers();
           $('.ov').addClass('show');
         });
+      });
+
+      $('#gridAudios').infinitescroll({
+        navSelector: "#next:last",
+        nextSelector: "#next:last",
+        itemSelector: "#gridAudios",
+        debug: false,
+        dataType: 'html',
+        path: function(index) {
+          return "audios" + index + ".html";
+        }
+      }, function(newElements, data, url){ 
+        setGrid($grid, newElements,false);
+
       });
 
 

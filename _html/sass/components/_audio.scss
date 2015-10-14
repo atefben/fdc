@@ -138,6 +138,10 @@
     height: 100%;
     margin-bottom: 0!important;
     width: 100%!important;
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0;
 
     .info, .picto {
       display: none;
