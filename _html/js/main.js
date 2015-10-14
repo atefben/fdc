@@ -1399,25 +1399,27 @@ $(document).ready(function() {
 
         $grid.isotope('layout');
 
-        $('body').on('click', '#gridAudios .item', function(e) {
+        if($('#gridAudios').data('type') == 'audios') {
+          $('body').on('click', '#gridAudios .item', function(e) {
 
-          var s = $(e.target).data('sound'),
-              img = $(e.target).find('img').attr('src'),
-              category = $(e.target).find('.category').text(),
-              date = $(e.target).find('.date').text(),
-              text = $(e.target).find('p').text(),
-              $popinAudio = $('.popin-audio');
-            
-          $popinAudio.attr('data-sound', s);
-          $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
-          $popinAudio.find('.category').text(category);
-          $popinAudio.find('.date').text(date);
-          $popinAudio.find('p').text(text);
-          $popinAudio.addClass('audio-player show');
+            var s = $(e.target).data('sound'),
+                img = $(e.target).find('img').attr('src'),
+                category = $(e.target).find('.category').text(),
+                date = $(e.target).find('.date').text(),
+                text = $(e.target).find('p').text(),
+                $popinAudio = $('.popin-audio');
+              
+            $popinAudio.attr('data-sound', s);
+            $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
+            $popinAudio.find('.category').text(category);
+            $popinAudio.find('.date').text(date);
+            $popinAudio.find('p').text(text);
+            $popinAudio.addClass('audio-player show');
 
-          initAudioPlayers();
-          $('.ov').addClass('show');
-        });
+            initAudioPlayers();
+            $('.ov').addClass('show');
+          });
+        }
       });
 
       $('#gridAudios').infinitescroll({
@@ -1433,8 +1435,6 @@ $(document).ready(function() {
         setGrid($grid, newElements,false);
 
       });
-
-
     }
 
     var filterValues = "";
