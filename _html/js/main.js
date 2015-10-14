@@ -845,6 +845,8 @@ $(document).ready(function() {
         $('#nav-movie').removeClass('sticky');
       }
 
+      $('.main-image').height($('.main-image').data('height'));
+      $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
 
       var sections = $('*[data-section')
         , nav = $('#nav-movie')
@@ -1214,7 +1216,7 @@ $(document).ready(function() {
     $('.poster .picto').on('click', function(e) {
       e.preventDefault();
 
-      $('.main-image').height($(window).height() - $('header').height());
+      $('.main-image').data('height', $('.main-image').height()).height($(window).height() - $('header').height());
       $('.main-image, .poster, .info-film, .nav').addClass('trailer');
 
       $('html, body').animate({

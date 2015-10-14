@@ -297,10 +297,18 @@
       background-color: #fff;
       left: 0;
       position: fixed;
+      height: 40px;
+      line-height: 40px;
       top: 91px;
       width: 100%;
       z-index: 10;
       @include transform(translateZ(0));
+
+      .buttons a {
+        border: none;
+        height: 40px;
+        line-height: 40px;
+      }
     }
 
     ul {

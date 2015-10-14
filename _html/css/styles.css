@@ -3797,6 +3797,8 @@ article .image .linkImage {
   background-color: #fff;
   left: 0;
   position: fixed;
+  height: 40px;
+  line-height: 40px;
   top: 91px;
   width: 100%;
   z-index: 10;
@@ -3804,6 +3806,11 @@ article .image .linkImage {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+.single-movie #nav-movie.sticky .buttons a {
+  border: none;
+  height: 40px;
+  line-height: 40px;
 }
 .single-movie #nav-movie ul {
   float: left;
