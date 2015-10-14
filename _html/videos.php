@@ -357,6 +357,7 @@
     <script src="js/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
     <script src="js/bower_components/isotope-packery/packery-mode.pkgd.js"></script>
     <script src="js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js"></script>
+    <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

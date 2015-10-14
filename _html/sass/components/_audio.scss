@@ -138,6 +138,10 @@
     height: 100%;
     margin-bottom: 0!important;
     width: 100%!important;
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0;
 
     .info, .picto {
       display: none;
@@ -233,6 +237,48 @@
         width: 80px;
       }
     }
+  }
+}
+
+.popin-audio {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 400px;
+  margin: -200px 0 0 -250px;
+  pointer-events: none;
+  z-index: 6;
+  @include transform(translateY(30px));
+  @include transition(all .8s $smoothTransition);
+
+  &.show {
+    opacity: 1;
+    pointer-events: initial;
+    visibility: visible;
+    @include transform(translateY(0));
+  }
+}
+
+.ov {
+  background-color: $black;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  @include transition(all 0.3s $smoothTransition);
+
+  &.show {
+    opacity: 0.6;
+    visibility: visible;
   }
 }
 

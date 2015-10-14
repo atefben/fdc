@@ -1,26 +1,27 @@
 //       SUMMARY TABLE     
 // =========================
-// 1. Main menu
-// 2. Slider Home
-// 3. News
-// 4. Social Wall
-// 5. Slider Videos
-// 6. Slider Channels
-// 7. Slider Movies
-// 8. Prefooter
-// 9. Slideshow
-// 10. Filters
-// 11. Search
-// 12. Events on scroll
-// 13. Player Audio
-// 14. Single Article
-// 15. Selection
-// 16. Single Movie
-// 17. All Photos
-// 18. Contact
-// 19. Webtv
-// 20. FAQ
-// 21. Newsletter
+// 1. Prehome
+// 2. Main menu
+// 3. Slider Home
+// 4. News
+// 5. Social Wall
+// 6. Slider Videos
+// 7. Slider Channels
+// 8. Slider Movies
+// 9. Prefooter
+// 10. Slideshow
+// 11. Filters
+// 12. Search
+// 13. Events on scroll
+// 14. Player Audio
+// 15. Single Article
+// 16. Selection
+// 17. Single Movie
+// 18. All Photos
+// 19. Contact
+// 20. Webtv
+// 21. FAQ
+// 22. Newsletter
 // =========================
 
 
@@ -60,7 +61,30 @@ String.prototype.parseHashtag = function(twitter) {
 
 $(document).ready(function() {
 
-  // 1. Main menu
+  // 1. Prehome
+  // =========================
+
+  if($('.home').length) {
+
+    if(!$.cookie('prehome')) {
+      $('#prehome-container').height($(window).height());
+      $('#prehome').addClass('show');
+
+      setTimeout(function() {
+        $('html, body').animate({
+          scrollTop: $("header").offset().top
+        }, 800, function() {
+          $('#prehome-container').remove();
+          $('body,html').scrollTop(0);
+        });
+      }, 3000);
+      $.cookie('prehome', '1', { expires: 7 });
+    } else {
+      $('#prehome-container').remove();
+    }
+  }
+
+  // 2. Main menu
   // =========================
 
   // overlay on main menu : show submenu and overlay
@@ -79,7 +103,7 @@ $(document).ready(function() {
 
   if($('.home').length) {
 
-    // 2. Slider Home
+    // 3. Slider Home
     // =========================
     var time = 7;
    
@@ -165,7 +189,7 @@ $(document).ready(function() {
       autoWidth: true
     });
 
-    // 3. News
+    // 4. News
     // =========================
 
     // load more
@@ -223,7 +247,7 @@ $(document).ready(function() {
     });
 
 
-    // 4. Social Wall
+    // 5. Social Wall
     // =========================
 
 
@@ -516,7 +540,7 @@ $(document).ready(function() {
 
   if($('.home').length || $('.webtv').length) {
 
-    // 5. Slider Videos
+    // 6. Slider Videos
     // =========================
 
     var sliderVideos = $("#slider-videos").owlCarousel({
@@ -539,7 +563,7 @@ $(document).ready(function() {
       sliderVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });
 
-    // 6. Slider Channels
+    // 7. Slider Channels
     // =========================
     
     var sliderChannels = $("#slider-channels").owlCarousel({
@@ -571,7 +595,7 @@ $(document).ready(function() {
 
   if($('.home').length) {
 
-    // 7. Slider Movies
+    // 8. Slider Movies
     // =========================
 
     function setHeightSlider() {
@@ -619,7 +643,7 @@ $(document).ready(function() {
     setHeightSlider();
 
 
-    // 8. Prefooter
+    // 9. Prefooter
     // =========================
 
     $('#prefooter a').on('mouseover', function(e) {
@@ -635,7 +659,7 @@ $(document).ready(function() {
 
   }
 
-  // 9. Slideshow
+  // 10. Slideshow
   // =========================
 
   function initSlideshows() {
@@ -697,7 +721,7 @@ $(document).ready(function() {
     $('.chocolat-close').css('left', e.clientX + 10).css('top', e.clientY);
   });
 
-  // 10. Filters
+  // 11. Filters
   // =========================
 
   // on click on a filter
@@ -763,7 +787,7 @@ $(document).ready(function() {
   });
 
 
-  // 11. Search
+  // 12. Search
   // =========================
 
   $('.search').on('click', function(e) {
@@ -773,13 +797,13 @@ $(document).ready(function() {
   });
 
 
-  // 12. Events on scroll
+  // 13. Events on scroll
   // =========================
 
   $(window).on('scroll', function() {
     var s = $(window).scrollTop();
 
-    if(s > 50) {
+    if(($('#prehome-container').length == 0 && s > 50) || ($('#prehome-container').length && s > $(window).height() + 10)) {
       $('header').addClass('sticky');
     } else {
       $('header').removeClass('sticky');
@@ -821,6 +845,8 @@ $(document).ready(function() {
         $('#nav-movie').removeClass('sticky');
       }
 
+      $('.main-image').height($('.main-image').data('height'));
+      $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
 
       var sections = $('*[data-section')
         , nav = $('#nav-movie')
@@ -842,12 +868,12 @@ $(document).ready(function() {
 
   });
 
-  // 13. Player Audio
+  // 14. Player Audio
   // =========================
 
   var waves = [];
 
-  if($('.audio-player').length) {
+  function initAudioPlayers() {
     $('.audio-player').each(function(i) {
       $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
       var h = $(this).hasClass('bigger') ? 116 : 87;
@@ -873,82 +899,85 @@ $(document).ready(function() {
         wave.playPause();
       });
     });
-
-    function FShandler() {
-      if (document.fullscreenEnabled && document.fullscreenElement == null) {
-        $('.audio-player').removeClass("full");
-        $('.audio-player .top, .audio-player .bottom').remove();
-      }
-      if (document.webkitFullscreenEnabled && document.webkitFullscreenElement == null) {
-        $('.audio-player').removeClass("full");
-        $('.audio-player .top, .audio-player .bottom').remove();
-      }
-      if (document.mozFullScreenEnabled && document.mozFullscreenElement == null) {
-        $('.audio-player').removeClass("full");
-        $('.audio-player .top, .audio-player .bottom').remove();
-      }
-      if (document.msFullscreenEnabled && document.msFullscreenElement == null) {
-        $('.audio-player').removeClass("full");
-        $('.audio-player .top, .audio-player .bottom').remove();
-      }
-    }
-
-    // show audioplayer on fullscreen
-    $('.audio-player .fullscreen').on('click', function(e) {
-      var i = $(this).parent().index('.audio-player'),
-          wave = waves[i];
-
-      e.preventDefault();
-      var audioPlayer = $(this).parent()[0];
-
-      if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
-
-        if($(this).parent().hasClass('full')) {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-        }
-        else {
-
-          $(audioPlayer).addClass('full');
-
-          var info = $(audioPlayer).find('.info').html();
-          $(audioPlayer).append('<div class="top"><a href="#" class="channels"></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
-          $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
-          $(audioPlayer).append('<div class="bottom"><a href="#" class="playpause" data-action="play"></a></div>');
-
-          if (audioPlayer.requestFullscreen) {
-            audioPlayer.requestFullscreen();
-          } else if (audioPlayer.webkitRequestFullscreen) {
-            audioPlayer.webkitRequestFullscreen();
-          } else if (audioPlayer.mozRequestFullScreen) {
-            audioPlayer.mozRequestFullScreen();
-          } else if (audioPlayer.msRequestFullscreen) {
-            audioPlayer.msRequestFullscreen();
-          }
-
-          $('.playpause').on('click', function(e) {
-            e.preventDefault();
-            wave.playPause();
-          });
-
-          document.addEventListener("fullscreenchange", FShandler);
-          document.addEventListener("webkitfullscreenchange", FShandler);
-          document.addEventListener("mozfullscreenchange", FShandler);
-          document.addEventListener("MSFullscreenChange", FShandler);
-        }
-      }
-    });
-    
   }
 
-  // 14. Single Article
+  function FShandler() {
+    if (document.fullscreenEnabled && document.fullscreenElement == null) {
+      $('.audio-player').removeClass("full");
+      $('.audio-player .top, .audio-player .bottom').remove();
+    }
+    if (document.webkitFullscreenEnabled && document.webkitFullscreenElement == null) {
+      $('.audio-player').removeClass("full");
+      $('.audio-player .top, .audio-player .bottom').remove();
+    }
+    if (document.mozFullScreenEnabled && document.mozFullscreenElement == null) {
+      $('.audio-player').removeClass("full");
+      $('.audio-player .top, .audio-player .bottom').remove();
+    }
+    if (document.msFullscreenEnabled && document.msFullscreenElement == null) {
+      $('.audio-player').removeClass("full");
+      $('.audio-player .top, .audio-player .bottom').remove();
+    }
+  }
+
+  if($('.audio-player').length) {
+    initAudioPlayers();
+  }
+
+  // show audioplayer on fullscreen
+  $('body').on('click', '.audio-player .fullscreen', function(e) {
+    var i = $(this).parent().index('.audio-player'),
+        wave = waves[i];
+
+    e.preventDefault();
+    var audioPlayer = $(this).parent()[0];
+
+    if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
+
+      if($(this).parent().hasClass('full')) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+      else {
+
+        $(audioPlayer).addClass('full');
+
+        var info = $(audioPlayer).find('.info').html();
+        $(audioPlayer).append('<div class="top"><a href="#" class="channels"></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
+        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
+        $(audioPlayer).append('<div class="bottom"><a href="#" class="playpause" data-action="play"></a></div>');
+
+        if (audioPlayer.requestFullscreen) {
+          audioPlayer.requestFullscreen();
+        } else if (audioPlayer.webkitRequestFullscreen) {
+          audioPlayer.webkitRequestFullscreen();
+        } else if (audioPlayer.mozRequestFullScreen) {
+          audioPlayer.mozRequestFullScreen();
+        } else if (audioPlayer.msRequestFullscreen) {
+          audioPlayer.msRequestFullscreen();
+        }
+
+        $('.playpause').on('click', function(e) {
+          e.preventDefault();
+          wave.playPause();
+        });
+
+        document.addEventListener("fullscreenchange", FShandler);
+        document.addEventListener("webkitfullscreenchange", FShandler);
+        document.addEventListener("mozfullscreenchange", FShandler);
+        document.addEventListener("MSFullscreenChange", FShandler);
+      }
+    }
+  });
+
+  // 15. Single Article
   // =========================
 
   if($('.single-article').length) {
@@ -961,7 +990,7 @@ $(document).ready(function() {
     });
   }
 
-  // 15. Selection
+  // 16. Selection
   // =========================
 
   var sliderSelection = '';
@@ -1012,7 +1041,9 @@ $(document).ready(function() {
   $('body').on('click', '#main.overlay', function(e) {
     e.preventDefault();
 
-    closeSelection();
+    if($('#selection').hasClass('open')) {
+      closeSelection();
+    }
   });
 
   $('header .selection').on('click', function(e) {
@@ -1104,7 +1135,7 @@ $(document).ready(function() {
     });
   });
 
-  // 16. Single Movie
+  // 17. Single Movie
   // =========================
 
   if($('.single-movie').length) {
@@ -1185,7 +1216,7 @@ $(document).ready(function() {
     $('.poster .picto').on('click', function(e) {
       e.preventDefault();
 
-      $('.main-image').height($(window).height() - $('header').height());
+      $('.main-image').data('height', $('.main-image').height()).height($(window).height() - $('header').height());
       $('.main-image, .poster, .info-film, .nav').addClass('trailer');
 
       $('html, body').animate({
@@ -1195,7 +1226,7 @@ $(document).ready(function() {
 
   }
 
-  // 17. All Photos
+  // 18. All Photos
   // =========================
 
   function setImages(grid, dom, init){     
@@ -1248,7 +1279,6 @@ $(document).ready(function() {
           if(j<11){
               if(j==0 || j==3){
                   $($img[i]).closest('div.item').addClass('w2');
-              
               }
               j++;
           }
@@ -1305,7 +1335,12 @@ $(document).ready(function() {
         setGrid(false,$('#gridAudios'),true);
     }    
   }
-  
+
+  function closePopinAudio() {
+    $('.popin-audio, .ov').removeClass('show');
+
+    $('.popin-audio').find('.wave-container').empty().removeAttr('id');
+  }
 
   if($('.grid').length) {
 
@@ -1329,8 +1364,23 @@ $(document).ready(function() {
         $grid.isotope('layout');
       });
     }
+		
+		 if($('#gridWebtv').length){ 
+			 	$grid = $('#gridWebtv').imagesLoaded(function() {
+
+					$grid.isotope({
+						layoutMode: 'packery',
+						itemSelector: '.item'
+					});
+				});
+    }
 
     if($('#gridAudios').length) {
+
+      $('.ov').on('click', function(e) {
+        e.preventDefault();
+        closePopinAudio();
+      });
 
       var $container    = $('#gridAudios'),
           $grid;  
@@ -1348,7 +1398,42 @@ $(document).ready(function() {
         });
 
         $grid.isotope('layout');
+
+        $('body').on('click', '#gridAudios .item', function(e) {
+
+          var s = $(e.target).data('sound'),
+              img = $(e.target).find('img').attr('src'),
+              category = $(e.target).find('.category').text(),
+              date = $(e.target).find('.date').text(),
+              text = $(e.target).find('p').text(),
+              $popinAudio = $('.popin-audio');
+            
+          $popinAudio.attr('data-sound', s);
+          $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
+          $popinAudio.find('.category').text(category);
+          $popinAudio.find('.date').text(date);
+          $popinAudio.find('p').text(text);
+          $popinAudio.addClass('audio-player show');
+
+          initAudioPlayers();
+          $('.ov').addClass('show');
+        });
       });
+
+      $('#gridAudios').infinitescroll({
+        navSelector: "#next:last",
+        nextSelector: "#next:last",
+        itemSelector: "#gridAudios",
+        debug: false,
+        dataType: 'html',
+        path: function(index) {
+          return $('#gridAudios').data('type') + index + ".html";
+        }
+      }, function(newElements, data, url){ 
+        setGrid($grid, newElements,false);
+
+      });
+
 
     }
 
@@ -1370,7 +1455,7 @@ $(document).ready(function() {
   }
 
 
-  // 18. Contact
+  // 19. Contact
   // =========================
 
   if($('.contact').length) {
@@ -1432,7 +1517,7 @@ $(document).ready(function() {
   }
   
 
-  // 19. Webtv
+  // 20. Webtv
   // =========================
 
   if($('.webtv').length) {
@@ -1461,7 +1546,7 @@ $(document).ready(function() {
   }
 
     
-  // 20. FAQ
+  // 21. FAQ
   // =========================
   if($('.faq').length) {
 			//open issue
@@ -1469,11 +1554,15 @@ $(document).ready(function() {
         var i;
         i = $(this).find("i.fa");
         if($(this).hasClass("faq-article-active")){
-            $(this).removeClass("faq-article-active");
-             i.removeClass("fa-minus").addClass("fa-plus");
+            
+						$(this).animate({maxHeight:"100px"},100,function(){
+								$(this).removeClass("faq-article-active");
+								i.removeClass("fa-minus").addClass("fa-plus");
+						});
         }else{
             $(this).addClass("faq-article-active");
             i.removeClass("fa-plus").addClass("fa-minus");
+						$(this).animate({maxHeight:"5000px"},300);
         }
     });
 		//navigation
@@ -1499,7 +1588,7 @@ $(document).ready(function() {
 							$activeSection.animate({
 									top: "200px",
 									opacity:0
-							},1000,function(){
+							},500,function(){
 									$activeSection.css({display:'none'});
 									$newActiveSection.css({display:'inline-block'});
 									$activeSection.removeClass("faq-active");
@@ -1509,14 +1598,28 @@ $(document).ready(function() {
 									$newActiveSection.animate({
 											top:0,
 											opacity:1
-									},1000);
+									},500);
 							});
 					}
 			});
+		$(window).on('scroll', function() {
+				var s = $(window).scrollTop();
+				var h = $("#main").height()-900;
+			  console.log(h);
+			console.log(s);
+				if(s < h && s > 50) {
+					$(".faq-menu").css({position: "fixed", top: 250});
+				} else if(s > h ){
+					$(".faq-menu").css({position: "absolute",top:900});
+				} else if (s<50){
+					$(".faq-menu").css({position: "fixed", top: 393});
+				}
+		});
+
   }
 
 
-  // 21. Newsletter
+  // 22. Newsletter
   // =========================
 
   $('.newsletter #email').on('focus', function() {
@@ -1570,6 +1673,9 @@ $(document).ready(function() {
       setHeightSlider();
     }
     resizeGrid();
+    if($('#prehome-container').length) {
+      $('#prehome-container').height($(window).height());
+    }
   });
 
 });

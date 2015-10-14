@@ -135,5 +135,10 @@
   top: 5%;
   right: 5%;
   width: 100px;
+  @include transition(all 0.4s $smoothTransition);
+
+  &:hover {
+    border-color: #e8c27b;
+  }
 }
 

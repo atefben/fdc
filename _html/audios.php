@@ -43,9 +43,9 @@
           </span>
         </div>
       </div>
-      <div id="gridAudios" class="grid-wrapper">
+      <div id="gridAudios" class="grid-wrapper" data-type="audios">
         <div class="grid-sizer"></div>
-        <div class="item theme1 date1 date theme shadow-bottom audio">
+        <div class="item theme1 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -69,7 +69,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -81,7 +81,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -93,7 +93,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -105,7 +105,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -117,7 +117,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme1 date2 date theme shadow-bottom audio">
+        <div class="item theme1 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -129,7 +129,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -141,7 +141,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -153,7 +153,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -165,7 +165,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -177,7 +177,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme1 date2 date theme shadow-bottom audio">
+        <div class="item theme1 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -189,7 +189,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -201,7 +201,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -213,7 +213,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme1 date1 date theme shadow-bottom audio">
+        <div class="item theme1 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -225,7 +225,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -237,7 +237,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -249,7 +249,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -261,7 +261,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -273,7 +273,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -285,7 +285,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -297,7 +297,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -309,7 +309,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -321,7 +321,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -333,7 +333,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -346,6 +346,18 @@
           </div>
         </div>
       </div>
+      <a id="next" href="audios2.html"></a>
+      <div class="audio popin-audio" data-sound="">
+        <div class="image"></div>
+        <div class="picto"></div>
+        <div class="info">
+          <a href="#" class="category"></a><span class="date"></span></span>
+          <p></p>
+        </div>
+        <a href="#" class="fullscreen"></a>
+        <div class="wave-container"></div>
+      </div>
+      <div class="ov"></div>
     </div>
 
     <?php include('footer.html'); ?>
@@ -357,6 +369,8 @@
     <script src="js/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
     <script src="js/bower_components/isotope-packery/packery-mode.pkgd.js"></script>
     <script src="js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js"></script>
+    <script src="js/bower_components/wavesurfer.js/dist/wavesurfer.min.js"></script>
+    <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
