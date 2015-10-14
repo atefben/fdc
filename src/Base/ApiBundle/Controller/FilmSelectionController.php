@@ -43,17 +43,20 @@ class FilmSelectionController extends FOSRestController
      */
     public function getFilmSelectionsAction(Paramfetcher $paramFetcher)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
         // create query
         $em = $this->getDoctrine()->getManager();
         $dql = "SELECT fs FROM {$this->repository} fs";
         $query = $em->createQuery($dql);
 
         // get items
-        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('film_selection_list', 'time');
-        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view
         $view = $this->view($items, 200);

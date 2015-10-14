@@ -30,7 +30,7 @@ class FilmSelection
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      *
-     * @Groups({"film_selection_list", "film_selection_show"})
+     * @Groups({"film_selection_list", "film_selection_show", "film_list", "film_show"})})
      */
     private $id;
 
@@ -39,7 +39,7 @@ class FilmSelection
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Groups({"film_selection_list", "film_selection_show"})
+     * @Groups({"film_selection_list", "film_selection_show", "film_list", "film_show"})
      */
     private $codeSignup;
 

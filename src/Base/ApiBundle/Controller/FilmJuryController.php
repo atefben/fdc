@@ -2,6 +2,8 @@
 
 namespace Base\ApiBundle\Controller;
 
+use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
+
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -41,42 +43,34 @@ class FilmJuryController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
-     * @Rest\QueryParam(name="festival_id", description="The festival year")
      * @Rest\QueryParam(name="type_id", description="The type id")
      *
      * @return View
      */
     public function getJuriesAction(Paramfetcher $paramFetcher)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
         // get festival
-        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
-        if ($festival === null) {
-            return $this->view(array(), 200);
-        }
+        $festival = $coreManager->getApiFestivalYear();
+
+        // parameters
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $type = $paramFetcher->get('type_id');
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT fj FROM {$this->repository} fj WHERE fj.festival = :festival";
-        // if type is defined, add it to the query
-        $type = $paramFetcher->get('type_id');
-        if ($type !== null) {
-            $dql .= ' AND fj.type = :type';
-        }
-
-        $query = $em
-            ->createQuery($dql)
-            ->setParameter('festival', $festival->getId());
-        // if type is defined, add it to the query
-        if ($type !== null) {
-            $query = $query->setParameter('type', $type);
-        }
+        $query = $em->getRepository($this->repository)->getApiJuries($festival, $type);
         
         // get items
-        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('jury_list', 'time');
-        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $coreManager->setContext($groups, $paramFetcher);
+        $context->setVersion($version);
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
         
         // create view
         $view = $this->view($items, 200);
@@ -118,17 +112,27 @@ class FilmJuryController extends FOSRestController
      */
     public function getJuryAction(Paramfetcher $paramFetcher, $id)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
+        // parameters
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
-        $em = $this->getDoctrine()->getManager();
-        
+
+        // get festival
+        $festival = $coreManager->getApiFestivalYear();
+
         // create query
         $em = $this->getDoctrine()->getManager();
-        $projection = $em->getRepository($this->repository)->findOneById($id);
+
+        $projection = $em->getRepository($this->repository)->getApiJury($id, $festival);
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(array('jury_show', 'time'));
+        $groups = array('jury_show', 'time');
+        $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+
+        // create view
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);
          

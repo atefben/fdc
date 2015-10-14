@@ -37,10 +37,11 @@ class FilmPerson
      * @ORM\Id
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *  "person_list", "person_show",
+     *  "film_list", "film_show",
+     *  "jury_list", "jury_show",
+     *  "award_list", "award_show"
+     * })
      */
     private $id;
 
@@ -50,10 +51,11 @@ class FilmPerson
      * @ORM\Column(type="string", length=40, nullable=true)
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *  "person_list", "person_show",
+     *  "film_list", "film_show",
+     *  "jury_list", "jury_show",
+     *  "award_list", "award_show"
+     * })
      */
     private $lastname;
 
@@ -63,10 +65,11 @@ class FilmPerson
      * @ORM\Column(type="string", length=40, nullable=true)
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *  "person_list", "person_show",
+     *  "film_list", "film_show",
+     *  "jury_list", "jury_show",
+     *  "award_list", "award_show"
+     * })
      */
     private $firstname;
     
@@ -76,10 +79,11 @@ class FilmPerson
      * @ORM\Column(type="boolean", nullable=true)
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *  "person_list", "person_show",
+     *  "film_list", "film_show",
+     *  "jury_list", "jury_show",
+     *  "award_list", "award_show"
+     * })
      */
     private $asianName;
 
@@ -87,10 +91,11 @@ class FilmPerson
      * @ORM\ManyToOne(targetEntity="Country")
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *  "person_list", "person_show",
+     *  "film_list", "film_show",
+     *  "jury_list", "jury_show",
+     *  "award_list", "award_show"
+     * })
      */
     private $nationality;
 
@@ -98,10 +103,11 @@ class FilmPerson
      * @ORM\ManyToOne(targetEntity="Country")
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *  "person_list", "person_show",
+     *  "film_list", "film_show",
+     *  "jury_list", "jury_show",
+     *  "award_list", "award_show"
+     * })
      */
     private $nationality2;
     
@@ -111,10 +117,11 @@ class FilmPerson
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="persons")
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *  "person_list", "person_show",
+     *  "film_list", "film_show",
+     *  "jury_list", "jury_show",
+     *  "award_list", "award_show"
+     * })
      */
     private $function;
     
@@ -122,10 +129,11 @@ class FilmPerson
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="persons")
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *  "person_list", "person_show",
+     *  "film_list", "film_show",
+     *  "jury_list", "jury_show",
+     *  "award_list", "award_show"
+     * })
      */
     private $address;
 
@@ -155,7 +163,10 @@ class FilmPerson
     /**
      * @ORM\OneToMany(targetEntity="FilmPersonMedia", mappedBy="person", cascade={"persist"})
      *
-     * @Groups({"person_list", "person_show"})
+     * @Groups({
+     *  "person_list", "person_show",
+     *  "jury_list", "jury_show"
+     * })
      */
     private $medias;
     

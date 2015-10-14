@@ -8,6 +8,7 @@ fos_rest:
     param_fetcher_listener: true
     body_listener: true
     disable_csrf_role: ROLE_API
+    #using this to display null properties
     serializer:
         serialize_null: true
     view:

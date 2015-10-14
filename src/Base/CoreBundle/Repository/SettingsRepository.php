@@ -14,12 +14,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class SettingsRepository extends EntityRepository
 {
-    public function getFestivalSettings()
-    {
-        return $this->createQueryBuilder('s')
-            ->orderBy('s.id', 'desc')
-            ->getQuery()
-            ->setMaxResults(1)
-            ->getSingleResult();
-    }
 }

@@ -3,3 +3,8 @@ services:
         class: Base\CoreBundle\Listener\MediaVideoListener
         tags:
             - { name: doctrine.event_listener, event: prePersist }
+
+  base.listener.news:
+        class: Base\CoreBundle\Listener\NewsListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

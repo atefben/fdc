@@ -46,11 +46,11 @@ class FilmAtelierController extends FOSRestController
      */
     public function getFilmsAtelierAction(Paramfetcher $paramFetcher)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
         // get festival
-        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
-        if ($festival === null) {
-            return $this->view(array(), 200);
-        }
+        $festival = $coreManager->getApiFestivalYear();
 
         // create query
         $em = $this->getDoctrine()->getManager();
@@ -60,11 +60,11 @@ class FilmAtelierController extends FOSRestController
             ->setParameter('festival', $festival->getId());
 
         // get items
-        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('film_atelier_list', 'time');
-        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view
         $view = $this->view($items, 200);

@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * FilmMedia
  *
@@ -28,16 +31,18 @@ class FilmMedia
     private $id;
     
      /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+      * @var string
+      *
+      * @ORM\Column(type="string", length=255, nullable=true)
+      * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+      */
     private $contentType;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $noteVf;
 
@@ -45,6 +50,7 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $noteVa;
 
@@ -52,6 +58,7 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $copyright;
 
@@ -59,6 +66,7 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $credits;
 
@@ -66,6 +74,7 @@ class FilmMedia
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $type;
 
@@ -73,6 +82,7 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $internet;
 
@@ -80,6 +90,7 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $titleVf;
 
@@ -87,6 +98,7 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $titleVa;
 
@@ -97,6 +109,7 @@ class FilmMedia
     
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="filmMedias")
+     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
      */
     private $file;
 

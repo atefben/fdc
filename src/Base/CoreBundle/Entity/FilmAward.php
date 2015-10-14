@@ -15,7 +15,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmAward
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmAwardRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmAward
@@ -91,20 +91,8 @@ class FilmAward
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="awards")
-     *
-     * @Groups({"award_list", "award_show"})
      */
     private $festival;
-
-    /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="awards")
-     *
-     * @Groups({"award_list", "award_show"})
-     */
-    private $film;
-
 
     /**
      * @var FilmPrize
@@ -379,28 +367,5 @@ class FilmAward
     public function getAssociations()
     {
         return $this->associations;
-    }
-
-    /**
-     * Set film
-     *
-     * @param \Base\CoreBundle\Entity\FilmFilm $film
-     * @return FilmAward
-     */
-    public function setFilm(\Base\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
     }
 }

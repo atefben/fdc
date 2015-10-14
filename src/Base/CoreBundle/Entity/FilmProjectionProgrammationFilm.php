@@ -5,7 +5,8 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -32,6 +33,8 @@ class FilmProjectionProgrammationFilm
      * @var FilmProjectionProgrammationType
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionProgrammationType", cascade={"persist"})
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $type;
 
@@ -39,6 +42,8 @@ class FilmProjectionProgrammationFilm
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", cascade={"persist"})
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $film;
 

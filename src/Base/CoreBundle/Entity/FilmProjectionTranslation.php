@@ -4,9 +4,12 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmProjectionTranslation
@@ -24,6 +27,8 @@ class FilmProjectionTranslation
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $programSection;
 

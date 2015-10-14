@@ -30,7 +30,7 @@ class FilmFilmTranslation
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"film_list"})
+     * @Groups({"trailer_list", "trailer_show", "film_list"})
      */
     private $title;
     
@@ -39,7 +39,7 @@ class FilmFilmTranslation
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
      */
     private $dialog;
     
@@ -48,7 +48,7 @@ class FilmFilmTranslation
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
      */
     private $synopsis;
     
@@ -57,7 +57,7 @@ class FilmFilmTranslation
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
      */
     private $programSection;
 

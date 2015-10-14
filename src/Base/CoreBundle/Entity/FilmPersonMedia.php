@@ -5,7 +5,9 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Soif;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -43,6 +45,11 @@ class FilmPersonMedia implements FilmFilmMediaInterface
      * @var FilmMedia
      *
      * @ORM\ManyToOne(targetEntity="FilmMedia", inversedBy="personMedias", cascade={"persist"})
+     *
+     * @Groups({
+     *  "person_list", "person_show",
+     *  "jury_list", "jury_show"
+     * })
      */
     private $media;
 
@@ -50,6 +57,11 @@ class FilmPersonMedia implements FilmFilmMediaInterface
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({
+     *  "person_list", "person_show",
+     *  "jury_list", "jury_show"
+     * })
      */
     private $position;
 
@@ -57,6 +69,11 @@ class FilmPersonMedia implements FilmFilmMediaInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({
+     *  "person_list", "person_show",
+     *  "jury_list", "jury_show"
+     * })
      */
     private $filename;
 
@@ -64,6 +81,11 @@ class FilmPersonMedia implements FilmFilmMediaInterface
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({
+     *  "person_list", "person_show",
+     *  "jury_list", "jury_show"
+     * })
      */
     private $type;
 

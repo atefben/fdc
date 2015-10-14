@@ -54,11 +54,6 @@ class Settings
      */
     protected $festival;
 
-    public function getYear()
-    {
-        return $this->getFestival()->getFestivalStartsAt()->format('Y');
-    }
-
     /**
      * Get id
      *

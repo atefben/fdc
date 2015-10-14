@@ -29,7 +29,7 @@ class MediaVideoTranslation implements MediaTranslationInterface
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
      */
     private $akamaiId;
 
@@ -37,7 +37,7 @@ class MediaVideoTranslation implements MediaTranslationInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
      */
     private $title;
 
@@ -45,7 +45,6 @@ class MediaVideoTranslation implements MediaTranslationInterface
      * @var integer
      *
      * @ORM\Column(type="integer")
-     * @Groups({"web_tv_list", "web_tv_show"})
      */
     private $status;
 
@@ -53,7 +52,7 @@ class MediaVideoTranslation implements MediaTranslationInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
      */
     private $alt;
 
@@ -61,7 +60,7 @@ class MediaVideoTranslation implements MediaTranslationInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
      */
     private $copyright;
 

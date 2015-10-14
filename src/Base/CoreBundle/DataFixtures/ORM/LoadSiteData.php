@@ -26,21 +26,21 @@ class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
         $siteBase->setClassColor('red-light');
         $manager->persist($siteBase);
         $this->addReference('site-Base', $siteBase);
-        
+
         $siteMdf = new Site();
         $siteMdf->setName('Marché du film');
         $siteMdf->setClassColor('green-light');
         $manager->persist($siteMdf);
         $this->addReference('site-mdf', $siteMdf);
-        
-        
+
+
         $siteCine = new Site();
         $siteCine->setName('Cinéfondation');
         $siteCine->setClassColor('blue-light');
         $manager->persist($siteCine);
         $this->addReference('site-cine', $siteCine);
-        
-        
+
+
         $siteCcm = new Site();
         $siteCcm->setName('Cannes courts métrages');
         $siteCcm->setClassColor('purple-light');

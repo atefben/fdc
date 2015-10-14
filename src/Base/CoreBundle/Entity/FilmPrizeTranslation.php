@@ -8,6 +8,9 @@ use Base\CoreBundle\Util\Time;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * @ORM\Entity
  * @ORM\Table()
@@ -22,6 +25,8 @@ class FilmPrizeTranslation
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     protected $title;
     
@@ -29,6 +34,8 @@ class FilmPrizeTranslation
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     protected $category;
     

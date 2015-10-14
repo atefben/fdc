@@ -44,17 +44,20 @@ class FilmJuryTypeController extends FOSRestController
      */
     public function getJuryTypesAction(Paramfetcher $paramFetcher)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
         // create query
         $em = $this->getDoctrine()->getManager();
         $dql = "SELECT fjp FROM {$this->repository} fjp";
         $query = $em->createQuery($dql);
 
         // get items
-        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('film_jury_type_list', 'time');
-        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view
         $view = $this->view($items, 200);

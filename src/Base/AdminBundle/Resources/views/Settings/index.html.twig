@@ -1,12 +1,19 @@
 {% extends 'SonataAdminBundle::standard_layout.html.twig' %}
 
 {% block content %}
-    <h3>{{ 'settings'|trans({}, 'BaseAdminBundle') }}</h3>
-    {{ form_start(form) }}
-        {{ form_errors(form) }}
+    <h3>{{ 'Settings FDC Year'|trans({}, 'BaseAdminBundle') }}</h3>
+    {{ form_start(formFDCYear) }}
+        {{ form_errors(formFDCYear) }}
 
-        {{ form_row(form.festivalStartsAt) }}
-        {{ form_row(form.festivalEndsAt) }}
-        {{ form_row(form.save) }}
-    {{ form_end(form) }}
+        {{ form_row(formFDCYear.festival) }}
+        {{ form_row(formFDCYear.save) }}
+    {{ form_end(formFDCYear) }}
+
+    <h3>{{ 'Settings FDC Api Year'|trans({}, 'BaseAdminBundle') }}</h3>
+    {{ form_start(formFDCApiYear) }}
+    {{ form_errors(formFDCApiYear) }}
+
+    {{ form_row(formFDCApiYear.festival) }}
+    {{ form_row(formFDCApiYear.save) }}
+    {{ form_end(formFDCApiYear) }}
 {% endblock %}

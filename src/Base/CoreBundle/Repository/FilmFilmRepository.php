@@ -2,6 +2,8 @@
 
 namespace Base\CoreBundle\Repository;
 
+use Base\CoreBundle\Entity\MediaTranslationInterface;
+
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
@@ -14,7 +16,34 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class FilmFilmRepository extends EntityRepository
 {
-    public function getApiTrailers($festival, $dateTime)
+    public function getApiFilms($festival, $selection)
+    {
+        $query = $this->createQueryBuilder('f')
+            ->where('f.festival = :festival')
+            ->setParameter('festival', $festival);
+
+        if ($selection !== null) {
+            $query = $query->andWhere('f.selection = :selection')
+                ->setParameter('selection', $selection);
+        }
+
+        return $query;
+    }
+
+    public function getApiFilm($id, $festival)
+    {
+        $query = $this->createQueryBuilder('f')
+            ->where('f.festival = :festival')
+            ->andWhere('f.id = :id')
+            ->setParameter('festival', $festival)
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        return $query;
+    }
+
+    public function getApiFilmTrailers($festival, $dateTime, $locale)
     {
         return $this->createQueryBuilder('f')
             ->join('f.mediaVideos', 'mv')
@@ -28,35 +57,36 @@ class FilmFilmRepository extends EntityRepository
             ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
             ->setParameter('festival', $festival)
-            ->setParameter('inWebTv', true)
-            ->setParameter('locale', 'fr')
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('inTrailer', true)
+            ->setParameter('locale', $locale)
+            ->setParameter('status', MediaTranslationInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery();
     }
 
-    public function getApiTrailer($festival, $dateTime, $id)
+    public function getApiTrailers($id, $festival, $dateTime, $locale)
     {
         return $this->createQueryBuilder('f')
-            ->join('f.mediaVideos', 'f')
+            ->join('f.mediaVideos', 'mv')
             ->join('mv.sites', 's')
             ->join('mv.translations', 'mvt')
             ->where('mv.festival = :festival')
+            ->andWhere('f.id = :id')
             ->andWhere('s.slug = :site')
             ->andWhere('mv.inTrailer = :inTrailer')
             ->andWhere('mvt.locale = :locale')
             ->andWhere('mvt.status = :status')
             ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
-            ->andWhere('mv.id = :id')
             ->setParameter('id', $id)
             ->setParameter('festival', $festival)
             ->setParameter('inTrailer', true)
             ->setParameter('locale', 'fr')
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', MediaTranslationInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
-            ->getQuery();
+            ->getQuery()
+            ->getOneOrNullResult();;
     }
 }

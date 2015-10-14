@@ -6,3 +6,4 @@ services:
             - ['setApiVersion', ['%api_version%']]
             - ['setApiPageOffset', ['%api_page_offset%']]
             - ['setKnpPaginator', ['@knp_paginator']]
+            - ['setLocale', [%api_translation_locale%]]

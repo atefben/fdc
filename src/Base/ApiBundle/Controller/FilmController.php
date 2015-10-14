@@ -2,6 +2,7 @@
 
 namespace Base\ApiBundle\Controller;
 
+use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -49,37 +50,28 @@ class FilmController extends FOSRestController
      */
     public function getFilmsAction(Paramfetcher $paramFetcher)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
         // parameters
         $selection = $paramFetcher->get('selection_id');
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 
         // get festival
-        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
-        if ($festival === null) {
-            return $this->view(array(), 200);
-        }
+        $festival = $coreManager->getApiFestivalYear();
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT ff FROM {$this->repository} ff WHERE ff.festival = :festival";
-        // if selection is defined, add it to the query
-        if ($selection !== null) {
-            $dql .= ' AND ff.selection = :selection';
-        }
-
-        $query = $em
-            ->createQuery($dql)
-            ->setParameter('festival', $festival->getId());
-        // if selection is defined, add it to the query
-        if ($selection !== null) {
-            $query = $query->setParameter('selection', $selection);
-        }
+        $query = $em->getRepository($this->repository)->getApiFilms($festival, $selection);
 
         // get items
-        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('film_list', 'time');
-        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $coreManager->setContext($groups, $paramFetcher);
+        $context->setVersion($version);
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
 
         // create view
         $view = $this->view($items, 200);
@@ -120,15 +112,26 @@ class FilmController extends FOSRestController
      */
     public function getFilmAction(Paramfetcher $paramFetcher, $id)
     {
+        // coremanager shortcut
+        $coreManager =  $this->get('base.api.core_manager');
+
+        // parameters
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 
+        // get festival
+        $festival = $coreManager->getApiFestivalYear();
+
+        // create query
         $em = $this->getDoctrine()->getManager();
-        $film = $em->getRepository($this->repository)->findOneById($id);
+        $film = $em->getRepository($this->repository)->getApiFilm($id, $festival);
 
         // set context view
         $context = SerializationContext::create();
         $context->setGroups(array('film_show', 'time'));
         $context->setVersion($version);
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+
+        // create view
         $view = $this->view($film, 200);
         $view->setSerializationContext($context);
          

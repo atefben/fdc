@@ -2,9 +2,12 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmFilmCountry
@@ -30,6 +33,12 @@ class FilmFilmCountry
      * @var integer
      *
      * @ORM\Column(type="integer")
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $position;
     
@@ -37,6 +46,12 @@ class FilmFilmCountry
      * @var Country
      *
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="countryFilms")
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $country;
 

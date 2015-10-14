@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmJury
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmJuryRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmJury
@@ -51,8 +51,6 @@ class FilmJury
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="juries", cascade={"persist"})
-     *
-     * @Groups({"jury_list", "jury_show"})
      */
     private $festival;
 
@@ -70,7 +68,7 @@ class FilmJury
      *
      * @ORM\ManyToOne(targetEntity="FilmJuryType", inversedBy="juries", cascade={"persist"})
      *
-     * @Groups({"jury_list", "jury_show"})s
+     * @Groups({"jury_list", "jury_show"})
      */
     private $type;
     
@@ -83,15 +81,6 @@ class FilmJury
      */
     private $function;
 
-    /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="jury")
-     *
-     * @Groups({"jury_list", "jury_show"})
-     */
-    private $medias;
-    
     /**
      * @var ArrayCollection
      *
@@ -293,47 +282,6 @@ class FilmJury
     public function getFunction()
     {
         return $this->function;
-    }
-
-    /**
-     * Add medias
-     *
-     * @param \Base\CoreBundle\Entity\FilmMedia $medias
-     * @return FilmJury
-     */
-    public function addMedia(\Base\CoreBundle\Entity\FilmMedia $medias)
-    {
-        if ($this->medias->contains($medias)) {
-            return;
-        }
-
-        $this->medias[] = $medias;
-
-        return $this;
-    }
-
-    /**
-     * Remove medias
-     *
-     * @param \Base\CoreBundle\Entity\FilmMedia $medias
-     */
-    public function removeMedia(\Base\CoreBundle\Entity\FilmMedia $medias)
-    {
-        if (!$this->medias->contains($medias)) {
-            return;
-        }
-        
-        $this->medias->removeElement($medias);
-    }
-
-    /**
-     * Get medias
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMedias()
-    {
-        return $this->medias;
     }
 
     /**

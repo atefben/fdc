@@ -50,7 +50,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
     public function load(ObjectManager $manager)
     {
         $userManager = $this->container->get('fos_user.user_manager');
-        
+
         $user = $userManager->createUser();
         $user->setUsername('admin');
         $user->setEmail('admin-Base@yopmail.fr');
@@ -62,7 +62,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->addSite($this->getReference('site-cine'));
         $user->addSite($this->getReference('site-ccm'));
         $userManager->updateUser($user);
-        
+
         $user = $userManager->createUser();
         $user->setUsername('writer');
         $user->setEmail('admin-Base-mdf@yopmail.fr');
@@ -72,7 +72,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->addSite($this->getReference('site-Base'));
         $user->addSite($this->getReference('site-mdf'));
         $userManager->updateUser($user);
-        
+
         $user = $userManager->createUser();
         $user->setUsername('translator');
         $user->setEmail('admin-Base-translator@yopmail.fr');

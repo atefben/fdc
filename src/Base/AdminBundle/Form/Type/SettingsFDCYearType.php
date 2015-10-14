@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SettingsType extends AbstractType
+class SettingsFDCYearType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,25 +15,9 @@ class SettingsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('festivalStartsAt', 'sonata_type_datetime_picker', array(
-                'label' => 'form.label_festival_starts_at',
-                'format' => 'dd/MM/yyyy HH:mm',
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm'
-                ),
-                'attr' => array(
-                    'class' => 'form-control'
-                )
-            ))
-            ->add('festivalEndsAt', 'sonata_type_datetime_picker', array(
-                'label' => 'form.label_festival_ends_at',
-                'format' => 'dd/MM/yyyy HH:mm',
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm'
-                ),
-                'attr' => array(
-                    'class' => 'form-control'
-                )
+            ->add('festival', 'entity', array(
+                'class' => 'BaseCoreBundle:FilmFestival',
+                'property' => 'year'
             ))
             ->add('save', 'submit', array(
                 'label' => 'form.label_save'
@@ -57,6 +41,6 @@ class SettingsType extends AbstractType
      */
     public function getName()
     {
-        return 'base_adminbundle_settings';
+        return 'base_adminbundle_settings_fdc_year';
     }
 }

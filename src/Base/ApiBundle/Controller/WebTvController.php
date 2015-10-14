@@ -2,6 +2,7 @@
 
 namespace Base\ApiBundle\Controller;
 
+use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 use \DateTime;
 
 use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
@@ -29,7 +30,7 @@ class WebTvController extends FOSRestController
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get web tvs of festival_id",
+     *   description = "Get web tvs",
      *   section="Web Tvs",
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -43,33 +44,30 @@ class WebTvController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
-     * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
      * @return View
      */
     public function getWebTvsAction(Paramfetcher $paramFetcher)
     {
-        // get festival
-        $festival = $this->get('base.api.core_manager')->getFestivalSettings($paramFetcher->get('festival_id'));
-        if ($festival === null) {
-            return $this->view(array(), 200);
-        }
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
 
+        // get festival year / version
+        $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        // @TODO only where status is translated
-
-        $query = $em->getRepository('BaseCoreBundle:WebTv')->getApiWebTvs($festival, new DateTime());
+        $query = $em->getRepository($this->repository)->getApiWebTvs($festival, new DateTime(), $coreManager->getLocale());
 
         // get items
-        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('web_tv_list', 'time');
-        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new StatusExclusionStrategy());
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
         $context->setVersion($version);
 
         // create view
@@ -112,18 +110,25 @@ class WebTvController extends FOSRestController
      */
     public function getWebTvAction(Paramfetcher $paramFetcher, $id)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
 
+        // get festival year / version
+        $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 
+        // create query
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('BaseCoreBundle:WebTv')->getApiWebTv($id, new DateTime());
+        $entity = $em->getRepository($this->repository)->getApiWebTv($id, $festival, new DateTime(), $coreManager->getLocale());
 
         // set context view
         $groups = array('web_tv_list', 'time');
-        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new StatusExclusionStrategy());
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
         $context->setVersion($version);
 
+        // create view
         $statusCode = ($entity !== null) ? 200 : 204;
         $view = $this->view($entity, $statusCode);
         $view->setSerializationContext($context);

@@ -94,7 +94,7 @@ class MediaVideo extends Media
 
     /**
      * @var ArrayCollection
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
      */
     protected $translations;
 

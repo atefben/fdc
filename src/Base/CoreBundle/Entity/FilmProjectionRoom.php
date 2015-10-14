@@ -2,9 +2,12 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmProjectionRoom
@@ -22,6 +25,8 @@ class FilmProjectionRoom
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $id;
 
@@ -29,6 +34,8 @@ class FilmProjectionRoom
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $name;
 

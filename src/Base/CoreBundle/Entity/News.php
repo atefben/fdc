@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\TranslationByLocale;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -19,12 +20,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * News
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\NewsRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "NewsArticle", "audio" = "NewsAudio", "image" = "NewsImage", "video" = "NewsVideo"})
  */
-class News
+abstract class News
 {
     use TranslationByLocale;
     use Time;
@@ -60,6 +61,13 @@ class News
       * @ORM\ManyToOne(targetEntity="NewsTheme")
       */
     private $theme;
+
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
     
     /**
      * @var \DateTime
@@ -105,6 +113,15 @@ class News
     private $widgets;
 
     /**
+     * @var Site
+     *
+     * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsArticles")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $sites;
+
+    /**
      * ArrayCollection
      *
      * @Groups({"news_list", "news_show"})
@@ -139,6 +156,17 @@ class News
     }
 
     /**
+     * Get the class type in the Api
+     *
+     * @VirtualProperty
+     * @Groups({"news_list", "news_show"})
+     */
+    public function getNewsType()
+    {
+        return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -147,6 +175,7 @@ class News
     {
         return $this->id;
     }
+
 
 
     /**
@@ -286,6 +315,30 @@ class News
     }
 
     /**
+     * Set festival
+     *
+     * @param fBase\CoreBundle\Entity\FilmFestival $festival
+     * @return News
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival
+     */
+    public function getFestival()
+    {
+        return $this->festival;
+    }
+
+
+    /**
      * Add tags
      *
      * @param \Base\CoreBundle\Entity\NewsNewsTag $tags
@@ -374,5 +427,38 @@ class News
     public function getTranslate()
     {
         return $this->translate;
+    }
+
+    /**
+     * Add sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     * @return NewsArticleTranslation
+     */
+    public function addSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites[] = $sites;
+
+        return $this;
+    }
+
+    /**
+     * Remove sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     */
+    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites->removeElement($sites);
+    }
+
+    /**
+     * Get sites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSites()
+    {
+        return $this->sites;
     }
 }

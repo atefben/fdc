@@ -91,47 +91,11 @@ class NewsAudioAdmin extends Admin
                         'label' => 'form.label_introduction',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
-                    'widgets' => array(
-                        'field_type' => 'infinite_form_polycollection',
-                        'types' => array(
-                            'news_widget_text_type',
-                            'news_widget_audio_type',
-                            'news_widget_image_type',
-                            'news_widget_video_type',
-                        ),
-                        'allow_add' => true,
-                        'allow_delete' => true,
-                        'prototype' => true,
-                        'by_reference' => false,
-                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
                     'updatedAt' => array(
                         'display' => false
-                    ),
-                    'sites' => array(
-                        'class' => 'BaseCoreBundle:Site',
-                        'multiple' => true,
-                        'expanded' => true
-                    ),
-                    'publishedAt' => array(
-                        'label' => 'form.label_published_at',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        )
-                    ),
-                    'publishEndedAt' => array(
-                        'label' => 'form.label_publish_ended_at',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        )
                     ),
                     'status' => array(
                         'label' => 'form.label_status',
@@ -141,6 +105,37 @@ class NewsAudioAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                 )
+            ))
+            ->add('sites', null, array(
+                'class' => 'BaseCoreBundle:Site',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('widgets', 'infinite_form_polycollection', array(
+                'types' => array(
+                    'news_widget_text_type',
+                    'news_widget_audio_type',
+                    'news_widget_image_type',
+                    'news_widget_video_type',
+                ),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'required' => false,

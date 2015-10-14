@@ -151,29 +151,6 @@ class NewsArticleAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'sites' => array(
-                        'class' => 'BaseCoreBundle:Site',
-                        'multiple' => true,
-                        'expanded' => true
-                    ),
-                    'publishedAt' => array(
-                        'label' => 'form.label_published_at',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        )
-                    ),
-                    'publishEndedAt' => array(
-                        'label' => 'form.label_publish_ended_at',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        )
-                    ),
                     'status' => array(
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
@@ -181,6 +158,25 @@ class NewsArticleAdmin extends Admin
                         'choices' => NewsArticleTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                )
+            ))
+            ->add('sites', null, array(
+                'class' => 'BaseCoreBundle:Site',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
                 )
             ))
             ->add('widgets', 'infinite_form_polycollection', array(

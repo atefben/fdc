@@ -71,8 +71,8 @@ class UpdateCommand extends ContainerAwareCommand
         
         // managers
         $managers = array(
-           // $this->getContainer()->get('base.soif.country_manager'),
-            $this->getContainer()->get('base.soif.festival_manager'),
+            $this->getContainer()->get('base.soif.country_manager'),
+           /* $this->getContainer()->get('base.soif.festival_manager'),
             /*$this->getContainer()->get('base.soif.award_manager'),
             $this->getContainer()->get('base.soif.festival_poster_manager'),
             $this->getContainer()->get('base.soif.film_atelier_manager'),

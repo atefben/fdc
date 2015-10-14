@@ -237,20 +237,20 @@ class ProjectionManager extends CoreManager
         $filmProjectionRoom->setId($resultObject->IdSalle);
         $filmProjectionRoom->setName($resultObject->Salle);
         $entity->setRoom($filmProjectionRoom);
-        
-        // TO DO section programmation / dynamic programmation object / film programmation object / film list programmation object
-        
+
         // set section programmation
         if (property_exists($resultObject, 'SectionProgrammation')) {
             $entity->setProgrammationSection($resultObject->SectionProgrammation->Libelle);
-            foreach ($resultObject->SectionProgrammation->Traductions->SectionProgrammationTraductionDto as $translation) {
-                $entityTranslation = $entity->findTranslationByLocale($translation->CodeLangue);
-                $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmProjectionTranslation();
-                $entityTranslation->setProgramSection($translation->Libelle);
-                $entityTranslation->setLocale($localesMapper[$translation->CodeLangue]);
-                
-                if ($entityTranslation->getId() === null) {
-                    $entity->addTranslation($entityTranslation);
+            if (property_exists($resultObject->SectionProgrammation->Traductions, 'SectionProgrammationTraductionDto')) {
+                foreach ($resultObject->SectionProgrammation->Traductions->SectionProgrammationTraductionDto as $translation) {
+                    $entityTranslation = $entity->findTranslationByLocale($translation->CodeLangue);
+                    $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmProjectionTranslation();
+                    $entityTranslation->setProgramSection($translation->Libelle);
+                    $entityTranslation->setLocale($localesMapper[$translation->CodeLangue]);
+
+                    if ($entityTranslation->getId() === null) {
+                        $entity->addTranslation($entityTranslation);
+                    }
                 }
             }
         }

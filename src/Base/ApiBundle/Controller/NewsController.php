@@ -2,6 +2,11 @@
 
 namespace Base\ApiBundle\Controller;
 
+use \DateTime;
+
+use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
+use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
+
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -19,7 +24,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  */
 class NewsController extends FOSRestController
 {
-    private $repository = 'BaseCoreBundle:NewsArticle';
+    private $repository = 'BaseCoreBundle:News';
     /**
      * Return an array of news, can be filtered with page / offset parameters
      *
@@ -45,17 +50,29 @@ class NewsController extends FOSRestController
      */
     public function getNewsAction(Paramfetcher $paramFetcher)
     {
-        // create query
-        $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT n FROM {$this->repository} n";
-        $query = $em->createQuery($dql);
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
 
+        // get festival year / version
+        $festival = $coreManager->getApiFestivalYear();
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+
+        //create query
+        $em = $this->getDoctrine()->getManager();
+        $count = $em->getRepository('BaseCoreBundle:News')->getNewsCount($festival, new DateTime(), $coreManager->getLocale());
+       // $query = $em->getRepository('BaseCoreBundle:News')->getNews($festival, new DateTime(), $coreManager->getLocale(), $count);
+
+        $query = $em->createQuery('SELECT n FROM Base\CoreBundle\Entity\News n LEFT JOIN Base\CoreBundle\Entity\NewsArticle na WITH na.id = n.id')
+            ->setHint('knp_paginator.count', $count);
         // get items
-        $items = $this->get('base.api.core_manager')->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('news_list', 'time');
-        $context = $this->get('base.api.core_manager')->setContext($groups, $paramFetcher);
+        $context = $coreManager->setContext($groups, $paramFetcher);
+        $context->addExclusionStrategy(new StatusExclusionStrategy());
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+        $context->setVersion($version);
 
         // create view
         $view = $this->view($items, 200);

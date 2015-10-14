@@ -4,15 +4,16 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
-
 use Base\CoreBundle\Util\TranslationByLocale;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * FilmFilm
@@ -35,7 +36,12 @@ class FilmFilm implements FilmFilmInterface
      * @ORM\Column(type="string", length=36)
      * @ORM\Id
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *  "trailer_list", "trailer_show",
+     *  "film_list", "film_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      * 
      */
     private $id;
@@ -45,7 +51,12 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="boolean")
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *  "trailer_list", "trailer_show",
+     *  "film_list", "film_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      * 
      */
     private $directorFirst;
@@ -54,8 +65,6 @@ class FilmFilm implements FilmFilmInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
-     *
-     * @Groups({"film_list", "film_show"})
      * 
      */
     private $restored;
@@ -65,7 +74,12 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *  "trailer_list", "trailer_show",
+     *  "film_list", "film_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      * 
      */
     private $titleVO;
@@ -75,7 +89,12 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *  "trailer_list", "trailer_show",
+     *  "film_list", "film_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      * 
      */
     private $titleVOAlphabet;
@@ -85,7 +104,12 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="string", length=4, nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      * 
      */
     private $productionYear;
@@ -95,7 +119,12 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="decimal", precision=22, scale=2)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      * 
      */
     private $duration;
@@ -104,8 +133,6 @@ class FilmFilm implements FilmFilmInterface
      * @var text
      *
      * @ORM\Column(type="text", nullable=true)
-     *
-     * @Groups({"film_list", "film_show"})
      * 
      */
     private $castingCommentary;
@@ -115,7 +142,12 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      * 
      */
     private $website;
@@ -125,8 +157,12 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
-     * 
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $galaId;
 
@@ -135,7 +171,12 @@ class FilmFilm implements FilmFilmInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      * 
      */
     private $galaName;
@@ -154,8 +195,6 @@ class FilmFilm implements FilmFilmInterface
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films", cascade={"persist"})
-     *
-     * @Groups({"film_list", "film_show"})
      * 
      */
     private $festival;
@@ -172,16 +211,12 @@ class FilmFilm implements FilmFilmInterface
     
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
-     *
-     * @Groups({"film_list", "film_show"})
      * 
      */
     private $contacts;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="film", cascade={"persist"})
-     *
-     * @Groups({"film_list", "film_show"})
      * 
      */
     private $awards;
@@ -197,39 +232,32 @@ class FilmFilm implements FilmFilmInterface
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMinorProduction", mappedBy="film", cascade={"persist"})
-     *
-     * @Groups({"film_list", "film_show"})
-     * 
      */
     private $minorProductions;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"persist"})
      *
-     * @Groups({"film_list", "film_show"})
-     * 
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $countries;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="film", cascade={"persist"})
      *
-     * @Groups({"trailer_list", "trailer_show"})
+     * @Groups({"trailer_show"})
      */
     private $mediaVideos;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="FilmProjection", inversedBy="films", cascade={"persist"})
-     *
-     * @Groups({"film_list", "film_show"})
-     * 
-     */
-    private $projections;
     
     /**
      * @var ArrayCollection
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
      * 
      */
     protected $translations;
@@ -243,9 +271,9 @@ class FilmFilm implements FilmFilmInterface
         $this->contacts = new ArrayCollection();
         $this->awards = new ArrayCollection();
         $this->medias = new ArrayCollection();
+        $this->mediaVideos = new ArrayCollection();
         $this->minorProductions = new ArrayCollection();
         $this->countries = new ArrayCollection();
-        $this->projections = new ArrayCollection();
         $this->translations = new ArrayCollection();
         $this->schoolAddresses = new ArrayCollection();
         $this->languages = new ArrayCollection();
@@ -255,7 +283,6 @@ class FilmFilm implements FilmFilmInterface
     {
         return $this->getTitleVO();
     }
-
 
     /**
      * Set id
@@ -1109,47 +1136,6 @@ class FilmFilm implements FilmFilmInterface
     }
 
     /**
-     * Add projections
-     *
-     * @param \Base\CoreBundle\Entity\FilmProjection $projections
-     * @return FilmFilm
-     */
-    public function addProjection(\Base\CoreBundle\Entity\FilmProjection $projections)
-    {
-        if ($this->projections->contains($projections)) {
-            return;
-        }
-        
-        $this->projections[] = $projections;
-
-        return $this;
-    }
-
-    /**
-     * Remove projections
-     *
-     * @param \Base\CoreBundle\Entity\FilmProjection $projections
-     */
-    public function removeProjection(\Base\CoreBundle\Entity\FilmProjection $projections)
-    {
-        if (!$this->projections->contains($projections)) {
-            return;
-        }
-        
-        $this->projections->removeElement($projections);
-    }
-
-    /**
-     * Get projections
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProjections()
-    {
-        return $this->projections;
-    }
-
-    /**
      * Add medias
      *
      * @param \Base\CoreBundle\Entity\FilmFilmMedia $medias
@@ -1416,7 +1402,7 @@ class FilmFilm implements FilmFilmInterface
         if ($this->contacts->contains($contacts)) {
             return;
         }
-        
+
         $this->contacts[] = $contacts;
 
         return $this;
@@ -1444,5 +1430,39 @@ class FilmFilm implements FilmFilmInterface
     public function getContacts()
     {
         return $this->contacts;
+    }
+
+    /**
+     * Add mediaVideos
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $mediaVideos
+     * @return FilmFilm
+     */
+    public function addMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
+    {
+        $this->mediaVideos[] = $mediaVideos;
+        $mediaVideos->setFilm($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove mediaVideos
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $mediaVideos
+     */
+    public function removeMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
+    {
+        $this->mediaVideos->removeElement($mediaVideos);
+    }
+
+    /**
+     * Get mediaVideos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMediaVideos()
+    {
+        return $this->mediaVideos;
     }
 }

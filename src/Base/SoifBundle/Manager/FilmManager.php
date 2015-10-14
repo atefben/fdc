@@ -332,14 +332,12 @@ class FilmManager extends CoreManager
         // set selection
         if (property_exists($resultObject, 'FilmSelections') && property_exists($resultObject->FilmSelections, 'FilmSelectionDto')) {
             $object = $resultObject->FilmSelections->FilmSelectionDto;
-            
             // create / get selection
             $filmSelection = $this->em->getRepository('BaseCoreBundle:FilmSelection')->findOneBy(array('codeSignup' => $object->CodeInscription));
             $filmSelection = ($filmSelection !== null) ? $filmSelection : new FilmSelection();
-            if ($filmSelection->getId() === null) {
-                $filmSelection->setCodeSignup($object->CodeInscription);
-                $entity->setSelection($filmSelection);
-            }
+            $filmSelection->setCodeSignup($object->CodeInscription);
+
+            $entity->setSelection($filmSelection);
             
             $entityTranslation = array();
                 
@@ -380,7 +378,7 @@ class FilmManager extends CoreManager
                     }
                 }
             }
-            
+
             // create / update selection subsection
             if (property_exists($object, 'SousSectionSelection') && property_exists($object->SousSectionSelection->Traductions, 'FilmSousSectionSelectionTraductionDto')) {
                 // create an array when we get an object to standardize the code

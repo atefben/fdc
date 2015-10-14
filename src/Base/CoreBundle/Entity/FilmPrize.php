@@ -4,12 +4,15 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
-
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
 use Base\CoreBundle\Util\TranslationByLocale;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmPrize
@@ -30,6 +33,8 @@ class FilmPrize implements FilmPrizeInterface
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $id;
     
@@ -37,6 +42,8 @@ class FilmPrize implements FilmPrizeInterface
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $type;
     
@@ -44,6 +51,8 @@ class FilmPrize implements FilmPrizeInterface
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"award_list", "award_show"})
      */
     private $position;
 
@@ -54,6 +63,8 @@ class FilmPrize implements FilmPrizeInterface
     
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"award_list", "award_show"})
      */
     protected $translations;
 

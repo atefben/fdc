@@ -45,13 +45,6 @@ class NewsAudioTranslation implements NewsTranslationInterface
     private $status;
     
     /**
-     * @var NewsWidget
-     *
-     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="newsAudio", cascade={"persist"})
-     */
-    protected $widgets;
-    
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
@@ -70,7 +63,7 @@ class NewsAudioTranslation implements NewsTranslationInterface
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio")
      */
-    private $header;
+    private $audio;
 
     /**
      * @var Site
@@ -201,62 +194,6 @@ class NewsAudioTranslation implements NewsTranslationInterface
     public function getPublishEndedAt()
     {
         return $this->publishEndedAt;
-    }
-
-    /**
-     * Add widgets
-     *
-     * @param \Base\CoreBundle\Entity\NewsWidget $widgets
-     * @return NewsAudioTranslation
-     */
-    public function addWidget(\Base\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $this->widgets[] = $widgets;
-
-        return $this;
-    }
-
-    /**
-     * Remove widgets
-     *
-     * @param \Base\CoreBundle\Entity\NewsWidget $widgets
-     */
-    public function removeWidget(\Base\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $this->widgets->removeElement($widgets);
-    }
-
-    /**
-     * Get widgets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getWidgets()
-    {
-        return $this->widgets;
-    }
-
-    /**
-     * Set header
-     *
-     * @param \Base\CoreBundle\Entity\MediaAudio $header
-     * @return NewsAudioTranslation
-     */
-    public function setHeader(\Base\CoreBundle\Entity\MediaAudio $header = null)
-    {
-        $this->header = $header;
-
-        return $this;
-    }
-
-    /**
-     * Get header
-     *
-     * @return \Base\CoreBundle\Entity\MediaAudio
-     */
-    public function getHeader()
-    {
-        return $this->header;
     }
 
     /**

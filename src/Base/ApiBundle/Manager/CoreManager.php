@@ -2,6 +2,8 @@
 
 namespace Base\ApiBundle\Manager;
 
+use \Exception;
+
 use Doctrine\ORM\NoResultException;
 
 use JMS\Serializer\SerializationContext;
@@ -45,6 +47,8 @@ class CoreManager
      * @access private
      */
     private $knpPaginator;
+
+    private $locale;
 
     /**
      * setEntityManager function.
@@ -94,29 +98,27 @@ class CoreManager
         $this->apiVersion = $apiVersion;
     }
 
-    /**
-     * getFestivalSettings function.
-     * 
-     * @access public
-     * @param mixed $festivalId
-     * @return void
-     */
-    public function getFestivalSettings($festivalId)
+    public function setLocale($locale)
     {
-        if ($festivalId === null) {
-            try {
-                $settings = $this->em->getRepository('BaseCoreBundle:Settings')->getFestivalSettings();
-            } catch (NoResultException $e) {
-                return null;
-            }
-            if ($settings === null) {
-                return null;
-            }
-            $festival = $this->em->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($settings->getYear());
-        } else {
-            $festival = $this->em->getRepository('BaseCoreBundle:FilmFestival')->findOneById($festivalId);
+        $this->locale = $locale;
+    }
+
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApiFestivalYear()
+    {
+        $settings = $this->em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-api-year');
+        if ($settings == null) {
+            throw new Exception('Settings not found');
         }
-        return $festival;
+
+        return $settings->getFestival();
     }
     
     /**
@@ -136,7 +138,8 @@ class CoreManager
         $pagination = $this->knpPaginator->paginate(
             $query,
             $page,
-            $offset
+            $offset,
+            array('distinct' => false)
         );
         
         return $pagination->getItems();

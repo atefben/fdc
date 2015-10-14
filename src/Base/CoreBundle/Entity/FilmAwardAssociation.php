@@ -35,6 +35,7 @@ class FilmAwardAssociation
      * @var FilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmAward", inversedBy="associations")
+     *
      */
     private $award;
     

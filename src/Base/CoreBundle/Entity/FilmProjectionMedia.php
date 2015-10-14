@@ -4,8 +4,8 @@ namespace Base\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Soif;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmProjectionMedia
@@ -27,6 +27,8 @@ class FilmProjectionMedia
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="projectionMedias", cascade={"persist"})
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $file;
     
@@ -41,6 +43,8 @@ class FilmProjectionMedia
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $position;
     
@@ -48,6 +52,8 @@ class FilmProjectionMedia
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $filename;
     
@@ -55,6 +61,8 @@ class FilmProjectionMedia
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $type;
 

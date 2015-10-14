@@ -2,10 +2,13 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmProjectionProgrammationFilmList
@@ -31,6 +34,8 @@ class FilmProjectionProgrammationFilmList
      * @var FilmProjectionProgrammationType
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionProgrammationType", cascade={"persist"})
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $type;
 
@@ -38,6 +43,8 @@ class FilmProjectionProgrammationFilmList
      * @var FilmProjection
      *
      * @ORM\ManyToOne(targetEntity="FilmProjection", inversedBy="programmationFilmsList")
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $projection;
 
@@ -45,6 +52,8 @@ class FilmProjectionProgrammationFilmList
      * @var FilmFilm
      *
      * @ORM\ManyToMany(targetEntity="FilmFilm")
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $films;
     /**

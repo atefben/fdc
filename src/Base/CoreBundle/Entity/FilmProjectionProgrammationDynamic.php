@@ -2,10 +2,13 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmProjectionProgrammationDynamic
@@ -23,6 +26,7 @@ class FilmProjectionProgrammationDynamic
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
     
@@ -30,6 +34,8 @@ class FilmProjectionProgrammationDynamic
      * @var integer
      *
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $duration;
 
@@ -37,6 +43,8 @@ class FilmProjectionProgrammationDynamic
      * @var FilmProjectionProgrammationType
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionProgrammationType", cascade={"persist"})
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $type;
     
@@ -46,19 +54,6 @@ class FilmProjectionProgrammationDynamic
      * @ORM\ManyToOne(targetEntity="FilmProjection", inversedBy="programmationDynamics")
      */
     private $projection;
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     * @return FilmProjectionProgrammationDynamic
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -94,26 +89,26 @@ class FilmProjectionProgrammationDynamic
     }
 
     /**
-     * Set name
+     * Set type
      *
-     * @param string $name
+     * @param \Base\CoreBundle\Entity\FilmProjectionProgrammationType $type
      * @return FilmProjectionProgrammationDynamic
      */
-    public function setName($name)
+    public function setType(\Base\CoreBundle\Entity\FilmProjectionProgrammationType $type = null)
     {
-        $this->name = $name;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get type
      *
-     * @return string 
+     * @return \Base\CoreBundle\Entity\FilmProjectionProgrammationType 
      */
-    public function getName()
+    public function getType()
     {
-        return $this->name;
+        return $this->type;
     }
 
     /**
@@ -132,7 +127,7 @@ class FilmProjectionProgrammationDynamic
     /**
      * Get projection
      *
-     * @return \Base\CoreBundle\Entity\FilmProjection
+     * @return \Base\CoreBundle\Entity\FilmProjection 
      */
     public function getProjection()
     {

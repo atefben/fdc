@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
 
 use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmProjection
@@ -77,8 +78,6 @@ class FilmProjection
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
-     *
-     * @Groups({"projection_list", "projection_show"})
      */
     private $festival;
 
@@ -133,11 +132,6 @@ class FilmProjection
      * @Groups({"projection_list", "projection_show"})
      */
     protected $translations;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="FilmFilm", mappedBy="projections")
-     */
-    private $films;
 
     /**
      * Constructor

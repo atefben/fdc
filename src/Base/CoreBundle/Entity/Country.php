@@ -4,13 +4,15 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
-
 use Base\CoreBundle\Util\TranslationByLocale;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 /**
  * Pays
  *
@@ -30,6 +32,7 @@ class Country
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
      */
     private $id;
 
@@ -37,6 +40,13 @@ class Country
      * @var string
      *
      * @ORM\Column(type="string", length=3)
+     *
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $iso;
 
@@ -67,6 +77,13 @@ class Country
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     protected $translations;
 

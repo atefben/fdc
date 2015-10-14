@@ -2,11 +2,13 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
-
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 /**
  * FilmProjectionProgrammationType
  *
@@ -23,6 +25,8 @@ class FilmProjectionProgrammationType
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $id;
     
@@ -30,6 +34,8 @@ class FilmProjectionProgrammationType
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $type;
 
@@ -37,6 +43,8 @@ class FilmProjectionProgrammationType
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @Groups({"projection_list", "projection_show"})
      */
     private $name;
 

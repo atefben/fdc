@@ -4,9 +4,12 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * CountryTranslation
@@ -24,6 +27,13 @@ class CountryTranslation
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $name;
 
@@ -31,6 +41,13 @@ class CountryTranslation
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $lang;
 

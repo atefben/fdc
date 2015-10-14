@@ -5,7 +5,9 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Soif;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -43,6 +45,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @var FilmMedia
      *
      * @ORM\ManyToOne(targetEntity="FilmMedia", inversedBy="medias", cascade={"persist"})
+     * @Groups({"film_list", "film_show"})
      */
     private $media;
     
