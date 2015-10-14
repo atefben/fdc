@@ -3,6 +3,7 @@
 // 1. Global
 // 2. Channels
 // 3. Single channel
+// 4. Bandes annonces
 // =========================
 
 
@@ -258,7 +259,46 @@
   }
 }
 
+// 3. Trailer
+// =========================
 
+.webtv-ba{
+	#live{
+		background-image: url(../img/webtv/bandeau.jpg);
+		background-size: cover;
+			h2{
+				font-family: $Playfair;
+				font-size: 1.75rem;
+				letter-spacing: 15px;
+			}
+			.play{
+				border-radius: 50%;
+				margin-bottom: 10px;
+				border: 2px solid #fff;
+			}
+   	}
+		.sub-nav-list{
+			background-color: #141414;
+			width: auto;
+			margin: 0 auto;
+			text-align: center;
+			font-family: $CamphorRegular;
 
+			a{
+					color:#686868;
+					font-size: 0.8rem;
+			}
 
+			a.active{
+					color:#a98b54;
+			}
+
+			li{
+					display: inline-block;
+					padding: 16px;
+					text-transform: uppercase;
+			}
+
+	}
+}
 

@@ -4921,6 +4921,40 @@ article .image .linkImage {
   visibility: visible;
 }
 
+.webtv-ba #live {
+  background-image: url(../img/webtv/bandeau.jpg);
+  background-size: cover;
+}
+.webtv-ba #live h2 {
+  font-family: "Playfair Display";
+  font-size: 1.75rem;
+  letter-spacing: 15px;
+}
+.webtv-ba #live .play {
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #fff;
+}
+.webtv-ba .sub-nav-list {
+  background-color: #141414;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Camphor W01 Regular";
+}
+.webtv-ba .sub-nav-list a {
+  color: #686868;
+  font-size: 0.8rem;
+}
+.webtv-ba .sub-nav-list a.active {
+  color: #a98b54;
+}
+.webtv-ba .sub-nav-list li {
+  display: inline-block;
+  padding: 16px;
+  text-transform: uppercase;
+}
+
 .sitemap h2 {
   padding: 60px;
   font-size: 28px;
@@ -5074,7 +5108,7 @@ article .image .linkImage {
   width: 100%;
   padding-top: 0px;
   line-height: 26px;
-  border-top: 1px solid #c1c1c1;
+  border-top: 1px solid #282828;
   padding: 20px 18px;
   max-height: 100px;
   overflow: hidden;
@@ -5087,7 +5121,6 @@ article .image .linkImage {
   padding-bottom: 40px;
   width: 645px;
   display: inline-block;
-  letter-spacing: 1px;
 }
 .faq section article .fa {
   margin-bottom: 40px;
@@ -5100,18 +5133,17 @@ article .image .linkImage {
   color: #666666;
   font-size: 1rem;
   line-height: 26px;
-  padding-bottom: 75px;
 }
 .faq section article .faq-description a {
   color: #c8a461;
   text-decoration: underline;
 }
-.faq section article .faq-question:hover .fa {
+.faq section article .fa:hover {
   color: #c8a461;
   transition: .5s;
   cursor: pointer;
 }
-.faq section article .faq-question:hover h3 {
+.faq section article h3:hover {
   color: #c8a461;
   transition: .5s;
   cursor: pointer;
