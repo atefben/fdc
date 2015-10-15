@@ -25,7 +25,7 @@
     <div id="main" class="webtv webtv-ba-video">
     	<div class="container-webtv-ba-video">
 				<div class="title-container">
-					<a href="#">Retour aux bandes annonces</a>
+					<a href="#">< Retour aux bandes annonces</a>
 					<h1 class="title">Valley of love</h1>
 				</div>
 				<section>
@@ -36,31 +36,75 @@
 					</article>
 					<aside class="informations-video">
 						<ul>
-							<li class="active" class="infos-film">Film</li>
-							<li class="program-film">Proggramation</li>
+							<li class="active" class="infos-film-li">Film</li>
+							<li class="program-film-li">Programation</li>
 						</ul>
-						<div class="infos-film">
+						<div class="infos-film block">
 							<img src="img/webtv/cover-film1.jpg" alt="affiche film">
 							<h4 class="rubric-film">Compétition</h4>
 							<strong class="name-video">Valley of love</strong>
-							<spam class="name-person">Guillaume NICLOUX</spam>
+							<span class="name-person">Guillaume NICLOUX</span>
 						</div>
-						<div class="program-film">
-						<div class="contain-info">
-							<div class="infos">
-								<p>Projection <span class="date">15/07/2015 9h</span></p>
-								<span class="where">Grand théâtre Lumière</span>
+						<div class="program-film block">
+							<div class="contain-info">
+								<div class="infos">
+									<p>Projection <span class="date">15/07/2015 9h</span></p>
+									<span class="where">Grand théâtre Lumière</span>
+									<hr>
+								</div>
+								<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+									<hr>
+								</div> 
+								<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										<hr>
+									</div>  
+									
+																	<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										<hr>
+									</div>
+																	<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										<hr>
+									</div>
+																	<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										<hr>
+									</div>
+																	<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										<hr>
+									</div>
+																	<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										<hr>
+									</div>
+																	<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										<hr>
+									</div>
+																	<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										<hr>
+									</div>
+																	<div class="infos">
+									<p>Projection <span class="date">12/07/2015 15h</span></p>
+									<span class="where">Cinéma de la plage</span>
+										
+									</div>
 							</div>
-							<div class="infos">
-								<p>Projection <span class="date">12/07/2015 15h</span></p>
-								<span class="where">Cinéma de la plage</span>
-							</div> 
-							<div class="infos">
-								<p>Projection <span class="date">12/07/2015 15h</span></p>
-								<span class="where">Cinéma de la plage</span>
-							</div>  
-						</div>
-						<a href="#" class="btn">Toute la programmation</a>	  					  					
+							<a href="#" class="btn">Toute la programmation</a>	  					  					
 						</div>
 					</aside>
 					<div id="slider-channels" class="owl-carousel sliderDrag owl-theme owl-center owl-loaded">
