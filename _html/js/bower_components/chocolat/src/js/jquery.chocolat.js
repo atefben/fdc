@@ -560,10 +560,10 @@
 
                 var animation = {
                     /*'margin-left': - mvtX + 'px',*/
-                    'margin-top': - mvtY + 'px'
+                    'transform': 'translate3d(0 ,' + (-mvtY) + 'px' + ', 0)'
                 };
                 if (typeof e.duration !== 'undefined') {
-                    $(that.elems.img).stop(false, true).animate(animation, e.duration);
+                    $(that.elems.img).stop(false, true).css(animation);
                 }
                 else {
                     $(that.elems.img).stop(false, true).css(animation);
