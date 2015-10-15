@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsArticleTranslation implements NewsTranslationInterface
+class EventArticleTranslation implements NewsTranslationInterface
 {
     use Time;
     use Translation;
@@ -33,7 +33,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @Groups({"news_list", "news_show"})
      */
     private $title;
-    
+
     /**
      * @var string
      *
@@ -75,7 +75,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -98,7 +98,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
     /**
      * Get introduction
      *
-     * @return string 
+     * @return string
      */
     public function getIntroduction()
     {
@@ -121,7 +121,7 @@ class NewsArticleTranslation implements NewsTranslationInterface
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {

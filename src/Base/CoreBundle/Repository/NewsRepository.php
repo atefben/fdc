@@ -24,7 +24,7 @@ class NewsRepository extends EntityRepository
      * @param $locale
      * @return mixed
      */
-    public function getNews($festival, $dateTime, $locale, $count)
+    public function getNews($festival, $dateTime, $locale)
     {
         return $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -45,36 +45,8 @@ class NewsRepository extends EntityRepository
             ->setParameter('status', NewsTranslationInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
-            ->getQuery()
-            ->setHint('knp_paginator.count', (int)$count);
+            ->getQuery();
     }
-
-    public function getNewsCount($festival, $dateTime, $locale)
-    {
-        return $this->createQueryBuilder('n')
-            ->select('COUNT(n)')
-            ->join('n.sites', 's')
-            ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftjoin('naa.translations', 'naat')
-            ->leftjoin('na.translations', 'nat')
-            ->where('n.festival = :festival')
-            ->andWhere('s.slug = :site')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
-            ->andWhere(
-            '(nat.locale = :locale AND nat.status = :status) OR
-                            (naat.locale = :locale AND naat.status = :status)'
-            )
-            ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
-            ->setParameter('status', NewsTranslationInterface::STATUS_PUBLISHED)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
-            ->getQuery()
-            ->getSingleScalarResult();
-    }
-
 
     /**
      *  Get the $locale version of News of current $festival by $id and verify publish date is between $dateTime

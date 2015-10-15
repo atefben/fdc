@@ -52,7 +52,7 @@ class MediaVideo extends Media
     /**
      * @var FilmFilm
      *
-     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="mediaVideos")
      */
     private $film;
 

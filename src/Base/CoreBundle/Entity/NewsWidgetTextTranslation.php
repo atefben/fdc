@@ -2,14 +2,15 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+
+use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * NewsWidgetTextTranslation
@@ -27,6 +28,8 @@ class NewsWidgetTextTranslation
      * @var string
      *
      * @ORM\Column(type="text", nullable=false)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $content;
 

@@ -34,7 +34,7 @@ class FilmJury
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      *
-     * @Groups({"jury_list", "jury_show"})
+     * @Groups({"jury_list", "jury_show", "person_list", "person_show"})
      */
     private $id;
 
@@ -43,7 +43,7 @@ class FilmJury
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"jury_list", "jury_show"})
+     * @Groups({"jury_list", "jury_show", "person_list", "person_show"})
      */
     private $position;
 

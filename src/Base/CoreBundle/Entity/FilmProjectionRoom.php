@@ -35,7 +35,10 @@ class FilmProjectionRoom
      *
      * @ORM\Column(type="string", length=80, nullable=true)
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "projection_list", "projection_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $name;
 

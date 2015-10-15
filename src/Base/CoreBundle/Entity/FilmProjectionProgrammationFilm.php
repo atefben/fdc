@@ -41,7 +41,7 @@ class FilmProjectionProgrammationFilm
     /**
      * @var FilmFilm
      *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmFilm", cascade={"persist"}, inversedBy="projectionProgrammationFilms")
      *
      * @Groups({"projection_list", "projection_show"})
      */
@@ -52,6 +52,8 @@ class FilmProjectionProgrammationFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmProjection", inversedBy="programmationFilms")
      * @ORM\JoinColumn(name="projection_id", onDelete="CASCADE")
+     *
+     * @Groups({"film_list", "film_show"})
      */
     private $projection;
 

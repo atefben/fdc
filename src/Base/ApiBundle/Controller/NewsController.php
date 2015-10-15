@@ -59,13 +59,11 @@ class NewsController extends FOSRestController
 
         //create query
         $em = $this->getDoctrine()->getManager();
-        $count = $em->getRepository('BaseCoreBundle:News')->getNewsCount($festival, new DateTime(), $coreManager->getLocale());
-       // $query = $em->getRepository('BaseCoreBundle:News')->getNews($festival, new DateTime(), $coreManager->getLocale(), $count);
+        $query = $em->getRepository('BaseCoreBundle:News')->getNews($festival, new DateTime(), $coreManager->getLocale());
 
-        $query = $em->createQuery('SELECT n FROM Base\CoreBundle\Entity\News n LEFT JOIN Base\CoreBundle\Entity\NewsArticle na WITH na.id = n.id')
-            ->setHint('knp_paginator.count', $count);
-        // get items
-        $items = $coreManager->getPaginationItems($query, $paramFetcher);
+        // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
+        //
+        $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
 
         // set context view
         $groups = array('news_list', 'time');

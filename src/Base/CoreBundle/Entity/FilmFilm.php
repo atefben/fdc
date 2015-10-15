@@ -244,7 +244,10 @@ class FilmFilm implements FilmFilmInterface
     /**
      * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="film", cascade={"persist"})
      *
-     * @Groups({"trailer_show"})
+     * @Groups({
+     *  "trailer_show",
+     *  "film_list", "film_show",
+     * })
      */
     private $mediaVideos;
 
@@ -263,10 +266,31 @@ class FilmFilm implements FilmFilmInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
+     * @Groups({
+     *  "trailer_list", "trailer_show",
+     *  "film_list", "film_show"
+     * })
      * 
      */
     protected $translations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="film")
+     *
+     * @Groups({
+     *  "film_list", "film_show",
+     * })
+     */
+    protected $projectionProgrammationFilms;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="films")
+     *
+     * @Groups({
+     *  "film_list", "film_show",
+     * })
+     */
+    protected $projectionProgrammationFilmsList;
 
     /**
      * Constructor
@@ -283,6 +307,7 @@ class FilmFilm implements FilmFilmInterface
         $this->translations = new ArrayCollection();
         $this->schoolAddresses = new ArrayCollection();
         $this->languages = new ArrayCollection();
+        $this->projectionProgrammationFilms = new ArrayCollection();
     }
 
     public function __toString()
@@ -1461,5 +1486,71 @@ class FilmFilm implements FilmFilmInterface
     public function getAwards()
     {
         return $this->awards;
+    }
+
+    /**
+     * Add projectionProgrammationFilms
+     *
+     * @param \Base\CoreBundle\Entity\FilmProjectionProgrammationFilm $projectionProgrammationFilms
+     * @return FilmFilm
+     */
+    public function addProjectionProgrammationFilm(\Base\CoreBundle\Entity\FilmProjectionProgrammationFilm $projectionProgrammationFilms)
+    {
+        $this->projectionProgrammationFilms[] = $projectionProgrammationFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove projectionProgrammationFilms
+     *
+     * @param \Base\CoreBundle\Entity\FilmProjectionProgrammationFilm $projectionProgrammationFilms
+     */
+    public function removeProjectionProgrammationFilm(\Base\CoreBundle\Entity\FilmProjectionProgrammationFilm $projectionProgrammationFilms)
+    {
+        $this->projectionProgrammationFilms->removeElement($projectionProgrammationFilms);
+    }
+
+    /**
+     * Get projectionProgrammationFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProjectionProgrammationFilms()
+    {
+        return $this->projectionProgrammationFilms;
+    }
+
+    /**
+     * Add projectionProgrammationFilmsList
+     *
+     * @param \Base\CoreBundle\Entity\FilmProjectionProgrammationFilmList $projectionProgrammationFilmsList
+     * @return FilmFilm
+     */
+    public function addProjectionProgrammationFilmsList(\Base\CoreBundle\Entity\FilmProjectionProgrammationFilmList $projectionProgrammationFilmsList)
+    {
+        $this->projectionProgrammationFilmsList[] = $projectionProgrammationFilmsList;
+
+        return $this;
+    }
+
+    /**
+     * Remove projectionProgrammationFilmsList
+     *
+     * @param \Base\CoreBundle\Entity\FilmProjectionProgrammationFilmList $projectionProgrammationFilmsList
+     */
+    public function removeProjectionProgrammationFilmsList(\Base\CoreBundle\Entity\FilmProjectionProgrammationFilmList $projectionProgrammationFilmsList)
+    {
+        $this->projectionProgrammationFilmsList->removeElement($projectionProgrammationFilmsList);
+    }
+
+    /**
+     * Get projectionProgrammationFilmsList
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProjectionProgrammationFilmsList()
+    {
+        return $this->projectionProgrammationFilmsList;
     }
 }

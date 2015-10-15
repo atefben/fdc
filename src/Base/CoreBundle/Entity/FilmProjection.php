@@ -34,7 +34,10 @@ class FilmProjection
      * @ORM\Column(type="integer")
      * @ORM\Id
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "projection_list", "projection_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $id;
     
@@ -43,7 +46,10 @@ class FilmProjection
      *
      * @ORM\Column(type="datetime", nullable=true)
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "projection_list", "projection_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $startsAt;
     
@@ -52,7 +58,10 @@ class FilmProjection
      *
      * @ORM\Column(type="datetime", nullable=true)
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "projection_list", "projection_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $endsAt;
 
@@ -61,7 +70,10 @@ class FilmProjection
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "projection_list", "projection_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $type;
 
@@ -86,7 +98,10 @@ class FilmProjection
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionRoom", inversedBy="projections", cascade={"persist"})
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "projection_list", "projection_show",
+     *  "film_list", "film_show"
+     * })
      */
     private $room;
     
@@ -129,7 +144,10 @@ class FilmProjection
     /**
      * @var ArrayCollection
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "projection_list", "projection_show",
+     *  "film_list", "film_show"
+     * })
      */
     protected $translations;
 

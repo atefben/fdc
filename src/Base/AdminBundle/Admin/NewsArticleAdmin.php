@@ -42,7 +42,7 @@ class NewsArticleAdmin extends Admin
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
     }
-    
+
     public function getFormTheme()
     {
         return array_merge(

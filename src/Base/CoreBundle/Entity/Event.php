@@ -20,7 +20,7 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Event
+abstract class Event
 {
     use TranslationByLocale;
     use Translatable;

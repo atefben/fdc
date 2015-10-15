@@ -48,6 +48,9 @@ class CoreManager
      */
     private $knpPaginator;
 
+    /**
+     * @var
+     */
     private $locale;
 
     /**
@@ -98,11 +101,17 @@ class CoreManager
         $this->apiVersion = $apiVersion;
     }
 
+    /**
+     * @param $locale
+     */
     public function setLocale($locale)
     {
         $this->locale = $locale;
     }
 
+    /**
+     * @return mixed
+     */
     public function getLocale()
     {
         return $this->locale;
@@ -120,16 +129,14 @@ class CoreManager
 
         return $settings->getFestival();
     }
-    
+
     /**
-     * getPaginationItems function.
-     * 
-     * @access public
-     * @param mixed $query
-     * @param mixed $paramFetcher
-     * @return void
+     * @param $query
+     * @param $paramFetcher
+     * @param array $options
+     * @return mixed
      */
-    public function getPaginationItems($query, $paramFetcher)
+    public function getPaginationItems($query, $paramFetcher, $options = array())
     {
         $offset = ($paramFetcher->get('offset') !== null) ? (int)$paramFetcher->get('offset') : $this->apiPageOffset;
         $offset = ($offset <= 10) ? $offset : 10;
@@ -139,7 +146,7 @@ class CoreManager
             $query,
             $page,
             $offset,
-            array('distinct' => false)
+            $options
         );
         
         return $pagination->getItems();

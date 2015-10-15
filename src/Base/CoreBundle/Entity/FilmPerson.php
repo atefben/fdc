@@ -154,7 +154,7 @@ class FilmPerson
     private $juries;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="person")
+     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="person")
      *
      * @Groups({"person_list", "person_show"})
      */
@@ -413,10 +413,10 @@ class FilmPerson
     /**
      * Add awards
      *
-     * @param \Base\CoreBundle\Entity\FilmAward $awards
+     * @param \Base\CoreBundle\Entity\FilmAwardAssociation $awards
      * @return FilmPerson
      */
-    public function addAward(\Base\CoreBundle\Entity\FilmAward $awards)
+    public function addAward(\Base\CoreBundle\Entity\FilmAwardAssociation $awards)
     {
         if ($this->awards->contains($awards)) {
             return;
@@ -430,9 +430,9 @@ class FilmPerson
     /**
      * Remove awards
      *
-     * @param \Base\CoreBundle\Entity\FilmAward $awards
+     * @param \Base\CoreBundle\Entity\FilmAwardAssociation $awards
      */
-    public function removeAward(\Base\CoreBundle\Entity\FilmAward $awards)
+    public function removeAward(\Base\CoreBundle\Entity\FilmAwardAssociation $awards)
     {
         if (!$this->awards->contains($awards)) {
             return;

@@ -35,7 +35,10 @@ class FilmProjectionProgrammationFilmList
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionProgrammationType", cascade={"persist"})
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $type;
 
@@ -44,14 +47,17 @@ class FilmProjectionProgrammationFilmList
      *
      * @ORM\ManyToOne(targetEntity="FilmProjection", inversedBy="programmationFilmsList")
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *  "film_list", "film_show",
+     *  "projection_list", "projection_show"
+     * })
      */
     private $projection;
 
     /**
      * @var FilmFilm
      *
-     * @ORM\ManyToMany(targetEntity="FilmFilm")
+     * @ORM\ManyToMany(targetEntity="FilmFilm", inversedBy="projectionProgrammationFilmList")
      *
      * @Groups({"projection_list", "projection_show"})
      */

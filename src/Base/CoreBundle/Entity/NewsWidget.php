@@ -2,12 +2,14 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
+use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * NewsWidget
@@ -44,6 +46,17 @@ abstract class NewsWidget
      * @ORM\ManyToOne(targetEntity="News", inversedBy="widgets")
      */
     protected $news;
+
+    /**
+     * Get the class type in the Api
+     *
+     * @VirtualProperty
+     * @Groups({"news_list", "news_show"})
+     */
+    public function getWidgetType()
+    {
+        return substr(strrchr(get_called_class(), '\\'), 1);
+    }
 
     /**
      * Get id

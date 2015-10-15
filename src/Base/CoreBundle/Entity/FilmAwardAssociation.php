@@ -37,7 +37,8 @@ class FilmAwardAssociation
      * @ORM\ManyToOne(targetEntity="FilmAward", inversedBy="associations")
      *
      * @Groups({
-     *  "film_list", "film_show"
+     *  "film_list", "film_show",
+     *  "person_list", "person_show"
      * })
      *
      */
@@ -48,14 +49,17 @@ class FilmAwardAssociation
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="awards")
      *
-     * @Groups({"award_list", "award_show"})
+     * @Groups({
+     *  "award_list", "award_show",
+     *  "person_list", "person_show"
+     * })
      */
     private $film;
 
     /**
      * @var FilmPerson
      *
-     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="associations")
+     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="awards")
      *
      * @Groups({"award_list", "award_show"})
      */
