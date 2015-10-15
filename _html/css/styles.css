@@ -2286,7 +2286,7 @@ div.chocolat-wrapper .chocolat-close {
   left: 52px;
   position: absolute;
   top: 0;
-  width: 100%;
+  width: calc(100% - 30px);
 }
 #social-wall #graph ul li {
   color: #f3f3f3;
@@ -2943,6 +2943,7 @@ div.chocolat-wrapper .chocolat-close {
   height: 535px;
   padding-top: 70px;
   overflow: hidden;
+  position: relative;
 }
 #prefooter .imgSlide {
   bottom: 0;
@@ -2951,6 +2952,7 @@ div.chocolat-wrapper .chocolat-close {
   position: absolute;
   text-align: center;
   visibility: hidden;
+  height: 100%;
   width: 100%;
   z-index: 0;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -2961,6 +2963,13 @@ div.chocolat-wrapper .chocolat-close {
 #prefooter .imgSlide img {
   display: block;
   margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: auto;
+  max-height: 100%;
 }
 #prefooter .imgSlide.active {
   opacity: 1;
