@@ -1607,15 +1607,15 @@ $(document).ready(function() {
 		if($('.webtv-ba-video').length){
 
 			$('.nav li').click(function(){
-				if($(this).hasClass("active")){
+				if($(this).hasClass('active')){
 					
 				}else{
-					$('.nav').find(".active").removeClass('active');
-					$(this).addClass("active");
+					$('.nav').find('.active').removeClass('active');
+					$(this).addClass('active');
 					
 						if($(this).hasClass('infos-film-li')){
-							$('.program-film').css({display:"none"});
-							$('.infos-film').css({display:"block"});
+							$('.program-film').css({display:'none'});
+							$('.infos-film').css({display:'block'});
 							console.log(1);
 						}else{
 							$('.program-film').css({display:"block"});
@@ -1625,6 +1625,18 @@ $(document).ready(function() {
 				}
 			})
 		}
+		
+		//ajax
+		$('.webtv .sub-nav-list a:not(.active)').on('click',function(e){
+			e.preventDefault();
+			console.log($(this).attr('href'));
+			
+			$.get($(this).attr('href'), function(data){
+					$( ".content-webtv" ).html( data );
+				console.log(data);
+			});
+			
+		});
   }
 	
 
