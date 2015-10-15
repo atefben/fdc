@@ -619,6 +619,12 @@ article {
           border-color: $gold;
           margin-left: 0px;
           padding: 0 30px;
+
+          &:hover {
+            background-color: transparent;
+            border-color: #e8c27b;
+            color: $gold;
+          }
         }
       }
     }

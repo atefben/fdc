@@ -559,7 +559,7 @@
                 }
 
                 var animation = {
-                    'margin-left': - mvtX + 'px',
+                    /*'margin-left': - mvtX + 'px',*/
                     'margin-top': - mvtY + 'px'
                 };
                 if (typeof e.duration !== 'undefined') {
