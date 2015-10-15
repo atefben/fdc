@@ -424,6 +424,7 @@
 
 		.block{
 			margin: 95px auto;
+			margin-bottom: 0px;
 		}
 		
 		.infos-film{
@@ -499,6 +500,42 @@
 					height: 10px;
 					background-color: #c8a461;
 			}
+		}
+		.share{
+			width: 290px;
+			.button{
+				height: 54px;
+				line-height: 60px;
+				padding: 0;
+				text-align: center;
+				width: 56px;
+				margin-top: 40px;
+				border-color: #666;
+			}
+			a.facebook {
+        background: url('../img/svg/facebook-gold.svg') no-repeat center;
+        background-size: 19px;
+      }
+
+      a.twitter {
+        background: url('../img/svg/twitter-gold.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.email {
+        background: url('../img/svg/mail.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.link {
+        background: url('../img/svg/link.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.print {
+        background: url('../img/svg/print.svg') no-repeat center;
+        background-size: 16px;
+      }
 		}
 	}
 }

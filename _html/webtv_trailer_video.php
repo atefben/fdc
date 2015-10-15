@@ -62,8 +62,7 @@
 									<span class="where">Cinéma de la plage</span>
 										<hr>
 									</div>  
-									
-																	<div class="infos">
+									<div class="infos">
 									<p>Projection <span class="date">12/07/2015 15h</span></p>
 									<span class="where">Cinéma de la plage</span>
 										<hr>
@@ -98,7 +97,7 @@
 									<span class="where">Cinéma de la plage</span>
 										<hr>
 									</div>
-																	<div class="infos">
+									<div class="infos">
 									<p>Projection <span class="date">12/07/2015 15h</span></p>
 									<span class="where">Cinéma de la plage</span>
 										
@@ -106,8 +105,17 @@
 							</div>
 							<a href="#" class="btn">Toute la programmation</a>	  					  					
 						</div>
+						<div class="share">
+							<div class="buttons square">
+								<a href="#" class="button facebook"></a>
+								<a href="#" class="button twitter"></a>
+								<a href="#" class="button link"></a>
+								<a href="#" class="button email"></a>
+								<a href="#" class="button print"></a>
+							</div>
+						</div>
 					</aside>
-					<div id="slider-channels" class="owl-carousel sliderDrag owl-theme owl-center owl-loaded">
+					<div id="slider-trailer" class="owl-carousel sliderDrag owl-theme owl-center owl-loaded">
 					<div class="owl-stage-outer"><div class="owl-stage" style="transition: 0.5s; width: 2058px; transform: translate3d(602px, 0px, 0px);"><div class="owl-item active center" style="width: auto; margin-right: 50px;"><div class="channel shadow-bottom">
 							<img src="img/slider-channels/01.jpg" alt="">
 							<a class="linkVid" href="#"></a>

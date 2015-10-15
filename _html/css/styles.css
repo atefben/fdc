@@ -5347,6 +5347,7 @@ article .image .linkImage {
 }
 .webtv-ba-video .informations-video .block {
   margin: 95px auto;
+  margin-bottom: 0px;
 }
 .webtv-ba-video .informations-video .infos-film {
   text-align: center;
@@ -5417,6 +5418,38 @@ article .image .linkImage {
 .webtv-ba-video .informations-video .program-film ::-webkit-scrollbar-thumb {
   height: 10px;
   background-color: #c8a461;
+}
+.webtv-ba-video .informations-video .share {
+  width: 290px;
+}
+.webtv-ba-video .informations-video .share .button {
+  height: 54px;
+  line-height: 60px;
+  padding: 0;
+  text-align: center;
+  width: 56px;
+  margin-top: 40px;
+  border-color: #666;
+}
+.webtv-ba-video .informations-video .share a.facebook {
+  background: url("../img/svg/facebook-gold.svg") no-repeat center;
+  background-size: 19px;
+}
+.webtv-ba-video .informations-video .share a.twitter {
+  background: url("../img/svg/twitter-gold.svg") no-repeat center;
+  background-size: 16px;
+}
+.webtv-ba-video .informations-video .share a.email {
+  background: url("../img/svg/mail.svg") no-repeat center;
+  background-size: 16px;
+}
+.webtv-ba-video .informations-video .share a.link {
+  background: url("../img/svg/link.svg") no-repeat center;
+  background-size: 16px;
+}
+.webtv-ba-video .informations-video .share a.print {
+  background: url("../img/svg/print.svg") no-repeat center;
+  background-size: 16px;
 }
 
 .sitemap h2 {
