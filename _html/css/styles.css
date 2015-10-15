@@ -1404,12 +1404,10 @@ div.chocolat-wrapper .chocolat-close {
   color: #fff;
   display: inline-block;
   margin-right: 5px;
-  width: 27px;
 }
 .audio-player .on .duration .total {
   display: inline-block;
   margin-left: 5px;
-  width: 27px;
 }
 .audio-player .off {
   border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -1523,7 +1521,6 @@ div.chocolat-wrapper .chocolat-close {
 }
 .audio-player .picto {
   bottom: auto;
-  cursor: pointer;
   left: auto;
   display: inline-block;
   margin-left: 20px;

@@ -905,7 +905,6 @@ $(document).ready(function() {
         }
 
         $audioplayer = $(e.currentTarget).parents('.audio-player');
-        $audioplayer.toggleClass('pause');
 
         if(!$audioplayer.hasClass('on')) {
           $audioplayer.addClass('on');
@@ -914,19 +913,40 @@ $(document).ready(function() {
           var minutes = parseInt(Math.floor(duration / 60));
           var seconds = parseInt(duration - minutes * 60);
 
+          if(seconds < 10) {
+            seconds = '0' + seconds;
+          }
+
           $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
         }
-
-        setInterval(function() {
+        
+        inter = setInterval(function() {
           var curr = wave.getCurrentTime();
+
           var minutes = parseInt(Math.floor(curr / 60));
           var seconds = parseInt(curr - minutes * 60);
+
+          if(seconds < 10) {
+            seconds = '0' + seconds;
+          }
 
           $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
         }, 1000);
 
+        
+        if(!$audioplayer.hasClass('pause')) {
+          for(var i = 0; i<waves.length; i++) {
+            if(waves[i].isPlaying() && waves[i].container.id != wave.container.id) {
+              waves[i].pause();
+            }
+          }
+        }
+        $('.audio-player').not($audioplayer).removeClass('pause');
+
         wave.setVolume(0.75);
         wave.playPause();
+
+        $audioplayer.toggleClass('pause');
       });
     });
   }
