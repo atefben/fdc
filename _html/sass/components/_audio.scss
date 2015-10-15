@@ -18,6 +18,102 @@
     height: 116px;
   }
 
+  &.pause .playpause {
+    background-image: url('../img/svg/print.svg');
+  }
+
+  .on {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 87px;
+    height: 100%;
+    width: calc(100% - 87px);
+    @include transition(all 0.3s $smoothTransition);
+
+    .duration {
+      display: inline-block;
+      vertical-align: middle;
+      font-family: $CamphorBold;
+      color: rgba(255, 255, 255, .3);
+      font-size: 0.875rem;
+      width: 70px;
+
+      .curr {
+        color: #fff;
+        display: inline-block;
+        margin-right: 5px;
+        width: 27px;
+      }
+
+      .total {
+        display: inline-block;
+        margin-left: 5px;
+        width: 27px;
+      }
+    }
+  }
+
+  .off {
+    border-left: 1px solid rgba(255, 255, 255, .1);
+    position: absolute;
+    top: 0;
+    left: 87px;
+    height: 100%;
+    width: calc(100% - 87px);
+    @include transition(all 0.3s $smoothTransition);
+  }
+
+  &.on {
+    .on, .wave-container {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .off {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .playpause {
+    background: url('../img/svg/video-white.svg') no-repeat center;
+    background-size: 25px;
+    display: block;
+    height: 20px;
+    left: 37px;
+    position: absolute;
+    width: 20px;
+    top: 50%;
+    margin-top: -10px;
+    z-index: 2;
+  }
+
+  .volume {
+    background-color: rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 50px;
+    height: 4px;
+
+    span {
+      background-color: #fff;
+      border-radius: 5px;
+      display: block;
+      position: absolute;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 75%;
+      height: 100%;
+      @include transition(all 0.3s $smoothTransition);
+    }
+  }
+
   .image {
     background-size: cover;
     background-position: center;
@@ -45,12 +141,7 @@
     @include transition(all 0.3s $smoothTransition);
   }
 
-  &.loading {
-    .wave-container {
-      opacity: 0;
-      visibility: hidden;
-    }
-
+  &.on.loading {
     &:after {
       opacity: 1;
       visibility: visible;
@@ -63,10 +154,11 @@
     display: inline-block;
     margin: 0 0 0 13px;
     vertical-align: middle;
-    opacity: 1;
+    opacity: 0;
+    height: 55px;
+    margin: 0 20px;
     position: relative;
-    height: 100%;
-    visibility: visible;
+    visibility: hidden;
     width: calc(100% - 340px);
     @include transition(all 0.3s $smoothTransition);
 
@@ -80,6 +172,7 @@
     cursor: pointer;
     left: auto;
     display: inline-block;
+    margin-left: 20px;
     position: relative;
     pointer-events: initial;
     vertical-align: middle;
@@ -114,6 +207,7 @@
       font-family: $CamphorRegular;
       font-size: 0.850rem;
       text-align: left;
+      margin-top: 5px;
       width: auto;
     }
   }

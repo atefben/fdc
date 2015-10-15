@@ -1376,6 +1376,98 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player.bigger {
   height: 116px;
 }
+.audio-player.pause .playpause {
+  background-image: url("../img/svg/print.svg");
+}
+.audio-player .on {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 87px;
+  height: 100%;
+  width: calc(100% - 87px);
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.audio-player .on .duration {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "Camphor W01 Bold";
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.875rem;
+  width: 70px;
+}
+.audio-player .on .duration .curr {
+  color: #fff;
+  display: inline-block;
+  margin-right: 5px;
+  width: 27px;
+}
+.audio-player .on .duration .total {
+  display: inline-block;
+  margin-left: 5px;
+  width: 27px;
+}
+.audio-player .off {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  position: absolute;
+  top: 0;
+  left: 87px;
+  height: 100%;
+  width: calc(100% - 87px);
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.audio-player.on .on, .audio-player.on .wave-container {
+  opacity: 1;
+  visibility: visible;
+}
+.audio-player.on .off {
+  opacity: 0;
+  visibility: hidden;
+}
+.audio-player .playpause {
+  background: url("../img/svg/video-white.svg") no-repeat center;
+  background-size: 25px;
+  display: block;
+  height: 20px;
+  left: 37px;
+  position: absolute;
+  width: 20px;
+  top: 50%;
+  margin-top: -10px;
+  z-index: 2;
+}
+.audio-player .volume {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 50px;
+  height: 4px;
+}
+.audio-player .volume span {
+  background-color: #fff;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 75%;
+  height: 100%;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 .audio-player .image {
   background-size: cover;
   background-position: center;
@@ -1405,11 +1497,7 @@ div.chocolat-wrapper .chocolat-close {
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.audio-player.loading .wave-container {
-  opacity: 0;
-  visibility: hidden;
-}
-.audio-player.loading:after {
+.audio-player.on.loading:after {
   opacity: 1;
   visibility: visible;
 }
@@ -1419,10 +1507,11 @@ div.chocolat-wrapper .chocolat-close {
   display: inline-block;
   margin: 0 0 0 13px;
   vertical-align: middle;
-  opacity: 1;
+  opacity: 0;
+  height: 55px;
+  margin: 0 20px;
   position: relative;
-  height: 100%;
-  visibility: visible;
+  visibility: hidden;
   width: calc(100% - 340px);
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -1437,6 +1526,7 @@ div.chocolat-wrapper .chocolat-close {
   cursor: pointer;
   left: auto;
   display: inline-block;
+  margin-left: 20px;
   position: relative;
   pointer-events: initial;
   vertical-align: middle;
@@ -1468,6 +1558,7 @@ div.chocolat-wrapper .chocolat-close {
   font-family: "Camphor W01 Regular";
   font-size: 0.850rem;
   text-align: left;
+  margin-top: 5px;
   width: auto;
 }
 .audio-player .fullscreen {

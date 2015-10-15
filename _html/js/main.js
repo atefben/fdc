@@ -871,12 +871,14 @@ $(document).ready(function() {
   // 14. Player Audio
   // =========================
 
-  var waves = [];
+  var waves = [],
+      inter = null,
+      duration = null;
 
   function initAudioPlayers() {
     $('.audio-player').each(function(i) {
       $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
-      var h = $(this).hasClass('bigger') ? 116 : 87;
+      var h = $(this).hasClass('bigger') ? 116 : 55;
       var wave = Object.create(WaveSurfer);
 
       wave.init({
@@ -890,12 +892,40 @@ $(document).ready(function() {
       wave.load($(this).data('sound'));
 
       wave.on('ready', function() {
-        $(wave.container).parent().removeClass('loading');
+        $(wave.container).parents('.audio-player').removeClass('loading');
       });
 
       waves.push(wave);
 
-      $(this).find('.picto').on('click', function() {
+      $(this).find('.playpause').on('click', function(e) {
+        e.preventDefault();
+
+        if(inter) {
+          clearInterval(inter);
+        }
+
+        $audioplayer = $(e.currentTarget).parents('.audio-player');
+        $audioplayer.toggleClass('pause');
+
+        if(!$audioplayer.hasClass('on')) {
+          $audioplayer.addClass('on');
+
+          duration = wave.getDuration();
+          var minutes = parseInt(Math.floor(duration / 60));
+          var seconds = parseInt(duration - minutes * 60);
+
+          $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
+        }
+
+        setInterval(function() {
+          var curr = wave.getCurrentTime();
+          var minutes = parseInt(Math.floor(curr / 60));
+          var seconds = parseInt(curr - minutes * 60);
+
+          $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
+        }, 1000);
+
+        wave.setVolume(0.75);
         wave.playPause();
       });
     });
@@ -920,6 +950,16 @@ $(document).ready(function() {
     }
   }
 
+  $('body').on('click', '.volume', function(e) {
+    var newVolume = (e.offsetX * 2) / 100;
+
+    $('.audio-player .volume span').css('width', newVolume * 100 + "%");
+
+    for(var i = 0; i < waves.length; i++) {
+      waves[i].setVolume(newVolume);
+    }
+  });
+
   if($('.audio-player').length) {
     initAudioPlayers();
   }
@@ -930,7 +970,7 @@ $(document).ready(function() {
         wave = waves[i];
 
     e.preventDefault();
-    var audioPlayer = $(this).parent()[0];
+    var audioPlayer = $(this).parents('.audio-player')[0];
 
     if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
 
