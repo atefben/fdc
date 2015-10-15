@@ -87,7 +87,7 @@
 
   .info {
     color: #666;
-    font-family: "CamphorMedium";
+    font-family: $CamphorMedium;
     text-align: center;
     display: inline-block;
     position: relative;
@@ -241,16 +241,18 @@
 }
 
 .popin-audio {
+  background-color: #fff;
   position: fixed;
   opacity: 0;
   visibility: hidden;
   top: 50%;
   left: 50%;
-  width: 500px;
-  height: 400px;
-  margin: -200px 0 0 -250px;
+  width: 750px;
+  height: 580px;
+  margin: -290px 0 0 -375px;
+  padding: 20px;
+  box-sizing: border-box;
   pointer-events: none;
-  z-index: 6;
   @include transform(translateY(30px));
   @include transition(all .8s $smoothTransition);
 
@@ -258,7 +260,65 @@
     opacity: 1;
     pointer-events: initial;
     visibility: visible;
+    z-index: 10;
     @include transform(translateY(0));
+  }
+
+  .image {
+    left: 20px;
+    height: 440px;
+    overflow: hidden;
+    top: 20px;
+    width: 710px;
+  }
+
+  .buttons {
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+
+    a:hover {
+      background-color: #fff;
+    }
+
+    a.facebook {
+      background: url('../img/svg/facebook-gold.svg') no-repeat center;
+      background-size: 19px;
+    }
+
+    a.twitter {
+      background: url('../img/svg/twitter-gold.svg') no-repeat center;
+      background-size: 16px;
+    }
+
+    a.email {
+      background: url('../img/svg/mail.svg') no-repeat center;
+      background-size: 16px;
+    }
+
+    a.link {
+      background: url('../img/svg/link.svg') no-repeat center;
+      background-size: 16px;
+    }
+  }
+
+  .picto {
+    display: none;
+  }
+
+  .info {
+    position: absolute;
+    bottom: 20px;
+    height: 80px;
+    margin: 0;
+    text-align: left;
+    width: 710px;
+
+    p {
+      color: #333;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
   }
 }
 

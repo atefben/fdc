@@ -354,6 +354,12 @@
           <a href="#" class="category"></a><span class="date"></span></span>
           <p></p>
         </div>
+        <div class="buttons square">
+          <a href="#" class="button facebook"></a>
+          <a href="#" class="button twitter"></a>
+          <a href="#" class="button link"></a>
+          <a href="#" class="button email"></a>
+        </div>
         <a href="#" class="fullscreen"></a>
         <div class="wave-container"></div>
       </div>

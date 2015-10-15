@@ -1443,7 +1443,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 .audio-player .info {
   color: #666;
-  font-family: "CamphorMedium";
+  font-family: "Camphor W01 Medium";
   text-align: center;
   display: inline-block;
   position: relative;
@@ -1571,16 +1571,18 @@ div.chocolat-wrapper .chocolat-close {
 }
 
 .popin-audio {
+  background-color: #fff;
   position: fixed;
   opacity: 0;
   visibility: hidden;
   top: 50%;
   left: 50%;
-  width: 500px;
-  height: 400px;
-  margin: -200px 0 0 -250px;
+  width: 750px;
+  height: 580px;
+  margin: -290px 0 0 -375px;
+  padding: 20px;
+  box-sizing: border-box;
   pointer-events: none;
-  z-index: 6;
   -moz-transform: translateY(30px);
   -ms-transform: translateY(30px);
   -webkit-transform: translateY(30px);
@@ -1594,10 +1596,58 @@ div.chocolat-wrapper .chocolat-close {
   opacity: 1;
   pointer-events: initial;
   visibility: visible;
+  z-index: 10;
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
   transform: translateY(0);
+}
+.popin-audio .image {
+  left: 20px;
+  height: 440px;
+  overflow: hidden;
+  top: 20px;
+  width: 710px;
+}
+.popin-audio .buttons {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+}
+.popin-audio .buttons a:hover {
+  background-color: #fff;
+}
+.popin-audio .buttons a.facebook {
+  background: url("../img/svg/facebook-gold.svg") no-repeat center;
+  background-size: 19px;
+}
+.popin-audio .buttons a.twitter {
+  background: url("../img/svg/twitter-gold.svg") no-repeat center;
+  background-size: 16px;
+}
+.popin-audio .buttons a.email {
+  background: url("../img/svg/mail.svg") no-repeat center;
+  background-size: 16px;
+}
+.popin-audio .buttons a.link {
+  background: url("../img/svg/link.svg") no-repeat center;
+  background-size: 16px;
+}
+.popin-audio .picto {
+  display: none;
+}
+.popin-audio .info {
+  position: absolute;
+  bottom: 20px;
+  height: 80px;
+  margin: 0;
+  text-align: left;
+  width: 710px;
+}
+.popin-audio .info p {
+  color: #333;
+  font-size: 1rem;
+  margin-top: 5px;
 }
 
 .ov {
@@ -3495,6 +3545,11 @@ article .image .linkImage {
   border-color: #c8a461;
   margin-left: 0px;
   padding: 0 30px;
+}
+.single-article .film .programmation-film .wrapper .button:hover {
+  background-color: transparent;
+  border-color: #e8c27b;
+  color: #c8a461;
 }
 .single-article .nav {
   border: 1px solid #dfdfdf;
