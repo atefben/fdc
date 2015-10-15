@@ -151,12 +151,12 @@
 
             return this.elems.content
                 .css('overflow', 'visible')
-                .animate({
+                .css({
                     'width'  :width,
                     'height' :height,
                     'left'   :left,
                     'top'    :top
-                }, duration)
+                })
                 .promise();
         },
 
@@ -623,7 +623,7 @@
 
             this.settings.imageSize = this.settings.initialZoomState;
             this.settings.initialZoomState = null;
-            this.elems.img.animate({'margin': 0}, duration);
+            this.elems.img.css({'transform': 'translate3d(0, 0, 0)'});
 
             this.elems.domContainer.removeClass('chocolat-zoomed');
             fitting = this.fit(this.settings.currentImage, this.settings.container);
