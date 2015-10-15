@@ -4834,7 +4834,7 @@ article .image .linkImage {
 }
 
 .list-article {
-  background-color: #141414;
+  background-color: #141414 !important;
 }
 .list-article .bandeau-list {
   background-color: #202020;
@@ -5217,6 +5217,30 @@ article .image .linkImage {
 .webtv-ba .vCenterKid {
   display: table-cell;
   vertical-align: middle;
+}
+
+.webtv-ba-video {
+  background-color: #141414 !important;
+}
+.webtv-ba-video .title-container {
+  padding: 50px 0px;
+}
+.webtv-ba-video article {
+  height: 418px;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  clear: both;
+  color: #ffffff;
+  width: 100%;
+  min-height: 405px;
+  background-size: cover;
+}
+.webtv-ba-video .container-webtv-ba-video {
+  width: 977px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: table;
 }
 
 .sitemap h2 {
