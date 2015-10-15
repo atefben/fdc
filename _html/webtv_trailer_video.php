@@ -35,10 +35,11 @@
 						<span class="name-video">Valley of Love</span>
 					</article>
 					<aside class="informations-video">
-						<ul>
-							<li class="active" class="infos-film-li">Film</li>
+						<ul class="nav">
+							<li class="active infos-film-li">Film</li>
 							<li class="program-film-li">Programation</li>
 						</ul>
+						<div class="container-video">
 						<div class="infos-film block">
 							<img src="img/webtv/cover-film1.jpg" alt="affiche film">
 							<h4 class="rubric-film">Compétition</h4>
@@ -104,6 +105,7 @@
 									</div>
 							</div>
 							<a href="#" class="btn">Toute la programmation</a>	  					  					
+						</div>
 						</div>
 						<div class="share">
 							<div class="buttons square">

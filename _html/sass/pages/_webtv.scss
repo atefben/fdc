@@ -398,10 +398,10 @@
 	.informations-video{
 		display: inline-block;
     color: #fff;
-    height: 380px;
+    height: 445px;
     vertical-align: top;
 		max-width: 293px;
-		border: 1px solid #666;
+	  position: relative;
 		ul{
 			li{
 				float: left;
@@ -409,12 +409,13 @@
 				padding: 23px 0px;
 				font-size: 0.75rem;
 				color:#666;
-				border-left: 1px solid #666;
 				border-bottom: 1px solid #666;
+				border-top: 1px solid #666;
 				margin: 0px;
 				width: 145px;
 				text-align: center;
 				box-sizing: border-box;
+				border-right: 1px solid #666;
 			}
 			.active{
 				color:#c8a461;
@@ -423,14 +424,15 @@
 		}
 
 		.block{
-			margin: 95px auto;
-			margin-bottom: 0px;
+			height: 286px;
+			padding-top: 95px;
+			border-right: 1px solid #666;
+			border-bottom: 1px solid #666;
 		}
 		
 		.infos-film{
 			text-align: center;
-			display: none;
-			width: 53%;
+
  
 			h4{
 				font-size: 0.6875rem;
@@ -454,6 +456,7 @@
 		.program-film{
 			text-align: center;
 			padding-right: 5px;
+			display: none;
 			.contain-info{
 				max-height: 210px;
 				margin-bottom: 26px;
@@ -503,6 +506,8 @@
 		}
 		.share{
 			width: 290px;
+			position: absolute;
+      bottom: 1px;
 			.button{
 				height: 54px;
 				line-height: 60px;

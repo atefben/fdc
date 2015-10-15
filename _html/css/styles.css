@@ -5323,10 +5323,10 @@ article .image .linkImage {
 .webtv-ba-video .informations-video {
   display: inline-block;
   color: #fff;
-  height: 380px;
+  height: 445px;
   vertical-align: top;
   max-width: 293px;
-  border: 1px solid #666;
+  position: relative;
 }
 .webtv-ba-video .informations-video ul li {
   float: left;
@@ -5334,25 +5334,26 @@ article .image .linkImage {
   padding: 23px 0px;
   font-size: 0.75rem;
   color: #666;
-  border-left: 1px solid #666;
   border-bottom: 1px solid #666;
+  border-top: 1px solid #666;
   margin: 0px;
   width: 145px;
   text-align: center;
   box-sizing: border-box;
+  border-right: 1px solid #666;
 }
 .webtv-ba-video .informations-video ul .active {
   color: #c8a461;
   border-bottom: 0px solid #666;
 }
 .webtv-ba-video .informations-video .block {
-  margin: 95px auto;
-  margin-bottom: 0px;
+  height: 286px;
+  padding-top: 95px;
+  border-right: 1px solid #666;
+  border-bottom: 1px solid #666;
 }
 .webtv-ba-video .informations-video .infos-film {
   text-align: center;
-  display: none;
-  width: 53%;
 }
 .webtv-ba-video .informations-video .infos-film h4 {
   font-size: 0.6875rem;
@@ -5374,6 +5375,7 @@ article .image .linkImage {
 .webtv-ba-video .informations-video .program-film {
   text-align: center;
   padding-right: 5px;
+  display: none;
 }
 .webtv-ba-video .informations-video .program-film .contain-info {
   max-height: 210px;
@@ -5421,6 +5423,8 @@ article .image .linkImage {
 }
 .webtv-ba-video .informations-video .share {
   width: 290px;
+  position: absolute;
+  bottom: 1px;
 }
 .webtv-ba-video .informations-video .share .button {
   height: 54px;
