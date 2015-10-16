@@ -720,6 +720,7 @@ $(document).ready(function() {
 
   $('body').on('click', '.chocolat-image', function() {
     $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
+    $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
     $('<a href="#" class="share"></a>').insertBefore('.chocolat-wrapper .chocolat-left');
 
     $(this).parents('.slideshow').find('.thumbnails .thumb').each(function() {
@@ -914,7 +915,7 @@ $(document).ready(function() {
       inter = null,
       duration = null;
 
-  function initAudioPlayers() {
+  function initAudioPlayers(popin) {
     $('.audio-player').each(function(i) {
       $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
       var h = $(this).hasClass('bigger') ? 116 : 55;
@@ -1515,7 +1516,7 @@ $(document).ready(function() {
             $popinAudio.find('p').text(text);
             $popinAudio.addClass('audio-player show');
 
-            initAudioPlayers();
+            initAudioPlayers(true);
             $('.ov').addClass('show');
           });
         }

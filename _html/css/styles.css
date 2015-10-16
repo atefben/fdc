@@ -1757,6 +1757,10 @@ div.chocolat-wrapper .chocolat-close {
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+.popin-audio .on {
+  opacity: 1;
+  visibility: visible;
+}
 .popin-audio.show {
   opacity: 1;
   pointer-events: initial;
@@ -4547,6 +4551,10 @@ article .image .linkImage {
   #gridPhotos .item.w2 {
     width: calc(200%/6);
   }
+}
+
+.all-photos .item {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1600px) {
