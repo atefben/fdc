@@ -1630,18 +1630,43 @@ $(document).ready(function() {
 		$('.webtv .sub-nav-list a').on('click',function(e){
 			//:not(.active)
 			e.preventDefault();
+
 			if($(this).is(':not(.active)')) {
 				var urlPath = $(this).attr('href');
-
+				
 //				$.get($(this).data('url'), function(data){
 				$.get(urlPath, function(data){
 						$( ".content-webtv" ).html( $(data).find('.content-webtv') );
 					history.pushState('',"titre test", urlPath);
 					console.log(data);
 				});
+				$('.webtv-ba .sub-nav-list').find('a.active').removeClass('active');
+				$(this).addClass('active');
 			}
 		});
   }
+	
+	    //Slider trailer
+
+    var sliderTrailers = $("#slider-trailer").owlCarousel({
+      nav: false,
+      dots: false,
+      smartSpeed: 500,
+      margin: 50,
+      center: true,
+      autoWidth: true,
+      loop: false,
+      items: 1,
+      onInitialized: function() {
+        $('#slider-trailer .owl-stage').css({ 'margin-left': "0px" });
+      }
+    });
+
+    sliderTrailers.owlCarousel();
+
+    $('body').on('click', '#slider-trailer .owl-item', function(e) {
+      sliderTrailers.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+    });
 	
 
     

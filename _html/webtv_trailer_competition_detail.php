@@ -2,7 +2,7 @@
 	<div id="gridWebtv" class="grid-wrapper">
         <div class="grid-sizer"></div>
         <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -16,7 +16,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -30,7 +30,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -44,7 +44,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -58,7 +58,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -72,7 +72,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -86,7 +86,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -100,7 +100,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -114,7 +114,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -128,7 +128,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -142,7 +142,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -156,7 +156,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -170,7 +170,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -184,7 +184,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -198,7 +198,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
@@ -212,7 +212,7 @@
             </div>
         </div>
                 <div class="item theme1 date1 date theme shadow-bottom video">
-          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
+          <img src="http://dummyimage.com/640x404/e67e22/fff.png" srcset="http://dummyimage.com/640x404/e67e22/fff.png 1x, http://dummyimage.com/1280x808/e67e22/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>
               <div class="info-container">
