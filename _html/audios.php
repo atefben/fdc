@@ -347,21 +347,33 @@
         </div>
       </div>
       <a id="next" href="audios2.html"></a>
-      <div class="audio popin-audio" data-sound="">
+      <div class="popin-audio audio" data-sound="">
         <div class="image"></div>
-        <div class="picto"></div>
-        <div class="info">
-          <a href="#" class="category"></a><span class="date"></span></span>
-          <p></p>
+        <a href="#" class="playpause"></a>
+        <div class="on">
+          <div class="vCenter">
+            <div class="vCenterKid">
+              <div class="duration">
+                <span class="curr">0:00</span>/<span class="total">0:00</span>
+              </div>
+              <div class="wave-container"></div>
+              <div class="volume">
+                <span></span>
+              </div>
+              <a href="#" class="fullscreen"></a>
+            </div>
+          </div>
+          <div class="info">
+            <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+            <p></p>
+          </div>
+          <div class="buttons square">
+            <a href="#" class="button facebook"></a>
+            <a href="#" class="button twitter"></a>
+            <a href="#" class="button link"></a>
+            <a href="#" class="button email"></a>
+          </div>
         </div>
-        <div class="buttons square">
-          <a href="#" class="button facebook"></a>
-          <a href="#" class="button twitter"></a>
-          <a href="#" class="button link"></a>
-          <a href="#" class="button email"></a>
-        </div>
-        <a href="#" class="fullscreen"></a>
-        <div class="wave-container"></div>
       </div>
       <div class="ov"></div>
     </div>

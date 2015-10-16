@@ -347,6 +347,15 @@
   @include transform(translateY(30px));
   @include transition(all .8s $smoothTransition);
 
+  .on {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+  }
+
   &.show {
     opacity: 1;
     pointer-events: initial;

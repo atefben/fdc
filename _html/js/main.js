@@ -915,7 +915,7 @@ $(document).ready(function() {
       inter = null,
       duration = null;
 
-  function initAudioPlayers(popin) {
+  function initAudioPlayers() {
     $('.audio-player').each(function(i) {
       $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
       var h = $(this).hasClass('bigger') ? 116 : 55;
@@ -933,6 +933,9 @@ $(document).ready(function() {
 
       wave.on('ready', function() {
         $(wave.container).parents('.audio-player').removeClass('loading');
+        if($(wave.container).parents('.audio-player').hasClass('popin-audio')) {
+          $('.popin-audio .playpause').trigger('click');
+        }
       });
 
       waves.push(wave);
@@ -1516,7 +1519,7 @@ $(document).ready(function() {
             $popinAudio.find('p').text(text);
             $popinAudio.addClass('audio-player show');
 
-            initAudioPlayers(true);
+            initAudioPlayers();
             $('.ov').addClass('show');
           });
         }

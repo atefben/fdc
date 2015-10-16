@@ -1760,6 +1760,10 @@ div.chocolat-wrapper .chocolat-close {
 .popin-audio .on {
   opacity: 1;
   visibility: visible;
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 100%;
 }
 .popin-audio.show {
   opacity: 1;

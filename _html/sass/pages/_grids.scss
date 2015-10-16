@@ -92,7 +92,7 @@
 // 2. Photos
 // =========================
 
-#gridPhotos{
+#gridPhotos {
 
   @media screen and (min-width: 768px) {
     /* 5 columns for larger screens */
@@ -119,6 +119,10 @@
         width: calc(200%/6);
     }
   }
+}
+
+.all-photos .item {
+  cursor: pointer;
 }
 
 
