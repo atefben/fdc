@@ -5543,6 +5543,27 @@ article .image .linkImage {
   background: url("../img/svg/print.svg") no-repeat center;
   background-size: 16px;
 }
+.webtv-ba-video #slider-trailer {
+  padding: 50px 0px;
+}
+.webtv-ba-video .bandeau-list-img {
+  height: 365px;
+  background-size: cover;
+}
+.webtv-ba-video .bandeau-list-img .title-list-header {
+  color: #ffffff;
+  font-size: 1.75rem;
+  padding-top: 155px;
+}
+.webtv-ba-video .bandeau-list-img .bandeau-lien {
+  color: #c8a461;
+  width: 165px;
+  margin: 0 auto;
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
 
 .sitemap h2 {
   padding: 60px;

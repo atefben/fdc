@@ -43,7 +43,7 @@
 					<li><a href="#">Cinéma de la plage</a></li>
 				</ul>
 			</div>
-			<div>
+			<div class="content-webtv">
 						<?php include('webtv_trailer_horscompetition_detail.php'); ?>
 			</div>
     </div>

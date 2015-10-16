@@ -4,6 +4,7 @@
 // 2. Channels
 // 3. Single channel
 // 4. Bandes annonces
+// 5. Bandes annonces
 // =========================
 
 
@@ -259,7 +260,7 @@
   }
 }
 
-// 3. Trailer
+// 4. Trailer
 // =========================
 
 .webtv-ba{
@@ -354,8 +355,10 @@
 }
 
 
-// 4. Single trailer
+// 5. Single trailer
 // ==========================
+
+
 .webtv-ba-video{
 	background-color:#141414 !important;
 	.title-container{
@@ -543,6 +546,30 @@
       }
 		}
 	}
+	//slide//
+	#slider-trailer{
+		padding:50px 0px;
+	}
+	//bandeau//
+	 .bandeau-list-img {
+			height: 365px;
+			background-size: cover;
+		 
+			.title-list-header {
+				color: #ffffff;
+				font-size: 1.75rem;
+				padding-top: 155px;
+			}
+			.bandeau-lien {
+				color: #c8a461;
+				width: 165px;
+				margin: 0 auto;
+				display: block;
+				font-weight: 600;
+				text-transform: uppercase;
+				font-size: 0.75rem;
+			}
+		}
 }
 
 

@@ -33,9 +33,9 @@
 					</div>
 				</div>
 				<ul class="sub-nav-list">
-					<li><a href="webtv_trailer_competition_detail.php" class="active">Compétition</a></li>
-					<li><a href="webtv_trailer_uncertainregard_detail.php">Un certain regard</a></li>
-					<li><a href="webtv_trailer_horscompetition_detail.php">Hors compétition</a></li>
+					<li><a href="webtv_trailer_competition.php" data-url="webtv_trailer_competition_detail.php" class="active">Compétition</a></li>
+					<li><a href="webtv_trailer_uncertainregard.php" data-url="webtv_trailer_uncertainregard_detail.php">Un certain regard</a></li>
+					<li><a href="webtv_trailer_horscompetition.php" data-url="webtv_trailer_horscompetition_detail.php">Hors compétition</a></li>
 					<li><a href="#">Séances spéciales</a></li>
 					<li><a href="#">Cinéfondation</a></li>
 					<li><a href="#">Court métrages</a></li>

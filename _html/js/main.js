@@ -1627,15 +1627,19 @@ $(document).ready(function() {
 		}
 		
 		//ajax
-		$('.webtv .sub-nav-list a:not(.active)').on('click',function(e){
+		$('.webtv .sub-nav-list a').on('click',function(e){
+			//:not(.active)
 			e.preventDefault();
-			console.log($(this).attr('href'));
-			
-			$.get($(this).attr('href'), function(data){
-					$( ".content-webtv" ).html( data );
-				console.log(data);
-			});
-			
+			if($(this).is(':not(.active)')) {
+				var urlPath = $(this).attr('href');
+
+//				$.get($(this).data('url'), function(data){
+				$.get(urlPath, function(data){
+						$( ".content-webtv" ).html( $(data).find('.content-webtv') );
+					history.pushState('',"titre test", urlPath);
+					console.log(data);
+				});
+			}
 		});
   }
 	
