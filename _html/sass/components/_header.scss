@@ -17,7 +17,7 @@ header {
     font-size: 0.750rem;
     opacity: 0;
     visibility: hidden;
-    @include transform(translateY(-5px));
+    @include transform(translateY(5px));
     @include transition(opacity 0.3s $smoothTransition, transform 0.3s $smoothTransition);
     transition-delay: 0;
   }
