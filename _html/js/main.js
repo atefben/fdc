@@ -1443,6 +1443,7 @@ $(document).ready(function() {
     $('.popin-audio, .ov').removeClass('show');
 
     $('.popin-audio').find('.wave-container').empty().removeAttr('id');
+    $('.popin-audio .playpause').trigger('click');
   }
 
   if($('.grid').length) {
