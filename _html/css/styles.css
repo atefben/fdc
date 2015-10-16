@@ -3406,7 +3406,7 @@ article .image .linkImage {
   transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-article .anim.show {
-  width: 100%;
+  width: 102%;
 }
 .single-article .anim.next {
   left: auto;
