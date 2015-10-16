@@ -1100,6 +1100,43 @@ footer .footer-menu ul li a:hover {
   text-transform: uppercase;
 }
 
+div.chocolat-wrapper .thumbnails {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+  height: 150px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 0;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .thumbnails.open {
+  bottom: 100px;
+  opacity: 1;
+  visibility: visible;
+}
+div.chocolat-wrapper .thumbnails .thumb {
+  background-color: #000;
+  cursor: pointer;
+}
+div.chocolat-wrapper .thumbnails .thumb img {
+  display: block;
+  height: 150px;
+  opacity: 0.3 !important;
+  width: auto;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .thumbnails .thumb.active img, div.chocolat-wrapper .thumbnails .thumb:hover img {
+  opacity: 1 !important;
+}
 div.chocolat-wrapper .chocolat-bottom {
   background: none;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
@@ -1112,12 +1149,30 @@ div.chocolat-wrapper .chocolat-bottom {
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-div.chocolat-wrapper .chocolat-bottom:hover {
-  background-color: #080808;
+div.chocolat-wrapper .chocolat-bottom:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #141414;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom:hover:after {
+  opacity: 1;
+  visibility: visible;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
   font-family: "Camphor W01 Bold";
+  cursor: pointer;
   font-size: 0.750rem;
   line-height: 100px;
   padding: 0;
@@ -1126,12 +1181,22 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   left: 0;
   text-align: center;
   width: 100px;
+  z-index: 2;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-pagination.active, div.chocolat-wrapper .chocolat-bottom .chocolat-pagination:hover {
+  background-color: #c8a461;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description {
   box-sizing: border-box;
   padding-top: 30px;
   padding-left: 150px;
   text-align: left;
+  position: relative;
+  z-index: 2;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description h2 {
   font-family: "Camphor W01 Bold";

@@ -669,7 +669,8 @@
                 },
 
                 goto : function(i){ // open alias
-                    return that.open(i);
+                    i = parseInt(i) || 0;
+                    return that.init(i);
                 },
                 current : function(){
                     return that.settings.currentImage;

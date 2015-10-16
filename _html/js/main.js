@@ -699,6 +699,11 @@ $(document).ready(function() {
 
   }
 
+  $('body').on('mouseover', '.chocolat-img', function(e){
+    $('.chocolat-wrapper .thumbnails').removeClass('open');
+    $('.chocolat-pagination').removeClass('active');
+  });
+
   $('body').on('mouseover', '.chocolat-image', function() {
     $(this).attr('data-title', $(this).attr('title'));
     $(this).removeAttr('title');
@@ -706,6 +711,38 @@ $(document).ready(function() {
 
   $('body').on('mouseout', '.chocolat-image', function() {
     $(this).attr('title', $(this).attr('data-title'));
+  });
+
+  $('body').on('click', '.chocolat-pagination', function() {7
+    $(this).toggleClass('active');
+    $('.chocolat-wrapper .thumbnails').toggleClass('open');
+  });
+
+  $('body').on('click', '.chocolat-image', function() {
+    $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
+
+    $(this).parents('.slideshow').find('.thumbnails .thumb').each(function() {
+      $('.chocolat-wrapper .thumbnails').append($(this).clone());
+    });
+
+    $('.chocolat-wrapper .thumbnails').owlCarousel({
+      autoWidth: true,
+      nav: false,
+      dots: false,
+      smartSpeed: 500,
+      margin: 0
+    });
+  });
+
+  $('body').on('click', '.chocolat-wrapper .thumb', function() {
+    var i = $(this).parent().index();
+
+    $('.chocolat-wrapper .thumb').removeClass('active');
+    $(this).addClass('active');
+
+    var slideshow = $('.slideshow .images').data('chocolat');
+    slideshow.api().goto(i);
+
   });
 
   initSlideshows();

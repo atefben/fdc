@@ -221,6 +221,45 @@
 div.chocolat-wrapper {
 
 
+  .thumbnails {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    z-index: 15;
+    height: 150px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0;
+    @include transition(all 0.5s $smoothTransition);
+
+    &.open {
+      bottom: 100px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .thumb {
+      background-color: #000;
+      cursor: pointer;
+
+      img {
+        display: block;
+        height: 150px;
+        opacity: 0.3!important;
+        width: auto;
+        @include transition(all 0.5s $smoothTransition);
+      }
+
+      &.active, &:hover {
+        img {
+          opacity: 1!important;
+        }
+      }
+    }
+
+  }
+
   .chocolat-bottom {
     background: none;
     border-top: 1px solid rgba(255, 255, 255, 0.4);
@@ -230,13 +269,31 @@ div.chocolat-wrapper {
     height: 100px;
     @include transition(all 0.3s $smoothTransition);
 
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: $black;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.3s $smoothTransition);
+    }
+
     &:hover {
-      background-color: $dark;
+      &:after {
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     .chocolat-pagination {
       border-right: 1px solid rgba(255, 255, 255, 0.4);
       font-family: $CamphorBold;
+      cursor: pointer;
       font-size: 0.750rem;
       line-height: 100px;
       padding: 0;
@@ -245,6 +302,12 @@ div.chocolat-wrapper {
       left: 0;
       text-align: center;
       width: 100px;
+      z-index: 2;
+      @include transition(all 0.3s $smoothTransition);
+
+      &.active, &:hover {
+        background-color: $gold;
+      }
     }
 
     .chocolat-description {
@@ -252,6 +315,8 @@ div.chocolat-wrapper {
       padding-top: 30px;
       padding-left: 150px;
       text-align: left;
+      position: relative;
+      z-index: 2;
 
       h2 {
         font-family: $CamphorBold;
