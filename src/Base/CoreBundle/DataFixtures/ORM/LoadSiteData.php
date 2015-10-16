@@ -21,7 +21,7 @@ class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $siteBase = new Site();
+       /* $siteBase = new Site();
         $siteBase->setName('Festival de cannes');
         $siteBase->setClassColor('red-light');
         $manager->persist($siteBase);
@@ -51,7 +51,7 @@ class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
         $siteMobileStream->setName('Flux mobiles');
         $manager->persist($siteMobileStream);
 
-        $manager->flush();
+        $manager->flush();*/
     }
     
     public function getOrder()

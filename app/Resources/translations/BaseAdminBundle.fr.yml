@@ -1,0 +1,30 @@
+entity:
+    news_article: Articles
+    news_video: Vidéos
+    news_image: Photos
+    news_audio: Audios
+    news_theme: Thèmes Actualités
+    news_tag: Tags de recherche
+    web_tv: Chaînes WebTV
+    media_image: Images
+    media_audio: Audios
+    media_video: Vidéos
+    statement_article: Articles
+    statement_image: Images
+    statement_video: Vidéos
+    statement_audio: Audios
+    statement_theme: Thèmes communiqués
+    info_article: Articles
+    info_image: Images
+    info_video: Vidéos
+    info_audio: Audios
+    info_theme: Thèmes infos
+
+dashboard:
+    group:
+        soif: SOIF
+        general: Général
+        media: Médias
+        news: Actualités
+        statement: Communiqués
+        info: Infos

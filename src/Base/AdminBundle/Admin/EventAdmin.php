@@ -2,7 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\EventTranslation;
+use Base\CoreBundle\Entity\StatementTranslation;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -96,7 +96,7 @@ class EventAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => EventTranslation::getStatuses(),
+                        'choices' => StatementTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                 )

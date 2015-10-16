@@ -169,7 +169,6 @@ file that was distributed with this source code.
                             {% block sonata_top_nav_menu %}
                                 <div class="navbar-right">
                                     {{ render(controller('BaseAdminBundle:Dashboard:localeSwitcher') )}}
-                                    {% include 'BaseAdminBundle:Site:btn_modal.html.twig' %}
                                     <ul class="nav navbar-nav">
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -186,6 +185,7 @@ file that was distributed with this source code.
                                             </ul>
                                         </li>
                                     </ul>
+                                    {% include 'BaseAdminBundle:Site:btn_modal.html.twig' %}
                                 </div>
                             {% endblock %}
                         </nav>
@@ -249,6 +249,14 @@ file that was distributed with this source code.
                                                             <i class="fa pull-right fa-angle-left"></i>
                                                         </a>
                                                         <ul class="treeview-menu{% if active %} active{% endif %}">
+                                                            {%  if group.label == 'dashboard.group.general' %}
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_homepage_edit', {id: 1}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.homepage'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                            {%  endif %}
                                                             {% for admin in group.items %}
                                                                 {% if admin.hasroute('list') and admin.isGranted('LIST') %}
                                                                     <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}><a href="{{ admin.generateUrl('list')}}"><i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}</a></li>

@@ -49,7 +49,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
      */
     public function load(ObjectManager $manager)
     {
-        $userManager = $this->container->get('fos_user.user_manager');
+      /*  $userManager = $this->container->get('fos_user.user_manager');
 
         $user = $userManager->createUser();
         $user->setUsername('admin');
@@ -81,7 +81,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setRoles(array('ROLE_TRANSLATOR'));
         $user->addSite($this->getReference('site-Base'));
         $user->addSite($this->getReference('site-mdf'));
-        $userManager->updateUser($user);
+        $userManager->updateUser($user);*/
     }
 
     public function getOrder()

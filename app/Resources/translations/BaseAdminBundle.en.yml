@@ -1,0 +1,16 @@
+entity:
+    news_article:
+    news_video:
+    news_image:
+    news_audio:
+    news_theme:
+    news_tag:
+
+dashboard:
+    group:
+        soif: SOIF
+        general: General
+        media: Media
+        news: News
+        statement:
+        info:

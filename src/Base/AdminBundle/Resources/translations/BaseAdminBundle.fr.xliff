@@ -1,35 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-10-07T16:58:53Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-10-16T16:39:53Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="0755dfb4a7935aeddc8bc392e54cd8819f9f388e" resname="form.label_festival_ends_at">
-        <source>form.label_festival_ends_at</source>
-        <target state="new">form.label_festival_ends_at</target>
-        <jms:reference-file line="29">Form/Type/SettingsType.php</jms:reference-file>
+      <trans-unit id="b123c7e88a3f49e6ad67f788ce229df2a873db70" resname="Settings FDC Api Year">
+        <source>Settings FDC Api Year</source>
+        <target state="new">Settings FDC Api Year</target>
+        <jms:reference-file line="12">views/Settings/index.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="5ee87b423a0f75fb5fd97f9a85f5720a7ff672da" resname="form.label_festival_starts_at">
-        <source>form.label_festival_starts_at</source>
-        <target state="new">form.label_festival_starts_at</target>
-        <jms:reference-file line="19">Form/Type/SettingsType.php</jms:reference-file>
+      <trans-unit id="b278e3579ed82c0e276d1cf8fe850df594125ec9" resname="Settings FDC Year">
+        <source>Settings FDC Year</source>
+        <target state="new">Settings FDC Year</target>
+        <jms:reference-file line="4">views/Settings/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4ad952e89c9e8c100d3aba5b8b823f87dfaa5f63" resname="dashboard.link.bo_translation">
+        <source>dashboard.link.bo_translation</source>
+        <target>Admin traduction</target>
+        <jms:reference-file line="277">Resources/views/standard_layout.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8dbedc697522b82de5f218ef83a4bba07c84638b" resname="dashboard.link.homepage">
+        <source>dashboard.link.homepage</source>
+        <target>Homepage</target>
+        <jms:reference-file line="256">Resources/views/standard_layout.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="fe9150a9570f56a96ebaa51b02daeecfe044ecda" resname="dashboard.link.settings">
+        <source>dashboard.link.settings</source>
+        <target>Paramètres</target>
+        <jms:reference-file line="272">Resources/views/standard_layout.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8d38addf57877482e7e10d08dfc9108d38092456" resname="form.label_akamai_id">
+        <source>form.label_akamai_id</source>
+        <target state="new">form.label_akamai_id</target>
+        <jms:reference-file line="66">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="7116e8cadc4f66aac8cf13e89661d3f6865fd95b" resname="form.label_header_audio">
         <source>form.label_header_audio</source>
         <target state="new">form.label_header_audio</target>
-        <jms:reference-file line="158">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+        <jms:reference-file line="153">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="ff584f82b52c4235efe99ed3da5f96ed099d5430" resname="form.label_header_image">
         <source>form.label_header_image</source>
         <target state="new">form.label_header_image</target>
-        <jms:reference-file line="211">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="207">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="896e947b7bcfe2d734fbe8b0282ac0dad3e741ed" resname="form.label_image">
         <source>form.label_image</source>
         <target state="new">form.label_image</target>
-        <jms:reference-file line="79">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
+        <jms:reference-file line="85">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="d46bc183f1e8aa58122bb4b5536d273b175c2af4" resname="form.label_introduction">
         <source>form.label_introduction</source>
@@ -40,41 +60,46 @@
       <trans-unit id="d9cdd4dcddd19128365e76982b406945a1b4b0d6" resname="form.label_publish_ended_at">
         <source>form.label_publish_ended_at</source>
         <target state="new">form.label_publish_ended_at</target>
-        <jms:reference-file line="98">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
-        <jms:reference-file line="169">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
-        <jms:reference-file line="128">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+        <jms:reference-file line="87">AdminBundle/Admin/EventAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="036cc96f5a87f07208d210bae9118ba7fb6e225b" resname="form.label_published_at">
         <source>form.label_published_at</source>
         <target state="new">form.label_published_at</target>
-        <jms:reference-file line="89">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
-        <jms:reference-file line="160">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
-        <jms:reference-file line="119">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+        <jms:reference-file line="78">AdminBundle/Admin/EventAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="d788b2ee7fd7460458107673b3465ce2ae42e99c" resname="form.label_save">
         <source>form.label_save</source>
         <target state="new">form.label_save</target>
-        <jms:reference-file line="39">Form/Type/SettingsType.php</jms:reference-file>
+        <jms:reference-file line="23">Form/Type/SettingsFDCApiYearType.php</jms:reference-file>
+        <jms:reference-file line="23">Form/Type/SettingsFDCYearType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="dd75fb6b5adfc24a250a830c0f7824cfd9894a61" resname="form.label_status">
         <source>form.label_status</source>
         <target state="new">form.label_status</target>
-        <jms:reference-file line="107">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
-        <jms:reference-file line="178">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
-        <jms:reference-file line="137">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
-        <jms:reference-file line="61">AdminBundle/Admin/WebTvAdmin.php</jms:reference-file>
+        <jms:reference-file line="96">AdminBundle/Admin/EventAdmin.php</jms:reference-file>
+        <jms:reference-file line="90">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
+        <jms:reference-file line="155">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="101">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+        <jms:reference-file line="62">AdminBundle/Admin/WebTvAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="d2163d032c7f47621b8e5901b37b95a1bbd0a16c" resname="form.label_title">
         <source>form.label_title</source>
         <target state="new">form.label_title</target>
-        <jms:reference-file line="69">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
+        <jms:reference-file line="62">AdminBundle/Admin/EventAdmin.php</jms:reference-file>
+        <jms:reference-file line="75">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
         <jms:reference-file line="134">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
         <jms:reference-file line="80">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d3b5d837a121affbfebf9b63631a3f6a8684e51d" resname="form.label_web_tv_name">
+        <source>form.label_web_tv_name</source>
+        <target state="new">form.label_web_tv_name</target>
+        <jms:reference-file line="58">AdminBundle/Admin/WebTvAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="4d73b5423bc8c919e85dbc040f0123debea16437" resname="group.main_infos">
         <source>group.main_infos</source>
         <target state="new">group.main_infos</target>
         <jms:reference-file line="31">views/TranslationFormBundle/article.html.twig</jms:reference-file>
+        <jms:reference-file line="29">views/TranslationFormBundle/event.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a9c76224345bb91c8f792e59dd3fb8b16101d5e8" resname="group.news.associations">
         <source>group.news.associations</source>
@@ -85,16 +110,70 @@
         <source>group.news.french_version</source>
         <target state="new">group.news.french_version</target>
         <jms:reference-file line="155">views/TranslationFormBundle/article.html.twig</jms:reference-file>
+        <jms:reference-file line="89">views/TranslationFormBundle/event.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="503cbbc06f9a5c8780f4ee05f49a49071c18be56" resname="group.news.publish_parameters">
         <source>group.news.publish_parameters</source>
         <target state="new">group.news.publish_parameters</target>
         <jms:reference-file line="134">views/TranslationFormBundle/article.html.twig</jms:reference-file>
+        <jms:reference-file line="69">views/TranslationFormBundle/event.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="024aac3871bbf2ea12a07c159908dd66c4a7af51" resname="group.news.widgets">
         <source>group.news.widgets</source>
         <target state="new">group.news.widgets</target>
         <jms:reference-file line="255">views/TranslationFormBundle/article.html.twig</jms:reference-file>
+        <jms:reference-file line="126">views/TranslationFormBundle/event.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f08de0eaba21bee2d4899866e49eda5640be2d02" resname="homepage.group.film">
+        <source>homepage.group.film</source>
+        <target>Films</target>
+        <jms:reference-file line="87">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a76ea6f1591ef3c1c5e2b01098529aee9d5010fb" resname="homepage.group.prefooter">
+        <source>homepage.group.prefooter</source>
+        <target>Pre-footer</target>
+        <jms:reference-file line="126">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b313ed4f3e39eec186098ef7bed80634b82378dc" resname="homepage.group.push_main">
+        <source>homepage.group.push_main</source>
+        <target>Pushs principaux</target>
+        <jms:reference-file line="100">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5fda849cb0dced718fa1755372e0ce132e51de3d" resname="homepage.group.push_secondary">
+        <source>homepage.group.push_secondary</source>
+        <target>Pushs secondaires</target>
+        <jms:reference-file line="113">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6e8bc9931c04cf4cdee2e29290ca7d8d7b05a3fb" resname="homepage.group.seo">
+        <source>homepage.group.seo</source>
+        <target><![CDATA[Métadonnées & SEO
+]]></target>
+        <jms:reference-file line="139">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="45536c7a08da149bc753cf8971767b9b270e7346" resname="homepage.group.slider">
+        <source>homepage.group.slider</source>
+        <target>Slider</target>
+        <jms:reference-file line="29">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6b89585aa4843a6efaca63dc58c9741f69878091" resname="homepage.group.social_wall">
+        <source>homepage.group.social_wall</source>
+        <target>Social Wall</target>
+        <jms:reference-file line="61">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="05344b488dea5f1c11a10433bd3b9e9916732b8a" resname="homepage.group.top_news">
+        <source>homepage.group.top_news</source>
+        <target>L'actualité à la une</target>
+        <jms:reference-file line="46">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="922957c8c34ffa941768220f4abd5fab17369380" resname="homepage.group.web_tv">
+        <source>homepage.group.web_tv</source>
+        <target>WebTV</target>
+        <jms:reference-file line="74">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a381200651daf75b288e23c99cd7c2822fa7f102" resname="label.locale_switcher">
+        <source>label.locale_switcher</source>
+        <target>Langue du BO</target>
+        <jms:reference-file line="61">Form/Type/LocaleSwitcherType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="1e2421b5c753591e29b5594bf430165ccf5a71a1" resname="nav.site_modal">
         <source>nav.site_modal</source>
@@ -145,11 +224,6 @@
         <source>news.widget.video</source>
         <target state="new">news.widget.video</target>
         <jms:reference-file line="19">views/Form/polycollection.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="3cc1d5a427a45820b04fe30f78a972b784952460" resname="settings">
-        <source>settings</source>
-        <target state="new">settings</target>
-        <jms:reference-file line="4">views/Settings/index.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

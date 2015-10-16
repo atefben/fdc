@@ -1,0 +1,153 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    <ul class="a2lix_translationsLocales nav nav-tabs">
+        {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+        {% for translationsFields in form %}
+            {% set locale = translationsFields.vars.name %}
+            <li {% if currentLocale == locale %}class="active"{% endif %}>
+                <a href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+                    {{ locale|capitalize }}
+                    {% if form.vars.default_locale == locale %}[MASTER]{% endif %}
+                    {% if translationsFields.vars.required %}*{% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {% set locale = translationsFields.vars.name %}
+
+            <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                {% if form.vars.default_locale == locale %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.slider'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{  form_row(form.parent.children.sliderNews) }}
+                                    {{  form_row(form.parent.children.displayedSlider) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.top_news'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                {{  form_row(form.parent.children.topNewsType) }}
+                                {{  form_row(form.parent.children.displayedTopNews) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.social_wall'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.web_tv'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.film'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.push_main'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.push_secondary'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.prefooter'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'homepage.group.seo'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                translation
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

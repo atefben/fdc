@@ -64,6 +64,7 @@ class MediaVideoAdmin extends Admin
                 'fields' => array(
                     'akamaiId' => array(
                         'label' => 'form.label_akamai_id',
+                        'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
                                 'required' => true

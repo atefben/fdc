@@ -56,6 +56,7 @@ class WebTvAdmin extends Admin
                 'fields' => array(
                     'name' => array(
                         'label' => 'form.label_web_tv_name',
+                        'translation_domain' => 'BaseAdminBundle',
                     ),
                     'status' => array(
                         'label' => 'form.label_status',

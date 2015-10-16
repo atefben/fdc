@@ -42,3 +42,18 @@ form[name="base_adminbundle_settings"] {
     width: 600px;
     margin: 0 auto;
 }
+
+/* locale switcher */
+#fdc-locale-switcher > div {
+    float: left;
+    line-height: 50px;
+    margin-right: 5px;
+}
+
+#fdc-locale-switcher label {
+    margin-right: 15px;
+}
+
+#fdc-locale-switcher .select2-container {
+    width: auto !important;
+}

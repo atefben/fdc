@@ -1,7 +1,7 @@
 jms_translation:
     configs:
         admin:
-            dirs: [%kernel.root_dir%/../src/Base/AdminBundle]
+            dirs: [%kernel.root_dir%/../src/Base/AdminBundle, %kernel.root_dir%/../src/Application/Sonata/AdminBundle]
             output_dir: %kernel.root_dir%/../src/Base/AdminBundle/Resources/translations
             ignored_domains: []
             excluded_names: ["*TestCase.php", "*Test.php"]

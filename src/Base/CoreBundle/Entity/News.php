@@ -88,6 +88,13 @@ abstract class News
     private $publishEndedAt;
 
     /**
+     * @var Homepage
+     *
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="news")
+     */
+    private $homepage;
+
+    /**
      * @var NewsTag
      *
      * @ORM\OneToMany(targetEntity="NewsNewsTag", mappedBy="news", cascade={"persist"})
@@ -460,5 +467,28 @@ abstract class News
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Set homepage
+     *
+     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @return News
+     */
+    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return \Base\CoreBundle\Entity\Homepage 
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
     }
 }

@@ -10,7 +10,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class FilmFilmAdmin extends Admin
 {
-    protected $translationDomain = 'BaseAdminBundle';
 
     /**
      * @param DatagridMapper $datagridMapper

@@ -54,10 +54,22 @@ class LocaleSwitcherType extends BaseType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('locales', 'choice', array(
-            'choices' =>  $this->locales,
-            'data' => $this->localeSelected
-        ));
+        $builder
+            ->add('locales', 'choice', array(
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false,
+                'label' => 'label.locale_switcher',
+                'choices' =>  $this->locales,
+                'data' => $this->localeSelected,
+                'attr' => array(
+                    'data-sonata-select2-allow-clear' => 'false'
+                )
+            ))
+            ->add('ok', 'submit', array(
+                'attr' => array(
+                    'class' => 'btn btn-success',
+                )
+            ));
     }
 
     /**

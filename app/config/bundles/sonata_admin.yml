@@ -12,8 +12,46 @@ sonata_admin:
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
         # permission related to the objects
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
-   # dashboard:
-     #   blocks:
-      #      - { position: top, class: col-md-12, type: base_admin.block.sites }
+    dashboard:
+        blocks:
+           # - { position: top, class: col-md-12, type: base_admin.block.sites }
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [dashboard.group.news]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [dashboard.group.general]
+        # setting messages as label_catalogue for groups because JmsTranslation can't handle variables translation.
+        # Related translations available in app/Resources/translations
+        groups:
+            dashboard.group.general:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            dashboard.group.news:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            dashboard.group.statement:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            dashboard.group.info:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            dashboard.group.media:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            dashboard.group.soif:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            sonata_user:
+                items: ~
+                label_catalogue: SonataUserBundle
+            sonata_media:
+                items: ~
+                label_catalogue: SonataMediaBundle
+
     templates:
         short_object_description:  'ApplicationSonataAdminBundle:Helper:short-object-description.html.twig'
