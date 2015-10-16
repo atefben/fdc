@@ -553,6 +553,20 @@
 	#slider-trailer{
 		padding:50px 0px;
 	}
+	#content-trailers{
+		#slider-trailer{			
+			.picto{
+		    background-image: url("../img/svg/video.svg");
+   			 background-size: 22px;
+			}
+		.info span {
+			color: #666;
+			display: block;
+			font-size: 0.625rem;
+		}
+		}
+	}
+
 	//bandeau//
 	 .bandeau-list-img {
 			height: 365px;
@@ -573,6 +587,7 @@
 				font-size: 0.75rem;
 			}
 		}
+
 }
 
 

@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="webtv webtv-ba-video">
+    <div id="main" class=" webtv webtv-ba-video">
     	<div class="container-webtv-ba-video">
 				<div class="title-container">
 					<a href="#">< Retour aux bandes annonces</a>
@@ -119,6 +119,7 @@
 					</aside>
 				</section>
 			</div>
+			<div id="content-trailers">
 			<div id="slider-trailer" class="owl-carousel sliderDrag owl-theme owl-center owl-loaded">
 		<div class="owl-stage-outer"><div class="owl-stage" style="transition: 0.5s; width: 2058px; transform: translate3d(309.5px, 0px, 0px);"><div class="owl-item active previous" style="width: auto; margin-right: 50px;"><div class="channel shadow-bottom">
 				<img src="img/slider-channels/01.jpg" alt="">
@@ -128,8 +129,8 @@
 					<div class="info-container">
 						<div class="vCenter">
 							<div class="vCenterKid">
-								<a href="#" class="category">Photocall</a>
-								<span>103 vidéos</span>
+								<a href="#" class="category">Bande annonce</a>
+								<span>Bande annonce 01</span>
 							</div>
 						</div>
 					</div>
@@ -142,8 +143,8 @@
 					<div class="info-container">
 						<div class="vCenter">
 							<div class="vCenterKid">
-								<a href="#" class="category">Montée des marches</a>
-								<span>282 vidéos</span>
+								<a href="#" class="category">Bande annonce</a>
+								<span>Bande annonce 02</span>
 							</div>
 						</div>
 					</div>
@@ -156,8 +157,8 @@
 					<div class="info-container">
 						<div class="vCenter">
 							<div class="vCenterKid">
-								<a href="#" class="category">Conférence de presse</a>
-								<span>47 vidéos</span>
+								<a href="#" class="category">Bande annonce</a>
+								<span>Bande annonce 03</span>
 							</div>
 						</div>
 					</div>
@@ -170,8 +171,8 @@
 					<div class="info-container">
 						<div class="vCenter">
 							<div class="vCenterKid">
-								<a href="#" class="category">Photocall</a>
-								<span>103 vidéos</span>
+								<a href="#" class="category">Bande annonce</a>
+								<span>Bande annonce 04</span>
 							</div>
 						</div>
 					</div>
@@ -184,8 +185,8 @@
 					<div class="info-container">
 						<div class="vCenter">
 							<div class="vCenterKid">
-								<a href="#" class="category">Montée des marches</a>
-								<span>282 vidéos</span>
+								<a href="#" class="category">Bande annonce</a>
+								<span>Bande annonce 05</span>
 							</div>
 						</div>
 					</div>
@@ -198,13 +199,14 @@
 					<div class="info-container">
 						<div class="vCenter">
 							<div class="vCenterKid">
-								<a href="#" class="category">Conférence de presse</a>
-								<span>47 vidéos</span>
+								<a href="#" class="category">Bande annonce</a>
+								<span>Bande annonce 06</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style="display: none;">prev</div><div class="owl-next" style="display: none;">next</div></div><div class="owl-dots" style="display: none;"></div></div></div>
+			</div>
 			<div class="bandeau-list">
 				<div class="bandeau-list-img" style="background-image:url(img/webtv/push.jpg);">
 					<h2 class="title title-list-header">La loi du marché</h2>

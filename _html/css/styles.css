@@ -5635,6 +5635,15 @@ article .image .linkImage {
 .webtv-ba-video #slider-trailer {
   padding: 50px 0px;
 }
+.webtv-ba-video #content-trailers #slider-trailer .picto {
+  background-image: url("../img/svg/video.svg");
+  background-size: 22px;
+}
+.webtv-ba-video #content-trailers #slider-trailer .info span {
+  color: #666;
+  display: block;
+  font-size: 0.625rem;
+}
 .webtv-ba-video .bandeau-list-img {
   height: 365px;
   background-size: cover;
