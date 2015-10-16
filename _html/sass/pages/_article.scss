@@ -208,6 +208,26 @@ article {
 .single-article {
   padding: 65px 0;
 
+  .anim {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    background-color: $gold;
+    @include transition(all 1.5s $smoothTransition);
+
+    &.show {
+      width: 100%;
+    }
+
+    &.next {
+      left: auto;
+      right: 0;
+    }
+  }
+
   .small-container {
     width: 730px;
   }

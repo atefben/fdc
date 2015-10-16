@@ -46,6 +46,7 @@
       <div id="gridPhotos" class="grid-wrapper">
         <div class="grid-sizer"></div>
         <div class="item theme1 date theme portrait shadow-bottom photo">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -58,6 +59,7 @@
           </div>
         </div>
         <div class="item theme2 date1 theme shadow-bottom photo">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -70,6 +72,7 @@
           </div>
         </div>
         <div class="item theme2 date2 date theme shadow-bottom photo">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -82,6 +85,7 @@
           </div>
         </div>
         <div class="item theme2 date theme portrait shadow-bottom photo">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -94,6 +98,7 @@
           </div>
         </div>
         <div class="item theme2 theme shadow-bottom photo">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -106,6 +111,7 @@
           </div>
         </div>
         <div class="item theme2 date1 theme shadow-bottom photo">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -118,6 +124,7 @@
           </div>
         </div>
         <div class="item theme1 date2 theme shadow-bottom photo">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -130,6 +137,7 @@
           </div>
         </div>
         <div class="item theme2 date theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -142,6 +150,7 @@
           </div>
         </div>
         <div class="item theme2 date1 theme portrait shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -154,6 +163,7 @@
           </div>
         </div>
         <div class="item theme2 date2 theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -166,6 +176,7 @@
           </div>
         </div>
         <div class="item theme2 date1 theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -178,6 +189,7 @@
           </div>
         </div>
         <div class="item theme1 date2 theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -190,6 +202,7 @@
           </div>
         </div>
         <div class="item theme2 date1 theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -202,6 +215,7 @@
           </div>
         </div>
         <div class="item theme2 date2 theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -214,6 +228,7 @@
           </div>
         </div>
         <div class="item theme1 date1 date theme portrait shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -226,6 +241,7 @@
           </div>
         </div>
         <div class="item theme2 date theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -238,6 +254,7 @@
           </div>
         </div>
         <div class="item theme2 date1 theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -250,6 +267,7 @@
           </div>
         </div>
         <div class="item theme2 theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -262,6 +280,7 @@
           </div>
         </div>
         <div class="item theme2 date theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -274,6 +293,7 @@
           </div>
         </div>
         <div class="item theme2 date theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -286,6 +306,7 @@
           </div>
         </div>
         <div class="item theme2 date theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -298,6 +319,7 @@
           </div>
         </div>
         <div class="item theme2 date theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -310,6 +332,7 @@
           </div>
         </div>
         <div class="item theme2 date theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -322,6 +345,7 @@
           </div>
         </div>
         <div class="item theme2 date2 theme shadow-bottom">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
@@ -334,6 +358,7 @@
           </div>
         </div>
         <div class="item theme2 date theme shadow-bottom video">
+          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
