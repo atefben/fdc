@@ -1710,8 +1710,21 @@ $(document).ready(function() {
     $('body').on('click', '#slider-trailer .owl-item', function(e) {
       sliderTrailers.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });
-	
-
+	//infinite scroll
+//	if($('.webtv-ba-video').length){
+//		$('.webtv-ba-video').infinitescroll({
+//			navSelector: "#next:last",
+//			nextSelector: "#next:last",
+//			itemSelector: ".listtrailer",
+//			debug: false,
+//			dataType: 'html',
+//			path: function(index) {
+//			return $('.listtrailer').data('type') + webtv_trailer_competition + ".php";
+//		}
+//		}, function(newElements, data, url){ 
+//			setGrid($grid, newElements,false);
+//		});
+//	}
     
   // 21. FAQ
   // =========================

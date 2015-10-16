@@ -4967,6 +4967,44 @@ article .image .linkImage {
   line-height: 26px;
   font-family: 'CamphorItalic';
 }
+.categorie-items .title-list-cat .title-big {
+  color: #ffffff;
+  font-family: "Playfair Display";
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+  max-width: 700px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.categorie-items .title-list-cat #share-article {
+  background: url("../img/svg/share.svg") no-repeat 13% 47%;
+  background-size: 18px;
+}
+.categorie-items .title-list-cat .button {
+  border: 1px solid #2c2c2c;
+  color: #c8a461;
+  display: inline-block;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.688rem;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 0;
+  padding: 0 20px 0 40px;
+  text-transform: uppercase;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.categorie-items .title-list-cat .button:hover {
+  border: 1px solid #c8a461;
+}
+.categorie-items .title-list-cat .print {
+  background: url("../img/svg/print.svg") no-repeat 15% center;
+  background-size: 18px;
+}
 .categorie-items .sub-cat-title {
   padding: 20px;
   background-color: #656565;
@@ -5072,6 +5110,79 @@ article .image .linkImage {
   color: #656565;
   letter-spacing: 3px;
   text-transform: uppercase;
+}
+.categorie-items .contain-article-invit {
+  color: #ffffff;
+}
+.categorie-items .contain-article-invit .title-list-cat {
+  margin-bottom: 60px;
+}
+.categorie-items .contain-article-invit .contain-img-honneur {
+  position: relative;
+  width: 975px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+.categorie-items .contain-article-invit .contain-img-honneur .copy {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  color: #DEDEDE;
+  font-size: 0.7rem;
+}
+.categorie-items .contain-article-invit .pres-honneur {
+  width: 975px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1,125rem;
+  line-height: 36px;
+  padding-bottom: 30px;
+}
+.categorie-items .contain-article-invit .pres-honneur a {
+  text-decoration: underline;
+  color: #c8a461;
+}
+.categorie-items .contain-article-invit .small-pres {
+  width: 632px;
+  margin: 0 auto;
+  color: #999999;
+  font-size: 1rem;
+  line-height: 26px;
+}
+.categorie-items .contain-article-invit .small-pres p {
+  padding: 40px 0px;
+}
+.categorie-items .contain-article-invit .small-pres p strong {
+  color: #c8a461;
+}
+.categorie-items .contain-article-invit .small-pres h3 {
+  color: #cccccc;
+}
+.categorie-items .contain-article-invit .small-pres h3 strong {
+  color: #c8a461;
+}
+.categorie-items .contain-article-invit .small-pres h4 {
+  color: #cccccc;
+}
+.categorie-items .contain-article-invit .small-pres .video {
+  line-height: 18px;
+  padding-top: 30px;
+  position: relative;
+  margin-bottom: 80px;
+}
+.categorie-items .contain-article-invit .small-pres .video .picto {
+  background-image: url("../img/svg/video.svg");
+  background-size: 22px;
+}
+.categorie-items .contain-article-invit .small-pres .video p {
+  padding: 0px;
+}
+.categorie-items .contain-article-invit .share {
+  color: white;
+  border-top: 1px solid #2C2C2C;
+}
+.categorie-items .contain-article-invit .share .button {
+  border: 1px solid #2c2c2c;
 }
 
 .list-article {

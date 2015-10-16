@@ -227,4 +227,3 @@
         </div>
 	</div>
 </div>
-<!--<a id="next" href="webtv_trailer_competition_detail2.php"></a>-->
