@@ -1207,6 +1207,18 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description p {
   color: #999;
   font-size: 0.750rem;
 }
+div.chocolat-wrapper .share {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  display: block;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  z-index: 20;
+  right: 202px;
+  position: absolute;
+  background: url("../img/svg/share.svg") no-repeat center;
+  background-size: 25px;
+}
 div.chocolat-wrapper .chocolat-left {
   background-color: #c8a461;
   bottom: 0;

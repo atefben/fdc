@@ -720,6 +720,7 @@ $(document).ready(function() {
 
   $('body').on('click', '.chocolat-image', function() {
     $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
+    $('<a href="#" class="share"></a>').insertBefore('.chocolat-wrapper .chocolat-left');
 
     $(this).parents('.slideshow').find('.thumbnails .thumb').each(function() {
       $('.chocolat-wrapper .thumbnails').append($(this).clone());
