@@ -1641,8 +1641,7 @@ $(document).ready(function() {
       margin: 50,
       autoWidth: true,
       onInitialized: function() {
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slider-trailers .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+        $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
       }
     });
 
