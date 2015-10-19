@@ -3,6 +3,8 @@
 $(document).ready(function() {
 
   if($('.single-article').length) {
+
+    // scroll to 'share' section
     $('#share-article').on('click', function(e) {
       e.preventDefault();
 
@@ -11,6 +13,7 @@ $(document).ready(function() {
       }, 500);
     });
 
+    // ajax article : previous or next
     $('body').on('click', '.single-article .nav', function(e) {
       e.preventDefault();
 
@@ -27,7 +30,6 @@ $(document).ready(function() {
       var urlPath = $that.attr('href');
 
       // remove timeout once on server. only for animation.
-
       setTimeout(function() {
         $.get(urlPath, function(data){
           $(".content-article").html( $(data).find('.content-article') );

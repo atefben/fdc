@@ -8,6 +8,7 @@ function initAudioPlayers() {
     var h = $(this).hasClass('bigger') ? 116 : 55;
     var wave = Object.create(WaveSurfer);
 
+    // initialize wave sound
     wave.init({
       container: document.querySelector('#' + 'wave-' + i),
       waveColor: 'rgba(255, 255, 255, 0.5)',
@@ -16,8 +17,10 @@ function initAudioPlayers() {
       height: h
     });
 
+    // load the url of the sound
     wave.load($(this).data('sound'));
 
+    // once it's ready
     wave.on('ready', function() {
       $(wave.container).parents('.audio-player').removeClass('loading');
       if($(wave.container).parents('.audio-player').hasClass('popin-audio')) {
@@ -27,6 +30,7 @@ function initAudioPlayers() {
 
     waves.push(wave);
 
+    // on click on play/pause
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
 
@@ -36,6 +40,7 @@ function initAudioPlayers() {
 
       $audioplayer = $(e.currentTarget).parents('.audio-player');
 
+      // get duration
       if(!$audioplayer.hasClass('on')) {
         $audioplayer.addClass('on');
 
@@ -50,6 +55,7 @@ function initAudioPlayers() {
         $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
       }
       
+      // update current time
       inter = setInterval(function() {
         var curr = wave.getCurrentTime();
 
@@ -73,6 +79,7 @@ function initAudioPlayers() {
       }
       $('.audio-player').not($audioplayer).removeClass('pause');
 
+      // set volume and play or pause
       wave.setVolume(0.75);
       wave.playPause();
 
@@ -105,6 +112,7 @@ $(document).ready(function() {
     }
   }
 
+  // volume handler
   $('body').on('click', '.volume', function(e) {
     var newVolume = (e.offsetX * 2) / 100;
 

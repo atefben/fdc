@@ -22,6 +22,7 @@ $(document).ready(function() {
     $('#filters').removeClass('show');
   });
 
+  // filter data on page
   $('body').on('click', '#filters span', function() {
     var id = $('#filters').data('id'),
         i = $(this).index();

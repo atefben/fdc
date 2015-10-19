@@ -5,6 +5,7 @@ $(document).ready(function() {
   // Prefooter
   // =========================
 
+    // show image on mouseover
     $('#prefooter a').on('mouseover', function(e) {
       e.preventDefault();
 

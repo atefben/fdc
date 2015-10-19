@@ -5,6 +5,7 @@ var slideshows = [];
 
 function initSlideshows() {
 
+  // create slider of thumbs
   $('.thumbnails').owlCarousel({
     autoWidth: true,
     nav: false,
@@ -28,6 +29,7 @@ function initSlideshows() {
     $(this).parents('.slideshow-img').find('.images .img').eq(i).addClass('active');
   });
 
+  // init slideshow
   if($('.slideshow').length) {
     var slideshow = $('.slideshow .images').Chocolat({
       imageSize: 'cover',
@@ -37,6 +39,7 @@ function initSlideshows() {
     slideshows.push(slideshow);
   }
 
+  // close slideshow on click
   $('body').on('click', '.chocolat-img', function(e){
     for(var i=0; i<slideshows.length; i++) {
       slideshows[i].api().close();
@@ -45,25 +48,30 @@ function initSlideshows() {
 
 }
 
+// mouseover img : close thumbs
 $('body').on('mouseover', '.chocolat-img', function(e){
   $('.chocolat-wrapper .thumbnails').removeClass('open');
   $('.chocolat-pagination').removeClass('active');
 });
 
+// mouseover img : hide attribute title
 $('body').on('mouseover', '.chocolat-image', function() {
   $(this).attr('data-title', $(this).attr('title'));
   $(this).removeAttr('title');
 });
 
+// mouseout img : reset attribute title
 $('body').on('mouseout', '.chocolat-image', function() {
   $(this).attr('title', $(this).attr('data-title'));
 });
 
-$('body').on('click', '.chocolat-pagination', function() {7
+// show thumbs
+$('body').on('click', '.chocolat-pagination', function() {
   $(this).toggleClass('active');
   $('.chocolat-wrapper .thumbnails').toggleClass('open');
 });
 
+// zoom
 $('body').on('click', '.chocolat-image', function() {
   $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
@@ -87,9 +95,11 @@ $('body').on('click', '.chocolat-image', function() {
     margin: 0
   });
 
+  // change url hash
   window.location.hash = $(this).attr('id');
 });
 
+// on click on thumb from the list : change pic and update hash
 $('body').on('click', '.chocolat-wrapper .thumb', function() {
   var j = $(this).parent().index();
 
@@ -107,6 +117,8 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
 
 $(document).ready(function() {
   initSlideshows();
+
+  // if url contains a hash : load pic
   if(window.location.hash) {
 
     if($(window.location.hash).length) {
@@ -118,6 +130,7 @@ $(document).ready(function() {
   }
 });
 
+// update hash and active photo on nav click
 $('body').on('click', '.chocolat-left', function(){
   var hash = window.location.hash;
 
@@ -129,6 +142,7 @@ $('body').on('click', '.chocolat-left', function(){
   }
 });
 
+// update hash and active photo on nav click
 $('body').on('click', '.chocolat-right', function(){
   var hash = window.location.hash;
 
@@ -140,6 +154,7 @@ $('body').on('click', '.chocolat-right', function(){
   }
 });
 
+// cursor close
 $('body').on('mouseout', '.chocolat-content', function(){
   $('.chocolat-close').hide();
   return false;
