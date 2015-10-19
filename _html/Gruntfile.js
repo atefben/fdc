@@ -41,12 +41,24 @@ module.exports = function(grunt) {
               closeTag: '<!-- festival-cannes tags end -->'
           },
           src: [
-            'js/*.js',
+            'js/bower_components/jquery/dist/jquery.min.js',
+            'js/bower_components/owl.carousel/src/js/owl.carousel.js',
+            'js/bower_components/chocolat/src/js/jquery.chocolat.js',
+            'js/bower_components/Snap.svg/dist/snap.svg-min.js',
+            'js/bower_components/jquery-cookie/jquery.cookie.js',
+            'js/bower_components/wavesurfer.js/dist/wavesurfer.min.js',
+            'js/bower_components/isotope/dist/isotope.pkgd.min.js',
+            'js/bower_components/isotope-packery/packery-mode.pkgd.js',
+            'js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js',
+            'js/bower_components/infinite-scroll/jquery.infinitescroll.min.js',
+            'js/festival-cannes/helpers.js',
+            'js/festival-cannes/*.module.js',
+            'js/festival-cannes/*.js',
 
             // Exclusions
             '!js/**/app-mobile.module.js'
           ],
-          dest: './scripts.inc.php.tmp'
+          dest: './scripts.inc.php'
       }
     },
 
