@@ -47,12 +47,12 @@
             <div class="slideshow-img">
               <div class="images">
                 <div class="img active">
-                  <a class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <a id="photo1" class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
                     <img src="img/slide001.jpg" alt="" />
                   </a>
                 </div>
                 <div class="img">
-                  <a class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                  <a id="photo2" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
                 </div>
                 <div class="img"><img src="img/slide001.jpg" alt="" /></div>
                 <div class="img"><img src="img/slide001.jpg" alt="" /></div>
@@ -62,13 +62,13 @@
                 <div class="img"><img src="img/slide001.jpg" alt="" /></div>
               </div>
               <div class="owl-carousel thumbnails">
-                <div class="thumb active">
+                <div data-id="photo1" class="thumb active">
                   <img src="img/thumb01.jpg" />
                 </div>
-                <div class="thumb">
+                <div data-id="photo2" class="thumb">
                   <img src="img/thumb01.jpg" />
                 </div>
-                <div class="thumb">
+                <div data-id="photo3" class="thumb">
                   <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">

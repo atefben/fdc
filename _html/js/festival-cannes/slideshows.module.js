@@ -75,7 +75,7 @@ $('body').on('click', '.chocolat-image', function() {
 
   if($(this).parents('#gridPhotos').length) {
     $('#gridPhotos .item').each(function() {
-      $('.chocolat-wrapper .thumbnails').append('<div class="thumb"><img src="' + $(this).find('img').attr('src') + '" /></div>');
+      $('.chocolat-wrapper .thumbnails').append('<div data-id="' + $(this).find('.chocolat-image').attr('id') + '" class="thumb"><img src="' + $(this).find('img').attr('src') + '" /></div>');
     });
   }
 
@@ -86,6 +86,8 @@ $('body').on('click', '.chocolat-image', function() {
     smartSpeed: 500,
     margin: 0
   });
+
+  window.location.hash = $(this).attr('id');
 });
 
 $('body').on('click', '.chocolat-wrapper .thumb', function() {
@@ -99,20 +101,55 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
     slideshows[i].api().goto(j);
   }
 
+  window.location.hash = $(this).data('id');
+
 });
 
 $(document).ready(function() {
   initSlideshows();
+  if(window.location.hash) {
+
+    if($(window.location.hash).length) {
+      $(window.location.hash).trigger('click');
+
+      $('.chocolat-wrapper .thumb').removeClass('active');
+      $('.chocolat-wrapper .thumb[data-id="' + window.location.hash.substr(1) + '"]').addClass('active');
+    }
+  }
+});
+
+$('body').on('click', '.chocolat-left', function(){
+  var hash = window.location.hash;
+
+  if(parseInt(hash.substr(6)) - 1 > 0) {
+    window.location.hash = hash.substr(1, 5) + (parseInt(hash.substr(6)) - 1);
+
+    $('.chocolat-wrapper .thumb').removeClass('active');
+    $('.chocolat-wrapper .thumb[data-id="' + window.location.hash.substr(1) + '"]').addClass('active');
+  }
+});
+
+$('body').on('click', '.chocolat-right', function(){
+  var hash = window.location.hash;
+
+  if(parseInt(hash.substr(6)) + 1 > 0) {
+    window.location.hash = hash.substr(1, 5) + (parseInt(hash.substr(6)) + 1);
+
+    $('.chocolat-wrapper .thumb').removeClass('active');
+    $('.chocolat-wrapper .thumb[data-id="' + window.location.hash.substr(1) + '"]').addClass('active');
+  }
 });
 
 $('body').on('mouseout', '.chocolat-content', function(){
   $('.chocolat-close').hide();
   return false;
 });
+
 $('body').on('mouseenter', '.chocolat-content', function(){
   $('.chocolat-close').show();
   return false;
 });
+
 $('body').on('mousemove', '.chocolat-content', function(e){
   $('.chocolat-close').css('left', e.clientX + 10).css('top', e.clientY);
 });
