@@ -351,13 +351,6 @@
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->
-    <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="js/bower_components/owl.carousel/src/js/owl.carousel.js"></script>
-    <script src="js/bower_components/chocolat/src/js/jquery.chocolat.js"></script>
-    <script src="js/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
-    <script src="js/bower_components/isotope-packery/packery-mode.pkgd.js"></script>
-    <script src="js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js"></script>
-    <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
-    <script src="js/main.js"></script>
+    <?php include('scripts.inc.php'); ?>
   </body>
 </html>

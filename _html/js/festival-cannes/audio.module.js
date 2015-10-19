@@ -1,89 +1,90 @@
+var waves = [],
+    inter = null,
+    duration = null;
+
+function initAudioPlayers() {
+  $('.audio-player').each(function(i) {
+    $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
+    var h = $(this).hasClass('bigger') ? 116 : 55;
+    var wave = Object.create(WaveSurfer);
+
+    wave.init({
+      container: document.querySelector('#' + 'wave-' + i),
+      waveColor: 'rgba(255, 255, 255, 0.5)',
+      progressColor: '#c8a461',
+      cursorWidth: 0,
+      height: h
+    });
+
+    wave.load($(this).data('sound'));
+
+    wave.on('ready', function() {
+      $(wave.container).parents('.audio-player').removeClass('loading');
+      if($(wave.container).parents('.audio-player').hasClass('popin-audio')) {
+        $('.popin-audio .playpause').trigger('click');
+      }
+    });
+
+    waves.push(wave);
+
+    $(this).find('.playpause').on('click', function(e) {
+      e.preventDefault();
+
+      if(inter) {
+        clearInterval(inter);
+      }
+
+      $audioplayer = $(e.currentTarget).parents('.audio-player');
+
+      if(!$audioplayer.hasClass('on')) {
+        $audioplayer.addClass('on');
+
+        duration = wave.getDuration();
+        var minutes = parseInt(Math.floor(duration / 60));
+        var seconds = parseInt(duration - minutes * 60);
+
+        if(seconds < 10) {
+          seconds = '0' + seconds;
+        }
+
+        $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
+      }
+      
+      inter = setInterval(function() {
+        var curr = wave.getCurrentTime();
+
+        var minutes = parseInt(Math.floor(curr / 60));
+        var seconds = parseInt(curr - minutes * 60);
+
+        if(seconds < 10) {
+          seconds = '0' + seconds;
+        }
+
+        $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
+      }, 1000);
+
+      
+      if(!$audioplayer.hasClass('pause')) {
+        for(var i = 0; i<waves.length; i++) {
+          if(waves[i].isPlaying() && waves[i].container.id != wave.container.id) {
+            waves[i].pause();
+          }
+        }
+      }
+      $('.audio-player').not($audioplayer).removeClass('pause');
+
+      wave.setVolume(0.75);
+      wave.playPause();
+
+      $audioplayer.toggleClass('pause');
+    });
+  });
+}
+
+
 // Player Audio
 // =========================
 $(document).ready(function() {
-
-  var waves = [],
-      inter = null,
-      duration = null;
-
-  function initAudioPlayers() {
-    $('.audio-player').each(function(i) {
-      $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
-      var h = $(this).hasClass('bigger') ? 116 : 55;
-      var wave = Object.create(WaveSurfer);
-
-      wave.init({
-        container: document.querySelector('#' + 'wave-' + i),
-        waveColor: 'rgba(255, 255, 255, 0.5)',
-        progressColor: '#c8a461',
-        cursorWidth: 0,
-        height: h
-      });
-
-      wave.load($(this).data('sound'));
-
-      wave.on('ready', function() {
-        $(wave.container).parents('.audio-player').removeClass('loading');
-        if($(wave.container).parents('.audio-player').hasClass('popin-audio')) {
-          $('.popin-audio .playpause').trigger('click');
-        }
-      });
-
-      waves.push(wave);
-
-      $(this).find('.playpause').on('click', function(e) {
-        e.preventDefault();
-
-        if(inter) {
-          clearInterval(inter);
-        }
-
-        $audioplayer = $(e.currentTarget).parents('.audio-player');
-
-        if(!$audioplayer.hasClass('on')) {
-          $audioplayer.addClass('on');
-
-          duration = wave.getDuration();
-          var minutes = parseInt(Math.floor(duration / 60));
-          var seconds = parseInt(duration - minutes * 60);
-
-          if(seconds < 10) {
-            seconds = '0' + seconds;
-          }
-
-          $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
-        }
-        
-        inter = setInterval(function() {
-          var curr = wave.getCurrentTime();
-
-          var minutes = parseInt(Math.floor(curr / 60));
-          var seconds = parseInt(curr - minutes * 60);
-
-          if(seconds < 10) {
-            seconds = '0' + seconds;
-          }
-
-          $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
-        }, 1000);
-
-        
-        if(!$audioplayer.hasClass('pause')) {
-          for(var i = 0; i<waves.length; i++) {
-            if(waves[i].isPlaying() && waves[i].container.id != wave.container.id) {
-              waves[i].pause();
-            }
-          }
-        }
-        $('.audio-player').not($audioplayer).removeClass('pause');
-
-        wave.setVolume(0.75);
-        wave.playPause();
-
-        $audioplayer.toggleClass('pause');
-      });
-    });
-  }
 
   function FShandler() {
     if (document.fullscreenEnabled && document.fullscreenElement == null) {
