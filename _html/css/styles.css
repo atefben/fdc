@@ -6023,3 +6023,50 @@ article .image .linkImage {
 .faq section .faq-article-active .fa {
   color: #c8a461;
 }
+
+.evenement #gridEvent {
+  padding-top: 60px;
+}
+.evenement .grid {
+  padding-top: 0px;
+}
+.evenement .grid-wrapper {
+  margin-top: 0px;
+}
+.evenement .grid:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.evenement .read-more {
+  border: 1px solid #d9d9d9;
+  clear: both;
+  color: #999;
+  display: block;
+  height: 55px;
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.625rem;
+  line-height: 55px;
+  margin: 70px auto;
+  text-align: center;
+  text-transform: uppercase;
+  width: 95%;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.evenement .read-more strong {
+  color: #000;
+  font-weight: normal;
+}
+
+.evenement:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
