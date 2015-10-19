@@ -198,7 +198,7 @@
   #articles-wrapper {
     overflow: hidden;
     
-    @include transition(opacity 0.3s $smoothTransition, max-height 2s $smoothTransition);
+    @include transition(opacity 1.2s $smoothTransition, max-height 2s $smoothTransition);
 
     &.loading {
       opacity: 0;
@@ -443,7 +443,11 @@
         font-family: $CamphorBold;
         font-size: 0.688rem;
         text-align: center;
-        width: 75px;
+        width: 76px;
+
+        &:last-child {
+          width: 65px;
+        }
 
         &.active {
           color: #000;

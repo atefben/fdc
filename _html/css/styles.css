@@ -2237,10 +2237,10 @@ div.chocolat-wrapper .chocolat-close {
 }
 #news #articles-wrapper {
   overflow: hidden;
-  -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: opacity 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #news #articles-wrapper.loading {
   opacity: 0;
@@ -2467,7 +2467,10 @@ div.chocolat-wrapper .chocolat-close {
   font-family: "Camphor W01 Bold";
   font-size: 0.688rem;
   text-align: center;
-  width: 75px;
+  width: 76px;
+}
+#social-wall #graph ul li:last-child {
+  width: 65px;
 }
 #social-wall #graph ul li.active {
   color: #000;
