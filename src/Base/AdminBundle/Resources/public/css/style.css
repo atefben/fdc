@@ -17,6 +17,11 @@
     margin: 0 !important;
 }
 
+/* add padding on helper */
+.base-admin-padding-helper {
+    padding: 0 10px;
+}
+
 /* NEWS */
 
 /* custom css for news widget buttons */

@@ -18,7 +18,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementVideo extends Event
+class StatementVideo extends Statement
 {
     use Time;
     use Translatable;

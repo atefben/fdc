@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class InfoAudio extends Statement
+class InfoAudio extends Info
 {
     use Translatable;
 

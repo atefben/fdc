@@ -67,22 +67,15 @@ class HomepageAdmin extends Admin
                     ),
                     'updatedAt' => array(
                         'display' => false
-                    ),
-                    /*'pushsMain' => array(
-                        'field_type' => 'sonata_type_collection'
-                    ),
-                    'pushsSecondary' => array(
-                        'field_type' => 'sonata_type_collection'
-                    )*/
-
+                    )
                 )
             ))
             ->add('sliderNews')
             ->add('topNewsType', 'choice', array(
                 'label' => false,
                 'choices' => array(0 => 'homepage.top_news_type.displayed_news', 1 => 'homepage.top_news_type.displayed_events'),
-             //   'translation_domain' => 'BaseAdminBundle',
-             //   'choice_translation_domain' => 'BaseAdminBundle',
+                'translation_domain' => 'BaseAdminBundle',
+                'choice_translation_domain' => 'BaseAdminBundle',
                 'expanded' => true
             ))
             ->add('displayedSlider')

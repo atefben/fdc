@@ -124,6 +124,7 @@ class NewsArticleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
@@ -133,7 +134,7 @@ class NewsArticleAdmin extends Admin
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.helper_title',
+                        'sonata_help' => 'form.news.helper_title',
                         'locale_options' => array(
                             'fr' => array(
                                 'required' => true
@@ -158,6 +159,16 @@ class NewsArticleAdmin extends Admin
                         'choices' => NewsArticleTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'seoTitle' => array(
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'seoDescription' => array(
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle'
+                    )
                 )
             ))
             ->add('sites', null, array(
@@ -219,6 +230,12 @@ class NewsArticleAdmin extends Admin
             )
             ->add('translate', null, array('required' => false), array(
                 'translation_domain' => 'BaseAdminBundle',
+            ))
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.news.helper_file',
+                'required' => false
             ))
             ->end()
         ;

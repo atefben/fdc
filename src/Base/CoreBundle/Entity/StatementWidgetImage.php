@@ -14,7 +14,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementWidgetImage extends EventWidget
+class StatementWidgetImage extends StatementWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="eventWidgetImages")

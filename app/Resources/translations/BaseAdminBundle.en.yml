@@ -1,16 +1,41 @@
 entity:
-    news_article:
-    news_video:
-    news_image:
-    news_audio:
-    news_theme:
-    news_tag:
+    news_article: Articles
+    news_video: Videos
+    news_image: Photos
+    news_audio: Audios
+    news_theme: News Theme
+    news_tag: Tags
+    web_tv: WebTv channel
+    media_image: Images
+    media_audio: Audios
+    media_video: Videos
+    statement_article: Articles
+    statement_image: Images
+    statement_video: Vidéos
+    statement_audio: Audios
+    statement_theme: Statement theme
+    info_article: Articles
+    info_image: Images
+    info_video: Vidéos
+    info_audio: Audios
+    info_theme: Infos Theme
 
 dashboard:
     group:
         soif: SOIF
         general: General
-        media: Media
+        media: Medias
         news: News
-        statement:
-        info:
+        statement: Statements
+        info: Infos
+    link:
+        settings: Parameters
+        bo_translation: Admin translation
+        homepage: Homepage
+
+form:
+    news:
+        helper_seo_title:
+        helper_description:
+        helper_file:
+    label_seo_file:

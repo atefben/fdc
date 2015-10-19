@@ -18,7 +18,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementImage extends Event
+class StatementImage extends Statement
 {
     use Translatable;
 

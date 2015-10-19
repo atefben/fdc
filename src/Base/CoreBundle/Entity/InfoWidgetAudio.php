@@ -13,7 +13,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class InfoWidgetAudio extends EventWidget
+class InfoWidgetAudio extends InfoWidget
 {
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media

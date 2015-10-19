@@ -1,7 +1,12 @@
 services:
 
+    #Homepage
+    base.admin.homepage:
+        class: Base\AdminBundle\Admin\HomepageAdmin
+        arguments: [~, Base\CoreBundle\Entity\Homepage, BaseAdminBundle:HomepageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
     # GROUP GENERAL
-
     base.admin.news_tag:
         class: Base\AdminBundle\Admin\NewsTagAdmin
         arguments: [~, Base\CoreBundle\Entity\NewsTag, BaseAdminBundle:NewsTagAdmin]
@@ -246,12 +251,6 @@ services:
             - {name: sonata.admin, manager_type: orm, group: SOIF, label: FilmMedia, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
-
-    base.admin.homepage:
-        class: Base\AdminBundle\Admin\HomepageAdmin
-        arguments: [~, Base\CoreBundle\Entity\Homepage, BaseAdminBundle:HomepageAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Homepage}
 
     base_admin.statement_news_tag:
         class: Base\AdminBundle\Admin\StatementNewsTagAdmin

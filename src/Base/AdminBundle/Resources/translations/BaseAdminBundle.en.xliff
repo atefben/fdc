@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-10-16T16:23:10Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-10-19T12:21:11Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -16,21 +16,6 @@
         <target state="new">Settings FDC Year</target>
         <jms:reference-file line="4">views/Settings/index.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="4ad952e89c9e8c100d3aba5b8b823f87dfaa5f63" resname="dashboard.link.bo_translation">
-        <source>dashboard.link.bo_translation</source>
-        <target>Admin translation</target>
-        <jms:reference-file line="277">Resources/views/standard_layout.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="8dbedc697522b82de5f218ef83a4bba07c84638b" resname="dashboard.link.homepage">
-        <source>dashboard.link.homepage</source>
-        <target>Homepage</target>
-        <jms:reference-file line="256">Resources/views/standard_layout.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="fe9150a9570f56a96ebaa51b02daeecfe044ecda" resname="dashboard.link.settings">
-        <source>dashboard.link.settings</source>
-        <target>Settings</target>
-        <jms:reference-file line="272">Resources/views/standard_layout.html.twig</jms:reference-file>
-      </trans-unit>
       <trans-unit id="8d38addf57877482e7e10d08dfc9108d38092456" resname="form.label_akamai_id">
         <source>form.label_akamai_id</source>
         <target state="new">form.label_akamai_id</target>
@@ -39,12 +24,16 @@
       <trans-unit id="7116e8cadc4f66aac8cf13e89661d3f6865fd95b" resname="form.label_header_audio">
         <source>form.label_header_audio</source>
         <target state="new">form.label_header_audio</target>
+        <jms:reference-file line="153">AdminBundle/Admin/InfoAudioAdmin.php</jms:reference-file>
         <jms:reference-file line="153">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+        <jms:reference-file line="153">AdminBundle/Admin/StatementAudioAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="ff584f82b52c4235efe99ed3da5f96ed099d5430" resname="form.label_header_image">
         <source>form.label_header_image</source>
         <target state="new">form.label_header_image</target>
+        <jms:reference-file line="207">AdminBundle/Admin/InfoArticleAdmin.php</jms:reference-file>
         <jms:reference-file line="207">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="207">AdminBundle/Admin/StatementArticleAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="896e947b7bcfe2d734fbe8b0282ac0dad3e741ed" resname="form.label_image">
         <source>form.label_image</source>
@@ -54,8 +43,12 @@
       <trans-unit id="d46bc183f1e8aa58122bb4b5536d273b175c2af4" resname="form.label_introduction">
         <source>form.label_introduction</source>
         <target state="new">form.label_introduction</target>
+        <jms:reference-file line="145">AdminBundle/Admin/InfoArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="91">AdminBundle/Admin/InfoAudioAdmin.php</jms:reference-file>
         <jms:reference-file line="145">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
         <jms:reference-file line="91">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+        <jms:reference-file line="145">AdminBundle/Admin/StatementArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="91">AdminBundle/Admin/StatementAudioAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="d9cdd4dcddd19128365e76982b406945a1b4b0d6" resname="form.label_publish_ended_at">
         <source>form.label_publish_ended_at</source>
@@ -77,18 +70,26 @@
         <source>form.label_status</source>
         <target state="new">form.label_status</target>
         <jms:reference-file line="96">AdminBundle/Admin/EventAdmin.php</jms:reference-file>
+        <jms:reference-file line="155">AdminBundle/Admin/InfoArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="101">AdminBundle/Admin/InfoAudioAdmin.php</jms:reference-file>
         <jms:reference-file line="90">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
         <jms:reference-file line="155">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
         <jms:reference-file line="101">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+        <jms:reference-file line="155">AdminBundle/Admin/StatementArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="101">AdminBundle/Admin/StatementAudioAdmin.php</jms:reference-file>
         <jms:reference-file line="62">AdminBundle/Admin/WebTvAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="d2163d032c7f47621b8e5901b37b95a1bbd0a16c" resname="form.label_title">
         <source>form.label_title</source>
         <target state="new">form.label_title</target>
         <jms:reference-file line="62">AdminBundle/Admin/EventAdmin.php</jms:reference-file>
+        <jms:reference-file line="134">AdminBundle/Admin/InfoArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="80">AdminBundle/Admin/InfoAudioAdmin.php</jms:reference-file>
         <jms:reference-file line="75">AdminBundle/Admin/MediaVideoAdmin.php</jms:reference-file>
         <jms:reference-file line="134">AdminBundle/Admin/NewsArticleAdmin.php</jms:reference-file>
         <jms:reference-file line="80">AdminBundle/Admin/NewsAudioAdmin.php</jms:reference-file>
+        <jms:reference-file line="134">AdminBundle/Admin/StatementArticleAdmin.php</jms:reference-file>
+        <jms:reference-file line="80">AdminBundle/Admin/StatementAudioAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="d3b5d837a121affbfebf9b63631a3f6a8684e51d" resname="form.label_web_tv_name">
         <source>form.label_web_tv_name</source>
@@ -168,6 +169,16 @@
         <source>homepage.group.web_tv</source>
         <target>homepage.group.web_tv</target>
         <jms:reference-file line="74">views/TranslationFormBundle/homepage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b370e75bfb3388325e7edf0dfe148e2b80e975b6" resname="homepage.top_news_type.displayed_events">
+        <source>homepage.top_news_type.displayed_events</source>
+        <target>homepage.top_news_type.displayed_events</target>
+        <jms:reference-file line="76">AdminBundle/Admin/HomepageAdmin.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="457f599a857f3e70dc69c7934bbe51a30a318ac2" resname="homepage.top_news_type.displayed_news">
+        <source>homepage.top_news_type.displayed_news</source>
+        <target>homepage.top_news_type.displayed_news</target>
+        <jms:reference-file line="76">AdminBundle/Admin/HomepageAdmin.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="a381200651daf75b288e23c99cd7c2822fa7f102" resname="label.locale_switcher">
         <source>label.locale_switcher</source>

@@ -21,7 +21,7 @@ class LoadSettingData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-       /* $settings = new Settings();
+        $settings = new Settings();
         $settings->setName('FDC year');
         $manager->persist($settings);
 
@@ -29,7 +29,7 @@ class LoadSettingData extends AbstractFixture implements OrderedFixtureInterface
         $settings->setName('FDC Api year');
         $manager->persist($settings);
 
-        $manager->flush();*/
+        $manager->flush();
     }
 
     public function getOrder()

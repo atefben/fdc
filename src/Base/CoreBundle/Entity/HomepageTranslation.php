@@ -43,12 +43,6 @@ class HomepageTranslation
     private $prefooters;
 
     /**
-     * @var Seo
-     *
-     * @ORM\OneToOne(targetEntity="Seo")
-     */
-    private $seo;
-    /**
      * Constructor
      */
     public function __construct()
@@ -156,28 +150,5 @@ class HomepageTranslation
     public function getPrefooters()
     {
         return $this->prefooters;
-    }
-
-    /**
-     * Set seo
-     *
-     * @param \Base\CoreBundle\Entity\Seo $seo
-     * @return HomepageTranslation
-     */
-    public function setSeo(\Base\CoreBundle\Entity\Seo $seo = null)
-    {
-        $this->seo = $seo;
-
-        return $this;
-    }
-
-    /**
-     * Get seo
-     *
-     * @return \Base\CoreBundle\Entity\Seo 
-     */
-    public function getSeo()
-    {
-        return $this->seo;
     }
 }

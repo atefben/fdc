@@ -13,7 +13,7 @@ file that was distributed with this source code.
 
 {% block form_widget -%}
     {% if sonata_help is defined and sonata_help %}
-        <span class="help-block sonata-ba-field-widget-help">{{ sonata_help|raw }}</span>
+        <span class="help-block sonata-ba-field-widget-help">{{ sonata_help|trans({}, translation_domain)|raw|nl2br }}</span>
     {% endif %}
     {{ parent() }}
 {%- endblock form_widget %}
@@ -25,6 +25,9 @@ file that was distributed with this source code.
 
 {% block textarea_widget %}
     {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+    {% if sonata_help is defined and sonata_help %}
+        <span class="help-block sonata-ba-field-widget-help">{{ sonata_help|trans({}, translation_domain)|raw|nl2br }}</span>
+    {% endif %}
     {{ parent() }}
 {% endblock textarea_widget %}
 
@@ -176,7 +179,7 @@ file that was distributed with this source code.
             <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %} {% if not has_label %}sonata-collection-row-without-label{% endif %}">
 
                 {% if sonata_admin.field_description.help %}
-                    <span class="help-block sonata-ba-field-help">{{ sonata_admin.admin.trans(sonata_admin.field_description.help, {}, sonata_admin.field_description.translationDomain)|raw }}</span>
+                    <span class="help-block sonata-ba-field-help">{{ sonata_admin.admin.trans(sonata_admin.field_description.help, {}, sonata_admin.field_description.translationDomain)|raw|nl2br }}</span>
                 {% endif %}
 
                 {{ form_widget(form, {'horizontal': false, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': false, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
@@ -186,7 +189,6 @@ file that was distributed with this source code.
                         {{ form_errors(form) }}
                     </div>
                 {% endif %}
-
             </div>
         </div>
     {% endif %}

@@ -95,6 +95,13 @@ abstract class News
     private $homepage;
 
     /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     */
+    private $seoFile;
+
+    /**
      * @var NewsTag
      *
      * @ORM\OneToMany(targetEntity="NewsNewsTag", mappedBy="news", cascade={"persist"})
@@ -490,5 +497,28 @@ abstract class News
     public function getHomepage()
     {
         return $this->homepage;
+    }
+
+    /**
+     * Set seoFile
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $seoFile
+     * @return News
+     */
+    public function setSeoFile(\Application\Sonata\MediaBundle\Entity\Media $seoFile = null)
+    {
+        $this->seoFile = $seoFile;
+
+        return $this;
+    }
+
+    /**
+     * Get seoFile
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getSeoFile()
+    {
+        return $this->seoFile;
     }
 }

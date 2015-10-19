@@ -18,7 +18,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class InfoWidgetText extends EventWidget
+class InfoWidgetText extends InfoWidget
 {
     use Translatable;
 

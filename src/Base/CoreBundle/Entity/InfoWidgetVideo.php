@@ -18,7 +18,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class InfoWidgetVideo extends EventWidget
+class InfoWidgetVideo extends InfoWidget
 {
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media

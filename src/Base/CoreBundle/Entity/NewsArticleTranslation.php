@@ -52,11 +52,26 @@ class NewsArticleTranslation implements NewsTranslationInterface
     private $status;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $seoTitle;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     **/
+    private $seoDescription;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->sites = new ArrayCollection();
+        $this->status = NewsArticleTranslation::STATUS_DRAFT;
     }
 
     /**
@@ -128,5 +143,49 @@ class NewsArticleTranslation implements NewsTranslationInterface
         return $this->status;
     }
 
+    /**
+     * Set seoTitle
+     *
+     * @param string $seoTitle
+     * @return NewsArticleTranslation
+     */
+    public function setSeoTitle($seoTitle)
+    {
+        $this->seoTitle = $seoTitle;
 
+        return $this;
+    }
+
+    /**
+     * Get seoTitle
+     *
+     * @return string 
+     */
+    public function getSeoTitle()
+    {
+        return $this->seoTitle;
+    }
+
+    /**
+     * Set seoDescription
+     *
+     * @param string $seoDescription
+     * @return NewsArticleTranslation
+     */
+    public function setSeoDescription($seoDescription)
+    {
+        $this->seoDescription = $seoDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get seoDescription
+     *
+     * @return string 
+     */
+    public function getSeoDescription()
+    {
+        return $this->seoDescription;
+    }
 }

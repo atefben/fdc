@@ -14,7 +14,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class InfoWidgetImage extends EventWidget
+class InfoWidgetImage extends InfoWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="eventWidgetImages")

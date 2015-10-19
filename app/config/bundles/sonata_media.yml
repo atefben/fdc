@@ -48,6 +48,12 @@ sonata_media:
                 mobile:  { width: 300, quality: 100 }
                 desktop: { width: 500, quality: 100 }
 
+        seo_file:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                small: { width: 400 , quality: 100 }
+
     cdn:
         server:
             path: /uploads/media
