@@ -108,6 +108,7 @@
   .owl-item {
     height: 100%;
     float: left;
+    overflow: hidden;
     width: 974px!important;
 
     .linkArticle {
@@ -157,7 +158,7 @@
 
     img {
       opacity: 0.2!important;
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(opacity 0.3s $smoothTransition, transform 3s $smoothTransition);
     }
 
     &.center {
@@ -303,6 +304,11 @@
 
         &.disabled {
           background-color: #f2f2f2;
+
+          &:hover {
+            background-color: #f2f2f2;
+            color: #adadad;
+          }
         }
 
         &:hover {
@@ -529,6 +535,7 @@
       .side {
         backface-visibility: hidden;
         background-size: cover;
+        cursor: default;
         height: 100%;
         left: 0;
         position: absolute;
@@ -538,6 +545,8 @@
         width: 100%;
 
         &.hasimg {
+          cursor: pointer;
+
           .txt {
             opacity: 0;
             visibility: hidden;
@@ -647,43 +656,70 @@
         font-size: 0.875rem;
         line-height: 16px;
         padding-right: 30px;
-        @include transition(all 0.3s $smoothTransition);
+        @include transform(translateZ(0));
+        @include transition(color 0.3s $smoothTransition);
 
         &:hover {
-          color: $black;
+          color: $gold;
         }
 
         &.facebook {
           background: url('../img/svg/facebook-grey.svg') right top no-repeat;
           background-size: 20px;
           padding-right: 25px;
+
+          &:hover {
+            background-image: url('../img/svg/facebook-gold.svg');
+          }
         }
 
         &.twitter {
           background: url('../img/svg/twitter-grey.svg') right 15% no-repeat;
           background-size: 18px;
+
+          &:hover {
+            background-image: url('../img/svg/twitter-gold.svg');
+            background-size: 18px;
+          }
         }
 
         &.instagram {
           background: url('../img/svg/instagram-grey.svg') right top no-repeat;
           background-size: 20px;
+
+          &:hover {
+            background-image: url('../img/svg/instagram-gold.svg');
+            background-size: 20px;
+          }
         }
 
         &.tumblr {
           background: url('../img/svg/tumblr-grey.svg') right top no-repeat;
           background-size: 20px;
           padding-right: 25px;
+
+          &:hover {
+            background-image: url('../img/svg/tumblr-gold.svg');
+          }
         }
 
         &.youtube {
           background: url('../img/svg/youtube-grey.svg') right top no-repeat;
           background-size: 20px;
+
+          &:hover {
+            background-image: url('../img/svg/youtube-gold.svg');
+          }
         }
 
         &.dailymotion {
           background: url('../img/svg/dailymotion-grey.svg') right top no-repeat;
           background-size: 20px;
           padding-right: 25px;
+
+          &:hover {
+            background-image: url('../img/svg/dailymotion-gold.svg');
+          }
         }
       }
     }

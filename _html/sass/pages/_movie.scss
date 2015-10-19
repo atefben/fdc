@@ -313,6 +313,7 @@
     height: 73px;
     line-height: 73px;
     overflow: hidden;
+    @include transition(height .3s $smoothTransition);
 
     &.sticky {
       background-color: #fff;

@@ -126,6 +126,7 @@
         display: block;
         margin: 0 auto;
         max-width: 100%;
+        pointer-events: none;
         @include transition(all 6s $smoothTransition);
       }
 

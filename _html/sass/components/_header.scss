@@ -13,13 +13,24 @@ header {
   width: 100%;
   z-index: 10;
 
+  ul {
+    cursor: default;
+  }
+
   #sticky-user {
     font-size: 0.750rem;
     opacity: 0;
     visibility: hidden;
-    @include transform(translateY(5px));
+    position: absolute;
+    bottom: 18px;
+    right: 0;
+    @include transform(translate3d(0, 5px, 0));
     @include transition(opacity 0.3s $smoothTransition, transform 0.3s $smoothTransition);
     transition-delay: 0;
+
+    ul {
+      padding: 0;
+    }
   }
 
   &.sticky {
@@ -52,6 +63,7 @@ header {
 
     #logo-wrapper {
       height: 50px;
+      transition-delay: .2s;
 
       #logo {
         width: 290px;
@@ -128,6 +140,7 @@ header {
         top: 23px;
         visibility: hidden;
         @include transition(all 0.5s $smoothTransition);
+        @include transform(translateY(0));
 
         li {
           display: block;
@@ -191,9 +204,11 @@ header {
     height: 160px;
     overflow: hidden;
     @include transition(all 0.3s $smoothTransition);
+    @include transform(translateY(0));
 
     .container {
       height: 100%;
+      position: relative;
     }
 
     #logo {
@@ -230,6 +245,7 @@ header {
           height: 100%;
           z-index: 1;
           @include transition(width .5s $smoothTransition);
+          @include transform(translateY(0));
         }
       }
 
@@ -250,12 +266,14 @@ header {
         margin: 0 auto;
         width: 145px;
         @include transition(width 0.3s $smoothTransition);
+        @include transform(translateY(0));
       }
     }
 
     #partners {
       display: inline-block;
       vertical-align: middle;
+      @include transition(all 0.3s $smoothTransition);
 
       img {
         display: inline-block;
@@ -288,6 +306,7 @@ header {
       position: relative;
       margin-top: 47px;
       width: 63px;
+      @include transition(all 0.3s $smoothTransition);
 
       a {
         background: url('../img/svg/search.svg') center no-repeat;
@@ -339,6 +358,7 @@ header {
           width: 977px;
           z-index: 15;
           @include transition(all 0.3s $smoothTransition);
+          @include transform(translateY(0));
 
           &:before {
             background-color: $black;

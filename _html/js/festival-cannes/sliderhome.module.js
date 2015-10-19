@@ -53,7 +53,9 @@ $(document).ready(function() {
         // if percentTime is equal or greater than 100
         if(percentTime >= 100){
           // slide to next item 
+
           $("#slider").trigger("next.owl.carousel");
+
           percentTime = 0;
         }
       }
@@ -62,6 +64,37 @@ $(document).ready(function() {
     // pause while dragging 
     function pauseOnDragging(){
       isPause = true;
+    }
+
+    function move(e) {
+
+      // $('#slider .center').prevAll().each(function() {
+      //   $(this).find('img').css({
+      //     '-webkit-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+      //     '-moz-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+      //     '-o-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+      //     '-ms-transform': 'translateX(' + 400+ 'px) translateY(0px)',
+      //     'transform': 'translate3d(' + 400 + 'px, 0px, 0px)'
+      //   });
+      // });
+
+      // setTimeout(function() {$('#slider .center img').css({
+      //   '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+      //   '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+      //   '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+      //   '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
+      //   'transform': 'translate3d(' + 0 + 'px, 0px, 0px)'
+      // });}, 20);
+
+      // $('#slider .center').nextAll().each(function() {
+      //   $(this).find('img').css({
+      //     '-webkit-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+      //     '-moz-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+      //     '-o-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+      //     '-ms-transform': 'translateX(-' + 400+ 'px) translateY(0px)',
+      //     'transform': 'translate3d(-' + 400 + 'px, 0px, 0px)'
+      //   });
+      // });
     }
 
     // moved callback
@@ -79,6 +112,7 @@ $(document).ready(function() {
       center: true,
       nav: true,
       dots: true,
+      onTranslate: move,
       onInitialized: progressBar,
       onTranslated: moved,
       onDrag: pauseOnDragging,

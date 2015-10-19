@@ -33,7 +33,8 @@ function initSlideshows() {
   if($('.slideshow').length) {
     var slideshow = $('.slideshow .images').Chocolat({
       imageSize: 'cover',
-      fullScreen: false
+      fullScreen: false,
+      loop: true
     }).data('chocolat');
 
     slideshows.push(slideshow);
@@ -43,6 +44,11 @@ function initSlideshows() {
   $('body').on('click', '.chocolat-img', function(e){
     for(var i=0; i<slideshows.length; i++) {
       slideshows[i].api().close();
+      slideshows[i].api().destroy();
+      $('.chocolat-wrapper').remove();
+
+      initSlideshows();
+      history.pushState("", document.title, window.location.pathname);
     }
   });
 
@@ -73,6 +79,7 @@ $('body').on('click', '.chocolat-pagination', function() {
 
 // zoom
 $('body').on('click', '.chocolat-image', function() {
+
   $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
   $('<a href="#" class="share"></a>').insertBefore('.chocolat-wrapper .chocolat-left');
@@ -140,6 +147,8 @@ $('body').on('click', '.chocolat-left', function(){
     $('.chocolat-wrapper .thumb').removeClass('active');
     $('.chocolat-wrapper .thumb[data-id="' + window.location.hash.substr(1) + '"]').addClass('active');
   }
+
+
 });
 
 // update hash and active photo on nav click
