@@ -199,7 +199,7 @@
   #articles-wrapper {
     overflow: hidden;
     
-    @include transition(opacity 1.2s $smoothTransition, max-height 2s $smoothTransition);
+    @include transition(opacity 0.8s $smoothTransition, max-height 2s $smoothTransition);
 
     &.loading {
       opacity: 0;

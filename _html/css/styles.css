@@ -225,6 +225,23 @@ a {
   text-align: center;
 }
 
+.canvasloader {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.canvasloader.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 html {
   font-size: 16px;
 }
@@ -2278,10 +2295,10 @@ div.chocolat-wrapper .chocolat-close {
 }
 #news #articles-wrapper {
   overflow: hidden;
-  -moz-transition: opacity 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: opacity 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: opacity 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: opacity 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #news #articles-wrapper.loading {
   opacity: 0;

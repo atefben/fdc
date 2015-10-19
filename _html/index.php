@@ -46,6 +46,7 @@
         </div>
       </div>
       <div id="news">
+        <div id="canvasloader" class="canvasloader"></div>
         <h2 class="title">L'actualité à la une</h2>
         <div class="filters">
           <div id="theme" class="filter">

@@ -10,6 +10,7 @@
 <script src="js/bower_components/isotope-packery/packery-mode.pkgd.js"></script>
 <script src="js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js"></script>
 <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
+<script src="js/bower_components/canvasloader/js/heartcode-canvasloader-min.js"></script>
 <script src="js/festival-cannes/helpers.js"></script>
 <script src="js/festival-cannes/article.module.js"></script>
 <script src="js/festival-cannes/audio.module.js"></script>
