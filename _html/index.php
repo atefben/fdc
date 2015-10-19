@@ -642,14 +642,14 @@
           <h2>Vivez le festival de Cannes</h2>
           <h3 class="subtitle">Suivez le Festival où que vous soyez</h3>
           <ul>
-            <li><a href="https://www.youtube.com/user/TVFestivaldeCannes" class="active">TV Festival de Cannes</a></li>
+            <li><a href="https://www.youtube.com/user/TVFestivaldeCannes" class="active" target="_blank">TV Festival de Cannes</a></li>
             <li><a href="#">Applications Mobiles</a></li>
-            <li><a href="http://www.boutiqueofficielle.festival-cannes.com/">Boutique officielle</a></li>
+            <li><a href="http://www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique officielle</a></li>
             <li><a href="#">Publications</a></li>
           </ul>
-          <div class="imgSlide active"><a href='https://www.youtube.com/user/TVFestivaldeCannes'><img src="img/prefooter/01.png" alt="" /></a></div>
+          <div class="imgSlide active"><a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/01.png" alt="" /></a></div>
           <div class="imgSlide"><a href='#'><img src="img/prefooter/02.png" alt="" /></a></div>
-          <div class="imgSlide"><a href='http://www.boutiqueofficielle.festival-cannes.com/'><img src="img/prefooter/03.png" alt="" /></a></div>
+          <div class="imgSlide"><a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/03.png" alt="" /></a></div>
           <div class="imgSlide"><a href='#'><img src="img/prefooter/04.png" alt="" /></a></div>
         </div>
       </div>
