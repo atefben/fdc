@@ -14,8 +14,7 @@ $(document).ready(function() {
       margin: 50,
       autoWidth: true,
       onInitialized: function() {
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slider-channels .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+        $('#slider-channels .owl-stage').css({ 'margin-left': "-343px" });
       }
     });
 

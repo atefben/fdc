@@ -5498,7 +5498,7 @@ article .image .linkImage {
 }
 
 .single-channel {
-  background-color: #141414;
+  background-color: #141414 !important;
   padding-top: 15px;
 }
 .single-channel .back {
