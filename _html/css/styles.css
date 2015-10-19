@@ -3776,6 +3776,27 @@ article .image .linkImage {
   padding-top: 410px;
   position: relative;
 }
+.single-movie .anim {
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  background-color: #c8a461;
+  z-index: 10;
+  -moz-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.single-movie .anim.show {
+  width: 102%;
+}
+.single-movie .anim.next {
+  left: auto;
+  right: 0;
+}
 @media screen and (max-width: 1600px) {
   .single-movie {
     padding-top: 330px;

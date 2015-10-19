@@ -88,6 +88,40 @@ $(document).ready(function() {
       }, 500);
     });
 
+
+    // previous and next
+    $('body').on('click', '.single-movie .nav', function(e) {
+      e.preventDefault();
+
+      var $that = $(this);
+
+      if($that.hasClass('next')) {
+        $('.anim').addClass('next');
+      } else {
+        $('.anim').removeClass('next');
+      }
+
+      $('.anim').addClass('show');
+
+      var urlPath = $that.attr('href');
+
+      // remove timeout once on server. only for animation.
+
+      setTimeout(function() {
+        $.get(urlPath, function(data){
+          $(".content-movie").html( $(data).find('.content-movie') );
+          history.pushState('',"titre test", urlPath);
+
+          if($that.hasClass('next')) {
+            $('.anim').removeClass('next show');
+          }
+          else {
+            $('.anim').addClass('next').removeClass('show');
+          }
+        });
+      }, 2000);
+    });
+
   }
 
 });

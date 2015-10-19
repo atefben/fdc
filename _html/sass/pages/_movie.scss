@@ -11,6 +11,27 @@
   padding-top: 410px;
   position: relative;
 
+  .anim {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    background-color: $gold;
+    z-index: 10;
+    @include transition(all 1.5s $smoothTransition);
+
+    &.show {
+      width: 102%;
+    }
+
+    &.next {
+      left: auto;
+      right: 0;
+    }
+  }
+
   @include breakpoint(1600px) {
     padding-top: 330px;
   }
