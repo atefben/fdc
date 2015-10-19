@@ -6,7 +6,7 @@ $(document).ready(function() {
   // =========================
 
     // show image on mouseover
-    $('#prefooter a').on('mouseover', function(e) {
+    $('#prefooter ul a').on('mouseover', function(e) {
       e.preventDefault();
 
       $('.imgSlide, #prefooter a').removeClass('active');

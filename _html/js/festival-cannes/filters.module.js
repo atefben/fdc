@@ -10,11 +10,15 @@ $(document).ready(function() {
     $('#filters').remove();
     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"></div></div>');
     $('#filters .vCenterKid').html(h);
-    $('#filters').addClass('show').attr('data-id', $(this).parents('.filter').attr('id'));
+    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+
+    setTimeout(function() {
+      $('#filters').addClass('show');
+    }, 100);
 
     setTimeout(function() {
       $('#filters span').addClass('show');
-    }, 400);
+    }, 600);
   });
 
   // close filters
