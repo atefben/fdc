@@ -89,13 +89,15 @@ $('body').on('click', '.chocolat-image', function() {
 });
 
 $('body').on('click', '.chocolat-wrapper .thumb', function() {
-  var i = $(this).parent().index();
+  var j = $(this).parent().index();
 
   $('.chocolat-wrapper .thumb').removeClass('active');
   $(this).addClass('active');
 
   var slideshow = $('.slideshow .images').data('chocolat');
-  slideshow.api().goto(i);
+  for(var i=0; i<slideshows.length; i++) {
+    slideshows[i].api().goto(j);
+  }
 
 });
 

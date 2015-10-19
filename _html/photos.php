@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="item theme2 date2 date theme shadow-bottom photo">
-          <a class="chocolat-image" href="img/slide002.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
+          <a class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"></div>
           <div class="info">
