@@ -2396,6 +2396,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 #news .container #timeline a.disabled {
   background-color: #f2f2f2;
+  cursor: default;
 }
 #news .container #timeline a.disabled:hover {
   background-color: #f2f2f2;

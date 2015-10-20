@@ -1,6 +1,18 @@
 // All Photos
 // =========================
 
+var itemReveal = Isotope.Item.prototype.reveal;
+Isotope.Item.prototype.reveal = function() {
+  itemReveal.apply( this, arguments );
+  $( this.element ).removeClass('isotope-hidden');
+};
+
+var itemHide = Isotope.Item.prototype.hide;
+Isotope.Item.prototype.hide = function() {
+  itemHide.apply( this, arguments );
+  $( this.element ).addClass('isotope-hidden');
+};
+
 $(document).ready(function() {
 
   function setImages(grid, dom, init){     
@@ -233,8 +245,19 @@ $(document).ready(function() {
           filterValues += '.' + $(this).data('filter');
         }
       });
-      
       $container.isotope({ filter: filterValues }); 
+
+      // if($('.all-photos').length) {
+      //   setTimeout(function() {
+      //     for(var i=0; i<slideshows.length; i++) {
+      //       slideshows[i].api().destroy();
+      //     }
+
+      //     slideshows = [];
+      //     $('.chocolat-wrapper').remove();
+      //     initSlideshows();
+      //   }, 1500);
+      // }
     });
   }
 

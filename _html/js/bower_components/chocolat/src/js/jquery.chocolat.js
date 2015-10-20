@@ -302,7 +302,7 @@
                 this.exitFullScreen();
                 return;
             }
-
+            
             var els = [
                 this.elems.overlay[0],
                 this.elems.loader[0],
