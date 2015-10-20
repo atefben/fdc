@@ -75,7 +75,8 @@
           left: 0;
           height: 100%;
           width: 100%;
-          @include transition(all 0.5s $smoothTransition);
+          @include transform(translateZ(0));
+          @include transition(all .6s $smoothTransition);
         }
 
         img {

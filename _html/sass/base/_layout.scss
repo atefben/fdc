@@ -68,12 +68,16 @@ body {
     visibility: hidden;
     width: 100%;
     z-index: 5;
-    @include transition(all 0.3s $smoothTransition);
+    @include transition(all 0.5s $smoothTransition);
   }
 
   &.overlay:after {
-    opacity: 0.6;
+    opacity: 0.8;
     visibility: visible;
+  }
+
+  &.overlay {
+    cursor: pointer;
   }
 }
 

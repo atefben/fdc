@@ -6,7 +6,7 @@ $(document).ready(function() {
   $(window).on('scroll', function() {
     var s = $(window).scrollTop();
 
-    if(($('#prehome-container').length == 0 && s > 50) || ($('#prehome-container').length && s > $(window).height() + 10)) {
+    if(($('#prehome-container').length == 0 && s > 5) || ($('#prehome-container').length && s > $(window).height() + 10)) {
       $('header').addClass('sticky');
     } else {
       $('header').removeClass('sticky');

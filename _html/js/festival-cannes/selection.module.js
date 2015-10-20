@@ -6,7 +6,7 @@ $(document).ready(function() {
   var sliderSelection = '';
 
   function openSelection(callback) {
-    $('#main').addClass('overlay');
+    $('#main, footer').addClass('overlay');
 
     if(sliderSelection != '') sliderSelection.trigger('destroy.owl.carousel');
     $('#slider-selection').empty();
@@ -43,7 +43,7 @@ $(document).ready(function() {
   }
 
   function closeSelection() {
-    $('#main').removeClass('overlay');
+    $('#main, footer').removeClass('overlay');
     $('#selection').removeClass('open');
     $('header .selection').removeClass('opened');
   }
@@ -125,7 +125,7 @@ $(document).ready(function() {
         $article = $article.html();
 
     openSelection(function() {
-      $("#main").addClass('overlay');
+      $("#main, footer").addClass('overlay');
       $('header .selection').addClass('opened');
       
       setTimeout(function() {

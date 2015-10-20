@@ -313,8 +313,7 @@
         }
 
         &:hover {
-          background-color: $gold;
-          color: rgba(255, 255, 255, 0.5);
+          color: $gold;
         }
 
         &.active {
@@ -1173,7 +1172,7 @@
         min-height: 100%;
         width: auto;
         height: auto;
-        @include transition(all 0.8s $smoothTransition);
+        @include transition(all 1.5s $smoothTransition);
       } 
     }
 

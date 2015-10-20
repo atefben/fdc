@@ -16,6 +16,26 @@ footer {
   padding: 40px 0;
   position: relative;
 
+  &:after {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.3s $smoothTransition);
+  }
+
+  &.overlay:after {
+    opacity: 0.6;
+    visibility: visible;
+  }
+
   h2 {
     color: #fff;
   }
@@ -118,6 +138,11 @@ footer {
           display: block;
           height: 26px;
           width: 26px;
+          @include transition(all .8s $smoothTransition);
+
+          &:hover {
+            opacity: 0.6;
+          }
 
           &.app {
             background: url('../img/svg/appli.svg') center no-repeat;
@@ -215,7 +240,8 @@ footer {
         a {
           color: #fff;
           opacity: 0.5;
-          @include transition(all 0.3s $smoothTransition);
+          @include transform(translateZ(0));
+          @include transition(all 0.7s $smoothTransition);
 
           &:hover {
             opacity: 1;

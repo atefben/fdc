@@ -332,10 +332,14 @@ header {
         display: inline-block;
         margin-left: -4px;
 
+        &:first-child {
+          margin-left: 0;
+        }
+
         a {
           color: #fff;
           display: block;
-          padding-right: 22px;
+          padding-right: 21px;
           text-transform: uppercase;
           @include transition(color 0.3s $smoothTransition);
 
@@ -377,6 +381,7 @@ header {
             font-size: 0.750rem;
             position: relative;
             z-index: 2;
+            letter-spacing: 0.02em;
           }
         }
 
