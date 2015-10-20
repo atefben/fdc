@@ -30,6 +30,9 @@
     padding: 50px;
     box-sizing: border-box;
     overflow-x: auto;
+    a{
+      color:#000;
+    }
     .descript-title{
       text-transform: uppercase;
       font-family: $CamphorHeavy;

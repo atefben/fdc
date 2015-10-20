@@ -9370,6 +9370,9 @@ article .image .linkImage {
   box-sizing: border-box;
   overflow-x: auto;
 }
+.contain-jury .contain-descript a {
+  color: #000;
+}
 .contain-jury .contain-descript .descript-title {
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy";

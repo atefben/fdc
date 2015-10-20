@@ -39,13 +39,13 @@
       <div class="container-jurys">
         <div class="container container-list">
           <section class="categorie-items contain-jury">
-              <div class="photo-jury" style="background-image:url(img/jurys/photo-jury.jpg)">
-                <a href="">
-                </a>
-              </div>
+              <a href="">
+                <div class="photo-jury" style="background-image:url(img/jurys/photo-jury.jpg)">
+                </div>
+              </a>
               <div class="contain-descript">
                 <h3 class="descript-title">Président du jury</h3>
-                <h2 class="descript-name">Jane camion</h2>
+                <a href=""><h2 class="descript-name">Jane camion</h2></a>
                 <span class="descript-rank">Réalisatrice, Scénariste, Productrice</span>
                 <p>
                   La réalisatrice, productrice et scénariste néo-zélandaise Jane Campion fait partie des cinéastes majeurs de notre temps. Elle est la seule femme à avoir reçu la Palme d’or à Cannes (1993) et la deuxième sur quatre à avoir été nommée dans la catégorie Meilleure Réalisation aux Oscars (1994), pour "La Leçon de piano", également Oscar du Meilleur Scénario. </p>
