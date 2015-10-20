@@ -89,22 +89,6 @@
     width: 100%;
   }
 
-  .owl-dot {
-    background-color: #fff;
-    border-radius: 100%;
-    display: inline-block;
-    height: 5px;
-    margin: 0 5px;
-    vertical-align: middle;
-    width: 5px;
-    @include transition(all 0.3s $smoothTransition);
-
-    &.active {
-      background: none;
-      border: 3px solid $gold;
-    }
-  }
-
   .owl-item {
     height: 100%;
     float: left;
@@ -978,18 +962,8 @@
   }
 
   .owl-dot {
-    background-color: #fff;
-    border-radius: 100%;
     display: block;
-    height: 5px;
-    margin: 5px auto;
-    width: 5px;
-    @include transition(all 0.3s $smoothTransition);
-
-    &.active {
-      background: none;
-      border: 3px solid $gold;
-    }
+    margin: 5px 0;
   }
 
   .owl-stage {

@@ -25,6 +25,11 @@
     .select {
       color: $gold;
       cursor: pointer;
+      @include transition(opacity .7s $smoothTransition);
+
+      &:hover {
+        opacity: 0.7;
+      }
 
       span {
         background: url('../img/svg/arrow-down-gold.svg') no-repeat right center;
@@ -50,13 +55,12 @@
   visibility: hidden;
   top: 0;
   width: 100%;
-  z-index: -2;
-  @include transition(all 0.5s $smoothTransition);
+  z-index: 15;
+  @include transition(opacity 0.7s $smoothTransition, visibility 0.7s $smoothTransition);
 
   &.show {
     opacity: 1;
     visibility: visible;
-    z-index: 15;
   }
 
   span {
@@ -69,12 +73,12 @@
     text-align: center;
     text-transform: uppercase;
     visibility: hidden;
-    @include transform(translateY(20px));
+    @include transform(translateY(20px) translateZ(0));
 
     &.show {
       opacity: 1;
       visibility: visible;
-      @include transform(translateY(0));
+      @include transform(translateY(0) translateZ(0));
     }
 
     &.active {
@@ -87,39 +91,39 @@
     }
 
     &:nth-child(1) {
-      @include transition(opacity .3s $smoothTransition 0.1s, transform .3s $smoothTransition 0.1s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.1s, transform .5s $smoothTransition 0.1s, color .3s $smoothTransition);
     }
 
     &:nth-child(2) {
-      @include transition(opacity .3s $smoothTransition 0.15s, transform .3s $smoothTransition 0.15s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.15s, transform .5s $smoothTransition 0.15s, color .3s $smoothTransition);
     }
 
     &:nth-child(3) {
-      @include transition(opacity .3s $smoothTransition 0.2s, transform .3s $smoothTransition 0.2s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.2s, transform .5s $smoothTransition 0.2s, color .3s $smoothTransition);
     }
 
     &:nth-child(4) {
-      @include transition(opacity .3s $smoothTransition 0.25s, transform .3s $smoothTransition 0.25s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.25s, transform .5s $smoothTransition 0.25s, color .3s $smoothTransition);
     }
 
     &:nth-child(5) {
-      @include transition(opacity .3s $smoothTransition 0.3s, transform .3s $smoothTransition 0.3s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.3s, transform .5s $smoothTransition 0.3s, color .3s $smoothTransition);
     }
 
     &:nth-child(6) {
-      @include transition(opacity .3s $smoothTransition 0.35s, transform .3s $smoothTransition 0.35s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.35s, transform .5s $smoothTransition 0.35s, color .3s $smoothTransition);
     }
 
     &:nth-child(7) {
-      @include transition(opacity .3s $smoothTransition 0.4s, transform .3s $smoothTransition 0.4s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.4s, transform .5s $smoothTransition 0.4s, color .3s $smoothTransition);
     }
 
     &:nth-child(8) {
-      @include transition(opacity .3s $smoothTransition 0.45s, transform .3s $smoothTransition 0.45s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.45s, transform .5s $smoothTransition 0.45s, color .3s $smoothTransition);
     }
 
     &:nth-child(9) {
-      @include transition(opacity .3s $smoothTransition 0.5s, transform .3s $smoothTransition 0.5s, color .3s $smoothTransition);
+      @include transition(opacity .5s $smoothTransition 0.5s, transform .5s $smoothTransition 0.5s, color .3s $smoothTransition);
     }
     
   }

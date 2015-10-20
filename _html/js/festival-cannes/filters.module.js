@@ -18,12 +18,15 @@ $(document).ready(function() {
 
     setTimeout(function() {
       $('#filters span').addClass('show');
-    }, 600);
+    }, 800);
   });
 
   // close filters
   $('body').on('click', '#filters', function() {
     $('#filters').removeClass('show');
+    setTimeout(function() {
+      $('#filters').remove();
+    }, 700);
   });
 
   // filter data on page

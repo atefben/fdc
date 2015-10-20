@@ -104,3 +104,65 @@
 .no-js .owl-carousel {
   display: block;
 }
+
+
+.owl-dot {
+  display: inline-block;
+  height: 15px;
+  margin: 0 5px;
+  vertical-align: middle;
+  position: relative;
+  width: 15px;
+
+  &:before {
+    background: url('../img/svg/puce-small.svg') no-repeat center;
+    background-size: 8px;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    @include transform(translateZ(0));
+    @include transition(all 0.6s $smoothTransition);
+  }
+
+  &:after {
+    background: url('../img/svg/puce-big.svg') no-repeat center;
+    background-size: 15px;
+    content: '';
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    @include transform(translateZ(0));
+    @include transform(scale(0.6));
+    @include transition(all 0.6s $smoothTransition);
+  }
+
+  &:hover {
+    &:after,
+    &:before {
+      opacity: 0.7;
+    }
+  }
+
+  &.active {
+    &:before {
+      opacity: 0;
+      visibility: hidden;
+      @include transform(scale(0.6));
+    }
+
+    &:after {
+      opacity: 1;
+      visibility: visible;
+      @include transform(scale(1));
+    }
+  }
+}

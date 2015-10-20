@@ -51,6 +51,22 @@ $(document).ready(function() {
         
       // start counting
       start();
+
+      $('#slider .owl-nav div').on('click', function() {
+        clearTimeout(tick);
+
+        $bar.css({
+          width: '100%',
+          transition: 'width .2s ease'
+        });
+
+        setTimeout(function() {
+          $bar.css({
+            float: 'right',
+            width: 0
+          });
+        }, 200);
+      });
     }
 
     function buildProgressBar(){
@@ -86,6 +102,13 @@ $(document).ready(function() {
         if(percentTime >= 100){
           // slide to next item 
 
+          clearTimeout(tick);
+          $bar.css({
+            float: 'right',
+            width: 0,
+            transition: 'width .5s ease'
+          });
+
           $("#slider").trigger("next.owl.carousel");
 
           percentTime = 0;
@@ -108,7 +131,7 @@ $(document).ready(function() {
           '-o-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
           '-ms-transform': 'translateX(' + 400+ 'px) translateY(0px)',
           'transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-          'transition': 'all 0.4s ease'
+          'transition': 'all 0.5s ease'
         });
       });
 
@@ -118,7 +141,7 @@ $(document).ready(function() {
           '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
           '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
           'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-          'transition': 'all 0.6s ease'
+          'transition': 'all 0.7s ease'
         });
 
       $('#slider .center').nextAll().each(function() {
@@ -128,7 +151,7 @@ $(document).ready(function() {
           '-o-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
           '-ms-transform': 'translateX(-' + 400+ 'px) translateY(0px)',
           'transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-          'transition': 'all 0.4s ease'
+          'transition': 'all 0.5s ease'
         });
       });
       }, 50);
@@ -141,6 +164,12 @@ $(document).ready(function() {
         
       // start again
       start();
+
+      $bar.css({
+        float: 'none',
+        width: 0,
+        transition: 'none'
+      });
     }
 
     $("#slider").owlCarousel({
@@ -154,9 +183,9 @@ $(document).ready(function() {
       onTranslated: moved,
       mouseDrag: false,
       onDrag: pauseOnDragging,
-      navSpeed: 700,
-      dotsSpeed: 700,
-      smartSpeed: 700,
+      navSpeed: 800,
+      dotsSpeed: 800,
+      smartSpeed: 800,
       autoWidth: true
     });
 
