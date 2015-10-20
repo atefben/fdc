@@ -139,6 +139,7 @@ header {
         position: absolute;
         top: 23px;
         visibility: hidden;
+        z-index: 1;
         @include transition(all 0.5s $smoothTransition);
         @include transform(translateY(0));
 

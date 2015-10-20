@@ -3296,6 +3296,7 @@ header .user-nav li .sub-languages {
   position: absolute;
   top: 23px;
   visibility: hidden;
+  z-index: 1;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
