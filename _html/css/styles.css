@@ -4976,20 +4976,37 @@ div.chocolat-wrapper .chocolat-close {
   color: #c8a461;
   font-weight: normal;
 }
+#selection #slider-selection {
+  margin-left: -380px;
+}
 #selection #slider-selection .owl-stage-outer {
   overflow: initial;
 }
 #selection #slider-selection .owl-item {
+  opacity: 1;
   -moz-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#selection #slider-selection .owl-item.added {
+  -moz-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -moz-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -o-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #selection #slider-selection .owl-item.fade {
   margin-right: 0 !important;
   opacity: 0;
   visibility: hidden;
   width: 0 !important;
+}
+#selection #slider-selection .owl-item.scaled {
+  opacity: 0;
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
 }
 #selection #slider-selection .article {
   height: 230px;
@@ -6393,10 +6410,10 @@ article .image .read-later {
   position: absolute;
   top: 15px;
   right: 15px;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 article .image .read-later span {
   background-color: #141414;
@@ -6416,14 +6433,14 @@ article .image .read-later span {
   z-index: 5;
   text-align: center;
   text-transform: uppercase;
-  -moz-transform: translateY(6px);
-  -ms-transform: translateY(6px);
-  -webkit-transform: translateY(6px);
-  transform: translateY(6px);
-  -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), -moz-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), -o-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transform: translateY(6px) translateZ(0);
+  -ms-transform: translateY(6px) translateZ(0);
+  -webkit-transform: translateY(6px) translateZ(0);
+  transform: translateY(6px) translateZ(0);
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 article .image .read-later span:after {
   content: ' ';
@@ -6438,10 +6455,10 @@ article .image .read-later span:after {
 article .image .read-later:hover span {
   opacity: 1;
   visibility: visible;
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
+  -moz-transform: translateY(0) translateZ(0);
+  -ms-transform: translateY(0) translateZ(0);
+  -webkit-transform: translateY(0) translateZ(0);
+  transform: translateY(0) translateZ(0);
 }
 article .image .linkImage {
   display: block;

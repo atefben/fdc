@@ -29,9 +29,9 @@ $(document).ready(function() {
           margin: 50,
           autoWidth: true,
           onInitialized: function() {
-            var v = ($(window).width() - 977) / 2 + "px";
-            $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-            $('#selection').addClass('open');
+            setTimeout(function() {
+              $('#selection').addClass('open')
+            }, 500);
           }
         });
 
@@ -111,8 +111,6 @@ $(document).ready(function() {
     setTimeout(function() {
       sliderSelection.trigger('del.owl.carousel', i);
       sliderSelection.trigger('refresh.owl.carousel');
-      var v = ($(window).width() - 977) / 2 + "px";
-      $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
     }, 500);
   });
 
@@ -129,11 +127,10 @@ $(document).ready(function() {
       $('header .selection').addClass('opened');
       
       setTimeout(function() {
-        sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item">' + $article + '</div>'), 0]);
+        sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item added scaled">' + $article + '</div>'), 0]);
         sliderSelection.trigger('refresh.owl.carousel');
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-      }, 700);
+        $('.scaled').removeClass('scaled');
+      }, 1200);
     });
      
   });

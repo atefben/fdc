@@ -32,19 +32,30 @@
   }
 
   #slider-selection {
+    margin-left: -380px;
 
     .owl-stage-outer {
       overflow: initial;
     }
 
     .owl-item {
+      opacity: 1;
       @include transition(margin-right 0.5s $smoothTransition);
+
+      &.added {
+        @include transition(margin-right 0.5s $smoothTransition, opacity .8s $smoothTransition, transform .8s $smoothTransition);
+      }
 
       &.fade {
         margin-right: 0!important;
         opacity: 0;
         visibility: hidden;
         width: 0!important;
+      }
+
+      &.scaled {
+        opacity: 0;
+        @include transform(scale(0.8));
       }
     }
 

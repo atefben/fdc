@@ -145,8 +145,7 @@ article {
       position: absolute;
       top: 15px;
       right: 15px;
-
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(all 0.5s $smoothTransition);
 
       span {
         background-color: $black;
@@ -166,8 +165,8 @@ article {
         z-index: 5;
         text-align: center;
         text-transform: uppercase;
-        @include transform(translateY(6px));
-        @include transition(opacity 0.3s $smoothTransition, transform 0.3s $smoothTransition);
+        @include transform(translateY(6px) translateZ(0));
+        @include transition(opacity 0.5s $smoothTransition, visibility .5s $smoothTransition, transform 0.5s $smoothTransition);
 
         &:after {
           content: ' ';
@@ -186,7 +185,7 @@ article {
         span {
           opacity: 1;
           visibility: visible;
-          @include transform(translateY(0));
+          @include transform(translateY(0) translateZ(0));
         }
       }
     }
