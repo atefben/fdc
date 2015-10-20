@@ -6199,10 +6199,55 @@ article .image .linkImage {
   width: 730px;
   margin: 0 auto;
 }
+.single-evenement .chapeau {
+  margin-bottom: 40px;
+}
+.single-evenement .film {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  height: 290px;
+}
 .single-evenement .film .programmation-film {
   background-color: #141414;
   float: none;
   height: 100%;
   overflow: hidden;
   width: 100%;
+}
+.single-evenement .film .programmation-film .wrapper {
+  margin: 0 auto;
+  max-width: 720px;
+  float: none;
+}
+.single-evenement .film .programmation-film .wrapper ul {
+  margin-bottom: 35px;
+}
+.single-evenement .film .programmation-film .wrapper ul li {
+  width: auto;
+  margin-right: 60px;
+}
+.single-evenement .film .programmation-film .wrapper .location {
+  margin: 10px 0px !important;
+  text-transform: uppercase;
+  color: #bababa !important;
+  font-size: .625rem;
+}
+.single-evenement .film .programmation-film .wrapper .location:after {
+  background-color: #525252;
+  bottom: -18px;
+  content: '';
+  display: none !important;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 27px;
+}
+.single-evenement .film .programmation-film .wrapper .date {
+  color: #bababa !important;
+}
+.single-evenement .film .programmation-film .wrapper .descript {
+  font-size: 1rem;
+}
+.single-evenement .video .vCenterKid {
+  text-align: left;
 }

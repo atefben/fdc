@@ -93,13 +93,60 @@
     width: 730px;
     margin: 0 auto;
   }
+  .chapeau{
+    margin-bottom: 40px;
+  }
   .film{  
+     margin-top: 70px;
+    margin-bottom: 70px;
+    height: 290px;
     .programmation-film {
       background-color: #141414;
       float: none;
       height: 100%;
       overflow: hidden;
       width: 100%;
+
+      .wrapper{
+        margin: 0 auto;
+        max-width: 720px;
+        float: none;
+        ul{
+          li{
+            width: auto;
+            margin-right: 60px;
+          }
+          margin-bottom: 35px;
+        }
+        .location{
+          margin: 10px 0px !important;
+          text-transform: uppercase;
+          color:#bababa !important;
+          font-size: .625rem;
+        }
+        .location:after {
+          background-color: #525252;
+          bottom: -18px;
+          content: '';
+          display: none !important;
+          height: 1px;
+          left: 0;
+          position: absolute;
+          width: 27px;
+       } 
+        .date{
+           color:#bababa !important;
+        }
+        .descript{
+          font-size: 1rem;
+        }
+      }
     }
   }
+  .video{
+    .vCenterKid {
+      text-align: left;
+    }
+  }
+  
 }

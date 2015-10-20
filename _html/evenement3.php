@@ -60,16 +60,6 @@
             </p>
         </div>
         </div>
-        <div class="share">
-          <p>Partagez l'article</p>
-          <div class="buttons square">
-            <a href="#" class="button facebook"></a>
-            <a href="#" class="button twitter"></a>
-            <a href="#" class="button link"></a>
-            <a href="#" class="button email"></a>
-            <a href="#" class="button print"></a>
-          </div>
-        </div>
         <div class="film">
           <div class="programmation-film">
             <div class="wrapper">
@@ -78,20 +68,14 @@
                   <span class="category">Programme</span>
                   <ul>
                     <li>
-                      <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
+                      <span class="date">16/05/2015 10h30</span>
                       <span class="location">Salle Debussy</span>
+                      <span class="descript">Défis politiques pour une Europe créative</span>
                     </li>
                     <li>
-                      <span class="type">Projection</span><span>15/07/2015</span><span>10h</span>
-                      <span class="location">Cinéma de la plage</span>
-                    </li>
-                    <li>
-                      <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
-                      <span class="location">Salle du Soixantième</span>
-                    </li>
-                    <li>
-                      <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
-                      <span class="location">Grand Théâtre Lumière</span>
+                      <span class="date">23/05/2015 15h</span>
+                      <span class="location">Café des palmes - palais des festivals</span>
+                      <span class="descript">Remise du prix MEDIA à Danis Tanovic</span>
                     </li>
                   </ul>
                   <a href="#" class="button">Toute la programmation</a>
@@ -100,83 +84,29 @@
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="focus">
-            <h2 class="title">Focus</h2>
-            <div class="articles">
-              <article class="article" data-format="article" data-theme="competition">
-                <div class="image">
-                  <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
-                  </div>
-                  <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
+<h2 class="title">Revivez la Leçon de Cinéma de Jacques Audiard en vidéo</h2>
+     <div class="video-player video">
+            <div class="image" style="background-image: url(img/evenements/evenement-video.jpg);"></div>
+            <div class="picto"></div>
+            <div class="info">
+              <div class="vCenter">
+                <div class="vCenterKid">
+                  <a href="#" class="category">Rendez-vous européen</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <p>Prix média de l'union Européene à Danis Tanovic</p>
                 </div>
-                <div class="info">
-                  <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
-                </div>
-              </article>
-              <article class="video" data-format="video" data-theme="photocall">
-                <div class="image">
-                  <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
-                  </div>
-                  <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Z de Costa-Gravas</a></h2>
-                </div>
-              </article>
+              </div>
             </div>
-          </div>
-          <div class="same-day">
-            <h2 class="title">Le même jour</h2>
-            <div class="articles center">
-              <article class="article" data-format="article" data-theme="competition">
-                <div class="image">
-                  <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
-                  </div>
-                  <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
-                </div>
-              </article>
-              <article class="video" data-format="video" data-theme="photocall">
-                <div class="image">
-                  <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
-                  </div>
-                  <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Z de Costa-Gravas</a></h2>
-                </div>
-              </article>
-              <article class="photo" data-format="photo" data-theme="photograph">
-                <div class="image">
-                  <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
-                  </div>
-                  <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
-                </div>
-                <div class="info">
-                  <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi / supported by [NEUS]</a></h2>
-                </div>
-              </article>
-            </div>
-          </div>
+      </div>
+      <div class="share">
+      <p>Partagez l'article</p>
+        <div class="buttons square">
+          <a href="#" class="button facebook"></a>
+          <a href="#" class="button twitter"></a>
+          <a href="#" class="button link"></a>
+          <a href="#" class="button email"></a>
+          <a href="#" class="button print"></a>
         </div>
+      </div>
       </div>
       <span class="anim"></span>
     </div>
