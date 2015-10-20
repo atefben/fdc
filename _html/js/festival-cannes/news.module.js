@@ -62,6 +62,14 @@ $(document).ready(function() {
     
   });
 
+  
+  $('.read-more').hover(function() {
+    if(!$(this).hasClass('prevDay')) {
+      $('#shdMore').addClass('show');
+    }
+  }, function() {
+    $('#shdMore').removeClass('show');
+  });
 
   // load more
   $('.read-more').on('click', function(e) {

@@ -46,7 +46,7 @@ function makePath(data){
     fill: 'transparent'
   });
 
-  path.animate({ path: pathString },500);
+  path.animate({ path: pathString }, 900, mina.easeinout);
 
   /* point radius */
   var radius = 2;
@@ -86,7 +86,7 @@ function makePath(data){
 
     var j = $('#graph ul li.active').index();
     $('#graph circle').eq(j).attr('r', 5).css('stroke-width', '3');
-  }, 600);
+  }, 900);
 
   graphRendered = true;
   

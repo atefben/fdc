@@ -5265,7 +5265,7 @@ div.chocolat-wrapper .chocolat-close {
   opacity: 0;
   visibility: hidden;
 }
-#news #shd {
+#news #shd, #news #shdMore {
   position: absolute;
   bottom: 82px;
   width: 104%;
@@ -5276,11 +5276,11 @@ div.chocolat-wrapper .chocolat-close {
   visibility: hidden;
   pointer-events: none;
 }
-#news #shd.show {
+#news #shd.show, #news #shdMore.show {
   opacity: 0.8;
   visibility: visible;
 }
-#news #shd:before {
+#news #shd:before, #news #shdMore:before {
   background: #3E3E3E;
   background: -moz-radial-gradient(center, ellipse cover, #3E3E3E 0%, transparent 70%);
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #3E3E3E), color-stop(70%, transparent));
@@ -5291,6 +5291,19 @@ div.chocolat-wrapper .chocolat-close {
   bottom: -74px;
   top: auto;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', endColorstr='#ffffff',GradientType=1 );
+}
+#news #shd {
+  bottom: 102px;
+}
+#news #shdMore {
+  height: 100px;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#news #shdMore.show {
+  opacity: 0.4;
 }
 #news .slideshow .caption {
   margin-top: 10px;
@@ -5307,14 +5320,14 @@ div.chocolat-wrapper .chocolat-close {
   font-family: "Camphor W01 Heavy";
   font-size: 0.625rem;
   line-height: 55px;
-  margin-top: 25px;
+  margin-top: 45px;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #news .read-more strong {
   color: #000;

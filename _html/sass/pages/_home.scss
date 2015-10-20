@@ -191,7 +191,7 @@
     }
   }
 
-  #shd {
+  #shd, #shdMore {
     position: absolute;
     bottom: 82px;
     width: 104%;
@@ -222,6 +222,19 @@
     }
   }
 
+  #shd {
+    bottom: 102px;
+  }
+
+  #shdMore {
+    height: 100px;
+    @include transition(all .8s $smoothTransition);
+
+    &.show {
+      opacity: 0.4;
+    }
+  }
+
   .slideshow .caption {
     margin-top: 10px;
   }
@@ -239,11 +252,11 @@
     font-family: $CamphorHeavy;
     font-size: 0.625rem;
     line-height: 55px;
-    margin-top: 25px;
+    margin-top: 45px;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
-    @include transition(all 0.3s $smoothTransition);
+    @include transition(all 0.8s $smoothTransition);
 
     strong {
       color: #000;
