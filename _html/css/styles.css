@@ -4831,7 +4831,13 @@ article .image .linkImage {
   left: 20px;
   top: 300px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1180px) {
+  .all-articles #gridAudios {
+    -moz-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    -webkit-transform: translateX(15px);
+    transform: translateX(15px);
+  }
   .all-articles .grid-sizer {
     width: 30%;
   }
@@ -4844,7 +4850,7 @@ article .image .linkImage {
   }
   .all-articles .item.w2 {
     height: 610px;
-    padding-left: 0;
+    padding-left: 45px;
     width: 60%;
   }
 }

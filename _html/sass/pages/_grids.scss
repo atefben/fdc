@@ -245,7 +245,11 @@
     }
   }
 
-  @include breakpoint(1024px) {
+  @include breakpoint(1180px) {
+
+    #gridAudios {
+      @include transform(translateX(15px));
+    }
 
     .grid-sizer {
       width: 30%;
@@ -261,7 +265,7 @@
 
     .item.w2 {
       height: 610px;
-      padding-left: 0;
+      padding-left: 45px;
       width: 60%;
     }
   }
