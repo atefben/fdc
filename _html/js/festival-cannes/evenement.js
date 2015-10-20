@@ -35,7 +35,6 @@
           $grid;  
           $data = $(data).find(".grid-wrapper").prevObject;
             $data = $data.attr('id');
-          console.log($data);
           $grid = $('#'+$data).imagesLoaded(function() {
             console.log('chargé');
           // init Isotope after all images have loaded

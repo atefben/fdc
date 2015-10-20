@@ -69,6 +69,10 @@
   .jury-box{
 
     display: inline-block;
+    
+      a{
+    color:#000;
+      } 
   }
   .legend{
     background-color: #fff;
@@ -90,5 +94,6 @@
     font-family: $CamphorItalic;
     color:#ccab6e;
     font-size: .8125rem;
-  }
+  } 
+
 }

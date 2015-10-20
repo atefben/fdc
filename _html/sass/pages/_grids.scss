@@ -5,7 +5,7 @@
 // 3. Audios
 // 4. Articles
 // 5. Webtv
-// 5. Jury
+// 6 Jury
 // =========================
 
 
@@ -392,6 +392,7 @@
 // ============================
 
 #gridJurys{
+  
 		  @media screen and (min-width: 320px) {
     /* 5 columns for larger screens */
     .grid-sizer {
@@ -443,4 +444,9 @@
     }
   }
 
+}
+#gridJurys:after{
+ content:'';
+    display:block;
+    clear: both;
 }

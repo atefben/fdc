@@ -30,10 +30,10 @@
                <h2 class="title title-list-header">Les jurys</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="jury_longsmetrages.php" class="active">Longs métrages</a></li>
-               <li><a href="jury_cinefondation_courtsmetrages.php">Cinéfondation & courts métrages</a></li>
+               <li><a href="jury_longsmetrages.php" >Longs métrages</a></li>
+               <li><a href="jury_cinefondation_courtsmetrages.php" >Cinéfondation & courts métrages</a></li>
                <li><a href="jury_uncertainregard.php">Un certain regard</a></li>
-               <li><a href="jury_camerador.php">Caméra d'or</a></li>
+               <li><a href="jury_camerador.php" class="active">Caméra d'or</a></li>
            </ul> 
       </div>
       <div class="container-jurys">
@@ -58,7 +58,7 @@
               </div>
           </section>
           <section class="categorie-items contain-jurys-list grid">
-            <h1 class="title-list-cat title">Membres du jury de longs métrages</h1>
+            <h1 class="title-list-cat title">Membres du jury de caméra d'or</h1>
               <div id="gridJurys" class="grid-wrapper">
                 <div class="grid-sizer"></div>
                 <div class="jury-box item">

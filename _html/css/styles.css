@@ -8012,6 +8012,12 @@ article .image .linkImage {
   }
 }
 
+#gridJurys:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
 .contact {
   padding-top: 60px;
 }
@@ -9385,6 +9391,9 @@ article .image .linkImage {
 }
 .contain-jurys-list .jury-box {
   display: inline-block;
+}
+.contain-jurys-list .jury-box a {
+  color: #000;
 }
 .contain-jurys-list .legend {
   background-color: #fff;
