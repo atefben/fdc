@@ -39,7 +39,7 @@
           <div class="single-photo">
             <div class="photo-container">
               <img src="img/evenements/evenement2.jpg" alt="" />
-              <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+<!--              <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>-->
             </div>
           </div>
           <div class="quote">

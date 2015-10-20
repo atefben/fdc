@@ -170,6 +170,16 @@ $(document).ready(function() {
           });
         });
     }
+    
+    if($('#gridJurys').length){ 
+        $grid = $('#gridJurys').imagesLoaded(function() {
+
+          $grid.isotope({
+            layoutMode: 'packery',
+            itemSelector: '.item'
+          });
+        });
+    }
 
     if($('#gridAudios').length) {
 

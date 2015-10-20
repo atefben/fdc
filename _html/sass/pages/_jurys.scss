@@ -1,0 +1,94 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+.contain-jury{
+  max-height: 603px;
+  min-height: 603px;
+  overflow: hidden;
+  .photo-jury{
+    float: left;
+    width: 50%;
+    background-size:cover;
+    max-height: 603px;
+    min-height: 603px;
+    max-width: 635px;
+    img{
+      width: 100%;
+        max-height: 603px;
+        min-height: 603px;
+    }
+  }
+  .contain-descript{
+    background-color:#ffffff;
+    max-height: 606px;
+    height: 603px;
+    padding: 50px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    .descript-title{
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      font-size: .625rem;
+      padding-top: 25px;
+    }
+    .descript-name{
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      font-size: 2.25rem;
+      padding-top: 18px;
+    }
+    .descript-rank{
+      color: #ccab6e;
+      font-family: $CamphorItalic;
+      font-size: .75rem;
+
+    }
+    p{
+       font-size: .75rem;
+      line-height: 24px;
+      padding-top:35px;
+      color:#666666;
+    }
+  }
+}
+
+.contain-jurys-list{
+  .title-list-cat{
+    border: 0px solid #000;
+  }
+  article img {
+    float: left;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .jury-box{
+
+    display: inline-block;
+  }
+  .legend{
+    background-color: #fff;
+    margin: 0px;
+    vertical-align: middle;
+    /* display: table-cell; */
+    text-align: center;
+    padding-bottom: 48px;
+  }
+  .name{
+    display: block;
+    font-size: $CamphorBold;
+    font-size:.875rem; 
+    text-transform: uppercase;
+    padding-top:24px;
+    padding-bottom: 10px;
+  }
+  .rank{
+    font-family: $CamphorItalic;
+    color:#ccab6e;
+    font-size: .8125rem;
+  }
+}
