@@ -245,6 +245,7 @@ $(document).ready(function() {
           filterValues += '.' + $(this).data('filter');
         }
       });
+
       $container.isotope({ filter: filterValues }); 
 
       // if($('.all-photos').length) {

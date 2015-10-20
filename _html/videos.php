@@ -29,8 +29,8 @@
           <span class="label">Filtrer par :</span>
           <span class="select">
             <span class="active" data-filter="all">Date</span>
-            <span data-filter="press">Date 1</span>
-            <span data-filter="steps">Date 2</span>
+            <span data-filter="date1">Date 1</span>
+            <span data-filter="date2">Date 2</span>
           </span>
         </div>
         <div id="theme" class="filter">
