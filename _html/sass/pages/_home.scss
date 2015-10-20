@@ -956,6 +956,47 @@
     height: 100%;
   }
 
+  #barMovies {
+    background: $gold;
+    width: 100%;
+    height: 0%;
+  }
+
+  #progressBarMovies {
+    top: 0;
+    width: 7px;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .owl-dots {
+    left: 25px;
+    bottom: 50%;
+    text-align: center;
+    position: absolute;
+  }
+
+  .owl-dot {
+    background-color: #fff;
+    border-radius: 100%;
+    display: block;
+    height: 5px;
+    margin: 5px auto;
+    width: 5px;
+    @include transition(all 0.3s $smoothTransition);
+
+    &.active {
+      background: none;
+      border: 3px solid $gold;
+    }
+  }
+
+  .owl-stage {
+    cursor: default;
+  }
+
   .owl-item>div {
     overflow: hidden;
     position: relative;

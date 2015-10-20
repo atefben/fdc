@@ -6,11 +6,61 @@ function handleEndVideo() {
 
     sMovies.trigger('next.owl.carousel');
   });
+  percent = 0;
 }
 
 $(document).ready(function() {
 
   if($('.home').length) {
+
+    var time = 7;
+   
+    var $progressBarMovies,
+        $barMovies, 
+        sliderMovies, 
+        isPause, 
+        clock,
+        percent;
+
+    function progressBarMovies(){    
+      // build progress bar elements
+      buildProgressBarMovies();
+        
+      // start counting
+      startMovies();
+    }
+
+    function buildProgressBarMovies(){
+      $progressBarMovies = $("<div>",{
+        id:"progressBarMovies"
+      });
+      
+      $barMovies = $("<div>",{
+        id:"barMovies"
+      });
+      
+      $progressBarMovies.append($barMovies).prependTo($("#slider-movies"));
+    }
+
+    function startMovies() {
+      // reset timer
+      percent = 0;
+      isPause = false;
+      time = $('#slider-movies .owl-item.active video')[0].duration;
+      
+      // run interval every 0.01 second
+      clock = setInterval(intervalMovies, 10);
+    };
+
+    function intervalMovies() {
+      if(isPause === false){
+        percent = ($('#slider-movies .owl-item.active video')[0].currentTime / $('#slider-movies .owl-item.active video')[0].duration) * 100;
+        
+        $barMovies.css({
+          height: percent+"%"
+        });
+      }
+    }
 
     // Slider Movies
     // =========================
@@ -32,19 +82,38 @@ $(document).ready(function() {
       $('#slider-movies .active video')[0].pause();
     }
 
+    function clearClock() {
+      // clear interval
+      clearTimeout(clock);
+      $barMovies.css({
+        height: 0
+      });
+    }
+
     function playNewVideo() {
       $('#slider-movies .active video')[0].play();
       handleEndVideo();
+
+      // clear interval
+      clearTimeout(clock);
+        
+      // start again
+      startMovies();
     }
 
     $("#slider-movies").owlCarousel({
       items: 1,
       loop: true,
       nav: false,
-      dots: false,
+      dots: true,
       smartSpeed: 500,
+      onTranslate: clearClock,
       onTranslated: playNewVideo,
-      onDrag: pauseVideo
+      onDrag: pauseVideo,
+      onInitialized: progressBarMovies,
+      animateOut: 'slideOutUp',
+      animateIn: 'slideInUp',
+      mouseDrag: false
     });
 
     setHeightSlider();
