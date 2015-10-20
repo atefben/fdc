@@ -14,33 +14,33 @@ $(document).ready(function() {
         percentTime;
 
     function positionElements() {
-      // $('#slider .center').prevAll().each(function() {
-      //   $(this).find('img').css({
-      //     '-webkit-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-      //     '-moz-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-      //     '-o-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-      //     '-ms-transform': 'translateX(' + 400+ 'px) translateY(0px)',
-      //     'transform': 'translate3d(' + 400 + 'px, 0px, 0px)'
-      //   });
-      // });
+      $('#slider .center').prevAll().each(function() {
+        $(this).find('img').css({
+          '-webkit-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(' + 400+ 'px) translateY(0px)',
+          'transform': 'translate3d(' + 400 + 'px, 0px, 0px)'
+        });
+      });
 
-      // setTimeout(function() {$('#slider .center img').css({
-      //   '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-      //   '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-      //   '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-      //   '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
-      //   'transform': 'translate3d(' + 0 + 'px, 0px, 0px)'
-      // });}, 20);
+      setTimeout(function() {$('#slider .center img').css({
+        '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+        '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+        '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+        '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
+        'transform': 'translate3d(' + 0 + 'px, 0px, 0px)'
+      });}, 20);
 
-      // $('#slider .center').nextAll().each(function() {
-      //   $(this).find('img').css({
-      //     '-webkit-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-      //     '-moz-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-      //     '-o-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-      //     '-ms-transform': 'translateX(-' + 400+ 'px) translateY(0px)',
-      //     'transform': 'translate3d(-' + 400 + 'px, 0px, 0px)'
-      //   });
-      // });
+      $('#slider .center').nextAll().each(function() {
+        $(this).find('img').css({
+          '-webkit-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(-' + 400+ 'px) translateY(0px)',
+          'transform': 'translate3d(-' + 400 + 'px, 0px, 0px)'
+        });
+      });
     }
 
      function progressBar(){    
@@ -100,38 +100,38 @@ $(document).ready(function() {
 
     function move() {
 
-      // setTimeout(function() {
-      // $('#slider .center').prevAll().each(function() {
-      //   $(this).find('img').css({
-      //     '-webkit-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-      //     '-moz-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-      //     '-o-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-      //     '-ms-transform': 'translateX(' + 400+ 'px) translateY(0px)',
-      //     'transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-      //     'transition': 'all 0.5s ease'
-      //   });
-      // });
+      setTimeout(function() {
+      $('#slider .center').prevAll().each(function() {
+        $(this).find('img').css({
+          '-webkit-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(' + 400+ 'px) translateY(0px)',
+          'transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+          'transition': 'all 0.4s ease'
+        });
+      });
 
-      //   $('#slider .center img').css({
-      //     '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-      //     '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-      //     '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-      //     '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
-      //     'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-      //     'transition': 'all 0.4s ease'
-      //   });
+        $('#slider .center img').css({
+          '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
+          'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+          'transition': 'all 0.6s ease'
+        });
 
-      // $('#slider .center').nextAll().each(function() {
-      //   $(this).find('img').css({
-      //     '-webkit-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-      //     '-moz-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-      //     '-o-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-      //     '-ms-transform': 'translateX(-' + 400+ 'px) translateY(0px)',
-      //     'transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-      //     'transition': 'all 0.6s ease'
-      //   });
-      // });
-      // }, 50);
+      $('#slider .center').nextAll().each(function() {
+        $(this).find('img').css({
+          '-webkit-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(-' + 400+ 'px) translateY(0px)',
+          'transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+          'transition': 'all 0.4s ease'
+        });
+      });
+      }, 50);
     }
 
     // moved callback
@@ -185,9 +185,9 @@ $(document).ready(function() {
       onTranslated: moved,
       mouseDrag: false,
       onDrag: pauseOnDragging,
-      navSpeed: 500,
-      dotsSpeed: 500,
-      smartSpeed: 500,
+      navSpeed: 700,
+      dotsSpeed: 700,
+      smartSpeed: 700,
       autoWidth: true
     });
 

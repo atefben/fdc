@@ -1536,16 +1536,17 @@ div.chocolat-wrapper .chocolat-close {
   font-family: "Camphor W01 Bold";
   color: rgba(255, 255, 255, 0.3);
   font-size: 0.875rem;
-  width: 70px;
+  width: 80px;
+  margin-top: 2px;
 }
 .audio-player .on .duration .curr {
   color: #fff;
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 8px;
 }
 .audio-player .on .duration .total {
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 .audio-player .off {
   border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -1587,7 +1588,7 @@ div.chocolat-wrapper .chocolat-close {
   vertical-align: middle;
   position: relative;
   width: 50px;
-  height: 4px;
+  height: 3px;
 }
 .audio-player .volume span {
   background-color: #fff;
@@ -1648,7 +1649,7 @@ div.chocolat-wrapper .chocolat-close {
   margin: 0 20px;
   position: relative;
   visibility: hidden;
-  width: calc(100% - 340px);
+  width: calc(100% - 270px);
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);

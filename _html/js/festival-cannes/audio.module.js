@@ -11,7 +11,7 @@ function initAudioPlayers() {
     // initialize wave sound
     wave.init({
       container: document.querySelector('#' + 'wave-' + i),
-      waveColor: 'rgba(255, 255, 255, 0.5)',
+      waveColor: 'rgba(90, 90, 90, 0.5)',
       progressColor: '#c8a461',
       cursorWidth: 0,
       height: h
