@@ -16,6 +16,10 @@
 
   &.bigger {
     height: 116px;
+
+    .wave-container {
+      height: 100%;
+    }
   }
 
   &.pause .playpause {

@@ -471,6 +471,11 @@ article {
 
     a:hover {
       background-color: #fff;
+      border-color: $gold!important;
+
+      + .button {
+        border-left-color: $gold;
+      }
     }
 
     a.facebook {

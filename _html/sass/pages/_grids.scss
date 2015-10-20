@@ -245,6 +245,27 @@
     }
   }
 
+  @include breakpoint(1024px) {
+
+    .grid-sizer {
+      width: 30%;
+    }
+
+    .item {
+      height: 305px;
+      box-sizing: border-box;
+      padding-left: 45px;
+      position: relative;
+      width: 30%;
+    }
+
+    .item.w2 {
+      height: 610px;
+      padding-left: 0;
+      width: 60%;
+    }
+  }
+
   .read-later {
     background: #fff url('../img/svg/read-later.svg') no-repeat center;
     background-size: 20px;

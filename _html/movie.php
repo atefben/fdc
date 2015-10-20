@@ -281,12 +281,32 @@
           <div class="audios" data-section="audios">
             <div class="audio-player audio bigger" data-sound="img/article/sound.mp3">
               <div class="image" style="background-image: url(img/slide001.jpg);"></div>
-              <div class="picto"></div>
-              <div class="info">
-                <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>The Lobster de Yoros Lanthinos</p>
+              <a href="#" class="playpause"></a>
+              <div class="off">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <div class="picto"></div>
+                    <div class="info">
+                      <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster de Yoros Lanthinos</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="wave-container"></div>
+              <div class="on">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <div class="duration">
+                      <span class="curr">0:00</span>/<span class="total">0:00</span>
+                    </div>
+                    <div class="wave-container"></div>
+                    <div class="volume">
+                      <span></span>
+                    </div>
+                    <a href="#" class="fullscreen"></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
