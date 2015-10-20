@@ -235,6 +235,7 @@ article {
   .print {
     background: url('../img/svg/print.svg') no-repeat 15% center;
     background-size: 18px;
+    font-size: 0.625rem;
 
     &:hover {
       color: $gold;
@@ -244,6 +245,7 @@ article {
   #share-article {
     background: url('../img/svg/share.svg') no-repeat 13% 47%;
     background-size: 18px;
+    font-size: 0.625rem;
 
     &:hover {
       color: $gold;

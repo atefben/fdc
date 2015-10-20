@@ -330,11 +330,12 @@ header {
 
       li {
         display: inline-block;
+        margin-left: -4px;
 
         a {
           color: #fff;
           display: block;
-          padding-right: 15px;
+          padding-right: 22px;
           text-transform: uppercase;
           @include transition(color 0.3s $smoothTransition);
 
