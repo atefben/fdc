@@ -7003,6 +7003,7 @@ article .image .linkImage {
 .single-movie .poster {
   float: left;
   margin: 0 45px 0 0;
+  overflow: hidden;
   position: relative;
   width: 293px;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -7021,6 +7022,17 @@ article .image .linkImage {
     margin-top: -20px;
   }
 }
+.single-movie .poster img {
+  display: block;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 2.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 2.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 2.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 2.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 .single-movie .poster .picto {
   background-size: 40px;
   height: 80px;
@@ -7029,6 +7041,20 @@ article .image .linkImage {
   margin: -40px 0 0 -40px;
   pointer-events: initial;
   width: 80px;
+  z-index: 1;
+  -moz-transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.single-movie .poster .picto:hover + img {
+  -moz-transform: scale(1.06) translateZ(0);
+  -ms-transform: scale(1.06) translateZ(0);
+  -webkit-transform: scale(1.06) translateZ(0);
+  transform: scale(1.06) translateZ(0);
+}
+.single-movie .poster .picto:hover {
+  background-color: #080808;
 }
 .single-movie .info-film {
   color: #fff;
@@ -7243,13 +7269,14 @@ article .image .linkImage {
   height: 73px;
   line-height: 73px;
   overflow: hidden;
-  -moz-transition: height 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: height 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: height 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: height 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: height 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), top 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: height 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), top 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: height 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), top 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: height 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), top 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie #nav-movie.sticky {
   background-color: #fff;
+  border-bottom: 1px solid #dfdfdf;
   left: 0;
   position: fixed;
   height: 40px;
@@ -7263,7 +7290,7 @@ article .image .linkImage {
   transform: translateZ(0);
 }
 .single-movie #nav-movie.sticky .buttons a {
-  border: none;
+  border-color: transparent;
   height: 40px;
   line-height: 40px;
 }
@@ -7297,6 +7324,10 @@ article .image .linkImage {
 }
 .single-movie #nav-movie .buttons a {
   border-top: none;
+  -moz-transition: border-color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: border-color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: border-color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: border-color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie #nav-movie .buttons a:hover {
   background-color: #fff;

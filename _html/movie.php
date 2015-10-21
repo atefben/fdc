@@ -37,8 +37,8 @@
         </div>
         <div class="container container-top">
           <div class="poster video">
-            <img src="img/movie/002.jpg" alt="" />
             <a href="#" class="picto"></a>
+            <img src="img/movie/002.jpg" alt="" />
           </div>
           <div class="info-film">
             <div class="categories"><span>En compétition</span><span>longs métrages</span><span>Film d'ouverture</span></div>

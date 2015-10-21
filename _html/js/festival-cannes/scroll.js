@@ -42,8 +42,13 @@ $(document).ready(function() {
     }
 
     if($('.single-movie').length ) {
-      if(s > ($('.videos').offset().top - $('#nav-movie').height() - 100)) {
+      if((s > ($('.videos').offset().top - $('#nav-movie').height() - 100))) {
         $('#nav-movie').addClass('sticky');
+        if(s > $('div.press').offset().top + 1 - $('#nav-movie').height()) {
+          $('#nav-movie').css('top', 0);
+        } else {
+          $('#nav-movie').css('top', '91px');
+        }
       } else {
         $('#nav-movie').removeClass('sticky');
       }
