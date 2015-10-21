@@ -38,5 +38,6 @@
 <script src="js/festival-cannes/webtv.module.js"></script>
 <script src="js/festival-cannes/evenement.js"></script>
 <script src="js/festival-cannes/scroll.js"></script>
+<script src="js/festival-cannes/sliderartist.js"></script>
 <!-- festival-cannes tags end -->
 <!-- endbuild -->
