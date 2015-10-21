@@ -127,7 +127,7 @@ $(document).ready(function() {
       
       var p = ($('#slider .owl-item').width() / 2) - 100;
       setTimeout(function() {
-      $('#slider .center').prevAll().each(function() {
+      $('#slider .center').prev().each(function() {
         $(this).find('.img').css({
           '-webkit-transform': 'translate3d(' + p + 'px, 0px, 0px)',
           '-moz-transform': 'translate3d(' + p + 'px, 0px, 0px)',
@@ -147,7 +147,7 @@ $(document).ready(function() {
           'transition': 'all 0.7s ease'
         });
 
-      $('#slider .center').nextAll().each(function() {
+      $('#slider .center').next().each(function() {
         $(this).find('.img').css({
           '-webkit-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
           '-moz-transform': 'translate3d(-' + p + 'px, 0px, 0px)',

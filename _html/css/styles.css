@@ -3573,16 +3573,16 @@ header #navigation ul li a {
   display: block;
   padding-right: 21px;
   text-transform: uppercase;
-  -moz-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #navigation ul li a:hover, header #navigation ul li a.active {
   color: #c8a461;
 }
 header #navigation ul li.fade a {
-  color: #8c8c8c;
+  color: #434343;
 }
 header #navigation ul li ul {
   background-color: #141414;
@@ -3615,10 +3615,10 @@ header #navigation ul li ul:before {
   z-index: 0;
 }
 header #navigation ul li ul li {
-  font-size: 0.750rem;
+  font-size: 0.688rem;
   position: relative;
   z-index: 2;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
 }
 header #navigation ul li:hover ul {
   opacity: 1;
@@ -5589,7 +5589,11 @@ div.chocolat-wrapper .chocolat-close {
   width: 16px;
 }
 #social-wall #wall .post p {
+  box-sizing: border-box;
   padding: 0 10px;
+  width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #social-wall #wall .post .twitter.hasimg:after {
   background-image: url("../img/svg/twitter.svg");
@@ -5675,6 +5679,7 @@ div.chocolat-wrapper .chocolat-close {
 #social-wall #wall .post.big .side p {
   font-size: 1rem;
   padding: 0 25px;
+  width: 250px;
 }
 #social-wall #wall .post.big .side.twitter:after {
   bottom: 25px;

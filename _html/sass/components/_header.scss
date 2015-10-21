@@ -342,7 +342,7 @@ header {
           display: block;
           padding-right: 21px;
           text-transform: uppercase;
-          @include transition(color 0.3s $smoothTransition);
+          @include transition(color 0.6s $smoothTransition);
 
           &:hover, &.active {
             color: $gold;
@@ -350,7 +350,7 @@ header {
         }
 
         &.fade a {
-          color: $grey;
+          color: #434343;
         }
 
         ul {
@@ -379,10 +379,10 @@ header {
           }
 
           li {
-            font-size: 0.750rem;
+            font-size: 0.688rem;
             position: relative;
             z-index: 2;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.08em;
           }
         }
 

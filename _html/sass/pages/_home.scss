@@ -541,7 +541,11 @@
       }
 
       p {
+        box-sizing: border-box;
         padding: 0 10px;
+        width: 125px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .twitter.hasimg:after {
@@ -624,6 +628,7 @@
           p {
             font-size: 1rem;
             padding: 0 25px;
+            width: 250px;
           }
 
           &.twitter:after {
