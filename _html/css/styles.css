@@ -4443,18 +4443,19 @@ div.chocolat-wrapper .chocolat-close {
   background-size: 15px;
   border: 1px solid #c8a461;
   cursor: pointer;
-  height: 100px;
+  height: 85px;
+  opacity: 0.6;
   position: absolute;
   top: 5%;
   right: 5%;
-  width: 100px;
-  -moz-transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  width: 85px;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .close-button:hover {
-  border-color: #e8c27b;
+  opacity: 1;
 }
 
 .audio-player {
@@ -5334,7 +5335,7 @@ div.chocolat-wrapper .chocolat-close {
   font-weight: normal;
 }
 #news .read-more:hover {
-  border-color: #080808;
+  opacity: 0.6;
 }
 #news .container {
   position: relative;
