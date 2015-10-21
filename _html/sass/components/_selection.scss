@@ -86,6 +86,11 @@
         right: -14px;
         top: -14px;
         width: 28px;
+        @include transition(all 0.5s $smoothTransition);
+
+        &:hover {
+          border-color: #000;
+        }
       }
 
       .category {
@@ -137,9 +142,9 @@
         color: #333;
         font-family: $CamphorHeavy;
         text-transform: uppercase;
-        @include transition(all 0.3s $smoothTransition);
+        @include transition(all 0.8s $smoothTransition);
 
-        &.active {
+        &.active, &:hover {
           color: $gold;
         }
       }

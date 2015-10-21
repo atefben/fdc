@@ -5038,6 +5038,13 @@ div.chocolat-wrapper .chocolat-close {
   right: -14px;
   top: -14px;
   width: 28px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#selection #slider-selection .article .delete:hover {
+  border-color: #000;
 }
 #selection #slider-selection .article .category {
   display: block;
@@ -5079,12 +5086,12 @@ div.chocolat-wrapper .chocolat-close {
   color: #333;
   font-family: "Camphor W01 Heavy";
   text-transform: uppercase;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#selection .filters-selection li a.active {
+#selection .filters-selection li a.active, #selection .filters-selection li a:hover {
   color: #c8a461;
 }
 
