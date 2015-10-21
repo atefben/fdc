@@ -760,6 +760,10 @@
       position: relative;
       width: 634px;
 
+      &:hover .image-wrapper img {
+        @include transform(scale(1.08) translateZ(0));
+      }
+
       &:before {
         background: rgba(0,0,0,0);
         background: -moz-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
@@ -800,8 +804,23 @@
         background-size: 22px;
       }
 
-      img {
-        display: block;
+      .image-wrapper {
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+
+        img {
+          display: block;
+          position: absolute;
+          min-width: 100%;
+          min-height: 100%;
+          width: auto;
+          height: auto;
+          @include transition(all 2s $smoothTransition);
+        }
+        
       }
     }
 

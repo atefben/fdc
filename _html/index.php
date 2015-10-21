@@ -374,7 +374,9 @@
         <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />Accédez à la web tv</a></p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -389,7 +391,9 @@
             </div>
           </div>
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -404,7 +408,9 @@
             </div>
           </div>
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
