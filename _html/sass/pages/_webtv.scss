@@ -12,6 +12,47 @@
 // =========================
 
 .webtv {
+  .image-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+
+    img {
+      display: block;
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      @include transition(all 2s $smoothTransition);
+    }
+    
+  }
+
+  .channel {
+    height: 185px;
+    overflow: hidden;
+    position: relative;
+    width: 293px;
+  }
+
+  .vid {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    width: 634px;
+  }
+
+  .shadow-bottom:before {
+    width: 101%;
+  }
+
+  .vid:hover .image-wrapper img, .video:hover .image-wrapper img, .channel:hover .image-wrapper img {
+    @include transform(scale(1.08) translateZ(0));
+  }
+
   #live {
     background-color: #000;
     height: 300px;

@@ -8541,6 +8541,46 @@ article .image .linkImage {
   background-color: #434343;
 }
 
+.webtv .image-wrapper {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+.webtv .image-wrapper img {
+  display: block;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  -moz-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.webtv .channel {
+  height: 185px;
+  overflow: hidden;
+  position: relative;
+  width: 293px;
+}
+.webtv .vid {
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  width: 634px;
+}
+.webtv .shadow-bottom:before {
+  width: 101%;
+}
+.webtv .vid:hover .image-wrapper img, .webtv .video:hover .image-wrapper img, .webtv .channel:hover .image-wrapper img {
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+}
 .webtv #live {
   background-color: #000;
   height: 300px;
