@@ -39,7 +39,7 @@
       <div class="container-jurys">
         <div class="container container-list">
           <section class="categorie-items contain-jury">
-              <a href="">
+              <a href="artist_page.php">
               <div class="photo-jury" style="background-image:url(img/jurys/photo-jury.jpg)">
               </div>
               </a>

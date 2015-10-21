@@ -9712,3 +9712,42 @@ article .image .linkImage {
   font-size: .8125rem;
   font-family: "Camphor W01 Italic";
 }
+
+.app {
+  height: 533px;
+  background-color: #000 !important;
+  background-image: url(../img/app.png);
+  background-repeat: no-repeat;
+  background-position: 133px 113px;
+}
+.app .contain-app {
+  height: 533px;
+  float: right;
+  width: 65%;
+}
+.app .contain-app h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.875rem;
+  padding-top: 145px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+.app .contain-app h2 {
+  font-family: "Playfair Display";
+  font-size: 1.125rem;
+  color: #fff;
+  padding-top: 25px;
+  text-align: center;
+  font-style: italic;
+}
+.app .contain-app .logo-app {
+  text-align: center;
+  padding-top: 30px;
+}
+.app .contain-app .logo-app a {
+  margin-right: 30px;
+}
+.app .contain-app .logo-app img {
+  cursor: pointer;
+}

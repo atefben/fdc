@@ -29,6 +29,7 @@
 <script src="js/festival-cannes/resize.module.js"></script>
 <script src="js/festival-cannes/search.module.js"></script>
 <script src="js/festival-cannes/selection.module.js"></script>
+<script src="js/festival-cannes/sliderartist.module.js"></script>
 <script src="js/festival-cannes/sliderchannels.module.js"></script>
 <script src="js/festival-cannes/sliderhome.module.js"></script>
 <script src="js/festival-cannes/slidermovies.module.js"></script>
@@ -38,6 +39,5 @@
 <script src="js/festival-cannes/webtv.module.js"></script>
 <script src="js/festival-cannes/evenement.js"></script>
 <script src="js/festival-cannes/scroll.js"></script>
-<script src="js/festival-cannes/sliderartist.js"></script>
 <!-- festival-cannes tags end -->
 <!-- endbuild -->
