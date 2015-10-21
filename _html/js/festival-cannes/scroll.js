@@ -35,7 +35,7 @@ $(document).ready(function() {
 
     if($('#news').length) {
       if(s > $('#news').offset().top + 50 && s < ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height())) {
-        $('#timeline').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 60);
+        $('#timeline').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 57);
       } else {
         $('#timeline').removeClass('stick').css('left', 'auto');
       }
