@@ -28,7 +28,7 @@
       <div id="sliderWrapper">
         <div id="slider" class="owl-carousel">
           <div>
-            <img src="img/slider/slider01.jpg" alt="" />
+            <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
             <div class="info">
               <span class="category">Rencontre</span>
               <h2>Xavier Dolan : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
@@ -36,7 +36,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <img src="img/slider/slider02.jpg" alt="" />
+            <div class="img" style="background-image:url(img/slider/slider02.jpg)"></div>
             <div class="info">
               <span class="category">Rencontre</span>
               <h2>test</h2>
@@ -44,7 +44,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <img src="img/slider/slider01.jpg" alt="" />
+            <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
             <div class="info">
               <span class="category">Test</span>
               <h2>test</h2>
@@ -52,7 +52,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <img src="img/slider/slider02.jpg" alt="" />
+            <div class="img" style="background-image:url(img/slider/slider02.jpg)"></div>
             <div class="info">
               <span class="category">Lorem ipsum</span>
               <h2>test</h2>
@@ -430,7 +430,9 @@
         <h2 class="title">Les chaines</h2>
         <div id="slider-channels" class="owl-carousel sliderDrag">
           <div class="channel">
-            <img src="img/slider-channels/01.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/01.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -445,7 +447,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/02.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/02.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -460,7 +464,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/03.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -475,7 +481,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/01.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/01.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -490,7 +498,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/02.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/02.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -505,7 +515,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/03.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -669,10 +681,10 @@
             <li><a href="http://www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique officielle</a></li>
             <li><a href="#">Publications</a></li>
           </ul>
-          <div class="imgSlide active"><a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/01.png" alt="" /></a></div>
-          <div class="imgSlide"><a href='#'><img src="img/prefooter/02.png" alt="" /></a></div>
-          <div class="imgSlide"><a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/03.png" alt="" /></a></div>
-          <div class="imgSlide"><a href='#'><img src="img/prefooter/04.png" alt="" /></a></div>
+          <div class="imgSlide active bottom"><a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/001.png" alt="" /></a></div>
+          <div class="imgSlide bottom"><a href='#'><img src="img/prefooter/002.png" alt="" /></a></div>
+          <div class="imgSlide"><a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/003.png" alt="" /></a></div>
+          <div class="imgSlide"><a href='#'><img src="img/prefooter/004.png" alt="" /></a></div>
         </div>
       </div>
     </div>

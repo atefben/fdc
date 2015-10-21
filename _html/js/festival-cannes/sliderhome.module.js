@@ -14,17 +14,19 @@ $(document).ready(function() {
         percentTime;
 
     function positionElements() {
+      var p = ($('#slider .owl-item').width() / 2) - 100;
+
       $('#slider .center').prevAll().each(function() {
-        $(this).find('img').css({
-          '-webkit-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-          '-moz-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-          '-o-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-          '-ms-transform': 'translateX(' + 400+ 'px) translateY(0px)',
-          'transform': 'translate3d(' + 400 + 'px, 0px, 0px)'
+        $(this).find('.img').css({
+          '-webkit-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(' + p+ 'px) translateY(0px)',
+          'transform': 'translate3d(' + p + 'px, 0px, 0px)'
         });
       });
 
-      setTimeout(function() {$('#slider .center img').css({
+      setTimeout(function() {$('#slider .center .img').css({
         '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
         '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
         '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
@@ -33,12 +35,12 @@ $(document).ready(function() {
       });}, 20);
 
       $('#slider .center').nextAll().each(function() {
-        $(this).find('img').css({
-          '-webkit-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-          '-moz-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-          '-o-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-          '-ms-transform': 'translateX(-' + 400+ 'px) translateY(0px)',
-          'transform': 'translate3d(-' + 400 + 'px, 0px, 0px)'
+        $(this).find('.img').css({
+          '-webkit-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(-' + p+ 'px) translateY(0px)',
+          'transform': 'translate3d(-' + p + 'px, 0px, 0px)'
         });
       });
     }
@@ -122,20 +124,21 @@ $(document).ready(function() {
     }
 
     function move() {
-
+      
+      var p = ($('#slider .owl-item').width() / 2) - 100;
       setTimeout(function() {
       $('#slider .center').prevAll().each(function() {
-        $(this).find('img').css({
-          '-webkit-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-          '-moz-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-          '-o-transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
-          '-ms-transform': 'translateX(' + 400+ 'px) translateY(0px)',
-          'transform': 'translate3d(' + 400 + 'px, 0px, 0px)',
+        $(this).find('.img').css({
+          '-webkit-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(' + p+ 'px) translateY(0px)',
+          'transform': 'translate3d(' + p + 'px, 0px, 0px)',
           'transition': 'all 0.5s ease'
         });
       });
 
-        $('#slider .center img').css({
+        $('#slider .center .img').css({
           '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
           '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
           '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
@@ -145,12 +148,12 @@ $(document).ready(function() {
         });
 
       $('#slider .center').nextAll().each(function() {
-        $(this).find('img').css({
-          '-webkit-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-          '-moz-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-          '-o-transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
-          '-ms-transform': 'translateX(-' + 400+ 'px) translateY(0px)',
-          'transform': 'translate3d(-' + 400 + 'px, 0px, 0px)',
+        $(this).find('.img').css({
+          '-webkit-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+          '-moz-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+          '-o-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(-' + p+ 'px) translateY(0px)',
+          'transform': 'translate3d(-' + p + 'px, 0px, 0px)',
           'transition': 'all 0.5s ease'
         });
       });

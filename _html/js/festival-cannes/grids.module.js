@@ -13,6 +13,82 @@ Isotope.Item.prototype.hide = function() {
   $( this.element ).addClass('isotope-hidden');
 };
 
+function resizeGrid() {
+  var result = document.getElementById('result');
+  if("matchMedia" in window) {
+      setGrid(false,$('#gridAudios'),true);
+  }    
+}
+
+function setGrid(grid, dom, init){     
+  var $img            = $(dom).find('.item img'),
+      pourcentage     = 0.30,
+      nbImgAAgrandir  = $img.length * pourcentage,
+      i               = 0,
+      nbRamdom        = [],
+      x               = 1,
+      j               = 0,
+      max             = 0,
+      min             = 0,
+      nbImage         = $img.length;
+
+  function buildGrid(){
+    $($img).closest('div.item').removeClass('w2');
+    if (window.matchMedia("(max-width: 1599px)").matches) {
+      while(i<$img.length){
+        if(j<11){
+            if(j==0 || j==3){
+                $($img[i]).closest('div.item').addClass('w2');
+            }
+            j++;
+        }
+        if(j==10){
+            j=0;
+        }        
+        i++;
+      }
+    }
+    else if (window.matchMedia("(max-width: 1919px)").matches){
+                
+      while(i<$img.length){
+        if(j<31){
+            if(j==0 || j==3 || j==12 || j==17 || j==25 ){
+                $($img[i]).closest('div.item').addClass('w2');
+            }
+            j++;
+        }
+        if(j==30){
+            j=0;
+        }        
+        i++;
+      }
+    
+    }
+    else if (window.matchMedia("(min-width: 1920px)").matches){
+      while(i<$img.length){
+        if(j<16){
+            if(j==0 || j==5 ||  j==15){
+                $($img[i]).closest('div.item').addClass('w2');
+                
+            }
+            j++;
+        }
+        if(j==10){
+            j=0;
+        }        
+        i++;
+      }
+    }
+  }
+  if(!init){
+    grid.append( $(dom) ).isotope( 'appended', $(dom) );
+    grid.imagesLoaded().progress( function() {
+        grid.isotope('layout');
+    });
+  }
+  buildGrid();
+}
+
 $(document).ready(function() {
 
   function setImages(grid, dom, init){     
@@ -44,82 +120,6 @@ $(document).ready(function() {
           grid.isotope('layout');
       });
     }
-  }
-
-  function setGrid(grid, dom, init){     
-    var $img            = $(dom).find('.item img'),
-        pourcentage     = 0.30,
-        nbImgAAgrandir  = $img.length * pourcentage,
-        i               = 0,
-        nbRamdom        = [],
-        x               = 1,
-        j               = 0,
-        max             = 0,
-        min             = 0,
-        nbImage         = $img.length;
-
-    function buildGrid(){
-      $($img).closest('div.item').removeClass('w2');
-      if (window.matchMedia("(max-width: 1599px)").matches) {
-        while(i<$img.length){
-          if(j<11){
-              if(j==0 || j==3){
-                  $($img[i]).closest('div.item').addClass('w2');
-              }
-              j++;
-          }
-          if(j==10){
-              j=0;
-          }        
-          i++;
-        }
-      }
-      else if (window.matchMedia("(max-width: 1919px)").matches){
-                  
-        while(i<$img.length){
-          if(j<31){
-              if(j==0 || j==3 || j==12 || j==17 || j==25 ){
-                  $($img[i]).closest('div.item').addClass('w2');
-              }
-              j++;
-          }
-          if(j==30){
-              j=0;
-          }        
-          i++;
-        }
-      
-      }
-      else if (window.matchMedia("(min-width: 1920px)").matches){
-        while(i<$img.length){
-          if(j<16){
-              if(j==0 || j==5 ||  j==15){
-                  $($img[i]).closest('div.item').addClass('w2');
-                  
-              }
-              j++;
-          }
-          if(j==10){
-              j=0;
-          }        
-          i++;
-        }
-      }
-    }
-    if(!init){
-      grid.append( $(dom) ).isotope( 'appended', $(dom) );
-      grid.imagesLoaded().progress( function() {
-          grid.isotope('layout');
-      });
-    }
-    buildGrid();
-  }
-
-  function resizeGrid() {
-    var result = document.getElementById('result');
-    if("matchMedia" in window) {
-        setGrid(false,$('#gridAudios'),true);
-    }    
   }
 
   function closePopinAudio() {
