@@ -94,6 +94,9 @@ $(document).ready(function() {
     }
 
     function playNewVideo() {
+      $('#slider-movies .owl-item video').each(function() {
+        $(this)[0].currentTime = 0;
+      });
       $('#slider-movies .active video')[0].play();
       handleEndVideo();
 
