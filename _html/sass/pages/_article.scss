@@ -145,6 +145,7 @@ article {
       position: absolute;
       top: 15px;
       right: 15px;
+      @include transform(translateZ(0));
       @include transition(all 0.5s $smoothTransition);
 
       span {

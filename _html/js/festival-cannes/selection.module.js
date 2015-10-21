@@ -135,9 +135,9 @@ $(document).ready(function() {
      
   });
 
-  $('body').on('mouseover', '.read-later', function() {
+  $('body').on('mouseover', '.read-later', function(e) {
     $(this).find('span').css({
-      top: $(this).offset().top - $(window).scrollTop() - 59,
+      top: $(this).offset().top,
       left: $(this).offset().left - 80
     });
   });

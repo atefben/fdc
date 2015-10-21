@@ -112,12 +112,16 @@ function makePath(data){
 }
 
 function displayGrid() {
-  $('.post').each(function(i) {
+  $('.post').not('.big.right').each(function(i) {
     var $p = $(this);
     setTimeout(function() {
       $p.find('.side').addClass('flip');
-    }, i*100);
+    }, i*50);
   });
+
+  setTimeout(function() {
+    $('.big.right').find('.side').addClass('flip');
+  }, 800);
 
   displayed = true;
 
