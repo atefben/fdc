@@ -221,7 +221,33 @@
 // =========================
 
 div.chocolat-wrapper {
+  background-color: $dark;
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all 1s $smoothTransition);
 
+  .chocolat-img {
+    opacity: 0;
+    visibility: hidden;
+    @include transform(scale(1.1) translateZ(0));
+    @include transition(all 1.5s $smoothTransition 1s);
+  }
+
+  .chocolat-overlay {
+    opacity: 1;
+    background-color: $dark;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+
+    .chocolat-img {
+       opacity: 1;
+      visibility: visible;
+      @include transform(scale(1) translateZ(0));
+    }
+  }
 
   .thumbnails {
     position: absolute;

@@ -54,18 +54,23 @@ function initSlideshows() {
 
 // close slideshow on click
 $('body').on('click', '.chocolat-img', function(e){
-  for(var i=0; i<slideshows.length; i++) {
-    slideshows[i].api().close();
-    slideshows[i].api().destroy();
 
-    history.pushState("", document.title, window.location.pathname);
-  }
+  $('.chocolat-wrapper').removeClass('show');
+  setTimeout(function() {
+    for(var i=0; i<slideshows.length; i++) {
+      
+        slideshows[i].api().close();
+        slideshows[i].api().destroy();
+        history.pushState("", document.title, window.location.pathname);
+      
+    }
+  }, 1000);
 
   setTimeout(function() {
     slideshows = [];
     $('.chocolat-wrapper').remove();
     initSlideshows();
-  }, 500);
+  }, 1400);
 });
 
 // mouseover img : close thumbs
@@ -93,10 +98,21 @@ $('body').on('click', '.chocolat-pagination', function() {
 
 // zoom
 $('body').on('click', '.chocolat-image', function() {
+  var $that = $(this);
 
   $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
   $('<a href="#" class="share"></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+
+  setTimeout(function() {
+    $('.chocolat-wrapper').addClass('show');
+  }, 200);
+
+  setTimeout(function() {
+    $('.chocolat-wrapper .chocolat-img').css('transition', 'none');
+    // change url hash
+    window.location.hash = $that.attr('id');
+  }, 2500);
 
   $(this).parents('.slideshow').find('.thumbnails .thumb').each(function() {
     $('.chocolat-wrapper .thumbnails').append($(this).clone());
@@ -117,9 +133,6 @@ $('body').on('click', '.chocolat-image', function() {
     smartSpeed: 500,
     margin: 0
   });
-
-  // change url hash
-  window.location.hash = $(this).attr('id');
 });
 
 // on click on thumb from the list : change pic and update hash

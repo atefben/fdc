@@ -4109,6 +4109,44 @@ footer .footer-menu ul li a:hover {
   text-transform: uppercase;
 }
 
+div.chocolat-wrapper {
+  background-color: #080808;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-img {
+  opacity: 0;
+  visibility: hidden;
+  -moz-transform: scale(1.1) translateZ(0);
+  -ms-transform: scale(1.1) translateZ(0);
+  -webkit-transform: scale(1.1) translateZ(0);
+  transform: scale(1.1) translateZ(0);
+  -moz-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+  -o-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+  -webkit-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 1s;
+  transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+}
+div.chocolat-wrapper .chocolat-overlay {
+  opacity: 1;
+  background-color: #080808;
+}
+div.chocolat-wrapper.show {
+  opacity: 1;
+  visibility: visible;
+}
+div.chocolat-wrapper.show .chocolat-img {
+  opacity: 1;
+  visibility: visible;
+  -moz-transform: scale(1) translateZ(0);
+  -ms-transform: scale(1) translateZ(0);
+  -webkit-transform: scale(1) translateZ(0);
+  transform: scale(1) translateZ(0);
+}
 div.chocolat-wrapper .thumbnails {
   position: absolute;
   bottom: 50px;
