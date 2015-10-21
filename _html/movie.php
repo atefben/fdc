@@ -23,10 +23,39 @@
     <?php include('header.html'); ?>
 
     <div id="main" class="single-movie">
+      <div id="canvasloader" class="canvasloader"></div>
       <div class="content-movie">
+        <div class="prevmovie">
+          <div class="img">
+            <img src="img/movie/002.jpg" alt="" />
+          </div>
+          <div class="info">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <h2>Youth</h2>
+                <a href="#">Paolo SORRENTINO</a>
+                <p>Pays : Italie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nextmovie">
+          <div class="img">
+            <img src="img/movie/002.jpg" alt="" />
+          </div>
+          <div class="info">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <h2>Youth</h2>
+                <a href="#">Paolo SORRENTINO</a>
+                <p>Pays : Italie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="movie2.php" class="nav prev"></a>
+        <a href="movie3.php" class="nav next"></a>
         <div class="main-image" style="background-image: url('img/movie/001.jpg')">
-          <a href="movie2.php" class="nav prev"></a>
-          <a href="movie3.php" class="nav next"></a>
           <div class="links">
             <div class="container">
               <a class="movies" href="#">Tous les films</a>
@@ -143,6 +172,21 @@
                   <div class="vCenter">
                     <div class="vCenterKid">
                       <a href="#" class="category">Conférence de presse</a>
+                      <p>Lorem ipsum dolor sit</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slide-video shadow-bottom">
+              <img src="http://dummyimage.com/293x185/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info">
+                <div class="picto"></div>
+                <div class="info-container">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Photocall</a>
                       <p>Lorem ipsum dolor sit</p>
                     </div>
                   </div>

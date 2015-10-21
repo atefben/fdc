@@ -3138,6 +3138,7 @@ a {
   top: 50%;
   left: 50%;
   margin: -10px 0 0 -10px;
+  z-index: 11;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -6949,6 +6950,84 @@ article .image .linkImage {
   padding-top: 410px;
   position: relative;
 }
+.single-movie .prevmovie, .single-movie .nextmovie {
+  background: #fff;
+  height: 280px;
+  overflow: hidden;
+  position: fixed;
+  top: 57%;
+  width: 0;
+  margin-top: -105px;
+  z-index: 2;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.single-movie .prevmovie .img, .single-movie .nextmovie .img {
+  position: absolute;
+  left: 100px;
+  top: 38px;
+  width: 150px;
+}
+.single-movie .prevmovie .img img, .single-movie .nextmovie .img img {
+  height: 203px;
+  display: block;
+  width: 100%;
+}
+.single-movie .prevmovie .info, .single-movie .nextmovie .info {
+  height: 203px;
+  position: absolute;
+  left: 275px;
+  top: 38px;
+  width: 130px;
+}
+.single-movie .prevmovie .info h2, .single-movie .nextmovie .info h2 {
+  font-family: "Camphor W01 Heavy";
+  text-transform: uppercase;
+  color: #080808;
+  font-size: 0.875rem;
+  font-weight: normal;
+}
+.single-movie .prevmovie .info a, .single-movie .nextmovie .info a {
+  color: #c8a461;
+  font-family: "Camphor W01 Italic";
+  font-size: 0.750rem;
+  -moz-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.single-movie .prevmovie .info a:hover, .single-movie .nextmovie .info a:hover {
+  opacity: 0.7;
+}
+.single-movie .prevmovie .info p, .single-movie .nextmovie .info p {
+  color: #999;
+  font-size: 0.625rem;
+  margin-top: 8px;
+}
+.single-movie .prevmovie.show, .single-movie .nextmovie.show {
+  width: 420px;
+}
+.single-movie .prevmovie {
+  left: 2%;
+}
+.single-movie .nextmovie {
+  right: 2%;
+}
+.single-movie .nextmovie .img {
+  left: auto;
+  right: 100px;
+}
+.single-movie .nextmovie .info {
+  left: auto;
+  right: 275px;
+  text-align: right;
+}
 .single-movie .anim {
   display: block;
   height: 100%;
@@ -7131,6 +7210,57 @@ article .image .linkImage {
 .single-movie .info-film .categories span:last-child:after {
   display: none;
 }
+.single-movie .nav {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  display: block;
+  height: 82px;
+  position: fixed;
+  top: 57%;
+  width: 82px;
+  z-index: 3;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+@media screen and (max-width: 1024px) {
+  .single-movie .nav {
+    top: 62px;
+    margin-top: 0;
+  }
+}
+.single-movie .nav.black {
+  border-color: #141414;
+}
+.single-movie .nav.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+.single-movie .nav.prev {
+  background: url("../img/svg/arrow-left-white.svg") no-repeat center;
+  background-size: 15px;
+  left: 2%;
+}
+.single-movie .nav.prev.trailer {
+  background-color: transparent;
+  left: -85px;
+}
+.single-movie .nav.prev:hover, .single-movie .nav.prev.over, .single-movie .nav.prev.black {
+  background-image: url("../img/svg/arrow-left-black.svg");
+}
+.single-movie .nav.next {
+  background: url("../img/svg/arrow-right-white.svg") no-repeat center;
+  background-size: 15px;
+  left: auto;
+  right: 2%;
+}
+.single-movie .nav.next:hover, .single-movie .nav.next.over, .single-movie .nav.next.black {
+  background-image: url("../img/svg/arrow-right-black.svg");
+}
+.single-movie .nav.next.trailer {
+  background-color: transparent;
+  right: -85px;
+}
 .single-movie .main-image {
   background-size: cover;
   height: 620px;
@@ -7220,6 +7350,14 @@ article .image .linkImage {
   font-size: 0.625rem;
   padding-left: 20px;
   text-transform: uppercase;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.single-movie .main-image .links a.movies {
+  background: url("../img/svg/arrow-left-white.svg") no-repeat left center;
+  background-size: 8px;
 }
 .single-movie .main-image .links a.programmation {
   background: url("../img/svg/programmation-white.svg") left 48% no-repeat;
@@ -7228,40 +7366,8 @@ article .image .linkImage {
 .single-movie .main-image .links a:last-child {
   float: right;
 }
-.single-movie .main-image .nav {
-  border: 1px solid #dfdfdf;
-  display: block;
-  height: 82px;
-  position: absolute;
-  top: 50%;
-  width: 82px;
-  margin-top: -41px;
-  z-index: 2;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-@media screen and (max-width: 1024px) {
-  .single-movie .main-image .nav {
-    top: 62px;
-    margin-top: 0;
-  }
-}
-.single-movie .main-image .nav.prev {
-  left: 2%;
-}
-.single-movie .main-image .nav.prev.trailer {
-  background-color: transparent;
-  left: -85px;
-}
-.single-movie .main-image .nav.next {
-  left: auto;
-  right: 2%;
-}
-.single-movie .main-image .nav.next.trailer {
-  background-color: transparent;
-  right: -85px;
+.single-movie .main-image .links a:hover {
+  opacity: 0.6;
 }
 .single-movie #nav-movie {
   border-top: 1px solid #dfdfdf;

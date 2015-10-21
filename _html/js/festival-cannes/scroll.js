@@ -53,6 +53,18 @@ $(document).ready(function() {
         $('#nav-movie').removeClass('sticky');
       }
 
+      if(s > $('.competition').offset().top - ($(window).height() - $('header').height() - 200)) {
+        $('.nav').addClass('hide');
+      } else {
+        $('.nav').removeClass('hide');
+      }
+
+      if(s > 50 && s < $('div.press').offset().top - $('div.press').height()) {
+        $('.nav').addClass('black');
+      } else {
+        $('.nav').removeClass('black');
+      }
+
       $('.main-image').height($('.main-image').data('height'));
       $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
 

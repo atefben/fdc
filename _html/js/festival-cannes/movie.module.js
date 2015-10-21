@@ -4,6 +4,14 @@ $(document).ready(function() {
 
   if($('.single-movie').length) {
 
+    var cl = new CanvasLoader('canvasloader');
+        cl.setColor('#ceb06e');
+        cl.setDiameter(20);
+        cl.setDensity(34);
+        cl.setRange(0.8);
+        cl.setSpeed(1);
+        cl.setFPS(60);
+
     // init slider
     var sliderMovieVideos = $("#slider-movie-videos").owlCarousel({
       nav: false,
@@ -14,8 +22,7 @@ $(document).ready(function() {
       margin: 50,
       autoWidth: true,
       onInitialized: function() {
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slider-movie-videos .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+        $('#slider-movie-videos .owl-stage').css({ 'margin-left': "-343px" });
       }
     });
 
@@ -66,8 +73,7 @@ $(document).ready(function() {
       margin: 50,
       autoWidth: true,
       onInitialized: function() {
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slider-competition .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+        $('#slider-competition .owl-stage').css({ 'margin-left': "-385px" });
       }
     });
 
@@ -89,6 +95,24 @@ $(document).ready(function() {
       }, 500);
     });
 
+    // previous and next over
+    $('body').on('mouseover', '.single-movie .nav', function(e) {
+      if($(this).hasClass('prev')) {
+        $('.prevmovie').addClass('show');
+      } else {
+        $('.nextmovie').addClass('show');
+      }
+    });
+
+    // previous and next over
+    $('body').on('mouseover', '.single-movie .prevmovie, .single-movie .nextmovie', function(e) {
+      $('.single-movie .nav').addClass('over');
+    });
+
+    $('body').on('mouseover', '.main-image, .container, .videos, div.press, .competition', function(e) {
+      $('.prevmovie, .nextmovie').removeClass('show');
+      $('.single-movie .nav').removeClass('over');
+    });
 
     // previous and next
     $('body').on('click', '.single-movie .nav', function(e) {
@@ -103,22 +127,34 @@ $(document).ready(function() {
       }
 
       $('.anim').addClass('show');
+      setTimeout(function() {
+        cl.show();
+        $('.canvasloader').addClass('show');
+      }, 800);
 
       var urlPath = $that.attr('href');
 
       // remove timeout once on server. only for animation.
 
       setTimeout(function() {
+        $('html, body').animate({
+          scrollTop: 0
+        }, 0);
         $.get(urlPath, function(data){
           $(".content-movie").html( $(data).find('.content-movie') );
           history.pushState('',"titre test", urlPath);
 
-          if($that.hasClass('next')) {
-            $('.anim').removeClass('next show');
-          }
-          else {
-            $('.anim').addClass('next').removeClass('show');
-          }
+          $('.canvasloader').removeClass('show');
+
+          setTimeout(function() {
+            if($that.hasClass('next')) {
+              $('.anim').removeClass('next show');
+            }
+            else {
+              $('.anim').addClass('next').removeClass('show');
+            }
+            cl.hide();
+          }, 800);
         });
       }, 2000);
     });

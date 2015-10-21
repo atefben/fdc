@@ -11,6 +11,88 @@
   padding-top: 410px;
   position: relative;
 
+  .prevmovie, .nextmovie {
+    background: #fff;
+    height: 280px;
+    overflow: hidden;
+    position: fixed;
+    top: 57%;
+    width: 0;
+    margin-top: -105px;
+    z-index: 2;
+    @include transform(translateZ(0));
+    @include transition(all 0.9s $smoothTransition);
+
+    .img {
+      position: absolute;
+      left: 100px;
+      top: 38px;
+      width: 150px;
+
+      img {
+        height: 203px;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .info {
+      height: 203px;
+      position: absolute;
+      left: 275px;
+      top: 38px;
+      width: 130px;
+
+      h2 {
+        font-family: $CamphorHeavy;
+        text-transform: uppercase;
+        color: $dark;
+        font-size: 0.875rem;
+        font-weight: normal;
+      }
+
+      a {
+        color: $gold;
+        font-family: $CamphorItalic;
+        font-size: 0.750rem;
+        @include transition(opacity .6s $smoothTransition);
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+
+      p {
+        color: #999;
+        font-size: 0.625rem;
+        margin-top: 8px;
+      }
+    }
+
+    &.show {
+      width: 420px;
+    }
+  }
+
+  .prevmovie {
+    left: 2%;
+  }
+
+  .nextmovie {
+    right: 2%;
+
+    .img {
+      left: auto;
+      right: 100px;
+    }
+
+    .info {
+      left: auto;
+      right: 275px;
+      text-align: right;
+    }
+  }
+
   .anim {
     display: block;
     height: 100%;
@@ -189,6 +271,62 @@
     }
   }
 
+  .nav {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    display: block;
+    height: 82px;
+    position: fixed;
+    top: 57%;
+    width: 82px;
+    z-index: 3;
+    @include transition(all 0.3s $smoothTransition);
+
+    @include breakpoint(1024px) {
+      top: 62px;
+      margin-top: 0;
+    }
+
+    &.black {
+      border-color: $black;
+    }
+
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &.prev {
+      background: url('../img/svg/arrow-left-white.svg') no-repeat center;
+      background-size: 15px;
+      left: 2%;
+
+      &.trailer {
+        background-color: transparent;
+        left: -85px;
+      }
+
+      &:hover, &.over, &.black {
+        background-image: url('../img/svg/arrow-left-black.svg');
+      }
+    }
+
+    &.next {
+      background: url('../img/svg/arrow-right-white.svg') no-repeat center;
+      background-size: 15px;
+      left: auto;
+      right: 2%;
+
+      &:hover, &.over, &.black {
+        background-image: url('../img/svg/arrow-right-black.svg');
+      }
+
+      &.trailer {
+        background-color: transparent;
+        right: -85px;
+      }
+    }
+  }
+
   .main-image {
     background-size: cover;
     height: 620px;
@@ -271,9 +409,11 @@
         font-size: 0.625rem;
         padding-left: 20px;
         text-transform: uppercase;
+        @include transition(all 0.8s $smoothTransition);
 
         &.movies {
-
+          background: url('../img/svg/arrow-left-white.svg') no-repeat left center;
+          background-size: 8px;
         }
 
         &.programmation {
@@ -284,41 +424,9 @@
         &:last-child {
           float: right;
         }
-      }
-    }
 
-    .nav {
-      border: 1px solid #dfdfdf;
-      display: block;
-      height: 82px;
-      position: absolute;
-      top: 50%;
-      width: 82px;
-      margin-top: -41px;
-      z-index: 2;
-      @include transition(all 0.3s $smoothTransition);
-
-      @include breakpoint(1024px) {
-        top: 62px;
-        margin-top: 0;
-      }
-
-      &.prev {
-        left: 2%;
-
-        &.trailer {
-          background-color: transparent;
-          left: -85px;
-        }
-      }
-
-      &.next {
-        left: auto;
-        right: 2%;
-
-        &.trailer {
-          background-color: transparent;
-          right: -85px;
+        &:hover {
+          opacity: 0.6;
         }
       }
     }
