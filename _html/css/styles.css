@@ -5022,21 +5022,25 @@ div.chocolat-wrapper .chocolat-close {
 #selection #slider-selection .owl-stage-outer {
   overflow: initial;
 }
+#selection #slider-selection .owl-stage {
+  background-color: #fff;
+}
 #selection #slider-selection .owl-item {
-  opacity: 1;
-  -moz-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  background-color: #fff;
+  z-index: 2;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #selection #slider-selection .owl-item.added {
-  -moz-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -moz-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -o-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: margin-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: padding-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -moz-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: padding-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -o-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: padding-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: padding-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #selection #slider-selection .owl-item.fade {
-  margin-right: 0 !important;
+  padding-right: 0 !important;
   opacity: 0;
   visibility: hidden;
   width: 0 !important;
@@ -5048,20 +5052,28 @@ div.chocolat-wrapper .chocolat-close {
   -webkit-transform: scale(0.8);
   transform: scale(0.8);
 }
+#selection #slider-selection .owl-item .info, #selection #slider-selection .owl-item .picto {
+  -moz-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 #selection #slider-selection .article {
+  padding-right: 50px;
   height: 230px;
   position: relative;
   width: 212px;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #selection #slider-selection .article.deleted {
   overflow: hidden;
+  padding-right: 0;
   width: 0;
 }
-#selection #slider-selection .article.deleted .info, #selection #slider-selection .article.deleted .delete {
+#selection #slider-selection .article.deleted .info, #selection #slider-selection .article.deleted .delete, #selection #slider-selection .article.deleted .picto {
   opacity: 0;
   visibility: hidden;
 }
@@ -5073,13 +5085,18 @@ div.chocolat-wrapper .chocolat-close {
   display: block;
   height: 28px;
   position: absolute;
-  right: -14px;
+  right: 36px;
   top: -14px;
   width: 28px;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  z-index: 5;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: border-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: border-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: border-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: border-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #selection #slider-selection .article .delete:hover {
   border-color: #000;

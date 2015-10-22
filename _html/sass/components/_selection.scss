@@ -38,16 +38,21 @@
       overflow: initial;
     }
 
+    .owl-stage {
+      background-color: #fff;
+    }
+
     .owl-item {
-      opacity: 1;
-      @include transition(margin-right 0.5s $smoothTransition);
+      background-color: #fff;
+      z-index: 2;
+      @include transition(all .5s $smoothTransition);
 
       &.added {
-        @include transition(margin-right 0.5s $smoothTransition, opacity .8s $smoothTransition, transform .8s $smoothTransition);
+        @include transition(padding-right 0.5s $smoothTransition, opacity .8s $smoothTransition, transform .8s $smoothTransition);
       }
 
       &.fade {
-        margin-right: 0!important;
+        padding-right: 0!important;
         opacity: 0;
         visibility: hidden;
         width: 0!important;
@@ -57,19 +62,25 @@
         opacity: 0;
         @include transform(scale(0.8));
       }
+
+      .info, .picto {
+        @include transition(all .2s $smoothTransition);
+      }
     }
 
     .article {
+      padding-right: 50px;
       height: 230px;
       position: relative;
       width: 212px;
-      @include transition(all 0.5s $smoothTransition);
+      @include transition(all 0.9s $smoothTransition);
 
       &.deleted {
         overflow: hidden;
+        padding-right: 0;
         width: 0;
 
-        .info, .delete {
+        .info, .delete, .picto {
           opacity: 0;
           visibility: hidden;
         }
@@ -83,10 +94,12 @@
         display: block;
         height: 28px;
         position: absolute;
-        right: -14px;
+        right: 36px;
         top: -14px;
         width: 28px;
-        @include transition(all 0.5s $smoothTransition);
+        z-index: 5;
+        @include transform(translateZ(0));
+        @include transition(border-color 0.5s $smoothTransition);
 
         &:hover {
           border-color: #000;

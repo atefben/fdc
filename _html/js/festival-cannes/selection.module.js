@@ -26,11 +26,11 @@ $(document).ready(function() {
           smartSpeed: 500,
           center: true,
           loop: false,
-          margin: 50,
+          margin: 0,
           autoWidth: true,
           onInitialized: function() {
             setTimeout(function() {
-              $('#selection').addClass('open')
+              $('#selection').addClass('open');
             }, 500);
           }
         });
@@ -105,13 +105,12 @@ $(document).ready(function() {
     var $that = $(this);
 
     $(this).parent().addClass('deleted');
-    $(this).parent().parent().css('margin-right', 0);
     var i = $(this).parent().parent().index();
 
     setTimeout(function() {
       sliderSelection.trigger('del.owl.carousel', i);
       sliderSelection.trigger('refresh.owl.carousel');
-    }, 500);
+    }, 800);
   });
 
   // add an article 
