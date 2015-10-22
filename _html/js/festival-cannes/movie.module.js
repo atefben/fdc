@@ -84,7 +84,7 @@ $(document).ready(function() {
     });
 
     // show and play trailer
-    $('.poster .picto').on('click', function(e) {
+    $('body').on('click', '.poster .picto', function(e) {
       e.preventDefault();
 
       $('html, body').animate({
