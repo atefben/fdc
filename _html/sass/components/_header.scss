@@ -333,6 +333,10 @@ header {
         display: inline-block;
         margin-left: -4px;
 
+        &:hover>a {
+          color: $gold;
+        }
+
         &:first-child {
           margin-left: 0;
         }
@@ -402,16 +406,40 @@ header {
         font-family: $CamphorBold;
         font-size: 0.740rem;
 
+        li:hover>a {
+          color: $gold;
+
+          &:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
         li a {
           color: $grey;
           padding: 0 0 0 30px;
+          position: relative;
+
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(all .6s $smoothTransition);
+          }
 
           &.programmation {
             background: url('../img/svg/programmation.svg') no-repeat 8% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/programmation-gold.svg');
+            &:after {
+              background: url('../img/svg/programmation-gold.svg') no-repeat 8% 47%;
+              background-size: 15px;
             }
           }
 
@@ -419,8 +447,9 @@ header {
             background: url('../img/svg/participate.svg') no-repeat 12% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/participate-gold.svg');
+            &:after {
+              background: url('../img/svg/participate-gold.svg') no-repeat 12% 47%;
+              background-size: 15px;
             }
           }
 
@@ -428,13 +457,19 @@ header {
             background: url('../img/svg/press.svg') no-repeat 12% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/press-gold.svg');
+            &:after {
+              background: url('../img/svg/press-gold.svg') no-repeat 12% 47%;
+              background-size: 15px;
             }
           }
 
           &:hover {
             color: $gold;
+
+            &:after {
+              opacity: 1;
+              visibility: visible;
+            }
           }
         }
 
