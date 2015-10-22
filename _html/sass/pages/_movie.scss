@@ -281,6 +281,19 @@
     z-index: 3;
     @include transition(all 0.3s $smoothTransition);
 
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.3s $smoothTransition);
+    }
+
     @include breakpoint(1024px) {
       top: 62px;
       margin-top: 0;
@@ -300,13 +313,21 @@
       background-size: 15px;
       left: 2%;
 
+      &:after {
+        background: url('../img/svg/arrow-left-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
       &.trailer {
         background-color: transparent;
         left: -85px;
       }
 
       &:hover, &.over, &.black {
-        background-image: url('../img/svg/arrow-left-black.svg');
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
 
@@ -316,8 +337,16 @@
       left: auto;
       right: 2%;
 
+      &:after {
+        background: url('../img/svg/arrow-right-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
       &:hover, &.over, &.black {
-        background-image: url('../img/svg/arrow-right-black.svg');
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
       }
 
       &.trailer {

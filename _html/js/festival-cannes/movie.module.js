@@ -109,8 +109,11 @@ $(document).ready(function() {
     });
 
     // previous and next over
-    $('body').on('mouseover', '.single-movie .prevmovie, .single-movie .nextmovie', function(e) {
-      $('.single-movie .nav').addClass('over');
+    $('body').on('mouseover', '.single-movie .prevmovie', function(e) {
+      $('.single-movie .nav.prev').addClass('over');
+    });
+    $('body').on('mouseover', '.single-movie .nextmovie', function(e) {
+      $('.single-movie .nav.next').addClass('over');
     });
 
     $('body').on('mouseover', '.main-image, .container, .videos, div.press, .competition', function(e) {

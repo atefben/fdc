@@ -6731,6 +6731,7 @@ article .image .linkImage {
   left: 0;
   width: 0;
   background-color: #141414;
+  z-index: 10;
   -moz-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -7095,19 +7096,62 @@ article .image .linkImage {
   border: 1px solid #dfdfdf;
   display: block;
   height: 82px;
-  position: absolute;
-  top: 135px;
+  position: fixed;
+  top: 57%;
   width: 82px;
+  z-index: 3;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.single-article .nav:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-article .nav.prev {
-  left: 35px;
+  background: url("../img/svg/arrow-left-article.svg") no-repeat center;
+  background-size: 15px;
+  left: 2%;
+}
+.single-article .nav.prev:after {
+  background: url("../img/svg/arrow-left-black.svg") no-repeat center;
+  background-size: 15px;
+}
+.single-article .nav.prev:hover {
+  border-color: #141414;
+}
+.single-article .nav.prev:hover:after {
+  opacity: 1;
+  visibility: visible;
 }
 .single-article .nav.next {
-  right: 35px;
+  background: url("../img/svg/arrow-right-article.svg") no-repeat center;
+  background-size: 15px;
+  left: auto;
+  right: 2%;
+}
+.single-article .nav.next:after {
+  background: url("../img/svg/arrow-right-black.svg") no-repeat center;
+  background-size: 15px;
+}
+.single-article .nav.next:hover {
+  border-color: #141414;
+}
+.single-article .nav.next:hover:after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .single-movie {
@@ -7387,6 +7431,21 @@ article .image .linkImage {
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+.single-movie .nav:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 @media screen and (max-width: 1024px) {
   .single-movie .nav {
     top: 62px;
@@ -7405,12 +7464,17 @@ article .image .linkImage {
   background-size: 15px;
   left: 2%;
 }
+.single-movie .nav.prev:after {
+  background: url("../img/svg/arrow-left-black.svg") no-repeat center;
+  background-size: 15px;
+}
 .single-movie .nav.prev.trailer {
   background-color: transparent;
   left: -85px;
 }
-.single-movie .nav.prev:hover, .single-movie .nav.prev.over, .single-movie .nav.prev.black {
-  background-image: url("../img/svg/arrow-left-black.svg");
+.single-movie .nav.prev:hover:after, .single-movie .nav.prev.over:after, .single-movie .nav.prev.black:after {
+  opacity: 1;
+  visibility: visible;
 }
 .single-movie .nav.next {
   background: url("../img/svg/arrow-right-white.svg") no-repeat center;
@@ -7418,8 +7482,13 @@ article .image .linkImage {
   left: auto;
   right: 2%;
 }
-.single-movie .nav.next:hover, .single-movie .nav.next.over, .single-movie .nav.next.black {
-  background-image: url("../img/svg/arrow-right-black.svg");
+.single-movie .nav.next:after {
+  background: url("../img/svg/arrow-right-black.svg") no-repeat center;
+  background-size: 15px;
+}
+.single-movie .nav.next:hover:after, .single-movie .nav.next.over:after, .single-movie .nav.next.black:after {
+  opacity: 1;
+  visibility: visible;
 }
 .single-movie .nav.next.trailer {
   background-color: transparent;
