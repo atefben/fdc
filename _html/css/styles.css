@@ -8303,6 +8303,63 @@ article .image .linkImage {
   clear: both;
 }
 
+@media screen and (min-width: 320px) {
+  #gridFilmSelection {
+    /* 5 columns for larger screens */
+  }
+  #gridFilmSelection .grid-sizer {
+    width: calc(100%/2);
+  }
+  #gridFilmSelection .item {
+    width: calc(100%/2);
+  }
+  #gridFilmSelection .item.w2 {
+    width: calc(200%/2);
+  }
+}
+@media screen and (min-width: 768px) {
+  #gridFilmSelection {
+    /* 5 columns for larger screens */
+  }
+  #gridFilmSelection .grid-sizer {
+    width: calc(100%/3);
+  }
+  #gridFilmSelection .item {
+    width: calc(100%/3);
+  }
+  #gridFilmSelection .item.w2 {
+    width: calc(200%/3);
+  }
+}
+@media screen and (min-width: 1024px) {
+  #gridFilmSelection {
+    /* 5 columns for larger screens */
+  }
+  #gridFilmSelection .grid-sizer {
+    width: calc(100%/4);
+  }
+  #gridFilmSelection .item {
+    width: calc(100%/4);
+  }
+  #gridFilmSelection .item.w2 {
+    width: calc(200%/4);
+  }
+}
+@media screen and (min-width: 1400px) {
+  #gridFilmSelection {
+    /* 5 columns for larger screens */
+  }
+  #gridFilmSelection .grid-sizer {
+    width: calc(100%/5);
+  }
+  #gridFilmSelection .item {
+    width: calc(100%/5);
+  }
+  #gridFilmSelection .item.w2 {
+    width: calc(200%/5);
+  }
+}
+
 .contact {
   padding-top: 60px;
 }
@@ -8737,6 +8794,47 @@ article .image .linkImage {
   display: inline-block;
   padding: 16px;
   text-transform: uppercase;
+}
+
+.selection-officielle figure figcaption {
+  height: 103px;
+  text-align: center;
+}
+.selection-officielle figure figcaption .name {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Camphor W01 Bold";
+  font-size: .875rem;
+  display: block;
+  padding-top: 25px;
+}
+.selection-officielle figure figcaption .sub-name {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Camphor W01 Bold";
+  font-size: .625rem;
+  display: block;
+}
+.selection-officielle figure figcaption .author {
+  text-align: center;
+  font-family: "Camphor W01 Italic";
+  font-size: .8125rem;
+  color: #c8a461;
+}
+.selection-officielle .container:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.selection-officielle .grid {
+  padding-top: 0px;
+}
+.selection-officielle .grid .grid-wrapper {
+  margin-top: 0px;
 }
 
 .palmares-list .categorie-items article .contain-article {

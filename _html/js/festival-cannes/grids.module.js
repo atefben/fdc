@@ -180,6 +180,15 @@ $(document).ready(function() {
           });
         });
     }
+    if($('#gridFilmSelection').length){ 
+        $grid = $('#gridFilmSelection').imagesLoaded(function() {
+
+          $grid.isotope({
+            layoutMode: 'packery',
+            itemSelector: '.item'
+          });
+        });
+    }
 
     if($('#gridAudios').length) {
 
