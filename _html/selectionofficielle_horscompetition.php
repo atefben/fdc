@@ -33,7 +33,7 @@
                <li><a href="selectionofficielle_competition.php">Compétition</a></li>
                <li><a href="selectionofficielle_uncertainregard.php">Un certain regard</a></li>
                <li><a href="selectionofficielle_horscompetition.php" class="active">Hors compétition</a></li>
-               <li><a href="selectionofficielle_seancespeciales">Séances spéciales</a></li>
+               <li><a href="selectionofficielle_seancespeciales.php">Séances spéciales</a></li>
                <li><a href="selectionofficielle_cinefondation.php">Cinéfondation</a></li>
               <li><a href="selectionofficielle_courtsmetrages.php">Courts métrages</a></li>
            </ul> 

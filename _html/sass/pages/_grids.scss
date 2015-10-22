@@ -497,7 +497,7 @@
     }
   }
 
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 1280px) {
     /* 5 columns for larger screens */
     .grid-sizer {
       width: calc(100%/5);
@@ -507,6 +507,33 @@
     }
     .item.w2 {
         width: calc(200%/5);
+    }
+  }
+  
+  
+  @media screen and (min-width: 1600px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/6);
+    }
+    .item {
+        width: calc(100%/6);
+    }
+    .item.w2 {
+        width: calc(200%/6);
+    }
+  }
+  
+    @media screen and (min-width: 1920px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/8);
+    }
+    .item {
+        width: calc(100%/8);
+    }
+    .item.w2 {
+        width: calc(200%/8);
     }
   }
 

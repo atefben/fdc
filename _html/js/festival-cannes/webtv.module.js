@@ -77,7 +77,12 @@ $(document).ready(function() {
         $.get(urlPath, function(data){
             $( ".content-webtv" ).html( $(data).find('.content-webtv') );
           history.pushState('',"titre test", urlPath);
-          console.log(data);
+            $grid = $('#gridWebtv').imagesLoaded(function() {
+              $grid.isotope({
+                layoutMode: 'packery',
+                itemSelector: '.item'
+              });
+            });
         });
         $('.webtv-ba .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');
