@@ -5081,6 +5081,9 @@ div.chocolat-wrapper .chocolat-close {
   -webkit-transition: padding-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: padding-right 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+#selection #slider-selection .owl-item .image-wrapper img {
+  max-width: 100%;
+}
 #selection #slider-selection .owl-item.fade {
   padding-right: 0 !important;
   opacity: 0;

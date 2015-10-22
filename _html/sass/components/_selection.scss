@@ -51,6 +51,10 @@
         @include transition(padding-right 0.5s $smoothTransition, opacity .8s $smoothTransition, transform .8s $smoothTransition);
       }
 
+      .image-wrapper img {
+        max-width: 100%;
+      }
+
       &.fade {
         padding-right: 0!important;
         opacity: 0;
