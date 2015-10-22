@@ -3809,7 +3809,7 @@ footer .social ul li a {
 footer .social ul li a:hover {
   opacity: 0.6;
 }
-footer .social ul li a.app {
+footer .social ul li a.appli {
   background: url("../img/svg/appli.svg") center no-repeat;
   background-size: 26px;
 }
@@ -7974,6 +7974,26 @@ article .image .linkImage {
 }
 #gridPhotos .thumbnails {
   display: none;
+}
+#gridPhotos .item {
+  cursor: pointer;
+  overflow: hidden;
+}
+#gridPhotos .item img {
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#gridPhotos .item:hover img {
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
 }
 
 .all-photos .item .chocolat-image {

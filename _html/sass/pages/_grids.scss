@@ -127,6 +127,22 @@
   .thumbnails {
     display: none;
   }
+
+  .item {
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+      @include transform(translateZ(0));
+      @include transition(all 0.8s $smoothTransition);
+    }
+
+    &:hover {
+      img {
+        @include transform(scale(1.05) translateZ(0));
+      }
+    }
+  }
 }
 
 .all-photos .item .chocolat-image {
