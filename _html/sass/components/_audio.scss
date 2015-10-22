@@ -349,31 +349,36 @@
   padding: 20px;
   box-sizing: border-box;
   pointer-events: none;
+  z-index: 10;
   @include transform(translateY(30px));
   @include transition(all .8s $smoothTransition);
 
+  .playpause {
+    top: 229px;
+    margin-top: 0;
+  }
+
   .on {
+    height: 440px;
     opacity: 1;
     visibility: visible;
     position: relative;
-    left: auto;
     top: auto;
-    width: 100%;
   }
 
   &.show {
     opacity: 1;
     pointer-events: initial;
     visibility: visible;
-    z-index: 10;
     @include transform(translateY(0));
   }
 
-  .image {
+  .image-container {
     left: 20px;
     height: 440px;
     overflow: hidden;
     top: 20px;
+    position: absolute;
     width: 710px;
   }
 
@@ -384,6 +389,11 @@
 
     a:hover {
       background-color: #fff;
+      border-color: $gold!important;
+
+      + .button {
+        border-left-color: $gold;
+      }
     }
 
     a.facebook {

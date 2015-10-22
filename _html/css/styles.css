@@ -4840,6 +4840,7 @@ div.chocolat-wrapper .chocolat-close {
   padding: 20px;
   box-sizing: border-box;
   pointer-events: none;
+  z-index: 10;
   -moz-transform: translateY(30px);
   -ms-transform: translateY(30px);
   -webkit-transform: translateY(30px);
@@ -4849,29 +4850,32 @@ div.chocolat-wrapper .chocolat-close {
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+.popin-audio .playpause {
+  top: 229px;
+  margin-top: 0;
+}
 .popin-audio .on {
+  height: 440px;
   opacity: 1;
   visibility: visible;
   position: relative;
-  left: auto;
   top: auto;
-  width: 100%;
 }
 .popin-audio.show {
   opacity: 1;
   pointer-events: initial;
   visibility: visible;
-  z-index: 10;
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
-.popin-audio .image {
+.popin-audio .image-container {
   left: 20px;
   height: 440px;
   overflow: hidden;
   top: 20px;
+  position: absolute;
   width: 710px;
 }
 .popin-audio .buttons {
@@ -4881,6 +4885,10 @@ div.chocolat-wrapper .chocolat-close {
 }
 .popin-audio .buttons a:hover {
   background-color: #fff;
+  border-color: #c8a461 !important;
+}
+.popin-audio .buttons a:hover + .button {
+  border-left-color: #c8a461;
 }
 .popin-audio .buttons a.facebook {
   background: url("../img/svg/facebook-gold.svg") no-repeat center;
