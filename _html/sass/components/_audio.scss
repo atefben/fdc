@@ -120,11 +120,11 @@
   .image {
     background-size: cover;
     background-position: center;
-    left: -1%;
-    height: 102%;
+    left: -3%;
+    height: 106%;
     position: absolute;
-    top: -1%;
-    width: 102%;
+    top: -3%;
+    width: 106%;
     z-index: 0;
     @include filter(blur(5px));
   }
