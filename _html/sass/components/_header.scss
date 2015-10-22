@@ -368,7 +368,7 @@ header {
           visibility: hidden;
           width: 977px;
           z-index: 15;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.5s $smoothTransition);
           @include transform(translateY(0));
 
           &:before {

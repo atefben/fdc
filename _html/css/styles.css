@@ -3598,10 +3598,10 @@ header #navigation ul li ul {
   visibility: hidden;
   width: 977px;
   z-index: 15;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
@@ -7255,10 +7255,10 @@ article .image .linkImage {
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie .poster.trailer {
-  -moz-transform: translateY(350px);
-  -ms-transform: translateY(350px);
-  -webkit-transform: translateY(350px);
-  transform: translateY(350px);
+  -moz-transform: translateY(550px);
+  -ms-transform: translateY(550px);
+  -webkit-transform: translateY(550px);
+  transform: translateY(550px);
 }
 @media screen and (max-width: 1600px) {
   .single-movie .poster {
@@ -7310,10 +7310,10 @@ article .image .linkImage {
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie .info-film.trailer {
-  -moz-transform: translateY(350px);
-  -ms-transform: translateY(350px);
-  -webkit-transform: translateY(350px);
-  transform: translateY(350px);
+  -moz-transform: translateY(550px);
+  -ms-transform: translateY(550px);
+  -webkit-transform: translateY(550px);
+  transform: translateY(550px);
 }
 @media screen and (max-width: 1600px) {
   .single-movie .info-film {
@@ -7461,11 +7461,11 @@ article .image .linkImage {
   top: 0;
   visibility: hidden;
   width: 100%;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s;
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s;
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition-delay: 1s;
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+  -webkit-transition-delay: 0.2s;
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s;
 }
 .single-movie .main-image.trailer .trailer {
   opacity: 1;

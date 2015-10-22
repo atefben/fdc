@@ -87,12 +87,16 @@ $(document).ready(function() {
     $('.poster .picto').on('click', function(e) {
       e.preventDefault();
 
-      $('.main-image').data('height', $('.main-image').height()).height($(window).height() - $('header').height());
-      $('.main-image, .poster, .info-film, .nav').addClass('trailer');
-
       $('html, body').animate({
         scrollTop: 0
-      }, 500);
+      }, 300, function() {
+        $('.main-image, .poster, .info-film, .nav').addClass('trailer');
+        $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
+        setTimeout(function() {
+          $('header').addClass('sticky');
+        }, 800);
+        
+      });
     });
 
     // previous and next over
