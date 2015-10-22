@@ -351,7 +351,7 @@
   pointer-events: none;
   z-index: 10;
   @include transform(translateY(30px));
-  @include transition(all .8s $smoothTransition);
+  @include transition(all 1.2s $smoothTransition);
 
   .playpause {
     top: 229px;
@@ -452,7 +452,7 @@
   @include transition(all 0.3s $smoothTransition);
 
   &.show {
-    opacity: 0.6;
+    opacity: 0.8;
     visibility: visible;
   }
 }

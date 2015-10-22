@@ -4941,7 +4941,7 @@ div.chocolat-wrapper .chocolat-close {
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .ov.show {
-  opacity: 0.6;
+  opacity: 0.8;
   visibility: visible;
 }
 
