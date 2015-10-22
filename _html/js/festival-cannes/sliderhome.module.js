@@ -158,7 +158,7 @@ $(document).ready(function() {
             '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
             '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
             'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            'transition': 'all .5s ease'
+            'transition': 'all 0 ease'
           });
         });
 
