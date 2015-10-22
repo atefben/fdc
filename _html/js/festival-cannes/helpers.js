@@ -10,7 +10,7 @@ String.prototype.parseURL = function() {
 // parse twitter username in String
 String.prototype.parseUsername = function(twitter) {
   return this.replace(/[@]+[A-Za-z0-9-_]+/g, function(u) {
-    var username = u.replace("@","")
+    var username = u;
     return '<strong>' + username + '</strong>';
   });
 };

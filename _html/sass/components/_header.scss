@@ -63,7 +63,6 @@ header {
 
     #logo-wrapper {
       height: 50px;
-      transition-delay: .2s;
 
       #logo {
         width: 290px;
@@ -92,8 +91,9 @@ header {
         }
       }
 
-      #search, #partners {
-        display: none;
+      #partners, #search {
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }
@@ -204,7 +204,7 @@ header {
     background-color: $black;
     height: 160px;
     overflow: hidden;
-    @include transition(all 0.3s $smoothTransition);
+    @include transition(all 0.5s $smoothTransition);
     @include transform(translateY(0));
 
     .container {
@@ -272,9 +272,10 @@ header {
     }
 
     #partners {
-      display: inline-block;
-      vertical-align: middle;
-      @include transition(all 0.3s $smoothTransition);
+      position: absolute;
+      top: 60px;
+      left: 315px;
+      @include transition(all 0.5s $smoothTransition);
 
       img {
         display: inline-block;
@@ -307,7 +308,7 @@ header {
       position: relative;
       margin-top: 47px;
       width: 63px;
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(all 0.5s $smoothTransition);
 
       a {
         background: url('../img/svg/search.svg') center no-repeat;

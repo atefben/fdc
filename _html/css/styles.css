@@ -3302,7 +3302,6 @@ header.sticky #sticky-user .user-nav a.search {
 }
 header.sticky #logo-wrapper {
   height: 50px;
-  transition-delay: .2s;
 }
 header.sticky #logo-wrapper #logo {
   width: 290px;
@@ -3326,8 +3325,9 @@ header.sticky #logo-wrapper #logo p.stick:after {
   transition-delay: 0.4s;
   width: 0;
 }
-header.sticky #logo-wrapper #search, header.sticky #logo-wrapper #partners {
-  display: none;
+header.sticky #logo-wrapper #partners, header.sticky #logo-wrapper #search {
+  opacity: 0;
+  visibility: hidden;
 }
 header .user-nav {
   background-color: #141414;
@@ -3433,10 +3433,10 @@ header #logo-wrapper {
   background-color: #141414;
   height: 160px;
   overflow: hidden;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
@@ -3510,12 +3510,13 @@ header #logo-wrapper #logo img {
   transform: translateY(0);
 }
 header #logo-wrapper #partners {
-  display: inline-block;
-  vertical-align: middle;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  position: absolute;
+  top: 60px;
+  left: 315px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #logo-wrapper #partners img {
   display: inline-block;
@@ -3539,10 +3540,10 @@ header #logo-wrapper #search {
   position: relative;
   margin-top: 47px;
   width: 63px;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #logo-wrapper #search a {
   background: url("../img/svg/search.svg") center no-repeat;
@@ -5814,40 +5815,61 @@ div.chocolat-wrapper .chocolat-close {
   font-size: 0.875rem;
   line-height: 16px;
   padding-right: 30px;
+  position: relative;
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  -moz-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: color 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #networks ul li a:hover {
   color: #c8a461;
+}
+#networks ul li a:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+#networks ul li a:after {
+  content: '';
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #networks ul li a.facebook {
   background: url("../img/svg/facebook-grey.svg") right top no-repeat;
   background-size: 20px;
   padding-right: 25px;
 }
-#networks ul li a.facebook:hover {
-  background-image: url("../img/svg/facebook-gold.svg");
+#networks ul li a.facebook:after {
+  background: url("../img/svg/facebook-gold.svg") right top no-repeat;
+  background-size: 20px;
 }
 #networks ul li a.twitter {
   background: url("../img/svg/twitter-grey.svg") right 15% no-repeat;
   background-size: 18px;
 }
-#networks ul li a.twitter:hover {
-  background-image: url("../img/svg/twitter-gold.svg");
+#networks ul li a.twitter:after {
+  background: url("../img/svg/twitter-gold.svg") right 15% no-repeat;
   background-size: 18px;
 }
 #networks ul li a.instagram {
   background: url("../img/svg/instagram-grey.svg") right top no-repeat;
   background-size: 20px;
 }
-#networks ul li a.instagram:hover {
-  background-image: url("../img/svg/instagram-gold.svg");
+#networks ul li a.instagram:after {
+  background: url("../img/svg/instagram-gold.svg") right top no-repeat;
   background-size: 20px;
 }
 #networks ul li a.tumblr {
@@ -5855,23 +5877,26 @@ div.chocolat-wrapper .chocolat-close {
   background-size: 20px;
   padding-right: 25px;
 }
-#networks ul li a.tumblr:hover {
-  background-image: url("../img/svg/tumblr-gold.svg");
+#networks ul li a.tumblr:after {
+  background: url("../img/svg/tumblr-gold.svg") right top no-repeat;
+  background-size: 20px;
 }
 #networks ul li a.youtube {
   background: url("../img/svg/youtube-grey.svg") right top no-repeat;
   background-size: 20px;
 }
-#networks ul li a.youtube:hover {
-  background-image: url("../img/svg/youtube-gold.svg");
+#networks ul li a.youtube:after {
+  background: url("../img/svg/youtube-gold.svg") right top no-repeat;
+  background-size: 20px;
 }
 #networks ul li a.dailymotion {
   background: url("../img/svg/dailymotion-grey.svg") right top no-repeat;
   background-size: 20px;
   padding-right: 25px;
 }
-#networks ul li a.dailymotion:hover {
-  background-image: url("../img/svg/dailymotion-gold.svg");
+#networks ul li a.dailymotion:after {
+  background: url("../img/svg/dailymotion-gold.svg") right top no-repeat;
+  background-size: 20px;
 }
 
 #featured-videos {

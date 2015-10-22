@@ -677,11 +677,30 @@
         font-size: 0.875rem;
         line-height: 16px;
         padding-right: 30px;
+        position: relative;
         @include transform(translateZ(0));
-        @include transition(color 0.3s $smoothTransition);
+        @include transition(color 0.8s $smoothTransition);
 
         &:hover {
           color: $gold;
+
+          &:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all 0.8s $smoothTransition);
         }
 
         &.facebook {
@@ -689,8 +708,9 @@
           background-size: 20px;
           padding-right: 25px;
 
-          &:hover {
-            background-image: url('../img/svg/facebook-gold.svg');
+          &:after {
+            background: url('../img/svg/facebook-gold.svg') right top no-repeat;
+            background-size: 20px;
           }
         }
 
@@ -698,8 +718,8 @@
           background: url('../img/svg/twitter-grey.svg') right 15% no-repeat;
           background-size: 18px;
 
-          &:hover {
-            background-image: url('../img/svg/twitter-gold.svg');
+          &:after {
+            background: url('../img/svg/twitter-gold.svg') right 15% no-repeat;
             background-size: 18px;
           }
         }
@@ -708,8 +728,8 @@
           background: url('../img/svg/instagram-grey.svg') right top no-repeat;
           background-size: 20px;
 
-          &:hover {
-            background-image: url('../img/svg/instagram-gold.svg');
+          &:after {
+            background: url('../img/svg/instagram-gold.svg') right top no-repeat;
             background-size: 20px;
           }
         }
@@ -719,8 +739,9 @@
           background-size: 20px;
           padding-right: 25px;
 
-          &:hover {
-            background-image: url('../img/svg/tumblr-gold.svg');
+          &:after {
+            background: url('../img/svg/tumblr-gold.svg') right top no-repeat;
+            background-size: 20px;
           }
         }
 
@@ -728,8 +749,9 @@
           background: url('../img/svg/youtube-grey.svg') right top no-repeat;
           background-size: 20px;
 
-          &:hover {
-            background-image: url('../img/svg/youtube-gold.svg');
+          &:after {
+            background: url('../img/svg/youtube-gold.svg') right top no-repeat;
+            background-size: 20px;
           }
         }
 
@@ -738,8 +760,9 @@
           background-size: 20px;
           padding-right: 25px;
 
-          &:hover {
-            background-image: url('../img/svg/dailymotion-gold.svg');
+          &:after {
+            background: url('../img/svg/dailymotion-gold.svg') right top no-repeat;
+            background-size: 20px;
           }
         }
       }
