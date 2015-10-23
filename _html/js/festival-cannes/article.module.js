@@ -58,6 +58,7 @@ $(document).ready(function() {
             }
             cl.hide();
             initSlideshows();
+            initAudioPlayers();
           }, 800);
         });
       }, 2000);
