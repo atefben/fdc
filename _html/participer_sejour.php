@@ -15,6 +15,7 @@
   <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css" />
   <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='css/styles.css' rel="stylesheet">
   <style type="text/css">
 
@@ -39,7 +40,7 @@
         </div>
         <section>
          <div class="contain-section">
-          <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="">Se rendre à cannes</h3>
+          <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="">Se rendre à cannes</h3><i class="fa fa-plus"></i>
           <div class="item large">
             <img src="img/participate/train.svg" alt="" class="svg">
             <strong class="transport">Train</strong>
@@ -74,7 +75,7 @@
         </section>
         <section>
           <div class="contain-section">
-            <h3 class="title-participate"> <img src="img/participate/plan.svg" alt="">Plans</h3>          
+            <h3 class="title-participate"> <img src="img/participate/plan.svg" alt="">Plans</h3><i class="fa fa-plus"></i>          
             <h4 class="descrip-participate">Gardez le Cap ! Téléchargez ici les cartes et les plans pour vous repérer à Cannes et dans le périmètre du Festival.</h4>
             <div class="contain-map">
               <strong class="name">Le festival de cannes</strong>
@@ -98,7 +99,7 @@
         </section>
          <section>
          <div class="contain-section">
-          <h3 class="title-participate"> <img src="img/participate/hebergement.svg" alt="">Hébergement</h3>
+          <h3 class="title-participate"> <img src="img/participate/hebergement.svg" alt="">Hébergement</h3><i class="fa fa-plus"></i>
           <div class="descrip-section">
             <p class="ask">Vous êtes à la recherche d'un hébergement ?</p>
             <a href="#">Consultez la liste des Hôtels Partenaires du Festival de Cannes</a>
@@ -109,7 +110,7 @@
         </section>
         <section>
          <div class="contain-section">
-          <h3 class="title-participate"> <img src="img/participate/informations.svg" alt="">Pour plus d'informations</h3>
+          <h3 class="title-participate"> <img src="img/participate/informations.svg" alt="">Pour plus d'informations</h3><i class="fa fa-plus"></i>
           <div class="descrip-section">
             <p class="text">Si vous souhaitez des information complémentaires sur la ville de Cannes, nous vous invitons à consulter <br> les pages de <a href="#">l'office du tourisme de la ville de Cannes</a> et de <a href="#">la mairie de la ville de Cannes.</a></p>
          </div>
