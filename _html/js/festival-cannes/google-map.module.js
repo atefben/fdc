@@ -32,6 +32,6 @@ $(document).ready(function() {
   
 
     console.log("ok");
-    google.maps.event.addDomListener(window, 'load', initialize);
+    //google.maps.event.addDomListener(window, 'load', initialize);
   
 });

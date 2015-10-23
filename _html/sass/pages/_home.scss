@@ -564,6 +564,20 @@
         @include transition(all 1s $smoothTransition);
         width: 100%;
 
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: #000;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all .5s $smoothTransition);
+        }
+
         &.hasimg {
           cursor: pointer;
 

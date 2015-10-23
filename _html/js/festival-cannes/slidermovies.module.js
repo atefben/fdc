@@ -91,6 +91,39 @@ $(document).ready(function() {
       $barMovies.css({
         height: 0
       });
+
+      $('#slider-movies .active video')[0].pause();
+
+      var p = ($('#slider-movies .owl-item').height() / 2) - 100;
+
+      setTimeout(function() {
+        $('#slider-movies .active').prev().find('video').css({
+          '-webkit-transform': 'translate3d(0px, ' + p + 'px, 0px)',
+          '-moz-transform': 'translate3d(0px, ' + p + 'px, 0px)',
+          '-o-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(0px) translateY(' + p + 'px)',
+          'transform': 'translate3d(0px, ' + p + 'px, 0px)',
+          'transition': 'all 0.5s ease'
+        });
+
+        $('#slider-movies .active video').css({
+          '-webkit-transform': 'translate3d(0px, 0px, 0px)',
+          '-moz-transform': 'translate3d(0px, 0px, 0px)',
+          '-o-transform': 'translate3d(0px, 0px, 0px)',
+          '-ms-transform': 'translateX(0px) translateY(0px)',
+          'transform': 'translate3d(0px, 0px, 0px)',
+          'transition': 'all 0.7s ease'
+        });
+
+        $('#slider-movies .active').next().find('video').css({
+          '-webkit-transform': 'translate3d(0px, ' + p + 'px, 0px)',
+          '-moz-transform': 'translate3d(0px, ' + p + 'px, 0px)',
+          '-o-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+          '-ms-transform': 'translateX(0px) translateY(' + p + 'px)',
+          'transform': 'translate3d(0px, ' + p + 'px, 0px)',
+          'transition': 'all 0.5s ease'
+        });
+      }, 50);
     }
 
     function playNewVideo() {

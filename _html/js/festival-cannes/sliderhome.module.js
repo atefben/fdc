@@ -165,35 +165,31 @@ $(document).ready(function() {
       } else {
 
         setTimeout(function() {
-          $('#slider .center').prev().each(function() {
-            $(this).find('.img').css({
-              '-webkit-transform': 'translate3d(' + p + 'px, 0px, 0px)',
-              '-moz-transform': 'translate3d(' + p + 'px, 0px, 0px)',
-              '-o-transform': 'translate3d(' + p + 'px, 0px, 0px)',
-              '-ms-transform': 'translateX(' + p+ 'px) translateY(0px)',
-              'transform': 'translate3d(' + p + 'px, 0px, 0px)',
-              'transition': 'all 0.5s ease'
-            });
+          $('#slider .center').prev().find('.img').css({
+            '-webkit-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+            '-moz-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+            '-o-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+            '-ms-transform': 'translateX(' + p+ 'px) translateY(0px)',
+            'transform': 'translate3d(' + p + 'px, 0px, 0px)',
+            'transition': 'all 0.5s ease'
           });
 
-            $('#slider .center .img').css({
-              '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-              '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-              '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-              '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
-              'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-              'transition': 'all 0.7s ease'
-            });
+          $('#slider .center .img').css({
+            '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+            '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+            '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+            '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
+            'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+            'transition': 'all 0.7s ease'
+          });
 
-          $('#slider .center').next().each(function() {
-            $(this).find('.img').css({
-              '-webkit-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
-              '-moz-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
-              '-o-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
-              '-ms-transform': 'translateX(-' + p+ 'px) translateY(0px)',
-              'transform': 'translate3d(-' + p + 'px, 0px, 0px)',
-              'transition': 'all 0.5s ease'
-            });
+          $('#slider .center').next().find('.img').css({
+            '-webkit-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+            '-moz-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+            '-o-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+            '-ms-transform': 'translateX(-' + p+ 'px) translateY(0px)',
+            'transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+            'transition': 'all 0.5s ease'
           });
         }, 50);
       }
