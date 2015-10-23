@@ -144,25 +144,25 @@
                       <a id="photo2" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo3" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo3" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo4" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo4" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo5" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo5" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo6" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo6" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo7" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo7" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo8" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo8" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo9" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo9" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                   </div>
                   <div class="owl-carousel thumbnails">

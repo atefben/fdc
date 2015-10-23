@@ -84,6 +84,12 @@
         padding-right: 0;
         width: 0;
 
+        .image-wrapper img {
+          @include transition(none);
+          max-width: 212px!important;
+          width: 212px;
+        }
+
         .info, .delete, .picto {
           opacity: 0;
           visibility: hidden;

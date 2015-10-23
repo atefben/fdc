@@ -176,8 +176,6 @@ $('body').on('click', '.chocolat-left', function(){
     $('.chocolat-wrapper .thumb').removeClass('active');
     $('.chocolat-wrapper .thumb[data-id="' + window.location.hash.substr(1) + '"]').addClass('active');
   }
-
-
 });
 
 // update hash and active photo on nav click

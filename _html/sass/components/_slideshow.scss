@@ -373,7 +373,8 @@ div.chocolat-wrapper {
   }
 
   .chocolat-left {
-    background-color: $gold;
+    background: url('../img/svg/arrow-left-white.svg') no-repeat center;
+    background-size: 15px;
     bottom: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     display: block;
@@ -387,7 +388,8 @@ div.chocolat-wrapper {
   }
 
   .chocolat-right {
-    background-color: $gold;
+    background: url('../img/svg/arrow-right-white.svg') no-repeat center;
+    background-size: 15px;
     bottom: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     display: block;
@@ -406,6 +408,10 @@ div.chocolat-wrapper {
     top: 0;
     left: 0;
     width: 100%;
+  }
+
+  .chocolat-fullscreen {
+    display: none;
   }
 
   .chocolat-top {
