@@ -681,10 +681,36 @@
             <li><a href="http://www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique officielle</a></li>
             <li><a href="#">Publications</a></li>
           </ul>
-          <div class="imgSlide active bottom"><a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/001.png" alt="" /></a></div>
-          <div class="imgSlide bottom"><a href='#'><img src="img/prefooter/002.png" alt="" /></a></div>
-          <div class="imgSlide"><a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/003.png" alt="" /></a></div>
-          <div class="imgSlide"><a href='#'><img src="img/prefooter/004.png" alt="" /></a></div>
+          <div id="slider-prefooter" class="owl-carousel">
+            <div class="imgSlide active bottom">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/001.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide bottom">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='#'><img src="img/prefooter/002.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/003.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide top">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='#'><img src="img/prefooter/004.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

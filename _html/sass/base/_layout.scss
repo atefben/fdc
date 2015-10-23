@@ -45,6 +45,16 @@ body {
   vertical-align: middle;
 }
 
+.vCenterKidBottom {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.vCenterKidTop {
+  display: table-cell;
+  vertical-align: top;
+}
+
 .container {
   margin: 0 auto;
   max-width: 100%;

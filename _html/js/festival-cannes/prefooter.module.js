@@ -13,8 +13,22 @@ $(document).ready(function() {
       var i = $(this).parent().index();
 
       $(this).addClass('active');
-      $('.imgSlide').eq(i).addClass('active');
+      sliderPrefooter.trigger('to.owl.carousel', [i, 900, true]);
     });
+
+    var sliderPrefooter = $("#slider-prefooter").owlCarousel({
+      nav: false,
+      dots: false,
+      smartSpeed: 500,
+      center: true,
+      loop: false,
+      margin: 0,
+      items: 1,
+      touchDrag: false,
+      mouseDrag: false
+    });
+
+    sliderPrefooter.owlCarousel();
   }
 
 });

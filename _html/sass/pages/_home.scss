@@ -1381,13 +1381,25 @@
   overflow: hidden;
   position: relative;
 
-  .imgSlide {
-    bottom: 0;
-    left: 0;
-    opacity: 0;
+  #slider-prefooter {
     position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+
+    .owl-stage-outer, .owl-stage, .owl-item {
+      height: 100%;
+    }
+
+    .owl-item {
+      width: 100%;
+    }
+  }
+
+  .imgSlide {
     text-align: center;
-    visibility: hidden;
     height: 100%;
     width: 100%;
     z-index: 0;
@@ -1396,13 +1408,11 @@
     img {
       display: block;
       margin: 0 auto;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
       height: auto;
       max-height: 100%;
+      width: auto;
+      @include transform(translateZ(0));
+      -webkit-transform-style: initial;
     }
 
     &.active {
@@ -1413,7 +1423,11 @@
 
   @include breakpoint(1400px) {
     .bottom img {
-      bottom: -200px;
+      margin-bottom: -200px;
+    }
+
+    .top img {
+      margin-top: -200px;
     }
   }
 

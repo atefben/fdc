@@ -3186,6 +3186,16 @@ body {
   vertical-align: middle;
 }
 
+.vCenterKidBottom {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.vCenterKidTop {
+  display: table-cell;
+  vertical-align: top;
+}
+
 .container {
   margin: 0 auto;
   max-width: 100%;
@@ -6471,13 +6481,22 @@ div.chocolat-wrapper .chocolat-close {
   overflow: hidden;
   position: relative;
 }
-#prefooter .imgSlide {
-  bottom: 0;
-  left: 0;
-  opacity: 0;
+#prefooter #slider-prefooter {
   position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+#prefooter #slider-prefooter .owl-stage-outer, #prefooter #slider-prefooter .owl-stage, #prefooter #slider-prefooter .owl-item {
+  height: 100%;
+}
+#prefooter #slider-prefooter .owl-item {
+  width: 100%;
+}
+#prefooter .imgSlide {
   text-align: center;
-  visibility: hidden;
   height: 100%;
   width: 100%;
   z-index: 0;
@@ -6489,13 +6508,14 @@ div.chocolat-wrapper .chocolat-close {
 #prefooter .imgSlide img {
   display: block;
   margin: 0 auto;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
   height: auto;
   max-height: 100%;
+  width: auto;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform-style: initial;
 }
 #prefooter .imgSlide.active {
   opacity: 1;
@@ -6503,7 +6523,10 @@ div.chocolat-wrapper .chocolat-close {
 }
 @media screen and (max-width: 1400px) {
   #prefooter .bottom img {
-    bottom: -200px;
+    margin-bottom: -200px;
+  }
+  #prefooter .top img {
+    margin-top: -200px;
   }
 }
 #prefooter h2 {
