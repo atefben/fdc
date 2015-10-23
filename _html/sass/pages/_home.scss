@@ -561,7 +561,7 @@
         position: absolute;
         top: 0;
         transform-origin: 50% 50% 0px;
-        @include transition(all 1s $smoothTransition);
+        @include transition(all 1.5s $smoothTransition);
         width: 100%;
 
         &:before {
@@ -575,7 +575,12 @@
           background-color: #000;
           opacity: 0;
           visibility: hidden;
-          @include transition(all .5s $smoothTransition);
+          @include transition(all .6s $smoothTransition);
+        }
+
+        &.overlay:before {
+          opacity: 0.7;
+          visibility: visible;
         }
 
         &.hasimg {
