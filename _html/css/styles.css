@@ -5479,7 +5479,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 #news .container #timeline.stick {
   position: fixed;
-  top: 120px;
+  top: 125px;
   z-index: 4;
 }
 #news .container #timeline a {
