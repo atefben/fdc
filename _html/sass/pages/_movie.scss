@@ -667,7 +667,7 @@
           left: 0;
           opacity: 0;
           visibility: hidden;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.8s $smoothTransition);
 
           &.active {
             opacity: 1;
