@@ -18,6 +18,7 @@
 <script src="js/festival-cannes/faq.module.js"></script>
 <script src="js/festival-cannes/films.module.js"></script>
 <script src="js/festival-cannes/filters.module.js"></script>
+<script src="js/festival-cannes/google-map.module.js"></script>
 <script src="js/festival-cannes/grids.module.js"></script>
 <script src="js/festival-cannes/jurys.module.js"></script>
 <script src="js/festival-cannes/menu.module.js"></script>

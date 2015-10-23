@@ -10247,3 +10247,157 @@ article .image .linkImage {
 .app .contain-app .logo-app img {
   cursor: pointer;
 }
+
+.participate .title-list-header {
+  padding-top: 127px !important;
+}
+.participate .logo {
+  margin-bottom: 28px;
+}
+.participate .contain-participate {
+  background-color: #fff;
+}
+.participate .contain-participate .contain-descript {
+  border-bottom: 1px solid #e0e0e0;
+}
+.participate .contain-participate .contain-descript .descrip {
+  width: 785px;
+  margin: 0 auto;
+  padding: 46px 0px;
+  line-height: 30px;
+  color: #333333;
+  text-align: center;
+}
+.participate .contain-participate section {
+  border-bottom: 1px solid #e0e0e0;
+}
+.participate .contain-participate section .contain-section {
+  width: 997px;
+  margin: 0 auto;
+  padding-bottom: 63px;
+}
+.participate .contain-participate section .contain-section a {
+  color: #c29f5f;
+  text-decoration: underline;
+}
+.participate .contain-participate section .contain-section .descrip-section {
+  line-height: 24px;
+  font-size: .8125rem;
+}
+.participate .contain-participate section .contain-section .descrip-section .ask {
+  font-family: "Camphor W01 Bold";
+}
+.participate .contain-participate section .contain-section #google-map {
+  width: 975px;
+  height: 350px;
+  margin-top: 51px;
+}
+.participate .contain-participate section .title-participate {
+  font: 0.875rem "Camphor W01 Bold";
+  color: #c8a461;
+  text-transform: uppercase;
+  padding-top: 39px;
+  padding-bottom: 36px;
+  letter-spacing: 4px;
+}
+.participate .contain-participate section .title-participate img {
+  width: 19px;
+  height: 15px;
+  padding-right: 22px;
+}
+.participate .contain-participate section .item {
+  text-align: center;
+  width: 325px;
+  line-height: 24px;
+  text-align: center;
+  height: 269px;
+  display: inline-block;
+  vertical-align: text-top;
+}
+.participate .contain-participate section .item .svg {
+  height: 41px;
+  width: 86px;
+}
+.participate .contain-participate section .item .transport {
+  color: #000000;
+  font: 0.75rem "Camphor W01 Heavy";
+  display: block;
+  text-transform: uppercase;
+  padding-top: 20px;
+  padding-bottom: 23px;
+}
+.participate .contain-participate section .item .time {
+  font-size: .8125rem;
+  display: block;
+  margin-bottom: 29px;
+  padding: 0 25px;
+}
+.participate .contain-participate section .item .info {
+  display: block;
+  padding-bottom: 15px;
+  font-size: .8125rem;
+}
+.participate .contain-participate section .item .info a {
+  color: #c29f5f;
+  text-decoration: underline;
+}
+.participate .contain-participate section .item .info .price {
+  color: #c29f5f;
+}
+.participate .contain-participate section .item .info strong {
+  font-family: "Camphor W01 Bold";
+}
+.participate .contain-participate section .item .btn {
+  font-size: .625rem;
+  padding: 14px 26px;
+  border: 1px solid #c8a461;
+  color: #c8a461;
+  text-transform: uppercase;
+}
+.participate .contain-participate section .large {
+  width: 495px;
+  text-align: center;
+}
+.participate .contain-participate section .descrip-participate {
+  width: 690px;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
+}
+.participate .contain-participate section .contain-map {
+  width: 325px;
+  display: inline-block;
+  text-align: center;
+  margin-top: 59px;
+}
+.participate .contain-participate section .contain-map .map {
+  margin-bottom: 40px;
+}
+.participate .contain-participate section .contain-map .name {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold";
+  display: block;
+  padding-bottom: 20px;
+}
+.participate .contain-participate section .contain-map .btn {
+  font-size: .625rem;
+  padding: 14px 26px;
+  border: 1px solid #c8a461;
+  color: #c8a461;
+  text-transform: uppercase;
+}
+.participate .contain-participate section .contain-map .link {
+  padding-top: 38px;
+}
+.participate .contain-participate section .contain-map .link a {
+  color: #c8a461;
+  text-decoration: underline;
+  vertical-align: text-top;
+}
+.participate .contain-participate section .contain-map .link img {
+  width: 12px;
+  height: 15px;
+  padding-right: 9px;
+}
