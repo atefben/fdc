@@ -12,21 +12,21 @@ $(document).ready(function() {
 //      $('#live').addClass('on');
 //    });
 //
-//    // create slide for trailers
-//    var sliderTrailers = $("#slider-trailers").owlCarousel({
-//      nav: false,
-//      dots: false,
-//      smartSpeed: 500,
-//      center: true,
-//      loop: false,
-//      margin: 50,
-//      autoWidth: true,
-//      onInitialized: function() {
-//        $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
-//      }
-//    });
-//
-//    sliderTrailers.owlCarousel();
+   // create slide for trailers
+   var sliderTrailers = $("#slider-trailers").owlCarousel({
+     nav: false,
+     dots: false,
+     smartSpeed: 500,
+     center: true,
+     loop: false,
+     margin: 50,
+     autoWidth: true,
+     onInitialized: function() {
+       $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
+     }
+   });
+
+   sliderTrailers.owlCarousel();
 //    
   $("#slider-trailer").owlCarousel({
       nav: false,

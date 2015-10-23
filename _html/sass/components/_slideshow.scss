@@ -243,7 +243,7 @@ div.chocolat-wrapper {
     visibility: visible;
 
     .chocolat-img {
-       opacity: 1;
+      opacity: 1;
       visibility: visible;
       @include transform(scale(1) translateZ(0));
     }
@@ -259,7 +259,8 @@ div.chocolat-wrapper {
     opacity: 0;
     visibility: hidden;
     z-index: 0;
-    @include transition(all 0.5s $smoothTransition);
+    @include transform(translateZ(0));
+    @include transition(all 0.8s $smoothTransition);
 
     &.open {
       bottom: 100px;
@@ -295,7 +296,7 @@ div.chocolat-wrapper {
     line-height: initial;
     padding: 0;
     height: 100px;
-    @include transition(all 0.3s $smoothTransition);
+    @include transition(all 0.5s $smoothTransition);
 
     &:after {
       content: '';
@@ -308,7 +309,8 @@ div.chocolat-wrapper {
       background-color: $black;
       opacity: 0;
       visibility: hidden;
-      @include transition(all 0.3s $smoothTransition);
+      @include transform(translateZ(0));
+      @include transition(all 0.5s $smoothTransition);
     }
 
     &:hover {
