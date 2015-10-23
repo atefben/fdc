@@ -26,6 +26,7 @@
 <script src="js/festival-cannes/news.module.js"></script>
 <script src="js/festival-cannes/newsletter.module.js"></script>
 <script src="js/festival-cannes/palmares.module.js"></script>
+<script src="js/festival-cannes/participate.module.js"></script>
 <script src="js/festival-cannes/prefooter.module.js"></script>
 <script src="js/festival-cannes/prehome.module.js"></script>
 <script src="js/festival-cannes/resize.module.js"></script>

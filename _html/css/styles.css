@@ -10411,11 +10411,23 @@ article .image .linkImage {
   cursor: pointer;
 }
 
+.participate .participate-active {
+  height: auto !important;
+}
 .participate .title-list-header {
   padding-top: 127px !important;
 }
 .participate .logo {
   margin-bottom: 28px;
+}
+.participate .fa {
+  margin-bottom: 40px;
+  border: solid 1px #ebebeb;
+  padding: 18px;
+  color: #c1c1c1;
+  position: absolute;
+  right: 1px;
+  top: 18px;
 }
 .participate .contain-participate {
   background-color: #fff;
@@ -10438,6 +10450,9 @@ article .image .linkImage {
   width: 997px;
   margin: 0 auto;
   padding-bottom: 63px;
+  position: relative;
+  overflow: hidden;
+  height: 22px;
 }
 .participate .contain-participate section .contain-section a {
   color: #c29f5f;
@@ -10563,4 +10578,72 @@ article .image .linkImage {
   width: 12px;
   height: 15px;
   padding-right: 9px;
+}
+.participate .contain-acces .imgs-acces {
+  display: inline-block;
+  height: 762px;
+  width: 363px;
+  padding-right: 56px;
+}
+.participate .contain-acces .imgs-acces img {
+  padding-bottom: 31px;
+}
+.participate .contain-acces .text-acces {
+  display: inline-block;
+  width: 355px;
+  vertical-align: top;
+}
+.participate .contain-acces .text-acces .title-acces {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-family: "Camphor W01 Bold";
+  font-size: .75rem;
+  padding-bottom: 20px;
+}
+.participate .contain-acces .text-acces .descript-acces {
+  padding-bottom: 20px;
+  font-size: .8125rem;
+  line-height: 24px;
+}
+.participate .contain-acces .text-acces .descript-acces strong {
+  font-family: "Camphor W01 Bold";
+}
+.participate .contain-cinema .title-cinema {
+  font-size: 0.88rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold";
+}
+.participate .contain-cinema .contain-item-cinema {
+  padding-bottom: 71px;
+}
+.participate .contain-cinema .contain-item-cinema .cinema {
+  padding-top: 29px;
+}
+.participate .contain-cinema .contain-item-cinema .cinema img {
+  display: inline-block;
+  width: 363px;
+  height: 229px;
+}
+.participate .contain-cinema .contain-item-cinema .cinema .text-cinema {
+  width: 521px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 59px;
+  line-height: 38px;
+}
+.participate .contain-cinema .contain-item-cinema .cinema .text-cinema h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold";
+  margin-top: -11px;
+}
+.participate .contain-cinema .contain-item-cinema .cinema .text-cinema p {
+  font-size: 0.81rem;
+}
+.participate .contain-cinema .contain-item-cinema .cinema .text-cinema p strong {
+  color: #c8a461;
+}
+.participate .contain-cinema .contain-item-cinema .cinema .text-cinema p a {
+  color: #c8a461;
 }
