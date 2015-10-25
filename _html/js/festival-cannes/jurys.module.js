@@ -14,8 +14,13 @@ $(document).ready(function() {
 //        $.get($(this).data('url'), function(data){
         $.get(urlPath, function(data){
             $( ".container-jurys" ).html( $(data).find('.container-jurys') );
-          console.log($(data).find('.container-jurys'));
             history.pushState('',"titre test", urlPath);
+             $grid = $('#gridJurys').imagesLoaded(function() {
+                $grid.isotope({
+                  layoutMode: 'packery',
+                  itemSelector: '.item'
+                });
+             });
         });
         $('.jurys-list .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');

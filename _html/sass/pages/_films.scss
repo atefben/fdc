@@ -2,6 +2,7 @@
 // =========================
 // 1. Global
 // 2. Bandeau
+// 3. Selection officielles
 // =========================
 
 
@@ -319,4 +320,53 @@
         
 
     }
+}
+
+// 3. Selection officielle
+//////////////////////////////
+
+
+.selection-officielle{
+  figure{
+    figcaption{
+      height: 103px;
+      text-align: center;
+      .name{
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: $CamphorBold;
+        font-size: .875rem;
+        display: block;
+        padding-top: 25px;
+      }
+      .sub-name{
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: $CamphorBold;
+        font-size: .625rem;
+        display: block;      
+      }
+      .author{
+        text-align: center;
+        font-family: $CamphorItalic;
+        font-size: .8125rem;
+        color:#c8a461;   
+      }
+    }
+  }
+  .container:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .grid{
+    padding-top: 0px;
+    .grid-wrapper {
+     margin-top: 0px; 
+    }
+  }
 }

@@ -302,7 +302,7 @@
 
       &.stick {
         position: fixed;
-        top: 120px;
+        top: 125px;
         z-index: 4;
       }
 
@@ -561,8 +561,27 @@
         position: absolute;
         top: 0;
         transform-origin: 50% 50% 0px;
-        @include transition(all 1s $smoothTransition);
+        @include transition(all 1.5s $smoothTransition);
         width: 100%;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: #000;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all .6s $smoothTransition);
+        }
+
+        &.overlay:before {
+          opacity: 0.7;
+          visibility: visible;
+        }
 
         &.hasimg {
           cursor: pointer;
@@ -677,11 +696,30 @@
         font-size: 0.875rem;
         line-height: 16px;
         padding-right: 30px;
+        position: relative;
         @include transform(translateZ(0));
-        @include transition(color 0.3s $smoothTransition);
+        @include transition(color 0.8s $smoothTransition);
 
         &:hover {
           color: $gold;
+
+          &:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all 0.8s $smoothTransition);
         }
 
         &.facebook {
@@ -689,8 +727,9 @@
           background-size: 20px;
           padding-right: 25px;
 
-          &:hover {
-            background-image: url('../img/svg/facebook-gold.svg');
+          &:after {
+            background: url('../img/svg/facebook-gold.svg') right top no-repeat;
+            background-size: 20px;
           }
         }
 
@@ -698,8 +737,8 @@
           background: url('../img/svg/twitter-grey.svg') right 15% no-repeat;
           background-size: 18px;
 
-          &:hover {
-            background-image: url('../img/svg/twitter-gold.svg');
+          &:after {
+            background: url('../img/svg/twitter-gold.svg') right 15% no-repeat;
             background-size: 18px;
           }
         }
@@ -708,8 +747,8 @@
           background: url('../img/svg/instagram-grey.svg') right top no-repeat;
           background-size: 20px;
 
-          &:hover {
-            background-image: url('../img/svg/instagram-gold.svg');
+          &:after {
+            background: url('../img/svg/instagram-gold.svg') right top no-repeat;
             background-size: 20px;
           }
         }
@@ -719,8 +758,9 @@
           background-size: 20px;
           padding-right: 25px;
 
-          &:hover {
-            background-image: url('../img/svg/tumblr-gold.svg');
+          &:after {
+            background: url('../img/svg/tumblr-gold.svg') right top no-repeat;
+            background-size: 20px;
           }
         }
 
@@ -728,8 +768,9 @@
           background: url('../img/svg/youtube-grey.svg') right top no-repeat;
           background-size: 20px;
 
-          &:hover {
-            background-image: url('../img/svg/youtube-gold.svg');
+          &:after {
+            background: url('../img/svg/youtube-gold.svg') right top no-repeat;
+            background-size: 20px;
           }
         }
 
@@ -738,8 +779,9 @@
           background-size: 20px;
           padding-right: 25px;
 
-          &:hover {
-            background-image: url('../img/svg/dailymotion-gold.svg');
+          &:after {
+            background: url('../img/svg/dailymotion-gold.svg') right top no-repeat;
+            background-size: 20px;
           }
         }
       }
@@ -933,7 +975,7 @@
   #slider-channels {
     padding-top: 60px;
 
-    .owl-item.center + .owl-item, .owl-item.previous {
+    .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
       opacity: 1;
 
       .linkVid {
@@ -1092,14 +1134,34 @@
 
     a {
       color: $gold;
+      display: inline-block;
       font-family: $CamphorHeavy;
       font-size: 0.750rem;
       text-transform: uppercase;
       padding: 0 0 0 20px;
+      position: relative;
       @include transition(all 0.9s $smoothTransition);
 
       &:hover {
         color: #fff;
+
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        visibility: hidden;
+        width: 15px;
+        @include transition(all 0.9s $smoothTransition);
       }
 
       &:first-child {
@@ -1109,11 +1171,21 @@
       &.seances {
         background: url('../img/svg/calendar.svg') no-repeat left center;
         background-size: 15px;
+
+        &:after {
+          background: url('../img/svg/calendar-white.svg') no-repeat center;
+          background-size: 15px;
+        }
       }
 
       &.all {
         background: url('../img/svg/arrow-right-gold.svg') no-repeat left center;
         background-size: 15px;
+
+        &:after {
+          background: url('../img/svg/arrow-right-white.svg') no-repeat center;
+          background-size: 15px;
+        }
       }
     }
   }
@@ -1314,13 +1386,25 @@
   overflow: hidden;
   position: relative;
 
-  .imgSlide {
-    bottom: 0;
-    left: 0;
-    opacity: 0;
+  #slider-prefooter {
     position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+
+    .owl-stage-outer, .owl-stage, .owl-item {
+      height: 100%;
+    }
+
+    .owl-item {
+      width: 100%;
+    }
+  }
+
+  .imgSlide {
     text-align: center;
-    visibility: hidden;
     height: 100%;
     width: 100%;
     z-index: 0;
@@ -1329,13 +1413,11 @@
     img {
       display: block;
       margin: 0 auto;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
       height: auto;
       max-height: 100%;
+      width: auto;
+      @include transform(translateZ(0));
+      -webkit-transform-style: initial;
     }
 
     &.active {
@@ -1346,7 +1428,11 @@
 
   @include breakpoint(1400px) {
     .bottom img {
-      bottom: -200px;
+      margin-bottom: -200px;
+    }
+
+    .top img {
+      margin-top: -200px;
     }
   }
 

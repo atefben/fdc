@@ -44,7 +44,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
+            <div class="img" style="background-image:url(img/articles/01.jpg)"></div>
             <div class="info">
               <span class="category">Test</span>
               <h2>test</h2>
@@ -52,7 +52,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img" style="background-image:url(img/slider/slider02.jpg)"></div>
+            <div class="img" style="background-image:url(img/articles/02.jpg)"></div>
             <div class="info">
               <span class="category">Lorem ipsum</span>
               <h2>test</h2>
@@ -144,25 +144,25 @@
                       <a id="photo2" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo3" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo3" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo4" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo4" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo5" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo5" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo6" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo6" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo7" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo7" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo8" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo8" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo9" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo9" class="chocolat-image" href="img/slide001.jpg"><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                   </div>
                   <div class="owl-carousel thumbnails">
@@ -681,10 +681,36 @@
             <li><a href="http://www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique officielle</a></li>
             <li><a href="#">Publications</a></li>
           </ul>
-          <div class="imgSlide active bottom"><a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/001.png" alt="" /></a></div>
-          <div class="imgSlide bottom"><a href='#'><img src="img/prefooter/002.png" alt="" /></a></div>
-          <div class="imgSlide"><a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/003.png" alt="" /></a></div>
-          <div class="imgSlide"><a href='#'><img src="img/prefooter/004.png" alt="" /></a></div>
+          <div id="slider-prefooter" class="owl-carousel">
+            <div class="imgSlide active bottom">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/001.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide bottom">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='#'><img src="img/prefooter/002.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/003.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide top">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='#'><img src="img/prefooter/004.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

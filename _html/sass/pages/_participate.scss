@@ -1,0 +1,258 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.participate{
+  .participate-active{
+    height: auto !important;
+  }
+  .title-list-header{
+    padding-top:  127px !important;
+
+  }
+  .logo{
+    margin-bottom: 28px;
+  }
+  .fa {
+    margin-bottom: 40px;
+    border: solid 1px #ebebeb;
+    padding: 18px;
+    color: #c1c1c1;
+    position: absolute;
+    right: 1px;
+    top: 18px;
+  }
+  .contain-participate{
+    background-color: #fff;
+
+    
+    .contain-descript{
+      border-bottom: 1px solid #e0e0e0;
+      .descrip{
+        width: 785px;
+        margin: 0 auto;
+        padding: 46px 0px;
+        line-height: 30px;
+        color:#333333;
+        text-align: center;
+      }
+    }
+    section{
+      border-bottom: 1px solid #e0e0e0;      
+      .contain-section{
+      width: 997px;
+      margin: 0 auto;
+      padding-bottom: 63px;
+      position: relative;
+      overflow: hidden;
+      height: 22px;
+        a{
+          color: #c29f5f;
+          text-decoration: underline;
+        }
+        .descrip-section{
+            line-height: 24px;
+           font-size: .8125rem;
+          .ask{
+            font-family: $CamphorBold;
+          } 
+        }
+        #google-map{
+          width: 975px;
+          height: 350px;
+          margin-top: 51px; 
+        }
+      }
+      .title-participate {
+        font: .875rem $CamphorBold;
+        color: #c8a461;
+        text-transform: uppercase;
+        padding-top: 39px;
+        padding-bottom: 36px;
+        letter-spacing: 4px;
+        img{
+          width: 19px;
+          height: 15px;
+          padding-right: 22px;
+        }
+      }
+      .item{
+        text-align: center;
+        width: 325px;
+        line-height: 24px;
+        text-align: center;
+        height: 269px;
+        display: inline-block;
+        vertical-align: text-top;
+        .svg{
+          height: 41px;
+          width: 86px;
+        }
+        .transport{
+          color: #000000;
+          font:  .75rem $CamphorHeavy;
+          display: block;
+          text-transform: uppercase;
+          padding-top: 20px;
+          padding-bottom: 23px;
+        }
+        .time{
+          font-size: .8125rem;
+          display: block;
+          margin-bottom: 29px;
+          padding: 0 25px;
+        }
+        .info{
+          display: block;
+          padding-bottom: 15px;
+          font-size: .8125rem;
+          a{
+            color: #c29f5f ;
+            text-decoration: underline ;
+          }
+          .price{
+            color: #c29f5f;
+          }
+          strong{
+            font-family: $CamphorBold;
+          }
+        }
+        .btn{
+          font-size: .625rem;
+          padding: 14px 26px;
+          border: 1px solid #c8a461;
+          color: #c8a461;
+          text-transform: uppercase;
+        }
+      }
+      .large{
+        width: 495px;
+        text-align: center;
+      }
+      .descrip-participate{
+        width: 690px;
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0 auto;
+        line-height: 36px;
+      }
+      .contain-map{
+        width: 325px;
+        display: inline-block;
+        text-align: center;
+        margin-top: 59px;
+        .map{
+          margin-bottom: 40px;
+        }
+        .name{
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          font-family: $CamphorBold;     
+          display: block;
+          padding-bottom: 20px;
+        }
+        .btn{
+          font-size: .625rem;
+          padding: 14px 26px;
+          border: 1px solid #c8a461;
+          color: #c8a461;
+          text-transform: uppercase;
+        }
+        .link{
+          padding-top: 38px;
+          a{            
+            color: #c8a461;
+            text-decoration: underline;
+            vertical-align: text-top;
+          }
+          img{
+            width: 12px;
+            height: 15px;
+            padding-right: 9px;
+          }
+        }
+      }
+    }
+  }
+  .contain-acces{
+    .imgs-acces{
+      display: inline-block;
+      height: 762px;
+      width: 363px;
+      padding-right: 56px;
+      img{
+        padding-bottom: 31px;
+      }
+    }
+    .text-acces{
+      display: inline-block;
+      width: 355px;
+      vertical-align:top;
+
+      .title-acces{
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-family: $CamphorBold;
+        font-size:.75rem;
+        padding-bottom: 20px;
+      }
+      .descript-acces{
+        padding-bottom: 20px;
+        font-size: .8125rem;
+        line-height: 24px;
+        
+        strong{
+          font-family: $CamphorBold;
+        }
+      }
+    }
+  }
+  .contain-cinema{
+    .title-cinema{
+      font-size: 0.88rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-family: $CamphorBold;
+    }
+    .contain-item-cinema{
+      padding-bottom: 71px;
+      .cinema{
+      padding-top: 29px;
+      
+      img{
+        display: inline-block;
+        width: 363px;
+        height: 229px;
+      }
+      .text-cinema{
+        width: 521px;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 59px;
+        line-height: 38px;
+        h4{
+          font-size: 0.75rem;
+          text-transform: uppercase; 
+          font-family : $CamphorBold;
+          margin-top: -11px;
+        }
+        p{
+
+          font-size: 0.81rem;
+          strong{
+            color: #c8a461;
+          }
+          a{
+            color: #c8a461;
+          }
+        }
+      }
+    } 
+    }
+  }
+}

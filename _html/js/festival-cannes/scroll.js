@@ -34,7 +34,7 @@ $(document).ready(function() {
     }
 
     if($('#news').length) {
-      if(s > $('#news').offset().top + 50 && s < ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height())) {
+      if(s > $('#news').offset().top + 70 && s < ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height())) {
         $('#timeline').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 57);
       } else {
         $('#timeline').removeClass('stick').css('left', 'auto');
@@ -65,8 +65,10 @@ $(document).ready(function() {
         $('.nav').removeClass('black');
       }
 
-      $('.main-image').height($('.main-image').data('height'));
-      $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
+      if(s > 100 && $('.main-image').hasClass('trailer')) {
+        $('.main-image').height($('.main-image').data('height')).css('padding-top', 0);
+        $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
+      }
 
       var sections = $('*[data-section')
         , nav = $('#nav-movie')

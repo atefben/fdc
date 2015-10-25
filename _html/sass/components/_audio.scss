@@ -120,11 +120,11 @@
   .image {
     background-size: cover;
     background-position: center;
-    left: -1%;
-    height: 102%;
+    left: -3%;
+    height: 106%;
     position: absolute;
-    top: -1%;
-    width: 102%;
+    top: -3%;
+    width: 106%;
     z-index: 0;
     @include filter(blur(5px));
   }
@@ -142,6 +142,26 @@
     visibility: hidden;
     width: 32px;
     @include transition(all 0.3s $smoothTransition);
+  }
+
+  &:before {
+    background: #000;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 2;
+    @include transition(all 0.5s $smoothTransition);
+  }
+
+  &.overlay-channels:before {
+    opacity: 0.8;
+    visibility: visible;
   }
 
   &.on.loading {
@@ -239,8 +259,62 @@
     left: auto;
     margin: 0;
 
+    .playpause {
+      bottom: 41px;
+      top: auto;
+    }
+
+    .on {
+      height: 100px;
+      bottom: 0;
+      top: auto;
+      z-index: 3;
+    }
+
     .info, .picto {
       display: none;
+    }
+
+    #channels-audio {
+      height: 185px;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -92px;
+      z-index: 3;
+      @include transform(translate3d(0, 30px, 0));
+      @include transition(all .8s $smoothTransition);
+
+      .info, .picto {
+        display: block;
+      }
+
+      .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
+        opacity: 1;
+
+        .linkVid {
+          display: block;
+        }
+      }
+
+      .info {
+        bottom: 15px;
+      }
+
+      .picto {
+        background-image: url('../img/svg/audio.svg');
+        background-size: 25px;
+        margin-left: 0;
+      }
+
+      &.active {
+        @include transform(translate3d(0, 0, 0));
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     .top {
@@ -252,6 +326,30 @@
       position: absolute;
       top: 0;
       width: 100%;
+      z-index: 3;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: $black;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 0;
+        @include transform(translateZ(0));
+        @include transition(all 0.5s $smoothTransition);
+      }
+
+      &:hover {
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
 
       .channels {
         border-right: 1px solid rgba(255, 255, 255, 0.3);
@@ -259,12 +357,22 @@
         float: left;
         height: 100%;
         width: 80px;
+        position: relative;
+        z-index: 1;
+        @include transition(all .5s $smoothTransition);
+
+        &:hover, &.active {
+          background-color: $gold;
+        }
       }
 
       .info {
         display: block;
         height: 100%;
         float: left;
+        position: relative;
+        text-align: left;
+        z-index: 1;
 
         .category {
           margin-left: 0;
@@ -277,6 +385,8 @@
 
       .buttons {
         float: right;
+        position: relative;
+        z-index: 1;
 
         .button {
           border-color: rgba(255, 255, 255, 0.3);
@@ -315,24 +425,6 @@
     .wave-container {
 
     }
-
-    .bottom {
-      height: 80px;
-      left: 0;
-      margin: 0;
-      overflow: hidden;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-
-      .playpause {
-        background: green;
-        display: block;
-        float: left;
-        height: 100%;
-        width: 80px;
-      }
-    }
   }
 }
 
@@ -349,31 +441,36 @@
   padding: 20px;
   box-sizing: border-box;
   pointer-events: none;
+  z-index: 10;
   @include transform(translateY(30px));
-  @include transition(all .8s $smoothTransition);
+  @include transition(all 1.2s $smoothTransition);
+
+  .playpause {
+    top: 229px;
+    margin-top: 0;
+  }
 
   .on {
+    height: 440px;
     opacity: 1;
     visibility: visible;
     position: relative;
-    left: auto;
     top: auto;
-    width: 100%;
   }
 
   &.show {
     opacity: 1;
     pointer-events: initial;
     visibility: visible;
-    z-index: 10;
     @include transform(translateY(0));
   }
 
-  .image {
+  .image-container {
     left: 20px;
     height: 440px;
     overflow: hidden;
     top: 20px;
+    position: absolute;
     width: 710px;
   }
 
@@ -384,6 +481,11 @@
 
     a:hover {
       background-color: #fff;
+      border-color: $gold!important;
+
+      + .button {
+        border-left-color: $gold;
+      }
     }
 
     a.facebook {
@@ -442,7 +544,7 @@
   @include transition(all 0.3s $smoothTransition);
 
   &.show {
-    opacity: 0.6;
+    opacity: 0.8;
     visibility: visible;
   }
 }

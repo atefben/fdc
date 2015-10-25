@@ -348,7 +348,7 @@
       </div>
       <a id="next" href="audios2.html"></a>
       <div class="popin-audio audio" data-sound="">
-        <div class="image"></div>
+        <div class="image-container"><div class="image"></div></div>
         <a href="#" class="playpause"></a>
         <div class="on">
           <div class="vCenter">
@@ -363,16 +363,16 @@
               <a href="#" class="fullscreen"></a>
             </div>
           </div>
-          <div class="info">
-            <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
-            <p></p>
-          </div>
-          <div class="buttons square">
-            <a href="#" class="button facebook"></a>
-            <a href="#" class="button twitter"></a>
-            <a href="#" class="button link"></a>
-            <a href="#" class="button email"></a>
-          </div>
+        </div>
+        <div class="info">
+          <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+          <p></p>
+        </div>
+        <div class="buttons square">
+          <a href="#" class="button facebook"></a>
+          <a href="#" class="button twitter"></a>
+          <a href="#" class="button link"></a>
+          <a href="#" class="button email"></a>
         </div>
       </div>
       <div class="ov"></div>

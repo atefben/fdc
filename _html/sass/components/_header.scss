@@ -63,7 +63,6 @@ header {
 
     #logo-wrapper {
       height: 50px;
-      transition-delay: .2s;
 
       #logo {
         width: 290px;
@@ -92,8 +91,9 @@ header {
         }
       }
 
-      #search, #partners {
-        display: none;
+      #partners, #search {
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }
@@ -204,7 +204,7 @@ header {
     background-color: $black;
     height: 160px;
     overflow: hidden;
-    @include transition(all 0.3s $smoothTransition);
+    @include transition(all 0.5s $smoothTransition);
     @include transform(translateY(0));
 
     .container {
@@ -272,9 +272,10 @@ header {
     }
 
     #partners {
-      display: inline-block;
-      vertical-align: middle;
-      @include transition(all 0.3s $smoothTransition);
+      position: absolute;
+      top: 60px;
+      left: 315px;
+      @include transition(all 0.5s $smoothTransition);
 
       img {
         display: inline-block;
@@ -307,7 +308,7 @@ header {
       position: relative;
       margin-top: 47px;
       width: 63px;
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(all 0.5s $smoothTransition);
 
       a {
         background: url('../img/svg/search.svg') center no-repeat;
@@ -332,6 +333,10 @@ header {
       li {
         display: inline-block;
         margin-left: -4px;
+
+        &:hover>a {
+          color: $gold;
+        }
 
         &:first-child {
           margin-left: 0;
@@ -363,7 +368,7 @@ header {
           visibility: hidden;
           width: 977px;
           z-index: 15;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.5s $smoothTransition);
           @include transform(translateY(0));
 
           &:before {
@@ -402,16 +407,40 @@ header {
         font-family: $CamphorBold;
         font-size: 0.740rem;
 
+        li:hover>a {
+          color: $gold;
+
+          &:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
         li a {
           color: $grey;
           padding: 0 0 0 30px;
+          position: relative;
+
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(all .6s $smoothTransition);
+          }
 
           &.programmation {
             background: url('../img/svg/programmation.svg') no-repeat 8% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/programmation-gold.svg');
+            &:after {
+              background: url('../img/svg/programmation-gold.svg') no-repeat 8% 47%;
+              background-size: 15px;
             }
           }
 
@@ -419,8 +448,9 @@ header {
             background: url('../img/svg/participate.svg') no-repeat 12% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/participate-gold.svg');
+            &:after {
+              background: url('../img/svg/participate-gold.svg') no-repeat 12% 47%;
+              background-size: 15px;
             }
           }
 
@@ -428,13 +458,19 @@ header {
             background: url('../img/svg/press.svg') no-repeat 12% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/press-gold.svg');
+            &:after {
+              background: url('../img/svg/press-gold.svg') no-repeat 12% 47%;
+              background-size: 15px;
             }
           }
 
           &:hover {
             color: $gold;
+
+            &:after {
+              opacity: 1;
+              visibility: visible;
+            }
           }
         }
 

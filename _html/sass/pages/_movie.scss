@@ -153,7 +153,7 @@
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
-      @include transform(translateY(350px));
+      @include transform(translateY(550px));
     }
 
     @include breakpoint(1600px) {
@@ -195,7 +195,7 @@
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
-      @include transform(translateY(350px));
+      @include transform(translateY(550px));
     }
 
     @include breakpoint(1600px) {
@@ -281,6 +281,19 @@
     z-index: 3;
     @include transition(all 0.3s $smoothTransition);
 
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.3s $smoothTransition);
+    }
+
     @include breakpoint(1024px) {
       top: 62px;
       margin-top: 0;
@@ -300,13 +313,21 @@
       background-size: 15px;
       left: 2%;
 
+      &:after {
+        background: url('../img/svg/arrow-left-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
       &.trailer {
         background-color: transparent;
         left: -85px;
       }
 
       &:hover, &.over, &.black {
-        background-image: url('../img/svg/arrow-left-black.svg');
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
 
@@ -316,8 +337,16 @@
       left: auto;
       right: 2%;
 
+      &:after {
+        background: url('../img/svg/arrow-right-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
       &:hover, &.over, &.black {
-        background-image: url('../img/svg/arrow-right-black.svg');
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
       }
 
       &.trailer {
@@ -357,7 +386,7 @@
       top: 0;
       visibility: hidden;
       width: 100%;
-      @include transition(all 0.5s $smoothTransition 1s);
+      @include transition(all 0.5s $smoothTransition .2s);
     }
 
     &.trailer {
@@ -638,7 +667,7 @@
           left: 0;
           opacity: 0;
           visibility: hidden;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.8s $smoothTransition);
 
           &.active {
             opacity: 1;

@@ -12,21 +12,41 @@ $(document).ready(function() {
         cl.setSpeed(1);
         cl.setFPS(60);
 
-    // init slider
-    var sliderMovieVideos = $("#slider-movie-videos").owlCarousel({
-      nav: false,
-      dots: false,
-      smartSpeed: 500,
-      center: true,
-      loop: false,
-      margin: 50,
-      autoWidth: true,
-      onInitialized: function() {
-        $('#slider-movie-videos .owl-stage').css({ 'margin-left': "-343px" });
-      }
-    });
+    function initSliders() {
+      // init slider
+      var sliderMovieVideos = $("#slider-movie-videos").owlCarousel({
+        nav: false,
+        dots: false,
+        smartSpeed: 500,
+        center: true,
+        loop: false,
+        margin: 50,
+        autoWidth: true,
+        onInitialized: function() {
+          $('#slider-movie-videos .owl-stage').css({ 'margin-left': "-343px" });
+        }
+      });
 
-    sliderMovieVideos.owlCarousel();
+      sliderMovieVideos.owlCarousel();
+
+      // slider competitions
+      var sliderCompetition = $("#slider-competition").owlCarousel({
+        nav: false,
+        dots: false,
+        smartSpeed: 500,
+        center: true,
+        loop: false,
+        margin: 50,
+        autoWidth: true,
+        onInitialized: function() {
+          $('#slider-competition .owl-stage').css({ 'margin-left': "-385px" });
+        }
+      });
+
+      sliderCompetition.owlCarousel();
+    }
+    
+    initSliders();
 
     // go to item
     $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
@@ -34,7 +54,7 @@ $(document).ready(function() {
     });
 
     // gallery slideshow
-    $('.gallery .thumbs a').on('click', function(e) {
+    $('body').on('click', '.gallery .thumbs a', function(e) {
       e.preventDefault();
       var i = $(this).index(),
           cap = $(this).data('caption');
@@ -49,7 +69,7 @@ $(document).ready(function() {
     });
 
     // anchors menu
-    $('#nav-movie ul a').on('click', function (e) {
+    $('body').on('click', '#nav-movie ul a', function (e) {
       e.preventDefault();
 
       $('#nav-movie ul a').removeClass('active');
@@ -63,36 +83,24 @@ $(document).ready(function() {
       }, 500);
     });
 
-    // slider competitions
-    var sliderCompetition = $("#slider-competition").owlCarousel({
-      nav: false,
-      dots: false,
-      smartSpeed: 500,
-      center: true,
-      loop: false,
-      margin: 50,
-      autoWidth: true,
-      onInitialized: function() {
-        $('#slider-competition .owl-stage').css({ 'margin-left': "-385px" });
-      }
-    });
-
-    sliderCompetition.owlCarousel();
-
     $('body').on('click', '#slider-competition .owl-item', function(e) {
       sliderCompetition.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });
 
     // show and play trailer
-    $('.poster .picto').on('click', function(e) {
+    $('body').on('click', '.poster .picto', function(e) {
       e.preventDefault();
-
-      $('.main-image').data('height', $('.main-image').height()).height($(window).height() - $('header').height());
-      $('.main-image, .poster, .info-film, .nav').addClass('trailer');
 
       $('html, body').animate({
         scrollTop: 0
-      }, 500);
+      }, 300, function() {
+        $('.main-image, .poster, .info-film, .nav').addClass('trailer');
+        $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
+        setTimeout(function() {
+          $('header').addClass('sticky');
+        }, 800);
+        
+      });
     });
 
     // previous and next over
@@ -105,8 +113,11 @@ $(document).ready(function() {
     });
 
     // previous and next over
-    $('body').on('mouseover', '.single-movie .prevmovie, .single-movie .nextmovie', function(e) {
-      $('.single-movie .nav').addClass('over');
+    $('body').on('mouseover', '.single-movie .prevmovie', function(e) {
+      $('.single-movie .nav.prev').addClass('over');
+    });
+    $('body').on('mouseover', '.single-movie .nextmovie', function(e) {
+      $('.single-movie .nav.next').addClass('over');
     });
 
     $('body').on('mouseover', '.main-image, .container, .videos, div.press, .competition', function(e) {
@@ -154,6 +165,9 @@ $(document).ready(function() {
               $('.anim').addClass('next').removeClass('show');
             }
             cl.hide();
+            initSliders();
+            initSlideshows();
+            initAudioPlayers();
           }, 800);
         });
       }, 2000);

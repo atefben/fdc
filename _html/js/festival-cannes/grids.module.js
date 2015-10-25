@@ -180,6 +180,15 @@ $(document).ready(function() {
           });
         });
     }
+    if($('#gridFilmSelection').length){ 
+        $grid = $('#gridFilmSelection').imagesLoaded(function() {
+
+          $grid.isotope({
+            layoutMode: 'packery',
+            itemSelector: '.item'
+          });
+        });
+    }
 
     if($('#gridAudios').length) {
 
@@ -212,6 +221,7 @@ $(document).ready(function() {
                 img = $(e.target).find('img').attr('src'),
                 category = $(e.target).find('.category').text(),
                 date = $(e.target).find('.date').text(),
+                hour = $(e.target).find('.hour').text(),
                 text = $(e.target).find('p').text(),
                 $popinAudio = $('.popin-audio');
               
@@ -219,6 +229,7 @@ $(document).ready(function() {
             $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
             $popinAudio.find('.category').text(category);
             $popinAudio.find('.date').text(date);
+            $popinAudio.find('.hour').text(hour);
             $popinAudio.find('p').text(text);
             $popinAudio.addClass('audio-player show');
 

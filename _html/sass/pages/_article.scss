@@ -215,6 +215,7 @@ article {
     left: 0;
     width: 0;
     background-color: $black;
+    z-index: 10;
     @include transition(all 1.5s $smoothTransition);
 
     &.show {
@@ -662,17 +663,64 @@ article {
     border: 1px solid #dfdfdf;
     display: block;
     height: 82px;
-    position: absolute;
-    top: 135px;
+    position: fixed;
+    top: 57%;
     width: 82px;
+    z-index: 3;
     @include transition(all 0.3s $smoothTransition);
 
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.3s $smoothTransition);
+    }
+
     &.prev {
-      left: 35px;
+      background: url('../img/svg/arrow-left-article.svg') no-repeat center;
+      background-size: 15px;
+      left: 2%;
+
+      &:after {
+        background: url('../img/svg/arrow-left-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
+      &:hover {
+        border-color: $black;
+
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
 
     &.next {
-      right: 35px;
+      background: url('../img/svg/arrow-right-article.svg') no-repeat center;
+      background-size: 15px;
+      left: auto;
+      right: 2%;
+
+      &:after {
+        background: url('../img/svg/arrow-right-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
+      &:hover {
+        border-color: $black;
+
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
   }
 

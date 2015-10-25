@@ -4,6 +4,14 @@ $(document).ready(function() {
 
   if($('.single-article').length) {
 
+    var cl = new CanvasLoader('canvasloader');
+        cl.setColor('#ceb06e');
+        cl.setDiameter(20);
+        cl.setDensity(34);
+        cl.setRange(0.8);
+        cl.setSpeed(1);
+        cl.setFPS(60);
+
     // scroll to 'share' section
     $('#share-article').on('click', function(e) {
       e.preventDefault();
@@ -26,6 +34,10 @@ $(document).ready(function() {
       }
 
       $('.anim').addClass('show');
+      setTimeout(function() {
+        cl.show();
+        $('.canvasloader').addClass('show');
+      }, 800);
 
       var urlPath = $that.attr('href');
 
@@ -35,12 +47,19 @@ $(document).ready(function() {
           $(".content-article").html( $(data).find('.content-article') );
           history.pushState('',"titre test", urlPath);
 
-          if($that.hasClass('next')) {
-            $('.anim').removeClass('next show');
-          }
-          else {
-            $('.anim').addClass('next').removeClass('show');
-          }
+          $('.canvasloader').removeClass('show');
+
+          setTimeout(function() {
+            if($that.hasClass('next')) {
+              $('.anim').removeClass('next show');
+            }
+            else {
+              $('.anim').addClass('next').removeClass('show');
+            }
+            cl.hide();
+            initSlideshows();
+            initAudioPlayers();
+          }, 800);
         });
       }, 2000);
     });

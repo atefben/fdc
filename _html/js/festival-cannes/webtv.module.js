@@ -12,21 +12,21 @@ $(document).ready(function() {
 //      $('#live').addClass('on');
 //    });
 //
-//    // create slide for trailers
-//    var sliderTrailers = $("#slider-trailers").owlCarousel({
-//      nav: false,
-//      dots: false,
-//      smartSpeed: 500,
-//      center: true,
-//      loop: false,
-//      margin: 50,
-//      autoWidth: true,
-//      onInitialized: function() {
-//        $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
-//      }
-//    });
-//
-//    sliderTrailers.owlCarousel();
+   // create slide for trailers
+   var sliderTrailers = $("#slider-trailers").owlCarousel({
+     nav: false,
+     dots: false,
+     smartSpeed: 500,
+     center: true,
+     loop: false,
+     margin: 50,
+     autoWidth: true,
+     onInitialized: function() {
+       $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
+     }
+   });
+
+   sliderTrailers.owlCarousel();
 //    
   $("#slider-trailer").owlCarousel({
       nav: false,
@@ -77,7 +77,12 @@ $(document).ready(function() {
         $.get(urlPath, function(data){
             $( ".content-webtv" ).html( $(data).find('.content-webtv') );
           history.pushState('',"titre test", urlPath);
-          console.log(data);
+            $grid = $('#gridWebtv').imagesLoaded(function() {
+              $grid.isotope({
+                layoutMode: 'packery',
+                itemSelector: '.item'
+              });
+            });
         });
         $('.webtv-ba .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');

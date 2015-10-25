@@ -138,7 +138,10 @@ function displayGrid() {
       var item = posts.splice(random, 1)[0];
 
       $(c).prev().addClass(item.type);
-      $(c).parent().find('.side').removeClass('flip');
+      $(c).parent().find('.side-2').addClass('overlay');
+      setTimeout(function() {
+        $(c).parent().find('.side').removeClass('flip');
+      }, 600);
       if(item.img) {
         $(c).prev().addClass('hasimg').css('background-image', 'url(' + item.img + ')');
       }
