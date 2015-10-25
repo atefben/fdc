@@ -52,6 +52,8 @@ module.exports = function(grunt) {
             'js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js',
             'js/bower_components/infinite-scroll/jquery.infinitescroll.min.js',
             'js/bower_components/canvasloader/js/heartcode-canvasloader-min.js',
+            'js/components/fullscrenjs.js',
+            'js/components/jwplayer.js',
             'js/festival-cannes/helpers.js',
             'js/festival-cannes/*.module.js',
             'js/festival-cannes/*.js',

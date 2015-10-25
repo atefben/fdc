@@ -4994,6 +4994,158 @@ div.chocolat-wrapper .chocolat-close {
   height: 610px;
 }
 
+#video-container {
+  position: relative;
+  width: 960px;
+  height: calc(960px*9/16);
+}
+#video-container .control-bar {
+  position: absolute;
+  bottom: 0;
+  height: 18%;
+  z-index: 10;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.5)));
+  background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+#video-container:-webkit-full-screen .control-bar {
+  background: blue;
+}
+#video-container button {
+  background: none;
+  border: 0;
+  color: inherit;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button;
+}
+#video-container .control-bar .playstate {
+  position: relative;
+  width: 100px;
+  height: 100%;
+  display: inline-block;
+}
+#video-container .control-bar .playstate .play-btn {
+  position: absolute;
+  width: 12px;
+  height: 14px;
+  bottom: 40px;
+  left: 40px;
+  right: auto;
+  margin: auto;
+}
+#video-container .control-bar .playstate .play-btn.play {
+  background-image: url("../img/player/play.png");
+}
+#video-container .control-bar .playstate .play-btn.pause {
+  background-image: url("../img/player/pause.png");
+}
+#video-container .control-bar .time {
+  display: inline-block;
+  position: relative;
+  width: 125px;
+  height: 100%;
+}
+#video-container .control-bar .time .time-info {
+  position: absolute;
+  font-family: Helvetica;
+  color: #83847f;
+  font-size: 14px;
+  width: 82px;
+  height: 16px;
+  bottom: 40px;
+  left: 0px;
+  margin: auto;
+}
+#video-container .control-bar .time .time-info .current-time {
+  color: #fff;
+}
+#video-container .control-bar .progress {
+  position: relative;
+  display: inline-block;
+  width: calc(100% - 456px);
+  height: 100%;
+}
+#video-container .control-bar .progress .progress-bar {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  bottom: 45px;
+}
+#video-container .control-bar .progress .progress-bar .current-bar {
+  background-color: #fff;
+  border-radius: 1px;
+  height: 3px;
+  width: 0%;
+  transition: width .5s linear;
+}
+#video-container .control-bar .sound {
+  position: relative;
+  display: inline-block;
+  width: 135px;
+  height: 100%;
+}
+#video-container .control-bar .sound .sound-btn {
+  position: absolute;
+  background: url("../img/player/sound.png") left top no-repeat;
+  height: 14px;
+  width: 10px;
+  left: 40px;
+  bottom: 40px;
+  margin: auto;
+}
+#video-container .control-bar .sound .sound-btn:before {
+  height: 14px;
+}
+#video-container .control-bar .sound .sound-bar {
+  position: absolute;
+  cursor: pointer;
+  width: 70px;
+  height: 3px;
+  bottom: 45px;
+  margin: auto;
+  margin-left: 65px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#video-container .control-bar .sound .sound-bar .sound-seek {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: auto;
+  background-color: #fff;
+  z-index: 10;
+}
+#video-container .control-bar .fs {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 100%;
+}
+#video-container .control-bar .fs .fs-icon {
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  background-image: url("../img/player/fullscreen.png");
+  bottom: 40px;
+  right: 40px;
+  margin: auto;
+}
+
 #selection {
   background-color: #fff;
   left: 0;
