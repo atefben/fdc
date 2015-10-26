@@ -17,7 +17,7 @@ $(document).ready(function() {
   }, 800);
 
   setTimeout(function() {
-    $('#main').removeClass('loading');
+    $('#main, footer').removeClass('loading');
     cl.hide();
   }, 1100);
 
@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     if(href.indexOf('#') == -1) {
 
-      $('#main').addClass('loading');
+      $('#main, footer').addClass('loading');
 
       setTimeout(function() {
         cl.show();
