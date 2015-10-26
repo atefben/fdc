@@ -19,20 +19,23 @@ $(document).ready(function() {
     cl.hide();
   }, 1100);
 
-  $('body').on('click', "[target!='_blank']", function(e) {
+  $('body').on('click', "a[target!='_blank']", function(e) {
     var href = $(this).attr('href');
     e.preventDefault();
 
-    $('#main').addClass('loading');
+    if(href.indexOf('#') == -1) {
 
-    setTimeout(function() {
-      cl.show();
-      $('#siteLoader').addClass('show');
-    }, 1100);
+      $('#main').addClass('loading');
 
-    setTimeout(function() {
-      window.location = href;
-    }, 1600);
+      setTimeout(function() {
+        cl.show();
+        $('#siteLoader').addClass('show');
+      }, 1100);
+
+      setTimeout(function() {
+        window.location = href;
+      }, 1600);
+    }
 
     return false;
   });
