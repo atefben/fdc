@@ -75,9 +75,15 @@
         padding-top: 39px;
         padding-bottom: 36px;
         letter-spacing: 3px;
-        .svg{
+        .plus-info{
           width: 19px;
-          height: 15px;
+          height: 40px !important;
+          padding-right: 22px;  
+          margin-bottom: -12px;
+        }
+        .svg{
+          width: 20px;
+          height: 20px;
           padding-right: 22px;
         }
         .svg path{
@@ -87,6 +93,9 @@
           stroke : currentColor;
         }
       }
+      .part-plus-info{
+        padding-top: 27px;
+      }
       .participate-active{
         .title-participate{        
           color:#c29f5f;
@@ -94,7 +103,9 @@
         .fa{
           color:#c29f5f;
         }
-
+      }
+      .title-participate:hover{     
+          color:#c29f5f;
       }
       .item{
         text-align: center;
@@ -104,7 +115,7 @@
         height: 269px;
         display: inline-block;
         vertical-align: text-top;
-        .svg{
+        .svg-item{
           height: 41px;
           width: 86px;
         }

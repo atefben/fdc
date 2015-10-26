@@ -10655,9 +10655,15 @@ article .image .linkImage {
   padding-bottom: 36px;
   letter-spacing: 3px;
 }
-.participate .contain-participate section .title-participate .svg {
+.participate .contain-participate section .title-participate .plus-info {
   width: 19px;
-  height: 15px;
+  height: 40px !important;
+  padding-right: 22px;
+  margin-bottom: -12px;
+}
+.participate .contain-participate section .title-participate .svg {
+  width: 20px;
+  height: 20px;
   padding-right: 22px;
 }
 .participate .contain-participate section .title-participate .svg path {
@@ -10666,10 +10672,16 @@ article .image .linkImage {
 .participate .contain-participate section .title-participate .svg .st0 {
   stroke: currentColor;
 }
+.participate .contain-participate section .part-plus-info {
+  padding-top: 27px;
+}
 .participate .contain-participate section .participate-active .title-participate {
   color: #c29f5f;
 }
 .participate .contain-participate section .participate-active .fa {
+  color: #c29f5f;
+}
+.participate .contain-participate section .title-participate:hover {
   color: #c29f5f;
 }
 .participate .contain-participate section .item {
@@ -10681,7 +10693,7 @@ article .image .linkImage {
   display: inline-block;
   vertical-align: text-top;
 }
-.participate .contain-participate section .item .svg {
+.participate .contain-participate section .item .svg-item {
   height: 41px;
   width: 86px;
 }
