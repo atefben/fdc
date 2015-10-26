@@ -42,7 +42,7 @@
             <ul>
               <li><a href="webtv.php">En direct</a></li>
               <li><a href="channels.ph">Chaînes</a></li>
-              <li><a href="#">Bandes annonces</a></li>  
+              <li><a href="webtv_trailer_competition.php">Bandes annonces</a></li>  
             </ul>
         </article>
         <article class="sitemap-item">
@@ -55,16 +55,16 @@
                 <li><a href="#">Cinéfondation</a></li>
                 <li><a href="#">Courts Métrages</a></li>
                 <li><a href="#">Cannes Classics</a></li>
-                <li><a href="#">Cinéma de la Plage</a></li>
+                <li><a href="films_cinemadelaplage.php">Cinéma de la Plage</a></li>
             </ul>
         </article>
         <article class="sitemap-item">
             <h3 class="title sitemap-item-title">Jurys</h3>
             <ul>
-              <li><a href="#">Longs métrages</a></li>
-              <li><a href="#">Cinéfondation & court metrage</a></li>
-              <li><a href="#">Un certain regard</a></li>
-              <li><a href="#">Caméra d'or</a></li>  
+              <li><a href="jury_longsmetrages.php">Longs métrages</a></li>
+              <li><a href="jury_cinefondation_courtsmetrages.php">Cinéfondation & court metrage</a></li>
+              <li><a href="jury_uncertainregard.php">Un certain regard</a></li>
+              <li><a href="jury_camerador.php">Caméra d'or</a></li>  
             </ul>
         </article>
         <article class="sitemap-item">
@@ -93,19 +93,19 @@
             <h3 class="title sitemap-item-title">Participer</h3>
             <ul>
                 <li>
-                    <a href="#">Préparer son séjour</a>
+                    <a href="participer_sejour.php">Préparer son séjour</a>
                 </li>
                 <li>
                     <a href="#">Festival mode d'emploi</a>
                 </li>
                 <li>
-                    <a href="#">Accès aux projections</a>
+                    <a href="participer_preparer.php">Accès aux projections</a>
                 </li>
                 <li>
-                    <a href="#">Partenaires</a>
+                    <a href="service_partenaires.php">Partenaires</a>
                 </li>
                 <li>
-                    <a href="#">Fournisseurs</a>
+                    <a href="service_fournisseurs.php">Fournisseurs</a>
                 </li>
             </ul>
         </article>

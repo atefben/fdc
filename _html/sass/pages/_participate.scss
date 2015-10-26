@@ -1,6 +1,9 @@
 //       SUMMARY TABLE     
 // =========================
-// 1. Global
+// 1. participate global
+// 2. participate access
+// 3. service partners
+// 4. service contractor
 // =========================
 
 
@@ -28,9 +31,7 @@
     top: 18px;
   }
   .contain-participate{
-    background-color: #fff;
-
-    
+    background-color: #fff;   
     .contain-descript{
       border-bottom: 1px solid #e0e0e0;
       .descrip{
@@ -205,6 +206,11 @@
       }
     }
   }
+  
+  // 2. Access
+  // ---------------------
+  
+  
   .contain-acces{
     .imgs-acces{
       display: inline-block;
@@ -318,4 +324,183 @@
       }
     }
   }
+  
 }
+
+  // 3. Partners
+  // ---------------------
+
+.partners{
+  margin-bottom: 42px;
+  .content-partners{
+    background-color: #fff;
+    .contain-section{
+      margin: 0 auto;
+      width: 975px;
+      position: relative;
+      overflow: hidden;
+      height: 111px;
+      .fa{
+        top:45px;
+      }
+      .title-section{
+        text-transform: uppercase;
+        color: #c8a461;
+        font-size: 0.88rem;
+        letter-spacing: 3px;
+        padding-top: 55px;
+      }  
+      .item-partners{
+        border-bottom: 1px solid #c1c1c1;
+        padding: 41px 0px;
+        .contain-img{
+          display: inline-block;
+          width: 400px;
+          vertical-align: top;
+          img{
+            padding: 65px;
+          }
+        }
+        .text-partners{
+          width: 571px;
+          display: inline-block;
+          vertical-align: top;
+          .title-partners{
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-family : $CamphorBold;  
+            padding-bottom: 29px;
+          }
+          .descrip-partners{
+            font-size: 0.81rem;
+            line-height: 24px;
+            margin-bottom: 22px;
+          }
+          a{
+            color: #c8a461;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            padding-right: 13px;
+          }
+          .content-text-with-portrait{
+            display: inline-block;
+            width: 69%;
+          }
+          .portrait{
+            display: inline-block;
+            width: 134px;
+            vertical-align: top;
+            margin-top: 9%;
+            margin-left: 39px;
+            text-align: center;
+            .name{
+              display: block;
+              font-family : $CamphorBold; 
+              padding-bottom: 5px;
+            }
+            .rank{
+              display: block;
+              font-size: 0.75rem;
+              padding-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  } 
+  .content-partners:last-child{
+    .item-partners:last-child{
+      border-bottom: #FFF solid 0px;
+    }
+  }
+}
+
+
+  // 3. contractor
+  // ---------------------
+
+
+.contractor{
+  margin-bottom: 42px;
+  .content-contractor{
+    background-color: #fff;
+    .contain-section{
+      margin: 0 auto;
+      width: 975px;
+      position: relative;
+      .fa{
+        top:45px;
+      }
+      .title-section{
+        text-transform: uppercase;
+        color: #c8a461;
+        font-size: 0.88rem;
+        letter-spacing: 3px;
+        padding-top: 55px;
+      }  
+      .item-contractor{
+        border-bottom: 1px solid #c1c1c1;
+        padding: 41px 0px;
+        .contain-img{
+          display: inline-block;
+          width: 400px;
+          vertical-align: top;
+          text-align: center;
+          img{
+            padding: 22px;
+          }
+        }
+        .text-contractor{
+          width: 571px;
+          display: inline-block;
+          vertical-align: top;
+          .title-contractor{
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-family : $CamphorBold;  
+            padding-bottom: 29px;
+          }
+          .descrip-contractor{
+            font-size: 0.81rem;
+            line-height: 24px;
+            margin-bottom: 22px;
+          }
+          a{
+            color: #c8a461;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            padding-right: 13px;
+          }
+          .content-text-with-portrait{
+            display: inline-block;
+            width: 69%;
+          }
+          .portrait{
+            display: inline-block;
+            width: 134px;
+            vertical-align: top;
+            margin-top: 9%;
+            margin-left: 39px;
+            text-align: center;
+            .name{
+              display: block;
+              font-family : $CamphorBold; 
+              padding-bottom: 5px;
+            }
+            .rank{
+              display: block;
+              font-size: 0.75rem;
+              padding-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  } 
+  .content-contractor:last-child{
+    .item-contractor:last-child{
+      border-bottom: #FFF solid 0px;
+    }
+  }
+}
+

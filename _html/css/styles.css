@@ -10939,3 +10939,168 @@ article .image .linkImage {
   font-family: "Camphor W01 Bold";
   padding-top: 19px;
 }
+
+.partners {
+  margin-bottom: 42px;
+}
+.partners .content-partners {
+  background-color: #fff;
+}
+.partners .content-partners .contain-section {
+  margin: 0 auto;
+  width: 975px;
+  position: relative;
+  overflow: hidden;
+  height: 111px;
+}
+.partners .content-partners .contain-section .fa {
+  top: 45px;
+}
+.partners .content-partners .contain-section .title-section {
+  text-transform: uppercase;
+  color: #c8a461;
+  font-size: 0.88rem;
+  letter-spacing: 3px;
+  padding-top: 55px;
+}
+.partners .content-partners .contain-section .item-partners {
+  border-bottom: 1px solid #c1c1c1;
+  padding: 41px 0px;
+}
+.partners .content-partners .contain-section .item-partners .contain-img {
+  display: inline-block;
+  width: 400px;
+  vertical-align: top;
+}
+.partners .content-partners .contain-section .item-partners .contain-img img {
+  padding: 65px;
+}
+.partners .content-partners .contain-section .item-partners .text-partners {
+  width: 571px;
+  display: inline-block;
+  vertical-align: top;
+}
+.partners .content-partners .contain-section .item-partners .text-partners .title-partners {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold";
+  padding-bottom: 29px;
+}
+.partners .content-partners .contain-section .item-partners .text-partners .descrip-partners {
+  font-size: 0.81rem;
+  line-height: 24px;
+  margin-bottom: 22px;
+}
+.partners .content-partners .contain-section .item-partners .text-partners a {
+  color: #c8a461;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding-right: 13px;
+}
+.partners .content-partners .contain-section .item-partners .text-partners .content-text-with-portrait {
+  display: inline-block;
+  width: 69%;
+}
+.partners .content-partners .contain-section .item-partners .text-partners .portrait {
+  display: inline-block;
+  width: 134px;
+  vertical-align: top;
+  margin-top: 9%;
+  margin-left: 39px;
+  text-align: center;
+}
+.partners .content-partners .contain-section .item-partners .text-partners .portrait .name {
+  display: block;
+  font-family: "Camphor W01 Bold";
+  padding-bottom: 5px;
+}
+.partners .content-partners .contain-section .item-partners .text-partners .portrait .rank {
+  display: block;
+  font-size: 0.75rem;
+  padding-bottom: 5px;
+}
+.partners .content-partners:last-child .item-partners:last-child {
+  border-bottom: #FFF solid 0px;
+}
+
+.contractor {
+  margin-bottom: 42px;
+}
+.contractor .content-contractor {
+  background-color: #fff;
+}
+.contractor .content-contractor .contain-section {
+  margin: 0 auto;
+  width: 975px;
+  position: relative;
+}
+.contractor .content-contractor .contain-section .fa {
+  top: 45px;
+}
+.contractor .content-contractor .contain-section .title-section {
+  text-transform: uppercase;
+  color: #c8a461;
+  font-size: 0.88rem;
+  letter-spacing: 3px;
+  padding-top: 55px;
+}
+.contractor .content-contractor .contain-section .item-contractor {
+  border-bottom: 1px solid #c1c1c1;
+  padding: 41px 0px;
+}
+.contractor .content-contractor .contain-section .item-contractor .contain-img {
+  display: inline-block;
+  width: 400px;
+  vertical-align: top;
+  text-align: center;
+}
+.contractor .content-contractor .contain-section .item-contractor .contain-img img {
+  padding: 22px;
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor {
+  width: 571px;
+  display: inline-block;
+  vertical-align: top;
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor .title-contractor {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold";
+  padding-bottom: 29px;
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor .descrip-contractor {
+  font-size: 0.81rem;
+  line-height: 24px;
+  margin-bottom: 22px;
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor a {
+  color: #c8a461;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding-right: 13px;
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor .content-text-with-portrait {
+  display: inline-block;
+  width: 69%;
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor .portrait {
+  display: inline-block;
+  width: 134px;
+  vertical-align: top;
+  margin-top: 9%;
+  margin-left: 39px;
+  text-align: center;
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor .portrait .name {
+  display: block;
+  font-family: "Camphor W01 Bold";
+  padding-bottom: 5px;
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor .portrait .rank {
+  display: block;
+  font-size: 0.75rem;
+  padding-bottom: 5px;
+}
+.contractor .content-contractor:last-child .item-contractor:last-child {
+  border-bottom: #FFF solid 0px;
+}
