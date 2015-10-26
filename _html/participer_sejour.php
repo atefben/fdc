@@ -25,7 +25,7 @@
 <body>
   <?php include('header.html'); ?>
 
-    <div id="main" class="list-article participate">
+    <div id="main" class="list-article participate loading">
       <div class="bandeau-list">
         <div class="bandeau-list-img" style="background-image:url(img/participate/bandeau.jpg);background-size: cover;">
 

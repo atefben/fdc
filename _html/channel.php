@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="webtv single-channel">
+    <div id="main" class="webtv single-channel loading">
       <div class="container">
         <a href="#" class="back">Retour aux chaînes</a>
       </div>

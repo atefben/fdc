@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-  <div id="main" class="single-movie">
+  <div id="main" class="single-movie loading">
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-movie">
       <div class="prevmovie">

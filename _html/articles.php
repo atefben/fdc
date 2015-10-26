@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="all-articles grid">
+    <div id="main" class="all-articles grid loading">
       <h2 class="title">Tous les articles</h2>
       <div class="filters">
         <div id="date" class="filter">

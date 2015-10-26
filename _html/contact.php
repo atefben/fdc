@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="contact">
+    <div id="main" class="contact loading">
       <h2 class="title">Contact</h2>
       <div class="coords">
         <h3>Festival de Cannes</h3>

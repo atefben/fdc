@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class=" webtv webtv-ba-video">
+    <div id="main" class=" webtv webtv-ba-video loading">
     	<div class="container-webtv-ba-video">
 				<div class="title-container">
 					<a href="#">< Retour aux bandes annonces</a>

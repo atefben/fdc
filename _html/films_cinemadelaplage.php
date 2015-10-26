@@ -24,7 +24,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article">
+    <div id="main" class="list-article loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);background-size: cover;">
                <h2 class="title title-list-header">Cinema de la plage</h2>

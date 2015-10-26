@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="single-article single-evenement">
+    <div id="main" class="single-article single-evenement loading">
       <div class="content-article">
         <div class="container">
           <a href="article2.php" class="nav prev"></a>

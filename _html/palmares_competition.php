@@ -24,17 +24,17 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article palmares-list">
+    <div id="main" class="list-article palmares-list loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/palmares/cover-bandeau-palmares.jpg);background-size: cover;">
                <h2 class="title title-list-header">Le Palmares</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="palmares_competition.php" class="active">Compétition</a></li>
-               <li><a href="palmares_uncertainregard.php" >Un certain regard</a></li>
-               <li><a href="palmares_cinefondation.php">Cinéfondation</a></li>
-               <li><a href="palmares_camerador.php">Caméra d'or</a></li>
-               <li><a href="palmares_toutlepalmares.php">Tout le palmarès</a></li>
+               <li><a href="palmares_competition.php" class="active ajax">Compétition</a></li>
+               <li><a href="palmares_uncertainregard.php" class="ajax">Un certain regard</a></li>
+               <li><a href="palmares_cinefondation.php" class="ajax">Cinéfondation</a></li>
+               <li><a href="palmares_camerador.php" class="ajax">Caméra d'or</a></li>
+               <li><a href="palmares_toutlepalmares.php" class="ajax">Tout le palmarès</a></li>
            </ul>  
       </div>
       <div class="container container-list">

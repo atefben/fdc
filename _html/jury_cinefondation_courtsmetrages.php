@@ -24,16 +24,16 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article jurys-list">
+    <div id="main" class="list-article jurys-list loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/jurys/bandeau.jpg);background-size: cover;">
                <h2 class="title title-list-header">Les jurys</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="jury_longsmetrages.php" >Longs métrages</a></li>
-               <li><a href="jury_cinefondation_courtsmetrages.php" class="active">Cinéfondation & courts métrages</a></li>
-               <li><a href="jury_uncertainregard.php">Un certain regard</a></li>
-               <li><a href="jury_camerador.php">Caméra d'or</a></li>
+               <li><a href="jury_longsmetrages.php" class="ajax">Longs métrages</a></li>
+               <li><a href="jury_cinefondation_courtsmetrages.php" class="active ajax">Cinéfondation & courts métrages</a></li>
+               <li><a href="jury_uncertainregard.php" class="ajax">Un certain regard</a></li>
+               <li><a href="jury_camerador.php" class="ajax">Caméra d'or</a></li>
            </ul> 
       </div>
       <div class="container-jurys">

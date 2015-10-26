@@ -24,7 +24,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="sitemap">
+    <div id="main" class="sitemap loading">
     <h2 class="title">Plan du site</h2>
     <section class="sitemap-container">
         <article class="sitemap-item">

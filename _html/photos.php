@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="all-photos grid">
+    <div id="main" class="all-photos grid loading">
       <h2 class="title">Toutes les photos</h2>
       <div class="filters">
         <div id="date" class="filter">

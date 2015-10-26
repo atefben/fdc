@@ -33,14 +33,14 @@
 					</div>
 				</div>
 				<ul class="sub-nav-list">
-					<li><a href="webtv_trailer_competition.php" data-url="webtv_trailer_competition_detail.php" >Compétition</a></li>
-					<li><a href="webtv_trailer_uncertainregard.php" data-url="webtv_trailer_uncertainregard_detail.php">Un certain regard</a></li>
-					<li><a href="webtv_trailer_horscompetition.php" data-url="webtv_trailer_horscompetition_detail.php">Hors compétition</a></li>
-					<li><a href="webtv_trailer_seancespeciales.php" data-url="webtv_trailer_seancespeciales.php">Séances spéciales</a></li>
-					<li><a href="webtv_trailer_cinefondation.php" data-url="webtv_trailer_cinefondation.php">Cinéfondation</a></li>
-					<li><a href="webtv_trailer_courtmetrage.php" data-url="webtv_trailer_courtmetrage.php" >Court métrages</a></li>
-					<li><a href="webtv_trailer_cannesclassics.php" data-url="webtv_trailer_cannesclassics.php">Cannes classics</a></li>
-					<li><a href="webtv_trailer_cinemadelaplage.php" data-url="webtv_trailer_cinemadelaplage.php" class="active">Cinéma de la plage</a></li>
+					<li><a href="webtv_trailer_competition.php" data-url="webtv_trailer_competition_detail.php" class="ajax">Compétition</a></li>
+					<li><a href="webtv_trailer_uncertainregard.php" data-url="webtv_trailer_uncertainregard_detail.php" class="ajax">Un certain regard</a></li>
+					<li><a href="webtv_trailer_horscompetition.php" data-url="webtv_trailer_horscompetition_detail.php" class="ajax">Hors compétition</a></li>
+					<li><a href="webtv_trailer_seancespeciales.php" data-url="webtv_trailer_seancespeciales.php" class="ajax">Séances spéciales</a></li>
+					<li><a href="webtv_trailer_cinefondation.php" data-url="webtv_trailer_cinefondation.php" class="ajax">Cinéfondation</a></li>
+					<li><a href="webtv_trailer_courtmetrage.php" data-url="webtv_trailer_courtmetrage.php" class="ajax">Court métrages</a></li>
+					<li><a href="webtv_trailer_cannesclassics.php" data-url="webtv_trailer_cannesclassics.php" class="ajax">Cannes classics</a></li>
+					<li><a href="webtv_trailer_cinemadelaplage.php" data-url="webtv_trailer_cinemadelaplage.php" class="active ajax">Cinéma de la plage</a></li>
 				</ul>
 			</div>
 			<div class="content-webtv">

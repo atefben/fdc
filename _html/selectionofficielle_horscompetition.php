@@ -24,18 +24,18 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article films-list selection-officielle">
+    <div id="main" class="list-article films-list selection-officielle loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);background-size: cover;">
                <h2 class="title title-list-header">Selection officielle</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="selectionofficielle_competition.php">Compétition</a></li>
-               <li><a href="selectionofficielle_uncertainregard.php">Un certain regard</a></li>
-               <li><a href="selectionofficielle_horscompetition.php" class="active">Hors compétition</a></li>
-               <li><a href="selectionofficielle_seancespeciales.php">Séances spéciales</a></li>
-               <li><a href="selectionofficielle_cinefondation.php">Cinéfondation</a></li>
-              <li><a href="selectionofficielle_courtsmetrages.php">Courts métrages</a></li>
+               <li><a href="selectionofficielle_competition.php" class="ajax">Compétition</a></li>
+               <li><a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a></li>
+               <li><a href="selectionofficielle_horscompetition.php" class="active ajax">Hors compétition</a></li>
+               <li><a href="selectionofficielle_seancespeciales.php" class="ajax">Séances spéciales</a></li>
+               <li><a href="selectionofficielle_cinefondation.php" class="ajax">Cinéfondation</a></li>
+              <li><a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a></li>
            </ul> 
       </div>
       <div class="container container-list ">

@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="single-article">
+    <div id="main" class="single-article loading">
       <div id="canvasloader" class="canvasloader"></div>
       <div class="content-article">
         <div class="container small-container">
