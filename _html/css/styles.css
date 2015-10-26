@@ -3590,6 +3590,9 @@ header #navigation {
   height: 39px;
   line-height: 39px;
 }
+header #navigation .container {
+  overflow: hidden;
+}
 header #navigation ul {
   float: left;
 }
@@ -3677,7 +3680,7 @@ header #navigation ul.user li:hover > a:after {
 }
 header #navigation ul.user li a {
   color: #8c8c8c;
-  padding: 0 0 0 30px;
+  padding: 0 0 0 28px;
   position: relative;
 }
 header #navigation ul.user li a:after {

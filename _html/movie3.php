@@ -53,8 +53,8 @@
           </div>
         </div>
       </div>
-      <a href="movie2.php" class="nav prev"></a>
-      <a href="movie3.php" class="nav next"></a>
+      <a href="movie2.php" class="nav prev ajax"></a>
+      <a href="movie3.php" class="nav next ajax"></a>
       <div class="main-image" style="background-image: url('img/movie/001.jpg')">
         <div class="links">
           <div class="container">

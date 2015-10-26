@@ -26,8 +26,8 @@
       <div id="canvasloader" class="canvasloader"></div>
       <div class="content-article">
         <div class="container small-container">
-          <a href="article2.php" class="nav prev"></a>
-          <a href="article3.php" class="nav next"></a>
+          <a href="article2.php" class="nav prev ajax"></a>
+          <a href="article3.php" class="nav next ajax"></a>
           <div class="info">
             <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
             <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
@@ -48,12 +48,12 @@
             <div class="slideshow-img">
               <div class="images">
                 <div class="img active">
-                  <a id="photo1" class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
                     <img src="img/slide001.jpg" alt="" />
                   </a>
                 </div>
                 <div class="img">
-                  <a id="photo2" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                  <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
                 </div>
                 <div class="img"><img src="img/slide001.jpg" alt="" /></div>
                 <div class="img"><img src="img/slide001.jpg" alt="" /></div>

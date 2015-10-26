@@ -8,10 +8,12 @@ $(document).ready(function() {
       cl.setFPS(60);
 
   cl.show();
-  $('#siteLoader').addClass('show');
+  var $loader = $('#siteLoader');
+  $loader.addClass('show');
+
 
   setTimeout(function() {
-    $('#siteLoader').removeClass('show');
+    $loader.removeClass('show');
   }, 800);
 
   setTimeout(function() {
@@ -19,7 +21,7 @@ $(document).ready(function() {
     cl.hide();
   }, 1100);
 
-  $('body').on('click', "a[target!='_blank']", function(e) {
+  $('body').on('click', "a[target!='_blank']:not(.ajax)", function(e) {
     var href = $(this).attr('href');
     e.preventDefault();
 
@@ -29,7 +31,7 @@ $(document).ready(function() {
 
       setTimeout(function() {
         cl.show();
-        $('#siteLoader').addClass('show');
+        $loader.addClass('show');
       }, 1100);
 
       setTimeout(function() {

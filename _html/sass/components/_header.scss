@@ -327,6 +327,10 @@ header {
     height: 39px;
     line-height: 39px;
 
+    .container {
+      overflow: hidden;
+    }
+
     ul {
       float: left;
 
@@ -418,7 +422,7 @@ header {
 
         li a {
           color: $grey;
-          padding: 0 0 0 30px;
+          padding: 0 0 0 28px;
           position: relative;
 
           &:after {
