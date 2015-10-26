@@ -5072,6 +5072,7 @@ div.chocolat-wrapper .chocolat-close {
 .ov {
   background-color: #141414;
   content: '';
+  cursor: pointer;
   display: block;
   height: 100%;
   left: 0;
