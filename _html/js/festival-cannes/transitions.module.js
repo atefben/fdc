@@ -9,17 +9,11 @@ $(document).ready(function() {
 
   cl.show();
   var $loader = $('#siteLoader');
-  $loader.addClass('show');
-
-
-  setTimeout(function() {
-    $loader.removeClass('show');
-  }, 800);
 
   setTimeout(function() {
     $('#main, footer').removeClass('loading');
     cl.hide();
-  }, 1100);
+  }, 500);
 
   $('body').on('click', "a[target!='_blank']:not(.ajax)", function(e) {
     var href = $(this).attr('href');
@@ -35,8 +29,12 @@ $(document).ready(function() {
       }, 1100);
 
       setTimeout(function() {
+        $loader.removeClass('show');
+      }, 1800);
+
+      setTimeout(function() {
         window.location = href;
-      }, 1600);
+      }, 1900);
     }
 
     return false;
