@@ -258,6 +258,7 @@
     top: auto;
     left: auto;
     margin: 0;
+    padding: 0;
 
     .playpause {
       bottom: 41px;
@@ -398,6 +399,7 @@
 
         a:hover {
           background-color: #fff;
+          border-color: rgba(255, 255, 255, 0.3)!important;
         }
 
         a.facebook {
@@ -424,6 +426,36 @@
 
     .wave-container {
 
+    }
+
+    .image-container {
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    &.popin-audio>.buttons {
+      display: none;
+    }
+
+    &.popin-audio .buttons {
+      top: auto;
+      right: auto;
+      bottom: auto;
+    }
+
+    &.popin-audio .on {
+      position: absolute;
+    }
+
+    &.popin-audio .info {
+      bottom: auto;
+      margin-left: 13px;
+
+      p {
+        color: #fff;
+      }
     }
   }
 }

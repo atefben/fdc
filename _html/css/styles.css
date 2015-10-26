@@ -4817,6 +4817,7 @@ div.chocolat-wrapper .chocolat-close {
   top: auto;
   left: auto;
   margin: 0;
+  padding: 0;
 }
 .audio-player.full .playpause {
   bottom: 41px;
@@ -4955,6 +4956,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 .audio-player.full .top .buttons a:hover {
   background-color: #fff;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 .audio-player.full .top .buttons a.facebook {
   background: url("../img/svg/facebook-gold.svg") no-repeat center;
@@ -4971,6 +4973,30 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player.full .top .buttons a.link {
   background: url("../img/svg/link.svg") no-repeat center;
   background-size: 16px;
+}
+.audio-player.full .image-container {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.audio-player.full.popin-audio > .buttons {
+  display: none;
+}
+.audio-player.full.popin-audio .buttons {
+  top: auto;
+  right: auto;
+  bottom: auto;
+}
+.audio-player.full.popin-audio .on {
+  position: absolute;
+}
+.audio-player.full.popin-audio .info {
+  bottom: auto;
+  margin-left: 13px;
+}
+.audio-player.full.popin-audio .info p {
+  color: #fff;
 }
 
 .popin-audio {
