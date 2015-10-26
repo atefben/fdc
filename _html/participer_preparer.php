@@ -34,7 +34,7 @@
       <div class="contain-participate">
         <section>
          <div class="contain-section">
-          <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="">Les différents types d'accès</h3><i class="fa fa-plus"></i>
+          <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="" class="svg">Les différents types d'accès</h3><i class="fa fa-plus"></i>
           
           <div class="contain-acces">
             <div class="imgs-acces">
@@ -61,7 +61,8 @@
         </section>
         <section>
          <div class="contain-section">
-          <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="">Les salles de projection</h3><i class="fa fa-plus"></i>
+         <!-- For active svg supp grey in JS -->
+          <h3 class="title-participate"><img src="img/participate/se-rendre-a-cannes.svg" alt="" class="svg">Les salles de projection</h3><i class="fa fa-plus"></i>
           <div class="contain-cinema">
            <h4 class="title-cinema">Les salles du festival</h4>
            <div class="contain-item-cinema">
@@ -103,30 +104,51 @@
             </div> 
            </div>
           <h4 class="title-cinema">Les salles du marché du film</h4>
+          <h4 class="descrip-participate">Le marché du Film dispose de projections situées dans le Palais, le Riviera et en ville.</h4>
+          <p class="descrip-title">
+            <strong>Accès</strong> : sur badge Marché, invitation Marché (ou badge Presse si autorisé)<br><strong>Priorité</strong> : badge Marché bandeay mauve
+          </p>
+          <div class="contain-map">
+            <strong class="name">Dans le palais</strong>
+            <img src="img/participate/map4.jpg" alt="" class="map">
+            <span class="loc">Salles B à H - <strong>Localisation</strong> : niveau F+3</span>
+            <span class="loc">Salles I - J - K <strong>Localisation</strong> : niveau F + 4</span>
+          </div>
+          <div class="contain-map">
+            <strong class="name">Au riveria</strong>
+            <img src="img/participate/map2.png" alt="" class="map">
+            <span class="loc">Salles Rivéria 1 à 4 - <strong>Localisation</strong> : niveau 0</span>
+            <span class="loc">Salles  Lérins 1 et 2 <strong>Localisation</strong> : niveau 1</span>
+          </div>
+          <div class="contain-map">
+            <strong class="name">En ville</strong>
+            <img src="img/participate/map3.png" alt="" class="map">
+            <span class="loc"><strong>Arcades : </strong>Salles 1 à 3 (77, rue Félix Faure)</span>
+            <span class="loc"><strong>Olympia : </strong>Salles 1 à 9 (5, bis rue d'Antibes)</span>
+            <span class="loc"><strong>Star : </strong>Salles 1 à 4 (98, rue d'Antibes)</span>
+            <span class="loc"><strong>Hôtel Gray d'Albion : </strong>Salles 1 à 5 (1er étage - 38, rue des Serbes)</span>
+          </div>
           </div>
          </div>
         </section>
         <section>
-          <div class="contain-section">
-            <h3 class="title-participate"> <img src="img/participate/plan.svg" alt="">Plans</h3><i class="fa fa-plus"></i>          
-            <h4 class="descrip-participate">Gardez le Cap ! Téléchargez ici les cartes et les plans pour vous repérer à Cannes et dans le périmètre du Festival.</h4>
-            <div class="contain-map">
-              <strong class="name">Le festival de cannes</strong>
-              <img src="img/participate/map.png" alt="" class="map">
-              <a href="" class="btn telecharger">Télécharger</a>
-              <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
+          <div class="contain-section contain-cinema">
+            <h3 class="title-participate"> <img src="img/participate/plan.svg" alt="" class="svg">Les bonnes pratiques</h3><i class="fa fa-plus"></i>          
+            <div class="item-good-practice">
+              <img src="img/participate/logo-attente.png" alt="svg">
+              <strong>Pas d'utilisation d'enregistreur vidéos/audios/photos</strong>
             </div>
-            <div class="contain-map">
-              <strong class="name">La zone festival</strong>
-              <img src="img/participate/map2.png" alt="" class="map">
-              <a href="" class="btn telecharger">Télécharger</a>
-              <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
+            <div class="item-good-practice">
+              <img src="img/participate/logo-attente.png" alt="svg">
+              <strong>Pas de selfies sur les marches</strong>
             </div>
-            <div class="contain-map">
-              <strong class="name">Le palais</strong>
-              <img src="img/participate/map3.png" alt="" class="map">
-              <a href="" class="btn telecharger">Télécharger</a>
-              <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
+            <div class="item-good-practice">
+              <img src="img/participate/logo-attente.png" alt="svg">
+              <strong>Pas de téléphone dans les salles</strong>
+            </div>
+            <div class="item-good-practice">
+              <img src="img/participate/logo-attente.png" alt="svg">
+              <strong>Dress Code exigé</strong>
             </div>
           </div>
         </section>
