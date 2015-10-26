@@ -33,7 +33,7 @@ $(document).ready(function() {
 
     setTimeout(function() {
       cl.show();
-      $('.canvasloader').addClass('show');
+      $('#canvasloader').addClass('show');
     }, 800);
 
     // todo: remove timeout
@@ -44,7 +44,7 @@ $(document).ready(function() {
         cache: false,
         url: 'news.html' ,
         success: function(data) {
-          $('.canvasloader').removeClass('show');
+          $('#canvasloader').removeClass('show');
           $('#articles-wrapper').html(data);
 
           setTimeout(function() {
@@ -91,7 +91,7 @@ $(document).ready(function() {
 
       setTimeout(function() {
         cl.show();
-        $('.canvasloader').addClass('show');
+        $('#canvasloader').addClass('show');
       }, 800);
 
       // todo: remove timeout
@@ -102,7 +102,7 @@ $(document).ready(function() {
           cache: false,
           url: 'news.html' ,
           success: function(data) {
-            $('.canvasloader').removeClass('show');
+            $('#canvasloader').removeClass('show');
 
             setTimeout(function() {
               cl.hide();

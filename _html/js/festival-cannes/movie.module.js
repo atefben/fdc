@@ -140,7 +140,7 @@ $(document).ready(function() {
       $('.anim').addClass('show');
       setTimeout(function() {
         cl.show();
-        $('.canvasloader').addClass('show');
+        $('#canvasloader').addClass('show');
       }, 800);
 
       var urlPath = $that.attr('href');
@@ -155,7 +155,7 @@ $(document).ready(function() {
           $(".content-movie").html( $(data).find('.content-movie') );
           history.pushState('',"titre test", urlPath);
 
-          $('.canvasloader').removeClass('show');
+          $('#canvasloader').removeClass('show');
 
           setTimeout(function() {
             if($that.hasClass('next')) {

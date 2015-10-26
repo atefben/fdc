@@ -24,7 +24,7 @@
       <div id="prehome"></div>
     </div>
     <?php include('header.html'); ?>
-    <div id="main" class="home">
+    <div id="main" class="home loading">
       <div id="sliderWrapper">
         <div id="slider" class="owl-carousel">
           <div>

@@ -41,6 +41,7 @@
 <script src="js/festival-cannes/slidervideos.module.js"></script>
 <script src="js/festival-cannes/slideshows.module.js"></script>
 <script src="js/festival-cannes/socialwall.module.js"></script>
+<script src="js/festival-cannes/transitions.module.js"></script>
 <script src="js/festival-cannes/video.module.js"></script>
 <script src="js/festival-cannes/webtv.module.js"></script>
 <script src="js/festival-cannes/evenement.js"></script>
