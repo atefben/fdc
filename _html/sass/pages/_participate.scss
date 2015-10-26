@@ -70,16 +70,31 @@
       }
       .title-participate {
         font: .875rem $CamphorBold;
-        color: #c8a461;
+        color: #c1c1c1;
         text-transform: uppercase;
         padding-top: 39px;
         padding-bottom: 36px;
-        letter-spacing: 4px;
-        img{
+        letter-spacing: 3px;
+        .svg{
           width: 19px;
           height: 15px;
           padding-right: 22px;
         }
+        .svg path{
+          fill:currentColor;
+        }
+        .svg .st0{
+          stroke : currentColor;
+        }
+      }
+      .participate-active{
+        .title-participate{        
+          color:#c29f5f;
+        }
+        .fa{
+          color:#c29f5f;
+        }
+
       }
       .item{
         text-align: center;
@@ -253,6 +268,43 @@
         }
       }
     } 
+    }
+    .descrip-participate{
+      padding-top:36px;
+      padding-bottom: 37px;
+    }
+    .descrip-title{
+      text-align: center;
+      strong{
+        color: #c8a461;  
+        font-family : $CamphorBold;
+        font-size: 0.81rem;
+      }
+    }
+    .loc{
+      display: block;
+    }
+    .contain-map{
+      vertical-align: top;
+      strong{
+         font-family : $CamphorBold;       
+      }
+      span{
+        padding-bottom: 15px;
+      }
+    }
+    .item-good-practice{
+      width: 181px;
+      display: inline-block;
+      padding-right: 60px;
+      text-align: center; 
+      vertical-align: top;
+      strong{
+        display: block;
+        font-size: 0.81rem;
+        font-family : $CamphorBold;  
+        padding-top: 19px;
+      }
     }
   }
 }

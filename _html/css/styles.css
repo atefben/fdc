@@ -10645,16 +10645,28 @@ article .image .linkImage {
 }
 .participate .contain-participate section .title-participate {
   font: 0.875rem "Camphor W01 Bold";
-  color: #c8a461;
+  color: #c1c1c1;
   text-transform: uppercase;
   padding-top: 39px;
   padding-bottom: 36px;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
-.participate .contain-participate section .title-participate img {
+.participate .contain-participate section .title-participate .svg {
   width: 19px;
   height: 15px;
   padding-right: 22px;
+}
+.participate .contain-participate section .title-participate .svg path {
+  fill: currentColor;
+}
+.participate .contain-participate section .title-participate .svg .st0 {
+  stroke: currentColor;
+}
+.participate .contain-participate section .participate-active .title-participate {
+  color: #c29f5f;
+}
+.participate .contain-participate section .participate-active .fa {
+  color: #c29f5f;
 }
 .participate .contain-participate section .item {
   text-align: center;
@@ -10819,4 +10831,41 @@ article .image .linkImage {
 }
 .participate .contain-cinema .contain-item-cinema .cinema .text-cinema p a {
   color: #c8a461;
+}
+.participate .contain-cinema .descrip-participate {
+  padding-top: 36px;
+  padding-bottom: 37px;
+}
+.participate .contain-cinema .descrip-title {
+  text-align: center;
+}
+.participate .contain-cinema .descrip-title strong {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.81rem;
+}
+.participate .contain-cinema .loc {
+  display: block;
+}
+.participate .contain-cinema .contain-map {
+  vertical-align: top;
+}
+.participate .contain-cinema .contain-map strong {
+  font-family: "Camphor W01 Bold";
+}
+.participate .contain-cinema .contain-map span {
+  padding-bottom: 15px;
+}
+.participate .contain-cinema .item-good-practice {
+  width: 181px;
+  display: inline-block;
+  padding-right: 60px;
+  text-align: center;
+  vertical-align: top;
+}
+.participate .contain-cinema .item-good-practice strong {
+  display: block;
+  font-size: 0.81rem;
+  font-family: "Camphor W01 Bold";
+  padding-top: 19px;
 }
