@@ -293,6 +293,10 @@
         display: block;
       }
 
+      .info-container {
+        text-align: left;
+      }
+
       .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
         opacity: 1;
 
@@ -303,6 +307,11 @@
 
       .info {
         bottom: 15px;
+        height: auto;
+
+        p {
+          font-size: 0.850rem;
+        }
       }
 
       .picto {

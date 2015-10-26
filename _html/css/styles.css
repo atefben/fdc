@@ -4854,6 +4854,9 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player.full #channels-audio .info, .audio-player.full #channels-audio .picto {
   display: block;
 }
+.audio-player.full #channels-audio .info-container {
+  text-align: left;
+}
 .audio-player.full #channels-audio .owl-item.center + .owl-item, .audio-player.full #channels-audio .owl-item.center + .owl-item + .owl-item {
   opacity: 1;
 }
@@ -4862,6 +4865,10 @@ div.chocolat-wrapper .chocolat-close {
 }
 .audio-player.full #channels-audio .info {
   bottom: 15px;
+  height: auto;
+}
+.audio-player.full #channels-audio .info p {
+  font-size: 0.850rem;
 }
 .audio-player.full #channels-audio .picto {
   background-image: url("../img/svg/audio.svg");

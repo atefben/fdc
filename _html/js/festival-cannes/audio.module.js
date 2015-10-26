@@ -132,15 +132,55 @@ $(document).ready(function() {
     $('#channels-audio').toggleClass('active');
   });
 
-  $('body').on('click', '.audio-player.full.overlay-channels', function(e) {
+  function closeChannels() {
     $('.audio-player.full').removeClass('overlay-channels');
     $('.audio-player.full .channels').removeClass('active');
     $('#channels-audio').removeClass('active');
+  }
+
+  $('body').on('click', '.audio-player.full.overlay-channels', function(e) {
+    closeChannels();
   });
 
   if($('.audio-player').length) {
     initAudioPlayers();
   }
+
+  $('body').on('click', '#slider-channels-audio .channel .linkVid', function(e) {
+    closeChannels();
+    var ind = 0;
+
+    if($('.audio-player').length > 1) {
+      ind = $('.audio-player.full').index('.audio-player');
+    }
+
+    e.preventDefault();
+
+    var $audioPlayer = $('.audio-player.full'),
+        $newAudio = $(e.target).parent();
+
+    var s = $newAudio.data('sound'),
+        img = $newAudio.find('img').attr('src'),
+        info = $newAudio.find('.info').html();
+
+    $audioPlayer.find('.image').css('background-image', 'url(' + img + ')');
+    $audioPlayer.children('.info .vCenterKid').html(info);
+
+    waves[ind].load(s);
+
+    // update duration
+    waves[ind].on('ready', function() {
+      var duration = waves[ind].getDuration();
+      var minutes = parseInt(Math.floor(duration / 60));
+      var seconds = parseInt(duration - minutes * 60);
+
+      if(seconds < 10) {
+        seconds = '0' + seconds;
+      }
+      $audioPlayer.find('.duration .total').text(minutes + ':' + seconds);
+    });
+    
+  });
 
   // show audioplayer on fullscreen
   $('body').on('click', '.audio-player .fullscreen', function(e) {
@@ -205,11 +245,6 @@ $(document).ready(function() {
             sliderChannelsAudio.owlCarousel();
             
           }
-        });
-
-        $('.playpause').on('click', function(e) {
-          e.preventDefault();
-          wave.playPause();
         });
 
         document.addEventListener("fullscreenchange", FShandler);
