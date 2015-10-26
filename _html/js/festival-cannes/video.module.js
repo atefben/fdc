@@ -3,16 +3,18 @@ var jw = jw || {},
     w  = window;
 
 jw.playerInit = function() {
-    jw.$videoPlayer  = jwplayer('video-player');
-    jw.$stateBtn     = $('.play-btn');
-    jw.$durationTime = $('.duration-time');
-    jw.$current      = $('.current-time');
-    jw.$progressBar  = $('.progress-bar');
-    jw.$fullscreen   = $('.fs-icon');
-    jw.$container    = $('#video-container');
-    jw.$sound        = $('.sound');
+    if($('#video-player').length) {
+        jw.$videoPlayer  = jwplayer('video-player');
+        jw.$stateBtn     = $('.play-btn');
+        jw.$durationTime = $('.duration-time');
+        jw.$current      = $('.current-time');
+        jw.$progressBar  = $('.progress-bar');
+        jw.$fullscreen   = $('.fs-icon');
+        jw.$container    = $('#video-container');
+        jw.$sound        = $('.sound');
 
-    jw.player();
+        jw.player();
+    }
 };
 
 jw.player = function() {
