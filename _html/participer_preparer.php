@@ -34,7 +34,7 @@
       <div class="contain-participate">
         <section>
          <div class="contain-section">
-          <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="" class="svg">Les différents types d'accès</h3><i class="fa fa-plus"></i>
+          <h3 class="title-participate"> <img src="img/participate/les-differents-type-d-acces.svg" alt="" class="svg">Les différents types d'accès</h3><i class="fa fa-plus"></i>
           
           <div class="contain-acces">
             <div class="imgs-acces">
@@ -62,7 +62,7 @@
         <section>
          <div class="contain-section">
          <!-- For active svg supp grey in JS -->
-          <h3 class="title-participate"><img src="img/participate/se-rendre-a-cannes.svg" alt="" class="svg">Les salles de projection</h3><i class="fa fa-plus"></i>
+          <h3 class="title-participate"><img src="img/participate/les-salles-de-projection.svg" alt="" class="svg">Les salles de projection</h3><i class="fa fa-plus"></i>
           <div class="contain-cinema">
            <h4 class="title-cinema">Les salles du festival</h4>
            <div class="contain-item-cinema">
@@ -133,7 +133,7 @@
         </section>
         <section>
           <div class="contain-section contain-cinema">
-            <h3 class="title-participate"> <img src="img/participate/plan.svg" alt="" class="svg">Les bonnes pratiques</h3><i class="fa fa-plus"></i>          
+            <h3 class="title-participate"> <img src="img/participate/les-bonnes-pratiques.svg" alt="" class="svg">Les bonnes pratiques</h3><i class="fa fa-plus"></i>          
             <div class="item-good-practice">
               <img src="img/participate/logo-attente.png" alt="svg">
               <strong>Pas d'utilisation d'enregistreur vidéos/audios/photos</strong>

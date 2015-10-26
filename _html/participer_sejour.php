@@ -42,31 +42,31 @@
          <div class="contain-section">
           <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="" class="svg">Se rendre à cannes</h3><i class="fa fa-plus"></i>
           <div class="item large">
-            <img src="img/participate/train.svg" alt="" class="svg">
+            <img src="img/participate/train.svg" alt="" class="svg-item">
             <strong class="transport">Train</strong>
             <span class="time">5h de TGV depuis Paris</span>
             <a href="#" class="btn">En savoir plus</a>
           </div>
           <div class="item large">
-            <img src="img/participate/voiture.svg" alt="" class="svg">
+            <img src="img/participate/voiture.svg" alt="" class="svg-item">
             <strong class="transport">Voiture</strong>
             <span class="time">8h30 de route depuis Paris</span>
             <a href="#" class="btn">En savoir plus</a>
           </div>
           <div class="item">
-            <img src="img/participate/avion.svg" alt="" class="svg">
+            <img src="img/participate/avion.svg" alt="" class="svg-item">
             <strong class="transport">AVION</strong>
             <span class="time">Départ de l'aéroport de Nice</span>
             <a href="#" class="btn">En savoir plus</a>
           </div>
           <div class="item">
-            <img src="img/participate/bus.svg" alt="" class="svg">
+            <img src="img/participate/bus.svg" alt="" class="svg-item">
             <strong class="transport">Bus</strong>
             <span class="info"><a href="#">La ligne express 210</a> (bus rapide Côte d'Azur) assure, en 50 minutes, la liaison entre l'Aéroport de Nice (Terminal 1) et l'Hôtel de Ville de Cannes.</span>
             <span class="info"><strong>Tarifs :</strong> Trajet simple: <span class="price">20€</span> | Aller-Retour : <span class="price">30€</span></span>
           </div>
           <div class="item">
-            <img src="img/participate/taxi.svg" alt="" class="svg">
+            <img src="img/participate/taxi.svg" alt="" class="svg-item">
             <strong class="transport">Taxi</strong>
             <span class="info"><a href="#">Taxi Cannes :</a> 33 (0) 4 93 99 27 27</span>
             <span class="info"><strong>Tarifs :</strong> Trajet simple: <span class="price">20€</span> | Aller-Retour : <span class="price">30€</span></span>
@@ -110,7 +110,7 @@
         </section>
         <section>
          <div class="contain-section">
-          <h3 class="title-participate"> <img src="img/participate/informations.svg" alt="" class="svg">Pour plus d'informations</h3><i class="fa fa-plus"></i>
+          <h3 class="title-participate part-plus-info"> <img src="img/participate/informations.svg" alt="" class="svg plus-info">Pour plus d'informations</h3><i class="fa fa-plus"></i>
           <div class="descrip-section">
             <p class="text">Si vous souhaitez des information complémentaires sur la ville de Cannes, nous vous invitons à consulter <br> les pages de <a href="#">l'office du tourisme de la ville de Cannes</a> et de <a href="#">la mairie de la ville de Cannes.</a></p>
          </div>
