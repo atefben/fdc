@@ -3,7 +3,8 @@ $(document).ready(function() {
   // Selection
   // =========================
 
-  var sliderSelection = '';
+  var sliderSelection = '',
+      tr = 0;
 
   function openSelection(callback) {
     $('#main, footer').addClass('overlay');
@@ -31,6 +32,7 @@ $(document).ready(function() {
           onInitialized: function() {
             setTimeout(function() {
               $('#selection').addClass('open');
+              tr = $('#selection .owl-stage').css('transform').substr(19, 3);
             }, 500);
           }
         });
@@ -69,8 +71,11 @@ $(document).ready(function() {
     
   });
 
+  var widthFilter = 0;
+
   // filters
   $('.filters-selection a').on('click', function(e) {
+    widthFilter = 0;
     e.preventDefault();
 
     $('.filters-selection a').removeClass('active');
@@ -81,6 +86,7 @@ $(document).ready(function() {
     $('#selection .owl-item').removeClass('fade');
 
     if(f == 'all') {
+      $('#selection .owl-stage').width($('#selection .owl-item').width() * $('#selection .owl-item').length).css('transform', 'translate3d(' + tr + 'px, 0, 0)');
       return false;
     } 
 
@@ -93,8 +99,12 @@ $(document).ready(function() {
     $('#selection article').each(function() {
       if(!$(this).hasClass(f)) {
         $(this).parents('.owl-item').addClass('fade');
+      } else {
+        widthFilter += $(this).parents('.owl-item').width() + 5;
       }
     });
+
+    $('#selection .owl-stage').width(widthFilter).css('transform', 'translate3d(' + tr +'px, 0, 0)');
 
 
   });

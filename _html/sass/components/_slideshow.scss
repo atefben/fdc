@@ -121,7 +121,7 @@
       left: 0;
       visibility: hidden;
       width: 100%;
-      @include transition(all 0.5s $smoothTransition);
+      @include transition(all 0.8s $smoothTransition);
 
       img {
         display: block;
