@@ -299,6 +299,7 @@
       right: 0;
       top: 0;
       width: 40px;
+      @include transition(margin-top 1s $smoothTransition);
 
       &.stick {
         position: fixed;

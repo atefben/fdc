@@ -5860,6 +5860,10 @@ div.chocolat-wrapper .chocolat-close {
   right: 0;
   top: 0;
   width: 40px;
+  -moz-transition: margin-top 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: margin-top 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: margin-top 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: margin-top 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #news .container #timeline.stick {
   position: fixed;
