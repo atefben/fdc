@@ -122,6 +122,10 @@
                 this.preload(nextIndex);
             }
 
+            setTimeout(function() {
+                $('.chocolat-content').removeClass('hide');
+            }, 500);
+
             return deferred;
 
         },
@@ -129,7 +133,6 @@
         place : function(i, imgLoader) {
             var that = this;
             var fitting;
-
             this.settings.currentImage = i;
             this.description();
             this.pagination();
@@ -225,23 +228,30 @@
         },
 
         change : function(signe) {
+            var that = this;
+
             this.zoomOut(0);
             this.zoomable();
 
-            var requestedImage = this.settings.currentImage + parseInt(signe);
-            if (requestedImage > this.settings.lastImage) {
-                if (this.settings.loop) {
-                    return this.load(0);
+            $('.chocolat-content').addClass('hide');
+
+            setTimeout(function() {
+                var requestedImage = that.settings.currentImage + parseInt(signe);
+                if (requestedImage > that.settings.lastImage) {
+                    if (that.settings.loop) {
+                        return that.load(0);
+                    }
                 }
-            }
-            else if (requestedImage < 0) {
-                if (this.settings.loop) {
-                    return this.load(this.settings.lastImage);
+                else if (requestedImage < 0) {
+                    if (that.settings.loop) {
+                        return that.load(that.settings.lastImage);
+                    }
                 }
-            }
-            else {
-                return this.load(requestedImage);
-            }
+                else {
+                    return that.load(requestedImage);
+                }
+            }, 500);
+            
         },
 
         arrows: function() {
@@ -669,6 +679,7 @@
                 },
 
                 goto : function(i){ // open alias
+                    $('.chocolat-content').addClass('hide');
                     i = parseInt(i) || 0;
                     return that.init(i);
                 },

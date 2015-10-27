@@ -410,6 +410,11 @@ div.chocolat-wrapper {
     top: 0;
     left: 0;
     width: 100%;
+    @include transition(opacity .5s $smoothTransition);
+
+    &.hide {
+      opacity: 0;
+    }
   }
 
   .chocolat-fullscreen {

@@ -4397,6 +4397,13 @@ div.chocolat-wrapper .chocolat-content {
   top: 0;
   left: 0;
   width: 100%;
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-content.hide {
+  opacity: 0;
 }
 div.chocolat-wrapper .chocolat-fullscreen {
   display: none;
@@ -5413,6 +5420,14 @@ div.chocolat-wrapper .chocolat-close {
 }
 #selection #slider-selection {
   margin-left: -380px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#selection #slider-selection.fade {
+  opacity: 0;
+  visibility: hidden;
 }
 #selection #slider-selection .owl-stage-outer {
   overflow: initial;
@@ -5439,8 +5454,6 @@ div.chocolat-wrapper .chocolat-close {
 }
 #selection #slider-selection .owl-item.fade {
   padding-right: 0 !important;
-  opacity: 0;
-  visibility: hidden;
   width: 0 !important;
 }
 #selection #slider-selection .owl-item.scaled {
