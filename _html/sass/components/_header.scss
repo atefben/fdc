@@ -248,6 +248,10 @@ header {
           @include transition(width .5s $smoothTransition);
           @include transform(translateY(0));
         }
+
+        &.noTrans:after {
+          @include transition(none);
+        }
       }
 
       h2 {

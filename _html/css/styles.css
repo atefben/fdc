@@ -3517,6 +3517,12 @@ header #logo-wrapper #logo p.stick:after {
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
+header #logo-wrapper #logo p.stick.noTrans:after {
+  -moz-transition: none;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
 header #logo-wrapper #logo h2 {
   font-family: "Camphor W01 Medium";
   font-size: 0.875rem;

@@ -11,7 +11,8 @@ $(document).ready(function() {
   var $loader = $('#siteLoader');
 
   if(parseInt(sessionStorage.scrolltop) > 10) {
-    $('#logo-wrapper, #logo img').css('transition', 'none');
+    $('#logo-wrapper, #logo img, #sticky-user').css('transition', 'none');
+    $('p.stick').addClass('noTrans');
     $('header').addClass('sticky');
     $('#main').css('padding-top', '91px');
 
@@ -24,8 +25,8 @@ $(document).ready(function() {
     $('#main, footer').removeClass('loading');
     cl.hide();
 
-    $('#logo-wrapper').css('transition', 'all .5s ease');
-    $('#logo img').css('transition', 'width .3s ease');
+    $('#logo-wrapper, #logo img, #sticky-user').css('transition', '');
+    $('p.stick').removeClass('noTrans');
   }, 500);
 
   $('body').on('click', "a[target!='_blank']:not(.ajax)", function(e) {
