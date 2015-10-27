@@ -23,7 +23,7 @@ $(document).ready(function() {
     $('#main').css('padding-top', padT);
 
     $(window).on('scroll', function() {
-    $('#main').css('padding-top', '');
+      $('#main').css('padding-top', '');
     });
   }
 

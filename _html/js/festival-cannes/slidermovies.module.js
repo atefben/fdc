@@ -21,7 +21,7 @@ function setHeightSlider() {
     'height': valueHeight
   });
 
-  $('#sliderWrapper').height($(window).height() - 230);
+  $('#sliderWrapper').height($(window).height() - $('header').height());
   $('#prefooter').height($(window).height() - 90);
 }
 
@@ -155,7 +155,9 @@ $(document).ready(function() {
       mouseDrag: false
     });
 
-    setHeightSlider();
+    setTimeout(function() {
+      setHeightSlider();
+    }, 50);
 
   }
 
