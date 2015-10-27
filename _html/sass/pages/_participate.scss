@@ -23,13 +23,27 @@
   }
   .fa {
     margin-bottom: 40px;
-    border: solid 1px #ebebeb;
-    padding: 18px;
     color: #c1c1c1;
     position: absolute;
     right: 1px;
-    top: 18px;
+    top: 22px;
   }
+   .fa-plus{
+      background-image: url(../img/participate/case-plus.svg);
+      background-size: 45px;
+      background-position: 1px;
+      background-repeat: no-repeat;
+      width: 51px;
+      height: 51px;
+    }
+     .fa-minus{
+      background-image: url(../img/participate/minus.svg);
+      background-size: 15px;
+      background-position: 14px 19px;
+      background-repeat: no-repeat;
+      width: 51px;
+      height: 51px;
+    }
   .contain-participate{
     background-color: #fff;   
     .contain-descript{
@@ -40,7 +54,7 @@
         padding: 46px 0px;
         line-height: 30px;
         color:#333333;
-        text-align: center;
+        text-align: center; 
       }
     }
     section{
@@ -51,23 +65,32 @@
       padding-bottom: 63px;
       position: relative;
       overflow: hidden;
-      height: 22px;
+      height: 31px;
         a{
           color: #c29f5f;
           text-decoration: underline;
         }
         .descrip-section{
-            line-height: 24px;
+           line-height: 24px;
            font-size: .8125rem;
           .ask{
-            font-family: $CamphorBold;
+           font-size:0.81rem;
           } 
+          a{
+            font: .81rem $CamphorBold;
+          }
         }
         #google-map{
           width: 975px;
           height: 350px;
           margin-top: 51px; 
         }
+      }
+      .title-participate:hover{
+       cursor: pointer;
+      }
+      .fa:hover{
+        cursor: pointer;
       }
       .title-participate {
         font: .875rem $CamphorBold;
@@ -86,6 +109,7 @@
           width: 20px;
           height: 20px;
           padding-right: 22px;
+          vertical-align: bottom;
         }
         .svg path{
           fill:currentColor;
@@ -138,6 +162,8 @@
           display: block;
           padding-bottom: 15px;
           font-size: .8125rem;
+          width: 275px;
+          margin: 0 auto;
           a{
             color: #c29f5f ;
             text-decoration: underline ;
@@ -155,6 +181,14 @@
           border: 1px solid #c8a461;
           color: #c8a461;
           text-transform: uppercase;
+          text-decoration: none;
+          font-family: $CamphorHeavy;
+          img{
+            width: 10px;
+            height: 10px;
+            padding-right: 10px;
+            vertical-align: text-top;
+          }
         }
       }
       .large{
@@ -163,7 +197,7 @@
       }
       .descrip-participate{
         width: 690px;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         text-align: center;
         margin: 0 auto;
         line-height: 36px;
@@ -179,9 +213,10 @@
         .name{
           font-size: 0.75rem;
           text-transform: uppercase;
-          font-family: $CamphorBold;     
+          font-family: $CamphorHeavy;     
           display: block;
           padding-bottom: 20px;
+          letter-spacing: 1px;
         }
         .btn{
           font-size: .625rem;
@@ -189,6 +224,17 @@
           border: 1px solid #c8a461;
           color: #c8a461;
           text-transform: uppercase;
+          text-decoration: none;
+          font-family: $CamphorHeavy;         
+          display: block;
+          width: 130px;
+          margin: 0 auto;
+          img{
+            width: 15px;
+            height: 15px;
+            padding-right: 10px;
+            vertical-align: sub;
+          }
         }
         .link{
           padding-top: 38px;
@@ -196,6 +242,7 @@
             color: #c8a461;
             text-decoration: underline;
             vertical-align: text-top;
+            font-size: 0.81rem;
           }
           img{
             width: 12px;
@@ -232,6 +279,11 @@
         font-family: $CamphorBold;
         font-size:.75rem;
         padding-bottom: 20px;
+        img{
+         height: 15px;
+          padding-right: 11px;
+          vertical-align: text-bottom;
+        }
       }
       .descript-acces{
         padding-bottom: 20px;
@@ -266,22 +318,27 @@
         display: inline-block;
         vertical-align: top;
         margin-left: 59px;
-        line-height: 38px;
         h4{
           font-size: 0.75rem;
           text-transform: uppercase; 
           font-family : $CamphorBold;
           margin-top: -11px;
+          letter-spacing: 2px;
+          padding-bottom: 28px;
         }
         p{
-
           font-size: 0.81rem;
+          line-height: 24px;
+          padding-bottom: 15px;
           strong{
             color: #c8a461;
           }
-          a{
+          a{ 
             color: #c8a461;
           }
+        }
+        a{
+          font-size: 0.81rem;
         }
       }
     } 
@@ -292,6 +349,8 @@
     }
     .descrip-title{
       text-align: center;
+      line-height:  26px;
+      font-size: 0.81rem;
       strong{
         color: #c8a461;  
         font-family : $CamphorBold;
@@ -300,28 +359,42 @@
     }
     .loc{
       display: block;
+      width: 246px;
+      margin: 0 auto;
+      line-height: 21px;
     }
     .contain-map{
       vertical-align: top;
+      font-size: 0.81rem;
       strong{
          font-family : $CamphorBold;       
       }
       span{
-        padding-bottom: 15px;
+        padding-bottom: 5px;
       }
     }
+    .contain-good-practice{
+      width: 980px;
+      margin: 0 auto;
+      padding-top: 10px;
     .item-good-practice{
       width: 181px;
       display: inline-block;
-      padding-right: 60px;
+      padding-left: 53px;
       text-align: center; 
       vertical-align: top;
       strong{
         display: block;
         font-size: 0.81rem;
         font-family : $CamphorBold;  
-        padding-top: 19px;
+        width: 188px;
+        margin: 0 auto;
+        line-height: 24px;
       }
+      img{
+        width: 20%;
+      }
+    }
     }
   }
   
