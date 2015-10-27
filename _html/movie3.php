@@ -233,12 +233,12 @@
             <div class="slideshow-img">
               <div class="images">
                 <div class="img active">
-                  <a class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <a class="chocolat-image ajax" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
                     <img src="img/slide001.jpg" alt="" />
                   </a>
                 </div>
                 <div class="img">
-                  <a class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                  <a class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
                 </div>
                 <div class="img"><img src="img/slide001.jpg" alt="" /></div>
                 <div class="img"><img src="img/slide001.jpg" alt="" /></div>
@@ -308,16 +308,36 @@
           </div>
         </div>
         <div class="audios" data-section="audios">
-          <div class="audio-player audio bigger" data-sound="img/article/sound.mp3">
-            <div class="image" style="background-image: url(img/slide001.jpg);"></div>
-            <div class="picto"></div>
-            <div class="info">
-              <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <p>The Lobster de Yoros Lanthinos</p>
+            <div class="audio-player audio bigger" data-sound="img/article/sound.mp3">
+              <div class="image" style="background-image: url(img/slide001.jpg);"></div>
+              <a href="#" class="playpause"></a>
+              <div class="off">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <div class="picto"></div>
+                    <div class="info">
+                      <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster de Yoros Lanthinos</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="on">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <div class="duration">
+                      <span class="curr">0:00</span>/<span class="total">0:00</span>
+                    </div>
+                    <div class="wave-container"></div>
+                    <div class="volume">
+                      <span></span>
+                    </div>
+                    <a href="#" class="fullscreen"></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="wave-container"></div>
           </div>
-        </div>
       </div>
       <div class="press" data-section="press">
         <div class="info-press">

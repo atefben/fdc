@@ -14,7 +14,13 @@ $(document).ready(function() {
     $('#logo-wrapper, #logo img, #sticky-user').css('transition', 'none');
     $('p.stick').addClass('noTrans');
     $('header').addClass('sticky');
-    $('#main').css('padding-top', '91px');
+
+    var padT = '91px';
+
+    if($('#main').css('padding-top') != '0px') {
+      padT = 91 + parseInt($('#main').css('padding-top'), 10) + 'px';
+    }
+    $('#main').css('padding-top', padT);
 
     $(window).on('scroll', function() {
     $('#main').css('padding-top', '');
