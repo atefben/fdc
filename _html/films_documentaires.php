@@ -30,11 +30,11 @@
                <h2 class="title title-list-header">Cannes classics</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="films_invitedhonneur.php">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php">Copies restaurées </a></li>
-               <li><a href="#">World cinema project</a></li>
-               <li><a href="films_documentaires.php" class="active">Documentaires</a></li>
+               <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
+               <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
+               <li><a href="films_copiesrestaurees.php" class="ajax">Copies restaurées </a></li>
+               <li><a href="#" class="ajax">World cinema project</a></li>
+               <li><a href="films_documentaires.php" class="active ajax">Documentaires</a></li>
            </ul> 
       </div>
       <div class="container container-list">

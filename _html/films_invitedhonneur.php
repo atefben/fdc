@@ -24,17 +24,17 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article single-article films-list loading">
+    <div id="main" class="list-article films-list loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
                <h2 class="title title-list-header">Cannes classics</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="films_invitedhonneur.php" class="active">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php">Copies restaurées </a></li>
-               <li><a href="#">World cinema project</a></li>
-               <li><a href="films_documentaires.php">Documentaires</a></li>
+               <li><a href="films_invitedhonneur.php" class="active ajax">Invité d'honneur</a></li>
+               <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
+               <li><a href="films_copiesrestaurees.php" class="ajax">Copies restaurées </a></li>
+               <li><a href="#" class="ajax">World cinema project</a></li>
+               <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
            </ul>  
       </div>
       <div class="container container-list">
