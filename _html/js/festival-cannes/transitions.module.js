@@ -10,6 +10,11 @@ $(document).ready(function() {
   cl.show();
   var $loader = $('#siteLoader');
 
+  if(parseInt(sessionStorage.scrolltop) > 10) {
+    $('#logo-wrapper, #logo img').css('transition', 'none');
+    $('header').addClass('sticky');
+  }
+
   setTimeout(function() {
     $('#main, footer').removeClass('loading');
     cl.hide();
@@ -33,10 +38,12 @@ $(document).ready(function() {
       }, 1800);
 
       setTimeout(function() {
+        sessionStorage.setItem('scrolltop',$(window).scrollTop());
         window.location = href;
       }, 1900);
     }
 
     return false;
   });
+
 });
