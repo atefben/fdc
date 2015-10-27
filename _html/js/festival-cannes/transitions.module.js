@@ -17,7 +17,7 @@ $(document).ready(function() {
     $('#main').css('padding-top', '91px');
 
     $(window).on('scroll', function() {
-    $('#main').css('padding-top', '0');
+    $('#main').css('padding-top', '');
     });
   }
 

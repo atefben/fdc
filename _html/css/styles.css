@@ -9583,10 +9583,11 @@ article .image .linkImage {
   height: 300px;
   position: relative;
   text-align: center;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s;
+  -o-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s;
+  -webkit-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.1s;
+  transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s;
 }
 .webtv #live h2 {
   color: #fff;
@@ -9607,20 +9608,19 @@ article .image .linkImage {
   height: 100%;
   width: 100%;
   z-index: 0;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s;
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s;
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition-delay: 1s;
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+  -webkit-transition-delay: 0.3s;
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s;
 }
 .webtv #live .vCenter {
   position: relative;
   z-index: 1;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s;
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition-delay: 0.5s;
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s;
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .webtv #live .play {
   background: url("../img/svg/video-white.svg") no-repeat center;
@@ -9637,9 +9637,6 @@ article .image .linkImage {
 }
 .webtv #live .play:hover {
   border-color: white;
-}
-.webtv #live.on {
-  height: 540px;
 }
 .webtv #live.on .img, .webtv #live.on .vCenter {
   opacity: 0;

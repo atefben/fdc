@@ -5,13 +5,19 @@ $(document).ready(function() {
 
   if($('.webtv').length) {
     
-    
-//    // play live player on click
-//    $('#live .play').on('click', function(e) {
-//      e.preventDefault();
-//      $('#live').addClass('on');
-//    });
-//
+  
+    if($('.webtv-live').length) {
+     // play live player on click
+     $('#live .play').on('click', function(e) {
+       e.preventDefault();
+       $('#live').addClass('on');
+       $('#live').data('height', $('#live').height()).height($(window).height() - 91).css('padding-top', '91px');
+       setTimeout(function() {
+          $('header').addClass('sticky');
+        }, 800);
+     });
+    }
+
    // create slide for trailers
    var sliderTrailers = $("#slider-trailers").owlCarousel({
      nav: false,

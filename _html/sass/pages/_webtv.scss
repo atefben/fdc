@@ -58,7 +58,7 @@
     height: 300px;
     position: relative;
     text-align: center;
-    @include transition(all 0.5s $smoothTransition);
+    @include transition(all 0.7s $smoothTransition .1s);
 
     h2 {
       color: #fff;
@@ -80,14 +80,14 @@
       height: 100%;
       width: 100%;
       z-index: 0;
-      @include transition(all 0.5s $smoothTransition 1s);
+      @include transition(all 0.5s $smoothTransition .3s);
     }
 
     .vCenter {
       position: relative;
       z-index: 1;
 
-      @include transition(all 0.5s $smoothTransition 0.5s);
+      @include transition(all 0.5s $smoothTransition);
     }
 
     .play {
@@ -106,7 +106,6 @@
     }
 
     &.on {
-      height: 540px;
 
       .img, .vCenter {
         opacity: 0;

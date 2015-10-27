@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="webtv loading loading">
+    <div id="main" class="webtv loading webtv-live">
       <div id="live">
         <div class="vCenter">
           <div class="vCenterKid">
