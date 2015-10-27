@@ -33,15 +33,16 @@
             width: 549px;
             margin: 0 auto;
             font-size: 1rem;
+            line-height:30px ;
         }
         .title-item{
             text-align: center;
             padding: 20px;
-            font-size: 1rem;
+            font-size: .875rem;
             width: 977px;
             margin: 10px auto;
             line-height : 26px;
-            font-family: 'CamphorItalic';
+            font-family: $CamphorItalic;
         }
         .title-big{					
 					color: #ffffff;
@@ -135,15 +136,15 @@
         .infos-item-list{
             text-align: center;
             vertical-align: middle;
-            padding-top: 30px;
             width: 848px;
             display: table-cell;
             
             .title-item{
                 text-transform: uppercase;
                 padding-bottom: 4px;
-                font-size: 0.88rem;
+                font-size: 0.875rem;
                 line-height: 16px;
+                font-family: $CamphorBold;
             }
             .sub-title-item{
                 padding-bottom: 4px;
@@ -152,28 +153,28 @@
             }
             .nom-item{
                 color:#c8a461;
-                font-style: italic;
-                display: block;
+                font-style: italic;  
+               display: block;
                 padding-bottom: 4px;
 
-                font-family: $Playfair;
+                font-family: $CamphorItalic;
                 font-weight: 700;
-                font-size: 0.815rem;
+                font-size: 0.8125rem;
             }
             .date-item{
                 font-weight: 100;
                 padding-bottom: 4px;
-                color:#656565;
-                font-size: 0.7rem;
+                color:#999999;
+                font-size: 0.6875rem;
             }
             .description-item{
-                padding-top: 32px;
+                padding-top: 40px;
                 line-height : 26px;
-                font-size: 0.88rem;
+                font-size: 0.875rem;
                 
                 strong{
                     color:#c8a461;
-                    font-weight: 500;
+                    font-family: $CamphorBold;
                 }
             }
             .date-pres-item{

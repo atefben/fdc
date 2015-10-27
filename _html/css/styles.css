@@ -9151,15 +9151,16 @@ article .image .linkImage {
   width: 549px;
   margin: 0 auto;
   font-size: 1rem;
+  line-height: 30px;
 }
 .categorie-items .title-list-cat .title-item {
   text-align: center;
   padding: 20px;
-  font-size: 1rem;
+  font-size: .875rem;
   width: 977px;
   margin: 10px auto;
   line-height: 26px;
-  font-family: 'CamphorItalic';
+  font-family: "Camphor W01 Italic";
 }
 .categorie-items .title-list-cat .title-big {
   color: #ffffff;
@@ -9254,15 +9255,15 @@ article .image .linkImage {
 .categorie-items article .infos-item-list {
   text-align: center;
   vertical-align: middle;
-  padding-top: 30px;
   width: 848px;
   display: table-cell;
 }
 .categorie-items article .infos-item-list .title-item {
   text-transform: uppercase;
   padding-bottom: 4px;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   line-height: 16px;
+  font-family: "Camphor W01 Bold";
 }
 .categorie-items article .infos-item-list .sub-title-item {
   padding-bottom: 4px;
@@ -9274,24 +9275,24 @@ article .image .linkImage {
   font-style: italic;
   display: block;
   padding-bottom: 4px;
-  font-family: "Playfair Display";
+  font-family: "Camphor W01 Italic";
   font-weight: 700;
-  font-size: 0.815rem;
+  font-size: 0.8125rem;
 }
 .categorie-items article .infos-item-list .date-item {
   font-weight: 100;
   padding-bottom: 4px;
-  color: #656565;
-  font-size: 0.7rem;
+  color: #999999;
+  font-size: 0.6875rem;
 }
 .categorie-items article .infos-item-list .description-item {
-  padding-top: 32px;
+  padding-top: 40px;
   line-height: 26px;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
 }
 .categorie-items article .infos-item-list .description-item strong {
   color: #c8a461;
-  font-weight: 500;
+  font-family: "Camphor W01 Bold";
 }
 .categorie-items article .infos-item-list .date-pres-item {
   text-transform: uppercase;
