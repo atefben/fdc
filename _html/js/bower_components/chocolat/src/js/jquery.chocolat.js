@@ -681,7 +681,10 @@
                 goto : function(i){ // open alias
                     $('.chocolat-content').addClass('hide');
                     i = parseInt(i) || 0;
-                    return that.init(i);
+
+                    setTimeout(function() {
+                        return that.init(i);
+                    }, 500);
                 },
                 current : function(){
                     return that.settings.currentImage;

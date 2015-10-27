@@ -126,6 +126,7 @@
     top: -3%;
     width: 106%;
     z-index: 0;
+    @include transform(translateZ(0));
     @include filter(blur(5px));
   }
 
