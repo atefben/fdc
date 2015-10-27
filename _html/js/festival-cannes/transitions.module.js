@@ -13,11 +13,19 @@ $(document).ready(function() {
   if(parseInt(sessionStorage.scrolltop) > 10) {
     $('#logo-wrapper, #logo img').css('transition', 'none');
     $('header').addClass('sticky');
+    $('#main').css('padding-top', '91px');
+
+    $(window).on('scroll', function() {
+    $('#main').css('padding-top', '0');
+    });
   }
 
   setTimeout(function() {
     $('#main, footer').removeClass('loading');
     cl.hide();
+
+    $('#logo-wrapper').css('transition', 'all .5s ease');
+    $('#logo img').css('transition', 'width .3s ease');
   }, 500);
 
   $('body').on('click', "a[target!='_blank']:not(.ajax)", function(e) {
