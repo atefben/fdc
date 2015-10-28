@@ -525,7 +525,7 @@
 
       a {
         border-top: none;
-        @include transition(border-color 0.8s $smoothTransition);
+        @include transition(border-color .9s $smoothTransition);
       }
 
       a:hover {
@@ -835,7 +835,7 @@
             margin-bottom: 10px;
             text-transform: uppercase;
 
-            @include transition(all 0.3s $smoothTransition);
+            @include transition(all 0.9s $smoothTransition);
 
             &:hover {
               color: #fff;

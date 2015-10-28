@@ -23,7 +23,8 @@
   }
 
   &.pause .playpause {
-    background-image: url('../img/svg/print.svg');
+    background-image: url('../img/svg/pause.svg');
+    background-size: 15px;
   }
 
   .on {
@@ -236,13 +237,14 @@
   }
 
   .fullscreen {
-    background: red;
-    bottom: 10px;
+    background: url('../img/svg/fullscreen.svg') no-repeat center;
+    background-size: contain;
+    bottom: 36px;
     display: block;
-    height: 5px;
+    height: 15px;
     position: absolute;
-    right: 10px;
-    width: 5px;
+    right: 30px;
+    width: 20px;
   }
 
   @media only screen and (max-device-width: 1024px){

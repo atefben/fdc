@@ -1163,12 +1163,12 @@
       @include transition(all 0.9s $smoothTransition);
 
       &:hover {
-        color: #fff;
+        opacity: 0.5;
 
-        &:after {
+        /*&:after {
           opacity: 1;
           visibility: visible;
-        }
+        }*/
       }
 
       &:after {

@@ -24,7 +24,7 @@ a {
   margin: 0 0 0 0;
   padding: 0 20px 0 40px;
   text-transform: uppercase;
-  @include transition(all 0.3s $smoothTransition);
+  @include transition(all 0.9s $smoothTransition);
 
   &:last-child {
     border-right: 1px solid #dfdfdf;
