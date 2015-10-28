@@ -41,6 +41,7 @@ module.exports = function(grunt) {
               closeTag: '<!-- festival-cannes tags end -->'
           },
           src: [
+            'js/components/snap.svg.easing.js',
             'js/bower_components/jquery/dist/jquery.min.js',
             'js/bower_components/owl.carousel/src/js/owl.carousel.js',
             'js/bower_components/chocolat/src/js/jquery.chocolat.js',

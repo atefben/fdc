@@ -6901,10 +6901,10 @@ div.chocolat-wrapper .chocolat-close {
   min-height: 100%;
   width: auto;
   height: auto;
-  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .push-container .push.right {
   float: right;
@@ -6923,14 +6923,14 @@ div.chocolat-wrapper .chocolat-close {
   opacity: 0.4;
 }
 .push-container .push:hover .image-wrapper img {
-  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -moz-transform: scale(1.05) translateZ(0);
-  -ms-transform: scale(1.05) translateZ(0);
-  -webkit-transform: scale(1.05) translateZ(0);
-  transform: scale(1.05) translateZ(0);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
 }
 .push-container .push:after {
   background-color: #141414;

@@ -1,5 +1,6 @@
 <!-- build:js js/festival-cannes/app.min.js -->
 <!-- festival-cannes tags start -->
+<script src="js/components/snap.svg.easing.js"></script>
 <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="js/bower_components/owl.carousel/src/js/owl.carousel.js"></script>
 <script src="js/bower_components/chocolat/src/js/jquery.chocolat.js"></script>
