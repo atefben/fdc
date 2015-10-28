@@ -64,9 +64,9 @@ $(document).ready(function() {
       }
 
       if(s > 50 && s < $('div.press').offset().top - $('div.press').height()) {
-        $('.nav').addClass('black');
+        $('.nav, .prevmovie, .nextmovie').addClass('black');
       } else {
-        $('.nav').removeClass('black');
+        $('.nav, .prevmovie, .nextmovie').removeClass('black');
       }
 
       if(s > 100 && $('.main-image').hasClass('trailer')) {

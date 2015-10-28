@@ -1,6 +1,5 @@
 <!-- build:js js/festival-cannes/app.min.js -->
 <!-- festival-cannes tags start -->
-<script src="js/components/snap.svg.easing.js"></script>
 <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="js/bower_components/owl.carousel/src/js/owl.carousel.js"></script>
 <script src="js/bower_components/chocolat/src/js/jquery.chocolat.js"></script>
@@ -12,6 +11,7 @@
 <script src="js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js"></script>
 <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
 <script src="js/bower_components/canvasloader/js/heartcode-canvasloader-min.js"></script>
+<script src="js/components/snap.svg.easing.js"></script>
 <script src="js/components/fullscrenjs.js"></script>
 <script src="js/components/jwplayer.js"></script>
 <script src="js/festival-cannes/helpers.js"></script>

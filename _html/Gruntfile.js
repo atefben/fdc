@@ -41,7 +41,6 @@ module.exports = function(grunt) {
               closeTag: '<!-- festival-cannes tags end -->'
           },
           src: [
-            'js/components/snap.svg.easing.js',
             'js/bower_components/jquery/dist/jquery.min.js',
             'js/bower_components/owl.carousel/src/js/owl.carousel.js',
             'js/bower_components/chocolat/src/js/jquery.chocolat.js',
@@ -53,6 +52,7 @@ module.exports = function(grunt) {
             'js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js',
             'js/bower_components/infinite-scroll/jquery.infinitescroll.min.js',
             'js/bower_components/canvasloader/js/heartcode-canvasloader-min.js',
+            'js/components/snap.svg.easing.js',
             'js/components/fullscrenjs.js',
             'js/components/jwplayer.js',
             'js/festival-cannes/helpers.js',

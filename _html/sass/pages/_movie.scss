@@ -23,6 +23,10 @@
     @include transform(translateZ(0));
     @include transition(all 0.9s $smoothTransition);
 
+    &.black {
+      background-color: #dfdfdf;
+    }
+
     .img {
       position: absolute;
       left: 100px;
@@ -301,7 +305,7 @@
     }
 
     &.black {
-      border-color: $black;
+      border-color: #dfdfdf;
     }
 
     &.hide {
