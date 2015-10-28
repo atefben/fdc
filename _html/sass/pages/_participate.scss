@@ -617,7 +617,7 @@
       .title-section{
         font-family : $CamphorBold;  
         text-transform: uppercase;
-        color: #e0e0e0;
+        color: #c1c1c1;
         font-size: 0.88rem;
         letter-spacing: 2px;
         padding-top: 41px;
@@ -638,6 +638,9 @@
           fill: white;
         }
       }  
+      .title-section:hover{
+        color:#c8a461;
+      }
       .descrip-section{
         p{
           width: 741px;

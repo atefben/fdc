@@ -11297,7 +11297,7 @@ article .image .linkImage {
 .manual .content-manual .contain-section .title-section {
   font-family: "Camphor W01 Bold";
   text-transform: uppercase;
-  color: #e0e0e0;
+  color: #c1c1c1;
   font-size: 0.88rem;
   letter-spacing: 2px;
   padding-top: 41px;
@@ -11317,6 +11317,9 @@ article .image .linkImage {
 }
 .manual .content-manual .contain-section .title-section .acces path {
   fill: white;
+}
+.manual .content-manual .contain-section .title-section:hover {
+  color: #c8a461;
 }
 .manual .content-manual .contain-section .descrip-section p {
   width: 741px;
