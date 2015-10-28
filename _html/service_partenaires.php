@@ -15,7 +15,6 @@
   <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css" />
   <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='css/styles.css' rel="stylesheet">
   <style type="text/css">
 
@@ -94,7 +93,7 @@ Partenaire officiel du Festival de Cannes pour la 22ème année, CANAL+ produit 
            <div class="content-text-with-portrait">
             <h4 class="title-partners">Christinie</h4>
             <p class="descrip-partners">
-              A la pointe de l'innovation dans le domaine de la projection cinématographique depuis 1929 et pionnier des systèmes de projection numérique depuis 1979, Christie est l'un des leaders mondiaux des solutions diversifiées de visualisation, destinées aux march√©s de l'entreprise, du spectacle et de l'industrie.</p>
+              A la pointe de l'innovation dans le domaine de la projection cinématographique depuis 1929 et pionnier des systèmes de projection numérique depuis 1979, Christie est l'un des leaders mondiaux des solutions diversifiées de visualisation, destinées aux marchés de l'entreprise, du spectacle et de l'industrie.</p>
               <a href="#" class="link">Site internet</a><a href="#">Contact</a>
            </div>
             <div class="portrait">  

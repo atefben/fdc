@@ -10903,7 +10903,7 @@ article .image .linkImage {
   text-transform: uppercase;
   padding-top: 39px;
   padding-bottom: 36px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 .participate .contain-participate section .title-participate .plus-info {
   width: 19px;
@@ -11201,13 +11201,14 @@ article .image .linkImage {
   height: 111px;
 }
 .partners .content-partners .contain-section .fa {
-  top: 45px;
+  top: 35px;
 }
 .partners .content-partners .contain-section .title-section {
+  font-family: "Camphor W01 Bold";
   text-transform: uppercase;
   color: #c8a461;
   font-size: 0.88rem;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   padding-top: 55px;
 }
 .partners .content-partners .contain-section .item-partners {
@@ -11236,7 +11237,7 @@ article .image .linkImage {
 .partners .content-partners .contain-section .item-partners .text-partners .descrip-partners {
   font-size: 0.81rem;
   line-height: 24px;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 .partners .content-partners .contain-section .item-partners .text-partners a {
   color: #c8a461;
@@ -11260,6 +11261,7 @@ article .image .linkImage {
   display: block;
   font-family: "Camphor W01 Bold";
   padding-bottom: 5px;
+  padding-top: 10px;
 }
 .partners .content-partners .contain-section .item-partners .text-partners .portrait .rank {
   display: block;
@@ -11288,8 +11290,9 @@ article .image .linkImage {
   text-transform: uppercase;
   color: #c8a461;
   font-size: 0.88rem;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   padding-top: 55px;
+  font-family: "Camphor W01 Bold";
 }
 .contractor .content-contractor .contain-section .item-contractor {
   border-bottom: 1px solid #c1c1c1;
@@ -11314,6 +11317,7 @@ article .image .linkImage {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold";
   padding-bottom: 29px;
+  letter-spacing: 2px;
 }
 .contractor .content-contractor .contain-section .item-contractor .text-contractor .descrip-contractor {
   font-size: 0.81rem;
@@ -11338,6 +11342,9 @@ article .image .linkImage {
   margin-left: 39px;
   text-align: center;
 }
+.contractor .content-contractor .contain-section .item-contractor .text-contractor .portrait img {
+  margin-bottom: 9px;
+}
 .contractor .content-contractor .contain-section .item-contractor .text-contractor .portrait .name {
   display: block;
   font-family: "Camphor W01 Bold";
@@ -11349,5 +11356,203 @@ article .image .linkImage {
   padding-bottom: 5px;
 }
 .contractor .content-contractor:last-child .item-contractor:last-child {
+  border-bottom: #FFF solid 0px;
+}
+
+.manual {
+  margin-bottom: 42px;
+}
+.manual .title-bandeau {
+  background-color: #fff;
+  padding: 50px 0px;
+}
+.manual .title-bandeau p {
+  font-size: 1rem;
+  line-height: 30px;
+  width: 769px;
+  margin: 0 auto;
+  text-align: center;
+}
+.manual .content-manual {
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+.manual .content-manual .contain-section {
+  margin: 0 auto;
+  width: 975px;
+  position: relative;
+  overflow: hidden;
+  height: 100px;
+}
+.manual .content-manual .contain-section .fa {
+  top: 25px;
+}
+.manual .content-manual .contain-section .title-section {
+  font-family: "Camphor W01 Bold";
+  text-transform: uppercase;
+  color: #c1c1c1;
+  font-size: 0.88rem;
+  letter-spacing: 2px;
+  padding-top: 41px;
+}
+.manual .content-manual .contain-section .title-section .logo-title {
+  width: 21px;
+  height: 21px;
+  padding-right: 22px;
+  vertical-align: bottom;
+}
+.manual .content-manual .contain-section .title-section .svg path {
+  fill: currentColor;
+  stroke: currentColor;
+}
+.manual .content-manual .contain-section .title-section .svg .st0 {
+  stroke: currentColor;
+}
+.manual .content-manual .contain-section .title-section .acces path {
+  fill: white;
+}
+.manual .content-manual .contain-section .title-section:hover {
+  color: #c8a461;
+}
+.manual .content-manual .contain-section .descrip-section p {
+  width: 741px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 36px;
+  padding: 39px 0px;
+  text-align: center;
+}
+.manual .content-manual .contain-section .item-manual {
+  padding: 41px 0px;
+}
+.manual .content-manual .contain-section .item-manual .contain-img {
+  display: inline-block;
+  width: 400px;
+  vertical-align: top;
+}
+.manual .content-manual .contain-section .item-manual .contain-img img {
+  padding-bottom: 30px;
+}
+.manual .content-manual .contain-section .item-manual .text-manual {
+  width: 571px;
+  display: inline-block;
+  vertical-align: top;
+}
+.manual .content-manual .contain-section .item-manual .text-manual .title-manual {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold";
+  padding-bottom: 29px;
+}
+.manual .content-manual .contain-section .item-manual .text-manual .descrip-manual {
+  font-size: 0.81rem;
+  line-height: 24px;
+}
+.manual .content-manual .contain-section .item-manual .text-manual .descrip-manual strong {
+  color: #c29f5f;
+  font-size: 0.88rem;
+  font-family: "Camphor W01 Bold";
+}
+.manual .content-manual .contain-section .item-manual .text-manual .title-descript {
+  margin: 18px 0px;
+}
+.manual .content-manual .contain-section .item-manual .text-manual a {
+  color: #c8a461;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding-right: 13px;
+}
+.manual .content-manual .contain-section .item-manual .text-manual .content-text-with-portrait {
+  display: inline-block;
+  width: 69%;
+}
+.manual .content-manual .contain-section .item-manual .text-manual .portrait {
+  display: inline-block;
+  width: 134px;
+  vertical-align: top;
+  margin-top: 9%;
+  margin-left: 39px;
+  text-align: center;
+}
+.manual .content-manual .contain-section .item-manual .text-manual .portrait .name {
+  display: block;
+  font-family: "Camphor W01 Bold";
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+.manual .content-manual .contain-section .item-manual .text-manual .portrait .rank {
+  display: block;
+  font-size: 0.75rem;
+  padding-bottom: 5px;
+}
+.manual .content-manual .contain-section .item-manual .text-manual ul {
+  line-height: 24px;
+}
+.manual .content-manual .contain-section .item-manual .text-manual ul li {
+  font-size: 0.81rem;
+  list-style: disc;
+  list-style-position: inside;
+}
+.manual .content-manual .contain-section .item-manual .accredit .small-container-title {
+  width: 353px;
+}
+.manual .content-manual .contain-section .item-manual .accredit .descrip-manual strong {
+  color: #000;
+}
+.manual .content-manual .contain-section .item-manual .accredit .contain-people .people {
+  width: 184px;
+  display: inline-block;
+  line-height: 24px;
+  font-size: 0.81rem;
+  vertical-align: text-top;
+  padding-bottom: 24px;
+}
+.manual .content-manual .contain-section .item-manual .accredit .contain-people .people strong {
+  font-family: "Camphor W01 Bold";
+  display: block;
+}
+.manual .content-manual .contain-section .item-manual .accredit .contain-people .people .num {
+  color: #c29f5f;
+}
+.manual .content-manual .contain-section .item-manual .accredit .title-item-manual {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Bold";
+  text-transform: uppercase;
+}
+.manual .content-manual .contain-section .item-manual .contain-infos .item-infos {
+  width: 357px;
+  display: inline-block;
+  padding: 0px 60px;
+  padding-bottom: 22px;
+  vertical-align: top;
+  text-align: center;
+  font-size: 0.81rem;
+  line-height: 24px;
+}
+.manual .content-manual .contain-section .item-manual .contain-infos .item-infos img {
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+}
+.manual .content-manual .contain-section .item-manual .contain-infos .item-infos .title-infos {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold";
+  display: block;
+  padding-bottom: 30px;
+  padding-top: 12px;
+  letter-spacing: 2px;
+}
+.manual .content-manual .contain-section .item-manual .contain-infos .item-infos strong {
+  font-family: "Camphor W01 Bold";
+}
+.manual .content-manual .contain-section .item-manual .contain-infos .item-infos .phone {
+  color: #c8a461;
+}
+.manual .content-manual .participate-active .title-section {
+  color: #c8a461;
+}
+.manual .content-manual:last-child .item-manual:last-child {
   border-bottom: #FFF solid 0px;
 }
