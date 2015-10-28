@@ -3482,7 +3482,6 @@ header #logo-wrapper #logo {
   padding: 5px 100px 0 0;
   text-align: center;
   vertical-align: middle;
-  width: 215px;
 }
 header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
   font-family: "Camphor W01 Bold";
@@ -3617,10 +3616,10 @@ header #navigation ul li a {
   display: block;
   padding-right: 21px;
   text-transform: uppercase;
-  -moz-transition: color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #navigation ul li a:hover, header #navigation ul li a.active {
   color: #c8a461;
@@ -3863,10 +3862,10 @@ footer .newsletter #submit {
   outline: none;
   text-transform: uppercase;
   width: 135px;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 1.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 footer .newsletter #submit:hover {
   border-color: #fff;
@@ -3896,13 +3895,13 @@ footer .social ul li a {
   display: block;
   height: 26px;
   width: 26px;
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 footer .social ul li a:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 footer .social ul li a.appli {
   background: url("../img/svg/appli.svg") center no-repeat;
@@ -3986,10 +3985,10 @@ footer .footer-menu ul li a {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  -moz-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 footer .footer-menu ul li a:hover {
   opacity: 1;
@@ -4461,13 +4460,13 @@ div.chocolat-wrapper .chocolat-close {
 .filters div .select {
   color: #c8a461;
   cursor: pointer;
-  -moz-transition: opacity 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: opacity 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: opacity 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: opacity 0.7s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .filters div .select:hover {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 .filters div .select span {
   background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
@@ -5850,17 +5849,17 @@ div.chocolat-wrapper .chocolat-close {
   text-align: center;
   text-transform: uppercase;
   width: 100%;
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #news .read-more strong {
   color: #000;
   font-weight: normal;
 }
 #news .read-more:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 #news .container {
   position: relative;
@@ -5893,10 +5892,10 @@ div.chocolat-wrapper .chocolat-close {
   display: block;
   padding: 10px 0;
   text-align: center;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #news .container #timeline a.disabled {
   background-color: #f2f2f2;
@@ -6252,10 +6251,10 @@ div.chocolat-wrapper .chocolat-close {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  -moz-transition: color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: color 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #networks ul li a:hover {
   color: #c8a461;
@@ -6274,10 +6273,10 @@ div.chocolat-wrapper .chocolat-close {
   position: absolute;
   opacity: 0;
   visibility: hidden;
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #networks ul li a.facebook {
   background: url("../img/svg/facebook-grey.svg") right top no-repeat;
@@ -6350,6 +6349,13 @@ div.chocolat-wrapper .chocolat-close {
   font-family: "Camphor W01 Heavy";
   font-size: 0.750rem;
   text-transform: uppercase;
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#featured-videos .link a:hover {
+  opacity: 0.5;
 }
 #featured-videos #slider-videos {
   padding-top: 60px;
@@ -6754,7 +6760,7 @@ div.chocolat-wrapper .chocolat-close {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #featured-movies .info .director a:hover {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 #featured-movies .active .info .category, #featured-movies .active .info .director, #featured-movies .active .info h2 {
   opacity: 1;
@@ -6846,10 +6852,10 @@ div.chocolat-wrapper .chocolat-close {
   top: 0;
   left: 0;
   width: 100%;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .push-container .push h3 {
   color: #fff;
@@ -6989,10 +6995,10 @@ div.chocolat-wrapper .chocolat-close {
   font-family: "Playfair Display";
   font-weight: 700;
   opacity: 0.3;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #prefooter ul li a:hover, #prefooter ul li a.active {
   opacity: 1;

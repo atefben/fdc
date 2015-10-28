@@ -25,10 +25,10 @@
     .select {
       color: $gold;
       cursor: pointer;
-      @include transition(opacity .7s $smoothTransition);
+      @include transition(opacity .9s $smoothTransition);
 
       &:hover {
-        opacity: 0.7;
+        opacity: 0.5;
       }
 
       span {

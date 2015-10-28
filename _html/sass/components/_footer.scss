@@ -124,7 +124,7 @@ footer {
       outline: none;
       text-transform: uppercase;
       width: 135px;
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(all 1.4s $smoothTransition);
 
       &:hover {
         border-color: #fff;
@@ -158,10 +158,10 @@ footer {
           display: block;
           height: 26px;
           width: 26px;
-          @include transition(all .8s $smoothTransition);
+          @include transition(all .9s $smoothTransition);
 
           &:hover {
-            opacity: 0.6;
+            opacity: 0.5;
           }
 
           &.appli {
@@ -261,7 +261,7 @@ footer {
           color: #fff;
           opacity: 0.5;
           @include transform(translateZ(0));
-          @include transition(all 0.7s $smoothTransition);
+          @include transition(all 0.9s $smoothTransition);
 
           &:hover {
             opacity: 1;

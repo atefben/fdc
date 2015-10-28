@@ -119,6 +119,7 @@ $(document).ready(function() {
         });
       }, 1200);
     } else {
+      $('#shdMore').removeClass('show');
       $.ajax({
         type: "GET",
         dataType: "html",
