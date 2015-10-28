@@ -53,7 +53,11 @@ $(document).ready(function() {
       }, 1800);
 
       setTimeout(function() {
-        sessionStorage.setItem('scrolltop',$(window).scrollTop());
+        var v = $(window).scrollTop();
+        if(v == 0 && $('header').hasClass('sticky')) {
+          v = 11;
+        }
+        sessionStorage.setItem('scrolltop',v);
         window.location = href;
       }, 1900);
     }

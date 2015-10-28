@@ -99,7 +99,7 @@
       margin: 20px auto 0 auto;
       height: 50px;
       width: 50px;
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(all 0.9s $smoothTransition);
 
       &:hover {
         border-color: rgba(255, 255, 255, 1);
@@ -131,6 +131,11 @@
       font-family: $CamphorHeavy;
       font-size: 0.750rem;
       text-transform: uppercase;
+      @include transition(all .9s $smoothTransition);
+
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
 
