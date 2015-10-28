@@ -56,6 +56,12 @@ function initSlideshows() {
 $('body').on('click', '.chocolat-img', function(e){
 
   $('.chocolat-wrapper').removeClass('show');
+  $('body').removeClass('fixed');
+
+  $('html, body').animate({
+    scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+  }, 0);
+
   setTimeout(function() {
     for(var i=0; i<slideshows.length; i++) {
       
@@ -103,6 +109,7 @@ $('body').on('click', '.chocolat-image', function() {
   $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
   $('<a href="#" class="share"></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+  $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
   setTimeout(function() {
     $('.chocolat-wrapper').addClass('show');
@@ -112,6 +119,7 @@ $('body').on('click', '.chocolat-image', function() {
     $('.chocolat-wrapper .chocolat-img').css('transition', 'none');
     // change url hash
     window.location.hash = $that.attr('id');
+    $('body').addClass('fixed');
   }, 2500);
 
   $(this).parents('.slideshow').find('.thumbnails .thumb').each(function() {

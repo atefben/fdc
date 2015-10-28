@@ -3862,10 +3862,10 @@ footer .newsletter #submit {
   outline: none;
   text-transform: uppercase;
   width: 135px;
-  -moz-transition: all 1.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 1.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 1.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 1.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 footer .newsletter #submit:hover {
   border-color: #fff;
@@ -4047,18 +4047,16 @@ footer .footer-menu ul li a:hover {
   height: 64px;
   position: relative;
   width: 97px;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .slideshow .slideshow-img .thumbnails .thumb:after {
   border: 0px solid #c8a461;
   box-sizing: border-box;
   content: '';
   display: block;
-  opacity: 0;
-  visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -4075,15 +4073,13 @@ footer .footer-menu ul li a:hover {
 }
 .slideshow .slideshow-img .thumbnails .thumb img {
   opacity: 0.5;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .slideshow .slideshow-img .thumbnails .thumb.active:after {
   border-width: 6px;
-  opacity: 1;
-  visibility: visible;
 }
 .slideshow .slideshow-img .thumbnails .thumb.active img {
   opacity: 1;
@@ -4093,8 +4089,6 @@ footer .footer-menu ul li a:hover {
 }
 .slideshow .slideshow-img .thumbnails .thumb:hover:after {
   border-width: 6px;
-  opacity: 1;
-  visibility: visible;
 }
 .slideshow .slideshow-img .thumbnails .thumb:hover img {
   opacity: 1;
@@ -4203,6 +4197,15 @@ footer .footer-menu ul li a:hover {
   text-transform: uppercase;
 }
 
+body.chocolat-open {
+  overflow: initial;
+}
+
+body.fixed {
+  position: fixed;
+  overflow-y: scroll;
+}
+
 div.chocolat-wrapper {
   background-color: #080808;
   opacity: 0;
@@ -4283,7 +4286,7 @@ div.chocolat-wrapper .thumbnails .thumb.active img, div.chocolat-wrapper .thumbn
   opacity: 1 !important;
 }
 div.chocolat-wrapper .chocolat-bottom {
-  background: none;
+  background: url("../img/shadow.png") repeat-x;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 16px;
   line-height: initial;
@@ -4319,11 +4322,14 @@ div.chocolat-wrapper .chocolat-bottom:hover:after {
   visibility: visible;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
+  background: url("../img/svg/photo-white.svg") no-repeat center 36%;
+  background-size: 30px;
   border-right: 1px solid rgba(255, 255, 255, 0.4);
   font-family: "Camphor W01 Bold";
   cursor: pointer;
   font-size: 0.750rem;
-  line-height: 100px;
+  height: 100%;
+  line-height: 140px;
   padding: 0;
   margin: 0;
   position: absolute;
@@ -4331,10 +4337,10 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   text-align: center;
   width: 100px;
   z-index: 2;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination.active, div.chocolat-wrapper .chocolat-bottom .chocolat-pagination:hover {
   background-color: #c8a461;
@@ -4342,19 +4348,44 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-pagination.active, div.chocolat-
 div.chocolat-wrapper .chocolat-bottom .chocolat-description {
   box-sizing: border-box;
   padding-top: 30px;
-  padding-left: 150px;
+  padding-left: 135px;
   text-align: left;
   position: relative;
   z-index: 2;
 }
+div.chocolat-wrapper .chocolat-bottom .chocolat-description span.category {
+  color: #c8a461;
+  display: inline-block;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  text-transform: uppercase;
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-description span.date {
+  color: #666;
+  display: inline-block;
+  font-size: 0.625rem;
+}
 div.chocolat-wrapper .chocolat-bottom .chocolat-description h2 {
   font-family: "Camphor W01 Bold";
   font-size: 1rem;
-  margin-bottom: 5px;
+  margin-top: 5px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description p {
   color: #999;
   font-size: 0.750rem;
+}
+div.chocolat-wrapper .credit {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  height: 100px;
+  bottom: 0;
+  position: absolute;
+  right: 303px;
+  z-index: 20;
+  color: #dedede;
+  font-size: 0.750rem;
+  line-height: 100px;
+  padding: 0 35px;
 }
 div.chocolat-wrapper .share {
   border-left: 1px solid rgba(255, 255, 255, 0.4);
@@ -4365,12 +4396,30 @@ div.chocolat-wrapper .share {
   z-index: 20;
   right: 202px;
   position: absolute;
+}
+div.chocolat-wrapper .share:after {
   background: url("../img/svg/share.svg") no-repeat center;
   background-size: 25px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+div.chocolat-wrapper .share:hover:after {
+  opacity: 0.5;
 }
 div.chocolat-wrapper .chocolat-left {
-  background: url("../img/svg/arrow-left-white.svg") no-repeat center;
-  background-size: 15px;
+  background: none;
   bottom: 0;
   border-left: 1px solid rgba(255, 255, 255, 0.4);
   display: block;
@@ -4382,9 +4431,29 @@ div.chocolat-wrapper .chocolat-left {
   margin-top: 0;
   z-index: 20;
 }
-div.chocolat-wrapper .chocolat-right {
-  background: url("../img/svg/arrow-right-white.svg") no-repeat center;
+div.chocolat-wrapper .chocolat-left:after {
+  background: url("../img/svg/arrow-left-white.svg") no-repeat center;
   background-size: 15px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+div.chocolat-wrapper .chocolat-left:hover:after {
+  opacity: 0.5;
+}
+div.chocolat-wrapper .chocolat-right {
+  background: none;
   bottom: 0;
   border-left: 1px solid rgba(255, 255, 255, 0.4);
   display: block;
@@ -4393,6 +4462,27 @@ div.chocolat-wrapper .chocolat-right {
   height: 100px;
   margin-top: 0;
   z-index: 20;
+}
+div.chocolat-wrapper .chocolat-right:after {
+  background: url("../img/svg/arrow-right-white.svg") no-repeat center;
+  background-size: 15px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+div.chocolat-wrapper .chocolat-right:hover:after {
+  opacity: 0.5;
 }
 div.chocolat-wrapper .chocolat-content {
   cursor: none;
@@ -4602,10 +4692,10 @@ div.chocolat-wrapper .chocolat-close {
   top: 5%;
   right: 5%;
   width: 85px;
-  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .close-button:hover {
   opacity: 1;
@@ -6852,10 +6942,10 @@ div.chocolat-wrapper .chocolat-close {
   top: 0;
   left: 0;
   width: 100%;
-  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .push-container .push h3 {
   color: #fff;
@@ -6890,7 +6980,7 @@ div.chocolat-wrapper .chocolat-close {
   background-size: 900px auto;
   box-sizing: border-box;
   height: 535px;
-  padding-top: 70px;
+  padding-top: 140px;
   overflow: hidden;
   position: relative;
 }
@@ -6904,6 +6994,9 @@ div.chocolat-wrapper .chocolat-close {
 }
 #prefooter #slider-prefooter .owl-stage-outer, #prefooter #slider-prefooter .owl-stage, #prefooter #slider-prefooter .owl-item {
   height: 100%;
+}
+#prefooter #slider-prefooter .owl-stage {
+  transition: all 1.2s cubic-bezier(0.86, 0, 0.07, 1) !important;
 }
 #prefooter #slider-prefooter .owl-item {
   width: 100%;
@@ -7083,14 +7176,14 @@ article:hover .image .read-later {
   visibility: visible;
 }
 article:hover .image .image-wrapper img {
-  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -moz-transform: scale(1.05) translateZ(0);
-  -ms-transform: scale(1.05) translateZ(0);
-  -webkit-transform: scale(1.05) translateZ(0);
-  transform: scale(1.05) translateZ(0);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
 }
 article .image {
   height: 165px;
@@ -7111,10 +7204,10 @@ article .image .image-wrapper img {
   min-height: 100%;
   width: auto;
   height: auto;
-  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 article .image .read-later {
   background: #fff url("../img/svg/read-later.svg") no-repeat center;

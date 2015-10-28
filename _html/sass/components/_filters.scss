@@ -140,7 +140,7 @@
   top: 5%;
   right: 5%;
   width: 85px;
-  @include transition(all 0.6s $smoothTransition);
+  @include transition(all 0.9s $smoothTransition);
 
   &:hover {
     opacity: 1;

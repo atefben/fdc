@@ -106,8 +106,8 @@ article {
   }
 
   &:hover .image .image-wrapper img {
-    @include transition(all 8s $linear);
-    @include transform(scale(1.05) translateZ(0));
+    @include transition(all 4s $linear);
+    @include transform(scale(1.08) translateZ(0));
   }
 
   .image {
@@ -124,7 +124,7 @@ article {
         min-height: 100%;
         width: auto;
         height: auto;
-        @include transition(all 4s $linear);
+        @include transition(all 3s $linear);
       }
       
     }

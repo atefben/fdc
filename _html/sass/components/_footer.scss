@@ -124,7 +124,7 @@ footer {
       outline: none;
       text-transform: uppercase;
       width: 135px;
-      @include transition(all 1.4s $smoothTransition);
+      @include transition(all 1.8s $smoothTransition);
 
       &:hover {
         border-color: #fff;

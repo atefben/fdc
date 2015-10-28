@@ -46,7 +46,7 @@ function makePath(data){
     fill: 'transparent'
   });
 
-  path.animate({ path: pathString }, 900, mina.easeout);
+  path.animate({ path: pathString }, 900, mina.easeInOutQuint);
 
   /* point radius */
   var radius = 2;

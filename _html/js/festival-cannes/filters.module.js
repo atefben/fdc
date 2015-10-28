@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     setTimeout(function() {
       $('#filters span').addClass('show');
-    }, 800);
+    }, 400);
   });
 
   // close filters
