@@ -15,7 +15,7 @@
   <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css" />
   <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
   <link href='css/styles.css' rel="stylesheet">
   <style type="text/css">
 
