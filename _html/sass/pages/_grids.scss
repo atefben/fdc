@@ -134,11 +134,12 @@
 
     img {
       @include transform(translateZ(0));
-      @include transition(all 0.8s $smoothTransition);
+      @include transition(all 4s $linear);
     }
 
     &:hover {
       img {
+        @include transition(all 8s $linear);
         @include transform(scale(1.05) translateZ(0));
       }
     }
@@ -180,11 +181,12 @@
 
     img {
       @include transform(translateZ(0));
-      @include transition(all 0.8s $smoothTransition);
+      @include transition(all 4s $linear);
     }
 
     &:hover {
       img {
+        @include transition(all 8s $linear);
         @include transform(scale(1.05) translateZ(0));
       }
     }
@@ -217,12 +219,13 @@
         display: block;
         height: 100%;
         width: 100%;
-        @include transition(all 0.8s $smoothTransition);
+        @include transition(all 4s $linear);
       }
     }
 
     &:hover img {
-      @include transform(scale(1.1) translateZ(0));
+      @include transition(all 8s $linear);
+      @include transform(scale(1.05) translateZ(0));
     }
 
     article {

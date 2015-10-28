@@ -163,7 +163,7 @@
     img {
       display: block;
       @include transform(translateZ(0));
-      @include transition(all 2.2s $smoothTransition);
+      @include transition(all 4s $linear);
     }
 
     .picto {
@@ -178,7 +178,8 @@
       @include transition(background-color 0.5s $smoothTransition);
 
       &:hover + img {
-        @include transform(scale(1.06) translateZ(0));
+        @include transition(all 8s $linear);
+        @include transform(scale(1.05) translateZ(0));
       }
 
       &:hover {

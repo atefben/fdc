@@ -26,7 +26,7 @@
       min-height: 100%;
       width: auto;
       height: auto;
-      @include transition(all 2s $smoothTransition);
+      @include transition(all 4s $linear);
     }
     
   }
@@ -49,8 +49,9 @@
     width: 101%;
   }
 
-  .vid:hover .image-wrapper img, .video:hover .image-wrapper img, .channel:hover .image-wrapper img {
-    @include transform(scale(1.08) translateZ(0));
+  .owl-item.center .vid:hover .image-wrapper img, .video:hover .image-wrapper img, .channel:hover .image-wrapper img {
+    @include transition(all 8s $linear);
+    @include transform(scale(1.05) translateZ(0));
   }
 
   #live {

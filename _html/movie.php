@@ -301,8 +301,12 @@
           <div class="news" data-section="news">
             <div class="articles center">
               <article class="article" data-format="article" data-theme="competition">
-                <div class="image" style="background-image: url('img/articles/03.jpg')">
-                  <a href="article.php"></a>
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/03.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                   <span class="picto"></span>
                 </div>
                 <div class="info">
@@ -310,14 +314,18 @@
                   <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
                 </div>
               </article>
-              <article class="video" data-format="video" data-theme="photocall">
-                <div class="image" style="background-image: url('img/articles/03.jpg')">
-                  <a href="article.php"></a>
+              <article class="photo" data-format="photo" data-theme="competition">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/03.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                   <span class="picto"></span>
                 </div>
                 <div class="info">
-                  <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Z de Costa-Gravas</a></h2>
+                  <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
                 </div>
               </article>
             </div>

@@ -4118,10 +4118,10 @@ footer .footer-menu ul li a:hover {
   margin: 0 auto;
   max-width: 100%;
   pointer-events: none;
-  -moz-transition: all 6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .slideshow .slideshow-img .images .img.active {
   opacity: 1;
@@ -4178,10 +4178,10 @@ footer .footer-menu ul li a:hover {
   visibility: visible;
 }
 .slideshow .slideshow-img .images .img:hover img {
-  -moz-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 .slideshow .caption {
   color: #666;
@@ -5704,11 +5704,10 @@ div.chocolat-wrapper .chocolat-close {
   -ms-transform: translate3d(0, 10px, 0);
   -webkit-transform: translate3d(0, 10px, 0);
   transform: translate3d(0, 10px, 0);
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition-delay: 0.7s;
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #sliderWrapper .owl-item .info h2 {
   color: #fff;
@@ -5724,11 +5723,11 @@ div.chocolat-wrapper .chocolat-close {
   -ms-transform: translate3d(0, 10px, 0);
   -webkit-transform: translate3d(0, 10px, 0);
   transform: translate3d(0, 10px, 0);
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s;
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s;
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition-delay: 0.9s;
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
+  -webkit-transition-delay: 0.2s;
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s;
 }
 #sliderWrapper .owl-item .img {
   background-position: center top;
@@ -5750,6 +5749,20 @@ div.chocolat-wrapper .chocolat-close {
 #sliderWrapper .owl-item.center .info {
   opacity: 1;
   visibility: visible;
+}
+#sliderWrapper .owl-item.center .info .category {
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.7s;
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
+}
+#sliderWrapper .owl-item.center .info h2 {
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.9s;
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
 }
 #sliderWrapper .owl-item.center .info .category, #sliderWrapper .owl-item.center .info h2 {
   opacity: 1;
@@ -6145,10 +6158,10 @@ div.chocolat-wrapper .chocolat-close {
   font-size: 0.625rem;
   height: 100%;
   width: 100%;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #social-wall #wall .post .side a, #social-wall #wall .post .side strong {
   color: #c8a461;
@@ -6341,17 +6354,21 @@ div.chocolat-wrapper .chocolat-close {
 #featured-videos #slider-videos {
   padding-top: 60px;
 }
+#featured-videos #slider-videos .owl-item.center .vid:hover .image-wrapper img {
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
+}
 #featured-videos #slider-videos .vid {
   height: 400px;
   overflow: hidden;
   position: relative;
   width: 634px;
-}
-#featured-videos #slider-videos .vid:hover .image-wrapper img {
-  -moz-transform: scale(1.08) translateZ(0);
-  -ms-transform: scale(1.08) translateZ(0);
-  -webkit-transform: scale(1.08) translateZ(0);
-  transform: scale(1.08) translateZ(0);
 }
 #featured-videos #slider-videos .vid:before {
   background: transparent;
@@ -6400,10 +6417,10 @@ div.chocolat-wrapper .chocolat-close {
   min-height: 100%;
   width: auto;
   height: auto;
-  -moz-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .sliderDrag .owl-item {
@@ -6479,17 +6496,21 @@ div.chocolat-wrapper .chocolat-close {
 #channels #slider-channels .owl-item.center + .owl-item .linkVid, #channels #slider-channels .owl-item.center + .owl-item + .owl-item .linkVid {
   display: block;
 }
+#channels #slider-channels .owl-item.center .channel:hover .image-wrapper img, #channels #slider-channels .owl-item.center + .owl-item .channel:hover .image-wrapper img, #channels #slider-channels .owl-item.center + .owl-item + .owl-item .channel:hover .image-wrapper img {
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
+}
 #channels #slider-channels .channel {
   height: 185px;
   overflow: hidden;
   position: relative;
   width: 293px;
-}
-#channels #slider-channels .channel:hover .image-wrapper img {
-  -moz-transform: scale(1.08) translateZ(0);
-  -ms-transform: scale(1.08) translateZ(0);
-  -webkit-transform: scale(1.08) translateZ(0);
-  transform: scale(1.08) translateZ(0);
 }
 #channels #slider-channels .channel .image-wrapper {
   overflow: hidden;
@@ -6505,10 +6526,10 @@ div.chocolat-wrapper .chocolat-close {
   min-height: 100%;
   width: auto;
   height: auto;
-  -moz-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 #channels #slider-channels .channel:before {
   background: transparent;
@@ -6784,10 +6805,10 @@ div.chocolat-wrapper .chocolat-close {
   min-height: 100%;
   width: auto;
   height: auto;
-  -moz-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .push-container .push.right {
   float: right;
@@ -6806,10 +6827,14 @@ div.chocolat-wrapper .chocolat-close {
   opacity: 0.4;
 }
 .push-container .push:hover .image-wrapper img {
-  -moz-transform: scale(1.1) translateZ(0);
-  -ms-transform: scale(1.1) translateZ(0);
-  -webkit-transform: scale(1.1) translateZ(0);
-  transform: scale(1.1) translateZ(0);
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
 }
 .push-container .push:after {
   background-color: #141414;
@@ -7051,11 +7076,15 @@ article:hover .image .read-later {
   opacity: 1;
   visibility: visible;
 }
-article:hover .image-wrapper img {
-  -moz-transform: scale(1.08) translateZ(0);
-  -ms-transform: scale(1.08) translateZ(0);
-  -webkit-transform: scale(1.08) translateZ(0);
-  transform: scale(1.08) translateZ(0);
+article:hover .image .image-wrapper img {
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
 }
 article .image {
   height: 165px;
@@ -7076,10 +7105,10 @@ article .image .image-wrapper img {
   min-height: 100%;
   width: auto;
   height: auto;
-  -moz-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 article .image .read-later {
   background: #fff url("../img/svg/read-later.svg") no-repeat center;
@@ -7747,10 +7776,10 @@ article .image .linkImage {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  -moz-transition: all 2.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 2.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 2.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 2.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .single-movie .poster .picto {
   background-size: 40px;
@@ -7767,10 +7796,14 @@ article .image .linkImage {
   transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie .poster .picto:hover + img {
-  -moz-transform: scale(1.06) translateZ(0);
-  -ms-transform: scale(1.06) translateZ(0);
-  -webkit-transform: scale(1.06) translateZ(0);
-  transform: scale(1.06) translateZ(0);
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
 }
 .single-movie .poster .picto:hover {
   background-color: #080808;
@@ -8589,12 +8622,16 @@ article .image .linkImage {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 #gridPhotos .item:hover img {
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -moz-transform: scale(1.05) translateZ(0);
   -ms-transform: scale(1.05) translateZ(0);
   -webkit-transform: scale(1.05) translateZ(0);
@@ -8648,12 +8685,16 @@ article .image .linkImage {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 #gridAudios .item:hover img {
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -moz-transform: scale(1.05) translateZ(0);
   -ms-transform: scale(1.05) translateZ(0);
   -webkit-transform: scale(1.05) translateZ(0);
@@ -8679,16 +8720,20 @@ article .image .linkImage {
   display: block;
   height: 100%;
   width: 100%;
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .all-articles .item:hover img {
-  -moz-transform: scale(1.1) translateZ(0);
-  -ms-transform: scale(1.1) translateZ(0);
-  -webkit-transform: scale(1.1) translateZ(0);
-  transform: scale(1.1) translateZ(0);
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
 }
 .all-articles .item article {
   float: none;
@@ -9556,10 +9601,10 @@ article .image .linkImage {
   min-height: 100%;
   width: auto;
   height: auto;
-  -moz-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .webtv .channel {
   height: 185px;
@@ -9576,11 +9621,15 @@ article .image .linkImage {
 .webtv .shadow-bottom:before {
   width: 101%;
 }
-.webtv .vid:hover .image-wrapper img, .webtv .video:hover .image-wrapper img, .webtv .channel:hover .image-wrapper img {
-  -moz-transform: scale(1.08) translateZ(0);
-  -ms-transform: scale(1.08) translateZ(0);
-  -webkit-transform: scale(1.08) translateZ(0);
-  transform: scale(1.08) translateZ(0);
+.webtv .owl-item.center .vid:hover .image-wrapper img, .webtv .video:hover .image-wrapper img, .webtv .channel:hover .image-wrapper img {
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
 }
 .webtv #live {
   background-color: #000;
