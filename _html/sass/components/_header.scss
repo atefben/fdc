@@ -492,6 +492,11 @@ header {
           left: auto;
           margin-left: -762px;
           text-align: right;
+          li{
+            a{
+              font-size: 0.688rem;
+            }
+          }
         }
       }
     }

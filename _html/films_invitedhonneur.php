@@ -24,7 +24,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article films-list loading">
+    <div id="main" class="list-article films-list loading honneur-invit">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg)">
                <h2 class="title title-list-header">Cannes classics</h2>
@@ -63,7 +63,7 @@
                <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
            </ul> 
       </div>
-      <div class="container container-list">
+      <div class="container container-list single-article">
         <section class="categorie-items">
             <div class="title-list-cat">
                 <h2 class="title-big">Lumière sur deux réalisateurs</h2>
@@ -124,8 +124,8 @@
                     </div>
                     </div>
                   </div>
-                </div>
-                <div class="share">
+              </div>   
+              <div class="share">
                 <p>Partagez l'article</p>
                 <div class="buttons square">
                   <a href="#" class="button facebook"></a>
@@ -135,6 +135,7 @@
                   <a href="#" class="button print"></a>
                 </div>
               </div>
+
             </div>
         </section>
       </div>
