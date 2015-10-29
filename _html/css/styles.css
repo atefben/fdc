@@ -9665,7 +9665,7 @@ article .image .linkImage {
 .list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
   font-size: 1.75rem;
-  padding-top: 119px;
+  padding-top: 138px;
   margin-bottom: 20px;
 }
 .list-article .bandeau-list .bandeau-list-img .bandeau-lien {
@@ -10708,6 +10708,17 @@ article .image .linkImage {
 }
 .single-evenement .video .vCenterKid {
   text-align: left;
+}
+
+.jurys-list .bandeau-list-img {
+  height: 443px !important;
+}
+.jurys-list .title-list-header {
+  padding-top: 210px !important;
+}
+.jurys-list .sub-nav-list a {
+  color: #999;
+  font-family: "Camphor W01 Bold";
 }
 
 .contain-jury {
