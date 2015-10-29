@@ -9528,9 +9528,6 @@ article .image .linkImage {
   background: url("../img/svg/print.svg") no-repeat 15% center;
   background-size: 18px;
 }
-.categorie-items .title-list-cat:first-child {
-  border-top: 0px solid #000;
-}
 .categorie-items .sub-cat-title {
   padding: 20px;
   background-color: #656565;
@@ -9838,6 +9835,30 @@ article .image .linkImage {
   padding: 0px;
 }
 
+.cannes-classic .title-list-cat:first-child {
+  border-top: 0px solid #000;
+}
+
+.palmares-list .sub-nav-list a {
+  font-family: "Camphor W01 Bold";
+  font-size: 0.75rem !important;
+  color: #999999;
+}
+.palmares-list .sub-nav-list a:hover {
+  color: #c8a461;
+}
+.palmares-list .sub-cat-title {
+  background-color: #202020;
+  padding: 27px;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.75rem;
+}
+.palmares-list .bandeau-list-img {
+  height: 372px !important;
+}
+.palmares-list .bandeau-list-img .title-list-header {
+  padding-top: 155px !important;
+}
 .palmares-list .categorie-items article .contain-article {
   vertical-align: text-top;
 }

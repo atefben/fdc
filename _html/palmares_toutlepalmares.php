@@ -41,7 +41,7 @@
        <!-- En compétition -->
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">En compétitions</h2>
+                <h2 class="title">En compétition</h2>
             </div>
             <h3 class="sub-cat-title">Longs métrages</h3>
             <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
@@ -131,7 +131,7 @@
           <!--- Un certain regard -->
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">En compétitions</h2>
+                <h2 class="title">En compétition</h2>
             </div>
             <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
             <div class="bck-hover">
