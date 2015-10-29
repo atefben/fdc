@@ -9,9 +9,10 @@
 
 header {
   background-color: $dark;
-  position: relative;
+  position: fixed;
   width: 100%;
   z-index: 10;
+  top: 0;
 
   ul {
     cursor: default;

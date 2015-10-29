@@ -2,14 +2,24 @@ $(document).ready(function() {
 
   // Events on scroll
   // =========================
+  var lastScrollTop = 0;
 
   $(window).on('scroll', function() {
     var s = $(window).scrollTop();
 
-    if(($('#prehome-container').length == 0 && s > 5) || ($('#prehome-container').length && s > $(window).height() + 10)) {
-      $('header').addClass('sticky');
+    if (s > lastScrollTop){
+      if(($('#prehome-container').length == 0 && s > 91)) {
+        $('header').addClass('sticky');
+      }
     } else {
-      $('header').removeClass('sticky');
+      if(s < 2000 && (lastScrollTop - s) > 150) {
+        $('header').removeClass('sticky');
+        $('body').css('padding-top', '230px');
+      }
+      if(($('#prehome-container').length == 0 && s < 400)) {
+        $('header').removeClass('sticky');
+        $('body').css('padding-top', '230px');
+      }
     }
 
     if($('#featured-movies').length) {
@@ -99,6 +109,7 @@ $(document).ready(function() {
 
     }
 
+    lastScrollTop = s;
 
   });
 

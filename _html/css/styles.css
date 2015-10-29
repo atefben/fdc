@@ -3157,6 +3157,7 @@ body {
   font-family: "Camphor W01 Regular";
   font-size: 16px;
   overflow-x: hidden;
+  padding-top: 230px;
 }
 
 ::-moz-selection {
@@ -3274,9 +3275,10 @@ body {
 
 header {
   background-color: #080808;
-  position: relative;
+  position: fixed;
   width: 100%;
   z-index: 10;
+  top: 0;
 }
 header ul {
   cursor: default;

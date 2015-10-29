@@ -14,7 +14,7 @@ $(document).ready(function() {
     $('#logo-wrapper, #logo img, #sticky-user').css('transition', 'none');
     $('p.stick').addClass('noTrans');
     $('header').addClass('sticky');
-
+    $('body').css('padding-top', 0);
     var padT = '91px';
 
     if($('#main').css('padding-top') != '0px') {
