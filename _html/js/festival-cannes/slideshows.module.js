@@ -55,34 +55,39 @@ function initSlideshows() {
 // close slideshow on click
 $('body').on('click', '.chocolat-img', function(e){
 
-  $('.chocolat-wrapper').removeClass('show');
-  $('body').removeClass('fixed');
-
-  $('html, body').animate({
-    scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
-  }, 0);
+  $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
 
   setTimeout(function() {
-    for(var i=0; i<slideshows.length; i++) {
-      
-        slideshows[i].api().close();
-        slideshows[i].api().destroy();
-        history.pushState("", document.title, window.location.pathname);
-      
-    }
-  }, 1000);
+    $('.chocolat-wrapper').removeClass('show');
+    $('body').removeClass('fixed');
 
-  setTimeout(function() {
-    slideshows = [];
-    $('.chocolat-wrapper').remove();
-    initSlideshows();
-  }, 1400);
+    $('html, body').animate({
+      scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+    }, 0);
+
+    setTimeout(function() {
+      for(var i=0; i<slideshows.length; i++) {
+        
+          slideshows[i].api().close();
+          slideshows[i].api().destroy();
+          history.pushState("", document.title, window.location.pathname);
+        
+      }
+    }, 1000);
+
+    setTimeout(function() {
+      slideshows = [];
+      $('.chocolat-wrapper').remove();
+      initSlideshows();
+    }, 1400);
+  }, 700);
 });
 
 // mouseover img : close thumbs
 $('body').on('mouseover', '.chocolat-img', function(e){
   $('.chocolat-wrapper .thumbnails').removeClass('open');
   $('.chocolat-pagination').removeClass('active');
+  $('.chocolat-content').removeClass('thumbsOpen');
 });
 
 // mouseover img : hide attribute title
@@ -97,9 +102,10 @@ $('body').on('mouseout', '.chocolat-image', function() {
 });
 
 // show thumbs
-$('body').on('click', '.chocolat-pagination', function() {
-  $(this).toggleClass('active');
+$('body').on('mouseover', '.chocolat-pagination', function() {
+  $(this).addClass('active');
   $('.chocolat-wrapper .thumbnails').toggleClass('open');
+  $('.chocolat-content').addClass('thumbsOpen');
 });
 
 // zoom

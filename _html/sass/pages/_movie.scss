@@ -514,7 +514,7 @@
           font-size: 0.750rem;
           margin: 0 13px;
           text-transform: uppercase;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.9s $smoothTransition);
 
           &:hover, &.active {
             color: #000;
