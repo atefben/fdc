@@ -100,6 +100,11 @@
       height: 190px;
       padding-top: 20px;
       resize: none;
+
+      &.invalid {
+        border-color: #e93939;
+        color: #e93939;
+      }
     }
 
     input {

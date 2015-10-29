@@ -9279,6 +9279,10 @@ article .image .linkImage {
   padding-top: 20px;
   resize: none;
 }
+.contact #form textarea.invalid {
+  border-color: #e93939;
+  color: #e93939;
+}
 .contact #form input {
   height: 50px;
   line-height: 50px;
