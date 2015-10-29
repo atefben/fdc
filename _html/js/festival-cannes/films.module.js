@@ -12,12 +12,12 @@ $(document).ready(function() {
         var s = $(window).scrollTop();
         var h = $("#main").height()-900;
 
-      if(s > 250 ){
+      if(s > 470 ){
         
         $('.nav-movie').addClass('sticky');
         $(".nav-movie").css({position: "fixed",top:90});
         
-      } else if (s < 250){
+      } else if (s < 470){
         
         $(".nav-movie").css({position: "relative",top:1});
         

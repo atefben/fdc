@@ -6,10 +6,25 @@
 
 // 1. Global
 // =========================
+.jurys-list{
+    .bandeau-list-img{
+    height: 443px !important;
+  }
+  .title-list-header{
+    padding-top: 210px !important;
+  }
+  .sub-nav-list{
+    a{
+      color:#999;
+      font-family: $CamphorBold;
+    }
+  }
+}
 .contain-jury{
   max-height: 603px;
   min-height: 603px;
   overflow: hidden;
+
   .photo-jury{
     float: left;
     width: 50%;

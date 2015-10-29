@@ -10710,6 +10710,17 @@ article .image .linkImage {
   text-align: left;
 }
 
+.jurys-list .bandeau-list-img {
+  height: 443px !important;
+}
+.jurys-list .title-list-header {
+  padding-top: 210px !important;
+}
+.jurys-list .sub-nav-list a {
+  color: #999;
+  font-family: "Camphor W01 Bold";
+}
+
 .contain-jury {
   max-height: 603px;
   min-height: 603px;
