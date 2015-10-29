@@ -9,6 +9,28 @@
 // =========================
 
 .palmares-list{
+  .sub-nav-list{
+    a{
+    font-family: $CamphorBold;
+    font-size:0.75rem !important;
+    color:#999999;
+    }
+    a:hover{
+      color:#c8a461;
+    }
+  }
+  .sub-cat-title{
+    background-color: #202020;
+    padding: 27px;
+    font-family: $CamphorBold;
+    font-size: 0.75rem;
+  }
+  .bandeau-list-img{
+    height: 372px !important;
+    .title-list-header{
+     padding-top: 155px !important; 
+    }
+  }
     .categorie-items {
         article{
             .contain-article{

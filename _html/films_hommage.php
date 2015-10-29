@@ -24,7 +24,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article films-list loading">
+    <div id="main" class="list-article films-list loading cannes-classic">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
                <h2 class="title title-list-header">Cannes classics</h2>
