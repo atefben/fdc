@@ -10802,8 +10802,21 @@ article .image .linkImage {
   padding-top: 210px !important;
 }
 .jurys-list .sub-nav-list a {
-  color: #999;
+  color: #999 !important;
   font-family: "Camphor W01 Bold";
+  font-size: 0.75rem !important;
+}
+.jurys-list .sub-nav-list a.active {
+  color: #c8a461 !important;
+}
+.jurys-list .sub-nav-list a:hover {
+  color: #c8a461 !important;
+}
+.jurys-list .grid {
+  padding: 0px !important;
+}
+.jurys-list .grid-wrapper {
+  margin: 0px;
 }
 
 .contain-jury {
@@ -10828,7 +10841,9 @@ article .image .linkImage {
   background-color: #ffffff;
   max-height: 606px;
   height: 603px;
-  padding: 50px;
+  padding-left: 160px;
+  padding-top: 100px;
+  padding-right: 160px;
   box-sizing: border-box;
   overflow-x: auto;
 }
@@ -10845,22 +10860,29 @@ article .image .linkImage {
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy";
   font-size: 2.25rem;
-  padding-top: 18px;
+  padding-top: 25px;
+  padding-bottom: 15px;
 }
 .contain-jury .contain-descript .descript-rank {
   color: #ccab6e;
   font-family: "Camphor W01 Italic";
   font-size: .75rem;
+  padding-bottom: 15px;
 }
 .contain-jury .contain-descript p {
-  font-size: .75rem;
+  font-size: 0.88rem;
   line-height: 24px;
   padding-top: 35px;
   color: #666666;
 }
 
+.contain-jurys-list {
+  background-color: #1a1a1a;
+}
 .contain-jurys-list .title-list-cat {
   border: 0px solid #000;
+  font-weight: 700;
+  font-size: 1.13rem;
 }
 .contain-jurys-list article img {
   float: left;
@@ -10879,15 +10901,15 @@ article .image .linkImage {
   vertical-align: middle;
   /* display: table-cell; */
   text-align: center;
-  padding-bottom: 48px;
+  height: 100px;
 }
 .contain-jurys-list .name {
   display: block;
-  font-size: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold";
   font-size: .875rem;
   text-transform: uppercase;
   padding-top: 24px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 .contain-jurys-list .rank {
   font-family: "Camphor W01 Italic";
