@@ -3746,6 +3746,9 @@ header #navigation ul.user .participate-wrapper ul {
   margin-left: -762px;
   text-align: right;
 }
+header #navigation ul.user .participate-wrapper ul li a {
+  font-size: 0.688rem;
+}
 
 footer * {
   box-sizing: border-box;
@@ -9662,7 +9665,8 @@ article .image .linkImage {
 .list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
   font-size: 1.75rem;
-  padding-top: 148px;
+  padding-top: 119px;
+  margin-bottom: 20px;
 }
 .list-article .bandeau-list .bandeau-list-img .bandeau-lien {
   color: #c8a461;
@@ -9672,6 +9676,7 @@ article .image .linkImage {
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.75rem;
+  font-family: "Camphor W01 Heavy";
 }
 .list-article .bandeau-list .sub-nav-list {
   width: 1000px;
@@ -9714,7 +9719,7 @@ article .image .linkImage {
   transition: .3s;
 }
 .list-article .bandeau-list .nav-list a {
-  color: #686868;
+  color: #999999;
   font-size: 0.75rem;
 }
 .list-article .bandeau-list .nav-list a.active {
@@ -9768,6 +9773,10 @@ article .image .linkImage {
 }
 .selection-officielle .grid .grid-wrapper {
   margin-top: 0px;
+}
+
+.honneur-invit .container {
+  padding: 0px;
 }
 
 .palmares-list .categorie-items article .contain-article {
