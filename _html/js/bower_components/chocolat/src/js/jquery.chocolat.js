@@ -478,6 +478,11 @@
                     }
                     else if (e.keyCode == 27) {
                         that.close();
+                        $('body').removeClass('fixed');
+
+                        $('html, body').animate({
+                          scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+                        }, 0);
                     }
                 }
             });
