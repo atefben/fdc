@@ -4801,6 +4801,18 @@ div.chocolat-wrapper .chocolat-close {
   position: relative;
   width: 50px;
   height: 3px;
+  margin-left: 20px;
+}
+.audio-player .volume:before {
+  content: '';
+  display: block;
+  height: 15px;
+  width: 15px;
+  background: url("../img/svg/volume.svg") no-repeat center;
+  background-size: contain;
+  position: absolute;
+  margin-top: -6px;
+  margin-left: -20px;
 }
 .audio-player .volume span {
   background-color: #fff;
