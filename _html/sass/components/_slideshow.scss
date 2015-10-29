@@ -534,8 +534,11 @@ div.chocolat-wrapper {
     padding-top: 50px;
     .slideshow-img {
         height: 615px !important;
+      .images .img img{
+        width: 100%;
+      }
     }    
-    .slideshow-img .thumbnails {
+    .slideshow-img .thumbnails{
         width: 960px;
     }
 }

@@ -604,6 +604,7 @@
     .picto{
         position: absolute;
         bottom: 10px;
+        margin-left: 0px !important;
     }
     .info{
         position: absolute;
@@ -613,6 +614,6 @@
     .wave-container {
         margin: 0 0 0 309px;
         position: absolute;
-        bottom: 10px;
+        bottom: 10px; 
     }
 }

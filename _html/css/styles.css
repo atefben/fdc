@@ -4529,6 +4529,9 @@ div.chocolat-wrapper .chocolat-close {
 .article_photo .slideshow-img {
   height: 615px !important;
 }
+.article_photo .slideshow-img .images .img img {
+  width: 100%;
+}
 .article_photo .slideshow-img .thumbnails {
   width: 960px;
 }
@@ -5262,6 +5265,7 @@ div.chocolat-wrapper .chocolat-close {
 .actu-article-audio .picto {
   position: absolute;
   bottom: 10px;
+  margin-left: 0px !important;
 }
 .actu-article-audio .info {
   position: absolute;
@@ -9375,6 +9379,9 @@ article .image .linkImage {
 .categorie-items .title-list-cat .print {
   background: url("../img/svg/print.svg") no-repeat 15% center;
   background-size: 18px;
+}
+.categorie-items .title-list-cat:first-child {
+  border-top: 0px solid #000;
 }
 .categorie-items .sub-cat-title {
   padding: 20px;

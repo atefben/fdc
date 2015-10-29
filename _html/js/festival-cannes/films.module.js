@@ -11,7 +11,7 @@ $(document).ready(function() {
         
         var s = $(window).scrollTop();
         var h = $("#main").height()-900;
-        console.log(s);
+
       if(s > 250 ){
         
         $('.nav-movie').addClass('sticky');
