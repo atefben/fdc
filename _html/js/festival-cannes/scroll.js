@@ -16,7 +16,7 @@ $(document).ready(function() {
         $('header').removeClass('sticky');
         $('body').css('padding-top', '230px');
       }
-      if(($('#prehome-container').length == 0 && s < 400)) {
+      else if(($('#prehome-container').length == 0 && s < 400)) {
         $('header').removeClass('sticky');
         $('body').css('padding-top', '230px');
       }

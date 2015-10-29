@@ -10112,6 +10112,11 @@ article .image .linkImage {
   font-size: 0.625rem;
 }
 
+.list-channels #live {
+  background: #000 url("../img/webtv/picto.png") no-repeat center 40%;
+  padding-top: 70px;
+  box-sizing: border-box;
+}
 .list-channels #live h2 {
   font-family: "Playfair Display";
   font-size: 1.750rem;

@@ -241,6 +241,9 @@
 
 .list-channels {
   #live {
+    background: #000 url('../img/webtv/picto.png') no-repeat center 40%;
+    padding-top: 70px;
+    box-sizing: border-box;
 
     h2 {
       font-family: $Playfair;
