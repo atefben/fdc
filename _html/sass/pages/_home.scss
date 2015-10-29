@@ -315,6 +315,13 @@
         z-index: 4;
       }
 
+      &.bottom {
+        position: absolute;
+        top: auto;
+        bottom: 0px;
+        left: auto!important;
+      }
+
       a {
         border-left: 1px solid #e5e5e5;
         border-right: 1px solid #e5e5e5;

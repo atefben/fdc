@@ -35,10 +35,10 @@ $(document).ready(function() {
 
     if($('#news').length) {
       if(s > $('#news').offset().top + 70 && s < ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height())) {
-        $('#timeline').css('margin-top', '').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 57);
+        $('#timeline').removeClass('bottom').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 57);
       } else {
         if(s > ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height())) {
-          $('#timeline').css('margin-top', '-700px');
+          $('#timeline').addClass('bottom');
         } else {
           $('#timeline').removeClass('stick').css('left', 'auto');
         }

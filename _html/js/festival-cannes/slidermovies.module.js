@@ -22,7 +22,7 @@ function setHeightSlider() {
   });
 
   $('#sliderWrapper').height($(window).height() - $('header').height());
-  $('#prefooter').height($(window).height() - 90);
+  $('#prefooter').css('height', $(window).height() - 90 + "px");
 }
 
 $(document).ready(function() {
