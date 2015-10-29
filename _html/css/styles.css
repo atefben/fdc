@@ -4535,6 +4535,12 @@ div.chocolat-wrapper .chocolat-close {
 .article_photo .slideshow-img .thumbnails {
   width: 960px;
 }
+.article_photo .caption {
+  font-family: "Camphor W01 Regular";
+}
+.article_photo .caption strong {
+  font-family: "Camphor W01 Bold" !important;
+}
 
 .filters {
   text-align: center;
@@ -10010,20 +10016,24 @@ article .image .linkImage {
   border-radius: 50%;
   margin-bottom: 10px;
   border: 2px solid #fff;
+  cursor: default;
 }
 .webtv-ba .sub-nav-list {
-  background-color: #141414;
+  background-color: #202020;
   width: auto;
   margin: 0 auto;
   text-align: center;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Bold";
 }
 .webtv-ba .sub-nav-list a {
   color: #686868;
   font-size: 0.8rem;
 }
+.webtv-ba .sub-nav-list a:hover {
+  color: #c8a461;
+}
 .webtv-ba .sub-nav-list a.active {
-  color: #a98b54;
+  color: #c8a461;
 }
 .webtv-ba .sub-nav-list li {
   display: inline-block;

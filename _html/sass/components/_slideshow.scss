@@ -541,6 +541,12 @@ div.chocolat-wrapper {
     .slideshow-img .thumbnails{
         width: 960px;
     }
+  .caption{
+    font-family: $CamphorRegular;
+    strong{
+     font-family: $CamphorBold !important;     
+    }
+  }
 }
 
 

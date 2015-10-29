@@ -322,28 +322,33 @@
 				border-radius: 50%;
 				margin-bottom: 10px;
 				border: 2px solid #fff;
+        cursor: default;
 			}
    	}
 		.sub-nav-list{
-			background-color: #141414;
+			background-color: #202020;
 			width: auto;
 			margin: 0 auto;
 			text-align: center;
-			font-family: $CamphorRegular;
+			font-family: $CamphorBold;
 
 			a{
 					color:#686868;
 					font-size: 0.8rem;
 			}
 
+      a:hover{
+        color: #c8a461;
+      }
+      
 			a.active{
-					color:#a98b54;
+					color:#c8a461;
 			}
 
 			li{
 					display: inline-block;
 					padding: 16px;
-					text-transform: uppercase;
+					text-transform: uppercase; 
 			}
 
 	}
