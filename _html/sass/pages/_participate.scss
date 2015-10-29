@@ -12,11 +12,14 @@
 // =========================
 
 .participate{
+  .bandeau-list{
+    height: 300px;
+  }
   .participate-active{
     height: auto !important;
   }
   .title-list-header{
-    padding-top:  127px !important;
+    padding-top:  97px !important;
 
   }
   .logo{
@@ -323,7 +326,6 @@
           font-size: 0.75rem;
           text-transform: uppercase; 
           font-family : $CamphorBold;
-          margin-top: -11px;
           letter-spacing: 2px;
           padding-bottom: 28px;
         }

@@ -9505,7 +9505,7 @@ article .image .linkImage {
   width: 975px;
   margin: 0 auto;
   text-align: center;
-  font-size: 1,125rem;
+  font-size: 1, 125rem;
   line-height: 36px;
   padding-bottom: 30px;
 }
@@ -9560,16 +9560,16 @@ article .image .linkImage {
   background-color: #141414 !important;
 }
 .list-article .bandeau-list {
-  background-color: #202020;
+  background-color: #1b1b1b;
 }
 .list-article .bandeau-list .bandeau-list-img {
-  height: 365px;
+  height: 300px;
   background-size: cover;
 }
 .list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
   font-size: 1.75rem;
-  padding-top: 155px;
+  padding-top: 148px;
 }
 .list-article .bandeau-list .bandeau-list-img .bandeau-lien {
   color: #c8a461;
@@ -9584,16 +9584,53 @@ article .image .linkImage {
   width: 1000px;
   margin: 0 auto;
   text-align: center;
-  font-family: "Camphor W01 Regular";
 }
 .list-article .bandeau-list .sub-nav-list a {
   color: #686868;
   font-size: 0.8rem;
+  letter-spacing: 1px;
 }
 .list-article .bandeau-list .sub-nav-list a.active {
-  color: #a98b54;
+  color: #c8a461;
 }
 .list-article .bandeau-list .sub-nav-list li {
+  display: inline-block;
+  padding: 16px;
+  text-transform: uppercase;
+}
+.list-article .bandeau-list .nav-movie a {
+  color: #fff;
+  font-size: 0.63rem;
+  font-family: "Camphor W01 Heavy";
+}
+.list-article .bandeau-list .nav-movie a:hover {
+  color: #c8a461;
+}
+.list-article .bandeau-list .nav-movie.sticky {
+  z-index: 1;
+  width: 100%;
+  background-color: #1b1b1b;
+}
+.list-article .bandeau-list .nav-list {
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Camphor W01 Bold";
+  background-color: #202020;
+  width: 100%;
+  z-index: 1;
+  transition: .3s;
+}
+.list-article .bandeau-list .nav-list a {
+  color: #686868;
+  font-size: 0.75rem;
+}
+.list-article .bandeau-list .nav-list a.active {
+  color: #c8a461;
+}
+.list-article .bandeau-list .nav-list a:hover {
+  color: #c8a461;
+}
+.list-article .bandeau-list .nav-list li {
   display: inline-block;
   padding: 16px;
   text-transform: uppercase;
@@ -10827,11 +10864,14 @@ article .image .linkImage {
   cursor: pointer;
 }
 
+.participate .bandeau-list {
+  height: 300px;
+}
 .participate .participate-active {
   height: auto !important;
 }
 .participate .title-list-header {
-  padding-top: 127px !important;
+  padding-top: 97px !important;
 }
 .participate .logo {
   margin-bottom: 28px;
@@ -11127,7 +11167,6 @@ article .image .linkImage {
   font-size: 0.75rem;
   text-transform: uppercase;
   font-family: "Camphor W01 Bold";
-  margin-top: -11px;
   letter-spacing: 2px;
   padding-bottom: 28px;
 }
