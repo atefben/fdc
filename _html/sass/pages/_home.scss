@@ -1076,6 +1076,8 @@
 // =========================
 
 #featured-movies {
+  overflow: hidden;
+  
   #slider-movies, .owl-stage-outer, .owl-stage, .owl-item, .owl-item>div {
     height: 100%;
   }

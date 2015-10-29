@@ -6664,6 +6664,9 @@ div.chocolat-wrapper .chocolat-close {
   display: none;
 }
 
+#featured-movies {
+  overflow: hidden;
+}
 #featured-movies #slider-movies, #featured-movies .owl-stage-outer, #featured-movies .owl-stage, #featured-movies .owl-item, #featured-movies .owl-item > div {
   height: 100%;
 }
