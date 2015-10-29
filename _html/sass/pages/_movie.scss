@@ -334,6 +334,13 @@
           visibility: visible;
         }
       }
+
+      &.black.over, &.black:hover {
+        &:after {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
     }
 
     &.next {
