@@ -131,11 +131,73 @@
         line-height: 40px;
         text-transform: uppercase;
         width: 180px;
+        @include transition(all 0.9s $smoothTransition);
 
         &:hover {
           border-color: #000;
           color: #000;
         }
+      }
+    }
+
+    .select {
+      border: 1px solid #c1c1c1;
+      box-sizing: border-box;
+      color:   #999;
+      line-height: 50px;
+      font-family: $CamphorHeavy;
+      font-size: 0.688rem;
+      display: block;
+      height: 50px;
+      margin-bottom: 15px;
+      outline: none;
+      padding: 0 25px;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+
+      &.invalid {
+        border-color: #e93939;
+        color: #e93939;
+      }
+
+      #triggerSelect {
+        position: absolute;
+        display: block;
+        height: 50px;
+        top: 0;
+        right: 0;
+        width: 50%;
+        z-index: 2;
+        cursor: pointer;
+      }
+
+      label {
+        color: #333;
+        display: inline-block;
+        margin-right: 15px;
+        vertical-align: middle;
+      }
+
+      select {
+        background: none;
+        height: 50px;
+        line-height: 50px;
+        margin-top: -3px;
+        border: none;
+        color: $gold;
+        display: inline-block;
+        vertical-align: middle;
+        font-family: $CamphorHeavy;
+        font-size: 0.688rem;
+        outline: none;
+        -webkit-appearance: none;
+        text-transform: uppercase;
+        padding-right: 10px;
+        background: url('../img/svg/arrow-down-gold.svg') no-repeat right center;
+        background-size: 6px;
+
       }
     }
 

@@ -25,6 +25,34 @@ $(document).ready(function() {
       }
     });
 
+    $('#triggerSelect').on('click', function(e) {
+      e.preventDefault();
+
+      var h = '';
+
+      $('.select option').not('.default').each(function() {
+        h += '<span>' + $(this).val() + '</span>';
+      });
+
+      $('#filters').remove();
+      $('body').append('<div id="filters" class="selectOptions"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"></div></div>');
+      $('#filters .vCenterKid').html(h);
+
+      setTimeout(function() {
+        $('#filters').addClass('show');
+      }, 100);
+
+      setTimeout(function() {
+        $('#filters span').addClass('show');
+      }, 400);
+    });
+
+    $('body').on('click', '.selectOptions span', function() {
+      var i = parseInt($(this).index()) + 1; 
+      $('select option').eq(i).prop('selected', 'selected');
+      $('.select').removeClass('invalid');
+    });
+
     // check valid email address
     $('.contact input[type="email"]').on('input', function() {
       var input=$(this);
@@ -50,6 +78,12 @@ $(document).ready(function() {
     // on submit : check if there are errors in the form
     $('.contact form').on('submit', function() {
       var empty = false;
+
+      if($('select').val() == 'default') {
+        $('.select').addClass('invalid');
+      } else {
+        $('.select').removeClass('invalid');
+      }
 
       $('.contact input[type="text"], .contact input[type="email"], .contact textarea').each(function() {
         if($(this).val() == '') empty = true;

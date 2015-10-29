@@ -13,6 +13,7 @@ $(document).ready(function() {
       loop: false,
       margin: 50,
       autoWidth: true,
+      dragEndSpeed: 600,
       onInitialized: function() {
         $('#slider-channels .owl-stage').css({ 'margin-left': "-343px" });
       }

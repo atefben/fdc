@@ -35,6 +35,15 @@
         peuvent être prises en compte.</p>
         <div id="form">
           <form action="">
+            <div class="select">
+              <label for="select">Votre message concerne:</label>
+              <select name="select">
+                <option class="default" value="default">Séléctionnez un thème</option> 
+                <option value="theme1">Theme 1</option>
+                <option value="theme2">Theme 2</option>
+              </select>
+              <span id="triggerSelect"></span>
+            </div>
             <input type="text" name="name" placeholder="Votre nom*" data-error="Votre nom n'est pas renseigné" />
             <input type="email" name="email" placeholder="Votre adresse email*"  data-error="L'adresse email n'est pas valide" />
             <input type="text" name="object" placeholder="Objet*" data-error="L'objet de votre message n'est pas renseigné" />

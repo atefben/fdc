@@ -9364,10 +9364,69 @@ article .image .linkImage {
   line-height: 40px;
   text-transform: uppercase;
   width: 180px;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .contact #form input[type="submit"]:hover {
   border-color: #000;
   color: #000;
+}
+.contact #form .select {
+  border: 1px solid #c1c1c1;
+  box-sizing: border-box;
+  color: #999;
+  line-height: 50px;
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.688rem;
+  display: block;
+  height: 50px;
+  margin-bottom: 15px;
+  outline: none;
+  padding: 0 25px;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+.contact #form .select.invalid {
+  border-color: #e93939;
+  color: #e93939;
+}
+.contact #form .select #triggerSelect {
+  position: absolute;
+  display: block;
+  height: 50px;
+  top: 0;
+  right: 0;
+  width: 50%;
+  z-index: 2;
+  cursor: pointer;
+}
+.contact #form .select label {
+  color: #333;
+  display: inline-block;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+.contact #form .select select {
+  background: none;
+  height: 50px;
+  line-height: 50px;
+  margin-top: -3px;
+  border: none;
+  color: #c8a461;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.688rem;
+  outline: none;
+  -webkit-appearance: none;
+  text-transform: uppercase;
+  padding-right: 10px;
+  background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
+  background-size: 6px;
 }
 .contact #form .errors {
   border: 1px solid #e93939;

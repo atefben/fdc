@@ -8,7 +8,7 @@ $(document).ready(function() {
     var sliderVideos = $("#slider-videos").owlCarousel({
       nav: false,
       dots: false,
-      smartSpeed: 900,
+      smartSpeed: 1300,
       margin: 50,
       center: true,
       autoWidth: true,
