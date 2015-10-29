@@ -10024,6 +10024,7 @@ article .image .linkImage {
   font-family: "Playfair Display";
   font-size: 1.75rem;
   letter-spacing: 15px;
+  font-weight: 700;
 }
 .webtv-ba #live .play {
   border-radius: 50%;
@@ -10040,7 +10041,7 @@ article .image .linkImage {
 }
 .webtv-ba .sub-nav-list a {
   color: #686868;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 .webtv-ba .sub-nav-list a:hover {
   color: #c8a461;
@@ -10050,7 +10051,7 @@ article .image .linkImage {
 }
 .webtv-ba .sub-nav-list li {
   display: inline-block;
-  padding: 16px;
+  padding: 14.5px;
   text-transform: uppercase;
 }
 .webtv-ba .grid {
@@ -10099,6 +10100,7 @@ article .image .linkImage {
   color: #fff !important;
   text-transform: none !important;
   font-size: 0.875rem !important;
+  letter-spacing: 0px;
 }
 .webtv-ba .listtrailer .vCenterKid {
   display: table-cell;

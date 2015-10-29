@@ -317,6 +317,7 @@
 				font-family: $Playfair;
 				font-size: 1.75rem;
 				letter-spacing: 15px;
+        font-weight: 700; 
 			}
 			.play{
 				border-radius: 50%;
@@ -334,7 +335,7 @@
 
 			a{
 					color:#686868;
-					font-size: 0.8rem;
+					font-size: 0.75rem;
 			}
 
       a:hover{
@@ -347,7 +348,7 @@
 
 			li{
 					display: inline-block;
-					padding: 16px;
+					padding: 14.5px;
 					text-transform: uppercase; 
 			}
 
@@ -399,7 +400,8 @@
 				color: #fff !important;
 				text-transform: none !important;
 				font-size: 0.875rem !important;
-			}
+            letter-spacing: 0px;
+	  		}
 			}
 		.vCenterKid {
 			display: table-cell;
