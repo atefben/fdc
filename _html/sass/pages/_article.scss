@@ -668,7 +668,13 @@ article {
     top: 57%;
     width: 82px;
     z-index: 3;
-    @include transition(all 0.3s $smoothTransition);
+    @include transition(all 0.9s $smoothTransition);
+
+    &.bottom {
+      bottom: 245px;
+      position: absolute;
+      top: auto;
+    }
 
     &:after {
       content: '';
@@ -680,7 +686,7 @@ article {
       width: 100%;
       opacity: 0;
       visibility: hidden;
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(all 0.9s $smoothTransition);
     }
 
     &.prev {
@@ -694,7 +700,7 @@ article {
       }
 
       &:hover {
-        border-color: $black;
+        border-color: #999;
 
         &:after {
           opacity: 1;

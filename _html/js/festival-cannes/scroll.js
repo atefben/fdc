@@ -45,6 +45,14 @@ $(document).ready(function() {
       }
     }
 
+    if($('.single-article').length) {
+      if(s >= $('.same-day').offset().top - $('.same-day').height() / 2 - 100) {
+        $('a.nav').addClass('bottom');
+      } else {
+        $('a.nav').removeClass('bottom');
+      }
+    }
+
     if($('.single-movie').length ) {
       if((s > ($('.videos').offset().top - $('#nav-movie').height() - 100))) {
         $('#nav-movie').addClass('sticky');

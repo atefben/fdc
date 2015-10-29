@@ -7675,10 +7675,15 @@ article .image .linkImage {
   top: 57%;
   width: 82px;
   z-index: 3;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.single-article .nav.bottom {
+  bottom: 245px;
+  position: absolute;
+  top: auto;
 }
 .single-article .nav:after {
   content: '';
@@ -7690,10 +7695,10 @@ article .image .linkImage {
   width: 100%;
   opacity: 0;
   visibility: hidden;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-article .nav.prev {
   background: url("../img/svg/arrow-left-article.svg") no-repeat center;
@@ -7705,7 +7710,7 @@ article .image .linkImage {
   background-size: 15px;
 }
 .single-article .nav.prev:hover {
-  border-color: #141414;
+  border-color: #999;
 }
 .single-article .nav.prev:hover:after {
   opacity: 1;
