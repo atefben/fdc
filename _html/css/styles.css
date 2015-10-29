@@ -5182,15 +5182,17 @@ div.chocolat-wrapper .chocolat-close {
   transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .popin-audio .playpause {
-  top: 229px;
+  top: 398px;
   margin-top: 0;
 }
 .popin-audio .on {
-  height: 440px;
+  height: 100px;
   opacity: 1;
   visibility: visible;
-  position: relative;
-  top: auto;
+  top: 360px;
+}
+.popin-audio .on .fullscreen {
+  bottom: 42px;
 }
 .popin-audio.show {
   opacity: 1;

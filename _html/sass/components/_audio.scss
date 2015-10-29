@@ -503,16 +503,19 @@
   @include transition(all 1.2s $smoothTransition);
 
   .playpause {
-    top: 229px;
+    top: 398px;
     margin-top: 0;
   }
 
   .on {
-    height: 440px;
+    height: 100px;
     opacity: 1;
     visibility: visible;
-    position: relative;
-    top: auto;
+    top: 360px;
+
+    .fullscreen {
+      bottom: 42px;
+    }
   }
 
   &.show {
