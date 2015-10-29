@@ -58,7 +58,7 @@
               </div>
           </section>
           <section class="categorie-items contain-jurys-list grid">
-            <h1 class="title-list-cat title">Membres du jury dun certain regard</h1>
+            <h1 class="title-list-cat title">Membres du jury d'un certain regard</h1>
               <div id="gridJurys" class="grid-wrapper">
                 <div class="grid-sizer"></div>
                 <div class="jury-box item">
