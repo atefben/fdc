@@ -184,7 +184,7 @@
               </article>
             </div>
           </div>
-        </div> 
+        </div>     
     </div>
 
     <?php include('footer.html'); ?>

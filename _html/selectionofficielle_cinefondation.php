@@ -29,14 +29,32 @@
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);background-size: cover;">
                <h2 class="title title-list-header">Selection officielle</h2>
            </div>
-           <ul class="sub-nav-list">
-               <li><a href="selectionofficielle_competition.php" class="ajax">Compétition</a></li>
-               <li><a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a></li>
-               <li><a href="selectionofficielle_horscompetition.php" class="ajax">Hors compétition</a></li>
-               <li><a href="selectionofficielle_seancespeciales.php" class="ajax">Séances spéciales</a></li>
-               <li><a href="selectionofficielle_cinefondation.php" class="active ajax">Cinéfondation</a></li>
-              <li><a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a></li>
-           </ul> 
+            <ul class="sub-nav-list nav-list">
+             <li>
+               <a href="selectionofficielle_competition.php" class='ajax'>Compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_horscompetition.php" class="ajax">Hors compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_seancespeciales.php" class="ajax">Séances spéciales</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_cinefondation.php" class="ajax active">Cinéfondation</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
+             </li>
+             <li>
+               <a href="films_invitedhonneur.php">Cannes classics</a>
+             </li>
+             <li>
+               <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
+             </li>
+           </ul>
       </div>
       <div class="container container-list ">
         <section class="categorie-items">

@@ -29,24 +29,24 @@
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
                <h2 class="title title-list-header">Cannes classics</h2>
            </div>
-           <ul class="nav-list">
+          <ul class="nav-list">
              <li>
-               <a href="#">Compétition</a>
+               <a href="selectionofficielle_competition.php">Compétition</a>
              </li>
              <li>
-               <a href="#">Un certain regard</a>
+               <a href="selectionofficielle_uncertainregard.php">Un certain regard</a>
              </li>
              <li>
-               <a href="#">Hors compétition</a>
+               <a href="selectionofficielle_horscompetition.php">Hors compétition</a>
              </li>
              <li>
-               <a href="#">Séances spéciales</a>
+               <a href="selectionofficielle_seancespeciales.php">Séances spéciales</a>
              </li>
              <li>
-               <a href="#">Cinéfondation</a>
+               <a href="selectionofficielle_cinefondation.php">Cinéfondation</a>
              </li>
              <li>
-               <a href="#">Courts métrages</a>
+               <a href="selectionofficielle_courtsmetrages.php">Courts métrages</a>
              </li>
              <li>
                <a href="films_invitedhonneur.php" class='active'>Cannes classics</a>
