@@ -55,6 +55,10 @@ $(document).ready(function() {
         if($(this).val() == '') empty = true;
       });
 
+      if(empty) {
+        $('.contact input[type="email"], .contact input[type="text"], textarea').trigger('input');
+      }
+
       if($('.invalid').length || empty) {
         return false;
       }
