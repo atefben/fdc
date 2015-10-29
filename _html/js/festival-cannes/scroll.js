@@ -8,7 +8,7 @@ $(document).ready(function() {
     var s = $(window).scrollTop();
 
     if (s > lastScrollTop){
-      if(($('#prehome-container').length == 0 && s > 91)) {
+      if(($('#prehome-container').length == 0 && s > 139)) {
         $('header').addClass('sticky');
       }
     } else {
