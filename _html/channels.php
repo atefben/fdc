@@ -39,7 +39,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -51,7 +51,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -63,7 +63,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -75,7 +75,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -87,7 +87,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -99,7 +99,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -111,7 +111,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -123,7 +123,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -135,7 +135,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -147,7 +147,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -159,7 +159,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -171,7 +171,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -183,7 +183,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -195,7 +195,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -207,7 +207,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -219,7 +219,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -231,7 +231,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -243,7 +243,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -255,7 +255,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -267,7 +267,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -279,7 +279,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -291,7 +291,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -303,7 +303,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -315,7 +315,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>
@@ -327,7 +327,7 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Photocall</a>
+                <a href="channel.php" class="category">Photocall</a>
                 <p>13 vidéos</p>
               </div>
             </div>

@@ -38,7 +38,7 @@
 					<li><a href="webtv_trailer_horscompetition.php" data-url="webtv_trailer_horscompetition_detail.php" class="active ajax">Hors compétition</a></li>
 					<li><a href="webtv_trailer_seancespeciales.php" data-url="webtv_trailer_seancespeciales.php" class="ajax">Séances spéciales</a></li>
 					<li><a href="webtv_trailer_cinefondation.php" data-url="webtv_trailer_cinefondation.php" class="ajax">Cinéfondation</a></li>
-					<li><a href="webtv_trailer_courtmetrage.php" data-url="webtv_trailer_courtmetrage.php" class="ajax">Court métrages</a></li>
+					<li><a href="webtv_trailer_courtmetrage.php" data-url="webtv_trailer_courtmetrage.php" class="ajax">Courts métrages</a></li>
 					<li><a href="webtv_trailer_cannesclassics.php" data-url="webtv_trailer_cannesclassics.php" class="ajax">Cannes classics</a></li>
 					<li><a href="webtv_trailer_cinemadelaplage.php" data-url="webtv_trailer_cinemadelaplage.php" class="ajax">Cinéma de la plage</a></li>
 				</ul>
