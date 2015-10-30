@@ -26,8 +26,10 @@
       <div id="live">
         <div class="vCenter">
           <div class="vCenterKid">
-            <h2>Suivez<br />TV Festival de Cannes</h2>
-            <a href="#" class="play"></a>
+            <div class="textLive">
+              <h2>Suivez<br />TV Festival de Cannes</h2>
+              <a href="#" class="play"></a>
+            </div>
           </div>
         </div>
         <div class="img" style="background-image:url('../img/webtv/001.jpg')"></div>

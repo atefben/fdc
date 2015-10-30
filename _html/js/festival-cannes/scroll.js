@@ -177,6 +177,15 @@ $(document).ready(function() {
       });
     }
 
+    if($('.webtv-live').length) {
+      // home prefooter
+      parallaxElements.push({
+        'el1': '#live .img',
+        'el2': '.textLive',
+        'positionTop': $('#live').offset().top - $('header').height()/6
+      });
+    }
+
     // home slider
     // parallaxElements.push({
     //   'selector': '#slider .owl-item:not(.cloned)',
