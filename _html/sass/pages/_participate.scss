@@ -85,7 +85,7 @@
             @include transition(all 0.9s $linear);
           }
           a:hover{
-             color: #a87718;           
+             color: #966505;           
           }
         }
         #google-map{
@@ -176,6 +176,10 @@
           a{
             color: #c29f5f ;
             text-decoration: underline ;
+            @include transition(all 0.9s $linear);
+          }
+          a:hover{
+            color: #966505;            
           }
           .price{
             color: #c29f5f;
@@ -263,6 +267,7 @@
         }
         .link{
           padding-top: 38px;
+          color: #c8a461;
           a{            
             color: #c8a461;
             text-decoration: underline;
@@ -271,13 +276,20 @@
             @include transition(all 0.9s $linear);
           }
           a:hover{
-            color: #a87718;
+            color: #966505;
           }
-          img{
+          .svg{
             width: 12px;
             height: 15px;
             padding-right: 9px;
+            @include transition(all 0.9s $linear);
           }
+          .svg .st0{
+            fill:currentColor;
+          }
+        }
+        .link:hover{
+           color: #966505;         
         }
       }
     }
