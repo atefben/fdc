@@ -22,7 +22,7 @@ $(document).ready(function() {
     sliderVideos.owlCarousel();
 
     $('body').on('click', '#slider-videos .owl-item', function(e) {
-      sliderVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+      sliderVideos.trigger('to.owl.carousel', [$(this).index(), 500, true]);
     });
   }
 

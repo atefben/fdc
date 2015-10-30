@@ -11,7 +11,8 @@ function initSlideshows() {
     nav: false,
     dots: false,
     smartSpeed: 500,
-    margin: 10
+    margin: 10,
+    dragEndSpeed: 900
   });
 
   // on click on thumbnail, change main picture

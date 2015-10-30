@@ -28,6 +28,7 @@ $(document).ready(function() {
           center: true,
           loop: false,
           margin: 0,
+          dragEndSpeed: 900,
           autoWidth: true,
           onInitialized: function() {
             setTimeout(function() {

@@ -22,6 +22,7 @@ $(document).ready(function() {
         loop: false,
         margin: 50,
         autoWidth: true,
+        dragEndSpeed: 600,
         onInitialized: function() {
           $('#slider-movie-videos .owl-stage').css({ 'margin-left': "-343px" });
         }
@@ -38,6 +39,7 @@ $(document).ready(function() {
         loop: false,
         margin: 50,
         autoWidth: true,
+        dragEndSpeed: 600,
         onInitialized: function() {
           $('#slider-competition .owl-stage').css({ 'margin-left': "-385px" });
         }

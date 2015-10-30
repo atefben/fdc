@@ -9,6 +9,7 @@ $(document).ready(function() {
       nav: false,
       dots: false,
       smartSpeed: 500,
+      fluidSpeed: 500,
       center: true,
       loop: false,
       margin: 50,
