@@ -56,19 +56,20 @@ $(document).ready(function() {
         });
       //open issue
     if(!$('.content-contractor').length){      
-      $(".contain-section").click(function(){
+      $(".contain-section h3, .contain-section .fa").click(function(){
           var i;
-          i = $(this).find("i.fa");
-          if($(this).hasClass("participate-active")){
+        var $this = $(this).closest('.contain-section');
+          i = $this.find("i.fa");
+          if($this.hasClass("participate-active")){
 
-              $(this).animate({maxHeight:"100px"},100,function(){
-                  $(this).removeClass("participate-active");
+              $this.animate({maxHeight:"100px"},100,function(){
+                  $this.removeClass("participate-active");
                   i.removeClass("fa-minus").addClass("fa-plus");
               });
           }else{
-              $(this).addClass("participate-active");
+              $this.addClass("participate-active");
               i.removeClass("fa-plus").addClass("fa-minus");
-              $(this).animate({maxHeight:"5000px"},300);
+              $this.animate({maxHeight:"5000px"},300);
           }
       });
     }

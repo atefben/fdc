@@ -82,7 +82,7 @@
             <ul>
                <li><a href="#">Leçons</a></li>
                <li><a href="#">Expositions</a></li>
-               <li><a href="#">Rendez-vous eutropéen</a></li>
+               <li><a href="#">Rendez-vous Européen</a></li>
                <li><a href="#">Leçons de musique</a></li>
                <li><a href="#">Leçons de cinéma</a></li>
                <li><a href="#">Leçons d'acteur</a></li>

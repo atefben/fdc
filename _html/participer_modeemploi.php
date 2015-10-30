@@ -72,7 +72,7 @@
             <li>Jusqu'à 22h45 pour les projections Lérins et Riveria</li>
             <li>De 9h à 18h30 pour les badges Festival et Presse</li>
           </ul>
-          <p class="descrip-manual title-descript"><strong>Entrée Riveria (13 au 22 mai) :</strong> pour les badges Marché</p> 
+          <p class="descrip-manual title-descript"><strong>Village international (Pantiero et Riveria) :</strong> pour les badges Marché</p> 
           <ul>
             <li>De 8h à 20h pour les exposants des Pavillions du 13 au 24 mai (de 8h à 16h le 24 mai)</li>
             <li>De 9h à 18h30 pour les Badges Professionnels</li>
