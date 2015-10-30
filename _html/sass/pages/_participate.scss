@@ -82,6 +82,10 @@
           } 
           a{
             font: .81rem $CamphorBold;
+            @include transition(all 0.9s $linear);
+          }
+          a:hover{
+             color: #a87718;           
           }
         }
         #google-map{
@@ -103,6 +107,7 @@
         padding-top: 39px;
         padding-bottom: 36px;
         letter-spacing: 2px;
+         @include transition(all 0.9s $linear);
         .plus-info{
           width: 19px;
           height: 40px !important;
@@ -154,7 +159,7 @@
           display: block;
           text-transform: uppercase;
           padding-top: 20px;
-          padding-bottom: 23px;
+          padding-bottom: 15px;
         }
         .time{
           font-size: .8125rem;
@@ -187,12 +192,20 @@
           text-transform: uppercase;
           text-decoration: none;
           font-family: $CamphorHeavy;
-          img{
+          @include transition(all 0.9s $linear);
+          .svg{
             width: 10px;
             height: 10px;
             padding-right: 10px;
             vertical-align: text-top;
           }
+          .svg polygon{
+            fill: currentColor;
+          }
+        }
+        .btn:hover{
+          border-color: #000;
+          color: #000;
         }
       }
       .large{
@@ -233,12 +246,20 @@
           display: block;
           width: 130px;
           margin: 0 auto;
-          img{
+          @include transition(all 0.9s $linear);
+          .svg{
             width: 15px;
             height: 15px;
             padding-right: 10px;
             vertical-align: sub;
           }
+          .svg polygon{
+            fill: currentColor;
+          }
+        }
+        .btn:hover{
+          border-color: #000;
+          color: #000;
         }
         .link{
           padding-top: 38px;
@@ -247,6 +268,10 @@
             text-decoration: underline;
             vertical-align: text-top;
             font-size: 0.81rem;
+            @include transition(all 0.9s $linear);
+          }
+          a:hover{
+            color: #a87718;
           }
           img{
             width: 12px;

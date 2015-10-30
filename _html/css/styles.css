@@ -11261,6 +11261,13 @@ article .image .linkImage {
 }
 .participate .contain-participate section .contain-section .descrip-section a {
   font: 0.81rem "Camphor W01 Bold";
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.participate .contain-participate section .contain-section .descrip-section a:hover {
+  color: #a87718;
 }
 .participate .contain-participate section .contain-section #google-map {
   width: 975px;
@@ -11280,6 +11287,10 @@ article .image .linkImage {
   padding-top: 39px;
   padding-bottom: 36px;
   letter-spacing: 2px;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .participate .contain-participate section .title-participate .plus-info {
   width: 19px;
@@ -11330,7 +11341,7 @@ article .image .linkImage {
   display: block;
   text-transform: uppercase;
   padding-top: 20px;
-  padding-bottom: 23px;
+  padding-bottom: 15px;
 }
 .participate .contain-participate section .item .time {
   font-size: .8125rem;
@@ -11363,12 +11374,23 @@ article .image .linkImage {
   text-transform: uppercase;
   text-decoration: none;
   font-family: "Camphor W01 Heavy";
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.participate .contain-participate section .item .btn img {
+.participate .contain-participate section .item .btn .svg {
   width: 10px;
   height: 10px;
   padding-right: 10px;
   vertical-align: text-top;
+}
+.participate .contain-participate section .item .btn .svg polygon {
+  fill: currentColor;
+}
+.participate .contain-participate section .item .btn:hover {
+  border-color: #000;
+  color: #000;
 }
 .participate .contain-participate section .large {
   width: 495px;
@@ -11409,12 +11431,23 @@ article .image .linkImage {
   display: block;
   width: 130px;
   margin: 0 auto;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.participate .contain-participate section .contain-map .btn img {
+.participate .contain-participate section .contain-map .btn .svg {
   width: 15px;
   height: 15px;
   padding-right: 10px;
   vertical-align: sub;
+}
+.participate .contain-participate section .contain-map .btn .svg polygon {
+  fill: currentColor;
+}
+.participate .contain-participate section .contain-map .btn:hover {
+  border-color: #000;
+  color: #000;
 }
 .participate .contain-participate section .contain-map .link {
   padding-top: 38px;
@@ -11424,6 +11457,13 @@ article .image .linkImage {
   text-decoration: underline;
   vertical-align: text-top;
   font-size: 0.81rem;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.participate .contain-participate section .contain-map .link a:hover {
+  color: #a87718;
 }
 .participate .contain-participate section .contain-map .link img {
   width: 12px;

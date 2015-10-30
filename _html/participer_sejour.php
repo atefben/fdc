@@ -45,19 +45,19 @@
             <img src="img/participate/train.svg" alt="" class="svg-item">
             <strong class="transport">Train</strong>
             <span class="time">5h de TGV depuis Paris</span>
-            <a href="#" class="btn"><img src="img/participate/plus.svg" alt="">En savoir plus</a>
+            <a href="#" class="btn"><img src="img/participate/plus.svg" alt="" class="svg">En savoir plus</a>
           </div>
           <div class="item large">
             <img src="img/participate/voiture.svg" alt="" class="svg-item">
             <strong class="transport">Voiture</strong>
             <span class="time">8h30 de route depuis Paris</span>
-            <a href="#" class="btn"><img src="img/participate/plus.svg" alt="">En savoir plus</a>
+            <a href="#" class="btn"><img src="img/participate/plus.svg" alt="" class="svg">En savoir plus</a>
           </div>
           <div class="item">
             <img src="img/participate/avion.svg" alt="" class="svg-item">
             <strong class="transport">AVION</strong>
             <span class="time">Départ de l'aéroport de Nice</span>
-            <a href="#" class="btn"><img src="img/participate/plus.svg" alt="">En savoir plus</a>
+            <a href="#" class="btn"><img src="img/participate/plus.svg" alt="" class="svg">En savoir plus</a>
           </div>
           <div class="item">
             <img src="img/participate/bus.svg" alt="" class="svg-item">
@@ -80,26 +80,26 @@
             <div class="contain-map">
               <strong class="name">Le festival de cannes</strong>
               <img src="img/participate/map.png" alt="" class="map">
-              <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="">Télécharger</a>
+              <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="" class="svg">Télécharger</a>
               <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
             </div>
             <div class="contain-map">
               <strong class="name">La zone festival</strong>
               <img src="img/participate/map2.png" alt="" class="map">
-              <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="">Télécharger</a>
+              <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="" class="svg">Télécharger</a>
               <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
             </div>
             <div class="contain-map">
               <strong class="name">Le palais</strong>
               <img src="img/participate/map3.png" alt="" class="map">
-              <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="">Télécharger</a>
+              <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="" class="svg">Télécharger</a>
               <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
             </div>
           </div>
         </section>
          <section>
          <div class="contain-section">
-          <h3 class="title-participate"> <img src="img/participate/hebergement.svg" alt="" class="svg">Hébergement</h3><i class="fa fa-plus"></i>
+<h3 class="title-participate"> <img src="img/participate/hebergement.svg" alt="" class="svg">Hébergement</h3><i class="fa fa-plus"></i>
           <div class="descrip-section">
             <p class="ask">Vous êtes à la recherche d'un hébergement ?</p>
             <a href="#">Consultez la liste des Hôtels Partenaires du Festival de Cannes</a>
