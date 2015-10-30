@@ -10062,7 +10062,7 @@ article .image .linkImage {
   position: absolute;
   top: -20%;
   left: 0;
-  height: 200%;
+  height: 130%;
   width: 100%;
   z-index: 0;
   -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s;
@@ -10070,6 +10070,9 @@ article .image .linkImage {
   -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition-delay: 0.3s;
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s;
+  /*&.rePosition {
+    position: absolute!important;
+  }*/
 }
 .webtv #live .vCenter {
   position: relative;
@@ -10147,6 +10150,8 @@ article .image .linkImage {
   background-color: #141414;
   border-bottom: 1px solid #2c2c2c;
   padding: 70px 0;
+  position: relative;
+  z-index: 2;
 }
 .webtv #content-trailers #slider-trailers {
   margin: 50px 0 0 0;

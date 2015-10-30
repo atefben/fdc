@@ -86,10 +86,14 @@
       position: absolute;
       top: -20%;
       left: 0;
-      height: 200%;
+      height: 130%;
       width: 100%;
       z-index: 0;
       @include transition(opacity 0.5s $smoothTransition .3s);
+
+      /*&.rePosition {
+        position: absolute!important;
+      }*/
     }
 
     .vCenter {
@@ -182,6 +186,8 @@
     background-color: $black;
     border-bottom: 1px solid #2c2c2c;
     padding: 70px 0;
+    position: relative;
+    z-index: 2;
 
     #slider-trailers {
       margin: 50px 0 0 0;

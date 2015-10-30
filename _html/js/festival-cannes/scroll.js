@@ -205,18 +205,18 @@ $(document).ready(function() {
       update();
     }
     
-  }, 500);
+  }, 100);
 
 
   function update(){
     for(var i=0; i<parallaxElements.length; i++) {
       if(scrollTarget > (parallaxElements[i].positionTop - hW) && scrollTarget < parallaxElements[i].positionTop + hW) {
         $(parallaxElements[i].el2).css('position', 'fixed');
-        //$(parallaxElements[i].el1).css('position', 'fixed');
+        $(parallaxElements[i].el1).css('position', 'fixed');
         render($(parallaxElements[i].el1)[0], $(parallaxElements[i].el2)[0], parallaxElements[i].positionTop, 1.3); 
       } else {
         $(parallaxElements[i].el2).css('position', '');
-        //$(parallaxElements[i].el1).css('position', '');
+        $(parallaxElements[i].el1).css('position', '');
       }
     }
     window.requestAnimFrame(update);
