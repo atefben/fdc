@@ -627,7 +627,8 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push right">
+          <div class="push"></div>
+          <div class="push">
             <div class="image-wrapper">
               <img src="img/push/push05.jpg" alt="" />
             </div>
@@ -649,7 +650,9 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push center">
+          <div class="push"></div>
+          <div class="push"></div>
+          <div class="push">
             <div class="image-wrapper">
               <img src="img/push/push07.jpg" alt="" />
             </div>

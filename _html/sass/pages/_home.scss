@@ -1328,6 +1328,19 @@
       top: 0;
       left: 0;
 
+      &:after {
+        background-color: $black;
+        content: '';
+        display: block;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        @include transition(all 0.9s $smoothTransition);
+      }
+
       img {
         position: absolute;
         min-width: 100%;
@@ -1356,7 +1369,7 @@
     }
 
     &:hover {
-      &:after {
+      .image-wrapper:after {
         opacity: 0.4;
       }
 
@@ -1364,19 +1377,6 @@
         @include transition(all 4s $linear);
         @include transform(scale(1.08) translateZ(0));
       }
-    }
-
-    &:after {
-      background-color: $black;
-      content: '';
-      display: block;
-      height: 100%;
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      @include transition(all 0.9s $smoothTransition);
     }
 
     h3 {
