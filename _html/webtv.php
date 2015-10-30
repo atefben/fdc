@@ -22,60 +22,68 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="webtv">
+    <div id="main" class="webtv loading webtv-live">
       <div id="live">
         <div class="vCenter">
           <div class="vCenterKid">
-            <h2>Suivez<br />TV Festival de Cannes</h2>
-            <a href="#" class="play"></a>
+            <div class="textLive">
+              <h2>Suivez<br />TV Festival de Cannes</h2>
+              <a href="#" class="play"></a>
+            </div>
           </div>
         </div>
         <div class="img" style="background-image:url('../img/webtv/001.jpg')"></div>
       </div>
       <div id="content-channels">
         <h2 class="title">Les chaines du festival</h2>
-        <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />Toutes les chaines</a></p>
+        <p class="link"><a href="channels.php"><img src="img/svg/arrow-right-gold.svg" />Toutes les chaines</a></p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
           <div class="vid shadow-bottom">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Conférence de presse</a>
-                    <span>Rencontre avec l'équipe de Carol</span>
+                    <a href="#" class="category">Les plus vues</a>
+                    <span>5 vidéos</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="vid shadow-bottom">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Montée des marches</a>
-                    <span>Rencontre avec l'équipe de Carol</span>
+                    <a href="#" class="category">Les plus vues</a>
+                    <span>5 vidéos</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="vid shadow-bottom">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Montée des marches</a>
-                    <span>Rencontre avec l'équipe de Carol</span>
+                    <a href="#" class="category">Les plus vues</a>
+                    <span>5 vidéos</span>
                   </div>
                 </div>
               </div>
@@ -84,7 +92,9 @@
         </div>
         <div id="slider-channels" class="owl-carousel sliderDrag">
           <div class="channel shadow-bottom">
-            <img src="img/slider-channels/01.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/01.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -99,7 +109,9 @@
             </div>
           </div>
           <div class="channel shadow-bottom">
-            <img src="img/slider-channels/02.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/02.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -114,7 +126,9 @@
             </div>
           </div>
           <div class="channel shadow-bottom">
-            <img src="img/slider-channels/03.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -129,7 +143,9 @@
             </div>
           </div>
           <div class="channel shadow-bottom">
-            <img src="img/slider-channels/01.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/01.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -144,7 +160,9 @@
             </div>
           </div>
           <div class="channel shadow-bottom">
-            <img src="img/slider-channels/02.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/02.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -159,7 +177,9 @@
             </div>
           </div>
           <div class="channel shadow-bottom">
-            <img src="img/slider-channels/03.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -177,48 +197,54 @@
       </div>
       <div id="content-trailers">
         <h2 class="title">Les bandes annonces et extraits</h2>
-        <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />Toutes les bandes annonces</a></p>
+        <p class="link"><a href="webtv_trailer_competition.php"><img src="img/svg/arrow-right-gold.svg" />Toutes les bandes annonces</a></p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">5 vidéos</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">5 vidéos</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">5 vidéos</a>
                   </div>
                 </div>
               </div>
@@ -230,7 +256,9 @@
         <h2 class="title">Les dernieres videos</h2>
         <div class="container sliderDrag">
           <div class="video shadow-bottom">
-            <img src="http://dummyimage.com/463x291/000/fff" alt="" />
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/463x291/000/fff" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -245,7 +273,9 @@
             </div>
           </div>
           <div class="video shadow-bottom">
-            <img src="http://dummyimage.com/463x291/000/fff" alt="" />
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/463x291/000/fff" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>

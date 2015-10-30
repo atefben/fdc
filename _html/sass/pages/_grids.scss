@@ -4,6 +4,10 @@
 // 2. Photos
 // 3. Audios
 // 4. Articles
+// 5. Webtv
+// 6. Jury
+// 7. Selection officielle
+// 8. Events
 // =========================
 
 
@@ -43,6 +47,7 @@
     }
 
     .info {
+      color: #9c9c9b;
       position: absolute;
       bottom: 8px;
       height: 44px;
@@ -94,7 +99,46 @@
 
 #gridPhotos {
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 320px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/1);
+    }
+    .item {
+        width: calc(100%/1);
+    }
+    .item.w2 {
+        width: calc(200%/1);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/3);
+    }
+    .item {
+        width: calc(100%/3);
+    }
+    .item.w2 {
+        width: calc(200%/3);
+    }
+  }
+  
+  @media screen and (min-width: 1280px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/4);
+    }
+    .item {
+        width: calc(100%/4);
+    }
+    .item.w2 {
+        width: calc(200%/4);
+    }
+  }
+
+  @media screen and (min-width: 1600px) {
     /* 5 columns for larger screens */
     .grid-sizer {
       width: calc(100%/5);
@@ -107,7 +151,7 @@
     }
   }
 
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 1920px) {
     /* 5 columns for larger screens */
     .grid-sizer {
       width: calc(100%/6);
@@ -122,6 +166,23 @@
 
   .thumbnails {
     display: none;
+  }
+
+  .item {
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+      @include transform(translateZ(0));
+      @include transition(all 4s $linear);
+    }
+
+    &:hover {
+      img {
+        @include transition(all 8s $linear);
+        @include transform(scale(1.05) translateZ(0));
+      }
+    }
   }
 }
 
@@ -160,11 +221,12 @@
 
     img {
       @include transform(translateZ(0));
-      @include transition(all 0.8s $smoothTransition);
+      @include transition(all 4s $linear);
     }
 
     &:hover {
       img {
+        @include transition(all 8s $linear);
         @include transform(scale(1.05) translateZ(0));
       }
     }
@@ -197,12 +259,13 @@
         display: block;
         height: 100%;
         width: 100%;
-        @include transition(all 0.8s $smoothTransition);
+        @include transition(all 4s $linear);
       }
     }
 
     &:hover img {
-      @include transform(scale(1.1) translateZ(0));
+      @include transition(all 8s $linear);
+      @include transform(scale(1.05) translateZ(0));
     }
 
     article {
@@ -242,6 +305,31 @@
         left: 20px;
         top: 300px;
       }
+    }
+  }
+
+  @include breakpoint(1180px) {
+
+    #gridAudios {
+      @include transform(translateX(15px));
+    }
+
+    .grid-sizer {
+      width: 30%;
+    }
+
+    .item {
+      height: 305px;
+      box-sizing: border-box;
+      padding-left: 45px;
+      position: relative;
+      width: 30%;
+    }
+
+    .item.w2 {
+      height: 610px;
+      padding-left: 45px;
+      width: 60%;
     }
   }
 
@@ -359,4 +447,189 @@
     }
   }
 
+}
+
+// 6. jury
+// ============================
+
+#gridJurys{
+  
+		  @media screen and (min-width: 320px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/1);
+    }
+    .item {
+        width: calc(100%/1);
+    }
+    .item.w2 {
+        width: calc(200%/1);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/3);
+    }
+    .item {
+        width: calc(100%/3);
+    }
+    .item.w2 {
+        width: calc(200%/3);
+    }
+  }
+	  @media screen and (min-width: 1024px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/4);
+    }
+    .item {
+        width: calc(100%/4);
+    }
+    .item.w2 {
+        width: calc(200%/4);
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/5);
+    }
+    .item {
+        width: calc(100%/5);
+    }
+    .item.w2 {
+        width: calc(200%/5);
+    }
+  }
+
+}
+#gridJurys:after{
+ content:'';
+    display:block;
+    clear: both;
+}
+
+// 7. Selection Officiel
+// ========================= 
+
+
+#gridFilmSelection{
+  
+		  @media screen and (min-width: 320px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/2);
+    }
+    .item {
+        width: calc(100%/2);
+    }
+    .item.w2 {
+        width: calc(200%/2);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/3);
+    }
+    .item {
+        width: calc(100%/3);
+    }
+    .item.w2 {
+        width: calc(200%/3);
+    }
+  }
+	  @media screen and (min-width: 1024px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/4);
+    }
+    .item {
+        width: calc(100%/4);
+    }
+    .item.w2 {
+        width: calc(200%/4);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/5);
+    }
+    .item {
+        width: calc(100%/5);
+    }
+    .item.w2 {
+        width: calc(200%/5);
+    }
+  }
+  
+  
+  @media screen and (min-width: 1600px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/6);
+    }
+    .item {
+        width: calc(100%/6);
+    }
+    .item.w2 {
+        width: calc(200%/6);
+    }
+  }
+  
+    @media screen and (min-width: 1920px) {
+    /* 5 columns for larger screens */
+    .grid-sizer {
+      width: calc(100%/8);
+    }
+    .item {
+        width: calc(100%/8);
+    }
+    .item.w2 {
+        width: calc(200%/8);
+    }
+  }
+
+}
+
+// 8. Grid evenement
+// ======================= 
+
+#gridEvent{
+  @media screen and (min-width: 1600px) {
+    /* 5 columns for larger screens */
+    .grid-sizer { width:calc(100%/5); }
+    .item { width:calc(100%/5); }
+    .item.w2 { width: calc(200%/5); }
+  }
+
+  @media screen and (min-width: 1920px) {
+    /* 5 columns for larger screens */
+    .grid-sizer { width: calc(100%/6); }
+    .item { width: calc(100%/6); }
+    .item.w2 { width: calc(200%/6); }
+  }
+
+  .item {
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+      @include transform(translateZ(0));
+      @include transition(all 4s $linear);
+    }
+
+    &:hover {
+      img {
+        @include transition(all 8s $linear);
+        @include transform(scale(1.05) translateZ(0));
+      }
+    }
+  }
 }

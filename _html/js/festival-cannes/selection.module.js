@@ -3,10 +3,11 @@ $(document).ready(function() {
   // Selection
   // =========================
 
-  var sliderSelection = '';
+  var sliderSelection = '',
+      tr = 0;
 
   function openSelection(callback) {
-    $('#main').addClass('overlay');
+    $('#main, footer').addClass('overlay');
 
     if(sliderSelection != '') sliderSelection.trigger('destroy.owl.carousel');
     $('#slider-selection').empty();
@@ -26,12 +27,14 @@ $(document).ready(function() {
           smartSpeed: 500,
           center: true,
           loop: false,
-          margin: 50,
+          margin: 0,
+          dragEndSpeed: 900,
           autoWidth: true,
           onInitialized: function() {
-            var v = ($(window).width() - 977) / 2 + "px";
-            $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-            $('#selection').addClass('open');
+            setTimeout(function() {
+              $('#selection').addClass('open');
+              tr = $('#selection .owl-stage').css('transform').substr(19, 3);
+            }, 700);
           }
         });
 
@@ -43,7 +46,7 @@ $(document).ready(function() {
   }
 
   function closeSelection() {
-    $('#main').removeClass('overlay');
+    $('#main, footer').removeClass('overlay');
     $('#selection').removeClass('open');
     $('header .selection').removeClass('opened');
   }
@@ -69,8 +72,11 @@ $(document).ready(function() {
     
   });
 
+  var widthFilter = 0;
+
   // filters
   $('.filters-selection a').on('click', function(e) {
+    widthFilter = 0;
     e.preventDefault();
 
     $('.filters-selection a').removeClass('active');
@@ -78,9 +84,15 @@ $(document).ready(function() {
 
     var f = $(this).data('selection');
 
-    $('#selection .owl-item').removeClass('fade');
+    $('#slider-selection').addClass('fade');
+    $('#selection .owl-item').removeClass('filtered');
 
     if(f == 'all') {
+      $('#selection .owl-stage').width(272 * $('#selection .owl-item').length).css('transform', 'translate3d(' + tr + 'px, 0, 0)');
+      setTimeout(function() {
+        $('#selection .owl-item').removeClass('fade');
+        $('#slider-selection').removeClass('fade');
+      }, 1000);
       return false;
     } 
 
@@ -90,13 +102,20 @@ $(document).ready(function() {
       return false;
     }
 
-    $('#selection article').each(function() {
-      if(!$(this).hasClass(f)) {
-        $(this).parents('.owl-item').addClass('fade');
-      }
-    });
+    setTimeout(function() {
+      $('#selection article').each(function() {
+        if(!$(this).hasClass(f)) {
+          $(this).parents('.owl-item').addClass('fade filtered');
+        }
+      });
+      $('#selection .owl-stage').width(272 * $('#selection .owl-item').not('.filtered').length).css('transform', 'translate3d(' + tr +'px, 0, 0)');
+      $('#selection .owl-item').not('.filtered').removeClass('fade');
+    }, 500);
 
-
+    setTimeout(function() {
+      $('#slider-selection').removeClass('fade');
+    }, 800);
+    
   });
 
   // delete an article
@@ -105,15 +124,12 @@ $(document).ready(function() {
     var $that = $(this);
 
     $(this).parent().addClass('deleted');
-    $(this).parent().parent().css('margin-right', 0);
     var i = $(this).parent().parent().index();
 
     setTimeout(function() {
       sliderSelection.trigger('del.owl.carousel', i);
       sliderSelection.trigger('refresh.owl.carousel');
-      var v = ($(window).width() - 977) / 2 + "px";
-      $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-    }, 500);
+    }, 800);
   });
 
   // add an article 
@@ -125,15 +141,14 @@ $(document).ready(function() {
         $article = $article.html();
 
     openSelection(function() {
-      $("#main").addClass('overlay');
+      $("#main, footer").addClass('overlay');
       $('header .selection').addClass('opened');
       
       setTimeout(function() {
-        sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item">' + $article + '</div>'), 0]);
+        sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item added scaled">' + $article + '</div>'), 0]);
         sliderSelection.trigger('refresh.owl.carousel');
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-      }, 700);
+        $('.scaled').removeClass('scaled');
+      }, 1200);
     });
      
   });

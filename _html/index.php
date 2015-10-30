@@ -24,11 +24,11 @@
       <div id="prehome"></div>
     </div>
     <?php include('header.html'); ?>
-    <div id="main" class="home">
+    <div id="main" class="home loading">
       <div id="sliderWrapper">
         <div id="slider" class="owl-carousel">
           <div>
-            <img src="img/slider/slider01.jpg" alt="" />
+            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider01.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
               <h2>Xavier Dolan : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
@@ -36,9 +36,25 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <img src="img/slider/slider02.jpg" alt="" />
+            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider02.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
+              <h2>test</h2>
+            </div>
+            <a href="article.php" class="linkArticle"></a>
+          </div>
+          <div>
+            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider01.jpg)"></div></div>
+            <div class="info">
+              <span class="category">Test</span>
+              <h2>test</h2>
+            </div>
+            <a href="article.php" class="linkArticle"></a>
+          </div>
+          <div>
+            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider02.jpg)"></div></div>
+            <div class="info">
+              <span class="category">Lorem ipsum</span>
               <h2>test</h2>
             </div>
             <a href="article.php" class="linkArticle"></a>
@@ -46,6 +62,7 @@
         </div>
       </div>
       <div id="news">
+        <div id="canvasloader" class="canvasloader"></div>
         <h2 class="title">L'actualité à la une</h2>
         <div class="filters">
           <div id="theme" class="filter">
@@ -119,22 +136,39 @@
                 <div class="slideshow-img">
                   <div class="images">
                     <div class="img active">
-                      <a id="photo1" class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                      <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
                         <img src="img/slide001.jpg" alt="" />
                       </a>
                     </div>
                     <div class="img">
-                      <a id="photo2" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                        <img src="img/slide002.jpg" alt="" />
+                      </a>
                     </div>
-                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                    <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                    <div class="img">
+                      <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
                   </div>
                   <div class="owl-carousel thumbnails">
-                    <div data-id="photo1" class="thumb active">
+                    <div data-id="photo1" class="thumb active" data-caption="<strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange">
                       <img src="img/thumb01.jpg" />
                     </div>
                     <div data-id="photo2" class="thumb" data-caption="test">
@@ -143,22 +177,22 @@
                     <div data-id="photo3" class="thumb">
                       <img src="img/thumb01.jpg" />
                     </div>
-                    <div class="thumb">
+                    <div data-id="photo4" class="thumb">
                       <img src="img/thumb01.jpg" />
                     </div>
-                    <div class="thumb">
+                    <div data-id="photo5" class="thumb">
                       <img src="img/thumb01.jpg" />
                     </div>
-                    <div class="thumb">
+                    <div data-id="photo6" class="thumb">
                       <img src="img/thumb01.jpg" />
                     </div>
-                    <div class="thumb">
+                    <div data-id="photo7" class="thumb">
                       <img src="img/thumb01.jpg" />
                     </div>
-                    <div class="thumb">
+                    <div data-id="photo8" class="thumb">
                       <img src="img/thumb01.jpg" />
                     </div>
-                    <div class="thumb">
+                    <div data-id="photo9" class="thumb">
                       <img src="img/thumb01.jpg" />
                     </div>
                   </div>
@@ -231,6 +265,7 @@
             <a href="#" data-date="11" class="">mer<span class="day">11</span></a>
             <a href="#" data-date="10" class="">mar<span class="day">10</span></a>
           </div>
+          <div id="shdMore" class="shadow-bottom"></div>
           <div id="shd" class="shadow-bottom"></div>
         </div>
       </div>
@@ -341,7 +376,9 @@
         <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />Accédez à la web tv</a></p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -356,7 +393,9 @@
             </div>
           </div>
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -371,7 +410,9 @@
             </div>
           </div>
           <div class="vid">
-            <img src="img/slider-videos/001.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -391,7 +432,9 @@
         <h2 class="title">Les chaines</h2>
         <div id="slider-channels" class="owl-carousel sliderDrag">
           <div class="channel">
-            <img src="img/slider-channels/01.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/01.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -406,7 +449,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/02.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/02.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -421,7 +466,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/03.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -436,7 +483,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/01.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/01.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -451,7 +500,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/02.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/02.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -466,7 +517,9 @@
             </div>
           </div>
           <div class="channel">
-            <img src="img/slider-channels/03.jpg" alt="" />
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
               <div class="picto"></div>
@@ -485,41 +538,49 @@
       <div id="featured-movies">
         <div id="slider-movies" class="owl-carousel">
           <div>
-            <video preload>
-              <source src="img/featured-movies/sample.webm" type="video/webm">
-              <source src="img/featured-movies/sample.mp4" type="video/mp4">
-            </video>
-            <div class="info">
-              <div class="vCenter">
-                <div class="vCenterKid">
-                  <span class="category">Compétition</span>
-                  <h2>Sils Maria</h2>
-                  <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+            <div class="video">
+              <video preload>
+                <source src="img/featured-movies/sample.webm" type="video/webm">
+                <source src="img/featured-movies/sample.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="textVideo">
+              <div class="info">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <span class="category">Compétition</span>
+                    <h2>Sils Maria</h2>
+                    <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="links">
-              <a href="#" class="seances">Voir les séances</a>
-              <a href="#" class="all">Tous les films</a>
+              <div class="links">
+                <a href="#" class="seances">Voir les séances</a>
+                <a href="#" class="all">Tous les films</a>
+              </div>
             </div>
           </div>
           <div>
-            <video preload>
-              <source src="img/featured-movies/sample.webm" type="video/webm">
-              <source src="img/featured-movies/sample.mp4" type="video/mp4">
-            </video>
-            <div class="info">
-              <div class="vCenter">
-                <div class="vCenterKid">
-                  <span class="category">Compétition</span>
-                  <h2>Sils Maria</h2>
-                  <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+            <div class="video">
+              <video preload>
+                <source src="img/featured-movies/sample.webm" type="video/webm">
+                <source src="img/featured-movies/sample.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="textVideo">
+              <div class="info">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <span class="category">Compétition</span>
+                    <h2>Sils Maria</h2>
+                    <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="links">
-              <a href="#" class="seances">Voir les séances</a>
-              <a href="#" class="all">Tous les films</a>
+              <div class="links">
+                <a href="#" class="seances">Voir les séances</a>
+                <a href="#" class="all">Tous les films</a>
+              </div>
             </div>
           </div>
         </div>
@@ -543,7 +604,7 @@
             </div>
             <div class="vCenter">
               <div class="vCenterKid">
-                <h3>Le palmares</h3>
+                <h3>Le palmarès</h3>
               </div>
             </div>
             <a href="#"></a>
@@ -574,7 +635,8 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push right">
+          <div class="push"></div>
+          <div class="push">
             <div class="image-wrapper">
               <img src="img/push/push05.jpg" alt="" />
             </div>
@@ -596,7 +658,9 @@
             </div>
             <a href="#"></a>
           </div>
-          <div class="push center">
+          <div class="push"></div>
+          <div class="push"></div>
+          <div class="push">
             <div class="image-wrapper">
               <img src="img/push/push07.jpg" alt="" />
             </div>
@@ -622,18 +686,46 @@
       </div>
       <div id="prefooter">
         <div class="container">
-          <h2>Vivez le festival de Cannes</h2>
-          <h3 class="subtitle">Suivez le Festival où que vous soyez</h3>
-          <ul>
-            <li><a href="#" class="active">TV Festival de Cannes</a></li>
-            <li><a href="#">Applications Mobiles</a></li>
-            <li><a href="#">Boutique officielle</a></li>
-            <li><a href="#">Publications</a></li>
-          </ul>
-          <div class="imgSlide active"><img src="img/prefooter/01.png" alt="" /></div>
-          <div class="imgSlide"><img src="img/prefooter/02.png" alt="" /></div>
-          <div class="imgSlide"><img src="img/prefooter/03.png" alt="" /></div>
-          <div class="imgSlide"><img src="img/prefooter/04.png" alt="" /></div>
+          <div class="textTop">
+            <h2>Vivez le festival de Cannes</h2>
+            <h3 class="subtitle">Suivez le Festival où que vous soyez</h3>
+            <ul>
+              <li><a href="https://www.youtube.com/user/TVFestivaldeCannes" class="active" target="_blank">TV Festival de Cannes</a></li>
+              <li><a href="#">Applications Mobiles</a></li>
+              <li><a href="http://www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique officielle</a></li>
+              <li><a href="#">Publications</a></li>
+            </ul>
+          </div>
+          <div id="slider-prefooter" class="owl-carousel">
+            <div class="imgSlide active bottom">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/001.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide bottom">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='#'><img src="img/prefooter/002.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/003.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+            <div class="imgSlide top">
+              <div class="vCenter">
+                <div class="vCenterKidBottom">
+                  <a href='#'><img src="img/prefooter/004.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

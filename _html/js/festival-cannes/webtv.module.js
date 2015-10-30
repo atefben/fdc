@@ -4,29 +4,56 @@ $(document).ready(function() {
 // =========================
 
   if($('.webtv').length) {
-    // play live player on click
-    $('#live .play').on('click', function(e) {
-      e.preventDefault();
-      $('#live').addClass('on');
-    });
+    
+  
+    if($('.webtv-live').length) {
+     // play live player on click
+     $('#live .play').on('click', function(e) {
+       e.preventDefault();
+       $('#live').addClass('on');
+       $('#live .img').addClass('rePosition');
+       $('#live').data('height', $('#live').height()).height($(window).height() - 91).css('padding-top', '91px');
+       $('body').css('padding-top', '91px');
+       setTimeout(function() {
+          $('header').addClass('sticky');
+        }, 800);
+     });
 
-    // create slide for trailers
-    var sliderTrailers = $("#slider-trailers").owlCarousel({
+     $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
+    }
+
+   // create slide for trailers
+   var sliderTrailers = $("#slider-trailers").owlCarousel({
+     nav: false,
+     dots: false,
+     smartSpeed: 500,
+     center: true,
+     loop: false,
+     margin: 50,
+     autoWidth: true,
+     onInitialized: function() {
+       $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
+     }
+   });
+
+   sliderTrailers.owlCarousel();
+//    
+  $("#slider-trailer").owlCarousel({
       nav: false,
       dots: false,
       smartSpeed: 500,
       center: true,
-      loop: false,
-      margin: 50,
       autoWidth: true,
-      onInitialized: function() {
-        $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
-      }
+      loop: false,
+      items: 1,
+//      onInitialized: function() {
+//        var v = ($(window).width() - 977) / 2 + "px";
+//        $('#slide-artist .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+//      }
     });
-
-    sliderTrailers.owlCarousel();
     
-    if($('.webtv-ba-video').length){
+    
+if($('.webtv-ba-video').length){
 
       $('.nav li').click(function(){
         if($(this).hasClass('active')){
@@ -60,35 +87,46 @@ $(document).ready(function() {
         $.get(urlPath, function(data){
             $( ".content-webtv" ).html( $(data).find('.content-webtv') );
           history.pushState('',"titre test", urlPath);
-          console.log(data);
+            $grid = $('#gridWebtv').imagesLoaded(function() {
+              $grid.isotope({
+                layoutMode: 'packery',
+                itemSelector: '.item'
+              });
+            });
         });
         $('.webtv-ba .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');
       }
     });
+    
+    $('.item').click(function(){
+      var url = $(this).find('.vCenterKid a').attr('href');
+      document.location.href = url ;
+    });
+    
   }
   
-      //Slider trailer
-
-    var sliderTrailers = $("#slider-trailer").owlCarousel({
-      nav: false,
-      dots: false,
-      smartSpeed: 500,
-      margin: 50,
-      center: true,
-      autoWidth: true,
-      loop: false,
-      items: 1,
-      onInitialized: function() {
-        $('#slider-trailer .owl-stage').css({ 'margin-left': "0px" });
-      }
-    });
-
-    sliderTrailers.owlCarousel();
-
-    $('body').on('click', '#slider-trailer .owl-item', function(e) {
-      sliderTrailers.trigger('to.owl.carousel', [$(this).index(), 400, true]);
-    });
+//      //Slider trailer
+//
+//    var sliderTrailers = $("#slider-trailer").owlCarousel({
+//      nav: false,
+//      dots: false,
+//      smartSpeed: 500,
+//      margin: 50,
+//      center: true,
+//      autoWidth: true,
+//      loop: false,
+//      items: 1,
+//      onInitialized: function() {
+//        $('#slider-trailer .owl-stage').css({ 'margin-left': "0px" });
+//      }
+//    });
+//
+//    sliderTrailers.owlCarousel();
+//
+//    $('body').on('click', '#slider-trailer .owl-item', function(e) {
+//      sliderTrailers.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+//    });
   //infinite scroll
 //  if($('.webtv-ba-video').length){
 //    $('.webtv-ba-video').infinitescroll({
@@ -104,4 +142,6 @@ $(document).ready(function() {
 //      setGrid($grid, newElements,false);
 //    });
 //  }
+  
+
 });

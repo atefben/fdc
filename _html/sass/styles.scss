@@ -18,6 +18,7 @@
 @import "base/variables";
 @import "helpers/mixins";
 @import "helpers/owlcarousel";
+@import "helpers/animate";
 @import "base/text";
 @import "base/layout";
 
@@ -47,3 +48,7 @@
 @import "pages/legalnotice";
 @import "pages/faq";
 @import "pages/evenement";
+@import "pages/jurys";
+@import "pages/artist";
+@import "pages/app";
+@import "pages/participate"; 

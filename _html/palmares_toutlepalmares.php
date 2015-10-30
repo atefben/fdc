@@ -24,24 +24,24 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article palmares-list">
+    <div id="main" class="list-article palmares-list loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/palmares/cover-bandeau-palmares.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Le Palmares</h2>
+               <h2 class="title title-list-header">Le Palmarès</h2>
            </div>
            <ul class="sub-nav-list">
-               <li><a href="palmares_competition.php">Compétition</a></li>
-               <li><a href="palmares_uncertainregard.php" >Un certain regard</a></li>
-               <li><a href="palmares_cinefondation.php">Cinéfondation</a></li>
-               <li><a href="palmares_camerador.php">Caméra d'or</a></li>
-               <li><a href="palmares_toutlepalmares.php" class="active">Tout le palmarès</a></li>
+               <li><a href="palmares_competition.php" class="ajax">Compétition</a></li>
+               <li><a href="palmares_uncertainregard.php" class="ajax">Un certain regard</a></li>
+               <li><a href="palmares_cinefondation.php" class="ajax">Cinéfondation</a></li>
+               <li><a href="palmares_camerador.php" class="ajax">Caméra d'or</a></li>
+               <li><a href="palmares_toutlepalmares.php" class="active ajax">Tout le palmarès</a></li>
            </ul> 
       </div>
       <div class="container container-list">
        <!-- En compétition -->
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">En compétitions</h2>
+                <h2 class="title">En compétition</h2>
             </div>
             <h3 class="sub-cat-title">Longs métrages</h3>
             <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
@@ -131,7 +131,7 @@
           <!--- Un certain regard -->
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">En compétitions</h2>
+                <h2 class="title">En compétition</h2>
             </div>
             <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
             <div class="bck-hover">

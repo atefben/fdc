@@ -16,7 +16,6 @@ $(document).ready(function() {
         $.get(urlPath, function(data){
             $( ".container-list" ).html( $(data).find('.container-list') );
           history.pushState('',"titre test", urlPath);
-          console.log(data);
         });
         $('.palmares-list .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');
@@ -36,7 +35,6 @@ $(document).ready(function() {
         $.get(urlPath, function(data){
             $( ".container-list" ).html( $(data).find('.container-list') );
           history.pushState('',"titre test", urlPath);
-          console.log(data);
         });
         $('.films-list .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');

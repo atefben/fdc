@@ -22,24 +22,23 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="all-articles grid">
+    <div id="main" class="all-articles grid loading">
       <h2 class="title">Tous les articles</h2>
       <div class="filters">
-        <div id="date" class="filter">
-          <span class="label">Filtrer par :</span>
+        <div id="theme" class="filter">
+          <span class="label">Date :</span>
           <span class="select">
-            <span class="active" data-filter="all">Date</span>
-            <span data-filter="date1">Date 1</span>
-            <span data-filter="date">Date 2</span>
+            <span class="active" data-filter="all">Toutes</span>
+            <span data-filter="date">Date 1</span>
+            <span data-filter="date1">Date 2</span>
           </span>
         </div>
-        <div id="theme" class="filter">
+        <div id="format" class="filter">
+          <span class="label">Thêmes :</span>
           <span class="select">
-            <span class="active" data-filter="all">Thême</span>
+            <span class="active" data-filter="all">Tous</span>
             <span data-filter="theme1">Thême 1</span>
-            <span data-filter="theme">Thême 2</span>
-            <span data-filter="theme">Thême 3</span>
-            <span data-filter="theme">Thême 4</span>
+            <span data-filter="theme2">Thême 2</span>
           </span>
         </div>
       </div>

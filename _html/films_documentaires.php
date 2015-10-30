@@ -24,17 +24,43 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article films-list">
+    <div id="main" class="list-article films-list loading cannes-classic">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
                <h2 class="title title-list-header">Cannes classics</h2>
            </div>
-           <ul class="sub-nav-list">
-               <li><a href="films_invitedhonneur.php">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php">Copies restaurées </a></li>
-               <li><a href="#">World cinema project</a></li>
-               <li><a href="films_documentaires.php" class="active">Documentaires</a></li>
+          <ul class="nav-list">
+             <li>
+               <a href="selectionofficielle_competition.php">Compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_uncertainregard.php">Un certain regard</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_horscompetition.php">Hors compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_seancespeciales.php">Séances spéciales</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_cinefondation.php">Cinéfondation</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_courtsmetrages.php">Courts métrages</a>
+             </li>
+             <li>
+               <a href="films_invitedhonneur.php" class='active'>Cannes classics</a>
+             </li>
+             <li>
+               <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
+             </li>
+           </ul>
+           <ul class="sub-nav-list nav-movie">
+               <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
+               <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
+               <li><a href="films_copiesrestaurees.php" class="ajax">Copies restaurées </a></li>
+               <li><a href="#" class="ajax">World cinema project</a></li>
+               <li><a href="films_documentaires.php" class="ajax active">Documentaires</a></li>
            </ul> 
       </div>
       <div class="container container-list">
@@ -94,8 +120,8 @@ CREATION DE LA PALME D’OR</h2>
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
-               <h2 class="title title-list-header">Caméra d'or</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <h2 class="title title-list-header">Invité d'honneur</h2>
+               <a href="films_invitedhonneur.php" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
 
       </div>

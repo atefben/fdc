@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="webtv list-channels">
+    <div id="main" class="webtv list-channels loading">
       <div id="live">
         <div class="vCenter">
           <div class="vCenterKid">
@@ -39,8 +39,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -51,8 +51,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -63,8 +63,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -75,8 +75,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -87,8 +87,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -99,8 +99,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -111,8 +111,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -123,8 +123,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -135,8 +135,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -147,8 +147,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -159,8 +159,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -171,8 +171,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -183,8 +183,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -195,8 +195,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -207,8 +207,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -219,8 +219,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -231,8 +231,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -243,8 +243,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -255,8 +255,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -267,8 +267,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -279,8 +279,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -291,8 +291,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -303,8 +303,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -315,8 +315,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>
@@ -327,8 +327,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="#" class="category">Montée des marches</a>
-                <p>Le photocall de Maïwenn</p>
+                <a href="channel.php" class="category">Photocall</a>
+                <p>13 vidéos</p>
               </div>
             </div>
           </div>

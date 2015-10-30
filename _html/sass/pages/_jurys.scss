@@ -1,0 +1,136 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+.jurys-list{
+    .bandeau-list-img{
+    height: 443px !important;
+  }
+  .title-list-header{
+    padding-top: 210px !important;
+  }
+  .sub-nav-list{
+    a{
+      color:#999 !important;
+      font-family: $CamphorBold;
+      font-size: 0.75rem !important;
+    }
+    a.active{
+      color:#c8a461 !important;
+    }
+    a:hover{
+      color:#c8a461 !important;
+    }
+  }
+  .grid{
+    padding: 0px !important;
+  }
+  .grid-wrapper{
+    margin: 0px;
+  }
+}
+.contain-jury{
+  max-height: 603px;
+  min-height: 603px;
+  overflow: hidden;
+
+  .photo-jury{
+    float: left;
+    width: 50%;
+    background-size:cover;
+    max-height: 603px;
+    min-height: 603px;
+    max-width: 635px;
+    img{
+      width: 100%;
+        max-height: 603px;
+        min-height: 603px;
+    }
+  }
+  .contain-descript{
+    background-color:#ffffff;
+    max-height: 606px;
+    height: 603px;
+    padding-left: 160px;
+    padding-top: 100px;
+    padding-right: 160px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    a{
+      color:#000;
+    }
+    .descript-title{
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      font-size: .625rem;
+      padding-top: 25px;
+    }
+    .descript-name{
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      font-size: 2.25rem;
+      padding-top: 25px;
+      padding-bottom: 15px;
+    }
+    .descript-rank{
+      color: #ccab6e;
+      font-family: $CamphorItalic;
+      font-size: .75rem;
+      padding-bottom: 15px;
+    }
+    p{
+       font-size: 0.88rem;
+      line-height: 24px;
+      padding-top:35px;
+      color:#666666;
+    }
+  }
+}
+
+.contain-jurys-list{   
+  background-color: #1a1a1a;
+  .title-list-cat{
+    border: 0px solid #000;
+    font-weight: 700;
+    font-size: 1.13rem; 
+  }
+  article img {
+    float: left;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .jury-box{
+
+    display: inline-block;
+    
+      a{
+    color:#000;
+      } 
+  }
+  .legend{
+    background-color: #fff;
+    margin: 0px;
+    vertical-align: middle;
+    /* display: table-cell; */
+    text-align: center;
+    height: 100px;
+  }
+  .name{
+    display: block;
+    font-family:$CamphorBold;
+    font-size:.875rem; 
+    text-transform: uppercase;
+    padding-top:24px;
+    padding-bottom: 5px;
+  }
+  .rank{
+    font-family: $CamphorItalic;
+    color:#ccab6e;
+    font-size: .8125rem;
+  } 
+
+}

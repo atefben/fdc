@@ -46,7 +46,7 @@ function makePath(data){
     fill: 'transparent'
   });
 
-  path.animate({ path: pathString },500);
+  path.animate({ path: pathString }, 2000, mina.easeInOutQuint);
 
   /* point radius */
   var radius = 2;
@@ -59,17 +59,24 @@ function makePath(data){
       
       var circle = s.circle(xPos, yPos, radius);
 
+      var circle2 = s.circle(xPos, yPos, 15);
+
       circle.attr({
         stroke: '#c8a461',
         strokeWidth: 2,
         fill: '#fff',
+        opacity: 0
+      });
+
+      circle2.attr({
+        strokeWidth: 2,
         opacity: 0,
         title: data[i]
       });
 
       circle.animate({opacity: 1}, 300);
 
-      circle.mouseover(function() {
+      circle2.mouseover(function() {
         $('#tipGraph').text($(this)[0].attr('title'));
         $('#tipGraph').css({
           top: parseInt($(this)[0].attr('cy')) - 25 + "px",
@@ -78,15 +85,15 @@ function makePath(data){
         $('#tipGraph').addClass('show');
       });
 
-      circle.mouseout(function() {
+      circle2.mouseout(function() {
         $('#tipGraph').removeClass('show');
       });
 
     }
 
     var j = $('#graph ul li.active').index();
-    $('#graph circle').eq(j).attr('r', 5).css('stroke-width', '3');
-  }, 600);
+    $('#graph circle[stroke="#c8a461"]').eq(j).attr('r', 5).css('stroke-width', '3');
+  }, 2000);
 
   graphRendered = true;
   
@@ -112,12 +119,16 @@ function makePath(data){
 }
 
 function displayGrid() {
-  $('.post').each(function(i) {
+  $('.post').not('.big.right').each(function(i) {
     var $p = $(this);
     setTimeout(function() {
       $p.find('.side').addClass('flip');
-    }, i*100);
+    }, i*50);
   });
+
+  setTimeout(function() {
+    $('.big.right').find('.side').addClass('flip');
+  }, 800);
 
   displayed = true;
 
@@ -134,7 +145,10 @@ function displayGrid() {
       var item = posts.splice(random, 1)[0];
 
       $(c).prev().addClass(item.type);
-      $(c).parent().find('.side').removeClass('flip');
+      $(c).parent().find('.side-2').addClass('overlay');
+      setTimeout(function() {
+        $(c).parent().find('.side').removeClass('flip');
+      }, 600);
       if(item.img) {
         $(c).prev().addClass('hasimg').css('background-image', 'url(' + item.img + ')');
       }

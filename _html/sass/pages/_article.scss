@@ -105,8 +105,9 @@ article {
     visibility: visible;
   }
 
-  &:hover .image-wrapper img {
-    @include transform(scale(1.1) translateZ(0));
+  &:hover .image .image-wrapper img {
+    @include transition(all 4s $linear);
+    @include transform(scale(1.08) translateZ(0));
   }
 
   .image {
@@ -123,7 +124,7 @@ article {
         min-height: 100%;
         width: auto;
         height: auto;
-        @include transition(all 0.7s $smoothTransition);
+        @include transition(all 3s $linear);
       }
       
     }
@@ -145,8 +146,7 @@ article {
       position: absolute;
       top: 15px;
       right: 15px;
-
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(all 0.5s $smoothTransition);
 
       span {
         background-color: $black;
@@ -166,8 +166,8 @@ article {
         z-index: 5;
         text-align: center;
         text-transform: uppercase;
-        @include transform(translateY(6px));
-        @include transition(opacity 0.3s $smoothTransition, transform 0.3s $smoothTransition);
+        @include transform(translateY(6px) translateZ(0));
+        @include transition(opacity 0.5s $smoothTransition, visibility .5s $smoothTransition, transform 0.5s $smoothTransition);
 
         &:after {
           content: ' ';
@@ -186,7 +186,7 @@ article {
         span {
           opacity: 1;
           visibility: visible;
-          @include transform(translateY(0));
+          @include transform(translateY(0) translateZ(0));
         }
       }
     }
@@ -215,7 +215,8 @@ article {
     top: 0;
     left: 0;
     width: 0;
-    background-color: $gold;
+    background-color: $black;
+    z-index: 10;
     @include transition(all 1.5s $smoothTransition);
 
     &.show {
@@ -235,6 +236,7 @@ article {
   .print {
     background: url('../img/svg/print.svg') no-repeat 15% center;
     background-size: 18px;
+    font-size: 0.625rem;
 
     &:hover {
       color: $gold;
@@ -244,6 +246,7 @@ article {
   #share-article {
     background: url('../img/svg/share.svg') no-repeat 13% 47%;
     background-size: 18px;
+    font-size: 0.625rem;
 
     &:hover {
       color: $gold;
@@ -420,7 +423,8 @@ article {
       border-bottom: 1px solid #e5e5e5;
       border-top: 1px solid #e5e5e5;
       color: #666;
-      font-size: 1.5rem;
+      font-size: 1.688rem;
+      line-height: 1.4em;
       padding: 40px 15px;
       text-align: center;
     }
@@ -469,6 +473,11 @@ article {
 
     a:hover {
       background-color: #fff;
+      border-color: $gold!important;
+
+      + .button {
+        border-left-color: $gold;
+      }
     }
 
     a.facebook {
@@ -655,17 +664,70 @@ article {
     border: 1px solid #dfdfdf;
     display: block;
     height: 82px;
-    position: absolute;
-    top: 135px;
+    position: fixed;
+    top: 57%;
     width: 82px;
-    @include transition(all 0.3s $smoothTransition);
+    z-index: 3;
+    @include transition(all 0.9s $smoothTransition);
+
+    &.bottom {
+      bottom: 245px;
+      position: absolute;
+      top: auto;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.9s $smoothTransition);
+    }
 
     &.prev {
-      left: 35px;
+      background: url('../img/svg/arrow-left-article.svg') no-repeat center;
+      background-size: 15px;
+      left: 2%;
+
+      &:after {
+        background: url('../img/svg/arrow-left-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
+      &:hover {
+        border-color: #999;
+
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
 
     &.next {
-      right: 35px;
+      background: url('../img/svg/arrow-right-article.svg') no-repeat center;
+      background-size: 15px;
+      left: auto;
+      right: 2%;
+
+      &:after {
+        background: url('../img/svg/arrow-right-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
+      &:hover {
+        border-color: $black;
+
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
   }
 

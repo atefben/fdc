@@ -22,7 +22,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="contact">
+    <div id="main" class="contact loading">
       <h2 class="title">Contact</h2>
       <div class="coords">
         <h3>Festival de Cannes</h3>
@@ -35,6 +35,15 @@
         peuvent être prises en compte.</p>
         <div id="form">
           <form action="">
+            <div class="select">
+              <label for="select">Votre message concerne:</label>
+              <select name="select">
+                <option class="default" value="default">Séléctionnez un thème</option> 
+                <option value="theme1">Theme 1</option>
+                <option value="theme2">Theme 2</option>
+              </select>
+              <span id="triggerSelect"></span>
+            </div>
             <input type="text" name="name" placeholder="Votre nom*" data-error="Votre nom n'est pas renseigné" />
             <input type="email" name="email" placeholder="Votre adresse email*"  data-error="L'adresse email n'est pas valide" />
             <input type="text" name="object" placeholder="Objet*" data-error="L'objet de votre message n'est pas renseigné" />

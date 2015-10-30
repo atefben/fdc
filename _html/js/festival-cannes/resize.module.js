@@ -4,7 +4,9 @@ $(document).ready(function() {
     if($('.home').length) {
       setHeightSlider();
     }
-    resizeGrid();
+    if($('.grid').length) {
+      resizeGrid();
+    }
     if($('#prehome-container').length) {
       $('#prehome-container').height($(window).height());
     }

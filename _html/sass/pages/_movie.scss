@@ -11,6 +11,92 @@
   padding-top: 410px;
   position: relative;
 
+  .prevmovie, .nextmovie {
+    background: #fff;
+    height: 280px;
+    overflow: hidden;
+    position: fixed;
+    top: 57%;
+    width: 0;
+    margin-top: -105px;
+    z-index: 2;
+    @include transform(translateZ(0));
+    @include transition(all 0.9s $smoothTransition);
+
+    &.black {
+      background-color: #dfdfdf;
+    }
+
+    .img {
+      position: absolute;
+      left: 100px;
+      top: 38px;
+      width: 150px;
+
+      img {
+        height: 203px;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .info {
+      height: 203px;
+      position: absolute;
+      left: 275px;
+      top: 38px;
+      width: 130px;
+
+      h2 {
+        font-family: $CamphorHeavy;
+        text-transform: uppercase;
+        color: $dark;
+        font-size: 0.875rem;
+        font-weight: normal;
+      }
+
+      a {
+        color: $gold;
+        font-family: $CamphorItalic;
+        font-size: 0.750rem;
+        @include transition(opacity .6s $smoothTransition);
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+
+      p {
+        color: #999;
+        font-size: 0.625rem;
+        margin-top: 8px;
+      }
+    }
+
+    &.show {
+      width: 420px;
+    }
+  }
+
+  .prevmovie {
+    left: 2%;
+  }
+
+  .nextmovie {
+    right: 2%;
+
+    .img {
+      left: auto;
+      right: 100px;
+    }
+
+    .info {
+      left: auto;
+      right: 275px;
+      text-align: right;
+    }
+  }
+
   .anim {
     display: block;
     height: 100%;
@@ -18,7 +104,7 @@
     top: 0;
     left: 0;
     width: 0;
-    background-color: $gold;
+    background-color: $black;
     z-index: 10;
     @include transition(all 1.5s $smoothTransition);
 
@@ -65,16 +151,23 @@
   .poster {
     float: left;
     margin: 0 45px 0 0;
+    overflow: hidden;
     position: relative;
     width: 293px;
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
-      @include transform(translateY(350px));
+      @include transform(translateY(550px));
     }
 
     @include breakpoint(1600px) {
       margin-top: -20px;
+    }
+
+    img {
+      display: block;
+      @include transform(translateZ(0));
+      @include transition(all 4s $linear);
     }
 
     .picto {
@@ -85,6 +178,17 @@
       margin: -40px 0 0 -40px;
       pointer-events: initial;
       width: 80px;
+      z-index: 1;
+      @include transition(background-color 0.5s $smoothTransition);
+
+      &:hover + img {
+        @include transition(all 8s $linear);
+        @include transform(scale(1.05) translateZ(0));
+      }
+
+      &:hover {
+        background-color: $dark;
+      }
     }
   }
 
@@ -96,7 +200,7 @@
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
-      @include transform(translateY(350px));
+      @include transform(translateY(550px));
     }
 
     @include breakpoint(1600px) {
@@ -107,6 +211,7 @@
       font-family: $CamphorHeavy;
       font-size: 2.250rem;
       font-weight: normal;
+      letter-spacing: 0.1em;
       margin: 20px 0 15px 0;
       text-transform: uppercase;
     }
@@ -172,6 +277,98 @@
     }
   }
 
+  .nav {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    display: block;
+    height: 82px;
+    position: fixed;
+    top: 57%;
+    width: 82px;
+    z-index: 3;
+    @include transition(all 0.3s $smoothTransition);
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.3s $smoothTransition);
+    }
+
+    @include breakpoint(1024px) {
+      top: 62px;
+      margin-top: 0;
+    }
+
+    &.black {
+      border-color: #dfdfdf;
+    }
+
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &.prev {
+      background: url('../img/svg/arrow-left-white.svg') no-repeat center;
+      background-size: 15px;
+      left: 2%;
+
+      &:after {
+        background: url('../img/svg/arrow-left-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
+      &.trailer {
+        background-color: transparent;
+        left: -85px;
+      }
+
+      &:hover, &.over, &.black {
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &.black.over, &.black:hover {
+        &:after {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    }
+
+    &.next {
+      background: url('../img/svg/arrow-right-white.svg') no-repeat center;
+      background-size: 15px;
+      left: auto;
+      right: 2%;
+
+      &:after {
+        background: url('../img/svg/arrow-right-black.svg') no-repeat center;
+        background-size: 15px;
+      }
+
+      &:hover, &.over, &.black {
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &.trailer {
+        background-color: transparent;
+        right: -85px;
+      }
+    }
+  }
+
   .main-image {
     background-size: cover;
     height: 620px;
@@ -202,7 +399,7 @@
       top: 0;
       visibility: hidden;
       width: 100%;
-      @include transition(all 0.5s $smoothTransition 1s);
+      @include transition(all 0.5s $smoothTransition .2s);
     }
 
     &.trailer {
@@ -253,10 +450,13 @@
         font-family: $CamphorHeavy;
         font-size: 0.625rem;
         padding-left: 20px;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
+        @include transition(all 0.8s $smoothTransition);
 
         &.movies {
-
+          background: url('../img/svg/arrow-left-white.svg') no-repeat left center;
+          background-size: 8px;
         }
 
         &.programmation {
@@ -267,41 +467,9 @@
         &:last-child {
           float: right;
         }
-      }
-    }
 
-    .nav {
-      border: 1px solid #dfdfdf;
-      display: block;
-      height: 82px;
-      position: absolute;
-      top: 50%;
-      width: 82px;
-      margin-top: -41px;
-      z-index: 2;
-      @include transition(all 0.3s $smoothTransition);
-
-      @include breakpoint(1024px) {
-        top: 62px;
-        margin-top: 0;
-      }
-
-      &.prev {
-        left: 2%;
-
-        &.trailer {
-          background-color: transparent;
-          left: -85px;
-        }
-      }
-
-      &.next {
-        left: auto;
-        right: 2%;
-
-        &.trailer {
-          background-color: transparent;
-          right: -85px;
+        &:hover {
+          opacity: 0.6;
         }
       }
     }
@@ -313,9 +481,11 @@
     height: 73px;
     line-height: 73px;
     overflow: hidden;
+    @include transition(height .3s $smoothTransition, top .8s $smoothTransition);
 
     &.sticky {
       background-color: #fff;
+      border-bottom: 1px solid #dfdfdf;
       left: 0;
       position: fixed;
       height: 40px;
@@ -326,7 +496,7 @@
       @include transform(translateZ(0));
 
       .buttons a {
-        border: none;
+        border-color: transparent;
         height: 40px;
         line-height: 40px;
       }
@@ -344,9 +514,10 @@
           display: block;
           font-family: $CamphorHeavy;
           font-size: 0.750rem;
-          margin: 0 13px;
+          letter-spacing: 0.08em;
+          margin: 0 9px;
           text-transform: uppercase;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.9s $smoothTransition);
 
           &:hover, &.active {
             color: #000;
@@ -364,6 +535,7 @@
 
       a {
         border-top: none;
+        @include transition(border-color .9s $smoothTransition);
       }
 
       a:hover {
@@ -458,7 +630,7 @@
           height: 100%;
           width: 100%;
           z-index: 2;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.6s $smoothTransition);
         }
 
         .info {
@@ -510,7 +682,7 @@
           left: 0;
           opacity: 0;
           visibility: hidden;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.8s $smoothTransition);
 
           &.active {
             opacity: 1;
@@ -673,7 +845,7 @@
             margin-bottom: 10px;
             text-transform: uppercase;
 
-            @include transition(all 0.3s $smoothTransition);
+            @include transition(all 0.9s $smoothTransition);
 
             &:hover {
               color: #fff;
@@ -730,6 +902,10 @@
       overflow: hidden;
       width: 50%;
 
+      h3 {
+        margin-bottom: 15px;
+      }
+
       .wrapper {
         color: #fff;
         height: 100%;
@@ -750,10 +926,11 @@
         p {
           color: #999;
           font-size: 0.875rem;
-          line-height: 1.2em;
+          line-height: 1.8em;
 
           &.sub {
             color: #fff;
+            line-height: 1.2em;
           }
 
           a {

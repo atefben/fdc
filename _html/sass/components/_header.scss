@@ -9,17 +9,29 @@
 
 header {
   background-color: $dark;
-  position: relative;
+  position: fixed;
   width: 100%;
   z-index: 10;
+  top: 0;
+
+  ul {
+    cursor: default;
+  }
 
   #sticky-user {
     font-size: 0.750rem;
     opacity: 0;
     visibility: hidden;
-    @include transform(translateY(5px));
+    position: absolute;
+    bottom: 18px;
+    right: 0;
+    @include transform(translate3d(0, 5px, 0));
     @include transition(opacity 0.3s $smoothTransition, transform 0.3s $smoothTransition);
     transition-delay: 0;
+
+    ul {
+      padding: 0;
+    }
   }
 
   &.sticky {
@@ -52,6 +64,7 @@ header {
 
     #logo-wrapper {
       height: 50px;
+      @include transition(all 0.5s $smoothTransition);
 
       #logo {
         width: 290px;
@@ -80,8 +93,9 @@ header {
         }
       }
 
-      #search, #partners {
-        display: none;
+      #partners, #search {
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }
@@ -101,7 +115,11 @@ header {
         display: block;
         margin-right: 10px;
         padding: 0 0px 1px 20px;
-        @include transition(all 0.3s $smoothTransition);
+        @include transition(all 0.9s $smoothTransition);
+
+        &:hover {
+          opacity: 0.7;
+        }
 
         &.selection {
           background: url('../img/svg/selection.svg') no-repeat left 48%;
@@ -117,6 +135,10 @@ header {
           background: url('../img/svg/language.svg') no-repeat left 48%;
           padding-left: 30px;
           background-size: 20px;
+
+          &:hover {
+            opacity: 1;
+          }
         }
       }
 
@@ -127,7 +149,9 @@ header {
         position: absolute;
         top: 23px;
         visibility: hidden;
+        z-index: 1;
         @include transition(all 0.5s $smoothTransition);
+        @include transform(translateY(0));
 
         li {
           display: block;
@@ -135,7 +159,7 @@ header {
           a {
             height: 23px;
             opacity: 0.5;
-            @include transition(all 0.3s $smoothTransition);
+            @include transition(all 0.9s $smoothTransition);
 
             &:hover {
               opacity: 1;
@@ -190,10 +214,12 @@ header {
     background-color: $black;
     height: 160px;
     overflow: hidden;
-    @include transition(all 0.3s $smoothTransition);
+    @include transition(all 0.2s $smoothTransition);
+    @include transform(translateY(0));
 
     .container {
       height: 100%;
+      position: relative;
     }
 
     #logo {
@@ -201,7 +227,6 @@ header {
       padding: 5px 100px 0 0;
       text-align: center;
       vertical-align: middle;
-      width: 215px;
 
       h1, p.stick {
         font-family: $CamphorBold;
@@ -230,6 +255,11 @@ header {
           height: 100%;
           z-index: 1;
           @include transition(width .5s $smoothTransition);
+          @include transform(translateY(0));
+        }
+
+        &.noTrans:after {
+          @include transition(none);
         }
       }
 
@@ -250,12 +280,15 @@ header {
         margin: 0 auto;
         width: 145px;
         @include transition(width 0.3s $smoothTransition);
+        @include transform(translateY(0));
       }
     }
 
     #partners {
-      display: inline-block;
-      vertical-align: middle;
+      position: absolute;
+      top: 60px;
+      left: 315px;
+      @include transition(all 0.5s $smoothTransition);
 
       img {
         display: inline-block;
@@ -288,6 +321,7 @@ header {
       position: relative;
       margin-top: 47px;
       width: 63px;
+      @include transition(all 0.5s $smoothTransition);
 
       a {
         background: url('../img/svg/search.svg') center no-repeat;
@@ -306,18 +340,31 @@ header {
     height: 39px;
     line-height: 39px;
 
+    .container {
+      overflow: hidden;
+    }
+
     ul {
       float: left;
 
       li {
         display: inline-block;
+        margin-left: -4px;
+
+        &:hover>a {
+          color: $gold;
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
 
         a {
           color: #fff;
           display: block;
-          padding-right: 15px;
+          padding-right: 21px;
           text-transform: uppercase;
-          @include transition(color 0.3s $smoothTransition);
+          @include transition(color 0.9s $smoothTransition);
 
           &:hover, &.active {
             color: $gold;
@@ -325,7 +372,7 @@ header {
         }
 
         &.fade a {
-          color: $grey;
+          color: #434343;
         }
 
         ul {
@@ -338,7 +385,8 @@ header {
           visibility: hidden;
           width: 977px;
           z-index: 15;
-          @include transition(all 0.3s $smoothTransition);
+          @include transition(all 0.5s $smoothTransition);
+          @include transform(translateY(0));
 
           &:before {
             background-color: $black;
@@ -353,9 +401,10 @@ header {
           }
 
           li {
-            font-size: 0.750rem;
+            font-size: 0.688rem;
             position: relative;
             z-index: 2;
+            letter-spacing: 0.08em;
           }
         }
 
@@ -375,16 +424,40 @@ header {
         font-family: $CamphorBold;
         font-size: 0.740rem;
 
+        li:hover>a {
+          color: $gold;
+
+          &:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
         li a {
           color: $grey;
-          padding: 0 0 0 30px;
+          padding: 0 0 0 28px;
+          position: relative;
+
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(all .6s $smoothTransition);
+          }
 
           &.programmation {
             background: url('../img/svg/programmation.svg') no-repeat 8% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/programmation-gold.svg');
+            &:after {
+              background: url('../img/svg/programmation-gold.svg') no-repeat 8% 47%;
+              background-size: 15px;
             }
           }
 
@@ -392,8 +465,9 @@ header {
             background: url('../img/svg/participate.svg') no-repeat 12% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/participate-gold.svg');
+            &:after {
+              background: url('../img/svg/participate-gold.svg') no-repeat 12% 47%;
+              background-size: 15px;
             }
           }
 
@@ -401,13 +475,19 @@ header {
             background: url('../img/svg/press.svg') no-repeat 12% 47%;
             background-size: 15px;
 
-            &:hover {
-              background-image: url('../img/svg/press-gold.svg');
+            &:after {
+              background: url('../img/svg/press-gold.svg') no-repeat 12% 47%;
+              background-size: 15px;
             }
           }
 
           &:hover {
             color: $gold;
+
+            &:after {
+              opacity: 1;
+              visibility: visible;
+            }
           }
         }
 
@@ -421,6 +501,11 @@ header {
           left: auto;
           margin-left: -762px;
           text-align: right;
+          li{
+            a{
+              font-size: 0.688rem;
+            }
+          }
         }
       }
     }

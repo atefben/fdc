@@ -10,31 +10,43 @@
 <script src="js/bower_components/isotope-packery/packery-mode.pkgd.js"></script>
 <script src="js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js"></script>
 <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
+<script src="js/bower_components/canvasloader/js/heartcode-canvasloader-min.js"></script>
+<script src="js/components/snap.svg.easing.js"></script>
+<script src="js/components/fullscrenjs.js"></script>
+<script src="js/components/jwplayer.js"></script>
 <script src="js/festival-cannes/helpers.js"></script>
 <script src="js/festival-cannes/article.module.js"></script>
 <script src="js/festival-cannes/audio.module.js"></script>
 <script src="js/festival-cannes/contact.module.js"></script>
 <script src="js/festival-cannes/faq.module.js"></script>
+<script src="js/festival-cannes/films.module.js"></script>
 <script src="js/festival-cannes/filters.module.js"></script>
+<script src="js/festival-cannes/google-map.module.js"></script>
 <script src="js/festival-cannes/grids.module.js"></script>
+<script src="js/festival-cannes/jurys.module.js"></script>
 <script src="js/festival-cannes/menu.module.js"></script>
 <script src="js/festival-cannes/movie.module.js"></script>
 <script src="js/festival-cannes/news.module.js"></script>
 <script src="js/festival-cannes/newsletter.module.js"></script>
 <script src="js/festival-cannes/palmares.module.js"></script>
+<script src="js/festival-cannes/participate.module.js"></script>
 <script src="js/festival-cannes/prefooter.module.js"></script>
 <script src="js/festival-cannes/prehome.module.js"></script>
 <script src="js/festival-cannes/resize.module.js"></script>
 <script src="js/festival-cannes/search.module.js"></script>
 <script src="js/festival-cannes/selection.module.js"></script>
+<script src="js/festival-cannes/sliderartist.module.js"></script>
 <script src="js/festival-cannes/sliderchannels.module.js"></script>
 <script src="js/festival-cannes/sliderhome.module.js"></script>
 <script src="js/festival-cannes/slidermovies.module.js"></script>
 <script src="js/festival-cannes/slidervideos.module.js"></script>
 <script src="js/festival-cannes/slideshows.module.js"></script>
 <script src="js/festival-cannes/socialwall.module.js"></script>
+<script src="js/festival-cannes/transitions.module.js"></script>
+<script src="js/festival-cannes/video.module.js"></script>
 <script src="js/festival-cannes/webtv.module.js"></script>
 <script src="js/festival-cannes/evenement.js"></script>
 <script src="js/festival-cannes/scroll.js"></script>
 <!-- festival-cannes tags end -->
 <!-- endbuild -->
+<script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>

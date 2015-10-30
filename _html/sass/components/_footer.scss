@@ -13,8 +13,49 @@ footer * {
 
 footer {
   background-color: $black;
-  padding: 40px 0;
+  padding: 40px 0 0 0;
   position: relative;
+  z-index: 2;
+
+  &:after {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.3s $smoothTransition);
+  }
+
+  &:before {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.9s $smoothTransition);
+  }
+
+  &.loading:before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.overlay:after {
+    opacity: 0.6;
+    visibility: visible;
+  }
 
   h2 {
     color: #fff;
@@ -84,7 +125,7 @@ footer {
       outline: none;
       text-transform: uppercase;
       width: 135px;
-      @include transition(all 0.3s $smoothTransition);
+      @include transition(all 1.8s $smoothTransition);
 
       &:hover {
         border-color: #fff;
@@ -118,8 +159,13 @@ footer {
           display: block;
           height: 26px;
           width: 26px;
+          @include transition(all .9s $smoothTransition);
 
-          &.app {
+          &:hover {
+            opacity: 0.5;
+          }
+
+          &.appli {
             background: url('../img/svg/appli.svg') center no-repeat;
             background-size: 26px;
           }
@@ -215,7 +261,8 @@ footer {
         a {
           color: #fff;
           opacity: 0.5;
-          @include transition(all 0.3s $smoothTransition);
+          @include transform(translateZ(0));
+          @include transition(all 0.9s $smoothTransition);
 
           &:hover {
             opacity: 1;

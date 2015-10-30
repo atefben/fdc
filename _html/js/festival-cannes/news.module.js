@@ -5,6 +5,14 @@ $(document).ready(function() {
   // News
   // =========================
 
+  var cl = new CanvasLoader('canvasloader');
+    cl.setColor('#ceb06e');
+    cl.setDiameter(20);
+    cl.setDensity(34);
+    cl.setRange(0.8);
+    cl.setSpeed(1);
+    cl.setFPS(60);
+
   // Change date
 
   $('#timeline a').on('click', function(e) {
@@ -23,6 +31,11 @@ $(document).ready(function() {
       scrollTop: $("#news").offset().top - 50
     }, 500);
 
+    setTimeout(function() {
+      cl.show();
+      $('#canvasloader').addClass('show');
+    }, 800);
+
     // todo: remove timeout
     setTimeout(function() {
       $.ajax({
@@ -31,8 +44,13 @@ $(document).ready(function() {
         cache: false,
         url: 'news.html' ,
         success: function(data) {
+          $('#canvasloader').removeClass('show');
           $('#articles-wrapper').html(data);
-          $('#articles-wrapper').removeClass('loading');
+
+          setTimeout(function() {
+            cl.hide();
+            $('#articles-wrapper').removeClass('loading');
+          }, 500);
 
           $('.filter .select span').removeClass('active');
           $('.filter .select span[data-filter="all"]').addClass('active');
@@ -40,10 +58,18 @@ $(document).ready(function() {
           initSlideshows();
         }
       });
-    }, 1200);
+    }, 2200);
     
   });
 
+  
+  $('.read-more').hover(function() {
+    if(!$(this).hasClass('prevDay')) {
+      $('#shdMore').addClass('show');
+    }
+  }, function() {
+    $('#shdMore').removeClass('show');
+  });
 
   // load more
   $('.read-more').on('click', function(e) {
@@ -63,6 +89,11 @@ $(document).ready(function() {
       $('#timeline a').removeClass('active');
       $('#timeline a').eq(i).next().addClass('active');
 
+      setTimeout(function() {
+        cl.show();
+        $('#canvasloader').addClass('show');
+      }, 800);
+
       // todo: remove timeout
       setTimeout(function() {
         $.ajax({
@@ -71,8 +102,14 @@ $(document).ready(function() {
           cache: false,
           url: 'news.html' ,
           success: function(data) {
+            $('#canvasloader').removeClass('show');
+
+            setTimeout(function() {
+              cl.hide();
+              $('#articles-wrapper').removeClass('loading');
+            }, 500);
+
             $('#articles-wrapper').html(data);
-            $('#articles-wrapper').removeClass('loading');
 
             $('.filter .select span').removeClass('active');
             $('.filter .select span[data-filter="all"]').addClass('active');
@@ -82,6 +119,7 @@ $(document).ready(function() {
         });
       }, 1200);
     } else {
+      $('#shdMore').removeClass('show');
       $.ajax({
         type: "GET",
         dataType: "html",

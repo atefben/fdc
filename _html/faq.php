@@ -25,7 +25,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main">
+    <div id="main" class="loading">
     <div class="faq">
 				<h2 class="title">FAQ</h2>
 				<inside class="faq-menu">

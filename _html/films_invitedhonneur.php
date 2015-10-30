@@ -24,20 +24,47 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article single-article films-list">
+    <div id="main" class="list-article films-list loading honneur-invit canne-classic">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
+           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg)">
                <h2 class="title title-list-header">Cannes classics</h2>
            </div>
-           <ul class="sub-nav-list">
-               <li><a href="films_invitedhonneur.php" class="active">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php">Copies restaurées </a></li>
-               <li><a href="#">World cinema project</a></li>
-               <li><a href="films_documentaires.php">Documentaires</a></li>
-           </ul>  
+           <ul class="nav-list">
+             <li>
+               <a href="selectionofficielle_competition.php">Compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_uncertainregard.php">Un certain regard</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_horscompetition.php">Hors compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_seancespeciales.php">Séances spéciales</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_cinefondation.php">Cinéfondation</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_courtsmetrages.php">Courts métrages</a>
+             </li>
+             <li>
+               <a href="films_invitedhonneur.php" class='active'>Cannes classics</a>
+             </li>
+             <li>
+               <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
+             </li>
+           </ul>
+          <ul class="sub-nav-list nav-movie">
+               <li><a href="films_invitedhonneur.php" class="active ajax">Invité d'honneur</a></li>
+               <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
+               <li><a href="films_copiesrestaurees.php" class="ajax">Copies restaurées </a></li>
+               <li><a href="#" class="ajax">World cinema project</a></li>
+               <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
+           </ul> 
       </div>
-      <div class="container container-list">
+      <div class="container container-list single-article">
+
         <section class="categorie-items">
             <div class="title-list-cat">
                 <h2 class="title-big">Lumière sur deux réalisateurs</h2>
@@ -52,7 +79,7 @@
                </div>
                <div class=" contain-img-honneur">
                  <img src="img/films/image-invitespecial.jpg" alt="invite d honneur" class="photo-realisateur">
-                 <span class="copy"> (c) Lorem ipsum.</span>
+                 <span class="copy"> © Lorem ipsum.</span>
                </div>
                 <p class="pres-honneur">Cannes Classics 2015 est placé sous l'égide de Costa-Gavras qui en sera l'invité d'honneur. Palme d’or avec <a href="#">Missing</a> en 1982, membre du Jury en 1976 (il récompensa <a href="#">Taxi Driver</a>), Prix de la mise en scène avec <a href="#">Section spéciale</a> en 1975, c’est en sa présence que sera projeté Z, Prix du Jury en 1969.</p>
                 <div class="small-pres">
@@ -98,8 +125,8 @@
                     </div>
                     </div>
                   </div>
-                </div>
-                <div class="share">
+              </div>   
+              <div class="share">
                 <p>Partagez l'article</p>
                 <div class="buttons square">
                   <a href="#" class="button facebook"></a>
@@ -109,13 +136,14 @@
                   <a href="#" class="button print"></a>
                 </div>
               </div>
+
             </div>
         </section>
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
-               <h2 class="title title-list-header">Caméra d'or</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <h2 class="title title-list-header">Hommages</h2>
+               <a href="films_hommage.php" class="bandeau-lien"> > Découvrir la rubrique</a>
         </div>
       </div>
     </div>

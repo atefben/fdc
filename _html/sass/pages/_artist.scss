@@ -1,0 +1,159 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+.artist{
+
+    padding: 0px 0px;
+    padding-top: 65px;
+  
+  .small-container{
+    margin: 0 auto;
+    width: 633px;
+  }
+  .city{
+    text-transform: uppercase;
+  }
+  .title-cat-artist{
+    font-family: $Playfair;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 1.375rem;
+    padding-bottom: 40px;
+    margin-bottom: 0px;
+    font-weight: 300;
+  }
+  .title-art-artist{
+    font-family: $Playfair;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 1.375rem;
+    margin-bottom: 50px;
+    padding-top: 45px;
+    border-top: 1px solid #dfdfdf;
+    font-weight: 300;
+  }
+  .paragraph{
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+  }
+  .biographie{
+     margin-bottom: 70px;
+  }
+  .contain-films-list{
+
+    .item{
+      line-height: 18px;
+      margin: 0px 12px;
+      display: inline-block;
+      min-height: 418px;
+      vertical-align: bottom;
+      .content-text{
+       margin: 0 auto;
+        width: 135px;
+        text-align: center;
+        .item-title{
+          font-family: $CamphorBold;
+          text-transform: uppercase;
+          color:#c8a461;
+          font-size: .875rem;
+          display: block;
+          padding-top: 19px;
+        }
+        .item-date{
+          font-family: $CamphorRegular;
+          color:#999999;
+          font-size: .6875rem;
+          padding-right: 5px;
+        }
+        .item-categ{
+          font-family: $CamphorMedium;
+          text-transform: uppercase;
+          font-size: .6875rem;
+          color:#333333;
+        }
+        .item-details{
+          font-family: $CamphorRegular;
+          font-size: .75rem;
+          color:#666666;
+          display: block;
+        }
+        .item-sub-title{
+          font-size: .625rem;
+           text-transform: uppercase;
+          color:#c8a461;
+          display: block;
+        }
+      }
+    }
+  }
+  
+  .jury{
+    text-align: center;
+    padding-bottom: 45px;
+    .rank{
+      font-family: $CamphorBold;
+      color:#c8a461;
+      font-size: 1.125rem;
+    }
+    .role{
+      text-transform: uppercase;
+      font-size: .875rem;
+    }
+  }
+  
+  .realisateurs{
+    background-color: #f6f6f6;
+    padding-bottom: 48px;
+    .title{
+      padding: 70px 0px;
+    }
+    .owl-carousel .owl-item{
+            width: auto !important;
+    }
+    #slide-artist{
+      .item{
+        margin: 3px;
+      }
+    } 
+    .first{
+//       margin-left: 128px !important;
+    }  
+    #slide-artist .item img{
+      display: block;
+      width: auto;
+      height: auto;
+      margin-bottom: 17px;
+    }
+    .owl-stage-outer{
+
+    }
+    .owl-controls{
+      display: none;
+    }
+    figure{
+      text-align: center;
+      margin: 0px 27px;
+      span{
+        display: block;
+      }
+      .name{
+        text-transform: uppercase;
+        font-family: $CamphorBold;
+        padding-bottom: 10px;
+        font-size: .875rem;
+      }
+      .rank{
+        color:#c8a461;
+        font-size:.8125rem;
+        font-family: $CamphorItalic;
+      }
+    }
+  }
+}

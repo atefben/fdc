@@ -22,11 +22,40 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="single-movie">
+    <div id="main" class="single-movie loading">
+      <div id="canvasloader" class="canvasloader"></div>
       <div class="content-movie">
+        <div class="prevmovie">
+          <div class="img">
+            <img src="img/movie/002.jpg" alt="" />
+          </div>
+          <div class="info">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <h2>Youth</h2>
+                <a href="#">Paolo SORRENTINO</a>
+                <p>Pays : Italie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nextmovie">
+          <div class="img">
+            <img src="img/movie/002.jpg" alt="" />
+          </div>
+          <div class="info">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <h2>Youth</h2>
+                <a href="#">Paolo SORRENTINO</a>
+                <p>Pays : Italie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="movie2.php" class="nav prev ajax"></a>
+        <a href="movie3.php" class="nav next ajax"></a>
         <div class="main-image" style="background-image: url('img/movie/001.jpg')">
-          <a href="movie2.php" class="nav prev"></a>
-          <a href="movie3.php" class="nav next"></a>
           <div class="links">
             <div class="container">
               <a class="movies" href="#">Tous les films</a>
@@ -37,8 +66,8 @@
         </div>
         <div class="container container-top">
           <div class="poster video">
-            <img src="img/movie/002.jpg" alt="" />
             <a href="#" class="picto"></a>
+            <img src="img/movie/002.jpg" alt="" />
           </div>
           <div class="info-film">
             <div class="categories"><span>En compétition</span><span>longs métrages</span><span>Film d'ouverture</span></div>
@@ -164,6 +193,21 @@
                 </div>
               </div>
             </div>
+            <div class="slide-video shadow-bottom">
+              <img src="http://dummyimage.com/293x185/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info">
+                <div class="picto"></div>
+                <div class="info-container">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Photocall</a>
+                      <p>Lorem ipsum dolor sit</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="container">
@@ -204,19 +248,36 @@
               <div class="slideshow-img">
                 <div class="images">
                   <div class="img active">
-                    <a class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                    <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
                       <img src="img/slide001.jpg" alt="" />
                     </a>
                   </div>
                   <div class="img">
-                    <a class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                    <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                      <img src="img/slide002.jpg" alt="" />
+                    </a>
                   </div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                  <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                  <div class="img">
+                    <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
                 </div>
                 <div class="owl-carousel thumbnails">
                   <div class="thumb active" data-caption="<strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange">
@@ -257,8 +318,12 @@
           <div class="news" data-section="news">
             <div class="articles center">
               <article class="article" data-format="article" data-theme="competition">
-                <div class="image" style="background-image: url('img/articles/03.jpg')">
-                  <a href="article.php"></a>
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/03.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                   <span class="picto"></span>
                 </div>
                 <div class="info">
@@ -266,14 +331,18 @@
                   <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
                 </div>
               </article>
-              <article class="video" data-format="video" data-theme="photocall">
-                <div class="image" style="background-image: url('img/articles/03.jpg')">
-                  <a href="article.php"></a>
+              <article class="photo" data-format="photo" data-theme="competition">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/03.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                   <span class="picto"></span>
                 </div>
                 <div class="info">
-                  <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Z de Costa-Gravas</a></h2>
+                  <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
                 </div>
               </article>
             </div>
@@ -281,12 +350,32 @@
           <div class="audios" data-section="audios">
             <div class="audio-player audio bigger" data-sound="img/article/sound.mp3">
               <div class="image" style="background-image: url(img/slide001.jpg);"></div>
-              <div class="picto"></div>
-              <div class="info">
-                <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>The Lobster de Yoros Lanthinos</p>
+              <a href="#" class="playpause"></a>
+              <div class="off">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <div class="picto"></div>
+                    <div class="info">
+                      <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster de Yoros Lanthinos</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="wave-container"></div>
+              <div class="on">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <div class="duration">
+                      <span class="curr">0:00</span>/<span class="total">0:00</span>
+                    </div>
+                    <div class="wave-container"></div>
+                    <div class="volume">
+                      <span></span>
+                    </div>
+                    <a href="#" class="fullscreen"></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

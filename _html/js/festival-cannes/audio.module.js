@@ -11,7 +11,7 @@ function initAudioPlayers() {
     // initialize wave sound
     wave.init({
       container: document.querySelector('#' + 'wave-' + i),
-      waveColor: 'rgba(255, 255, 255, 0.5)',
+      waveColor: 'rgba(90, 90, 90, 0.5)',
       progressColor: '#c8a461',
       cursorWidth: 0,
       height: h
@@ -95,20 +95,20 @@ $(document).ready(function() {
 
   function FShandler() {
     if (document.fullscreenEnabled && document.fullscreenElement == null) {
-      $('.audio-player').removeClass("full");
-      $('.audio-player .top, .audio-player .bottom').remove();
+      $('.audio-player').removeClass("full overlay-channels");
+      $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
     }
     if (document.webkitFullscreenEnabled && document.webkitFullscreenElement == null) {
-      $('.audio-player').removeClass("full");
-      $('.audio-player .top, .audio-player .bottom').remove();
+      $('.audio-player').removeClass("full overlay-channels");
+      $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
     }
     if (document.mozFullScreenEnabled && document.mozFullscreenElement == null) {
-      $('.audio-player').removeClass("full");
-      $('.audio-player .top, .audio-player .bottom').remove();
+      $('.audio-player').removeClass("full overlay-channels");
+      $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
     }
     if (document.msFullscreenEnabled && document.msFullscreenElement == null) {
-      $('.audio-player').removeClass("full");
-      $('.audio-player .top, .audio-player .bottom').remove();
+      $('.audio-player').removeClass("full overlay-channels");
+      $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
     }
   }
 
@@ -123,9 +123,64 @@ $(document).ready(function() {
     }
   });
 
+  $('body').on('click', '.audio-player.full .channels', function(e) {
+    e.preventDefault();
+
+    $(this).toggleClass('active');
+
+    $('.audio-player.full').toggleClass('overlay-channels');
+    $('#channels-audio').toggleClass('active');
+  });
+
+  function closeChannels() {
+    $('.audio-player.full').removeClass('overlay-channels');
+    $('.audio-player.full .channels').removeClass('active');
+    $('#channels-audio').removeClass('active');
+  }
+
+  $('body').on('click', '.audio-player.full.overlay-channels', function(e) {
+    closeChannels();
+  });
+
   if($('.audio-player').length) {
     initAudioPlayers();
   }
+
+  $('body').on('click', '#slider-channels-audio .channel .linkVid', function(e) {
+    closeChannels();
+    var ind = 0;
+
+    if($('.audio-player').length > 1) {
+      ind = $('.audio-player.full').index('.audio-player');
+    }
+
+    e.preventDefault();
+
+    var $audioPlayer = $('.audio-player.full'),
+        $newAudio = $(e.target).parent();
+
+    var s = $newAudio.data('sound'),
+        img = $newAudio.find('img').attr('src'),
+        info = $newAudio.find('.info').html();
+
+    $audioPlayer.find('.image').css('background-image', 'url(' + img + ')');
+    $audioPlayer.children('.info .vCenterKid').html(info);
+
+    waves[ind].load(s);
+
+    // update duration
+    waves[ind].on('ready', function() {
+      var duration = waves[ind].getDuration();
+      var minutes = parseInt(Math.floor(duration / 60));
+      var seconds = parseInt(duration - minutes * 60);
+
+      if(seconds < 10) {
+        seconds = '0' + seconds;
+      }
+      $audioPlayer.find('.duration .total').text(minutes + ':' + seconds);
+    });
+    
+  });
 
   // show audioplayer on fullscreen
   $('body').on('click', '.audio-player .fullscreen', function(e) {
@@ -155,7 +210,7 @@ $(document).ready(function() {
         var info = $(audioPlayer).find('.info').html();
         $(audioPlayer).append('<div class="top"><a href="#" class="channels"></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
         $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
-        $(audioPlayer).append('<div class="bottom"><a href="#" class="playpause" data-action="play"></a></div>');
+        $(audioPlayer).append('<div id="channels-audio"></div>');
 
         if (audioPlayer.requestFullscreen) {
           audioPlayer.requestFullscreen();
@@ -167,9 +222,29 @@ $(document).ready(function() {
           audioPlayer.msRequestFullscreen();
         }
 
-        $('.playpause').on('click', function(e) {
-          e.preventDefault();
-          wave.playPause();
+        $.ajax({
+          type: "GET",
+          dataType: "html",
+          cache: false,
+          url: 'channels.html' ,
+          success: function(data) {
+            $('#channels-audio').append(data);
+            var sliderChannelsAudio = $("#slider-channels-audio").owlCarousel({
+              nav: false,
+              dots: false,
+              smartSpeed: 500,
+              center: true,
+              loop: false,
+              margin: 80,
+              autoWidth: true,
+              onInitialized: function() {
+                $('#slider-channels-audio .owl-stage').css({ 'margin-left': "-343px" });
+              }
+            });
+
+            sliderChannelsAudio.owlCarousel();
+            
+          }
         });
 
         document.addEventListener("fullscreenchange", FShandler);

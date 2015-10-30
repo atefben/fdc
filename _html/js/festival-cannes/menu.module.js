@@ -8,11 +8,11 @@ $(document).ready(function() {
     
   // overlay on main menu : show submenu and overlay
   $('.main>li, .user>li').hover(function() {
-    $('#main').addClass('overlay');
+    $('#main, footer').addClass('overlay');
     $('.main>li').not($(this)).addClass('fade');
   }, function() {
     if(!$('#selection').hasClass('open')) {
-      $('#main').removeClass('overlay');
+      $('#main, footer').removeClass('overlay');
     }
     $('.main li').removeClass('fade');
   });

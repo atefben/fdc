@@ -16,8 +16,8 @@
   top: 230px;
   width: 100%;
   z-index: 14;
-
-  @include transition(all 0.5s $smoothTransition);
+  @include transform(translateZ(0));
+  @include transition(all 0.6s $smoothTransition);
 
   &.open {
     max-height: 405px;
@@ -32,33 +32,70 @@
   }
 
   #slider-selection {
+    margin-left: -380px;
+    @include transition(all .5s $smoothTransition);
+
+    &.fade {
+      opacity: 0;
+      visibility: hidden;
+    }
 
     .owl-stage-outer {
       overflow: initial;
     }
 
+    .owl-stage {
+      background-color: #fff;
+    }
+
     .owl-item {
-      @include transition(margin-right 0.5s $smoothTransition);
+      background-color: #fff;
+      z-index: 2;
+      @include transition(all .5s $smoothTransition);
+
+      &.added {
+        @include transition(padding-right 0.5s $smoothTransition, opacity .8s $smoothTransition, transform .8s $smoothTransition);
+      }
+
+      .image-wrapper img {
+        max-width: 100%;
+      }
 
       &.fade {
-        margin-right: 0!important;
-        opacity: 0;
-        visibility: hidden;
+        padding-right: 0!important;
         width: 0!important;
+        overflow: hidden;
+      }
+
+      &.scaled {
+        opacity: 0;
+        @include transform(scale(0.8));
+      }
+
+      .info, .picto {
+        @include transition(all .2s $smoothTransition);
       }
     }
 
     .article {
+      padding-right: 50px;
       height: 230px;
       position: relative;
       width: 212px;
-      @include transition(all 0.5s $smoothTransition);
+      @include transition(all 0.9s $smoothTransition);
 
       &.deleted {
         overflow: hidden;
+        padding-right: 0;
         width: 0;
 
-        .info, .delete {
+        .image-wrapper img {
+          @include transition(none);
+          max-width: 212px!important;
+          width: 212px;
+        }
+
+        .info, .delete, .picto {
           opacity: 0;
           visibility: hidden;
         }
@@ -72,9 +109,16 @@
         display: block;
         height: 28px;
         position: absolute;
-        right: -14px;
+        right: 36px;
         top: -14px;
         width: 28px;
+        z-index: 5;
+        @include transform(translateZ(0));
+        @include transition(border-color 0.5s $smoothTransition);
+
+        &:hover {
+          border-color: #000;
+        }
       }
 
       .category {
@@ -126,9 +170,9 @@
         color: #333;
         font-family: $CamphorHeavy;
         text-transform: uppercase;
-        @include transition(all 0.3s $smoothTransition);
+        @include transition(all 0.8s $smoothTransition);
 
-        &.active {
+        &.active, &:hover {
           color: $gold;
         }
       }

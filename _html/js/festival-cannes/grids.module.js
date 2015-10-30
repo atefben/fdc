@@ -1,6 +1,94 @@
 // All Photos
 // =========================
 
+var itemReveal = Isotope.Item.prototype.reveal;
+Isotope.Item.prototype.reveal = function() {
+  itemReveal.apply( this, arguments );
+  $( this.element ).removeClass('isotope-hidden');
+};
+
+var itemHide = Isotope.Item.prototype.hide;
+Isotope.Item.prototype.hide = function() {
+  itemHide.apply( this, arguments );
+  $( this.element ).addClass('isotope-hidden');
+};
+
+function resizeGrid() {
+  var result = document.getElementById('result');
+  if("matchMedia" in window) {
+      setGrid(false,$('#gridAudios'),true);
+  }    
+}
+
+function setGrid(grid, dom, init){     
+  var $img            = $(dom).find('.item img'),
+      pourcentage     = 0.30,
+      nbImgAAgrandir  = $img.length * pourcentage,
+      i               = 0,
+      nbRamdom        = [],
+      x               = 1,
+      j               = 0,
+      max             = 0,
+      min             = 0,
+      nbImage         = $img.length;
+
+  function buildGrid(){
+    $($img).closest('div.item').removeClass('w2');
+    if (window.matchMedia("(max-width: 1599px)").matches) {
+      while(i<$img.length){
+        if(j<11){
+            if(j==0 || j==3){
+                $($img[i]).closest('div.item').addClass('w2');
+            }
+            j++;
+        }
+        if(j==10){
+            j=0;
+        }        
+        i++;
+      }
+    }
+    else if (window.matchMedia("(max-width: 1919px)").matches){
+                
+      while(i<$img.length){
+        if(j<31){
+            if(j==0 || j==3 || j==12 || j==17 || j==25 ){
+                $($img[i]).closest('div.item').addClass('w2');
+            }
+            j++;
+        }
+        if(j==30){
+            j=0;
+        }        
+        i++;
+      }
+    
+    }
+    else if (window.matchMedia("(min-width: 1920px)").matches){
+      while(i<$img.length){
+        if(j<16){
+            if(j==0 || j==5 ||  j==15){
+                $($img[i]).closest('div.item').addClass('w2');
+                
+            }
+            j++;
+        }
+        if(j==10){
+            j=0;
+        }        
+        i++;
+      }
+    }
+  }
+  if(!init){
+    grid.append( $(dom) ).isotope( 'appended', $(dom) );
+    grid.imagesLoaded().progress( function() {
+        grid.isotope('layout');
+    });
+  }
+  buildGrid();
+}
+
 $(document).ready(function() {
 
   function setImages(grid, dom, init){     
@@ -32,82 +120,6 @@ $(document).ready(function() {
           grid.isotope('layout');
       });
     }
-  }
-
-  function setGrid(grid, dom, init){     
-    var $img            = $(dom).find('.item img'),
-        pourcentage     = 0.30,
-        nbImgAAgrandir  = $img.length * pourcentage,
-        i               = 0,
-        nbRamdom        = [],
-        x               = 1,
-        j               = 0,
-        max             = 0,
-        min             = 0,
-        nbImage         = $img.length;
-
-    function buildGrid(){
-      $($img).closest('div.item').removeClass('w2');
-      if (window.matchMedia("(max-width: 1599px)").matches) {
-        while(i<$img.length){
-          if(j<11){
-              if(j==0 || j==3){
-                  $($img[i]).closest('div.item').addClass('w2');
-              }
-              j++;
-          }
-          if(j==10){
-              j=0;
-          }        
-          i++;
-        }
-      }
-      else if (window.matchMedia("(max-width: 1919px)").matches){
-                  
-        while(i<$img.length){
-          if(j<31){
-              if(j==0 || j==3 || j==12 || j==17 || j==25 ){
-                  $($img[i]).closest('div.item').addClass('w2');
-              }
-              j++;
-          }
-          if(j==30){
-              j=0;
-          }        
-          i++;
-        }
-      
-      }
-      else if (window.matchMedia("(min-width: 1920px)").matches){
-        while(i<$img.length){
-          if(j<16){
-              if(j==0 || j==5 ||  j==15){
-                  $($img[i]).closest('div.item').addClass('w2');
-                  
-              }
-              j++;
-          }
-          if(j==10){
-              j=0;
-          }        
-          i++;
-        }
-      }
-    }
-    if(!init){
-      grid.append( $(dom) ).isotope( 'appended', $(dom) );
-      grid.imagesLoaded().progress( function() {
-          grid.isotope('layout');
-      });
-    }
-    buildGrid();
-  }
-
-  function resizeGrid() {
-    var result = document.getElementById('result');
-    if("matchMedia" in window) {
-        setGrid(false,$('#gridAudios'),true);
-    }    
   }
 
   function closePopinAudio() {
@@ -158,6 +170,25 @@ $(document).ready(function() {
           });
         });
     }
+    
+    if($('#gridJurys').length){ 
+        $grid = $('#gridJurys').imagesLoaded(function() {
+
+          $grid.isotope({
+            layoutMode: 'packery',
+            itemSelector: '.item'
+          });
+        });
+    }
+    if($('#gridFilmSelection').length){ 
+        $grid = $('#gridFilmSelection').imagesLoaded(function() {
+
+          $grid.isotope({
+            layoutMode: 'packery',
+            itemSelector: '.item'
+          });
+        });
+    }
 
     if($('#gridAudios').length) {
 
@@ -190,6 +221,7 @@ $(document).ready(function() {
                 img = $(e.target).find('img').attr('src'),
                 category = $(e.target).find('.category').text(),
                 date = $(e.target).find('.date').text(),
+                hour = $(e.target).find('.hour').text(),
                 text = $(e.target).find('p').text(),
                 $popinAudio = $('.popin-audio');
               
@@ -197,6 +229,7 @@ $(document).ready(function() {
             $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
             $popinAudio.find('.category').text(category);
             $popinAudio.find('.date').text(date);
+            $popinAudio.find('.hour').text(hour);
             $popinAudio.find('p').text(text);
             $popinAudio.addClass('audio-player show');
 
@@ -233,8 +266,20 @@ $(document).ready(function() {
           filterValues += '.' + $(this).data('filter');
         }
       });
-      
+
       $container.isotope({ filter: filterValues }); 
+
+      // if($('.all-photos').length) {
+      //   setTimeout(function() {
+      //     for(var i=0; i<slideshows.length; i++) {
+      //       slideshows[i].api().destroy();
+      //     }
+
+      //     slideshows = [];
+      //     $('.chocolat-wrapper').remove();
+      //     initSlideshows();
+      //   }, 1500);
+      // }
     });
   }
 

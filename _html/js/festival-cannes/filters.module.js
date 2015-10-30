@@ -10,7 +10,11 @@ $(document).ready(function() {
     $('#filters').remove();
     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"></div></div>');
     $('#filters .vCenterKid').html(h);
-    $('#filters').addClass('show').attr('data-id', $(this).parents('.filter').attr('id'));
+    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+
+    setTimeout(function() {
+      $('#filters').addClass('show');
+    }, 100);
 
     setTimeout(function() {
       $('#filters span').addClass('show');
@@ -20,6 +24,9 @@ $(document).ready(function() {
   // close filters
   $('body').on('click', '#filters', function() {
     $('#filters').removeClass('show');
+    setTimeout(function() {
+      $('#filters').remove();
+    }, 700);
   });
 
   // filter data on page

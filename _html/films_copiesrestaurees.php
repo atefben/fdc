@@ -24,17 +24,43 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article films-list">
+    <div id="main" class="list-article films-list loading cannes-classic">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
                <h2 class="title title-list-header">Cannes classics</h2>
            </div>
-           <ul class="sub-nav-list">
-               <li><a href="films_invitedhonneur.php">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php" class="active">Copies restaurées </a></li>
-               <li><a href="#">World cinema project</a></li>
-               <li><a href="films_documentaires.php">Documentaires</a></li>
+             <ul class="nav-list">
+             <li>
+               <a href="selectionofficielle_competition.php">Compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_uncertainregard.php">Un certain regard</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_horscompetition.php">Hors compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_seancespeciales.php">Séances spéciales</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_cinefondation.php">Cinéfondation</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_courtsmetrages.php">Courts métrages</a>
+             </li>
+             <li>
+               <a href="films_invitedhonneur.php" class='active'>Cannes classics</a>
+             </li>
+             <li>
+               <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
+             </li>
+           </ul>
+           <ul class="sub-nav-list nav-movie">
+               <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
+               <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
+               <li><a href="films_copiesrestaurees.php" class="active ajax">Copies restaurées </a></li>
+               <li><a href="#" class="ajax">World cinema project</a></li>
+               <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
            </ul> 
       </div>
       <div class="container container-list">
@@ -108,7 +134,7 @@ Financement par le National Film Institute argentin (INCAA) et travail exécuté
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
-               <h2 class="title title-list-header">Cinema de la plage</h2>
+               <h2 class="title title-list-header">World Cinema Project</h2>
                <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
 
