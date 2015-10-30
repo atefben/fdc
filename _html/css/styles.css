@@ -9670,13 +9670,13 @@ article .image .linkImage {
   bottom: 18px;
   left: 18px;
   color: #DEDEDE;
-  font-size: 0.7rem;
+  font-size: 0.63rem;
 }
 .categorie-items .contain-article-invit .pres-honneur {
   width: 975px;
   margin: 0 auto;
   text-align: center;
-  font-size: 1, 125rem;
+  font-size: 1.125rem;
   line-height: 36px;
   padding-bottom: 30px;
 }
@@ -9768,7 +9768,7 @@ article .image .linkImage {
 }
 .list-article .bandeau-list .sub-nav-list li {
   display: inline-block;
-  padding: 16px;
+  padding: 16px 6.5px;
   text-transform: uppercase;
 }
 .list-article .bandeau-list .nav-movie a {
@@ -9805,7 +9805,7 @@ article .image .linkImage {
 }
 .list-article .bandeau-list .nav-list li {
   display: inline-block;
-  padding: 16px;
+  padding: 16px 6.5px;
   text-transform: uppercase;
 }
 
