@@ -55,7 +55,7 @@
                <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
              </li>
            </ul>
-           <ul class="sub-nav-list nav-movie">
+          <ul class="sub-nav-list nav-movie">
                <li><a href="films_invitedhonneur.php" class="active ajax">Invité d'honneur</a></li>
                <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
                <li><a href="films_copiesrestaurees.php" class="ajax">Copies restaurées </a></li>
@@ -64,6 +64,7 @@
            </ul> 
       </div>
       <div class="container container-list single-article">
+
         <section class="categorie-items">
             <div class="title-list-cat">
                 <h2 class="title-big">Lumière sur deux réalisateurs</h2>
@@ -141,8 +142,8 @@
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
-               <h2 class="title title-list-header">Caméra d'or</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <h2 class="title title-list-header">Hommages</h2>
+               <a href="films_hommage.php" class="bandeau-lien"> > Découvrir la rubrique</a>
         </div>
       </div>
     </div>

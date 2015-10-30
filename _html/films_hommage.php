@@ -49,10 +49,10 @@
                <a href="selectionofficielle_courtsmetrages.php">Courts métrages</a>
              </li>
              <li>
-               <a href="films_invitedhonneur.php" class='active'>Cannes classics</a>
+               <a href="films_invitedhonneur.php" class='active ajax'>Cannes classics</a>
              </li>
              <li>
-               <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
+               <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
              </li>
            </ul>
            <ul class="sub-nav-list nav-movie">
@@ -126,8 +126,8 @@
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
-               <h2 class="title title-list-header">Caméra d'or</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <h2 class="title title-list-header">Copies restaurées</h2>
+               <a href="films_copiesrestaurees.php" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
 
       </div>
