@@ -3382,10 +3382,13 @@ header .user-nav li a {
   display: block;
   margin-right: 10px;
   padding: 0 0px 1px 20px;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+header .user-nav li a:hover {
+  opacity: 0.7;
 }
 header .user-nav li a.selection {
   background: url("../img/svg/selection.svg") no-repeat left 48%;
@@ -3399,6 +3402,9 @@ header .user-nav li a.language {
   background: url("../img/svg/language.svg") no-repeat left 48%;
   padding-left: 30px;
   background-size: 20px;
+}
+header .user-nav li a.language:hover {
+  opacity: 1;
 }
 header .user-nav li .sub-languages {
   height: 0;
@@ -3423,10 +3429,10 @@ header .user-nav li .sub-languages li {
 header .user-nav li .sub-languages li a {
   height: 23px;
   opacity: 0.5;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header .user-nav li .sub-languages li a:hover {
   opacity: 1;
@@ -5609,6 +5615,7 @@ div.chocolat-wrapper .chocolat-close {
 #selection #slider-selection .owl-item.fade {
   padding-right: 0 !important;
   width: 0 !important;
+  overflow: hidden;
 }
 #selection #slider-selection .owl-item.scaled {
   opacity: 0;

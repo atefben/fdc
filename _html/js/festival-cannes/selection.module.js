@@ -88,11 +88,11 @@ $(document).ready(function() {
     $('#selection .owl-item').removeClass('filtered');
 
     if(f == 'all') {
+      $('#selection .owl-stage').width(272 * $('#selection .owl-item').length).css('transform', 'translate3d(' + tr + 'px, 0, 0)');
       setTimeout(function() {
         $('#selection .owl-item').removeClass('fade');
-        $('#selection .owl-stage').width(272 * $('#selection .owl-item').length).css('transform', 'translate3d(' + tr + 'px, 0, 0)');
         $('#slider-selection').removeClass('fade');
-      }, 500);
+      }, 1000);
       return false;
     } 
 
