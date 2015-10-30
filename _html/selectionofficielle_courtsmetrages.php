@@ -49,10 +49,10 @@
                <a href="selectionofficielle_courtsmetrages.php" class="ajax active">Courts métrages</a>
              </li>
              <li>
-               <a href="films_invitedhonneur.php">Cannes classics</a>
+               <a href="films_invitedhonneur.php" class="">Cannes classics</a>
              </li>
              <li>
-               <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
+               <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
              </li>
            </ul>
       </div>

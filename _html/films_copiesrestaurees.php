@@ -134,7 +134,7 @@ Financement par le National Film Institute argentin (INCAA) et travail exécuté
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
-               <h2 class="title title-list-header">Cinema de la plage</h2>
+               <h2 class="title title-list-header">World Cinema Project</h2>
                <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
 

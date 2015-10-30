@@ -82,6 +82,7 @@
      .print {
        background: url("../img/svg/print.svg") no-repeat 15% center;
        background-size: 18px;
+       font-size: 0.63rem; 
      }
    }
    .sub-cat-title {
@@ -129,14 +130,15 @@
      }
      img {
        float: left;
-       margin-right: 100px;
+       margin-right: 50px;
        margin-left: 70px;
      }
      .infos-item-list {
-       text-align: center;
-       vertical-align: middle;
-       width: 848px;
-       display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      width: 475px;
+      display: table-cell;
+      padding-right: 123px;
        .title-item {
          text-transform: uppercase;
          padding-bottom: 4px;
@@ -351,6 +353,9 @@
  // 3. Selection officielle
  //==========================
  .selection-officielle {
+   .single-article{
+     padding: 0px !important;
+   }
    figure {
      figcaption {
        height: 103px;

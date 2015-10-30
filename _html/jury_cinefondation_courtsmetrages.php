@@ -40,7 +40,7 @@
         <div class="container container-list">
           <section class="categorie-items contain-jury">
               <a href="">
-                <div class="photo-jury" style="background-image:url(img/jurys/photo-jury.jpg)">
+                <div class="photo-jury" style="background-image:url(img/jurys/photo-jury2.jpg)">
                 </div>
               </a>
               <div class="contain-descript">
