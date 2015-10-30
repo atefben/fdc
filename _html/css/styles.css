@@ -9508,8 +9508,8 @@ article .image .linkImage {
 .categorie-items .title-list-cat {
   color: #ffffff;
   padding: 50px;
-  border-bottom: #2c2c2c 1px solid;
-  border-top: #2c2c2c 1px solid;
+  border-bottom: #202020 1px solid;
+  border-top: #202020 1px solid;
   font-size: 1rem;
   text-align: center;
 }
@@ -9890,16 +9890,22 @@ article .image .linkImage {
 .palmares-list .sub-nav-list a {
   font-family: "Camphor W01 Bold";
   font-size: 0.75rem !important;
-  color: #999999;
+  color: #999999 !important;
 }
 .palmares-list .sub-nav-list a:hover {
-  color: #c8a461;
+  color: #c8a461 !important;
+}
+.palmares-list .sub-nav-list a.active {
+  color: #c8a461 !important;
 }
 .palmares-list .sub-cat-title {
   background-color: #202020;
   padding: 27px;
   font-family: "Camphor W01 Bold";
   font-size: 0.75rem;
+}
+.palmares-list .bandeau-list {
+  background-color: #202020;
 }
 .palmares-list .bandeau-list-img {
   height: 372px !important;
