@@ -10321,6 +10321,9 @@ article .image .linkImage {
 .webtv-ba .grid {
   padding-top: 0px;
 }
+.webtv-ba .grid .item:hover {
+  cursor: pointer;
+}
 .webtv-ba .grid-wrapper {
   margin-top: 0px;
 }
