@@ -9501,7 +9501,7 @@ article .image .linkImage {
   clear: both;
 }
 .categorie-items .titre-document {
-  color: #707070;
+  color: #999;
   width: 958px;
   margin: 0 auto;
 }
@@ -9667,13 +9667,17 @@ article .image .linkImage {
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 3px;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
   display: inline-block;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Bold";
 }
 .categorie-items article .infos-item-list .heure-pres-item {
-  color: #656565;
+  color: #999;
   letter-spacing: 3px;
   text-transform: uppercase;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Bold";
 }
 .categorie-items .contain-article-invit {
   color: #ffffff;
@@ -10967,6 +10971,7 @@ article .image .linkImage {
 }
 .artist .small-container {
   margin: 0 auto;
+  width: 633px;
 }
 .artist .city {
   text-transform: uppercase;
@@ -10978,6 +10983,7 @@ article .image .linkImage {
   font-size: 1.375rem;
   padding-bottom: 40px;
   margin-bottom: 0px;
+  font-weight: 300;
 }
 .artist .title-art-artist {
   font-family: "Playfair Display";
@@ -10987,6 +10993,7 @@ article .image .linkImage {
   margin-bottom: 50px;
   padding-top: 45px;
   border-top: 1px solid #dfdfdf;
+  font-weight: 300;
 }
 .artist .paragraph {
   color: #666;
@@ -10999,7 +11006,7 @@ article .image .linkImage {
 }
 .artist .contain-films-list .item {
   line-height: 18px;
-  margin: 0px 28px;
+  margin: 0px 12px;
   display: inline-block;
   min-height: 418px;
   vertical-align: bottom;

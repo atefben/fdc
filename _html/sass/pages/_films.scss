@@ -18,7 +18,7 @@
  .categorie-items {
    clear: both;
    .titre-document {
-     color: #707070;
+     color: #999;
      width: 958px;
      margin: 0 auto;
    }
@@ -179,13 +179,17 @@
          text-transform: uppercase;
          color: #fff;
          letter-spacing: 3px;
-         margin-bottom: 10px;
+         margin-bottom: 18px;
          display: inline-block;
+         font-size: 0.75rem;
+        font-family: $CamphorBold;
        }
        .heure-pres-item {
-         color: #656565;
+         color: #999;
          letter-spacing: 3px;
          text-transform: uppercase;
+         font-size: 0.75rem;
+         font-family: $CamphorBold;
        }
      }
    }
