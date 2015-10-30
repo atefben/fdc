@@ -29,7 +29,7 @@ function setHeightSlider() {
 
   $('#sliderWrapper').height($(window).height() - $('header').height());
   $('#prefooter').css('height', $(window).height() - 90 + "px");
-  $('#prefooter .imgSlide, #slider-movies .textVideo').width($(window).width());
+  $('#prefooter .imgSlide, #slider-movies .textVideo, #slider-movies .video').width($(window).width());
 }
 
 $(document).ready(function() {

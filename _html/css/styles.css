@@ -4325,10 +4325,11 @@ div.chocolat-wrapper .chocolat-bottom {
   line-height: initial;
   padding: 0;
   height: 100px;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  opacity: 0;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 div.chocolat-wrapper .chocolat-bottom:after {
   content: '';
@@ -4349,6 +4350,12 @@ div.chocolat-wrapper .chocolat-bottom:after {
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom.show {
+  opacity: 1;
+}
+div.chocolat-wrapper .chocolat-bottom:hover {
+  opacity: 1;
 }
 div.chocolat-wrapper .chocolat-bottom:hover:after {
   opacity: 1;
@@ -6797,11 +6804,7 @@ div.chocolat-wrapper .chocolat-close {
 #featured-movies .video {
   position: absolute;
 }
-#featured-movies video {
-  display: block;
-  position: absolute;
-}
-#featured-movies .owl-item:before {
+#featured-movies .video:before {
   content: '';
   display: block;
   opacity: 0.4;
@@ -6812,6 +6815,10 @@ div.chocolat-wrapper .chocolat-close {
   width: 100%;
   height: 100%;
   z-index: 1;
+}
+#featured-movies video {
+  display: block;
+  position: absolute;
 }
 #featured-movies .links {
   bottom: 10%;

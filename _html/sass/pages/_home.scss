@@ -1158,14 +1158,7 @@
 
   .video {
     position: absolute;
-  }
 
-  video {
-    display: block;
-    position: absolute;
-  }
-
-  .owl-item {
     &:before {
       content: '';
       display: block;
@@ -1178,6 +1171,15 @@
       height: 100%;
       z-index: 1;
     }
+  }
+
+  video {
+    display: block;
+    position: absolute;
+  }
+
+  .owl-item {
+    
   }
 
   .links {

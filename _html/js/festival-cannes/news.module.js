@@ -75,6 +75,7 @@ $(document).ready(function() {
   $('.read-more').on('click', function(e) {
     e.preventDefault();
 
+    $('#timeline').removeClass('bottom');
     // load previous day
     if($(this).hasClass('prevDay')) {
       $('#shd').removeClass('show');

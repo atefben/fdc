@@ -308,7 +308,8 @@ div.chocolat-wrapper {
     line-height: initial;
     padding: 0;
     height: 100px;
-    @include transition(all 0.5s $smoothTransition);
+    opacity: 0;
+    @include transition(all 0.9s $smoothTransition);
 
     &:after {
       content: '';
@@ -325,7 +326,13 @@ div.chocolat-wrapper {
       @include transition(all 0.5s $smoothTransition);
     }
 
+    &.show {
+      opacity: 1;
+    }
+
     &:hover {
+      opacity: 1;
+
       &:after {
         opacity: 1;
         visibility: visible;

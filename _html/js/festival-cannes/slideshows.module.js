@@ -213,8 +213,16 @@ $('body').on('mouseout', '.chocolat-content', function(){
 $('body').on('mouseenter', '.chocolat-content', function(){
   $('.chocolat-close').show();
   return false;
-});
+}); 
+
+var timeoutCursor;
 
 $('body').on('mousemove', '.chocolat-content', function(e){
   $('.chocolat-close').css('left', e.clientX + 10).css('top', e.clientY);
+  $('.chocolat-bottom').addClass('show');
+
+  clearTimeout(timeoutCursor);
+  timeoutCursor = setTimeout(function() {
+    $('.chocolat-bottom').removeClass('show');
+  }, 4000);
 });
