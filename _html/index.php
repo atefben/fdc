@@ -373,7 +373,7 @@
 
       <div id="featured-videos">
         <h2 class="title">Les vidéos à la une</h2>
-        <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />Accédez à la web tv</a></p>
+        <p class="link"><a href="webtv.php"><img src="img/svg/arrow-right-gold.svg" />Accédez à la web tv</a></p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
           <div class="vid">
             <div class="image-wrapper">

@@ -152,7 +152,7 @@ $(document).ready(function() {
 
       // translate Element 2 with pos / 2 (half speed)
     
-      transform1 = 'translate3d(0px, ' + ((scrollPos + 100)/division) + 'px, 0px)';
+      transform1 = 'translate3d(0px, ' + (scrollPos/division) + 'px, 0px)';
 
       el1.style.webkitTransform = transform1;
       el1.style.MozTransform = transform1;
@@ -190,7 +190,7 @@ $(document).ready(function() {
       parallaxElements.push({
         'el1': '#slider .owl-item.center .img-container',
         'el2': '#slider .owl-item.center .info',
-        'positionTop': $('#slider').offset().top - $header.height() + 100,
+        'positionTop': $('#slider').offset().top - $header.height(),
         'division': 6,
         'mov': 4
       });

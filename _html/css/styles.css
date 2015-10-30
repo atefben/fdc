@@ -8284,7 +8284,7 @@ article .image .linkImage {
   font-family: "Camphor W01 Heavy";
   font-size: 0.625rem;
   padding-left: 20px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
