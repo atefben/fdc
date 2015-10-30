@@ -1,11 +1,18 @@
 $(document).ready(function() {
 
+  // vars for parallax
+  var scrollTarget = 0,
+      scrollPos = 0,
+      scrollEase = 0.1;
+      scrollEaseLimit = 0.1;
+
   // Events on scroll
   // =========================
   var lastScrollTop = 0;
 
   $(window).on('scroll', function() {
-    var s = $(window).scrollTop();
+    var s = $(this).scrollTop();
+    scrollTarget = s;
 
     if (s > lastScrollTop){
       if(($('#prehome-container').length == 0 && s > 139)) {
@@ -44,10 +51,10 @@ $(document).ready(function() {
     }
 
     if($('#news').length) {
-      if(s > $('#news').offset().top + 70 && s < ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height())) {
+      if(s > $('#news').offset().top + 70 && s < ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height() - 3)) {
         $('#timeline').removeClass('bottom').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 57);
       } else {
-        if(s > ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height())) {
+        if(s >= ($('.read-more').offset().top - $('.read-more').height() - $('#timeline').height() - 3)) {
           $('#timeline').addClass('bottom');
         } else {
           $('#timeline').removeClass('stick').css('left', 'auto');
@@ -112,5 +119,62 @@ $(document).ready(function() {
     lastScrollTop = s;
 
   });
+
+
+
+
+  // ---------- PARALLAX ------------
+
+  var el1 = $('#slider .center .img')[0],
+      el2 = $('#slider .center .info')[0];
+
+  // launch RAF
+  //update();
+
+
+  function render(){
+    
+    // process only if value is not reached
+    
+    if (scrollTarget !== scrollPos){
+        
+      // limit easing
+        
+      if (Math.abs(scrollPos - scrollTarget) < scrollEaseLimit){
+        scrollPos = scrollTarget;
+      }
+        
+      // increment pos with easing
+    
+      scrollPos += (scrollTarget - scrollPos) * scrollEase;
+
+        
+       // translate Element 2 with pos / 2 (half speed)
+    
+      transform1 = 'translate3d(0px, ' + (scrollPos/2) + 'px, 0px)';
+   
+      el1.style.webkitTransform = transform1;
+      el1.style.MozTransform = transform1;
+      el1.style.msTransform = transform1;
+      el1.style.OTransform = transform1;
+      el1.style.transform = transform1;
+        
+      // translate Element 2 with pos (plain speed)
+    
+      transform2 = 'translate3d(0px, ' + scrollPos + 'px, 0px)';
+        
+      el2.style.webkitTransform = transform2;
+      el2.style.MozTransform = transform2;
+      el2.style.msTransform = transform2;
+      el2.style.OTransform = transform2;
+      el2.style.transform = transform2;
+        
+    }
+  }
+
+  // function update(){
+  //   render();
+  //   window.requestAnimFrame(update);
+  // }
 
 });
