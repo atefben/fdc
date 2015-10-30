@@ -15,9 +15,8 @@ function setHeightSlider() {
       valueHeight = Math.round(($(window).width()/16)*9),
       top = newHeight - valueHeight;
 
-  $('#featured-movies').height(newHeight);
+  $('#featured-movies').height(valueHeight);
   $('#featured-movies video').css({
-    'top': top,
     'height': valueHeight
   });
 
