@@ -19,11 +19,11 @@ $(document).ready(function() {
         $('header').addClass('sticky');
       }
     } else {
-      if(s < 2000 && (lastScrollTop - s) > 150) {
+      /*if(s < 2000 && (lastScrollTop - s) > 150) {
         $('header').removeClass('sticky');
         $('body').css('padding-top', '230px');
-      }
-      else if(($('#prehome-container').length == 0 && s < 400)) {
+      }*/
+      if(($('#prehome-container').length == 0 && s < 500)) {
         $('header').removeClass('sticky');
         $('body').css('padding-top', '230px');
       }

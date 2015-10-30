@@ -64,6 +64,7 @@ header {
 
     #logo-wrapper {
       height: 50px;
+      @include transition(all 0.5s $smoothTransition);
 
       #logo {
         width: 290px;
@@ -205,7 +206,7 @@ header {
     background-color: $black;
     height: 160px;
     overflow: hidden;
-    @include transition(all 0.5s $smoothTransition);
+    @include transition(all 0.2s $smoothTransition);
     @include transform(translateY(0));
 
     .container {
