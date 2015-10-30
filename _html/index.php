@@ -28,7 +28,7 @@
       <div id="sliderWrapper">
         <div id="slider" class="owl-carousel">
           <div>
-            <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
+            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider01.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
               <h2>Xavier Dolan : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
@@ -36,7 +36,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img" style="background-image:url(img/slider/slider02.jpg)"></div>
+            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider02.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
               <h2>test</h2>
@@ -44,7 +44,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img" style="background-image:url(img/articles/01.jpg)"></div>
+            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider01.jpg)"></div></div>
             <div class="info">
               <span class="category">Test</span>
               <h2>test</h2>
@@ -52,7 +52,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img" style="background-image:url(img/articles/02.jpg)"></div>
+            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider02.jpg)"></div></div>
             <div class="info">
               <span class="category">Lorem ipsum</span>
               <h2>test</h2>

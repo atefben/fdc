@@ -133,7 +133,7 @@ $(document).ready(function() {
       } else {
         newP = parseInt(current) - 1;
       }
-      console.log(newP);
+     
       if($('#slider .owl-dot').eq(newP).length == 0 || newP == -1) {
         deltaTooBig = true;
       }
@@ -148,6 +148,8 @@ $(document).ready(function() {
 
     function move() {      
       var p = ($('#slider .owl-item').width() / 2) - 100;
+
+      $('#slider .img-container').addClass('relative');
 
       if(deltaTooBig) {
 
@@ -204,6 +206,8 @@ $(document).ready(function() {
 
       // start again
       start();
+
+      $('#slider .img-container').removeClass('relative');
 
       $bar.css({
         float: 'none',

@@ -17,7 +17,7 @@ $(document).ready(function() {
         $('header').removeClass('sticky');
         $('body').css('padding-top', '230px');
       }*/
-      if(($('#prehome-container').length == 0 && s < 500)) {
+      if(($('#prehome-container').length == 0 && s < 600)) {
         $('header').removeClass('sticky');
         $('body').css('padding-top', '230px');
       }
@@ -62,6 +62,11 @@ $(document).ready(function() {
       } else {
         $('a.nav').removeClass('bottom');
       }
+    }
+
+    if($('.webtv-live').length) {
+      var hght = $('header').hasClass('sticky') ? 91 : 230;
+      $('#live .textLive').css('top', hght + ($('#live').height() - $('#live .textLive').height()) / 2);
     }
 
     if($('.single-movie').length ) {
@@ -122,10 +127,10 @@ $(document).ready(function() {
   // vars for parallax
   var scrollTarget = 0,
       scrollPos = 0,
-      scrollEase = 0.05;
+      scrollEase = 0.1;
       scrollEaseLimit = 0.1;
 
-  function render(el1, el2, start, division){
+  function render(el1, el2, start, division, mov){
     // process only if value is not reached
     var sc = scrollTarget - start;
 
@@ -154,7 +159,7 @@ $(document).ready(function() {
         
       // translate Element 2 with pos (plain speed)
     
-      transform2 = 'translate3d(0px, ' + scrollPos + 'px, 0px)';
+      transform2 = 'translate3d(0px, ' + (scrollPos/mov) + 'px, 0px)';
         
       el2.style.webkitTransform = transform2;
       el2.style.MozTransform = transform2;
@@ -173,7 +178,17 @@ $(document).ready(function() {
       parallaxElements.push({
         'el1': '#prefooter .owl-item.center .imgSlide',
         'el2': '.textTop',
-        'positionTop': $('#slider-prefooter').offset().top
+        'positionTop': $('#slider-prefooter').offset().top,
+        'division': 4,
+        'mov': 2
+      });
+
+      parallaxElements.push({
+        'el1': '#slider .owl-item.center .img-container',
+        'el2': '#slider .owl-item.center .info',
+        'positionTop': $('#slider').offset().top - $('header').height(),
+        'division': 6,
+        'mov': 4
       });
     }
 
@@ -182,17 +197,11 @@ $(document).ready(function() {
       parallaxElements.push({
         'el1': '#live .img',
         'el2': '.textLive',
-        'positionTop': $('#live').offset().top - $('header').height()/6
+        'positionTop': $('#live').offset().top - $('header').height(),
+        'division': 2,
+        'mov': 1
       });
     }
-
-    // home slider
-    // parallaxElements.push({
-    //   'selector': '#slider .owl-item:not(.cloned)',
-    //   'el1': '.img',
-    //   'el2': '.info',
-    //   'positionTop': $('#slider').offset().top
-    // });
   }
 
   var hW = $(window).height();
@@ -213,7 +222,7 @@ $(document).ready(function() {
       if(scrollTarget > (parallaxElements[i].positionTop - hW) && scrollTarget < parallaxElements[i].positionTop + hW) {
         $(parallaxElements[i].el2).css('position', 'fixed');
         $(parallaxElements[i].el1).css('position', 'fixed');
-        render($(parallaxElements[i].el1)[0], $(parallaxElements[i].el2)[0], parallaxElements[i].positionTop, 1.3); 
+        render($(parallaxElements[i].el1)[0], $(parallaxElements[i].el2)[0], parallaxElements[i].positionTop, parallaxElements[i].division, parallaxElements[i].mov); 
       } else {
         $(parallaxElements[i].el2).css('position', '');
         $(parallaxElements[i].el1).css('position', '');

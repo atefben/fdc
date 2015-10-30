@@ -13,10 +13,13 @@ $(document).ready(function() {
        $('#live').addClass('on');
        $('#live .img').addClass('rePosition');
        $('#live').data('height', $('#live').height()).height($(window).height() - 91).css('padding-top', '91px');
+       $('body').css('padding-top', '91px');
        setTimeout(function() {
           $('header').addClass('sticky');
         }, 800);
      });
+
+     $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
     }
 
    // create slide for trailers
