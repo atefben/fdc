@@ -163,7 +163,6 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
   }
 
   window.location.hash = $(this).data('id');
-
 });
 
 $(document).ready(function() {

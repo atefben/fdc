@@ -4525,16 +4525,16 @@ div.chocolat-wrapper .chocolat-content {
   top: 0;
   left: 0;
   width: 100%;
-  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-div.chocolat-wrapper .chocolat-content.hide {
-  opacity: 0;
+  -moz-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 div.chocolat-wrapper .chocolat-content.thumbsOpen {
   opacity: 0.3 !important;
+}
+div.chocolat-wrapper .chocolat-content.hide {
+  opacity: 0 !important;
 }
 div.chocolat-wrapper .chocolat-fullscreen {
   display: none;
