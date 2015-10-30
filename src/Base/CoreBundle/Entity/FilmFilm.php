@@ -305,7 +305,6 @@ class FilmFilm implements FilmFilmInterface
         $this->minorProductions = new ArrayCollection();
         $this->countries = new ArrayCollection();
         $this->translations = new ArrayCollection();
-        $this->schoolAddresses = new ArrayCollection();
         $this->languages = new ArrayCollection();
         $this->projectionProgrammationFilms = new ArrayCollection();
     }
@@ -1040,47 +1039,6 @@ class FilmFilm implements FilmFilmInterface
     public function getCountries()
     {
         return $this->countries;
-    }
-
-    /**
-     * Add schoolAddresses
-     *
-     * @param \Base\CoreBundle\Entity\FilmAddressSchool $schoolAddresses
-     * @return FilmFilm
-     */
-    public function addSchoolAddress(\Base\CoreBundle\Entity\FilmAddressSchool $schoolAddresses)
-    {
-        if ($this->schoolAddresses->contains($schoolAddresses)) {
-            return;
-        }
-        
-        $this->schoolAddresses[] = $schoolAddresses;
-
-        return $this;
-    }
-
-    /**
-     * Remove schoolAddresses
-     *
-     * @param \Base\CoreBundle\Entity\FilmAddressSchool $schoolAddresses
-     */
-    public function removeSchoolAddress(\Base\CoreBundle\Entity\FilmAddressSchool $schoolAddresses)
-    {
-        if (!$this->schoolAddresses->contains($schoolAddresses)) {
-            return;
-        }
-        
-        $this->schoolAddresses->removeElement($schoolAddresses);
-    }
-
-    /**
-     * Get schoolAddresses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSchoolAddresses()
-    {
-        return $this->schoolAddresses;
     }
 
     /**
