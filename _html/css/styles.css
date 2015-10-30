@@ -11362,7 +11362,7 @@ article .image .linkImage {
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .participate .contain-participate section .contain-section .descrip-section a:hover {
-  color: #a87718;
+  color: #966505;
 }
 .participate .contain-participate section .contain-section #google-map {
   width: 975px;
@@ -11454,6 +11454,13 @@ article .image .linkImage {
 .participate .contain-participate section .item .info a {
   color: #c29f5f;
   text-decoration: underline;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.participate .contain-participate section .item .info a:hover {
+  color: #966505;
 }
 .participate .contain-participate section .item .info .price {
   color: #c29f5f;
@@ -11546,6 +11553,7 @@ article .image .linkImage {
 }
 .participate .contain-participate section .contain-map .link {
   padding-top: 38px;
+  color: #c8a461;
 }
 .participate .contain-participate section .contain-map .link a {
   color: #c8a461;
@@ -11558,12 +11566,22 @@ article .image .linkImage {
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .participate .contain-participate section .contain-map .link a:hover {
-  color: #a87718;
+  color: #966505;
 }
-.participate .contain-participate section .contain-map .link img {
+.participate .contain-participate section .contain-map .link .svg {
   width: 12px;
   height: 15px;
   padding-right: 9px;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.participate .contain-participate section .contain-map .link .svg .st0 {
+  fill: currentColor;
+}
+.participate .contain-participate section .contain-map .link:hover {
+  color: #966505;
 }
 .participate .contain-acces .imgs-acces {
   display: inline-block;
