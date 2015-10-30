@@ -111,11 +111,6 @@ class FilmAddress
      * @ORM\OneToMany(targetEntity="FilmPerson", mappedBy="address")
      */
     private $persons;
-     
-    /**
-     * @ORM\OneToMany(targetEntity="FilmAddressSchool", mappedBy="address")
-     */
-    private $schoolsFilms;
 
     /**
      * @var ArrayCollection
@@ -128,7 +123,6 @@ class FilmAddress
     public function __construct()
     {
         $this->persons = new ArrayCollection();
-        $this->schoolsFilms = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
@@ -404,47 +398,6 @@ class FilmAddress
     public function getPersons()
     {
         return $this->persons;
-    }
-
-    /**
-     * Add schoolsFilms
-     *
-     * @param \Base\CoreBundle\Entity\FilmAddressSchool $schoolsFilms
-     * @return FilmAddress
-     */
-    public function addSchoolsFilm(\Base\CoreBundle\Entity\FilmAddressSchool $schoolsFilms)
-    {
-        if ($this->schoolsFilms->contains($schoolsFilms)) {
-            return;
-        }
-        
-        $this->schoolsFilms[] = $schoolsFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove schoolsFilms
-     *
-     * @param \Base\CoreBundle\Entity\FilmAddressSchool $schoolsFilms
-     */
-    public function removeSchoolsFilm(\Base\CoreBundle\Entity\FilmAddressSchool $schoolsFilms)
-    {
-        if (!$this->schoolsFilms->contains($schoolsFilms)) {
-            return;
-        }
-
-        $this->schoolsFilms->removeElement($schoolsFilms);
-    }
-
-    /**
-     * Get schoolsFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSchoolsFilms()
-    {
-        return $this->schoolsFilms;
     }
 
     /**
