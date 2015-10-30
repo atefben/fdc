@@ -27,8 +27,36 @@
     <div id="main" class="list-article loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Cinema de la plage</h2>
+               <h2 class="title title-list-header">Cinéma de la plage</h2>
            </div>
+           <div class="bandeau-list">
+            <ul class="sub-nav-list nav-list">
+             <li>
+               <a href="selectionofficielle_competition.php" class='ajax'>Compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_uncertainregard.php" class="ajax active">Un certain regard</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_horscompetition.php" class="ajax">Hors compétition</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_seancespeciales.php" class="ajax">Séances spéciales</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_cinefondation.php" class="ajax">Cinéfondation</a>
+             </li>
+             <li>
+               <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
+             </li>
+             <li>
+               <a href="films_invitedhonneur.php" class="">Cannes classics</a>
+             </li>
+             <li>
+               <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
+             </li>
+           </ul>
+      </div>
       </div>
       <div class="container container-list">
         <section class="categorie-items">
@@ -83,8 +111,8 @@ faite par Digimage Classics.</p>
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
-               <h2 class="title title-list-header">Caméra d'or</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <h2 class="title title-list-header">Compétition</h2>
+               <a href="selectionofficielle_competition.php" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
 
       </div>

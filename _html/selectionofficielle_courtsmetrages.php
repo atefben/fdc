@@ -178,8 +178,8 @@
       </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/push.jpg);">
-               <h2 class="title title-list-header">Rétrospective</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <h2 class="title title-list-header">Cannes classics</h2>
+               <a href="films_invitedhonneur.php" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
 
       </div>

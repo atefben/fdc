@@ -40,7 +40,7 @@
       <div class="container container-list">
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">Long métrages</h2>
+                <h2 class="title">Longs métrages</h2>
             </div>
             <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
             <div class="bck-hover">

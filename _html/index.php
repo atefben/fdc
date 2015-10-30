@@ -596,7 +596,7 @@
             </div>
             <div class="vCenter">
               <div class="vCenterKid">
-                <h3>Le palmares</h3>
+                <h3>Le palmarès</h3>
               </div>
             </div>
             <a href="#"></a>

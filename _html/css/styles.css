@@ -9522,15 +9522,15 @@ article .image .linkImage {
   clear: both;
 }
 .categorie-items .titre-document {
-  color: #707070;
+  color: #999;
   width: 958px;
   margin: 0 auto;
 }
 .categorie-items .title-list-cat {
   color: #ffffff;
   padding: 50px;
-  border-bottom: #2c2c2c 1px solid;
-  border-top: #2c2c2c 1px solid;
+  border-bottom: #202020 1px solid;
+  border-top: #202020 1px solid;
   font-size: 1rem;
   text-align: center;
 }
@@ -9688,13 +9688,17 @@ article .image .linkImage {
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 3px;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
   display: inline-block;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Bold";
 }
 .categorie-items article .infos-item-list .heure-pres-item {
-  color: #656565;
+  color: #999;
   letter-spacing: 3px;
   text-transform: uppercase;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Bold";
 }
 .categorie-items .contain-article-invit {
   color: #ffffff;
@@ -9907,16 +9911,22 @@ article .image .linkImage {
 .palmares-list .sub-nav-list a {
   font-family: "Camphor W01 Bold";
   font-size: 0.75rem !important;
-  color: #999999;
+  color: #999999 !important;
 }
 .palmares-list .sub-nav-list a:hover {
-  color: #c8a461;
+  color: #c8a461 !important;
+}
+.palmares-list .sub-nav-list a.active {
+  color: #c8a461 !important;
 }
 .palmares-list .sub-cat-title {
   background-color: #202020;
   padding: 27px;
   font-family: "Camphor W01 Bold";
   font-size: 0.75rem;
+}
+.palmares-list .bandeau-list {
+  background-color: #202020;
 }
 .palmares-list .bandeau-list-img {
   height: 372px !important;
@@ -10729,6 +10739,9 @@ article .image .linkImage {
   color: #c8a461;
 }
 
+.evenement {
+  padding-bottom: 1px;
+}
 .evenement #gridEvent {
   padding-top: 60px;
 }
@@ -10780,12 +10793,16 @@ article .image .linkImage {
   padding-top: 60px;
   width: auto;
 }
+.single-evenement .quote blockquote {
+  font-size: 1.5rem !important;
+  font-family: "Camphor W01 Italic";
+}
 .single-evenement .share {
   padding-bottom: 0px;
 }
 .single-evenement .text {
   padding-top: 60px;
-  width: 730px;
+  width: 634px;
 }
 .single-evenement .text a {
   color: #c8a461;
@@ -10804,7 +10821,7 @@ article .image .linkImage {
   padding-top: 40px;
 }
 .single-evenement .small-container {
-  width: 730px;
+  width: 634px;
   margin: 0 auto;
 }
 .single-evenement .chapeau {
@@ -10988,6 +11005,7 @@ article .image .linkImage {
 }
 .artist .small-container {
   margin: 0 auto;
+  width: 633px;
 }
 .artist .city {
   text-transform: uppercase;
@@ -10999,6 +11017,7 @@ article .image .linkImage {
   font-size: 1.375rem;
   padding-bottom: 40px;
   margin-bottom: 0px;
+  font-weight: 300;
 }
 .artist .title-art-artist {
   font-family: "Playfair Display";
@@ -11008,6 +11027,7 @@ article .image .linkImage {
   margin-bottom: 50px;
   padding-top: 45px;
   border-top: 1px solid #dfdfdf;
+  font-weight: 300;
 }
 .artist .paragraph {
   color: #666;
@@ -11020,7 +11040,7 @@ article .image .linkImage {
 }
 .artist .contain-films-list .item {
   line-height: 18px;
-  margin: 0px 28px;
+  margin: 0px 12px;
   display: inline-block;
   min-height: 418px;
   vertical-align: bottom;
