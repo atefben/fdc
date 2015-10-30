@@ -9343,6 +9343,59 @@ article .image .linkImage {
   }
 }
 
+@media screen and (min-width: 1600px) {
+  #gridEvent {
+    /* 5 columns for larger screens */
+  }
+  #gridEvent .grid-sizer {
+    width: calc(100%/5);
+  }
+  #gridEvent .item {
+    width: calc(100%/5);
+  }
+  #gridEvent .item.w2 {
+    width: calc(200%/5);
+  }
+}
+@media screen and (min-width: 1920px) {
+  #gridEvent {
+    /* 5 columns for larger screens */
+  }
+  #gridEvent .grid-sizer {
+    width: calc(100%/6);
+  }
+  #gridEvent .item {
+    width: calc(100%/6);
+  }
+  #gridEvent .item.w2 {
+    width: calc(200%/6);
+  }
+}
+#gridEvent .item {
+  cursor: pointer;
+  overflow: hidden;
+}
+#gridEvent .item img {
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#gridEvent .item:hover img {
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
+}
+
 .contact {
   padding-top: 60px;
 }
@@ -10330,6 +10383,9 @@ article .image .linkImage {
 }
 .webtv-ba .grid {
   padding-top: 0px;
+}
+.webtv-ba .grid .item:hover {
+  cursor: pointer;
 }
 .webtv-ba .grid-wrapper {
   margin-top: 0px;

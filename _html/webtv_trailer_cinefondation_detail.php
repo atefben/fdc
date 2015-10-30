@@ -15,7 +15,7 @@
               </div>
             </div>
         </div>
-                <div class="item theme1 date1 date theme shadow-bottom video">
+        <div class="item theme1 date1 date theme shadow-bottom video">
           <img src="http://dummyimage.com/640x404/ddd/fff.png" srcset="http://dummyimage.com/640x404/ddd/fff.png 1x, http://dummyimage.com/1280x808/ddd/fff.png 2x" alt="">
           <div class="info">
               <div class="picto"></div>

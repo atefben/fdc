@@ -375,6 +375,9 @@
 	
 	.grid{
 		padding-top: 0px;
+    .item:hover{
+      cursor: pointer;
+    }
 	}
 	.grid-wrapper{
 		margin-top: 0px;

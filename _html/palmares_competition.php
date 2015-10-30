@@ -27,7 +27,7 @@
     <div id="main" class="list-article palmares-list loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/palmares/cover-bandeau-palmares.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Le Palmares</h2>
+               <h2 class="title title-list-header">Le Palmarès</h2>
            </div>
            <ul class="sub-nav-list">
                <li><a href="palmares_competition.php" class="active ajax">Compétition</a></li>
