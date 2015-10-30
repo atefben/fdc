@@ -538,41 +538,49 @@
       <div id="featured-movies">
         <div id="slider-movies" class="owl-carousel">
           <div>
-            <video preload>
-              <source src="img/featured-movies/sample.webm" type="video/webm">
-              <source src="img/featured-movies/sample.mp4" type="video/mp4">
-            </video>
-            <div class="info">
-              <div class="vCenter">
-                <div class="vCenterKid">
-                  <span class="category">Compétition</span>
-                  <h2>Sils Maria</h2>
-                  <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+            <div class="video">
+              <video preload>
+                <source src="img/featured-movies/sample.webm" type="video/webm">
+                <source src="img/featured-movies/sample.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="textVideo">
+              <div class="info">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <span class="category">Compétition</span>
+                    <h2>Sils Maria</h2>
+                    <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="links">
-              <a href="#" class="seances">Voir les séances</a>
-              <a href="#" class="all">Tous les films</a>
+              <div class="links">
+                <a href="#" class="seances">Voir les séances</a>
+                <a href="#" class="all">Tous les films</a>
+              </div>
             </div>
           </div>
           <div>
-            <video preload>
-              <source src="img/featured-movies/sample.webm" type="video/webm">
-              <source src="img/featured-movies/sample.mp4" type="video/mp4">
-            </video>
-            <div class="info">
-              <div class="vCenter">
-                <div class="vCenterKid">
-                  <span class="category">Compétition</span>
-                  <h2>Sils Maria</h2>
-                  <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+            <div class="video">
+              <video preload>
+                <source src="img/featured-movies/sample.webm" type="video/webm">
+                <source src="img/featured-movies/sample.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="textVideo">
+              <div class="info">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <span class="category">Compétition</span>
+                    <h2>Sils Maria</h2>
+                    <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="links">
-              <a href="#" class="seances">Voir les séances</a>
-              <a href="#" class="all">Tous les films</a>
+              <div class="links">
+                <a href="#" class="seances">Voir les séances</a>
+                <a href="#" class="all">Tous les films</a>
+              </div>
             </div>
           </div>
         </div>

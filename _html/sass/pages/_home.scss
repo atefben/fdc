@@ -1109,6 +1109,7 @@
 // =========================
 
 #featured-movies {
+  background-color: $black;
   overflow: hidden;
   
   #slider-movies, .owl-stage-outer, .owl-stage, .owl-item, .owl-item>div {
@@ -1155,9 +1156,12 @@
     display: none;
   }
 
+  .video {
+    position: absolute;
+  }
+
   video {
     display: block;
-    left: 0;
     position: absolute;
   }
 
@@ -1243,6 +1247,13 @@
         }
       }
     }
+  }
+
+  .textVideo {
+    height: 100%;
+    z-index: 2;
+    width: 100%;
+    top: 0;
   }
 
   .info {
@@ -1487,6 +1498,7 @@
     height: 100%;
     width: 100%;
     z-index: 0;
+    top: 0;
     @include transition(all 0.8s $smoothTransition);
 
     img {

@@ -6755,6 +6755,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 
 #featured-movies {
+  background-color: #141414;
   overflow: hidden;
 }
 #featured-movies #slider-movies, #featured-movies .owl-stage-outer, #featured-movies .owl-stage, #featured-movies .owl-item, #featured-movies .owl-item > div {
@@ -6793,9 +6794,11 @@ div.chocolat-wrapper .chocolat-close {
 #featured-movies .owl-nav {
   display: none;
 }
+#featured-movies .video {
+  position: absolute;
+}
 #featured-movies video {
   display: block;
-  left: 0;
   position: absolute;
 }
 #featured-movies .owl-item:before {
@@ -6877,6 +6880,12 @@ div.chocolat-wrapper .chocolat-close {
 #featured-movies .links a.all:after {
   background: url("../img/svg/arrow-right-white.svg") no-repeat center;
   background-size: 15px;
+}
+#featured-movies .textVideo {
+  height: 100%;
+  z-index: 2;
+  width: 100%;
+  top: 0;
 }
 #featured-movies .info {
   height: 100%;
@@ -7121,6 +7130,7 @@ div.chocolat-wrapper .chocolat-close {
   height: 100%;
   width: 100%;
   z-index: 0;
+  top: 0;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);

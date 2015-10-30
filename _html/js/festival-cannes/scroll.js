@@ -146,10 +146,10 @@ $(document).ready(function() {
     
       scrollPos += (sc - scrollPos) * scrollEase;
 
-        
-       // translate Element 2 with pos / 2 (half speed)
+
+      // translate Element 2 with pos / 2 (half speed)
     
-      transform1 = 'translate3d(0px, ' + (scrollPos/division) + 'px, 0px)';
+      transform1 = 'translate3d(0px, ' + ((scrollPos + 100)/division) + 'px, 0px)';
 
       el1.style.webkitTransform = transform1;
       el1.style.MozTransform = transform1;
@@ -190,6 +190,15 @@ $(document).ready(function() {
         'division': 6,
         'mov': 4
       });
+
+      parallaxElements.push({
+        'el1': '#slider-movies .owl-item.active .video',
+        'el2': '#slider-movies .owl-item.active .textVideo',
+        'positionTop': $('#slider-movies').offset().top,
+        'division': 6,
+        'mov': 4
+      });
+
     }
 
     if($('.webtv-live').length) {
