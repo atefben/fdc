@@ -15,6 +15,7 @@ footer {
   background-color: $black;
   padding: 40px 0 0 0;
   position: relative;
+  z-index: 2;
 
   &:after {
     background-color: $black;

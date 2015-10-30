@@ -1310,6 +1310,8 @@
   background-color: $black;
   overflow: hidden;
   padding: 70px 0;
+  position: relative;
+  z-index: 2;
 
   &.white {
     background-color: #fff;
@@ -1417,6 +1419,14 @@
   overflow: hidden;
   position: relative;
 
+  .textTop {
+    top: 370px;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
   #slider-prefooter {
     position: absolute;
     top: 0;
@@ -1435,7 +1445,16 @@
 
     .owl-item {
       width: 100%;
+
+      /*&.center {
+        .imgSlide {
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+      }*/
     }
+
   }
 
   .imgSlide {

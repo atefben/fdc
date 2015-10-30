@@ -1,11 +1,5 @@
 $(document).ready(function() {
 
-  // vars for parallax
-  var scrollTarget = 0,
-      scrollPos = 0,
-      scrollEase = 0.1;
-      scrollEaseLimit = 0.1;
-
   // Events on scroll
   // =========================
   var lastScrollTop = 0;
@@ -125,34 +119,33 @@ $(document).ready(function() {
 
   // ---------- PARALLAX ------------
 
-  var el1 = $('#slider .center .img')[0],
-      el2 = $('#slider .center .info')[0];
+  // vars for parallax
+  var scrollTarget = 0,
+      scrollPos = 0,
+      scrollEase = 0.05;
+      scrollEaseLimit = 0.1;
 
-  // launch RAF
-  //update();
-
-
-  function render(){
-    
+  function render(el1, el2, start, division){
     // process only if value is not reached
-    
-    if (scrollTarget !== scrollPos){
+    var sc = scrollTarget - start;
+
+    if (sc !== scrollPos && scrollTarget > start - $(window).height()){
         
       // limit easing
         
-      if (Math.abs(scrollPos - scrollTarget) < scrollEaseLimit){
-        scrollPos = scrollTarget;
+      if (Math.abs(scrollPos - sc) < scrollEaseLimit){
+        scrollPos = sc;
       }
         
       // increment pos with easing
     
-      scrollPos += (scrollTarget - scrollPos) * scrollEase;
+      scrollPos += (sc - scrollPos) * scrollEase;
 
         
        // translate Element 2 with pos / 2 (half speed)
     
-      transform1 = 'translate3d(0px, ' + (scrollPos/2) + 'px, 0px)';
-   
+      transform1 = 'translate3d(0px, ' + (scrollPos/division) + 'px, 0px)';
+
       el1.style.webkitTransform = transform1;
       el1.style.MozTransform = transform1;
       el1.style.msTransform = transform1;
@@ -172,9 +165,49 @@ $(document).ready(function() {
     }
   }
 
-  // function update(){
-  //   render();
-  //   window.requestAnimFrame(update);
-  // }
+  var parallaxElements = [];
+  function initParallaxElements() {
+
+    // home prefooter
+    parallaxElements.push({
+      'el1': '#prefooter .owl-item.center .imgSlide',
+      'el2': '.textTop',
+      'positionTop': $('#slider-prefooter').offset().top
+    });
+
+    // home slider
+    // parallaxElements.push({
+    //   'selector': '#slider .owl-item:not(.cloned)',
+    //   'el1': '.img',
+    //   'el2': '.info',
+    //   'positionTop': $('#slider').offset().top
+    // });
+  }
+
+  var hW = $(window).height();
+
+  setTimeout(function() {
+    initParallaxElements();
+
+    // launch RAF
+    update();
+  }, 500);
+
+
+  function update(){
+    for(var i=0; i<parallaxElements.length; i++) {
+      if(scrollTarget > (parallaxElements[i].positionTop - hW) && scrollTarget < parallaxElements[i].positionTop + hW) {
+        $(parallaxElements[i].el2).css('position', 'fixed');
+        //$(parallaxElements[i].el1).css('position', 'fixed');
+        render($(parallaxElements[i].el1)[0], $(parallaxElements[i].el2)[0], parallaxElements[i].positionTop, 1.3); 
+      } else {
+        $(parallaxElements[i].el2).css('position', '');
+        //$(parallaxElements[i].el1).css('position', '');
+      }
+    }
+    window.requestAnimFrame(update);
+  }
+
+
 
 });

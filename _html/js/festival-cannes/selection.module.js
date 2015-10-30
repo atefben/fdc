@@ -34,7 +34,7 @@ $(document).ready(function() {
             setTimeout(function() {
               $('#selection').addClass('open');
               tr = $('#selection .owl-stage').css('transform').substr(19, 3);
-            }, 500);
+            }, 700);
           }
         });
 

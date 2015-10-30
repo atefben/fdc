@@ -23,6 +23,7 @@ function setHeightSlider() {
 
   $('#sliderWrapper').height($(window).height() - $('header').height());
   $('#prefooter').css('height', $(window).height() - 90 + "px");
+  $('#prefooter .imgSlide').width($(window).width());
 }
 
 $(document).ready(function() {

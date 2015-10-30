@@ -678,14 +678,16 @@
       </div>
       <div id="prefooter">
         <div class="container">
-          <h2>Vivez le festival de Cannes</h2>
-          <h3 class="subtitle">Suivez le Festival où que vous soyez</h3>
-          <ul>
-            <li><a href="https://www.youtube.com/user/TVFestivaldeCannes" class="active" target="_blank">TV Festival de Cannes</a></li>
-            <li><a href="#">Applications Mobiles</a></li>
-            <li><a href="http://www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique officielle</a></li>
-            <li><a href="#">Publications</a></li>
-          </ul>
+          <div class="textTop">
+            <h2>Vivez le festival de Cannes</h2>
+            <h3 class="subtitle">Suivez le Festival où que vous soyez</h3>
+            <ul>
+              <li><a href="https://www.youtube.com/user/TVFestivaldeCannes" class="active" target="_blank">TV Festival de Cannes</a></li>
+              <li><a href="#">Applications Mobiles</a></li>
+              <li><a href="http://www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique officielle</a></li>
+              <li><a href="#">Publications</a></li>
+            </ul>
+          </div>
           <div id="slider-prefooter" class="owl-carousel">
             <div class="imgSlide active bottom">
               <div class="vCenter">

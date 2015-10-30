@@ -3769,6 +3769,7 @@ footer {
   background-color: #141414;
   padding: 40px 0 0 0;
   position: relative;
+  z-index: 2;
 }
 footer:after {
   background-color: #141414;
@@ -5565,10 +5566,14 @@ div.chocolat-wrapper .chocolat-close {
   top: 230px;
   width: 100%;
   z-index: 14;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #selection.open {
   max-height: 405px;
@@ -6949,6 +6954,8 @@ div.chocolat-wrapper .chocolat-close {
   background-color: #141414;
   overflow: hidden;
   padding: 70px 0;
+  position: relative;
+  z-index: 2;
 }
 .push-container.white {
   background-color: #fff;
@@ -7056,6 +7063,13 @@ div.chocolat-wrapper .chocolat-close {
   overflow: hidden;
   position: relative;
 }
+#prefooter .textTop {
+  top: 370px;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
 #prefooter #slider-prefooter {
   position: absolute;
   top: 0;
@@ -7072,6 +7086,13 @@ div.chocolat-wrapper .chocolat-close {
 }
 #prefooter #slider-prefooter .owl-item {
   width: 100%;
+  /*&.center {
+    .imgSlide {
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }*/
 }
 #prefooter .imgSlide {
   text-align: center;
