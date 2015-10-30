@@ -168,12 +168,14 @@ $(document).ready(function() {
   var parallaxElements = [];
   function initParallaxElements() {
 
-    // home prefooter
-    parallaxElements.push({
-      'el1': '#prefooter .owl-item.center .imgSlide',
-      'el2': '.textTop',
-      'positionTop': $('#slider-prefooter').offset().top
-    });
+    if($('.home').length) {
+      // home prefooter
+      parallaxElements.push({
+        'el1': '#prefooter .owl-item.center .imgSlide',
+        'el2': '.textTop',
+        'positionTop': $('#slider-prefooter').offset().top
+      });
+    }
 
     // home slider
     // parallaxElements.push({
@@ -190,7 +192,10 @@ $(document).ready(function() {
     initParallaxElements();
 
     // launch RAF
-    update();
+    if(parallaxElements.length != 0) {
+      update();
+    }
+    
   }, 500);
 
 
