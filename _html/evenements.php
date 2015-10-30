@@ -25,29 +25,30 @@
     <div id="main" class="all-articles grid evenement loading">
       <h2 class="title">Les évènements</h2>
       <div class="filters">
-        <div id="date" class="filter">
-          <span class="label">Filtrer par :</span>
-          <span class="select">
-            <span class="active" data-filter="all">Date</span>
-            <span data-filter="date1">Date 1</span>
-            <span data-filter="date">Date 2</span>
-          </span>
+          <div id="theme" class="filter">
+            <span class="label">Thêmes :</span>
+            <span class="select">
+              <span class="active" data-filter="all">Tous</span>
+              <span data-filter="press">Conférence de Presse</span>
+              <span data-filter="steps">Montée des marches</span>
+            </span>
+          </div>
+          <div id="format" class="filter">
+            <span class="label">Formats :</span>
+            <span class="select">
+              <span class="active" data-filter="all">Tous</span>
+              <span data-filter="photo">Photo</span>
+              <span data-filter="video">Vidéo</span>
+              <span data-filter="audio">Audio</span>
+              <span data-filter="article">Article</span>
+            </span>
+          </div>
         </div>
-        <div id="theme" class="filter">
-          <span class="select">
-            <span class="active" data-filter="all">Thême</span>
-            <span data-filter="theme1">Thême 1</span>
-            <span data-filter="theme">Thême 2</span>
-            <span data-filter="theme">Thême 3</span>
-            <span data-filter="theme">Thême 4</span>
-          </span>
-        </div>
-      </div>
       <div id="gridEvent" class="grid-wrapper" data-type="evenement">
         <div class="grid-sizer"></div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -56,7 +57,7 @@
         </div>
          <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement2.jpg' /></a><a href="#" class="read-later"><span>Marco Bellocchio</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement2.jpg' /></a>  <span>Marco Bellocchio</span></a></div>
             <div class="info">
               <a href="#" class="category">Leçon de cinéma</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Marco Bellocchio</a></h2>
@@ -65,7 +66,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement3.php"><img src='img/evenements/evenement3.jpg' /></a><a href="#" class="read-later"><span>Le Rendez-vous Européen</span></a></div>
+            <div class="img"> <a href="evenement3.php"><img src='img/evenements/evenement3.jpg' /></a> <span>Le Rendez-vous Européen</span></a></div>
             <div class="info">
               <a href="#" class="category">Rendez-vous européen</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Rendez-vous européen</a></h2>
@@ -74,7 +75,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -83,7 +84,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -92,7 +93,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -101,7 +102,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -110,7 +111,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -119,7 +120,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -128,7 +129,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -137,7 +138,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -146,7 +147,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -155,7 +156,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -164,7 +165,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -173,7 +174,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
@@ -182,7 +183,7 @@
         </div>
         <div class="item theme1 date1 date theme article evenement">
           <article class="article evenement">
-            <div class="img"><span class="picto"></span><a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="#" class="read-later"><span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
+            <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <span>Enragés, polar hybride d'Éric Hannezo</span></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
               <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>

@@ -12,6 +12,7 @@
 // =========================
 
 .evenement {
+  padding-bottom:1px;
   #gridEvent{
     padding-top: 60px;
   }
@@ -62,16 +63,21 @@
 
 //single evenement//
 .single-evenement{
+
   .quote{
-        padding-top: 60px;
-       width: auto;
+    padding-top: 60px;
+    width: auto;
+    blockquote{
+      font-size: 1.5rem !important;
+      font-family: $CamphorItalic;
+    }
   }
   .share{
     padding-bottom: 0px;
   }
   .text{
     padding-top: 60px;
-    width: 730px;
+    width: 634px;
     a{
       color: #c8a461;
     }
@@ -90,7 +96,7 @@
     padding-top: 40px;
   }
    .small-container {
-    width: 730px;
+    width: 634px;
     margin: 0 auto;
   }
   .chapeau{

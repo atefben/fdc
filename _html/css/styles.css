@@ -10718,6 +10718,9 @@ article .image .linkImage {
   color: #c8a461;
 }
 
+.evenement {
+  padding-bottom: 1px;
+}
 .evenement #gridEvent {
   padding-top: 60px;
 }
@@ -10769,12 +10772,16 @@ article .image .linkImage {
   padding-top: 60px;
   width: auto;
 }
+.single-evenement .quote blockquote {
+  font-size: 1.5rem !important;
+  font-family: "Camphor W01 Italic";
+}
 .single-evenement .share {
   padding-bottom: 0px;
 }
 .single-evenement .text {
   padding-top: 60px;
-  width: 730px;
+  width: 634px;
 }
 .single-evenement .text a {
   color: #c8a461;
@@ -10793,7 +10800,7 @@ article .image .linkImage {
   padding-top: 40px;
 }
 .single-evenement .small-container {
-  width: 730px;
+  width: 634px;
   margin: 0 auto;
 }
 .single-evenement .chapeau {
