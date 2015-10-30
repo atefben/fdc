@@ -7,6 +7,7 @@
 // 5. Webtv
 // 6. Jury
 // 7. Selection officielle
+// 8. Events
 // =========================
 
 
@@ -595,4 +596,40 @@
     }
   }
 
+}
+
+// 8. Grid evenement
+// ======================= 
+
+#gridEvent{
+  @media screen and (min-width: 1600px) {
+    /* 5 columns for larger screens */
+    .grid-sizer { width:calc(100%/5); }
+    .item { width:calc(100%/5); }
+    .item.w2 { width: calc(200%/5); }
+  }
+
+  @media screen and (min-width: 1920px) {
+    /* 5 columns for larger screens */
+    .grid-sizer { width: calc(100%/6); }
+    .item { width: calc(100%/6); }
+    .item.w2 { width: calc(200%/6); }
+  }
+
+  .item {
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+      @include transform(translateZ(0));
+      @include transition(all 4s $linear);
+    }
+
+    &:hover {
+      img {
+        @include transition(all 8s $linear);
+        @include transform(scale(1.05) translateZ(0));
+      }
+    }
+  }
 }

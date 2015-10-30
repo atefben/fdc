@@ -39,7 +39,7 @@
       <div class="container-jurys">
         <div class="container container-list">
           <section class="categorie-items contain-jury">
-              <a href="">
+              <a href="artist_page.php">
                 <div class="photo-jury" style="background-image:url(img/jurys/photo-jury2.jpg)">
                 </div>
               </a>
@@ -62,7 +62,7 @@
               <div id="gridJurys" class="grid-wrapper">
                 <div class="grid-sizer"></div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
@@ -71,7 +71,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-2.jpg" alt="">
                     <div class="legend">
                       <span class="name">Sofia Cappola</span>
@@ -80,7 +80,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-3.jpg" alt="">
                     <div class="legend">
                       <span class="name">Leila hatami</span>
@@ -89,7 +89,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-4.jpg" alt="">
                     <div class="legend">
                       <span class="name">Do-Yeaon Jeon</span>
@@ -98,7 +98,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
@@ -107,7 +107,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
@@ -116,7 +116,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
@@ -125,7 +125,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>

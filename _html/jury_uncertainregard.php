@@ -45,7 +45,7 @@
               </a>
               <div class="contain-descript">
                 <h3 class="descript-title">Président du jury</h3>
-                <a href=""><h2 class="descript-name">Jane camion</h2></a>
+                <a href="artist_page.php"><h2 class="descript-name">Jane camion</h2></a>
                 <span class="descript-rank">Réalisatrice, Scénariste, Productrice</span>
                 <p>
                   La réalisatrice, productrice et scénariste néo-zélandaise Jane Campion fait partie des cinéastes majeurs de notre temps. Elle est la seule femme à avoir reçu la Palme d’or à Cannes (1993) et la deuxième sur quatre à avoir été nommée dans la catégorie Meilleure Réalisation aux Oscars (1994), pour "La Leçon de piano", également Oscar du Meilleur Scénario. </p>
@@ -62,7 +62,7 @@
               <div id="gridJurys" class="grid-wrapper">
                 <div class="grid-sizer"></div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
@@ -71,7 +71,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-2.jpg" alt="">
                     <div class="legend">
                       <span class="name">Sofia Cappola</span>
@@ -80,7 +80,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-3.jpg" alt="">
                     <div class="legend">
                       <span class="name">Leila hatami</span>
@@ -89,7 +89,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-4.jpg" alt="">
                     <div class="legend">
                       <span class="name">Do-Yeaon Jeon</span>
@@ -98,7 +98,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
@@ -107,7 +107,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
@@ -116,7 +116,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
@@ -125,7 +125,7 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="#">
+                  <a href="artist_page.php">
                     <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
