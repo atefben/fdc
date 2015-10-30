@@ -11809,6 +11809,10 @@ article .image .linkImage {
   font-size: 0.88rem;
   letter-spacing: 2px;
   padding-top: 41px;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .manual .content-manual .contain-section .title-section .logo-title {
   width: 21px;
@@ -11828,6 +11832,10 @@ article .image .linkImage {
 }
 .manual .content-manual .contain-section .title-section:hover {
   color: #c8a461;
+  cursor: pointer;
+}
+.manual .content-manual .contain-section .fa:hover {
+  cursor: pointer;
 }
 .manual .content-manual .contain-section .descrip-section p {
   width: 741px;

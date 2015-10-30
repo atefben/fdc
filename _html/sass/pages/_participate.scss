@@ -629,6 +629,7 @@
       text-align: center;
     }
   }
+  
   .content-manual{
     background-color: #fff;
     border-top: 1px solid #e0e0e0;
@@ -648,6 +649,8 @@
         font-size: 0.88rem;
         letter-spacing: 2px;
         padding-top: 41px;
+        @include transition(all 0.9s $linear);
+         
         .logo-title{
           width: 21px;
           height: 21px;
@@ -667,6 +670,10 @@
       }  
       .title-section:hover{
         color:#c8a461;
+        cursor: pointer;
+      }
+      .fa:hover{
+        cursor: pointer;
       }
       .descrip-section{
         p{
