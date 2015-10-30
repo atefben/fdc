@@ -190,7 +190,7 @@ $(document).ready(function() {
       parallaxElements.push({
         'el1': '#slider .owl-item.center .img-container',
         'el2': '#slider .owl-item.center .info',
-        'positionTop': $('#slider').offset().top - $header.height(),
+        'positionTop': $('#slider').offset().top - $header.height() + 100,
         'division': 6,
         'mov': 4
       });
