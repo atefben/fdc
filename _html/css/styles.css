@@ -10024,7 +10024,7 @@ article .image .linkImage {
   height: 372px !important;
 }
 .palmares-list .bandeau-list-img .title-list-header {
-  padding-top: 155px !important;
+  padding-top: 172px !important;
 }
 .palmares-list .categorie-items article .contain-article {
   vertical-align: text-top;
@@ -11132,7 +11132,7 @@ article .image .linkImage {
   font-size: 1.375rem;
   padding-bottom: 40px;
   margin-bottom: 0px;
-  font-weight: 300;
+  font-weight: normal;
 }
 .artist .title-art-artist {
   font-family: "Playfair Display";
@@ -11142,7 +11142,7 @@ article .image .linkImage {
   margin-bottom: 50px;
   padding-top: 45px;
   border-top: 1px solid #dfdfdf;
-  font-weight: 300;
+  font-weight: normal;
 }
 .artist .paragraph {
   color: #666;
