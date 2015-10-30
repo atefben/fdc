@@ -3154,6 +3154,7 @@ html {
 }
 
 body {
+  background-color: #141414;
   font-family: "Camphor W01 Regular";
   font-size: 16px;
   overflow-x: hidden;
@@ -5727,6 +5728,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 
 #prehome-container {
+  background-color: #fff;
   min-height: 600px;
   position: relative;
 }
