@@ -48,6 +48,7 @@
             that.settings.images.push({
                 title  : $(this).attr('title'),
                 src    : $(this).attr('href'),
+                credit : $(this).data('credit'),
                 height : false,
                 width  : false
             });
@@ -135,6 +136,7 @@
             var fitting;
             this.settings.currentImage = i;
             this.description();
+            this.credit();
             this.pagination();
             this.arrows();
 
@@ -279,6 +281,11 @@
                 $([this.elems.left[0],this.elems.right[0]])
                     .removeClass('active');
             }
+        },
+
+        credit: function() {
+            var that = this;
+            $('.chocolat-bottom .credit').html(that.settings.images[that.settings.currentImage].credit);
         },
 
         description : function() {
