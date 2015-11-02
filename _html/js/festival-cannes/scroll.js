@@ -179,7 +179,7 @@ $(document).ready(function() {
         'el1': '#prefooter .owl-item.center .imgSlide',
         'el2': '.textTop',
         'positionTop': $('#slider-prefooter').offset().top,
-        'division': 4,
+        'division': 6,
         'mov': 2
       });
 

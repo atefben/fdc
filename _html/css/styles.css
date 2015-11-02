@@ -4768,6 +4768,9 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player.bigger .wave-container {
   height: 100%;
 }
+.audio-player.bigger .fullscreen {
+  bottom: 49px;
+}
 .audio-player.pause .playpause {
   background-image: url("../img/svg/pause.svg");
   background-size: 15px;
@@ -5811,7 +5814,7 @@ div.chocolat-wrapper .chocolat-close {
   left: 0;
   position: absolute;
   top: 0;
-  width: 25%;
+  width: 12%;
 }
 #sliderWrapper .owl-next {
   font-size: 0;
@@ -5819,7 +5822,7 @@ div.chocolat-wrapper .chocolat-close {
   right: 0;
   position: absolute;
   top: 0;
-  width: 25%;
+  width: 12%;
 }
 #sliderWrapper .owl-dots {
   bottom: 8%;
@@ -7130,6 +7133,7 @@ div.chocolat-wrapper .chocolat-close {
   height: 100%;
 }
 #prefooter #slider-prefooter .owl-stage {
+  cursor: default;
   transition: all 1.2s cubic-bezier(0.86, 0, 0.07, 1) !important;
 }
 #prefooter #slider-prefooter .owl-item {

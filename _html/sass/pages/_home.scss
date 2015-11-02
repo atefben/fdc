@@ -75,7 +75,7 @@
     left: 0;
     position: absolute;
     top: 0;
-    width: 25%;
+    width: 12%;
   }
 
   .owl-next {
@@ -84,7 +84,7 @@
     right: 0;
     position: absolute;
     top: 0;
-    width: 25%;
+    width: 12%;
   }
 
   .owl-dots {
@@ -1478,6 +1478,7 @@
     }
 
     .owl-stage {
+      cursor: default;
       transition: all 1.2s $easeInOutQuint!important;
     }
 
