@@ -3591,10 +3591,10 @@ header #logo-wrapper #search {
   position: relative;
   margin-top: 47px;
   width: 63px;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #logo-wrapper #search a {
   background: url("../img/svg/search.svg") center no-repeat;
@@ -3602,6 +3602,9 @@ header #logo-wrapper #search a {
   display: block;
   height: 100%;
   width: 100%;
+}
+header #logo-wrapper #search:hover {
+  border-color: #fff;
 }
 header #navigation {
   background-color: #141414;

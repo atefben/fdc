@@ -11,9 +11,9 @@ $(document).ready(function() {
      $('#live .play').on('click', function(e) {
        e.preventDefault();
        $('#live').addClass('on');
-       $('#live .img').addClass('rePosition');
-       $('#live').data('height', $('#live').height()).height($(window).height() - 91).css('padding-top', '91px');
-       $('body').css('padding-top', '91px');
+       //$('#live .img').addClass('rePosition');
+       $('#live').data('height', $('#live').height()).height($(window).height() - 91);
+       $('#main').css('padding-top', '91px');
        setTimeout(function() {
           $('header').addClass('sticky');
         }, 800);

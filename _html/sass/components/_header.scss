@@ -323,7 +323,7 @@ header {
       position: relative;
       margin-top: 47px;
       width: 63px;
-      @include transition(all 0.5s $smoothTransition);
+      @include transition(all 0.9s $smoothTransition);
 
       a {
         background: url('../img/svg/search.svg') center no-repeat;
@@ -331,6 +331,10 @@ header {
         display: block;
         height: 100%;
         width: 100%;
+      }
+
+      &:hover {
+        border-color: #fff;
       }
     }
   }
