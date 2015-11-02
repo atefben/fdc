@@ -16,10 +16,6 @@ $(document).ready(function() {
         $header.addClass('sticky');
       }
     } else {
-      /*if(s < 2000 && (lastScrollTop - s) > 150) {
-        $('header').removeClass('sticky');
-        $('body').css('padding-top', '230px');
-      }*/
       if(($('#prehome-container').length == 0 && s < 600)) {
         $header.removeClass('sticky');
         $('body').css('padding-top', '230px');

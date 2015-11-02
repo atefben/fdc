@@ -133,6 +133,7 @@ $(document).ready(function() {
           $('.read-more').html('Passer au <strong>jour précédent</strong>').addClass('prevDay');
           setTimeout(function() {
             $('#shd').addClass('show');
+            $(window).trigger('resize');
           }, 500);
         }
       });

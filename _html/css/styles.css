@@ -5025,6 +5025,9 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player.full .info, .audio-player.full .picto {
   display: none;
 }
+.audio-player.full .fullscreen {
+  bottom: 43px;
+}
 .audio-player.full #channels-audio {
   height: 185px;
   width: 100%;
@@ -7827,7 +7830,7 @@ article .image .linkImage {
   background-size: 15px;
 }
 .single-article .nav.prev:hover {
-  border-color: #999;
+  border-color: #9E9E9E;
 }
 .single-article .nav.prev:hover:after {
   opacity: 1;
