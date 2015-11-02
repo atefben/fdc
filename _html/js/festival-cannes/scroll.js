@@ -128,12 +128,14 @@ $(document).ready(function() {
       scrollPos = 0,
       scrollEase = 0.1;
       scrollEaseLimit = 0.1;
+  
+  var hW = $(window).height();
 
   function render(el1, el2, start, division, mov){
     // process only if value is not reached
     var sc = scrollTarget - start;
 
-    if (sc !== scrollPos && scrollTarget > (start - $(window).height() * 2)){
+    if (sc !== scrollPos && scrollTarget > (start - hW * 2)){
         
       // limit easing
         
@@ -221,8 +223,6 @@ $(document).ready(function() {
       });
     }
   }
-
-  var hW = $(window).height();
 
   // on resize, update positionTop
   $(window).resize(function() {
