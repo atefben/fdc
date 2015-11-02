@@ -4873,18 +4873,18 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player .image {
   background-size: cover;
   background-position: center;
-  left: -3%;
-  height: 106%;
+  left: 0;
+  height: 100%;
   position: absolute;
-  top: -3%;
-  width: 106%;
+  top: 0;
+  width: 100%;
   z-index: 0;
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-filter: blur(7px);
+  filter: blur(7px);
 }
 .audio-player:after {
   background: url("../img/svg/loading.svg");
