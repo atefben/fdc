@@ -14,6 +14,7 @@ $(document).ready(function() {
        //$('#live .img').addClass('rePosition');
        $('#live').data('height', $('#live').height()).height($(window).height() - 91);
        $('#main').css('padding-top', '91px');
+       $('body').css('padding-top', 0);
        setTimeout(function() {
           $('header').addClass('sticky');
         }, 800);

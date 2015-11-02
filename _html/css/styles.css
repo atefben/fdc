@@ -3335,6 +3335,7 @@ header.sticky #sticky-user .user-nav {
 header.sticky #sticky-user .user-nav a.search {
   background: url("../img/svg/search.svg") no-repeat left 1px;
   background-size: 15px;
+  margin-right: 0;
 }
 header.sticky #logo-wrapper {
   height: 50px;
