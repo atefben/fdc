@@ -100,6 +100,7 @@ $(document).ready(function() {
         $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
         setTimeout(function() {
           $('header').addClass('sticky');
+          $('body').css('padding-top', 0);
         }, 800);
         
       });

@@ -214,6 +214,16 @@ $(document).ready(function() {
         'mov': 3
       });
     }
+
+    if($('.single-movie').length) {
+      parallaxElements.push({
+        'el1': '.main-image .img',
+        'el2': '#plx',
+        'positionTop': $('.main-image').offset().top - $header.height(),
+        'division': 6,
+        'mov': 15
+      });
+    }
   }
 
   var hW = $(window).height();

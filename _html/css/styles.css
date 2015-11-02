@@ -8204,9 +8204,10 @@ article .image .linkImage {
   right: -85px;
 }
 .single-movie .main-image {
-  background-size: cover;
+  background-color: #141414;
   height: 620px;
   left: 0;
+  overflow: hidden;
   position: absolute;
   top: 0;
   width: 100%;
@@ -8229,6 +8230,15 @@ article .image .linkImage {
   .single-movie .main-image {
     height: 360px;
   }
+}
+.single-movie .main-image .img {
+  background-size: cover;
+  display: block;
+  height: 105%;
+  width: 100%;
+  top: -5%;
+  left: 0;
+  position: absolute !important;
 }
 .single-movie .main-image .trailer {
   background-color: #000;

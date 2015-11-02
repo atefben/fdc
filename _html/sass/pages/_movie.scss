@@ -370,9 +370,10 @@
   }
 
   .main-image {
-    background-size: cover;
+    background-color: $black;
     height: 620px;
     left: 0;
+    overflow: hidden;
     position: absolute;
     top: 0;
     width: 100%;
@@ -388,6 +389,16 @@
 
     @include breakpoint(1024px) {
       height: 360px;
+    }
+
+    .img {
+      background-size: cover;
+      display: block;
+      height: 105%;
+      width: 100%;
+      top: -5%;
+      left: 0;
+      position: absolute!important;
     }
 
     .trailer {
