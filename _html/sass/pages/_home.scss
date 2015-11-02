@@ -1463,6 +1463,7 @@
     left: 0;
     right: 0;
     margin: 0 auto;
+    @include transform(translate3d(0px, -370px, 0px));
   }
 
   #slider-prefooter {
@@ -1502,6 +1503,7 @@
     width: 100%;
     z-index: 0;
     top: 0;
+    @include transform(translate3d(0px, -70px, 0px));
     @include transition(all 0.8s $smoothTransition);
 
     img {
