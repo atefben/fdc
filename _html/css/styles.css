@@ -4439,7 +4439,7 @@ div.chocolat-wrapper .share {
 }
 div.chocolat-wrapper .share:after {
   background: url("../img/svg/share.svg") no-repeat center;
-  background-size: 25px;
+  background-size: 22px;
   content: '';
   display: block;
   height: 100%;
@@ -4473,7 +4473,7 @@ div.chocolat-wrapper .chocolat-left {
 }
 div.chocolat-wrapper .chocolat-left:after {
   background: url("../img/svg/arrow-left-white.svg") no-repeat center;
-  background-size: 15px;
+  background-size: 18px;
   content: '';
   display: block;
   height: 100%;
@@ -4505,7 +4505,7 @@ div.chocolat-wrapper .chocolat-right {
 }
 div.chocolat-wrapper .chocolat-right:after {
   background: url("../img/svg/arrow-right-white.svg") no-repeat center;
-  background-size: 15px;
+  background-size: 18px;
   content: '';
   display: block;
   height: 100%;

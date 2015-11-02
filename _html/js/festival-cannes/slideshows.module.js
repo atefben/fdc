@@ -123,7 +123,7 @@ $('body').on('click', '.chocolat-image', function() {
   }, 200);
 
   setTimeout(function() {
-    $('.chocolat-wrapper .chocolat-img').css('transition', 'none');
+    $('.chocolat-wrapper .chocolat-img').css('transition', 'all 900ms cubic-bezier(0.165, 0.435, 0.000, 0.935)');
     // change url hash
     window.location.hash = $that.attr('id');
     $('body').addClass('fixed');

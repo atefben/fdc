@@ -29,6 +29,7 @@
         this._defaults = defaults;
         this.elems     = {};
         this.element   = element;
+        this.timeClock = '';
 
         this._cssClasses = [
             'chocolat-open',
