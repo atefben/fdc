@@ -13,7 +13,8 @@ $(document).ready(function() {
       $header = $('header');
 
   if(parseInt(sessionStorage.scrolltop) > 10) {
-    $('#logo-wrapper, #logo img, #sticky-user').css('transition', 'none');
+    $('#logo-wrapper, #logo img, #sticky-user, header #search').css('transition', 'none');
+    $('#search').hide();
     $('#sticky-user').css('transition-delay', '0');
     $('p.stick').addClass('noTrans');
     $header.addClass('sticky');
@@ -34,9 +35,10 @@ $(document).ready(function() {
 
   setTimeout(function() {
     $('#main, footer').removeClass('loading');
+    $('#search').show();
     cl.hide();
 
-    $('#logo-wrapper, #logo img, #sticky-user').css('transition', '');
+    $('#logo-wrapper, #logo img, #sticky-user, header #search').css('transition', '');
     $('p.stick').removeClass('noTrans');
   }, 500);
 

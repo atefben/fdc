@@ -19,10 +19,11 @@ header {
   }
 
   #sticky-user {
+    background: $black;
     font-size: 0.750rem;
     opacity: 0;
-    visibility: hidden;
     position: absolute;
+    pointer-events: none;
     bottom: 18px;
     right: 0;
     @include transform(translate3d(0, 5px, 0));
@@ -49,6 +50,7 @@ header {
       visibility: visible;
       @include transform(translateY(0));
       float: right;
+      pointer-events: initial;
       margin-top: 18px;
       transition-delay: 0.5s;
 
@@ -325,7 +327,7 @@ header {
 
       a {
         background: url('../img/svg/search.svg') center no-repeat;
-        background-size: 35%;
+        background-size: 20px;
         display: block;
         height: 100%;
         width: 100%;

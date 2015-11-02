@@ -58,6 +58,8 @@ $('body').on('click', '.chocolat-img', function(e){
 
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
 
+  $('.chocolat-bottom').css('opacity', 0);
+
   setTimeout(function() {
     $('.chocolat-wrapper').removeClass('show');
     $('body').removeClass('fixed');
