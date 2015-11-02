@@ -4778,6 +4778,7 @@ div.chocolat-wrapper .chocolat-close {
   left: 87px;
   height: 100%;
   width: calc(100% - 87px);
+  z-index: 3;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4808,6 +4809,7 @@ div.chocolat-wrapper .chocolat-close {
   left: 87px;
   height: 100%;
   width: calc(100% - 87px);
+  z-index: 3;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4911,8 +4913,8 @@ div.chocolat-wrapper .chocolat-close {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0.5;
+  visibility: visible;
   width: 100%;
   z-index: 2;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5224,6 +5226,9 @@ div.chocolat-wrapper .chocolat-close {
   -o-transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.popin-audio:before {
+  visibility: hidden;
 }
 .popin-audio .playpause {
   top: 398px;
