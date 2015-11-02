@@ -3333,7 +3333,7 @@ header.sticky #sticky-user .user-nav {
   border: none;
 }
 header.sticky #sticky-user .user-nav a.search {
-  background: url("../img/svg/search.svg") no-repeat left 46%;
+  background: url("../img/svg/search.svg") no-repeat left 1px;
   background-size: 15px;
 }
 header.sticky #logo-wrapper {

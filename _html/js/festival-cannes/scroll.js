@@ -195,7 +195,7 @@ $(document).ready(function() {
         'el1': '#slider-movies .owl-item.active .video',
         'el2': '#slider-movies .owl-item.active .textVideo',
         'positionTop': $('#slider-movies').offset().top,
-        'division': 6,
+        'division': 8,
         'mov': 4
       });
 
