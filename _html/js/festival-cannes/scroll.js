@@ -137,7 +137,7 @@ $(document).ready(function() {
     // process only if value is not reached
     var sc = scrollTarget - start;
 
-    if (sc !== scrollPos && scrollTarget > start - $(window).height()){
+    if (sc !== scrollPos && scrollTarget > (start - $(window).height() * 2)){
         
       // limit easing
         
