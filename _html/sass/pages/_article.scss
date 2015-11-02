@@ -453,9 +453,18 @@ article {
     width: 630px;
   }
 
-  .video-player {
+  .video-player,
+  #video-container {
+    height: 400px;
     margin: 0 auto 70px auto;
     width: 630px;
+
+    &.state-pause {
+      .jw-title, .control-bar {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
   }
 
   .share {

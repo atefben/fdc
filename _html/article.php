@@ -115,15 +115,43 @@
             <p><strong>Il y a différents statuts d’acteurs : Lambert Wilson, Virginie Ledoyen d’un côté et ensuite tu as Guillaume Gouix, jeune acteur, Franck Gastambile et le québécois François Arnaud … Vous êtes satisfait du rendu ?</strong></p>
             <p>Symboliquement, j’avais une famille : Lambert qui joue le père, Virginie la mère, Guillaume l’ainé, Franck le jeune un peu perdu et François le sale gosse. Et oui, j’en suis super content parce que je voulais une lecture nouvelle sur le film de genre .</p>
           </div>
-          <div class="video-player video">
-            <div class="image" style="background-image: url(img/article/004.jpg);"></div>
-            <div class="picto"></div>
-            <div class="info">
-              <div class="vCenter">
-                <div class="vCenterKid">
-                  <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <p>The Lobster</p>
+          <div id="video-container" class="state-pause video-player video" data-img="/img/article/004.jpg">
+            <div id="video-player">
+            </div>
+            <div class="infos-bar">
+              <div class="picto"></div>
+              <div class="info">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <p>The Lobster</p>
+                  </div>
                 </div>
+              </div>
+            </div>
+            <div class="video-overlay"></div>
+            <div class="control-bar">
+              <div class="playstate">
+                <button class="play-btn play"></button>
+              </div>
+              <div class="time">
+                <p class="time-info">
+                  <span class="current-time">0:00</span> / <span class="duration-time">0:00</span>
+                </p>
+              </div>
+              <div class="progress">
+                <div class="progress-bar">
+                  <div class="current-bar"></div>
+                </div>
+              </div>
+              <div class="sound">
+                <button class="sound-btn"></button>
+                <div class="sound-bar">
+                  <div class="sound-seek"></div>
+                  </div>
+                </div>
+              <div class="fs">
+                <button class="fs-icon"></button>
               </div>
             </div>
           </div>

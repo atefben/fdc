@@ -5388,7 +5388,12 @@ div.chocolat-wrapper .chocolat-close {
 .video-player .picto {
   bottom: 20px;
   left: 20px;
-  z-index: 2;
+  pointer-events: initial;
+  cursor: pointer;
+}
+.video-player .picto.hide {
+  opacity: 0;
+  visibility: hidden;
 }
 .video-player .info {
   color: #666;
@@ -5397,6 +5402,10 @@ div.chocolat-wrapper .chocolat-close {
   left: 80px;
   position: absolute;
   z-index: 2;
+}
+.video-player .info.hide {
+  opacity: 0;
+  visibility: hidden;
 }
 .video-player .info .category {
   color: #c8a461;
@@ -7628,9 +7637,17 @@ article .image .linkImage {
   margin: 0 auto 70px auto;
   width: 630px;
 }
-.single-article .video-player {
+.single-article .video-player,
+.single-article #video-container {
+  height: 400px;
   margin: 0 auto 70px auto;
   width: 630px;
+}
+.single-article .video-player.state-pause .jw-title, .single-article .video-player.state-pause .control-bar,
+.single-article #video-container.state-pause .jw-title,
+.single-article #video-container.state-pause .control-bar {
+  opacity: 0;
+  visibility: hidden;
 }
 .single-article .share {
   border-top: 1px solid #e5e5e5;

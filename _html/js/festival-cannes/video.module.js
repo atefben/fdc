@@ -12,6 +12,7 @@ jw.playerInit = function() {
         jw.$fullscreen   = $('.fs-icon');
         jw.$container    = $('#video-container');
         jw.$sound        = $('.sound');
+        jw.$picto        = $('.video-player .picto');
 
         jw.player();
     }
@@ -27,7 +28,8 @@ jw.player = function() {
         playlist: [
             {
                 file: './files/mov_bbb.mp4',
-                title: 'Video 0'
+                title: 'Video 0',
+                image: $('#video-player').parent('div').data('img')
             }, {
                 file: 'https://www.youtube.com/watch?v=NtDG-Cnj-pw',
                 title: 'Video 1'
@@ -84,6 +86,15 @@ jw.player = function() {
             duration = jw.$videoPlayer.getDuration(),
             current = duration * ratio;
         jw.$videoPlayer.seek(current);
+    });
+
+    jw.$picto.on('click', function(e) {
+        var $player = $(this).parents('.video-player');
+        
+        $player.find('.info, .picto').addClass('hide');
+
+        $player.removeClass('state-pause');
+        jw.$videoPlayer.play();
     });
 
     jw.$sound.on('click', '.sound-btn', function() {
