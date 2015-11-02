@@ -55,7 +55,9 @@
         </div>
         <a href="movie2.php" class="nav prev ajax"></a>
         <a href="movie3.php" class="nav next ajax"></a>
-        <div class="main-image" style="background-image: url('img/movie/001.jpg')">
+        <span id="plx"></span>
+        <div class="main-image">
+          <div class="img" style="background-image: url('img/movie/001.jpg')"></div>
           <div class="links">
             <div class="container">
               <a class="movies" href="#">Tous les films</a>
