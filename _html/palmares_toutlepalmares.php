@@ -44,7 +44,7 @@
                 <h2 class="title">En compétition</h2>
             </div>
             <h3 class="sub-cat-title">Longs métrages</h3>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-compet1.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-compet1.jpg" alt="images films">
@@ -59,7 +59,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/films/cover-film-cdo.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-cdo.jpg" alt="images films">
@@ -75,7 +75,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-compet3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-compet3.jpg" alt="images films">
@@ -90,7 +90,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-compet4.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-compet4.jpg" alt="images films">
@@ -111,7 +111,7 @@
         </section>
         <section class="categorie-items">
             <h3 class="sub-cat-title">Courts métrages</h3>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-compet5.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-compet5.jpg" alt="images films">
@@ -133,7 +133,7 @@
             <div class="title-list-cat">
                 <h2 class="title">En compétition</h2>
             </div>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-uncertainregard1.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-uncertainregard1.jpg" alt="images films">
@@ -149,7 +149,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-uncertainregard3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-uncertainregard3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">

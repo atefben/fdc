@@ -66,7 +66,7 @@
       <div class="container container-list">
         <section class="categorie-items">
 
-            <article style="background-image:url(img/films/film-hover-copie2.jpg)">
+            <article style="background-image:url(img/films/cover-film-copie1.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-copie1.jpg" alt="images films">
@@ -83,7 +83,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/films/film-hover-copie2.jpg)">
+            <article style="background-image:url(img/films/cover-film-copie2.jpg)">
                 <div class="bck-hover">
                 <div class="contain_item">
                     <img src="img/films/cover-film-copie2.jpg" alt="images films">
@@ -99,7 +99,7 @@
                 </div>
                 </div>
             </article>
-            <article style="background-image:url(img/films/film-hover-copie2.jpg)">
+            <article style="background-image:url(img/films/cover-film-copie3.jpg)">
                 <div class="bck-hover">
                 <div class="contain_item">
                     <img src="img/films/cover-film-copie3.jpg" alt="images films">
@@ -113,7 +113,7 @@
                 </div>
                 </div>
             </article>
-                        <article style="background-image:url(img/films/film-hover-copie2.jpg)">
+                        <article style="background-image:url(img/films/cover-film-copie4.jpg)">
                 <div class="bck-hover">
                 <div class="contain_item">
                     <img src="img/films/cover-film-copie4.jpg" alt="images films">

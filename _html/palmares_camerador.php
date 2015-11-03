@@ -39,7 +39,7 @@
       </div>
       <div class="container container-list">
         <section class="categorie-items">
-            <article style="background-image:url(img/palmares/hover-film-cinefondation3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-camerador.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-camerador.jpg" alt="images films">

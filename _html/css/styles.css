@@ -9752,6 +9752,7 @@ article .image .linkImage {
   width: 100%;
   min-height: 405px;
   background-size: cover;
+  background-position: center center;
 }
 .categorie-items article .bck-hover {
   background-color: #141414;
