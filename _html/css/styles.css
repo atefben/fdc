@@ -11778,6 +11778,12 @@ article .image .linkImage {
 .partners {
   margin-bottom: 42px;
 }
+.partners .title-section:hover {
+  cursor: pointer;
+}
+.partners .fa:hover {
+  cursor: pointer;
+}
 .partners .content-partners {
   background-color: #fff;
 }
