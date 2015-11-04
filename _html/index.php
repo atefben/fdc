@@ -252,10 +252,11 @@
           </div>
 
           <div id="timeline">
+            <a href="#" data-date="22" class="disabled">dim<span class="day">22</span></a>
             <a href="#" data-date="21" class="disabled">sam<span class="day">21</span></a>
             <a href="#" data-date="20" class="disabled">ven<span class="day">20</span></a>
-            <a href="#" data-date="19" class="disabled">jeu<span class="day">19</span></a>
-            <a href="#" data-date="18" class="active">mer<span class="day">18</span></a>
+            <a href="#" data-date="19" class="active">jeu<span class="day">19</span></a>
+            <a href="#" data-date="18" class="">mer<span class="day">18</span></a>
             <a href="#" data-date="17" class="">mar<span class="day">17</span></a>
             <a href="#" data-date="16" class="">lun<span class="day">16</span></a>
             <a href="#" data-date="15" class="">dim<span class="day">15</span></a>
@@ -263,7 +264,6 @@
             <a href="#" data-date="13" class="">ven<span class="day">13</span></a>
             <a href="#" data-date="12" class="">jeu<span class="day">12</span></a>
             <a href="#" data-date="11" class="">mer<span class="day">11</span></a>
-            <a href="#" data-date="10" class="">mar<span class="day">10</span></a>
           </div>
           <div id="shdMore" class="shadow-bottom"></div>
           <div id="shd" class="shadow-bottom"></div>
