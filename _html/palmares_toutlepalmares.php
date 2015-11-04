@@ -131,7 +131,7 @@
           <!--- Un certain regard -->
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">En compétition</h2>
+                <h2 class="title">Un certain regard</h2>
             </div>
             <article style="background-image:url(img/palmares/cover-film-uncertainregard1.jpg)">
             <div class="bck-hover">
