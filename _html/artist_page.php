@@ -91,14 +91,14 @@
                   <img src="img/artist/couv1.jpg" alt="">
                   <div class="content-text">
                     <span class="item-title">Apocalypse now</span>
-                    <span class="item-date">1976</span><span class="item-categ">Hors compétition</span><span class="item-details">Réalisation, Scénario & Dialogues, Musique</span>
+                    <span class="item-date">1976</span><span class="item-categ">Palme d'or - Prix de la critique internationale - F.I.P.E.S.C.I.</span><span class="item-details">Réalisation, Scénario & Dialogues, Musique</span>
                   </div>
                 </div>
                 <div class="item">
                   <img src="img/artist/couv1.jpg" alt="">
                   <div class="content-text">
                     <span class="item-title">Apocalypse now</span>
-                    <span class="item-date">1976</span><span class="item-categ">Hors compétition - Longs métrages</span><span class="item-details">Réalisation, Scénario & Dialogues, Musique</span>
+                    <span class="item-date">1976</span><span class="item-categ">Grand prix international du festival</span><span class="item-details">Réalisation, Scénario & Dialogues, Musique</span>
                   </div>
                 </div> 
             </div> 
