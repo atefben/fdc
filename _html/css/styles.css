@@ -3572,17 +3572,20 @@ header #logo-wrapper #partners {
 }
 header #logo-wrapper #partners img {
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 27px;
   vertical-align: middle;
 }
 header #logo-wrapper #partners img.chopard {
   margin-top: 10px;
 }
 header #logo-wrapper #partners img.oreal {
-  margin-top: 5px;
+  margin-top: 2px;
+}
+header #logo-wrapper #partners img.renault {
+  margin-top: 2px;
 }
 header #logo-wrapper #partners img.kering {
-  margin-top: -4px;
+  margin-top: -2px;
 }
 header #logo-wrapper #search {
   border: 1px solid #404040;

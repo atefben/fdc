@@ -295,7 +295,7 @@ header {
 
       img {
         display: inline-block;
-        margin-right: 20px;
+        margin-right: 27px;
         vertical-align: middle;
 
         &.chopard {
@@ -303,15 +303,19 @@ header {
         }
 
         &.oreal {
-          margin-top: 5px;
+          margin-top: 2px;
         }
 
         &.hp {
 
         }
 
+        &.renault {
+          margin-top: 2px;
+        }
+
         &.kering {
-          margin-top: -4px;
+          margin-top: -2px;
         }
       }
     }
