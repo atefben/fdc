@@ -8474,6 +8474,7 @@ article .image .linkImage {
   background-size: 40px;
   height: 80px;
   width: 80px;
+  z-index: 3;
 }
 .single-movie .videos .video-player .info {
   height: 80px;
@@ -8482,8 +8483,12 @@ article .image .linkImage {
 .single-movie .videos .video-player .info .category, .single-movie .videos .video-player .info span {
   font-size: 0.750rem;
 }
+.single-movie .videos .video-player .info span {
+  color: #ADACAC;
+}
 .single-movie .videos .video-player .info p {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
+  margin-top: 7px;
 }
 .single-movie .videos #slider-movie-videos .owl-item {
   opacity: 1;
