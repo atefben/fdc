@@ -76,7 +76,7 @@
             <h2>Adieu au langage</h2>
             <div class="title-original">(Adieu au langage)</div>
             <p>Réalisé par : <a href="#">Jean-Luc GODARD</a></p>
-            <p>Année : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
+            <p>Année de production : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
 
             <div  class="synopsis">
               <h3 class="title-section">Synopsis</h3>
