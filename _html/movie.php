@@ -444,7 +444,7 @@
           </div>
         </div>
         <div class="competition">
-          <h2 class="title">En compétition</h2>
+          <h2 class="title">En compétition 2016</h2>
           <div id="slider-competition" class="owl-carousel sliderDrag">
             <div class="slide">
               <img src="http://dummyimage.com/210x284/000/fff" alt="" />
