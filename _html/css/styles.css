@@ -3685,6 +3685,11 @@ header #navigation ul li ul li {
   z-index: 2;
   letter-spacing: 0.08em;
 }
+header #navigation ul li ul.tcenter {
+  text-align: center;
+  width: 639px;
+  padding-left: 0;
+}
 header #navigation ul li:hover ul {
   opacity: 1;
   visibility: visible;

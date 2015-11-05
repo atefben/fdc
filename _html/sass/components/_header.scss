@@ -417,6 +417,12 @@ header {
             z-index: 2;
             letter-spacing: 0.08em;
           }
+
+          &.tcenter {
+            text-align: center;
+            width: 639px;
+            padding-left: 0;
+          }
         }
 
         &:hover ul {
