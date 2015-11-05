@@ -115,6 +115,14 @@ $(document).ready(function() {
       }
     });
 
+    $('body').on('click', '.single-movie .prevmovie', function(e) {
+      $('.single-movie .nav.prev').trigger('click');
+    });
+
+    $('body').on('click', '.single-movie .nextmovie', function(e) {
+      $('.single-movie .nav.next').trigger('click');
+    });
+
     // previous and next over
     $('body').on('mouseover', '.single-movie .prevmovie', function(e) {
       $('.single-movie .nav.prev').addClass('over');

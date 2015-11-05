@@ -7907,6 +7907,7 @@ article .image .linkImage {
   position: relative;
 }
 .single-movie .prevmovie, .single-movie .nextmovie {
+  cursor: pointer;
   background: #fff;
   height: 280px;
   overflow: hidden;
@@ -7960,6 +7961,7 @@ article .image .linkImage {
   -o-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  pointer-events: none;
 }
 .single-movie .prevmovie .info a:hover, .single-movie .nextmovie .info a:hover {
   opacity: 0.7;
@@ -8175,7 +8177,7 @@ article .image .linkImage {
   display: none;
 }
 .single-movie .nav {
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   display: block;
   height: 82px;
   position: fixed;
