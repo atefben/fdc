@@ -521,12 +521,13 @@
         display: inline-block;
 
         a {
-          color: #dfdfdf;
+          color: #D2D2D2;
           display: block;
           font-family: $CamphorHeavy;
           font-size: 0.750rem;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.1em;
           margin: 0 9px;
+          @include transform(translate3d(0, -1px, 0));
           text-transform: uppercase;
           @include transition(all 0.9s $smoothTransition);
 
@@ -675,10 +676,18 @@
     }
   }
 
+  .photos {
+    padding-top: 45px;
+
+    .slideshow {
+      margin-bottom: 0;
+    }
+  }
+
   .casting {
     border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
-    margin: 45px 0;
+    margin: 45px 0 0 0;
     overflow: hidden;
     padding: 45px 0;
 
@@ -804,6 +813,7 @@
 
   .news {
     border-bottom: 1px solid #dfdfdf;
+    padding-top: 45px;
   }
 
   .audios {

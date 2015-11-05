@@ -8412,12 +8412,16 @@ article .image .linkImage {
   display: inline-block;
 }
 .single-movie #nav-movie ul li a {
-  color: #dfdfdf;
+  color: #D2D2D2;
   display: block;
   font-family: "Camphor W01 Heavy";
   font-size: 0.750rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   margin: 0 9px;
+  -moz-transform: translate3d(0, -1px, 0);
+  -ms-transform: translate3d(0, -1px, 0);
+  -webkit-transform: translate3d(0, -1px, 0);
+  transform: translate3d(0, -1px, 0);
   text-transform: uppercase;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -8539,10 +8543,16 @@ article .image .linkImage {
   width: 200px;
   white-space: nowrap;
 }
+.single-movie .photos {
+  padding-top: 45px;
+}
+.single-movie .photos .slideshow {
+  margin-bottom: 0;
+}
 .single-movie .casting {
   border-top: 1px solid #dfdfdf;
   border-bottom: 1px solid #dfdfdf;
-  margin: 45px 0;
+  margin: 45px 0 0 0;
   overflow: hidden;
   padding: 45px 0;
 }
@@ -8657,6 +8667,7 @@ article .image .linkImage {
 }
 .single-movie .news {
   border-bottom: 1px solid #dfdfdf;
+  padding-top: 45px;
 }
 .single-movie .audios {
   padding: 45px 0;
