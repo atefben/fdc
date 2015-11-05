@@ -585,7 +585,7 @@
 
     .video-player {
       height: 615px;
-      margin-bottom: 50px;
+      margin-bottom: 35px;
 
       .picto {
         background-size: 40px;
@@ -651,8 +651,17 @@
             background-size: 22px;
           }
 
+          .category {
+            font-size: 0.650rem;
+          }
+
           p {
             color: #fff;
+            font-size: 0.9rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 200px;
+            white-space: nowrap;
           }
 
         }
