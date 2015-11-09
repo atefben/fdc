@@ -8551,6 +8551,9 @@ article .image .linkImage {
 .single-movie .photos .slideshow {
   margin-bottom: 0;
 }
+.single-movie .photos .slideshow .slideshow-img {
+  height: 615px;
+}
 .single-movie .casting {
   border-top: 1px solid #dfdfdf;
   border-bottom: 1px solid #dfdfdf;
