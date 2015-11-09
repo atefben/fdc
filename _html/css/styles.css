@@ -7487,6 +7487,7 @@ article .read-later.rAlign span:after {
   width: 730px;
 }
 .single-article .print {
+  font-family: "Camphor W01 Heavy";
   background: url("../img/svg/print.svg") no-repeat 15% center;
   background-size: 18px;
   font-size: 0.625rem;
@@ -7495,6 +7496,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 .single-article #share-article {
+  font-family: "Camphor W01 Heavy";
   background: url("../img/svg/share.svg") no-repeat 13% 47%;
   background-size: 18px;
   font-size: 0.625rem;
@@ -7542,6 +7544,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .info .category, .single-article .info .update {
   color: #c8a461;
+  font-family: "Camphor W01 Bold";
   display: inline-block;
   font-size: 0.625rem;
   letter-spacing: 0.1em;
