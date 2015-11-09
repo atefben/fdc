@@ -108,6 +108,9 @@ $(document).ready(function() {
     if($('#selection').hasClass('open')) {
       closeSelection();
     }
+    if($('#searchContainer').hasClass('open')) {
+      closeSearch();
+    }
   });
 
   $('header .selection').on('click', function(e) {
