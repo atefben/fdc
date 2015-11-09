@@ -551,6 +551,16 @@ article {
           font-size: 1.125rem;
           margin: 20px 0 10px 0;
           text-transform: uppercase;
+
+          a {
+            color: #fff;
+            @include transform(translateZ(0));
+            @include transition(all 0.9s $linear);
+
+            &:hover {
+              opacity: 0.6;
+            }
+          }
         }
 
         .poster {
@@ -575,6 +585,15 @@ article {
             font-size: 1rem;
             margin-bottom: 35px;
             position: relative;
+
+            a {
+              color: $gold;
+              @include transition(all 0.9s $linear);
+
+              &:hover {
+                opacity: 0.6;
+              }
+            }
 
             &:after {
               background-color: #bababa;
