@@ -64,9 +64,11 @@ $('body').on('click', '.chocolat-img', function(e){
     $('.chocolat-wrapper').removeClass('show');
     $('body').removeClass('fixed');
 
-    $('html, body').animate({
-      scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
-    }, 0);
+    if($('.slideshow').length) {
+      $('html, body').animate({
+        scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+      }, 0);
+    }
 
     setTimeout(function() {
       for(var i=0; i<slideshows.length; i++) {
