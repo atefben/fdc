@@ -11,6 +11,10 @@
 .articles {
   overflow: hidden;
 
+  &.pad {
+    padding-top: 40px;
+  }
+
   &.nextDay {
     height: 90px;
   }

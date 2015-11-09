@@ -27,6 +27,9 @@ $(document).ready(function() {
 
     $('#articles-wrapper').addClass('loading');
 
+    $('#shd').removeClass('show');
+    $('.read-more').html("Afficher <strong>plus d'actualités</strong>").removeClass('prevDay');
+
     $('html, body').animate({
       scrollTop: $("#news").offset().top - 50
     }, 500);

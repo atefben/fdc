@@ -7297,6 +7297,9 @@ div.chocolat-wrapper .chocolat-close {
 .articles {
   overflow: hidden;
 }
+.articles.pad {
+  padding-top: 40px;
+}
 .articles.nextDay {
   height: 90px;
 }
