@@ -631,7 +631,7 @@ article {
           color: $gold;
           font-family: $CamphorBold;
           font-size: 0.750rem;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
         }
 
@@ -644,15 +644,20 @@ article {
             width: 230px;
 
             span {
+              font-family: $CamphorBold;
+              color: #bababa;
               margin-right: 8px;
 
               &.type {
                 color: #787878;
+                font-family: $CamphorBold;
                 text-transform: uppercase;
               }
 
               &.location {
+                color: #fff;
                 display: block;
+                font-family: $CamphorRegular;
                 font-size: 0.875rem;
                 margin: 18px 0 40px 0;
                 position: relative;
@@ -683,7 +688,10 @@ article {
         .button {
           border-color: $gold;
           margin-left: 0px;
-          padding: 0 30px;
+          height: 50px;
+          line-height: 50px;
+          font-family: $CamphorHeavy;
+          padding: 0 40px;
 
           &:hover {
             background-color: transparent;

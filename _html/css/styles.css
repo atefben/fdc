@@ -7820,7 +7820,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   font-family: "Camphor W01 Bold";
   font-size: 0.750rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 .single-article .film .programmation-film .wrapper ul {
@@ -7832,14 +7832,19 @@ article .read-later.rAlign span:after {
   width: 230px;
 }
 .single-article .film .programmation-film .wrapper ul li span {
+  font-family: "Camphor W01 Bold";
+  color: #bababa;
   margin-right: 8px;
 }
 .single-article .film .programmation-film .wrapper ul li span.type {
   color: #787878;
+  font-family: "Camphor W01 Bold";
   text-transform: uppercase;
 }
 .single-article .film .programmation-film .wrapper ul li span.location {
+  color: #fff;
   display: block;
+  font-family: "Camphor W01 Regular";
   font-size: 0.875rem;
   margin: 18px 0 40px 0;
   position: relative;
@@ -7860,6 +7865,9 @@ article .read-later.rAlign span:after {
 .single-article .film .programmation-film .wrapper .button {
   border-color: #c8a461;
   margin-left: 0px;
+  height: 50px;
+  line-height: 50px;
+  font-family: "Camphor W01 Heavy";
   padding: 0 30px;
 }
 .single-article .film .programmation-film .wrapper .button:hover {
