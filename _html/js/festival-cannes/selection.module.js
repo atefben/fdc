@@ -154,9 +154,18 @@ $(document).ready(function() {
   });
 
   $('body').on('mouseover', '.read-later', function() {
+    var lPos = $(this).offset().left - 80;
+
+    if(($(this).offset().left + 120) > $(window).width()) {
+      lPos = $(this).offset().left - 120;
+      $(this).addClass('rAlign');
+    } else {
+      $(this).removeClass('rAlign');
+    }
+
     $(this).find('span').css({
       top: $(this).offset().top - $(window).scrollTop() - 59,
-      left: $(this).offset().left - 80
+      left: lPos
     });
   });
 

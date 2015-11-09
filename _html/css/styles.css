@@ -7454,6 +7454,9 @@ article .image .linkImage {
   top: 0;
   width: 100%;
 }
+article .read-later.rAlign span:after {
+  left: 132px;
+}
 
 .single-article {
   padding: 65px 0;
