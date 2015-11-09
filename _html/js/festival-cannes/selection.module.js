@@ -4,6 +4,7 @@ $(document).ready(function() {
   // =========================
 
   var sliderSelection = '',
+      sliderSuggestion = '',
       tr = 0,
       selectionCookie = [];
 
@@ -27,6 +28,32 @@ $(document).ready(function() {
       $('#slider-selection').append($art);
     }
   }
+
+  $.ajax({
+    type: "GET",
+    dataType: "html",
+    cache: false,
+    url: 'selection.html' ,
+    success: function(data) {
+      $('#slider-suggestion').append(data);
+
+      sliderSuggestion = $("#slider-suggestion").owlCarousel({
+        nav: false,
+        dots: false,
+        smartSpeed: 500,
+        center: true,
+        loop: false,
+        margin: 0,
+        dragEndSpeed: 900,
+        autoWidth: true,
+        onInitialized: function() {
+          
+       }
+      });
+
+      sliderSuggestion.owlCarousel();
+    }
+  });
 
   $('#selection .title span').text(selectionCookie.length);
 
@@ -58,6 +85,12 @@ $(document).ready(function() {
     $('#selection').addClass('open');
 
     $('header .selection').addClass('opened');
+
+    if(selectionCookie.length == 0) {
+      $('#slider-suggestion').addClass('show');
+      $('.filters-selection a').removeClass('active');
+      $('a[data-selection=suggestion]').addClass('active');
+    }
 
     callback();
 
@@ -106,6 +139,7 @@ $(document).ready(function() {
     $('#selection .owl-item').removeClass('filtered');
 
     if(f == 'all') {
+      $('#slider-suggestion').removeClass('show');
       $('#selection .owl-stage').width(272 * $('#selection .owl-item').length).css('transform', 'translate3d(' + tr + 'px, 0, 0)');
       setTimeout(function() {
         $('#selection .owl-item').removeClass('fade');
@@ -115,10 +149,14 @@ $(document).ready(function() {
     } 
 
     if(f == 'suggestion') {
-      // todo
+      setTimeout(function() {
+        $('#slider-suggestion').addClass('show');
+      }, 1200);
 
       return false;
     }
+    
+    $('#slider-suggestion').removeClass('show');
 
     setTimeout(function() {
       $('#selection article').each(function() {
@@ -167,6 +205,10 @@ $(document).ready(function() {
         $article = $article.html();
 
     $articleEl = $(this).parents('article');
+
+    $('#slider-suggestion').removeClass('show');
+    $('.filters-selection a').removeClass('active');
+    $('a[data-selection=all]').addClass('active');
 
     selectionCookie.unshift({
       'id': $articleEl.index('#main article'),
