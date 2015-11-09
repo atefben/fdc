@@ -39,7 +39,7 @@
       </div>
       <div class="container container-list">
         <section class="categorie-items">
-            <article style="background-image:url(img/palmares/hover-film-uncertainregard3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-uncertainregard1.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-uncertainregard1.jpg" alt="images films">
@@ -55,7 +55,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-uncertainregard3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-uncertainregard3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">
@@ -71,7 +71,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-uncertainregard3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-uncertainregard3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">
@@ -87,7 +87,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-uncertainregard3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-uncertainregard3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">

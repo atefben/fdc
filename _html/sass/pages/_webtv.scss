@@ -29,7 +29,15 @@
       height: auto;
       @include transition(all 4s $linear);
     }
-    
+  }
+
+  .shadow-bottom:before {
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 80%, rgba(20,20,20,0.9) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(60%, rgba(0,0,0,0)), color-stop(80%, rgba(0,0,0,0.5)), color-stop(100%, rgba(20,20,20,0.9)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 80%, rgba(20,20,20,0.9) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 80%, rgba(20,20,20,0.9) 100%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 80%, rgba(20,20,20,0.9) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 80%, rgba(20,20,20,0.9) 100%);
   }
 
   .channel {
@@ -37,6 +45,15 @@
     overflow: hidden;
     position: relative;
     width: 293px;
+
+    &.shadow-bottom:before {
+      background: -moz-linear-gradient(top, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 80%, rgba(20,20,20,0.9) 100%);
+      background: -webkit-gradient(left top, left bottom, color-stop(40%, rgba(0,0,0,0)), color-stop(80%, rgba(0,0,0,0.8)), color-stop(100%, rgba(20,20,20,0.9)));
+      background: -webkit-linear-gradient(top, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 80%, rgba(20,20,20,0.9) 100%);
+      background: -o-linear-gradient(top, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 80%, rgba(20,20,20,0.9) 100%);
+      background: -ms-linear-gradient(top, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 80%, rgba(20,20,20,0.9) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 80%, rgba(20,20,20,0.9) 100%);
+    }
   }
 
   .vid {
@@ -84,7 +101,7 @@
       background-size: cover;
       opacity: 0.5;
       position: absolute;
-      top: -20%;
+      top: 0;
       left: 0;
       height: 130%;
       width: 100%;
@@ -140,7 +157,7 @@
 
     a {
       color: $gold;
-      font-family: $CamphorHeavy;
+      font-family: $CamphorBold;
       font-size: 0.750rem;
       text-transform: uppercase;
       @include transition(all .9s $smoothTransition);

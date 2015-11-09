@@ -55,7 +55,9 @@
         </div>
         <a href="movie2.php" class="nav prev ajax"></a>
         <a href="movie3.php" class="nav next ajax"></a>
-        <div class="main-image" style="background-image: url('img/movie/001.jpg')">
+        <span id="plx"></span>
+        <div class="main-image">
+          <div class="img" style="background-image: url('img/movie/001.jpg')"></div>
           <div class="links">
             <div class="container">
               <a class="movies" href="#">Tous les films</a>
@@ -74,7 +76,7 @@
             <h2>Adieu au langage</h2>
             <div class="title-original">(Adieu au langage)</div>
             <p>Réalisé par : <a href="#">Jean-Luc GODARD</a></p>
-            <p>Année : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
+            <p>Année de production : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
 
             <div  class="synopsis">
               <h3 class="title-section">Synopsis</h3>
@@ -229,10 +231,10 @@
               <div class="vCenter">
                 <div class="vCenterKid">
                   <h3 class="title-section">Crédits</h3>
-                  <p><a href="#">Jean-Luc Godard</a> - Réalisation</p>
-                  <p><a href="#">Jean-Luc Godard</a> - Scénario / Dialogues</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Réalisation</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Scénario / Dialogues</p>
                   <p><a href="#">Fabrice ARAGNO</a> - Directeur de la photographie</p>
-                  <p><a href="#">Jean-Luc Godard</a> - Montage</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Montage</p>
                   <div class="actors">
                     <h3 class="title-section">Acteurs</h3>
                     <p><a href="#">Héloïse GODET</a> - Josette</p><p><a href="#">Zoé BRUNEAU</a> -  Ivitch</p>
@@ -383,7 +385,7 @@
           <div class="info-press">
             <div class="wrapper">
               <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKidTop">
                   <h3 class="gold">Infos presse</h3>
                   <div class="folder">
                     <div class="vCenter">
@@ -392,7 +394,6 @@
                         <h3>Dossier de presse</h3>
                         <a href="#">Français PDF</a>
                         <a href="#">English PDF</a>
-                        <a href="#">Bilingue PDF</a>
                       </div>
                     </div>
                   </div>
@@ -412,7 +413,7 @@
           <div class="contacts">
             <div class="wrapper">
               <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKidTop">
                   <h3>Contacts</h3>
                   <div class="prod">
                     <p class="sub">Production</p>
@@ -442,7 +443,7 @@
           </div>
         </div>
         <div class="competition">
-          <h2 class="title">En compétition</h2>
+          <h2 class="title">En compétition 2016</h2>
           <div id="slider-competition" class="owl-carousel sliderDrag">
             <div class="slide">
               <img src="http://dummyimage.com/210x284/000/fff" alt="" />

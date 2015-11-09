@@ -1,0 +1,95 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+#searchContainer {
+  background-color: #fff;
+  left: 0;
+  max-height: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 230px;
+  width: 100%;
+  z-index: 14;
+  @include transform(translateZ(0));
+  @include transition(all 0.6s $smoothTransition);
+
+  ::-webkit-input-placeholder {
+    color:    #e6e6e6;
+    font-size: 2.250rem;
+    letter-spacing: 0.1em;
+    line-height: 1em;
+  }
+  :-moz-placeholder {
+    color:    #e6e6e6;
+    font-size: 2.250rem;
+    letter-spacing: 0.1em;
+    line-height: 1em;
+  }
+  ::-moz-placeholder {
+    color:    #e6e6e6;
+    font-size: 2.250rem;
+    letter-spacing: 0.1em;
+    line-height: 1em;
+  }
+  :-ms-input-placeholder {
+    color:   #e6e6e6;
+    font-size: 2.250rem;
+    letter-spacing: 0.1em;
+    line-height: 1em;
+  }
+
+  &.open {
+    max-height: 8000px;
+    padding: 40px 0 30px 0;
+  }
+
+  form {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  #inputSearch {
+    border: none;
+    border-bottom: 1px solid #dfdfdf;
+    color: #000;
+    line-height: 1em;
+    padding-bottom: 10px;
+    font-family: $Playfair;
+    letter-spacing: 0.1em;
+    font-size: 2.250rem;
+    outline: none;
+    width: 100%;
+  }
+
+  #submitSearch {
+    background: url('../img/svg/search-gold.svg') no-repeat center;
+    background-size: 30px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    @include transition(all 0.9s $linear);
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.sticky #searchContainer {
+  top: 91px;
+}
+
+
+

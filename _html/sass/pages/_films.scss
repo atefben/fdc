@@ -103,6 +103,7 @@
      width: 100%;
      min-height: 405px;
      background-size: cover;
+     background-position: center center;
      .bck-hover {
        background-color: #141414;
        width: 100%;
@@ -114,7 +115,7 @@
        box-sizing: border-box;
      }
      .bck-hover:hover {
-       background-color: rgba(20, 20, 20, 0.08);
+       background-color: rgba(0, 0, 0, 0.5);
      }
      .contain_item {
        width: 977px;

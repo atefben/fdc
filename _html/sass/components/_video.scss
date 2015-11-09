@@ -43,7 +43,13 @@
   .picto {
     bottom: 20px;
     left: 20px;
-    z-index: 2;
+    pointer-events: initial;
+    cursor: pointer;
+
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 
   .info {
@@ -53,6 +59,11 @@
     left: 80px;
     position: absolute;
     z-index: 2;
+
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
 
     .category {
       color: #c8a461;

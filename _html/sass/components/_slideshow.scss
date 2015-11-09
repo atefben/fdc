@@ -308,7 +308,8 @@ div.chocolat-wrapper {
     line-height: initial;
     padding: 0;
     height: 100px;
-    @include transition(all 0.5s $smoothTransition);
+    opacity: 0;
+    @include transition(all 0.9s $smoothTransition);
 
     &:after {
       content: '';
@@ -325,7 +326,13 @@ div.chocolat-wrapper {
       @include transition(all 0.5s $smoothTransition);
     }
 
+    &.show {
+      opacity: 1;
+    }
+
     &:hover {
+      opacity: 1;
+
       &:after {
         opacity: 1;
         visibility: visible;
@@ -418,7 +425,7 @@ div.chocolat-wrapper {
 
     &:after {
       background: url('../img/svg/share.svg') no-repeat center;
-      background-size: 25px;
+      background-size: 22px;
       content: '';
       display: block;
       height: 100%;
@@ -449,7 +456,7 @@ div.chocolat-wrapper {
 
     &:after {
       background: url('../img/svg/arrow-left-white.svg') no-repeat center;
-      background-size: 15px;
+      background-size: 18px;
       content: '';
       display: block;
       height: 100%;
@@ -478,7 +485,7 @@ div.chocolat-wrapper {
 
     &:after {
       background: url('../img/svg/arrow-right-white.svg') no-repeat center;
-      background-size: 15px;
+      background-size: 18px;
       content: '';
       display: block;
       height: 100%;
@@ -502,14 +509,14 @@ div.chocolat-wrapper {
     top: 0;
     left: 0;
     width: 100%;
-    @include transition(opacity .5s $smoothTransition);
-
-    &.hide {
-      opacity: 0;
-    }
+    @include transition(opacity .9s $smoothTransition);
 
     &.thumbsOpen {
       opacity: 0.3!important;
+    }
+
+    &.hide {
+      opacity: 0!important;
     }
   }
 

@@ -11,6 +11,14 @@
 .articles {
   overflow: hidden;
 
+  &.noOv {
+    overflow: initial;
+  }
+
+  &.pad {
+    padding-top: 40px;
+  }
+
   &.nextDay {
     height: 90px;
   }
@@ -72,6 +80,7 @@ article {
     font-family: $Playfair;
     font-size: 1.125rem;
     font-weight: 400;
+    letter-spacing: 0.02em;
     line-height: 1.3em;
     margin: 15px auto 0 auto;
     text-align: center;
@@ -122,6 +131,7 @@ article {
         position: absolute;
         min-width: 100%;
         min-height: 100%;
+        max-width: 100%;
         width: auto;
         height: auto;
         @include transition(all 3s $linear);
@@ -200,6 +210,10 @@ article {
       width: 100%;
     }
   }
+
+  .read-later.rAlign span:after {
+    left: 132px;
+  }
 }
 
 // 2. Single Article
@@ -234,6 +248,7 @@ article {
   }
 
   .print {
+    font-family: $CamphorHeavy;
     background: url('../img/svg/print.svg') no-repeat 15% center;
     background-size: 18px;
     font-size: 0.625rem;
@@ -244,6 +259,7 @@ article {
   }
 
   #share-article {
+    font-family: $CamphorHeavy;
     background: url('../img/svg/share.svg') no-repeat 13% 47%;
     background-size: 18px;
     font-size: 0.625rem;
@@ -300,12 +316,13 @@ article {
   }
 
   .info {
-    color: #666;
+    color: #969696;
     font-family: $CamphorMedium;
     text-align: center;
 
     .category, .update {
       color: $gold;
+      font-family: $CamphorBold;
       display: inline-block;
       font-size: 0.625rem;
       letter-spacing: 0.1em;
@@ -322,7 +339,7 @@ article {
 
 
     span {
-      color: #666;
+      color: #969696;
       display: inline-block;
       font-size: 0.625rem;
     }
@@ -344,7 +361,7 @@ article {
     }
 
     .caption {
-      color: #666;
+      color: #969696;
       font-size: .750rem;
       margin: 10px 0 0 0;
       text-align: left;
@@ -453,9 +470,18 @@ article {
     width: 630px;
   }
 
-  .video-player {
+  .video-player,
+  #video-container {
+    height: 400px;
     margin: 0 auto 70px auto;
     width: 630px;
+
+    &.state-pause {
+      .jw-title, .control-bar {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
   }
 
   .share {
@@ -537,6 +563,16 @@ article {
           font-size: 1.125rem;
           margin: 20px 0 10px 0;
           text-transform: uppercase;
+
+          a {
+            color: #fff;
+            @include transform(translateZ(0));
+            @include transition(all 0.9s $linear);
+
+            &:hover {
+              opacity: 0.6;
+            }
+          }
         }
 
         .poster {
@@ -561,6 +597,15 @@ article {
             font-size: 1rem;
             margin-bottom: 35px;
             position: relative;
+
+            a {
+              color: $gold;
+              @include transition(all 0.9s $linear);
+
+              &:hover {
+                opacity: 0.6;
+              }
+            }
 
             &:after {
               background-color: #bababa;
@@ -595,7 +640,7 @@ article {
           color: $gold;
           font-family: $CamphorBold;
           font-size: 0.750rem;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
         }
 
@@ -608,15 +653,20 @@ article {
             width: 230px;
 
             span {
+              font-family: $CamphorBold;
+              color: #bababa;
               margin-right: 8px;
 
               &.type {
                 color: #787878;
+                font-family: $CamphorBold;
                 text-transform: uppercase;
               }
 
               &.location {
+                color: #fff;
                 display: block;
+                font-family: $CamphorRegular;
                 font-size: 0.875rem;
                 margin: 18px 0 40px 0;
                 position: relative;
@@ -647,7 +697,10 @@ article {
         .button {
           border-color: $gold;
           margin-left: 0px;
-          padding: 0 30px;
+          height: 50px;
+          line-height: 50px;
+          font-family: $CamphorHeavy;
+          padding: 0 40px;
 
           &:hover {
             background-color: transparent;
@@ -700,7 +753,7 @@ article {
       }
 
       &:hover {
-        border-color: #999;
+        border-color: #9E9E9E;
 
         &:after {
           opacity: 1;

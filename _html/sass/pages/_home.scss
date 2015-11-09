@@ -75,7 +75,7 @@
     left: 0;
     position: absolute;
     top: 0;
-    width: 25%;
+    width: 12%;
   }
 
   .owl-next {
@@ -84,7 +84,7 @@
     right: 0;
     position: absolute;
     top: 0;
-    width: 25%;
+    width: 12%;
   }
 
   .owl-dots {
@@ -184,7 +184,8 @@
       background-position: center top;
       background-size: cover;
       width: 100%;
-      height: 100%;
+      height: 110%;
+      margin-top: -5%;
       opacity: 0.2!important;
       @include transition(opacity 0.1s $smoothTransition);
     }
@@ -233,6 +234,10 @@
   overflow: hidden;
   padding: 80px 0;
 
+  #format {
+    margin-right: 10px;
+  }
+
   #articles-wrapper {
     overflow: hidden;
     
@@ -242,6 +247,10 @@
       opacity: 0;
       visibility: hidden;
     }
+  }
+
+  .title {
+    margin-bottom: 20px;
   }
 
   #shd, #shdMore {
@@ -272,6 +281,21 @@
       top: auto;
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', endColorstr='#ffffff',GradientType=1 );
 
+    }
+  }
+
+  #shdMore {
+    bottom: 70px;
+
+    &:before {
+      height: 40px;
+      bottom: -25px;
+      background: -moz-radial-gradient(center, ellipse cover,  #000 0%, transparent 60%);
+      background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#000), color-stop(60%,transparent));
+      background: -webkit-radial-gradient(center, ellipse cover,  #000 0%,transparent 60%);
+      background: -o-radial-gradient(center, ellipse cover,  #000 0%,transparent 60%);
+      background: -ms-radial-gradient(center, ellipse cover,  #000 0%,transparent 60%);
+      background: radial-gradient(ellipse at center, #000 0%, rgba(0, 0, 0, 0) 60%);
     }
   }
 
@@ -306,6 +330,7 @@
     font-size: 0.625rem;
     line-height: 55px;
     margin-top: 45px;
+    letter-spacing: 0.2em;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
@@ -1158,14 +1183,7 @@
 
   .video {
     position: absolute;
-  }
 
-  video {
-    display: block;
-    position: absolute;
-  }
-
-  .owl-item {
     &:before {
       content: '';
       display: block;
@@ -1178,6 +1196,15 @@
       height: 100%;
       z-index: 1;
     }
+  }
+
+  video {
+    display: block;
+    position: absolute;
+  }
+
+  .owl-item {
+    
   }
 
   .links {
@@ -1456,11 +1483,13 @@
   position: relative;
 
   .textTop {
-    top: 370px;
+    top: 170px;
     z-index: 1;
     left: 0;
     right: 0;
     margin: 0 auto;
+    position: absolute!important;
+    @include transform(translate3d(0px, -370px, 0px));
   }
 
   #slider-prefooter {
@@ -1476,6 +1505,7 @@
     }
 
     .owl-stage {
+      cursor: default;
       transition: all 1.2s $easeInOutQuint!important;
     }
 
@@ -1499,6 +1529,7 @@
     width: 100%;
     z-index: 0;
     top: 0;
+    @include transform(translate3d(0px, -70px, 0px));
     @include transition(all 0.8s $smoothTransition);
 
     img {

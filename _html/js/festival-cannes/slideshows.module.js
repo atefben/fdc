@@ -58,13 +58,17 @@ $('body').on('click', '.chocolat-img', function(e){
 
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
 
+  $('.chocolat-bottom').css('opacity', 0);
+
   setTimeout(function() {
     $('.chocolat-wrapper').removeClass('show');
     $('body').removeClass('fixed');
 
-    $('html, body').animate({
-      scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
-    }, 0);
+    if($('.slideshow').length) {
+      $('html, body').animate({
+        scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+      }, 0);
+    }
 
     setTimeout(function() {
       for(var i=0; i<slideshows.length; i++) {
@@ -123,7 +127,7 @@ $('body').on('click', '.chocolat-image', function() {
   }, 200);
 
   setTimeout(function() {
-    $('.chocolat-wrapper .chocolat-img').css('transition', 'none');
+    $('.chocolat-wrapper .chocolat-img').css('transition', 'all 900ms cubic-bezier(0.165, 0.435, 0.000, 0.935)');
     // change url hash
     window.location.hash = $that.attr('id');
     $('body').addClass('fixed');
@@ -163,7 +167,6 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
   }
 
   window.location.hash = $(this).data('id');
-
 });
 
 $(document).ready(function() {
@@ -214,8 +217,16 @@ $('body').on('mouseout', '.chocolat-content', function(){
 $('body').on('mouseenter', '.chocolat-content', function(){
   $('.chocolat-close').show();
   return false;
-});
+}); 
+
+var timeoutCursor;
 
 $('body').on('mousemove', '.chocolat-content', function(e){
   $('.chocolat-close').css('left', e.clientX + 10).css('top', e.clientY);
+  $('.chocolat-bottom').addClass('show');
+
+  clearTimeout(timeoutCursor);
+  timeoutCursor = setTimeout(function() {
+    $('.chocolat-bottom').removeClass('show');
+  }, 4000);
 });

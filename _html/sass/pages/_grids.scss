@@ -48,6 +48,7 @@
 
     .info {
       color: #9c9c9b;
+      font-family: $CamphorBold;
       position: absolute;
       bottom: 8px;
       height: 44px;
@@ -75,6 +76,7 @@
         font-family: $CamphorRegular;
         font-size: 0.850rem;
         text-align: left;
+        margin-top: 3px;
         width: auto;
       }
     }
@@ -173,6 +175,7 @@
     overflow: hidden;
 
     img {
+      
       @include transform(translateZ(0));
       @include transition(all 4s $linear);
     }
@@ -274,6 +277,7 @@
       width: 100%;
 
       .info {
+        font-family: $CamphorBold;
         color: #666;
         position: relative;
         bottom: auto;

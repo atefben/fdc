@@ -12,6 +12,7 @@
   position: relative;
 
   .prevmovie, .nextmovie {
+    cursor: pointer;
     background: #fff;
     height: 280px;
     overflow: hidden;
@@ -60,6 +61,7 @@
         font-family: $CamphorItalic;
         font-size: 0.750rem;
         @include transition(opacity .6s $smoothTransition);
+        pointer-events: none;
 
         &:hover {
           opacity: 0.7;
@@ -212,14 +214,14 @@
       font-size: 2.250rem;
       font-weight: normal;
       letter-spacing: 0.1em;
-      margin: 20px 0 15px 0;
+      margin: 12px 0 12px 0;
       text-transform: uppercase;
     }
 
     .title-original {
       font-size: 0.750rem;
       font-weight: normal;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
       text-transform: uppercase;
     }
 
@@ -247,7 +249,7 @@
       p {
         color: #666;
         font-size: 0.875rem;
-        line-height: 2em;
+        line-height: 1.8em;
       }
     }
 
@@ -266,8 +268,8 @@
           content: '-';
           display: block;
           position: absolute;
-          top: 0;
-          right: -10px;
+          top: -1px;
+          right: -12.5px;
         }
 
         &:last-child:after {
@@ -278,7 +280,7 @@
   }
 
   .nav {
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: block;
     height: 82px;
     position: fixed;
@@ -370,9 +372,10 @@
   }
 
   .main-image {
-    background-size: cover;
+    background-color: $black;
     height: 620px;
     left: 0;
+    overflow: hidden;
     position: absolute;
     top: 0;
     width: 100%;
@@ -388,6 +391,16 @@
 
     @include breakpoint(1024px) {
       height: 360px;
+    }
+
+    .img {
+      background-size: cover;
+      display: block;
+      height: 105%;
+      width: 100%;
+      top: -5%;
+      left: 0;
+      position: absolute!important;
     }
 
     .trailer {
@@ -426,6 +439,7 @@
       display: block;
       height: 100%;
       width: 100%;
+      opacity: 0.3;
       position: absolute;
       top: 0;
       left: 0;
@@ -434,8 +448,8 @@
 
     .links {
       border-bottom: 1px solid rgba(255, 255, 255, .2);
-      height: 50px;
-      line-height: 50px;
+      height: 45px;
+      line-height: 45px;
       overflow: hidden;
       position: absolute;
       top: 0;
@@ -447,21 +461,21 @@
       a {
         color: #fff;
         float: left;
-        font-family: $CamphorHeavy;
-        font-size: 0.625rem;
+        font-family: $CamphorBold;
+        font-size: 0.6rem;
         padding-left: 20px;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
         @include transition(all 0.8s $smoothTransition);
 
         &.movies {
-          background: url('../img/svg/arrow-left-white.svg') no-repeat left center;
+          background: url('../img/svg/arrow-left-white.svg') no-repeat left 20px;
           background-size: 8px;
         }
 
         &.programmation {
-          background: url('../img/svg/programmation-white.svg') left 48% no-repeat;
-          background-size: 15px;
+          background: url('../img/svg/programmation-white.svg') left 18px no-repeat;
+          background-size: 13px;
         }
 
         &:last-child {
@@ -510,12 +524,13 @@
         display: inline-block;
 
         a {
-          color: #dfdfdf;
+          color: #D2D2D2;
           display: block;
           font-family: $CamphorHeavy;
           font-size: 0.750rem;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.1em;
           margin: 0 9px;
+          @include transform(translate3d(0, -1px, 0));
           text-transform: uppercase;
           @include transition(all 0.9s $smoothTransition);
 
@@ -574,12 +589,13 @@
 
     .video-player {
       height: 615px;
-      margin-bottom: 50px;
+      margin-bottom: 35px;
 
       .picto {
         background-size: 40px;
         height: 80px;
         width: 80px;
+        z-index: 3;
       }
 
       .info {
@@ -590,8 +606,13 @@
           font-size: 0.750rem;
         }
 
+        span {
+          color: #ADACAC;
+        }
+
         p {
-          font-size: 1.125rem;
+          font-size: 1.2rem;
+          margin-top: 7px;
         }
       }
     }
@@ -640,8 +661,17 @@
             background-size: 22px;
           }
 
+          .category {
+            font-size: 0.650rem;
+          }
+
           p {
             color: #fff;
+            font-size: 0.9rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 200px;
+            white-space: nowrap;
           }
 
         }
@@ -649,10 +679,22 @@
     }
   }
 
+  .photos {
+    padding-top: 45px;
+
+    .slideshow {
+      margin-bottom: 0;
+
+      .slideshow-img {
+        height: 615px;
+      }
+    }
+  }
+
   .casting {
     border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
-    margin: 45px 0;
+    margin: 45px 0 0 0;
     overflow: hidden;
     padding: 45px 0;
 
@@ -778,6 +820,7 @@
 
   .news {
     border-bottom: 1px solid #dfdfdf;
+    padding-top: 45px;
   }
 
   .audios {
@@ -821,6 +864,7 @@
         float: right;
         height: 100%;
         margin-right: 20px;
+        padding-top: 30px;
         width: 470px;
 
         .folder {
@@ -849,6 +893,10 @@
 
             &:hover {
               color: #fff;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
             }
           }
         }
@@ -881,6 +929,7 @@
         .button {
           border-color: $gold;
           border-right: 1px solid $gold;
+          font-size: 0.750rem;
           height: 50px;
           line-height: 50px;
           margin: 15px 20px 0 0;
@@ -912,14 +961,19 @@
         float: left;
         margin-left: 85px;
         width: 470px;
+        padding-top: 30px;
 
-        div {
+        .vCenterKidTop div {
           padding: 15px 0;
 
           &.prod {
             border-bottom: 1px solid #383838;
             margin-bottom: 10px;
             padding-bottom: 25px;
+          }
+
+          &:last-child {
+            padding-bottom: 0;
           }
         }
 

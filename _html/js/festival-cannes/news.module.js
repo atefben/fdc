@@ -27,6 +27,9 @@ $(document).ready(function() {
 
     $('#articles-wrapper').addClass('loading');
 
+    $('#shd').removeClass('show');
+    $('.read-more').html("Afficher <strong>plus d'actualités</strong>").removeClass('prevDay');
+
     $('html, body').animate({
       scrollTop: $("#news").offset().top - 50
     }, 500);
@@ -75,6 +78,7 @@ $(document).ready(function() {
   $('.read-more').on('click', function(e) {
     e.preventDefault();
 
+    $('#timeline').removeClass('bottom');
     // load previous day
     if($(this).hasClass('prevDay')) {
       $('#shd').removeClass('show');
@@ -115,6 +119,7 @@ $(document).ready(function() {
             $('.filter .select span[data-filter="all"]').addClass('active');
 
             initSlideshows();
+            $(window).trigger('resize');
           }
         });
       }, 1200);
@@ -132,6 +137,7 @@ $(document).ready(function() {
           $('.read-more').html('Passer au <strong>jour précédent</strong>').addClass('prevDay');
           setTimeout(function() {
             $('#shd').addClass('show');
+            $(window).trigger('resize');
           }, 500);
         }
       });

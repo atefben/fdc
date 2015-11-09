@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. participate global
 // 2. participate access
@@ -12,825 +12,843 @@
 // =========================
 
 .participate{
-  .bandeau-list{
-    height: 300px;
-  }
-  .participate-active{
-    height: auto !important;
-  }
-  .title-list-header{
-    padding-top:  97px !important;
+	.bandeau-list{
+		height: 300px;
+	}
+	.participate-active{
+		height: auto !important;
+	}
+	.title-list-header{
+		padding-top:  97px !important;
 
-  }
-  .logo{
-    margin-bottom: 28px;
-  }
-  .fa {
-    margin-bottom: 40px;
-    color: #c1c1c1;
-    position: absolute;
-    right: 1px;
-    top: 22px;
-  }
-   .fa-plus{
-      background-image: url(../img/participate/case-plus.svg);
-      background-size: 45px;
-      background-position: 1px;
-      background-repeat: no-repeat;
-      width: 51px;
-      height: 51px;
-    }
-     .fa-minus{
-      background-image: url(../img/participate/minus.svg);
-      background-size: 15px;
-      background-position: 14px 19px;
-      background-repeat: no-repeat;
-      width: 51px;
-      height: 51px;
-    }
-  .contain-participate{
-    background-color: #fff;   
-    .contain-descript{
-      border-bottom: 1px solid #e0e0e0;
-      .descrip{
-        width: 785px;
-        margin: 0 auto;
-        padding: 46px 0px;
-        line-height: 30px;
-        color:#333333;
-        text-align: center; 
-      }
-    }
-    section{
-      border-bottom: 1px solid #e0e0e0;      
-      .contain-section{
-      width: 997px;
-      margin: 0 auto;
-      padding-bottom: 63px;
-      position: relative;
-      overflow: hidden;
-      height: 31px;
-        a{
-          color: #c29f5f;
-          text-decoration: underline;
-        }
-        .descrip-section{
-           line-height: 24px;
-           font-size: .8125rem;
-          .ask{
-           font-size:0.81rem;
-          } 
-          a{
-            font: .81rem $CamphorBold;
-            @include transition(all 0.9s $linear);
-          }
-          a:hover{
-             color: #a87718;           
-          }
-        }
-        #google-map{
-          width: 975px;
-          height: 350px;
-          margin-top: 51px; 
-        }
-      }
-      .title-participate:hover{
-       cursor: pointer;
-      }
-      .fa:hover{
-        cursor: pointer;
-      }
-      .title-participate {
-        font: .875rem $CamphorBold;
-        color: #c1c1c1;
-        text-transform: uppercase;
-        padding-top: 39px;
-        padding-bottom: 36px;
-        letter-spacing: 2px;
-         @include transition(all 0.9s $linear);
-        .plus-info{
-          width: 19px;
-          height: 40px !important;
-          padding-right: 22px;  
-          margin-bottom: -12px;
-        }
-        .svg{
-          width: 20px;
-          height: 20px;
-          padding-right: 22px;
-          vertical-align: bottom;
-        }
-        .svg path{
-          fill:currentColor;
-        }
-        .svg .st0{
-          stroke : currentColor;
-        }
-      }
-      .part-plus-info{
-        padding-top: 27px;
-      }
-      .participate-active{
-        .title-participate{        
-          color:#c29f5f;
-        }
-        .fa{
-          color:#c29f5f;
-        }
-      }
-      .title-participate:hover{     
-          color:#c29f5f;
-      }
-      .item{
-        text-align: center;
-        width: 325px;
-        line-height: 24px;
-        text-align: center;
-        height: 269px;
-        display: inline-block;
-        vertical-align: text-top;
-        .svg-item{
-          height: 41px;
-          width: 86px;
-        }
-        .transport{
-          color: #000000;
-          font:  .75rem $CamphorHeavy;
-          display: block;
-          text-transform: uppercase;
-          padding-top: 20px;
-          padding-bottom: 15px;
-        }
-        .time{
-          font-size: .8125rem;
-          display: block;
-          margin-bottom: 29px;
-          padding: 0 25px;
-        }
-        .info{
-          display: block;
-          padding-bottom: 15px;
-          font-size: .8125rem;
-          width: 275px;
-          margin: 0 auto;
-          a{
-            color: #c29f5f ;
-            text-decoration: underline ;
-          }
-          .price{
-            color: #c29f5f;
-          }
-          strong{
-            font-family: $CamphorBold;
-          }
-        }
-        .btn{
-          font-size: .625rem;
-          padding: 14px 26px;
-          border: 1px solid #c8a461;
-          color: #c8a461;
-          text-transform: uppercase;
-          text-decoration: none;
-          font-family: $CamphorHeavy;
-          @include transition(all 0.9s $linear);
-          .svg{
-            width: 10px;
-            height: 10px;
-            padding-right: 10px;
-            vertical-align: text-top;
-          }
-          .svg polygon{
-            fill: currentColor;
-          }
-        }
-        .btn:hover{
-          border-color: #000;
-          color: #000;
-        }
-      }
-      .large{
-        width: 495px;
-        text-align: center;
-      }
-      .descrip-participate{
-        width: 690px;
-        font-size: 1.25rem;
-        text-align: center;
-        margin: 0 auto;
-        line-height: 36px;
-      }
-      .contain-map{
-        width: 325px;
-        display: inline-block;
-        text-align: center;
-        margin-top: 59px;
-        .map{
-          margin-bottom: 40px;
-        }
-        .name{
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          font-family: $CamphorHeavy;     
-          display: block;
-          padding-bottom: 20px;
-          letter-spacing: 1px;
-        }
-        .btn{
-          font-size: .625rem;
-          padding: 14px 26px;
-          border: 1px solid #c8a461;
-          color: #c8a461;
-          text-transform: uppercase;
-          text-decoration: none;
-          font-family: $CamphorHeavy;         
-          display: block;
-          width: 130px;
-          margin: 0 auto;
-          @include transition(all 0.9s $linear);
-          .svg{
-            width: 15px;
-            height: 15px;
-            padding-right: 10px;
-            vertical-align: sub;
-          }
-          .svg polygon{
-            fill: currentColor;
-          }
-        }
-        .btn:hover{
-          border-color: #000;
-          color: #000;
-        }
-        .link{
-          padding-top: 38px;
-          a{            
-            color: #c8a461;
-            text-decoration: underline;
-            vertical-align: text-top;
-            font-size: 0.81rem;
-            @include transition(all 0.9s $linear);
-          }
-          a:hover{
-            color: #a87718;
-          }
-          img{
-            width: 12px;
-            height: 15px;
-            padding-right: 9px;
-          }
-        }
-      }
-    }
-  }
-  
-  // 2. Access
-  // ---------------------
-  
-  
-  .contain-acces{
-    .imgs-acces{
-      display: inline-block;
-      height: 762px;
-      width: 363px;
-      padding-right: 56px;
-      img{
-        padding-bottom: 31px;
-      }
-    }
-    .text-acces{
-      display: inline-block;
-      width: 355px;
-      vertical-align:top;
+	}
+	.logo{
+		margin-bottom: 28px;
+	}
+	.fa {
+		margin-bottom: 40px;
+		color: #c1c1c1;
+		position: absolute;
+		right: 1px;
+		top: 22px;
+	}
+	 .fa-plus{
+			background-image: url(../img/participate/case-plus.svg);
+			background-size: 45px;
+			background-position: 1px;
+			background-repeat: no-repeat;
+			width: 51px;
+			height: 51px;
+		}
+		 .fa-minus{
+			background-image: url(../img/participate/minus.svg);
+			background-size: 15px;
+			background-position: 14px 19px;
+			background-repeat: no-repeat;
+			width: 51px;
+			height: 51px;
+		}
+	.contain-participate{
+		background-color: #fff;
+		.contain-descript{
+			border-bottom: 1px solid #e0e0e0;
+			.descrip{
+				width: 785px;
+				margin: 0 auto;
+				padding: 46px 0px;
+				line-height: 30px;
+				color:#333333;
+				text-align: center;
+			}
+		}
+		section{
+			border-bottom: 1px solid #e0e0e0;
+			.contain-section{
+			width: 997px;
+			margin: 0 auto;
+			padding-bottom: 63px;
+			position: relative;
+			overflow: hidden;
+			height: 31px;
+				a{
+					color: #c29f5f;
+					text-decoration: underline;
+				}
+				.descrip-section{
+					 line-height: 24px;
+					 font-size: .8125rem;
+					.ask{
+					 font-size:0.81rem;
+					}
+					a{
+						font: .81rem $CamphorBold;
+						@include transition(all 0.9s $linear);
+					}
+					a:hover{
+						 color: #966505;
+					}
+				}
+				#google-map{
+					width: 975px;
+					height: 350px;
+					margin-top: 51px;
+				}
+			}
+			.title-participate:hover{
+			 cursor: pointer;
+			}
+			.fa:hover{
+				cursor: pointer;
+			}
+			.title-participate {
+				font: .875rem $CamphorBold;
+				color: #c1c1c1;
+				text-transform: uppercase;
+				padding-top: 39px;
+				padding-bottom: 36px;
+				letter-spacing: 2px;
+				 @include transition(all 0.9s $linear);
+				.plus-info{
+					width: 19px;
+					height: 40px !important;
+					padding-right: 22px;
+					margin-bottom: -12px;
+				}
+				.svg{
+					width: 20px;
+					height: 20px;
+					padding-right: 22px;
+					vertical-align: bottom;
+				}
+				.svg path{
+					fill:currentColor;
+				}
+				.svg .st0{
+					stroke : currentColor;
+				}
+			}
+			.part-plus-info{
+				padding-top: 27px;
+			}
+			.participate-active{
+				.title-participate{
+					color:#c29f5f;
+				}
+				.fa{
+					color:#c29f5f;
+				}
+			}
+			.title-participate:hover{
+					color:#c29f5f;
+			}
+			.item{
+				text-align: center;
+				width: 325px;
+				line-height: 24px;
+				text-align: center;
+				height: 269px;
+				display: inline-block;
+				vertical-align: text-top;
+				.svg-item{
+					height: 41px;
+					width: 86px;
+				}
+				.transport{
+					color: #000000;
+					font:  .75rem $CamphorHeavy;
+					display: block;
+					text-transform: uppercase;
+					padding-top: 20px;
+					padding-bottom: 15px;
+				}
+				.time{
+					font-size: .8125rem;
+					display: block;
+					margin-bottom: 29px;
+					padding: 0 25px;
+				}
+				.info{
+					display: block;
+					padding-bottom: 15px;
+					font-size: .8125rem;
+					width: 275px;
+					margin: 0 auto;
+					a{
+						color: #c29f5f ;
+						text-decoration: underline ;
+						@include transition(all 0.9s $linear);
+					}
+					a:hover{
+						color: #966505;
+					}
+					.price{
+						color: #c29f5f;
+					}
+					strong{
+						font-family: $CamphorBold;
+					}
+				}
+				.btn{
+					font-size: .625rem;
+					padding: 14px 26px;
+					border: 1px solid #c8a461;
+					color: #c8a461;
+					text-transform: uppercase;
+					text-decoration: none;
+					font-family: $CamphorHeavy;
+					@include transition(all 0.9s $linear);
+					.svg{
+						width: 10px;
+						height: 10px;
+						padding-right: 10px;
+						vertical-align: text-top;
+					}
+					.svg polygon{
+						fill: currentColor;
+					}
+				}
+				.btn:hover{
+					border-color: #000;
+					color: #000;
+				}
+			}
+			.large{
+				width: 495px;
+				text-align: center;
+			}
+			.descrip-participate{
+				width: 690px;
+				font-size: 1.25rem;
+				text-align: center;
+				margin: 0 auto;
+				line-height: 36px;
+			}
+			.contain-map{
+				width: 325px;
+				display: inline-block;
+				text-align: center;
+				margin-top: 59px;
+				.map{
+					margin-bottom: 40px;
+				}
+				.name{
+					font-size: 0.75rem;
+					text-transform: uppercase;
+					font-family: $CamphorHeavy;
+					display: block;
+					padding-bottom: 20px;
+					letter-spacing: 1px;
+				}
+				.btn{
+					font-size: .625rem;
+					padding: 14px 26px;
+					border: 1px solid #c8a461;
+					color: #c8a461;
+					text-transform: uppercase;
+					text-decoration: none;
+					font-family: $CamphorHeavy;
+					display: block;
+					width: 130px;
+					margin: 0 auto;
+					@include transition(all 0.9s $linear);
+					.svg{
+						width: 15px;
+						height: 15px;
+						padding-right: 10px;
+						vertical-align: sub;
+					}
+					.svg polygon{
+						fill: currentColor;
+					}
+				}
+				.btn:hover{
+					border-color: #000;
+					color: #000;
+				}
+				.link{
+					padding-top: 38px;
+					color: #c8a461;
+					a{
+						color: #c8a461;
+						text-decoration: underline;
+						vertical-align: text-top;
+						font-size: 0.81rem;
+						@include transition(all 0.9s $linear);
+					}
+					a:hover{
+						color: #966505;
+					}
+					.svg{
+						width: 12px;
+						height: 15px;
+						padding-right: 9px;
+						@include transition(all 0.9s $linear);
+					}
+					.svg .st0{
+						fill:currentColor;
+					}
+				}
+				.link:hover{
+					 color: #966505;
+				}
+			}
+		}
+	}
 
-      .title-acces{
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        font-family: $CamphorBold;
-        font-size:.75rem;
-        padding-bottom: 20px;
-        img{
-         height: 15px;
-          padding-right: 11px;
-          vertical-align: text-bottom;
-        }
-      }
-      .descript-acces{
-        padding-bottom: 20px;
-        font-size: .8125rem;
-        line-height: 24px;
-        
-        strong{
-          font-family: $CamphorBold;
-        }
-      }
-    }
-  }
-  .contain-cinema{
-    .title-cinema{
-      font-size: 0.88rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-family: $CamphorBold;
-    }
-    .contain-item-cinema{
-      padding-bottom: 71px;
-      .cinema{
-      padding-top: 29px;
-      
-      img{
-        display: inline-block;
-        width: 363px;
-        height: 229px;
-      }
-      .text-cinema{
-        width: 521px;
-        display: inline-block;
-        vertical-align: top;
-        margin-left: 59px;
-        h4{
-          font-size: 0.75rem;
-          text-transform: uppercase; 
-          font-family : $CamphorBold;
-          letter-spacing: 2px;
-          padding-bottom: 28px;
-        }
-        p{
-          font-size: 0.81rem;
-          line-height: 24px;
-          padding-bottom: 15px;
-          strong{
-            color: #c8a461;
-          }
-          a{ 
-            color: #c8a461;
-          }
-        }
-        a{
-          font-size: 0.81rem;
-        }
-      }
-    } 
-    }
-    .descrip-participate{
-      padding-top:36px;
-      padding-bottom: 37px;
-    }
-    .descrip-title{
-      text-align: center;
-      line-height:  26px;
-      font-size: 0.81rem;
-      strong{
-        color: #c8a461;  
-        font-family : $CamphorBold;
-        font-size: 0.81rem;
-      }
-    }
-    .loc{
-      display: block;
-      width: 246px;
-      margin: 0 auto;
-      line-height: 21px;
-    }
-    .contain-map{
-      vertical-align: top;
-      font-size: 0.81rem;
-      strong{
-         font-family : $CamphorBold;       
-      }
-      span{
-        padding-bottom: 5px;
-      }
-    }
-    .contain-good-practice{
-      width: 980px;
-      margin: 0 auto;
-      padding-top: 10px;
-    .item-good-practice{
-      width: 181px;
-      display: inline-block;
-      padding-left: 53px;
-      text-align: center; 
-      vertical-align: top;
-      strong{
-        display: block;
-        font-size: 0.81rem;
-        font-family : $CamphorBold;  
-        width: 188px;
-        margin: 0 auto;
-        line-height: 24px;
-      }
-      img{
-        width: 20%;
-      }
-    }
-    }
-  }
-  
+	// 2. Access
+	// ---------------------
+
+
+	.contain-acces{
+		.imgs-acces{
+			display: inline-block;
+			height: 762px;
+			width: 363px;
+			padding-right: 56px;
+			img{
+				padding-bottom: 31px;
+			}
+		}
+		.text-acces{
+			display: inline-block;
+			width: 355px;
+			vertical-align:top;
+
+			.title-acces{
+				text-transform: uppercase;
+				letter-spacing: 4px;
+				font-family: $CamphorBold;
+				font-size:.75rem;
+				padding-bottom: 20px;
+				img{
+				 height: 15px;
+					padding-right: 11px;
+					vertical-align: text-bottom;
+				}
+			}
+			.descript-acces{
+				padding-bottom: 20px;
+				font-size: .8125rem;
+				line-height: 24px;
+
+				strong{
+					font-family: $CamphorBold;
+				}
+			}
+		}
+	}
+	.contain-cinema{
+		.title-cinema{
+			font-size: 0.88rem;
+			letter-spacing: 4px;
+			text-transform: uppercase;
+			font-family: $CamphorBold;
+		}
+		.contain-item-cinema{
+			padding-bottom: 71px;
+			.cinema{
+			padding-top: 29px;
+
+			img{
+				display: inline-block;
+				width: 363px;
+				height: 229px;
+			}
+			.text-cinema{
+				width: 521px;
+				display: inline-block;
+				vertical-align: top;
+				margin-left: 59px;
+				h4{
+					font-size: 0.75rem;
+					text-transform: uppercase;
+					font-family : $CamphorBold;
+					letter-spacing: 2px;
+					padding-bottom: 28px;
+				}
+				p{
+					font-size: 0.81rem;
+					line-height: 24px;
+					padding-bottom: 15px;
+					strong{
+						color: #c8a461;
+					}
+					a{
+						color: #c8a461;
+					}
+				}
+				a{
+					font-size: 0.81rem;
+				}
+			}
+		}
+		}
+		.descrip-participate{
+			padding-top:36px;
+			padding-bottom: 37px;
+		}
+		.descrip-title{
+			text-align: center;
+			line-height:  26px;
+			font-size: 0.81rem;
+			strong{
+				color: #c8a461;
+				font-family : $CamphorBold;
+				font-size: 0.81rem;
+			}
+		}
+		.loc{
+			display: block;
+			width: 246px;
+			margin: 0 auto;
+			line-height: 21px;
+		}
+		.contain-map{
+			vertical-align: top;
+			font-size: 0.81rem;
+			strong{
+				 font-family : $CamphorBold;
+			}
+			span{
+				padding-bottom: 5px;
+			}
+		}
+		.contain-good-practice{
+			width: 980px;
+			margin: 0 auto;
+			padding-top: 10px;
+		.item-good-practice{
+			width: 181px;
+			display: inline-block;
+			padding-left: 53px;
+			text-align: center;
+			vertical-align: top;
+			strong{
+				display: block;
+				font-size: 0.81rem;
+				font-family : $CamphorBold;
+				width: 188px;
+				margin: 0 auto;
+				line-height: 24px;
+			}
+			img{
+				width: 20%;
+			}
+		}
+		}
+	}
+
 }
 
-  // 3. Partners
-  // ========================
+	// 3. Partners
+	// ========================
 
 .partners{
-  margin-bottom: 42px;
-  .content-partners{
-    background-color: #fff;
-    .contain-section{
-      margin: 0 auto;
-      width: 975px;
-      position: relative;
-      overflow: hidden;
-      height: 111px;
-      .fa{
-        top:35px;
-      }
-      .title-section{
-        font-family : $CamphorBold;  
-        text-transform: uppercase;
-        color: #c8a461;
-        font-size: 0.88rem;
-        letter-spacing: 2px;
-        padding-top: 55px;
-      }  
-      .item-partners{
-        border-bottom: 1px solid #c1c1c1;
-        padding: 41px 0px;
-        .contain-img{
-          display: inline-block;
-          width: 400px;
-          vertical-align: top;
-          img{
-            padding: 65px;
-          }
-        }
-        .text-partners{
-          width: 571px;
-          display: inline-block;
-          vertical-align: top;
-          .title-partners{
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-family : $CamphorBold;  
-            padding-bottom: 29px;
-          }
-          .descrip-partners{
-            font-size: 0.81rem;
-            line-height: 24px;
-            margin-bottom: 18px;
-          }
-          a{ 
-            color: #c8a461;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            padding-right: 13px;
-          }
-          .content-text-with-portrait{
-            display: inline-block;
-            width: 69%;
-          }
-          .portrait{
-            display: inline-block;
-            width: 134px;
-            vertical-align: top;
-            margin-top: 9%;
-            margin-left: 39px;
-            text-align: center;
-            .name{
-              display: block;
-              font-family : $CamphorBold; 
-              padding-bottom: 5px;
-              padding-top: 10px;
-            }
-            .rank{
-              display: block;
-              font-size: 0.75rem;
-              padding-bottom: 5px;
-            }
-          }
-        }
-      }
-    }
-  } 
-  .content-partners:last-child{
-    .item-partners:last-child{
-      border-bottom: #FFF solid 0px;
-    }
-  }
+		.title-section:hover{
+			cursor: pointer;
+		}
+		.fa:hover{
+			cursor: pointer;
+		}
+	margin-bottom: 42px;
+	.content-partners{
+		background-color: #fff;
+		.contain-section{
+			margin: 0 auto;
+			width: 975px;
+			position: relative;
+			overflow: hidden;
+			height: 111px;
+			.fa{
+				top:35px;
+			}
+			.title-section{
+				font-family : $CamphorBold;
+				text-transform: uppercase;
+				color: #c8a461;
+				font-size: 0.88rem;
+				letter-spacing: 2px;
+				padding-top: 55px;
+			}
+			.item-partners{
+				border-bottom: 1px solid #c1c1c1;
+				padding: 41px 0px;
+				.contain-img{
+					display: inline-block;
+					width: 400px;
+					vertical-align: top;
+					img{
+						padding: 65px;
+					}
+				}
+				.text-partners{
+					width: 571px;
+					display: inline-block;
+					vertical-align: top;
+					.title-partners{
+						font-size: 0.75rem;
+						text-transform: uppercase;
+						font-family : $CamphorBold;
+						padding-bottom: 29px;
+					}
+					.descrip-partners{
+						font-size: 0.81rem;
+						line-height: 24px;
+						margin-bottom: 18px;
+					}
+					a{
+						color: #c8a461;
+						text-transform: uppercase;
+						font-size: 0.75rem;
+						padding-right: 13px;
+					}
+					.content-text-with-portrait{
+						display: inline-block;
+						width: 69%;
+					}
+					.portrait{
+						display: inline-block;
+						width: 134px;
+						vertical-align: top;
+						margin-top: 9%;
+						margin-left: 39px;
+						text-align: center;
+						.name{
+							display: block;
+							font-family : $CamphorBold;
+							padding-bottom: 5px;
+							padding-top: 10px;
+						}
+						.rank{
+							display: block;
+							font-size: 0.75rem;
+							padding-bottom: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.content-partners:last-child{
+		.item-partners:last-child{
+			border-bottom: #FFF solid 0px;
+		}
+	}
 }
 
 
-  // 3. contractor
-  // ========================
+	// 3. contractor
+	// ========================
 
 
 .contractor{
-  margin-bottom: 42px;
-  .content-contractor{
-    background-color: #fff;
-    .contain-section{
-      margin: 0 auto;
-      width: 975px;
-      position: relative;
-      .fa{
-        top:45px;
-      }
-      .title-section{
-        text-transform: uppercase;
-        color: #c8a461;
-        font-size: 0.88rem;
-        letter-spacing: 2px;
-        padding-top: 55px;
-        font-family : $CamphorBold;  
-      }  
-      .item-contractor{
-        border-bottom: 1px solid #c1c1c1;
-        padding: 41px 0px;
-        .contain-img{
-          display: inline-block;
-          width: 400px;
-          vertical-align: top;
-          text-align: center;
-          img{
-            padding: 22px;
-          }
-        }
-        .text-contractor{
-          width: 571px;
-          display: inline-block;
-          vertical-align: top;
+	margin-bottom: 42px;
+	.content-contractor{
+		background-color: #fff;
+		.contain-section{
+			margin: 0 auto;
+			width: 975px;
+			position: relative;
+			.fa{
+				top:45px;
+			}
+			.title-section{
+				text-transform: uppercase;
+				color: #c8a461;
+				font-size: 0.88rem;
+				letter-spacing: 2px;
+				padding-top: 55px;
+				font-family : $CamphorBold;
+			}
+			.item-contractor{
+				border-bottom: 1px solid #c1c1c1;
+				padding: 41px 0px;
+				.contain-img{
+					display: inline-block;
+					width: 400px;
+					vertical-align: top;
+					text-align: center;
+					img{
+						padding: 22px;
+					}
+				}
+				.text-contractor{
+					width: 571px;
+					display: inline-block;
+					vertical-align: top;
 
-          .title-contractor{
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-family : $CamphorBold;  
-            padding-bottom: 29px;
-            letter-spacing: 2px;
-          }
-          .descrip-contractor{
-            font-size: 0.81rem;
-            line-height: 24px;
-            margin-bottom: 22px;
-          }
-          a{
-            color: #c8a461;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            padding-right: 13px;
-          }
-          .content-text-with-portrait{
-            display: inline-block;
-            width: 69%;
-          }
-          .portrait{
-            display: inline-block;
-            width: 134px;
-            vertical-align: top;
-            margin-top: 9%;
-            margin-left: 39px;
-            text-align: center;
-            img{
-              margin-bottom: 9px;
-            }
-            .name{
-              display: block;
-              font-family : $CamphorBold; 
-              padding-bottom: 5px;
-            }
-            .rank{
-              display: block;
-              font-size: 0.75rem;
-              padding-bottom: 5px;
-            }
-          }
-        }
-      }
-    }
-  } 
-  .content-contractor:last-child{
-    .item-contractor:last-child{
-      border-bottom: #FFF solid 0px;
-    }
-  }
+					.title-contractor{
+						font-size: 0.75rem;
+						text-transform: uppercase;
+						font-family : $CamphorBold;
+						padding-bottom: 29px;
+						letter-spacing: 2px;
+					}
+					.descrip-contractor{
+						font-size: 0.81rem;
+						line-height: 24px;
+						margin-bottom: 22px;
+					}
+					a{
+						color: #c8a461;
+						text-transform: uppercase;
+						font-size: 0.75rem;
+						padding-right: 13px;
+					}
+					.content-text-with-portrait{
+						display: inline-block;
+						width: 69%;
+					}
+					.portrait{
+						display: inline-block;
+						width: 134px;
+						vertical-align: top;
+						margin-top: 9%;
+						margin-left: 39px;
+						text-align: center;
+						img{
+							margin-bottom: 9px;
+						}
+						.name{
+							display: block;
+							font-family : $CamphorBold;
+							padding-bottom: 5px;
+						}
+						.rank{
+							display: block;
+							font-size: 0.75rem;
+							padding-bottom: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.content-contractor:last-child{
+		.item-contractor:last-child{
+			border-bottom: #FFF solid 0px;
+		}
+	}
 }
 
 // 4. Manual
 // ==========================
 
 .manual{
-  margin-bottom: 42px;
-  .title-bandeau{
-    background-color: #fff;
-    padding: 50px 0px;
-    p{
-      font-size: 1rem;
-      line-height: 30px;
-      width: 778px;
-      margin: 0 auto;
-      text-align: center;
-    }
-  }
-  
-  .content-manual{
-    background-color: #fff;
-    border-top: 1px solid #e0e0e0;
-    .contain-section{
-      margin: 0 auto;
-      width: 975px;
-      position: relative;
-      overflow: hidden;
-      height: 100px;
-      .fa{
-        top:25px;
-      }
-      .title-section{
-        font-family : $CamphorBold;  
-        text-transform: uppercase;
-        color: #c1c1c1;
-        font-size: 0.88rem;
-        letter-spacing: 2px;
-        padding-top: 41px;
-        @include transition(all 0.9s $linear);
-         
-        .logo-title{
-          width: 21px;
-          height: 21px;
-          padding-right: 22px;
-          vertical-align: bottom;
-        }
-        .svg path{
-          fill:currentColor;
-          stroke : currentColor;
-        }
-        .svg .st0{
-          stroke : currentColor;
-        }
-        .acces path{
-          fill: white;
-        }
-      }  
-      .title-section:hover{
-        color:#c8a461;
-        cursor: pointer;
-      }
-      .fa:hover{
-        cursor: pointer;
-      }
-      .descrip-section{
-        p{
-          width: 750px;
-          margin: 0 auto;
-          font-size: 1.25rem;
-          line-height: 36px;
-          padding: 39px 0px;
-          text-align: center;
-        }
-      }
-      .item-manual{
-        padding: 41px 0px;
-        .contain-img{
-          display: inline-block;
-          width: 422px;
-          vertical-align: top;
-          img{
-            padding-bottom: 30px;
-          }
-        }
-        .text-manual{
-          width: 547px;
-          display: inline-block;
-          vertical-align: top;
-          .title-manual{
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-family : $CamphorBold;  
-            padding-bottom: 29px;
-          }
-          .descrip-manual{
-            font-size: 0.81rem;
-            line-height: 24px;
-            strong{
-              color: #c29f5f;
-              font-size:0.88rem;
-              font-family : $CamphorBold; 
-            }
-          }
-          .title-descript{
-          margin: 18px 0px;  
-          }
-          a{ 
-            color: #c8a461;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            padding-right: 13px;
-          }
-          .content-text-with-portrait{
-            display: inline-block;
-            width: 69%;
-          }
-          .portrait{
-            display: inline-block;
-            width: 134px;
-            vertical-align: top;
-            margin-top: 9%;
-            margin-left: 39px;
-            text-align: center;
-            .name{
-              display: block;
-              font-family : $CamphorBold; 
-              padding-bottom: 5px;
-              padding-top: 10px;
-            }
-            .rank{
-              display: block;
-              font-size: 0.75rem;
-              padding-bottom: 5px;
-            }
-          }
-          ul{
-            line-height: 24px;
-            li{
-              font-size: 0.81rem;
-              list-style: disc;
-              list-style-position: inside;
-            }
-          }
-        }
-        .accredit{
-          .small-container-title{
-            width: 353px;
-          }
-          .descrip-manual{
-            strong{
-              color: #000;
-            }
-          }
-          .contain-people{
-            .people{
-              width: 184px;
-              display: inline-block;
-              line-height: 24px;
-              font-size: 0.81rem;
-              vertical-align: text-top;
-              padding-bottom: 24px;
-              strong{
-                font-family : $CamphorBold;
-                display: block;
-              }
-              .num{
-                color: #c29f5f;
-              }
-            }
-          }
-          .title-item-manual{
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            font-family : $CamphorBold;  
-            text-transform: uppercase;
-          }
-        } 
-        .contain-infos{
-          .item-infos{
-            width: 357px;
-            display: inline-block;
-            padding: 0px 60px;
-            padding-bottom: 22px;
-            vertical-align: top;
-            text-align: center;
-            font-size: 0.81rem;
-            line-height: 24px;
-            img{
-              width: 50px;
-              display: block;
-              margin: 0 auto;
-            }
-            .title-infos{
-              font-size: 0.75rem;
-              text-transform: uppercase;
-              font-family : $CamphorBold; 
-              display: block;
-              padding-bottom: 30px;
-              padding-top: 12px;
-              letter-spacing: 2px;
-            }
-            strong{
-              font-family : $CamphorBold; 
-            }
-            .phone{
-              color:#c8a461;
-            }
-          }
-        }
-      }
-    }
-    .participate-active{
-      .title-section{
-        color: #c8a461;
-      }
-    }
-  } 
-  .content-manual:last-child{
-    .item-manual:last-child{
-      border-bottom: #FFF solid 0px;
-    }
-  }
+	margin-bottom: 42px;
+	.title-bandeau{
+		background-color: #fff;
+		padding: 50px 0px;
+		p{
+			font-size: 1rem;
+			line-height: 30px;
+			width: 778px;
+			margin: 0 auto;
+			text-align: center;
+		}
+	}
+
+	.content-manual{
+		background-color: #fff;
+		border-top: 1px solid #e0e0e0;
+		.contain-section{
+			margin: 0 auto;
+			width: 975px;
+			position: relative;
+			overflow: hidden;
+			height: 100px;
+			.fa{
+				top:25px;
+			}
+			.title-section{
+				font-family : $CamphorBold;
+				text-transform: uppercase;
+				color: #c1c1c1;
+				font-size: 0.88rem;
+				letter-spacing: 2px;
+				padding-top: 41px;
+				@include transition(all 0.9s $linear);
+
+				.logo-title{
+					width: 21px;
+					height: 21px;
+					padding-right: 22px;
+					vertical-align: bottom;
+				}
+				.svg path{
+					fill:currentColor;
+					stroke : currentColor;
+				}
+				.svg .st0{
+					stroke : currentColor;
+				}
+				.acces path{
+					fill: white;
+				}
+			}
+			.title-section:hover{
+				color:#c8a461;
+				cursor: pointer;
+			}
+			.fa:hover{
+				cursor: pointer;
+			}
+			.descrip-section{
+				p{
+					width: 750px;
+					margin: 0 auto;
+					font-size: 1.25rem;
+					line-height: 36px;
+					padding: 39px 0px;
+					text-align: center;
+				}
+			}
+			.item-manual{
+				padding: 41px 0px;
+				.contain-img{
+					display: inline-block;
+					width: 422px;
+					vertical-align: top;
+					img{
+						padding-bottom: 30px;
+					}
+				}
+				.text-manual{
+					width: 547px;
+					display: inline-block;
+					vertical-align: top;
+					.title-manual{
+						font-size: 0.75rem;
+						text-transform: uppercase;
+						font-family : $CamphorBold;
+						padding-bottom: 29px;
+					}
+					.descrip-manual{
+						font-size: 0.81rem;
+						line-height: 24px;
+						strong{
+							color: #c29f5f;
+							font-size:0.88rem;
+							font-family : $CamphorBold;
+						}
+					}
+					.title-descript{
+					margin: 18px 0px;
+					}
+					a{
+						color: #c8a461;
+						text-transform: uppercase;
+						font-size: 0.75rem;
+						padding-right: 13px;
+					}
+					.content-text-with-portrait{
+						display: inline-block;
+						width: 69%;
+					}
+					.portrait{
+						display: inline-block;
+						width: 134px;
+						vertical-align: top;
+						margin-top: 9%;
+						margin-left: 39px;
+						text-align: center;
+						.name{
+							display: block;
+							font-family : $CamphorBold;
+							padding-bottom: 5px;
+							padding-top: 10px;
+						}
+						.rank{
+							display: block;
+							font-size: 0.75rem;
+							padding-bottom: 5px;
+						}
+					}
+					ul{
+						line-height: 24px;
+						li{
+							font-size: 0.81rem;
+							list-style: disc;
+							list-style-position: inside;
+						}
+					}
+				}
+				.accredit{
+					.small-container-title{
+						width: 353px;
+					}
+					.descrip-manual{
+						strong{
+							color: #000;
+						}
+					}
+					.contain-people{
+						.people{
+							width: 184px;
+							display: inline-block;
+							line-height: 24px;
+							font-size: 0.81rem;
+							vertical-align: text-top;
+							padding-bottom: 24px;
+							strong{
+								font-family : $CamphorBold;
+								display: block;
+							}
+							.num{
+								color: #c29f5f;
+							}
+						}
+					}
+					.title-item-manual{
+						font-size: 0.75rem;
+						letter-spacing: 2px;
+						font-family : $CamphorBold;
+						text-transform: uppercase;
+					}
+				}
+				.contain-infos{
+					.item-infos{
+						width: 357px;
+						display: inline-block;
+						padding: 0px 60px;
+						padding-bottom: 22px;
+						vertical-align: top;
+						text-align: center;
+						font-size: 0.81rem;
+						line-height: 24px;
+						img{
+							width: 50px;
+							display: block;
+							margin: 0 auto;
+						}
+						.title-infos{
+							font-size: 0.75rem;
+							text-transform: uppercase;
+							font-family : $CamphorBold;
+							display: block;
+							padding-bottom: 30px;
+							padding-top: 12px;
+							letter-spacing: 2px;
+						}
+						strong{
+							font-family : $CamphorBold;
+						}
+						.phone{
+							color:#c8a461;
+						}
+					}
+				}
+			}
+		}
+		.participate-active{
+			.title-section{
+				color: #c8a461;
+			}
+		}
+	}
+	.content-manual:last-child{
+		.item-manual:last-child{
+			border-bottom: #FFF solid 0px;
+		}
+	}
 }

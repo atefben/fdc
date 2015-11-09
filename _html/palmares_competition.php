@@ -42,7 +42,7 @@
             <div class="title-list-cat">
                 <h2 class="title">Longs métrages</h2>
             </div>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-compet1.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-compet1.jpg" alt="images films">
@@ -57,7 +57,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/films/cover-film-cdo.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/films/cover-film-cdo.jpg" alt="images films">
@@ -73,7 +73,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-compet3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-compet3.jpg" alt="images films">
@@ -88,7 +88,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-compet4.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-compet4.jpg" alt="images films">
@@ -97,9 +97,8 @@
                     <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
                     <strong class="palme-dor-text verticalline">Prix d'interprétation féminine ex-aequo</strong>
                     <img src="img/palmares/palmedor-compet-portait.jpg" alt="palme d or" class="palme-dor-portrait">
-                    <h3 class="title-item">Emmanuelle bercot</h3>
-                    <span class="nom-item verticalline">Actrice</span>
-                    <h3 class="title-item">Chronique</h3>
+                    <h3 class="title-item verticalline">Emmanuelle bercot</h3>
+                    <h3 class="title-item">Mon roi</h3>
                     <span class="nom-item">Maïwenn</span>
                   </div>
                 </div>
@@ -111,7 +110,7 @@
             <div class="title-list-cat">
                 <h2 class="title">Courts métrages</h2>
             </div>
-            <article style="background-image:url(img/palmares/hover-film-compet3.jpg)">
+            <article style="background-image:url(img/palmares/cover-film-compet5.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-compet5.jpg" alt="images films">

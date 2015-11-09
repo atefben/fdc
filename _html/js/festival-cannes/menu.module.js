@@ -11,7 +11,7 @@ $(document).ready(function() {
     $('#main, footer').addClass('overlay');
     $('.main>li').not($(this)).addClass('fade');
   }, function() {
-    if(!$('#selection').hasClass('open')) {
+    if(!$('#selection').hasClass('open') && !$('#searchContainer').hasClass('open')) {
       $('#main, footer').removeClass('overlay');
     }
     $('.main li').removeClass('fade');

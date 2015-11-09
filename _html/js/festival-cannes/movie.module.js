@@ -100,6 +100,7 @@ $(document).ready(function() {
         $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
         setTimeout(function() {
           $('header').addClass('sticky');
+          $('body').css('padding-top', 0);
         }, 800);
         
       });
@@ -112,6 +113,14 @@ $(document).ready(function() {
       } else {
         $('.nextmovie').addClass('show');
       }
+    });
+
+    $('body').on('click', '.single-movie .prevmovie', function(e) {
+      $('.single-movie .nav.prev').trigger('click');
+    });
+
+    $('body').on('click', '.single-movie .nextmovie', function(e) {
+      $('.single-movie .nav.next').trigger('click');
     });
 
     // previous and next over

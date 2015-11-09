@@ -11,15 +11,20 @@ $(document).ready(function() {
      $('#live .play').on('click', function(e) {
        e.preventDefault();
        $('#live').addClass('on');
-       $('#live .img').addClass('rePosition');
-       $('#live').data('height', $('#live').height()).height($(window).height() - 91).css('padding-top', '91px');
-       $('body').css('padding-top', '91px');
+       //$('#live .img').addClass('rePosition');
+       $('#live').data('height', $('#live').height()).height($(window).height() - 91);
+       $('#main').css('padding-top', '91px');
+       $('body').css('padding-top', 0);
        setTimeout(function() {
           $('header').addClass('sticky');
         }, 800);
      });
 
      $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
+
+     if($('header').hasClass('sticky')) {
+      $('.webtv #live .img').css('top', '-10%');
+     }
     }
 
    // create slide for trailers

@@ -44,6 +44,7 @@ $(document).ready(function() {
       var a = $that.find('.select span.active').data('filter');
       
       if(a == 'all') {
+        $('.content-news .slideshow').show();
         return;
       }
 
@@ -65,8 +66,14 @@ $(document).ready(function() {
       $('*' + exp2).show();
 
       if($('.articles').length != 0) {
-        $('.articles').removeClass('left right').addClass('center');
+        $('.articles').removeClass('left right').addClass('center noOv');
         $('.articles article').removeClass('double');
+
+        if($('#format .select .active').text() == "Photo") {
+          $('.content-news .slideshow').show();
+        } else {
+          $('.content-news .slideshow').hide();
+        }
       }
     } else {
       $('*[data-' + id + ']').show();

@@ -231,8 +231,8 @@
                   </div>
                   <div class="text-container">
                     <span class="category">Un certain regard</span>
-                    <h3>Enragé</h3>
-                    <p class="director">Eric HANNEZO<p>
+                    <h3><a href="#">Enragé</a></h3>
+                    <p class="director"><a href="#">Eric HANNEZO</a><p>
                     <p>France - 2014</p>
                     <p>1h35</p>
                   </div>

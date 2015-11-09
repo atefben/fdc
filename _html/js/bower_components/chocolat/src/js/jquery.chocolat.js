@@ -29,6 +29,7 @@
         this._defaults = defaults;
         this.elems     = {};
         this.element   = element;
+        this.timeClock = '';
 
         this._cssClasses = [
             'chocolat-open',
@@ -48,6 +49,7 @@
             that.settings.images.push({
                 title  : $(this).attr('title'),
                 src    : $(this).attr('href'),
+                credit : $(this).data('credit'),
                 height : false,
                 width  : false
             });
@@ -124,7 +126,7 @@
 
             setTimeout(function() {
                 $('.chocolat-content').removeClass('hide');
-            }, 500);
+            }, 1200);
 
             return deferred;
 
@@ -135,6 +137,7 @@
             var fitting;
             this.settings.currentImage = i;
             this.description();
+            this.credit();
             this.pagination();
             this.arrows();
 
@@ -250,7 +253,7 @@
                 else {
                     return that.load(requestedImage);
                 }
-            }, 500);
+            }, 900);
             
         },
 
@@ -279,6 +282,11 @@
                 $([this.elems.left[0],this.elems.right[0]])
                     .removeClass('active');
             }
+        },
+
+        credit: function() {
+            var that = this;
+            $('.chocolat-bottom .credit').html(that.settings.images[that.settings.currentImage].credit);
         },
 
         description : function() {

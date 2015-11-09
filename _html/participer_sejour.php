@@ -81,19 +81,19 @@
               <strong class="name">Le festival de cannes</strong>
               <img src="img/participate/map.png" alt="" class="map">
               <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="" class="svg">Télécharger</a>
-              <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
+              <div class="link"><img src="img/participate/plan.svg" alt="" class="svg"><a href="#">Se repérer sur Google Maps</a></div>
             </div>
             <div class="contain-map">
               <strong class="name">La zone festival</strong>
               <img src="img/participate/map2.png" alt="" class="map">
               <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="" class="svg">Télécharger</a>
-              <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
+              <div class="link"><img src="img/participate/plan.svg" alt="" class="svg"><a href="#">Se repérer sur Google Maps</a></div>
             </div>
             <div class="contain-map">
               <strong class="name">Le palais</strong>
               <img src="img/participate/map3.png" alt="" class="map">
               <a href="" class="btn telecharger"><img src="img/participate/telecharger.svg" alt="" class="svg">Télécharger</a>
-              <div class="link"><img src="img/participate/plan.svg" alt=""><a href="#">Se repérer sur Google Maps</a></div>
+              <div class="link"><img src="img/participate/plan.svg" alt="" class="svg"><a href="#">Se repérer sur Google Maps</a></div>
             </div>
           </div>
         </section>

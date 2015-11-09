@@ -32,8 +32,7 @@ $(document).ready(function() {
       e.preventDefault();
 
       if($(this).is(':not(.active)')) {
-        var urlPath = $(this).attr('href');
-        
+        var urlPath = $(this).attr('href');  
 //        $.get($(this).data('url'), function(data){
         $.get(urlPath, function(data){
             $( ".container-list" ).html( $(data).find('.container-list') );
