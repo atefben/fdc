@@ -38,6 +38,21 @@ class Homepage
     private $sliderNews;
 
     /**
+     * @var Info
+     *
+     * @ORM\OneToMany(targetEntity="Info", mappedBy="homepage")
+     */
+    private $sliderInfos;
+
+
+    /**
+     * @var Info
+     *
+     * @ORM\OneToMany(targetEntity="Statement", mappedBy="homepage")
+     */
+    private $sliderStatements;
+
+    /**
      * @var WebTv
      *
      * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="homepage")
@@ -126,9 +141,9 @@ class Homepage
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->sliderNews = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->topVideos = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->topWebTvs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sliderNews = new ArrayCollection();
+        $this->topVideos = new ArrayCollection();
+        $this->topWebTvs = new ArrayCollection();
         $this->displayedPrefooters = false;
         $this->displayedPushsMain = false;
         $this->displayedPushsSecondary = false;
@@ -364,6 +379,7 @@ class Homepage
      */
     public function addSliderNews(\Base\CoreBundle\Entity\News $sliderNews)
     {
+        $sliderNews->setHomepage($this);
         $this->sliderNews[] = $sliderNews;
 
         return $this;
@@ -397,6 +413,7 @@ class Homepage
      */
     public function addTopVideo(\Base\CoreBundle\Entity\MediaVideo $topVideos)
     {
+        $topVideos->setHomepage($this);
         $this->topVideos[] = $topVideos;
 
         return $this;
@@ -430,6 +447,7 @@ class Homepage
      */
     public function addTopWebTv(\Base\CoreBundle\Entity\WebTv $topWebTvs)
     {
+        $topWebTvs->setHomepage($this);
         $this->topWebTvs[] = $topWebTvs;
 
         return $this;
@@ -453,5 +471,73 @@ class Homepage
     public function getTopWebTvs()
     {
         return $this->topWebTvs;
+    }
+
+    /**
+     * Add sliderInfos
+     *
+     * @param \Base\CoreBundle\Entity\Info $sliderInfos
+     * @return Homepage
+     */
+    public function addSliderInfo(\Base\CoreBundle\Entity\Info $sliderInfos)
+    {
+        $sliderInfos->setHomepage($this);
+        $this->sliderInfos[] = $sliderInfos;
+
+        return $this;
+    }
+
+    /**
+     * Remove sliderInfos
+     *
+     * @param \Base\CoreBundle\Entity\Info $sliderInfos
+     */
+    public function removeSliderInfo(\Base\CoreBundle\Entity\Info $sliderInfos)
+    {
+        $this->sliderInfos->removeElement($sliderInfos);
+    }
+
+    /**
+     * Get sliderInfos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSliderInfos()
+    {
+        return $this->sliderInfos;
+    }
+
+    /**
+     * Add sliderStatements
+     *
+     * @param \Base\CoreBundle\Entity\Statement $sliderStatements
+     * @return Homepage
+     */
+    public function addSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatements)
+    {
+        $sliderStatements->setHomepage($this);
+        $this->sliderStatements[] = $sliderStatements;
+
+        return $this;
+    }
+
+    /**
+     * Remove sliderStatements
+     *
+     * @param \Base\CoreBundle\Entity\Statement $sliderStatements
+     */
+    public function removeSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatements)
+    {
+        $this->sliderStatements->removeElement($sliderStatements);
+    }
+
+    /**
+     * Get sliderStatements
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSliderStatements()
+    {
+        return $this->sliderStatements;
     }
 }

@@ -82,6 +82,12 @@ class FilmJury
     private $function;
 
     /**
+     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="jury", cascade={"persist"})
+     * @ORM\OrderBy({"position"="ASC"})
+     */
+    private $medias;
+
+    /**
      * @var ArrayCollection
      *
      * @Groups({"jury_list", "jury_show"})

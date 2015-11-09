@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("name")
  */
-class NewsTagTranslation
+class TagTranslation
 {
     use Time;
     use Translation;
@@ -32,7 +32,7 @@ class NewsTagTranslation
      * Set name
      *
      * @param string $name
-     * @return NewsTagTranslation
+     * @return TagTranslation
      */
     public function setName($name)
     {

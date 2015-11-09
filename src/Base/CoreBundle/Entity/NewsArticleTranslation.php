@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Status;
 
 use JMS\Serializer\Annotation\Groups;
@@ -21,9 +22,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class NewsArticleTranslation implements NewsTranslationInterface
 {
+    use Seo;
+    use Status;
     use Time;
     use Translation;
-    use Status;
 
     /**
      * @var string
@@ -50,20 +52,6 @@ class NewsArticleTranslation implements NewsTranslationInterface
      * @Assert\NotBlank()
      */
     private $status;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     **/
-    private $seoTitle;
-
-    /**
-     * @var text
-     *
-     * @ORM\Column(type="text", nullable=true)
-     **/
-    private $seoDescription;
 
     /**
      * Constructor
@@ -141,51 +129,5 @@ class NewsArticleTranslation implements NewsTranslationInterface
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * Set seoTitle
-     *
-     * @param string $seoTitle
-     * @return NewsArticleTranslation
-     */
-    public function setSeoTitle($seoTitle)
-    {
-        $this->seoTitle = $seoTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get seoTitle
-     *
-     * @return string 
-     */
-    public function getSeoTitle()
-    {
-        return $this->seoTitle;
-    }
-
-    /**
-     * Set seoDescription
-     *
-     * @param string $seoDescription
-     * @return NewsArticleTranslation
-     */
-    public function setSeoDescription($seoDescription)
-    {
-        $this->seoDescription = $seoDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get seoDescription
-     *
-     * @return string 
-     */
-    public function getSeoDescription()
-    {
-        return $this->seoDescription;
     }
 }

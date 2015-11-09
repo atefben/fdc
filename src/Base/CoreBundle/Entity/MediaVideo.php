@@ -50,6 +50,13 @@ class MediaVideo extends Media
     private $inTrailer;
 
     /**
+     * @var Homepage
+     *
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topVideos")
+     */
+    private $homepage;
+
+    /**
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="mediaVideos")
@@ -308,5 +315,28 @@ class MediaVideo extends Media
     public function getFestival()
     {
         return $this->festival;
+    }
+
+    /**
+     * Set homepage
+     *
+     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @return MediaVideo
+     */
+    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return \Base\CoreBundle\Entity\Homepage 
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
     }
 }

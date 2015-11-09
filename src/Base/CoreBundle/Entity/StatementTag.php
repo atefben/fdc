@@ -14,13 +14,13 @@ use Base\CoreBundle\Util\Time;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * MediaNewsTag
+ * StatementTag
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaNewsTag
+class StatementTag
 {
     use Time;
 
@@ -34,16 +34,16 @@ class MediaNewsTag
     protected $id;
 
     /**
-     * @var Media
+     * @var News
      *
-     * @ORM\ManyToOne(targetEntity="Media", inversedBy="tags")
+     * @ORM\ManyToOne(targetEntity="Statement", inversedBy="tags")
      */
-    protected $media;
+    protected $statement;
 
     /**
-     * @var NewsTag
+     * @var Tag
      *
-     * @ORM\ManyToOne(targetEntity="NewsTag")
+     * @ORM\ManyToOne(targetEntity="Tag")
      */
     protected $tag;
 
@@ -61,9 +61,16 @@ class MediaNewsTag
     }
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    }
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -71,35 +78,35 @@ class MediaNewsTag
     }
 
     /**
-     * Set media
+     * Set statement
      *
-     * @param \Base\CoreBundle\Entity\Media $media
-     * @return MediaNewsTag
+     * @param \Base\CoreBundle\Entity\Statement $statement
+     * @return StatementTag
      */
-    public function setMedia(\Base\CoreBundle\Entity\Media $media = null)
+    public function setStatement(\Base\CoreBundle\Entity\Statement $statement = null)
     {
-        $this->media = $media;
+        $this->statement = $statement;
 
         return $this;
     }
 
     /**
-     * Get media
+     * Get statement
      *
-     * @return \Base\CoreBundle\Entity\Media 
+     * @return \Base\CoreBundle\Entity\Statement 
      */
-    public function getMedia()
+    public function getStatement()
     {
-        return $this->media;
+        return $this->statement;
     }
 
     /**
      * Set tag
      *
-     * @param \Base\CoreBundle\Entity\NewsTag $tag
-     * @return MediaNewsTag
+     * @param \Base\CoreBundle\Entity\Tag $tag
+     * @return StatementTag
      */
-    public function setTag(\Base\CoreBundle\Entity\NewsTag $tag = null)
+    public function setTag(\Base\CoreBundle\Entity\Tag $tag = null)
     {
         $this->tag = $tag;
 
@@ -109,7 +116,7 @@ class MediaNewsTag
     /**
      * Get tag
      *
-     * @return \Base\CoreBundle\Entity\NewsTag 
+     * @return \Base\CoreBundle\Entity\Tag 
      */
     public function getTag()
     {

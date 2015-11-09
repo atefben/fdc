@@ -14,13 +14,13 @@ use Base\CoreBundle\Util\Time;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * InfoNewsTag
+ * InfoTag
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class InfoNewsTag
+class InfoTag
 {
     use Time;
 
@@ -41,9 +41,9 @@ class InfoNewsTag
     protected $info;
 
     /**
-     * @var NewsTag
+     * @var Tag
      *
-     * @ORM\ManyToOne(targetEntity="NewsTag")
+     * @ORM\ManyToOne(targetEntity="Tag")
      */
     protected $tag;
 
@@ -61,13 +61,6 @@ class InfoNewsTag
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Get id
      *
      * @return integer
@@ -78,12 +71,35 @@ class InfoNewsTag
     }
 
     /**
-     * Set tags
+     * Set info
      *
-     * @param \Base\CoreBundle\Entity\NewsTag $tags
-     * @return NewsNewsTag
+     * @param \Base\CoreBundle\Entity\Info $info
+     * @return InfoTag
      */
-    public function setTag(\Base\CoreBundle\Entity\NewsTag $tag = null)
+    public function setInfo(\Base\CoreBundle\Entity\Info $info = null)
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+    /**
+     * Get info
+     *
+     * @return \Base\CoreBundle\Entity\Info 
+     */
+    public function getInfo()
+    {
+        return $this->info;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param \Base\CoreBundle\Entity\Tag $tag
+     * @return InfoTag
+     */
+    public function setTag(\Base\CoreBundle\Entity\Tag $tag = null)
     {
         $this->tag = $tag;
 
@@ -91,9 +107,9 @@ class InfoNewsTag
     }
 
     /**
-     * Get tags
+     * Get tag
      *
-     * @return \Base\CoreBundle\Entity\NewsTag
+     * @return \Base\CoreBundle\Entity\Tag 
      */
     public function getTag()
     {

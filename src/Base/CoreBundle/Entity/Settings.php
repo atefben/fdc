@@ -48,7 +48,7 @@ class Settings
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="settings")
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
      *
      * @Assert\NotBlank()
      */

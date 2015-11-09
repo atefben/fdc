@@ -44,7 +44,7 @@ class FilmPersonMedia implements FilmFilmMediaInterface
     /**
      * @var FilmMedia
      *
-     * @ORM\ManyToOne(targetEntity="FilmMedia", inversedBy="personMedias", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmMedia", cascade={"persist"})
      *
      * @Groups({
      *  "person_list", "person_show",

@@ -293,11 +293,11 @@ class FilmManager extends CoreManager
                 //@TODO GetTypeElementMultimedia
                 $entityRelated->setType($filmFilmMedia->IdType);
                 $entityRelated->setPosition($filmFilmMedia->Ordre);
-                
+
                 // get the related media
                 $filmMedia = $this->mediaManager->getById($filmFilmMedia->Id);
                 $entityRelated->setMedia($filmMedia);
-                
+
                 // add media
                 $entity->addMedia($entityRelated);
                 $collection->add($entityRelated);
@@ -305,7 +305,10 @@ class FilmManager extends CoreManager
             // remove old relations
             $this->removeOldRelations($entity->getMedias(), $collection, $entity, 'removeMedia');
         }
-        
+        $this->getContainer()->get('doctrine')->flush();
+
+            die();
+
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmFilmTranslation());
         

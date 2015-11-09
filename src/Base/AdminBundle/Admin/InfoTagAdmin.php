@@ -9,13 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsNewsTagAdmin class.
+ * InfoTagAdmin class.
  * 
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsNewsTagAdmin extends Admin
+class InfoTagAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper

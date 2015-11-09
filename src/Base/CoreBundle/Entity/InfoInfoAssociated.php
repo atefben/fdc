@@ -15,13 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * NewsNewsAssociated
+ * InfoInfoAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsNewsAssociated
+class InfoInfoAssociated
 {
     use Time;
 
@@ -33,28 +33,28 @@ class NewsNewsAssociated
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
-     * @var News
+     * @var Info
      *
-     * @ORM\ManyToOne(targetEntity="News", inversedBy="associations")
+     * @ORM\ManyToOne(targetEntity="Info", inversedBy="associations")
      */
-    protected $news;
-    
-     /**
-     * @var NewsArticle
+    protected $info;
+
+    /**
+     * @var Info
      *
-     * @ORM\ManyToOne(targetEntity="News")
+     * @ORM\ManyToOne(targetEntity="Info")
      */
     protected $association;
-    
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
-        
+
         if ($this->getId()) {
             $string .= ' #'. $this->getId();
         }
-        
+
         return $string;
     }
 
@@ -68,7 +68,7 @@ class NewsNewsAssociated
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -76,35 +76,35 @@ class NewsNewsAssociated
     }
 
     /**
-     * Set news
+     * Set info
      *
-     * @param \Base\CoreBundle\Entity\News $news
-     * @return NewsAssociatedNews
+     * @param \Base\CoreBundle\Entity\Info $info
+     * @return InfoInfoAssociated
      */
-    public function setNews(\Base\CoreBundle\Entity\News $news = null)
+    public function setInfo(\Base\CoreBundle\Entity\Info $info = null)
     {
-        $this->news = $news;
+        $this->info = $info;
 
         return $this;
     }
 
     /**
-     * Get news
+     * Get info
      *
-     * @return \Base\CoreBundle\Entity\News
+     * @return \Base\CoreBundle\Entity\Info 
      */
-    public function getNews()
+    public function getInfo()
     {
-        return $this->news;
+        return $this->info;
     }
 
     /**
      * Set association
      *
-     * @param \Base\CoreBundle\Entity\News $association
-     * @return NewsNewsAssociated
+     * @param \Base\CoreBundle\Entity\Info $association
+     * @return InfoInfoAssociated
      */
-    public function setAssociation(\Base\CoreBundle\Entity\News $association = null)
+    public function setAssociation(\Base\CoreBundle\Entity\Info $association = null)
     {
         $this->association = $association;
 
@@ -114,7 +114,7 @@ class NewsNewsAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\News
+     * @return \Base\CoreBundle\Entity\Info 
      */
     public function getAssociation()
     {

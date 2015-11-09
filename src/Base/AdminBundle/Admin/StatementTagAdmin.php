@@ -9,13 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * StatementStatementAssociatedAdmin class.
+ * StatementTagAdmin class.
  * 
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsNewsAssociatedAdmin extends Admin
+class StatementTagAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -54,7 +54,7 @@ class NewsNewsAssociatedAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
+            ->add('tag', 'sonata_type_model')
         ;
     }
 

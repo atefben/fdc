@@ -15,13 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * NewsNewsAssociated
+ * StatementStatementAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsNewsAssociated
+class StatementStatementAssociated
 {
     use Time;
 
@@ -33,28 +33,28 @@ class NewsNewsAssociated
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
-     * @var News
+     * @var Info
      *
-     * @ORM\ManyToOne(targetEntity="News", inversedBy="associations")
+     * @ORM\ManyToOne(targetEntity="Statement", inversedBy="associations")
      */
-    protected $news;
-    
-     /**
-     * @var NewsArticle
+    protected $statement;
+
+    /**
+     * @var Info
      *
-     * @ORM\ManyToOne(targetEntity="News")
+     * @ORM\ManyToOne(targetEntity="Statement")
      */
     protected $association;
-    
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
-        
+
         if ($this->getId()) {
             $string .= ' #'. $this->getId();
         }
-        
+
         return $string;
     }
 
@@ -68,7 +68,7 @@ class NewsNewsAssociated
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -76,35 +76,35 @@ class NewsNewsAssociated
     }
 
     /**
-     * Set news
+     * Set statement
      *
-     * @param \Base\CoreBundle\Entity\News $news
-     * @return NewsAssociatedNews
+     * @param \Base\CoreBundle\Entity\Statement $statement
+     * @return StatementStatementAssociated
      */
-    public function setNews(\Base\CoreBundle\Entity\News $news = null)
+    public function setStatement(\Base\CoreBundle\Entity\Statement $statement = null)
     {
-        $this->news = $news;
+        $this->statement = $statement;
 
         return $this;
     }
 
     /**
-     * Get news
+     * Get statement
      *
-     * @return \Base\CoreBundle\Entity\News
+     * @return \Base\CoreBundle\Entity\Statement 
      */
-    public function getNews()
+    public function getStatement()
     {
-        return $this->news;
+        return $this->statement;
     }
 
     /**
      * Set association
      *
-     * @param \Base\CoreBundle\Entity\News $association
-     * @return NewsNewsAssociated
+     * @param \Base\CoreBundle\Entity\Statement $association
+     * @return StatementStatementAssociated
      */
-    public function setAssociation(\Base\CoreBundle\Entity\News $association = null)
+    public function setAssociation(\Base\CoreBundle\Entity\Statement $association = null)
     {
         $this->association = $association;
 
@@ -114,7 +114,7 @@ class NewsNewsAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\News
+     * @return \Base\CoreBundle\Entity\Statement 
      */
     public function getAssociation()
     {

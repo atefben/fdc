@@ -18,7 +18,7 @@ class StatementWidgetAudio extends StatementWidget
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="newsWidgetAudios")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
     private $file;

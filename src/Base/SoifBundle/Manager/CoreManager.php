@@ -613,6 +613,8 @@ abstract class CoreManager
     {
         foreach ($collectionOld as $obj) {
             if (!$collectionNew->contains($obj)) {
+                $this->logger->info('deleted obj :'. $obj->getId());
+                $this->logger->info(get_class($obj));
                 $entity->{$remover}($obj);
             }
         }

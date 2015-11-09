@@ -8,7 +8,14 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class EventNewsTagAdmin extends Admin
+/**
+ * StatementStatementAssociatedAdmin class.
+ * 
+ * \@extends Admin
+ * @author  Antoine Mineau <a.mineau@ohwee.fr>
+ * \@company Ohwee
+ */
+class StatementStatementAssociatedAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -47,9 +54,7 @@ class EventNewsTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
         ;
     }
 

@@ -10,13 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 
 /**
- * NewsArticleLock
+ * InfoLock
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsArticleLock
+class InfoLock
 {
     use Time;
 
@@ -28,33 +28,32 @@ class NewsArticleLock
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
-     * @var NewsArticle
+     * @var Info
      *
-     * @ORM\ManyToOne(targetEntity="NewsArticle", inversedBy="lock")
+     * @ORM\ManyToOne(targetEntity="Info", inversedBy="locks")
      */
-    protected $articles;
-    
+    protected $info;
+
     /**
      * @var Application\Sonata\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="articleLocks")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      */
     protected $user;
-    
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -77,7 +76,7 @@ class NewsArticleLock
     /**
      * Get user
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUser()
     {
@@ -85,25 +84,25 @@ class NewsArticleLock
     }
 
     /**
-     * Set articles
+     * Set info
      *
-     * @param \Base\CoreBundle\Entity\NewsArticle $articles
-     * @return NewsArticleLock
+     * @param \Base\CoreBundle\Entity\Info $info
+     * @return InfoLock
      */
-    public function setArticles(\Base\CoreBundle\Entity\NewsArticle $articles = null)
+    public function setInfo(\Base\CoreBundle\Entity\Info $info = null)
     {
-        $this->articles = $articles;
+        $this->info = $info;
 
         return $this;
     }
 
     /**
-     * Get articles
+     * Get info
      *
-     * @return \Base\CoreBundle\Entity\NewsArticle
+     * @return \Base\CoreBundle\Entity\Info 
      */
-    public function getArticles()
+    public function getInfo()
     {
-        return $this->articles;
+        return $this->info;
     }
 }

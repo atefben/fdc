@@ -8,14 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-/**
- * NewsNewsTagAdmin class.
- * 
- * \@extends Admin
- * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * \@company Ohwee
- */
-class NewsNewsTagAdmin extends Admin
+class MediaTagAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -54,7 +47,7 @@ class NewsNewsTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('tag', 'sonata_type_model')
+            ->add('tag')
         ;
     }
 

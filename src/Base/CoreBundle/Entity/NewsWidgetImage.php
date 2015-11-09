@@ -17,7 +17,7 @@ use Base\CoreBundle\Util\Time;
 class NewsWidgetImage extends NewsWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="newsWidgetImages")
+     * @ORM\ManyToOne(targetEntity="Gallery")
      */
     private $gallery;
 

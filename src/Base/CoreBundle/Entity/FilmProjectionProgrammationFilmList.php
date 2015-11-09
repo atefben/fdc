@@ -57,7 +57,7 @@ class FilmProjectionProgrammationFilmList
     /**
      * @var FilmFilm
      *
-     * @ORM\ManyToMany(targetEntity="FilmFilm", inversedBy="projectionProgrammationFilmList")
+     * @ORM\ManyToMany(targetEntity="FilmFilm", inversedBy="projectionProgrammationFilmsList")
      *
      * @Groups({"projection_list", "projection_show"})
      */

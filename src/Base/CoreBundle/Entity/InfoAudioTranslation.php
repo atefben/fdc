@@ -7,8 +7,12 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Status;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\Seo;
+use Base\CoreBundle\Util\Status;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -18,9 +22,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class InfoAudioTranslation implements NewsTranslationInterface
 {
+    use Seo;
+    use Status;
     use Time;
     use Translation;
-    use Status;
+
 
     /**
      * @var string
@@ -45,40 +51,12 @@ class InfoAudioTranslation implements NewsTranslationInterface
     private $status;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     */
-    protected $publishedAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     */
-    protected $publishEndedAt;
-
-    /**
-     * @var MediaImage
-     *
-     * @ORM\ManyToOne(targetEntity="MediaAudio")
-     */
-    private $audio;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsAudios")
-     */
-    private $sites;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->widgets = new ArrayCollection();
         $this->sites = new ArrayCollection();
+        $this->status = InfoAudioTranslation::STATUS_DRAFT;
     }
 
     /**
@@ -150,82 +128,4 @@ class InfoAudioTranslation implements NewsTranslationInterface
         return $this->status;
     }
 
-    /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return NewsAudioTranslation
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publishEndedAt
-     *
-     * @param \DateTime $publishEndedAt
-     * @return NewsAudioTranslation
-     */
-    public function setPublishEndedAt($publishEndedAt)
-    {
-        $this->publishEndedAt = $publishEndedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishEndedAt
-     *
-     * @return \DateTime
-     */
-    public function getPublishEndedAt()
-    {
-        return $this->publishEndedAt;
-    }
-
-    /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return NewsAudioTranslation
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSites()
-    {
-        return $this->sites;
-    }
 }

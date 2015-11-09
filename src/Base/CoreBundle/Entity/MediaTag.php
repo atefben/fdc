@@ -14,13 +14,13 @@ use Base\CoreBundle\Util\Time;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * StatementNewsTag
+ * MediaTag
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementNewsTag
+class MediaTag
 {
     use Time;
 
@@ -34,16 +34,16 @@ class StatementNewsTag
     protected $id;
 
     /**
-     * @var News
+     * @var Media
      *
-     * @ORM\ManyToOne(targetEntity="Statement", inversedBy="tags")
+     * @ORM\ManyToOne(targetEntity="Media", inversedBy="tags")
      */
-    protected $statement;
+    protected $media;
 
     /**
      * @var NewsTag
      *
-     * @ORM\ManyToOne(targetEntity="NewsTag")
+     * @ORM\ManyToOne(targetEntity="Tag")
      */
     protected $tag;
 
@@ -61,16 +61,9 @@ class StatementNewsTag
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -78,12 +71,35 @@ class StatementNewsTag
     }
 
     /**
-     * Set tags
+     * Set media
      *
-     * @param \Base\CoreBundle\Entity\NewsTag $tags
-     * @return NewsNewsTag
+     * @param \Base\CoreBundle\Entity\Media $media
+     * @return MediaNewsTag
      */
-    public function setTag(\Base\CoreBundle\Entity\NewsTag $tag = null)
+    public function setMedia(\Base\CoreBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Base\CoreBundle\Entity\Media 
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param \Base\CoreBundle\Entity\Tag $tag
+     * @return MediaTag
+     */
+    public function setTag(\Base\CoreBundle\Entity\Tag $tag = null)
     {
         $this->tag = $tag;
 
@@ -91,9 +107,9 @@ class StatementNewsTag
     }
 
     /**
-     * Get tags
+     * Get tag
      *
-     * @return \Base\CoreBundle\Entity\NewsTag
+     * @return \Base\CoreBundle\Entity\Tag 
      */
     public function getTag()
     {

@@ -27,9 +27,7 @@ class User extends BaseUser
      * @var integer $id
      */
     protected $id;
-    
-    protected $articleLocks;
-    
+
     protected $sites;
     
     /**
