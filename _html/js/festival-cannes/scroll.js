@@ -181,8 +181,8 @@ $(document).ready(function() {
         'el1': '#prefooter .owl-item.center .imgSlide',
         'el2': '.textTop',
         'positionTop': $('#slider-prefooter').offset().top,
-        'division': 6,
-        'mov': 2
+        'division': 4,
+        'mov': 6
       });
 
       parallaxElements.push({

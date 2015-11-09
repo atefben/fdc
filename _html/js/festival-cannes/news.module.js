@@ -119,6 +119,7 @@ $(document).ready(function() {
             $('.filter .select span[data-filter="all"]').addClass('active');
 
             initSlideshows();
+            $(window).trigger('resize');
           }
         });
       }, 1200);

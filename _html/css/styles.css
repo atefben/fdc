@@ -7172,11 +7172,12 @@ div.chocolat-wrapper .chocolat-close {
   position: relative;
 }
 #prefooter .textTop {
-  top: 370px;
+  top: 170px;
   z-index: 1;
   left: 0;
   right: 0;
   margin: 0 auto;
+  position: absolute !important;
   -moz-transform: translate3d(0px, -370px, 0px);
   -ms-transform: translate3d(0px, -370px, 0px);
   -webkit-transform: translate3d(0px, -370px, 0px);
