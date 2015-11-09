@@ -4,45 +4,63 @@ $(document).ready(function() {
   // =========================
 
   var sliderSelection = '',
-      tr = 0;
+      tr = 0,
+      selectionCookie = [];
+
+  if($.cookie('selection')) {
+    selectionCookie = JSON.parse($.cookie('selection'));
+
+    for(var i=0; i<selectionCookie.length; i++) {
+      var $art = $('#toClone').clone();
+
+      $art.find('article').addClass(selectionCookie[i].format);
+      $art.attr('id', 'article' + selectionCookie[i].id);
+      $art.find('article').data('format', selectionCookie[i].format);
+      $art.find('article').data('theme', selectionCookie[i].theme);
+      $art.find('img').attr('src', selectionCookie[i].img);
+      $art.find('.linkImage').attr('href', selectionCookie[i].link);
+      $art.find('.category').text(selectionCookie[i].category);
+      $art.find('.date').text(selectionCookie[i].date);
+      $art.find('.hour').text(selectionCookie[i].hour);
+      $art.find('h2 a').text(selectionCookie[i].title);
+
+      $('#slider-selection').append($art);
+    }
+  }
+
+  $('#selection .title span').text(selectionCookie.length);
+
+  sliderSelection = $("#slider-selection").owlCarousel({
+    nav: false,
+    dots: false,
+    smartSpeed: 500,
+    center: true,
+    loop: false,
+    margin: 0,
+    dragEndSpeed: 900,
+    autoWidth: true,
+    onInitialized: function() {
+      if($('#selection .owl-stage').css('transform') == 'none') {
+        var pxT = parseInt(($('#selection .owl-stage-outer').width() / 2) - 131) + "px";
+        $('#selection .owl-stage').css('transform', 'translate3d(' + pxT + ',0, 0)');
+      }
+      setTimeout(function() {
+        tr = $('#selection .owl-stage').css('transform').substr(19, 3);
+      }, 700);
+    }
+  });
+
+  sliderSelection.owlCarousel();
 
   function openSelection(callback) {
     $('#main, footer').addClass('overlay');
 
-    if(sliderSelection != '') sliderSelection.trigger('destroy.owl.carousel');
-    $('#slider-selection').empty();
+    $('#selection').addClass('open');
+
     $('header .selection').addClass('opened');
 
-    $.ajax({
-      type: "GET",
-      dataType: "html",
-      cache: false,
-      url: 'selection.html' ,
-      success: function(data) {
-        $('#slider-selection').append(data);
+    callback();
 
-        sliderSelection = $("#slider-selection").owlCarousel({
-          nav: false,
-          dots: false,
-          smartSpeed: 500,
-          center: true,
-          loop: false,
-          margin: 0,
-          dragEndSpeed: 900,
-          autoWidth: true,
-          onInitialized: function() {
-            setTimeout(function() {
-              $('#selection').addClass('open');
-              tr = $('#selection .owl-stage').css('transform').substr(19, 3);
-            }, 700);
-          }
-        });
-
-        sliderSelection.owlCarousel();
-        callback();
-      }
-    });
-    
   }
 
   function closeSelection() {
@@ -126,6 +144,14 @@ $(document).ready(function() {
     $(this).parent().addClass('deleted');
     var i = $(this).parent().parent().index();
 
+    var id = parseInt($(this).parent().attr('id').replace('article', ''));
+
+    selectionCookie = selectionCookie.filter(function (el) {return el.id !== id; });
+
+    $('#selection .title span').text(selectionCookie.length);
+
+    $.cookie('selection', JSON.stringify(selectionCookie), { expires: 14 });
+
     setTimeout(function() {
       sliderSelection.trigger('del.owl.carousel', i);
       sliderSelection.trigger('refresh.owl.carousel');
@@ -139,6 +165,24 @@ $(document).ready(function() {
         $article.find('.read-later').remove();
         $article.find('div.article').append('<a href="#" class="delete"></a>');
         $article = $article.html();
+
+    $articleEl = $(this).parents('article');
+
+    selectionCookie.unshift({
+      'id': $articleEl.index('#main article'),
+      'format': $articleEl.data('format'),
+      'theme': $articleEl.data('theme'),
+      'img': $articleEl.find('img').attr('src'),
+      'link': $articleEl.find('.linkImage').attr('href'),
+      'category': $articleEl.find('.category').text(),
+      'date': $articleEl.find('.date').text(),
+      'hour': $articleEl.find('.hour').text(),
+      'title': $articleEl.find('h2 a').text(),
+    });
+
+    $.cookie('selection', JSON.stringify(selectionCookie), { expires: 14 });
+
+    $('#selection .title span').text(selectionCookie.length);
 
     openSelection(function() {
       $("#main, footer").addClass('overlay');
