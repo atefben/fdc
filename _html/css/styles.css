@@ -4977,7 +4977,7 @@ div.chocolat-wrapper .chocolat-close {
   vertical-align: middle;
 }
 .audio-player .info {
-  color: #666;
+  color: #969696;
   font-family: "Camphor W01 Medium";
   text-align: center;
   display: inline-block;
@@ -4994,7 +4994,7 @@ div.chocolat-wrapper .chocolat-close {
   text-transform: uppercase;
 }
 .audio-player .info span {
-  color: #666;
+  color: #969696;
   display: inline-block;
   font-size: 0.625rem;
 }
@@ -7538,7 +7538,7 @@ article .read-later.rAlign span:after {
   text-align: center;
 }
 .single-article .info {
-  color: #666;
+  color: #969696;
   font-family: "Camphor W01 Medium";
   text-align: center;
 }
@@ -7558,7 +7558,7 @@ article .read-later.rAlign span:after {
   padding-left: 8px;
 }
 .single-article .info span {
-  color: #666;
+  color: #969696;
   display: inline-block;
   font-size: 0.625rem;
 }
@@ -7576,7 +7576,7 @@ article .read-later.rAlign span:after {
   max-width: 100%;
 }
 .single-article .single-photo .caption {
-  color: #666;
+  color: #969696;
   font-size: .750rem;
   margin: 10px 0 0 0;
   text-align: left;
