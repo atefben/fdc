@@ -7324,6 +7324,7 @@ article h2 {
   font-family: "Playfair Display";
   font-size: 1.125rem;
   font-weight: 400;
+  letter-spacing: 0.02em;
   line-height: 1.3em;
   margin: 15px auto 0 auto;
   text-align: center;
@@ -8898,6 +8899,7 @@ article .read-later.rAlign span:after {
 }
 .grid .item .info {
   color: #9c9c9b;
+  font-family: "Camphor W01 Bold";
   position: absolute;
   bottom: 8px;
   height: 44px;
@@ -9137,6 +9139,7 @@ article .read-later.rAlign span:after {
   width: 100%;
 }
 .all-articles .item article .info {
+  font-family: "Camphor W01 Bold";
   color: #666;
   position: relative;
   bottom: auto;

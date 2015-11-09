@@ -48,6 +48,7 @@
 
     .info {
       color: #9c9c9b;
+      font-family: $CamphorBold;
       position: absolute;
       bottom: 8px;
       height: 44px;
@@ -276,6 +277,7 @@
       width: 100%;
 
       .info {
+        font-family: $CamphorBold;
         color: #666;
         position: relative;
         bottom: auto;
