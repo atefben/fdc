@@ -8339,8 +8339,8 @@ article .read-later.rAlign span:after {
 }
 .single-movie .main-image .links {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  height: 50px;
-  line-height: 50px;
+  height: 45px;
+  line-height: 45px;
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -8355,8 +8355,8 @@ article .read-later.rAlign span:after {
 .single-movie .main-image .links a {
   color: #fff;
   float: left;
-  font-family: "Camphor W01 Heavy";
-  font-size: 0.625rem;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.6rem;
   padding-left: 20px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -8366,12 +8366,12 @@ article .read-later.rAlign span:after {
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie .main-image .links a.movies {
-  background: url("../img/svg/arrow-left-white.svg") no-repeat left center;
+  background: url("../img/svg/arrow-left-white.svg") no-repeat left 20px;
   background-size: 8px;
 }
 .single-movie .main-image .links a.programmation {
-  background: url("../img/svg/programmation-white.svg") left 48% no-repeat;
-  background-size: 15px;
+  background: url("../img/svg/programmation-white.svg") left 18px no-repeat;
+  background-size: 13px;
 }
 .single-movie .main-image .links a:last-child {
   float: right;

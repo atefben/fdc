@@ -448,8 +448,8 @@
 
     .links {
       border-bottom: 1px solid rgba(255, 255, 255, .2);
-      height: 50px;
-      line-height: 50px;
+      height: 45px;
+      line-height: 45px;
       overflow: hidden;
       position: absolute;
       top: 0;
@@ -461,21 +461,21 @@
       a {
         color: #fff;
         float: left;
-        font-family: $CamphorHeavy;
-        font-size: 0.625rem;
+        font-family: $CamphorBold;
+        font-size: 0.6rem;
         padding-left: 20px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         @include transition(all 0.8s $smoothTransition);
 
         &.movies {
-          background: url('../img/svg/arrow-left-white.svg') no-repeat left center;
+          background: url('../img/svg/arrow-left-white.svg') no-repeat left 20px;
           background-size: 8px;
         }
 
         &.programmation {
-          background: url('../img/svg/programmation-white.svg') left 48% no-repeat;
-          background-size: 15px;
+          background: url('../img/svg/programmation-white.svg') left 18px no-repeat;
+          background-size: 13px;
         }
 
         &:last-child {
