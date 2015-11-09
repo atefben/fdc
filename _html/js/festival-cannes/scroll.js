@@ -66,6 +66,7 @@ $(document).ready(function() {
     if($('.webtv-live').length) {
       var hght = $header.hasClass('sticky') ? 91 : 230;
       $('#live .textLive').css('top', hght + ($('#live').height() - $('#live .textLive').height()) / 2);
+      $('.webtv #live .img').css('top', '');
     }
 
     if($('.single-movie').length ) {
@@ -208,7 +209,7 @@ $(document).ready(function() {
         'el1': '#live .img',
         'el2': '.textLive',
         'positionTop': $('#live').offset().top - $header.height(),
-        'division': 6,
+        'division': 10,
         'mov': 3
       });
     }

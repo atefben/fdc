@@ -10355,7 +10355,7 @@ article .read-later.rAlign span:after {
   background-size: cover;
   opacity: 0.5;
   position: absolute;
-  top: -20%;
+  top: 0;
   left: 0;
   height: 130%;
   width: 100%;

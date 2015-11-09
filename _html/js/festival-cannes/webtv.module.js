@@ -21,6 +21,10 @@ $(document).ready(function() {
      });
 
      $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
+
+     if($('header').hasClass('sticky')) {
+      $('.webtv #live .img').css('top', '-10%');
+     }
     }
 
    // create slide for trailers
