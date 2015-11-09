@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -5880,6 +5881,330 @@ div.chocolat-wrapper .chocolat-close {
 
 .sticky #searchContainer {
   top: 91px;
+}
+
+#main.overlay-popin:after {
+  opacity: 0.8;
+  visibility: visible;
+  cursor: pointer;
+}
+
+.popin-mail {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-color: #fff;
+  width: 628px;
+  padding: 55px 0px;
+  position: fixed;
+  top: 16%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 999999;
+  height: 70%;
+  overflow-y: scroll;
+}
+.popin-mail .contain-popin {
+  width: 528px;
+  margin: 0 auto;
+  text-align: center;
+}
+.popin-mail .contain-popin .theme-article {
+  font-family: "Camphor W01 Bold";
+  font-size: 0.63rem;
+  color: #c8a461;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-right: 9px;
+}
+.popin-mail .contain-popin .date-article {
+  font-size: 0.63rem;
+  font-family: "Camphor W01 Bold";
+}
+.popin-mail .contain-popin .title-article {
+  font-size: 36px;
+  font-family: "Playfair Display";
+  line-height: 50px;
+  padding-bottom: 32px;
+  padding-top: 7px;
+}
+.popin-mail .contain-popin .chap-article {
+  font-size: 0.88rem;
+  font-family: "Camphor W01 Bold";
+  line-height: 24px;
+  padding-bottom: 41px;
+}
+.popin-mail form {
+  width: 528px;
+  margin: 0 auto;
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
+}
+.popin-mail form .complet-infos {
+  color: #c8a461;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Regular";
+  float: right;
+  padding-bottom: 16px;
+}
+.popin-mail form .newsletter {
+  float: none;
+}
+.popin-mail form .detail {
+  font-size: 0.88rem;
+  color: #999999;
+  float: right;
+  margin-top: 4px;
+}
+.popin-mail form [type="checkbox"]:not(:checked),
+.popin-mail form [type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+.popin-mail form [type="checkbox"]:not(:checked) + label,
+.popin-mail form [type="checkbox"]:checked + label {
+  position: relative;
+  /* permet de positionner les pseudo-éléments */
+  padding-left: 17px;
+  /* fait un peu d'espace pour notre case à venir */
+  cursor: pointer;
+  /* affiche un curseur adapté */
+}
+.popin-mail form [type="checkbox"]:not(:checked) + label:before,
+.popin-mail form [type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0px;
+  width: 10px;
+  height: 10px;
+  /* dim. de la case */
+  border: 1px solid #c8a461;
+  background: #ffffff;
+}
+.popin-mail form [type="checkbox"]:not(:checked) + label:after,
+.popin-mail form [type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  font-size: 9px;
+  color: #c8a461;
+  transition: all .2s;
+  /* on prévoit une animation */
+}
+.popin-mail form [type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  /* coche invisible */
+  transform: scale(0);
+  /* mise à l'échelle à 0 */
+}
+.popin-mail form [type="checkbox"]:checked + label:after {
+  opacity: 1;
+  /* coche opaque */
+  transform: scale(1);
+  /* mise à l'échelle 1:1 */
+}
+.popin-mail #form {
+  margin: 0 auto;
+  overflow: hidden;
+}
+.popin-mail #form ::-webkit-input-placeholder {
+  color: #999;
+  font-size: 0.875rem;
+}
+.popin-mail #form :-moz-placeholder {
+  color: #999;
+  font-size: 0.875rem;
+}
+.popin-mail #form ::-moz-placeholder {
+  color: #999;
+  font-size: 0.875rem;
+}
+.popin-mail #form :-ms-input-placeholder {
+  color: #999;
+  font-size: 0.875rem;
+}
+.popin-mail #form .required {
+  color: #999;
+  float: right;
+  font-size: 0.875rem;
+}
+.popin-mail #form input, .popin-mail #form textarea {
+  background: #fff;
+  border: 1px solid #c1c1c1;
+  box-sizing: border-box;
+  color: #999;
+  font-family: "Camphor W01 Regular";
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 8px;
+  outline: none;
+  padding: 0 25px;
+  width: 100%;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.popin-mail #form input:focus, .popin-mail #form textarea:focus {
+  border-color: #141414;
+}
+.popin-mail #form textarea {
+  height: 173px;
+  padding-top: 20px;
+  resize: none;
+  margin-bottom: 13px;
+}
+.popin-mail #form textarea.invalid {
+  border-color: #e93939;
+  color: #e93939;
+}
+.popin-mail #form input {
+  height: 50px;
+  line-height: 50px;
+}
+.popin-mail #form input.invalid {
+  border-color: #e93939;
+  color: #e93939;
+}
+.popin-mail #form input.valid {
+  border-color: green;
+}
+.popin-mail #form input[type="submit"] {
+  border-color: #c8a461;
+  color: #c8a461;
+  cursor: pointer;
+  float: left;
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.625rem;
+  height: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
+  width: 180px;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  margin: 14px 0px;
+  margin-bottom: 30px;
+}
+.popin-mail #form input[type="submit"]:hover {
+  border-color: #000;
+  color: #000;
+}
+.popin-mail #form input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+  display: inline-block;
+  margin-right: 7px;
+}
+.popin-mail #form .select {
+  border: 1px solid #c1c1c1;
+  box-sizing: border-box;
+  color: #999;
+  line-height: 50px;
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.688rem;
+  display: block;
+  height: 50px;
+  margin-bottom: 15px;
+  outline: none;
+  padding: 0 25px;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+.popin-mail #form .select.invalid {
+  border-color: #e93939;
+  color: #e93939;
+}
+.popin-mail #form .select #triggerSelect {
+  position: absolute;
+  display: block;
+  height: 50px;
+  top: 0;
+  right: 0;
+  width: 50%;
+  z-index: 2;
+  cursor: pointer;
+}
+.popin-mail #form .select label {
+  color: #333;
+  display: inline-block;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+.popin-mail #form .select select {
+  background: none;
+  height: 50px;
+  line-height: 50px;
+  margin-top: -3px;
+  border: none;
+  color: #c8a461;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.688rem;
+  outline: none;
+  -webkit-appearance: none;
+  text-transform: uppercase;
+  padding-right: 10px;
+  background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
+  background-size: 6px;
+}
+.popin-mail #form .errors {
+  border: 1px solid #e93939;
+  color: #e93939;
+  clear: both;
+  font-size: 0.875rem;
+  opacity: 0;
+  padding: 20px;
+  display: none;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  margin-bottom: 20px;
+}
+.popin-mail #form .errors.show {
+  opacity: 1;
+  display: block;
+}
+.popin-mail #form .errors ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.popin-mail #form .errors ul li {
+  margin-bottom: 5px;
+}
+.popin-mail .info-popin {
+  display: block;
+  width: 528px;
+  margin: 0 auto;
+}
+.popin-mail .info-popin p {
+  font-size: 0.63rem;
+  color: #999;
+  line-height: 14px;
+  hyphens: auto;
+  padding-top: 22px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.visible-popin {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(-30px);
+  pointer-events: initial;
 }
 
 #prehome-container {
