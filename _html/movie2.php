@@ -216,10 +216,10 @@
               <div class="vCenter">
                 <div class="vCenterKid">
                   <h3 class="title-section">Crédits</h3>
-                  <p><a href="#">Jean-Luc Godard</a> - Réalisation</p>
-                  <p><a href="#">Jean-Luc Godard</a> - Scénario / Dialogues</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Réalisation</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Scénario / Dialogues</p>
                   <p><a href="#">Fabrice ARAGNO</a> - Directeur de la photographie</p>
-                  <p><a href="#">Jean-Luc Godard</a> - Montage</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Montage</p>
                   <div class="actors">
                     <h3 class="title-section">Acteurs</h3>
                     <p><a href="#">Héloïse GODET</a> - Josette</p><p><a href="#">Zoé BRUNEAU</a> -  Ivitch</p>

@@ -30,7 +30,7 @@
           <div class="info">
             <a href="#" class="category">Réalisateur -</a><span class="city">États-Unis</span>
           </div>
-          <h2 class="title-article">Francis Coppola</h2>
+          <h2 class="title-article">Francis COPPOLA</h2>
           <div class="buttons">
             <a id="share-article" href="#" class="button">Partager</a>
             <a href="#" class="button print">Imprimer</a>
@@ -126,10 +126,10 @@
             <div class="item"><figure><img src="img/artist/res2.jpg" alt="Owl Image"><figcaption><span class="name">Michel franco</span><span class="rank">Réalisateur</span></figcaption></figure></div>
             <div class="item"><figure><img src="img/artist/res3.jpg" alt="Owl Image"><figcaption><span class="name">Jacques Audiard</span><span class="rank">Réalisateur</span></figcaption></figure></div>
             <div class="item"><figure><img src="img/artist/res4.jpg" alt="Owl Image"><figcaption><span class="name">Matteo garrone</span><span class="rank">Réalisateur</span></figcaption></figure></div>
-            <div class="item"><figure><img src="img/artist/res1.jpg" alt="Owl Image"><figcaption><span class="name">Toddhaynes</span><span class="rank">Réalisateur</span></figcaption></figure></div>
-            <div class="item"><figure><img src="img/artist/res1.jpg" alt="Owl Image"><figcaption><span class="name">Toddhaynes</span><span class="rank">Réalisateur</span></figcaption></figure></div>
-            <div class="item"><figure><img src="img/artist/res1.jpg" alt="Owl Image"><figcaption><span class="name">Toddhaynes</span><span class="rank">Réalisateur</span></figcaption></figure></div>
-            <div class="item"><figure><img src="img/artist/res1.jpg" alt="Owl Image"><figcaption><span class="name">Toddhaynes</span><span class="rank">Réalisateur</span></figcaption></figure></div>
+            <div class="item"><figure><img src="img/artist/res1.jpg" alt="Owl Image"><figcaption><span class="name">Todd haynes</span><span class="rank">Réalisateur</span></figcaption></figure></div>
+            <div class="item"><figure><img src="img/artist/res1.jpg" alt="Owl Image"><figcaption><span class="name">Todd haynes</span><span class="rank">Réalisateur</span></figcaption></figure></div>
+            <div class="item"><figure><img src="img/artist/res1.jpg" alt="Owl Image"><figcaption><span class="name">Todd haynes</span><span class="rank">Réalisateur</span></figcaption></figure></div>
+            <div class="item"><figure><img src="img/artist/res1.jpg" alt="Owl Image"><figcaption><span class="name">Todd haynes</span><span class="rank">Réalisateur</span></figcaption></figure></div>
 
           </div>
         </div>

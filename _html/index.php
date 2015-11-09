@@ -31,7 +31,7 @@
             <div class="img-container"><div class="img" style="background-image:url(img/slider/slider01.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
-              <h2>Xavier Dolan : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
+              <h2>Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
             </div>
             <a href="article.php" class="linkArticle"></a>
           </div>
