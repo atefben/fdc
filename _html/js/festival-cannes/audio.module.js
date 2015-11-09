@@ -192,7 +192,7 @@ $(document).ready(function() {
 
     if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
 
-      if($(this).parent().hasClass('full')) {
+      if($(this).parents('.audio-player').hasClass('full')) {
         if (document.exitFullscreen) {
           document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
