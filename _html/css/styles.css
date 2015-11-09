@@ -3539,7 +3539,7 @@ header #logo-wrapper #logo p.stick.noTrans:after {
   transition: none;
 }
 header #logo-wrapper #logo h2 {
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Regular";
   font-size: 0.875rem;
   font-weight: normal;
   margin-top: 5px;
@@ -4612,6 +4612,7 @@ div.chocolat-wrapper .chocolat-close {
 .filters div .label {
   color: #333;
   margin-right: 15px;
+  letter-spacing: 0.1em;
 }
 .filters div .select {
   color: #c8a461;
@@ -6001,6 +6002,9 @@ div.chocolat-wrapper .chocolat-close {
   overflow: hidden;
   padding: 80px 0;
 }
+#news #format {
+  margin-right: 10px;
+}
 #news #articles-wrapper {
   overflow: hidden;
   -moz-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -6011,6 +6015,9 @@ div.chocolat-wrapper .chocolat-close {
 #news #articles-wrapper.loading {
   opacity: 0;
   visibility: hidden;
+}
+#news .title {
+  margin-bottom: 20px;
 }
 #news #shd, #news #shdMore {
   position: absolute;
@@ -7868,7 +7875,7 @@ article .read-later.rAlign span:after {
   height: 50px;
   line-height: 50px;
   font-family: "Camphor W01 Heavy";
-  padding: 0 30px;
+  padding: 0 40px;
 }
 .single-article .film .programmation-film .wrapper .button:hover {
   background-color: transparent;
