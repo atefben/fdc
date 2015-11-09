@@ -189,7 +189,7 @@ $(document).ready(function() {
         'el1': '#slider .owl-item.center .img-container',
         'el2': '#slider .owl-item.center .info',
         'positionTop': $('#slider').offset().top - $header.height(),
-        'division': 6,
+        'division': 10,
         'mov': 4
       });
 
