@@ -202,6 +202,7 @@ $(document).ready(function() {
     var $article = $(this).parents('article').clone().removeClass('double').wrapAll("<div class='article'></div>").parent().wrapAll('<div></div>').parent();
         $article.find('.read-later').remove();
         $article.find('div.article').append('<a href="#" class="delete"></a>');
+        $article.find('div.article').attr('id', 'article' + $(this).parents('article').index('#main article'));
         $article = $article.html();
 
     $articleEl = $(this).parents('article');
@@ -233,8 +234,23 @@ $(document).ready(function() {
       setTimeout(function() {
         sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item added scaled">' + $article + '</div>'), 0]);
         sliderSelection.trigger('refresh.owl.carousel');
-        $('.scaled').removeClass('scaled');
-      }, 1200);
+
+        $('.added').find('.article').width(0).css({
+          transition: 'none',
+          paddingRight: 0
+        });
+        setTimeout(function() {
+          $('.added').find('.article').css({
+            transition: '',
+            paddingRight: '',
+            width: ''
+          });
+        }, 200);
+        setTimeout(function() {
+          $('.scaled').removeClass('scaled');
+          $('.added').removeClass('added');
+        }, 1200);
+      }, 800);
     });
      
   });
