@@ -11,6 +11,10 @@
 .articles {
   overflow: hidden;
 
+  &.noOv {
+    overflow: initial;
+  }
+
   &.pad {
     padding-top: 40px;
   }
@@ -127,6 +131,7 @@ article {
         position: absolute;
         min-width: 100%;
         min-height: 100%;
+        max-width: 100%;
         width: auto;
         height: auto;
         @include transition(all 3s $linear);

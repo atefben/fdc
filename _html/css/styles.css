@@ -7297,6 +7297,9 @@ div.chocolat-wrapper .chocolat-close {
 .articles {
   overflow: hidden;
 }
+.articles.noOv {
+  overflow: initial;
+}
 .articles.pad {
   padding-top: 40px;
 }
@@ -7403,6 +7406,7 @@ article .image .image-wrapper img {
   position: absolute;
   min-width: 100%;
   min-height: 100%;
+  max-width: 100%;
   width: auto;
   height: auto;
   -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
