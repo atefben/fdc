@@ -8126,13 +8126,13 @@ article .image .linkImage {
   font-size: 2.250rem;
   font-weight: normal;
   letter-spacing: 0.1em;
-  margin: 20px 0 15px 0;
+  margin: 12px 0 12px 0;
   text-transform: uppercase;
 }
 .single-movie .info-film .title-original {
   font-size: 0.750rem;
   font-weight: normal;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   text-transform: uppercase;
 }
 .single-movie .info-film p {
@@ -8170,8 +8170,8 @@ article .image .linkImage {
   content: '-';
   display: block;
   position: absolute;
-  top: 0;
-  right: -10px;
+  top: -1px;
+  right: -12.5px;
 }
 .single-movie .info-film .categories span:last-child:after {
   display: none;
@@ -8328,6 +8328,7 @@ article .image .linkImage {
   display: block;
   height: 100%;
   width: 100%;
+  opacity: 0.3;
   position: absolute;
   top: 0;
   left: 0;
