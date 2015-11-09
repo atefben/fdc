@@ -8708,6 +8708,7 @@ article .image .linkImage {
   float: right;
   height: 100%;
   margin-right: 20px;
+  padding-top: 30px;
   width: 470px;
 }
 .single-movie .press .info-press .wrapper .folder {
@@ -8738,6 +8739,9 @@ article .image .linkImage {
 .single-movie .press .info-press .wrapper .folder a:hover {
   color: #fff;
 }
+.single-movie .press .info-press .wrapper .folder a:last-child {
+  margin-bottom: 0;
+}
 .single-movie .press .info-press .wrapper .links {
   border-bottom: 1px solid #252525;
   padding: 22px 0;
@@ -8764,6 +8768,7 @@ article .image .linkImage {
 .single-movie .press .info-press .wrapper .button {
   border-color: #c8a461;
   border-right: 1px solid #c8a461;
+  font-size: 0.750rem;
   height: 50px;
   line-height: 50px;
   margin: 15px 20px 0 0;
@@ -8790,14 +8795,18 @@ article .image .linkImage {
   float: left;
   margin-left: 85px;
   width: 470px;
+  padding-top: 30px;
 }
-.single-movie .press .contacts .wrapper div {
+.single-movie .press .contacts .wrapper .vCenterKidTop div {
   padding: 15px 0;
 }
-.single-movie .press .contacts .wrapper div.prod {
+.single-movie .press .contacts .wrapper .vCenterKidTop div.prod {
   border-bottom: 1px solid #383838;
   margin-bottom: 10px;
   padding-bottom: 25px;
+}
+.single-movie .press .contacts .wrapper .vCenterKidTop div:last-child {
+  padding-bottom: 0;
 }
 .single-movie .press .contacts .wrapper p {
   color: #999;

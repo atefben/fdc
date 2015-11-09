@@ -67,6 +67,12 @@ $(document).ready(function() {
       if($('.articles').length != 0) {
         $('.articles').removeClass('left right').addClass('center');
         $('.articles article').removeClass('double');
+
+        // if($('#format .select .active').text()) {
+        //   $('.content-news .slideshow').show();
+        // } else {
+        //   $('.content-news .slideshow').hide();
+        // }
       }
     } else {
       $('*[data-' + id + ']').show();

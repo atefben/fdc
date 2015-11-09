@@ -385,7 +385,7 @@
           <div class="info-press">
             <div class="wrapper">
               <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKidTop">
                   <h3 class="gold">Infos presse</h3>
                   <div class="folder">
                     <div class="vCenter">
@@ -394,7 +394,6 @@
                         <h3>Dossier de presse</h3>
                         <a href="#">Français PDF</a>
                         <a href="#">English PDF</a>
-                        <a href="#">Bilingue PDF</a>
                       </div>
                     </div>
                   </div>
@@ -414,7 +413,7 @@
           <div class="contacts">
             <div class="wrapper">
               <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKidTop">
                   <h3>Contacts</h3>
                   <div class="prod">
                     <p class="sub">Production</p>

@@ -343,65 +343,64 @@
       </div>
       <div class="press" data-section="press">
         <div class="info-press">
-          <div class="wrapper">
-            <div class="vCenter">
-              <div class="vCenterKid">
-                <h3 class="gold">Infos presse</h3>
-                <div class="folder">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <img src="img/movie/006.jpg" alt="" />
-                      <h3>Dossier de presse</h3>
-                      <a href="#">Français PDF</a>
-                      <a href="#">English PDF</a>
-                      <a href="#">Bilingue PDF</a>
+            <div class="wrapper">
+              <div class="vCenter">
+                <div class="vCenterKidTop">
+                  <h3 class="gold">Infos presse</h3>
+                  <div class="folder">
+                    <div class="vCenter">
+                      <div class="vCenterKid">
+                        <img src="img/movie/006.jpg" alt="" />
+                        <h3>Dossier de presse</h3>
+                        <a href="#">Français PDF</a>
+                        <a href="#">English PDF</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="links">
-                  <p class="sub">Liens</p>
-                  <a href="#" target="_blank">Site internet</a><a href="#" target="_blank">Facebook</a><a href="#" target="_blank">Twitter</a>
-                </div>
-                <div class="buttons">
-                  <p class="sub">Plus d'informations</p>
-                  <a href="#" class="button">Espace presse</a>
-                  <a href="#" class="button">Voir la programmation</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="contacts">
-          <div class="wrapper">
-            <div class="vCenter">
-              <div class="vCenterKid">
-                <h3>Contacts</h3>
-                <div class="prod">
-                  <p class="sub">Production</p>
-                  <p>CG CINÉMA - 54 rue du Faubourg-Saint-Honoré 75008 Paris FRANCET: 0184173508 - <a href="#">production@cgcinema.eu</a></p>
-                </div>
-                <div>
-                  <p class="sub">Distribution</p>
-                  <p>LES FILMS DU LOSANGE - T: 01 44 43 87 10<br />
-                  <a href="#">r.vial@filmsdulosange.fr</a>  <a href="#">www.filmsdulosange.fr</a></p>
-                </div>
-                <div>
-                  <p class="sub">Presse française</p>
-                  <p>MONICA DONATI - T: +33 (0)1 43 07 55 22<br />
-                  <a href="#">monica.donati@mk2.com</a></p>
-                </div>
-                <div>
-                  <p class="sub">Presse internationale</p>
-                  <p>MANLIN STERNER - <a href="#">manlin@manlin.se</a></p>
-                </div>
-                <div>
-                  <p class="sub">Ventes à l'étranger</p>
-                  <p>MK2 - T: +33 (0)1 44 67 30 30</p>
+                  <div class="links">
+                    <p class="sub">Liens</p>
+                    <a href="#" target="_blank">Site internet</a><a href="#" target="_blank">Facebook</a><a href="#" target="_blank">Twitter</a>
+                  </div>
+                  <div class="buttons">
+                    <p class="sub">Plus d'informations</p>
+                    <a href="#" class="button">Espace presse</a>
+                    <a href="#" class="button">Voir la programmation</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <div class="contacts">
+            <div class="wrapper">
+              <div class="vCenter">
+                <div class="vCenterKidTop">
+                  <h3>Contacts</h3>
+                  <div class="prod">
+                    <p class="sub">Production</p>
+                    <p>CG CINÉMA - 54 rue du Faubourg-Saint-Honoré 75008 Paris FRANCET: 0184173508 - <a href="#">production@cgcinema.eu</a></p>
+                  </div>
+                  <div>
+                    <p class="sub">Distribution</p>
+                    <p>LES FILMS DU LOSANGE - T: 01 44 43 87 10<br />
+                    <a href="#">r.vial@filmsdulosange.fr</a>  <a href="#">www.filmsdulosange.fr</a></p>
+                  </div>
+                  <div>
+                    <p class="sub">Presse française</p>
+                    <p>MONICA DONATI - T: +33 (0)1 43 07 55 22<br />
+                    <a href="#">monica.donati@mk2.com</a></p>
+                  </div>
+                  <div>
+                    <p class="sub">Presse internationale</p>
+                    <p>MANLIN STERNER - <a href="#">manlin@manlin.se</a></p>
+                  </div>
+                  <div>
+                    <p class="sub">Ventes à l'étranger</p>
+                    <p>MK2 - T: +33 (0)1 44 67 30 30</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
       <div class="competition">
         <h2 class="title">En compétition 2016</h2>
