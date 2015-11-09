@@ -217,7 +217,7 @@ header {
     background-color: $black;
     height: 160px;
     overflow: hidden;
-    @include transition(all 0.2s $smoothTransition);
+    @include transition(all 0.1s $smoothTransition);
     @include transform(translateY(0));
 
     .container {

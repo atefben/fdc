@@ -3480,10 +3480,10 @@ header #logo-wrapper {
   background-color: #141414;
   height: 160px;
   overflow: hidden;
-  -moz-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
@@ -5954,7 +5954,8 @@ div.chocolat-wrapper .chocolat-close {
   background-position: center top;
   background-size: cover;
   width: 100%;
-  height: 100%;
+  height: 110%;
+  margin-top: -5%;
   opacity: 0.2 !important;
   -moz-transition: opacity 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: opacity 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
