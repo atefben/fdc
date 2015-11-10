@@ -19,11 +19,13 @@
 		height: auto !important;
 	}
 	.title-list-header{
-		padding-top:  97px !important;
+		padding-top:  102px !important;
 
 	}
 	.logo{
-		margin-bottom: 28px;
+		margin-bottom: 26px;
+    width: 47px;
+    height: 39px;
 	}
 	.fa {
 		margin-bottom: 40px;
@@ -73,7 +75,11 @@
 				a{
 					color: #c29f5f;
 					text-decoration: underline;
+          @include transition(all 0.9s $linear);
 				}
+        a:hover{
+   				 color: #966505;
+   			}
 				.descrip-section{
 					 line-height: 24px;
 					 font-size: .8125rem;
@@ -104,8 +110,8 @@
 				font: .875rem $CamphorBold;
 				color: #c1c1c1;
 				text-transform: uppercase;
-				padding-top: 39px;
-				padding-bottom: 36px;
+				padding-top: 37px;
+				padding-bottom: 49px;
 				letter-spacing: 2px;
 				 @include transition(all 0.9s $linear);
 				.plus-info{
@@ -115,9 +121,9 @@
 					margin-bottom: -12px;
 				}
 				.svg{
-					width: 20px;
-					height: 20px;
-					padding-right: 22px;
+					width: 33px;
+					height: 19px;
+					padding-right: 13px;
 					vertical-align: bottom;
 				}
 				.svg path{
@@ -217,7 +223,7 @@
 				text-align: center;
 			}
 			.descrip-participate{
-				width: 690px;
+				width: 607px;
 				font-size: 1.25rem;
 				text-align: center;
 				margin: 0 auto;
@@ -304,7 +310,7 @@
 			display: inline-block;
 			height: 762px;
 			width: 363px;
-			padding-right: 56px;
+			padding-right: 54px;
 			img{
 				padding-bottom: 31px;
 			}
@@ -316,13 +322,13 @@
 
 			.title-acces{
 				text-transform: uppercase;
-				letter-spacing: 4px;
+				letter-spacing: 2px;
 				font-family: $CamphorBold;
 				font-size:.75rem;
 				padding-bottom: 20px;
 				img{
-				 height: 15px;
-					padding-right: 11px;
+				  height: 15px;
+					padding-right: 5px;
 					vertical-align: text-bottom;
 				}
 			}
@@ -364,17 +370,21 @@
 					text-transform: uppercase;
 					font-family : $CamphorBold;
 					letter-spacing: 2px;
-					padding-bottom: 28px;
+					padding-bottom: 23px;
 				}
 				p{
 					font-size: 0.81rem;
 					line-height: 24px;
-					padding-bottom: 15px;
+					padding-bottom: 11px;
 					strong{
 						color: #c8a461;
 					}
 					a{
 						color: #c8a461;
+						@include transition(all 0.9s $linear);
+					}
+					a:hover{
+						 color: #966505;
 					}
 				}
 				a{
@@ -384,8 +394,8 @@
 		}
 		}
 		.descrip-participate{
-			padding-top:36px;
-			padding-bottom: 37px;
+			padding-top:24px;
+			padding-bottom: 21px;
 		}
 		.descrip-title{
 			text-align: center;
@@ -401,7 +411,7 @@
 			display: block;
 			width: 246px;
 			margin: 0 auto;
-			line-height: 21px;
+			line-height: 20px;
 		}
 		.contain-map{
 			vertical-align: top;
@@ -465,11 +475,15 @@
 			.title-section{
 				font-family : $CamphorBold;
 				text-transform: uppercase;
-				color: #c8a461;
+				color: #c1c1c1;
 				font-size: 0.88rem;
 				letter-spacing: 2px;
 				padding-top: 55px;
+		    @include transition(all 0.9s $linear);
 			}
+      .title-section:hover{
+        color: #c8a461;
+      }
 			.item-partners{
 				border-bottom: 1px solid #c1c1c1;
 				padding: 41px 0px;
@@ -501,6 +515,10 @@
 						text-transform: uppercase;
 						font-size: 0.75rem;
 						padding-right: 13px;
+					 @include transition(all 0.9s $linear);
+					}
+          a:hover{
+						 color: #966505;
 					}
 					.content-text-with-portrait{
 						display: inline-block;
@@ -528,6 +546,11 @@
 				}
 			}
 		}
+    .participate-active{
+      .title-section{
+        color: #c8a461;
+      }
+    }
 	}
 	.content-partners:last-child{
 		.item-partners:last-child{
@@ -594,6 +617,10 @@
 						text-transform: uppercase;
 						font-size: 0.75rem;
 						padding-right: 13px;
+            @include transition(all 0.9s $linear);
+					}
+          a:hover{
+						 color: #966505;
 					}
 					.content-text-with-portrait{
 						display: inline-block;
