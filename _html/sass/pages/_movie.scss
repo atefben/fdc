@@ -828,7 +828,7 @@
   }
 
   .press {
-    height: 575px;
+    height: 600px;
     overflow: hidden;
 
     h3 {
@@ -864,7 +864,7 @@
         float: right;
         height: 100%;
         margin-right: 20px;
-        padding-top: 30px;
+        padding-top: 60px;
         width: 470px;
 
         .folder {
@@ -961,10 +961,10 @@
         float: left;
         margin-left: 85px;
         width: 470px;
-        padding-top: 30px;
+        padding-top: 60px;
 
         .vCenterKidTop div {
-          padding: 15px 0;
+          padding: 10px 0;
 
           &.prod {
             border-bottom: 1px solid #383838;
