@@ -24,12 +24,12 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article films-list loading cannes-classic">
+    <div id="main" class="list-article films-list loading cannes-classic selection-officielle">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Cannes classics</h2>
+           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
+               <h2 class="title title-list-header">Selection officielle</h2>
            </div>
-          <ul class="nav-list">
+          <ul class="nav-list sub-nav-list">
              <li>
                <a href="selectionofficielle_competition.php" class="ajax">Compétition</a>
              </li>
@@ -49,7 +49,7 @@
                <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
              </li>
              <li>
-               <a href="films_invitedhonneur.php" class='active'>Cannes classics</a>
+               <a href="films_invitedhonneur.php" class='ajax active'>Cannes classics</a>
              </li>
              <li>
                <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
@@ -120,7 +120,7 @@ CREATION DE LA PALME D’OR</h2>
             </article>
         </section>
       </div>
-      <div class="bandeau-list">
+      <div class="bandeau-list  bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Invité d'honneur</h2>
                <a href="films_invitedhonneur.php" class="bandeau-lien"> > Découvrir la rubrique</a>

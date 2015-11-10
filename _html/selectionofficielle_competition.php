@@ -176,7 +176,7 @@
           </div>  
         </section>
       </div>
-      <div class="bandeau-list">
+      <div class="bandeau-list  bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/push.jpg);">
                <h2 class="title title-list-header">Un certain regard</h2>
                <a href="selectionofficielle_uncertainregard.php" class="bandeau-lien"> > Découvrir la rubrique</a>

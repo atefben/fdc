@@ -24,10 +24,10 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article loading">
+    <div id="main" class="list-article loading films-list selection-officielle">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Cinéma de la plage</h2>
+           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
+               <h2 class="title title-list-header">Selection officielle</h2>
            </div>
            <div class="bandeau-list">
             <ul class="sub-nav-list nav-list">
@@ -35,7 +35,7 @@
                <a href="selectionofficielle_competition.php" class='ajax'>Compétition</a>
              </li>
              <li>
-               <a href="selectionofficielle_uncertainregard.php" class="ajax active">Un certain regard</a>
+               <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>
              </li>
              <li>
                <a href="selectionofficielle_horscompetition.php" class="ajax">Hors compétition</a>
@@ -50,10 +50,10 @@
                <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
              </li>
              <li>
-               <a href="films_invitedhonneur.php" class="">Cannes classics</a>
+               <a href="films_invitedhonneur.php" class="ajax">Cannes classics</a>
              </li>
              <li>
-               <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
+               <a href="films_cinemadelaplage.php" class="ajax active">Cinéma de la plage</a>
              </li>
            </ul>
       </div>
@@ -109,7 +109,7 @@ faite par Digimage Classics.</p>
             </article>
         </section>
       </div>
-      <div class="bandeau-list">
+      <div class="bandeau-list bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Compétition</h2>
                <a href="selectionofficielle_competition.php" class="bandeau-lien"> > Découvrir la rubrique</a>

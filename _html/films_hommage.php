@@ -24,12 +24,12 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article films-list loading cannes-classic">
+    <div id="main" class="list-article films-list loading cannes-classic selection-officielle">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);">
-               <h2 class="title title-list-header">Cannes classics</h2>
+           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
+               <h2 class="title title-list-header">Selection officielle</h2>
            </div>
-           <ul class="nav-list">
+           <ul class="nav-list sub-nav-list">
              <li>
                <a href="selectionofficielle_competition.php" class="ajax">Compétition</a>
              </li>
@@ -126,7 +126,7 @@
             </article>
         </section>
       </div>
-      <div class="bandeau-list">
+      <div class="bandeau-list  bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Copies restaurées</h2>
                <a href="films_copiesrestaurees.php" class="bandeau-lien"> > Découvrir la rubrique</a>

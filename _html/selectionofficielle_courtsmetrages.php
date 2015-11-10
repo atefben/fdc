@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">    
+    <meta name="author" content="">
 
     <!-- //// TITLE \\\\ -->
     <title>Festival de Cannes 2016 - HTML</title>
@@ -26,7 +26,7 @@
 
     <div id="main" class="list-article films-list selection-officielle loading">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);background-size: cover;">
+           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
                <h2 class="title title-list-header">Selection officielle</h2>
            </div>
  <ul class="sub-nav-list nav-list">
@@ -173,19 +173,17 @@
                  </figure>
                 </div>
               </div>
-          </div>  
+          </div>
         </section>
       </div>
-      <div class="bandeau-list">
+      <div class="bandeau-list  bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/push.jpg);">
                <h2 class="title title-list-header">Cannes classics</h2>
                <a href="films_invitedhonneur.php" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
-
       </div>
     </div>
     <?php include('footer.html'); ?>
-
     <!-- //// SCRIPTS \\\\ -->
     <?php include('scripts.inc.php'); ?>
   </body>
