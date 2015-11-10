@@ -6046,9 +6046,9 @@ div.chocolat-wrapper .chocolat-close {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6074,11 +6074,11 @@ div.chocolat-wrapper .chocolat-close {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6094,26 +6094,26 @@ div.chocolat-wrapper .chocolat-close {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -11610,14 +11610,18 @@ article .read-later.rAlign span:after {
   text-align: center;
   text-transform: uppercase;
   width: 95%;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  letter-spacing: .2em;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .evenement .read-more strong {
   color: #000;
   font-weight: normal;
+}
+.evenement .read-more:hover {
+  opacity: 0.5;
 }
 
 .evenement:after {
