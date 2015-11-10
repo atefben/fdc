@@ -743,7 +743,7 @@ article {
     }
 
     &.prev {
-      background: url('../img/svg/arrow-left-article.svg') no-repeat center;
+      background: url('../img/svg/arrow-left-black.svg') no-repeat center;
       background-size: 15px;
       left: 2%;
 
@@ -753,7 +753,7 @@ article {
       }
 
       &:hover {
-        border-color: #9E9E9E;
+        border-color: $black;
 
         &:after {
           opacity: 1;
@@ -763,7 +763,7 @@ article {
     }
 
     &.next {
-      background: url('../img/svg/arrow-right-article.svg') no-repeat center;
+      background: url('../img/svg/arrow-right-black.svg') no-repeat center;
       background-size: 15px;
       left: auto;
       right: 2%;

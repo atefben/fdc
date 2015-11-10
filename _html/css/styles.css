@@ -8364,7 +8364,7 @@ article .read-later.rAlign span:after {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-article .nav.prev {
-  background: url("../img/svg/arrow-left-article.svg") no-repeat center;
+  background: url("../img/svg/arrow-left-black.svg") no-repeat center;
   background-size: 15px;
   left: 2%;
 }
@@ -8373,14 +8373,14 @@ article .read-later.rAlign span:after {
   background-size: 15px;
 }
 .single-article .nav.prev:hover {
-  border-color: #9E9E9E;
+  border-color: #141414;
 }
 .single-article .nav.prev:hover:after {
   opacity: 1;
   visibility: visible;
 }
 .single-article .nav.next {
-  background: url("../img/svg/arrow-right-article.svg") no-repeat center;
+  background: url("../img/svg/arrow-right-black.svg") no-repeat center;
   background-size: 15px;
   left: auto;
   right: 2%;
