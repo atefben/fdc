@@ -76,6 +76,56 @@ $(document).ready(function() {
 
   if($('.searchpage').length) {
 
+    // test : remove once on server
+    if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') {
+      $('#noResult').show();
+      $('#count span').text('0');
+      return false;
+    }
+
+    $.ajax({
+      type: "GET",
+      url: 'results.json',
+      success: function(data) {
+        console.log(data);
+
+        if(data.all.count == 0) {
+          $('#noResult').show();
+          return false;
+        } else {
+          $('.resultWrapper').show();
+          $('#count span, #colSearch .all span').text(data.all.count);
+
+          // ARTISTS
+          var artists = data.persons;
+          $('#colSearch .artists span').text(artists.count);
+
+          // FILMS
+          var films = data.films;
+          $('#colSearch .films span').text(films.count);
+
+          // FILMS
+          var medias = data.medias;
+          $('#colSearch .medias span').text(medias.count);
+
+          // NEWS
+          var news = data.news;
+          $('#colSearch .news span').text(news.count);
+
+          // COMMUNIQUES
+          var communiques = data.communiques;
+          $('#colSearch .communiques span').text(communiques.count);
+
+          // EVENTS
+          var events = data.events;
+          $('#colSearch .events span').text(events.count);
+
+          // PARTICIPATE
+          var participate = data.participate;
+          $('#colSearch .participate span').text(participate.count);
+        }
+      }
+    });
   }
 
 });
