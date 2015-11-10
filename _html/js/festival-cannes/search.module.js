@@ -22,9 +22,9 @@ $(document).ready(function() {
   }  
 
   $('body').on('click', '#suggest li', function(e) {
-    var n = $(this).data('search');
+    var link = $(this).data('link');
 
-    window.location = 'search.php?name=' + n;
+    window.location = link;
   });
 
   $('#inputSearch').on('input', function(e) {
@@ -39,16 +39,17 @@ $(document).ready(function() {
         type: "GET",
         url: 'searchsuggest.json',
         success: function(data) {
-          console.log(data);
+
           for (var i=0; i<data.length; i++) {
             var type = data[i].type,
-                name = data[i].name;
+                name = data[i].name,
+                link = data[i].link;
 
             var txt = name.toLowerCase();
 
             txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
 
-            $('#suggest').append('<li data-search="' + name + '"><span>' + type + '</span>' + txt + '</li>');
+            $('#suggest').append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
           }
         }
       });
@@ -74,7 +75,7 @@ $(document).ready(function() {
   });
 
   if($('.searchpage').length) {
-    
+
   }
 
 });
