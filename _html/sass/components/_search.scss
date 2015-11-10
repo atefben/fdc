@@ -11,6 +11,7 @@
   background-color: #fff;
   left: 0;
   max-height: 0;
+  min-height: 0;
   overflow: hidden;
   position: fixed;
   top: 230px;
@@ -23,7 +24,7 @@
     color:    #e6e6e6;
     font-size: 2.250rem;
     letter-spacing: 0.1em;
-    line-height: 1em;
+    line-height: 1.4em;
   }
   :-moz-placeholder {
     color:    #e6e6e6;
@@ -44,13 +45,9 @@
     line-height: 1em;
   }
 
-  &.open {
-    max-height: 8000px;
-    padding: 40px 0 0 0;
-  }
-
   form {
     display: block;
+    margin-top: 40px;
     position: relative;
     width: 100%;
   }
@@ -75,7 +72,7 @@
     cursor: pointer;
     outline: none;
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     right: 0;
     height: 50px;
     width: 50px;
@@ -90,6 +87,7 @@
   #footerSearch {
     background-color: #000;
     height: 300px;
+    margin-top: 40px;
     position: relative;
     width: 100%;
 
@@ -106,7 +104,6 @@
 
     .txtFooter {
       color: #fff;
-      margin-top: 35px;
       position: relative;
       text-align: center;
       z-index: 1;
@@ -145,11 +142,65 @@
       }
     }
   }
+
+  #suggest {
+    width: 100%;
+
+    li {
+      box-sizing: border-box;
+      color: #a3a3a3;
+      cursor: pointer;
+      font-family: $Playfair;
+      font-size: 0.688rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 15px;
+      position: relative;
+      width: 100%;
+      @include transition(all 0.9s $smoothTransition);
+
+      &:hover {
+        background-color: #ededed;
+      }
+
+      strong {
+        color: #333;
+        font-weight: 700;
+      }
+
+      span {
+        color: #000;
+        font-family: $CamphorHeavy;
+        position: absolute;
+        font-size: 0.625rem;
+        letter-spacing: 0.1em;
+        right: 15px;
+      }
+
+      &:nth-child(2n) {
+        background-color: #f7f7f7;
+
+        &:hover {
+          background-color: #ededed;
+        }
+      }
+    }
+  }
 }
 
 .sticky #searchContainer {
   top: 91px;
 }
 
+.searchpage {
+  #searchContainer {
+    max-height: initial;
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}
 
 

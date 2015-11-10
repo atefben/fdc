@@ -3573,7 +3573,7 @@ header #logo-wrapper #partners {
 }
 header #logo-wrapper #partners img {
   display: inline-block;
-  margin-right: 27px;
+  margin-right: 25px;
   vertical-align: middle;
 }
 header #logo-wrapper #partners img.chopard {
@@ -5805,6 +5805,7 @@ div.chocolat-wrapper .chocolat-close {
   background-color: #fff;
   left: 0;
   max-height: 0;
+  min-height: 0;
   overflow: hidden;
   position: fixed;
   top: 230px;
@@ -5823,7 +5824,7 @@ div.chocolat-wrapper .chocolat-close {
   color: #e6e6e6;
   font-size: 2.250rem;
   letter-spacing: 0.1em;
-  line-height: 1em;
+  line-height: 1.4em;
 }
 #searchContainer :-moz-placeholder {
   color: #e6e6e6;
@@ -5843,12 +5844,9 @@ div.chocolat-wrapper .chocolat-close {
   letter-spacing: 0.1em;
   line-height: 1em;
 }
-#searchContainer.open {
-  max-height: 8000px;
-  padding: 40px 0 0 0;
-}
 #searchContainer form {
   display: block;
+  margin-top: 40px;
   position: relative;
   width: 100%;
 }
@@ -5871,7 +5869,7 @@ div.chocolat-wrapper .chocolat-close {
   cursor: pointer;
   outline: none;
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   right: 0;
   height: 50px;
   width: 50px;
@@ -5886,6 +5884,7 @@ div.chocolat-wrapper .chocolat-close {
 #searchContainer #footerSearch {
   background-color: #000;
   height: 300px;
+  margin-top: 40px;
   position: relative;
   width: 100%;
 }
@@ -5901,7 +5900,6 @@ div.chocolat-wrapper .chocolat-close {
 }
 #searchContainer #footerSearch .txtFooter {
   color: #fff;
-  margin-top: 35px;
   position: relative;
   text-align: center;
   z-index: 1;
@@ -5936,9 +5934,58 @@ div.chocolat-wrapper .chocolat-close {
 #searchContainer #footerSearch .txtFooter p.link a:hover {
   opacity: 0.5;
 }
+#searchContainer #suggest {
+  width: 100%;
+}
+#searchContainer #suggest li {
+  box-sizing: border-box;
+  color: #a3a3a3;
+  cursor: pointer;
+  font-family: "Playfair Display";
+  font-size: 0.688rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 15px;
+  position: relative;
+  width: 100%;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#searchContainer #suggest li:hover {
+  background-color: #ededed;
+}
+#searchContainer #suggest li strong {
+  color: #333;
+  font-weight: 700;
+}
+#searchContainer #suggest li span {
+  color: #000;
+  font-family: "Camphor W01 Heavy";
+  position: absolute;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  right: 15px;
+}
+#searchContainer #suggest li:nth-child(2n) {
+  background-color: #f7f7f7;
+}
+#searchContainer #suggest li:nth-child(2n):hover {
+  background-color: #ededed;
+}
 
 .sticky #searchContainer {
   top: 91px;
+}
+
+.searchpage #searchContainer {
+  max-height: initial;
+  position: relative;
+  left: auto;
+  top: auto;
 }
 
 #main.overlay-popin:after {
