@@ -351,9 +351,9 @@ header {
     height: 39px;
     line-height: 39px;
 
-    .container {
+    /*.container {
       overflow: hidden;
-    }
+    }*/
 
     ul {
       float: left;
@@ -422,6 +422,11 @@ header {
             text-align: center;
             width: 639px;
             padding-left: 0;
+            left: 0;
+
+            li:last-child a {
+              padding-right: 0;
+            }
           }
         }
 
@@ -435,6 +440,7 @@ header {
         border-right: 1px solid #404040;
         font-family: $CamphorHeavy;
         font-size: 0.875rem;
+        position: relative;
       }
 
       &.user {

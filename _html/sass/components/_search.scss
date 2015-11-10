@@ -58,7 +58,7 @@
   #inputSearch {
     border: none;
     border-bottom: 1px solid #dfdfdf;
-    color: #000;
+    color: #333;
     line-height: 1em;
     padding-bottom: 10px;
     font-family: $Playfair;
@@ -83,6 +83,32 @@
 
     &:hover {
       opacity: 0.6;
+    }
+  }
+
+
+  #footerSearch {
+    background-color: #000;
+    height: 300px;
+    position: relative;
+    width: 100%;
+
+    .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      opacity: 0.3;
+      width: 100%;
+      background: url('../img/search/footer.jpg') no-repeat top center;
+      background-size: cover;
+    }
+
+    .txtFooter {
+      color: #fff;
+      position: relative;
+      text-align: center;
+      z-index: 1;
     }
   }
 }

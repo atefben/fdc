@@ -3617,9 +3617,9 @@ header #navigation {
   border-top: 1px solid #404040;
   height: 39px;
   line-height: 39px;
-}
-header #navigation .container {
-  overflow: hidden;
+  /*.container {
+    overflow: hidden;
+  }*/
 }
 header #navigation ul {
   float: left;
@@ -3690,6 +3690,10 @@ header #navigation ul li ul.tcenter {
   text-align: center;
   width: 639px;
   padding-left: 0;
+  left: 0;
+}
+header #navigation ul li ul.tcenter li:last-child a {
+  padding-right: 0;
 }
 header #navigation ul li:hover ul {
   opacity: 1;
@@ -3699,6 +3703,7 @@ header #navigation ul.main {
   border-right: 1px solid #404040;
   font-family: "Camphor W01 Heavy";
   font-size: 0.875rem;
+  position: relative;
 }
 header #navigation ul.user {
   font-family: "Camphor W01 Bold";
@@ -5850,7 +5855,7 @@ div.chocolat-wrapper .chocolat-close {
 #searchContainer #inputSearch {
   border: none;
   border-bottom: 1px solid #dfdfdf;
-  color: #000;
+  color: #333;
   line-height: 1em;
   padding-bottom: 10px;
   font-family: "Playfair Display";
@@ -5877,6 +5882,28 @@ div.chocolat-wrapper .chocolat-close {
 }
 #searchContainer #submitSearch:hover {
   opacity: 0.6;
+}
+#searchContainer #footerSearch {
+  background-color: #000;
+  height: 300px;
+  position: relative;
+  width: 100%;
+}
+#searchContainer #footerSearch .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0.3;
+  width: 100%;
+  background: url("../img/search/footer.jpg") no-repeat top center;
+  background-size: cover;
+}
+#searchContainer #footerSearch .txtFooter {
+  color: #fff;
+  position: relative;
+  text-align: center;
+  z-index: 1;
 }
 
 .sticky #searchContainer {
