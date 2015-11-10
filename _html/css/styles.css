@@ -3677,7 +3677,7 @@ header #navigation ul li ul:before {
   height: 100%;
   left: -150%;
   position: absolute;
-  width: 350%;
+  width: 450%;
   z-index: 0;
 }
 header #navigation ul li ul li {
