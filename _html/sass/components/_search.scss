@@ -251,6 +251,18 @@
     overflow: hidden;
     padding-left: 120px;
 
+    #filtered {
+      display: none;
+
+      .filters {
+        height: 48px;
+        border-bottom: 1px solid #dfdfdf;
+        line-height: 42px;
+        margin-top: 3px;
+        margin-left: 55px;
+      }
+    }
+
     .resultWrapper {
       display: none;
       overflow: hidden;
@@ -259,9 +271,14 @@
       .resultsContainer {
         border-bottom: 1px solid #d9d9d9;
         margin-bottom: 30px;
+        overflow: hidden;
         position: relative;
 
-        h2 {
+        &.noBorder {
+          border: none;
+        }
+
+        h2.titleSection {
           font-family: $CamphorMedium;
           font-size: 0.750rem;
           margin-bottom: 30px;
@@ -289,6 +306,29 @@
       float: left;
       padding: 22px 55px 0 55px;
       width: 490px;
+
+      article {
+        height: auto;
+        padding: 0 0 40px 0;
+        width: 225px;
+
+        .info {
+          color: #666;
+        }
+
+        .category {
+          display: block;
+          margin: 0;
+        }
+
+        .image {
+          height: 140px;
+        }
+
+        &:nth-child(2n) {
+          margin-left: 40px;
+        }
+      }
     }
 
     #short {

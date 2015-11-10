@@ -43,53 +43,245 @@
             </ul>
           </div>
           <div id="results">
+            <div id="filtered">
+              <div class="filters">
+                <div id="format" class="filter">
+                  <span class="label">Date :</span>
+                  <span class="select">
+                    <span class="active" data-filter="all">Toutes</span>
+                    <span data-filter="18052015">18 Mai 2015</span>
+                  </span>
+                </div>
+                <div id="format" class="filter">
+                  <span class="label">Format :</span>
+                  <span class="select">
+                    <span class="active" data-filter="all">Tous</span>
+                    <span data-filter="photo">Photo</span>
+                    <span data-filter="video">Vidéo</span>
+                    <span data-filter="audio">Audio</span>
+                    <span data-filter="article">Article</span>
+                  </span>
+                </div>
+                <div id="theme" class="filter">
+                  <span class="label">Thème :</span>
+                  <span class="select">
+                    <span class="active" data-filter="all">Tous</span>
+                    <span data-filter="press">Conférence de Presse</span>
+                    <span data-filter="steps">Montée des marches</span>
+                  </span>
+                </div>
+              </div>
+            </div>
             <div id="wide" class="resultWrapper">
               <div class="resultsContainer">
-                <h2>Actualités</h2>
+                <h2 class="titleSection">Actualités</h2>
                 <a href="#" class="view-all">Tout voir</a>
                 <div id="newsResults">
-
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
               </div>
               <div class="resultsContainer">
-                <h2>Communiqués/Infos</h2>
+                <h2 class="titleSection">Communiqués/Infos</h2>
                 <a href="#" class="view-all">Tout voir</a>
                 <div id="communiquesResults">
-
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
               </div>
               <div class="resultsContainer">
-                <h2>Medias</h2>
+                <h2 class="titleSection">Medias</h2>
                 <a href="#" class="view-all">Tout voir</a>
                 <div id="mediasResults">
-
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
               </div>
               <div class="resultsContainer">
-                <h2>évènements</h2>
+                <h2 class="titleSection">évènements</h2>
                 <a href="#" class="view-all">Tout voir</a>
                 <div id="eventsResults">
-
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
               </div>
-              <div class="resultsContainer">
-                <h2>Participer</h2>
+              <div class="resultsContainer noBorder">
+                <h2 class="titleSection">Participer</h2>
                 <a href="#" class="view-all">Tout voir</a>
                 <div id="participateResults">
-
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
               </div>
             </div>
             <div id="short" class="resultWrapper">
               <div class="resultsContainer">
-                <h2>Artistes</h2>
+                <h2 class="titleSection">Artistes</h2>
                 <a href="#" class="view-all">Tout voir</a>
                 <div id="artistsResults">
 
                 </div>
               </div>
               <div class="resultsContainer">
-                <h2>Films</h2>
+                <h2 class="titleSection">Films</h2>
                 <a href="#" class="view-all">Tout voir</a>
                 <div id="filmsResults">
 

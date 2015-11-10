@@ -6028,6 +6028,16 @@ div.chocolat-wrapper .chocolat-close {
   overflow: hidden;
   padding-left: 120px;
 }
+#searchContainer #results #filtered {
+  display: none;
+}
+#searchContainer #results #filtered .filters {
+  height: 48px;
+  border-bottom: 1px solid #dfdfdf;
+  line-height: 42px;
+  margin-top: 3px;
+  margin-left: 55px;
+}
 #searchContainer #results .resultWrapper {
   display: none;
   overflow: hidden;
@@ -6036,9 +6046,13 @@ div.chocolat-wrapper .chocolat-close {
 #searchContainer #results .resultWrapper .resultsContainer {
   border-bottom: 1px solid #d9d9d9;
   margin-bottom: 30px;
+  overflow: hidden;
   position: relative;
 }
-#searchContainer #results .resultWrapper .resultsContainer h2 {
+#searchContainer #results .resultWrapper .resultsContainer.noBorder {
+  border: none;
+}
+#searchContainer #results .resultWrapper .resultsContainer h2.titleSection {
   font-family: "Camphor W01 Medium";
   font-size: 0.750rem;
   margin-bottom: 30px;
@@ -6064,6 +6078,24 @@ div.chocolat-wrapper .chocolat-close {
   float: left;
   padding: 22px 55px 0 55px;
   width: 490px;
+}
+#searchContainer #results #wide article {
+  height: auto;
+  padding: 0 0 40px 0;
+  width: 225px;
+}
+#searchContainer #results #wide article .info {
+  color: #666;
+}
+#searchContainer #results #wide article .category {
+  display: block;
+  margin: 0;
+}
+#searchContainer #results #wide article .image {
+  height: 140px;
+}
+#searchContainer #results #wide article:nth-child(2n) {
+  margin-left: 40px;
 }
 #searchContainer #results #short {
   float: left;
@@ -6162,9 +6194,9 @@ div.chocolat-wrapper .chocolat-close {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6190,11 +6222,11 @@ div.chocolat-wrapper .chocolat-close {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6210,26 +6242,26 @@ div.chocolat-wrapper .chocolat-close {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
