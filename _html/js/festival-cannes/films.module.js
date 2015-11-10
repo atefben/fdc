@@ -25,30 +25,74 @@ $(document).ready(function() {
       });
     }
   }
+    if($('.films-list').length){
+    
+      $('.films-list .sub-nav-list a').on('click',function(e){
 
-  if($('.selection-officielle').length) {
-    $('.selection-officielle .sub-nav-list a').on('click',function(e){
-      //:not(.active)
       e.preventDefault();
 
-      if($(this).is(':not(.active)')) {
-        var urlPath = $(this).attr('href');  
-//        $.get($(this).data('url'), function(data){
-        $.get(urlPath, function(data){
-            $( ".container-list" ).html( $(data).find('.container-list') );
-            history.pushState('',"titre test", urlPath);
-            $grid = $('#gridFilmSelection').imagesLoaded(function() {
-              $grid.isotope({
-                layoutMode: 'packery',
-                itemSelector: '.item'
-                });
-            });
+     if($(this).is(':not(.active)')) {
+      var urlPath = $(this).attr('href');
+
+      //$.get($(this).data('url'), function(data){
+      $.get(urlPath, function(data){
+        var isNav = false ;
+        
+//        if($(".nav-movie").length){
+//          isNav=true;
+//        }
+        
+        $( ".container-list" ).html( $(data).find('.container-list') );
+        
+//        if(isNav){
+//          $(".container-list").find('.nav-movie').remove();
+//          console.log('ICI');
+//        }
+        
+        history.pushState('',"titre test", urlPath);
+        $grid = $('#gridFilmSelection').imagesLoaded(function() {
+          $grid.isotope({
+            layoutMode: 'packery',
+            itemSelector: '.item'
+          });
         });
-        $('.selection-officielle .sub-nav-list').find('a.active').removeClass('active');
-        $(this).addClass('active');
-      }
-      
+      });
+      $('.films-list .sub-nav-list').find('a.active').removeClass('active');
+      $(this).addClass('active');
+    }
     });
   }
+  
+  
+//  if($('.selection-officielle').length) {
+//    $('.selection-officielle .sub-nav-list a').on('click',function(e){
+//
+//      e.preventDefault();
+//
+//      if($(this).is(':not(.active)')) {
+//        var urlPath = $(this).attr('href');  
+////        $.get($(this).data('url'), function(data){
+//        $.get(urlPath, function(data){
+//          var isNav = false ;
+//
+//            if($(".nav-movie").length){
+//                isNav=true;
+//            }
+//          
+//            $( ".container-list" ).html( $(data).find('.container-list') );
+//          
+//            if(isNav){
+//              $(".container-list").find('.nav-movie').remove();
+//            }
+//        
+//            history.pushState('',"titre test", urlPath);
+//
+//        });
+//        $('.selection-officielle .sub-nav-list').find('a.active').removeClass('active');
+//        $(this).addClass('active');
+//      }
+//      
+//    });
+//  }
   
 });

@@ -26,27 +26,27 @@
 
     <div id="main" class="list-article films-list loading cannes-classic">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
+           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);">
                <h2 class="title title-list-header">Cannes classics</h2>
            </div>
            <ul class="nav-list">
              <li>
-               <a href="selectionofficielle_competition.php">Compétition</a>
+               <a href="selectionofficielle_competition.php" class="ajax">Compétition</a>
              </li>
              <li>
-               <a href="selectionofficielle_uncertainregard.php">Un certain regard</a>
+               <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>
              </li>
              <li>
-               <a href="selectionofficielle_horscompetition.php">Hors compétition</a>
+               <a href="selectionofficielle_horscompetition.php" class="ajax">Hors compétition</a>
              </li>
              <li>
-               <a href="selectionofficielle_seancespeciales.php">Séances spéciales</a>
+               <a href="selectionofficielle_seancespeciales.php" class="ajax">Séances spéciales</a>
              </li>
              <li>
-               <a href="selectionofficielle_cinefondation.php">Cinéfondation</a>
+               <a href="selectionofficielle_cinefondation.php" class="ajax">Cinéfondation</a>
              </li>
              <li>
-               <a href="selectionofficielle_courtsmetrages.php">Courts métrages</a>
+               <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
              </li>
              <li>
                <a href="films_invitedhonneur.php" class='active ajax'>Cannes classics</a>
@@ -55,15 +55,17 @@
                <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
              </li>
            </ul>
-           <ul class="sub-nav-list nav-movie">
-               <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php" class="active ajax">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php" class="ajax">Copies restaurées </a></li>
-               <li><a href="#" class="ajax">World cinema project</a></li>
-               <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
-           </ul>  
       </div>
       <div class="container container-list">
+      <div class="bandeau-list">
+        <ul class="sub-nav-list nav-movie">
+          <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
+          <li><a href="films_hommage.php" class="ajax active">Hommages</a></li>
+          <li><a href="films_copiesrestaurees.php" class="ajax">Copies restaurées </a></li>
+          <li><a href="#" class="ajax">World cinema project</a></li>
+          <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
+        </ul> 
+      </div>
         <section class="categorie-items">
             <div class="title-list-cat">
                 <h2 class="title">Centenaire orson welles</h2>
@@ -129,7 +131,6 @@
                <h2 class="title title-list-header">Copies restaurées</h2>
                <a href="films_copiesrestaurees.php" class="bandeau-lien"> > Découvrir la rubrique</a>
            </div>
-
       </div>
     </div>
     <?php include('footer.html'); ?>

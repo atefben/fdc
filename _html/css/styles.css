@@ -10598,6 +10598,9 @@ article .read-later.rAlign span:after {
 .cannes-classic .title-list-cat:first-child {
   border-top: 0px solid #000;
 }
+.cannes-classic .container {
+  padding: 0px;
+}
 
 .palmares-list .sub-nav-list a {
   font-family: "Camphor W01 Bold";

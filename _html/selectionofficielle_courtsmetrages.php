@@ -31,7 +31,7 @@
            </div>
  <ul class="sub-nav-list nav-list">
              <li>
-               <a href="selectionofficielle_competition.php" class='active'>Compétition</a>
+               <a href="selectionofficielle_competition.php" class='ajax'>Compétition</a>
              </li>
              <li>
                <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>
@@ -49,7 +49,7 @@
                <a href="selectionofficielle_courtsmetrages.php" class="ajax active">Courts métrages</a>
              </li>
              <li>
-               <a href="films_invitedhonneur.php" class="">Cannes classics</a>
+               <a href="films_invitedhonneur.php"  class="ajax">Cannes classics</a>
              </li>
              <li>
                <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>

@@ -31,39 +31,41 @@
            </div>
              <ul class="nav-list">
              <li>
-               <a href="selectionofficielle_competition.php">Compétition</a>
+               <a href="selectionofficielle_competition.php" class="ajax">Compétition</a>
              </li>
              <li>
-               <a href="selectionofficielle_uncertainregard.php">Un certain regard</a>
+               <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>
              </li>
              <li>
-               <a href="selectionofficielle_horscompetition.php">Hors compétition</a>
+               <a href="selectionofficielle_horscompetition.php" class="ajax">Hors compétition</a>
              </li>
              <li>
-               <a href="selectionofficielle_seancespeciales.php">Séances spéciales</a>
+               <a href="selectionofficielle_seancespeciales.php" class="ajax">Séances spéciales</a>
              </li>
              <li>
-               <a href="selectionofficielle_cinefondation.php">Cinéfondation</a>
+               <a href="selectionofficielle_cinefondation.php" class="ajax">Cinéfondation</a>
              </li>
              <li>
-               <a href="selectionofficielle_courtsmetrages.php">Courts métrages</a>
+               <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
              </li>
              <li>
                <a href="films_invitedhonneur.php" class='active'>Cannes classics</a>
              </li>
              <li>
-               <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
+               <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
              </li>
            </ul>
-           <ul class="sub-nav-list nav-movie">
-               <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php" class="active ajax">Copies restaurées </a></li>
-               <li><a href="#" class="ajax">World cinema project</a></li>
-               <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
-           </ul> 
       </div>
       <div class="container container-list">
+      <div class="bandeau-list">
+        <ul class="sub-nav-list nav-movie">
+          <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
+          <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
+          <li><a href="films_copiesrestaurees.php" class="ajax active">Copies restaurées </a></li>
+          <li><a href="#" class="ajax">World cinema project</a></li>
+          <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
+        </ul> 
+      </div>
         <section class="categorie-items">
 
             <article style="background-image:url(img/films/cover-film-copie1.jpg)">
