@@ -12021,10 +12021,12 @@ article .read-later.rAlign span:after {
   height: auto !important;
 }
 .participate .title-list-header {
-  padding-top: 97px !important;
+  padding-top: 102px !important;
 }
 .participate .logo {
-  margin-bottom: 28px;
+  margin-bottom: 26px;
+  width: 47px;
+  height: 39px;
 }
 .participate .fa {
   margin-bottom: 40px;
@@ -12077,6 +12079,13 @@ article .read-later.rAlign span:after {
 .participate .contain-participate section .contain-section a {
   color: #c29f5f;
   text-decoration: underline;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.participate .contain-participate section .contain-section a:hover {
+  color: #966505;
 }
 .participate .contain-participate section .contain-section .descrip-section {
   line-height: 24px;
@@ -12110,8 +12119,8 @@ article .read-later.rAlign span:after {
   font: 0.875rem "Camphor W01 Bold";
   color: #c1c1c1;
   text-transform: uppercase;
-  padding-top: 39px;
-  padding-bottom: 36px;
+  padding-top: 37px;
+  padding-bottom: 49px;
   letter-spacing: 2px;
   -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -12125,9 +12134,9 @@ article .read-later.rAlign span:after {
   margin-bottom: -12px;
 }
 .participate .contain-participate section .title-participate .svg {
-  width: 20px;
-  height: 20px;
-  padding-right: 22px;
+  width: 33px;
+  height: 19px;
+  padding-right: 13px;
   vertical-align: bottom;
 }
 .participate .contain-participate section .title-participate .svg path {
@@ -12230,7 +12239,7 @@ article .read-later.rAlign span:after {
   text-align: center;
 }
 .participate .contain-participate section .descrip-participate {
-  width: 690px;
+  width: 607px;
   font-size: 1.25rem;
   text-align: center;
   margin: 0 auto;
@@ -12318,7 +12327,7 @@ article .read-later.rAlign span:after {
   display: inline-block;
   height: 762px;
   width: 363px;
-  padding-right: 56px;
+  padding-right: 54px;
 }
 .participate .contain-acces .imgs-acces img {
   padding-bottom: 31px;
@@ -12330,14 +12339,14 @@ article .read-later.rAlign span:after {
 }
 .participate .contain-acces .text-acces .title-acces {
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   font-family: "Camphor W01 Bold";
   font-size: .75rem;
   padding-bottom: 20px;
 }
 .participate .contain-acces .text-acces .title-acces img {
   height: 15px;
-  padding-right: 11px;
+  padding-right: 5px;
   vertical-align: text-bottom;
 }
 .participate .contain-acces .text-acces .descript-acces {
@@ -12376,25 +12385,32 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold";
   letter-spacing: 2px;
-  padding-bottom: 28px;
+  padding-bottom: 23px;
 }
 .participate .contain-cinema .contain-item-cinema .cinema .text-cinema p {
   font-size: 0.81rem;
   line-height: 24px;
-  padding-bottom: 15px;
+  padding-bottom: 11px;
 }
 .participate .contain-cinema .contain-item-cinema .cinema .text-cinema p strong {
   color: #c8a461;
 }
 .participate .contain-cinema .contain-item-cinema .cinema .text-cinema p a {
   color: #c8a461;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.participate .contain-cinema .contain-item-cinema .cinema .text-cinema p a:hover {
+  color: #966505;
 }
 .participate .contain-cinema .contain-item-cinema .cinema .text-cinema a {
   font-size: 0.81rem;
 }
 .participate .contain-cinema .descrip-participate {
-  padding-top: 36px;
-  padding-bottom: 37px;
+  padding-top: 24px;
+  padding-bottom: 21px;
 }
 .participate .contain-cinema .descrip-title {
   text-align: center;
@@ -12410,7 +12426,7 @@ article .read-later.rAlign span:after {
   display: block;
   width: 246px;
   margin: 0 auto;
-  line-height: 21px;
+  line-height: 20px;
 }
 .participate .contain-cinema .contain-map {
   vertical-align: top;
@@ -12471,10 +12487,17 @@ article .read-later.rAlign span:after {
 .partners .content-partners .contain-section .title-section {
   font-family: "Camphor W01 Bold";
   text-transform: uppercase;
-  color: #c8a461;
+  color: #c1c1c1;
   font-size: 0.88rem;
   letter-spacing: 2px;
   padding-top: 55px;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.partners .content-partners .contain-section .title-section:hover {
+  color: #c8a461;
 }
 .partners .content-partners .contain-section .item-partners {
   border-bottom: 1px solid #c1c1c1;
@@ -12509,6 +12532,13 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   font-size: 0.75rem;
   padding-right: 13px;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.partners .content-partners .contain-section .item-partners .text-partners a:hover {
+  color: #966505;
 }
 .partners .content-partners .contain-section .item-partners .text-partners .content-text-with-portrait {
   display: inline-block;
@@ -12532,6 +12562,9 @@ article .read-later.rAlign span:after {
   display: block;
   font-size: 0.75rem;
   padding-bottom: 5px;
+}
+.partners .content-partners .participate-active .title-section {
+  color: #c8a461;
 }
 .partners .content-partners:last-child .item-partners:last-child {
   border-bottom: #FFF solid 0px;
@@ -12594,6 +12627,13 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   font-size: 0.75rem;
   padding-right: 13px;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.contractor .content-contractor .contain-section .item-contractor .text-contractor a:hover {
+  color: #966505;
 }
 .contractor .content-contractor .contain-section .item-contractor .text-contractor .content-text-with-portrait {
   display: inline-block;
