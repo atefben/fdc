@@ -83,7 +83,6 @@ class FilmJury
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="jury", cascade={"persist"})
-     * @ORM\OrderBy({"position"="ASC"})
      */
     private $medias;
 

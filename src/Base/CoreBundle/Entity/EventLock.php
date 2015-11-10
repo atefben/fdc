@@ -32,7 +32,7 @@ class EventLock
     /**
      * @var Info
      *
-     * @ORM\ManyToOne(targetEntity="Event", inversedBy="lock")
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="locks")
      */
     protected $event;
 

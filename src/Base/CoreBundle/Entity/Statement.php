@@ -64,7 +64,7 @@ abstract class Statement
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="statements")
      */
     private $festival;
 

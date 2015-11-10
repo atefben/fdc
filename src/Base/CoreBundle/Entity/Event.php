@@ -64,7 +64,7 @@ class Event
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="events")
      */
     private $festival;
 
@@ -114,7 +114,7 @@ class Event
     /**
      * @var Site
      *
-     * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsArticles")
+     * @ORM\ManyToMany(targetEntity="Site")
      *
      * @Groups({"event_list", "event_show"})
      */
