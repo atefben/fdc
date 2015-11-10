@@ -5845,7 +5845,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 #searchContainer.open {
   max-height: 8000px;
-  padding: 40px 0 30px 0;
+  padding: 40px 0 0 0;
 }
 #searchContainer form {
   display: block;
@@ -5901,9 +5901,40 @@ div.chocolat-wrapper .chocolat-close {
 }
 #searchContainer #footerSearch .txtFooter {
   color: #fff;
+  margin-top: 35px;
   position: relative;
   text-align: center;
   z-index: 1;
+}
+#searchContainer #footerSearch .txtFooter h2 {
+  font-size: 1.750rem;
+}
+#searchContainer #footerSearch .txtFooter h3 {
+  font-size: 0.750rem;
+  font-family: "Camphor W01 Bold";
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+}
+#searchContainer #footerSearch .txtFooter p.link {
+  margin-top: 25px;
+}
+#searchContainer #footerSearch .txtFooter p.link img {
+  margin-right: 10px;
+  width: 10px;
+}
+#searchContainer #footerSearch .txtFooter p.link a {
+  color: #c8a461;
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.750rem;
+  text-transform: uppercase;
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#searchContainer #footerSearch .txtFooter p.link a:hover {
+  opacity: 0.5;
 }
 
 .sticky #searchContainer {
@@ -8596,7 +8627,8 @@ article .read-later.rAlign span:after {
   transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .single-movie .poster .picto {
-  background-size: 40px;
+  background-image: url("../img/svg/play-gold.svg");
+  background-size: 18px;
   height: 80px;
   top: 50%;
   left: 50%;
