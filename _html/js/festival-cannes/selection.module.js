@@ -268,8 +268,10 @@ $(document).ready(function() {
       $(this).removeClass('rAlign');
     }
 
+    var tPos = $(this).offset().top - $(window).scrollTop() - 59;
+
     $(this).find('span').css({
-      top: $(this).offset().top - $(window).scrollTop() - 59,
+      top: tPos,
       left: lPos
     });
   });
