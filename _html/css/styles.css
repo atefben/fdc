@@ -5767,9 +5767,11 @@ div.chocolat-wrapper .chocolat-close {
   position: absolute;
   top: 139px;
   visibility: hidden;
+  pointer-events: none;
 }
 #selection #slider-suggestion.show {
   opacity: 1;
+  pointer-events: initial;
   visibility: visible;
 }
 #selection .filters-selection {
