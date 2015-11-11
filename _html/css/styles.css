@@ -5976,40 +5976,6 @@ div.chocolat-wrapper .chocolat-close {
 #searchContainer #suggest li:nth-child(2n):hover {
   background-color: #ededed;
 }
-#searchContainer #colSearch {
-  position: absolute;
-  top: 63px;
-  left: 0;
-  width: 120px;
-}
-#searchContainer #colSearch li a {
-  border-bottom: 1px solid #e5e5e5;
-  display: block;
-  font-family: "Camphor W01 Bold";
-  font-size: 0.750rem;
-  height: 48px;
-  line-height: 48px;
-  position: relative;
-  color: #000;
-  text-transform: uppercase;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#searchContainer #colSearch li a.active, #searchContainer #colSearch li a:hover {
-  color: #c8a461;
-}
-#searchContainer #colSearch li a.active {
-  font-family: "Camphor W01 Heavy";
-}
-#searchContainer #colSearch li a span {
-  position: absolute;
-  right: 0;
-}
-#searchContainer #colSearch li:last-child {
-  border-bottom: none;
-}
 #searchContainer #count {
   border-right: 1px solid rgba(0, 0, 0, 0.4);
   color: #000;
@@ -6032,11 +5998,95 @@ div.chocolat-wrapper .chocolat-close {
   display: none;
 }
 #searchContainer #results #filtered .filters {
+  display: none;
   height: 48px;
   border-bottom: 1px solid #dfdfdf;
   line-height: 42px;
   margin-top: 3px;
   margin-left: 55px;
+}
+#searchContainer #results #filtered #filteredContent {
+  margin-left: 55px;
+  padding-top: 15px;
+}
+#searchContainer #results #filtered #filteredContent article {
+  margin-left: 40px;
+  width: 240px;
+}
+#searchContainer #results #filtered #filteredContent article .image {
+  height: 150px;
+}
+#searchContainer #results #filtered #filteredContent article:first-child {
+  margin-left: 0;
+}
+#searchContainer #results #filtered #filteredContent article:nth-child(3n+1) {
+  margin-left: 0;
+}
+#searchContainer #results .big {
+  float: left;
+  margin-bottom: 50px;
+  margin-left: 40px;
+  width: 170px;
+}
+#searchContainer #results .big:first-child {
+  margin-left: 0;
+}
+#searchContainer #results .big:nth-child(4n+1) {
+  margin-left: 0;
+}
+#searchContainer #results .big img {
+  display: block;
+  margin-bottom: 17px;
+}
+#searchContainer #results .big .info {
+  text-align: center;
+}
+#searchContainer #results .big .info h2 {
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+#searchContainer #results .big .info h2 a {
+  color: #2c2c2c;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#searchContainer #results .big .info h2 a:hover {
+  opacity: 0.6;
+}
+#searchContainer #results .big .info .category {
+  color: #c8a461;
+  display: block;
+  font-size: 0.813rem;
+  font-style: italic;
+  margin: 5px 0;
+}
+#searchContainer #results .big .info .country {
+  color: #999;
+  text-transform: uppercase;
+  display: block;
+  font-size: 0.688rem;
+}
+#searchContainer #results .big .info .date {
+  color: #999;
+  font-size: 0.625rem;
+  display: block;
+  text-transform: uppercase;
+}
+#searchContainer #results .big.film .info .category {
+  color: #a7a7a7;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.750rem;
+  font-style: normal;
+  text-transform: uppercase;
+}
+#searchContainer #results .big.film .info a.director {
+  color: #c8a461;
+  font-style: italic;
+  font-size: 0.813rem;
+  margin-bottom: 5px;
 }
 #searchContainer #results .resultWrapper {
   display: none;
@@ -6074,28 +6124,98 @@ div.chocolat-wrapper .chocolat-close {
 #searchContainer #results .resultWrapper .resultsContainer .view-all:hover {
   opacity: 0.6;
 }
+#searchContainer #results .resultWrapper .small {
+  margin-bottom: 25px;
+  overflow: hidden;
+  position: relative;
+}
+#searchContainer #results .resultWrapper .small img {
+  float: left;
+  margin-right: 15px;
+}
+#searchContainer #results .resultWrapper .small .info {
+  float: left;
+  height: 66px;
+}
+#searchContainer #results .resultWrapper .small .info h2 {
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.688rem;
+  text-transform: uppercase;
+}
+#searchContainer #results .resultWrapper .small .info h2 a {
+  color: #2c2c2c;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#searchContainer #results .resultWrapper .small .info h2 a:hover {
+  opacity: 0.6;
+}
+#searchContainer #results .resultWrapper .small .info .category {
+  color: #c8a461;
+  display: block;
+  font-size: 0.625rem;
+  margin: 5px 0;
+}
+#searchContainer #results .resultWrapper .small .info .country {
+  color: #999;
+  text-transform: uppercase;
+  display: block;
+  font-size: 0.625rem;
+}
+#searchContainer #results .resultWrapper .small .info .date {
+  color: #999;
+  font-size: 0.625rem;
+  position: absolute;
+  top: 12px;
+  right: 0;
+}
+#searchContainer #results .resultWrapper .small.film .info .category {
+  color: #999;
+}
+#searchContainer #results .resultWrapper .small.film .info .category a {
+  color: #c8a461;
+  font-style: italic;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#searchContainer #results .resultWrapper .small.film .info .category a:hover {
+  opacity: 0.6;
+}
+#searchContainer #results article {
+  height: auto;
+  padding: 0 0 40px 0;
+  width: 225px;
+}
+#searchContainer #results article .info {
+  color: #666;
+}
+#searchContainer #results article .category {
+  display: block;
+  margin: 0;
+}
+#searchContainer #results article .image {
+  height: 140px;
+}
+#searchContainer #results article:nth-child(2n) {
+  margin-left: 40px;
+}
 #searchContainer #results #wide {
   float: left;
   padding: 22px 55px 0 55px;
   width: 490px;
 }
-#searchContainer #results #wide article {
-  height: auto;
-  padding: 0 0 40px 0;
-  width: 225px;
+#searchContainer #results #wide .big {
+  width: 136px;
 }
-#searchContainer #results #wide article .info {
-  color: #666;
-}
-#searchContainer #results #wide article .category {
-  display: block;
-  margin: 0;
-}
-#searchContainer #results #wide article .image {
-  height: 140px;
-}
-#searchContainer #results #wide article:nth-child(2n) {
+#searchContainer #results #wide .big:nth-child(4n+1) {
   margin-left: 40px;
+}
+#searchContainer #results #wide .big:nth-child(3n+1) {
+  margin-left: 0;
 }
 #searchContainer #results #short {
   float: left;
@@ -6122,8 +6242,52 @@ div.chocolat-wrapper .chocolat-close {
   top: 91px;
 }
 
+.searchpage #colSearch {
+  position: absolute;
+  top: 104px;
+  height: 400px;
+  left: 0;
+  width: 120px;
+  z-index: 2;
+}
+.searchpage #colSearch li a {
+  border-bottom: 1px solid #e5e5e5;
+  display: block;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.750rem;
+  height: 48px;
+  line-height: 48px;
+  position: relative;
+  color: #000;
+  text-transform: uppercase;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.searchpage #colSearch li a.active, .searchpage #colSearch li a:hover {
+  color: #c8a461;
+}
+.searchpage #colSearch li a.active {
+  font-family: "Camphor W01 Heavy";
+}
+.searchpage #colSearch li a span {
+  position: absolute;
+  right: 0;
+}
+.searchpage #colSearch li:last-child {
+  border-bottom: none;
+}
+.searchpage #colSearch.stick {
+  position: fixed;
+  top: 90px;
+}
+.searchpage #colSearch.bottom {
+  bottom: 340px;
+  top: auto;
+}
 .searchpage #results {
-  min-height: 460px;
+  min-height: 800px;
 }
 .searchpage #searchContainer {
   max-height: initial;

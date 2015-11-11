@@ -76,13 +76,29 @@ $(document).ready(function() {
 
   if($('.searchpage').length) {
 
-    $('#colSearch a').on('click', function(e) {
+    $('#colSearch').css('left', ($(window).width() - 977) / 2);
+
+    $('#colSearch a, .view-all').on('click', function(e) {
       e.preventDefault();
 
       var $this = $(this);
 
       $('#colSearch a').removeClass('active');
-      $this.addClass('active');
+      
+      if($this.parents('#colSearch').length != 0) {
+        $this.addClass('active');
+      } else {
+        var cl = $this.data('class');
+        $('#colSearch a').each(function() {
+          if($(this).hasClass(cl)) {
+            $(this).addClass('active');
+          }
+        });
+      }
+
+      $('html, body').animate({
+        scrollTop: 0
+      }, 500);
 
       $('.resultWrapper, #filtered').fadeOut(500, function() {
 
@@ -91,6 +107,14 @@ $(document).ready(function() {
           if($this.hasClass('all')) {
             $('.resultWrapper').fadeIn();
             return false;
+          }
+
+          var $activeEl = $('#colSearch a.active');
+
+          if($activeEl.hasClass('artists') || $activeEl.hasClass('films') || $activeEl.hasClass('participate')) {
+            $('.filters').hide();
+          } else {
+            $('.filters').show();
           }
 
           $('#filteredContent').empty();
@@ -104,8 +128,8 @@ $(document).ready(function() {
               $('#filtered').fadeIn();
             }
           });
-          
-        }, 500);
+
+        }, 700);
       });
     });
 

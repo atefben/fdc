@@ -189,49 +189,6 @@
     }
   }
 
-  #colSearch {
-    position: absolute;
-    top: 63px;
-    left: 0;
-    width: 120px;
-
-    li {
-      a {
-        border-bottom: 1px solid #e5e5e5;
-        display: block;
-        font-family: $CamphorBold;
-        font-size: 0.750rem;
-        height: 48px;
-        line-height: 48px;
-        position: relative;
-        color: #000;
-        text-transform: uppercase;
-        @include transition(all 0.9s $smoothTransition);
-
-        &.active, &:hover {
-          color: $gold;
-        }
-
-        &.active {
-          font-family: $CamphorHeavy;
-        }
-
-        span {
-          position: absolute;
-          right: 0;
-        }
-      }
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-
-    &.sticky {
-
-    }
-  }
-
   #count {
     border-right: 1px solid rgba(0, 0, 0, 0.4);
     color: #000;
@@ -255,11 +212,112 @@
       display: none;
 
       .filters {
+        display: none;
         height: 48px;
         border-bottom: 1px solid #dfdfdf;
         line-height: 42px;
         margin-top: 3px;
         margin-left: 55px;
+      }
+
+      #filteredContent {
+        margin-left: 55px;
+        padding-top: 15px;
+
+        article {
+          margin-left: 40px;
+          width: 240px;
+
+          .image {
+            height: 150px;
+          }
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          &:nth-child(3n+1) {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    .big {
+      float: left;
+      margin-bottom: 50px;
+      margin-left: 40px;
+      width: 170px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:nth-child(4n+1) {
+        margin-left: 0;
+      }
+
+      img {
+        display: block;
+        margin-bottom: 17px;
+      }
+
+      .info {
+        text-align: center;
+
+        h2 {
+          font-family: $CamphorHeavy;
+          font-size: 0.875rem;
+          text-transform: uppercase;
+
+          a {
+            color: #2c2c2c;
+            @include transition(all 0.9s $smoothTransition);
+
+            &:hover {
+              opacity: 0.6;
+            }
+          }
+        }
+
+        .category {
+          color: $gold;
+          display: block;
+          font-size: 0.813rem;
+          font-style: italic;
+          margin: 5px 0;
+        }
+
+        .country {
+          color: #999;
+          text-transform: uppercase;
+          display: block;
+          font-size: 0.688rem;
+        }
+
+        .date {
+          color: #999;
+          font-size: 0.625rem;
+          display: block;
+          text-transform: uppercase;
+        }
+      }
+
+      &.film .info {
+        .category {
+          color: #a7a7a7;
+          font-family: $CamphorBold;
+          font-size: 0.750rem;
+          font-style: normal;
+          text-transform: uppercase;
+        }
+
+        a.director {
+          color: $gold;
+          font-style: italic;
+          font-size: 0.813rem;
+          margin-bottom: 5px;
+        }
       }
     }
 
@@ -300,6 +358,99 @@
           }
         }
       }
+
+      .small {
+        margin-bottom: 25px;
+        overflow: hidden;
+        position: relative;
+
+        img {
+          float: left;
+          margin-right: 15px;
+        }
+
+        .info {
+          float: left;
+          height: 66px;
+
+          h2 {
+            font-family: $CamphorHeavy;
+            font-size: 0.688rem;
+            text-transform: uppercase;
+
+            a {
+              color: #2c2c2c;
+              @include transition(all 0.9s $smoothTransition);
+
+              &:hover {
+                opacity: 0.6;
+              }
+            }
+          }
+
+          .category {
+            color: $gold;
+            display: block;
+            font-size: 0.625rem;
+            margin: 5px 0;
+          }
+
+          .country {
+            color: #999;
+            text-transform: uppercase;
+            display: block;
+            font-size: 0.625rem;
+          }
+
+          .date {
+            color: #999;
+            font-size: 0.625rem;
+            position: absolute;
+            top: 12px;
+            right: 0;
+          }
+        }
+
+        &.film {
+          .info .category {
+            color: #999;
+
+            a {
+              color: $gold;
+              font-style: italic;
+
+              @include transition(all 0.9s $smoothTransition);
+
+              &:hover {
+                opacity: 0.6;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    article {
+      height: auto;
+      padding: 0 0 40px 0;
+      width: 225px;
+
+      .info {
+        color: #666;
+      }
+
+      .category {
+        display: block;
+        margin: 0;
+      }
+
+      .image {
+        height: 140px;
+      }
+
+      &:nth-child(2n) {
+        margin-left: 40px;
+      }
     }
 
     #wide {
@@ -307,26 +458,15 @@
       padding: 22px 55px 0 55px;
       width: 490px;
 
-      article {
-        height: auto;
-        padding: 0 0 40px 0;
-        width: 225px;
+      .big {
+        width: 136px;
 
-        .info {
-          color: #666;
-        }
-
-        .category {
-          display: block;
-          margin: 0;
-        }
-
-        .image {
-          height: 140px;
-        }
-
-        &:nth-child(2n) {
+        &:nth-child(4n+1) {
           margin-left: 40px;
+        }
+
+        &:nth-child(3n+1) {
+          margin-left: 0;
         }
       }
     }
@@ -363,8 +503,59 @@
 
 .searchpage {
 
+  #colSearch {
+    position: absolute;
+    top: 104px;
+    height: 400px;
+    left: 0;
+    width: 120px;
+    z-index: 2;
+
+    li {
+      a {
+        border-bottom: 1px solid #e5e5e5;
+        display: block;
+        font-family: $CamphorBold;
+        font-size: 0.750rem;
+        height: 48px;
+        line-height: 48px;
+        position: relative;
+        color: #000;
+        text-transform: uppercase;
+        @include transition(all 0.9s $smoothTransition);
+
+        &.active, &:hover {
+          color: $gold;
+        }
+
+        &.active {
+          font-family: $CamphorHeavy;
+        }
+
+        span {
+          position: absolute;
+          right: 0;
+        }
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &.stick {
+      position: fixed;
+      top: 90px;
+    }
+
+    &.bottom {
+      bottom: 340px;
+      top: auto;
+    }
+  }
+
   #results {
-    min-height: 460px;
+    min-height: 800px;
   }
 
   #searchContainer {
