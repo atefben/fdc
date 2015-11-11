@@ -513,6 +513,10 @@ header #searchContainer {
 
 .searchpage {
 
+  .wrapper {
+    position: relative;
+  }
+
   #infscr-loading {
     display: none!important;
   }
