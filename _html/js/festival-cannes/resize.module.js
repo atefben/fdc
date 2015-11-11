@@ -6,6 +6,9 @@ $(document).ready(function() {
     }
     if($('.grid').length) {
       resizeGrid();
+      setTimeout(function() {
+        resizeGrid();
+      }, 300);
     }
     if($('#prehome-container').length) {
       $('#prehome-container').height($(window).height());
