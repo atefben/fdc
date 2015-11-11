@@ -192,10 +192,10 @@ $(document).ready(function() {
     if($('.home').length) {
       // home prefooter
       parallaxElements.push({
-        'el1': '#prefooter .owl-item.center .imgSlide',
+        'el1': '#prefooter .owl-item.center .imgSlide img',
         'el2': '.textTop',
         'positionTop': $('#slider-prefooter').offset().top,
-        'division': 4,
+        'division': 2,
         'mov': 6
       });
 
