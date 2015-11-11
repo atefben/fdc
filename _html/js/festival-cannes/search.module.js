@@ -37,6 +37,7 @@ $(document).ready(function() {
     }
     if(value == '') {
       $suggest.empty();
+      return false;
     }
     if (noWhitespaceCount % 3 === 0) {
 
@@ -133,6 +134,20 @@ $(document).ready(function() {
             success: function(data) {
               $('#filteredContent').html(data);
               $('#filtered').fadeIn();
+
+              $('#filteredContent').infinitescroll({
+                navSelector: ".next:last",
+                nextSelector: ".next:last",
+                itemSelector: ".infinite",
+                debug: false,
+                dataType: 'html',
+                path: function(index) {
+                  if($('.next:last').attr('href') == '#') {
+                    return false;
+                  }
+                  return $('.next:last').attr('href');
+                }
+              });
             }
           });
 

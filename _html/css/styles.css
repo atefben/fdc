@@ -6252,6 +6252,9 @@ header #searchContainer {
   top: 91px;
 }
 
+.searchpage #infscr-loading {
+  display: none !important;
+}
 .searchpage #suggest {
   width: 977px;
   left: 0;
