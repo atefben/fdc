@@ -76,6 +76,39 @@ $(document).ready(function() {
 
   if($('.searchpage').length) {
 
+    $('#colSearch a').on('click', function(e) {
+      e.preventDefault();
+
+      var $this = $(this);
+
+      $('#colSearch a').removeClass('active');
+      $this.addClass('active');
+
+      $('.resultWrapper, #filtered').fadeOut(500, function() {
+
+        setTimeout(function() {
+
+          if($this.hasClass('all')) {
+            $('.resultWrapper').fadeIn();
+            return false;
+          }
+
+          $('#filteredContent').empty();
+          var url = $this.data('ajax');
+
+          $.ajax({
+            type: "GET",
+            url: url,
+            success: function(data) {
+              $('#filteredContent').html(data);
+              $('#filtered').fadeIn();
+            }
+          });
+          
+        }, 500);
+      });
+    });
+
     // test : remove once on server
     if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') {
       $('#noResult').show();
@@ -87,7 +120,6 @@ $(document).ready(function() {
       type: "GET",
       url: 'results.json',
       success: function(data) {
-        console.log(data);
 
         if(data.all.count == 0) {
           $('#noResult').show();

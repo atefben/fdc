@@ -33,19 +33,19 @@
           <div id="colSearch">
             <ul>
               <li><a href="#" class="active all">Tout<span>0</span></a></li>
-              <li><a href="#" class="artists">Artistes<span>0</span></a></li>
-              <li><a href="#" class="films">Films<span>0</span></a></li>
-              <li><a href="#" class="medias">Medias<span>0</span></a></li>
-              <li><a href="#" class="news">Actualités<span>0</span></a></li>
-              <li><a href="#" class="communiques">Communiqués<span>0</span></a></li>
-              <li><a href="#" class="events">évènements<span>0</span></a></li>
-              <li><a href="#" class="participate">Participer<span>0</span></a></li>
+              <li><a href="#" class="artists ajax">Artistes<span>0</span></a></li>
+              <li><a href="#" class="films ajax">Films<span>0</span></a></li>
+              <li><a href="#" class="medias ajax">Medias<span>0</span></a></li>
+              <li><a href="#" data-ajax="searchNews.html" class="news ajax">Actualités<span>0</span></a></li>
+              <li><a href="#" class="communiques ajax">Communiqués<span>0</span></a></li>
+              <li><a href="#" class="events ajax">évènements<span>0</span></a></li>
+              <li><a href="#" class="participate ajax">Participer<span>0</span></a></li>
             </ul>
           </div>
           <div id="results">
             <div id="filtered">
               <div class="filters">
-                <div id="format" class="filter">
+                <div id="date" class="filter">
                   <span class="label">Date :</span>
                   <span class="select">
                     <span class="active" data-filter="all">Toutes</span>
@@ -71,6 +71,7 @@
                   </span>
                 </div>
               </div>
+              <div id="filteredContent"></div>
             </div>
             <div id="wide" class="resultWrapper">
               <div class="resultsContainer">
