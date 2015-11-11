@@ -5801,6 +5801,10 @@ div.chocolat-wrapper .chocolat-close {
   top: 91px;
 }
 
+header #searchContainer {
+  z-index: 14;
+}
+
 #searchContainer {
   background-color: #fff;
   left: 0;
@@ -5810,7 +5814,6 @@ div.chocolat-wrapper .chocolat-close {
   position: fixed;
   top: 230px;
   width: 100%;
-  z-index: 14;
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -5819,6 +5822,9 @@ div.chocolat-wrapper .chocolat-close {
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#searchContainer .container {
+  position: relative;
 }
 #searchContainer p.link {
   margin-top: 25px;
@@ -5933,48 +5939,6 @@ div.chocolat-wrapper .chocolat-close {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   margin-bottom: 12px;
-}
-#searchContainer #suggest {
-  width: 100%;
-}
-#searchContainer #suggest li {
-  box-sizing: border-box;
-  color: #a3a3a3;
-  cursor: pointer;
-  font-family: "Playfair Display";
-  font-size: 0.688rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  height: 40px;
-  line-height: 40px;
-  padding-left: 15px;
-  position: relative;
-  width: 100%;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#searchContainer #suggest li:hover {
-  background-color: #ededed;
-}
-#searchContainer #suggest li strong {
-  color: #333;
-  font-weight: 700;
-}
-#searchContainer #suggest li span {
-  color: #000;
-  font-family: "Camphor W01 Heavy";
-  position: absolute;
-  font-size: 0.625rem;
-  letter-spacing: 0.1em;
-  right: 15px;
-}
-#searchContainer #suggest li:nth-child(2n) {
-  background-color: #f7f7f7;
-}
-#searchContainer #suggest li:nth-child(2n):hover {
-  background-color: #ededed;
 }
 #searchContainer #count {
   border-right: 1px solid rgba(0, 0, 0, 0.4);
@@ -6238,10 +6202,63 @@ div.chocolat-wrapper .chocolat-close {
   margin-top: 20px;
 }
 
+#suggest {
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+}
+#suggest li {
+  background-color: #fff;
+  box-sizing: border-box;
+  color: #a3a3a3;
+  cursor: pointer;
+  font-family: "Playfair Display";
+  font-size: 0.688rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 15px;
+  position: relative;
+  width: 100%;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#suggest li:hover {
+  background-color: #ededed;
+}
+#suggest li strong {
+  color: #333;
+  font-weight: 700;
+}
+#suggest li span {
+  color: #000;
+  font-family: "Camphor W01 Heavy";
+  position: absolute;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  right: 15px;
+}
+#suggest li:nth-child(2n) {
+  background-color: #f7f7f7;
+}
+#suggest li:nth-child(2n):hover {
+  background-color: #ededed;
+}
+
 .sticky #searchContainer {
   top: 91px;
 }
 
+.searchpage #suggest {
+  width: 977px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 100px;
+}
 .searchpage #colSearch {
   position: absolute;
   top: 104px;
@@ -6294,7 +6311,6 @@ div.chocolat-wrapper .chocolat-close {
   position: relative;
   left: auto;
   top: auto;
-  z-index: 1;
 }
 .searchpage #searchContainer .container {
   position: relative;

@@ -35,11 +35,12 @@
           <li><a href="#" data-ajax="searchParticipate.html" class="participate ajax">Participer<span>0</span></a></li>
         </ul>
       </div>
+      <ul id="suggest"></ul>
       <div id="searchContainer">
         <div class="container">
           <div id="count"><span>0</span> Résultats</div>
-          <form action="">
-            <input id="inputSearch" type="text" name="name" placeholder="Entrez votre recherche..." value="<?php if (isset($_GET['name'])): echo $_GET['name']; endif; ?>" />
+          <form action="search.php">
+            <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." value="<?php if (isset($_GET['name'])): echo $_GET['name']; endif; ?>" />
             <input id="submitSearch" type="submit" value="" />
           </form>
           <div id="results">

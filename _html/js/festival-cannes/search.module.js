@@ -27,13 +27,20 @@ $(document).ready(function() {
     window.location = link;
   });
 
-  $('#inputSearch').on('input', function(e) {
+  $('.suggestSearch').on('input', function(e) {
     var value = $(this).val();
+    var $suggest = $(this).parent().next();
     var noWhitespaceValue = value.replace(/\s+/g, '');
     var noWhitespaceCount = noWhitespaceValue.length;
+    if($('.searchpage').length) {
+      $suggest = $('#main #suggest');
+    }
+    if(value == '') {
+      $suggest.empty();
+    }
     if (noWhitespaceCount % 3 === 0) {
 
-      $('#suggest').empty();
+      $suggest.empty();
 
       $.ajax({
         type: "GET",
@@ -49,7 +56,7 @@ $(document).ready(function() {
 
             txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
 
-            $('#suggest').append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
+            $suggest.append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
           }
         }
       });
