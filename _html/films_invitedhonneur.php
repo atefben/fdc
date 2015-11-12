@@ -169,65 +169,73 @@
               </blockquote>
             </div>
             <div class="small-pres container">              
-              <div class="slideshow">
-              <div class="slideshow-img">
-                <div class="images">
-                  <div class="img active">
-                    <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" data-credit="Crédit Image : VALERY HACHE / AFP" data-title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>" title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>">
-                      <img src="img/slide001.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="img">
-                    <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
-                      <img src="img/slide002.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="img">
-                    <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>" data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt=""></a>
-                  </div>
-                  <div class="img">
-                    <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>" data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt=""></a>
-                  </div>
-                  <div class="img">
-                    <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>" data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt=""></a>
-                  </div>
-                  <div class="img">
-                    <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>" data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt=""></a>
-                  </div>
-                  <div class="img">
-                    <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>" data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt=""></a>
-                  </div>
-                  <div class="img">
-                    <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>" data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt=""></a>
-                  </div>
-                  <div class="img">
-                    <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title="<span class=&quot;category&quot;>Conférence de presse</span><span class=&quot;date&quot;>18.05.2012</span><h2>Sur le tournage de &quot;Deephan&quot; de Jacques Audiard</h2>" data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt=""></a>
-                  </div>
+          <div class="slideshow">
+            <div class="slideshow-img">
+              <div class="images">
+                <div class="img active">
+                  <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
+                    <img src="img/slide001.jpg" alt="" />
+                  </a>
                 </div>
-                <div class="owl-carousel thumbnails owl-theme owl-loaded">
-                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 963px;"><div class="owl-item active" style="width: auto; margin-right: 10px;"><div data-id="photo1" class="thumb active">
-                    <img src="img/thumb01.jpg">
-                  </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div data-id="photo2" class="thumb">
-                    <img src="img/thumb01.jpg">
-                  </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div data-id="photo3" class="thumb">
-                    <img src="img/thumb01.jpg">
-                  </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div class="thumb">
-                    <img src="img/thumb01.jpg">
-                  </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div class="thumb">
-                    <img src="img/thumb01.jpg">
-                  </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div class="thumb">
-                    <img src="img/thumb01.jpg">
-                  </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div class="thumb">
-                    <img src="img/thumb01.jpg">
-                  </div></div><div class="owl-item" style="width: auto; margin-right: 10px;"><div class="thumb">
-                    <img src="img/thumb01.jpg">
-                  </div></div><div class="owl-item" style="width: auto; margin-right: 10px;"><div class="thumb">
-                    <img src="img/thumb01.jpg">
-                  </div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style="display: none;">prev</div><div class="owl-next" style="display: none;">next</div></div><div class="owl-dots" style="display: none;"></div></div></div>
+                <div class="img">
+                  <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                    <img src="img/slide002.jpg" alt="" />
+                  </a>
+                </div>
+                <div class="img">
+                  <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
               </div>
-              <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
+              <div class="owl-carousel thumbnails">
+                <div data-id="photo1" class="thumb active">
+                  <img src="img/thumb01.jpg" />
+                </div>
+                <div data-id="photo2" class="thumb">
+                  <img src="img/thumb01.jpg" />
+                </div>
+                <div data-id="photo3" class="thumb">
+                  <img src="img/thumb01.jpg" />
+                </div>
+                <div class="thumb">
+                  <img src="img/thumb01.jpg" />
+                </div>
+                <div class="thumb">
+                  <img src="img/thumb01.jpg" />
+                </div>
+                <div class="thumb">
+                  <img src="img/thumb01.jpg" />
+                </div>
+                <div class="thumb">
+                  <img src="img/thumb01.jpg" />
+                </div>
+                <div class="thumb">
+                  <img src="img/thumb01.jpg" />
+                </div>
+                <div class="thumb">
+                  <img src="img/thumb01.jpg" />
+                </div>
+              </div>
             </div>
-            
+            <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
+          </div>             
             <div class="half-photo">
             <div class="photo-container">
               <img src="img/article/005.jpg" alt="">
