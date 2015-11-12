@@ -11977,6 +11977,7 @@ article .read-later.rAlign span:after {
 .single-evenement .quote blockquote {
   font-size: 1.5rem !important;
   font-family: "Camphor W01 Italic";
+  padding: 40px 88px;
 }
 .single-evenement .share {
   padding-bottom: 0px;
@@ -12060,9 +12061,17 @@ article .read-later.rAlign span:after {
 
 .jurys-list .bandeau-list-img {
   height: 443px !important;
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .jurys-list .title-list-header {
   padding-top: 210px !important;
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .jurys-list .sub-nav-list a {
   color: #999 !important;
@@ -12109,7 +12118,10 @@ article .read-later.rAlign span:after {
   padding-right: 160px;
   box-sizing: border-box;
   overflow-x: auto;
-  transition: all linear 1s;
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .contain-jury .contain-descript a {
   color: #000;
@@ -12199,6 +12211,14 @@ article .read-later.rAlign span:after {
     min-height: 904px;
     max-width: 960px;
   }
+
+  .jurys-list .bandeau-list-img {
+    height: 444px !important;
+  }
+
+  .jurys-list .title-list-header {
+    padding-top: 210px !important;
+  }
 }
 @media screen and (min-width: 1600px) and (max-width: 1919px) {
   .contain-jury {
@@ -12217,6 +12237,14 @@ article .read-later.rAlign span:after {
     max-height: 748px;
     min-height: 748px;
     max-width: 800px;
+  }
+
+  .jurys-list .bandeau-list-img {
+    height: 373px !important;
+  }
+
+  .jurys-list .title-list-header {
+    padding-top: 173px !important;
   }
 }
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
@@ -12237,6 +12265,14 @@ article .read-later.rAlign span:after {
     min-height: 603px;
     max-width: 640px;
   }
+
+  .jurys-list .bandeau-list-img {
+    height: 296px !important;
+  }
+
+  .jurys-list .title-list-header {
+    padding-top: 134px !important;
+  }
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .contain-jury {
@@ -12256,6 +12292,14 @@ article .read-later.rAlign span:after {
     min-height: 603px;
     max-width: 512px;
   }
+
+  .jurys-list .bandeau-list-img {
+    height: 294px !important;
+  }
+
+  .jurys-list .title-list-header {
+    padding-top: 134px !important;
+  }
 }
 @media screen and (max-width: 1023px) {
   .contain-jury {
@@ -12274,6 +12318,14 @@ article .read-later.rAlign span:after {
     max-height: 603px;
     min-height: 603px;
     max-width: 512px;
+  }
+
+  .jurys-list .bandeau-list-img {
+    height: 294px !important;
+  }
+
+  .jurys-list .title-list-header {
+    padding-top: 134px !important;
   }
 }
 .artist {
