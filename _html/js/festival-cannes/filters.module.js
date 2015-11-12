@@ -61,13 +61,26 @@ $(document).ready(function() {
       exp2 += '[data-' + filters[i].filter + '="' + filters[i].value + '"]';
     }
 
+    if($('#filteredArticles').length) {
+      $('#filteredArticles').remove();
+    }
+
     if(filters.length != 0) {
       $('*' + exp1).hide();
       $('*' + exp2).show();
 
       if($('.articles').length != 0) {
-        $('.articles').removeClass('left right').addClass('center noOv');
+        $('.articles').removeClass('left right').addClass('center');
         $('.articles article').removeClass('double');
+
+        $('#articles-wrapper').prepend('<div class="articles center" id="filteredArticles"></div>');
+
+        $('.articles article').each(function() {
+          if($(this).css('display') == 'block') {
+            $('#filteredArticles').append($(this).clone());
+            $(this).hide();
+          }
+        });
 
         if($('#format .select .active').text() == "Photo") {
           $('.content-news .slideshow').show();

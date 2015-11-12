@@ -47,6 +47,10 @@
   }
 }
 
+#filteredArticles article:nth-of-type(3n-1) {
+  margin: 0 6.5%;
+}
+
 article {
   height: 305px;
   box-sizing: border-box;
