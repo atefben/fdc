@@ -70,14 +70,11 @@ $(document).ready(function() {
       $('*' + exp2).show();
 
       if($('.articles').length != 0) {
-        $('.articles').removeClass('left right').addClass('center');
-        $('.articles article').removeClass('double');
-
         $('#articles-wrapper').prepend('<div class="articles center" id="filteredArticles"></div>');
 
         $('.articles article').each(function() {
           if($(this).css('display') == 'block') {
-            $('#filteredArticles').append($(this).clone());
+            $('#filteredArticles').append($(this).clone().removeClass('double'));
             $(this).hide();
           }
         });
