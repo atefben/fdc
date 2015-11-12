@@ -129,7 +129,7 @@
       <div class="bandeau-list  bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Copies restaurées</h2>
-               <a href="films_copiesrestaurees.php" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="films_copiesrestaurees.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
       </div>
     </div>

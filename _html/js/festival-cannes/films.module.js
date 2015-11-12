@@ -26,9 +26,6 @@ $(document).ready(function() {
     }
   }
     if($('.films-list').length){
-    
-    ajaxEvent();
-      
     function ajaxEvent(){
       $('.films-list .sub-nav-list a').on('click',function(e){
         e.preventDefault();
@@ -50,7 +47,11 @@ $(document).ready(function() {
           $(this).addClass('active');
         }
       });
+        initSlideshows();
     }
-      initSlideshows();
+    
+    ajaxEvent();
+      
+
   }
 });
