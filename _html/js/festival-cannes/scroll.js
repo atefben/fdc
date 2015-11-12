@@ -140,7 +140,7 @@ $(document).ready(function() {
   // vars for parallax
   var scrollTarget = 0,
       scrollPos = 0,
-      scrollEase = 0.1;
+      scrollEase = 0.05;
       scrollEaseLimit = 0.1;
   
   var hW = $(window).height();
