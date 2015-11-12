@@ -4616,6 +4616,9 @@ div.chocolat-wrapper .chocolat-close {
   margin-right: 40px;
   text-transform: uppercase;
 }
+.filters div:last-child {
+  margin-right: 0;
+}
 .filters div .label {
   color: #333;
   margin-right: 15px;
