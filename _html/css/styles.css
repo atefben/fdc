@@ -12403,7 +12403,10 @@ article .read-later.rAlign span:after {
 }
 .artist .small-container {
   margin: 0 auto;
-  width: 633px;
+  width: 649px;
+}
+.artist .single-photo {
+  margin-bottom: 76px;
 }
 .artist .city {
   text-transform: uppercase;
@@ -12442,14 +12445,14 @@ article .read-later.rAlign span:after {
 }
 .artist .contain-films-list .item {
   line-height: 18px;
-  margin: 0px 12px;
+  margin: 0px 16px;
   display: inline-block;
   min-height: 418px;
   vertical-align: bottom;
+  width: 181px;
 }
 .artist .contain-films-list .item .content-text {
   margin: 0 auto;
-  width: 135px;
   text-align: center;
 }
 .artist .contain-films-list .item .content-text .item-title {
@@ -12458,7 +12461,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   font-size: .875rem;
   display: block;
-  padding-top: 19px;
+  padding-top: 13px;
 }
 .artist .contain-films-list .item .content-text .item-date {
   font-family: "Camphor W01 Regular";

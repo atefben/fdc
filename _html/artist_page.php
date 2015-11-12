@@ -30,7 +30,7 @@
           <div class="info">
             <span href="#" class="category">Réalisateur -</span><span class="city">États-Unis</span>
           </div>
-          <h2 class="title-article">Francis COPPOLA</h2>
+          <h2 class="title-article">Francis Coppola</h2>
           <div class="buttons">
             <a id="share-article" href="#" class="button">Partager</a>
             <a href="#" class="button print">Imprimer</a>
