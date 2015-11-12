@@ -3348,7 +3348,7 @@ header.sticky #logo-wrapper {
 header.sticky #logo-wrapper #logo {
   width: 290px;
 }
-header.sticky #logo-wrapper #logo img {
+header.sticky #logo-wrapper #logo img.palm {
   float: left;
   margin-top: -5px;
   width: 72px;
@@ -3499,6 +3499,7 @@ header #logo-wrapper #logo {
   padding: 5px 100px 0 0;
   text-align: center;
   vertical-align: middle;
+  width: 200px;
 }
 header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
   font-family: "Camphor W01 Bold";
@@ -3549,7 +3550,7 @@ header #logo-wrapper #logo h2 a {
   color: #c8a461;
   text-transform: uppercase;
 }
-header #logo-wrapper #logo img {
+header #logo-wrapper #logo img.palm {
   display: block;
   margin: 0 auto;
   width: 145px;
