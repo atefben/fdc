@@ -145,7 +145,7 @@ $(document).ready(function() {
   
   var hW = $(window).height();
 
-  function render(el1, el2, start, division, mov){
+  function render(el1, start, division, mov, direction){
     // process only if value is not reached
     var sc = scrollTarget - start;
 
@@ -163,8 +163,11 @@ $(document).ready(function() {
 
 
       // translate Element 2 with pos / 2 (half speed)
-    
-      transform1 = 'translate3d(0px, ' + (scrollPos/division) + 'px, 0px)';
+      var newPos = scrollPos/division;
+      if(direction) {
+        newPos = -(scrollPos * division);
+      }
+      transform1 = 'translate3d(0px, ' + newPos + 'px, 0px)';
 
       el1.style.webkitTransform = transform1;
       el1.style.MozTransform = transform1;
@@ -174,13 +177,13 @@ $(document).ready(function() {
         
       // translate Element 2 with pos (plain speed)
     
-      transform2 = 'translate3d(0px, ' + (scrollPos/mov) + 'px, 0px)';
+      // transform2 = 'translate3d(0px, ' + (scrollPos/mov) + 'px, 0px)';
         
-      el2.style.webkitTransform = transform2;
-      el2.style.MozTransform = transform2;
-      el2.style.msTransform = transform2;
-      el2.style.OTransform = transform2;
-      el2.style.transform = transform2;
+      // el2.style.webkitTransform = transform2;
+      // el2.style.MozTransform = transform2;
+      // el2.style.msTransform = transform2;
+      // el2.style.OTransform = transform2;
+      // el2.style.transform = transform2;
         
     }
   }
@@ -193,15 +196,13 @@ $(document).ready(function() {
       // home prefooter
       parallaxElements.push({
         'el1': '#prefooter .owl-item.center .imgSlide img',
-        'el2': '.textTop',
         'positionTop': $('#slider-prefooter').offset().top,
         'division': 2,
-        'mov': 6
+        'mov': 1
       });
 
       parallaxElements.push({
         'el1': '#slider .owl-item.center .img-container',
-        'el2': '#slider .owl-item.center .info',
         'positionTop': $('#slider').offset().top - $header.height(),
         'division': 10,
         'mov': 4
@@ -209,7 +210,6 @@ $(document).ready(function() {
 
       parallaxElements.push({
         'el1': '#slider-movies .owl-item.active .video',
-        'el2': '#slider-movies .owl-item.active .textVideo',
         'positionTop': $('#slider-movies').offset().top,
         'division': 8,
         'mov': 4
@@ -220,17 +220,16 @@ $(document).ready(function() {
     if($('.webtv-live').length) {
       parallaxElements.push({
         'el1': '#live .img',
-        'el2': '.textLive',
         'positionTop': $('#live').offset().top - $header.height(),
-        'division': 10,
-        'mov': 3
+        'division': 0.3,
+        'mov': 3,
+        'direction': true
       });
     }
 
     if($('.single-movie').length) {
       parallaxElements.push({
         'el1': '.main-image .img',
-        'el2': '#plx',
         'positionTop': $('.main-image').offset().top - $header.height(),
         'division': 6,
         'mov': 15
@@ -270,11 +269,9 @@ $(document).ready(function() {
   function update(){
     for(var i=0; i<parallaxElements.length; i++) {
       if(scrollTarget > (parallaxElements[i].positionTop - hW) && scrollTarget < parallaxElements[i].positionTop + hW) {
-        $(parallaxElements[i].el2).css('position', 'fixed');
         $(parallaxElements[i].el1).css('position', 'fixed');
-        render($(parallaxElements[i].el1)[0], $(parallaxElements[i].el2)[0], parallaxElements[i].positionTop, parallaxElements[i].division, parallaxElements[i].mov); 
+        render($(parallaxElements[i].el1)[0], parallaxElements[i].positionTop, parallaxElements[i].division, parallaxElements[i].mov, parallaxElements[i].direction); 
       } else {
-        $(parallaxElements[i].el2).css('position', '');
         $(parallaxElements[i].el1).css('position', '');
       }
     }

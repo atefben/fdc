@@ -13,7 +13,7 @@ function setHeightSlider() {
  
   var newHeight = $(window).height() - 90,
       valueHeight = Math.round(($(window).width()/16)*9),
-      top = newHeight - valueHeight;
+      top = (newHeight - valueHeight) / 2;
 
   if(newHeight > valueHeight) {
     newHeight = valueHeight;
