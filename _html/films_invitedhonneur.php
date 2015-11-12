@@ -66,7 +66,7 @@
             <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
           </ul>
         </div>
-        <section class="categorie-items">
+        <section class="categorie-items honneur-invit">
           <div class="title-list-cat">
             <h2 class="title-big">Lumière sur deux réalisateurs</h2>
             <div class="buttons">
@@ -324,7 +324,7 @@
       <div class="bandeau-list  bandeau-list-footer">
         <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
           <h2 class="title title-list-header">Hommages</h2>
-          <a href="films_hommage.php" class="bandeau-lien"> > Découvrir la rubrique</a>
+          <a href="films_hommage.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
         </div>
       </div>
     </div>

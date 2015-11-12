@@ -74,7 +74,7 @@
                  <figure>
 <a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
                    <figcaption>
-                     <a href="movie.php"><span class="name">Carol</span></a></a>
+                     <a href="movie.php"><span class="name">Carol</span></a>
                      <a href="artist_page.php"><span class="author">Todd HAYNES</span></a>
                    </figcaption>
                  </figure>
@@ -93,7 +93,7 @@
                    <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                     <span class="sub-name">(Tale of tales)</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
                      <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
@@ -130,7 +130,7 @@
                    <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                     <span class="sub-name">(Tale of tales)</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
                      <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
@@ -167,7 +167,7 @@
                    <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                     <span class="sub-name">(Tale of tales)</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
                      <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
@@ -179,7 +179,7 @@
       <div class="bandeau-list  bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/push.jpg);">
                <h2 class="title title-list-header">Courts métrages</h2>
-               <a href="selectionofficielle_courtsmetrages.php" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="selectionofficielle_courtsmetrages.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
 
       </div>

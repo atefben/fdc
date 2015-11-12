@@ -286,13 +286,18 @@
        }
        .bandeau-lien {
          color: #c8a461;
-         width: 165px;
+         width: 178px;
          margin: 0 auto;
          display: block;
          font-weight: 600;
          text-transform: uppercase;
          font-size: 0.75rem;
          font-family: $CamphorHeavy;
+         .svg-arrow{
+           width: 12px;
+           vertical-align: baseline;
+           padding-right: 3px;
+         }
        }
      }
      .sub-nav-list {
@@ -434,6 +439,10 @@
     width: 48%;
     .caption{
       padding: 0px 0px !important;
+    }
+    img{
+      max-width: auto;
+      width: 100%; 
     }
   }
   .title-film-detail{

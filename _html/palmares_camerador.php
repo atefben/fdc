@@ -61,7 +61,7 @@
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);">
                <h2 class="title title-list-header">Cannes Classic</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
 
       </div>

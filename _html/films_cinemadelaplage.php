@@ -112,7 +112,7 @@ faite par Digimage Classics.</p>
       <div class="bandeau-list bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Compétition</h2>
-               <a href="selectionofficielle_competition.php" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="selectionofficielle_competition.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
 
       </div>
