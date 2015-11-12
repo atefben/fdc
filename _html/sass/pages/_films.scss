@@ -324,7 +324,7 @@
        }
      }
      .nav-movie.sticky{
-       z-index: 100000;
+       z-index: 10;
        width: 100%;
        background-color: #1b1b1b;
      }
@@ -334,7 +334,7 @@
        font-family: $CamphorBold; 
        background-color: #202020;
        width: 100%;
-       z-index: 1000000;
+       z-index: 10;
        transition: .3s;
        a {
          color: #999999;
@@ -405,11 +405,39 @@
    }
  }
 
-// 4. Invit honneur 
+// 4. Invit honneur
 
 .honneur-invit{
   .container{
-    padding: 0px ;
+    padding: 0px 0px;
+  }
+  .quote{
+    blockquote{
+      color: white;
+      border-top: 1px solid #2C2C2C;
+      border-bottom: 1px solid #2C2C2C;
+    }
+    margin-bottom: 60px;
+  }
+  .slideshow{
+    margin-bottom: 60px; 
+    .slideshow-img{
+      height: 398px;
+    }
+    .caption{
+      padding: 0px 0px !important;
+    }
+  }
+  .half-photo{
+    margin: 0px 29px 50px 0;
+    margin-bottom: 60px;
+    width: 48%;
+    .caption{
+      padding: 0px 0px !important;
+    }
+  }
+  .title-film-detail{
+    margin-bottom: 0px !important;
   }
 }
 

@@ -6368,7 +6368,7 @@ header #searchContainer {
   left: 0;
   margin-right: auto;
   margin-left: auto;
-  z-index: 999999;
+  z-index: 120;
   height: 70%;
   overflow-y: scroll;
 }
@@ -6405,9 +6405,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6433,11 +6433,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6453,26 +6453,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -10989,7 +10989,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 .list-article .bandeau-list .nav-movie.sticky {
-  z-index: 100000;
+  z-index: 10;
   width: 100%;
   background-color: #1b1b1b;
 }
@@ -10999,7 +10999,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Bold";
   background-color: #202020;
   width: 100%;
-  z-index: 1000000;
+  z-index: 10;
   transition: .3s;
 }
 .list-article .bandeau-list .nav-list a {
@@ -11063,7 +11063,35 @@ article .read-later.rAlign span:after {
 }
 
 .honneur-invit .container {
-  padding: 0px;
+  padding: 0px 0px;
+}
+.honneur-invit .quote {
+  margin-bottom: 60px;
+}
+.honneur-invit .quote blockquote {
+  color: white;
+  border-top: 1px solid #2C2C2C;
+  border-bottom: 1px solid #2C2C2C;
+}
+.honneur-invit .slideshow {
+  margin-bottom: 60px;
+}
+.honneur-invit .slideshow .slideshow-img {
+  height: 398px;
+}
+.honneur-invit .slideshow .caption {
+  padding: 0px 0px !important;
+}
+.honneur-invit .half-photo {
+  margin: 0px 29px 50px 0;
+  margin-bottom: 60px;
+  width: 48%;
+}
+.honneur-invit .half-photo .caption {
+  padding: 0px 0px !important;
+}
+.honneur-invit .title-film-detail {
+  margin-bottom: 0px !important;
 }
 
 .cannes-classic .title-list-cat:first-child {
