@@ -10,13 +10,24 @@
 
     padding: 0px 0px;
     padding-top: 65px;
-  
+  .info{
+    .category{
+      margin-right: 2px;
+    }
+  }
+  .button{
+    padding: 0 19px 0 39px;
+  }
   .small-container{
     margin: 0 auto;
     width: 633px;
   }
   .city{
     text-transform: uppercase;
+  }
+  .title-article{
+    margin-top: 16px;
+    margin-bottom:29px;
   }
   .title-cat-artist{
     font-family: $Playfair;
@@ -35,7 +46,7 @@
     margin-bottom: 50px;
     padding-top: 45px;
     border-top: 1px solid #dfdfdf;
-    font-weight: normal;
+    font-weight: normal; 
   }
   .paragraph{
     color: #666;

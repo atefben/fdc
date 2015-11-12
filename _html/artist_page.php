@@ -28,7 +28,7 @@
           <a href="article2.php" class="nav prev"></a>
           <a href="article3.php" class="nav next"></a>
           <div class="info">
-            <a href="#" class="category">Réalisateur -</a><span class="city">États-Unis</span>
+            <span href="#" class="category">Réalisateur -</span><span class="city">États-Unis</span>
           </div>
           <h2 class="title-article">Francis COPPOLA</h2>
           <div class="buttons">
