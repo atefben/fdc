@@ -10731,7 +10731,7 @@ article .read-later.rAlign span:after {
   height: 38px;
   line-height: 38px;
   margin: 0 0 0 0;
-  padding: 0 20px 0 40px;
+  padding: 0 19px 0 39px;
   text-transform: uppercase;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -12394,12 +12394,22 @@ article .read-later.rAlign span:after {
   padding: 0px 0px;
   padding-top: 65px;
 }
+.artist .info .category {
+  margin-right: 2px;
+}
+.artist .button {
+  padding: 0 19px 0 39px;
+}
 .artist .small-container {
   margin: 0 auto;
   width: 633px;
 }
 .artist .city {
   text-transform: uppercase;
+}
+.artist .title-article {
+  margin-top: 16px;
+  margin-bottom: 29px;
 }
 .artist .title-cat-artist {
   font-family: "Playfair Display";
