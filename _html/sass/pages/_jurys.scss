@@ -1,6 +1,7 @@
 //       SUMMARY TABLE     
 // =========================
 // 1. Global
+// 2- media
 // =========================
 
 
@@ -60,6 +61,7 @@
     padding-right: 160px;
     box-sizing: border-box;
     overflow-x: auto;
+    transition:all linear 1s;
     a{
       color:#000;
     }
@@ -90,7 +92,6 @@
     }
   }
 }
-
 .contain-jurys-list{   
   background-color: #1a1a1a;
   .title-list-cat{
@@ -131,6 +132,112 @@
     font-family: $CamphorItalic;
     color:#ccab6e;
     font-size: .8125rem;
-  } 
+  }
 
 }
+
+//2. media
+// ==========================
+
+
+
+  @media screen and (min-width: 1920px) {
+
+    .contain-jury{
+      max-height: 904px;
+      min-height: 904px;
+      .contain-descript{
+        padding-top: 72px;
+        padding-left: 160px;
+        padding-right: 160px;
+        padding-bottom: 66px;
+        max-height: 904px;
+        min-height: 904px;
+      }
+      .photo-jury{
+        max-height: 904px;
+        min-height: 904px;
+        max-width: 960px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+    .contain-jury{
+      max-height: 748px;
+      min-height: 748px;
+      .contain-descript{
+        padding-top: 33px;
+        padding-left: 120px;
+        padding-right: 120px;
+        padding-bottom: 66px;
+        max-height: 748px;
+        min-height: 748px;
+      }
+      .photo-jury{
+        max-height: 748px;
+        min-height: 748px;
+        max-width: 800px;
+      }
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+    .contain-jury{
+      max-height: 603px;
+      min-height: 603px;
+      .contain-descript{
+        padding-top: 25px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 66px;
+        max-height: 603px;
+        min-height: 603px;
+      }
+      .photo-jury{
+        max-height: 603px;;
+        min-height: 603px;
+        max-width: 640px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .contain-jury{
+      max-height: 603px;
+      min-height: 603px;
+      .contain-descript{
+        padding-top: 25px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 66px;
+        max-height: 603px;
+        min-height: 603px;
+      }
+      .photo-jury{
+        max-height: 603px;;
+        min-height: 603px;
+        max-width: 512px;
+      }
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .contain-jury{
+      max-height: 603px;
+      min-height: 603px;
+      .contain-descript{
+        padding-top: 25px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 66px;
+        max-height: 603px;
+        min-height: 603px;
+      }
+      .photo-jury{
+        max-height: 603px;;
+        min-height: 603px;
+        max-width: 512px;
+      }
+    }
+  }

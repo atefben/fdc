@@ -62,7 +62,7 @@ $(document).ready(function() {
       else{
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + '</li>');
+        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + '</li>');        
       }
 
       if($('.invalid').length) {

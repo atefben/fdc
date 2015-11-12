@@ -6382,9 +6382,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6410,11 +6410,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6430,26 +6430,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -12109,6 +12109,7 @@ article .read-later.rAlign span:after {
   padding-right: 160px;
   box-sizing: border-box;
   overflow-x: auto;
+  transition: all linear 1s;
 }
 .contain-jury .contain-descript a {
   color: #000;
@@ -12180,6 +12181,101 @@ article .read-later.rAlign span:after {
   font-size: .8125rem;
 }
 
+@media screen and (min-width: 1920px) {
+  .contain-jury {
+    max-height: 904px;
+    min-height: 904px;
+  }
+  .contain-jury .contain-descript {
+    padding-top: 72px;
+    padding-left: 160px;
+    padding-right: 160px;
+    padding-bottom: 66px;
+    max-height: 904px;
+    min-height: 904px;
+  }
+  .contain-jury .photo-jury {
+    max-height: 904px;
+    min-height: 904px;
+    max-width: 960px;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .contain-jury {
+    max-height: 748px;
+    min-height: 748px;
+  }
+  .contain-jury .contain-descript {
+    padding-top: 33px;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-bottom: 66px;
+    max-height: 748px;
+    min-height: 748px;
+  }
+  .contain-jury .photo-jury {
+    max-height: 748px;
+    min-height: 748px;
+    max-width: 800px;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .contain-jury {
+    max-height: 603px;
+    min-height: 603px;
+  }
+  .contain-jury .contain-descript {
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 66px;
+    max-height: 603px;
+    min-height: 603px;
+  }
+  .contain-jury .photo-jury {
+    max-height: 603px;
+    min-height: 603px;
+    max-width: 640px;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .contain-jury {
+    max-height: 603px;
+    min-height: 603px;
+  }
+  .contain-jury .contain-descript {
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 66px;
+    max-height: 603px;
+    min-height: 603px;
+  }
+  .contain-jury .photo-jury {
+    max-height: 603px;
+    min-height: 603px;
+    max-width: 512px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .contain-jury {
+    max-height: 603px;
+    min-height: 603px;
+  }
+  .contain-jury .contain-descript {
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 66px;
+    max-height: 603px;
+    min-height: 603px;
+  }
+  .contain-jury .photo-jury {
+    max-height: 603px;
+    min-height: 603px;
+    max-width: 512px;
+  }
+}
 .artist {
   padding: 0px 0px;
   padding-top: 65px;
