@@ -11376,6 +11376,8 @@ article .read-later.rAlign span:after {
   background-color: #141414;
   border-bottom: 1px solid #2c2c2c;
   padding: 70px 0;
+  position: relative;
+  z-index: 2;
 }
 .webtv #content-latest .title {
   margin-bottom: 45px;
