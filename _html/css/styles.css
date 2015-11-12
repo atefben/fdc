@@ -3376,7 +3376,7 @@ header .user-nav {
   border-left: 1px solid #404040;
   float: right;
   font-family: "Camphor W01 Bold";
-  padding: 0 20px 0 10px;
+  padding: 0 10px 0 10px;
 }
 header .user-nav li {
   display: inline-block;

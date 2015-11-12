@@ -20,7 +20,9 @@ $(document).ready(function() {
         }, 800);
      });
 
-     $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
+     setTimeout(function() {
+      $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
+      }, 500);
 
      if($('header').hasClass('sticky')) {
       $('.webtv #live .img').css('top', '-10%');
