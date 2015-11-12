@@ -200,6 +200,17 @@ header #searchContainer {
           &:nth-child(3n+1) {
             margin-left: 0;
           }
+
+          &:nth-child(3n) {
+            .read-later span {
+              left: auto!important;
+              right: -15px;
+
+              &:after {
+                left: 158px;
+              }
+            }
+          }
         }
       }
     }
@@ -396,6 +407,12 @@ header #searchContainer {
       padding: 0 0 40px 0;
       width: 225px;
 
+      .read-later span {
+        position: absolute;
+        left: -79px!important;
+        top: -57px !important;
+      }
+
       .info {
         color: #666;
       }
@@ -428,6 +445,17 @@ header #searchContainer {
 
         &:nth-child(3n+1) {
           margin-left: 0;
+        }
+      }
+
+      #newsResults article:nth-child(2n) {
+        .read-later span {
+          left: auto!important;
+          right: -15px;
+
+          &:after {
+            left: 158px;
+          }
         }
       }
     }

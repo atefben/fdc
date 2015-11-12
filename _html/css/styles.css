@@ -5992,6 +5992,13 @@ header #searchContainer {
 #searchContainer #results #filtered #filteredContent article:nth-child(3n+1) {
   margin-left: 0;
 }
+#searchContainer #results #filtered #filteredContent article:nth-child(3n) .read-later span {
+  left: auto !important;
+  right: -15px;
+}
+#searchContainer #results #filtered #filteredContent article:nth-child(3n) .read-later span:after {
+  left: 158px;
+}
 #searchContainer #results .big {
   float: left;
   margin-bottom: 50px;
@@ -6160,6 +6167,11 @@ header #searchContainer {
   padding: 0 0 40px 0;
   width: 225px;
 }
+#searchContainer #results article .read-later span {
+  position: absolute;
+  left: -79px !important;
+  top: -57px !important;
+}
 #searchContainer #results article .info {
   color: #666;
 }
@@ -6186,6 +6198,13 @@ header #searchContainer {
 }
 #searchContainer #results #wide .big:nth-child(3n+1) {
   margin-left: 0;
+}
+#searchContainer #results #wide #newsResults article:nth-child(2n) .read-later span {
+  left: auto !important;
+  right: -15px;
+}
+#searchContainer #results #wide #newsResults article:nth-child(2n) .read-later span:after {
+  left: 158px;
 }
 #searchContainer #results #short {
   float: left;

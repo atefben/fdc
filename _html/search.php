@@ -148,7 +148,6 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                         <span class="picto"></span>
                       </div>
                       <div class="info">
@@ -162,7 +161,6 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
                         <span class="picto"></span>
                       </div>
                       <div class="info">
