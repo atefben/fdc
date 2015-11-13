@@ -10,7 +10,9 @@
 // =========================
 
 .evenement {
-
+  .title{
+    margin-bottom: 20px;
+  }
   #gridEvent{
     padding-top: 60px;
   }
@@ -36,7 +38,8 @@
     font-family: "Camphor W01 Heavy";
     font-size: 0.625rem;
     line-height: 55px;
-    margin: 70px auto;
+    margin: 0 auto;
+    margin-bottom: 70px;
     text-align: center;
     text-transform: uppercase;
     width: 95%;
@@ -79,7 +82,12 @@
 
 
 .single-evenement{
-
+  .title-article{
+    margin-bottom:37px;
+  }
+  .single-photo{
+    margin-top:64px;
+  }
   .quote{
     padding-top: 60px;
     width: auto;

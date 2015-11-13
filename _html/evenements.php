@@ -25,22 +25,22 @@
     <div id="main" class="all-articles grid evenement loading">
       <h2 class="title">Les évènements</h2>
       <div class="filters">
+          <div id="date" class="filter">
+            <span class="label">Dates :</span>
+            <span class="select">
+              <span class="active" data-filter="all">Date 1</span>
+              <span data-filter="photo">Date 2</span>
+              <span data-filter="video">Date 3</span>
+              <span data-filter="audio">Date 4</span>
+              <span data-filter="article">Date 5</span>
+            </span>
+          </div>
           <div id="theme" class="filter">
             <span class="label">Thêmes :</span>
             <span class="select">
               <span class="active" data-filter="all">Tous</span>
               <span data-filter="press">Conférence de Presse</span>
               <span data-filter="steps">Montée des marches</span>
-            </span>
-          </div>
-          <div id="format" class="filter">
-            <span class="label">Formats :</span>
-            <span class="select">
-              <span class="active" data-filter="all">Tous</span>
-              <span data-filter="photo">Photo</span>
-              <span data-filter="video">Vidéo</span>
-              <span data-filter="audio">Audio</span>
-              <span data-filter="article">Article</span>
             </span>
           </div>
         </div>
