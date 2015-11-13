@@ -13552,3 +13552,117 @@ article .read-later.rAlign span:after {
 .manual .content-manual:last-child .item-manual:last-child {
   border-bottom: #FFF solid 0px;
 }
+
+.press {
+  padding-top: 0 !important;
+}
+.press .header-press {
+  height: 150px;
+  overflow: hidden;
+}
+.press .header-press .head {
+  background: #c8a461 url("../img/svg/press-white.svg") no-repeat center 36%;
+  background-size: 40px;
+  color: #fff;
+  float: left;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 83px;
+  margin-right: 70px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 80px;
+}
+.press .header-press .head span {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.750rem;
+  letter-spacing: 0.1em;
+}
+.press .header-press h2 {
+  color: #c8a461;
+  float: left;
+  font-family: "Camphor W01 Thin";
+  font-size: 2.125rem;
+  font-weight: normal;
+  margin: 60px 0 0 0;
+  text-transform: uppercase;
+}
+.press .header-press p {
+  float: right;
+  font-size: 0.813rem;
+  height: 100%;
+  margin-right: 160px;
+  width: 515px;
+  line-height: 1.5em;
+}
+.press p.link {
+  margin-top: 25px;
+}
+.press p.link img {
+  margin-right: 10px;
+  width: 10px;
+}
+.press p.link a {
+  color: #c8a461;
+  font-family: "Camphor W01 Heavy";
+  font-size: 0.750rem;
+  text-transform: uppercase;
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.press p.link a:hover {
+  opacity: 0.5;
+}
+.press .section {
+  height: 300px;
+  width: 100%;
+  background-color: #000;
+  position: relative;
+}
+.press .section .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0.25;
+  width: 100%;
+}
+.press .section.participate .img {
+  background: url("../img/press/001.jpg") no-repeat center;
+  background-size: cover;
+}
+.press .section.accrediter .img {
+  background: url("../img/press/002.jpg") no-repeat center;
+  background-size: cover;
+}
+.press .section .txt {
+  color: #fff;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+.press .section .txt h2 {
+  font-size: 1.750rem;
+}
+.press .contact-press {
+  border-top: 1px solid #e3e3e3;
+  padding: 60px 0;
+}
+.press .contact-press .title {
+  margin-bottom: 55px;
+}
+.press .contact-press .container {
+  overflow: hidden;
+}
+.press .contact-press .col {
+  float: left;
+  width: 33.33333%;
+}
+.press .contact-press .button {
+  padding: 0 22px;
+}
