@@ -40,7 +40,7 @@
     text-align: center;
     text-transform: uppercase;
     width: 95%;
-    letter-spacing: .2em;
+    letter-spacing: .1em;
     @include transition(all 0.9s $smoothTransition);
 
     strong {
@@ -177,7 +177,6 @@
 
 //3. media bandeau push
 // ==========================
-
 
 
   @media screen and (min-width: 1920px) {

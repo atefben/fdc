@@ -12018,7 +12018,7 @@ article .read-later.rAlign span:after {
   text-align: center;
   text-transform: uppercase;
   width: 95%;
-  letter-spacing: .2em;
+  letter-spacing: .1em;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
