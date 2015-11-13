@@ -4795,6 +4795,13 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player.bigger .fullscreen {
   bottom: 49px;
 }
+.audio-player.bigger .off {
+  left: 116px;
+  width: calc(100% - 116px);
+}
+.audio-player.bigger .playpause {
+  left: 50px;
+}
 .audio-player.pause .playpause {
   background-image: url("../img/svg/pause.svg");
   background-size: 15px;
@@ -4996,6 +5003,7 @@ div.chocolat-wrapper .chocolat-close {
   position: relative;
   margin-left: 13px;
   vertical-align: middle;
+  margin-top: -3px;
 }
 .audio-player .info .category {
   color: #c8a461;
