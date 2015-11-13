@@ -41,7 +41,7 @@ class FilmAtelierPerson
     /**
      * @var FilmPerson
      *
-     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="personsAtelier", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmPerson", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=false)
      */
     private $person;

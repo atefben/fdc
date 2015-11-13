@@ -43,9 +43,9 @@ class Event
     /**
      * @var ArticleLock
      *
-     * @ORM\OneToMany(targetEntity="NewsArticleLock", mappedBy="articles")
+     * @ORM\OneToMany(targetEntity="EventLock", mappedBy="event")
      */
-    private $lock;
+    private $locks;
 
     /**
      * @var string
@@ -64,7 +64,7 @@ class Event
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="events")
      */
     private $festival;
 
@@ -89,7 +89,7 @@ class Event
     /**
      * @var NewsTag
      *
-     * @ORM\OneToMany(targetEntity="NewsNewsTag", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"persist"})
      *
      * @Groups({"event_list", "event_show"})
      */
@@ -114,7 +114,7 @@ class Event
     /**
      * @var Site
      *
-     * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsArticles")
+     * @ORM\ManyToMany(targetEntity="Site")
      *
      * @Groups({"event_list", "event_show"})
      */
@@ -439,5 +439,15 @@ class Event
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Get locks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLocks()
+    {
+        return $this->locks;
     }
 }

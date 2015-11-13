@@ -4,6 +4,7 @@ $(document).ready(function() {
   // =========================
 
   var sliderSelection = '',
+      sliderSuggestion = '',
       tr = 0,
       selectionCookie = [];
 
@@ -27,6 +28,32 @@ $(document).ready(function() {
       $('#slider-selection').append($art);
     }
   }
+
+  $.ajax({
+    type: "GET",
+    dataType: "html",
+    cache: false,
+    url: 'selection.html' ,
+    success: function(data) {
+      $('#slider-suggestion').append(data);
+
+      sliderSuggestion = $("#slider-suggestion").owlCarousel({
+        nav: false,
+        dots: false,
+        smartSpeed: 500,
+        center: true,
+        loop: false,
+        margin: 0,
+        dragEndSpeed: 900,
+        autoWidth: true,
+        onInitialized: function() {
+          
+       }
+      });
+
+      sliderSuggestion.owlCarousel();
+    }
+  });
 
   $('#selection .title span').text(selectionCookie.length);
 
@@ -59,6 +86,12 @@ $(document).ready(function() {
 
     $('header .selection').addClass('opened');
 
+    if(selectionCookie.length == 0) {
+      $('#slider-suggestion').addClass('show');
+      $('.filters-selection a').removeClass('active');
+      $('a[data-selection=suggestion]').addClass('active');
+    }
+
     callback();
 
   }
@@ -74,6 +107,9 @@ $(document).ready(function() {
 
     if($('#selection').hasClass('open')) {
       closeSelection();
+    }
+    if($('#searchContainer').hasClass('open')) {
+      closeSearch();
     }
   });
 
@@ -106,6 +142,7 @@ $(document).ready(function() {
     $('#selection .owl-item').removeClass('filtered');
 
     if(f == 'all') {
+      $('#slider-suggestion').removeClass('show');
       $('#selection .owl-stage').width(272 * $('#selection .owl-item').length).css('transform', 'translate3d(' + tr + 'px, 0, 0)');
       setTimeout(function() {
         $('#selection .owl-item').removeClass('fade');
@@ -115,10 +152,14 @@ $(document).ready(function() {
     } 
 
     if(f == 'suggestion') {
-      // todo
+      setTimeout(function() {
+        $('#slider-suggestion').addClass('show');
+      }, 1200);
 
       return false;
     }
+    
+    $('#slider-suggestion').removeClass('show');
 
     setTimeout(function() {
       $('#selection article').each(function() {
@@ -164,9 +205,14 @@ $(document).ready(function() {
     var $article = $(this).parents('article').clone().removeClass('double').wrapAll("<div class='article'></div>").parent().wrapAll('<div></div>').parent();
         $article.find('.read-later').remove();
         $article.find('div.article').append('<a href="#" class="delete"></a>');
+        $article.find('div.article').attr('id', 'article' + $(this).parents('article').index('#main article'));
         $article = $article.html();
 
     $articleEl = $(this).parents('article');
+
+    $('#slider-suggestion').removeClass('show');
+    $('.filters-selection a').removeClass('active');
+    $('a[data-selection=all]').addClass('active');
 
     selectionCookie.unshift({
       'id': $articleEl.index('#main article'),
@@ -191,8 +237,23 @@ $(document).ready(function() {
       setTimeout(function() {
         sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item added scaled">' + $article + '</div>'), 0]);
         sliderSelection.trigger('refresh.owl.carousel');
-        $('.scaled').removeClass('scaled');
-      }, 1200);
+
+        $('.added').find('.article').width(0).css({
+          transition: 'none',
+          paddingRight: 0
+        });
+        setTimeout(function() {
+          $('.added').find('.article').css({
+            transition: '',
+            paddingRight: '',
+            width: ''
+          });
+        }, 200);
+        setTimeout(function() {
+          $('.scaled').removeClass('scaled');
+          $('.added').removeClass('added');
+        }, 1200);
+      }, 800);
     });
      
   });
@@ -207,8 +268,10 @@ $(document).ready(function() {
       $(this).removeClass('rAlign');
     }
 
+    var tPos = $(this).offset().top - $(window).scrollTop() - 59;
+
     $(this).find('span').css({
-      top: $(this).offset().top - $(window).scrollTop() - 59,
+      top: tPos,
       left: lPos
     });
   });

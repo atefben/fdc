@@ -24,9 +24,10 @@
   }
   .sub-cat-title{
     background-color: #202020;
-    padding: 27px;
+    padding: 29px;
     font-family: $CamphorBold;
     font-size: 0.75rem;
+    letter-spacing: .2em;
   }
   .bandeau-list{
     background-color: #202020;
@@ -40,8 +41,15 @@
   }
     .categorie-items {
         article{
+          height: 447px;
+          .bck-hover{
+            height: 447px;
+            padding: 0px;
+          }
             .contain-article{
-                vertical-align: text-top;
+              vertical-align: text-top;
+              height: 447px;
+              padding: 0px;
             }
             .infos-item-list{
                 text-align: center;
@@ -55,6 +63,7 @@
                 float: none;
                 display: inline-block;
                 margin-left: 0px;
+                margin-top: 50px;
             }
             .lot-item{
                 padding-top: 0px;
@@ -72,7 +81,7 @@
                         float: none;
                         margin-right: 0px;
                     }
-                    .palme-dor-portrait{
+                    .palme-dor-portrait{ 
                         margin: 0 auto;
                         padding-bottom: 10px;
                     }

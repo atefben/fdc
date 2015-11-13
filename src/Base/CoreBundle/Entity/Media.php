@@ -41,9 +41,9 @@ abstract class Media
     private $file;
 
     /**
-     * @var MediaNewsTag
+     * @var MediaTag
      *
-     * @ORM\OneToMany(targetEntity="MediaNewsTag", mappedBy="media", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="MediaTag", mappedBy="media", cascade={"persist"})
      */
     private $tags;
 
@@ -114,10 +114,10 @@ abstract class Media
     /**
      * Add tags
      *
-     * @param \Base\CoreBundle\Entity\MediaNewsTag $tags
+     * @param \Base\CoreBundle\Entity\MediaTag $tags
      * @return Media
      */
-    public function addTag(\Base\CoreBundle\Entity\MediaNewsTag $tags)
+    public function addTag(\Base\CoreBundle\Entity\MediaTag $tags)
     {
         if ($this->tags->contains($tags)) {
             return;
@@ -132,9 +132,9 @@ abstract class Media
     /**
      * Remove tags
      *
-     * @param \Base\CoreBundle\Entity\MediaNewsTag $tags
+     * @param \Base\CoreBundle\Entity\MediaTag $tags
      */
-    public function removeTag(\Base\CoreBundle\Entity\MediaNewsTag $tags)
+    public function removeTag(\Base\CoreBundle\Entity\MediaTag $tags)
     {
         if (!$this->tags->contains($tags)) {
             return;

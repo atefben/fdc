@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+
 /**
  * NewsAudio
  *
@@ -30,6 +31,16 @@ class NewsAudio extends News
      * @Groups({"news_list", "news_show"})
      */
     private $header;
+
+    /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaAudio")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $audio;
+
 
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
@@ -62,5 +73,28 @@ class NewsAudio extends News
     public function getHeader()
     {
         return $this->header;
+    }
+
+    /**
+     * Set audio
+     *
+     * @param \Base\CoreBundle\Entity\MediaAudio $audio
+     * @return NewsAudio
+     */
+    public function setAudio(\Base\CoreBundle\Entity\MediaAudio $audio = null)
+    {
+        $this->audio = $audio;
+
+        return $this;
+    }
+
+    /**
+     * Get audio
+     *
+     * @return \Base\CoreBundle\Entity\MediaAudio 
+     */
+    public function getAudio()
+    {
+        return $this->audio;
     }
 }

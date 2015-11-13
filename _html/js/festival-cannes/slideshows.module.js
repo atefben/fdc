@@ -6,13 +6,19 @@ var slideshows = [];
 function initSlideshows() {
 
   // create slider of thumbs
-  $('.thumbnails').owlCarousel({
+  var sliderThumbs =$('.thumbnails').owlCarousel({
     autoWidth: true,
     nav: false,
     dots: false,
     smartSpeed: 500,
     margin: 10,
     dragEndSpeed: 900
+  });
+
+  sliderThumbs.owlCarousel();
+
+  $('body').on('click', '.slideshow .thumbnails .owl-item', function(e) {
+    sliderThumbs.trigger('to.owl.carousel', [$(this).index(), 400, true]);
   });
 
   // on click on thumbnail, change main picture
@@ -64,9 +70,11 @@ $('body').on('click', '.chocolat-img', function(e){
     $('.chocolat-wrapper').removeClass('show');
     $('body').removeClass('fixed');
 
-    $('html, body').animate({
-      scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
-    }, 0);
+    if($('.slideshow').length) {
+      $('html, body').animate({
+        scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+      }, 0);
+    }
 
     setTimeout(function() {
       for(var i=0; i<slideshows.length; i++) {

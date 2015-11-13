@@ -48,7 +48,7 @@ class FilmContact implements FilmContactInterface
     /**
      * @var Film
      *
-     * @ORM\ManyToOne(targetEntity="FilmContactPerson", inversedBy="contacts", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmContactPerson", cascade={"persist"})
      */
     private $person;
     

@@ -120,6 +120,7 @@
 				</section>
 			</div>
 			<div id="content-trailers">
+<!--
 			<div id="slider-trailer" class="owl-carousel sliderDrag owl-theme owl-center owl-loaded">
 		<div class="owl-stage-outer"><div class="owl-stage" style="transition: 0.5s; width: 2058px; transform: translate3d(309.5px, 0px, 0px);"><div class="owl-item active previous" style="width: auto; margin-right: 50px;"><div class="channel shadow-bottom">
 				<img src="img/slider-channels/01.jpg" alt="">
@@ -205,7 +206,113 @@
 						</div>
 					</div>
 				</div>
-			</div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style="display: none;">prev</div><div class="owl-next" style="display: none;">next</div></div><div class="owl-dots" style="display: none;"></div></div></div>
+			</div></div></div></div></div>
+			
+-->
+			        <div id="slider-trailer"  class="owl-carousel sliderDrag">
+          <div class="channel">
+            <div class="image-wrapper">
+              <img src="img/slider-channels/01.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Photocall</a>
+                    <span>Bande annonce 01</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="image-wrapper">
+              <img src="img/slider-channels/02.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Montée des marches</a>
+                    <span>Bande annonce 02</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Conférence de presse</a>
+                    <span>Bande annonce 03</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="image-wrapper">
+              <img src="img/slider-channels/01.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Photocall</a>
+                    <span>Bande annonce 04</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="image-wrapper">
+              <img src="img/slider-channels/02.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Montée des marches</a>
+                    <span>Bande annonce 05</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Conférence de presse</a>
+                    <span>Bande annonce 06</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
 			</div>
 			<div class="bandeau-list">
 				<div class="bandeau-list-img" style="background-image:url(img/webtv/push.jpg);">
@@ -214,7 +321,37 @@
 				</div>
 			</div>
 		</div>
-
+  
+<!-- POPIN MAIL SHARE ----> 
+  
+   <div class="popin-mail popin">
+     <div class="contain-popin popin">
+       <strong class="theme-article popin">Bande annonce</strong><span class="date-article popin">Guillaume NICLOUX</span>
+       <h2 class="title-article popin">VALLEY OF LOVE</h2>
+       <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
+     </div>
+     <form action="" id="form" class="popin">
+            <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas renseignée"><span class="complet-infos popin" >Séparez les adresses par des virgules</span>
+            <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="L'adresse email n'est pas valide">
+            <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
+           <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
+            <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
+            <span class="detail popin">* Champs obligatoires</span>
+            <input type="submit" value='envoyer' class='popin'>
+            <div class="errors popin">
+              <ul class="popin">
+              </ul>
+            </div>
+     </form>
+    <div class="info-popin popin">
+    <p class="popin">  
+      En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.<br>
+  OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
+    </p>
+  </div>
+   </div>
+<!-- END POPIN MAIL SHARE -->
+   
    
     <?php include('footer.html'); ?>
 

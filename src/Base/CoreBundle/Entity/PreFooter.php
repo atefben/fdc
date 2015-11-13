@@ -56,7 +56,7 @@ class Prefooter
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="HomepageTranslation")
+     * @ORM\ManyToOne(targetEntity="HomepageTranslation", inversedBy="prefooters")
      */
     private $homepageTranslation;
 

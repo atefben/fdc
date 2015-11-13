@@ -129,11 +129,6 @@ class FilmMedia
     private $event;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmFestivalPoster", inversedBy="medias")
-     */
-    private $poster;
-
-    /**
      * @ORM\ManyToOne(targetEntity="FilmAtelier", inversedBy="medias")
      */
     private $filmAtelier;

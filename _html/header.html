@@ -37,17 +37,17 @@
   <div id="logo-wrapper">
     <div class="container">
       <div id="logo">
-        <a href="/"><img src="img/svg/palme.svg" alt="Festival de Cannes" /></a>
-        <h1><a href="/">Festival de Cannes</a></h1>
+        <a href="/"><img src="img/svg/palme.svg" alt="Festival de Cannes" class="palm" /></a>
+        <h1><a href="/"><img width="200" src="img/svg/logo.svg" alt="Festival de Cannes" /></a></h1>
         <h2><a href="/">11-22 Mai 2016</a></h2>
-        <p class="stick"><a href="/">Festival de Cannes</a></p>
+        <p class="stick"><a href="/"><img width="178" src="img/svg/logo.svg" alt="Festival de Cannes" /></a></p>
       </div>
       <div id="partners">
         <img width="84" src="img/header/Logo_Chopard.svg" alt="Chopard" class="chopard" />
         <img width="75" src="img/header/loreal.svg" alt="L'Oréal" class="oreal" />
         <img width="28" src="img/header/hp.svg" alt="HP" class="hp" />
         <img width="82" src="img/header/Kering-logo.svg" alt="Kering" class="kering" />
-        <img width="81" src="img/header/renault.png" alt="Renault" class="renault" />
+        <img width="95" src="img/header/renault.svg" alt="Renault" class="renault" />
         <img width="57" src="img/header/mastercard.png" alt="Mastercard" class="mastercard" />
       </div>
       <div id="search">
@@ -84,7 +84,7 @@
           </li>
           <li>
             <a href="webtv.php">Web TV</a>
-            <ul>
+            <ul class="tcenter">
               <li><a href="webtv.php">Direct</a></li>
               <li><a href="channels.php">Chaines</a></li>
               <li><a href="webtv_trailer_competition.php">Bandes annonces</a></li>
@@ -134,6 +134,7 @@
       <li><a href="#" data-selection='suggestion'>Suggestions</a></li>
     </ul>
     <div id="slider-selection" class="owl-carousel"></div>
+    <div id="slider-suggestion" class="owl-carousel"></div>
     <div id="toClone" class="article">
       <article class="" data-format="" data-theme="">
         <div class="image">
@@ -149,6 +150,15 @@
         </div>
       </article>
       <a href="#" class="delete"></a>
+    </div>
+  </div>
+  <div id="searchContainer">
+    <div class="container">
+      <form action="search.php">
+        <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." autocomplete="off" />
+        <input id="submitSearch" type="submit" value="" />
+      </form>
+      <ul id="suggest"></ul>
     </div>
   </div>
 </header>

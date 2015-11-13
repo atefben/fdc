@@ -241,7 +241,7 @@
                   </div>
                   <div class="info">
                     <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi / supported by [NEUS]</a></h2>
+                    <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi</a></h2>
                   </div>
                 </article>
               </div>

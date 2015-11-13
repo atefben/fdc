@@ -17,11 +17,16 @@ $(document).ready(function() {
     $('#sticky-user').css('transition-delay', '0');
     $('p.stick').addClass('noTrans');
     $header.addClass('sticky');
-    $('body').css('padding-top', 0);
-    var padT = '91px';
+    var padT = '101px';
+
+    $('body').css('padding-top', padT);
+
+    $('html, body').animate({
+      scrollTop: 10
+    }, 0);
 
     if($main.css('padding-top') != '0px') {
-      padT = 91 + parseInt($main.css('padding-top'), 10) + 'px';
+      padT = 101 + parseInt($main.css('padding-top'), 10) + 'px';
     }
     if($('.single-movie').length == 0) {
       $main.css('padding-top', padT);

@@ -101,7 +101,7 @@
       background-size: cover;
       opacity: 0.5;
       position: absolute;
-      top: -20%;
+      top: 0;
       left: 0;
       height: 130%;
       width: 100%;
@@ -230,6 +230,8 @@
     background-color: $black;
     border-bottom: 1px solid #2c2c2c;
     padding: 70px 0;
+    position: relative;
+    z-index: 2;
 
     .title {
       margin-bottom: 45px;

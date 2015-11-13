@@ -35,13 +35,6 @@ class Gallery
      * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="gallery", cascade={"persist"})
      */
     private $medias;
-    
-    /**
-     * @var Media
-     *
-     * @ORM\OneToMany(targetEntity="NewsWidgetImage", mappedBy="gallery")
-     */
-    private $newsWidgetImages;
 
     /**
      * Constructor
@@ -102,38 +95,5 @@ class Gallery
     public function getMedias()
     {
         return $this->medias;
-    }
-
-    /**
-     * Add newsWidgetImages
-     *
-     * @param \Base\CoreBundle\Entity\NewsWidgetImage $newsWidgetImages
-     * @return Gallery
-     */
-    public function addNewsWidgetImage(\Base\CoreBundle\Entity\NewsWidgetImage $newsWidgetImages)
-    {
-        $this->newsWidgetImages[] = $newsWidgetImages;
-
-        return $this;
-    }
-
-    /**
-     * Remove newsWidgetImages
-     *
-     * @param \Base\CoreBundle\Entity\NewsWidgetImage $newsWidgetImages
-     */
-    public function removeNewsWidgetImage(\Base\CoreBundle\Entity\NewsWidgetImage $newsWidgetImages)
-    {
-        $this->newsWidgetImages->removeElement($newsWidgetImages);
-    }
-
-    /**
-     * Get newsWidgetImages
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getNewsWidgetImages()
-    {
-        return $this->newsWidgetImages;
     }
 }

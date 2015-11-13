@@ -35,7 +35,7 @@
     }
   }
 
-  #slider-selection {
+  #slider-selection, #slider-suggestion {
     min-height: 230px;
     margin-left: -380px;
     @include transition(all .5s $smoothTransition);
@@ -155,6 +155,20 @@
           }
         }
       }
+    }
+  }
+
+  #slider-suggestion {
+    opacity: 0;
+    position: absolute;
+    top: 139px;
+    visibility: hidden;
+    pointer-events: none;
+
+    &.show {
+      opacity: 1;
+      pointer-events: initial;
+      visibility: visible;
     }
   }
 

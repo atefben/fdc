@@ -1,10 +1,8 @@
 //       SUMMARY TABLE     
 // =========================
 // 1. Global
-// 2. Channels
-// 3. Single channel
-// 4. Bandes annonces
-// 5. Bandes annonces
+// 2. Single evenement
+// 3. Media bandeau push
 // =========================
 
 
@@ -12,7 +10,7 @@
 // =========================
 
 .evenement {
-  padding-bottom:1px;
+
   #gridEvent{
     padding-top: 60px;
   }
@@ -42,16 +40,30 @@
     text-align: center;
     text-transform: uppercase;
     width: 95%;
-    -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    letter-spacing: .1em;
+    @include transition(all 0.9s $smoothTransition);
+
     strong {
-    color: #000;
-    font-weight: normal;
+      color: #000;
+      font-weight: normal;
+    }
+
+    &:hover {
+      opacity: 0.5;
     }
   }
-    
+  .list-article .bandeau-list .bandeau-list-img {
+    height: 300px;
+    background-size: cover;
+  }
+
+  .bandeau-list-img {
+      height: 444px !important;
+  }
+  .bandeau-list-img {
+      height: 443px !important;
+    @include transition(all 0.9s $linear);
+  }
 }
 .evenement:after{
  			content: ".";
@@ -61,7 +73,11 @@
 			visibility: hidden; 
 }
 
-//single evenement//
+
+// 2. single evenement
+// =====================
+
+
 .single-evenement{
 
   .quote{
@@ -70,13 +86,14 @@
     blockquote{
       font-size: 1.5rem !important;
       font-family: $CamphorItalic;
+      padding: 40px 88px;
     }
   }
   .share{
     padding-bottom: 0px;
   }
   .text{
-    padding-top: 60px;
+    padding-top: 60px; 
     width: 634px;
     a{
       color: #c8a461;
@@ -102,7 +119,7 @@
   .chapeau{
     margin-bottom: 40px;
   }
-  .film{  
+  .film{
      margin-top: 70px;
     margin-bottom: 70px;
     height: 290px;
@@ -139,7 +156,7 @@
           left: 0;
           position: absolute;
           width: 27px;
-       } 
+       }
         .date{
            color:#bababa !important;
         }
@@ -156,3 +173,54 @@
   }
   
 }
+
+
+//3. media bandeau push
+// ==========================
+
+
+  @media screen and (min-width: 1920px) {
+    .evenement .bandeau-list-img{
+      height: 444px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 210px !important;
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+    .evenement .bandeau-list-img{
+      height: 373px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 173px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+    .evenement .bandeau-list-img{
+      height: 296px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .evenement .bandeau-list-img{
+      height: 294px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .evenement .bandeau-list-img{
+      height: 294px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }

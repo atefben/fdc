@@ -7,11 +7,11 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
     # GROUP GENERAL
-    base.admin.news_tag:
-        class: Base\AdminBundle\Admin\NewsTagAdmin
-        arguments: [~, Base\CoreBundle\Entity\NewsTag, BaseAdminBundle:NewsTagAdmin]
+    base.admin.tag:
+        class: Base\AdminBundle\Admin\TagAdmin
+        arguments: [~, Base\CoreBundle\Entity\Tag, BaseAdminBundle:TagAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.news_tag, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.tag, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -182,11 +182,11 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.media_news_tag:
-        class: Base\AdminBundle\Admin\MediaNewsTagAdmin
-        arguments: [~, Base\CoreBundle\Entity\MediaNewsTag, BaseAdminBundle:MediaNewsTagAdmin]
+    base.admin.media_tag:
+        class: Base\AdminBundle\Admin\MediaTagAdmin
+        arguments: [~, Base\CoreBundle\Entity\MediaTag, BaseAdminBundle:MediaTagAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.media, label: MediaNewsTag, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.media, label: MediaTag, show_in_dashboard: false}
 
     base.admin.media:
         class: Base\AdminBundle\Admin\MediaAdmin
@@ -220,11 +220,11 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.news_news_tag:
-        class: Base\AdminBundle\Admin\NewsNewsTagAdmin
-        arguments: [~, Base\CoreBundle\Entity\NewsNewsTag, BaseAdminBundle:NewsNewsTagAdmin]
+    base.admin.news_tag:
+        class: Base\AdminBundle\Admin\NewsTagAdmin
+        arguments: [~, Base\CoreBundle\Entity\NewsTag, BaseAdminBundle:NewsTagAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsNewsTag, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsTag, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -252,8 +252,8 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base_admin.statement_news_tag:
-        class: Base\AdminBundle\Admin\StatementNewsTagAdmin
-        arguments: [~, Base\CoreBundle\Entity\StatementNewsTag, BaseAdminBundle:StatementNewsTagAdmin]
+    base_admin.statement_tag:
+        class: Base\AdminBundle\Admin\StatementTagAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementTag, BaseAdminBundle:StatementTagAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: StatementNewsTag, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: StatementTag, show_in_dashboard: false}

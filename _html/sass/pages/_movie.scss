@@ -173,7 +173,8 @@
     }
 
     .picto {
-      background-size: 40px;
+      background-image: url('../img/svg/play-gold.svg');
+      background-size: 18px;
       height: 80px;
       top: 50%;
       left: 50%;
@@ -524,7 +525,7 @@
         display: inline-block;
 
         a {
-          color: #D2D2D2;
+          color: #999;
           display: block;
           font-family: $CamphorHeavy;
           font-size: 0.750rem;
@@ -670,7 +671,7 @@
             font-size: 0.9rem;
             text-overflow: ellipsis;
             overflow: hidden;
-            width: 200px;
+            width: 190px;
             white-space: nowrap;
           }
 
@@ -828,7 +829,7 @@
   }
 
   .press {
-    height: 575px;
+    height: 600px;
     overflow: hidden;
 
     h3 {
@@ -864,7 +865,7 @@
         float: right;
         height: 100%;
         margin-right: 20px;
-        padding-top: 30px;
+        padding-top: 60px;
         width: 470px;
 
         .folder {
@@ -961,10 +962,10 @@
         float: left;
         margin-left: 85px;
         width: 470px;
-        padding-top: 30px;
+        padding-top: 60px;
 
         .vCenterKidTop div {
-          padding: 15px 0;
+          padding: 10px 0;
 
           &.prod {
             border-bottom: 1px solid #383838;

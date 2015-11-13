@@ -144,7 +144,7 @@
                   <div class="vCenter">
                     <div class="vCenterKid">
                       <a href="#" class="category">Photocall</a>
-                      <p>Lorem ipsum dolor sit</p>
+                      <p>Lorem ipsum dolor sit amet sit amet</p>
                     </div>
                   </div>
                 </div>

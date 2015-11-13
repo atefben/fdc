@@ -1,0 +1,50 @@
+{
+  "all": {
+    "count": 723
+  },
+  "persons": {
+    "count": 123,
+    "results": [
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "films": {
+    "count": 200,
+    "results": [
+      {}
+    ]
+  },
+  "medias": {
+    "count": 50,
+    "results": [
+      {}
+    ]
+  },
+  "news": {
+    "count": 30,
+    "results": [
+      {}
+    ]
+  },
+  "communiques": {
+    "count": 5,
+    "results": [
+      {}
+    ]
+  },
+  "events": {
+    "count": 6,
+    "results": [
+      {}
+    ]
+  },
+  "participate": {
+    "count": 3,
+    "results": [
+      {}
+    ]
+  }
+}

@@ -48,7 +48,7 @@ class FilmSelectionSection
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="selectionSections")
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
     private $festival;
 

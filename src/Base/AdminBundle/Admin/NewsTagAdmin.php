@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsTagAdmin class.
+ * NewsNewsTagAdmin class.
  * 
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
@@ -24,6 +24,8 @@ class NewsTagAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -34,6 +36,8 @@ class NewsTagAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -50,17 +54,7 @@ class NewsTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('translations', 'a2lix_translations', array(
-                'label' => false,
-                'fields' => array(
-                    'createdAt' => array(
-                        'display' => false
-                    ),
-                    'updatedAt' => array(
-                        'display' => false
-                    ),
-                )
-            ))
+            ->add('tag', 'sonata_type_model')
         ;
     }
 
@@ -71,6 +65,8 @@ class NewsTagAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }

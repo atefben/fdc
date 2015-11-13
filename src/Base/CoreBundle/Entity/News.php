@@ -4,11 +4,11 @@ namespace Base\CoreBundle\Entity;
 
 use \DateTime;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
-
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslationByLocale;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -42,11 +42,11 @@ abstract class News
     private $id;
     
     /**
-     * @var ArticleLock
+     * @var NewsLock
      *
-     * @ORM\OneToMany(targetEntity="NewsArticleLock", mappedBy="articles")
+     * @ORM\OneToMany(targetEntity="NewsLock", mappedBy="news")
      */
-    private $lock;
+    private $locks;
     
     /**
      * @var string
@@ -59,6 +59,8 @@ abstract class News
       * @var NewsTheme
       *
       * @ORM\ManyToOne(targetEntity="NewsTheme")
+      *
+      * @Groups({"news_list", "news_show"})
       */
     private $theme;
 
@@ -90,21 +92,14 @@ abstract class News
     /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="news")
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderNews")
      */
     private $homepage;
 
     /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     */
-    private $seoFile;
-
-    /**
      * @var NewsTag
      *
-     * @ORM\OneToMany(targetEntity="NewsNewsTag", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"persist"})
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -129,7 +124,7 @@ abstract class News
     /**
      * @var Site
      *
-     * @ORM\ManyToMany(targetEntity="Site", inversedBy="newsArticles")
+     * @ORM\ManyToMany(targetEntity="Site")
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -227,39 +222,6 @@ abstract class News
     }
 
     /**
-     * Add lock
-     *
-     * @param \Base\CoreBundle\Entity\NewsArticleLock $lock
-     * @return News
-     */
-    public function addLock(\Base\CoreBundle\Entity\NewsArticleLock $lock)
-    {
-        $this->lock[] = $lock;
-
-        return $this;
-    }
-
-    /**
-     * Remove lock
-     *
-     * @param \Base\CoreBundle\Entity\NewsArticleLock $lock
-     */
-    public function removeLock(\Base\CoreBundle\Entity\NewsArticleLock $lock)
-    {
-        $this->lock->removeElement($lock);
-    }
-
-    /**
-     * Get lock
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLock()
-    {
-        return $this->lock;
-    }
-
-    /**
      * Set publishedAt
      *
      * @param \DateTime $publishedAt
@@ -349,41 +311,6 @@ abstract class News
     public function getFestival()
     {
         return $this->festival;
-    }
-
-
-    /**
-     * Add tags
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsTag $tags
-     * @return News
-     */
-    public function addTag(\Base\CoreBundle\Entity\NewsNewsTag $tags)
-    {
-        $this->tags[] = $tags;
-        $tags->setNews($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsTag $tags
-     */
-    public function removeTag(\Base\CoreBundle\Entity\NewsNewsTag $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 
     /**
@@ -500,25 +427,70 @@ abstract class News
     }
 
     /**
-     * Set seoFile
+     * Add tags
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $seoFile
+     * @param \Base\CoreBundle\Entity\NewsTag $tags
      * @return News
      */
-    public function setSeoFile(\Application\Sonata\MediaBundle\Entity\Media $seoFile = null)
+    public function addTag(\Base\CoreBundle\Entity\NewsTag $tags)
     {
-        $this->seoFile = $seoFile;
+        $tags->setNews($this);
+        $this->tags[] = $tags;
 
         return $this;
     }
 
     /**
-     * Get seoFile
+     * Remove tags
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @param \Base\CoreBundle\Entity\NewsTag $tags
      */
-    public function getSeoFile()
+    public function removeTag(\Base\CoreBundle\Entity\NewsTag $tags)
     {
-        return $this->seoFile;
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add locks
+     *
+     * @param \Base\CoreBundle\Entity\NewsLock $locks
+     * @return News
+     */
+    public function addLock(\Base\CoreBundle\Entity\NewsLock $lock)
+    {
+        $lock->setNews($this);
+        $this->locks[] = $lock;
+
+        return $this;
+    }
+
+    /**
+     * Remove locks
+     *
+     * @param \Base\CoreBundle\Entity\NewsLock $locks
+     */
+    public function removeLock(\Base\CoreBundle\Entity\NewsLock $lock)
+    {
+        $this->locks->removeElement($lock);
+    }
+
+    /**
+     * Get locks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLocks()
+    {
+        return $this->locks;
     }
 }

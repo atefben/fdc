@@ -2,14 +2,15 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * StatementVideo
@@ -23,6 +24,24 @@ class StatementVideo extends Statement
     use Time;
     use Translatable;
 
+    /**
+     * @var MediaVideo
+     *
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $video;
+
+    /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $image;
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
@@ -31,4 +50,50 @@ class StatementVideo extends Statement
         }
 
         return $string;
-    }}
+    }
+    /**
+     * Set video
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $video
+     * @return StatementVideo
+     */
+    public function setVideo(\Base\CoreBundle\Entity\MediaVideo $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Base\CoreBundle\Entity\MediaVideo 
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $image
+     * @return StatementVideo
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+}

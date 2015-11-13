@@ -47,6 +47,13 @@ class WebTv
     private $mediaVideos;
 
     /**
+     * @var Homepage
+     *
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topWebTvs")
+     */
+    private $homepage;
+
+    /**
      * @var ArrayCollection
      *
      * @Groups({"web_tv_list", "web_tv_show"})
@@ -121,5 +128,28 @@ class WebTv
     public function getMediaVideos()
     {
         return $this->mediaVideos;
+    }
+
+    /**
+     * Set homepage
+     *
+     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @return WebTv
+     */
+    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return \Base\CoreBundle\Entity\Homepage 
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
     }
 }

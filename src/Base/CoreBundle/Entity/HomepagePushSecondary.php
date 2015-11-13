@@ -56,7 +56,7 @@ class HomepagePushSecondary
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="HomepageTranslation")
+     * @ORM\ManyToOne(targetEntity="HomepageTranslation", inversedBy="pushsSecondary")
      */
     private $homepageTranslation;
 
