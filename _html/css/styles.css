@@ -5174,6 +5174,7 @@ div.chocolat-wrapper .chocolat-close {
   display: block;
   height: 100%;
   float: left;
+  margin-top: 0;
   position: relative;
   text-align: left;
   z-index: 1;
@@ -9646,6 +9647,15 @@ article .read-later.rAlign span:after {
 .single-movie .news {
   border-bottom: 1px solid #dfdfdf;
   padding-top: 45px;
+}
+.single-movie .news article {
+  width: 295px;
+}
+.single-movie .news article .image {
+  height: 185px;
+}
+.single-movie .news .articles.center article:nth-child(2) {
+  margin: 0 4.5%;
 }
 .single-movie .audios {
   padding: 45px 0;
