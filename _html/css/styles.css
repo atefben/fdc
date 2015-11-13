@@ -12270,19 +12270,22 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Heavy";
   font-size: .625rem;
   padding-top: 25px;
+  letter-spacing: .2em;
 }
 .contain-jury .contain-descript .descript-name {
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy";
   font-size: 2.25rem;
-  padding-top: 25px;
-  padding-bottom: 15px;
+  padding-top: 19px;
+  padding-bottom: 7px;
+  letter-spacing: .1em;
 }
 .contain-jury .contain-descript .descript-rank {
   color: #ccab6e;
   font-family: "Camphor W01 Italic";
   font-size: .75rem;
   padding-bottom: 15px;
+  letter-spacing: .1em;
 }
 .contain-jury .contain-descript p {
   font-size: 0.88rem;
@@ -12298,6 +12301,10 @@ article .read-later.rAlign span:after {
   border: 0px solid #000;
   font-weight: 700;
   font-size: 1.13rem;
+  padding: 70px;
+}
+.contain-jurys-list .title {
+  margin-bottom: 0px;
 }
 .contain-jurys-list article img {
   float: left;
@@ -12324,7 +12331,7 @@ article .read-later.rAlign span:after {
   font-size: .875rem;
   text-transform: uppercase;
   padding-top: 24px;
-  padding-bottom: 5px;
+  padding-bottom: 3px;
 }
 .contain-jurys-list .rank {
   font-family: "Camphor W01 Italic";

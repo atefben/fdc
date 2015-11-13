@@ -74,7 +74,7 @@
                   <a href="artist_page.php">
                     <img src="img/jurys/jury-2.jpg" alt="">
                     <div class="legend">
-                      <span class="name">Sofia Cappola</span>
+                      <span class="name">Sofia Coppola</span>
                       <span class="rank">Réalisatrice</span>
                     </div>
                   </a>
