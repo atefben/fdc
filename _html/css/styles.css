@@ -9649,6 +9649,7 @@ article .read-later.rAlign span:after {
   padding-top: 45px;
 }
 .single-movie .news article {
+  height: 325px;
   width: 295px;
 }
 .single-movie .news article .image {
