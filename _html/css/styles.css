@@ -11989,9 +11989,6 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 
-.evenement {
-  padding-bottom: 1px;
-}
 .evenement #gridEvent {
   padding-top: 60px;
 }
@@ -12033,6 +12030,20 @@ article .read-later.rAlign span:after {
 }
 .evenement .read-more:hover {
   opacity: 0.5;
+}
+.evenement .list-article .bandeau-list .bandeau-list-img {
+  height: 300px;
+  background-size: cover;
+}
+.evenement .bandeau-list-img {
+  height: 444px !important;
+}
+.evenement .bandeau-list-img {
+  height: 443px !important;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .evenement:after {
@@ -12132,6 +12143,51 @@ article .read-later.rAlign span:after {
   text-align: left;
 }
 
+@media screen and (min-width: 1920px) {
+  .evenement .bandeau-list-img {
+    height: 444px !important;
+  }
+
+  .evenement .title-list-header {
+    padding-top: 210px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .evenement .bandeau-list-img {
+    height: 373px !important;
+  }
+
+  .evenement .title-list-header {
+    padding-top: 173px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .evenement .bandeau-list-img {
+    height: 296px !important;
+  }
+
+  .evenement .title-list-header {
+    padding-top: 134px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .evenement .bandeau-list-img {
+    height: 294px !important;
+  }
+
+  .evenement .title-list-header {
+    padding-top: 134px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .evenement .bandeau-list-img {
+    height: 294px !important;
+  }
+
+  .evenement .title-list-header {
+    padding-top: 134px !important;
+  }
+}
 .jurys-list .bandeau-list-img {
   height: 443px !important;
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);

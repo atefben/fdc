@@ -2,6 +2,7 @@
 // =========================
 // 1. Global
 // 2. Single evenement
+// 3. Media bandeau push
 // =========================
 
 
@@ -9,7 +10,7 @@
 // =========================
 
 .evenement {
-  padding-bottom:1px;
+
   #gridEvent{
     padding-top: 60px;
   }
@@ -51,7 +52,18 @@
       opacity: 0.5;
     }
   }
-    
+  .list-article .bandeau-list .bandeau-list-img {
+    height: 300px;
+    background-size: cover;
+  }
+
+  .bandeau-list-img {
+      height: 444px !important;
+  }
+  .bandeau-list-img {
+      height: 443px !important;
+    @include transition(all 0.9s $linear);
+  }
 }
 .evenement:after{
  			content: ".";
@@ -60,6 +72,7 @@
 			clear: both;
 			visibility: hidden; 
 }
+
 
 // 2. single evenement
 // =====================
@@ -160,3 +173,55 @@
   }
   
 }
+
+
+//3. media bandeau push
+// ==========================
+
+
+
+  @media screen and (min-width: 1920px) {
+    .evenement .bandeau-list-img{
+      height: 444px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 210px !important;
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+    .evenement .bandeau-list-img{
+      height: 373px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 173px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+    .evenement .bandeau-list-img{
+      height: 296px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .evenement .bandeau-list-img{
+      height: 294px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .evenement .bandeau-list-img{
+      height: 294px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }
