@@ -69,7 +69,7 @@
                </div>
             </div>
             </article>
-            <article style="background-image:url(img/palmares/cover-film-cinefondation3.jpg)">
+            <article style="background-image:url(img/palmares/hover-film-cinefondation3.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
                 <img src="img/palmares/cover-film-cinefondation3.jpg" alt="images films">
