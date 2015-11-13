@@ -8,6 +8,13 @@
 // 1. Global
 // =========================
 .jurys-list{
+  .bandeau-list{
+    .sub-nav-list{
+      li{
+        padding: 16px 13px;
+      }
+    }
+  }
   .bandeau-list-img{
     height: 443px !important;
     @include transition(all 1s $linear);

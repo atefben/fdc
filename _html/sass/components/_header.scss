@@ -188,7 +188,7 @@ header {
 
     .main-nav {
       float: left;
-      font-family: $CamphorHeavy;
+      font-family: $CamphorBold;
 
       li {
         display: inline-block;
@@ -199,7 +199,7 @@ header {
           padding: 0 12px;
           text-transform: uppercase;
           @include transition(all 0.3s $smoothTransition);
-
+        
           &:hover, &.active {
             color: $gold;
           }

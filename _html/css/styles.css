@@ -3455,7 +3455,7 @@ header #top-bar {
 }
 header #top-bar .main-nav {
   float: left;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Bold";
 }
 header #top-bar .main-nav li {
   display: inline-block;
@@ -12221,6 +12221,9 @@ article .read-later.rAlign span:after {
     padding-top: 134px !important;
   }
 }
+.jurys-list .bandeau-list .sub-nav-list li {
+  padding: 16px 13px;
+}
 .jurys-list .bandeau-list-img {
   height: 443px !important;
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -12613,6 +12616,7 @@ article .read-later.rAlign span:after {
 }
 .artist .realisateurs .title {
   padding: 70px 0px;
+  padding-bottom: 53px;
 }
 .artist .realisateurs .owl-carousel .owl-item {
   width: auto !important;
@@ -12624,14 +12628,14 @@ article .read-later.rAlign span:after {
   display: block;
   width: auto;
   height: auto;
-  margin-bottom: 17px;
+  margin-bottom: 19px;
 }
 .artist .realisateurs .owl-controls {
   display: none;
 }
 .artist .realisateurs figure {
   text-align: center;
-  margin: 0px 27px;
+  margin: 0px 20px;
 }
 .artist .realisateurs figure span {
   display: block;
@@ -12639,7 +12643,7 @@ article .read-later.rAlign span:after {
 .artist .realisateurs figure .name {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold";
-  padding-bottom: 10px;
+  padding-bottom: 4px;
   font-size: .875rem;
 }
 .artist .realisateurs figure .rank {
