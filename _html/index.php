@@ -4,7 +4,7 @@
   <head>
     <!-- //// META \\\\ -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024px, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">    
 

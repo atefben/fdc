@@ -722,7 +722,8 @@ article {
     display: block;
     height: 82px;
     position: fixed;
-    top: 57%;
+    top: 50%;
+    margin-top: -41px;
     width: 82px;
     z-index: 3;
     @include transition(all 0.9s $smoothTransition);

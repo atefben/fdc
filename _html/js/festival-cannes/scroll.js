@@ -187,7 +187,17 @@ $(document).ready(function() {
     }
 
     if($('.single-article').length) {
-      if(s >= $('.same-day').offset().top - $('.same-day').height() / 2 - 100) {
+      if($('.same-day').length) {
+        if(s >= $('.same-day').offset().top - $('.same-day').height() / 2 - 100) {
+          $('a.nav').addClass('bottom');
+        } else {
+          $('a.nav').removeClass('bottom');
+        }
+      }
+    }
+
+    if($('.single-evenement').length) {
+      if(s >= $('.share').offset().top - 300) {
         $('a.nav').addClass('bottom');
       } else {
         $('a.nav').removeClass('bottom');
