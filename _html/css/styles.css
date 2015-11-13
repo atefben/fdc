@@ -3083,7 +3083,7 @@ a {
   height: 38px;
   line-height: 38px;
   margin: 0 0 0 0;
-  padding: 0 20px 0 40px;
+  padding: 0 22px 0 42px;
   text-transform: uppercase;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11989,6 +11989,9 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 
+.evenement .title {
+  margin-bottom: 20px;
+}
 .evenement #gridEvent {
   padding-top: 60px;
 }
@@ -12014,7 +12017,8 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Heavy";
   font-size: 0.625rem;
   line-height: 55px;
-  margin: 70px auto;
+  margin: 0 auto;
+  margin-bottom: 70px;
   text-align: center;
   text-transform: uppercase;
   width: 95%;
@@ -12054,6 +12058,12 @@ article .read-later.rAlign span:after {
   visibility: hidden;
 }
 
+.single-evenement .title-article {
+  margin-bottom: 37px;
+}
+.single-evenement .single-photo {
+  margin-top: 64px;
+}
 .single-evenement .quote {
   padding-top: 60px;
   width: auto;
