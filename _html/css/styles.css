@@ -12284,8 +12284,9 @@ article .read-later.rAlign span:after {
   color: #ccab6e;
   font-family: "Camphor W01 Italic";
   font-size: .75rem;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
   letter-spacing: .1em;
+  display: block;
 }
 .contain-jury .contain-descript p {
   font-size: 0.88rem;
