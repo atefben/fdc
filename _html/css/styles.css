@@ -6878,6 +6878,7 @@ header #searchContainer {
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition-delay: 0.7s;
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
+  -moz-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s, visibility 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
 }
 #sliderWrapper .owl-item.center .info h2 {
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
@@ -6885,6 +6886,7 @@ header #searchContainer {
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition-delay: 0.9s;
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
+  -moz-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s, visibility 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
 }
 #sliderWrapper .owl-item.center .info .category, #sliderWrapper .owl-item.center .info h2 {
   opacity: 1;
@@ -6896,6 +6898,10 @@ header #searchContainer {
 }
 #sliderWrapper #slider {
   height: 100%;
+}
+
+#filteredArticles {
+  margin-bottom: 45px;
 }
 
 #news {
