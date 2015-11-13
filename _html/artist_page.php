@@ -104,7 +104,7 @@
             </div> 
             <h2  class="title title-art-artist">Présences au Jury</h2>        
             <div class="jury">
-              <span class="rank">Président - </span><span class="role">Jury des longs métrages - </span><span class="date">1996</span>
+              <span class="rank">Président</span><span class="item-separate">-</span><span class="role">Jury des longs métrages</span><span class="item-separate">-</span><span class="date">1996</span>
             </div>
         </div>
         </div>

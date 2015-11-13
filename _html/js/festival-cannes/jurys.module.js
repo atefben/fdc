@@ -1,9 +1,12 @@
-// Palmares
+// 1. Jurys
+// 2. Artist Page
 // =========================
 
 $(document).ready(function() {
 
-  if($('.jurys-list').length){    
+  //1. Jury
+  
+  if($('.jurys-list').length){
   $('.jurys-list .sub-nav-list a').on('click',function(e){
       //:not(.active)
       e.preventDefault();
@@ -25,6 +28,23 @@ $(document).ready(function() {
         $('.jurys-list .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');
       }
+    });
+  }
+  
+  //2. Artist 
+  
+  if($('.artist').length){
+        $(window).on('scroll', function() {
+
+      var s = $(window).scrollTop();
+      var h = $("#main").height()-900;
+
+      
+    if(s > 2780 ){
+        $('.single-article .nav.prev, .single-article .nav.next').css({'opacity':'0'});
+    } else if (s < 2780){
+        $('.single-article .nav.prev, .single-article .nav.next').css({'opacity':'1'});
+    }
     });
   }
 });
