@@ -88,12 +88,14 @@
         }
       }
 
-      .fc-head, .fc-day-grid, .fc-widget-header {
-        display: none;
-      }
+      &.side {
+        .fc-time-grid-container {
+          height: 468px!important;
+        }
 
-      &.side .fc-time-grid-container {
-        height: 468px!important;
+        .fc-head, .fc-day-grid, .fc-widget-header {
+          display: none;
+        }
       }
 
       &.fc-unthemed .fc-divider, &.fc-unthemed .fc-popover, &.fc-unthemed .fc-row, &.fc-unthemed tbody, &.fc-unthemed td, &.fc-unthemed th, &.fc-unthemed thead {
@@ -128,6 +130,42 @@
         background-color: #373737;
         border-radius: 0;
         border: none;
+
+        .category {
+          background-color: #555;
+          box-sizing: border-box;
+          height: 27px;
+          display: block;
+          font-family: $CamphorBold;
+          font-size: 0.625rem;
+          line-height: 28px;
+          padding-left: 40px;
+          text-transform: uppercase;
+          width: 100%;
+        }
+
+        .info {
+          img {
+            float: left;
+            margin: 10px;
+          }
+
+          .txt {
+            font-family: $CamphorMedium;
+            font-size: 0.813rem;
+            float: left;
+            width: 145px;
+            margin: 10px 0 0 0;
+            text-transform: uppercase;
+
+            a {
+              color: $gold;
+              display: block;
+              font-family: $CamphorItalic;
+              text-transform: none;
+            }
+          }
+        }
       }
     }
 
@@ -183,6 +221,7 @@
       font-family: $CamphorThin;
       font-size: 2.125rem;
       font-weight: normal;
+      letter-spacing: 0.2em;
       margin: 60px 0 0 0;
       text-transform: uppercase;
     }
@@ -194,6 +233,15 @@
       margin-right: 160px;
       width: 515px;
       line-height: 1.5em;
+    }
+
+    .buttons {
+      float: right;
+      margin: 50px 160px 0 0;
+
+      .button {
+        border-color: $gold;
+      }
     }
   }
 
@@ -604,5 +652,69 @@
 .fullcalendar {
   .header-press {
     border: none;
+  }
+
+  #calendar {
+    #mycalendar {
+      .fc-time-grid-container {
+        height: auto!important;
+      }
+
+      .fc-divider {
+        display: none!important;
+      }
+
+      .fc-toolbar {
+        height: 0;
+
+        .fc-right {
+          background-color: #4b4b4b;
+          color: #818181;
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 41px;
+          z-index: 3;
+        }
+
+        .fc-left {
+          background-color: #4b4b4b;
+          color: #818181;
+          position: absolute;
+          top: 0;
+          left: 70px;
+          height: 41px;
+          z-index: 3;
+        }
+      }
+
+      .fc-head .fc-axis {
+        background-color: #373737;
+        width: 60px!important;
+      }
+
+      .fc-head .fc-day-header {
+        background-color: #373737;
+        border-color: #4b4b4b;
+        height: 40px;
+        line-height: 40px;
+        font-family: $CamphorBold;
+        font-size: 0.750rem;
+        text-transform: uppercase;
+      }
+
+      .fc-slats .fc-time {
+        background-color: #373737;
+        border-color: #4b4b4b;
+
+        span {
+          z-index: 2;
+        }
+      }
+
+      .fc-slats tr {
+        height: 40px;
+      }
+    }
   }
 }

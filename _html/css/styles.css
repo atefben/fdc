@@ -13786,11 +13786,11 @@ article .read-later.rAlign span:after {
   opacity: 0.3;
   text-transform: uppercase;
 }
-.press #calendar #mycalendar .fc-head, .press #calendar #mycalendar .fc-day-grid, .press #calendar #mycalendar .fc-widget-header {
-  display: none;
-}
 .press #calendar #mycalendar.side .fc-time-grid-container {
   height: 468px !important;
+}
+.press #calendar #mycalendar.side .fc-head, .press #calendar #mycalendar.side .fc-day-grid, .press #calendar #mycalendar.side .fc-widget-header {
+  display: none;
 }
 .press #calendar #mycalendar.fc-unthemed .fc-divider, .press #calendar #mycalendar.fc-unthemed .fc-popover, .press #calendar #mycalendar.fc-unthemed .fc-row, .press #calendar #mycalendar.fc-unthemed tbody, .press #calendar #mycalendar.fc-unthemed td, .press #calendar #mycalendar.fc-unthemed th, .press #calendar #mycalendar.fc-unthemed thead {
   border-color: #3a3a3a;
@@ -13819,6 +13819,36 @@ article .read-later.rAlign span:after {
   background-color: #373737;
   border-radius: 0;
   border: none;
+}
+.press #calendar #mycalendar .fc-event .category {
+  background-color: #555;
+  box-sizing: border-box;
+  height: 27px;
+  display: block;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.625rem;
+  line-height: 28px;
+  padding-left: 40px;
+  text-transform: uppercase;
+  width: 100%;
+}
+.press #calendar #mycalendar .fc-event .info img {
+  float: left;
+  margin: 10px;
+}
+.press #calendar #mycalendar .fc-event .info .txt {
+  font-family: "Camphor W01 Medium";
+  font-size: 0.813rem;
+  float: left;
+  width: 145px;
+  margin: 10px 0 0 0;
+  text-transform: uppercase;
+}
+.press #calendar #mycalendar .fc-event .info .txt a {
+  color: #c8a461;
+  display: block;
+  font-family: "Camphor W01 Italic";
+  text-transform: none;
 }
 .press #calendar p.link {
   border-bottom: 1px solid #3d3d3d;
@@ -13866,6 +13896,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Thin";
   font-size: 2.125rem;
   font-weight: normal;
+  letter-spacing: 0.2em;
   margin: 60px 0 0 0;
   text-transform: uppercase;
 }
@@ -13876,6 +13907,13 @@ article .read-later.rAlign span:after {
   margin-right: 160px;
   width: 515px;
   line-height: 1.5em;
+}
+.press .header-press .buttons {
+  float: right;
+  margin: 50px 160px 0 0;
+}
+.press .header-press .buttons .button {
+  border-color: #c8a461;
 }
 .press .locked {
   background-color: #f4f4f4;
@@ -14212,4 +14250,54 @@ article .read-later.rAlign span:after {
 
 .fullcalendar .header-press {
   border: none;
+}
+.fullcalendar #calendar #mycalendar .fc-time-grid-container {
+  height: auto !important;
+}
+.fullcalendar #calendar #mycalendar .fc-divider {
+  display: none !important;
+}
+.fullcalendar #calendar #mycalendar .fc-toolbar {
+  height: 0;
+}
+.fullcalendar #calendar #mycalendar .fc-toolbar .fc-right {
+  background-color: #4b4b4b;
+  color: #818181;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 41px;
+  z-index: 3;
+}
+.fullcalendar #calendar #mycalendar .fc-toolbar .fc-left {
+  background-color: #4b4b4b;
+  color: #818181;
+  position: absolute;
+  top: 0;
+  left: 70px;
+  height: 41px;
+  z-index: 3;
+}
+.fullcalendar #calendar #mycalendar .fc-head .fc-axis {
+  background-color: #373737;
+  width: 60px !important;
+}
+.fullcalendar #calendar #mycalendar .fc-head .fc-day-header {
+  background-color: #373737;
+  border-color: #4b4b4b;
+  height: 40px;
+  line-height: 40px;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.750rem;
+  text-transform: uppercase;
+}
+.fullcalendar #calendar #mycalendar .fc-slats .fc-time {
+  background-color: #373737;
+  border-color: #4b4b4b;
+}
+.fullcalendar #calendar #mycalendar .fc-slats .fc-time span {
+  z-index: 2;
+}
+.fullcalendar #calendar #mycalendar .fc-slats tr {
+  height: 40px;
 }
