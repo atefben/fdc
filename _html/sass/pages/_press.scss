@@ -11,6 +11,7 @@
   padding-top: 0!important;
 
   .header-press {
+    border-bottom: 1px solid #e3e3e3;
     height: 150px;
     overflow: hidden;
 
@@ -54,6 +55,185 @@
       margin-right: 160px;
       width: 515px;
       line-height: 1.5em;
+    }
+  }
+
+  .locked {
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #e3e3e3;
+    height: 95px;
+    overflow: hidden;
+    position: relative;
+
+    ::-webkit-input-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+    :-moz-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+    ::-moz-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+    :-ms-input-placeholder {
+        color:   #999;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+
+    h3 {
+      margin: 0 0 8px 65px;
+    }
+
+    p {
+      color: #666;
+      font-size: 0.813rem;
+      margin: 0 0 0 65px;
+    }
+
+    form {
+      position: absolute;
+      right: 150px;
+      height: 50px;
+      top: 24px;
+
+      input {
+        background: none;
+        border: 1px solid #c6c6c6;
+        border-right: none;
+        box-sizing: border-box;
+        color:   #999;
+        font-family: $CamphorRegular;
+        font-size: 0.875rem;
+        display: block;
+        float: left;
+        outline: none;
+        padding: 0 25px;
+        text-align: center;
+        height: 50px;
+        width: 135px;
+
+        &[type="submit"] {
+          border: 1px solid $gold;
+          color: $gold;
+          cursor: pointer;
+          font-family: $CamphorBold;
+          font-size: 0.750rem;
+          text-transform: uppercase;
+          width: 95px;
+          @include transition(all 0.9s $smoothTransition);
+
+          &:hover {
+            border-color: #000;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+  .communiques {
+    overflow: hidden;
+
+    .grid-container {
+      padding: 22px;
+
+      article {
+        border: 1px solid #e3e3e3;
+        border-right: none;
+        border-bottom: none;
+        padding: 20px 20px 0 20px;
+        width: 310px;
+
+        .image {
+          width: 265px;
+        }
+      }
+    }
+  }
+
+  .mediatheque {
+    .table {
+      .line {
+        border-bottom: 1px solid #e3e3e3;
+        overflow: hidden;
+        padding: 10px 0;
+
+        .info {
+          float: left;
+
+          img {
+            display: block;
+            float: left;
+            margin-right: 15px;
+          }
+
+          .txt {
+            height: 75px;
+            float: left;
+            width: 150px;
+
+            p {
+              font-family: $CamphorBold;
+              font-size: 0.875rem;
+              color: #999;
+              text-transform: uppercase;
+            }
+
+            a {
+              color: $gold;
+              display: block;
+              font-family: $CamphorItalic;
+              font-size: 0.813rem;
+              text-transform: none;
+            }
+          }
+        }
+
+        .media {
+          color: #999;
+          float: left;
+          height: 75px;
+          line-height: 75px;
+          font-family: $CamphorBold;
+          font-size: 0.625rem;
+          letter-spacing: 0.1em;
+          margin-right: 50px;
+          text-transform: uppercase;
+        }
+
+        .button {
+          border-color: $gold;
+          padding: 1px 15px 0 15px;
+          height: 38px;
+          line-height: 38px;
+          margin: 16px 0 0 25px;
+        }
+      }
+    }
+  }
+
+  .chap {
+    border-bottom: 1px solid #e3e3e3;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 0 0 45px;
+    position: relative;
+
+    .link {
+      position: absolute;
+      right: 45px;
+      top: 0;
+      margin-top: 0;
+
+      a {
+        font-size: 0.625rem;
+      }
     }
   }
 
@@ -115,6 +295,66 @@
     }
   }
 
+  .affiche {
+    overflow: hidden;
+    padding: 40px 0;
+
+    .title-press {
+      margin-bottom: 30px;
+    }
+
+    img {
+      border: 1px solid #e1e1e1;
+      display: block;
+    }
+
+    .buttons {
+      text-align: left;
+
+      .button {
+        border-color: $gold;
+
+      }
+    }
+
+    .caption {
+      color: #666;
+      display: block;
+      line-height: 1.4em;
+      height: 36px;
+      font-size: 0.750rem;
+      margin-top: 15px;
+    }
+
+    .portrait {
+      float: left;
+      width: 260px;
+    }
+
+    .landscape {
+      float: left;
+      margin-left: 85px;
+      width: 540px;
+    }
+
+    p {
+      font-family: $CamphorBold;
+      font-size: 0.750rem;
+      font-weight: normal;
+      letter-spacing: 0.2em;
+      margin: 30px 0 20px 0;
+      text-transform: uppercase;
+    }
+  }
+
+  h3.title-press {
+    font-family: $CamphorBold;
+    font-size: 0.875rem;
+    font-weight: normal;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
   .contact-press {
     border-top: 1px solid #e3e3e3;
     padding: 60px 0;
@@ -128,12 +368,46 @@
     }
 
     .col {
+      box-sizing: border-box;
       float: left;
+      padding-right: 5%;
       width: 33.33333%;
+
+      h3 {
+        font-family: $CamphorHeavy;
+        font-size: 0.850rem;
+        line-height: 1.6em;
+        margin-bottom: 30px;
+      }
+
+      p {
+        font-size: 0.850rem;
+        line-height: 1.8em;
+        margin-bottom: 30px;
+
+        &.pressaudio {
+          padding-top: 23px;
+        }
+
+        strong {
+          font-family: $CamphorBold;
+        }
+      }
+
+      .mail {
+        color: $gold;
+        font-family: $CamphorBold;
+        font-size: 0.850rem;
+        @include transition(all 0.9s $smoothTransition);
+
+        &:hover {
+          color: #966505;
+        }
+      }
     }
 
     .button {
-      padding: 0 22px;
+      padding: 5px 22px;
     }
   }
 }
