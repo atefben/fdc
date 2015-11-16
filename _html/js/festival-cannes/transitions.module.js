@@ -17,7 +17,7 @@ $(document).ready(function() {
     $('#sticky-user').css('transition-delay', '0');
     $('p.stick').addClass('noTrans');
     $header.addClass('sticky');
-    $('body').css('margin-top', '91px');
+    $('body').css('margin-top', '101px');
 
     $('html, body').animate({
       scrollTop: 10
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
       setTimeout(function() {
         var v = $(window).scrollTop();
-        if(v == 0 && $header.hasClass('sticky')) {
+        if((v == 0 && $header.hasClass('sticky')) || (v == 10 && $header.hasClass('sticky'))) {
           v = 11;
         }
         sessionStorage.setItem('scrolltop',v);
