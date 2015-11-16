@@ -130,13 +130,14 @@ $(document).ready(function() {
     scrollTarget = s;
 
     if (s > lastScrollTop){
-      if(($('#prehome-container').length == 0 && s > 139)) {
+      if(($('#prehome-container').length == 0 && s > 30)) {
         $header.addClass('sticky');
+        $('body').css('margin-top', '91px');
       }
     } else {
       if(($('#prehome-container').length == 0 && s < 600)) {
         $header.removeClass('sticky');
-        $('body').css('padding-top', '230px');
+        $('body').css('margin-top', '0');
       }
     }
 

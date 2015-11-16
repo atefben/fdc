@@ -17,24 +17,11 @@ $(document).ready(function() {
     $('#sticky-user').css('transition-delay', '0');
     $('p.stick').addClass('noTrans');
     $header.addClass('sticky');
-    var padT = '101px';
-
-    $('body').css('padding-top', padT);
+    $('body').css('margin-top', '91px');
 
     $('html, body').animate({
       scrollTop: 10
     }, 0);
-
-    if($main.css('padding-top') != '0px') {
-      padT = 101 + parseInt($main.css('padding-top'), 10) + 'px';
-    }
-    if($('.single-movie').length == 0) {
-      $main.css('padding-top', padT);
-    }
-
-    $(window).on('scroll', function() {
-      $main.css('padding-top', '');
-    });
   }
 
   setTimeout(function() {
