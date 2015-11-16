@@ -6441,9 +6441,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6469,11 +6469,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6489,26 +6489,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -13712,6 +13712,15 @@ article .read-later.rAlign span:after {
   top: 0;
   width: 310px;
 }
+.press #calendar.fullwidth {
+  position: relative;
+  right: auto;
+  top: auto;
+  width: 100%;
+}
+.press #calendar.fullwidth #mycalendar {
+  height: auto;
+}
 .press #calendar h2.title-calendar {
   background-color: #373737;
   color: #c8a461;
@@ -13764,7 +13773,7 @@ article .read-later.rAlign span:after {
 .press #calendar #mycalendar .fc-head, .press #calendar #mycalendar .fc-day-grid, .press #calendar #mycalendar .fc-widget-header {
   display: none;
 }
-.press #calendar #mycalendar .fc-time-grid-container {
+.press #calendar #mycalendar.side .fc-time-grid-container {
   height: 468px !important;
 }
 .press #calendar #mycalendar.fc-unthemed .fc-divider, .press #calendar #mycalendar.fc-unthemed .fc-popover, .press #calendar #mycalendar.fc-unthemed .fc-row, .press #calendar #mycalendar.fc-unthemed tbody, .press #calendar #mycalendar.fc-unthemed td, .press #calendar #mycalendar.fc-unthemed th, .press #calendar #mycalendar.fc-unthemed thead {
@@ -13930,7 +13939,8 @@ article .read-later.rAlign span:after {
   overflow: hidden;
 }
 .press .communiques .grid-container {
-  padding: 22px;
+  overflow: hidden;
+  padding: 20px;
 }
 .press .communiques .grid-container article {
   border: 1px solid #e3e3e3;
@@ -13941,6 +13951,9 @@ article .read-later.rAlign span:after {
 }
 .press .communiques .grid-container article .image {
   width: 265px;
+}
+.press .mediatheque .container {
+  width: 885px;
 }
 .press .mediatheque .table .line {
   border-bottom: 1px solid #e3e3e3;
@@ -13993,6 +14006,7 @@ article .read-later.rAlign span:after {
 }
 .press .stats .container {
   padding: 40px 0;
+  width: 885px;
 }
 .press .stats .container h3 {
   color: #c8a461;
@@ -14076,6 +14090,9 @@ article .read-later.rAlign span:after {
 .press .affiche {
   overflow: hidden;
   padding: 40px 0;
+}
+.press .affiche .container {
+  width: 885px;
 }
 .press .affiche .title-press {
   margin-bottom: 30px;
@@ -14169,4 +14186,14 @@ article .read-later.rAlign span:after {
 }
 .press .contact-press .button {
   padding: 5px 22px;
+}
+.press.calendar-open .grid-container article:nth-child(3n) {
+  border-right: 1px solid #e3e3e3;
+}
+.press.calendar-open .grid-container article:nth-child(4), .press.calendar-open .grid-container article:nth-child(5), .press.calendar-open .grid-container article:nth-child(6) {
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.fullcalendar .header-press {
+  border: none;
 }

@@ -19,6 +19,17 @@
     top: 0;
     width: 310px;
 
+    &.fullwidth {
+      position: relative;
+      right: auto;
+      top: auto;
+      width: 100%;
+
+      #mycalendar {
+        height: auto;
+      }
+    }
+
     h2.title-calendar {
       background-color: #373737;
       color: $gold;
@@ -81,7 +92,7 @@
         display: none;
       }
 
-      .fc-time-grid-container {
+      &.side .fc-time-grid-container {
         height: 468px!important;
       }
 
@@ -269,7 +280,8 @@
     overflow: hidden;
 
     .grid-container {
-      padding: 22px;
+      overflow: hidden;
+      padding: 20px;
 
       article {
         border: 1px solid #e3e3e3;
@@ -286,6 +298,11 @@
   }
 
   .mediatheque {
+
+    .container {
+      width: 885px;
+    }
+
     .table {
       .line {
         border-bottom: 1px solid #e3e3e3;
@@ -349,6 +366,7 @@
   .stats {
     .container {
       padding: 40px 0;
+      width: 885px;
 
       h3 {
         color: $gold;
@@ -446,6 +464,10 @@
   .affiche {
     overflow: hidden;
     padding: 40px 0;
+
+    .container {
+      width: 885px;
+    }
 
     .title-press {
       margin-bottom: 30px;
@@ -557,5 +579,30 @@
     .button {
       padding: 5px 22px;
     }
+  }
+
+
+
+
+
+
+  &.calendar-open {
+    .grid-container {
+      article:nth-child(3n) {
+        border-right: 1px solid #e3e3e3;
+      }
+
+      article:nth-child(4), article:nth-child(5), article:nth-child(6) {
+        border-bottom: 1px solid #e3e3e3;
+      }
+    }
+  }
+}
+
+
+
+.fullcalendar {
+  .header-press {
+    border: none;
   }
 }

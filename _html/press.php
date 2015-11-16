@@ -23,7 +23,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="press loading">
+    <div id="main" class="press loading calendar-open">
       <div class="header-press">
         <div class="head">
           <span>Espace presse</span>
@@ -50,7 +50,7 @@
       <div class="wrapper">
         <div id='calendar'>
           <h2 class="title-calendar">mon agenda</h2>
-          <div id="mycalendar"></div>
+          <div id="mycalendar" class="side"></div>
           <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
         </div>
         <div class="communiques">
