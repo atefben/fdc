@@ -10,6 +10,134 @@
 .press {
   padding-top: 0!important;
 
+  #calendar {
+    background-color: #272727;
+    color: #fff;
+    height: 100%;
+    position: absolute;
+    right: -310px;
+    top: 0;
+    width: 310px;
+
+    h2.title-calendar {
+      background-color: #373737;
+      color: $gold;
+      font-family: $CamphorHeavy;
+      font-size: 0.813rem;
+      font-weight: normal;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #mycalendar {
+      background-color: #242424;
+      height: 510px;
+
+      .fc-toolbar {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 0;
+
+        .fc-left, .fc-right {
+          height: 100%;
+        }
+
+        button {
+          background: none;
+          border: none;
+          border-right: 1px solid #3a3a3a;
+          outline: none;
+          height: 100%;
+          text-shadow: none;
+          box-shadow: none;
+          width: 40px;
+
+          span {
+            color: #666;
+            font-size: 0.6em;
+          }
+        }
+
+        .fc-right {
+          button {
+            border-right: none;
+            border-left: 1px solid #3a3a3a;
+          }
+        }
+
+        h2 {
+          color: #fff;
+          font-family: $CamphorBold;
+          font-weight: normal;
+          font-size: 0.813rem;
+          opacity: 0.3;
+          text-transform: uppercase;
+        }
+      }
+
+      .fc-head, .fc-day-grid, .fc-widget-header {
+        display: none;
+      }
+
+      .fc-time-grid-container {
+        height: 468px!important;
+      }
+
+      &.fc-unthemed .fc-divider, &.fc-unthemed .fc-popover, &.fc-unthemed .fc-row, &.fc-unthemed tbody, &.fc-unthemed td, &.fc-unthemed th, &.fc-unthemed thead {
+        border-color: #3a3a3a;
+      }
+
+      .fc-minor td {
+        border-top: 0;
+      }
+
+      .fc-slats .fc-time {
+        font-size: 0.750rem;
+        text-align: center;
+        position: relative;
+        width: 60px!important;
+
+        span {
+          margin-top: 5px;
+          display: block;
+          position: absolute;
+          text-align: center;
+          width: 100%;
+          left: 0;
+        }
+      }
+
+      .fc-bg .fc-axis, .fc-content-skeleton .fc-axis {
+        width: 60px!important;
+      }
+
+      .fc-event {
+        background-color: #373737;
+        border-radius: 0;
+        border: none;
+      }
+    }
+
+    p.link {
+      border-bottom: 1px solid #3d3d3d;
+      height: 70px;
+      line-height: 70px;
+      margin-top: 0;
+      text-align: center;
+
+      a {
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  .wrapper {
+    position: relative;
+    width: calc(100% - 310px);
+  }
+
   .header-press {
     border-bottom: 1px solid #e3e3e3;
     height: 150px;
@@ -214,6 +342,26 @@
           line-height: 38px;
           margin: 16px 0 0 25px;
         }
+      }
+    }
+  }
+
+  .stats {
+    .container {
+      padding: 40px 0;
+
+      h3 {
+        color: $gold;
+        font-family: $CamphorBold;
+        font-size: 0.875rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.8em;
       }
     }
   }

@@ -2,6 +2,9 @@
 <!-- festival-cannes tags start -->
 <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="js/bower_components/owl.carousel/src/js/owl.carousel.js"></script>
+<script src="js/bower_components/moment/min/moment.min.js"></script>
+<script src="js/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="js/bower_components/fullcalendar/dist/lang-all.js"></script>
 <script src="js/bower_components/chocolat/src/js/jquery.chocolat.js"></script>
 <script src="js/bower_components/Snap.svg/dist/snap.svg-min.js"></script>
 <script src="js/bower_components/jquery-cookie/jquery.cookie.js"></script>
@@ -32,6 +35,7 @@
 <script src="js/festival-cannes/participate.module.js"></script>
 <script src="js/festival-cannes/prefooter.module.js"></script>
 <script src="js/festival-cannes/prehome.module.js"></script>
+<script src="js/festival-cannes/press.module.js"></script>
 <script src="js/festival-cannes/resize.module.js"></script>
 <script src="js/festival-cannes/search.module.js"></script>
 <script src="js/festival-cannes/selection.module.js"></script>
