@@ -8,7 +8,19 @@
 // 1. Global
 // =========================
 .jurys-list{
-    .bandeau-list-img{
+  .bandeau-list{
+    .sub-nav-list{
+      li{
+        padding: 16px 13px;
+      }
+    }
+    .sticky{
+      z-index: 10;
+      width: 100%;
+      background-color: #1b1b1b;
+    }
+  }
+  .bandeau-list-img{
     height: 443px !important;
     @include transition(all 1s $linear);
   }
@@ -72,19 +84,23 @@
       font-family: $CamphorHeavy;
       font-size: .625rem;
       padding-top: 25px;
+      letter-spacing: .2em;
     }
     .descript-name{
       text-transform: uppercase;
       font-family: $CamphorHeavy;
       font-size: 2.25rem;
-      padding-top: 25px;
-      padding-bottom: 15px;
+      padding-top: 19px;
+      padding-bottom: 7px;
+      letter-spacing: .1em;
     }
     .descript-rank{
       color: #ccab6e;
       font-family: $CamphorItalic;
       font-size: .75rem;
-      padding-bottom: 15px;
+      padding-bottom: 20px;
+      letter-spacing: .1em;
+      display: block;
     }
     p{
        font-size: 0.88rem;
@@ -100,8 +116,12 @@
     border: 0px solid #000;
     font-weight: 700;
     font-size: 1.13rem;
+    padding: 70px;
   }
-  article img {
+  .title{
+    margin-bottom: 0px;
+  }
+  article img{
     float: left;
     margin-right: 0px;
     margin-left: 0px;
@@ -128,7 +148,7 @@
     font-size:.875rem;
     text-transform: uppercase;
     padding-top:24px;
-    padding-bottom: 5px;
+    padding-bottom: 3px;
   }
   .rank{
     font-family: $CamphorItalic;

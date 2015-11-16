@@ -104,7 +104,7 @@
             </div> 
             <h2  class="title title-art-artist">Présences au Jury</h2>        
             <div class="jury">
-              <span class="rank">Président - </span><span class="role">Jury des longs métrages - </span><span class="date">1996</span>
+              <span class="rank">Président</span><span class="item-separate">-</span><span class="role">Jury des longs métrages</span><span class="item-separate">-</span><span class="date">1996</span>
             </div>
         </div>
         </div>
@@ -136,17 +136,17 @@
       </div>
       <span class="anim"></span>
     </div>
-    
-    <!-- POPIN MAIL SHARE ---->
+
+<!-- POPIN MAIL SHARE ---->
     <div class="popin-mail popin">
       <div class="contain-popin popin">
-        <strong class="theme-article popin">Réalisateur</strong><span class="date-article popin">États-Unis</span>
-        <h2 class="title-article popin">Francis COPPOLA</h2>
-               <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
+        <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
+        <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
+        <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
       </div>
       <form action="" id="form" class="popin">
-        <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas renseignée"><span class="complet-infos popin">Séparez les adresses par des virgules</span>
-        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="L'adresse email n'est pas valide">
+        <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas">
         <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
         <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
         <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
@@ -164,7 +164,7 @@
         </p>
       </div>
     </div>
-    <!-- END POPIN MAIL SHARE -->
+<!-- END POPIN MAIL SHARE -->
     
     <?php include('footer.html'); ?>
 

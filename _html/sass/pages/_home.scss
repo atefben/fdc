@@ -206,10 +206,12 @@
       .info {
         .category {
           @include transition(all 0.8s $smoothTransition 0.7s);
+          -moz-transition: opacity 0.8s $smoothTransition 0.7s, visibility 0.8s $smoothTransition 0.7s;
         }
 
         h2 {
           @include transition(all 0.8s $smoothTransition 0.9s);
+          -moz-transition: opacity 0.8s $smoothTransition 0.7s, visibility 0.8s $smoothTransition 0.7s;
         }
 
         .category, h2 {
@@ -229,6 +231,10 @@
 
 // 3. News
 // =========================
+
+#filteredArticles {
+  margin-bottom: 45px;
+}
 
 #news {
   overflow: hidden;

@@ -23,6 +23,7 @@
     <?php include('header.html'); ?>
 
     <div id="main" class="all-articles grid loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <h2 class="title">Tous les articles</h2>
       <div class="filters">
         <div id="theme" class="filter">

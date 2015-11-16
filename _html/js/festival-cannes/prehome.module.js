@@ -10,14 +10,12 @@ $(document).ready(function() {
       // set height and display prehome
       $('#prehome-container').height($(window).height());
       $('#prehome').addClass('show');
-      $('header').css('position', 'relative');
 
       // scroll and remove prehome
       setTimeout(function() {
         $('html, body').animate({
           scrollTop: $("header").offset().top
         }, 800, function() {
-          $('header').css('position', 'fixed');
           $('body,html').scrollTop(0);
           $('#prehome-container').remove();
         });

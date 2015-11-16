@@ -36,7 +36,6 @@ $(document).ready(function() {
         $('.errors .' + input.attr('name')).remove();
         $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + '</li>');
       }
-
       if($('.invalid').length) {
         $('.errors').addClass('show');
       } else {
@@ -55,14 +54,22 @@ $(document).ready(function() {
       var input=$(this);
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       var is_email=re.test(input.val());
-      if(is_email){
+      var is_email_name=input.val();
+      if(!is_email_name){
+        input.removeClass("valid").addClass("invalid");
+        $('.errors .' + input.attr('name')).remove();
+        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') +" renseignée"+ '</li>');
+
+      }else if(is_email){
         input.removeClass("invalid").addClass("valid");
         $('.errors .' + input.attr('name')).remove();
+
       }
       else{
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + '</li>');        
+        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') +" valide"+'</li>');
+
       }
 
       if($('.invalid').length) {

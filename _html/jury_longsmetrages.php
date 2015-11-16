@@ -58,7 +58,7 @@
               </div>
           </section>
           <section class="categorie-items contain-jurys-list grid">
-            <h1 class="title-list-cat title">Membres du jury de longs métrages</h1>
+            <h1 class="title-list-cat title">Membres du jury des longs métrages</h1>
               <div id="gridJurys" class="grid-wrapper">
                 <div class="grid-sizer"></div>
                 <div class="jury-box item">
@@ -74,7 +74,7 @@
                   <a href="artist_page.php">
                     <img src="img/jurys/jury-2.jpg" alt="">
                     <div class="legend">
-                      <span class="name">Sofia Cappola</span>
+                      <span class="name">Sofia Coppola</span>
                       <span class="rank">Réalisatrice</span>
                     </div>
                   </a>

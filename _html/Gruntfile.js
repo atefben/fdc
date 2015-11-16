@@ -43,6 +43,9 @@ module.exports = function(grunt) {
           src: [
             'js/bower_components/jquery/dist/jquery.min.js',
             'js/bower_components/owl.carousel/src/js/owl.carousel.js',
+            'js/bower_components/moment/min/moment.min.js',
+            'js/bower_components/fullcalendar/dist/fullcalendar.min.js',
+            'js/bower_components/fullcalendar/dist/lang-all.js',
             'js/bower_components/chocolat/src/js/jquery.chocolat.js',
             'js/bower_components/Snap.svg/dist/snap.svg-min.js',
             'js/bower_components/jquery-cookie/jquery.cookie.js',

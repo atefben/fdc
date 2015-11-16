@@ -822,6 +822,19 @@
   .news {
     border-bottom: 1px solid #dfdfdf;
     padding-top: 45px;
+
+    article {
+      height: 325px;
+      width: 295px;
+
+      .image {
+        height: 185px;
+      }
+    }
+
+    .articles.center article:nth-child(2) {
+      margin: 0 4.5%;
+    }
   }
 
   .audios {
