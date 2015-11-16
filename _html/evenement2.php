@@ -59,58 +59,73 @@ Il réalise aussi des adaptations littéraires, comme Diable au corps qui fait s
           </div>
         <h2 class="title">Revivez la Leçon de Cinéma de Marco Bellochio en photos</h2>
         <div class="small-container">
-        <div class="slideshow">
+          <div class="slideshow">
             <div class="slideshow-img">
               <div class="images">
                 <div class="img active">
-                  <a id="photo1" class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
-                    <img src="img/evenements/slide-evenement.jpg" alt="" />
+                  <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
+                    <img src="img/slide001.jpg" alt="" />
                   </a>
                 </div>
                 <div class="img">
-                  <a id="photo2" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/evenements/slide-evenement.jpg" alt="" /></a>
+                  <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                    <img src="img/slide002.jpg" alt="" />
+                  </a>
                 </div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                                                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
+                <div class="img">
+                  <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
               </div>
               <div class="owl-carousel thumbnails">
                 <div data-id="photo1" class="thumb active">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div data-id="photo2" class="thumb">
-                  <img src="img/evenements/evenement-slide-min1.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div data-id="photo3" class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
               </div>
             </div>
             <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
-          </div>
+          </div> 
           </div>
           <h2 class="title">Revivez la Leçon de Cinéma de Marco Bellocchio en audio</h2>
            <div class="audio-player audio" data-sound="img/article/sound.mp3">
