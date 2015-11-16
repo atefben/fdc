@@ -23,6 +23,7 @@
     <?php include('header.html'); ?>
 
     <div id="main" class="single-movie loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <div id="canvasloader" class="canvasloader"></div>
       <div class="content-movie">
         <div class="prevmovie">

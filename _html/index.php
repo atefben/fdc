@@ -25,6 +25,7 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <div id="sliderWrapper">
         <div id="slider" class="owl-carousel">
           <div>

@@ -23,6 +23,7 @@
     <?php include('header.html'); ?>
 
     <div id="main" class="single-article loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <div class="container">
         <a href="#" class="nav prev"></a>
         <a href="#" class="nav next"></a>

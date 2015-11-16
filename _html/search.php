@@ -23,6 +23,7 @@
     <?php include('header.html'); ?>
 
     <div id="main" class="searchpage loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <div class="wrapper">
         <div id="colSearch">
           <ul>

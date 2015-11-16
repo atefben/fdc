@@ -5816,6 +5816,52 @@ div.chocolat-wrapper .chocolat-close {
   top: 91px;
 }
 
+#addtext {
+  background-color: #141414;
+  position: fixed;
+  display: block;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.625rem;
+  opacity: 0;
+  visibility: hidden;
+  height: 48px;
+  line-height: 48px;
+  width: 200px;
+  color: #fff;
+  letter-spacing: 0.1em;
+  top: -59px;
+  left: -80px;
+  z-index: 5;
+  text-align: center;
+  text-transform: uppercase;
+  -moz-transform: translateY(6px) translateZ(0);
+  -ms-transform: translateY(6px) translateZ(0);
+  -webkit-transform: translateY(6px) translateZ(0);
+  transform: translateY(6px) translateZ(0);
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#addtext:after {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  border: 7px solid transparent;
+  border-top-color: #141414;
+  top: 100%;
+  left: 92px;
+}
+#addtext.show {
+  opacity: 1;
+  visibility: visible;
+  -moz-transform: translateY(0) translateZ(0);
+  -ms-transform: translateY(0) translateZ(0);
+  -webkit-transform: translateY(0) translateZ(0);
+  transform: translateY(0) translateZ(0);
+}
+
 header #searchContainer {
   z-index: 14;
 }
@@ -6001,13 +6047,6 @@ header #searchContainer {
 #searchContainer #results #filtered #filteredContent article:nth-child(3n+1) {
   margin-left: 0;
 }
-#searchContainer #results #filtered #filteredContent article:nth-child(3n) .read-later span {
-  left: auto !important;
-  right: -15px;
-}
-#searchContainer #results #filtered #filteredContent article:nth-child(3n) .read-later span:after {
-  left: 158px;
-}
 #searchContainer #results .big {
   float: left;
   margin-bottom: 50px;
@@ -6176,11 +6215,6 @@ header #searchContainer {
   padding: 0 0 40px 0;
   width: 225px;
 }
-#searchContainer #results article .read-later span {
-  position: absolute;
-  left: -79px !important;
-  top: -57px !important;
-}
 #searchContainer #results article .info {
   color: #666;
 }
@@ -6207,13 +6241,6 @@ header #searchContainer {
 }
 #searchContainer #results #wide .big:nth-child(3n+1) {
   margin-left: 0;
-}
-#searchContainer #results #wide #newsResults article:nth-child(2n) .read-later span {
-  left: auto !important;
-  right: -15px;
-}
-#searchContainer #results #wide #newsResults article:nth-child(2n) .read-later span:after {
-  left: 158px;
 }
 #searchContainer #results #short {
   float: left;
@@ -6414,9 +6441,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6442,11 +6469,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6462,26 +6489,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -8375,14 +8402,6 @@ article .image .read-later span:after {
   border-top-color: #141414;
   top: 100%;
   left: 92px;
-}
-article .image .read-later:hover span {
-  opacity: 1;
-  visibility: visible;
-  -moz-transform: translateY(0) translateZ(0);
-  -ms-transform: translateY(0) translateZ(0);
-  -webkit-transform: translateY(0) translateZ(0);
-  transform: translateY(0) translateZ(0);
 }
 article .image .linkImage {
   display: block;

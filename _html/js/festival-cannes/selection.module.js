@@ -270,10 +270,16 @@ $(document).ready(function() {
 
     var tPos = $(this).offset().top - $(window).scrollTop() - 59;
 
-    $(this).find('span').css({
+    $('#addtext').css({
       top: tPos,
       left: lPos
     });
+
+    $('#addtext').addClass('show');
+  });
+
+  $('body').on('mouseout', '.read-later', function() {
+    $('#addtext').removeClass('show');
   });
 
 });

@@ -195,14 +195,6 @@ article {
           left: 92px;
         }
       }
-
-      &:hover {
-        span {
-          opacity: 1;
-          visibility: visible;
-          @include transform(translateY(0) translateZ(0));
-        }
-      }
     }
 
     .linkImage {
