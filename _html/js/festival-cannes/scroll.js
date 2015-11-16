@@ -13,6 +13,7 @@ function initParallaxElements() {
       'mov': 1
     });
 
+    // slider home
     parallaxElements.push({
       'el1': '#slider .owl-item.center .img-container',
       'positionTop': $('#slider').offset().top - $header.height(),
@@ -20,6 +21,7 @@ function initParallaxElements() {
       'mov': 4
     });
 
+    // slider movies home
     parallaxElements.push({
       'el1': '#slider-movies .owl-item.active .video',
       'positionTop': $('#slider-movies').offset().top,
@@ -29,6 +31,7 @@ function initParallaxElements() {
 
   }
 
+  // header webtv
   if($('.webtv-live').length) {
     parallaxElements.push({
       'el1': '#live .img',
@@ -39,6 +42,7 @@ function initParallaxElements() {
     });
   }
 
+  // header single movie page
   if($('.single-movie').length) {
     parallaxElements.push({
       'el1': '.main-image .img',
@@ -129,18 +133,20 @@ $(document).ready(function() {
     var s = $(this).scrollTop();
     scrollTarget = s;
 
+    // STICKY HEADER
     if (s > lastScrollTop){
       if(($('#prehome-container').length == 0 && s > 30)) {
         $header.addClass('sticky');
         $('body').css('margin-top', '91px');
       }
     } else {
-      if(($('#prehome-container').length == 0 && s < 600)) {
+      if(($('#prehome-container').length == 0 && s < 30)) {
         $header.removeClass('sticky');
         $('body').css('margin-top', '0');
       }
     }
 
+    // SLIDER MOVIES : play or pause video on scroll
     if($('#featured-movies').length) {
       if(s > $('#featured-movies').offset().top - $('#featured-movies').height() && s < $('#featured-movies').offset().top + $('#featured-movies').height()) {
         $('#featured-movies .active').find('video')[0].play();
@@ -150,18 +156,21 @@ $(document).ready(function() {
       }
     }
 
+    // Display social wall
     if($('#social-wall').length) {
       if(s > $('#social-wall').offset().top - ($(window).height()/2) && !displayed) {
         displayGrid();
       }
     }
 
+    // Render the path of hashtag graph
     if($('#graph').length) {
       if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
         makePath(points);
       }
     }
 
+    // STICKY column on search page
     if($('.searchpage').length) {
       var $colSearch = $('#colSearch');
       if(s > $('#results').offset().top - 85 && s < ($('#footerSearch').offset().top - $('#footerSearch').height() - $colSearch.height() + 155)) {
@@ -175,6 +184,7 @@ $(document).ready(function() {
       }
     }
 
+    // STICKY Timeline on homepage on scroll
     if($('#news').length) {
       if(s > $('#news').offset().top + 70 && s < ($('.read-more').offset().top - $('.read-more').height() - $timeline.height() - 3)) {
         $timeline.removeClass('bottom').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 57);
@@ -187,6 +197,7 @@ $(document).ready(function() {
       }
     }
 
+    // NAV for single article
     if($('.single-article').length) {
       if($('.same-day').length) {
         if(s >= $('.same-day').offset().top - $('.same-day').height() / 2 - 100) {
@@ -197,6 +208,7 @@ $(document).ready(function() {
       }
     }
 
+    // NAV for single evenement
     if($('.single-evenement').length) {
       if(s >= $('.share').offset().top - 300) {
         $('a.nav').addClass('bottom');
@@ -205,13 +217,16 @@ $(document).ready(function() {
       }
     }
 
+    // WEBTV
     if($('.webtv-live').length) {
       var hght = $header.hasClass('sticky') ? 91 : 230;
       $('#live .textLive').css('top', hght + ($('#live').height() - $('#live .textLive').height()) / 2);
       $('.webtv #live .img').css('top', '');
     }
 
+    // SINGLEM OVIE
     if($('.single-movie').length ) {
+      // NAV
       if((s > ($('.videos').offset().top - $navMovie.height() - 100))) {
         $navMovie.addClass('sticky');
         if(s > $('div.press').offset().top + 1 - $navMovie.height()) {
