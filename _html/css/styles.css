@@ -11259,8 +11259,9 @@ article .read-later.rAlign span:after {
 .palmares-list .categorie-items article img {
   float: none;
   display: inline-block;
-  margin-left: 0px;
+  margin-left: 190px;
   margin-top: 50px;
+  margin-right: 86px;
 }
 .palmares-list .categorie-items article .lot-item {
   padding-top: 0px;
@@ -11273,9 +11274,13 @@ article .read-later.rAlign span:after {
   position: relative;
   width: 450px;
 }
+.palmares-list .categorie-items article .infos-item-list .sub-title-item {
+  font-family: "Camphor W01 Bold";
+}
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-img {
   float: none;
   margin-right: 0px;
+  margin-left: 0px;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-portrait {
   margin: 0 auto;
@@ -11287,6 +11292,8 @@ article .read-later.rAlign span:after {
   letter-spacing: 3px;
   padding: 10px;
   line-height: 20px;
+  width: 331px;
+  font-size: 1.13rem;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .verticalline:after {
   content: "";
