@@ -11259,8 +11259,9 @@ article .read-later.rAlign span:after {
 .palmares-list .categorie-items article img {
   float: none;
   display: inline-block;
-  margin-left: 0px;
+  margin-left: 190px;
   margin-top: 50px;
+  margin-right: 86px;
 }
 .palmares-list .categorie-items article .lot-item {
   padding-top: 0px;
@@ -11273,9 +11274,13 @@ article .read-later.rAlign span:after {
   position: relative;
   width: 450px;
 }
+.palmares-list .categorie-items article .infos-item-list .sub-title-item {
+  font-family: "Camphor W01 Bold";
+}
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-img {
   float: none;
   margin-right: 0px;
+  margin-left: 0px;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-portrait {
   margin: 0 auto;
@@ -11287,6 +11292,8 @@ article .read-later.rAlign span:after {
   letter-spacing: 3px;
   padding: 10px;
   line-height: 20px;
+  width: 331px;
+  font-size: 1.13rem;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .verticalline:after {
   content: "";
@@ -11295,6 +11302,7 @@ article .read-later.rAlign span:after {
   width: 2px;
   padding: 0px;
   margin: 10px auto;
+  margin-bottom: 5px;
   background-color: #434343;
 }
 
@@ -12213,6 +12221,11 @@ article .read-later.rAlign span:after {
   visibility: hidden;
 }
 
+.single-evenement .slideshow .caption {
+  border-bottom: 1px solid #e5e5e5;
+  margin: 0px 0px;
+  padding: 20px 0px;
+}
 .single-evenement a.nav.bottom {
   bottom: 85px;
 }
@@ -12223,7 +12236,7 @@ article .read-later.rAlign span:after {
   margin-top: 64px;
 }
 .single-evenement .quote {
-  padding-top: 60px;
+  padding: 60px 0px;
   width: auto;
 }
 .single-evenement .quote blockquote {
@@ -12235,7 +12248,6 @@ article .read-later.rAlign span:after {
   padding-bottom: 0px;
 }
 .single-evenement .text {
-  padding-top: 60px;
   width: 634px;
 }
 .single-evenement .text a {
@@ -12275,21 +12287,23 @@ article .read-later.rAlign span:after {
 }
 .single-evenement .film .programmation-film .wrapper {
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 630px;
   float: none;
 }
 .single-evenement .film .programmation-film .wrapper ul {
+  width: 630px;
   margin-bottom: 35px;
 }
 .single-evenement .film .programmation-film .wrapper ul li {
   width: auto;
-  margin-right: 60px;
+  margin-right: 14px;
 }
 .single-evenement .film .programmation-film .wrapper .location {
   margin: 10px 0px !important;
   text-transform: uppercase;
   color: #bababa !important;
-  font-size: .625rem;
+  font-size: 0.63rem;
+  font-family: "Camphor W01 Bold";
 }
 .single-evenement .film .programmation-film .wrapper .location:after {
   background-color: #525252;
@@ -12306,6 +12320,8 @@ article .read-later.rAlign span:after {
 }
 .single-evenement .film .programmation-film .wrapper .descript {
   font-size: 1rem;
+  font-family: "Camphor W01 Regular";
+  color: #fff;
 }
 .single-evenement .video .vCenterKid {
   text-align: left;

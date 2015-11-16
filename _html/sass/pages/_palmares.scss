@@ -72,8 +72,9 @@
             img{
                 float: none;
                 display: inline-block;
-                margin-left: 0px;
+                margin-left: 190px;
                 margin-top: 50px;
+                margin-right: 86px;
             }
             .lot-item{
                 padding-top: 0px;
@@ -85,13 +86,16 @@
             .infos-item-list{
                 position: relative;
                 width: 450px;
-                
+              .sub-title-item{
+                font-family: $CamphorBold;
+              }
                 .logo-palme-dor-container{
                     .palme-dor-img{
                         float: none;
                         margin-right: 0px;
+                        margin-left: 0px;
                     }
-                    .palme-dor-portrait{ 
+                    .palme-dor-portrait{
                         margin: 0 auto;
                         padding-bottom: 10px;
                     }
@@ -101,6 +105,8 @@
                         letter-spacing: 3px;
                         padding: 10px;
                         line-height: 20px;
+                        width: 331px;
+                        font-size: 1.13rem;
                     }
                     .verticalline:after{
                         content: "";
@@ -109,6 +115,7 @@
                         width: 2px;
                         padding: 0px;
                         margin: 10px auto;
+                        margin-bottom: 5px;
                         background-color: #434343;
                     }
                 }
