@@ -1,6 +1,7 @@
  //       SUMMARY TABLE.....
 // =========================
 // 1. Global
+// 2. Camera Dor
 // 2. Bandeau (media)
 // =========================
 
@@ -47,6 +48,23 @@
     height: 372px;
     .title-list-header{
      padding-top: 172px;
+    }
+  }
+  .title-list-cat{
+    color: #ffffff;
+    padding: 42px;
+    border-bottom: #202020 1px solid;
+    border-top: #202020 1px solid;
+    font-size: 1rem;
+    text-align: center;
+    .titre-document {
+      color: #999;
+      width: 750px;
+      margin: 0 auto;
+      line-height: 24px;
+    }
+    strong{
+      color: #fff;
     }
   }
     .categorie-items {
@@ -124,7 +142,35 @@
     }
 }
 
-
+.camerador{
+  .categorie-items article .contain_item{
+    width: 674px;
+  }
+  .categorie-items article img{
+    margin-left: 74px;
+    margin-right: 150px;
+  }
+  .time-item{
+    font-size: 0.69rem;
+    color:#999;
+  }
+  .title-item{
+    width: 250px;
+  }
+  .title{
+    line-height: 30px;
+  }
+  .categorie-items-columns{
+    ul{
+      width: 780px;
+      margin: 114px auto; 
+      li{
+        display: inline-block;
+        width: 49%; 
+      }
+    }
+  }
+}
 
 //2. bandeau media
 // ==========================

@@ -6441,9 +6441,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6469,11 +6469,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6489,26 +6489,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -11237,6 +11237,23 @@ article .read-later.rAlign span:after {
 .palmares-list .bandeau-list-img .title-list-header {
   padding-top: 172px;
 }
+.palmares-list .title-list-cat {
+  color: #ffffff;
+  padding: 42px;
+  border-bottom: #202020 1px solid;
+  border-top: #202020 1px solid;
+  font-size: 1rem;
+  text-align: center;
+}
+.palmares-list .title-list-cat .titre-document {
+  color: #999;
+  width: 750px;
+  margin: 0 auto;
+  line-height: 24px;
+}
+.palmares-list .title-list-cat strong {
+  color: #fff;
+}
 .palmares-list .categorie-items article {
   height: 447px;
 }
@@ -11304,6 +11321,32 @@ article .read-later.rAlign span:after {
   margin: 10px auto;
   margin-bottom: 5px;
   background-color: #434343;
+}
+
+.camerador .categorie-items article .contain_item {
+  width: 674px;
+}
+.camerador .categorie-items article img {
+  margin-left: 74px;
+  margin-right: 150px;
+}
+.camerador .time-item {
+  font-size: 0.69rem;
+  color: #999;
+}
+.camerador .title-item {
+  width: 250px;
+}
+.camerador .title {
+  line-height: 30px;
+}
+.camerador .categorie-items-columns ul {
+  width: 780px;
+  margin: 114px auto;
+}
+.camerador .categorie-items-columns ul li {
+  display: inline-block;
+  width: 49%;
 }
 
 @media screen and (min-width: 1920px) {
