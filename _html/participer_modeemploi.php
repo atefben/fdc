@@ -36,7 +36,7 @@
     </p>
   </div>
   <section class="content-manual">
-    <div class="contain-section">
+    <div class="contain-section participate-active">
       <h3 class="title-section"><img src="img/participate/horaires.svg" alt="" class="logo-title svg">Horaires</h3><i class="fa fa-plus"></i>
       
       <div class="descrip-section">

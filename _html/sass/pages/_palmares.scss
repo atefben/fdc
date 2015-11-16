@@ -1,7 +1,7 @@
- //       SUMMARY TABLE     
+ //       SUMMARY TABLE.....
 // =========================
 // 1. Global
-// 2. Bandeau
+// 2. Bandeau (media)
 // =========================
 
 
@@ -9,6 +9,11 @@
 // =========================
 
 .palmares-list{
+  .bandeau-list{
+    .bandeau-list-img{
+      @include transition(all 1s $linear);
+    }
+  }
   .sub-nav-list{
     a{
     font-family: $CamphorBold;
@@ -34,9 +39,9 @@
     
   }
   .bandeau-list-img{
-    height: 372px !important;
+    height: 372px;
     .title-list-header{
-     padding-top: 172px !important; 
+     padding-top: 172px;
     }
   }
     .categorie-items {
@@ -105,11 +110,58 @@
             }
         }
     }
-
-
 }
 
 
 
-// 1. Bandeau
-// =========================
+//2. bandeau media
+// ==========================
+
+
+
+  @media screen and (min-width: 1920px) {
+    .palmares-list .bandeau-list-img{
+      height: 450px !important;
+    }
+    .palmares-list .title-list-header {
+      padding-top: 217px !important;
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+    .palmares-list .bandeau-list-img{
+      height: 375px !important;
+    }
+    .palmares-list .title-list-header {
+      padding-top: 183px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+    .palmares-list .bandeau-list-img{
+      height: 299px !important;
+    }
+    .palmares-list .title-list-header {
+      padding-top: 144px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .palmares-list .bandeau-list-img{
+      height: 298px !important;
+    }
+    .palmares-list .title-list-header {
+      padding-top: 143px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .palmares-list .bandeau-list-img{
+      height: 298px !important;
+    }
+    .palmares-list .title-list-header {
+      padding-top: 143px !important;
+    }
+  }

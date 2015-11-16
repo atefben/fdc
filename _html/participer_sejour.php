@@ -32,14 +32,14 @@
           <h2 class="title title-list-header"> <img src="img/participate/logo-palm.png" alt="" class="logo"> <br> Préparer son séjour</h2>
         </div>
       </div>
-      <div class="contain-participate">
+      <div class="contain-participate ">
         <div class="contain-descript">
           <p class="descrip">
             Toute l’équipe du Festival de Cannes est heureuse de vous accueillir pour cette 68e édition. Pour que votre séjour se passe dans les meilleures conditions, voici quelques informations utiles.
           </p>
         </div>
         <section>
-         <div class="contain-section">
+         <div class="contain-section participate-active">
           <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="" class="svg">Se rendre à cannes</h3><i class="fa fa-plus svg"></i>
           <div class="item large">
             <img src="img/participate/train.svg" alt="" class="svg-item">

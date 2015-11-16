@@ -6414,9 +6414,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6442,11 +6442,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6462,26 +6462,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -10967,6 +10967,10 @@ article .read-later.rAlign span:after {
 .list-article .bandeau-list .bandeau-list-img {
   height: 300px;
   background-size: cover;
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
@@ -11131,6 +11135,57 @@ article .read-later.rAlign span:after {
   padding: 0px;
 }
 
+@media screen and (min-width: 1920px) {
+  .films-list .bandeau-list-img {
+    height: 448px !important;
+  }
+
+  .films-list .title-list-header {
+    padding-top: 215px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .films-list .bandeau-list-img {
+    height: 373px !important;
+  }
+
+  .films-list .title-list-header {
+    padding-top: 181px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .films-list .bandeau-list-img {
+    height: 297px !important;
+  }
+
+  .films-list .title-list-header {
+    padding-top: 142px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .films-list .bandeau-list-img {
+    height: 296px !important;
+  }
+
+  .films-list .title-list-header {
+    padding-top: 141px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .films-list .bandeau-list-img {
+    height: 296px !important;
+  }
+
+  .films-list .title-list-header {
+    padding-top: 141px !important;
+  }
+}
+.palmares-list .bandeau-list .bandeau-list-img {
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 .palmares-list .sub-nav-list a {
   font-family: "Camphor W01 Bold";
   font-size: 0.75rem !important;
@@ -11153,10 +11208,10 @@ article .read-later.rAlign span:after {
   background-color: #202020;
 }
 .palmares-list .bandeau-list-img {
-  height: 372px !important;
+  height: 372px;
 }
 .palmares-list .bandeau-list-img .title-list-header {
-  padding-top: 172px !important;
+  padding-top: 172px;
 }
 .palmares-list .categorie-items article {
   height: 447px;
@@ -11219,6 +11274,51 @@ article .read-later.rAlign span:after {
   background-color: #434343;
 }
 
+@media screen and (min-width: 1920px) {
+  .palmares-list .bandeau-list-img {
+    height: 450px !important;
+  }
+
+  .palmares-list .title-list-header {
+    padding-top: 217px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .palmares-list .bandeau-list-img {
+    height: 375px !important;
+  }
+
+  .palmares-list .title-list-header {
+    padding-top: 183px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .palmares-list .bandeau-list-img {
+    height: 299px !important;
+  }
+
+  .palmares-list .title-list-header {
+    padding-top: 144px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .palmares-list .bandeau-list-img {
+    height: 298px !important;
+  }
+
+  .palmares-list .title-list-header {
+    padding-top: 143px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .palmares-list .bandeau-list-img {
+    height: 298px !important;
+  }
+
+  .palmares-list .title-list-header {
+    padding-top: 143px !important;
+  }
+}
 .webtv .image-wrapper {
   overflow: hidden;
   position: relative;
@@ -12510,6 +12610,12 @@ article .read-later.rAlign span:after {
   padding: 0px 0px;
   padding-top: 65px;
 }
+.artist .nav.next, .artist .nav.prev {
+  -moz-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 .artist .info .category {
   margin-right: 2px;
 }
@@ -12604,7 +12710,7 @@ article .read-later.rAlign span:after {
 }
 .artist .jury {
   text-align: center;
-  padding-bottom: 45px;
+  padding-bottom: 50px;
 }
 .artist .jury .rank {
   font-family: "Camphor W01 Bold";
@@ -12614,6 +12720,13 @@ article .read-later.rAlign span:after {
 .artist .jury .role {
   text-transform: uppercase;
   font-size: .875rem;
+  font-family: "Camphor W01 Medium";
+}
+.artist .jury .item-separate {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold";
+  font-size: 1.125rem;
+  padding: 0 7px;
 }
 .artist .realisateurs {
   background-color: #f6f6f6;

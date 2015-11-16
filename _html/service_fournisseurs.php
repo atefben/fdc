@@ -32,7 +32,7 @@
     </div>
   </div>
   <section class="content-contractor">
-    <div class="contain-section">
+    <div class="contain-section participate-active">
       <h3 class="title-section">Fournisseurs officiels</h3>
       <div class="item-contractor">
          <div class="contain-img">

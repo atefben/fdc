@@ -1,10 +1,11 @@
- //       SUMMARY TABLE     
+ //       SUMMARY TABLE
  // =========================
  // 1. Global
  // 2. Bandeau
  // 3. Selection officielles
- // 4. Invit honnor 
+ // 4. Invit honnor
  // 5. Cannes classic
+ // 6. MEDIA (bandeau)
  // =========================
 
  // 1. Global
@@ -271,6 +272,7 @@
  
  // 1. Bandeau
  // =========================
+
  .list-article {
    background-color: #141414 !important;
    .bandeau-list {
@@ -278,6 +280,7 @@
      .bandeau-list-img {
        height: 300px;
        background-size: cover;
+       @include transition(all 1s $linear);
        .title-list-header {
          color: #ffffff;
          font-size: 1.75rem;
@@ -361,6 +364,7 @@
  
  // 3. Selection officielle
  //==========================
+
  .selection-officielle {
    .single-article{
      padding: 0px !important;
@@ -410,6 +414,7 @@
  }
 
 // 4. Invit honneur
+// ================
 
 .honneur-invit{
   .container{
@@ -450,6 +455,7 @@
 }
 
 // 5. cannes Classic
+// ================
 
 .cannes-classic{
      .title-list-cat:first-child{
@@ -459,3 +465,56 @@
     padding: 0px ;
   }
 }
+
+// 5. Media Bandeau
+// ================
+
+
+
+  @media screen and (min-width: 1920px) {
+    .films-list .bandeau-list-img{
+      height: 448px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 215px !important;
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+    .films-list .bandeau-list-img{
+      height: 373px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 181px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+    .films-list .bandeau-list-img{
+      height: 297px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 142px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .films-list .bandeau-list-img{
+      height: 296px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 141px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .films-list .bandeau-list-img{
+      height: 296px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 141px !important;
+    }
+  }
+
