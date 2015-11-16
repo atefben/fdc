@@ -24,9 +24,14 @@
       color:#c8a461 !important;
     }
     a.active{
-       color:#c8a461 !important;     
+       color:#c8a461 !important;
     }
   }
+  .sticky{
+      z-index: 10;
+      width: 100% !important;
+      background-color: #1b1b1b;
+    }
   .sub-cat-title{
     background-color: #202020;
     padding: 29px;

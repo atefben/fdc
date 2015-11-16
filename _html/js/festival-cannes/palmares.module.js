@@ -22,5 +22,17 @@ $(document).ready(function() {
       }
     });
   }
+    //Scroll
+      $(window).on('scroll', function() {
+        
+        var s = $(window).scrollTop();
+        var h = $("#main").height()-900;
 
+      if(s > 470 ){
+        $('.sub-nav-list').addClass('sticky');
+        $(".sub-nav-list").css({position: "fixed",top:90});
+      } else if (s < 470){
+        $(".sub-nav-list").css({position: "relative",top:1});
+      }
+      });
 });
