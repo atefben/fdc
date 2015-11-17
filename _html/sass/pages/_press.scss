@@ -184,7 +184,6 @@
 
   .wrapper {
     position: relative;
-    width: calc(100% - 310px);
   }
 
   .header-press {
@@ -215,6 +214,10 @@
       }
     }
 
+    .container {
+      height: 100%;
+    }
+
     h2 {
       color: $gold;
       float: left;
@@ -230,7 +233,6 @@
       float: right;
       font-size: 0.813rem;
       height: 100%;
-      margin-right: 160px;
       width: 515px;
       line-height: 1.5em;
     }
@@ -341,6 +343,71 @@
         .image {
           width: 265px;
         }
+
+        &:nth-child(6), &:nth-child(12) {
+          border-right: 1px solid #e3e3e3;
+        }
+
+        &:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10), &:nth-child(11), &:nth-child(12) {
+          border-bottom: 1px solid #e3e3e3;
+        }
+
+        @include breakpoint(1919px) {
+          &:nth-child(11), &:nth-child(12) {
+            display: none;
+          }
+
+          &:nth-child(5), &:nth-child(10) {
+            border-right: 1px solid #e3e3e3;
+          }
+
+          &:nth-child(6) {
+            clear: left;
+            border-right: none;
+            border-bottom: 1px solid #e3e3e3;
+          }
+        }
+
+        @include breakpoint(1606px) {
+          &:nth-child(9), &:nth-child(10) {
+            display: none;
+          }
+
+          &:nth-child(5) {
+            border-right: none;
+            border-bottom: 1px solid #e3e3e3;
+            clear: left;
+          }
+
+          &:nth-child(6) {
+            clear: none;
+          }
+
+          &:nth-child(4), &:nth-child(8) {
+            border-right: 1px solid #e3e3e3;
+          }
+        }
+
+        @include breakpoint(1296px) {
+          &:nth-child(7), &:nth-child(8) {
+            display: none;
+          }
+
+          &:nth-child(5) {
+            clear: none;
+          }
+
+          &:nth-child(4) {
+            border-right: none;
+            border-bottom: 1px solid #e3e3e3;
+            clear: left;
+          }
+
+          &:nth-child(3), &:nth-child(6) {
+            border-right: 1px solid #e3e3e3;
+          }
+        }
+
       }
     }
   }
@@ -631,17 +698,94 @@
 
 
 
+  &.press-home {
+    #calendar {
+      display: none;
+    }
+  }
 
+  &.press-home.calendar-open {
+    #calendar {
+      display: block;
+    }
 
+    .wrapper {
+      width: calc(100% - 310px);
+    }
 
-  &.calendar-open {
-    .grid-container {
-      article:nth-child(3n) {
+    .communiques .grid-container article {
+      &:nth-child(11), &:nth-child(12) {
+        display: none;
+      }
+
+      &:nth-child(5), &:nth-child(10) {
         border-right: 1px solid #e3e3e3;
       }
 
-      article:nth-child(4), article:nth-child(5), article:nth-child(6) {
+      &:nth-child(6) {
+        clear: left;
+        border-right: none;
         border-bottom: 1px solid #e3e3e3;
+      }
+
+      @include breakpoint(1919px) {
+        &:nth-child(9), &:nth-child(10) {
+          display: none;
+        }
+
+        &:nth-child(5) {
+          border-right: none;
+          border-bottom: 1px solid #e3e3e3;
+          clear: left;
+        }
+
+        &:nth-child(6) {
+          clear: none;
+        }
+
+        &:nth-child(4), &:nth-child(8) {
+          border-right: 1px solid #e3e3e3;
+        }
+      }
+
+      @include breakpoint(1606px) {
+        &:nth-child(7), &:nth-child(8) {
+          display: none;
+        }
+
+        &:nth-child(5) {
+          clear: none;
+        }
+
+        &:nth-child(4) {
+          border-right: none;
+          border-bottom: 1px solid #e3e3e3;
+          clear: left;
+        }
+
+        &:nth-child(3), &:nth-child(6) {
+          border-right: 1px solid #e3e3e3;
+        }
+      }
+
+      @include breakpoint(1296px) {
+        &:nth-child(5), &:nth-child(6) {
+          display: none;
+        }
+
+        &:nth-child(4) {
+          clear: none;
+        }
+
+        &:nth-child(3) {
+          border-right: none;
+          border-bottom: 1px solid #e3e3e3;
+          clear: left;
+        }
+
+        &:nth-child(2), &:nth-child(4) {
+          border-right: 1px solid #e3e3e3;
+        }
       }
     }
   }

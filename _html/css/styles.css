@@ -13919,7 +13919,6 @@ article .read-later.rAlign span:after {
 }
 .press .wrapper {
   position: relative;
-  width: calc(100% - 310px);
 }
 .press .header-press {
   border-bottom: 1px solid #e3e3e3;
@@ -13947,6 +13946,9 @@ article .read-later.rAlign span:after {
   font-size: 0.750rem;
   letter-spacing: 0.1em;
 }
+.press .header-press .container {
+  height: 100%;
+}
 .press .header-press h2 {
   color: #c8a461;
   float: left;
@@ -13961,7 +13963,6 @@ article .read-later.rAlign span:after {
   float: right;
   font-size: 0.813rem;
   height: 100%;
-  margin-right: 160px;
   width: 515px;
   line-height: 1.5em;
 }
@@ -14062,6 +14063,57 @@ article .read-later.rAlign span:after {
 }
 .press .communiques .grid-container article .image {
   width: 265px;
+}
+.press .communiques .grid-container article:nth-child(6), .press .communiques .grid-container article:nth-child(12) {
+  border-right: 1px solid #e3e3e3;
+}
+.press .communiques .grid-container article:nth-child(7), .press .communiques .grid-container article:nth-child(8), .press .communiques .grid-container article:nth-child(9), .press .communiques .grid-container article:nth-child(10), .press .communiques .grid-container article:nth-child(11), .press .communiques .grid-container article:nth-child(12) {
+  border-bottom: 1px solid #e3e3e3;
+}
+@media screen and (max-width: 1919px) {
+  .press .communiques .grid-container article:nth-child(11), .press .communiques .grid-container article:nth-child(12) {
+    display: none;
+  }
+  .press .communiques .grid-container article:nth-child(5), .press .communiques .grid-container article:nth-child(10) {
+    border-right: 1px solid #e3e3e3;
+  }
+  .press .communiques .grid-container article:nth-child(6) {
+    clear: left;
+    border-right: none;
+    border-bottom: 1px solid #e3e3e3;
+  }
+}
+@media screen and (max-width: 1606px) {
+  .press .communiques .grid-container article:nth-child(9), .press .communiques .grid-container article:nth-child(10) {
+    display: none;
+  }
+  .press .communiques .grid-container article:nth-child(5) {
+    border-right: none;
+    border-bottom: 1px solid #e3e3e3;
+    clear: left;
+  }
+  .press .communiques .grid-container article:nth-child(6) {
+    clear: none;
+  }
+  .press .communiques .grid-container article:nth-child(4), .press .communiques .grid-container article:nth-child(8) {
+    border-right: 1px solid #e3e3e3;
+  }
+}
+@media screen and (max-width: 1296px) {
+  .press .communiques .grid-container article:nth-child(7), .press .communiques .grid-container article:nth-child(8) {
+    display: none;
+  }
+  .press .communiques .grid-container article:nth-child(5) {
+    clear: none;
+  }
+  .press .communiques .grid-container article:nth-child(4) {
+    border-right: none;
+    border-bottom: 1px solid #e3e3e3;
+    clear: left;
+  }
+  .press .communiques .grid-container article:nth-child(3), .press .communiques .grid-container article:nth-child(6) {
+    border-right: 1px solid #e3e3e3;
+  }
 }
 .press .mediatheque .container {
   width: 885px;
@@ -14298,11 +14350,73 @@ article .read-later.rAlign span:after {
 .press .contact-press .button {
   padding: 5px 22px;
 }
-.press.calendar-open .grid-container article:nth-child(3n) {
+.press.press-home #calendar {
+  display: none;
+}
+.press.press-home.calendar-open #calendar {
+  display: block;
+}
+.press.press-home.calendar-open .wrapper {
+  width: calc(100% - 310px);
+}
+.press.press-home.calendar-open .communiques .grid-container article:nth-child(11), .press.press-home.calendar-open .communiques .grid-container article:nth-child(12) {
+  display: none;
+}
+.press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-home.calendar-open .communiques .grid-container article:nth-child(10) {
   border-right: 1px solid #e3e3e3;
 }
-.press.calendar-open .grid-container article:nth-child(4), .press.calendar-open .grid-container article:nth-child(5), .press.calendar-open .grid-container article:nth-child(6) {
+.press.press-home.calendar-open .communiques .grid-container article:nth-child(6) {
+  clear: left;
+  border-right: none;
   border-bottom: 1px solid #e3e3e3;
+}
+@media screen and (max-width: 1919px) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(9), .press.press-home.calendar-open .communiques .grid-container article:nth-child(10) {
+    display: none;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5) {
+    border-right: none;
+    border-bottom: 1px solid #e3e3e3;
+    clear: left;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(6) {
+    clear: none;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4), .press.press-home.calendar-open .communiques .grid-container article:nth-child(8) {
+    border-right: 1px solid #e3e3e3;
+  }
+}
+@media screen and (max-width: 1606px) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(7), .press.press-home.calendar-open .communiques .grid-container article:nth-child(8) {
+    display: none;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5) {
+    clear: none;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4) {
+    border-right: none;
+    border-bottom: 1px solid #e3e3e3;
+    clear: left;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(3), .press.press-home.calendar-open .communiques .grid-container article:nth-child(6) {
+    border-right: 1px solid #e3e3e3;
+  }
+}
+@media screen and (max-width: 1296px) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-home.calendar-open .communiques .grid-container article:nth-child(6) {
+    display: none;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4) {
+    clear: none;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(3) {
+    border-right: none;
+    border-bottom: 1px solid #e3e3e3;
+    clear: left;
+  }
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(2), .press.press-home.calendar-open .communiques .grid-container article:nth-child(4) {
+    border-right: 1px solid #e3e3e3;
+  }
 }
 
 .fullcalendar .header-press {
