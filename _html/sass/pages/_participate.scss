@@ -485,7 +485,7 @@
         color: #c8a461;
       }
 			.item-partners{
-				border-bottom: 1px solid #c1c1c1;
+				border-bottom: 1px solid #e0e0e0; 
 				padding: 41px 0px;
 				.contain-img{
 					display: inline-block;
@@ -515,6 +515,7 @@
 						text-transform: uppercase;
 						font-size: 0.75rem;
 						padding-right: 13px;
+            font-family: $CamphorBold;
 					 @include transition(all 0.9s $linear);
 					}
           a:hover{
