@@ -62,7 +62,7 @@
             <h3 class="title sitemap-item-title">Les Jurys</h3>
             <ul>
               <li><a href="jury_longsmetrages.php">Longs métrages</a></li>
-              <li><a href="jury_cinefondation_courtsmetrages.php">Cinéfondation & Courts Métrage</a></li>
+              <li><a href="jury_cinefondation_courtsmetrages.php">Cinéfondation & Courts Métrages</a></li>
               <li><a href="jury_uncertainregard.php">Un certain regard</a></li>
               <li><a href="jury_camerador.php">Caméra d'or</a></li>  
             </ul>

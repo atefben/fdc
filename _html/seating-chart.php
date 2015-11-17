@@ -33,21 +33,22 @@
       <div id='seatingchart'>
         <div class="nav-map">
           <ul>
-            <li class='active' data-maps="theatre-lumiere"><span class="picto"></span>Grand théatre lumière</li>
-            <li data-maps="salle-debussy"><span class="picto"></span>Salle debussy</li>
-            <li data-maps="salle-60e"><span class="picto"></span>Salle du 60E</li>
-            <li data-maps="salle-bunuel"><span class="picto"></span>Salle buñuel</li>
-            <li data-maps="salle-bazin"><span class="picto"></span>Salle bazin</li>
-            <li data-maps="salle-presse"><span class="picto"></span>Salle de presse</li>
-            <li data-maps="salle-mace"><span class="picto"></span>Place macé</li>
-            <li data-maps="zone-festival">
+            <li class='active' data-maps="theatre-lumiere">Grand théatre lumière</li>
+            <li data-maps="salle-debussy">Salle debussy</li>
+            <li data-maps="salle-60e">Salle du 60E</li>
+            <li data-maps="salle-bunuel">Salle buñuel</li>
+            <li data-maps="salle-bazin">Salle bazin</li>
+            <li data-maps="salle-presse">Salle de presse</li>
+            <li data-maps="salle-mace">Place macé</li>
+            <li data-maps="zone-festival" id='more-map'>
               <strong>La zone festival</strong>
-              <img src="" alt="">
+              <img src="img/press/seating-chart/festival-map.png" alt="">
             </li>
           </ul>
         </div>
         <div class="maps">
-          <span id='theatre-lumiere'><img src="" alt=""></span>
+         <span id="default" class="active"><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
+          <span id='theatre-lumiere'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
           <span id='salle-debussy'><img src="" alt=""></span>
           <span id='salle-60e'><img src="" alt=""></span>
           <span id='salle-bunuel'><img src="" alt=""></span>

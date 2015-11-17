@@ -39,6 +39,7 @@
 <script src="js/festival-cannes/press.module.js"></script>
 <script src="js/festival-cannes/resize.module.js"></script>
 <script src="js/festival-cannes/search.module.js"></script>
+<script src="js/festival-cannes/seating-chart.module.js"></script>
 <script src="js/festival-cannes/selection.module.js"></script>
 <script src="js/festival-cannes/sliderartist.module.js"></script>
 <script src="js/festival-cannes/sliderchannels.module.js"></script>

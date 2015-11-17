@@ -6454,9 +6454,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6482,11 +6482,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6502,26 +6502,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -11336,6 +11336,9 @@ article .read-later.rAlign span:after {
   background-color: #434343;
 }
 
+.camerador .title-list-cat .titre-document {
+  line-height: 30px;
+}
 .camerador .categorie-items article .contain_item {
   width: 674px;
 }
@@ -14649,8 +14652,10 @@ article .read-later.rAlign span:after {
   width: 980px;
   margin: 41px auto;
 }
-.seatingchart #seatingchart .nav-map ul {
+.seatingchart #seatingchart .nav-map {
   width: 216px;
+  display: inline-block;
+  margin-right: 114px;
 }
 .seatingchart #seatingchart .nav-map ul li {
   display: block;
@@ -14658,9 +14663,68 @@ article .read-later.rAlign span:after {
   color: #999999;
   font-size: 0.75rem;
   font-family: "Camphor W01 Bold";
-  padding: 21px 14px;
+  padding: 15px 22px;
+  cursor: pointer;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .seatingchart #seatingchart .nav-map ul .active {
   background-color: #c8a461;
   color: #fff;
+  background-image: url("../img/svg/participate-white.svg");
+  background-repeat: no-repeat;
+  background-size: 19px;
+  padding-left: 43px;
+  background-position: 16px;
+}
+.seatingchart #seatingchart .nav-map ul li:hover {
+  background-color: #e8ce9e;
+  color: #ffffff;
+}
+.seatingchart #seatingchart .nav-map ul .active:hover {
+  background-color: #c8a461;
+  color: #fff;
+}
+.seatingchart #seatingchart .nav-map ul #more-map {
+  margin-top: 21px;
+}
+.seatingchart #seatingchart .nav-map ul #more-map strong {
+  color: #000;
+  letter-spacing: .2em;
+}
+.seatingchart #seatingchart .nav-map ul #more-map img {
+  width: 197px;
+  height: 142px;
+  margin-top: 15px;
+}
+.seatingchart #seatingchart .nav-map ul #more-map:hover {
+  background-color: #fff;
+  color: #000;
+}
+.seatingchart #seatingchart .nav-map ul #more-map:hover {
+  background-color: #fff;
+  color: #000;
+}
+.seatingchart #seatingchart .maps {
+  vertical-align: top;
+  width: 646px;
+  height: 567px;
+  display: inline-block;
+}
+.seatingchart #seatingchart .maps span {
+  display: none;
+  opacity: 0;
+  position: relative;
+  top: 100px;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.seatingchart #seatingchart .maps .active {
+  display: inline-block;
+  opacity: 1;
+  top: 0px;
 }
