@@ -217,6 +217,22 @@ $(document).ready(function() {
       }
     }
 
+    // PRESS
+    // sticky calendar 
+    if($('.press-home').length) {
+      var $myCalendar = $('#calendar-wrapper');
+      if(s > $('#calendar').offset().top - 91 && s < ($('.contact-press').offset().top - $myCalendar.height() - 91)) {
+        $myCalendar.removeClass('bottom').addClass('stick').css('left', $('#calendar').offset().left);
+      } else {
+        if(s >= ($('.contact-press').offset().top - $myCalendar.height() - 91)) {
+          $myCalendar.removeClass('stick').css('left', 'auto').addClass('bottom');
+        }
+        if(s <= ($('#calendar').offset().top - 91)) {
+          $myCalendar.removeClass('stick').css('left', 'auto');
+        }
+      }
+    }
+
     // WEBTV
     if($('.webtv-live').length) {
       var hght = $header.hasClass('sticky') ? 91 : 230;
@@ -224,7 +240,7 @@ $(document).ready(function() {
       $('.webtv #live .img').css('top', '');
     }
 
-    // SINGLEM OVIE
+    // SINGLE MOVIE
     if($('.single-movie').length ) {
       // NAV
       if((s > ($('.videos').offset().top - $navMovie.height() - 100))) {

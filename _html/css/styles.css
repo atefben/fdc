@@ -13776,6 +13776,56 @@ article .read-later.rAlign span:after {
 .press {
   padding-top: 0 !important;
 }
+.press .fc-event {
+  background-color: #373737;
+  border-radius: 0;
+  border: none;
+  margin: 5px 0 0 3px;
+  height: 150px;
+}
+.press .fc-event .category {
+  background-color: #555;
+  box-sizing: border-box;
+  height: 27px;
+  display: block;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.625rem;
+  line-height: 28px;
+  padding-left: 40px;
+  text-transform: uppercase;
+  width: 100%;
+}
+.press .fc-event .info img {
+  float: left;
+  margin: 10px;
+}
+.press .fc-event .info .txt {
+  font-family: "Camphor W01 Medium";
+  font-size: 0.813rem;
+  float: left;
+  width: 145px;
+  margin: 10px 0 0 0;
+  text-transform: uppercase;
+}
+.press .fc-event .info .txt a {
+  color: #c8a461;
+  display: block;
+  font-family: "Camphor W01 Italic";
+  text-transform: none;
+}
+.press .fc-event .bottom {
+  border-top: 1px solid #4b4b4b;
+  clear: both;
+  padding: 7px 10px 10px 10px;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.625rem;
+}
+.press .fc-event .bottom span {
+  color: #aeaeae;
+  display: block;
+  font-family: "Camphor W01 Bold Italic";
+  font-size: 0.625rem;
+}
 .press #calendar {
   background-color: #272727;
   color: #fff;
@@ -13784,6 +13834,7 @@ article .read-later.rAlign span:after {
   right: -310px;
   top: 0;
   width: 310px;
+  z-index: 1;
 }
 .press #calendar.fullwidth {
   position: relative;
@@ -13793,6 +13844,16 @@ article .read-later.rAlign span:after {
 }
 .press #calendar.fullwidth #mycalendar {
   height: auto;
+}
+.press #calendar #calendar-wrapper.stick {
+  position: fixed;
+  top: 91px;
+  z-index: 4;
+}
+.press #calendar #calendar-wrapper.bottom {
+  position: absolute;
+  top: auto;
+  bottom: 0px;
 }
 .press #calendar h2.title-calendar {
   background-color: #373737;
@@ -13843,6 +13904,9 @@ article .read-later.rAlign span:after {
   opacity: 0.3;
   text-transform: uppercase;
 }
+.press #calendar #mycalendar .fc-slats tr {
+  height: 40px;
+}
 .press #calendar #mycalendar.side .fc-time-grid-container {
   height: 468px !important;
 }
@@ -13862,7 +13926,7 @@ article .read-later.rAlign span:after {
   width: 60px !important;
 }
 .press #calendar #mycalendar .fc-slats .fc-time span {
-  margin-top: 5px;
+  margin-top: 14px;
   display: block;
   position: absolute;
   text-align: center;
@@ -13871,41 +13935,6 @@ article .read-later.rAlign span:after {
 }
 .press #calendar #mycalendar .fc-bg .fc-axis, .press #calendar #mycalendar .fc-content-skeleton .fc-axis {
   width: 60px !important;
-}
-.press #calendar #mycalendar .fc-event {
-  background-color: #373737;
-  border-radius: 0;
-  border: none;
-}
-.press #calendar #mycalendar .fc-event .category {
-  background-color: #555;
-  box-sizing: border-box;
-  height: 27px;
-  display: block;
-  font-family: "Camphor W01 Bold";
-  font-size: 0.625rem;
-  line-height: 28px;
-  padding-left: 40px;
-  text-transform: uppercase;
-  width: 100%;
-}
-.press #calendar #mycalendar .fc-event .info img {
-  float: left;
-  margin: 10px;
-}
-.press #calendar #mycalendar .fc-event .info .txt {
-  font-family: "Camphor W01 Medium";
-  font-size: 0.813rem;
-  float: left;
-  width: 145px;
-  margin: 10px 0 0 0;
-  text-transform: uppercase;
-}
-.press #calendar #mycalendar .fc-event .info .txt a {
-  color: #c8a461;
-  display: block;
-  font-family: "Camphor W01 Italic";
-  text-transform: none;
 }
 .press #calendar p.link {
   border-bottom: 1px solid #3d3d3d;
@@ -14115,6 +14144,147 @@ article .read-later.rAlign span:after {
     border-right: 1px solid #e3e3e3;
   }
 }
+.press .programmation #calendar-programmation {
+  padding-top: 40px;
+  position: relative;
+}
+.press .programmation #calendar-programmation .calendar {
+  overflow: hidden;
+  width: 3000px;
+}
+.press .programmation #calendar-programmation .calendar .timeCol {
+  background-color: #f4f4f4;
+  float: left;
+  width: 60px;
+}
+.press .programmation #calendar-programmation .calendar .timeCol .empty {
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  height: 40px;
+}
+.press .programmation #calendar-programmation .calendar .timeCol .time {
+  border-bottom: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  height: 80px;
+  font-size: 0.750rem;
+  color: #202020;
+  line-height: 80px;
+  text-align: center;
+}
+.press .programmation #calendar-programmation .calendar .venues {
+  float: left;
+  height: 528px;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue {
+  float: left;
+  height: 100%;
+  width: 235px;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-head {
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  height: 40px;
+  line-height: 40px;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.750rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-container {
+  background: url("../img/press/bg.jpg") repeat-x;
+  border-right: 1px solid #e5e5e5;
+  height: calc(100% - 42px);
+  position: relative;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-container:after {
+  content: '';
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #e5e5e5;
+  height: 1px;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  position: absolute;
+  width: 220px;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event .txt, .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event .bottom {
+  color: #000;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event .bottom {
+  border-color: #e5e5e5;
+}
+.press .programmation #calendar-programmation #timeline {
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.press .programmation #calendar-programmation #timeline a {
+  border-right: 1px dotted #e5e5e5;
+  color: #adadad;
+  font-family: "Camphor W01 Bold";
+  font-size: 0.625rem;
+  display: inline-block;
+  margin-left: -4px;
+  padding: 9px 0 8px 0;
+  width: 43px;
+  text-align: center;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.press .programmation #calendar-programmation #timeline a.disabled {
+  background-color: #f2f2f2;
+  cursor: default;
+}
+.press .programmation #calendar-programmation #timeline a.disabled:hover {
+  background-color: #f2f2f2;
+  color: #adadad;
+}
+.press .programmation #calendar-programmation #timeline a:hover {
+  color: #c8a461;
+}
+.press .programmation #calendar-programmation #timeline a.active {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  border-style: solid;
+  color: #fff;
+  position: relative;
+}
+.press .programmation #calendar-programmation #timeline a.active:after {
+  content: '';
+  display: block;
+  height: 0;
+  border-top: 5px solid #c8a461;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  margin-left: -4px;
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 0;
+}
+.press .programmation #calendar-programmation #timeline a span {
+  display: block;
+  font-family: "Camphor W01 Heavy";
+  font-size: 13px;
+}
+.press .programmation #calendar-programmation #timeline a:first-child {
+  border-left: 1px solid #e5e5e5;
+}
+.press .programmation #calendar-programmation #timeline a:last-child {
+  border-right: none;
+}
 .press .mediatheque .container {
   width: 885px;
 }
@@ -14182,6 +14352,7 @@ article .read-later.rAlign span:after {
 .press .stats .container p {
   font-size: 1rem;
   line-height: 1.8em;
+  margin-bottom: 25px;
 }
 .press .chap {
   border-bottom: 1px solid #e3e3e3;

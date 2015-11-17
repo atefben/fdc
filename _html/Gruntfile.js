@@ -58,6 +58,7 @@ module.exports = function(grunt) {
             'js/components/snap.svg.easing.js',
             'js/components/fullscrenjs.js',
             'js/components/jwplayer.js',
+            'js/components/jquery-ui.min.js',
             'js/festival-cannes/helpers.js',
             'js/festival-cannes/*.module.js',
             'js/festival-cannes/*.js',
