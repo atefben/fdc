@@ -47,15 +47,15 @@
           </ul>
         </div>
         <div class="maps">
-         <span id="default" class="active"><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
+         <span id="default" class="active"><img src="./img/press/seating-chart/default-map.jpg" alt=""></span>
           <span id='theatre-lumiere'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
-          <span id='salle-debussy'><img src="" alt=""></span>
-          <span id='salle-60e'><img src="" alt=""></span>
-          <span id='salle-bunuel'><img src="" alt=""></span>
-          <span id='salle-bazin'><img src="" alt=""></span>
-          <span id='salle-presse'><img src="" alt=""></span>
-          <span id='salle-mace'><img src="" alt=""></span>
-          <span id='zone-festival'><img src="" alt=""></span>
+          <span id='salle-debussy'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
+          <span id='salle-60e'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
+          <span id='salle-bunuel'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
+          <span id='salle-bazin'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
+          <span id='salle-presse'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
+          <span id='salle-mace'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
+          <span id='zone-festival'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
         </div>
       </div>
       <div class="contact-press">
