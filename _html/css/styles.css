@@ -13389,7 +13389,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 .partners .content-partners .contain-section .item-partners {
-  border-bottom: 1px solid #c1c1c1;
+  border-bottom: 1px solid #e0e0e0;
   padding: 41px 0px;
 }
 .partners .content-partners .contain-section .item-partners .contain-img {
@@ -13421,6 +13421,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   font-size: 0.75rem;
   padding-right: 13px;
+  font-family: "Camphor W01 Bold";
   -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
