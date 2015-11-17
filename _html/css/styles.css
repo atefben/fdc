@@ -13460,6 +13460,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Bold";
   padding-bottom: 5px;
   padding-top: 10px;
+  font-size: 0.75rem;
 }
 .partners .content-partners .contain-section .item-partners .text-partners .portrait .rank {
   display: block;
@@ -14471,4 +14472,24 @@ article .read-later.rAlign span:after {
 }
 .fullcalendar #calendar #mycalendar .fc-slats tr {
   height: 40px;
+}
+
+.seatingchart #seatingchart {
+  width: 980px;
+  margin: 41px auto;
+}
+.seatingchart #seatingchart .nav-map ul {
+  width: 216px;
+}
+.seatingchart #seatingchart .nav-map ul li {
+  display: block;
+  text-transform: uppercase;
+  color: #999999;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Bold";
+  padding: 21px 14px;
+}
+.seatingchart #seatingchart .nav-map ul .active {
+  background-color: #c8a461;
+  color: #fff;
 }

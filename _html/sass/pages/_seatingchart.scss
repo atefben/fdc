@@ -1,0 +1,43 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.seatingchart{
+  #seatingchart{
+    width: 980px;
+    margin: 41px auto;
+    .nav-map{
+      ul{
+        width: 216px;
+        
+        li{
+          display: block;
+          text-transform: uppercase;
+          color: #999999;
+          font-size: 0.75rem;
+          font-family: $CamphorBold;
+          padding: 21px 14px;
+        }
+        .active{
+          background-color: #c8a461;
+          color: #fff;
+          span{
+            
+          }
+        }
+      }
+    }
+    .maps{
+      span{
+        img{
+          
+        }
+      }
+    }
+  }
+}
