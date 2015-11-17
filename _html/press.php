@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <?php include('header.html'); ?>
+    <?php include('header-press.html'); ?>
 
     <div id="main" class="press loading calendar-open">
       <div class="header-press">
