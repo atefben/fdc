@@ -28,7 +28,9 @@
         <div class="head">
           <span>Espace presse</span>
         </div>
-        <h2>Guide pratique</h2>
+        <div class="container">
+          <h2>Guide pratique</h2>
+        </div>
       </div>
       <div id='praticalguide'>
         <section class="container-pguide active">

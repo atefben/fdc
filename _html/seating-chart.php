@@ -25,10 +25,13 @@
 
     <div id="main" class="press loading seatingchart">
       <div class="header-press">
+      <div class="header-press">
         <div class="head">
           <span>Espace presse</span>
         </div>
-        <h2>Plan des salles</h2>
+        <div class="container">
+          <h2>Plan des salles</h2>
+        </div>
       </div>
       <div id='seatingchart'>
         <div class="nav-map">

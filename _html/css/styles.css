@@ -14902,7 +14902,7 @@ article .read-later.rAlign span:after {
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .practicalguide #praticalguide .container-pguide .wrapper {
-  width: 991px;
+  width: 976px;
   margin: 0 auto;
   margin-top: 37px;
   position: relative;
@@ -15002,7 +15002,7 @@ article .read-later.rAlign span:after {
   font-size: 0.81rem;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts {
-  width: 570px;
+  width: 552px;
   display: inline-block;
   vertical-align: top;
 }
@@ -15036,7 +15036,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Bold";
 }
 .practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service {
-  width: 493px;
+  width: 486px;
   text-align: center;
   display: inline-block;
   margin-top: 5px;
