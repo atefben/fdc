@@ -55,6 +55,12 @@
             <h2 class="title-calendar">mon agenda</h2>
             <div id="mycalendar" class="side"></div>
             <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
+            <div class="drag">
+              <h2>Préparez votre séjour au festival de cannes</h2>
+              <img src="img/press/drag.png" alt="" />
+              <p><strong>Cliquez - déposez</strong> les évènements dans votre agenda puis exportez votre programme</p>
+              <a href="#">OK</a>
+            </div>
           </div>
         </div>
         <div class="communiques">

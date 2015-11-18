@@ -73,7 +73,8 @@ $(document).ready(function() {
               var c = event.eventColor;
               $(element).empty();
               $(element).addClass(event.eventPictogram);
-              $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '</span>');
+              $(element).attr('data-id', event.id);
+              $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#"></a></span>');
               $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
               $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
             },
@@ -247,5 +248,24 @@ $(document).ready(function() {
           }
         }
       }
+
+  $('#mycalendar').on('click', '.fc-event .category a', function(e) {
+    e.preventDefault();
+
+    var id = $(this).parents('.fc-event').data('id');
+    $('#mycalendar').fullCalendar('removeEvents', id);
+
+    var agenda = localStorage.getItem('agenda_press');
+    events = JSON.parse(agenda);
+
+    for(var i=0; i<events.length; i++) {
+      if(events[i].id == id) {
+        events.splice(i,1);
+      }
+    }
+
+    localStorage.setItem('agenda_press', JSON.stringify(events));
+
+  });
 
 });
