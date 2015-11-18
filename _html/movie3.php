@@ -105,7 +105,7 @@
         <div class="container">
           <ul>
             <li><a href="#videos">videos</a></li>
-            <li><a href="#casting">casting & credits</a></li>
+            <li><a href="#casting">crédits & casting</a></li>
             <li><a href="#photos">photos</a></li>
             <li><a href="#news">actualites</a></li>
             <li><a href="#audios">audios</a></li>
@@ -222,7 +222,7 @@
                 <p><a href="#">Fabrice ARAGNO</a> - Directeur de la photographie</p>
                 <p><a href="#">Jean-Luc GODARD</a> - Montage</p>
                 <div class="actors">
-                  <h3 class="title-section">Acteurs</h3>
+                  <h3 class="title-section">casting</h3>
                   <p><a href="#">Héloïse GODET</a> - Josette</p><p><a href="#">Zoé BRUNEAU</a> -  Ivitch</p>
                   <p><a href="#">Kamel ABDELLI</a> - Gédéon</p><p><a href="#">Christian GREGORI</a> - Davidson</p>
                   <p><a href="#">Richard CHEVALLIER</a> - Marcus</p><p><a href="#">Jessica ERICKSON</a> - Mary Shelley</p>
