@@ -207,30 +207,28 @@
                   <h2 class="titleSection">évènements</h2>
                   <a href="#" class="view-all ajax" data-ajax="searchEvents.html" data-class="events">Tout voir</a>
                   <div id="eventsResults">
-                    <article class="article" data-format="article" data-theme="competition">
+                    <article class="" data-format="article" data-theme="competition">
                       <div class="image">
                         <div class="image-wrapper">
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <span class="picto"></span>
                       </div>
                       <div class="info">
-                        <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                        <a href="#" class="category">Leçon de cinema</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                        <h2><a href="article.php">Marco Bellocchio</a></h2>
                       </div>
                     </article>
-                    <article class="article" data-format="article" data-theme="competition">
+                    <article class="" data-format="article" data-theme="competition">
                       <div class="image">
                         <div class="image-wrapper">
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <span class="picto"></span>
                       </div>
                       <div class="info">
-                        <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                        <a href="#" class="category">Leçon de cinema</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                        <h2><a href="article.php">Marco Bellocchio</a></h2>
                       </div>
                     </article>
                   </div>
