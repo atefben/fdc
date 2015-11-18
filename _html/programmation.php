@@ -53,6 +53,12 @@
             <h2 class="title-calendar">mon agenda</h2>
             <div id="mycalendar" class="side"></div>
             <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
+            <div class="drag">
+              <h2>Préparez votre séjour au festival de cannes</h2>
+              <img src="img/press/drag.png" alt="" />
+              <p><strong>Cliquez - déposez</strong> les évènements dans votre agenda puis exportez votre programme</p>
+              <a href="#">OK</a>
+            </div>
           </div>
         </div>
         <div class="programmation">
@@ -97,11 +103,11 @@
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
-                      <div class="fc-event" data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:00:00" data-time="9" data-duration="2">
+                      <div class="fc-event" data-picto='.pen' data-color='#000' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:00:00" data-time="9" data-duration="120">
                         <span class="category">séance de reprise</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
-                          <div class="txt"><span>orson welles, autopsie d’une légende</span><a href="#">Elisabet KAPNIST</a></div>
+                          <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
                         </div>
                         <div class="bottom"><span class="duration">2H</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
                       </div>

@@ -1,9 +1,18 @@
 $(document).ready(function() {
 
+  var events = [];
+
+  // get local storage
+  var agenda = localStorage.getItem('agenda_press');
+
+  if(agenda != null) {
+    events = JSON.parse(agenda);
+  }
+
     if($('#mycalendar').length) {
 
-      var maxDate = '2016-05-22';
-      var minDate = '2016-05-11';
+      var maxDate = '22';
+      var minDate = '11';
 
       if($('#calendar').hasClass('fullwidth')) {
         $('#mycalendar').fullCalendar({
@@ -18,25 +27,13 @@ $(document).ready(function() {
           defaultView: 'agendaWeek',
           minTime: "08:00:00",
           allDaySlot: false,
-          events: [
-            {
-              title: 'orson welles, autopsie d’une légende',
-              start: '2016-05-11T08:00:00',
-              end: '2016-05-11T10:00:00',
-              category: 'séance de reprise',
-              director: 'Elisabet KAPNIST',
-              linkDirector: '#',
-              img: 'http://dummyimage.com/46x64/000/fff',
-              duration: '2H',
-              venue: 'Grand Théâtre Lumière',
-              competition: 'Hors compétition'
-            }
-          ],
+          events: events,
           eventAfterRender: function(event, element, view) {
+            var dur = event.duration/60 + 'H';
             $(element).empty();
-            $(element).append('<span class="category">' + event.category + '</span>');
-            $(element).append('<div class="info"><img src="' + event.img + '" /><div class="txt"><span>' + event.title + '</span><a href="' + event.linkDirector + '">' + event.director + '</a></div></div>');
-            $(element).append('<div class="bottom"><span class="duration">' + event.duration + '</span> - <span class="ven">' + event.venue.toUpperCase() + '</span><span class="competition">' + event.competition + '</span></div>');
+            $(element).append('<span class="category">' + event.type + '</span>');
+            $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
+            $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
           viewRender: function(view){
             if (view.start > maxDate){
@@ -48,6 +45,15 @@ $(document).ready(function() {
           }
         });
       } else {
+        if(!$.cookie('drag')) {
+          $('#calendar-wrapper').addClass('drag');
+        }
+
+        $('.drag a').on('click', function() {
+          $('#calendar-wrapper').removeClass('drag');
+          $.cookie('drag', '1', { expires: 365 });
+        });
+
         $('#mycalendar').fullCalendar({
             lang: 'fr',
             defaultDate: '2016-05-12',
@@ -60,22 +66,35 @@ $(document).ready(function() {
             minTime: "08:00:00",
             allDaySlot: false,
             droppable: true,
+            selectOverlap: false,
+            events: events,
             eventAfterRender: function(event, element, view) {
+              var dur = event.duration/60 + 'H';
+              var c = event.eventColor;
               $(element).empty();
-              $(element).append('<span class="category">' + event.category + '</span>');
-              $(element).append('<div class="info"><img src="' + event.img + '" /><div class="txt"><span>' + event.title + '</span><a href="' + event.linkDirector + '">' + event.director + '</a></div></div>');
-              $(element).append('<div class="bottom"><span class="duration">' + event.duration + '</span> - <span class="ven">' + event.venue.toUpperCase() + '</span><span class="competition">' + event.competition + '</span></div>');
+              $(element).addClass(event.eventPictogram);
+              $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '</span>');
+              $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
+              $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
             },
             viewRender: function(view){
-              if (view.start > maxDate){
-                $('#mycalendar').fullCalendar('gotoDate', maxDate);
+              var moment = $('#mycalendar').fullCalendar('getDate');
+              if (moment.format('DD') > maxDate){
+                $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
               }
-              if (view.start < minDate){
-                $('#mycalendar').fullCalendar('gotoDate', minDate);
+              if (moment.format('DD') < minDate){
+                $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
               }
+              var m = $('#mycalendar').fullCalendar('getDate');
+              $('#timeline a').each(function() {
+                var d = $(this).data('date');
+                if(d == m.format()) {
+                  $(this).trigger('click');
+                }
+              });
             },
             drop: function() {
-      
+              $.cookie('drag', '1', { expires: 365 });
               // retrieve the dropped element's stored Event Object
               var originalEventObject = $(this).data('eventObject');
               
@@ -87,6 +106,21 @@ $(document).ready(function() {
               
               // render the event on the calendar
               $('#mycalendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+
+              // get local storage
+              var agenda = localStorage.getItem('agenda_press');
+
+              if(agenda == null) {
+                events.push(copiedEventObject);
+
+                localStorage.setItem('agenda_press', JSON.stringify(events));
+              } else {
+                events = JSON.parse(agenda);
+                events.push(copiedEventObject);
+
+                localStorage.setItem('agenda_press', JSON.stringify(events));
+              }
               
             }
           });
@@ -97,24 +131,27 @@ $(document).ready(function() {
               $('#calendar-programmation .fc-event').each(function() {
 
                 var timeStart = $(this).data('time'),
-                    dur = $(this).data('duration');
+                    dur = $(this).data('duration') / 60;
 
                 var base = 8;
+                $(this).find('.category').css('background-color', $(this).data('color'));
+                $(this).addClass($(this).data('picto').substr(1));
 
                 var mT = timeStart - base;
                 $(this).css('margin-top', (mT * 80) + 5);
 
                 var eventObject = {
                   title: $(this).find('.txt span').text(),
+                  eventColor: $(this).data('color'),
                   start: $(this).data('start'),
                   end: $(this).data('end'),
-                  category: $(this).find('.category').text(),
-                  director: $(this).find('.txt a').text(),
-                  linkDirector: $(this).find('.txt a').attr('href'),
-                  img: $(this).find('img').attr('src'),
-                  duration: $(this).find('.bottom .duration').text(),
-                  venue: $(this).find('.bottom .ven').text(),
-                  competition: $(this).find('.bottom .competition').text()
+                  type: $(this).find('.category').text(),
+                  author: $(this).find('.txt strong').text(),
+                  picture: $(this).find('img').attr('src'),
+                  duration: parseInt($(this).find('.bottom .duration').text().substr(0, 2)) * 60,
+                  room: $(this).find('.bottom .ven').text(),
+                  selection: $(this).find('.bottom .competition').text(),
+                  eventPictogram: $(this).data('picto').substr(1)
                 };
                 
                 // store the Event Object in the DOM element so we can get to it later
@@ -123,8 +160,18 @@ $(document).ready(function() {
                 // make the event draggable using jQuery UI
                 $(this).draggable({
                   zIndex: 999,
-                  revert: true,      // will cause the event to go back to its
-                  revertDuration: 0  //  original position after the drag
+                  revert: true,
+                  revertDuration: 0,
+                  start: function() {
+                    $('#calendar-wrapper').removeClass('drag');
+                  },
+                  stop: function(event, ui){
+                    setTimeout(function() {
+                      if(!$.cookie('drag')) {
+                        $('#calendar-wrapper').addClass('drag');
+                      }
+                    }, 300);
+                  }
                 });
                 
               });

@@ -14,11 +14,14 @@
     background-color: #373737;
     border-radius: 0;
     border: none;
+    cursor: pointer;
     margin: 5px 0 0 3px;
     height: 150px;
 
     .category {
       background-color: #555;
+      background-repeat: no-repeat;
+      background-position: 10px center;
       box-sizing: border-box;
       height: 27px;
       display: block;
@@ -26,8 +29,29 @@
       font-size: 0.625rem;
       line-height: 28px;
       padding-left: 40px;
+      position: relative;
       text-transform: uppercase;
       width: 100%;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 13px;
+        background: url('../img/press/drag-icon.png') no-repeat center;
+        position: absolute;
+        top: 7px;
+        right: 5px;
+        cursor: -webkit-grab;
+        cursor: grab;
+      }
+    }
+
+    &.pen {
+      .category {
+        background-image: url('../img/svg/press.svg');
+        background-size: 17px;
+      }
     }
 
     .info {
@@ -44,10 +68,11 @@
         margin: 10px 0 0 0;
         text-transform: uppercase;
 
-        a {
+        strong {
           color: $gold;
           display: block;
           font-family: $CamphorItalic;
+          font-weight: normal;
           text-transform: none;
         }
       }
@@ -102,6 +127,72 @@
         top: auto;
         bottom: 0px;
       }
+
+      .drag {
+        background-color: rgba(0, 0, 0, 0.9);
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 40px;
+        height: 510px;
+        left: 0;
+        text-align: center;
+        z-index: 2;
+        @include transition(all 0.9s $smoothTransition);
+
+        h2 {
+          font-family: $CamphorBold;
+          line-height: 1.2em;
+          margin: 140px auto 35px auto;
+          text-transform: uppercase;
+          width: 80%;
+        }
+
+        p {
+          color: #bebebe;
+          font-size: 0.875rem;
+          line-height: 1.4em;
+          margin: 0 auto;
+          width: 75%;
+
+          strong {
+            font-family: $CamphorBold;
+            color: $gold;
+            display: block;
+            margin-bottom: 8px;
+          }
+        }
+
+        img {
+          display: block;
+          margin: 0 auto 20px auto;
+        }
+
+        a {
+          display: block;
+          color: $gold;
+          border: 1px solid $gold;
+          font-family: $CamphorHeavy;
+          font-size: 0.625rem;
+          height: 40px;
+          width: 40px;
+          line-height: 40px;
+          margin: 15px auto 0 auto;
+          text-transform: uppercase;
+          @include transition(all 0.9s $smoothTransition);
+
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+
+      &.drag {
+        .drag {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
 
     h2.title-calendar {
@@ -121,6 +212,10 @@
       height: 510px;
 
       .fc-highlight-skeleton {
+        display: none;
+      }
+
+      .fc-event .category:after {
         display: none;
       }
 
@@ -555,12 +650,10 @@
               .fc-event {
                 background-color: #fff;
                 border: 1px solid #e5e5e5;
-                cursor: -webkit-grab;
-                cursor: grab;
                 position: absolute;
                 width: 220px;
 
-                &.ui-draggable-dragging {
+                &.ui-draggable-dragging .category:after {
                   cursor: -webkit-grabbing;
                   cursor: grabbing;
                 }
