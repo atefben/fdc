@@ -21,8 +21,7 @@ $(document).ready(function() {
         $(this).addClass('active');
       }
     });
-  }
-    //Scroll
+        //Scroll
       $(window).on('scroll', function() {
         
         var s = $(window).scrollTop();
@@ -35,4 +34,6 @@ $(document).ready(function() {
         $(".sub-nav-list").css({position: "relative",top:1});
       }
       });
+  }
+
 });

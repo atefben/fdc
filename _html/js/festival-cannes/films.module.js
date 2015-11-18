@@ -13,13 +13,13 @@ $(document).ready(function() {
         var h = $("#main").height()-900;
 
       if(s > 470 ){
-        $('.sub-nav-list').addClass('sticky');
-        $(".sub-nav-list").css({position: "fixed",top:90});
+        $('.nav-list.sub-nav-list').addClass('sticky');
+        $(".nav-list.sub-nav-list").css({position: "fixed",top:90});
         $('.nav-movie').addClass('sticky');
         $(".nav-movie").css({position: "fixed",top:137});
         
       } else if (s < 470){
-        
+     
         $(".nav-movie").css({position: "relative",top:1});
         $(".sub-nav-list").css({position: "relative",top:1});
       }
