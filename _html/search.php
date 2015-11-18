@@ -175,7 +175,7 @@
                   <h2 class="titleSection">Medias</h2>
                   <a href="#" class="view-all ajax" data-ajax="searchMedias.html" data-class="medias">Tout voir</a>
                   <div id="mediasResults">
-                    <article class="article" data-format="article" data-theme="competition">
+                    <article class="audio" data-format="article" data-theme="competition">
                       <div class="image">
                         <div class="image-wrapper">
                           <img src="img/articles/03.jpg" alt="" />
@@ -188,7 +188,7 @@
                         <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
                       </div>
                     </article>
-                    <article class="article" data-format="article" data-theme="competition">
+                    <article class="video" data-format="article" data-theme="competition">
                       <div class="image">
                         <div class="image-wrapper">
                           <img src="img/articles/03.jpg" alt="" />
