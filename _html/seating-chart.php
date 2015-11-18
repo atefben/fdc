@@ -33,7 +33,7 @@
       <div id='seatingchart'>
         <div class="nav-map">
           <ul>
-            <li class='active' data-maps="theatre-lumiere">Grand théatre lumière</li>
+            <li data-maps="theatre-lumiere">Grand théatre lumière</li>
             <li data-maps="salle-debussy">Salle debussy</li>
             <li data-maps="salle-60e">Salle du 60E</li>
             <li data-maps="salle-bunuel">Salle buñuel</li>
@@ -55,7 +55,6 @@
           <span id='salle-bazin'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
           <span id='salle-presse'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
           <span id='salle-mace'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
-          <span id='zone-festival'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
         </div>
       </div>
       <div class="contact-press">

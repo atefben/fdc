@@ -1,6 +1,6 @@
 $(document).ready(function() {
   if($('#seatingchart').length) {
-      $('.nav-map li').click(function(){
+      $('.nav-map li:not(#more-map)').click(function(){
         if(!$(this).hasClass('active')){
           
           var $this       =  $(this),
