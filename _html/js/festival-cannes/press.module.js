@@ -17,7 +17,7 @@ $(document).ready(function() {
       if($('#calendar').hasClass('fullwidth')) {
         $('#mycalendar').fullCalendar({
           lang: 'fr',
-          defaultDate: '2016-05-11',
+          defaultDate: '2016-05-12',
           header: {
             left: 'prev',
             center: 'title',
@@ -29,19 +29,21 @@ $(document).ready(function() {
           allDaySlot: false,
           events: events,
           eventAfterRender: function(event, element, view) {
+            if(event.duration/60 == 1) {
+              $(element).addClass('one-hour');
+            }
             var dur = event.duration/60 + 'H';
+            var c = event.eventColor;
             $(element).empty();
-            $(element).append('<span class="category">' + event.type + '</span>');
+            $(element).addClass(event.eventPictogram);
+            $(element).attr('data-id', event.id);
+            $(element).empty();
+            $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#"></a></span>');
             $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
           viewRender: function(view){
-            if (view.start > maxDate){
-              $('#mycalendar').fullCalendar('gotoDate', maxDate);
-            }
-            if (view.start < minDate){
-              $('#mycalendar').fullCalendar('gotoDate', minDate);
-            }
+            
           }
         });
       } else {
@@ -69,6 +71,9 @@ $(document).ready(function() {
             selectOverlap: false,
             events: events,
             eventAfterRender: function(event, element, view) {
+              if(event.duration/60 == 1) {
+                $(element).addClass('one-hour');
+              }
               var dur = event.duration/60 + 'H';
               var c = event.eventColor;
               $(element).empty();
@@ -137,6 +142,10 @@ $(document).ready(function() {
 
                 var timeStart = $(this).data('time'),
                     dur = $(this).data('duration') / 60;
+
+                if(dur == 1) {
+                  $(this).addClass('one-hour');
+                }
 
                 var base = 8;
                 $(this).find('.category').css('background-color', $(this).data('color'));
@@ -216,6 +225,8 @@ $(document).ready(function() {
               e.preventDefault();
 
               if($(this).hasClass('prev')) {
+                $('.v-wrapper').removeClass('max');
+
                 var $v = $('.venue').eq(ct);
                 if($v.prev().length) {
                   var p = - ($v.width() * (ct-1));
@@ -230,17 +241,25 @@ $(document).ready(function() {
                 }
               } else {
                 var $v = $('.venue').eq(ct);
-                if($v.next().next().next().next().length) {
-                  var p = - ($v.width() * (ct+1));
-                  $('.v-wrapper').css({
-                    '-webkit-transform': 'translateX(' + p+ 'px)',
-                    '-moz-transform': 'translateX(' + p+ 'px)',
-                    '-o-transform': 'translateX(' + p+ 'px)',
-                    '-ms-transform': 'translateX(' + p+ 'px)',
-                    'transform': 'translateX(' + p+ 'px)'
-                  });
+                var p = - ($v.width() * (ct+1));
+                var max = $('.venues').width() - ($('.wrapper').width() - $('.timeCol').width());
+                if(!$('.v-wrapper').hasClass('max')) {
                   ct++;
                 }
+
+                if(-p > max) {
+                  p = -max;
+                  $('.v-wrapper').addClass('max');
+                } else {
+                  $('.v-wrapper').removeClass('max');
+                }
+                $('.v-wrapper').css({
+                  '-webkit-transform': 'translateX(' + p+ 'px)',
+                  '-moz-transform': 'translateX(' + p+ 'px)',
+                  '-o-transform': 'translateX(' + p+ 'px)',
+                  '-ms-transform': 'translateX(' + p+ 'px)',
+                  'transform': 'translateX(' + p+ 'px)'
+                });
               }
             });
 

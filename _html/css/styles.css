@@ -13788,6 +13788,16 @@ article .read-later.rAlign span:after {
   margin: 5px 0 0 3px;
   height: 150px;
 }
+.press .fc-event.one-hour {
+  height: 75px;
+}
+.press .fc-event.one-hour .bottom, .press .fc-event.one-hour img {
+  display: none;
+}
+.press .fc-event.one-hour .info .txt {
+  margin-left: 10px;
+  width: 200px;
+}
 .press .fc-event .category {
   background-color: #555;
   background-repeat: no-repeat;

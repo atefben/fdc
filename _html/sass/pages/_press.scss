@@ -18,6 +18,19 @@
     margin: 5px 0 0 3px;
     height: 150px;
 
+    &.one-hour {
+      height: 75px;
+
+      .bottom, img {
+        display: none;
+      }
+
+      .info .txt {
+        margin-left: 10px;
+        width: 200px;
+      }
+    }
+
     .category {
       background-color: #555;
       background-repeat: no-repeat;

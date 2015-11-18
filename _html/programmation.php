@@ -123,7 +123,16 @@
                   </div>
                   <div class="venue">
                     <div class="v-head">Salle Buñuel</div>
-                    <div class="v-container"></div>
+                    <div class="v-container">
+                      <div class="fc-event" data-id="5" data-picto='.pen' data-color='#000' data-start="2016-05-12T15:00:00" data-end="2016-05-12T16:00:00" data-time="15" data-duration="60">
+                        <span class="category">séance de reprise</span>
+                        <div class="info">
+                          <img src="http://dummyimage.com/46x64/000/fff">
+                          <div class="txt"><span>mad max, fury road</span><strong>Elisabet KAPNIST</strong></div>
+                        </div>
+                        <div class="bottom"><span class="duration">1H</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
+                      </div>
+                    </div>
                   </div>
                   <div class="venue">
                     <div class="v-head">Salle Buñuel</div>
