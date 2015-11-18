@@ -231,15 +231,15 @@
               <a href="#" data-date="22" class="disabled">dim<span class="day">22</span></a>
               <a href="#" data-date="21" class="disabled">sam<span class="day">21</span></a>
               <a href="#" data-date="20" class="disabled">ven<span class="day">20</span></a>
-              <a href="#" data-date="19" class="active">jeu<span class="day">19</span></a>
-              <a href="#" data-date="18" class="">mer<span class="day">18</span></a>
-              <a href="#" data-date="17" class="">mar<span class="day">17</span></a>
-              <a href="#" data-date="16" class="">lun<span class="day">16</span></a>
-              <a href="#" data-date="15" class="">dim<span class="day">15</span></a>
-              <a href="#" data-date="14" class="">sam<span class="day">14</span></a>
-              <a href="#" data-date="13" class="">ven<span class="day">13</span></a>
-              <a href="#" data-date="12" class="">jeu<span class="day">12</span></a>
-              <a href="#" data-date="11" class="">mer<span class="day">11</span></a>
+              <a href="#" data-date="19" class="disabled">jeu<span class="day">19</span></a>
+              <a href="#" data-date="18" class="disabled">mer<span class="day">18</span></a>
+              <a href="#" data-date="17" class="disabled">mar<span class="day">17</span></a>
+              <a href="#" data-date="16" class="disabled">lun<span class="day">16</span></a>
+              <a href="#" data-date="15" class="disabled">dim<span class="day">15</span></a>
+              <a href="#" data-date="14" class="disabled">sam<span class="day">14</span></a>
+              <a href="#" data-date="13" class="disabled">ven<span class="day">13</span></a>
+              <a href="#" data-date="12" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
+              <a href="#" data-date="11" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
             </div>
             <div class="calendar">
               <div class="timeCol">
@@ -252,42 +252,46 @@
                 <div class="time">13H</div>
               </div>
               <div class="venues">
-                <div class="venue">
-                  <div class="v-head">Grand Théâtre Lumière</div>
-                  <div class="v-container">
-                    <div class="fc-event">
-                      <span class="category">séance de reprise</span>
-                      <div class="info">
-                        <img src="http://dummyimage.com/46x64/000/fff">
-                        <div class="txt">orson welles, autopsie d’une légende<a href="#">Elisabet KAPNIST</a></div>
+                <a href="#" class="nav prev"></a>
+                <a href="#" class="nav next"></a>
+                <div class="v-wrapper">
+                  <div class="venue">
+                    <div class="v-head">Grand Théâtre Lumière</div>
+                    <div class="v-container">
+                      <div class="fc-event" data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:00:00" data-time="9" data-duration="2">
+                        <span class="category">séance de reprise</span>
+                        <div class="info">
+                          <img src="http://dummyimage.com/46x64/000/fff">
+                          <div class="txt"><span>orson welles, autopsie d’une légende</span><a href="#">Elisabet KAPNIST</a></div>
+                        </div>
+                        <div class="bottom"><span class="duration">2H</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
                       </div>
-                      <div class="bottom">2H - GRAND THÉÂTRE LUMIÈRE<span>Hors compétition</span></div>
                     </div>
                   </div>
-                </div>
-                <div class="venue">
-                  <div class="v-head">Salle Debussy</div>
-                  <div class="v-container"></div>
-                </div>
-                <div class="venue">
-                  <div class="v-head">Salle du 60e</div>
-                  <div class="v-container"></div>
-                </div>
-                <div class="venue">
-                  <div class="v-head">Salle Buñuel</div>
-                  <div class="v-container"></div>
-                </div>
-                <div class="venue">
-                  <div class="v-head">Salle Buñuel</div>
-                  <div class="v-container"></div>
-                </div>
-                <div class="venue">
-                  <div class="v-head">Salle Buñuel</div>
-                  <div class="v-container"></div>
-                </div>
-                <div class="venue">
-                  <div class="v-head">Salle Buñuel</div>
-                  <div class="v-container"></div>
+                  <div class="venue">
+                    <div class="v-head">Salle Debussy</div>
+                    <div class="v-container"></div>
+                  </div>
+                  <div class="venue">
+                    <div class="v-head">Salle du 60e</div>
+                    <div class="v-container"></div>
+                  </div>
+                  <div class="venue">
+                    <div class="v-head">Salle Buñuel</div>
+                    <div class="v-container"></div>
+                  </div>
+                  <div class="venue">
+                    <div class="v-head">Salle Buñuel</div>
+                    <div class="v-container"></div>
+                  </div>
+                  <div class="venue">
+                    <div class="v-head">Salle Buñuel</div>
+                    <div class="v-container"></div>
+                  </div>
+                  <div class="venue">
+                    <div class="v-head">Salle Buñuel</div>
+                    <div class="v-container"></div>
+                  </div>
                 </div>
               </div>
             </div>

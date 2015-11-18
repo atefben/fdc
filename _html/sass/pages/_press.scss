@@ -60,7 +60,7 @@
       font-family: $CamphorBold;
       font-size: 0.625rem;
 
-      span {
+      .competition {
         color: #aeaeae;
         display: block;
         font-family: $CamphorBoldItalic;
@@ -119,6 +119,10 @@
     #mycalendar {
       background-color: #242424;
       height: 510px;
+
+      .fc-highlight-skeleton {
+        display: none;
+      }
 
       .fc-toolbar {
         height: 40px;
@@ -455,13 +459,14 @@
       position: relative;
 
       .calendar {
-        overflow: hidden;
         width: 3000px;
 
         .timeCol {
           background-color: #f4f4f4;
           float: left;
+          position: relative;
           width: 60px;
+          z-index: 2;
 
           .empty {
             border-bottom: 1px solid #e5e5e5;
@@ -484,6 +489,33 @@
         .venues {
           float: left;
           height: 528px;
+
+          .nav {
+            background: #e5e5e5;
+            display: block;
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            top: 41px;
+            z-index: 1;
+
+            &.prev {
+              background: #e5e5e5 url('../img/svg/arrow-left-black.svg') no-repeat center;
+              background-size: 12px;
+              left: 60px;
+            }
+
+            &.next {
+              background: #e5e5e5 url('../img/svg/arrow-right-black.svg') no-repeat center;
+              background-size: 12px;
+              right: 0;
+            }
+          }
+
+          .v-wrapper {
+            height: 100%;
+            @include transition(all 0.6s $smoothTransition);
+          }
 
           .venue {
             float: left;
@@ -523,8 +555,15 @@
               .fc-event {
                 background-color: #fff;
                 border: 1px solid #e5e5e5;
+                cursor: -webkit-grab;
+                cursor: grab;
                 position: absolute;
                 width: 220px;
+
+                &.ui-draggable-dragging {
+                  cursor: -webkit-grabbing;
+                  cursor: grabbing;
+                }
 
                 .txt, .bottom {
                   color: #000;
@@ -591,6 +630,7 @@
               left: 50%;
               bottom: -10px;
               width: 0; 
+              z-index: 3;
             }
           }
 
@@ -613,6 +653,7 @@
   }
 
   .mediatheque {
+    clear: left;
 
     .container {
       width: 885px;
@@ -899,13 +940,36 @@
 
 
 
-  &.press-home {
+  &.press-home, &.press-programmation {
     #calendar {
       display: none;
     }
   }
 
-  &.press-home.calendar-open {
+  &.press-programmation {
+    #calendar-programmation .calendar .venues {
+      height: 933px;
+    }
+
+    .contact-press {
+      border-top: none;
+      clear: left;
+    }
+
+    .programmation {
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      #calendar-programmation .calendar .venues .venue .v-container {
+        background-repeat: repeat;
+      }
+    }
+  }
+
+  &.press-home.calendar-open, &.press-programmation {
     #calendar {
       display: block;
     }

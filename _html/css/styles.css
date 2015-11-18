@@ -6454,9 +6454,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6482,11 +6482,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6502,26 +6502,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -13824,7 +13824,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Bold";
   font-size: 0.625rem;
 }
-.press .fc-event .bottom span {
+.press .fc-event .bottom .competition {
   color: #aeaeae;
   display: block;
   font-family: "Camphor W01 Bold Italic";
@@ -13873,6 +13873,9 @@ article .read-later.rAlign span:after {
 .press #calendar #mycalendar {
   background-color: #242424;
   height: 510px;
+}
+.press #calendar #mycalendar .fc-highlight-skeleton {
+  display: none;
 }
 .press #calendar #mycalendar .fc-toolbar {
   height: 40px;
@@ -14153,13 +14156,14 @@ article .read-later.rAlign span:after {
   position: relative;
 }
 .press .programmation #calendar-programmation .calendar {
-  overflow: hidden;
   width: 3000px;
 }
 .press .programmation #calendar-programmation .calendar .timeCol {
   background-color: #f4f4f4;
   float: left;
+  position: relative;
   width: 60px;
+  z-index: 2;
 }
 .press .programmation #calendar-programmation .calendar .timeCol .empty {
   border-bottom: 1px solid #e5e5e5;
@@ -14179,6 +14183,32 @@ article .read-later.rAlign span:after {
 .press .programmation #calendar-programmation .calendar .venues {
   float: left;
   height: 528px;
+}
+.press .programmation #calendar-programmation .calendar .venues .nav {
+  background: #e5e5e5;
+  display: block;
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  top: 41px;
+  z-index: 1;
+}
+.press .programmation #calendar-programmation .calendar .venues .nav.prev {
+  background: #e5e5e5 url("../img/svg/arrow-left-black.svg") no-repeat center;
+  background-size: 12px;
+  left: 60px;
+}
+.press .programmation #calendar-programmation .calendar .venues .nav.next {
+  background: #e5e5e5 url("../img/svg/arrow-right-black.svg") no-repeat center;
+  background-size: 12px;
+  right: 0;
+}
+.press .programmation #calendar-programmation .calendar .venues .v-wrapper {
+  height: 100%;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .press .programmation #calendar-programmation .calendar .venues .venue {
   float: left;
@@ -14216,8 +14246,14 @@ article .read-later.rAlign span:after {
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event {
   background-color: #fff;
   border: 1px solid #e5e5e5;
+  cursor: -webkit-grab;
+  cursor: grab;
   position: absolute;
   width: 220px;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event.ui-draggable-dragging {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event .txt, .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event .bottom {
   color: #000;
@@ -14277,6 +14313,7 @@ article .read-later.rAlign span:after {
   left: 50%;
   bottom: -10px;
   width: 0;
+  z-index: 3;
 }
 .press .programmation #calendar-programmation #timeline a span {
   display: block;
@@ -14288,6 +14325,9 @@ article .read-later.rAlign span:after {
 }
 .press .programmation #calendar-programmation #timeline a:last-child {
   border-right: none;
+}
+.press .mediatheque {
+  clear: left;
 }
 .press .mediatheque .container {
   width: 885px;
@@ -14525,71 +14565,86 @@ article .read-later.rAlign span:after {
 .press .contact-press .button {
   padding: 5px 22px;
 }
-.press.press-home #calendar {
+.press.press-home #calendar, .press.press-programmation #calendar {
   display: none;
 }
-.press.press-home.calendar-open #calendar {
+.press.press-programmation #calendar-programmation .calendar .venues {
+  height: 933px;
+}
+.press.press-programmation .contact-press {
+  border-top: none;
+  clear: left;
+}
+.press.press-programmation .programmation:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.press.press-programmation .programmation #calendar-programmation .calendar .venues .venue .v-container {
+  background-repeat: repeat;
+}
+.press.press-home.calendar-open #calendar, .press.press-programmation #calendar {
   display: block;
 }
-.press.press-home.calendar-open .wrapper {
+.press.press-home.calendar-open .wrapper, .press.press-programmation .wrapper {
   width: calc(100% - 310px);
 }
-.press.press-home.calendar-open .communiques .grid-container article:nth-child(11), .press.press-home.calendar-open .communiques .grid-container article:nth-child(12) {
+.press.press-home.calendar-open .communiques .grid-container article:nth-child(11), .press.press-home.calendar-open .communiques .grid-container article:nth-child(12), .press.press-programmation .communiques .grid-container article:nth-child(11), .press.press-programmation .communiques .grid-container article:nth-child(12) {
   display: none;
 }
-.press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-home.calendar-open .communiques .grid-container article:nth-child(10) {
+.press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-home.calendar-open .communiques .grid-container article:nth-child(10), .press.press-programmation .communiques .grid-container article:nth-child(5), .press.press-programmation .communiques .grid-container article:nth-child(10) {
   border-right: 1px solid #e3e3e3;
 }
-.press.press-home.calendar-open .communiques .grid-container article:nth-child(6) {
+.press.press-home.calendar-open .communiques .grid-container article:nth-child(6), .press.press-programmation .communiques .grid-container article:nth-child(6) {
   clear: left;
   border-right: none;
   border-bottom: 1px solid #e3e3e3;
 }
 @media screen and (max-width: 1919px) {
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(9), .press.press-home.calendar-open .communiques .grid-container article:nth-child(10) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(9), .press.press-home.calendar-open .communiques .grid-container article:nth-child(10), .press.press-programmation .communiques .grid-container article:nth-child(9), .press.press-programmation .communiques .grid-container article:nth-child(10) {
     display: none;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-programmation .communiques .grid-container article:nth-child(5) {
     border-right: none;
     border-bottom: 1px solid #e3e3e3;
     clear: left;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(6) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(6), .press.press-programmation .communiques .grid-container article:nth-child(6) {
     clear: none;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4), .press.press-home.calendar-open .communiques .grid-container article:nth-child(8) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4), .press.press-home.calendar-open .communiques .grid-container article:nth-child(8), .press.press-programmation .communiques .grid-container article:nth-child(4), .press.press-programmation .communiques .grid-container article:nth-child(8) {
     border-right: 1px solid #e3e3e3;
   }
 }
 @media screen and (max-width: 1606px) {
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(7), .press.press-home.calendar-open .communiques .grid-container article:nth-child(8) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(7), .press.press-home.calendar-open .communiques .grid-container article:nth-child(8), .press.press-programmation .communiques .grid-container article:nth-child(7), .press.press-programmation .communiques .grid-container article:nth-child(8) {
     display: none;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-programmation .communiques .grid-container article:nth-child(5) {
     clear: none;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4), .press.press-programmation .communiques .grid-container article:nth-child(4) {
     border-right: none;
     border-bottom: 1px solid #e3e3e3;
     clear: left;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(3), .press.press-home.calendar-open .communiques .grid-container article:nth-child(6) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(3), .press.press-home.calendar-open .communiques .grid-container article:nth-child(6), .press.press-programmation .communiques .grid-container article:nth-child(3), .press.press-programmation .communiques .grid-container article:nth-child(6) {
     border-right: 1px solid #e3e3e3;
   }
 }
 @media screen and (max-width: 1296px) {
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-home.calendar-open .communiques .grid-container article:nth-child(6) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-home.calendar-open .communiques .grid-container article:nth-child(6), .press.press-programmation .communiques .grid-container article:nth-child(5), .press.press-programmation .communiques .grid-container article:nth-child(6) {
     display: none;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(4), .press.press-programmation .communiques .grid-container article:nth-child(4) {
     clear: none;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(3) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(3), .press.press-programmation .communiques .grid-container article:nth-child(3) {
     border-right: none;
     border-bottom: 1px solid #e3e3e3;
     clear: left;
   }
-  .press.press-home.calendar-open .communiques .grid-container article:nth-child(2), .press.press-home.calendar-open .communiques .grid-container article:nth-child(4) {
+  .press.press-home.calendar-open .communiques .grid-container article:nth-child(2), .press.press-home.calendar-open .communiques .grid-container article:nth-child(4), .press.press-programmation .communiques .grid-container article:nth-child(2), .press.press-programmation .communiques .grid-container article:nth-child(4) {
     border-right: 1px solid #e3e3e3;
   }
 }
