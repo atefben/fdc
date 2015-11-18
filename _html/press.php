@@ -258,7 +258,7 @@
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
-                      <div class="fc-event" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#c8a461' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
+                      <div class="fc-event" data-id="1" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#c8a461' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
                         <span class="category">séance de reprise</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
@@ -275,7 +275,7 @@
                   <div class="venue">
                     <div class="v-head">Salle du 60e</div>
                     <div class="v-container">
-                      <div class="fc-event" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#000' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
+                      <div class="fc-event" data-id="2" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#000' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
                         <span class="category">séance de reprise</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">

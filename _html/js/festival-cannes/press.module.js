@@ -104,6 +104,10 @@ $(document).ready(function() {
               // assign it the date that was reported
               copiedEventObject.start = copiedEventObject.start;
               
+              if(events.filter(function(e) { return e.id == copiedEventObject.id; }).length > 0) {
+                return false;
+              }
+
               // render the event on the calendar
               $('#mycalendar').fullCalendar('renderEvent', copiedEventObject, true);
 
@@ -151,7 +155,8 @@ $(document).ready(function() {
                   duration: parseInt($(this).find('.bottom .duration').text().substr(0, 2)) * 60,
                   room: $(this).find('.bottom .ven').text(),
                   selection: $(this).find('.bottom .competition').text(),
-                  eventPictogram: $(this).data('picto').substr(1)
+                  eventPictogram: $(this).data('picto').substr(1),
+                  id: $(this).data('id')
                 };
                 
                 // store the Event Object in the DOM element so we can get to it later
