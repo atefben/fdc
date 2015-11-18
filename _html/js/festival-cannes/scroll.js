@@ -219,7 +219,7 @@ $(document).ready(function() {
 
     // PRESS
     // sticky calendar 
-    if($('.press-home').length || $('.press-programmation')) {
+    if($('.press-home').length || $('.press-programmation').length) {
       var $myCalendar = $('#calendar-wrapper');
       if(s > $('#calendar').offset().top - 91 && s < ($('.contact-press').offset().top - $myCalendar.height() - 91)) {
         $myCalendar.removeClass('bottom').addClass('stick').css('left', $('#calendar').offset().left);
