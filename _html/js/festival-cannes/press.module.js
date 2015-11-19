@@ -137,6 +137,51 @@ $(document).ready(function() {
 
           if($('#calendar-programmation').length) {
 
+            $('#calendar-programmation').on('click', '.fc-event', function(e) {
+              var url = $(this).data('url');
+
+              $.ajax({
+                type: "GET",
+                dataType: "html",
+                cache: false,
+                url: url,
+                success: function(data) {
+                  $('.popin-event').remove();
+                  $('#calendar-programmation').append(data);
+
+                  var sliderFilms = $(".films").owlCarousel({ 
+                    nav: true,
+                    dots: false,
+                    smartSpeed: 500,
+                    fluidSpeed: 500,
+                    center: true,
+                    loop: false,
+                    margin: 20,
+                    autoWidth: true,
+                    mouseDrag: false,
+                    onInitialized: function() {
+                      $('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
+                    },
+                    onTranslated: function() {
+                      var i = parseInt($('.films .center').index()) + 1;
+                      $('.pagination strong').text(i);
+                    }
+                  });
+
+                  setTimeout(function() {
+                    $('.popin-event').addClass('show');
+                  }, 100);
+                  
+                }
+              });
+            });
+
+            $('#calendar-programmation').on('click', '.close-button', function(e) {
+              e.preventDefault();
+
+              $('.popin-event').removeClass('show');
+            });
+
             function initDraggable() {
               $('#calendar-programmation .fc-event').each(function() {
 

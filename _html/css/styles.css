@@ -6454,9 +6454,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6482,11 +6482,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6502,26 +6502,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -14805,6 +14805,144 @@ article .read-later.rAlign span:after {
 }
 .fullcalendar #calendar #mycalendar .fc-slats tr {
   height: 40px;
+}
+
+.popin-event {
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 973px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 5;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.popin-event.show {
+  opacity: 1;
+  visibility: visible;
+}
+.popin-event .owl-nav {
+  width: 273px;
+  margin: 30px auto 0 auto;
+  overflow: hidden;
+}
+.popin-event .pagination {
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  float: left;
+  text-align: center;
+  width: 105px;
+  height: 82px;
+  line-height: 82px;
+}
+.popin-event .owl-nav div {
+  border: 1px solid #dfdfdf;
+  display: block;
+  font-size: 0;
+  height: 82px;
+  width: 82px;
+  z-index: 3;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.popin-event .owl-nav div.owl-prev {
+  background: url("../img/svg/arrow-left-black.svg") no-repeat center;
+  background-size: 15px;
+  float: left;
+}
+.popin-event .owl-nav div.owl-prev:hover {
+  border-color: #141414;
+}
+.popin-event .owl-nav div.owl-next {
+  background: url("../img/svg/arrow-right-black.svg") no-repeat center;
+  background-size: 15px;
+  float: right;
+}
+.popin-event .owl-nav div.owl-next:hover {
+  border-color: #141414;
+}
+.popin-event .films {
+  border-right: 1px solid #ebebeb;
+  height: 100%;
+  padding-top: 50px;
+  float: left;
+  width: 325px;
+}
+.popin-event .films .owl-item .film .content {
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.popin-event .films .center .film .content {
+  opacity: 1;
+  visibility: visible;
+}
+.popin-event .films .owl-stage {
+  cursor: default;
+}
+.popin-event .film {
+  text-align: center;
+  width: 230px;
+}
+.popin-event .film .button {
+  border-color: #c8a461;
+  padding: 0 18px;
+  margin-top: 30px;
+}
+.popin-event .film h2 {
+  font-family: "Camphor W01 Heavy";
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  margin: 20px 0 5px 0;
+  text-transform: uppercase;
+}
+.popin-event .film .title-original {
+  font-size: 0.750rem;
+  font-weight: normal;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.popin-event .film p {
+  font-size: 0.750rem;
+  line-height: 1.5em;
+  margin: 0 auto;
+  width: 85%;
+}
+.popin-event .film p a {
+  color: #c8a461;
+}
+.popin-event .film p span {
+  color: #ccc;
+  margin-right: 10px;
+}
+.popin-event .film .categories {
+  font-family: "Camphor W01 Bold";
+  padding-top: 30px;
+}
+.popin-event .film .categories span {
+  display: block;
+  font-size: 0.688rem;
+  letter-spacing: 0.1em;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .seatingchart #seatingchart {
