@@ -17,6 +17,10 @@
     margin-right: 40px;
     text-transform: uppercase;
 
+    &:last-child {
+      margin-right: 0;
+    }
+
     .label {
       color: #333;
       margin-right: 15px;

@@ -24,6 +24,15 @@
     .fullscreen {
       bottom: 49px;
     }
+
+    .off {
+      left: 116px;
+      width: calc(100% - 116px);
+    }
+
+    .playpause {
+      left: 50px;
+    }
   }
 
   &.pause .playpause {
@@ -229,6 +238,7 @@
     position: relative;
     margin-left: 13px;
     vertical-align: middle;
+    margin-top: -3px;
 
     .category {
       color: $gold;
@@ -406,6 +416,7 @@
         display: block;
         height: 100%;
         float: left;
+        margin-top: 0;
         position: relative;
         text-align: left;
         z-index: 1;

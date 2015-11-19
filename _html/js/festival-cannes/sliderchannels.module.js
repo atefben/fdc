@@ -5,7 +5,7 @@ $(document).ready(function() {
     // Slider Channels
     // =========================
 
-    var sliderChannels = $("#slider-channels").owlCarousel({
+    var sliderChannels = $("#slider-channels").owlCarousel({ 
       nav: false,
       dots: false,
       smartSpeed: 500,

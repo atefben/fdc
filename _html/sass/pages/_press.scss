@@ -1,0 +1,1412 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// 2. Popin Event
+// =========================
+
+
+// 1. Global
+// =========================
+
+.press {
+  padding-top: 0!important;
+
+  .fc-event {
+    background-color: #373737;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+    margin: 5px 0 0 3px;
+    height: 150px;
+
+    &.one-hour {
+      height: 75px;
+
+      .bottom, img {
+        display: none;
+      }
+
+      .info .txt {
+        margin-left: 10px;
+        width: 200px;
+      }
+    }
+
+    .category {
+      background-color: #555;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      box-sizing: border-box;
+      height: 27px;
+      display: block;
+      font-family: $CamphorBold;
+      font-size: 0.625rem;
+      line-height: 28px;
+      padding-left: 40px;
+      position: relative;
+      text-transform: uppercase;
+      width: 100%;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 13px;
+        background: url('../img/press/drag-icon.png') no-repeat center;
+        position: absolute;
+        top: 7px;
+        right: 5px;
+        cursor: -webkit-grab;
+        cursor: grab;
+      }
+    }
+
+    &.pen {
+      .category {
+        background-image: url('../img/svg/press.svg');
+        background-size: 17px;
+      }
+    }
+
+    .info {
+      img {
+        float: left;
+        margin: 10px;
+      }
+
+      .txt {
+        font-family: $CamphorMedium;
+        font-size: 0.813rem;
+        float: left;
+        width: 145px;
+        margin: 10px 0 0 0;
+        text-transform: uppercase;
+
+        strong {
+          color: $gold;
+          display: block;
+          font-family: $CamphorItalic;
+          font-weight: normal;
+          text-transform: none;
+        }
+      }
+    }
+
+    .bottom {
+      border-top: 1px solid #4b4b4b;
+      clear: both;
+      padding: 7px 10px 10px 10px;
+      font-family: $CamphorBold;
+      font-size: 0.625rem;
+
+      .competition {
+        color: #aeaeae;
+        display: block;
+        font-family: $CamphorBoldItalic;
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  #calendar {
+    background-color: #272727;
+    color: #fff;
+    height: 100%;
+    position: absolute;
+    right: -310px;
+    top: 0;
+    width: 310px;
+    z-index: 1;
+
+    &.fullwidth {
+      position: relative;
+      right: auto;
+      top: auto;
+      width: 100%;
+
+      #mycalendar {
+        height: auto;
+      }
+    }
+
+    #calendar-wrapper {
+      &.stick {
+        position: fixed;
+        top: 91px;
+        z-index: 4;
+      }
+
+      &.bottom {
+        position: absolute;
+        top: auto;
+        bottom: 0px;
+      }
+
+      .drag {
+        background-color: rgba(0, 0, 0, 0.9);
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 40px;
+        height: 510px;
+        left: 0;
+        text-align: center;
+        z-index: 2;
+        @include transition(all 0.9s $smoothTransition);
+
+        h2 {
+          font-family: $CamphorBold;
+          line-height: 1.2em;
+          margin: 140px auto 35px auto;
+          text-transform: uppercase;
+          width: 80%;
+        }
+
+        p {
+          color: #bebebe;
+          font-size: 0.875rem;
+          line-height: 1.4em;
+          margin: 0 auto;
+          width: 75%;
+
+          strong {
+            font-family: $CamphorBold;
+            color: $gold;
+            display: block;
+            margin-bottom: 8px;
+          }
+        }
+
+        img {
+          display: block;
+          margin: 0 auto 20px auto;
+        }
+
+        a {
+          display: block;
+          color: $gold;
+          border: 1px solid $gold;
+          font-family: $CamphorHeavy;
+          font-size: 0.625rem;
+          height: 40px;
+          width: 40px;
+          line-height: 40px;
+          margin: 15px auto 0 auto;
+          text-transform: uppercase;
+          @include transition(all 0.9s $smoothTransition);
+
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+
+      &.drag {
+        .drag {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    h2.title-calendar {
+      background-color: #373737;
+      color: $gold;
+      font-family: $CamphorHeavy;
+      font-size: 0.813rem;
+      font-weight: normal;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #mycalendar {
+      background-color: #242424;
+      height: 510px;
+
+      .fc-highlight-skeleton {
+        display: none;
+      }
+
+      .fc-event .category:after {
+        display: none;
+      }
+
+      .fc-event .category a {
+        display: block;
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        background: url('../img/svg/close-white.svg') no-repeat center;
+        background-size: cover;
+        height: 12px;
+        width: 12px;
+      }
+
+      .fc-toolbar {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 0;
+
+        .fc-left, .fc-right {
+          height: 100%;
+        }
+
+        button {
+          background: none;
+          border: none;
+          border-right: 1px solid #3a3a3a;
+          outline: none;
+          height: 100%;
+          text-shadow: none;
+          box-shadow: none;
+          width: 40px;
+
+          span {
+            color: #666;
+            font-size: 0.6em;
+          }
+        }
+
+        .fc-right {
+          button {
+            border-right: none;
+            border-left: 1px solid #3a3a3a;
+          }
+        }
+
+        h2 {
+          color: #fff;
+          font-family: $CamphorBold;
+          font-weight: normal;
+          font-size: 0.813rem;
+          opacity: 0.3;
+          text-transform: uppercase;
+        }
+      }
+
+      .fc-slats tr {
+        height: 40px;
+      }
+
+      &.side {
+        .fc-time-grid-container {
+          height: 468px!important;
+        }
+
+        .fc-head, .fc-day-grid, .fc-widget-header {
+          display: none;
+        }
+      }
+
+      &.fc-unthemed .fc-divider, &.fc-unthemed .fc-popover, &.fc-unthemed .fc-row, &.fc-unthemed tbody, &.fc-unthemed td, &.fc-unthemed th, &.fc-unthemed thead {
+        border-color: #3a3a3a;
+      }
+
+      .fc-minor td {
+        border-top: 0;
+      }
+
+      .fc-slats .fc-time {
+        font-size: 0.750rem;
+        text-align: center;
+        position: relative;
+        width: 60px!important;
+
+        span {
+          margin-top: 14px;
+          display: block;
+          position: absolute;
+          text-align: center;
+          width: 100%;
+          left: 0;
+        }
+      }
+
+      .fc-bg .fc-axis, .fc-content-skeleton .fc-axis {
+        width: 60px!important;
+      }
+    }
+
+    p.link {
+      border-bottom: 1px solid #3d3d3d;
+      height: 70px;
+      line-height: 70px;
+      margin-top: 0;
+      text-align: center;
+
+      a {
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  .wrapper {
+    position: relative;
+  }
+
+  .header-press {
+    border-bottom: 1px solid #e3e3e3;
+    height: 150px;
+    overflow: hidden;
+
+    .head {
+      background: $gold url('../img/svg/press-white.svg') no-repeat center 36%;
+      background-size: 40px;
+      color: #fff;
+      float: left;
+      height: 100%;
+      box-sizing: border-box;
+      padding-top: 83px;
+      margin-right: 70px;
+      text-align: center;
+      text-transform: uppercase;
+      width: 80px;
+
+      span {
+        display: block;
+        margin: 0 auto;
+        width: 80%;
+        font-family: $CamphorBold;
+        font-size: 0.750rem;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    .container {
+      height: 100%;
+    }
+
+    h2 {
+      color: $gold;
+      float: left;
+      font-family: $CamphorThin;
+      font-size: 2.125rem;
+      font-weight: normal;
+      letter-spacing: 0.2em;
+      margin: 60px 0 0 0;
+      text-transform: uppercase;
+    }
+
+    p {
+      float: right;
+      font-size: 0.813rem;
+      height: 100%;
+      width: 515px;
+      line-height: 1.5em;
+    }
+
+    .buttons {
+      float: right;
+      margin: 50px 0 0 0;
+
+      .button {
+        border-color: $gold;
+      }
+    }
+  }
+
+  .locked {
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #e3e3e3;
+    height: 95px;
+    overflow: hidden;
+    position: relative;
+
+    ::-webkit-input-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+    :-moz-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+    ::-moz-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+    :-ms-input-placeholder {
+        color:   #999;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+
+    h3 {
+      margin: 0 0 8px 65px;
+    }
+
+    p {
+      color: #666;
+      font-size: 0.813rem;
+      margin: 0 0 0 65px;
+    }
+
+    form {
+      position: absolute;
+      right: 150px;
+      height: 50px;
+      top: 24px;
+
+      input {
+        background: none;
+        border: 1px solid #c6c6c6;
+        border-right: none;
+        box-sizing: border-box;
+        color:   #999;
+        font-family: $CamphorRegular;
+        font-size: 0.875rem;
+        display: block;
+        float: left;
+        outline: none;
+        padding: 0 25px;
+        text-align: center;
+        height: 50px;
+        width: 135px;
+
+        &[type="submit"] {
+          border: 1px solid $gold;
+          color: $gold;
+          cursor: pointer;
+          font-family: $CamphorBold;
+          font-size: 0.750rem;
+          text-transform: uppercase;
+          width: 95px;
+          @include transition(all 0.9s $smoothTransition);
+
+          &:hover {
+            border-color: #000;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+  .communiques {
+    overflow: hidden;
+
+    .grid-container {
+      overflow: hidden;
+      padding: 20px;
+
+      article {
+        border: 1px solid #e3e3e3;
+        border-right: none;
+        border-bottom: none;
+        padding: 20px 20px 0 20px;
+        width: 310px;
+
+        .image {
+          width: 265px;
+        }
+
+        &:nth-child(6), &:nth-child(12) {
+          border-right: 1px solid #e3e3e3;
+        }
+
+        &:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10), &:nth-child(11), &:nth-child(12) {
+          border-bottom: 1px solid #e3e3e3;
+        }
+
+        @include breakpoint(1919px) {
+          &:nth-child(11), &:nth-child(12) {
+            display: none;
+          }
+
+          &:nth-child(5), &:nth-child(10) {
+            border-right: 1px solid #e3e3e3;
+          }
+
+          &:nth-child(6) {
+            clear: left;
+            border-right: none;
+            border-bottom: 1px solid #e3e3e3;
+          }
+        }
+
+        @include breakpoint(1606px) {
+          &:nth-child(9), &:nth-child(10) {
+            display: none;
+          }
+
+          &:nth-child(5) {
+            border-right: none;
+            border-bottom: 1px solid #e3e3e3;
+            clear: left;
+          }
+
+          &:nth-child(6) {
+            clear: none;
+          }
+
+          &:nth-child(4), &:nth-child(8) {
+            border-right: 1px solid #e3e3e3;
+          }
+        }
+
+        @include breakpoint(1296px) {
+          &:nth-child(7), &:nth-child(8) {
+            display: none;
+          }
+
+          &:nth-child(5) {
+            clear: none;
+          }
+
+          &:nth-child(4) {
+            border-right: none;
+            border-bottom: 1px solid #e3e3e3;
+            clear: left;
+          }
+
+          &:nth-child(3), &:nth-child(6) {
+            border-right: 1px solid #e3e3e3;
+          }
+        }
+
+      }
+    }
+  }
+
+  .programmation {
+
+    #calendar-programmation {
+      padding-top: 40px;
+      position: relative;
+
+      .calendar {
+        width: 3000px;
+
+        .timeCol {
+          background-color: #f4f4f4;
+          float: left;
+          position: relative;
+          width: 60px;
+          z-index: 2;
+
+          .empty {
+            border-bottom: 1px solid #e5e5e5;
+            border-top: 1px solid #e5e5e5;
+            border-right: 1px solid #e5e5e5;
+            height: 40px;
+          }
+
+          .time {
+            border-bottom: 1px solid #e5e5e5;
+            border-right: 1px solid #e5e5e5;
+            height: 80px;
+            font-size: 0.750rem;
+            color: #202020;
+            line-height: 80px;
+            text-align: center;
+          }
+        }
+
+        .venues {
+          float: left;
+          height: 528px;
+
+          .nav {
+            background: #e5e5e5;
+            display: block;
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            top: 41px;
+            z-index: 1;
+
+            &.prev {
+              background: #e5e5e5 url('../img/svg/arrow-left-black.svg') no-repeat center;
+              background-size: 12px;
+              left: 60px;
+            }
+
+            &.next {
+              background: #e5e5e5 url('../img/svg/arrow-right-black.svg') no-repeat center;
+              background-size: 12px;
+              right: 0;
+            }
+          }
+
+          .v-wrapper {
+            height: 100%;
+            @include transition(all 0.6s $smoothTransition);
+          }
+
+          .venue {
+            float: left;
+            height: 100%;
+            width: 235px;
+
+            .v-head {
+              background-color: #f4f4f4;
+              border-bottom: 1px solid #e5e5e5;
+              border-top: 1px solid #e5e5e5;
+              border-right: 1px solid #e5e5e5;
+              height: 40px;
+              line-height: 40px;
+              font-family: $CamphorBold;
+              font-size: 0.750rem;
+              text-align: center;
+              text-transform: uppercase;
+            }
+
+            .v-container {
+              background: url('../img/press/bg.jpg') repeat-x;
+              border-right: 1px solid #e5e5e5;
+              height: calc(100% - 42px);
+              position: relative;
+
+              &:after {
+                content: '';
+                display: block;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background-color: #e5e5e5;
+                height: 1px;
+              }
+
+              .fc-event {
+                background-color: #fff;
+                border: 1px solid #e5e5e5;
+                position: absolute;
+                width: 220px;
+
+                &.ui-draggable-dragging .category:after {
+                  cursor: -webkit-grabbing;
+                  cursor: grabbing;
+                }
+
+                .txt, .bottom {
+                  color: #000;
+                }
+
+                .bottom {
+                  border-color: #e5e5e5;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      #timeline {
+        height: 40px;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        a {
+          border-right: 1px dotted #e5e5e5;
+          color: #adadad;
+          font-family: $CamphorBold;
+          font-size: 0.625rem;
+          display: inline-block;
+          margin-left: -4px;
+          padding: 9px 0 8px 0;
+          width: 43px;
+          text-align: center;
+          @include transition(all .9s $smoothTransition);
+
+          &.disabled {
+            background-color: #f2f2f2;
+            cursor: default;
+
+            &:hover {
+              background-color: #f2f2f2;
+              color: #adadad;
+            }
+          }
+
+          &:hover {
+            color: $gold;
+          }
+
+          &.active {
+            background-color: $gold;
+            border-color: $gold;
+            border-style: solid;
+            color: #fff;
+            position: relative;
+
+            &:after {
+              content: '';
+              display: block;
+              height: 0; 
+              border-top: 5px solid $gold;
+              border-bottom: 5px solid transparent;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              margin-left: -4px;
+              position: absolute;
+              left: 50%;
+              bottom: -10px;
+              width: 0; 
+              z-index: 3;
+            }
+          }
+
+          span {
+            display: block;
+            font-family: $CamphorHeavy;
+            font-size: 13px;
+          }
+
+          &:first-child {
+            border-left: 1px solid #e5e5e5;
+          }
+
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+
+  .mediatheque {
+    clear: left;
+
+    .container {
+      width: 885px;
+    }
+
+    .table {
+      .line {
+        border-bottom: 1px solid #e3e3e3;
+        overflow: hidden;
+        padding: 10px 0;
+
+        .info {
+          float: left;
+
+          img {
+            display: block;
+            float: left;
+            margin-right: 15px;
+          }
+
+          .txt {
+            height: 75px;
+            float: left;
+            width: 150px;
+
+            p {
+              font-family: $CamphorBold;
+              font-size: 0.875rem;
+              color: #999;
+              text-transform: uppercase;
+            }
+
+            a {
+              color: $gold;
+              display: block;
+              font-family: $CamphorItalic;
+              font-size: 0.813rem;
+              text-transform: none;
+            }
+          }
+        }
+
+        .media {
+          color: #999;
+          float: left;
+          height: 75px;
+          line-height: 75px;
+          font-family: $CamphorBold;
+          font-size: 0.625rem;
+          letter-spacing: 0.1em;
+          margin-right: 50px;
+          text-transform: uppercase;
+        }
+
+        .button {
+          border-color: $gold;
+          padding: 1px 15px 0 15px;
+          height: 38px;
+          line-height: 38px;
+          margin: 16px 0 0 25px;
+        }
+      }
+    }
+  }
+
+  .stats {
+    .container {
+      padding: 40px 0;
+      width: 885px;
+
+      h3 {
+        color: $gold;
+        font-family: $CamphorBold;
+        font-size: 0.875rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.8em;
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  .chap {
+    border-bottom: 1px solid #e3e3e3;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 0 0 45px;
+    position: relative;
+
+    .link {
+      position: absolute;
+      right: 45px;
+      top: 0;
+      margin-top: 0;
+
+      a {
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  p.link {
+    margin-top: 25px;
+
+    img {
+      margin-right: 10px;
+      width: 10px;
+    }
+
+    a {
+      color: $gold;
+      font-family: $CamphorHeavy;
+      font-size: 0.750rem;
+      text-transform: uppercase;
+      @include transition(all 1s $linear);
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .section {
+    height: 300px;
+    width: 100%;
+    background-color: #000;
+    position: relative;
+
+    .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      opacity: 0.25;
+      width: 100%;
+    }
+
+    &.participate .img {
+      background: url('../img/press/001.jpg') no-repeat center;
+      background-size: cover;
+    }
+
+    &.accrediter .img {
+      background: url('../img/press/002.jpg') no-repeat center;
+      background-size: cover;
+    }
+
+    .txt {
+      color: #fff;
+      position: relative;
+      text-align: center;
+      z-index: 1;
+
+      h2 {
+        font-size: 1.750rem;
+      }
+    }
+  }
+
+  .affiche {
+    overflow: hidden;
+    padding: 40px 0;
+
+    .container {
+      width: 885px;
+    }
+
+    .title-press {
+      margin-bottom: 30px;
+    }
+
+    img {
+      border: 1px solid #e1e1e1;
+      display: block;
+    }
+
+    .buttons {
+      text-align: left;
+
+      .button {
+        border-color: $gold;
+
+      }
+    }
+
+    .caption {
+      color: #666;
+      display: block;
+      line-height: 1.4em;
+      height: 36px;
+      font-size: 0.750rem;
+      margin-top: 15px;
+    }
+
+    .portrait {
+      float: left;
+      width: 260px;
+    }
+
+    .landscape {
+      float: left;
+      margin-left: 85px;
+      width: 540px;
+    }
+
+    p {
+      font-family: $CamphorBold;
+      font-size: 0.750rem;
+      font-weight: normal;
+      letter-spacing: 0.2em;
+      margin: 30px 0 20px 0;
+      text-transform: uppercase;
+    }
+  }
+
+  h3.title-press {
+    font-family: $CamphorBold;
+    font-size: 0.875rem;
+    font-weight: normal;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .contact-press {
+    border-top: 1px solid #e3e3e3;
+    padding: 60px 0;
+
+    .title {
+      margin-bottom: 55px;
+    }
+
+    .container {
+      overflow: hidden;
+    }
+
+    .col {
+      box-sizing: border-box;
+      float: left;
+      padding-right: 5%;
+      width: 33.33333%;
+
+      h3 {
+        font-family: $CamphorHeavy;
+        font-size: 0.850rem;
+        line-height: 1.6em;
+        margin-bottom: 30px;
+      }
+
+      p {
+        font-size: 0.850rem;
+        line-height: 1.8em;
+        margin-bottom: 30px;
+
+        &.pressaudio {
+          padding-top: 23px;
+        }
+
+        strong {
+          font-family: $CamphorBold;
+        }
+      }
+
+      .mail {
+        color: $gold;
+        font-family: $CamphorBold;
+        font-size: 0.850rem;
+        @include transition(all 0.9s $smoothTransition);
+
+        &:hover {
+          color: #966505;
+        }
+      }
+    }
+
+    .button {
+      padding: 5px 22px;
+    }
+  }
+
+
+
+  &.press-home, &.press-programmation {
+    #calendar {
+      display: none;
+    }
+  }
+
+  &.press-programmation {
+    #calendar-programmation .calendar .venues {
+      height: 933px;
+    }
+
+    .contact-press {
+      border-top: none;
+      clear: left;
+    }
+
+    .programmation {
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      #calendar-programmation .calendar .venues .venue .v-container {
+        background-repeat: repeat;
+      }
+    }
+  }
+
+  &.press-home.calendar-open, &.press-programmation {
+    #calendar {
+      display: block;
+    }
+
+    .programmation {
+
+      
+    }
+
+    .wrapper {
+      width: calc(100% - 310px);
+    }
+
+    .communiques .grid-container article {
+      &:nth-child(11), &:nth-child(12) {
+        display: none;
+      }
+
+      &:nth-child(5), &:nth-child(10) {
+        border-right: 1px solid #e3e3e3;
+      }
+
+      &:nth-child(6) {
+        clear: left;
+        border-right: none;
+        border-bottom: 1px solid #e3e3e3;
+      }
+
+      @include breakpoint(1919px) {
+        &:nth-child(9), &:nth-child(10) {
+          display: none;
+        }
+
+        &:nth-child(5) {
+          border-right: none;
+          border-bottom: 1px solid #e3e3e3;
+          clear: left;
+        }
+
+        &:nth-child(6) {
+          clear: none;
+        }
+
+        &:nth-child(4), &:nth-child(8) {
+          border-right: 1px solid #e3e3e3;
+        }
+      }
+
+      @include breakpoint(1606px) {
+        &:nth-child(7), &:nth-child(8) {
+          display: none;
+        }
+
+        &:nth-child(5) {
+          clear: none;
+        }
+
+        &:nth-child(4) {
+          border-right: none;
+          border-bottom: 1px solid #e3e3e3;
+          clear: left;
+        }
+
+        &:nth-child(3), &:nth-child(6) {
+          border-right: 1px solid #e3e3e3;
+        }
+      }
+
+      @include breakpoint(1296px) {
+        &:nth-child(5), &:nth-child(6) {
+          display: none;
+        }
+
+        &:nth-child(4) {
+          clear: none;
+        }
+
+        &:nth-child(3) {
+          border-right: none;
+          border-bottom: 1px solid #e3e3e3;
+          clear: left;
+        }
+
+        &:nth-child(2), &:nth-child(4) {
+          border-right: 1px solid #e3e3e3;
+        }
+      }
+    }
+  }
+}
+
+
+
+.fullcalendar {
+  .header-press {
+    border: none;
+  }
+
+  #calendar {
+    #mycalendar {
+      .fc-time-grid-container {
+        height: auto!important;
+      }
+
+      .fc-divider {
+        display: none!important;
+      }
+
+      .fc-toolbar {
+        height: 0;
+
+        .fc-right {
+          background-color: #4b4b4b;
+          color: #818181;
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 41px;
+          z-index: 3;
+        }
+
+        .fc-left {
+          background-color: #4b4b4b;
+          color: #818181;
+          position: absolute;
+          top: 0;
+          left: 70px;
+          height: 41px;
+          z-index: 3;
+        }
+      }
+
+      .fc-head .fc-axis {
+        background-color: #373737;
+        width: 60px!important;
+      }
+
+      .fc-head .fc-day-header {
+        background-color: #373737;
+        border-color: #4b4b4b;
+        height: 40px;
+        line-height: 40px;
+        font-family: $CamphorBold;
+        font-size: 0.750rem;
+        text-transform: uppercase;
+      }
+
+      .fc-slats .fc-time {
+        background-color: #373737;
+        border-color: #4b4b4b;
+
+        span {
+          z-index: 2;
+        }
+      }
+
+      .fc-slats tr {
+        height: 40px;
+      }
+    }
+  }
+}
+
+
+// 2. Popin Event
+// =========================
+
+.popin-event {
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 973px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 5;
+  @include transition(all 0.6s $smoothTransition);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .owl-nav {
+    width: 273px;
+    margin: 30px auto 0 auto;
+    overflow: hidden;
+  }
+
+  .pagination {
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+    float: left;
+    text-align: center;
+    width: 105px;
+    height: 82px;
+    line-height: 82px;
+  }
+
+  .owl-nav div {
+    border: 1px solid #dfdfdf;
+    display: block;
+    font-size: 0;
+    height: 82px;
+    width: 82px;
+    z-index: 3;
+    @include transition(all 0.9s $smoothTransition);
+
+    &.owl-prev {
+      background: url('../img/svg/arrow-left-black.svg') no-repeat center;
+      background-size: 15px;
+      float: left;
+
+      &:hover {
+        border-color: $black;
+      }
+    }
+
+    &.owl-next {
+      background: url('../img/svg/arrow-right-black.svg') no-repeat center;
+      background-size: 15px;
+      float: right;
+
+      &:hover {
+        border-color: $black;
+      }
+    }
+  }
+
+  .films {
+    border-right: 1px solid #ebebeb;
+    height: 100%;
+    padding-top: 50px;
+    float: left;
+    width: 325px;
+
+    .owl-item .film .content {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.5s $smoothTransition);
+      @include transform(translateZ(0));
+    }
+
+    .center .film .content {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .owl-stage {
+      cursor: default;
+    }
+  }
+
+  .film {
+    text-align: center;
+    width: 230px;
+
+    .button {
+      border-color: $gold;
+      padding: 0 18px;
+      margin-top: 30px;
+    }
+
+    h2 {
+      font-family: $CamphorHeavy;
+      font-size: 1.5rem;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+      margin: 20px 0 5px 0;
+      text-transform: uppercase;
+    }
+
+    .title-original {
+      font-size: 0.750rem;
+      font-weight: normal;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 0.750rem;
+      line-height: 1.5em;
+      margin: 0 auto;
+      width: 85%;
+
+      a {
+        color: $gold;
+      }
+
+      span {
+        color: #ccc;
+        margin-right: 10px;
+      }
+    }
+
+    .categories {
+      font-family: $CamphorBold;
+      padding-top: 30px;
+
+      span {
+        display: block;
+        font-size: 0.688rem;
+        letter-spacing: 0.1em;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+

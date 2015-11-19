@@ -31,7 +31,7 @@
     </div>
   </div>
   <section class="content-partners">
-    <div class="contain-section">
+    <div class="contain-section participate-active">
       <h3 class="title-section">Partenaires officiels</h3><i class="fa fa-plus"></i>
       <div class="item-partners">
          <div class="contain-img">

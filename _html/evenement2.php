@@ -59,58 +59,73 @@ Il réalise aussi des adaptations littéraires, comme Diable au corps qui fait s
           </div>
         <h2 class="title">Revivez la Leçon de Cinéma de Marco Bellochio en photos</h2>
         <div class="small-container">
-        <div class="slideshow">
+          <div class="slideshow">
             <div class="slideshow-img">
               <div class="images">
                 <div class="img active">
-                  <a id="photo1" class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
-                    <img src="img/evenements/slide-evenement.jpg" alt="" />
+                  <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
+                    <img src="img/slide001.jpg" alt="" />
                   </a>
                 </div>
                 <div class="img">
-                  <a id="photo2" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/evenements/slide-evenement.jpg" alt="" /></a>
+                  <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                    <img src="img/slide002.jpg" alt="" />
+                  </a>
                 </div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
-                                                <div class="img"><img src="img/evenements/slide-evenement.jpg" alt="" /></div>
+                <div class="img">
+                  <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
               </div>
               <div class="owl-carousel thumbnails">
                 <div data-id="photo1" class="thumb active">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div data-id="photo2" class="thumb">
-                  <img src="img/evenements/evenement-slide-min1.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div data-id="photo3" class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">
-                  <img src="img/evenements/evenement-slide-min2.jpg" />
+                  <img src="img/thumb01.jpg" />
                 </div>
               </div>
             </div>
             <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
-          </div>
+          </div> 
           </div>
           <h2 class="title">Revivez la Leçon de Cinéma de Marco Bellocchio en audio</h2>
            <div class="audio-player audio" data-sound="img/article/sound.mp3">
@@ -155,34 +170,34 @@ Il réalise aussi des adaptations littéraires, comme Diable au corps qui fait s
         </div>
       </div>
     </div>
-!-- POPIN MAIL SHARE ----> 
-  
-   <div class="popin-mail popin">
-     <div class="contain-popin popin">
-       <strong class="theme-article popin">LEÇON DE CINÉMA</strong><span class="date-article popin">18.05.15 . 09:00</span>
-       <h2 class="title-article popin">Marco Bellocchio</h2>
-       <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
-     </div>
-     <form action="" id="form" class="popin">
-            <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas renseignée"><span class="complet-infos popin" >Séparez les adresses par des virgules</span>
-            <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="L'adresse email n'est pas valide">
-            <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
-           <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
-            <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
-            <span class="detail popin">* Champs obligatoires</span>
-            <input type="submit" value='envoyer' class='popin'>
-            <div class="errors popin">
-              <ul class="popin">
-              </ul>
-            </div>
-     </form>
-    <div class="info-popin popin">
-    <p class="popin">  
-      En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.<br>
-  OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
-    </p>
-  </div>
-   </div>
+
+  <!-- POPIN MAIL SHARE ---->
+    <div class="popin-mail popin">
+      <div class="contain-popin popin">
+        <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
+        <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
+        <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
+      </div>
+      <form action="" id="form" class="popin">
+        <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas">
+        <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
+        <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
+        <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
+        <span class="detail popin">* Champs obligatoires</span>
+        <input type="submit" value='envoyer' class='popin'>
+        <div class="errors popin">
+          <ul class="popin">
+          </ul>
+        </div>
+      </form>
+      <div class="info-popin popin">
+        <p class="popin">
+          En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.
+          <br> OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
+        </p>
+      </div>
+    </div>
 <!-- END POPIN MAIL SHARE -->
    
     <?php include('footer.html'); ?>

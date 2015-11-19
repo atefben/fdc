@@ -1,0 +1,94 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.seatingchart{
+  #seatingchart{
+    width: 980px;
+    margin: 41px auto;
+    .nav-map{
+        width: 216px;
+        display: inline-block;
+        margin-right: 114px;
+      ul{
+        li{
+          display: block;
+          text-transform: uppercase;
+          color: #999999;
+          font-size: 0.75rem;
+          font-family: $CamphorBold;
+          padding: 15px 22px;
+          cursor: pointer;
+          @include transition(padding 0.3s $smoothTransition);
+        }
+        .active{
+          background-color: #c8a461;
+          color: #fff;
+          background-image: url('../img/svg/participate-white.svg');
+          background-repeat: no-repeat;
+          background-size: 19px;
+          padding-left: 43px;
+          background-position: 16px;
+        }
+        li:hover{
+          background-color: #e8ce9e;
+          color: #ffffff;
+        }
+        .active:hover{
+          background-color: #c8a461;
+          color: #fff;
+        }
+        #more-map{
+          margin-top: 21px;
+          cursor: default;
+          strong{
+            color:#000;
+            letter-spacing: .2em;
+          }
+          img{
+            width: 197px;
+            height: 142px;
+            margin-top: 15px;
+          }
+        }
+        #more-map:hover{
+          background-color: #fff;
+          color: #000;
+        }
+        #more-map:hover{
+          background-color: #fff;
+          color: #000;
+        }
+      }
+    }
+    .maps{
+      vertical-align: top;
+      width: 646px;
+      height: 567px;
+      display: inline-block;
+      span{
+        display: none;
+        position: relative;
+        transform: translateY(100);
+        @include transition(all 0.3s $smoothTransition);
+        img{
+        }
+      }
+      .active{
+        display: inline-block;
+        @include transition(all 0.3s $smoothTransition);
+        transform: translateY(-100);
+      }
+//      .default-active{
+//        display: inline-block;
+//        @include transition(all 0.3s $smoothTransition);
+//        transform: translateY(-100);
+//      }
+    }
+  }
+}

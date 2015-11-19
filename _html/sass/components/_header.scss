@@ -9,10 +9,29 @@
 
 header {
   background-color: $dark;
-  position: fixed;
+  position: relative;
   width: 100%;
   z-index: 10;
   top: 0;
+
+  &.press {
+    #navigation ul.main {
+      width: 835px;
+    }
+
+    #navigation ul.user {
+      float: right;
+      font-family: $CamphorHeavy;
+
+      li a {
+        color: #a7a7a7;
+
+        &:hover {
+          color: $gold;
+        }
+      }
+    }
+  }
 
   ul {
     cursor: default;
@@ -72,7 +91,7 @@ header {
       #logo {
         width: 290px;
 
-        img {
+        img.palm {
           float: left;
           margin-top: -5px;
           width: 72px;
@@ -108,7 +127,7 @@ header {
     border-left: 1px solid #404040;
     float: right;
     font-family: $CamphorBold;
-    padding: 0 20px 0 10px;
+    padding: 0 15px 0 10px;
 
     li {
       display: inline-block;
@@ -138,6 +157,7 @@ header {
           background: url('../img/svg/language.svg') no-repeat left 48%;
           padding-left: 30px;
           background-size: 20px;
+          margin-right: 0;
 
           &:hover {
             opacity: 1;
@@ -187,7 +207,7 @@ header {
 
     .main-nav {
       float: left;
-      font-family: $CamphorHeavy;
+      font-family: $CamphorBold;
 
       li {
         display: inline-block;
@@ -198,7 +218,7 @@ header {
           padding: 0 12px;
           text-transform: uppercase;
           @include transition(all 0.3s $smoothTransition);
-
+        
           &:hover, &.active {
             color: $gold;
           }
@@ -230,6 +250,7 @@ header {
       padding: 5px 100px 0 0;
       text-align: center;
       vertical-align: middle;
+      width: 200px;
 
       h1, p.stick {
         font-family: $CamphorBold;
@@ -278,7 +299,7 @@ header {
         }
       }
 
-      img {
+      img.palm {
         display: block;
         margin: 0 auto;
         width: 145px;
@@ -295,7 +316,7 @@ header {
 
       img {
         display: inline-block;
-        margin-right: 27px;
+        margin-right: 25px;
         vertical-align: middle;
 
         &.chopard {
@@ -351,9 +372,9 @@ header {
     height: 39px;
     line-height: 39px;
 
-    .container {
+    /*.container {
       overflow: hidden;
-    }
+    }*/
 
     ul {
       float: left;
@@ -407,7 +428,7 @@ header {
             height: 100%;
             left: -150%;
             position: absolute;
-            width: 350%;
+            width: 450%;
             z-index: 0;
           }
 
@@ -415,13 +436,18 @@ header {
             font-size: 0.688rem;
             position: relative;
             z-index: 2;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.18em;
           }
 
           &.tcenter {
             text-align: center;
             width: 639px;
             padding-left: 0;
+            left: 0;
+
+            li:last-child a {
+              padding-right: 0;
+            }
           }
         }
 
@@ -435,6 +461,7 @@ header {
         border-right: 1px solid #404040;
         font-family: $CamphorHeavy;
         font-size: 0.875rem;
+        position: relative;
       }
 
       &.user {

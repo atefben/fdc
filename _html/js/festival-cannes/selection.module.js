@@ -268,10 +268,18 @@ $(document).ready(function() {
       $(this).removeClass('rAlign');
     }
 
-    $(this).find('span').css({
-      top: $(this).offset().top - $(window).scrollTop() - 59,
+    var tPos = $(this).offset().top - $(window).scrollTop() - 59;
+
+    $('#addtext').css({
+      top: tPos,
       left: lPos
     });
+
+    $('#addtext').addClass('show');
+  });
+
+  $('body').on('mouseout', '.read-later', function() {
+    $('#addtext').removeClass('show');
   });
 
 });

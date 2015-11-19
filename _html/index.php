@@ -4,7 +4,7 @@
   <head>
     <!-- //// META \\\\ -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024px, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">    
 
@@ -25,10 +25,11 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <div id="sliderWrapper">
         <div id="slider" class="owl-carousel">
           <div>
-            <div class="img-container"><div class="img" style="background-image:url(http://dummyimage.com/1460x1100/000/fff)"></div></div>
+            <div class="img-container"><div class="img" style="background-image:url(/img/slider/slider01.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
               <h2>Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
@@ -36,7 +37,7 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img-container"><div class="img" style="background-image:url(http://dummyimage.com/1460x1100/222/fff)"></div></div>
+            <div class="img-container"><div class="img" style="background-image:url(/img/slider/slider02.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
               <h2>test</h2>
@@ -44,17 +45,9 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img-container"><div class="img" style="background-image:url(http://dummyimage.com/1460x1100/000/fff)"></div></div>
+            <div class="img-container"><div class="img" style="background-image:url(/img/slider/slider03.jpg)"></div></div>
             <div class="info">
               <span class="category">Test</span>
-              <h2>test</h2>
-            </div>
-            <a href="article.php" class="linkArticle"></a>
-          </div>
-          <div>
-            <div class="img-container"><div class="img" style="background-image:url(http://dummyimage.com/1460x1100/222/fff)"></div></div>
-            <div class="info">
-              <span class="category">Lorem ipsum</span>
               <h2>test</h2>
             </div>
             <a href="article.php" class="linkArticle"></a>
@@ -241,7 +234,7 @@
                   </div>
                   <div class="info">
                     <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi / supported by [NEUS]</a></h2>
+                    <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi</a></h2>
                   </div>
                 </article>
               </div>

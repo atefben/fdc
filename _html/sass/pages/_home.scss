@@ -206,10 +206,12 @@
       .info {
         .category {
           @include transition(all 0.8s $smoothTransition 0.7s);
+          -moz-transition: opacity 0.8s $smoothTransition 0.7s, visibility 0.8s $smoothTransition 0.7s;
         }
 
         h2 {
           @include transition(all 0.8s $smoothTransition 0.9s);
+          -moz-transition: opacity 0.8s $smoothTransition 0.7s, visibility 0.8s $smoothTransition 0.7s;
         }
 
         .category, h2 {
@@ -229,6 +231,10 @@
 
 // 3. News
 // =========================
+
+#filteredArticles {
+  margin-bottom: 45px;
+}
 
 #news {
   overflow: hidden;
@@ -1489,7 +1495,6 @@
     right: 0;
     margin: 0 auto;
     position: absolute!important;
-    @include transform(translate3d(0px, -370px, 0px));
   }
 
   #slider-prefooter {
@@ -1528,7 +1533,6 @@
     height: 100%;
     width: 100%;
     z-index: 0;
-    top: 0;
     @include transform(translate3d(0px, -70px, 0px));
     @include transition(all 0.8s $smoothTransition);
 
@@ -1538,6 +1542,9 @@
       height: auto;
       max-height: 100%;
       width: auto;
+      bottom: -10%;
+      left: 0;
+      right: 0;
       @include transform(translateZ(0));
       -webkit-transform-style: initial;
     }
