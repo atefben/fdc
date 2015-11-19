@@ -1,10 +1,12 @@
 $(document).ready(function() {
 
+  // init array of events
   var events = [];
 
   // get local storage
   var agenda = localStorage.getItem('agenda_press');
 
+  // if local storage, get the events
   if(agenda != null) {
     events = JSON.parse(agenda);
   }
@@ -14,6 +16,7 @@ $(document).ready(function() {
       var maxDate = '22';
       var minDate = '11';
 
+      // full width calendar (page 'my calendar')
       if($('#calendar').hasClass('fullwidth')) {
         $('#mycalendar').fullCalendar({
           lang: 'fr',
@@ -47,15 +50,18 @@ $(document).ready(function() {
           }
         });
       } else {
+        // if cookie drag doesn't exist, add class to show message
         if(!$.cookie('drag')) {
           $('#calendar-wrapper').addClass('drag');
         }
 
+        // on click on "ok" button, remove class and add cookie
         $('.drag a').on('click', function() {
           $('#calendar-wrapper').removeClass('drag');
           $.cookie('drag', '1', { expires: 365 });
         });
 
+        // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
             lang: 'fr',
             defaultDate: '2016-05-12',
@@ -71,6 +77,7 @@ $(document).ready(function() {
             selectOverlap: false,
             events: events,
             eventAfterRender: function(event, element, view) {
+              // atfer render of each event : change html with all the info
               if(event.duration/60 == 1) {
                 $(element).addClass('one-hour');
               }
@@ -84,6 +91,7 @@ $(document).ready(function() {
               $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
             },
             viewRender: function(view){
+              // limit the min date and max date of the calendar, and change the programmation calendar date
               var moment = $('#mycalendar').fullCalendar('getDate');
               if (moment.format('DD') > maxDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
@@ -122,14 +130,31 @@ $(document).ready(function() {
               var agenda = localStorage.getItem('agenda_press');
 
               if(agenda == null) {
+                // add the event and store
                 events.push(copiedEventObject);
 
                 localStorage.setItem('agenda_press', JSON.stringify(events));
               } else {
+                // get events, add the event and store
                 events = JSON.parse(agenda);
                 events.push(copiedEventObject);
 
                 localStorage.setItem('agenda_press', JSON.stringify(events));
+              }
+
+              // update popin-event if needed
+              if($('.events-container').length) {
+                $('.events-container .fc-event').each(function() {
+                  var id = $(this).data('id'),
+                      $this = $(this);
+
+                  for(var i=0; i<events.length; i++) {
+                    if(id == events[i].id) {
+                      $this.parent().addClass('delete');
+                      $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+                    }
+                  }
+                });
               }
               
             }
@@ -137,9 +162,10 @@ $(document).ready(function() {
 
           if($('#calendar-programmation').length) {
 
-            $('#calendar-programmation').on('click', '.fc-event', function(e) {
+            $('#calendar-programmation .calendar').on('click', '.fc-event', function(e) {
               var url = $(this).data('url');
 
+              // load the url of the event via ajax
               $.ajax({
                 type: "GET",
                 dataType: "html",
@@ -147,8 +173,13 @@ $(document).ready(function() {
                 url: url,
                 success: function(data) {
                   $('.popin-event').remove();
+                  // display the html
                   $('#calendar-programmation').append(data);
 
+                  // init the events
+                  initDraggable();
+
+                  // init the slider of movies
                   var sliderFilms = $(".films").owlCarousel({ 
                     nav: true,
                     dots: false,
@@ -168,6 +199,22 @@ $(document).ready(function() {
                     }
                   });
 
+                  // test if events are already store in local storage
+                  if(events.length != 0) {
+                    $('.events-container .fc-event').each(function() {
+                      var id = $(this).data('id'),
+                          $this = $(this);
+
+                      for(var i=0; i<events.length; i++) {
+                        if(id == events[i].id) {
+                          $this.parent().addClass('delete');
+                          $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+                        }
+                      }
+                    });
+                  }
+
+                  // show popin
                   setTimeout(function() {
                     $('.popin-event').addClass('show');
                   }, 100);
@@ -176,15 +223,84 @@ $(document).ready(function() {
               });
             });
 
+            // delete event
+            $('#calendar-programmation').on('click', '.event.delete .button', function(e) {
+              e.preventDefault();
+
+              var id = parseInt($(this).parent().find('.fc-event').data('id'));
+
+              $('#mycalendar').fullCalendar('removeEvents', id);
+
+              var agenda = localStorage.getItem('agenda_press');
+              events = JSON.parse(agenda);
+
+              for(var i=0; i<events.length; i++) {
+                if(events[i].id == id) {
+                  events.splice(i,1);
+                }
+              }
+
+              localStorage.setItem('agenda_press', JSON.stringify(events));
+
+              $(this).parent().removeClass('delete');
+              $(this).text('Ajouter').addClass('add');
+            });
+
+            // add event
+            $('#calendar-programmation').on('click', '.event .add', function(e) {
+              e.preventDefault();
+              var $ev = $(this).parent().find('.fc-event');
+
+              $.cookie('drag', '1', { expires: 365 });
+              // retrieve the dropped element's stored Event Object
+              var originalEventObject = $ev.data('eventObject');
+              
+              // we need to copy it, so that multiple events don't have a reference to the same object
+              var copiedEventObject = $.extend({}, originalEventObject);
+              
+              // assign it the date that was reported
+              copiedEventObject.start = copiedEventObject.start;
+              
+              if(events.filter(function(e) { return e.id == copiedEventObject.id; }).length > 0) {
+                return false;
+              }
+
+              // render the event on the calendar
+              $('#mycalendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+
+              // get local storage
+              var agenda = localStorage.getItem('agenda_press');
+
+              if(agenda == null) {
+                events.push(copiedEventObject);
+
+                localStorage.setItem('agenda_press', JSON.stringify(events));
+              } else {
+                events = JSON.parse(agenda);
+                events.push(copiedEventObject);
+
+                localStorage.setItem('agenda_press', JSON.stringify(events));
+              }
+
+              $(this).parent().addClass('delete');
+              $(this).removeClass('add').text('Supprimer de votre agenda');
+            });
+
+            // close popin
             $('#calendar-programmation').on('click', '.close-button', function(e) {
               e.preventDefault();
 
               $('.popin-event').removeClass('show');
+              setTimeout(function() {
+                $('.popin-event').remove();
+              }, 600);
             });
 
             function initDraggable() {
               $('#calendar-programmation .fc-event').each(function() {
 
+                // based on time start and duration, calculate positions of event
                 var timeStart = $(this).data('time'),
                     dur = $(this).data('duration') / 60;
 
@@ -199,6 +315,7 @@ $(document).ready(function() {
                 var mT = timeStart - base;
                 $(this).css('margin-top', (mT * 80) + 5);
 
+                // init all the data of the event
                 var eventObject = {
                   title: $(this).find('.txt span').text(),
                   eventColor: $(this).data('color'),
@@ -216,7 +333,7 @@ $(document).ready(function() {
                 
                 // store the Event Object in the DOM element so we can get to it later
                 $(this).data('eventObject', eventObject);
-                
+
                 // make the event draggable using jQuery UI
                 $(this).draggable({
                   zIndex: 999,
@@ -237,6 +354,7 @@ $(document).ready(function() {
               });
             }
 
+            // on click on the timeline link, update calendar
             $('#timeline a').on('click', function(e) {
               e.preventDefault();
 
@@ -266,6 +384,7 @@ $(document).ready(function() {
 
             var ct = 0;
 
+            // slider calendar programmation
             $('#calendar-programmation .nav').on('click', function(e) {
               e.preventDefault();
 
@@ -313,6 +432,7 @@ $(document).ready(function() {
         }
       }
 
+  // delete event
   $('#mycalendar').on('click', '.fc-event .category a', function(e) {
     e.preventDefault();
 
@@ -329,6 +449,24 @@ $(document).ready(function() {
     }
 
     localStorage.setItem('agenda_press', JSON.stringify(events));
+
+    if($('.events-container').length) {
+
+      $('.events-container .event').removeClass('delete');
+      $('.events-container .event .button').addClass('add').text('Ajouter');
+
+      $('.events-container .fc-event').each(function() {
+        var id = $(this).data('id'),
+            $this = $(this);
+
+        for(var i=0; i<events.length; i++) {
+          if(id == events[i].id) {
+            $this.parent().addClass('delete');
+            $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+          }
+        }
+      });
+    }
 
   });
 

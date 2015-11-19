@@ -54,7 +54,7 @@
           <div id="calendar-wrapper">
             <h2 class="title-calendar">mon agenda</h2>
             <div id="mycalendar" class="side"></div>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
+            <p class="link"><a href="calendar.php"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
             <div class="drag">
               <h2>Préparez votre séjour au festival de cannes</h2>
               <img src="img/press/drag.png" alt="" />
@@ -230,7 +230,7 @@
         <div class="programmation">
           <div class="chap">
             <h3 class="title-press">Programme du 23 Juin 2016</h3>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />toute la programmation</a></p>
+            <p class="link"><a href="programmation.php"><img src="img/svg/arrow-right-gold.svg" />toute la programmation</a></p>
           </div>
           <div id="calendar-programmation">
             <div id="timeline">
@@ -264,7 +264,7 @@
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
-                      <div class="fc-event" data-id="1" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#c8a461' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
+                      <div class="fc-event" data-url="eventPopin.html" data-id="1" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#c8a461' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
                         <span class="category">séance de reprise</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
@@ -281,7 +281,7 @@
                   <div class="venue">
                     <div class="v-head">Salle du 60e</div>
                     <div class="v-container">
-                      <div class="fc-event" data-id="2" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#000' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
+                      <div class="fc-event" data-url="eventPopin.html" data-id="2" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#000' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
                         <span class="category">séance de reprise</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">

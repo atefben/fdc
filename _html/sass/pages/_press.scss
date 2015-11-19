@@ -696,6 +696,14 @@
         }
       }
 
+      .filters {
+        position: absolute;
+        top: 0;
+        left: 15px;
+        height: 40px;
+        line-height: 38px;
+      }
+
       #timeline {
         height: 40px;
         position: absolute;
@@ -1087,6 +1095,12 @@
     }
   }
 
+  &.press-home {
+    .popin-event {
+      height: 1012px;
+    }
+  }
+
   &.press-home.calendar-open, &.press-programmation {
     #calendar {
       display: block;
@@ -1258,7 +1272,6 @@
 .popin-event {
   background-color: #fff;
   border-bottom: 1px solid #ebebeb;
-  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -1268,6 +1281,13 @@
   visibility: hidden;
   z-index: 5;
   @include transition(all 0.6s $smoothTransition);
+
+  .close-button {
+    height: 70px;
+    top: 20px;
+    right: 20px;
+    width: 70px;
+  }
 
   &.show {
     opacity: 1;
@@ -1324,6 +1344,7 @@
     border-right: 1px solid #ebebeb;
     height: 100%;
     padding-top: 50px;
+    box-sizing: border-box;
     float: left;
     width: 325px;
 
@@ -1341,6 +1362,91 @@
 
     .owl-stage {
       cursor: default;
+    }
+  }
+
+  .events-container {
+    box-sizing: border-box;
+    float: left;
+    padding: 10px 0 0 50px;
+    width: calc(100% - 326px);
+
+    h2 {
+      color: #000;
+      clear: both;
+      font-family: $CamphorBold;
+      font-size: 0.875rem;
+      letter-spacing: 0.2em;
+      margin: 40px 0 12px 0;
+      text-transform: uppercase;
+    }
+
+    .date {
+      color: #ababab;
+      font-family: $CamphorHeavy;
+      font-size: 0.750rem;
+      text-transform: uppercase;
+
+      span {
+        color: $gold;
+      }
+    }
+
+    .events-wrapper {
+      margin-top: 10px;
+
+      .event {
+        display: inline-block;
+        margin-right: 20px;
+        width: 225px;
+
+        p {
+          margin-bottom: 5px;
+        }
+        
+        .fc-event {
+          background-color: #fff;
+          border: 1px solid #e5e5e5;
+          margin: 0!important;
+
+          .txt, .bottom {
+            color: #000;
+          }
+
+          .bottom {
+            border-color: #e5e5e5;
+          }
+        }
+
+        .button {
+          font-size: 0.625rem;
+          margin-top: 20px;
+          padding: 0;
+          text-align: center;
+          width: 100%;
+
+          &.add {
+            border-color: $gold;
+          }
+        }
+
+        &.delete {
+          .fc-event {
+            opacity: 0.5;
+          }
+
+          .button {
+            border-color: #c7c7c7;
+            color: #c7c7c7;
+
+            &:hover {
+              background-color: #fff;
+              color: #000;
+              border-color: #000;
+            }
+          }
+        }
+      }
     }
   }
 
