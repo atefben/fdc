@@ -9,6 +9,7 @@
 // =========================
 
 .press {
+  overflow: hidden;
   padding-top: 0!important;
 
   .fc-event {
@@ -349,7 +350,6 @@
   .header-press {
     border-bottom: 1px solid #e3e3e3;
     height: 150px;
-    overflow: hidden;
 
     .head {
       background: $gold url('../img/svg/press-white.svg') no-repeat center 36%;
@@ -400,9 +400,36 @@
     .buttons {
       float: right;
       margin: 50px 0 0 0;
+      position: relative;
+      z-index: 3;
 
       .button {
+        background-color: #fff;
         border-color: $gold;
+        border-right: 1px solid $gold;
+
+        &.list {
+          border-top: none;
+          display: block;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all 0.6s $smoothTransition);
+
+          &:hover {
+            color: $gold;
+          }
+
+          &.show {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        &.subnav:hover {
+          background-color: #fff;
+          color: $gold;
+          opacity: 0.5;
+        }
       }
     }
   }
@@ -760,7 +787,7 @@
               left: 50%;
               bottom: -10px;
               width: 0; 
-              z-index: 3;
+              z-index: 2;
             }
           }
 
@@ -853,6 +880,10 @@
     .container {
       padding: 40px 0;
       width: 885px;
+
+      img {
+        max-width: 100%;
+      }
 
       h3 {
         color: $gold;
@@ -1074,6 +1105,10 @@
       color: #dfdfdf;
       pointer-events: none;
     }
+
+    .fc-event.private {
+      display: none;
+    }
   }
 
   &.press-home, &.press-programmation {
@@ -1289,7 +1324,7 @@
   height: 973px;
   opacity: 0;
   visibility: hidden;
-  z-index: 5;
+  z-index: 2;
   @include transition(all 0.6s $smoothTransition);
 
   .close-button {
@@ -1522,6 +1557,46 @@
 
 
 
+#mycalendar {
+  .fc-event[style*="right: 50%"],
+  .fc-event[style*="left: 50%"] {
+    img {
+      display: none;
+    }
+
+    .category {
+      font-size: 0;
+    }
+
+    .duration {
+      display: inline-block;
+    }
+
+    .txt {
+      width: 80px;
+      padding: 0 10px;
+
+      span {
+        height: 35px;
+        overflow: hidden;
+        display: block;
+      }
+
+      strong {
+        margin-bottom: 5px;
+      }
+    }
+
+    .ven {
+      width: 61px;
+      overflow: hidden;
+      display: inline-block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  }
+}
 
 
 

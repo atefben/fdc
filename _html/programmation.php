@@ -31,7 +31,9 @@
         <div class="container">
           <h2>Programmation</h2>
           <div class="buttons">
-            <a href="#" class="button">Télécharger l'horaire des projections presse</a>
+            <a href="#" class="button subnav">Télécharger l'horaire des projections presse</a>
+            <a href="#" class="button list">Télécharger au format .pdf</a>
+            <a href="#" class="button list">Télécharger au format .ics</a>
           </div>
         </div>
       </div>

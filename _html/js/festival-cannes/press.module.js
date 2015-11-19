@@ -34,6 +34,84 @@ $(document).ready(function() {
 
   });
 
+  function openPopinEvent(url) {
+    $.ajax({
+      type: "GET",
+      dataType: "html",
+      cache: false,
+      url: url,
+      success: function(data) {
+        $('.popin-event').remove();
+        // display the html
+        $('#calendar-programmation').append(data);
+
+        // init the events
+        initDraggable();
+
+        // init the slider of movies
+        var sliderFilms = $(".films").owlCarousel({ 
+          nav: true,
+          dots: false,
+          smartSpeed: 500,
+          fluidSpeed: 500,
+          center: true,
+          loop: false,
+          margin: 20,
+          autoWidth: true,
+          mouseDrag: false,
+          onInitialized: function() {
+            $('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
+          },
+          onTranslated: function() {
+            var i = parseInt($('.films .center').index()) + 1;
+            $('.pagination strong').text(i);
+          }
+        });
+
+        // test if events are already store in local storage
+        if(events.length != 0) {
+          $('.events-container .fc-event').each(function() {
+            var id = $(this).data('id'),
+                $this = $(this);
+
+            for(var i=0; i<events.length; i++) {
+              if(id == events[i].id) {
+                $this.parent().addClass('delete');
+                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+              }
+            }
+          });
+        }
+
+        $('html, body').animate({
+          scrollTop: $(".press .programmation").offset().top - 91
+        }, 500);
+
+        // show popin
+        setTimeout(function() {
+          $('.popin-event').addClass('show');
+        }, 100);
+        
+      }
+    });
+  }
+
+  $('.subnav').hover(function() {
+    $('.button.list').addClass('show');
+  });
+
+  $('.buttons').mouseout(function() {
+    $('.button.list').removeClass('show');
+  });
+
+  $('.button.list').mouseover(function() {
+    $('.button.list').addClass('show');
+  });
+
+  $('.subnav').on('click', function(e) {
+    e.preventDefault();
+  });
+
   if($('#mycalendar').length) {
 
       var maxDate = '22';
@@ -54,6 +132,7 @@ $(document).ready(function() {
           minTime: "08:00:00",
           allDaySlot: false,
           events: events,
+          slotEventOverlap:false,
           eventAfterRender: function(event, element, view) {
             if(event.duration/60 == 1) {
               $(element).addClass('one-hour');
@@ -64,7 +143,7 @@ $(document).ready(function() {
             $(element).addClass(event.eventPictogram);
             $(element).attr('data-id', event.id);
             $(element).empty();
-            $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#"></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#" class="del"></a></span>');
             $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
@@ -95,10 +174,13 @@ $(document).ready(function() {
             },
             defaultView: 'agendaDay',
             minTime: "08:00:00",
+            maxTime: "19:00:00",
             allDaySlot: false,
             droppable: true,
             selectOverlap: false,
             events: events,
+            eventOverlap: false,
+            slotEventOverlap:false,
             eventAfterRender: function(event, element, view) {
               // atfer render of each event : change html with all the info
               if(event.duration/60 == 1) {
@@ -107,11 +189,19 @@ $(document).ready(function() {
               var dur = event.duration/60 + 'H';
               var c = event.eventColor;
               $(element).empty();
-              $(element).addClass(event.eventPictogram);
+              $(element).addClass(event.eventPictogram).addClass('ajax');
               $(element).attr('data-id', event.id);
-              $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#"></a></span>');
+              $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#" class="del"></a></span>');
               $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
               $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
+            },
+            eventClick: function( event, jsEvent, view ) {
+              if($(jsEvent.target).hasClass('del')) {
+                return;
+              } else {
+                openPopinEvent(event.url);
+                return false;
+              }
             },
             viewRender: function(view){
               // limit the min date and max date of the calendar, and change the programmation calendar date
@@ -189,61 +279,7 @@ $(document).ready(function() {
               var url = $(this).data('url');
 
               // load the url of the event via ajax
-              $.ajax({
-                type: "GET",
-                dataType: "html",
-                cache: false,
-                url: url,
-                success: function(data) {
-                  $('.popin-event').remove();
-                  // display the html
-                  $('#calendar-programmation').append(data);
-
-                  // init the events
-                  initDraggable();
-
-                  // init the slider of movies
-                  var sliderFilms = $(".films").owlCarousel({ 
-                    nav: true,
-                    dots: false,
-                    smartSpeed: 500,
-                    fluidSpeed: 500,
-                    center: true,
-                    loop: false,
-                    margin: 20,
-                    autoWidth: true,
-                    mouseDrag: false,
-                    onInitialized: function() {
-                      $('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
-                    },
-                    onTranslated: function() {
-                      var i = parseInt($('.films .center').index()) + 1;
-                      $('.pagination strong').text(i);
-                    }
-                  });
-
-                  // test if events are already store in local storage
-                  if(events.length != 0) {
-                    $('.events-container .fc-event').each(function() {
-                      var id = $(this).data('id'),
-                          $this = $(this);
-
-                      for(var i=0; i<events.length; i++) {
-                        if(id == events[i].id) {
-                          $this.parent().addClass('delete');
-                          $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
-                        }
-                      }
-                    });
-                  }
-
-                  // show popin
-                  setTimeout(function() {
-                    $('.popin-event').addClass('show');
-                  }, 100);
-                  
-                }
-              });
+              openPopinEvent(url);
             });
 
             // delete event
@@ -351,7 +387,8 @@ $(document).ready(function() {
                   room: $(this).find('.bottom .ven').text(),
                   selection: $(this).find('.bottom .competition').text(),
                   eventPictogram: $(this).data('picto').substr(1),
-                  id: $(this).data('id')
+                  id: $(this).data('id'),
+                  url: $(this).data('url')
                 };
                 
                 // store the Event Object in the DOM element so we can get to it later

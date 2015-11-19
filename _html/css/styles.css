@@ -13778,6 +13778,7 @@ article .read-later.rAlign span:after {
 }
 
 .press {
+  overflow: hidden;
   padding-top: 0 !important;
 }
 .press .fc-event {
@@ -14065,7 +14066,6 @@ article .read-later.rAlign span:after {
 .press .header-press {
   border-bottom: 1px solid #e3e3e3;
   height: 150px;
-  overflow: hidden;
 }
 .press .header-press .head {
   background: #c8a461 url("../img/svg/press-white.svg") no-repeat center 36%;
@@ -14111,9 +14111,35 @@ article .read-later.rAlign span:after {
 .press .header-press .buttons {
   float: right;
   margin: 50px 0 0 0;
+  position: relative;
+  z-index: 3;
 }
 .press .header-press .buttons .button {
+  background-color: #fff;
   border-color: #c8a461;
+  border-right: 1px solid #c8a461;
+}
+.press .header-press .buttons .button.list {
+  border-top: none;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.press .header-press .buttons .button.list:hover {
+  color: #c8a461;
+}
+.press .header-press .buttons .button.list.show {
+  opacity: 1;
+  visibility: visible;
+}
+.press .header-press .buttons .button.subnav:hover {
+  background-color: #fff;
+  color: #c8a461;
+  opacity: 0.5;
 }
 .press .locked {
   background-color: #f4f4f4;
@@ -14427,7 +14453,7 @@ article .read-later.rAlign span:after {
   left: 50%;
   bottom: -10px;
   width: 0;
-  z-index: 3;
+  z-index: 2;
 }
 .press .programmation #calendar-programmation #timeline a span {
   display: block;
@@ -14498,6 +14524,9 @@ article .read-later.rAlign span:after {
 .press .stats .container {
   padding: 40px 0;
   width: 885px;
+}
+.press .stats .container img {
+  max-width: 100%;
 }
 .press .stats .container h3 {
   color: #c8a461;
@@ -14684,6 +14713,9 @@ article .read-later.rAlign span:after {
   color: #dfdfdf;
   pointer-events: none;
 }
+.press.lock .fc-event.private {
+  display: none;
+}
 .press.press-home #calendar, .press.press-programmation #calendar {
   display: none;
 }
@@ -14835,7 +14867,7 @@ article .read-later.rAlign span:after {
   height: 973px;
   opacity: 0;
   visibility: hidden;
-  z-index: 5;
+  z-index: 2;
   -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15035,6 +15067,43 @@ article .read-later.rAlign span:after {
   position: relative;
   text-align: center;
   text-transform: uppercase;
+}
+
+#mycalendar .fc-event[style*="right: 50%"] img,
+#mycalendar .fc-event[style*="left: 50%"] img {
+  display: none;
+}
+#mycalendar .fc-event[style*="right: 50%"] .category,
+#mycalendar .fc-event[style*="left: 50%"] .category {
+  font-size: 0;
+}
+#mycalendar .fc-event[style*="right: 50%"] .duration,
+#mycalendar .fc-event[style*="left: 50%"] .duration {
+  display: inline-block;
+}
+#mycalendar .fc-event[style*="right: 50%"] .txt,
+#mycalendar .fc-event[style*="left: 50%"] .txt {
+  width: 80px;
+  padding: 0 10px;
+}
+#mycalendar .fc-event[style*="right: 50%"] .txt span,
+#mycalendar .fc-event[style*="left: 50%"] .txt span {
+  height: 35px;
+  overflow: hidden;
+  display: block;
+}
+#mycalendar .fc-event[style*="right: 50%"] .txt strong,
+#mycalendar .fc-event[style*="left: 50%"] .txt strong {
+  margin-bottom: 5px;
+}
+#mycalendar .fc-event[style*="right: 50%"] .ven,
+#mycalendar .fc-event[style*="left: 50%"] .ven {
+  width: 61px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .seatingchart #seatingchart {
