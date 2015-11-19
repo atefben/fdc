@@ -468,6 +468,10 @@ header {
         font-family: $CamphorBold;
         font-size: 0.740rem;
 
+        li {
+          vertical-align: top;
+        }
+
         li:hover>a {
           color: $gold;
 

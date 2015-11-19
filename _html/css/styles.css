@@ -3723,6 +3723,9 @@ header #navigation ul.user {
   font-family: "Camphor W01 Bold";
   font-size: 0.740rem;
 }
+header #navigation ul.user li {
+  vertical-align: top;
+}
 header #navigation ul.user li:hover > a {
   color: #c8a461;
 }
