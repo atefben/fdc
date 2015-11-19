@@ -23,7 +23,7 @@
   <body>
     <?php include('header-press.html'); ?>
 
-    <div id="main" class="press press-programmation loading calendar-open">
+    <div id="main" class="press press-programmation loading calendar-open lock">
       <div class="header-press">
         <div class="head">
           <span>Espace presse</span>

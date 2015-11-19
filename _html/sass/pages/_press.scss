@@ -451,6 +451,10 @@
       height: 50px;
       top: 24px;
 
+      &.error input[type="text"] {
+        border-color: red;
+      }
+
       input {
         background: none;
         border: 1px solid #c6c6c6;
@@ -1064,7 +1068,13 @@
     }
   }
 
-
+  &.lock {
+    .affiche .buttons .button {
+      border-color: #dfdfdf;
+      color: #dfdfdf;
+      pointer-events: none;
+    }
+  }
 
   &.press-home, &.press-programmation {
     #calendar {

@@ -11,6 +11,29 @@ $(document).ready(function() {
     events = JSON.parse(agenda);
   }
 
+  // if cookie press
+  if($.cookie('press')) {
+    $('.press').removeClass('lock');
+    $('.locked').remove();
+  }
+
+  $('.locked form').on('submit', function(e) {
+    e.preventDefault();
+
+    var v = $(this).find('input[type="text"]').val();
+    
+    // todo on server : security check password.
+
+    if(v == "test") {
+      $.cookie('press', '1', { expires: 365 });
+      $('.press').removeClass('lock');
+      $('.locked').remove();
+    } else {
+      $(this).addClass('error');
+    }
+
+  });
+
   if($('#mycalendar').length) {
 
       var maxDate = '22';
