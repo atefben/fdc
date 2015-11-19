@@ -25,7 +25,6 @@
 
     <div id="main" class="press loading seatingchart">
       <div class="header-press">
-      <div class="header-press">
         <div class="head">
           <span>Espace presse</span>
         </div>

@@ -6454,9 +6454,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6482,11 +6482,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6502,26 +6502,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -15301,4 +15301,191 @@ article .read-later.rAlign span:after {
   height: 11px;
   top: 8px;
   right: 18px;
+}
+
+.accreditation #accreditation .save {
+  font-family: "Camphor W01 Heavy";
+  background: url("../img/press/svg/pdf.svg") no-repeat 15% center;
+  background-size: 18px;
+  font-size: 0.625rem;
+}
+.accreditation #accreditation .save:hover {
+  color: #c8a461 !important;
+}
+.accreditation #accreditation #share-article {
+  font-family: "Camphor W01 Heavy";
+  background: url("../img/svg/share.svg") no-repeat 13% 47%;
+  background-size: 18px;
+  font-size: 0.625rem;
+}
+.accreditation #accreditation #share-article:hover {
+  color: #c8a461;
+}
+.accreditation #accreditation #share-article:hover + .button {
+  border-left-color: #c8a461;
+}
+.accreditation #accreditation .request-btn {
+  background: url("../img/press/svg/communique-presse-or.svg") no-repeat 5% 39%;
+  background-size: 18px;
+}
+.accreditation #accreditation .buttons {
+  padding: 50px 0px;
+}
+.accreditation #accreditation .wrapper {
+  width: 980px;
+  margin: 0 auto;
+}
+.accreditation #accreditation .wrapper .container-small {
+  width: 626px;
+  margin: 0 auto;
+}
+.accreditation #accreditation .wrapper .container-small a {
+  color: #c8a461;
+  text-decoration: none;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.accreditation #accreditation .wrapper .container-small a:hover {
+  color: #8e6d30;
+}
+.accreditation #accreditation .wrapper .container-small h3 {
+  font-family: "Camphor W01 Bold";
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 56px 0px;
+}
+.accreditation #accreditation .wrapper .container-small h4 {
+  font-family: "Camphor W01 Bold";
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+  color: #c8a461;
+}
+.accreditation #accreditation .wrapper .container-small p {
+  font-family: "Camphor W01 Regular";
+  line-height: 30px;
+  font-size: 1rem;
+  margin-bottom: 43px;
+}
+.accreditation #accreditation .wrapper .container-small p strong {
+  font-family: "Camphor W01 Bold";
+}
+.accreditation #accreditation .wrapper .container-small ul li strong {
+  font-family: "Camphor W01 Bold";
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  line-height: 24px;
+}
+.accreditation #accreditation .wrapper .container-small ul li a {
+  color: #c8a461;
+  text-decoration: none;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.accreditation #accreditation .wrapper .container-small ul li a:hover {
+  color: #8e6d30;
+}
+.accreditation #accreditation .wrapper .container-small h5 {
+  font-family: "Camphor W01 Bold";
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  line-height: 24px;
+}
+.accreditation #accreditation .wrapper .info {
+  width: 704px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 1px solid #d2b990;
+  padding: 25px 38px;
+  line-height: 30px;
+  font-size: 1rem;
+  margin-bottom: 43px;
+}
+.accreditation #accreditation .wrapper .info strong {
+  font-family: "Camphor W01 Bold";
+  display: block;
+}
+.accreditation #accreditation .nav-accre {
+  border-bottom: 1px solid #e3e3e3;
+  border-top: 1px solid #e3e3e3;
+  padding: 52px 0;
+}
+.accreditation #accreditation .nav-accre .wrapper {
+  width: 980px;
+  margin: 0 auto;
+}
+.accreditation #accreditation .nav-accre .wrapper h2 {
+  line-height: 24px;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Bold";
+  letter-spacing: .2em;
+  width: 488px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 27px;
+}
+.accreditation #accreditation .nav-accre .wrapper table td {
+  width: 324px;
+  height: 39px;
+  border: 1px solid #cccccc;
+  color: #cccccc;
+  box-sizing: border-box;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Bold";
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+.accreditation #accreditation .nav-accre .wrapper table .active {
+  background-color: #c8a461;
+  border: 1px solid #c8a461;
+  color: #fff;
+}
+.accreditation #accreditation .nav-accre .wrapper table td:hover {
+  background-color: rgba(200, 164, 97, 0.51);
+  color: #fff;
+}
+.accreditation #accreditation .nav-container {
+  display: none;
+  transform: translateY(100px);
+  opacity: 0;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.accreditation #accreditation .nav-container.active {
+  display: block;
+  transform: translateY(0px);
+  opacity: 1;
+}
+.accreditation #accreditation .request {
+  border-top: 1px solid #e3e3e3;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.accreditation #accreditation .request a {
+  display: block;
+  border: 1px solid #dfdfdf !important;
+  margin: 0 auto;
+  width: 270px;
+  margin-bottom: 11px;
+}
+.accreditation #accreditation .request span {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
 }
