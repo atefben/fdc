@@ -59,7 +59,7 @@
               <h2>Préparez votre séjour au festival de cannes</h2>
               <img src="img/press/drag.png" alt="" />
               <p><strong>Cliquez - déposez</strong> les évènements dans votre agenda puis exportez votre programme</p>
-              <a href="#">OK</a>
+              <a href="#" id="okDrag">OK</a>
             </div>
           </div>
         </div>

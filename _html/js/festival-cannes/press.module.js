@@ -56,7 +56,7 @@ $(document).ready(function() {
         }
 
         // on click on "ok" button, remove class and add cookie
-        $('.drag a').on('click', function() {
+        $('#okDrag').on('click', function() {
           $('#calendar-wrapper').removeClass('drag');
           $.cookie('drag', '1', { expires: 365 });
         });
