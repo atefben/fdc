@@ -145,7 +145,7 @@ services:
         class: Base\AdminBundle\Admin\FilmFilmAdmin
         arguments: [~, Base\CoreBundle\Entity\FilmFilm, BaseAdminBundle:FilmFilmAdmin]
         tags:
-             - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: FilmFilm, label_translator_strategy: sonata.admin.label.strategy.underscore}
+             - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.film_film, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ["BaseAdminBundle"]]
 
@@ -153,7 +153,7 @@ services:
         class: Base\AdminBundle\Admin\FilmPersonAdmin
         arguments: [~, Base\CoreBundle\Entity\FilmPerson, BaseAdminBundle:FilmPersonAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: FilmPerson, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.film_person, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -161,7 +161,7 @@ services:
         class: Base\AdminBundle\Admin\FilmAtelierAdmin
         arguments: [~, Base\CoreBundle\Entity\FilmAtelier, BaseAdminBundle:FilmAtelierAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: FilmAtelier, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.film_atelier, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -169,7 +169,7 @@ services:
         class: Base\AdminBundle\Admin\CountryAdmin
         arguments: [~, Base\CoreBundle\Entity\Country, BaseAdminBundle:CountryAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: Country, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.country, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 

@@ -237,6 +237,8 @@ abstract class CoreManager
                 return "png";
             case "image/jpeg":
                 return "jpg";
+            case "image/pjpeg":
+                return "jpg";
             default:
                 $msg = __METHOD__. " - The mime type {$mimeType} is not supported.";
                 $exception = new Exception($msg);

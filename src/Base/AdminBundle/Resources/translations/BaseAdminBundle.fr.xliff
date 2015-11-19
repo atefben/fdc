@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-10-19T17:24:02Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-11-19T12:15:45Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -240,6 +240,11 @@ article:modified_time : [valeur date de modif actualité]]]></target>
         <target>Langue du BO</target>
         <jms:reference-file line="61">Form/Type/LocaleSwitcherType.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="99c2fbef328ef32f79d609143d95fe33bccd1365" resname="link_action_soif_refresh">
+        <source>link_action_soif_refresh</source>
+        <target>Mise à jour</target>
+        <jms:reference-file line="3">views/CRUD/list__action_soif_refresh.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="1e2421b5c753591e29b5594bf430165ccf5a71a1" resname="nav.site_modal">
         <source>nav.site_modal</source>
         <target>nav.site_modal</target>
@@ -274,21 +279,25 @@ article:modified_time : [valeur date de modif actualité]]]></target>
         <source>news.widget.audio</source>
         <target state="new">news.widget.audio</target>
         <jms:reference-file line="17">views/Form/polycollection.html.twig</jms:reference-file>
+        <jms:reference-file line="268">views/TranslationFormBundle/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7efb57414d4abf6382f8d8836dc3854ce02295a4" resname="news.widget.photo">
         <source>news.widget.photo</source>
         <target state="new">news.widget.photo</target>
         <jms:reference-file line="18">views/Form/polycollection.html.twig</jms:reference-file>
+        <jms:reference-file line="269">views/TranslationFormBundle/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9914d89e5aa55d43926f72e9e9d071b4d7ad9fa2" resname="news.widget.text">
         <source>news.widget.text</source>
         <target state="new">news.widget.text</target>
         <jms:reference-file line="16">views/Form/polycollection.html.twig</jms:reference-file>
+        <jms:reference-file line="267">views/TranslationFormBundle/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a303e4bd8563d1954493fd71b164cac00abfcec7" resname="news.widget.video">
         <source>news.widget.video</source>
         <target state="new">news.widget.video</target>
         <jms:reference-file line="19">views/Form/polycollection.html.twig</jms:reference-file>
+        <jms:reference-file line="270">views/TranslationFormBundle/article.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

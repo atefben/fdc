@@ -305,9 +305,6 @@ class FilmManager extends CoreManager
             // remove old relations
             $this->removeOldRelations($entity->getMedias(), $collection, $entity, 'removeMedia');
         }
-        $this->getContainer()->get('doctrine')->flush();
-
-            die();
 
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmFilmTranslation());

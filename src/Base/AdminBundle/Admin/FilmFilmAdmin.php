@@ -2,13 +2,12 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class FilmFilmAdmin extends Admin
+class FilmFilmAdmin extends SoifAdmin
 {
 
     /**
@@ -59,6 +58,7 @@ class FilmFilmAdmin extends Admin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
+                    'soif_refresh' => array('template' => 'BaseAdminBundle:CRUD:list__action_soif_refresh.html.twig'),
                 )
             ))
         ;
