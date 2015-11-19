@@ -1,6 +1,6 @@
 $(document).ready(function() {
   if($('#praticalguide').length) {
-        /*
+    /*
      * Replace all SVG images with inline SVG
      */
         jQuery('img.svg').each(function(){

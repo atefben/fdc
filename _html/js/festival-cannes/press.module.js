@@ -9,7 +9,7 @@ $(document).ready(function() {
     events = JSON.parse(agenda);
   }
 
-    if($('#mycalendar').length) {
+  if($('#mycalendar').length) {
 
       var maxDate = '22';
       var minDate = '11';
@@ -332,4 +332,34 @@ $(document).ready(function() {
 
   });
 
+  
+  // Navigation tab press page (accreditation)
+  
+  if($('#accreditation').length){
+
+    $('.nav-accre table td').click(function(){
+     var $cat = $(this).data('cat');
+     var sectionIsShow = $('#accreditation').find('.nav-container.active');
+     var sectionShow = $('#accreditation').find('.nav-container[data-cat='+$cat+']');
+    
+    if(!$(this).hasClass('active')){
+        
+        $('.nav-accre table').find('.active').removeClass('active');
+        $(this).addClass('active');
+             
+        sectionIsShow.animate({opacity:0},500,function(){
+          sectionIsShow.css('display','none');
+          sectionIsShow.removeClass('active');
+
+          sectionShow.css('opacity',0);
+          sectionShow.css('display','block');
+
+          sectionShow.animate({opacity:1},500,function(){
+            sectionShow.addClass('active');
+          })
+      });
+    }
+    });
+  }
+  
 });
