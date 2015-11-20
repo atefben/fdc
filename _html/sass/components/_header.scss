@@ -508,7 +508,7 @@ header {
 
         li a {
           color: $grey;
-          padding: 0 0 0 27px;
+          padding: 0 0 0 26px;
           position: relative;
 
           &:after {
@@ -545,11 +545,11 @@ header {
           }
 
           &.press {
-            background: url('../img/svg/press.svg') no-repeat 11% 47%;
+            background: url('../img/svg/press.svg') no-repeat 10% 47%;
             background-size: 15px;
 
             &:after {
-              background: url('../img/svg/press-gold.svg') no-repeat 11% 47%;
+              background: url('../img/svg/press-gold.svg') no-repeat 10% 47%;
               background-size: 15px;
             }
           }

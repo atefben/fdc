@@ -3760,7 +3760,7 @@ header #navigation ul.user li:hover > a:after {
 }
 header #navigation ul.user li a {
   color: #8c8c8c;
-  padding: 0 0 0 27px;
+  padding: 0 0 0 26px;
   position: relative;
 }
 header #navigation ul.user li a:after {
@@ -3795,11 +3795,11 @@ header #navigation ul.user li a.participate:after {
   background-size: 15px;
 }
 header #navigation ul.user li a.press {
-  background: url("../img/svg/press.svg") no-repeat 11% 47%;
+  background: url("../img/svg/press.svg") no-repeat 10% 47%;
   background-size: 15px;
 }
 header #navigation ul.user li a.press:after {
-  background: url("../img/svg/press-gold.svg") no-repeat 11% 47%;
+  background: url("../img/svg/press-gold.svg") no-repeat 10% 47%;
   background-size: 15px;
 }
 header #navigation ul.user li a:hover {
