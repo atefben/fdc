@@ -44,12 +44,12 @@
             <table>
               <tbody></tbody>
               <tr>
-                   <td data-cat="press-media" class="active">compétition longs métrages (25)</td>
+                   <td data-cat="press-media">compétition longs métrages (25)</td>
                    <td data-cat="press-media-competitioncm">compétition courts métrages (3)</td>
                    <td data-cat="press-media-horscomp">hors compétition (7)</td>
                </tr>
                <tr>
-                   <td data-cat="press-media-uncertainregard">un certain regard (10)</td>
+                   <td data-cat="press-media-uncertainregard"  class="active">un certain regard (10)</td>
                    <td data-cat="press-media-seancesdeminuit">séances de minuit</td>
                    <td data-cat="press-media-seancespeciales">séances spéciales</td>
                </tr>
@@ -72,7 +72,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>dheepan<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -165,7 +165,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>dheepan<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -258,7 +258,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>dheepan<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -351,7 +351,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>dheepan<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -444,7 +444,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>dheepan<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
