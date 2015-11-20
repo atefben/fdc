@@ -30,6 +30,14 @@
       .info .txt {
         margin-left: 10px;
         width: 200px;
+
+        span {
+          display: block;
+          max-width: 200px;
+          height: auto;
+          -webkit-line-clamp: initial;
+          overflow: hidden;
+        }
       }
     }
 
@@ -410,7 +418,7 @@
     .container {
       height: 100%;
 
-      a {
+      a.service-presse {
         color: #000;
         text-decoration: underline;
         @include transition(all 0.9s $smoothTransition);
@@ -484,6 +492,7 @@
     height: 95px;
     overflow: hidden;
     position: relative;
+    width: 100%;
 
     ::-webkit-input-placeholder {
         color:    #999;
@@ -1196,6 +1205,10 @@
     .header-press {
       border-bottom: none;
     }
+
+    &.press-programmation .programmation {
+      border-top: none;
+    }
   }
 
   &.press-home, &.press-programmation {
@@ -1302,7 +1315,7 @@
         }
       }
 
-      @include breakpoint(1296px) {
+      @include breakpoint(1024px) {
         &:nth-child(5), &:nth-child(6) {
           display: none;
         }
@@ -1540,6 +1553,10 @@
           background-color: #fff;
           border: 1px solid #e5e5e5;
           margin: 0!important;
+
+          .category:after {
+            display: none;
+          }
 
           .txt, .bottom {
             color: #000;

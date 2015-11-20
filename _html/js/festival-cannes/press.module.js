@@ -403,21 +403,23 @@ $(document).ready(function() {
                 $(this).data('eventObject', eventObject);
 
                 // make the event draggable using jQuery UI
-                $(this).draggable({
-                  zIndex: 999,
-                  revert: true,
-                  revertDuration: 0,
-                  start: function() {
-                    $('#calendar-wrapper').removeClass('drag');
-                  },
-                  stop: function(event, ui){
-                    setTimeout(function() {
-                      if(!$.cookie('drag')) {
-                        $('#calendar-wrapper').addClass('drag');
-                      }
-                    }, 300);
-                  }
-                });
+                if(!$(this).parent().hasClass('event')) {
+                  $(this).draggable({
+                    zIndex: 999,
+                    revert: true,
+                    revertDuration: 0,
+                    start: function() {
+                      $('#calendar-wrapper').removeClass('drag');
+                    },
+                    stop: function(event, ui){
+                      setTimeout(function() {
+                        if(!$.cookie('drag')) {
+                          $('#calendar-wrapper').addClass('drag');
+                        }
+                      }, 300);
+                    }
+                  });
+                }
                 
               });
             }

@@ -13826,6 +13826,13 @@ article .read-later.rAlign span:after {
   margin-left: 10px;
   width: 200px;
 }
+.press .fc-event.one-hour .info .txt span {
+  display: block;
+  max-width: 200px;
+  height: auto;
+  -webkit-line-clamp: initial;
+  overflow: hidden;
+}
 .press .fc-event .category {
   background-color: #555;
   background-repeat: no-repeat;
@@ -14143,7 +14150,7 @@ article .read-later.rAlign span:after {
 .press .header-press .container {
   height: 100%;
 }
-.press .header-press .container a {
+.press .header-press .container a.service-presse {
   color: #000;
   text-decoration: underline;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -14151,7 +14158,7 @@ article .read-later.rAlign span:after {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.press .header-press .container a:hover {
+.press .header-press .container a.service-presse:hover {
   color: #333;
 }
 .press .header-press h2 {
@@ -14211,6 +14218,7 @@ article .read-later.rAlign span:after {
   height: 95px;
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 .press .locked ::-webkit-input-placeholder {
   color: #999;
@@ -14819,6 +14827,9 @@ article .read-later.rAlign span:after {
 .press.lock .header-press {
   border-bottom: none;
 }
+.press.lock.press-programmation .programmation {
+  border-top: none;
+}
 .press.press-home #calendar, .press.press-programmation #calendar {
   display: none;
 }
@@ -14889,7 +14900,7 @@ article .read-later.rAlign span:after {
     border-right: 1px solid #e3e3e3;
   }
 }
-@media screen and (max-width: 1296px) {
+@media screen and (max-width: 1024px) {
   .press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-home.calendar-open .communiques .grid-container article:nth-child(6), .press.press-programmation .communiques .grid-container article:nth-child(5), .press.press-programmation .communiques .grid-container article:nth-child(6) {
     display: none;
   }
@@ -15094,6 +15105,9 @@ article .read-later.rAlign span:after {
   background-color: #fff;
   border: 1px solid #e5e5e5;
   margin: 0 !important;
+}
+.popin-event .events-container .events-wrapper .event .fc-event .category:after {
+  display: none;
 }
 .popin-event .events-container .events-wrapper .event .fc-event .txt, .popin-event .events-container .events-wrapper .event .fc-event .bottom {
   color: #000;
