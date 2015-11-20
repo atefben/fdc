@@ -15567,7 +15567,7 @@ article .read-later.rAlign span:after {
 }
 .accreditation #accreditation #share-article {
   font-family: "Camphor W01 Heavy";
-  background: url("../img/svg/share.svg") no-repeat 13% 47%;
+  background: url("../img/svg/print.svg") no-repeat 15% center;
   background-size: 18px;
   font-size: 0.625rem;
 }
@@ -16112,6 +16112,13 @@ article .read-later.rAlign span:after {
   margin: 0px;
 }
 
+.press-actu .section {
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-size: cover;
+}
 .press-actu .header-press {
   border-bottom: 1px solid #e3e3e3 !important;
 }
@@ -16159,4 +16166,30 @@ article .read-later.rAlign span:after {
 }
 .press-actu .read-more:hover {
   opacity: 0.5;
+}
+
+@media screen and (min-width: 1920px) {
+  .press-actu .section {
+    height: 450px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .press-actu .section {
+    height: 375px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .press-actu .section {
+    height: 299px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .press-actu .section {
+    height: 298px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .press-actu .section {
+    height: 298px !important;
+  }
 }
