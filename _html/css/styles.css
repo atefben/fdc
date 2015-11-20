@@ -6482,9 +6482,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6510,11 +6510,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6530,26 +6530,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -14259,6 +14259,11 @@ article .read-later.rAlign span:after {
   height: 50px;
   top: 24px;
 }
+@media screen and (max-width: 1024px) {
+  .press .locked form {
+    right: 50px;
+  }
+}
 .press .locked form.error input[type="text"] {
   border-color: red;
 }
@@ -14302,6 +14307,9 @@ article .read-later.rAlign span:after {
 .press .communiques .grid-container {
   overflow: hidden;
   padding: 20px;
+}
+.press .communiques .grid-container .grid-wrapper {
+  margin: 0 auto;
 }
 .press .communiques .grid-container article {
   border: 1px solid #e3e3e3;
@@ -14762,7 +14770,6 @@ article .read-later.rAlign span:after {
 .press .contact-press {
   border-top: 1px solid #e3e3e3;
   padding: 60px 0;
-  text-align: center;
 }
 .press .contact-press .title {
   margin-bottom: 55px;
@@ -14884,7 +14891,7 @@ article .read-later.rAlign span:after {
     border-right: 1px solid #e3e3e3;
   }
 }
-@media screen and (max-width: 1606px) {
+@media screen and (max-width: 1599px) {
   .press.press-home.calendar-open .communiques .grid-container article:nth-child(7), .press.press-home.calendar-open .communiques .grid-container article:nth-child(8), .press.press-programmation .communiques .grid-container article:nth-child(7), .press.press-programmation .communiques .grid-container article:nth-child(8) {
     display: none;
   }
@@ -15801,7 +15808,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdf‡;
+  border: 0px solid #dfdfdfÔÇí;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {

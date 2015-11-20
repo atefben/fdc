@@ -536,6 +536,10 @@
       height: 50px;
       top: 24px;
 
+      @include breakpoint(1024px) {
+        right: 50px;
+      }
+
       &.error input[type="text"] {
         border-color: red;
       }
@@ -582,6 +586,10 @@
     .grid-container {
       overflow: hidden;
       padding: 20px;
+
+      .grid-wrapper {
+        margin: 0 auto;
+      }
 
       article {
         border: 1px solid #e3e3e3;
@@ -1128,7 +1136,6 @@
   .contact-press {
     border-top: 1px solid #e3e3e3;
     padding: 60px 0;
-    text-align: center;
 
     .title {
       margin-bottom: 55px;
@@ -1295,7 +1302,7 @@
         }
       }
 
-      @include breakpoint(1606px) {
+      @include breakpoint(1599px) {
         &:nth-child(7), &:nth-child(8) {
           display: none;
         }
