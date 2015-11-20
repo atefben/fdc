@@ -602,6 +602,8 @@ $(document).ready(function() {
           if(!$parent.hasClass('active')){
               $active.removeClass('active');
               $parent.addClass('active');
+          }else{
+              $active.removeClass('active');
           }
         });
       }
