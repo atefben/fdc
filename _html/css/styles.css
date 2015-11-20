@@ -9120,8 +9120,8 @@ article .read-later.rAlign span:after {
   transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .single-movie .poster .picto {
-  background-image: url("../img/svg/play-gold.svg");
-  background-size: 18px;
+  background-image: url("../img/svg/video.svg");
+  background-size: 45px;
   height: 80px;
   top: 50%;
   left: 50%;
