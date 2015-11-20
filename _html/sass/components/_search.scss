@@ -201,6 +201,14 @@ header #searchContainer {
             margin-left: 0;
           }
         }
+
+        .film.big .info h2 {
+          font-family: $CamphorBold;
+        }
+
+        .film.big .info .date {
+          padding-top: 5px;
+        }
       }
     }
 

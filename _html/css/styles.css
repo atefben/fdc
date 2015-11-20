@@ -6091,6 +6091,12 @@ header #searchContainer {
 #searchContainer #results #filtered #filteredContent article:nth-child(3n+1) {
   margin-left: 0;
 }
+#searchContainer #results #filtered #filteredContent .film.big .info h2 {
+  font-family: "Camphor W01 Bold";
+}
+#searchContainer #results #filtered #filteredContent .film.big .info .date {
+  padding-top: 5px;
+}
 #searchContainer #results .big {
   float: left;
   margin-bottom: 50px;
