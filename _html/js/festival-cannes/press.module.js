@@ -281,6 +281,24 @@ $(document).ready(function() {
             }
           });
 
+          if($('.communiques').length) {
+            function resizeGridNews() {
+              var w = 0;
+
+              $('.communiques article').each(function() {
+                if($(this).css('display') != 'none') {
+                  w += $(this).outerWidth();
+                }
+              });
+              $('.communiques .grid-wrapper').width(w/2);
+            }
+
+            resizeGridNews();
+            $(window).resize(function() {
+              resizeGridNews();
+            });
+          }
+
           if($('#calendar-programmation').length) {
 
             $('#calendar-programmation .calendar').on('click', '.fc-event', function(e) {
