@@ -10575,14 +10575,14 @@ article .read-later.rAlign span:after {
   font-weight: 700;
   margin-bottom: 60px;
 }
-.contact .coords {
+.contact .coords, .contact .success {
   background-color: #f4f4f4;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
   text-align: center;
   padding: 35px 0;
 }
-.contact .coords h3 {
+.contact .coords h3, .contact .success h3 {
   color: #c8a461;
   font-family: "Camphor W01 Bold";
   font-size: 0.875em;
@@ -10590,9 +10590,12 @@ article .read-later.rAlign span:after {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-.contact .coords p {
+.contact .coords p, .contact .success p {
   color: #666;
   line-height: 1.4em;
+}
+.contact .success {
+  display: none;
 }
 .contact .container p {
   color: #666;

@@ -18,7 +18,7 @@
     margin-bottom: 60px;
   }
 
-  .coords {
+  .coords, .success {
     background-color: #f4f4f4;
     border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
@@ -38,6 +38,10 @@
       color: #666;
       line-height: 1.4em;
     }
+  }
+
+  .success {
+    display: none;
   }
 
   .container p {
