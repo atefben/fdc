@@ -15981,6 +15981,9 @@ article .read-later.rAlign span:after {
   height: 318px;
   margin-left: -7px;
 }
+.press-media .nav-container .table .line .container {
+  position: relative;
+}
 .press-media .nav-container .table .line .container .contain {
   display: none;
   float: left;
@@ -16023,8 +16026,8 @@ article .read-later.rAlign span:after {
   width: 15px;
   height: 15px;
   position: absolute;
-  top: 45px;
-  right: 254px;
+  top: 34px;
+  right: 31px;
   background-repeat: no-repeat;
   background-size: 111%;
   cursor: pointer;
@@ -16034,8 +16037,8 @@ article .read-later.rAlign span:after {
   width: 51px;
   height: 51px;
   position: absolute;
-  top: 23px;
-  right: 237px;
+  top: 13px;
+  right: 15px;
   background-repeat: no-repeat;
   background-size: 111%;
   cursor: pointer;
