@@ -29,6 +29,31 @@ header {
         &:hover {
           color: $gold;
         }
+
+        &.download {
+          background: url('../img/svg/telecharger-grey.svg') no-repeat 5% 45%;
+          background-size: 10px;
+
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(all 0.9s $smoothTransition);
+            background: url('../img/svg/telecharger-gold.svg') no-repeat 5% 45%;
+            background-size: 10px;
+          }
+
+          &:hover:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
       }
     }
   }

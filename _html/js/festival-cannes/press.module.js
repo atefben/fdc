@@ -34,6 +34,14 @@ $(document).ready(function() {
 
   });
 
+  $('.service-presse').on('click', function(e) {
+    e.preventDefault();
+
+    $('html, body').animate({
+      scrollTop: $('.contact-press').offset().top - 230
+    }, 500);
+  });
+
   function openPopinEvent(url) {
     $.ajax({
       type: "GET",
@@ -153,7 +161,7 @@ $(document).ready(function() {
         });
       } else {
         // if cookie drag doesn't exist, add class to show message
-        if(!$.cookie('drag')) {
+        if(!$.cookie('drag') && events.length == 0) {
           $('#calendar-wrapper').addClass('drag');
         }
 

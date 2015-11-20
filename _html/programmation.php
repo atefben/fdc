@@ -41,7 +41,7 @@
         <div class="vCenter">
           <div class="vCenterKid">
             <h3 class="title-press">Contenu verrouillé</h3>
-            <p>Journalistes, pour accéder à la programmation presse, veuillez saisir votre mot de passe.</p>
+            <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
           </div>
         </div>
         <form action="">
@@ -57,7 +57,7 @@
             <p class="link"><a href="calendar.php"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
             <div class="drag">
               <h2>Préparez votre séjour au festival de cannes</h2>
-              <img src="img/press/drag.png" alt="" />
+              <img src="img/svg/main-drag.svg" alt="" width="43" />
               <p><strong>Cliquez - déposez</strong> les évènements dans votre agenda puis exportez votre programme</p>
               <a href="#" id="okDrag">OK</a>
             </div>
@@ -84,18 +84,18 @@
             </div>
           </div>
             <div id="timeline">
-              <a href="#" class="disabled">dim<span class="day">22</span></a>
-              <a href="#" class="disabled">sam<span class="day">21</span></a>
-              <a href="#" class="disabled">ven<span class="day">20</span></a>
-              <a href="#" class="disabled">jeu<span class="day">19</span></a>
-              <a href="#" class="disabled">mer<span class="day">18</span></a>
-              <a href="#" class="disabled">mar<span class="day">17</span></a>
-              <a href="#" class="disabled">lun<span class="day">16</span></a>
-              <a href="#" class="disabled">dim<span class="day">15</span></a>
-              <a href="#" class="disabled">sam<span class="day">14</span></a>
-              <a href="#" class="disabled">ven<span class="day">13</span></a>
-              <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
               <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
+              <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
+              <a href="#" class="disabled">ven<span class="day">13</span></a>
+              <a href="#" class="disabled">sam<span class="day">14</span></a>
+              <a href="#" class="disabled">dim<span class="day">15</span></a>
+              <a href="#" class="disabled">lun<span class="day">16</span></a>
+              <a href="#" class="disabled">mar<span class="day">17</span></a>
+              <a href="#" class="disabled">mer<span class="day">18</span></a>
+              <a href="#" class="disabled">jeu<span class="day">19</span></a>
+              <a href="#" class="disabled">ven<span class="day">20</span></a>
+              <a href="#" class="disabled">sam<span class="day">21</span></a>
+              <a href="#" class="disabled">dim<span class="day">22</span></a>
             </div>
             <div class="calendar">
               <div class="timeCol">

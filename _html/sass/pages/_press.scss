@@ -69,6 +69,27 @@
       }
     }
 
+    &.seance {
+      .category {
+        background-image: url('../img/svg/evt-seance.svg');
+        background-size: 17px;
+      }
+    }
+
+    &.seance-press {
+      .category {
+        background-image: url('../img/svg/evt-seance-presse.svg');
+        background-size: 15px;
+      }
+    }
+
+    &.conference {
+      .category {
+        background-image: url('../img/svg/evt-conference.svg');
+        background-size: 13px;
+      }
+    }
+
     .info {
       img {
         float: left;
@@ -82,6 +103,18 @@
         width: 145px;
         margin: 10px 0 0 0;
         text-transform: uppercase;
+
+        span {
+          display: block; /* Fallback for non-webkit */
+          display: -webkit-box;
+          max-width: 145px;
+          height: 47px; /* Fallback for non-webkit */
+          margin: 0 auto;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
 
         strong {
           color: $gold;
@@ -376,6 +409,16 @@
 
     .container {
       height: 100%;
+
+      a {
+        color: #000;
+        text-decoration: underline;
+        @include transition(all 0.9s $smoothTransition);
+
+        &:hover {
+          color: #333;
+        }
+      }
     }
 
     h2 {
@@ -436,7 +479,8 @@
 
   .locked {
     background-color: #f4f4f4;
-    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
     height: 95px;
     overflow: hidden;
     position: relative;
@@ -463,7 +507,12 @@
     }
 
     h3 {
-      margin: 0 0 8px 65px;
+      background: url('../img/svg/cadenas.svg') no-repeat left top;
+      background-size: 14px;
+      padding-left: 24px;
+      padding-top: 2px;
+      line-height: 1.4em;
+      margin: 0 0 5px 65px;
     }
 
     p {
@@ -509,8 +558,9 @@
           @include transition(all 0.9s $smoothTransition);
 
           &:hover {
-            border-color: #000;
-            color: #000;
+            border-color: $gold;
+            color: #fff;
+            background-color: $gold;
           }
         }
       }
@@ -530,6 +580,12 @@
         border-bottom: none;
         padding: 20px 20px 0 20px;
         width: 310px;
+
+        &.communique .picto {
+          background-color: $gold;
+          background-image: url('../img/svg/communique-presse.svg');
+          background-size: 21px 20px;
+        }
 
         .image {
           width: 265px;
@@ -604,6 +660,7 @@
   }
 
   .programmation {
+    border-top: 1px solid #e3e3e3;
 
     #calendar-programmation {
       padding-top: 40px;
@@ -861,8 +918,24 @@
           font-family: $CamphorBold;
           font-size: 0.625rem;
           letter-spacing: 0.1em;
-          margin-right: 50px;
+          padding-left: 25px;
+          margin-right: 45px;
           text-transform: uppercase;
+
+          &.folder {
+            background: url('../img/svg/dossier.svg') no-repeat left 47%;
+            background-size: 18px;
+          }
+
+          &.trailer {
+            background: url('../img/svg/bande-annonce.svg') no-repeat left 47%;
+            background-size: 16px;
+          }
+
+          &.photo {
+            background: url('../img/svg/photo-grey.svg') no-repeat left 47%;
+            background-size: 18px;
+          }
         }
 
         .button {
@@ -1046,6 +1119,7 @@
   .contact-press {
     border-top: 1px solid #e3e3e3;
     padding: 60px 0;
+    text-align: center;
 
     .title {
       margin-bottom: 55px;
@@ -1058,8 +1132,12 @@
     .col {
       box-sizing: border-box;
       float: left;
-      padding-right: 5%;
+      padding-right: 1%;
       width: 33.33333%;
+
+      &:last-child {
+        padding-right: 0;
+      }
 
       h3 {
         font-family: $CamphorHeavy;
@@ -1095,19 +1173,28 @@
     }
 
     .button {
+      border-color: $gold;
       padding: 5px 22px;
     }
   }
 
   &.lock {
     .affiche .buttons .button {
-      border-color: #dfdfdf;
-      color: #dfdfdf;
+      background-image: url('../img/svg/cadenas-grey.svg');
+      background-repeat: no-repeat;
+      background-position: 15px 45%;
+      background-size: 12px;
+      border-color: #b0b0b0;
+      color: #b0b0b0;
       pointer-events: none;
     }
 
     .fc-event.private {
       display: none;
+    }
+
+    .header-press {
+      border-bottom: none;
     }
   }
 
