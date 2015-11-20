@@ -63,7 +63,7 @@
             <p>Dès janvier, vous pouvez faire votre demande d'accréditation en envoyant au service de
     presse les pièces justificatives listées dans la rubrique vous concernant : Presse écrite et
     multimédia, Média web, Agence de presse, Agence de presse audiovisuelle, Agence Photo,
-    Photographe de presse, Télévision, Radio.
+    Photographe de presse, Télévision, Radio.<br>
     Les documents peuvent être adressés :</p>
          <ul>
            <li>
