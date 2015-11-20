@@ -23,7 +23,7 @@
   <body>
     <?php include('header-press.html'); ?>
 
-    <div id="main" class="press loading practicalguide">
+    <div id="main" class="press loading practicalguide lock">
       <div class="header-press">
         <div class="head">
           <span>Espace presse</span>
