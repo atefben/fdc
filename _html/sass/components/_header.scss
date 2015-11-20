@@ -508,7 +508,7 @@ header {
 
         li a {
           color: $grey;
-          padding: 0 0 0 28px;
+          padding: 0 0 0 27px;
           position: relative;
 
           &:after {
@@ -525,11 +525,11 @@ header {
           }
 
           &.programmation {
-            background: url('../img/svg/programmation.svg') no-repeat 8% 47%;
+            background: url('../img/svg/programmation.svg') no-repeat 7% 47%;
             background-size: 15px;
 
             &:after {
-              background: url('../img/svg/programmation-gold.svg') no-repeat 8% 47%;
+              background: url('../img/svg/programmation-gold.svg') no-repeat 7% 47%;
               background-size: 15px;
             }
           }
@@ -545,11 +545,11 @@ header {
           }
 
           &.press {
-            background: url('../img/svg/press.svg') no-repeat 12% 47%;
+            background: url('../img/svg/press.svg') no-repeat 11% 47%;
             background-size: 15px;
 
             &:after {
-              background: url('../img/svg/press-gold.svg') no-repeat 12% 47%;
+              background: url('../img/svg/press-gold.svg') no-repeat 11% 47%;
               background-size: 15px;
             }
           }

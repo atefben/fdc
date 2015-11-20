@@ -1315,7 +1315,7 @@
         }
       }
 
-      @include breakpoint(1024px) {
+      @include breakpoint(1279px) {
         &:nth-child(5), &:nth-child(6) {
           display: none;
         }
