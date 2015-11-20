@@ -8,6 +8,10 @@
 // =========================
 
 .press-actu{
+  .section{
+    @include transition(all 1s $linear);
+    background-size: cover;
+  }
   .header-press{
     border-bottom: 1px solid #e3e3e3 !important;
 
@@ -66,3 +70,38 @@
     }
   }
 }
+
+
+
+  @media screen and (min-width: 1920px) {
+    .press-actu .section{
+      height: 450px !important;
+    }
+
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+   .press-actu .section{
+      height: 375px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+    .press-actu .section{
+      height: 299px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+   .press-actu .section{
+      height: 298px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+   .press-actu .section{
+      height: 298px !important;
+    }
+  }
