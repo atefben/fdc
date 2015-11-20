@@ -142,7 +142,7 @@ $(document).ready(function() {
           events: events,
           slotEventOverlap:false,
           eventAfterRender: function(event, element, view) {
-            if(event.duration/60 == 1) {
+            if(event.duration/60 < 2) {
               $(element).addClass('one-hour');
             }
             var dur = event.duration/60 + 'H';
@@ -191,7 +191,7 @@ $(document).ready(function() {
             slotEventOverlap:false,
             eventAfterRender: function(event, element, view) {
               // atfer render of each event : change html with all the info
-              if(event.duration/60 == 1) {
+              if(event.duration/60 < 2) {
                 $(element).addClass('one-hour');
               }
               var dur = event.duration/60 + 'H';
@@ -387,10 +387,16 @@ $(document).ready(function() {
 
                 // based on time start and duration, calculate positions of event
                 var timeStart = $(this).data('time'),
-                    dur = $(this).data('duration') / 60;
+                    dur = Math.floor($(this).data('duration') / 60),
+                    minutes = $(this).data('duration') % 60;
 
-                if(dur == 1) {
+                if(minutes == 0) {
+                  minutes = '';
+                }
+
+                if(dur < 2) {
                   $(this).addClass('one-hour');
+                  $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
                 }
 
                 var base = 8;

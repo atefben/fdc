@@ -15148,6 +15148,12 @@ article .read-later.rAlign span:after {
   text-align: center;
   width: 230px;
 }
+.popin-event .film img {
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
 .popin-event .film .button {
   border-color: #c8a461;
   padding: 0 18px;
