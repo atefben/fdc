@@ -23,7 +23,7 @@
   <body>
     <?php include('header-press.html'); ?>
 
-    <div id="main" class="press loading downloading-press">
+    <div id="main" class="press loading downloading-press lock">
       <div class="header-press">
         <div class="head">
           <span>Espace presse</span>
@@ -152,7 +152,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
             <h3 class="title-press">Photos institutionnelles <span class="number">(22)</span></h3>
           <div class="download-btns right-btn"><a href="" class="alldl button">Tout telecharger</a></div>
           </div>
-          <div id="gridPressDownload" class="grid-wrapper">
+          <div class="gridPressDownload" class="grid-wrapper">
             <div class="grid-sizer"></div>
               <div class="item">
                 <a href=" ">
@@ -202,7 +202,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
             </div>
           </div>
         </div>
-        <div class="dossi block">
+        <div class="dossier block">
           <div class="container">
           <h3 class="title-press">Dossier de presse</h3>
           <div class="contain-dp">

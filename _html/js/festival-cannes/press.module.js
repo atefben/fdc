@@ -571,8 +571,8 @@ $(document).ready(function() {
   }
   
   //Grid
-      if($('#gridPressDownload').length){
-        $grid = $('#gridPressDownload').imagesLoaded(function() {
+      if($('.gridPressDownload').length){
+        $grid = $('.gridPressDownload').imagesLoaded(function() {
           $grid.isotope({
             layoutMode: 'packery',
             itemSelector: '.item',

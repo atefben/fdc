@@ -6482,9 +6482,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6510,11 +6510,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6530,26 +6530,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -15779,6 +15779,7 @@ article .read-later.rAlign span:after {
 .downloading-press .block .container .container-title .right-btn {
   position: absolute;
   top: -56px;
+  right: 0px;
   text-transform: uppercase;
   font-size: 0.60rem;
   font-family: "Camphor W01 Heavy";
@@ -15800,7 +15801,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdfÔÇí;
+  border: 0px solid #dfdfdf‡;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
@@ -15889,4 +15890,130 @@ article .read-later.rAlign span:after {
 }
 .downloading-press .block .container .contain-dp .infos strong {
   color: #c8a461;
+}
+
+.press-media .mediatheque .container {
+  width: 977px;
+}
+.press-media .mediatheque .table .line:last-child {
+  border-bottom: 0px solid #fff;
+}
+.press-media .mediatheque .line .info {
+  float: left;
+  padding-right: 118px;
+}
+.press-media .header-press p {
+  width: 442px;
+}
+.press-media .nav-mediapress {
+  border-bottom: 1px solid #e3e3e3;
+  border-top: 1px solid #e3e3e3;
+  padding: 43px 0;
+}
+.press-media .nav-mediapress .wrapper {
+  width: 980px;
+  margin: 0 auto;
+}
+.press-media .nav-mediapress .wrapper h2 {
+  line-height: 24px;
+  font-size: 0.88rem;
+  font-family: "Camphor W01 Bold";
+  letter-spacing: .2em;
+  width: 488px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 18px;
+}
+.press-media .nav-mediapress .wrapper table td {
+  width: 324px;
+  height: 39px;
+  border: 1px solid #cccccc;
+  color: #cccccc;
+  box-sizing: border-box;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Bold";
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+.press-media .nav-mediapress .wrapper table .active {
+  background-color: #c8a461;
+  border: 1px solid #c8a461;
+  color: #fff;
+}
+.press-media .nav-mediapress .wrapper table td:hover {
+  background-color: rgba(200, 164, 97, 0.51);
+  color: #fff;
+}
+.press-media .nav-container .table .line .container .contain {
+  display: none;
+  float: left;
+  width: 100%;
+  padding-top: 63px;
+  padding-bottom: 11px;
+}
+.press-media .nav-container .table .line .container .contain .contain-buttons {
+  display: inline-block;
+  vertical-align: top;
+}
+.press-media .nav-container .table .line .container .contain .contain-buttons strong {
+  display: block;
+  margin-bottom: 17px;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  font-family: "Camphor W01 Bold";
+  letter-spacing: .2em;
+}
+.press-media .nav-container .table .line .container .contain .contain-buttons strong span {
+  color: #c29f5f;
+}
+.press-media .nav-container .table .line .container .contain .contain-buttons .buttons {
+  display: inline-block;
+}
+.press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
+  margin: 0px;
+}
+.press-media .nav-container .table .line .container .contain .contain-buttons .buttons:nth-child(3) {
+  margin-left: 68px;
+}
+.press-media .nav-container .table .line .container .contain .contain-buttons:first-child {
+  margin-right: 124px;
+}
+.press-media .nav-container .table .line .container.active .contain {
+  display: block;
+}
+.press-media .block .container {
+  margin-bottom: 41px;
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 1px solid #dfdfdf;
+}
+.press-media .block .container .container-title {
+  position: relative;
+}
+.press-media .block .container .title-press {
+  margin-bottom: 30px;
+}
+.press-media .block .container .container-title .right-btn {
+  position: absolute;
+  top: -32px;
+  right: 0px;
+  text-transform: uppercase;
+  font-size: 0.60rem;
+  font-family: "Camphor W01 Heavy";
+  float: left;
+  letter-spacing: .01em;
+}
+.press-media .block .container .container-title .number {
+  color: #c29f5f;
+  font-size: 0.88rem;
+  letter-spacing: .2em;
+}
+.press-media .grid-wrapper {
+  margin: 0px;
 }
