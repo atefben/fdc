@@ -6482,9 +6482,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6510,11 +6510,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6530,26 +6530,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -15814,7 +15814,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdfÔÇí;
+  border: 0px solid #dfdfdf‡;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
@@ -15913,7 +15913,10 @@ article .read-later.rAlign span:after {
 }
 .press-media .mediatheque .line .info {
   float: left;
-  padding-right: 118px;
+  width: 320px;
+}
+.press-media .mediatheque .line .info .txt {
+  width: 225px;
 }
 .press-media .header-press p {
   width: 442px;
@@ -15963,6 +15966,21 @@ article .read-later.rAlign span:after {
   background-color: rgba(200, 164, 97, 0.51);
   color: #fff;
 }
+.press-media .nav-container .table .line {
+  position: relative;
+}
+.press-media .nav-container .table .line .media, .press-media .nav-container .table .line .info {
+  cursor: pointer;
+}
+.press-media .nav-container .table .line .item {
+  display: inline-block;
+  margin: 6px;
+}
+.press-media .nav-container .table .line .grid-wrapper {
+  position: relative;
+  height: 318px;
+  margin-left: -7px;
+}
 .press-media .nav-container .table .line .container .contain {
   display: none;
   float: left;
@@ -15999,6 +16017,28 @@ article .read-later.rAlign span:after {
 }
 .press-media .nav-container .table .line .container.active .contain {
   display: block;
+}
+.press-media .nav-container .table .line .container.active .plus {
+  background-image: url(../img/press/svg/moins.svg);
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 45px;
+  right: 254px;
+  background-repeat: no-repeat;
+  background-size: 111%;
+  cursor: pointer;
+}
+.press-media .nav-container .table .line .plus {
+  background-image: url(../img/press/svg/case-plus.svg);
+  width: 51px;
+  height: 51px;
+  position: absolute;
+  top: 23px;
+  right: 237px;
+  background-repeat: no-repeat;
+  background-size: 111%;
+  cursor: pointer;
 }
 .press-media .block .container {
   margin-bottom: 41px;

@@ -19,7 +19,10 @@
     }
     .line .info {
     float: left;
-    padding-right: 118px;
+    width: 320px;
+      .txt{
+        width: 225px;
+      }
     }
     
   }
@@ -46,7 +49,7 @@
         text-align: center;
         padding-bottom:18px;
       }
-      table {
+      table { 
         td {
           width: 324px;
           height: 39px;
@@ -75,6 +78,19 @@
   .nav-container{
     .table{
       .line{
+        .media, .info{
+          cursor: pointer;
+        }
+        .item{
+          display: inline-block;
+          margin: 6px;
+        }
+        .grid-wrapper{
+          position: relative;
+          height: 318px;
+          margin-left: -7px;
+        }
+        position: relative;
         .container{
           .contain{
             display: none;
@@ -115,6 +131,28 @@
           .contain{
             display: block;
           }
+          .plus{
+            background-image:url(../img/press/svg/moins.svg);
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 45px;
+            right: 254px;
+            background-repeat: no-repeat;
+            background-size: 111%;
+            cursor: pointer;
+          }
+        }
+        .plus{
+            background-image:url(../img/press/svg/case-plus.svg);
+            width: 51px;
+            height: 51px;
+            position: absolute;
+            top: 23px;
+            right: 237px;
+            background-repeat: no-repeat;
+            background-size: 111%;
+            cursor: pointer;
         }
       }
     }

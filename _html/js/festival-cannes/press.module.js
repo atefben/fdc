@@ -593,6 +593,36 @@ $(document).ready(function() {
     }
     });
   }
+  //Mediatheque nav 
+      if($('.press-media').length){
+        var $info = $('.info, .media, .plus');
+        $info.click(function(){
+        var $active = $('.press-media .nav-container .table .line').find('.active');
+        var $parent = $(this).closest(".container");
+          if(!$parent.hasClass('active')){
+              $active.removeClass('active');
+              $parent.addClass('active');
+          }
+        });
+      }
+  //madiatheque AJAX
+      function ajaxEvent(){
+      $('.press-media .nav-mediapress td').on('click',function(e){
+        e.preventDefault();
+        if($(this).is(':not(.active)')) {
+          var urlPath = $(this).data('cat');
+          urlPath += ".php";
+          $.get(urlPath, function(data){
+            $( ".nav-container" ).html( $(data).find('.nav-container') );
+            history.pushState('',"titre test", urlPath);
+            ajaxEvent();
+          });
+          $('.press-media .nav-mediapress').find('td.active').removeClass('active');
+          $(this).addClass('active');
+        }
+      });
+    }
+    ajaxEvent();
   
   //Grid
       if($('.gridPressDownload').length){
