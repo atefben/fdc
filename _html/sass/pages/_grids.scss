@@ -252,15 +252,15 @@
 
     .img {
       margin: 0 auto 23px auto;
-      height: 167px;
+      height: auto;
       max-width: 100%;
       overflow: hidden;
       position: relative;
-      width: 265px;
+      width: 80%;
 
       img {
         display: block;
-        height: 100%;
+        height: auto;
         width: 100%;
         @include transition(all 4s $linear);
       }
@@ -288,7 +288,8 @@
       }
 
       .picto {
-        top: 110px;
+        bottom: 20px;
+        top: auto;
         left: 20px;
       }
     }
@@ -297,8 +298,8 @@
       height: 610px;
 
       .img {
-        height: 362px;
-        width: 573px;
+        height: auto;
+        width: 90%;
       }
 
       h2 {
@@ -307,7 +308,8 @@
 
       .picto {
         left: 20px;
-        top: 300px;
+        bottom: 20px;
+        top: auto;
       }
     }
   }

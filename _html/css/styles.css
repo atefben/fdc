@@ -10155,15 +10155,15 @@ article .read-later.rAlign span:after {
 }
 .all-articles .item .img {
   margin: 0 auto 23px auto;
-  height: 167px;
+  height: auto;
   max-width: 100%;
   overflow: hidden;
   position: relative;
-  width: 265px;
+  width: 80%;
 }
 .all-articles .item .img img {
   display: block;
-  height: 100%;
+  height: auto;
   width: 100%;
   -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -10196,22 +10196,24 @@ article .read-later.rAlign span:after {
   width: 80%;
 }
 .all-articles .item article .picto {
-  top: 110px;
+  bottom: 20px;
+  top: auto;
   left: 20px;
 }
 .all-articles .item.w2 {
   height: 610px;
 }
 .all-articles .item.w2 .img {
-  height: 362px;
-  width: 573px;
+  height: auto;
+  width: 90%;
 }
 .all-articles .item.w2 h2 {
   font-size: 2.250rem;
 }
 .all-articles .item.w2 .picto {
   left: 20px;
-  top: 300px;
+  bottom: 20px;
+  top: auto;
 }
 @media screen and (max-width: 1180px) {
   .all-articles #gridAudios {
