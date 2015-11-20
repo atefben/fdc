@@ -370,6 +370,11 @@ div.chocolat-wrapper {
       position: relative;
       z-index: 2;
 
+      @include breakpoint(1024px) {
+        width: 430px;
+        padding-top: 17px;
+      }
+
       span {
         &.category {
           color: $gold;
