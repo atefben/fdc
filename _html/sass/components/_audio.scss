@@ -54,6 +54,7 @@
       color: rgba(255, 255, 255, .3);
       margin-top: 3px;
       left: 25px;
+      z-index: 3;
 
       .curr {
         color: #fff;
@@ -218,7 +219,7 @@
     position: relative;
     visibility: hidden;
     width: 200px;
-    @include transition(all 0.3s $smoothTransition);
+    @include transition(opacity 0.3s $smoothTransition, visibility 0.3s $smoothTransition);
 
     wave {
       overflow: hidden!important;
@@ -298,9 +299,17 @@
     margin: 0;
     padding: 0;
 
+    .volume {
+      width: 100px;
+    }
+
     .playpause {
       bottom: 41px;
       top: auto;
+    }
+
+    .off {
+      display: none;
     }
 
     .on {
@@ -319,6 +328,7 @@
 
     .fullscreen {
       bottom: 43px;
+      right: 40px;
     }
 
     #channels-audio {
@@ -373,6 +383,7 @@
     }
 
     .top {
+      background: url('../img/shadow-reverse.png') repeat-x;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       height: 80px;
       left: 0;
@@ -428,6 +439,7 @@
         height: 100%;
         float: left;
         margin-top: 0;
+        margin-left: 25px;
         position: relative;
         text-align: left;
         z-index: 1;
@@ -482,8 +494,8 @@
     }
 
     .wave-container {
-
-    }
+      width: calc(100% - 250px);
+    } 
 
     .image-container {
       top: 0;

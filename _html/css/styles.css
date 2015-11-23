@@ -4872,6 +4872,7 @@ div.chocolat-wrapper .chocolat-close {
   color: rgba(255, 255, 255, 0.3);
   margin-top: 3px;
   left: 25px;
+  z-index: 3;
 }
 .audio-player .on .duration .curr {
   color: #fff;
@@ -5028,10 +5029,10 @@ div.chocolat-wrapper .chocolat-close {
   position: relative;
   visibility: hidden;
   width: 200px;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .audio-player .wave-container wave {
   overflow: hidden !important;
@@ -5102,9 +5103,15 @@ div.chocolat-wrapper .chocolat-close {
   margin: 0;
   padding: 0;
 }
+.audio-player.full .volume {
+  width: 100px;
+}
 .audio-player.full .playpause {
   bottom: 41px;
   top: auto;
+}
+.audio-player.full .off {
+  display: none;
 }
 .audio-player.full .on {
   height: 100px;
@@ -5120,6 +5127,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 .audio-player.full .fullscreen {
   bottom: 43px;
+  right: 40px;
 }
 .audio-player.full #channels-audio {
   height: 185px;
@@ -5173,6 +5181,7 @@ div.chocolat-wrapper .chocolat-close {
   visibility: visible;
 }
 .audio-player.full .top {
+  background: url("../img/shadow-reverse.png") repeat-x;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   height: 80px;
   left: 0;
@@ -5231,6 +5240,7 @@ div.chocolat-wrapper .chocolat-close {
   height: 100%;
   float: left;
   margin-top: 0;
+  margin-left: 25px;
   position: relative;
   text-align: left;
   z-index: 1;
@@ -5272,6 +5282,9 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player.full .top .buttons a.link {
   background: url("../img/svg/link.svg") no-repeat center;
   background-size: 16px;
+}
+.audio-player.full .wave-container {
+  width: calc(100% - 250px);
 }
 .audio-player.full .image-container {
   top: 0;

@@ -2,6 +2,12 @@ var waves = [],
     inter = null,
     duration = null;
 
+function redraw() {
+  for(var i=0; i<waves.length; i++) {
+    waves[i].drawBuffer();
+  }
+}
+
 function initAudioPlayers() {
   $('.audio-player').each(function(i) {
     $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
@@ -26,6 +32,11 @@ function initAudioPlayers() {
       if($(wave.container).parents('.audio-player').hasClass('popin-audio')) {
         $('.popin-audio .playpause').trigger('click');
       }
+    });
+
+    wave.on('finish', function() {
+      wave.stop();
+      $(wave.container).parents('.audio-player').removeClass('pause');
     });
 
     waves.push(wave);
@@ -94,6 +105,9 @@ function initAudioPlayers() {
 $(document).ready(function() {
 
   function FShandler() {
+    setTimeout(function() {
+      redraw();
+    }, 500);
     if (document.fullscreenEnabled && document.fullscreenElement == null) {
       $('.audio-player').removeClass("full overlay-channels");
       $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
@@ -114,7 +128,11 @@ $(document).ready(function() {
 
   // volume handler
   $('body').on('click', '.volume', function(e) {
-    var newVolume = (e.offsetX * 2) / 100;
+    if($('.volume').parents('.audio-player').hasClass('full')) {
+      var newVolume = e.offsetX / 100;
+    } else {
+      var newVolume = (e.offsetX * 2) / 100;
+    }
 
     $('.audio-player .volume span').css('width', newVolume * 100 + "%");
 
@@ -193,6 +211,9 @@ $(document).ready(function() {
     if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
 
       if($(this).parents('.audio-player').hasClass('full')) {
+        setTimeout(function() {
+          redraw();
+        }, 500);
         if (document.exitFullscreen) {
           document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
@@ -239,6 +260,10 @@ $(document).ready(function() {
               autoWidth: true,
               onInitialized: function() {
                 $('#slider-channels-audio .owl-stage').css({ 'margin-left': "-343px" });
+
+                setTimeout(function() {
+                  redraw();
+                }, 500);
               }
             });
 
