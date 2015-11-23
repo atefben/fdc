@@ -300,6 +300,7 @@
     padding: 0;
 
     .volume {
+      margin-left: 55px;
       width: 100px;
     }
 
@@ -310,6 +311,24 @@
 
     .off {
       display: none;
+    }
+
+    .duration {
+      position: relative;
+      display: inline-block;
+      font-size: 0.875rem;
+      left: auto;
+      margin-left: 10px;
+      margin-right: 25px;
+      font-family: $CamphorBold;
+
+      .curr {
+        margin-right: 8px;
+      }
+
+      .total {
+        margin-left: 8px;
+      }
     }
 
     .on {
@@ -494,7 +513,7 @@
     }
 
     .wave-container {
-      width: calc(100% - 250px);
+      width: calc(100% - 380px);
     } 
 
     .image-container {

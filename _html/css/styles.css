@@ -5104,6 +5104,7 @@ div.chocolat-wrapper .chocolat-close {
   padding: 0;
 }
 .audio-player.full .volume {
+  margin-left: 55px;
   width: 100px;
 }
 .audio-player.full .playpause {
@@ -5112,6 +5113,21 @@ div.chocolat-wrapper .chocolat-close {
 }
 .audio-player.full .off {
   display: none;
+}
+.audio-player.full .duration {
+  position: relative;
+  display: inline-block;
+  font-size: 0.875rem;
+  left: auto;
+  margin-left: 10px;
+  margin-right: 25px;
+  font-family: "Camphor W01 Bold";
+}
+.audio-player.full .duration .curr {
+  margin-right: 8px;
+}
+.audio-player.full .duration .total {
+  margin-left: 8px;
 }
 .audio-player.full .on {
   height: 100px;
@@ -5284,7 +5300,7 @@ div.chocolat-wrapper .chocolat-close {
   background-size: 16px;
 }
 .audio-player.full .wave-container {
-  width: calc(100% - 250px);
+  width: calc(100% - 380px);
 }
 .audio-player.full .image-container {
   top: 0;
