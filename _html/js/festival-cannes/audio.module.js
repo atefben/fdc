@@ -107,7 +107,7 @@ $(document).ready(function() {
   function FShandler() {
     setTimeout(function() {
       redraw();
-    }, 500);
+    }, 200);
     if (document.fullscreenEnabled && document.fullscreenElement == null) {
       $('.audio-player').removeClass("full overlay-channels");
       $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
@@ -213,7 +213,7 @@ $(document).ready(function() {
       if($(this).parents('.audio-player').hasClass('full')) {
         setTimeout(function() {
           redraw();
-        }, 500);
+        }, 200);
         if (document.exitFullscreen) {
           document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
@@ -263,7 +263,7 @@ $(document).ready(function() {
 
                 setTimeout(function() {
                   redraw();
-                }, 500);
+                }, 200);
               }
             });
 
