@@ -7,12 +7,12 @@ function initSlideshows() {
 
   // create slider of thumbs
   var sliderThumbs =$('.thumbnails').owlCarousel({
-    autoWidth: true,
     nav: false,
     dots: false,
     smartSpeed: 500,
     margin: 10,
-    dragEndSpeed: 900
+    dragEndSpeed: 900,
+    items: 8
   });
 
   sliderThumbs.owlCarousel();
@@ -152,11 +152,27 @@ $('body').on('click', '.chocolat-image', function() {
   }
 
   $('.chocolat-wrapper .thumbnails').owlCarousel({
-    autoWidth: true,
     nav: false,
     dots: false,
     smartSpeed: 500,
-    margin: 0
+    margin: 0,
+    responsive:{
+      0:{
+        items:5
+      },
+      1280: {
+        items: 6
+      },
+      1600:{
+        items:7
+      },
+      1800:{
+        items:8
+      },
+      1920: {
+        items: 9
+      }
+    }
   });
 });
 

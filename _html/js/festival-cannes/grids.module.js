@@ -149,6 +149,7 @@ $(document).ready(function() {
           itemSelector: '.item',
           percentPosition: true,
           layoutMode: 'packery',
+          isOriginLeft: true,
           packery: {
               columnWidth: '.grid-sizer'
           }

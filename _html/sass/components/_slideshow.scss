@@ -285,9 +285,9 @@ div.chocolat-wrapper {
 
       img {
         display: block;
-        height: 150px;
+        max-height: 150px;
         opacity: 0.3!important;
-        width: auto;
+        width: 101%;
         @include transform(translate3d(0, -40px, 0));
         @include transition(opacity 0.9s $smoothTransition, transform 0.9s ease);
       }

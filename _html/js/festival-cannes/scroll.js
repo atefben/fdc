@@ -70,7 +70,7 @@ function update(){
 // vars for parallax
 var scrollTarget = 0,
     scrollPos = 0,
-    scrollEase = 0.05;
+    scrollEase = 0.1;
     scrollEaseLimit = 0.1;
 
 function render(el1, start, division, mov, direction){
