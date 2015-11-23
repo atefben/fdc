@@ -5,7 +5,7 @@ var waves = [],
 function initAudioPlayers() {
   $('.audio-player').each(function(i) {
     $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
-    var h = $(this).hasClass('bigger') ? 116 : 55;
+    var h = $(this).hasClass('bigger') ? 55 : 55;
     var wave = Object.create(WaveSurfer);
 
     // initialize wave sound

@@ -17,7 +17,7 @@
     height: 116px;
 
     .wave-container {
-      height: 100%;
+      width: 520px;
     }
 
     .fullscreen {
@@ -25,8 +25,7 @@
     }
 
     .off {
-      left: 116px;
-      width: calc(100% - 116px);
+      margin-left: 116px;
     }
 
     .playpause {
@@ -79,6 +78,11 @@
     height: 100%;
     z-index: 3;
     @include transition(all 0.3s $smoothTransition);
+
+    .info {
+      text-align: left;
+      width: 218px;
+    }
 
     .info p {
       font-size: 0.750rem;
@@ -306,6 +310,7 @@
       z-index: 3;
       position: absolute;
       left: 87px;
+      width: calc(100% - 87px);
     }
 
     .info, .picto {
@@ -402,6 +407,8 @@
       }
 
       .channels {
+        background: url('../img/svg/mic.svg') no-repeat center;
+        background-size: 42px;
         border-right: 1px solid rgba(255, 255, 255, 0.3);
         display: block;
         float: left;
@@ -527,13 +534,22 @@
   @include transform(translateY(30px));
   @include transition(all 1.2s $smoothTransition);
 
+  &:after {
+    right: 50%;
+  }
+
   &:before {
     visibility: hidden;
   }
 
   .playpause {
+    left: 57px;
     top: 398px;
     margin-top: 0;
+  }
+
+  .wave-container {
+    width: 520px;
   }
 
   .on {
@@ -541,6 +557,8 @@
     opacity: 1;
     visibility: visible;
     top: 360px;
+    left: 100px;
+    position: absolute;
 
     .fullscreen {
       bottom: 42px;
@@ -606,6 +624,7 @@
     position: absolute;
     bottom: 20px;
     height: 80px;
+    left: 20px;
     margin: 0;
     text-align: left;
     width: 710px;
@@ -646,19 +665,19 @@
     margin-top: 50px !important;
     height: 600px;
     width: 980px !important;
-    .picto{
-        position: absolute;
-        bottom: 10px;
-        margin-left: 0px !important;
+    .playpause {
+      top: auto;
+      bottom: 35px;
     }
-    .info{
-        position: absolute;
-        margin-left: 56px;
-        bottom: 17px;
+    .on {
+      height: 87px;
+      margin-top: 513px;
+    }
+    .off {
+      height: 87px;
+      margin-top: 513px;
     }
     .wave-container {
-        margin: 0 0 0 309px;
-        position: absolute;
-        bottom: 10px; 
+      width: 550px;
     }
 }

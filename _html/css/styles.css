@@ -4838,14 +4838,13 @@ div.chocolat-wrapper .chocolat-close {
   height: 116px;
 }
 .audio-player.bigger .wave-container {
-  height: 100%;
+  width: 520px;
 }
 .audio-player.bigger .fullscreen {
   bottom: 49px;
 }
 .audio-player.bigger .off {
-  left: 116px;
-  width: calc(100% - 116px);
+  margin-left: 116px;
 }
 .audio-player.bigger .playpause {
   left: 50px;
@@ -4896,6 +4895,10 @@ div.chocolat-wrapper .chocolat-close {
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.audio-player .off .info {
+  text-align: left;
+  width: 218px;
 }
 .audio-player .off .info p {
   font-size: 0.750rem;
@@ -5110,6 +5113,7 @@ div.chocolat-wrapper .chocolat-close {
   z-index: 3;
   position: absolute;
   left: 87px;
+  width: calc(100% - 87px);
 }
 .audio-player.full .info, .audio-player.full .picto {
   display: none;
@@ -5205,6 +5209,8 @@ div.chocolat-wrapper .chocolat-close {
   visibility: visible;
 }
 .audio-player.full .top .channels {
+  background: url("../img/svg/mic.svg") no-repeat center;
+  background-size: 42px;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   display: block;
   float: left;
@@ -5315,18 +5321,27 @@ div.chocolat-wrapper .chocolat-close {
   -webkit-transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+.popin-audio:after {
+  right: 50%;
+}
 .popin-audio:before {
   visibility: hidden;
 }
 .popin-audio .playpause {
+  left: 57px;
   top: 398px;
   margin-top: 0;
+}
+.popin-audio .wave-container {
+  width: 520px;
 }
 .popin-audio .on {
   height: 100px;
   opacity: 1;
   visibility: visible;
   top: 360px;
+  left: 100px;
+  position: absolute;
 }
 .popin-audio .on .fullscreen {
   bottom: 42px;
@@ -5383,6 +5398,7 @@ div.chocolat-wrapper .chocolat-close {
   position: absolute;
   bottom: 20px;
   height: 80px;
+  left: 20px;
   margin: 0;
   text-align: left;
   width: 710px;
@@ -5421,20 +5437,20 @@ div.chocolat-wrapper .chocolat-close {
   height: 600px;
   width: 980px !important;
 }
-.actu-article-audio .picto {
-  position: absolute;
-  bottom: 10px;
-  margin-left: 0px !important;
+.actu-article-audio .playpause {
+  top: auto;
+  bottom: 35px;
 }
-.actu-article-audio .info {
-  position: absolute;
-  margin-left: 56px;
-  bottom: 17px;
+.actu-article-audio .on {
+  height: 87px;
+  margin-top: 513px;
+}
+.actu-article-audio .off {
+  height: 87px;
+  margin-top: 513px;
 }
 .actu-article-audio .wave-container {
-  margin: 0 0 0 309px;
-  position: absolute;
-  bottom: 10px;
+  width: 550px;
 }
 
 .video-player {
