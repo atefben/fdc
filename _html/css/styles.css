@@ -14238,7 +14238,7 @@ article .read-later.rAlign span:after {
 .press .header-press h2 {
   color: #c8a461;
   float: left;
-  font-family: "Camphor W01 Thin";
+  font-family: "Camphor W01 Thin", "Camphor W01 Regular";
   font-size: 2.125rem;
   font-weight: normal;
   letter-spacing: 0.2em;
