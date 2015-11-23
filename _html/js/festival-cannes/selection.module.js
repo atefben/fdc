@@ -252,8 +252,8 @@ $(document).ready(function() {
         setTimeout(function() {
           $('.scaled').removeClass('scaled');
           $('.added').removeClass('added');
-        }, 1200);
-      }, 800);
+        }, 800);
+      }, 400);
     });
      
   });

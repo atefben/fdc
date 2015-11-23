@@ -3274,6 +3274,19 @@ body {
   z-index: 1;
 }
 
+@media screen and (max-width: 768px) {
+  #main, header, footer {
+    width: 1024px;
+    zoom: 0.75;
+  }
+
+  #featured-movies .video {
+    width: 1024px !important;
+  }
+  #featured-movies .video video {
+    height: 576px !important;
+  }
+}
 header {
   background-color: #080808;
   position: relative;
@@ -14824,6 +14837,32 @@ article .read-later.rAlign span:after {
 }
 .press .affiche .buttons .button {
   border-color: #c8a461;
+  background-image: url("../img/svg/telecharger-gold.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 12px;
+  background-size: 14px;
+  position: relative;
+}
+.press .affiche .buttons .button:after {
+  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+  background-size: 14px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.press .affiche .buttons .button:hover:after {
+  opacity: 1;
+  visibility: visible;
 }
 .press .affiche .caption {
   color: #666;
@@ -14841,6 +14880,22 @@ article .read-later.rAlign span:after {
   float: left;
   margin-left: 85px;
   width: 540px;
+}
+@media screen and (max-width: 1024px) {
+  .press .affiche .portrait {
+    float: none;
+    margin: 0 auto 25px auto;
+    width: 540px;
+  }
+  .press .affiche .landscape {
+    float: none;
+    margin: 0 auto;
+  }
+  .press .affiche .title-press {
+    width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .press .affiche p {
   font-family: "Camphor W01 Bold";
