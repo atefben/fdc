@@ -6,13 +6,15 @@ var slideshows = [];
 function initSlideshows() {
 
   // create slider of thumbs
+  var nbItems = $('.single-article').length != 0 ? 7 : 8;
+
   var sliderThumbs =$('.thumbnails').owlCarousel({
     nav: false,
     dots: false,
     smartSpeed: 500,
     margin: 10,
     dragEndSpeed: 900,
-    items: 8
+    items: nbItems
   });
 
   sliderThumbs.owlCarousel();

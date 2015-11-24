@@ -1549,6 +1549,18 @@
       -webkit-transform-style: initial;
     }
 
+    /*&:after {
+      height: 100%;
+      content: '';
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      opacity: 0.3;
+    }
+*/
     &.active {
       opacity: 1;
       visibility: visible;
