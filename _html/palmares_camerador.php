@@ -80,13 +80,12 @@ La Présidente est l'actrice française Sabine Azéma.</h2>
             </article>
         </section>
         <div class="title-list-cat">
-                <h2 class="title"> les films en Lice
-<br>dans les autres selections</h2>
+                <h2 class="title"> les films en Lice<br>dans les autres sélections</h2>
         </div>
         <section class='categorie-items-columns'>
           <ul>
-            <li><a href="#"><img src="./img/palmares/quinzaine.jpg" alt=""></a></li>
-            <li><a href="#"><img src="./img/palmares/semaine-critique.jpg" alt=""></a></li>
+            <li><a href="http://www.quinzaine-realisateurs.com/" target="_blank"><img src="./img/palmares/quinzaine.jpg" alt=""></a></li>
+            <li><a href="http://www.semainedelacritique.com/" target="_blank"><img src="./img/palmares/semaine-critique.jpg" alt=""></a></li>
           </ul>
         </section>
         </div>
