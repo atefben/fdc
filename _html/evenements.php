@@ -28,7 +28,8 @@
           <div id="date" class="filter">
             <span class="label">Dates :</span>
             <span class="select">
-              <span class="active" data-filter="all">Date 1</span>
+              <span class="active" data-filter="all">Tous</span>
+			<span data-filter="photo">Date 1</span>
               <span data-filter="photo">Date 2</span>
               <span data-filter="video">Date 3</span>
               <span data-filter="audio">Date 4</span>
