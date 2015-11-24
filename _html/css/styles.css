@@ -3078,7 +3078,7 @@ a {
   border-right: none;
   color: #c8a461;
   display: inline-block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   height: 38px;
   line-height: 38px;
@@ -3115,7 +3115,7 @@ a {
 }
 
 .title {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.5em;
@@ -3125,7 +3125,7 @@ a {
 }
 
 .subtitle {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-style: italic;
   font-size: 0.875rem;
   font-weight: normal;
@@ -3156,7 +3156,7 @@ html {
 
 body {
   background-color: #141414;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
   overflow-x: hidden;
 }
@@ -3299,7 +3299,7 @@ header.press #navigation ul.main {
 }
 header.press #navigation ul.user {
   float: right;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 header.press #navigation ul.user li a {
   color: #a7a7a7;
@@ -3425,7 +3425,7 @@ header .user-nav {
   background-color: #141414;
   border-left: 1px solid #404040;
   float: right;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 0 15px 0 10px;
 }
 header .user-nav li {
@@ -3505,7 +3505,7 @@ header #top-bar {
 }
 header #top-bar .main-nav {
   float: left;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 header #top-bar .main-nav li {
   display: inline-block;
@@ -3553,7 +3553,7 @@ header #logo-wrapper #logo {
   width: 200px;
 }
 header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1.250rem;
   font-weight: normal;
 }
@@ -3592,7 +3592,7 @@ header #logo-wrapper #logo p.stick.noTrans:after {
   transition: none;
 }
 header #logo-wrapper #logo h2 {
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   font-weight: normal;
   margin-top: 5px;
@@ -3753,12 +3753,12 @@ header #navigation ul li:hover ul {
 }
 header #navigation ul.main {
   border-right: 1px solid #404040;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   position: relative;
 }
 header #navigation ul.user {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.740rem;
 }
 header #navigation ul.user li {
@@ -3825,7 +3825,7 @@ header #navigation ul.user li a:hover:after {
 header #navigation ul.user li ul li a {
   color: #fff;
   font-size: 0.750rem;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 header #navigation ul.user .participate-wrapper ul {
   left: auto;
@@ -3926,7 +3926,7 @@ footer .newsletter #email.error {
 }
 footer .newsletter #confirmation {
   color: #fff;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 0.875rem;
   line-height: 1.2em;
   opacity: 0;
@@ -3950,7 +3950,7 @@ footer .newsletter #submit {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   height: 100%;
   margin-left: 20px;
@@ -3975,7 +3975,7 @@ footer .social {
 footer .social p {
   color: #fff;
   float: left;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1.250rem;
   text-transform: uppercase;
 }
@@ -4043,7 +4043,7 @@ footer .footer-menu ul {
 footer .footer-menu ul li {
   color: #fff;
   display: inline-block;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   padding-right: 22px;
   position: relative;
@@ -4273,18 +4273,18 @@ footer .footer-menu ul li a:hover {
 }
 .slideshow .caption {
   color: #666;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   margin: 20px 0;
 }
 .slideshow .caption strong {
   color: #333;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
 .slideshow h3 {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 0.625rem;
   letter-spacing: 0.2em;
@@ -4409,6 +4409,48 @@ div.chocolat-wrapper .chocolat-bottom {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+div.chocolat-wrapper .chocolat-bottom .buttons {
+  position: absolute;
+  right: 0;
+  z-index: 5;
+  bottom: 101px;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom .buttons.show {
+  opacity: 1;
+  visibility: visible;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons .button {
+  border-color: rgba(255, 255, 255, 0.4);
+  border-bottom: none;
+  height: 75px;
+  width: 75px;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
+  border-right: none;
+  width: 74px;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons a.facebook {
+  background: url("../img/svg/facebook-gold.svg") no-repeat center;
+  background-size: 19px;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons a.twitter {
+  background: url("../img/svg/twitter-gold.svg") no-repeat center;
+  background-size: 16px;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons a.email {
+  background: url("../img/svg/mail.svg") no-repeat center;
+  background-size: 16px;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons a.link {
+  background: url("../img/svg/link.svg") no-repeat center;
+  background-size: 16px;
+}
 div.chocolat-wrapper .chocolat-bottom:after {
   content: '';
   display: block;
@@ -4439,11 +4481,14 @@ div.chocolat-wrapper .chocolat-bottom:hover:after {
   opacity: 1;
   visibility: visible;
 }
+div.chocolat-wrapper .chocolat-bottom:hover .buttons {
+  background-color: #141414;
+}
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   background: url("../img/svg/photo-white.svg") no-repeat center 36%;
   background-size: 30px;
   border-right: 1px solid rgba(255, 255, 255, 0.4);
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   cursor: pointer;
   font-size: 0.750rem;
   height: 100%;
@@ -4491,7 +4536,7 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description span.date {
   font-size: 0.625rem;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description h2 {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   margin-top: 5px;
 }
@@ -4609,7 +4654,6 @@ div.chocolat-wrapper .chocolat-right:hover:after {
   opacity: 0.5;
 }
 div.chocolat-wrapper .chocolat-content {
-  cursor: none;
   height: 100%;
   min-height: 100%;
   min-width: 100%;
@@ -4632,22 +4676,69 @@ div.chocolat-wrapper .chocolat-fullscreen {
 }
 div.chocolat-wrapper .chocolat-top {
   overflow: initial;
-  pointer-events: none;
-}
-div.chocolat-wrapper .chocolat-img {
-  cursor: none !important;
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  top: 20px;
+  left: auto;
+  right: 20px;
 }
 div.chocolat-wrapper .chocolat-close {
   background: url("../img/svg/close-gold.svg") no-repeat center;
   background-size: 15px;
   border: 1px solid #c8a461;
-  cursor: none;
-  height: 100px;
+  cursor: pointer;
+  height: 80px;
   position: absolute;
   top: 0;
   right: 0;
-  width: 100px;
+  width: 80px;
   z-index: 100;
+  opacity: 0.6;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-close:hover {
+  opacity: 1;
+}
+div.chocolat-wrapper .chocolat-loader {
+  background: none;
+}
+div.chocolat-wrapper .zoomCursor {
+  cursor: none;
+  display: none;
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  z-index: 50;
+  border: 1px solid #c8a461;
+  -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .zoomCursor.hide {
+  opacity: 0;
+}
+
+.chocolat-zoomable .zoomCursor {
+  background: url("../img/svg/zoomIn.svg") no-repeat center;
+  background-size: 20px;
+  display: block !important;
+}
+.chocolat-zoomable .chocolat-content, .chocolat-zoomable .chocolat-img {
+  cursor: none;
+}
+
+.chocolat-zoomed .zoomCursor {
+  background: url("../img/svg/zoomOut.svg") no-repeat center;
+  background-size: 20px;
+  display: block !important;
+}
+.chocolat-zoomed .chocolat-content, .chocolat-zoomed .chocolat-img {
+  cursor: none !important;
 }
 
 .article_photo {
@@ -4663,10 +4754,10 @@ div.chocolat-wrapper .chocolat-close {
   width: 960px;
 }
 .article_photo .caption {
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .article_photo .caption strong {
-  font-family: "Camphor W01 Bold" !important;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
 
 .filters {
@@ -4674,7 +4765,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 .filters div {
   display: inline-block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   margin-right: 40px;
   text-transform: uppercase;
@@ -4730,7 +4821,7 @@ div.chocolat-wrapper .chocolat-close {
 #filters span {
   color: #fff;
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 0.4em;
   opacity: 0;
   margin: 30px auto;
@@ -4881,7 +4972,7 @@ div.chocolat-wrapper .chocolat-close {
 .audio-player .on .duration {
   position: absolute;
   font-size: 0.625rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: rgba(255, 255, 255, 0.3);
   margin-top: 3px;
   left: 25px;
@@ -5061,7 +5152,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 .audio-player .info {
   color: #969696;
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
   display: inline-block;
   position: relative;
@@ -5085,7 +5176,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 .audio-player .info p {
   color: #fff;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.850rem;
   text-align: left;
   margin-top: 5px;
@@ -5134,7 +5225,7 @@ div.chocolat-wrapper .chocolat-close {
   left: auto;
   margin-left: 10px;
   margin-right: 25px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .audio-player.full .duration .curr {
   margin-right: 8px;
@@ -5563,7 +5654,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 .video-player .info p {
   color: #fff;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.850rem;
   text-align: left;
   width: auto;
@@ -5910,7 +6001,7 @@ div.chocolat-wrapper .chocolat-close {
 }
 #selection .filters-selection li a {
   color: #333;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5929,7 +6020,7 @@ div.chocolat-wrapper .chocolat-close {
   background-color: #141414;
   position: fixed;
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   opacity: 0;
   visibility: hidden;
@@ -6005,7 +6096,7 @@ header #searchContainer {
 }
 #searchContainer p.link a {
   color: #c8a461;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -6052,7 +6143,7 @@ header #searchContainer {
   color: #333;
   line-height: 1em;
   padding-bottom: 10px;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   letter-spacing: 0.1em;
   font-size: 2.250rem;
   outline: none;
@@ -6105,7 +6196,7 @@ header #searchContainer {
 }
 #searchContainer #footerSearch .txtFooter h3 {
   font-size: 0.750rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   margin-bottom: 12px;
@@ -6116,7 +6207,7 @@ header #searchContainer {
   opacity: 0.4;
   right: 45px;
   font-size: 0.688rem;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   height: 25px;
   line-height: 25px;
   top: 19px;
@@ -6157,7 +6248,7 @@ header #searchContainer {
   margin-left: 0;
 }
 #searchContainer #results #filtered #filteredContent .film.big .info h2 {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 #searchContainer #results #filtered #filteredContent .film.big .info .date {
   padding-top: 5px;
@@ -6182,7 +6273,7 @@ header #searchContainer {
   text-align: center;
 }
 #searchContainer #results .big .info h2 {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   text-transform: uppercase;
 }
@@ -6217,7 +6308,7 @@ header #searchContainer {
 }
 #searchContainer #results .big.film .info .category {
   color: #a7a7a7;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   font-style: normal;
   text-transform: uppercase;
@@ -6243,14 +6334,14 @@ header #searchContainer {
   border: none;
 }
 #searchContainer #results .resultWrapper .resultsContainer h2.titleSection {
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   margin-bottom: 30px;
   text-transform: uppercase;
 }
 #searchContainer #results .resultWrapper .resultsContainer .view-all {
   color: #c8a461;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   position: absolute;
   top: 0;
@@ -6278,7 +6369,7 @@ header #searchContainer {
   height: 66px;
 }
 #searchContainer #results .resultWrapper .small .info h2 {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   text-transform: uppercase;
 }
@@ -6367,7 +6458,7 @@ header #searchContainer {
   text-align: center;
 }
 #searchContainer #results #noResult h3 {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   letter-spacing: 0.1em;
   font-size: 0.875rem;
   opacity: 0.2;
@@ -6388,7 +6479,7 @@ header #searchContainer {
   box-sizing: border-box;
   color: #a3a3a3;
   cursor: pointer;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 0.688rem;
   font-weight: normal;
   text-transform: uppercase;
@@ -6411,7 +6502,7 @@ header #searchContainer {
 }
 #suggest li span {
   color: #000;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   position: absolute;
   font-size: 0.625rem;
   letter-spacing: 0.1em;
@@ -6452,7 +6543,7 @@ header #searchContainer {
 .searchpage #colSearch li a {
   border-bottom: 1px solid #e5e5e5;
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   height: 48px;
   line-height: 48px;
@@ -6468,7 +6559,7 @@ header #searchContainer {
   color: #c8a461;
 }
 .searchpage #colSearch li a.active {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .searchpage #colSearch li a span {
   position: absolute;
@@ -6529,7 +6620,7 @@ header #searchContainer {
   text-align: center;
 }
 .popin-mail .contain-popin .theme-article {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.63rem;
   color: #c8a461;
   text-transform: uppercase;
@@ -6538,18 +6629,18 @@ header #searchContainer {
 }
 .popin-mail .contain-popin .date-article {
   font-size: 0.63rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .popin-mail .contain-popin .title-article {
   font-size: 36px;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   line-height: 50px;
   padding-bottom: 32px;
   padding-top: 7px;
 }
 .popin-mail .contain-popin .chap-article {
   font-size: 0.88rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 24px;
   padding-bottom: 41px;
 }
@@ -6563,7 +6654,7 @@ header #searchContainer {
 .popin-mail form .complet-infos {
   color: #c8a461;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   float: right;
   padding-bottom: 16px;
 }
@@ -6655,7 +6746,7 @@ header #searchContainer {
   border: 1px solid #c1c1c1;
   box-sizing: border-box;
   color: #999;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   display: block;
   margin-bottom: 8px;
@@ -6696,7 +6787,7 @@ header #searchContainer {
   color: #c8a461;
   cursor: pointer;
   float: left;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   height: 40px;
   line-height: 40px;
@@ -6726,7 +6817,7 @@ header #searchContainer {
   box-sizing: border-box;
   color: #999;
   line-height: 50px;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   display: block;
   height: 50px;
@@ -6767,7 +6858,7 @@ header #searchContainer {
   color: #c8a461;
   display: inline-block;
   vertical-align: middle;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   outline: none;
   -webkit-appearance: none;
@@ -6938,7 +7029,7 @@ header #searchContainer {
 #sliderWrapper .owl-item .info .category {
   color: #c8a461;
   display: block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   letter-spacing: 0.1em;
   margin-bottom: 15px;
@@ -6956,7 +7047,7 @@ header #searchContainer {
 }
 #sliderWrapper .owl-item .info h2 {
   color: #fff;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 2.750rem;
   font-weight: 400;
   line-height: 1.2em;
@@ -7131,7 +7222,7 @@ header #searchContainer {
   color: #999;
   display: block;
   height: 55px;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   line-height: 55px;
   margin-top: 45px;
@@ -7183,7 +7274,7 @@ header #searchContainer {
   border-right: 1px solid #e5e5e5;
   border-top: 1px dotted #e5e5e5;
   color: #adadad;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   display: block;
   padding: 10px 0;
@@ -7226,7 +7317,7 @@ header #searchContainer {
 }
 #news .container #timeline a span {
   display: block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 13px;
 }
 #news .container #timeline a:last-child {
@@ -7281,7 +7372,7 @@ header #searchContainer {
   color: #fff;
   font-size: 0.625rem;
   padding: 2px 10px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   position: absolute;
   opacity: 0;
   pointer-events: none;
@@ -7325,7 +7416,7 @@ header #searchContainer {
 #social-wall #graph ul li {
   color: #f3f3f3;
   display: inline-block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   text-align: center;
   width: 76px;
@@ -7338,13 +7429,13 @@ header #searchContainer {
 }
 #social-wall #graph ul li span {
   display: block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 14px;
 }
 #social-wall #graph #hashtag {
   color: #c8a461;
   float: left;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   height: 100%;
   width: 86px;
@@ -7449,7 +7540,7 @@ header #searchContainer {
 }
 #social-wall #wall .post .side .txt {
   background-color: #fff;
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   height: 100%;
   width: 100%;
@@ -7497,7 +7588,7 @@ header #searchContainer {
   width: 250px;
 }
 #social-wall #wall .post.big .side .txt {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 #social-wall #wall .post.big .side p {
   font-size: 1rem;
@@ -7523,7 +7614,7 @@ header #searchContainer {
 #networks p {
   color: #333;
   float: left;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   line-height: 20px;
   text-transform: uppercase;
@@ -7538,7 +7629,7 @@ header #searchContainer {
 #networks ul li a {
   color: #999;
   display: block;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   line-height: 16px;
   padding-right: 30px;
@@ -7642,7 +7733,7 @@ header #searchContainer {
 }
 #featured-videos .link a {
   color: #c8a461;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -7940,7 +8031,7 @@ header #searchContainer {
 #featured-movies .links a {
   color: #c8a461;
   display: inline-block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
   padding: 0 0 0 20px;
@@ -8009,7 +8100,7 @@ header #searchContainer {
 #featured-movies .info .category {
   color: #fff;
   display: block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   letter-spacing: 0.1em;
   margin-bottom: 20px;
@@ -8027,7 +8118,7 @@ header #searchContainer {
 }
 #featured-movies .info h2 {
   color: #fff;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 3.750rem;
   letter-spacing: 0.2em;
   margin-bottom: 20px;
@@ -8045,7 +8136,7 @@ header #searchContainer {
 }
 #featured-movies .info .director {
   color: #fff;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   opacity: 0;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -8060,7 +8151,7 @@ header #searchContainer {
 }
 #featured-movies .info .director a {
   color: #c8a461;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 14px;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -8169,7 +8260,7 @@ header #searchContainer {
 }
 .push-container .push h3 {
   color: #fff;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   letter-spacing: 0.4em;
   line-height: 1.5em;
@@ -8280,7 +8371,7 @@ header #searchContainer {
 }
 #prefooter h2 {
   color: #fff;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 1.875rem;
   font-weight: normal;
   letter-spacing: 0.2em;
@@ -8328,7 +8419,7 @@ header #searchContainer {
 }
 #prefooter ul li a {
   color: #fff;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: 700;
   opacity: 0.3;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -8381,7 +8472,7 @@ article {
   width: 35%;
 }
 article .info {
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
 }
 article .info .category {
@@ -8399,7 +8490,7 @@ article .info span {
 }
 article h2 {
   color: #333;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -8485,7 +8576,7 @@ article .image .read-later span {
   background-color: #141414;
   position: fixed;
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   opacity: 0;
   visibility: hidden;
@@ -8558,7 +8649,7 @@ article .read-later.rAlign span:after {
   width: 730px;
 }
 .single-article .print {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   background: url("../img/svg/print.svg") no-repeat 15% center;
   background-size: 18px;
   font-size: 0.625rem;
@@ -8567,7 +8658,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 .single-article #share-article {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   background: url("../img/svg/share.svg") no-repeat 13% 47%;
   background-size: 18px;
   font-size: 0.625rem;
@@ -8600,7 +8691,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .title-article {
   color: #333;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.3em;
@@ -8610,12 +8701,12 @@ article .read-later.rAlign span:after {
 }
 .single-article .info {
   color: #969696;
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
 }
 .single-article .info .category, .single-article .info .update {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   display: inline-block;
   font-size: 0.625rem;
   letter-spacing: 0.1em;
@@ -8682,7 +8773,7 @@ article .read-later.rAlign span:after {
   float: right;
 }
 .single-article .chapeau {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #333;
   font-size: 1.125rem;
   line-height: 2em;
@@ -8701,7 +8792,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .slideshow .caption strong {
   color: #666;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .single-article .quote {
   width: 630px;
@@ -8728,7 +8819,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .text strong {
   color: #333;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
 .single-article .audio-player {
@@ -8752,7 +8843,7 @@ article .read-later.rAlign span:after {
   padding: 70px 0;
 }
 .single-article .share p {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   letter-spacing: 0.2em;
   margin-bottom: 20px;
@@ -8805,13 +8896,13 @@ article .read-later.rAlign span:after {
   max-width: 470px;
 }
 .single-article .film .info-film .wrapper .category {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .single-article .film .info-film .wrapper h3 {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 1.125rem;
   margin: 20px 0 10px 0;
@@ -8847,7 +8938,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .film .info-film .wrapper p.director {
   color: #c8a461;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   margin-bottom: 35px;
   position: relative;
@@ -8888,7 +8979,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .film .programmation-film .wrapper .category {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -8902,19 +8993,19 @@ article .read-later.rAlign span:after {
   width: 230px;
 }
 .single-article .film .programmation-film .wrapper ul li span {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #bababa;
   margin-right: 8px;
 }
 .single-article .film .programmation-film .wrapper ul li span.type {
   color: #787878;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
 }
 .single-article .film .programmation-film .wrapper ul li span.location {
   color: #fff;
   display: block;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   margin: 18px 0 40px 0;
   position: relative;
@@ -8937,7 +9028,7 @@ article .read-later.rAlign span:after {
   margin-left: 0px;
   height: 50px;
   line-height: 50px;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   padding: 0 40px;
 }
 .single-article .film .programmation-film .wrapper .button:hover {
@@ -9058,7 +9149,7 @@ article .read-later.rAlign span:after {
   width: 130px;
 }
 .single-movie .prevmovie .info h2, .single-movie .nextmovie .info h2 {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   color: #080808;
   font-size: 0.875rem;
@@ -9066,7 +9157,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .prevmovie .info a, .single-movie .nextmovie .info a {
   color: #c8a461;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   -moz-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -9138,7 +9229,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie h3.title-section {
   font-size: 1rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: normal;
   margin-bottom: 30px;
   text-transform: uppercase;
@@ -9234,7 +9325,7 @@ article .read-later.rAlign span:after {
   }
 }
 .single-movie .info-film h2 {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 2.250rem;
   font-weight: normal;
   letter-spacing: 0.1em;
@@ -9464,7 +9555,7 @@ article .read-later.rAlign span:after {
 .single-movie .main-image .links a {
   color: #fff;
   float: left;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.6rem;
   padding-left: 20px;
   letter-spacing: 0.1em;
@@ -9529,7 +9620,7 @@ article .read-later.rAlign span:after {
 .single-movie #nav-movie ul li a {
   color: #999;
   display: block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   letter-spacing: 0.1em;
   margin: 0 9px;
@@ -9806,7 +9897,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .press h3 {
   color: #fff;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   font-weight: normal;
   letter-spacing: 0.2em;
@@ -9817,7 +9908,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 .single-movie .press p.sub {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   margin-bottom: 10px;
   text-align: left;
@@ -9853,7 +9944,7 @@ article .read-later.rAlign span:after {
 .single-movie .press .info-press .wrapper .folder a {
   color: #c8a461;
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: .750rem;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -9875,7 +9966,7 @@ article .read-later.rAlign span:after {
 .single-movie .press .info-press .wrapper .links a {
   color: #999;
   display: inline-block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   margin-right: 15px;
   text-transform: uppercase;
@@ -9975,7 +10066,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .competition #slider-competition .info-movie p {
   color: #2c2c2c;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   margin-bottom: 3px;
   text-transform: uppercase;
@@ -9983,7 +10074,7 @@ article .read-later.rAlign span:after {
 .single-movie .competition #slider-competition .info-movie a.director {
   color: #c8a461;
   display: block;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
 }
 
@@ -9992,7 +10083,7 @@ article .read-later.rAlign span:after {
 }
 .grid h2.title {
   color: #333;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: 700;
   font-size: 1.625rem;
 }
@@ -10017,7 +10108,7 @@ article .read-later.rAlign span:after {
 }
 .grid .item .info {
   color: #9c9c9b;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   position: absolute;
   bottom: 8px;
   height: 44px;
@@ -10040,7 +10131,7 @@ article .read-later.rAlign span:after {
 }
 .grid .item .info p {
   color: #fff;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.850rem;
   text-align: left;
   margin-top: 3px;
@@ -10281,7 +10372,7 @@ article .read-later.rAlign span:after {
   width: 100%;
 }
 .all-articles .item article .info {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #666;
   position: relative;
   bottom: auto;
@@ -10354,7 +10445,7 @@ article .read-later.rAlign span:after {
   background-color: #141414;
   position: fixed;
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   opacity: 0;
   visibility: hidden;
@@ -10659,7 +10750,7 @@ article .read-later.rAlign span:after {
 }
 .contact h2.title {
   color: #333;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 1.625rem;
   font-weight: 700;
   margin-bottom: 60px;
@@ -10673,7 +10764,7 @@ article .read-later.rAlign span:after {
 }
 .contact .coords h3, .contact .success h3 {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875em;
   letter-spacing: 0.3em;
   margin-bottom: 10px;
@@ -10724,7 +10815,7 @@ article .read-later.rAlign span:after {
   border: 1px solid #c1c1c1;
   box-sizing: border-box;
   color: #999;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   display: block;
   margin-bottom: 15px;
@@ -10764,7 +10855,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   cursor: pointer;
   float: left;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   height: 40px;
   line-height: 40px;
@@ -10784,7 +10875,7 @@ article .read-later.rAlign span:after {
   box-sizing: border-box;
   color: #999;
   line-height: 50px;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   display: block;
   height: 50px;
@@ -10825,7 +10916,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   display: inline-block;
   vertical-align: middle;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   outline: none;
   -webkit-appearance: none;
@@ -10894,7 +10985,7 @@ article .read-later.rAlign span:after {
   width: 977px;
   margin: 10px auto;
   line-height: 26px;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
 .categorie-items .title-list-cat .title-big {
   color: #ffffff;
@@ -11000,7 +11091,7 @@ article .read-later.rAlign span:after {
   padding-bottom: 4px;
   font-size: 0.875rem;
   line-height: 16px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .categorie-items article .infos-item-list .sub-title-item {
   padding-bottom: 4px;
@@ -11011,7 +11102,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   display: block;
   padding-bottom: 4px;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 0.8125rem;
 }
@@ -11028,7 +11119,7 @@ article .read-later.rAlign span:after {
 }
 .categorie-items article .infos-item-list .description-item strong {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .categorie-items article .infos-item-list .date-pres-item {
   text-transform: uppercase;
@@ -11037,14 +11128,14 @@ article .read-later.rAlign span:after {
   margin-bottom: 18px;
   display: inline-block;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .categorie-items article .infos-item-list .heure-pres-item {
   color: #999;
   letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .categorie-items .contain-article-invit {
   color: #ffffff;
@@ -11148,7 +11239,7 @@ article .read-later.rAlign span:after {
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .list-article .bandeau-list .bandeau-list-img .bandeau-lien .svg-arrow {
   width: 12px;
@@ -11175,7 +11266,7 @@ article .read-later.rAlign span:after {
 .list-article .bandeau-list .nav-movie a {
   color: #fff;
   font-size: 0.63rem;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .list-article .bandeau-list .nav-movie a:hover {
   color: #c8a461;
@@ -11188,7 +11279,7 @@ article .read-later.rAlign span:after {
 .list-article .bandeau-list .nav-list {
   margin: 0 auto;
   text-align: center;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   background-color: #202020;
   width: 100%;
   z-index: 10;
@@ -11221,7 +11312,7 @@ article .read-later.rAlign span:after {
   color: #fff;
   text-transform: uppercase;
   text-align: center;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: .875rem;
   display: block;
   padding-top: 25px;
@@ -11230,13 +11321,13 @@ article .read-later.rAlign span:after {
   color: #fff;
   text-transform: uppercase;
   text-align: center;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: .625rem;
   display: block;
 }
 .selection-officielle figure figcaption .author {
   text-align: center;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: .8125rem;
   color: #c8a461;
 }
@@ -11349,7 +11440,7 @@ article .read-later.rAlign span:after {
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .palmares-list .sub-nav-list a {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem !important;
   color: #999999 !important;
 }
@@ -11367,7 +11458,7 @@ article .read-later.rAlign span:after {
 .palmares-list .sub-cat-title {
   background-color: #202020;
   padding: 29px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
   letter-spacing: .2em;
 }
@@ -11435,7 +11526,7 @@ article .read-later.rAlign span:after {
   width: 450px;
 }
 .palmares-list .categorie-items article .infos-item-list .sub-title-item {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-img {
   float: none;
@@ -11619,7 +11710,7 @@ article .read-later.rAlign span:after {
 }
 .webtv #live h2 {
   color: #fff;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 1.563rem;
   line-height: 1.6em;
   letter-spacing: 0.8em;
@@ -11684,7 +11775,7 @@ article .read-later.rAlign span:after {
 }
 .webtv .link a {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11779,7 +11870,7 @@ article .read-later.rAlign span:after {
   box-sizing: border-box;
 }
 .list-channels #live h2 {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 1.750rem;
   font-weight: 700;
   letter-spacing: 0.5em;
@@ -11799,7 +11890,7 @@ article .read-later.rAlign span:after {
 .single-channel .back {
   color: #fff;
   display: block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   margin: 0 0 65px 0;
   text-transform: uppercase;
@@ -11839,7 +11930,7 @@ article .read-later.rAlign span:after {
   background-size: cover;
 }
 .webtv-ba #live h2 {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 1.75rem;
   letter-spacing: 15px;
   font-weight: 700;
@@ -11858,7 +11949,7 @@ article .read-later.rAlign span:after {
   width: auto;
   margin: 0 auto;
   text-align: center;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .webtv-ba .sub-nav-list a {
   color: #686868;
@@ -11916,7 +12007,7 @@ article .read-later.rAlign span:after {
 .webtv-ba .listtrailer .info span {
   color: #c8a461 !important;
   display: block !important;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.75rem !important;
   margin-top: 3px;
 }
@@ -12008,13 +12099,13 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   padding-top: 20px;
   padding-bottom: 16px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .webtv-ba-video .informations-video .infos-film strong {
   font-size: 1rem;
 }
 .webtv-ba-video .informations-video .infos-film span {
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.6875rem;
   color: #c8a461;
   display: block;
@@ -12036,7 +12127,7 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba-video .informations-video .program-film .infos p {
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   color: #666;
   padding-bottom: 16px;
@@ -12169,7 +12260,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   text-transform: uppercase;
   font-size: 0.8rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .sitemap section article li {
   padding-bottom: 20px;
@@ -12192,7 +12283,7 @@ article .read-later.rAlign span:after {
   padding-bottom: 40px;
 }
 .legal-notice section .legal-notice-responsable p strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 0.89rem;
@@ -12212,7 +12303,7 @@ article .read-later.rAlign span:after {
   line-height: 26px;
 }
 .legal-notice section article h4 {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 0.89rem;
@@ -12241,7 +12332,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   color: #dfdfdf;
   transition: .5s;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .faq .faq-menu ul li:hover {
   background-color: #fafafa;
@@ -12304,7 +12395,7 @@ article .read-later.rAlign span:after {
   padding-bottom: 40px;
   width: 533px;
   display: inline-block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .faq section article .fa {
   margin-bottom: 40px;
@@ -12430,7 +12521,7 @@ article .read-later.rAlign span:after {
 }
 .single-evenement .quote blockquote {
   font-size: 1.5rem !important;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   padding: 40px 88px;
 }
 .single-evenement .share {
@@ -12492,7 +12583,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   color: #bababa !important;
   font-size: 0.63rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .single-evenement .film .programmation-film .wrapper .location:after {
   background-color: #525252;
@@ -12509,7 +12600,7 @@ article .read-later.rAlign span:after {
 }
 .single-evenement .film .programmation-film .wrapper .descript {
   font-size: 1rem;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #fff;
 }
 .single-evenement .video .vCenterKid {
@@ -12585,7 +12676,7 @@ article .read-later.rAlign span:after {
 }
 .jurys-list .sub-nav-list a {
   color: #999 !important;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem !important;
 }
 .jurys-list .sub-nav-list a.active {
@@ -12638,14 +12729,14 @@ article .read-later.rAlign span:after {
 }
 .contain-jury .contain-descript .descript-title {
   text-transform: uppercase;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: .625rem;
   padding-top: 25px;
   letter-spacing: .2em;
 }
 .contain-jury .contain-descript .descript-name {
   text-transform: uppercase;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 2.25rem;
   padding-top: 19px;
   padding-bottom: 7px;
@@ -12653,7 +12744,7 @@ article .read-later.rAlign span:after {
 }
 .contain-jury .contain-descript .descript-rank {
   color: #ccab6e;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: .75rem;
   padding-bottom: 20px;
   letter-spacing: .1em;
@@ -12699,14 +12790,14 @@ article .read-later.rAlign span:after {
 }
 .contain-jurys-list .name {
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: .875rem;
   text-transform: uppercase;
   padding-top: 24px;
   padding-bottom: 3px;
 }
 .contain-jurys-list .rank {
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   color: #ccab6e;
   font-size: .8125rem;
 }
@@ -12877,7 +12968,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 29px;
 }
 .artist .title-cat-artist {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   text-transform: none;
   letter-spacing: normal;
   font-size: 1.375rem;
@@ -12886,7 +12977,7 @@ article .read-later.rAlign span:after {
   font-weight: normal;
 }
 .artist .title-art-artist {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   text-transform: none;
   letter-spacing: normal;
   font-size: 1.375rem;
@@ -12917,7 +13008,7 @@ article .read-later.rAlign span:after {
   text-align: center;
 }
 .artist .contain-films-list .item .content-text .item-title {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   color: #c8a461;
   font-size: .875rem;
@@ -12925,19 +13016,19 @@ article .read-later.rAlign span:after {
   padding-top: 13px;
 }
 .artist .contain-films-list .item .content-text .item-date {
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #999999;
   font-size: .6875rem;
   padding-right: 5px;
 }
 .artist .contain-films-list .item .content-text .item-categ {
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   font-size: .6875rem;
   color: #333333;
 }
 .artist .contain-films-list .item .content-text .item-details {
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: .75rem;
   color: #666666;
   display: block;
@@ -12953,18 +13044,18 @@ article .read-later.rAlign span:after {
   padding-bottom: 50px;
 }
 .artist .jury .rank {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #c8a461;
   font-size: 1.125rem;
 }
 .artist .jury .role {
   text-transform: uppercase;
   font-size: .875rem;
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 .artist .jury .item-separate {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1.125rem;
   padding: 0 7px;
 }
@@ -13000,14 +13091,14 @@ article .read-later.rAlign span:after {
 }
 .artist .realisateurs figure .name {
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 4px;
   font-size: .875rem;
 }
 .artist .realisateurs figure .rank {
   color: #c8a461;
   font-size: .8125rem;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
 
 .app {
@@ -13031,7 +13122,7 @@ article .read-later.rAlign span:after {
   letter-spacing: 5px;
 }
 .app .contain-app h2 {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 1.125rem;
   color: #fff;
   padding-top: 25px;
@@ -13130,7 +13221,7 @@ article .read-later.rAlign span:after {
   font-size: 0.81rem;
 }
 .participate .contain-participate section .contain-section .descrip-section a {
-  font: 0.81rem "Camphor W01 Bold";
+  font: 0.81rem "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -13151,7 +13242,7 @@ article .read-later.rAlign span:after {
   cursor: pointer;
 }
 .participate .contain-participate section .title-participate {
-  font: 0.875rem "Camphor W01 Bold";
+  font: 0.875rem "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #c1c1c1;
   text-transform: uppercase;
   padding-top: 37px;
@@ -13207,7 +13298,7 @@ article .read-later.rAlign span:after {
 }
 .participate .contain-participate section .item .transport {
   color: #000000;
-  font: 0.75rem "Camphor W01 Heavy";
+  font: 0.75rem "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   display: block;
   text-transform: uppercase;
   padding-top: 20px;
@@ -13241,7 +13332,7 @@ article .read-later.rAlign span:after {
   color: #c29f5f;
 }
 .participate .contain-participate section .item .info strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .participate .contain-participate section .item .btn {
   font-size: .625rem;
@@ -13250,7 +13341,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -13292,7 +13383,7 @@ article .read-later.rAlign span:after {
 .participate .contain-participate section .contain-map .name {
   font-size: 0.75rem;
   text-transform: uppercase;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   display: block;
   padding-bottom: 20px;
   letter-spacing: 1px;
@@ -13304,7 +13395,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   display: block;
   width: 130px;
   margin: 0 auto;
@@ -13375,7 +13466,7 @@ article .read-later.rAlign span:after {
 .participate .contain-acces .text-acces .title-acces {
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: .75rem;
   padding-bottom: 20px;
 }
@@ -13390,13 +13481,13 @@ article .read-later.rAlign span:after {
   line-height: 24px;
 }
 .participate .contain-acces .text-acces .descript-acces strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .participate .contain-cinema .title-cinema {
   font-size: 0.88rem;
   letter-spacing: 4px;
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .participate .contain-cinema .contain-item-cinema {
   padding-bottom: 71px;
@@ -13418,7 +13509,7 @@ article .read-later.rAlign span:after {
 .participate .contain-cinema .contain-item-cinema .cinema .text-cinema h4 {
   font-size: 0.75rem;
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 2px;
   padding-bottom: 23px;
 }
@@ -13454,7 +13545,7 @@ article .read-later.rAlign span:after {
 }
 .participate .contain-cinema .descrip-title strong {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.81rem;
 }
 .participate .contain-cinema .loc {
@@ -13468,7 +13559,7 @@ article .read-later.rAlign span:after {
   font-size: 0.81rem;
 }
 .participate .contain-cinema .contain-map strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .participate .contain-cinema .contain-map span {
   padding-bottom: 5px;
@@ -13488,7 +13579,7 @@ article .read-later.rAlign span:after {
 .participate .contain-cinema .contain-good-practice .item-good-practice strong {
   display: block;
   font-size: 0.81rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   width: 188px;
   margin: 0 auto;
   line-height: 24px;
@@ -13520,7 +13611,7 @@ article .read-later.rAlign span:after {
   top: 35px;
 }
 .partners .content-partners .contain-section .title-section {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   color: #c1c1c1;
   font-size: 0.88rem;
@@ -13554,7 +13645,7 @@ article .read-later.rAlign span:after {
 .partners .content-partners .contain-section .item-partners .text-partners .title-partners {
   font-size: 0.75rem;
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 29px;
 }
 .partners .content-partners .contain-section .item-partners .text-partners .descrip-partners {
@@ -13567,7 +13658,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   font-size: 0.75rem;
   padding-right: 13px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -13590,7 +13681,7 @@ article .read-later.rAlign span:after {
 }
 .partners .content-partners .contain-section .item-partners .text-partners .portrait .name {
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 5px;
   padding-top: 10px;
   font-size: 0.75rem;
@@ -13627,7 +13718,7 @@ article .read-later.rAlign span:after {
   font-size: 0.88rem;
   letter-spacing: 2px;
   padding-top: 55px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .contractor .content-contractor .contain-section .item-contractor {
   border-bottom: 1px solid #c1c1c1;
@@ -13650,7 +13741,7 @@ article .read-later.rAlign span:after {
 .contractor .content-contractor .contain-section .item-contractor .text-contractor .title-contractor {
   font-size: 0.75rem;
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 29px;
   letter-spacing: 2px;
 }
@@ -13689,7 +13780,7 @@ article .read-later.rAlign span:after {
 }
 .contractor .content-contractor .contain-section .item-contractor .text-contractor .portrait .name {
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 5px;
 }
 .contractor .content-contractor .contain-section .item-contractor .text-contractor .portrait .rank {
@@ -13730,7 +13821,7 @@ article .read-later.rAlign span:after {
   top: 25px;
 }
 .manual .content-manual .contain-section .title-section {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   color: #c1c1c1;
   font-size: 0.88rem;
@@ -13791,7 +13882,7 @@ article .read-later.rAlign span:after {
 .manual .content-manual .contain-section .item-manual .text-manual .title-manual {
   font-size: 0.75rem;
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 29px;
 }
 .manual .content-manual .contain-section .item-manual .text-manual .descrip-manual {
@@ -13801,7 +13892,7 @@ article .read-later.rAlign span:after {
 .manual .content-manual .contain-section .item-manual .text-manual .descrip-manual strong {
   color: #c29f5f;
   font-size: 0.88rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .manual .content-manual .contain-section .item-manual .text-manual .title-descript {
   margin: 18px 0px;
@@ -13826,7 +13917,7 @@ article .read-later.rAlign span:after {
 }
 .manual .content-manual .contain-section .item-manual .text-manual .portrait .name {
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 5px;
   padding-top: 10px;
 }
@@ -13858,7 +13949,7 @@ article .read-later.rAlign span:after {
   padding-bottom: 24px;
 }
 .manual .content-manual .contain-section .item-manual .accredit .contain-people .people strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   display: block;
 }
 .manual .content-manual .contain-section .item-manual .accredit .contain-people .people .num {
@@ -13867,7 +13958,7 @@ article .read-later.rAlign span:after {
 .manual .content-manual .contain-section .item-manual .accredit .title-item-manual {
   font-size: 0.75rem;
   letter-spacing: 2px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
 }
 .manual .content-manual .contain-section .item-manual .contain-infos .item-infos {
@@ -13888,14 +13979,14 @@ article .read-later.rAlign span:after {
 .manual .content-manual .contain-section .item-manual .contain-infos .item-infos .title-infos {
   font-size: 0.75rem;
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   display: block;
   padding-bottom: 30px;
   padding-top: 12px;
   letter-spacing: 2px;
 }
 .manual .content-manual .contain-section .item-manual .contain-infos .item-infos strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .manual .content-manual .contain-section .item-manual .contain-infos .item-infos .phone {
   color: #c8a461;
@@ -13943,7 +14034,7 @@ article .read-later.rAlign span:after {
   box-sizing: border-box;
   height: 27px;
   display: block;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   line-height: 28px;
   padding-left: 40px;
@@ -13984,7 +14075,7 @@ article .read-later.rAlign span:after {
   margin: 10px;
 }
 .press .fc-event .info .txt {
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
   float: left;
   width: 145px;
@@ -14007,7 +14098,7 @@ article .read-later.rAlign span:after {
 .press .fc-event .info .txt strong {
   color: #c8a461;
   display: block;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-weight: normal;
   text-transform: none;
 }
@@ -14015,13 +14106,13 @@ article .read-later.rAlign span:after {
   border-top: 1px solid #4b4b4b;
   clear: both;
   padding: 7px 10px 10px 10px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
 }
 .press .fc-event .bottom .competition {
   color: #aeaeae;
   display: block;
-  font-family: "Camphor W01 Bold Italic";
+  font-family: "Camphor W01 Bold Italic", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
 }
 .press #calendar {
@@ -14069,7 +14160,7 @@ article .read-later.rAlign span:after {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .press #calendar #calendar-wrapper .drag h2 {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 1.2em;
   margin: 140px auto 35px auto;
   text-transform: uppercase;
@@ -14083,7 +14174,7 @@ article .read-later.rAlign span:after {
   width: 75%;
 }
 .press #calendar #calendar-wrapper .drag p strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #c8a461;
   display: block;
   margin-bottom: 8px;
@@ -14096,7 +14187,7 @@ article .read-later.rAlign span:after {
   display: block;
   color: #c8a461;
   border: 1px solid #c8a461;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   height: 40px;
   width: 40px;
@@ -14118,7 +14209,7 @@ article .read-later.rAlign span:after {
 .press #calendar h2.title-calendar {
   background-color: #373737;
   color: #c8a461;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
   font-weight: normal;
   height: 40px;
@@ -14174,7 +14265,7 @@ article .read-later.rAlign span:after {
 }
 .press #calendar #mycalendar .fc-toolbar h2 {
   color: #fff;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 0.813rem;
   opacity: 0.3;
@@ -14246,7 +14337,7 @@ article .read-later.rAlign span:after {
   display: block;
   margin: 0 auto;
   width: 80%;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   letter-spacing: 0.1em;
 }
@@ -14267,7 +14358,7 @@ article .read-later.rAlign span:after {
 .press .header-press h2 {
   color: #c8a461;
   float: left;
-  font-family: "Camphor W01 Thin", "Camphor W01 Regular";
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif, "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 2.125rem;
   font-weight: normal;
   letter-spacing: 0.2em;
@@ -14376,7 +14467,7 @@ article .read-later.rAlign span:after {
   border-right: none;
   box-sizing: border-box;
   color: #999;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   display: block;
   float: left;
@@ -14390,7 +14481,7 @@ article .read-later.rAlign span:after {
   border: 1px solid #c8a461;
   color: #c8a461;
   cursor: pointer;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
   width: 95px;
@@ -14554,7 +14645,7 @@ article .read-later.rAlign span:after {
   border-right: 1px solid #e5e5e5;
   height: 40px;
   line-height: 40px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-align: center;
   text-transform: uppercase;
@@ -14607,7 +14698,7 @@ article .read-later.rAlign span:after {
 .press .programmation #calendar-programmation #timeline a {
   border-right: 1px dotted #e5e5e5;
   color: #adadad;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   display: inline-block;
   margin-left: -4px;
@@ -14654,7 +14745,7 @@ article .read-later.rAlign span:after {
 }
 .press .programmation #calendar-programmation #timeline a span {
   display: block;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 13px;
 }
 .press .programmation #calendar-programmation #timeline a:first-child {
@@ -14688,7 +14779,7 @@ article .read-later.rAlign span:after {
   width: 150px;
 }
 .press .mediatheque .table .line .info .txt p {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   color: #999;
   text-transform: uppercase;
@@ -14696,7 +14787,7 @@ article .read-later.rAlign span:after {
 .press .mediatheque .table .line .info .txt a {
   color: #c8a461;
   display: block;
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
   text-transform: none;
 }
@@ -14705,7 +14796,7 @@ article .read-later.rAlign span:after {
   float: left;
   height: 75px;
   line-height: 75px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   letter-spacing: 0.1em;
   padding-left: 25px;
@@ -14740,7 +14831,7 @@ article .read-later.rAlign span:after {
 }
 .press .stats .container h3 {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   letter-spacing: 0.2em;
   margin-bottom: 15px;
@@ -14776,7 +14867,7 @@ article .read-later.rAlign span:after {
 }
 .press p.link a {
   color: #c8a461;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -14898,7 +14989,7 @@ article .read-later.rAlign span:after {
   }
 }
 .press .affiche p {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   font-weight: normal;
   letter-spacing: 0.2em;
@@ -14906,7 +14997,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
 }
 .press h3.title-press {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   font-weight: normal;
   letter-spacing: 0.2em;
@@ -14932,7 +15023,7 @@ article .read-later.rAlign span:after {
   padding-right: 0;
 }
 .press .contact-press .col h3 {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.850rem;
   line-height: 1.6em;
   margin-bottom: 30px;
@@ -14946,11 +15037,11 @@ article .read-later.rAlign span:after {
   padding-top: 23px;
 }
 .press .contact-press .col p strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .press .contact-press .col .mail {
   color: #c8a461;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.850rem;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15108,7 +15199,7 @@ article .read-later.rAlign span:after {
   border-color: #4b4b4b;
   height: 40px;
   line-height: 40px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
 }
@@ -15227,7 +15318,7 @@ article .read-later.rAlign span:after {
 .popin-event .events-container h2 {
   color: #000;
   clear: both;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   letter-spacing: 0.2em;
   margin: 40px 0 12px 0;
@@ -15235,7 +15326,7 @@ article .read-later.rAlign span:after {
 }
 .popin-event .events-container .date {
   color: #ababab;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
 }
@@ -15305,7 +15396,7 @@ article .read-later.rAlign span:after {
   margin-top: 30px;
 }
 .popin-event .film h2 {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   font-weight: normal;
   letter-spacing: 0.1em;
@@ -15332,7 +15423,7 @@ article .read-later.rAlign span:after {
   margin-right: 10px;
 }
 .popin-event .film .categories {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-top: 30px;
 }
 .popin-event .film .categories span {
@@ -15403,7 +15494,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   color: #999999;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 15px 22px;
   cursor: pointer;
   -moz-transition: padding 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15494,7 +15585,7 @@ article .read-later.rAlign span:after {
   color: #999;
   letter-spacing: .2em;
   font-size: 0.88rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -15549,7 +15640,7 @@ article .read-later.rAlign span:after {
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside .container-infos .container-title {
   font-size: 0.75rem;
   letter-spacing: .2em;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   line-height: 16px;
 }
@@ -15559,18 +15650,18 @@ article .read-later.rAlign span:after {
   font-size: 0.81rem;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside .container-infos .infos .date {
-  font-family: "Camphor W01 Italic";
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.81rem;
   display: block;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside .container-infos .infos .name {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.81rem;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside .container-infos .infos .addr {
   color: #c29f5f;
   text-decoration: underline;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -15592,13 +15683,13 @@ article .read-later.rAlign span:after {
   color: #000;
   letter-spacing: .2em;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts p {
   line-height: 24px;
   font-size: 0.81rem;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   padding-top: 8px;
   padding-bottom: 38px;
 }
@@ -15615,7 +15706,7 @@ article .read-later.rAlign span:after {
   color: #8e6d30;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts p .media {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service {
   width: 486px;
@@ -15634,7 +15725,7 @@ article .read-later.rAlign span:after {
   letter-spacing: .2em;
   color: #000;
   text-transform: uppercase;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
   padding-bottom: 30px;
 }
@@ -15644,7 +15735,7 @@ article .read-later.rAlign span:after {
   margin: 0 auto;
   line-height: 24px;
   font-size: 0.81rem;
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   height: 137px;
 }
 .practicalguide #praticalguide .container-pguide.active {
@@ -15664,7 +15755,7 @@ article .read-later.rAlign span:after {
 }
 
 .accreditation #accreditation .save {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   background: url("../img/press/svg/pdf.svg") no-repeat 15% center;
   background-size: 18px;
   font-size: 0.625rem;
@@ -15673,7 +15764,7 @@ article .read-later.rAlign span:after {
   color: #c8a461 !important;
 }
 .accreditation #accreditation #share-article {
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   background: url("../img/svg/print.svg") no-repeat 15% center;
   background-size: 18px;
   font-size: 0.625rem;
@@ -15713,14 +15804,14 @@ article .read-later.rAlign span:after {
   color: #8e6d30;
 }
 .accreditation #accreditation .wrapper .container-small h3 {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: .1em;
   padding: 52px 0px;
 }
 .accreditation #accreditation .wrapper .container-small h4 {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.88rem;
   text-transform: uppercase;
   letter-spacing: .2em;
@@ -15728,16 +15819,16 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 .accreditation #accreditation .wrapper .container-small p {
-  font-family: "Camphor W01 Regular";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   line-height: 30px;
   font-size: 1rem;
   margin-bottom: 36px;
 }
 .accreditation #accreditation .wrapper .container-small p strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .accreditation #accreditation .wrapper .container-small ul li strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
   letter-spacing: .2em;
   text-transform: uppercase;
@@ -15755,7 +15846,7 @@ article .read-later.rAlign span:after {
   color: #8e6d30;
 }
 .accreditation #accreditation .wrapper .container-small h5 {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
   letter-spacing: .2em;
   text-transform: uppercase;
@@ -15772,7 +15863,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 43px;
 }
 .accreditation #accreditation .wrapper .info strong {
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   display: block;
 }
 .accreditation #accreditation .nav-accre {
@@ -15787,7 +15878,7 @@ article .read-later.rAlign span:after {
 .accreditation #accreditation .nav-accre .wrapper h2 {
   line-height: 24px;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: .2em;
   width: 488px;
   margin: 0 auto;
@@ -15804,7 +15895,7 @@ article .read-later.rAlign span:after {
   text-align: center;
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -15891,7 +15982,7 @@ article .read-later.rAlign span:after {
 .downloading-press .downloading-nav ul li a {
   color: #999999;
   line-height: 14px;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   font-size: 0.75rem;
   -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -15940,7 +16031,7 @@ article .read-later.rAlign span:after {
   right: 0px;
   text-transform: uppercase;
   font-size: 0.60rem;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   float: left;
   letter-spacing: .01em;
 }
@@ -15972,7 +16063,7 @@ article .read-later.rAlign span:after {
   line-height: 24px;
   font-size: 0.75rem;
   letter-spacing: .2em;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   padding-top: 32px;
   padding-bottom: 4px;
@@ -16019,7 +16110,7 @@ article .read-later.rAlign span:after {
   padding-left: 38px;
   text-transform: uppercase;
   font-size: 0.60rem;
-  font-family: "Camphor W01 Heavy";
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   float: left;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -16043,7 +16134,7 @@ article .read-later.rAlign span:after {
   margin-top: 9px;
   color: #666666;
   font-size: 0.63rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
 }
 .downloading-press .block .container .contain-dp .infos strong {
@@ -16078,7 +16169,7 @@ article .read-later.rAlign span:after {
 .press-media .nav-mediapress .wrapper h2 {
   line-height: 24px;
   font-size: 0.88rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: .2em;
   width: 488px;
   margin: 0 auto;
@@ -16095,7 +16186,7 @@ article .read-later.rAlign span:after {
   text-align: center;
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -16145,7 +16236,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 17px;
   text-transform: uppercase;
   font-size: 0.88rem;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: .2em;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons strong span {

@@ -311,6 +311,53 @@ div.chocolat-wrapper {
     opacity: 0;
     @include transition(all 0.9s $smoothTransition);
 
+    .buttons {
+      position: absolute;
+      right: 0;
+      z-index: 5;
+      bottom: 101px;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.6s $smoothTransition);
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .button {
+        border-color: rgba(255, 255, 255, 0.4);
+        border-bottom: none;
+        height: 75px;
+        width: 75px;
+
+        &:last-child {
+          border-right: none;
+          width: 74px;
+        }
+      }
+
+      a.facebook {
+        background: url('../img/svg/facebook-gold.svg') no-repeat center;
+        background-size: 19px;
+      }
+
+      a.twitter {
+        background: url('../img/svg/twitter-gold.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.email {
+        background: url('../img/svg/mail.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.link {
+        background: url('../img/svg/link.svg') no-repeat center;
+        background-size: 16px;
+      }
+    }
+
     &:after {
       content: '';
       display: block;
@@ -336,6 +383,10 @@ div.chocolat-wrapper {
       &:after {
         opacity: 1;
         visibility: visible;
+      }
+
+      .buttons {
+        background-color: $black;
       }
     }
 
@@ -507,7 +558,6 @@ div.chocolat-wrapper {
   }
 
   .chocolat-content {
-    cursor: none;
     height: 100%;
     min-height: 100%;
     min-width: 100%;
@@ -531,26 +581,77 @@ div.chocolat-wrapper {
 
   .chocolat-top {
     overflow: initial;
-    pointer-events: none;
-  }
-
-  .chocolat-img {
-    cursor: none!important;
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    top: 20px;
+    left: auto;
+    right: 20px;
   }
 
   .chocolat-close {
     background: url('../img/svg/close-gold.svg') no-repeat center;
     background-size: 15px;
     border: 1px solid $gold;
-    cursor: none;
-    height: 100px;
+    cursor: pointer;
+    height: 80px;
     position: absolute;
     top: 0;
     right: 0;
-    width: 100px;
+    width: 80px;
     z-index: 100;
+    opacity: 0.6;
+    @include transition(all 0.9s $smoothTransition);
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
+  .chocolat-loader {
+    background: none;
+  }
+
+  .zoomCursor {
+    cursor: none;
+    display: none;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    z-index: 50;
+    border: 1px solid $gold;
+    @include transition(opacity 0.3s $smoothTransition);
+
+    &.hide {
+      opacity: 0;
+    }
+  }
+
+}
+
+.chocolat-zoomable {
+
+  .zoomCursor {
+    background: url('../img/svg/zoomIn.svg') no-repeat center;
+    background-size: 20px;
+    display: block!important;
+  }
+
+  .chocolat-content, .chocolat-img {
+    cursor: none;
+  }
+}
+
+.chocolat-zoomed {
+  .zoomCursor {
+    background: url('../img/svg/zoomOut.svg') no-repeat center;
+    background-size: 20px;
+    display: block!important;
+  }
+
+  .chocolat-content, .chocolat-img {
+    cursor: none!important;
+  }
 }
 
 // 3. Override Article actu photo
