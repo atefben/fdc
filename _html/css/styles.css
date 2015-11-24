@@ -12096,12 +12096,20 @@ article .read-later.rAlign span:after {
   background-color: #141414 !important;
 }
 .webtv-ba-video .title-container {
-  padding: 50px 0px;
+  padding: 20px 0px 40px 0px;
 }
 .webtv-ba-video .title-container a {
   color: #fff;
   text-transform: uppercase;
   font-size: 0.625rem;
+  background: url("../img/svg/arrow-left-white.svg") no-repeat left 2px;
+  background-size: 11px;
+  font-family: "Camphor W01 Heavy";
+  letter-spacing: 0.1em;
+  padding-left: 20px;
+}
+.webtv-ba-video .title-container h1 {
+	margin:10px 0 0 0;
 }
 .webtv-ba-video article {
   height: 450px;

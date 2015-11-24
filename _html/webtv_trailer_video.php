@@ -25,7 +25,7 @@
     <div id="main" class=" webtv webtv-ba-video loading">
   <div class="container-webtv-ba-video">
     <div class="title-container">
-      <a href="#"> > Retour aux bandes annonces</a>
+      <a href="#" class="bandeannone">Retour aux bandes annonces</a>
           <h1 class="title">Valley of love</h1>
     </div>
     <section>
