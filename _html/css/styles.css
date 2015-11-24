@@ -4397,7 +4397,7 @@ div.chocolat-wrapper .thumbnails .thumb.active img, div.chocolat-wrapper .thumbn
   opacity: 1 !important;
 }
 div.chocolat-wrapper .chocolat-bottom {
-  background: url("../img/shadow.png") repeat-x;
+  background: url("../img/shadow-slideshow.png") repeat-x;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 16px;
   line-height: initial;
@@ -4515,6 +4515,13 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description {
   text-align: left;
   position: relative;
   z-index: 2;
+  -moz-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-description.hide {
+  opacity: 0;
 }
 @media screen and (max-width: 1024px) {
   div.chocolat-wrapper .chocolat-bottom .chocolat-description {
@@ -4555,6 +4562,13 @@ div.chocolat-wrapper .credit {
   font-size: 0.750rem;
   line-height: 100px;
   padding: 0 35px;
+  -moz-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .credit.hide {
+  opacity: 0;
 }
 div.chocolat-wrapper .share {
   border-left: 1px solid rgba(255, 255, 255, 0.4);
@@ -4741,6 +4755,50 @@ div.chocolat-wrapper .zoomCursor.hide {
   cursor: none !important;
 }
 
+@media screen and (max-width: 1600px) {
+  div.chocolat-wrapper .share {
+    height: 80px;
+    width: 80px;
+    right: 162px;
+  }
+  div.chocolat-wrapper .chocolat-right {
+    height: 80px;
+    width: 80px;
+  }
+  div.chocolat-wrapper .chocolat-left {
+    height: 80px;
+    width: 80px;
+    right: 81px;
+  }
+  div.chocolat-wrapper .thumbnails {
+    bottom: 81px;
+  }
+  div.chocolat-wrapper .credit {
+    height: 80px;
+    line-height: 80px;
+  }
+  div.chocolat-wrapper .chocolat-bottom {
+    height: 80px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .chocolat-description {
+    padding-top: 15px;
+    padding-left: 115px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
+    line-height: 120px;
+    width: 80px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons {
+    bottom: 81px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons .button {
+    height: 60px;
+    width: 60px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
+    width: 59px;
+  }
+}
 .article_photo {
   padding-top: 50px;
 }

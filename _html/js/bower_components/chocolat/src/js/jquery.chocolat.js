@@ -124,7 +124,7 @@
             }
 
             setTimeout(function() {
-              $('.chocolat-content').removeClass('hide');
+              $('.chocolat-content, .chocolat-description, .credit').removeClass('hide');
             }, 1200);
 
             return deferred;
@@ -235,7 +235,7 @@
             this.zoomOut(0);
             this.zoomable();
 
-            $('.chocolat-content').addClass('hide');
+            $('.chocolat-content, .chocolat-description, .credit').addClass('hide');
 
             setTimeout(function() {
                 var requestedImage = that.settings.currentImage + parseInt(signe);
@@ -693,7 +693,7 @@
                 },
 
                 goto : function(i){ // open alias
-                    $('.chocolat-content').addClass('hide');
+                    $('.chocolat-content, .chocolat-description, .credit').addClass('hide');
                     i = parseInt(i) || 0;
 
                     setTimeout(function() {

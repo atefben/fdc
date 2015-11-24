@@ -302,7 +302,7 @@ div.chocolat-wrapper {
   }
 
   .chocolat-bottom {
-    background: url('../img/shadow.png') repeat-x;
+    background: url('../img/shadow-slideshow.png') repeat-x;
     border-top: 1px solid rgba(255, 255, 255, 0.4);
     font-size: 16px;
     line-height: initial;
@@ -420,6 +420,11 @@ div.chocolat-wrapper {
       text-align: left;
       position: relative;
       z-index: 2;
+      @include transition(opacity 0.6s $smoothTransition);
+
+      &.hide {
+        opacity: 0;
+      }
 
       @include breakpoint(1024px) {
         width: 430px;
@@ -467,6 +472,11 @@ div.chocolat-wrapper {
     font-size: 0.750rem;
     line-height: 100px;
     padding: 0 35px;
+    @include transition(opacity 0.6s $smoothTransition);
+
+    &.hide {
+      opacity: 0;
+    }
   }
 
   .share {
@@ -651,6 +661,64 @@ div.chocolat-wrapper {
 
   .chocolat-content, .chocolat-img {
     cursor: none!important;
+  }
+}
+
+@include breakpoint(1600px) {
+  div.chocolat-wrapper {
+
+    .share {
+      height: 80px;
+      width: 80px;
+      right: 162px;
+    }
+
+    .chocolat-right {
+      height: 80px;
+      width: 80px;
+    }
+
+    .chocolat-left {
+      height: 80px;
+      width: 80px;
+      right: 81px;
+    }
+
+    .thumbnails {
+      bottom: 81px;
+    }
+
+    .credit {
+      height: 80px;
+      line-height: 80px;
+    }
+
+    .chocolat-bottom {
+      height: 80px;
+
+      .chocolat-description {
+        padding-top: 15px;
+        padding-left: 115px;
+      }
+
+      .chocolat-pagination {
+        line-height: 120px;
+        width: 80px;
+      }
+
+      .buttons {
+        bottom: 81px;
+
+        .button {
+          height: 60px;
+          width: 60px;
+
+          &:last-child {
+            width: 59px;
+          }
+        }
+      }
+    }
   }
 }
 
