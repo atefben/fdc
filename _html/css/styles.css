@@ -6708,9 +6708,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6736,11 +6736,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6756,26 +6756,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -12099,12 +12099,20 @@ article .read-later.rAlign span:after {
   background-color: #141414 !important;
 }
 .webtv-ba-video .title-container {
-  padding: 50px 0px;
+  padding: 20px 0px 40px 0px;
 }
 .webtv-ba-video .title-container a {
   color: #fff;
   text-transform: uppercase;
-  font-size: 0.625rem;
+  font-size: 9.6px;
+  background: url("../img/svg/arrow-left-white.svg") no-repeat left 3px;
+  background-size: 9px;
+  font-family: "Camphor W01 Bold";
+  letter-spacing: 0.1em;
+  padding-left: 20px;
+}
+.webtv-ba-video .title-container h1 {
+  margin: 10px 0 0 0;
 }
 .webtv-ba-video article {
   height: 450px;
@@ -12126,11 +12134,15 @@ article .read-later.rAlign span:after {
   display: block;
   text-transform: uppercase;
   padding-top: 25px;
-  font-size: 0.6875rem;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-family: "Camphor W01 Bold";
 }
 .webtv-ba-video .video .name-video {
   font-size: 1.125rem;
   padding-top: 10px;
+  display: block;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .webtv-ba-video .informations-video {
   display: inline-block;
@@ -12841,6 +12853,7 @@ article .read-later.rAlign span:after {
 }
 .contain-jurys-list .title {
   margin-bottom: 0px;
+  line-height: 1.75rem;
 }
 .contain-jurys-list article img {
   float: left;
@@ -16123,7 +16136,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdfÔÇí;
+  border: 0px solid #dfdfdf‡;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {

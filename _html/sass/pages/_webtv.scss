@@ -464,12 +464,20 @@
 .webtv-ba-video{
 	background-color:#141414 !important;
 	.title-container{
-		padding: 50px 0px;
+		padding: 20px 0px 40px 0px;
 		a{
 			color: #fff;
 			text-transform: uppercase;
-			font-size: 0.625rem;
+			font-size: 9.6px;
+      background: url("../img/svg/arrow-left-white.svg") no-repeat left 3px;
+      background-size: 9px;
+      font-family: "Camphor W01 Bold";
+      letter-spacing: 0.1em;
+      padding-left: 20px;
 		}
+    h1 {
+      margin:10px 0 0 0;
+    }
 	}
  article{
         height: 450px;
@@ -493,11 +501,15 @@
 			display: block;
 			text-transform: uppercase;
 			padding-top:25px;
-			font-size: 0.6875rem;
+		  font-size: 11px;
+      letter-spacing: 1px;
+      font-family: "Camphor W01 Bold";
 		}
 		.name-video{
 			font-size: 1.125rem;
 			padding-top: 10px;
+      display:block;
+      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 		}
 	}
 	.informations-video{
