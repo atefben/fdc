@@ -105,6 +105,7 @@ function initAudioPlayers() {
 $(document).ready(function() {
 
   function FShandler() {
+    
     setTimeout(function() {
       redraw();
     }, 200);
@@ -116,7 +117,7 @@ $(document).ready(function() {
       $('.audio-player').removeClass("full overlay-channels");
       $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
     }
-    if (document.mozFullScreenEnabled && document.mozFullscreenElement == null) {
+    if (document.mozFullScreenEnabled && document.mozFullScreenElement == null) {
       $('.audio-player').removeClass("full overlay-channels");
       $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
     }
@@ -208,6 +209,7 @@ $(document).ready(function() {
     e.preventDefault();
     var audioPlayer = $(this).parents('.audio-player')[0];
 
+
     if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
 
       if($(this).parents('.audio-player').hasClass('full')) {
@@ -225,7 +227,6 @@ $(document).ready(function() {
         }
       }
       else {
-
         $(audioPlayer).addClass('full');
 
         var info = $(audioPlayer).find('.info').html();
