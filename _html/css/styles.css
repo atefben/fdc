@@ -3692,7 +3692,7 @@ header #navigation ul li:first-child {
 header #navigation ul li a {
   color: #fff;
   display: block;
-  padding-right: 21px;
+  padding-right: 20px;
   text-transform: uppercase;
   -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -3761,6 +3761,7 @@ header #navigation ul.main {
   position: relative;
 }
 header #navigation ul.user {
+  float: right;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.740rem;
 }
