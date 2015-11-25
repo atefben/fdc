@@ -214,14 +214,6 @@ $(document).ready(function() {
         width: 0,
         transition: 'none'
       });
-
-      $('#slider .owl-item:not(.center) .img-container, #slider .owl-item:not(.center) .info').css({
-        '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-        '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-        '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-        '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
-        'transform': 'translate3d(' + 0 + 'px, 0px, 0px)'
-      })
     }
 
     $("#slider").owlCarousel({

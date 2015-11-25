@@ -15,12 +15,12 @@ function initParallaxElements() {
 
     // slider home
     parallaxElements.push({
-      'el1': '#slider .owl-item.center .img-container',
+      'el1': '#slider .owl-item .img-container',
       'positionTop': $('#slider').offset().top - $header.height(),
-      'division': 10,
+      'division': 2,
       'mov': 4
     });
-
+    
     // slider movies home
     parallaxElements.push({
       'el1': '#slider-movies .owl-item.active .video',
@@ -59,7 +59,7 @@ function update(){
   for(var i=0; i<parallaxElements.length; i++) {
     if(scrollTarget > (parallaxElements[i].positionTop - hW) && scrollTarget < parallaxElements[i].positionTop + hW) {
       $(parallaxElements[i].el1).css('position', 'fixed');
-      render($(parallaxElements[i].el1)[0], parallaxElements[i].positionTop, parallaxElements[i].division, parallaxElements[i].mov, parallaxElements[i].direction); 
+      render(parallaxElements[i].el1, parallaxElements[i].positionTop, parallaxElements[i].division, parallaxElements[i].mov, parallaxElements[i].direction); 
     } else {
       $(parallaxElements[i].el1).css('position', '');
     }
@@ -98,11 +98,15 @@ function render(el1, start, division, mov, direction){
     }
     transform1 = 'translate3d(0px, ' + newPos + 'px, 0px)';
 
-    el1.style.webkitTransform = transform1;
-    el1.style.MozTransform = transform1;
-    el1.style.msTransform = transform1;
-    el1.style.OTransform = transform1;
-    el1.style.transform = transform1;
+    $(el1).css({
+      '-webkit-transform': transform1,
+      '-moz-transform': transform1,
+      '-o-transform': transform1,
+      '-ms-transform': transform1,
+      'transform': transform1
+    });
+
+
       
     // translate Element 2 with pos (plain speed)
   

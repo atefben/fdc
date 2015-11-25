@@ -7152,8 +7152,8 @@ header #searchContainer {
   background-position: center top;
   background-size: cover;
   width: 100%;
-  height: 110%;
-  margin-top: -4%;
+  height: 130%;
+  margin-top: -10%;
   opacity: 0.2 !important;
   -moz-transition: opacity 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: opacity 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -7572,7 +7572,7 @@ header #searchContainer {
   transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   width: 100%;
 }
-#social-wall #wall .post .side:before {
+#social-wall #wall .post .side .ov {
   content: '';
   display: block;
   position: absolute;
@@ -7583,12 +7583,12 @@ header #searchContainer {
   background-color: #000;
   opacity: 0;
   visibility: hidden;
-  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#social-wall #wall .post .side.overlay:before {
+#social-wall #wall .post .side.overlay .ov {
   opacity: 0.7;
   visibility: visible;
 }
