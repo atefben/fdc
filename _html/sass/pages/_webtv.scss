@@ -526,13 +526,15 @@
 				text-transform: uppercase;
 				padding: 23px 0px;
 				font-size: 0.75rem;
-				color:#666;
+				color:#999999;
 				border-bottom: 1px solid #2c2c2c;
 				border-top: 1px solid #2c2c2c;
 				margin: 0px;
 				width: 148px;
 				text-align: center;
 				box-sizing: border-box;
+        cursor:pointer;
+        font-family: "Camphor W01 Bold";
 			}
       li:first-child {
         border-right: 1px solid #2c2c2c;
@@ -560,11 +562,12 @@
 				text-transform: uppercase;
 				padding-top: 20px;
 				padding-bottom: 16px;
-				font-family: $CamphorBold;
+				font-family: "Camphor W01 Bold";
+        letter-spacing:0.2em;
 			}
 			strong{
 				font-size: 1rem;
-
+        text-transform:uppercase;
 			}
 			span{
 				font-family: $CamphorItalic;

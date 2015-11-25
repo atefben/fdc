@@ -31,7 +31,7 @@
            </div>
  <ul class="sub-nav-list nav-list">
              <li>
-               <a href="selectionofficielle_competition.php" class='active ajax'>En compétition</a>
+               <a href="selectionofficielle_competition.php" class='active ajax'>En Compétition</a>
              </li>
              <li>
                <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>

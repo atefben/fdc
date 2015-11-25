@@ -37,7 +37,7 @@
       <aside class="informations-video">
         <ul class="nav">
           <li class="active infos-film-li">Film</li>
-          <li class="program-film-li">Programation</li>
+          <li class="program-film-li">Programmation</li>
         </ul>
         <div class="container-video">
           <div class="infos-film block">
