@@ -585,7 +585,7 @@
 				font-family : $CamphorBold;
 			}
 			.item-contractor{
-				border-bottom: 1px solid #c1c1c1;
+				border-bottom: 1px solid #e0e0e0;
 				padding: 41px 0px;
 				.contain-img{
 					display: inline-block;
@@ -615,6 +615,7 @@
 					}
 					a{
 						color: #c8a461;
+						font-family : $CamphorBold;
 						text-transform: uppercase;
 						font-size: 0.75rem;
 						padding-right: 13px;

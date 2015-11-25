@@ -13809,7 +13809,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .contractor .content-contractor .contain-section .item-contractor {
-  border-bottom: 1px solid #c1c1c1;
+  border-bottom: 1px solid #e0e0e0;
   padding: 41px 0px;
 }
 .contractor .content-contractor .contain-section .item-contractor .contain-img {
@@ -13840,6 +13840,7 @@ article .read-later.rAlign span:after {
 }
 .contractor .content-contractor .contain-section .item-contractor .text-contractor a {
   color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   font-size: 0.75rem;
   padding-right: 13px;
