@@ -102,9 +102,13 @@ header {
         border: none;
 
         a.search {
-          background: url('../img/svg/search.svg') no-repeat left 1px;
+          background: url('../img/svg/search.svg') no-repeat left top;
           background-size: 15px;
           margin-right: 0;
+        }
+
+        a.selection {
+          min-width: 71px;
         }
       }
     }
@@ -419,7 +423,7 @@ header {
         a {
           color: #fff;
           display: block;
-          padding-right: 21px;
+          padding-right: 20px;
           text-transform: uppercase;
           @include transition(color 0.9s $smoothTransition);
 
@@ -490,6 +494,7 @@ header {
       }
 
       &.user {
+        float: right;
         font-family: $CamphorBold;
         font-size: 0.740rem;
 

@@ -3384,9 +3384,12 @@ header.sticky #sticky-user .user-nav {
   border: none;
 }
 header.sticky #sticky-user .user-nav a.search {
-  background: url("../img/svg/search.svg") no-repeat left 1px;
+  background: url("../img/svg/search.svg") no-repeat left top;
   background-size: 15px;
   margin-right: 0;
+}
+header.sticky #sticky-user .user-nav a.selection {
+  min-width: 71px;
 }
 header.sticky #logo-wrapper {
   height: 50px;
@@ -3689,7 +3692,7 @@ header #navigation ul li:first-child {
 header #navigation ul li a {
   color: #fff;
   display: block;
-  padding-right: 21px;
+  padding-right: 20px;
   text-transform: uppercase;
   -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -3758,6 +3761,7 @@ header #navigation ul.main {
   position: relative;
 }
 header #navigation ul.user {
+  float: right;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.740rem;
 }
@@ -5032,7 +5036,7 @@ div.chocolat-wrapper .zoomCursor.hide {
   font-size: 0.625rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: rgba(255, 255, 255, 0.3);
-  margin-top: 3px;
+  margin-top: -3px;
   left: 25px;
   z-index: 3;
 }
@@ -5536,6 +5540,9 @@ div.chocolat-wrapper .zoomCursor.hide {
 }
 .popin-audio .on .fullscreen {
   bottom: 42px;
+}
+.popin-audio .on .duration {
+  margin-top: -9px;
 }
 .popin-audio.show {
   opacity: 1;
@@ -6705,9 +6712,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -6733,11 +6740,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -6753,26 +6760,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -16133,7 +16140,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdf‡;
+  border: 0px solid #dfdfdfÔÇí;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {

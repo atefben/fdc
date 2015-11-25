@@ -52,7 +52,7 @@
       font-size: 0.625rem;
       font-family: $CamphorBold;
       color: rgba(255, 255, 255, .3);
-      margin-top: 3px;
+      margin-top: -3px;
       left: 25px;
       z-index: 3;
 
@@ -593,6 +593,10 @@
 
     .fullscreen {
       bottom: 42px;
+    }
+
+    .duration {
+      margin-top: -9px;
     }
   }
 
