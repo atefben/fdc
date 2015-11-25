@@ -113,7 +113,6 @@
             <a href="#" class="button twitter"></a>
             <a href="#" class="button link"></a>
             <a href="#" class="button email"></a>
-            <a href="#" class="button print"></a>
           </div>
         </div>
       </aside>

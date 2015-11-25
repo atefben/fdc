@@ -11886,9 +11886,10 @@ article .read-later.rAlign span:after {
   display: block;
 }
 .webtv #content-trailers {
+  clear: both;
   background-color: #141414;
   border-bottom: 1px solid #2c2c2c;
-  padding: 70px 0;
+  padding: 0 0;
   position: relative;
   z-index: 2;
 }
@@ -12126,7 +12127,7 @@ article .read-later.rAlign span:after {
   clear: both;
   color: #ffffff;
   width: auto;
-  display: inline-block;
+  float: left;
 }
 .webtv-ba-video .container-webtv-ba-video {
   width: 977px;
@@ -12149,11 +12150,11 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .webtv-ba-video .informations-video {
-  display: inline-block;
+  float: left;
   color: #fff;
-  height: 445px;
+  height: 466px;
   vertical-align: top;
-  max-width: 293px;
+  width: 297px;
   position: relative;
 }
 .webtv-ba-video .informations-video ul li {
@@ -12162,23 +12163,26 @@ article .read-later.rAlign span:after {
   padding: 23px 0px;
   font-size: 0.75rem;
   color: #666;
-  border-bottom: 1px solid #666;
-  border-top: 1px solid #666;
+  border-bottom: 1px solid #2c2c2c;
+  border-top: 1px solid #2c2c2c;
   margin: 0px;
-  width: 145px;
+  width: 148px;
   text-align: center;
   box-sizing: border-box;
-  border-right: 1px solid #666;
+}
+.webtv-ba-video .informations-video ul li:first-child {
+  border-right: 1px solid #2c2c2c;
 }
 .webtv-ba-video .informations-video ul .active {
   color: #c8a461;
-  border-bottom: 0px solid #666;
+  border-bottom: 0px solid #2c2c2c;
+  width: 148px;
 }
 .webtv-ba-video .informations-video .block {
   height: 286px;
   padding-top: 95px;
-  border-right: 1px solid #666;
-  border-bottom: 1px solid #666;
+  border-right: 1px solid #2c2c2c;
+  border-bottom: 1px solid #2c2c2c;
 }
 .webtv-ba-video .informations-video .infos-film {
   text-align: center;
@@ -12250,18 +12254,10 @@ article .read-later.rAlign span:after {
   background-color: #c8a461;
 }
 .webtv-ba-video .informations-video .share {
-  width: 290px;
-  position: absolute;
-  bottom: 1px;
+  margin: 9px 0 0 0;
 }
 .webtv-ba-video .informations-video .share .button {
-  height: 54px;
-  line-height: 60px;
-  padding: 0;
-  text-align: center;
-  width: 56px;
-  margin-top: 40px;
-  border-color: #666;
+  border-color: #2c2c2c;
 }
 .webtv-ba-video .informations-video .share a.facebook {
   background: url("../img/svg/facebook-gold.svg") no-repeat center;
@@ -12284,7 +12280,7 @@ article .read-later.rAlign span:after {
   background-size: 16px;
 }
 .webtv-ba-video #slider-trailer {
-  padding: 50px 0px;
+  padding: 10px 0px 72px 0;
 }
 .webtv-ba-video #content-trailers #slider-trailer .picto {
   background-image: url("../img/svg/video.svg");

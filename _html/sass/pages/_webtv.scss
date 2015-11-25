@@ -200,9 +200,10 @@
   }
 
   #content-trailers {
+    clear:both;
     background-color: $black;
     border-bottom: 1px solid #2c2c2c;
-    padding: 70px 0;
+    padding: 0 0;
     position: relative;
     z-index: 2;
 
@@ -487,7 +488,7 @@
         clear: both;
         color: #ffffff;
         width: auto;
-	 			display: inline-block;
+	 			float:left;
      
  }
   .container-webtv-ba-video{
@@ -513,11 +514,11 @@
 		}
 	}
 	.informations-video{
-		display: inline-block;
+		float:left;
     color: #fff;
-    height: 445px;
+    height: 466px;
     vertical-align: top;
-		max-width: 293px;
+		width: 297px;
 	  position: relative;
 		ul{
 			li{
@@ -526,25 +527,28 @@
 				padding: 23px 0px;
 				font-size: 0.75rem;
 				color:#666;
-				border-bottom: 1px solid #666;
-				border-top: 1px solid #666;
+				border-bottom: 1px solid #2c2c2c;
+				border-top: 1px solid #2c2c2c;
 				margin: 0px;
-				width: 145px;
+				width: 148px;
 				text-align: center;
 				box-sizing: border-box;
-				border-right: 1px solid #666;
 			}
+      li:first-child {
+        border-right: 1px solid #2c2c2c;
+      }
 			.active{
 				color:#c8a461;
-				border-bottom: 0px solid #666;
+				border-bottom: 0px solid #2c2c2c;
+        width:148px;
 			}
 		}
 
 		.block{
 			height: 286px;
 			padding-top: 95px;
-			border-right: 1px solid #666;
-			border-bottom: 1px solid #666;
+			border-right: 1px solid #2c2c2c;
+			border-bottom: 1px solid #2c2c2c;
 		}
 		
 		.infos-film{
@@ -622,17 +626,9 @@
 			}
 		}
 		.share{
-			width: 290px;
-			position: absolute;
-      bottom: 1px;
+      margin:9px 0 0 0;
 			.button{
-				height: 54px;
-				line-height: 60px;
-				padding: 0;
-				text-align: center;
-				width: 56px;
-				margin-top: 40px;
-				border-color: #666;
+				border-color: #2c2c2c;
 			}
 			a.facebook {
         background: url('../img/svg/facebook-gold.svg') no-repeat center;
@@ -662,7 +658,7 @@
 	}
 	//slide//
 	#slider-trailer{
-		padding:50px 0px;
+		padding:10px 0px 72px 0;
 	}
 	#content-trailers{
 		#slider-trailer{
