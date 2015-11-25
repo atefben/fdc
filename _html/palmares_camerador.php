@@ -44,7 +44,7 @@ de <strong>La Semaine de la Critique</strong> et de la <strong>Quinzaine des Ré
 La Présidente est l'actrice française Sabine Azéma.</h2>
         </div>
         <div class="title-list-cat">
-                <h2 class="title"> Les films en lice pour la Sélection officielle</h2>
+                <h2 class="title"> Les films en lice dans la Sélection officielle</h2>
         </div>
         <section class="categorie-items">
         <h3 class="sub-cat-title">En compétition</h3>
