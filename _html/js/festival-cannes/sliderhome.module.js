@@ -15,7 +15,7 @@ $(document).ready(function() {
         deltaTooBig = false;
 
     function positionElements() {
-      var p = ($('#slider .owl-item').width() / 2) - 100;
+      var p = ($('#slider .owl-item').width() / 2) - 200;
 
       $('#slider .center').prevAll().each(function() {
         $(this).find('.img').css({
@@ -147,7 +147,7 @@ $(document).ready(function() {
     });
 
     function move() {      
-      var p = ($('#slider .owl-item').width() / 2) - 100;
+      var p = ($('#slider .owl-item').width() / 2) - 200;
 
       $('#slider .img-container').addClass('relative');
 
