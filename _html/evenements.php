@@ -37,7 +37,7 @@
             </span>
           </div>
           <div id="theme" class="filter">
-            <span class="label">Thêmes :</span>
+            <span class="label">Thèmes :</span>
             <span class="select">
               <span class="active" data-filter="all">Tous</span>
               <span data-filter="press">Conférence de Presse</span>
