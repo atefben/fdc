@@ -102,9 +102,13 @@ header {
         border: none;
 
         a.search {
-          background: url('../img/svg/search.svg') no-repeat left 1px;
+          background: url('../img/svg/search.svg') no-repeat left top;
           background-size: 15px;
           margin-right: 0;
+        }
+
+        a.selection {
+          min-width: 71px;
         }
       }
     }
