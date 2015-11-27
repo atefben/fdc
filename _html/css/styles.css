@@ -11224,7 +11224,7 @@ article .read-later.rAlign span:after {
   position: relative;
   width: 975px;
   margin: 0 auto;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 .categorie-items .contain-article-invit .contain-img-honneur .copy {
   position: absolute;
@@ -11239,7 +11239,7 @@ article .read-later.rAlign span:after {
   text-align: center;
   font-size: 1.125rem;
   line-height: 36px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
 .categorie-items .contain-article-invit .pres-honneur a {
   text-decoration: underline;
