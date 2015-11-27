@@ -503,6 +503,7 @@
 						text-transform: uppercase;
 						font-family : $CamphorBold;
 						padding-bottom: 29px;
+						letter-spacing: 2px;
 					}
 					.descrip-partners{
 						font-size: 0.81rem;
@@ -697,10 +698,9 @@
 				letter-spacing: 2px;
 				padding-top: 41px;
 				@include transition(all 0.9s $linear);
-
 				.logo-title{
-					width: 21px;
-					height: 21px;
+					width: 23px;
+					height: 23px;
 					padding-right: 22px;
 					vertical-align: bottom;
 				}

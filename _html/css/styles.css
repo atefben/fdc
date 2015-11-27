@@ -13735,6 +13735,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 29px;
+  letter-spacing: 2px;
 }
 .partners .content-partners .contain-section .item-partners .text-partners .descrip-partners {
   font-size: 0.81rem;
@@ -13922,8 +13923,8 @@ article .read-later.rAlign span:after {
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .manual .content-manual .contain-section .title-section .logo-title {
-  width: 21px;
-  height: 21px;
+  width: 23px;
+  height: 23px;
   padding-right: 22px;
   vertical-align: bottom;
 }
