@@ -12180,8 +12180,8 @@ article .read-later.rAlign span:after {
   width: 148px;
 }
 .webtv-ba-video .informations-video .block {
-  height: 286px;
-  padding-top: 95px;
+  height: 301px;
+  padding-top: 80px;
   border-right: 1px solid #2c2c2c;
   border-bottom: 1px solid #2c2c2c;
 }
@@ -12209,11 +12209,11 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba-video .informations-video .program-film {
   text-align: center;
-  padding-right: 5px;
+  padding-right: 10px;
   display: none;
 }
 .webtv-ba-video .informations-video .program-film .contain-info {
-  max-height: 210px;
+  max-height: 222px;
   margin-bottom: 26px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -12226,18 +12226,19 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   color: #666;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
 }
 .webtv-ba-video .informations-video .program-film .infos p .date {
   color: #bababa;
 }
 .webtv-ba-video .informations-video .program-film .infos .where {
-  font-size: 1rem;
+  font-size: 16px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .webtv-ba-video .informations-video .program-film .infos hr {
   width: 20px;
   border-color: #666;
-  margin-top: 13px;
+  margin-top: 19px;
 }
 .webtv-ba-video .informations-video .program-film .btn {
   color: #c8a461;
@@ -12245,6 +12246,7 @@ article .read-later.rAlign span:after {
   font-size: 0.75rem;
   padding: 20px 35px;
   border: 1px solid #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .webtv-ba-video .informations-video .program-film ::-webkit-scrollbar {
   width: 5px;

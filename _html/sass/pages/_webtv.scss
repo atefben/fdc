@@ -547,8 +547,8 @@
 		}
 
 		.block{
-			height: 286px;
-			padding-top: 95px;
+			height: 301px;
+			padding-top: 80px;
 			border-right: 1px solid #2c2c2c;
 			border-bottom: 1px solid #2c2c2c;
 		}
@@ -579,10 +579,10 @@
 		}
 		.program-film{
 			text-align: center;
-			padding-right: 5px;
+			padding-right: 10px;
 			display: none;
 			.contain-info{
-				max-height: 210px;
+				max-height: 222px;
 				margin-bottom: 26px;
 				overflow-y: scroll;
 				overflow-x: hidden;
@@ -597,15 +597,16 @@
 					.date{
 						color:#bababa;
 					}
-					padding-bottom: 16px;
+					padding-bottom: 12px;
 				}
 				.where{
-					font-size: 1rem;
+					font-size: 16px;
+          font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 				}
 				hr{
 					width: 20px;
 					border-color: #666;
-					margin-top: 13px;
+					margin-top: 19px;
 				}
 			}
 			.btn{
@@ -614,6 +615,7 @@
 				font-size: 0.75rem;
 				padding: 20px 35px;
 				border: 1px solid #c8a461;
+        font-family: $CamphorBold;
 			}
 			::-webkit-scrollbar {
 				width: 5px;
