@@ -9,10 +9,54 @@
 
 header {
   background-color: $dark;
-  position: fixed;
+  position: relative;
   width: 100%;
   z-index: 10;
   top: 0;
+
+  &.press {
+    #navigation ul.main {
+      width: 835px;
+    }
+
+    #navigation ul.user {
+      float: right;
+      font-family: $CamphorHeavy;
+
+      li a {
+        color: #a7a7a7;
+
+        &:hover {
+          color: $gold;
+        }
+
+        &.download {
+          background: url('../img/svg/telecharger-grey.svg') no-repeat 5% 45%;
+          background-size: 10px;
+
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(all 0.9s $smoothTransition);
+            background: url('../img/svg/telecharger-gold.svg') no-repeat 5% 45%;
+            background-size: 10px;
+          }
+
+          &:hover:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
 
   ul {
     cursor: default;
@@ -58,9 +102,13 @@ header {
         border: none;
 
         a.search {
-          background: url('../img/svg/search.svg') no-repeat left 1px;
+          background: url('../img/svg/search.svg') no-repeat left top;
           background-size: 15px;
           margin-right: 0;
+        }
+
+        a.selection {
+          min-width: 71px;
         }
       }
     }
@@ -72,7 +120,7 @@ header {
       #logo {
         width: 290px;
 
-        img {
+        img.palm {
           float: left;
           margin-top: -5px;
           width: 72px;
@@ -108,7 +156,7 @@ header {
     border-left: 1px solid #404040;
     float: right;
     font-family: $CamphorBold;
-    padding: 0 20px 0 10px;
+    padding: 0 15px 0 10px;
 
     li {
       display: inline-block;
@@ -138,6 +186,7 @@ header {
           background: url('../img/svg/language.svg') no-repeat left 48%;
           padding-left: 30px;
           background-size: 20px;
+          margin-right: 0;
 
           &:hover {
             opacity: 1;
@@ -187,7 +236,7 @@ header {
 
     .main-nav {
       float: left;
-      font-family: $CamphorHeavy;
+      font-family: $CamphorBold;
 
       li {
         display: inline-block;
@@ -198,7 +247,7 @@ header {
           padding: 0 12px;
           text-transform: uppercase;
           @include transition(all 0.3s $smoothTransition);
-
+        
           &:hover, &.active {
             color: $gold;
           }
@@ -217,7 +266,7 @@ header {
     background-color: $black;
     height: 160px;
     overflow: hidden;
-    @include transition(all 0.2s $smoothTransition);
+    @include transition(all 0.1s $smoothTransition);
     @include transform(translateY(0));
 
     .container {
@@ -230,6 +279,7 @@ header {
       padding: 5px 100px 0 0;
       text-align: center;
       vertical-align: middle;
+      width: 200px;
 
       h1, p.stick {
         font-family: $CamphorBold;
@@ -267,7 +317,7 @@ header {
       }
 
       h2 {
-        font-family: $CamphorMedium;
+        font-family: $CamphorRegular;
         font-size: 0.875rem;
         font-weight: normal;
         margin-top: 5px;
@@ -278,7 +328,7 @@ header {
         }
       }
 
-      img {
+      img.palm {
         display: block;
         margin: 0 auto;
         width: 145px;
@@ -295,7 +345,7 @@ header {
 
       img {
         display: inline-block;
-        margin-right: 20px;
+        margin-right: 25px;
         vertical-align: middle;
 
         &.chopard {
@@ -303,15 +353,19 @@ header {
         }
 
         &.oreal {
-          margin-top: 5px;
+          margin-top: 2px;
         }
 
         &.hp {
 
         }
 
+        &.renault {
+          margin-top: 2px;
+        }
+
         &.kering {
-          margin-top: -4px;
+          margin-top: -2px;
         }
       }
     }
@@ -347,9 +401,9 @@ header {
     height: 39px;
     line-height: 39px;
 
-    .container {
+    /*.container {
       overflow: hidden;
-    }
+    }*/
 
     ul {
       float: left;
@@ -369,7 +423,7 @@ header {
         a {
           color: #fff;
           display: block;
-          padding-right: 21px;
+          padding-right: 20px;
           text-transform: uppercase;
           @include transition(color 0.9s $smoothTransition);
 
@@ -403,7 +457,7 @@ header {
             height: 100%;
             left: -150%;
             position: absolute;
-            width: 350%;
+            width: 450%;
             z-index: 0;
           }
 
@@ -411,7 +465,18 @@ header {
             font-size: 0.688rem;
             position: relative;
             z-index: 2;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.18em;
+          }
+
+          &.tcenter {
+            text-align: center;
+            width: 639px;
+            padding-left: 0;
+            left: 0;
+
+            li:last-child a {
+              padding-right: 0;
+            }
           }
         }
 
@@ -425,11 +490,17 @@ header {
         border-right: 1px solid #404040;
         font-family: $CamphorHeavy;
         font-size: 0.875rem;
+        position: relative;
       }
 
       &.user {
+        float: right;
         font-family: $CamphorBold;
         font-size: 0.740rem;
+
+        li {
+          vertical-align: top;
+        }
 
         li:hover>a {
           color: $gold;
@@ -442,7 +513,7 @@ header {
 
         li a {
           color: $grey;
-          padding: 0 0 0 28px;
+          padding: 0 0 0 26px;
           position: relative;
 
           &:after {
@@ -459,11 +530,11 @@ header {
           }
 
           &.programmation {
-            background: url('../img/svg/programmation.svg') no-repeat 8% 47%;
+            background: url('../img/svg/programmation.svg') no-repeat 7% 47%;
             background-size: 15px;
 
             &:after {
-              background: url('../img/svg/programmation-gold.svg') no-repeat 8% 47%;
+              background: url('../img/svg/programmation-gold.svg') no-repeat 7% 47%;
               background-size: 15px;
             }
           }
@@ -479,11 +550,11 @@ header {
           }
 
           &.press {
-            background: url('../img/svg/press.svg') no-repeat 12% 47%;
+            background: url('../img/svg/press.svg') no-repeat 10% 47%;
             background-size: 15px;
 
             &:after {
-              background: url('../img/svg/press-gold.svg') no-repeat 12% 47%;
+              background: url('../img/svg/press-gold.svg') no-repeat 10% 47%;
               background-size: 15px;
             }
           }

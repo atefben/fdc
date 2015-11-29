@@ -80,8 +80,14 @@ $(document).ready(function() {
       var $el = $(this)
         , id = $el.attr('href').substr(1);
      
+      var posT = $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height();
+
+      if(!$('#nav-movie').hasClass('sticky')) {
+        posT -= 32;
+      }
+
       $('html, body').animate({
-        scrollTop: $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height()
+        scrollTop: posT
       }, 500);
     });
 
@@ -113,6 +119,14 @@ $(document).ready(function() {
       } else {
         $('.nextmovie').addClass('show');
       }
+    });
+
+    $('body').on('click', '.single-movie .prevmovie', function(e) {
+      $('.single-movie .nav.prev').trigger('click');
+    });
+
+    $('body').on('click', '.single-movie .nextmovie', function(e) {
+      $('.single-movie .nav.next').trigger('click');
     });
 
     // previous and next over

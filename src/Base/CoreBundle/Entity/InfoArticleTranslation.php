@@ -57,6 +57,7 @@ class InfoArticleTranslation implements NewsTranslationInterface
     public function __construct()
     {
         $this->sites = new ArrayCollection();
+        $this->status = InfoArticleTranslation::STATUS_DRAFT;
     }
 
     /**

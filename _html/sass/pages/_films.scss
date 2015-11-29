@@ -1,10 +1,11 @@
- //       SUMMARY TABLE     
+ //       SUMMARY TABLE
  // =========================
  // 1. Global
  // 2. Bandeau
  // 3. Selection officielles
- // 4. Invit honnor 
+ // 4. Invit honnor
  // 5. Cannes classic
+ // 6. MEDIA (bandeau)
  // =========================
 
  // 1. Global
@@ -24,7 +25,7 @@
    }
    .title-list-cat {
      color: #ffffff;
-     padding: 50px;
+     padding: 42px;
      border-bottom: #202020 1px solid;
      border-top: #202020 1px solid;
      font-size: 1rem;
@@ -69,7 +70,7 @@
        height: 38px;
        line-height: 38px;
        margin: 0 0 0 0;
-       padding: 0 20px 0 40px;
+       padding: 0 19px 0 39px;
        text-transform: uppercase;
        -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
        -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -82,7 +83,7 @@
      .print {
        background: url("../img/svg/print.svg") no-repeat 15% center;
        background-size: 18px;
-       font-size: 0.63rem; 
+       font-size: 0.63rem;
      }
    }
    .sub-cat-title {
@@ -107,7 +108,7 @@
      .bck-hover {
        background-color: #141414;
        width: 100%;
-       padding: 32px;
+       padding: 37px;
        height: 418px;
        display: table;
        @include transition-property(background);
@@ -154,7 +155,6 @@
        }
        .nom-item {
          color: #c8a461;
-         font-style: italic;
          display: block;
          padding-bottom: 4px;
          font-family: $CamphorItalic;
@@ -203,7 +203,7 @@
        position: relative;
        width: 975px;
        margin: 0 auto;
-       margin-bottom: 80px;
+       margin-bottom: 50px;
        .copy {
          position: absolute;
          bottom: 18px;
@@ -218,7 +218,7 @@
        text-align: center;
        font-size: 1.125rem;
        line-height: 36px;
-       padding-bottom: 30px;
+       padding-bottom: 40px;
        a {
          text-decoration: underline;
          color: #c8a461;
@@ -231,7 +231,7 @@
        font-size: 1rem;
        line-height: 26px;
        p {
-         padding: 40px 0px;
+         padding: 32px 0px;
          strong {
            color: #c8a461;
          }
@@ -271,6 +271,7 @@
  
  // 1. Bandeau
  // =========================
+
  .list-article {
    background-color: #141414 !important;
    .bandeau-list {
@@ -278,6 +279,7 @@
      .bandeau-list-img {
        height: 300px;
        background-size: cover;
+       @include transition(all 1s $linear);
        .title-list-header {
          color: #ffffff;
          font-size: 1.75rem;
@@ -286,13 +288,17 @@
        }
        .bandeau-lien {
          color: #c8a461;
-         width: 165px;
+         width: 178px;
          margin: 0 auto;
          display: block;
-         font-weight: 600;
          text-transform: uppercase;
          font-size: 0.75rem;
          font-family: $CamphorHeavy;
+         .svg-arrow{
+           width: 12px;
+           vertical-align: baseline;
+           padding-right: 3px;
+         }
        }
      }
      .sub-nav-list {
@@ -302,14 +308,13 @@
        a {
          color: #686868;
          font-size: 0.8rem;
-         letter-spacing: 1px;
        }
        a.active {
          color: #c8a461;
        }
        li {
          display: inline-block;
-         padding: 16px 6.5px;
+         padding: 18px 6.5px;
          text-transform: uppercase;
        }
      }
@@ -324,7 +329,7 @@
        }
      }
      .nav-movie.sticky{
-       z-index: 100000;
+       z-index: 10;
        width: 100%;
        background-color: #1b1b1b;
      }
@@ -334,7 +339,7 @@
        font-family: $CamphorBold; 
        background-color: #202020;
        width: 100%;
-       z-index: 1000000;
+       z-index: 10;
        transition: .3s;
        a {
          color: #999999;
@@ -357,6 +362,7 @@
  
  // 3. Selection officielle
  //==========================
+
  .selection-officielle {
    .single-article{
      padding: 0px !important;
@@ -405,18 +411,108 @@
    }
  }
 
-// 4. Invit honneur 
+// 4. Invit honneur
+// ================
 
 .honneur-invit{
   .container{
-    padding: 0px ;
+    padding: 0px 0px;
+  }
+  .quote{
+    blockquote{
+      color: white;
+      border-top: 1px solid #2C2C2C;
+      border-bottom: 1px solid #2C2C2C;
+    }
+    margin-bottom: 60px;
+  }
+  .slideshow{
+    margin-bottom: 60px;
+    .slideshow-img{
+      height: 398px;
+    }
+    .caption{
+      padding: 0px 0px !important;
+    }
+  }
+  .half-photo{
+    margin: 0px 29px 50px 0;
+    margin-bottom: 60px;
+    width: 48%;
+    .caption{
+      padding: 0px 0px !important;
+    }
+    img{
+      max-width: auto;
+      width: 100%;
+    }
+  }
+  .title-film-detail{
+    margin-bottom: 0px !important;
   }
 }
 
 // 5. cannes Classic
+// ================
 
 .cannes-classic{
      .title-list-cat:first-child{
        border-top: 0px solid #000;
      }
+    .container{
+    padding: 0px ;
+  }
 }
+
+// 5. Media Bandeau
+// ================
+
+
+
+  @media screen and (min-width: 1920px) {
+    .films-list .bandeau-list-img{
+      height: 448px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 215px !important;
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+    .films-list .bandeau-list-img{
+      height: 373px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 181px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+    .films-list .bandeau-list-img{
+      height: 297px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 142px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .films-list .bandeau-list-img{
+      height: 296px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 141px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .films-list .bandeau-list-img{
+      height: 296px !important;
+    }
+    .films-list .title-list-header {
+      padding-top: 141px !important;
+    }
+  }
+

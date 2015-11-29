@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Status;
 
 use JMS\Serializer\Annotation\Groups;
@@ -19,11 +20,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementArticleTranslation implements NewsTranslationInterface
+class StatementArticleTranslation implements StatementTranslationInterface
 {
+    use Seo;
+    use Status;
     use Time;
     use Translation;
-    use Status;
 
     /**
      * @var string
@@ -57,6 +59,7 @@ class StatementArticleTranslation implements NewsTranslationInterface
     public function __construct()
     {
         $this->sites = new ArrayCollection();
+        $this->status = StatementArticleTranslation::STATUS_DRAFT;
     }
 
     /**

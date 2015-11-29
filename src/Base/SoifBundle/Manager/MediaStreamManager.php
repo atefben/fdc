@@ -89,7 +89,9 @@ class MediaStreamManager extends CoreManager
 
         // create file for sonata media
         $filename = $this->soifUploadDirectory. md5($id). '.'. $extension;
-        $this->createFileFromString($base64, $filename, $extension);
+        if ($this->createFileFromString($base64, $filename, $extension) === false) {
+            return;
+        }
 
         // update entity / generate thumbnails
         $media = $entity->getFile();
@@ -119,7 +121,7 @@ class MediaStreamManager extends CoreManager
     private function createFileFromString($base64, $filename, $extension)
     {
         $extensionsImage = array('jpg', 'gif', 'png');
-        
+
         if ($extension == 'pdf')
             $result = file_put_contents($filename, $base64);
         else if (in_array($extension, $extensionsImage)) {
@@ -128,7 +130,7 @@ class MediaStreamManager extends CoreManager
             $msg = __METHOD__. " - The extension {$extension} is not supported.";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
-            break;
+            return false;
         }
         
         if ($result === false) {
@@ -160,6 +162,9 @@ class MediaStreamManager extends CoreManager
             $msg = __METHOD__. " - Impossible to create image from string {$this->wsParameterKey} : {$id}";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
+            return false;
         }
+
+        return true;
     }
 }

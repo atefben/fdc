@@ -21,24 +21,19 @@ $(document).ready(function() {
         $(this).addClass('active');
       }
     });
-  }
-    if($('.films-list').length){
-    
-      $('.films-list .sub-nav-list a').on('click',function(e){
-      //:not(.active)
-      e.preventDefault();
-
-      if($(this).is(':not(.active)')) {
-        var urlPath = $(this).attr('href');
+        //Scroll
+      $(window).on('scroll', function() {
         
-//        $.get($(this).data('url'), function(data){
-        $.get(urlPath, function(data){
-            $( ".container-list" ).html( $(data).find('.container-list') );
-          history.pushState('',"titre test", urlPath);
-        });
-        $('.films-list .sub-nav-list').find('a.active').removeClass('active');
-        $(this).addClass('active');
+        var s = $(window).scrollTop();
+        var h = $("#main").height()-900;
+
+      if(s > 470 ){
+        $('.sub-nav-list').addClass('sticky');
+        $(".sub-nav-list").css({position: "fixed",top:90});
+      } else if (s < 470){
+        $(".sub-nav-list").css({position: "relative",top:1});
       }
-    });
+      });
   }
+
 });

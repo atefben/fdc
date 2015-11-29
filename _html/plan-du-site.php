@@ -46,23 +46,23 @@
             </ul>
         </article>
         <article class="sitemap-item">
-            <h3 class="title sitemap-item-title">Les films</h3>
+            <h3 class="title sitemap-item-title">La Sélection</h3>
             <ul>
-                <li><a href="#">Compétition</a></li>
-                <li><a href="#">Un Certain Regard</a></li>
-                <li><a href="#">Hors Compétition</a></li>
-                <li><a href="#">Séances Spéciales</a></li>
-                <li><a href="#">Cinéfondation</a></li>
-                <li><a href="#">Courts Métrages</a></li>
-                <li><a href="#">Cannes Classics</a></li>
+                <li><a href="selectionofficielle_competition.php">En Compétition</a></li>
+                <li><a href="selectionofficielle_uncertainregard.php">Un Certain Regard</a></li>
+                <li><a href="selectionofficielle_horscompetition.php">Hors Compétition</a></li>
+                <li><a href="selectionofficielle_seancespeciales.php">Séances Spéciales</a></li>
+                <li><a href="selectionofficielle_cinefondation.php">Cinéfondation</a></li>
+                <li><a href="selectionofficielle_courtsmetrages.php">Courts Métrages</a></li>
+                <li><a href="films_invitedhonneur.php">Cannes Classics</a></li>
                 <li><a href="films_cinemadelaplage.php">Cinéma de la Plage</a></li>
             </ul>
         </article>
         <article class="sitemap-item">
-            <h3 class="title sitemap-item-title">Jurys</h3>
+            <h3 class="title sitemap-item-title">Les Jurys</h3>
             <ul>
               <li><a href="jury_longsmetrages.php">Longs métrages</a></li>
-              <li><a href="jury_cinefondation_courtsmetrages.php">Cinéfondation & court metrage</a></li>
+              <li><a href="jury_cinefondation_courtsmetrages.php">Cinéfondation & Courts Métrages</a></li>
               <li><a href="jury_uncertainregard.php">Un certain regard</a></li>
               <li><a href="jury_camerador.php">Caméra d'or</a></li>  
             </ul>
@@ -96,7 +96,7 @@
                     <a href="participer_sejour.php">Préparer son séjour</a>
                 </li>
                 <li>
-                    <a href="#">Festival mode d'emploi</a>
+                    <a href="participer_modeemploi.php">Festival mode d'emploi</a>
                 </li>
                 <li>
                     <a href="participer_preparer.php">Accès aux projections</a>
@@ -116,22 +116,19 @@
                     <a href="#">Accueil</a>
                 </li>
                 <li>
-                    <a href="#">L'info / communiqués</a>
-                </li>
-                <li>
-                    <a href="#">Participer</a>
+                    <a href="#">Communiqués / Infos</a>
                 </li>
                 <li>
                     <a href="#">S'accréditer</a>
+                </li>
+                <li>
+                    <a href="#">Guide pratique</a>
                 </li>
                 <li>
                     <a href="#">Programmation</a>
                 </li>
                 <li>
                     <a href="#">Médiathèque</a>
-                </li>
-                <li>
-                    <a href="#">À télécharger</a>
                 </li>
             </ul>
         </article>

@@ -4,7 +4,7 @@
   <head>
     <!-- //// META \\\\ -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024px, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">    
 
@@ -25,18 +25,19 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <div id="sliderWrapper">
         <div id="slider" class="owl-carousel">
           <div>
-            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider01.jpg)"></div></div>
+            <div class="img-container"><div class="img" style="background-image:url(/img/slider/slider01.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
-              <h2>Xavier Dolan : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
+              <h2>Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »</h2>
             </div>
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider02.jpg)"></div></div>
+            <div class="img-container"><div class="img" style="background-image:url(/img/slider/slider02.jpg)"></div></div>
             <div class="info">
               <span class="category">Rencontre</span>
               <h2>test</h2>
@@ -44,17 +45,9 @@
             <a href="article.php" class="linkArticle"></a>
           </div>
           <div>
-            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider01.jpg)"></div></div>
+            <div class="img-container"><div class="img" style="background-image:url(/img/slider/slider03.jpg)"></div></div>
             <div class="info">
               <span class="category">Test</span>
-              <h2>test</h2>
-            </div>
-            <a href="article.php" class="linkArticle"></a>
-          </div>
-          <div>
-            <div class="img-container"><div class="img" style="background-image:url(img/slider/slider02.jpg)"></div></div>
-            <div class="info">
-              <span class="category">Lorem ipsum</span>
               <h2>test</h2>
             </div>
             <a href="article.php" class="linkArticle"></a>
@@ -66,7 +59,7 @@
         <h2 class="title">L'actualité à la une</h2>
         <div class="filters">
           <div id="theme" class="filter">
-            <span class="label">Thêmes :</span>
+            <span class="label">Thèmes :</span>
             <span class="select">
               <span class="active" data-filter="all">Tous</span>
               <span data-filter="press">Conférence de Presse</span>
@@ -241,7 +234,7 @@
                   </div>
                   <div class="info">
                     <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi / supported by [NEUS]</a></h2>
+                    <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi</a></h2>
                   </div>
                 </article>
               </div>
@@ -252,10 +245,11 @@
           </div>
 
           <div id="timeline">
+            <a href="#" data-date="22" class="disabled">dim<span class="day">22</span></a>
             <a href="#" data-date="21" class="disabled">sam<span class="day">21</span></a>
             <a href="#" data-date="20" class="disabled">ven<span class="day">20</span></a>
-            <a href="#" data-date="19" class="disabled">jeu<span class="day">19</span></a>
-            <a href="#" data-date="18" class="active">mer<span class="day">18</span></a>
+            <a href="#" data-date="19" class="active">jeu<span class="day">19</span></a>
+            <a href="#" data-date="18" class="">mer<span class="day">18</span></a>
             <a href="#" data-date="17" class="">mar<span class="day">17</span></a>
             <a href="#" data-date="16" class="">lun<span class="day">16</span></a>
             <a href="#" data-date="15" class="">dim<span class="day">15</span></a>
@@ -263,7 +257,6 @@
             <a href="#" data-date="13" class="">ven<span class="day">13</span></a>
             <a href="#" data-date="12" class="">jeu<span class="day">12</span></a>
             <a href="#" data-date="11" class="">mer<span class="day">11</span></a>
-            <a href="#" data-date="10" class="">mar<span class="day">10</span></a>
           </div>
           <div id="shdMore" class="shadow-bottom"></div>
           <div id="shd" class="shadow-bottom"></div>

@@ -24,46 +24,48 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article films-list loading cannes-classic">
+    <div id="main" class="list-article films-list loading cannes-classic selection-officielle">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Cannes classics</h2>
+           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
+               <h2 class="title title-list-header">Selection officielle</h2>
            </div>
-             <ul class="nav-list">
+             <ul class="nav-list sub-nav-list">
              <li>
-               <a href="selectionofficielle_competition.php">Compétition</a>
+               <a href="selectionofficielle_competition.php" class="ajax">Compétition</a>
              </li>
              <li>
-               <a href="selectionofficielle_uncertainregard.php">Un certain regard</a>
+               <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>
              </li>
              <li>
-               <a href="selectionofficielle_horscompetition.php">Hors compétition</a>
+               <a href="selectionofficielle_horscompetition.php" class="ajax">Hors compétition</a>
              </li>
              <li>
-               <a href="selectionofficielle_seancespeciales.php">Séances spéciales</a>
+               <a href="selectionofficielle_seancespeciales.php" class="ajax">Séances spéciales</a>
              </li>
              <li>
-               <a href="selectionofficielle_cinefondation.php">Cinéfondation</a>
+               <a href="selectionofficielle_cinefondation.php" class="ajax">Cinéfondation</a>
              </li>
              <li>
-               <a href="selectionofficielle_courtsmetrages.php">Courts métrages</a>
+               <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
              </li>
              <li>
-               <a href="films_invitedhonneur.php" class='active'>Cannes classics</a>
+               <a href="films_invitedhonneur.php" class=' ajax active'>Cannes classics</a>
              </li>
              <li>
-               <a href="films_cinemadelaplage.php">Cinéma de la plage</a>
+               <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
              </li>
            </ul>
-           <ul class="sub-nav-list nav-movie">
-               <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
-               <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
-               <li><a href="films_copiesrestaurees.php" class="active ajax">Copies restaurées </a></li>
-               <li><a href="#" class="ajax">World cinema project</a></li>
-               <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
-           </ul> 
       </div>
       <div class="container container-list">
+      <div class="bandeau-list">
+        <ul class="sub-nav-list nav-movie">
+          <li><a href="films_invitedhonneur.php" class="ajax">Invité d'honneur</a></li>
+          <li><a href="films_hommage.php" class="ajax">Hommages</a></li>
+          <li><a href="films_copiesrestaurees.php" class="ajax active">Copies restaurées </a></li>
+          <li><a href="#" class="ajax">World cinema project</a></li>
+          <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
+        </ul> 
+      </div>
         <section class="categorie-items">
 
             <article style="background-image:url(img/films/cover-film-copie1.jpg)">
@@ -132,10 +134,10 @@ Financement par le National Film Institute argentin (INCAA) et travail exécuté
             </article>
         </section>
       </div>
-      <div class="bandeau-list">
+      <div class="bandeau-list  bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
                <h2 class="title title-list-header">World Cinema Project</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
 
       </div>

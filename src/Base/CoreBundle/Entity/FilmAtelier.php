@@ -122,7 +122,7 @@ class FilmAtelier
     /**
      * @var FilmSelectionSection
      *
-     * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="filmAteliers")
+     * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
@@ -149,7 +149,7 @@ class FilmAtelier
     /**
      * @var FilmAtelierProductionCompany
      *
-     * @ORM\ManyToOne(targetEntity="FilmAtelierProductionCompany", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmAtelierProductionCompany", inversedBy="filmAtelier", cascade={"persist"})
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */

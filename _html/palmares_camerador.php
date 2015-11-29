@@ -24,7 +24,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article palmares-list loading">
+    <div id="main" class="list-article palmares-list camerador loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/palmares/cover-bandeau-palmares.jpg);background-size: cover;">
                <h2 class="title title-list-header">Le Palmarès</h2>
@@ -38,30 +38,61 @@
            </ul> 
       </div>
       <div class="container container-list">
+       <div class="title-list-cat">
+                <h2 class="titre-document">Fondée en 1978, la Caméra d’or consacre chaque année le meilleur premier film issu de la Sélection officielle,
+de <strong>La Semaine de la Critique</strong> et de la <strong>Quinzaine des Réalisateurs</strong> . En 2015, ils sont 26 à concourir pour cette récompense qui sera remise lors de la soirée du Palmarès le dimanche 24 mai.
+La Présidente est l'actrice française Sabine Azéma.</h2>
+        </div>
+        <div class="title-list-cat">
+                <h2 class="title"> Les films en lice dans la Sélection officielle</h2>
+        </div>
         <section class="categorie-items">
-            <article style="background-image:url(img/palmares/cover-film-camerador.jpg)">
+        <h3 class="sub-cat-title">En compétition</h3>
+           <article style="background-image:url(img/films/cover-film-cdo.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
-                <img src="img/palmares/cover-film-camerador.jpg" alt="images films">
+                <img src="img/films/cover-film-cdo.jpg" alt="images films">
                 <div class="infos-item-list">
-                  <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
-                      <strong class="palme-dor-text verticalline">Caméra d'or</strong>
-                  </div>
-                    <h3 class="title-item">La tierra y la sombra</h3>
-                    <span class="nom-item">César Augusto ACEVEDO</span>
+
+                    <h3 class="title-item">Saul Fia</h3>
+                    <h4 class="sub-title-item">(Le fils de paul)</h4>
+                    <span class="nom-item">László NEMES</span>
+                    <span class="time-item">1h47</span>
                 </div>
                </div>
             </div>
             </article>
-           
-        </section>  
-        </div>
+        </section>
+        <section class="categorie-items">
+        <h3 class="sub-cat-title">Un certain regard</h3>
+           <article style="background-image:url(img/films/cover-film-cdo.jpg)">
+            <div class="bck-hover">
+               <div class="contain_item">
+                <img src="img/films/cover-film-cdo1.jpg" alt="images films">
+                <div class="infos-item-list">
 
+                    <h3 class="title-item">Maasan</h3>
+                    <span class="nom-item">Neeraj GHAYWAN</span>
+                    <span class="time-item">1h43</span>
+                </div>
+               </div>
+            </div>
+            </article>
+        </section>
+        <div class="title-list-cat">
+                <h2 class="title"> les films en Lice<br>dans les autres sélections</h2>
+        </div>
+        <section class='categorie-items-columns'>
+          <ul>
+            <li><a href="http://www.quinzaine-realisateurs.com/" target="_blank"><img src="./img/palmares/quinzaine.jpg" alt=""></a></li>
+            <li><a href="http://www.semainedelacritique.com/" target="_blank"><img src="./img/palmares/semaine-critique.jpg" alt=""></a></li>
+          </ul>
+        </section>
+        </div>
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);">
                <h2 class="title title-list-header">Cannes Classic</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
 
       </div>

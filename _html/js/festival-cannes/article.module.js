@@ -64,7 +64,7 @@ $(document).ready(function() {
             initAudioPlayers();
           }, 800);
         });
-      }, 2000);
+      }, 500);
     });
   }
 });

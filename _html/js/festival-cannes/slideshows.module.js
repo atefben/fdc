@@ -6,13 +6,21 @@ var slideshows = [];
 function initSlideshows() {
 
   // create slider of thumbs
-  $('.thumbnails').owlCarousel({
-    autoWidth: true,
+  var nbItems = $('.single-article').length != 0 ? 7 : 8;
+
+  var sliderThumbs =$('.thumbnails').owlCarousel({
     nav: false,
     dots: false,
     smartSpeed: 500,
     margin: 10,
-    dragEndSpeed: 900
+    dragEndSpeed: 900,
+    items: nbItems
+  });
+
+  sliderThumbs.owlCarousel();
+
+  $('body').on('click', '.slideshow .thumbnails .owl-item', function(e) {
+    sliderThumbs.trigger('to.owl.carousel', [$(this).index(), 400, true]);
   });
 
   // on click on thumbnail, change main picture
@@ -54,19 +62,22 @@ function initSlideshows() {
 }
 
 // close slideshow on click
-$('body').on('click', '.chocolat-img', function(e){
+$('body').on('click', '.chocolat-close', function(e){
 
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
 
   $('.chocolat-bottom').css('opacity', 0);
+  $('.chocolat-close').css('opacity', 0);
 
   setTimeout(function() {
     $('.chocolat-wrapper').removeClass('show');
     $('body').removeClass('fixed');
 
-    $('html, body').animate({
-      scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
-    }, 0);
+    if($('.slideshow').length) {
+      $('html, body').animate({
+        scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+      }, 0);
+    }
 
     setTimeout(function() {
       for(var i=0; i<slideshows.length; i++) {
@@ -83,7 +94,7 @@ $('body').on('click', '.chocolat-img', function(e){
       $('.chocolat-wrapper').remove();
       initSlideshows();
     }, 1400);
-  }, 700);
+  }, 900);
 });
 
 // mouseover img : close thumbs
@@ -111,6 +122,10 @@ $('body').on('mouseover', '.chocolat-pagination', function() {
   $('.chocolat-content').addClass('thumbsOpen');
 });
 
+$('body').on('click', '.chocolat-bottom .share', function() {
+  $('.chocolat-bottom .buttons').toggleClass('show');
+});
+
 // zoom
 $('body').on('click', '.chocolat-image', function() {
   var $that = $(this);
@@ -118,6 +133,8 @@ $('body').on('click', '.chocolat-image', function() {
   $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
   $('<a href="#" class="share"></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+  $('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>').appendTo('.chocolat-bottom');
+  $('<div class="zoomCursor"></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
   setTimeout(function() {
@@ -144,11 +161,27 @@ $('body').on('click', '.chocolat-image', function() {
   }
 
   $('.chocolat-wrapper .thumbnails').owlCarousel({
-    autoWidth: true,
     nav: false,
     dots: false,
     smartSpeed: 500,
-    margin: 0
+    margin: 0,
+    responsive:{
+      0:{
+        items:5
+      },
+      1280: {
+        items: 6
+      },
+      1600:{
+        items:7
+      },
+      1800:{
+        items:8
+      },
+      1920: {
+        items: 9
+      }
+    }
   });
 });
 
@@ -208,23 +241,24 @@ $('body').on('click', '.chocolat-right', function(){
 
 // cursor close
 $('body').on('mouseout', '.chocolat-content', function(){
-  $('.chocolat-close').hide();
+  $('.zoomCursor').addClass('hide');
   return false;
 });
 
 $('body').on('mouseenter', '.chocolat-content', function(){
-  $('.chocolat-close').show();
+  $('.zoomCursor').removeClass('hide');
   return false;
 }); 
 
 var timeoutCursor;
 
 $('body').on('mousemove', '.chocolat-content', function(e){
-  $('.chocolat-close').css('left', e.clientX + 10).css('top', e.clientY);
+  $('.zoomCursor').css('left', e.clientX + 10).css('top', e.clientY);
   $('.chocolat-bottom').addClass('show');
 
   clearTimeout(timeoutCursor);
   timeoutCursor = setTimeout(function() {
     $('.chocolat-bottom').removeClass('show');
+    $('.chocolat-bottom .buttons').removeClass('show');
   }, 4000);
 });

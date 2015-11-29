@@ -28,10 +28,8 @@
         <a href="#" class="language">FR</a>
         <ul class="sub-languages">
           <li><a href="#">EN</a></li>
-          <li><a href="#">DE</a></li>
           <li><a href="#">ES</a></li>
-          <li><a href="#">IT</a></li>
-          <li><a href="#">NL</a></li>
+          <li><a href="#">ZH</a></li>
         </ul>
       </li>
     </ul>
@@ -39,17 +37,17 @@
   <div id="logo-wrapper">
     <div class="container">
       <div id="logo">
-        <a href="/"><img src="img/svg/palme.svg" alt="Festival de Cannes" /></a>
-        <h1><a href="/">Festival de Cannes</a></h1>
-        <h2><a href="/">11-12 Mai 2016</a></h2>
-        <p class="stick"><a href="/">Festival de Cannes</a></p>
+        <a href="/"><img src="img/svg/palme.svg" alt="Festival de Cannes" class="palm" /></a>
+        <h1><a href="/"><img width="200" src="img/svg/logo.svg" alt="Festival de Cannes" /></a></h1>
+        <h2><a href="/">11-22 Mai 2016</a></h2>
+        <p class="stick"><a href="/"><img width="178" src="img/svg/logo.svg" alt="Festival de Cannes" /></a></p>
       </div>
       <div id="partners">
-        <img width="80" src="img/header/Logo_Chopard.svg" alt="Chopard" class="chopard" />
-        <img width="70" src="img/header/loreal.svg" alt="L'Oréal" class="oreal" />
-        <img width="25" src="img/header/hp.svg" alt="HP" class="hp" />
-        <img width="90" src="img/header/Kering-logo.svg" alt="Kering" class="kering" />
-        <img width="81" src="img/header/renault.png" alt="Renault" class="renault" />
+        <img width="84" src="img/header/Logo_Chopard.svg" alt="Chopard" class="chopard" />
+        <img width="75" src="img/header/loreal.svg" alt="L'Oréal" class="oreal" />
+        <img width="28" src="img/header/hp.svg" alt="HP" class="hp" />
+        <img width="82" src="img/header/Kering-logo.svg" alt="Kering" class="kering" />
+        <img width="95" src="img/header/renault.svg" alt="Renault" class="renault" />
         <img width="57" src="img/header/mastercard.png" alt="Mastercard" class="mastercard" />
       </div>
       <div id="search">
@@ -76,8 +74,8 @@
         <ul class="main">
           <li>
             <a href="/" class="active">L'actualité</a>
-            <ul>
-              <li><a href="/">Jour après Jour</a></li>
+            <ul class="tcenter">
+              <li><a href="/" class="active">Jour après Jour</a></li>
               <li><a href="articles.php">Articles</a></li>
               <li><a href="photos.php">Photos</a></li>
               <li><a href="videos.php">Vidéos</a></li>
@@ -86,7 +84,7 @@
           </li>
           <li>
             <a href="webtv.php">Web TV</a>
-            <ul>
+            <ul class="tcenter">
               <li><a href="webtv.php">Direct</a></li>
               <li><a href="channels.php">Chaines</a></li>
               <li><a href="webtv_trailer_competition.php">Bandes annonces</a></li>
@@ -107,7 +105,7 @@
         </ul>
         <ul class="user">
           <li>
-            <a href="#" class="programmation">Programmation</a>
+            <a href="programmation.php" class="programmation">Programmation</a>
           </li>
           <li class="participate-wrapper">
             <a href="participer_sejour.php" class="participate">Participer</a>
@@ -120,7 +118,7 @@
             </ul>
           </li>
           <li>
-            <a href="#" class="press">Espace presse</a>
+            <a href="press.php" class="press">Espace presse</a>
           </li>
         </ul>
       </nav>
@@ -136,5 +134,31 @@
       <li><a href="#" data-selection='suggestion'>Suggestions</a></li>
     </ul>
     <div id="slider-selection" class="owl-carousel"></div>
+    <div id="slider-suggestion" class="owl-carousel"></div>
+    <div id="toClone" class="article">
+      <article class="" data-format="" data-theme="">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="" alt="" />
+          </div>
+          <a href="" class="linkImage"></a>
+          <span class="picto"></span>
+        </div>
+        <div class="info">
+          <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+          <h2><a href="article.php"></a></h2>
+        </div>
+      </article>
+      <a href="#" class="delete"></a>
+    </div>
+  </div>
+  <div id="searchContainer">
+    <div class="container">
+      <form action="search.php">
+        <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." autocomplete="off" />
+        <input id="submitSearch" type="submit" value="" />
+      </form>
+      <ul id="suggest"></ul>
+    </div>
   </div>
 </header>

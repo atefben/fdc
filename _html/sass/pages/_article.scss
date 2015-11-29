@@ -11,6 +11,14 @@
 .articles {
   overflow: hidden;
 
+  &.noOv {
+    overflow: initial;
+  }
+
+  &.pad {
+    padding-top: 40px;
+  }
+
   &.nextDay {
     height: 90px;
   }
@@ -37,6 +45,10 @@
       }
     }
   }
+}
+
+#filteredArticles article:nth-of-type(3n-1) {
+  margin: 0 6.5%;
 }
 
 article {
@@ -72,6 +84,7 @@ article {
     font-family: $Playfair;
     font-size: 1.125rem;
     font-weight: 400;
+    letter-spacing: 0.02em;
     line-height: 1.3em;
     margin: 15px auto 0 auto;
     text-align: center;
@@ -122,6 +135,7 @@ article {
         position: absolute;
         min-width: 100%;
         min-height: 100%;
+        max-width: 100%;
         width: auto;
         height: auto;
         @include transition(all 3s $linear);
@@ -181,14 +195,6 @@ article {
           left: 92px;
         }
       }
-
-      &:hover {
-        span {
-          opacity: 1;
-          visibility: visible;
-          @include transform(translateY(0) translateZ(0));
-        }
-      }
     }
 
     .linkImage {
@@ -199,6 +205,10 @@ article {
       top: 0;
       width: 100%;
     }
+  }
+
+  .read-later.rAlign span:after {
+    left: 132px;
   }
 }
 
@@ -217,7 +227,7 @@ article {
     width: 0;
     background-color: $black;
     z-index: 10;
-    @include transition(all 1.5s $smoothTransition);
+    @include transition(all 0.8s $smoothTransition);
 
     &.show {
       width: 102%;
@@ -234,6 +244,7 @@ article {
   }
 
   .print {
+    font-family: $CamphorHeavy;
     background: url('../img/svg/print.svg') no-repeat 15% center;
     background-size: 18px;
     font-size: 0.625rem;
@@ -244,6 +255,7 @@ article {
   }
 
   #share-article {
+    font-family: $CamphorHeavy;
     background: url('../img/svg/share.svg') no-repeat 13% 47%;
     background-size: 18px;
     font-size: 0.625rem;
@@ -295,17 +307,18 @@ article {
     font-weight: 400;
     line-height: 1.3em;
     margin: 20px auto;
-    max-width: 700px;
+    max-width: 775px;
     text-align: center;
   }
 
   .info {
-    color: #666;
+    color: #969696;
     font-family: $CamphorMedium;
     text-align: center;
 
     .category, .update {
       color: $gold;
+      font-family: $CamphorBold;
       display: inline-block;
       font-size: 0.625rem;
       letter-spacing: 0.1em;
@@ -322,7 +335,7 @@ article {
 
 
     span {
-      color: #666;
+      color: #969696;
       display: inline-block;
       font-size: 0.625rem;
     }
@@ -344,7 +357,7 @@ article {
     }
 
     .caption {
-      color: #666;
+      color: #969696;
       font-size: .750rem;
       margin: 10px 0 0 0;
       text-align: left;
@@ -546,6 +559,16 @@ article {
           font-size: 1.125rem;
           margin: 20px 0 10px 0;
           text-transform: uppercase;
+
+          a {
+            color: #fff;
+            @include transform(translateZ(0));
+            @include transition(all 0.9s $linear);
+
+            &:hover {
+              opacity: 0.6;
+            }
+          }
         }
 
         .poster {
@@ -570,6 +593,15 @@ article {
             font-size: 1rem;
             margin-bottom: 35px;
             position: relative;
+
+            a {
+              color: $gold;
+              @include transition(all 0.9s $linear);
+
+              &:hover {
+                opacity: 0.6;
+              }
+            }
 
             &:after {
               background-color: #bababa;
@@ -604,7 +636,7 @@ article {
           color: $gold;
           font-family: $CamphorBold;
           font-size: 0.750rem;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
         }
 
@@ -617,15 +649,20 @@ article {
             width: 230px;
 
             span {
+              font-family: $CamphorBold;
+              color: #bababa;
               margin-right: 8px;
 
               &.type {
                 color: #787878;
+                font-family: $CamphorBold;
                 text-transform: uppercase;
               }
 
               &.location {
+                color: #fff;
                 display: block;
+                font-family: $CamphorRegular;
                 font-size: 0.875rem;
                 margin: 18px 0 40px 0;
                 position: relative;
@@ -656,7 +693,10 @@ article {
         .button {
           border-color: $gold;
           margin-left: 0px;
-          padding: 0 30px;
+          height: 50px;
+          line-height: 50px;
+          font-family: $CamphorHeavy;
+          padding: 0 40px;
 
           &:hover {
             background-color: transparent;
@@ -674,7 +714,8 @@ article {
     display: block;
     height: 82px;
     position: fixed;
-    top: 57%;
+    top: 50%;
+    margin-top: -41px;
     width: 82px;
     z-index: 3;
     @include transition(all 0.9s $smoothTransition);
@@ -699,7 +740,7 @@ article {
     }
 
     &.prev {
-      background: url('../img/svg/arrow-left-article.svg') no-repeat center;
+      background: url('../img/svg/arrow-left-black.svg') no-repeat center;
       background-size: 15px;
       left: 2%;
 
@@ -709,7 +750,7 @@ article {
       }
 
       &:hover {
-        border-color: #9E9E9E;
+        border-color: $black;
 
         &:after {
           opacity: 1;
@@ -719,7 +760,7 @@ article {
     }
 
     &.next {
-      background: url('../img/svg/arrow-right-article.svg') no-repeat center;
+      background: url('../img/svg/arrow-right-black.svg') no-repeat center;
       background-size: 15px;
       left: auto;
       right: 2%;

@@ -35,7 +35,7 @@ class NewsNewsAssociated
     protected $id;
     
     /**
-     * @var NewsAssociated
+     * @var News
      *
      * @ORM\ManyToOne(targetEntity="News", inversedBy="associations")
      */

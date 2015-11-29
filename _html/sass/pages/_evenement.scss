@@ -1,10 +1,8 @@
 //       SUMMARY TABLE     
 // =========================
 // 1. Global
-// 2. Channels
-// 3. Single channel
-// 4. Bandes annonces
-// 5. Bandes annonces
+// 2. Single evenement
+// 3. Media bandeau push
 // =========================
 
 
@@ -12,7 +10,10 @@
 // =========================
 
 .evenement {
-  padding-bottom:1px;
+  
+  .title{
+    margin-bottom: 20px;
+  }
   #gridEvent{
     padding-top: 60px;
   }
@@ -38,20 +39,35 @@
     font-family: "Camphor W01 Heavy";
     font-size: 0.625rem;
     line-height: 55px;
-    margin: 70px auto;
+    margin: 0 auto;
+    margin-bottom: 70px;
     text-align: center;
     text-transform: uppercase;
     width: 95%;
-    -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    letter-spacing: .1em;
+    @include transition(all 0.9s $smoothTransition);
+
     strong {
-    color: #000;
-    font-weight: normal;
+      color: #000;
+      font-weight: normal;
+    }
+
+    &:hover {
+      opacity: 0.5;
     }
   }
-    
+  .list-article .bandeau-list .bandeau-list-img {
+    height: 300px;
+    background-size: cover;
+  }
+
+  .bandeau-list-img {
+      height: 444px !important;
+  }
+  .bandeau-list-img {
+      height: 443px !important;
+    @include transition(all 0.9s $linear);
+  }
 }
 .evenement:after{
  			content: ".";
@@ -61,22 +77,42 @@
 			visibility: hidden; 
 }
 
-//single evenement//
-.single-evenement{
 
+// 2. single evenement
+// =====================
+
+
+.single-evenement{
+  .slideshow{
+    .caption{
+      border-bottom: 1px solid #e5e5e5;
+      margin: 0px 0px;
+      padding: 20px 0px;
+    }
+  }
+  a.nav.bottom {
+    bottom: 85px;
+  }
+  .title-article{
+    margin-bottom:37px;
+  }
+  .single-photo{
+    margin-top:64px;
+  }
   .quote{
-    padding-top: 60px;
+    padding: 60px 0px;
     width: auto;
     blockquote{
       font-size: 1.5rem !important;
       font-family: $CamphorItalic;
+      padding: 40px 88px;
     }
   }
   .share{
     padding-bottom: 0px;
   }
   .text{
-    padding-top: 60px;
+//    padding-top: 60px; 
     width: 634px;
     a{
       color: #c8a461;
@@ -102,7 +138,7 @@
   .chapeau{
     margin-bottom: 40px;
   }
-  .film{  
+  .film{
      margin-top: 70px;
     margin-bottom: 70px;
     height: 290px;
@@ -115,12 +151,13 @@
 
       .wrapper{
         margin: 0 auto;
-        max-width: 720px;
+        max-width: 630px;
         float: none;
         ul{
+          width: 630px;
           li{
             width: auto;
-            margin-right: 60px;
+            margin-right: 14px;
           }
           margin-bottom: 35px;
         }
@@ -128,7 +165,8 @@
           margin: 10px 0px !important;
           text-transform: uppercase;
           color:#bababa !important;
-          font-size: .625rem;
+          font-size: 0.63rem;
+          font-family: $CamphorBold;
         }
         .location:after {
           background-color: #525252;
@@ -139,12 +177,14 @@
           left: 0;
           position: absolute;
           width: 27px;
-       } 
+       }
         .date{
            color:#bababa !important;
         }
         .descript{
           font-size: 1rem;
+          font-family: $CamphorRegular;
+        color:#fff;
         }
       }
     }
@@ -156,3 +196,54 @@
   }
   
 }
+
+
+//3. media bandeau push
+// ==========================
+
+
+  @media screen and (min-width: 1920px) {
+    .evenement .bandeau-list-img{
+      height: 444px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 210px !important;
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+    .evenement .bandeau-list-img{
+      height: 373px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 173px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+    .evenement .bandeau-list-img{
+      height: 296px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .evenement .bandeau-list-img{
+      height: 294px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .evenement .bandeau-list-img{
+      height: 294px !important;
+    }
+    .evenement .title-list-header {
+      padding-top: 134px !important;
+    }
+  }

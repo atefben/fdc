@@ -17,7 +17,7 @@ use Base\CoreBundle\Util\Time;
 class StatementWidgetImage extends StatementWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="eventWidgetImages")
+     * @ORM\ManyToOne(targetEntity="Gallery")
      */
     private $gallery;
 

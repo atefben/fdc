@@ -29,7 +29,6 @@
         this._defaults = defaults;
         this.elems     = {};
         this.element   = element;
-        this.timeClock = '';
 
         this._cssClasses = [
             'chocolat-open',
@@ -125,7 +124,7 @@
             }
 
             setTimeout(function() {
-                $('.chocolat-content').removeClass('hide');
+              $('.chocolat-content, .chocolat-description, .credit').removeClass('hide');
             }, 1200);
 
             return deferred;
@@ -157,12 +156,12 @@
 
             return this.elems.content
                 .css('overflow', 'visible')
-                .css({
+                .animate({
                     'width'  :width,
                     'height' :height,
                     'left'   :left,
                     'top'    :top
-                })
+                }, duration)
                 .promise();
         },
 
@@ -236,7 +235,7 @@
             this.zoomOut(0);
             this.zoomable();
 
-            $('.chocolat-content').addClass('hide');
+            $('.chocolat-content, .chocolat-description, .credit').addClass('hide');
 
             setTimeout(function() {
                 var requestedImage = that.settings.currentImage + parseInt(signe);
@@ -315,25 +314,28 @@
         },
 
         close : function() {
-
-            if (this.settings.fullscreenOpen) {
-                this.exitFullScreen();
-                return;
-            }
-            
-            var els = [
-                this.elems.overlay[0],
-                this.elems.loader[0],
-                this.elems.wrapper[0]
-            ];
             var that = this;
-            var def = $.when($(els).fadeOut(200)).done(function () {
-                that.elems.domContainer.removeClass(that._cssClasses.join(' '));
-            });
-            this.settings.currentImage = false;
-            this.settings.initialized = false;
 
-            return def;
+            setTimeout(function() {
+
+                if (that.settings.fullscreenOpen) {
+                    that.exitFullScreen();
+                    return;
+                }
+                
+                var els = [
+                    that.elems.overlay[0],
+                    that.elems.loader[0],
+                    that.elems.wrapper[0]
+                ];
+                var def = $.when($(els).fadeOut(200)).done(function () {
+                    that.elems.domContainer.removeClass(that._cssClasses.join(' '));
+                });
+                that.settings.currentImage = false;
+                that.settings.initialized = false;
+
+                return def;
+            }, 900);
         },
 
         destroy : function() {
@@ -613,12 +615,11 @@
             var isImageZoomable = currentImage.width > wrapperWidth || currentImage.height > wrapperHeight;
             var isImageStretched = this.elems.img.width() > currentImage.width || this.elems.img.height() > currentImage.height;
 
+
             if (isImageZoomable && !isImageStretched) {
                 this.elems.domContainer.addClass('chocolat-zoomable');
-                this.zoomIn(jQuery.Event( "click" ));
             }
             else {
-                this.zoomOut(0);
                 this.elems.domContainer.removeClass('chocolat-zoomable');
             }
         },
@@ -646,7 +647,7 @@
 
             this.settings.imageSize = this.settings.initialZoomState;
             this.settings.initialZoomState = null;
-            this.elems.img.css({'transform': 'translate3d(0, 0, 0)'});
+            this.elems.img.css({'transform': 'translate3d(0, 0, 0)'}, duration);
 
             this.elems.domContainer.removeClass('chocolat-zoomed');
             fitting = this.fit(this.settings.currentImage, this.settings.container);
@@ -692,7 +693,7 @@
                 },
 
                 goto : function(i){ // open alias
-                    $('.chocolat-content').addClass('hide');
+                    $('.chocolat-content, .chocolat-description, .credit').addClass('hide');
                     i = parseInt(i) || 0;
 
                     setTimeout(function() {

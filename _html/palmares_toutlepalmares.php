@@ -99,9 +99,8 @@
                     <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
                     <strong class="palme-dor-text verticalline">Prix d'interprétation féminine ex-aequo</strong>
                     <img src="img/palmares/palmedor-compet-portait.jpg" alt="palme d or" class="palme-dor-portrait">
-                    <h3 class="title-item">Emmanuelle bercot</h3>
-                    <span class="nom-item verticalline">Actrice</span>
-                    <h3 class="title-item">Chronique</h3>
+                    <h3 class="title-item verticalline">Emmanuelle bercot</h3>
+                    <h3 class="title-item">Mon roi</h3>
                     <span class="nom-item">Maïwenn</span>
                   </div>
                 </div>
@@ -131,7 +130,7 @@
           <!--- Un certain regard -->
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">En compétition</h2>
+                <h2 class="title">Un certain regard</h2>
             </div>
             <article style="background-image:url(img/palmares/cover-film-uncertainregard1.jpg)">
             <div class="bck-hover">
@@ -171,7 +170,7 @@
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
                <h2 class="title title-list-header">Cinéma de la plage</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
 
       </div>

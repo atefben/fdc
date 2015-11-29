@@ -450,5 +450,6 @@ var WaveSurfer = {
 WaveSurfer.create = function (params) {
     var wavesurfer = Object.create(WaveSurfer);
     wavesurfer.init(params);
+
     return wavesurfer;
 };

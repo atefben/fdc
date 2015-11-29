@@ -26,7 +26,7 @@
       <h2 class="title">Toutes les vidéos</h2>
       <div class="filters">
         <div id="theme" class="filter">
-          <span class="label">Date :</span>
+          <span class="label">Dates :</span>
           <span class="select">
             <span class="active" data-filter="all">Toutes</span>
             <span data-filter="date">Date 1</span>
@@ -34,11 +34,11 @@
           </span>
         </div>
         <div id="format" class="filter">
-          <span class="label">Thêmes :</span>
+          <span class="label">Thèmes :</span>
           <span class="select">
             <span class="active" data-filter="all">Tous</span>
-            <span data-filter="theme1">Thême 1</span>
-            <span data-filter="theme2">Thême 2</span>
+            <span data-filter="theme1">Thème 1</span>
+            <span data-filter="theme2">Thème 2</span>
           </span>
         </div>
       </div>

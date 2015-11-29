@@ -208,7 +208,12 @@ class FilmFilm implements FilmFilmInterface
      * 
      */
     private $persons;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="FilmLanguage", mappedBy="film", cascade={"persist"})
+     */
+    private $languages;
+
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
      * 

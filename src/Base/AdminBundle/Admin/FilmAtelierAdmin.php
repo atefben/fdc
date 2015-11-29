@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class FilmAtelierAdmin extends Admin
+class FilmAtelierAdmin extends SoifAdmin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -56,6 +56,7 @@ class FilmAtelierAdmin extends Admin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
+                    'soif_refresh' => array('template' => 'BaseAdminBundle:CRUD:list__action_soif_refresh.html.twig')
                 )
             ))
         ;

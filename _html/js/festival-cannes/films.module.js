@@ -13,42 +13,43 @@ $(document).ready(function() {
         var h = $("#main").height()-900;
 
       if(s > 470 ){
-        
+        $('.nav-list.sub-nav-list').addClass('sticky');
+        $(".nav-list.sub-nav-list").css({position: "fixed",top:90});
         $('.nav-movie').addClass('sticky');
-        $(".nav-movie").css({position: "fixed",top:90});
+        $(".nav-movie").css({position: "fixed",top:137});
         
       } else if (s < 470){
-        
+     
         $(".nav-movie").css({position: "relative",top:1});
-        
+        $(".sub-nav-list").css({position: "relative",top:1});
       }
       });
     }
   }
-
-  if($('.selection-officielle').length) {
-    $('.selection-officielle .sub-nav-list a').on('click',function(e){
-      //:not(.active)
-      e.preventDefault();
-
-      if($(this).is(':not(.active)')) {
-        var urlPath = $(this).attr('href');  
-//        $.get($(this).data('url'), function(data){
-        $.get(urlPath, function(data){
+    if($('.films-list').length){
+    function ajaxEvent(){
+      $('.films-list .sub-nav-list a').on('click',function(e){
+        e.preventDefault();
+        if($(this).is(':not(.active)')) {
+          var urlPath = $(this).attr('href');
+          $.get(urlPath, function(data){
             $( ".container-list" ).html( $(data).find('.container-list') );
+            $( ".bandeau-list-footer" ).html( $(data).find('.bandeau-list-footer') );
             history.pushState('',"titre test", urlPath);
             $grid = $('#gridFilmSelection').imagesLoaded(function() {
               $grid.isotope({
                 layoutMode: 'packery',
                 itemSelector: '.item'
-                });
+              });
             });
-        });
-        $('.selection-officielle .sub-nav-list').find('a.active').removeClass('active');
-        $(this).addClass('active');
-      }
-      
-    });
+            ajaxEvent();
+          });
+          $('.films-list .sub-nav-list').find('a.active').removeClass('active');
+          $(this).addClass('active');
+        }
+      });
+        initSlideshows();
+    }
+    ajaxEvent();
   }
-  
 });

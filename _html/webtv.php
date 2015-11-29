@@ -199,7 +199,7 @@
         <h2 class="title">Les bandes annonces et extraits</h2>
         <p class="link"><a href="webtv_trailer_competition.php"><img src="img/svg/arrow-right-gold.svg" />Toutes les bandes annonces</a></p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
-          <div class="vid">
+          <div class="vid shadow-bottom">
             <div class="image-wrapper">
               <img src="img/slider-videos/001.jpg" alt="" />
             </div>
@@ -216,7 +216,7 @@
               </div>
             </div>
           </div>
-          <div class="vid">
+          <div class="vid shadow-bottom">
             <div class="image-wrapper">
               <img src="img/slider-videos/001.jpg" alt="" />
             </div>
@@ -233,7 +233,7 @@
               </div>
             </div>
           </div>
-          <div class="vid">
+          <div class="vid shadow-bottom">
             <div class="image-wrapper">
               <img src="img/slider-videos/001.jpg" alt="" />
             </div>

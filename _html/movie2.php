@@ -23,6 +23,7 @@
     <?php include('header.html'); ?>
 
     <div id="main" class="single-movie loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <div id="canvasloader" class="canvasloader"></div>
       <div class="content-movie">
         <div class="prevmovie">
@@ -76,7 +77,7 @@
             <h2>Test</h2>
             <div class="title-original">(Adieu au langage)</div>
             <p>Réalisé par : <a href="#">Jean-Luc GODARD</a></p>
-            <p>Année : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
+            <p>Année de production : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
 
             <div  class="synopsis">
               <h3 class="title-section">Synopsis</h3>
@@ -104,7 +105,7 @@
           <div class="container">
             <ul>
               <li><a href="#videos">videos</a></li>
-              <li><a href="#casting">casting & credits</a></li>
+              <li><a href="#casting">Crédits & casting</a></li>
               <li><a href="#photos">photos</a></li>
               <li><a href="#news">actualites</a></li>
               <li><a href="#audios">audios</a></li>
@@ -216,12 +217,12 @@
               <div class="vCenter">
                 <div class="vCenterKid">
                   <h3 class="title-section">Crédits</h3>
-                  <p><a href="#">Jean-Luc Godard</a> - Réalisation</p>
-                  <p><a href="#">Jean-Luc Godard</a> - Scénario / Dialogues</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Réalisation</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Scénario / Dialogues</p>
                   <p><a href="#">Fabrice ARAGNO</a> - Directeur de la photographie</p>
-                  <p><a href="#">Jean-Luc Godard</a> - Montage</p>
+                  <p><a href="#">Jean-Luc GODARD</a> - Montage</p>
                   <div class="actors">
-                    <h3 class="title-section">Acteurs</h3>
+                    <h3 class="title-section">Casting</h3>
                     <p><a href="#">Héloïse GODET</a> - Josette</p><p><a href="#">Zoé BRUNEAU</a> -  Ivitch</p>
                     <p><a href="#">Kamel ABDELLI</a> - Gédéon</p><p><a href="#">Christian GREGORI</a> - Davidson</p>
                     <p><a href="#">Richard CHEVALLIER</a> - Marcus</p><p><a href="#">Jessica ERICKSON</a> - Mary Shelley</p>
@@ -345,7 +346,7 @@
           <div class="info-press">
             <div class="wrapper">
               <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKidTop">
                   <h3 class="gold">Infos presse</h3>
                   <div class="folder">
                     <div class="vCenter">
@@ -354,7 +355,6 @@
                         <h3>Dossier de presse</h3>
                         <a href="#">Français PDF</a>
                         <a href="#">English PDF</a>
-                        <a href="#">Bilingue PDF</a>
                       </div>
                     </div>
                   </div>
@@ -374,7 +374,7 @@
           <div class="contacts">
             <div class="wrapper">
               <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKidTop">
                   <h3>Contacts</h3>
                   <div class="prod">
                     <p class="sub">Production</p>
@@ -404,7 +404,7 @@
           </div>
         </div>
         <div class="competition">
-          <h2 class="title">En compétition</h2>
+          <h2 class="title">En compétition 2016</h2>
           <div id="slider-competition" class="owl-carousel sliderDrag">
             <div class="slide">
               <img src="http://dummyimage.com/210x284/000/fff" alt="" />

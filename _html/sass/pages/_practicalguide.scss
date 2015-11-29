@@ -1,0 +1,198 @@
+//       SUMMARY TABLE
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.practicalguide{
+  #praticalguide{
+    .container-pguide{
+      border-bottom: 1px solid #e5e5e5;
+      max-height: 95px;
+      min-height: 95px;
+      overflow: hidden;
+      @include transition(all 0.5s $linear);
+      .wrapper{
+        width: 976px;
+        margin: 0 auto;
+        margin-top: 37px;
+        position: relative;
+        margin-bottom: 43px;
+        .contain-title-pg{
+            .title-pguide{
+              color:#999;
+              letter-spacing: .2em;
+              font-size: 0.88rem;
+              font-family: $CamphorBold;
+              text-transform: uppercase;
+              @include transition(all 0.5s $linear);
+              cursor: pointer;
+              margin-bottom: 46px;
+              .svg{
+                margin-right: 15px;
+                vertical-align: bottom;
+              }
+              .svg path{
+                fill: currentColor;
+              }
+              .svg circle{
+                 fill: currentColor;
+              }
+            }
+          .title-pguide:hover{
+            color:#c8a461;
+          }
+          .plus{
+            background-image:url(../img/press/svg/case-plus.svg);
+            width: 51px;
+            height: 51px;
+            position: absolute;
+            top: -10px;
+            right: 1px;
+            background-repeat: no-repeat;
+            background-size: 111%;
+            cursor: pointer;
+          }
+        }
+        .contain-article{
+          .aside{
+            width: 364px;
+            display: inline-block;
+            margin-right: 53px;
+            img{
+              margin-bottom: 36px;
+            }
+            .container-infos{
+              margin-bottom: 40px;
+            }
+            .container-infos:last-child{
+              margin-bottom: 36px;
+            }
+            .container-infos{
+              padding: 29px;
+              border: 1px solid #d8c29f;
+              padding-bottom: 22px;
+              .container-title{
+                font-size: 0.75rem;
+                letter-spacing: .2em;
+                font-family: $CamphorBold;
+                text-transform: uppercase;
+                line-height: 16px;
+              }
+              .infos{
+                margin-top:16px;
+                line-height: 24px;
+                font-size: 0.81rem;
+                .date{
+                  font-family: $CamphorItalic;
+                  font-size: 0.81rem;
+                  display: block;
+                }
+                .name{
+                  font-family: $CamphorBold;
+                  font-size: 0.81rem;
+                }
+                .addr{
+                  color: #c29f5f;
+                  text-decoration: underline;
+                  font-family: $CamphorRegular;
+                  @include transition(all 0.5s $linear);
+                }
+                .addr:hover{
+                   color:#8e6d30;
+                }
+                .num{
+                  display:block;
+                  font-size: 0.81rem;
+                }
+              }
+            }
+          }
+          .texts{
+            width: 552px;
+            display: inline-block;
+            vertical-align: top;
+            strong{
+              color:#000;
+              letter-spacing: .2em;
+              font-size: 0.75rem;
+              font-family: $CamphorBold;
+              text-transform: uppercase;
+            }
+            p{
+              line-height: 24px;
+              font-size: 0.81rem;
+              font-family: $CamphorRegular;
+              padding-top: 8px;
+              padding-bottom: 38px;
+              a{
+                color: #c29f5f;
+                text-decoration: underline;
+                font-size: 0.81rem;
+                @include transition(all 0.5s $linear);
+              }
+              a:hover{
+                 color: #8e6d30;
+              }
+              .media{
+                font-family: $CamphorBold;
+              }
+            }
+          }
+        }
+        .pictos-service{
+          .contain-service{
+            width: 486px;
+            text-align: center;
+            display: inline-block;
+            margin-top: 5px;
+            vertical-align: text-top;
+            img{
+              display: block;
+              margin: 0 auto;
+              margin-bottom: 8px;
+            }
+            strong{
+              display: block;
+              letter-spacing: .2em;
+              color:#000;
+              text-transform: uppercase;
+              font-family: $CamphorBold;
+              font-size: 0.75rem;
+              padding-bottom: 30px;
+            }
+            p{
+              display: block;
+              width: 370px;
+              margin:0 auto;
+              line-height: 24px;
+              font-size: 0.81rem;
+              font-family: $CamphorRegular;
+              height: 137px;
+            }
+          }
+        }
+      }
+    }
+    .container-pguide.active{
+      min-height: auto;
+      max-height: 3000px;
+      overflow: auto;
+      .contain-title-pg{
+        .title-pguide{
+          color:#c9a562;
+        }
+        .plus{
+          background-image:url(../img/press/svg/moins.svg);
+          width: 11px;
+          height: 11px;
+          top: 8px;
+          right: 18px;
+        }
+      }
+    }
+  }
+}

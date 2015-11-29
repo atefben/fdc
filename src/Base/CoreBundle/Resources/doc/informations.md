@@ -60,11 +60,6 @@ You should run right after to check the schema validation
 php app/console doctrine:schema:validate
 ```
 
-And also you should check if the entity uses traits you have to remove manually the duplicate properties / setters / getters
-
-This issue is opened on the doctrine bug tracker : http://www.doctrine-project.org/jira/browse/DDC-1825
-
-
 #Multisites
 This project hosts multiple sites, the following parameters are used to defined the host for each site and redirect on the related bundle:
 
@@ -72,3 +67,8 @@ app/config/parameters.yml
 
     website_fdc_event_host: ~
     website_fdc_corporate_host: ~
+
+## Glossary
+- Statement = Communiqué
+- Info = Infos
+- News = Articles

@@ -12,6 +12,8 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "owl.carousel": "~2.0.0-beta.3"
-  }
+    "owl.carousel": "~2.0.0-beta.3",
+    "moment": "~2.10.6"
+  },
+  "devDependencies": {}
 }

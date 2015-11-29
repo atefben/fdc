@@ -237,6 +237,8 @@ abstract class CoreManager
                 return "png";
             case "image/jpeg":
                 return "jpg";
+            case "image/pjpeg":
+                return "jpg";
             default:
                 $msg = __METHOD__. " - The mime type {$mimeType} is not supported.";
                 $exception = new Exception($msg);
@@ -613,6 +615,8 @@ abstract class CoreManager
     {
         foreach ($collectionOld as $obj) {
             if (!$collectionNew->contains($obj)) {
+                $this->logger->info('deleted obj :'. $obj->getId());
+                $this->logger->info(get_class($obj));
                 $entity->{$remover}($obj);
             }
         }

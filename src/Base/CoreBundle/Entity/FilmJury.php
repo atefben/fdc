@@ -82,6 +82,11 @@ class FilmJury
     private $function;
 
     /**
+     * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="jury", cascade={"persist"})
+     */
+    private $medias;
+
+    /**
      * @var ArrayCollection
      *
      * @Groups({"jury_list", "jury_show"})

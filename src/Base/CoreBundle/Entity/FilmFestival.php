@@ -53,28 +53,28 @@ class FilmFestival
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $festivalStartsAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $festivalEndsAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $marcheDuFilmStartsAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $marcheduFilmEndsAt;
 
@@ -99,6 +99,11 @@ class FilmFestival
     private $events;
 
     /**
+     * @ORM\OneToMany(targetEntity="Statement", mappedBy="festival")
+     */
+    private $statements;
+
+    /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="festival")
      */
     private $medias;
@@ -114,9 +119,10 @@ class FilmFestival
     public function __construct()
     {
         $this->awards = new ArrayCollection();
+        $this->events = new ArrayCollection();
         $this->juries = new ArrayCollection();
         $this->medias = new ArrayCollection();
-        $this->events = new ArrayCollection();
+        $this->statements = new ArrayCollection();
     }
 
     /**
@@ -177,6 +183,7 @@ class FilmFestival
             return;
         }
 
+        $medias->setFestival($this);
         $this->medias[] = $medias;
 
         return $this;
@@ -217,7 +224,8 @@ class FilmFestival
         if ($this->awards->contains($awards)) {
             return;
         }
-        
+
+        $awards->setFestival($this);
         $this->awards[] = $awards;
 
         return $this;
@@ -233,7 +241,7 @@ class FilmFestival
         if (!$this->awards->contains($awards)) {
             return;
         }
-        
+
         $this->awards->removeElement($awards);
     }
 
@@ -258,7 +266,8 @@ class FilmFestival
         if ($this->juries->contains($juries)) {
             return;
         }
-        
+
+        $juries->setFestival($this);
         $this->juries[] = $juries;
 
         return $this;
@@ -274,7 +283,6 @@ class FilmFestival
         if (!$this->juries->contains($juries)) {
             return;
         }
-        
         $this->juries->removeElement($juries);
     }
 
@@ -299,7 +307,8 @@ class FilmFestival
         if ($this->films->contains($films)) {
             return;
         }
-        
+
+        $films->setFestival($this);
         $this->films[] = $films;
 
         return $this;
@@ -337,6 +346,11 @@ class FilmFestival
      */
     public function addEvent(\Base\CoreBundle\Entity\Event $events)
     {
+        if ($this->events->contains($events)) {
+            return;
+        }
+
+        $events->setFestival($this);
         $this->events[] = $events;
 
         return $this;
@@ -349,6 +363,10 @@ class FilmFestival
      */
     public function removeEvent(\Base\CoreBundle\Entity\Event $events)
     {
+        if (!$this->events->contains($events)) {
+            return;
+        }
+
         $this->events->removeElement($events);
     }
 
@@ -370,6 +388,11 @@ class FilmFestival
      */
     public function addMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
     {
+        if ($this->mediaVideos->contains($mediaVideos)) {
+            return;
+        }
+
+        $mediaVideos->setFestival($this);
         $this->mediaVideos[] = $mediaVideos;
 
         return $this;
@@ -382,6 +405,10 @@ class FilmFestival
      */
     public function removeMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
     {
+        if (!$this->mediaVideos->contains($mediaVideos)) {
+            return;
+        }
+
         $this->mediaVideos->removeElement($mediaVideos);
     }
 
@@ -486,5 +513,48 @@ class FilmFestival
     public function getMarcheduFilmEndsAt()
     {
         return $this->marcheduFilmEndsAt;
+    }
+
+    /**
+     * Add statements
+     *
+     * @param \Base\CoreBundle\Entity\Statement $statements
+     * @return FilmFestival
+     */
+    public function addStatement(\Base\CoreBundle\Entity\Statement $statements)
+    {
+        if ($this->statements->contains($statements)) {
+            return;
+        }
+
+        $statements->setFestival($this);
+        $this->statements[] = $statements;
+
+        return $this;
+    }
+
+    /**
+     * Remove statements
+     *
+     * @param \Base\CoreBundle\Entity\Statement $statements
+     */
+    public function removeStatement(\Base\CoreBundle\Entity\Statement $statements)
+    {
+        if (!$this->statements->contains($statements)) {
+            return;
+        }
+
+
+        $this->statements->removeElement($statements);
+    }
+
+    /**
+     * Get statements
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStatements()
+    {
+        return $this->statements;
     }
 }

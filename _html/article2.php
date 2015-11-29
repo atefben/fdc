@@ -23,6 +23,7 @@
     <?php include('header.html'); ?>
 
     <div id="main" class="single-article loading">
+      <span id="addtext">Ajouter à ma sélection</span>
       <div id="canvasloader" class="canvasloader"></div>
       <div class="content-article">
         <div class="container small-container">
@@ -231,8 +232,8 @@
                   </div>
                   <div class="text-container">
                     <span class="category">Un certain regard</span>
-                    <h3>Enragé</h3>
-                    <p class="director">Eric HANNEZO<p>
+                    <h3><a href="#">Enragé</a></h3>
+                    <p class="director"><a href="#">Eric HANNEZO</a><p>
                     <p>France - 2014</p>
                     <p>1h35</p>
                   </div>

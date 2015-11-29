@@ -26,13 +26,13 @@
 
     <div id="main" class="list-article participate loading">
       <div class="bandeau-list">
-        <div class="bandeau-list-img" style="background-image:url(img/participate/bandeau2.jpg);background-size: cover;">
-          <h2 class="title title-list-header"> <img src="img/participate/video-logo.png" alt="" class="logo"> <br>Accès aux projecteurs</h2>
+        <div class="bandeau-list-img" style="background-image:url(img/participate/bandeau2.jpg)">
+          <h2 class="title title-list-header"> <img src="img/svg/camera.svg" alt="" class="logo"> <br>Accès aux projections</h2>
         </div>
       </div>
       <div class="contain-participate">
         <section>
-         <div class="contain-section">
+         <div class="contain-section participate-active">
           <h3 class="title-participate"> <img src="img/participate/les-differents-type-d-acces.svg" alt="" class="svg">Les différents types d'accès</h3><i class="fa fa-plus"></i>
           
           <div class="contain-acces">

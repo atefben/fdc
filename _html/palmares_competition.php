@@ -97,9 +97,8 @@
                     <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
                     <strong class="palme-dor-text verticalline">Prix d'interprétation féminine ex-aequo</strong>
                     <img src="img/palmares/palmedor-compet-portait.jpg" alt="palme d or" class="palme-dor-portrait">
-                    <h3 class="title-item">Emmanuelle bercot</h3>
-                    <span class="nom-item verticalline">Actrice</span>
-                    <h3 class="title-item">Chronique</h3>
+                    <h3 class="title-item verticalline">Emmanuelle bercot</h3>
+                    <h3 class="title-item">Mon roi</h3>
                     <span class="nom-item">Maïwenn</span>
                   </div>
                 </div>
@@ -132,7 +131,7 @@
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau1.jpg);">
                <h2 class="title title-list-header">Cannes classics</h2>
-               <a href="#" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
 
       </div>

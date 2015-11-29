@@ -27,11 +27,11 @@
     <div id="main" class="list-article films-list selection-officielle loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Selection officielle</h2>
+               <h2 class="title title-list-header">Sélection officielle</h2>
            </div>
  <ul class="sub-nav-list nav-list">
              <li>
-               <a href="selectionofficielle_competition.php" class='active ajax'>Compétition</a>
+               <a href="selectionofficielle_competition.php" class='active ajax'>En Compétition</a>
              </li>
              <li>
                <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>
@@ -49,7 +49,7 @@
                <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
              </li>
              <li>
-               <a href="films_invitedhonneur.php" class="">Cannes classics</a>
+               <a href="films_invitedhonneur.php" class="ajax">Cannes classics</a>
              </li>
              <li>
                <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
@@ -65,7 +65,7 @@
                  <figure>
 <a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
                    <figcaption>
-                     <a href="movie.php"><span class="name">Carol</span></a></a>
+                     <a href="movie.php"><span class="name">Carol</span></a>
                      <a href="artist_page.php"><span class="author">Todd HAYNES</span></a>
                    </figcaption>
                  </figure>
@@ -93,7 +93,7 @@
                    <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                     <span class="sub-name">(Tale of tales)</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
                      <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
@@ -130,7 +130,7 @@
                    <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                     <span class="sub-name">(Tale of tales)</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
                      <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
@@ -167,7 +167,7 @@
                    <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                     <span class="sub-name">(Tale of tales)</span></a>
+                     <a href='movie.php'><span class="sub-name">(Tale of tales)</span></a>
                      <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
@@ -176,10 +176,10 @@
           </div>  
         </section>
       </div>
-      <div class="bandeau-list">
+      <div class="bandeau-list  bandeau-list-footer">
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/push.jpg);">
                <h2 class="title title-list-header">Un certain regard</h2>
-               <a href="selectionofficielle_uncertainregard.php" class="bandeau-lien"> > Découvrir la rubrique</a>
+               <a href="selectionofficielle_uncertainregard.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
 
       </div>

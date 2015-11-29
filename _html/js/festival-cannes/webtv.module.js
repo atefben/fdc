@@ -4,8 +4,6 @@ $(document).ready(function() {
 // =========================
 
   if($('.webtv').length) {
-    
-  
     if($('.webtv-live').length) {
      // play live player on click
      $('#live .play').on('click', function(e) {
@@ -20,40 +18,37 @@ $(document).ready(function() {
         }, 800);
      });
 
-     $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
+     setTimeout(function() {
+      $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
+      }, 500);
+
+     if($('header').hasClass('sticky')) {
+      $('.webtv #live .img').css('top', '-10%');
+     }
     }
 
    // create slide for trailers
-   var sliderTrailers = $("#slider-trailers").owlCarousel({
-     nav: false,
-     dots: false,
-     smartSpeed: 500,
-     center: true,
-     loop: false,
-     margin: 50,
-     autoWidth: true,
-     onInitialized: function() {
-       $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
-     }
-   });
-
-   sliderTrailers.owlCarousel();
-//    
-  $("#slider-trailer").owlCarousel({
+  var sliderTrailer = $("#slider-trailer").owlCarousel({ 
       nav: false,
       dots: false,
       smartSpeed: 500,
+      fluidSpeed: 500,
       center: true,
-      autoWidth: true,
       loop: false,
-      items: 1,
-//      onInitialized: function() {
-//        var v = ($(window).width() - 977) / 2 + "px";
-//        $('#slide-artist .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
-//      }
+      margin: 50,
+      autoWidth: true,
+      dragEndSpeed: 600,
+      onInitialized: function() {
+        var v = ($(window).width() - 977) / 2 + "px";
+        $('#slide-trailer .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+        $('#slider-trailer .owl-stage').css({ 'margin-left': "-343px" });
+      }
     });
-    
-    
+     sliderTrailer.owlCarousel();
+    $('body').on('click', '#slider-trailer .owl-item', function(e) {
+      sliderTrailer.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+    });
+
 if($('.webtv-ba-video').length){
 
       $('.nav li').click(function(){
@@ -66,14 +61,14 @@ if($('.webtv-ba-video').length){
             if($(this).hasClass('infos-film-li')){
               $('.program-film').css({display:'none'});
               $('.infos-film').css({display:'block'});
-              console.log(1);
+
             }else{
               $('.program-film').css({display:"block"});
               $('.infos-film').css({display:"none"});     
-              console.log(2);
+
             }
         }
-      })
+      });
     }
     
     //ajax
@@ -106,43 +101,20 @@ if($('.webtv-ba-video').length){
     });
     
   }
-  
-//      //Slider trailer
-//
-//    var sliderTrailers = $("#slider-trailer").owlCarousel({
-//      nav: false,
-//      dots: false,
-//      smartSpeed: 500,
-//      margin: 50,
-//      center: true,
-//      autoWidth: true,
-//      loop: false,
-//      items: 1,
-//      onInitialized: function() {
-//        $('#slider-trailer .owl-stage').css({ 'margin-left': "0px" });
-//      }
-//    });
-//
-//    sliderTrailers.owlCarousel();
-//
-//    $('body').on('click', '#slider-trailer .owl-item', function(e) {
-//      sliderTrailers.trigger('to.owl.carousel', [$(this).index(), 400, true]);
-//    });
-  //infinite scroll
-//  if($('.webtv-ba-video').length){
-//    $('.webtv-ba-video').infinitescroll({
-//      navSelector: "#next:last",
-//      nextSelector: "#next:last",
-//      itemSelector: ".listtrailer",
-//      debug: false,
-//      dataType: 'html',
-//      path: function(index) {
-//      return $('.listtrailer').data('type') + webtv_trailer_competition + ".php";
-//    }
-//    }, function(newElements, data, url){ 
-//      setGrid($grid, newElements,false);
-//    });
-//  }
-  
 
+  if($('.webtv-ba').length){
+
+         //Scroll
+      $(window).on('scroll', function() {
+        var s = $(window).scrollTop();
+        var h = $("#main").height()-900;
+
+      if(s > 270 ){
+        $('.sub-nav-list').addClass('sticky');
+        $(".sub-nav-list").css({position: "fixed",top:90,zIndex:4});
+      } else if (s < 270){
+        $(".sub-nav-list").css({position: "relative",top:0});
+      }
+      });
+     }
 });

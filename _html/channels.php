@@ -39,8 +39,8 @@
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
-                <a href="channel.php" class="category">Photocall</a>
-                <p>13 vidéos</p>
+                <a href="channel.php" class="category">Les plus vues</a>
+                <p>18 vidéos</p>
               </div>
             </div>
           </div>

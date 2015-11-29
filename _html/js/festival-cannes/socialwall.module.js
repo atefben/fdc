@@ -146,9 +146,8 @@ function displayGrid() {
 
       $(c).prev().addClass(item.type);
       $(c).parent().find('.side-2').addClass('overlay');
-      setTimeout(function() {
-        $(c).parent().find('.side').removeClass('flip');
-      }, 600);
+      $(c).parent().find('.side').removeClass('flip');
+      $(c).parent().find('.side-1').css('z-index', '10');
       if(item.img) {
         $(c).prev().addClass('hasimg').css('background-image', 'url(' + item.img + ')');
       }
@@ -261,6 +260,7 @@ $(document).ready(function() {
           $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
         }
         $(c).append(item.text);
+        $(c).append('<span class="ov"></span>');
       }
 
     });

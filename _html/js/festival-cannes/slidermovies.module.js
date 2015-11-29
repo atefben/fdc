@@ -13,7 +13,7 @@ function setHeightSlider() {
  
   var newHeight = $(window).height() - 90,
       valueHeight = Math.round(($(window).width()/16)*9),
-      top = newHeight - valueHeight;
+      top = (newHeight - valueHeight) / 2;
 
   if(newHeight > valueHeight) {
     newHeight = valueHeight;
@@ -27,7 +27,9 @@ function setHeightSlider() {
   });
   $('#featured-movies video').height(valueHeight);
 
-  $('#sliderWrapper').height($(window).height() - $('header').height());
+  setTimeout(function() {
+    $('#sliderWrapper').height($(window).height() - $('header').height());
+  }, 100);
   $('#prefooter').css('height', $(window).height() - 90 + "px");
   $('#prefooter .imgSlide, #slider-movies .textVideo, #slider-movies .video').width($(window).width());
 }

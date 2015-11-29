@@ -54,20 +54,6 @@ class Site
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     protected $slug;
-    
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="NewsAudioTranslation", mappedBy="sites")
-     */
-    protected $newsAudios;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="NewsArticleTranslation", mappedBy="sites")
-     */
-    protected $newsArticles;
 
     /**
      * @var ArrayCollection

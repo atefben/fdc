@@ -22,7 +22,7 @@ a {
   height: 38px;
   line-height: 38px;
   margin: 0 0 0 0;
-  padding: 0 20px 0 40px;
+  padding: 0 22px 0 42px;
   text-transform: uppercase;
   @include transition(all 0.9s $smoothTransition);
 
@@ -58,7 +58,7 @@ a {
   font-family: $Playfair;
   font-weight: 700;
   font-size: 1.125rem;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.5em;
   margin-bottom: 15px;
   text-align: center;
   text-transform: uppercase;

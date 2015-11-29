@@ -27,6 +27,9 @@ $(document).ready(function() {
 
     $('#articles-wrapper').addClass('loading');
 
+    $('#shd').removeClass('show');
+    $('.read-more').html("Afficher <strong>plus d'actualités</strong>").removeClass('prevDay');
+
     $('html, body').animate({
       scrollTop: $("#news").offset().top - 50
     }, 500);
@@ -51,9 +54,7 @@ $(document).ready(function() {
             cl.hide();
             $('#articles-wrapper').removeClass('loading');
           }, 500);
-
-          $('.filter .select span').removeClass('active');
-          $('.filter .select span[data-filter="all"]').addClass('active');
+          filter();
 
           initSlideshows();
         }
@@ -112,10 +113,10 @@ $(document).ready(function() {
 
             $('#articles-wrapper').html(data);
 
-            $('.filter .select span').removeClass('active');
-            $('.filter .select span[data-filter="all"]').addClass('active');
+            filter();
 
             initSlideshows();
+            $(window).trigger('resize');
           }
         });
       }, 1200);
@@ -129,8 +130,13 @@ $(document).ready(function() {
         success: function(data) {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));
-
+          filter();
           $('.read-more').html('Passer au <strong>jour précédent</strong>').addClass('prevDay');
+
+          $('html, body').animate({
+            scrollTop: $(".articles.center").offset().top + $(".articles.center").height() - 70
+          }, 500);
+
           setTimeout(function() {
             $('#shd').addClass('show');
             $(window).trigger('resize');
