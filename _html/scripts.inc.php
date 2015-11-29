@@ -14,6 +14,7 @@
 <script src="js/components/snap.svg.easing.js"></script>
 <script src="js/components/fullscrenjs.js"></script>
 <script src="js/components/jwplayer.js"></script>
+<script src="js/components/konsole.min.js"></script>
 <script src="js/festival-cannes/helpers.js"></script>
 <script src="js/festival-cannes/article.module.js"></script>
 <script src="js/festival-cannes/audio.module.js"></script>

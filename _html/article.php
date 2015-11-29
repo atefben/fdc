@@ -115,7 +115,7 @@
             <p><strong>Il y a différents statuts d’acteurs : Lambert Wilson, Virginie Ledoyen d’un côté et ensuite tu as Guillaume Gouix, jeune acteur, Franck Gastambile et le québécois François Arnaud … Vous êtes satisfait du rendu ?</strong></p>
             <p>Symboliquement, j’avais une famille : Lambert qui joue le père, Virginie la mère, Guillaume l’ainé, Franck le jeune un peu perdu et François le sale gosse. Et oui, j’en suis super content parce que je voulais une lecture nouvelle sur le film de genre .</p>
           </div>
-          <div id="video-container" class="state-pause video-player video" data-img="/img/article/004.jpg">
+          <div id="video-container" class="state-init video-player video" data-img="/img/article/004.jpg">
             <div id="video-player">
             </div>
             <div class="infos-bar">

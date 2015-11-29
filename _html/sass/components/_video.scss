@@ -3,10 +3,6 @@
 // 1. Global
 // =========================
 
-
-// 1. Global
-// =========================
-
 .video-player {
   height: 400px;
   position: relative;
@@ -104,27 +100,21 @@
 
 #video-container {
   position: relative;
+  overflow: hidden;
   width: 960px;
   height: calc(960px*9/16);
 
-  .control-bar {
-    position: absolute;
-    bottom: 0;
-    height: 18%;
-    z-index: 10;
-    width: 100%;
-    background: rgba(0,0,0,.15);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.5)));
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-    background:    -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
-    background:         linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-  }
+  &.state-init {
+    .control-bar {
+      opacity: 0;
+      @include transform(translateY(100%));
+    }
 
-  &:-webkit-full-screen .control-bar {
-    background: blue;
+    &:hover {
+      .control-bar {
+        @include transform(translateY(100%));
+      }
+    }
   }
 
   button {
@@ -140,7 +130,40 @@
     -webkit-appearance: button;
   }
 
+  .jwplayer {
+    z-index: 1;
+  }
+
+  .infos-bar {
+    position: relative;
+    z-index: 5;
+  }
+
+  &:hover {
+    .control-bar {
+      @include transform(translate(0,0));
+      transition: all .3s ease-in-out;
+    }
+  }
+
   .control-bar {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    height: 18%;
+    width: 100%;
+    opacity: 1;
+    background: rgba(0,0,0,.15);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.5)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+    background:    -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+    background:         linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+    @include transform(translate(0,100px));
+    transition: all .3s ease-in-out 2s;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+
     .playstate {
       position: relative;
       width: 100px;
@@ -176,7 +199,7 @@
         font-family: Helvetica;
         color:#83847f;
         font-size: 14px;
-        width: 82px;
+        width: 85px;
         height: 16px;
         bottom: 40px;
         left: 0px;
@@ -199,16 +222,29 @@
         cursor:pointer;
         width:100%;
         height: 3px;
-        background-color: rgba(0,0,0,0.5);
+        // background-color: rgba(0,0,0,0.5);
+        background-color: rgba(255,255,255,.2);
         border-radius:1px;
         bottom: 45px;
         
+        .buffer-bar {
+          // background-color: rgba(30, 30, 30, 0.5);
+          background-color: rgba(255,255,255,.4);
+          border-radius:1px;
+          height: 3px;
+          width:0%;
+          position: absolute;
+          z-index: 1
+        }
+
         .current-bar {
           background-color: #fff;
           border-radius:1px;
           height: 3px;
           width:0%;
-          transition: width .5s linear;
+          position: absolute;
+          z-index: 2;
+          // transition: width .5s linear;
         }
       }
     }
@@ -271,6 +307,12 @@
         right: 40px;
         margin: auto;
       }
+    }
+  }
+
+  &:-webkit-full-screen {
+    .control-bar {
+      background: blue;
     }
   }
 }

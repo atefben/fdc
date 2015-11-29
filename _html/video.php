@@ -25,12 +25,23 @@
     <?php include('header.html'); ?>
 
     <div id="main">
-      <div id="video-container" class="state-pause">
+      <div id="video-container" class="state-init video-player video">
         <div id="video-player">
         </div>
         <div class="infos-bar">
         </div>
         <div class="video-overlay"></div>
+        <div class="infos-bar">
+          <div class="picto"></div>
+          <div class="info">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                <p>The Lobster</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="control-bar">
           <div class="playstate">
             <button class="play-btn play"></button>
@@ -42,6 +53,7 @@
           </div>
           <div class="progress">
             <div class="progress-bar">
+              <div class="buffer-bar"></div>
               <div class="current-bar"></div>
             </div>
           </div>

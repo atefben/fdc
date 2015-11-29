@@ -5440,26 +5440,22 @@ div.chocolat-wrapper .chocolat-close {
 
 #video-container {
   position: relative;
+  overflow: hidden;
   width: 960px;
   height: calc(960px*9/16);
 }
-#video-container .control-bar {
-  position: absolute;
-  bottom: 0;
-  height: 18%;
-  z-index: 10;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.15);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.5)));
-  background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
-  background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+#video-container.state-init .control-bar {
+  opacity: 0;
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
 }
-#video-container:-webkit-full-screen .control-bar {
-  background: blue;
+#video-container.state-init:hover .control-bar {
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
 }
 #video-container button {
   background: none;
@@ -5472,6 +5468,41 @@ div.chocolat-wrapper .chocolat-close {
   overflow: visible;
   padding: 0;
   -webkit-appearance: button;
+}
+#video-container .jwplayer {
+  z-index: 1;
+}
+#video-container .infos-bar {
+  position: relative;
+  z-index: 5;
+}
+#video-container:hover .control-bar {
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  transition: all .3s ease-in-out;
+}
+#video-container .control-bar {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  height: 18%;
+  width: 100%;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.15);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.5)));
+  background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  -moz-transform: translate(0, 100px);
+  -ms-transform: translate(0, 100px);
+  -webkit-transform: translate(0, 100px);
+  transform: translate(0, 100px);
+  transition: all .3s ease-in-out 2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 #video-container .control-bar .playstate {
   position: relative;
@@ -5505,7 +5536,7 @@ div.chocolat-wrapper .chocolat-close {
   font-family: Helvetica;
   color: #83847f;
   font-size: 14px;
-  width: 82px;
+  width: 85px;
   height: 16px;
   bottom: 40px;
   left: 0px;
@@ -5525,16 +5556,25 @@ div.chocolat-wrapper .chocolat-close {
   cursor: pointer;
   width: 100%;
   height: 3px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 1px;
   bottom: 45px;
+}
+#video-container .control-bar .progress .progress-bar .buffer-bar {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 1px;
+  height: 3px;
+  width: 0%;
+  position: absolute;
+  z-index: 1;
 }
 #video-container .control-bar .progress .progress-bar .current-bar {
   background-color: #fff;
   border-radius: 1px;
   height: 3px;
   width: 0%;
-  transition: width .5s linear;
+  position: absolute;
+  z-index: 2;
 }
 #video-container .control-bar .sound {
   position: relative;
@@ -5588,6 +5628,9 @@ div.chocolat-wrapper .chocolat-close {
   bottom: 40px;
   right: 40px;
   margin: auto;
+}
+#video-container:-webkit-full-screen .control-bar {
+  background: blue;
 }
 
 #selection {
