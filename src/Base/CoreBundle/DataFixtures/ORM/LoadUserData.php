@@ -52,35 +52,46 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $userManager = $this->container->get('fos_user.user_manager');
 
         $user = $userManager->createUser();
-        $user->setUsername('admin');
-        $user->setEmail('admin-Base@yopmail.fr');
+        $user->setUsername('admin-all');
+        $user->setEmail('admin-all@yopmail.fr');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
-        $user->setRoles(array('ROLE_SUPER_ADMIN'));
-        $user->addSite($this->getReference('site-Base'));
+        $user->addGroup($this->getReference('group-all-admin'));
+       /* $user->addSite($this->getReference('site-Base'));
         $user->addSite($this->getReference('site-mdf'));
         $user->addSite($this->getReference('site-cine'));
-        $user->addSite($this->getReference('site-ccm'));
+        $user->addSite($this->getReference('site-ccm'));*/
+        $userManager->updateUser($user);
+
+        $user = $userManager->createUser();
+        $user->setUsername('admin-fdc');
+        $user->setEmail('admin-fdc@yopmail.fr');
+        $user->setPlainPassword('admin');
+        $user->setEnabled(true);
+        $user->addGroup($this->getReference('group-fdc-admin'));
+       /* $user->addSite($this->getReference('site-fdc'));
+        $user->addSite($this->getReference('site-mdf'));
+        $user->addSite($this->getReference('site-cine'));
+        $user->addSite($this->getReference('site-ccm'));*/
         $userManager->updateUser($user);
 
         $user = $userManager->createUser();
         $user->setUsername('writer');
-        $user->setEmail('admin-Base-mdf@yopmail.fr');
+        $user->setEmail('fdc-writer@yopmail.fr');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
-        $user->setRoles(array('ROLE_WRITER'));
-        $user->addSite($this->getReference('site-Base'));
-        $user->addSite($this->getReference('site-mdf'));
+        $user->addGroup($this->getReference('group-fdc-writer'));
+        //$user->addSite($this->getReference('site-fdc'));
         $userManager->updateUser($user);
 
         $user = $userManager->createUser();
         $user->setUsername('translator');
-        $user->setEmail('admin-Base-translator@yopmail.fr');
+        $user->setEmail('admin-translator@yopmail.fr');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
-        $user->setRoles(array('ROLE_TRANSLATOR'));
-        $user->addSite($this->getReference('site-Base'));
-        $user->addSite($this->getReference('site-mdf'));
+        $user->addGroup($this->getReference('group-translator'));
+        /*$user->addSite($this->getReference('site-Base'));
+        $user->addSite($this->getReference('site-mdf'));*/
         $userManager->updateUser($user);
     }
 
