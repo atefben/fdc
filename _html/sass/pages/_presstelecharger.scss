@@ -6,30 +6,139 @@
 
 // 1. Global
 // =========================
-
+.downloading-press.lock{
+  .block .container .contain-dp .large{
+         border-right: 1px solid #b0b0b0;
+         width: 276px;
+          a{
+            color: #b0b0b0;
+          }
+       }
+     
+  .buttons .button{
+    border-color: #b0b0b0 ;
+    color: #b0b0b0 ;
+     background-image: url('../img/svg/cadenas-grey.svg');
+    background-repeat: no-repeat;
+    background-position: 15px 45%;
+    background-size: 12px;
+    border-color: #b0b0b0;
+    color: #b0b0b0;
+    pointer-events: none;
+    a{
+      color: #b0b0b0 ;
+    }
+  }
+  .block .container .imgs-container .button{
+    border: 1px solid #b0b0b0;
+  }
+  .buttons .button:hover {
+    background-color: #fff;
+    border-color: #b0b0b0 ;
+    color: #b0b0b0 ;
+    a{
+      color: #b0b0b0 ;
+    }
+  }
+  .download-btns{
+    .download{
+      border-color: #b0b0b0 ;
+      color: #b0b0b0 ;
+      a{
+        color: #b0b0b0 ;
+      }
+    }
+    .download:hover{
+      border-color: #b0b0b0 ;
+      color: #b0b0b0 ;
+      a{
+        color: #b0b0b0 ;
+      }
+    }
+  }
+  
+}
 .downloading-press{
+  
+      .buttons {
+      text-align: left; 
+
+      .button {
+        background-image: url('../img/svg/telecharger-gold.svg');
+        background-repeat: no-repeat;
+        background-position: 15px 12px;
+        background-size: 14px;
+        position: relative;
+        color:#c29f5f;
+        border-color: #c29f5f;
+        &:after {
+          background: url('../img/svg/telecharger-white.svg') no-repeat 15px 12px;
+          background-size: 14px;
+          content: '';
+          display: block;
+          height: 100%;
+          position: absolute;
+          width: 100%;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all 0.9s $smoothTransition);
+        }
+      }
+        .button:hover{
+          color:#fff;
+        }
+    }
+    .buttons .button:after {
+      background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+      background-size: 14px;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      @include transition(all 0.9s $smoothTransition);
+  }
+  .button:hover:after {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .contact-press{
+//    .button{
+//      color: #c29f5f ;
+//      border: 1px solid #c29f5f ;
+//    }
+//    .button:hover {
+//      background-color: #c29f5f ;
+//      border-color: #c29f5f ;
+//      color: #fff ;
+//    }
+  }
   .grid{
     padding: 0px !important;
   }
   .grid-wrapper{
     margin: 0px;
   }
-  .button{
-    color: #b0b0b0;
-    border: 1px solid #b0b0b0;
-    a{
-      color: #b0b0b0;
-    }
-  }
-  .button:hover{
-    background-color: #fff;
-  }
-  .button:hover a{
-    color:#b0b0b0;
-  }
-  .button a:hover{
-    color:#b0b0b0;
-  }
+//  .button{
+//    color: #c29f5f;
+//    border: 1px solid #c29f5f;
+//    a{
+//      color: #c29f5f;
+//    }
+//  }
+ 
+//  .button:hover a{
+//    color:#fff ;
+//  }
+//  .button a:hover{
+//    color:#fff;
+//  }
   .downloading-nav{
     border-bottom: 1px solid #e3e3e3;
     border-top: 1px solid #e3e3e3;
@@ -49,10 +158,10 @@
           @include transition(all 0.5s $linear);
         }
         a:hover{
-          color: #c8a461;
+          color:#c29f5f ;
         }
         a.active{
-          color: #c8a461;
+           color:#c29f5f ;
         }
       }
     }
@@ -65,12 +174,13 @@
     }
     .caption{
       margin-top:12px;
+
     }
-    .buttons{
-      .button{
-        border-color:#b0b0b0;;
-      }
-    }
+//    .buttons{
+//      .button{
+//        border-color:#c29f5f;;
+//      }
+//    }
     p{
       margin-top: 45px;
     }
@@ -93,16 +203,12 @@
         }
         .right-btn{
           position: absolute;
-          top: -56px;
+          top: -12px;
           right: 0px;
-//          padding-right: 14px;
-//          padding-left: 38px;
           text-transform: uppercase;
           font-size: 0.60rem;
           font-family: $CamphorHeavy;
           float: left;
-//          padding-top: 16px;
-//          padding-bottom: 16px;
           letter-spacing: .01em;
         }
       }
@@ -152,15 +258,15 @@
             line-height: 20px;
           }
         }
-        .button{
-            border: 1px solid #b0b0b0;
-          a{
-            color: #b0b0b0;
-          }
-        }
-          .button:hover a{
-            color:#b0b0b0;
-          }
+//        .button{
+//            border: 1px solid #c29f5f;
+//          a{
+//            color: #c29f5f;
+//          }
+//        }
+//          .button:hover a{
+//            color:#fff;
+//          }
       }
       .first{
         margin:0px;
@@ -171,15 +277,17 @@
       .caption{
           color: #666666;
           font-size: 0.75rem;
+          margin-bottom: 21px;
+          display: block;
       }
       .player{
-        margin-bottom: 21px;
+        margin-bottom: 18px;
       }
       .download-btns{
         padding: 40px 0px;
         .download{
-          color: #b0b0b0;
-          border: 1px solid #b0b0b0;
+//          color: #c29f5f;
+//          border: 1px solid #c29f5f;
           padding-right: 14px;
           padding-left: 38px;
           text-transform: uppercase;
@@ -189,10 +297,15 @@
           padding-top: 16px;
           padding-bottom: 16px;
           letter-spacing: .01em;
+          @include transition(all 0.5s $linear);
         }
         .download:first-child{
           border-right: 0px solid #000;
         }
+//        .download:hover{
+//          background-color: #c29f5f;
+//          color:#fff;
+//        }
       }
       .contain-dp{
         display: inline-block;
@@ -202,7 +315,23 @@
           border-bottom: 0px solid #fff;
         }
         .large{
+          border-right: 1px solid #c8a461;
           width: 276px;
+          @include transition(all 0.5s $linear);
+          a{
+            color: #c8a461;
+          }
+          a:hover{
+            color:#fff;
+          }
+        }
+        .large:hover{
+          a{
+            color: #fff;
+          }
+        }
+        .large:first-child{
+          border-bottom: 0px solid #fff;
         }
         .infos{
           margin-top: 9px;

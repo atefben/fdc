@@ -16090,27 +16090,110 @@ article .read-later.rAlign span:after {
   font-size: 0.75rem;
 }
 
+.downloading-press.lock .block .container .contain-dp .large {
+  border-right: 1px solid #b0b0b0;
+  width: 276px;
+}
+.downloading-press.lock .block .container .contain-dp .large a {
+  color: #b0b0b0;
+}
+.downloading-press.lock .buttons .button {
+  border-color: #b0b0b0;
+  color: #b0b0b0;
+  background-image: url("../img/svg/cadenas-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 45%;
+  background-size: 12px;
+  border-color: #b0b0b0;
+  color: #b0b0b0;
+  pointer-events: none;
+}
+.downloading-press.lock .buttons .button a {
+  color: #b0b0b0;
+}
+.downloading-press.lock .block .container .imgs-container .button {
+  border: 1px solid #b0b0b0;
+}
+.downloading-press.lock .buttons .button:hover {
+  background-color: #fff;
+  border-color: #b0b0b0;
+  color: #b0b0b0;
+}
+.downloading-press.lock .buttons .button:hover a {
+  color: #b0b0b0;
+}
+.downloading-press.lock .download-btns .download {
+  border-color: #b0b0b0;
+  color: #b0b0b0;
+}
+.downloading-press.lock .download-btns .download a {
+  color: #b0b0b0;
+}
+.downloading-press.lock .download-btns .download:hover {
+  border-color: #b0b0b0;
+  color: #b0b0b0;
+}
+.downloading-press.lock .download-btns .download:hover a {
+  color: #b0b0b0;
+}
+
+.downloading-press .buttons {
+  text-align: left;
+}
+.downloading-press .buttons .button {
+  background-image: url("../img/svg/telecharger-gold.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 12px;
+  background-size: 14px;
+  position: relative;
+  color: #c29f5f;
+  border-color: #c29f5f;
+}
+.downloading-press .buttons .button:after {
+  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+  background-size: 14px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.downloading-press .buttons .button:hover {
+  color: #fff;
+}
+.downloading-press .buttons .button:after {
+  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+  background-size: 14px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.downloading-press .button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
 .downloading-press .grid {
   padding: 0px !important;
 }
 .downloading-press .grid-wrapper {
   margin: 0px;
-}
-.downloading-press .button {
-  color: #b0b0b0;
-  border: 1px solid #b0b0b0;
-}
-.downloading-press .button a {
-  color: #b0b0b0;
-}
-.downloading-press .button:hover {
-  background-color: #fff;
-}
-.downloading-press .button:hover a {
-  color: #b0b0b0;
-}
-.downloading-press .button a:hover {
-  color: #b0b0b0;
 }
 .downloading-press .downloading-nav {
   border-bottom: 1px solid #e3e3e3;
@@ -16137,10 +16220,10 @@ article .read-later.rAlign span:after {
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .downloading-press .downloading-nav ul li a:hover {
-  color: #c8a461;
+  color: #c29f5f;
 }
 .downloading-press .downloading-nav ul li a.active {
-  color: #c8a461;
+  color: #c29f5f;
 }
 .downloading-press .affiche {
   padding-top: 59px;
@@ -16151,9 +16234,6 @@ article .read-later.rAlign span:after {
 }
 .downloading-press .affiche .caption {
   margin-top: 12px;
-}
-.downloading-press .affiche .buttons .button {
-  border-color: #b0b0b0;
 }
 .downloading-press .affiche p {
   margin-top: 45px;
@@ -16176,7 +16256,7 @@ article .read-later.rAlign span:after {
 }
 .downloading-press .block .container .container-title .right-btn {
   position: absolute;
-  top: -56px;
+  top: -12px;
   right: 0px;
   text-transform: uppercase;
   font-size: 0.60rem;
@@ -16227,15 +16307,6 @@ article .read-later.rAlign span:after {
   list-style-position: inside;
   line-height: 20px;
 }
-.downloading-press .block .container .imgs-container .button {
-  border: 1px solid #b0b0b0;
-}
-.downloading-press .block .container .imgs-container .button a {
-  color: #b0b0b0;
-}
-.downloading-press .block .container .imgs-container .button:hover a {
-  color: #b0b0b0;
-}
 .downloading-press .block .container .first {
   margin: 0px;
 }
@@ -16245,16 +16316,16 @@ article .read-later.rAlign span:after {
 .downloading-press .block .container .caption {
   color: #666666;
   font-size: 0.75rem;
+  margin-bottom: 21px;
+  display: block;
 }
 .downloading-press .block .container .player {
-  margin-bottom: 21px;
+  margin-bottom: 18px;
 }
 .downloading-press .block .container .download-btns {
   padding: 40px 0px;
 }
 .downloading-press .block .container .download-btns .download {
-  color: #b0b0b0;
-  border: 1px solid #b0b0b0;
   padding-right: 14px;
   padding-left: 38px;
   text-transform: uppercase;
@@ -16264,6 +16335,10 @@ article .read-later.rAlign span:after {
   padding-top: 16px;
   padding-bottom: 16px;
   letter-spacing: .01em;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .downloading-press .block .container .download-btns .download:first-child {
   border-right: 0px solid #000;
@@ -16277,7 +16352,24 @@ article .read-later.rAlign span:after {
   border-bottom: 0px solid #fff;
 }
 .downloading-press .block .container .contain-dp .large {
+  border-right: 1px solid #c8a461;
   width: 276px;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.downloading-press .block .container .contain-dp .large a {
+  color: #c8a461;
+}
+.downloading-press .block .container .contain-dp .large a:hover {
+  color: #fff;
+}
+.downloading-press .block .container .contain-dp .large:hover a {
+  color: #fff;
+}
+.downloading-press .block .container .contain-dp .large:first-child {
+  border-bottom: 0px solid #fff;
 }
 .downloading-press .block .container .contain-dp .infos {
   margin-top: 9px;

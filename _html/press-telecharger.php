@@ -89,8 +89,8 @@ de ces visuels n’est autorisée.</span>
                   <li>Bannière verticale 120x600 px</li>
                 </ul>
               </div>
-              <div class="button">
-                <a href="#" class="download">Tout télécharger</a>
+              <div class="buttons">
+                <a href="#" class=" button">Tout télécharger</a>
               </div>
             </div>
             <div class="imgs-container">
@@ -106,8 +106,8 @@ de ces visuels n’est autorisée.</span>
                   <li>Bannière verticale 160x600 px</li>
                 </ul>
               </div>
-              <div class="button">
-                <a href="#" class="download">Tout télécharger</a>
+              <div class="buttons">
+                <a href="#" class=" button">Tout télécharger</a>
               </div>
             </div>
             <div class="imgs-container last">
@@ -124,8 +124,8 @@ de ces visuels n’est autorisée.</span>
                   <li>Bannière verticale 120x600 px</li>
                 </ul>
               </div>
-              <div class="button">
-                <a href="#" class="download">Tout télécharger</a>
+              <div class="buttons">
+                <a href="#" class=" button">Tout télécharger</a>
               </div>
             </div>
           </div>
@@ -139,9 +139,9 @@ de ces visuels n’est autorisée.</span>
            </div>
             <span class="caption">© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos<br>
 Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thème musical du Festival, Le Carnaval des animaux de Camille Saint-Saëns, avec un arrangement imaginé par deux musiciens suédois, Patrik Andersson et Andreas Söderström.</span>
-             <div class="download-btns">
-                <a href="#" class="download mov extention">.MOV</a>
-                <a href="#" class="download gif extention">.GIF</a>
+             <div class="buttons">
+                <a href="#" class=" mov extention button">.MOV</a>
+                <a href="#" class=" gif extention button">.GIF</a>
               </div>
           </div>
           </div>
@@ -150,7 +150,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
           <div class="container">
           <div class="container-title">
             <h3 class="title-press">Photos institutionnelles <span class="number">(22)</span></h3>
-          <div class="download-btns right-btn"><a href="" class="alldl button">Tout telecharger</a></div>
+          <div class="right-btn buttons"><a href="" class="alldl button">Tout telecharger</a></div>
           </div>
           <div class="gridPressDownload" class="grid-wrapper">
             <div class="grid-sizer"></div>
@@ -206,19 +206,19 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
           <div class="container">
           <h3 class="title-press">Dossier de presse</h3>
           <div class="contain-dp">
-            <div class="button">
-              <a href="#" class="download">Dossier de presse</a>
+            <div class="buttons">
+              <a href="#" class="button">Dossier de presse</a>
             </div>
             <p class="infos"><strong>Mise à jour : </strong> 19.05.15 . 12:30</p>
           </div>
           <div class="contain-dp">
-            <div class="button">
-              <a href="#" class="download">Liste des attachés de presse</a>
+            <div class="buttons">
+              <a href="#" class="button">Liste des attachés de presse</a>
             </div>
             <p class="infos"><strong>Mise à jour : </strong> 19.05.15 . 12:30</p>
           </div>
           <div class="contain-dp">
-           <div class="btns">
+           <div class="buttons">
               <div class="button large">
                 <a href="#" class="download ">Horaire des projections (presse)</a>
               </div>
