@@ -6,6 +6,7 @@
 // =========================
 .accreditation {
   #accreditation {
+    border-top: 1px solid #e3e3e3;
     .save {
       font-family: $CamphorHeavy;
       background: url('../img/press/svg/pdf.svg') no-repeat 15% center;
@@ -33,10 +34,11 @@
       padding-top: 5px;
       padding-bottom: 5px;
     }
-//    .request-btn:hover{
+    .request-btn:hover{
 //      background: url('../img/press/svg/communique-presse-white.svg') no-repeat 5% 39%;
 //      background-size: 18px;
-//    }
+      border-color: #c8a461 !important;
+    }
     .buttons{
       padding: 50px 0px;
     }

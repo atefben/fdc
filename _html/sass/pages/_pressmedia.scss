@@ -6,8 +6,25 @@
 
 // 1. Global
 // =========================
-
+.lock{
+  .table .line .button{
+    border-color: #b0b0b0 !important;
+    color: #b0b0b0;
+  } 
+  .button:hover {
+    background-color: #fff;
+    border-color: #b0b0b0 !important;
+    color: #b0b0b0;
+  }
+}
 .press-media{
+  .contact-press{
+      .button:hover {
+    background-color: #c29f5f;
+    border-color: #c29f5f !important;
+    color: #fff;
+  }
+  }
   .mediatheque{
     .container{
       width: 977px;
@@ -76,6 +93,27 @@
     }
   }
   .nav-container{
+    .svg{
+      width: 9px;
+      height: 9px;
+      margin-right: 10px;
+      polygon{
+        fill:currentColor;
+      }
+      path{
+        fill:currentColor;
+      }
+    }
+    .active-btn{
+      .button{
+        color: #c29f5f !important;
+        border-color: #c29f5f !important;
+      }
+      .button:hover{
+        color:#fff !important;
+        background-color: #c29f5f;
+      }
+    }
     .table{
       .line{
         .media, .info{
@@ -128,7 +166,7 @@
             }
           }
         }
-        .container.active{ 
+        .container.active{
           .contain{
             display: block;
           }
@@ -142,6 +180,9 @@
             background-repeat: no-repeat;
             background-size: 111%;
             cursor: pointer;
+          }
+          .media{
+            color: #000;
           }
         }
         .plus{

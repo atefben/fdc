@@ -595,17 +595,8 @@ $(document).ready(function() {
   }
   //Mediatheque nav 
       if($('.press-media').length){
-        var $info = $('.info, .media, .plus');
-        $info.click(function(){
-        var $active = $('.press-media .nav-container .table .line').find('.active');
-        var $parent = $(this).closest(".container");
-          if(!$parent.hasClass('active')){
-              $active.removeClass('active');
-              $parent.addClass('active');
-          }else{
-              $active.removeClass('active');
-          }
-        });
+        menuMedia();
+        svgImg();
       }
   //madiatheque AJAX
       function ajaxEvent(){
@@ -618,14 +609,60 @@ $(document).ready(function() {
             $( ".nav-container" ).html( $(data).find('.nav-container') );
             history.pushState('',"titre test", urlPath);
             ajaxEvent();
+            menuMedia();
+            svgImg();
           });
           $('.press-media .nav-mediapress').find('td.active').removeClass('active');
           $(this).addClass('active');
         }
       });
     }
-    ajaxEvent();
   
+    function menuMedia(){
+      var $info = $('.info, .media, .plus');
+      $info.click(function(){
+      var $active = $('.press-media .nav-container .table .line').find('.active');
+      var $parent = $(this).closest(".container");
+        if(!$parent.hasClass('active')){
+            $active.removeClass('active');
+            $parent.addClass('active');
+        }else{
+            $active.removeClass('active');
+        }
+      });
+    }
+  
+    function svgImg(){
+                jQuery('img.svg').each(function(){
+          var $img = jQuery(this);
+          var imgID = $img.attr('id');
+          var imgClass = $img.attr('class');
+          var imgURL = $img.attr('src');
+
+          jQuery.get(imgURL, function(data) {
+              // Get the SVG tag, ignore the rest
+              var $svg = jQuery(data).find('svg');
+
+              // Add replaced image's ID to the new SVG
+              if(typeof imgID !== 'undefined') {
+                  $svg = $svg.attr('id', imgID);
+              }
+              // Add replaced image's classes to the new SVG
+              if(typeof imgClass !== 'undefined') {
+                  $svg = $svg.attr('class', imgClass+' replaced-svg');
+              }
+
+              // Remove any invalid XML tags as per http://validator.w3.org
+              $svg = $svg.removeAttr('xmlns:a');
+
+              // Replace image with new SVG
+              $img.replaceWith($svg);
+
+          }, 'xml');
+
+      });
+    }
+    ajaxEvent();
   //Grid
       if($('.gridPressDownload').length){
         $grid = $('.gridPressDownload').imagesLoaded(function() {
@@ -646,11 +683,11 @@ $(document).ready(function() {
         
         var s            = $(window).scrollTop(),
             h            = $("#main").height()-900,
-            affiche      = $('#affiche-officielle').offset().top,
-            signature    = $('#signature').offset().top,
-            animation    = $('#animation').offset().top,
-            photosInst   = $('#photos-institutionnelles').offset().top,
-            dossierPress = $('#dossier-presse').offset().top;
+            affiche      = $('#affiche-officielle').offset().top-900,
+            signature    = $('#signature').offset().top-900,
+            animation    = $('#animation').offset().top-900,
+            photosInst   = $('#photos-institutionnelles').offset().top-900,
+            dossierPress = $('#dossier-presse').offset().top-900;
           
         if(s > 180 ){
           $('.downloading-nav').addClass('sticky');

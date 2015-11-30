@@ -15892,6 +15892,9 @@ article .read-later.rAlign span:after {
   right: 18px;
 }
 
+.accreditation #accreditation {
+  border-top: 1px solid #e3e3e3;
+}
 .accreditation #accreditation .save {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   background: url("../img/press/svg/pdf.svg") no-repeat 15% center;
@@ -15918,6 +15921,9 @@ article .read-later.rAlign span:after {
   background-size: 18px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.accreditation #accreditation .request-btn:hover {
+  border-color: #c8a461 !important;
 }
 .accreditation #accreditation .buttons {
   padding: 50px 0px;
@@ -16284,6 +16290,21 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 
+.lock .table .line .button {
+  border-color: #b0b0b0 !important;
+  color: #b0b0b0;
+}
+.lock .button:hover {
+  background-color: #fff;
+  border-color: #b0b0b0 !important;
+  color: #b0b0b0;
+}
+
+.press-media .contact-press .button:hover {
+  background-color: #c29f5f;
+  border-color: #c29f5f !important;
+  color: #fff;
+}
 .press-media .mediatheque .container {
   width: 977px;
 }
@@ -16344,6 +16365,25 @@ article .read-later.rAlign span:after {
 .press-media .nav-mediapress .wrapper table td:hover {
   background-color: rgba(200, 164, 97, 0.51);
   color: #fff;
+}
+.press-media .nav-container .svg {
+  width: 9px;
+  height: 9px;
+  margin-right: 10px;
+}
+.press-media .nav-container .svg polygon {
+  fill: currentColor;
+}
+.press-media .nav-container .svg path {
+  fill: currentColor;
+}
+.press-media .nav-container .active-btn .button {
+  color: #c29f5f !important;
+  border-color: #c29f5f !important;
+}
+.press-media .nav-container .active-btn .button:hover {
+  color: #fff !important;
+  background-color: #c29f5f;
 }
 .press-media .nav-container .table .line {
   position: relative;
@@ -16410,6 +16450,9 @@ article .read-later.rAlign span:after {
   background-repeat: no-repeat;
   background-size: 111%;
   cursor: pointer;
+}
+.press-media .nav-container .table .line .container.active .media {
+  color: #000;
 }
 .press-media .nav-container .table .line .plus {
   background-image: url(../img/press/svg/case-plus.svg);

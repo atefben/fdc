@@ -76,34 +76,34 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons">
+<div class="contain-buttons active-btn">
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">En français</a>
-                      <a href="" class="button">En Englais</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
                     <strong>Bandes annonces et extraits <span>(4)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 1 (FR)</a>
-                      <a href="" class="button">Extrait 1 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (EN)</a>
                     </div>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 2 (FR)</a>
-                      <a href="" class="button">Extrait 2 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
                   <div class="photos block">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button">Tout telecharger</a></div>
+                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class=" " class="grid-wrapper" style="position: relative; height: 318px;">
                       <div class="grid-sizer"></div>
@@ -169,34 +169,34 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons">
+ <div class="contain-buttons active-btn">
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">En français</a>
-                      <a href="" class="button">En Englais</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
                     <strong>Bandes annonces et extraits <span>(4)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 1 (FR)</a>
-                      <a href="" class="button">Extrait 1 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (EN)</a>
                     </div>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 2 (FR)</a>
-                      <a href="" class="button">Extrait 2 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
                   <div class="photos block">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button">Tout telecharger</a></div>
+                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class=" " class="grid-wrapper" style="position: relative; height: 318px;">
                       <div class="grid-sizer"></div>
@@ -262,34 +262,34 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons">
+ <div class="contain-buttons active-btn">
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">En français</a>
-                      <a href="" class="button">En Englais</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
                     <strong>Bandes annonces et extraits <span>(4)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 1 (FR)</a>
-                      <a href="" class="button">Extrait 1 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (EN)</a>
                     </div>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 2 (FR)</a>
-                      <a href="" class="button">Extrait 2 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
                   <div class="photos block">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button">Tout telecharger</a></div>
+                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class=" " class="grid-wrapper">
                       <div class="grid-sizer"></div>
@@ -355,34 +355,34 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons">
+                  <div class="contain-buttons active-btn">
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">En français</a>
-                      <a href="" class="button">En Englais</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
                     <strong>Bandes annonces et extraits <span>(4)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 1 (FR)</a>
-                      <a href="" class="button">Extrait 1 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (EN)</a>
                     </div>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 2 (FR)</a>
-                      <a href="" class="button">Extrait 2 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
                   <div class="photos block">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button">Tout telecharger</a></div>
+                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class=" " class="grid-wrapper" style="position: relative; height: 318px;">
                       <div class="grid-sizer"></div>
@@ -448,34 +448,34 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons">
+                  <div class="contain-buttons active-btn">
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">En français</a>
-                      <a href="" class="button">En Englais</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
                     <strong>Bandes annonces et extraits <span>(4)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 1 (FR)</a>
-                      <a href="" class="button">Extrait 1 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (EN)</a>
                     </div>
                     <div class="buttons">
-                      <a href="" class="button">Extrait 2 (FR)</a>
-                      <a href="" class="button">Extrait 2 (EN)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
                   <div class="photos block">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button">Tout telecharger</a></div>
+                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class=" " class="grid-wrapper" style="position: relative; height: 318px;">
                       <div class="grid-sizer"></div>
