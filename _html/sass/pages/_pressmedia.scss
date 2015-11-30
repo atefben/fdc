@@ -176,6 +176,9 @@
               margin-right: 124px;
             }
           }
+          .info .txt p{
+            line-height: 18px;
+          }
         }
         .container.active{
           .contain{
@@ -193,6 +196,10 @@
             cursor: pointer;
           }
           .media{
+            color: #000;
+          }
+          .info .txt p {
+
             color: #000;
           }
         }
