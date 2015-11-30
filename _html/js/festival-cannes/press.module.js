@@ -639,4 +639,58 @@ $(document).ready(function() {
         });
     }
   
+  //downloding nav sticky 
+  if($('.downloading-press').length){
+        //Scroll
+      $(window).on('scroll', function() {
+        
+        var s            = $(window).scrollTop(),
+            h            = $("#main").height()-900,
+            affiche      = $('#affiche-officielle').offset().top,
+            signature    = $('#signature').offset().top,
+            animation    = $('#animation').offset().top,
+            photosInst   = $('#photos-institutionnelles').offset().top,
+            dossierPress = $('#dossier-presse').offset().top;
+          
+        if(s > 180 ){
+          $('.downloading-nav').addClass('sticky');
+          $(".downloading-nav").css({position: "fixed",top:90, width: "100%", zIndex:10});
+        } else if (s < 180){
+          $(".downloading-nav").css({position: "relative",top:1, zIndex:1});
+        }
+        
+        if( s > affiche && s < signature){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#affiche-officielle"]').addClass('active');
+
+        }else if( s > signature && s< animation){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#signature"]').addClass('active');
+
+        }else if( s > animation && s< photosInst){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#animation"]').addClass('active');
+
+        }else if( s > photosInst && s< dossierPress){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#photos-institutionnelles"]').addClass('active');
+        }else if( s > dossierPress){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#dossier-presse"]').addClass('active');
+        }
+        
+      });
+    
+    $('a[href^="#"]').click(function(){
+      var the_id = $(this).attr("href");
+
+      $('html, body').animate({
+        scrollTop:$(the_id).offset().top-300
+      }, 'slow');
+      return false;
+    });
+    
+
+  }
+  
 });

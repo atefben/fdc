@@ -41,15 +41,15 @@ de ces visuels n’est autorisée.</span>
       </div>
       <div class="downloading-nav">
         <ul>
-          <li><a href="">Affiche officielle</a></li>
-          <li><a href="">signatures</a></li>
-          <li><a href="">animation</a></li>
-          <li><a href="">photos institutionnelles</a></li>
-          <li><a href="">dossier de presse</a></li>
+          <li><a href="#affiche-officielle" class="ajax active">Affiche officielle</a></li>
+          <li><a href="#signature" class="ajax">signatures</a></li>
+          <li><a href="#animation" class="ajax">animation</a></li>
+          <li><a href="#photos-institutionnelles" class="ajax">photos institutionnelles</a></li>
+          <li><a href="#dossier-presse" class="ajax">dossier de presse</a></li>
         </ul>
       </div>
       <div class="wrapper">
-        <div class="affiche">
+        <div class="affiche" id="affiche-officielle">
           <div class="container">
             <h3 class="title-press">Affiche officielle</h3>
             <div class="portrait">
@@ -72,7 +72,7 @@ de ces visuels n’est autorisée.</span>
             </div>
           </div>
         </div>
-        <div class="signature block">
+        <div class="signature block" id="signature">
           <div class="container">
             <h3 class="title-press">Signatures</h3>
             <div class="imgs-container first">
@@ -130,7 +130,7 @@ de ces visuels n’est autorisée.</span>
             </div>
           </div>
         </div>
-        <div class="animation block">
+        <div class="animation block" id='animation'>
           <div class="container">
           <h3 class="title-press">animation</h3>
           <div class="contain-player">
@@ -146,7 +146,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
           </div>
           </div>
         </div>
-        <div class="photos block">
+        <div class="photos block" id='photos-institutionnelles'>
           <div class="container">
           <div class="container-title">
             <h3 class="title-press">Photos institutionnelles <span class="number">(22)</span></h3>
@@ -202,7 +202,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
             </div>
           </div>
         </div>
-        <div class="dossier block">
+        <div class="dossier block" id='dossier-presse'>
           <div class="container">
           <h3 class="title-press">Dossier de presse</h3>
           <div class="contain-dp">

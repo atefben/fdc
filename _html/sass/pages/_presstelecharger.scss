@@ -32,6 +32,8 @@
   }
   .downloading-nav{
     border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+    background-color: white;
     ul{
       width: 693px;
       margin: 0 auto;
@@ -47,6 +49,9 @@
           @include transition(all 0.5s $linear);
         }
         a:hover{
+          color: #c8a461;
+        }
+        a.active{
           color: #c8a461;
         }
       }
