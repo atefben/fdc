@@ -108,7 +108,7 @@
     width: 0;
     background-color: $black;
     z-index: 10;
-    @include transition(all 1.5s $smoothTransition);
+    @include transition(all 0.8s $smoothTransition);
 
     &.show {
       width: 102%;
@@ -173,8 +173,8 @@
     }
 
     .picto {
-      background-image: url('../img/svg/play-gold.svg');
-      background-size: 18px;
+      background-image: url('../img/svg/video.svg');
+      background-size: 45px;
       height: 80px;
       top: 50%;
       left: 50%;
@@ -397,7 +397,7 @@
     .img {
       background-size: cover;
       display: block;
-      height: 105%;
+      height: 115%;
       width: 100%;
       top: -5%;
       left: 0;

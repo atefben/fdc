@@ -35,9 +35,7 @@ $(document).ready(function() {
           $newActiveSection = $('section[data-name='+nameNewActiveSection+']');
           $newActiveNav = $('li[data-name='+nameNewActiveSection+']');
           
-          if($(this).hasClass("active")){
-              
-          }else{
+          if(!$(this).hasClass("active")){
               //hide active section
               $activeSection.animate({
                   top: "200px",

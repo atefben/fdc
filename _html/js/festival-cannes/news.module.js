@@ -132,6 +132,11 @@ $(document).ready(function() {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));
           filter();
           $('.read-more').html('Passer au <strong>jour précédent</strong>').addClass('prevDay');
+
+          $('html, body').animate({
+            scrollTop: $(".articles.center").offset().top + $(".articles.center").height() - 70
+          }, 500);
+
           setTimeout(function() {
             $('#shd').addClass('show');
             $(window).trigger('resize');

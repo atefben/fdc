@@ -200,9 +200,10 @@
   }
 
   #content-trailers {
+    clear:both;
     background-color: $black;
     border-bottom: 1px solid #2c2c2c;
-    padding: 70px 0;
+    padding: 0 0;
     position: relative;
     z-index: 2;
 
@@ -377,7 +378,7 @@
 			text-align: center;
 			font-family: $CamphorBold;
 			a{
-					color:#686868;
+					color:#999999;
 					font-size: 0.75rem;
 			}
 
@@ -464,12 +465,20 @@
 .webtv-ba-video{
 	background-color:#141414 !important;
 	.title-container{
-		padding: 50px 0px;
+		padding: 13px 0px 40px 0px;
 		a{
 			color: #fff;
 			text-transform: uppercase;
-			font-size: 0.625rem;
+			font-size: 9.6px;
+      background: url("../img/svg/arrow-left-white.svg") no-repeat left 3px;
+      background-size: 9px;
+      font-family: "Camphor W01 Bold";
+      letter-spacing: 0.1em;
+      padding-left: 20px;
 		}
+    h1 {
+      margin:10px 0 0 0;
+    }
 	}
  article{
         height: 450px;
@@ -479,7 +488,7 @@
         clear: both;
         color: #ffffff;
         width: auto;
-	 			display: inline-block;
+	 			float:left;
      
  }
   .container-webtv-ba-video{
@@ -493,19 +502,23 @@
 			display: block;
 			text-transform: uppercase;
 			padding-top:25px;
-			font-size: 0.6875rem;
+		  font-size: 11px;
+      letter-spacing: 1px;
+      font-family: "Camphor W01 Bold";
 		}
 		.name-video{
 			font-size: 1.125rem;
 			padding-top: 10px;
+      display:block;
+      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 		}
 	}
 	.informations-video{
-		display: inline-block;
+		float:left;
     color: #fff;
-    height: 445px;
+    height: 466px;
     vertical-align: top;
-		max-width: 293px;
+		width: 297px;
 	  position: relative;
 		ul{
 			li{
@@ -513,26 +526,31 @@
 				text-transform: uppercase;
 				padding: 23px 0px;
 				font-size: 0.75rem;
-				color:#666;
-				border-bottom: 1px solid #666;
-				border-top: 1px solid #666;
+				color:#999999;
+				border-bottom: 1px solid #2c2c2c;
+				border-top: 1px solid #2c2c2c;
 				margin: 0px;
-				width: 145px;
+				width: 148px;
 				text-align: center;
 				box-sizing: border-box;
-				border-right: 1px solid #666;
+        cursor:pointer;
+        font-family: "Camphor W01 Bold";
 			}
+      li:first-child {
+        border-right: 1px solid #2c2c2c;
+      }
 			.active{
 				color:#c8a461;
-				border-bottom: 0px solid #666;
+				border-bottom: 0px solid #2c2c2c;
+        width:148px;
 			}
 		}
 
 		.block{
-			height: 286px;
-			padding-top: 95px;
-			border-right: 1px solid #666;
-			border-bottom: 1px solid #666;
+			height: 301px;
+			padding-top: 80px;
+			border-right: 1px solid #2c2c2c;
+			border-bottom: 1px solid #2c2c2c;
 		}
 		
 		.infos-film{
@@ -544,11 +562,12 @@
 				text-transform: uppercase;
 				padding-top: 20px;
 				padding-bottom: 16px;
-				font-family: $CamphorBold;
+				font-family: "Camphor W01 Bold";
+        letter-spacing:0.2em;
 			}
 			strong{
 				font-size: 1rem;
-
+        text-transform:uppercase;
 			}
 			span{
 				font-family: $CamphorItalic;
@@ -560,10 +579,10 @@
 		}
 		.program-film{
 			text-align: center;
-			padding-right: 5px;
+			padding-right: 10px;
 			display: none;
 			.contain-info{
-				max-height: 210px;
+				max-height: 222px;
 				margin-bottom: 26px;
 				overflow-y: scroll;
 				overflow-x: hidden;
@@ -578,15 +597,16 @@
 					.date{
 						color:#bababa;
 					}
-					padding-bottom: 16px;
+					padding-bottom: 12px;
 				}
 				.where{
-					font-size: 1rem;
+					font-size: 16px;
+          font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 				}
 				hr{
 					width: 20px;
 					border-color: #666;
-					margin-top: 13px;
+					margin-top: 19px;
 				}
 			}
 			.btn{
@@ -595,6 +615,7 @@
 				font-size: 0.75rem;
 				padding: 20px 35px;
 				border: 1px solid #c8a461;
+        font-family: $CamphorBold;
 			}
 			::-webkit-scrollbar {
 				width: 5px;
@@ -610,17 +631,9 @@
 			}
 		}
 		.share{
-			width: 290px;
-			position: absolute;
-      bottom: 1px;
+      margin:9px 0 0 0;
 			.button{
-				height: 54px;
-				line-height: 60px;
-				padding: 0;
-				text-align: center;
-				width: 56px;
-				margin-top: 40px;
-				border-color: #666;
+				border-color: #2c2c2c;
 			}
 			a.facebook {
         background: url('../img/svg/facebook-gold.svg') no-repeat center;
@@ -650,7 +663,7 @@
 	}
 	//slide//
 	#slider-trailer{
-		padding:50px 0px;
+		padding:10px 0px 72px 0;
 	}
 	#content-trailers{
 		#slider-trailer{

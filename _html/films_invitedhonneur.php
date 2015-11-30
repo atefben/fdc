@@ -147,14 +147,7 @@
                     <div class="duration">
                       <span class="curr">0:00</span>/<span class="total">0:00</span>
                     </div>
-                    <div class="wave-container" id="wave-0">
-                      <wave style="display: block; position: relative; -webkit-user-select: none; height: 55px; overflow-x: auto; overflow-y: hidden;">
-                        <canvas style="position: absolute; z-index: 1; left: 0px; top: 0px; bottom: 0px; width: 273px;" width="273" height="55"></canvas>
-                        <wave style="position: absolute; z-index: 2; left: 0px; top: 0px; bottom: 0px; overflow: hidden; width: 0px; display: block; box-sizing: border-box; border-right-style: solid; border-right-width: 0px; border-right-color: rgb(51, 51, 51);">
-                          <canvas width="273" height="55" style="width: 273px;"></canvas>
-                        </wave>
-                      </wave>
-                    </div>
+                    <div class="wave-container"></div>
                     <div class="volume">
                       <span></span>
                     </div>

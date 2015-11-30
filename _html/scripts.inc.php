@@ -17,6 +17,8 @@
 <script src="js/components/snap.svg.easing.js"></script>
 <script src="js/components/fullscrenjs.js"></script>
 <script src="js/components/jwplayer.js"></script>
+<script src="js/components/konsole.min.js"></script>
+<script src="js/components/jquery-ui.min.js"></script>
 <script src="js/festival-cannes/helpers.js"></script>
 <script src="js/festival-cannes/article.module.js"></script>
 <script src="js/festival-cannes/audio.module.js"></script>
@@ -33,11 +35,13 @@
 <script src="js/festival-cannes/newsletter.module.js"></script>
 <script src="js/festival-cannes/palmares.module.js"></script>
 <script src="js/festival-cannes/participate.module.js"></script>
+<script src="js/festival-cannes/practicialguide.module.js"></script>
 <script src="js/festival-cannes/prefooter.module.js"></script>
 <script src="js/festival-cannes/prehome.module.js"></script>
 <script src="js/festival-cannes/press.module.js"></script>
 <script src="js/festival-cannes/resize.module.js"></script>
 <script src="js/festival-cannes/search.module.js"></script>
+<script src="js/festival-cannes/seating-chart.module.js"></script>
 <script src="js/festival-cannes/selection.module.js"></script>
 <script src="js/festival-cannes/sliderartist.module.js"></script>
 <script src="js/festival-cannes/sliderchannels.module.js"></script>

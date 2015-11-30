@@ -19,6 +19,11 @@ entity:
     info_video: Vidéos
     info_audio: Audios
     info_theme: Thèmes infos
+    tag: Tags
+    film_film: Films
+    film_person: Personnes
+    film_atelier: Films Atelier
+    country: Pays
 
 dashboard:
     group:

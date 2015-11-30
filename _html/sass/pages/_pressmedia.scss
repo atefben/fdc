@@ -1,0 +1,191 @@
+//       SUMMARY TABLE
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.press-media{
+  .mediatheque{
+    .container{
+      width: 977px;
+    }
+    .table{
+      .line:last-child{
+        border-bottom: 0px solid #fff;
+      }
+    }
+    .line .info {
+    float: left;
+    width: 320px;
+      .txt{
+        width: 225px;
+      }
+    }
+    
+  }
+  .header-press{
+    p{
+      width: 442px;
+    }
+  }
+  .nav-mediapress{
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+    padding: 43px 0;
+    .wrapper {
+      width: 980px;
+      margin: 0 auto;
+      h2 {
+        line-height: 24px;
+        font-size:0.88rem;
+        font-family: $CamphorBold;
+        letter-spacing: .2em;
+        width: 488px;
+        margin: 0 auto;
+        text-transform: uppercase;
+        text-align: center;
+        padding-bottom:18px;
+      }
+      table {
+        td {
+          width: 324px;
+          height: 39px;
+          border: 1px solid #cccccc;
+          color: #cccccc;
+          box-sizing: border-box;
+          text-align: center;
+          text-transform: uppercase;
+          font-size: 0.75rem;
+          font-family: $CamphorBold;
+          @include transition(all 0.5s $linear);
+          cursor: pointer;
+        }
+        .active {
+          background-color: #c8a461;
+          border: 1px solid #c8a461;
+          color: #fff;
+        }
+        td:hover {
+            background-color: rgba(200, 164, 97, 0.51);
+            color: #fff;
+        }
+      }
+    }
+  }
+  .nav-container{
+    .table{
+      .line{
+        .media, .info{
+          cursor: pointer;
+        }
+        .item{
+          display: inline-block;
+          margin: 6px;
+        }
+        .grid-wrapper{
+          position: relative;
+          height: 318px;
+          margin-left: -7px;
+        }
+        position: relative;
+        .container{
+          position: relative;
+          .contain{
+            display: none;
+            float: left;
+            width: 100%;
+            padding-top: 63px;
+            padding-bottom: 11px;
+            .contain-buttons{
+              display: inline-block;
+              vertical-align: top;
+              strong{
+                display: block;
+                margin-bottom: 17px;
+                text-transform: uppercase;
+                font-size: 0.88rem;
+                font-family: $CamphorBold;
+                letter-spacing: .2em;
+                span{
+                  color: #c29f5f;
+                }
+              }
+              .buttons{
+                display: inline-block;
+                .button{
+                  margin: 0px
+                }
+              }
+              .buttons:nth-child(3){
+                margin-left: 68px;
+              }
+            }
+            .contain-buttons:first-child{
+              margin-right: 124px;
+            }
+          }
+        }
+        .container.active{ 
+          .contain{
+            display: block;
+          }
+          .plus{
+            background-image:url(../img/press/svg/moins.svg);
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 34px;
+            right: 31px;
+            background-repeat: no-repeat;
+            background-size: 111%;
+            cursor: pointer;
+          }
+        }
+        .plus{
+            background-image: url(../img/press/svg/case-plus.svg);
+            width: 51px;
+            height: 51px;
+            position: absolute;
+            top: 13px;
+            right: 15px;
+            background-repeat: no-repeat;
+            background-size: 111%;
+            cursor: pointer;
+        }
+      }
+    }
+  }
+  .block .container {
+      margin-bottom: 41px;
+      margin-top: 60px;
+      padding-top: 60px;
+      border-top: 1px solid #dfdfdf;
+  }
+  .block .container .container-title {
+    position: relative;
+  }
+  .block .container .title-press {
+    margin-bottom: 30px;
+  }
+  .block .container .container-title .right-btn {
+    position: absolute;
+    top: -32px;
+    right: 0px;
+    text-transform: uppercase;
+    font-size: 0.60rem;
+    font-family: "Camphor W01 Heavy";
+    float: left;
+    letter-spacing: .01em;
+  }
+  .block .container .container-title .number {
+    color: #c29f5f;
+    font-size: 0.88rem;
+    letter-spacing: .2em;
+  }
+  .grid-wrapper {
+    margin: 0px;
+  }
+}

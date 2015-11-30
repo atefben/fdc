@@ -26,7 +26,7 @@
       <h2 class="title">Toutes les vidéos</h2>
       <div class="filters">
         <div id="theme" class="filter">
-          <span class="label">Date :</span>
+          <span class="label">Dates :</span>
           <span class="select">
             <span class="active" data-filter="all">Toutes</span>
             <span data-filter="date">Date 1</span>

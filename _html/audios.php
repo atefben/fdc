@@ -26,7 +26,7 @@
       <h2 class="title">Tous les audios</h2>
       <div class="filters">
         <div id="theme" class="filter">
-          <span class="label">Date :</span>
+          <span class="label">Dates :</span>
           <span class="select">
             <span class="active" data-filter="all">Toutes</span>
             <span data-filter="date">Date 1</span>
@@ -346,7 +346,7 @@
         </div>
       </div>
       <a id="next" href="audios2.html"></a>
-      <div class="popin-audio audio" data-sound="">
+      <div class="popin-audio audio loading on" data-sound="">
         <div class="image-container"><div class="image"></div></div>
         <a href="#" class="playpause"></a>
         <div class="on">

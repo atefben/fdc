@@ -61,11 +61,11 @@ if($('.webtv-ba-video').length){
             if($(this).hasClass('infos-film-li')){
               $('.program-film').css({display:'none'});
               $('.infos-film').css({display:'block'});
-              console.log(1);
+
             }else{
               $('.program-film').css({display:"block"});
               $('.infos-film').css({display:"none"});     
-              console.log(2);
+
             }
         }
       });
@@ -103,7 +103,7 @@ if($('.webtv-ba-video').length){
   }
 
   if($('.webtv-ba').length){
-    alert('ok');
+
          //Scroll
       $(window).on('scroll', function() {
         var s = $(window).scrollTop();

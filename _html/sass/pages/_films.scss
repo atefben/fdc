@@ -108,7 +108,7 @@
      .bck-hover {
        background-color: #141414;
        width: 100%;
-       padding: 32px;
+       padding: 37px;
        height: 418px;
        display: table;
        @include transition-property(background);
@@ -155,7 +155,6 @@
        }
        .nom-item {
          color: #c8a461;
-         font-style: italic;
          display: block;
          padding-bottom: 4px;
          font-family: $CamphorItalic;
@@ -204,7 +203,7 @@
        position: relative;
        width: 975px;
        margin: 0 auto;
-       margin-bottom: 80px;
+       margin-bottom: 50px;
        .copy {
          position: absolute;
          bottom: 18px;
@@ -219,7 +218,7 @@
        text-align: center;
        font-size: 1.125rem;
        line-height: 36px;
-       padding-bottom: 30px;
+       padding-bottom: 40px;
        a {
          text-decoration: underline;
          color: #c8a461;
@@ -232,7 +231,7 @@
        font-size: 1rem;
        line-height: 26px;
        p {
-         padding: 40px 0px;
+         padding: 32px 0px;
          strong {
            color: #c8a461;
          }
@@ -292,7 +291,6 @@
          width: 178px;
          margin: 0 auto;
          display: block;
-         font-weight: 600;
          text-transform: uppercase;
          font-size: 0.75rem;
          font-family: $CamphorHeavy;

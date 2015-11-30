@@ -69,6 +69,6 @@ app/config/parameters.yml
     website_fdc_corporate_host: ~
 
 ## Glossary
-Statement = Communiqué
-Info = Infos
-News = Articles
+- Statement = Communiqué
+- Info = Infos
+- News = Articles

@@ -119,7 +119,7 @@ $(document).ready(function() {
 
           var $activeEl = $('#colSearch a.active');
 
-          if($activeEl.hasClass('artists') || $activeEl.hasClass('films') || $activeEl.hasClass('participate')) {
+          if($activeEl.hasClass('artists') || $activeEl.hasClass('events') || $activeEl.hasClass('films') || $activeEl.hasClass('participate')) {
             $('.filters').hide();
           } else {
             $('.filters').show();

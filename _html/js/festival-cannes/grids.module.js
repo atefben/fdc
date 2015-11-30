@@ -126,7 +126,13 @@ $(document).ready(function() {
     $('.popin-audio, .ov').removeClass('show');
 
     $('.popin-audio').find('.wave-container').empty().removeAttr('id');
-    $('.popin-audio .playpause').trigger('click');
+    for(var i = 0; i<waves.length; i++) {
+      if(waves[i].isPlaying()) {
+        waves[i].stop();
+      }
+    }
+    $('.popin-audio').removeClass('pause');
+    waves = [];
   }
 
   if($('.grid').length) {
@@ -143,6 +149,7 @@ $(document).ready(function() {
           itemSelector: '.item',
           percentPosition: true,
           layoutMode: 'packery',
+          isOriginLeft: true,
           packery: {
               columnWidth: '.grid-sizer'
           }
@@ -230,7 +237,7 @@ $(document).ready(function() {
             $popinAudio.find('.date').text(date);
             $popinAudio.find('.hour').text(hour);
             $popinAudio.find('p').text(text);
-            $popinAudio.addClass('audio-player show');
+            $popinAudio.addClass('audio-player show loading on');
 
             initAudioPlayers();
             $('.ov').addClass('show');

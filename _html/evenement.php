@@ -47,47 +47,64 @@
             <div class="slideshow-img">
               <div class="images">
                 <div class="img active">
-                  <a id="photo1" class="chocolat-image" href="img/slide001.jpg" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
                     <img src="img/slide001.jpg" alt="" />
                   </a>
                 </div>
                 <div class="img">
-                  <a id="photo2" class="chocolat-image" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
+                  <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                    <img src="img/slide002.jpg" alt="" />
+                  </a>
                 </div>
-                <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                <div class="img"><img src="img/slide001.jpg" alt="" /></div>
-                <div class="img"><img src="img/slide001.jpg" alt="" /></div>
+                <div class="img">
+                  <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
+                <div class="img">
+                  <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                </div>
               </div>
               <div class="owl-carousel thumbnails">
                 <div data-id="photo1" class="thumb active">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div data-id="photo2" class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div data-id="photo3" class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -349,14 +366,14 @@
       <span class="anim"></span>
     </div>
     
-<!-- POPIN MAIL SHARE ---->
+<!-- POPIN MAIL SHARE -->
     <div class="popin-mail popin">
       <div class="contain-popin popin">
         <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
         <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
         <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
       </div>
-      <form action="" id="form" class="popin">
+      <form action="#" id="form" class="popin">
         <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
         <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas">
         <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>

@@ -13,8 +13,8 @@
 
     <!-- //// CSS \\\\ -->
     <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
+    <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel="stylesheet" type="text/css">
     <link href='css/styles.css' rel="stylesheet">
   
   </head>
@@ -25,7 +25,7 @@
     <div id="main" class=" webtv webtv-ba-video loading">
   <div class="container-webtv-ba-video">
     <div class="title-container">
-      <a href="#"> > Retour aux bandes annonces</a>
+      <a href="#" class="bandeannone">Retour aux bandes annonces</a>
           <h1 class="title">Valley of love</h1>
     </div>
     <section>
@@ -37,7 +37,7 @@
       <aside class="informations-video">
         <ul class="nav">
           <li class="active infos-film-li">Film</li>
-          <li class="program-film-li">Programation</li>
+          <li class="program-film-li">Programmation</li>
         </ul>
         <div class="container-video">
           <div class="infos-film block">
@@ -113,7 +113,6 @@
             <a href="#" class="button twitter"></a>
             <a href="#" class="button link"></a>
             <a href="#" class="button email"></a>
-            <a href="#" class="button print"></a>
           </div>
         </div>
       </aside>

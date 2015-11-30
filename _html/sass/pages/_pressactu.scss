@@ -1,0 +1,107 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.press-actu{
+  .section{
+    @include transition(all 1s $linear);
+    background-size: cover;
+  }
+  .header-press{
+    border-bottom: 1px solid #e3e3e3 !important;
+
+    p{
+      width: 412px;
+    }
+  }
+  .section{
+    .txt{
+      h2{
+        color:#fff;
+      }
+    }
+  }
+  .grid-wrapper{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .filters{
+    border-bottom: 1px solid #e3e3e3 !important;
+    padding-bottom: 35px;
+    padding-top: 35px;
+  }
+  .item.communique{
+    .picto{
+      background:  url('../img/press/picto-communique.png') no-repeat center;
+    }
+  }
+    .item{
+//      border: 1px inset #fafafa;
+    }
+  .read-more {
+    border: 1px solid #d9d9d9;
+    clear: both;
+    color: #999;
+    display: block;
+    height: 55px;
+    font-family: "Camphor W01 Heavy";
+    font-size: 0.625rem;
+    line-height: 55px;
+    margin: 0 auto;
+    margin-bottom: 55px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 95%;
+    letter-spacing: .1em;
+    @include transition(all 0.9s $smoothTransition);
+
+    strong {
+      color: #000;
+      font-weight: normal;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+
+
+  @media screen and (min-width: 1920px) {
+    .press-actu .section{
+      height: 450px !important;
+    }
+
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+   .press-actu .section{
+      height: 375px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+    .press-actu .section{
+      height: 299px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+   .press-actu .section{
+      height: 298px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+   .press-actu .section{
+      height: 298px !important;
+    }
+  }
