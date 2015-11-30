@@ -60,6 +60,7 @@ class AppKernel extends Kernel
             new Base\ApiBundle\BaseApiBundle(),
             new FDC\CorporateBundle\FDCCorporateBundle(),
             new FDC\EventBundle\FDCEventBundle(),
+            new FDC\PressBundle\FDCPressBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

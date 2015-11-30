@@ -33,6 +33,20 @@ security:
             logout:
                 path:           /admin/logout
             anonymous:          true
+        press:
+             host: ^press\.%fdc_domain_regexp%$
+             context:            user
+             form_login:
+                 provider:       fos_userbundle
+                 login_path:     /login
+                 use_forward:    false
+                 check_path:     /login_check
+                 failure_path:   null
+                 success_handler: base_admin.handler.login
+             logout:
+                 path:           /logout
+             anonymous:          true
+
         #main:
         #    pattern:             .*
         #    context:             user
@@ -51,7 +65,6 @@ security:
     access_control:
         # URL of FOSUserBundle which need to be available to anonymous users
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         
         # Admin login page needs to be access without credential
