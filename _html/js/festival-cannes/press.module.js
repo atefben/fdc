@@ -596,6 +596,16 @@ $(document).ready(function() {
   //Mediatheque nav 
       if($('.press-media').length){
         menuMedia();
+        
+        if($('.connected').length){
+          var imgs = $('.connected').find('img[src="img/svg/cadenas.svg"]');
+          console.log(imgs);
+          imgs.attr('src','img/press/svg/telecharger.svg');
+          //change img if connected 
+          imgs.each(function(){
+            $(this).attr('src','img/press/svg/telecharger.svg');
+          })
+        }
         svgImg();
       }
   //madiatheque AJAX

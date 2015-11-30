@@ -17,6 +17,17 @@
     color: #b0b0b0;
   }
 }
+.connected{
+  .table .line .button{
+    border-color: #c29f5f !important;
+    color: #c29f5f;
+  }
+  .button:hover {
+    background-color: #c29f5f;
+    border-color: #c29f5f !important;
+    color: #fff !important;
+  }
+}
 .press-media{
   .contact-press{
       .button:hover {
