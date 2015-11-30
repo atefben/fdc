@@ -27,11 +27,11 @@
     <div id="main" class="list-article films-list selection-officielle loading">
       <div class="bandeau-list">
            <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Selection officielle</h2>
+               <h2 class="title title-list-header">Sélection officielle</h2>
            </div>
  <ul class="sub-nav-list nav-list">
              <li>
-               <a href="selectionofficielle_competition.php" class='active ajax'>Compétition</a>
+               <a href="selectionofficielle_competition.php" class='active ajax'>En Compétition</a>
              </li>
              <li>
                <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>

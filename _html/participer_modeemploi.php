@@ -136,7 +136,7 @@
   </section>  
   <section class="content-manual">
     <div class="contain-section">
-      <h3 class="title-section"><img src="img/participate/informations.svg" alt="" class="logo-title svg">Informations utiles</h3><i class="fa fa-plus"></i>
+      <h3 class="title-section"><img src="img/press/svg/informations-grey.svg" alt="" class="logo-title svg">Informations utiles</h3><i class="fa fa-plus"></i>
       <div class="item-manual">
         <div class="contain-infos">
           <div class="item-infos">

@@ -227,7 +227,7 @@ article {
     width: 0;
     background-color: $black;
     z-index: 10;
-    @include transition(all 1.5s $smoothTransition);
+    @include transition(all 0.8s $smoothTransition);
 
     &.show {
       width: 102%;

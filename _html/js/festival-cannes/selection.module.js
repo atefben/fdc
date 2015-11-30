@@ -147,7 +147,7 @@ $(document).ready(function() {
       setTimeout(function() {
         $('#selection .owl-item').removeClass('fade');
         $('#slider-selection').removeClass('fade');
-      }, 1000);
+      }, 1200);
       return false;
     } 
 
@@ -252,8 +252,8 @@ $(document).ready(function() {
         setTimeout(function() {
           $('.scaled').removeClass('scaled');
           $('.added').removeClass('added');
-        }, 1200);
-      }, 800);
+        }, 800);
+      }, 400);
     });
      
   });

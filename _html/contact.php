@@ -29,6 +29,10 @@
         <p>3, rue Amélie 75007 Paris - France</p>
         <p>Tel: +33 (0) 1 53 59 61 00  -  Fax : +33 (0)1 53 59 61 10</p>
       </div>
+      <div class="success">
+        <h3>Votre message a bien été envoyé.</h3>
+        <p>L'équipe concernée va revenir vers vous très rapidement.</p>
+      </div>
       <div class="container">
         <p>Précisez votre demande en complétant le formulaire ci-dessous.<br />
         Seules les demandes formulées en français ou en anglais <br />

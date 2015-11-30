@@ -1,7 +1,7 @@
 //       SUMMARY TABLE     
 // =========================
 // 1. Global
-// 2. Navigation
+// 2. Responsive 768
 // =========================
 
 
@@ -136,5 +136,22 @@ body {
 
 
 
-// 2. Navigation
+// 2. Responsive 768
 // =========================
+
+@include breakpoint(768px) {
+  #main, header, footer {
+    width: 1024px;
+    zoom: 0.75;
+  }
+
+  #featured-movies .video {
+    width: 1024px!important;
+
+    video {
+      height: 576px!important;
+    }
+  }
+}
+
+

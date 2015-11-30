@@ -22,6 +22,7 @@
     });
     $('.read-more').on('click', function (e) {
       e.preventDefault();
+	$(this).hide();
       i += 1;
 //      $.ajax({
 //        type: "GET",

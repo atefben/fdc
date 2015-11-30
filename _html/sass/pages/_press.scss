@@ -9,6 +9,7 @@
 // =========================
 
 .press {
+  overflow: hidden;
   padding-top: 0!important;
 
   .fc-event {
@@ -29,6 +30,14 @@
       .info .txt {
         margin-left: 10px;
         width: 200px;
+
+        span {
+          display: block;
+          max-width: 200px;
+          height: auto;
+          -webkit-line-clamp: initial;
+          overflow: hidden;
+        }
       }
     }
 
@@ -68,6 +77,27 @@
       }
     }
 
+    &.seance {
+      .category {
+        background-image: url('../img/svg/evt-seance.svg');
+        background-size: 17px;
+      }
+    }
+
+    &.seance-press {
+      .category {
+        background-image: url('../img/svg/evt-seance-presse.svg');
+        background-size: 15px;
+      }
+    }
+
+    &.conference {
+      .category {
+        background-image: url('../img/svg/evt-conference.svg');
+        background-size: 13px;
+      }
+    }
+
     .info {
       img {
         float: left;
@@ -81,6 +111,18 @@
         width: 145px;
         margin: 10px 0 0 0;
         text-transform: uppercase;
+
+        span {
+          display: block; /* Fallback for non-webkit */
+          display: -webkit-box;
+          max-width: 145px;
+          height: 47px; /* Fallback for non-webkit */
+          margin: 0 auto;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
 
         strong {
           color: $gold;
@@ -349,7 +391,6 @@
   .header-press {
     border-bottom: 1px solid #e3e3e3;
     height: 150px;
-    overflow: hidden;
 
     .head {
       background: $gold url('../img/svg/press-white.svg') no-repeat center 36%;
@@ -376,12 +417,22 @@
 
     .container {
       height: 100%;
+
+      a.service-presse {
+        color: #000;
+        text-decoration: underline;
+        @include transition(all 0.9s $smoothTransition);
+
+        &:hover {
+          color: #333;
+        }
+      }
     }
 
     h2 {
       color: $gold;
       float: left;
-      font-family: $CamphorThin;
+      font-family: $CamphorThin, $CamphorRegular;
       font-size: 2.125rem;
       font-weight: normal;
       letter-spacing: 0.2em;
@@ -400,19 +451,48 @@
     .buttons {
       float: right;
       margin: 50px 0 0 0;
+      position: relative;
+      z-index: 3;
 
       .button {
+        background-color: #fff;
         border-color: $gold;
+        border-right: 1px solid $gold;
+
+        &.list {
+          border-top: none;
+          display: block;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all 0.6s $smoothTransition);
+
+          &:hover {
+            color: $gold;
+          }
+
+          &.show {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        &.subnav:hover {
+          background-color: #fff;
+          color: $gold;
+          opacity: 0.5;
+        }
       }
     }
   }
 
   .locked {
     background-color: #f4f4f4;
-    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
     height: 95px;
     overflow: hidden;
     position: relative;
+    width: 100%;
 
     ::-webkit-input-placeholder {
         color:    #999;
@@ -436,7 +516,12 @@
     }
 
     h3 {
-      margin: 0 0 8px 65px;
+      background: url('../img/svg/cadenas.svg') no-repeat left top;
+      background-size: 14px;
+      padding-left: 24px;
+      padding-top: 2px;
+      line-height: 1.4em;
+      margin: 0 0 5px 65px;
     }
 
     p {
@@ -450,6 +535,14 @@
       right: 150px;
       height: 50px;
       top: 24px;
+
+      @include breakpoint(1024px) {
+        right: 50px;
+      }
+
+      &.error input[type="text"] {
+        border-color: red;
+      }
 
       input {
         background: none;
@@ -478,8 +571,9 @@
           @include transition(all 0.9s $smoothTransition);
 
           &:hover {
-            border-color: #000;
-            color: #000;
+            border-color: $gold;
+            color: #fff;
+            background-color: $gold;
           }
         }
       }
@@ -493,12 +587,22 @@
       overflow: hidden;
       padding: 20px;
 
+      .grid-wrapper {
+        margin: 0 auto;
+      }
+
       article {
         border: 1px solid #e3e3e3;
         border-right: none;
         border-bottom: none;
         padding: 20px 20px 0 20px;
         width: 310px;
+
+        &.communique .picto {
+          background-color: $gold;
+          background-image: url('../img/svg/communique-presse.svg');
+          background-size: 21px 20px;
+        }
 
         .image {
           width: 265px;
@@ -573,6 +677,7 @@
   }
 
   .programmation {
+    border-top: 1px solid #e3e3e3;
 
     #calendar-programmation {
       padding-top: 40px;
@@ -696,6 +801,14 @@
         }
       }
 
+      .filters {
+        position: absolute;
+        top: 0;
+        left: 15px;
+        height: 40px;
+        line-height: 38px;
+      }
+
       #timeline {
         height: 40px;
         position: absolute;
@@ -748,7 +861,7 @@
               left: 50%;
               bottom: -10px;
               width: 0; 
-              z-index: 3;
+              z-index: 2;
             }
           }
 
@@ -822,8 +935,24 @@
           font-family: $CamphorBold;
           font-size: 0.625rem;
           letter-spacing: 0.1em;
-          margin-right: 50px;
+          padding-left: 25px;
+          margin-right: 45px;
           text-transform: uppercase;
+
+          &.folder {
+            background: url('../img/svg/dossier.svg') no-repeat left 47%;
+            background-size: 18px;
+          }
+
+          &.trailer {
+            background: url('../img/svg/bande-annonce.svg') no-repeat left 47%;
+            background-size: 16px;
+          }
+
+          &.photo {
+            background: url('../img/svg/photo-grey.svg') no-repeat left 47%;
+            background-size: 18px;
+          }
         }
 
         .button {
@@ -841,6 +970,10 @@
     .container {
       padding: 40px 0;
       width: 885px;
+
+      img {
+        max-width: 100%;
+      }
 
       h3 {
         color: $gold;
@@ -958,7 +1091,31 @@
 
       .button {
         border-color: $gold;
+        background-image: url('../img/svg/telecharger-gold.svg');
+        background-repeat: no-repeat;
+        background-position: 15px 12px;
+        background-size: 14px;
+        position: relative;
 
+        &:after {
+          background: url('../img/svg/telecharger-white.svg') no-repeat 15px 12px;
+          background-size: 14px;
+          content: '';
+          display: block;
+          height: 100%;
+          position: absolute;
+          width: 100%;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all 0.9s $smoothTransition);
+        }
+
+        &:hover:after {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
 
@@ -980,6 +1137,25 @@
       float: left;
       margin-left: 85px;
       width: 540px;
+    }
+
+    @include breakpoint(1024px) {
+      .portrait {
+        float: none;
+        margin: 0 auto 25px auto;
+        width: 540px;
+      }
+
+      .landscape {
+        float: none;
+        margin: 0 auto;
+      }
+
+      .title-press {
+        width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     p {
@@ -1015,8 +1191,12 @@
     .col {
       box-sizing: border-box;
       float: left;
-      padding-right: 5%;
+      padding-right: 1%;
       width: 33.33333%;
+
+      &:last-child {
+        padding-right: 0;
+      }
 
       h3 {
         font-family: $CamphorHeavy;
@@ -1052,11 +1232,34 @@
     }
 
     .button {
+      border-color: $gold;
       padding: 5px 22px;
     }
   }
 
+  &.lock {
+    .affiche .buttons .button {
+      background-image: url('../img/svg/cadenas-grey.svg');
+      background-repeat: no-repeat;
+      background-position: 15px 45%;
+      background-size: 12px;
+      border-color: #b0b0b0;
+      color: #b0b0b0;
+      pointer-events: none;
+    }
 
+    .fc-event.private {
+      display: none;
+    }
+
+    .header-press {
+      border-bottom: none;
+    }
+
+    &.press-programmation .programmation {
+      border-top: none;
+    }
+  }
 
   &.press-home, &.press-programmation {
     #calendar {
@@ -1084,6 +1287,12 @@
       #calendar-programmation .calendar .venues .venue .v-container {
         background-repeat: repeat;
       }
+    }
+  }
+
+  &.press-home {
+    .popin-event {
+      height: 1012px;
     }
   }
 
@@ -1136,7 +1345,7 @@
         }
       }
 
-      @include breakpoint(1606px) {
+      @include breakpoint(1599px) {
         &:nth-child(7), &:nth-child(8) {
           display: none;
         }
@@ -1156,7 +1365,7 @@
         }
       }
 
-      @include breakpoint(1296px) {
+      @include breakpoint(1279px) {
         &:nth-child(5), &:nth-child(6) {
           display: none;
         }
@@ -1258,7 +1467,6 @@
 .popin-event {
   background-color: #fff;
   border-bottom: 1px solid #ebebeb;
-  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -1266,8 +1474,15 @@
   height: 973px;
   opacity: 0;
   visibility: hidden;
-  z-index: 5;
+  z-index: 2;
   @include transition(all 0.6s $smoothTransition);
+
+  .close-button {
+    height: 70px;
+    top: 20px;
+    right: 20px;
+    width: 70px;
+  }
 
   &.show {
     opacity: 1;
@@ -1324,6 +1539,7 @@
     border-right: 1px solid #ebebeb;
     height: 100%;
     padding-top: 50px;
+    box-sizing: border-box;
     float: left;
     width: 325px;
 
@@ -1344,9 +1560,102 @@
     }
   }
 
+  .events-container {
+    box-sizing: border-box;
+    float: left;
+    padding: 10px 0 0 50px;
+    width: calc(100% - 326px);
+
+    h2 {
+      color: #000;
+      clear: both;
+      font-family: $CamphorBold;
+      font-size: 0.875rem;
+      letter-spacing: 0.2em;
+      margin: 40px 0 12px 0;
+      text-transform: uppercase;
+    }
+
+    .date {
+      color: #ababab;
+      font-family: $CamphorHeavy;
+      font-size: 0.750rem;
+      text-transform: uppercase;
+
+      span {
+        color: $gold;
+      }
+    }
+
+    .events-wrapper {
+      margin-top: 10px;
+
+      .event {
+        display: inline-block;
+        margin-right: 20px;
+        width: 225px;
+
+        p {
+          margin-bottom: 5px;
+        }
+        
+        .fc-event {
+          background-color: #fff;
+          border: 1px solid #e5e5e5;
+          margin: 0!important;
+
+          .category:after {
+            display: none;
+          }
+
+          .txt, .bottom {
+            color: #000;
+          }
+
+          .bottom {
+            border-color: #e5e5e5;
+          }
+        }
+
+        .button {
+          font-size: 0.625rem;
+          margin-top: 20px;
+          padding: 0;
+          text-align: center;
+          width: 100%;
+
+          &.add {
+            border-color: $gold;
+          }
+        }
+
+        &.delete {
+          .fc-event {
+            opacity: 0.5;
+          }
+
+          .button {
+            border-color: #c7c7c7;
+            color: #c7c7c7;
+
+            &:hover {
+              background-color: #fff;
+              color: #000;
+              border-color: #000;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .film {
     text-align: center;
     width: 230px;
+
+    img {
+      @include transform(translateZ(0));
+    }
 
     .button {
       border-color: $gold;
@@ -1406,6 +1715,52 @@
 
 
 
+#mycalendar {
+  .fc-event[style*="right: 50%"],
+  .fc-event[style*="left: 50%"] {
+    img {
+      display: none;
+    }
+
+    .category {
+      font-size: 0;
+    }
+
+    .duration {
+      display: inline-block;
+    }
+
+    .txt {
+      width: 80px;
+      padding: 0 10px;
+
+      span {
+        display: block; /* Fallback for non-webkit */
+        display: -webkit-box;
+        max-width: 80px;
+        height: 32px; /* Fallback for non-webkit */
+        margin: 0 auto;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      strong {
+        margin-bottom: 5px;
+      }
+    }
+
+    .ven {
+      width: 61px;
+      overflow: hidden;
+      display: inline-block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  }
+}
 
 
 

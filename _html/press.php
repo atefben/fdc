@@ -23,7 +23,7 @@
   <body>
     <?php include('header-press.html'); ?>
 
-    <div id="main" class="press press-home loading calendar-open">
+    <div id="main" class="press press-home loading calendar-open lock">
       <div class="header-press">
         <div class="head">
           <span>Espace presse</span>
@@ -32,7 +32,7 @@
           <h2>Accueil</h2>
           <p>
             <span class="vCenter">
-              <span class="vCenterKid">L'espace presse met également à la disposition du grand public des contenus en libre accès. Journalistes, pour visualiser les contenus et services qui vous sont exclusivement réservés, nous vous invitons à saisir le code qui vous a été délivré par le service de presse.</span>
+              <span class="vCenterKid">L'espace presse met également à la disposition du grand public des contenus en libre accès. Journalistes, pour visualiser les contenus et services qui vous sont exclusivement réservés, nous vous invitons à saisir le code qui vous a été délivré par le <a href="#" class="service-presse">service de presse</a>.</span>
             </span>
           </p>
         </div>
@@ -41,7 +41,7 @@
         <div class="vCenter">
           <div class="vCenterKid">
             <h3 class="title-press">Contenu verrouillé</h3>
-            <p>Journalistes, pour accéder à la programmation presse, veuillez saisir votre mot de passe.</p>
+            <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
           </div>
         </div>
         <form action="">
@@ -54,12 +54,12 @@
           <div id="calendar-wrapper">
             <h2 class="title-calendar">mon agenda</h2>
             <div id="mycalendar" class="side"></div>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
+            <p class="link"><a href="calendar.php"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
             <div class="drag">
               <h2>Préparez votre séjour au festival de cannes</h2>
-              <img src="img/press/drag.png" alt="" />
+              <img src="img/svg/main-drag.svg" alt="" width="43" />
               <p><strong>Cliquez - déposez</strong> les évènements dans votre agenda puis exportez votre programme</p>
-              <a href="#">OK</a>
+              <a href="#" id="okDrag">OK</a>
             </div>
           </div>
         </div>
@@ -69,183 +69,185 @@
             <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tous les communiqués et infos</a></p>
           </div>
           <div class="grid-container">
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+            <div class="grid-wrapper">
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+              </article>
+              <article class="communique" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
-            <article class="article" data-format="article" data-theme="press">
-              <div class="image">
-                <div class="image-wrapper">
-                  <img src="img/articles/02.jpg" alt="" />
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
                 </div>
-                <a href="article.php" class="linkImage"></a>
-                <span class="picto"></span>
-              </div>
-              <div class="info">
-                <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
-              </div>
-            </article>
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
+                </div>
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
+                </div>
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
+                </div>
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
+                </div>
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
+                </div>
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
+                </div>
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
+                </div>
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
+                </div>
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
+                </div>
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
+                </div>
+              </article>
+              <article class="article" data-format="article" data-theme="press">
+                <div class="image">
+                  <div class="image-wrapper">
+                    <img src="img/articles/02.jpg" alt="" />
+                  </div>
+                  <a href="article.php" class="linkImage"></a>
+                  <span class="picto"></span>
+                </div>
+                <div class="info">
+                  <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
         <div class="programmation">
           <div class="chap">
             <h3 class="title-press">Programme du 23 Juin 2016</h3>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />toute la programmation</a></p>
+            <p class="link"><a href="programmation.php"><img src="img/svg/arrow-right-gold.svg" />toute la programmation</a></p>
           </div>
           <div id="calendar-programmation">
             <div id="timeline">
-              <a href="#" class="disabled">dim<span class="day">22</span></a>
-              <a href="#" class="disabled">sam<span class="day">21</span></a>
-              <a href="#" class="disabled">ven<span class="day">20</span></a>
-              <a href="#" class="disabled">jeu<span class="day">19</span></a>
-              <a href="#" class="disabled">mer<span class="day">18</span></a>
-              <a href="#" class="disabled">mar<span class="day">17</span></a>
-              <a href="#" class="disabled">lun<span class="day">16</span></a>
-              <a href="#" class="disabled">dim<span class="day">15</span></a>
-              <a href="#" class="disabled">sam<span class="day">14</span></a>
-              <a href="#" class="disabled">ven<span class="day">13</span></a>
-              <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
               <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
+              <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
+              <a href="#" class="disabled">ven<span class="day">13</span></a>
+              <a href="#" class="disabled">sam<span class="day">14</span></a>
+              <a href="#" class="disabled">dim<span class="day">15</span></a>
+              <a href="#" class="disabled">lun<span class="day">16</span></a>
+              <a href="#" class="disabled">mar<span class="day">17</span></a>
+              <a href="#" class="disabled">mer<span class="day">18</span></a>
+              <a href="#" class="disabled">jeu<span class="day">19</span></a>
+              <a href="#" class="disabled">ven<span class="day">20</span></a>
+              <a href="#" class="disabled">sam<span class="day">21</span></a>
+              <a href="#" class="disabled">dim<span class="day">22</span></a>
             </div>
             <div class="calendar">
               <div class="timeCol">
@@ -264,8 +266,8 @@
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
-                      <div class="fc-event" data-id="1" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#c8a461' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
-                        <span class="category">séance de reprise</span>
+                      <div class="fc-event" data-url="eventPopin.html" data-id="1" data-picto='.seance' data-start="2016-05-12T09:00:00" data-color='#9b9b9b' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
+                        <span class="category">séance du lendemain</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
@@ -281,8 +283,8 @@
                   <div class="venue">
                     <div class="v-head">Salle du 60e</div>
                     <div class="v-container">
-                      <div class="fc-event" data-id="2" data-picto='.pen' data-start="2016-05-12T09:00:00" data-color='#000' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
-                        <span class="category">séance de reprise</span>
+                      <div class="fc-event" data-url="eventPopin.html" data-id="2" data-picto='.seance' data-start="2016-05-12T09:00:00" data-color='#5b5b5b' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
+                        <span class="category">séance du jour</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
@@ -293,15 +295,42 @@
                   </div>
                   <div class="venue">
                     <div class="v-head">Salle Buñuel</div>
-                    <div class="v-container"></div>
+                    <div class="v-container">
+                      <div class="fc-event" data-url="eventPopin.html" data-id="12" data-picto='.seance-press' data-start="2016-05-12T09:00:00" data-color='#000000' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
+                        <span class="category">séance de presse</span>
+                        <div class="info">
+                          <img src="http://dummyimage.com/46x64/000/fff">
+                          <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
+                        </div>
+                        <div class="bottom"><span class="duration">2H</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
+                      </div>
+                    </div>
                   </div>
                   <div class="venue">
                     <div class="v-head">Salle Buñuel</div>
-                    <div class="v-container"></div>
+                    <div class="v-container">
+                      <div class="fc-event" data-url="eventPopin.html" data-id="10" data-picto='.conference' data-start="2016-05-12T09:00:00" data-color='#a68851' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
+                        <span class="category">conférence de presse</span>
+                        <div class="info">
+                          <img src="http://dummyimage.com/46x64/000/fff">
+                          <div class="txt"><span>orson welles, autopsie d’une légende lorem ipsum lorem</span><strong>Elisabet KAPNIST</strong></div>
+                        </div>
+                        <div class="bottom"><span class="duration">2H</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
+                      </div>
+                    </div>
                   </div>
                   <div class="venue">
                     <div class="v-head">Salle Buñuel</div>
-                    <div class="v-container"></div>
+                    <div class="v-container">
+                      <div class="fc-event private" data-url="eventPopin.html" data-id="13" data-picto='.seance' data-start="2016-05-12T09:00:00" data-color='#9b9b9b' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
+                        <span class="category">séance du lendemain</span>
+                        <div class="info">
+                          <img src="http://dummyimage.com/46x64/000/fff">
+                          <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
+                        </div>
+                        <div class="bottom"><span class="duration">2H</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
+                      </div>
+                    </div>
                   </div>
                   <div class="venue">
                     <div class="v-head">Salle Buñuel</div>
@@ -328,9 +357,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <a class="button" href="#">Découvrir</a>
               </div>
             </div>
@@ -344,9 +373,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <a class="button" href="#">Découvrir</a>
               </div>
             </div>
@@ -360,9 +389,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <a class="button" href="#">Découvrir</a>
               </div>
             </div>
@@ -376,9 +405,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media">Dossiers de presse (2)</div>
-                <div class="media">Bandes annonces (4)</div>
-                <div class="media">Photos (9)</div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
                 <a class="button" href="#">Découvrir</a>
               </div>
             </div>

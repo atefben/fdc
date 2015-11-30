@@ -1,0 +1,220 @@
+//       SUMMARY TABLE
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.downloading-press{
+  .grid{
+    padding: 0px !important;
+  }
+  .grid-wrapper{
+    margin: 0px;
+  }
+  .button{
+    color: #b0b0b0;
+    border: 1px solid #b0b0b0;
+    a{
+      color: #b0b0b0;
+    }
+  }
+  .button:hover{
+    background-color: #fff;
+  }
+  .button:hover a{
+    color:#b0b0b0;
+  }
+  .button a:hover{
+    color:#b0b0b0;
+  }
+  .downloading-nav{
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+    background-color: white;
+    ul{
+      width: 693px;
+      margin: 0 auto;
+      li{
+        display: inline-block;
+        margin: 14px 14px;
+        a{
+          color: #999999;
+          line-height: 14px;
+          font-family: $CamphorBold;
+          text-transform: uppercase;
+          font-size: 0.75rem;
+          @include transition(all 0.5s $linear);
+        }
+        a:hover{
+          color: #c8a461;
+        }
+        a.active{
+          color: #c8a461;
+        }
+      }
+    }
+  }
+  .affiche{
+    padding-top: 59px;
+    padding-bottom: 59px;
+    .container{
+      width: 970px;
+    }
+    .caption{
+      margin-top:12px;
+    }
+    .buttons{
+      .button{
+        border-color:#b0b0b0;;
+      }
+    }
+    p{
+      margin-top: 45px;
+    }
+
+  }
+  .block{
+    .container{
+      margin-bottom: 61px;
+      padding-top: 60px;
+      border-top: 1px solid #dfdfdf;
+      .title-press{
+        margin-bottom: 30px;
+      }
+      .container-title{
+        position: relative;
+        .number{
+          color: #c29f5f;
+          font-size: 0.88rem;
+          letter-spacing: .2em;
+        }
+        .right-btn{
+          position: absolute;
+          top: -56px;
+          right: 0px;
+//          padding-right: 14px;
+//          padding-left: 38px;
+          text-transform: uppercase;
+          font-size: 0.60rem;
+          font-family: $CamphorHeavy;
+          float: left;
+//          padding-top: 16px;
+//          padding-bottom: 16px;
+          letter-spacing: .01em;
+        }
+      }
+      .imgs-container{
+        width: 293px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px 45px;
+        
+        .container-img{
+          display: block;
+          width: 293px;
+          height: 293px;
+          text-align: center;
+          border: 1px solid #dfdfdf;
+          margin-bottom: 11px;
+          img{
+            border: 0px solid #dfdfdf‡;
+            vertical-align: middle;
+          }
+        }
+        .container-img:before {
+          content: "";
+          display: inline-block;
+          vertical-align: middle;
+          height: 100%;
+        }
+
+        .infos{
+          h4{
+            line-height: 24px;
+            font-size: 0.75rem;
+            letter-spacing: .2em;
+            font-family: $CamphorBold;
+            text-transform: uppercase;
+            padding-top: 32px;
+            padding-bottom: 4px;
+          }
+          ul{
+            height: 90px;
+          }
+          li{
+            color: #666666;
+            font-size: 0.75rem;
+            list-style: disc;
+            list-style-position: inside;
+            line-height: 20px;
+          }
+        }
+        .button{
+            border: 1px solid #b0b0b0;
+          a{
+            color: #b0b0b0;
+          }
+        }
+          .button:hover a{
+            color:#b0b0b0;
+          }
+      }
+      .first{
+        margin:0px;
+      }
+      .last{
+        margin:0px;
+      }
+      .caption{
+          color: #666666;
+          font-size: 0.75rem;
+      }
+      .player{
+        margin-bottom: 21px;
+      }
+      .download-btns{
+        padding: 40px 0px;
+        .download{
+          color: #b0b0b0;
+          border: 1px solid #b0b0b0;
+          padding-right: 14px;
+          padding-left: 38px;
+          text-transform: uppercase;
+          font-size: 0.60rem;
+          font-family: $CamphorHeavy;
+          float: left;
+          padding-top: 16px;
+          padding-bottom: 16px;
+          letter-spacing: .01em;
+        }
+        .download:first-child{
+          border-right: 0px solid #000;
+        }
+      }
+      .contain-dp{
+        display: inline-block;
+        width: 33%;
+        vertical-align: top;
+        .btns .button:first-child{
+          border-bottom: 0px solid #fff;
+        }
+        .large{
+          width: 276px;
+        }
+        .infos{
+          margin-top: 9px;
+          color: #666666;
+          font-size: 0.63rem;
+          font-family: $CamphorBold;
+          text-transform: uppercase;
+          strong{
+            color: #c8a461;
+          }
+        }
+      }
+    }
+  }
+}

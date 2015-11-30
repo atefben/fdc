@@ -23,8 +23,7 @@
   <body>
     <?php include('header-press.html'); ?>
 
-    <div id="main" class="press loading seatingchart">
-      <div class="header-press">
+    <div id="main" class="press loading seatingchart lock">
       <div class="header-press">
         <div class="head">
           <span>Espace presse</span>

@@ -1989,6 +1989,7 @@ $(document).ready(function() {
           $grid.isotope('layout');
       });
         $('.read-more').on('click', function(e) {
+
          e.preventDefault();
           i+=1;
         $.ajax({

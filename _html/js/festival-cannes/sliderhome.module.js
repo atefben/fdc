@@ -15,7 +15,7 @@ $(document).ready(function() {
         deltaTooBig = false;
 
     function positionElements() {
-      var p = ($('#slider .owl-item').width() / 2) - 100;
+      var p = ($('#slider .owl-item').width() / 2) - 200;
 
       $('#slider .center').prevAll().each(function() {
         $(this).find('.img').css({
@@ -147,7 +147,7 @@ $(document).ready(function() {
     });
 
     function move() {      
-      var p = ($('#slider .owl-item').width() / 2) - 100;
+      var p = ($('#slider .owl-item').width() / 2) - 200;
 
       $('#slider .img-container').addClass('relative');
 
@@ -214,14 +214,6 @@ $(document).ready(function() {
         width: 0,
         transition: 'none'
       });
-
-      $('#slider .owl-item:not(.center) .img-container, #slider .owl-item:not(.center) .info').css({
-        '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-        '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-        '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-        '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
-        'transform': 'translate3d(' + 0 + 'px, 0px, 0px)'
-      })
     }
 
     $("#slider").owlCarousel({

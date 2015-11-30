@@ -346,7 +346,7 @@
         </div>
       </div>
       <a id="next" href="audios2.html"></a>
-      <div class="popin-audio audio" data-sound="">
+      <div class="popin-audio audio loading on" data-sound="">
         <div class="image-container"><div class="image"></div></div>
         <a href="#" class="playpause"></a>
         <div class="on">

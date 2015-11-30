@@ -1,19 +1,131 @@
 $(document).ready(function() {
 
+  // init array of events
   var events = [];
 
   // get local storage
   var agenda = localStorage.getItem('agenda_press');
 
+  // if local storage, get the events
   if(agenda != null) {
     events = JSON.parse(agenda);
   }
 
-    if($('#mycalendar').length) {
+  // if cookie press
+  if($.cookie('press')) {
+    $('.press').removeClass('lock');
+    $('.locked').remove();
+  }
+
+  $('.locked form').on('submit', function(e) {
+    e.preventDefault();
+
+    var v = $(this).find('input[type="text"]').val();
+    
+    // todo on server : security check password.
+
+    if(v == "test") {
+      $.cookie('press', '1', { expires: 365 });
+      $('.press').removeClass('lock');
+      $('.locked').remove();
+    } else {
+      $(this).addClass('error');
+    }
+
+  });
+
+  $('.service-presse').on('click', function(e) {
+    e.preventDefault();
+
+    $('html, body').animate({
+      scrollTop: $('.contact-press').offset().top - 230
+    }, 500);
+  });
+
+  function openPopinEvent(url) {
+    $.ajax({
+      type: "GET",
+      dataType: "html",
+      cache: false,
+      url: url,
+      success: function(data) {
+        $('.popin-event').remove();
+        // display the html
+        $('#calendar-programmation').append(data);
+
+        // init the events
+        initDraggable();
+
+        // init the slider of movies
+        var sliderFilms = $(".films").owlCarousel({ 
+          nav: true,
+          dots: false,
+          smartSpeed: 500,
+          fluidSpeed: 500,
+          center: true,
+          loop: false,
+          margin: 20,
+          autoWidth: true,
+          mouseDrag: false,
+          onInitialized: function() {
+            $('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
+          },
+          onTranslated: function() {
+            var i = parseInt($('.films .center').index()) + 1;
+            $('.pagination strong').text(i);
+          }
+        });
+
+        // test if events are already store in local storage
+        if(events.length != 0) {
+          $('.events-container .fc-event').each(function() {
+            var id = $(this).data('id'),
+                $this = $(this);
+
+            for(var i=0; i<events.length; i++) {
+              if(id == events[i].id) {
+                $this.parent().addClass('delete');
+                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+              }
+            }
+          });
+        }
+
+        $('html, body').animate({
+          scrollTop: $(".press .programmation").offset().top - 91
+        }, 500);
+
+        // show popin
+        setTimeout(function() {
+          $('.popin-event').addClass('show');
+        }, 100);
+        
+      }
+    });
+  }
+
+  $('.subnav').hover(function() {
+    $('.button.list').addClass('show');
+  });
+
+  $('.buttons').mouseout(function() {
+    $('.button.list').removeClass('show');
+  });
+
+  $('.button.list').mouseover(function() {
+    $('.button.list').addClass('show');
+  });
+
+  $('.subnav').on('click', function(e) {
+    e.preventDefault();
+  });
+
+  if($('#mycalendar').length) {
 
       var maxDate = '22';
       var minDate = '11';
 
+      // full width calendar (page 'my calendar')
       if($('#calendar').hasClass('fullwidth')) {
         $('#mycalendar').fullCalendar({
           lang: 'fr',
@@ -28,8 +140,9 @@ $(document).ready(function() {
           minTime: "08:00:00",
           allDaySlot: false,
           events: events,
+          slotEventOverlap:false,
           eventAfterRender: function(event, element, view) {
-            if(event.duration/60 == 1) {
+            if(event.duration/60 < 2) {
               $(element).addClass('one-hour');
             }
             var dur = event.duration/60 + 'H';
@@ -38,7 +151,7 @@ $(document).ready(function() {
             $(element).addClass(event.eventPictogram);
             $(element).attr('data-id', event.id);
             $(element).empty();
-            $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#"></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#" class="del"></a></span>');
             $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
@@ -47,15 +160,18 @@ $(document).ready(function() {
           }
         });
       } else {
-        if(!$.cookie('drag')) {
+        // if cookie drag doesn't exist, add class to show message
+        if(!$.cookie('drag') && events.length == 0) {
           $('#calendar-wrapper').addClass('drag');
         }
 
-        $('.drag a').on('click', function() {
+        // on click on "ok" button, remove class and add cookie
+        $('#okDrag').on('click', function() {
           $('#calendar-wrapper').removeClass('drag');
           $.cookie('drag', '1', { expires: 365 });
         });
 
+        // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
             lang: 'fr',
             defaultDate: '2016-05-12',
@@ -66,24 +182,37 @@ $(document).ready(function() {
             },
             defaultView: 'agendaDay',
             minTime: "08:00:00",
+            maxTime: "19:00:00",
             allDaySlot: false,
             droppable: true,
             selectOverlap: false,
             events: events,
+            eventOverlap: false,
+            slotEventOverlap:false,
             eventAfterRender: function(event, element, view) {
-              if(event.duration/60 == 1) {
+              // atfer render of each event : change html with all the info
+              if(event.duration/60 < 2) {
                 $(element).addClass('one-hour');
               }
               var dur = event.duration/60 + 'H';
               var c = event.eventColor;
               $(element).empty();
-              $(element).addClass(event.eventPictogram);
+              $(element).addClass(event.eventPictogram).addClass('ajax');
               $(element).attr('data-id', event.id);
-              $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#"></a></span>');
+              $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#" class="del"></a></span>');
               $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
               $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
             },
+            eventClick: function( event, jsEvent, view ) {
+              if($(jsEvent.target).hasClass('del')) {
+                return;
+              } else {
+                openPopinEvent(event.url);
+                return false;
+              }
+            },
             viewRender: function(view){
+              // limit the min date and max date of the calendar, and change the programmation calendar date
               var moment = $('#mycalendar').fullCalendar('getDate');
               if (moment.format('DD') > maxDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
@@ -122,6 +251,113 @@ $(document).ready(function() {
               var agenda = localStorage.getItem('agenda_press');
 
               if(agenda == null) {
+                // add the event and store
+                events.push(copiedEventObject);
+
+                localStorage.setItem('agenda_press', JSON.stringify(events));
+              } else {
+                // get events, add the event and store
+                events = JSON.parse(agenda);
+                events.push(copiedEventObject);
+
+                localStorage.setItem('agenda_press', JSON.stringify(events));
+              }
+
+              // update popin-event if needed
+              if($('.events-container').length) {
+                $('.events-container .fc-event').each(function() {
+                  var id = $(this).data('id'),
+                      $this = $(this);
+
+                  for(var i=0; i<events.length; i++) {
+                    if(id == events[i].id) {
+                      $this.parent().addClass('delete');
+                      $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+                    }
+                  }
+                });
+              }
+              
+            }
+          });
+
+          if($('.communiques').length) {
+            function resizeGridNews() {
+              var w = 0;
+
+              $('.communiques article').each(function() {
+                if($(this).css('display') != 'none') {
+                  w += $(this).outerWidth();
+                }
+              });
+              $('.communiques .grid-wrapper').width(w/2);
+            }
+
+            resizeGridNews();
+            $(window).resize(function() {
+              resizeGridNews();
+            });
+          }
+
+          if($('#calendar-programmation').length) {
+
+            $('#calendar-programmation .calendar').on('click', '.fc-event', function(e) {
+              var url = $(this).data('url');
+
+              // load the url of the event via ajax
+              openPopinEvent(url);
+            });
+
+            // delete event
+            $('#calendar-programmation').on('click', '.event.delete .button', function(e) {
+              e.preventDefault();
+
+              var id = parseInt($(this).parent().find('.fc-event').data('id'));
+
+              $('#mycalendar').fullCalendar('removeEvents', id);
+
+              var agenda = localStorage.getItem('agenda_press');
+              events = JSON.parse(agenda);
+
+              for(var i=0; i<events.length; i++) {
+                if(events[i].id == id) {
+                  events.splice(i,1);
+                }
+              }
+
+              localStorage.setItem('agenda_press', JSON.stringify(events));
+
+              $(this).parent().removeClass('delete');
+              $(this).text('Ajouter').addClass('add');
+            });
+
+            // add event
+            $('#calendar-programmation').on('click', '.event .add', function(e) {
+              e.preventDefault();
+              var $ev = $(this).parent().find('.fc-event');
+
+              $.cookie('drag', '1', { expires: 365 });
+              // retrieve the dropped element's stored Event Object
+              var originalEventObject = $ev.data('eventObject');
+              
+              // we need to copy it, so that multiple events don't have a reference to the same object
+              var copiedEventObject = $.extend({}, originalEventObject);
+              
+              // assign it the date that was reported
+              copiedEventObject.start = copiedEventObject.start;
+              
+              if(events.filter(function(e) { return e.id == copiedEventObject.id; }).length > 0) {
+                return false;
+              }
+
+              // render the event on the calendar
+              $('#mycalendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+
+              // get local storage
+              var agenda = localStorage.getItem('agenda_press');
+
+              if(agenda == null) {
                 events.push(copiedEventObject);
 
                 localStorage.setItem('agenda_press', JSON.stringify(events));
@@ -131,65 +367,36 @@ $(document).ready(function() {
 
                 localStorage.setItem('agenda_press', JSON.stringify(events));
               }
-              
-            }
-          });
 
-          if($('#calendar-programmation').length) {
-
-            $('#calendar-programmation').on('click', '.fc-event', function(e) {
-              var url = $(this).data('url');
-
-              $.ajax({
-                type: "GET",
-                dataType: "html",
-                cache: false,
-                url: url,
-                success: function(data) {
-                  $('.popin-event').remove();
-                  $('#calendar-programmation').append(data);
-
-                  var sliderFilms = $(".films").owlCarousel({ 
-                    nav: true,
-                    dots: false,
-                    smartSpeed: 500,
-                    fluidSpeed: 500,
-                    center: true,
-                    loop: false,
-                    margin: 20,
-                    autoWidth: true,
-                    mouseDrag: false,
-                    onInitialized: function() {
-                      $('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
-                    },
-                    onTranslated: function() {
-                      var i = parseInt($('.films .center').index()) + 1;
-                      $('.pagination strong').text(i);
-                    }
-                  });
-
-                  setTimeout(function() {
-                    $('.popin-event').addClass('show');
-                  }, 100);
-                  
-                }
-              });
+              $(this).parent().addClass('delete');
+              $(this).removeClass('add').text('Supprimer de votre agenda');
             });
 
+            // close popin
             $('#calendar-programmation').on('click', '.close-button', function(e) {
               e.preventDefault();
 
               $('.popin-event').removeClass('show');
+              setTimeout(function() {
+                $('.popin-event').remove();
+              }, 600);
             });
 
             function initDraggable() {
               $('#calendar-programmation .fc-event').each(function() {
 
+                // based on time start and duration, calculate positions of event
                 var timeStart = $(this).data('time'),
-                    dur = $(this).data('duration') / 60;
+                    dur = Math.floor($(this).data('duration') / 60),
+                    minutes = $(this).data('duration') % 60;
 
-                if(dur == 1) {
+                if(minutes == 0) {
+                  minutes = '';
+                }
+
+                if(dur < 2) {
                   $(this).addClass('one-hour');
+                  $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
                 }
 
                 var base = 8;
@@ -199,6 +406,7 @@ $(document).ready(function() {
                 var mT = timeStart - base;
                 $(this).css('margin-top', (mT * 80) + 5);
 
+                // init all the data of the event
                 var eventObject = {
                   title: $(this).find('.txt span').text(),
                   eventColor: $(this).data('color'),
@@ -211,32 +419,36 @@ $(document).ready(function() {
                   room: $(this).find('.bottom .ven').text(),
                   selection: $(this).find('.bottom .competition').text(),
                   eventPictogram: $(this).data('picto').substr(1),
-                  id: $(this).data('id')
+                  id: $(this).data('id'),
+                  url: $(this).data('url')
                 };
                 
                 // store the Event Object in the DOM element so we can get to it later
                 $(this).data('eventObject', eventObject);
-                
+
                 // make the event draggable using jQuery UI
-                $(this).draggable({
-                  zIndex: 999,
-                  revert: true,
-                  revertDuration: 0,
-                  start: function() {
-                    $('#calendar-wrapper').removeClass('drag');
-                  },
-                  stop: function(event, ui){
-                    setTimeout(function() {
-                      if(!$.cookie('drag')) {
-                        $('#calendar-wrapper').addClass('drag');
-                      }
-                    }, 300);
-                  }
-                });
+                if(!$(this).parent().hasClass('event')) {
+                  $(this).draggable({
+                    zIndex: 999,
+                    revert: true,
+                    revertDuration: 0,
+                    start: function() {
+                      $('#calendar-wrapper').removeClass('drag');
+                    },
+                    stop: function(event, ui){
+                      setTimeout(function() {
+                        if(!$.cookie('drag')) {
+                          $('#calendar-wrapper').addClass('drag');
+                        }
+                      }, 300);
+                    }
+                  });
+                }
                 
               });
             }
 
+            // on click on the timeline link, update calendar
             $('#timeline a').on('click', function(e) {
               e.preventDefault();
 
@@ -266,6 +478,7 @@ $(document).ready(function() {
 
             var ct = 0;
 
+            // slider calendar programmation
             $('#calendar-programmation .nav').on('click', function(e) {
               e.preventDefault();
 
@@ -313,6 +526,7 @@ $(document).ready(function() {
         }
       }
 
+  // delete event
   $('#mycalendar').on('click', '.fc-event .category a', function(e) {
     e.preventDefault();
 
@@ -330,6 +544,200 @@ $(document).ready(function() {
 
     localStorage.setItem('agenda_press', JSON.stringify(events));
 
+    if($('.events-container').length) {
+
+      $('.events-container .event').removeClass('delete');
+      $('.events-container .event .button').addClass('add').text('Ajouter');
+
+      $('.events-container .fc-event').each(function() {
+        var id = $(this).data('id'),
+            $this = $(this);
+
+        for(var i=0; i<events.length; i++) {
+          if(id == events[i].id) {
+            $this.parent().addClass('delete');
+            $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+          }
+        }
+      });
+    }
+
   });
 
+  
+  // Navigation tab press page (accreditation)
+  
+  if($('#accreditation').length){
+
+    $('.nav-accre table td').click(function(){
+     var $cat = $(this).data('cat');
+     var sectionIsShow = $('#accreditation').find('.nav-container.active');
+     var sectionShow = $('#accreditation').find('.nav-container[data-cat='+$cat+']');
+    
+    if(!$(this).hasClass('active')){
+        
+        $('.nav-accre table').find('.active').removeClass('active');
+        $(this).addClass('active');
+             
+        sectionIsShow.animate({opacity:0},500,function(){
+          sectionIsShow.css('display','none');
+          sectionIsShow.removeClass('active');
+
+          sectionShow.css('opacity',0);
+          sectionShow.css('display','block');
+
+          sectionShow.animate({opacity:1},500,function(){
+            sectionShow.addClass('active');
+          })
+      });
+    }
+    });
+  }
+  //Mediatheque nav 
+      if($('.press-media').length){
+        menuMedia();
+        
+        if($('.connected').length){
+          var imgs = $('.connected').find('img[src="img/svg/cadenas.svg"]');
+          console.log(imgs);
+          imgs.attr('src','img/press/svg/telecharger.svg');
+          //change img if connected 
+          imgs.each(function(){
+            $(this).attr('src','img/press/svg/telecharger.svg');
+          })
+        }
+        svgImg();
+      }
+  //madiatheque AJAX
+      function ajaxEvent(){
+      $('.press-media .nav-mediapress td').on('click',function(e){
+        e.preventDefault();
+        if($(this).is(':not(.active)')) {
+          var urlPath = $(this).data('cat');
+          urlPath += ".php";
+          $.get(urlPath, function(data){
+            $( ".nav-container" ).html( $(data).find('.nav-container') );
+            history.pushState('',"titre test", urlPath);
+            ajaxEvent();
+            menuMedia();
+            svgImg();
+          });
+          $('.press-media .nav-mediapress').find('td.active').removeClass('active');
+          $(this).addClass('active');
+        }
+      });
+    }
+  
+    function menuMedia(){
+      var $info = $('.info, .media, .plus');
+      $info.click(function(){
+      var $active = $('.press-media .nav-container .table .line').find('.active');
+      var $parent = $(this).closest(".container");
+        if(!$parent.hasClass('active')){
+            $active.removeClass('active');
+            $parent.addClass('active');
+        }else{
+            $active.removeClass('active');
+        }
+      });
+    }
+  
+    function svgImg(){
+                jQuery('img.svg').each(function(){
+          var $img = jQuery(this);
+          var imgID = $img.attr('id');
+          var imgClass = $img.attr('class');
+          var imgURL = $img.attr('src');
+
+          jQuery.get(imgURL, function(data) {
+              // Get the SVG tag, ignore the rest
+              var $svg = jQuery(data).find('svg');
+
+              // Add replaced image's ID to the new SVG
+              if(typeof imgID !== 'undefined') {
+                  $svg = $svg.attr('id', imgID);
+              }
+              // Add replaced image's classes to the new SVG
+              if(typeof imgClass !== 'undefined') {
+                  $svg = $svg.attr('class', imgClass+' replaced-svg');
+              }
+
+              // Remove any invalid XML tags as per http://validator.w3.org
+              $svg = $svg.removeAttr('xmlns:a');
+
+              // Replace image with new SVG
+              $img.replaceWith($svg);
+
+          }, 'xml');
+
+      });
+    }
+    ajaxEvent();
+  //Grid
+      if($('.gridPressDownload').length){
+        $grid = $('.gridPressDownload').imagesLoaded(function() {
+          $grid.isotope({
+            layoutMode: 'packery',
+            itemSelector: '.item',
+            packery: {
+              gutter: 20
+            }
+          });
+        });
+    }
+  
+  //downloding nav sticky 
+  if($('.downloading-press').length){
+        //Scroll
+      $(window).on('scroll', function() {
+        
+        var s            = $(window).scrollTop(),
+            h            = $("#main").height()-900,
+            affiche      = $('#affiche-officielle').offset().top-900,
+            signature    = $('#signature').offset().top-900,
+            animation    = $('#animation').offset().top-900,
+            photosInst   = $('#photos-institutionnelles').offset().top-900,
+            dossierPress = $('#dossier-presse').offset().top-900;
+          
+        if(s > 180 ){
+          $('.downloading-nav').addClass('sticky');
+          $(".downloading-nav").css({position: "fixed",top:90, width: "100%", zIndex:10});
+        } else if (s < 180){
+          $(".downloading-nav").css({position: "relative",top:1, zIndex:1});
+        }
+        
+        if( s > affiche && s < signature){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#affiche-officielle"]').addClass('active');
+
+        }else if( s > signature && s< animation){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#signature"]').addClass('active');
+
+        }else if( s > animation && s< photosInst){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#animation"]').addClass('active');
+
+        }else if( s > photosInst && s< dossierPress){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#photos-institutionnelles"]').addClass('active');
+        }else if( s > dossierPress){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#dossier-presse"]').addClass('active');
+        }
+        
+      });
+    
+    $('a[href^="#"]').click(function(){
+      var the_id = $(this).attr("href");
+
+      $('html, body').animate({
+        scrollTop:$(the_id).offset().top-300
+      }, 'slow');
+      return false;
+    });
+    
+
+  }
+  
 });

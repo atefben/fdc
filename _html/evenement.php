@@ -80,31 +80,31 @@
               </div>
               <div class="owl-carousel thumbnails">
                 <div data-id="photo1" class="thumb active">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div data-id="photo2" class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div data-id="photo3" class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
                 <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="img/thumb01.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -366,14 +366,14 @@
       <span class="anim"></span>
     </div>
     
-<!-- POPIN MAIL SHARE ---->
+<!-- POPIN MAIL SHARE -->
     <div class="popin-mail popin">
       <div class="contain-popin popin">
         <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
         <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
         <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
       </div>
-      <form action="" id="form" class="popin">
+      <form action="#" id="form" class="popin">
         <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
         <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas">
         <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>

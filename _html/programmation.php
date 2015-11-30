@@ -23,7 +23,7 @@
   <body>
     <?php include('header-press.html'); ?>
 
-    <div id="main" class="press press-programmation loading calendar-open">
+    <div id="main" class="press press-programmation loading calendar-open lock">
       <div class="header-press">
         <div class="head">
           <span>Espace presse</span>
@@ -31,7 +31,9 @@
         <div class="container">
           <h2>Programmation</h2>
           <div class="buttons">
-            <a href="#" class="button">Télécharger l'horaire des projections presse</a>
+            <a href="#" class="button subnav">Télécharger l'horaire des projections presse</a>
+            <a href="#" class="button list">Télécharger au format .pdf</a>
+            <a href="#" class="button list">Télécharger au format .ics</a>
           </div>
         </div>
       </div>
@@ -39,7 +41,7 @@
         <div class="vCenter">
           <div class="vCenterKid">
             <h3 class="title-press">Contenu verrouillé</h3>
-            <p>Journalistes, pour accéder à la programmation presse, veuillez saisir votre mot de passe.</p>
+            <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
           </div>
         </div>
         <form action="">
@@ -52,30 +54,48 @@
           <div id="calendar-wrapper">
             <h2 class="title-calendar">mon agenda</h2>
             <div id="mycalendar" class="side"></div>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
+            <p class="link"><a href="calendar.php"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
             <div class="drag">
               <h2>Préparez votre séjour au festival de cannes</h2>
-              <img src="img/press/drag.png" alt="" />
+              <img src="img/svg/main-drag.svg" alt="" width="43" />
               <p><strong>Cliquez - déposez</strong> les évènements dans votre agenda puis exportez votre programme</p>
-              <a href="#">OK</a>
+              <a href="#" id="okDrag">OK</a>
             </div>
           </div>
         </div>
         <div class="programmation">
           <div id="calendar-programmation">
+            <div class="filters">
+            <div id="category" class="filter">
+              <span class="label">Catégories :</span>
+              <span class="select">
+                <span class="active" data-filter="all">Toutes</span>
+                <span data-filter="press">Conférence de Presse</span>
+                <span data-filter="reprise">Séance de reprise</span>
+              </span>
+            </div>
+            <div id="type" class="filter">
+              <span class="label">Types :</span>
+              <span class="select">
+                <span class="active" data-filter="all">Tous</span>
+                <span data-filter="press">Conférence de Presse</span>
+                <span data-filter="reprise">Séance de reprise</span>
+              </span>
+            </div>
+          </div>
             <div id="timeline">
-              <a href="#" data-date="22" class="disabled">dim<span class="day">22</span></a>
-              <a href="#" data-date="21" class="disabled">sam<span class="day">21</span></a>
-              <a href="#" data-date="20" class="disabled">ven<span class="day">20</span></a>
-              <a href="#" data-date="19" class="disabled">jeu<span class="day">19</span></a>
-              <a href="#" data-date="18" class="disabled">mer<span class="day">18</span></a>
-              <a href="#" data-date="17" class="disabled">mar<span class="day">17</span></a>
-              <a href="#" data-date="16" class="disabled">lun<span class="day">16</span></a>
-              <a href="#" data-date="15" class="disabled">dim<span class="day">15</span></a>
-              <a href="#" data-date="14" class="disabled">sam<span class="day">14</span></a>
-              <a href="#" data-date="13" class="disabled">ven<span class="day">13</span></a>
-              <a href="#" data-date="12" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
-              <a href="#" data-date="11" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
+              <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
+              <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
+              <a href="#" class="disabled">ven<span class="day">13</span></a>
+              <a href="#" class="disabled">sam<span class="day">14</span></a>
+              <a href="#" class="disabled">dim<span class="day">15</span></a>
+              <a href="#" class="disabled">lun<span class="day">16</span></a>
+              <a href="#" class="disabled">mar<span class="day">17</span></a>
+              <a href="#" class="disabled">mer<span class="day">18</span></a>
+              <a href="#" class="disabled">jeu<span class="day">19</span></a>
+              <a href="#" class="disabled">ven<span class="day">20</span></a>
+              <a href="#" class="disabled">sam<span class="day">21</span></a>
+              <a href="#" class="disabled">dim<span class="day">22</span></a>
             </div>
             <div class="calendar">
               <div class="timeCol">
@@ -99,7 +119,7 @@
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
-                      <div class="fc-event" data-url="eventPopin.html" data-id="3" data-picto='.pen' data-color='#000' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:00:00" data-time="9" data-duration="120">
+                      <div class="fc-event" data-category="reprise" data-type="reprise" data-url="eventPopin.html" data-id="3" data-picto='.pen' data-color='#000' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:00:00" data-time="9" data-duration="120">
                         <span class="category">séance de reprise</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff" />
@@ -120,8 +140,8 @@
                   <div class="venue">
                     <div class="v-head">Salle Buñuel</div>
                     <div class="v-container">
-                      <div class="fc-event" data-url="eventPopin.html" data-id="5" data-picto='.pen' data-color='#000' data-start="2016-05-12T15:00:00" data-end="2016-05-12T16:00:00" data-time="15" data-duration="60">
-                        <span class="category">séance de reprise</span>
+                      <div class="fc-event" data-category="press" data-type="press" data-url="eventPopin.html" data-id="5" data-picto='.pen' data-color='#000' data-start="2016-05-12T15:00:00" data-end="2016-05-12T16:00:00" data-time="15" data-duration="60">
+                        <span class="category">conférence de presse</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff" />
                           <div class="txt"><span>mad max, fury road</span><strong>Elisabet KAPNIST</strong></div>

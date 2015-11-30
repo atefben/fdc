@@ -285,9 +285,9 @@ div.chocolat-wrapper {
 
       img {
         display: block;
-        height: 150px;
+        max-height: 150px;
         opacity: 0.3!important;
-        width: auto;
+        width: 101%;
         @include transform(translate3d(0, -40px, 0));
         @include transition(opacity 0.9s $smoothTransition, transform 0.9s ease);
       }
@@ -302,7 +302,7 @@ div.chocolat-wrapper {
   }
 
   .chocolat-bottom {
-    background: url('../img/shadow.png') repeat-x;
+    background: url('../img/shadow-slideshow.png') repeat-x;
     border-top: 1px solid rgba(255, 255, 255, 0.4);
     font-size: 16px;
     line-height: initial;
@@ -310,6 +310,53 @@ div.chocolat-wrapper {
     height: 100px;
     opacity: 0;
     @include transition(all 0.9s $smoothTransition);
+
+    .buttons {
+      position: absolute;
+      right: 0;
+      z-index: 5;
+      bottom: 101px;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.6s $smoothTransition);
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .button {
+        border-color: rgba(255, 255, 255, 0.4);
+        border-bottom: none;
+        height: 75px;
+        width: 75px;
+
+        &:last-child {
+          border-right: none;
+          width: 74px;
+        }
+      }
+
+      a.facebook {
+        background: url('../img/svg/facebook-gold.svg') no-repeat center;
+        background-size: 19px;
+      }
+
+      a.twitter {
+        background: url('../img/svg/twitter-gold.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.email {
+        background: url('../img/svg/mail.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.link {
+        background: url('../img/svg/link.svg') no-repeat center;
+        background-size: 16px;
+      }
+    }
 
     &:after {
       content: '';
@@ -336,6 +383,10 @@ div.chocolat-wrapper {
       &:after {
         opacity: 1;
         visibility: visible;
+      }
+
+      .buttons {
+        background-color: $black;
       }
     }
 
@@ -369,6 +420,16 @@ div.chocolat-wrapper {
       text-align: left;
       position: relative;
       z-index: 2;
+      @include transition(opacity 0.6s $smoothTransition);
+
+      &.hide {
+        opacity: 0;
+      }
+
+      @include breakpoint(1024px) {
+        width: 430px;
+        padding-top: 17px;
+      }
 
       span {
         &.category {
@@ -411,6 +472,11 @@ div.chocolat-wrapper {
     font-size: 0.750rem;
     line-height: 100px;
     padding: 0 35px;
+    @include transition(opacity 0.6s $smoothTransition);
+
+    &.hide {
+      opacity: 0;
+    }
   }
 
   .share {
@@ -502,7 +568,6 @@ div.chocolat-wrapper {
   }
 
   .chocolat-content {
-    cursor: none;
     height: 100%;
     min-height: 100%;
     min-width: 100%;
@@ -526,26 +591,135 @@ div.chocolat-wrapper {
 
   .chocolat-top {
     overflow: initial;
-    pointer-events: none;
-  }
-
-  .chocolat-img {
-    cursor: none!important;
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    top: 20px;
+    left: auto;
+    right: 20px;
   }
 
   .chocolat-close {
     background: url('../img/svg/close-gold.svg') no-repeat center;
     background-size: 15px;
     border: 1px solid $gold;
-    cursor: none;
-    height: 100px;
+    cursor: pointer;
+    height: 80px;
     position: absolute;
     top: 0;
     right: 0;
-    width: 100px;
+    width: 80px;
     z-index: 100;
+    opacity: 0.6;
+    @include transition(all 0.9s $smoothTransition);
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
+  .chocolat-loader {
+    background: none;
+  }
+
+  .zoomCursor {
+    cursor: none;
+    display: none;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    z-index: 50;
+    border: 1px solid $gold;
+    @include transition(opacity 0.3s $smoothTransition);
+
+    &.hide {
+      opacity: 0;
+    }
+  }
+
+}
+
+.chocolat-zoomable {
+
+  .zoomCursor {
+    background: url('../img/svg/zoomIn.svg') no-repeat center;
+    background-size: 20px;
+    display: block!important;
+  }
+
+  .chocolat-content, .chocolat-img {
+    cursor: none;
+  }
+}
+
+.chocolat-zoomed {
+  .zoomCursor {
+    background: url('../img/svg/zoomOut.svg') no-repeat center;
+    background-size: 20px;
+    display: block!important;
+  }
+
+  .chocolat-content, .chocolat-img {
+    cursor: none!important;
+  }
+}
+
+@include breakpoint(1600px) {
+  div.chocolat-wrapper {
+
+    .share {
+      height: 80px;
+      width: 80px;
+      right: 162px;
+    }
+
+    .chocolat-right {
+      height: 80px;
+      width: 80px;
+    }
+
+    .chocolat-left {
+      height: 80px;
+      width: 80px;
+      right: 81px;
+    }
+
+    .thumbnails {
+      bottom: 81px;
+    }
+
+    .credit {
+      height: 80px;
+      line-height: 80px;
+    }
+
+    .chocolat-bottom {
+      height: 80px;
+
+      .chocolat-description {
+        padding-top: 15px;
+        padding-left: 115px;
+      }
+
+      .chocolat-pagination {
+        line-height: 120px;
+        width: 80px;
+      }
+
+      .buttons {
+        bottom: 81px;
+
+        .button {
+          height: 60px;
+          width: 60px;
+
+          &:last-child {
+            width: 59px;
+          }
+        }
+      }
+    }
+  }
 }
 
 // 3. Override Article actu photo
