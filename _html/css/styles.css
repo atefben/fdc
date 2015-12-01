@@ -8917,6 +8917,13 @@ article .read-later.rAlign span:after {
   color: #666;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
+.single-article .slideshow.article_photo .slideshow-img .thumbnails {
+  bottom: 30px;
+}
+.single-article .slideshow.article_photo .slideshow-img .thumbnails .thumb {
+  width: 128px;
+  height: 84px;
+}
 .single-article .quote {
   width: 630px;
   margin: 30px auto;
@@ -16398,6 +16405,9 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 
+.press-media.lock .slideshow {
+  border: 0px solid #fff;
+}
 .press-media.lock .table .line .button {
   border-color: #b0b0b0;
   color: #b0b0b0;

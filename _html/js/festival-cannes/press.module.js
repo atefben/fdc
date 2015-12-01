@@ -593,10 +593,11 @@ $(document).ready(function() {
     }
     });
   }
+  
   //Mediatheque nav 
-      if($('.press-media').length){
+      if($('.press-media').length){    
         menuMedia();
-        
+        initSlideshows();
         if($('.connected').length){
           var imgs = $('.connected').find('img[src="img/svg/cadenas.svg"]');
           console.log(imgs);
@@ -608,7 +609,8 @@ $(document).ready(function() {
         }
         svgImg();
       }
-  //madiatheque AJAX
+  
+  //mediatheque AJAX
       function ajaxEvent(){
       $('.press-media .nav-mediapress td').on('click',function(e){
         e.preventDefault();
@@ -621,6 +623,7 @@ $(document).ready(function() {
             ajaxEvent();
             menuMedia();
             svgImg();
+            initSlideshows();
           });
           $('.press-media .nav-mediapress').find('td.active').removeClass('active');
           $(this).addClass('active');
@@ -628,6 +631,7 @@ $(document).ready(function() {
       });
     }
   
+  //fin chocolat js 
     function menuMedia(){
       var $info = $('.info, .media, .plus');
       $info.click(function(){

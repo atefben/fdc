@@ -44,14 +44,14 @@
             <table>
               <tbody></tbody>
               <tr>
-                   <td data-cat="press-media">compétition longs métrages (25)</td>
+                   <td data-cat="press-media" >compétition longs métrages (25)</td>
                    <td data-cat="press-media-competitioncm">compétition courts métrages (3)</td>
                    <td data-cat="press-media-horscomp" class="active">hors compétition (7)</td>
                </tr>
                <tr>
                    <td data-cat="press-media-uncertainregard">un certain regard (10)</td>
-                   <td data-cat="press-media-seancesdeminuit">séances de minuit</td>
-                   <td data-cat="press-media-seancespeciales">séances spéciales</td>
+                   <td data-cat="press-media-seancesdeminuit" >séances de minuit</td>
+                   <td data-cat="press-media-seancespeciales" >séances spéciales</td>
                </tr>
                <tr>
                  <td data-cat="press-media-cinefondation">cinéfondation (9)</td>
@@ -72,100 +72,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>il racconto deI racconti<a href="#" class="director">Todd HAYNES</a></p></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="media folder">Dossiers de presse (2)</div>
-                <div class="media trailer">Bandes annonces (4)</div>
-                <div class="media photo">Photos (9)</div>
-                <span class="plus"></span>
-                <div class="contain">
-                <div class="contain-buttons active-btn">
-                    <strong>Dossier de presse <span>(2)</span></strong>
-                    <div class="buttons">
-                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
-                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
-                    </div>
-                  </div>
-                  <div class="contain-buttons">
-                    <strong>Bandes annonces et extraits <span>(4)</span></strong>
-                    <div class="buttons">
-                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (FR)</a>
-                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (EN)</a>
-                    </div>
-                    <div class="buttons">
-                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (FR)</a>
-                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
-                    </div>
-                  </div>
-                  <div class="photos block">
-                    <div class="container">
-                    <div class="container-title">
-                      <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
-                    </div>
-                    <div class=" " class="grid-wrapper" style="position: relative; height: 318px;">
-                      <div class="grid-sizer"></div>
-                        <div class="item" style="position: absolute; left: 0px; top: 0px;">
-                          <a href=" ">
-                            <img src="img/press/media/img1.jpg" alt="">
-
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img2.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img3.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img4.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img5.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img6.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img7.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img8.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img9.jpg" alt="">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="line">
-              <div class="container">
-                <div class="info">
-                  <img src="http://dummyimage.com/55x75/000/fff" alt="" />
-                  <div class="txt">
-                    <div class="vCenter">
-                      <div class="vCenterKid"><p>il racconto deI racconti<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -192,57 +99,148 @@
                       <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
-                  <div class="photos block">
+                  <div class="photos block slideshow">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
-                    <div class=" " class="grid-wrapper" style="position: relative; height: 318px;">
+                    <div class="grid-wrapper images" >
                       <div class="grid-sizer"></div>
-                        <div class="item" style="position: absolute; left: 0px; top: 0px;">
-                          <a href=" ">
-                            <img src="img/press/media/img1.jpg" alt="">
-
-                          </a>
-                        </div>
                         <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img2.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img3.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img4.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img5.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
+                        <a href="img/press/media/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
                             <img src="img/press/media/img6.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img1.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img2.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img3.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img4.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img5.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img7.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img8.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img9.jpg" alt="">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="line">
+              <div class="container">
+                <div class="info">
+                  <img src="http://dummyimage.com/55x75/000/fff" alt="" />
+                  <div class="txt">
+                    <div class="vCenter">
+                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="media folder">Dossiers de presse (2)</div>
+                <div class="media trailer">Bandes annonces (4)</div>
+                <div class="media photo">Photos (9)</div>
+                <span class="plus"></span>
+                <div class="contain">
+                  <div class="contain-buttons active-btn">
+                    <strong>Dossier de presse <span>(2)</span></strong>
+                    <div class="buttons">
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
+                      <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
+                    </div>
+                  </div>
+                  <div class="contain-buttons">
+                    <strong>Bandes annonces et extraits <span>(4)</span></strong>
+                    <div class="buttons">
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 1 (EN)</a>
+                    </div>
+                    <div class="buttons">
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (FR)</a>
+                      <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
+                    </div>
+                  </div>
+                  <div class="photos block slideshow">
+                    <div class="container">
+                    <div class="container-title">
+                      <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
+                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                    </div>
+                    <div class="grid-wrapper images"  >
+                      <div class="grid-sizer"></div>
+                        <div class="item">
+                        <a href="img/press/media/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                            <img src="img/press/media/img6.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img1.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img2.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img3.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img4.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img5.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img7.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img8.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img9.jpg" alt="">
                           </a>
                         </div>
@@ -258,7 +256,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>il racconto deI racconti<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -285,57 +283,56 @@
                       <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
-                  <div class="photos block">
+                  <div class="photos block slideshow">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
-                    <div class=" " class="grid-wrapper">
+                    <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
                         <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img1.jpg" alt="">
-
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img2.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img3.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img4.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img5.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
+                        <a href="img/press/media/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
                             <img src="img/press/media/img6.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img1.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img2.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img3.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img4.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img5.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img7.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img8.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img9.jpg" alt="">
                           </a>
                         </div>
@@ -351,7 +348,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>il racconto deI racconti<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -378,57 +375,56 @@
                       <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
-                  <div class="photos block">
+                  <div class="photos block slideshow">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
-                    <div class=" " class="grid-wrapper" style="position: relative; height: 318px;">
+                    <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
-                        <div class="item" style="position: absolute; left: 0px; top: 0px;">
-                          <a href=" ">
-                            <img src="img/press/media/img1.jpg" alt="">
-
-                          </a>
-                        </div>
                         <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img2.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img3.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img4.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img5.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
+                        <a href="img/press/media/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
                             <img src="img/press/media/img6.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img1.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img2.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img3.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img4.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img5.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img7.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img8.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img9.jpg" alt="">
                           </a>
                         </div>
@@ -444,7 +440,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>il racconto deI racconti<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -471,57 +467,56 @@
                       <a href="" class="button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Extrait 2 (EN)</a>
                     </div>
                   </div>
-                  <div class="photos block">
+                  <div class="photos block slideshow">
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                    <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
-                    <div class=" " class="grid-wrapper" style="position: relative; height: 318px;">
+                    <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
-                        <div class="item" style="position: absolute; left: 0px; top: 0px;">
-                          <a href=" ">
-                            <img src="img/press/media/img1.jpg" alt="">
-
-                          </a>
-                        </div>
                         <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img2.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img3.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img4.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
-                            <img src="img/press/media/img5.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="item">
-                          <a href=" ">
+                        <a href="img/press/media/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
                             <img src="img/press/media/img6.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img1.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img2.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img3.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img4.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
+                            <img src="img/press/media/img5.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="item">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img7.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img8.jpg" alt="">
                           </a>
                         </div>
                         <div class="item">
-                          <a href=" ">
+                          <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img9.jpg" alt="">
                           </a>
                         </div>
@@ -533,7 +528,6 @@
             </div>
           </div>
          </div>
-
         </div>
        </div>
        <!-- fin du premier contenu -->

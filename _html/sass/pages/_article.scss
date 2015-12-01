@@ -424,8 +424,19 @@ article {
       color: #666;
       font-family: $CamphorRegular;
     }
-
-    
+ 
+  }
+  
+  .slideshow.article_photo{
+    .slideshow-img{
+      .thumbnails{
+        bottom: 30px;
+        .thumb{
+          width: 128px;
+          height: 84px;
+        }
+      }
+    }
   }
 
   .quote {

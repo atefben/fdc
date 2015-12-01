@@ -47,7 +47,7 @@ $(document).ready(function() {
         clock,
         percent;
 
-    function progressBarMovies(){    
+    function progressBarMovies(){
       // build progress bar elements
       buildProgressBarMovies();
         
