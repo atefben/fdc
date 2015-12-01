@@ -74,15 +74,21 @@
       span{
         display: none;
         position: relative;
-        transform: translateY(100);
-        @include transition(all 0.3s $smoothTransition);
+//      transform: translateY(100px);
+        @include transition(all 1s $smoothTransition);
+
         img{
         }
       }
-      .active{
-        display: inline-block;
-        @include transition(all 0.3s $smoothTransition);
-        transform: translateY(-100);
+      span.active{
+
+        display: block;
+        opacity: 0;
+//        transform: translateY(-100px);
+      }
+      span.first{
+        opacity: 1;
+//        transform: translateY(0px);
       }
 //      .default-active{
 //        display: inline-block;

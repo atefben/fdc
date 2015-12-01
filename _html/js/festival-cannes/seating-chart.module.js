@@ -1,7 +1,8 @@
 $(document).ready(function() {
   if($('#seatingchart').length) {
-      $('.nav-map li:not(#more-map)').click(function(){
-        if(!$(this).hasClass('active')){
+      $('.nav-map li:not(#more-map)').on('click',function(){
+        
+        if(!$(this).hasClass('active') && !$('#main.animation').length ){
           
           var $this       =  $(this),
               activeLi    =  $('.nav-map').find('li.active'),
@@ -10,21 +11,26 @@ $(document).ready(function() {
               thisData    =  $this.data('maps'),
               imgNotActiv =  $('.maps').find("#"+thisData);
           
-          imgActive.animate({
-            translateY:"100",
-            opacity:0
-          },500,function(){
+              $('#main').addClass('animation');
+          
+              imgActive.animate({
+    //            translateY:"100",
+                opacity:0
+              },1000,function(){
             
-              imgNotActiv.addClass('active');
               imgActive.removeClass('active');
+                
+              imgNotActiv.addClass('active');
             
               activeLi.removeClass('active');
               $this.addClass('active');
             
               imgNotActiv.animate({
-                  translateY:0,
+//                translateY:0,
                   opacity:1
-                },500,function(){
+                },1000,function(){
+                
+                  $('#main').removeClass('animation');
                 
               });
           });

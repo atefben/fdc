@@ -15687,19 +15687,17 @@ article .read-later.rAlign span:after {
 .seatingchart #seatingchart .maps span {
   display: none;
   position: relative;
-  transform: translateY(100);
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.seatingchart #seatingchart .maps .active {
-  display: inline-block;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transform: translateY(-100);
+.seatingchart #seatingchart .maps span.active {
+  display: block;
+  opacity: 0;
+}
+.seatingchart #seatingchart .maps span.first {
+  opacity: 1;
 }
 
 .practicalguide #praticalguide .container-pguide {
@@ -16391,11 +16389,11 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 
-.lock .table .line .button {
-  border-color: #b0b0b0 !important;
+.press-media.lock .table .line .button {
+  border-color: #b0b0b0;
   color: #b0b0b0;
 }
-.lock .button:hover {
+.press-media.lock .button:hover {
   background-color: #fff;
   border-color: #b0b0b0;
   color: #b0b0b0;
