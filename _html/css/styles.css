@@ -11817,7 +11817,9 @@ article .read-later.rAlign span:after {
 .webtv .shadow-bottom:before {
   width: 101%;
 }
-.webtv .owl-item.center .vid:hover .image-wrapper img, .webtv .video:hover .image-wrapper img, .webtv .channel:hover .image-wrapper img {
+.webtv .owl-item.center .vid:hover .image-wrapper img,
+.webtv .video:hover .image-wrapper img,
+.webtv .channel:hover .image-wrapper img {
   -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -11896,7 +11898,8 @@ article .read-later.rAlign span:after {
 .webtv #live .play:hover {
   border-color: white;
 }
-.webtv #live.on .img, .webtv #live.on .vCenter {
+.webtv #live.on .img,
+.webtv #live.on .vCenter {
   opacity: 0;
 }
 .webtv .title {
@@ -11938,10 +11941,12 @@ article .read-later.rAlign span:after {
 .webtv #content-channels #slider-videos {
   margin: 50px 0;
 }
-.webtv #content-channels #slider-channels .owl-item.center + .owl-item, .webtv #content-channels #slider-channels .owl-item.center + .owl-item + .owl-item {
+.webtv #content-channels #slider-channels .owl-item.center + .owl-item,
+.webtv #content-channels #slider-channels .owl-item.center + .owl-item + .owl-item {
   opacity: 1;
 }
-.webtv #content-channels #slider-channels .owl-item.center + .owl-item .linkVid, .webtv #content-channels #slider-channels .owl-item.center + .owl-item + .owl-item .linkVid {
+.webtv #content-channels #slider-channels .owl-item.center + .owl-item .linkVid,
+.webtv #content-channels #slider-channels .owl-item.center + .owl-item + .owl-item .linkVid {
   display: block;
 }
 .webtv #content-trailers {
@@ -12200,7 +12205,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   padding-top: 25px;
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: .1em;
   font-family: "Camphor W01 Bold";
 }
 .webtv-ba-video .video .name-video {
@@ -12263,7 +12268,7 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba-video .informations-video .infos-film span {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  font-size: 0.6875rem;
+  font-size: 0.81rem;
   color: #c8a461;
   display: block;
   padding-top: 6px;
