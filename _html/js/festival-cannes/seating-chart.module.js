@@ -9,29 +9,30 @@ $(document).ready(function() {
               data        =  activeLi.data('maps'),
               imgActive   =  $('.maps').find("span.active"),
               thisData    =  $this.data('maps'),
-              imgNotActiv =  $('.maps').find("#"+thisData);
+              imgNotActiv =  $('.maps').find("#"+thisData),
+              moreMap     =  $('#more-map').find("img[data-image='"+thisData+"']"),
+              moreMapAc   =  $('#more-map img.visible');
           
               $('#main').addClass('animation');
           
               imgActive.animate({
-    //            translateY:"100",
-                opacity:0
-              },1000,function(){
-            
-              imgActive.removeClass('active');
                 
+                opacity:0
+                
+              },600,function(){
+                
+              imgActive.removeClass('active');
               imgNotActiv.addClass('active');
-            
+              moreMap.addClass('visible');  
+                
               activeLi.removeClass('active');
               $this.addClass('active');
-            
+              moreMapAc.removeClass('visible');
+                
               imgNotActiv.animate({
-//                translateY:0,
-                  opacity:1
-                },1000,function(){
-                
+                 opacity:1
+              },400,function(){
                   $('#main').removeClass('animation');
-                
               });
           });
         }

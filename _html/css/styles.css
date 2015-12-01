@@ -15618,6 +15618,9 @@ article .read-later.rAlign span:after {
   vertical-align: middle;
 }
 
+.seatingchart .header-press {
+  border-bottom: 1px solid #e3e3e3 !important;
+}
 .seatingchart #seatingchart {
   width: 980px;
   margin: 41px auto;
@@ -15669,6 +15672,12 @@ article .read-later.rAlign span:after {
   width: 197px;
   height: 142px;
   margin-top: 15px;
+  display: none;
+  opacity: 0;
+}
+.seatingchart #seatingchart .nav-map ul #more-map .visible {
+  display: block;
+  opacity: 1;
 }
 .seatingchart #seatingchart .nav-map ul #more-map:hover {
   background-color: #fff;
@@ -15687,6 +15696,7 @@ article .read-later.rAlign span:after {
 .seatingchart #seatingchart .maps span {
   display: none;
   position: relative;
+  opacity: 0;
   -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15694,7 +15704,6 @@ article .read-later.rAlign span:after {
 }
 .seatingchart #seatingchart .maps span.active {
   display: block;
-  opacity: 0;
 }
 .seatingchart #seatingchart .maps span.first {
   opacity: 1;
