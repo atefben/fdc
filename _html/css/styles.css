@@ -16189,6 +16189,15 @@ article .read-later.rAlign span:after {
   opacity: 1;
   visibility: visible;
 }
+.downloading-press .contact-press .button {
+  color: #c29f5f;
+  border: 1px solid #c29f5f;
+}
+.downloading-press .contact-press .button:hover {
+  background-color: #c29f5f;
+  border-color: #c29f5f;
+  color: #fff;
+}
 .downloading-press .grid {
   padding: 0px !important;
 }
@@ -16388,7 +16397,7 @@ article .read-later.rAlign span:after {
 }
 .lock .button:hover {
   background-color: #fff;
-  border-color: #b0b0b0 !important;
+  border-color: #b0b0b0;
   color: #b0b0b0;
 }
 

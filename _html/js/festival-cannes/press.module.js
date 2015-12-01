@@ -692,12 +692,12 @@ $(document).ready(function() {
       $(window).on('scroll', function() {
         
         var s            = $(window).scrollTop(),
-            h            = $("#main").height()-900,
-            affiche      = $('#affiche-officielle').offset().top-900,
-            signature    = $('#signature').offset().top-900,
-            animation    = $('#animation').offset().top-900,
-            photosInst   = $('#photos-institutionnelles').offset().top-900,
-            dossierPress = $('#dossier-presse').offset().top-900;
+            h            = $("#main").height()-300,
+            affiche      = $('#affiche-officielle').offset().top-300,
+            signature    = $('#signature').offset().top-300,
+            animation    = $('#animation').offset().top-300,
+            photosInst   = $('#photos-institutionnelles').offset().top-300,
+            dossierPress = $('#dossier-presse').offset().top-300;
           
         if(s > 180 ){
           $('.downloading-nav').addClass('sticky');
