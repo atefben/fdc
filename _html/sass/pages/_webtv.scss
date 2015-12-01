@@ -393,11 +393,11 @@
 			li{
 					display: inline-block;
 					padding: 14.5px;
-					text-transform: uppercase; 
+					text-transform: uppercase;
 			}
 
 	}
-	
+
 	.grid{
 		padding-top: 0px;
     .item:hover{
@@ -406,6 +406,7 @@
 	}
 	.grid-wrapper{
 		margin-top: 0px;
+    background-color: #141414;
 	}
 		.grid:after{
 			content: ".";

@@ -24,9 +24,9 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="list-article palmares-list loading">
+    <div id="main" class="list-article palmares-list loading ">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/palmares/cover-bandeau-palmares.jpg);background-size: cover;">
+           <div class="bandeau-list-img bandeau-head" style="background-image:url(http://dummyimage.com/1920x450/616161/fff&text=+);">
                <h2 class="title title-list-header">Le Palmarès</h2>
            </div>
            <ul class="sub-nav-list">
@@ -88,7 +88,7 @@
         </div>
 
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
+           <div class="bandeau-list-img bandeau-list-footer" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
                <h2 class="title title-list-header">Cinéma de la plage</h2>
                <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>

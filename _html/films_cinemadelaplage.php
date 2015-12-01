@@ -26,7 +26,7 @@
 
     <div id="main" class="list-article loading films-list selection-officielle">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
+           <div class="bandeau-list-img bandeau-head" style="background-image:url(http://dummyimage.com/1920x450/d1800/fff&text=+);">
                <h2 class="title title-list-header">Selection officielle</h2>
            </div>
            <div class="bandeau-list">

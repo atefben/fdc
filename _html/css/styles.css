@@ -11494,6 +11494,13 @@ article .read-later.rAlign span:after {
 .honneur-invit .slideshow .caption {
   padding: 0px 0px !important;
 }
+.honneur-invit .slideshow .slideshow-img .thumbnails {
+  bottom: -3px;
+}
+.honneur-invit .slideshow .slideshow-img .thumbnails .thumb {
+  width: 80px;
+  height: 52px;
+}
 .honneur-invit .half-photo {
   margin: 0px 29px 50px 0;
   margin-bottom: 60px;
@@ -12104,6 +12111,7 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba .grid-wrapper {
   margin-top: 0px;
+  background-color: #141414;
 }
 .webtv-ba .grid:after {
   content: ".";

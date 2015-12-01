@@ -26,7 +26,7 @@
 
     <div id="main" class="list-article loading">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);background-size: cover;">
+           <div class="bandeau-list-img bandeau-head" style="background-image:url(img/films/cover-bandeau-push.jpg)">
                <h2 class="title title-list-header">Caméra d'or</h2>
            </div>
       </div>

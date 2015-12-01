@@ -26,7 +26,7 @@
 
     <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
       <div class="bandeau-list">
-        <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
+        <div class="bandeau-list-img bandeau-head" style="background-image:url(http://dummyimage.com/1920x450/ffd373/fff&text=+);">
           <h2 class="title title-list-header">Selection officielle</h2>
         </div>
         <ul class="nav-list sub-nav-list">
