@@ -11394,7 +11394,7 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 .list-article .bandeau-list .nav-movie.sticky {
-  z-index: 10;
+  z-index: 9;
   width: 100%;
   background-color: #1b1b1b;
 }
@@ -11404,7 +11404,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   background-color: #202020;
   width: 100%;
-  z-index: 10;
+  z-index: 9;
   transition: .3s;
 }
 .list-article .bandeau-list .nav-list a {
@@ -11573,7 +11573,7 @@ article .read-later.rAlign span:after {
   color: #c8a461 !important;
 }
 .palmares-list .sticky {
-  z-index: 10;
+  z-index: 9;
   width: 100% !important;
   background-color: #1b1b1b;
 }
@@ -12792,7 +12792,7 @@ article .read-later.rAlign span:after {
   padding: 16px 13px;
 }
 .jurys-list .bandeau-list .sticky {
-  z-index: 10;
+  z-index: 9;
   width: 100%;
   background-color: #1b1b1b;
 }
