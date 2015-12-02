@@ -182,11 +182,12 @@
        .date-pres-item {
          text-transform: uppercase;
          color: #fff;
-         letter-spacing: 3px;
+         letter-spacing: .2em;
          margin-bottom: 18px;
          display: inline-block;
          font-size: 0.75rem;
         font-family: $CamphorBold;
+         margin-right: 6px;
        }
        .heure-pres-item {
          color: #999;
