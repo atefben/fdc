@@ -11210,14 +11210,14 @@ article .read-later.rAlign span:after {
 .categorie-items article img {
   float: left;
   margin-right: 50px;
-  margin-left: 70px;
+  margin-left: 96px;
 }
 .categorie-items article .infos-item-list {
   text-align: center;
   vertical-align: middle;
   width: 475px;
   display: table-cell;
-  padding-right: 123px;
+  padding-right: 100px;
 }
 .categorie-items article .infos-item-list .title-item {
   text-transform: uppercase;
