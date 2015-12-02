@@ -566,13 +566,8 @@ $(document).ready(function() {
 
   // POPIN LOCK //
   if ($('.press.lock').length) {
-    console.log('tata');
     if ($('#popin-press').length) {
-
-
-      $('.buttons').click(function () {
-
-
+      $('.buttons').on('click',function () {
         if ($('#popin-press').hasClass('visible-popin')) {
           $('#popin-press').removeClass('visible-popin');
           $("#main").removeClass('overlay-popin');
@@ -594,13 +589,13 @@ $(document).ready(function() {
         }
       });
     }
-
-    $(window).on('click', ':not(.visible-popin)', function () {
-      alert('ok');
-      $('#popin-press').removeClass('visible-popin');
-      $("#main").removeClass('overlay-popin');
-      $('footer').removeClass('overlay');
-    });
+//
+//    $(document).on('click', ':not(.visible-popin)', function (e) {
+//      console.log(e);
+//      $('#popin-press').removeClass('visible-popin');
+//      $("#main").removeClass('overlay-popin');
+//      $('footer').removeClass('overlay');
+//    });
 
   }
   

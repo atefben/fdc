@@ -45,8 +45,10 @@
        margin: 10px auto;
        line-height: 26px;
        font-family: $CamphorItalic;
+       margin-bottom: 2px;
+       padding-bottom: 0px;
      }
-     .title-big {
+     .title-big { 
        color: #ffffff;
        font-family: "Playfair Display";
        font-size: 3rem;
@@ -105,6 +107,7 @@
      min-height: 405px;
      background-size: cover;
      background-position: center center;
+     overflow: hidden;
      .bck-hover {
        background-color: #141414;
        width: 100%;

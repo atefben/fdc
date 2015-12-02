@@ -97,8 +97,6 @@
                 </div>
                 </div>
             </article>
-        </section>
-        <section class="categorie-items">
            <div class="title-list-cat">
                 <h2 class="title">CELEBRATION DES SOIXANTE ANS DE LA 
 CREATION DE LA PALME D’OR</h2>

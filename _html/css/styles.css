@@ -11116,6 +11116,8 @@ article .read-later.rAlign span:after {
   margin: 10px auto;
   line-height: 26px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  margin-bottom: 2px;
+  padding-bottom: 0px;
 }
 .categorie-items .title-list-cat .title-big {
   color: #ffffff;
@@ -11175,6 +11177,7 @@ article .read-later.rAlign span:after {
   min-height: 405px;
   background-size: cover;
   background-position: center center;
+  overflow: hidden;
 }
 .categorie-items article .bck-hover {
   background-color: #141414;
