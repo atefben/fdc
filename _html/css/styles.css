@@ -11477,6 +11477,18 @@ article .read-later.rAlign span:after {
   margin-top: 0px;
 }
 
+.honneur-invit .buttons {
+  margin-bottom: 14px;
+}
+.honneur-invit .buttons.square {
+  margin-bottom: 0px;
+}
+.honneur-invit .buttons.square .button {
+  border-right: 0px solid #000;
+}
+.honneur-invit .buttons.square .button:last-child {
+  border-right: 1px solid #2c2c2c;
+}
 .honneur-invit .container {
   padding: 0px 0px;
 }
