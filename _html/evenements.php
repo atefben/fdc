@@ -194,8 +194,8 @@
       </div>
       <a href="#" class="read-more">Afficher <strong>plus d'évènements</strong></a>
       <div class="list-article">
-        <div class="bandeau-list">
-          <div class="bandeau-list-img" style="background-image:url(img/jurys/push.jpg);">
+        <div class="bandeau-list vCenter push-footer">
+          <div class="bandeau-list-img vCenterKid" style="background-image:url(img/jurys/push.jpg);">
                <h2 class="title title-list-header">Rétrospective</h2>
                <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
           </div>

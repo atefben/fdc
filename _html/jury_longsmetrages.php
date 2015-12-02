@@ -26,8 +26,10 @@
 
     <div id="main" class="list-article jurys-list loading">
       <div class="bandeau-list">
-           <div class="bandeau-list-img bandeau-head" style="background-image:url(img/jurys/bandeau.jpg)">
+           <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(img/jurys/bandeau.jpg)">
+              <div class="vCenterKid">
                <h2 class="title title-list-header">Les jurys</h2>
+              </div>
            </div>
            <ul class="sub-nav-list">
                <li><a href="jury_longsmetrages.php" class="active ajax">Longs métrages</a></li>
@@ -136,8 +138,8 @@
             </div>
           </section>
         </div>
-        <div class="bandeau-list">
-          <div class="bandeau-list-img  bandeau-list-footer" style="background-image:url(img/jurys/push.jpg);">
+        <div class="bandeau-list push-footer vCenter">
+          <div class="bandeau-list-img  bandeau-list-footer vCenterKid" style="background-image:url(img/jurys/push.jpg);">
                <h2 class="title title-list-header">Rétrospective</h2>
                <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
           </div>

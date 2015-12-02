@@ -22,6 +22,7 @@
 	}
 	.grid-wrapper{
 		margin-top: 0px;
+     margin-bottom: 70px;
 	}
 		.grid:after{
 			content: ".";
@@ -40,12 +41,13 @@
     font-size: 0.625rem;
     line-height: 55px;
     margin: 0 auto;
-    margin-bottom: 70px;
     text-align: center;
     text-transform: uppercase;
     width: 95%;
     letter-spacing: .1em;
     @include transition(all 0.9s $smoothTransition);
+    margin-top: 37px;
+    margin-bottom: 70px;
 
     strong {
       color: #000;
@@ -207,7 +209,7 @@
       height: 444px !important;
     }
     .evenement .title-list-header {
-      padding-top: 210px !important;
+//      padding-top: 210px !important;
     }
   }
 
@@ -217,7 +219,7 @@
       height: 373px !important;
     }
     .evenement .title-list-header {
-      padding-top: 173px !important;
+//      padding-top: 173px !important;
     }
   }
   
@@ -226,7 +228,7 @@
       height: 296px !important;
     }
     .evenement .title-list-header {
-      padding-top: 134px !important;
+//      padding-top: 134px !important;
     }
   }
 
@@ -235,7 +237,7 @@
       height: 294px !important;
     }
     .evenement .title-list-header {
-      padding-top: 134px !important;
+//      padding-top: 134px !important;
     }
   }
 
@@ -244,6 +246,6 @@
       height: 294px !important;
     }
     .evenement .title-list-header {
-      padding-top: 134px !important;
+//      padding-top: 134px !important;
     }
   }

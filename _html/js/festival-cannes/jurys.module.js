@@ -18,7 +18,8 @@ $(document).ready(function() {
         $.get(urlPath, function(data){
             $( ".container-jurys" ).html( $(data).find('.container-jurys') );
             $('.bandeau-head').html( $(data).find('.bandeau-head') );
-            $('.bandeau-list-footer').html( $(data).find('.bandeau-list-footer') );
+            $('.bandeau-list-footer').html( $(data).find('.bandeau-list-footer').html() );
+          
             history.pushState('',"titre test", urlPath);
              $grid = $('#gridJurys').imagesLoaded(function() {
                 $grid.isotope({

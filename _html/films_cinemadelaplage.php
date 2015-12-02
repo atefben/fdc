@@ -26,8 +26,10 @@
 
     <div id="main" class="list-article loading films-list selection-officielle">
       <div class="bandeau-list">
-           <div class="bandeau-list-img bandeau-head" style="background-image:url(http://dummyimage.com/1920x450/d1800/fff&text=+);">
-               <h2 class="title title-list-header">Selection officielle</h2>
+           <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(http://dummyimage.com/1920x450/d1800/fff&text=+);">
+              <div class="vCenterKid">
+               <h2 class="title title-list-header">Sélection officielle</h2>
+              </div>
            </div>
            <div class="bandeau-list">
             <ul class="sub-nav-list nav-list">
@@ -109,12 +111,11 @@ faite par Digimage Classics.</p>
             </article>
         </section>
       </div>
-      <div class="bandeau-list bandeau-list-footer">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
+      <div class="bandeau-list bandeau-list-footer push-footer vCenter">
+           <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Compétition</h2>
                <a href="selectionofficielle_competition.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
-
       </div>
     </div>
     <?php include('footer.html'); ?>

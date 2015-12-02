@@ -26,8 +26,10 @@
 
     <div id="main" class="list-article palmares-list loading ">
       <div class="bandeau-list">
-           <div class="bandeau-list-img bandeau-head" style="background-image:url(http://dummyimage.com/1920x450/cfcfcf/fff&text=+)">
+           <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(http://dummyimage.com/1920x450/cfcfcf/fff&text=+)">
+              <div class="vCenterKid">
                <h2 class="title title-list-header">Le Palmarès</h2>
+              </div>
            </div>
            <ul class="sub-nav-list">
                <li><a href="palmares_competition.php" class="ajax">Compétition</a></li>
@@ -105,8 +107,8 @@
             </article>
         </section>
         </div>
-      <div class="bandeau-list">
-           <div class="bandeau-list-img bandeau-list-footer" style="background-image:url(img/films/cover-bandeau-push.jpg);">
+      <div class="bandeau-list push-footer vCenter">
+           <div class="bandeau-list-img bandeau-list-footer vCenterKid" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Camera d'or</h2>
                <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>

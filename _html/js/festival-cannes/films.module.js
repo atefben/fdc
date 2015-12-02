@@ -40,9 +40,11 @@ $(document).ready(function() {
         if($(this).is(':not(.active)')) {
           var urlPath = $(this).attr('href');
           $.get(urlPath, function(data){
+            
             $( ".container-list" ).html( $(data).find('.container-list') );
             $( ".bandeau-list-footer" ).html( $(data).find('.bandeau-list-footer') );
             $( ".bandeau-head" ).html( $(data).find('.bandeau-head') );
+            
             history.pushState('',"titre test", urlPath);
             $grid = $('#gridFilmSelection').imagesLoaded(function() {
               $grid.isotope({
