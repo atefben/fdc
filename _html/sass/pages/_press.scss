@@ -1763,5 +1763,82 @@
 }
 
 
+// 3. POPIN LOCK ELEMENT //
+//_______________________//
+
+
+#popin-press{
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: .4s all $linear;
+  background-color: #fff;
+  width: 524px;
+  padding: 59px;
+  position: fixed;
+  top: 16%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 120;
+  height: 252px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  .container-popin{
+    strong{
+      text-transform: uppercase;
+      font-size: 0.88rem;
+      letter-spacing: .2em;
+      font-family: $CamphorBold;
+      line-height: 24px;
+      background-image: url("../img/svg/cadenas.svg");
+      background-repeat: no-repeat;
+      background-size: 12px;
+      padding-left: 22px;
+    }
+    p{
+      font-size: 0.81rem;
+      line-height: 18px;
+      color:#666666;
+      width: 284px;
+    }
+    form{
+          height: 50px;
+          margin-top: 19px;
+      input {
+        background: none;
+        border: 1px solid #c6c6c6;
+        border-right: none;
+        box-sizing: border-box;
+        color: #999;
+        font-family: $CamphorRegular;
+        font-size: 0.875rem;
+        display: block;
+        float: left;
+        outline: none;
+        padding: 0 25px;
+        text-align: center;
+        height: 50px;
+        width: 135px;
+      }
+      input[type="submit"] {
+          border: 1px solid #c8a461;
+          color: #c8a461;
+          cursor: pointer;
+          font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+          font-size: 0.750rem;
+          text-transform: uppercase;
+          width: 95px;
+         @include transition(all 0.3s $smoothTransition);
+      }
+      input[type="submit"]:hover {
+        border-color: #c8a461;
+        color: #fff;
+        background-color: #c8a461; 
+      }
+    }
+  }
+}
 
 

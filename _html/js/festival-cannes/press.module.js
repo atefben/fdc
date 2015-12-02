@@ -564,6 +564,45 @@ $(document).ready(function() {
 
   });
 
+  // POPIN LOCK //
+  if ($('.press.lock').length) {
+    console.log('tata');
+    if ($('#popin-press').length) {
+
+
+      $('.buttons').click(function () {
+
+
+        if ($('#popin-press').hasClass('visible-popin')) {
+          $('#popin-press').removeClass('visible-popin');
+          $("#main").removeClass('overlay-popin');
+          $('footer').removeClass('overlay');
+
+        } else {
+
+          $('#popin-press').addClass("visible-popin");
+          $("#main").addClass('overlay-popin');
+        }
+      });
+
+      $(document).keyup(function (e) {
+        //        if (e.keyCode == 13) $('.save').click();
+        if (e.keyCode == 27) {
+          $('#popin-press').removeClass('visible-popin');
+          $("#main").removeClass('overlay-popin');
+          $('footer').removeClass('overlay');
+        }
+      });
+    }
+
+    $(window).on('click', ':not(.visible-popin)', function () {
+      alert('ok');
+      $('#popin-press').removeClass('visible-popin');
+      $("#main").removeClass('overlay-popin');
+      $('footer').removeClass('overlay');
+    });
+
+  }
   
   // Navigation tab press page (accreditation)
   
@@ -595,7 +634,7 @@ $(document).ready(function() {
   }
   
   //Mediatheque nav 
-      if($('.press-media').length){    
+      if($('.press-media').length){
         menuMedia();
         initSlideshows();
         if($('.connected').length){
@@ -705,7 +744,7 @@ $(document).ready(function() {
           
         if(s > 180 ){
           $('.downloading-nav').addClass('sticky');
-          $(".downloading-nav").css({position: "fixed",top:90, width: "100%", zIndex:10});
+          $(".downloading-nav").css({position: "fixed",top:90, width: "100%", zIndex:5});
         } else if (s < 180){
           $(".downloading-nav").css({position: "relative",top:1, zIndex:1});
         }
@@ -740,8 +779,9 @@ $(document).ready(function() {
       }, 'slow');
       return false;
     });
-    
-
+  
   }
+  
+  
   
 });

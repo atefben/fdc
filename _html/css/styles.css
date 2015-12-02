@@ -7018,9 +7018,9 @@ header #searchContainer {
 }
 
 .visible-popin {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(-30px);
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(-30px) !important;
   pointer-events: initial;
 }
 
@@ -15636,6 +15636,81 @@ article .read-later.rAlign span:after {
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: middle;
+}
+
+#popin-press {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-color: #fff;
+  width: 524px;
+  padding: 59px;
+  position: fixed;
+  top: 16%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 120;
+  height: 252px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+#popin-press .container-popin strong {
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  letter-spacing: .2em;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 24px;
+  background-image: url("../img/svg/cadenas.svg");
+  background-repeat: no-repeat;
+  background-size: 12px;
+  padding-left: 22px;
+}
+#popin-press .container-popin p {
+  font-size: 0.81rem;
+  line-height: 18px;
+  color: #666666;
+  width: 284px;
+}
+#popin-press .container-popin form {
+  height: 50px;
+  margin-top: 19px;
+}
+#popin-press .container-popin form input {
+  background: none;
+  border: 1px solid #c6c6c6;
+  border-right: none;
+  box-sizing: border-box;
+  color: #999;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  display: block;
+  float: left;
+  outline: none;
+  padding: 0 25px;
+  text-align: center;
+  height: 50px;
+  width: 135px;
+}
+#popin-press .container-popin form input[type="submit"] {
+  border: 1px solid #c8a461;
+  color: #c8a461;
+  cursor: pointer;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem;
+  text-transform: uppercase;
+  width: 95px;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#popin-press .container-popin form input[type="submit"]:hover {
+  border-color: #c8a461;
+  color: #fff;
+  background-color: #c8a461;
 }
 
 .seatingchart .header-press {

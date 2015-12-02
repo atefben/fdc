@@ -18,6 +18,13 @@ $(document).ready(function() {
         $('.nav-movie').addClass('sticky');
         $(".nav-movie").css({position: "fixed",top:137});
         
+        if($('.nav-movie').length){
+            $('.nav-list.sub-nav-list').removeClass('sticky');
+            $(".sub-nav-list").css({position: "relative",top:1});
+            $('.nav-movie').addClass('sticky');
+            $(".nav-movie").css({position: "fixed",top:90});
+        }
+        
       } else if (s < 470){
      
         $(".nav-movie").css({position: "relative",top:1});

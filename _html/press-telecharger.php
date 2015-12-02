@@ -152,7 +152,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
             <h3 class="title-press">Photos institutionnelles <span class="number">(22)</span></h3>
           <div class="right-btn buttons"><a href="" class="alldl button">Tout telecharger</a></div>
           </div>
-          <div class="gridPressDownload" class="grid-wrapper">
+          <div class="gridPressDownload grid-wrapper">
             <div class="grid-sizer"></div>
               <div class="item">
                 <a href=" ">
@@ -253,7 +253,10 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
         </div>
       </div>
     </div>
+    <!-- POPIN -->
+    <?php include('popin-lock-press.html'); ?>
 
+    <!-- fin POPIN -->
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->
