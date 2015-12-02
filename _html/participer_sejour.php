@@ -27,7 +27,7 @@
 
     <div id="main" class="list-article participate loading">
       <div class="bandeau-list">
-        <div class="bandeau-list-img" style="background-image:url(img/participate/bandeau.jpg);background-size: cover;">
+        <div class="bandeau-list-img" style="background-image:url(img/participate/bandeau.jpg)">
 
           <h2 class="title title-list-header"> <img src="img/participate/logo-palm.png" alt="" class="logo"> <br> Préparer son séjour</h2>
         </div>
@@ -40,7 +40,7 @@
         </div>
         <section>
          <div class="contain-section participate-active">
-          <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="" class="svg">Se rendre à cannes</h3><i class="fa fa-plus svg"></i>
+          <h3 class="title-participate"> <img src="img/participate/se-rendre-a-cannes.svg" alt="" class="svg">Se rendre à cannes</h3><i class="fa fa-minus svg"></i>
           <div class="item large">
             <img src="img/participate/train.svg" alt="" class="svg-item">
             <strong class="transport">Train</strong>

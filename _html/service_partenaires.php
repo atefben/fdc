@@ -32,7 +32,7 @@
   </div>
   <section class="content-partners">
     <div class="contain-section participate-active">
-      <h3 class="title-section">Partenaires officiels</h3><i class="fa fa-plus"></i>
+      <h3 class="title-section">Partenaires officiels</h3><i class="fa fa-minus"></i>
       <div class="item-partners">
          <div class="contain-img">
           <img src="img/participate/Logo-partners1.jpg" alt="">

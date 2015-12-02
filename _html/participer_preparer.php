@@ -33,7 +33,7 @@
       <div class="contain-participate">
         <section>
          <div class="contain-section participate-active">
-          <h3 class="title-participate"> <img src="img/participate/les-differents-type-d-acces.svg" alt="" class="svg">Les différents types d'accès</h3><i class="fa fa-plus"></i>
+          <h3 class="title-participate"> <img src="img/participate/les-differents-type-d-acces.svg" alt="" class="svg">Les différents types d'accès</h3><i class="fa fa-minus"></i>
           
           <div class="contain-acces">
             <div class="imgs-acces">

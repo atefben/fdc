@@ -26,7 +26,7 @@
 
 <div id="main" class="list-article participate manual">
   <div class="bandeau-list">
-    <div class="bandeau-list-img" style="background-image:url(img/participate/manual.jpg);background-size: cover;">
+    <div class="bandeau-list-img" style="background-image:url(img/participate/manual.jpg)">
       <h2 class="title title-list-header"> <img src="img/participate/logo-palm.png" alt="" class="logo"> <br> Festival mode d'emploi</h2>
     </div>
   </div>
@@ -37,7 +37,7 @@
   </div>
   <section class="content-manual">
     <div class="contain-section participate-active">
-      <h3 class="title-section"><img src="img/participate/horaires.svg" alt="" class="logo-title svg">Horaires</h3><i class="fa fa-plus"></i>
+      <h3 class="title-section"><img src="img/participate/horaires.svg" alt="" class="logo-title svg">Horaires</h3><i class="fa fa-minus"></i>
       
       <div class="descrip-section">
         <p>
