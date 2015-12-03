@@ -461,9 +461,11 @@
 
         &.list {
           border-top: none;
+//          display: none;
           display: block;
           opacity: 0;
           visibility: hidden;
+          position: relative;
           @include transition(all 0.6s $smoothTransition);
 
           &:hover {
@@ -526,7 +528,7 @@
 
     p {
       color: #666;
-      font-size: 0.813rem; 
+      font-size: 0.813rem;
       margin: 0 0 0 65px;
     }
 
@@ -1458,6 +1460,68 @@
       }
     }
   }
+  .container{
+    .buttons{
+      .create{
+//        border-color: $gold;
+        background-image: url('../img/press/svg/creer-gold.svg');
+        background-repeat: no-repeat;
+        background-position: 15px 12px;
+        background-size: 14px;
+//        position: relative;
+      }
+      .create:hover{
+        background-color: #c8a461;
+        border-color: #c8a461;
+        color: #fff;
+      }
+      .create:after {
+        background: url("../img/press/svg/creer-white.svg") no-repeat 15px 12px;
+        background-size: 14px;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 48%;
+        top: 1px;
+        left:1px;
+//        background-color: red;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(all 0.6s $smoothTransition);
+      }
+      .export{
+        background-image: url('../img/svg/telecharger-gold.svg');
+        background-repeat: no-repeat;
+        background-position: 15px 12px;
+        background-size: 14px;
+      }
+      .export:hover{
+        background-color: #c8a461;
+        border-color: #c8a461;
+        color: #fff;
+      }
+      .export:after {
+        background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+        background-size: 14px;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 51%;
+        top: 1px;
+        right: 1px;
+//        background-color: rgba(255, 0, 0, 0.44);
+        opacity: 0;
+        visibility: hidden;
+        @include transition(all 0.6s $smoothTransition);
+      }
+      .button:hover:after {
+          opacity: 1;
+          visibility: visible;
+      }
+    }
+  }
 }
 
 
@@ -1796,9 +1860,9 @@
       background-repeat: no-repeat;
       background-size: 12px;
       padding-left: 22px;
-      padding-top: 10px;
     }
     p{
+      padding-top: 10px;
       font-size: 0.81rem;
       line-height: 18px;
       color:#666666;
@@ -1946,5 +2010,20 @@
       padding-left: 0px;
     }
 
+  }
+}
+
+
+// Press programmation // 
+
+.press-programmation{
+  .header-press{
+    .container{
+      position: relative;
+    }
+    .buttons{
+      position: absolute;
+      right: 1px;
+    }
   }
 }

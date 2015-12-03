@@ -14511,6 +14511,7 @@ article .read-later.rAlign span:after {
   display: block;
   opacity: 0;
   visibility: hidden;
+  position: relative;
   -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15336,6 +15337,66 @@ article .read-later.rAlign span:after {
 .fullcalendar #calendar #mycalendar .fc-slats tr {
   height: 40px;
 }
+.fullcalendar .container .buttons .create {
+  background-image: url("../img/press/svg/creer-gold.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 12px;
+  background-size: 14px;
+}
+.fullcalendar .container .buttons .create:hover {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  color: #fff;
+}
+.fullcalendar .container .buttons .create:after {
+  background: url("../img/press/svg/creer-white.svg") no-repeat 15px 12px;
+  background-size: 14px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 48%;
+  top: 1px;
+  left: 1px;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.fullcalendar .container .buttons .export {
+  background-image: url("../img/svg/telecharger-gold.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 12px;
+  background-size: 14px;
+}
+.fullcalendar .container .buttons .export:hover {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  color: #fff;
+}
+.fullcalendar .container .buttons .export:after {
+  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+  background-size: 14px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 51%;
+  top: 1px;
+  right: 1px;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.fullcalendar .container .buttons .button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
 
 .popin-event {
   background-color: #fff;
@@ -15632,9 +15693,9 @@ article .read-later.rAlign span:after {
   background-repeat: no-repeat;
   background-size: 12px;
   padding-left: 22px;
-  padding-top: 10px;
 }
 #popin-press .container-popin p {
+  padding-top: 10px;
   font-size: 0.81rem;
   line-height: 18px;
   color: #666666;
@@ -15774,6 +15835,14 @@ article .read-later.rAlign span:after {
 #popin-download-press table td:last-child {
   width: 97px;
   padding-left: 0px;
+}
+
+.press-programmation .header-press .container {
+  position: relative;
+}
+.press-programmation .header-press .buttons {
+  position: absolute;
+  right: 1px;
 }
 
 .seatingchart .header-press {
