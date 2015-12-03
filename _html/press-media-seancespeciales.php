@@ -81,9 +81,9 @@
                 <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons active-btn">
+                  <div class="contain-buttons">
                     <strong>Dossier de presse <span>(2)</span></strong>
-                    <div class="buttons">
+                    <div class="buttons active-btn">
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
@@ -103,7 +103,7 @@
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn buttons"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
@@ -173,9 +173,9 @@
                 <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons active-btn">
+                  <div class="contain-buttons">
                     <strong>Dossier de presse <span>(2)</span></strong>
-                    <div class="buttons">
+                    <div class="buttons active-btn">
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
@@ -195,7 +195,7 @@
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn buttons"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
@@ -265,9 +265,9 @@
                 <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons active-btn">
+                  <div class="contain-buttons">
                     <strong>Dossier de presse <span>(2)</span></strong>
-                    <div class="buttons">
+                    <div class="buttons active-btn">
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
@@ -287,7 +287,7 @@
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn buttons"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
@@ -357,9 +357,9 @@
                 <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons active-btn">
+                  <div class="contain-buttons">
                     <strong>Dossier de presse <span>(2)</span></strong>
-                    <div class="buttons">
+                    <div class="buttons active-btn">
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
@@ -379,7 +379,7 @@
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn buttons"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
@@ -449,9 +449,9 @@
                 <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons active-btn">
+                  <div class="contain-buttons">
                     <strong>Dossier de presse <span>(2)</span></strong>
-                    <div class="buttons">
+                    <div class="buttons active-btn">
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En français</a>
                       <a href="" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>En Englais</a>
                     </div>
@@ -471,7 +471,7 @@
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                      <div class="download-btns right-btn"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
+                      <div class="download-btns right-btn buttons"><a href="" class="alldl button"><img src="img/svg/cadenas.svg" alt="" class='svg'>Tout telecharger</a></div>
                     </div>
                     <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
@@ -554,7 +554,9 @@
         </div>
       </div>
     </div>
-
+    
+    <?php include('popin-lock-press.html'); ?>
+    <?php include('popin-download-press.html'); ?>
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

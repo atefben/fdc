@@ -168,7 +168,8 @@
               .buttons{
                 display: inline-block;
                 .button{
-                  margin: 0px
+                  margin: 0px;
+                  pointer-events: none;
                 }
               }
               .buttons:nth-child(3){
@@ -241,6 +242,9 @@
     font-family: "Camphor W01 Heavy";
     float: left;
     letter-spacing: .01em;
+    a{ 
+      pointer-events: none;
+    }
   }
   .block .container .container-title .number {
     color: #c29f5f;

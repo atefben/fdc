@@ -494,6 +494,8 @@
       </div>
     </div>
 
+    <?php include('popin-lock-press.html'); ?>
+    <?php include('popin-download-press.html'); ?>
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

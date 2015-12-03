@@ -526,7 +526,7 @@
 
     p {
       color: #666;
-      font-size: 0.813rem;
+      font-size: 0.813rem; 
       margin: 0 0 0 65px;
     }
 
@@ -1796,6 +1796,7 @@
       background-repeat: no-repeat;
       background-size: 12px;
       padding-left: 22px;
+      padding-top: 10px;
     }
     p{
       font-size: 0.81rem;
@@ -1842,3 +1843,108 @@
 }
 
 
+// 4. POPIN DOWNLOAD // 
+//==================//
+
+
+#popin-download-press{
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: .4s all $linear;
+  background-color: #fff;
+  width: 760px;
+  padding: 59px;
+  position: fixed;
+  top: 16%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 120;
+  height: 601px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding-top: 62px;
+  .contain-info-item{
+    padding-bottom: 17px;
+    border-bottom: 1px solid #c1c1c1;
+    margin-bottom: 20px;
+    img{
+      width: 55px;
+      height: 75px;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .contain-text{
+      width: 30%;
+      height: 75px;
+      vertical-align: top;
+      h3{
+        font-size: 0.88rem;
+        font-family: $CamphorBold;
+        line-height: 18px;
+        text-transform: uppercase;
+      }
+      span{
+        color:#c8a461;
+        font-family: $CamphorItalic;
+        font-size: 0.81rem;
+      }
+    }
+  }
+  h4{
+    font-family: $CamphorBold;
+    font-size: 0.88rem;
+    letter-spacing: .2em;
+    vertical-align: 24px;
+    text-transform: uppercase;
+    margin-top: 17px;
+    margin-bottom: 7px;
+  }
+  p{
+    color:#666666;
+    line-height: 24px;
+    font-size: 0.81rem;
+    margin-bottom: 32px;
+  }
+  strong{
+    line-height: 24px;
+    font-size: 0.81rem;
+    display: block;
+    margin-bottom: 12px;
+  }
+  table{
+    
+    td{
+      width: 238px;
+      border: 1px solid #dfdfdf;
+      box-sizing: border-box;
+      text-transform: uppercase;
+      font-size: 0.63rem;
+      font-family: $CamphorHeavy;
+      color:#999999;
+      padding-left: 19px;
+      a{
+        text-align: center;
+        width: 97px;
+        border: 0px;
+        padding-left: 12px;
+        .svg{
+          width: 9px;
+          height: 9px;
+          margin-right: 10px;
+          polygon{
+            fill:currentColor;
+          }
+        }
+      }
+
+    }
+    td:last-child{
+      width: 97px;
+      padding-left: 0px;
+    }
+
+  }
+}

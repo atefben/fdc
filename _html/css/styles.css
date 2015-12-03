@@ -15632,6 +15632,7 @@ article .read-later.rAlign span:after {
   background-repeat: no-repeat;
   background-size: 12px;
   padding-left: 22px;
+  padding-top: 10px;
 }
 #popin-press .container-popin p {
   font-size: 0.81rem;
@@ -15676,6 +15677,103 @@ article .read-later.rAlign span:after {
   border-color: #c8a461;
   color: #fff;
   background-color: #c8a461;
+}
+
+#popin-download-press {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-color: #fff;
+  width: 760px;
+  padding: 59px;
+  position: fixed;
+  top: 16%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 120;
+  height: 601px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding-top: 62px;
+}
+#popin-download-press .contain-info-item {
+  padding-bottom: 17px;
+  border-bottom: 1px solid #c1c1c1;
+  margin-bottom: 20px;
+}
+#popin-download-press .contain-info-item img {
+  width: 55px;
+  height: 75px;
+  display: inline-block;
+  margin-right: 12px;
+}
+#popin-download-press .contain-info-item .contain-text {
+  width: 30%;
+  height: 75px;
+  vertical-align: top;
+}
+#popin-download-press .contain-info-item .contain-text h3 {
+  font-size: 0.88rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+#popin-download-press .contain-info-item .contain-text span {
+  color: #c8a461;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: 0.81rem;
+}
+#popin-download-press h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: .2em;
+  vertical-align: 24px;
+  text-transform: uppercase;
+  margin-top: 17px;
+  margin-bottom: 7px;
+}
+#popin-download-press p {
+  color: #666666;
+  line-height: 24px;
+  font-size: 0.81rem;
+  margin-bottom: 32px;
+}
+#popin-download-press strong {
+  line-height: 24px;
+  font-size: 0.81rem;
+  display: block;
+  margin-bottom: 12px;
+}
+#popin-download-press table td {
+  width: 238px;
+  border: 1px solid #dfdfdf;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-size: 0.63rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  color: #999999;
+  padding-left: 19px;
+}
+#popin-download-press table td a {
+  text-align: center;
+  width: 97px;
+  border: 0px;
+  padding-left: 12px;
+}
+#popin-download-press table td a .svg {
+  width: 9px;
+  height: 9px;
+  margin-right: 10px;
+}
+#popin-download-press table td a .svg polygon {
+  fill: currentColor;
+}
+#popin-download-press table td:last-child {
+  width: 97px;
+  padding-left: 0px;
 }
 
 .seatingchart .header-press {
@@ -16614,6 +16712,7 @@ article .read-later.rAlign span:after {
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
   margin: 0px;
+  pointer-events: none;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons:nth-child(3) {
   margin-left: 68px;
@@ -16676,6 +16775,9 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Heavy";
   float: left;
   letter-spacing: .01em;
+}
+.press-media .block .container .container-title .right-btn a {
+  pointer-events: none;
 }
 .press-media .block .container .container-title .number {
   color: #c29f5f;
