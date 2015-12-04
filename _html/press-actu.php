@@ -42,11 +42,11 @@
           <div id="date" class="filter">
             <span class="label">Années :</span>
             <span class="select">
-              <span class="active" data-filter="2016">2016</span>
-              <span data-filter="2015">2015</span>
-              <span data-filter="2014">2014</span>
-              <span data-filter="2013">2013</span>
-              <span data-filter="2012">2012</span>
+              <span class="active" data-filter="d2016">2016</span>
+              <span data-filter="d2015">2015</span>
+              <span data-filter="d2014">2014</span>
+              <span data-filter="d2013">2013</span>
+              <span data-filter="d2012">2012</span>
             </span>
           </div>
           <div id="type" class="filter">
@@ -65,7 +65,7 @@
               <span data-filter="steps">Montée des marches</span>
             </span>
           </div>
-          <div id="theme" class="filter">
+          <div id="format" class="filter">
             <span class="label">Formats :</span>
             <span class="select">
               <span class="active" data-filter="all">Tous</span>
@@ -78,7 +78,7 @@
         </div>
       <div id="gridAudios" class="grid-wrapper" data-type="articles">
         <div class="grid-sizer"></div>
-        <div class="item theme1 date1 date theme communique">
+        <div class="item all communique">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu01.jpg' /></a> </div>
             <div class="info">
@@ -87,7 +87,7 @@
             </div>
           </article>
         </div>
-        <div class="item 2015 ">
+        <div class="item all d2015 communique photos press">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu02.jpg' /></a> </div>
             <div class="info">
@@ -96,7 +96,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date article">
+        <div class="item all d2015 steps communique">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu03.jpg' /></a> </div>
             <div class="info">
@@ -105,7 +105,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme  communique">
+        <div class="item all d2016 press communique">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -114,7 +114,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme communique">
+        <div class="item all d2013 press communique">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu04.jpg' /></a> </div>
             <div class="info">
@@ -123,7 +123,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item all d2016 audios steps infos">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu06.jpg' /></a> </div>
             <div class="info">
@@ -132,7 +132,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item all d2015 article press infos">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -141,7 +141,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date theme article">
+        <div class="item all d2014 article steps infos">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -150,7 +150,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date article">
+        <div class="item all d2016 audios infos steps">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -159,7 +159,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 theme article">
+        <div class="item all d2015 article infos steps">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -168,7 +168,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 article">
+        <div class="item all d2016 article infos steps">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -177,7 +177,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item all d2016 article infos steps">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -186,7 +186,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item all d2016 article infos steps">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -195,7 +195,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item all d2016 videos infos steps">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -204,7 +204,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item all d2016 videos infos steps">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -213,7 +213,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item all d201 videos infos steps">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -222,7 +222,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article">
+        <div class="item all d2016 article infos steps">
           <article class="article">
            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
