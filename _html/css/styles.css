@@ -11368,6 +11368,9 @@ article .read-later.rAlign span:after {
 .list-article {
   background-color: #141414 !important;
 }
+.list-article h3 {
+  color: #fff;
+}
 .list-article .bandeau-list {
   background-color: #1b1b1b;
 }
