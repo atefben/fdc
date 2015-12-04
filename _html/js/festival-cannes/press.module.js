@@ -617,18 +617,16 @@ $(document).ready(function() {
         $('.buttons:not(".active-btn")').on('click',function () {
           if ($('#popin-press').hasClass('visible-popin')) {
             $('#popin-press').removeClass('visible-popin');
-            $('#main').prepend('<div class="overlay-div"></div>');
+
             $("#main").removeClass('overlay-popin');
             $('footer').removeClass('overlay');
           } else {
-            $('.overlay-div').remove();
             $('#popin-press').addClass("visible-popin");
             $("#main").addClass('overlay-popin');
           }
         });
 
         $(document).keyup(function (e) {
-          //        if (e.keyCode == 13) $('.save').click();
           if (e.keyCode == 27) {
             $('#popin-press').removeClass('visible-popin');
             $("#main").removeClass('overlay-popin');
@@ -637,13 +635,26 @@ $(document).ready(function() {
           }
         });
       }
-  //
-  //    $(document).on('click', ':not(.visible-popin)', function (e) {
-  //      console.log(e);
-  //      $('#popin-press').removeClass('visible-popin');
-  //      $("#main").removeClass('overlay-popin');
-  //      $('footer').removeClass('overlay');
-  //    });
+
+      $(document).on('click', function (e) {
+
+        var $element= $(e.target);
+        if($element.hasClass('visible-popin')){
+   
+        }else{
+          var $isPopin = $element.closest('.visible-popin');
+          var isButton = $element.hasClass('buttons');
+         
+          if($isPopin.length || isButton){
+           
+          }else{
+              $('#popin-press').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+
+          }
+        }
+      });
 
     }
 
@@ -655,11 +666,11 @@ $(document).ready(function() {
           $('.buttons.active-btn').on('click',function () {
             if ($('#popin-download-press').hasClass('visible-popin')) {
               $('#popin-download-press').removeClass('visible-popin');
-              $('#main').prepend('<div class="overlay-div"></div>');
+
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
             } else {
-              $('.overlay-div').remove();
+
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
             }
@@ -674,20 +685,38 @@ $(document).ready(function() {
               $('.overlay-div').remove();
             }
           });
-        }
 
+          $(document).on('click', function (e) {
+
+            var $element= $(e.target);
+            if($element.hasClass('visible-popin')){
+
+          }else{
+            var $isPopin = $element.closest('.visible-popin');
+            var isButton = $element.hasClass('buttons');
+
+          if($isPopin.length || isButton){
+
+          }else{
+            $('#popin-download-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          }
+          }
+          }); 
+        }
     }
+    
     //FOR ALL PRESS PAGE//
-        if (!$('.press.lock').length) {
+        if (!$('.press').length) {
         if ($('#popin-download-press').length) {
           $('.buttons').on('click',function () {
             if ($('#popin-download-press').hasClass('visible-popin')) {
               $('#popin-download-press').removeClass('visible-popin');
-              $('#main').prepend('<div class="overlay-div"></div>');
+ 
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
-            } else {
-              $('.overlay-div').remove();
+
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
             }
@@ -702,9 +731,56 @@ $(document).ready(function() {
               $('.overlay-div').remove();
             }
           });
+          
+           $(document).on('click', function (e) {
+
+            var $element= $(e.target);
+            if($element.hasClass('visible-popin')){
+
+          }else{
+            var $isPopin = $element.closest('.visible-popin');
+            var isButton = $element.hasClass('buttons');
+
+          if($isPopin.length || isButton){
+
+          }else{
+            $('#popin-download-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          }
+          }
+          }); 
+          
         }
     }
 
+  }
+  
+  // POPIN CALENDAR CREAT EVENT // 
+
+  if($('#create-event-pop').length){
+        $('.create').on('click',function () {
+            if ($('#create-event-pop').hasClass('visible-popin')) {
+              $('#create-event-pop').removeClass('visible-popin');
+//              $("#main").removeClass('overlay-popin');
+//              $('footer').removeClass('overlay');
+            } else {
+              $('#create-event-pop').addClass("visible-popin");
+//              $("#main").addClass('overlay-popin');
+            }
+          });
+
+          $(document).keyup(function (e) {
+            //        if (e.keyCode == 13) $('.save').click();
+            if (e.keyCode == 27) {
+              $('#create-event-pop').removeClass('visible-popin');
+//              $("#main").removeClass('overlay-popin');
+//              $('footer').removeClass('overlay');
+            }
+          });
+           $('.btn-close').on('click',function (){
+             $('#create-event-pop').removeClass('visible-popin');
+           });
   }
   
   // Navigation tab press page (accreditation)

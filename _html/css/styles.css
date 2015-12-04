@@ -14944,7 +14944,8 @@ article .read-later.rAlign span:after {
   padding: 1px 15px 0 15px;
   height: 38px;
   line-height: 38px;
-  margin: 16px 0 0 25px;
+  margin: 16px 0 0 0;
+  float: right;
 }
 .press .stats .container {
   padding: 40px 0;
@@ -15336,6 +15337,9 @@ article .read-later.rAlign span:after {
 }
 .fullcalendar #calendar #mycalendar .fc-slats tr {
   height: 40px;
+}
+.fullcalendar .container .buttons .button:first-child {
+  border-right: 0px solid #fff;
 }
 .fullcalendar .container .buttons .create {
   background-image: url("../img/press/svg/creer-gold.svg");
@@ -15835,6 +15839,120 @@ article .read-later.rAlign span:after {
 #popin-download-press table td:last-child {
   width: 97px;
   padding-left: 0px;
+}
+
+#create-event-pop {
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 150px;
+  z-index: 1;
+  border-top: 1px solid #ccc;
+  padding-top: 47px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#create-event-pop .contain-btn .btn-close {
+  background-image: url("../img/svg/case-close-or.svg");
+  height: 68px;
+  width: 68px;
+  position: absolute;
+  right: 37px;
+  top: 38px;
+  background-repeat: no-repeat;
+  background-size: 68px;
+}
+#create-event-pop .contain-btn .btn-close:hover {
+  background-image: url("../img/svg/case-close.svg");
+}
+#create-event-pop .container {
+  width: 561px;
+  margin: 0 auto;
+}
+#create-event-pop .container .button {
+  background-color: #fff;
+  border-color: #c8a461;
+  padding: 0px 33px;
+  text-align: center;
+}
+#create-event-pop .container .button:hover {
+  background-color: #c8a461;
+  color: #fff;
+}
+#create-event-pop .container h3 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #c8a461;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  line-height: 24px;
+  font-size: 0.88rem;
+  padding-bottom: 4px;
+}
+#create-event-pop .container p {
+  color: #666666;
+  font-size: 0.88rem;
+  line-height: 26px;
+}
+#create-event-pop .container form {
+  padding-top: 23px;
+  width: 561px;
+}
+#create-event-pop .container form label {
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  display: block;
+  margin-top: 15px;
+}
+#create-event-pop .container form input {
+  margin: 12px 0px;
+  font-size: 0.88rem;
+}
+#create-event-pop .container form input[type="submit"] {
+  margin-bottom: 41px;
+}
+#create-event-pop .container form input[type="text"] {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 537px;
+  height: 46px;
+  color: #666;
+}
+#create-event-pop .container form .time {
+  display: inline-block;
+  width: 268px;
+}
+#create-event-pop .container form .time input[type='text'] {
+  width: 96px;
+  height: 46px;
+  text-align: center;
+}
+#create-event-pop .container form .time .pictodate {
+  width: 51px;
+  height: 50px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin: 12px 0px;
+  vertical-align: bottom;
+  border-left: 0px solid #fff;
+  background-image: url("../img/press/svg/calendar.svg");
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: 14px;
+}
+#create-event-pop .container form .time .hours {
+  width: 64px !important;
+  height: 46px;
+  text-align: center;
+  margin-left: 8px;
+}
+#create-event-pop .container form .first {
+  margin-right: 21px;
 }
 
 .press-programmation .header-press .container {
