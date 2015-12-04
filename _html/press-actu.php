@@ -78,7 +78,7 @@
         </div>
       <div id="gridAudios" class="grid-wrapper" data-type="articles">
         <div class="grid-sizer"></div>
-        <div class="item theme1 date1 date theme  communique">
+        <div class="item theme1 date1 date theme communique">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu01.jpg' /></a> </div>
             <div class="info">
@@ -87,7 +87,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item 2015 ">
           <article class="article">
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu02.jpg' /></a> </div>
             <div class="info">

@@ -15700,7 +15700,7 @@ article .read-later.rAlign span:after {
   margin-left: auto;
   z-index: 120;
   height: 252px;
-  overflow-y: scroll;
+  overflow-y: hidden;
   box-sizing: border-box;
 }
 #popin-press .container-popin strong {
@@ -16918,7 +16918,6 @@ article .read-later.rAlign span:after {
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
   margin: 0px;
-  pointer-events: none;
   float: none;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons:nth-child(3) {

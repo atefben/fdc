@@ -50,7 +50,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -59,7 +59,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -68,7 +68,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -77,7 +77,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -86,7 +86,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -95,7 +95,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -104,7 +104,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -113,7 +113,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -122,7 +122,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -131,7 +131,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -140,7 +140,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -149,7 +149,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -158,7 +158,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -167,7 +167,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -176,7 +176,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -185,7 +185,7 @@
             <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -194,7 +194,7 @@
            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>

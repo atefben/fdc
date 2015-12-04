@@ -624,6 +624,7 @@ $(document).ready(function() {
             $('#popin-press').addClass("visible-popin");
             $("#main").addClass('overlay-popin');
           }
+           return false;
         });
 
         $(document).keyup(function (e) {
@@ -673,7 +674,10 @@ $(document).ready(function() {
 
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
+              
             }
+            return false;
+          
           });
 
           $(document).keyup(function (e) {
@@ -720,6 +724,7 @@ $(document).ready(function() {
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
             }
+             return false;
           });
 
           $(document).keyup(function (e) {
