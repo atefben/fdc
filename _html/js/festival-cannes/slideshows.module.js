@@ -40,6 +40,7 @@ function initSlideshows() {
 
   // init slideshow
   if($('.slideshow').length) {
+
     var slideshow = $('.slideshow .images').Chocolat({
       imageSize: 'cover',
       fullScreen: false,
@@ -58,10 +59,10 @@ function initSlideshows() {
 
     slideshows.push(slideshow);
   }
-
+  
 }
 
-// close slideshow on click
+// close slideshow on click 
 $('body').on('click', '.chocolat-close', function(e){
 
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');

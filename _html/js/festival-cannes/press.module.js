@@ -565,6 +565,148 @@ $(document).ready(function() {
   });
 
   
+  // EVENT AJAX COMMUNIQUE AND INFORMATION // 
+  
+    if ($('.press').length) {
+    
+    popinInit();
+
+    var $container = $('#gridAudios'),
+      $grid;
+
+    $grid = $('#gridAudios').imagesLoaded(function () {
+      // init Isotope after all images have loaded
+      setGrid($grid, $('#gridAudios'), true);
+      $grid.isotope({
+        itemSelector: '.item',
+        percentPosition: true,
+        layoutMode: 'packery',
+        packery: {
+          columnWidth: '.grid-sizer'
+        }
+      });
+
+      $grid.isotope('layout');
+    });
+    $('.read-more').on('click', function (e) {
+      e.preventDefault();
+	     $(this).hide();
+      $.ajax({
+        type: "GET",
+        dataType: "html",
+        cache: false,
+        url: 'load-communique.php' /* TODO DEV : context URL */,
+        success: function (data) {
+          var $data = $(data).find('.gridelement');
+          var $container = $('#gridAudios'),
+              $grid;
+          $grid = $container.imagesLoaded(function () {
+				    setGrid($grid, $data, false);
+          });
+        }
+      });
+    });
+  }
+  
+  // POPIN LOCK //
+  
+  function popinInit(){
+    
+    if ($('.press.lock').length) {
+      if ($('#popin-press').length) {
+        $('.buttons:not(".active-btn")').on('click',function () {
+          if ($('#popin-press').hasClass('visible-popin')) {
+            $('#popin-press').removeClass('visible-popin');
+            $('#main').prepend('<div class="overlay-div"></div>');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          } else {
+            $('.overlay-div').remove();
+            $('#popin-press').addClass("visible-popin");
+            $("#main").addClass('overlay-popin');
+          }
+        });
+
+        $(document).keyup(function (e) {
+          //        if (e.keyCode == 13) $('.save').click();
+          if (e.keyCode == 27) {
+            $('#popin-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+            $('.overlay-div').remove();
+          }
+        });
+      }
+  //
+  //    $(document).on('click', ':not(.visible-popin)', function (e) {
+  //      console.log(e);
+  //      $('#popin-press').removeClass('visible-popin');
+  //      $("#main").removeClass('overlay-popin');
+  //      $('footer').removeClass('overlay');
+  //    });
+
+    }
+
+    // POPIN DOWNLOAD //
+
+    //ONLY FOR MEDIA//
+      if ($('.press.lock').length) {
+        if ($('#popin-download-press').length) {
+          $('.buttons.active-btn').on('click',function () {
+            if ($('#popin-download-press').hasClass('visible-popin')) {
+              $('#popin-download-press').removeClass('visible-popin');
+              $('#main').prepend('<div class="overlay-div"></div>');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+            } else {
+              $('.overlay-div').remove();
+              $('#popin-download-press').addClass("visible-popin");
+              $("#main").addClass('overlay-popin');
+            }
+          });
+
+          $(document).keyup(function (e) {
+            //        if (e.keyCode == 13) $('.save').click();
+            if (e.keyCode == 27) {
+              $('#popin-download-press').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+              $('.overlay-div').remove();
+            }
+          });
+        }
+
+    }
+    //FOR ALL PRESS PAGE//
+        if (!$('.press.lock').length) {
+        if ($('#popin-download-press').length) {
+          $('.buttons').on('click',function () {
+            if ($('#popin-download-press').hasClass('visible-popin')) {
+              $('#popin-download-press').removeClass('visible-popin');
+              $('#main').prepend('<div class="overlay-div"></div>');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+            } else {
+              $('.overlay-div').remove();
+              $('#popin-download-press').addClass("visible-popin");
+              $("#main").addClass('overlay-popin');
+            }
+          });
+
+          $(document).keyup(function (e) {
+            //        if (e.keyCode == 13) $('.save').click();
+            if (e.keyCode == 27) {
+              $('#popin-download-press').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+              $('.overlay-div').remove();
+            }
+          });
+        }
+    }
+
+  }
+  
   // Navigation tab press page (accreditation)
   
   if($('#accreditation').length){
@@ -579,7 +721,7 @@ $(document).ready(function() {
         $('.nav-accre table').find('.active').removeClass('active');
         $(this).addClass('active');
              
-        sectionIsShow.animate({opacity:0},500,function(){
+          sectionIsShow.animate({opacity:0},500,function(){
           sectionIsShow.css('display','none');
           sectionIsShow.removeClass('active');
 
@@ -593,21 +735,24 @@ $(document).ready(function() {
     }
     });
   }
+  
   //Mediatheque nav 
       if($('.press-media').length){
-        var $info = $('.info, .media, .plus');
-        $info.click(function(){
-        var $active = $('.press-media .nav-container .table .line').find('.active');
-        var $parent = $(this).closest(".container");
-          if(!$parent.hasClass('active')){
-              $active.removeClass('active');
-              $parent.addClass('active');
-          }else{
-              $active.removeClass('active');
-          }
-        });
+        menuMedia();
+        initSlideshows();
+        if($('.connected').length){
+          var imgs = $('.connected').find('img[src="img/svg/cadenas.svg"]');
+          console.log(imgs);
+          imgs.attr('src','img/press/svg/telecharger.svg');
+          //change img if connected 
+          imgs.each(function(){
+            $(this).attr('src','img/press/svg/telecharger.svg');
+          })
+        }
+        svgImg();
       }
-  //madiatheque AJAX
+  
+  //mediatheque AJAX
       function ajaxEvent(){
       $('.press-media .nav-mediapress td').on('click',function(e){
         e.preventDefault();
@@ -618,14 +763,63 @@ $(document).ready(function() {
             $( ".nav-container" ).html( $(data).find('.nav-container') );
             history.pushState('',"titre test", urlPath);
             ajaxEvent();
+            menuMedia();
+            svgImg();
+            initSlideshows();
+            popinInit()
           });
           $('.press-media .nav-mediapress').find('td.active').removeClass('active');
           $(this).addClass('active');
         }
       });
     }
-    ajaxEvent();
   
+  //fin chocolat js 
+    function menuMedia(){
+      var $info = $('.info, .media, .plus');
+      $info.click(function(){
+      var $active = $('.press-media .nav-container .table .line').find('.active');
+      var $parent = $(this).closest(".container");
+        if(!$parent.hasClass('active')){
+            $active.removeClass('active');
+            $parent.addClass('active');
+        }else{
+            $active.removeClass('active');
+        }
+      });
+    }
+  
+    function svgImg(){
+                jQuery('img.svg').each(function(){
+          var $img = jQuery(this);
+          var imgID = $img.attr('id');
+          var imgClass = $img.attr('class');
+          var imgURL = $img.attr('src');
+
+          jQuery.get(imgURL, function(data) {
+              // Get the SVG tag, ignore the rest
+              var $svg = jQuery(data).find('svg');
+
+              // Add replaced image's ID to the new SVG
+              if(typeof imgID !== 'undefined') {
+                  $svg = $svg.attr('id', imgID);
+              }
+              // Add replaced image's classes to the new SVG
+              if(typeof imgClass !== 'undefined') {
+                  $svg = $svg.attr('class', imgClass+' replaced-svg');
+              }
+
+              // Remove any invalid XML tags as per http://validator.w3.org
+              $svg = $svg.removeAttr('xmlns:a');
+
+              // Replace image with new SVG
+              $img.replaceWith($svg);
+
+          }, 'xml');
+
+      });
+    }
+    ajaxEvent();
   //Grid
       if($('.gridPressDownload').length){
         $grid = $('.gridPressDownload').imagesLoaded(function() {
@@ -638,5 +832,60 @@ $(document).ready(function() {
           });
         });
     }
+  
+  //downloding nav sticky 
+  if($('.downloading-press').length){
+        //Scroll
+      $(window).on('scroll', function() {
+        
+        var s            = $(window).scrollTop(),
+            h            = $("#main").height()-300,
+            affiche      = $('#affiche-officielle').offset().top-300,
+            signature    = $('#signature').offset().top-300,
+            animation    = $('#animation').offset().top-300,
+            photosInst   = $('#photos-institutionnelles').offset().top-300,
+            dossierPress = $('#dossier-presse').offset().top-300;
+          
+        if(s > 180 ){
+          $('.downloading-nav').addClass('sticky');
+          $(".downloading-nav").css({position: "fixed",top:90, width: "100%", zIndex:5});
+        } else if (s < 180){
+          $(".downloading-nav").css({position: "relative",top:1, zIndex:1});
+        }
+        
+        if( s > affiche && s < signature){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#affiche-officielle"]').addClass('active');
+
+        }else if( s > signature && s< animation){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#signature"]').addClass('active');
+
+        }else if( s > animation && s< photosInst){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#animation"]').addClass('active');
+
+        }else if( s > photosInst && s< dossierPress){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#photos-institutionnelles"]').addClass('active');
+        }else if( s > dossierPress){
+          $('.downloading-nav').find('.active').removeClass('active');
+          $('a[href="#dossier-presse"]').addClass('active');
+        }
+        
+      });
+    
+    $('a[href^="#"]').click(function(){
+      var the_id = $(this).attr("href");
+
+      $('html, body').animate({
+        scrollTop:$(the_id).offset().top-300
+      }, 'slow');
+      return false;
+    });
+  
+  }
+  
+  
   
 });

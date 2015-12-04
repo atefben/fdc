@@ -104,19 +104,6 @@
   width: 960px;
   height: calc(960px*9/16);
 
-  &.state-init {
-    .control-bar {
-      opacity: 0;
-      @include transform(translateY(100%));
-    }
-
-    &:hover {
-      .control-bar {
-        @include transform(translateY(100%));
-      }
-    }
-  }
-
   button {
     background: none;
     border: 0;
@@ -134,16 +121,13 @@
     z-index: 1;
   }
 
+  .top-bar {
+    position: absolute;
+  }
+
   .infos-bar {
     position: relative;
     z-index: 5;
-  }
-
-  &:hover {
-    .control-bar {
-      @include transform(translate(0,0));
-      transition: all .3s ease-in-out;
-    }
   }
 
   .control-bar {
@@ -313,6 +297,26 @@
   &:-webkit-full-screen {
     .control-bar {
       background: blue;
+    }
+  }
+  
+  &.state-init {
+    .control-bar {
+      opacity: 0;
+      @include transform(translateY(100%));
+    }
+
+    &:hover {
+      .control-bar {
+        @include transform(translateY(100%));
+      }
+    }
+  }
+
+  &:hover {
+    .control-bar {
+      @include transform(translate(0,0));
+      transition: all .3s ease-in-out;
     }
   }
 }

@@ -18,6 +18,13 @@ $(document).ready(function() {
         $('.nav-movie').addClass('sticky');
         $(".nav-movie").css({position: "fixed",top:137});
         
+        if($('.nav-movie').length){
+            $('.nav-list.sub-nav-list').removeClass('sticky');
+            $(".sub-nav-list").css({position: "relative",top:1});
+            $('.nav-movie').addClass('sticky');
+            $(".nav-movie").css({position: "fixed",top:90});
+        }
+        
       } else if (s < 470){
      
         $(".nav-movie").css({position: "relative",top:1});
@@ -33,8 +40,11 @@ $(document).ready(function() {
         if($(this).is(':not(.active)')) {
           var urlPath = $(this).attr('href');
           $.get(urlPath, function(data){
+            
             $( ".container-list" ).html( $(data).find('.container-list') );
             $( ".bandeau-list-footer" ).html( $(data).find('.bandeau-list-footer') );
+            $( ".bandeau-head" ).html( $(data).find('.bandeau-head') );
+            
             history.pushState('',"titre test", urlPath);
             $grid = $('#gridFilmSelection').imagesLoaded(function() {
               $grid.isotope({

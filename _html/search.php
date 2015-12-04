@@ -30,9 +30,9 @@
             <li><a href="#" class="active all">Tout<span>0</span></a></li>
             <li><a href="#" data-ajax="searchArtists.html" class="artists ajax">Artistes<span>0</span></a></li>
             <li><a href="#" data-ajax="searchFilms.html" class="films ajax">Films<span>0</span></a></li>
-            <li><a href="#" data-ajax="searchMedias.html" class="medias ajax">Medias<span>0</span></a></li>
             <li><a href="#" data-ajax="searchNews.html" class="news ajax">Actualités<span>0</span></a></li>
             <li><a href="#" data-ajax="searchCommuniques.html" class="communiques ajax">Communiqués<span>0</span></a></li>
+            <li><a href="#" data-ajax="searchMedias.html" class="medias ajax">Medias<span>0</span></a></li>
             <li><a href="#" data-ajax="searchEvents.html" class="events ajax">évènements<span>0</span></a></li>
             <li><a href="#" data-ajax="searchParticipate.html" class="participate ajax">Participer<span>0</span></a></li>
           </ul>

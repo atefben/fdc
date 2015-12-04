@@ -26,8 +26,8 @@
 
     <div id="main" class="list-article loading">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);background-size: cover;">
-               <h2 class="title title-list-header">Caméra d'or</h2>
+           <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(img/films/cover-bandeau-push.jpg)">
+               <h2 class="title title-list-header vCenterKid">Caméra d'or</h2>
            </div>
       </div>
       <div class="container container-list">
@@ -79,7 +79,7 @@
                 </div>
                </div>
             </div>
-            </article>            
+            </article>
             <article style="background-image:url(img/films/film-hover-cdo4.jpg)">
                 <div class="bck-hover">
                    <div class="contain_item">
@@ -94,14 +94,14 @@
             </article>
         </section>
       </div>
-      <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
+      <div class="bandeau-list push-footer vCenter">
+           <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
                <h2 class="title title-list-header">Cinema de la plage</h2>
                <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
-
       </div>
     </div>
+    
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

@@ -25,14 +25,14 @@
   <?php include('header.html'); ?>
 
 <div id="main" class="list-article participate partners">
-  <div class="bandeau-list">
-    <div class="bandeau-list-img" style="background-image:url(img/participate/bandeau3.jpg);background-size: cover;">
+  <div class="bandeau-list vCenter">
+    <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/bandeau3.jpg);background-size: cover;">
       <h2 class="title title-list-header"> <img src="img/participate/Handshake.png" alt="" class="logo"> <br> Partenaires</h2>
     </div>
   </div>
   <section class="content-partners">
     <div class="contain-section participate-active">
-      <h3 class="title-section">Partenaires officiels</h3><i class="fa fa-plus"></i>
+      <h3 class="title-section">Partenaires officiels</h3><i class="fa fa-minus"></i>
       <div class="item-partners">
          <div class="contain-img">
           <img src="img/participate/Logo-partners1.jpg" alt="">

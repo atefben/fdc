@@ -41,15 +41,15 @@ de ces visuels n’est autorisée.</span>
       </div>
       <div class="downloading-nav">
         <ul>
-          <li><a href="">Affiche officielle</a></li>
-          <li><a href="">signatures</a></li>
-          <li><a href="">animation</a></li>
-          <li><a href="">photos institutionnelles</a></li>
-          <li><a href="">dossier de presse</a></li>
+          <li><a href="#affiche-officielle" class="ajax active">Affiche officielle</a></li>
+          <li><a href="#signature" class="ajax">signatures</a></li>
+          <li><a href="#animation" class="ajax">animation</a></li>
+          <li><a href="#photos-institutionnelles" class="ajax">photos institutionnelles</a></li>
+          <li><a href="#dossier-presse" class="ajax">dossier de presse</a></li>
         </ul>
       </div>
       <div class="wrapper">
-        <div class="affiche">
+        <div class="affiche" id="affiche-officielle">
           <div class="container">
             <h3 class="title-press">Affiche officielle</h3>
             <div class="portrait">
@@ -72,7 +72,7 @@ de ces visuels n’est autorisée.</span>
             </div>
           </div>
         </div>
-        <div class="signature block">
+        <div class="signature block" id="signature">
           <div class="container">
             <h3 class="title-press">Signatures</h3>
             <div class="imgs-container first">
@@ -89,8 +89,8 @@ de ces visuels n’est autorisée.</span>
                   <li>Bannière verticale 120x600 px</li>
                 </ul>
               </div>
-              <div class="button">
-                <a href="#" class="download">Tout télécharger</a>
+              <div class="buttons">
+                <a href="#" class=" button">Tout télécharger</a>
               </div>
             </div>
             <div class="imgs-container">
@@ -106,8 +106,8 @@ de ces visuels n’est autorisée.</span>
                   <li>Bannière verticale 160x600 px</li>
                 </ul>
               </div>
-              <div class="button">
-                <a href="#" class="download">Tout télécharger</a>
+              <div class="buttons">
+                <a href="#" class=" button">Tout télécharger</a>
               </div>
             </div>
             <div class="imgs-container last">
@@ -124,13 +124,13 @@ de ces visuels n’est autorisée.</span>
                   <li>Bannière verticale 120x600 px</li>
                 </ul>
               </div>
-              <div class="button">
-                <a href="#" class="download">Tout télécharger</a>
+              <div class="buttons">
+                <a href="#" class=" button">Tout télécharger</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="animation block">
+        <div class="animation block" id='animation'>
           <div class="container">
           <h3 class="title-press">animation</h3>
           <div class="contain-player">
@@ -139,20 +139,20 @@ de ces visuels n’est autorisée.</span>
            </div>
             <span class="caption">© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos<br>
 Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thème musical du Festival, Le Carnaval des animaux de Camille Saint-Saëns, avec un arrangement imaginé par deux musiciens suédois, Patrik Andersson et Andreas Söderström.</span>
-             <div class="download-btns">
-                <a href="#" class="download mov extention">.MOV</a>
-                <a href="#" class="download gif extention">.GIF</a>
+             <div class="buttons">
+                <a href="#" class=" mov extention button">.MOV</a>
+                <a href="#" class=" gif extention button">.GIF</a>
               </div>
           </div>
           </div>
         </div>
-        <div class="photos block">
+        <div class="photos block" id='photos-institutionnelles'>
           <div class="container">
           <div class="container-title">
             <h3 class="title-press">Photos institutionnelles <span class="number">(22)</span></h3>
-          <div class="download-btns right-btn"><a href="" class="alldl button">Tout telecharger</a></div>
+          <div class="right-btn buttons"><a href="" class="alldl button">Tout telecharger</a></div>
           </div>
-          <div class="gridPressDownload" class="grid-wrapper">
+          <div class="gridPressDownload grid-wrapper">
             <div class="grid-sizer"></div>
               <div class="item">
                 <a href=" ">
@@ -202,23 +202,23 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
             </div>
           </div>
         </div>
-        <div class="dossier block">
+        <div class="dossier block" id='dossier-presse'>
           <div class="container">
           <h3 class="title-press">Dossier de presse</h3>
           <div class="contain-dp">
-            <div class="button">
-              <a href="#" class="download">Dossier de presse</a>
+            <div class="buttons">
+              <a href="#" class="button">Dossier de presse</a>
             </div>
             <p class="infos"><strong>Mise à jour : </strong> 19.05.15 . 12:30</p>
           </div>
           <div class="contain-dp">
-            <div class="button">
-              <a href="#" class="download">Liste des attachés de presse</a>
+            <div class="buttons">
+              <a href="#" class="button">Liste des attachés de presse</a>
             </div>
             <p class="infos"><strong>Mise à jour : </strong> 19.05.15 . 12:30</p>
           </div>
           <div class="contain-dp">
-           <div class="btns">
+           <div class="buttons">
               <div class="button large">
                 <a href="#" class="download ">Horaire des projections (presse)</a>
               </div>
@@ -253,7 +253,10 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
         </div>
       </div>
     </div>
+    <!-- POPIN -->
+    <?php include('popin-lock-press.html'); ?>
 
+    <!-- fin POPIN -->
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

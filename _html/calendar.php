@@ -31,8 +31,8 @@
         <div class="container">
           <h2>Mon agenda</h2>
           <div class="buttons">
-            <a href="#" class="button">Créer un évenement</a>
-            <a href="#" class="button">Exporter mon agenda</a>
+            <a href="#" class="button create">Créer un évenement</a>
+            <a href="#" class="button export">Exporter mon agenda</a>
           </div>
         </div>
       </div>

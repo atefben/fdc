@@ -24,7 +24,7 @@
 
     <div id="main" class="webtv webtv-ba loading">
      <div class="bandeau">
-				<div id="live">
+				<div id="live" style="background-image:url(http://dummyimage.com/1920x450/666666/fff&text=+)">
 					<div class="vCenter">
 						<div class="vCenterKid">
 							<a href="#" class="play"></a>

@@ -32,15 +32,13 @@ class FilmFilmRepository extends EntityRepository
 
     public function getApiFilm($id, $festival)
     {
-        $query = $this->createQueryBuilder('f')
+        return $this->createQueryBuilder('f')
             ->where('f.festival = :festival')
             ->andWhere('f.id = :id')
             ->setParameter('festival', $festival)
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult();
-
-        return $query;
     }
 
     public function getApiFilmTrailers($festival, $dateTime, $locale)

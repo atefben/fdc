@@ -3,7 +3,7 @@ sonata_admin:
     security:
         handler: sonata.admin.security.handler.acl
         information:
-            WRITER:    [VIEW, LIST, CREATE]
+            WRITER:    [VIEW, LIST, CREATE, EDIT]
             EDITOR: [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE]
             TRANSLATOR: [VIEW, EDIT, EXPORT]
             ADMIN:    [MASTER]

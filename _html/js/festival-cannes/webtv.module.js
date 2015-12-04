@@ -81,7 +81,9 @@ if($('.webtv-ba-video').length){
         
 //        $.get($(this).data('url'), function(data){
         $.get(urlPath, function(data){
-            $( ".content-webtv" ).html( $(data).find('.content-webtv') );
+          
+          $( ".content-webtv" ).html( $(data).find('.content-webtv') );
+          $('#live').html( $(data).find('#live') );
           history.pushState('',"titre test", urlPath);
             $grid = $('#gridWebtv').imagesLoaded(function() {
               $grid.isotope({

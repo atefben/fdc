@@ -26,8 +26,10 @@
 
     <div id="main" class="list-article films-list loading cannes-classic selection-officielle">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
-               <h2 class="title title-list-header">Selection officielle</h2>
+           <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(http://dummyimage.com/1920x450/ffd373/fff&text=+);">
+              <div class="vCenterKid"> 
+               <h2 class="title title-list-header">Sélection officielle</h2>
+              </div>
            </div>
              <ul class="nav-list sub-nav-list">
              <li>
@@ -134,13 +136,13 @@ Financement par le National Film Institute argentin (INCAA) et travail exécuté
             </article>
         </section>
       </div>
-      <div class="bandeau-list  bandeau-list-footer">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
-               <h2 class="title title-list-header">World Cinema Project</h2>
+      <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
+           <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
+               <h2 class="title title-list-header ">World Cinema Project</h2>
                <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>
-
       </div>
+      
     </div>
     <?php include('footer.html'); ?>
 

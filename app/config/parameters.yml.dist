@@ -37,3 +37,11 @@ parameters:
     api_version: '1.0'
     api_page_offset: 10
     api_translation_locale: 'en'
+    # amazon s3
+    s3_bucket_name: ~
+    s3_region: ~
+    s3_access_key: ~
+    s3_secret_key: ~
+    # fdc
+    fdc_domain: ~
+    fdc_domain_regexp: ~

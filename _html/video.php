@@ -28,7 +28,22 @@
       <div id="video-container" class="state-init video-player video">
         <div id="video-player">
         </div>
-        <div class="infos-bar">
+        <div class="top-bar">
+          <a href="#" class="channels"></a>
+          <div class="info">
+            <div class="vCenter">
+              <div class="vCenterKid">
+              </div>
+            </div>
+          </div>
+          <div class="buttons square">
+            <a href="#" class="button facebook"></a>
+            <a href="#" class="button twitter"></a>
+            <a href="#" class="button link"></a>
+            <a href="#" class="button email"></a>
+          </div>
+          <div class="channels-video" class="">
+          </div>
         </div>
         <div class="video-overlay"></div>
         <div class="infos-bar">

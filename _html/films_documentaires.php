@@ -26,8 +26,10 @@
 
     <div id="main" class="list-article films-list loading cannes-classic selection-officielle">
       <div class="bandeau-list">
-           <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
-               <h2 class="title title-list-header">Selection officielle</h2>
+           <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(http://dummyimage.com/1920x450/d19514/fff&text=+);">
+              <div class="vCenterKid">
+               <h2 class="title title-list-header">Sélection officielle</h2>
+              </div>
            </div>
           <ul class="nav-list sub-nav-list">
              <li>
@@ -97,8 +99,6 @@
                 </div>
                 </div>
             </article>
-        </section>
-        <section class="categorie-items">
            <div class="title-list-cat">
                 <h2 class="title">CELEBRATION DES SOIXANTE ANS DE LA 
 CREATION DE LA PALME D’OR</h2>
@@ -120,8 +120,8 @@ CREATION DE LA PALME D’OR</h2>
             </article>
         </section>
       </div>
-      <div class="bandeau-list  bandeau-list-footer">
-           <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
+      <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
+           <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Invité d'honneur</h2>
                <a href="films_invitedhonneur.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
            </div>

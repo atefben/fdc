@@ -23,10 +23,6 @@ The database informations is available in [https://github.com/Ohwee/festival-can
 
 We use [MySQL Workbench][3] to create / generate the diagram png, the source file is FDC diagram.mwb.
 
-[1]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sql
-[2]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sqlBase%20diagram.mwb
-[3]: https://www.mysql.fr/products/workbench/
-
 ## Initialization
 
 You have to configure the parameters.yml
@@ -68,7 +64,15 @@ app/config/parameters.yml
     website_fdc_event_host: ~
     website_fdc_corporate_host: ~
 
+#Sessions
+Sessions are stored in database, you must import the [sessions.sql][4] file.
+
 ## Glossary
 - Statement = Communiqué
 - Info = Infos
 - News = Articles
+
+[1]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sql
+[2]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sqlBase%20diagram.mwb
+[3]: https://www.mysql.fr/products/workbench/
+[4]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sessions.sql

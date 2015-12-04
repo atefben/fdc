@@ -26,8 +26,10 @@
 
     <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
       <div class="bandeau-list">
-        <div class="bandeau-list-img" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg);">
-          <h2 class="title title-list-header">Selection officielle</h2>
+        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(http://dummyimage.com/1920x450/ffd373/fff&text=+);">
+         <div class="vCenterKid">
+          <h2 class="title title-list-header">Sélection officielle</h2>
+         </div>
         </div>
         <ul class="nav-list sub-nav-list">
           <li>
@@ -57,6 +59,7 @@
         </ul>
       </div>
       <div class="container container-list single-article">
+       <div class="honneur-invit">
         <div class="bandeau-list">
           <ul class="sub-nav-list nav-movie">
             <li><a href="films_invitedhonneur.php" class="active ajax">Invité d'honneur</a></li>
@@ -161,147 +164,147 @@
                 “J’ai découvert que Lambert avait une passion pour le film de genre”
               </blockquote>
             </div>
-            <div class="small-pres container">              
-          <div class="slideshow">
-            <div class="slideshow-img">
-              <div class="images">
-                <div class="img active">
-                  <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
-                    <img src="img/slide001.jpg" alt="" />
-                  </a>
+            <div class="small-pres container">
+              <div class="slideshow">
+                <div class="slideshow-img">
+                  <div class="images">
+                    <div class="img active">
+                      <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
+                        <img src="img/slide001.jpg" alt="" />
+                      </a>
+                    </div>
+                    <div class="img">
+                      <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                        <img src="img/slide002.jpg" alt="" />
+                      </a>
+                    </div>
+                    <div class="img">
+                      <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                    <div class="img">
+                      <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                    </div>
+                  </div>
+                  <div class="owl-carousel thumbnails">
+                    <div data-id="photo1" class="thumb active">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div data-id="photo2" class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div data-id="photo3" class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                    <div class="thumb">
+                      <img src="img/thumb01.jpg" />
+                    </div>
+                  </div>
                 </div>
-                <div class="img">
-                  <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
-                    <img src="img/slide002.jpg" alt="" />
-                  </a>
-                </div>
-                <div class="img">
-                  <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                </div>
-                <div class="img">
-                  <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                </div>
-                <div class="img">
-                  <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                </div>
-                <div class="img">
-                  <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                </div>
-                <div class="img">
-                  <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                </div>
-                <div class="img">
-                  <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                </div>
-                <div class="img">
-                  <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
+              </div>
+              <div class="half-photo">
+                <div class="photo-container">
+                  <img src="img/article/005.jpg" alt="">
+                  <p class="caption">© FDC / Théophile Delange</p>
                 </div>
               </div>
-              <div class="owl-carousel thumbnails">
-                <div data-id="photo1" class="thumb active">
-                  <img src="img/thumb01.jpg" />
-                </div>
-                <div data-id="photo2" class="thumb">
-                  <img src="img/thumb01.jpg" />
-                </div>
-                <div data-id="photo3" class="thumb">
-                  <img src="img/thumb01.jpg" />
-                </div>
-                <div class="thumb">
-                  <img src="img/thumb01.jpg" />
-                </div>
-                <div class="thumb">
-                  <img src="img/thumb01.jpg" />
-                </div>
-                <div class="thumb">
-                  <img src="img/thumb01.jpg" />
-                </div>
-                <div class="thumb">
-                  <img src="img/thumb01.jpg" />
-                </div>
-                <div class="thumb">
-                  <img src="img/thumb01.jpg" />
-                </div>
-                <div class="thumb">
-                  <img src="img/thumb01.jpg" />
+              <div class="half-photo">
+                <div class="photo-container">
+                  <img src="img/article/005.jpg" alt="">
+                  <p class="caption">© FDC / Théophile Delange</p>
                 </div>
               </div>
-            </div>
-            <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
-          </div>             
-            <div class="half-photo">
-            <div class="photo-container">
-              <img src="img/article/005.jpg" alt="">
-              <p class="caption">© FDC / Théophile Delange</p>
-            </div>
-          </div>
-           <div class="half-photo">
-            <div class="photo-container">
-              <img src="img/article/005.jpg" alt="">
-              <p class="caption">© FDC / Théophile Delange</p>
-            </div>
-          </div>
             </div>
             <section class="categorie-items">
-            <div class="title-list-cat title-film-detail">
+              <div class="title-list-cat title-film-detail">
                 <h2 class="title">Centenaire orson welles</h2>
-            </div>
-            <article style="background-image:url(img/films/cover-film1.jpg)">
-            <div class="bck-hover">
-               <div class="contain_item">
-                <img src="img/films/cover-film1.jpg" alt="images films">
-                <div class="infos-item-list">
-                    <h3 class="title-item">Citizen kane</h3>
-                    <span class="nom-item">Orson Welles</span>
-                    <span class="date-item">1941 - 1h59</span>
-                    <p class="description-item">Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros. Motion Picture Imagery par l'étalonneuse Janet Wilson, sous la supervision de Ned Price. Le négatif original n'existant plus, image reconstituée d'après trois interpositifs noirs et blancs à grain fin support nitrate.</p>
-                    <p class="description-item">
-                        Son optique " RCA squeeze duplex format. " 
-                    </p>
-                </div>
-               </div>
-            </div>
-            </article>
-            <article style="background-image:url(img/films/cover-film3.jpg)">
+              </div>
+              <article style="background-image:url(img/films/cover-film1.jpg)">
                 <div class="bck-hover">
-                <div class="contain_item">
+                  <div class="contain_item">
+                    <img src="img/films/cover-film1.jpg" alt="images films">
+                    <div class="infos-item-list">
+                      <h3 class="title-item">Citizen kane</h3>
+                      <span class="nom-item">Orson Welles</span>
+                      <span class="date-item">1941 - 1h59</span>
+                      <p class="description-item">Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros. Motion Picture Imagery par l'étalonneuse Janet Wilson, sous la supervision de Ned Price. Le négatif original n'existant plus, image reconstituée d'après trois interpositifs noirs et blancs à grain fin support nitrate.</p>
+                      <p class="description-item">
+                        Son optique " RCA squeeze duplex format. "
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article style="background-image:url(img/films/cover-film3.jpg)">
+                <div class="bck-hover">
+                  <div class="contain_item">
                     <img src="img/films/cover-film3.jpg" alt="images films">
                     <div class="infos-item-list">
-                        <h3 class="title-item">The third man</h3>
-                        <span class="nom-item">Carol Reed</span>
-                        <span class="date-item">1949 - 1h44</span>
-                        <p class="description-item">Une présentation de Studiocanal. Marron élément nitrate de 2ème génération (négatif original inexistant), numérisé en 4K et restauré image par image en 4K par Deluxe en Angleterre</p>
-                        <p class="description-item">
-                           Restauration supervisée par Studiocanal. 
-                        </p>
+                      <h3 class="title-item">The third man</h3>
+                      <span class="nom-item">Carol Reed</span>
+                      <span class="date-item">1949 - 1h44</span>
+                      <p class="description-item">Une présentation de Studiocanal. Marron élément nitrate de 2ème génération (négatif original inexistant), numérisé en 4K et restauré image par image en 4K par Deluxe en Angleterre</p>
+                      <p class="description-item">
+                        Restauration supervisée par Studiocanal.
+                      </p>
                     </div>
+                  </div>
                 </div>
-              </div>
-            </article>
-        </section>
-        <section class="categorie-items">
-           <div class="title-list-cat title-film-detail">
+              </article>
+            </section>
+            <section class="categorie-items">
+              <div class="title-list-cat title-film-detail">
                 <h2 class="title">Hommage a manoel de oliveira</h2>
                 <p class="title-item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente voluptatibus magnam culpa, ut quam est repellendus aliquam ipsum eos debitis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus consequuntur esse doloremque qui sunt vel voluptatem repudiandae eaque aliquid architecto.</p>
-           </div>
-            <article style="background-image:url(img/films/cover-film2.jpg)">
-            <div class="bck-hover">
-                <div class="contain_item">
+              </div>
+              <article style="background-image:url(img/films/cover-film2.jpg)">
+                <div class="bck-hover">
+                  <div class="contain_item">
                     <img src="img/films/cover-film2.jpg" alt="images films">
                     <div class="infos-item-list">
-                        <h3 class="title-item">Visita</h3>
-                        <span class="nom-item">Manoel De Oliveira</span>
-                        <span class="date-item">1982 - 1h08</span>
-                        <p class="description-item">Grâce à la fille de Manoel de Oliveira, Adelaide Trepa, et à son petit-fils Manuel Casimiroqui l'ont permis, en lien avec José Manuel Costa, directeur, et Rui Machado, sous-directeur, de la Cinemateca Portuguesa, le Festival de Cannes projettera son film posthume <strong>Visita</strong> ou <strong>Memórias e Confissoões</strong> (1982, 1h08).</p>
-                        <p class="description-item">
-                            Totalement inédit, il n'aura été montré qu'à la Cinemateca Portuguesa de Lisbonne et Porto, ville natale de Manoel de Oliveira.
-                        </p>
+                      <h3 class="title-item">Visita</h3>
+                      <span class="nom-item">Manoel De Oliveira</span>
+                      <span class="date-item">1982 - 1h08</span>
+                      <p class="description-item">Grâce à la fille de Manoel de Oliveira, Adelaide Trepa, et à son petit-fils Manuel Casimiroqui l'ont permis, en lien avec José Manuel Costa, directeur, et Rui Machado, sous-directeur, de la Cinemateca Portuguesa, le Festival de Cannes projettera son film posthume <strong>Visita</strong> ou <strong>Memórias e Confissoões</strong> (1982, 1h08).</p>
+                      <p class="description-item">
+                        Totalement inédit, il n'aura été montré qu'à la Cinemateca Portuguesa de Lisbonne et Porto, ville natale de Manoel de Oliveira.
+                      </p>
                     </div>
-                </div> 
-                </div>   
-            </article>
-        </section>
-             <div class="share">
+                  </div>
+                </div>
+              </article>
+            </section>
+            <div class="share">
               <p>Partagez l'article</p>
               <div class="buttons square">
                 <a href="#" class="button facebook"></a>
@@ -313,16 +316,17 @@
             </div>
           </div>
         </section>
+       </div>
       </div>
-      <div class="bandeau-list  bandeau-list-footer">
-        <div class="bandeau-list-img" style="background-image:url(img/films/cover-bandeau-push.jpg);">
+      <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
+        <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push.jpg);">
           <h2 class="title title-list-header">Hommages</h2>
           <a href="films_hommage.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
         </div>
       </div>
     </div>
-    
-<!-- POPIN MAIL SHARE ---->
+
+    <!-- POPIN MAIL SHARE ---->
     <div class="popin-mail popin">
       <div class="contain-popin popin">
         <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
@@ -349,11 +353,11 @@
         </p>
       </div>
     </div>
-<!-- END POPIN MAIL SHARE -->
-   
+    <!-- END POPIN MAIL SHARE -->
+
     <?php include('footer.html'); ?>
       <!-- //// SCRIPTS \\\\ -->
-    <?php include('scripts.inc.php'); ?>
+      <?php include('scripts.inc.php'); ?>
 </body>
 
 </html>

@@ -224,10 +224,10 @@
       </div>
     </div>
   </div>
-  <div class="bandeau-list">
-    <div class="bandeau-list-img" style="background-image:url(img/webtv/push.jpg);">
+  <div class="bandeau-list vCenter">
+    <div class="bandeau-list-img vCenterKid" style="background-image:url(img/webtv/push.jpg);">
       <h2 class="title title-list-header">La loi du marché</h2>
-      <a href="#" class="bandeau-lien"> &gt; Voir la bande annonce </a>
+      <a href="#" class="bandeau-lien"><a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Voir la bande annonce</a></a>
     </div>
   </div>
 </div>

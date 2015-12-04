@@ -25,9 +25,9 @@
   <?php include('header.html'); ?>
 
 <div id="main" class="list-article participate manual">
-  <div class="bandeau-list">
-    <div class="bandeau-list-img" style="background-image:url(img/participate/manual.jpg);background-size: cover;">
-      <h2 class="title title-list-header"> <img src="img/participate/logo-palm.png" alt="" class="logo"> <br> Festival mode d'emploi</h2>
+  <div class="bandeau-list vCenter">
+    <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/manual.jpg)">
+      <h2 class="title title-list-header"> <img src="img/svg/palme-white.svg" alt="" class="logo palm"> <br> Festival mode d'emploi</h2>
     </div>
   </div>
   <div class="title-bandeau">
@@ -37,7 +37,7 @@
   </div>
   <section class="content-manual">
     <div class="contain-section participate-active">
-      <h3 class="title-section"><img src="img/participate/horaires.svg" alt="" class="logo-title svg">Horaires</h3><i class="fa fa-plus"></i>
+      <h3 class="title-section"><img src="img/participate/horaires.svg" alt="" class="logo-title svg">Horaires</h3><i class="fa fa-minus"></i>
       
       <div class="descrip-section">
         <p>
@@ -136,7 +136,7 @@
   </section>  
   <section class="content-manual">
     <div class="contain-section">
-      <h3 class="title-section"><img src="img/press/svg/informations-grey.svg" alt="" class="logo-title svg">Informations utiles</h3><i class="fa fa-plus"></i>
+      <h3 class="title-section"> <img src="img/participate/info-me.svg" alt="" class="svg information logo-title">Informations utiles</h3><i class="fa fa-plus"></i>
       <div class="item-manual">
         <div class="contain-infos">
           <div class="item-infos">
