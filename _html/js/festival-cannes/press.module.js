@@ -85,7 +85,7 @@ $(document).ready(function() {
             for(var i=0; i<events.length; i++) {
               if(id == events[i].id) {
                 $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda'); //TODO traduction, enlever la string // 
               }
             }
           });
@@ -783,6 +783,17 @@ $(document).ready(function() {
            });
   }
   
+  // POPIN Show event //
+  
+  if($('.fullcalendar').length){
+    $('.fc-event-container').on('click', function(e) {
+      var url = $(this).attr('src');
+      console.log(e);
+      // load the url of the event via ajax
+      openPopinEvent(url);
+
+    });
+  }
   // Navigation tab press page (accreditation)
   
   if($('#accreditation').length){
@@ -816,7 +827,7 @@ $(document).ready(function() {
       if($('.press-media').length){
         menuMedia();
         initSlideshows();
-        if($('.connected').length){
+        if($('.connected').length){ //TODO add class .connected for change picto lock if connected // 
           var imgs = $('.connected').find('img[src="img/svg/cadenas.svg"]');
           console.log(imgs);
           imgs.attr('src','img/press/svg/telecharger.svg');
@@ -827,6 +838,10 @@ $(document).ready(function() {
         }
         svgImg();
       }
+  
+  if($('.downloading-press').length){
+    initSlideshows();
+  }
   
   //mediatheque AJAX
       function ajaxEvent(){
@@ -842,7 +857,7 @@ $(document).ready(function() {
             menuMedia();
             svgImg();
             initSlideshows();
-            popinInit()
+            popinInit();
           });
           $('.press-media .nav-mediapress').find('td.active').removeClass('active');
           $(this).addClass('active');

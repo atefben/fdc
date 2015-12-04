@@ -146,57 +146,57 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
           </div>
           </div>
         </div>
-        <div class="photos block" id='photos-institutionnelles'>
+        <div class="photos block slideshow"  id='photos-institutionnelles'>
           <div class="container">
           <div class="container-title">
             <h3 class="title-press">Photos institutionnelles <span class="number">(22)</span></h3>
           <div class="right-btn buttons"><a href="" class="alldl button">Tout telecharger</a></div>
           </div>
-          <div class="gridPressDownload grid-wrapper">
+          <div class="gridPressDownload grid-wrapper images">
             <div class="grid-sizer"></div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid.jpg" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid2.png" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid2.png"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid3.jpg" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid3.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid4.jpg" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid4.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid5.jpg" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid5.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid6.jpg" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid6.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid7.jpg" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid7.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid8.jpg" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid8.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
               <div class="item">
-                <a href=" ">
-                  <img src="img/press/downloading/im-grid9.jpg" alt="">
+                <a href="img/press/downloading/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="img/press/downloading/im-grid9.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>' alt="" class="chocolat-image ajax">
                 </a>
               </div>
             </div>
