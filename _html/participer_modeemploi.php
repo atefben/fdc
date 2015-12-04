@@ -27,7 +27,7 @@
 <div id="main" class="list-article participate manual">
   <div class="bandeau-list vCenter">
     <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/manual.jpg)">
-      <h2 class="title title-list-header"> <img src="img/svg/palme-white.svg" alt="" class="logo palm"> <br> Festival mode d'emploi</h2>
+      <h2 class="title title-list-header"> <img src="img/svg/palme-white.svg" alt="" class="logo palm">  <br> Festival mode d'emploi</h2>
     </div>
   </div>
   <div class="title-bandeau">
