@@ -16638,9 +16638,32 @@ article .read-later.rAlign span:after {
   background-size: 18px;
   padding-top: 5px;
   padding-bottom: 5px;
+  position: relative;
+}
+.accreditation #accreditation .request-btn:after {
+  background: url("../img/press/svg/communique-presse-white.svg") no-repeat 16px 14px;
+  background-size: 18px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 41px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .accreditation #accreditation .request-btn:hover {
-  border-color: #c8a461 !important;
+  background-color: #c8a461 !important;
+  color: #fff !important;
+}
+.accreditation #accreditation .request-btn:hover:after {
+  opacity: 1;
+  visibility: visible;
 }
 .accreditation #accreditation .buttons {
   padding: 50px 0px;
@@ -17113,29 +17136,27 @@ article .read-later.rAlign span:after {
   color: #c8a461;
 }
 
-.press-media.lock .slideshow {
-  border: 0px solid #fff;
-}
-.press-media.lock .table .line .button {
-  border-color: #b0b0b0;
-  color: #b0b0b0;
-}
-.press-media.lock .button:hover {
+.press-media.lock .mediatheque .table .line .button:hover {
   background-color: #fff;
   border-color: #b0b0b0;
   color: #b0b0b0;
 }
-
-.connected .table .line .button {
-  border-color: #c29f5f !important;
-  color: #c29f5f;
+.press-media.lock .mediatheque .table .line .button {
+  background-image: url("../img/svg/cadenas-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 45%;
+  background-size: 12px;
+  border-color: #b0b0b0;
+  color: #b0b0b0;
 }
-.connected .button:hover {
-  background-color: #c29f5f;
-  border-color: #c29f5f !important;
-  color: #fff !important;
+.press-media.lock .mediatheque .table .line .button:hover:after {
+  opacity: 0;
+  visibility: hidden;
 }
 
+.press-media .slideshow {
+  border: 0px solid #fff;
+}
 .press-media .contact-press .button:hover {
   background-color: #c29f5f;
   border-color: #c29f5f !important;
@@ -17147,12 +17168,59 @@ article .read-later.rAlign span:after {
 .press-media .mediatheque .table .line:last-child {
   border-bottom: 0px solid #fff;
 }
-.press-media .mediatheque .line .info {
+.press-media .mediatheque .table .line .info {
   float: left;
   width: 320px;
 }
-.press-media .mediatheque .line .info .txt {
+.press-media .mediatheque .table .line .info .txt {
   width: 225px;
+}
+.press-media .mediatheque .table .line .button,
+.press-media .mediatheque .table .line .active-btn .button {
+  padding: 1px 15px 0 39px;
+  border-color: #c8a461;
+  background-image: url("../img/svg/telecharger-gold.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 12px;
+  background-size: 14px;
+  position: relative;
+}
+.press-media .mediatheque .table .line .button:after,
+.press-media .mediatheque .table .line .active-btn .button:after {
+  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+  background-size: 14px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.press-media .mediatheque .table .line .button:hover,
+.press-media .mediatheque .table .line .active-btn .button:hover {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  color: #fff;
+}
+.press-media .mediatheque .table .line .button:hover:after,
+.press-media .mediatheque .table .line .active-btn .button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+.press-media .mediatheque .table .line .active-btn .button {
+  color: #c29f5f;
+  border-color: #c29f5f;
+}
+.press-media .mediatheque .table .line .active-btn .button:hover {
+  color: #fff;
+  background-color: #c29f5f;
 }
 .press-media .header-press p {
   width: 442px;
@@ -17213,18 +17281,11 @@ article .read-later.rAlign span:after {
 .press-media .nav-container .svg path {
   fill: currentColor;
 }
-.press-media .nav-container .active-btn .button {
-  color: #c29f5f !important;
-  border-color: #c29f5f !important;
-}
-.press-media .nav-container .active-btn .button:hover {
-  color: #fff !important;
-  background-color: #c29f5f;
-}
 .press-media .nav-container .table .line {
   position: relative;
 }
-.press-media .nav-container .table .line .media, .press-media .nav-container .table .line .info {
+.press-media .nav-container .table .line .media,
+.press-media .nav-container .table .line .info {
   cursor: pointer;
 }
 .press-media .nav-container .table .line .item {
@@ -17272,7 +17333,7 @@ article .read-later.rAlign span:after {
   margin-left: 68px;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons:first-child {
-  margin-right: 124px;
+  margin-right: 78px;
 }
 .press-media .nav-container .table .line .container .info .txt p {
   line-height: 18px;
@@ -17314,13 +17375,10 @@ article .read-later.rAlign span:after {
   padding-top: 60px;
   border-top: 1px solid #dfdfdf;
 }
-.press-media .block .container .container-title {
+.press-media .block .container-title {
   position: relative;
 }
-.press-media .block .container .title-press {
-  margin-bottom: 30px;
-}
-.press-media .block .container .container-title .right-btn {
+.press-media .block .container-title .right-btn {
   position: absolute;
   top: -32px;
   right: 0px;
@@ -17330,13 +17388,13 @@ article .read-later.rAlign span:after {
   float: left;
   letter-spacing: .01em;
 }
-.press-media .block .container .container-title .right-btn a {
-  pointer-events: none;
-}
-.press-media .block .container .container-title .number {
+.press-media .block .container-title .number {
   color: #c29f5f;
   font-size: 0.88rem;
   letter-spacing: .2em;
+}
+.press-media .block .title-press {
+  margin-bottom: 30px;
 }
 .press-media .grid-wrapper {
   margin: 0px;

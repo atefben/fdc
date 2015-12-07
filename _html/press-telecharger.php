@@ -150,7 +150,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
           <div class="container">
           <div class="container-title">
             <h3 class="title-press">Photos institutionnelles <span class="number">(22)</span></h3>
-          <div class="right-btn buttons"><a href="" class="alldl button">Tout telecharger</a></div>
+          <div class="right-btn buttons"><a href="" class="alldl button">Tout télécharger</a></div>
           </div>
           <div class="gridPressDownload grid-wrapper images">
             <div class="grid-sizer"></div>
