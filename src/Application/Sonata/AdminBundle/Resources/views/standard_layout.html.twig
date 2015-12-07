@@ -274,7 +274,7 @@ file that was distributed with this source code.
                                                     </a>
                                                 </li>
                                                 {% endif %}
-                                                {% if app.security.token and is_granted('ROLE_ADMIN_TRANSLATION') %}
+                                                {% if app.security.token and is_granted('ROLE_JMS_TRANSLATION') %}
                                                 <li>
                                                     <a href="{{ path('jms_translation_index') }}">
                                                         {{ 'dashboard.link.bo_translation'|trans({}, 'BaseAdminBundle') }}
