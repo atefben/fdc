@@ -628,9 +628,12 @@
         background-size: 16px;
       }
       
-      .button:hover, .button:hover + .button{
-//        border-color: $gold;
-        //tèst//
+      .button:hover{
+        border-color: $gold;
+      }
+      .button:hover + .button{
+        border-left: 1px solid $gold;
+
       }
     }
   }

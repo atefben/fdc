@@ -12624,6 +12624,12 @@ article .read-later.rAlign span:after {
   background: url("../img/svg/print.svg") no-repeat center;
   background-size: 16px;
 }
+.webtv-ba-video .informations-video .share .button:hover {
+  border-color: #c8a461;
+}
+.webtv-ba-video .informations-video .share .button:hover + .button {
+  border-left: 1px solid #c8a461;
+}
 .webtv-ba-video #slider-trailer {
   padding: 10px 0px 72px 0;
 }
@@ -16638,6 +16644,8 @@ article .read-later.rAlign span:after {
 }
 .accreditation #accreditation .buttons {
   padding: 50px 0px;
+  padding-top: 64px;
+  padding-bottom: 61px;
 }
 .accreditation #accreditation .wrapper {
   width: 980px;
