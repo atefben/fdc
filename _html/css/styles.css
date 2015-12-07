@@ -6996,9 +6996,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7024,11 +7024,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7044,26 +7044,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -12295,6 +12295,29 @@ article .read-later.rAlign span:after {
   visibility: visible;
 }
 
+.webtv-ba .item:hover img {
+  -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.05) translateZ(0);
+  -ms-transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
+}
+.webtv-ba .item {
+  overflow: hidden;
+}
+.webtv-ba .item img {
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 .webtv-ba .shadow-bottom:before {
   width: 100%;
 }
@@ -12313,6 +12336,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 10px;
   border: 2px solid #fff;
   cursor: default;
+  background: url("../img/webtv/bandes_annonces_play.svg");
 }
 .webtv-ba .sticky {
   width: 100% !important;
@@ -12336,7 +12360,7 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba .sub-nav-list li {
   display: inline-block;
-  padding: 14.5px;
+  padding: 16px 6.5px;
   text-transform: uppercase;
 }
 .webtv-ba .grid {
@@ -12437,7 +12461,7 @@ article .read-later.rAlign span:after {
   padding-top: 25px;
   font-size: 11px;
   letter-spacing: .1em;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .webtv-ba-video .video .name-video {
   font-size: 1.125rem;
@@ -12466,7 +12490,11 @@ article .read-later.rAlign span:after {
   text-align: center;
   box-sizing: border-box;
   cursor: pointer;
-  font-family: "Camphor W01 Bold";
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .webtv-ba-video .informations-video ul li:first-child {
   border-right: 1px solid #2c2c2c;
@@ -12475,6 +12503,9 @@ article .read-later.rAlign span:after {
   color: #c8a461;
   border-bottom: 0px solid #2c2c2c;
   width: 148px;
+}
+.webtv-ba-video .informations-video ul li:hover {
+  color: rgba(255, 255, 255, 0.28);
 }
 .webtv-ba-video .informations-video .block {
   height: 301px;
@@ -12488,9 +12519,9 @@ article .read-later.rAlign span:after {
 .webtv-ba-video .informations-video .infos-film h4 {
   font-size: 0.6875rem;
   text-transform: uppercase;
-  padding-top: 20px;
-  padding-bottom: 16px;
-  font-family: "Camphor W01 Bold";
+  padding-top: 16px;
+  padding-bottom: 12px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 0.2em;
 }
 .webtv-ba-video .informations-video .infos-film strong {
@@ -12502,7 +12533,7 @@ article .read-later.rAlign span:after {
   font-size: 0.81rem;
   color: #c8a461;
   display: block;
-  padding-top: 6px;
+  padding-top: 4px;
 }
 .webtv-ba-video .informations-video .program-film {
   text-align: center;
@@ -12544,6 +12575,14 @@ article .read-later.rAlign span:after {
   padding: 20px 35px;
   border: 1px solid #c8a461;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.webtv-ba-video .informations-video .program-film .btn:hover {
+  background-color: #c8a461;
+  color: #fff;
 }
 .webtv-ba-video .informations-video .program-film ::-webkit-scrollbar {
   width: 5px;
@@ -12589,9 +12628,69 @@ article .read-later.rAlign span:after {
   background-size: 22px;
 }
 .webtv-ba-video #content-trailers #slider-trailer .info span {
-  color: #666;
+  color: #ffffff;
   display: block;
-  font-size: 0.625rem;
+  font-size: 0.88rem;
+}
+.webtv-ba-video #content-trailers #slider-trailer .info .category {
+  font-size: 0.56rem;
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  margin-bottom: 6px;
+  display: block;
+}
+.webtv-ba-video #content-trailers .sliderDrag .owl-item {
+  opacity: 1;
+}
+.webtv-ba-video #content-trailers .channel {
+  height: 185px;
+  overflow: hidden;
+  position: relative;
+  width: 293px;
+}
+.webtv-ba-video #content-trailers .channel:before {
+  background: transparent;
+  background: -moz-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
+  background: -webkit-gradient(left top, left bottom, color-stop(25%, transparent), color-stop(25%, transparent), color-stop(85%, black));
+  background: -webkit-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
+  background: -o-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
+  background: -ms-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 25%, #000000 85%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+  content: '';
+  display: block;
+  height: 100%;
+  width: 102%;
+  position: absolute;
+  top: 0;
+  left: -1%;
+  z-index: 1;
+}
+.webtv-ba-video #content-trailers .channel:after {
+  border: 0px solid #c8a461;
+  box-sizing: border-box;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  z-index: 2;
+}
+.webtv-ba-video #content-trailers .channel:hover:after {
+  border-width: 5px;
+}
+.webtv-ba-video #content-trailers .center .channel:after {
+  border-width: 5px;
 }
 .webtv-ba-video .bandeau-list-img {
   height: 365px;
@@ -16899,7 +16998,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdfÔÇí;
+  border: 0px solid #dfdfdf‡;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
