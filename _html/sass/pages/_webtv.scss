@@ -322,7 +322,7 @@
     -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  .shadow-bottom:before { 
+  .shadow-bottom:before {
     width: 100%;
   }
   #live {
@@ -602,8 +602,10 @@
     }
     .share {
       margin: 9px 0 0 0;
+      
       .button {
         border-color: #2c2c2c;
+        @include transition(all .5s $smoothTransition);
       }
       a.facebook {
         background: url('../img/svg/facebook-gold.svg') no-repeat center;
@@ -624,6 +626,11 @@
       a.print {
         background: url('../img/svg/print.svg') no-repeat center;
         background-size: 16px;
+      }
+      
+      .button:hover, .button:hover + .button{
+//        border-color: $gold;
+        //tèst//
       }
     }
   }
