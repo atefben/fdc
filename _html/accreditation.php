@@ -132,7 +132,7 @@
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print">Imprimer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Agence de presse</h4>

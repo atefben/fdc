@@ -59,7 +59,9 @@
   
 }
 .downloading-press{
-  
+  .slideshow{
+    border-bottom: 0px solid #fff;
+  }
       .buttons {
       text-align: left; 
 
@@ -109,15 +111,15 @@
   }
   
   .contact-press{
-//    .button{
-//      color: #c29f5f ;
-//      border: 1px solid #c29f5f ;
-//    }
-//    .button:hover {
-//      background-color: #c29f5f ;
-//      border-color: #c29f5f ;
-//      color: #fff ;
-//    }
+    .button{
+      color: #c29f5f ;
+      border: 1px solid #c29f5f ;
+    }
+    .button:hover {
+      background-color: #c29f5f ;
+      border-color: #c29f5f ;
+      color: #fff ;
+    }
   }
   .grid{
     padding: 0px !important;

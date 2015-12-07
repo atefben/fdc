@@ -6,14 +6,17 @@
 
 // 1. Global
 // =========================
-.lock{
+.press-media.lock{
+  .slideshow{
+    border: 0px solid #fff;
+  }
   .table .line .button{
-    border-color: #b0b0b0 !important;
+    border-color: #b0b0b0 ;
     color: #b0b0b0;
   } 
   .button:hover {
     background-color: #fff;
-    border-color: #b0b0b0 !important;
+    border-color: #b0b0b0 ;
     color: #b0b0b0;
   }
 }
@@ -56,7 +59,7 @@
   }
   .header-press{
     p{
-      width: 442px;
+      width: 442px; 
     }
   }
   .nav-mediapress{
@@ -165,7 +168,9 @@
               .buttons{
                 display: inline-block;
                 .button{
-                  margin: 0px
+                  margin: 0px;
+//                  pointer-events: none;
+                  float: none;
                 }
               }
               .buttons:nth-child(3){
@@ -238,6 +243,9 @@
     font-family: "Camphor W01 Heavy";
     float: left;
     letter-spacing: .01em;
+    a{ 
+      pointer-events: none;
+    }
   }
   .block .container .container-title .number {
     color: #c29f5f;

@@ -26,8 +26,8 @@
   <?php include('header.html'); ?>
 
 <div id="main" class="list-article participate contractor">
-  <div class="bandeau-list">
-    <div class="bandeau-list-img" style="background-image:url(img/participate/bandeau4.png);background-size: cover;">
+  <div class="bandeau-list vCenter">
+    <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/bandeau4.png);background-size: cover;">
       <h2 class="title title-list-header"> <img src="img/participate/fournisseurs.png" alt="" class="logo"> <br> fournisseurs</h2>
     </div>
   </div>

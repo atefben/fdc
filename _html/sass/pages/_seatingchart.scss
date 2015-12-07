@@ -8,6 +8,9 @@
 // =========================
 
 .seatingchart{
+  .header-press{
+    border-bottom:1px solid #e3e3e3 !important;
+  }
   #seatingchart{
     width: 980px;
     margin: 41px auto;
@@ -54,6 +57,14 @@
             width: 197px;
             height: 142px;
             margin-top: 15px;
+            display: none;
+            opacity: 0;
+          }
+          .visible{
+            display: block;
+            opacity: 1;
+          }
+          .first{
           }
         }
         #more-map:hover{
@@ -74,21 +85,16 @@
       span{
         display: none;
         position: relative;
-        transform: translateY(100);
-        @include transition(all 0.3s $smoothTransition);
-        img{
-        }
+        opacity: 0;
+        @include transition(all 1s $smoothTransition);
       }
-      .active{
-        display: inline-block;
-        @include transition(all 0.3s $smoothTransition);
-        transform: translateY(-100);
+      span.active{
+        display: block;
       }
-//      .default-active{
-//        display: inline-block;
-//        @include transition(all 0.3s $smoothTransition);
-//        transform: translateY(-100);
-//      }
+      span.first{
+        opacity: 1;
+      }
+
     }
   }
 }

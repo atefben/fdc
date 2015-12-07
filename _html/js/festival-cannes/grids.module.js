@@ -81,7 +81,12 @@ function setGrid(grid, dom, init){
     }
   }
   if(!init){
-    grid.append( $(dom) ).isotope( 'appended', $(dom) );
+	if($('#gridEvent').length) {
+		$data = $(dom).find('.item');
+    } else {
+		$data = $(dom);
+	}
+    grid.append( $data ).isotope( 'appended', $data );
     grid.imagesLoaded().progress( function() {
         grid.isotope('layout');
     });

@@ -85,7 +85,7 @@ $(document).ready(function() {
             for(var i=0; i<events.length; i++) {
               if(id == events[i].id) {
                 $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda'); //TODO traduction, enlever la string // 
               }
             }
           });
@@ -565,6 +565,240 @@ $(document).ready(function() {
   });
 
   
+  // EVENT AJAX COMMUNIQUE AND INFORMATION // 
+  
+    if ($('.press').length) {
+    
+    popinInit();
+
+    var $container = $('#gridAudios'),
+      $grid;
+
+    $grid = $('#gridAudios').imagesLoaded(function () {
+      // init Isotope after all images have loaded
+      setGrid($grid, $('#gridAudios'), true);
+      $grid.isotope({
+        itemSelector: '.item',
+        percentPosition: true,
+        layoutMode: 'packery',
+        packery: {
+          columnWidth: '.grid-sizer'
+        }
+      });
+
+      $grid.isotope('layout');
+    });
+    $('.read-more').on('click', function (e) {
+      e.preventDefault();
+	     $(this).hide();
+      $.ajax({
+        type: "GET",
+        dataType: "html",
+        cache: false,
+        url: 'load-communique.php' /* TODO DEV : context URL */,
+        success: function (data) {
+          var $data = $(data).find('.gridelement');
+          var $container = $('#gridAudios'),
+              $grid;
+          $grid = $container.imagesLoaded(function () {
+				    setGrid($grid, $data, false);
+          });
+        }
+      });
+    });
+  }
+  
+  // POPIN LOCK //
+  
+  function popinInit(){
+    
+    if ($('.press.lock').length) {
+      if ($('#popin-press').length) {
+        $('.buttons:not(".active-btn")').on('click',function () {
+          if ($('#popin-press').hasClass('visible-popin')) {
+            $('#popin-press').removeClass('visible-popin');
+
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          } else {
+            $('#popin-press').addClass("visible-popin");
+            $("#main").addClass('overlay-popin');
+          }
+           return false;
+        });
+
+        $(document).keyup(function (e) {
+          if (e.keyCode == 27) {
+            $('#popin-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+            $('.overlay-div').remove();
+          }
+        });
+      }
+
+      $(document).on('click', function (e) {
+
+        var $element= $(e.target);
+        if($element.hasClass('visible-popin')){
+   
+        }else{
+          var $isPopin = $element.closest('.visible-popin');
+          var isButton = $element.hasClass('buttons');
+         
+          if($isPopin.length || isButton){
+           
+          }else{
+              $('#popin-press').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+
+          }
+        }
+      });
+
+    }
+
+    // POPIN DOWNLOAD //
+
+    //ONLY FOR MEDIA//
+      if ($('.press.lock').length) {
+        if ($('#popin-download-press').length) {
+          $('.buttons.active-btn').on('click',function () {
+            if ($('#popin-download-press').hasClass('visible-popin')) {
+              $('#popin-download-press').removeClass('visible-popin');
+
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+            } else {
+
+              $('#popin-download-press').addClass("visible-popin");
+              $("#main").addClass('overlay-popin');
+              
+            }
+            return false;
+          
+          });
+
+          $(document).keyup(function (e) {
+            //        if (e.keyCode == 13) $('.save').click();
+            if (e.keyCode == 27) {
+              $('#popin-download-press').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+              $('.overlay-div').remove();
+            }
+          });
+
+          $(document).on('click', function (e) {
+
+            var $element= $(e.target);
+            if($element.hasClass('visible-popin')){
+
+          }else{
+            var $isPopin = $element.closest('.visible-popin');
+            var isButton = $element.hasClass('buttons');
+
+          if($isPopin.length || isButton){
+
+          }else{
+            $('#popin-download-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          }
+          }
+          }); 
+        }
+    }
+    
+    //FOR ALL PRESS PAGE//
+        if (!$('.press').length) {
+        if ($('#popin-download-press').length) {
+          $('.buttons').on('click',function () {
+            if ($('#popin-download-press').hasClass('visible-popin')) {
+              $('#popin-download-press').removeClass('visible-popin');
+ 
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+
+              $('#popin-download-press').addClass("visible-popin");
+              $("#main").addClass('overlay-popin');
+            }
+             return false;
+          });
+
+          $(document).keyup(function (e) {
+            //        if (e.keyCode == 13) $('.save').click();
+            if (e.keyCode == 27) {
+              $('#popin-download-press').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+              $('.overlay-div').remove();
+            }
+          });
+          
+           $(document).on('click', function (e) {
+
+            var $element= $(e.target);
+            if($element.hasClass('visible-popin')){
+
+          }else{
+            var $isPopin = $element.closest('.visible-popin');
+            var isButton = $element.hasClass('buttons');
+
+          if($isPopin.length || isButton){
+
+          }else{
+            $('#popin-download-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          }
+          }
+          }); 
+          
+        }
+    }
+
+  }
+  
+  // POPIN CALENDAR CREAT EVENT // 
+
+  if($('#create-event-pop').length){
+        $('.create').on('click',function () {
+            if ($('#create-event-pop').hasClass('visible-popin')) {
+              $('#create-event-pop').removeClass('visible-popin');
+//              $("#main").removeClass('overlay-popin');
+//              $('footer').removeClass('overlay');
+            } else {
+              $('#create-event-pop').addClass("visible-popin");
+//              $("#main").addClass('overlay-popin');
+            }
+          });
+
+          $(document).keyup(function (e) {
+            //        if (e.keyCode == 13) $('.save').click();
+            if (e.keyCode == 27) {
+              $('#create-event-pop').removeClass('visible-popin');
+//              $("#main").removeClass('overlay-popin');
+//              $('footer').removeClass('overlay');
+            }
+          });
+           $('.btn-close').on('click',function (){
+             $('#create-event-pop').removeClass('visible-popin');
+           });
+  }
+  
+  // POPIN Show event //
+  
+  if($('.fullcalendar').length){
+    $('.fc-event-container').on('click', function(e) {
+      var url = $(this).attr('src');
+      console.log(e);
+      // load the url of the event via ajax
+      openPopinEvent(url);
+
+    });
+  }
   // Navigation tab press page (accreditation)
   
   if($('#accreditation').length){
@@ -579,7 +813,7 @@ $(document).ready(function() {
         $('.nav-accre table').find('.active').removeClass('active');
         $(this).addClass('active');
              
-        sectionIsShow.animate({opacity:0},500,function(){
+          sectionIsShow.animate({opacity:0},500,function(){
           sectionIsShow.css('display','none');
           sectionIsShow.removeClass('active');
 
@@ -593,11 +827,12 @@ $(document).ready(function() {
     }
     });
   }
+  
   //Mediatheque nav 
       if($('.press-media').length){
         menuMedia();
-        
-        if($('.connected').length){
+        initSlideshows();
+        if($('.connected').length){ //TODO add class .connected for change picto lock if connected // 
           var imgs = $('.connected').find('img[src="img/svg/cadenas.svg"]');
           console.log(imgs);
           imgs.attr('src','img/press/svg/telecharger.svg');
@@ -608,7 +843,12 @@ $(document).ready(function() {
         }
         svgImg();
       }
-  //madiatheque AJAX
+  
+  if($('.downloading-press').length){
+    initSlideshows();
+  }
+  
+  //mediatheque AJAX
       function ajaxEvent(){
       $('.press-media .nav-mediapress td').on('click',function(e){
         e.preventDefault();
@@ -621,6 +861,8 @@ $(document).ready(function() {
             ajaxEvent();
             menuMedia();
             svgImg();
+            initSlideshows();
+            popinInit();
           });
           $('.press-media .nav-mediapress').find('td.active').removeClass('active');
           $(this).addClass('active');
@@ -628,6 +870,7 @@ $(document).ready(function() {
       });
     }
   
+  //fin chocolat js 
     function menuMedia(){
       var $info = $('.info, .media, .plus');
       $info.click(function(){
@@ -692,16 +935,16 @@ $(document).ready(function() {
       $(window).on('scroll', function() {
         
         var s            = $(window).scrollTop(),
-            h            = $("#main").height()-900,
-            affiche      = $('#affiche-officielle').offset().top-900,
-            signature    = $('#signature').offset().top-900,
-            animation    = $('#animation').offset().top-900,
-            photosInst   = $('#photos-institutionnelles').offset().top-900,
-            dossierPress = $('#dossier-presse').offset().top-900;
+            h            = $("#main").height()-300,
+            affiche      = $('#affiche-officielle').offset().top-300,
+            signature    = $('#signature').offset().top-300,
+            animation    = $('#animation').offset().top-300,
+            photosInst   = $('#photos-institutionnelles').offset().top-300,
+            dossierPress = $('#dossier-presse').offset().top-300;
           
         if(s > 180 ){
           $('.downloading-nav').addClass('sticky');
-          $(".downloading-nav").css({position: "fixed",top:90, width: "100%", zIndex:10});
+          $(".downloading-nav").css({position: "fixed",top:90, width: "100%", zIndex:5});
         } else if (s < 180){
           $(".downloading-nav").css({position: "relative",top:1, zIndex:1});
         }
@@ -736,8 +979,9 @@ $(document).ready(function() {
       }, 'slow');
       return false;
     });
-    
-
+  
   }
+  
+  
   
 });

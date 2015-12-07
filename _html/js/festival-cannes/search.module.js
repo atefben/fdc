@@ -84,7 +84,11 @@ $(document).ready(function() {
 
   if($('.searchpage').length) {
 
-    $('#colSearch').css('left', ($(window).width() - 977) / 2);
+      $('#colSearch').css('left', ($(window).width() - 977) / 2);
+    
+    $( window ).resize( function(){
+      $('#colSearch').css('left', ($(window).width() - 977) / 2);
+    });
 
     $('#colSearch a, .view-all').on('click', function(e) {
       e.preventDefault();

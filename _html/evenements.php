@@ -52,7 +52,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -79,7 +79,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -124,7 +124,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -133,7 +133,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a> <a href="evenement2.php"></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -142,7 +142,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -151,7 +151,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -160,7 +160,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -169,7 +169,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -178,7 +178,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -187,15 +187,15 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
       </div>
       <a href="#" class="read-more">Afficher <strong>plus d'évènements</strong></a>
       <div class="list-article">
-        <div class="bandeau-list">
-          <div class="bandeau-list-img" style="background-image:url(img/jurys/push.jpg);">
+        <div class="bandeau-list vCenter push-footer">
+          <div class="bandeau-list-img vCenterKid" style="background-image:url(img/jurys/push.jpg);">
                <h2 class="title title-list-header">Rétrospective</h2>
                <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
           </div>

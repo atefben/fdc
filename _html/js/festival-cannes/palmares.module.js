@@ -11,10 +11,11 @@ $(document).ready(function() {
 
       if($(this).is(':not(.active)')) {
         var urlPath = $(this).attr('href');
-        
-//        $.get($(this).data('url'), function(data){
+  //        $.get($(this).data('url'), function(data){
         $.get(urlPath, function(data){
-            $( ".container-list" ).html( $(data).find('.container-list') );
+          $( ".container-list" ).html( $(data).find('.container-list').html());
+          $('.bandeau-head').html( $(data).find('.bandeau-head').html() );
+          $('.bandeau-list-footer').html( $(data).find('.bandeau-list-footer').html() );
           history.pushState('',"titre test", urlPath);
         });
         $('.palmares-list .sub-nav-list').find('a.active').removeClass('active');
