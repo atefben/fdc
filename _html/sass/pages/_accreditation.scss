@@ -33,14 +33,34 @@
       background-size: 18px;
       padding-top: 5px;
       padding-bottom: 5px;
-    }
-    .request-btn:hover{
-//      background: url('../img/press/svg/communique-presse-white.svg') no-repeat 5% 39%;
-//      background-size: 18px;
-      border-color: #c8a461 !important;
+      position: relative;
+      &:after {
+          background: url("../img/press/svg/communique-presse-white.svg") no-repeat 16px 14px;
+          background-size: 18px;
+          content: '';
+          display: block;
+          height: 100%;
+          position: absolute;
+          width: 41px;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all 0.9s $smoothTransition);
+        }
+      &:hover{
+        background-color: #c8a461 !important;
+        color:#fff !important;
+      }
+      &:hover:after {
+        opacity: 1;
+        visibility: visible;
+      }
     }
     .buttons{
       padding: 50px 0px;
+      padding-top: 64px;
+      padding-bottom: 61px;
     }
     .wrapper {
       width: 980px;
@@ -54,7 +74,7 @@
           @include transition(all 0.5s $linear);
         }
         a:hover {
-          color: #8e6d30;
+          color: #8e6d30; 
         }
         h3 {
           font-family: $CamphorBold;

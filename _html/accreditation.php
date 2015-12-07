@@ -394,7 +394,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
        </div>
        <div class="request">
         <div class="wrapper">
-         <a href="" class="button request-btn">Faire une demande d'accréditation en ligne *</a>
+         <a href="//reg.online-festival.com/" class="button request-btn">Faire une demande d'accréditation en ligne *</a>
          <span class="legend"><sup>*</sup> Vous allez quitter le site</span>
         </div>
        </div>

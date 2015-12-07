@@ -712,19 +712,22 @@ $(document).ready(function() {
     }
     
     //FOR ALL PRESS PAGE//
-        if (!$('.press').length) {
-        if ($('#popin-download-press').length) {
+    if (!$('.lock').length) {
+      if ($('#popin-download-press').length) {
           $('.buttons').on('click',function () {
             if ($('#popin-download-press').hasClass('visible-popin')) {
               $('#popin-download-press').removeClass('visible-popin');
- 
+
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
+            } else {
 
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
+              
             }
-             return false;
+            return false;
+          
           });
 
           $(document).keyup(function (e) {
@@ -736,8 +739,8 @@ $(document).ready(function() {
               $('.overlay-div').remove();
             }
           });
-          
-           $(document).on('click', function (e) {
+
+          $(document).on('click', function (e) {
 
             var $element= $(e.target);
             if($element.hasClass('visible-popin')){
@@ -755,8 +758,8 @@ $(document).ready(function() {
           }
           }
           }); 
-          
-        }
+
+      }
     }
 
   }

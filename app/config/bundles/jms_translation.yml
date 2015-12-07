@@ -15,7 +15,7 @@ jms_translation:
             excluded_dirs: []
             extractors: []
         fdc_press:
-            dirs: [%kernel.root_dir%/../src/FDC/PressBundle]
+            dirs: [%kernel.root_dir%/../src/FDC/PressBundle/Resources/views]
             output_dir: %kernel.root_dir%/../src/FDC/PressBundle/Resources/translations
             ignored_domains: []
             excluded_names: []
