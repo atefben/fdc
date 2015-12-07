@@ -1,0 +1,332 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+#main.overlay-popin:after{
+    opacity: 0.8;
+    visibility: visible;
+    cursor: pointer;
+}
+.popin-mail{
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  transition: .4s all $linear;
+  background-color: #fff;
+  width: 628px;
+  padding: 55px 0px;
+  position: fixed;
+  top: 16%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 120;
+  height: 70%;
+  overflow-y: scroll;
+    
+  .contain-popin{
+    width: 528px;
+    margin:0 auto;
+    text-align: center;
+      .theme-article{
+        font-family: $CamphorBold;
+        font-size: 0.63rem;
+        color: #c8a461; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding-right: 9px;
+      }
+      .date-article{
+        font-size: 0.63rem;  
+        font-family: $CamphorBold;
+      }
+      .title-article{
+        font-size: 36px;
+        font-family: $Playfair;
+        line-height: 50px;
+        padding-bottom: 32px;
+        padding-top: 7px;
+      }
+      .chap-article{
+        font-size:0.88rem;
+        font-family: $CamphorBold;
+        line-height: 24px;
+        padding-bottom: 41px;
+      }
+    }
+  
+  form{
+    width: 528px;
+    margin:0 auto;
+    .complet-infos{
+      color:#c8a461;
+      font-size: 0.75rem;
+      font-family: $CamphorRegular;
+      float: right;
+      padding-bottom: 16px;
+    }
+    .newsletter{
+      float: none;
+    }
+    .detail{
+      font-size:0.88rem;
+      color:#999999;
+      float: right;
+      margin-top:4px;
+    }
+    [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+      position: absolute;
+      left: -9999px;
+    }
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label {
+      position: relative; /* permet de positionner les pseudo-éléments */
+      padding-left: 17px; /* fait un peu d'espace pour notre case à venir */
+      cursor: pointer;    /* affiche un curseur adapté */
+    }
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before {
+      content: '';
+      position: absolute;
+      left:0; top: 0px;
+      width: 10px; height: 10px; /* dim. de la case */
+      border: 1px solid #c8a461;
+      background: #ffffff;
+    }
+    /* Aspect général de la coche */
+    [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+      content: '✔';
+      position: absolute;
+      top: 3px; left: 2px;
+      font-size: 9px;
+      color: #c8a461;
+      transition: all .2s; /* on prévoit une animation */
+    }
+    /* Aspect si "pas cochée" */
+    [type="checkbox"]:not(:checked) + label:after {
+      opacity: 0; /* coche invisible */
+      transform: scale(0); /* mise à l'échelle à 0 */
+    }
+    /* Aspect si "cochée" */
+    [type="checkbox"]:checked + label:after {
+      opacity: 1; /* coche opaque */
+      transform: scale(1); /* mise à l'échelle 1:1 */
+    }
+  }
+  
+  #form {
+    margin: 0 auto;
+    overflow: hidden;
+
+    ::-webkit-input-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+    }
+    :-moz-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+    }
+    ::-moz-placeholder {
+        color:    #999;
+        font-size: 0.875rem;
+    }
+    :-ms-input-placeholder {
+        color:   #999;
+        font-size: 0.875rem;
+    }
+
+    .required {
+      color: #999;
+      float: right;
+      font-size: 0.875rem;
+    }
+
+    input, textarea {
+      background: #fff;
+      border: 1px solid #c1c1c1;
+      box-sizing: border-box;
+      color:   #999;
+      font-family: $CamphorRegular;
+      font-size: 0.875rem;
+      display: block;
+      margin-bottom: 8px;
+      outline: none;
+      padding: 0 25px;
+      width: 100%;
+
+      @include transition(all 0.3s $smoothTransition);
+
+      &:focus {
+        border-color: $black;
+      }
+    }
+
+    textarea {
+      height: 173px;
+      padding-top: 20px;
+      resize: none;
+      margin-bottom: 13px;
+      &.invalid {
+        border-color: #e93939;
+        color: #e93939;
+      }
+    }
+
+    input {
+      height: 50px;
+      line-height: 50px;
+
+      &.invalid {
+        border-color: #e93939;
+        color: #e93939;
+      }
+
+      &.valid {
+        border-color: green;
+      }
+
+      &[type="submit"] {
+        border-color: $gold;
+        color: $gold;
+        cursor: pointer;
+        float: left;
+        font-family: $CamphorHeavy;
+        font-size: 0.625rem;
+        height: 40px;
+        line-height: 40px;
+        text-transform: uppercase;
+        width: 180px;
+        @include transition(all 0.9s $smoothTransition);
+        margin: 14px 0px;
+        margin-bottom: 30px;
+        &:hover {
+          border-color: #000;
+          color: #000;
+        }
+      }
+      &[type="checkbox"]{
+        width: auto;
+        height: auto;
+        padding: 0px;
+        margin: 0px;
+        display: inline-block;
+        margin-right: 7px;
+      }
+    }
+
+    .select {
+      border: 1px solid #c1c1c1;
+      box-sizing: border-box;
+      color:   #999;
+      line-height: 50px;
+      font-family: $CamphorHeavy;
+      font-size: 0.688rem;
+      display: block;
+      height: 50px;
+      margin-bottom: 15px;
+      outline: none;
+      padding: 0 25px;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+
+      &.invalid {
+        border-color: #e93939;
+        color: #e93939;
+      }
+
+      #triggerSelect {
+        position: absolute;
+        display: block;
+        height: 50px;
+        top: 0;
+        right: 0;
+        width: 50%;
+        z-index: 2;
+        cursor: pointer;
+      }
+
+      label {
+        color: #333;
+        display: inline-block;
+        margin-right: 15px;
+        vertical-align: middle;
+      }
+
+      select {
+        background: none;
+        height: 50px;
+        line-height: 50px;
+        margin-top: -3px;
+        border: none;
+        color: $gold;
+        display: inline-block;
+        vertical-align: middle;
+        font-family: $CamphorHeavy;
+        font-size: 0.688rem;
+        outline: none;
+        -webkit-appearance: none;
+        text-transform: uppercase;
+        padding-right: 10px;
+        background: url('../img/svg/arrow-down-gold.svg') no-repeat right center;
+        background-size: 6px;
+
+      }
+    }
+
+    .errors {
+      border: 1px solid #e93939;
+      color: #e93939;
+      clear: both;
+      font-size: 0.875rem;
+      opacity: 0;
+      padding: 20px;
+      display: none;
+      @include transition(all 0.3s $smoothTransition);
+      margin-bottom:20px;
+      &.show {
+        opacity: 1;
+        display: block;
+      }
+
+      ul {
+        list-style-type: disc;
+        padding-left: 20px;
+
+        li {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+  
+  .info-popin{
+    display: block;
+    width: 528px;
+    margin:0 auto;
+    p{
+      font-size:0.63rem;
+      color:#999;
+      line-height: 14px;
+      hyphens: auto;
+      padding-top: 22px;
+      border-top:1px solid #e5e5e5;
+    }
+    
+  }
+}
+.visible-popin{
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(-30px) !important;
+  pointer-events: initial;
+}

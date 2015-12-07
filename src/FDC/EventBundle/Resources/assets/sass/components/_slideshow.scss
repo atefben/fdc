@@ -1,0 +1,746 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// 2. Override Chocolat
+// 3. Override Article actu photo
+// =========================
+
+
+// 1. Global
+// =========================
+
+.slideshow {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 40px;
+
+  .slideshow-img {
+    background-color: #000;
+    height: 555px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    .images {
+      height: 100%;
+      position: relative;
+      width: 100%;
+
+      &:before {
+        background: rgba(0,0,0,0);
+        background: -moz-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(56%, rgba(0,0,0,0)), color-stop(57%, rgba(0,0,0,0)), color-stop(100%, rgba(20,20,20,0.8)));
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -o-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: -ms-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 57%, rgba(20,20,20,0.8) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+        @include transition(all 0.3s $smoothTransition);
+      }
+    }
+
+    .thumbnails {
+      height: 64px;
+      bottom: 10px;
+      left: 10px;
+      position: absolute;
+      width: calc(100% - 10px);
+      z-index: 4;
+
+      .thumb {
+        background: $black;
+        box-sizing: border-box;
+        height: 64px;
+        position: relative;
+        width: 97px;
+        @include transition(all 0.6s $linear);
+
+        &:after {
+          border: 0px solid $gold;
+          box-sizing: border-box;
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          @include transform(translateZ(0));
+          @include transition(all .6s $smoothTransition);
+        }
+
+        img {
+          opacity: 0.5;
+          @include transition(all 0.6s $linear);
+        }
+
+        &.active {
+
+          &:after {
+            border-width: 6px;
+          }
+
+          img {
+            opacity: 1;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          &:after {
+            border-width: 6px;
+          }
+
+          img {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .images .img {
+      display: block;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      width: 100%;
+      @include transition(all 1s $smoothTransition);
+
+      img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        pointer-events: none;
+        @include transition(all 8s $linear);
+      }
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &:before {
+        background-color: #000;
+        content: '';
+        display: block;
+        height: 100%;
+        opacity: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+        width: 100%;
+        z-index: 2;
+        pointer-events: none;
+        @include transition(all 0.6s $smoothTransition);
+      }
+
+      a {
+        pointer-events: none;
+      }
+
+      &:after {
+        background: url('../img/svg/photo-white.svg') no-repeat center;
+        background-size: 25px;
+        border: 1px solid rgba(255, 255, 255, .35);
+        content: '';
+        display: block;
+        height: 80px;
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+        margin: -40px 0 0 -40px;
+        top: 50%;
+        visibility: hidden;
+        width: 80px;
+        z-index: 3;
+        @include transition(all 0.6s $smoothTransition);
+      }
+
+      &:hover {
+        &:before {
+          opacity: 0.6;
+          visibility: visible;
+        }
+
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        img {
+          @include transform(scale(1.05));
+        }
+      }
+    }
+  }
+
+  .caption {
+    color: #666;
+    font-family: $CamphorRegular;
+    font-size: 0.750rem;
+    margin: 20px 0;
+
+    strong {
+      color: #333;
+      font-family: $CamphorBold;
+      font-weight: normal;
+    }
+  }
+
+  h3 {
+    color: $gold;
+    font-family: $CamphorBold;
+    font-weight: normal;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    margin-top: 25px;
+    text-transform: uppercase;
+  }
+}
+
+// 2. Override Chocolat
+// =========================
+
+body.chocolat-open {
+  overflow: initial;
+}
+
+body.fixed {
+  position: fixed;
+  overflow-y: scroll;
+}
+
+div.chocolat-wrapper {
+  background-color: $dark;
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all 1s $smoothTransition);
+
+  .chocolat-img {
+    opacity: 0;
+    visibility: hidden;
+    @include transform(scale(1.1) translateZ(0));
+    @include transition(all 1.5s $smoothTransition 1s);
+  }
+
+  .chocolat-overlay {
+    opacity: 1;
+    background-color: $dark;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+
+    .chocolat-img {
+      opacity: 1;
+      visibility: visible;
+      @include transform(scale(1) translateZ(0));
+
+      &.close {
+        opacity: 0;
+        visibility: hidden;
+        @include transform(scale(1.1) translateZ(0));
+      }
+    }
+  }
+
+  .thumbnails {
+    position: absolute;
+    bottom: 101px;
+    left: 0;
+    width: 100%;
+    z-index: 15;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    z-index: 0;
+    @include transform(translateZ(0));
+    @include transition(all 1.1s ease);
+
+    &.open {
+      max-height: 150px;
+
+      .thumb img {
+        @include transform(translate3d(0, 0, 0));
+      }
+    }
+
+    .thumb {
+      background-color: #000;
+      cursor: pointer;
+
+      img {
+        display: block;
+        max-height: 150px;
+        opacity: 0.3!important;
+        width: 101%;
+        @include transform(translate3d(0, -40px, 0));
+        @include transition(opacity 0.9s $smoothTransition, transform 0.9s ease);
+      }
+
+      &.active, &:hover {
+        img {
+          opacity: 1!important;
+        }
+      }
+    }
+
+  }
+
+  .chocolat-bottom {
+    background: url('../img/shadow-slideshow.png') repeat-x;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+    line-height: initial;
+    padding: 0;
+    height: 100px;
+    opacity: 0;
+    @include transition(all 0.9s $smoothTransition);
+
+    .buttons {
+      position: absolute;
+      right: 0;
+      z-index: 5;
+      bottom: 101px;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all 0.6s $smoothTransition);
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .button {
+        border-color: rgba(255, 255, 255, 0.4);
+        border-bottom: none;
+        height: 75px;
+        width: 75px;
+
+        &:last-child {
+          border-right: none;
+          width: 74px;
+        }
+      }
+
+      a.facebook {
+        background: url('../img/svg/facebook-gold.svg') no-repeat center;
+        background-size: 19px;
+      }
+
+      a.twitter {
+        background: url('../img/svg/twitter-gold.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.email {
+        background: url('../img/svg/mail.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.link {
+        background: url('../img/svg/link.svg') no-repeat center;
+        background-size: 16px;
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: $black;
+      opacity: 0;
+      visibility: hidden;
+      @include transform(translateZ(0));
+      @include transition(all 0.5s $smoothTransition);
+    }
+
+    &.show {
+      opacity: 1;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      &:after {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .buttons {
+        background-color: $black;
+      }
+    }
+
+    .chocolat-pagination {
+      background: url("../img/svg/photo-white.svg") no-repeat center 36%;
+      background-size: 30px;
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
+      font-family: $CamphorBold;
+      cursor: pointer;
+      font-size: 0.750rem;
+      height: 100%;
+      line-height: 140px;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      left: 0;
+      text-align: center;
+      width: 100px;
+      z-index: 2;
+      @include transition(all 0.9s $linear);
+
+      &.active, &:hover {
+        background-color: $gold;
+      }
+    }
+
+    .chocolat-description {
+      box-sizing: border-box;
+      padding-top: 30px;
+      padding-left: 135px;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+      @include transition(opacity 0.6s $smoothTransition);
+
+      &.hide {
+        opacity: 0;
+      }
+
+      @include breakpoint(1024px) {
+        width: 430px;
+        padding-top: 17px;
+      }
+
+      span {
+        &.category {
+          color: $gold;
+          display: inline-block;
+          font-size: 0.625rem;
+          letter-spacing: 0.1em;
+          margin-right: 12px;
+          text-transform: uppercase;
+        }
+
+        &.date {
+          color: #666;
+          display: inline-block;
+          font-size: 0.625rem;
+        }
+      }
+
+      h2 {
+        font-family: $CamphorBold;
+        font-size: 1rem;
+        margin-top: 5px;
+      }
+
+      p {
+        color: #999;
+        font-size: 0.750rem;
+      }
+    }
+  }
+
+  .credit {
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    height: 100px;
+    bottom: 0;
+    position: absolute;
+    right: 303px;
+    z-index: 20;
+    color: #dedede;
+    font-size: 0.750rem;
+    line-height: 100px;
+    padding: 0 35px;
+    @include transition(opacity 0.6s $smoothTransition);
+
+    &.hide {
+      opacity: 0;
+    }
+  }
+
+  .share {
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    display: block;
+    width: 100px;
+    height: 100px;
+    bottom: 0;
+    z-index: 20;
+    right: 202px;
+    position: absolute;
+
+    &:after {
+      background: url('../img/svg/share.svg') no-repeat center;
+      background-size: 22px;
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      @include transition(opacity 0.9s $linear);
+      @include transform(translateZ(0));
+    }
+
+    &:hover:after {
+      opacity: 0.5;
+    }
+  }
+
+  .chocolat-left {
+    background: none;
+    bottom: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    display: block;
+    top: auto;
+    left: auto;
+    right: 101px;
+    width: 100px;
+    height: 100px;
+    margin-top: 0;
+    z-index: 20;
+
+    &:after {
+      background: url('../img/svg/arrow-left-white.svg') no-repeat center;
+      background-size: 18px;
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      @include transition(opacity 0.9s $linear);
+      @include transform(translateZ(0));
+    }
+
+    &:hover:after {
+      opacity: 0.5;
+    }
+  }
+
+  .chocolat-right {
+    background: none;
+    bottom: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    display: block;
+    top: auto;
+    width: 100px;
+    height: 100px;
+    margin-top: 0;
+    z-index: 20;
+
+    &:after {
+      background: url('../img/svg/arrow-right-white.svg') no-repeat center;
+      background-size: 18px;
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      @include transition(opacity 0.9s $linear);
+      @include transform(translateZ(0));
+    }
+
+    &:hover:after {
+      opacity: 0.5;
+    }
+  }
+
+  .chocolat-content {
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @include transition(opacity .9s $smoothTransition);
+
+    &.thumbsOpen {
+      opacity: 0.3!important;
+    }
+
+    &.hide {
+      opacity: 0!important;
+    }
+  }
+
+  .chocolat-fullscreen {
+    display: none;
+  }
+
+  .chocolat-top {
+    overflow: initial;
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    top: 20px;
+    left: auto;
+    right: 20px;
+  }
+
+  .chocolat-close {
+    background: url('../img/svg/close-gold.svg') no-repeat center;
+    background-size: 15px;
+    border: 1px solid $gold;
+    cursor: pointer;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    z-index: 100;
+    opacity: 0.6;
+    @include transition(all 0.9s $smoothTransition);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .chocolat-loader {
+    background: none;
+  }
+
+  .zoomCursor {
+    cursor: none;
+    display: none;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    z-index: 50;
+    border: 1px solid $gold;
+    @include transition(opacity 0.3s $smoothTransition);
+
+    &.hide {
+      opacity: 0;
+    }
+  }
+
+}
+
+.chocolat-zoomable {
+
+  .zoomCursor {
+    background: url('../img/svg/zoomIn.svg') no-repeat center;
+    background-size: 20px;
+    display: block!important;
+  }
+
+  .chocolat-content, .chocolat-img {
+    cursor: none;
+  }
+}
+
+.chocolat-zoomed {
+  .zoomCursor {
+    background: url('../img/svg/zoomOut.svg') no-repeat center;
+    background-size: 20px;
+    display: block!important;
+  }
+
+  .chocolat-content, .chocolat-img {
+    cursor: none!important;
+  }
+}
+
+@include breakpoint(1600px) {
+  div.chocolat-wrapper {
+
+    .share {
+      height: 80px;
+      width: 80px;
+      right: 162px;
+    }
+
+    .chocolat-right {
+      height: 80px;
+      width: 80px;
+    }
+
+    .chocolat-left {
+      height: 80px;
+      width: 80px;
+      right: 81px;
+    }
+
+    .thumbnails {
+      bottom: 81px;
+    }
+
+    .credit {
+      height: 80px;
+      line-height: 80px;
+    }
+
+    .chocolat-bottom {
+      height: 80px;
+
+      .chocolat-description {
+        padding-top: 15px;
+        padding-left: 115px;
+      }
+
+      .chocolat-pagination {
+        line-height: 120px;
+        width: 80px;
+      }
+
+      .buttons {
+        bottom: 81px;
+
+        .button {
+          height: 60px;
+          width: 60px;
+
+          &:last-child {
+            width: 59px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 3. Override Article actu photo
+// =========================
+.article_photo{
+    padding-top: 50px;
+    .slideshow-img {
+        height: 615px !important;
+      .images .img img{
+        width: 100%;
+      }
+    }    
+    .slideshow-img .thumbnails{
+        width: 960px;
+    }
+  .caption{
+    font-family: $CamphorRegular;
+    strong{
+     font-family: $CamphorBold !important;     
+    }
+  }
+}
+
+

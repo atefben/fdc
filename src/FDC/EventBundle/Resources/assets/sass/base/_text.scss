@@ -1,0 +1,88 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+// 1. Global
+// =========================
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+.button {
+  border: 1px solid #dfdfdf;
+  border-right: none;
+  color: $gold;
+  display: inline-block;
+  font-family: $CamphorBold;
+  font-size: 0.688rem;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 0;
+  padding: 0 22px 0 42px;
+  text-transform: uppercase;
+  @include transition(all 0.9s $smoothTransition);
+
+  &:last-child {
+    border-right: 1px solid #dfdfdf;
+  }
+
+  &:hover {
+    background-color: $gold;
+    border-color: $gold;
+    color: #fff;
+  }
+}
+
+.buttons {
+  font-size: 0;
+  text-align: center;
+
+  &.square .button {
+    height: 73px;
+    line-height: 73px;
+    padding: 0;
+    text-align: center;
+    width: 73px;
+
+    &:hover {
+      border-color: #dfdfdf;
+    }
+  }
+}
+
+.title {
+  font-family: $Playfair;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.5em;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: $Playfair;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.canvasloader {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  z-index: 11;
+  @include transition(all 0.5s $smoothTransition);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}

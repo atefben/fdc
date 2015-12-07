@@ -60,18 +60,26 @@ twig:
         locales_admin: "%locales_admin%"
         locales: "%locales%"
 
+parameters:
+    # Assetic
+    assetic.filter.compass.images_dir: %kernel.root_dir%/../web/images
+    assetic.filter.compass.http_path:  /images
+
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: false
-    bundles:        [ SonataAdminBundle, BaseAdminBundle ]
-    #java: /usr/bin/java
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle ]
+    use_controller: true
+    ruby: C:\Ruby22-x64\bin\ruby
     filters:
         cssrewrite: ~
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+        scss:
+            bin : C:\Ruby22-x64\bin\scss
+        sass:
+            bin : C:\Ruby22-x64\bin\sass
+        compass:
+            bin : C:\Ruby22-x64\bin\compass
+
 
 # Doctrine Configuration
 doctrine:

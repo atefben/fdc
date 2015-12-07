@@ -1,0 +1,136 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.faq{
+    width: 978px;
+    margin: 0 auto;
+    .faq-menu{
+        width: 210px;
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        margin-right: 29px;
+		 	 position: fixed;
+			    top: 393px;
+        ul{
+            border-right: 1px solid #dfdfdf;
+            li{
+                padding: 15px;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                color: #dfdfdf;
+								transition: .5s;
+                font-family: $CamphorBold;
+            }
+						li:hover{
+								background-color: #fafafa;
+								color: #b2b2b2;
+								cursor: pointer;
+						}
+            .active{
+                background-color: #dfdfdf;
+                color: #000;
+            }
+        }
+    }
+    .faq-container{
+        width: 733px;
+        display: none;
+        vertical-align: top;
+    }
+		.faq-active{
+				display: inline-block;
+		}
+		section[data-name="informations-generales"]{
+				top: 1px;
+			  opacity: 1;
+				display: inline-block;
+		}
+    h2{
+        padding: 60px; 
+        font-size: 1.75rem ;
+    }
+
+    section{
+        background-color: #fff;
+        width: 630px;
+        max-width: 100%;
+        margin: 0 auto;
+        color:#666666;
+        padding-bottom: 150px;
+				position: relative;
+				opacity: 0;
+				display: inline-block;
+				top: 200px;
+			  margin-left: 240px;
+        article{
+            height: auto;
+            box-sizing: border-box;
+            float: none;
+            padding-left: 0px;
+            position: relative;
+            width: 100%;
+            padding-top: 0px;
+            line-height: 26px;
+            border-top: 1px solid #dfdfdf;
+            padding: 20px 18px;
+            max-height: 100px;
+            overflow: hidden;
+            transition: 1s;
+            h3{
+                font-size: 1rem;
+                text-transform: uppercase;
+                color: #c1c1c1;
+                padding-bottom: 40px;
+                width: 533px;
+                display: inline-block;
+                font-family: $CamphorBold;
+            }
+            .fa{
+                margin-bottom: 40px;
+                border: solid 1px #ebebeb;
+                padding: 18px;
+                color: #c1c1c1;
+                vertical-align: super;
+                margin-left: 112px;
+            }
+            .faq-description{
+                width: 660px;
+                color:#666666;
+                font-size:1rem;
+                line-height: 26px;
+                
+                a{
+                    color:#c8a461;
+                    text-decoration: underline;
+                }
+            }
+						.fa:hover{
+								color:#c8a461;
+								transition: .5s;
+								cursor: pointer;
+						}
+						h3:hover{
+								color:#c8a461;
+								transition: .5s;
+								cursor: pointer;
+						}
+            
+        }
+        .faq-article-active{
+//            max-height: 5000px;
+            h3{
+                color:#c8a461;
+            }
+            .fa{
+                 color:#c8a461;
+            }
+        }
+    }
+}

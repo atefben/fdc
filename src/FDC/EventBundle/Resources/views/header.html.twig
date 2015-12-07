@@ -1,4 +1,70 @@
 {% trans_default_domain 'FDCEventBundle' %}
 <header>
 
+    <div id="top-bar">
+        <ul class="main-nav">
+
+            {% for nav in mainNav %}
+                <li>
+                    <a href="{{ nav.href }}" target="_blank">{{ nav.title }}</a>
+                </li>
+            {% endfor %}
+
+        </ul>
+        <ul class="user-nav">
+
+            {% for nav in userNav %}
+                <li>
+                    <a href="{{ nav.href }}" target="_blank">{{ nav.title }}</a>
+                </li>
+            {% endfor %}
+
+            <li class="lang">
+                <a href="#" class="language">
+                    {% for nav in langNav %}
+                        {% if nav.current == true %}
+                            <a href="#">{{ nav.iso }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </a>
+                <ul class="sub-languages">
+                    {% for nav in langNav %}
+                        {% if nav.current == false %}
+                            <li><a href="#">{{ nav.iso }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <div id="logo-wrapper">
+        <div class="container">
+            <div id="logo">
+                <a href="/">
+                    {% image '@FDCEventBundle/Resources/assets/images/svg/palme.svg'  %}
+                    <img width="200" src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                    {% endimage %}
+                </a>
+                <h1>
+                    <a href="/">
+                        {% image '@FDCEventBundle/Resources/assets/images/svg/logo.svg' %}
+                        <img src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                        {% endimage %}
+                    </a>
+                </h1>
+                <h2>
+                    <a href="/">{{ 'event.date'|trans }}</a>
+                </h2>
+                <p class="stick">
+                    <a href="/">
+                        {% image '@FDCEventBundle/Resources/assets/images/svg/logo.svg' %}
+                        <img width="178" src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                        {% endimage %}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
 </header>
