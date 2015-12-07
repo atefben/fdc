@@ -72,7 +72,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>Lorem<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -164,7 +164,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>Lorem<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -256,7 +256,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>Lorem<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -348,7 +348,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>Lorem<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
@@ -440,7 +440,7 @@
                   <img src="http://dummyimage.com/55x75/000/fff" alt="" />
                   <div class="txt">
                     <div class="vCenter">
-                      <div class="vCenterKid"><p>CAROL<a href="#" class="director">Todd HAYNES</a></p></div>
+                      <div class="vCenterKid"><p>Lorem<a href="#" class="director">Todd HAYNES</a></p></div>
                     </div>
                   </div>
                 </div>
