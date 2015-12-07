@@ -21,3 +21,7 @@ To extract the translations from the templates we use the following commands :
 php app/console translation:extract fr --config=fdc_event
 
 php app/console translation:extract en --config=fdc_event
+
+php app/console translation:extract es --config=fdc_event
+
+php app/console translation:extract zh --config=fdc_event
