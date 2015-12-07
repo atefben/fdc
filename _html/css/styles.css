@@ -12599,6 +12599,10 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba-video .informations-video .share .button {
   border-color: #2c2c2c;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .webtv-ba-video .informations-video .share a.facebook {
   background: url("../img/svg/facebook-gold.svg") no-repeat center;
