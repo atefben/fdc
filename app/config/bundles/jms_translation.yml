@@ -2,11 +2,22 @@ jms_translation:
     configs:
         admin:
             dirs: [%kernel.root_dir%/../src/Base/AdminBundle]
-            # You might want to use the commented line instead to get the translations value in %kernel.root_dir%/../src/Application/Sonata/AdminBundle
-            # Wants the command used, you have to remove manually the SonataAdminBundle translations files to use the one defined in the bundle
-            #dirs: [%kernel.root_dir%/../src/Base/AdminBundle, %kernel.root_dir%/../src/Application/Sonata/AdminBundle]
             output_dir: %kernel.root_dir%/../src/Base/AdminBundle/Resources/translations
             ignored_domains: []
             excluded_names: ["*TestCase.php", "*Test.php"]
             excluded_dirs: [cache, data, logs]
+            extractors: []
+        fdc_event:
+            dirs: [%kernel.root_dir%/../src/FDC/EventBundle/Resources/views]
+            output_dir: %kernel.root_dir%/../src/FDC/EventBundle/Resources/translations
+            ignored_domains: []
+            excluded_names: []
+            excluded_dirs: []
+            extractors: []
+        fdc_press:
+            dirs: [%kernel.root_dir%/../src/FDC/PressBundle]
+            output_dir: %kernel.root_dir%/../src/FDC/PressBundle/Resources/translations
+            ignored_domains: []
+            excluded_names: []
+            excluded_dirs: []
             extractors: []

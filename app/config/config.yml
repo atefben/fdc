@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: roles/security_all.yml }
+    - { resource: roles/security_fdc.yml }
+    - { resource: roles/security_soif.yml }
     - { resource: services.yml }
     - { resource: bundles/a2lix_translation_form.yml }
     - { resource: bundles/nelmio_api_doc.yml }

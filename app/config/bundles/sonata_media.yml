@@ -22,6 +22,7 @@ sonata_media:
         news_header_image:  # the default context is mandatory
             providers:
                 - sonata.media.provider.image
+           #     - sonata.media.provider.video
 
             formats:
                 small: { width: 100 , quality: 100 }
@@ -37,6 +38,7 @@ sonata_media:
         news_video:
             providers:
                 - sonata.media.provider.file
+           #     - sonata.media.provider.video
 
             formats:
 
@@ -61,6 +63,9 @@ sonata_media:
     providers:
         image:
             filesystem: sonata.media.filesystem.s3
+    #    video:
+    #        allowed_extensions: ['mp4', 'flv']
+    #        allowed_mime_types: ['video/mp4', 'video/x-flv']
 
     filesystem:
         s3:

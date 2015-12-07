@@ -40,7 +40,8 @@
         "nelmio/api-doc-bundle": "^2.9",
         "knplabs/knp-paginator-bundle": "^2.5",
         "knplabs/knp-components": "1.2.5",
-        "aws/aws-sdk-php": "~2.7"
+        "aws/aws-sdk-php": "~2.7",
+        "friendsofsymfony/jsrouting-bundle": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -71,15 +71,15 @@ class UpdateCommand extends ContainerAwareCommand
         
         // managers
         $managers = array(
-            $this->getContainer()->get('base.soif.country_manager'),
+         /*   $this->getContainer()->get('base.soif.country_manager'),
             $this->getContainer()->get('base.soif.festival_manager'),
             $this->getContainer()->get('base.soif.award_manager'),
             $this->getContainer()->get('base.soif.festival_poster_manager'),
             $this->getContainer()->get('base.soif.film_atelier_manager'),
-            $this->getContainer()->get('base.soif.film_manager'),
+            $this->getContainer()->get('base.soif.film_manager'),*/
             $this->getContainer()->get('base.soif.person_manager'),
-            $this->getContainer()->get('base.soif.jury_manager'),
-            $this->getContainer()->get('base.soif.projection_manager')
+         //   $this->getContainer()->get('base.soif.jury_manager'),
+        //    $this->getContainer()->get('base.soif.projection_manager')
         );
         
         // check if manager exist when targetting a specific entity
@@ -94,7 +94,7 @@ class UpdateCommand extends ContainerAwareCommand
         
         // call the managers
         foreach ($managers as $manager) {
-            $manager->getModified($start, $end);
+         //   $manager->getModified($start, $end);
             // verify if method exists before call because prize manager doenst have a getRemoved method
             if (method_exists($manager, 'getRemoved')) {
                 $manager->getRemoved($start, $end);

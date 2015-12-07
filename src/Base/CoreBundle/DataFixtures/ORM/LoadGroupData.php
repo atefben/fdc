@@ -21,22 +21,27 @@ class LoadGroupData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $group = new Group('SOIF');
-        $group->setRoles('ROLE_SOIF');
+        $group->setRoles(array('ROLE_SOIF'));
         $manager->persist($group);
         $this->addReference('group-soif', $group);
 
-        $group = new Group('Admin FDC');
-        $group->setRoles('ROLE_FDC_ADMIN', 'ROLE_SOIF');
-        $manager->persist($group);
-        $this->addReference('group-admin-fdc', $group);
-
         $group = new Group('Admin All');
-        $group->setRoles('ROLE_ALL_ADMIN', 'ROLE_SOIF');
+        $group->setRoles(array('ROLE_ALL_ADMIN'));
         $manager->persist($group);
-        $this->addReference('group-admin-all', $group);
+        $this->addReference('group-all-admin', $group);
+
+        $group = new Group('Translator');
+        $group->setRoles(array('ROLE_ALL_TRANSLATOR'));
+        $manager->persist($group);
+        $this->addReference('group-all-translator', $group);
+
+        $group = new Group('Admin FDC');
+        $group->setRoles(array('ROLE_FDC_ADMIN'));
+        $manager->persist($group);
+        $this->addReference('group-fdc-admin', $group);
 
         $group = new Group('FDC Writer');
-        $group->setRoles('ROLE_FDC_WRITER');
+        $group->setRoles(array('ROLE_FDC_WRITER'));
         $manager->persist($group);
         $this->addReference('group-fdc-writer', $group);
 

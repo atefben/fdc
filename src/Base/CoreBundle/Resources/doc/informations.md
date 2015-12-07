@@ -29,9 +29,11 @@ You have to configure the parameters.yml
 
 Have the mandatory php extensions and php.ini
 
-Launch the command : php app/console d:d:c && php app/console d:s:u --force && php app/console d:f:l
+Launch the command : 
 
-You have to validate to load the fixtures in your database
+php app/console d:d:c && php app/console d:s:u --force && php app/console d:f:l
+composer install
+php app/console assets:install --symlink web
 
 ## Bundles
 

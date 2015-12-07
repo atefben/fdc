@@ -42,14 +42,16 @@ class AppKernel extends Kernel
             /* CMS tools */
             new Infinite\FormBundle\InfiniteFormBundle(),
             new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
-            // sluggable
+            /* sluggable */
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            // Translations
+            /* Translations */
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
+            /* Front tools */
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             /* User Management */
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),

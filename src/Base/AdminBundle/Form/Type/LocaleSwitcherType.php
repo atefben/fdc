@@ -66,9 +66,11 @@ class LocaleSwitcherType extends BaseType
                 )
             ))
             ->add('ok', 'submit', array(
+                'label' => 'btn.submit',
                 'attr' => array(
                     'class' => 'btn btn-success',
-                )
+                ),
+                'translation_domain' => 'BaseAdminBundle'
             ));
     }
 

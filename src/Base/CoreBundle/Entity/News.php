@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use \DateTime;
 
+use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslationByLocale;
 
@@ -29,6 +30,7 @@ abstract class News
 {
     use TranslationByLocale;
     use Time;
+    use Seo;
     
     /**
      * @var integer
@@ -104,14 +106,14 @@ abstract class News
      * @Groups({"news_list", "news_show"})
      */
     private $tags;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
      *
      * @Groups({"news_list", "news_show"})
      */
     private $associations;
-    
+
     /**
      * @var NewsWidget
      *

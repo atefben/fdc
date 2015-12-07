@@ -124,7 +124,6 @@ class NewsArticleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
@@ -191,6 +190,7 @@ class NewsArticleAdmin extends Admin
                 )
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
+                'label' => false,
                 'types' => array(
                     'news_widget_text_type',
                     'news_widget_audio_type',

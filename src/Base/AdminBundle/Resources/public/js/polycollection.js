@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
         new window.infinite.Collection(this, $(this).siblings('[data-prototype]'));
     });
     
-    $('div[id$=_widgets][data-form-widget="collection"').sortable({
+  /*  $('div[id$=_widgets][data-form-widget="collection"').sortable({
         axis: 'y',
         items: '> .Base-widget',
         start: function(event, ui) {
@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
                 CKEDITOR.replace( textareaId );
             }
         }
-    });
+    });*/
     
     $('form[action*="news"]').submit(function() {
         var inputs = $('input[name$="[position]"]');

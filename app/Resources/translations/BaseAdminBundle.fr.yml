@@ -1,3 +1,7 @@
+lang:
+    en: Anglais
+    fr: Francais
+
 entity:
     news_article: Articles
     news_video: Vidéos

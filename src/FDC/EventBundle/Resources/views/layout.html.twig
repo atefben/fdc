@@ -1,9 +1,13 @@
+{% trans_default_domain 'FDCEventBundle' %}
 <html>
     <head>
-        <title>FDC Event</title>
+        <title>{{ 'website.title'|trans }}</title>
     </head>
     <body>
+        {{  app.request.locale }}
+        {% include 'FDCEventBundle::header.html.twig' %}
         {% block body %}
         {% endblock %}
+        {% include 'FDCEventBundle::footer.html.twig' %}
     </body>
 </html>
