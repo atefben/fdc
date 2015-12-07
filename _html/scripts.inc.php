@@ -15,7 +15,7 @@
 <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
 <script src="js/bower_components/canvasloader/js/heartcode-canvasloader-min.js"></script>
 <script src="js/components/snap.svg.easing.js"></script>
-<script src="js/components/fullscrenjs.js"></script>
+<script src="js/components/fullscreenjs.js"></script>
 <script src="js/components/jwplayer.js"></script>
 <script src="js/components/konsole.min.js"></script>
 <script src="js/components/jquery-ui.min.js"></script>

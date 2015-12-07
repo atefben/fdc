@@ -35,55 +35,6 @@
       z-index: 1;
     }
   }
-
-  .picto {
-    bottom: 20px;
-    left: 20px;
-    pointer-events: initial;
-    cursor: pointer;
-
-    &.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-
-  .info {
-    color: #666;
-    height: 44px;
-    bottom: 20px;
-    left: 80px;
-    position: absolute;
-    z-index: 2;
-
-    &.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .category {
-      color: #c8a461;
-      display: inline-block;
-      font-size: 0.625rem;
-      letter-spacing: 0.1em;
-      margin-right: 12px;
-      text-transform: uppercase;
-    }
-
-    span {
-      color: #666;
-      display: inline-block;
-      font-size: 0.625rem;
-    }
-
-    p {
-      color: #fff;
-      font-family: $CamphorRegular;
-      font-size: 0.850rem;
-      text-align: left;
-      width: auto;
-    }
-  }
 }
 
 // 2. Article Actu Vidéo
@@ -101,8 +52,8 @@
 #video-container {
   position: relative;
   overflow: hidden;
-  width: 960px;
-  height: calc(960px*9/16);
+  width: 630px;
+  height: calc(630px*9/16);
 
   button {
     background: none;
@@ -122,12 +73,223 @@
   }
 
   .top-bar {
+    background: url('../img/shadow-reverse.png') repeat-x;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    height: 80px;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
     position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    opacity: 0;
+    // transition: all .3s ease-in-out 2s;
+    @include transition(all 0.3s $smoothTransition);
+    @include transform(translateY(-100%));
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: $black;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 0;
+      @include transform(translateZ(0));
+      @include transition(all 0.5s $smoothTransition);
+    }
+
+    &:hover {
+      &:after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .channels {
+      background: url('../img/svg/mic.svg') no-repeat center;
+      background-size: 42px;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+      display: block;
+      float: left;
+      height: 100%;
+      width: 80px;
+      position: relative;
+      z-index: 1;
+      @include transition(all .5s $smoothTransition);
+
+      &:hover, &.active {
+        background-color: $gold;
+      }
+    }
+
+    .info {
+      display: block;
+      height: 100%;
+      float: left;
+      margin-top: 0;
+      margin-left: 25px;
+      position: relative;
+      text-align: left;
+      z-index: 1;
+
+      .category {
+        margin-left: 0;
+      }
+
+      p {
+        font-size: 1.125rem;
+      }
+    }
+
+    .buttons {
+      float: right;
+      position: relative;
+      z-index: 1;
+
+      .button {
+        border-color: rgba(255, 255, 255, 0.3);
+        border-top: none;
+        border-bottom: none;
+        height: 80px;
+        width: 80px;
+      }
+
+      a:hover {
+        background-color: #fff;
+        border-color: rgba(255, 255, 255, 0.3)!important;
+      }
+
+      a.facebook {
+        background: url('../img/svg/facebook-gold.svg') no-repeat center;
+        background-size: 19px;
+      }
+
+      a.twitter {
+        background: url('../img/svg/twitter-gold.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.email {
+        background: url('../img/svg/mail.svg') no-repeat center;
+        background-size: 16px;
+      }
+
+      a.link {
+        background: url('../img/svg/link.svg') no-repeat center;
+        background-size: 16px;
+      }
+    }
   }
+
+  .channels-video {
+      height: 185px;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -92px;
+      z-index: 3;
+      @include transform(translate3d(0, 30px, 0));
+      @include transition(all .8s $smoothTransition);
+
+      .info, .picto {
+        display: block;
+      }
+
+      .info-container {
+        text-align: left;
+      }
+
+      .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
+        opacity: 1;
+
+        .linkVid {
+          display: block;
+        }
+      }
+
+      .info {
+        bottom: 15px;
+        height: auto;
+
+        p {
+          font-size: 0.850rem;
+        }
+      }
+
+      .picto {
+        background-image: url('../img/svg/audio.svg');
+        background-size: 25px;
+        margin-left: 0;
+      }
+
+      &.active {
+        @include transform(translate3d(0, 0, 0));
+        opacity: 1;
+        visibility: visible;
+      }
+    }
 
   .infos-bar {
     position: relative;
     z-index: 5;
+
+    .picto {
+      bottom: 20px;
+      left: 20px;
+      pointer-events: initial;
+      cursor: pointer;
+
+      &.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    .info {
+      color: #666;
+      height: 44px;
+      bottom: 20px;
+      left: 80px;
+      position: absolute;
+      z-index: 2;
+
+      &.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .category {
+        color: #c8a461;
+        display: inline-block;
+        font-size: 0.625rem;
+        letter-spacing: 0.1em;
+        margin-right: 12px;
+        text-transform: uppercase;
+      }
+
+      span {
+        color: #666;
+        display: inline-block;
+        font-size: 0.625rem;
+      }
+
+      p {
+        color: #fff;
+        font-family: $CamphorRegular;
+        font-size: 0.850rem;
+        text-align: left;
+        width: auto;
+      }
+    }
   }
 
   .control-bar {
@@ -295,15 +457,19 @@
   }
 
   &:-webkit-full-screen {
-    .control-bar {
-      background: blue;
-    }
+    width: 100vw;
+    height: 100vh;
   }
   
   &.state-init {
     .control-bar {
       opacity: 0;
       @include transform(translateY(100%));
+    }
+
+    .top-bar {
+      opacity: 0;
+      @include transform(translateY(-100%));
     }
 
     &:hover {
@@ -313,10 +479,70 @@
     }
   }
 
+  &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
+    &>.top-bar {
+      opacity: 1;
+      @include transform(translateY(0%));
+    }
+
+    &>.control-bar {
+      opacity: 1;
+      @include transform(translate(0,0));
+      @include transition(all .3s ease-in-out);
+    }
+  }
+
   &:hover {
     .control-bar {
       @include transform(translate(0,0));
       transition: all .3s ease-in-out;
+    }
+  }
+
+  &.control-hide {
+    &:hover,
+    .jw-flag-controls-disabled .jw-media,
+    .progress-bar,
+    button {
+      cursor: none;
+    }
+
+    .control-bar {
+      opacity: 0;
+      @include transform(translateY(100%));
+    }
+  }
+
+  .jw-state-paused {
+      &:before {
+      content: '';
+      background: #000;
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+      visibility: visible;
+      z-index: 2;
+    }
+
+    &.overlay-channels:before {
+      opacity: 0.8;
+      visibility: visible;
+    }
+
+
+    &+.top-bar {
+      opacity: 1;
+      @include transform(translateY(0%));
+    }
+
+    &~.control-bar {
+      opacity: 1;
+      @include transform(translate(0,0));
+      @include transition(all .3s ease-in-out);
     }
   }
 }

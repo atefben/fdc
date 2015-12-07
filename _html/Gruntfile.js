@@ -56,7 +56,7 @@ module.exports = function(grunt) {
             'js/bower_components/infinite-scroll/jquery.infinitescroll.min.js',
             'js/bower_components/canvasloader/js/heartcode-canvasloader-min.js',
             'js/components/snap.svg.easing.js',
-            'js/components/fullscrenjs.js',
+            'js/components/fullscreenjs.js',
             'js/components/jwplayer.js',
             'js/components/konsole.min.js',
             'js/components/jquery-ui.min.js',
