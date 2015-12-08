@@ -1,6 +1,8 @@
 lang:
     en: English
     fr: French
+    es: Espanol
+    zh: Chinese
 
 entity:
     news_article: Articles
@@ -39,7 +41,7 @@ dashboard:
         info: Infos
     link:
         settings: Parameters
-        bo_translation: Admin translation
+        bo_translation: Translations
         homepage: Homepage
 
 form:

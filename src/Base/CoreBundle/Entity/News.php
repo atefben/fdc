@@ -119,6 +119,7 @@ abstract class News
      *
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"persist"})
      *
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"news_list", "news_show"})
      */
     private $widgets;

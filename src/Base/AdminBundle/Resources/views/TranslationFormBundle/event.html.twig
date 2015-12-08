@@ -131,7 +131,7 @@
                             </div>
                             {#<div class="box-body">
                                 {% for widget in form.parent.children.widgets.children %}
-                                <div class="Base-widget">
+                                <div class="base-widget">
                                     {% if widget.vars.value is news_widget_text %}
                                         {{ form_widget(attribute(widget.children.translations, locale)) }}
                                     {% else %}

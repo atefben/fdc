@@ -11,16 +11,18 @@
             'data-disabled': 1
         }) %}
     {% endif %}
-
     {{ block('form_widget') }}
 {% endspaceless %}
 {% endblock %}
 
-{% block news_widget_text_type_row %}
+{# set the default locale to locale_default_translation to handle the language used when adding new text widget #}
+{# render only the content block and the other values #}
+{% block news_widget_text_type_widget %}
+    {% set locale = locale_default_translation %}
     <div class="base-widget">
-        {{ form_row(form.children._type) }}
-        {{ form_row(form.children.position) }}
-        {{ form_row(form.children.translations.fr.children.content) }}
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale).children.content) }}
     </div>
 {% endblock %}
 
