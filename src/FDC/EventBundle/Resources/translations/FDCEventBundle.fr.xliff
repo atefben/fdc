@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-08T15:28:33Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-08T15:32:36Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -35,7 +35,7 @@
       </trans-unit>
       <trans-unit id="b0717cdd4fb5b6755642dd56d20f9955a4efaac4" resname="mainnav.event">
         <source>mainnav.event</source>
-        <target>Festival de Cannes</target>
+        <target>Festival 2016</target>
         <jms:reference-file line="8">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d737d3086bebddd9dcae18cc7f819239114567b7" resname="mainnav.fdc">
@@ -145,7 +145,7 @@
       </trans-unit>
       <trans-unit id="2d83224d16023193fb93e0ec1eb9e246e2a890d2" resname="navigation.selection">
         <source>navigation.selection</source>
-        <target>Ma Sélection</target>
+        <target>La Sélection</target>
         <jms:reference-file line="166">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="18d94c50fe6f6ed385a3f3ff3db1ad68f80e0c33" resname="navigation.video">
