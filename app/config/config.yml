@@ -60,25 +60,12 @@ twig:
         locales_admin: "%locales_admin%"
         locales: "%locales%"
 
-parameters:
-    # Assetic
-    assetic.filter.compass.images_dir: %kernel.root_dir%/../web/images
-    assetic.filter.compass.http_path:  /images
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle ]
-    use_controller: true
-    ruby: C:\Ruby22-x64\bin\ruby
-    filters:
-        cssrewrite: ~
-        scss:
-            bin : C:\Ruby22-x64\bin\scss
-        sass:
-            bin : C:\Ruby22-x64\bin\sass
-        compass:
-            bin : C:\Ruby22-x64\bin\compass
+    use_controller: false
 
 
 # Doctrine Configuration
