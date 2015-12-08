@@ -45,7 +45,7 @@ $(document).ready(function() {
             $( ".bandeau-list-footer" ).html( $(data).find('.bandeau-list-footer') );
             $( ".bandeau-head" ).html( $(data).find('.bandeau-head') );
             
-            history.pushState('',GLOBALS.texts.url.title, urlPath);
+            history.pushState('',"titre test", urlPath);
             $grid = $('#gridFilmSelection').imagesLoaded(function() {
               $grid.isotope({
                 layoutMode: 'packery',

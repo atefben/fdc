@@ -23,7 +23,7 @@ function initialize() {
     var marker = new google.maps.Marker({
       position: myLatLng,
       map: map,
-      title: GLOBALS.texts.googleMap.title
+      title: 'Festival de Cannes'
   });
 
 }

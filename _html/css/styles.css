@@ -17170,7 +17170,7 @@ article .read-later.rAlign span:after {
 }
 .press-media .mediatheque .table .line .info {
   float: left;
-  width: 338px;
+  width: 320px;
 }
 .press-media .mediatheque .table .line .info .txt {
   width: 225px;
@@ -17346,8 +17346,8 @@ article .read-later.rAlign span:after {
   width: 18px;
   height: 18px;
   position: absolute;
-  top: 28px;
-  right: 18px;
+  top: 34px;
+  right: 23px;
   background-repeat: no-repeat;
   background-size: 111%;
   cursor: pointer;
@@ -17363,8 +17363,8 @@ article .read-later.rAlign span:after {
   width: 57px;
   height: 57px;
   position: absolute;
-  top: 8px;
-  right: 0px;
+  top: 13px;
+  right: 5px;
   background-repeat: no-repeat;
   background-size: 122%;
   cursor: pointer;
@@ -17396,7 +17396,6 @@ article .read-later.rAlign span:after {
 }
 .press-media .block .title-press {
   margin-bottom: 30px;
-  color: #000;
 }
 .press-media .grid-wrapper {
   margin: 0px;

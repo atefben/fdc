@@ -64,7 +64,7 @@ if($('.webtv-ba-video').length){
 
             }else{
               $('.program-film').css({display:"block"});
-              $('.infos-film').css({display:"none"});
+              $('.infos-film').css({display:"none"});     
 
             }
         }
@@ -84,7 +84,7 @@ if($('.webtv-ba-video').length){
           
           $( ".content-webtv" ).html( $(data).find('.content-webtv') );
           $('#live').html( $(data).find('#live') );
-          history.pushState('',GLOBALS.texts.url.title, urlPath);
+          history.pushState('',"titre test", urlPath);
             $grid = $('#gridWebtv').imagesLoaded(function() {
               $grid.isotope({
                 layoutMode: 'packery',

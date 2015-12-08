@@ -85,7 +85,7 @@ $(document).ready(function() {
             for(var i=0; i<events.length; i++) {
               if(id == events[i].id) {
                 $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete); //TODO traduction, enlever la string // 
+                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda'); //TODO traduction, enlever la string // 
               }
             }
           });
@@ -173,8 +173,8 @@ $(document).ready(function() {
 
         // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
-            lang: GLOBALS.locale , // TODO a verifier
-            defaultDate: GLOBALS.defaultDate,
+            lang: 'fr',
+            defaultDate: '2016-05-12',
             header: {
               left: 'prev',
               center: 'title',
@@ -272,7 +272,7 @@ $(document).ready(function() {
                   for(var i=0; i<events.length; i++) {
                     if(id == events[i].id) {
                       $this.parent().addClass('delete');
-                      $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
+                      $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
                     }
                   }
                 });
@@ -369,7 +369,7 @@ $(document).ready(function() {
               }
 
               $(this).parent().addClass('delete');
-              $(this).removeClass('add').text(GLOBALS.texts.agenda.delete);
+              $(this).removeClass('add').text('Supprimer de votre agenda');
             });
 
             // close popin
@@ -463,7 +463,7 @@ $(document).ready(function() {
                 type: "GET",
                 dataType: "html",
                 cache: false,
-                url: GLOBALS.urls.calendarProgrammationUrl,
+                url: 'calendarprogrammation.html',
                 success: function(data) {
                   $('.v-wrapper').html(data);
 
@@ -556,7 +556,7 @@ $(document).ready(function() {
         for(var i=0; i<events.length; i++) {
           if(id == events[i].id) {
             $this.parent().addClass('delete');
-            $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
+            $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
           }
         }
       });
@@ -595,7 +595,7 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: GLOBALS.urls.loadPressRelease,
+        url: 'load-communique.php' /* TODO DEV : context URL */,
         success: function (data) {
           var $data = $(data).find('.gridelement');
           var $container = $('#gridAudios'),
@@ -857,9 +857,10 @@ $(document).ready(function() {
         e.preventDefault();
         if($(this).is(':not(.active)')) {
           var urlPath = $(this).data('cat');
+          urlPath += ".php";
           $.get(urlPath, function(data){
             $( ".nav-container" ).html( $(data).find('.nav-container') );
-            history.pushState('',GLOBALS.texts.url.title, urlPath);
+            history.pushState('',"titre test", urlPath);
             ajaxEvent();
             menuMedia();
             svgImg();

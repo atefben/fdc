@@ -4,7 +4,7 @@
 $(document).ready(function() {
 
   $('.newsletter #email').on('focus', function() {
-    if($(this).val() == GLOBALS.texts.newsletter.errorsNotValide || $(this).val() == GLOBALS.texts.newsletter.errorsMailEmpty) {
+    if($(this).val() == "L'adresse e-mail n'est pas valide" || $(this).val() == "Veuillez saisir une adresse e-mail valide") {
       $(this).val('');
       $(this).removeClass('error');
     }
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     if($('#email').val() == '') {
       empty = true;
-      input.addClass("error").val("GLOBALS.texts.newsletter.errorsMailEmpty");
+      input.addClass("error").val("Veuillez saisir une adresse e-mail valide");
     } else {
 
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -27,7 +27,7 @@ $(document).ready(function() {
         input.removeClass("error");
       }
       else {
-        input.addClass("error").val(GLOBALS.texts.newsletter.errorsNotValide);
+        input.addClass("error").val("L'adresse e-mail n'est pas valide");
       }
     }
 

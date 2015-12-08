@@ -23,7 +23,7 @@ $(document).ready(function() {
                 
               imgActive.removeClass('active');
               imgNotActiv.addClass('active');
-              moreMap.addClass('visible');
+              moreMap.addClass('visible');  
                 
               activeLi.removeClass('active');
               $this.addClass('active');

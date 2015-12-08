@@ -170,7 +170,7 @@ $(document).ready(function() {
         }, 0);
         $.get(urlPath, function(data){
           $(".content-movie").html( $(data).find('.content-movie') );
-          history.pushState('',GLOBALS.texts.url.title, urlPath);
+          history.pushState('',"titre test", urlPath);
 
           $('#canvasloader').removeClass('show');
 

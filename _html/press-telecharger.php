@@ -41,7 +41,6 @@ de ces visuels n’est autorisée.</span>
       </div>
       <div class="downloading-nav">
         <ul>
-         <!-- Don't change ID value --> 
           <li><a href="#affiche-officielle" class="ajax active">Affiche officielle</a></li>
           <li><a href="#signature" class="ajax">signatures</a></li>
           <li><a href="#animation" class="ajax">animation</a></li>
