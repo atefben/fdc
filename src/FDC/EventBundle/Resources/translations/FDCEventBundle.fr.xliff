@@ -1,20 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-07T15:49:41Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-08T15:28:33Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="49e4bb0d65886b324636447dfce806cea0dc9ccc" resname="event.date">
+        <source>event.date</source>
+        <target>11-22 Mai 2016</target>
+        <jms:reference-file line="67">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="68633ac273193727f22ee0a1eba0f1278147eae8" resname="event.name">
+        <source>event.name</source>
+        <target>Festival de Cannes</target>
+        <jms:reference-file line="56">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="62">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="72">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="67e7f019f7e640e6551bdcc361ecb8ce6772e7bd" resname="footer.contact">
         <source>footer.contact</source>
         <target state="new">footer.contact</target>
-        <jms:reference-file line="3">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="4">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4da1519f48a53ecf319ac50a57959e814e19d180" resname="mainnav.cinefondation">
+        <source>mainnav.cinefondation</source>
+        <target>Cinéfondation</target>
+        <jms:reference-file line="16">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0735e65adcc44a20015ef0871683f5077488e949" resname="mainnav.court-metrage">
+        <source>mainnav.court-metrage</source>
+        <target>Cannes Court Métrage</target>
+        <jms:reference-file line="20">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b0717cdd4fb5b6755642dd56d20f9955a4efaac4" resname="mainnav.event">
+        <source>mainnav.event</source>
+        <target>Festival de Cannes</target>
+        <jms:reference-file line="8">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d737d3086bebddd9dcae18cc7f819239114567b7" resname="mainnav.fdc">
+        <source>mainnav.fdc</source>
+        <target>Festival de Cannes</target>
+        <jms:reference-file line="12">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8435365d4bcab33a08eabe13078a5e75613bb5c0" resname="mainnav.marche-film">
+        <source>mainnav.marche-film</source>
+        <target>Marché du film</target>
+        <jms:reference-file line="24">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4e6aafa5fae8b546d10456255808643e74e39206" resname="navigation.actualite">
+        <source>navigation.actualite</source>
+        <target>L'actualité</target>
+        <jms:reference-file line="132">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7bc2e1e1ce50abe9dd5ce538274302fdde508ab1" resname="navigation.annonce">
+        <source>navigation.annonce</source>
+        <target>Bandes annonces</target>
+        <jms:reference-file line="161">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c50a12987f86174785391ae7865fa7d761070677" resname="navigation.article">
+        <source>navigation.article</source>
+        <target>Articles</target>
+        <jms:reference-file line="138">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4b355dccefcf551ecdc758081d6d5451f7107df3" resname="navigation.audio">
+        <source>navigation.audio</source>
+        <target>Audios</target>
+        <jms:reference-file line="147">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4135e2dbdf4bf6baab3a4e6655ccbc4748035aba" resname="navigation.chaine">
+        <source>navigation.chaine</source>
+        <target>Chaines</target>
+        <jms:reference-file line="158">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7eb226cc89a8d4e46ca13b47dcdd7a58f7f92cc9" resname="navigation.direct">
+        <source>navigation.direct</source>
+        <target>Direct</target>
+        <jms:reference-file line="155">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b7cdb4e0b84670454a335a04f9d72f0ea3192e62" resname="navigation.event">
+        <source>navigation.event</source>
+        <target>Les évènements</target>
+        <jms:reference-file line="175">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="049b30a189804300c5f739421a391cc803b97dc5" resname="navigation.fournisseur">
+        <source>navigation.fournisseur</source>
+        <target>Fournisseurs</target>
+        <jms:reference-file line="189">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a198bfe3c77e39655df2fb37b7a9a43a39acb9ed" resname="navigation.jour">
+        <source>navigation.jour</source>
+        <target>Jour après Jour</target>
+        <jms:reference-file line="135">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e6e7233c94723e6dd835a40e40109f0bc87f0047" resname="navigation.jury">
+        <source>navigation.jury</source>
+        <target>Les Jurys</target>
+        <jms:reference-file line="169">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0a5c138b2a24a56fed295743d609e787a4d78aed" resname="navigation.mode-emploi">
+        <source>navigation.mode-emploi</source>
+        <target>Festival mode d'emploi</target>
+        <jms:reference-file line="186">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d88f4b2b355b2dbe59ca2a8377fd2b7153e53127" resname="navigation.palmares">
+        <source>navigation.palmares</source>
+        <target>Le palmarès</target>
+        <jms:reference-file line="172">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="fa658a9cb0b3691f5f4bf37e0de337b103d80f87" resname="navigation.partenaire">
+        <source>navigation.partenaire</source>
+        <target>Partenaires</target>
+        <jms:reference-file line="188">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5d314ba2fa9b90559b4eb3889cc7def4ccb791a1" resname="navigation.participer">
+        <source>navigation.participer</source>
+        <target>Participer</target>
+        <jms:reference-file line="183">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5c2b6f8c181d5be67acc8775a1337612c15b0eab" resname="navigation.photo">
+        <source>navigation.photo</source>
+        <target>Photos</target>
+        <jms:reference-file line="141">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e0816c3ca249ea9b80ecf731cdd0caa46853f465" resname="navigation.prepare">
+        <source>navigation.prepare</source>
+        <target>Préparer son séjour</target>
+        <jms:reference-file line="185">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="98776175b12916a54156bb6ceb9789c933570f7a" resname="navigation.presse">
+        <source>navigation.presse</source>
+        <target>Espace presse</target>
+        <jms:reference-file line="193">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d8a3651585cdf0e6446c21c8e12c7241bfc70309" resname="navigation.programmation">
+        <source>navigation.programmation</source>
+        <target>Programmation</target>
+        <jms:reference-file line="180">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="834e67b7f8b3991eca4c77816ffbcf1d61e501fa" resname="navigation.projection">
+        <source>navigation.projection</source>
+        <target>Accès aux projections</target>
+        <jms:reference-file line="187">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2d83224d16023193fb93e0ec1eb9e246e2a890d2" resname="navigation.selection">
+        <source>navigation.selection</source>
+        <target>Ma Sélection</target>
+        <jms:reference-file line="166">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="18d94c50fe6f6ed385a3f3ff3db1ad68f80e0c33" resname="navigation.video">
+        <source>navigation.video</source>
+        <target>Vidéos</target>
+        <jms:reference-file line="144">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d0a76da9d949fd09d34424b2b76096b06ae3242f" resname="navigation.webtv">
+        <source>navigation.webtv</source>
+        <target>Web TV</target>
+        <jms:reference-file line="152">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a792a71f9271fe903d283bd7f4def71f04cc91fc" resname="partners.chopard">
+        <source>partners.chopard</source>
+        <target>Chopard</target>
+        <jms:reference-file line="80">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0157b5ee819a58bc70faa0f2db47ea93bc986565" resname="partners.hp">
+        <source>partners.hp</source>
+        <target>HP</target>
+        <jms:reference-file line="90">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9cc46adad5139bc92225923f631bd0cbeea2a7a8" resname="partners.kering">
+        <source>partners.kering</source>
+        <target>Kering</target>
+        <jms:reference-file line="95">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="818f52a3322144c8d7745733e1e61800d64eb77a" resname="partners.loreal">
+        <source>partners.loreal</source>
+        <target>L'Oréal</target>
+        <jms:reference-file line="85">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b6a03a6635ae4347ade84481318faf53abbad0c7" resname="partners.mastercard">
+        <source>partners.mastercard</source>
+        <target>Mastercard</target>
+        <jms:reference-file line="105">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bb8e928be6be4d1d380e149183c6dce3b2a2b190" resname="partners.renault">
+        <source>partners.renault</source>
+        <target>Renault</target>
+        <jms:reference-file line="100">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="50202cbdb53726cad34a58624e4076bb5759a87b" resname="usernav.compte">
+        <source>usernav.compte</source>
+        <target>Mon compte</target>
+        <jms:reference-file line="35">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="118">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ad12cdd3027055844b3f289f606c9be84082b44c" resname="usernav.search">
+        <source>usernav.search</source>
+        <target>Rechercher</target>
+        <jms:reference-file line="121">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bafa24c4f14abf9f1266dc30bc82aef5e89efbb3" resname="usernav.selection">
+        <source>usernav.selection</source>
+        <target>Ma Sélection</target>
+        <jms:reference-file line="31">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="115">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c59dc9464cf7dbb571f86d9f823996586285c113" resname="website.title">
         <source>website.title</source>
-        <target state="new">website.title</target>
-        <jms:reference-file line="4">Resources/views/layout.html.twig</jms:reference-file>
+        <target>Festival de Cannes 2016</target>
+        <jms:reference-file line="12">Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>
