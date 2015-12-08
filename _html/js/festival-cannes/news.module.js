@@ -28,7 +28,7 @@ $(document).ready(function() {
     $('#articles-wrapper').addClass('loading');
 
     $('#shd').removeClass('show');
-    $('.read-more').html("Afficher <strong>plus d'actualités</strong>").removeClass('prevDay');
+    $('.read-more').html(GLOBALS.texts.readMore.more).removeClass('prevDay');
 
     $('html, body').animate({
       scrollTop: $("#news").offset().top - 50
@@ -45,7 +45,7 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: 'news.html' ,
+        url: GLOBALS.urls.newsUrl ,
         success: function(data) {
           $('#canvasloader').removeClass('show');
           $('#articles-wrapper').html(data);
@@ -80,7 +80,7 @@ $(document).ready(function() {
     // load previous day
     if($(this).hasClass('prevDay')) {
       $('#shd').removeClass('show');
-      $('.read-more').html("Afficher <strong>plus d'actualités</strong>").removeClass('prevDay');
+      $('.read-more').html( GLOBALS.texts.readMore.more ).removeClass('prevDay');
       $('#articles-wrapper').addClass('loading');
       
       $('html, body').animate({
@@ -102,7 +102,7 @@ $(document).ready(function() {
           type: "GET",
           dataType: "html",
           cache: false,
-          url: 'news.html' ,
+          url: GLOBALS.urls.newsUrl ,
           success: function(data) {
             $('#canvasloader').removeClass('show');
 
@@ -126,12 +126,12 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: 'news_page2.html' ,
+        url: GLOBALS.urls.newUrlNext , // TODO a revoir //
         success: function(data) {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));
           filter();
-          $('.read-more').html('Passer au <strong>jour précédent</strong>').addClass('prevDay');
+          $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
 
           $('html, body').animate({
             scrollTop: $(".articles.center").offset().top + $(".articles.center").height() - 70
