@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-08T15:32:36Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-08T16:19:39Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -18,10 +18,80 @@
         <jms:reference-file line="62">Resources/views/header.html.twig</jms:reference-file>
         <jms:reference-file line="72">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="f7d426709ea77dd0b7697855b7383202fbbdc7c3" resname="footer.boutique">
+        <source>footer.boutique</source>
+        <target>Boutique</target>
+        <jms:reference-file line="46">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d660fce510a49af2d15a9ddf5507a28ee195ef3b" resname="footer.confidentialite">
+        <source>footer.confidentialite</source>
+        <target>Politique de Confidentialité</target>
+        <jms:reference-file line="48">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="67e7f019f7e640e6551bdcc361ecb8ce6772e7bd" resname="footer.contact">
         <source>footer.contact</source>
-        <target state="new">footer.contact</target>
-        <jms:reference-file line="4">Resources/views/footer.html.twig</jms:reference-file>
+        <target>Contact</target>
+        <jms:reference-file line="41">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b469507c15ca085ba9753f60ab835f68cda9c725" resname="footer.copyright">
+        <source>footer.copyright</source>
+        <target>© Copyright 2016</target>
+        <jms:reference-file line="40">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="81b6e310d950c87c3cc141069bf37fbd5d34fe73" resname="footer.credit">
+        <source>footer.credit</source>
+        <target>Crédits</target>
+        <jms:reference-file line="43">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0a294ad8ae25d72d5d386bce0eb2b640b9c423bc" resname="footer.faq">
+        <source>footer.faq</source>
+        <target>FAQ</target>
+        <jms:reference-file line="42">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="50263bff5b4b442f324b01bf18c3e183dddfc7f1" resname="footer.mention-legale">
+        <source>footer.mention-legale</source>
+        <target>Mentions Légales</target>
+        <jms:reference-file line="44">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d643eaa162d84f4f590db681b81c312e06d9aeca" resname="footer.newsletter.confirmation">
+        <source>footer.newsletter.confirmation</source>
+        <target><![CDATA[Votre abonnement a bien été enregistré ! <br> Un e-mail de confirmation a été envoyé à l’adresse ]]></target>
+        <jms:reference-file line="15">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="36ecbbc5f057b006007adebed3b3f42ed35b613f" resname="footer.newsletter.info">
+        <source>footer.newsletter.info</source>
+        <target>Toute l'actualité du festival</target>
+        <jms:reference-file line="7">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bfaad836e370799acc619b3da072992606394987" resname="footer.newsletter.mail">
+        <source>footer.newsletter.mail</source>
+        <target>Votre adresse email</target>
+        <jms:reference-file line="11">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="877cae8eb47911314123d4d8bb9c60c4043210e9" resname="footer.newsletter.register">
+        <source>footer.newsletter.register</source>
+        <target>S'abonner</target>
+        <jms:reference-file line="12">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1fada62f1abf8d6beaaa8932df39545370996273" resname="footer.newsletter.title">
+        <source>footer.newsletter.title</source>
+        <target>Newsletter</target>
+        <jms:reference-file line="6">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9b9774f684268c74e7485c02776f8ec1d22fdec6" resname="footer.rejoindre">
+        <source>footer.rejoindre</source>
+        <target>Nous rejoindre</target>
+        <jms:reference-file line="45">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="78c9fc9ea1471c6a3e2792e919475e6b31e6c675" resname="footer.sitemap">
+        <source>footer.sitemap</source>
+        <target>Plan du Site</target>
+        <jms:reference-file line="47">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c47707c9f59383573f8070520e485bdd9ef5d877" resname="footer.social.title">
+        <source>footer.social.title</source>
+        <target>Festival de Cannes</target>
+        <jms:reference-file line="22">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4da1519f48a53ecf319ac50a57959e814e19d180" resname="mainnav.cinefondation">
         <source>mainnav.cinefondation</source>
@@ -187,6 +257,42 @@
         <source>partners.renault</source>
         <target>Renault</target>
         <jms:reference-file line="100">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f86eaa4d92b3e915cc2b27b8c85e614d665f7e77" resname="selection.all">
+        <source>selection.all</source>
+        <target>Tous</target>
+        <jms:reference-file line="202">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="468bca701e9f0c5878bde3f480ef617084704cb0" resname="selection.article">
+        <source>selection.article</source>
+        <target>Articles</target>
+        <jms:reference-file line="203">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4944dc858aefc7207a741b6d2405ed891d72faaa" resname="selection.audio">
+        <source>selection.audio</source>
+        <target>Vidéos</target>
+        <jms:reference-file line="205">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5392724f9b1ff81320fe4f7fdb603a5f1e9aa2e4" resname="selection.recherche">
+        <source>selection.recherche</source>
+        <target>Audios</target>
+        <jms:reference-file line="230">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e530963e43868af3101305c1690a414ecb2f2223" resname="selection.suggestion">
+        <source>selection.suggestion</source>
+        <target>Suggestions</target>
+        <jms:reference-file line="206">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ccfefae915b84a8e51be24c711f335fab482ef06" resname="selection.title">
+        <source>selection.title</source>
+        <target>Ma sélection
+</target>
+        <jms:reference-file line="200">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ea63c94e05d7d64e478c521552f29517821d0361" resname="selection.video">
+        <source>selection.video</source>
+        <target>Vidéos</target>
+        <jms:reference-file line="204">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="50202cbdb53726cad34a58624e4076bb5759a87b" resname="usernav.compte">
         <source>usernav.compte</source>
