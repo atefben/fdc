@@ -18,7 +18,15 @@ use JMS\Serializer\Annotation\VirtualProperty;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"text" = "NewsWidgetText", "audio" = "NewsWidgetAudio", "image" = "NewsWidgetImage", "video" = "NewsWidgetVideo"})
+ * @ORM\DiscriminatorMap({
+ *  "text" = "NewsWidgetText",
+ *  "quote" = "NewsWidgetQuote",
+ *  "audio" = "NewsWidgetAudio",
+ *  "image" = "NewsWidgetImage",
+ *  "image_dual_align" = "NewsWidgetImageDualAlign",
+ *  "video" = "NewsWidgetVideo",
+ *  "video_youtube" = "NewsWidgetVideoYoutube",
+ * })
  */
 abstract class NewsWidget
 {

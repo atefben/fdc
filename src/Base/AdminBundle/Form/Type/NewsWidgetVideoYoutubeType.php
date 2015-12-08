@@ -2,32 +2,30 @@
 
 namespace Base\AdminBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * NewsWidgetTextType class.
- * 
+ * NewsWidgetVideoYoutubeType class.
+ *
  * \@extends NewsWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsWidgetTextType extends NewsWidgetType
+class NewsWidgetVideoYoutubeType extends NewsWidgetType
 {
     /**
      * dataClass
-     * 
-     * (default value: 'Base\CoreBundle\Entity\NewsWidgetText')
-     * 
+     *
+     * (default value: 'Base\\CoreBundle\\Entity\\NewsWidgetVideoYoutubeType')
+     *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\CoreBundle\Entity\NewsWidgetText';
-    
+    protected $dataClass = 'Base\\CoreBundle\\Entity\\NewsWidgetVideoYoutube';
+
     /**
      * buildForm function.
-     * 
+     *
      * @access public
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -41,12 +39,9 @@ class NewsWidgetTextType extends NewsWidgetType
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array(),
             'fields' => array(
-                'content' => array(
-                    'label' => false,
-                    'attr' => array(
-                        'class' => 'ckeditor'
-                    ),
-                    'field_type' => 'ckeditor'
+                'youtubeId' => array(
+                ),
+                'title' => array(
                 ),
                 'createdAt' => array(
                     'display' => false
@@ -57,15 +52,15 @@ class NewsWidgetTextType extends NewsWidgetType
             )
         ));
     }
-    
+
     /**
      * getName function.
-     * 
+     *
      * @access public
      * @return void
      */
     public function getName()
     {
-        return 'news_widget_text_type';
+        return 'news_widget_video_youtube_type';
     }
 }

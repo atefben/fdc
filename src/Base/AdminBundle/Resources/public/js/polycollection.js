@@ -8,7 +8,8 @@ jQuery(document).ready(function($) {
         items: '> .base-widget',
         start: function(event, ui) {
             // ckeditor
-            var textareaId = ui.item.find('textarea').attr('id');
+            var textareaId = ui.item.find('textarea.ckeditor').attr('id');
+            console.log(textareaId);
             if (typeof textareaId != 'undefined') {
                 var editorInstance = CKEDITOR.instances[textareaId];
                 editorInstance.destroy();
@@ -17,8 +18,9 @@ jQuery(document).ready(function($) {
         },
         stop: function (event, ui) {
             // ckeditor
-            var textareaId = ui.item.find('textarea').attr('id');
+            var textareaId = ui.item.find('textarea.ckeditor').attr('id');
             if (typeof textareaId != 'undefined') {
+                console.log('c');
                 CKEDITOR.replace( textareaId );
             }
         }
