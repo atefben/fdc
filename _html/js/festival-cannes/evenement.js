@@ -26,7 +26,7 @@
         type: "GET",
         dataType: "html",
         cache: false,
-        url: 'load-evenements.php' /* TODO DEV : context URL */,
+        url: GLOBALS.urls.eventUrl /* TODO DEV : context URL */,
         success: function (data) {
           var $data = $(data).find('.gridelement');
           var $container = $('#gridEvent'),
