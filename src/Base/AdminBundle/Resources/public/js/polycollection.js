@@ -25,10 +25,8 @@ jQuery(document).ready(function($) {
     });
     
     $('form[action*="news"]').submit(function(e) {
-        console.log('in');
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
-            console.log(idx + 1);
             $(this).val(idx + 1);
         });
     });
