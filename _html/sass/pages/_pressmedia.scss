@@ -230,11 +230,11 @@
           }
           .plus {
             background-image: url(../img/press/svg/moins.svg);
-            width: 15px;
-            height: 15px;
+            width: 18px;
+            height: 18px;
             position: absolute;
             top: 34px;
-            right: 31px;
+            right: 23px;
             background-repeat: no-repeat;
             background-size: 111%;
             cursor: pointer;
@@ -247,15 +247,16 @@
           }
         }
         .plus {
-          background-image: url(../img/press/svg/case-plus.svg);
-          width: 51px;
-          height: 51px;
-          position: absolute;
-          top: 13px;
-          right: 15px;
-          background-repeat: no-repeat;
-          background-size: 111%;
-          cursor: pointer;
+            background-image: url(../img/press/svg/case-plus.svg);
+            width: 57px;
+            height: 57px;
+            position: absolute;
+            top: 13px;
+            right: 5px;
+            background-repeat: no-repeat;
+            background-size: 122%;
+            cursor: pointer;
+            background-position: -8px 1px;
         }
       }
     }

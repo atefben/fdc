@@ -17343,11 +17343,11 @@ article .read-later.rAlign span:after {
 }
 .press-media .nav-container .table .line .container.active .plus {
   background-image: url(../img/press/svg/moins.svg);
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   position: absolute;
   top: 34px;
-  right: 31px;
+  right: 23px;
   background-repeat: no-repeat;
   background-size: 111%;
   cursor: pointer;
@@ -17360,14 +17360,15 @@ article .read-later.rAlign span:after {
 }
 .press-media .nav-container .table .line .plus {
   background-image: url(../img/press/svg/case-plus.svg);
-  width: 51px;
-  height: 51px;
+  width: 57px;
+  height: 57px;
   position: absolute;
   top: 13px;
-  right: 15px;
+  right: 5px;
   background-repeat: no-repeat;
-  background-size: 111%;
+  background-size: 122%;
   cursor: pointer;
+  background-position: -8px 1px;
 }
 .press-media .block .container {
   margin-bottom: 41px;
