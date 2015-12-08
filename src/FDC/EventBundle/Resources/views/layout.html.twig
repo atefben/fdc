@@ -2,10 +2,11 @@
 <html>
     <head>
         <title>{{ 'website.title'|trans }}</title>
-
-        {% stylesheets "@FDCEventBundle/Resources/assets/styles/styles.css" %}
+        {% block stylesheets %}
+        {% stylesheets "bundles/fdcevent/styles/*.css" filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
+        {% endblock %}
     </head>
     <body>
         {% include 'FDCEventBundle::header.html.twig' %}

@@ -4,34 +4,44 @@
     <div id="top-bar">
         <ul class="main-nav">
 
-            {% for nav in mainNav %}
-                <li>
-                    <a href="{{ nav.href }}" target="_blank">{{ nav.title }}</a>
-                </li>
-            {% endfor %}
+            <li>
+                <a href="/" class="active" > {{ 'mainnav.event'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://www.festival-cannes.com/fr.html" target="_blank" > {{ 'mainnav.fdc'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://www.cinefondation.com/fr" target="_blank" > {{ 'mainnav.cinefondation'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://www.cannescourtmetrage.com/fr" target="_blank" > {{ 'mainnav.court-metrage'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://www.marchedufilm.com/fr" target="_blank" > {{ 'mainnav.marche-film'|trans }} </a>
+            </li>
 
         </ul>
         <ul class="user-nav">
 
-            {% for nav in userNav %}
-                <li>
-                    <a href="{{ nav.href }}" target="_blank">{{ nav.title }}</a>
-                </li>
-            {% endfor %}
+            <li>
+                <a href="#" class="selection"> {{ 'usernav.selection'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'usernav.compte'|trans }} </a>
+            </li>
 
             <li class="lang">
                 <a href="#" class="language">
-                    {% for nav in langNav %}
-                        {% if nav.current == true %}
-                            <a href="#">{{ nav.iso }}</a>
-                        {% endif %}
-                    {% endfor %}
+                    {{ locales[0]|upper }}
                 </a>
                 <ul class="sub-languages">
-                    {% for nav in langNav %}
-                        {% if nav.current == false %}
-                            <li><a href="#">{{ nav.iso }}</a></li>
-                        {% endif %}
+                    {% for lang in locales %}
+                            <li><a href="#">{{ lang|upper }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
@@ -42,14 +52,14 @@
         <div class="container">
             <div id="logo">
                 <a href="/">
-                    {% image '@FDCEventBundle/Resources/assets/images/svg/palme.svg'  %}
-                    <img width="200" src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                    {% image '@FDCEventBundle/Resources/public/img/svg/palme.svg'  %}
+                    <img src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
                     {% endimage %}
                 </a>
                 <h1>
                     <a href="/">
-                        {% image '@FDCEventBundle/Resources/assets/images/svg/logo.svg' %}
-                        <img src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                        {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
+                        <img width="200" src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
                         {% endimage %}
                     </a>
                 </h1>
@@ -58,13 +68,132 @@
                 </h2>
                 <p class="stick">
                     <a href="/">
-                        {% image '@FDCEventBundle/Resources/assets/images/svg/logo.svg' %}
+                        {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
                         <img width="178" src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
                         {% endimage %}
                     </a>
                 </p>
             </div>
+            <div id="partners">
+                <a href="//www.chopard.fr/">
+                    {% image '@FDCEventBundle/Resources/public/img/header/Logo_Chopard.svg' %}
+                    <img width="84" src="{{ asset_url }}" class="chopard" alt="{{ 'partners.chopard'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//www.loreal-paris.fr/index.aspx">
+                    {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
+                    <img width="75" src="{{ asset_url }}" class="oreal" alt="{{ 'partners.loreal'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//www8.hp.com/fr/fr/home.html">
+                    {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
+                    <img width="28" src="{{ asset_url }}" class="hp" alt="{{ 'partners.hp'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//www.kering.com/fr">
+                    {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
+                    <img width="82" src="{{ asset_url }}" class="kering" alt="{{ 'partners.kering'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//group.renault.com">
+                    {% image '@FDCEventBundle/Resources/public/img/header/renault.svg' %}
+                    <img width="95" src="{{ asset_url }}" class="renault" alt="{{ 'partners.renault'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//www.mastercard.com/fr/particuliers/index.html">
+                    {% image '@FDCEventBundle/Resources/public/img/header/mastercard.png' %}
+                    <img width="57" src="{{ asset_url }}" class="mastercard" alt="{{ 'partners.mastercard'|trans }}" />
+                    {% endimage %}
+                </a>
+            </div>
+            <div id="search">
+                <a href="#" class="search"></a>
+            </div>
+            <div id="sticky-user">
+                <ul class="user-nav">
+                    <li>
+                        <a href="#" class="selection"> {{ 'usernav.selection'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'usernav.compte'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="#" class="search"> {{ 'usernav.search'|trans }} </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-
+    <div id="navigation">
+        <div class="container">
+            <nav>
+                <ul class="main">
+                    <li>
+                        <a href="{{ path('default') }}" class="active"> {{ 'navigation.actualite'|trans }} </a>
+                        <ul class="tcenter">
+                            <li>
+                                <a href="{{ path('default') }}" class="active"> {{ 'navigation.jour'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('default') }}"> {{ 'navigation.article'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('default') }}"> {{ 'navigation.photo'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('default') }}"> {{ 'navigation.video'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('default') }}"> {{ 'navigation.audio'|trans }} </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="webtv.php"> {{ 'navigation.webtv'|trans }} </a>
+                        <ul class="tcenter">
+                            <li>
+                                <a href="{{ path('default') }}"> {{ 'navigation.direct'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('default') }}"> {{ 'navigation.chaine'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('default') }}"> {{ 'navigation.annonce'|trans }} </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ path('default') }}"> {{ 'navigation.selection'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('default') }}"> {{ 'navigation.jury'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('default') }}"> {{ 'navigation.palmares'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('default') }}"> {{ 'navigation.event'|trans }} </a>
+                    </li>
+                </ul>
+                <ul class="user">
+                    <li>
+                        <a href="{{ path('default') }}" class="programmation"> {{ 'navigation.programmation'|trans }} </a>
+                    </li>
+                    <li class="participate-wrapper">
+                        <a href="{{ path('default') }}" class="participate"> {{ 'navigation.participer'|trans }} </a>
+                        <ul>
+                            <li><a href="{{ path('default') }}"> {{ 'navigation.prepare'|trans }}</a></li>
+                            <li><a href="{{ path('default') }}"> {{ 'navigation.mode-emploi'|trans }} </a></li>
+                            <li><a href="{{ path('default') }}"> {{ 'navigation.projection'|trans }} </a></li>
+                            <li><a href="{{ path('default') }}"> {{ 'navigation.partenaire'|trans }} </a></li>
+                            <li><a href="{{ path('default') }}"> {{ 'navigation.fournisseur'|trans }} </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ path('default') }}" class="press"> {{ 'navigation.presse'|trans }} </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </header>

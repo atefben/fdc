@@ -65,7 +65,10 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle ]
-    use_controller: false
+    use_controller: true
+    filters:
+        cssrewrite:
+            apply_to: "\.css$"
 
 
 # Doctrine Configuration

@@ -2,3 +2,7 @@ fdc_event:
     resource: "@FDCEventBundle/Controller/"
     type:     annotation
     prefix:   /
+
+default:
+    path:     /
+    defaults: { _controller: FDCEventBundle:Default:index }
