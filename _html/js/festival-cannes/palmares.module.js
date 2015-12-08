@@ -16,7 +16,7 @@ $(document).ready(function() {
           $( ".container-list" ).html( $(data).find('.container-list').html());
           $('.bandeau-head').html( $(data).find('.bandeau-head').html() );
           $('.push-footer').html( $(data).find('.push-footer').html() );
-          history.pushState('',"titre test", urlPath);
+          history.pushState('',GLOBALS.texts.url.title, urlPath);
         });
         $('.palmares-list .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');

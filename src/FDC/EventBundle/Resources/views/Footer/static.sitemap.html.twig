@@ -1,0 +1,21 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+    {#<div id="main" class="sitemap loading">#}
+    <div id="main" class="sitemap">
+        <h2 class="title">{{ 'sitemap.title'|trans }}</h2>
+        <section class="sitemap-container">
+            {% for notice in content %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ notice.title }}</h3>
+                    <ul>
+                        {% for link in notice.links %}
+                            <li><a href="{{ link.path }}">{{ link.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </article>
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}

@@ -20,7 +20,7 @@ $(document).ready(function() {
             $('.bandeau-head').html( $(data).find('.bandeau-head') );
             $('.bandeau-list-footer').html( $(data).find('.bandeau-list-footer').html() );
           
-            history.pushState('',"titre test", urlPath);
+            history.pushState('',GLOBALS.texts.url.title, urlPath);
              $grid = $('#gridJurys').imagesLoaded(function() {
                 $grid.isotope({
                   layoutMode: 'packery',

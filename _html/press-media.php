@@ -44,19 +44,19 @@
             <table>
               <tbody></tbody>
               <tr>
-                   <td data-cat="press-media" class="active">compétition longs métrages (25)</td>
-                   <td data-cat="press-media-competitioncm">compétition courts métrages (3)</td>
-                   <td data-cat="press-media-horscomp">hors compétition (7)</td>
+                   <td data-cat="press-media.php" class="active">compétition longs métrages (25)</td>
+                   <td data-cat="press-media-competitioncm.php">compétition courts métrages (3)</td>
+                   <td data-cat="press-media-horscomp.php">hors compétition (7)</td>
                </tr>
                <tr>
-                   <td data-cat="press-media-uncertainregard">un certain regard (10)</td>
-                   <td data-cat="press-media-seancesdeminuit">séances de minuit</td>
-                   <td data-cat="press-media-seancespeciales">séances spéciales</td>
+                   <td data-cat="press-media-uncertainregard.php">un certain regard (10)</td>
+                   <td data-cat="press-media-seancesdeminuit.php">séances de minuit</td>
+                   <td data-cat="press-media-seancespeciales.php">séances spéciales</td>
                </tr>
                <tr>
-                 <td data-cat="press-media-cinefondation">cinéfondation (9)</td>
-                 <td data-cat="press-media-cannesclassics">cannes classics (5)</td>
-                 <td data-cat="press-media-cinemadelaplage">cinéma de la plage</td>
+                 <td data-cat="press-media-cinefondation.php">cinéfondation (9)</td>
+                 <td data-cat="press-media-cannesclassics.php">cannes classics (5)</td>
+                 <td data-cat="press-media-cinemadelaplage.php">cinéma de la plage</td>
                </tr>
             </table>
           </div>
@@ -85,7 +85,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                      <a href="" class="button"> En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -177,7 +177,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                      <a href="" class="button"> En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -269,7 +269,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button">En français</a>
-                      <a href="" class="button">En anglais</a>
+                      <a href="" class="button">En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -361,7 +361,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                      <a href="" class="button"> En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -453,7 +453,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                      <a href="" class="button"> En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">

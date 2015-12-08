@@ -29,7 +29,7 @@ jw.player = function() {
         width: $('#video-player').parent('div').width(),
         height: $('#video-player').parent('div').height(),
         controls: false,
-        playlist: [
+        playlist: [ //TODO change all link//
             {
                 file: './files/mov_bbb.mp4',
                 image: '//dummyimage.com/960x540/c8a461/000.png'
