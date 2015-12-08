@@ -3,9 +3,9 @@ jQuery(document).ready(function($) {
         new window.infinite.Collection(this, $(this).siblings('[data-prototype]'));
     });
     
-  /*  $('div[id$=_widgets][data-form-widget="collection"').sortable({
+    $('div[id$="fdc-widgets"][data-form-widget="collection"]').sortable({
         axis: 'y',
-        items: '> .Base-widget',
+        items: '> .base-widget',
         start: function(event, ui) {
             // ckeditor
             var textareaId = ui.item.find('textarea').attr('id');
@@ -22,9 +22,9 @@ jQuery(document).ready(function($) {
                 CKEDITOR.replace( textareaId );
             }
         }
-    });*/
+    });
     
-    $('form[action*="news"]').submit(function() {
+    $('form[action*="news"]').submit(function(e) {
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
             $(this).val(idx + 1);

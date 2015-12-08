@@ -1,6 +1,8 @@
 lang:
     en: Anglais
     fr: Francais
+    es: Espagnol
+    zh: Chinois
 
 entity:
     news_article: Articles
@@ -39,7 +41,7 @@ dashboard:
         info: Infos
     link:
         settings: Paramètres
-        bo_translation: Traduction du Back-office
+        bo_translation: Traductions
         homepage: Homepage
 
 form:

@@ -59,6 +59,7 @@ twig:
     globals:
         locales_admin: "%locales_admin%"
         locales: "%locales%"
+        locale_default_translation: "%locale_default_translation%"
 
 
 # Assetic Configuration
