@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-08T16:19:39Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-08T18:14:29Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -21,17 +21,17 @@
       <trans-unit id="f7d426709ea77dd0b7697855b7383202fbbdc7c3" resname="footer.boutique">
         <source>footer.boutique</source>
         <target>Boutique</target>
-        <jms:reference-file line="46">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="58">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d660fce510a49af2d15a9ddf5507a28ee195ef3b" resname="footer.confidentialite">
         <source>footer.confidentialite</source>
         <target>Politique de Confidentialité</target>
-        <jms:reference-file line="48">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="64">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="67e7f019f7e640e6551bdcc361ecb8ce6772e7bd" resname="footer.contact">
         <source>footer.contact</source>
         <target>Contact</target>
-        <jms:reference-file line="41">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="43">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b469507c15ca085ba9753f60ab835f68cda9c725" resname="footer.copyright">
         <source>footer.copyright</source>
@@ -41,17 +41,17 @@
       <trans-unit id="81b6e310d950c87c3cc141069bf37fbd5d34fe73" resname="footer.credit">
         <source>footer.credit</source>
         <target>Crédits</target>
-        <jms:reference-file line="43">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="51">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0a294ad8ae25d72d5d386bce0eb2b640b9c423bc" resname="footer.faq">
         <source>footer.faq</source>
         <target>FAQ</target>
-        <jms:reference-file line="42">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="48">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="50263bff5b4b442f324b01bf18c3e183dddfc7f1" resname="footer.mention-legale">
         <source>footer.mention-legale</source>
         <target>Mentions Légales</target>
-        <jms:reference-file line="44">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="54">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d643eaa162d84f4f590db681b81c312e06d9aeca" resname="footer.newsletter.confirmation">
         <source>footer.newsletter.confirmation</source>
@@ -81,12 +81,12 @@
       <trans-unit id="9b9774f684268c74e7485c02776f8ec1d22fdec6" resname="footer.rejoindre">
         <source>footer.rejoindre</source>
         <target>Nous rejoindre</target>
-        <jms:reference-file line="45">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="57">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="78c9fc9ea1471c6a3e2792e919475e6b31e6c675" resname="footer.sitemap">
         <source>footer.sitemap</source>
         <target>Plan du Site</target>
-        <jms:reference-file line="47">Resources/views/footer.html.twig</jms:reference-file>
+        <jms:reference-file line="61">Resources/views/footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c47707c9f59383573f8070520e485bdd9ef5d877" resname="footer.social.title">
         <source>footer.social.title</source>
@@ -117,6 +117,36 @@
         <source>mainnav.marche-film</source>
         <target>Marché du film</target>
         <jms:reference-file line="24">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="579bade2851ed1e886270f3da5c97d08194421af" resname="mention.amazon">
+        <source>mention.amazon</source>
+        <target>Amazon</target>
+        <jms:reference-file line="11">views/Footer/static.mention.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="adabaf6b31592387030dbc8f3edd23fbc7820c2f" resname="mention.hebergement">
+        <source>mention.hebergement</source>
+        <target>Hébergement</target>
+        <jms:reference-file line="11">views/Footer/static.mention.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="717bd7f7adedd2c9402600fa5897ebf717ccf953" resname="mention.realisation.site">
+        <source>mention.realisation.site</source>
+        <target>Ce site est réalisé et édité par Le Festival de Cannes 3 rue Amélie 75007 PARIS</target>
+        <jms:reference-file line="8">views/Footer/static.mention.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="db63d9de1f3490f210bd06e8f1750b2b7d41519b" resname="mention.responsable">
+        <source>mention.responsable</source>
+        <target>Responsable</target>
+        <jms:reference-file line="10">views/Footer/static.mention.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b8a04b3387be44a9ba0b084ddee15d15100f569f" resname="mention.responsable.name">
+        <source>mention.responsable.name</source>
+        <target>Vinca Van Eecke</target>
+        <jms:reference-file line="10">views/Footer/static.mention.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1ed792722414e59c371d0e5f9c2e6be6daa8cfe6" resname="mention.title">
+        <source>mention.title</source>
+        <target>Mentions légales</target>
+        <jms:reference-file line="6">views/Footer/static.mention.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4e6aafa5fae8b546d10456255808643e74e39206" resname="navigation.actualite">
         <source>navigation.actualite</source>
@@ -293,6 +323,11 @@
         <source>selection.video</source>
         <target>Vidéos</target>
         <jms:reference-file line="204">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="240c3168511c29c7b3574d769e2d513991dead5f" resname="sitemap.title">
+        <source>sitemap.title</source>
+        <target>Plan du site</target>
+        <jms:reference-file line="8">views/Footer/static.sitemap.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="50202cbdb53726cad34a58624e4076bb5759a87b" resname="usernav.compte">
         <source>usernav.compte</source>
