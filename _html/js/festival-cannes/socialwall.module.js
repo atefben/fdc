@@ -28,7 +28,7 @@ function makePath(data){
   var pathString = convertToPath(data);
   var graphHeight = $('#graph').height();
   
-  function getDefaultPath(){
+  function getDefaltPath(){
     var defaultPathString = 'M4,'+ (graphHeight - 30) +' H';
   
     for (var i=0; i<data.length; i++) {
@@ -46,6 +46,8 @@ function makePath(data){
     fill: 'transparent'
   });
 
+  
+  
   path.animate({ path: pathString }, 2000, mina.easeInOutQuint);
 
   /* point radius */
@@ -167,7 +169,6 @@ $(document).ready(function() {
 
   makeGrid();
 
-
   //instagram
 
   var url = "https://api.instagram.com/v1/tags/"+GLOBALS.api.instagram.hashtag+"/media/recent/?access_token="+GLOBALS.api.instagram.token;
@@ -212,7 +213,7 @@ $(document).ready(function() {
       data: request,
       success: function(data, textStatus, xhr) {
         data = JSON.parse(data);
-        console.log(data);
+//        console.log(data);
         data = data.statuses;
         var img = '';
 

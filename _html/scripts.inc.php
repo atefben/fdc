@@ -18,8 +18,8 @@ var GLOBALS = {
   "urls" : {
     "calendarProgrammationUrl" : "calendarprogrammation.html",
     "eventUrl" : "load-evenements.php",
-    "newUrl" : "news.html",
-    "newUrlNext" : "news_page2.html",
+    "newsUrl" : "news.html",
+    "newsUrlNext" : "news_page2.html",
     "loadPressRelease" : "load-communique.php",
     "selectionUrl" : "selection.html"
   },

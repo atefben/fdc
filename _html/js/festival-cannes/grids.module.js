@@ -20,17 +20,17 @@ function resizeGrid() {
   }
 }
 
-function setGrid(grid, dom, init) {
-  var $img = $(dom).find('.item img'),
-    pourcentage = 0.30,
-    nbImgAAgrandir = $img.length * pourcentage,
-    i = 0,
-    nbRamdom = [],
-    x = 1,
-    j = 0,
-    max = 0,
-    min = 0,
-    nbImage = $img.length;
+function setGrid(grid, dom, init){
+  var $img            = $(dom).find('.item img'),
+      pourcentage     = 0.30,
+      nbImgAAgrandir  = $img.length * pourcentage,
+      i               = 0,
+      nbRamdom        = [],
+      x               = 1,
+      j               = 0,
+      max             = 0,
+      min             = 0,
+      nbImage         = $img.length;
 
   function buildGrid() {
     $($img).closest('div.item').removeClass('w2');
@@ -94,16 +94,16 @@ function setGrid(grid, dom, init) {
 
 $(document).ready(function () {
 
-  function setImages(grid, dom, init) {
-    var $img = $(dom).find('.item:not(.portrait) img'),
-      pourcentage = 0.50,
-      nbImgAAgrandir = $img.length * pourcentage,
-      i = 0,
-      nbRamdom = [],
-      x = 1,
-      max = 0,
-      min = 0,
-      nbImage = $img.length;
+function setImages(grid, dom, init){
+    var $img            = $(dom).find('.item:not(.portrait) img'),
+        pourcentage     = 0.50,
+        nbImgAAgrandir  = $img.length * pourcentage,
+        i               = 0,
+        nbRamdom        = [],
+        x               = 1,
+        max             = 0,
+        min             = 0,
+        nbImage         = $img.length;
 
     while (x < nbImgAAgrandir) {
       while (nbImgAAgrandir > nbRamdom.length) {

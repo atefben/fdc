@@ -126,7 +126,7 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: GLOBALS.urls.newUrlNext , // TODO a revoir //
+        url: GLOBALS.urls.newsUrlNext , // TODO a revoir //
         success: function(data) {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));

@@ -33,7 +33,7 @@ $(document).ready(function() {
     type: "GET",
     dataType: "html",
     cache: false,
-    url: GLOBALS.urls.slectionUrl ,
+    url: GLOBALS.urls.selectionUrl ,
     success: function(data) {
       $('#slider-suggestion').append(data);
 
