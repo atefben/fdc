@@ -93,7 +93,7 @@
         }
         .active-btn {
           .button {
-            color: #c29f5f ;
+            color: #c29f5f ; 
             border-color: #c29f5f ;
           }
           .button:hover {
@@ -181,15 +181,15 @@
         }
         .item {
           display: inline-block;
-//          margin: 8px;
-          margin: 6px;
+          margin: 8px;
         }
-//        .item:nth-child(7){
-//          margin-right: 0px;
-//        }
+        .item.last{
+          margin-right: 0px;
+        }
+
         .grid-wrapper {
           position: relative;
-          height: 318px;
+          height: auto;
           margin-left: -7px;
         }
         position: relative;

@@ -132,7 +132,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -224,7 +224,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -316,7 +316,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -408,7 +408,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -500,7 +500,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>

@@ -21,7 +21,7 @@
       .wrapper{
         width: 976px;
         margin: 0 auto;
-        margin-top: 37px;
+        margin-top: 32px;
         position: relative;
         margin-bottom: 43px;
         .contain-title-pg{
@@ -50,14 +50,15 @@
           }
           .plus{
             background-image:url(../img/press/svg/case-plus.svg);
-            width: 51px;
-            height: 51px;
+            width: 57px;
+            height: 57px;
             position: absolute;
-            top: -10px;
-            right: 1px;
+            top: -12px;
+            right: 0px;
             background-repeat: no-repeat;
-            background-size: 111%;
+            background-size: 122%;
             cursor: pointer;
+            background-position: -8px 1px;
           }
         }
         .contain-article{
@@ -190,10 +191,10 @@
         }
         .plus{
           background-image:url(../img/press/svg/moins.svg);
-          width: 11px;
-          height: 11px;
+          width: 15px;
+          height: 15px;
           top: 8px;
-          right: 18px;
+          right: 20px;
         }
       }
     }
