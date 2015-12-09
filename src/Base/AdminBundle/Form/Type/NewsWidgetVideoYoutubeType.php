@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * NewsWidgetVideoYoutubeType class.
@@ -40,8 +41,14 @@ class NewsWidgetVideoYoutubeType extends NewsWidgetType
             'required_locales' => array(),
             'fields' => array(
                 'youtubeId' => array(
+                    'constraints' => array(
+                        new NotBlank()
+                    )
                 ),
                 'title' => array(
+                    'constraints' => array(
+                        new NotBlank()
+                    )
                 ),
                 'createdAt' => array(
                     'display' => false

@@ -36,10 +36,9 @@
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
         <h4>{{ 'news.widget.quote'|trans }}</h4>
-        {{ form_row(form.children._type) }}
-        {{ form_row(form.children.position) }}
-        {{ form_widget(attribute(form.children.translations, locale)) }}
-        {{ form_errors(attribute(form.children.translations, locale)) }}
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale).children.content) }}
         <a class="btn btn-danger btn-sm btn-outline remove_item">
             <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
         </a>
@@ -49,7 +48,7 @@
 {% block news_widget_audio_type_widget %}
     <div class="item base-widget">
         <h4>{{ 'news.widget.audio'|trans }}</h4>
-        {{ form_row(form) }}
+        {{ form_widget(form) }}
         <a class="btn btn-danger btn-sm btn-outline remove_item">
             <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
         </a>
@@ -59,14 +58,14 @@
 {% block news_widget_image_type_widget %}
     <div class="item base-widget">
         <h4>{{ 'news.widget.image'|trans }}</h4>
-        {{ form_row(form) }}
+        {{ form_widget(form) }}
     </div>
 {% endblock %}
 
 {% block news_widget_image_dual_align_type_widget %}
     <div class="item base-widget">
         <h4>{{ 'news.widget.image_dual_align'|trans }}</h4>
-        {{ form_row(form) }}
+        {{ form_widget(form) }}
         <a class="btn btn-danger btn-sm btn-outline remove_item">
             <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
         </a>
@@ -76,7 +75,7 @@
 {% block news_widget_video_type_widget %}
     <div class="item base-widget">
         <h4>{{ 'news.widget.video'|trans }}</h4>
-        {{ form_row(form) }}
+        {{ form_widget(form) }}
         <a class="btn btn-danger btn-sm btn-outline remove_item">
             <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
         </a>
@@ -87,10 +86,9 @@
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
         <h4>{{ 'news.widget.video_youtube'|trans }}</h4>
-        {{ form_row(form.children._type) }}
-        {{ form_row(form.children.position) }}
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
-        {{ form_errors(attribute(form.children.translations, locale)) }}
         <a class="btn btn-danger btn-sm btn-outline remove_item">
             <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
         </a>

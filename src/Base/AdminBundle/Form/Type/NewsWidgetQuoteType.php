@@ -5,6 +5,7 @@ namespace Base\AdminBundle\Form\Type;
 use Symfony\Component\Form\AbstractType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * NewsWidgetQuoteType class.
@@ -43,10 +44,9 @@ class NewsWidgetQuoteType extends NewsWidgetType
             'fields' => array(
                 'content' => array(
                     'label' => false,
-                    'attr' => array(
-                        'class' => 'ckeditor'
+                    'constraints' => array(
+                        new NotBlank()
                     ),
-                    'field_type' => 'ckeditor'
                 ),
                 'createdAt' => array(
                     'display' => false

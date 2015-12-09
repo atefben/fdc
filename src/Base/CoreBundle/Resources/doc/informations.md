@@ -37,6 +37,15 @@ php app/console assets:install --symlink web
 php app/console sonata:admin:setup-acl
 php app/console sonata:admin:generate-object-acl
 
+add the following script in database
+
+CREATE TABLE `sessions` (
+    `sess_id` VARBINARY(128) NOT NULL PRIMARY KEY,
+    `sess_data` BLOB NOT NULL,
+    `sess_time` INTEGER UNSIGNED NOT NULL,
+    `sess_lifetime` MEDIUMINT NOT NULL
+) COLLATE utf8_bin, ENGINE = InnoDB;
+
 ## Bundles
 
 - BaseCoreBundle : The core of the project Entities, Repository

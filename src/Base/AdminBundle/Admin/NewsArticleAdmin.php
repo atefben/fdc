@@ -210,6 +210,7 @@ class NewsArticleAdmin extends Admin
                 'btn_delete' => false
             ))
             ->add('tags', 'sonata_type_collection', array(
+                'label' => 'form.label_article_tags',
                 'by_reference' => false,
                 'required' => false,
                 ), array(

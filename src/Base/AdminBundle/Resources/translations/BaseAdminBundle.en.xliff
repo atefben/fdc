@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-08T17:45:31Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-12-09T15:12:04Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -98,7 +98,7 @@
       </trans-unit>
       <trans-unit id="d2163d032c7f47621b8e5901b37b95a1bbd0a16c" resname="form.label_title">
         <source>form.label_title</source>
-        <target state="new">form.label_title</target>
+        <target>Titre</target>
         <jms:reference-file line="62">AdminBundle/Admin/EventAdmin.php</jms:reference-file>
         <jms:reference-file line="134">AdminBundle/Admin/InfoArticleAdmin.php</jms:reference-file>
         <jms:reference-file line="80">AdminBundle/Admin/InfoAudioAdmin.php</jms:reference-file>
@@ -121,7 +121,7 @@
       </trans-unit>
       <trans-unit id="4d73b5423bc8c919e85dbc040f0123debea16437" resname="group.main_infos">
         <source>group.main_infos</source>
-        <target state="new">group.main_infos</target>
+        <target>Informations générales</target>
         <jms:reference-file line="31">views/TranslationFormBundle/article.html.twig</jms:reference-file>
         <jms:reference-file line="29">views/TranslationFormBundle/event.html.twig</jms:reference-file>
       </trans-unit>
