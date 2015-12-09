@@ -237,7 +237,7 @@
           <div class="img"></div>
           <div class="txt vCenter">
             <div class="vCenterKid">
-              <h2 class="title">Actualité à la une</h2>
+              <h2 class="title">l'actualité à la une</h2>
               <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg">suivEZ LA manifestation au jour le jour</a></p>
             </div>
           </div>

@@ -57,7 +57,7 @@ de ces visuels n’est autorisée.</span>
               <img src="img/press/press-portrait.jpg" alt="" />
               <span class="caption">© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos</span>
               <p>Format portrait</p>
-              <div class="buttons">
+              <div class="buttons active-btn"> <!-- TODO enlever le active-btn, juste test --> 
                 <a href="#" class="button">JPG 72 DPI</a>
                 <a href="#" class="button">JPG 300 DPI</a>
               </div>
@@ -256,7 +256,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
     </div>
     <!-- POPIN -->
     <?php include('popin-lock-press.html'); ?>
-
+    <?php include('popin-download-press.html'); ?>
     <!-- fin POPIN -->
     <?php include('footer.html'); ?>
 

@@ -146,9 +146,16 @@
           border: 1px solid #c8a461;
           color: #fff;
         }
+        .active:hover{
+            background-color: #c8a461;
+            border: 1px solid #c8a461;
+            color: #fff;
+        }
         td:hover {
           background-color: rgba(200, 164, 97, 0.51);
           color: #fff;
+          border: 1px solid #cccccc;
+          
         }
       }
     }

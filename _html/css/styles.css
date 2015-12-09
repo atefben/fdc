@@ -14487,6 +14487,10 @@ article .read-later.rAlign span:after {
   overflow: hidden;
   padding-top: 0 !important;
 }
+.press .button {
+  font-size: 0.63rem;
+  height: 37px;
+}
 .press .fc-event {
   background-color: #373737;
   border-radius: 0;
@@ -15494,8 +15498,12 @@ article .read-later.rAlign span:after {
   border-top: 1px solid #e3e3e3;
   padding: 60px 0;
 }
+.press .contact-press .button {
+  font-size: 0.75rem;
+}
 .press .contact-press .title {
   margin-bottom: 55px;
+  font-size: 1.125rem !important;
 }
 .press .contact-press .container {
   overflow: hidden;
@@ -16039,7 +16047,7 @@ article .read-later.rAlign span:after {
   width: 524px;
   padding: 59px;
   position: fixed;
-  top: 16%;
+  top: 41%;
   right: 0;
   left: 0;
   margin-right: auto;
@@ -16115,7 +16123,7 @@ article .read-later.rAlign span:after {
   width: 760px;
   padding: 59px;
   position: fixed;
-  top: 16%;
+  top: 25%;
   right: 0;
   left: 0;
   margin-right: auto;
@@ -16125,6 +16133,7 @@ article .read-later.rAlign span:after {
   overflow-y: scroll;
   box-sizing: border-box;
   padding-top: 62px;
+  padding-bottom: 50px;
 }
 #popin-download-press .contain-info-item {
   padding-bottom: 17px;
@@ -16793,9 +16802,15 @@ article .read-later.rAlign span:after {
   border: 1px solid #c8a461;
   color: #fff;
 }
+.accreditation #accreditation .nav-accre .wrapper table .active:hover {
+  background-color: #c8a461;
+  border: 1px solid #c8a461;
+  color: #fff;
+}
 .accreditation #accreditation .nav-accre .wrapper table td:hover {
   background-color: rgba(200, 164, 97, 0.51);
   color: #fff;
+  border: 1px solid #cccccc;
 }
 .accreditation #accreditation .nav-container {
   display: none;
@@ -16878,6 +16893,94 @@ article .read-later.rAlign span:after {
 .downloading-press.lock .download-btns .download:hover a {
   color: #b0b0b0;
 }
+.downloading-press.lock .affiche .active-btn .button {
+  padding: 1px 15px 0 39px;
+  border-color: #c8a461;
+  background-image: url("../img/svg/telecharger-gold.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 12px;
+  background-size: 14px;
+  position: relative;
+}
+.downloading-press.lock .affiche .active-btn .button:after {
+  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+  background-size: 14px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.downloading-press.lock .affiche .active-btn .button:hover {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  color: #fff;
+}
+.downloading-press.lock .affiche .active-btn .button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+.downloading-press.lock .affiche .active-btn .button {
+  pointer-events: all;
+  color: #c29f5f !important;
+  border-color: #c29f5f !important;
+}
+.downloading-press.lock .affiche .active-btn .button:hover {
+  color: #fff !important;
+  background-color: #c29f5f !important;
+}
+.downloading-press.lock .active-btn .button {
+  padding: 1px 15px 0 39px;
+  border-color: #c8a461;
+  background-image: url("../img/svg/telecharger-gold.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 12px;
+  background-size: 14px;
+  position: relative;
+}
+.downloading-press.lock .active-btn .button:after {
+  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
+  background-size: 14px;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.downloading-press.lock .active-btn .button:hover {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  color: #fff;
+}
+.downloading-press.lock .active-btn .button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+.downloading-press.lock .active-btn .button {
+  pointer-events: all;
+  color: #c29f5f !important;
+  border-color: #c29f5f !important;
+}
+.downloading-press.lock .active-btn .button:hover {
+  color: #fff !important;
+  background-color: #c29f5f !important;
+}
 
 .downloading-press .slideshow {
   border-bottom: 0px solid #fff;
@@ -16955,12 +17058,14 @@ article .read-later.rAlign span:after {
   background-color: white;
 }
 .downloading-press .downloading-nav ul {
-  width: 693px;
+  width: 100%;
+  text-align: center;
   margin: 0 auto;
 }
 .downloading-press .downloading-nav ul li {
   display: inline-block;
   margin: 14px 14px;
+  margin-top: 13px;
 }
 .downloading-press .downloading-nav ul li a {
   color: #999999;
@@ -17266,9 +17371,15 @@ article .read-later.rAlign span:after {
   border: 1px solid #c8a461;
   color: #fff;
 }
+.press-media .nav-mediapress .wrapper table .active:hover {
+  background-color: #c8a461;
+  border: 1px solid #c8a461;
+  color: #fff;
+}
 .press-media .nav-mediapress .wrapper table td:hover {
   background-color: rgba(200, 164, 97, 0.51);
   color: #fff;
+  border: 1px solid #cccccc;
 }
 .press-media .nav-container .svg {
   width: 9px;
