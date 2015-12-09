@@ -16644,10 +16644,10 @@ article .read-later.rAlign span:after {
   border-left-color: #c8a461;
 }
 .accreditation #accreditation .request-btn {
-  background: url("../img/press/svg/communique-presse-or.svg") no-repeat 5% 48%;
+  background: url("../img/press/svg/communique-presse-or.svg") no-repeat 5% 49%;
   background-size: 18px;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
   position: relative;
 }
 .accreditation #accreditation .request-btn:after {
