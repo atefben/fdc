@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Form\Type\ContactType;
 
 /**
- * @Route("/event")
+ * @Route("/")
  */
 class FormController extends Controller
 {

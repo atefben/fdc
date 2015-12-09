@@ -17,6 +17,9 @@ class FooterController extends Controller
 
     /**
      * @Route("/static-{page}", name="fdc_event_static")
+     *
+     * @param $page
+     * @return \Symfony\Component\HttpFoundation\Response
      */
 
     public function staticAction($page)
@@ -169,7 +172,6 @@ class FooterController extends Controller
                 )
             )
         );
-
 
         $faqContent = array(
             array(
@@ -598,5 +600,12 @@ class FooterController extends Controller
 
 
     }
+
+
+    public function newsletterAction()
+    {
+
+    }
+
 
 }
