@@ -256,7 +256,6 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
     </div>
     <!-- POPIN -->
     <?php include('popin-lock-press.html'); ?>
-    <?php include('popin-download-press.html'); ?>
     <!-- fin POPIN -->
     <?php include('footer.html'); ?>
 
