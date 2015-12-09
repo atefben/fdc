@@ -15503,6 +15503,7 @@ article .read-later.rAlign span:after {
 }
 .press .contact-press .title {
   margin-bottom: 55px;
+  font-size: 1.125rem !important;
 }
 .press .contact-press .container {
   overflow: hidden;
@@ -16801,9 +16802,15 @@ article .read-later.rAlign span:after {
   border: 1px solid #c8a461;
   color: #fff;
 }
+.accreditation #accreditation .nav-accre .wrapper table .active:hover {
+  background-color: #c8a461;
+  border: 1px solid #c8a461;
+  color: #fff;
+}
 .accreditation #accreditation .nav-accre .wrapper table td:hover {
   background-color: rgba(200, 164, 97, 0.51);
   color: #fff;
+  border: 1px solid #cccccc;
 }
 .accreditation #accreditation .nav-container {
   display: none;
@@ -17360,6 +17367,11 @@ article .read-later.rAlign span:after {
   cursor: pointer;
 }
 .press-media .nav-mediapress .wrapper table .active {
+  background-color: #c8a461;
+  border: 1px solid #c8a461;
+  color: #fff;
+}
+.press-media .nav-mediapress .wrapper table .active:hover {
   background-color: #c8a461;
   border: 1px solid #c8a461;
   color: #fff;

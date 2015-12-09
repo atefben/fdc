@@ -179,7 +179,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Media Web</h4>
@@ -210,7 +210,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Agence de presse</h4>
@@ -241,7 +241,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Agence de presse audiovisuelle</h4>
@@ -272,7 +272,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Agence photos</h4>
@@ -303,7 +303,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Photographie de presse</h4>
@@ -334,7 +334,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>télévisision</h4>
@@ -365,7 +365,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Radio</h4>
