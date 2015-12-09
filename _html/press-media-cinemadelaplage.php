@@ -44,19 +44,19 @@
             <table>
               <tbody></tbody>
               <tr>
-                   <td data-cat="press-media" >compétition longs métrages (25)</td>
-                   <td data-cat="press-media-competitioncm" >compétition courts métrages (3)</td>
-                   <td data-cat="press-media-horscomp" >hors compétition (7)</td>
+                   <td data-cat="press-media.php" >compétition longs métrages (25)</td>
+                   <td data-cat="press-media-competitioncm.php" >compétition courts métrages (3)</td>
+                   <td data-cat="press-media-horscomp.php" >hors compétition (7)</td>
                </tr>
                <tr>
-                   <td data-cat="press-media-uncertainregard">un certain regard (10)</td>
-                   <td data-cat="press-media-seancesdeminuit" >séances de minuit</td>
-                   <td data-cat="press-media-seancespeciales" >séances spéciales</td>
+                   <td data-cat="press-media-uncertainregard.php">un certain regard (10)</td>
+                   <td data-cat="press-media-seancesdeminuit.php" >séances de minuit</td>
+                   <td data-cat="press-media-seancespeciales.php" >séances spéciales</td>
                </tr>
                <tr>
-                 <td data-cat="press-media-cinefondation">cinéfondation (9)</td>
-                 <td data-cat="press-media-cannesclassics">cannes classics (5)</td>
-                 <td data-cat="press-media-cinemadelaplage" class="active">cinéma de la plage</td>
+                 <td data-cat="press-media-cinefondation.php">cinéfondation (9)</td>
+                 <td data-cat="press-media-cannesclassics.php">cannes classics (5)</td>
+                 <td data-cat="press-media-cinemadelaplage.php" class="active">cinéma de la plage</td>
                </tr>
             </table>
           </div>
@@ -132,7 +132,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -224,7 +224,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -316,7 +316,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -408,7 +408,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -500,7 +500,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
