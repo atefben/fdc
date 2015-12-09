@@ -849,6 +849,7 @@ $(document).ready(function() {
   
   if($('.downloading-press').length){
     initSlideshows();
+      svgImg();
   }
   
   //mediatheque AJAX
