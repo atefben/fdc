@@ -937,12 +937,12 @@ $(document).ready(function() {
       $(window).on('scroll', function() {
         
         var s            = $(window).scrollTop(),
-            h            = $("#main").height()-300,
-            affiche      = $('#affiche-officielle').offset().top-300,
-            signature    = $('#signature').offset().top-300,
-            animation    = $('#animation').offset().top-300,
-            photosInst   = $('#photos-institutionnelles').offset().top-300,
-            dossierPress = $('#dossier-presse').offset().top-300;
+            h            = $("#main").height()-180,
+            affiche      = $('#affiche-officielle').offset().top-180,
+            signature    = $('#signature').offset().top-180,
+            animation    = $('#animation').offset().top-180,
+            photosInst   = $('#photos-institutionnelles').offset().top-180,
+            dossierPress = $('#dossier-presse').offset().top-180;
           
         if(s > 180 ){
           $('.downloading-nav').addClass('sticky');
@@ -973,13 +973,27 @@ $(document).ready(function() {
         
       });
     
+    
     $('a[href^="#"]').click(function(){
+      
+      var is_sticky = $('.press').hasClass('sticky');
       var the_id = $(this).attr("href");
+      
+      if(!is_sticky){
 
-      $('html, body').animate({
-        scrollTop:$(the_id).offset().top-300
-      }, 'slow');
-      return false;
+        $('html, body').animate({
+          scrollTop:$(the_id).offset().top-300
+        }, 'slow');
+        return false;
+        
+      }else{
+
+        $('html, body').animate({
+          scrollTop:$(the_id).offset().top-130
+        }, 'slow');
+        return false;
+        
+      }
     });
   
   }

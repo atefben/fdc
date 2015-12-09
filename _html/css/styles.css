@@ -14487,6 +14487,10 @@ article .read-later.rAlign span:after {
   overflow: hidden;
   padding-top: 0 !important;
 }
+.press .button {
+  font-size: 0.63rem;
+  height: 37px;
+}
 .press .fc-event {
   background-color: #373737;
   border-radius: 0;
@@ -15493,6 +15497,9 @@ article .read-later.rAlign span:after {
 .press .contact-press {
   border-top: 1px solid #e3e3e3;
   padding: 60px 0;
+}
+.press .contact-press .button {
+  font-size: 0.75rem;
 }
 .press .contact-press .title {
   margin-bottom: 55px;
@@ -16955,12 +16962,14 @@ article .read-later.rAlign span:after {
   background-color: white;
 }
 .downloading-press .downloading-nav ul {
-  width: 693px;
+  width: 100%;
+  text-align: center;
   margin: 0 auto;
 }
 .downloading-press .downloading-nav ul li {
   display: inline-block;
   margin: 14px 14px;
+  margin-top: 13px;
 }
 .downloading-press .downloading-nav ul li a {
   color: #999999;
