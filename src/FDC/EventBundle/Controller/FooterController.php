@@ -6,7 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use FDC\EventBundle\Form\Type\ContactType;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+use FDC\EventBundle\Form\Type\NewsletterType;
+
 
 /**
  * @Route("/")
@@ -601,11 +604,19 @@ class FooterController extends Controller
 
     }
 
-
-    public function newsletterAction()
+    /**
+     * @Route( "/", name="newsletter_register" )
+     * @Template()
+     */
+    public function newsletterAction( Request $request )
     {
+        $newsForm = $this->createForm( new NewsletterType( ) );
+
+        return $this->render(
+            'FDCEventBundle:Footer:footer.newsletter.html.twig',
+            array('newsform' => $newsForm->createView())
+        );
 
     }
-
 
 }

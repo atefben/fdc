@@ -51,11 +51,7 @@ class FormController extends Controller
 
                 return $this->redirect($this->generateUrl('fdc_event_contact'));
             }
-            else {
-                $errors = $form->getErrors(true);
-                var_dump($errors[0]);
-                exit;
-            }
+
         }
 
         return $this->render(
