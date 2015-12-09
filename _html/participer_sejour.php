@@ -108,7 +108,7 @@
           </div>
         </section>
         <section>
-          <div class="contain-section push-footer">
+          <div class="contain-section">
             <h3 class="title-participate part-plus-info"> <img src="img/participate/informations.svg" alt="" class="svg plus-info">Pour plus d'informations</h3><i class="fa fa-plus"></i>
             <div class="descrip-section">
               <p class="text">Si vous souhaitez des information complémentaires sur la ville de Cannes, nous vous invitons à consulter

@@ -16644,7 +16644,7 @@ article .read-later.rAlign span:after {
   border-left-color: #c8a461;
 }
 .accreditation #accreditation .request-btn {
-  background: url("../img/press/svg/communique-presse-or.svg") no-repeat 5% 44%;
+  background: url("../img/press/svg/communique-presse-or.svg") no-repeat 5% 48%;
   background-size: 18px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -16677,7 +16677,7 @@ article .read-later.rAlign span:after {
 }
 .accreditation #accreditation .buttons {
   padding: 50px 0px;
-  padding-top: 64px;
+  padding-top: 58px;
   padding-bottom: 61px;
 }
 .accreditation #accreditation .wrapper {
@@ -16685,7 +16685,7 @@ article .read-later.rAlign span:after {
   margin: 0 auto;
 }
 .accreditation #accreditation .wrapper .container-small {
-  width: 626px;
+  width: 100%;
   margin: 0 auto;
 }
 .accreditation #accreditation .wrapper .container-small a {
@@ -16749,7 +16749,7 @@ article .read-later.rAlign span:after {
   line-height: 24px;
 }
 .accreditation #accreditation .wrapper .info {
-  width: 704px;
+  width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
   border: 1px solid #d2b990;
@@ -16766,6 +16766,7 @@ article .read-later.rAlign span:after {
   border-bottom: 1px solid #e3e3e3;
   border-top: 1px solid #e3e3e3;
   padding: 46px 0;
+  padding-bottom: 54px;
 }
 .accreditation #accreditation .nav-accre .wrapper {
   width: 980px;
@@ -16780,7 +16781,7 @@ article .read-later.rAlign span:after {
   margin: 0 auto;
   text-transform: uppercase;
   text-align: center;
-  padding-bottom: 27px;
+  padding-bottom: 22px;
 }
 .accreditation #accreditation .nav-accre .wrapper table td {
   width: 324px;
