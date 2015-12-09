@@ -11,7 +11,12 @@
 .press {
   overflow: hidden;
   padding-top: 0!important;
-
+  
+  .button{
+    font-size: 0.63rem;
+    height: 37px;
+  }
+  
   .fc-event {
     background-color: #373737;
     border-radius: 0;
@@ -1182,9 +1187,12 @@
   .contact-press {
     border-top: 1px solid #e3e3e3;
     padding: 60px 0;
-
+    .button{
+      font-size: 0.75rem;
+    }
     .title {
       margin-bottom: 55px;
+      font-size:1.125rem !important;
     }
 
     .container {
@@ -1844,7 +1852,7 @@
   width: 524px;
   padding: 59px;
   position: fixed;
-  top: 16%;
+  top: 41%;
   right: 0;
   left: 0;
   margin-right: auto;
@@ -1924,7 +1932,7 @@
   width: 760px;
   padding: 59px;
   position: fixed;
-  top: 16%;
+  top: 25%;
   right: 0;
   left: 0;
   margin-right: auto;
@@ -1934,6 +1942,7 @@
   overflow-y: scroll;
   box-sizing: border-box;
   padding-top: 62px;
+  padding-bottom: 50px;
   .contain-info-item{
     padding-bottom: 17px;
     border-bottom: 1px solid #c1c1c1;

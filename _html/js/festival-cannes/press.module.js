@@ -85,7 +85,7 @@ $(document).ready(function() {
             for(var i=0; i<events.length; i++) {
               if(id == events[i].id) {
                 $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda'); //TODO traduction, enlever la string // 
+                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete); //TODO traduction, enlever la string // 
               }
             }
           });
@@ -173,8 +173,8 @@ $(document).ready(function() {
 
         // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
-            lang: 'fr',
-            defaultDate: '2016-05-12',
+            lang: GLOBALS.locale , // TODO a verifier
+            defaultDate: GLOBALS.defaultDate,
             header: {
               left: 'prev',
               center: 'title',
@@ -272,7 +272,7 @@ $(document).ready(function() {
                   for(var i=0; i<events.length; i++) {
                     if(id == events[i].id) {
                       $this.parent().addClass('delete');
-                      $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+                      $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
                     }
                   }
                 });
@@ -369,7 +369,7 @@ $(document).ready(function() {
               }
 
               $(this).parent().addClass('delete');
-              $(this).removeClass('add').text('Supprimer de votre agenda');
+              $(this).removeClass('add').text(GLOBALS.texts.agenda.delete);
             });
 
             // close popin
@@ -463,7 +463,7 @@ $(document).ready(function() {
                 type: "GET",
                 dataType: "html",
                 cache: false,
-                url: 'calendarprogrammation.html',
+                url: GLOBALS.urls.calendarProgrammationUrl,
                 success: function(data) {
                   $('.v-wrapper').html(data);
 
@@ -556,7 +556,7 @@ $(document).ready(function() {
         for(var i=0; i<events.length; i++) {
           if(id == events[i].id) {
             $this.parent().addClass('delete');
-            $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+            $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
           }
         }
       });
@@ -595,7 +595,7 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: 'load-communique.php' /* TODO DEV : context URL */,
+        url: GLOBALS.urls.loadPressRelease,
         success: function (data) {
           var $data = $(data).find('.gridelement');
           var $container = $('#gridAudios'),
@@ -849,6 +849,7 @@ $(document).ready(function() {
   
   if($('.downloading-press').length){
     initSlideshows();
+      svgImg();
   }
   
   //mediatheque AJAX
@@ -857,10 +858,9 @@ $(document).ready(function() {
         e.preventDefault();
         if($(this).is(':not(.active)')) {
           var urlPath = $(this).data('cat');
-          urlPath += ".php";
           $.get(urlPath, function(data){
             $( ".nav-container" ).html( $(data).find('.nav-container') );
-            history.pushState('',"titre test", urlPath);
+            history.pushState('',GLOBALS.texts.url.title, urlPath);
             ajaxEvent();
             menuMedia();
             svgImg();
@@ -938,12 +938,12 @@ $(document).ready(function() {
       $(window).on('scroll', function() {
         
         var s            = $(window).scrollTop(),
-            h            = $("#main").height()-300,
-            affiche      = $('#affiche-officielle').offset().top-300,
-            signature    = $('#signature').offset().top-300,
-            animation    = $('#animation').offset().top-300,
-            photosInst   = $('#photos-institutionnelles').offset().top-300,
-            dossierPress = $('#dossier-presse').offset().top-300;
+            h            = $("#main").height()-180,
+            affiche      = $('#affiche-officielle').offset().top-180,
+            signature    = $('#signature').offset().top-180,
+            animation    = $('#animation').offset().top-180,
+            photosInst   = $('#photos-institutionnelles').offset().top-180,
+            dossierPress = $('#dossier-presse').offset().top-180;
           
         if(s > 180 ){
           $('.downloading-nav').addClass('sticky');
@@ -974,13 +974,27 @@ $(document).ready(function() {
         
       });
     
+    
     $('a[href^="#"]').click(function(){
+      
+      var is_sticky = $('.press').hasClass('sticky');
       var the_id = $(this).attr("href");
+      
+      if(!is_sticky){
 
-      $('html, body').animate({
-        scrollTop:$(the_id).offset().top-300
-      }, 'slow');
-      return false;
+        $('html, body').animate({
+          scrollTop:$(the_id).offset().top-300
+        }, 'slow');
+        return false;
+        
+      }else{
+
+        $('html, body').animate({
+          scrollTop:$(the_id).offset().top-130
+        }, 'slow');
+        return false;
+        
+      }
     });
   
   }

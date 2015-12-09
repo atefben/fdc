@@ -28,7 +28,7 @@ function makePath(data){
   var pathString = convertToPath(data);
   var graphHeight = $('#graph').height();
   
-  function getDefaultPath(){
+  function getDefaltPath(){
     var defaultPathString = 'M4,'+ (graphHeight - 30) +' H';
   
     for (var i=0; i<data.length; i++) {
@@ -46,6 +46,8 @@ function makePath(data){
     fill: 'transparent'
   });
 
+  
+  
   path.animate({ path: pathString }, 2000, mina.easeInOutQuint);
 
   /* point radius */
@@ -167,13 +169,10 @@ $(document).ready(function() {
 
   makeGrid();
 
+  //instagram
 
-  // INSTAGRAM
-  var access_token = "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
-      hashtag = "Cannes2016";
-
-  var url = "https://api.instagram.com/v1/tags/"+hashtag+"/media/recent/?access_token="+access_token;
-
+  var url = "https://api.instagram.com/v1/tags/"+GLOBALS.api.instagram.hashtag+"/media/recent/?access_token="+GLOBALS.api.instagram.token;
+    
   // load Instagram pictures and build array
   function loadInstagram(url, callback){
 
@@ -202,23 +201,23 @@ $(document).ready(function() {
   // load Twitter posts and pictures and build array
   function loadTweets(callback) {
     var request = {
-      q: '%23Cannes2016',
-      count: 15,
-      api: 'search_tweets'
+      q: GLOBALS.api.twitter.hashtag,
+      count:  GLOBALS.api.twitter.count,
+      api:  GLOBALS.api.twitter.uri
     };
 
     $.ajax({
-      url: 'twitter.php',
+      url: GLOBALS.api.twitter.url,
       type: 'POST',
       datatype: 'json',
       data: request,
       success: function(data, textStatus, xhr) {
         data = JSON.parse(data);
-        console.log(data);
+//        console.log(data);
         data = data.statuses;
-        var img = '';             
+        var img = '';
 
-        for (var i = 0; i < data.length; i++) {        
+        for (var i = 0; i < data.length; i++) {
         
           img = '';
           url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
@@ -226,11 +225,11 @@ $(document).ready(function() {
             if (data[i].entities['media']) {
               img = data[i].entities['media'][0].media_url;
             }
-          } catch (e) {  
+          } catch (e) {
             // no media
           }
         
-          posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].text.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})    
+          posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].text.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
 
           if(i==data.length - 1) {
             callback();

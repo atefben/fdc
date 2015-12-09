@@ -2,31 +2,33 @@
 
 namespace Base\AdminBundle\Form\Type;
 
+use Symfony\Component\Form\AbstractType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * NewsWidgetTextType class.
- * 
+ * NewsWidgetQuoteType class.
+ *
  * \@extends NewsWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsWidgetTextType extends NewsWidgetType
+class NewsWidgetQuoteType extends NewsWidgetType
 {
     /**
      * dataClass
-     * 
-     * (default value: 'Base\CoreBundle\Entity\NewsWidgetText')
-     * 
+     *
+     * (default value: 'Base\CoreBundle\Entity\NewsWidgetQuote')
+     *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\CoreBundle\Entity\NewsWidgetText';
-    
+    protected $dataClass = 'Base\CoreBundle\Entity\NewsWidgetQuote';
+
     /**
      * buildForm function.
-     * 
+     *
      * @access public
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -36,18 +38,15 @@ class NewsWidgetTextType extends NewsWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('translations', 'a2lix_translations', array(
+            'label' => false,
             'translation_domain' => 'BaseAdminBundle',
-            'required_locales' => array('fr'),
+            'required_locales' => array(),
             'fields' => array(
                 'content' => array(
                     'label' => false,
-                    'attr' => array(
-                        'class' => 'ckeditor'
-                    ),
                     'constraints' => array(
                         new NotBlank()
                     ),
-                    'field_type' => 'ckeditor'
                 ),
                 'createdAt' => array(
                     'display' => false
@@ -58,15 +57,15 @@ class NewsWidgetTextType extends NewsWidgetType
             )
         ));
     }
-    
+
     /**
      * getName function.
-     * 
+     *
      * @access public
      * @return void
      */
     public function getName()
     {
-        return 'news_widget_text_type';
+        return 'news_widget_quote_type';
     }
 }

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">    
+    <meta name="author" content="">
 
     <!-- //// TITLE \\\\ -->
     <title>Festival de Cannes 2016 - HTML</title>
@@ -44,19 +44,19 @@
             <table>
               <tbody></tbody>
               <tr>
-                   <td data-cat="press-media" >compétition longs métrages (25)</td>
-                   <td data-cat="press-media-competitioncm">compétition courts métrages (3)</td>
-                   <td data-cat="press-media-horscomp" class="active">hors compétition (7)</td>
+                   <td data-cat="press-media.php">compétition longs métrages (25)</td>
+                   <td data-cat="press-media-competitioncm.php">compétition courts métrages (3)</td>
+                   <td data-cat="press-media-horscomp.php"  class="active">hors compétition (7)</td>
                </tr>
                <tr>
-                   <td data-cat="press-media-uncertainregard">un certain regard (10)</td>
-                   <td data-cat="press-media-seancesdeminuit" >séances de minuit</td>
-                   <td data-cat="press-media-seancespeciales" >séances spéciales</td>
+                   <td data-cat="press-media-uncertainregard.php">un certain regard (10)</td>
+                   <td data-cat="press-media-seancesdeminuit.php">séances de minuit</td>
+                   <td data-cat="press-media-seancespeciales.php">séances spéciales</td>
                </tr>
                <tr>
-                 <td data-cat="press-media-cinefondation">cinéfondation (9)</td>
-                 <td data-cat="press-media-cannesclassics">cannes classics (5)</td>
-                 <td data-cat="press-media-cinemadelaplage">cinéma de la plage</td>
+                 <td data-cat="press-media-cinefondation.php">cinéfondation (9)</td>
+                 <td data-cat="press-media-cannesclassics.php">cannes classics (5)</td>
+                 <td data-cat="press-media-cinemadelaplage.php">cinéma de la plage</td>
                </tr>
             </table>
           </div>
@@ -85,7 +85,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                      <a href="" class="button"> En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -103,9 +103,9 @@
                     <div class="container">
                     <div class="container-title">
                       <h3 class="title-press">Photos HD <span class="number">(22)</span></h3>
-                      <div class="download-btns right-btn buttons"><a href="" class="alldl button"> Tout télécharger</a></div>
+                      <div class="download-btns right-btn buttons "><a href="" class="alldl button"> Tout télécharger</a></div>
                     </div>
-                    <div class="grid-wrapper images" >
+                    <div class="grid-wrapper images"  >
                       <div class="grid-sizer"></div>
                         <div class="item">
                         <a href="img/press/media/img-large.jpg" class="chocolat-image ajax" title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
@@ -132,7 +132,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -177,7 +177,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                      <a href="" class="button"> En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -224,7 +224,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -265,22 +265,22 @@
                 <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons active-btn">
+                  <div class="contain-buttons">
                     <strong>Dossier de presse <span>(2)</span></strong>
-                    <div class="buttons">
-                      <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                    <div class="buttons active-btn">
+                      <a href="" class="button">En français</a>
+                      <a href="" class="button">En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
                     <strong>Bandes annonces et extraits <span>(4)</span></strong>
                     <div class="buttons">
-                      <a href="" class="button"> Extrait 1 (FR)</a>
-                      <a href="" class="button"> Extrait 1 (EN)</a>
+                      <a href="" class="button">Extrait 1 (FR)</a>
+                      <a href="" class="button">Extrait 1 (EN)</a>
                     </div>
                     <div class="buttons">
-                      <a href="" class="button"> Extrait 2 (FR)</a>
-                      <a href="" class="button"> Extrait 2 (EN)</a>
+                      <a href="" class="button">Extrait 2 (FR)</a>
+                      <a href="" class="button">Extrait 2 (EN)</a>
                     </div>
                   </div>
                   <div class="photos block slideshow">
@@ -316,7 +316,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -361,7 +361,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                      <a href="" class="button"> En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -408,7 +408,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>
@@ -449,11 +449,11 @@
                 <div class="media photo">Photos (9)</div>
                 <span class="plus"></span>
                 <div class="contain">
-                  <div class="contain-buttons">
+                  <div class="contain-buttons ">
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En anglais</a>
+                      <a href="" class="button"> En Englais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -500,7 +500,7 @@
                             <img src="img/press/media/img4.jpg" alt="">
                           </a>
                         </div>
-                        <div class="item">
+                        <div class="item last">
                           <a href="http://dummyimage.com/1280x1000/000/fff" class="chocolat-image ajax">
                             <img src="img/press/media/img5.jpg" alt="">
                           </a>

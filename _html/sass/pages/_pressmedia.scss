@@ -53,7 +53,7 @@
       .line {
         .info {
           float: left;
-          width: 320px;
+          width: 338px;
           .txt {
             width: 225px;
           }
@@ -93,7 +93,7 @@
         }
         .active-btn {
           .button {
-            color: #c29f5f ;
+            color: #c29f5f ; 
             border-color: #c29f5f ;
           }
           .button:hover {
@@ -146,9 +146,16 @@
           border: 1px solid #c8a461;
           color: #fff;
         }
+        .active:hover{
+            background-color: #c8a461;
+            border: 1px solid #c8a461;
+            color: #fff;
+        }
         td:hover {
           background-color: rgba(200, 164, 97, 0.51);
           color: #fff;
+          border: 1px solid #cccccc;
+          
         }
       }
     }
@@ -174,11 +181,15 @@
         }
         .item {
           display: inline-block;
-          margin: 6px;
+          margin: 8px;
         }
+        .item.last{
+          margin-right: 0px;
+        }
+
         .grid-wrapper {
           position: relative;
-          height: 318px;
+          height: auto;
           margin-left: -7px;
         }
         position: relative;
@@ -233,8 +244,8 @@
             width: 18px;
             height: 18px;
             position: absolute;
-            top: 34px;
-            right: 23px;
+            top: 28px;
+            right: 18px;
             background-repeat: no-repeat;
             background-size: 111%;
             cursor: pointer;
@@ -251,8 +262,8 @@
             width: 57px;
             height: 57px;
             position: absolute;
-            top: 13px;
-            right: 5px;
+            top: 8px;
+            right: 0px;
             background-repeat: no-repeat;
             background-size: 122%;
             cursor: pointer;
@@ -288,6 +299,7 @@
     }
     .title-press{
       margin-bottom: 30px;
+      color:#000;
     }
   }
   .grid-wrapper {

@@ -55,7 +55,7 @@ $(document).ready(function() {
             }, 'xml');
         });
       //open issue
-    if(!$('.content-contractor').length){      
+    if(!$('.content-contractor').length){
       $(".contain-section h3, .contain-section .fa").click(function(){
           var i;
         var $this = $(this).closest('.contain-section');

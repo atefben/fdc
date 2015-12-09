@@ -1,6 +1,6 @@
 lang:
     en: Anglais
-    fr: Francais
+    fr: Français
     es: Espagnol
     zh: Chinois
 
@@ -46,9 +46,12 @@ dashboard:
 
 form:
     news:
+        helper_title: "X caractères max."
         helper_seo_title: "Recommandé : 60 caractères"
         helper_description: "Recommandé : 155 caractères"
         helper_file: |
             Par défaut, c'est l'image principale qui est utilisée comme image de partage.
             Dimensions attendues : YxZpx. Format attendu.
     label_seo_file: Vignette partage
+    label_theme: Thème
+    label_article_tags: Tags de recherche associés à l'article

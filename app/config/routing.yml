@@ -78,15 +78,14 @@ base_soif:
 fdc_event:
     resource: "@FDCEventBundle/Resources/config/routing.yml"
     prefix:   /
-    host:     "event.%fdc_domain%"
 
 fdc_corporate:
     resource: "@FDCCorporateBundle/Controller/"
     type:     annotation
     prefix:   /
-    host:     "corporate.%fdc_domain%"
+    host:     "%fdc_corporate_domain%"
 
 fdc_press:
     resource: "@FDCPressBundle/Controller/"
     type:     annotation
-    host:     "press.%fdc_domain%"
+    host:     "%fdc_press_domain%"

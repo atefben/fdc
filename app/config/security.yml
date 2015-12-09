@@ -29,12 +29,12 @@ security:
                 use_forward:    false
                 check_path:     /admin/login_check
                 failure_path:   null
-                success_handler: base_admin.handler.login
+                default_target_path: /admin/dashboard
             logout:
                 path:           /admin/logout
             anonymous:          true
         press:
-             host: ^press\.%fdc_domain_regexp%$
+             host: ^%fdc_press_domain_regexp%$
              context:            user
              form_login:
                  provider:       fos_userbundle
@@ -42,7 +42,6 @@ security:
                  use_forward:    false
                  check_path:     /login_check
                  failure_path:   null
-                 success_handler: base_admin.handler.login
              logout:
                  path:           /logout
              anonymous:          true
