@@ -1,0 +1,79 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+    {#<div id="main" class="contact loading"> |!| JS |!| #}
+    <div id="main" class="contact">
+        <h2 class="title">{{ 'contact.title'|trans }}</h2>
+        <div class="coords">
+            <h3>{{ 'contact.festival'|trans }}</h3>
+            <p>{{ 'contact.adresse'|trans }}</p>
+            <p>{{ 'contact.contact'|trans }}</p>
+        </div>
+
+        {% for label, flashes in app.session.flashbag.all %}
+            {% if label == "success" %}
+                {#<div class="{{ label }}"> |!| JS |!|#}
+                <div class="">
+                    {% for flash in flashes %}
+                        <h3>{{ 'contact.sucess.title'|trans }}</h3>
+                        <p>{{ 'contact.sucess.description'|trans }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+        <div class="container">
+            <p>{{ 'contact.form.description'|trans|raw }}</p>
+            <div id="form">
+                {{ form_start(form) }}
+
+                <div class="select">
+                    {{ form_label(form.select) }}
+                    {{ form_widget(form.select) }}
+                    <span id="triggerSelect"></span>
+                </div>
+
+                {{ form_widget(form.name) }}
+                {{ form_widget(form.email) }}
+                {{ form_widget(form.subject) }}
+                {{ form_widget(form.message) }}
+
+                <span class="required">* Champs obligatoires</span>
+                <input type="submit" value="Envoyer">
+
+                {{ form_end(form) }}
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+                {#<form action="">#}
+                    {#<div class="select">#}
+                        {#<label for="select">Votre message concerne:</label>#}
+                        {#<select name="select">#}
+                            {#<option class="default" value="default">Séléctionnez un thème</option>#}
+                            {#<option value="theme1">Theme 1</option>#}
+                            {#<option value="theme2">Theme 2</option>#}
+                        {#</select>#}
+                        {#<span id="triggerSelect"></span>#}
+                    {#</div>#}
+                    {#<input type="text" name="name" placeholder="Votre nom*" data-error="Votre nom n'est pas renseigné" />#}
+                    {#<input type="email" name="email" placeholder="Votre adresse email*"  data-error="L'adresse email n'est pas valide" />#}
+                    {#<input type="text" name="object" placeholder="Objet*" data-error="L'objet de votre message n'est pas renseigné" />#}
+                    {#<textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné"></textarea>#}
+                    {#<span class="required">* Champs obligatoires</span>#}
+                    {#<input type="submit" value="Envoyer" />#}
+                {#</form>#}
+                {#<div class="errors">#}
+                    {#<ul></ul>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    </div>
+{% endblock %}

@@ -39,7 +39,7 @@
             <ul>
                 <li class="copyright">{{ 'footer.copyright'|trans }}</li>
                 <li>
-                    <a href="{{ path('fdc_event_static', {'page': 'contact'}) }}">
+                    <a href="{{ path('fdc_event_contact') }}">
                         {{ 'footer.contact'|trans }}
                     </a>
                 </li>
@@ -48,7 +48,11 @@
                         {{ 'footer.faq'|trans }}
                     </a>
                 </li>
-                <li><a href="#">{{ 'footer.credit'|trans }}</a></li>
+                <li>
+                    <a href="{{ path('fdc_event_static', {'page': 'credit'}) }}">
+                        {{ 'footer.credit'|trans }}
+                    </a>
+                </li>
                 <li>
                     <a href="{{ path('fdc_event_static', {'page': 'mention'}) }}">
                         {{ 'footer.mention-legale'|trans }}

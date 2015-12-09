@@ -5,6 +5,8 @@ namespace FDC\EventBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
+use FDC\EventBundle\Form\Type\ContactType;
 
 /**
  * @Route("/event")
@@ -14,13 +16,14 @@ class FooterController extends Controller
 
 
     /**
-     * @Route("/{page}", name="fdc_event_static")
+     * @Route("/static-{page}", name="fdc_event_static")
      */
 
     public function staticAction($page)
     {
 
         $pageContent = "";
+
         $mentionContent = array(
             array(
                 'title' => "Propriété intellectuelle",
@@ -63,6 +66,7 @@ class FooterController extends Controller
             ),
 
         );
+
         $sitemapContent = array(
             array(
                 'title'=>'L\'actualité',
@@ -165,13 +169,411 @@ class FooterController extends Controller
                 )
             )
         );
-        $contactContent = "Contact";
-        $faqContent = "FAQ";
+
+
+        $faqContent = array(
+            array(
+                'name'    => 'Informations générales',
+                'slug'    => 'informations-generales',
+                'articles' => array(
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    )
+                )
+            ),
+            array(
+                'name'    => 'Informations générales',
+                'slug'    => 'accreditation',
+                'articles' => array(
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    )
+                )
+            ),
+            array(
+                'name'    => 'Informations générales',
+                'slug'    => 'accreditation',
+                'articles' => array(
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    )
+                )
+            ),
+            array(
+                'name'    => 'Informations générales',
+                'slug'    => 'accreditation',
+                'articles' => array(
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    )
+                )
+            ),
+            array(
+                'name'    => 'Informations générales',
+                'slug'    => 'accreditation',
+                'articles' => array(
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    )
+                )
+            ),
+            array(
+                'name'    => 'Informations générales',
+                'slug'    => 'accreditation',
+                'articles' => array(
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    ),
+                    array(
+                        'title'   => 'Quelle est la date du prochain festival ?',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo est numquam provident.
+                Neque praesentium eos, placeat adipisci assumenda possimus laudantium fugiat quisquam in necessitatibus
+                inventore repellendus, temporibus, debitis, atque nisi? Quod modi veniam a, facere alias aliquid,
+                asperiores perferendis cum ratione iste recusandae voluptatibus qui quasi illum? Repudiandae maiores
+                consectetur sapiente modi suscipit possimus asperiores impedit at sunt id numquam natus eos dignissimos
+                perspiciatis sed assumenda necessitatibus, aut autem eligendi labore, tempore debitis iure voluptatem.
+                Dolor, repellat, placeat. Maxime, esse?'
+                    )
+                )
+            ),
+
+        );
+
+        $appliContent = " ";
 
         switch ($page) {
-            case 'contact':
-                $pageContent = $contactContent;
-                break;
             case 'faq':
                 $pageContent = $faqContent;
                 break;
@@ -181,13 +583,20 @@ class FooterController extends Controller
             case 'sitemap':
                 $pageContent = $sitemapContent;
                 break;
+            case 'credit':
+                $pageContent = $mentionContent;
+                break;
+            case 'application':
+                $pageContent = $appliContent;
+                break;
         }
 
         return $this->render(
-            "FDCEventBundle:Footer:static.$page.html.twig",
+            "FDCEventBundle:Footer:footer.$page.html.twig",
             array('content' => $pageContent)
         );
 
 
     }
+
 }
