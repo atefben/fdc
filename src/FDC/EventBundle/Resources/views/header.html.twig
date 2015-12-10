@@ -197,22 +197,7 @@
         </div>
     </div>
     <div id="selection">
-    {#<div id="selection" class="open">#}
-
-        <h2 class="title">{{ 'selection.title'|trans }}<strong>(<span></span>)</strong></h2>
-        <ul class="filters-selection">
-            <li><a href="#" data-selection='all' class="active">{{ 'selection.all'|trans }}</a></li>
-            <li><a href="#" data-selection='article'>{{ 'selection.article'|trans }}</a></li>
-            <li><a href="#" data-selection='video'>{{ 'selection.video'|trans }}</a></li>
-            <li><a href="#" data-selection='audio'>{{ 'selection.audio'|trans }}</a></li>
-            <li><a href="#" data-selection='suggestion'>{{ 'selection.suggestion'|trans }}</a></li>
-        </ul>
-        <div id="slider-selection" class="owl-carousel"></div>
-        <div id="slider-suggestion" class="owl-carousel"></div>
-
-        <div id="toClone" class="article">
-            {{ render(controller('FDCEventBundle:Article:selection',{ 'max': 8 } )) }}
-        </div>
+        {{ render(controller('FDCEventBundle:Article:filters')) }}
     </div>
     <div id="searchContainer">
         <div class="container">
