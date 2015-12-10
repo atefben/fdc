@@ -70,7 +70,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En Englais</a>
+                      <a href="" class="button"> En anglais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -162,7 +162,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En Englais</a>
+                      <a href="" class="button"> En anglais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -254,7 +254,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button">En français</a>
-                      <a href="" class="button">En Englais</a>
+                      <a href="" class="button">En anglais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -346,7 +346,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En Englais</a>
+                      <a href="" class="button"> En anglais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">
@@ -438,7 +438,7 @@
                     <strong>Dossier de presse <span>(2)</span></strong>
                     <div class="buttons active-btn">
                       <a href="" class="button"> En français</a>
-                      <a href="" class="button"> En Englais</a>
+                      <a href="" class="button"> En anglais</a>
                     </div>
                   </div>
                   <div class="contain-buttons">

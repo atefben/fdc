@@ -25,7 +25,7 @@
       <div class="locked">
         <div class="vCenter">
           <div class="vCenterKid">
-            <h3 class="title-press">Contenu verrouillé</h3>
+            <h3 class="title-press">contenus verrouillés</h3>
             <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
           </div>
         </div>
