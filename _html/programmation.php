@@ -70,16 +70,21 @@
               <span class="label">Sélections :</span>
               <span class="select">
                 <span class="active" data-filter="all">Toutes</span>
-                <span data-filter="press">Conférence de Presse</span>
-                <span data-filter="reprise">Séance de reprise</span>
+                <span data-filter="competition">Compétition</span>
+                <span data-filter="hors_competition">Hors Compétition</span>
+                <span data-filter="regard">Un Certain Regard</span>
+                <span data-filter="seance">Séances spéciales</span>
+                <span data-filter="cannes">Cannes Classics</span>
+                <span data-filter="cinema">Cinéma de la plage</span>
+                <span data-filter="cinefondation">Cinéfondation</span>
               </span>
             </div>
             <div id="type" class="filter">
               <span class="label">Types :</span>
               <span class="select">
                 <span class="active" data-filter="all">Tous</span>
-                <span data-filter="press">Conférence de Presse</span>
-                <span data-filter="reprise">Séance de reprise</span>
+                <span data-filter="seances">Séances</span>
+                <span data-filter="events">Evènements</span>
               </span>
             </div>
           </div>
