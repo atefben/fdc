@@ -66,7 +66,7 @@
         <div class="communiques">
           <div class="chap">
             <h3 class="title-press">Communiqués et infos</h3>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tous les communiqués et infos</a></p>
+            <p class="link"><a href="press-actu.php"><img src="img/svg/arrow-right-gold.svg" />tous les communiqués et infos</a></p>
           </div>
           <div class="grid-container">
             <div class="grid-wrapper">
@@ -344,7 +344,7 @@
         <div class="mediatheque">
           <div class="chap">
             <h3 class="title-press">Médiathèque</h3>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />toute la médiathèque</a></p>
+            <p class="link"><a href="press-media.php"><img src="img/svg/arrow-right-gold.svg" />toute la médiathèque</a></p>
           </div>
           <div class="table">
             <div class="line">
@@ -416,7 +416,7 @@
         <div class="download">
           <div class="chap">
             <h3 class="title-press">à télécharger</h3>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tous les téléchargements</a></p>
+            <p class="link"><a href="press-telecharger.php"><img src="img/svg/arrow-right-gold.svg" />tous les téléchargements</a></p>
           </div>
         </div>
         <div class="affiche">
