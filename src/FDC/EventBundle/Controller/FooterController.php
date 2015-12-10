@@ -5,11 +5,12 @@ namespace FDC\EventBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 use FDC\EventBundle\Form\Type\ContactType;
 use FDC\EventBundle\Form\Type\NewsletterType;
+
 
 
 /**
@@ -649,11 +650,10 @@ class FooterController extends Controller
 
     }
 
-    /*
-     * @Route( "/", name="newsletter_register" )
+    /**
+     * @Route( "/register-newsletter" )
      * @Template()
      */
-
     public function newsletterAction( Request $request )
     {
 
