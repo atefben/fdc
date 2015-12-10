@@ -612,9 +612,11 @@ class FooterController extends Controller
     {
         $locale = $request->getLocale();
         $em = $this->getDoctrine()->getManager();
+        $translator = $this->get('translator');
+        $hasErrors = false;
 
         $themes = $em->getRepository('BaseCoreBundle:ContactTheme')->findSelectValues($locale);
-        $form = $this->createForm(new ContactType($themes));
+        $form = $this->createForm(new ContactType($themes, $translator));
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -640,12 +642,17 @@ class FooterController extends Controller
                 $this->get('mailer')->send($message);
 
                 return $this->redirect($this->generateUrl('fdc_event_contact'));
+            } else {
+                $hasErrors = true;
             }
         }
 
         return $this->render(
             "FDCEventBundle:Footer:footer.contact.html.twig",
-            array('form' => $form->createView())
+            array(
+                'form' => $form->createView(),
+                'hasErrors' => $hasErrors
+            )
         );
 
     }
