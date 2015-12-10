@@ -2,22 +2,7 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
-
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link href='js/bower_components/fullcalendar/dist/fullcalendar.min.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -66,7 +51,7 @@
         <div class="communiques">
           <div class="chap">
             <h3 class="title-press">Communiqués et infos</h3>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tous les communiqués et infos</a></p>
+            <p class="link"><a href="press-actu.php"><img src="img/svg/arrow-right-gold.svg" />tous les communiqués et infos</a></p>
           </div>
           <div class="grid-container">
             <div class="grid-wrapper">
@@ -344,7 +329,7 @@
         <div class="mediatheque">
           <div class="chap">
             <h3 class="title-press">Médiathèque</h3>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />toute la médiathèque</a></p>
+            <p class="link"><a href="press-media.php"><img src="img/svg/arrow-right-gold.svg" />toute la médiathèque</a></p>
           </div>
           <div class="table">
             <div class="line">
@@ -416,7 +401,7 @@
         <div class="download">
           <div class="chap">
             <h3 class="title-press">à télécharger</h3>
-            <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />tous les téléchargements</a></p>
+            <p class="link"><a href="press-telecharger.php"><img src="img/svg/arrow-right-gold.svg" />tous les téléchargements</a></p>
           </div>
         </div>
         <div class="affiche">

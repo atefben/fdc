@@ -574,7 +574,7 @@
           font-family: $CamphorBold;
           font-size: 0.750rem;
           text-transform: uppercase;
-          width: 95px;
+          width: auto;
           @include transition(all 0.9s $smoothTransition);
 
           &:hover {

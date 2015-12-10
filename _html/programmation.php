@@ -2,22 +2,7 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
-
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link href='js/bower_components/fullcalendar/dist/fullcalendar.min.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -40,7 +25,7 @@
       <div class="locked">
         <div class="vCenter">
           <div class="vCenterKid">
-            <h3 class="title-press">Contenu verrouillé</h3>
+            <h3 class="title-press">contenus verrouillés</h3>
             <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
           </div>
         </div>
@@ -67,19 +52,24 @@
           <div id="calendar-programmation">
             <div class="filters">
             <div id="category" class="filter">
-              <span class="label">Catégories :</span>
+              <span class="label">Sélections :</span>
               <span class="select">
                 <span class="active" data-filter="all">Toutes</span>
-                <span data-filter="press">Conférence de Presse</span>
-                <span data-filter="reprise">Séance de reprise</span>
+                <span data-filter="competition">Compétition</span>
+                <span data-filter="hors_competition">Hors Compétition</span>
+                <span data-filter="regard">Un Certain Regard</span>
+                <span data-filter="seance">Séances spéciales</span>
+                <span data-filter="cannes">Cannes Classics</span>
+                <span data-filter="cinema">Cinéma de la plage</span>
+                <span data-filter="cinefondation">Cinéfondation</span>
               </span>
             </div>
             <div id="type" class="filter">
               <span class="label">Types :</span>
               <span class="select">
                 <span class="active" data-filter="all">Tous</span>
-                <span data-filter="press">Conférence de Presse</span>
-                <span data-filter="reprise">Séance de reprise</span>
+                <span data-filter="seances">Séances</span>
+                <span data-filter="events">Evènements</span>
               </span>
             </div>
           </div>
