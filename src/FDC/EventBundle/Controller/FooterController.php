@@ -605,12 +605,37 @@ class FooterController extends Controller
     }
 
     /**
-     * @Route( "/", name="newsletter_register" )
+     * @Route( "/register-newsletter", name="newsletter_register" )
      * @Template()
      */
     public function newsletterAction( Request $request )
     {
-        $newsForm = $this->createForm( new NewsletterType( ) );
+
+        $newsForm = $this->createForm( new NewsletterType() );
+
+
+        if ( $request->isMethod( 'POST' ) ) {
+
+            $newsForm->submit($request);
+
+            if ( $newsForm->isValid( ) ) {
+
+                $data = $newsForm->getData();
+                $email = $data['email'];
+                $response['success'] = $email;
+
+            }
+            else{
+
+                $response['success'] = false;
+                $response['cause'] = 'whatever';
+
+            }
+
+
+            return new JsonResponse( $response );
+
+        }
 
         return $this->render(
             'FDCEventBundle:Footer:footer.newsletter.html.twig',
