@@ -85,7 +85,7 @@ $(document).ready(function() {
             for(var i=0; i<events.length; i++) {
               if(id == events[i].id) {
                 $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete); //TODO traduction, enlever la string // 
+                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete); 
               }
             }
           });
