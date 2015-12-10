@@ -5314,6 +5314,7 @@ div.chocolat-wrapper .zoomCursor.hide {
 .audio-player.full .fullscreen {
   bottom: 43px;
   right: 40px;
+  background: url("../img/svg/FullScreenInverse.svg") no-repeat center;
 }
 .audio-player.full #channels-audio {
   height: 185px;
@@ -16306,6 +16307,9 @@ article .read-later.rAlign span:after {
 }
 #create-event-pop .container form input[type="submit"] {
   margin-bottom: 41px;
+}
+#create-event-pop .container form input[type="submit"]:hover {
+  cursor: pointer;
 }
 #create-event-pop .container form input[type="text"] {
   padding-left: 10px;

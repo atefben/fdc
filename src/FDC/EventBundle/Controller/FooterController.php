@@ -659,12 +659,14 @@ class FooterController extends Controller
 
     /**
      * @Route( "/register-newsletter" )
-     * @Template()
+     * @param Request $request
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newsletterAction( Request $request )
     {
+        $translator = $this->get('translator');
 
-        $newsForm = $this->createForm( new NewsletterType() );
+        $newsForm = $this->createForm( new NewsletterType($translator) );
 
         if ( $request->isMethod( 'POST' ) ) {
 
@@ -677,7 +679,7 @@ class FooterController extends Controller
                 $response['success'] = $email;
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Inscription à la newsletter')
+                    ->setSubject($translator->trans('newsletter.subject'))
                     ->setFrom('contact@mail.fr')
                     ->setTo($email)
                     ->setBody(

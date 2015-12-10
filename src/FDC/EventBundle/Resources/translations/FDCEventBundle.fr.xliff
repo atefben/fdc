@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-10T18:04:35Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-10T17:58:48Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -373,21 +373,41 @@
         <target>Renault</target>
         <jms:reference-file line="100">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="f86eaa4d92b3e915cc2b27b8c85e614d665f7e77" resname="selection.all">
+        <source>selection.all</source>
+        <target state="new">selection.all</target>
+        <jms:reference-file line="204">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="468bca701e9f0c5878bde3f480ef617084704cb0" resname="selection.article">
+        <source>selection.article</source>
+        <target state="new">selection.article</target>
+        <jms:reference-file line="205">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4944dc858aefc7207a741b6d2405ed891d72faaa" resname="selection.audio">
+        <source>selection.audio</source>
+        <target state="new">selection.audio</target>
+        <jms:reference-file line="207">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="5392724f9b1ff81320fe4f7fdb603a5f1e9aa2e4" resname="selection.recherche">
         <source>selection.recherche</source>
         <target>Audios</target>
-        <jms:reference-file line="205">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="234">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e530963e43868af3101305c1690a414ecb2f2223" resname="selection.suggestion">
         <source>selection.suggestion</source>
         <target>Suggestions</target>
-        <jms:reference-file line="9">views/Article/article.filter.html.twig</jms:reference-file>
+        <jms:reference-file line="208">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ccfefae915b84a8e51be24c711f335fab482ef06" resname="selection.title">
         <source>selection.title</source>
         <target>Ma sélection
 </target>
-        <jms:reference-file line="3">views/Article/article.filter.html.twig</jms:reference-file>
+        <jms:reference-file line="201">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ea63c94e05d7d64e478c521552f29517821d0361" resname="selection.video">
+        <source>selection.video</source>
+        <target state="new">selection.video</target>
+        <jms:reference-file line="206">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="240c3168511c29c7b3574d769e2d513991dead5f" resname="sitemap.title">
         <source>sitemap.title</source>
