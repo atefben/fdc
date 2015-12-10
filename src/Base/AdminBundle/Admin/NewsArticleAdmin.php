@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 
@@ -171,6 +172,7 @@ class NewsArticleAdmin extends Admin
                 )
             ))
             ->add('sites', null, array(
+                'label' => 'form.label_publish_on',
                 'class' => 'BaseCoreBundle:Site',
                 'multiple' => true,
                 'expanded' => true
@@ -232,8 +234,13 @@ class NewsArticleAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('translate', null, array('required' => false), array(
-                'translation_domain' => 'BaseAdminBundle',
+            ->add('translationStatus', 'choice', array(
+                'choices' => News::getTranslationStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => News::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',

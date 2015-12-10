@@ -1,12 +1,5 @@
 jms_translation:
     configs:
-        admin:
-            dirs: [%kernel.root_dir%/../src/Base/AdminBundle]
-            output_dir: %kernel.root_dir%/../src/Base/AdminBundle/Resources/translations
-            ignored_domains: []
-            excluded_names: ["*TestCase.php", "*Test.php"]
-            excluded_dirs: [cache, data, logs]
-            extractors: []
         fdc_event:
             dirs: [%kernel.root_dir%/../src/FDC/EventBundle]
             output_dir: %kernel.root_dir%/../src/FDC/EventBundle/Resources/translations
