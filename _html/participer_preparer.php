@@ -119,8 +119,8 @@
         </section>
         <section>
           <div class="contain-section contain-cinema">
-              <h3 class="title-participate"> <img src="img/participate/les-bonnes-pratiques.svg" alt="" class="svg">Les bonnes pratiques</h3><i class="fa fa-plus"></i>          
-           <div class="contain-good-practice">             
+              <h3 class="title-participate"> <img src="img/participate/les-bonnes-pratiques.svg" alt="" class="svg">Les bonnes pratiques</h3><i class="fa fa-plus"></i>
+           <div class="contain-good-practice">
               <div class="item-good-practice">
                 <img src="img/participate/enregistreur.svg" alt="svg">
                 <strong>Pas d'utilisation d'enregistreur vidéos/audios/photos</strong>
