@@ -5314,6 +5314,7 @@ div.chocolat-wrapper .zoomCursor.hide {
 .audio-player.full .fullscreen {
   bottom: 43px;
   right: 40px;
+  background: url("../img/svg/FullScreenInverse.svg") no-repeat center;
 }
 .audio-player.full #channels-audio {
   height: 185px;
