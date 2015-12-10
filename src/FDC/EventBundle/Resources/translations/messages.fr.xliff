@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-10T17:43:46Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-10T17:59:17Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -15,6 +15,11 @@
         <source>newsletter.input.placeholder</source>
         <target>Votre adresse email</target>
         <jms:reference-file line="40">Form/Type/NewsletterType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2af55dfeeea0143ae16438b51008c1683fcd05c9" resname="newsletter.subject">
+        <source>newsletter.subject</source>
+        <target>Votre inscription à la newsletter</target>
+        <jms:reference-file line="682">EventBundle/Controller/FooterController.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>
