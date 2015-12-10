@@ -174,7 +174,7 @@ $(document).ready(function() {
         // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
             lang: GLOBALS.locale , // TODO a verifier
-            defaultDate: GLOBALS.defaultDate,
+            defaultDate: GLOBALS.defaultDate, // TODO a supprimer
             header: {
               left: 'prev',
               center: 'title',
