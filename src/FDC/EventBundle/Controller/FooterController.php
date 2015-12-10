@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use FDC\EventBundle\Form\Type\ContactType;
 use FDC\EventBundle\Form\Type\NewsletterType;
 
 
