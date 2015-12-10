@@ -71,7 +71,7 @@ class DashboardController extends Controller
         $localesAdmin = $this->getParameter('locales_admin');
         $localesArray = array();
         foreach ($localesAdmin as $locale) {
-            $localesArray[$locale] = $locale;
+            $localesArray[$locale] = 'lang.'.$locale;
         }
         
         $form = $this->createForm(new LocaleSwitcherType($localesArray, $request->getLocale()));

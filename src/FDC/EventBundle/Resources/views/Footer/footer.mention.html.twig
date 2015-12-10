@@ -1,0 +1,24 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="legal-notice">
+        <h2 class="title">{{ 'mention.title'|trans }}</h2>
+        <section class="legal-notice-container">
+            <h3 class="legal-notice-description">{{ 'mention.realisation.site'|trans }}</h3>
+            <div class="legal-notice-responsable">
+                <p><strong>{{ 'mention.responsable'|trans }}</strong>{{ 'mention.responsable.name'|trans }}</p>
+                <p><strong>{{ 'mention.hebergement'|trans }}</strong>{{ 'mention.amazon'|trans }}</p>
+            </div>
+
+
+            {% for article in content %}
+                <article class="legal-notice-art">
+                    <h4 class="legal-notice-art-title">{{ article.title }}</h4>
+                    <p>{{ article.content }}</p>
+                </article>
+            {% endfor %}
+
+        </section>
+    </div>
+{% endblock %}

@@ -52,11 +52,12 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $userManager = $this->container->get('fos_user.user_manager');
 
         $user = $userManager->createUser();
-        $user->setUsername('admin-all');
+        $user->setUsername('all-admin');
         $user->setEmail('admin-all@yopmail.fr');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
         $user->addGroup($this->getReference('group-all-admin'));
+        $user->addGroup($this->getReference('group-soif'));
        /* $user->addSite($this->getReference('site-Base'));
         $user->addSite($this->getReference('site-mdf'));
         $user->addSite($this->getReference('site-cine'));
@@ -64,11 +65,12 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $userManager->updateUser($user);
 
         $user = $userManager->createUser();
-        $user->setUsername('admin-fdc');
+        $user->setUsername('fdc-admin');
         $user->setEmail('admin-fdc@yopmail.fr');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
         $user->addGroup($this->getReference('group-fdc-admin'));
+        $user->addGroup($this->getReference('group-soif'));
        /* $user->addSite($this->getReference('site-fdc'));
         $user->addSite($this->getReference('site-mdf'));
         $user->addSite($this->getReference('site-cine'));
@@ -76,7 +78,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $userManager->updateUser($user);
 
         $user = $userManager->createUser();
-        $user->setUsername('writer');
+        $user->setUsername('fdc-writer');
         $user->setEmail('fdc-writer@yopmail.fr');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
@@ -85,11 +87,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $userManager->updateUser($user);
 
         $user = $userManager->createUser();
-        $user->setUsername('translator');
+        $user->setUsername('all-translator');
         $user->setEmail('admin-translator@yopmail.fr');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
-        $user->addGroup($this->getReference('group-translator'));
+        $user->addGroup($this->getReference('group-all-translator'));
         /*$user->addSite($this->getReference('site-Base'));
         $user->addSite($this->getReference('site-mdf'));*/
         $userManager->updateUser($user);

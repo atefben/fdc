@@ -2,22 +2,7 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
-
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link href='js/bower_components/fullcalendar/dist/fullcalendar.min.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  
+     <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -179,7 +164,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Media Web</h4>
@@ -210,7 +195,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Agence de presse</h4>
@@ -241,7 +226,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Agence de presse audiovisuelle</h4>
@@ -272,7 +257,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Agence photos</h4>
@@ -303,7 +288,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Photographie de presse</h4>
@@ -334,7 +319,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>télévisision</h4>
@@ -365,7 +350,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
             <a href="#" class="button save">Enregistrer</a>
           </div>
             <h4>Radio</h4>
@@ -394,7 +379,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
        </div>
        <div class="request">
         <div class="wrapper">
-         <a href="" class="button request-btn">Faire une demande d'accréditation en ligne *</a>
+         <a href="//reg.online-festival.com/" class="button request-btn" target="_blank">Faire une demande d'accréditation en ligne *</a>
          <span class="legend"><sup>*</sup> Vous allez quitter le site</span>
         </div>
        </div>

@@ -1,9 +1,13 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
 <html>
     <head>
-        <title>FDC Press</title>
+        <title>{{ 'website.title'|trans }}</title>
     </head>
     <body>
+        {% include 'FDCEventBundle::header.html.twig' %}
         {% block body %}
         {% endblock %}
+        {% include 'FDCEventBundle::footer.html.twig' %}
     </body>
 </html>

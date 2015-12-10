@@ -46,7 +46,7 @@ $(document).ready(function() {
       });
     }
 
-    function progressBar(){    
+    function progressBar(){
       // build progress bar elements
       buildProgressBar();
 
@@ -146,7 +146,7 @@ $(document).ready(function() {
       }
     });
 
-    function move() {      
+    function move() {
       var p = ($('#slider .owl-item').width() / 2) - 200;
 
       $('#slider .img-container').addClass('relative');

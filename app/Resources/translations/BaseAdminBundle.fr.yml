@@ -1,3 +1,9 @@
+lang:
+    en: Anglais
+    fr: Français
+    es: Espagnol
+    zh: Chinois
+
 entity:
     news_article: Articles
     news_video: Vidéos
@@ -24,6 +30,7 @@ entity:
     film_person: Personnes
     film_atelier: Films Atelier
     country: Pays
+    contact_theme: Thèmes de contact
 
 dashboard:
     group:
@@ -35,14 +42,17 @@ dashboard:
         info: Infos
     link:
         settings: Paramètres
-        bo_translation: Traduction du Back-office
+        bo_translation: Traductions
         homepage: Homepage
 
 form:
     news:
+        helper_title: "X caractères max."
         helper_seo_title: "Recommandé : 60 caractères"
         helper_description: "Recommandé : 155 caractères"
         helper_file: |
             Par défaut, c'est l'image principale qui est utilisée comme image de partage.
             Dimensions attendues : YxZpx. Format attendu.
     label_seo_file: Vignette partage
+    label_theme: Thème
+    label_article_tags: Tags de recherche associés à l'article

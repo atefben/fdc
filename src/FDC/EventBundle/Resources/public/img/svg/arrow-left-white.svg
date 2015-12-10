@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Calque_1"
+   x="0px"
+   y="0px"
+   width="85.635px"
+   height="60px"
+   viewBox="0 0 85.635 60"
+   enable-background="new 0 0 85.635 60"
+   xml:space="preserve"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="arrow-right-white.svg"><metadata
+   id="metadata29"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs27" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="640"
+   inkscape:window-height="480"
+   id="namedview25"
+   showgrid="false"
+   inkscape:zoom="3.9333333"
+   inkscape:cx="42.817501"
+   inkscape:cy="30"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Calque_1" />
+<g
+   id="g3">
+	<g
+   id="g5">
+		<rect
+   x="7731"
+   y="25"
+   fill="#C8A461"
+   width="55"
+   height="5"
+   id="rect7" />
+	</g>
+	<g
+   id="g9">
+		<rect
+   x="7731"
+   y="39"
+   fill="#C8A461"
+   width="55"
+   height="5"
+   id="rect11" />
+	</g>
+	<g
+   id="g13">
+		<rect
+   x="7731"
+   y="53"
+   fill="#C8A461"
+   width="55"
+   height="5"
+   id="rect15" />
+	</g>
+	<g
+   id="g17">
+		<rect
+   x="7731"
+   y="67"
+   fill="#C8A461"
+   width="27"
+   height="5"
+   id="rect19" />
+	</g>
+</g>
+<g
+   id="g21"
+   transform="matrix(-1,0,0,1,86.244,0)">
+	<polygon
+   points="24.43,52.566 46.941,30.067 24.43,7.568 31.874,0.127 61.814,30.067 31.874,60.008 "
+   id="polygon23" fill="#fff" />
+</g>
+</svg>

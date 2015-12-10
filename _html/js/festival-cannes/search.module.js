@@ -45,7 +45,7 @@ $(document).ready(function() {
 
       $.ajax({
         type: "GET",
-        url: 'searchsuggest.json',
+        url: 'searchsuggest.json', //TODO a revoir//
         success: function(data) {
 
           for (var i=0; i<data.length; i++) {
@@ -160,7 +160,7 @@ $(document).ready(function() {
     });
 
     // test : remove once on server
-    if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') {
+    if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') { //TODO a revoir//
       $('#noResult').show();
       $('#count span').text('0');
       return false;
@@ -168,7 +168,7 @@ $(document).ready(function() {
 
     $.ajax({
       type: "GET",
-      url: 'results.json',
+      url: 'results.json', //TODO  a revoir//
       success: function(data) {
 
         if(data.all.count == 0) {

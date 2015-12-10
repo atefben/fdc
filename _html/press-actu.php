@@ -2,22 +2,7 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
-
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link href='js/bower_components/fullcalendar/dist/fullcalendar.min.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -80,154 +65,154 @@
         <div class="grid-sizer"></div>
         <div class="item all communique">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu01.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu01.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2015 communique photos press">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu02.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu02.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2015 steps communique">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu03.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu03.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 press communique">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2013 press communique">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu04.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu04.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 audios steps infos">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu06.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu06.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2015 article press infos">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2014 article steps infos">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 audios infos steps">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2015 article infos steps">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 article infos steps">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 article infos steps">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 article infos steps">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 videos infos steps">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 videos infos steps">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d201 videos infos steps">
           <article class="article">
-            <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+            <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
         <div class="item all d2016 article infos steps">
           <article class="article">
-           <div class="img"><span class="picto"></span><a href="article.php"><img src='img/press/actu05.jpg' /></a> </div>
+           <div class="img"><span class="picto"></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
               <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h2><a href="article-press.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
             </div>
           </article>
         </div>
@@ -237,7 +222,7 @@
           <div class="img"></div>
           <div class="txt vCenter">
             <div class="vCenterKid">
-              <h2 class="title">Actualité à la une</h2>
+              <h2 class="title">l'actualité à la une</h2>
               <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg">suivEZ LA manifestation au jour le jour</a></p>
             </div>
           </div>

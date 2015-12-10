@@ -3,12 +3,13 @@ jQuery(document).ready(function($) {
         new window.infinite.Collection(this, $(this).siblings('[data-prototype]'));
     });
     
-    $('div[id$=_widgets][data-form-widget="collection"').sortable({
+    $('div[id$="fdc-widgets"][data-form-widget="collection"]').sortable({
         axis: 'y',
-        items: '> .Base-widget',
+        items: '> .base-widget',
         start: function(event, ui) {
             // ckeditor
-            var textareaId = ui.item.find('textarea').attr('id');
+            var textareaId = ui.item.find('textarea.ckeditor').attr('id');
+            console.log(textareaId);
             if (typeof textareaId != 'undefined') {
                 var editorInstance = CKEDITOR.instances[textareaId];
                 editorInstance.destroy();
@@ -17,14 +18,15 @@ jQuery(document).ready(function($) {
         },
         stop: function (event, ui) {
             // ckeditor
-            var textareaId = ui.item.find('textarea').attr('id');
+            var textareaId = ui.item.find('textarea.ckeditor').attr('id');
             if (typeof textareaId != 'undefined') {
+                console.log('c');
                 CKEDITOR.replace( textareaId );
             }
         }
     });
     
-    $('form[action*="news"]').submit(function() {
+    $('form[action*="news"]').submit(function(e) {
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
             $(this).val(idx + 1);

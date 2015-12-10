@@ -2,22 +2,7 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
-
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link href='js/bower_components/fullcalendar/dist/fullcalendar.min.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -31,7 +16,7 @@
         <div class="container">
           <h2>Mon agenda</h2>
           <div class="buttons">
-            <a href="#" class="button create">Créer un évenement</a>
+            <a href="#" class="button create">Créer un évènement</a>
             <a href="#" class="button export">Exporter mon agenda</a>
           </div>
         </div>

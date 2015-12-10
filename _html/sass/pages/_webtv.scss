@@ -298,12 +298,35 @@
 // 4. Trailer
 // =========================
 .webtv-ba {
- 
+  
+  .item:hover img {
+    -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transform: scale(1.05) translateZ(0);
+    -ms-transform: scale(1.05) translateZ(0);
+    -webkit-transform: scale(1.05) translateZ(0);
+    transform: scale(1.05) translateZ(0);
+  }
+  .item{
+    overflow: hidden;
+  }
+  .item img {
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
   .shadow-bottom:before {
     width: 100%;
   }
   #live {
-    background-image: url(../img/webtv/bandeau.jpg);
+    background-image: url(../img/webtv/bandeau.jpg); 
     background-size: cover;
     h2 {
       font-family: $Playfair;
@@ -316,7 +339,9 @@
       margin-bottom: 10px;
       border: 2px solid #fff;
       cursor: default;
+      background: url('../img/webtv/bandes_annonces_play.svg');
     }
+    
   }
   .sticky {
     width: 100% !important;
@@ -339,7 +364,7 @@
     }
     li {
       display: inline-block;
-      padding: 14.5px;
+      padding: 16px 6.5px;
       text-transform: uppercase;
     }
   }
@@ -446,13 +471,13 @@
       padding-top: 25px;
       font-size: 11px;
       letter-spacing: .1em;
-      font-family: "Camphor W01 Bold";
+      font-family: $CamphorBold;
     }
     .name-video {
       font-size: 1.125rem;
       padding-top: 10px;
       display: block;
-      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+      font-family: $CamphorRegular;
     }
   }
   .informations-video {
@@ -466,7 +491,7 @@
       li {
         float: left;
         text-transform: uppercase;
-        padding: 23px 0px;
+        padding: 20px 0px;
         font-size: 0.75rem;
         color: #999999;
         border-bottom: 1px solid #2c2c2c;
@@ -476,7 +501,8 @@
         text-align: center;
         box-sizing: border-box;
         cursor: pointer;
-        font-family: "Camphor W01 Bold";
+        font-family: $CamphorBold;
+        @include transition(all .5s $linear);
       }
       li:first-child {
         border-right: 1px solid #2c2c2c;
@@ -486,10 +512,13 @@
         border-bottom: 0px solid #2c2c2c;
         width: 148px;
       }
+      li:hover{
+        color:rgba(255, 255, 255, 0.28);
+      }
     }
     .block {
       height: 301px;
-      padding-top: 80px;
+      padding-top: 73px;
       border-right: 1px solid #2c2c2c;
       border-bottom: 1px solid #2c2c2c;
     }
@@ -498,9 +527,9 @@
       h4 {
         font-size: 0.6875rem;
         text-transform: uppercase;
-        padding-top: 20px;
-        padding-bottom: 16px;
-        font-family: "Camphor W01 Bold";
+        padding-top: 16px;
+        padding-bottom: 12px;
+        font-family: $CamphorBold;
         letter-spacing: 0.2em;
       }
       strong {
@@ -512,7 +541,7 @@
         font-size: 0.81rem;
         color: #c8a461;
         display: block;
-        padding-top: 6px;
+        padding-top: 4px;
       }
     }
     .program-film {
@@ -526,7 +555,7 @@
         overflow-x: hidden;
       }
       .infos {
-        padding-bottom: 13px;
+        padding-bottom: 18px;
         p {
           text-transform: uppercase;
           font-family: $CamphorBold;
@@ -534,12 +563,13 @@
           color: #666;
           .date {
             color: #bababa;
+            margin-left: 5px;
           }
           padding-bottom: 12px;
         }
         .where {
-          font-size: 16px;
-          font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+          font-size: 16px; 
+          font-family: $CamphorRegular;
         }
         hr {
           width: 20px;
@@ -552,8 +582,13 @@
         text-transform: uppercase;
         font-size: 0.75rem;
         padding: 20px 35px;
-        border: 1px solid #c8a461;
+        border: 1px solid rgba(200, 164, 97, 0.53);
         font-family: $CamphorBold;
+        @include transition(all .5s $smoothTransition);
+      }
+      .btn:hover{
+        background-color: $gold;
+        color: #fff;
       }
       ::-webkit-scrollbar {
         width: 5px;
@@ -568,8 +603,10 @@
     }
     .share {
       margin: 9px 0 0 0;
+      
       .button {
         border-color: #2c2c2c;
+        @include transition(all .5s $smoothTransition);
       }
       a.facebook {
         background: url('../img/svg/facebook-gold.svg') no-repeat center;
@@ -591,6 +628,14 @@
         background: url('../img/svg/print.svg') no-repeat center;
         background-size: 16px;
       }
+      
+      .button:hover{
+        border-color: $gold;
+      }
+      .button:hover + .button{
+        border-left: 1px solid $gold;
+
+      }
     }
   }
   //slide//
@@ -603,13 +648,75 @@
         background-image: url("../img/svg/video.svg");
         background-size: 22px;
       }
-      .info span {
-        color: #666;
-        display: block;
-        font-size: 0.625rem;
+      .info {
+        span {
+          color: #ffffff;
+          display: block;
+          font-size: 0.88rem;
+        }
+        .category{
+          font-size: 0.56rem;
+          color:$gold;
+          font-family: $CamphorBold;
+          margin-bottom: 6px; 
+          display: block;
+        }
       }
     }
+    .sliderDrag .owl-item{
+      opacity: 1;
+    }
+    .channel {
+      height: 185px;
+      overflow: hidden;
+      position: relative;
+      width: 293px;
+    }
+    .channel:before {
+      background: transparent;
+      background: -moz-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
+      background: -webkit-gradient(left top, left bottom, color-stop(25%, transparent), color-stop(25%, transparent), color-stop(85%, black));
+      background: -webkit-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
+      background: -o-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
+      background: -ms-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 25%, #000000 85%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+      content: '';
+      display: block;
+      height: 100%;
+      width: 102%;
+      position: absolute;
+      top: 0;
+      left: -1%;
+      z-index: 1;
+    }
+  .channel:after{
+    border: 0px solid #c8a461;
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    z-index: 2;
   }
+  .channel:hover:after {
+    border-width: 5px;
+  }
+  .center .channel:after{
+    border-width: 5px;
+  }
+}
   //bandeau//
   .bandeau-list-img {
     height: 365px;

@@ -1,0 +1,211 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<header>
+
+    <div id="top-bar">
+        <ul class="main-nav">
+
+            <li>
+                <a href="/" class="active" > {{ 'mainnav.event'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://www.festival-cannes.com/fr.html" target="_blank" > {{ 'mainnav.fdc'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://www.cinefondation.com/fr" target="_blank" > {{ 'mainnav.cinefondation'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://www.cannescourtmetrage.com/fr" target="_blank" > {{ 'mainnav.court-metrage'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://www.marchedufilm.com/fr" target="_blank" > {{ 'mainnav.marche-film'|trans }} </a>
+            </li>
+
+        </ul>
+        <ul class="user-nav">
+
+            <li>
+                <a href="#" class="selection"> {{ 'usernav.selection'|trans }} </a>
+            </li>
+
+            <li>
+                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'usernav.compte'|trans }} </a>
+            </li>
+
+            <li class="lang">
+                <a href="#" class="language">
+                    {{ app.request.locale|upper }}
+                </a>
+                <ul class="sub-languages">
+                    {% for locale in locales %}
+                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale|upper }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <div id="logo-wrapper">
+        <div class="container">
+            <div id="logo">
+                <a href="/">
+                    {% image '@FDCEventBundle/Resources/public/img/svg/palme.svg'  %}
+                    <img src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                    {% endimage %}
+                </a>
+                <h1>
+                    <a href="/">
+                        {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
+                        <img width="200" src="{{ asset_url }}" alt="{{ 'event.name'|trans }}" />
+                        {% endimage %}
+                    </a>
+                </h1>
+                <h2>
+                    <a href="/">{{ 'event.date'|trans }}</a>
+                </h2>
+                <p class="stick">
+                    <a href="/">
+                        {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
+                        <img width="178" src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                        {% endimage %}
+                    </a>
+                </p>
+            </div>
+            <div id="partners">
+                <a href="//www.chopard.fr/" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/Logo_Chopard.svg' %}
+                    <img width="84" src="{{ asset_url }}" class="chopard" alt="{{ 'partners.chopard'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//www.loreal-paris.fr/index.aspx" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
+                    <img width="75" src="{{ asset_url }}" class="oreal" alt="{{ 'partners.loreal'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//www8.hp.com/fr/fr/home.html" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/hp.svg' %}
+                    <img width="28" src="{{ asset_url }}" class="hp" alt="{{ 'partners.hp'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//www.kering.com/fr" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/Kering-logo.svg' %}
+                    <img width="82" src="{{ asset_url }}" class="kering" alt="{{ 'partners.kering'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//group.renault.com" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/renault.svg' %}
+                    <img width="95" src="{{ asset_url }}" class="renault" alt="{{ 'partners.renault'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/mastercard.png' %}
+                    <img width="57" src="{{ asset_url }}" class="mastercard" alt="{{ 'partners.mastercard'|trans }}" />
+                    {% endimage %}
+                </a>
+            </div>
+            <div id="search">
+                <a href="#" class="search"></a>
+            </div>
+            <div id="sticky-user">
+                <ul class="user-nav">
+                    <li>
+                        <a href="#" class="selection"> {{ 'usernav.selection'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'usernav.compte'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="#" class="search"> {{ 'usernav.search'|trans }} </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="navigation">
+        <div class="container">
+            <nav>
+                <ul class="main">
+                    <li>
+                        <a href="{{ path('fdc_event_default_index') }}" class="active"> {{ 'navigation.actualite'|trans }} </a>
+                        <ul class="tcenter">
+                            <li>
+                                <a href="{{ path('fdc_event_default_index') }}" class="active"> {{ 'navigation.jour'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.article'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.photo'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.video'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.audio'|trans }} </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="webtv.php"> {{ 'navigation.webtv'|trans }} </a>
+                        <ul class="tcenter">
+                            <li>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.direct'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.chaine'|trans }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.annonce'|trans }} </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.selection'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.jury'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.palmares'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.event'|trans }} </a>
+                    </li>
+                </ul>
+                <ul class="user">
+                    <li>
+                        <a href="{{ path('fdc_event_default_index') }}" class="programmation"> {{ 'navigation.programmation'|trans }} </a>
+                    </li>
+                    <li class="participate-wrapper">
+                        <a href="{{ path('fdc_event_default_index') }}" class="participate"> {{ 'navigation.participer'|trans }} </a>
+                        <ul>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.prepare'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.mode-emploi'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.projection'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.partenaire'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.fournisseur'|trans }} </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_event_default_index') }}" class="press"> {{ 'navigation.presse'|trans }} </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="selection">
+        {{ render(controller('FDCEventBundle:Article:filters')) }}
+    </div>
+    <div id="searchContainer">
+        <div class="container">
+            <form action="{{ path('fdc_event_default_index') }}">
+                <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'selection.recherche'|trans }}" autocomplete="off" />
+                <input id="submitSearch" type="submit" value="" />
+            </form>
+            <ul id="suggest"></ul>
+        </div>
+    </div>
+</header>

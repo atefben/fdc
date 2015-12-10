@@ -19,7 +19,7 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     locale:             en
     locales: [fr, en, es, pt, ru, jp, cn, ar]
-    locales_admin: [fr, en]
+    locales_admin: [fr]
     locale_default_translation: fr
     
     # soif
@@ -43,5 +43,7 @@ parameters:
     s3_access_key: ~
     s3_secret_key: ~
     # fdc
-    fdc_domain: ~
-    fdc_domain_regexp: ~
+    fdc_event_domain: ~
+    fdc_press_domain: ~
+    fdc_corporate_domain: ~
+    fdc_press_domain_regexp: ~

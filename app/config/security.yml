@@ -29,22 +29,22 @@ security:
                 use_forward:    false
                 check_path:     /admin/login_check
                 failure_path:   null
-                success_handler: base_admin.handler.login
+                default_target_path: /admin/dashboard
             logout:
                 path:           /admin/logout
             anonymous:          true
         press:
-             host: ^press\.%fdc_domain_regexp%$
+             host: ^%fdc_press_domain_regexp%$
              context:            user
+             pattern:            /press(.*)
              form_login:
                  provider:       fos_userbundle
-                 login_path:     /login
+                 login_path:     /press/login
                  use_forward:    false
-                 check_path:     /login_check
+                 check_path:     /press/login_check
                  failure_path:   null
-                 success_handler: base_admin.handler.login
              logout:
-                 path:           /logout
+                 path:           /press/logout
              anonymous:          true
 
         #main:
@@ -73,7 +73,7 @@ security:
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
         # Secured part of the site
-        - { path: ^/admin/_trans/, role: [ROLE_SUPER_ADMIN] }
+        - { path: ^/admin/_trans/, role: [ROLE_JMS_TRANSLATION] }
         - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
         
         

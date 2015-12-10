@@ -48,7 +48,7 @@ $(document).ready(function() {
       setTimeout(function() {
         $.get(urlPath, function(data){
           $(".content-article").html( $(data).find('.content-article') );
-          history.pushState('',"titre test", urlPath);
+          history.pushState('',GLOBALS.texts.url.title, urlPath);
 
           $('#canvasloader').removeClass('show');
 

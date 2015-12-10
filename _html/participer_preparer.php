@@ -2,20 +2,7 @@
 <html>
 
 <head>
-  <!-- //// META \\\\ -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- //// TITLE \\\\ -->
-  <title>Festival de Cannes 2016 - HTML</title>
-
-  <!-- //// CSS \\\\ -->
-  <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-  <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css" />
-  <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-  <link href='css/styles.css' rel="stylesheet">
+  <?php include('head.html'); ?>
   <style type="text/css">
 
   </style>
@@ -132,8 +119,8 @@
         </section>
         <section>
           <div class="contain-section contain-cinema">
-              <h3 class="title-participate"> <img src="img/participate/les-bonnes-pratiques.svg" alt="" class="svg">Les bonnes pratiques</h3><i class="fa fa-plus"></i>          
-           <div class="contain-good-practice">             
+              <h3 class="title-participate"> <img src="img/participate/les-bonnes-pratiques.svg" alt="" class="svg">Les bonnes pratiques</h3><i class="fa fa-plus"></i>
+           <div class="contain-good-practice">
               <div class="item-good-practice">
                 <img src="img/participate/enregistreur.svg" alt="svg">
                 <strong>Pas d'utilisation d'enregistreur vidéos/audios/photos</strong>

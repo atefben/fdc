@@ -124,7 +124,6 @@ class NewsArticleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
@@ -191,11 +190,15 @@ class NewsArticleAdmin extends Admin
                 )
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
+                'label' => false,
                 'types' => array(
                     'news_widget_text_type',
+                    'news_widget_quote_type',
                     'news_widget_audio_type',
                     'news_widget_image_type',
+                    'news_widget_image_dual_align_type',
                     'news_widget_video_type',
+                    'news_widget_video_youtube_type'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -207,6 +210,7 @@ class NewsArticleAdmin extends Admin
                 'btn_delete' => false
             ))
             ->add('tags', 'sonata_type_collection', array(
+                'label' => 'form.label_article_tags',
                 'by_reference' => false,
                 'required' => false,
                 ), array(
