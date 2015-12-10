@@ -13,15 +13,12 @@ use FDC\EventBundle\Form\Type\ContactType;
  */
 class FooterController extends Controller
 {
-
-
     /**
-     * @Route("/static-{page}", name="fdc_event_static")
+     * @Route("/static-{page}")
      *
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
-
     public function staticAction($page)
     {
 
@@ -601,6 +598,52 @@ class FooterController extends Controller
 
     }
 
+    /**
+     * @Route("/contact")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function contactAction(Request $request)
+    {
+        $locale = $request->getLocale();
+        $em = $this->getDoctrine()->getManager();
+
+        $themes = $em->getRepository('BaseCoreBundle:ContactTheme')->findSelectValues($locale);
+        $form = $this->createForm(new ContactType($themes));
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
+
+            if ($form->isValid()) {
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($form->get('subject')->getData())
+                    ->setFrom($form->get('email')->getData())
+                    ->setTo('lrocher@webqam.fr')
+                    ->setBody(
+                        $this->renderView(
+                            'FDCEventBundle:Mail:mail.contact.html.twig',
+                            array(
+                                'contact_ip' => $request->getClientIp(),
+                                'contact_name' => $form->get('name')->getData(),
+                                'contact_subject' => $form->get('subject')->getData(),
+                                'contact_theme' => $form->get('select')->getData(),
+                                'contact_message' => $form->get('message')->getData()
+                            )
+                        )
+                    );
+
+                $this->get('mailer')->send($message);
+
+                return $this->redirect($this->generateUrl('fdc_event_contact'));
+            }
+        }
+
+        return $this->render(
+            "FDCEventBundle:Footer:footer.contact.html.twig",
+            array('form' => $form->createView())
+        );
+
+    }
 
     public function newsletterAction()
     {

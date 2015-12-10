@@ -17,24 +17,42 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
  * @package FDC\EventBundle\Form\Type
  *
  */
-
 class ContactType extends AbstractType
 {
+    /**
+     * @param $themes
+     */
+    public function __construct($themes)
+    {
+        $this->themes = $themes;
+    }
+
+    /**
+     * @param $themes
+     * @return array
+     */
+    private function createSelectValues($themes)
+    {
+        $select = array('Sélectionnez un thème' => 'default');
+        if (count($themes) > 0) {
+            foreach ($themes as $theme) {
+                $select[$theme['theme']] = $theme['id'];
+            }
+        }
+
+        return $select;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      *
      */
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('select', new ChoiceType() , array(
-                'choices'  => array(
-                    "Selectionner un thème" => 0,
-                    "Thème 1" => 1,
-                    "Thème 2" => 2
-                ),
+                'choices'  => $this->createSelectValues($this->themes),
                 'data' => 0,
                 'choice_attr' => function($val, $key, $index) {
                     if ($val == 0) {
@@ -51,8 +69,7 @@ class ContactType extends AbstractType
             ))
             ->add('name', 'text', array(
                 'attr' => array(
-                    'placeholder' => 'Votre nom',
-                    'pattern'     => '.{2,}' //minlength
+                    'placeholder' => 'Votre nom'
                 ),
                 'label' => false
             ))
@@ -64,8 +81,7 @@ class ContactType extends AbstractType
             ))
             ->add('subject', 'text', array(
                 'attr' => array(
-                    'placeholder' => 'Objet',
-                    'pattern'     => '.{3,}' //minlength
+                    'placeholder' => 'Objet'
                 )
             ))
             ->add('message', 'textarea', array(
@@ -80,7 +96,6 @@ class ContactType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $collectionConstraint = new Collection(array(
@@ -114,7 +129,6 @@ class ContactType extends AbstractType
     /**
      * @return string
      */
-
     public function getName()
     {
         return 'contact';

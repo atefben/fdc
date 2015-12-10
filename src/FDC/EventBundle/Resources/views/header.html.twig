@@ -37,11 +37,11 @@
 
             <li class="lang">
                 <a href="#" class="language">
-                    {{ locales[0]|upper }}
+                    {{ app.request.locale|upper }}
                 </a>
                 <ul class="sub-languages">
-                    {% for lang in locales %}
-                            <li><a href="#">{{ lang|upper }}</a></li>
+                    {% for locale in locales %}
+                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale|upper }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
