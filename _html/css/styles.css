@@ -5851,6 +5851,13 @@ div.chocolat-wrapper .zoomCursor.hide {
 #video-container .channels-video .info-container {
   text-align: left;
 }
+#video-container .channels-video .owl-item .image-wrapper img {
+  width: auto;
+  max-height: 185px;
+}
+#video-container .channels-video .owl-item .linkVid {
+  display: block;
+}
 #video-container .channels-video .owl-item.center + .owl-item, #video-container .channels-video .owl-item.center + .owl-item + .owl-item {
   opacity: 1;
 }

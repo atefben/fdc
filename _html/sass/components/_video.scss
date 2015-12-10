@@ -208,6 +208,19 @@
         text-align: left;
       }
 
+      .owl-item {
+        .image-wrapper {
+          img {
+            width: auto;
+            max-height: 185px;
+          }
+        }
+
+        .linkVid {
+          display: block;
+        }
+      }
+
       .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
         opacity: 1;
 

@@ -204,6 +204,8 @@ jw.initChannel = function() {
         k.log('', $(this).closest('.owl-item').index());
 
         jw.$videoPlayer.playlistItem($(this).closest('.owl-item').index());
+        jw.$container.find('.channels-video').removeClass('active');
+        jw.$container.find('#video-player').removeClass('overlay-channels');
     });
 }
 
@@ -217,13 +219,16 @@ jw.externeControl = function() {
 jw.mouseMoving = function(listen) {
     if(listen) {
         jw.$container.on('mousemove', function(event) {
+            k.log('mousemove');
             jw.$container.removeClass('control-hide');
-             clearTimeout(thread);
-             thread = setTimeout(function() {
+            clearTimeout(thread);
+            thread = setTimeout(function() {
+                k.log('mouse stopped');
                 jw.$container.addClass('control-hide');
-             }, timeout);
-        }); 
+            }, timeout);
+        });
     } else {
+        clearTimeout(thread);
         jw.$container.off('mousemove');
         jw.$container.removeClass('control-hide');
     }

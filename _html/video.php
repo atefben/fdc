@@ -45,10 +45,11 @@
         </div>
         <div class="channels-video">
           <div class="slider-channels-video owl-carousel sliderDrag">
-            <div class="channel video shadow-bottom" data-sound="img/article/sound2.mp3">
+            <div class="channel video shadow-bottom">
               <div class="image-wrapper">
-                <!-- <img src="//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg" alt="" width="293" height="185"> -->
-                <img src="img/slider-channels/01.jpg" alt="" width="293" height="185">
+                <img src="//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg" alt="" width="293" height="185">
+                <!-- <img src="img/slider-channels/01.jpg" alt=""> -->
+                <!-- <img src="//dummyimage.com/393x185/fff/000.png" alt=""> -->
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
