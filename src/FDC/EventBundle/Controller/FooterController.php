@@ -659,7 +659,6 @@ class FooterController extends Controller
 
         $newsForm = $this->createForm( new NewsletterType() );
 
-
         if ( $request->isMethod( 'POST' ) ) {
 
             $newsForm->submit($request);
@@ -670,6 +669,21 @@ class FooterController extends Controller
                 $email = $data['email'];
                 $response['success'] = $email;
 
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Inscription à la newsletter')
+                    ->setFrom('contact@mail.fr')
+                    ->setTo($email)
+                    ->setBody(
+                        $this->renderView(
+                            'FDCEventBundle:Mail:mail.newsletter.html.twig',
+                            array(
+                                'newsletter_email' => $email
+                            )
+                        )
+                    );
+
+                $this->get('mailer')->send($message);
+
             }
             else{
 
@@ -677,7 +691,6 @@ class FooterController extends Controller
                 $response['cause'] = 'whatever';
 
             }
-
 
             return new JsonResponse( $response );
 
