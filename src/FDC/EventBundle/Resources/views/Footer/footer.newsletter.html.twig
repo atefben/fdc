@@ -1,0 +1,17 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<div class="newsletter">
+    {#<form action="{{ path('newsletter_register') }}" method="post" >#}
+        {#{{ dump() }}#}
+        {#<p>#}
+            {#<button type="submit">Create</button>#}
+        {#</p>#}
+    {#</form>#}
+    <form action="" novalidate>
+        <input id="email" type="email" name="email" placeholder="Votre adresse email">
+        <input id="submit" type="submit" name="submit" value="S'abonner">
+    </form>
+    <div id="confirmation">
+        <p>{{ 'footer.newsletter.confirmation'|trans }}<span></span></p>
+    </div>
+</div>

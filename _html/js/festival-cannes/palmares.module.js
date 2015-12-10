@@ -14,7 +14,7 @@ $(document).ready(function() {
   //        $.get($(this).data('url'), function(data){
         $.get(urlPath, function(data){
           $( ".container-list" ).html( $(data).find('.container-list').html());
-          $('.bandeau-head').html( $(data).find('.bandeau-head').html() );
+          $('.bandeau-head').html( $(data).find('.bandeau-head') );
           $('.push-footer').html( $(data).find('.push-footer').html() );
           history.pushState('',GLOBALS.texts.url.title, urlPath);
         });
