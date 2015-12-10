@@ -57,7 +57,7 @@ $(document).ready(function() {
           $.get(urlPath, function(data){
             
             $( ".container-list" ).html( $(data).find('.container-list') );
-            $( ".bandeau-list-footer" ).html( $(data).find('.bandeau-list-footer') );
+            $( ".bandeau-list-footer" ).html( $(data).find('.bandeau-list-footer').html() );
             $( ".bandeau-head" ).html( $(data).find('.bandeau-head') );
             
             history.pushState('',GLOBALS.texts.url.title, urlPath);

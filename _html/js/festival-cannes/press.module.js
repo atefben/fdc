@@ -127,14 +127,16 @@ $(document).ready(function() {
 
       // full width calendar (page 'my calendar')
       if($('#calendar').hasClass('fullwidth')) {
+        
         $('#mycalendar').fullCalendar({
           lang: 'fr',
-          defaultDate: '2016-05-12',
+          defaultDate: '2016-05-12', // TODO A REVOIR //
           header: {
             left: 'prev',
             center: 'title',
             right: 'next'
           },
+          
           firstDay: 3,
           defaultView: 'agendaWeek',
           minTime: "08:00:00",
@@ -180,6 +182,7 @@ $(document).ready(function() {
               center: 'title',
               right: 'next'
             },
+            
             defaultView: 'agendaDay',
             minTime: "08:00:00",
             maxTime: "19:00:00",

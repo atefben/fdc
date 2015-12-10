@@ -16307,6 +16307,9 @@ article .read-later.rAlign span:after {
 #create-event-pop .container form input[type="submit"] {
   margin-bottom: 41px;
 }
+#create-event-pop .container form input[type="submit"]:hover {
+  cursor: pointer;
+}
 #create-event-pop .container form input[type="text"] {
   padding-left: 10px;
   padding-right: 10px;
