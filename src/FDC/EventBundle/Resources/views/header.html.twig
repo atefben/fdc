@@ -197,7 +197,36 @@
         </div>
     </div>
     <div id="selection">
-        {{ render(controller('FDCEventBundle:Article:filters')) }}
+
+        <h2 class="title">{{ 'selection.title'|trans }}<strong>(<span id="nbarticle"></span>)</strong></h2>
+
+        <ul class="filters-selection">
+            <li><a href="#" data-selection='all'>{{ 'selection.all'|trans }}</a></li>
+            <li><a href="#" data-selection='article'>{{ 'selection.article'|trans }}</a></li>
+            <li><a href="#" data-selection='video'>{{ 'selection.video'|trans }}</a></li>
+            <li><a href="#" data-selection='audio'>{{ 'selection.audio'|trans }}</a></li>
+            <li><a href="#" data-selection='suggestion' class="active">{{ 'selection.suggestion'|trans }}</a></li>
+        </ul>
+        <div id="slider-selection" class="owl-carousel"></div>
+        <div id="slider-suggestion" class="owl-carousel"></div>
+        <div id="toClone" class="article">
+
+            <article class="" data-format="" data-theme="">
+                <div class="image">
+                    <div class="image-wrapper">
+                        <img src="" alt="" />
+                    </div>
+                    <a href="" class="linkImage"></a>
+                    <span class="picto"></span>
+                </div>
+                <div class="info">
+                    <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                    <h2><a href="{{ path('fdc_event_default_index') }}"></a></h2>
+                </div>
+            </article>
+
+            <a href="#" class="delete"></a>
+        </div>
     </div>
     <div id="searchContainer">
         <div class="container">
