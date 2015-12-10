@@ -12480,7 +12480,7 @@ article .read-later.rAlign span:after {
 .webtv-ba-video .informations-video ul li {
   float: left;
   text-transform: uppercase;
-  padding: 23px 0px;
+  padding: 20px 0px;
   font-size: 0.75rem;
   color: #999999;
   border-bottom: 1px solid #2c2c2c;
@@ -12509,7 +12509,7 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba-video .informations-video .block {
   height: 301px;
-  padding-top: 80px;
+  padding-top: 73px;
   border-right: 1px solid #2c2c2c;
   border-bottom: 1px solid #2c2c2c;
 }
@@ -12547,7 +12547,7 @@ article .read-later.rAlign span:after {
   overflow-x: hidden;
 }
 .webtv-ba-video .informations-video .program-film .infos {
-  padding-bottom: 13px;
+  padding-bottom: 18px;
 }
 .webtv-ba-video .informations-video .program-film .infos p {
   text-transform: uppercase;
@@ -12558,6 +12558,7 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba-video .informations-video .program-film .infos p .date {
   color: #bababa;
+  margin-left: 5px;
 }
 .webtv-ba-video .informations-video .program-film .infos .where {
   font-size: 16px;
@@ -12573,7 +12574,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   font-size: 0.75rem;
   padding: 20px 35px;
-  border: 1px solid #c8a461;
+  border: 1px solid rgba(200, 164, 97, 0.53);
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
