@@ -67,7 +67,7 @@
           <div id="calendar-programmation">
             <div class="filters">
             <div id="category" class="filter">
-              <span class="label">Catégories :</span>
+              <span class="label">Sélections :</span>
               <span class="select">
                 <span class="active" data-filter="all">Toutes</span>
                 <span data-filter="press">Conférence de Presse</span>
