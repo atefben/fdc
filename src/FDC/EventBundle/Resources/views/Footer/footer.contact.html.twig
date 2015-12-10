@@ -64,8 +64,8 @@
                     {{ form_widget(form.message) }}
                 {% endif %}
 
-                <span class="required">* Champs obligatoires</span>
-                <input type="submit" value="Envoyer">
+                <span class="required">* {{ 'form.mandatory_fields'|trans }}</span>
+                <input type="submit" value="{{ 'btn.send'|trans }}">
 
                 {{ form_end(form) }}
 

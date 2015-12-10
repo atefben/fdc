@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-10T16:58:35Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-10T17:10:05Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -15,6 +15,11 @@
         <source>appli.title</source>
         <target><![CDATA[Téléchargez <br> l'application officielle]]></target>
         <jms:reference-file line="8">views/Footer/footer.application.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0600333f682d30b8bec5a6cf8351d66fd31bcb5c" resname="btn.send">
+        <source>btn.send</source>
+        <target>Envoyer</target>
+        <jms:reference-file line="68">views/Footer/footer.contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0eb81299cb9acc6e72ceb13adb9741f3e6510619" resname="contact.adresse">
         <source>contact.adresse</source>
@@ -91,27 +96,27 @@
       <trans-unit id="4b99c08ecaeda61ed328a681c7d11e0dbd8967b0" resname="footer.contact.label.theme">
         <source>footer.contact.label.theme</source>
         <target>Votre message concerne:</target>
-        <jms:reference-file line="76">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="74">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="bb7823bb4ea399639c7af88b37de9aa9723bc890" resname="footer.contact.placeholder.email">
         <source>footer.contact.placeholder.email</source>
         <target>Votre adresse email</target>
-        <jms:reference-file line="87">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="85">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="4b327016cca5b17ef419f1d6d7da0a6f8405a968" resname="footer.contact.placeholder.message">
         <source>footer.contact.placeholder.message</source>
         <target>Votre message</target>
-        <jms:reference-file line="100">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="98">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="5d12c09e3f60a145e4c34dd9c8cc31b069271ea8" resname="footer.contact.placeholder.name">
         <source>footer.contact.placeholder.name</source>
         <target>Votre nom</target>
-        <jms:reference-file line="81">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="79">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="47d194f27c4b209a6ec8e2cf6c868d3d058079a0" resname="footer.contact.placeholder.subject">
         <source>footer.contact.placeholder.subject</source>
         <target>Objet</target>
-        <jms:reference-file line="93">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="91">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="b469507c15ca085ba9753f60ab835f68cda9c725" resname="footer.copyright">
         <source>footer.copyright</source>
@@ -167,6 +172,11 @@
         <source>footer.social.title</source>
         <target>Festival de Cannes</target>
         <jms:reference-file line="14">Resources/views/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2eb1d1e5c039a50a75f015ce1eca81615cc31568" resname="form.mandatory_fields">
+        <source>form.mandatory_fields</source>
+        <target>Champs obligatoires</target>
+        <jms:reference-file line="67">views/Footer/footer.contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4da1519f48a53ecf319ac50a57959e814e19d180" resname="mainnav.cinefondation">
         <source>mainnav.cinefondation</source>
