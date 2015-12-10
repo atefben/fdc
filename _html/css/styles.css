@@ -12889,6 +12889,9 @@ article .read-later.rAlign span:after {
   overflow: hidden;
   transition: 1s;
 }
+.faq section article .faq-question {
+  position: relative;
+}
 .faq section article h3 {
   font-size: 1rem;
   text-transform: uppercase;
@@ -12897,14 +12900,31 @@ article .read-later.rAlign span:after {
   width: 533px;
   display: inline-block;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-align: left;
 }
-.faq section article .fa {
-  margin-bottom: 40px;
-  border: solid 1px #ebebeb;
-  padding: 18px;
-  color: #c1c1c1;
-  vertical-align: super;
-  margin-left: 112px;
+.faq section article .fa-plus {
+  background-image: url(../img/participate/case-plus.svg);
+  background-size: 45px;
+  background-position: 1px;
+  background-repeat: no-repeat;
+  width: 51px;
+  height: 51px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: -8px;
+}
+.faq section article .fa-minus {
+  background-image: url(../img/participate/minus.svg);
+  background-size: 27px;
+  background-position: 14px 19px;
+  background-repeat: no-repeat;
+  display: block;
+  width: 25px;
+  height: 51px;
+  position: absolute;
+  top: -12px;
+  right: 13px;
 }
 .faq section article .faq-description {
   width: 660px;
