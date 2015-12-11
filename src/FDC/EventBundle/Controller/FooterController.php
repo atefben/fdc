@@ -575,23 +575,29 @@ class FooterController extends Controller
 
         );
 
-        $appliContent = " ";
+        $appliContent = "";
 
         switch ($page) {
             case 'faq':
                 $pageContent = $faqContent;
                 break;
-            case 'mention':
+            case 'mentions-legales':
                 $pageContent = $mentionContent;
                 break;
-            case 'sitemap':
+            case 'plan-du-site':
                 $pageContent = $sitemapContent;
                 break;
-            case 'credit':
+            case 'credits':
                 $pageContent = $mentionContent;
                 break;
-            case 'application':
+            case 'application-mobile':
                 $pageContent = $appliContent;
+                break;
+            case 'nous-rejoindre':
+                $pageContent = $mentionContent;
+                break;
+            case 'politique-confidentialite':
+                $pageContent = $mentionContent;
                 break;
         }
 
