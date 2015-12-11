@@ -1,0 +1,6 @@
+<a href="/">
+    {% set fullDate = date | localizeddate('medium', 'none', app.request.locale) %}
+    {% set dayDate = '%s-22' | format( date | date_modify("-11 day") | date("d") ) %}
+
+    {{ fullDate | replace({ '22': dayDate }) }}
+</a>
