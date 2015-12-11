@@ -158,7 +158,16 @@ $(document).ready(function() {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
           viewRender: function(view){
-            
+            var moment = $('#mycalendar').fullCalendar('getDate');
+
+            $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
+            if(moment.format('DD') > 17) {
+              $('#mycalendar .fc-right').addClass('hide');
+            }
+            if(moment.format('DD') < 17) {
+              $('#mycalendar .fc-left').addClass('hide');
+            }
           }
         });
       } else {
