@@ -11,82 +11,10 @@
         <!-- //// TITLE \\\\ -->
         <title>{{ 'website.title'|trans }}</title>
 
-        {% block stylesheets %}
+        {% include 'FDCEventBundle:Base:base.stylesheet.html.twig' %}
 
-            <!-- //// FONTS \\\\ -->
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-            <link href="//fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css" rel='stylesheet' type='text/css'>
-            <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
+        {% include 'FDCEventBundle:Base:base.javascript_head.html.twig' %}
 
-            <!-- //// CSS \\\\ -->
-            {% stylesheets "bundles/fdcevent/styles/*.css" filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-
-            <!-- //// JS \\\\ -->
-            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-
-            <!-- //// FOSJsRouting \\\\ -->
-            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-        {% endblock %}
-        {% block javascripts_head %}
-            <script>
-                var GLOBALS = {
-                    "locale" : "{{ app.request.locale }}",
-                    "defaultDate" : "2016-05-12",
-                    "api" : {
-                        "instagram" : {
-                            "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
-                            "hashtag" : "Cannes2016",
-                        },
-                        "twitter" : {
-                            "hashtag" : "%23Cannes2016",
-                            "count" : 15,
-                            "uri" : "search_tweets",
-                            "url" : "twitter.php"
-                        }
-                    },
-                    "baseUrl" : "{{ url('fdc_event_default_index') }}",
-                    "urls" : {
-                        "calendarProgrammationUrl" : "calendarprogrammation.html",
-                        "eventUrl" : "load-evenements.php",
-                        "newsUrl" : "news.html",
-                        "newsUrlNext" : "news_page2.html",
-                        "loadPressRelease" : "load-communique.php",
-                        "selectionUrl" : "/suggestion"
-                    },
-                    "texts" : {
-                        "url" : {
-                            "title" : "titre test"
-                        },
-                        "popin" : {
-                            "error" : "valide",
-                            "empty" : "renseignée",
-                        },
-                        "googleMap" : {
-                            "title" : "Festival de Cannes"
-                        },
-                        "readMore" : {
-                            "more" : "Afficher <strong>plus d'actualités</strong>",
-                            "nextDay" : "Passer au <strong>jour précédent</strong>"
-                        },
-                        "newsletter" : {
-                            "errorsNotValide" : "L'adresse e-mail n'est pas valide",
-                            "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
-                        },
-                        'agenda' : {
-                            'delete' : "Supprimer de votre agenda"
-                        }
-                    },
-                    "player": {
-                        "file" : "./files/mov_bbb.mp4",
-                        "image" : "//dummyimage.com/960x540/c8a461/000.png",
-                        "title" : "Video 1"
-                    }
-                }
-            </script>
-        {% endblock %}
     </head>
     <body>
         {% include 'FDCEventBundle::header.html.twig' %}
@@ -94,4 +22,7 @@
         {% endblock %}
         {% include 'FDCEventBundle::footer.html.twig' %}
     </body>
+
+    {% include 'FDCEventBundle:Base:base.javascript.html.twig' %}
+
 </html>
