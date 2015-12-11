@@ -345,7 +345,7 @@
                 <div class="media folder"><span>Dossiers de presse</span> (2)</div>
                 <div class="media trailer"><span>Bandes annonces</span> (4)</div>
                 <div class="media photo"><span>Photos</span> (9)</div>
-                <a class="button" href="#">Découvrir</a>
+                <a class="button" href="press-media.php">Découvrir</a>
               </div>
             </div>
             <div class="line">
@@ -361,7 +361,7 @@
                 <div class="media folder"><span>Dossiers de presse</span> (2)</div>
                 <div class="media trailer"><span>Bandes annonces</span> (4)</div>
                 <div class="media photo"><span>Photos</span> (9)</div>
-                <a class="button" href="#">Découvrir</a>
+                <a class="button" href="press-media.php">Découvrir</a>
               </div>
             </div>
             <div class="line">
@@ -377,7 +377,7 @@
                 <div class="media folder"><span>Dossiers de presse</span> (2)</div>
                 <div class="media trailer"><span>Bandes annonces</span> (4)</div>
                 <div class="media photo"><span>Photos</span> (9)</div>
-                <a class="button" href="#">Découvrir</a>
+                <a class="button" href="press-media.php">Découvrir</a>
               </div>
             </div>
             <div class="line">
@@ -393,7 +393,7 @@
                 <div class="media folder"><span>Dossiers de presse</span> (2)</div>
                 <div class="media trailer"><span>Bandes annonces</span> (4)</div>
                 <div class="media photo"><span>Photos</span> (9)</div>
-                <a class="button" href="#">Découvrir</a>
+                <a class="button" href="press-media.php">Découvrir</a>
               </div>
             </div>
           </div>
