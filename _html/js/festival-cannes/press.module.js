@@ -198,7 +198,10 @@ $(document).ready(function() {
             center: 'title',
             right: 'next'
           },
-          
+          columnFormat: {
+            week: 'dddd D MMM',
+          },
+
           firstDay: 3,
           defaultView: 'agendaWeek',
           minTime: "08:00:00",
@@ -212,6 +215,7 @@ $(document).ready(function() {
             }
             var dur = event.duration/60 + 'H';
             var c = event.eventColor;
+            $(element).css('width','220px');
             $(element).empty();
             $(element).addClass(event.eventPictogram);
             $(element).attr('data-id', event.id);
@@ -220,18 +224,35 @@ $(document).ready(function() {
             $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
-          viewRender: function(view){
-            var moment = $('#mycalendar').fullCalendar('getDate');
+            viewRender: function(view){
+              // limit the min date and max date of the calendar, and change the programmation calendar date
+              var moment = $('#mycalendar').fullCalendar('getDate');
 
-            $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+              $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
 
-            if(moment.format('DD') > 17) {
-              $('#mycalendar .fc-right').addClass('hide');
-            }
-            if(moment.format('DD') < 17) {
-              $('#mycalendar .fc-left').addClass('hide');
-            }
-          }
+              if (moment.format('DD') > maxDate){
+                $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
+              }
+              if (moment.format('DD') < minDate){
+                $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
+              }
+
+              if(moment.format('DD') == maxDate) {
+                $('#mycalendar .fc-right').addClass('hide');
+              }
+              if(moment.format('DD') == minDate) {
+                $('#mycalendar .fc-left').addClass('hide');
+              }
+
+              var m = $('#mycalendar').fullCalendar('getDate');
+              $('#timeline a').each(function() {
+                var d = $(this).data('date');
+                if(d == m.format()) {
+                  $(this).trigger('click');
+                }
+              });
+            },
+
         });
       } else {
         // if cookie drag doesn't exist, add class to show message
