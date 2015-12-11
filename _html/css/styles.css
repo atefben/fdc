@@ -9981,7 +9981,7 @@ article .read-later.rAlign span:after {
   line-height: 40px;
   top: 91px;
   width: 100%;
-  z-index: 10;
+  z-index: 3;
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
