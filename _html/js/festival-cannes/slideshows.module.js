@@ -160,6 +160,10 @@ $('body').on('click', '.chocolat-image', function() {
       }
     });
   }
+  
+  if ($('body').hasClass('mob')) {
+    $('.chocolat-bottom').addClass('show');
+  }
 
   $('.chocolat-wrapper .thumbnails').owlCarousel({
     nav: false,
@@ -254,6 +258,8 @@ $('body').on('mouseenter', '.chocolat-content', function(){
 var timeoutCursor;
 
 $('body').on('mousemove', '.chocolat-content', function(e){
+  if ($('body').hasClass('mob')) return false;
+
   $('.zoomCursor').css('left', e.clientX + 10).css('top', e.clientY);
   $('.chocolat-bottom').addClass('show');
 
