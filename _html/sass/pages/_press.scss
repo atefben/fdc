@@ -477,16 +477,24 @@
           opacity: 0;
           visibility: hidden;
           position: relative;
-          @include transition(all 0.6s $smoothTransition);
+          text-align: left;
+          @include transition(background-color 0.6s $smoothTransition, color 0.6s $smoothTransition);
 
           &:hover {
-            color: $gold;
+            background: $gold url('../img/svg/telecharger-white.svg') no-repeat 5% center;
+            background-size: 13px;
+            color: #fff;
           }
 
           &.show {
             opacity: 1;
             visibility: visible;
           }
+        }
+
+        &.subnav, &.list {
+          background: #fff url('../img/svg/telecharger-gold.svg') no-repeat 5% center;
+          background-size: 13px;
         }
 
         &.subnav:hover {
