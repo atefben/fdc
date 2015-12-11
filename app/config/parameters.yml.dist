@@ -47,3 +47,17 @@ parameters:
     fdc_press_domain: ~
     fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
+    header_fdc: 'http://www.festival-cannes.com/fr.html'
+    header_cine: 'http://www.cinefondation.com/fr/'
+    header_ccm: 'http://www.cannescourtmetrage.com/fr/'
+    header_mdf: 'http://www.marchedufilm.com/fr/'
+    footer_boutique: 'http://www.lienversboutique.com'
+    social_appli: 'application-mobile'
+    social_facebook: 'http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937'
+    social_twitter: 'https://twitter.com/Festival_Cannes'
+    social_instagram: 'https://instagram.com/festivaldecannes'
+    social_tumblr: 'http://festivaldecannesofficiel.tumblr.com/'
+    social_rss: '#'
+    social_youtube: 'https://www.youtube.com/user/TVFestivaldeCannes'
+    social_dailymotion: 'http://www.dailymotion.com/CannesFestTV'
+    social_podcast: '#'

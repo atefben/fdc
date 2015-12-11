@@ -15,7 +15,7 @@
                 {% endimage %}
             </p>
             <ul>
-                <li><a class="appli" href="{{ social_appli }}" target="_blank"></a></li>
+                <li><a class="appli" href="{{ path('fdc_event_footer_static', {'page': social_appli}) }}" target="_blank"></a></li>
                 <li><a class="facebook" href="{{ social_facebook }}" target="_blank"></a></li>
                 <li><a class="twitter" href="{{ social_twitter }}" target="_blank"></a></li>
                 <li><a class="instagram" href="{{ social_instagram }}" target="_blank"></a></li>
@@ -41,23 +41,35 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'credit'}) }}">
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'credits'}) }}">
                         {{ 'footer.nav.credit'|trans }}
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'mention'}) }}">
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'mentions-legales'}) }}">
                         {{ 'footer.nav.mentionslegales'|trans }}
                     </a>
                 </li>
-                <li><a href="#">{{ 'footer.nav.nousrejoindre'|trans }}</a></li>
-                <li><a href="#">{{ 'footer.nav.boutique'|trans }}</a></li>
                 <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'sitemap'}) }}">
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'nous-rejoindre'}) }}">
+                        {{ 'footer.nav.nousrejoindre'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ footer_boutique }}">
+                        {{ 'footer.nav.boutique'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'plan-du-site'}) }}">
                         {{ 'footer.nav.plandusite'|trans }}
                     </a>
                 </li>
-                <li><a href="#">{{ 'footer.nav.politiqueconfidentialite'|trans }}</a></li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'politique-confidentialite'}) }}">
+                        {{ 'footer.nav.politiqueconfidentialite'|trans }}
+                    </a>
+                </li>
             </ul>
         </div>
 
