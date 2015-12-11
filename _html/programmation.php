@@ -101,6 +101,15 @@
                 <div class="time">16H</div>
                 <div class="time">17H</div>
                 <div class="time">18H</div>
+                <div class="time">19H</div>
+                <div class="time">20H</div>
+                <div class="time">21H</div>
+                <div class="time">22H</div>
+                <div class="time">23H</div>
+                <div class="time">00H</div>
+                <div class="time">01H</div>
+                <div class="time">02H</div>
+                <div class="time">03H</div>
               </div>
               <div class="venues">
                 <a href="#" class="nav prev"></a>
