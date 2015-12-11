@@ -8996,6 +8996,11 @@ article .read-later.rAlign span:after {
   left: 132px;
 }
 
+.mob .read-later {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .single-article {
   padding: 65px 0;
 }
