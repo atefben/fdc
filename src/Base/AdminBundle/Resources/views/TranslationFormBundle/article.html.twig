@@ -140,7 +140,8 @@
                                 {{ form_row(form.parent.children.publishedAt) }}
                                 {{ form_row(form.parent.children.publishEndedAt) }}
                                 {{ form_row(translationsFields.status) }}
-                                {{ form_row(form.parent.children.translate) }}
+                                {{ form_row(form.parent.children.translationStatus) }}
+                                {{ form_row(form.parent.children.priorityStatus) }}
                             </div>
                             <div>
                                 <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
@@ -329,12 +330,6 @@
                     </div>
                 </div>
             </div>
-            {% else %}
-             <div class="row">
-                <div class="col-md-12">
-                    {{ form_row(translationsFields.status) }}
-                </div>
-            </div>
             {% endif %}
             <div class="row">
                 <div class="col-md-8">
@@ -394,6 +389,13 @@
                 </div>
                 {% endif %}
             </div>
+            {% if form.vars.default_locale != locale %}
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_row(translationsFields.status) }}
+                </div>
+            </div>
+            {% endif %}
         </div>
     {% endfor %}
     </div>

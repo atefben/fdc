@@ -5,12 +5,14 @@ imports:
     - { resource: roles/security_fdc.yml }
     - { resource: roles/security_soif.yml }
     - { resource: services.yml }
+    - { resource: bundles/a2lix_i18n_doctrine.yml }
     - { resource: bundles/a2lix_translation_form.yml }
     - { resource: bundles/nelmio_api_doc.yml }
     - { resource: bundles/fos_user.yml }
     - { resource: bundles/fos_rest.yml }
     - { resource: bundles/jms_di_extra.yml }
     - { resource: bundles/jms_translation.yml }
+    - { resource: bundles/jms_i18n_translation.yml }
     - { resource: bundles/sonata_admin.yml }
     - { resource: bundles/sonata_block.yml }
     - { resource: bundles/sonata_doctrine_orm_admin.yml }

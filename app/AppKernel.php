@@ -50,6 +50,7 @@ class AppKernel extends Kernel
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
+            new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             /* Front tools */
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             /* User Management */

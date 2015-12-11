@@ -4,6 +4,12 @@ lang:
     es: Espagnol
     zh: Chinois
 
+breadcrumb:
+    link_news_article_list:
+
+group:
+    main_infos: Informations générales
+
 entity:
     news_article: Articles
     news_video: Vidéos
@@ -30,6 +36,24 @@ entity:
     film_person: Personnes
     film_atelier: Films Atelier
     country: Pays
+    contact_theme: Thèmes de contact
+
+list:
+    label_id: Identifiant
+    label_title: Titre
+    label_theme: Thème
+    label_status: Statut
+    label_type: Type
+    label_created_at: Date de création
+    label_published_interval: Date(s) de publication
+    label__action: Actions
+
+filter:
+    label_id: Identifiant
+    label_title: Titre
+    label_theme: Thème
+    label_status: Statut
+    label_translate: Traduit
 
 dashboard:
     group:
@@ -54,4 +78,12 @@ form:
             Dimensions attendues : YxZpx. Format attendu.
     label_seo_file: Vignette partage
     label_theme: Thème
+    label_title: Titre
+    label_publish_on: Publié sur
+    label_published_at: Date de début de publication
+    label_published_ended_at: Date de fin de publication
+    label_status: Statut
     label_article_tags: Tags de recherche associés à l'article
+
+nav:
+    site_modal: Ouvrir la sélection des sites

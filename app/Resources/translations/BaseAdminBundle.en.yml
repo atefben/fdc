@@ -30,6 +30,7 @@ entity:
     film_person: Persons
     film_atelier: Films Atelier
     country: Countries
+    contact_theme: Contact Themes
 
 dashboard:
     group:

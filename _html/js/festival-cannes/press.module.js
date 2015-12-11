@@ -85,7 +85,7 @@ $(document).ready(function() {
             for(var i=0; i<events.length; i++) {
               if(id == events[i].id) {
                 $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete); //TODO traduction, enlever la string // 
+                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete); 
               }
             }
           });
@@ -127,14 +127,16 @@ $(document).ready(function() {
 
       // full width calendar (page 'my calendar')
       if($('#calendar').hasClass('fullwidth')) {
+        
         $('#mycalendar').fullCalendar({
           lang: 'fr',
-          defaultDate: '2016-05-12',
+          defaultDate: '2016-05-12', // TODO A REVOIR //
           header: {
             left: 'prev',
             center: 'title',
             right: 'next'
           },
+          
           firstDay: 3,
           defaultView: 'agendaWeek',
           minTime: "08:00:00",
@@ -174,12 +176,13 @@ $(document).ready(function() {
         // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
             lang: GLOBALS.locale , // TODO a verifier
-            defaultDate: GLOBALS.defaultDate,
+            defaultDate: GLOBALS.defaultDate, // TODO a supprimer
             header: {
               left: 'prev',
               center: 'title',
               right: 'next'
             },
+            
             defaultView: 'agendaDay',
             minTime: "08:00:00",
             maxTime: "19:00:00",

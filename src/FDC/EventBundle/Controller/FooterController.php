@@ -5,10 +5,12 @@ namespace FDC\EventBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
+use FDC\EventBundle\Form\Type\ContactType;
 use FDC\EventBundle\Form\Type\NewsletterType;
+
 
 
 /**
@@ -16,15 +18,12 @@ use FDC\EventBundle\Form\Type\NewsletterType;
  */
 class FooterController extends Controller
 {
-
-
     /**
-     * @Route("/static-{page}", name="fdc_event_static")
+     * @Route("/static-{page}")
      *
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
-
     public function staticAction($page)
     {
 
@@ -605,12 +604,106 @@ class FooterController extends Controller
     }
 
     /**
-     * @Route( "/", name="newsletter_register" )
-     * @Template()
+     * @Route("/contact")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function contactAction(Request $request)
+    {
+        $locale = $request->getLocale();
+        $em = $this->getDoctrine()->getManager();
+        $translator = $this->get('translator');
+        $hasErrors = false;
+
+        $themes = $em->getRepository('BaseCoreBundle:ContactTheme')->findSelectValues($locale);
+        $form = $this->createForm(new ContactType($themes, $translator));
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
+
+            if ($form->isValid()) {
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($form->get('subject')->getData())
+                    ->setFrom($form->get('email')->getData())
+                    ->setTo('lrocher@webqam.fr')
+                    ->setBody(
+                        $this->renderView(
+                            'FDCEventBundle:Mail:mail.contact.html.twig',
+                            array(
+                                'contact_ip' => $request->getClientIp(),
+                                'contact_name' => $form->get('name')->getData(),
+                                'contact_subject' => $form->get('subject')->getData(),
+                                'contact_theme' => $form->get('select')->getData(),
+                                'contact_message' => $form->get('message')->getData()
+                            )
+                        )
+                    );
+
+                $this->get('mailer')->send($message);
+
+                return $this->redirect($this->generateUrl('fdc_event_contact'));
+            } else {
+                $hasErrors = true;
+            }
+        }
+
+        return $this->render(
+            "FDCEventBundle:Footer:footer.contact.html.twig",
+            array(
+                'form' => $form->createView(),
+                'hasErrors' => $hasErrors
+            )
+        );
+
+    }
+
+    /**
+     * @Route( "/register-newsletter" )
+     * @param Request $request
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newsletterAction( Request $request )
     {
-        $newsForm = $this->createForm( new NewsletterType( ) );
+        $translator = $this->get('translator');
+
+        $newsForm = $this->createForm( new NewsletterType($translator) );
+
+        if ( $request->isMethod( 'POST' ) ) {
+
+            $newsForm->submit($request);
+
+            if ( $newsForm->isValid( ) ) {
+
+                $data = $newsForm->getData();
+                $email = $data['email'];
+                $response['success'] = $email;
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($translator->trans('newsletter.email.subject'))
+                    ->setFrom('contact@mail.fr')
+                    ->setTo($email)
+                    ->setBody(
+                        $this->renderView(
+                            'FDCEventBundle:Mail:mail.newsletter.html.twig',
+                            array(
+                                'newsletter_email' => $email
+                            )
+                        )
+                    );
+
+                $this->get('mailer')->send($message);
+
+            }
+            else{
+
+                $response['success'] = false;
+                $response['cause'] = 'whatever';
+
+            }
+
+            return new JsonResponse( $response );
+
+        }
 
         return $this->render(
             'FDCEventBundle:Footer:footer.newsletter.html.twig',

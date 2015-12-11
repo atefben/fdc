@@ -2114,6 +2114,10 @@
       }
       input[type="submit"]{
         margin-bottom: 41px;
+        
+        &:hover{
+          cursor: pointer;
+        }
       }
       input[type="text"]{
 //        padding-top: 5px;

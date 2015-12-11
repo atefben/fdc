@@ -5314,6 +5314,7 @@ div.chocolat-wrapper .zoomCursor.hide {
 .audio-player.full .fullscreen {
   bottom: 43px;
   right: 40px;
+  background: url("../img/svg/FullScreenInverse.svg") no-repeat center;
 }
 .audio-player.full #channels-audio {
   height: 185px;
@@ -6996,9 +6997,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7024,11 +7025,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7044,26 +7045,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -11421,7 +11422,7 @@ article .read-later.rAlign span:after {
   letter-spacing: 3px;
 }
 .categorie-items article {
-  height: 418px;
+  height: 422px;
   box-sizing: border-box;
   float: none;
   padding-left: 0px;
@@ -11437,7 +11438,7 @@ article .read-later.rAlign span:after {
   background-color: #141414;
   width: 100%;
   padding: 37px;
-  height: 418px;
+  height: 425px;
   display: table;
   -moz-transition-property: background;
   -o-transition-property: background;
@@ -12480,7 +12481,7 @@ article .read-later.rAlign span:after {
 .webtv-ba-video .informations-video ul li {
   float: left;
   text-transform: uppercase;
-  padding: 23px 0px;
+  padding: 20px 0px;
   font-size: 0.75rem;
   color: #999999;
   border-bottom: 1px solid #2c2c2c;
@@ -12509,7 +12510,7 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba-video .informations-video .block {
   height: 301px;
-  padding-top: 80px;
+  padding-top: 73px;
   border-right: 1px solid #2c2c2c;
   border-bottom: 1px solid #2c2c2c;
 }
@@ -12547,7 +12548,7 @@ article .read-later.rAlign span:after {
   overflow-x: hidden;
 }
 .webtv-ba-video .informations-video .program-film .infos {
-  padding-bottom: 13px;
+  padding-bottom: 18px;
 }
 .webtv-ba-video .informations-video .program-film .infos p {
   text-transform: uppercase;
@@ -12558,6 +12559,7 @@ article .read-later.rAlign span:after {
 }
 .webtv-ba-video .informations-video .program-film .infos p .date {
   color: #bababa;
+  margin-left: 5px;
 }
 .webtv-ba-video .informations-video .program-film .infos .where {
   font-size: 16px;
@@ -12573,7 +12575,7 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   font-size: 0.75rem;
   padding: 20px 35px;
-  border: 1px solid #c8a461;
+  border: 1px solid rgba(200, 164, 97, 0.53);
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -12888,6 +12890,9 @@ article .read-later.rAlign span:after {
   overflow: hidden;
   transition: 1s;
 }
+.faq section article .faq-question {
+  position: relative;
+}
 .faq section article h3 {
   font-size: 1rem;
   text-transform: uppercase;
@@ -12896,14 +12901,31 @@ article .read-later.rAlign span:after {
   width: 533px;
   display: inline-block;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-align: left;
 }
-.faq section article .fa {
-  margin-bottom: 40px;
-  border: solid 1px #ebebeb;
-  padding: 18px;
-  color: #c1c1c1;
-  vertical-align: super;
-  margin-left: 112px;
+.faq section article .fa-plus {
+  background-image: url(../img/participate/case-plus.svg);
+  background-size: 45px;
+  background-position: 1px;
+  background-repeat: no-repeat;
+  width: 51px;
+  height: 51px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: -8px;
+}
+.faq section article .fa-minus {
+  background-image: url(../img/participate/minus.svg);
+  background-size: 27px;
+  background-position: 14px 19px;
+  background-repeat: no-repeat;
+  display: block;
+  width: 25px;
+  height: 51px;
+  position: absolute;
+  top: -12px;
+  right: 13px;
 }
 .faq section article .faq-description {
   width: 660px;
@@ -16298,6 +16320,9 @@ article .read-later.rAlign span:after {
 #create-event-pop .container form input[type="submit"] {
   margin-bottom: 41px;
 }
+#create-event-pop .container form input[type="submit"]:hover {
+  cursor: pointer;
+}
 #create-event-pop .container form input[type="text"] {
   padding-left: 10px;
   padding-right: 10px;
@@ -17152,7 +17177,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdfÔÇí;
+  border: 0px solid #dfdfdf‡;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
@@ -17348,6 +17373,7 @@ article .read-later.rAlign span:after {
   border-bottom: 1px solid #e3e3e3;
   border-top: 1px solid #e3e3e3;
   padding: 43px 0;
+  padding-bottom: 51px;
 }
 .press-media .nav-mediapress .wrapper {
   width: 980px;

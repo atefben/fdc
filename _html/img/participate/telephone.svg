@@ -4,12 +4,12 @@
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="595.279px" height="841.891px" viewBox="0 0 595.279 841.891" enable-background="new 0 0 595.279 841.891"
 	 xml:space="preserve">
-<path fill="#B0B0B0" stroke="#FFFFFF" stroke-miterlimit="10" d="M421.691,833.62H173.589c-54.582,0-100.895-44.658-100.895-100.895
-	V109.165c0-54.583,44.658-100.895,100.895-100.895h249.756c54.582,0,100.894,44.658,100.894,100.895V734.38
-	C522.585,788.962,477.927,833.62,421.691,833.62z"/>
-<line fill="#B0B0B0" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-miterlimit="10" x1="236.442" y1="57.89" x2="358.838" y2="57.89"/>
-<path fill="#FFFFFF" stroke="#B0B0B0" stroke-miterlimit="10" d="M297.64,764.151L297.64,764.151
-	c-18.194,0-33.08-14.886-33.08-33.08l0,0c0-18.193,14.886-33.08,33.08-33.08l0,0c18.194,0,33.08,14.887,33.08,33.08l0,0
-	C330.72,749.266,315.834,764.151,297.64,764.151z"/>
-<rect x="101.24" y="105.549" fill="#FFFFFF" stroke="#B0B0B0" stroke-miterlimit="10" width="401.48" height="562.472"/>
+<path fill="#B0B0B0" stroke="#FFFFFF" stroke-miterlimit="10" d="M390.749,624.274H203.284c-41.243,0-76.237-33.743-76.237-76.235
+	V76.879c0-41.242,33.744-76.236,76.237-76.236h188.713c41.242,0,76.236,33.744,76.236,76.236v472.41
+	C466.981,590.531,433.239,624.274,390.749,624.274z"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-miterlimit="10" x1="250.774" y1="38.136" x2="343.255" y2="38.136"/>
+<path fill="#FFFFFF" stroke="#B0B0B0" stroke-miterlimit="10" d="M297.016,579.792L297.016,579.792
+	c-13.748,0-24.995-11.248-24.995-24.995l0,0c0-13.747,11.247-24.995,24.995-24.995l0,0c13.747,0,24.995,11.248,24.995,24.995l0,0
+	C322.011,568.544,310.763,579.792,297.016,579.792z"/>
+<rect x="145.337" y="74.147" fill="#FFFFFF" stroke="#B0B0B0" stroke-miterlimit="10" width="303.357" height="425.001"/>
 </svg>

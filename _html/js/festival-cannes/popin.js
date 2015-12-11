@@ -59,7 +59,7 @@ $(document).ready(function() {
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
         $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.empty + '</li>');
-// TODO remove string //
+
       }else if(is_email){
         input.removeClass("invalid").addClass("valid");
         $('.errors .' + input.attr('name')).remove();
