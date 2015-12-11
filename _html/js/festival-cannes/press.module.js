@@ -191,7 +191,7 @@ $(document).ready(function() {
               center: 'title',
               right: 'next'
             },
-            
+            titleFormat: 'dddd DD MMMM',
             defaultView: 'agendaDay',
             minTime: "08:00:00",
             maxTime: "19:00:00",
