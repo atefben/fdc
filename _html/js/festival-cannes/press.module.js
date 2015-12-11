@@ -690,7 +690,7 @@ $(document).ready(function() {
 
       $grid.isotope('layout');
     });
-    $('.read-more').on('click', function (e) {
+    $('.press .read-more').on('click', function (e) {
       e.preventDefault();
 	     $(this).hide();
       $.ajax({
