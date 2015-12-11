@@ -66,6 +66,13 @@ twig:
         header_cine: "%header_cine%"
         header_ccm: "%header_ccm%"
         header_mdf: "%header_mdf%"
+        header_account: "%header_account%"
+        partner_chopard: "%partner_chopard%"
+        partner_loreal: "%partner_loreal%"
+        partner_hp: "%partner_hp%"
+        partner_kering: "%partner_kering%"
+        partner_renault: "%partner_renault%"
+        partner_mastercard: "%partner_mastercard%"
         footer_boutique: "%footer_boutique%"
         social_appli: "%social_appli%"
         social_facebook: "%social_facebook%"
@@ -81,7 +88,7 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCPressBundle ]
     use_controller: true
     filters:
         cssrewrite:

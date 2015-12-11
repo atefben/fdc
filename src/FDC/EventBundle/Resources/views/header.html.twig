@@ -3,27 +3,21 @@
 
     <div id="top-bar">
         <ul class="main-nav">
-
             <li>
                 <a href="/" class="active" > {{ 'header.topbar.nav.festival'|trans }} </a>
             </li>
-
             <li>
                 <a href="{{ header_fdc }}" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
             </li>
-
             <li>
                 <a href="{{ header_cine }}" target="_blank" > {{ 'header.topbar.nav.cinefondation'|trans }} </a>
             </li>
-
             <li>
                 <a href="{{ header_ccm }}" target="_blank" > {{ 'header.topbar.nav.courtmetrage'|trans }} </a>
             </li>
-
             <li>
                 <a href="{{ header_mdf }}" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
             </li>
-
         </ul>
         <ul class="user-nav">
 
@@ -32,9 +26,8 @@
             </li>
 
             <li>
-                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
+                <a href="{{ header_account }}" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
             </li>
-
             <li class="lang">
                 <a href="#" class="language">
                     {{ app.request.locale|upper }}
@@ -48,7 +41,6 @@
                     {% endfor %}
                 </ul>
             </li>
-
         </ul>
     </div>
     <div id="logo-wrapper">
@@ -78,32 +70,32 @@
                 </p>
             </div>
             <div id="partners">
-                <a href="//www.chopard.fr/" target="_blank">
+                <a href="{{ partner_chopard }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Logo_Chopard.svg' %}
                     <img width="84" src="{{ asset_url }}" class="chopard" alt="{{ 'header.partners.img.chopard'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//www.loreal-paris.fr/index.aspx" target="_blank">
+                <a href="{{ partner_loreal }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
                     <img width="75" src="{{ asset_url }}" class="oreal" alt="{{ 'header.partners.img.loreal'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//www8.hp.com/fr/fr/home.html" target="_blank">
+                <a href="{{ partner_hp }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/hp.svg' %}
                     <img width="28" src="{{ asset_url }}" class="hp" alt="{{ 'header.partners.img.hp'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//www.kering.com/fr" target="_blank">
+                <a href="{{ partner_kering }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Kering-logo.svg' %}
                     <img width="82" src="{{ asset_url }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//group.renault.com" target="_blank">
+                <a href="{{ partner_renault }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/renault.svg' %}
                     <img width="95" src="{{ asset_url }}" class="renault" alt="{{ 'header.partners.img.renault'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank">
+                <a href="{{ partner_mastercard }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/mastercard.png' %}
                     <img width="57" src="{{ asset_url }}" class="mastercard" alt="{{ 'header.partners.img.mastercard'|trans }}" />
                     {% endimage %}
@@ -241,9 +233,7 @@
         </div>
     </div>
     <div id="selection">
-
         <h2 class="title">{{ 'header.maselection.title.maselection'|trans }}<strong>(<span id="nbarticle"></span>)</strong></h2>
-
         <ul class="filters-selection">
             <li><a href="#" data-selection='all'>{{ 'header.maselection.nav.tous'|trans }}</a></li>
             <li><a href="#" data-selection='article'>{{ 'header.maselection.nav.articles'|trans }}</a></li>

@@ -1,0 +1,13 @@
+{% block stylesheets %}
+
+    <!-- //// FONTS \\\\ -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css" rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- //// CSS \\\\ -->
+    {% stylesheets "bundles/fdcevent/styles/*.css" filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+{% endblock %}
