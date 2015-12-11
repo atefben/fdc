@@ -272,6 +272,17 @@
       background-color: #242424;
       height: 510px;
 
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: rgba(102, 102, 102, 0.44);
+      }
+      ::-webkit-scrollbar-thumb {
+        height: 10px;
+        background-color: #c8a461;
+      }
+
       .fc-highlight-skeleton {
         display: none;
       }

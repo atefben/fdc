@@ -14732,6 +14732,16 @@ article .read-later.rAlign span:after {
   background-color: #242424;
   height: 510px;
 }
+.press #calendar #mycalendar ::-webkit-scrollbar {
+  width: 5px;
+}
+.press #calendar #mycalendar ::-webkit-scrollbar-track {
+  background-color: rgba(102, 102, 102, 0.44);
+}
+.press #calendar #mycalendar ::-webkit-scrollbar-thumb {
+  height: 10px;
+  background-color: #c8a461;
+}
 .press #calendar #mycalendar .fc-highlight-skeleton {
   display: none;
 }
