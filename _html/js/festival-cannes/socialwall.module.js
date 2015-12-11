@@ -28,7 +28,7 @@ function makePath(data){
   var pathString = convertToPath(data);
   var graphHeight = $('#graph').height();
   
-  function getDefaltPath(){
+  function getDefaultPath(){
     var defaultPathString = 'M4,'+ (graphHeight - 30) +' H';
   
     for (var i=0; i<data.length; i++) {
