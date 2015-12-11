@@ -6997,9 +6997,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7025,11 +7025,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7045,26 +7045,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -12263,11 +12263,13 @@ article .read-later.rAlign span:after {
 }
 .single-channel .back {
   color: #fff;
-  display: block;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 0.625rem;
-  margin: 0 0 65px 0;
   text-transform: uppercase;
+  font-size: 9.6px;
+  background: url("../img/svg/arrow-left-white.svg") no-repeat left 3px;
+  background-size: 9px;
+  font-family: "Camphor W01 Bold";
+  letter-spacing: 0.1em;
+  padding-left: 20px;
 }
 .single-channel .channel:after {
   border: 4px solid #c8a461;
@@ -12294,6 +12296,72 @@ article .read-later.rAlign span:after {
 .single-channel .owl-item.center .channel:after {
   opacity: 1;
   visibility: visible;
+}
+.single-channel .small-container {
+  margin: 0 auto;
+  width: 975px;
+}
+.single-channel .small-container .player {
+  margin-top: 49px;
+}
+.single-channel .small-container #content-channels {
+  padding-top: 26px;
+}
+.single-channel .small-container .infos-videos {
+  padding-top: 18px;
+  position: relative;
+}
+.single-channel .small-container .infos-videos .infos strong {
+  color: #c8a461;
+  font-size: 0.69rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  line-height: 18px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.single-channel .small-container .infos-videos .infos .time {
+  margin-left: 9px;
+  color: #666666;
+  font-size: 0.69rem;
+  text-transform: uppercase;
+  line-height: 24px;
+}
+.single-channel .small-container .infos-videos .infos p {
+  color: #fff;
+  font-size: 1.13rem;
+  line-height: 24px;
+}
+.single-channel .small-container .infos-videos .square {
+  position: absolute;
+  z-index: 3;
+  top: -4px;
+  right: 1px;
+}
+.single-channel .small-container .infos-videos .square a {
+  border-color: #2c2c2c;
+  border-top: none;
+}
+.single-channel .small-container .infos-videos .square a.facebook {
+  background: url("../img/svg/facebook-gold.svg") no-repeat center;
+  background-size: 19px;
+}
+.single-channel .small-container .infos-videos .square a.twitter {
+  background: url("../img/svg/twitter-gold.svg") no-repeat center;
+  background-size: 16px;
+}
+.single-channel .small-container .infos-videos .square a.link {
+  background: url("../img/svg/link.svg") no-repeat center;
+  background-size: 16px;
+}
+.single-channel .small-container .infos-videos .square a.email {
+  background: url("../img/svg/mail.svg") no-repeat center;
+  background-size: 16px;
+}
+.single-channel .small-container .infos-videos .square a:hover {
+  border-color: #c8a461;
+}
+.single-channel .small-container .infos-videos .square a:hover + a {
+  border-left-color: #c8a461;
 }
 
 .webtv-ba .item:hover img {
@@ -12513,6 +12581,7 @@ article .read-later.rAlign span:after {
   padding-top: 73px;
   border-right: 1px solid #2c2c2c;
   border-bottom: 1px solid #2c2c2c;
+  padding-bottom: 7px;
 }
 .webtv-ba-video .informations-video .infos-film {
   text-align: center;
@@ -17194,7 +17263,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdfÔÇí;
+  border: 0px solid #dfdfdf‡;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
