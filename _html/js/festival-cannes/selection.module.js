@@ -113,6 +113,14 @@ $(document).ready(function() {
     }
   });
 
+  $('body').on('click', 'footer.overlay', function(e) {
+    e.preventDefault();
+
+    if($('#selection').hasClass('open')) {
+      closeSelection();
+    }
+  });
+
   $('header .selection').on('click', function(e) {
     e.preventDefault();
 

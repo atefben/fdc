@@ -134,8 +134,12 @@ function setImages(grid, dom, init){
         waves[i].stop();
       }
     }
-    $('.popin-audio').removeClass('pause');
+    $('.popin-audio').removeClass('pause audio-player');
     waves = [];
+
+    if(inter) {
+      clearInterval(inter);
+    }
   }
 
   if ($('.grid').length) {
@@ -240,8 +244,9 @@ function setImages(grid, dom, init){
             $popinAudio.find('.date').text(date);
             $popinAudio.find('.hour').text(hour);
             $popinAudio.find('p').text(text);
-            $popinAudio.addClass('audio-player show loading on');
-
+            $popinAudio.addClass('audio-player show loading');
+            waves = [];
+            $('.audio-player .playpause').off('click');
             initAudioPlayers();
             $('.ov').addClass('show');
           });

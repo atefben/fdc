@@ -62,7 +62,6 @@ function initAudioPlayers() {
         if(seconds < 10) {
           seconds = '0' + seconds;
         }
-
         $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
       }
       
