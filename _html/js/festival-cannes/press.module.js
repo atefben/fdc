@@ -248,6 +248,7 @@ $(document).ready(function() {
               }
 
               var m = $('#mycalendar').fullCalendar('getDate');
+              $('#dateProgram').text(m.format('DD MMMM YYYY'));
               $('#timeline a').each(function() {
                 var d = $(this).data('date');
                 if(d == m.format()) {
@@ -499,6 +500,9 @@ $(document).ready(function() {
               });
 
               var date = $.fullCalendar.moment($(this).data('date'));
+
+              $('#dateProgram').text(date.format('DD MMMM YYYY'));
+
               $('#mycalendar').fullCalendar('gotoDate', date);
               
             });

@@ -216,7 +216,7 @@
         </div>
         <div class="programmation">
           <div class="chap">
-            <h3 class="title-press">Programme du 23 Juin 2016</h3>
+            <h3 class="title-press">Programme du <span id="dateProgram">12 Mai 2016</span></h3>
             <p class="link"><a href="programmation.php"><img src="img/svg/arrow-right-gold.svg" />toute la programmation</a></p>
           </div>
           <div id="calendar-programmation">
