@@ -12,6 +12,8 @@ class ArticleController extends Controller
 
     /**
      * @Route("/suggestion", options={"expose"=true})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function suggestionAction(Request $request)
     {

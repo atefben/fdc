@@ -3,15 +3,15 @@
 {#<footer class="loading">#}
 <footer>
     <div class="container">
-        <h2 class="title">{{ 'footer.newsletter.title'|trans }}</h2>
-        <h3 class="subtitle">{{ 'footer.newsletter.info'|trans }}</h3>
+        <h2 class="title">{{ 'footer.newsletter.title.newsletter'|trans }}</h2>
+        <h3 class="subtitle">{{ 'footer.newsletter.title.toutelactualite'|trans }}</h3>
 
         {{ render(controller('FDCEventBundle:Footer:newsletter')) }}
 
         <div class="social">
             <p>
                 {% image '@FDCEventBundle/Resources/public/img/svg/logo-white.svg' %}
-                <img width="230" src="{{ asset_url }}" alt="{{ 'footer.social.title'|trans }}" />
+                <img width="230" src="{{ asset_url }}" alt="{{ 'footer.social.logo.festival'|trans }}" />
                 {% endimage %}
             </p>
             <ul>
@@ -29,35 +29,35 @@
 
         <div class="footer-menu">
             <ul>
-                <li class="copyright">{{ 'footer.copyright'|trans }} {{ 'now'|date('Y') }}</li>
+                <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
                 <li>
                     <a href="{{ path('fdc_event_footer_contact') }}">
-                        {{ 'footer.contact'|trans }}
+                        {{ 'footer.nav.contact'|trans }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('fdc_event_footer_static', {'page': 'faq'}) }}">
-                        {{ 'footer.faq'|trans }}
+                        {{ 'footer.nav.faq'|trans }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('fdc_event_footer_static', {'page': 'credit'}) }}">
-                        {{ 'footer.credit'|trans }}
+                        {{ 'footer.nav.credit'|trans }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('fdc_event_footer_static', {'page': 'mention'}) }}">
-                        {{ 'footer.mention-legale'|trans }}
+                        {{ 'footer.nav.mentionslegales'|trans }}
                     </a>
                 </li>
-                <li><a href="#">{{ 'footer.rejoindre'|trans }}</a></li>
-                <li><a href="#">{{ 'footer.boutique'|trans }}</a></li>
+                <li><a href="#">{{ 'footer.nav.nousrejoindre'|trans }}</a></li>
+                <li><a href="#">{{ 'footer.nav.boutique'|trans }}</a></li>
                 <li>
                     <a href="{{ path('fdc_event_footer_static', {'page': 'sitemap'}) }}">
-                        {{ 'footer.sitemap'|trans }}
+                        {{ 'footer.nav.plandusite'|trans }}
                     </a>
                 </li>
-                <li><a href="#">{{ 'footer.confidentialite'|trans }}</a></li>
+                <li><a href="#">{{ 'footer.nav.politiqueconfidentialite'|trans }}</a></li>
             </ul>
         </div>
 

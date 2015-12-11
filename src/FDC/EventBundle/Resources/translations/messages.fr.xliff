@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-10T17:59:17Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-11T10:25:02Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="d41f60f033f15d36ff50b70a3b7b7665a03bd464" resname="footer.contact.placeholder.theme">
-        <source>footer.contact.placeholder.theme</source>
+      <trans-unit id="3297837e1c6b935cdd8c42ff35ed055f5205dbbc" resname="contact.form.placeholder.theme">
+        <source>contact.form.placeholder.theme</source>
         <target>Séléctionnez un thème</target>
         <jms:reference-file line="41">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="295de47cce7e5aecb3287e4109291a59988687b8" resname="newsletter.input.placeholder">
-        <source>newsletter.input.placeholder</source>
+      <trans-unit id="ce3ad563def29bc0b8fa74c4804ef7f9826bd1a7" resname="footer.newsletter.placeholder.votreadresse">
+        <source>footer.newsletter.placeholder.votreadresse</source>
         <target>Votre adresse email</target>
         <jms:reference-file line="40">Form/Type/NewsletterType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="2af55dfeeea0143ae16438b51008c1683fcd05c9" resname="newsletter.subject">
-        <source>newsletter.subject</source>
+      <trans-unit id="9e9486daa181d4bb53bf7d57d2b91f70869b3331" resname="newsletter.email.subject">
+        <source>newsletter.email.subject</source>
         <target>Votre inscription à la newsletter</target>
         <jms:reference-file line="682">EventBundle/Controller/FooterController.php</jms:reference-file>
       </trans-unit>

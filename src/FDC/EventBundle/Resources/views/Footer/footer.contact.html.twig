@@ -14,11 +14,11 @@
 {% block body %}
     {#<div id="main" class="contact loading"> |!| JS |!| #}
     <div id="main" class="contact">
-        <h2 class="title">{{ 'contact.title'|trans }}</h2>
+        <h2 class="title">{{ 'contact.title.contact'|trans }}</h2>
         <div class="coords">
-            <h3>{{ 'contact.festival'|trans }}</h3>
-            <p>{{ 'contact.adresse'|trans }}</p>
-            <p>{{ 'contact.contact'|trans }}</p>
+            <h3>{{ 'contact.title.festival'|trans }}</h3>
+            <p>{{ 'contact.text.adresse'|trans }}</p>
+            <p>{{ 'contact.text.contact'|trans }}</p>
         </div>
 
         {% for label, flashes in app.session.flashbag.all %}
@@ -26,15 +26,15 @@
                 {#<div class="{{ label }}"> |!| JS |!|#}
                 <div class="">
                     {% for flash in flashes %}
-                        <h3>{{ 'contact.sucess.title'|trans }}</h3>
-                        <p>{{ 'contact.sucess.description'|trans }}</p>
+                        <h3>{{ 'contact.sucess.title.votremessage'|trans }}</h3>
+                        <p>{{ 'contact.sucess.text.lequipeconcerne'|trans }}</p>
                     {% endfor %}
                 </div>
             {% endif %}
         {% endfor %}
 
         <div class="container">
-            <p>{{ 'contact.form.description'|trans|raw }}</p>
+            <p>{{ 'contact.form.text.precisezvotredemande'|trans|raw }}</p>
             <div id="form">
                 {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
 
@@ -64,8 +64,8 @@
                     {{ form_widget(form.message) }}
                 {% endif %}
 
-                <span class="required">* {{ 'form.mandatory_fields'|trans }}</span>
-                <input type="submit" value="{{ 'btn.send'|trans }}">
+                <span class="required">{{ 'contact.form.text.champsobligatoires'|trans }}</span>
+                <input type="submit" value="{{ 'contact.form.btn.envoyer'|trans }}">
 
                 {{ form_end(form) }}
 
@@ -83,32 +83,5 @@
             </div>
         </div>
 
-
-
-
-
-
-                {#<form action="">#}
-                    {#<div class="select">#}
-                        {#<label for="select">Votre message concerne:</label>#}
-                        {#<select name="select">#}
-                            {#<option class="default" value="default">Séléctionnez un thème</option>#}
-                            {#<option value="theme1">Theme 1</option>#}
-                            {#<option value="theme2">Theme 2</option>#}
-                        {#</select>#}
-                        {#<span id="triggerSelect"></span>#}
-                    {#</div>#}
-                    {#<input type="text" name="name" placeholder="Votre nom*" data-error="Votre nom n'est pas renseigné" />#}
-                    {#<input type="email" name="email" placeholder="Votre adresse email*"  data-error="L'adresse email n'est pas valide" />#}
-                    {#<input type="text" name="object" placeholder="Objet*" data-error="L'objet de votre message n'est pas renseigné" />#}
-                    {#<textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné"></textarea>#}
-                    {#<span class="required">* Champs obligatoires</span>#}
-                    {#<input type="submit" value="Envoyer" />#}
-                {#</form>#}
-                {#<div class="errors">#}
-                    {#<ul></ul>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
     </div>
 {% endblock %}

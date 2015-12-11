@@ -5,34 +5,34 @@
         <ul class="main-nav">
 
             <li>
-                <a href="/" class="active" > {{ 'mainnav.event'|trans }} </a>
+                <a href="/" class="active" > {{ 'header.topbar.nav.festival'|trans }} </a>
             </li>
 
             <li>
-                <a href="http://www.festival-cannes.com/fr.html" target="_blank" > {{ 'mainnav.fdc'|trans }} </a>
+                <a href="http://www.festival-cannes.com/fr.html" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
             </li>
 
             <li>
-                <a href="http://www.cinefondation.com/fr" target="_blank" > {{ 'mainnav.cinefondation'|trans }} </a>
+                <a href="http://www.cinefondation.com/fr" target="_blank" > {{ 'header.topbar.nav.cinefondation'|trans }} </a>
             </li>
 
             <li>
-                <a href="http://www.cannescourtmetrage.com/fr" target="_blank" > {{ 'mainnav.court-metrage'|trans }} </a>
+                <a href="http://www.cannescourtmetrage.com/fr" target="_blank" > {{ 'header.topbar.nav.courtmetrage'|trans }} </a>
             </li>
 
             <li>
-                <a href="http://www.marchedufilm.com/fr" target="_blank" > {{ 'mainnav.marche-film'|trans }} </a>
+                <a href="http://www.marchedufilm.com/fr" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
             </li>
 
         </ul>
         <ul class="user-nav">
 
             <li>
-                <a href="#" class="selection"> {{ 'usernav.selection'|trans }} </a>
+                <a href="#" class="selection"> {{ 'header.usernav.nav.maselection'|trans }} </a>
             </li>
 
             <li>
-                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'usernav.compte'|trans }} </a>
+                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
             </li>
 
             <li class="lang">
@@ -41,7 +41,10 @@
                 </a>
                 <ul class="sub-languages">
                     {% for locale in locales %}
-                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale|upper }}</a></li>
+                        {% if locale == app.request.locale %}
+                        {% else %}
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale|upper }}</a></li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </li>
@@ -53,23 +56,23 @@
             <div id="logo">
                 <a href="/">
                     {% image '@FDCEventBundle/Resources/public/img/svg/palme.svg'  %}
-                    <img src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                    <img src="{{ asset_url }}" class="palm" alt="{{ 'header.img.palme'|trans }}" />
                     {% endimage %}
                 </a>
                 <h1>
                     <a href="/">
                         {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
-                        <img width="200" src="{{ asset_url }}" alt="{{ 'event.name'|trans }}" />
+                        <img width="200" src="{{ asset_url }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
                         {% endimage %}
                     </a>
                 </h1>
                 <h2>
-                    <a href="/">{{ 'event.date'|trans }}</a>
+                    <a href="/">{{ 'header.logo.date'|trans }}</a>
                 </h2>
                 <p class="stick">
                     <a href="/">
                         {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
-                        <img width="178" src="{{ asset_url }}" class="palm" alt="{{ 'event.name'|trans }}" />
+                        <img width="178" src="{{ asset_url }}" class="palm" alt="{{ 'header.logo.img.cannes'|trans }}" />
                         {% endimage %}
                     </a>
                 </p>
@@ -77,32 +80,32 @@
             <div id="partners">
                 <a href="//www.chopard.fr/" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Logo_Chopard.svg' %}
-                    <img width="84" src="{{ asset_url }}" class="chopard" alt="{{ 'partners.chopard'|trans }}" />
+                    <img width="84" src="{{ asset_url }}" class="chopard" alt="{{ 'header.partners.img.chopard'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="//www.loreal-paris.fr/index.aspx" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
-                    <img width="75" src="{{ asset_url }}" class="oreal" alt="{{ 'partners.loreal'|trans }}" />
+                    <img width="75" src="{{ asset_url }}" class="oreal" alt="{{ 'header.partners.img.loreal'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="//www8.hp.com/fr/fr/home.html" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/hp.svg' %}
-                    <img width="28" src="{{ asset_url }}" class="hp" alt="{{ 'partners.hp'|trans }}" />
+                    <img width="28" src="{{ asset_url }}" class="hp" alt="{{ 'header.partners.img.hp'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="//www.kering.com/fr" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Kering-logo.svg' %}
-                    <img width="82" src="{{ asset_url }}" class="kering" alt="{{ 'partners.kering'|trans }}" />
+                    <img width="82" src="{{ asset_url }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="//group.renault.com" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/renault.svg' %}
-                    <img width="95" src="{{ asset_url }}" class="renault" alt="{{ 'partners.renault'|trans }}" />
+                    <img width="95" src="{{ asset_url }}" class="renault" alt="{{ 'header.partners.img.renault'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/mastercard.png' %}
-                    <img width="57" src="{{ asset_url }}" class="mastercard" alt="{{ 'partners.mastercard'|trans }}" />
+                    <img width="57" src="{{ asset_url }}" class="mastercard" alt="{{ 'header.partners.img.mastercard'|trans }}" />
                     {% endimage %}
                 </a>
             </div>
@@ -112,13 +115,13 @@
             <div id="sticky-user">
                 <ul class="user-nav">
                     <li>
-                        <a href="#" class="selection"> {{ 'usernav.selection'|trans }} </a>
+                        <a href="#" class="selection"> {{ 'header.usernav.nav.maselection'|trans }} </a>
                     </li>
                     <li>
-                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'usernav.compte'|trans }} </a>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
                     </li>
                     <li>
-                        <a href="#" class="search"> {{ 'usernav.search'|trans }} </a>
+                        <a href="#" class="search"> {{ 'header.usernav.nav.rechercher'|trans }} </a>
                     </li>
                 </ul>
             </div>
@@ -129,68 +132,68 @@
             <nav>
                 <ul class="main">
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}" class="active"> {{ 'navigation.actualite'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}" class="active"> {{ 'header.mainnav.nav.lactualite'|trans }} </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}" class="active"> {{ 'navigation.jour'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}" class="active"> {{ 'header.mainnav.nav.jourapresjour'|trans }} </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.article'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.articles'|trans }} </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.photo'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.photos'|trans }} </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.video'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.videos'|trans }} </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.audio'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.audios'|trans }} </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="webtv.php"> {{ 'navigation.webtv'|trans }} </a>
+                        <a href="webtv.php"> {{ 'header.mainnav.nav.webtv'|trans }} </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.direct'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.direct'|trans }} </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.chaine'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.chaines'|trans }} </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.annonce'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.bandesannonces'|trans }} </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.selection'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.laselection'|trans }} </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.jury'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.lesjurys'|trans }} </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.palmares'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.lepalmares'|trans }} </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.event'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.lesevenements'|trans }} </a>
                     </li>
                 </ul>
                 <ul class="user">
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}" class="programmation"> {{ 'navigation.programmation'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}" class="programmation"> {{ 'header.mainnav.nav.programmation'|trans }} </a>
                     </li>
                     <li class="participate-wrapper">
-                        <a href="{{ path('fdc_event_default_index') }}" class="participate"> {{ 'navigation.participer'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
                         <ul>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.prepare'|trans }}</a></li>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.mode-emploi'|trans }} </a></li>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.projection'|trans }} </a></li>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.partenaire'|trans }} </a></li>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'navigation.fournisseur'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.preparersejour'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.festivalmodeemploi'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.accesprojection'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.partenaires'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.fournisseurs'|trans }} </a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}" class="press"> {{ 'navigation.presse'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
                     </li>
                 </ul>
             </nav>
@@ -198,14 +201,14 @@
     </div>
     <div id="selection">
 
-        <h2 class="title">{{ 'selection.title'|trans }}<strong>(<span id="nbarticle"></span>)</strong></h2>
+        <h2 class="title">{{ 'header.maselection.title.maselection'|trans }}<strong>(<span id="nbarticle"></span>)</strong></h2>
 
         <ul class="filters-selection">
-            <li><a href="#" data-selection='all'>{{ 'selection.all'|trans }}</a></li>
-            <li><a href="#" data-selection='article'>{{ 'selection.article'|trans }}</a></li>
-            <li><a href="#" data-selection='video'>{{ 'selection.video'|trans }}</a></li>
-            <li><a href="#" data-selection='audio'>{{ 'selection.audio'|trans }}</a></li>
-            <li><a href="#" data-selection='suggestion' class="active">{{ 'selection.suggestion'|trans }}</a></li>
+            <li><a href="#" data-selection='all'>{{ 'header.maselection.nav.tous'|trans }}</a></li>
+            <li><a href="#" data-selection='article'>{{ 'header.maselection.nav.articles'|trans }}</a></li>
+            <li><a href="#" data-selection='video'>{{ 'header.maselection.nav.videos'|trans }}</a></li>
+            <li><a href="#" data-selection='audio'>{{ 'header.maselection.nav.audios'|trans }}</a></li>
+            <li><a href="#" data-selection='suggestion' class="active">{{ 'header.maselection.nav.suggestions'|trans }}</a></li>
         </ul>
         <div id="slider-selection" class="owl-carousel"></div>
         <div id="slider-suggestion" class="owl-carousel"></div>
@@ -231,7 +234,7 @@
     <div id="searchContainer">
         <div class="container">
             <form action="{{ path('fdc_event_default_index') }}">
-                <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'selection.recherche'|trans }}" autocomplete="off" />
+                <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'header.search.input.entrezrecherche'|trans }}" autocomplete="off" />
                 <input id="submitSearch" type="submit" value="" />
             </form>
             <ul id="suggest"></ul>

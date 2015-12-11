@@ -37,7 +37,7 @@ class NewsletterType extends AbstractType
         $builder
             ->add('email', 'email', array(
                 'attr' => array(
-                    'placeholder' => $this->translator->trans('newsletter.input.placeholder')
+                    'placeholder' => $this->translator->trans('footer.newsletter.placeholder.votreadresse')
                 ),
                 'label' => false
             ));

@@ -38,7 +38,7 @@ class ContactType extends AbstractType
      */
     private function createSelectValues($themes)
     {
-        $default = $this->translator->trans('footer.contact.placeholder.theme');
+        $default = $this->translator->trans('contact.form.placeholder.theme');
 
         $select = array($default => 'default');
         if (count($themes) > 0) {
@@ -71,31 +71,31 @@ class ContactType extends AbstractType
                 },
                 'empty_value' => false,
                 'choices_as_values' => true,
-                'label' => 'footer.contact.label.theme',
+                'label' => 'contact.form.label.votremessage',
                 'required' => false
             ))
             ->add('name', 'text', array(
                 'attr' => array(
-                    'placeholder' => 'footer.contact.placeholder.name'
+                    'placeholder' => 'contact.form.placeholder.nom'
                 ),
                 'label' => false
             ))
             ->add('email', 'email', array(
                 'attr' => array(
-                    'placeholder' => 'footer.contact.placeholder.email'
+                    'placeholder' => 'contact.form.placeholder.email'
                 ),
                 'label' => false
             ))
             ->add('subject', 'text', array(
                 'attr' => array(
-                    'placeholder' => 'footer.contact.placeholder.subject'
+                    'placeholder' => 'contact.form.placeholder.objet'
                 )
             ))
             ->add('message', 'textarea', array(
                 'attr' => array(
                     'cols' => 90,
                     'rows' => 10,
-                    'placeholder' => 'footer.contact.placeholder.message'
+                    'placeholder' => 'contact.form.placeholder.message'
                 )
             ));
     }
@@ -107,20 +107,20 @@ class ContactType extends AbstractType
     {
         $collectionConstraint = new Collection(array(
             'select' => array(
-                new GreaterThan(array('value' => 0, 'message' => 'footer.contact.invalid_theme')),
+                new GreaterThan(array('value' => 0, 'message' => 'contact.form.errors.theme')),
             ),
             'name' => array(
-                new NotBlank(array('message' => 'footer.contact.invalid_name')),
+                new NotBlank(array('message' => 'contact.form.errors.nom')),
             ),
             'email' => array(
-                new NotBlank(array('message' => 'footer.contact.invalid_email')),
-                new Email(array('message' => 'footer.contact.invalid_email'))
+                new NotBlank(array('message' => 'contact.form.errors.email')),
+                new Email(array('message' => 'contact.form.errors.email'))
             ),
             'subject' => array(
-                new NotBlank(array('message' => 'footer.contact.invalid_subject')),
+                new NotBlank(array('message' => 'contact.form.errors.objet')),
             ),
             'message' => array(
-                new NotBlank(array('message' => 'footer.contact.invalid_message')),
+                new NotBlank(array('message' => 'contact.form.errors.message')),
             )
         ));
 

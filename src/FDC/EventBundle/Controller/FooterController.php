@@ -679,7 +679,7 @@ class FooterController extends Controller
                 $response['success'] = $email;
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject($translator->trans('newsletter.subject'))
+                    ->setSubject($translator->trans('newsletter.email.subject'))
                     ->setFrom('contact@mail.fr')
                     ->setTo($email)
                     ->setBody(
