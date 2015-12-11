@@ -3375,10 +3375,10 @@ header.sticky #top-bar, header.sticky h1 {
 header.sticky #sticky-user {
   opacity: 1;
   visibility: visible;
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   float: right;
   pointer-events: initial;
   margin-top: 18px;
@@ -3391,6 +3391,12 @@ header.sticky #sticky-user .user-nav a.search {
   background: url("../img/svg/search.svg") no-repeat left top;
   background-size: 15px;
   margin-right: 0;
+}
+header.sticky #sticky-user .user-nav a {
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 header.sticky #sticky-user .user-nav a.selection {
   min-width: 71px;
@@ -3443,10 +3449,10 @@ header .user-nav li a {
   display: block;
   margin-right: 10px;
   padding: 0 0px 1px 20px;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header .user-nav li a:hover {
   opacity: 0.7;
@@ -8994,6 +9000,11 @@ article .image .linkImage {
 }
 article .read-later.rAlign span:after {
   left: 132px;
+}
+
+.mob .read-later {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .single-article {
@@ -15314,14 +15325,67 @@ input[type=submit] {
   height: 40px;
   line-height: 38px;
 }
+@media screen and (max-width: 1279px) {
+  .press .programmation #calendar-programmation .filters {
+    width: calc(100% - 360px);
+    background-color: #fff;
+    z-index: 1;
+  }
+}
 .press .programmation #calendar-programmation #timeline {
   height: 40px;
   position: absolute;
   right: 0;
   top: 0;
 }
+.press .programmation #calendar-programmation #timeline .arrow {
+  display: none;
+}
+@media screen and (max-width: 1279px) {
+  .press .programmation #calendar-programmation #timeline {
+    padding: 0 43px;
+    width: 260px;
+  }
+  .press .programmation #calendar-programmation #timeline .timeline-container {
+    width: 600px;
+    -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  }
+  .press .programmation #calendar-programmation #timeline .arrow {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    position: absolute;
+    left: -4px;
+    right: 0;
+    width: 43px;
+    top: 0;
+    z-index: 2;
+  }
+  .press .programmation #calendar-programmation #timeline .arrow.hide {
+    display: none;
+  }
+  .press .programmation #calendar-programmation #timeline .arrow.left {
+    background: #fff url("../img/svg/arrow-left-grey.svg") no-repeat center;
+    background-size: 12px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px dashed #e5e5e5;
+  }
+  .press .programmation #calendar-programmation #timeline .arrow.right {
+    background: #fff url("../img/svg/arrow-right-grey.svg") no-repeat center;
+    background-size: 12px;
+    left: auto;
+    right: 0;
+    border-left: 1px dashed #e5e5e5;
+  }
+  .press .programmation #calendar-programmation #timeline a.active.hideB:after {
+    display: none;
+  }
+}
 .press .programmation #calendar-programmation #timeline a {
-  border-right: 1px dotted #e5e5e5;
+  border-right: 1px dashed #e5e5e5;
   color: #adadad;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
@@ -15717,7 +15781,7 @@ input[type=submit] {
   display: none;
 }
 .press.press-programmation #calendar-programmation .calendar .venues {
-  height: 933px;
+  height: 1662px;
 }
 .press.press-programmation .contact-press {
   border-top: none;

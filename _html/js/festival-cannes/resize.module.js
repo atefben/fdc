@@ -17,6 +17,10 @@ $(document).ready(function() {
     $('#selection .owl-stage').css('transform', 'translate3d(' + pxT + ',0, 0)');
   });
 
+  if (navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
+    $('body').addClass('mob');
+  }
+
   var dragging = false;
 
   $("body").on("touchmove", function(){
