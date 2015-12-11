@@ -492,9 +492,12 @@ $(document).ready(function() {
 
             var ct = 0;
 
+            $('#calendar-programmation .nav.prev').addClass('hide');
+
             // slider calendar programmation
             $('#calendar-programmation .nav').on('click', function(e) {
               e.preventDefault();
+              $('#calendar-programmation .nav').removeClass('hide');
 
               if($(this).hasClass('prev')) {
                 $('.v-wrapper').removeClass('max');
@@ -510,6 +513,10 @@ $(document).ready(function() {
                     'transform': 'translateX(' + p+ 'px)'
                   });
                   ct--;
+                }
+
+                if($v.prev().prev().length == 0) {
+                  $(this).addClass('hide');
                 }
               } else {
                 var $v = $('.venue').eq(ct);
