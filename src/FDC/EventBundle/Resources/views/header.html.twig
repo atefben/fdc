@@ -67,7 +67,7 @@
                     </a>
                 </h1>
                 <h2>
-                    <a href="/">{{ 'header.logo.date'|trans }}</a>
+                    {{ render(controller('FDCEventBundle:Header:date')) }}
                 </h2>
                 <p class="stick">
                     <a href="/">
@@ -132,50 +132,91 @@
             <nav>
                 <ul class="main">
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}" class="active"> {{ 'header.mainnav.nav.lactualite'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.lactualite'|trans }}
+                        </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}" class="active"> {{ 'header.mainnav.nav.jourapresjour'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.jourapresjour'|trans }}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.articles'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.articles'|trans }}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.photos'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.photos'|trans }}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.videos'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.videos'|trans }}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.audios'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.audios'|trans }}
+                                </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="webtv.php"> {{ 'header.mainnav.nav.webtv'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.webtv'|trans }} </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.direct'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.direct'|trans }}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.chaines'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.chaines'|trans }}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.bandesannonces'|trans }} </a>
+                                <a href="{{ path('fdc_event_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.bandesannonces'|trans }}
+                                </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.laselection'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.laselection'|trans }}
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.lesjurys'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.lesjurys'|trans }}
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.lepalmares'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.lepalmares'|trans }}
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.lesevenements'|trans }} </a>
+                        <a href="{{ path('fdc_event_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.lesevenements'|trans }}
+                        </a>
                     </li>
                 </ul>
                 <ul class="user">
