@@ -192,7 +192,7 @@
 
     &.center {
       .img-container {
-        z-index: 1;
+        z-index: 3;
       }
 
       .img {
@@ -204,6 +204,8 @@
       }
 
       .info {
+        z-index: 4;
+        
         .category {
           @include transition(all 0.8s $smoothTransition 0.7s);
           -moz-transition: opacity 0.8s $smoothTransition 0.7s, visibility 0.8s $smoothTransition 0.7s;
@@ -542,6 +544,11 @@
 
         &:last-child {
           width: 65px;
+
+          @include breakpoint(1024px) {
+            width: 45px;
+            text-align: right;
+          }
         }
 
         &.active {
