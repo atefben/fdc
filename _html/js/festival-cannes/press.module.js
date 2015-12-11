@@ -214,12 +214,23 @@ $(document).ready(function() {
             viewRender: function(view){
               // limit the min date and max date of the calendar, and change the programmation calendar date
               var moment = $('#mycalendar').fullCalendar('getDate');
+
+              $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
               if (moment.format('DD') > maxDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
               }
               if (moment.format('DD') < minDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
               }
+
+              if(moment.format('DD') == maxDate) {
+                $('#mycalendar .fc-right').addClass('hide');
+              }
+              if(moment.format('DD') == minDate) {
+                $('#mycalendar .fc-left').addClass('hide');
+              }
+
               var m = $('#mycalendar').fullCalendar('getDate');
               $('#timeline a').each(function() {
                 var d = $(this).data('date');
@@ -508,6 +519,7 @@ $(document).ready(function() {
                 if(-p > max) {
                   p = -max;
                   $('.v-wrapper').addClass('max');
+                  $(this).addClass('hide');
                 } else {
                   $('.v-wrapper').removeClass('max');
                 }

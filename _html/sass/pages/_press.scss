@@ -298,6 +298,12 @@
 
         .fc-left, .fc-right {
           height: 100%;
+          @include transition(all 0.3s $smoothTransition);
+        }
+
+        .hide {
+          opacity: 0;
+          visibility: hidden;
         }
 
         button {
@@ -741,6 +747,11 @@
               background: #e5e5e5 url('../img/svg/arrow-right-black.svg') no-repeat center;
               background-size: 12px;
               right: 0;
+            }
+
+            &.hide {
+              opacity: 0;
+              visibility: hidden;
             }
           }
 
