@@ -158,7 +158,16 @@ $(document).ready(function() {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
           viewRender: function(view){
-            
+            var moment = $('#mycalendar').fullCalendar('getDate');
+
+            $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
+            if(moment.format('DD') > 17) {
+              $('#mycalendar .fc-right').addClass('hide');
+            }
+            if(moment.format('DD') < 17) {
+              $('#mycalendar .fc-left').addClass('hide');
+            }
           }
         });
       } else {
@@ -173,6 +182,10 @@ $(document).ready(function() {
           $.cookie('drag', '1', { expires: 365 });
         });
 
+        $(window).resize(function() {
+          $('#calendar-wrapper').css('left', $('#calendar').offset().left);
+        });
+
         // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
             lang: GLOBALS.locale , // TODO a verifier
@@ -182,7 +195,7 @@ $(document).ready(function() {
               center: 'title',
               right: 'next'
             },
-            
+            titleFormat: 'dddd DD MMMM',
             defaultView: 'agendaDay',
             minTime: "08:00:00",
             maxTime: "19:00:00",
@@ -217,13 +230,25 @@ $(document).ready(function() {
             viewRender: function(view){
               // limit the min date and max date of the calendar, and change the programmation calendar date
               var moment = $('#mycalendar').fullCalendar('getDate');
+
+              $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
               if (moment.format('DD') > maxDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
               }
               if (moment.format('DD') < minDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
               }
+
+              if(moment.format('DD') == maxDate) {
+                $('#mycalendar .fc-right').addClass('hide');
+              }
+              if(moment.format('DD') == minDate) {
+                $('#mycalendar .fc-left').addClass('hide');
+              }
+
               var m = $('#mycalendar').fullCalendar('getDate');
+              $('#dateProgram').text(m.format('DD MMMM YYYY'));
               $('#timeline a').each(function() {
                 var d = $(this).data('date');
                 if(d == m.format()) {
@@ -475,15 +500,21 @@ $(document).ready(function() {
               });
 
               var date = $.fullCalendar.moment($(this).data('date'));
+
+              $('#dateProgram').text(date.format('DD MMMM YYYY'));
+
               $('#mycalendar').fullCalendar('gotoDate', date);
               
             });
 
             var ct = 0;
 
+            $('#calendar-programmation .nav.prev').addClass('hide');
+
             // slider calendar programmation
             $('#calendar-programmation .nav').on('click', function(e) {
               e.preventDefault();
+              $('#calendar-programmation .nav').removeClass('hide');
 
               if($(this).hasClass('prev')) {
                 $('.v-wrapper').removeClass('max');
@@ -500,6 +531,10 @@ $(document).ready(function() {
                   });
                   ct--;
                 }
+
+                if($v.prev().prev().length == 0) {
+                  $(this).addClass('hide');
+                }
               } else {
                 var $v = $('.venue').eq(ct);
                 var p = - ($v.width() * (ct+1));
@@ -511,6 +546,7 @@ $(document).ready(function() {
                 if(-p > max) {
                   p = -max;
                   $('.v-wrapper').addClass('max');
+                  $(this).addClass('hide');
                 } else {
                   $('.v-wrapper').removeClass('max');
                 }

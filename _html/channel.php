@@ -13,6 +13,25 @@
         <a href="#" class="back">Retour aux chaînes</a>
       </div>
       <h2 class="title">Conférences de presse</h2>
+<!--      TODO TICKET-->
+     <div class="small-container">
+        <div class="player"> 
+          <img src="img/webtv/playervideo.jpg" alt="">
+        </div>
+        <div class="infos-videos">
+         <div class="infos">
+            <strong>Conférence de presse</strong>
+            <span class="time">18.05.2015  . 19h00</span>
+            <p>Interview des réalisateurs des Courts Métrages en Compétition</p>
+         </div>
+  <div class="buttons square">
+              <a href="#" class="button facebook"></a>
+              <a href="#" class="button twitter"></a>
+              <a href="#" class="button link"></a>
+              <a href="#" class="button email"></a>
+            </div>
+       </div>
+     </div>
       <div id="content-channels">
         <div id="slider-channels" class="owl-carousel sliderDrag">
           <div class="channel shadow-bottom">

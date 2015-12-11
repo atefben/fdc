@@ -25,6 +25,26 @@ $(document).ready(function() {
      if($('header').hasClass('sticky')) {
       $('.webtv #live .img').css('top', '-10%');
      }
+
+      // create slide for trailers
+  var sliderTrailers = $("#slider-trailers").owlCarousel({ 
+      nav: false,
+      dots: false,
+      smartSpeed: 500,
+      fluidSpeed: 500,
+      center: true,
+      loop: false,
+      margin: 50,
+      autoWidth: true,
+      dragEndSpeed: 600,
+      onInitialized: function() {
+        $('#slider-trailers .owl-stage').css({ 'margin-left': "-172px" });
+      }
+    });
+     sliderTrailers.owlCarousel();
+    $('body').on('click', '#slider-trailers .owl-item', function(e) {
+      sliderTrailers.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+    });
     }
 
    // create slide for trailers

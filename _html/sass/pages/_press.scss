@@ -181,6 +181,7 @@
         position: fixed;
         top: 91px;
         z-index: 4;
+        width: 310px;
       }
 
       &.bottom {
@@ -272,6 +273,17 @@
       background-color: #242424;
       height: 510px;
 
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: rgba(102, 102, 102, 0.44);
+      }
+      ::-webkit-scrollbar-thumb {
+        height: 10px;
+        background-color: #c8a461;
+      }
+
       .fc-highlight-skeleton {
         display: none;
       }
@@ -298,6 +310,12 @@
 
         .fc-left, .fc-right {
           height: 100%;
+          @include transition(all 0.3s $smoothTransition);
+        }
+
+        .hide {
+          opacity: 0;
+          visibility: hidden;
         }
 
         button {
@@ -471,16 +489,24 @@
           opacity: 0;
           visibility: hidden;
           position: relative;
-          @include transition(all 0.6s $smoothTransition);
+          text-align: left;
+          @include transition(background-color 0.6s $smoothTransition, color 0.6s $smoothTransition);
 
           &:hover {
-            color: $gold;
+            background: $gold url('../img/svg/telecharger-white.svg') no-repeat 5% center;
+            background-size: 13px;
+            color: #fff;
           }
 
           &.show {
             opacity: 1;
             visibility: visible;
           }
+        }
+
+        &.subnav, &.list {
+          background: #fff url('../img/svg/telecharger-gold.svg') no-repeat 5% center;
+          background-size: 13px;
         }
 
         &.subnav:hover {
@@ -742,6 +768,11 @@
               background-size: 12px;
               right: 0;
             }
+
+            &.hide {
+              opacity: 0;
+              visibility: hidden;
+            }
           }
 
           .v-wrapper {
@@ -903,6 +934,10 @@
         overflow: hidden;
         padding: 10px 0;
 
+        @include breakpoint(1279px) {
+          padding: 10px 20px;
+        }
+
         .info {
           float: left;
 
@@ -959,6 +994,12 @@
           &.photo {
             background: url('../img/svg/photo-grey.svg') no-repeat left 47%;
             background-size: 18px;
+          }
+
+          @include breakpoint(1279px) {
+            span {
+              display: none;
+            }
           }
         }
 
@@ -1654,7 +1695,7 @@
 
     .date {
       color: #ababab;
-      font-family: $CamphorHeavy;
+      font-family: $CamphorBold;
       font-size: 0.750rem;
       text-transform: uppercase;
 
