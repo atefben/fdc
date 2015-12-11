@@ -3850,6 +3850,11 @@ header #navigation ul.user .participate-wrapper ul li a {
   font-size: 0.688rem;
 }
 
+@media screen and (max-width: 1024px) {
+  .mob header #navigation ul.main {
+    font-size: 0.800rem;
+  }
+}
 footer * {
   box-sizing: border-box;
 }
