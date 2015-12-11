@@ -62,6 +62,15 @@ twig:
         locales_admin: "%locales_admin%"
         locales: "%locales%"
         locale_default_translation: "%locale_default_translation%"
+        social_appli: "%social_appli%"
+        social_facebook: "%social_facebook%"
+        social_twitter: "%social_twitter%"
+        social_instagram: "%social_instagram%"
+        social_tumblr: "%social_tumblr%"
+        social_rss: "%social_rss%"
+        social_youtube: "%social_youtube%"
+        social_dailymotion: "%social_dailymotion%"
+        social_podcast: "%social_podcast%"
 
 
 # Assetic Configuration
