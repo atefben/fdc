@@ -1,3 +1,9 @@
+lang:
+    en: English
+    fr: French
+    es: Espanol
+    zh: Chinese
+
 entity:
     news_article: Articles
     news_video: Videos
@@ -24,6 +30,7 @@ entity:
     film_person: Persons
     film_atelier: Films Atelier
     country: Countries
+    contact_theme: Contact Themes
 
 dashboard:
     group:
@@ -35,7 +42,7 @@ dashboard:
         info: Infos
     link:
         settings: Parameters
-        bo_translation: Admin translation
+        bo_translation: Translations
         homepage: Homepage
 
 form:

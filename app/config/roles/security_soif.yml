@@ -1,0 +1,7 @@
+security:
+    role_hierarchy:
+        ROLE_SOIF:
+            - ROLE_BASE_ADMIN_FILM_FILM_ADMIN
+            - ROLE_BASE_ADMIN_FILM_PERSON_ADMIN
+            - ROLE_BASE_ADMIN_FILM_ATELIER_ADMIN
+            - ROLE_BASE_ADMIN_COUNTRY_ADMIN

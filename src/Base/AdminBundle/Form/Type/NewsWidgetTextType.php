@@ -2,9 +2,8 @@
 
 namespace Base\AdminBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * NewsWidgetTextType class.
@@ -37,11 +36,17 @@ class NewsWidgetTextType extends NewsWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('translations', 'a2lix_translations', array(
-            'label' => false,
             'translation_domain' => 'BaseAdminBundle',
-            'required_locales' => array(),
+            'required_locales' => array('fr'),
             'fields' => array(
                 'content' => array(
+                    'label' => false,
+                    'attr' => array(
+                        'class' => 'ckeditor'
+                    ),
+                    'constraints' => array(
+                        new NotBlank()
+                    ),
                     'field_type' => 'ckeditor'
                 ),
                 'createdAt' => array(

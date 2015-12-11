@@ -12,9 +12,9 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 /**
  * FDCEventLaunchCommand class.
  *
- * @extends ContainerAwareCommand
+ * \@extends ContainerAwareCommand
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * @company Ohwee
+ * \@company Ohwee
  */
 class FDCEventLaunchCommand extends ContainerAwareCommand
 {

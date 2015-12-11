@@ -7,39 +7,90 @@
         'data-form-widget': 'collection',
     }) %}
     {% if disabled %}
-    {% set attr = attr|merge({
-        'data-disabled': 1
-    }) %}
+        {% set attr = attr|merge({
+            'data-disabled': 1
+        }) %}
     {% endif %}
-
     {{ block('form_widget') }}
-    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.text'|trans }}</a>
-    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.audio'|trans }}</a>
-    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.photo'|trans }}</a>
-    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_row(form.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.video'|trans }}</a>
 {% endspaceless %}
 {% endblock %}
 
-{% block news_widget_text_type_row %}
-    <div class="base-widget">
-        {{ form_row(form) }}
+{# set the default locale to locale_default_translation to handle the language used when adding new text widget #}
+{# render only the content block and the other values #}
+{% block news_widget_text_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4><strong>{{ 'news.widget.text'|trans }}</strong></h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale).children.content) }}
+        <a class="btn btn-danger btn-sm btn-outline remove_item">
+            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+        </a>
     </div>
 {% endblock %}
 
-{% block news_widget_audio_type_row %}
-    <div class="base-widget">
-        {{ form_row(form) }}
+{# set the default locale to locale_default_translation to handle the language used when adding new text widget #}
+{# render only the content block and the other values #}
+{% block news_widget_quote_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'news.widget.quote'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale).children.content) }}
+        <a class="btn btn-danger btn-sm btn-outline remove_item">
+            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+        </a>
     </div>
 {% endblock %}
 
-{% block news_widget_image_type_row %}
-    <div class="base-widget">
-        {{ form_row(form) }}
+{% block news_widget_audio_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'news.widget.audio'|trans }}</h4>
+        {{ form_widget(form) }}
+        <a class="btn btn-danger btn-sm btn-outline remove_item">
+            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+        </a>
     </div>
 {% endblock %}
 
-{% block news_widget_video_type_row %}
-    <div class="base-widget">
-        {{ form_row(form) }}
+{% block news_widget_image_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'news.widget.image'|trans }}</h4>
+        {{ form_widget(form) }}
+    </div>
+{% endblock %}
+
+{% block news_widget_image_dual_align_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'news.widget.image_dual_align'|trans }}</h4>
+        {{ form_widget(form) }}
+        <a class="btn btn-danger btn-sm btn-outline remove_item">
+            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+        </a>
+    </div>
+{% endblock %}
+
+{% block news_widget_video_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'news.widget.video'|trans }}</h4>
+        {{ form_widget(form) }}
+        <a class="btn btn-danger btn-sm btn-outline remove_item">
+            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+        </a>
+    </div>
+{% endblock %}
+
+{% block news_widget_video_youtube_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'news.widget.video_youtube'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <a class="btn btn-danger btn-sm btn-outline remove_item">
+            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+        </a>
     </div>
 {% endblock %}

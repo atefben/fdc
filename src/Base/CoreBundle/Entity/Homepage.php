@@ -44,7 +44,6 @@ class Homepage
      */
     private $sliderInfos;
 
-
     /**
      * @var Info
      *

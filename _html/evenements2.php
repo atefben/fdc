@@ -2,21 +2,7 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
-
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -51,7 +37,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a></div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -78,7 +64,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -87,7 +73,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a><a href="evenement2.php"> </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -96,7 +82,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -105,7 +91,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -114,7 +100,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -123,7 +109,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -132,7 +118,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -141,7 +127,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -150,7 +136,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -159,7 +145,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -168,7 +154,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -177,7 +163,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>
@@ -186,7 +172,7 @@
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a>  </div>
             <div class="info">
               <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-              <h2><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
+              <h3><a href="evenement2.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
             </div>
           </article>
         </div>

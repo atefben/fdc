@@ -5,7 +5,7 @@ sonata_admin:
         information:
             WRITER:    [VIEW, LIST, CREATE, EDIT]
             EDITOR: [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE]
-            TRANSLATOR: [VIEW, EDIT, EXPORT]
+            TRANSLATOR: [VIEW, LIST, EDIT, EXPORT]
             ADMIN:    [MASTER]
         # permissions not related to an object instance and also to be available when objects do not exist
         # the DELETE admin permission means the user is allowed to batch delete objects
@@ -52,6 +52,25 @@ sonata_admin:
             sonata_media:
                 items: ~
                 label_catalogue: SonataMediaBundle
+
+    assets:
+        javascripts:
+
+            # Defaults:
+            - bundles/sonataadmin/vendor/jquery/dist/jquery.min.js
+            - bundles/sonataadmin/vendor/jquery.scrollTo/jquery.scrollTo.min.js
+            - bundles/sonatacore/vendor/moment/min/moment.min.js
+            - bundles/sonataadmin/vendor/bootstrap/dist/js/bootstrap.min.js
+            - bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js
+            - bundles/sonataadmin/vendor/jqueryui/ui/minified/jquery-ui.min.js
+            - bundles/sonataadmin/vendor/jqueryui/ui/minified/i18n/jquery-ui-i18n.min.js
+            - bundles/sonataadmin/jquery/jquery.form.js
+            - bundles/sonataadmin/jquery/jquery.confirmExit.js
+            - bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js
+            - bundles/sonataadmin/vendor/select2/select2.min.js
+            - bundles/sonataadmin/App.js
+            - bundles/sonataadmin/Admin.js
+            - bundles/baseadmin/js/admin.js
 
     templates:
         short_object_description:  'ApplicationSonataAdminBundle:Helper:short-object-description.html.twig'

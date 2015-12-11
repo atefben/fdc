@@ -2,23 +2,10 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
+    <?php include('head.html'); ?>
+    <style type="text/css">
 
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  <style type="text/css">
-        
-  </style>
+    </style>
   </head>
 
   <body>
@@ -42,7 +29,100 @@
             <a href="#" class="button link"></a>
             <a href="#" class="button email"></a>
           </div>
-          <div class="channels-video" class="">
+        </div>
+        <div class="channels-video">
+          <div class="slider-channels-video owl-carousel sliderDrag">
+            <div class="channel video shadow-bottom" data-sound="img/article/sound2.mp3">
+              <div class="image-wrapper">
+                <!-- <img src="//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg" alt="" width="293" height="185"> -->
+                <img src="img/slider-channels/01.jpg" alt="" width="293" height="185">
+              </div>
+              <a class="linkVid" href="#"></a>
+              <div class="info">
+                <div class="picto"></div>
+                <div class="info-container">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Photocall</a>
+                      <span></span>
+                      <p>Sils Maria</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="channel video shadow-bottom">
+              <div class="image-wrapper">
+                <img src="img/slider-channels/02.jpg" alt="" />
+              </div>
+              <a class="linkVid" href="#"></a>
+              <div class="info">
+                <div class="picto"></div>
+                <div class="info-container">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Montée des marches</a>
+                      <span></span>
+                      <p>Interviews des réalisateurs</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="channel video shadow-bottom">
+              <div class="image-wrapper">
+                <img src="img/slider-channels/03.jpg" alt="" />
+              </div>
+              <a class="linkVid" href="#"></a>
+              <div class="info">
+                <div class="picto"></div>
+                <div class="info-container">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Conférence de presse</a>
+                      <span></span>
+                      <p>Sils Maria</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="channel video shadow-bottom">
+              <div class="image-wrapper">
+                <img src="img/slider-channels/01.jpg" alt="" />
+              </div>
+              <a class="linkVid" href="#"></a>
+              <div class="info">
+                <div class="picto"></div>
+                <div class="info-container">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Photocall</a>
+                      <span></span>
+                      <p>Sils Maria</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="channel video shadow-bottom">
+              <div class="image-wrapper">
+                <img src="img/slider-channels/02.jpg" alt="" />
+              </div>
+              <a class="linkVid" href="#"></a>
+              <div class="info">
+                <div class="picto"></div>
+                <div class="info-container">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Montée des marches</a>
+                      <span></span>
+                      <p>Sils Maria</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="video-overlay"></div>

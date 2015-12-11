@@ -58,7 +58,7 @@ $(document).ready(function() {
       if(!is_email_name){
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') +" renseignée"+ '</li>');
+        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.empty + '</li>');
 
       }else if(is_email){
         input.removeClass("invalid").addClass("valid");
@@ -68,8 +68,8 @@ $(document).ready(function() {
       else{
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') +" valide"+'</li>');
-
+        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.error +'</li>');
+// TODO remove string //
       }
 
       if($('.invalid').length) {

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,6 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(
+ *     fields={"email", "site"},
+ *     message="error.newsletter.duplicate_email"
+ * )
  */
 class Newsletter
 {
@@ -42,6 +47,14 @@ class Newsletter
      * @ORM\Column(name="enabled", type="boolean", options={"default"=1})
      */
     protected $enabled;
+
+    /**
+     * @var Site
+     *
+     * @ORM\ManyToOne(targetEntity="Site")
+     * @Assert\NotNull()
+     */
+    protected $site;
 
     /**
      * Get id

@@ -42,6 +42,68 @@ $(document).ready(function() {
     }, 500);
   });
 
+  var count = 0;
+
+  $('#timeline .arrow').on('click', function(e) {
+    e.preventDefault();
+
+    $('#timeline .arrow').removeClass('hide');
+    
+
+    if($(this).hasClass('left')) {
+      if(count < $('#timeline a.active').index()) {
+        $('#timeline a.active').addClass('hideB');
+      } else {
+        $('#timeline a.active').removeClass('hideB');
+      }
+      $('#timeline').removeClass('max');
+
+      var $v = $('#timeline a').eq(count);
+      if($v.prev().length) {
+        var p = - (($v.width() + 1) * (count-1));
+        $('.timeline-container').css({
+          '-webkit-transform': 'translateX(' + p+ 'px)',
+          '-moz-transform': 'translateX(' + p+ 'px)',
+          '-o-transform': 'translateX(' + p+ 'px)',
+          '-ms-transform': 'translateX(' + p+ 'px)',
+          'transform': 'translateX(' + p+ 'px)'
+        });
+        count--;
+      }
+
+      if($v.prev().prev().length == 0) {
+        $(this).addClass('hide');
+      }
+    } else {
+      var $v = $('#timeline a').eq(count);
+      var p = - (($v.width() + 1) * (count+1));
+      var max = 263;
+      if(count >= $('#timeline a.active').index()) {
+        $('#timeline a.active').addClass('hideB');
+      } else {
+        $('#timeline a.active').removeClass('hideB');
+      }
+      if(!$('#timeline').hasClass('max')) {
+        count++;
+      }
+
+      if(-p > max) {
+        p = -max;
+        $('#timeline').addClass('max');
+        $(this).addClass('hide');
+      } else {
+        $('#timeline').removeClass('max');
+      }
+      $('.timeline-container').css({
+        '-webkit-transform': 'translateX(' + p+ 'px)',
+        '-moz-transform': 'translateX(' + p+ 'px)',
+        '-o-transform': 'translateX(' + p+ 'px)',
+        '-ms-transform': 'translateX(' + p+ 'px)',
+        'transform': 'translateX(' + p+ 'px)'
+      });
+    }
+  });
+
   function openPopinEvent(url) {
     $.ajax({
       type: "GET",
@@ -85,7 +147,7 @@ $(document).ready(function() {
             for(var i=0; i<events.length; i++) {
               if(id == events[i].id) {
                 $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete); 
               }
             }
           });
@@ -127,17 +189,20 @@ $(document).ready(function() {
 
       // full width calendar (page 'my calendar')
       if($('#calendar').hasClass('fullwidth')) {
+        
         $('#mycalendar').fullCalendar({
           lang: 'fr',
-          defaultDate: '2016-05-12',
+          defaultDate: '2016-05-12', // TODO A REVOIR //
           header: {
             left: 'prev',
             center: 'title',
             right: 'next'
           },
+          
           firstDay: 3,
           defaultView: 'agendaWeek',
           minTime: "08:00:00",
+          maxTime: "28:00:00",
           allDaySlot: false,
           events: events,
           slotEventOverlap:false,
@@ -156,7 +221,16 @@ $(document).ready(function() {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
           viewRender: function(view){
-            
+            var moment = $('#mycalendar').fullCalendar('getDate');
+
+            $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
+            if(moment.format('DD') > 17) {
+              $('#mycalendar .fc-right').addClass('hide');
+            }
+            if(moment.format('DD') < 17) {
+              $('#mycalendar .fc-left').addClass('hide');
+            }
           }
         });
       } else {
@@ -171,18 +245,23 @@ $(document).ready(function() {
           $.cookie('drag', '1', { expires: 365 });
         });
 
+        $(window).resize(function() {
+          $('#calendar-wrapper').css('left', $('#calendar').offset().left);
+        });
+
         // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
-            lang: 'fr',
-            defaultDate: '2016-05-12',
+            lang: GLOBALS.locale , // TODO a verifier
+            defaultDate: GLOBALS.defaultDate, // TODO a supprimer
             header: {
               left: 'prev',
               center: 'title',
               right: 'next'
             },
+            titleFormat: 'dddd DD MMMM',
             defaultView: 'agendaDay',
             minTime: "08:00:00",
-            maxTime: "19:00:00",
+            maxTime: "28:00:00",
             allDaySlot: false,
             droppable: true,
             selectOverlap: false,
@@ -214,13 +293,25 @@ $(document).ready(function() {
             viewRender: function(view){
               // limit the min date and max date of the calendar, and change the programmation calendar date
               var moment = $('#mycalendar').fullCalendar('getDate');
+
+              $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
               if (moment.format('DD') > maxDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
               }
               if (moment.format('DD') < minDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
               }
+
+              if(moment.format('DD') == maxDate) {
+                $('#mycalendar .fc-right').addClass('hide');
+              }
+              if(moment.format('DD') == minDate) {
+                $('#mycalendar .fc-left').addClass('hide');
+              }
+
               var m = $('#mycalendar').fullCalendar('getDate');
+              $('#dateProgram').text(m.format('DD MMMM YYYY'));
               $('#timeline a').each(function() {
                 var d = $(this).data('date');
                 if(d == m.format()) {
@@ -272,7 +363,7 @@ $(document).ready(function() {
                   for(var i=0; i<events.length; i++) {
                     if(id == events[i].id) {
                       $this.parent().addClass('delete');
-                      $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+                      $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
                     }
                   }
                 });
@@ -369,7 +460,7 @@ $(document).ready(function() {
               }
 
               $(this).parent().addClass('delete');
-              $(this).removeClass('add').text('Supprimer de votre agenda');
+              $(this).removeClass('add').text(GLOBALS.texts.agenda.delete);
             });
 
             // close popin
@@ -463,7 +554,7 @@ $(document).ready(function() {
                 type: "GET",
                 dataType: "html",
                 cache: false,
-                url: 'calendarprogrammation.html',
+                url: GLOBALS.urls.calendarProgrammationUrl,
                 success: function(data) {
                   $('.v-wrapper').html(data);
 
@@ -472,15 +563,21 @@ $(document).ready(function() {
               });
 
               var date = $.fullCalendar.moment($(this).data('date'));
+
+              $('#dateProgram').text(date.format('DD MMMM YYYY'));
+
               $('#mycalendar').fullCalendar('gotoDate', date);
               
             });
 
             var ct = 0;
 
+            $('#calendar-programmation .nav.prev').addClass('hide');
+
             // slider calendar programmation
             $('#calendar-programmation .nav').on('click', function(e) {
               e.preventDefault();
+              $('#calendar-programmation .nav').removeClass('hide');
 
               if($(this).hasClass('prev')) {
                 $('.v-wrapper').removeClass('max');
@@ -497,6 +594,10 @@ $(document).ready(function() {
                   });
                   ct--;
                 }
+
+                if($v.prev().prev().length == 0) {
+                  $(this).addClass('hide');
+                }
               } else {
                 var $v = $('.venue').eq(ct);
                 var p = - ($v.width() * (ct+1));
@@ -508,6 +609,7 @@ $(document).ready(function() {
                 if(-p > max) {
                   p = -max;
                   $('.v-wrapper').addClass('max');
+                  $(this).addClass('hide');
                 } else {
                   $('.v-wrapper').removeClass('max');
                 }
@@ -556,7 +658,7 @@ $(document).ready(function() {
         for(var i=0; i<events.length; i++) {
           if(id == events[i].id) {
             $this.parent().addClass('delete');
-            $this.parent().find('.button').removeClass('add').text('Supprimer de votre agenda');
+            $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
           }
         }
       });
@@ -588,14 +690,14 @@ $(document).ready(function() {
 
       $grid.isotope('layout');
     });
-    $('.read-more').on('click', function (e) {
+    $('.press .read-more').on('click', function (e) {
       e.preventDefault();
 	     $(this).hide();
       $.ajax({
         type: "GET",
         dataType: "html",
         cache: false,
-        url: 'load-communique.php' /* TODO DEV : context URL */,
+        url: GLOBALS.urls.loadPressRelease,
         success: function (data) {
           var $data = $(data).find('.gridelement');
           var $container = $('#gridAudios'),
@@ -617,18 +719,17 @@ $(document).ready(function() {
         $('.buttons:not(".active-btn")').on('click',function () {
           if ($('#popin-press').hasClass('visible-popin')) {
             $('#popin-press').removeClass('visible-popin');
-            $('#main').prepend('<div class="overlay-div"></div>');
+
             $("#main").removeClass('overlay-popin');
             $('footer').removeClass('overlay');
           } else {
-            $('.overlay-div').remove();
             $('#popin-press').addClass("visible-popin");
             $("#main").addClass('overlay-popin');
           }
+           return false;
         });
 
         $(document).keyup(function (e) {
-          //        if (e.keyCode == 13) $('.save').click();
           if (e.keyCode == 27) {
             $('#popin-press').removeClass('visible-popin');
             $("#main").removeClass('overlay-popin');
@@ -637,13 +738,26 @@ $(document).ready(function() {
           }
         });
       }
-  //
-  //    $(document).on('click', ':not(.visible-popin)', function (e) {
-  //      console.log(e);
-  //      $('#popin-press').removeClass('visible-popin');
-  //      $("#main").removeClass('overlay-popin');
-  //      $('footer').removeClass('overlay');
-  //    });
+
+      $(document).on('click', function (e) {
+
+        var $element= $(e.target);
+        if($element.hasClass('visible-popin')){
+   
+        }else{
+          var $isPopin = $element.closest('.visible-popin');
+          var isButton = $element.hasClass('buttons');
+         
+          if($isPopin.length || isButton){
+           
+          }else{
+              $('#popin-press').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+
+          }
+        }
+      });
 
     }
 
@@ -655,14 +769,17 @@ $(document).ready(function() {
           $('.buttons.active-btn').on('click',function () {
             if ($('#popin-download-press').hasClass('visible-popin')) {
               $('#popin-download-press').removeClass('visible-popin');
-              $('#main').prepend('<div class="overlay-div"></div>');
+
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
             } else {
-              $('.overlay-div').remove();
+
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
+              
             }
+            return false;
+          
           });
 
           $(document).keyup(function (e) {
@@ -674,23 +791,45 @@ $(document).ready(function() {
               $('.overlay-div').remove();
             }
           });
-        }
 
+          $(document).on('click', function (e) {
+
+            var $element= $(e.target);
+            if($element.hasClass('visible-popin')){
+
+          }else{
+            var $isPopin = $element.closest('.visible-popin');
+            var isButton = $element.hasClass('buttons');
+
+          if($isPopin.length || isButton){
+
+          }else{
+            $('#popin-download-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          }
+          }
+          }); 
+        }
     }
+    
     //FOR ALL PRESS PAGE//
-        if (!$('.press.lock').length) {
-        if ($('#popin-download-press').length) {
+    if (!$('.lock').length) {
+      if ($('#popin-download-press').length) {
           $('.buttons').on('click',function () {
             if ($('#popin-download-press').hasClass('visible-popin')) {
               $('#popin-download-press').removeClass('visible-popin');
-              $('#main').prepend('<div class="overlay-div"></div>');
+
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
             } else {
-              $('.overlay-div').remove();
+
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
+              
             }
+            return false;
+          
           });
 
           $(document).keyup(function (e) {
@@ -702,11 +841,69 @@ $(document).ready(function() {
               $('.overlay-div').remove();
             }
           });
-        }
+
+          $(document).on('click', function (e) {
+
+            var $element= $(e.target);
+            if($element.hasClass('visible-popin')){
+
+          }else{
+            var $isPopin = $element.closest('.visible-popin');
+            var isButton = $element.hasClass('buttons');
+
+          if($isPopin.length || isButton){
+
+          }else{
+            $('#popin-download-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          }
+          }
+          }); 
+
+      }
     }
 
   }
   
+  // POPIN CALENDAR CREAT EVENT // 
+
+  if($('#create-event-pop').length){
+        $('.create').on('click',function () {
+            if ($('#create-event-pop').hasClass('visible-popin')) {
+              $('#create-event-pop').removeClass('visible-popin');
+//              $("#main").removeClass('overlay-popin');
+//              $('footer').removeClass('overlay');
+            } else {
+              $('#create-event-pop').addClass("visible-popin");
+//              $("#main").addClass('overlay-popin');
+            }
+          });
+
+          $(document).keyup(function (e) {
+            //        if (e.keyCode == 13) $('.save').click();
+            if (e.keyCode == 27) {
+              $('#create-event-pop').removeClass('visible-popin');
+//              $("#main").removeClass('overlay-popin');
+//              $('footer').removeClass('overlay');
+            }
+          });
+           $('.btn-close').on('click',function (){
+             $('#create-event-pop').removeClass('visible-popin');
+           });
+  }
+  
+  // POPIN Show event //
+  
+  if($('.fullcalendar').length){
+    $('.fc-event-container').on('click', function(e) {
+      var url = $(this).attr('src');
+      console.log(e);
+      // load the url of the event via ajax
+      openPopinEvent(url);
+
+    });
+  }
   // Navigation tab press page (accreditation)
   
   if($('#accreditation').length){
@@ -740,7 +937,7 @@ $(document).ready(function() {
       if($('.press-media').length){
         menuMedia();
         initSlideshows();
-        if($('.connected').length){
+        if($('.connected').length){ //TODO add class .connected for change picto lock if connected // 
           var imgs = $('.connected').find('img[src="img/svg/cadenas.svg"]');
           console.log(imgs);
           imgs.attr('src','img/press/svg/telecharger.svg');
@@ -752,21 +949,25 @@ $(document).ready(function() {
         svgImg();
       }
   
+  if($('.downloading-press').length){
+    initSlideshows();
+      svgImg();
+  }
+  
   //mediatheque AJAX
       function ajaxEvent(){
       $('.press-media .nav-mediapress td').on('click',function(e){
         e.preventDefault();
         if($(this).is(':not(.active)')) {
           var urlPath = $(this).data('cat');
-          urlPath += ".php";
           $.get(urlPath, function(data){
             $( ".nav-container" ).html( $(data).find('.nav-container') );
-            history.pushState('',"titre test", urlPath);
+            history.pushState('',GLOBALS.texts.url.title, urlPath);
             ajaxEvent();
             menuMedia();
             svgImg();
             initSlideshows();
-            popinInit()
+            popinInit();
           });
           $('.press-media .nav-mediapress').find('td.active').removeClass('active');
           $(this).addClass('active');
@@ -839,12 +1040,12 @@ $(document).ready(function() {
       $(window).on('scroll', function() {
         
         var s            = $(window).scrollTop(),
-            h            = $("#main").height()-300,
-            affiche      = $('#affiche-officielle').offset().top-300,
-            signature    = $('#signature').offset().top-300,
-            animation    = $('#animation').offset().top-300,
-            photosInst   = $('#photos-institutionnelles').offset().top-300,
-            dossierPress = $('#dossier-presse').offset().top-300;
+            h            = $("#main").height()-180,
+            affiche      = $('#affiche-officielle').offset().top-180,
+            signature    = $('#signature').offset().top-180,
+            animation    = $('#animation').offset().top-180,
+            photosInst   = $('#photos-institutionnelles').offset().top-180,
+            dossierPress = $('#dossier-presse').offset().top-180;
           
         if(s > 180 ){
           $('.downloading-nav').addClass('sticky');
@@ -875,13 +1076,27 @@ $(document).ready(function() {
         
       });
     
+    
     $('a[href^="#"]').click(function(){
+      
+      var is_sticky = $('.press').hasClass('sticky');
       var the_id = $(this).attr("href");
+      
+      if(!is_sticky){
 
-      $('html, body').animate({
-        scrollTop:$(the_id).offset().top-300
-      }, 'slow');
-      return false;
+        $('html, body').animate({
+          scrollTop:$(the_id).offset().top-300
+        }, 'slow');
+        return false;
+        
+      }else{
+
+        $('html, body').animate({
+          scrollTop:$(the_id).offset().top-130
+        }, 'slow');
+        return false;
+        
+      }
     });
   
   }

@@ -52,40 +52,4 @@ class DashboardController extends Controller
         
          return $this->redirect($this->generateUrl('sonata_admin_dashboard'));
     }
-
-    /**
-     * localeSwitcherAction function.
-     *
-     * We save in _locale session the selected value and use LocaleListener to retrieve this value and swith the request locale
-     * 
-     * @access public
-     * @param Request $request
-     * @return void
-     *
-     * @Secure(roles="ROLE_ADMIN")
-     * @Route("/locale_switcher")
-     * @Template("BaseAdminBundle:Dashboard:locale_switcher.html.twig")
-     */
-    public function localeSwitcherAction(Request $request)
-    {
-        $localesAdmin = $this->getParameter('locales_admin');
-        $localesArray = array();
-        foreach ($localesAdmin as $locale) {
-            $localesArray[$locale] = $locale;
-        }
-        
-        $form = $this->createForm(new LocaleSwitcherType($localesArray, $request->getLocale()));
-        
-        if ($request->getMethod() == 'POST') {
-            $form->bind($request);
-            $this->get('session')->set('_locale', $form->get('locales')->getData());
-            $redirect = ($request->headers->get('referer') != '') ? $request->headers->get('referer') : $this->generateUrl('sonata_admin_dashboard');
-
-            return $this->redirect($redirect);
-        }
-        
-        return array(
-            'form' => $form->createView()
-        );
-    }
 }

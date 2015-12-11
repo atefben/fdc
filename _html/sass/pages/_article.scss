@@ -93,6 +93,20 @@ article {
       color: #333;
     }
   }
+    h3 {
+    color: #333;
+    font-family: $Playfair;
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.3em;
+    margin: 15px auto 0 auto;
+    text-align: center;
+
+    a {
+      color: #333;
+    }
+  }
 
   &.double {
 
@@ -210,6 +224,11 @@ article {
   .read-later.rAlign span:after {
     left: 132px;
   }
+}
+
+.mob .read-later {
+  opacity: 1!important;
+  visibility: visible!important;
 }
 
 // 2. Single Article

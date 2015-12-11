@@ -11,5 +11,3 @@ We use http://jmsyst.com/bundles/JMSTranslationBundle to handle translations, a 
 To extract the translations from the templates we use the following commands :
 
 php app/console translation:extract fr --config=admin
-
-php app/console translation:extract en --config=admin

@@ -3,13 +3,11 @@
 {% block field %}
 <div>
     {% if object.status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_DRAFT') %}
-        {{ 'news.status.draft'|trans({}, 'BaseAdminBundle') }}
+        {{ 'form.status.draft'|trans({}, 'BaseAdminBundle') }}
     {% elseif object.status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') %}
-        {{ 'news.status.published'|trans({}, 'BaseAdminBundle') }}
-    {% elseif object.status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATION_PENDING') %}
-        {{ 'news.status.translation_pending'|trans({}, 'BaseAdminBundle') }}
-    {% elseif object.status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING') %}
-        {{ 'news.status.translation_validating'|trans({}, 'BaseAdminBundle') }}
+        {{ 'form.status.published'|trans({}, 'BaseAdminBundle') }}
+    {% elseif object.status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_VALIDATING') %}
+        {{ 'news.status.validating'|trans({}, 'BaseAdminBundle') }}
     {% elseif object.status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_DEACTIVATED') %}
         {{ 'news.status.deactivated'|trans({}, 'BaseAdminBundle') }}
     {% endif %}

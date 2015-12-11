@@ -2,3 +2,4 @@ fdc_event:
     resource: "@FDCEventBundle/Controller/"
     type:     annotation
     prefix:   /
+    host:     "%fdc_event_domain%"

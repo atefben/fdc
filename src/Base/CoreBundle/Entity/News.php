@@ -4,11 +4,14 @@ namespace Base\CoreBundle\Entity;
 
 use \DateTime;
 
+use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslationByLocale;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
+use Base\CoreBundle\Util\MainStatus;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -25,10 +28,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "NewsArticle", "audio" = "NewsAudio", "image" = "NewsImage", "video" = "NewsVideo"})
  */
-abstract class News
+abstract class News implements MainStatusInterface
 {
     use TranslationByLocale;
     use Time;
+    use Seo;
+    use MainStatus;
     
     /**
      * @var integer
@@ -47,13 +52,20 @@ abstract class News
      * @ORM\OneToMany(targetEntity="NewsLock", mappedBy="news")
      */
     private $locks;
-    
+
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
+     * @ORM\Column(type="integer", nullable=false, options={"default":0})
      */
-    private $translate;
+    private $priorityStatus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false, options={"default":0})
+     */
+    private $translationStatus;
 
      /**
       * @var NewsTheme
@@ -104,19 +116,20 @@ abstract class News
      * @Groups({"news_list", "news_show"})
      */
     private $tags;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
      *
      * @Groups({"news_list", "news_show"})
      */
     private $associations;
-    
+
     /**
      * @var NewsWidget
      *
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"persist"})
      *
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"news_list", "news_show"})
      */
     private $widgets;
@@ -348,29 +361,6 @@ abstract class News
     }
 
     /**
-     * Set translate
-     *
-     * @param boolean $translate
-     * @return News
-     */
-    public function setTranslate($translate)
-    {
-        $this->translate = $translate;
-
-        return $this;
-    }
-
-    /**
-     * Get translate
-     *
-     * @return boolean 
-     */
-    public function getTranslate()
-    {
-        return $this->translate;
-    }
-
-    /**
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
@@ -492,5 +482,51 @@ abstract class News
     public function getLocks()
     {
         return $this->locks;
+    }
+
+    /**
+     * Set priorityStatus
+     *
+     * @param integer $priorityStatus
+     * @return News
+     */
+    public function setPriorityStatus($priorityStatus)
+    {
+        $this->priorityStatus = $priorityStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get priorityStatus
+     *
+     * @return integer 
+     */
+    public function getPriorityStatus()
+    {
+        return $this->priorityStatus;
+    }
+
+    /**
+     * Set translationStatus
+     *
+     * @param integer $translationStatus
+     * @return News
+     */
+    public function setTranslationStatus($translationStatus)
+    {
+        $this->translationStatus = $translationStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get translationStatus
+     *
+     * @return integer 
+     */
+    public function getTranslationStatus()
+    {
+        return $this->translationStatus;
     }
 }

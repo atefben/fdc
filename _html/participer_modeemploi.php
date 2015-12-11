@@ -2,20 +2,7 @@
 <html>
 
 <head>
-  <!-- //// META \\\\ -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- //// TITLE \\\\ -->
-  <title>Festival de Cannes 2016 - HTML</title>
-
-  <!-- //// CSS \\\\ -->
-  <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-  <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css" />
-  <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-  <link href='css/styles.css' rel="stylesheet">
+  <?php include('head.html'); ?>
   <style type="text/css">
 
   </style>
@@ -27,7 +14,7 @@
 <div id="main" class="list-article participate manual">
   <div class="bandeau-list vCenter">
     <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/manual.jpg)">
-      <h2 class="title title-list-header"> <img src="img/svg/palme-white.svg" alt="" class="logo palm"> <br> Festival mode d'emploi</h2>
+      <h2 class="title title-list-header"> <img src="img/svg/palme-white.svg" alt="" class="logo palm">  <br> Festival mode d'emploi</h2>
     </div>
   </div>
   <div class="title-bandeau">

@@ -2,21 +2,7 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
-
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  
+    <?php include('head.html'); ?> 
   </head>
 
   <body>
@@ -27,6 +13,25 @@
         <a href="#" class="back">Retour aux chaînes</a>
       </div>
       <h2 class="title">Conférences de presse</h2>
+<!--      TODO TICKET-->
+     <div class="small-container">
+        <div class="player"> 
+          <img src="img/webtv/playervideo.jpg" alt="">
+        </div>
+        <div class="infos-videos">
+         <div class="infos">
+            <strong>Conférence de presse</strong>
+            <span class="time">18.05.2015  . 19h00</span>
+            <p>Interview des réalisateurs des Courts Métrages en Compétition</p>
+         </div>
+  <div class="buttons square">
+              <a href="#" class="button facebook"></a>
+              <a href="#" class="button twitter"></a>
+              <a href="#" class="button link"></a>
+              <a href="#" class="button email"></a>
+            </div>
+       </div>
+     </div>
       <div id="content-channels">
         <div id="slider-channels" class="owl-carousel sliderDrag">
           <div class="channel shadow-bottom">

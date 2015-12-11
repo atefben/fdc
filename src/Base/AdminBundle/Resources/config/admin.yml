@@ -23,6 +23,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.contact_theme:
+        class: Base\AdminBundle\Admin\ContactThemeAdmin
+        arguments: [~, Base\CoreBundle\Entity\ContactTheme, BaseAdminBundle:ContactThemeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.contact_theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     # GROUP EVENT
     base.admin.event:
         class: Base\AdminBundle\Admin\EventAdmin

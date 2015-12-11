@@ -2,23 +2,10 @@
 <html>
 
   <head>
-    <!-- //// META \\\\ -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">    
+    <?php include('head.html'); ?>
+    <style type="text/css">
 
-    <!-- //// TITLE \\\\ -->
-    <title>Festival de Cannes 2016 - HTML</title>
-
-    <!-- //// CSS \\\\ -->
-    <link href='js/bower_components/chocolat/src/css/chocolat.css' rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href='css/styles.css' rel="stylesheet">
-  <style type="text/css">
-        
-  </style>
+    </style>
   </head>
 
   <body>
@@ -46,6 +33,26 @@
   de <strong>La Semaine de la Critique</strong> et de la <strong>Quinzaine des Réalisateurs</strong> . En 2015, ils sont 26 à concourir pour cette récompense qui sera remise lors de la soirée du Palmarès le dimanche 24 mai.
   La Présidente est l'actrice française Sabine Azéma.</h2>
           </div>
+        <div class="contain-winner container-list">
+          <section class="categorie-items ">
+            <article style="background-image:url(img/palmares/cover-film-camerador.jpg)">
+              <div class="bck-hover">
+                <div class="contain_item">
+                  <img src="img/palmares/cover-film-camerador.jpg" alt="images films">
+                  <div class="infos-item-list">
+                    <div class="logo-palme-dor-container">
+                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <strong class="palme-dor-text verticalline">Caméra d'or</strong>
+                    </div>
+                    <h4 class="sub-title-item">En compétition</h4>
+                    <h3 class="title-item">La tierra y sombra </h3>
+                    <span class="nom-item">César Augusto ACEVEDO</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
           <div class="title-list-cat">
                   <h2 class="title"> Les films en lice dans la Sélection officielle</h2>
           </div>
@@ -56,7 +63,6 @@
                  <div class="contain_item">
                   <img src="img/films/cover-film-cdo.jpg" alt="images films">
                   <div class="infos-item-list">
-
                       <h3 class="title-item">Saul Fia</h3>
                       <h4 class="sub-title-item">(Le fils de paul)</h4>
                       <span class="nom-item">László NEMES</span>

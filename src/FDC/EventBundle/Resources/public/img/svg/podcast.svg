@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Calque_1"
+   x="0px"
+   y="0px"
+   width="85.635px"
+   height="60px"
+   viewBox="0 0 85.635 60"
+   enable-background="new 0 0 85.635 60"
+   xml:space="preserve"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="postcast.svgz"><metadata
+   id="metadata39"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs37" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="640"
+   inkscape:window-height="480"
+   id="namedview35"
+   showgrid="false"
+   inkscape:zoom="3.9333333"
+   inkscape:cx="42.817501"
+   inkscape:cy="30"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Calque_1" />
+<g
+   id="g3">
+	<g
+   id="g5">
+		<rect
+   x="7731"
+   y="25"
+   fill="#C8A461"
+   width="55"
+   height="5"
+   id="rect7" />
+	</g>
+	<g
+   id="g9">
+		<rect
+   x="7731"
+   y="39"
+   fill="#C8A461"
+   width="55"
+   height="5"
+   id="rect11" />
+	</g>
+	<g
+   id="g13">
+		<rect
+   x="7731"
+   y="53"
+   fill="#C8A461"
+   width="55"
+   height="5"
+   id="rect15" />
+	</g>
+	<g
+   id="g17">
+		<rect
+   x="7731"
+   y="67"
+   fill="#C8A461"
+   width="27"
+   height="5"
+   id="rect19" />
+	</g>
+</g>
+<g
+   id="g21">
+	<g
+   id="g23">
+		<path
+   d="M33.755,47.422c-0.473,0-0.949-0.132-1.375-0.41c-5.542-3.599-8.849-9.682-8.849-16.276    c0-10.697,8.702-19.398,19.397-19.398c10.696,0,19.398,8.702,19.398,19.398c0,6.592-3.309,12.677-8.849,16.276    c-1.173,0.762-2.74,0.429-3.502-0.744c-0.762-1.174-0.428-2.741,0.744-3.502c4.098-2.662,6.544-7.158,6.544-12.03    c0-7.906-6.433-14.338-14.336-14.338S28.591,22.83,28.591,30.736c0,4.872,2.447,9.368,6.546,12.03    c1.171,0.761,1.505,2.328,0.743,3.502C35.396,47.014,34.584,47.422,33.755,47.422z"
+   id="path25" fill="#fff" />
+	</g>
+	<g
+   id="g27">
+		<path
+   d="M24.536,54.65c-0.665,0-1.333-0.231-1.869-0.702c-6.709-5.86-10.56-14.323-10.56-23.219    c0-16.995,13.826-30.82,30.82-30.82c16.995,0,30.82,13.825,30.82,30.82c0,8.897-3.85,17.358-10.56,23.219    c-1.183,1.034-2.979,0.911-4.014-0.273c-1.033-1.183-0.912-2.98,0.273-4.012c5.471-4.779,8.611-11.681,8.611-18.934    c0-13.856-11.275-25.131-25.132-25.131c-13.857,0-25.13,11.275-25.13,25.131c0,7.253,3.14,14.154,8.61,18.934    c1.181,1.031,1.306,2.829,0.273,4.012C26.119,54.318,25.327,54.65,24.536,54.65z"
+   id="path29" fill="#fff" />
+	</g>
+	<path
+   d="M55.513,60.11L44.034,41.569h-2.497L30.343,60.11H55.513z"
+   id="path31" fill="#fff" />
+	<path
+   d="M50.048,31.032c0,3.953-3.206,7.16-7.156,7.16c-3.952,0-7.157-3.207-7.157-7.16   c0-3.952,3.205-7.158,7.157-7.158C46.842,23.874,50.048,27.081,50.048,31.032z"
+   id="path33" fill="#fff" />
+</g>
+</svg>
