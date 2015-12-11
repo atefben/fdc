@@ -107,20 +107,20 @@ class ContactType extends AbstractType
     {
         $collectionConstraint = new Collection(array(
             'select' => array(
-                new GreaterThan(array('value' => 0, 'message' => 'contact.form.errors.theme')),
+                new GreaterThan(array('value' => 0, 'message' => $this->translator->trans('contact.form.errors.theme'))),
             ),
             'name' => array(
-                new NotBlank(array('message' => 'contact.form.errors.nom')),
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.nom'))),
             ),
             'email' => array(
-                new NotBlank(array('message' => 'contact.form.errors.email')),
-                new Email(array('message' => 'contact.form.errors.email'))
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
+                new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
             ),
             'subject' => array(
-                new NotBlank(array('message' => 'contact.form.errors.objet')),
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.objet'))),
             ),
             'message' => array(
-                new NotBlank(array('message' => 'contact.form.errors.message')),
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.message'))),
             )
         ));
 
