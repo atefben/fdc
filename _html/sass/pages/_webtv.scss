@@ -211,6 +211,9 @@
       &:last-child {
         margin-left: 45px;
       }
+      &.shadow-bottom:before {
+        width: 100%;
+      }
       .picto {
         background-image: url('../img/svg/video.svg');
         background-size: 22px;
