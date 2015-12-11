@@ -181,6 +181,7 @@
         position: fixed;
         top: 91px;
         z-index: 4;
+        width: 310px;
       }
 
       &.bottom {
@@ -933,6 +934,10 @@
         overflow: hidden;
         padding: 10px 0;
 
+        @include breakpoint(1279px) {
+          padding: 10px 20px;
+        }
+
         .info {
           float: left;
 
@@ -989,6 +994,12 @@
           &.photo {
             background: url('../img/svg/photo-grey.svg') no-repeat left 47%;
             background-size: 18px;
+          }
+
+          @include breakpoint(1279px) {
+            span {
+              display: none;
+            }
           }
         }
 

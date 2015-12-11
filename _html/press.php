@@ -342,9 +342,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media folder">Dossiers de presse (2)</div>
-                <div class="media trailer">Bandes annonces (4)</div>
-                <div class="media photo">Photos (9)</div>
+                <div class="media folder"><span>Dossiers de presse</span> (2)</div>
+                <div class="media trailer"><span>Bandes annonces</span> (4)</div>
+                <div class="media photo"><span>Photos</span> (9)</div>
                 <a class="button" href="#">Découvrir</a>
               </div>
             </div>
@@ -358,9 +358,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media folder">Dossiers de presse (2)</div>
-                <div class="media trailer">Bandes annonces (4)</div>
-                <div class="media photo">Photos (9)</div>
+                <div class="media folder"><span>Dossiers de presse</span> (2)</div>
+                <div class="media trailer"><span>Bandes annonces</span> (4)</div>
+                <div class="media photo"><span>Photos</span> (9)</div>
                 <a class="button" href="#">Découvrir</a>
               </div>
             </div>
@@ -374,9 +374,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media folder">Dossiers de presse (2)</div>
-                <div class="media trailer">Bandes annonces (4)</div>
-                <div class="media photo">Photos (9)</div>
+                <div class="media folder"><span>Dossiers de presse</span> (2)</div>
+                <div class="media trailer"><span>Bandes annonces</span> (4)</div>
+                <div class="media photo"><span>Photos</span> (9)</div>
                 <a class="button" href="#">Découvrir</a>
               </div>
             </div>
@@ -390,9 +390,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media folder">Dossiers de presse (2)</div>
-                <div class="media trailer">Bandes annonces (4)</div>
-                <div class="media photo">Photos (9)</div>
+                <div class="media folder"><span>Dossiers de presse</span> (2)</div>
+                <div class="media trailer"><span>Bandes annonces</span> (4)</div>
+                <div class="media photo"><span>Photos</span> (9)</div>
                 <a class="button" href="#">Découvrir</a>
               </div>
             </div>

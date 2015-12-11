@@ -182,6 +182,10 @@ $(document).ready(function() {
           $.cookie('drag', '1', { expires: 365 });
         });
 
+        $(window).resize(function() {
+          $('#calendar-wrapper').css('left', $('#calendar').offset().left);
+        });
+
         // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
             lang: GLOBALS.locale , // TODO a verifier
