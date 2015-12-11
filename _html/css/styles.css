@@ -7452,13 +7452,16 @@ header #searchContainer {
   transition: opacity 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #sliderWrapper .owl-item.center .img-container {
-  z-index: 1;
+  z-index: 3;
 }
 #sliderWrapper .owl-item.center .img {
   opacity: 1 !important;
 }
 #sliderWrapper .owl-item.center .linkArticle {
   display: block;
+}
+#sliderWrapper .owl-item.center .info {
+  z-index: 4;
 }
 #sliderWrapper .owl-item.center .info .category {
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
@@ -7779,6 +7782,12 @@ header #searchContainer {
 }
 #social-wall #graph ul li:last-child {
   width: 65px;
+}
+@media screen and (max-width: 1024px) {
+  #social-wall #graph ul li:last-child {
+    width: 45px;
+    text-align: right;
+  }
 }
 #social-wall #graph ul li.active {
   color: #000;
