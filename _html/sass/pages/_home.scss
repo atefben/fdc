@@ -1661,3 +1661,8 @@
   display: block;
   top: 0;
 }
+
+.mob #featured-movies .video {
+  position: absolute!important;
+  z-index: 1;
+}

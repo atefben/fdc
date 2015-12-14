@@ -8824,6 +8824,11 @@ header #searchContainer {
   top: 0;
 }
 
+.mob #featured-movies .video {
+  position: absolute !important;
+  z-index: 1;
+}
+
 .articles {
   overflow: hidden;
 }
