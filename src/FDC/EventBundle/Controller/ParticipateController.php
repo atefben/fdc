@@ -16,6 +16,7 @@ class ParticipateController extends Controller
 {
     /**
      * @Route("/prepare")
+     * @Template("FDCEventBundle:Participate:participate.prepare.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function prepareAction()
@@ -23,14 +24,14 @@ class ParticipateController extends Controller
 
         $pageContent = "Contenu de la page";
 
-        return $this->render(
-            "FDCEventBundle:Participate:participate.prepare.html.twig",
-            array('content' => $pageContent)
+        return array(
+            'content' => $pageContent
         );
     }
 
     /**
      * @Route("/festival")
+     * @Template("FDCEventBundle:Participate:participate.festival.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function festivalAction()
@@ -38,14 +39,14 @@ class ParticipateController extends Controller
 
         $pageContent = "Contenu de la page";
 
-        return $this->render(
-            "FDCEventBundle:Participate:participate.festival.html.twig",
-            array('content' => $pageContent)
+        return array(
+            'content' => $pageContent
         );
     }
 
     /**
      * @Route("/acces-projection")
+     * @Template("FDCEventBundle:Participate:participate.access.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function accessAction()
@@ -53,15 +54,15 @@ class ParticipateController extends Controller
 
         $pageContent = "Contenu de la page";
 
-        return $this->render(
-            "FDCEventBundle:Participate:participate.access.html.twig",
-            array('content' => $pageContent)
+        return array(
+            'content' => $pageContent
         );
 
     }
 
     /**
      * @Route("/partenaires")
+     * @Template("FDCEventBundle:Participate:participate.partners.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function partnersAction()
@@ -130,15 +131,15 @@ class ParticipateController extends Controller
             )
         );
 
-        return $this->render(
-            "FDCEventBundle:Participate:participate.partners.html.twig",
-            array('partners' => $partners)
+        return array(
+            'partners' => $partners
         );
 
     }
 
     /**
      * @Route("/fournisseurs")
+     * @Template("FDCEventBundle:Participate:participate.suppliers.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function suppliersAction()
@@ -171,9 +172,8 @@ class ParticipateController extends Controller
             ),
         );
 
-        return $this->render(
-            "FDCEventBundle:Participate:participate.suppliers.html.twig",
-            array('suppliers' => $suppliers)
+        return array(
+            'suppliers' => $suppliers
         );
 
     }
