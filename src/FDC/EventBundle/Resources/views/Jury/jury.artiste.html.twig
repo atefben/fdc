@@ -1,0 +1,134 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+
+{#<div id="main" class="single-article artist loading">#}
+<div id="main" class="single-article artist">
+    <div class="content-article">
+        <div class="container">
+            <a href="{{ path('fdc_event_jury_getartiste', {'id': pagination.prev}) }}" class="nav prev"></a>
+            <a href="{{ path('fdc_event_jury_getartiste', {'id': pagination.next}) }}" class="nav next"></a>
+            {% if artiste %}
+                <div class="info">
+                    <span href="#" class="category">{{ artiste.functions }} -</span>
+                    <span class="city">{{ artiste.from }}</span>
+                </div>
+                <h2 class="title-article">{{ artiste.name }}</h2>
+                <div class="buttons">
+                    <a id="share-article" href="#" class="button">{{ 'juries.artiste.btn.partager'|trans }}</a>
+                    <a href="#" class="button print">{{ 'juries.artiste.btn.imprimer'|trans }}</a>
+                </div>
+                <div class="single-photo">
+                    <div class="photo-container">
+                        <img src="{{ artiste.img }}" alt="{{ artiste.name }}" />
+                    </div>
+                </div>
+                <div class="small-container">
+                    <div class="biographie">
+                        <h2 class="title title-cat-artist">{{ 'juries.artiste.title.biographie'|trans }}</h2>
+                        <p class="paragraph">
+                            {{ artiste.bio }}
+                        </p>
+                    </div>
+            {% endif %}
+                    <h2  class="title title-art-artist">{{ 'juries.artiste.title.filmspresentes'|trans }}</h2>
+                    <div class="contain-films-list">
+                    {% for film in films %}
+                        <div class="item">
+                            <img src="{{ film.img }}" alt="">
+                            <div class="content-text">
+                                <span class="item-title">{{ film.title }}</span>
+                                <span class="item-date">{{ film.date }}</span>
+                                <span class="item-categ">{{ film.category }}</span>
+                                <span class="item-details">{{ film.functions }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <h2  class="title title-art-artist">{{ 'juries.artiste.title.palmares'|trans }}</h2>
+                <div class="contain-films-list">
+                    {% for palm in palmares %}
+                        <div class="item">
+                            <img src="{{ palm.img }}" alt="">
+                            <div class="content-text">
+                                <span class="item-title">{{ palm.title }}</span>
+                                <span class="item-date">{{ palm.date }}</span>
+                                <span class="item-categ">{{ palm.palmares }}</span>
+                                <span class="item-details">{{ palm.functions }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <h2  class="title title-art-artist">{{ 'juries.artiste.title.presences'|trans }}</h2>
+                    {% for role in roles %}
+                        <div class="jury">
+                            <span class="rank">{{ role.title }}</span>
+                            <span class="item-separate">-</span>
+                            <span class="role">{{ role.role }}</span>
+                            <span class="item-separate">-</span>
+                            <span class="date">{{ role.date }}</span>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+        <div class="share">
+            <p>{{ 'juries.artiste.title.share'|trans }}</p>
+            <div class="buttons square">
+                <a href="#" class="button facebook"></a>
+                <a href="#" class="button twitter"></a>
+                <a href="#" class="button link"></a>
+                <a href="#" class="button email"></a>
+                <a href="#" class="button print"></a>
+            </div>
+        </div>
+        <div class="realisateurs">
+            <h1 class="title">{{ 'juries.artiste.title.realisateurs'|trans }}</h1>
+            <div id="slide-artist">
+                {% for realisateur in realisateurs %}
+                    <div class="item first">
+                        <figure>
+                            <img src="{{ realisateur.img }}" alt="{{ realisateur.name }}">
+                            <figcaption>
+                                <span class="name">{{ realisateur.name }}</span>
+                                <span class="rank">{{ realisateur.functions }}</span>
+                            </figcaption>
+                        </figure>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <span class="anim"></span>
+</div>
+
+<!-- POPIN MAIL SHARE ---->
+<div class="popin-mail popin">
+    <div class="contain-popin popin">
+        <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
+        <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
+        <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
+    </div>
+    <form action="" id="form" class="popin">
+        <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas">
+        <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
+        <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
+        <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
+        <span class="detail popin">* Champs obligatoires</span>
+        <input type="submit" value='envoyer' class='popin'>
+        <div class="errors popin">
+            <ul class="popin">
+            </ul>
+        </div>
+    </form>
+    <div class="info-popin popin">
+        <p class="popin">
+            En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.
+            <br> OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
+        </p>
+    </div>
+</div>
+<!-- END POPIN MAIL SHARE -->
+
+{% endblock body %}

@@ -48,7 +48,9 @@
                     </a>
                     <div class="contain-descript">
                         <h3 class="descript-title">{{ 'juries.role.title.presidentdujury'|trans }}</h3>
-                        <a href="artist_page.php"><h2 class="descript-name">{{ president.name }}</h2></a>
+                        <a href="{{ path('fdc_event_jury_getartiste', {'id': president.id}) }}">
+                            <h2 class="descript-name">{{ president.name }}</h2>
+                        </a>
                         <span class="descript-rank">{{ president.functions }}</span>
                         <p>{{ president.description|raw }}</p>
                     </div>

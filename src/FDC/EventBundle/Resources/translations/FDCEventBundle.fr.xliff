@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-14T14:57:58Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-14T16:19:57Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -394,11 +394,51 @@
         <target>Rechercher</target>
         <jms:reference-file line="116">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="833706b83af85918525a5e514bd3e356e9785c77" resname="juries.artiste.btn.imprimer">
+        <source>juries.artiste.btn.imprimer</source>
+        <target>Imprimer</target>
+        <jms:reference-file line="23">views/Jury/jury.artiste.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="33a60415b8bd8234c861bebfa7eb6be85b4c8127" resname="juries.artiste.btn.partager">
+        <source>juries.artiste.btn.partager</source>
+        <target>Partager</target>
+        <jms:reference-file line="22">views/Jury/jury.artiste.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cfcf345996ce9bff11d9859918af9f0637e33b62" resname="juries.artiste.title.biographie">
+        <source>juries.artiste.title.biographie</source>
+        <target>Biographie</target>
+        <jms:reference-file line="32">views/Jury/jury.artiste.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ca2f5059452f0717daf356ac0a9e5d2613556fac" resname="juries.artiste.title.filmspresentes">
+        <source>juries.artiste.title.filmspresentes</source>
+        <target>Films présentés à Cannes</target>
+        <jms:reference-file line="39">views/Jury/jury.artiste.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="84ee77c30f04e53fe7f970d55b337ac69a8b85cc" resname="juries.artiste.title.palmares">
+        <source>juries.artiste.title.palmares</source>
+        <target>Palmarès</target>
+        <jms:reference-file line="56">views/Jury/jury.artiste.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b5d533d7400ab24da13f0d6f3294538ecce201eb" resname="juries.artiste.title.presences">
+        <source>juries.artiste.title.presences</source>
+        <target>Présences au Jury</target>
+        <jms:reference-file line="73">views/Jury/jury.artiste.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="33b26f2872f664925accafb74841d6604162fab9" resname="juries.artiste.title.realisateurs">
+        <source>juries.artiste.title.realisateurs</source>
+        <target>Réalisateurs</target>
+        <jms:reference-file line="98">views/Jury/jury.artiste.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a9d8fce1f7777b3177ea072e204a26acda0256db" resname="juries.artiste.title.share">
+        <source>juries.artiste.title.share</source>
+        <target>Partagez l'article</target>
+        <jms:reference-file line="88">views/Jury/jury.artiste.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="7a17713a51882265ca5d66304e2657cbc0109143" resname="juries.btn.decouvrirrubrique">
         <source>juries.btn.decouvrirrubrique</source>
         <target>Découvrir la rubrique</target>
-        <jms:reference-file line="80">views/Jury/jury.section.html.twig</jms:reference-file>
         <jms:reference-file line="82">views/Jury/jury.section.html.twig</jms:reference-file>
+        <jms:reference-file line="84">views/Jury/jury.section.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="53583f2226e5429a948e0226aabfe65e8af2c1cb" resname="juries.nav.camerador">
         <source>juries.nav.camerador</source>
@@ -423,7 +463,7 @@
       <trans-unit id="9457a0dbfcdb25be75c6d487c0d6b916ce6344c0" resname="juries.role.title.membresdujury">
         <source>juries.role.title.membresdujury</source>
         <target>Membres du jury des longs métrages</target>
-        <jms:reference-file line="58">views/Jury/jury.section.html.twig</jms:reference-file>
+        <jms:reference-file line="60">views/Jury/jury.section.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="47b4fbc5d82b8f52d594f07823f665299bd40991" resname="juries.role.title.presidentdujury">
         <source>juries.role.title.presidentdujury</source>
@@ -438,7 +478,7 @@
       <trans-unit id="9134ba19720ee9fe571efb0f6d6d4e939c837649" resname="juries.title.retrospective">
         <source>juries.title.retrospective</source>
         <target>Rétrospective</target>
-        <jms:reference-file line="77">views/Jury/jury.section.html.twig</jms:reference-file>
+        <jms:reference-file line="79">views/Jury/jury.section.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ab47c6f1343c0353ebf5b3b7a54a5f6fea278e3d" resname="mentionslegales.hebergement.amazon">
         <source>mentionslegales.hebergement.amazon</source>

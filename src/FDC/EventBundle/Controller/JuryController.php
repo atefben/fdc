@@ -98,5 +98,166 @@ class JuryController extends Controller
     public function getArtiste($id)
     {
 
+        $artiste = array(
+            'id' => 0,
+            'img' => 'img.jpg',
+            'name' => 'Francis Coppola',
+            'from' => 'Etats-Unis',
+            'functions' => 'Réalisateur',
+            'bio' => 'Né à Détroit (Etats-Unis) en 1939. Diplômé de la Hofstra University de New York et titulaire, ...',
+        );
+
+        $relatedFilms = array(
+            array(
+                'title' => 'Apocalypse now',
+                'date' => '1976',
+                'img'  => 'img.jpg',
+                'category' => 'Hors compétition',
+                'functions' => 'Réalisation, Scénario & Dialogues, Musique',
+            ),
+            array(
+                'title' => 'Apocalypse now',
+                'date' => '1976',
+                'img'  => 'img.jpg',
+                'category' => 'Hors compétition',
+                'functions' => 'Réalisation, Scénario & Dialogues, Musique',
+            ),
+            array(
+                'title' => 'Apocalypse now',
+                'date' => '1976',
+                'img'  => 'img.jpg',
+                'category' => 'Hors compétition',
+                'functions' => 'Réalisation, Scénario & Dialogues, Musique',
+            )
+        );
+
+        $relatedPalmares = array(
+            array(
+                'title' => 'Apocalypse now',
+                'date' => '1976',
+                'img'  => 'img.jpg',
+                'palmares' => 'Palme D\'or - Prix de la critique internationale - F.I.P.E.S.C.I.',
+                'category' => 'Hors compétition',
+                'functions' => 'Réalisation, Scénario & Dialogues, Musique',
+            ),
+            array(
+                'title' => 'Apocalypse now',
+                'date' => '1976',
+                'img'  => 'img.jpg',
+                'palmares' => 'Palme D\'or - Prix de la critique internationale - F.I.P.E.S.C.I.',
+                'category' => 'Hors compétition',
+                'functions' => 'Réalisation, Scénario & Dialogues, Musique',
+            )
+        );
+
+        $relatedRole = array(
+            array(
+                'title' => 'Président',
+                'role' => 'Jury des longs métrages',
+                'date' => '1996',
+            )
+        );
+
+        $allMembers = array(
+            array(
+                'id' => 0,
+                'img' => 'img.jpg',
+                'name' => 'Jane Campion',
+                'functions' => 'Réalisatrice, Scénariste, Productrice'
+            ),
+            array(
+                'id' => 0,
+                'img' => 'img.jpg',
+                'name' => 'Jane Campion',
+                'functions' => 'Réalisatrice, Scénariste, Productrice'
+            ),
+            array(
+                'id' => 0,
+                'img' => 'img.jpg',
+                'name' => 'Jane Campion',
+                'functions' => 'Réalisatrice, Scénariste, Productrice'
+            ),
+            array(
+                'id' => 0,
+                'img' => 'img.jpg',
+                'name' => 'Jane Campion',
+                'functions' => 'Réalisatrice, Scénariste, Productrice'
+            ),
+            array(
+                'id' => 0,
+                'img' => 'img.jpg',
+                'name' => 'Jane Campion',
+                'functions' => 'Réalisatrice, Scénariste, Productrice'
+            )
+        );
+
+        $pagination = $this->getArtisteList($id);
+
+
+        return $this->render(
+            "FDCEventBundle:Jury:jury.artiste.html.twig",
+            array(
+                'artiste' => $artiste,
+                'films' => $relatedFilms,
+                'palmares' => $relatedPalmares,
+                'roles' => $relatedRole,
+                'realisateurs' => $allMembers,
+                'pagination' => $pagination
+            )
+        );
     }
+
+    public function getArtisteList($id)
+    {
+        //$artiste->findAll()
+        $artistes = array(
+            array(
+                'id'=>0,
+                'name'=> 'Francis Coppola'
+            ),
+            array(
+                'id'=>1,
+                'name'=> 'Francis Coppola'
+            ),
+            array(
+                'id'=>2,
+                'name'=> 'Francis Coppola'
+            ),
+            array(
+                'id'=>3,
+                'name'=> 'Francis Coppola'
+            ),
+            array(
+                'id'=>4,
+                'name'=> 'Francis Coppola'
+            ),
+        );
+
+
+        //$artiste->findOnebyId($id);
+        $artiste = array(
+          'id' => 1,
+          'name' => 'Jason Statam'
+        );
+
+        $max = count($artistes) - 1;
+        $current = $artiste['id'];
+
+        $next = $current + 1;
+        if ( $next > $max ) {
+            $next = 0;
+        }
+        $prev = $current - 1;
+        if ( $prev < 0 ) {
+            $prev = $max;
+        }
+        $pagination = array(
+            'prev' => $prev,
+            'next' => $next,
+        );
+
+        return $pagination;
+
+    }
+
 }
