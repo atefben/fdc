@@ -820,6 +820,7 @@
                 border: 1px solid #e5e5e5;
                 position: absolute;
                 width: 220px;
+                z-index: 2;
 
                 &.ui-draggable-dragging .category:after {
                   cursor: -webkit-grabbing;
