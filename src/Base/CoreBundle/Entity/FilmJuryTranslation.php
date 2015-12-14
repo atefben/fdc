@@ -31,6 +31,10 @@ class FilmJuryTranslation implements TranslateChildInterface
      */
     protected $biography;
 
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
 
     /**
      * Set biography

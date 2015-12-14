@@ -15,7 +15,7 @@ trait TranslateMain
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $translate;
+    private $translate = false;
 
     /**
      * @var array
@@ -29,7 +29,7 @@ trait TranslateMain
      *
      * @ORM\Column(type="integer", options={"default":0})
      */
-    private $priorityStatus;
+    private $priorityStatus = self::PRIORITY_STATUS_LOW;
 
     /**
      * getAvailableTranslateOptions function.

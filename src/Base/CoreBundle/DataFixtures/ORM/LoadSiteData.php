@@ -27,7 +27,7 @@ class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($siteFdc);
         $this->addReference('site-fdc-event', $siteFdc);
 
-     /*   $siteMdf = new Site();
+       /* $siteMdf = new Site();
         $siteMdf->setName('Marché du film');
         $siteMdf->setClassColor('green-light');
         $manager->persist($siteMdf);

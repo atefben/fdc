@@ -42,11 +42,12 @@ To udpate all entities you have to use the following command :
     php app/console base:soif:update
     
 There is 4 options :
+```
 --start=TIMESTAMP The start timestamp (default : the database end_timestamp value from soif_task table)
 --end=TIMESTAMP   The end timestamp (default : the current timestamp)
 --entity=ENTITY   Will update only the specified entity
 --save            Will save the endtimestamp in the database
-
+```
 For example to update award from 1st January to 31st December 2015 you have to use :
 
     php app/console base:soif:update --start=1420066800 --end=1451602799 --entity=award

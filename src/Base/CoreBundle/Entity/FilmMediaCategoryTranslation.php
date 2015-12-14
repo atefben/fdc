@@ -27,6 +27,11 @@ class FilmMediaCategoryTranslation implements TranslateChildInterface
      */
     protected $name;
 
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
+
     /**
      * Set name
      *
