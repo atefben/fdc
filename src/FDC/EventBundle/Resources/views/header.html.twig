@@ -193,7 +193,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
+                        <a href="{{ path('fdc_event_jury_getjury', {'section': 'longs-metrages'}) }}"
                            class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
                             {{ 'header.mainnav.nav.lesjurys'|trans }}
                         </a>
