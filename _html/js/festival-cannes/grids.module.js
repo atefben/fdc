@@ -119,8 +119,8 @@ function setImages(grid, dom, init){
 
     if (!init) {
       grid.append($(dom)).isotope('appended', $(dom));
-      grid.imagesLoaded().progress(function () {
-        grid.isotope('layout');
+      grid.imagesLoaded(function () {
+        setTimeout(function() {grid.isotope('layout');}, 500);
       });
     }
   }
@@ -151,17 +151,21 @@ function setImages(grid, dom, init){
 
       $grid = $('#gridPhotos').imagesLoaded(function () {
 
-        setImages($grid, $('#gridPhotos'), true);
+        setImages($grid, $('#gridPhotos'), false);
         $grid.isotope({
           itemSelector: '.item',
           percentPosition: true,
           layoutMode: 'packery',
-          isOriginLeft: true,
           packery: {
             columnWidth: '.grid-sizer'
           }
         });
-        $grid.isotope('layout');
+
+        if($('.all-photos').length) {
+          setTimeout(function() {
+            $grid.isotope({ sortBy : 'original-order' });
+          }, 500);
+        }
       });
     }
 
