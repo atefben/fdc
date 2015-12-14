@@ -355,6 +355,19 @@
             </div>
           </div>
         </div>
+        <div class="item theme2 date theme shadow-bottom photo">
+          <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
+          <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
+          <div class="picto"></div>
+          <div class="info">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span>
+                <p>Le photocall de Maïwenn</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
