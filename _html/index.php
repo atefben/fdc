@@ -553,8 +553,8 @@
           <div>
             <div class="video">
               <video preload>
+                <source src="img/featured-movies/sample.mp4">
                 <source src="img/featured-movies/sample.webm" type="video/webm">
-                <source src="img/featured-movies/sample.mp4" type="video/mp4">
               </video>
             </div>
             <div class="textVideo">
@@ -575,9 +575,9 @@
           </div>
           <div>
             <div class="video">
-              <video preload>
-                <source src="img/featured-movies/sample.webm" type="video/webm">
-                <source src="img/featured-movies/sample.mp4" type="video/mp4">
+              <video preload muted>
+                <source src="https://broken-links.com/tests/media/BigBuck.m4v">
+                <source src="https://broken-links.com/tests/media/BigBuck.webm" type="video/webm">
               </video>
             </div>
             <div class="textVideo">

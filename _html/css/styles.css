@@ -8387,6 +8387,7 @@ header #searchContainer {
 #featured-movies video {
   display: block;
   position: absolute;
+  width: 100%;
 }
 #featured-movies .links {
   bottom: 10%;
