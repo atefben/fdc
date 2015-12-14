@@ -15264,7 +15264,9 @@ input[type=submit] {
   border: 1px solid #e5e5e5;
   position: absolute;
   width: 220px;
-  z-index: 2;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event.ui-draggable-dragging {
+  z-index: 5;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event.ui-draggable-dragging .category:after {
   cursor: -webkit-grabbing;
