@@ -4,8 +4,9 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Status;
+use Base\CoreBundle\Util\TranslateChild;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,11 +21,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("name")
  */
-class WebTvTranslation implements WebTvTranslationInterface
+class WebTvTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
-    use Status;
+    use TranslateChild;
 
     /**
      * @var string
@@ -34,16 +35,6 @@ class WebTvTranslation implements WebTvTranslationInterface
      * @Groups({"web_tv_list", "web_tv_show"})
      */
     protected $name;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false)
-     * @Assert\NotBlank()
-     *
-     * @Groups({"web_tv_list", "web_tv_show"})
-     */
-    private $status;
 
     /**
      * Set name
@@ -66,28 +57,5 @@ class WebTvTranslation implements WebTvTranslationInterface
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set status
-     *
-     * @param integer $status
-     * @return WebTvTranslation
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return integer 
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 }

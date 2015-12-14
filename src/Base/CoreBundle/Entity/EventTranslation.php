@@ -4,11 +4,12 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Status;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -19,11 +20,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class EventTranslation implements NewsTranslationInterface
+class EventTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
-    use Status;
+    use TranslateChild;
 
     /**
      * @var string
@@ -42,14 +43,6 @@ class EventTranslation implements NewsTranslationInterface
      * @Groups({"news_list", "news_show"})
      */
     private $introduction;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false)
-     * @Assert\NotBlank()
-     */
-    private $status;
 
     /**
      * Constructor
@@ -104,29 +97,4 @@ class EventTranslation implements NewsTranslationInterface
     {
         return $this->introduction;
     }
-
-    /**
-     * Set status
-     *
-     * @param integer $status
-     * @return NewsArticleTranslation
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return integer
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-
 }

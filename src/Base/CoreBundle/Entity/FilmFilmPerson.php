@@ -4,18 +4,18 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateMain;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
 
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Exclude;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
 
-use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -29,11 +29,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\HasLifecycleCallbacks
  * @UniqueEntity(fields={"film", "person"})
  */
-class FilmFilmPerson
+class FilmFilmPerson implements TranslateMainInterface
 {
     use Time;
     use Translatable;
-    use TranslationByLocale;
+    use TranslateMain;
 
     /**
      * @var integer

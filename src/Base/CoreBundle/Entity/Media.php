@@ -2,10 +2,12 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -19,9 +21,10 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"image" = "MediaImage", "audio" = "MediaAudio", "video" = "MediaVideo"})
  */
-abstract class Media
+abstract class Media implements TranslateMainInterface
 {
     use Time;
+    use TranslateMain;
 
     /**
      * @var integer

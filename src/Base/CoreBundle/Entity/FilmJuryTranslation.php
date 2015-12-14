@@ -2,6 +2,8 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
@@ -14,10 +16,11 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FilmJuryTranslation
+class FilmJuryTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use TranslateChild;
 
     /**
      * @var string

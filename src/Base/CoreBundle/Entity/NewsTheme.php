@@ -4,13 +4,13 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
-
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -20,11 +20,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsTheme
+class NewsTheme implements TranslateMainInterface
 {
     use Time;
-    use TranslationByLocale;
     use Translatable;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -34,10 +34,9 @@ class NewsTheme
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var ArrayCollection
-     *
      */
     protected $translations;
     
@@ -56,6 +55,19 @@ class NewsTheme
         }
         return $string;
     }
+
+    public function getName()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getName();
+        }
+
+        return $string;
+    }
+
 
     /**
      * Get id

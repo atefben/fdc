@@ -4,9 +4,12 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
+
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -16,10 +19,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("name")
  */
-class StatementThemeTranslation
+class StatementThemeTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use TranslateChild;
 
     /**
      * @var string

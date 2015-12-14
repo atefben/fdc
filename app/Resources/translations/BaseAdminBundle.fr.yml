@@ -5,10 +5,41 @@ lang:
     zh: Chinois
 
 breadcrumb:
-    link_news_article_list:
-
+    link_news_article_list: Liste des actualités - articles
+    link_news_theme_list: Liste des Thèmes d'actualités
 group:
+    french_version: Version française
     main_infos: Informations générales
+    news:
+        publish_parameters: Paramètres de publication
+        associations: Associations
+        widgets: Modules éditoriaux
+    seo: Métadonnées & SEO
+    helper_seo: |
+        Laissez ces champs vides, les informations renseignées ci-dessus seront reprises automatiquement.
+        Vous pouvez également renseignez ces champs dans le cas où vous souhaitez surcharger les informations reprises automatiquement.
+    helper_seo_example: |
+        <title> : [valeur champ titre actualité] - Festival de Cannes 2016
+        meta desc  : [valeur champ chapô actualité]
+
+        og:site_name : Festival de Cannes 2016
+        og:type : article
+        og:title : [valeur champ titre actualité]
+        og:url : [URL actualité]
+        og:description : [valeur champ chapô actualité]
+        og:updated_time : [valeur date de modif actualité]
+        og:image : [preset spécifique image principale (1200x630px)]
+
+        twitter:card : summary_large_image
+        twitter:site : Festival de Cannes 2016
+        twitter:creator : @Festival_Cannes
+        twitter:title : [valeur champ titre actualité]
+        twitter:description : [valeur champ chapô actualité]
+        twitter:image : [preset spécifique image principale (600x380px)]
+
+        article:author : [valeur signature actualité]
+        article:published_time : [valeur date de publication de l'actu]
+        article:modified_time : [valeur date de modif actualité]
 
 entity:
     news_article: Articles
@@ -47,13 +78,15 @@ list:
     label_created_at: Date de création
     label_published_interval: Date(s) de publication
     label__action: Actions
-
+    label_theme_name: Nom du thème
+    label_priority_status: Priorité
 filter:
     label_id: Identifiant
     label_title: Titre
     label_theme: Thème
     label_status: Statut
     label_translate: Traduit
+    label_priority_status: Priorité
 
 dashboard:
     group:
@@ -70,20 +103,59 @@ dashboard:
 
 form:
     news:
+        helper_header_image: "Dimensions attendues : YxZpx - ratio paysage. Format Attendu."
         helper_title: "X caractères max."
         helper_seo_title: "Recommandé : 60 caractères"
         helper_description: "Recommandé : 155 caractères"
         helper_file: |
             Par défaut, c'est l'image principale qui est utilisée comme image de partage.
             Dimensions attendues : YxZpx. Format attendu.
-    label_seo_file: Vignette partage
+        helper_news_association: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
+        helper_signature: X caractères max.
+        helper_widgets: Ajouter un module de type :
+        helper_tags: Ajoutez des tags à l'article pour le voir ressortir dans les résultats de recherche.
+    widget:
+        text: Module de texte
+        video: Module vidéo Amazon
+        video_youtube: Module vidéo Youtube
+        audio: Module audio
+        image: Module photo(s)
+        image_dual_align: Module 2 photos / ligne
+        quote: Module citation
+    label_signature: Signature
+    label_introduction: Chapô
+    label_header_image: Image principale
+    label_news_association: Actualités associés
+    label_displayed_home: Remonter en homepage
+    label_displayed_mobile: Flux mobiles
+    label_translate: Envoyer en traduction
     label_theme: Thème
     label_title: Titre
     label_publish_on: Publié sur
     label_published_at: Date de début de publication
-    label_published_ended_at: Date de fin de publication
+    label_publish_ended_at: Date de fin de publication
     label_status: Statut
     label_article_tags: Tags de recherche associés à l'article
+    label_priority_status: Priorité
+    label_seo_title: Titre
+    label_seo_description: Description
+    label_seo_file: Vignette partage
+    label_theme_name: Nom du thème
+    status:
+        draft: Brouillon
+        translation_pending: À traduire
+        translation_validating: Traduction(s) à valider
+        translated: Traduit
+        published: Publié
+        deactivated: Désactivé
+    priority_status:
+        low: Bas
+        average: Moyen
+        urgent: Urgent
+        now: Immédiat
+    theme:
+        helper_name: X caractères max.
+
 
 nav:
     site_modal: Ouvrir la sélection des sites
