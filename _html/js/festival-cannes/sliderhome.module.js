@@ -236,7 +236,10 @@ $(document).ready(function() {
     sliderHome.owlCarousel();
 
     if($('.mob').length) {
-      sliderHome.trigger('to.owl.carousel', [0, 0, true]);
+      sliderHome.trigger('to.owl.carousel', [1, 100, true]);
+      setTimeout(function() {
+        sliderHome.trigger('to.owl.carousel', [0, 100, true]);
+      }, 100);
     }
 
 
