@@ -67,11 +67,72 @@ class ParticipateController extends Controller
     public function partnersAction()
     {
 
-        $pageContent = "Contenu de la page";
+        $partners = array(
+            array(
+                'type' => 0,
+                'img' => 'img.jpg',
+                'alt' =>  'alt',
+                'title' => 'title',
+                'description' => 'lorem ipsum',
+                'website' => 'http://google.fr',
+                'contact' => 'a.mineau@ohwee.fr',
+                'person_img' => 'img.jpg',
+                'person_name' => 'Lorem Ipsum',
+                'person_title' => 'President'
+            ),
+            array(
+                'type' => 0,
+                'img' => 'img.jpg',
+                'alt' =>  'alt',
+                'title' => 'title',
+                'description' => 'lorem ipsum',
+                'website' => 'http://google.fr',
+                'contact' => 'a.mineau@ohwee.fr',
+                'person_img' => 'img.jpg',
+                'person_name' => 'Lorem Ipsum',
+                'person_title' => 'President'
+            ),
+            array(
+                'type' => 0,
+                'img' => 'img.jpg',
+                'alt' =>  'alt',
+                'title' => 'title',
+                'description' => 'lorem ipsum',
+                'website' => 'http://google.fr',
+                'contact' => 'a.mineau@ohwee.fr',
+                'person_img' => '',
+                'person_name' => '',
+                'person_title' => ''
+            ),
+            array(
+                'type' => 1,
+                'img' => 'img.jpg',
+                'alt' =>  'alt',
+                'title' => 'title',
+                'description' => 'lorem ipsum',
+                'website' => 'http://google.fr',
+                'contact' => 'a.mineau@ohwee.fr',
+                'person_img' => 'img.jpg',
+                'person_name' => 'Lorem Ipsum',
+                'person_title' => ''
+            ),
+            array(
+                'type' => 1,
+                'img' => 'img.jpg',
+                'alt' =>  'alt',
+                'title' => 'title',
+                'description' => 'lorem ipsum',
+                'website' => 'http://google.fr',
+                'contact' => 'a.mineau@ohwee.fr',
+                'person_img' => 'img.jpg',
+                'person_name' => 'Lorem Ipsum',
+                'person_title' => 'President'
+            )
+        );
 
         return $this->render(
             "FDCEventBundle:Participate:participate.partners.html.twig",
-            array('content' => $pageContent)
+            array('partners' => $partners)
         );
 
     }
@@ -83,11 +144,36 @@ class ParticipateController extends Controller
     public function suppliersAction()
     {
 
-        $pageContent = "Contenu de la page";
+        $suppliers = array(
+            array(
+                'img' => 'img.jpg',
+                'alt' =>  'alt',
+                'title' => 'title',
+                'description' => 'lorem ipsum',
+                'website' => 'http://google.fr',
+                'contact' => 'a.mineau@ohwee.fr'
+            ),
+            array(
+                'img' => 'img.jpg',
+                'alt' =>  'alt',
+                'title' => 'title',
+                'description' => 'lorem ipsum',
+                'website' => 'http://google.fr',
+                'contact' => 'a.mineau@ohwee.fr'
+            ),
+            array(
+                'img' => 'img.jpg',
+                'alt' =>  'alt',
+                'title' => 'title',
+                'description' => 'lorem ipsum',
+                'website' => '',
+                'contact' => ''
+            ),
+        );
 
         return $this->render(
             "FDCEventBundle:Participate:participate.suppliers.html.twig",
-            array('content' => $pageContent)
+            array('suppliers' => $suppliers)
         );
 
     }
