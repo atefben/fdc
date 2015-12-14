@@ -36,9 +36,9 @@
                             <div class="sonata-ba-collapsed-fields">
                                 {{ form_row(translationsFields.title) }}
                                 {{ form_row(form.parent.children.theme) }}
-                                {{ form_row(form.parent.children.tags) }}
                                 {{ form_row(form.parent.children.header) }}
                                 {{ form_row(translationsFields.introduction) }}
+                                {{ form_row(form.parent.children.signature) }}
                             </div>
                         </div>
                         {% else %}
@@ -137,10 +137,12 @@
                         <div class="box-body">
                             <div class="sonata-ba-collapsed-fields">
                                 {{ form_row(form.parent.children.sites) }}
+                                {{ form_row(form.parent.children.displayedHome) }}
+                                {{ form_row(form.parent.children.displayedMobile) }}
                                 {{ form_row(form.parent.children.publishedAt) }}
                                 {{ form_row(form.parent.children.publishEndedAt) }}
                                 {{ form_row(translationsFields.status) }}
-                                {{ form_row(form.parent.children.translationStatus) }}
+                                {{ form_row(form.parent.children.translate) }}
                                 {{ form_row(form.parent.children.priorityStatus) }}
                             </div>
                             <div>
@@ -283,13 +285,14 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.text'|trans }}</a>
-                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.video'|trans }}</a>
-                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.video_youtube'|trans }}</a>
-                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.audio'|trans }}</a>
-                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.image'|trans }}</a>
-                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.image_dual_align'|trans }}</a>
-                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'news.widget.quote'|trans }}</a>
+                                {{ 'form.news.helper_widgets'|trans }}<br/>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.text'|trans }}</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video'|trans }}</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
                             {% else %}
                                 {% for widget in form.parent.children.widgets.children %}
                                     <div class="item base-widget">
@@ -325,7 +328,8 @@
                             </h4>
                         </div>
                         <div class="box-body">
-                            {{ form_widget(form.parent.children.associations) }}
+                            {{ form_row(form.parent.children.associations) }}
+                            {{ form_row(form.parent.children.tags) }}
                         </div>
                     </div>
                 </div>
@@ -337,11 +341,11 @@
                         <div class="box-header">
                             <div class="clearfix">
                                 <h4 class="box-title">
-                                    {{ 'group.seo.title'|trans|raw|nl2br }}
+                                    {{ 'group.seo'|trans }}
                                 </h4>
                             </div>
                             <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
-                                {{ 'group.seo.help'|trans|raw|nl2br }}
+                                {{ 'group.helper_seo'|trans|nl2br }}
                             </div>
                         </div>
                         <div class="box-body">
@@ -354,7 +358,7 @@
                 {% if form.vars.default_locale == locale %}
                 <div class="col-md-4">
                     <p>
-                        {{ 'group.seo.help_example'|trans|nl2br }}
+                        {{ 'group.helper_seo_example'|trans|nl2br }}
                     </p>
                 </div>
                 {% else %}

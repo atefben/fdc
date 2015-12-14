@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * NewsArticle
  *
@@ -26,6 +28,7 @@ class NewsArticle extends News
      * @ORM\ManyToOne(targetEntity="MediaImage")
      *
      * @Groups({"news_list", "news_show"})
+     * @Assert\NotNull()
      */
     private $header;
     

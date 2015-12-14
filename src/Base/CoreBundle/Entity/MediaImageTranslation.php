@@ -4,8 +4,9 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Status;
+use Base\CoreBundle\Util\TranslateChild;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,11 +20,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaImageTranslation implements MediaTranslationInterface
+class MediaImageTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
-    use Status;
+    use TranslateChild;
     
     /**
      * @var string
@@ -40,13 +41,6 @@ class MediaImageTranslation implements MediaTranslationInterface
       * @Groups({"news_list", "news_show"})
       */
     private $theme;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $status;
 
     /**
      * @var string
@@ -114,29 +108,6 @@ class MediaImageTranslation implements MediaTranslationInterface
     public function getLegend()
     {
         return $this->legend;
-    }
-
-    /**
-     * Set status
-     *
-     * @param integer $status
-     * @return MediaImageTranslation
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return integer 
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 
     /**

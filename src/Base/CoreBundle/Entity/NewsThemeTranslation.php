@@ -4,30 +4,35 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
-use Doctrine\ORM\Mapping as ORM;
-
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
 
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity("name")
  */
-class NewsThemeTranslation
+class NewsThemeTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use TranslateChild;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     protected $name;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Set name

@@ -4,11 +4,12 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Status;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,11 +17,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaAudioTranslation implements MediaTranslationInterface
+class MediaAudioTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
-    use Status;
+    use TranslateChild;
 
     /**
      * @var string
@@ -51,13 +52,6 @@ class MediaAudioTranslation implements MediaTranslationInterface
       * @ORM\ManyToOne(targetEntity="NewsTheme")
       */
     private $theme;
-
-   /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $status;
 
     /**
      * @var string

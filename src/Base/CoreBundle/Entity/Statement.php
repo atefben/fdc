@@ -2,8 +2,9 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
+use Base\CoreBundle\Util\TranslateMain;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,9 +23,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "StatementArticle", "audio" = "StatementAudio", "image" = "StatementImage", "video" = "StatementVideo"})
  */
-abstract class Statement
+abstract class Statement implements TranslateMainInterface
 {
-    use TranslationByLocale;
+    use TranslateMain;
     use Time;
 
     /**
@@ -44,13 +45,6 @@ abstract class Statement
      * @ORM\OneToMany(targetEntity="StatementLock", mappedBy="statement")
      */
     private $locks;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
-    private $translate;
 
     /**
      * @var StatementTheme
@@ -149,29 +143,6 @@ abstract class Statement
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set translate
-     *
-     * @param boolean $translate
-     * @return Statement
-     */
-    public function setTranslate($translate)
-    {
-        $this->translate = $translate;
-
-        return $this;
-    }
-
-    /**
-     * Get translate
-     *
-     * @return boolean 
-     */
-    public function getTranslate()
-    {
-        return $this->translate;
     }
 
     /**

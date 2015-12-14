@@ -1,12 +1,12 @@
 <?php
 
-namespace Base\CoreBundle\Entity;
+namespace Base\CoreBundle\Interfaces;
 
 /**
- * Interface StatusInterface
+ * Interface TranslateChildInterface
  * @package Base\CoreBundle\Entity
  */
-interface StatusInterface
+interface TranslateChildInterface
 {
     const STATUS_DRAFT = 0;
     const STATUS_PUBLISHED  = 1;
@@ -15,12 +15,5 @@ interface StatusInterface
     const STATUS_TRANSLATED = 4;
     const STATUS_DEACTIVATED = 5;
 
-    /**
-     * getStatuses function.
-     *
-     * @access public
-     * @static
-     * @return void
-     */
-    static public function getStatuses();
+    public static function getStatuses();
 }

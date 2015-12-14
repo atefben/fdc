@@ -22,7 +22,6 @@ use JMS\Serializer\Annotation\Since;
 class MediaImage extends Media
 {
     use Translatable;
-    use TranslationByLocale;
 
     /**
      * @var ArrayCollection

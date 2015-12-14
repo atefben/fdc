@@ -2,14 +2,14 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateMain;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -24,10 +24,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Event
+class Event implements TranslateMainInterface
 {
     use Translatable;
     use Time;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -46,13 +47,6 @@ class Event
      * @ORM\OneToMany(targetEntity="EventLock", mappedBy="event")
      */
     private $locks;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
-    private $translate;
 
     /**
      * @var NewsTheme
@@ -383,29 +377,6 @@ class Event
     public function getAssociations()
     {
         return $this->associations;
-    }
-
-    /**
-     * Set translate
-     *
-     * @param boolean $translate
-     * @return News
-     */
-    public function setTranslate($translate)
-    {
-        $this->translate = $translate;
-
-        return $this;
-    }
-
-    /**
-     * Get translate
-     *
-     * @return boolean
-     */
-    public function getTranslate()
-    {
-        return $this->translate;
     }
 
     /**

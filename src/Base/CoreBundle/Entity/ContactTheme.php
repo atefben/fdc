@@ -2,12 +2,11 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,10 +22,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\ContactThemeRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class ContactTheme
+class ContactTheme implements TranslateMainInterface
 {
     use Translatable;
-    use TranslationByLocale;
+    use TranslateMain;
     use Time;
 
     /**

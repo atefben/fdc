@@ -6,5 +6,7 @@ services:
 
   base.listener.news:
         class: Base\CoreBundle\Listener\NewsListener
+        arguments:
+            - "@security.token_storage"
         tags:
             - { name: doctrine.event_listener, event: prePersist }
