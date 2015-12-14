@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-14T11:44:32Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-14T14:57:58Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -393,6 +393,52 @@
         <source>header.usernav.nav.rechercher</source>
         <target>Rechercher</target>
         <jms:reference-file line="116">Resources/views/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7a17713a51882265ca5d66304e2657cbc0109143" resname="juries.btn.decouvrirrubrique">
+        <source>juries.btn.decouvrirrubrique</source>
+        <target>Découvrir la rubrique</target>
+        <jms:reference-file line="80">views/Jury/jury.section.html.twig</jms:reference-file>
+        <jms:reference-file line="82">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="53583f2226e5429a948e0226aabfe65e8af2c1cb" resname="juries.nav.camerador">
+        <source>juries.nav.camerador</source>
+        <target>Caméra d'or</target>
+        <jms:reference-file line="36">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4f3bfbe2197f15a14ae396f3ead375c769266849" resname="juries.nav.certainregard">
+        <source>juries.nav.certainregard</source>
+        <target>Un certain regard</target>
+        <jms:reference-file line="30">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f64bf270c47f02fa2253474c1c6023d46036d827" resname="juries.nav.cinefondation">
+        <source>juries.nav.cinefondation</source>
+        <target><![CDATA[Cinéfondation & courts métrages]]></target>
+        <jms:reference-file line="24">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="583aea18c2cd4e7ab67583f7de721830af3d7e1f" resname="juries.nav.longsmetrages">
+        <source>juries.nav.longsmetrages</source>
+        <target>Longs métrages</target>
+        <jms:reference-file line="18">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9457a0dbfcdb25be75c6d487c0d6b916ce6344c0" resname="juries.role.title.membresdujury">
+        <source>juries.role.title.membresdujury</source>
+        <target>Membres du jury des longs métrages</target>
+        <jms:reference-file line="58">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="47b4fbc5d82b8f52d594f07823f665299bd40991" resname="juries.role.title.presidentdujury">
+        <source>juries.role.title.presidentdujury</source>
+        <target>Président du jury</target>
+        <jms:reference-file line="50">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c0c717526762ed3f48b0e739ce4eed1dab5e3d92" resname="juries.title.lesjurys">
+        <source>juries.title.lesjurys</source>
+        <target>Les Jurys</target>
+        <jms:reference-file line="11">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9134ba19720ee9fe571efb0f6d6d4e939c837649" resname="juries.title.retrospective">
+        <source>juries.title.retrospective</source>
+        <target>Rétrospective</target>
+        <jms:reference-file line="77">views/Jury/jury.section.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ab47c6f1343c0353ebf5b3b7a54a5f6fea278e3d" resname="mentionslegales.hebergement.amazon">
         <source>mentionslegales.hebergement.amazon</source>

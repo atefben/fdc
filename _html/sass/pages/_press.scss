@@ -821,6 +821,10 @@
                 position: absolute;
                 width: 220px;
 
+                &.ui-draggable-dragging {
+                  z-index: 5;
+                }
+
                 &.ui-draggable-dragging .category:after {
                   cursor: -webkit-grabbing;
                   cursor: grabbing;
