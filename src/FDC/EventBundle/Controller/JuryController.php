@@ -92,7 +92,7 @@ class JuryController extends Controller
      * @param id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getArtiste($id)
+    public function getArtist($id)
     {
 
         $artiste = array(
