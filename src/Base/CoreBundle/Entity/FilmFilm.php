@@ -4,7 +4,8 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Base\CoreBundle\Util\TranslationByLocale;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
 
@@ -23,10 +24,10 @@ use JMS\Serializer\Annotation\VirtualProperty;
  * @ORM\HasLifecycleCallbacks
  *
  */
-class FilmFilm implements FilmFilmInterface
+class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 {
     use Translatable;
-    use TranslationByLocale;
+    use TranslateMain;
     use Time;
     use Soif;
     

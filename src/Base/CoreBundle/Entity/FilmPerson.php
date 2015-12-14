@@ -4,12 +4,14 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\Soif;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Soif;
-use Base\CoreBundle\Util\TranslationByLocale;
 
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Exclude;
@@ -23,12 +25,12 @@ use JMS\Serializer\Annotation\Groups;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
-class FilmPerson
+class FilmPerson implements TranslateMainInterface
 {
     use Time;
     use Translatable;
     use Soif;
-    use TranslationByLocale;
+    use TranslateMain;
 
     /**
      * @var string

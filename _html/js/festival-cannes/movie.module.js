@@ -12,19 +12,40 @@ $(document).ready(function() {
         cl.setSpeed(1);
         cl.setFPS(60);
 
+    function setActiveMovieVideos() {
+      $('#slider-movie-videos .owl-item').removeClass('center');
+      $('#slider-movie-videos .owl-item.active').first().addClass('center');
+    }
+
     function initSliders() {
       // init slider
       var sliderMovieVideos = $("#slider-movie-videos").owlCarousel({
         nav: false,
         dots: false,
         smartSpeed: 500,
-        center: true,
         loop: false,
         margin: 50,
         autoWidth: true,
         dragEndSpeed: 600,
+        responsive:{
+          0:{
+            items: 3
+          },
+          1675: {
+            items: 4
+          }
+        },
         onInitialized: function() {
-          $('#slider-movie-videos .owl-stage').css({ 'margin-left': "-343px" });
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-movie-videos .owl-stage').css({ 'margin-left': m });
+          setActiveMovieVideos();
+        },
+        onResized: function() {
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-movie-videos .owl-stage').css({ 'margin-left': m });
+        },
+        onTranslated: function() {
+          setActiveMovieVideos();
         }
       });
 
@@ -35,13 +56,25 @@ $(document).ready(function() {
         nav: false,
         dots: false,
         smartSpeed: 500,
-        center: true,
         loop: false,
         margin: 50,
         autoWidth: true,
         dragEndSpeed: 600,
+        responsive:{
+          0:{
+            items: 4
+          },
+          1675: {
+            items: 5
+          }
+        },
         onInitialized: function() {
-          $('#slider-competition .owl-stage').css({ 'margin-left': "-385px" });
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-competition .owl-stage').css({ 'margin-left': m });
+        },
+        onResized: function() {
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-competition .owl-stage').css({ 'margin-left': m });
         }
       });
 

@@ -598,6 +598,10 @@ header {
 
 @include breakpoint(1024px) {
   .mob header #navigation ul.main {
-    font-size: 0.813rem;
+    font-size: 0.8rem;
+  }
+
+  .mob header #navigation ul.user {
+    font-size: 0.7rem;
   }
 }

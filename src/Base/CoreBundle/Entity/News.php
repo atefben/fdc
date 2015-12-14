@@ -6,12 +6,12 @@ use \DateTime;
 
 use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\MainStatus;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -28,12 +28,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "NewsArticle", "audio" = "NewsAudio", "image" = "NewsImage", "video" = "NewsVideo"})
  */
-abstract class News implements MainStatusInterface
+abstract class News implements TranslateMainInterface
 {
-    use TranslationByLocale;
     use Time;
     use Seo;
-    use MainStatus;
+    use TranslateMain;
     
     /**
      * @var integer
@@ -53,26 +52,13 @@ abstract class News implements MainStatusInterface
      */
     private $locks;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false, options={"default":0})
-     */
-    private $priorityStatus;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false, options={"default":0})
-     */
-    private $translationStatus;
-
      /**
       * @var NewsTheme
       *
       * @ORM\ManyToOne(targetEntity="NewsTheme")
       *
       * @Groups({"news_list", "news_show"})
+      * @Assert\NotNull()
       */
     private $theme;
 
@@ -107,6 +93,33 @@ abstract class News implements MainStatusInterface
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderNews")
      */
     private $homepage;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $displayedHome;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $displayedMobile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $signature;
 
     /**
      * @var NewsTag
@@ -149,6 +162,20 @@ abstract class News implements MainStatusInterface
      * @Groups({"news_list", "news_show"})
      */
     protected $translations;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     */
+    private $createdBy;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     */
+    private $updatedBy;
 
     public function __construct()
     {
@@ -508,25 +535,117 @@ abstract class News implements MainStatusInterface
     }
 
     /**
-     * Set translationStatus
+     * Set displayedHome
      *
-     * @param integer $translationStatus
+     * @param boolean $displayedHome
      * @return News
      */
-    public function setTranslationStatus($translationStatus)
+    public function setDisplayedHome($displayedHome)
     {
-        $this->translationStatus = $translationStatus;
+        $this->displayedHome = $displayedHome;
 
         return $this;
     }
 
     /**
-     * Get translationStatus
+     * Get displayedHome
      *
-     * @return integer 
+     * @return boolean 
      */
-    public function getTranslationStatus()
+    public function getDisplayedHome()
     {
-        return $this->translationStatus;
+        return $this->displayedHome;
+    }
+
+    /**
+     * Set displayedMobile
+     *
+     * @param boolean $displayedMobile
+     * @return News
+     */
+    public function setDisplayedMobile($displayedMobile)
+    {
+        $this->displayedMobile = $displayedMobile;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedMobile
+     *
+     * @return boolean 
+     */
+    public function getDisplayedMobile()
+    {
+        return $this->displayedMobile;
+    }
+
+    /**
+     * Set signature
+     *
+     * @param string $signature
+     * @return News
+     */
+    public function setSignature($signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * Get signature
+     *
+     * @return string 
+     */
+    public function getSignature()
+    {
+        return $this->signature;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
+     * @return News
+     */
+    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
+     * @return News
+     */
+    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
     }
 }

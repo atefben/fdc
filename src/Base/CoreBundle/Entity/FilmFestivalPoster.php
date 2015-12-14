@@ -4,12 +4,13 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\Soif;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
-use Base\CoreBundle\Util\Soif;
 
 /**
  * FilmFestivalPoster
@@ -18,11 +19,11 @@ use Base\CoreBundle\Util\Soif;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmFestivalPoster implements FilmFestivalPosterInterface
+class FilmFestivalPoster implements FilmFestivalPosterInterface, TranslateMainInterface
 {
     use Time;
     use Translatable;
-    use TranslationByLocale;
+    use TranslateMain;
     use Soif;
 
     /**

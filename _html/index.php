@@ -405,6 +405,23 @@
               </div>
             </div>
           </div>
+          <div class="vid">
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div id="channels">
@@ -490,6 +507,23 @@
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
                     <span>282 vidéos</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Conférence de presse</a>
+                    <span>47 vidéos</span>
                   </div>
                 </div>
               </div>

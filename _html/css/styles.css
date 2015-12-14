@@ -3852,7 +3852,11 @@ header #navigation ul.user .participate-wrapper ul li a {
 
 @media screen and (max-width: 1024px) {
   .mob header #navigation ul.main {
-    font-size: 0.813rem;
+    font-size: 0.8rem;
+  }
+
+  .mob header #navigation ul.user {
+    font-size: 0.7rem;
   }
 }
 footer * {
@@ -13602,7 +13606,7 @@ input[type=submit] {
   width: auto !important;
 }
 .artist .realisateurs #slide-artist .item {
-  margin: 3px;
+  width: 248px;
 }
 .artist .realisateurs #slide-artist .item img {
   display: block;
@@ -15260,6 +15264,9 @@ input[type=submit] {
   border: 1px solid #e5e5e5;
   position: absolute;
   width: 220px;
+}
+.press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event.ui-draggable-dragging {
+  z-index: 5;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event.ui-draggable-dragging .category:after {
   cursor: -webkit-grabbing;

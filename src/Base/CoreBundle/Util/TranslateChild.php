@@ -3,13 +3,20 @@
 namespace Base\CoreBundle\Util;
 
 /**
- * Status trait.
+ * TranslateChild trait.
  *
  * @author  Antoine Mineau
  * @company Ohwee
  */
-trait Status
+trait TranslateChild
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $status;
+
     /**
      * getStatuses function.
      *
@@ -27,5 +34,28 @@ trait Status
             self::STATUS_PUBLISHED => 'form.status.published',
             self::STATUS_DEACTIVATED => 'form.status.deactivated'
         );
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return NewsThemeTranslation
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

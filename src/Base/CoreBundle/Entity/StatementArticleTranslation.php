@@ -4,12 +4,13 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Util\Seo;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Seo;
-use Base\CoreBundle\Util\Status;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -20,10 +21,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementArticleTranslation implements StatementTranslationInterface
+class StatementArticleTranslation implements TranslateChildInterface
 {
     use Seo;
-    use Status;
+    use TranslateChild;
     use Time;
     use Translation;
 
@@ -46,20 +47,11 @@ class StatementArticleTranslation implements StatementTranslationInterface
     private $introduction;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false)
-     * @Assert\NotBlank()
-     */
-    private $status;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->sites = new ArrayCollection();
-        $this->status = StatementArticleTranslation::STATUS_DRAFT;
     }
 
     /**
@@ -107,29 +99,5 @@ class StatementArticleTranslation implements StatementTranslationInterface
     {
         return $this->introduction;
     }
-
-    /**
-     * Set status
-     *
-     * @param integer $status
-     * @return NewsArticleTranslation
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return integer
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
 
 }
