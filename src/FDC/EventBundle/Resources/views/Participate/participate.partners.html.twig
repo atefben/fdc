@@ -8,9 +8,9 @@
             <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/participate/bandeau3.jpg') }})">
                 <h2 class="title title-list-header">
                     {% image '@FDCEventBundle/Resources/public/img/participate/Handshake.png' %}
-                    <img src="{{ asset_url }}" class="logo" alt="{{ 'participer.prepare.title.partenaires'|trans }}" />
+                    <img src="{{ asset_url }}" class="logo" alt="{{ 'participer.partners.title.partenaires'|trans }}" />
                     {% endimage %}
-                    <br> {{ 'participer.prepare.title.partenaires'|trans }}
+                    <br> {{ 'participer.partners.title.partenaires'|trans }}
                 </h2>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <!-- PARTENAIRES OFFICIELS -->
         <section class="content-partners">
             <div class="contain-section participate-active">
-                <h3 class="title-section">{{ 'participer.prepare.title.partenairesofficiels'|trans }}</h3><i class="fa fa-minus"></i>
+                <h3 class="title-section">{{ 'participer.partners.title.partenairesofficiels'|trans }}</h3><i class="fa fa-minus"></i>
                 {% for partner in partners %}
                     {% if partner.type == 0 %}
                         <div class="item-partners">
@@ -33,10 +33,10 @@
                                             {{ partner.description }}
                                         </p>
                                         {% if partner.website is defined %}
-                                            <a href="{{ partner.website }}" class="link">{{ 'participer.prepare.btn.siteinternet'|trans }}</a>
+                                            <a href="{{ partner.website }}" class="link">{{ 'participer.partners.btn.siteinternet'|trans }}</a>
                                         {% endif %}
                                         {% if partner.contact is defined %}
-                                            <a href="{{ partner.contact }}" class="link">{{ 'participer.prepare.btn.sitecontact'|trans }}</a>
+                                            <a href="{{ partner.contact }}" class="link">{{ 'participer.partners.btn.sitecontact'|trans }}</a>
                                         {% endif %}
                                     </div>
                                     <div class="portrait">
@@ -56,10 +56,10 @@
                                             {{ partner.description }}
                                         </p>
                                         {% if partner.website is defined %}
-                                            <a href="{{ partner.website }}" class="link">{{ 'participer.prepare.btn.siteinternet'|trans }}</a>
+                                            <a href="{{ partner.website }}" class="link">{{ 'participer.partners.btn.siteinternet'|trans }}</a>
                                         {% endif %}
                                         {% if partner.contact is defined %}
-                                            <a href="{{ partner.contact }}" class="link">{{ 'participer.prepare.btn.sitecontact'|trans }}</a>
+                                            <a href="{{ partner.contact }}" class="link">{{ 'participer.partners.btn.sitecontact'|trans }}</a>
                                         {% endif %}
                                 {% endif %}
                             </div>
@@ -71,7 +71,7 @@
         <!-- PARTENAIRES TECHNIQUE -->
         <section class="content-partners">
             <div class="contain-section participate-active">
-                <h3 class="title-section">{{ 'participer.prepare.title.partenairestechniques'|trans }}</h3><i class="fa fa-minus"></i>
+                <h3 class="title-section">{{ 'participer.partners.title.partenairestechniques'|trans }}</h3><i class="fa fa-minus"></i>
                 {% for partner in partners %}
                     {% if partner.type == 1 %}
                         <div class="item-partners">
@@ -86,10 +86,10 @@
                                             {{ partner.description }}
                                         </p>
                                         {% if partner.website %}
-                                            <a href="{{ partner.website }}" class="link">{{ 'participer.prepare.btn.siteinternet'|trans }}</a>
+                                            <a href="{{ partner.website }}" class="link">{{ 'participer.partners.btn.siteinternet'|trans }}</a>
                                         {% endif %}
                                         {% if partner.contact %}
-                                            <a href="{{ partner.contact }}" class="link">{{ 'participer.prepare.btn.sitecontact'|trans }}</a>
+                                            <a href="{{ partner.contact }}" class="link">{{ 'participer.partners.btn.sitecontact'|trans }}</a>
                                         {% endif %}
                                     </div>
                                     <div class="portrait">
