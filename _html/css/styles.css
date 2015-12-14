@@ -13602,7 +13602,7 @@ input[type=submit] {
   width: auto !important;
 }
 .artist .realisateurs #slide-artist .item {
-  margin: 3px;
+  width: 248px;
 }
 .artist .realisateurs #slide-artist .item img {
   display: block;
