@@ -237,10 +237,10 @@ $(document).ready(function() {
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
               }
 
-              if(moment.format('DD') == maxDate) {
+              if(parseInt(moment.format('DD')) + 7 >= maxDate) {
                 $('#mycalendar .fc-right').addClass('hide');
               }
-              if(moment.format('DD') == minDate) {
+              if(moment.format('DD') < (parseInt(minDate) + 7)) {
                 $('#mycalendar .fc-left').addClass('hide');
               }
 
