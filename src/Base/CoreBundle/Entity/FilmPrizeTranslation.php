@@ -47,7 +47,12 @@ class FilmPrizeTranslation implements TranslateChildInterface
      * })
      */
     protected $category;
-    
+
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
+
     /**
      * Set title
      *

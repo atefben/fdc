@@ -53,6 +53,11 @@ class FilmAtelierTranslation implements TranslateChildInterface
      */
     private $applicantNote;
 
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
+
     /**
      * Set title
      *

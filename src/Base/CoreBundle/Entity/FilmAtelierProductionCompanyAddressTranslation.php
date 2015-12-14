@@ -30,6 +30,11 @@ class FilmAtelierProductionCompanyAddressTranslation implements TranslateChildIn
      */
     private $state;
 
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
+
     /**
      * Set state
      *

@@ -2,6 +2,8 @@
 
 namespace Base\AdminBundle\Form\Type;
 
+use Doctrine\ORM\EntityRepository;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -16,8 +18,14 @@ class SettingsFDCYearType extends AbstractType
     {
         $builder
             ->add('festival', 'entity', array(
+                'placeholder' => '',
+                'label' => 'form.settings.festival',
                 'class' => 'BaseCoreBundle:FilmFestival',
-                'property' => 'year'
+                'property' => 'year',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('ff')
+                        ->orderBy('ff.year', 'DESC');
+                }
             ))
             ->add('save', 'submit', array(
                 'label' => 'form.label_save'

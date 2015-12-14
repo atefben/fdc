@@ -54,6 +54,11 @@ class CountryTranslation implements TranslateChildInterface
      */
     private $lang;
 
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
+
     /**
      * Set name
      *

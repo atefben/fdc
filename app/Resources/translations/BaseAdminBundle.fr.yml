@@ -4,6 +4,10 @@ lang:
     es: Espagnol
     zh: Chinois
 
+settings:
+    fdc: Paramètres du Festival de Cannes
+    fdc_api: Paramètres de l'API Festival de Cannes
+
 breadcrumb:
     link_news_article_list: Liste des actualités - articles
     link_news_theme_list: Liste des Thèmes d'actualités
@@ -102,6 +106,10 @@ dashboard:
         homepage: Homepage
 
 form:
+    flashbag:
+        modified: Modification effectuée.
+    settings:
+        festival: Année du festival
     news:
         helper_header_image: "Dimensions attendues : YxZpx - ratio paysage. Format Attendu."
         helper_title: "X caractères max."
@@ -122,6 +130,7 @@ form:
         image: Module photo(s)
         image_dual_align: Module 2 photos / ligne
         quote: Module citation
+    label_save: Sauvegarder
     label_signature: Signature
     label_introduction: Chapô
     label_header_image: Image principale

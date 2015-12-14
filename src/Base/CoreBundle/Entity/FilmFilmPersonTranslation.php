@@ -34,6 +34,11 @@ class FilmFilmPersonTranslation implements TranslateChildInterface
      */
     private $role;
 
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
+
     /**
      * Set role
      *

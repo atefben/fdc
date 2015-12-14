@@ -22,7 +22,7 @@ use JMS\Serializer\Annotation\Groups;
  * FilmPerson
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmPersonRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmPerson implements TranslateMainInterface

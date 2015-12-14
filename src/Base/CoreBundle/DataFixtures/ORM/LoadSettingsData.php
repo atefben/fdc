@@ -10,14 +10,14 @@ use Base\CoreBundle\Entity\Settings;
 
 
 /**
- * LoadSettingData class.
+ * LoadSettingsData class.
  *
  * @extends     AbstractFixture
  * @implements  OrderedFixtureInterface
  * @author      Antoine Mineau
  * @company     Ohwee
  */
-class LoadSettingData extends AbstractFixture implements OrderedFixtureInterface
+class LoadSettingsData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
