@@ -2,7 +2,7 @@ lang:
     en: Anglais
     fr: Français
     es: Espagnol
-    zh: Chinois
+    cn: Chinois
 
 settings:
     fdc: Paramètres du Festival de Cannes
@@ -130,6 +130,8 @@ form:
         image: Module photo(s)
         image_dual_align: Module 2 photos / ligne
         quote: Module citation
+    placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
+    placeholder_seo_description: "[valeur champ chapô actualité]"
     label_save: Sauvegarder
     label_signature: Signature
     label_introduction: Chapô

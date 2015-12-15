@@ -12,6 +12,8 @@ use Base\CoreBundle\Util\Soif;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 use JMS\Serializer\Annotation\VirtualProperty;
@@ -46,6 +48,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * 
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"titleVO"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
     
     /**
      * @var boolean
@@ -191,6 +201,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * 
      */
     private $selection;
+
+    /**
+     * @var FilmSelectionSection
+     *
+     * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="films", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
+     *
+     */
+    private $selectionSection;
 
     /**
      * @var FilmFestival
@@ -341,6 +361,29 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Settings
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
@@ -1516,5 +1559,28 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getProjectionProgrammationFilmsList()
     {
         return $this->projectionProgrammationFilmsList;
+    }
+
+    /**
+     * Set selectionSection
+     *
+     * @param \Base\CoreBundle\Entity\FilmSelectionSection $selectionSection
+     * @return FilmFilm
+     */
+    public function setSelectionSection(\Base\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
+    {
+        $this->selectionSection = $selectionSection;
+
+        return $this;
+    }
+
+    /**
+     * Get selectionSection
+     *
+     * @return \Base\CoreBundle\Entity\FilmSelectionSection 
+     */
+    public function getSelectionSection()
+    {
+        return $this->selectionSection;
     }
 }

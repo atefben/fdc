@@ -2,8 +2,9 @@
 
 namespace Base\CoreBundle\Repository;
 
+use Base\CoreBundle\Entity\FilmFunctionInterface;
+
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * FilmPersonRepository class.
@@ -14,8 +15,36 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class FilmPersonRepository extends EntityRepository
 {
-    public function getPerson()
+    public function getArtist($locale, $slug)
     {
-
+        return $this->createQueryBuilder('fp')
+            ->leftJoin('fp.translations', 'fpt')
+            ->leftJoin('fp.nationality', 'fpc')
+            ->leftJoin('fpc.translations', 'fpct')
+            ->leftJoin('fp.nationality2', 'fpc2')
+            ->leftJoin('fpc2.translations', 'fpct2')
+            ->where('fp.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getSingleResult();
     }
+
+    public function getDirectorsRandomly($count)
+    {
+        return $this->createQueryBuilder('fp')
+            ->select('
+                fp,
+                RAND() as HIDDEN rand
+            ')
+            ->leftJoin('fp.films', 'ffp')
+            ->leftJoin('ffp.functions', 'ffpf')
+            ->leftJoin('ffpf.function', 'ff')
+            ->where('ff.id = :id_director')
+            ->setParameter('id_director', FilmFunctionInterface::ID_DIRECTOR)
+            ->addOrderBy('rand')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getResult();
+    }
+
 }

@@ -42,13 +42,13 @@
         <div class="container container-list">
             <section class="categorie-items contain-jury">
                 {% if president %}
-                    <a href="{{ path('fdc_event_jury_getartiste', {'id': president.id}) }}">
+                    <a href="{{ path('fdc_event_jury_getartist', {'slug': president.id}) }}">
                         <div class="photo-jury" style="background-image:url({{ president.img }})">
                         </div>
                     </a>
                     <div class="contain-descript">
                         <h3 class="descript-title">{{ 'juries.role.title.presidentdujury'|trans }}</h3>
-                        <a href="{{ path('fdc_event_jury_getartiste', {'id': president.id}) }}">
+                        <a href="{{ path('fdc_event_jury_getartist', {'slug': president.id}) }}">
                             <h2 class="descript-name">{{ president.name }}</h2>
                         </a>
                         <span class="descript-rank">{{ president.functions }}</span>
@@ -62,7 +62,7 @@
                     <div class="grid-sizer"></div>
                     {% for member in members %}
                         <div class="jury-box item">
-                            <a href="{{ path('fdc_event_jury_getartiste', {'id': member.id}) }}">
+                            <a href="{{ path('fdc_event_jury_getartist', {'slug': member.id}) }}">
                                 <img src="{{ member.img }}" alt="{{ member.name }}">
                                 <div class="legend">
                                     <span class="name">{{ member.name }}</span>

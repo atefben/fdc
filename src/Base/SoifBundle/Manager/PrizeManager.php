@@ -37,14 +37,14 @@ class PrizeManager extends CoreManager
             'CategorieTraductions' => array(
                 'result' => 'CategoriePrixTraductionDto',
                 'setters' => array(
-                    'setTitle' => 'Libelle'
+                    'setCategory' => 'Libelle'
                 ),
                 'wsLangKey' => 'CodeLangue'
             ),
             'TitreTraductions' => array(
                 'result' => 'TitreTraductionDto',
                 'setters' => array(
-                    'setCategory' => 'Titre'
+                    'setTitle' => 'Titre'
                 ),
                 'wsLangKey' => 'CodeLangue'
             )

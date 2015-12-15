@@ -13,3 +13,15 @@ services:
         class: Base\CoreBundle\Twig\Extension\NewsWidgetInstanceOfExtension
         tags:
             - { name: twig.extension }
+
+    base.twig.trans_fallback_extension:
+        class: Base\CoreBundle\Twig\Extension\TransFallbackExtension
+        tags:
+            - { name: twig.extension }
+        arguments: [%locale_fallback%, @request_stack]
+
+    base.twig.content_lang_extension:
+        class: Base\CoreBundle\Twig\Extension\ContentLangExtension
+        arguments: [%locale_fallback%, @request_stack]
+        tags:
+            - { name: twig.extension }

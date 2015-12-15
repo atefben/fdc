@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\Soif;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Exclude;
@@ -46,6 +47,14 @@ class FilmPerson implements TranslateMainInterface
      * })
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"firstname", "lastname"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -140,7 +149,7 @@ class FilmPerson implements TranslateMainInterface
     private $address;
 
     /**
-     * @var FilmPersonFilmFilm
+     * @var FilmFilmPerson
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="person", cascade={"persist"})
      *
@@ -234,6 +243,29 @@ class FilmPerson implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Settings
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

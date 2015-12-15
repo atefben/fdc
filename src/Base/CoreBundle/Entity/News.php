@@ -225,8 +225,6 @@ abstract class News implements TranslateMainInterface
         return $this->id;
     }
 
-
-
     /**
      * Add widgets
      *

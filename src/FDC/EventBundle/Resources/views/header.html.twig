@@ -36,7 +36,7 @@
                     {% for locale in locales %}
                         {% if locale == app.request.locale %}
                         {% else %}
-                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale|upper }}</a></li>
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locales_front[loop.index0]|upper }}</a></li>
                         {% endif %}
                     {% endfor %}
                 </ul>
