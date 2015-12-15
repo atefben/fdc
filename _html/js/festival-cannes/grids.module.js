@@ -264,10 +264,8 @@ function setImages(grid, dom, init){
         debug: false,
         dataType: 'html',
         path: function (index) {
-          console.log($('#gridAudios').data('type') + index + ".html");
           //TODO dev// 
           return $('#gridAudios').data('type') + index + ".html";
-
         }
       }, function (newElements, data, url) {
         setGrid($grid, newElements, false);
