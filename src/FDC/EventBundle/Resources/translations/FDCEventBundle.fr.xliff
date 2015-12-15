@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-14T18:09:07Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-15T14:31:45Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -470,6 +470,11 @@
         <target>Président du jury</target>
         <jms:reference-file line="50">views/Jury/jury.section.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="13e93d1283514b547dc68bde40eebc9db329bd28" resname="juries.sharemail.section">
+        <source>juries.sharemail.section</source>
+        <target>Biographie</target>
+        <jms:reference-file line="107">views/Artist/artist.page.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="c0c717526762ed3f48b0e739ce4eed1dab5e3d92" resname="juries.title.lesjurys">
         <source>juries.title.lesjurys</source>
         <target>Les Jurys</target>
@@ -599,6 +604,21 @@
         <source>politiqueconfidentialite.title.politiqueconfidentialite</source>
         <target>Politique de confidentialité</target>
         <jms:reference-file line="7">views/Footer/footer.politique-confidentialite.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="36278b911584399981f85e88a9bacb72061055cf" resname="sharemail.form.placeholder.email">
+        <source>sharemail.form.placeholder.email</source>
+        <target>Email des destinataires*</target>
+        <jms:reference-file line="43">Form/Type/ShareEmailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7b1dafe6f88c7fb35125e5fb7424125f7f05a776" resname="sharemail.form.placeholder.message">
+        <source>sharemail.form.placeholder.message</source>
+        <target>Votre message*</target>
+        <jms:reference-file line="63">Form/Type/ShareEmailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4a242351d5fd2d0511a44d02e793a9924a5f32bf" resname="sharemail.form.placeholder.votreemail">
+        <source>sharemail.form.placeholder.votreemail</source>
+        <target>Votre adresse email*</target>
+        <jms:reference-file line="49">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="49a01298a13f65a480b47bfaa38f20745557cdf2" resname="sitemap.title.plandusite">
         <source>sitemap.title.plandusite</source>

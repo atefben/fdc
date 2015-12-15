@@ -190,14 +190,13 @@ class JuryController extends Controller
 
         $pagination = $this->getArtistList($id);
 
-
         return array(
             'artist' => $artiste,
             'films' => $relatedFilms,
             'palmares' => $relatedPalmares,
             'roles' => $relatedRole,
             'realisateurs' => $allMembers,
-            'pagination' => $pagination
+            'pagination' => $pagination,
         );
     }
 
