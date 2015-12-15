@@ -12,12 +12,13 @@ class ArticleController extends Controller
 
     /**
      * @Route("/suggestion", options={"expose"=true})
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Template("FDCEventBundle:Article:article.suggestion.html.twig")
+     * @return array
      */
-    public function suggestionAction(Request $request)
+    public function suggestionAction()
     {
         $articles = array();
+        $request = $this->get('request');
 
         if($request->isXmlHttpRequest()) {
 
@@ -97,9 +98,8 @@ class ArticleController extends Controller
 
         }
 
-        return $this->render(
-            'FDCEventBundle:Article:article.suggestion.html.twig',
-            array('articles' => $articles)
+        return array(
+            'articles' => $articles
         );
 
     }

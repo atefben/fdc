@@ -7,28 +7,28 @@
 <div id="main" class="single-article artist">
     <div class="content-article">
         <div class="container">
-            <a href="{{ path('fdc_event_jury_getartiste', {'id': pagination.prev}) }}" class="nav prev"></a>
-            <a href="{{ path('fdc_event_jury_getartiste', {'id': pagination.next}) }}" class="nav next"></a>
-            {% if artiste %}
+            <a href="{{ path('fdc_event_jury_getartist', {'id': pagination.prev}) }}" class="nav prev"></a>
+            <a href="{{ path('fdc_event_jury_getartist', {'id': pagination.next}) }}" class="nav next"></a>
+            {% if artist %}
                 <div class="info">
-                    <span href="#" class="category">{{ artiste.functions }} -</span>
-                    <span class="city">{{ artiste.from }}</span>
+                    <span href="#" class="category">{{ artist.functions }} -</span>
+                    <span class="city">{{ artist.from }}</span>
                 </div>
-                <h2 class="title-article">{{ artiste.name }}</h2>
+                <h2 class="title-article">{{ artist.name }}</h2>
                 <div class="buttons">
-                    <a id="share-article" href="#" class="button">{{ 'juries.artiste.btn.partager'|trans }}</a>
+                    <a id="share-article" href="#" class="button">{{ 'juries.artist.btn.partager'|trans }}</a>
                     <a href="#" class="button print">{{ 'juries.artiste.btn.imprimer'|trans }}</a>
                 </div>
                 <div class="single-photo">
                     <div class="photo-container">
-                        <img src="{{ artiste.img }}" alt="{{ artiste.name }}" />
+                        <img src="{{ artist.img }}" alt="{{ artist.name }}" />
                     </div>
                 </div>
                 <div class="small-container">
                     <div class="biographie">
                         <h2 class="title title-cat-artist">{{ 'juries.artiste.title.biographie'|trans }}</h2>
                         <p class="paragraph">
-                            {{ artiste.bio }}
+                            {{ artist.bio }}
                         </p>
                     </div>
             {% endif %}

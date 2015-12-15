@@ -10,7 +10,7 @@ class JuryController extends Controller
 {
     /**
      * @Route("/juries-{section}")
-     *
+     * @Template("FDCEventBundle:Jury:jury.section.html.twig")
      * @param section
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -79,23 +79,20 @@ class JuryController extends Controller
                 break;
         }
 
-        return $this->render(
-            "FDCEventBundle:Jury:jury.section.html.twig",
-            array(
-                'members' => $members,
-                'president' => $president,
-            )
+        return array(
+            'members' => $members,
+            'president' => $president
         );
 
     }
 
     /**
      * @Route("/artiste-{id}")
-     *
+     * @Template("FDCEventBundle:Artist:artist.page.html.twig")
      * @param id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getArtiste($id)
+    public function getArtist($id)
     {
 
         $artiste = array(
@@ -191,23 +188,20 @@ class JuryController extends Controller
             )
         );
 
-        $pagination = $this->getArtisteList($id);
+        $pagination = $this->getArtistList($id);
 
 
-        return $this->render(
-            "FDCEventBundle:Jury:jury.artiste.html.twig",
-            array(
-                'artiste' => $artiste,
-                'films' => $relatedFilms,
-                'palmares' => $relatedPalmares,
-                'roles' => $relatedRole,
-                'realisateurs' => $allMembers,
-                'pagination' => $pagination
-            )
+        return array(
+            'artist' => $artiste,
+            'films' => $relatedFilms,
+            'palmares' => $relatedPalmares,
+            'roles' => $relatedRole,
+            'realisateurs' => $allMembers,
+            'pagination' => $pagination
         );
     }
 
-    public function getArtisteList($id)
+    public function getArtistList($id)
     {
         //$artiste->findAll()
         $artistes = array(
