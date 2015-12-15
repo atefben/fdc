@@ -199,8 +199,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_palmares_getpalmares', {'section': 'competition'}) }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_palmares_getpalmares' %}active{% endif %}">
                             {{ 'header.mainnav.nav.lepalmares'|trans }}
                         </a>
                     </li>

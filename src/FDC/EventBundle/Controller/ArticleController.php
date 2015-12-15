@@ -11,7 +11,7 @@ class ArticleController extends Controller
 {
 
     /**
-     * @Route("/")
+     * @Route("/articles")
      * @Template()
      */
     public function indexAction()

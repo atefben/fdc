@@ -1,0 +1,32 @@
+<ul class="sub-nav-list">
+    <li>
+        <a href="{{ path('fdc_event_palmares_getpalmares', {'section': 'competition'}) }}"
+           class="{% if app.request.attributes.get('section') == 'competition' %}active{% endif %} ajax">
+            {{ 'palmares.nav.competition'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_palmares_getpalmares', {'section': 'certain-regard'}) }}"
+           class="{% if app.request.attributes.get('section') == 'certain-regard' %}active{% endif %} ajax">
+            {{ 'palmares.nav.certain-regard'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_palmares_getpalmares', {'section': 'cinefondation'}) }}"
+           class="{% if app.request.attributes.get('section') == 'cinefondation' %}active{% endif %} ajax">
+            {{ 'palmares.nav.cinefondation'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_palmares_getpalmares', {'section': 'camera-dor'}) }}"
+           class="{% if app.request.attributes.get('section') == 'camera-dor' %}active{% endif %} ajax">
+            {{ 'palmares.nav.camera-dor'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_palmares_getpalmares', {'section': 'tout-palmares'}) }}"
+           class="{% if app.request.attributes.get('section') == 'tout-palmares' %}active{% endif %} ajax">
+            {{ 'palmares.nav.tout-palmares'|trans }}
+        </a>
+    </li>
+</ul>
