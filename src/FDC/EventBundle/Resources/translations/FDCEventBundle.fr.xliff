@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-14T16:19:57Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2015-12-15T14:31:45Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -350,7 +350,7 @@
       <trans-unit id="7a5d42a3a85421e95697dd8e60d0bf1804251175" resname="header.search.input.entrezrecherche">
         <source>header.search.input.entrezrecherche</source>
         <target>Entrez votre recherche...</target>
-        <jms:reference-file line="268">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="254">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="faa5fdcaf5749e43b2710068d7c7407fc090173b" resname="header.topbar.nav.cinefondation">
         <source>header.topbar.nav.cinefondation</source>
@@ -394,45 +394,45 @@
         <target>Rechercher</target>
         <jms:reference-file line="116">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="3797ae9967c651770b6f948119404fe8dab1f4e0" resname="juries.artist.btn.partager">
+        <source>juries.artist.btn.partager</source>
+        <target>Partager</target>
+        <jms:reference-file line="19">views/Artist/artist.page.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="833706b83af85918525a5e514bd3e356e9785c77" resname="juries.artiste.btn.imprimer">
         <source>juries.artiste.btn.imprimer</source>
         <target>Imprimer</target>
-        <jms:reference-file line="23">views/Jury/jury.artiste.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="33a60415b8bd8234c861bebfa7eb6be85b4c8127" resname="juries.artiste.btn.partager">
-        <source>juries.artiste.btn.partager</source>
-        <target>Partager</target>
-        <jms:reference-file line="22">views/Jury/jury.artiste.html.twig</jms:reference-file>
+        <jms:reference-file line="20">views/Artist/artist.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cfcf345996ce9bff11d9859918af9f0637e33b62" resname="juries.artiste.title.biographie">
         <source>juries.artiste.title.biographie</source>
         <target>Biographie</target>
-        <jms:reference-file line="32">views/Jury/jury.artiste.html.twig</jms:reference-file>
+        <jms:reference-file line="29">views/Artist/artist.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ca2f5059452f0717daf356ac0a9e5d2613556fac" resname="juries.artiste.title.filmspresentes">
         <source>juries.artiste.title.filmspresentes</source>
         <target>Films présentés à Cannes</target>
-        <jms:reference-file line="39">views/Jury/jury.artiste.html.twig</jms:reference-file>
+        <jms:reference-file line="35">views/Artist/artist.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="84ee77c30f04e53fe7f970d55b337ac69a8b85cc" resname="juries.artiste.title.palmares">
         <source>juries.artiste.title.palmares</source>
         <target>Palmarès</target>
-        <jms:reference-file line="56">views/Jury/jury.artiste.html.twig</jms:reference-file>
+        <jms:reference-file line="49">views/Artist/artist.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b5d533d7400ab24da13f0d6f3294538ecce201eb" resname="juries.artiste.title.presences">
         <source>juries.artiste.title.presences</source>
         <target>Présences au Jury</target>
-        <jms:reference-file line="73">views/Jury/jury.artiste.html.twig</jms:reference-file>
+        <jms:reference-file line="63">views/Artist/artist.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="33b26f2872f664925accafb74841d6604162fab9" resname="juries.artiste.title.realisateurs">
         <source>juries.artiste.title.realisateurs</source>
         <target>Réalisateurs</target>
-        <jms:reference-file line="98">views/Jury/jury.artiste.html.twig</jms:reference-file>
+        <jms:reference-file line="86">views/Artist/artist.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a9d8fce1f7777b3177ea072e204a26acda0256db" resname="juries.artiste.title.share">
         <source>juries.artiste.title.share</source>
         <target>Partagez l'article</target>
-        <jms:reference-file line="88">views/Jury/jury.artiste.html.twig</jms:reference-file>
+        <jms:reference-file line="76">views/Artist/artist.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7a17713a51882265ca5d66304e2657cbc0109143" resname="juries.btn.decouvrirrubrique">
         <source>juries.btn.decouvrirrubrique</source>
@@ -469,6 +469,11 @@
         <source>juries.role.title.presidentdujury</source>
         <target>Président du jury</target>
         <jms:reference-file line="50">views/Jury/jury.section.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="13e93d1283514b547dc68bde40eebc9db329bd28" resname="juries.sharemail.section">
+        <source>juries.sharemail.section</source>
+        <target>Biographie</target>
+        <jms:reference-file line="107">views/Artist/artist.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c0c717526762ed3f48b0e739ce4eed1dab5e3d92" resname="juries.title.lesjurys">
         <source>juries.title.lesjurys</source>
@@ -599,6 +604,21 @@
         <source>politiqueconfidentialite.title.politiqueconfidentialite</source>
         <target>Politique de confidentialité</target>
         <jms:reference-file line="7">views/Footer/footer.politique-confidentialite.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="36278b911584399981f85e88a9bacb72061055cf" resname="sharemail.form.placeholder.email">
+        <source>sharemail.form.placeholder.email</source>
+        <target>Email des destinataires*</target>
+        <jms:reference-file line="43">Form/Type/ShareEmailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7b1dafe6f88c7fb35125e5fb7424125f7f05a776" resname="sharemail.form.placeholder.message">
+        <source>sharemail.form.placeholder.message</source>
+        <target>Votre message*</target>
+        <jms:reference-file line="63">Form/Type/ShareEmailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4a242351d5fd2d0511a44d02e793a9924a5f32bf" resname="sharemail.form.placeholder.votreemail">
+        <source>sharemail.form.placeholder.votreemail</source>
+        <target>Votre adresse email*</target>
+        <jms:reference-file line="49">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="49a01298a13f65a480b47bfaa38f20745557cdf2" resname="sitemap.title.plandusite">
         <source>sitemap.title.plandusite</source>

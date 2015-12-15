@@ -8387,6 +8387,7 @@ header #searchContainer {
 #featured-movies video {
   display: block;
   position: absolute;
+  width: 100%;
 }
 #featured-movies .links {
   bottom: 10%;
@@ -8815,6 +8816,17 @@ header #searchContainer {
 }
 #prefooter ul li a:hover, #prefooter ul li a.active {
   opacity: 1;
+}
+
+.mob #sliderWrapper .owl-item.center .img-container {
+  zoom: 1;
+  display: block;
+  top: 0;
+}
+
+.mob #featured-movies .video {
+  position: absolute !important;
+  z-index: 1;
 }
 
 .articles {

@@ -13,25 +13,25 @@
         </div>
         <ul class="sub-nav-list">
             <li>
-                <a href="{{ path('fdc_event_jury_getjury', {'section': 'longs-metrages'}) }}"
+                <a href="{{ path('fdc_event_jury_get', {'section': 'longs-metrages'}) }}"
                    class="{% if app.request.attributes.get('section') == 'longs-metrages' %}active{% endif %} ajax">
                     {{ 'juries.nav.longsmetrages'|trans }}
                 </a>
             </li>
             <li>
-                <a href="{{ path('fdc_event_jury_getjury', {'section': 'cinefondation'}) }}"
+                <a href="{{ path('fdc_event_jury_get', {'section': 'cinefondation'}) }}"
                    class="{% if app.request.attributes.get('section') == 'cinefondation' %}active{% endif %} ajax">
                     {{ 'juries.nav.cinefondation'|trans }}
                 </a>
             </li>
             <li>
-                <a href="{{ path('fdc_event_jury_getjury', {'section': 'certain-regard'}) }}"
+                <a href="{{ path('fdc_event_jury_get', {'section': 'certain-regard'}) }}"
                    class="{% if app.request.attributes.get('section') == 'certain-regard' %}active{% endif %} ajax">
                     {{ 'juries.nav.certainregard'|trans }}
                 </a>
             </li>
             <li>
-                <a href="{{ path('fdc_event_jury_getjury', {'section': 'camera-dor'}) }}"
+                <a href="{{ path('fdc_event_jury_get', {'section': 'camera-dor'}) }}"
                    class="{% if app.request.attributes.get('section') == 'camera-dor' %}active{% endif %} ajax">
                     {{ 'juries.nav.camerador'|trans }}
                 </a>
@@ -42,13 +42,13 @@
         <div class="container container-list">
             <section class="categorie-items contain-jury">
                 {% if president %}
-                    <a href="{{ path('fdc_event_jury_getartist', {'slug': president.id}) }}">
+                    <a href="{{ path('fdc_event_artist_get', {'slug': president.id}) }}">
                         <div class="photo-jury" style="background-image:url({{ president.img }})">
                         </div>
                     </a>
                     <div class="contain-descript">
                         <h3 class="descript-title">{{ 'juries.role.title.presidentdujury'|trans }}</h3>
-                        <a href="{{ path('fdc_event_jury_getartist', {'slug': president.id}) }}">
+                        <a href="{{ path('fdc_event_artist_get', {'slug': president.id}) }}">
                             <h2 class="descript-name">{{ president.name }}</h2>
                         </a>
                         <span class="descript-rank">{{ president.functions }}</span>
@@ -62,7 +62,7 @@
                     <div class="grid-sizer"></div>
                     {% for member in members %}
                         <div class="jury-box item">
-                            <a href="{{ path('fdc_event_jury_getartist', {'slug': member.id}) }}">
+                            <a href="{{ path('fdc_event_artist_get', {'slug': member.id}) }}">
                                 <img src="{{ member.img }}" alt="{{ member.name }}">
                                 <div class="legend">
                                     <span class="name">{{ member.name }}</span>

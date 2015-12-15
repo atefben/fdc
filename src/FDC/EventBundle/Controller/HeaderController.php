@@ -12,6 +12,7 @@ class HeaderController extends Controller
 {
 
     /**
+     * @Template("FDCEventBundle:Header:header.date.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dateAction()
@@ -23,9 +24,8 @@ class HeaderController extends Controller
             $settings = $settings[0];
         }
 
-        return $this->render(
-            'FDCEventBundle:Header:header.date.html.twig',
-            array('settings' => $settings)
+        return array(
+            'settings' => $settings
         );
 
     }

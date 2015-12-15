@@ -1214,6 +1214,7 @@
   video {
     display: block;
     position: absolute;
+    width: 100%;
   }
 
   .owl-item {
@@ -1655,3 +1656,13 @@
 
 
 
+.mob #sliderWrapper .owl-item.center .img-container {
+  zoom: 1;
+  display: block;
+  top: 0;
+}
+
+.mob #featured-movies .video {
+  position: absolute!important;
+  z-index: 1;
+}

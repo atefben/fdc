@@ -12,11 +12,11 @@ class JuryController extends Controller
 {
     /**
      * @Route("/juries-{section}")
-     *
+     * @Template("FDCEventBundle:Jury:jury.section.html.twig")
      * @param section
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getJury($section)
+    public function getAction($section)
     {
         $president= array();
         $members= array();
@@ -81,57 +81,10 @@ class JuryController extends Controller
                 break;
         }
 
-        return $this->render(
-            "FDCEventBundle:Jury:jury.section.html.twig",
-            array(
-                'members' => $members,
-                'president' => $president,
-            )
-        );
-
-    }
-
-
-    /**
-     * Sort objects by firstname char
-     *
-     * @param $a
-     * @param $b
-     * @return int
-     */
-    private function sortByFirstChar($a, $b)
-    {
-        if (ord($a->getFirstname()[0]) == ord($b->getFirstname()[0])) {
-            return 0;
-        }
-
-        return (ord($a->getFirstname()[0]) < ord($b->getFirstname()[0])) ? -1 : 1;
-    }
-
-    /**
-     * @Route("/artist/{slug}")
-     * @Template("FDCEventBundle:Jury:jury.artiste.html.twig")
-     *
-     * @param  string slug
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function getArtist($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $locale = $this->getRequest()->getLocale();
-        $count = 8;
-
-        // find the artist info with the current locale
-        $artist = $em->getRepository('BaseCoreBundle:FilmPerson')->getArtist($locale, $slug);
-
-        // find directors randomly, order them after by firstname (cant use mysql, doesnt work)
-        $directors = $em->getRepository('BaseCoreBundle:FilmPerson')->getDirectorsRandomly($count);
-        usort($directors, array($this, 'sortByFirstChar'));
-
         return array(
-            'artist' => $artist,
-            'directors' => $directors
+            'members' => $members,
+            'president' => $president
         );
-    }
 
+    }
 }
