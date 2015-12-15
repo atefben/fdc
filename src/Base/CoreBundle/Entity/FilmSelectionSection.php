@@ -61,6 +61,11 @@ class FilmSelectionSection implements TranslateMainInterface
     private $selection;
 
     /**
+     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="selectionSection")
+     */
+    private $films;
+
+    /**
      * @var ArrayCollection
      *
      * @Groups({"film_selection_list", "film_selection_show"})
@@ -73,6 +78,7 @@ class FilmSelectionSection implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->films = new ArrayCollection();
     }
 
     /**
@@ -188,5 +194,38 @@ class FilmSelectionSection implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Add films
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $films
+     * @return FilmSelectionSection
+     */
+    public function addFilm(\Base\CoreBundle\Entity\FilmFilm $films)
+    {
+        $this->films[] = $films;
+
+        return $this;
+    }
+
+    /**
+     * Remove films
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $films
+     */
+    public function removeFilm(\Base\CoreBundle\Entity\FilmFilm $films)
+    {
+        $this->films->removeElement($films);
+    }
+
+    /**
+     * Get films
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilms()
+    {
+        return $this->films;
     }
 }

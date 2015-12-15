@@ -61,6 +61,8 @@ twig:
     globals:
         locales_admin: "%locales_admin%"
         locales: "%locales%"
+        locales_front: "%locales_front%"
+        locale_fallback: "%%locale_fallback%"
         locale_default_translation: "%locale_default_translation%"
         header_fdc: "%header_fdc%"
         header_cine: "%header_cine%"
@@ -119,6 +121,9 @@ doctrine:
                     oneLocale:
                         class: A2lix\I18nDoctrineBundle\Doctrine\ORM\Filter\OneLocaleFilter
                         enabled: true
+                dql:
+                    numeric_functions:
+                        Rand: Base\CoreBundle\Doctrine\Rand
 
 
 # Swiftmailer Configuration

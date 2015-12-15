@@ -152,12 +152,18 @@ class NewsArticleAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
                         'label' => 'form.label_seo_title',
                         'sonata_help' => 'form.news.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
                     ),
                     'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
                         'label' => 'form.label_seo_description',
                         'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
