@@ -26,13 +26,17 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/jours")
+     * @Route("/articles/{id}")
      * @Template("FDCEventBundle:Article:article.main.html.twig")
+     * @param $id
+     * @return array
      */
-    public function getAction()
+    public function getAction($id)
     {
+        //$article = findBy($id)
 
         $article = array(
+            'id'    => 0,
             'theme' => 'Cinéma de la plage',
             'createdAt' => new \Datetime(),
             'updatedAt' => new \Datetime(),
@@ -162,38 +166,289 @@ class ArticleController extends Controller
 
     /**
      * @Route("/articles")
-     * @Template()
+     * @Template("FDCEventBundle:Article:article.list-article.html.twig")
      */
     public function getArticlesAction()
     {
-        return array();
+
+        $articles = array(
+            array(
+                'id'    => 0,
+                'theme' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'image' => array(
+                    'path' => 'img.jpg',
+                ),
+            ),
+            array(
+                'id'    => 0,
+                'theme' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'image' => array(
+                    'path' => 'img.jpg',
+                ),
+            ),
+            array(
+                'id'    => 0,
+                'theme' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'image' => array(
+                    'path' => 'img.jpg',
+                ),
+            ),
+            array(
+                'id'    => 0,
+                'theme' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'image' => array(
+                    'path' => 'img.jpg',
+                ),
+            ),
+            array(
+                'id'    => 0,
+                'theme' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'image' => array(
+                    'path' => 'img.jpg',
+                ),
+            ),
+            array(
+                'id'    => 0,
+                'theme' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'image' => array(
+                    'path' => 'img.jpg',
+                ),
+            )
+        );
+
+        $filters = array(
+            'dates' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Toutes',
+                ),
+                array(
+                    'slug' => 'date',
+                    'content' => 'Date 1',
+                ),
+                array(
+                    'slug' => 'date1',
+                    'content' => 'Date 2',
+                ),
+            ),
+            'themes' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'theme1',
+                    'content' => 'Thème 1',
+                ),
+                array(
+                    'slug' => 'theme2',
+                    'content' => 'Thème 2',
+                ),
+            )
+        );
+
+        return array(
+            'articles' => $articles,
+            'filters' => $filters,
+        );
     }
 
     /**
      * @Route("/photos")
-     * @Template()
+     * @Template("FDCEventBundle:Article:article.list-photo.html.twig")
      */
     public function getPhotosAction()
     {
-        return array();
+        $photos = array(
+            array(
+                'format'    => 'portrait',
+                'theme' => 'Conférence de presse',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/320x404/3498db/.png',
+                    'srcset'    => 'http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x',
+                ),
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                )
+            ),
+        );
+
+        $filters = array(
+            'dates' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Toutes',
+                ),
+                array(
+                    'slug' => 'date',
+                    'content' => 'Date 1',
+                ),
+                array(
+                    'slug' => 'date1',
+                    'content' => 'Date 2',
+                ),
+            ),
+            'themes' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'theme1',
+                    'content' => 'Thème 1',
+                ),
+                array(
+                    'slug' => 'theme2',
+                    'content' => 'Thème 2',
+                ),
+            )
+        );
+
+        return array(
+            'photos' => $photos,
+            'filters' => $filters,
+        );
     }
 
     /**
      * @Route("/videos")
-     * @Template()
+     * @Template("FDCEventBundle:Article:article.list-video.html.twig")
      */
     public function getVideosAction()
     {
-        return array();
+        $videos = array(
+            array(
+                'theme' => 'Conférence de presse',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/320x404/3498db/.png',
+                    'srcset'    => 'http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x',
+                ),
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                )
+            ),
+        );
+
+        $filters = array(
+            'dates' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Toutes',
+                ),
+                array(
+                    'slug' => 'date',
+                    'content' => 'Date 1',
+                ),
+                array(
+                    'slug' => 'date1',
+                    'content' => 'Date 2',
+                ),
+            ),
+            'themes' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'theme1',
+                    'content' => 'Thème 1',
+                ),
+                array(
+                    'slug' => 'theme2',
+                    'content' => 'Thème 2',
+                ),
+            )
+        );
+
+        return array(
+            'videos' => $videos,
+            'filters' => $filters,
+        );
+
     }
 
     /**
      * @Route("/audios")
-     * @Template()
+     * @Template("FDCEventBundle:Article:article.list-audio.html.twig")
      */
     public function getAudiosAction()
     {
-        return array();
+        $audios = array(
+            array(
+                'theme' => 'Conférence de presse',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'sound'=> 'audio.mp3',
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/320x404/3498db/.png',
+                    'srcset'    => 'http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x',
+                ),
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                )
+            ),
+        );
+
+        $filters = array(
+            'dates' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Toutes',
+                ),
+                array(
+                    'slug' => 'date',
+                    'content' => 'Date 1',
+                ),
+                array(
+                    'slug' => 'date1',
+                    'content' => 'Date 2',
+                ),
+            ),
+            'themes' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'theme1',
+                    'content' => 'Thème 1',
+                ),
+                array(
+                    'slug' => 'theme2',
+                    'content' => 'Thème 2',
+                ),
+            )
+        );
+
+        return array(
+            'audios' => $audios,
+            'filters' => $filters,
+        );
     }
 
 }

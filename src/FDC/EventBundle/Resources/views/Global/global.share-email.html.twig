@@ -2,7 +2,7 @@
     <div class="contain-popin popin">
         <strong class="theme-article popin">{{ share_email.section }}</strong><span class="date-article popin">{{ share_email.detail }}</span>
         <h2 class="title-article popin">{{ share_email.title }}</h2>
-        <p class="chap-article popin">{{ share_email.description }}</p>
+        <p class="chap-article popin">{{ share_email.description|raw }}</p>
     </div>
 
     {{ form_start(form, {attr: {novalidate: 'novalidate', class:'popin', id:'form'}}) }}
