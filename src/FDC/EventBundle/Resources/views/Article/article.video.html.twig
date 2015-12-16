@@ -1,0 +1,41 @@
+<div id="video-container" class="state-init video-player video" data-img="{{ widget.img.path }}">
+    <div id="video-player">
+    </div>
+    <div class="infos-bar">
+        <div class="picto"></div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="#" class="category">{{ widget.theme }}</a>
+                    <span class="date">{{ widget.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ widget.createdAt|date('H:i') }}</span>
+                    <p>{{ widget.title }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="control-bar">
+        <div class="playstate">
+            <button class="play-btn play"></button>
+        </div>
+        <div class="time">
+            <p class="time-info">
+                <span class="current-time">0:00</span> / <span class="duration-time">0:00</span>
+            </p>
+        </div>
+        <div class="progress">
+            <div class="progress-bar">
+                <div class="current-bar"></div>
+            </div>
+        </div>
+        <div class="sound">
+            <button class="sound-btn"></button>
+            <div class="sound-bar">
+                <div class="sound-seek"></div>
+            </div>
+        </div>
+        <div class="fs">
+            <button class="fs-icon"></button>
+        </div>
+    </div>
+</div>

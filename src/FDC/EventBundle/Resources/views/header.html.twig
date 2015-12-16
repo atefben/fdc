@@ -128,38 +128,38 @@
             <nav>
                 <ul class="main">
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_article_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index' %}active{% endif %}">
                             {{ 'header.mainnav.nav.lactualite'|trans }}
                         </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_get') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_get' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.jourapresjour'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_getarticles') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getarticle' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.articles'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_getphotos') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getphotos' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.photos'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_getvideos') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getvideos' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.videos'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_getaudios') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getaudios' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.audios'|trans }}
                                 </a>
                             </li>
@@ -203,8 +203,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_palmares_getpalmares', {'section': 'competition'}) }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_palmares_getpalmares' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_palmares_get', {'section': 'competition'}) }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_palmares_get' %}active{% endif %}">
                             {{ 'header.mainnav.nav.lepalmares'|trans }}
                         </a>
                     </li>

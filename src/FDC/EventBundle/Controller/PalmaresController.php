@@ -12,13 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class PalmaresController extends Controller
 {
     /**
-     * @Route("/palmares-{section}")
+     * @Route("/palmares/{section}")
      * @Template("")
      * @param section
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getPalmaresAction($section)
+    public function getAction($section)
     {
+        $movies = array();
 
         //Exemple de films pour les différentes section (sauf cameré d'or)
         $allMovies = array(

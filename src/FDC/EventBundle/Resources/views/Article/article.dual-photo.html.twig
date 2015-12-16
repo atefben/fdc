@@ -1,0 +1,8 @@
+{% for photo in widget.photos %}
+    <div class="half-photo">
+        <div class="photo-container">
+            <img src="{{ photo.path }}" alt="{{ photo.alt }}" />
+            <p class="caption">{{ photo.copyright }}</p>
+        </div>
+    </div>
+{% endfor %}
