@@ -5559,7 +5559,11 @@ div.chocolat-wrapper .zoomCursor.hide {
   position: absolute;
 }
 .popin-audio .on .fullscreen {
+  background-size: contain;
   bottom: 42px;
+  z-index: 1;
+  position: absolute;
+  right: -30px;
 }
 .popin-audio .on .duration {
   margin-top: -9px;
