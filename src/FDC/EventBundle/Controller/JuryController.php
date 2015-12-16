@@ -11,75 +11,37 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class JuryController extends Controller
 {
     /**
-     * @Route("/juries-{section}")
+     * @Route("/juries/{type}")
      * @Template("FDCEventBundle:Jury:jury.section.html.twig")
-     * @param section
+     * @param type
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAction($section)
+    public function getAction($type)
     {
-        $president= array();
-        $members= array();
+        $festivalId = 54;
 
-        $allPresident = array(
-            'id' => 0,
-            'img' => 'img.jpg',
-            'name' => 'Jane Campion',
-            'description' => 'lorem ipsum',
-            'functions' => 'Réalisatrice, Scénariste, Productrice'
-        );
+        $em = $this->getDoctrine()->getManager();
 
-        $allMembers = array(
+        // find all juries by type
+        $juries = $em->getRepository('BaseCoreBundle:FilmJury')->findBy(
             array(
-                'id' => 0,
-                'img' => 'img.jpg',
-                'name' => 'Jane Campion',
-                'functions' => 'Réalisatrice, Scénariste, Productrice'
-            ),
-            array(
-                'id' => 0,
-                'img' => 'img.jpg',
-                'name' => 'Jane Campion',
-                'functions' => 'Réalisatrice, Scénariste, Productrice'
-            ),
-            array(
-                'id' => 0,
-                'img' => 'img.jpg',
-                'name' => 'Jane Campion',
-                'functions' => 'Réalisatrice, Scénariste, Productrice'
-            ),
-            array(
-                'id' => 0,
-                'img' => 'img.jpg',
-                'name' => 'Jane Campion',
-                'functions' => 'Réalisatrice, Scénariste, Productrice'
-            ),
-            array(
-                'id' => 0,
-                'img' => 'img.jpg',
-                'name' => 'Jane Campion',
-                'functions' => 'Réalisatrice, Scénariste, Productrice'
+                'type' => $type,
+                'festival' => $festivalId
             )
         );
 
-        switch ($section) {
-            case 'longs-metrages':
-                $members = $allMembers;
-                $president = $allPresident;
-                break;
-            case 'cinefondation':
-                $members = $allMembers;
-                $president = $allPresident;
-                break;
-            case 'certain-regard':
-                $members = $allMembers;
-                $president = $allPresident;
-                break;
-            case 'camera-dor':
-                $members = $allMembers;
-                $president = $allPresident;
-                break;
+        $members = array();
+        $president = "";
+
+        foreach ($juries as $jury) {
+            if ($jury->getFunction()->getId() == 1) {
+                $president = $jury;
+            }
+            else {
+                array_push($members, $jury);
+            }
         }
+
 
         return array(
             'members' => $members,

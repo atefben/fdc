@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * @Route("/artist")
- * Class Artistontroller
+ * Class ArtistController
  * @package FDC\EventBundle\Controller
  */
 class ArtistController extends Controller
@@ -55,13 +55,5 @@ class ArtistController extends Controller
             'directors' => $directors
         );
 
-        return array(
-            'artist' => $artiste,
-            'films' => $relatedFilms,
-            'palmares' => $relatedPalmares,
-            'roles' => $relatedRole,
-            'realisateurs' => $allMembers,
-            'pagination' => $pagination,
-        );
     }
 }
