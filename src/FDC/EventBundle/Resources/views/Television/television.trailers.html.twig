@@ -1,0 +1,54 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="webtv webtv-ba loading">
+    <div class="bandeau">
+        <div id="live" style="background-image:url(http://dummyimage.com/1920x450/cfcfcf/fff&text=+)">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="#" class="play"></a>
+                    <h2>Les bandes annonces et extraits</h2>
+                </div>
+            </div>
+        </div>
+        <ul class="sub-nav-list">
+            <li><a href="webtv_trailer_competition.php" data-url="webtv_trailer_competition_detail.php" class="ajax active">Compétition</a></li>
+            <li><a href="webtv_trailer_uncertainregard.php" data-url="webtv_trailer_uncertainregard_detail.php" class="ajax">Un certain regard</a></li>
+            <li><a href="webtv_trailer_horscompetition.php" data-url="webtv_trailer_horscompetition_detail.php" class="ajax">Hors compétition</a></li>
+            <li><a href="webtv_trailer_seancespeciales.php" data-url="webtv_trailer_seancespeciales.php" class="ajax">Séances spéciales</a></li>
+            <li><a href="webtv_trailer_cinefondation.php" data-url="webtv_trailer_cinefondation.php" class="ajax">Cinéfondation</a></li>
+            <li><a href="webtv_trailer_courtmetrage.php" data-url="webtv_trailer_courtmetrage.php" class="ajax">Courts métrages</a></li>
+            <li><a href="webtv_trailer_cannesclassics.php" data-url="webtv_trailer_cannesclassics.php" class="ajax">Cannes classics</a></li>
+            <li><a href="webtv_trailer_cinemadelaplage.php" data-url="webtv_trailer_cinemadelaplage.php" class="ajax">Cinéma de la plage</a></li>
+        </ul>
+    </div>
+    <div class="content-webtv">
+        <div class="listtrailer grid all-videos">
+            <div id="gridWebtv" class="grid-wrapper">
+                <div class="grid-sizer"></div>
+
+                {% for trailer in trailers %}
+                    <div class="item {{ trailer.filter.date }} {{ trailer.filter.theme }} shadow-bottom video">
+
+                        <img src="{{ trailer.image.src }}" srcset="{{ trailer.image.src }} 1x, {{ trailer.image.large }} 2x" alt="">
+                        <div class="info">
+                            <div class="picto"></div>
+                            <div class="info-container">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <a href="{{ path('fdc_event_television_gettrailer', {'id': trailer.id }) }}" class="category">{{ trailer.title }}</a>
+                                        <span>{{ trailer.author }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

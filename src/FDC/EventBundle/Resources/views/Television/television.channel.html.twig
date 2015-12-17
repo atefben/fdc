@@ -1,0 +1,50 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="webtv single-channel loading">
+    <div class="container">
+        <a href="#" class="back">{{ 'webtv.channel.btn.retourauxchaines'|trans }}</a>
+    </div>
+    <h2 class="title">{{ 'webtv.channel.title.conferencedepresse'|trans }}</h2>
+
+    <div class="small-container">
+        <div class="player">
+            {% image '@FDCEventBundle/Resources/public/img/webtv/playervideo.jpg' %}
+            <img src="{{ asset_url }}" alt="">
+            {% endimage %}
+        </div>
+        <div class="infos-videos">
+            <div class="infos">
+                <strong>{{ channel.title }}</strong>
+                <span class="time">{{ channel.createdAt|date('d.m.y') }} . {{ channel.createdAt|date('H:i') }}</span>
+                <p>{{ channel.description }}</p>
+            </div>
+            <div class="buttons square">
+                <a href="#" class="button facebook"></a>
+                <a href="#" class="button twitter"></a>
+                <a href="#" class="button link"></a>
+                <a href="#" class="button email"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-channels">
+        <div id="slider-channels" class="owl-carousel sliderDrag">
+            {% for channel in channels %}
+                <div class="channel shadow-bottom">
+                    {% include 'FDCEventBundle:Television:television.video.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="content-latest">
+        <h2 class="title">{{ 'webtv.channel.title.lesdernieresvideos'|trans }}</h2>
+        <div class="container sliderDrag">
+            {% for video in videos %}
+                {% include 'FDCEventBundle:Television:television.video.date.html.twig' %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

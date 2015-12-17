@@ -2,23 +2,22 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-    {#<div id="main" class="sitemap loading">#}
-    <div id="main" class="app">
-        <div class="contain-app">
-            <h1>{{ 'applicationmobile.title.telechargezlapplication'|trans|raw }}</h1>
-            <h2>{{ 'applicationmobile.title.lapplicationofficielle'|trans|raw }}</h2>
-            <div class="logo-app">
-                <a href="">
-                    {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
-                    <img src="{{ asset_url }}" alt="apple" />
-                    {% endimage %}
-                </a>
-                <a href="">
-                    {% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
-                    <img src="{{ asset_url }}" alt="android" />
-                    {% endimage %}
-                </a>
-            </div>
+<div id="main" class="sitemap loading">
+    <div class="contain-app">
+        <h1>{{ 'applicationmobile.title.telechargezlapplication'|trans|raw }}</h1>
+        <h2>{{ 'applicationmobile.title.lapplicationofficielle'|trans|raw }}</h2>
+        <div class="logo-app">
+            <a href="">
+                {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
+                <img src="{{ asset_url }}" alt="apple" />
+                {% endimage %}
+            </a>
+            <a href="">
+                {% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
+                <img src="{{ asset_url }}" alt="android" />
+                {% endimage %}
+            </a>
         </div>
     </div>
+</div>
 {% endblock %}

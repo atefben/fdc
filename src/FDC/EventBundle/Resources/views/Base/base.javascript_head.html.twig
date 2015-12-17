@@ -1,7 +1,6 @@
 {% block javascripts_head %}
-
+    {% spaceless %}
     <!-- //// JS_HEAD \\\\ -->
-
     <script>
         var GLOBALS = {
             "locale" : "{{ app.request.locale }}",
@@ -25,7 +24,7 @@
                 "newsUrl" : "news.html",
                 "newsUrlNext" : "news_page2.html",
                 "loadPressRelease" : "load-communique.php",
-                "selectionUrl" : "/suggestion"
+                "selectionUrl" : "{{ url('fdc_event_global_suggestion') }}"
             },
             "texts" : {
                 "url" : {
@@ -58,7 +57,5 @@
         }
     </script>
 
-    <!-- //// JS \\\\ -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-
+    {% endspaceless %}
 {% endblock %}

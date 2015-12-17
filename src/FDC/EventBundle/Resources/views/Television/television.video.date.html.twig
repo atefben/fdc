@@ -1,0 +1,18 @@
+<div class="video shadow-bottom">
+    <div class="image-wrapper">
+        <img src="{{ video.img.path }}" alt="" />
+    </div>
+    <a class="linkVid" href="#"></a>
+    <div class="info">
+        <div class="picto"></div>
+        <div class="info-container">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="#" class="category">{{ video.theme }}</a>
+                    <span class="date">{{ video.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ video.createdAt|date('H.i') }}</span>
+                    <a href="#" class="titleLink">{{ video.title }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class TelevisionController extends Controller
 {
     /**
-     * @Route("/direct")
+     * @Route("/live")
      * @Template("FDCEventBundle:Television:television.live.html.twig")
      */
     public function liveAction()
@@ -87,6 +87,120 @@ class TelevisionController extends Controller
                 'theme' => 'les plus vues',
                 'createdAt' => new \DateTime(),
                 'title' => 'Lorem ipsum'
+            )
+        );
+
+        $videos = array(
+            array(
+                'img' => array(
+                    'path' => 'img.jpg'
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum'
+            ),
+            array(
+                'img' => array(
+                    'path' => 'img.jpg'
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum'
+            ),
+        );
+        return array(
+            'channels' => $channels,
+            'trailers' => $channels,
+            'videos' => $videos,
+        );
+    }
+
+    /**
+     * @Route("/channel/{id}")
+     * @Template("FDCEventBundle:Television:television.channel.html.twig")
+     */
+    public function getChannelAction($id)
+    {
+        $channel = array(
+            'most_viewed' => true,
+            'image' => array(
+                'path' => 'img.jpg',
+                'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+            ),
+            'nbVideos' => 5,
+            'theme' => 'les plus vues',
+            'createdAt' => new \DateTime(),
+            'title' => 'Conférence de presse',
+            'description' => 'Interview des réalisateurs des Courts Métrages en Compétition',
+            'filter' => array(
+                'date' => 'date1',
+                'theme' => 'theme1',
+            )
+        );
+
+        $videos = array(
+            array(
+                'img' => array(
+                    'path' => 'http://dummyimage.com/463x291/000/fff'
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum'
+            ),
+            array(
+                'img' => array(
+                    'path' => 'http://dummyimage.com/463x291/000/fff'
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum'
+            ),
+        );
+        $channels = array(
+            array(
+                'most_viewed' => true,
+                'img' => array(
+                    'path' => 'img.jpg'
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum'
+            ),
+            array(
+                'most_viewed' => true,
+                'img' => array(
+                    'path' => 'img.jpg'
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum'
+            ),
+            array(
+                'most_viewed' => false,
+                'img' => array(
+                    'path' => 'img.jpg'
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum'
+            ),
+            array(
+                'most_viewed' => false,
+                'img' => array(
+                    'path' => 'img.jpg'
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum'
             ),
             array(
                 'most_viewed' => false,
@@ -120,41 +234,372 @@ class TelevisionController extends Controller
             )
         );
 
-
         return array(
+            'channel' => $channel,
             'channels' => $channels,
-            'trailers' => $channels,
-            'videos' => $channels,
+            'videos' => $videos,
         );
     }
 
     /**
      * @Route("/channels")
-     * @Template("FDCEventBundle:Television:television.live.html.twig")
+     * @Template("FDCEventBundle:Television:television.channels.html.twig")
      */
     public function channelsAction()
     {
-        $webTv = "";
-        $channels = "";
+        $channels = array(
+            array(
+                'id' => 1,
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            )
+        );
 
         return array(
-            'webtv' => $webTv,
             'channels' => $channels,
         );
     }
 
     /**
-     * @Route("/trailers")
-     * @Template("FDCEventBundle:Television:television.live.html.twig")
+     * @Route("/trailers/{slug}")
+     * @Template("FDCEventBundle:Television:television.trailers.html.twig")
      */
-    public function trailersAction()
+    public function trailersAction($slug)
     {
-        $webTv = "";
-        $channels = "";
+
+        $trailers = array(
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            )
+        );
 
         return array(
-            'webtv' => $webTv,
-            'channels' => $channels,
+            'trailers' => $trailers,
+        );
+    }
+
+    /**
+     * @Route("/trailer/{id}")
+     * @Template("FDCEventBundle:Television:television.trailer.html.twig")
+     */
+    public function getTrailerAction($id)
+    {
+        $trailer = array(
+            'id' => 1,
+            'author' => 'Olivier ASSAYAS',
+            'most_viewed' => true,
+            'image' => array(
+                'path' => 'img.jpg',
+                'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+            ),
+            'nbVideos' => 5,
+            'theme' => 'les plus vues',
+            'createdAt' => new \DateTime(),
+            'title' => 'Lorem ipsum',
+            'filter' => array(
+                'date' => 'date1',
+                'theme' => 'theme1',
+            ),
+        );
+
+        $trailers = array(
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            )
+        );
+
+        return array(
+            'trailer' => $trailer,
+            'trailers' => $trailers,
         );
     }
 }

@@ -2,8 +2,7 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-{#<div id="main" class="all-photos grid loading">#}
-<div id="main" class="all-audios grid">
+<div id="main" class="all-photos grid loading">
     <h2 class="title">{{ 'article.photos.title.touslesaudios'|trans }}</h2>
 
     {% include 'FDCEventBundle:Article:article.filters.html.twig' %}
@@ -13,7 +12,8 @@
 
         {% for audio in audios %}
             <div class="item {{ audio.filter.theme }} {{ audio.filter.date }} shadow-bottom video" data-sound="{{ audio.sound }}">
-                <img src="{{ audio.image.src }}" srcset="{{ audio.image.srcset }}" alt="">
+
+                <img src="{{ audio.image.src }}" srcset="{{ audio.image.src }} 1x, {{ audio.image.large }} 2x" alt="">
                 <div class="picto"></div>
                 <div class="info">
                     <div class="vCenter">
