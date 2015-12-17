@@ -11,6 +11,17 @@ module.exports = function(grunt) {
         }
       }
     },
+    webfont: {
+     icons: {
+       src: 'img/svg/*.svg',
+       dest: 'fonts',
+       destCss: 'sass/base',
+       options: {
+         stylesheet: 'scss',
+         relativeFontPath: '../fonts'
+       }
+     }
+    },
     // COMPASS
     compass : {
       dev : {
@@ -27,6 +38,10 @@ module.exports = function(grunt) {
       css: {
         files: '**/*.scss',
         tasks: ['compile']
+      },
+      icons: {
+        files: 'img/svg/*.svg',
+        tasks: ['webfont']
       }
     },
     concat: {
@@ -143,4 +158,6 @@ module.exports = function(grunt) {
   grunt.registerTask('copyjs', [
     'copy:js'
   ]);
+
+  grunt.loadNpmTasks('grunt-webfont');
 }

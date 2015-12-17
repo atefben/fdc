@@ -43,49 +43,6 @@
    inkscape:window-y="-8"
    inkscape:window-maximized="1"
    inkscape:current-layer="Calque_1" />
-<g
-   id="g3">
-	<g
-   id="g5">
-		<rect
-   x="7731"
-   y="25"
-   fill="#fff"
-   width="55"
-   height="5"
-   id="rect7" />
-	</g>
-	<g
-   id="g9">
-		<rect
-   x="7731"
-   y="39"
-   fill="#fff"
-   width="55"
-   height="5"
-   id="rect11" />
-	</g>
-	<g
-   id="g13">
-		<rect
-   x="7731"
-   y="53"
-   fill="#fff"
-   width="55"
-   height="5"
-   id="rect15" />
-	</g>
-	<g
-   id="g17">
-		<rect
-   x="7731"
-   y="67"
-   fill="#fff"
-   width="27"
-   height="5"
-   id="rect19" />
-	</g>
-</g>
 <path
    d="M42.821,0.169c-16.518,0-29.914,13.398-29.914,29.916C12.908,46.6,26.303,60,42.821,60c16.504,0,29.907-13.4,29.907-29.915  C72.729,13.567,59.325,0.169,42.821,0.169z M53.951,48.875L39.922,33.241l-1.229-3.135V14.815h6.371v14.618l13.63,15.188  L53.951,48.875z"
    id="path21" fill="#fff" />

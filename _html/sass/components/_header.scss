@@ -182,8 +182,12 @@ header {
         }
 
         &.account {
-          background: url('../img/svg/account.svg') no-repeat left 46%;
-          background-size: 15px;
+          padding-left: 0;
+
+          .icon {
+            font-size: 0.6rem;
+            margin-right: 10px;
+          }
         }
 
         &.language {
