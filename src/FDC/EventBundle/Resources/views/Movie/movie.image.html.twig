@@ -1,0 +1,31 @@
+<div class="photos" data-section="photos">
+    <div class="slideshow">
+        <div class="slideshow-img">
+            <div class="images">
+                {% for key, photo in movie.photos %}
+                    <div class="img {% if key == 0 %}active{% endif %}">
+                        <a id="photo-{{ photo.id }}"
+                           class="chocolat-image ajax"
+                           href="{{ photo.image.path }}"
+                           title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo.createdAt|date('d.m.y') }}</span><h2>{{ photo.title }}</h2>'
+                           data-credit="{{ photo.copyright }}">
+                            <img src="{{ photo.image.path }}" alt="" />
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="owl-carousel thumbnails">
+                {% for key, photo in movie.photos %}
+                    <div class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ photo.caption }}">
+                        <img src="{{ photo.image.thumb }}" />
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% for key, photo in movie.photos %}
+            {% if key == 0 %}
+                <p class="caption">{{ photo.caption }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
