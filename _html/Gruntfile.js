@@ -83,7 +83,20 @@ module.exports = function(grunt) {
       js: {
         scripts: 'inc/scripts.dist.inc.php'
       },
-    }
+    },
+
+    uglify: {
+      options: {
+        banner: ['/**\n * Festival de Cannes\n',
+          ' * @author: Ohwee\n',
+          ' * @credits: Ohwee\n',
+          ' * @date: 2015\n',
+          '**/\n'].join(''),
+        mangle: {
+          except: ['jQuery', 'angular']
+        }
+      }
+        },
   });
 
   
@@ -104,6 +117,7 @@ module.exports = function(grunt) {
       'tags:app',
       'useminPrepare',
       'concat:generated',
+      'uglify:generated',
       'usemin:js',
   ]);
 }
