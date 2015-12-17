@@ -43,11 +43,13 @@ class SettingsController extends Controller
         $formFDCApiYear = $this->get('form.factory')->create(new SettingsFDCYearType(), $settingsFDCApiYear);
         $formFDCApiYear->handleRequest($request);
 
+        $msgModified = $this->get('translator')->trans('form.flashbag.modified', array(), 'BaseAdminBundle');
+
         if ($formFDCYear->isValid()) {
             $em->persist($settingsFDCYear);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('success', 'Modification effectué');
+            $request->getSession()->getFlashBag()->add('success', $msgModified);
 
             return $this->redirectToRoute('base_admin_settings_index', array(
                 'admin_pool' => $admin_pool
@@ -58,7 +60,7 @@ class SettingsController extends Controller
             $em->persist($settingsFDCApiYear);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('success', 'Modification effectué');
+            $request->getSession()->getFlashBag()->add('success', $msgModified);
 
             return $this->redirectToRoute('base_admin_settings_index', array(
                 'admin_pool' => $admin_pool

@@ -181,6 +181,7 @@
         position: fixed;
         top: 91px;
         z-index: 4;
+        width: 310px;
       }
 
       &.bottom {
@@ -272,6 +273,17 @@
       background-color: #242424;
       height: 510px;
 
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: rgba(102, 102, 102, 0.44);
+      }
+      ::-webkit-scrollbar-thumb {
+        height: 10px;
+        background-color: #c8a461;
+      }
+
       .fc-highlight-skeleton {
         display: none;
       }
@@ -298,6 +310,12 @@
 
         .fc-left, .fc-right {
           height: 100%;
+          @include transition(all 0.3s $smoothTransition);
+        }
+
+        .hide {
+          opacity: 0;
+          visibility: hidden;
         }
 
         button {
@@ -471,16 +489,24 @@
           opacity: 0;
           visibility: hidden;
           position: relative;
-          @include transition(all 0.6s $smoothTransition);
+          text-align: left;
+          @include transition(background-color 0.6s $smoothTransition, color 0.6s $smoothTransition);
 
           &:hover {
-            color: $gold;
+            background: $gold url('../img/svg/telecharger-white.svg') no-repeat 5% center;
+            background-size: 13px;
+            color: #fff;
           }
 
           &.show {
             opacity: 1;
             visibility: visible;
           }
+        }
+
+        &.subnav, &.list {
+          background: #fff url('../img/svg/telecharger-gold.svg') no-repeat 5% center;
+          background-size: 13px;
         }
 
         &.subnav:hover {
@@ -742,6 +768,11 @@
               background-size: 12px;
               right: 0;
             }
+
+            &.hide {
+              opacity: 0;
+              visibility: hidden;
+            }
           }
 
           .v-wrapper {
@@ -790,6 +821,10 @@
                 position: absolute;
                 width: 220px;
 
+                &.ui-draggable-dragging {
+                  z-index: 5;
+                }
+
                 &.ui-draggable-dragging .category:after {
                   cursor: -webkit-grabbing;
                   cursor: grabbing;
@@ -814,6 +849,12 @@
         left: 15px;
         height: 40px;
         line-height: 38px;
+
+        @include breakpoint(1279px) {
+          width: calc(100% - 360px);
+          background-color: #fff;
+          z-index: 1;
+        }
       }
 
       #timeline {
@@ -822,8 +863,59 @@
         right: 0;
         top: 0;
 
+        .arrow {
+          display: none;
+        }
+
+        @include breakpoint(1279px) {
+          padding: 0 43px;
+          width: 260px;
+
+          .timeline-container {
+            width: 600px;
+            @include transition(all 0.5s $smoothTransition);
+          }
+
+          .arrow {
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            position: absolute;
+            left: -4px;
+            right: 0;
+            width: 43px;
+            top: 0;
+            z-index: 2;
+
+            &.hide {
+              display: none;
+            }
+
+            &.left {
+              background: #fff url("../img/svg/arrow-left-grey.svg") no-repeat center;
+              background-size: 12px;
+              border-left: 1px solid #e5e5e5;
+              border-right: 1px dashed #e5e5e5;
+            }
+
+            &.right {
+              background: #fff url("../img/svg/arrow-right-grey.svg") no-repeat center;
+              background-size: 12px;
+              left: auto;
+              right: 0;
+              border-left: 1px dashed #e5e5e5;
+            }
+          }
+
+          a.active.hideB {
+            &:after {
+              display: none;
+            }
+          }
+        }
+
         a {
-          border-right: 1px dotted #e5e5e5;
+          border-right: 1px dashed #e5e5e5;
           color: #adadad;
           font-family: $CamphorBold;
           font-size: 0.625rem;
@@ -903,6 +995,10 @@
         overflow: hidden;
         padding: 10px 0;
 
+        @include breakpoint(1279px) {
+          padding: 10px 20px;
+        }
+
         .info {
           float: left;
 
@@ -959,6 +1055,12 @@
           &.photo {
             background: url('../img/svg/photo-grey.svg') no-repeat left 47%;
             background-size: 18px;
+          }
+
+          @include breakpoint(1279px) {
+            span {
+              display: none;
+            }
           }
         }
 
@@ -1280,7 +1382,7 @@
 
   &.press-programmation {
     #calendar-programmation .calendar .venues {
-      height: 933px;
+      height: 1662px;
     }
 
     .contact-press {
@@ -1654,7 +1756,7 @@
 
     .date {
       color: #ababab;
-      font-family: $CamphorHeavy;
+      font-family: $CamphorBold;
       font-size: 0.750rem;
       text-transform: uppercase;
 
@@ -2103,6 +2205,10 @@
       }
       input[type="submit"]{
         margin-bottom: 41px;
+        
+        &:hover{
+          cursor: pointer;
+        }
       }
       input[type="text"]{
 //        padding-top: 5px;
@@ -2160,6 +2266,27 @@
     .buttons{
       position: absolute;
       right: 1px;
+    }
+  }
+}
+
+.press{
+  #calendar.fullwidth{
+    #mycalendar{
+      .fc-day{
+          width:234px;
+      }
+      .fc-day-header{
+          width:234px;
+      }
+      .fc-content-skeleton{
+        .fc-event-container{
+          width:234px;
+        }
+        td{
+         width:234px;
+        }
+      }
     }
   }
 }

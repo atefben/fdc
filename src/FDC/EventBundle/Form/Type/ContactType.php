@@ -6,10 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Collection;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
@@ -19,12 +18,18 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
  */
 class ContactType extends AbstractType
 {
+    private $themes;
+
+    private $translator;
+
     /**
      * @param $themes
+     * @param $translator
      */
-    public function __construct($themes)
+    public function __construct($themes, $translator)
     {
         $this->themes = $themes;
+        $this->translator = $translator;
     }
 
     /**
@@ -33,7 +38,9 @@ class ContactType extends AbstractType
      */
     private function createSelectValues($themes)
     {
-        $select = array('Sélectionnez un thème' => 'default');
+        $default = $this->translator->trans('contact.form.placeholder.theme');
+
+        $select = array($default => 'default');
         if (count($themes) > 0) {
             foreach ($themes as $theme) {
                 $select[$theme['theme']] = $theme['id'];
@@ -64,31 +71,31 @@ class ContactType extends AbstractType
                 },
                 'empty_value' => false,
                 'choices_as_values' => true,
-                'label' => 'Votre message concerne',
+                'label' => 'contact.form.label.votremessage',
                 'required' => false
             ))
             ->add('name', 'text', array(
                 'attr' => array(
-                    'placeholder' => 'Votre nom'
+                    'placeholder' => 'contact.form.placeholder.nom'
                 ),
                 'label' => false
             ))
             ->add('email', 'email', array(
                 'attr' => array(
-                    'placeholder' => 'Votre adresse email'
+                    'placeholder' => 'contact.form.placeholder.email'
                 ),
                 'label' => false
             ))
             ->add('subject', 'text', array(
                 'attr' => array(
-                    'placeholder' => 'Objet'
+                    'placeholder' => 'contact.form.placeholder.objet'
                 )
             ))
             ->add('message', 'textarea', array(
                 'attr' => array(
                     'cols' => 90,
                     'rows' => 10,
-                    'placeholder' => 'Votre message'
+                    'placeholder' => 'contact.form.placeholder.message'
                 )
             ));
     }
@@ -100,29 +107,26 @@ class ContactType extends AbstractType
     {
         $collectionConstraint = new Collection(array(
             'select' => array(
-                new NotBlank(array('message' => 'Ce champs est requis.')),
-                new Length(array('min' => 0))
+                new GreaterThan(array('value' => 0, 'message' => $this->translator->trans('contact.form.errors.theme'))),
             ),
             'name' => array(
-                new NotBlank(array('message' => 'Ce champs est requis.')),
-                new Length(array('min' => 2))
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.nom'))),
             ),
             'email' => array(
-                new NotBlank(array('message' => 'Ce champs est requis.')),
-                new Email(array('message' => 'Adresse email invalide.'))
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
+                new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
             ),
             'subject' => array(
-                new NotBlank(array('message' => 'Ce champs est requis.')),
-                new Length(array('min' => 3))
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.objet'))),
             ),
             'message' => array(
-                new NotBlank(array('message' => 'Ce champs est requis.')),
-                new Length(array('min' => 5))
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.message'))),
             )
         ));
 
         $resolver->setDefaults(array(
-            'constraints' => $collectionConstraint
+            'constraints' => $collectionConstraint,
+            'translation_domain' => 'FDCEventBundle'
         ));
     }
 

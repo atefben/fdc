@@ -1,0 +1,50 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+{#<div id="main" class="list-article palmares-list loading ">#}
+<div id="main" class="list-article palmares-list">
+    <div class="bandeau-list">
+        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url({{ section.banner }})">
+            <div class="vCenterKid">
+                <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
+            </div>
+        </div>
+        {% include 'FDCEventBundle:Palmares:palmares.nav.html.twig' %}
+    </div>
+    <div class="container container-list">
+        <section class="categorie-items">
+            <div class="title-list-cat">
+                <h2 class="title">{{ 'palmares.title.longsmetrages'|trans }}</h2>
+            </div>
+            {% for movie in movies %}
+                {% if movie.type == 0 %}
+                    {% include 'FDCEventBundle:Palmares:palmares.movie.html.twig' %}
+                {% endif %}
+            {% endfor %}
+        </section>
+        <section class="categorie-items">
+            <div class="title-list-cat">
+                <h2 class="title">{{ 'palmares.title.courtsmetrages'|trans }}</h2>
+            </div>
+            {% for movie in movies %}
+                {% if movie.type == 1 %}
+                    {% include 'FDCEventBundle:Palmares:palmares.movie.html.twig' %}
+                {% endif %}
+            {% endfor %}
+        </section>
+    </div>
+
+    <div class="bandeau-list push-footer vCenter">
+        <div class="bandeau-list-img bandeau-list-footer vCenterKid" style="background-image:url({{ section.bottom_img }});">
+            <h2 class="title title-list-header">{{ section.bottom_title }}</h2>
+            <a href="{{ section.bottom_link }}" class="bandeau-lien">
+                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                <img src="{{ asset_url }}" class="svg-arrow" alt="{{ 'palmares.btn.decouvrirrubrique'|trans }}" />
+                {% endimage %}
+                {{ 'palmares.btn.decouvrirrubrique'|trans }}
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock body %}

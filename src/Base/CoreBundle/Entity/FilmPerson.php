@@ -4,12 +4,15 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\Soif;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Soif;
-use Base\CoreBundle\Util\TranslationByLocale;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Exclude;
@@ -20,15 +23,15 @@ use JMS\Serializer\Annotation\Groups;
  * FilmPerson
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmPersonRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class FilmPerson
+class FilmPerson implements TranslateMainInterface
 {
     use Time;
     use Translatable;
     use Soif;
-    use TranslationByLocale;
+    use TranslateMain;
 
     /**
      * @var string
@@ -44,6 +47,14 @@ class FilmPerson
      * })
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"firstname", "lastname"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -138,7 +149,7 @@ class FilmPerson
     private $address;
 
     /**
-     * @var FilmPersonFilmFilm
+     * @var FilmFilmPerson
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="person", cascade={"persist"})
      *
@@ -232,6 +243,29 @@ class FilmPerson
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Settings
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

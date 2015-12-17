@@ -42,6 +42,68 @@ $(document).ready(function() {
     }, 500);
   });
 
+  var count = 0;
+
+  $('#timeline .arrow').on('click', function(e) {
+    e.preventDefault();
+
+    $('#timeline .arrow').removeClass('hide');
+    
+
+    if($(this).hasClass('left')) {
+      if(count < $('#timeline a.active').index()) {
+        $('#timeline a.active').addClass('hideB');
+      } else {
+        $('#timeline a.active').removeClass('hideB');
+      }
+      $('#timeline').removeClass('max');
+
+      var $v = $('#timeline a').eq(count);
+      if($v.prev().length) {
+        var p = - (($v.width() + 1) * (count-1));
+        $('.timeline-container').css({
+          '-webkit-transform': 'translateX(' + p+ 'px)',
+          '-moz-transform': 'translateX(' + p+ 'px)',
+          '-o-transform': 'translateX(' + p+ 'px)',
+          '-ms-transform': 'translateX(' + p+ 'px)',
+          'transform': 'translateX(' + p+ 'px)'
+        });
+        count--;
+      }
+
+      if($v.prev().prev().length == 0) {
+        $(this).addClass('hide');
+      }
+    } else {
+      var $v = $('#timeline a').eq(count);
+      var p = - (($v.width() + 1) * (count+1));
+      var max = 263;
+      if(count >= $('#timeline a.active').index()) {
+        $('#timeline a.active').addClass('hideB');
+      } else {
+        $('#timeline a.active').removeClass('hideB');
+      }
+      if(!$('#timeline').hasClass('max')) {
+        count++;
+      }
+
+      if(-p > max) {
+        p = -max;
+        $('#timeline').addClass('max');
+        $(this).addClass('hide');
+      } else {
+        $('#timeline').removeClass('max');
+      }
+      $('.timeline-container').css({
+        '-webkit-transform': 'translateX(' + p+ 'px)',
+        '-moz-transform': 'translateX(' + p+ 'px)',
+        '-o-transform': 'translateX(' + p+ 'px)',
+        '-ms-transform': 'translateX(' + p+ 'px)',
+        'transform': 'translateX(' + p+ 'px)'
+      });
+    }
+  });
+
   function openPopinEvent(url) {
     $.ajax({
       type: "GET",
@@ -127,17 +189,23 @@ $(document).ready(function() {
 
       // full width calendar (page 'my calendar')
       if($('#calendar').hasClass('fullwidth')) {
+        
         $('#mycalendar').fullCalendar({
           lang: 'fr',
-          defaultDate: '2016-05-12',
+          defaultDate: '2016-05-12', // TODO A REVOIR //
           header: {
             left: 'prev',
             center: 'title',
             right: 'next'
           },
+          columnFormat: {
+            week: 'dddd D MMM',
+          },
+
           firstDay: 3,
           defaultView: 'agendaWeek',
           minTime: "08:00:00",
+          maxTime: "28:00:00",
           allDaySlot: false,
           events: events,
           slotEventOverlap:false,
@@ -147,6 +215,7 @@ $(document).ready(function() {
             }
             var dur = event.duration/60 + 'H';
             var c = event.eventColor;
+            $(element).css('width','220px');
             $(element).empty();
             $(element).addClass(event.eventPictogram);
             $(element).attr('data-id', event.id);
@@ -155,9 +224,35 @@ $(document).ready(function() {
             $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
-          viewRender: function(view){
-            
-          }
+            viewRender: function(view){
+              // limit the min date and max date of the calendar, and change the programmation calendar date
+              var moment = $('#mycalendar').fullCalendar('getDate');
+
+              $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
+              if (moment.format('DD') > maxDate){
+                $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
+              }
+              if (moment.format('DD') < minDate){
+                $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
+              }
+
+              if(parseInt(moment.format('DD')) + 7 >= maxDate) {
+                $('#mycalendar .fc-right').addClass('hide');
+              }
+              if(moment.format('DD') < (parseInt(minDate) + 7)) {
+                $('#mycalendar .fc-left').addClass('hide');
+              }
+
+              var m = $('#mycalendar').fullCalendar('getDate');
+              $('#timeline a').each(function() {
+                var d = $(this).data('date');
+                if(d == m.format()) {
+                  $(this).trigger('click');
+                }
+              });
+            },
+
         });
       } else {
         // if cookie drag doesn't exist, add class to show message
@@ -171,6 +266,10 @@ $(document).ready(function() {
           $.cookie('drag', '1', { expires: 365 });
         });
 
+        $(window).resize(function() {
+          $('#calendar-wrapper').css('left', $('#calendar').offset().left);
+        });
+
         // create the 'my calendar' module
         $('#mycalendar').fullCalendar({
             lang: GLOBALS.locale , // TODO a verifier
@@ -180,9 +279,10 @@ $(document).ready(function() {
               center: 'title',
               right: 'next'
             },
+            titleFormat: 'dddd DD MMMM',
             defaultView: 'agendaDay',
             minTime: "08:00:00",
-            maxTime: "19:00:00",
+            maxTime: "28:00:00",
             allDaySlot: false,
             droppable: true,
             selectOverlap: false,
@@ -214,13 +314,25 @@ $(document).ready(function() {
             viewRender: function(view){
               // limit the min date and max date of the calendar, and change the programmation calendar date
               var moment = $('#mycalendar').fullCalendar('getDate');
+
+              $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
               if (moment.format('DD') > maxDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
               }
               if (moment.format('DD') < minDate){
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
               }
+
+              if(moment.format('DD') == maxDate) {
+                $('#mycalendar .fc-right').addClass('hide');
+              }
+              if(moment.format('DD') == minDate) {
+                $('#mycalendar .fc-left').addClass('hide');
+              }
+
               var m = $('#mycalendar').fullCalendar('getDate');
+              $('#dateProgram').text(m.format('DD MMMM YYYY'));
               $('#timeline a').each(function() {
                 var d = $(this).data('date');
                 if(d == m.format()) {
@@ -472,15 +584,21 @@ $(document).ready(function() {
               });
 
               var date = $.fullCalendar.moment($(this).data('date'));
+
+              $('#dateProgram').text(date.format('DD MMMM YYYY'));
+
               $('#mycalendar').fullCalendar('gotoDate', date);
               
             });
 
             var ct = 0;
 
+            $('#calendar-programmation .nav.prev').addClass('hide');
+
             // slider calendar programmation
             $('#calendar-programmation .nav').on('click', function(e) {
               e.preventDefault();
+              $('#calendar-programmation .nav').removeClass('hide');
 
               if($(this).hasClass('prev')) {
                 $('.v-wrapper').removeClass('max');
@@ -497,6 +615,10 @@ $(document).ready(function() {
                   });
                   ct--;
                 }
+
+                if($v.prev().prev().length == 0) {
+                  $(this).addClass('hide');
+                }
               } else {
                 var $v = $('.venue').eq(ct);
                 var p = - ($v.width() * (ct+1));
@@ -508,6 +630,7 @@ $(document).ready(function() {
                 if(-p > max) {
                   p = -max;
                   $('.v-wrapper').addClass('max');
+                  $(this).addClass('hide');
                 } else {
                   $('.v-wrapper').removeClass('max');
                 }
@@ -588,7 +711,7 @@ $(document).ready(function() {
 
       $grid.isotope('layout');
     });
-    $('.read-more').on('click', function (e) {
+    $('.press .read-more').on('click', function (e) {
       e.preventDefault();
 	     $(this).hide();
       $.ajax({

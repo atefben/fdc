@@ -20,7 +20,7 @@ class FooterController extends Controller
 {
     /**
      * @Route("/static-{page}")
-     *
+     * @Template("")
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -575,23 +575,29 @@ class FooterController extends Controller
 
         );
 
-        $appliContent = " ";
+        $appliContent = "";
 
         switch ($page) {
             case 'faq':
                 $pageContent = $faqContent;
                 break;
-            case 'mention':
+            case 'mentions-legales':
                 $pageContent = $mentionContent;
                 break;
-            case 'sitemap':
+            case 'plan-du-site':
                 $pageContent = $sitemapContent;
                 break;
-            case 'credit':
+            case 'credits':
                 $pageContent = $mentionContent;
                 break;
-            case 'application':
+            case 'application-mobile':
                 $pageContent = $appliContent;
+                break;
+            case 'nous-rejoindre':
+                $pageContent = $mentionContent;
+                break;
+            case 'politique-confidentialite':
+                $pageContent = $mentionContent;
                 break;
         }
 
@@ -600,11 +606,11 @@ class FooterController extends Controller
             array('content' => $pageContent)
         );
 
-
     }
 
     /**
      * @Route("/contact")
+     * @Template("FDCEventBundle:Footer:footer.contact.html.twig")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -612,9 +618,11 @@ class FooterController extends Controller
     {
         $locale = $request->getLocale();
         $em = $this->getDoctrine()->getManager();
+        $translator = $this->get('translator');
+        $hasErrors = false;
 
         $themes = $em->getRepository('BaseCoreBundle:ContactTheme')->findSelectValues($locale);
-        $form = $this->createForm(new ContactType($themes));
+        $form = $this->createForm(new ContactType($themes, $translator));
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -640,24 +648,29 @@ class FooterController extends Controller
                 $this->get('mailer')->send($message);
 
                 return $this->redirect($this->generateUrl('fdc_event_contact'));
+            } else {
+                $hasErrors = true;
             }
         }
 
-        return $this->render(
-            "FDCEventBundle:Footer:footer.contact.html.twig",
-            array('form' => $form->createView())
+        return array(
+            'form' => $form->createView(),
+            'hasErrors' => $hasErrors
         );
 
     }
 
     /**
      * @Route( "/register-newsletter" )
-     * @Template()
+     * @Template("FDCEventBundle:Footer:footer.newsletter.html.twig")
+     * @param Request $request
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newsletterAction( Request $request )
     {
+        $translator = $this->get('translator');
 
-        $newsForm = $this->createForm( new NewsletterType() );
+        $newsForm = $this->createForm( new NewsletterType($translator) );
 
         if ( $request->isMethod( 'POST' ) ) {
 
@@ -670,7 +683,7 @@ class FooterController extends Controller
                 $response['success'] = $email;
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Inscription à la newsletter')
+                    ->setSubject($translator->trans('newsletter.email.subject'))
                     ->setFrom('contact@mail.fr')
                     ->setTo($email)
                     ->setBody(
@@ -696,9 +709,8 @@ class FooterController extends Controller
 
         }
 
-        return $this->render(
-            'FDCEventBundle:Footer:footer.newsletter.html.twig',
-            array('newsform' => $newsForm->createView())
+        return array(
+            'newsform' => $newsForm->createView()
         );
 
     }

@@ -174,7 +174,7 @@
     clear: both;
     background-color: $black;
     border-bottom: 1px solid #2c2c2c;
-    padding: 0 0;
+    padding: 50px 0;
     position: relative;
     z-index: 2;
     #slider-trailers {
@@ -210,6 +210,9 @@
       width: 463px;
       &:last-child {
         margin-left: 45px;
+      }
+      &.shadow-bottom:before {
+        width: 100%;
       }
       .picto {
         background-image: url('../img/svg/video.svg');

@@ -5,17 +5,40 @@ $(document).ready(function() {
     // Slider Videos
     // =========================
 
+    function setActiveVideos() {
+      $('#slider-videos .owl-item').removeClass('center');
+      $('#slider-videos .owl-item.active').first().addClass('center');
+      if($('#slider-videos .owl-item.center').index() >= $('#slider-videos .owl-item').length - 2) {
+        $('#slider-videos .owl-item').last().addClass('center');
+      }
+    }
+
     var sliderVideos = $("#slider-videos").owlCarousel({
       nav: false,
       dots: false,
       smartSpeed: 1300,
       margin: 50,
-      center: true,
       autoWidth: true,
       loop: false,
-      items: 1,
+      responsive:{
+        0:{
+          items: 1
+        },
+        1675: {
+          items: 2
+        }
+      },
       onInitialized: function() {
-        $('#slider-videos .owl-stage').css({ 'margin-left': "-172px" });
+        var m = ($(window).width() - $('.container').width()) / 2;
+        $('#slider-videos .owl-stage').css({ 'margin-left': m });
+        setActiveVideos();
+      },
+      onResized: function() {
+        var m = ($(window).width() - $('.container').width()) / 2;
+        $('#slider-videos .owl-stage').css({ 'margin-left': m });
+      },
+      onTranslated: function() {
+        setActiveVideos();
       }
     });
 

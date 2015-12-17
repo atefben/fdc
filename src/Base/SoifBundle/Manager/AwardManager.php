@@ -157,9 +157,6 @@ class AwardManager extends CoreManager
         
         // save entities
         $this->updateMultiple($entities);
-
-        var_dump('save');
-        die();
         
         // end timer
         $this->end(__METHOD__);

@@ -4,12 +4,13 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Util\Seo;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Seo;
-use Base\CoreBundle\Util\Status;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -20,10 +21,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsImageTranslation implements NewsTranslationInterface
+class NewsImageTranslation implements TranslateChildInterface
 {
     use Seo;
-    use Status;
+    use TranslateChild;
     use Time;
     use Translation;
 
@@ -47,7 +48,6 @@ class NewsImageTranslation implements NewsTranslationInterface
     public function __construct()
     {
         $this->sites = new ArrayCollection();
-        $this->status = NewsImageTranslation::STATUS_DRAFT;
     }
 
     /**

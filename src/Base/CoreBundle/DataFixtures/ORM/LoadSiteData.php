@@ -21,13 +21,13 @@ class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $siteBase = new Site();
-        $siteBase->setName('Festival de cannes');
-        $siteBase->setClassColor('red-light');
-        $manager->persist($siteBase);
-        $this->addReference('site-Base', $siteBase);
+        $siteFdc = new Site();
+        $siteFdc->setName('Site événementiel');
+        $siteFdc->setClassColor('red-light');
+        $manager->persist($siteFdc);
+        $this->addReference('site-fdc-event', $siteFdc);
 
-        $siteMdf = new Site();
+       /* $siteMdf = new Site();
         $siteMdf->setName('Marché du film');
         $siteMdf->setClassColor('green-light');
         $manager->persist($siteMdf);
@@ -45,11 +45,7 @@ class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
         $siteCcm->setName('Cannes courts métrages');
         $siteCcm->setClassColor('purple-light');
         $manager->persist($siteCcm);
-        $this->addReference('site-ccm', $siteCcm);
-
-        $siteMobileStream = new Site();
-        $siteMobileStream->setName('Flux mobiles');
-        $manager->persist($siteMobileStream);
+        $this->addReference('site-ccm', $siteCcm);*/
 
         $manager->flush();
     }

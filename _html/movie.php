@@ -488,6 +488,22 @@
                 <a class="director" href="#">Todd HAYNES</a>
               </div>
             </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

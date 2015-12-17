@@ -74,18 +74,22 @@
             </div>
           </div>
             <div id="timeline">
-              <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
-              <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
-              <a href="#" class="disabled">ven<span class="day">13</span></a>
-              <a href="#" class="disabled">sam<span class="day">14</span></a>
-              <a href="#" class="disabled">dim<span class="day">15</span></a>
-              <a href="#" class="disabled">lun<span class="day">16</span></a>
-              <a href="#" class="disabled">mar<span class="day">17</span></a>
-              <a href="#" class="disabled">mer<span class="day">18</span></a>
-              <a href="#" class="disabled">jeu<span class="day">19</span></a>
-              <a href="#" class="disabled">ven<span class="day">20</span></a>
-              <a href="#" class="disabled">sam<span class="day">21</span></a>
-              <a href="#" class="disabled">dim<span class="day">22</span></a>
+              <span class="arrow left"></span>
+              <div class="timeline-container">
+                <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
+                <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
+                <a href="#" class="disabled">ven<span class="day">13</span></a>
+                <a href="#" class="disabled">sam<span class="day">14</span></a>
+                <a href="#" class="disabled">dim<span class="day">15</span></a>
+                <a href="#" class="disabled">lun<span class="day">16</span></a>
+                <a href="#" class="disabled">mar<span class="day">17</span></a>
+                <a href="#" class="disabled">mer<span class="day">18</span></a>
+                <a href="#" class="disabled">jeu<span class="day">19</span></a>
+                <a href="#" class="disabled">ven<span class="day">20</span></a>
+                <a href="#" class="disabled">sam<span class="day">21</span></a>
+                <a href="#" class="disabled">dim<span class="day">22</span></a>
+              </div>
+              <span class="arrow right"></span>
             </div>
             <div class="calendar">
               <div class="timeCol">
@@ -101,6 +105,15 @@
                 <div class="time">16H</div>
                 <div class="time">17H</div>
                 <div class="time">18H</div>
+                <div class="time">19H</div>
+                <div class="time">20H</div>
+                <div class="time">21H</div>
+                <div class="time">22H</div>
+                <div class="time">23H</div>
+                <div class="time">00H</div>
+                <div class="time">01H</div>
+                <div class="time">02H</div>
+                <div class="time">03H</div>
               </div>
               <div class="venues">
                 <a href="#" class="nav prev"></a>

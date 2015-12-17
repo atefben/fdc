@@ -256,7 +256,7 @@ class PersonManager extends CoreManager
                 
                 $film = $this->em->getRepository('BaseCoreBundle:FilmFilm')->findOneById(array('id' => $obj->IdFilm));
                 if ($film === null) {
-                    $msg = __METHOD__. " Film {$obj->IdFilm} not found, call php app/console Base:soif:get_film {$obj->IdFilm} to import it";
+                    $msg = __METHOD__. " Film {$obj->IdFilm} not found, call php app/console base:soif:get_film {$obj->IdFilm} to import it";
                     $this->logger->warn($msg);
                     continue;
                 }

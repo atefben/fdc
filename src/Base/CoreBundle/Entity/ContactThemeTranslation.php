@@ -4,7 +4,9 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,9 +20,10 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class ContactThemeTranslation implements \A2lix\I18nDoctrineBundle\Doctrine\Interfaces\OneLocaleInterface
+class ContactThemeTranslation implements TranslateChildInterface
 {
     use Time;
+    use TranslateChild;
     use Translation;
 
     /**

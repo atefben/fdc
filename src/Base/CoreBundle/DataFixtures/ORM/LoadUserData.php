@@ -58,10 +58,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setEnabled(true);
         $user->addGroup($this->getReference('group-all-admin'));
         $user->addGroup($this->getReference('group-soif'));
-       /* $user->addSite($this->getReference('site-Base'));
-        $user->addSite($this->getReference('site-mdf'));
-        $user->addSite($this->getReference('site-cine'));
-        $user->addSite($this->getReference('site-ccm'));*/
+        $user->addSite($this->getReference('site-fdc-event'));
         $userManager->updateUser($user);
 
         $user = $userManager->createUser();
@@ -71,10 +68,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setEnabled(true);
         $user->addGroup($this->getReference('group-fdc-admin'));
         $user->addGroup($this->getReference('group-soif'));
-       /* $user->addSite($this->getReference('site-fdc'));
-        $user->addSite($this->getReference('site-mdf'));
-        $user->addSite($this->getReference('site-cine'));
-        $user->addSite($this->getReference('site-ccm'));*/
+        $user->addSite($this->getReference('site-fdc-event'));
         $userManager->updateUser($user);
 
         $user = $userManager->createUser();
@@ -83,7 +77,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
         $user->addGroup($this->getReference('group-fdc-writer'));
-        //$user->addSite($this->getReference('site-fdc'));
+        $user->addSite($this->getReference('site-fdc-event'));
         $userManager->updateUser($user);
 
         $user = $userManager->createUser();
@@ -92,8 +86,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
         $user->addGroup($this->getReference('group-all-translator'));
-        /*$user->addSite($this->getReference('site-Base'));
-        $user->addSite($this->getReference('site-mdf'));*/
         $userManager->updateUser($user);
     }
 

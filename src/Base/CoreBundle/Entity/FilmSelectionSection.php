@@ -4,11 +4,12 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -20,11 +21,11 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmSelectionSection
+class FilmSelectionSection implements TranslateMainInterface
 {
     use Time;
     use Translatable;
-    use TranslationByLocale;
+    use TranslateMain;
 
     /**
      * @var string
@@ -60,6 +61,11 @@ class FilmSelectionSection
     private $selection;
 
     /**
+     * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="selectionSection")
+     */
+    private $films;
+
+    /**
      * @var ArrayCollection
      *
      * @Groups({"film_selection_list", "film_selection_show"})
@@ -72,6 +78,7 @@ class FilmSelectionSection
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->films = new ArrayCollection();
     }
 
     /**
@@ -187,5 +194,38 @@ class FilmSelectionSection
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Add films
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $films
+     * @return FilmSelectionSection
+     */
+    public function addFilm(\Base\CoreBundle\Entity\FilmFilm $films)
+    {
+        $this->films[] = $films;
+
+        return $this;
+    }
+
+    /**
+     * Remove films
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $films
+     */
+    public function removeFilm(\Base\CoreBundle\Entity\FilmFilm $films)
+    {
+        $this->films->removeElement($films);
+    }
+
+    /**
+     * Get films
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilms()
+    {
+        return $this->films;
     }
 }

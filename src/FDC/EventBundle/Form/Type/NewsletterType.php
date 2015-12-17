@@ -15,18 +15,27 @@ use Symfony\Component\Validator\Constraints\Email;
 
 class NewsletterType extends AbstractType
 {
+    private $translator;
+
+    /**
+     * @param $translator
+     */
+    public function __construct($translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      *
      */
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('email', 'email', array(
                 'attr' => array(
-                    'placeholder' => 'Votre adresse email'
+                    'placeholder' => $this->translator->trans('footer.newsletter.placeholder.votreadresse')
                 ),
                 'label' => false
             ));

@@ -4,9 +4,11 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
-use Doctrine\ORM\Mapping as ORM;
-
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\Time;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * FilmAddressTranslation
@@ -15,10 +17,11 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmAddressTranslation
+class FilmAddressTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use TranslateChild;
 
     /**
      * @var string
@@ -26,6 +29,11 @@ class FilmAddressTranslation
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $state;
+
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
 
     /**
      * Set state

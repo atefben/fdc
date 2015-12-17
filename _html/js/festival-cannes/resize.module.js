@@ -16,4 +16,23 @@ $(document).ready(function() {
     var pxT = parseInt(($('#selection .owl-stage-outer').width() / 2) - 131) + "px";
     $('#selection .owl-stage').css('transform', 'translate3d(' + pxT + ',0, 0)');
   });
+
+  if (navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
+    $('body').addClass('mob');
+  }
+
+  var dragging = false;
+
+  $("body").on("touchmove", function(){
+      dragging = true;
+  });
+
+  $('body').on('touchend', 'a', function(e) {
+    if (dragging) return;
+    $(this).trigger('click');
+  });
+
+  $("body").on("touchstart", function(){
+      dragging = false;
+  });
 });

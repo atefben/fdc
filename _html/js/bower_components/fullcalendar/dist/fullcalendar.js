@@ -11165,6 +11165,7 @@ fcViews.agendaWeek = {
 	duration: { weeks: 1 }
 };
 ;;
+  
 
 return fc; // export for Node/CommonJS
 });

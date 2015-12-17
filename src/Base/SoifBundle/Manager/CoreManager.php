@@ -464,14 +464,13 @@ abstract class CoreManager
         $localesMapper = $this->getLocalesMapper();
         foreach ($this->mapperEntityTranslations as $key => $mapper) {
             $entityTranslation = array();
-            
+
             // check isset translations
             if (!property_exists($result, $key) || !property_exists($result->{$key}->Traductions, $mapper['result'])) {
                 $msg = __METHOD__. " {$key} / {$mapper['result']} not found";
                 $this->logger->warning($msg);
                 continue;
             }
-            
             // get related entity
             $translations = $result->{$key}->Traductions->{$mapper['result']};
             $identifier = (isset($mapper['wsIdentifier'])) ? $mapper['wsIdentifier'] : 'Id';
@@ -479,8 +478,8 @@ abstract class CoreManager
             $entityRelated = ($entityRelated !== null) ? $entityRelated : clone $mapper['entity'];
             if ($entityRelated->getId() === null) {
                 $entityRelated->setId($result->{$key}->{$identifier});
-                $entity->{$mapper['setter']}($entityRelated);
             }
+            $entity->{$mapper['setter']}($entityRelated);
             
             // loop throught translations
             foreach ($translations as $translation) {

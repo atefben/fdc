@@ -92,7 +92,7 @@ header {
     #sticky-user {
       opacity: 1;
       visibility: visible;
-      @include transform(translateY(0));
+      @include transform(translate3d(0, 0, 0));
       float: right;
       pointer-events: initial;
       margin-top: 18px;
@@ -105,6 +105,10 @@ header {
           background: url('../img/svg/search.svg') no-repeat left top;
           background-size: 15px;
           margin-right: 0;
+        }
+
+        a {
+          @include transform(translateZ(0));
         }
 
         a.selection {
@@ -166,7 +170,7 @@ header {
         display: block;
         margin-right: 10px;
         padding: 0 0px 1px 20px;
-        @include transition(all 0.9s $smoothTransition);
+        @include transition(opacity 0.9s $smoothTransition);
 
         &:hover {
           opacity: 0.7;
@@ -592,3 +596,12 @@ header {
 
 
 
+@include breakpoint(1024px) {
+  .mob header #navigation ul.main {
+    font-size: 0.8rem;
+  }
+
+  .mob header #navigation ul.user {
+    font-size: 0.7rem;
+  }
+}

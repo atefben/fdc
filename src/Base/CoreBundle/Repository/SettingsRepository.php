@@ -14,4 +14,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class SettingsRepository extends EntityRepository
 {
+    public function getFestivalDate()
+    {
+        return $this->createQueryBuilder('s')
+            ->select('f.festivalStartsAt, f.festivalEndsAt')
+            ->leftJoin('s.festival', 'f')
+            ->where('s.slug = :slug')
+            ->setParameter('slug', 'fdc-year')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

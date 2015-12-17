@@ -3,61 +3,73 @@
 {#<footer class="loading">#}
 <footer>
     <div class="container">
-        <h2 class="title">{{ 'footer.newsletter.title'|trans }}</h2>
-        <h3 class="subtitle">{{ 'footer.newsletter.info'|trans }}</h3>
+        <h2 class="title">{{ 'footer.newsletter.title.newsletter'|trans }}</h2>
+        <h3 class="subtitle">{{ 'footer.newsletter.title.toutelactualite'|trans }}</h3>
 
         {{ render(controller('FDCEventBundle:Footer:newsletter')) }}
 
         <div class="social">
             <p>
                 {% image '@FDCEventBundle/Resources/public/img/svg/logo-white.svg' %}
-                <img width="230" src="{{ asset_url }}" alt="{{ 'footer.social.title'|trans }}" />
+                <img width="230" src="{{ asset_url }}" alt="{{ 'footer.social.logo.festival'|trans }}" />
                 {% endimage %}
             </p>
             <ul>
-                <li><a class="appli" href="app.php" target="_blank"></a></li>
-                <li><a class="facebook" href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937" target="_blank"></a></li>
-                <li><a class="twitter" href="https://twitter.com/Festival_Cannes" target="_blank"></a></li>
-                <li><a class="instagram" href="https://instagram.com/festivaldecannes" target="_blank"></a></li>
-                <li><a class="tumblr" href="http://festivaldecannesofficiel.tumblr.com/" target="_blank"></a></li>
-                <li><a class="rss" href="#" target="_blank"></a></li>
-                <li><a class="youtube" href="https://www.youtube.com/user/TVFestivaldeCannes" target="_blank"></a></li>
-                <li><a class="dailymotion" href="http://www.dailymotion.com/CannesFestTV" target="_blank"></a></li>
-                <li><a class="podcast" href="#" target="_blank"></a></li>
+                <li><a class="appli" href="{{ path('fdc_event_footer_static', {'page': social_appli}) }}" target="_blank"></a></li>
+                <li><a class="facebook" href="{{ social_facebook }}" target="_blank"></a></li>
+                <li><a class="twitter" href="{{ social_twitter }}" target="_blank"></a></li>
+                <li><a class="instagram" href="{{ social_instagram }}" target="_blank"></a></li>
+                <li><a class="tumblr" href="{{ social_tumblr }}" target="_blank"></a></li>
+                <li><a class="rss" href="{{ social_rss }}" target="_blank"></a></li>
+                <li><a class="youtube" href="{{ social_youtube }}" target="_blank"></a></li>
+                <li><a class="dailymotion" href="{{ social_dailymotion }}" target="_blank"></a></li>
+                <li><a class="podcast" href="{{ social_podcast }}" target="_blank"></a></li>
             </ul>
         </div>
 
         <div class="footer-menu">
             <ul>
-                <li class="copyright">{{ 'footer.copyright'|trans }} {{ 'now'|date('Y') }}</li>
+                <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
                 <li>
                     <a href="{{ path('fdc_event_footer_contact') }}">
-                        {{ 'footer.contact'|trans }}
+                        {{ 'footer.nav.contact'|trans }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('fdc_event_footer_static', {'page': 'faq'}) }}">
-                        {{ 'footer.faq'|trans }}
+                        {{ 'footer.nav.faq'|trans }}
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'credit'}) }}">
-                        {{ 'footer.credit'|trans }}
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'credits'}) }}">
+                        {{ 'footer.nav.credit'|trans }}
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'mention'}) }}">
-                        {{ 'footer.mention-legale'|trans }}
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'mentions-legales'}) }}">
+                        {{ 'footer.nav.mentionslegales'|trans }}
                     </a>
                 </li>
-                <li><a href="#">{{ 'footer.rejoindre'|trans }}</a></li>
-                <li><a href="#">{{ 'footer.boutique'|trans }}</a></li>
                 <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'sitemap'}) }}">
-                        {{ 'footer.sitemap'|trans }}
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'nous-rejoindre'}) }}">
+                        {{ 'footer.nav.nousrejoindre'|trans }}
                     </a>
                 </li>
-                <li><a href="#">{{ 'footer.confidentialite'|trans }}</a></li>
+                <li>
+                    <a href="{{ footer_boutique }}">
+                        {{ 'footer.nav.boutique'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'plan-du-site'}) }}">
+                        {{ 'footer.nav.plandusite'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'politique-confidentialite'}) }}">
+                        {{ 'footer.nav.politiqueconfidentialite'|trans }}
+                    </a>
+                </li>
             </ul>
         </div>
 

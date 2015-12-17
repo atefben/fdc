@@ -1,0 +1,78 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+{#<footer class="loading">#}
+<footer>
+    <div class="container">
+        <h2 class="title">{{ 'footer.newsletter.title.newsletter'|trans }}</h2>
+        <h3 class="subtitle">{{ 'footer.newsletter.title.toutelactualite'|trans }}</h3>
+
+        {{ render(controller('FDCEventBundle:Footer:newsletter')) }}
+
+        <div class="social">
+            <p>
+                {% image '@FDCEventBundle/Resources/public/img/svg/logo-white.svg' %}
+                <img width="230" src="{{ asset_url }}" alt="{{ 'footer.social.logo.festival'|trans }}" />
+                {% endimage %}
+            </p>
+            <ul>
+                <li><a class="appli" href="{{ path('fdc_event_footer_static', {'page': social_appli}) }}" target="_blank"></a></li>
+                <li><a class="facebook" href="{{ social_facebook }}" target="_blank"></a></li>
+                <li><a class="twitter" href="{{ social_twitter }}" target="_blank"></a></li>
+                <li><a class="instagram" href="{{ social_instagram }}" target="_blank"></a></li>
+                <li><a class="tumblr" href="{{ social_tumblr }}" target="_blank"></a></li>
+                <li><a class="rss" href="{{ social_rss }}" target="_blank"></a></li>
+                <li><a class="youtube" href="{{ social_youtube }}" target="_blank"></a></li>
+                <li><a class="dailymotion" href="{{ social_dailymotion }}" target="_blank"></a></li>
+                <li><a class="podcast" href="{{ social_podcast }}" target="_blank"></a></li>
+            </ul>
+        </div>
+
+        <div class="footer-menu">
+            <ul>
+                <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_contact') }}" target="_blank">
+                        {{ 'footer.nav.contact'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'faq'}) }}" target="_blank">
+                        {{ 'footer.nav.faq'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'credits'}) }}" target="_blank">
+                        {{ 'footer.nav.credit'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'mentions-legales'}) }}" target="_blank">
+                        {{ 'footer.nav.mentionslegales'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'nous-rejoindre'}) }}" target="_blank">
+                        {{ 'footer.nav.nousrejoindre'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ footer_boutique }}" target="_blank">
+                        {{ 'footer.nav.boutique'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'plan-du-site'}) }}" target="_blank">
+                        {{ 'footer.nav.plandusite'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'politique-confidentialite'}) }}" target="_blank">
+                        {{ 'footer.nav.politiqueconfidentialite'|trans }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</footer>
+<div id="siteLoader" class="canvasloader"></div>

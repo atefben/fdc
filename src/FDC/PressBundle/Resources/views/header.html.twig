@@ -1,0 +1,195 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<header class="press">
+    <div id="top-bar">
+        <ul class="main-nav">
+            <li>
+                <a href="/"> {{ 'header.topbar.nav.festival'|trans }} </a>
+            </li>
+            <li>
+                <a href="{{ header_fdc }}" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
+            </li>
+            <li>
+                <a href="{{ header_cine }}" target="_blank" > {{ 'header.topbar.nav.cinefondation'|trans }} </a>
+            </li>
+            <li>
+                <a href="{{ header_ccm }}" target="_blank" > {{ 'header.topbar.nav.courtmetrage'|trans }} </a>
+            </li>
+            <li>
+                <a href="{{ header_mdf }}" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
+            </li>
+        </ul>
+        <ul class="user-nav">
+            <li>
+                <a href="{{ header_account }}" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
+            </li>
+            <li class="lang">
+                <a href="#" class="language">
+                    {{ app.request.locale|upper }}
+                </a>
+                <ul class="sub-languages">
+                    {% for locale in locales %}
+                        {% if locale == app.request.locale %}
+                        {% else %}
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale|upper }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="logo-wrapper">
+        <div class="container">
+            <div id="logo">
+                <a href="/">
+                    {% image '@FDCEventBundle/Resources/public/img/svg/palme.svg'  %}
+                    <img src="{{ asset_url }}" class="palm" alt="{{ 'header.img.palme'|trans }}" />
+                    {% endimage %}
+                </a>
+                <h1>
+                    <a href="/">
+                        {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
+                        <img width="200" src="{{ asset_url }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
+                        {% endimage %}
+                    </a>
+                </h1>
+                <h2>
+                    {{ render(controller('FDCEventBundle:Header:date')) }}
+                </h2>
+                <p class="stick">
+                    <a href="/">
+                        {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
+                        <img width="178" src="{{ asset_url }}" class="palm" alt="{{ 'header.logo.img.cannes'|trans }}" />
+                        {% endimage %}
+                    </a>
+                </p>
+            </div>
+            <div id="partners">
+                <a href="{{ partner_chopard }}" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/Logo_Chopard.svg' %}
+                    <img width="84" src="{{ asset_url }}" class="chopard" alt="{{ 'header.partners.img.chopard'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="{{ partner_loreal }}" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
+                    <img width="75" src="{{ asset_url }}" class="oreal" alt="{{ 'header.partners.img.loreal'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="{{ partner_hp }}" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/hp.svg' %}
+                    <img width="28" src="{{ asset_url }}" class="hp" alt="{{ 'header.partners.img.hp'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="{{ partner_kering }}" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/Kering-logo.svg' %}
+                    <img width="82" src="{{ asset_url }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="{{ partner_renault }}" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/renault.svg' %}
+                    <img width="95" src="{{ asset_url }}" class="renault" alt="{{ 'header.partners.img.renault'|trans }}" />
+                    {% endimage %}
+                </a>
+                <a href="{{ partner_mastercard }}" target="_blank">
+                    {% image '@FDCEventBundle/Resources/public/img/header/mastercard.png' %}
+                    <img width="57" src="{{ asset_url }}" class="mastercard" alt="{{ 'header.partners.img.mastercard'|trans }}" />
+                    {% endimage %}
+                </a>
+            </div>
+            <div id="search">
+                <a href="#" class="search"></a>
+            </div>
+            <div id="sticky-user">
+                <ul class="user-nav">
+                    <li>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="#" class="search"> {{ 'header.usernav.nav.rechercher'|trans }} </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="navigation">
+        <div class="container">
+            <nav>
+                <ul class="main">
+                    <li>
+                        <a href="{{ path('fdc_press_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.accueil'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_press_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.communiques'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_press_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.accrediter'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_press_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.guide'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_press_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.programmation'|trans }}
+                        </a>
+                        <ul class="tcenter">
+                            <li>
+                                <a href="{{ path('fdc_press_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.direct'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_press_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.chaines'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_press_default_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.bandesannonces'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_press_default_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.mediatheque'|trans }}
+                        </a>
+                    </li>
+                </ul>
+                <ul class="user">
+                    <li>
+                        <a href="{{ path('fdc_press_default_index') }}"
+                           class="download {% if app.request.attributes.get('_route') == 'fdc_press_default_index' %}active{% endif %}">
+                            {{ 'header.mainnav.nav.telecharger'|trans }}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="searchContainer">
+        <div class="container">
+            <form action="{{ path('fdc_press_default_index') }}">
+                <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'header.search.input.entrezrecherche'|trans }}" autocomplete="off" />
+                <input id="submitSearch" type="submit" value="" />
+            </form>
+            <ul id="suggest"></ul>
+        </div>
+    </div>
+</header>

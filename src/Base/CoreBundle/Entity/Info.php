@@ -2,10 +2,9 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,9 +24,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "InfoArticle", "audio" = "InfoAudio", "image" = "InfoImage", "video" = "InfoVideo"})
  */
-abstract class Info
+abstract class Info implements TranslateMainInterface
 {
-    use TranslationByLocale;
+    use TranslateMain;
     use Time;
 
     /**
@@ -47,13 +46,6 @@ abstract class Info
      * @ORM\OneToMany(targetEntity="InfoLock", mappedBy="info")
      */
     private $locks;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
-    private $translate;
 
     /**
      * @var NewsTheme
@@ -377,29 +369,6 @@ abstract class Info
     public function getAssociations()
     {
         return $this->associations;
-    }
-
-    /**
-     * Set translate
-     *
-     * @param boolean $translate
-     * @return News
-     */
-    public function setTranslate($translate)
-    {
-        $this->translate = $translate;
-
-        return $this;
-    }
-
-    /**
-     * Get translate
-     *
-     * @return boolean
-     */
-    public function getTranslate()
-    {
-        return $this->translate;
     }
 
     /**

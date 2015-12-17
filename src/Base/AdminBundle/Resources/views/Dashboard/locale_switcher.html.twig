@@ -1,7 +1,0 @@
-{% if app.user %}
-<form id="fdc-locale-switcher" class="nav navbar-nav" action="{{path('base_admin_dashboard_localeswitcher')}}" method="post" {{ form_enctype(form) }}>
-    {{ form_errors(form) }}
-    {{  form_row(form.locales) }}
-    {{  form_row(form.ok) }}
-</form>
-{% endif %}
