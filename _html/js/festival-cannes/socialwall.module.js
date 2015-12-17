@@ -155,7 +155,7 @@ function displayGrid() {
       $(c).prev().addClass(item.type);
       $(c).parent().find('.side-2').addClass('overlay');
       $(c).parent().find('.side').removeClass('flip');
-      $(c).parent().find('.side-1').css('z-index', '10');
+      $(c).parent().find('.side-1').css('z-index', '5');
       if(item.img) {
         $(c).prev().addClass('hasimg').css('background-image', 'url(' + item.img + ')');
       }
