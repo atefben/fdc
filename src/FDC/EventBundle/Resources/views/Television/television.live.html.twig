@@ -2,8 +2,7 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-{#<div id="main" class="webtv loading webtv-live">#}
-<div id="main" class="webtv webtv-live">
+<div id="main" class="webtv loading webtv-live">
     <div id="live">
         <div class="vCenter">
             <div class="vCenterKid">
@@ -28,14 +27,18 @@
         <div id="slider-videos" class="owl-carousel sliderDrag">
             {% for channel in channels %}
                 {% if channel.most_viewed %}
-                    {% include 'FDCEventBundle:Television:television.video.html.twig' %}
+                    <div class="vid shadow-bottom">
+                        {% include 'FDCEventBundle:Television:television.video.html.twig' %}
+                    </div>
                 {% endif %}
             {% endfor %}
         </div>
         <div id="slider-channels" class="owl-carousel sliderDrag">
             {% for channel in channels %}
                 {% if channel.most_viewed == false %}
-                    {% include 'FDCEventBundle:Television:television.video.html.twig' %}
+                    <div class="channel shadow-bottom">
+                        {% include 'FDCEventBundle:Television:television.video.html.twig' %}
+                    </div>
                 {% endif %}
             {% endfor %}
         </div>
@@ -51,25 +54,8 @@
             </a>
         </p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
-            {% for trailer in trailers %}
-                <div class="vid shadow-bottom">
-                    <div class="image-wrapper">
-                        <img src="{{ trailer.img.path }}" alt="" />
-                    </div>
-                    <a class="linkVid" href="#"></a>
-                    <div class="info">
-                        <div class="picto"></div>
-                        <div class="info-container">
-                            <div class="vCenter">
-                                <div class="vCenterKid">
-                                    <a href="#" class="category">{{ trailer.theme }}</a>
-                                    <span class="date">{{ trailer.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ trailer.createdAt|date('H.i') }}</span>
-                                    <a href="#" class="titleLink">5 {{ 'webtv.direct.text.videos'|trans }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {% for video in trailers %}
+                {% include 'FDCEventBundle:Television:television.video.date.html.twig' %}
             {% endfor %}
         </div>
     </div>
@@ -77,26 +63,9 @@
         <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
             {% for video in videos %}
-                <div class="video shadow-bottom">
-                    <div class="image-wrapper">
-                        <img src="{{ video.img.path }}" alt="" />
-                    </div>
-                    <a class="linkVid" href="#"></a>
-                    <div class="info">
-                        <div class="picto"></div>
-                        <div class="info-container">
-                            <div class="vCenter">
-                                <div class="vCenterKid">
-                                    <a href="#" class="category">{{ video.theme }}</a>
-                                    <span class="date">{{ video.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ video.createdAt|date('H.i') }}</span>
-                                    <a href="#" class="titleLink">{{ video.title }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% include 'FDCEventBundle:Television:television.video.date.html.twig' %}
             {% endfor %}
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock body %}

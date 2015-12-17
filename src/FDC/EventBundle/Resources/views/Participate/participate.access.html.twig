@@ -2,18 +2,16 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-    {#<div id="main" class="list-article participate loading">#}
-    <div id="main" class="list-article participate">
-        <div class="bandeau-list vCenter">
-            <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/participate/bandeau2.jpg') }})">
-                <h2 class="title title-list-header">
-                    {% image '@FDCEventBundle/Resources/public/img/svg/camera.svg' %}
-                    <img src="{{ asset_url }}" class="logo" alt="{{ 'participer.prepare.title.acces'|trans }}" />
-                    {% endimage %}
-                    <br> {{ 'participer.prepare.title.acces'|trans }}
-                </h2>
-            </div>
+<div id="main" class="list-article participate loading">
+    <div class="bandeau-list vCenter">
+        <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/participate/bandeau2.jpg') }})">
+            <h2 class="title title-list-header">
+                {% image '@FDCEventBundle/Resources/public/img/svg/camera.svg' %}
+                <img src="{{ asset_url }}" class="logo" alt="{{ 'participer.prepare.title.acces'|trans }}" />
+                {% endimage %}
+                <br> {{ 'participer.prepare.title.acces'|trans }}
+            </h2>
         </div>
-
     </div>
-{% endblock %}
+</div>
+{% endblock body %}

@@ -131,7 +131,7 @@
                         <a href="{{ path('fdc_event_article_index') }}"
                            class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index'
                                      or app.request.attributes.get('_route') == 'fdc_event_article_get'
-                                     or app.request.attributes.get('_route') == 'fdc_event_article_getarticle'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getarticles'
                                      or app.request.attributes.get('_route') == 'fdc_event_article_getphotos'
                                      or app.request.attributes.get('_route') == 'fdc_event_article_getvideos'
                                      or app.request.attributes.get('_route') == 'fdc_event_article_getaudios'%}active{% endif %}">
@@ -146,7 +146,7 @@
                             </li>
                             <li>
                                 <a href="{{ path('fdc_event_article_getarticles') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getarticle' %}active{% endif %}">
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getarticles' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.articles'|trans }}
                                 </a>
                             </li>
@@ -172,12 +172,16 @@
                     </li>
                     <li>
                         <a href="{{ path('fdc_event_television_live') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live' %}active{% endif %}">
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live'
+                                     or app.request.attributes.get('_route') == 'fdc_event_television_channels'
+                                     or app.request.attributes.get('_route') == 'fdc_event_television_getchannel'
+                                     or app.request.attributes.get('_route') == 'fdc_event_television_trailers' %}active{% endif %}">
                             {{ 'header.mainnav.nav.webtv'|trans }} </a>
                         <ul class="tcenter">
                             <li>
                                 <a href="{{ path('fdc_event_television_live') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live' %}active{% endif %}">
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live'
+                                             or app.request.attributes.get('_route') == 'fdc_event_television_getchannel'%}active{% endif %}">
                                     {{ 'header.mainnav.nav.direct'|trans }}
                                 </a>
                             </li>
@@ -188,7 +192,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_television_trailers') }}"
+                                <a href="{{ path('fdc_event_television_trailers', { 'slug': 'competition' }) }}"
                                    class="{% if app.request.attributes.get('_route') == 'fdc_event_television_trailers' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.bandesannonces'|trans }}
                                 </a>

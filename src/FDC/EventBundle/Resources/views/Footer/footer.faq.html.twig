@@ -2,31 +2,30 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-    {#<div id="main" class="loading">#}
-    <div id="main">
-        <div class="faq">
-            <h2 class="title">{{ 'faq.title.faq'|trans }}</h2>
-            <inside class="faq-menu">
-                <ul>
-                    {% for key, section in content %}
-                        <li {% if key == 0 %}class="active"{% endif %} data-name="{{ section.slug }}">{{ section.name }}</li>
-                    {% endfor %}
-                </ul>
-            </inside>
-            {% for section in content %}
-                <section class="faq-container" data-name="{{ section.slug }}">
-                {% for article in section.articles %}
-                    <article>
-                        <div class="faq-question">
-                            <div class="faq-question">
-                                <h3 class="faq-title">{{ article.title }}</h3><i class="fa fa-plus"></i>
-                            </div>
-                            <p class="faq-description">{{ article.content }}</p>
-                        </div>
-                    </article>
+<div id="main" class="loading">
+    <div class="faq">
+        <h2 class="title">{{ 'faq.title.faq'|trans }}</h2>
+        <inside class="faq-menu">
+            <ul>
+                {% for key, section in content %}
+                    <li {% if key == 0 %}class="active"{% endif %} data-name="{{ section.slug }}">{{ section.name }}</li>
                 {% endfor %}
-                </section>
+            </ul>
+        </inside>
+        {% for section in content %}
+            <section class="faq-container" data-name="{{ section.slug }}">
+            {% for article in section.articles %}
+                <article>
+                    <div class="faq-question">
+                        <div class="faq-question">
+                            <h3 class="faq-title">{{ article.title }}</h3><i class="fa fa-plus"></i>
+                        </div>
+                        <p class="faq-description">{{ article.content }}</p>
+                    </div>
+                </article>
             {% endfor %}
-        </div>
+            </section>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
