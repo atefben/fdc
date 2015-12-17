@@ -85,6 +85,7 @@ twig:
         social_youtube: "%social_youtube%"
         social_dailymotion: "%social_dailymotion%"
         social_podcast: "%social_podcast%"
+        jwplayer_key: "%jwplayer_key%"
 
 
 # Assetic Configuration

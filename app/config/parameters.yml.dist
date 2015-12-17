@@ -71,3 +71,4 @@ parameters:
     social_youtube: 'https://www.youtube.com/user/TVFestivaldeCannes'
     social_dailymotion: 'http://www.dailymotion.com/CannesFestTV'
     social_podcast: '#'
+    jwplayer_key: ~

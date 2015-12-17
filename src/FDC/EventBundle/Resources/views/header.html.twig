@@ -200,8 +200,8 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_movie_selection', { 'slug': 'competition' }) }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_movie_selection' %}active{% endif %}">
                             {{ 'header.mainnav.nav.laselection'|trans }}
                         </a>
                     </li>
