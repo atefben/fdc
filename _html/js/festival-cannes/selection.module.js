@@ -11,6 +11,7 @@ $(document).ready(function() {
   if($.cookie('selection')) {
     selectionCookie = JSON.parse($.cookie('selection'));
 
+    console.log(selectionCookie);
     for(var i=0; i<selectionCookie.length; i++) {
       var $art = $('#toClone').clone();
 
@@ -254,7 +255,7 @@ $(document).ready(function() {
       'category': $articleEl.find('.category').text(),
       'date': $articleEl.find('.date').text(),
       'hour': $articleEl.find('.hour').text(),
-      'title': $articleEl.find('h2 a').text(),
+      'title': $articleEl.find('h2 a, h3 a').text(),
     });
 
     $.cookie('selection', JSON.stringify(selectionCookie), { expires: 14 });
