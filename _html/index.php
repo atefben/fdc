@@ -556,6 +556,7 @@
                 <source src="img/featured-movies/sample.mp4">
                 <source src="img/featured-movies/sample.webm" type="video/webm">
               </video>
+              <div class="img" style="background-image:url(/img/slider/slider01.jpg)"></div>
             </div>
             <div class="textVideo">
               <div class="info">
@@ -579,6 +580,7 @@
                 <source src="https://broken-links.com/tests/media/BigBuck.m4v">
                 <source src="https://broken-links.com/tests/media/BigBuck.webm" type="video/webm">
               </video>
+              <div class="img" style="background-image:url(/img/slider/slider01.jpg)"></div>
             </div>
             <div class="textVideo">
               <div class="info">

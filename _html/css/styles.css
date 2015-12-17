@@ -8388,6 +8388,15 @@ header #searchContainer {
   height: 100%;
   z-index: 1;
 }
+#featured-movies .video .img {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  top: 0;
+  left: 0;
+}
 #featured-movies video {
   display: block;
   position: absolute;
@@ -8559,6 +8568,14 @@ header #searchContainer {
   opacity: 1;
   transition-delay: 1.4s;
   visibility: visible;
+}
+
+.mob #featured-movies video {
+  display: none;
+}
+
+.mob #featured-movies .video .img {
+  display: block;
 }
 
 .push-container {
