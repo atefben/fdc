@@ -31,11 +31,7 @@
                 {% for trailer in trailers %}
                     <div class="item {{ trailer.filter.date }} {{ trailer.filter.theme }} shadow-bottom video">
 
-                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                        <img src="{{ asset_url }}" alt="{{ 'webtv.direct.btn.touteslesbandesannonces'|trans }}">
-                        {% endimage %}
-
-                        <img src="{{ trailer.image.src }}" srcset="{{ trailer.image.srcset }}" alt="">
+                        <img src="{{ trailer.image.src }}" srcset="{{ trailer.image.src }} 1x, {{ trailer.image.large }} 2x" alt="">
                         <div class="info">
                             <div class="picto"></div>
                             <div class="info-container">

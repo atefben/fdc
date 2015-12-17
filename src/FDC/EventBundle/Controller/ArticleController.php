@@ -280,8 +280,8 @@ class ArticleController extends Controller
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
                 'image' => array(
                     'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/320x404/3498db/.png',
-                    'srcset'    => 'http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x',
+                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
                 'filter' => array(
                     'date' => 'date1',
@@ -341,8 +341,8 @@ class ArticleController extends Controller
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
                 'image' => array(
                     'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/320x404/3498db/.png',
-                    'srcset'    => 'http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x',
+                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
                 'filter' => array(
                     'date' => 'date1',
@@ -404,8 +404,8 @@ class ArticleController extends Controller
                 'sound'=> 'audio.mp3',
                 'image' => array(
                     'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/320x404/3498db/.png',
-                    'srcset'    => 'http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x',
+                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
                 'filter' => array(
                     'date' => 'date1',
