@@ -55,8 +55,7 @@ var GLOBALS = {
 </script>
 
 
-<!-- build:js js/festival-cannes/app.min.js -->
-<!-- festival-cannes tags start -->
+<!-- build:js js/vendor.min.js -->
 <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="js/bower_components/owl.carousel/src/js/owl.carousel.js"></script>
 <script src="js/bower_components/moment/min/moment.min.js"></script>
@@ -76,6 +75,10 @@ var GLOBALS = {
 <script src="js/components/jwplayer.js"></script>
 <script src="js/components/konsole.min.js"></script>
 <script src="js/components/jquery-ui.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js js/app.min.js -->
+<!-- festival-cannes tags start -->
 <script src="js/festival-cannes/helpers.js"></script>
 <script src="js/festival-cannes/article.module.js"></script>
 <script src="js/festival-cannes/audio.module.js"></script>

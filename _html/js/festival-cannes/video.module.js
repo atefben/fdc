@@ -137,28 +137,28 @@ function player(vid, playerInstance, cls, havePlaylist, live) {
         width: $(vid).parent('div').width(),
         height: $(vid).parent('div').height(),
         controls: false,
-        // playlist: [ //TODO change all link//
-        //     {
-        //         // file: 'https://www.youtube.com/watch?v=p7t_GWXmgFk',
-        //         file: './files/mov_bbb.mp4',
-        //         image: '//dummyimage.com/960x540/000/c8a461.png'
-        //     }, {
-        //         file: 'https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s',
-        //     }, {
-        //         file: 'https://www.youtube.com/watch?v=NtDG-Cnj-pw',
-        //         title: 'Video 1'
-        //     }, {
-        //         file:'https://www.youtube.com/watch?v=4QmpYuVEwIU',
-        //         title:'Video 2'
-        //     }, {
-        //         file:'https://www.youtube.com/watch?v=YvjBXpmwhmk',
-        //         title:'Video 3'
-        //     }
-        // ]
+        playlist: [ //TODO change all link//
+            {
+                // file: 'https://www.youtube.com/watch?v=p7t_GWXmgFk',
+                file: './files/mov_bbb.mp4',
+                image: '//dummyimage.com/960x540/000/c8a461.png'
+            }, {
+                file: 'https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s',
+            }, {
+                file: 'https://www.youtube.com/watch?v=NtDG-Cnj-pw',
+                title: 'Video 1'
+            }, {
+                file:'https://www.youtube.com/watch?v=4QmpYuVEwIU',
+                title:'Video 2'
+            }, {
+                file:'https://www.youtube.com/watch?v=YvjBXpmwhmk',
+                title:'Video 3'
+            }
+        ]
     });
 
     if (live) {
-        playerInstance.load([{file:$container.data('video')}]);
+        // playerInstance.load([{file:$container.data('video')}]);
         // playerInstance.load({
         //     playlist: [ //TODO change all link//
         //         {
