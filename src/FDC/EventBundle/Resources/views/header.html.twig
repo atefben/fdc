@@ -129,12 +129,17 @@
                 <ul class="main">
                     <li>
                         <a href="{{ path('fdc_event_article_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index' %}active{% endif %}">
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_get'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getarticle'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getphotos'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getvideos'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getaudios'%}active{% endif %}">
                             {{ 'header.mainnav.nav.lactualite'|trans }}
                         </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_article_get') }}"
+                                <a href="{{ path('fdc_event_article_get', { 'id': 0 }) }}"
                                    class="{% if app.request.attributes.get('_route') == 'fdc_event_article_get' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.jourapresjour'|trans }}
                                 </a>
@@ -166,25 +171,25 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_television_live') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live' %}active{% endif %}">
                             {{ 'header.mainnav.nav.webtv'|trans }} </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_television_live') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.direct'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_television_channels') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_channels' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.chaines'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_television_trailers') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_trailers' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.bandesannonces'|trans }}
                                 </a>
                             </li>

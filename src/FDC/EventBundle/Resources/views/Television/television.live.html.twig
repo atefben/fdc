@@ -1,0 +1,102 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+{#<div id="main" class="webtv loading webtv-live">#}
+<div id="main" class="webtv webtv-live">
+    <div id="live">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <div class="textLive">
+                    <h2>{{ 'webtv.direct.title.suiveztvfestival'|trans }}</h2>
+                    <a href="#" class="play"></a>
+                </div>
+            </div>
+        </div>
+        <div class="img" style="background-image:url({{ asset('bundles/fdcevent/img/webtv/001.jpg') }})"></div>
+    </div>
+    <div id="content-channels">
+        <h2 class="title">{{ 'webtv.direct.title.leschainesdufestival'|trans }}</h2>
+        <p class="link">
+            <a href="{{ path('fdc_event_television_channels') }}">
+                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                <img src="{{ asset_url }}" alt="{{ 'webtv.direct.btn.toutesleschaines'|trans }}">
+                {% endimage %}
+                {{ 'webtv.direct.btn.toutesleschaines'|trans }}
+            </a>
+        </p>
+        <div id="slider-videos" class="owl-carousel sliderDrag">
+            {% for channel in channels %}
+                {% if channel.most_viewed %}
+                    {% include 'FDCEventBundle:Television:television.video.html.twig' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="slider-channels" class="owl-carousel sliderDrag">
+            {% for channel in channels %}
+                {% if channel.most_viewed == false %}
+                    {% include 'FDCEventBundle:Television:television.video.html.twig' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div id="content-trailers">
+        <h2 class="title">{{ 'webtv.direct.title.lesbandesannonces'|trans }}</h2>
+        <p class="link">
+            <a href="webtv_trailer_competition.php">
+                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                <img src="{{ asset_url }}" alt="{{ 'webtv.direct.btn.touteslesbandesannonces'|trans }}">
+                {% endimage %}
+                {{ 'webtv.direct.btn.touteslesbandesannonces'|trans }}
+            </a>
+        </p>
+        <div id="slider-trailers" class="owl-carousel sliderDrag">
+            {% for trailer in trailers %}
+                <div class="vid shadow-bottom">
+                    <div class="image-wrapper">
+                        <img src="{{ trailer.img.path }}" alt="" />
+                    </div>
+                    <a class="linkVid" href="#"></a>
+                    <div class="info">
+                        <div class="picto"></div>
+                        <div class="info-container">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">{{ trailer.theme }}</a>
+                                    <span class="date">{{ trailer.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ trailer.createdAt|date('H.i') }}</span>
+                                    <a href="#" class="titleLink">5 {{ 'webtv.direct.text.videos'|trans }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="content-latest">
+        <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
+        <div class="container sliderDrag">
+            {% for video in videos %}
+                <div class="video shadow-bottom">
+                    <div class="image-wrapper">
+                        <img src="{{ video.img.path }}" alt="" />
+                    </div>
+                    <a class="linkVid" href="#"></a>
+                    <div class="info">
+                        <div class="picto"></div>
+                        <div class="info-container">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">{{ video.theme }}</a>
+                                    <span class="date">{{ video.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ video.createdAt|date('H.i') }}</span>
+                                    <a href="#" class="titleLink">{{ video.title }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

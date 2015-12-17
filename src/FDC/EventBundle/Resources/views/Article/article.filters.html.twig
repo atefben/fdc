@@ -1,0 +1,18 @@
+<div class="filters">
+    <div id="theme" class="filter">
+        <span class="label">{{ 'article.filter.label.date'|trans }} :</span>
+          <span class="select">
+              {% for key, date in filters.dates %}
+              <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ date.slug }}">{{ date.content }}</span>
+              {% endfor %}
+          </span>
+    </div>
+    <div id="format" class="filter">
+        <span class="label">{{ 'article.filter.label.theme'|trans }} :</span>
+          <span class="select">
+              {% for key, theme in filters.themes %}
+              <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ theme.slug }}">{{ theme.content }}</span>
+              {% endfor %}
+          </span>
+    </div>
+</div>
