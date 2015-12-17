@@ -129,6 +129,7 @@ $(document).ready(function() {
     if($(this).hasClass('opened')) {
       closeSelection();
     } else {
+      $("#main, footer").addClass('overlay');
       openSelection(function() {
 
       });
