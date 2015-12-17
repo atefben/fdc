@@ -1,0 +1,15 @@
+<div class="competition">
+    <h2 class="title">{{ 'movie.competition.title.encompetition'|trans }} {{ "now"|date('y') }}</h2>
+    <div id="slider-competition" class="owl-carousel sliderDrag">
+        {% for movie in movies %}
+            <div class="slide">
+                <img src="{{ movie.image.path }}" alt="" />
+                <a class="linkVid" href="#"></a>
+                <div class="info-movie">
+                    <p>{{ movie.title }}</p>
+                    <a class="director" href="#">{{ movie.author.fullName }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
