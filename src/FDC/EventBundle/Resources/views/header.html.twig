@@ -139,8 +139,8 @@
                         </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_article_get', { 'slug': 0 }) }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_get' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.jourapresjour'|trans }}
                                 </a>
                             </li>
@@ -226,10 +226,10 @@
                 </ul>
                 <ul class="user">
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}" class="programmation"> {{ 'header.mainnav.nav.programmation'|trans }} </a>
+                        <a href="{{ path('fdc_event_article_index') }}" class="programmation"> {{ 'header.mainnav.nav.programmation'|trans }} </a>
                     </li>
                     <li class="participate-wrapper">
-                        <a href="{{ path('fdc_event_default_index') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
+                        <a href="{{ path('fdc_event_article_index') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
                         <ul>
                             <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ 'header.mainnav.nav.preparersejour'|trans }}</a></li>
                             <li><a href="{{ path('fdc_event_participate_festival') }}"> {{ 'header.mainnav.nav.festivalmodeemploi'|trans }} </a></li>
@@ -239,7 +239,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
+                        <a href="{{ path('fdc_event_article_index') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
                     </li>
                 </ul>
             </nav>
@@ -263,7 +263,7 @@
     </div>
     <div id="searchContainer">
         <div class="container">
-            <form action="{{ path('fdc_event_default_index') }}">
+            <form action="{{ path('fdc_event_article_index') }}">
                 <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'header.search.input.entrezrecherche'|trans }}" autocomplete="off" />
                 <input id="submitSearch" type="submit" value="" />
             </form>
