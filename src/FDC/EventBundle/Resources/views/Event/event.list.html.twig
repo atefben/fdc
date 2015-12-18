@@ -1,0 +1,71 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="all-articles grid evenement loading">
+        <h2 class="title">{{ 'event.title.lesevenements'|trans }}</h2>
+
+        <div class="filters">
+            <div id="date" class="filter">
+                <span class="label">{{ 'event.filter.label.date'|trans }} :</span>
+                <span class="select">
+                    {% for key, date in filters.dates %}
+                        <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ date.slug }}">{{ date.content }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+            <div id="theme" class="filter">
+                <span class="label">{{ 'event.filter.label.theme'|trans }} :</span>
+                <span class="select">
+                  {% for key, theme in filters.themes %}
+                      <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ theme.slug }}">{{ theme.content }}</span>
+                  {% endfor %}
+                </span>
+            </div>
+        </div>
+
+
+        <div id="gridEvent" class="grid-wrapper" data-type="evenement">
+            <div class="grid-sizer"></div>
+
+            {% for event in events %}
+                <div class="item {{ event.filter.theme }} {{ event.filter.date }} article evenement">
+                    <article class="article evenement">
+                        <div class="img">
+                            <a href="{{ path('fdc_event_event_get', {'slug': event.slug }) }}">
+                                <img src='{{ event.image.path }}' />
+                            </a>
+                        </div>
+                        <div class="info">
+                            <a href="#" class="category">{{ event.theme }}</a>
+                            <span class="date">{{ event.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ event.createdAt|date('H:i') }}</span>
+                            <h3>
+                                <a href="{{ path('fdc_event_event_get', {'slug': event.slug }) }}">
+                                    {{ event.title }}
+                                </a>
+                            </h3>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+
+
+        </div>
+        <a href="#" class="read-more">
+            {{ 'event.btn.afficherplusdevenement'|trans }}
+        </a>
+        <div class="list-article">
+            <div class="bandeau-list vCenter push-footer">
+                <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/push.jpg') }});">
+                    <h2 class="title title-list-header">{{ 'event.title.retrospective'|trans }}</h2>
+                    <a href="#" class="bandeau-lien">
+                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                        <img src="{{ asset_url }}" class="svg-arrow" alt="{{ 'event.btn.decouvrirlarubrique'|trans }}" />
+                        {% endimage %}
+                        {{ 'event.btn.decouvrirlarubrique'|trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

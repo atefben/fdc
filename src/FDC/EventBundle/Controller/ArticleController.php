@@ -139,26 +139,29 @@ class ArticleController extends Controller
                 ),
                 array(
                     'type' => 'audio',
-                    'title' => 'The lobster',
-                    'theme' => 'Cinéma de la plage',
-                    'podcast' => 'sound2.mp3',
-                    'createdAt' => new \DateTime(),
-                    'img' => array(
-                        'path' => 'img.jpg'
+                    'podcast' => array(
+                        array(
+                            'title' => 'The lobster',
+                            'theme' => 'Cinéma de la plage',
+                            'sound' => 'sound2.mp3',
+                            'createdAt' => new \DateTime(),
+                            'img' => array(
+                                'path' => 'img.jpg'
+                            ),
+                            'akamaiId' => 'DAaDo5fgcUc'
+                        ),
+                        array(
+                            'title' => 'The lobster',
+                            'theme' => 'Cinéma de la plage',
+                            'sound' => 'sound2.mp3',
+                            'createdAt' => new \DateTime(),
+                            'img' => array(
+                                'path' => 'img.jpg'
+                            ),
+                            'akamaiId' => 'DAaDo5fgcUc'
+                        ),
                     ),
-                    'akamaiId' => 'DAaDo5fgcUc'
                 ),
-                array(
-                    'type' => 'audio',
-                    'title' => 'The lobster',
-                    'theme' => 'Cinéma de la plage',
-                    'podcast' => 'sound2.mp3',
-                    'createdAt' => new \DateTime(),
-                    'img' => array(
-                        'path' => 'img.jpg'
-                    ),
-                    'akamaiId' => 'DAaDo5fgcUc'
-                )
             )
         );
         return array('article' => $article);

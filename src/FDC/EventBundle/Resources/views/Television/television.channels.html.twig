@@ -16,7 +16,7 @@
 
         {% for channel in channels %}
             <div class="item {{ channel.filter.date }} {{ channel.filter.theme }} shadow-bottom playlist">
-                <img src="{{ channel.image.src }}" srcset="{{ channel.image.srcset }}" alt="">
+                <img src="{{ channel.image.src }}" srcset="{{ channel.image.src }} 1x, {{ channel.image.large }} 2x" alt="">
                 <div class="picto"></div>
                 <div class="info">
                     <div class="vCenter">

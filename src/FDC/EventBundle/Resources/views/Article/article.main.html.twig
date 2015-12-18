@@ -14,7 +14,7 @@
             <div class="info">
                 <a href="#" class="category">{{ article.theme }}</a>
                 <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+                <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.updatedAt|date('H:i') }}</span>
             </div>
             <h2 class="title-article">{{ article.title }}</h2>
             <div class="buttons">

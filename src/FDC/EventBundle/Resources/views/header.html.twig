@@ -68,7 +68,7 @@
                 <p class="stick">
                     <a href="/">
                         {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
-                        <img width="178" src="{{ asset_url }}" class="palm" alt="{{ 'header.logo.img.cannes'|trans }}" />
+                        <img width="178" src="{{ asset_url }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
                         {% endimage %}
                     </a>
                 </p>
@@ -218,8 +218,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_event_getevents') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_event_getevents' %}active{% endif %}">
                             {{ 'header.mainnav.nav.lesevenements'|trans }}
                         </a>
                     </li>
