@@ -1,0 +1,21 @@
+<article class="article {% if article.double %}double{% endif %}" data-format="{{ article.format }}" data-theme="{{ article.theme }}">
+    <div class="image">
+        <div class="image-wrapper">
+            <img src="{{ article.image.path }}" alt="" />
+        </div>
+        <a href="{{ path('fdc_event_article_get', {'id': article.id}) }}" class="linkImage"></a>
+        <a href="#" class="read-later">
+            <span>{{ 'home.article.btn.ajouteramaselection' }}</span>
+        </a>
+        <span class="picto"></span>
+    </div>
+    <div class="info">
+        <a href="#" class="category">{{ article.category }}</a>
+        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+        <h2>
+            <a href="{{ path('fdc_event_article_get', {'id': article.id}) }}">
+                {{ article.title }}
+            </a>
+        </h2>
+    </div>
+</article>

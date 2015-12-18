@@ -42,7 +42,7 @@
         <h2 class="title">{{ 'webtv.channel.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
             {% for video in videos %}
-                {% include 'FDCEventBundle:Television:television.video.date.html.twig' %}
+                {% include 'FDCEventBundle:Television:television.video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
             {% endfor %}
         </div>
     </div>

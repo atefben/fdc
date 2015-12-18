@@ -55,7 +55,7 @@
         </p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
             {% for video in trailers %}
-                {% include 'FDCEventBundle:Television:television.video.date.html.twig' %}
+                {% include 'FDCEventBundle:Television:television.video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
             {% endfor %}
         </div>
     </div>
@@ -63,7 +63,7 @@
         <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
             {% for video in videos %}
-                {% include 'FDCEventBundle:Television:television.video.date.html.twig' %}
+                {% include 'FDCEventBundle:Television:television.video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
             {% endfor %}
         </div>
     </div>
