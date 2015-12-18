@@ -1,12 +1,8 @@
 services:
-  base.listener.media_video:
-        class: Base\CoreBundle\Listener\MediaVideoListener
-        tags:
-            - { name: doctrine.event_listener, event: prePersist }
-
-  base.listener.news:
-        class: Base\CoreBundle\Listener\NewsListener
+    base.listener.fdc:
+        class: Base\CoreBundle\Listener\FDCListener
         arguments:
             - "@security.token_storage"
         tags:
             - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
