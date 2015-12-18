@@ -8,9 +8,9 @@ use Doctrine\ORM\EntityRepository;
 /**
  * FilmPrizeRepository class.
  * 
- * @extends EntityRepository
-* @author   Antoine Mineau
- * @company Ohwee
+ * \@extends EntityRepository
+*  @author   Antoine Mineau
+ * \@company Ohwee
  */
 class FilmPrizeRepository extends EntityRepository
 {

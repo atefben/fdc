@@ -25,7 +25,15 @@ class MediaImageTranslation implements TranslateChildInterface
     use Time;
     use Translation;
     use TranslateChild;
-    
+
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     *
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     */
+    private $file;
+
     /**
      * @var string
      *
@@ -33,14 +41,6 @@ class MediaImageTranslation implements TranslateChildInterface
      * @Groups({"news_list", "news_show"})
      */
     private $legend;
-    
-     /**
-      * @var Theme
-      *
-      * @ORM\ManyToOne(targetEntity="NewsTheme")
-      * @Groups({"news_list", "news_show"})
-      */
-    private $theme;
 
     /**
      * @var string
@@ -57,20 +57,6 @@ class MediaImageTranslation implements TranslateChildInterface
      * @Groups({"news_list", "news_show"})
      */
     private $copyright;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     */
-    private $publishedAt;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     */
-    private $publishEndedAt;
 
    /**
      * @var Site
@@ -157,52 +143,6 @@ class MediaImageTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return MediaImageTranslation
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publishEndedAt
-     *
-     * @param \DateTime $publishEndedAt
-     * @return MediaImageTranslation
-     */
-    public function setPublishEndedAt($publishEndedAt)
-    {
-        $this->publishEndedAt = $publishEndedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishEndedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishEndedAt()
-    {
-        return $this->publishEndedAt;
-    }
-
-    /**
      * Set theme
      *
      * @param \Base\CoreBundle\Entity\NewsTheme $theme
@@ -256,5 +196,28 @@ class MediaImageTranslation implements TranslateChildInterface
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return MediaImageTranslation
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }

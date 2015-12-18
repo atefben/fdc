@@ -298,7 +298,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get publishedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedAt()
     {
@@ -321,7 +321,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get publishEndedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishEndedAt()
     {
@@ -443,7 +443,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get sites
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSites()
     {

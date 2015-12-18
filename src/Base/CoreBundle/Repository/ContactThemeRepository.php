@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityRepository;
  * ContactThemeRepository class.
  *
  * \@extends EntityRepository
- * @author   Antoine Mineau
+ *  @author   Antoine Mineau
  * \@company Ohwee
  */
 class ContactThemeRepository extends EntityRepository

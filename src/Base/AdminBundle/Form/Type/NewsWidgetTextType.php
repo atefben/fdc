@@ -47,7 +47,8 @@ class NewsWidgetTextType extends NewsWidgetType
                     'constraints' => array(
                         new NotBlank()
                     ),
-                    'field_type' => 'ckeditor'
+                    'field_type' => 'ckeditor',
+                    'config_name' => 'widget'
                 ),
                 'createdAt' => array(
                     'display' => false

@@ -15,13 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * NewsNewsAssociated
+ * NewsFilmFilmAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsNewsAssociated
+class NewsFilmFilmAssociated
 {
     use Time;
 
@@ -33,28 +33,28 @@ class NewsNewsAssociated
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @var News
      *
-     * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedNews")
+     * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedFilms")
      */
     protected $news;
-    
-     /**
-     * @var NewsArticle
+
+    /**
+     * @var FilmFilm
      *
-     * @ORM\ManyToOne(targetEntity="News")
+     * @ORM\ManyToOne(targetEntity="FilmFilm")
      */
     protected $association;
-    
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
-        
+
         if ($this->getId()) {
             $string .= ' #'. $this->getId();
         }
-        
+
         return $string;
     }
 
@@ -68,7 +68,7 @@ class NewsNewsAssociated
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -101,10 +101,10 @@ class NewsNewsAssociated
     /**
      * Set association
      *
-     * @param \Base\CoreBundle\Entity\News $association
-     * @return NewsNewsAssociated
+     * @param \Base\CoreBundle\Entity\FilmFilm $association
+     * @return NewsFilmFilmAssociated
      */
-    public function setAssociation(\Base\CoreBundle\Entity\News $association = null)
+    public function setAssociation(\Base\CoreBundle\Entity\FilmFilm $association = null)
     {
         $this->association = $association;
 
@@ -114,7 +114,7 @@ class NewsNewsAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\News
+     * @return \Base\CoreBundle\Entity\FilmFilm 
      */
     public function getAssociation()
     {

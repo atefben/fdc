@@ -27,6 +27,14 @@ class MediaVideoTranslation implements TranslateChildInterface
     use TranslateChild;
 
     /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     *
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     */
+    private $file;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
@@ -179,5 +187,28 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return MediaImageTranslation
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }

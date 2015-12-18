@@ -29,12 +29,12 @@ class MediaAudioTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $title;
-    
+
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      */
     private $file;
 
@@ -80,4 +80,27 @@ class MediaAudioTranslation implements TranslateChildInterface
      * @ORM\ManyToMany(targetEntity="Site")
      */
     private $sites;
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return MediaImageTranslation
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
 }

@@ -68,24 +68,6 @@ abstract class News implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
     private $festival;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     *
-     * @Groups({"news_list", "news_show"})
-     */
-    private $publishedAt;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     *
-     * @Groups({"news_list", "news_show"})
-     */
-    private $publishEndedAt;
 
     /**
      * @var Homepage
@@ -107,8 +89,6 @@ abstract class News implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
-     *
-     * @Groups({"news_list", "news_show"})
      */
     private $displayedMobile;
 
@@ -135,7 +115,35 @@ abstract class News implements TranslateMainInterface
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $associations;
+    private $associatedNews;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedFilm;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedEvent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="NewsFilmProjectionAssociated", mappedBy="news", cascade={"persist"})
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedProjections;
+
+    /**
+     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="news", cascade={"persist"})
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedFilms;
 
     /**
      * @var NewsWidget
@@ -157,25 +165,27 @@ abstract class News implements TranslateMainInterface
     private $sites;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     * @Groups({"web_tv_list", "web_tv_show"})
+     */
+    private $publishedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     * @Groups({"web_tv_list", "web_tv_show"})
+     */
+    private $publishEndedAt;
+
+    /**
      * ArrayCollection
      *
      * @Groups({"news_list", "news_show"})
      */
     protected $translations;
-
-    /**
-     * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
-     */
-    private $createdBy;
-
-    /**
-     * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
-     */
-    private $updatedBy;
 
     public function __construct()
     {
@@ -260,52 +270,6 @@ abstract class News implements TranslateMainInterface
     }
 
     /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return News
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publishEndedAt
-     *
-     * @param \DateTime $publishEndedAt
-     * @return News
-     */
-    public function setPublishEndedAt($publishEndedAt)
-    {
-        $this->publishEndedAt = $publishEndedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishEndedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishEndedAt()
-    {
-        return $this->publishEndedAt;
-    }
-
-    /**
      * Set theme
      *
      * @param \Base\CoreBundle\Entity\NewsTheme $theme
@@ -349,40 +313,6 @@ abstract class News implements TranslateMainInterface
     public function getFestival()
     {
         return $this->festival;
-    }
-
-    /**
-     * Add associations
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associations
-     * @return News
-     */
-    public function addAssociation(\Base\CoreBundle\Entity\NewsNewsAssociated $associations)
-    {
-        $this->associations[] = $associations;
-        $associations->setNews($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove associations
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associations
-     */
-    public function removeAssociation(\Base\CoreBundle\Entity\NewsNewsAssociated $associations)
-    {
-        $this->associations->removeElement($associations);
-    }
-
-    /**
-     * Get associations
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAssociations()
-    {
-        return $this->associations;
     }
 
     /**
@@ -556,29 +486,6 @@ abstract class News implements TranslateMainInterface
     }
 
     /**
-     * Set displayedMobile
-     *
-     * @param boolean $displayedMobile
-     * @return News
-     */
-    public function setDisplayedMobile($displayedMobile)
-    {
-        $this->displayedMobile = $displayedMobile;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedMobile
-     *
-     * @return boolean 
-     */
-    public function getDisplayedMobile()
-    {
-        return $this->displayedMobile;
-    }
-
-    /**
      * Set signature
      *
      * @param string $signature
@@ -602,48 +509,240 @@ abstract class News implements TranslateMainInterface
     }
 
     /**
-     * Set createdBy
+     * Set displayedMobile
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
+     * @param boolean $displayedMobile
      * @return News
      */
-    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    public function setDisplayedMobile($displayedMobile)
     {
-        $this->createdBy = $createdBy;
+        $this->displayedMobile = $displayedMobile;
 
         return $this;
     }
 
     /**
-     * Get createdBy
+     * Get displayedMobile
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return boolean 
      */
-    public function getCreatedBy()
+    public function getDisplayedMobile()
     {
-        return $this->createdBy;
+        return $this->displayedMobile;
     }
 
     /**
-     * Set updatedBy
+     * Set publishedAt
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
+     * @param \DateTime $publishedAt
      * @return News
      */
-    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    public function setPublishedAt($publishedAt)
     {
-        $this->updatedBy = $updatedBy;
+        $this->publishedAt = $publishedAt;
 
         return $this;
     }
 
     /**
-     * Get updatedBy
+     * Get publishedAt
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \DateTime 
      */
-    public function getUpdatedBy()
+    public function getPublishedAt()
     {
-        return $this->updatedBy;
+        return $this->publishedAt;
+    }
+
+    /**
+     * Set publishEndedAt
+     *
+     * @param \DateTime $publishEndedAt
+     * @return News
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishEndedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
+     * Add associatedNews
+     *
+     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews
+     * @return News
+     */
+    public function addAssociatedNew(\Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews)
+    {
+        $this->associatedNews[] = $associatedNews;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedNews
+     *
+     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews
+     */
+    public function removeAssociatedNew(\Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews)
+    {
+        $this->associatedNews->removeElement($associatedNews);
+    }
+
+
+    /**
+     * Add associatedNews
+     *
+     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews
+     * @return News
+     */
+    public function addAssociatedNews(\Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews)
+    {
+        $this->associatedNews[] = $associatedNews;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedNews
+     *
+     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews
+     */
+    public function removeAssociatedNews(\Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews)
+    {
+        $this->associatedNews->removeElement($associatedNews);
+    }
+
+    /**
+     * Get associatedNews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedNews()
+    {
+        return $this->associatedNews;
+    }
+
+    /**
+     * Set associatedFilm
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $associatedFilm
+     * @return News
+     */
+    public function setAssociatedFilm(\Base\CoreBundle\Entity\FilmFilm $associatedFilm = null)
+    {
+        $this->associatedFilm = $associatedFilm;
+
+        return $this;
+    }
+
+    /**
+     * Get associatedFilm
+     *
+     * @return \Base\CoreBundle\Entity\FilmFilm 
+     */
+    public function getAssociatedFilm()
+    {
+        return $this->associatedFilm;
+    }
+
+    /**
+     * Set associatedEvent
+     *
+     * @param \Base\CoreBundle\Entity\Event $associatedEvent
+     * @return News
+     */
+    public function setAssociatedEvent(\Base\CoreBundle\Entity\Event $associatedEvent = null)
+    {
+        $this->associatedEvent = $associatedEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get associatedEvent
+     *
+     * @return \Base\CoreBundle\Entity\Event 
+     */
+    public function getAssociatedEvent()
+    {
+        return $this->associatedEvent;
+    }
+
+    /**
+     * Add associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\NewsFilmProjectionAssociated $associatedProjections
+     * @return News
+     */
+    public function addAssociatedProjection(\Base\CoreBundle\Entity\NewsFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections[] = $associatedProjections;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\NewsFilmProjectionAssociated $associatedProjections
+     */
+    public function removeAssociatedProjection(\Base\CoreBundle\Entity\NewsFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections->removeElement($associatedProjections);
+    }
+
+    /**
+     * Get associatedProjections
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedProjections()
+    {
+        return $this->associatedProjections;
+    }
+
+    /**
+     * Add associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedFilms
+     * @return News
+     */
+    public function addAssociatedFilm(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms[] = $associatedFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedFilms
+     */
+    public function removeAssociatedFilm(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms->removeElement($associatedFilms);
+    }
+
+    /**
+     * Get associatedFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedFilms()
+    {
+        return $this->associatedFilms;
     }
 }

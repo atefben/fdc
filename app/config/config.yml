@@ -10,6 +10,7 @@ imports:
     - { resource: bundles/nelmio_api_doc.yml }
     - { resource: bundles/fos_user.yml }
     - { resource: bundles/fos_rest.yml }
+    - { resource: bundles/ivory_ck_editor.yml }
     - { resource: bundles/jms_di_extra.yml }
     - { resource: bundles/jms_translation.yml }
     - { resource: bundles/jms_i18n_translation.yml }

@@ -137,12 +137,21 @@
                         <div class="box-body">
                             <div class="sonata-ba-collapsed-fields">
                                 {{ form_row(form.parent.children.sites) }}
-                                {{ form_row(form.parent.children.displayedHome) }}
-                                {{ form_row(form.parent.children.displayedMobile) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.parent.children.displayedHome) }}
+                                    {{ form_label(form.parent.children.displayedHome) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.parent.children.displayedMobile) }}
+                                    {{ form_label(form.parent.children.displayedMobile) }}
+                                </div>
                                 {{ form_row(form.parent.children.publishedAt) }}
                                 {{ form_row(form.parent.children.publishEndedAt) }}
                                 {{ form_row(translationsFields.status) }}
-                                {{ form_row(form.parent.children.translate) }}
+                                <div class="form-group fdc-input-border">
+                                    {{ form_widget(form.parent.children.translate) }}
+                                    {{ form_label(form.parent.children.translate) }}
+                                </div>
                                 {{ form_row(form.parent.children.priorityStatus) }}
                             </div>
                             <div>
@@ -328,7 +337,11 @@
                             </h4>
                         </div>
                         <div class="box-body">
-                            {{ form_row(form.parent.children.associations) }}
+                            {{ form_row(form.parent.children.associatedFilm) }}
+                            {{ form_row(form.parent.children.associatedEvent) }}
+                            {{ form_row(form.parent.children.associatedProjections) }}
+                            {{ form_row(form.parent.children.associatedFilms) }}
+                            {{ form_row(form.parent.children.associatedNews) }}
                             {{ form_row(form.parent.children.tags) }}
                         </div>
                     </div>

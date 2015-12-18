@@ -81,9 +81,10 @@ app/config/parameters.yml
 Sessions are stored in database, you must import the [sessions.sql][4] file.
 
 ## Glossary
-- Statement = Communiqué
+- Statement = Communiqués
 - Info = Infos
 - News = Articles
+- Event = Événements
 
 [1]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sql
 [2]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sqlBase%20diagram.mwb

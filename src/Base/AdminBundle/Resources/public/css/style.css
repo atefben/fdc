@@ -75,3 +75,8 @@ form[name="base_adminbundle_settings"] {
 .form-group[id$="priorityStatus"] {
     display: none;
 }
+
+.fdc-widget-remove-btn {
+    margin: 20px 0;
+    float: right;
+}

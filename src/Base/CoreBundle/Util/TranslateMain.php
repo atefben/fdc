@@ -1,6 +1,7 @@
 <?php
 
 namespace Base\CoreBundle\Util;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
  * TranslateMain trait.
@@ -65,6 +66,24 @@ trait TranslateMain
     }
 
     /**
+     * getPriorityStatusesList function.
+     *
+     * @access public
+     * @static
+     * @return void
+     */
+    public static function getPriorityStatusesList()
+    {
+        return array(
+            self::PRIORITY_STATUS_NONE => '',
+            self::PRIORITY_STATUS_LOW => 'form.priority_status.low',
+            self::PRIORITY_STATUS_AVERAGE => 'form.priority_status.average',
+            self::PRIORITY_STATUS_URGENT => 'form.priority_status.urgent',
+            self::PRIORITY_STATUS_NOW => 'form.priority_status.now'
+        );
+    }
+
+    /**
      * findTranslationByLocale function.
      *
      * @access public
@@ -80,6 +99,16 @@ trait TranslateMain
         }
 
         return null;
+    }
+
+    public function getStatusMain()
+    {
+        $status = TranslateChildInterface::STATUS_DRAFT;
+
+        $trans = $this->findTranslationByLocale('fr');
+        if ($trans) {
+            return $trans->getStatus();
+        }
     }
 
     /**

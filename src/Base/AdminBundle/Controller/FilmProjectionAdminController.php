@@ -4,7 +4,7 @@ namespace Base\AdminBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController;
 
-class NewsImageAdminController extends CRUDController
+class FilmProjectionAdminController extends CRUDController
 {
 
 }

@@ -15,13 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * NewsNewsAssociated
+ * NewsFilmProjectionAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsNewsAssociated
+class NewsFilmProjectionAssociated
 {
     use Time;
 
@@ -33,28 +33,28 @@ class NewsNewsAssociated
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @var News
      *
-     * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedNews")
+     * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedProjections")
      */
     protected $news;
-    
-     /**
-     * @var NewsArticle
+
+    /**
+     * @var FilmProjection
      *
-     * @ORM\ManyToOne(targetEntity="News")
+     * @ORM\ManyToOne(targetEntity="FilmProjection")
      */
     protected $association;
-    
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
-        
+
         if ($this->getId()) {
             $string .= ' #'. $this->getId();
         }
-        
+
         return $string;
     }
 
@@ -68,7 +68,7 @@ class NewsNewsAssociated
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -101,10 +101,10 @@ class NewsNewsAssociated
     /**
      * Set association
      *
-     * @param \Base\CoreBundle\Entity\News $association
-     * @return NewsNewsAssociated
+     * @param \Base\CoreBundle\Entity\FilmProjection $association
+     * @return NewsFilmProjectionAssociated
      */
-    public function setAssociation(\Base\CoreBundle\Entity\News $association = null)
+    public function setAssociation(\Base\CoreBundle\Entity\FilmProjection $association = null)
     {
         $this->association = $association;
 
@@ -114,7 +114,7 @@ class NewsNewsAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\News
+     * @return \Base\CoreBundle\Entity\FilmProjection 
      */
     public function getAssociation()
     {

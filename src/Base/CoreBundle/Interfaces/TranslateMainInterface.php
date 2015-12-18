@@ -8,10 +8,11 @@ namespace Base\CoreBundle\Interfaces;
  */
 interface TranslateMainInterface
 {
-    const PRIORITY_STATUS_LOW = 0;
-    const PRIORITY_STATUS_AVERAGE = 1;
-    const PRIORITY_STATUS_URGENT = 2;
-    const PRIORITY_STATUS_NOW = 3;
+    const PRIORITY_STATUS_NONE = 0;
+    const PRIORITY_STATUS_LOW = 1;
+    const PRIORITY_STATUS_AVERAGE = 2;
+    const PRIORITY_STATUS_URGENT = 3;
+    const PRIORITY_STATUS_NOW = 4;
 
     const TRANSLATE_OPTION_EN = 0;
     const TRANSLATE_OPTION_ZH = 1;

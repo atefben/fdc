@@ -53,25 +53,6 @@ class NewsThemeAdmin extends Admin
                 },
                 'field_type' => 'text'
             ))
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => NewsThemeTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
             ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
               'choices' => NewsTheme::getPriorityStatuses(),
               'choice_translation_domain' => 'BaseAdminBundle'
@@ -87,8 +68,10 @@ class NewsThemeAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('name', null, array('label' => 'list.label_theme_name'))
-            ->add('status')
-            ->add('priorityStatus')
+            ->add('priorityStatus', 'choice', array(
+                'choices' => NewsTheme::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

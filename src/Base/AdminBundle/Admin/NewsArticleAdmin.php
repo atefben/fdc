@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 
@@ -32,8 +33,8 @@ class NewsArticleAdmin extends Admin
     {
        $instance = parent::getNewInstance();
        
-       $instance->addAssociation(new NewsNewsAssociated());
-       $instance->addAssociation(new NewsNewsAssociated());
+       $instance->addAssociatedNews(new NewsNewsAssociated());
+       $instance->addAssociatedNews(new NewsNewsAssociated());
 
        return $instance;
     }
@@ -106,9 +107,16 @@ class NewsArticleAdmin extends Admin
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
             ->add('theme')
-            ->add('updatedAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:News:list_published_interval.html.twig'))
-            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
+            ->add('createdAt')
+            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => NewsArticle::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('status', 'choice', array(
+                'choices' => NewsArticleTranslation::getStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
             ->add('type', null, array('template' => 'BaseAdminBundle:News:list_type.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -229,9 +237,37 @@ class NewsArticleAdmin extends Admin
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('associations', 'sonata_type_collection', array(
-                'label' => 'form.label_news_association',
-                'help' => 'form.news.helper_news_association',
+            ->add('associatedFilm', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_film_film_associated',
+                'required' => false
+            ))
+            ->add('associatedEvent', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_event_associated',
+                'required' => false
+            ))
+            ->add('associatedProjections', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_projection_associated',
+                'help' => 'form.news.helper_news_film_projection_associated',
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedFilms', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_film_associated',
+                'help' => 'form.news.helper_news_film_film_associated',
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedNews', 'sonata_type_collection', array(
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
                 'btn_add' => false,
                 'required' => false,

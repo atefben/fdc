@@ -29,10 +29,11 @@ class NewsListener
             $em = $args->getEntityManager();
             $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
             $entity->setFestival($settings->getFestival());
+
             // set createdBy
-            var_dump(get_class($this->tokenStorage->getToken()));
-            die();
-            $entity->setUpdatedBy($this->tokenStorage->getToken());
+            if ($this->tokenStorage->getToken()) {
+                $entity->setUpdatedBy($this->tokenStorage->getToken()->getUser());
+            }
         }
     }
 

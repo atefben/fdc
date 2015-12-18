@@ -11,6 +11,7 @@ settings:
 breadcrumb:
     link_news_article_list: Liste des actualités - articles
     link_news_theme_list: Liste des Thèmes d'actualités
+    link_media_image_list : Liste des Médias images
 group:
     french_version: Version française
     main_infos: Informations générales
@@ -70,6 +71,7 @@ entity:
     film_film: Films
     film_person: Personnes
     film_atelier: Films Atelier
+    film_projection: Programmations
     country: Pays
     contact_theme: Thèmes de contact
 
@@ -78,6 +80,7 @@ list:
     label_title: Titre
     label_theme: Thème
     label_status: Statut
+    label_status_main: Statut
     label_type: Type
     label_created_at: Date de création
     label_published_interval: Date(s) de publication
@@ -122,6 +125,12 @@ form:
         helper_signature: X caractères max.
         helper_widgets: Ajouter un module de type :
         helper_tags: Ajoutez des tags à l'article pour le voir ressortir dans les résultats de recherche.
+        helper_film_film_associated: Sélectionnez un film associé à l'article. La programmation associée apparaitra automatiquement en front-office. Ce champ est prioritaire sur les champs "Événement & programmation associés" et "Programmation associée".
+        helper_event_associated: Sélectionnez un événement associé à l'article. La programmation associée apparaitra automatiquement en front-office. Ce champ est prioritaire sur le champ "Programmation associée".
+        helper_news_film_projection_associated: Sélectionnez un ou plusieurs événements de programmation associés à l'article.
+        helper_news_film_film_associated: Sélectionnez les films sur lesquels vous souhaitez voir l'actualité apparaitre.
+        helper_news_news_associated: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
+
     widget:
         text: Module de texte
         video: Module vidéo Amazon
@@ -130,13 +139,30 @@ form:
         image: Module photo(s)
         image_dual_align: Module 2 photos / ligne
         quote: Module citation
+    media:
+        helper_legend: X caractères max.
+        helper_alt: X caractères max.
+        helper_copyright: X caractères max. Le symbole © est généré automatiquement.
+        helper_tags: Ajoutez des tags à l'article pour le voir ressortir dans les résultats de recherche.
+    media_image:
+        helper_file: Dimensions attendues : YxZpx. Format attendu.
+        displayed_home: Remonter dans le diaporama du quotidien en homepage
+        displayed_all: Remonter dans "Toutes les photos"
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_save: Sauvegarder
+    label_copyright: Copyright
+    label_tags: Tags de recherche
+    label_legend_img: Légende de l'image
+    label_alt_img: Alt de l'image
     label_signature: Signature
     label_introduction: Chapô
     label_header_image: Image principale
-    label_news_association: Actualités associés
+    label_associated_film: Film & programmation associés
+    label_associated_event: Événement & programmation associés
+    label_news_film_projection_associated: Objets de programmation associés
+    label_news_film_film_associated: Association à une ou plusieurs fiches films
+    label_news_news_associated: Actualités associés
     label_displayed_home: Remonter en homepage
     label_displayed_mobile: Flux mobiles
     label_translate: Envoyer en traduction
@@ -152,6 +178,7 @@ form:
     label_seo_description: Description
     label_seo_file: Vignette partage
     label_theme_name: Nom du thème
+    label_file: Fichier
     status:
         draft: Brouillon
         translation_pending: À traduire

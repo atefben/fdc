@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Media
  *
@@ -36,12 +38,13 @@ abstract class Media implements TranslateMainInterface
     protected $id;
 
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var NewsTheme
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="NewsTheme")
+     *
+     * @Assert\NotNull()
      */
-    private $file;
+    private $theme;
 
     /**
      * @var MediaTag
@@ -74,6 +77,50 @@ abstract class Media implements TranslateMainInterface
     private $sites;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $displayedAll;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $displayedHome;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $displayedMobile;
+
+    /**
+     * @var ArrayCollection
+     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
+     */
+    protected $translations;
+
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+        $this->tags = new ArrayCollection();
+    }
+
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string .= ' #'. $this->getId();
+        }
+
+        return $string;
+    }
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -81,37 +128,6 @@ abstract class Media implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set file
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaImageTranslation
-     */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -234,5 +250,97 @@ abstract class Media implements TranslateMainInterface
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Set displayedAll
+     *
+     * @param boolean $displayedAll
+     * @return Media
+     */
+    public function setDisplayedAll($displayedAll)
+    {
+        $this->displayedAll = $displayedAll;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedAll
+     *
+     * @return boolean 
+     */
+    public function getDisplayedAll()
+    {
+        return $this->displayedAll;
+    }
+
+    /**
+     * Set displayedHome
+     *
+     * @param boolean $displayedHome
+     * @return Media
+     */
+    public function setDisplayedHome($displayedHome)
+    {
+        $this->displayedHome = $displayedHome;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedHome
+     *
+     * @return boolean 
+     */
+    public function getDisplayedHome()
+    {
+        return $this->displayedHome;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @return Media
+     */
+    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \Base\CoreBundle\Entity\NewsTheme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * Set displayedMobile
+     *
+     * @param boolean $displayedMobile
+     * @return News
+     */
+    public function setDisplayedMobile($displayedMobile)
+    {
+        $this->displayedMobile = $displayedMobile;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedMobile
+     *
+     * @return boolean
+     */
+    public function getDisplayedMobile()
+    {
+        return $this->displayedMobile;
     }
 }

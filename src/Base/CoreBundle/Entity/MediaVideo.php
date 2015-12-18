@@ -24,30 +24,16 @@ class MediaVideo extends Media
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", nullable=false)
+     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
      */
-    private $inAllVideos;
+    private $displayedWebTv;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", nullable=false)
+     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
      */
-    private $inHomepage;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false)
-     */
-    private $inWebTv;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false)
-     */
-    private $inTrailer;
+    private $displayedTrailer;
 
     /**
      * @var Homepage
@@ -98,109 +84,6 @@ class MediaVideo extends Media
      *
      */
     private $festival;
-
-    /**
-     * @var ArrayCollection
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
-     */
-    protected $translations;
-
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * Set inAllVideos
-     *
-     * @param boolean $inAllVideos
-     * @return MediaVideo
-     */
-    public function setInAllVideos($inAllVideos)
-    {
-        $this->inAllVideos = $inAllVideos;
-
-        return $this;
-    }
-
-    /**
-     * Get inAllVideos
-     *
-     * @return boolean 
-     */
-    public function getInAllVideos()
-    {
-        return $this->inAllVideos;
-    }
-
-    /**
-     * Set inHomepage
-     *
-     * @param boolean $inHomepage
-     * @return MediaVideo
-     */
-    public function setInHomepage($inHomepage)
-    {
-        $this->inHomepage = $inHomepage;
-
-        return $this;
-    }
-
-    /**
-     * Get inHomepage
-     *
-     * @return boolean 
-     */
-    public function getInHomepage()
-    {
-        return $this->inHomepage;
-    }
-
-    /**
-     * Set inWebTv
-     *
-     * @param boolean $inWebTv
-     * @return MediaVideo
-     */
-    public function setInWebTv($inWebTv)
-    {
-        $this->inWebTv = $inWebTv;
-
-        return $this;
-    }
-
-    /**
-     * Get inWebTv
-     *
-     * @return boolean 
-     */
-    public function getInWebTv()
-    {
-        return $this->inWebTv;
-    }
-
-    /**
-     * Set inTrailer
-     *
-     * @param boolean $inTrailer
-     * @return MediaVideo
-     */
-    public function setInTrailer($inTrailer)
-    {
-        $this->inTrailer = $inTrailer;
-
-        return $this;
-    }
-
-    /**
-     * Get inTrailer
-     *
-     * @return boolean 
-     */
-    public function getInTrailer()
-    {
-        return $this->inTrailer;
-    }
 
     /**
      * Set theme

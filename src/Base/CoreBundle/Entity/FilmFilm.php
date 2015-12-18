@@ -319,6 +319,13 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $projectionProgrammationFilmsList;
 
     /**
+     * @ORM\ManyToMany(targetEntity="News", mappedBy="associatedFilms")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedNews;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -1582,5 +1589,38 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getSelectionSection()
     {
         return $this->selectionSection;
+    }
+
+    /**
+     * Add associatedNews
+     *
+     * @param \Base\CoreBundle\Entity\News $associatedNews
+     * @return FilmFilm
+     */
+    public function addAssociatedNews(\Base\CoreBundle\Entity\News $associatedNews)
+    {
+        $this->associatedNews[] = $associatedNews;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedNews
+     *
+     * @param \Base\CoreBundle\Entity\News $associatedNews
+     */
+    public function removeAssociatedNews(\Base\CoreBundle\Entity\News $associatedNews)
+    {
+        $this->associatedNews->removeElement($associatedNews);
+    }
+
+    /**
+     * Get associatedNews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedNews()
+    {
+        return $this->associatedNews;
     }
 }
