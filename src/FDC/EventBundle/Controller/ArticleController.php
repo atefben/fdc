@@ -2,11 +2,13 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Guzzle\Http\Message\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use \DateTime;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Validator\Constraints\DateTime;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/actualite")
@@ -26,14 +28,37 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/articles/{id}")
+     * @Route("/articles/{slug}")
      * @Template("FDCEventBundle:Article:article.main.html.twig")
      * @param $id
      * @return array
      */
-    public function getAction($id)
+    public function getAction($slug)
     {
         //$article = findBy($id)
+
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+        $token = $this->get('security.token_storage')->getToken();
+        //$isAdmin = ($token) ? true : false;
+        $isAdmin = true;
+        $dateTime = new DateTime();
+
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug(
+            $slug,
+            $settings->getFestival()->getId(),
+            $locale,
+            $dateTime->format('Y-m-d H:i:s'),
+            $isAdmin
+        );
+        if ($news === null) {
+            throw new NotFoundHttpException();
+        }
 
         $article = array(
             'id'    => 0,
@@ -164,7 +189,10 @@ class ArticleController extends Controller
                 ),
             )
         );
-        return array('article' => $article);
+        return array(
+            'news' => $news,
+            'article' => $article
+        );
     }
 
     /**

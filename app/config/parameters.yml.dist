@@ -72,3 +72,4 @@ parameters:
     social_dailymotion: 'http://www.dailymotion.com/CannesFestTV'
     social_podcast: '#'
     jwplayer_key: ~
+    fdc_event_slug: ~

@@ -12,100 +12,46 @@
 
 
             <div class="info">
-                <a href="#" class="category">{{ article.theme }}</a>
-                <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.updatedAt|date('H:i') }}</span>
+                <a href="#" class="category">{{ news.theme|trans_fallback('name') }}</a>
+                <span class="date">{{ news.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ news.createdAt|date('H:i') }}</span>
+                <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ news.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.updatedAt|date('H:i') }}</span>
             </div>
-            <h2 class="title-article">{{ article.title }}</h2>
+            <h2 class="title-article">{{ news.title }}</h2>
             <div class="buttons">
                 <a id="share-article" href="#" class="button">{{ 'article.btn.partager'|trans }}</a>
                 <a href="#" class="button print">{{ 'article.btn.imprimer'|trans }}</a>
             </div>
 
-            {% include 'FDCEventBundle:Article:article.single-photo.html.twig' %}
+            {% if news is news_article %}
+                {% include 'FDCEventBundle:Article:article.single-photo.html.twig' with {'photo' : news.header } %}
+            {% endif %}
 
-            <p class="chapeau">{{ article.introduction|raw }}</p>
+            <div class="chapeau">{{ news|trans_fallback('introduction')|raw }}</div>
 
-            <!-- SLIDESHOW -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "image" and widget.photos|length > 1 %}
+            {% for widget in news.widgets %}
+                {% if widget is news_widget_image and widget.photos|length == 1 %}
+                    <!-- SINGLE PHOTO -->
+                    {# {% include 'FDCEventBundle:Article:article.single-photo.html.twig' with {'photo' :  } %} #}
+                {% elseif widget is news_widget_image and widget.photos|length > 1 %}
+                    <!-- SLIDESHOW -->
                     {% include 'FDCEventBundle:Article:article.slideshow.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- TEXT -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "text" %}
+                {% elseif widget is news_widget_text %}
+                    <!-- TEXT -->
                     {% include 'FDCEventBundle:Article:article.text.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- VIDEO -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "video_youtube" or widget.type == "video_akamai" %}
+                {% elseif  widget is news_widget_video or widget is news_widget_video_youtube %}
+                    <!-- VIDEO -->
                     {% include 'FDCEventBundle:Article:article.video.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- TEXT -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "text" %}
-                    {% include 'FDCEventBundle:Article:article.text.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- AUDIO -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "audio" %}
+                {% elseif widget is news_widget_audio %}
+                    <!-- AUDIO -->
                     {% include 'FDCEventBundle:Article:article.audio.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- TEXT -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "text" %}
-                    {% include 'FDCEventBundle:Article:article.text.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- SINGLE PHOTO -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "image" and widget.photos|length == 1 %}
-                    {% include 'FDCEventBundle:Article:article.single-photo.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- QUOTE -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "quote" %}
+                {% elseif widget is news_widget_quote %}
                     {% include 'FDCEventBundle:Article:article.quote.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- TEXT -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "text" %}
-                    {% include 'FDCEventBundle:Article:article.text.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-            <!-- SINGLE PHOTO -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "image" and widget.photos|length == 1 %}
-                    {% include 'FDCEventBundle:Article:article.single-photo.html.twig' %}
-                {% endif %}
-            {% endfor %}
-
-
-            <!-- DUAL PHOTO -->
-            {% for widget in article.widgets %}
-                {% if widget.type == "image_dual_align" %}
+                {% elseif widget is news_widget_image_dual_align %}
                     {% include 'FDCEventBundle:Article:article.dual-photo.html.twig' %}
                 {% endif %}
             {% endfor %}
 
-
-            <div class="author">{{ 'article.text.redigepar'|trans }} {{ article.author.fullName }}</div>
+            <div class="author">{{ 'article.text.redigepar'|trans }} {{ news.signature }}</div>
         </div>
         <div class="share">
             <p>{{ 'article.text.partagerarticle'|trans }}</p>

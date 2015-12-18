@@ -71,6 +71,8 @@ class MediaImageAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
+
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
@@ -82,6 +84,7 @@ class MediaImageAdmin extends Admin
                         'display' => false
                     ),
                     'file' => array(
+                        'required' => $requiredFile,
                         'field_type' => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.media_image.helper_file',
