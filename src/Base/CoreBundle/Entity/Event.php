@@ -90,13 +90,6 @@ class Event implements TranslateMainInterface
     private $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
-     *
-     * @Groups({"event_list", "event_show"})
-     */
-    private $associations;
-
-    /**
      * @var NewsWidget
      *
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"persist"})
@@ -113,6 +106,24 @@ class Event implements TranslateMainInterface
      * @Groups({"event_list", "event_show"})
      */
     private $sites;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $createdBy;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $updatedBy;
 
     /**
      * ArrayCollection
@@ -346,40 +357,6 @@ class Event implements TranslateMainInterface
     }
 
     /**
-     * Add associations
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associations
-     * @return News
-     */
-    public function addAssociation(\Base\CoreBundle\Entity\NewsNewsAssociated $associations)
-    {
-        $this->associations[] = $associations;
-        $associations->setNews($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove associations
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associations
-     */
-    public function removeAssociation(\Base\CoreBundle\Entity\NewsNewsAssociated $associations)
-    {
-        $this->associations->removeElement($associations);
-    }
-
-    /**
-     * Get associations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAssociations()
-    {
-        return $this->associations;
-    }
-
-    /**
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
@@ -420,5 +397,51 @@ class Event implements TranslateMainInterface
     public function getLocks()
     {
         return $this->locks;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
+     * @return Event
+     */
+    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
+     * @return Event
+     */
+    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
     }
 }

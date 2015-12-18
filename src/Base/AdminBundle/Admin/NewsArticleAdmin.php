@@ -113,11 +113,10 @@ class NewsArticleAdmin extends Admin
                 'choices' => NewsArticle::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
-            ->add('status', 'choice', array(
+            ->add('statusMain', 'choice', array(
                 'choices' => NewsArticleTranslation::getStatuses(),
                 'catalogue' => 'BaseAdminBundle'
             ))
-            ->add('type', null, array('template' => 'BaseAdminBundle:News:list_type.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit_translations' => array('template' => 'BaseAdminBundle:CRUD:list__action_edit_translations.html.twig'),

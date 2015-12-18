@@ -22,7 +22,8 @@ class NewsListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-
+        error_log(get_class($entity));
+        die();
         if ($entity instanceof NewsArticle || $entity instanceof NewsAudio ||
             $entity instanceof NewsImage || $entity instanceof NewsVideo) {
             // set festival year
@@ -32,6 +33,7 @@ class NewsListener
 
             // set createdBy
             if ($this->tokenStorage->getToken()) {
+                $entity->setCreatedBy($this->tokenStorage->getToken()->getUser());
                 $entity->setUpdatedBy($this->tokenStorage->getToken()->getUser());
             }
         }
@@ -41,11 +43,13 @@ class NewsListener
     {
         $entity = $args->getEntity();
 
+        error_log(get_class($entity));
+        die();
+
         if ($entity instanceof NewsArticle || $entity instanceof NewsAudio ||
             $entity instanceof NewsImage || $entity instanceof NewsVideo) {
+
             // set updatedby
-            var_dump(get_class($this->tokenStorage->getToken()));
-            die();
             $entity->setUpdatedBy($this->tokenStorage->getToken());
         }
     }

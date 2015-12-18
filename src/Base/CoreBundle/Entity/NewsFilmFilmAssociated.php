@@ -44,7 +44,7 @@ class NewsFilmFilmAssociated
     /**
      * @var FilmFilm
      *
-     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="associatedNews")
      */
     protected $association;
 

@@ -319,7 +319,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $projectionProgrammationFilmsList;
 
     /**
-     * @ORM\ManyToMany(targetEntity="News", mappedBy="associatedFilms")
+     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="association")
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -1594,10 +1594,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Add associatedNews
      *
-     * @param \Base\CoreBundle\Entity\News $associatedNews
+     * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews
      * @return FilmFilm
      */
-    public function addAssociatedNews(\Base\CoreBundle\Entity\News $associatedNews)
+    public function addAssociatedNews(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
     {
         $this->associatedNews[] = $associatedNews;
 
@@ -1607,9 +1607,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Remove associatedNews
      *
-     * @param \Base\CoreBundle\Entity\News $associatedNews
+     * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews
      */
-    public function removeAssociatedNews(\Base\CoreBundle\Entity\News $associatedNews)
+    public function removeAssociatedNews(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
     {
         $this->associatedNews->removeElement($associatedNews);
     }
