@@ -4,8 +4,9 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Status;
+use Base\CoreBundle\Util\TranslateChild;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,11 +20,19 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaVideoTranslation implements MediaTranslationInterface
+class MediaVideoTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
-    use Status;
+    use TranslateChild;
+
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     *
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     */
+    private $file;
 
     /**
      * @var string
@@ -40,13 +49,6 @@ class MediaVideoTranslation implements MediaTranslationInterface
      * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
      */
     private $title;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $status;
 
     /**
      * @var string
@@ -93,29 +95,6 @@ class MediaVideoTranslation implements MediaTranslationInterface
     public function getLegend()
     {
         return $this->legend;
-    }
-
-    /**
-     * Set status
-     *
-     * @param integer $status
-     * @return MediaImageTranslation
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return integer
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 
     /**
@@ -208,5 +187,28 @@ class MediaVideoTranslation implements MediaTranslationInterface
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return MediaImageTranslation
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }

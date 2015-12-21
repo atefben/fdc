@@ -5,13 +5,23 @@ $(document).ready(function() {
       nav: false,
       dots: false,
       smartSpeed: 500,
-      center: true,
       autoWidth: true,
       loop: false,
-      items: 1,
+      responsive:{
+        0:{
+          items: 4
+        },
+        1675: {
+          items: 5
+        }
+      },
       onInitialized: function() {
-        var v = ($(window).width() - 977) / 2 + "px";
-        $('#slide-artist .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
+        var m = ($(window).width() - $('.container').width()) / 2;
+        $('#slide-artist .owl-stage').css({ 'margin-left': m });
+      },
+      onResized: function() {
+        var m = ($(window).width() - $('.container').width()) / 2;
+        $('#slide-artist .owl-stage').css({ 'margin-left': m });
       }
     });
   }

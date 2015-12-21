@@ -2,8 +2,9 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
+use Base\CoreBundle\Util\TranslateMain;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,9 +23,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "StatementArticle", "audio" = "StatementAudio", "image" = "StatementImage", "video" = "StatementVideo"})
  */
-abstract class Statement
+abstract class Statement implements TranslateMainInterface
 {
-    use TranslationByLocale;
+    use TranslateMain;
     use Time;
 
     /**
@@ -44,13 +45,6 @@ abstract class Statement
      * @ORM\OneToMany(targetEntity="StatementLock", mappedBy="statement")
      */
     private $locks;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
-    private $translate;
 
     /**
      * @var StatementTheme
@@ -128,6 +122,24 @@ abstract class Statement
     private $sites;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $createdBy;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $updatedBy;
+
+    /**
      * ArrayCollection
      *
      * @Groups({"statement_list", "statement_show"})
@@ -149,29 +161,6 @@ abstract class Statement
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set translate
-     *
-     * @param boolean $translate
-     * @return Statement
-     */
-    public function setTranslate($translate)
-    {
-        $this->translate = $translate;
-
-        return $this;
-    }
-
-    /**
-     * Get translate
-     *
-     * @return boolean 
-     */
-    public function getTranslate()
-    {
-        return $this->translate;
     }
 
     /**
@@ -327,7 +316,7 @@ abstract class Statement
     /**
      * Get publishedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedAt()
     {
@@ -350,7 +339,7 @@ abstract class Statement
     /**
      * Get publishEndedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishEndedAt()
     {
@@ -472,10 +461,56 @@ abstract class Statement
     /**
      * Get sites
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
+     * @return Statement
+     */
+    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
+     * @return Statement
+     */
+    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
     }
 }

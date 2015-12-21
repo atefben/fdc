@@ -1,0 +1,124 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="list-article participate partners loading">
+    <div class="bandeau-list vCenter">
+        <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/participate/bandeau3.jpg') }})">
+            <h2 class="title title-list-header">
+                {% image '@FDCEventBundle/Resources/public/img/participate/Handshake.png' %}
+                <img src="{{ asset_url }}" class="logo" alt="{{ 'participer.partners.title.partenaires'|trans }}" />
+                {% endimage %}
+                <br> {{ 'participer.partners.title.partenaires'|trans }}
+            </h2>
+        </div>
+    </div>
+
+    <!-- PARTENAIRES OFFICIELS -->
+    <section class="content-partners">
+        <div class="contain-section participate-active">
+            <h3 class="title-section">{{ 'participer.partners.title.partenairesofficiels'|trans }}</h3><i class="fa fa-minus"></i>
+            {% for partner in partners %}
+                {% if partner.type == 0 %}
+                    <div class="item-partners">
+                        <div class="contain-img">
+                            <img src="{{ partner.img }}" alt="{{ partner.alt }}" />
+                        </div>
+                        <div class="text-partners">
+                            {% if partner.person_img or partner.person_name or partner.person_title %}
+                                <div class="content-text-with-portrait">
+                                    <h4 class="title-partners">{{ partner.title }}</h4>
+                                    <p class="descrip-partners">
+                                        {{ partner.description }}
+                                    </p>
+                                    {% if partner.website is defined %}
+                                        <a href="{{ partner.website }}" class="link">{{ 'participer.partners.btn.siteinternet'|trans }}</a>
+                                    {% endif %}
+                                    {% if partner.contact is defined %}
+                                        <a href="{{ partner.contact }}" class="link">{{ 'participer.partners.btn.sitecontact'|trans }}</a>
+                                    {% endif %}
+                                </div>
+                                <div class="portrait">
+                                    {% if partner.person_img is defined %}
+                                        <img src="{{ partner.person_img }}" alt="{{ partner.title }}">
+                                    {% endif %}
+                                    {% if partner.person_name is defined %}
+                                        <strong class="name">{{ partner.person_name }}</strong>
+                                    {% endif %}
+                                    {% if partner.person_title is defined %}
+                                        <span class="rank">{{ partner.person_title }}</span>
+                                    {% endif %}
+                                </div>
+                                {% else %}
+                                    <h4 class="title-partners">{{ partner.title }}</h4>
+                                    <p class="descrip-partners">
+                                        {{ partner.description }}
+                                    </p>
+                                    {% if partner.website is defined %}
+                                        <a href="{{ partner.website }}" class="link">{{ 'participer.partners.btn.siteinternet'|trans }}</a>
+                                    {% endif %}
+                                    {% if partner.contact is defined %}
+                                        <a href="{{ partner.contact }}" class="link">{{ 'participer.partners.btn.sitecontact'|trans }}</a>
+                                    {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    <!-- PARTENAIRES TECHNIQUE -->
+    <section class="content-partners">
+        <div class="contain-section participate-active">
+            <h3 class="title-section">{{ 'participer.partners.title.partenairestechniques'|trans }}</h3><i class="fa fa-minus"></i>
+            {% for partner in partners %}
+                {% if partner.type == 1 %}
+                    <div class="item-partners">
+                        <div class="contain-img">
+                            <img src="{{ partner.img }}" alt="{{ partner.alt }}" />
+                        </div>
+                        <div class="text-partners">
+                            {% if partner.person_img or partner.person_name or partner.person_title is defined %}
+                                <div class="content-text-with-portrait">
+                                    <h4 class="title-partners">{{ partner.title }}</h4>
+                                    <p class="descrip-partners">
+                                        {{ partner.description }}
+                                    </p>
+                                    {% if partner.website %}
+                                        <a href="{{ partner.website }}" class="link">{{ 'participer.partners.btn.siteinternet'|trans }}</a>
+                                    {% endif %}
+                                    {% if partner.contact %}
+                                        <a href="{{ partner.contact }}" class="link">{{ 'participer.partners.btn.sitecontact'|trans }}</a>
+                                    {% endif %}
+                                </div>
+                                <div class="portrait">
+                                    {% if partner.person_img %}
+                                        <img src="{{ partner.person_img }}" alt="{{ partner.title }}">
+                                    {% endif %}
+                                    {% if partner.person_name %}
+                                        <strong class="name">{{ partner.person_name }}</strong>
+                                    {% endif %}
+                                    {% if partner.person_title %}
+                                        <span class="rank">{{ partner.person_title }}</span>
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <h4 class="title-partners">{{ partner.title }}</h4>
+                                <p class="descrip-partners">
+                                    {{ partner.description }}
+                                </p>
+                                {% if partner.website %}
+                                    <a href="{{ partner.website }}" class="link">{{ 'participer.partners.btn.siteinternet'|trans }}</a>
+                                {% endif %}
+                                {% if partner.contact %}
+                                    <a href="{{ partner.contact }}" class="link">{{ 'participer.partners.btn.contact'|trans }}</a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock body %}

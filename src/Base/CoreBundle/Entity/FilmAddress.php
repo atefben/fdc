@@ -4,11 +4,12 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\TranslationByLocale;
-use Base\CoreBundle\Util\Time;
 
 /**
  * FilmAddress
@@ -17,10 +18,10 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmAddress
+class FilmAddress implements TranslateMainInterface
 {
     use Translatable;
-    use TranslationByLocale;
+    use TranslateMain;
     use Time;
 
     /**

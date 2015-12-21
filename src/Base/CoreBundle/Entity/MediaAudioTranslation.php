@@ -4,11 +4,12 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Status;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,11 +17,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaAudioTranslation implements MediaTranslationInterface
+class MediaAudioTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
-    use Status;
+    use TranslateChild;
 
     /**
      * @var string
@@ -28,12 +29,12 @@ class MediaAudioTranslation implements MediaTranslationInterface
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $title;
-    
+
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      */
     private $file;
 
@@ -51,13 +52,6 @@ class MediaAudioTranslation implements MediaTranslationInterface
       * @ORM\ManyToOne(targetEntity="NewsTheme")
       */
     private $theme;
-
-   /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $status;
 
     /**
      * @var string
@@ -86,4 +80,27 @@ class MediaAudioTranslation implements MediaTranslationInterface
      * @ORM\ManyToMany(targetEntity="Site")
      */
     private $sites;
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return MediaImageTranslation
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
 }

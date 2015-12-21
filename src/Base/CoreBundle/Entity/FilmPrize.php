@@ -4,9 +4,10 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
-use Base\CoreBundle\Util\TranslationByLocale;
+use Base\CoreBundle\Util\TranslateMain;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,12 +22,12 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmPrize implements FilmPrizeInterface
+class FilmPrize implements FilmPrizeInterface, TranslateMainInterface
 {
     use Time;
     use Translatable;
     use Soif;
-    use TranslationByLocale;
+    use TranslateMain;
 
     /**
      * @var string

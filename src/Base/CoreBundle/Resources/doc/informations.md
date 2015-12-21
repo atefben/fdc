@@ -30,13 +30,13 @@ You have to configure the parameters.yml
 Have the mandatory php extensions and php.ini
 
 Launch the command : 
-
+```
 php app/console d:d:c && php app/console d:s:u --force && php app/console d:f:l
 composer install
 php app/console assets:install --symlink web
 php app/console sonata:admin:setup-acl
 php app/console sonata:admin:generate-object-acl
-
+```
 add the following script in database
 
 CREATE TABLE `sessions` (
@@ -81,9 +81,10 @@ app/config/parameters.yml
 Sessions are stored in database, you must import the [sessions.sql][4] file.
 
 ## Glossary
-- Statement = Communiqué
+- Statement = Communiqués
 - Info = Infos
 - News = Articles
+- Event = Événements
 
 [1]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sql
 [2]: https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sqlBase%20diagram.mwb

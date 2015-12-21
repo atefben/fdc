@@ -15,8 +15,6 @@ use Symfony\Component\Validator\Constraints\Email;
 
 class NewsletterType extends AbstractType
 {
-
-
     private $translator;
 
     /**

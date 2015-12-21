@@ -1,7 +1,8 @@
 {% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
 
 {% block content %}
-    <h3>{{ 'Settings FDC Year'|trans({}, 'BaseAdminBundle') }}</h3>
+    <h3>{{ 'settings.fdc'|trans }}</h3>
     {{ form_start(formFDCYear) }}
         {{ form_errors(formFDCYear) }}
 
@@ -9,7 +10,7 @@
         {{ form_row(formFDCYear.save) }}
     {{ form_end(formFDCYear) }}
 
-    <h3>{{ 'Settings FDC Api Year'|trans({}, 'BaseAdminBundle') }}</h3>
+    <h3>{{ 'settings.fdc_api'|trans }}</h3>
     {{ form_start(formFDCApiYear) }}
     {{ form_errors(formFDCApiYear) }}
 

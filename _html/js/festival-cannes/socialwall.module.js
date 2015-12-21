@@ -87,6 +87,12 @@ function makePath(data){
         $('#tipGraph').addClass('show');
       });
 
+      if($('.mob').length) {
+        var top =  parseInt(yPos) - 25;
+        var left = $('#hashtag').width() + parseInt(xPos) - 15;
+        $('#graph').append('<div id="tipGraph" class="show" style="top:' + top + 'px;left:' + left + 'px;">' + data[i] + '</div>');
+      }
+
       circle2.mouseout(function() {
         $('#tipGraph').removeClass('show');
       });
@@ -149,7 +155,7 @@ function displayGrid() {
       $(c).prev().addClass(item.type);
       $(c).parent().find('.side-2').addClass('overlay');
       $(c).parent().find('.side').removeClass('flip');
-      $(c).parent().find('.side-1').css('z-index', '10');
+      $(c).parent().find('.side-1').css('z-index', '5');
       if(item.img) {
         $(c).prev().addClass('hasimg').css('background-image', 'url(' + item.img + ')');
       }

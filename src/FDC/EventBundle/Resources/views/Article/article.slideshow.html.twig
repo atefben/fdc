@@ -1,0 +1,24 @@
+{% if widget.title is defined %}
+    <h2 class="title">{{ widget.title }}</h2>
+{% endif %}
+<div class="slideshow">
+    <div class="slideshow-img">
+        <div class="images">
+            {% for key, photo in widget.photos %}
+                <div class="img {% if key == 0 %}active{% endif %}">
+                    <a id="photo1" class="chocolat-image ajax" href="{{ photo.path }}" title="{{ photo.title }}" data-credit="{{ photo.copyright }}">
+                        <img src="img/slide001.jpg" alt="" />
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="owl-carousel thumbnails">
+            {% for key, photo in widget.photos %}
+                <div data-id="photo1" class="thumb {% if key == 0 %}active{% endif %}">
+                    <img src="{{ photo.thumb }}" />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <p class="caption">{{ widget.copyright|raw }}</p>
+</div>

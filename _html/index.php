@@ -405,6 +405,23 @@
               </div>
             </div>
           </div>
+          <div class="vid">
+            <div class="image-wrapper">
+              <img src="img/slider-videos/001.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div id="channels">
@@ -512,6 +529,23 @@
               </div>
             </div>
           </div>
+          <div class="channel">
+            <div class="image-wrapper">
+              <img src="img/slider-channels/03.jpg" alt="" />
+            </div>
+            <a class="linkVid" href="#"></a>
+            <div class="info">
+              <div class="picto"></div>
+              <div class="info-container">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a href="#" class="category">Conférence de presse</a>
+                    <span>47 vidéos</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div id="featured-movies">
@@ -519,9 +553,10 @@
           <div>
             <div class="video">
               <video preload>
+                <source src="img/featured-movies/sample.mp4">
                 <source src="img/featured-movies/sample.webm" type="video/webm">
-                <source src="img/featured-movies/sample.mp4" type="video/mp4">
               </video>
+              <div class="img" style="background-image:url(/img/slider/slider01.jpg)"></div>
             </div>
             <div class="textVideo">
               <div class="info">
@@ -541,10 +576,11 @@
           </div>
           <div>
             <div class="video">
-              <video preload>
-                <source src="img/featured-movies/sample.webm" type="video/webm">
-                <source src="img/featured-movies/sample.mp4" type="video/mp4">
+              <video preload muted>
+                <source src="https://broken-links.com/tests/media/BigBuck.m4v">
+                <source src="https://broken-links.com/tests/media/BigBuck.webm" type="video/webm">
               </video>
+              <div class="img" style="background-image:url(/img/slider/slider01.jpg)"></div>
             </div>
             <div class="textVideo">
               <div class="info">

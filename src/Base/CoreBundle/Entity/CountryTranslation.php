@@ -4,7 +4,9 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,10 +20,11 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class CountryTranslation
+class CountryTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use TranslateChild;
 
     /**
      * @var string
@@ -50,6 +53,11 @@ class CountryTranslation
      * })
      */
     private $lang;
+
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
 
     /**
      * Set name

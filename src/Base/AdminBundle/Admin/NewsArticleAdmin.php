@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 
@@ -32,8 +33,8 @@ class NewsArticleAdmin extends Admin
     {
        $instance = parent::getNewInstance();
        
-       $instance->addAssociation(new NewsNewsAssociated());
-       $instance->addAssociation(new NewsNewsAssociated());
+       $instance->addAssociatedNews(new NewsNewsAssociated());
+       $instance->addAssociatedNews(new NewsNewsAssociated());
 
        return $instance;
     }
@@ -75,7 +76,6 @@ class NewsArticleAdmin extends Admin
                 'field_type' => 'text'
             ))
             ->add('theme')
-            ->add('publishedAt', 'doctrine_orm_datetime', array('field_type' => 'sonata_type_datetime_picker'))
             ->add('status', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
@@ -95,7 +95,6 @@ class NewsArticleAdmin extends Admin
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
-            ->add('translate')
         ;
     }
 
@@ -108,10 +107,16 @@ class NewsArticleAdmin extends Admin
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
             ->add('theme')
-            ->add('updatedAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:News:list_published_interval.html.twig'))
-            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
-            ->add('type', null, array('template' => 'BaseAdminBundle:News:list_type.html.twig'))
+            ->add('createdAt')
+            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => NewsArticle::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices' => NewsArticleTranslation::getStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit_translations' => array('template' => 'BaseAdminBundle:CRUD:list__action_edit_translations.html.twig'),
@@ -129,17 +134,11 @@ class NewsArticleAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
                 'fields' => array(
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
+                        'sonata_help' => 'form.news.helper_title'
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
@@ -160,14 +159,23 @@ class NewsArticleAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
                         'label' => 'form.label_seo_title',
                         'sonata_help' => 'form.news.helper_seo_title',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
                         'label' => 'form.label_seo_description',
                         'sonata_help' => 'form.news.helper_description',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+
                     )
                 )
             ))
@@ -208,11 +216,11 @@ class NewsArticleAdmin extends Admin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
-                'required' => false,
                 'btn_delete' => false
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label' => 'form.label_article_tags',
+                'help' => 'form.news.helper_tags',
                 'by_reference' => false,
                 'required' => false,
                 ), array(
@@ -220,12 +228,45 @@ class NewsArticleAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('signature', null, array(
+                'help' => 'form.news.helper_signature'
+            ))
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
-                'translation_domain' => 'BaseAdminBundle',
+                'help' => 'form.news.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('associatedFilm', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_film_film_associated',
                 'required' => false
             ))
-            ->add('associations', 'sonata_type_collection', array(
+            ->add('associatedEvent', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_event_associated',
+                'required' => false
+            ))
+            ->add('associatedProjections', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_projection_associated',
+                'help' => 'form.news.helper_news_film_projection_associated',
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedFilms', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_film_associated',
+                'help' => 'form.news.helper_news_film_film_associated',
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedNews', 'sonata_type_collection', array(
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
                 'btn_add' => false,
                 'required' => false,
@@ -234,10 +275,9 @@ class NewsArticleAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('translationStatus', 'choice', array(
-                'choices' => News::getTranslationStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
-            ))
+            ->add('displayedHome')
+            ->add('displayedMobile')
+            ->add('translate')
             ->add('priorityStatus', 'choice', array(
                 'choices' => News::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

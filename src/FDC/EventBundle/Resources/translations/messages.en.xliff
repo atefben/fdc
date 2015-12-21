@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-12-15T17:40:51Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="5faa0192d02aa45746cc1449c13e472833308364" resname="contact.form.errors.email">
+        <source>contact.form.errors.email</source>
+        <target state="new">contact.form.errors.email</target>
+        <jms:reference-file line="116">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="117">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="85">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="89">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="92">Form/Type/ShareEmailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="08d76bebf9dca034727ab36b9ea6595b433b8bde" resname="contact.form.errors.message">
+        <source>contact.form.errors.message</source>
+        <target state="new">contact.form.errors.message</target>
+        <jms:reference-file line="123">Form/Type/ContactType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f303400e3b0c09bf268e5a96e7fd30f1e64d2769" resname="contact.form.errors.nom">
+        <source>contact.form.errors.nom</source>
+        <target state="new">contact.form.errors.nom</target>
+        <jms:reference-file line="113">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="88">Form/Type/ShareEmailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ae02ff3398faddcf5c8d799ce620b2efc4805f15" resname="contact.form.errors.objet">
+        <source>contact.form.errors.objet</source>
+        <target state="new">contact.form.errors.objet</target>
+        <jms:reference-file line="120">Form/Type/ContactType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="954ff73ad29e56eb196fb482325ae606ab3d7c59" resname="contact.form.errors.theme">
+        <source>contact.form.errors.theme</source>
+        <target state="new">contact.form.errors.theme</target>
+        <jms:reference-file line="110">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="84">Form/Type/ShareEmailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3297837e1c6b935cdd8c42ff35ed055f5205dbbc" resname="contact.form.placeholder.theme">
+        <source>contact.form.placeholder.theme</source>
+        <target state="new">contact.form.placeholder.theme</target>
+        <jms:reference-file line="41">Form/Type/ContactType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ce3ad563def29bc0b8fa74c4804ef7f9826bd1a7" resname="footer.newsletter.placeholder.votreadresse">
+        <source>footer.newsletter.placeholder.votreadresse</source>
+        <target state="new">footer.newsletter.placeholder.votreadresse</target>
+        <jms:reference-file line="38">Form/Type/NewsletterType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9e9486daa181d4bb53bf7d57d2b91f70869b3331" resname="newsletter.email.subject">
+        <source>newsletter.email.subject</source>
+        <target state="new">newsletter.email.subject</target>
+        <jms:reference-file line="686">EventBundle/Controller/FooterController.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="86b1771527d4e6a71b967002e1d098954cfb203e" resname="sharemail.btn.envoyer">
+        <source>sharemail.btn.envoyer</source>
+        <target state="new">sharemail.btn.envoyer</target>
+        <jms:reference-file line="41">views/Global/global.share-email.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f7ecf29682a9807357bafebff334b16a022fa5ee" resname="sharemail.label.copiemail">
+        <source>sharemail.label.copiemail</source>
+        <target state="new">sharemail.label.copiemail</target>
+        <jms:reference-file line="24">views/Global/global.share-email.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9de0bdb86e5a7b1f63bb7051ae4a1b9c4d17f427" resname="sharemail.label.inscriptionnewsletter">
+        <source>sharemail.label.inscriptionnewsletter</source>
+        <target state="new">sharemail.label.inscriptionnewsletter</target>
+        <jms:reference-file line="36">views/Global/global.share-email.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c0d07703dadd33588036aac483076ec2488bd62f" resname="sharemail.text.champsobligatoires">
+        <source>sharemail.text.champsobligatoires</source>
+        <target state="new">sharemail.text.champsobligatoires</target>
+        <jms:reference-file line="40">views/Global/global.share-email.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="59e9378bb4902888b754f3bc6ad910a902147c5d" resname="sharemail.text.enapplicationdelaloi">
+        <source>sharemail.text.enapplicationdelaloi</source>
+        <target state="new">sharemail.text.enapplicationdelaloi</target>
+        <jms:reference-file line="59">views/Global/global.share-email.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c32af747dcc9d6c6084bacd9071397a744dcd81f" resname="sharemail.text.separerparvirgule">
+        <source>sharemail.text.separerparvirgule</source>
+        <target state="new">sharemail.text.separerparvirgule</target>
+        <jms:reference-file line="14">views/Global/global.share-email.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

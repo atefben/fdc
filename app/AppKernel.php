@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Application\Sonata\DoctrineORMAdminBundle\ApplicationSonataDoctrineORMAdminBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
+            new CoopTilleuls\Bundle\CKEditorSonataMediaBundle\CoopTilleulsCKEditorSonataMediaBundle(),
             /* Api */
             new FOS\RestBundle\FOSRestBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
@@ -41,7 +42,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             /* CMS tools */
             new Infinite\FormBundle\InfiniteFormBundle(),
-            new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             /* sluggable */
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             /* Translations */

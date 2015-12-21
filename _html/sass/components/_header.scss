@@ -182,8 +182,12 @@ header {
         }
 
         &.account {
-          background: url('../img/svg/account.svg') no-repeat left 46%;
-          background-size: 15px;
+          padding-left: 0;
+
+          .icon {
+            font-size: 0.6rem;
+            margin-right: 10px;
+          }
         }
 
         &.language {
@@ -596,3 +600,12 @@ header {
 
 
 
+@include breakpoint(1024px) {
+  .mob header #navigation ul.main {
+    font-size: 0.8rem;
+  }
+
+  .mob header #navigation ul.user {
+    font-size: 0.7rem;
+  }
+}

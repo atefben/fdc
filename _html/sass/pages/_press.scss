@@ -821,6 +821,10 @@
                 position: absolute;
                 width: 220px;
 
+                &.ui-draggable-dragging {
+                  z-index: 5;
+                }
+
                 &.ui-draggable-dragging .category:after {
                   cursor: -webkit-grabbing;
                   cursor: grabbing;
@@ -2262,6 +2266,27 @@
     .buttons{
       position: absolute;
       right: 1px;
+    }
+  }
+}
+
+.press{
+  #calendar.fullwidth{
+    #mycalendar{
+      .fc-day{
+          width:234px;
+      }
+      .fc-day-header{
+          width:234px;
+      }
+      .fc-content-skeleton{
+        .fc-event-container{
+          width:234px;
+        }
+        td{
+         width:234px;
+        }
+      }
     }
   }
 }

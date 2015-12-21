@@ -24,4 +24,4 @@ php app/console translation:extract en --config=fdc_event
 
 php app/console translation:extract es --config=fdc_event
 
-php app/console translation:extract zh --config=fdc_event
+php app/console translation:extract cn --config=fdc_event

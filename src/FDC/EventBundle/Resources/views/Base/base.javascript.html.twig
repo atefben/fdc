@@ -1,0 +1,19 @@
+{% block javascripts %}
+
+    <!-- //// FOSJsRouting \\\\ -->
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+    <!-- //// Vendors \\\\ -->
+    {% javascripts '@FDCEventBundle/Resources/public/js/vendor.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <!-- //// Script \\\\ -->
+    {% javascripts '@FDCEventBundle/Resources/public/js/app.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script>jwplayer.key="{{ jwplayer_key }}";</script>
+
+{% endblock %}

@@ -49,7 +49,7 @@
 // 3. Player
 // =========================
 
-#video-container {
+.video-container {
   position: relative;
   overflow: hidden;
   width: 630px;
@@ -129,6 +129,7 @@
     }
 
     .info {
+      color: #666;
       display: block;
       height: 100%;
       float: left;
@@ -140,10 +141,26 @@
 
       .category {
         margin-left: 0;
+        color: #c8a461;
+        display: inline-block;
+        font-size: 0.625rem;
+        letter-spacing: 0.1em;
+        margin-right: 12px;
+        text-transform: uppercase;
+      }
+
+      span {
+        color: #666;
+        display: inline-block;
+        font-size: 0.625rem;
       }
 
       p {
-        font-size: 1.125rem;
+        color: #fff;
+        font-family: $CamphorRegular;
+        font-size: 0.850rem;
+        text-align: left;
+        width: auto;
       }
     }
 
@@ -206,6 +223,19 @@
 
       .info-container {
         text-align: left;
+      }
+
+      .owl-item {
+        .image-wrapper {
+          img {
+            width: auto;
+            max-height: 185px;
+          }
+        }
+
+        .linkVid {
+          display: block;
+        }
       }
 
       .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
@@ -340,6 +370,11 @@
       width: 125px;
       height: 100%;
 
+      &.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+
       .time-info {
         position: absolute;
         font-family: Helvetica;
@@ -362,6 +397,11 @@
       display: inline-block;
       width: calc(100% - 456px);
       height: 100%;
+
+      &.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
       
       .progress-bar {
         position: absolute;
@@ -510,6 +550,20 @@
     .control-bar {
       opacity: 0;
       @include transform(translateY(100%));
+    }
+
+    .video-player {
+      &:before {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: visible;
+        z-index: 2;
+      }
     }
   }
 

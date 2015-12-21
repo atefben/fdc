@@ -1,0 +1,5 @@
+fdc_event:
+    resource: "@FDCPressBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    host:     "%fdc_press_domain%"

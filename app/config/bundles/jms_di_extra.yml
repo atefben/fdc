@@ -1,5 +1,5 @@
 jms_di_extra:
     locations:
         all_bundles: false
-        bundles: [BaseApiBundle]
+        bundles: [BaseApiBundle, BaseCoreBundle]
         directories: ["%kernel.root_dir%/../src"]

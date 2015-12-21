@@ -1,0 +1,20 @@
+<article style="background-image:url({{ movie.thumbnail }})">
+    <div class="bck-hover">
+        <div class="contain_item">
+            <img src="{{ movie.img }}" alt="{{ movie.title }}">
+            <div class="infos-item-list">
+                <div class="logo-palme-dor-container">
+                    {% image '@FDCEventBundle/Resources/public/img/palmares/palmedor-logo.png' %}
+                    <img src="{{ asset_url }}" class="palme-dor-img" alt="{{ 'palmares.price.palmedor'|trans }}" />
+                    {% endimage %}
+                    <strong class="palme-dor-text verticalline">{{ 'palmares.price.palmedor'|trans }}</strong>
+                </div>
+                {% if movie.status is defined %}
+                    <h4 class="sub-title-item">{{ movie.status }}</h4>
+                {% endif %}
+                <h3 class="title-item">{{ movie.title }}</h3>
+                <span class="nom-item">{{ movie.author }}</span>
+            </div>
+        </div>
+    </div>
+</article>

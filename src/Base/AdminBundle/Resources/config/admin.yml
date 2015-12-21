@@ -157,6 +157,15 @@ services:
         calls:
             - [ setTranslationDomain, ["BaseAdminBundle"]]
 
+
+    base.admin.film_projection:
+        class: Base\AdminBundle\Admin\FilmProjectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\FilmProjection, BaseAdminBundle:FilmProjectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.film_projection, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.film_person:
         class: Base\AdminBundle\Admin\FilmPersonAdmin
         arguments: [~, Base\CoreBundle\Entity\FilmPerson, BaseAdminBundle:FilmPersonAdmin]
@@ -243,6 +252,22 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: NewsNewsAssociated, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.news_film_projection_associated:
+        class: Base\AdminBundle\Admin\NewsFilmProjectionAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\NewsFilmProjectionAssociated, BaseAdminBundle:NewsFilmProjectionAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsFilmProjectionAssociated, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.news_film_film_associated:
+        class: Base\AdminBundle\Admin\NewsFilmFilmAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\NewsFilmFilmAssociated, BaseAdminBundle:NewsFilmFilmAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.film_film_media:
         class: Base\AdminBundle\Admin\FilmFilmMediaAdmin

@@ -2,10 +2,9 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,9 +24,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "InfoArticle", "audio" = "InfoAudio", "image" = "InfoImage", "video" = "InfoVideo"})
  */
-abstract class Info
+abstract class Info implements TranslateMainInterface
 {
-    use TranslationByLocale;
+    use TranslateMain;
     use Time;
 
     /**
@@ -47,13 +46,6 @@ abstract class Info
      * @ORM\OneToMany(targetEntity="InfoLock", mappedBy="info")
      */
     private $locks;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
-    private $translate;
 
     /**
      * @var NewsTheme
@@ -129,6 +121,24 @@ abstract class Info
      * @Groups({"info_list", "info_show"})
      */
     private $sites;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $createdBy;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $updatedBy;
 
     /**
      * ArrayCollection
@@ -380,29 +390,6 @@ abstract class Info
     }
 
     /**
-     * Set translate
-     *
-     * @param boolean $translate
-     * @return News
-     */
-    public function setTranslate($translate)
-    {
-        $this->translate = $translate;
-
-        return $this;
-    }
-
-    /**
-     * Get translate
-     *
-     * @return boolean
-     */
-    public function getTranslate()
-    {
-        return $this->translate;
-    }
-
-    /**
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
@@ -500,5 +487,51 @@ abstract class Info
     public function getLocks()
     {
         return $this->locks;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
+     * @return Info
+     */
+    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
+     * @return Info
+     */
+    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
     }
 }

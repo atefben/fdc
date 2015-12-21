@@ -1,0 +1,104 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="webtv webtv-ba loading">
+    <div class="bandeau">
+        <div id="live" style="background-image:url(http://dummyimage.com/1920x450/cfcfcf/fff&text=+)">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="#" class="play"></a>
+                    <h2>Les bandes annonces et extraits</h2>
+                </div>
+            </div>
+        </div>
+        <ul class="sub-nav-list">
+            <li>
+                <a href="{{ path('fdc_event_television_trailers', {'slug': 'competition'}) }}"
+                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'competition'}) }}"
+                   class="{% if app.request.attributes.get('slug') == 'competition' %}active{% endif %} ajax">
+                    {{ 'television.trailers.nav.competition'|trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_event_television_trailers', {'slug': 'certain-regard'}) }}"
+                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'certain-regard'}) }}"
+                   class="{% if app.request.attributes.get('slug') == 'certain-regard' %}active{% endif %} ajax">
+                    {{ 'television.trailers.nav.certainregard'|trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_event_television_trailers', {'slug': 'hors-competition'}) }}"
+                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'hors-competition'}) }}"
+                   class="{% if app.request.attributes.get('slug') == 'hors-competition' %}active{% endif %} ajax">
+                    {{ 'television.trailers.nav.horscompetition'|trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_event_television_trailers', {'slug': 'seances-speciales'}) }}"
+                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'seances-speciales'}) }}"
+                   class="{% if app.request.attributes.get('slug') == 'seances-speciales' %}active{% endif %} ajax">
+                    {{ 'television.trailers.nav.seancesspeciales'|trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_event_television_trailers', {'slug': 'cinefondation'}) }}"
+                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'cinefondation'}) }}"
+                   class="{% if app.request.attributes.get('slug') == 'cinefondation' %}active{% endif %} ajax">
+                    {{ 'television.trailers.nav.cinefondation'|trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_event_television_trailers', {'slug': 'court-metrage'}) }}"
+                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'court-metrage'}) }}"
+                   class="{% if app.request.attributes.get('slug') == 'court-metrage' %}active{% endif %} ajax">
+                    {{ 'television.trailers.nav.courtmetrage'|trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_event_television_trailers', {'slug': 'cannes-classics'}) }}"
+                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'cannes-classics'}) }}"
+                   class="{% if app.request.attributes.get('slug') == 'cannes-classics' %}active{% endif %} ajax">
+                    {{ 'television.trailers.nav.cannesclassics'|trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_event_television_trailers', {'slug': 'cinema-de-la-plage'}) }}"
+                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'cinema-de-la-plage'}) }}"
+                   class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %} ajax">
+                    {{ 'television.trailers.nav.cinemadelaplage'|trans }}
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="content-webtv">
+        <div class="listtrailer grid all-videos">
+            <div id="gridWebtv" class="grid-wrapper">
+                <div class="grid-sizer"></div>
+
+                {% for trailer in trailers %}
+                    <div class="item {{ trailer.filter.date }} {{ trailer.filter.theme }} shadow-bottom video">
+
+                        <img src="{{ trailer.image.src }}" srcset="{{ trailer.image.src }} 1x, {{ trailer.image.large }} 2x" alt="">
+                        <div class="info">
+                            <div class="picto"></div>
+                            <div class="info-container">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <a href="{{ path('fdc_event_television_gettrailer', {'id': trailer.id }) }}" class="category">{{ trailer.title }}</a>
+                                        <span>{{ trailer.author }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

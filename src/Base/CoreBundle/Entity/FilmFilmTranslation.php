@@ -4,9 +4,10 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Doctrine\ORM\Mapping as ORM;
-
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
 
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Exclude;
@@ -20,10 +21,11 @@ use JMS\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmFilmTranslation
+class FilmFilmTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use TranslateChild;
 
     /**
      * @var string
@@ -60,6 +62,11 @@ class FilmFilmTranslation
      * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
      */
     private $programSection;
+
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
 
     /**
      * Set title

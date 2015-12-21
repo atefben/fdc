@@ -10,6 +10,7 @@ imports:
     - { resource: bundles/nelmio_api_doc.yml }
     - { resource: bundles/fos_user.yml }
     - { resource: bundles/fos_rest.yml }
+    - { resource: bundles/ivory_ck_editor.yml }
     - { resource: bundles/jms_di_extra.yml }
     - { resource: bundles/jms_translation.yml }
     - { resource: bundles/jms_i18n_translation.yml }
@@ -61,11 +62,20 @@ twig:
     globals:
         locales_admin: "%locales_admin%"
         locales: "%locales%"
+        locales_front: "%locales_front%"
+        locale_fallback: "%%locale_fallback%"
         locale_default_translation: "%locale_default_translation%"
         header_fdc: "%header_fdc%"
         header_cine: "%header_cine%"
         header_ccm: "%header_ccm%"
         header_mdf: "%header_mdf%"
+        header_account: "%header_account%"
+        partner_chopard: "%partner_chopard%"
+        partner_loreal: "%partner_loreal%"
+        partner_hp: "%partner_hp%"
+        partner_kering: "%partner_kering%"
+        partner_renault: "%partner_renault%"
+        partner_mastercard: "%partner_mastercard%"
         footer_boutique: "%footer_boutique%"
         social_appli: "%social_appli%"
         social_facebook: "%social_facebook%"
@@ -76,12 +86,13 @@ twig:
         social_youtube: "%social_youtube%"
         social_dailymotion: "%social_dailymotion%"
         social_podcast: "%social_podcast%"
+        jwplayer_key: "%jwplayer_key%"
 
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCPressBundle ]
     use_controller: true
     filters:
         cssrewrite:
@@ -112,6 +123,9 @@ doctrine:
                     oneLocale:
                         class: A2lix\I18nDoctrineBundle\Doctrine\ORM\Filter\OneLocaleFilter
                         enabled: true
+                dql:
+                    numeric_functions:
+                        Rand: Base\CoreBundle\Doctrine\Rand
 
 
 # Swiftmailer Configuration

@@ -4,9 +4,11 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
-use Doctrine\ORM\Mapping as ORM;
-
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\Time;
+
+use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -15,10 +17,11 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FilmSelectionSectionTranslation
+class FilmSelectionSectionTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use TranslateChild;
 
     /**
      * @var string
@@ -28,6 +31,11 @@ class FilmSelectionSectionTranslation
      * @Groups({"film_selection_list", "film_selection_show"})
      */
     protected $name;
+
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
 
     /**
      * Set name

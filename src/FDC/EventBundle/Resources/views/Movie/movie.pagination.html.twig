@@ -1,0 +1,30 @@
+<div class="prevmovie">
+    <div class="img">
+        <img src="{{ movies.prev.image.path }}" alt="" />
+    </div>
+    <div class="info">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <h2>{{ movies.prev.titleVO }}</h2>
+                <a href="#">{{ movies.prev.author.fullName }}</a>
+                <p>{{ 'movie.pagination.text.pays'|trans }} : {{ movies.prev.author.from }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="nextmovie">
+    <div class="img">
+        <img src="{{ movies.next.image.path }}" alt="" />
+    </div>
+    <div class="info">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <h2>{{ movies.next.titleVO }}</h2>
+                <a href="#">{{ movies.next.author.fullName }}</a>
+                <p>{{ 'movie.pagination.text.pays'|trans }} : {{ movies.next.author.from }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="{{ path('fdc_event_movie_get', {'slug':  movies.prev.slug }) }}" class="nav prev ajax"></a>
+<a href="{{ path('fdc_event_movie_get', {'slug':  movies.next.slug }) }}" class="nav next ajax"></a>

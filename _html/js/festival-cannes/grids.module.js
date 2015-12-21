@@ -119,8 +119,8 @@ function setImages(grid, dom, init){
 
     if (!init) {
       grid.append($(dom)).isotope('appended', $(dom));
-      grid.imagesLoaded().progress(function () {
-        grid.isotope('layout');
+      grid.imagesLoaded(function () {
+        setTimeout(function() {grid.isotope('layout');}, 500);
       });
     }
   }
@@ -134,8 +134,12 @@ function setImages(grid, dom, init){
         waves[i].stop();
       }
     }
-    $('.popin-audio').removeClass('pause');
+    $('.popin-audio').removeClass('pause audio-player');
     waves = [];
+
+    if(inter) {
+      clearInterval(inter);
+    }
   }
 
   if ($('.grid').length) {
@@ -147,17 +151,21 @@ function setImages(grid, dom, init){
 
       $grid = $('#gridPhotos').imagesLoaded(function () {
 
-        setImages($grid, $('#gridPhotos'), true);
+        setImages($grid, $('#gridPhotos'), false);
         $grid.isotope({
           itemSelector: '.item',
           percentPosition: true,
           layoutMode: 'packery',
-          isOriginLeft: true,
           packery: {
             columnWidth: '.grid-sizer'
           }
         });
-        $grid.isotope('layout');
+
+        if($('.all-photos').length) {
+          setTimeout(function() {
+            $grid.isotope({ sortBy : 'original-order' });
+          }, 500);
+        }
       });
     }
 
@@ -240,8 +248,9 @@ function setImages(grid, dom, init){
             $popinAudio.find('.date').text(date);
             $popinAudio.find('.hour').text(hour);
             $popinAudio.find('p').text(text);
-            $popinAudio.addClass('audio-player show loading on');
-
+            $popinAudio.addClass('audio-player show loading');
+            waves = [];
+            $('.audio-player .playpause').off('click');
             initAudioPlayers();
             $('.ov').addClass('show');
           });
@@ -255,10 +264,8 @@ function setImages(grid, dom, init){
         debug: false,
         dataType: 'html',
         path: function (index) {
-          console.log($('#gridAudios').data('type') + index + ".html");
           //TODO dev// 
           return $('#gridAudios').data('type') + index + ".html";
-
         }
       }, function (newElements, data, url) {
         setGrid($grid, newElements, false);

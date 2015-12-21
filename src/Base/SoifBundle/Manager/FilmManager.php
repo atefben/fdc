@@ -343,14 +343,14 @@ class FilmManager extends CoreManager
                 
             // create / update selection section
             if (property_exists($object, 'SectionSelection') && property_exists($object->SectionSelection->Traductions, 'FilmSectionSelectionTraductionDto')) {
-            
                 // get related entity
                 $translations = $object->SectionSelection->Traductions->FilmSectionSelectionTraductionDto;
                 $filmSelectionSection = $this->em->getRepository('BaseCoreBundle:FilmSelectionSection')->findOneBy(array('id' => $object->SectionSelection->Code));
                 $filmSelectionSection = ($filmSelectionSection !== null) ? $filmSelectionSection : new FilmSelectionSection();
                 $filmSelectionSection->setId($object->SectionSelection->Code);
                 $filmSelection->addSection($filmSelectionSection);
-    
+                $entity->setSelectionSection($filmSelectionSection);
+
                 $festival = $this->em->getRepository('BaseCoreBundle:FilmFestival')->findOneBy(array('id' => $object->SectionSelection->IdFestival));
                 $festival = ($festival !== null) ? $festival : $this->festivalManager->getById($object->SectionSelection->IdFestival);
                 if ($festival !== null) {
@@ -545,16 +545,20 @@ class FilmManager extends CoreManager
                 $persons[$object->Id]->setFilm($entity);
                 
                 // set function
-                $function = $this->em->getRepository('BaseCoreBundle:FilmFunction')->findOneById($object->IdFonction);
-                if ($function !== null) {
-                    $filmFilmPersonFunction = $this->em->getRepository('BaseCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $persons[$object->Id]->getId(), 'function' => $object->IdFonction));
-                    $filmFilmPersonFunction = ($filmFilmPersonFunction !== null) ? $filmFilmPersonFunction : new FilmFilmPersonFunction();
-                    $filmFilmPersonFunction->setFunction($function);
-                    $filmFilmPersonFunction->setFilmPerson($persons[$object->Id]);
-                    $filmFilmPersonFunction->setPosition($object->OrdreAffichage);
-                    $persons[$object->Id]->addFunction($filmFilmPersonFunction);
+                if (property_exists($object, 'IdFonction')) {
+                    $function = $this->em->getRepository('BaseCoreBundle:FilmFunction')->findOneById($object->IdFonction);
+                    if ($function !== null) {
+                        $filmFilmPersonFunction = $this->em->getRepository('BaseCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $persons[$object->Id]->getId(), 'function' => $object->IdFonction));
+                        $filmFilmPersonFunction = ($filmFilmPersonFunction !== null) ? $filmFilmPersonFunction : new FilmFilmPersonFunction();
+                        $filmFilmPersonFunction->setFunction($function);
+                        $filmFilmPersonFunction->setFilmPerson($persons[$object->Id]);
+                        $filmFilmPersonFunction->setPosition($object->OrdreAffichage);
+                        $persons[$object->Id]->addFunction($filmFilmPersonFunction);
+                    } else {
+                        $this->logger->error(__METHOD__ . "Function {$object->IdFonction} not found");
+                    }
                 } else {
-                    $this->logger->error(__METHOD__. "Function {$object->IdFonction} not found");
+                    $this->logger->error(__METHOD__ . "Property IdFonction not found");
                 }
 
                 // set translations for roles

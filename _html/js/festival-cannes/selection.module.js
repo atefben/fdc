@@ -11,6 +11,7 @@ $(document).ready(function() {
   if($.cookie('selection')) {
     selectionCookie = JSON.parse($.cookie('selection'));
 
+    console.log(selectionCookie);
     for(var i=0; i<selectionCookie.length; i++) {
       var $art = $('#toClone').clone();
 
@@ -100,6 +101,7 @@ $(document).ready(function() {
     $('#main, footer').removeClass('overlay');
     $('#selection').removeClass('open');
     $('header .selection').removeClass('opened');
+    $('#addtext').removeClass('show');
   }
 
   $('body').on('click', '#main.overlay', function(e) {
@@ -113,12 +115,21 @@ $(document).ready(function() {
     }
   });
 
+  $('body').on('click', 'footer.overlay', function(e) {
+    e.preventDefault();
+
+    if($('#selection').hasClass('open')) {
+      closeSelection();
+    }
+  });
+
   $('header .selection').on('click', function(e) {
     e.preventDefault();
 
     if($(this).hasClass('opened')) {
       closeSelection();
     } else {
+      $("#main, footer").addClass('overlay');
       openSelection(function() {
 
       });
@@ -202,6 +213,28 @@ $(document).ready(function() {
   // add an article 
   $('body').on('click', '.read-later', function(e) {
     e.preventDefault();
+
+    if($('.mob').length) {
+      var lPos = $(this).offset().left - 80;
+
+      if(($(this).offset().left + 120) > $(window).width()) {
+        lPos = $(this).offset().left - 120;
+        $(this).addClass('rAlign');
+      } else {
+        $(this).removeClass('rAlign');
+      }
+
+      var tPos = $(this).offset().top - $(window).scrollTop() - 59;
+
+      $('#addtext').css({
+        top: tPos,
+        left: lPos
+      });
+
+      $('#addtext').addClass('show');
+    }
+
+
     var $article = $(this).parents('article').clone().removeClass('double').wrapAll("<div class='article'></div>").parent().wrapAll('<div></div>').parent();
         $article.find('.read-later').remove();
         $article.find('div.article').append('<a href="#" class="delete"></a>');
@@ -223,7 +256,7 @@ $(document).ready(function() {
       'category': $articleEl.find('.category').text(),
       'date': $articleEl.find('.date').text(),
       'hour': $articleEl.find('.hour').text(),
-      'title': $articleEl.find('h2 a').text(),
+      'title': $articleEl.find('h2 a, h3 a').text(),
     });
 
     $.cookie('selection', JSON.stringify(selectionCookie), { expires: 14 });

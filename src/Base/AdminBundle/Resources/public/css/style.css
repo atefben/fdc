@@ -62,3 +62,21 @@ form[name="base_adminbundle_settings"] {
 #fdc-locale-switcher .select2-container {
     width: auto !important;
 }
+
+.fdc-input-border {
+    border: 1px solid #00a65a;
+    padding: 5px;
+}
+
+.sonata-ba-collapsed-fields label[for$="translate"] {
+    padding-left: 10px;
+}
+
+.form-group[id$="priorityStatus"] {
+    display: none;
+}
+
+.fdc-widget-remove-btn {
+    margin: 20px 0;
+    float: right;
+}

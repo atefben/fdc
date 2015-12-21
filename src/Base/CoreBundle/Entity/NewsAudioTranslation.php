@@ -4,12 +4,15 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Util\Seo;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Seo;
-use Base\CoreBundle\Util\Status;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -20,10 +23,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsAudioTranslation implements NewsTranslationInterface
+class NewsAudioTranslation implements TranslateChildInterface
 {
     use Seo;
-    use Status;
+    use TranslateChild;
     use Time;
     use Translation;
 
@@ -42,13 +45,14 @@ class NewsAudioTranslation implements NewsTranslationInterface
      */
     protected $introduction;
 
+
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(type="integer", nullable=false)
-     * @Assert\NotBlank()
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $status;
+    private $slug;
 
     /**
      * Constructor
@@ -56,7 +60,6 @@ class NewsAudioTranslation implements NewsTranslationInterface
     public function __construct()
     {
         $this->sites = new ArrayCollection();
-        $this->status = NewsAudioTranslation::STATUS_DRAFT;
     }
 
     /**
@@ -105,27 +108,27 @@ class NewsAudioTranslation implements NewsTranslationInterface
         return $this->introduction;
     }
 
+
     /**
-     * Set status
+     * Set slug
      *
-     * @param integer $status
+     * @param string $slug
      * @return NewsAudioTranslation
      */
-    public function setStatus($status)
+    public function setSlug($slug)
     {
-        $this->status = $status;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get slug
      *
-     * @return integer 
+     * @return string 
      */
-    public function getStatus()
+    public function getSlug()
     {
-        return $this->status;
+        return $this->slug;
     }
-
 }

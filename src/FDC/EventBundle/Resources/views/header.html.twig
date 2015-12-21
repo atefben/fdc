@@ -3,27 +3,21 @@
 
     <div id="top-bar">
         <ul class="main-nav">
-
             <li>
                 <a href="/" class="active" > {{ 'header.topbar.nav.festival'|trans }} </a>
             </li>
-
             <li>
                 <a href="{{ header_fdc }}" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
             </li>
-
             <li>
                 <a href="{{ header_cine }}" target="_blank" > {{ 'header.topbar.nav.cinefondation'|trans }} </a>
             </li>
-
             <li>
                 <a href="{{ header_ccm }}" target="_blank" > {{ 'header.topbar.nav.courtmetrage'|trans }} </a>
             </li>
-
             <li>
                 <a href="{{ header_mdf }}" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
             </li>
-
         </ul>
         <ul class="user-nav">
 
@@ -32,9 +26,8 @@
             </li>
 
             <li>
-                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
+                <a href="{{ header_account }}" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
             </li>
-
             <li class="lang">
                 <a href="#" class="language">
                     {{ app.request.locale|upper }}
@@ -43,12 +36,15 @@
                     {% for locale in locales %}
                         {% if locale == app.request.locale %}
                         {% else %}
-                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale|upper }}</a></li>
+                            <li>
+                                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">
+                                    {{ locales_front[loop.index0]|upper }}
+                                </a>
+                            </li>
                         {% endif %}
                     {% endfor %}
                 </ul>
             </li>
-
         </ul>
     </div>
     <div id="logo-wrapper">
@@ -72,38 +68,38 @@
                 <p class="stick">
                     <a href="/">
                         {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
-                        <img width="178" src="{{ asset_url }}" class="palm" alt="{{ 'header.logo.img.cannes'|trans }}" />
+                        <img width="178" src="{{ asset_url }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
                         {% endimage %}
                     </a>
                 </p>
             </div>
             <div id="partners">
-                <a href="//www.chopard.fr/" target="_blank">
+                <a href="{{ partner_chopard }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Logo_Chopard.svg' %}
                     <img width="84" src="{{ asset_url }}" class="chopard" alt="{{ 'header.partners.img.chopard'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//www.loreal-paris.fr/index.aspx" target="_blank">
+                <a href="{{ partner_loreal }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
                     <img width="75" src="{{ asset_url }}" class="oreal" alt="{{ 'header.partners.img.loreal'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//www8.hp.com/fr/fr/home.html" target="_blank">
+                <a href="{{ partner_hp }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/hp.svg' %}
                     <img width="28" src="{{ asset_url }}" class="hp" alt="{{ 'header.partners.img.hp'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//www.kering.com/fr" target="_blank">
+                <a href="{{ partner_kering }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Kering-logo.svg' %}
                     <img width="82" src="{{ asset_url }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//group.renault.com" target="_blank">
+                <a href="{{ partner_renault }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/renault.svg' %}
                     <img width="95" src="{{ asset_url }}" class="renault" alt="{{ 'header.partners.img.renault'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank">
+                <a href="{{ partner_mastercard }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/mastercard.png' %}
                     <img width="57" src="{{ asset_url }}" class="mastercard" alt="{{ 'header.partners.img.mastercard'|trans }}" />
                     {% endimage %}
@@ -132,118 +128,125 @@
             <nav>
                 <ul class="main">
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_article_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_get'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getarticles'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getphotos'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getvideos'
+                                     or app.request.attributes.get('_route') == 'fdc_event_article_getaudios'%}active{% endif %}">
                             {{ 'header.mainnav.nav.lactualite'|trans }}
                         </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.jourapresjour'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_getarticles') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getarticles' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.articles'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_getphotos') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getphotos' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.photos'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_getvideos') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getvideos' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.videos'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_article_getaudios') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getaudios' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.audios'|trans }}
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_television_live') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live'
+                                     or app.request.attributes.get('_route') == 'fdc_event_television_channels'
+                                     or app.request.attributes.get('_route') == 'fdc_event_television_getchannel'
+                                     or app.request.attributes.get('_route') == 'fdc_event_television_trailers' %}active{% endif %}">
                             {{ 'header.mainnav.nav.webtv'|trans }} </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_television_live') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live'
+                                             or app.request.attributes.get('_route') == 'fdc_event_television_getchannel'%}active{% endif %}">
                                     {{ 'header.mainnav.nav.direct'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_television_channels') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_channels' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.chaines'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_default_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_television_trailers', { 'slug': 'competition' }) }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_trailers' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.bandesannonces'|trans }}
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_movie_selection', { 'slug': 'competition' }) }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_movie_selection' %}active{% endif %}">
                             {{ 'header.mainnav.nav.laselection'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_jury_get', {'type': '1'}) }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_jury_get' %}active{% endif %}">
                             {{ 'header.mainnav.nav.lesjurys'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_palmares_get', {'section': 'competition'}) }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_palmares_get' %}active{% endif %}">
                             {{ 'header.mainnav.nav.lepalmares'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_default_index' %}active{% endif %}">
+                        <a href="{{ path('fdc_event_event_getevents') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_event_getevents' %}active{% endif %}">
                             {{ 'header.mainnav.nav.lesevenements'|trans }}
                         </a>
                     </li>
                 </ul>
                 <ul class="user">
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}" class="programmation"> {{ 'header.mainnav.nav.programmation'|trans }} </a>
+                        <a href="{{ path('fdc_event_article_index') }}" class="programmation"> {{ 'header.mainnav.nav.programmation'|trans }} </a>
                     </li>
                     <li class="participate-wrapper">
-                        <a href="{{ path('fdc_event_default_index') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
+                        <a href="{{ path('fdc_event_article_index') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
                         <ul>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.preparersejour'|trans }}</a></li>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.festivalmodeemploi'|trans }} </a></li>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.accesprojection'|trans }} </a></li>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.partenaires'|trans }} </a></li>
-                            <li><a href="{{ path('fdc_event_default_index') }}"> {{ 'header.mainnav.nav.fournisseurs'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ 'header.mainnav.nav.preparersejour'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_event_participate_festival') }}"> {{ 'header.mainnav.nav.festivalmodeemploi'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_participate_access') }}"> {{ 'header.mainnav.nav.accesprojection'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_participate_partners') }}"> {{ 'header.mainnav.nav.partenaires'|trans }} </a></li>
+                            <li><a href="{{ path('fdc_event_participate_suppliers') }}"> {{ 'header.mainnav.nav.fournisseurs'|trans }} </a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_default_index') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
+                        <a href="{{ path('fdc_event_article_index') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
                     </li>
                 </ul>
             </nav>
         </div>
     </div>
     <div id="selection">
-
         <h2 class="title">{{ 'header.maselection.title.maselection'|trans }}<strong>(<span id="nbarticle"></span>)</strong></h2>
-
         <ul class="filters-selection">
             <li><a href="#" data-selection='all'>{{ 'header.maselection.nav.tous'|trans }}</a></li>
             <li><a href="#" data-selection='article'>{{ 'header.maselection.nav.articles'|trans }}</a></li>
@@ -254,27 +257,13 @@
         <div id="slider-selection" class="owl-carousel"></div>
         <div id="slider-suggestion" class="owl-carousel"></div>
         <div id="toClone" class="article">
-
-            <article class="" data-format="" data-theme="">
-                <div class="image">
-                    <div class="image-wrapper">
-                        <img src="" alt="" />
-                    </div>
-                    <a href="" class="linkImage"></a>
-                    <span class="picto"></span>
-                </div>
-                <div class="info">
-                    <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
-                    <h2><a href="{{ path('fdc_event_default_index') }}"></a></h2>
-                </div>
-            </article>
-
+            {{ render(controller('FDCEventBundle:Global:suggestion')) }}
             <a href="#" class="delete"></a>
         </div>
     </div>
     <div id="searchContainer">
         <div class="container">
-            <form action="{{ path('fdc_event_default_index') }}">
+            <form action="{{ path('fdc_event_article_index') }}">
                 <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'header.search.input.entrezrecherche'|trans }}" autocomplete="off" />
                 <input id="submitSearch" type="submit" value="" />
             </form>

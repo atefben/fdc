@@ -19,13 +19,9 @@ class MediaAudio extends Media
     use Translatable;
 
     /**
-     * @var ArrayCollection
+     * @var FilmFilm
      *
+     * @ORM\ManyToMany(targetEntity="FilmFilm")
      */
-    protected $translations;
-    
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
+    private $films;
 }

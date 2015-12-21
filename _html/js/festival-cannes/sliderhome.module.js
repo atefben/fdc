@@ -216,7 +216,7 @@ $(document).ready(function() {
       });
     }
 
-    $("#slider").owlCarousel({
+    sliderHome = $("#slider").owlCarousel({
       items: 2,
       loop: true,
       center: true,
@@ -232,6 +232,15 @@ $(document).ready(function() {
       smartSpeed: 800,
       autoWidth: true
     });
+
+    sliderHome.owlCarousel();
+
+    if($('.mob').length) {
+      sliderHome.trigger('to.owl.carousel', [1, 100, true]);
+      setTimeout(function() {
+        sliderHome.trigger('to.owl.carousel', [0, 100, true]);
+      }, 100);
+    }
 
 
   }

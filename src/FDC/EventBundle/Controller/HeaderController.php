@@ -12,16 +12,20 @@ class HeaderController extends Controller
 {
 
     /**
+     * @Template("FDCEventBundle:Header:header.date.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dateAction()
     {
-        $dateStart = 11;
-        $date = new \DateTime('22-05-2016');
+        $em = $this->getDoctrine()->getManager();
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->getFestivalDate();
 
-        return $this->render(
-            'FDCEventBundle:Header:header.date.html.twig',
-            array('date' => $date)
+        if (count($settings) == 1) {
+            $settings = $settings[0];
+        }
+
+        return array(
+            'settings' => $settings
         );
 
     }
