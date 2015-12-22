@@ -7814,6 +7814,33 @@ header #searchContainer {
   pointer-events: initial;
 }
 
+#cookies-banner {
+  width: 100%;
+  margin: 0;
+  background: #080808;
+  border-bottom: solid 1px black;
+  position: fixed;
+  bottom: 0px;
+  z-index: 200;
+  padding: 17px;
+  font-size: 0.75rem;
+}
+
+#cookies-banner p {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+#cookies-banner .cookie-accept {
+  position: fixed;
+  bottom: 151px;
+  right: 8px;
+  font-size: 30px;
+}
+#cookies-banner .cookie-accept .icon {
+  color: #c8a461;
+}
+
 #prehome-container {
   background-color: #fff;
   min-height: 600px;

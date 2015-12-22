@@ -59,7 +59,7 @@
                 <div class="infos-item-list">
                     <span class="date-pres-item">Jeudi 14 mai </span><span class="heure-pres-item"> 21h30 </span> 
                     <h3 class="title-item">Le grand blond avec une chaussure noire</h3>
-                    <span class="nom-item">Yves Robert</span>
+                    <span class="nom-item">Yves ROBERT</span>
                     <span class="date-item">1972 - 1h30</span>
                     <p class="description-item">Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair, son restauré par Diapason en partenariat avec Eclair.</p>
                 </div>
@@ -73,7 +73,7 @@
                     <div class="infos-item-list">
                         <span class="date-pres-item">Vendredi 15 mai </span><span class="heure-pres-item"> 21h30 </span> 
                         <h3 class="title-item">Ran</h3>
-                        <span class="nom-item">Akira Kurosama</span>
+                        <span class="nom-item">Akira KUROSAMA</span>
                         <span class="date-item">1985 - 2h42</span>
                         <p class="description-item">Négatif original numérisé en 4K et restauré image par image en 4K par Eclair. Restauration image, étalonnage et restauration son supervisés par STUDIOCANAL en collaboration avec Kadokawa (co-producteur japonais).</p>
                         <p class="description-item">Etalonnage validé par M. Ueda (chef opérateur), collaborateur de Akira Kurosawa sur le tournage du film. </p>
@@ -88,7 +88,7 @@
                     <div class="infos-item-list">
                         <span class="date-pres-item">Samedi 16 mai </span><span class="heure-pres-item"> 21h30 </span> 
                         <h3 class="title-item">Hôtel du nord</h3>
-                        <span class="nom-item">Marcel Carné</span>
+                        <span class="nom-item">Marcel CARNÉ</span>
                         <span class="date-item">1938 - 1h35</span>
                         <p class="description-item">Une restauration présentée par MK2 avec le soutien du CNC. Restauration image 2K (d’après un scan 4K du négatif image nitrate) 
 faite par Digimage Classics.</p>
