@@ -1,0 +1,179 @@
+//       SUMMARY TABLE
+// =========================
+// 1. Error 404
+// 2. Error navigator
+// 3. Landing page
+// =========================
+
+
+
+// 1. Error 404 ======= /
+
+.error-not-found{
+  background-image: url("../img/error-bck.jpg");
+  height: 593px;
+  background-size: cover;
+  .texts{
+    width: 550px;
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+    
+    h1{
+      color:#fff;
+      font-size: 1.75rem;
+      letter-spacing: .5em;
+      line-height: 24px;
+      font-family: $Playfair;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 19px;
+    }
+    p{
+      text-transform: uppercase;
+      color:#fff;
+      font-size: 0.75rem;
+      letter-spacing: .2rem;
+      line-height: 24px;
+      margin-bottom: 34px;
+    }
+    a{
+      color:#c8a461;
+      font-size: 0.69rem;
+      font-family: $CamphorHeavy;
+      text-transform: uppercase;
+      @include transition(all 0.5s $linear);
+      }
+      a:hover{
+        color: rgba(200, 164, 97, 0.74);
+      }
+  }
+}
+
+// 2. Error Navigator ======= /
+
+#main.error-nav{
+  color: #fff;
+  background-color: #141414;
+  height: 720px;
+  
+  #logo{
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    a{
+      display: block;
+      color: #c8a461;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      font-weight: normal;
+      margin-top: 5px;
+      @include transition(all 0.5s $linear);
+      }
+      a:hover{
+        color: #966505;
+      }
+    margin-bottom: 63px;
+  }
+
+  .palm {
+    display: block;
+    margin: 0 auto;
+    width: 145px;
+    }
+  
+  h1{
+    font-size: 3rem;
+    font-family: $Playfair;
+    text-align: center;
+    margin-bottom: 64px;
+    line-height: 66px;
+  }
+  .texts{
+    width: 738px;
+    margin: 0 auto;
+  }
+  p{
+    font-size: 1rem;
+    line-height: 26px;
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  
+  table{
+    td{
+      font-size: 19px;
+      font-family: $Playfair;
+      letter-spacing: .1rem;
+      width: 363px;
+      text-align: center;
+    }
+  }
+}
+
+// 3. Landing page ======= /
+
+#main.landing-page{
+    background-color: #fff !important;
+  .container{
+    background-color: #fff;
+    width: 634px;
+    margin: 67px auto;
+    padding-bottom: 67px;
+    display: block;
+    p{
+      color:#666666;
+      line-height: 26px;
+      
+      strong{
+        font-family: $CamphorBold;
+      }
+      a{
+        color: $gold;
+        font-family: $CamphorBold;
+        @include transition(all 0.5s $linear);
+      }
+      a:hover{
+        color: #966505;
+      }
+    }
+  }
+
+}
+
+
+  @media screen and (min-width: 1920px) {
+    .landing-page .bandeau-list-img{
+      height: 448px !important;
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+    .landing-page .bandeau-list-img{
+      height: 373px !important;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+    .landing-page .bandeau-list-img{
+      height: 297px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .landing-page .bandeau-list-img{
+      height: 296px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .landing-page .bandeau-list-img{
+      height: 296px !important;
+    }
+  }
+
+
+

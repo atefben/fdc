@@ -7543,9 +7543,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7571,11 +7571,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7591,26 +7591,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -7800,6 +7800,11 @@ header #searchContainer {
   hyphens: auto;
   padding-top: 22px;
   border-top: 1px solid #e5e5e5;
+}
+.popin-mail .valid {
+  border: 1px solid #25a20c;
+  color: #25a20c;
+  padding: 19px 0px;
 }
 
 .visible-popin {
@@ -17906,7 +17911,7 @@ input[type=submit] {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdfÔÇí;
+  border: 0px solid #dfdfdf‡;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
@@ -18385,5 +18390,159 @@ input[type=submit] {
 @media screen and (max-width: 1023px) {
   .press-actu .section {
     height: 298px !important;
+  }
+}
+.error-not-found {
+  background-image: url("../img/error-bck.jpg");
+  height: 593px;
+  background-size: cover;
+}
+.error-not-found .texts {
+  width: 550px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+}
+.error-not-found .texts h1 {
+  color: #fff;
+  font-size: 1.75rem;
+  letter-spacing: .5em;
+  line-height: 24px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 19px;
+}
+.error-not-found .texts p {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: .2rem;
+  line-height: 24px;
+  margin-bottom: 34px;
+}
+.error-not-found .texts a {
+  color: #c8a461;
+  font-size: 0.69rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.error-not-found .texts a:hover {
+  color: rgba(200, 164, 97, 0.74);
+}
+
+#main.error-nav {
+  color: #fff;
+  background-color: #141414;
+  height: 720px;
+}
+#main.error-nav #logo {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  margin-bottom: 63px;
+}
+#main.error-nav #logo a {
+  display: block;
+  color: #c8a461;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: normal;
+  margin-top: 5px;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#main.error-nav #logo a:hover {
+  color: #966505;
+}
+#main.error-nav .palm {
+  display: block;
+  margin: 0 auto;
+  width: 145px;
+}
+#main.error-nav h1 {
+  font-size: 3rem;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  text-align: center;
+  margin-bottom: 64px;
+  line-height: 66px;
+}
+#main.error-nav .texts {
+  width: 738px;
+  margin: 0 auto;
+}
+#main.error-nav p {
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: center;
+  margin-bottom: 64px;
+}
+#main.error-nav table td {
+  font-size: 19px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  letter-spacing: .1rem;
+  width: 363px;
+  text-align: center;
+}
+
+#main.landing-page {
+  background-color: #fff !important;
+}
+#main.landing-page .container {
+  background-color: #fff;
+  width: 634px;
+  margin: 67px auto;
+  padding-bottom: 67px;
+  display: block;
+}
+#main.landing-page .container p {
+  color: #666666;
+  line-height: 26px;
+}
+#main.landing-page .container p strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+#main.landing-page .container p a {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#main.landing-page .container p a:hover {
+  color: #966505;
+}
+
+@media screen and (min-width: 1920px) {
+  .landing-page .bandeau-list-img {
+    height: 448px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .landing-page .bandeau-list-img {
+    height: 373px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .landing-page .bandeau-list-img {
+    height: 297px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .landing-page .bandeau-list-img {
+    height: 296px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .landing-page .bandeau-list-img {
+    height: 296px !important;
   }
 }

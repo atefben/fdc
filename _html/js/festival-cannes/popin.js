@@ -97,7 +97,14 @@ $(document).ready(function() {
         $('.popin-mail input[type="email"], .popin-mail input[type="text"], textarea').trigger('input');
       }
 
-      if($('.invalid').length || empty) {
+      if($('.invalid').length || empty){
+        return false;
+      }else{
+        // TODO envoie du mail // 
+        $('#form').remove();
+        $('.info-popin').remove();
+        $('.contain-popin').append('<div class="valid">'+GLOBALS.texts.popin.valid+'</div>');
+        $('.popin-mail').css('height','31%');
         return false;
       }
     });
