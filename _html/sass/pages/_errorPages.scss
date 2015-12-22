@@ -108,6 +108,15 @@
       letter-spacing: .1rem;
       width: 363px;
       text-align: center;
+      img{
+        margin-top: 29px;
+        width: 23px;
+        height: 23px;
+        margin-right: 47px;
+      }
+      img:first-child{
+        margin-left: 43px;
+      }
     }
   }
 }

@@ -9856,6 +9856,7 @@ article .read-later.rAlign span:after {
 .single-article .film {
   height: 365px;
   overflow: hidden;
+  background-color: #2e2e2e;
 }
 .single-article .film .info-film {
   background-color: #2e2e2e;
@@ -18490,6 +18491,15 @@ input[type=submit] {
   letter-spacing: .1rem;
   width: 363px;
   text-align: center;
+}
+#main.error-nav table td img {
+  margin-top: 29px;
+  width: 23px;
+  height: 23px;
+  margin-right: 47px;
+}
+#main.error-nav table td img:first-child {
+  margin-left: 43px;
 }
 
 #main.landing-page {

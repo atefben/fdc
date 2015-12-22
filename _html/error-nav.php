@@ -32,10 +32,16 @@
               </tr>
               <tr>
                 <td>
+                  <img src="img/svg/ie.svg" alt="">
+                  <img src="img/svg/firefox.svg" alt="">
+                  <img src="img/svg/chrome.svg" alt="">
 <!-- TODO ADD SVG -->
                 </td>
                 <td>
 <!-- TODO ADD SVG -->
+                  <img src="img/svg/safari.svg" alt="">
+                  <img src="img/svg/firefox.svg" alt="">
+                  <img src="img/svg/chrome.svg" alt="">
                 </td>
               </tr>
             </tbody>
