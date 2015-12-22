@@ -451,14 +451,15 @@
   margin-bottom: 42px;
   .content-partners {
     background-color: #fff;
+    border-top: 1px solid #e0e0e0;
     .contain-section {
       margin: 0 auto;
       width: 975px;
       position: relative;
       overflow: hidden;
-      height: 111px;
+      height: 97px;
       .fa {
-        top: 35px;
+        top: 25px;
       }
       .title-section {
         font-family: $CamphorBold;
@@ -466,7 +467,7 @@
         color: #c1c1c1;
         font-size: 0.88rem;
         letter-spacing: 2px;
-        padding-top: 55px;
+        padding-top: 44px;
         @include transition(all 0.9s $linear);
       }
       .title-section:hover {
@@ -474,7 +475,7 @@
       }
       .item-partners {
         border-bottom: 1px solid #e0e0e0;
-        padding: 41px 0px;
+        padding: 41px 0px; 
         .contain-img {
           display: inline-block;
           width: 400px;
@@ -536,12 +537,18 @@
           }
         }
       }
+      .item-partners:last-child{
+         border-bottom: 0px solid #e0e0e0;
+      }
     }
     .participate-active {
       .title-section {
         color: #c8a461;
       }
     }
+  }
+  .content-partners:first-child {
+    border-top: 0px solid #e0e0e0;
   }
   .content-partners:last-child {
     .item-partners:last-child {
