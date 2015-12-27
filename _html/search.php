@@ -201,7 +201,7 @@
                         <a href="article.php" class="linkImage"></a>
                       </div>
                       <div class="info">
-                        <a href="#" class="category">Leçon de cinema</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                        <a href="#" class="category">Leçon de cinema</a>
                         <h2><a href="article.php">Marco Bellocchio</a></h2>
                       </div>
                     </article>
@@ -213,7 +213,7 @@
                         <a href="article.php" class="linkImage"></a>
                       </div>
                       <div class="info">
-                        <a href="#" class="category">Leçon de cinema</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                        <a href="#" class="category">Leçon de cinema</a>
                         <h2><a href="article.php">Marco Bellocchio</a></h2>
                       </div>
                     </article>

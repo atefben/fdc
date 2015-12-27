@@ -1,6 +1,7 @@
 //       SUMMARY TABLE     
 // =========================
 // 1. Global
+// 2. Breadcrumb
 // =========================
 
 
@@ -277,6 +278,52 @@ footer {
   }
 }
 
+
+// 2. Breadcrumb
+//=========================
+
+
+#breadcrumb{
+  border-bottom: 1px solid #2c2c2c;
+  .container{
+    width: 979px;
+    margin: 0 auto;
+    li{
+      display: inline-block;
+      margin: 16px 0px;
+    }
+    a{
+      color:#fff;
+      font-size: 0.63rem;
+      font-family: $CamphorBold;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      @include transition(all 0.9s $smoothTransition);
+    }
+    a.active{
+      color:$gold;
+    }
+    .icon{
+      color: $gold;
+    }
+    a:hover{
+      color:$gold;
+    }
+    
+    .goTop{
+      color: #c8a461;
+      font-size: 0.75rem;
+      font-family: $CamphorHeavy;
+      text-transform: uppercase;
+      float: right;
+      margin: 20px 0px;
+    }
+    
+    .goTop:hover{
+      cursor: pointer;
+    }
+  }
+}
 
 
 

@@ -4616,6 +4616,49 @@ footer .footer-menu ul li a:hover {
   opacity: 1;
 }
 
+#breadcrumb {
+  border-bottom: 1px solid #2c2c2c;
+}
+#breadcrumb .container {
+  width: 979px;
+  margin: 0 auto;
+}
+#breadcrumb .container li {
+  display: inline-block;
+  margin: 16px 0px;
+}
+#breadcrumb .container a {
+  color: #fff;
+  font-size: 0.63rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#breadcrumb .container a.active {
+  color: #c8a461;
+}
+#breadcrumb .container .icon {
+  color: #c8a461;
+}
+#breadcrumb .container a:hover {
+  color: #c8a461;
+}
+#breadcrumb .container .goTop {
+  color: #c8a461;
+  font-size: 0.75rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  float: right;
+  margin: 20px 0px;
+}
+#breadcrumb .container .goTop:hover {
+  cursor: pointer;
+}
+
 .slideshow {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 40px;

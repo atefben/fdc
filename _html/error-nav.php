@@ -32,7 +32,7 @@
               </tr>
               <tr>
                 <td>
-                  <img src="img/svg/ie.svg" alt="">
+                   <i class="icon icon_ie"></i>
                   <img src="img/svg/firefox.svg" alt="">
                   <img src="img/svg/chrome.svg" alt="">
 <!-- TODO ADD SVG -->
