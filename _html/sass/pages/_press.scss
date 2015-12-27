@@ -820,9 +820,10 @@
                 border: 1px solid #e5e5e5;
                 position: absolute;
                 width: 220px;
+                z-index: 0!important;
 
                 &.ui-draggable-dragging {
-                  z-index: 5;
+                  z-index: 5!important;
                 }
 
                 &.ui-draggable-dragging .category:after {
