@@ -89,6 +89,7 @@ list:
     label_theme_name: Nom du thème
     label_priority_status: Priorité
     label__preview: Prévisualiser
+    label__edit_translations: Éditer
 
 filter:
     label_id: Identifiant
@@ -186,9 +187,11 @@ form:
         draft: Brouillon
         translation_pending: À traduire
         translation_validating: Traduction(s) à valider
+        validating: À valider
         translated: Traduit
         published: Publié
         deactivated: Désactivé
+        locked: Bloquée
     priority_status:
         low: Bas
         average: Moyen

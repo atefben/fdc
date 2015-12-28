@@ -30,6 +30,7 @@ trait TranslateChild
             self::STATUS_DRAFT => 'form.status.draft',
             self::STATUS_TRANSLATION_PENDING => 'form.status.translation_pending',
             self::STATUS_TRANSLATION_VALIDATING => 'form.status.translation_validating',
+            self::STATUS_VALIDATING => 'form.status.validating',
             self::STATUS_TRANSLATED => 'form.status.translated',
             self::STATUS_PUBLISHED => 'form.status.published',
             self::STATUS_DEACTIVATED => 'form.status.deactivated'

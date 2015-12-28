@@ -20,7 +20,6 @@ jQuery(document).ready(function($) {
             // ckeditor
             var textareaId = ui.item.find('textarea.ckeditor').attr('id');
             if (typeof textareaId != 'undefined') {
-                console.log('c');
                 CKEDITOR.replace( textareaId );
             }
         }

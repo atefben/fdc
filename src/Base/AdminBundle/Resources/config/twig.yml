@@ -4,3 +4,8 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - name: twig.extension
+
+    base.admin.twig.translate_status_to_admin_class:
+        class: Base\AdminBundle\Twig\Extension\TranslateStatusToAdminClassExtension
+        tags:
+            - { name: twig.extension }
