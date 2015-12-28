@@ -55,11 +55,10 @@ $(document).ready(function() {
           v = 11;
         }
         sessionStorage.setItem('scrolltop',v);
-        if(navigator.userAgent.match(/iPad/i)) {
-          window.location.replace(href);
-        } else {
-          window.location = href;
-        }
+        if (!location.origin)
+          location.origin = location.protocol + "//" + location.host;
+
+        window.location = location.origin + '/' + href;
       }, 1900);
     }
 
