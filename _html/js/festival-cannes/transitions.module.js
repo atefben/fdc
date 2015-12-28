@@ -55,7 +55,11 @@ $(document).ready(function() {
           v = 11;
         }
         sessionStorage.setItem('scrolltop',v);
-        location.href = href;
+        if(navigator.userAgent.match(/iPad/i)) {
+          window.location.replace(href);
+        } else {
+          window.location = href;
+        }
       }, 1900);
     }
 
