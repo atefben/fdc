@@ -28,7 +28,7 @@
               <p class="caption">Lorem ipsum. © FDC /  Lorem ipsum.</p>
             </div>
           </div>
-          <p class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</p>
+          <div class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</div>
           <div class="slideshow">
             <div class="slideshow-img">
               <div class="images">
@@ -357,7 +357,7 @@
       <div class="contain-popin popin">
         <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
         <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
-        <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
+        <div class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</div>
       </div>
       <form action="#" id="form" class="popin">
         <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>

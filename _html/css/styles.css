@@ -7575,6 +7575,7 @@ header #searchContainer {
   z-index: 120;
   height: 70%;
   overflow-y: scroll;
+  min-height: 345px;
 }
 .popin-mail .contain-popin {
   width: 528px;
@@ -7606,12 +7607,15 @@ header #searchContainer {
   line-height: 24px;
   padding-bottom: 41px;
 }
+.popin-mail .contain-popin .chap-article a {
+  color: #c8a461;
+}
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7637,11 +7641,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7657,26 +7661,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✔';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -7905,6 +7909,86 @@ header #searchContainer {
 }
 #cookies-banner .cookie-accept .icon {
   color: #c8a461;
+}
+
+.share {
+  position: relative;
+}
+
+#share-box {
+  position: absolute;
+  top: 188px;
+  z-index: 2;
+  width: 371px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  opacity: 0;
+}
+#share-box.show {
+  opacity: 1;
+}
+#share-box a {
+  color: #666666;
+  font-size: 0.75rem;
+}
+
+.bubble {
+  background: #fff;
+  border: 1px solid #dfdfdf;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.bubble:before {
+  content: "";
+  position: absolute;
+  top: -15%;
+  left: 49%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  box-shadow: -1px -1px 0px #D4D4D4;
+  border: 5px solid;
+  border-color: white white white white;
+}
+
+.webtv-ba-video #share-box {
+  top: 84px;
+  z-index: 3;
+  width: 295px;
+}
+.webtv-ba-video #share-box .bubble {
+  background-color: #141414;
+  border: 1px solid #2C2C2C;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+}
+.webtv-ba-video #share-box .bubble:before {
+  content: "";
+  position: absolute;
+  top: -8%;
+  left: 62%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  box-shadow: -1px -1px 0px #2C2C2C;
+  border: 4px solid;
+  border-color: #141414;
+}
+.webtv-ba-video #share-box a {
+  color: #999999;
+  font-size: 0.75rem;
 }
 
 #prehome-container {
@@ -12891,7 +12975,6 @@ input[type=submit] {
 .webtv #content-trailers {
   clear: both;
   background-color: #141414;
-  border-bottom: 1px solid #2c2c2c;
   padding: 50px 0;
   position: relative;
   z-index: 2;
@@ -13219,7 +13302,7 @@ input[type=submit] {
   color: rgba(255, 255, 255, 0.28);
 }
 .webtv-ba-video .informations-video .block {
-  height: 301px;
+  height: 308px;
   padding-top: 73px;
   border-right: 1px solid #2c2c2c;
   border-bottom: 1px solid #2c2c2c;
@@ -13406,6 +13489,7 @@ input[type=submit] {
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   z-index: 2;
 }
 .webtv-ba-video #content-trailers .channel:hover:after {
@@ -13415,6 +13499,10 @@ input[type=submit] {
   border-width: 5px;
 }
 .webtv-ba-video .bandeau-list-img {
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   height: 365px;
   background-size: cover;
 }
@@ -13435,6 +13523,31 @@ input[type=submit] {
   width: 12px;
   vertical-align: baseline;
   padding-right: 3px;
+}
+@media screen and (min-width: 1920px) {
+  .webtv-ba-video .bandeau-list-img {
+    height: 448px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .webtv-ba-video .bandeau-list-img {
+    height: 373px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .webtv-ba-video .bandeau-list-img {
+    height: 297px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .webtv-ba-video .bandeau-list-img {
+    height: 296px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .webtv-ba-video .bandeau-list-img {
+    height: 296px !important;
+  }
 }
 
 .sitemap h2 {
@@ -13735,6 +13848,10 @@ input[type=submit] {
   visibility: hidden;
 }
 
+.single-evenement {
+  padding-bottom: 0px;
+  border-bottom: 1px solid #2c2c2c;
+}
 .single-evenement .slideshow .caption {
   border-bottom: 1px solid #e5e5e5;
   margin: 0px 0px;
@@ -13757,9 +13874,6 @@ input[type=submit] {
   font-size: 1.5rem !important;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   padding: 40px 88px;
-}
-.single-evenement .share {
-  padding-bottom: 0px;
 }
 .single-evenement .text {
   width: 634px;
@@ -13788,8 +13902,6 @@ input[type=submit] {
   margin-bottom: 40px;
 }
 .single-evenement .film {
-  margin-top: 70px;
-  margin-bottom: 70px;
   height: 290px;
 }
 .single-evenement .film .programmation-film {
@@ -18013,7 +18125,7 @@ input[type=submit] {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdfÔÇí;
+  border: 0px solid #dfdfdf‡;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
