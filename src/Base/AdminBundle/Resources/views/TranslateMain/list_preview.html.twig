@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+        {% set trans = object.findTranslationByLocale('fr') %}
+        {% if trans and trans.slug %}
+            <a target="_blank" href="{{  url('fdc_event_article_get', { slug: trans.slug }) }}"
+                <i class="fa fa-search"></i>
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}

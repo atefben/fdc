@@ -12,6 +12,7 @@ breadcrumb:
     link_news_article_list: Liste des actualités - articles
     link_news_theme_list: Liste des Thèmes d'actualités
     link_media_image_list : Liste des Médias images
+
 group:
     french_version: Version française
     main_infos: Informations générales
@@ -87,6 +88,8 @@ list:
     label__action: Actions
     label_theme_name: Nom du thème
     label_priority_status: Priorité
+    label__preview: Prévisualiser
+
 filter:
     label_id: Identifiant
     label_title: Titre

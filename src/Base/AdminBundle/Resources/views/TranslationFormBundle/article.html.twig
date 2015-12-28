@@ -274,11 +274,11 @@
                                     {% for widget in form.parent.children.widgets.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'news_widget_text_type' %}
-                                            <h4><strong>{{ 'news.widget.text'|trans }}</strong></h4>
+                                            <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'news_widget_video_youtube_type' %}
-                                                <h4><strong>{{ 'news.widget.video_youtube'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'news_widget_quote_type' %}
-                                                <h4><strong>{{ 'news.widget.quote'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}

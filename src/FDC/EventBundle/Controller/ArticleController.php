@@ -504,11 +504,9 @@ class ArticleController extends Controller
      */
     public function getAction($slug)
     {
-        //$article = findBy($id)
-
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
-        $token = $this->get('security.token_storage')->getToken();
+        //$token = $this->get('security.token_storage')->getToken();
         //$isAdmin = ($token) ? true : false;
         $isAdmin = true;
         $dateTime = new DateTime();
@@ -528,6 +526,14 @@ class ArticleController extends Controller
         if ($news === null) {
             throw new NotFoundHttpException();
         }
+
+        $trans = $news->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
         $article = array(
             'id'    => 0,
