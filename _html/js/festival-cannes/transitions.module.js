@@ -38,31 +38,35 @@ $(document).ready(function() {
 
     if(href.indexOf('#') == -1) {
 
-      $('#main, footer').addClass('loading');
+      var isiPad = navigator.userAgent.match(/iPad/i) != null
 
-      setTimeout(function() {
-        cl.show();
-        $loader.addClass('show');
-      }, 1100);
+      if(!isiPad) {
 
-      setTimeout(function() {
-        $loader.removeClass('show');
-      }, 1800);
+        $('#main, footer').addClass('loading');
 
-      setTimeout(function() {
-        var v = $(window).scrollTop();
-        if((v == 0 && $header.hasClass('sticky')) || (v == 10 && $header.hasClass('sticky'))) {
-          v = 11;
-        }
-        sessionStorage.setItem('scrolltop',v);
-        if (!location.origin)
-          location.origin = location.protocol + "//" + location.host;
+        setTimeout(function() {
+          cl.show();
+          $loader.addClass('show');
+        }, 1100);
 
-        document.location = location.origin + '/' + href;
-      }, 1900);
+        setTimeout(function() {
+          $loader.removeClass('show');
+        }, 1800);
+
+        setTimeout(function() {
+          var v = $(window).scrollTop();
+          if((v == 0 && $header.hasClass('sticky')) || (v == 10 && $header.hasClass('sticky'))) {
+            v = 11;
+          }
+          sessionStorage.setItem('scrolltop',v);
+          window.location = href;
+        }, 1900);
+      }
     }
 
-    
+    if(!isiPad) {
+      return false;
+    }
   });
 
 });
