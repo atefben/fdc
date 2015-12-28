@@ -15862,6 +15862,42 @@ input[type=submit] {
   color: #fff;
   background-color: #c8a461;
 }
+.press .locked .buttons {
+  position: absolute;
+  right: 150px;
+  height: 50px;
+  top: 24px;
+}
+@media screen and (max-width: 1024px) {
+  .press .locked .buttons {
+    right: 50px;
+  }
+}
+.press .locked .buttons a {
+  border: 1px solid #c8a461;
+  color: #c8a461;
+  cursor: pointer;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem;
+  text-transform: uppercase;
+  width: auto;
+  box-sizing: border-box;
+  display: block;
+  display: block;
+  float: left;
+  outline: none;
+  padding: 12px 25px;
+  text-align: center;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.press .locked .buttons a:hover {
+  border-color: #c8a461;
+  color: #fff;
+  background-color: #c8a461;
+}
 .press .communiques {
   overflow: hidden;
 }
