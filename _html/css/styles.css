@@ -13898,6 +13898,10 @@ input[type=submit] {
   width: 634px;
   margin: 0 auto;
 }
+.single-evenement .small-container .slideshow .slideshow-img .thumbnails .thumb {
+  width: 81px;
+  height: 57px;
+}
 .single-evenement .chapeau {
   margin-bottom: 40px;
 }
@@ -13951,6 +13955,45 @@ input[type=submit] {
 }
 .single-evenement .video .vCenterKid {
   text-align: left;
+}
+.single-evenement .best-films {
+  padding-top: 37px;
+}
+.single-evenement .best-films .item-film {
+  width: 185px;
+  display: inline-block;
+  margin: 0 28px;
+  padding-bottom: 41px;
+}
+.single-evenement .best-films .item-film .title {
+  padding-top: 17px;
+  color: #c8a461;
+  font-size: 0.88rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 14px;
+  display: block;
+  margin: 0px;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: center;
+}
+.single-evenement .best-films .item-film .desc {
+  display: block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #c8a461;
+  font-size: 0.63rem;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 14px;
+}
+.single-evenement .best-films .item-film .date {
+  font-size: 0.69rem;
+  color: #999;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-align: center;
+  display: block;
+  line-height: 18px;
+  margin-top: 4px;
 }
 
 @media screen and (min-width: 1920px) {
@@ -15858,6 +15901,42 @@ input[type=submit] {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .press .locked form input[type="submit"]:hover {
+  border-color: #c8a461;
+  color: #fff;
+  background-color: #c8a461;
+}
+.press .locked .buttons {
+  position: absolute;
+  right: 150px;
+  height: 50px;
+  top: 24px;
+}
+@media screen and (max-width: 1024px) {
+  .press .locked .buttons {
+    right: 50px;
+  }
+}
+.press .locked .buttons a {
+  border: 1px solid #c8a461;
+  color: #c8a461;
+  cursor: pointer;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem;
+  text-transform: uppercase;
+  width: auto;
+  box-sizing: border-box;
+  display: block;
+  display: block;
+  float: left;
+  outline: none;
+  padding: 12px 25px;
+  text-align: center;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.press .locked .buttons a:hover {
   border-color: #c8a461;
   color: #fff;
   background-color: #c8a461;

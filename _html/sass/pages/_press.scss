@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Popin Event
@@ -208,7 +208,7 @@
           margin: 140px auto 35px auto;
           text-transform: uppercase;
           width: 80%;
-        }
+        }  
 
         p {
           color: #bebebe;
@@ -611,6 +611,43 @@
         }
       }
     }
+    
+    .buttons{
+      position: absolute;
+      right: 150px;
+      height: 50px;
+      top: 24px;
+      
+      @include breakpoint(1024px) {
+        right: 50px;
+      }
+      
+      a{
+        border: 1px solid $gold;
+        color: $gold;
+        cursor: pointer;
+        font-family: $CamphorBold;
+        font-size: 0.750rem;
+        text-transform: uppercase;
+        width: auto;
+        box-sizing: border-box;
+        display: block;
+        display: block;
+        float: left;
+        outline: none;
+        padding: 12px 25px;
+        text-align: center;
+
+        @include transition(all 0.9s $smoothTransition);
+
+        &:hover {
+          border-color: $gold;
+          color: #fff;
+          background-color: $gold;
+        }
+      }
+    }
+    
   }
 
   .communiques {
