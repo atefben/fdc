@@ -201,7 +201,6 @@ $(document).ready(function() {
           columnFormat: {
             week: 'dddd D MMM',
           },
-
           firstDay: 3,
           defaultView: 'agendaWeek',
           minTime: "08:00:00",
@@ -209,6 +208,7 @@ $(document).ready(function() {
           allDaySlot: false,
           events: events,
           slotEventOverlap:false,
+          slotLabelFormat: 'H A',
           eventAfterRender: function(event, element, view) {
             if(event.duration/60 < 2) {
               $(element).addClass('one-hour');

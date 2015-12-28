@@ -100,7 +100,7 @@ $(document).ready(function() {
       if($('.invalid').length || empty){
         return false;
       }else{
-        // TODO envoie du mail // 
+        // TODO envoie du mail //
         $('#form').remove();
         $('.info-popin').remove();
         $('.contain-popin').append('<div class="valid">'+GLOBALS.texts.popin.valid+'</div>');
@@ -109,16 +109,41 @@ $(document).ready(function() {
       }
     });
   }
+  
+  
 });
 
+  // cookie banner 
+
+  $('.cookie-accept').click(function () { //on click event
+    days = 365; //number of days to keep the cookie
+    myDate = new Date();
+    myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
+    document.cookie = "comply_cookie = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
+    $("#cookies-banner").slideUp("slow"); //jquery to slide it up
+  });
 
 
-// cookie banner 
+  //LINK POPIN//
 
-$('.cookie-accept').click(function () { //on click event
-  days = 365; //number of days to keep the cookie
-  myDate = new Date();
-  myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
-  document.cookie = "comply_cookie = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
-  $("#cookies-banner").slideUp("slow"); //jquery to slide it up
-});
+  if($('.share').length){
+    $('.share .link').on('click',function(){
+      if(!$('#share-box').length){
+        var link = document.location.href;
+        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+link+'</a></div></div>');
+        
+        $('#share-box').animate({'opacity':'1'},400,function(){
+           $('#share-box').addClass('show');
+        });
+        
+        //TODO ADD COPY TEXT TO CLIPBORD... // 
+      }else if($('#share-box').hasClass('show')){
+        $('#share-box').removeClass('show');
+        $('#share-box').remove();
+      }
+    });
+  }
+  
+
+
+

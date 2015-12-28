@@ -210,7 +210,7 @@
       </div>
     </div>
   </div>
-  <div class="bandeau-list vCenter">
+  <div class="bandeau-list vCenter push-footer bandeau-list-footer">
     <div class="bandeau-list-img vCenterKid" style="background-image:url(img/webtv/push.jpg);">
       <h2 class="title title-list-header">La loi du marché</h2>
       <a href="#" class="bandeau-lien"><a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Voir la bande annonce</a></a>
