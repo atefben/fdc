@@ -6,6 +6,8 @@
 // =========================
 // 1. Global
 // =========================
+
+
 .evenement {
   .title {
     margin-bottom: 20px;
@@ -127,6 +129,10 @@
   .small-container {
     width: 634px;
     margin: 0 auto;
+    .slideshow .slideshow-img .thumbnails .thumb{
+      width: 81px;
+      height: 57px;
+    }
   }
   .chapeau {
     margin-bottom: 40px;
@@ -182,6 +188,46 @@
   .video {
     .vCenterKid {
       text-align: left;
+    }
+  }
+  
+  .best-films{
+    padding-top: 37px;
+    .item-film{
+      width: 185px;
+      display: inline-block;
+      margin: 0 28px;
+      padding-bottom: 41px;
+      .title{
+        padding-top: 17px;
+        color: $gold;
+        font-size: 0.88rem;
+        font-family: $CamphorBold;
+        line-height: 14px;
+        display:block;
+        margin: 0px;
+        font-weight: normal;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .desc{
+        display:block;
+        font-family: $CamphorBold;
+        color: $gold;
+        font-size: 0.63rem;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 14px;
+      }
+      .date{
+        font-size: 0.69rem;
+        color:#999;
+        font-family: $CamphorRegular;
+        text-align: center;
+        display:block;
+        line-height: 18px;
+        margin-top: 4px;
+      }
     }
   }
 }
