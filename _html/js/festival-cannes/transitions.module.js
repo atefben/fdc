@@ -34,13 +34,13 @@ $(document).ready(function() {
 
   $('body').on('click', "a[target!='_blank']:not(.ajax)", function(e) {
     var href = $(this).attr('href');
+    var isiPad = navigator.userAgent.match(/iPad/i) != null;
+    
     if(!isiPad) {
       e.preventDefault();
     }
 
     if(href.indexOf('#') == -1) {
-
-      var isiPad = navigator.userAgent.match(/iPad/i) != null
 
       if(!isiPad) {
 
