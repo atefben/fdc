@@ -55,7 +55,7 @@ $(document).ready(function() {
           v = 11;
         }
         sessionStorage.setItem('scrolltop',v);
-        window.location = href;
+        window.location.href = href;
       }, 1900);
     }
 
