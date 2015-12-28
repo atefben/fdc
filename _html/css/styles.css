@@ -7607,6 +7607,9 @@ header #searchContainer {
   line-height: 24px;
   padding-bottom: 41px;
 }
+.popin-mail .contain-popin .chap-article a {
+  color: #c8a461;
+}
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
@@ -13845,6 +13848,10 @@ input[type=submit] {
   visibility: hidden;
 }
 
+.single-evenement {
+  padding-bottom: 0px;
+  border-bottom: 1px solid #2c2c2c;
+}
 .single-evenement .slideshow .caption {
   border-bottom: 1px solid #e5e5e5;
   margin: 0px 0px;
@@ -13867,9 +13874,6 @@ input[type=submit] {
   font-size: 1.5rem !important;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   padding: 40px 88px;
-}
-.single-evenement .share {
-  padding-bottom: 0px;
 }
 .single-evenement .text {
   width: 634px;
@@ -13898,8 +13902,6 @@ input[type=submit] {
   margin-bottom: 40px;
 }
 .single-evenement .film {
-  margin-top: 70px;
-  margin-bottom: 70px;
   height: 290px;
 }
 .single-evenement .film .programmation-film {

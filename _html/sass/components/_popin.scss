@@ -39,13 +39,13 @@
       .theme-article{
         font-family: $CamphorBold;
         font-size: 0.63rem;
-        color: #c8a461; 
+        color: #c8a461;
         text-transform: uppercase;
         letter-spacing: 1px;
         padding-right: 9px;
       }
       .date-article{
-        font-size: 0.63rem;  
+        font-size: 0.63rem;
         font-family: $CamphorBold;
       }
       .title-article{
@@ -60,6 +60,9 @@
         font-family: $CamphorBold;
         line-height: 24px;
         padding-bottom: 41px;
+        & a{
+          color: #c8a461;
+        }
       }
     }
   
