@@ -25,6 +25,14 @@ parameters:
     locales_admin: [fr]
     locale_default_translation: fr
     locale_fallback: en
+
+    # admin
+
+    # routes where are displayed the translation legend
+    admin_routes_translation_legend:
+        - admin_base_core_newsarticle_list
+    admin_routes_translation_lock:
+        - admin_base_core_newsarticle_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~

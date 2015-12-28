@@ -86,7 +86,8 @@ twig:
         social_dailymotion: "%social_dailymotion%"
         social_podcast: "%social_podcast%"
         jwplayer_key: "%jwplayer_key%"
-
+        admin_routes_translation_legend: %admin_routes_translation_legend%
+        admin_routes_translation_lock: %admin_routes_translation_lock%
 
 # Assetic Configuration
 assetic:

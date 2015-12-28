@@ -1,4 +1,6 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+
 <a class="btn btn-sm btn-default" href="{{ admin.generateObjectUrl('soif-refresh', object) }}">
     <i class="glyphicon glyphicon-refresh"></i>
-    {{ 'link_action_soif_refresh'|trans({}, 'BaseAdminBundle') }}
+    {{ 'link_action_soif_refresh'|trans }}
 </a>

@@ -18,7 +18,7 @@ interface TranslateMainInterface
     const TRANSLATE_OPTION_ZH = 1;
     const TRANSLATE_OPTION_ES = 2;
 
-    static public function getPriorityStatuses();
+    public static function getPriorityStatuses();
 
-    static public function getAvailableTranslateOptions();
+    public static function getAvailableTranslateOptions();
 }

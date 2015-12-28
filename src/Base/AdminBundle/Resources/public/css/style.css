@@ -80,3 +80,97 @@ form[name="base_adminbundle_settings"] {
     margin: 20px 0;
     float: right;
 }
+
+#fdc-list-translation-container {
+    /* Firefox */
+    width: -moz-calc(100% - 135px);
+    /* WebKit */
+    width: -webkit-calc(100% - 135px);
+    /* Opera */
+    width: -o-calc(100% - 135px);
+    /* Standard */
+    width: calc(100% - 135px);
+}
+
+.fdc-list-translation-legend-info {
+    padding: 10px 20px;
+    height: 80px;
+    line-height: 60px;
+}
+
+.fdc-list-translation-legend-info:not(:last-child) {
+    border-bottom: 1px solid grey;
+}
+.fdc-list-translation-legend-info-title {
+    font-weight: bold;
+    float: left;
+    margin-right: 20px;
+    width: 140px;
+}
+
+#fdc-list-translation-container ul {
+    list-style: none;
+    float: left;
+}
+
+#fdc-list-translation-container li {
+    float: left;
+    margin-right: 20px;
+}
+
+.fdc-list-translation-type-square {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 2px;
+    float: left;
+    margin: 10px 10px 0 0;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.fdc-status-locked-bg-color {
+    background-color: #ffffff;
+    border: 1px solid red;
+}
+
+.fdc-status-translated-bg-color {
+    background-color: #66CCCC;
+    border: 1px solid #eeeeee;
+}
+
+.fdc-status-translation-validating-bg-color {
+    background-color: #FFCC00;
+    border: 1px solid #eeeeee;
+}
+
+.fdc-status-translation-pending-bg-color {
+    background-color: #FFFF00;
+    border: 1px solid #eeeeee;
+}
+
+.fdc-status-draft-bg-color {
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+}
+
+.fdc-status-deactivated-bg-color {
+    background-color: #66CCCC;
+    border: 1px solid #eeeeee;
+}
+
+.fdc-status-published-bg-color {
+    background-color: #00CC00;
+    border: 1px solid #eeeeee;
+}
+
+.fdc-status-validating-bg-color {
+    background-color: #FFCC00;
+    border: 1px solid #eeeeee;
+}
+
+.list-translation-legend-type-title {
+    float:left;
+}

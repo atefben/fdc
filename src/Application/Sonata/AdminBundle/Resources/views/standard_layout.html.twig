@@ -42,6 +42,8 @@ file that was distributed with this source code.
         {% endblock %}
 
         {% block javascripts %}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
             <script>
                 window.SONATA_CONFIG = {
                     CONFIRM_EXIT: {% if admin_pool is defined and admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %},
@@ -104,7 +106,7 @@ file that was distributed with this source code.
         {% endblock %}
         </title>
     </head>
-    <body {% block body_attributes %}class="sonata-bc skin-black fixed"{% endblock %}>
+    <body {% block body_attributes %}class="sonata-bc skin-black fixed{% if app.request.get('_route') in admin_routes_translation_lock %} fdc-lock{% endif %}"{% endblock %}>
         {% include 'BaseAdminBundle:Site:modal.html.twig' %}
         {% block sonata_header %}
             <header class="header">
@@ -306,8 +308,10 @@ file that was distributed with this source code.
                                                 {% endif %}
                                             {% endblock %}
                                             <div class="container-fluid">
-                                                <div class="navbar-left">
-                                                    {% if _tab_menu is not empty %}
+                                                <div class="navbar-left"  {% if app.request.get('_route') in admin_routes_translation_legend %}id="fdc-list-translation-container"{% endif %}>
+                                                    {% if app.request.get('_route') in admin_routes_translation_legend %}
+                                                        {% include 'BaseAdminBundle:CRUD:list_translation_legend.html.twig' %}
+                                                    {% elseif _tab_menu is not empty %}
                                                         {{ _tab_menu|raw }}
                                                     {% endif %}
                                                 </div>
