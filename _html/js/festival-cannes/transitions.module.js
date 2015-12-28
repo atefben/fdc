@@ -34,7 +34,9 @@ $(document).ready(function() {
 
   $('body').on('click', "a[target!='_blank']:not(.ajax)", function(e) {
     var href = $(this).attr('href');
-    e.preventDefault();
+    if(!isiPad) {
+      e.preventDefault();
+    }
 
     if(href.indexOf('#') == -1) {
 
