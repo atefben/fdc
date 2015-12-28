@@ -2,12 +2,11 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-{#<div id="main" class="webtv single-trailer loading">#}
-<div id="main" class="webtv single-trailer">
+<div id="main" class="webtv single-channel loading">
     <div class="container">
-        <a href="#" class="back">{{ 'webtv.trailer.btn.retourauxchaines'|trans }}</a>
+        <a href="#" class="back">{{ 'webtv.channel.btn.retourauxchaines'|trans }}</a>
     </div>
-    <h2 class="title">{{ 'webtv.trailer.title.conferencedepresse'|trans }}</h2>
+    <h2 class="title">{{ 'webtv.channel.title.conferencedepresse'|trans }}</h2>
 
     <div class="small-container">
         <div class="player">
@@ -17,9 +16,9 @@
         </div>
         <div class="infos-videos">
             <div class="infos">
-                <strong>{{ trailer.title }}</strong>
-                <span class="time">{{ trailer.createdAt|date('d.m.y') }} . {{ trailer.createdAt|date('H:i') }}</span>
-                <p>{{ trailer.description }}</p>
+                <strong>{{ channel.title }}</strong>
+                <span class="time">{{ channel.createdAt|date('d.m.y') }} . {{ channel.createdAt|date('H:i') }}</span>
+                <p>{{ channel.description }}</p>
             </div>
             <div class="buttons square">
                 <a href="#" class="button facebook"></a>
@@ -30,22 +29,22 @@
         </div>
     </div>
 
-    <div id="content-trailers">
-        <div id="slider-trailers" class="owl-carousel sliderDrag">
-            {% for trailer in trailers %}
-                <div class="trailer shadow-bottom">
-                    {% include 'FDCEventBundle:Television:television.video.html.twig' %}
+    <div id="content-channels">
+        <div id="slider-channels" class="owl-carousel sliderDrag">
+            {% for channel in channels %}
+                <div class="channel shadow-bottom">
+                    {% include 'FDCEventBundle:Television:video.html.twig' %}
                 </div>
             {% endfor %}
         </div>
     </div>
     <div id="content-latest">
-        <h2 class="title">{{ 'webtv.trailer.title.lesdernieresvideos'|trans }}</h2>
+        <h2 class="title">{{ 'webtv.channel.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
             {% for video in videos %}
-                {% include 'FDCEventBundle:Television:television.video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
+                {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
             {% endfor %}
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock body %}

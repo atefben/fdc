@@ -3,7 +3,7 @@
         <div class="image-wrapper">
             <img src="{{ article.image.path }}" alt="" />
         </div>
-        <a href="{{ path('fdc_event_article_get', {'id': article.id}) }}" class="linkImage"></a>
+        <a href="{{ path('fdc_event_news_get', {'slug': article.id}) }}" class="linkImage"></a>
         <a href="#" class="read-later">
             <span>{{ 'home.article.btn.ajouteramaselection' }}</span>
         </a>
@@ -13,7 +13,7 @@
         <a href="#" class="category">{{ article.category }}</a>
         <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
         <h2>
-            <a href="{{ path('fdc_event_article_get', {'id': article.id}) }}">
+            <a href="{{ path('fdc_event_news_get', {'slug': article.id}) }}">
                 {{ article.title }}
             </a>
         </h2>

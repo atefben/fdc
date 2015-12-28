@@ -6,7 +6,7 @@
     <span id="addtext">{{ 'article.list.text.ajouterselection'|trans }}</span>
     <h2 class="title">{{ 'article.list.title.touslesarticles'|trans }}</h2>
 
-    {% include 'FDCEventBundle:Article:article.filters.html.twig' %}
+    {% include 'FDCEventBundle:News:article.filters.html.twig' %}
 
     <div id="gridAudios" class="grid-wrapper" data-type="articles">
         <div class="grid-sizer"></div>
@@ -16,7 +16,7 @@
                 <article class="article">
                     <div class="img">
                         <span class="picto"></span>
-                        <a href="{{ path('fdc_event_article_get', {'id': article.id }) }}">
+                        <a href="{{ path('fdc_event_news_get', {'id': article.id }) }}">
                             <img src='{{ article.image.path }}' />
                         </a>
                         <a href="#" class="read-later">
@@ -26,7 +26,7 @@
                     <div class="info">
                         <a href="#" class="category">{{ article.theme }}</a>
                         <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                        <h3><a href="{{ path('fdc_event_article_get', {'id': article.id }) }}">{{ article.title }}</a></h3>
+                        <h3><a href="{{ path('fdc_event_news_get', {'id': article.id }) }}">{{ article.title }}</a></h3>
                     </div>
                 </article>
             </div>

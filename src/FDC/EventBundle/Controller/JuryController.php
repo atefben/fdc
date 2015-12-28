@@ -12,7 +12,7 @@ class JuryController extends Controller
 {
     /**
      * @Route("/juries/{type}")
-     * @Template("FDCEventBundle:Jury:jury.section.html.twig")
+     * @Template("FDCEventBundle:Jury:section.html.twig")
      * @param type
      * @return \Symfony\Component\HttpFoundation\Response
      */

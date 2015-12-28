@@ -16,7 +16,7 @@ class ParticipateController extends Controller
 {
     /**
      * @Route("/prepare")
-     * @Template("FDCEventBundle:Participate:participate.prepare.html.twig")
+     * @Template("FDCEventBundle:Participate:prepare.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function prepareAction()
@@ -31,7 +31,7 @@ class ParticipateController extends Controller
 
     /**
      * @Route("/festival")
-     * @Template("FDCEventBundle:Participate:participate.festival.html.twig")
+     * @Template("FDCEventBundle:Participate:festival.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function festivalAction()
@@ -46,7 +46,7 @@ class ParticipateController extends Controller
 
     /**
      * @Route("/acces-projection")
-     * @Template("FDCEventBundle:Participate:participate.access.html.twig")
+     * @Template("FDCEventBundle:Participate:access.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function accessAction()
@@ -62,7 +62,7 @@ class ParticipateController extends Controller
 
     /**
      * @Route("/partenaires")
-     * @Template("FDCEventBundle:Participate:participate.partners.html.twig")
+     * @Template("FDCEventBundle:Participate:partners.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function partnersAction()
@@ -139,7 +139,7 @@ class ParticipateController extends Controller
 
     /**
      * @Route("/fournisseurs")
-     * @Template("FDCEventBundle:Participate:participate.suppliers.html.twig")
+     * @Template("FDCEventBundle:Participate:suppliers.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function suppliersAction()

@@ -23,7 +23,7 @@
             </div>
 
             {% if news is news_article %}
-                {% include 'FDCEventBundle:Article:article.single-photo.html.twig' with {'photo' : news.header } %}
+                {% include 'FDCEventBundle:News:header/single-photo.html.twig' with {'photo' : news.header } %}
             {% endif %}
 
             <div class="chapeau">{{ news|trans_fallback('introduction')|raw }}</div>
@@ -31,23 +31,23 @@
             {% for widget in news.widgets %}
                 {% if widget is news_widget_image and widget.photos|length == 1 %}
                     <!-- SINGLE PHOTO -->
-                    {# {% include 'FDCEventBundle:Article:article.single-photo.html.twig' with {'photo' :  } %} #}
+                    {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : '' } %}
                 {% elseif widget is news_widget_image and widget.photos|length > 1 %}
                     <!-- SLIDESHOW -->
-                    {% include 'FDCEventBundle:Article:article.slideshow.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                 {% elseif widget is news_widget_text %}
                     <!-- TEXT -->
-                    {% include 'FDCEventBundle:Article:article.text.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
                 {% elseif  widget is news_widget_video or widget is news_widget_video_youtube %}
                     <!-- VIDEO -->
-                    {% include 'FDCEventBundle:Article:article.video.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/video.html.twig' %}
                 {% elseif widget is news_widget_audio %}
                     <!-- AUDIO -->
-                    {% include 'FDCEventBundle:Article:article.audio.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
                 {% elseif widget is news_widget_quote %}
-                    {% include 'FDCEventBundle:Article:article.quote.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
                 {% elseif widget is news_widget_image_dual_align %}
-                    {% include 'FDCEventBundle:Article:article.dual-photo.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
                 {% endif %}
             {% endfor %}
 
@@ -200,10 +200,10 @@
 
 <!-- POPIN MAIL SHARE ---->
 {{ render(controller('FDCEventBundle:Global:shareEmail',
-   {'section': article.theme,
-    'detail': article.createdAt|date('d.m.y'),
-    'title': article.title,
-    'description': article.introduction
+   {'section': news.theme|trans_fallback('name'),
+    'detail': news.createdAt|date('d.m.y'),
+    'title': news.title,
+    'description': news|trans_fallback('introduction')|raw
    }))
 }}
 <!-- END POPIN MAIL SHARE -->

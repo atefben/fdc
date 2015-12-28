@@ -13,7 +13,7 @@ class TelevisionController extends Controller
 {
     /**
      * @Route("/live")
-     * @Template("FDCEventBundle:Television:television.live.html.twig")
+     * @Template("FDCEventBundle:Television:live.html.twig")
      */
     public function liveAction()
     {
@@ -119,7 +119,7 @@ class TelevisionController extends Controller
 
     /**
      * @Route("/channel/{id}")
-     * @Template("FDCEventBundle:Television:television.channel.html.twig")
+     * @Template("FDCEventBundle:Television:channel.html.twig")
      */
     public function getChannelAction($id)
     {
@@ -243,7 +243,7 @@ class TelevisionController extends Controller
 
     /**
      * @Route("/channels")
-     * @Template("FDCEventBundle:Television:television.channels.html.twig")
+     * @Template("FDCEventBundle:Television:channels.html.twig")
      */
     public function channelsAction()
     {
@@ -376,7 +376,7 @@ class TelevisionController extends Controller
 
     /**
      * @Route("/trailers/{slug}")
-     * @Template("FDCEventBundle:Television:television.trailers.html.twig")
+     * @Template("FDCEventBundle:Television:trailers.html.twig")
      */
     public function trailersAction($slug)
     {
@@ -499,7 +499,7 @@ class TelevisionController extends Controller
 
     /**
      * @Route("/trailer/{id}")
-     * @Template("FDCEventBundle:Television:television.trailer.html.twig")
+     * @Template("FDCEventBundle:Television:trailer.html.twig")
      */
     public function getTrailerAction($id)
     {

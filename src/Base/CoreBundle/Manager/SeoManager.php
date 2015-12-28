@@ -92,7 +92,7 @@ class SeoManager
             $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
             $this->sonataSeoPage->addMeta('property', 'og:type', 'article');
             $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getTitle());
-            $this->sonataSeoPage->addMeta('property', 'og:url', $this->fdcEventScheme. $this->fdcEventDomain. $this->router->generate('fdc_event_article_get', array(
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->fdcEventScheme. $this->fdcEventDomain. $this->router->generate('fdc_event_news_get', array(
                'slug' => $trans->getSlug()
             )));
             $this->sonataSeoPage->addMeta('property', 'og:description', strip_tags($trans->getIntroduction()));
