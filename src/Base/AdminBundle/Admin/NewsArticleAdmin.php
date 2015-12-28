@@ -122,6 +122,9 @@ class NewsArticleAdmin extends Admin
                     'edit_translations' => array('template' => 'BaseAdminBundle:CRUD:list__action_edit_translations.html.twig'),
                 )
             ))
+            ->add('_preview', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
+            ))
         ;
     }
 

@@ -4,33 +4,31 @@
 // 2. Single evenement
 // 3. Media bandeau push
 // =========================
-
-
 // 1. Global
 // =========================
 
+
 .evenement {
-  
-  .title{
+  .title {
     margin-bottom: 20px;
   }
-  #gridEvent{
+  #gridEvent {
     padding-top: 60px;
   }
-	.grid{
-		padding-top: 0px;
-	}
-	.grid-wrapper{
-		margin-top: 0px;
-     margin-bottom: 70px;
-	}
-		.grid:after{
-			content: ".";
-			display: block;
-			height: 0;
-			clear: both;
-			visibility: hidden;
-	}
+  .grid {
+    padding-top: 0px;
+  }
+  .grid-wrapper {
+    margin-top: 0px;
+    margin-bottom: 70px;
+  }
+  .grid:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
   .read-more {
     border: 1px solid #d9d9d9;
     clear: both;
@@ -48,12 +46,10 @@
     @include transition(all 0.9s $smoothTransition);
     margin-top: 37px;
     margin-bottom: 70px;
-
     strong {
       color: #000;
       font-weight: normal;
     }
-
     &:hover {
       opacity: 0.5;
     }
@@ -62,31 +58,31 @@
     height: 300px;
     background-size: cover;
   }
-
   .bandeau-list-img {
-      height: 444px !important;
+    height: 444px !important;
   }
   .bandeau-list-img {
-      height: 443px !important;
+    height: 443px !important;
     @include transition(all 0.9s $linear);
   }
 }
-.evenement:after{
- 			content: ".";
-			display: block;
-			height: 0;
-			clear: both;
-			visibility: hidden; 
-}
 
+.evenement:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 
 // 2. single evenement
 // =====================
-
-
-.single-evenement{
-  .slideshow{
-    .caption{
+.single-evenement {
+  padding-bottom: 0px;
+  border-bottom: 1px solid #2c2c2c;
+  
+  .slideshow {
+    .caption {
       border-bottom: 1px solid #e5e5e5;
       margin: 0px 0px;
       padding: 20px 0px;
@@ -95,54 +91,53 @@
   a.nav.bottom {
     bottom: 85px;
   }
-  .title-article{
-    margin-bottom:37px;
+  .title-article {
+    margin-bottom: 37px;
   }
-  .single-photo{
-    margin-top:64px;
+  .single-photo {
+    margin-top: 64px;
   }
-  .quote{
+  .quote {
     padding: 60px 0px;
     width: auto;
-    blockquote{
+    blockquote {
       font-size: 1.5rem !important;
       font-family: $CamphorItalic;
       padding: 40px 88px;
     }
   }
-  .share{
-    padding-bottom: 0px;
-  }
-  .text{
-//    padding-top: 60px; 
+  .text {
+    //    padding-top: 60px; 
     width: 634px;
-    a{
+    a {
       color: #c8a461;
     }
-    .text-quote{
+    .text-quote {
       font-style: italic;
     }
   }
-  .title{
+  .title {
     letter-spacing: normal;
     text-transform: none;
     font-size: 1.375rem;
-    margin-bottom:35px;
+    margin-bottom: 35px;
     font-weight: 200;
   }
-  .paragraph{
+  .paragraph {
     padding-top: 40px;
   }
-   .small-container {
+  .small-container {
     width: 634px;
     margin: 0 auto;
+    .slideshow .slideshow-img .thumbnails .thumb{
+      width: 81px;
+      height: 57px;
+    }
   }
-  .chapeau{
+  .chapeau {
     margin-bottom: 40px;
   }
-  .film{
-     margin-top: 70px;
-    margin-bottom: 70px;
+  .film {
     height: 290px;
     .programmation-film {
       background-color: #141414;
@@ -150,23 +145,22 @@
       height: 100%;
       overflow: hidden;
       width: 100%;
-
-      .wrapper{
+      .wrapper {
         margin: 0 auto;
         max-width: 630px;
         float: none;
-        ul{
+        ul {
           width: 630px;
-          li{
+          li {
             width: auto;
             margin-right: 14px;
           }
           margin-bottom: 35px;
         }
-        .location{
+        .location {
           margin: 10px 0px !important;
           text-transform: uppercase;
-          color:#bababa !important;
+          color: #bababa !important;
           font-size: 0.63rem;
           font-family: $CamphorBold;
         }
@@ -179,73 +173,108 @@
           left: 0;
           position: absolute;
           width: 27px;
-       }
-        .date{
-           color:#bababa !important;
         }
-        .descript{
+        .date {
+          color: #bababa !important;
+        }
+        .descript {
           font-size: 1rem;
           font-family: $CamphorRegular;
-        color:#fff;
+          color: #fff;
         }
       }
     }
   }
-  .video{
+  .video {
     .vCenterKid {
       text-align: left;
     }
   }
   
+  .best-films{
+    padding-top: 37px;
+    .item-film{
+      width: 185px;
+      display: inline-block;
+      margin: 0 28px;
+      padding-bottom: 41px;
+      .title{
+        padding-top: 17px;
+        color: $gold;
+        font-size: 0.88rem;
+        font-family: $CamphorBold;
+        line-height: 14px;
+        display:block;
+        margin: 0px;
+        font-weight: normal;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .desc{
+        display:block;
+        font-family: $CamphorBold;
+        color: $gold;
+        font-size: 0.63rem;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 14px;
+      }
+      .date{
+        font-size: 0.69rem;
+        color:#999;
+        font-family: $CamphorRegular;
+        text-align: center;
+        display:block;
+        line-height: 18px;
+        margin-top: 4px;
+      }
+    }
+  }
 }
-
 
 //3. media bandeau push
 // ==========================
-
-
-  @media screen and (min-width: 1920px) {
-    .evenement .bandeau-list-img{
-      height: 444px !important;
-    }
-    .evenement .title-list-header {
-//      padding-top: 210px !important;
-    }
+@media screen and (min-width: 1920px) {
+  .evenement .bandeau-list-img {
+    height: 444px !important;
   }
-
-  @media screen and (min-width: 1600px) and (max-width:1919px) {
-
-    .evenement .bandeau-list-img{
-      height: 373px !important;
-    }
-    .evenement .title-list-header {
-//      padding-top: 173px !important;
-    }
+  .evenement .title-list-header {
+    //      padding-top: 210px !important;
   }
-  
-  @media screen and (min-width: 1280px) and (max-width:1599px) {
-    .evenement .bandeau-list-img{
-      height: 296px !important;
-    }
-    .evenement .title-list-header {
-//      padding-top: 134px !important;
-    }
-  }
+}
 
-  @media screen and (min-width: 1024px) and (max-width:1279px) {
-    .evenement .bandeau-list-img{
-      height: 294px !important;
-    }
-    .evenement .title-list-header {
-//      padding-top: 134px !important;
-    }
+@media screen and (min-width: 1600px) and (max-width:1919px) {
+  .evenement .bandeau-list-img {
+    height: 373px !important;
   }
+  .evenement .title-list-header {
+    //      padding-top: 173px !important;
+  }
+}
 
-  @media screen and (max-width:1023px) {
-    .evenement .bandeau-list-img{
-      height: 294px !important;
-    }
-    .evenement .title-list-header {
-//      padding-top: 134px !important;
-    }
+@media screen and (min-width: 1280px) and (max-width:1599px) {
+  .evenement .bandeau-list-img {
+    height: 296px !important;
   }
+  .evenement .title-list-header {
+    //      padding-top: 134px !important;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width:1279px) {
+  .evenement .bandeau-list-img {
+    height: 294px !important;
+  }
+  .evenement .title-list-header {
+    //      padding-top: 134px !important;
+  }
+}
+
+@media screen and (max-width:1023px) {
+  .evenement .bandeau-list-img {
+    height: 294px !important;
+  }
+  .evenement .title-list-header {
+    //      padding-top: 134px !important;
+  }
+}

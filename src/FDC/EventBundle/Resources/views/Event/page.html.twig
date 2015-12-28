@@ -19,13 +19,13 @@
                 <a href="#" class="button print">{{ 'event.btn.imprimer'|trans }}</a>
             </div>
 
-            {% include 'FDCEventBundle:Article:article.single-photo.html.twig' %}
+            {% include 'FDCEventBundle:News:header/single-photo.html.twig' %}
 
 
             <!-- QUOTE -->
             {% for widget in article.widgets %}
                 {% if widget.type == "quote" %}
-                    {% include 'FDCEventBundle:Article:article.quote.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
                 {% endif %}
             {% endfor %}
 
@@ -33,7 +33,7 @@
             <!-- TEXT -->
             {% for widget in article.widgets %}
                 {% if widget.type == "text" %}
-                    {% include 'FDCEventBundle:Article:article.text.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
                 {% endif %}
             {% endfor %}
 
@@ -42,7 +42,7 @@
 
                 {% for widget in article.widgets %}
                     {% if widget.type == "image" and widget.photos|length > 1 %}
-                        {% include 'FDCEventBundle:Article:article.slideshow.html.twig' %}
+                        {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                     {% endif %}
                 {% endfor %}
 
@@ -51,7 +51,7 @@
             <!-- AUDIO -->
             {% for widget in article.widgets %}
                 {% if widget.type == "audio" %}
-                    {% include 'FDCEventBundle:Article:article.audio.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
                 {% endif %}
             {% endfor %}
 

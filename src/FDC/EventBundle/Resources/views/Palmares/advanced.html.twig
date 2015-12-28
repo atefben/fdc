@@ -9,7 +9,7 @@
                 <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
             </div>
         </div>
-        {% include 'FDCEventBundle:Palmares:palmares.nav.html.twig' %}
+        {% include 'FDCEventBundle:Palmares:nav.html.twig' %}
     </div>
     <div class="container container-list">
         <div class="camerador">
@@ -23,7 +23,7 @@
 
                     {% for movie in movies %}
                         {% if movie.type == 0 %}
-                            {% include 'FDCEventBundle:Palmares:palmares.movie.html.twig' %}
+                            {% include 'FDCEventBundle:Palmares:movie.html.twig' %}
                         {% endif %}
                     {% endfor %}
 
@@ -36,7 +36,7 @@
                 <h3 class="sub-cat-title">{{ 'palmares.camerador.title.encompetition'|trans }}</h3>
                 {% for movie in movies %}
                     {% if movie.type == 1 %}
-                        {% include 'FDCEventBundle:Palmares:palmares.movie.html.twig' %}
+                        {% include 'FDCEventBundle:Palmares:movie.html.twig' %}
                     {% endif %}
                 {% endfor %}
             </section>
@@ -44,7 +44,7 @@
                 <h3 class="sub-cat-title">{{ 'palmares.camerador.title.uncertainregard'|trans }}</h3>
                 {% for movie in movies %}
                     {% if movie.type == 2 %}
-                        {% include 'FDCEventBundle:Palmares:palmares.movie.html.twig' %}
+                        {% include 'FDCEventBundle:Palmares:movie.html.twig' %}
                     {% endif %}
                 {% endfor %}
             </section>

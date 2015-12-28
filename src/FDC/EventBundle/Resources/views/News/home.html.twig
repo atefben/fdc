@@ -16,7 +16,7 @@
                             <span class="category">{{ slide.theme }}</span>
                             <h2>{{ slide.title }}</h2>
                         </div>
-                        <a href="{{ path('fdc_event_article_get', {'id': slide.id }) }}" class="linkArticle"></a>
+                        <a href="{{ path('fdc_event_news_get', {'slug': slide.id }) }}" class="linkArticle"></a>
                     </div>
                 {% endfor %}
 
@@ -26,7 +26,7 @@
             <div id="canvasloader" class="canvasloader"></div>
             <h2 class="title">{{ 'home.btn.lactualitealaune'|trans }}</h2>
 
-            {% include 'FDCEventBundle:Article:article.filters.html.twig' %}
+            {% include 'FDCEventBundle:News:filters.html.twig' %}
 
             <div class="container">
                 <div class="content-news">
@@ -34,7 +34,7 @@
                         <div class="articles left">
 
                             {% for article in homeArticles.article %}
-                                {% include 'FDCEventBundle:Article:article.article.html.twig' %}
+                                {% include 'FDCEventBundle:News:thumbnail.html.twig' %}
                             {% endfor %}
 
                         </div>
@@ -42,14 +42,14 @@
                         <!-- SLIDESHOW -->
                         {% for widget in homeArticles.widgets %}
                             {% if widget.type == "image" and widget.photos|length > 1 %}
-                                {% include 'FDCEventBundle:Article:article.slideshow.html.twig' %}
+                                {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                             {% endif %}
                         {% endfor %}
 
                         <div class="articles center">
 
                             {% for article in homeArticles.bottomArticle %}
-                                {% include 'FDCEventBundle:Article:article.article.html.twig' %}
+                                {% include 'FDCEventBundle:News:thumbnail.html.twig' %}
                             {% endfor %}
 
                         </div>
@@ -187,7 +187,7 @@
 
                 {% for video in videos %}
                     {% if video.most_viewed %}
-                        {% include 'FDCEventBundle:Television:television.video.date.html.twig' with {'classes': 'vid'} %}
+                        {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'vid'} %}
                     {% endif %}
                 {% endfor %}
 
@@ -199,7 +199,7 @@
 
                 {% for video in videos %}
                     {% if video.most_viewed == false %}
-                        {% include 'FDCEventBundle:Television:television.video.date.html.twig' with {'classes': 'channel'} %}
+                        {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'channel'} %}
                     {% endif %}
                 {% endfor %}
 

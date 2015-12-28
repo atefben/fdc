@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
 /**
- * MediaAudio
+ * MediaImage
  *
  * @ORM\Table()
  * @ORM\Entity

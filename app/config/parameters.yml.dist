@@ -47,6 +47,7 @@ parameters:
     s3_secret_key: ~
     # fdc
     fdc_event_domain: ~
+    fdc_event_scheme: ~
     fdc_press_domain: ~
     fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
@@ -73,3 +74,4 @@ parameters:
     social_podcast: '#'
     jwplayer_key: ~
     fdc_event_slug: ~
+    fdc_year: ~

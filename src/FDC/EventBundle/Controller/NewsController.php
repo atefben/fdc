@@ -12,15 +12,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("")
- * Class ArticleController
+ * Class NewsController
  * @package FDC\EventBundle\Controller
  */
-class ArticleController extends Controller
+class NewsController extends Controller
 {
 
     /**
      * @Route("/")
-     * @Template("FDCEventBundle:Article:article.home.html.twig")
+     * @Template("FDCEventBundle:News:home.html.twig")
      */
     public function indexAction()
     {
@@ -499,25 +499,25 @@ class ArticleController extends Controller
 
     /**
      * @Route("/articles/{slug}")
-     * @Template("FDCEventBundle:Article:article.main.html.twig")
-     * @param $id
+     * @Template("FDCEventBundle:News:main.html.twig")
+     * @param $slug
      */
     public function getAction($slug)
     {
-        //$article = findBy($id)
-
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
-        $token = $this->get('security.token_storage')->getToken();
+        //$token = $this->get('security.token_storage')->getToken();
         //$isAdmin = ($token) ? true : false;
         $isAdmin = true;
         $dateTime = new DateTime();
 
+        // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null && $settings->getFestival() !== null) {
             throw new NotFoundHttpException();
         }
 
+        // GET NEWS
         $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug(
             $slug,
             $settings->getFestival()->getId(),
@@ -529,144 +529,18 @@ class ArticleController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $article = array(
-            'id'    => 0,
-            'theme' => 'Cinéma de la plage',
-            'createdAt' => new \Datetime(),
-            'updatedAt' => new \Datetime(),
-            'title' => "Enragés, polar hybride d'Eric Hannezo",
-            'mainImg' => array(
-                'path' => 'img.jpg',
-                'copyright' => 'Maïwenn - Photocall © FDC / Théophile Delange'
-            ),
-            'author' => array(
-                'fullName' => 'Morgane Urbain'
-            ),
-            'introduction' => "Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son
-                               premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel
-                               on retrouve <a href=\"#\">Lambert Wilson</a> et Franck Gastambide",
-            'widgets' => array(
-                array(
-                    'type' => 'image',
-                    'copyright' => "Équipe du film - Photocall - The Lobster",
-                    'photos' => array(
-                        array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        ),
-                        array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        )
-                    )
-                ),
-                array(
-                    'type' => 'image',
-                    'copyright' => "Équipe du film - Photocall - The Lobster",
-                    'photos' => array(
-                        array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        )
-                    )
-                ),
-                array(
-                    'type' => 'image_dual_align',
-                    'photos' => array(
-                        array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'copyright' => 'VALERY HACHE / AFP'
-                        ),
-                        array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'copyright' => 'VALERY HACHE / AFP'
-                        )
-                    )
-                ),
-                array(
-                    'type' => 'text',
-                    'content' => '<p><strong>Il y a différents statuts d’acteurs&nbsp;: Lambert Wilson, Virginie Ledoyen
-                                         d’un côté et ensuite tu as Guillaume Gouix, jeune acteur, Franck Gastambile et
-                                         le québécois François Arnaud … Vous êtes satisfait du rendu&nbsp;?</strong>
-                                         </p>
-                                  <p>Symboliquement, j’avais une famille&nbsp;: Lambert qui joue le père, Virginie la
-                                  mère, Guillaume l’ainé, Franck le jeune un peu perdu et François le sale gosse. Et oui
-                                  , j’en suis super content parce que je voulais une lecture nouvelle sur le film de
-                                  genre .</p>'
-                ),
-                array(
-                    'type' => 'quote',
-                    'content' => 'J’ai découvert que Lambert avait une passion pour le film de genre',
+        // SEO
+        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
-                ),
-                array(
-                    'type' => 'video_youtube',
-                    'title' => 'The lobster',
-                    'theme' => 'Cinéma de la plage',
-                    'createdAt' => new \Datetime(),
-                    'img' => array(
-                        'path' => 'img.jpg'
-                    ),
-                    'youtubeId' => 'DAaDo5fgcUc'
-                ), array(
-                    'type' => 'video_akamai',
-                    'title' => 'The lobster',
-                    'theme' => 'Cinéma de la plage',
-                    'createdAt' => new \DateTime(),
-                    'img' => array(
-                        'path' => 'img.jpg'
-                    ),
-                    'akamaiId' => 'DAaDo5fgcUc'
-                ),
-                array(
-                    'type' => 'audio',
-                    'podcast' => array(
-                        array(
-                            'title' => 'The lobster',
-                            'theme' => 'Cinéma de la plage',
-                            'sound' => 'sound2.mp3',
-                            'createdAt' => new \DateTime(),
-                            'img' => array(
-                                'path' => 'img.jpg'
-                            ),
-                            'akamaiId' => 'DAaDo5fgcUc'
-                        ),
-                        array(
-                            'title' => 'The lobster',
-                            'theme' => 'Cinéma de la plage',
-                            'sound' => 'sound2.mp3',
-                            'createdAt' => new \DateTime(),
-                            'img' => array(
-                                'path' => 'img.jpg'
-                            ),
-                            'akamaiId' => 'DAaDo5fgcUc'
-                        ),
-                    ),
-                ),
-            )
-        );
         return array(
             'news' => $news,
-            'article' => $article
+          //  'article' => $article
         );
     }
 
     /**
      * @Route("/articles")
-     * @Template("FDCEventBundle:Article:article.list-article.html.twig")
+     * @Template("FDCEventBundle:News:list-article.html.twig")
      */
     public function getArticlesAction()
     {
@@ -767,7 +641,7 @@ class ArticleController extends Controller
 
     /**
      * @Route("/photos")
-     * @Template("FDCEventBundle:Article:article.list-photo.html.twig")
+     * @Template("FDCEventBundle:News:article.list-photo.html.twig")
      */
     public function getPhotosAction()
     {
@@ -829,7 +703,7 @@ class ArticleController extends Controller
 
     /**
      * @Route("/videos")
-     * @Template("FDCEventBundle:Article:article.list-video.html.twig")
+     * @Template("FDCEventBundle:News:list-video.html.twig")
      */
     public function getVideosAction()
     {
@@ -891,7 +765,7 @@ class ArticleController extends Controller
 
     /**
      * @Route("/audios")
-     * @Template("FDCEventBundle:Article:article.list-audio.html.twig")
+     * @Template("FDCEventBundle:News:list-audio.html.twig")
      */
     public function getAudiosAction()
     {

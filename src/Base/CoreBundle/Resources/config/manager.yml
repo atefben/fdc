@@ -1,0 +1,12 @@
+services:
+    base.manager.seo:
+        class: Base\CoreBundle\Manager\SeoManager
+        arguments:
+            - %fdc_year%
+            - %fdc_event_domain%
+            - %fdc_event_scheme%
+            - %social_twitter%
+            - %locale_default_translation%
+            - "@sonata.seo.page"
+            - "@sonata.media.provider.image"
+            - "@router"

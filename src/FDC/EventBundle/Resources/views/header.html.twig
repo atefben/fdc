@@ -128,43 +128,43 @@
             <nav>
                 <ul class="main">
                     <li>
-                        <a href="{{ path('fdc_event_article_index') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index'
-                                     or app.request.attributes.get('_route') == 'fdc_event_article_get'
-                                     or app.request.attributes.get('_route') == 'fdc_event_article_getarticles'
-                                     or app.request.attributes.get('_route') == 'fdc_event_article_getphotos'
-                                     or app.request.attributes.get('_route') == 'fdc_event_article_getvideos'
-                                     or app.request.attributes.get('_route') == 'fdc_event_article_getaudios'%}active{% endif %}">
+                        <a href="{{ path('fdc_event_news_index') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_news_index'
+                                     or app.request.attributes.get('_route') == 'fdc_event_news_get'
+                                     or app.request.attributes.get('_route') == 'fdc_event_news_getarticles'
+                                     or app.request.attributes.get('_route') == 'fdc_event_news_getphotos'
+                                     or app.request.attributes.get('_route') == 'fdc_event_news_getvideos'
+                                     or app.request.attributes.get('_route') == 'fdc_event_news_getaudios'%}active{% endif %}">
                             {{ 'header.mainnav.nav.lactualite'|trans }}
                         </a>
                         <ul class="tcenter">
                             <li>
-                                <a href="{{ path('fdc_event_article_index') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_index' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_news_index') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_news_index' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.jourapresjour'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_article_getarticles') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getarticles' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_news_getarticles') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_news_getarticles' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.articles'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_article_getphotos') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getphotos' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_news_getphotos') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_news_getphotos' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.photos'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_article_getvideos') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getvideos' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_news_getvideos') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_news_getvideos' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.videos'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('fdc_event_article_getaudios') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_article_getaudios' %}active{% endif %}">
+                                <a href="{{ path('fdc_event_news_getaudios') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_news_getaudios' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.audios'|trans }}
                                 </a>
                             </li>
@@ -226,10 +226,10 @@
                 </ul>
                 <ul class="user">
                     <li>
-                        <a href="{{ path('fdc_event_article_index') }}" class="programmation"> {{ 'header.mainnav.nav.programmation'|trans }} </a>
+                        <a href="{{ path('fdc_event_news_index') }}" class="programmation"> {{ 'header.mainnav.nav.programmation'|trans }} </a>
                     </li>
                     <li class="participate-wrapper">
-                        <a href="{{ path('fdc_event_article_index') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
+                        <a href="{{ path('fdc_event_news_index') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
                         <ul>
                             <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ 'header.mainnav.nav.preparersejour'|trans }}</a></li>
                             <li><a href="{{ path('fdc_event_participate_festival') }}"> {{ 'header.mainnav.nav.festivalmodeemploi'|trans }} </a></li>
@@ -239,7 +239,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_article_index') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
+                        <a href="{{ path('fdc_event_news_index') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
                     </li>
                 </ul>
             </nav>
@@ -263,7 +263,7 @@
     </div>
     <div id="searchContainer">
         <div class="container">
-            <form action="{{ path('fdc_event_article_index') }}">
+            <form action="{{ path('fdc_event_news_index') }}">
                 <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'header.search.input.entrezrecherche'|trans }}" autocomplete="off" />
                 <input id="submitSearch" type="submit" value="" />
             </form>

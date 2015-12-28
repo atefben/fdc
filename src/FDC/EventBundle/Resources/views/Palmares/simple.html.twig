@@ -9,13 +9,13 @@
                 <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
             </div>
         </div>
-        {% include 'FDCEventBundle:Palmares:palmares.nav.html.twig' %}
+        {% include 'FDCEventBundle:Palmares:nav.html.twig' %}
     </div>
 
     <div class="container container-list">
         <section class="categorie-items">
             {% for movie in movies %}
-                    {% include 'FDCEventBundle:Palmares:palmares.movie.html.twig' %}
+                    {% include 'FDCEventBundle:Palmares:movie.html.twig' %}
             {% endfor %}
         </section>
     </div>

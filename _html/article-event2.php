@@ -30,7 +30,7 @@
               <p class="caption">Maïwenn - Photocall © FDC / Théophile Delange</p>
             </div>
           </div>
-          <p class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</p>
+          <div class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</div>
           <div class="slideshow">
             <div class="slideshow-img">
               <div class="images">

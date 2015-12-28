@@ -32,7 +32,7 @@ class ArtistController extends Controller
 
     /**
      * @Route("/{slug}")
-     * @Template("FDCEventBundle:Artist:artist.page.html.twig")
+     * @Template("FDCEventBundle:Artist:page.html.twig")
      *
      * @param  string $slug
      * @return \Symfony\Component\HttpFoundation\Response
