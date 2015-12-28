@@ -58,7 +58,7 @@ $(document).ready(function() {
         if (!location.origin)
           location.origin = location.protocol + "//" + location.host;
 
-        window.location = location.origin + '/' + href;
+        document.location = location.origin + '/' + href;
       }, 1900);
     }
 
