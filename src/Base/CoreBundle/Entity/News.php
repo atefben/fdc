@@ -44,13 +44,6 @@ abstract class News implements TranslateMainInterface
      * @Groups({"news_list", "news_show"})
      */
     private $id;
-    
-    /**
-     * @var NewsLock
-     *
-     * @ORM\OneToMany(targetEntity="NewsLock", mappedBy="news")
-     */
-    private $locks;
 
      /**
       * @var NewsTheme
@@ -421,40 +414,6 @@ abstract class News implements TranslateMainInterface
     public function getTags()
     {
         return $this->tags;
-    }
-
-    /**
-     * Add locks
-     *
-     * @param \Base\CoreBundle\Entity\NewsLock $locks
-     * @return News
-     */
-    public function addLock(\Base\CoreBundle\Entity\NewsLock $lock)
-    {
-        $lock->setNews($this);
-        $this->locks[] = $lock;
-
-        return $this;
-    }
-
-    /**
-     * Remove locks
-     *
-     * @param \Base\CoreBundle\Entity\NewsLock $locks
-     */
-    public function removeLock(\Base\CoreBundle\Entity\NewsLock $lock)
-    {
-        $this->locks->removeElement($lock);
-    }
-
-    /**
-     * Get locks
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLocks()
-    {
-        return $this->locks;
     }
 
     /**
