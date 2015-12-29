@@ -40,13 +40,6 @@ abstract class Statement implements TranslateMainInterface
     private $id;
 
     /**
-     * @var StatementLock
-     *
-     * @ORM\OneToMany(targetEntity="StatementLock", mappedBy="statement")
-     */
-    private $locks;
-
-    /**
      * @var StatementTheme
      *
      * @ORM\ManyToOne(targetEntity="StatementTheme")
@@ -344,39 +337,6 @@ abstract class Statement implements TranslateMainInterface
     public function getPublishEndedAt()
     {
         return $this->publishEndedAt;
-    }
-
-    /**
-     * Add locks
-     *
-     * @param \Base\CoreBundle\Entity\StatementLock $locks
-     * @return Statement
-     */
-    public function addLock(\Base\CoreBundle\Entity\StatementLock $locks)
-    {
-        $this->locks[] = $locks;
-
-        return $this;
-    }
-
-    /**
-     * Remove locks
-     *
-     * @param \Base\CoreBundle\Entity\StatementLock $locks
-     */
-    public function removeLock(\Base\CoreBundle\Entity\StatementLock $locks)
-    {
-        $this->locks->removeElement($locks);
-    }
-
-    /**
-     * Get locks
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLocks()
-    {
-        return $this->locks;
     }
 
     /**
