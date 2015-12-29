@@ -1,4 +1,4 @@
-<script> //todo dev// 
+<script> //todo dev//
 var GLOBALS = {
   "locale" : "fr",
   "defaultDate" : "2016-05-12",
@@ -75,6 +75,7 @@ var GLOBALS = {
 <script src="js/components/fullscreenjs.js"></script>
 <script src="js/components/jwplayer.js"></script>
 <script src="js/components/konsole.min.js"></script>
+<script src="js/components/clipboard.min.js"></script>
 <script src="js/components/jquery-ui.min.js"></script>
 <!-- endbuild -->
 

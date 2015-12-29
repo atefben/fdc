@@ -192,7 +192,7 @@ $(document).ready(function() {
         
         $('#mycalendar').fullCalendar({
           lang: 'fr',
-          defaultDate: '2016-05-12', // TODO A REVOIR //
+          defaultDate: '2016-05-11', // TODO A REVOIR //
           header: {
             left: 'prev',
             center: 'title',

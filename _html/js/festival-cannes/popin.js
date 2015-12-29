@@ -5,7 +5,7 @@ $(document).ready(function() {
         $('.popin-mail').removeClass('visible-popin');
         $("#main").removeClass('overlay-popin');
         $('footer').removeClass('overlay');
-      }else{ 
+      }else{
         $('.popin-mail').addClass('visible-popin');
         $("#main").addClass('overlay-popin');
       }
@@ -44,7 +44,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.selectOptions span', function() {
-      var i = parseInt($(this).index()) + 1; 
+      var i = parseInt($(this).index()) + 1;
       $('select option').eq(i).prop('selected', 'selected');
       $('.select').removeClass('invalid');
     });
@@ -109,11 +109,11 @@ $(document).ready(function() {
       }
     });
   }
-  
-  
+
+
 });
 
-  // cookie banner 
+  // cookie banner
 
   $('.cookie-accept').click(function () { //on click event
     days = 365; //number of days to keep the cookie
@@ -127,23 +127,22 @@ $(document).ready(function() {
   //LINK POPIN//
 
   if($('.share').length){
+    new Clipboard('.link');
+    var link = document.location.href;
+    $('.share .link').attr('data-clipboard-text',link);
+
     $('.share .link').on('click',function(){
       if(!$('#share-box').length){
-        var link = document.location.href;
         $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+link+'</a></div></div>');
-        
+
         $('#share-box').animate({'opacity':'1'},400,function(){
            $('#share-box').addClass('show');
         });
-        
-        //TODO ADD COPY TEXT TO CLIPBORD... // 
+
+        //TODO ADD COPY TEXT TO CLIPBORD... //
       }else if($('#share-box').hasClass('show')){
         $('#share-box').removeClass('show');
         $('#share-box').remove();
       }
     });
   }
-  
-
-
-
