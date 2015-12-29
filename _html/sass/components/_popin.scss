@@ -1,7 +1,7 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
-// 2.  POPIN
+// 2. POPIN
 // =========================
 
 
@@ -31,7 +31,7 @@
   height: 70%;
   overflow-y: scroll;
   min-height: 345px;
-  
+
   .contain-popin{
     width: 528px;
     margin:0 auto;
@@ -65,7 +65,7 @@
         }
       }
     }
-  
+
   form{
     width: 528px;
     margin:0 auto;
@@ -126,7 +126,7 @@
       transform: scale(1); /* mise à l'échelle 1:1 */
     }
   }
-  
+
   #form {
     margin: 0 auto;
     overflow: hidden;
@@ -313,7 +313,7 @@
       }
     }
   }
-  
+
   .info-popin{
     display: block;
     width: 528px;
@@ -326,7 +326,7 @@
       padding-top: 22px;
       border-top:1px solid #e5e5e5;
     }
-    
+
   }
   .valid{
     border: 1px solid #25a20c;
@@ -342,9 +342,9 @@
 }
 
 
-// 2. COOKIE BANNER // 
+// 2. COOKIE BANNER //
 
-#cookies-banner { 
+#cookies-banner {
   width: 100%;
   margin: 0;
   background: #080808;
@@ -355,19 +355,19 @@
   padding: 17px;
   font-size: 0.75rem;
 }
- 
+
 #cookies-banner p {
   font-family:$CamphorRegular;
   color: rgb(255, 255, 255);
 }
- 
+
 #cookies-banner .cookie-accept {
     position: fixed;
     bottom: 151px;
     right: 8px;
     font-size: 30px;
   .icon{
-    color:$gold; 
+    color:$gold;
   }
 }
 
@@ -443,11 +443,49 @@
         border-color: rgb(20, 20, 20);
       }
     }
-    
+
     & a {
     color: #999999;
     font-size: 0.75rem;
     }
-    
+  }
+}
+
+.canne-classic{
+  #share-box{
+    top: 187px;
+    z-index: 3;
+    width: 295px;
+
+    .bubble{
+      background-color: #141414;
+      border: 1px solid #2C2C2C;
+      padding: 5px;
+      text-align: center;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -8%;
+        left: 49%;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        box-shadow: -1px -1px 0px #2C2C2C;
+        border: 4px solid;
+        border-color: rgb(20, 20, 20);
+      }
+    }
+    & a {
+    color: #999999;
+    font-size: 0.75rem;
+    }
+    & a:hover{
+      color: #999999;
+      background-color: #141414;
+    }
   }
 }

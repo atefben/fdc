@@ -23,7 +23,7 @@
                <li><a href="jury_cinefondation_courtsmetrages.php" class="active ajax">Cinéfondation & courts métrages</a></li>
                <li><a href="jury_uncertainregard.php" class="ajax">Un certain regard</a></li>
                <li><a href="jury_camerador.php" class="ajax">Caméra d'or</a></li>
-           </ul> 
+           </ul>
       </div>
       <div class="container-jurys">
         <div class="container container-list">
@@ -52,7 +52,9 @@
                 <div class="grid-sizer"></div>
                 <div class="jury-box item">
                   <a href="artist_page.php">
-                    <img src="img/jurys/jury-1.jpg" alt="">
+                    <div class="image">
+                      <img src="img/jurys/jury-1.jpg" alt="">
+                    </div>
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
                       <span class="rank">Actrice</span>
@@ -60,8 +62,10 @@
                   </a>
                 </div>
                 <div class="jury-box item">
-                  <a href="artist_page.php">
+                 <a href="artist_page.php">
+                  <div class="image">
                     <img src="img/jurys/jury-2.jpg" alt="">
+                  </div>
                     <div class="legend">
                       <span class="name">Sofia Coppola</span>
                       <span class="rank">Réalisatrice</span>
@@ -70,7 +74,9 @@
                 </div>
                 <div class="jury-box item">
                   <a href="artist_page.php">
-                    <img src="img/jurys/jury-3.jpg" alt="">
+                    <div class="image">
+                      <img src="img/jurys/jury-3.jpg" alt="">
+                    </div>
                     <div class="legend">
                       <span class="name">Leila hatami</span>
                       <span class="rank">Actrice</span>
@@ -79,7 +85,9 @@
                 </div>
                 <div class="jury-box item">
                   <a href="artist_page.php">
+                  <div class="image">
                     <img src="img/jurys/jury-4.jpg" alt="">
+                  </div>
                     <div class="legend">
                       <span class="name">Do-Yeaon Jeon</span>
                       <span class="rank">Actrice</span>
@@ -88,7 +96,9 @@
                 </div>
                 <div class="jury-box item">
                   <a href="artist_page.php">
-                    <img src="img/jurys/jury-1.jpg" alt="">
+                    <div class="image">
+                      <img src="img/jurys/jury-1.jpg" alt="">
+                    </div>
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
                       <span class="rank">Actrice</span>
@@ -97,7 +107,20 @@
                 </div>
                 <div class="jury-box item">
                   <a href="artist_page.php">
+                    <div class="image">
+                      <img src="img/jurys/jury-1.jpg" alt="">
+                    </div>
+                    <div class="legend">
+                      <span class="name">Carole Bouquet</span>
+                      <span class="rank">Actrice</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="jury-box item">
+                    <a href="artist_page.php">
+                  <div class="image">
                     <img src="img/jurys/jury-1.jpg" alt="">
+                  </div>
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
                       <span class="rank">Actrice</span>
@@ -106,16 +129,9 @@
                 </div>
                 <div class="jury-box item">
                   <a href="artist_page.php">
-                    <img src="img/jurys/jury-1.jpg" alt="">
-                    <div class="legend">
-                      <span class="name">Carole Bouquet</span>
-                      <span class="rank">Actrice</span>
+                    <div class="image">
+                      <img src="img/jurys/jury-1.jpg" alt="">
                     </div>
-                  </a>
-                </div>
-                <div class="jury-box item">
-                  <a href="artist_page.php">
-                    <img src="img/jurys/jury-1.jpg" alt="">
                     <div class="legend">
                       <span class="name">Carole Bouquet</span>
                       <span class="rank">Actrice</span>

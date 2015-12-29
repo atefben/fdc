@@ -134,12 +134,9 @@ $(document).ready(function() {
     $('.share .link').on('click',function(){
       if(!$('#share-box').length){
         $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+link+'</a></div></div>');
-
         $('#share-box').animate({'opacity':'1'},400,function(){
            $('#share-box').addClass('show');
         });
-
-        //TODO ADD COPY TEXT TO CLIPBORD... //
       }else if($('#share-box').hasClass('show')){
         $('#share-box').removeClass('show');
         $('#share-box').remove();

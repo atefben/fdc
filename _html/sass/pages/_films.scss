@@ -15,7 +15,7 @@
    width: 100%;
    clear: both;
  }
- 
+
  .categorie-items {
    clear: both;
    .titre-document {
@@ -272,7 +272,7 @@
      }
    }
  }
- 
+
  // 1. Bandeau
  // =========================
 
@@ -346,7 +346,7 @@
      .nav-list {
        margin: 0 auto;
        text-align: center;
-       font-family: $CamphorBold; 
+       font-family: $CamphorBold;
        background-color: #202020;
        width: 100%;
        z-index: 9;
@@ -369,7 +369,7 @@
      }
    }
  }
- 
+
  // 3. Selection officielle
  //==========================
 
@@ -403,7 +403,15 @@
          font-family: $CamphorItalic;
          font-size: .8125rem;
          color: #c8a461;
+         border-top: 0px solid #fff;
        }
+     }
+     &:hover a img {
+       @include transition(all 4s $linear);
+       @include transform(scale(1.08) translateZ(0));
+     }
+     .image{
+       overflow: hidden;
      }
    }
    .container:after {
@@ -512,7 +520,7 @@
       height: 373px !important;
     }
   }
-  
+
   @media screen and (min-width: 1280px) and (max-width:1599px) {
 
     .films-list .bandeau-list-img{
@@ -531,4 +539,3 @@
       height: 296px !important;
     }
   }
-

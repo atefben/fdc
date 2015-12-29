@@ -7991,6 +7991,41 @@ header #searchContainer {
   font-size: 0.75rem;
 }
 
+.canne-classic #share-box {
+  top: 187px;
+  z-index: 3;
+  width: 295px;
+}
+.canne-classic #share-box .bubble {
+  background-color: #141414;
+  border: 1px solid #2C2C2C;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+}
+.canne-classic #share-box .bubble:before {
+  content: "";
+  position: absolute;
+  top: -8%;
+  left: 49%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  box-shadow: -1px -1px 0px #2C2C2C;
+  border: 4px solid;
+  border-color: #141414;
+}
+.canne-classic #share-box a {
+  color: #999999;
+  font-size: 0.75rem;
+}
+.canne-classic #share-box a:hover {
+  color: #999999;
+  background-color: #141414;
+}
+
 #prehome-container {
   background-color: #fff;
   min-height: 600px;
@@ -10827,6 +10862,9 @@ article .read-later.rAlign span:after {
   background: url("../img/svg/print.svg") no-repeat center;
   background-size: 16px;
 }
+.single-movie #nav-movie .buttons #share-box {
+  top: -3px;
+}
 .single-movie .videos {
   clear: both;
 }
@@ -12513,6 +12551,20 @@ input[type=submit] {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: .8125rem;
   color: #c8a461;
+  border-top: 0px solid #fff;
+}
+.selection-officielle figure:hover a img {
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+}
+.selection-officielle figure .image {
+  overflow: hidden;
 }
 .selection-officielle .container:after {
   content: ".";
@@ -14149,6 +14201,19 @@ input[type=submit] {
 .contain-jurys-list .jury-box a {
   color: #000;
 }
+.contain-jurys-list .jury-box:hover a img {
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+}
+.contain-jurys-list .jury-box .image {
+  overflow: hidden;
+}
 .contain-jurys-list .legend {
   background-color: #fff;
   margin: 0px;
@@ -15048,9 +15113,6 @@ input[type=submit] {
   border-bottom: #FFF solid 0px;
 }
 
-.contractor {
-  margin-bottom: 42px;
-}
 .contractor .content-contractor {
   background-color: #fff;
 }
@@ -18168,6 +18230,21 @@ input[type=submit] {
   padding-top: 60px;
   border-top: 1px solid #dfdfdf;
 }
+.downloading-press .block .container .item {
+  overflow: hidden;
+}
+.downloading-press .block .container .item a img {
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.downloading-press .block .container .item:hover a img {
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+}
 .downloading-press .block .container .title-press {
   margin-bottom: 30px;
 }
@@ -18577,6 +18654,21 @@ input[type=submit] {
   margin-top: 60px;
   padding-top: 60px;
   border-top: 1px solid #dfdfdf;
+}
+.press-media .block .container .item {
+  overflow: hidden;
+}
+.press-media .block .container .item a img {
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.press-media .block .container .item:hover a img {
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
 }
 .press-media .block .container-title {
   position: relative;
