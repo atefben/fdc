@@ -39,7 +39,7 @@
 
             Doté d’un budget de 1.5 milliard d’euros pour les sept prochaines années et d’un nouveau fond de garantie destiné à faciliter l’accès au financement pour les secteurs culturels et créatifs d’un montant de 750 millions d’euros, EUROPE CREATIVE permet ainsi d’assurer aujourd’hui la continuité de ce qui a été entrepris depuis plus de 20 ans : renforcer l'offre culturelle européenne dans toute sa diversité et soutenir l'industrie en lui offrant de nouvelles perspectives de développement. <br>
 
-            « A l’image des 21 films soutenus par l’Europe et présentés cette année au Festival, il contribuera à la réalisation et la distribution de films éblouissants dont les histoires, parfois ancrées dans des territoires bien précis, dépassent leurs frontières pour véhiculer au public du monde entier des valeurs universels et lui offrir un cinéma de qualité. » a déclaré 
+            « A l’image des 21 films soutenus par l’Europe et présentés cette année au Festival, il contribuera à la réalisation et la distribution de films éblouissants dont les histoires, parfois ancrées dans des territoires bien précis, dépassent leurs frontières pour véhiculer au public du monde entier des valeurs universels et lui offrir un cinéma de qualité. » a déclaré
             Androulla VASSILIOU. <br>
 
             Cette année Androulla VASSILIOU invite également, au cours d’une conférence, les professionnels européens du film à discuter des défis auxquels ils sont confrontés et à aborder l’impératif toujours plus pressant dans un contexte de profond changement technologique, d'éveiller et de maintenir la curiosité et l'intérêt des publics pour le cinéma, et en particulier l'intérêt des plus jeunes. Impératif placé au cœur de l'action du nouveau programme EUROPE CREATIVE.
@@ -87,7 +87,7 @@
                       <span class="descript">Remise du prix MEDIA à Danis Tanovic</span>
                     </li>
                   </ul>
-                  <a href="#" class="button">Toute la programmation</a>
+                  <a href="programmation-evenementiel.php" class="button">Toute la programmation</a>
                 </div>
               </div>
             </div>

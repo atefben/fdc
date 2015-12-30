@@ -265,7 +265,7 @@
                       <span class="location">Grand Théâtre Lumière</span>
                     </li>
                   </ul>
-                  <a href="#" class="button">Toute la programmation</a>
+                  <a href="programmation-evenementiel.php" class="button">Toute la programmation</a>
                 </div>
               </div>
             </div>
@@ -351,7 +351,7 @@
       </div>
       <span class="anim"></span>
     </div>
-    
+
 <!-- POPIN MAIL SHARE -->
     <div class="popin-mail popin">
       <div class="contain-popin popin">
@@ -380,7 +380,7 @@
       </div>
     </div>
 <!-- END POPIN MAIL SHARE -->
-    
+
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

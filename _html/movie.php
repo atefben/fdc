@@ -97,7 +97,7 @@
               <li><a href="#audios">audios</a></li>
               <li><a href="#press">infos presse</a></li>
             </ul>
-            <div class="buttons square">
+            <div class="buttons square share">
               <a href="#" class="button facebook"></a>
               <a href="#" class="button twitter"></a>
               <a href="#" class="button link"></a>

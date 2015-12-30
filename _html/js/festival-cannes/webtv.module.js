@@ -11,7 +11,7 @@ $(document).ready(function() {
        $('#live').addClass('on');
        //$('#live .img').addClass('rePosition');
        $('#live').data('height', $('#live').height()).height($(window).height() - 91);
-       
+
 
        $('body').css('padding-top', 0);
        setTimeout(function() {
@@ -41,7 +41,7 @@ $(document).ready(function() {
         }
       }
 
-      var sliderTrailers = $("#slider-trailers").owlCarousel({ 
+      var sliderTrailers = $("#slider-trailers").owlCarousel({
         nav: false,
         dots: false,
         smartSpeed: 500,
@@ -85,7 +85,7 @@ $(document).ready(function() {
     }
 
    // create slide for trailers
-    var sliderTrailer = $("#slider-trailer").owlCarousel({ 
+    var sliderTrailer = $("#slider-trailer").owlCarousel({
         nav: false,
         dots: false,
         smartSpeed: 500,
@@ -124,11 +124,11 @@ if($('.webtv-ba-video').length){
 
       $('.nav li').click(function(){
         if($(this).hasClass('active')){
-          
+
         }else{
           $('.nav').find('.active').removeClass('active');
           $(this).addClass('active');
-          
+
             if($(this).hasClass('infos-film-li')){
               $('.program-film').css({display:'none'});
               $('.infos-film').css({display:'block'});
@@ -141,7 +141,7 @@ if($('.webtv-ba-video').length){
         }
       });
     }
-    
+
     //ajax
     $('.webtv .sub-nav-list a').on('click',function(e){
       //:not(.active)
@@ -149,10 +149,10 @@ if($('.webtv-ba-video').length){
 
       if($(this).is(':not(.active)')) {
         var urlPath = $(this).attr('href');
-        
+
 //        $.get($(this).data('url'), function(data){
         $.get(urlPath, function(data){
-          
+
           $( ".content-webtv" ).html( $(data).find('.content-webtv') );
           $('#live').html( $(data).find('#live') );
           history.pushState('',GLOBALS.texts.url.title, urlPath);
@@ -167,12 +167,12 @@ if($('.webtv-ba-video').length){
         $(this).addClass('active');
       }
     });
-    
+
     $('.item').click(function(){
       var url = $(this).find('.vCenterKid a').attr('href');
       document.location.href = url ;
     });
-    
+
   }
 
   if($('.webtv-ba').length){

@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <?php include('head.html'); ?>  
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -250,7 +250,7 @@
                       <span class="location">Grand Théâtre Lumière</span>
                     </li>
                   </ul>
-                  <a href="#" class="button">Toute la programmation</a>
+                  <a href="programmation-evenementiel.php" class="button">Toute la programmation</a>
                 </div>
               </div>
             </div>

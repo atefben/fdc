@@ -52,24 +52,6 @@
                 <div class="grid-sizer"></div>
                 <div class="item">
                  <figure>
-<a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
-                   <figcaption>
-                     <a href="movie.php"><span class="name">Carol</span></a>
-                     <a href="artist_page.php"><span class="author">Todd HAYNES</span></a>
-                   </figcaption>
-                 </figure>
-                </div>
-                <div class="item">
-                 <figure>
-                  <a href="movie.php"> <img src="img/films/selection-officielle/cover-film2.jpg" alt=""></a>
-                   <figcaption>
-                     <a href="movie.php"><span class="name">Chronic</span></a>
-                     <a href="artist_page.php"><span class="author">Michel FRANCO</span></a>
-                   </figcaption>
-                 </figure>
-                </div>
-                <div class="item">
-                 <figure>
                    <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
@@ -80,25 +62,9 @@
                 </div>
                 <div class="item">
                  <figure>
-                   <a href="movie.php"> <img src="img/films/selection-officielle/cover-film3.jpg" alt=""></a>
-                   <figcaption>
-                     <a href="movie.php"><span class="name">Dheepan</span></a>
-                     <a href="artist_page.php"><span class="author">Jacques AUDIARD</span></a>
-                   </figcaption>
-                 </figure>
-                </div>
-                <div class="item">
-                 <figure>
-<a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
-                   <figcaption>
-                     <a href="movie.php"><span class="name">Carol</span></a>
-                     <a href="artist_page.php"><span class="author">Todd HAYNES</span></a>
-                   </figcaption>
-                 </figure>
-                </div>
-                <div class="item">
-                 <figure>
-                  <a href="movie.php"> <img src="img/films/selection-officielle/cover-film2.jpg" alt=""></a>
+                   <div class="image">
+                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film2.jpg" alt=""></a>
+                   </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">Chronic</span></a>
                      <a href="artist_page.php"><span class="author">Michel FRANCO</span></a>
@@ -107,7 +73,20 @@
                 </div>
                 <div class="item">
                  <figure>
-                   <a href="movie.php"> <img src="img/films/selection-officielle/cover-film3.jpg" alt=""></a>
+                    <div class="image">
+                        <a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
+                    </div>
+                   <figcaption>
+                     <a href="movie.php"><span class="name">Carol</span></a>
+                     <a href="artist_page.php"><span class="author">Todd HAYNES</span></a>
+                   </figcaption>
+                 </figure>
+                </div>
+                <div class="item">
+                 <figure>
+                   <div class="image">
+                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film3.jpg" alt=""></a>
+                   </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">Dheepan</span></a>
                      <a href="artist_page.php"><span class="author">Jacques AUDIARD</span></a>
@@ -116,17 +95,21 @@
                 </div>
                 <div class="item">
                  <figure>
-                   <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
+                   <div class="image">
+                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
+                   </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                    <a href="movie.php"> <span class="sub-name">(Tale of tales)</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
                      <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
                 </div>
                 <div class="item">
                  <figure>
-<a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
+                   <div class="image">
+                      <a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
+                   </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">Carol</span></a>
                      <a href="artist_page.php"><span class="author">Todd HAYNES</span></a>
@@ -135,7 +118,9 @@
                 </div>
                 <div class="item">
                  <figure>
-                  <a href="movie.php"> <img src="img/films/selection-officielle/cover-film2.jpg" alt=""></a>
+                   <div class="image">
+                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film2.jpg" alt=""></a>
+                  </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">Chronic</span></a>
                      <a href="artist_page.php"><span class="author">Michel FRANCO</span></a>
@@ -144,7 +129,9 @@
                 </div>
                 <div class="item">
                  <figure>
-                   <a href="movie.php"> <img src="img/films/selection-officielle/cover-film3.jpg" alt=""></a>
+                   <div class="image">
+                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film3.jpg" alt=""></a>
+                  </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">Dheepan</span></a>
                      <a href="artist_page.php"><span class="author">Jacques AUDIARD</span></a>
@@ -153,7 +140,54 @@
                 </div>
                 <div class="item">
                  <figure>
-                   <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
+                   <div class="image">
+                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
+                   </div>
+                   <figcaption>
+                     <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
+                     <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
+                   </figcaption>
+                 </figure>
+                </div>
+                <div class="item">
+                 <figure>
+                   <div class="image">
+                      <a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
+                  </div>
+                   <figcaption>
+                     <a href="movie.php"><span class="name">Carol</span></a>
+                     <a href="artist_page.php"><span class="author">Todd HAYNES</span></a>
+                   </figcaption>
+                 </figure>
+                </div>
+                <div class="item">
+                 <figure>
+                  <div class="image">
+                    <a href="movie.php"> <img src="img/films/selection-officielle/cover-film2.jpg" alt=""></a>
+                  </div>
+                   <figcaption>
+                     <a href="movie.php"><span class="name">Chronic</span></a>
+                     <a href="artist_page.php"><span class="author">Michel FRANCO</span></a>
+                   </figcaption>
+                 </figure>
+                </div>
+                <div class="item">
+                 <figure>
+                   <div class="image">
+                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film3.jpg" alt=""></a>
+                   </div>
+                   <figcaption>
+                     <a href="movie.php"><span class="name">Dheepan</span></a>
+                     <a href="artist_page.php"><span class="author">Jacques AUDIARD</span></a>
+                   </figcaption>
+                 </figure>
+                </div>
+                <div class="item">
+                 <figure>
+                   <div class="image">
+                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
+                   </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
                      <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
@@ -162,7 +196,7 @@
                  </figure>
                 </div>
               </div>
-          </div>  
+          </div>
         </section>
       </div>
       <div class="bandeau-list  bandeau-list-footer push-footer vCenter">

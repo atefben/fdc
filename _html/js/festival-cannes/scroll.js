@@ -20,7 +20,7 @@ function initParallaxElements() {
       'division': 2,
       'mov': 4
     });
-    
+
     // slider movies home
     parallaxElements.push({
       'el1': '#slider-movies .owl-item.active .video',
@@ -53,13 +53,13 @@ function initParallaxElements() {
   }
 }
 
-// update 
+// update
 function update(){
   var hW = $(window).height();
   for(var i=0; i<parallaxElements.length; i++) {
     if(scrollTarget > (parallaxElements[i].positionTop - hW) && scrollTarget < parallaxElements[i].positionTop + hW) {
       $(parallaxElements[i].el1).css('position', 'fixed');
-      render(parallaxElements[i].el1, parallaxElements[i].positionTop, parallaxElements[i].division, parallaxElements[i].mov, parallaxElements[i].direction); 
+      render(parallaxElements[i].el1, parallaxElements[i].positionTop, parallaxElements[i].division, parallaxElements[i].mov, parallaxElements[i].direction);
     } else {
       $(parallaxElements[i].el1).css('position', '');
     }
@@ -79,15 +79,15 @@ function render(el1, start, division, mov, direction){
   var sc = scrollTarget - start;
 
   if (sc !== scrollPos && scrollTarget > (start - hW * 2)){
-      
+
     // limit easing
-      
+
     if (Math.abs(scrollPos - sc) < scrollEaseLimit){
       scrollPos = sc;
     }
-      
+
     // increment pos with easing
-  
+
     scrollPos += (sc - scrollPos) * scrollEase;
 
 
@@ -107,17 +107,17 @@ function render(el1, start, division, mov, direction){
     });
 
 
-      
+
     // translate Element 2 with pos (plain speed)
-  
+
     // transform2 = 'translate3d(0px, ' + (scrollPos/mov) + 'px, 0px)';
-      
+
     // el2.style.webkitTransform = transform2;
     // el2.style.MozTransform = transform2;
     // el2.style.msTransform = transform2;
     // el2.style.OTransform = transform2;
     // el2.style.transform = transform2;
-      
+
   }
 }
 
@@ -222,7 +222,7 @@ $(document).ready(function() {
     }
 
     // PRESS
-    // sticky calendar 
+    // sticky calendar
     if($('.press-home').length || $('.press-programmation').length) {
       var $myCalendar = $('#calendar-wrapper');
       if(s > $('#calendar').offset().top - 91 && s < ($('.contact-press').offset().top - $myCalendar.height() - 91)) {
@@ -278,11 +278,11 @@ $(document).ready(function() {
       var sections = $('*[data-section')
         , nav = $('#nav-movie')
         , nav_height = nav.outerHeight() + $header.height();
-       
+
         sections.each(function() {
           var top = $(this).offset().top - nav_height,
               bottom = top + $(this).outerHeight();
-       
+
           if (s >= top && s <= bottom) {
             nav.find('ul a').removeClass('active');
 
@@ -337,7 +337,7 @@ $(document).ready(function() {
         }
       }, 3500);
     }
-    
+
   }, 100);
 
 //========== Scroll footer breadcrumb ==========/
@@ -352,5 +352,3 @@ $(document).ready(function() {
 
 
 });
-
-

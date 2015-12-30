@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Channels
@@ -301,7 +301,7 @@
 // =========================
 
 .webtv-ba {
-  
+
   .item:hover img {
     -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -329,7 +329,7 @@
     width: 100%;
   }
   #live {
-    background-image: url(../img/webtv/bandeau.jpg); 
+    background-image: url(../img/webtv/bandeau.jpg);
     background-size: cover;
     h2 {
       font-family: $Playfair;
@@ -344,7 +344,7 @@
       cursor: default;
       background: url('../img/webtv/bandes_annonces_play.svg');
     }
-    
+
   }
   .sticky {
     width: 100% !important;
@@ -435,7 +435,7 @@
 // ==========================
 
 .webtv-ba-video {
-  
+
   background-color: #141414 !important;
   .title-container {
     padding: 13px 0px 40px 0px;
@@ -573,7 +573,7 @@
           padding-bottom: 12px;
         }
         .where {
-          font-size: 16px; 
+          font-size: 16px;
           font-family: $CamphorRegular;
         }
         hr {
@@ -608,7 +608,7 @@
     }
     .share {
       margin: 9px 0 0 0;
-      
+
       .button {
         border-color: #2c2c2c;
         @include transition(all .5s $smoothTransition);
@@ -633,7 +633,7 @@
         background: url('../img/svg/print.svg') no-repeat center;
         background-size: 16px;
       }
-      
+
       .button:hover{
         border-color: $gold;
       }
@@ -663,7 +663,7 @@
           font-size: 0.56rem;
           color:$gold;
           font-family: $CamphorBold;
-          margin-bottom: 6px; 
+          margin-bottom: 6px;
           display: block;
         }
       }
@@ -724,6 +724,8 @@
   .bandeau-list-img {
     @include transition(all .5s $smoothTransition);
     height: 365px;
+    //TEST PARALLAX//
+    background: center 0 no-repeat fixed;
     background-size: cover;
     .title-list-header {
       color: #ffffff;
@@ -744,7 +746,7 @@
       }
     }
   }
-  
+
 // Media Trailer
 // ================
 
@@ -762,7 +764,7 @@
       height: 373px !important;
     }
   }
-  
+
   @media screen and (min-width: 1280px) and (max-width:1599px) {
 
     .bandeau-list-img{
@@ -782,5 +784,22 @@
     }
   }
 
-  
+  @media screen and (max-width:769px) {
+    .buttons.square .button {
+      height: 72px;
+      line-height: 73px;
+      padding: 0;
+      text-align: center;
+      width: 72px;
+    }
+  }
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .webtv-ba .sub-nav-list li{
+    padding: 16px 1.5px;
+  }
 }

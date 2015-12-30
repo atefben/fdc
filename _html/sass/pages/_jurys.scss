@@ -130,9 +130,17 @@
   .jury-box{
 
     display: inline-block;
-    
+
       a{
     color:#000;
+      }
+
+      &:hover a img {
+        @include transition(all 4s $linear);
+        @include transform(scale(1.08) translateZ(0));
+      }
+      .image{
+        overflow: hidden;
       }
   }
   .legend{
@@ -215,7 +223,7 @@
 //      padding-top: 173px !important;
     }
   }
-  
+
   @media screen and (min-width: 1280px) and (max-width:1599px) {
     .contain-jury{
       max-height: 603px;

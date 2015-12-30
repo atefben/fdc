@@ -15,7 +15,7 @@
    width: 100%;
    clear: both;
  }
- 
+
  .categorie-items {
    clear: both;
    .titre-document {
@@ -272,7 +272,7 @@
      }
    }
  }
- 
+
  // 1. Bandeau
  // =========================
 
@@ -285,6 +285,9 @@
      background-color: #1b1b1b;
      .bandeau-list-img {
        height: 300px;
+
+       //TEST PARALLAX//
+       background: center 0 no-repeat fixed;
        background-size: cover;
        @include transition(all 1s $linear);
        .title-list-header {
@@ -346,7 +349,7 @@
      .nav-list {
        margin: 0 auto;
        text-align: center;
-       font-family: $CamphorBold; 
+       font-family: $CamphorBold;
        background-color: #202020;
        width: 100%;
        z-index: 9;
@@ -369,7 +372,7 @@
      }
    }
  }
- 
+
  // 3. Selection officielle
  //==========================
 
@@ -403,7 +406,15 @@
          font-family: $CamphorItalic;
          font-size: .8125rem;
          color: #c8a461;
+         border-top: 0px solid #fff;
        }
+     }
+     &:hover a img {
+       @include transition(all 4s $linear);
+       @include transform(scale(1.08) translateZ(0));
+     }
+     .image{
+       overflow: hidden;
      }
    }
    .container:after {
@@ -495,11 +506,34 @@
   }
 }
 
-// 5. Media Bandeau
+// 5. Media
 // ================
 
+// MEDIA NAV
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .list-article .bandeau-list .nav-list li{
+    display: inline-block;
+    padding: 17px 1.5px;
+    text-transform: uppercase;
+  }
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .single-evenement .best-films .item-film{
+        margin: 0 20px;
+  }
+}
 
 
+
+
+//MEDIA BANDEAU
   @media screen and (min-width: 1920px) {
     .films-list .bandeau-list-img{
       height: 448px !important;
@@ -512,7 +546,7 @@
       height: 373px !important;
     }
   }
-  
+
   @media screen and (min-width: 1280px) and (max-width:1599px) {
 
     .films-list .bandeau-list-img{
@@ -531,4 +565,3 @@
       height: 296px !important;
     }
   }
-

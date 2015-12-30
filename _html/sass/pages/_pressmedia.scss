@@ -5,7 +5,7 @@
 
 
 .press-media.lock {
-  
+
   .mediatheque {
     .table {
       .line {
@@ -57,7 +57,7 @@
   .owl-carousel.owl-loaded{
     display:none;
   }
-  
+
   .slideshow {
     border: 0px solid #fff;
   }
@@ -182,7 +182,7 @@
           background-color: rgba(200, 164, 97, 0.51);
           color: #fff;
           border: 1px solid #cccccc;
-          
+
         }
       }
     }
@@ -305,6 +305,15 @@
       margin-top: 60px;
       padding-top: 60px;
       border-top: 1px solid #dfdfdf;
+      & .item{
+        overflow: hidden;
+      }
+      & .item a img{
+        @include transition(all 4s $linear);
+      }
+      & .item:hover a img {
+        @include transform(scale(1.08) translateZ(0));
+      }
     }
     .container-title{
       position: relative;
