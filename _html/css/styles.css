@@ -12519,7 +12519,7 @@ input[type=submit] {
 }
 .list-article .bandeau-list .nav-list li {
   display: inline-block;
-  padding: 16px 4.5px;
+  padding: 16px 6.5px;
   text-transform: uppercase;
 }
 
@@ -12648,6 +12648,11 @@ input[type=submit] {
     display: inline-block;
     padding: 17px 1.5px;
     text-transform: uppercase;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .single-evenement .best-films .item-film {
+    margin: 0 20px;
   }
 }
 @media screen and (min-width: 1920px) {
@@ -14985,6 +14990,7 @@ input[type=submit] {
 }
 .participate .contain-cinema .contain-map strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 .participate .contain-cinema .contain-map span {
   padding-bottom: 5px;
@@ -15223,9 +15229,6 @@ input[type=submit] {
   border-bottom: #FFF solid 0px;
 }
 
-.manual {
-  margin-bottom: 42px;
-}
 .manual .title-bandeau {
   background-color: #fff;
   padding: 50px 0px;
@@ -15455,6 +15458,11 @@ input[type=submit] {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
     height: 296px !important;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .partners .content-partners .contain-section .item-partners .contain-img {
+    width: 330px;
   }
 }
 .press {

@@ -408,6 +408,7 @@
       font-size: 0.81rem;
       strong {
         font-family: $CamphorBold;
+        font-weight: 700;
       }
       span {
         padding-bottom: 5px;
@@ -655,7 +656,6 @@
 // 4. Manual
 // ==========================
 .manual {
-  margin-bottom: 42px;
   .title-bandeau {
     background-color: #fff;
     padding: 50px 0px;
@@ -912,7 +912,7 @@
   }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width:1023px) { 
   .participate .bandeau-list,
   .participate .bandeau-list-img {
     height: 296px !important;
@@ -920,4 +920,15 @@
   .participate .title-list-header {
 //    padding-top: 103px !important;
   }
+}
+
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .partners .content-partners .contain-section .item-partners .contain-img{
+        width: 330px;
+  }
+
 }

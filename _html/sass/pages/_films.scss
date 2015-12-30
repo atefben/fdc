@@ -366,7 +366,7 @@
        }
        li {
          display: inline-block;
-         padding: 16px 4.5px;
+         padding: 16px 6.5px;
          text-transform: uppercase;
        }
      }
@@ -520,6 +520,18 @@ and (-webkit-min-device-pixel-ratio: 1){
     text-transform: uppercase;
   }
 }
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .single-evenement .best-films .item-film{
+        margin: 0 20px;
+  }
+}
+
+
+
 
 //MEDIA BANDEAU
   @media screen and (min-width: 1920px) {
