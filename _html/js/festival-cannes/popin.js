@@ -1,6 +1,6 @@
 $(document).ready(function() {
   if($('.popin-mail').length){
-    $('.button.email').click(function(e){
+    $('.button.email').on('click touchstart', function(e){
       e.preventDefault();
         $('.popin-mail').addClass('visible-popin');
         $("#main").addClass('overlay-popin');
@@ -139,7 +139,7 @@ $(document).ready(function() {
     var link = document.location.href;
     $('.share .link').attr('data-clipboard-text',link);
 
-    $('.share .link').on('click',function(e){
+    $('.share .link').on('click touchstart',function(e){
       e.preventDefault();
       if(!$('#share-box').length){
         $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+'Copied !'+'</a></div></div>');
