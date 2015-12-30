@@ -133,13 +133,28 @@ $(document).ready(function() {
 
     $('.share .link').on('click',function(){
       if(!$('#share-box').length){
-        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+link+'</a></div></div>');
+        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+'Copied !'+'</a></div></div>');
         $('#share-box').animate({'opacity':'1'},400,function(){
+
            $('#share-box').addClass('show');
+           setTimeout(function(){
+                 $('#share-box .bubble').html('<a href="#">'+link+'</a>');
+           }, 1000);
         });
       }else if($('#share-box').hasClass('show')){
         $('#share-box').removeClass('show');
         $('#share-box').remove();
       }
+
+      if($('.single-movie').length){
+        setTimeout(function(){
+              $('#share-box').animate({'opacity':0},200,function(){
+                $('#share-box').removeClass('show');
+                $('#share-box').remove();
+              });
+        }, 3000);
+
+      }
+
     });
   }

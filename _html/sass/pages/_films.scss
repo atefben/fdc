@@ -285,6 +285,9 @@
      background-color: #1b1b1b;
      .bandeau-list-img {
        height: 300px;
+
+       //TEST PARALLAX//
+       background: center 0 no-repeat fixed;
        background-size: cover;
        @include transition(all 1s $linear);
        .title-list-header {

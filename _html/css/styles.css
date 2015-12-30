@@ -10179,7 +10179,7 @@ article .read-later.rAlign span:after {
 .single-article .film .programmation-film .wrapper ul li {
   display: inline-block;
   font-size: 0.625rem;
-  width: 230px;
+  width: 211px;
 }
 .single-article .film .programmation-film .wrapper ul li span {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -12440,6 +12440,7 @@ input[type=submit] {
 }
 .list-article .bandeau-list .bandeau-list-img {
   height: 300px;
+  background: center 0 no-repeat fixed;
   background-size: cover;
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -13556,6 +13557,7 @@ input[type=submit] {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   height: 365px;
+  background: center 0 no-repeat fixed;
   background-size: cover;
 }
 .webtv-ba-video .bandeau-list-img .title-list-header {

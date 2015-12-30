@@ -97,7 +97,7 @@
               </div>
             </div>
             <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
-          </div> 
+          </div>
           <div class="text">
             <p><strong>Il y a différents statuts d’acteurs : Lambert Wilson, Virginie Ledoyen d’un côté et ensuite tu as Guillaume Gouix, jeune acteur, Franck Gastambile et le québécois François Arnaud … Vous êtes satisfait du rendu ?</strong></p>
             <p>Symboliquement, j’avais une famille : Lambert qui joue le père, Virginie la mère, Guillaume l’ainé, Franck le jeune un peu perdu et François le sale gosse. Et oui, j’en suis super content parce que je voulais une lecture nouvelle sur le film de genre .</p>
@@ -295,7 +295,7 @@
                       <span class="location">Grand Théâtre Lumière</span>
                     </li>
                   </ul>
-                  <a href="#" class="button">Toute la programmation</a>
+                  <a href="programmation-evenementiel.php" class="button">Toute la programmation</a>
                 </div>
               </div>
             </div>
@@ -387,7 +387,7 @@
       <span class="anim"></span>
     </div>
 
-   
+
 <!-- POPIN MAIL SHARE ---->
     <div class="popin-mail popin">
       <div class="contain-popin popin">
@@ -416,7 +416,7 @@
       </div>
     </div>
 <!-- END POPIN MAIL SHARE -->
-   
+
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

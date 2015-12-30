@@ -90,7 +90,7 @@
 
               </div>
             </div>
-            <a href="#" class="btn">Toute la programmation</a>
+            <a href="programmation-evenementiel.php" class="btn">Toute la programmation</a>
           </div>
         </div>
         <div class="share">
@@ -246,8 +246,8 @@
   </div>
 </div>
 <!-- END POPIN MAIL SHARE -->
-   
-   
+
+
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->
