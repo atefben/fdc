@@ -131,9 +131,13 @@ form[name="base_adminbundle_settings"] {
     color: #000000;
 }
 
+.fdc-list-translation-type-square a,
+.fdc-list-translation-type-square a:hover {
+    color: #000000;
+}
+
 .fdc-status-locked-bg-color {
-    background-color: #ffffff;
-    border: 1px solid red;
+    border: 1px solid red !important;
 }
 
 .fdc-status-translated-bg-color {
@@ -173,4 +177,19 @@ form[name="base_adminbundle_settings"] {
 
 .list-translation-legend-type-title {
     float:left;
+}
+
+.ui-tooltip {
+    background: red !important;
+    color: #ffffff !important;
+}
+
+.ui-tooltip a {
+    color: #ffffff !important;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.fdc-tooltip-lock-icon {
+    margin-right: 20px;
 }

@@ -39,6 +39,9 @@ file that was distributed with this source code.
                 <link rel="stylesheet" href="{{ asset(stylesheet) }}">
             {% endfor %}
 
+            {# FDC CUSTOM CSS #}
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
         {% endblock %}
 
         {% block javascripts %}
@@ -71,10 +74,7 @@ file that was distributed with this source code.
             {# FDC CUSTOM JAVASCRIPTS #}
             <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
             <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-            {% if app.request.get('_route') in admin_routes_translation_lock %}
-                <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-                <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-            {% endif %}
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
         {% endblock %}
         
@@ -114,12 +114,11 @@ file that was distributed with this source code.
     </head>
     <body {% block body_attributes %}class="sonata-bc skin-black fixed{% if app.request.get('_route') in admin_routes_translation_lock %} fdc-lock{% endif %}"{% endblock %}>
         {% include 'BaseAdminBundle:Site:modal.html.twig' %}
-        {% if app.request.get('_route') in admin_routes_translation_lock %}
-            <div id="fdc-dialog">
-                <div id="fdc-dialog-text">
-                </div>
+        {# custom dialog #}
+        <div id="fdc-dialog">
+            <div id="fdc-dialog-text">
             </div>
-        {% endif %}
+        </div>
         {% block sonata_header %}
             <header class="header">
                 {% block sonata_header_noscript_warning %}

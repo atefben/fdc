@@ -38,7 +38,7 @@ class LockController extends Controller
      * @Secure(roles="ROLE_ADMIN")
      * @Route("/create/{id}", options={"expose"=true})
      */
-    public function createLockAction(Request $request, $id)
+    public function createAction(Request $request, $id)
     {
         $entity = $request->get('entity');
         $locale = $request->get('locale');
@@ -87,7 +87,7 @@ class LockController extends Controller
         $em->flush();
 
         $response->setData(array(
-            'message' => 'Verrou crée'
+            'message' => 'Verrou crée.'
         ));
 
         return $response;
@@ -101,9 +101,9 @@ class LockController extends Controller
      * @return void
      *
      * @Secure(roles="ROLE_ADMIN")
-     * @Route("/has_lock/{id}", options={"expose"=true})
+     * @Route("/check/{id}", options={"expose"=true})
      */
-    public function hasLockAction(Request $request, $id)
+    public function checkAction(Request $request, $id)
     {
         $entity = $request->get('entity');
         $locale = $request->get('locale');
@@ -164,7 +164,7 @@ class LockController extends Controller
      * @Secure(roles="ROLE_ADMIN")
      * @Route("/delete/{id}", options={"expose"=true})
      */
-    public function deleteLockAction(Request $request, $id)
+    public function deleteAction(Request $request, $id)
     {
         $entity = $request->get('entity');
         $locale = $request->get('locale');
@@ -213,7 +213,7 @@ class LockController extends Controller
         $em->flush();
 
         $response->setData(array(
-            'message' => 'Verrou supprimé'
+            'message' => 'Verrou supprimé.<br/> La page va se rafraîchir dans 5 secondes.'
         ));
 
         return $response;
