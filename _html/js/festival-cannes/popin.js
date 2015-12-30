@@ -1,25 +1,50 @@
 $(document).ready(function() {
   if($('.popin-mail').length){
-    $('.button.email').click(function(){
-      if($('.popin-mail').hasClass('visible-popin')){
-        $('.popin-mail').removeClass('visible-popin');
-        $("#main").removeClass('overlay-popin');
-        $('footer').removeClass('overlay');
-      }else{
+    $('.button.email').click(function(e){
+      console.log('test');
+      e.preventDefault();
+      // if($('.popin-mail').hasClass('visible-popin')){
+      //
+      //   $('.popin-mail').removeClass('visible-popin');
+      //   $("#main").removeClass('overlay-popin');
+      //   $('footer').removeClass('overlay');
+      // }else{
         $('.popin-mail').addClass('visible-popin');
         $("#main").addClass('overlay-popin');
-      }
+      // }
     });
-    $(window).click(function(e){
-      var classObj = $(e.target);
-      if(!classObj.hasClass('popin')){
-        if($('.popin-mail').hasClass('visible-popin')){
-          $('.popin-mail').removeClass('visible-popin');
-          $("#main").removeClass('overlay-popin');
-          $('footer').removeClass('overlay-popin');
+    // $(window).click(function(e){
+    //   var classObj = $(e.target);
+    //   if(!classObj.hasClass('popin')){
+    //     if($('.popin-mail').hasClass('visible-popin')){
+    //       $('.popin-mail').removeClass('visible-popin');
+    //       $("#main").removeClass('overlay-popin');
+    //       $('footer').removeClass('overlay-popin');
+    //     }
+    //   }
+    // })
+
+    $(document).on('click', function (e) {
+
+      var $element= $(e.target);
+      if($element.hasClass('visible-popin')){
+
+      }else{
+        var $isPopin = $element.closest('.visible-popin');
+        var isButton = $element.hasClass('button');
+
+        if($isPopin.length || isButton){
+
+        }else{
+            $('.popin-mail').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+
         }
       }
-    })
+    });
+
+
   }
 
    if($('.popin-mail').length) {
@@ -51,6 +76,8 @@ $(document).ready(function() {
 
     // check valid email address
     $('.popin-mail input[type="email"]').on('input', function() {
+
+
       var input=$(this);
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       var is_email=re.test(input.val());
@@ -131,7 +158,8 @@ $(document).ready(function() {
     var link = document.location.href;
     $('.share .link').attr('data-clipboard-text',link);
 
-    $('.share .link').on('click',function(){
+    $('.share .link').on('click',function(e){
+      e.preventDefault();
       if(!$('#share-box').length){
         $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+'Copied !'+'</a></div></div>');
         $('#share-box').animate({'opacity':'1'},400,function(){
