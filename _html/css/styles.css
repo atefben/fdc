@@ -13625,6 +13625,11 @@ input[type=submit] {
   }
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .webtv-ba .sub-nav-list li {
+    padding: 16px 1.5px;
+  }
+}
 .sitemap h2 {
   padding: 60px;
   font-size: 28px;
