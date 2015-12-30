@@ -12643,6 +12643,13 @@ input[type=submit] {
   padding: 0px;
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .list-article .bandeau-list .nav-list li {
+    display: inline-block;
+    padding: 17px 1.5px;
+    text-transform: uppercase;
+  }
+}
 @media screen and (min-width: 1920px) {
   .films-list .bandeau-list-img {
     height: 448px !important;
