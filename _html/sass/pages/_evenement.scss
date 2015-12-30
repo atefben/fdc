@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Single evenement
@@ -80,7 +80,7 @@
 .single-evenement {
   padding-bottom: 0px;
   border-bottom: 1px solid #2c2c2c;
-  
+
   .slideshow {
     .caption {
       border-bottom: 1px solid #e5e5e5;
@@ -107,7 +107,7 @@
     }
   }
   .text {
-    //    padding-top: 60px; 
+    //    padding-top: 60px;
     width: 634px;
     a {
       color: #c8a461;
@@ -190,7 +190,7 @@
       text-align: left;
     }
   }
-  
+
   .best-films{
     padding-top: 37px;
     .item-film{
@@ -277,4 +277,15 @@
   .evenement .title-list-header {
     //      padding-top: 134px !important;
   }
+}
+
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .single-evenement .best-films .item-film{
+    margin: 0 23px;
+  }
+
 }

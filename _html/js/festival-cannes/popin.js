@@ -1,29 +1,10 @@
 $(document).ready(function() {
   if($('.popin-mail').length){
     $('.button.email').click(function(e){
-      console.log('test');
       e.preventDefault();
-      // if($('.popin-mail').hasClass('visible-popin')){
-      //
-      //   $('.popin-mail').removeClass('visible-popin');
-      //   $("#main").removeClass('overlay-popin');
-      //   $('footer').removeClass('overlay');
-      // }else{
         $('.popin-mail').addClass('visible-popin');
         $("#main").addClass('overlay-popin');
-      // }
     });
-    // $(window).click(function(e){
-    //   var classObj = $(e.target);
-    //   if(!classObj.hasClass('popin')){
-    //     if($('.popin-mail').hasClass('visible-popin')){
-    //       $('.popin-mail').removeClass('visible-popin');
-    //       $("#main").removeClass('overlay-popin');
-    //       $('footer').removeClass('overlay-popin');
-    //     }
-    //   }
-    // })
-
     $(document).on('click', function (e) {
 
       var $element= $(e.target);
