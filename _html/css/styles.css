@@ -12519,7 +12519,7 @@ input[type=submit] {
 }
 .list-article .bandeau-list .nav-list li {
   display: inline-block;
-  padding: 16px 6.5px;
+  padding: 16px 4.5px;
   text-transform: uppercase;
 }
 
@@ -13601,6 +13601,15 @@ input[type=submit] {
 @media screen and (max-width: 1023px) {
   .webtv-ba-video .bandeau-list-img {
     height: 296px !important;
+  }
+}
+@media screen and (max-width: 769px) {
+  .webtv-ba-video .buttons.square .button {
+    height: 72px;
+    line-height: 73px;
+    padding: 0;
+    text-align: center;
+    width: 72px;
   }
 }
 
@@ -16658,6 +16667,9 @@ input[type=submit] {
 }
 .press.lock.press-programmation .programmation {
   border-top: none;
+}
+.press.lock.press-programmation .programmation p {
+  width: 518px;
 }
 .press.press-home #calendar, .press.press-programmation #calendar {
   display: none;

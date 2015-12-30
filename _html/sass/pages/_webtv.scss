@@ -784,5 +784,13 @@
     }
   }
 
-
+  @media screen and (max-width:769px) {
+    .buttons.square .button {
+      height: 72px;
+      line-height: 73px;
+      padding: 0;
+      text-align: center;
+      width: 72px;
+    }
+  }
 }
