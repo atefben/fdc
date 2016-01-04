@@ -9,7 +9,7 @@
                 <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
             </div>
         </div>
-        {% include 'FDCEventBundle:Palmares:nav.html.twig' %}
+        {% include 'FDCEventBundle:Palmares:components/nav.html.twig' %}
     </div>
     <div class="container container-list">
         <section class="categorie-items">
@@ -18,7 +18,7 @@
             </div>
             {% for movie in movies %}
                 {% if movie.type == 0 %}
-                    {% include 'FDCEventBundle:Palmares:movie.html.twig' %}
+                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
                 {% endif %}
             {% endfor %}
         </section>
@@ -28,22 +28,13 @@
             </div>
             {% for movie in movies %}
                 {% if movie.type == 1 %}
-                    {% include 'FDCEventBundle:Palmares:movie.html.twig' %}
+                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
                 {% endif %}
             {% endfor %}
         </section>
     </div>
 
-    <div class="bandeau-list push-footer vCenter">
-        <div class="bandeau-list-img bandeau-list-footer vCenterKid" style="background-image:url({{ section.bottom_img }});">
-            <h2 class="title title-list-header">{{ section.bottom_title }}</h2>
-            <a href="{{ section.bottom_link }}" class="bandeau-lien">
-                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                <img src="{{ asset_url }}" class="svg-arrow" alt="{{ 'palmares.btn.decouvrirrubrique'|trans }}" />
-                {% endimage %}
-                {{ 'palmares.btn.decouvrirrubrique'|trans }}
-            </a>
-        </div>
-    </div>
+    {% include 'FDCEventBundle:Palmares:components/bandeau.html.twig' %}
+
 </div>
 {% endblock body %}

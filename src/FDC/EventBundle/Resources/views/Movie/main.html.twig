@@ -7,11 +7,11 @@
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-movie">
 
-        {% include 'FDCEventBundle:Movie:pagination.html.twig' %}
+        {% include 'FDCEventBundle:Movie:components/pagination.html.twig' %}
 
         <span id="plx"></span>
 
-        {% include 'FDCEventBundle:Movie:banner.html.twig' %}
+        {% include 'FDCEventBundle:Movie:components/banner.html.twig' %}
 
         <div id="nav-movie">
             <div class="container">
@@ -33,21 +33,21 @@
             </div>
         </div>
 
-        {% include 'FDCEventBundle:Movie:video.html.twig' %}
+        {% include 'FDCEventBundle:Movie:widgets/video.html.twig' %}
 
         <div class="container">
 
-            {% include 'FDCEventBundle:Movie:image.html.twig' %}
+            {% include 'FDCEventBundle:Movie:widgets/image.html.twig' %}
 
-            {% include 'FDCEventBundle:Movie:article.html.twig' %}
+            {% include 'FDCEventBundle:Movie:widgets/article.html.twig' %}
 
-            {% include 'FDCEventBundle:Movie:audio.html.twig' %}
+            {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' %}
 
         </div>
 
-        {% include 'FDCEventBundle:Movie:contact.html.twig' %}
+        {% include 'FDCEventBundle:Movie:components/contact.html.twig' %}
 
-        {% include 'FDCEventBundle:Movie:competition.html.twig' %}
+        {% include 'FDCEventBundle:Movie:widgets/competition.html.twig' %}
 
     </div>
     <span class="anim"></span>

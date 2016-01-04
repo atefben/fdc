@@ -244,7 +244,7 @@ class EventController extends Controller
                 'title' => 'Rendez-vous Européen',
                 'createdAt' => new \DateTime(),
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement1.jpg'
                 ),
                 'filter' => array(
                     'date' => 'date1',
@@ -257,7 +257,7 @@ class EventController extends Controller
                 'title' => 'Rendez-vous Européen',
                 'createdAt' => new \DateTime(),
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement2.jpg'
                 ),
                 'filter' => array(
                     'date' => 'date3',
@@ -270,7 +270,7 @@ class EventController extends Controller
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'createdAt' => new \DateTime(),
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement3.jpg'
                 ),
                 'filter' => array(
                     'date' => 'date4',
@@ -283,7 +283,7 @@ class EventController extends Controller
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'createdAt' => new \DateTime(),
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement1.jpg'
                 ),
                 'filter' => array(
                     'date' => 'date1',
@@ -296,7 +296,7 @@ class EventController extends Controller
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'createdAt' => new \DateTime(),
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement2.jpg'
                 ),
                 'filter' => array(
                     'date' => 'date2',
@@ -309,7 +309,7 @@ class EventController extends Controller
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'createdAt' => new \DateTime(),
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement3.jpg'
                 ),
                 'filter' => array(
                     'date' => 'date1',
@@ -322,7 +322,7 @@ class EventController extends Controller
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'createdAt' => new \DateTime(),
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement1.jpg'
                 ),
                 'filter' => array(
                     'date' => 'date5',

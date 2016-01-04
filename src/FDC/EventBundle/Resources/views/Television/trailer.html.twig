@@ -19,7 +19,7 @@
             <div class="infos">
                 <strong>{{ trailer.title }}</strong>
                 <span class="time">{{ trailer.createdAt|date('d.m.y') }} . {{ trailer.createdAt|date('H:i') }}</span>
-                <p>{{ trailer.description }}</p>
+                <p>{{ trailer.title }}</p>
             </div>
             <div class="buttons square">
                 <a href="#" class="button facebook"></a>
@@ -34,7 +34,7 @@
         <div id="slider-trailers" class="owl-carousel sliderDrag">
             {% for trailer in trailers %}
                 <div class="trailer shadow-bottom">
-                    {% include 'FDCEventBundle:Television:video.html.twig' %}
+                    {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
                 </div>
             {% endfor %}
         </div>
@@ -42,8 +42,8 @@
     <div id="content-latest">
         <h2 class="title">{{ 'webtv.trailer.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
-            {% for video in videos %}
-                {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
+            {% for video in trailers %}
+                {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
             {% endfor %}
         </div>
     </div>

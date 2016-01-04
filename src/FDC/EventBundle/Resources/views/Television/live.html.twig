@@ -28,7 +28,7 @@
             {% for channel in channels %}
                 {% if channel.most_viewed %}
                     <div class="vid shadow-bottom">
-                        {% include 'FDCEventBundle:Television:video.html.twig' %}
+                        {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
                     </div>
                 {% endif %}
             {% endfor %}
@@ -37,7 +37,7 @@
             {% for channel in channels %}
                 {% if channel.most_viewed == false %}
                     <div class="channel shadow-bottom">
-                        {% include 'FDCEventBundle:Television:video.html.twig' %}
+                        {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
                     </div>
                 {% endif %}
             {% endfor %}
@@ -55,7 +55,7 @@
         </p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
             {% for video in trailers %}
-                {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
+                {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
             {% endfor %}
         </div>
     </div>
@@ -63,7 +63,7 @@
         <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
             {% for video in videos %}
-                {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
+                {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
             {% endfor %}
         </div>
     </div>

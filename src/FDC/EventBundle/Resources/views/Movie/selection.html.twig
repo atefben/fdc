@@ -9,56 +9,8 @@
                 <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
             </div>
         </div>
-        <ul class="sub-nav-list nav-list">
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'competition'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'competition' %}active{% endif %} ajax">
-                    {{ 'selection.nav.competition'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'certain-regard'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'certain-regard' %}active{% endif %} ajax">
-                    {{ 'selection.nav.certain-regard'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'hors-competition'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'hors-competition' %}active{% endif %} ajax">
-                    {{ 'selection.nav.certain-regard'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'seances-speaciales'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'seances-speaciales' %}active{% endif %} ajax">
-                    {{ 'selection.nav.certain-regard'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinefondation'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cinefondation' %}active{% endif %} ajax">
-                    {{ 'selection.nav.cinefondation'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'court-metrage'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'court-metrage' %}active{% endif %} ajax">
-                    {{ 'selection.nav.camera-dor'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'cannes-classics'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cannes-classics' %}active{% endif %} ajax">
-                    {{ 'selection.nav.tout-palmares'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinema-plage'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cinema-plage' %}active{% endif %} ajax">
-                    {{ 'selection.nav.tout-palmares'|trans }}
-                </a>
-            </li>
-        </ul>
+
+        {% include 'FDCEventBundle:Movie:components/filters.html.twig' %}
     </div>
     <div class="container container-list ">
         <section class="categorie-items">

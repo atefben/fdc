@@ -12,66 +12,7 @@
                 </div>
             </div>
         </div>
-        <ul class="sub-nav-list">
-            <li>
-                <a href="{{ path('fdc_event_television_trailers', {'slug': 'competition'}) }}"
-                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'competition'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'competition' %}active{% endif %} ajax">
-                    {{ 'television.trailers.nav.competition'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_television_trailers', {'slug': 'certain-regard'}) }}"
-                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'certain-regard'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'certain-regard' %}active{% endif %} ajax">
-                    {{ 'television.trailers.nav.certainregard'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_television_trailers', {'slug': 'hors-competition'}) }}"
-                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'hors-competition'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'hors-competition' %}active{% endif %} ajax">
-                    {{ 'television.trailers.nav.horscompetition'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_television_trailers', {'slug': 'seances-speciales'}) }}"
-                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'seances-speciales'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'seances-speciales' %}active{% endif %} ajax">
-                    {{ 'television.trailers.nav.seancesspeciales'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_television_trailers', {'slug': 'cinefondation'}) }}"
-                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'cinefondation'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cinefondation' %}active{% endif %} ajax">
-                    {{ 'television.trailers.nav.cinefondation'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_television_trailers', {'slug': 'court-metrage'}) }}"
-                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'court-metrage'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'court-metrage' %}active{% endif %} ajax">
-                    {{ 'television.trailers.nav.courtmetrage'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_television_trailers', {'slug': 'cannes-classics'}) }}"
-                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'cannes-classics'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cannes-classics' %}active{% endif %} ajax">
-                    {{ 'television.trailers.nav.cannesclassics'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_television_trailers', {'slug': 'cinema-de-la-plage'}) }}"
-                   data-url="{{ path('fdc_event_television_trailers', {'slug': 'cinema-de-la-plage'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %} ajax">
-                    {{ 'television.trailers.nav.cinemadelaplage'|trans }}
-                </a>
-            </li>
-
-
-        </ul>
+        {% include 'FDCEventBundle:Television:components/filters.html.twig' %}
     </div>
     <div class="content-webtv">
         <div class="listtrailer grid all-videos">

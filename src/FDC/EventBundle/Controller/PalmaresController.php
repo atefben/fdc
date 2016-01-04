@@ -168,7 +168,7 @@ class PalmaresController extends Controller
         }
 
         return $this->render(
-            'FDCEventBundle:Palmares:palmares.'.$section["type"].'.html.twig',
+            'FDCEventBundle:Palmares:'.$section["type"].'.html.twig',
             array(
                 'section' => $section,
                 'movies' => $movies

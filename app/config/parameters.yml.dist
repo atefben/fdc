@@ -70,7 +70,7 @@ parameters:
     partner_kering: '//www.kering.com/fr'
     partner_renault: '//group.renault.com'
     partner_mastercard: '//www.mastercard.com/fr/particuliers/index.html'
-    footer_boutique: 'http://www.lienversboutique.com'
+    footer_boutique: '//www.boutiqueofficielle.festival-cannes.com/'
     social_appli: 'application-mobile'
     social_facebook: 'http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937'
     social_twitter: 'https://twitter.com/Festival_Cannes'

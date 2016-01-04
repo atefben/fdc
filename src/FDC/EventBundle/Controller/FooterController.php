@@ -661,7 +661,7 @@ class FooterController extends Controller
 
     /**
      * @Route( "/register-newsletter" )
-     * @Template("FDCEventBundle:Footer:newsletter.html.twig")
+     * @Template("FDCEventBundle:Footer:components/newsletter.html.twig")
      * @param Request $request
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */

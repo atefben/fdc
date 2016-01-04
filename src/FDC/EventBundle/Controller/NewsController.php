@@ -50,7 +50,6 @@ class NewsController extends Controller
                 'title'=>'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »',
             ),
         );
-
         $filters = array(
             'dates' => array(
                 array(
@@ -81,7 +80,6 @@ class NewsController extends Controller
                 ),
             )
         );
-
         $home = array(
             'article' => array(
                 array(
@@ -93,7 +91,7 @@ class NewsController extends Controller
                     'category' => 'Cinéma de la plage',
                     'createdAt' => new \DateTime(),
                     'image' => array(
-                        'path' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
                     ),
                 ),
                 array(
@@ -105,7 +103,7 @@ class NewsController extends Controller
                     'category' => 'Conférence de Presse',
                     'createdAt' => new \DateTime(),
                     'image' => array(
-                        'path' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/02.jpg',
                     ),
                 ),
                 array(
@@ -117,7 +115,7 @@ class NewsController extends Controller
                     'category' => 'Cinéma de la plage',
                     'createdAt' => new \DateTime(),
                     'image' => array(
-                        'path' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
                     ),
                 ),
             ),
@@ -131,7 +129,7 @@ class NewsController extends Controller
                     'category' => 'Cinéma de la plage',
                     'createdAt' => new \DateTime(),
                     'image' => array(
-                        'path' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
                     ),
                 ),
                 array(
@@ -143,7 +141,7 @@ class NewsController extends Controller
                     'category' => 'Conférence de Presse',
                     'createdAt' => new \DateTime(),
                     'image' => array(
-                        'path' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
                     ),
                 ),
                 array(
@@ -155,7 +153,7 @@ class NewsController extends Controller
                     'category' => 'Cinéma de la plage',
                     'createdAt' => new \DateTime(),
                     'image' => array(
-                        'path' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
                     ),
                 ),
             ),
@@ -165,31 +163,31 @@ class NewsController extends Controller
                     'copyright' => "Équipe du film - Photocall - The Lobster",
                     'photos' => array(
                         array(
-                            'path' => 'img.jpg',
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                             'title' => 'lorem ipsum',
                             'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
+                            'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         ),
                         array(
-                            'path' => 'img.jpg',
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                             'title' => 'lorem ipsum',
                             'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
+                            'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         ),
                         array(
-                            'path' => 'img.jpg',
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                             'title' => 'lorem ipsum',
                             'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
+                            'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         ),
                         array(
-                            'path' => 'img.jpg',
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                             'title' => 'lorem ipsum',
                             'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
+                            'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         )
                     )
@@ -203,21 +201,21 @@ class NewsController extends Controller
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         ),
                         array(
-                            'path' => 'img.jpg',
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
                             'title' => 'lorem ipsum',
                             'alt' => 'lorem ipsum',
                             'thumb' => 'img.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         ),
                         array(
-                            'path' => 'img.jpg',
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
                             'title' => 'lorem ipsum',
                             'alt' => 'lorem ipsum',
                             'thumb' => 'img.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         ),
                         array(
-                            'path' => 'img.jpg',
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
                             'title' => 'lorem ipsum',
                             'alt' => 'lorem ipsum',
                             'thumb' => 'img.jpg',
@@ -259,61 +257,75 @@ class NewsController extends Controller
                 ),
             )
         );
-
         $homeCategories = array(
             array(
-                'title' => 'Lorem ipsum',
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'img.jpg'
-                ),
-            ),
-            array(
-                'title' => 'Lorem ipsum',
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'img.jpg'
-                ),
-            ),
-            array(
-                'title' => 'Lorem ipsum',
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'img.jpg'
-                ),
-            )
-        );
-        $homeCategoriesFeatured = array(
-            array(
-                'title' => 'Lorem ipsum',
+                'title' => 'Le jury',
                 'blank' => false,
                 'bigger' => false,
                 'href' => '/category',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push01.jpg'
                 ),
             ),
             array(
-                'title' => 'Lorem ipsum',
+                'title' => 'Le palmares',
+                'blank' => false,
+                'bigger' => false,
+                'href' => '/category',
+                'image' => array(
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push02.jpg'
+                ),
+            ),
+            array(
+                'title' => 'La programmation',
+                'blank' => false,
+                'bigger' => false,
+                'href' => '/category',
+                'image' => array(
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push03.jpg'
+                ),
+            ),
+        );
+        $homeCategoriesFeatured = array(
+            array(
+                'title' => 'Espace presse',
+                'blank' => false,
+                'bigger' => false,
+                'href' => '/category',
+                'image' => array(
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push04.jpg'
+                ),
+            ),
+            array(
+                'title' => '',
+                'blank' => true,
+                'bigger' => true,
+                'href' => '',
+                'image' => array(
+                    'path' => ''
+                ),
+            ),
+            array(
+                'title' => 'Participer <br> au festival',
+                'blank' => false,
+                'bigger' => false,
+                'href' => '/category',
+                'image' => array(
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push05.jpg'
+                ),
+            ),
+            array(
+                'title' => 'L\'oeil du photographe',
                 'blank' => false,
                 'bigger' => true,
                 'href' => '/category',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push06.jpg'
                 ),
             ),
             array(
                 'title' => 'Lorem ipsum',
                 'blank' => true,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'img.jpg'
-                ),
-            ),
-            array(
-                'title' => 'Lorem ipsum',
-                'blank' => false,
                 'bigger' => false,
                 'href' => '/category',
                 'image' => array(
@@ -330,16 +342,24 @@ class NewsController extends Controller
                 ),
             ),
             array(
-                'title' => 'Lorem ipsum',
+                'title' => 'Les évènements',
                 'blank' => false,
                 'bigger' => false,
                 'href' => '/category',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push07.jpg'
+                ),
+            ),
+            array(
+                'title' => '69 ans d\'archives',
+                'blank' => false,
+                'bigger' => false,
+                'href' => '/category',
+                'image' => array(
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push08.jpg'
                 ),
             )
         );
-
         $videos = array(
             array(
                 'theme' => 'Conférence de presse',
@@ -347,8 +367,9 @@ class NewsController extends Controller
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'nbVideos' => 125,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -363,8 +384,9 @@ class NewsController extends Controller
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'nbVideos' => 125,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -379,8 +401,9 @@ class NewsController extends Controller
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'nbVideos' => 125,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -394,9 +417,10 @@ class NewsController extends Controller
                 'most_viewed' => false,
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
+                'nbVideos' => 125,
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -408,11 +432,12 @@ class NewsController extends Controller
             array(
                 'theme' => 'Conférence de presse',
                 'most_viewed' => false,
+                'nbVideos' => 125,
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -424,11 +449,12 @@ class NewsController extends Controller
             array(
                 'theme' => 'Conférence de presse',
                 'most_viewed' => false,
+                'nbVideos' => 125,
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -440,11 +466,12 @@ class NewsController extends Controller
             array(
                 'theme' => 'Conférence de presse',
                 'most_viewed' => false,
+                'nbVideos' => 125,
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -456,11 +483,12 @@ class NewsController extends Controller
             array(
                 'theme' => 'Conférence de presse',
                 'most_viewed' => false,
+                'nbVideos' => 125,
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -472,11 +500,12 @@ class NewsController extends Controller
             array(
                 'theme' => 'Conférence de presse',
                 'most_viewed' => false,
+                'nbVideos' => 125,
                 'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                 'createdAt' => new \DateTime(),
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'img' => array(
-                    'path' => 'img.jpg',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
                     'src'      => 'http://dummyimage.com/320x404/3498db/.png',
                     'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                 ),
@@ -486,14 +515,78 @@ class NewsController extends Controller
                 )
             )
         );
+        $videoSlider = array(
+            array(
+                'title' => 'Lorem Ipsum',
+                'source' => array(
+                    'mp4' => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                    'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
+                ),
+                'image' => array(
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
+                ),
+                'category' => 'Lorem ipsum',
+                'author' => array(
+                    'fullName' => 'Lorem Ipsum'
+                )
+            ),
+            array(
+                'title' => 'Lorem Ipsum',
+                'source' => array(
+                    'mp4' => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                    'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
+                ),
+                'image' => array(
+                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
+                ),
+                'category' => 'Lorem ipsum',
+                'author' => array(
+                    'fullName' => 'Lorem Ipsum'
+                )
+            ),
+        );
+        $wallPosts = array(
+            array(
+                'big' => true,
+            ),
+            array(
+                'big' => true,
+            ),
+            array(
+                'big' => false,
+            ),
+            array(
+                'big' => false,
+            ),
+            array(
+                'big' => false,
+            ),
+            array(
+                'big' => false,
+            ),
+            array(
+                'big' => false,
+            ),
+            array(
+                'big' => false,
+            ),
+            array(
+                'big' => false,
+            ),
+            array(
+                'big' => false,
+            ),
+        );
 
         return array(
             'homeSlider' => $homeSlider,
             'homeArticles' => $home,
             'filters' => $filters,
             'videos' => $videos,
+            'videoSlider' => $videoSlider,
             'homeCategories' => $homeCategories,
             'homeCategoriesFeatured' => $homeCategoriesFeatured,
+            'wallPosts' => $wallPosts
         );
     }
 
@@ -501,6 +594,7 @@ class NewsController extends Controller
      * @Route("/articles/{slug}")
      * @Template("FDCEventBundle:News:main.html.twig")
      * @param $slug
+     * @return array
      */
     public function getAction($slug)
     {
@@ -525,6 +619,7 @@ class NewsController extends Controller
             $dateTime->format('Y-m-d H:i:s'),
             $isAdmin
         );
+
         if ($news === null) {
             throw new NotFoundHttpException();
         }
