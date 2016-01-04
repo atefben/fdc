@@ -20,7 +20,7 @@ class FooterController extends Controller
 {
     /**
      * @Route("/static-{page}")
-     * @Template("")
+     * @Template("FDCEventBundle:Footer:footer.$page.html.twig")
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -601,16 +601,15 @@ class FooterController extends Controller
                 break;
         }
 
-        return $this->render(
-            "FDCEventBundle:Footer:footer.$page.html.twig",
-            array('content' => $pageContent)
+        return array(
+            'content' => $pageContent
         );
 
     }
 
     /**
      * @Route("/contact")
-     * @Template("FDCEventBundle:Footer:footer.contact.html.twig")
+     * @Template("FDCEventBundle:Footer:contact.html.twig")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -662,7 +661,7 @@ class FooterController extends Controller
 
     /**
      * @Route( "/register-newsletter" )
-     * @Template("FDCEventBundle:Footer:footer.newsletter.html.twig")
+     * @Template("FDCEventBundle:Footer:newsletter.html.twig")
      * @param Request $request
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */

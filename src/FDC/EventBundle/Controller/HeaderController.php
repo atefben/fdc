@@ -12,7 +12,7 @@ class HeaderController extends Controller
 {
 
     /**
-     * @Template("FDCEventBundle:Header:header.date.html.twig")
+     * @Template("FDCEventBundle:Header:date.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dateAction()

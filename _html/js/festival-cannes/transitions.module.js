@@ -34,32 +34,41 @@ $(document).ready(function() {
 
   $('body').on('click', "a[target!='_blank']:not(.ajax)", function(e) {
     var href = $(this).attr('href');
-    e.preventDefault();
+    var isiPad = navigator.userAgent.match(/iPad/i) != null;
+    
+    if(!isiPad) {
+      e.preventDefault();
+    }
 
     if(href.indexOf('#') == -1) {
 
-      $('#main, footer').addClass('loading');
+      if(!isiPad) {
 
-      setTimeout(function() {
-        cl.show();
-        $loader.addClass('show');
-      }, 1100);
+        $('#main, footer').addClass('loading');
 
-      setTimeout(function() {
-        $loader.removeClass('show');
-      }, 1800);
+        setTimeout(function() {
+          cl.show();
+          $loader.addClass('show');
+        }, 1100);
 
-      setTimeout(function() {
-        var v = $(window).scrollTop();
-        if((v == 0 && $header.hasClass('sticky')) || (v == 10 && $header.hasClass('sticky'))) {
-          v = 11;
-        }
-        sessionStorage.setItem('scrolltop',v);
-        window.location = href;
-      }, 1900);
+        setTimeout(function() {
+          $loader.removeClass('show');
+        }, 1800);
+
+        setTimeout(function() {
+          var v = $(window).scrollTop();
+          if((v == 0 && $header.hasClass('sticky')) || (v == 10 && $header.hasClass('sticky'))) {
+            v = 11;
+          }
+          sessionStorage.setItem('scrolltop',v);
+          window.location = href;
+        }, 1900);
+      }
     }
 
-    return false;
+    if(!isiPad) {
+      return false;
+    }
   });
 
 });

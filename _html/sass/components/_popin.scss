@@ -1,6 +1,7 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
+// 2. POPIN
 // =========================
 
 
@@ -29,7 +30,8 @@
   z-index: 120;
   height: 70%;
   overflow-y: scroll;
-    
+  min-height: 345px;
+
   .contain-popin{
     width: 528px;
     margin:0 auto;
@@ -37,13 +39,13 @@
       .theme-article{
         font-family: $CamphorBold;
         font-size: 0.63rem;
-        color: #c8a461; 
+        color: #c8a461;
         text-transform: uppercase;
         letter-spacing: 1px;
         padding-right: 9px;
       }
       .date-article{
-        font-size: 0.63rem;  
+        font-size: 0.63rem;
         font-family: $CamphorBold;
       }
       .title-article{
@@ -58,9 +60,12 @@
         font-family: $CamphorBold;
         line-height: 24px;
         padding-bottom: 41px;
+        & a{
+          color: #c8a461;
+        }
       }
     }
-  
+
   form{
     width: 528px;
     margin:0 auto;
@@ -103,7 +108,7 @@
     /* Aspect général de la coche */
     [type="checkbox"]:not(:checked) + label:after,
     [type="checkbox"]:checked + label:after {
-      content: '✔';
+      content: '✔'; //attention à ce caractère//
       position: absolute;
       top: 3px; left: 2px;
       font-size: 9px;
@@ -121,7 +126,7 @@
       transform: scale(1); /* mise à l'échelle 1:1 */
     }
   }
-  
+
   #form {
     margin: 0 auto;
     overflow: hidden;
@@ -308,7 +313,7 @@
       }
     }
   }
-  
+
   .info-popin{
     display: block;
     width: 528px;
@@ -321,7 +326,12 @@
       padding-top: 22px;
       border-top:1px solid #e5e5e5;
     }
-    
+
+  }
+  .valid{
+    border: 1px solid #25a20c;
+    color:#25a20c;
+    padding: 19px 0px;
   }
 }
 .visible-popin{
@@ -329,4 +339,153 @@
   opacity: 1 !important;
   transform: translateY(-30px) !important;
   pointer-events: initial;
+}
+
+
+// 2. COOKIE BANNER //
+
+#cookies-banner {
+  width: 100%;
+  margin: 0;
+  background: #080808;
+  border-bottom: solid 1px rgb(0, 0, 0);
+  position: fixed;
+  bottom: 0px;
+  z-index: 200;
+  padding: 17px;
+  font-size: 0.75rem;
+}
+
+#cookies-banner p {
+  font-family:$CamphorRegular;
+  color: rgb(255, 255, 255);
+}
+
+#cookies-banner .cookie-accept {
+    position: fixed;
+    bottom: 151px;
+    right: 8px;
+    font-size: 30px;
+  .icon{
+    color:$gold;
+  }
+}
+
+//POPIN LINK//
+.share{
+  position: relative;
+}
+#share-box{
+    position: absolute;
+    top: 188px;
+    z-index: 2;
+    width: 371px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    @include transition(all 0.3s $smoothTransition);
+    opacity: 0;
+    &.show{
+     opacity: 1;
+    }
+  a{
+    color:#666666;
+    font-size: 0.75rem;
+  }
+}
+.bubble{
+  background: #fff;
+  border: 1px solid #dfdfdf;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+}
+.bubble:before {
+    content: "";
+    position: absolute;
+    top: -15%;
+    left: 49%;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    box-shadow: -1px -1px 0px #D4D4D4;
+    border: 5px solid;
+    border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(255, 255, 255) rgb(255, 255, 255);
+}
+
+.webtv-ba-video{
+  #share-box{
+    top: 84px;
+    z-index: 3;
+    width: 295px;
+
+    .bubble{
+      background-color: #141414;
+      border: 1px solid #2C2C2C;
+      padding: 5px;
+      text-align: center;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -8%;
+        left: 62%;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        box-shadow: -1px -1px 0px #2C2C2C;
+        border: 4px solid;
+        border-color: rgb(20, 20, 20);
+      }
+    }
+
+    & a {
+    color: #999999;
+    font-size: 0.75rem;
+    }
+  }
+}
+
+.canne-classic{
+  #share-box{
+    top: 187px;
+    z-index: 3;
+    width: 295px;
+
+    .bubble{
+      background-color: #141414;
+      border: 1px solid #2C2C2C;
+      padding: 5px;
+      text-align: center;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -8%;
+        left: 49%;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        box-shadow: -1px -1px 0px #2C2C2C;
+        border: 4px solid;
+        border-color: rgb(20, 20, 20);
+      }
+    }
+    & a {
+    color: #999999;
+    font-size: 0.75rem;
+    }
+    & a:hover{
+      color: #999999;
+      background-color: #141414;
+    }
+  }
 }

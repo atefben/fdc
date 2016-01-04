@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <?php include('head.html'); ?>  
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -30,7 +30,7 @@
               <p class="caption">Maïwenn - Photocall © FDC / Théophile Delange</p>
             </div>
           </div>
-          <p class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</p>
+          <div class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</div>
           <div class="slideshow">
             <div class="slideshow-img">
               <div class="images">
@@ -250,7 +250,7 @@
                       <span class="location">Grand Théâtre Lumière</span>
                     </li>
                   </ul>
-                  <a href="#" class="button">Toute la programmation</a>
+                  <a href="programmation-evenementiel.php" class="button">Toute la programmation</a>
                 </div>
               </div>
             </div>

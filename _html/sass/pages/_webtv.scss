@@ -1,10 +1,10 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Channels
 // 3. Single channel
-// 4. Bandes annonces
-// 5. Bandes annonces
+// 4. Trailers
+// 5. Single trailer
 // =========================
 // 1. Global
 // =========================
@@ -173,7 +173,6 @@
   #content-trailers {
     clear: both;
     background-color: $black;
-    border-bottom: 1px solid #2c2c2c;
     padding: 50px 0;
     position: relative;
     z-index: 2;
@@ -300,8 +299,9 @@
 
 // 4. Trailer
 // =========================
+
 .webtv-ba {
-  
+
   .item:hover img {
     -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -329,7 +329,7 @@
     width: 100%;
   }
   #live {
-    background-image: url(../img/webtv/bandeau.jpg); 
+    background-image: url(../img/webtv/bandeau.jpg);
     background-size: cover;
     h2 {
       font-family: $Playfair;
@@ -344,7 +344,7 @@
       cursor: default;
       background: url('../img/webtv/bandes_annonces_play.svg');
     }
-    
+
   }
   .sticky {
     width: 100% !important;
@@ -433,7 +433,9 @@
 
 // 5. Single trailer
 // ==========================
+
 .webtv-ba-video {
+
   background-color: #141414 !important;
   .title-container {
     padding: 13px 0px 40px 0px;
@@ -520,7 +522,7 @@
       }
     }
     .block {
-      height: 301px;
+      height: 308px;
       padding-top: 73px;
       border-right: 1px solid #2c2c2c;
       border-bottom: 1px solid #2c2c2c;
@@ -571,7 +573,7 @@
           padding-bottom: 12px;
         }
         .where {
-          font-size: 16px; 
+          font-size: 16px;
           font-family: $CamphorRegular;
         }
         hr {
@@ -606,7 +608,7 @@
     }
     .share {
       margin: 9px 0 0 0;
-      
+
       .button {
         border-color: #2c2c2c;
         @include transition(all .5s $smoothTransition);
@@ -631,7 +633,7 @@
         background: url('../img/svg/print.svg') no-repeat center;
         background-size: 16px;
       }
-      
+
       .button:hover{
         border-color: $gold;
       }
@@ -661,7 +663,7 @@
           font-size: 0.56rem;
           color:$gold;
           font-family: $CamphorBold;
-          margin-bottom: 6px; 
+          margin-bottom: 6px;
           display: block;
         }
       }
@@ -707,9 +709,7 @@
     -ms-transform: translateZ(0);
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
-    -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    @include transition(all .6s $smoothTransition);
     transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     z-index: 2;
   }
@@ -722,12 +722,14 @@
 }
   //bandeau//
   .bandeau-list-img {
+    @include transition(all .5s $smoothTransition);
     height: 365px;
+    //TEST PARALLAX//
+    background: center 0 no-repeat fixed;
     background-size: cover;
     .title-list-header {
       color: #ffffff;
       font-size: 1.75rem;
-//      padding-top: 155px;
     }
     .bandeau-lien {
       color: #c8a461;
@@ -743,5 +745,61 @@
           padding-right: 3px;
       }
     }
+  }
+
+// Media Trailer
+// ================
+
+
+
+  @media screen and (min-width: 1920px) {
+    .bandeau-list-img{
+      height: 448px !important;
+    }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+    .bandeau-list-img{
+      height: 373px !important;
+    }
+  }
+
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+    .bandeau-list-img{
+      height: 297px !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+    .bandeau-list-img{
+      height: 296px !important;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+    .bandeau-list-img{
+      height: 296px !important;
+    }
+  }
+
+  @media screen and (max-width:769px) {
+    .buttons.square .button {
+      height: 72px;
+      line-height: 73px;
+      padding: 0;
+      text-align: center;
+      width: 72px;
+    }
+  }
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .webtv-ba .sub-nav-list li{
+    padding: 16px 1.5px;
   }
 }

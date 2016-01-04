@@ -117,10 +117,11 @@ class NewsArticleAdmin extends Admin
                 'choices' => NewsArticleTranslation::getStatuses(),
                 'catalogue' => 'BaseAdminBundle'
             ))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit_translations' => array('template' => 'BaseAdminBundle:CRUD:list__action_edit_translations.html.twig'),
-                )
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+            ))
+            ->add('_preview', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
             ))
         ;
     }

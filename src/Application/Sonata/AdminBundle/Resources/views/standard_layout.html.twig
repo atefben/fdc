@@ -29,7 +29,6 @@ file that was distributed with this source code.
 
         {% block stylesheets %}
             {% stylesheets
-                '@SonataTranslationBundle/Resources/public/less/sonata-translation.less'
                 '@BaseAdminBundle/Resources/public/css/*.css'
             %}
         
@@ -39,6 +38,9 @@ file that was distributed with this source code.
             {% for stylesheet in admin_pool.getOption('stylesheets', []) %}
                 <link rel="stylesheet" href="{{ asset(stylesheet) }}">
             {% endfor %}
+
+            {# FDC CUSTOM CSS #}
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
         {% endblock %}
 
@@ -68,6 +70,11 @@ file that was distributed with this source code.
                     <script src="{{ asset('bundles/sonataadmin/vendor/select2/select2_locale_' ~ locale|replace({'_':'-'}) ~ '.js') }}"></script>
                 {% endif %}
             {% endif %}
+
+            {# FDC CUSTOM JAVASCRIPTS #}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
         {% endblock %}
         
@@ -105,8 +112,13 @@ file that was distributed with this source code.
         {% endblock %}
         </title>
     </head>
-    <body {% block body_attributes %}class="sonata-bc skin-black fixed"{% endblock %}>
+    <body {% block body_attributes %}class="sonata-bc skin-black fixed{% if app.request.get('_route') in admin_routes_translation_lock %} fdc-lock{% endif %}"{% endblock %}>
         {% include 'BaseAdminBundle:Site:modal.html.twig' %}
+        {# custom dialog #}
+        <div id="fdc-dialog">
+            <div id="fdc-dialog-text">
+            </div>
+        </div>
         {% block sonata_header %}
             <header class="header">
                 {% block sonata_header_noscript_warning %}
@@ -307,8 +319,10 @@ file that was distributed with this source code.
                                                 {% endif %}
                                             {% endblock %}
                                             <div class="container-fluid">
-                                                <div class="navbar-left">
-                                                    {% if _tab_menu is not empty %}
+                                                <div class="navbar-left"  {% if app.request.get('_route') in admin_routes_translation_legend %}id="fdc-list-translation-container"{% endif %}>
+                                                    {% if app.request.get('_route') in admin_routes_translation_legend %}
+                                                        {% include 'BaseAdminBundle:CRUD:list_translation_legend.html.twig' %}
+                                                    {% elseif _tab_menu is not empty %}
                                                         {{ _tab_menu|raw }}
                                                     {% endif %}
                                                 </div>

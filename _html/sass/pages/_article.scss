@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Single Article
@@ -154,7 +154,7 @@ article {
         height: auto;
         @include transition(all 3s $linear);
       }
-      
+
     }
 
     height: 165px;
@@ -443,9 +443,9 @@ article {
       color: #666;
       font-family: $CamphorRegular;
     }
- 
+
   }
-  
+
   .slideshow.article_photo{
     .slideshow-img{
       .thumbnails{
@@ -561,6 +561,7 @@ article {
   .film {
     height: 365px;
     overflow: hidden;
+    background-color: #2e2e2e;
 
     .info-film {
       background-color: #2e2e2e;
@@ -676,7 +677,7 @@ article {
           li {
             display: inline-block;
             font-size: 0.625rem;
-            width: 230px;
+            width: 211px; 
 
             span {
               font-family: $CamphorBold;
@@ -736,7 +737,7 @@ article {
         }
       }
     }
-    
+
   }
 
   .nav {
@@ -811,5 +812,5 @@ article {
     }
   }
 
-  
+
 }

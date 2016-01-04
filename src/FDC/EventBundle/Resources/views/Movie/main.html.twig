@@ -1,0 +1,55 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="single-movie loading">
+    <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
+    <div id="canvasloader" class="canvasloader"></div>
+    <div class="content-movie">
+
+        {% include 'FDCEventBundle:Movie:pagination.html.twig' %}
+
+        <span id="plx"></span>
+
+        {% include 'FDCEventBundle:Movie:banner.html.twig' %}
+
+        <div id="nav-movie">
+            <div class="container">
+                <ul>
+                    <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
+                    <li><a href="#casting">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
+                    <li><a href="#photos">{{ 'movie.middlenav.photos'|trans }}</a></li>
+                    <li><a href="#news">{{ 'movie.middlenav.actualites'|trans }}</a></li>
+                    <li><a href="#audios">{{ 'movie.middlenav.audios'|trans }}</a></li>
+                    <li><a href="#press">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
+                </ul>
+                <div class="buttons square">
+                    <a href="#" class="button facebook"></a>
+                    <a href="#" class="button twitter"></a>
+                    <a href="#" class="button link"></a>
+                    <a href="#" class="button email"></a>
+                    <a href="#" class="button print"></a>
+                </div>
+            </div>
+        </div>
+
+        {% include 'FDCEventBundle:Movie:video.html.twig' %}
+
+        <div class="container">
+
+            {% include 'FDCEventBundle:Movie:image.html.twig' %}
+
+            {% include 'FDCEventBundle:Movie:article.html.twig' %}
+
+            {% include 'FDCEventBundle:Movie:audio.html.twig' %}
+
+        </div>
+
+        {% include 'FDCEventBundle:Movie:contact.html.twig' %}
+
+        {% include 'FDCEventBundle:Movie:competition.html.twig' %}
+
+    </div>
+    <span class="anim"></span>
+</div>
+{% endblock body %}

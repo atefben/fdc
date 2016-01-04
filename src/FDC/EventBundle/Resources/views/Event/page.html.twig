@@ -1,0 +1,82 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="single-article single-evenement loading">
+    <div class="content-article">
+        <div class="container">
+            <a href="{{ path('fdc_event_event_get', {'slug': article.prev.slug}) }}" class="nav prev"></a>
+            <a href="{{ path('fdc_event_event_get', {'slug': article.next.slug}) }}" class="nav next"></a>
+            <div class="info">
+                <a href="#" class="category">{{ article.theme }}</a>
+                <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+                <span class="update">{{ 'event.single.label.miseajour'|trans }}</span>
+                <span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.updatedAt|date('H:i') }}</span>
+            </div>
+            <h2 class="title-article">{{ article.title }}</h2>
+            <div class="buttons">
+                <a id="share-article" href="#" class="button">{{ 'event.btn.partager'|trans }}</a>
+                <a href="#" class="button print">{{ 'event.btn.imprimer'|trans }}</a>
+            </div>
+
+            {% include 'FDCEventBundle:News:header/single-photo.html.twig' %}
+
+
+            <!-- QUOTE -->
+            {% for widget in article.widgets %}
+                {% if widget.type == "quote" %}
+                    {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
+                {% endif %}
+            {% endfor %}
+
+
+            <!-- TEXT -->
+            {% for widget in article.widgets %}
+                {% if widget.type == "text" %}
+                    {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
+                {% endif %}
+            {% endfor %}
+
+            <!-- SLIDESHOW -->
+            <div class="small-container">
+
+                {% for widget in article.widgets %}
+                    {% if widget.type == "image" and widget.photos|length > 1 %}
+                        {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+
+            <!-- AUDIO -->
+            {% for widget in article.widgets %}
+                {% if widget.type == "audio" %}
+                    {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
+                {% endif %}
+            {% endfor %}
+
+        </div>
+        <div class="share">
+            <p>{{ 'event.text.partagerlarticle'|trans }}</p>
+            <div class="buttons square">
+                <a href="#" class="button facebook"></a>
+                <a href="#" class="button twitter"></a>
+                <a href="#" class="button link"></a>
+                <a href="#" class="button email"></a>
+                <a href="#" class="button print"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- POPIN MAIL SHARE ---->
+    {{ render(controller('FDCEventBundle:Global:shareEmail',
+    {'section': article.theme,
+        'detail': article.createdAt|date('d.m.y'),
+        'title': article.title,
+        'description': article.introduction
+    }))
+    }}
+    <!-- END POPIN MAIL SHARE -->
+
+{% endblock body %}

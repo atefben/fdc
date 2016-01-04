@@ -1,0 +1,39 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="all-articles grid loading">
+    <span id="addtext">{{ 'article.list.text.ajouterselection'|trans }}</span>
+    <h2 class="title">{{ 'article.list.title.touslesarticles'|trans }}</h2>
+
+    {% include 'FDCEventBundle:News:article.filters.html.twig' %}
+
+    <div id="gridAudios" class="grid-wrapper" data-type="articles">
+        <div class="grid-sizer"></div>
+
+        {% for article in articles %}
+            <div class="item theme1 date1 date theme article">
+                <article class="article">
+                    <div class="img">
+                        <span class="picto"></span>
+                        <a href="{{ path('fdc_event_news_get', {'id': article.id }) }}">
+                            <img src='{{ article.image.path }}' />
+                        </a>
+                        <a href="#" class="read-later">
+                            <span>{{ 'article.list.btn.ajouteramaselection'|trans }}</span>
+                        </a>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">{{ article.theme }}</a>
+                        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+                        <h3><a href="{{ path('fdc_event_news_get', {'id': article.id }) }}">{{ article.title }}</a></h3>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+
+    </div>
+    <a id="next" href="articles2.html"></a>
+</div>
+{% endblock %}
+

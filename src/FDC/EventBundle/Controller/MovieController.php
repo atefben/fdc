@@ -14,7 +14,7 @@ class MovieController extends Controller
 
     /**
      * @Route("/movie/{slug}")
-     * @Template("FDCEventBundle:Movie:movie.main.html.twig")
+     * @Template("FDCEventBundle:Movie:main.html.twig")
      * @param $slug
      * @return array
      */
@@ -274,7 +274,7 @@ class MovieController extends Controller
 
     /**
      * @Route("/selection/{slug}")
-     * @Template("FDCEventBundle:Movie:movie.selection.html.twig")
+     * @Template("FDCEventBundle:Movie:selection.html.twig")
      * @param $slug
      * @return array
      */

@@ -1,5 +1,5 @@
 services:
-    base_admin.block.sites:
+    base.admin.block.sites:
         class: Base\AdminBundle\Block\BaseSiteBlockService
         arguments: [ 'base_admin.block.sites', @templating ]
         tags:

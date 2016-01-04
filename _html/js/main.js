@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Prehome
 // 2. Main menu
@@ -57,7 +57,7 @@ String.prototype.parseHashtag = function(twitter) {
     } else {
       return '<strong>' + t + '</strong>';
     }
-    
+
   });
 };
 
@@ -112,18 +112,18 @@ $(document).ready(function() {
     // 3. Slider Home
     // =========================
     var time = 7;
-   
+
     var $progressBar,
-        $bar, 
-        sliderHome, 
-        isPause, 
+        $bar,
+        sliderHome,
+        isPause,
         tick,
         percentTime;
 
-     function progressBar(){    
+     function progressBar(){
       // build progress bar elements
       buildProgressBar();
-        
+
       // start counting
       start();
     }
@@ -132,11 +132,11 @@ $(document).ready(function() {
       $progressBar = $("<div>",{
           id:"progressBar"
       });
-      
+
       $bar = $("<div>",{
           id:"bar"
       });
-      
+
       $progressBar.append($bar).prependTo($("#slider"));
     }
 
@@ -144,7 +144,7 @@ $(document).ready(function() {
       // reset timer
       percentTime = 0;
       isPause = false;
-      
+
       // run interval every 0.01 second
       tick = setInterval(interval, 10);
     };
@@ -152,21 +152,21 @@ $(document).ready(function() {
     function interval() {
       if(isPause === false){
         percentTime += 1 / time;
-        
+
         $bar.css({
             width: percentTime+"%"
         });
-        
+
         // if percentTime is equal or greater than 100
         if(percentTime >= 100){
-          // slide to next item 
+          // slide to next item
           $("#slider").trigger("next.owl.carousel");
           percentTime = 0;
         }
       }
     }
 
-    // pause while dragging 
+    // pause while dragging
     function pauseOnDragging(){
       isPause = true;
     }
@@ -175,7 +175,7 @@ $(document).ready(function() {
     function moved(){
       // clear interval
       clearTimeout(tick);
-        
+
       // start again
       start();
     }
@@ -208,7 +208,7 @@ $(document).ready(function() {
         $('#shd').removeClass('show');
         $('.read-more').html("Afficher <strong>plus d'actualités</strong>").removeClass('prevDay');
         $('#articles-wrapper').addClass('loading');
-        
+
         $('html, body').animate({
           scrollTop: $("#news").offset().top - 50
         }, 1000);
@@ -252,7 +252,7 @@ $(document).ready(function() {
           }
         });
       }
-        
+
     });
 
 
@@ -296,23 +296,23 @@ $(document).ready(function() {
           }
         });
       }, 600);
-      
+
     });
 
     // GRAPH SVG
 
     var s = Snap('#graphSVG');
-  
+
     // selection of points for the graph
     var points = [50,60,50,45,70,50,100,120,70,80,90,70],
         heightGraph = 200;
-    
+
     function makeGrid(){
-      
+
       var dataLength = points.length;
       var maxValue = heightGraph;
       var minValue = 35;
-      
+
       // Creates the vertical lines in the graph
       for (var i=0; i<dataLength; i++) {
         var x = 4 + i*80;
@@ -323,13 +323,13 @@ $(document).ready(function() {
         });
       }
     }
-    
+
     makeGrid();
-    
-    
+
+
     function convertToPath(points){
       var path = 'M4,' + (heightGraph - points[0]);
-      
+
       for (var i=0; i<points.length; i++){
         var x = i*80 + 4;
         var y = -points[i]+heightGraph;
@@ -345,40 +345,40 @@ $(document).ready(function() {
       }
       return path;
     }
-   
+
     function makePath(data){
       var pathString = convertToPath(data);
       var graphHeight = $('#graph').height();
-      
+
       function getDefaultPath(){
         var defaultPathString = 'M4,'+ (graphHeight - 30) +' H';
-      
+
         for (var i=0; i<data.length; i++) {
-          if (i!==0){ 
+          if (i!==0){
             defaultPathString += i*80+4+' ';
           }
         }
-        
+
         return defaultPathString;
       }
-      
+
       var path = s.path(getDefaultPath()).attr({
         stroke: '#c8a461',
         strokeWidth: 1,
         fill: 'transparent'
       });
-    
+
       path.animate({ path: pathString },500);
 
       /* point radius */
       var radius = 2;
-      
+
       /* iterate through points */
       setTimeout(function() {
         for (var i = 0, length = data.length; i < length; i++) {
           var xPos = i*80 + 4;
           var yPos = heightGraph - data[i];
-          
+
           var circle = s.circle(xPos, yPos, radius);
 
           circle.attr({
@@ -411,9 +411,9 @@ $(document).ready(function() {
       }, 600);
 
       graphRendered = true;
-      
+
     }
-    
+
 
     // INSTAGRAM
     var access_token = "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
@@ -432,7 +432,7 @@ $(document).ready(function() {
         url: url ,
         success: function(data) {
 
-          var count = 15; 
+          var count = 15;
           for (var i = 0; i < count; i++) {
             if (typeof data.data[i] !== 'undefined' ) {
               posts.push({'type': 'instagram', 'img': data.data[i].images.low_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div></div>', 'user': data.data[i].user.username});
@@ -464,28 +464,28 @@ $(document).ready(function() {
           data = JSON.parse(data);
           console.log(data);
           data = data.statuses;
-          var img = '';             
+          var img = '';
 
-          for (var i = 0; i < data.length; i++) {        
-          
+          for (var i = 0; i < data.length; i++) {
+
             img = '';
             url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
             try {
               if (data[i].entities['media']) {
                 img = data[i].entities['media'][0].media_url;
               }
-            } catch (e) {  
+            } catch (e) {
               // no media
             }
-          
-            posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].text.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})    
+
+            posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].text.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
 
             if(i==data.length - 1) {
               callback();
             }
           }
-         
-        }   
+
+        }
       });
     }
 
@@ -574,7 +574,7 @@ $(document).ready(function() {
 
     // 7. Slider Channels
     // =========================
-    
+
     var sliderChannels = $("#slider-channels").owlCarousel({
       nav: false,
       dots: false,
@@ -608,7 +608,7 @@ $(document).ready(function() {
     // =========================
 
     function setHeightSlider() {
-     
+
       var newHeight = $(window).height() - 90,
           valueHeight = Math.round(($(window).width()/16)*9),
           top = newHeight - valueHeight;
@@ -817,13 +817,13 @@ $(document).ready(function() {
     $('.filter').each(function() {
       var $that = $(this);
       var a = $that.find('.select span.active').data('filter');
-      
+
       if(a == 'all') {
         return;
       }
 
       var obj = {'filter': $that.attr('id'), 'value': a};
-      
+
       filters.push(obj);
     });
 
@@ -913,11 +913,11 @@ $(document).ready(function() {
       var sections = $('*[data-section')
         , nav = $('#nav-movie')
         , nav_height = nav.outerHeight() + $('header').height();
-       
+
         sections.each(function() {
           var top = $(this).offset().top - nav_height,
               bottom = top + $(this).outerHeight();
-       
+
           if (s >= top && s <= bottom) {
             nav.find('ul a').removeClass('active');
 
@@ -984,7 +984,7 @@ $(document).ready(function() {
 
           $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
         }
-        
+
         inter = setInterval(function() {
           var curr = wave.getCurrentTime();
 
@@ -998,7 +998,7 @@ $(document).ready(function() {
           $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
         }, 1000);
 
-        
+
         if(!$audioplayer.hasClass('pause')) {
           for(var i = 0; i<waves.length; i++) {
             if(waves[i].isPlaying() && waves[i].container.id != wave.container.id) {
@@ -1192,7 +1192,7 @@ $(document).ready(function() {
         callback();
       }
     });
-    
+
   }
 
   function closeSelection() {
@@ -1219,7 +1219,7 @@ $(document).ready(function() {
 
       });
     }
-    
+
   });
 
   // filters
@@ -1235,7 +1235,7 @@ $(document).ready(function() {
 
     if(f == 'all') {
       return false;
-    } 
+    }
 
     if(f == 'suggestion') {
       // todo
@@ -1269,7 +1269,7 @@ $(document).ready(function() {
     }, 500);
   });
 
-  // add an article 
+  // add an article
   $('body').on('click', '.read-later', function(e) {
     e.preventDefault();
     var $article = $(this).parents('article').clone().removeClass('double').wrapAll("<div class='article'></div>").parent().wrapAll('<div></div>').parent();
@@ -1280,7 +1280,7 @@ $(document).ready(function() {
     openSelection(function() {
       $("#main").addClass('overlay');
       $('header .selection').addClass('opened');
-      
+
       setTimeout(function() {
         sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item">' + $article + '</div>'), 0]);
         sliderSelection.trigger('refresh.owl.carousel');
@@ -1288,7 +1288,7 @@ $(document).ready(function() {
         $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
       }, 700);
     });
-     
+
   });
 
   $('body').on('mouseover', '.read-later', function() {
@@ -1348,7 +1348,7 @@ $(document).ready(function() {
 
       var $el = $(this)
         , id = $el.attr('href').substr(1);
-     
+
       $('html, body').animate({
         scrollTop: $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height()
       }, 500);
@@ -1392,7 +1392,7 @@ $(document).ready(function() {
   // 18. All Photos
   // =========================
 
-  function setImages(grid, dom, init){     
+  function setImages(grid, dom, init){
     var $img            = $(dom).find('.item:not(.portrait) img'),
         pourcentage     = 0.50,
         nbImgAAgrandir  = $img.length * pourcentage,
@@ -1402,19 +1402,19 @@ $(document).ready(function() {
         max             = 0,
         min             = 0,
         nbImage         = $img.length;
-    
+
     while(x<nbImgAAgrandir){
       while(nbImgAAgrandir>nbRamdom.length){
           max = nbImage*pourcentage*x;
           min = nbImage * pourcentage * (x-1);
           nbAlea = Math.floor(Math.random() * (max-min)+min);
           nbRamdom[i] = nbAlea;
-          $($img[nbRamdom[i]]).closest('div.item').addClass('w2');    
+          $($img[nbRamdom[i]]).closest('div.item').addClass('w2');
           i++;
           x++;
-      }     
+      }
     }
-    
+
     if(!init){
       grid.append( $(dom) ).isotope( 'appended', $(dom) );
       grid.imagesLoaded().progress( function() {
@@ -1423,7 +1423,7 @@ $(document).ready(function() {
     }
   }
 
-  function setGrid(grid, dom, init){     
+  function setGrid(grid, dom, init){
     var $img            = $(dom).find('.item img'),
         pourcentage     = 0.30,
         nbImgAAgrandir  = $img.length * pourcentage,
@@ -1447,12 +1447,12 @@ $(document).ready(function() {
           }
           if(j==10){
               j=0;
-          }        
+          }
           i++;
         }
       }
       else if (window.matchMedia("(max-width: 1919px)").matches){
-                  
+
         while(i<$img.length){
           if(j<31){
               if(j==0 || j==3 || j==12 || j==17 || j==25 ){
@@ -1462,23 +1462,23 @@ $(document).ready(function() {
           }
           if(j==30){
               j=0;
-          }        
+          }
           i++;
         }
-      
+
       }
       else if (window.matchMedia("(min-width: 1920px)").matches){
         while(i<$img.length){
           if(j<16){
               if(j==0 || j==5 ||  j==15){
                   $($img[i]).closest('div.item').addClass('w2');
-                  
+
               }
               j++;
           }
           if(j==10){
               j=0;
-          }        
+          }
           i++;
         }
       }
@@ -1496,7 +1496,7 @@ $(document).ready(function() {
     var result = document.getElementById('result');
     if("matchMedia" in window) {
         setGrid(false,$('#gridAudios'),true);
-    }    
+    }
   }
 
   function closePopinAudio() {
@@ -1511,10 +1511,10 @@ $(document).ready(function() {
     if($('#gridPhotos').length) {
 
       var $container    = $('#gridPhotos'),
-          $grid;  
+          $grid;
 
       $grid = $('#gridPhotos').imagesLoaded(function() {
-        
+
         setImages($grid, $('#gridPhotos'),true);
         $grid.isotope({
           itemSelector: '.item',
@@ -1537,8 +1537,8 @@ $(document).ready(function() {
 
       slideshows.push(slideshow);
     }
-		
-		 if($('#gridWebtv').length){ 
+
+		 if($('#gridWebtv').length){
 			 	$grid = $('#gridWebtv').imagesLoaded(function() {
 
 					$grid.isotope({
@@ -1556,7 +1556,7 @@ $(document).ready(function() {
       });
 
       var $container    = $('#gridAudios'),
-          $grid;  
+          $grid;
 
       $grid = $('#gridAudios').imagesLoaded(function() {
         // init Isotope after all images have loaded
@@ -1581,7 +1581,7 @@ $(document).ready(function() {
                 date = $(e.target).find('.date').text(),
                 text = $(e.target).find('p').text(),
                 $popinAudio = $('.popin-audio');
-              
+
             $popinAudio.attr('data-sound', s);
             $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
             $popinAudio.find('.category').text(category);
@@ -1604,7 +1604,7 @@ $(document).ready(function() {
         path: function(index) {
           return $('#gridAudios').data('type') + index + ".html";
         }
-      }, function(newElements, data, url){ 
+      }, function(newElements, data, url){
         setGrid($grid, newElements,false);
 
       });
@@ -1612,7 +1612,7 @@ $(document).ready(function() {
 
     var filterValues = "";
 
-    // filters     
+    // filters
     $('body').on('click', '#filters span', function() {
 
       filterValues = "";
@@ -1622,8 +1622,8 @@ $(document).ready(function() {
           filterValues += '.' + $(this).data('filter');
         }
       });
-      
-      $container.isotope({ filter: filterValues }); 
+
+      $container.isotope({ filter: filterValues });
     });
   }
 
@@ -1688,7 +1688,7 @@ $(document).ready(function() {
       }
     });
   }
-  
+
 
   // 20. Webtv
   // =========================
@@ -1715,29 +1715,29 @@ $(document).ready(function() {
     });
 
     sliderTrailers.owlCarousel();
-		
+
 		if($('.webtv-ba-video').length){
 
 			$('.nav li').click(function(){
 				if($(this).hasClass('active')){
-					
+
 				}else{
 					$('.nav').find('.active').removeClass('active');
 					$(this).addClass('active');
-					
+
 						if($(this).hasClass('infos-film-li')){
 							$('.program-film').css({display:'none'});
 							$('.infos-film').css({display:'block'});
 							console.log(1);
 						}else{
 							$('.program-film').css({display:"block"});
-							$('.infos-film').css({display:"none"});			
+							$('.infos-film').css({display:"none"});
 							console.log(2);
 						}
 				}
 			})
 		}
-		
+
 		//ajax
 		$('.webtv .sub-nav-list a').on('click',function(e){
 			//:not(.active)
@@ -1745,7 +1745,7 @@ $(document).ready(function() {
 
 			if($(this).is(':not(.active)')) {
 				var urlPath = $(this).attr('href');
-				
+
 //				$.get($(this).data('url'), function(data){
 				$.get(urlPath, function(data){
 						$( ".content-webtv" ).html( $(data).find('.content-webtv') );
@@ -1757,7 +1757,7 @@ $(document).ready(function() {
 			}
 		});
   }
-	
+
 	    //Slider trailer
 
     var sliderTrailers = $("#slider-trailer").owlCarousel({
@@ -1790,11 +1790,11 @@ $(document).ready(function() {
 //			path: function(index) {
 //			return $('.listtrailer').data('type') + webtv_trailer_competition + ".php";
 //		}
-//		}, function(newElements, data, url){ 
+//		}, function(newElements, data, url){
 //			setGrid($grid, newElements,false);
 //		});
 //	}
-    
+
   // 21. FAQ
   // =========================
   if($('.faq').length) {
@@ -1803,7 +1803,7 @@ $(document).ready(function() {
         var i;
         i = $(this).find("i.fa");
         if($(this).hasClass("faq-article-active")){
-            
+
 						$(this).animate({maxHeight:"100px"},100,function(){
 								$(this).removeClass("faq-article-active");
 								i.removeClass("fa-minus").addClass("fa-plus");
@@ -1822,16 +1822,16 @@ $(document).ready(function() {
 					var $newActiveSection;
 					var $newActiveNav;
 					var nameNewActiveSection;
-					//find active section and name data 
+					//find active section and name data
 					$active = $('.faq-menu').find("li.active");
 					nameActiveSection = $active.data("name");
 					$activeSection = $('section[data-name='+nameActiveSection+']');
 					nameNewActiveSection= $(this).data("name");
 					$newActiveSection = $('section[data-name='+nameNewActiveSection+']');
 					$newActiveNav = $('li[data-name='+nameNewActiveSection+']');
-					
+
 					if($(this).hasClass("active")){
-							
+
 					}else{
 							//hide active section
 							$activeSection.animate({
@@ -1904,7 +1904,7 @@ $(document).ready(function() {
     } else {
       // ajax call newsletter
 
-      // show confirmation 
+      // show confirmation
       $('.newsletter form').addClass('hide');
       $('#confirmation span').html($('#email').val());
       $('#confirmation').addClass('show');
@@ -1926,20 +1926,20 @@ $(document).ready(function() {
       $('#prehome-container').height($(window).height());
     }
   });
-	
-	
-	
+
+
+
   // 23. Palmares
   // =========================
 	if($('.palmares-list').length){
-		
+
 			$('.palmares-list .sub-nav-list a').on('click',function(e){
 			//:not(.active)
 			e.preventDefault();
 
 			if($(this).is(':not(.active)')) {
 				var urlPath = $(this).attr('href');
-				
+
 //				$.get($(this).data('url'), function(data){
 				$.get(urlPath, function(data){
 						$( ".container-list" ).html( $(data).find('.container-list') );
@@ -1952,14 +1952,14 @@ $(document).ready(function() {
 		});
 	}
   	if($('.films-list').length){
-		
+
 			$('.films-list .sub-nav-list a').on('click',function(e){
 			//:not(.active)
 			e.preventDefault();
 
 			if($(this).is(':not(.active)')) {
 				var urlPath = $(this).attr('href');
-				
+
 //				$.get($(this).data('url'), function(data){
 				$.get(urlPath, function(data){
 						$( ".container-list" ).html( $(data).find('.container-list') );
@@ -1971,14 +1971,14 @@ $(document).ready(function() {
 			}
 		});
 	}
-  
-  // 24. Evenement 
+
+  // 24. Evenement
   //=============================
-      	if($('.evenement').length){ 
-          
+      	if($('.evenement').length){
+
           var $container    = $('#gridEvent'),
           $grid
-          var i                 = 1;  
+          var i                 = 1;
 
           $grid = $('#gridEvent').imagesLoaded(function() {
           // init Isotope after all images have loaded
@@ -2005,9 +2005,9 @@ $(document).ready(function() {
           url: 'evenements'+i+'.php' ,
           success: function(data) {
           $(".grid-wrapper").after(data);
-            
+
           var $container    = $('#gridEvent'),
-          $grid;  
+          $grid;
           $data = $(data).find(".grid-wrapper").prevObject;
             $data = $data.attr('id');
           console.log($data);
@@ -2026,7 +2026,7 @@ $(document).ready(function() {
 
           $grid.isotope('layout');
           });
-            
+
           }
         });
         });

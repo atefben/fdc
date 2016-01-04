@@ -28,7 +28,7 @@
               <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
             </div>
           </div>
-          <p class="chapeau">Parce que le FESTIVAL DE CANNES présente des films prestigieux, témoins de la créativité du cinéma mondial et notamment des cinéastes européens, la Commission européenne s’est toujours attachée à célébrer son amour pour le cinéma à cette occasion.</p>
+          <div class="chapeau">Parce que le FESTIVAL DE CANNES présente des films prestigieux, témoins de la créativité du cinéma mondial et notamment des cinéastes européens, la Commission européenne s’est toujours attachée à célébrer son amour pour le cinéma à cette occasion.</div>
           <div class="text">
             <p class="paragraph">
             Cette année, Androulla VASSILIOU, Commissaire européenne en charge de la culture, vient encore une fois illustrer cet engagement pour le cinéma au cœur du 67e Festival de Cannes, qui accueille pas moins de 21 films soutenus par le programme EUROPE CREATIVE de la Commission européenne, dans toutes ses sélections. <br>
@@ -39,36 +39,12 @@
 
             Doté d’un budget de 1.5 milliard d’euros pour les sept prochaines années et d’un nouveau fond de garantie destiné à faciliter l’accès au financement pour les secteurs culturels et créatifs d’un montant de 750 millions d’euros, EUROPE CREATIVE permet ainsi d’assurer aujourd’hui la continuité de ce qui a été entrepris depuis plus de 20 ans : renforcer l'offre culturelle européenne dans toute sa diversité et soutenir l'industrie en lui offrant de nouvelles perspectives de développement. <br>
 
-            « A l’image des 21 films soutenus par l’Europe et présentés cette année au Festival, il contribuera à la réalisation et la distribution de films éblouissants dont les histoires, parfois ancrées dans des territoires bien précis, dépassent leurs frontières pour véhiculer au public du monde entier des valeurs universels et lui offrir un cinéma de qualité. » a déclaré 
+            « A l’image des 21 films soutenus par l’Europe et présentés cette année au Festival, il contribuera à la réalisation et la distribution de films éblouissants dont les histoires, parfois ancrées dans des territoires bien précis, dépassent leurs frontières pour véhiculer au public du monde entier des valeurs universels et lui offrir un cinéma de qualité. » a déclaré
             Androulla VASSILIOU. <br>
 
             Cette année Androulla VASSILIOU invite également, au cours d’une conférence, les professionnels européens du film à discuter des défis auxquels ils sont confrontés et à aborder l’impératif toujours plus pressant dans un contexte de profond changement technologique, d'éveiller et de maintenir la curiosité et l'intérêt des publics pour le cinéma, et en particulier l'intérêt des plus jeunes. Impératif placé au cœur de l'action du nouveau programme EUROPE CREATIVE.
             </p>
         </div>
-        </div>
-        <div class="film">
-          <div class="programmation-film">
-            <div class="wrapper">
-              <div class="vCenter">
-                <div class="vCenterKid">
-                  <span class="category">Programme</span>
-                  <ul>
-                    <li>
-                      <span class="date">16/05/2015 10h30</span>
-                      <span class="location">Salle Debussy</span>
-                      <span class="descript">Défis politiques pour une Europe créative</span>
-                    </li>
-                    <li>
-                      <span class="date">23/05/2015 15h</span>
-                      <span class="location">Café des palmes - palais des festivals</span>
-                      <span class="descript">Remise du prix MEDIA à Danis Tanovic</span>
-                    </li>
-                  </ul>
-                  <a href="#" class="button">Toute la programmation</a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 <h2 class="title">Revivez la Leçon de Cinéma de Jacques Audiard en vidéo</h2>
      <div class="video-player video">
@@ -93,6 +69,30 @@
           <a href="#" class="button print"></a>
         </div>
       </div>
+      <div class="film">
+          <div class="programmation-film">
+            <div class="wrapper">
+              <div class="vCenter">
+                <div class="vCenterKid">
+                  <span class="category">Programme</span>
+                  <ul>
+                    <li>
+                      <span class="date">16/05/2015 10h30</span>
+                      <span class="location">Salle Debussy</span>
+                      <span class="descript">Défis politiques pour une Europe créative</span>
+                    </li>
+                    <li>
+                      <span class="date">23/05/2015 15h</span>
+                      <span class="location">Café des palmes - palais des festivals</span>
+                      <span class="descript">Remise du prix MEDIA à Danis Tanovic</span>
+                    </li>
+                  </ul>
+                  <a href="programmation-evenementiel.php" class="button">Toute la programmation</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <span class="anim"></span>
     </div>
@@ -102,7 +102,7 @@
       <div class="contain-popin popin">
         <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
         <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
-        <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
+        <div class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</div>
       </div>
       <form action="" id="form" class="popin">
         <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>

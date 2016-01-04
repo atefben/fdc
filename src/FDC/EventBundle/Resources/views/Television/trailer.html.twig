@@ -1,0 +1,51 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+{#<div id="main" class="webtv single-trailer loading">#}
+<div id="main" class="webtv single-trailer">
+    <div class="container">
+        <a href="#" class="back">{{ 'webtv.trailer.btn.retourauxchaines'|trans }}</a>
+    </div>
+    <h2 class="title">{{ 'webtv.trailer.title.conferencedepresse'|trans }}</h2>
+
+    <div class="small-container">
+        <div class="player">
+            {% image '@FDCEventBundle/Resources/public/img/webtv/playervideo.jpg' %}
+            <img src="{{ asset_url }}" alt="">
+            {% endimage %}
+        </div>
+        <div class="infos-videos">
+            <div class="infos">
+                <strong>{{ trailer.title }}</strong>
+                <span class="time">{{ trailer.createdAt|date('d.m.y') }} . {{ trailer.createdAt|date('H:i') }}</span>
+                <p>{{ trailer.description }}</p>
+            </div>
+            <div class="buttons square">
+                <a href="#" class="button facebook"></a>
+                <a href="#" class="button twitter"></a>
+                <a href="#" class="button link"></a>
+                <a href="#" class="button email"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-trailers">
+        <div id="slider-trailers" class="owl-carousel sliderDrag">
+            {% for trailer in trailers %}
+                <div class="trailer shadow-bottom">
+                    {% include 'FDCEventBundle:Television:video.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="content-latest">
+        <h2 class="title">{{ 'webtv.trailer.title.lesdernieresvideos'|trans }}</h2>
+        <div class="container sliderDrag">
+            {% for video in videos %}
+                {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

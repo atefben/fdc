@@ -14,7 +14,7 @@ class EventController extends Controller
 
     /**
      * @Route("/event/{slug}")
-     * @Template("FDCEventBundle:Event:event.page.html.twig")
+     * @Template("FDCEventBundle:Event:page.html.twig")
      * @param $slug
      * @return array
      */
@@ -185,7 +185,7 @@ class EventController extends Controller
 
     /**
      * @Route("/events")
-     * @Template("FDCEventBundle:Event:event.list.html.twig")
+     * @Template("FDCEventBundle:Event:list.html.twig")
      * @return array
      */
     public function getEventsAction()

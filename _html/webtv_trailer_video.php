@@ -90,7 +90,7 @@
 
               </div>
             </div>
-            <a href="#" class="btn">Toute la programmation</a>
+            <a href="programmation-evenementiel.php" class="btn">Toute la programmation</a>
           </div>
         </div>
         <div class="share">
@@ -210,7 +210,7 @@
       </div>
     </div>
   </div>
-  <div class="bandeau-list vCenter">
+  <div class="bandeau-list vCenter push-footer bandeau-list-footer">
     <div class="bandeau-list-img vCenterKid" style="background-image:url(img/webtv/push.jpg);">
       <h2 class="title title-list-header">La loi du marché</h2>
       <a href="#" class="bandeau-lien"><a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Voir la bande annonce</a></a>
@@ -223,7 +223,7 @@
   <div class="contain-popin popin">
     <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
     <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
-    <p class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</p>
+    <div class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</div>
   </div>
   <form action="" id="form" class="popin">
     <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
@@ -246,8 +246,8 @@
   </div>
 </div>
 <!-- END POPIN MAIL SHARE -->
-   
-   
+
+
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

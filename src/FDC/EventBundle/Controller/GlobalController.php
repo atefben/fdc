@@ -17,7 +17,7 @@ class GlobalController extends Controller
 
     /**
      * @Route("/suggestion", options={"expose"=true})
-     * @Template("FDCEventBundle:Global:global.suggestion.html.twig")
+     * @Template("FDCEventBundle:Global:suggestion.html.twig")
      * @return array
      */
     public function suggestionAction()
@@ -111,7 +111,7 @@ class GlobalController extends Controller
 
     /**
      * @Route("/share-email")
-     * @Template("FDCEventBundle:Global:global.share-email.html.twig")
+     * @Template("FDCEventBundle:Global:share-email.html.twig")
      * @param Request $request
      * @param $section
      * @param $detail

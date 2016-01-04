@@ -408,6 +408,7 @@
       font-size: 0.81rem;
       strong {
         font-family: $CamphorBold;
+        font-weight: 700;
       }
       span {
         padding-bottom: 5px;
@@ -448,17 +449,17 @@
   .fa:hover {
     cursor: pointer;
   }
-  margin-bottom: 42px;
   .content-partners {
     background-color: #fff;
+    border-top: 1px solid #e0e0e0;
     .contain-section {
       margin: 0 auto;
       width: 975px;
       position: relative;
       overflow: hidden;
-      height: 111px;
+      height: 97px;
       .fa {
-        top: 35px;
+        top: 25px;
       }
       .title-section {
         font-family: $CamphorBold;
@@ -466,7 +467,7 @@
         color: #c1c1c1;
         font-size: 0.88rem;
         letter-spacing: 2px;
-        padding-top: 55px;
+        padding-top: 44px;
         @include transition(all 0.9s $linear);
       }
       .title-section:hover {
@@ -536,12 +537,18 @@
           }
         }
       }
+      .item-partners:last-child{
+         border-bottom: 0px solid #e0e0e0;
+      }
     }
     .participate-active {
       .title-section {
         color: #c8a461;
       }
     }
+  }
+  .content-partners:first-child {
+    border-top: 0px solid #e0e0e0;
   }
   .content-partners:last-child {
     .item-partners:last-child {
@@ -553,7 +560,6 @@
 // 3. contractor
 // ========================
 .contractor {
-  margin-bottom: 42px;
   .content-contractor {
     background-color: #fff;
     .contain-section {
@@ -642,14 +648,13 @@
   .content-contractor:last-child {
     .item-contractor:last-child {
       border-bottom: #FFF solid 0px;
-    } 
+    }
   }
 }
 
 // 4. Manual
 // ==========================
 .manual {
-  margin-bottom: 42px;
   .title-bandeau {
     background-color: #fff;
     padding: 50px 0px;
@@ -914,4 +919,15 @@
   .participate .title-list-header {
 //    padding-top: 103px !important;
   }
+}
+
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .partners .content-partners .contain-section .item-partners .contain-img{
+        width: 330px;
+  }
+
 }

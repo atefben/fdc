@@ -1,0 +1,34 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="all-photos grid loading">
+    <h2 class="title">{{ 'article.photos.title.touteslesphotos'|trans }}</h2>
+
+    {% include 'FDCEventBundle:News:article.filters.html.twig' %}
+
+    <div id="gridPhotos" class="grid-wrapper">
+        <div class="grid-sizer"></div>
+
+        {% for photo in photos %}
+            <div class="item {{ photo.filter.theme }} {{ photo.filter.date }} {{ photo.format }} shadow-bottom photo">
+                <a id="photo1" class="ajax chocolat-image" href="{{ photo.image.path }}"
+                   title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo.createdAt|date('d.m.y') }}</span><h2>{{ photo.title }}</h2>'
+                   data-credit="{{ photo.copyright }}"></a>
+                <img src="{{ photo.image.src }}" srcset="{{ photo.image.src }} 1x, {{ photo.image.large }} 2x" alt="">
+                <div class="picto"></div>
+                <div class="info">
+                    <div class="vCenter">
+                        <div class="vCenterKid">
+                            <a href="#" class="category">{{ photo.theme }}</a><span class="date">{{ photo.createdAt|date('d.m.y') }}</span>
+                            <p>{{ photo.title }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
+

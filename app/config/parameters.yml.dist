@@ -25,6 +25,14 @@ parameters:
     locales_admin: [fr]
     locale_default_translation: fr
     locale_fallback: en
+
+    # admin
+
+    # routes where are displayed the translation legend
+    admin_routes_translation_legend:
+        - admin_base_core_newsarticle_list
+    admin_routes_translation_lock:
+        - admin_base_core_newsarticle_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~
@@ -47,6 +55,7 @@ parameters:
     s3_secret_key: ~
     # fdc
     fdc_event_domain: ~
+    fdc_event_scheme: ~
     fdc_press_domain: ~
     fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
@@ -73,3 +82,4 @@ parameters:
     social_podcast: '#'
     jwplayer_key: ~
     fdc_event_slug: ~
+    fdc_year: ~

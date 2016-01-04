@@ -41,13 +41,6 @@ abstract class Info implements TranslateMainInterface
     private $id;
 
     /**
-     * @var InfoLock
-     *
-     * @ORM\OneToMany(targetEntity="InfoLock", mappedBy="info")
-     */
-    private $locks;
-
-    /**
      * @var NewsTheme
      *
      * @ORM\ManyToOne(targetEntity="InfoTheme")
@@ -227,40 +220,6 @@ abstract class Info implements TranslateMainInterface
     public function getWidgets()
     {
         return $this->widgets;
-    }
-
-    /**
-     * Add lock
-     *
-     * @param \Base\CoreBundle\Entity\NewsArticleLock $lock
-     * @return News
-     */
-    public function addLock(\Base\CoreBundle\Entity\NewsArticleLock $lock)
-    {
-        $lock->setInfo($this);
-        $this->lock[] = $lock;
-
-        return $this;
-    }
-
-    /**
-     * Remove lock
-     *
-     * @param \Base\CoreBundle\Entity\NewsArticleLock $lock
-     */
-    public function removeLock(\Base\CoreBundle\Entity\NewsArticleLock $lock)
-    {
-        $this->lock->removeElement($lock);
-    }
-
-    /**
-     * Get lock
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLock()
-    {
-        return $this->lock;
     }
 
     /**
@@ -477,16 +436,6 @@ abstract class Info implements TranslateMainInterface
     public function getTags()
     {
         return $this->tags;
-    }
-
-    /**
-     * Get locks
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLocks()
-    {
-        return $this->locks;
     }
 
     /**

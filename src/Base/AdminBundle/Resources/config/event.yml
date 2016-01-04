@@ -1,5 +1,5 @@
 services:
-    base_admin.event.locale_listener:
+    base.admin.event.locale_listener:
         class: Base\AdminBundle\EventListener\LocaleListener
         arguments: ["%kernel.default_locale%"]
         tags:
