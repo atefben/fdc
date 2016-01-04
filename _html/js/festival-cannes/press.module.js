@@ -21,7 +21,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     var v = $(this).find('input[type="text"]').val();
-    
+
     // todo on server : security check password.
 
     if(v == "test") {
@@ -48,7 +48,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     $('#timeline .arrow').removeClass('hide');
-    
+
 
     if($(this).hasClass('left')) {
       if(count < $('#timeline a.active').index()) {
@@ -119,7 +119,7 @@ $(document).ready(function() {
         initDraggable();
 
         // init the slider of movies
-        var sliderFilms = $(".films").owlCarousel({ 
+        var sliderFilms = $(".films").owlCarousel({
           nav: true,
           dots: false,
           smartSpeed: 500,
@@ -147,7 +147,7 @@ $(document).ready(function() {
             for(var i=0; i<events.length; i++) {
               if(id == events[i].id) {
                 $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete); 
+                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
               }
             }
           });
@@ -161,7 +161,7 @@ $(document).ready(function() {
         setTimeout(function() {
           $('.popin-event').addClass('show');
         }, 100);
-        
+
       }
     });
   }
@@ -189,10 +189,10 @@ $(document).ready(function() {
 
       // full width calendar (page 'my calendar')
       if($('#calendar').hasClass('fullwidth')) {
-        
+
         $('#mycalendar').fullCalendar({
           lang: 'fr',
-          defaultDate: '2016-05-12', // TODO A REVOIR //
+          defaultDate: '2016-05-11', // TODO A REVOIR //
           header: {
             left: 'prev',
             center: 'title',
@@ -344,13 +344,13 @@ $(document).ready(function() {
               $.cookie('drag', '1', { expires: 365 });
               // retrieve the dropped element's stored Event Object
               var originalEventObject = $(this).data('eventObject');
-              
+
               // we need to copy it, so that multiple events don't have a reference to the same object
               var copiedEventObject = $.extend({}, originalEventObject);
-              
+
               // assign it the date that was reported
               copiedEventObject.start = copiedEventObject.start;
-              
+
               if(events.filter(function(e) { return e.id == copiedEventObject.id; }).length > 0) {
                 return false;
               }
@@ -389,7 +389,7 @@ $(document).ready(function() {
                   }
                 });
               }
-              
+
             }
           });
 
@@ -451,13 +451,13 @@ $(document).ready(function() {
               $.cookie('drag', '1', { expires: 365 });
               // retrieve the dropped element's stored Event Object
               var originalEventObject = $ev.data('eventObject');
-              
+
               // we need to copy it, so that multiple events don't have a reference to the same object
               var copiedEventObject = $.extend({}, originalEventObject);
-              
+
               // assign it the date that was reported
               copiedEventObject.start = copiedEventObject.start;
-              
+
               if(events.filter(function(e) { return e.id == copiedEventObject.id; }).length > 0) {
                 return false;
               }
@@ -534,7 +534,7 @@ $(document).ready(function() {
                   id: $(this).data('id'),
                   url: $(this).data('url')
                 };
-                
+
                 // store the Event Object in the DOM element so we can get to it later
                 $(this).data('eventObject', eventObject);
 
@@ -556,7 +556,7 @@ $(document).ready(function() {
                     }
                   });
                 }
-                
+
               });
             }
 
@@ -588,7 +588,7 @@ $(document).ready(function() {
               $('#dateProgram').text(date.format('DD MMMM YYYY'));
 
               $('#mycalendar').fullCalendar('gotoDate', date);
-              
+
             });
 
             var ct = 0;
@@ -687,11 +687,11 @@ $(document).ready(function() {
 
   });
 
-  
-  // EVENT AJAX COMMUNIQUE AND INFORMATION // 
-  
+
+  // EVENT AJAX COMMUNIQUE AND INFORMATION //
+
     if ($('.press').length) {
-    
+
     popinInit();
 
     var $container = $('#gridAudios'),
@@ -730,11 +730,11 @@ $(document).ready(function() {
       });
     });
   }
-  
+
   // POPIN LOCK //
-  
+
   function popinInit(){
-    
+
     if ($('.press.lock').length) {
       if ($('#popin-press').length) {
         $('.buttons:not(".active-btn")').on('click',function () {
@@ -764,13 +764,13 @@ $(document).ready(function() {
 
         var $element= $(e.target);
         if($element.hasClass('visible-popin')){
-   
+
         }else{
           var $isPopin = $element.closest('.visible-popin');
           var isButton = $element.hasClass('buttons');
-         
+
           if($isPopin.length || isButton){
-           
+
           }else{
               $('#popin-press').removeClass('visible-popin');
               $("#main").removeClass('overlay-popin');
@@ -797,10 +797,10 @@ $(document).ready(function() {
 
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
-              
+
             }
             return false;
-          
+
           });
 
           $(document).keyup(function (e) {
@@ -830,10 +830,10 @@ $(document).ready(function() {
             $('footer').removeClass('overlay');
           }
           }
-          }); 
+          });
         }
     }
-    
+
     //FOR ALL PRESS PAGE//
     if (!$('.lock').length) {
       if ($('#popin-download-press').length) {
@@ -847,10 +847,10 @@ $(document).ready(function() {
 
               $('#popin-download-press').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
-              
+
             }
             return false;
-          
+
           });
 
           $(document).keyup(function (e) {
@@ -880,14 +880,14 @@ $(document).ready(function() {
             $('footer').removeClass('overlay');
           }
           }
-          }); 
+          });
 
       }
     }
 
   }
-  
-  // POPIN CALENDAR CREAT EVENT // 
+
+  // POPIN CALENDAR CREAT EVENT //
 
   if($('#create-event-pop').length){
         $('.create').on('click',function () {
@@ -913,9 +913,9 @@ $(document).ready(function() {
              $('#create-event-pop').removeClass('visible-popin');
            });
   }
-  
+
   // POPIN Show event //
-  
+
   if($('.fullcalendar').length){
     $('.fc-event-container').on('click', function(e) {
       var url = $(this).attr('src');
@@ -926,19 +926,19 @@ $(document).ready(function() {
     });
   }
   // Navigation tab press page (accreditation)
-  
+
   if($('#accreditation').length){
 
     $('.nav-accre table td').click(function(){
      var $cat = $(this).data('cat');
      var sectionIsShow = $('#accreditation').find('.nav-container.active');
      var sectionShow = $('#accreditation').find('.nav-container[data-cat='+$cat+']');
-    
+
     if(!$(this).hasClass('active')){
-        
+
         $('.nav-accre table').find('.active').removeClass('active');
         $(this).addClass('active');
-             
+
           sectionIsShow.animate({opacity:0},500,function(){
           sectionIsShow.css('display','none');
           sectionIsShow.removeClass('active');
@@ -953,28 +953,28 @@ $(document).ready(function() {
     }
     });
   }
-  
-  //Mediatheque nav 
+
+  //Mediatheque nav
       if($('.press-media').length){
         menuMedia();
         initSlideshows();
-        if($('.connected').length){ //TODO add class .connected for change picto lock if connected // 
+        if($('.connected').length){ //TODO add class .connected for change picto lock if connected //
           var imgs = $('.connected').find('img[src="img/svg/cadenas.svg"]');
           console.log(imgs);
           imgs.attr('src','img/press/svg/telecharger.svg');
-          //change img if connected 
+          //change img if connected
           imgs.each(function(){
             $(this).attr('src','img/press/svg/telecharger.svg');
           })
         }
         svgImg();
       }
-  
+
   if($('.downloading-press').length){
     initSlideshows();
       svgImg();
   }
-  
+
   //mediatheque AJAX
       function ajaxEvent(){
       $('.press-media .nav-mediapress td').on('click',function(e){
@@ -995,8 +995,8 @@ $(document).ready(function() {
         }
       });
     }
-  
-  //fin chocolat js 
+
+  //fin chocolat js
     function menuMedia(){
       var $info = $('.info, .media, .plus');
       $info.click(function(){
@@ -1010,7 +1010,7 @@ $(document).ready(function() {
         }
       });
     }
-  
+
     function svgImg(){
                 jQuery('img.svg').each(function(){
           var $img = jQuery(this);
@@ -1054,12 +1054,12 @@ $(document).ready(function() {
           });
         });
     }
-  
-  //downloding nav sticky 
+
+  //downloding nav sticky
   if($('.downloading-press').length){
         //Scroll
       $(window).on('scroll', function() {
-        
+
         var s            = $(window).scrollTop(),
             h            = $("#main").height()-180,
             affiche      = $('#affiche-officielle').offset().top-180,
@@ -1067,14 +1067,14 @@ $(document).ready(function() {
             animation    = $('#animation').offset().top-180,
             photosInst   = $('#photos-institutionnelles').offset().top-180,
             dossierPress = $('#dossier-presse').offset().top-180;
-          
+
         if(s > 180 ){
           $('.downloading-nav').addClass('sticky');
           $(".downloading-nav").css({position: "fixed",top:90, width: "100%", zIndex:5});
         } else if (s < 180){
           $(".downloading-nav").css({position: "relative",top:1, zIndex:1});
         }
-        
+
         if( s > affiche && s < signature){
           $('.downloading-nav').find('.active').removeClass('active');
           $('a[href="#affiche-officielle"]').addClass('active');
@@ -1094,34 +1094,34 @@ $(document).ready(function() {
           $('.downloading-nav').find('.active').removeClass('active');
           $('a[href="#dossier-presse"]').addClass('active');
         }
-        
+
       });
-    
-    
+
+
     $('a[href^="#"]').click(function(){
-      
+
       var is_sticky = $('.press').hasClass('sticky');
       var the_id = $(this).attr("href");
-      
+
       if(!is_sticky){
 
         $('html, body').animate({
           scrollTop:$(the_id).offset().top-300
         }, 'slow');
         return false;
-        
+
       }else{
 
         $('html, body').animate({
           scrollTop:$(the_id).offset().top-130
         }, 'slow');
         return false;
-        
+
       }
     });
-  
+
   }
-  
-  
-  
+
+
+
 });

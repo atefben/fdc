@@ -21,7 +21,7 @@
           <a id="share-article" href="#" class="button">Partager</a>
           <a href="#" class="button print">Imprimer</a>
         </div>
-        
+
         <div class="slideshow article_photo">
           <div class="slideshow-img">
             <div class="images">
@@ -125,7 +125,7 @@
                     <span class="location">Grand Théâtre Lumière</span>
                   </li>
                 </ul>
-                <a href="#" class="button">Toute la programmation</a>
+                <a href="programmation-evenementiel.php" class="button">Toute la programmation</a>
               </div>
             </div>
           </div>
@@ -212,7 +212,7 @@
               </article>
             </div>
           </div>
-        </div> 
+        </div>
     </div>
 
 <!-- POPIN MAIL SHARE ---->
@@ -243,7 +243,7 @@
       </div>
     </div>
 <!-- END POPIN MAIL SHARE -->
-   
+
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

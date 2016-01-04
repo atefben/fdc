@@ -408,6 +408,7 @@
       font-size: 0.81rem;
       strong {
         font-family: $CamphorBold;
+        font-weight: 700;
       }
       span {
         padding-bottom: 5px;
@@ -448,7 +449,6 @@
   .fa:hover {
     cursor: pointer;
   }
-  margin-bottom: 42px;
   .content-partners {
     background-color: #fff;
     border-top: 1px solid #e0e0e0;
@@ -475,7 +475,7 @@
       }
       .item-partners {
         border-bottom: 1px solid #e0e0e0;
-        padding: 41px 0px; 
+        padding: 41px 0px;
         .contain-img {
           display: inline-block;
           width: 400px;
@@ -560,7 +560,6 @@
 // 3. contractor
 // ========================
 .contractor {
-  margin-bottom: 42px;
   .content-contractor {
     background-color: #fff;
     .contain-section {
@@ -649,14 +648,13 @@
   .content-contractor:last-child {
     .item-contractor:last-child {
       border-bottom: #FFF solid 0px;
-    } 
+    }
   }
 }
 
 // 4. Manual
 // ==========================
 .manual {
-  margin-bottom: 42px;
   .title-bandeau {
     background-color: #fff;
     padding: 50px 0px;
@@ -921,4 +919,15 @@
   .participate .title-list-header {
 //    padding-top: 103px !important;
   }
+}
+
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 1){
+  .partners .content-partners .contain-section .item-partners .contain-img{
+        width: 330px;
+  }
+
 }

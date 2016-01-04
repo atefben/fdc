@@ -130,4 +130,5 @@ class NewsArticleTranslation implements TranslateChildInterface
     {
         return $this->introduction;
     }
+
 }

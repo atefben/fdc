@@ -39,11 +39,12 @@ file that was distributed with this source code.
                 <link rel="stylesheet" href="{{ asset(stylesheet) }}">
             {% endfor %}
 
+            {# FDC CUSTOM CSS #}
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
         {% endblock %}
 
         {% block javascripts %}
-            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
             <script>
                 window.SONATA_CONFIG = {
                     CONFIRM_EXIT: {% if admin_pool is defined and admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %},
@@ -69,6 +70,11 @@ file that was distributed with this source code.
                     <script src="{{ asset('bundles/sonataadmin/vendor/select2/select2_locale_' ~ locale|replace({'_':'-'}) ~ '.js') }}"></script>
                 {% endif %}
             {% endif %}
+
+            {# FDC CUSTOM JAVASCRIPTS #}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
         {% endblock %}
         
@@ -108,6 +114,11 @@ file that was distributed with this source code.
     </head>
     <body {% block body_attributes %}class="sonata-bc skin-black fixed{% if app.request.get('_route') in admin_routes_translation_lock %} fdc-lock{% endif %}"{% endblock %}>
         {% include 'BaseAdminBundle:Site:modal.html.twig' %}
+        {# custom dialog #}
+        <div id="fdc-dialog">
+            <div id="fdc-dialog-text">
+            </div>
+        </div>
         {% block sonata_header %}
             <header class="header">
                 {% block sonata_header_noscript_warning %}

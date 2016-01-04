@@ -11,12 +11,12 @@
 .press {
   overflow: hidden;
   padding-top: 0!important;
-  
+
   .button{
     font-size: 0.63rem;
     height: 37px;
   }
-  
+
   .fc-event {
     background-color: #373737;
     border-radius: 0;
@@ -208,7 +208,7 @@
           margin: 140px auto 35px auto;
           text-transform: uppercase;
           width: 80%;
-        }  
+        }
 
         p {
           color: #bebebe;
@@ -611,17 +611,17 @@
         }
       }
     }
-    
+
     .buttons{
       position: absolute;
       right: 150px;
       height: 50px;
       top: 24px;
-      
+
       @include breakpoint(1024px) {
         right: 50px;
       }
-      
+
       a{
         border: 1px solid $gold;
         color: $gold;
@@ -647,7 +647,7 @@
         }
       }
     }
-    
+
   }
 
   .communiques {
@@ -988,7 +988,7 @@
             &:after {
               content: '';
               display: block;
-              height: 0; 
+              height: 0;
               border-top: 5px solid $gold;
               border-bottom: 5px solid transparent;
               border-left: 5px solid transparent;
@@ -997,7 +997,7 @@
               position: absolute;
               left: 50%;
               bottom: -10px;
-              width: 0; 
+              width: 0;
               z-index: 2;
             }
           }
@@ -1409,6 +1409,10 @@
 
     &.press-programmation .programmation {
       border-top: none;
+
+      & p{
+        width: 518px;
+      }
     }
   }
 
@@ -1454,7 +1458,7 @@
 
     .programmation {
 
-      
+
     }
 
     .wrapper {
@@ -1814,7 +1818,7 @@
         p {
           margin-bottom: 5px;
         }
-        
+
         .fc-event {
           background-color: #fff;
           border: 1px solid #e5e5e5;
@@ -2052,14 +2056,14 @@
       input[type="submit"]:hover {
         border-color: #c8a461;
         color: #fff;
-        background-color: #c8a461; 
+        background-color: #c8a461;
       }
     }
   }
 }
 
 
-// 4. POPIN DOWNLOAD // 
+// 4. POPIN DOWNLOAD //
 //==================//
 
 
@@ -2132,7 +2136,7 @@
     margin-bottom: 12px;
   }
   table{
-    
+
     td{
       width: 238px;
       border: 1px solid #dfdfdf;
@@ -2165,7 +2169,7 @@
 
   }
 }
-// 4. POPIN Create event // 
+// 4. POPIN Create event //
 //==================//
 
 #create-event-pop{
@@ -2181,7 +2185,7 @@
   opacity: 0;
   transform: translateY(30px);
   transition: .4s all $linear;
-  
+
   .contain-btn{
     .btn-close{
       background-image: url("../img/svg/case-close-or.svg");
@@ -2192,7 +2196,7 @@
       top: 38px;
       background-repeat: no-repeat;
       background-size: 68px;
-      
+
       &:hover{
         background-image: url("../img/svg/case-close.svg");
       }
@@ -2224,7 +2228,7 @@
       color:#666666;
       font-size:0.88rem;
       line-height: 26px;
-      
+
     }
     form{
       padding-top: 23px;
@@ -2243,7 +2247,7 @@
       }
       input[type="submit"]{
         margin-bottom: 41px;
-        
+
         &:hover{
           cursor: pointer;
         }
@@ -2294,7 +2298,7 @@
   }
 }
 
-// Press programmation // 
+// Press programmation //
 
 .press-programmation{
   .header-press{

@@ -7994,6 +7994,41 @@ header #searchContainer {
   font-size: 0.75rem;
 }
 
+.canne-classic #share-box {
+  top: 187px;
+  z-index: 3;
+  width: 295px;
+}
+.canne-classic #share-box .bubble {
+  background-color: #141414;
+  border: 1px solid #2C2C2C;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+}
+.canne-classic #share-box .bubble:before {
+  content: "";
+  position: absolute;
+  top: -8%;
+  left: 49%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  box-shadow: -1px -1px 0px #2C2C2C;
+  border: 4px solid;
+  border-color: #141414;
+}
+.canne-classic #share-box a {
+  color: #999999;
+  font-size: 0.75rem;
+}
+.canne-classic #share-box a:hover {
+  color: #999999;
+  background-color: #141414;
+}
+
 #prehome-container {
   background-color: #fff;
   min-height: 600px;
@@ -10147,7 +10182,7 @@ article .read-later.rAlign span:after {
 .single-article .film .programmation-film .wrapper ul li {
   display: inline-block;
   font-size: 0.625rem;
-  width: 230px;
+  width: 211px;
 }
 .single-article .film .programmation-film .wrapper ul li span {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -10829,6 +10864,9 @@ article .read-later.rAlign span:after {
 .single-movie #nav-movie .buttons a.print {
   background: url("../img/svg/print.svg") no-repeat center;
   background-size: 16px;
+}
+.single-movie #nav-movie .buttons #share-box {
+  top: -3px;
 }
 .single-movie .videos {
   clear: both;
@@ -12405,6 +12443,7 @@ input[type=submit] {
 }
 .list-article .bandeau-list .bandeau-list-img {
   height: 300px;
+  background: center 0 no-repeat fixed;
   background-size: cover;
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -12516,6 +12555,20 @@ input[type=submit] {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: .8125rem;
   color: #c8a461;
+  border-top: 0px solid #fff;
+}
+.selection-officielle figure:hover a img {
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+}
+.selection-officielle figure .image {
+  overflow: hidden;
 }
 .selection-officielle .container:after {
   content: ".";
@@ -12593,6 +12646,18 @@ input[type=submit] {
   padding: 0px;
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .list-article .bandeau-list .nav-list li {
+    display: inline-block;
+    padding: 17px 1.5px;
+    text-transform: uppercase;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .single-evenement .best-films .item-film {
+    margin: 0 20px;
+  }
+}
 @media screen and (min-width: 1920px) {
   .films-list .bandeau-list-img {
     height: 448px !important;
@@ -13507,6 +13572,7 @@ input[type=submit] {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   height: 365px;
+  background: center 0 no-repeat fixed;
   background-size: cover;
 }
 .webtv-ba-video .bandeau-list-img .title-list-header {
@@ -13552,7 +13618,21 @@ input[type=submit] {
     height: 296px !important;
   }
 }
+@media screen and (max-width: 769px) {
+  .webtv-ba-video .buttons.square .button {
+    height: 72px;
+    line-height: 73px;
+    padding: 0;
+    text-align: center;
+    width: 72px;
+  }
+}
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .webtv-ba .sub-nav-list li {
+    padding: 16px 1.5px;
+  }
+}
 .sitemap h2 {
   padding: 60px;
   font-size: 28px;
@@ -14024,6 +14104,11 @@ input[type=submit] {
     height: 294px !important;
   }
 }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .single-evenement .best-films .item-film {
+    margin: 0 23px;
+  }
+}
 .jurys-list .bandeau-list .sub-nav-list li {
   padding: 16px 13px;
 }
@@ -14151,6 +14236,19 @@ input[type=submit] {
 }
 .contain-jurys-list .jury-box a {
   color: #000;
+}
+.contain-jurys-list .jury-box:hover a img {
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+}
+.contain-jurys-list .jury-box .image {
+  overflow: hidden;
 }
 .contain-jurys-list .legend {
   background-color: #fff;
@@ -14905,6 +15003,7 @@ input[type=submit] {
 }
 .participate .contain-cinema .contain-map strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 .participate .contain-cinema .contain-map span {
   padding-bottom: 5px;
@@ -14933,9 +15032,6 @@ input[type=submit] {
   width: 20%;
 }
 
-.partners {
-  margin-bottom: 42px;
-}
 .partners .title-section:hover {
   cursor: pointer;
 }
@@ -15051,9 +15147,6 @@ input[type=submit] {
   border-bottom: #FFF solid 0px;
 }
 
-.contractor {
-  margin-bottom: 42px;
-}
 .contractor .content-contractor {
   background-color: #fff;
 }
@@ -15146,9 +15239,6 @@ input[type=submit] {
   border-bottom: #FFF solid 0px;
 }
 
-.manual {
-  margin-bottom: 42px;
-}
 .manual .title-bandeau {
   background-color: #fff;
   padding: 50px 0px;
@@ -15378,6 +15468,11 @@ input[type=submit] {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
     height: 296px !important;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .partners .content-partners .contain-section .item-partners .contain-img {
+    width: 330px;
   }
 }
 .press {
@@ -16597,6 +16692,9 @@ input[type=submit] {
 }
 .press.lock.press-programmation .programmation {
   border-top: none;
+}
+.press.lock.press-programmation .programmation p {
+  width: 518px;
 }
 .press.press-home #calendar, .press.press-programmation #calendar {
   display: none;
@@ -18171,6 +18269,21 @@ input[type=submit] {
   padding-top: 60px;
   border-top: 1px solid #dfdfdf;
 }
+.downloading-press .block .container .item {
+  overflow: hidden;
+}
+.downloading-press .block .container .item a img {
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.downloading-press .block .container .item:hover a img {
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+}
 .downloading-press .block .container .title-press {
   margin-bottom: 30px;
 }
@@ -18580,6 +18693,21 @@ input[type=submit] {
   margin-top: 60px;
   padding-top: 60px;
   border-top: 1px solid #dfdfdf;
+}
+.press-media .block .container .item {
+  overflow: hidden;
+}
+.press-media .block .container .item a img {
+  -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.press-media .block .container .item:hover a img {
+  -moz-transform: scale(1.08) translateZ(0);
+  -ms-transform: scale(1.08) translateZ(0);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
 }
 .press-media .block .container-title {
   position: relative;

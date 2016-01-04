@@ -1,25 +1,31 @@
 $(document).ready(function() {
   if($('.popin-mail').length){
-    $('.button.email').click(function(){
-      if($('.popin-mail').hasClass('visible-popin')){
-        $('.popin-mail').removeClass('visible-popin');
-        $("#main").removeClass('overlay-popin');
-        $('footer').removeClass('overlay');
-      }else{ 
+    $('.button.email').on('click touchstart', function(e){
+      e.preventDefault();
         $('.popin-mail').addClass('visible-popin');
         $("#main").addClass('overlay-popin');
-      }
     });
-    $(window).click(function(e){
-      var classObj = $(e.target);
-      if(!classObj.hasClass('popin')){
-        if($('.popin-mail').hasClass('visible-popin')){
-          $('.popin-mail').removeClass('visible-popin');
-          $("#main").removeClass('overlay-popin');
-          $('footer').removeClass('overlay-popin');
+    $(document).on('click', function (e) {
+
+      var $element= $(e.target);
+      if($element.hasClass('visible-popin')){
+
+      }else{
+        var $isPopin = $element.closest('.visible-popin');
+        var isButton = $element.hasClass('button');
+
+        if($isPopin.length || isButton){
+
+        }else{
+            $('.popin-mail').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+
         }
       }
-    })
+    });
+
+
   }
 
    if($('.popin-mail').length) {
@@ -44,13 +50,15 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.selectOptions span', function() {
-      var i = parseInt($(this).index()) + 1; 
+      var i = parseInt($(this).index()) + 1;
       $('select option').eq(i).prop('selected', 'selected');
       $('.select').removeClass('invalid');
     });
 
     // check valid email address
     $('.popin-mail input[type="email"]').on('input', function() {
+
+
       var input=$(this);
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       var is_email=re.test(input.val());
@@ -109,11 +117,11 @@ $(document).ready(function() {
       }
     });
   }
-  
-  
+
+
 });
 
-  // cookie banner 
+  // cookie banner
 
   $('.cookie-accept').click(function () { //on click event
     days = 365; //number of days to keep the cookie
@@ -127,23 +135,35 @@ $(document).ready(function() {
   //LINK POPIN//
 
   if($('.share').length){
-    $('.share .link').on('click',function(){
+    new Clipboard('.link');
+    var link = document.location.href;
+    $('.share .link').attr('data-clipboard-text',link);
+
+    $('.share .link').on('click touchstart',function(e){
+      e.preventDefault();
       if(!$('#share-box').length){
-        var link = document.location.href;
-        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+link+'</a></div></div>');
-        
+        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+'Copied !'+'</a></div></div>');
         $('#share-box').animate({'opacity':'1'},400,function(){
+
            $('#share-box').addClass('show');
+           setTimeout(function(){
+                 $('#share-box .bubble').html('<a href="#">'+link+'</a>');
+           }, 1000);
         });
-        
-        //TODO ADD COPY TEXT TO CLIPBORD... // 
       }else if($('#share-box').hasClass('show')){
         $('#share-box').removeClass('show');
         $('#share-box').remove();
       }
+
+      if($('.single-movie').length){
+        setTimeout(function(){
+              $('#share-box').animate({'opacity':0},200,function(){
+                $('#share-box').removeClass('show');
+                $('#share-box').remove();
+              });
+        }, 3000);
+
+      }
+
     });
   }
-  
-
-
-

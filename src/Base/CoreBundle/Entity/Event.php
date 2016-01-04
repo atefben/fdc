@@ -42,13 +42,6 @@ class Event implements TranslateMainInterface
     private $id;
 
     /**
-     * @var ArticleLock
-     *
-     * @ORM\OneToMany(targetEntity="EventLock", mappedBy="event")
-     */
-    private $locks;
-
-    /**
      * @var NewsTheme
      *
      * @ORM\ManyToOne(targetEntity="NewsTheme")
@@ -194,39 +187,6 @@ class Event implements TranslateMainInterface
     public function getWidgets()
     {
         return $this->widgets;
-    }
-
-    /**
-     * Add lock
-     *
-     * @param \Base\CoreBundle\Entity\NewsArticleLock $lock
-     * @return News
-     */
-    public function addLock(\Base\CoreBundle\Entity\NewsArticleLock $lock)
-    {
-        $this->lock[] = $lock;
-
-        return $this;
-    }
-
-    /**
-     * Remove lock
-     *
-     * @param \Base\CoreBundle\Entity\NewsArticleLock $lock
-     */
-    public function removeLock(\Base\CoreBundle\Entity\NewsArticleLock $lock)
-    {
-        $this->lock->removeElement($lock);
-    }
-
-    /**
-     * Get lock
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLock()
-    {
-        return $this->lock;
     }
 
     /**
@@ -387,16 +347,6 @@ class Event implements TranslateMainInterface
     public function getSites()
     {
         return $this->sites;
-    }
-
-    /**
-     * Get locks
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLocks()
-    {
-        return $this->locks;
     }
 
     /**

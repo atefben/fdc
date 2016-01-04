@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // =========================
@@ -582,6 +582,10 @@
         background: url('../img/svg/print.svg') no-repeat center;
         background-size: 16px;
       }
+
+      #share-box{
+        top: -3px;
+      }
     }
   }
 
@@ -1013,7 +1017,7 @@
         }
       }
     }
-    
+
   }
 
   .competition {
@@ -1056,5 +1060,3 @@
     }
   }
 }
-
-

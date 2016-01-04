@@ -25,7 +25,7 @@ class TranslateStatusToAdminClassExtension extends Twig_Extension
     private static function getStatusesToAdminClass()
     {
         return array(
-            TranslateChildInterface::STATUS_DRAFT => 'fdc-status-locked-bg-color',
+            TranslateChildInterface::STATUS_DRAFT => 'fdc-status-draft-bg-color',
             TranslateChildInterface::STATUS_TRANSLATION_PENDING => 'fdc-status-translation-pending-bg-color',
             TranslateChildInterface::STATUS_TRANSLATION_VALIDATING => 'fdc-status-translation-validating-bg-color',
             TranslateChildInterface::STATUS_VALIDATING => 'fdc-status-validating-bg-color',

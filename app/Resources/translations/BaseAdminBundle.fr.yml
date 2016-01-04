@@ -90,6 +90,10 @@ list:
     label_priority_status: Priorité
     label__preview: Prévisualiser
     label__edit_translations: Éditer
+    tooltip:
+        unlock: DÉBLOQUER
+        modified_by: En cours de modification par </br>
+        since: depuis
 
 filter:
     label_id: Identifiant
