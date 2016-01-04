@@ -30,7 +30,8 @@ var GLOBALS = {
     "popin" : {
       "error" : "valide",
       "empty" : "renseignée",
-      "valid" : "Votre email a bien été envoyé !"
+      "valid" : "Votre email a bien été envoyé !",
+      "copy"  :  "lien copié ! "
     },
     "googleMap" : {
       "title" : "Festival de Cannes"
