@@ -48,9 +48,15 @@ var GLOBALS = {
     }
   },
   "player": {
-  "file" : "./files/mov_bbb.mp4",
-  "image" : "//dummyimage.com/960x540/c8a461/000.png",
-  "title" : "Video 1"
+    "file" : "./files/mov_bbb.mp4",
+    "image" : "//dummyimage.com/960x540/c8a461/000.png",
+    "title" : "Video 1"
+  },
+  "calendar": {
+    "labelFormat": {
+      "fr" : "H [H]",
+      "default" : "h A"
+    }
   }
 }
 </script>

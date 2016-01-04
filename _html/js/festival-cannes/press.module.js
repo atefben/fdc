@@ -189,26 +189,44 @@ $(document).ready(function() {
 
       // full width calendar (page 'my calendar')
       if($('#calendar').hasClass('fullwidth')) {
-
+        var lang = GLOBALS.locale;
         $('#mycalendar').fullCalendar({
-          lang: 'fr',
+          lang: lang,
           defaultDate: '2016-05-11', // TODO A REVOIR //
           header: {
             left: 'prev',
             center: 'title',
             right: 'next'
           },
-          columnFormat: {
-            week: 'dddd D MMM',
+          views: {
+              agendaFive: {
+                  type: 'agenda',
+                  duration: { days: 6 },
+                  buttonText: '5 day',
+              },
+              agendaFour: {
+                  type: 'agenda',
+                  duration: { days: 5 },
+                  buttonText: '4 day'
+              },
+              agendaThree: {
+                  type: 'agenda',
+                  duration: { days: 4 },
+                  buttonText: '3 day'
+              },
           },
           firstDay: 3,
           defaultView: 'agendaWeek',
+          columnFormat: {
+            week: 'dddd D MMM',
+            agenda: 'dddd D MMM'
+          },
           minTime: "08:00:00",
           maxTime: "28:00:00",
           allDaySlot: false,
           events: events,
           slotEventOverlap:false,
-          slotLabelFormat: 'H A',
+          slotLabelFormat: typeof GLOBALS.calendar.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.labelFormat[GLOBALS.locale] : GLOBALS.calendar.labelFormat.default,
           eventAfterRender: function(event, element, view) {
             if(event.duration/60 < 2) {
               $(element).addClass('one-hour');
@@ -237,10 +255,10 @@ $(document).ready(function() {
                 $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
               }
 
-              if(parseInt(moment.format('DD')) + 7 >= maxDate) {
+              if(parseInt(moment.format('DD')) + 4 >= maxDate) {
                 $('#mycalendar .fc-right').addClass('hide');
               }
-              if(moment.format('DD') < (parseInt(minDate) + 7)) {
+              if(moment.format('DD') < (parseInt(minDate) +1)) {
                 $('#mycalendar .fc-left').addClass('hide');
               }
 
@@ -251,8 +269,13 @@ $(document).ready(function() {
                   $(this).trigger('click');
                 }
               });
-            },
-
+            }
+            // dayRender: function(date, cell){
+            //     if (date > maxDate){
+            //         $(cell).addClass('disabled');
+            //         console.log("ok");
+            //     }
+            // }
         });
       } else {
         // if cookie drag doesn't exist, add class to show message
@@ -1122,6 +1145,53 @@ $(document).ready(function() {
 
   }
 
+  if($('.fullcalendar #mycalendar').length){
+    // Fonction exécutée au redimensionnement
+    function resizeCalendar() {
+      var result = document.getElementById('result');
+      if("matchMedia" in window) {
+        if(window.matchMedia("(min-width:1650px)").matches) {
+          // au dessus de 1650, calendrier à 6 jour
+          $('#mycalendar').fullCalendar( 'changeView', 'agendaWeek');
+        }
+        if(window.matchMedia("(max-width:1650px)").matches && window.matchMedia("(min-width:1401px)").matches) {
+          // calendrier de 5 jours
+          $('#mycalendar').fullCalendar( 'changeView', 'agendaFive');
+        }
+        if(window.matchMedia("(max-width:1400px)").matches && window.matchMedia("(min-width:1181px)").matches) {
+          // calendrier de 4 jours
+          $('#mycalendar').fullCalendar( 'changeView', 'agendaFour');
+        }
+        if(window.matchMedia("(max-width:1180px)").matches){
+          // calendrier de 3 jours
+          $('#mycalendar').fullCalendar( 'changeView', 'agendaThree');
+        }
+      }
+    }
+    // On lie l'événement resize à la fonction
+    window.addEventListener('resize', resizeCalendar, false);
+
+    //init
+    if(window.matchMedia("(min-width:1650px)").matches) {
+      // au dessus de 1650, calendrier à 6 jour
+      $('#mycalendar').fullCalendar( 'changeView', 'agendaWeek');
+
+    }
+    if(window.matchMedia("(max-width:1650px)").matches && window.matchMedia("(min-width:1401px)").matches) {
+      // calendrier de 5 jours
+      $('#mycalendar').fullCalendar( 'changeView', 'agendaFive');
+
+    }
+    if(window.matchMedia("(max-width:1400px)").matches && window.matchMedia("(min-width:1181px)").matches) {
+      // calendrier de 4 jours
+      $('#mycalendar').fullCalendar( 'changeView', 'agendaFour');
+    }
+    if(window.matchMedia("(max-width:1180px)").matches){
+      // calendrier de 3 jours
+      $('#mycalendar').fullCalendar( 'changeView', 'agendaThree');
+    }
+
+  }
 
 
 });
