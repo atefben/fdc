@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-01-04T15:28:18Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-01-04T17:25:51Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -79,138 +79,138 @@
       </trans-unit>
       <trans-unit id="c3443465d9b22352a8fc70087e79b543325f3d8d" resname="movie.article.btn.ajouteramaselection">
         <source>movie.article.btn.ajouteramaselection</source>
-        <target state="new">movie.article.btn.ajouteramaselection</target>
+        <target>Ajouter à ma sélection</target>
         <jms:reference-file line="10">Movie/widgets/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7fc055ada3acc3ade0d0577b739be0d180988a2a" resname="movie.competition.title.encompetition">
         <source>movie.competition.title.encompetition</source>
-        <target state="new">movie.competition.title.encompetition</target>
+        <target>En compétition</target>
         <jms:reference-file line="2">Movie/widgets/competition.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2b1ab9d5bf5dc87d8419720abb41547c304af261" resname="movie.contact.label.distribution">
         <source>movie.contact.label.distribution</source>
-        <target state="new">movie.contact.label.distribution</target>
+        <target>Distribution</target>
         <jms:reference-file line="43">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="511ea54939112daee72bcfbaf36d4d9524c5481b" resname="movie.contact.label.pressefrancaise">
         <source>movie.contact.label.pressefrancaise</source>
-        <target state="new">movie.contact.label.pressefrancaise</target>
+        <target>Presse française</target>
         <jms:reference-file line="48">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="37461c17388c072b94e9e3a33a687169e49fd0e7" resname="movie.contact.label.presseinternationale">
         <source>movie.contact.label.presseinternationale</source>
-        <target state="new">movie.contact.label.presseinternationale</target>
+        <target>Presse internationale</target>
         <jms:reference-file line="53">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bab0b494f5ed776a38aea64e71ef7e7986ae1809" resname="movie.contact.label.production">
         <source>movie.contact.label.production</source>
-        <target state="new">movie.contact.label.production</target>
+        <target>Production</target>
         <jms:reference-file line="39">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c31c45f33d2d20001166817a303c80d9c829195a" resname="movie.contact.label.ventealetranger">
         <source>movie.contact.label.ventealetranger</source>
-        <target state="new">movie.contact.label.ventealetranger</target>
+        <target>Ventes à l'étranger</target>
         <jms:reference-file line="57">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0e1e9f194e42e9d6733ab104346cd12c82814a93" resname="movie.contact.title.contacts">
         <source>movie.contact.title.contacts</source>
-        <target state="new">movie.contact.title.contacts</target>
+        <target>Contacts</target>
         <jms:reference-file line="37">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="71ac86142f6bef01ec59b256c446c8bb3b9204ad" resname="movie.label.anneedeproduction">
         <source>movie.label.anneedeproduction</source>
-        <target state="new">movie.label.anneedeproduction</target>
+        <target>Année de production</target>
         <jms:reference-file line="25">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c4bbe4a662c1b0424af563808843b6e5180746c5" resname="movie.label.datedesortie">
         <source>movie.label.datedesortie</source>
-        <target state="new">movie.label.datedesortie</target>
+        <target>Date de sortie</target>
         <jms:reference-file line="28">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d51bc9cff188bfbbd32fb729f9be68fb89d304b2" resname="movie.label.duree">
         <source>movie.label.duree</source>
-        <target state="new">movie.label.duree</target>
+        <target>Durée</target>
         <jms:reference-file line="27">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1525808c7fd3b7a87fce37051a2459a1232354fd" resname="movie.label.pays">
         <source>movie.label.pays</source>
-        <target state="new">movie.label.pays</target>
+        <target>Pays</target>
         <jms:reference-file line="26">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="39074b5c3654fca1ac756f17cce941c9f3aef72d" resname="movie.label.realisepar">
         <source>movie.label.realisepar</source>
-        <target state="new">movie.label.realisepar</target>
+        <target>Réalisé par</target>
         <jms:reference-file line="24">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a59eb2eeda2cefb7e8871243d1e69b2b10515623" resname="movie.nav.btn.touslesfilms">
         <source>movie.nav.btn.touslesfilms</source>
-        <target state="new">movie.nav.btn.touslesfilms</target>
+        <target>Tous les films</target>
         <jms:reference-file line="5">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6b6785f53454a82981df18b615895bca8dc7b54a" resname="movie.nav.btn.voirlaprogrammation">
         <source>movie.nav.btn.voirlaprogrammation</source>
-        <target state="new">movie.nav.btn.voirlaprogrammation</target>
+        <target>Voir la programmation</target>
         <jms:reference-file line="6">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="38203d9ff276f3f7d61e03e52443e6bb0e4cd47e" resname="movie.pagination.text.pays">
         <source>movie.pagination.text.pays</source>
-        <target state="new">movie.pagination.text.pays</target>
+        <target>Pays</target>
         <jms:reference-file line="10">Movie/components/pagination.html.twig</jms:reference-file>
         <jms:reference-file line="24">Movie/components/pagination.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6b5b120953339741ab1cea63627ab36bf4f21c9c" resname="movie.presse.btn.englishpdf">
         <source>movie.presse.btn.englishpdf</source>
-        <target state="new">movie.presse.btn.englishpdf</target>
+        <target>English Pdf</target>
         <jms:reference-file line="13">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e486cd298c3494d2097df41bda7af49c8ab99fcd" resname="movie.presse.btn.espacepresse">
         <source>movie.presse.btn.espacepresse</source>
-        <target state="new">movie.presse.btn.espacepresse</target>
+        <target>Espace Presse</target>
         <jms:reference-file line="25">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0fb86d7d7cd0ad00d144f98e39806b8fc8ec2c8f" resname="movie.presse.btn.francaispdf">
         <source>movie.presse.btn.francaispdf</source>
-        <target state="new">movie.presse.btn.francaispdf</target>
+        <target>Français Pdf</target>
         <jms:reference-file line="12">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c46cbd19853b1e7962d765c9ddfd2c1cbe8063d6" resname="movie.presse.btn.voirlaprogrammation">
         <source>movie.presse.btn.voirlaprogrammation</source>
-        <target state="new">movie.presse.btn.voirlaprogrammation</target>
+        <target>Voir la programmation</target>
         <jms:reference-file line="26">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ef2b24822217daf812b838d345fbfdc53a481999" resname="movie.presse.label.liens">
         <source>movie.presse.label.liens</source>
-        <target state="new">movie.presse.label.liens</target>
+        <target>Liens</target>
         <jms:reference-file line="18">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bc8ff21d32260a753ca06d28370b0684d3a94b20" resname="movie.presse.label.plusdinformations">
         <source>movie.presse.label.plusdinformations</source>
-        <target state="new">movie.presse.label.plusdinformations</target>
+        <target>Plus d'informations</target>
         <jms:reference-file line="24">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="681c0ae93c81474979157e8b5841bcd44e797df3" resname="movie.presse.title.dossierdepresse">
         <source>movie.presse.title.dossierdepresse</source>
-        <target state="new">movie.presse.title.dossierdepresse</target>
+        <target>Dossier de presse</target>
         <jms:reference-file line="11">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2aac93e55fad0c60f3e35b00a8cb70c95106c81d" resname="movie.presse.title.infospresse">
         <source>movie.presse.title.infospresse</source>
-        <target state="new">movie.presse.title.infospresse</target>
+        <target>Infos presse</target>
         <jms:reference-file line="6">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="352792e10f97c4bd6f01e594cf1de1b69421679f" resname="movie.title.casting">
         <source>movie.title.casting</source>
-        <target state="new">movie.title.casting</target>
+        <target>Casting</target>
         <jms:reference-file line="28">Movie/widgets/casting.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6cf0e5c688fd77efc4c4a85f22cfa852871dc886" resname="movie.title.credits">
         <source>movie.title.credits</source>
-        <target state="new">movie.title.credits</target>
+        <target>Crédits</target>
         <jms:reference-file line="22">Movie/widgets/casting.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f1af51bdfdeaf2f16794c7cf842d01a1575179cb" resname="movie.title.synopsis">
         <source>movie.title.synopsis</source>
-        <target state="new">movie.title.synopsis</target>
+        <target>Synopsis</target>
         <jms:reference-file line="31">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9e9486daa181d4bb53bf7d57d2b91f70869b3331" resname="newsletter.email.subject">
@@ -220,7 +220,7 @@
       </trans-unit>
       <trans-unit id="088bf9be5aabd3ab9ea123c1b7a6e98fde2cdad7" resname="palmares.btn.decouvrirrubrique">
         <source>palmares.btn.decouvrirrubrique</source>
-        <target state="new">palmares.btn.decouvrirrubrique</target>
+        <target>Découvrir la rubrique</target>
         <jms:reference-file line="6">Palmares/components/bandeau.html.twig</jms:reference-file>
         <jms:reference-file line="8">Palmares/components/bandeau.html.twig</jms:reference-file>
       </trans-unit>
@@ -255,33 +255,45 @@
         <jms:reference-file line="8">Palmares/widgets/movie.html.twig</jms:reference-file>
         <jms:reference-file line="10">Palmares/widgets/movie.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="421a07c50c45d9639ca5116daea8d3a29333b8d1" resname="selection.nav.camera-dor">
-        <source>selection.nav.camera-dor</source>
-        <target state="new">selection.nav.camera-dor</target>
-        <jms:reference-file line="35">Movie/components/filters.html.twig</jms:reference-file>
+      <trans-unit id="e22d4f2ab66cd70779821efa5bcda300945bf183" resname="selection.nav.cannes-classics">
+        <source>selection.nav.cannes-classics</source>
+        <target>Cannes classics</target>
+        <jms:reference-file line="41">Movie/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b9e0ebe27245191605c053c8259ef64a7340754a" resname="selection.nav.certain-regard">
         <source>selection.nav.certain-regard</source>
-        <target state="new">selection.nav.certain-regard</target>
+        <target>Un certain regard</target>
         <jms:reference-file line="11">Movie/components/filters.html.twig</jms:reference-file>
-        <jms:reference-file line="17">Movie/components/filters.html.twig</jms:reference-file>
-        <jms:reference-file line="23">Movie/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="234fb82fd5d303db35db3e41aa924d1da687b855" resname="selection.nav.cinefondation">
         <source>selection.nav.cinefondation</source>
-        <target state="new">selection.nav.cinefondation</target>
+        <target>Cinéfondation</target>
         <jms:reference-file line="29">Movie/components/filters.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cd76f7a4d585db7f7253713349f05b0073de1dff" resname="selection.nav.cinema-la-plage">
+        <source>selection.nav.cinema-la-plage</source>
+        <target>Cinéma de la plage</target>
+        <jms:reference-file line="47">Movie/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f17fe29a1bcbfb23729f31548bcc4c0763499841" resname="selection.nav.competition">
         <source>selection.nav.competition</source>
-        <target state="new">selection.nav.competition</target>
+        <target>En Compétition</target>
         <jms:reference-file line="5">Movie/components/filters.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="81cbddf923a204caeba2ba3e14fc0f2bfc7b3353" resname="selection.nav.tout-palmares">
-        <source>selection.nav.tout-palmares</source>
-        <target state="new">selection.nav.tout-palmares</target>
-        <jms:reference-file line="41">Movie/components/filters.html.twig</jms:reference-file>
-        <jms:reference-file line="47">Movie/components/filters.html.twig</jms:reference-file>
+      <trans-unit id="bdf7939ad0463feadb497f94ff6a1c15b25fbf0a" resname="selection.nav.courts-metrages">
+        <source>selection.nav.courts-metrages</source>
+        <target>Courts métrages</target>
+        <jms:reference-file line="35">Movie/components/filters.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="094dfbfa18cd2c8ed8ff1822313b860fa931ddb9" resname="selection.nav.hors-competition">
+        <source>selection.nav.hors-competition</source>
+        <target>Hors compétition</target>
+        <jms:reference-file line="17">Movie/components/filters.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="fcef351af3f8fd30b0282df5fafb87b4d12e05c6" resname="selection.nav.seances-speciales">
+        <source>selection.nav.seances-speciales</source>
+        <target>Séances spéciales</target>
+        <jms:reference-file line="23">Movie/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="86b1771527d4e6a71b967002e1d098954cfb203e" resname="sharemail.btn.envoyer">
         <source>sharemail.btn.envoyer</source>
@@ -316,47 +328,47 @@ OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous 
       </trans-unit>
       <trans-unit id="3c0851e685be5abc1308a1d6051bde042a54d3ed" resname="television.trailers.nav.cannesclassics">
         <source>television.trailers.nav.cannesclassics</source>
-        <target state="new">television.trailers.nav.cannesclassics</target>
+        <target>Cannes classics</target>
         <jms:reference-file line="48">Television/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2c8b804e0318c143ba93affd6d196d63b7476497" resname="television.trailers.nav.certainregard">
         <source>television.trailers.nav.certainregard</source>
-        <target state="new">television.trailers.nav.certainregard</target>
+        <target>Un certain regard</target>
         <jms:reference-file line="13">Television/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="72846623093fa982ba94694191bc07ec94542741" resname="television.trailers.nav.cinefondation">
         <source>television.trailers.nav.cinefondation</source>
-        <target state="new">television.trailers.nav.cinefondation</target>
+        <target>Cinéfondation</target>
         <jms:reference-file line="34">Television/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1ec83af9f3b98ce4fabdf6fba7e23e8ef17f9f3c" resname="television.trailers.nav.cinemadelaplage">
         <source>television.trailers.nav.cinemadelaplage</source>
-        <target state="new">television.trailers.nav.cinemadelaplage</target>
+        <target>Cinéma de la plage</target>
         <jms:reference-file line="55">Television/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4e9435a5338766c496093509623e3522d926dabe" resname="television.trailers.nav.competition">
         <source>television.trailers.nav.competition</source>
-        <target state="new">television.trailers.nav.competition</target>
+        <target>Compétition</target>
         <jms:reference-file line="6">Television/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="473389d6daae5b46a5254cf5491ff5ef3a4249fb" resname="television.trailers.nav.courtmetrage">
         <source>television.trailers.nav.courtmetrage</source>
-        <target state="new">television.trailers.nav.courtmetrage</target>
+        <target>Courts métrages</target>
         <jms:reference-file line="41">Television/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f0e3fe30299b966b8c041ea7b1f3aea7a9ce2354" resname="television.trailers.nav.horscompetition">
         <source>television.trailers.nav.horscompetition</source>
-        <target state="new">television.trailers.nav.horscompetition</target>
+        <target>Hors compétition</target>
         <jms:reference-file line="20">Television/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0598621151e9be5afb1fa28085e1d5356f2463bc" resname="television.trailers.nav.seancesspeciales">
         <source>television.trailers.nav.seancesspeciales</source>
-        <target state="new">television.trailers.nav.seancesspeciales</target>
+        <target>Séances spéciales</target>
         <jms:reference-file line="27">Television/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7553490587cc50dda61a1f0bae24d3930b42b8f9" resname="webtv.direct.text.videos">
         <source>webtv.direct.text.videos</source>
-        <target state="new">webtv.direct.text.videos</target>
+        <target>vidéos</target>
         <jms:reference-file line="11">Television/widgets/video.html.twig</jms:reference-file>
       </trans-unit>
     </body>

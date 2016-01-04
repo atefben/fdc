@@ -2,50 +2,89 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-{#<div id="main" class="webtv single-trailer loading">#}
-<div id="main" class="webtv single-trailer">
-    <div class="container">
-        <a href="#" class="back">{{ 'webtv.trailer.btn.retourauxchaines'|trans }}</a>
-    </div>
-    <h2 class="title">{{ 'webtv.trailer.title.conferencedepresse'|trans }}</h2>
 
-    <div class="small-container">
-        <div class="player">
-            {% image '@FDCEventBundle/Resources/public/img/webtv/playervideo.jpg' %}
-            <img src="{{ asset_url }}" alt="">
-            {% endimage %}
+<div id="main" class=" webtv webtv-ba-video loading">
+    <div class="container-webtv-ba-video">
+        <div class="title-container">
+            <a href="#" class="bandeannone">{{ 'trailer.btn.retourbandeannonces'|trans }}</a>
+            <h1 class="title">{{ trailer.film.title }}</h1>
         </div>
-        <div class="infos-videos">
-            <div class="infos">
-                <strong>{{ trailer.title }}</strong>
-                <span class="time">{{ trailer.createdAt|date('d.m.y') }} . {{ trailer.createdAt|date('H:i') }}</span>
-                <p>{{ trailer.title }}</p>
-            </div>
-            <div class="buttons square">
-                <a href="#" class="button facebook"></a>
-                <a href="#" class="button twitter"></a>
-                <a href="#" class="button link"></a>
-                <a href="#" class="button email"></a>
-            </div>
-        </div>
+        <section>
+            <article class="video">
+                <img src="//html.festival-cannes-2016.com.ohwee.fr/img/webtv/video1.jpg" alt="video">
+                <span class="type-video">{{ trailer.film.type }}</span>
+                <span class="name-video">{{ trailer.film.title }}</span>
+            </article>
+            <aside class="informations-video">
+                <ul class="nav">
+                    <li class="active infos-film-li">{{ 'trailer.nav.film'|trans }}</li>
+                    <li class="program-film-li">{{ 'trailer.nav.programmation'|trans }}</li>
+                </ul>
+                <div class="container-video">
+                    <div class="infos-film block">
+                        <img src="//html.festival-cannes-2016.com.ohwee.fr/img/webtv/cover-film1.jpg" alt="affiche film">
+                        <h4 class="rubric-film">{{ trailer.film.type }}</h4>
+                        <strong class="name-video">{{ trailer.film.title }}</strong>
+                        <span class="name-person">{{ trailer.author.fullName }}</span>
+                    </div>
+                    <div class="program-film block">
+                        <div class="contain-info">
+                            {% for showing in filmShowings %}
+                                <div class="infos">
+                                    <p>{{ 'trailer.text.projection'|trans }} <span class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span></p>
+                                    <span class="where">{{ showing.place }}</span>
+                                    {% if loop.last == false %}
+                                        <hr>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a href="{{ path('fdc_event_news_index') }}" class="btn">{{ 'trailer.btn.toutelaprogrammation'|trans }}</a>
+                    </div>
+                </div>
+                <div class="share">
+                    <div class="buttons square">
+                        <a href="#" class="button facebook"></a>
+                        <a href="#" class="button twitter"></a>
+                        <a href="#" class="button link"></a>
+                        <a href="#" class="button email"></a>
+                    </div>
+                </div>
+            </aside>
+        </section>
     </div>
-
     <div id="content-trailers">
-        <div id="slider-trailers" class="owl-carousel sliderDrag">
-            {% for trailer in trailers %}
-                <div class="trailer shadow-bottom">
+        <div id="slider-trailer" class="owl-carousel sliderDrag">
+            {% for video in channels %}
+                <div class="channel">
                     {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
                 </div>
             {% endfor %}
         </div>
     </div>
-    <div id="content-latest">
-        <h2 class="title">{{ 'webtv.trailer.title.lesdernieresvideos'|trans }}</h2>
-        <div class="container sliderDrag">
-            {% for video in trailers %}
-                {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
-            {% endfor %}
+
+    <div class="bandeau-list vCenter push-footer bandeau-list-footer">
+        <div class="bandeau-list-img vCenterKid" style="background-image:url('http://html.festival-cannes-2016.com.ohwee.fr/img/webtv/push.jpg');">
+            <h2 class="title title-list-header">La loi du marché</h2>
+            <a href="{{ path('fdc_event_movie_selection', {'slug': 'certain-regard'} ) }}" class="bandeau-lien">
+                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                <img src="{{ asset_url }}" alt="{{ 'trailer.btn.voirlabandeannonce'|trans }}" class="svg-arrow">
+                {% endimage %}
+                {{ 'trailer.btn.voirlabandeannonce'|trans }}
+            </a>
         </div>
     </div>
+
 </div>
+
+<!-- POPIN MAIL SHARE ---->
+{{ render(controller('FDCEventBundle:Global:shareEmail',
+{'section': trailer.film.title,
+    'detail': trailer.author.fullName,
+    'title':trailer.author.fullName,
+    'description': trailer.film.title
+}))
+}}
+<!-- END POPIN MAIL SHARE -->
+
 {% endblock %}

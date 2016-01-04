@@ -175,6 +175,7 @@
                            class="{% if app.request.attributes.get('_route') == 'fdc_event_television_live'
                                      or app.request.attributes.get('_route') == 'fdc_event_television_channels'
                                      or app.request.attributes.get('_route') == 'fdc_event_television_getchannel'
+                                     or app.request.attributes.get('_route') == 'fdc_event_television_gettrailer'
                                      or app.request.attributes.get('_route') == 'fdc_event_television_trailers' %}active{% endif %}">
                             {{ 'header.mainnav.nav.webtv'|trans }} </a>
                         <ul class="tcenter">
@@ -193,7 +194,8 @@
                             </li>
                             <li>
                                 <a href="{{ path('fdc_event_television_trailers', { 'slug': 'competition' }) }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_trailers' %}active{% endif %}">
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_event_television_trailers'
+                                             or app.request.attributes.get('_route') == 'fdc_event_television_gettrailer' %}active{% endif %}">
                                     {{ 'header.mainnav.nav.bandesannonces'|trans }}
                                 </a>
                             </li>
@@ -201,7 +203,8 @@
                     </li>
                     <li>
                         <a href="{{ path('fdc_event_movie_selection', { 'slug': 'competition' }) }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_movie_selection' %}active{% endif %}">
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_movie_selection'
+                                     or app.request.attributes.get('_route') == 'fdc_event_movie_get'%}active{% endif %}">
                             {{ 'header.mainnav.nav.laselection'|trans }}
                         </a>
                     </li>

@@ -11,7 +11,7 @@
         <div class="thumbs">
             {% for key, person in movie.persons %}
                 <a href="#" class="{% if key == 0 %}active{% endif %}" data-caption="{{ person.image.copyright }}">
-                    <img src="{{ person.image.path }}" alt=""  />
+                    <img src="{{ person.image.cover }}" alt=""  />
                 </a>
             {% endfor %}
         </div>
@@ -20,14 +20,13 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
-                {% for person in movie.persons.credits %}
-                    <p><a href="{{ path('fdc_event_artist_get', {'slug': person.slug }) }}">{{ person.fullName }} </a> - {{ person.role }}</p>
-
+                {% for person in movie.persons %}
+                    <p><a href="{{ path('fdc_event_artist_get', {'slug': person.credits.slug }) }}">{{ person.credits.fullName }} </a> - {{ person.credits.role }}</p>
                 {% endfor %}
                 <div class="actors">
                     <h3 class="title-section">{{ 'movie.title.casting'|trans }}</h3>
-                    {% for person in movie.persons.casting %}
-                        <p><a href="{{ path('fdc_event_artist_get', {'slug': person.slug }) }}">{{ person.fullName }}</a> - {{ person.role }}</p>
+                    {% for person in movie.persons %}
+                        <p><a href="{{ path('fdc_event_artist_get', {'slug': person.casting.slug }) }}">{{ person.casting.fullName }}</a> - {{ person.casting.role }}</p>
                     {% endfor %}
                 </div>
             </div>

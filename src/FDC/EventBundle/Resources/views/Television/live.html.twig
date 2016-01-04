@@ -25,8 +25,8 @@
             </a>
         </p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
-            {% for channel in channels %}
-                {% if channel.most_viewed %}
+            {% for video in channels %}
+                {% if video.most_viewed %}
                     <div class="vid shadow-bottom">
                         {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
                     </div>
@@ -34,8 +34,8 @@
             {% endfor %}
         </div>
         <div id="slider-channels" class="owl-carousel sliderDrag">
-            {% for channel in channels %}
-                {% if channel.most_viewed == false %}
+            {% for video in channels %}
+                {% if video.most_viewed == false %}
                     <div class="channel shadow-bottom">
                         {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
                     </div>
@@ -55,7 +55,9 @@
         </p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
             {% for video in trailers %}
-                {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
+                <div class="video shadow-bottom">
+                    {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
+                </div>
             {% endfor %}
         </div>
     </div>
@@ -63,7 +65,9 @@
         <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
             {% for video in videos %}
-                {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
+                <div class="video shadow-bottom">
+                    {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
+                </div>
             {% endfor %}
         </div>
     </div>

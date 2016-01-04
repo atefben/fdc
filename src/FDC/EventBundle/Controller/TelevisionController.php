@@ -20,8 +20,8 @@ class TelevisionController extends Controller
         $channels = array(
             array(
                 'most_viewed' => true,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -30,8 +30,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => true,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -40,8 +40,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -50,8 +50,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -60,8 +60,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -70,8 +70,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -80,8 +80,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -92,8 +92,8 @@ class TelevisionController extends Controller
 
         $videos = array(
             array(
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -101,8 +101,8 @@ class TelevisionController extends Controller
                 'title' => 'Lorem ipsum'
             ),
             array(
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -143,7 +143,7 @@ class TelevisionController extends Controller
 
         $videos = array(
             array(
-                'img' => array(
+                'image' => array(
                     'path' => 'http://dummyimage.com/463x291/000/fff'
                 ),
                 'nbVideos' => 5,
@@ -152,7 +152,7 @@ class TelevisionController extends Controller
                 'title' => 'Lorem ipsum'
             ),
             array(
-                'img' => array(
+                'image' => array(
                     'path' => 'http://dummyimage.com/463x291/000/fff'
                 ),
                 'nbVideos' => 5,
@@ -164,8 +164,8 @@ class TelevisionController extends Controller
         $channels = array(
             array(
                 'most_viewed' => true,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -174,8 +174,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => true,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -184,8 +184,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -194,8 +194,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -204,8 +204,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -214,8 +214,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -224,8 +224,8 @@ class TelevisionController extends Controller
             ),
             array(
                 'most_viewed' => false,
-                'img' => array(
-                    'path' => 'img.jpg'
+                'image' => array(
+                    'path' => 'image.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -505,101 +505,164 @@ class TelevisionController extends Controller
     {
         $trailer = array(
             'id' => 1,
-            'author' => 'Olivier ASSAYAS',
+            'author' => array(
+                'fullName' => 'Olivier ASSAYAS',
+            ),
             'most_viewed' => true,
             'image' => array(
                 'path' => 'img.jpg',
                 'src'       => 'http://dummyimage.com/640x404/000/fff.png',
-                'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
             ),
             'nbVideos' => 5,
             'theme' => 'les plus vues',
             'createdAt' => new \DateTime(),
-            'title' => 'Lorem ipsum',
             'filter' => array(
                 'date' => 'date1',
                 'theme' => 'theme1',
             ),
+            'film' => array(
+                'type' => 'Bande annonce',
+                'title' => 'Lorem Ipsum'
+            ),
+        );
+        $channels = array(
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
+            array(
+                'id' => 1,
+                'author' => 'Olivier ASSAYAS',
+                'most_viewed' => true,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
+                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
+                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
+                ),
+                'nbVideos' => 5,
+                'theme' => 'les plus vues',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum',
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                ),
+            ),
         );
 
-        $trailers = array(
+        $filmShowings = array(
             array(
-                'id' => 1,
-                'author' => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
+                'date' => new \DateTime(),
+                'place' => "Grand théâtre Lumière",
             ),
             array(
-                'id' => 1,
-                'author' => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
+                'date' => new \DateTime(),
+                'place' => "Grand théâtre Lumière",
             ),
             array(
-                'id' => 1,
-                'author' => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
+                'date' => new \DateTime(),
+                'place' => "Grand théâtre Lumière",
             ),
             array(
-                'id' => 1,
-                'author' => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset'    => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
+                'date' => new \DateTime(),
+                'place' => "Grand théâtre Lumière",
+            ),
+            array(
+                'date' => new \DateTime(),
+                'place' => "Grand théâtre Lumière",
             )
         );
 
         return array(
             'trailer' => $trailer,
-            'trailers' => $trailers,
+            'channels' => $channels,
+            'filmShowings' => $filmShowings
         );
     }
 }

@@ -27,7 +27,7 @@ class MovieController extends Controller
                 'title' => 'Youth',
                 'titleVO' => 'Youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'author' => array(
                     'fullName' => 'Paolo SORRENTINO',
@@ -39,7 +39,7 @@ class MovieController extends Controller
                 'title'=> 'Youth',
                 'titleVO' => 'Youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'author' => array(
                     'fullName' => 'Paolo SORRENTINO',
@@ -51,7 +51,7 @@ class MovieController extends Controller
                 'title'=> 'Youth',
                 'titleVO' => 'Youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'author' => array(
                     'fullName' => 'Paolo SORRENTINO',
@@ -63,7 +63,7 @@ class MovieController extends Controller
                 'title'=> 'Youth',
                 'titleVO' => 'Youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'author' => array(
                     'fullName' => 'Paolo SORRENTINO',
@@ -75,7 +75,7 @@ class MovieController extends Controller
                 'title'=> 'Youth',
                 'titleVO' => 'Youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'author' => array(
                     'fullName' => 'Paolo SORRENTINO',
@@ -87,7 +87,7 @@ class MovieController extends Controller
                 'title'=> 'Youth',
                 'titleVO' => 'Youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'author' => array(
                     'fullName' => 'Paolo SORRENTINO',
@@ -99,7 +99,7 @@ class MovieController extends Controller
                 'title'=> 'Youth',
                 'titleVO' => 'Youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'author' => array(
                     'fullName' => 'Paolo SORRENTINO',
@@ -109,7 +109,7 @@ class MovieController extends Controller
             'prev' => array(
                 'slug' => 'youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'title' => 'Youth',
                 'titleVO' => 'Youth',
@@ -121,7 +121,7 @@ class MovieController extends Controller
             'next' => array(
                 'slug' => 'youth',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
                 'title' => 'Youth',
                 'titleVO' => 'Youth',
@@ -156,8 +156,8 @@ class MovieController extends Controller
                            Ça finira par des aboiements<br>
                            Et des cris de bébé',
             'image' => array(
-                'banner' => 'img.jpg',
-                'cover' => 'img.jpg',
+                'banner' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/002.jpg',
+                'cover' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/006.jpg',
             ),
             'categories' => array(
                 array(
@@ -176,10 +176,57 @@ class MovieController extends Controller
                 'slug' => 'jean-luc-godard'
             ),
             'persons' => array(
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'cover' => 'img.jpg',
+                array(
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
+                        'cover' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
+                        'copyright' => '© FDC / Jean-Luc GODARD'
+                    ),
+                    'credits' => array(
+                        'slug' => 'LoremIpsum',
+                        'fullName' => 'Lorem Ipsum',
+                        'role' => 'Auteur'
+                    ),
+                    'casting' => array(
+                        'slug' => 'LoremIpsum',
+                        'fullName' => 'Lorem Ipsum',
+                        'role' => 'Auteur'
+                    ),
                 ),
+                array(
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
+                        'cover' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
+                        'copyright' => '© FDC / Jean-Luc GODARD'
+                    ),
+                    'credits' => array(
+                        'slug' => 'LoremIpsum',
+                        'fullName' => 'Lorem Ipsum',
+                        'role' => 'Auteur'
+                    ),
+                    'casting' => array(
+                        'slug' => 'LoremIpsum',
+                        'fullName' => 'Lorem Ipsum',
+                        'role' => 'Auteur'
+                    ),
+                ),
+                array(
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
+                        'cover' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
+                        'copyright' => '© FDC / Jean-Luc GODARD'
+                    ),
+                    'credits' => array(
+                        'slug' => 'LoremIpsum',
+                        'fullName' => 'Lorem Ipsum',
+                        'role' => 'Auteur'
+                    ),
+                    'casting' => array(
+                        'slug' => 'LoremIpsum',
+                        'fullName' => 'Lorem Ipsum',
+                        'role' => 'Auteur'
+                    ),
+                )
             ),
             'press' => array(
                 'links' => array(
@@ -206,8 +253,56 @@ class MovieController extends Controller
                     'createdAt' => new \DateTime(),
                     'copyright' => 'Lorem ipsum',
                     'image' => array(
-                        'path' => 'img.jpg',
-                        'thumb' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
+                    ),
+                ),
+                array(
+                    'id' => 0,
+                    'title' => 'Lorem Ipsum',
+                    'caption' => '<a>Test</a>',
+                    'theme' => 'En compétition',
+                    'createdAt' => new \DateTime(),
+                    'copyright' => 'Lorem ipsum',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
+                    ),
+                ),
+                array(
+                    'id' => 0,
+                    'title' => 'Lorem Ipsum',
+                    'caption' => '<a>Test</a>',
+                    'theme' => 'En compétition',
+                    'createdAt' => new \DateTime(),
+                    'copyright' => 'Lorem ipsum',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
+                    ),
+                ),
+                array(
+                    'id' => 0,
+                    'title' => 'Lorem Ipsum',
+                    'caption' => '<a>Test</a>',
+                    'theme' => 'En compétition',
+                    'createdAt' => new \DateTime(),
+                    'copyright' => 'Lorem ipsum',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
+                    ),
+                ),
+                array(
+                    'id' => 0,
+                    'title' => 'Lorem Ipsum',
+                    'caption' => '<a>Test</a>',
+                    'theme' => 'En compétition',
+                    'createdAt' => new \DateTime(),
+                    'copyright' => 'Lorem ipsum',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
                     ),
                 ),
             ),
@@ -215,24 +310,46 @@ class MovieController extends Controller
                 array(
                     'id' => 0,
                     'title' => 'Lorem Ipsum',
-                    'type' => 'Lorem',
+                    'type' => 'article',
                     'theme' => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'image' => array(
-                        'path' => 'img.jpg',
-                        'thumb' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                    ),
+                ),
+                array(
+                    'id' => 0,
+                    'title' => 'Lorem Ipsum',
+                    'type' => 'article',
+                    'theme' => 'En compétition',
+                    'createdAt' => new \DateTime(),
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                    ),
+                ),
+                array(
+                    'id' => 0,
+                    'title' => 'Lorem Ipsum',
+                    'type' => 'article',
+                    'theme' => 'En compétition',
+                    'createdAt' => new \DateTime(),
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
                     ),
                 ),
             ),
             'audios' => array(
                 array(
                     'title' => 'Lorem Ipsum',
-                    'theme' => 'Lorem',
+                    'theme' => 'article',
                     'sound' => 'sound.mp3',
                     'createdAt' => new \DateTime(),
                     'image' => array(
-                        'path' => 'img.jpg',
-                        'thumb' => 'img.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                     ),
                 ),
             ),
@@ -250,18 +367,63 @@ class MovieController extends Controller
                 'createdAt' => new \DateTime(),
                 'title' => 'The Lobster',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/003.jpg'
                 ),
             ),
             array(
                 'most_viewed' => false,
-                'theme' => 'Bande-annonce',
+                'theme' => 'Photocall',
                 'createdAt' => new \DateTime(),
-                'title' => 'The Lobster',
+                'title' => 'Lorem ipsum dolor sit amet sit amet',
                 'image' => array(
-                    'path' => 'img.jpg'
+                    'path' => '//dummyimage.com/293x185/000/fff'
                 ),
             ),
+            array(
+                'most_viewed' => false,
+                'theme' => 'Photocall',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum dolor sit amet sit amet',
+                'image' => array(
+                    'path' => 'http://dummyimage.com/293x185/000/fff'
+                ),
+            ),
+            array(
+                'most_viewed' => false,
+                'theme' => 'Photocall',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum dolor sit amet sit amet',
+                'image' => array(
+                    'path' => 'http://dummyimage.com/293x185/000/fff'
+                ),
+            ),
+            array(
+                'most_viewed' => false,
+                'theme' => 'Photocall',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum dolor sit amet sit amet',
+                'image' => array(
+                    'path' => 'http://dummyimage.com/293x185/000/fff'
+                ),
+            ),
+            array(
+                'most_viewed' => false,
+                'theme' => 'Photocall',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum dolor sit amet sit amet',
+                'image' => array(
+                    'path' => 'http://dummyimage.com/293x185/000/fff'
+                ),
+            ),
+            array(
+                'most_viewed' => false,
+                'theme' => 'Photocall',
+                'createdAt' => new \DateTime(),
+                'title' => 'Lorem ipsum dolor sit amet sit amet',
+                'image' => array(
+                    'path' => 'http://dummyimage.com/293x185/000/fff'
+                ),
+            )
 
         );
 

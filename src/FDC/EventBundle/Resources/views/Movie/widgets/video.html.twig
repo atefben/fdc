@@ -3,7 +3,7 @@
         {% for video in videos %}
             {% if video.most_viewed %}
                 <div class="video-player video">
-                    <div class="image" style="background-image: url(img/movie/003.jpg);"></div>
+                    <div class="image" style="background-image: url({{ video.image.path }});"></div>
                     <div class="picto"></div>
                     <div class="info">
                         <div class="vCenter">
