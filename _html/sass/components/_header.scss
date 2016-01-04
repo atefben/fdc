@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // =========================
@@ -20,7 +20,7 @@ header {
     #navigation ul li ul.tcenter {
       width: 836px
     }
-    
+
     #navigation ul.main {
       width: 835px;
     }
@@ -261,7 +261,7 @@ header {
           padding: 0 12px;
           text-transform: uppercase;
           @include transition(all 0.3s $smoothTransition);
-        
+
           &:hover, &.active {
             color: $gold;
           }
@@ -592,6 +592,17 @@ header {
         .participate-wrapper ul {
           left: auto;
           margin-left: -762px;
+          text-align: right;
+          li{
+            a{
+              font-size: 0.688rem;
+            }
+          }
+        }
+
+        .programmation-wrapper ul{
+          left: auto;
+          margin-left: -649px;
           text-align: right;
           li{
             a{

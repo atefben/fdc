@@ -4360,6 +4360,14 @@ header #navigation ul.user .participate-wrapper ul {
 header #navigation ul.user .participate-wrapper ul li a {
   font-size: 0.688rem;
 }
+header #navigation ul.user .programmation-wrapper ul {
+  left: auto;
+  margin-left: -649px;
+  text-align: right;
+}
+header #navigation ul.user .programmation-wrapper ul li a {
+  font-size: 0.688rem;
+}
 
 @media screen and (max-width: 1024px) {
   .mob header #navigation ul.main {
