@@ -2,6 +2,7 @@
 // =========================
 // 1. Global
 // 2. Popin Event
+// 3. Event page - Press
 // =========================
 
 
@@ -2317,7 +2318,7 @@
     #mycalendar{
       .fc-day{
           width:234px;
-      }
+      } 
       .fc-day-header{
           width:234px;
       }
@@ -2330,5 +2331,23 @@
         }
       }
     }
+  }
+}
+
+
+//3- EVENT PAGE PRESS
+
+.events-site{
+  .contact-press{
+    padding: 0px;
+  }
+  .header-press .buttons{
+    margin: 56px 0 0 0;
+  }
+  .locked p {
+    color: #666;
+    font-size: 0.813rem;
+    margin: 0 0 0 65px;
+    width: 64%;
   }
 }

@@ -3803,6 +3803,9 @@ header {
 header.press {
   overflow: initial;
 }
+header.press #navigation ul li ul.tcenter {
+  width: 836px;
+}
 header.press #navigation ul.main {
   width: 835px;
 }
@@ -4355,6 +4358,14 @@ header #navigation ul.user .participate-wrapper ul {
   text-align: right;
 }
 header #navigation ul.user .participate-wrapper ul li a {
+  font-size: 0.688rem;
+}
+header #navigation ul.user .programmation-wrapper ul {
+  left: auto;
+  margin-left: -649px;
+  text-align: right;
+}
+header #navigation ul.user .programmation-wrapper ul li a {
   font-size: 0.688rem;
 }
 
@@ -17473,6 +17484,19 @@ input[type=submit] {
 }
 .press #calendar.fullwidth #mycalendar .fc-content-skeleton td {
   width: 234px;
+}
+
+.events-site .contact-press {
+  padding: 0px;
+}
+.events-site .header-press .buttons {
+  margin: 56px 0 0 0;
+}
+.events-site .locked p {
+  color: #666;
+  font-size: 0.813rem;
+  margin: 0 0 0 65px;
+  width: 64%;
 }
 
 .seatingchart .header-press {
