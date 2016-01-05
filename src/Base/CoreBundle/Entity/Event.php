@@ -283,40 +283,6 @@ class Event implements TranslateMainInterface
 
 
     /**
-     * Add tags
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsTag $tags
-     * @return News
-     */
-    public function addTag(\Base\CoreBundle\Entity\NewsNewsTag $tags)
-    {
-        $this->tags[] = $tags;
-        $tags->setNews($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsTag $tags
-     */
-    public function removeTag(\Base\CoreBundle\Entity\NewsNewsTag $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
@@ -393,5 +359,38 @@ class Event implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Base\CoreBundle\Entity\NewsTag $tags
+     * @return Event
+     */
+    public function addTag(\Base\CoreBundle\Entity\NewsTag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Base\CoreBundle\Entity\NewsTag $tags
+     */
+    public function removeTag(\Base\CoreBundle\Entity\NewsTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

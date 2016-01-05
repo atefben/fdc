@@ -103,11 +103,11 @@ class JuryFunctionManager extends CoreManager
             $msg = __METHOD__. " - The extension {$extension} is not supported.";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
-            break;
+            return;
         }
         
         if ($result === false) {
-            $msg = __METHOD__. " - Impossible to create image from base 64 of {$this->wsParameterKey} : {$id}";
+            $msg = __METHOD__. " - Impossible to create image from base 64 of {$this->wsParameterKey} : {$base64}";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
         }
@@ -132,7 +132,7 @@ class JuryFunctionManager extends CoreManager
         }
         
         if ($file === false) {
-            $msg = __METHOD__. " - Impossible to create image from string {$this->wsParameterKey} : {$id}";
+            $msg = __METHOD__. " - Impossible to create image from string {$this->wsParameterKey} : {$base64}";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
         }
