@@ -635,7 +635,7 @@ class NewsController extends Controller
 
     /**
      * @Route("/articles")
-     * @Template("FDCEventBundle:News:list-article.html.twig")
+     * @Template("FDCEventBundle:News/list:article.html.twig")
      */
     public function getArticlesAction()
     {
@@ -647,7 +647,7 @@ class NewsController extends Controller
                 'createdAt' => new \DateTime(),
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'image' => array(
-                    'path' => 'img.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
                 ),
             ),
             array(
@@ -656,7 +656,7 @@ class NewsController extends Controller
                 'createdAt' => new \DateTime(),
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'image' => array(
-                    'path' => 'img.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
                 ),
             ),
             array(
@@ -665,7 +665,7 @@ class NewsController extends Controller
                 'createdAt' => new \DateTime(),
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'image' => array(
-                    'path' => 'img.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
                 ),
             ),
             array(
@@ -674,7 +674,7 @@ class NewsController extends Controller
                 'createdAt' => new \DateTime(),
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'image' => array(
-                    'path' => 'img.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
                 ),
             ),
             array(
@@ -683,7 +683,7 @@ class NewsController extends Controller
                 'createdAt' => new \DateTime(),
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'image' => array(
-                    'path' => 'img.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
                 ),
             ),
             array(
@@ -692,7 +692,7 @@ class NewsController extends Controller
                 'createdAt' => new \DateTime(),
                 'title' => 'Enragés, polar hybride d\'Eric Hannezo',
                 'image' => array(
-                    'path' => 'img.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
                 ),
             )
         );
@@ -736,7 +736,7 @@ class NewsController extends Controller
 
     /**
      * @Route("/photos")
-     * @Template("FDCEventBundle:News:article.list-photo.html.twig")
+     * @Template("FDCEventBundle:News/list:photo.html.twig")
      */
     public function getPhotosAction()
     {
@@ -757,6 +757,54 @@ class NewsController extends Controller
                     'theme' => 'theme1',
                 )
             ),
+            array(
+                'format'    => 'portrait',
+                'theme' => 'Conférence de presse',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                ),
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                )
+            ),
+            array(
+                'format'    => 'portrait',
+                'theme' => 'Conférence de presse',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                ),
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                )
+            ),
+            array(
+                'format'    => 'portrait',
+                'theme' => 'Conférence de presse',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => 'img.jpg',
+                    'src'      => 'http://dummyimage.com/640x404/000/fff.png',
+                    'large'    => 'http://dummyimage.com/1280x808/ddd/000.png',
+                ),
+                'filter' => array(
+                    'date' => 'date1',
+                    'theme' => 'theme1',
+                )
+            )
         );
 
         $filters = array(
@@ -798,7 +846,7 @@ class NewsController extends Controller
 
     /**
      * @Route("/videos")
-     * @Template("FDCEventBundle:News:list-video.html.twig")
+     * @Template("FDCEventBundle:News/list:video.html.twig")
      */
     public function getVideosAction()
     {
