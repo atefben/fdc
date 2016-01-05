@@ -3278,6 +3278,10 @@ body {
   border-bottom: 1px solid #2C2C2C;
 }
 
+.icon {
+  vertical-align: baseline;
+}
+
 @media screen and (max-width: 768px) {
   #main, header, footer {
     width: 1024px;
@@ -3965,9 +3969,8 @@ header .user-nav li a {
 header .user-nav li a:hover {
   opacity: 0.7;
 }
-header .user-nav li a.selection {
-  background: url("../img/svg/selection.svg") no-repeat left 48%;
-  background-size: 15px;
+header .user-nav li a.selection .icon {
+  padding-right: 10px;
 }
 header .user-nav li a.account {
   padding-left: 0;
@@ -4642,7 +4645,7 @@ footer .footer-menu ul li a:hover {
   display: inline-block;
   margin: 16px 0px;
 }
-#breadcrumb .container a {
+#breadcrumb .container a, #breadcrumb .container span {
   color: #fff;
   font-size: 0.63rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -4653,7 +4656,7 @@ footer .footer-menu ul li a:hover {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#breadcrumb .container a.active {
+#breadcrumb .container span.active {
   color: #c8a461;
 }
 #breadcrumb .container .icon {

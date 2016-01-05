@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Breadcrumb
@@ -290,9 +290,9 @@ footer {
     margin: 0 auto;
     li{
       display: inline-block;
-      margin: 16px 0px;
+      margin: 16px 0px; 
     }
-    a{
+    a, span{
       color:#fff;
       font-size: 0.63rem;
       font-family: $CamphorBold;
@@ -300,7 +300,7 @@ footer {
       text-transform: uppercase;
       @include transition(all 0.9s $smoothTransition);
     }
-    a.active{
+    span.active{
       color:$gold;
     }
     .icon{
@@ -309,7 +309,7 @@ footer {
     a:hover{
       color:$gold;
     }
-    
+
     .goTop{
       color: #c8a461;
       font-size: 0.75rem;
@@ -318,12 +318,9 @@ footer {
       float: right;
       margin: 20px 0px;
     }
-    
+
     .goTop:hover{
       cursor: pointer;
     }
   }
 }
-
-
-
