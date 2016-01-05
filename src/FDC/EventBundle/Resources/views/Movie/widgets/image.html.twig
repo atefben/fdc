@@ -2,7 +2,7 @@
     <div class="slideshow">
         <div class="slideshow-img">
             <div class="images">
-                {% for key, photo in movie.photos %}
+                {% for key, photo in photos %}
                     <div class="img {% if key == 0 %}active{% endif %}">
                         <a id="photo-{{ photo.id }}"
                            class="chocolat-image ajax"
@@ -15,14 +15,14 @@
                 {% endfor %}
             </div>
             <div class="owl-carousel thumbnails">
-                {% for key, photo in movie.photos %}
+                {% for key, photo in photos %}
                     <div class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ photo.caption }}">
                         <img src="{{ photo.image.thumb }}" />
                     </div>
                 {% endfor %}
             </div>
         </div>
-        {% for key, photo in movie.photos %}
+        {% for key, photo in photos %}
             {% if key == 0 %}
                 <p class="caption">{{ photo.caption }}</p>
             {% endif %}

@@ -39,11 +39,21 @@
 
             {% include 'FDCEventBundle:Movie:widgets/casting.html.twig' %}
 
-            {% include 'FDCEventBundle:Movie:widgets/image.html.twig' %}
+            {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.photos} %}
 
-            {% include 'FDCEventBundle:Movie:widgets/article.html.twig' %}
+            <div class="news" data-section="news">
+                <div class="articles center">
+                {% for article in movie.articles %}
+                    {% include 'FDCEventBundle:Movie:widgets/article.html.twig' %}
+                {% endfor %}
+                </div>
+            </div>
 
-            {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' %}
+            <div class="audios" data-section="audios">
+            {% for audio in movie.audios %}
+                {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' %}
+            {% endfor %}
+            </div>
 
         </div>
 

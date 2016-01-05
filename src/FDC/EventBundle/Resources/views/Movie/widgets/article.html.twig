@@ -1,21 +1,15 @@
-<div class="news" data-section="news">
-    <div class="articles center">
-        {% for article in movie.articles %}
-            <article class="{{ article.type }}" data-format="{{ article.type }}" data-theme="{{ article.theme }}">
-                <div class="image">
-                    <div class="image-wrapper">
-                        <img src="{{ article.image.path }}" alt="" />
-                    </div>
-                    <a href="{{ path('fdc_event_news_get', {'slug': article.id}) }}" class="linkImage"></a>
-                    <a href="#" class="read-later"><span>{{ 'movie.article.btn.ajouteramaselection'|trans }}</span></a>
-                    <span class="picto"></span>
-                </div>
-                <div class="info">
-                    <a href="#" class="category">{{ article.theme }}</a>
-                    <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                    <h2><a href="{{ path('fdc_event_news_get', {'slug': article.id}) }}">{{ article.title }}</a></h2>
-                </div>
-            </article>
-        {% endfor %}
+<article class="{{ article.type }}" data-format="{{ article.type }}" data-theme="{{ article.theme }}">
+    <div class="image">
+        <div class="image-wrapper">
+            <img src="{{ article.image.path }}" alt="" />
+        </div>
+        <a href="{{ path('fdc_event_news_get', {'slug': article.id}) }}" class="linkImage"></a>
+        <a href="#" class="read-later"><span>{{ 'movie.article.btn.ajouteramaselection'|trans }}</span></a>
+        <span class="picto"></span>
     </div>
-</div>
+    <div class="info">
+        <a href="#" class="category">{{ article.theme }}</a>
+        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+        <h2><a href="{{ path('fdc_event_news_get', {'slug': article.id}) }}">{{ article.title }}</a></h2>
+    </div>
+</article>

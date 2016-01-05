@@ -36,8 +36,8 @@
         </a>
     </li>
     <li>
-        <a href="{{ path('fdc_event_movie_selection', {'slug': 'cannes-classics'}) }}"
-           class="{% if app.request.attributes.get('slug') == 'cannes-classics' %}active{% endif %} ajax">
+        <a href="{{ path('fdc_event_movie_classics', {'slug': 'invites-honneur'}) }}"
+           class="{% if app.request.attributes.get('_route') == 'fdc_event_movie_classics' %}active{% endif %} ajax">
             {{ 'selection.nav.cannes-classics'|trans }}
         </a>
     </li>
