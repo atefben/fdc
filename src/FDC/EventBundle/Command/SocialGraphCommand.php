@@ -10,10 +10,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class SocialWallCommand
+ * Class SocialGraphCommand
  * @package FDC\EventBundle\Command
  */
-class SocialWallCommand extends ContainerAwareCommand
+class SocialGraphCommand extends ContainerAwareCommand
 {
     /**
      * configure function.
@@ -23,8 +23,8 @@ class SocialWallCommand extends ContainerAwareCommand
      */
     protected function configure() {
         $this
-            ->setName('fdc:social_wall:update')
-            ->setDescription('Update social wall')
+            ->setName('fdc:social_graph:update')
+            ->setDescription('Update social graph total tweets count')
         ;
     }
 
@@ -47,6 +47,30 @@ class SocialWallCommand extends ContainerAwareCommand
             $msg = 'Can\'t find current festival';
             $this->writeError($output, $logger, $msg);
         }
+
+        // get current social graph twitter hashtag
+        $socialGraphSettings = $em->getRepository('BaseCoreBundle:SocialGraphSettings')->findOneByFestival($festival->getId());
+        if ($socialGraphSettings === null) {
+            $msg = 'Can\'t find social graph settings';
+            $this->writeError($output, $logger, $msg);
+        }
+
+        // get social wall by date
+        $datetime = new DateTime();
+        $socialWall = $em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array(
+            'date' => $datetime->format('d-m-Y'),
+            'festival' => $festival->getId()
+        ));
+        if ($socialWall === null) {
+            $socialWall = new SocialWall();
+            $socialWall->setFestival($festival);
+            $socialWall->setDate($datetime);
+        }
+
+        // get tweets
+        $count = 0;
+
+        $socialWall->setCount($socialWall->getCount() + $count);
 
         $em->flush();
     }
