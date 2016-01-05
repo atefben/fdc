@@ -228,11 +228,31 @@
                     </li>
                 </ul>
                 <ul class="user">
-                    <li>
-                        <a href="{{ path('fdc_event_news_index') }}" class="programmation"> {{ 'header.mainnav.nav.programmation'|trans }} </a>
+                    <li class="programmation-wrapper">
+                        <a href="{{ path('fdc_event_agenda_scheduling') }}"
+                           class="programmation">
+                            {{ 'header.mainnav.nav.programmation'|trans }}
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="{{ path('fdc_event_agenda_scheduling') }}">
+                                    {{ 'header.mainnav.nav.programmation'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_event_agenda_get') }}">
+                                    {{ 'header.mainnav.nav.agenda'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_event_news_index') }}">
+                                    {{ 'header.mainnav.nav.plandessalles'|trans }}
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="participate-wrapper">
-                        <a href="{{ path('fdc_event_news_index') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
+                        <a href="{{ path('fdc_event_participate_prepare') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
                         <ul>
                             <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ 'header.mainnav.nav.preparersejour'|trans }}</a></li>
                             <li><a href="{{ path('fdc_event_participate_festival') }}"> {{ 'header.mainnav.nav.festivalmodeemploi'|trans }} </a></li>

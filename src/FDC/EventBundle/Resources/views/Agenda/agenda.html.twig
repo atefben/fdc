@@ -1,0 +1,53 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="press loading fullcalendar">
+    <div class="header-press">
+        <div class="container">
+            <h2>{{ 'agenda.title.monagenda'|trans }}</h2>
+            <div class="buttons">
+                <a href="#" class="button create">{{ 'agenda.btn.creerunevenement'|trans }}</a>
+                <a href="#" class="button export">{{ 'agenda.btn.exportermonagenda'|trans }}</a>
+            </div>
+        </div>
+    </div>
+    <div id='calendar' class="fullwidth">
+        <div id="mycalendar">
+        </div>
+    </div>
+    <!-- POPIN CREATE EVENT -->
+    <div id="create-event-pop">
+        <div class="contain-btn">
+            <span class="btn-close"></span>
+        </div>
+        <div class="container">
+            <h3>{{ 'agenda.title.creerunevenement'|trans }}</h3>
+            <p>{{ 'agenda.text.completezvotreagendainteractif'|trans }}</p>
+            <form action="#">
+                <label for="title">{{ 'agenda.popin.label.titre'|trans }}</label>
+                <input type="text">
+                <div class="time first">
+                    <label for="begin">{{ 'agenda.popin.label.debut'|trans }}</label>
+                    <input type="text" value="07/11/2015">
+                        <span class="pictodate"></span>
+                    <input type="text" class="hours" value="15h30">
+                </div>
+                <div class="time">
+                    <label for="end">{{ 'agenda.popin.label.fin'|trans }}</label>
+                    <input type="text"  value="14/11/2015">
+                    <span class="pictodate"></span>
+                    <input type="text" value="15h30" class="hours">
+                </div>
+                <label for="place">{{ 'agenda.popin.label.lieu'|trans }}</label>
+                <input type="text">
+                <label for="description" class='description'>{{ 'agenda.popin.label.description'|trans }}</label>
+                <input type="text">
+                <input type="submit" value="{{ 'agenda.btn.creerunevenement'|trans }}" class="button">
+            </form>
+        </div>
+    </div>
+    <!-- FIN POPIN -->
+</div>
+
+{% endblock body %}
