@@ -106,4 +106,68 @@ class AgendaController extends Controller
         );
 
     }
+
+    /**
+     * @Route("/room")
+     * @Template("FDCEventBundle:Agenda:room.html.twig")
+     *
+     */
+    public function roomAction()
+    {
+        $rooms = array(
+            array(
+                'name' => 'Grand Théatre Lumière',
+                'slug' => 'grand-theatre',
+                'image' => array(
+                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
+                )
+            ),
+            array(
+                'name' => 'Salle Debussy',
+                'slug' => 'salle-debussy',
+                'image' => array(
+                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
+                )
+            ),
+            array(
+                'name' => 'Salle du 60e',
+                'slug' => 'salle-60e',
+                'image' => array(
+                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
+                )
+            ),
+            array(
+                'name' => 'Salle Bunuel',
+                'slug' => 'salle-bunuel',
+                'image' => array(
+                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
+                )
+            ),
+            array(
+                'name' => 'Salle bazin',
+                'slug' => 'salle-bazin',
+                'image' => array(
+                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
+                )
+            ),
+            array(
+                'name' => 'Salle de presse',
+                'slug' => 'salle-presse',
+                'image' => array(
+                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
+                )
+            ),
+        );
+
+        return array(
+            'rooms' => $rooms
+        );
+
+    }
 }
