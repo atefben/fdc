@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @Route("/programmation")
- * Class ArtistController
+ * Class AgendaController
  * @package FDC\EventBundle\Controller
  */
 class AgendaController extends Controller
