@@ -74,8 +74,8 @@
                       <img src="img/articles/01.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><!-- todo css--><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"><i class="icon icon_article"></i><!-- todo css--></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_article"></i></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -88,8 +88,8 @@
                       <img src="img/articles/02.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><!-- todo css--><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"><i class="icon icon_audio"></i><!-- todo css--></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_audio"></i></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -102,8 +102,8 @@
                       <img src="img/articles/03.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><!-- todo css--><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"><i class="icon icon_video"></i><!-- todo css--></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_video"></i></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -188,8 +188,8 @@
                       <img src="img/articles/03.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_article"></i></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -202,8 +202,9 @@
                       <img src="img/articles/03.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i>
+<span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_video"></i></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -216,8 +217,9 @@
                       <img src="img/articles/03.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i>
+<span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_photo"></i></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>

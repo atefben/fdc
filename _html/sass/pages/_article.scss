@@ -163,8 +163,6 @@ article {
     width: 100%;
 
     .read-later {
-      background: #fff url('../img/svg/read-later.svg') no-repeat center;
-      background-size: 20px;
       content: '';
       display: block;
       height: 40px;
@@ -175,9 +173,9 @@ article {
       top: 15px;
       right: 15px;
       @include transition(all 0.5s $smoothTransition);
-      color:#000; //TODO CSS//
+      color:#000; 
 
-      .icon{ //TODO CSS//
+      .icon{
         margin-top: 12px;
         margin-left: 12px;
       }

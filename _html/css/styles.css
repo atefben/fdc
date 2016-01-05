@@ -8433,8 +8433,12 @@ header #searchContainer {
 }
 
 .photo .picto {
-  background-image: url("../img/svg/photo.svg");
-  background-size: 22px;
+  color: #c8a461;
+}
+.photo .picto .icon {
+  font-size: 1rem;
+  margin-top: 14px;
+  margin-left: 14px;
 }
 
 .playlist .picto {
@@ -9675,8 +9679,6 @@ article .image .image-wrapper img {
   transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 article .image .read-later {
-  background: #fff url("../img/svg/read-later.svg") no-repeat center;
-  background-size: 20px;
   content: '';
   display: block;
   height: 40px;

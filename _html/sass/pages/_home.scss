@@ -444,8 +444,6 @@
 }
 
 .article .picto {
-  // background-image: url('../img/svg/article.svg'); //todo CSS//
-  // background-size: 16px 10px;
   color: $gold;
   .icon{
     margin-left: 14px;
@@ -454,9 +452,6 @@
 }
 
 .video .picto {
-  //TODO CSS
-  // background-image: url('../img/svg/video.svg');
-  // background-size: 22px;
   color: $gold;
   .icon{
     font-size: 0.8rem;
@@ -466,9 +461,6 @@
 }
 
 .audio .picto {
-  // TODO CSS
-  // background-image: url('../img/svg/audio.svg');
-  // background-size: 25px;
   color: $gold;
   .icon{
     font-size: 1rem;
@@ -478,8 +470,12 @@
 }
 
 .photo .picto {
-  background-image: url('../img/svg/photo.svg');
-  background-size: 22px;
+  color: $gold;
+  .icon{
+    font-size: 1rem;
+    margin-top: 14px;
+    margin-left: 14px;
+  }
 }
 
 .playlist .picto {
