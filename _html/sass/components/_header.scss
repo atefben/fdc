@@ -183,8 +183,9 @@ header {
         }
 
         &.selection {
-          background: url('../img/svg/selection.svg') no-repeat left 48%;
-          background-size: 15px;
+          .icon{
+            padding-right: 10px;
+          }
         }
 
         &.account {
