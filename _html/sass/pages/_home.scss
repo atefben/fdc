@@ -800,7 +800,6 @@
         font-family: $CamphorRegular;
         font-size: 0.875rem;
         line-height: 16px;
-        padding-right: 30px;
         position: relative;
         @include transform(translateZ(0));
         @include transition(color 0.9s $smoothTransition);
@@ -826,65 +825,18 @@
           visibility: hidden;
           @include transition(all 0.9s $smoothTransition);
         }
-        //TODO CSS//
-        &.facebook {
-          // background: url('../img/svg/facebook-grey.svg') right top no-repeat;
-          // background-size: 20px;
-          // padding-right: 25px;
-          // &:after {
-          //   // background: url('../img/svg/facebook-gold.svg') right top no-repeat;
-          //   // background-size: 20px;
-          // }
+      }
+      .icon{
+        margin-left: 10px;
+        &.icon_youtube{
+          font-size: 1.15rem;
+          vertical-align: bottom !important;
         }
-
-        &.twitter {
-          // background: url('../img/svg/twitter-grey.svg') right 15% no-repeat;
-          // background-size: 18px;
-          // &:after {
-          //   background: url('../img/svg/twitter-gold.svg') right 15% no-repeat;
-          //   background-size: 18px;
-          // }
+        &.icon_dailymotion{
+          vertical-align: text-top !important;
         }
-
-        &.instagram {
-          // background: url('../img/svg/instagram-grey.svg') right top no-repeat;
-          // background-size: 20px;
-          // &:after {
-          //   background: url('../img/svg/instagram-gold.svg') right top no-repeat;
-          //   background-size: 20px;
-          // }
-        }
-
-        &.tumblr {
-          // background: url('../img/svg/tumblr-grey.svg') right top no-repeat;
-          // background-size: 20px;
-          // padding-right: 25px;
-          //
-          // &:after {
-          //   background: url('../img/svg/tumblr-gold.svg') right top no-repeat;
-          //   background-size: 20px;
-          // }
-        }
-
-        &.youtube {
-          // background: url('../img/svg/youtube-grey.svg') right top no-repeat;
-          // background-size: 20px;
-          //
-          // &:after {
-          //   background: url('../img/svg/youtube-gold.svg') right top no-repeat;
-          //   background-size: 20px;
-          // }
-        }
-
-        &.dailymotion {
-          // background: url('../img/svg/dailymotion-grey.svg') right top no-repeat;
-          // background-size: 20px;
-          // padding-right: 25px;
-          //
-          // &:after {
-          //   background: url('../img/svg/dailymotion-gold.svg') right top no-repeat;
-          //   background-size: 20px;
-          // }
+        &.icon_tumblr{
+          vertical-align: text-top !important;
         }
       }
     }
