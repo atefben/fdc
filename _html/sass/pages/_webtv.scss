@@ -263,15 +263,12 @@
   background-color: $black!important;
   padding-top: 15px;
   .back {
-    font-size: 9.6px;
-     background: url("../img/svg/arrow-left-white.svg") no-repeat left 3px;
-     background-size: 9px;
-     color: #fff;
-     display: block;
-     font-family: $CamphorHeavy;
-     font-size: 0.625rem;
-     margin: 0 0 65px 0;
-     text-transform: uppercase;
+    color: #fff;
+    display: block;
+    font-family: $CamphorHeavy;
+    font-size: 0.625rem;
+    margin: 0 0 65px 0;
+    text-transform: uppercase;
   }
   .channel {
     &:after {
@@ -299,73 +296,73 @@
     visibility: visible;
   }
   .small-container{
-   margin: 0 auto;
-   width: 975px;
-   .player{
-     margin-top: 49px;
-   }
-   #content-channels{
-     padding-top: 26px;
-   }
-   .infos-videos{
-     padding-top: 18px;
-    position: relative;
-    .infos{
-       strong{
-         color:$gold;
-         font-size: 0.69rem;
-       text-transform: uppercase;
-         letter-spacing: .1em;
-         line-height: 18px;
-        font-family: $CamphorBold;
-       }
-       .time{
-         margin-left: 9px;
-         color:#666666;
-         font-size: 0.69rem;
-         text-transform: uppercase;
-         line-height: 24px;
-       }
-       p{
-         color: #fff;
-        font-size: 1.13rem;
-         line-height: 24px;
-       }
+     margin: 0 auto;
+     width: 975px;
+     .player{
+       margin-top: 49px;
      }
-   .square{
-      position: absolute;
-      z-index: 3;
-      top:-4px;
-      right: 1px;
-       a{
-        border-color: #2c2c2c;
-         border-top: none;
+     #content-channels{
+       padding-top: 26px;
+     }
+     .infos-videos{
+       padding-top: 18px;
+      position: relative;
+      .infos{
+         strong{
+           color:$gold;
+           font-size: 0.69rem;
+         text-transform: uppercase;
+           letter-spacing: .1em;
+           line-height: 18px;
+          font-family: $CamphorBold;
+         }
+         .time{
+           margin-left: 9px;
+           color:#666666;
+           font-size: 0.69rem;
+           text-transform: uppercase;
+           line-height: 24px;
+         }
+         p{
+           color: #fff;
+          font-size: 1.13rem;
+           line-height: 24px;
+         }
        }
-       a.facebook {
-           background: url("../img/svg/facebook-gold.svg") no-repeat center;
-           background-size: 19px;
-       }
-       a.twitter {
-           background: url("../img/svg/twitter-gold.svg") no-repeat center;
-           background-size: 16px;
-       }
-        a.link {
-           background: url("../img/svg/link.svg") no-repeat center;
-           background-size: 16px;
-       }
-       a.email {
-           background: url("../img/svg/mail.svg") no-repeat center;
-           background-size: 16px;
-       }
-       a:hover{
-         border-color: $gold;
+     .square{
+        position: absolute;
+        z-index: 3;
+        top:-4px;
+        right: 1px;
+         a{
+          border-color: #2c2c2c;
+           border-top: none;
+         }
+         a.facebook {
+             background: url("../img/svg/facebook-gold.svg") no-repeat center;
+             background-size: 19px;
+         }
+         a.twitter {
+             background: url("../img/svg/twitter-gold.svg") no-repeat center;
+             background-size: 16px;
+         }
+          a.link {
+             background: url("../img/svg/link.svg") no-repeat center;
+             background-size: 16px;
+         }
+         a.email {
+             background: url("../img/svg/mail.svg") no-repeat center;
+             background-size: 16px;
+         }
+         a:hover{
+           border-color: $gold;
 
-       & + a {
-          border-left-color: $gold;
+         & + a {
+            border-left-color: $gold;
+           }
          }
        }
      }
-   }
   }
 }
 
@@ -598,7 +595,6 @@
       padding-top: 73px;
       border-right: 1px solid #2c2c2c;
       border-bottom: 1px solid #2c2c2c;
-      padding-bottom: 7px;
     }
     .infos-film {
       text-align: center;

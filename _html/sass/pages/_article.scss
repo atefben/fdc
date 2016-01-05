@@ -175,6 +175,12 @@ article {
       top: 15px;
       right: 15px;
       @include transition(all 0.5s $smoothTransition);
+      color:#000; //TODO CSS//
+
+      .icon{ //TODO CSS//
+        margin-top: 12px;
+        margin-left: 12px;
+      }
 
       span {
         background-color: $black;
@@ -677,7 +683,7 @@ article {
           li {
             display: inline-block;
             font-size: 0.625rem;
-            width: 211px; 
+            width: 211px;
 
             span {
               font-family: $CamphorBold;

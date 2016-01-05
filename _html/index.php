@@ -48,7 +48,7 @@
           <div id="theme" class="filter">
             <span class="label">Thèmes :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous</span>
+              <span class="active" data-filter="all">Tous </span><i class="icon icon_fleche-down"></i> <!-- todo css -->
               <span data-filter="press">Conférence de Presse</span>
               <span data-filter="steps">Montée des marches</span>
             </span>
@@ -56,7 +56,7 @@
           <div id="format" class="filter">
             <span class="label">Formats :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous</span>
+              <span class="active" data-filter="all">Tous </span><i class="icon icon_fleche-down"></i> <!-- todo css -->
               <span data-filter="photo">Photo</span>
               <span data-filter="video">Vidéo</span>
               <span data-filter="audio">Audio</span>
@@ -74,8 +74,8 @@
                       <img src="img/articles/01.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><!-- todo css--><span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_article"></i><!-- todo css--></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -88,8 +88,8 @@
                       <img src="img/articles/02.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><!-- todo css--><span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_audio"></i><!-- todo css--></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -102,8 +102,8 @@
                       <img src="img/articles/03.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                    <span class="picto"></span>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><!-- todo css--><span>Ajouter à ma sélection</span></a>
+                    <span class="picto"><i class="icon icon_video"></i><!-- todo css--></span>
                   </div>
                   <div class="info">
                     <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -269,7 +269,7 @@
             </ul>
             <div id="hashtag">
               <div class="vCenter">
-                <div class="vCenterKid"><img src="img/svg/palme.svg" width="70" />#Cannes2016</div>
+                <div class="vCenterKid"><i class="icon icon_palme"></i>#Cannes2016</div> <!-- TODO CSS-->
               </div>
             </div>
             <svg id="graphSVG" width="891" height="200"></svg>
@@ -339,13 +339,13 @@
           </div>
           <div id="networks">
             <p>Suivez le Festival de Cannes</p>
-              <ul>
-                <li><a class="facebook" href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937" target="_blank">Facebook</a></li>
-                <li><a class="twitter" href="https://twitter.com/Festival_Cannes" target="_blank">Twitter</a></li>
-                <li><a class="instagram" href="https://instagram.com/festivaldecannes" target="_blank">Instagram</a></li>
-                <li><a class="tumblr" href="http://festivaldecannesofficiel.tumblr.com/" target="_blank">Tumblr</a></li>
-                <li><a class="youtube" href="https://www.youtube.com/user/TVFestivaldeCannes" target="_blank">Youtube</a></li>
-                <li><a class="dailymotion" href="http://www.dailymotion.com/CannesFestTV" target="_blank">Dailymotion</a></li>
+              <ul> <!-- TODO CSS -->
+                <li><a class="facebook" href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937" target="_blank">Facebook<i class="icon icon_facebook"></i></a></li>
+                <li><a class="twitter" href="https://twitter.com/Festival_Cannes" target="_blank">Twitter<i class="icon icon_twitter"></i></a></li>
+                <li><a class="instagram" href="https://instagram.com/festivaldecannes" target="_blank">Instagram<i class="icon icon_instagram"></i></a></li>
+                <li><a class="tumblr" href="http://festivaldecannesofficiel.tumblr.com/" target="_blank">Tumblr<i class="icon icon_tumblr"></i></a></li>
+                <li><a class="youtube" href="https://www.youtube.com/user/TVFestivaldeCannes" target="_blank">Youtube<i class="icon icon_youtube"></i></a></li>
+                <li><a class="dailymotion" href="http://www.dailymotion.com/CannesFestTV" target="_blank">Dailymotion<i class="icon icon_dailymotion"></i></a></li>
               </ul>
           </div>
         </div>

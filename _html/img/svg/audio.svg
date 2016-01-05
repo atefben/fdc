@@ -1,75 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.1"
-   id="Calque_1"
-   x="0px"
-   y="0px"
-   width="85.635px"
-   height="60px"
-   viewBox="0 0 85.635 60"
-   enable-background="new 0 0 85.635 60"
-   xml:space="preserve"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="audio.svgz"><metadata
-   id="metadata43"><rdf:RDF><cc:Work
-       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-   id="defs41" /><sodipodi:namedview
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="640"
-   inkscape:window-height="480"
-   id="namedview39"
-   showgrid="false"
-   inkscape:zoom="3.9333333"
-   inkscape:cx="42.817501"
-   inkscape:cy="30"
-   inkscape:window-x="0"
-   inkscape:window-y="0"
-   inkscape:window-maximized="0"
-   inkscape:current-layer="Calque_1" />
-<g
-   id="g21">
-	<g
-   id="g23">
-		<g
-   id="g25">
-			<path
-   d="M51,19.89v7.959c0,1.683-2.061,7.792-9.457,7.792c-7.391,0-9.543-6.363-9.543-8.046V19.89v-0.507V8.205     c0-1.684,2.152-8.046,9.543-8.046C48.939,0.159,51,6.268,51,7.951v11.432V19.89z"
-   id="path27" fill="#c8a461" />
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path d="M64.6,33v13.3c0,2.8-3.4,13-15.8,13S32.9,48.7,32.9,45.9V33v-0.8V13.4C32.9,10.6,36.5,0,48.8,0c12.4,0,15.8,10.2,15.8,13
+				v19.1V33z"/>
 		</g>
 	</g>
-	<g
-   id="g29">
-		<rect
-   x="31"
-   y="54"
-   width="23"
-   height="6"
-   id="rect31" fill="#c8a461" />
+	<g>
+		<rect x="31.2" y="90" width="38.4" height="10"/>
 	</g>
-	<g
-   id="g33">
-		<g
-   id="g35">
-			<path
-   d="M42.422,47.179c-14.209,0-19.95-10.291-19.95-14.582v-4.649H27.6v4.649c0.041,1.173,3.201,9.454,14.822,9.454     c11.564,0,14.637-7.948,14.666-9.08v-5.023h5.129v5.028C62.217,37.155,56.521,47.179,42.422,47.179z"
-   id="path37" fill="#c8a461" />
+	<g>
+		<g>
+			<path d="M50.3,78.6C26.6,78.6,17,61.4,17,54.2v-7.8h8.6v7.8c0.1,2,5.3,15.8,24.8,15.8c19.3,0,24.5-13.3,24.5-15.2v-8.4h8.6v8.4
+				C83.4,61.8,73.8,78.6,50.3,78.6z"/>
 		</g>
 	</g>
 </g>

@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // =========================
@@ -91,11 +91,31 @@ header #searchContainer {
     font-size: 2.250rem;
     outline: none;
     width: 100%;
+
+  }
+  //todo css
+  .icon_recherche{
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    color: $gold;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    margin-right: 11px;
+    @include transition(all 0.9s $linear);
+
+  }
+
+  .icon_recherche:hover{ //todo
+    opacity: .5;
+    cursor: pointer;
   }
 
   #submitSearch {
-    background: url('../img/svg/search-gold.svg') no-repeat center;
-    background-size: 30px;
+    // background: url('../img/svg/search-gold.svg') no-repeat center; //todo css
+    // background-size: 30px;
+    opacity: 0;
+    visibility: hidden;
     border: none;
     cursor: pointer;
     outline: none;
@@ -603,5 +623,3 @@ header #searchContainer {
     }
   }
 }
-
-

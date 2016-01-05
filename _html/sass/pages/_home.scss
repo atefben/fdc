@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Prehome
 // 2. Slider
@@ -205,7 +205,7 @@
 
       .info {
         z-index: 4;
-        
+
         .category {
           @include transition(all 0.8s $smoothTransition 0.7s);
           -moz-transition: opacity 0.8s $smoothTransition 0.7s, visibility 0.8s $smoothTransition 0.7s;
@@ -248,7 +248,7 @@
 
   #articles-wrapper {
     overflow: hidden;
-    
+
     @include transition(opacity 0.8s $smoothTransition, max-height 2s $smoothTransition);
 
     &.loading {
@@ -353,7 +353,7 @@
       opacity: 0.5;
     }
   }
-  
+
   .container {
     position: relative;
 
@@ -417,15 +417,15 @@
           &:after {
             content: '';
             display: block;
-            height: 0; 
+            height: 0;
             border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent; 
+            border-bottom: 5px solid transparent;
             border-right: 5px solid $gold;
             margin-top: -4px;
             position: absolute;
             left: -5px;
             top: 50%;
-            width: 0; 
+            width: 0;
           }
         }
 
@@ -444,18 +444,37 @@
 }
 
 .article .picto {
-  background-image: url('../img/svg/article.svg');
-  background-size: 16px 10px;
+  // background-image: url('../img/svg/article.svg'); //todo CSS//
+  // background-size: 16px 10px;
+  color: $gold;
+  .icon{
+    margin-left: 14px;
+    margin-top: 14px;
+  }
 }
 
 .video .picto {
-  background-image: url('../img/svg/video.svg');
-  background-size: 22px;
+  //TODO CSS
+  // background-image: url('../img/svg/video.svg');
+  // background-size: 22px;
+  color: $gold;
+  .icon{
+    font-size: 0.8rem;
+    margin-top: 16px;
+    margin-left: 16px;
+  }
 }
 
 .audio .picto {
-  background-image: url('../img/svg/audio.svg');
-  background-size: 25px;
+  // TODO CSS
+  // background-image: url('../img/svg/audio.svg');
+  // background-size: 25px;
+  color: $gold;
+  .icon{
+    font-size: 1rem;
+    margin-top: 14px;
+    margin-left: 14px;
+  }
 }
 
 .photo .picto {
@@ -574,6 +593,12 @@
       img {
         display: block;
       }
+    }
+    //TODO CSS//
+    .icon{
+      color:$gold;
+      font-size: 4rem;
+      margin-left: 5px;
     }
 
     svg {
@@ -801,68 +826,65 @@
           visibility: hidden;
           @include transition(all 0.9s $smoothTransition);
         }
-
+        //TODO CSS//
         &.facebook {
-          background: url('../img/svg/facebook-grey.svg') right top no-repeat;
-          background-size: 20px;
-          padding-right: 25px;
-
-          &:after {
-            background: url('../img/svg/facebook-gold.svg') right top no-repeat;
-            background-size: 20px;
-          }
+          // background: url('../img/svg/facebook-grey.svg') right top no-repeat;
+          // background-size: 20px;
+          // padding-right: 25px;
+          // &:after {
+          //   // background: url('../img/svg/facebook-gold.svg') right top no-repeat;
+          //   // background-size: 20px;
+          // }
         }
 
         &.twitter {
-          background: url('../img/svg/twitter-grey.svg') right 15% no-repeat;
-          background-size: 18px;
-
-          &:after {
-            background: url('../img/svg/twitter-gold.svg') right 15% no-repeat;
-            background-size: 18px;
-          }
+          // background: url('../img/svg/twitter-grey.svg') right 15% no-repeat;
+          // background-size: 18px;
+          // &:after {
+          //   background: url('../img/svg/twitter-gold.svg') right 15% no-repeat;
+          //   background-size: 18px;
+          // }
         }
 
         &.instagram {
-          background: url('../img/svg/instagram-grey.svg') right top no-repeat;
-          background-size: 20px;
-
-          &:after {
-            background: url('../img/svg/instagram-gold.svg') right top no-repeat;
-            background-size: 20px;
-          }
+          // background: url('../img/svg/instagram-grey.svg') right top no-repeat;
+          // background-size: 20px;
+          // &:after {
+          //   background: url('../img/svg/instagram-gold.svg') right top no-repeat;
+          //   background-size: 20px;
+          // }
         }
 
         &.tumblr {
-          background: url('../img/svg/tumblr-grey.svg') right top no-repeat;
-          background-size: 20px;
-          padding-right: 25px;
-
-          &:after {
-            background: url('../img/svg/tumblr-gold.svg') right top no-repeat;
-            background-size: 20px;
-          }
+          // background: url('../img/svg/tumblr-grey.svg') right top no-repeat;
+          // background-size: 20px;
+          // padding-right: 25px;
+          //
+          // &:after {
+          //   background: url('../img/svg/tumblr-gold.svg') right top no-repeat;
+          //   background-size: 20px;
+          // }
         }
 
         &.youtube {
-          background: url('../img/svg/youtube-grey.svg') right top no-repeat;
-          background-size: 20px;
-
-          &:after {
-            background: url('../img/svg/youtube-gold.svg') right top no-repeat;
-            background-size: 20px;
-          }
+          // background: url('../img/svg/youtube-grey.svg') right top no-repeat;
+          // background-size: 20px;
+          //
+          // &:after {
+          //   background: url('../img/svg/youtube-gold.svg') right top no-repeat;
+          //   background-size: 20px;
+          // }
         }
 
         &.dailymotion {
-          background: url('../img/svg/dailymotion-grey.svg') right top no-repeat;
-          background-size: 20px;
-          padding-right: 25px;
-
-          &:after {
-            background: url('../img/svg/dailymotion-gold.svg') right top no-repeat;
-            background-size: 20px;
-          }
+          // background: url('../img/svg/dailymotion-grey.svg') right top no-repeat;
+          // background-size: 20px;
+          // padding-right: 25px;
+          //
+          // &:after {
+          //   background: url('../img/svg/dailymotion-gold.svg') right top no-repeat;
+          //   background-size: 20px;
+          // }
         }
       }
     }
@@ -974,11 +996,11 @@
           height: auto;
           @include transition(all 4s $linear);
         }
-        
+
       }
     }
 
-    
+
   }
 }
 
@@ -1100,7 +1122,7 @@
           height: auto;
           @include transition(all 4s $linear);
         }
-        
+
       }
 
       &:before {
@@ -1149,7 +1171,7 @@
 #featured-movies {
   background-color: $black;
   overflow: hidden;
-  
+
   #slider-movies, .owl-stage-outer, .owl-stage, .owl-item, .owl-item>div {
     height: 100%;
   }
@@ -1228,7 +1250,7 @@
   }
 
   .owl-item {
-    
+
   }
 
   .links {
@@ -1446,7 +1468,7 @@
         width: auto;
         height: auto;
         @include transition(all 3s $linear);
-      } 
+      }
     }
 
     &.right {
