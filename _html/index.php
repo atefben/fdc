@@ -341,7 +341,7 @@
           </div>
           <div id="networks">
             <p>Suivez le Festival de Cannes</p>
-              <ul> <!-- TODO CSS -->
+              <ul>
                 <li><a class="facebook" href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937" target="_blank">Facebook<i class="icon icon_facebook"></i></a></li>
                 <li><a class="twitter" href="https://twitter.com/Festival_Cannes" target="_blank">Twitter<i class="icon icon_twitter"></i></a></li>
                 <li><a class="instagram" href="https://instagram.com/festivaldecannes" target="_blank">Instagram<i class="icon icon_instagram"></i></a></li>
@@ -355,7 +355,7 @@
 
       <div id="featured-videos">
         <h2 class="title">Les vidéos à la une</h2>
-        <p class="link"><a href="webtv.php"><img src="img/svg/arrow-right-gold.svg" />Accédez à la web tv</a></p>
+        <p class="link"><a href="webtv.php"><i class="icon icon_fleche-right"></i>Accédez à la web tv</a></p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
           <div class="vid">
             <div class="image-wrapper">
@@ -363,7 +363,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -380,7 +380,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -397,7 +397,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -414,7 +414,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -436,7 +436,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -453,7 +453,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -470,7 +470,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -487,7 +487,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -504,7 +504,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -521,7 +521,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -538,7 +538,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -572,8 +572,8 @@
                 </div>
               </div>
               <div class="links">
-                <a href="#" class="seances">Voir les séances</a>
-                <a href="#" class="all">Tous les films</a>
+                <a href="#" class="seances"><i class="icon icon_programmation"></i>Voir les séances</a>
+                <a href="#" class="all"><i class="icon icon_fleche-right"></i>Tous les films</a>
               </div>
             </div>
           </div>
@@ -596,8 +596,8 @@
                 </div>
               </div>
               <div class="links">
-                <a href="#" class="seances">Voir les séances</a>
-                <a href="#" class="all">Tous les films</a>
+                <a href="#" class="seances"><i class="icon icon_programmation"></i>Voir les séances</a>
+                <a href="#" class="all"><i class="icon icon_fleche-right"></i>Tous les films</a>
               </div>
             </div>
           </div>

@@ -399,14 +399,13 @@ header {
       @include transition(all 0.9s $smoothTransition);
 
       a { //todo back
-        color:#fff; //todo
-        position: relative;//todo
+        color:#fff;
+        position: relative;
         background-size: 20px;
         display: block;
         height: 100%;
         width: 100%;
         .icon{
-          //todo
           position: absolute;
           top: 39%;
           left: 39%;
@@ -558,41 +557,8 @@ header {
             margin-right: 5px;
             font-size: .6rem;
             margin-left: 14px;
-            vertical-align: text-top !important;
+            vertical-align: baseline !important;
           }
-
-          &.programmation {
-            //todo
-            // background: url('../img/svg/programmation.svg') no-repeat 7% 47%;
-            // background-size: 15px;
-
-            // &:after {
-            //   // background: url('../img/svg/programmation-gold.svg') no-repeat 7% 47%;
-            //   background-size: 15px;
-            // }
-
-          }
-
-          &.participate {
-            // background: url('../img/svg/participate.svg') no-repeat 12% 47%;
-            // background-size: 15px;
-            //
-            // &:after {
-            //   background: url('../img/svg/participate-gold.svg') no-repeat 12% 47%;
-            //   background-size: 15px;
-            // }
-          }
-
-          &.press {
-            // background: url('../img/svg/press.svg') no-repeat 10% 47%;
-            // background-size: 15px;
-
-            // &:after {
-            //   background: url('../img/svg/press-gold.svg') no-repeat 10% 47%;
-            //   background-size: 15px;
-            // }
-          }
-
           &:hover {
             color: $gold;
 
