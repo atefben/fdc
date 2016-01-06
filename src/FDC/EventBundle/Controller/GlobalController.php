@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use FDC\EventBundle\Form\Type\ShareEmailType;
 use FDC\EventBundle\Form\Type\NewsletterType;
+use FDC\EventBundle\Form\Type\SearchType;
 
 /**
  * @Route("/")
@@ -232,6 +233,318 @@ class GlobalController extends Controller
 
         return array(
             'breadcrumb' => $breadcrumb
+        );
+    }
+
+    /**
+     *
+     * @Route("/search")
+     * @Template("FDCEventBundle:Global:search.html.twig")
+     * @param Request $request
+     * @param $searchTerm
+     * @return array
+     */
+    public function searchAction( Request $request, $searchTerm=null )
+    {
+        $translator = $this->get('translator');
+
+        $searchForm = $this->createForm( new SearchType($translator, $searchTerm) );
+
+        $searchForm->submit($request);
+
+        $formData = $searchForm->getData();
+        $searchTerm = $formData['search'];
+
+        if ($searchTerm !== null ) {
+            return $this->redirect($this->generateUrl('fdc_event_global_searchsubmit', array(
+                'searchTerm' => $searchTerm,
+            )));
+
+        }
+
+        return array(
+            'searchForm' => $searchForm->createView()
+        );
+    }
+
+    /**
+     * @Route("/search/{searchTerm}")
+     * @Template("FDCEventBundle:Global:search.page.html.twig")
+     * @param $searchTerm
+     * @return array
+     */
+    public function searchSubmitAction( $searchTerm)
+    {
+
+        $searchResult = array(
+            'nbResult' => 548,
+            'category' => array(
+                'actualite' => array(
+                    array(
+                        'id' => 0,
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'id' => 0,
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'id' => 0,
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'id' => 0,
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                ),
+                'artiste' => array(
+                    array(
+                        'fullName' => 'Vincent Cassel',
+                        'role' => 'Comédien',
+                        'from' => 'France',
+                        'image' => array(
+                            'path' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    ),
+                    array(
+                        'fullName' => 'Vincent Cassel',
+                        'role' => 'Comédien',
+                        'from' => 'France',
+                        'image' => array(
+                            'path' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    ),
+                    array(
+                        'fullName' => 'Vincent Cassel',
+                        'role' => 'Comédien',
+                        'from' => 'France',
+                        'image' => array(
+                            'path' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    ),
+                    array(
+                        'fullName' => 'Vincent Cassel',
+                        'role' => 'Comédien',
+                        'from' => 'France',
+                        'image' => array(
+                            'path' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    ),
+                    array(
+                        'fullName' => 'Vincent Cassel',
+                        'role' => 'Comédien',
+                        'from' => 'France',
+                        'image' => array(
+                            'path' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    ),
+                    array(
+                        'fullName' => 'Vincent Cassel',
+                        'role' => 'Comédien',
+                        'from' => 'France',
+                        'image' => array(
+                            'path' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    )
+                ),
+                'film' => array(
+                    array(
+                        'title' => 'La Haine',
+                        'date' => 2005,
+                        'author' => array(
+                            'fullName' => 'Matthieu Kassovitz',
+                            'from' => 'France'
+                        ),
+                        'image' => array(
+                            'path' => 'http://dummyimage.com/52x66/000/fff'
+                        )
+                    )
+                ),
+                'info' => array(
+                    array(
+                        'id' => 0,
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'id' => 0,
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                ),
+                'media' => array(
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    )
+                ),
+                'event' => array(
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    )
+                ),
+                'participate' => array(
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    ),
+                    array(
+                        'title' => 'Stéphane Brizé interroge la loi du marché',
+                        'type'  => 'article',
+                        'slug'  => 'stephane-brize-interroge',
+                        'category' => 'Compétition',
+                        'createdAt' => new \DateTime(),
+                        'image' => array(
+                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                        )
+                    )
+                ),
+            )
+
+        );
+
+        return array(
+            'searchResult' => $searchResult,
+            'searchTerm' => $searchTerm
         );
     }
 
