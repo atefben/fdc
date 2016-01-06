@@ -5,6 +5,8 @@ namespace FDC\EventBundle\Command;
 use Base\CoreBundle\Entity\SocialWall;
 use \DateTime;
 
+use Guzzle\Plugin\Oauth\OauthPlugin;
+use Guzzle\Service\Client;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -37,6 +39,60 @@ class SocialGraphCommand extends ContainerAwareCommand
      * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
+
+        // Get twitter api
+        $twitter_client = new Client('https://api.twitter.com/{version}', array(
+            'version' => '1.1'
+        ));
+
+        $twitter_client->addSubscriber(new OauthPlugin(array(
+            'consumer_key'    => $this->getContainer()->getParameter('twitter_consumer_key'),
+            'consumer_secret' => $this->getContainer()->getParameter('twitter_consumer_secret'),
+            'token'           => $this->getContainer()->getParameter('twitter_token'),
+            'token_secret'    => $this->getContainer()->getParameter('twitter_token_secret')
+        )));
+
+        $datetime = new DateTime();
+
+        $max_id = 0;
+        $tweets_found = 0;
+
+        // Count all tweet with hashtag during today
+        while(true){
+
+            if ($max_id == 0) {
+                $request = $twitter_client->get('search/tweets.json');
+                $request->getQuery()->set('q', '#psg');
+                $request->getQuery()->set('count', 100);
+                $request->getQuery()->set('since', $datetime->format('Y-m-d'));
+                $response = $request->send();
+            } else {
+                // Collect older tweets
+                --$max_id;
+                $request = $twitter_client->get('search/tweets.json');
+                $request->getQuery()->set('q', '#psg');
+                $request->getQuery()->set('count', 100);
+                $request->getQuery()->set('since', $datetime->format('Y-m-d'));
+                $request->getQuery()->set('max_id', $max_id);
+                $response = $request->send();
+            }
+
+            // Process each tweet returned
+            $results = json_decode($response->getBody());
+            $tweets  = $results->statuses;
+
+            // Exit when no more tweets are returned
+            if (sizeof($tweets)==0) {
+                break;
+            }
+
+            foreach($tweets as $tweet) {
+                ++$tweets_found;
+                $max_id = $tweet->id;
+            }
+
+        }
+
         $em = $this->getContainer()->get('doctrine')->getManager();
         $logger = $this->getContainer()->get('logger');
 
@@ -56,7 +112,6 @@ class SocialGraphCommand extends ContainerAwareCommand
         }
 
         // get social wall by date
-        $datetime = new DateTime();
         $socialWall = $em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array(
             'date' => $datetime->format('d-m-Y'),
             'festival' => $festival->getId()
@@ -68,7 +123,7 @@ class SocialGraphCommand extends ContainerAwareCommand
         }
 
         // get tweets
-        $count = 0;
+        $count = $tweets_found;
 
         $socialWall->setCount($socialWall->getCount() + $count);
 
