@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-01-05T14:56:59Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-01-05T16:11:25Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -70,12 +70,12 @@
       <trans-unit id="75e5bd044978eecd64da2e92faab28ed72155956" resname="article.btn.imprimer">
         <source>article.btn.imprimer</source>
         <target>Imprimer</target>
-        <jms:reference-file line="22">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="20">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="09c0b6964b95c566336d5e2fa02f7c326abc1b19" resname="article.btn.partager">
         <source>article.btn.partager</source>
         <target>Partager</target>
-        <jms:reference-file line="21">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="19">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="814d17a95f83b9bd4bfb7f1302eff84eb29c5a6b" resname="article.list.btn.ajouteramaselection">
         <source>article.list.btn.ajouteramaselection</source>
@@ -115,17 +115,17 @@
       <trans-unit id="98e47bb44552418983d749506f6c6db4dfcf54db" resname="article.text.miseajour">
         <source>article.text.miseajour</source>
         <target>Mise à jour</target>
-        <jms:reference-file line="17">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="15">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="78d37adb73ec959c054ece0f76d2eb25b82719a9" resname="article.text.partagerarticle">
         <source>article.text.partagerarticle</source>
         <target>Partager</target>
-        <jms:reference-file line="57">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="55">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="676e7ee3bfb0716636c690950f570e68820b580b" resname="article.text.redigepar">
         <source>article.text.redigepar</source>
         <target>Rédigé par</target>
-        <jms:reference-file line="54">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="52">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4719ea3823c9054cf894311535b3680d373e55dc" resname="contact.form.btn.envoyer">
         <source>contact.form.btn.envoyer</source>
@@ -306,12 +306,12 @@
       <trans-unit id="3d5e9ef320d0c71878eaaad1ba0c385ebb6a8cdf" resname="footer.newsletter.btn.abonner">
         <source>footer.newsletter.btn.abonner</source>
         <target>S'abonner</target>
-        <jms:reference-file line="6">Footer/components/newsletter.html.twig</jms:reference-file>
+        <jms:reference-file line="6">views/Global/newsletter.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="acde41bd4df983c8364392b4b46b39909114dcb8" resname="footer.newsletter.text.confirmation">
         <source>footer.newsletter.text.confirmation</source>
         <target><![CDATA[Votre abonnement a bien été enregistré ! <br> Un e-mail de confirmation a été envoyé à l’adresse]]></target>
-        <jms:reference-file line="11">Footer/components/newsletter.html.twig</jms:reference-file>
+        <jms:reference-file line="11">views/Global/newsletter.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="378e6fd990f3551b59d5cba7335a83bb7d40cd4c" resname="footer.newsletter.title.newsletter">
         <source>footer.newsletter.title.newsletter</source>

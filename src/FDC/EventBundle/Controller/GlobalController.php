@@ -3,11 +3,13 @@
 namespace FDC\EventBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use FDC\EventBundle\Form\Type\ShareEmailType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+
+use FDC\EventBundle\Form\Type\ShareEmailType;
+use FDC\EventBundle\Form\Type\NewsletterType;
 
 /**
  * @Route("/")
@@ -153,6 +155,85 @@ class GlobalController extends Controller
         );
     }
 
+
+    /**
+     * @Route( "/register-newsletter" )
+     * @Template("FDCEventBundle:Global:newsletter.html.twig")
+     * @param Request $request
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function newsletterAction( Request $request )
+    {
+        $translator = $this->get('translator');
+
+        $newsForm = $this->createForm( new NewsletterType($translator) );
+
+        if ( $request->isMethod( 'POST' ) ) {
+
+            $newsForm->submit($request);
+
+            if ( $newsForm->isValid( ) ) {
+
+                $data = $newsForm->getData();
+                $email = $data['email'];
+                $response['success'] = $email;
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($translator->trans('newsletter.email.subject'))
+                    ->setFrom('contact@mail.fr')
+                    ->setTo($email)
+                    ->setBody(
+                        $this->renderView(
+                            'FDCEventBundle:Mail:mail.newsletter.html.twig',
+                            array(
+                                'newsletter_email' => $email
+                            )
+                        )
+                    );
+
+                $this->get('mailer')->send($message);
+
+            }
+            else{
+
+                $response['success'] = false;
+                $response['cause'] = 'whatever';
+
+            }
+
+            return new JsonResponse( $response );
+
+        }
+
+        return array(
+            'newsform' => $newsForm->createView()
+        );
+
+    }
+
+    /**
+     * @Route("/breadcrumb")
+     * @Template("FDCEventBundle:Global:breadcrumb.html.twig")
+     * @return array
+     */
+    public function breadcrumbAction()
+    {
+        $breadcrumb = array(
+            array(
+                'name' => 'L\'actualité',
+            ),
+            array(
+                'name' => 'Jour après jour',
+            ),
+            array(
+                'name' => 'Lorem Ipsum',
+            )
+        );
+
+        return array(
+            'breadcrumb' => $breadcrumb
+        );
+    }
 
 
 }

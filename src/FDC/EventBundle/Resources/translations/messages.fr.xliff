@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-01-05T14:56:40Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-01-05T16:11:29Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -15,6 +15,11 @@
         <source>article.filter.label.theme</source>
         <target>Thèmes</target>
         <jms:reference-file line="11">News/components/filters.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="15b6e12588f4a992f09d72bca2dcee8a34ebcbc1" resname="breadcrumb.btn.hautdelapage">
+        <source>breadcrumb.btn.hautdelapage</source>
+        <target>Haut de la page</target>
+        <jms:reference-file line="17">views/Global/breadcrumb.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5faa0192d02aa45746cc1449c13e472833308364" resname="contact.form.errors.email">
         <source>contact.form.errors.email</source>
@@ -51,6 +56,12 @@
         <source>contact.form.placeholder.theme</source>
         <target>Séléctionnez un thème</target>
         <jms:reference-file line="41">Form/Type/ContactType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="acd031e82ae578323e983429369f378b99b309b2" resname="cookie.text.enpoursuivantvotrenaviguationsurnossites">
+        <source>cookie.text.enpoursuivantvotrenaviguationsurnossites</source>
+        <target><![CDATA[En poursuivant votre navigation sur nos sites, vous acceptez l'installation et l'utilisation de cookies sur votre poste,<br/>
+        notamment à des fins promotionnelles et/ou publicitaires, dans le respect de notre politique de protection de votre vie privée.]]></target>
+        <jms:reference-file line="3">views/Global/cookies.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ce3ad563def29bc0b8fa74c4804ef7f9826bd1a7" resname="footer.newsletter.placeholder.votreadresse">
         <source>footer.newsletter.placeholder.votreadresse</source>
@@ -216,7 +227,7 @@
       <trans-unit id="9e9486daa181d4bb53bf7d57d2b91f70869b3331" resname="newsletter.email.subject">
         <source>newsletter.email.subject</source>
         <target>Votre inscription à la newsletter</target>
-        <jms:reference-file line="685">EventBundle/Controller/FooterController.php</jms:reference-file>
+        <jms:reference-file line="182">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="088bf9be5aabd3ab9ea123c1b7a6e98fde2cdad7" resname="palmares.btn.decouvrirrubrique">
         <source>palmares.btn.decouvrirrubrique</source>
