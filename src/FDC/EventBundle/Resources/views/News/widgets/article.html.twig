@@ -1,4 +1,4 @@
-<article class="article {% if article.double %}double{% endif %}" data-format="{{ article.format }}" data-theme="{{ article.theme }}">
+<article class="article {% if article.format is defined %}{% if article.double %}double{% endif %}" data-format="{{ article.format }}" data-theme="{{ article.theme }}" {% endif %}>
     <div class="image">
         <div class="image-wrapper">
             <img src="{{ article.image.path }}" alt="" />
