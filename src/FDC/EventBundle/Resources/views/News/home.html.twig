@@ -24,9 +24,9 @@
         </div>
         <div id="news">
             <div id="canvasloader" class="canvasloader"></div>
-            <h2 class="title">{{ 'home.btn.lactualitealaune'|trans }}</h2>
+            <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>
 
-            {% include 'FDCEventBundle:News:filters.html.twig' %}
+            {% include 'FDCEventBundle:News:components/filters.html.twig' %}
 
             <div class="container">
                 <div class="content-news">
@@ -34,7 +34,7 @@
                         <div class="articles left">
 
                             {% for article in homeArticles.article %}
-                                {% include 'FDCEventBundle:News:thumbnail.html.twig' %}
+                                {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                             {% endfor %}
 
                         </div>
@@ -49,20 +49,20 @@
                         <div class="articles center">
 
                             {% for article in homeArticles.bottomArticle %}
-                                {% include 'FDCEventBundle:News:thumbnail.html.twig' %}
+                                {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                             {% endfor %}
 
                         </div>
 
                     </div>
 
-                    <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans }}</a>
+                    <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans|raw }}</a>
                 </div>
 
                 <div id="timeline">
                     {% for key, date in homeArticles.timeline %}
                         <a href="#" data-date="{{ date.date|date('d') }}" class="{% if key == 0 %}active{% endif %}">
-                            {{ date.date|localizeddate('none', 'none', app.request.locale)|date('D')  }}
+                            {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                             <span class="day">{{ date.date|date('d') }}</span>
                         </a>
                     {% endfor %}
@@ -78,7 +78,7 @@
                     <ul>
                         {% for key, date in homeArticles.timeline %}
                             <li class="active">
-                                {{ date.date|localizeddate('none', 'none', app.request.locale)|date('D')  }}
+                                {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                 <span>{{ date.date|date('d') }}</span>
                             </li>
                         {% endfor %}
@@ -96,84 +96,20 @@
                     <svg id="graphSVG" width="891" height="200"></svg>
                     <div id="tipGraph"></div>
                 </div>
+
                 <div id="wall">
-                    <div class="post big">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post big">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post big right">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
-                    <div class="post">
-                        <div class="side side-1"></div>
-                        <div class="side side-2"></div>
-                    </div>
+                    {% for post in wallPosts %}
+                        {% include 'FDCEventBundle:News:widgets/post.html.twig' %}
+                    {% endfor %}
                 </div>
-                <div id="networks">
-                    <p>{{ 'home.socials.text.suivezlefestivaldecannes' }}</p>
-                    <ul>
-                        <li><a class="facebook" href="{{ social_facebook }}" target="_blank">Facebook</a></li>
-                        <li><a class="twitter" href="{{ social_twitter }}" target="_blank">Twitter</a></li>
-                        <li><a class="instagram" href="{{ social_instagram }}" target="_blank">Instagram</a></li>
-                        <li><a class="tumblr" href="{{ social_tumblr }}" target="_blank">Tumblr</a></li>
-                        <li><a class="youtube" href="{{ social_youtube }}" target="_blank">Youtube</a></li>
-                        <li><a class="dailymotion" href="{{ social_dailymotion }}" target="_blank">Dailymotion</a></li>
-                    </ul>
-                </div>
+
+                {% include 'FDCEventBundle:News:components/socials.html.twig' %}
+
             </div>
         </div>
 
         <div id="featured-videos">
-            <h2 class="title">{{ 'home.title.lesvideosalaune' }}</h2>
+            <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
             <p class="link">
                 <a href="{{ path('fdc_event_television_live') }}">
                     {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
@@ -187,7 +123,9 @@
 
                 {% for video in videos %}
                     {% if video.most_viewed %}
-                        {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'vid'} %}
+                        <div class="vid">
+                            {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
+                        </div>
                     {% endif %}
                 {% endfor %}
 
@@ -199,61 +137,28 @@
 
                 {% for video in videos %}
                     {% if video.most_viewed == false %}
-                        {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'channel'} %}
+                        <div class="channel">
+                            {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
+                        </div>
                     {% endif %}
                 {% endfor %}
 
             </div>
         </div>
-        {#<div id="featured-movies">#}
-            {#<div id="slider-movies" class="owl-carousel">#}
 
-                {#{% for video in videoSlider %}#}
-                    {#<div>#}
-                        {#<div class="video">#}
-                            {#<video preload>#}
-                                {#<source src="{{ video.source.mp4 }}">#}
-                                {#<source src="{{ video.source.webm }}" type="video/webm">#}
-                            {#</video>#}
-                            {#<div class="img" style="background-image:url({{ video.image.path }})"></div>#}
-                        {#</div>#}
-                        {#<div class="textVideo">#}
-                            {#<div class="info">#}
-                                {#<div class="vCenter">#}
-                                    {#<div class="vCenterKid">#}
-                                        {#<span class="category">{{ video.category }}</span>#}
-                                        {#<h2>{{ video.title }}</h2>#}
-                                        {#<p class="director">{{ 'home.videoslider.text.de'|trans }}#}
-                                            {#<a href="#">{{ video.author.fullName }}</a>#}
-                                        {#</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="links">#}
-                                {#<a href="#" class="seances">{{ 'home.videoslider.btn.voirlesseances'|trans }}</a>#}
-                                {#<a href="#" class="all">{{ 'home.videoslider.btn.touslesfilms'|trans }}</a>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#{% endfor %}#}
+        <div id="featured-movies">
+            <div id="slider-movies" class="owl-carousel">
+                {% for video in videoSlider %}
+                    {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
 
-            {#</div>#}
-        {#</div>#}
         <div class="push-container">
             <div class="container">
 
             {% for category in homeCategories %}
-                <div class="push">
-                    <div class="image-wrapper">
-                        <img src="{{ category.image.path }}" alt="" />
-                    </div>
-                    <div class="vCenter">
-                        <div class="vCenterKid">
-                            <h3>{{ category.title }}</h3>
-                        </div>
-                    </div>
-                    <a href="{{ category.href }}"></a>
-                </div>
+                {% include 'FDCEventBundle:News:widgets/push.html.twig' %}
             {% endfor %}
 
             </div>
@@ -265,67 +170,15 @@
                     {% if category.blank %}
                         <div class="push"></div>
                     {% else %}
-                        <div class="push{% if category.bigger %}bigger{% endif %}">
-                            <div class="image-wrapper">
-                                <img src="{{ category.image.path }}" alt="" />
-                            </div>
-                            <div class="vCenter">
-                                <div class="vCenterKid">
-                                    <h3>{{ category.title }}</h3>
-                                </div>
-                            </div>
-                            <a href="{{ category.href }}"></a>
-                        </div>
+                        {% include 'FDCEventBundle:News:widgets/push.html.twig' %}
                     {% endif %}
-
                 {% endfor %}
 
             </div>
         </div>
-        <div id="prefooter">
-            <div class="container">
-                <div class="textTop">
-                    <h2>Vivez le festival de Cannes</h2>
-                    <h3 class="subtitle">Suivez le Festival où que vous soyez</h3>
-                    <ul>
-                        <li><a href="https://www.youtube.com/user/TVFestivaldeCannes" class="active" target="_blank">TV Festival de Cannes</a></li>
-                        <li><a href="#">Applications Mobiles</a></li>
-                        <li><a href="http://www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique officielle</a></li>
-                        <li><a href="#">Publications</a></li>
-                    </ul>
-                </div>
-                <div id="slider-prefooter" class="owl-carousel">
-                    <div class="imgSlide active bottom">
-                        <div class="vCenter">
-                            <div class="vCenterKidBottom">
-                                <a href='https://www.youtube.com/user/TVFestivaldeCannes' target="_blank"><img src="img/prefooter/001.png" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="imgSlide bottom">
-                        <div class="vCenter">
-                            <div class="vCenterKidBottom">
-                                <a href='#'><img src="img/prefooter/002.png" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="imgSlide">
-                        <div class="vCenter">
-                            <div class="vCenterKidBottom">
-                                <a href='http://www.boutiqueofficielle.festival-cannes.com/' target="_blank"><img src="img/prefooter/003.png" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="imgSlide top">
-                        <div class="vCenter">
-                            <div class="vCenterKidBottom">
-                                <a href='#'><img src="img/prefooter/004.png" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        {% include 'FDCEventBundle:News:components/prefooter.html.twig' %}
+
     </div>
 
 {% endblock body %}

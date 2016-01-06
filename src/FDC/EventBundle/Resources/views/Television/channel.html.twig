@@ -31,9 +31,9 @@
 
     <div id="content-channels">
         <div id="slider-channels" class="owl-carousel sliderDrag">
-            {% for channel in channels %}
+            {% for video in channels %}
                 <div class="channel shadow-bottom">
-                    {% include 'FDCEventBundle:Television:video.html.twig' %}
+                    {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
                 </div>
             {% endfor %}
         </div>
@@ -42,7 +42,9 @@
         <h2 class="title">{{ 'webtv.channel.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
             {% for video in videos %}
-                {% include 'FDCEventBundle:Television:video.date.html.twig' with {'classes': 'video shadow-bottom'} %}
+                <div class="video shadow-bottom">
+                    {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
+                </div>
             {% endfor %}
         </div>
     </div>

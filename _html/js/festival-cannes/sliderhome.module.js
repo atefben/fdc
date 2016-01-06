@@ -5,11 +5,11 @@ $(document).ready(function() {
     // Slider Home
     // =========================
     var time = 7;
-   
+
     var $progressBar,
-        $bar, 
-        sliderHome, 
-        isPause, 
+        $bar,
+        sliderHome,
+        isPause,
         tick,
         percentTime,
         deltaTooBig = false;
@@ -51,7 +51,7 @@ $(document).ready(function() {
       buildProgressBar();
 
       positionElements();
-        
+
       // start counting
       start();
 
@@ -76,11 +76,11 @@ $(document).ready(function() {
       $progressBar = $("<div>",{
           id:"progressBar"
       });
-      
+
       $bar = $("<div>",{
           id:"bar"
       });
-      
+
       $progressBar.append($bar).prependTo($("#slider"));
     }
 
@@ -88,7 +88,7 @@ $(document).ready(function() {
       // reset timer
       percentTime = 0;
       isPause = false;
-      
+
       // run interval every 0.01 second
       tick = setInterval(interval, 10);
     };
@@ -96,14 +96,14 @@ $(document).ready(function() {
     function interval() {
       if(isPause === false){
         percentTime += 1 / time;
-        
+
         $bar.css({
             width: percentTime+"%"
         });
-        
+
         // if percentTime is equal or greater than 100
         if(percentTime >= 100){
-          // slide to next item 
+          // slide to next item
 
           clearTimeout(tick);
           $bar.css({
@@ -119,7 +119,7 @@ $(document).ready(function() {
       }
     }
 
-    // pause while dragging 
+    // pause while dragging
     function pauseOnDragging(){
       isPause = true;
     }
@@ -133,7 +133,7 @@ $(document).ready(function() {
       } else {
         newP = parseInt(current) - 1;
       }
-     
+
       if($('#slider .owl-dot').eq(newP).length == 0 || newP == -1) {
         deltaTooBig = true;
       }
@@ -201,7 +201,7 @@ $(document).ready(function() {
     function moved(){
       // clear interval
       clearTimeout(tick);
-        
+
       deltaTooBig = false;
 
       // start again

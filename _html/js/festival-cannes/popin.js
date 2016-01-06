@@ -142,7 +142,7 @@ $(document).ready(function() {
     $('.share .link').on('click touchstart',function(e){
       e.preventDefault();
       if(!$('#share-box').length){
-        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+'Copied !'+'</a></div></div>');
+        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
         $('#share-box').animate({'opacity':'1'},400,function(){
 
            $('#share-box').addClass('show');

@@ -4,8 +4,8 @@
   <head>
     <?php include('head.html'); ?>
   </head>
-  
-  
+
+
   <body>
     <div id="prehome-container">
       <div id="prehome"></div>
@@ -747,11 +747,11 @@
     </div>
 
     <?php include('footer.html'); ?>
-     
+
      <!-- cookie banner -->
       <?php include('cookie-banner.php'); ?>
     <!-- //// SCRIPTS \\\\ -->
-    
+
     <?php include('scripts.inc.php'); ?>
   </body>
 </html>

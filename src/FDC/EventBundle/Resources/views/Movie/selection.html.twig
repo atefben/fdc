@@ -4,61 +4,13 @@
 {% block body %}
 <div id="main" class="list-article films-list selection-officielle loading">
     <div class="bandeau-list">
-        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg)">
+        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/selection-bandeau.jpg')">
             <div class="vCenterKid">
                 <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
             </div>
         </div>
-        <ul class="sub-nav-list nav-list">
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'competition'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'competition' %}active{% endif %} ajax">
-                    {{ 'selection.nav.competition'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'certain-regard'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'certain-regard' %}active{% endif %} ajax">
-                    {{ 'selection.nav.certain-regard'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'hors-competition'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'hors-competition' %}active{% endif %} ajax">
-                    {{ 'selection.nav.certain-regard'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'seances-speaciales'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'seances-speaciales' %}active{% endif %} ajax">
-                    {{ 'selection.nav.certain-regard'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinefondation'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cinefondation' %}active{% endif %} ajax">
-                    {{ 'selection.nav.cinefondation'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'court-metrage'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'court-metrage' %}active{% endif %} ajax">
-                    {{ 'selection.nav.camera-dor'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'cannes-classics'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cannes-classics' %}active{% endif %} ajax">
-                    {{ 'selection.nav.tout-palmares'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinema-plage'}) }}"
-                   class="{% if app.request.attributes.get('slug') == 'cinema-plage' %}active{% endif %} ajax">
-                    {{ 'selection.nav.tout-palmares'|trans }}
-                </a>
-            </li>
-        </ul>
+
+        {% include 'FDCEventBundle:Movie:components/filters.html.twig' %}
     </div>
     <div class="container container-list ">
         <section class="categorie-items">
@@ -70,7 +22,7 @@
                         <div class="item">
                             <figure>
                                 <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                    <img src="{{ movie.slug }}" alt="">
+                                    <img src="//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/cover-film1.jpg" alt="">
                                 </a>
                                 <figcaption>
                                     <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
@@ -89,9 +41,14 @@
         </section>
     </div>
     <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
-        <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/selection-officielle/push.jpg);">
+        <div class="bandeau-list-img vCenterKid" style="background-image:url('//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/push.jpg')">
             <h2 class="title title-list-header">Un certain regard</h2>
-            <a href="selectionofficielle_uncertainregard.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+            <a href="{{ path('fdc_event_movie_selection', {'slug': 'certain-regard'} ) }}" class="bandeau-lien">
+                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                <img src="{{ asset_url }}" alt="{{ 'selection.btn.decouvrirrubrique'|trans }}" class="svg-arrow">
+                {% endimage %}
+                {{ 'selection.btn.decouvrirrubrique'|trans }}
+            </a>
         </div>
     </div>
 </div>

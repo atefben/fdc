@@ -1,0 +1,50 @@
+<ul class="sub-nav-list nav-list">
+    <li>
+        <a href="{{ path('fdc_event_movie_selection', {'slug': 'competition'}) }}"
+           class="{% if app.request.attributes.get('slug') == 'competition' %}active{% endif %} ajax">
+            {{ 'selection.nav.competition'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_movie_selection', {'slug': 'certain-regard'}) }}"
+           class="{% if app.request.attributes.get('slug') == 'certain-regard' %}active{% endif %} ajax">
+            {{ 'selection.nav.certain-regard'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_movie_selection', {'slug': 'hors-competition'}) }}"
+           class="{% if app.request.attributes.get('slug') == 'hors-competition' %}active{% endif %} ajax">
+            {{ 'selection.nav.hors-competition'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_movie_selection', {'slug': 'seances-speaciales'}) }}"
+           class="{% if app.request.attributes.get('slug') == 'seances-speaciales' %}active{% endif %} ajax">
+            {{ 'selection.nav.seances-speciales'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinefondation'}) }}"
+           class="{% if app.request.attributes.get('slug') == 'cinefondation' %}active{% endif %} ajax">
+            {{ 'selection.nav.cinefondation'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_movie_selection', {'slug': 'court-metrage'}) }}"
+           class="{% if app.request.attributes.get('slug') == 'court-metrage' %}active{% endif %} ajax">
+            {{ 'selection.nav.courts-metrages'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_movie_classics', {'slug': 'invites-honneur'}) }}"
+           class="{% if app.request.attributes.get('_route') == 'fdc_event_movie_classics' %}active{% endif %} ajax">
+            {{ 'selection.nav.cannes-classics'|trans }}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinema-plage'}) }}"
+           class="{% if app.request.attributes.get('slug') == 'cinema-plage' %}active{% endif %} ajax">
+            {{ 'selection.nav.cinema-la-plage'|trans }}
+        </a>
+    </li>
+</ul>

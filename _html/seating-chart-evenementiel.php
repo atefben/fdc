@@ -10,9 +10,6 @@
 
     <div id="main" class="press loading seatingchart lock">
       <div class="header-press">
-        <div class="head">
-          <span>Espace presse</span>
-        </div>
         <div class="container">
           <h2>Plan des salles</h2>
         </div>
@@ -49,27 +46,6 @@
           <span id='salle-bazin'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
           <span id='salle-presse'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
           <span id='salle-mace'><img src="./img/press/seating-chart/theatre-lumiere.jpg" alt=""></span>
-        </div>
-      </div>
-      <div class="contact-press">
-        <h2 class="title">Contactez-nous</h2>
-        <div class="container">
-          <div class="col">
-            <h3>Festival de Cannes - Service de Presse</h3>
-            <p>3, rue Amélie F-75007 Paris<br />Tel : +33 (0)1 53 59 61 85<br />Fax : +33 (0)1 53 59 61 84</p>
-            <p><strong>Presse écrite et digitale - Agences de Presse</strong><br /><a class="mail" href="mailto:presse@festival-cannes.fr">presse@festival-cannes.fr</a></p>
-            <p><strong>Médias Web</strong><br /><a class="mail" href="mailto:webmedia@festival-cannes.fr">webmedia@festival-cannes.fr</a></p>
-          </div>
-          <div class="col">
-            <h3>Service de Presse Audiovisuelle</h3>
-            <p>Tel : +33 (0)1 53 59 61 88 / 61 92<br />Fax : +33 (0)1 53 59 61 10</p>
-            <p class="pressaudio"><strong>Télévision - Radio<br />Média Web (Image & son)<br />Agence de Presse Audiovisuelle & Vidéo<br />Agence Photo - Photographe :</strong><br /><a class="mail" href="mailto:presseaudio@festival-cannes.fr">presseaudio@festival-cannes.fr</a></p>
-          </div>
-          <div class="col">
-            <h3>Vous avez une demande à formuler ou souhaitez faire une suggestion ?</h3>
-            <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
-            <a href="contact.php" class="button">formulaire de contact</a>
-          </div>
         </div>
       </div>
     </div>

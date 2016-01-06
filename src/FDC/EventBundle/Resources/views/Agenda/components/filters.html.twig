@@ -1,0 +1,18 @@
+<div class="filters">
+    <div id="category" class="filter">
+        <span class="label">{{ 'programmation.filters.label.selections'|trans }} :</span>
+        <span class="select">
+            {% for key,filter in selectionFilters %}
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ filter.slug }}">{{ filter.name }}</span>
+            {% endfor %}
+        </span>
+    </div>
+    <div id="type" class="filter">
+        <span class="label">{{ 'programmation.filters.label.types'|trans }} :</span>
+        <span class="select">
+            {% for key,filter in typeFilters %}
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ filter.slug }}">{{ filter.name }}</span>
+            {% endfor %}
+        </span>
+    </div>
+</div>
