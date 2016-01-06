@@ -13,6 +13,14 @@
   overflow: hidden;
   padding-top: 0!important;
 
+  .download{
+    .icon.icon_telecharger{
+      margin-right: 10px !important;
+      vertical-align: middle !important;
+      margin-bottom: 3px;
+    }
+  }
+
   .button{
     font-size: 0.63rem;
     height: 37px;
@@ -417,7 +425,7 @@
     height: 150px;
 
     .head {
-      background: $gold url('../img/svg/press-white.svg') no-repeat center 36%;
+      background: $gold no-repeat center 36%;
       background-size: 40px;
       color: #fff;
       float: left;
@@ -436,6 +444,14 @@
         font-family: $CamphorBold;
         font-size: 0.750rem;
         letter-spacing: 0.1em;
+        position: relative;
+
+        .icon{
+          position: absolute;
+          top: -38px;
+          right: 17px;
+          font-size: 1.75rem;
+        }
       }
     }
 
@@ -2318,7 +2334,7 @@
     #mycalendar{
       .fc-day{
           width:234px;
-      } 
+      }
       .fc-day-header{
           width:234px;
       }
