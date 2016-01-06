@@ -3105,7 +3105,7 @@ a {
 }
 .buttons.square .button {
   height: 73px;
-  line-height: 73px;
+  position: relative;
   padding: 0;
   text-align: center;
   width: 73px;
@@ -8358,8 +8358,9 @@ header #searchContainer {
   color: #c8a461;
 }
 .article .picto .icon {
-  margin-left: 14px;
-  margin-top: 14px;
+  margin-left: 17px;
+  margin-top: 17px;
+  font-size: .7rem;
 }
 
 .video .picto {
@@ -9641,6 +9642,7 @@ article .image .read-later {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   color: #000;
+  background-color: #fff;
 }
 article .image .read-later .icon {
   margin-top: 12px;
@@ -9729,21 +9731,34 @@ article .read-later.rAlign span:after {
 }
 .single-article .print {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  background: url("../img/svg/print.svg") no-repeat 15% center;
-  background-size: 18px;
+  color: #c8a461;
   font-size: 0.625rem;
+}
+.single-article .print .icon {
+  font-size: 1rem;
+  margin-right: 10px;
+  vertical-align: middle !important;
 }
 .single-article .print:hover {
   color: #c8a461;
+  background-color: #fff;
+}
+.single-article .print:hover + .button {
+  border-left-color: #c8a461;
 }
 .single-article #share-article {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  background: url("../img/svg/share.svg") no-repeat 13% 47%;
-  background-size: 18px;
+  color: #c8a461;
   font-size: 0.625rem;
+}
+.single-article #share-article .icon {
+  font-size: 1rem;
+  margin-right: 10px;
+  vertical-align: middle !important;
 }
 .single-article #share-article:hover {
   color: #c8a461;
+  background-color: #fff;
 }
 .single-article #share-article:hover + .button {
   border-left-color: #c8a461;
@@ -9936,6 +9951,9 @@ article .read-later.rAlign span:after {
   text-align: center;
   text-transform: uppercase;
 }
+.single-article .share a {
+  color: #c8a461;
+}
 .single-article .share a:hover {
   background-color: #fff;
   border-color: #c8a461 !important;
@@ -9943,25 +9961,15 @@ article .read-later.rAlign span:after {
 .single-article .share a:hover + .button {
   border-left-color: #c8a461;
 }
-.single-article .share a.facebook {
-  background: url("../img/svg/facebook-gold.svg") no-repeat center;
-  background-size: 19px;
+.single-article .share a .icon {
+  font-size: .8rem;
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
-.single-article .share a.twitter {
-  background: url("../img/svg/twitter-gold.svg") no-repeat center;
-  background-size: 16px;
-}
-.single-article .share a.email {
-  background: url("../img/svg/mail.svg") no-repeat center;
-  background-size: 16px;
-}
-.single-article .share a.link {
-  background: url("../img/svg/link.svg") no-repeat center;
-  background-size: 16px;
-}
-.single-article .share a.print {
-  background: url("../img/svg/print.svg") no-repeat center;
-  background-size: 16px;
+.single-article .share a:hover .icon {
+  color: #c8a461;
+  opacity: 1;
 }
 .single-article .film {
   height: 365px;
@@ -10158,37 +10166,29 @@ article .read-later.rAlign span:after {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-article .nav.prev {
-  background: url("../img/svg/arrow-left-black.svg") no-repeat center;
-  background-size: 15px;
   left: 2%;
 }
-.single-article .nav.prev:after {
-  background: url("../img/svg/arrow-left-black.svg") no-repeat center;
-  background-size: 15px;
+.single-article .nav.prev .icon {
+  margin-top: 37px;
+  margin-left: 33px;
+  color: #000;
+  font-size: 0.7rem;
 }
 .single-article .nav.prev:hover {
   border-color: #141414;
 }
-.single-article .nav.prev:hover:after {
-  opacity: 1;
-  visibility: visible;
-}
 .single-article .nav.next {
-  background: url("../img/svg/arrow-right-black.svg") no-repeat center;
-  background-size: 15px;
   left: auto;
   right: 2%;
 }
-.single-article .nav.next:after {
-  background: url("../img/svg/arrow-right-black.svg") no-repeat center;
-  background-size: 15px;
+.single-article .nav.next .icon {
+  margin-top: 37px;
+  margin-left: 33px;
+  color: #000;
+  font-size: 0.7rem;
 }
 .single-article .nav.next:hover {
   border-color: #141414;
-}
-.single-article .nav.next:hover:after {
-  opacity: 1;
-  visibility: visible;
 }
 
 .single-movie {

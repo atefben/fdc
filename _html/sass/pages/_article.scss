@@ -173,8 +173,8 @@ article {
       top: 15px;
       right: 15px;
       @include transition(all 0.5s $smoothTransition);
-      color:#000; 
-
+      color:#000;
+      background-color: #fff;
       .icon{
         margin-top: 12px;
         margin-left: 12px;
@@ -268,24 +268,34 @@ article {
 
   .print {
     font-family: $CamphorHeavy;
-    background: url('../img/svg/print.svg') no-repeat 15% center;
-    background-size: 18px;
+    color: $gold;
     font-size: 0.625rem;
-
+    .icon{
+      font-size: 1rem;
+      margin-right: 10px;
+      vertical-align: middle !important;
+    }
     &:hover {
       color: $gold;
+      background-color: #fff;
+      + .button {
+        border-left-color: $gold;
+      }
     }
   }
 
   #share-article {
     font-family: $CamphorHeavy;
-    background: url('../img/svg/share.svg') no-repeat 13% 47%;
-    background-size: 18px;
+    color: $gold;
     font-size: 0.625rem;
-
+    .icon{
+      font-size: 1rem;
+      margin-right: 10px;
+      vertical-align: middle !important;
+    }
     &:hover {
       color: $gold;
-
+      background-color: #fff;
       + .button {
         border-left-color: $gold;
       }
@@ -527,6 +537,10 @@ article {
       text-transform: uppercase;
     }
 
+    a{
+      color: $gold;
+    }
+
     a:hover {
       background-color: #fff;
       border-color: $gold!important;
@@ -536,29 +550,15 @@ article {
       }
     }
 
-    a.facebook {
-      background: url('../img/svg/facebook-gold.svg') no-repeat center;
-      background-size: 19px;
+    a .icon{
+      font-size: .8rem;
+      position: absolute;
+      top: 30px;
+      left: 30px;
     }
-
-    a.twitter {
-      background: url('../img/svg/twitter-gold.svg') no-repeat center;
-      background-size: 16px;
-    }
-
-    a.email {
-      background: url('../img/svg/mail.svg') no-repeat center;
-      background-size: 16px;
-    }
-
-    a.link {
-      background: url('../img/svg/link.svg') no-repeat center;
-      background-size: 16px;
-    }
-
-    a.print {
-      background: url('../img/svg/print.svg') no-repeat center;
-      background-size: 16px;
+    a:hover .icon{
+      color:$gold;
+      opacity: 1;
     }
   }
 
@@ -775,43 +775,30 @@ article {
     }
 
     &.prev {
-      background: url('../img/svg/arrow-left-black.svg') no-repeat center;
-      background-size: 15px;
       left: 2%;
-
-      &:after {
-        background: url('../img/svg/arrow-left-black.svg') no-repeat center;
-        background-size: 15px;
+      .icon{
+        margin-top: 37px;
+        margin-left: 33px;
+        color: #000;
+        font-size: 0.7rem;
       }
-
       &:hover {
         border-color: $black;
-
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
       }
     }
 
     &.next {
-      background: url('../img/svg/arrow-right-black.svg') no-repeat center;
-      background-size: 15px;
       left: auto;
       right: 2%;
-
-      &:after {
-        background: url('../img/svg/arrow-right-black.svg') no-repeat center;
-        background-size: 15px;
+      .icon{
+        margin-top: 37px;
+        margin-left: 33px;
+        color: #000;
+        font-size: 0.7rem; 
       }
-
       &:hover {
         border-color: $black;
 
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
       }
     }
   }

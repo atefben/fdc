@@ -43,7 +43,8 @@ a {
 
   &.square .button {
     height: 73px;
-    line-height: 73px;
+    // line-height: 73px;
+    position: relative;
     padding: 0;
     text-align: center;
     width: 73px;
