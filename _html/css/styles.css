@@ -4474,41 +4474,9 @@ footer .social ul li a {
 footer .social ul li a:hover {
   opacity: 0.5;
 }
-footer .social ul li a.appli {
-  background: url("../img/svg/appli.svg") center no-repeat;
-  background-size: 26px;
-}
-footer .social ul li a.facebook {
-  background: url("../img/svg/facebook.svg") center no-repeat;
-  background-size: 26px;
-}
-footer .social ul li a.twitter {
-  background: url("../img/svg/twitter.svg") center no-repeat;
-  background-size: 22px;
-}
-footer .social ul li a.instagram {
-  background: url("../img/svg/instagram.svg") center no-repeat;
-  background-size: 26px;
-}
-footer .social ul li a.tumblr {
-  background: url("../img/svg/tumblr.svg") center no-repeat;
-  background-size: 26px;
-}
-footer .social ul li a.rss {
-  background: url("../img/svg/rss.svg") center no-repeat;
-  background-size: 22px;
-}
-footer .social ul li a.youtube {
-  background: url("../img/svg/youtube.svg") center no-repeat;
-  background-size: 24px;
-}
-footer .social ul li a.dailymotion {
-  background: url("../img/svg/dailymotion.svg") center no-repeat;
-  background-size: 26px;
-}
-footer .social ul li a.podcast {
-  background: url("../img/svg/podcast.svg") center no-repeat;
-  background-size: 26px;
+footer .social ul li a .icon {
+  color: #fff;
+  font-size: 1.1rem;
 }
 footer .footer-menu {
   padding: 50px 0;
@@ -4592,6 +4560,8 @@ footer .footer-menu ul li a:hover {
 }
 #breadcrumb .container .icon {
   color: #c8a461;
+  font-size: .6rem;
+  vertical-align: middle !important;
 }
 #breadcrumb .container a:hover {
   color: #c8a461;
@@ -4603,6 +4573,10 @@ footer .footer-menu ul li a:hover {
   text-transform: uppercase;
   float: right;
   margin: 20px 0px;
+}
+#breadcrumb .container .goTop .icon {
+  margin-bottom: 4px;
+  margin-left: 5px;
 }
 #breadcrumb .container .goTop:hover {
   cursor: pointer;
@@ -8800,6 +8774,7 @@ header #searchContainer {
   margin-right: 10px;
   font-size: .5rem;
   margin-bottom: 3px;
+  vertical-align: middle !important;
 }
 #featured-videos .link a {
   color: #c8a461;

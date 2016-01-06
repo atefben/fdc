@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Breadcrumb
@@ -170,50 +170,11 @@ footer {
             opacity: 0.5;
           }
 
-          &.appli {
-            background: url('../img/svg/appli.svg') center no-repeat;
-            background-size: 26px;
+          .icon{
+            color:#fff;
+            font-size: 1.1rem;
           }
 
-          &.facebook {
-            background: url('../img/svg/facebook.svg') center no-repeat;
-            background-size: 26px;
-          }
-
-          &.twitter {
-            background: url('../img/svg/twitter.svg') center no-repeat;
-            background-size: 22px;
-          }
-
-          &.instagram {
-            background: url('../img/svg/instagram.svg') center no-repeat;
-            background-size: 26px;
-          }
-
-          &.tumblr {
-            background: url('../img/svg/tumblr.svg') center no-repeat;
-            background-size: 26px;
-          }
-
-          &.rss {
-            background: url('../img/svg/rss.svg') center no-repeat;
-            background-size: 22px;
-          }
-
-          &.youtube {
-            background: url('../img/svg/youtube.svg') center no-repeat;
-            background-size: 24px;
-          }
-
-          &.dailymotion {
-            background: url('../img/svg/dailymotion.svg') center no-repeat;
-            background-size: 26px;
-          }
-
-          &.podcast {
-            background: url('../img/svg/podcast.svg') center no-repeat;
-            background-size: 26px;
-          }
         }
       }
     }
@@ -305,11 +266,13 @@ footer {
     }
     .icon{
       color: $gold;
+      font-size: .6rem;
+      vertical-align: middle !important;
     }
     a:hover{
       color:$gold;
     }
-    
+
     .goTop{
       color: #c8a461;
       font-size: 0.75rem;
@@ -317,13 +280,14 @@ footer {
       text-transform: uppercase;
       float: right;
       margin: 20px 0px;
+      .icon{
+        margin-bottom: 4px;
+        margin-left: 5px;
+      }
     }
-    
+
     .goTop:hover{
       cursor: pointer;
     }
   }
 }
-
-
-
