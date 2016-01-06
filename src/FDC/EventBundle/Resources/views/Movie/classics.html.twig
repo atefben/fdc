@@ -1,0 +1,205 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
+        <div class="bandeau-list">
+            <div class="bandeau-list">
+                <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/selection-bandeau.jpg')">
+                    <div class="vCenterKid">
+                        <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
+                    </div>
+                </div>
+
+                {% include 'FDCEventBundle:Movie:components/filters.html.twig' %}
+        </div>
+        <div class="container container-list single-article">
+            <div class="honneur-invit">
+                <div class="bandeau-list">
+                    <ul class="sub-nav-list nav-movie">
+                        {% for filter in filters %}
+                            <li>
+                                <a href="{{ path('fdc_event_movie_classics', {'slug': filter.slug }) }}"
+                                   class="{% if app.request.attributes.get('slug') == filter.slug %}active{% endif %} ajax">
+                                    {{ filter.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <section class="categorie-items honneur-invit">
+                    <div class="title-list-cat">
+                        <h2 class="title-big">{{ content.title }}</h2>
+                        <div class="buttons">
+                            <a id="share-article" href="#" class="button">{{ 'cannesclassics.btn.partager'|trans }}</a>
+                            <a href="#" class="button print">{{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                        </div>
+                    </div>
+
+                    {% if content.guest is defined %}
+                        <div class="contain-article-invit">
+
+                        {% for guest in content.guest %}
+                            <div class="title-list-cat">
+                                <h2 class="title">{{ guest.fullName }}</h2>
+                            </div>
+                            <div class="contain-img-honneur">
+                                <img src="{{ guest.image.path }}" alt="invite d honneur" class="photo-realisateur">
+                                <span class="copy">{{ guest.image.copyright }}</span>
+                            </div>
+                            <p class="pres-honneur">
+                                {{ guest.description }}
+                            </p>
+
+                            <div class="small-pres">
+                                <h3>
+                                    <strong>{{ guest.film.title }}</strong>
+                                    ({{ guest.film.date }}, {{ guest.film.duration }})
+                                </h3>
+                                <p>
+                                    {{ guest.info }}
+                                </p>
+                                <h4>{{ guest.trailer.description }}</h4>
+                                <div class="shadow-bottom video w2 video-player">
+                                    <img src="{{ guest.trailer.image }}" alt="">
+                                    <div class="picto"></div>
+                                    <div class="info">
+                                        <div class="vCenter">
+                                            <div class="vCenterKid">
+                                                <a href="#" class="category">Cannes Classic</a><span class="date">18.05.15 . 09:00</span>
+                                                <p>La Bande Annonce de Z</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if guest.audios is defined %}
+                                {% for audio in guest.audios %}
+                                    {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' %}
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if guest.quote is defined %}
+                                {% for quote in guest.quote %}
+                                    {% include 'FDCEventBundle:Movie:widgets/quote.html.twig' %}
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if guest.photos is defined %}
+                                {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': guest.photos} %}
+                            {% endif %}
+
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+
+                        <section class="categorie-items">
+                            <div class="title-list-cat title-film-detail">
+                                <h2 class="title">Centenaire orson welles</h2>
+                            </div>
+                            <article style="background-image:url(img/films/cover-film1.jpg)">
+                                <div class="bck-hover">
+                                    <div class="contain_item">
+                                        <img src="img/films/cover-film1.jpg" alt="images films">
+                                        <div class="infos-item-list">
+                                            <h3 class="title-item">Citizen kane</h3>
+                                            <span class="nom-item">Orson Welles</span>
+                                            <span class="date-item">1941 - 1h59</span>
+                                            <p class="description-item">Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros. Motion Picture Imagery par l'étalonneuse Janet Wilson, sous la supervision de Ned Price. Le négatif original n'existant plus, image reconstituée d'après trois interpositifs noirs et blancs à grain fin support nitrate.</p>
+                                            <p class="description-item">
+                                                Son optique " RCA squeeze duplex format. "
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article style="background-image:url(img/films/cover-film3.jpg)">
+                                <div class="bck-hover">
+                                    <div class="contain_item">
+                                        <img src="img/films/cover-film3.jpg" alt="images films">
+                                        <div class="infos-item-list">
+                                            <h3 class="title-item">The third man</h3>
+                                            <span class="nom-item">Carol Reed</span>
+                                            <span class="date-item">1949 - 1h44</span>
+                                            <p class="description-item">Une présentation de Studiocanal. Marron élément nitrate de 2ème génération (négatif original inexistant), numérisé en 4K et restauré image par image en 4K par Deluxe en Angleterre</p>
+                                            <p class="description-item">
+                                                Restauration supervisée par Studiocanal.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                        <section class="categorie-items">
+                            <div class="title-list-cat title-film-detail">
+                                <h2 class="title">Hommage a manoel de oliveira</h2>
+                                <p class="title-item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente voluptatibus magnam culpa, ut quam est repellendus aliquam ipsum eos debitis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus consequuntur esse doloremque qui sunt vel voluptatem repudiandae eaque aliquid architecto.</p>
+                            </div>
+                            <article style="background-image:url(img/films/cover-film2.jpg)">
+                                <div class="bck-hover">
+                                    <div class="contain_item">
+                                        <img src="img/films/cover-film2.jpg" alt="images films">
+                                        <div class="infos-item-list">
+                                            <h3 class="title-item">Visita</h3>
+                                            <span class="nom-item">Manoel De Oliveira</span>
+                                            <span class="date-item">1982 - 1h08</span>
+                                            <p class="description-item">Grâce à la fille de Manoel de Oliveira, Adelaide Trepa, et à son petit-fils Manuel Casimiroqui l'ont permis, en lien avec José Manuel Costa, directeur, et Rui Machado, sous-directeur, de la Cinemateca Portuguesa, le Festival de Cannes projettera son film posthume <strong>Visita</strong> ou <strong>Memórias e Confissoões</strong> (1982, 1h08).</p>
+                                            <p class="description-item">
+                                                Totalement inédit, il n'aura été montré qu'à la Cinemateca Portuguesa de Lisbonne et Porto, ville natale de Manoel de Oliveira.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                        <div class="share">
+                            <p>Partagez l'article</p>
+                            <div class="buttons square">
+                                <a href="#" class="button facebook"></a>
+                                <a href="#" class="button twitter"></a>
+                                <a href="#" class="button link"></a>
+                                <a href="#" class="button email"></a>
+                                <a href="#" class="button print"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
+            <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push.jpg);">
+                <h2 class="title title-list-header">Hommages</h2>
+                <a href="films_hommage.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPIN MAIL SHARE ---->
+    <div class="popin-mail popin">
+        <div class="contain-popin popin">
+            <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
+            <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
+            <div class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</div>
+        </div>
+        <form action="" id="form" class="popin">
+            <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+            <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas">
+            <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
+            <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
+            <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
+            <span class="detail popin">* Champs obligatoires</span>
+            <input type="submit" value='envoyer' class='popin'>
+            <div class="errors popin">
+                <ul class="popin">
+                </ul>
+            </div>
+        </form>
+        <div class="info-popin popin">
+            <p class="popin">
+                En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.
+                <br> OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
+            </p>
+        </div>
+    </div>
+    <!-- END POPIN MAIL SHARE -->
+{% endblock body %}

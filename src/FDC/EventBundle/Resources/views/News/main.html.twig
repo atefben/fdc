@@ -9,8 +9,6 @@
         <div class="container small-container">
             <a href="article2.php" class="nav prev ajax"></a>
             <a href="article3.php" class="nav next ajax"></a>
-
-
             <div class="info">
                 <a href="#" class="category">{{ news.theme|trans_fallback('name') }}</a>
                 <span class="date">{{ news.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ news.createdAt|date('H:i') }}</span>
