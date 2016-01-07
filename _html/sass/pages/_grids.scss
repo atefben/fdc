@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Photos
@@ -143,7 +143,7 @@
         width: calc(200%/3);
     }
   }
-  
+
   @media screen and (min-width: 1280px) {
     /* 5 columns for larger screens */
     .grid-sizer {
@@ -192,7 +192,7 @@
     overflow: hidden;
 
     img {
-      
+
       @include transform(translateZ(0));
       @include transition(all 4s $linear);
     }
@@ -375,8 +375,7 @@
   }
 
   .read-later {
-    background: #fff url('../img/svg/read-later.svg') no-repeat center;
-    background-size: 20px;
+
     content: '';
     display: block;
     height: 40px;
@@ -386,8 +385,14 @@
     position: absolute;
     top: 15px;
     right: 15px;
-
     @include transition(all 0.3s $smoothTransition);
+    color:#000;
+    background-color: #fff;
+    
+    .icon{
+      margin-top: 12px;
+      margin-left: 12px;
+    }
 
     span {
       background-color: $black;
@@ -494,7 +499,7 @@
 // ============================
 
 #gridJurys{
-  
+
 		  @media screen and (min-width: 320px) {
     /* 5 columns for larger screens */
     .grid-sizer {
@@ -554,11 +559,11 @@
 }
 
 // 7. Selection Officiel
-// ========================= 
+// =========================
 
 
 #gridFilmSelection{
-  
+
 		  @media screen and (min-width: 320px) {
     /* 5 columns for larger screens */
     .grid-sizer {
@@ -609,8 +614,8 @@
         width: calc(200%/5);
     }
   }
-  
-  
+
+
   @media screen and (min-width: 1600px) {
     /* 5 columns for larger screens */
     .grid-sizer {
@@ -623,7 +628,7 @@
         width: calc(200%/6);
     }
   }
-  
+
     @media screen and (min-width: 1920px) {
     /* 5 columns for larger screens */
     .grid-sizer {
@@ -640,7 +645,7 @@
 }
 
 // 8. Grid evenement
-// ======================= 
+// =======================
 
 #gridEvent{
   @media screen and (min-width: 1600px) {

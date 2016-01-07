@@ -11523,8 +11523,6 @@ article .read-later.rAlign span:after {
   }
 }
 .all-articles .read-later {
-  background: #fff url("../img/svg/read-later.svg") no-repeat center;
-  background-size: 20px;
   content: '';
   display: block;
   height: 40px;
@@ -11538,6 +11536,12 @@ article .read-later.rAlign span:after {
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  color: #000;
+  background-color: #fff;
+}
+.all-articles .read-later .icon {
+  margin-top: 12px;
+  margin-left: 12px;
 }
 .all-articles .read-later span {
   background-color: #141414;
