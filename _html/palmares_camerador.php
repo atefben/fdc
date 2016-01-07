@@ -24,7 +24,7 @@
                <li><a href="palmares_cinefondation.php" class="ajax">Cinéfondation</a></li>
                <li><a href="palmares_camerador.php" class="ajax active">Caméra d'or</a></li>
                <li><a href="palmares_toutlepalmares.php" class="ajax">Tout le palmarès</a></li>
-           </ul> 
+           </ul>
       </div>
       <div class="container container-list">
       <div class="camerador">
@@ -41,7 +41,7 @@
                   <img src="img/palmares/cover-film-camerador.jpg" alt="images films">
                   <div class="infos-item-list">
                     <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Caméra d'or</strong>
                     </div>
                     <h4 class="sub-title-item">En compétition</h4>
@@ -54,7 +54,7 @@
           </section>
         </div>
           <div class="title-list-cat">
-                  <h2 class="title"> Les films en lice dans la Sélection officielle</h2>
+              <h2 class="title"> Les films en lice dans la Sélection officielle</h2>
           </div>
           <section class="categorie-items">
           <h3 class="sub-cat-title">En compétition</h3>
@@ -102,7 +102,7 @@
       <div class="bandeau-list push-footer vCenter">
            <div class="bandeau-list-img bandeau-list-footer vCenterKid" style="background-image:url(img/films/cover-bandeau1.jpg);">
                <h2 class="title title-list-header">Cannes Classic</h2>
-               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"><i class="icon icon_fleche-right"></i> Découvrir la rubrique</a>
            </div>
       </div>
     </div>

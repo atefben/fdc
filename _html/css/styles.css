@@ -12670,6 +12670,7 @@ input[type=submit] {
   float: none;
   margin-right: 0px;
   margin-left: 0px;
+  font-size: 3rem;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-portrait {
   margin: 0 auto;
@@ -12683,6 +12684,7 @@ input[type=submit] {
   line-height: 20px;
   width: 331px;
   font-size: 1.13rem;
+  padding-top: 0px;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .verticalline:after {
   content: "";
