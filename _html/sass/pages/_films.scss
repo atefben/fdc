@@ -59,34 +59,14 @@
        text-align: center;
        padding-bottom: 20px;
      }
-     #share-article {
-       background: url("../img/svg/share.svg") no-repeat 13% 47%;
-       background-size: 18px;
-     }
-     .button {
-       border: 1px solid #2c2c2c;
-       color: #c8a461;
-       display: inline-block;
-       font-family: "Camphor W01 Bold";
-       font-size: 0.688rem;
-       height: 38px;
-       line-height: 38px;
-       margin: 0 0 0 0;
-       padding: 0 19px 0 39px;
-       text-transform: uppercase;
-       -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-       -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-       -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-       transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-     }
-     .button:hover {
-       border: 1px solid #c8a461;
-     }
-     .print {
-       background: url("../img/svg/print.svg") no-repeat 15% center;
-       background-size: 18px;
-       font-size: 0.63rem;
-     }
+      .button{
+        border-color: #2c2c2c;
+
+        &:hover{
+          background-color: #141414 !important;
+          border-color: $gold;
+        }
+      }
    }
    .sub-cat-title {
      padding: 20px;
@@ -254,10 +234,6 @@
          padding-top: 30px;
          position: relative;
          margin-bottom: 80px;
-         .picto {
-           background-image: url("../img/svg/video.svg");
-           background-size: 22px;
-         }
          p {
            padding: 0px;
          }
@@ -283,6 +259,15 @@
    background-color: #141414 !important;
    .bandeau-list {
      background-color: #1b1b1b;
+
+     .icon_fleche-right{
+       font-size: .5rem;
+       margin-bottom: 2px;
+       vertical-align: middle !important;
+       margin-right: 6px;
+     }
+
+
      .bandeau-list-img {
        height: 300px;
 
@@ -298,6 +283,7 @@
        }
        .push-footer .title-list-header, .bandeau-listfooter .title-list-header{
          margin-bottom: 20px;
+
        }
        .bandeau-lien {
          color: #c8a461;
@@ -370,6 +356,9 @@
          text-transform: uppercase;
        }
      }
+   }
+   .title-film-detail{
+     border-top: #202020 1px solid !important;
    }
  }
 
@@ -491,6 +480,12 @@
   }
   .title-film-detail{
     margin-bottom: 0px !important;
+  }
+
+  .square{
+    .button:hover{
+      background-color: #141414;
+    }
   }
 }
 

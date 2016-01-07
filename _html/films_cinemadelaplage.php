@@ -57,7 +57,7 @@
                <div class="contain_item">
                 <img src="img/films/cover-film_cdp1.jpg" alt="images films">
                 <div class="infos-item-list">
-                    <span class="date-pres-item">Jeudi 14 mai </span><span class="heure-pres-item"> 21h30 </span> 
+                    <span class="date-pres-item">Jeudi 14 mai </span><span class="heure-pres-item"> 21h30 </span>
                     <h3 class="title-item">Le grand blond avec une chaussure noire</h3>
                     <span class="nom-item">Yves ROBERT</span>
                     <span class="date-item">1972 - 1h30</span>
@@ -71,7 +71,7 @@
                    <div class="contain_item">
                      <img src="img/films/cover-film_cdp2.jpg" alt="images films">
                     <div class="infos-item-list">
-                        <span class="date-pres-item">Vendredi 15 mai </span><span class="heure-pres-item"> 21h30 </span> 
+                        <span class="date-pres-item">Vendredi 15 mai </span><span class="heure-pres-item"> 21h30 </span>
                         <h3 class="title-item">Ran</h3>
                         <span class="nom-item">Akira KUROSAMA</span>
                         <span class="date-item">1985 - 2h42</span>
@@ -86,11 +86,11 @@
                    <div class="contain_item">
                     <img src="img/films/cover-film_cdp3.jpg" alt="images films">
                     <div class="infos-item-list">
-                        <span class="date-pres-item">Samedi 16 mai </span><span class="heure-pres-item"> 21h30 </span> 
+                        <span class="date-pres-item">Samedi 16 mai </span><span class="heure-pres-item"> 21h30 </span>
                         <h3 class="title-item">Hôtel du nord</h3>
                         <span class="nom-item">Marcel CARNÉ</span>
                         <span class="date-item">1938 - 1h35</span>
-                        <p class="description-item">Une restauration présentée par MK2 avec le soutien du CNC. Restauration image 2K (d’après un scan 4K du négatif image nitrate) 
+                        <p class="description-item">Une restauration présentée par MK2 avec le soutien du CNC. Restauration image 2K (d’après un scan 4K du négatif image nitrate)
 faite par Digimage Classics.</p>
                     </div>
                    </div>
@@ -101,7 +101,8 @@ faite par Digimage Classics.</p>
       <div class="bandeau-list bandeau-list-footer push-footer vCenter">
            <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Compétition</h2>
-               <a href="selectionofficielle_competition.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+               <a href="selectionofficielle_competition.php" class="bandeau-lien"> <i class="icon icon_fleche-right"></i>
+ Découvrir la rubrique</a>
            </div>
       </div>
     </div>

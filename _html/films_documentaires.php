@@ -53,7 +53,7 @@
           <li><a href="films_copiesrestaurees.php" class="ajax">Copies restaurées </a></li>
           <li><a href="#" class="ajax">World cinema project</a></li>
           <li><a href="films_documentaires.php" class="ajax active">Documentaires</a></li>
-        </ul> 
+        </ul>
       </div>
         <section class="categorie-items">
             <div class="title-list-cat">
@@ -87,7 +87,7 @@
                 </div>
             </article>
            <div class="title-list-cat">
-                <h2 class="title">CELEBRATION DES SOIXANTE ANS DE LA 
+                <h2 class="title">CELEBRATION DES SOIXANTE ANS DE LA
 CREATION DE LA PALME D’OR</h2>
 
            </div>
@@ -102,15 +102,15 @@ CREATION DE LA PALME D’OR</h2>
                         <p class="description-item">Produit par AV productions.
                         </p>
                     </div>
-                </div> 
-                </div>   
+                </div>
+                </div>
             </article>
         </section>
       </div>
       <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
            <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Invité d'honneur</h2>
-               <a href="films_invitedhonneur.php" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+               <a href="films_invitedhonneur.php" class="bandeau-lien"> <i class="icon icon_fleche-right"></i> Découvrir la rubrique</a>
            </div>
       </div>
     </div>

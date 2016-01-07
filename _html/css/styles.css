@@ -12120,33 +12120,12 @@ input[type=submit] {
   text-align: center;
   padding-bottom: 20px;
 }
-.categorie-items .title-list-cat #share-article {
-  background: url("../img/svg/share.svg") no-repeat 13% 47%;
-  background-size: 18px;
-}
 .categorie-items .title-list-cat .button {
-  border: 1px solid #2c2c2c;
-  color: #c8a461;
-  display: inline-block;
-  font-family: "Camphor W01 Bold";
-  font-size: 0.688rem;
-  height: 38px;
-  line-height: 38px;
-  margin: 0 0 0 0;
-  padding: 0 19px 0 39px;
-  text-transform: uppercase;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  border-color: #2c2c2c;
 }
 .categorie-items .title-list-cat .button:hover {
-  border: 1px solid #c8a461;
-}
-.categorie-items .title-list-cat .print {
-  background: url("../img/svg/print.svg") no-repeat 15% center;
-  background-size: 18px;
-  font-size: 0.63rem;
+  background-color: #141414 !important;
+  border-color: #c8a461;
 }
 .categorie-items .sub-cat-title {
   padding: 20px;
@@ -12320,10 +12299,6 @@ input[type=submit] {
   position: relative;
   margin-bottom: 80px;
 }
-.categorie-items .contain-article-invit .small-pres .video .picto {
-  background-image: url("../img/svg/video.svg");
-  background-size: 22px;
-}
 .categorie-items .contain-article-invit .small-pres .video p {
   padding: 0px;
 }
@@ -12343,6 +12318,12 @@ input[type=submit] {
 }
 .list-article .bandeau-list {
   background-color: #1b1b1b;
+}
+.list-article .bandeau-list .icon_fleche-right {
+  font-size: .5rem;
+  margin-bottom: 2px;
+  vertical-align: middle !important;
+  margin-right: 6px;
 }
 .list-article .bandeau-list .bandeau-list-img {
   height: 300px;
@@ -12427,6 +12408,9 @@ input[type=submit] {
   display: inline-block;
   padding: 16px 6.5px;
   text-transform: uppercase;
+}
+.list-article .title-film-detail {
+  border-top: #202020 1px solid !important;
 }
 
 .selection-officielle .single-article {
@@ -12540,6 +12524,9 @@ input[type=submit] {
 }
 .honneur-invit .title-film-detail {
   margin-bottom: 0px !important;
+}
+.honneur-invit .square .button:hover {
+  background-color: #141414;
 }
 
 .cannes-classic .title-list-cat:first-child {
