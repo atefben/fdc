@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="buttons">
-                <a href="{{ path('fdc_press_default_index') }}">{{ 'programmation.btn.allerdanslespacepresse'|trans }}</a>
+                <a href="{{ path('fdc_press_news_home') }}">{{ 'programmation.btn.allerdanslespacepresse'|trans }}</a>
             </div>
         </div>
         <div class="wrapper">
@@ -94,48 +94,72 @@
                                 <div class="venue">
                                     <div class="v-head">{{ 'programmation.salle.grandtheatrelumière'|trans }}</div>
                                     <div class="v-container">
-                                        <div class="fc-event" data-category="reprise" data-type="reprise" data-url="eventPopin.html" data-id="3" data-picto='.pen' data-color='#000' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:00:00" data-time="9" data-duration="120">
-                                            <span class="category">séance de reprise</span>
-                                            <div class="info">
-                                                <img src="http://dummyimage.com/46x64/000/fff" />
-                                                <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
-                                            </div>
-                                            <div class="bottom"><span class="duration">2H</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
-                                        </div>
+                                        {% if schedulingEvents.place.grandTheatre is defined %}
+                                            {% for event in schedulingEvents.place.grandTheatre.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="venue">
                                     <div class="v-head">{{ 'programmation.salle.salledebussy'|trans }}</div>
-                                    <div class="v-container"></div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleDebussy is defined %}
+                                            {% for event in schedulingEvents.place.salleDebussy.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 <div class="venue">
                                     <div class="v-head">{{ 'programmation.salle.salledu60e'|trans }}</div>
-                                    <div class="v-container"></div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
                                     <div class="v-container">
-                                        <div class="fc-event" data-category="press" data-type="press" data-url="eventPopin.html" data-id="5" data-picto='.pen' data-color='#000' data-start="2016-05-12T15:00:00" data-end="2016-05-12T16:00:00" data-time="15" data-duration="60">
-                                            <span class="category">conférence de presse</span>
-                                            <div class="info">
-                                                <img src="http://dummyimage.com/46x64/000/fff" />
-                                                <div class="txt"><span>mad max, fury road</span><strong>Elisabet KAPNIST</strong></div>
-                                            </div>
-                                            <div class="bottom"><span class="duration">1H</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
-                                        </div>
+                                        {% if schedulingEvents.place.salle60 is defined %}
+                                            {% for event in schedulingEvents.place.salle60.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="venue">
                                     <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container"></div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleBunuel is defined %}
+                                            {% for event in schedulingEvents.place.salleBunuel.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 <div class="venue">
                                     <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container"></div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleBunuel is defined %}
+                                            {% for event in schedulingEvents.place.salleBunuel.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 <div class="venue">
                                     <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container"></div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleBunuel is defined %}
+                                            {% for event in schedulingEvents.place.salleBunuel.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="venue">
+                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleBunuel is defined %}
+                                            {% for event in schedulingEvents.place.salleBunuel.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>

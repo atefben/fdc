@@ -84,8 +84,60 @@ class AgendaController extends Controller
             ),
         );
 
+        $events = array(
+            'place' => array(
+                'grandTheatre' => array(
+                    'events' => array(
+                        array(
+                            'id' => 3,
+                            'title' => 'Orson welles, autopsie d’une légende',
+                            'author' => array(
+                                'fullName' => 'Elisabet KAPNIST'
+                            ),
+                            'category' => array(
+                                'name' => 'Séance de reprise',
+                                'slug' => 'reprise'
+                            ),
+                            'startAt' => new \DateTime(),
+                            'endAt' => new \DateTime(),
+                            'duration' => 120,
+                            'image' => array(
+                                'path' => '//dummyimage.com/46x64/000/fff'
+                            ),
+                            'place' => 'Grand Théatre Lumière',
+                            'competition' => 'Hors compétition'
+                        ),
+                    )
+                ),
+                'salleBunuel' => array(
+                    'events' => array(
+                        array(
+                            'id' => 5,
+                            'title' => 'Mad max, fury road',
+                            'author' => array(
+                                'fullName' => 'Elisabet KAPNIST'
+                            ),
+                            'category' => array(
+                                'name' => 'conférence de presse',
+                                'slug' => 'press'
+                            ),
+                            'startAt' => new \DateTime(),
+                            'endAt' => new \DateTime(),
+                            'duration' => 60,
+                            'image' => array(
+                                'path' => '//dummyimage.com/46x64/000/fff'
+                            ),
+                            'place' => 'Grand Théatre Lumière',
+                            'competition' => 'Hors compétition'
+                        ),
+                    )
+                ),
+            )
+        );
+
         return array(
             'schedulingDays' => $schedulingDays,
+            'schedulingEvents' => $events,
             'typeFilters' => $typeFilters,
             'selectionFilters' => $selectionFilters,
         );
