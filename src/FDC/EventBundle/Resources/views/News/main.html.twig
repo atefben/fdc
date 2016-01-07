@@ -21,7 +21,7 @@
             </div>
 
             {% if news is news_article %}
-                {% include 'FDCEventBundle:News:header/single-photo.html.twig' with {'photo' : news.header } %}
+                {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : news.header } %}
             {% endif %}
 
             <div class="chapeau">{{ news|trans_fallback('introduction')|raw }}</div>
@@ -41,6 +41,9 @@
                     {% include 'FDCEventBundle:News:widgets/video.html.twig' %}
                 {% elseif widget is news_widget_audio %}
                     <!-- AUDIO -->
+                    {% if widget.title is defined %}
+                        <h2 class="title">{{ widget.title }}</h2>
+                    {% endif %}
                     {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
                 {% elseif widget is news_widget_quote %}
                     {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}

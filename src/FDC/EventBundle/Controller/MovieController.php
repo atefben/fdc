@@ -2,6 +2,8 @@
 
 namespace FDC\EventBundle\Controller;
 
+use \DateTime;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -311,7 +313,7 @@ class MovieController extends Controller
                     'id' => 0,
                     'title' => 'Lorem Ipsum',
                     'type' => 'article',
-                    'theme' => 'En compétition',
+                    'category' => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'image' => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
@@ -322,7 +324,7 @@ class MovieController extends Controller
                     'id' => 0,
                     'title' => 'Lorem Ipsum',
                     'type' => 'article',
-                    'theme' => 'En compétition',
+                    'category' => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'image' => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
@@ -333,7 +335,7 @@ class MovieController extends Controller
                     'id' => 0,
                     'title' => 'Lorem Ipsum',
                     'type' => 'article',
-                    'theme' => 'En compétition',
+                    'category' => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'image' => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
@@ -486,6 +488,13 @@ class MovieController extends Controller
 
         $honnorContent = array(
             'title' => 'Lumière sur deux réalisateurs',
+            'category' => array(
+                'title' => 'Hommage',
+                'slug' => 'hommage',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-bandeau-push.jpg'
+                )
+            ),
             'guest' => array(
                 array(
                     'fullName' => 'Costa Gravas',
@@ -498,18 +507,27 @@ class MovieController extends Controller
                                      1976 (il récompensa <a href="#">Taxi Driver</a>), Prix de la mise en scène avec
                                      <a href="#">Section spéciale</a> en 1975, c\'est en sa présence que sera projeté Z,
                                       Prix du Jury en 1969.',
-                    'film' => array(
-                        'title' => 'Z',
-                        'duration' => '1h58',
-                        'date' => '1968'
+                    'widgets' => array(
+                        array(
+                            'type' => 'movie_widget_info',
+                            'title' => 'Z',
+                            'duration' => '1h58',
+                            'date' => '1968'
+                        ),
+                        array(
+                            'type' => 'movie_widget_text',
+                            'content' => 'Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé
+                                          en 4K et restauré image par image en 2K par Eclair Group et par LE Diapason
+                                          pour le son. Restauration et étalonnage supervisés par Costa-Gavras.'
+                        ),
+                        array(
+                            'type' => 'movie_widget_trailer',
+                            'description' => "Redécouvrez la bande-annonce du film lors de sa sortie en salles:",
+                            'image' => array(
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-invitespecial.jpg'
+                            )
+                        ),
                     ),
-                    'info' => 'Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé en 4K et
-                               restauré image par image en 2K par Eclair Group et par LE Diapason pour le son.
-                               Restauration et étalonnage supervisés par Costa-Gavras.',
-                    'trailer' => array(
-                        'description' => 'Redécouvrez la bande-annonce du film lors de sa sortie en salles :',
-                        'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-invitespecial.jpg'
-                    )
                 ),
                 array(
                     'fullName' => 'Woody Allen',
@@ -527,106 +545,140 @@ class MovieController extends Controller
                         'duration' => '1h45',
                         'date' => '2011'
                     ),
-                    'info' => 'Il est remarqué par le producteur Charles Feldman, qui lui propose de réécrire le
-                               scénario de Quoi de neuf Pussycat ? (1965) puis celui de Casino Royale (1967). A la
-                               même période, il remonte Lily la tigresse (1966), un film d\'espionnage japonais, en le
-                               commentant et en y ajoutant quelques séquences. C\'est son premier long métrage. Allen
-                               enchaîne en 1969 avec la comédie Prends l\'oseille et tire-toi avant de jouer le rôle
-                               principal de Tombe les filles et tais-toi d\'Herbert Ross (tiré de sa pièce Play it again
-                                Sam). Rares seront les autres cinéastes qui le dirigeront : Martin Ritt (Le Prête-nom,
-                               1976) Godard (King Lear) ou Paul Mazursky.<br>
-                               Minuits à Paris (2011, 1h45)<br>
-                               Un jeune couple d’américains dont le mariage est prévu à l’automne se rend pour quelques
-                               jours à Paris. La magie de la capitale ne tarde pas à opérer, tout particulièrement sur
-                               le jeune homme amoureux de la Ville-lumière et qui aspire à une autre vie que la sienne.
-                               <br>
-                               Redécouvrez la bande-annonce du film lors de sa sortie en salles:',
-                    'trailer' => array(
-                        'description' => 'Redécouvrez la bande-annonce du film lors de sa sortie en salles :',
-                        'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-invitespecial.jpg'
-                    ),
-                    'audios' => array(
+                    'widgets' => array(
                         array(
-                            'title' => 'Lorem Ipsum',
-                            'theme' => 'article',
-                            'sound' => 'sound.mp3',
-                            'createdAt' => new \DateTime(),
-                            'image' => array(
-                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                                'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            ),
-                        ),
-                    ),
-                    'quote' => array(
-                        array(
-                            'content' => '"J\'ai découvert que Lambert avait une passion pour le film de genre"'
-                        )
-                    ),
-                    'photos' => array(
-                        array(
-                            'id' => 0,
-                            'title' => 'Lorem Ipsum',
-                            'caption' => '<a>Test</a>',
-                            'theme' => 'En compétition',
-                            'createdAt' => new \DateTime(),
-                            'copyright' => 'Lorem ipsum',
-                            'image' => array(
-                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                                'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
-                            ),
+                            'type' => 'movie_widget_text',
+                            'content' => 'Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé
+                                          en 4K et restauré image par image en 2K par Eclair Group et par LE Diapason
+                                          pour le son. Restauration et étalonnage supervisés par Costa-Gavras.'
                         ),
                         array(
-                            'id' => 0,
-                            'title' => 'Lorem Ipsum',
-                            'caption' => '<a>Test</a>',
-                            'theme' => 'En compétition',
-                            'createdAt' => new \DateTime(),
-                            'copyright' => 'Lorem ipsum',
-                            'image' => array(
-                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                                'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
-                            ),
+                            'type' => 'movie_widget_info',
+                            'title' => 'Z',
+                            'duration' => '1h58',
+                            'date' => '1968'
                         ),
                         array(
-                            'id' => 0,
-                            'title' => 'Lorem Ipsum',
-                            'caption' => '<a>Test</a>',
-                            'theme' => 'En compétition',
-                            'createdAt' => new \DateTime(),
-                            'copyright' => 'Lorem ipsum',
-                            'image' => array(
-                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                                'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
-                            ),
+                            'type' => 'movie_widget_text',
+                            'content' => 'Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé
+                                          en 4K et restauré image par image en 2K par Eclair Group et par LE Diapason
+                                          pour le son. Restauration et étalonnage supervisés par Costa-Gavras.'
                         ),
                         array(
-                            'id' => 0,
-                            'title' => 'Lorem Ipsum',
-                            'caption' => '<a>Test</a>',
-                            'theme' => 'En compétition',
-                            'createdAt' => new \DateTime(),
-                            'copyright' => 'Lorem ipsum',
+                            'type' => 'movie_widget_trailer',
+                            'description' => "Redécouvrez la bande-annonce du film lors de sa sortie en salles:",
                             'image' => array(
-                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                                'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
-                            ),
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-invitespecial2.jpg'
+                            )
                         ),
                         array(
-                            'id' => 0,
-                            'title' => 'Lorem Ipsum',
-                            'caption' => '<a>Test</a>',
-                            'theme' => 'En compétition',
-                            'createdAt' => new \DateTime(),
-                            'copyright' => 'Lorem ipsum',
+                            'type' => 'movie_widget_audio',
+                            'title' => 'The lobster',
+                            'sound' => 'mp3',
+                            'createdAt' => new DateTime(),
+                            'theme' => 'Cinéma de la plage',
                             'image' => array(
-                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                                'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg'
                             ),
+                            'akamaiId' => 'DAaDo5fgcUc'
                         ),
-                    ),
+                        array(
+                            'type' => 'movie_widget_quote',
+                            'content' => 'J’ai découvert que Lambert avait une passion pour le film de genre',
+
+                        ),
+                        array(
+                            'type' => 'movie_widget_image',
+                            'copyright' => "Équipe du film - Photocall - The Lobster",
+                            'photos' => array(
+                                array(
+                                    'id' => 0,
+                                    'image' => array(
+                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
+                                    ),
+                                    'createdAt' => new DateTime(),
+                                    'theme' => 'Lorem Ipsum',
+                                    'title' => 'lorem ipsum',
+                                    'caption' => 'lorem ipsum',
+                                    'alt' => 'lorem ipsum',
+                                    'copyright' => 'Copyright'
+                                ),
+                                array(
+                                    'id' => 0,
+                                    'image' => array(
+                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
+                                    ),
+                                    'createdAt' => new DateTime(),
+                                    'theme' => 'Lorem Ipsum',
+                                    'title' => 'lorem ipsum',
+                                    'caption' => 'lorem ipsum',
+                                    'alt' => 'lorem ipsum',
+                                    'copyright' => 'Copyright'
+                                ),
+                                array(
+                                    'id' => 0,
+                                    'image' => array(
+                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
+                                    ),
+                                    'createdAt' => new DateTime(),
+                                    'theme' => 'Lorem Ipsum',
+                                    'title' => 'lorem ipsum',
+                                    'caption' => 'lorem ipsum',
+                                    'alt' => 'lorem ipsum',
+                                    'copyright' => 'Copyright'
+                                ),
+                                array(
+                                    'id' => 0,
+                                    'image' => array(
+                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
+                                    ),
+                                    'createdAt' => new DateTime(),
+                                    'theme' => 'Lorem Ipsum',
+                                    'title' => 'lorem ipsum',
+                                    'caption' => 'lorem ipsum',
+                                    'alt' => 'lorem ipsum',
+                                    'copyright' => 'Copyright'
+                                ),
+                                array(
+                                    'id' => 0,
+                                    'image' => array(
+                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                        'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
+                                    ),
+                                    'createdAt' => new DateTime(),
+                                    'theme' => 'Lorem Ipsum',
+                                    'title' => 'lorem ipsum',
+                                    'caption' => 'lorem ipsum',
+                                    'alt' => 'lorem ipsum',
+                                    'copyright' => 'Copyright'
+                                )
+                            )
+                        ),
+                        array(
+                            'type' => 'image_dual_align',
+                            'photos' => array(
+                                array(
+                                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/article/005.jpg',
+                                    'title' => 'lorem ipsum',
+                                    'alt' => 'lorem ipsum',
+                                    'copyright' => 'VALERY HACHE / AFP'
+                                ),
+                                array(
+                                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/article/005.jpg',
+                                    'title' => 'lorem ipsum',
+                                    'alt' => 'lorem ipsum',
+                                    'copyright' => 'VALERY HACHE / AFP'
+                                )
+                            )
+                        ),
+                    )
                 )
             ),
-            'section' => array(
+            'sections' => array(
                 array(
                     'title' => 'Centenaire Orson Welles',
                     'description' => '',
@@ -639,12 +691,12 @@ class MovieController extends Controller
                                 'fullName' => 'Orson Welles'
                             ),
                             'image' => array(
-                                'path' => 'img.jpg'
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
                                           Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
                                           de Ned Price. Le négatif original n\'existant plus, image reconstituée
-                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.
+                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.<br>
                                           Son optique " RCA squeeze duplex format. "'
                         ),
                         array(
@@ -655,7 +707,7 @@ class MovieController extends Controller
                                 'fullName' => 'Orson Welles'
                             ),
                             'image' => array(
-                                'path' => 'img.jpg'
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
                                           Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
@@ -680,7 +732,7 @@ class MovieController extends Controller
                                 'fullName' => 'Manoel De Oliveira'
                             ),
                             'image' => array(
-                                'path' => 'img.jpg'
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
                                           Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
@@ -693,23 +745,239 @@ class MovieController extends Controller
             )
         );
 
+        $hommageContent = array(
+            'category' => array(
+                'title' => 'Copies Restaurées',
+                'slug' => 'copies-restaurees',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-bandeau-push.jpg'
+                )
+            ),
+            'sections' => array(
+                array(
+                    'title' => 'Centenaire Orson Welles',
+                    'description' => '',
+                    'film' => array(
+                        array(
+                            'title' => 'Citizen Kane',
+                            'date' => '1941',
+                            'duration' => '1h59',
+                            'author' => array(
+                                'fullName' => 'Orson Welles'
+                            ),
+                            'image' => array(
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
+                            ),
+                            'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
+                                          Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
+                                          de Ned Price. Le négatif original n\'existant plus, image reconstituée
+                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.<br>
+                                          Son optique " RCA squeeze duplex format. "'
+                        ),
+                        array(
+                            'title' => 'Citizen Kane',
+                            'date' => '1941',
+                            'duration' => '1h59',
+                            'author' => array(
+                                'fullName' => 'Orson Welles'
+                            ),
+                            'image' => array(
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
+                            ),
+                            'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
+                                          Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
+                                          de Ned Price. Le négatif original n\'existant plus, image reconstituée
+                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.
+                                          Son optique " RCA squeeze duplex format. "'
+                        )
+                    )
+                ),
+                array(
+                    'title' => 'Hommage a Manoel De Oliveira',
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente voluptatibus
+                                      magnam culpa, ut quam est repellendus aliquam ipsum eos debitis. Lorem ipsum
+                                      dolor sit amet, consectetur adipisicing elit. Repellendus consequuntur esse
+                                      doloremque qui sunt vel voluptatem repudiandae eaque aliquid architecto.',
+                    'film' => array(
+                        array(
+                            'title' => 'Visita',
+                            'date' => '1982',
+                            'duration' => '1h08',
+                            'author' => array(
+                                'fullName' => 'Manoel De Oliveira'
+                            ),
+                            'image' => array(
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
+                            ),
+                            'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
+                                          Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
+                                          de Ned Price. Le négatif original n\'existant plus, image reconstituée
+                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.
+                                          Son optique " RCA squeeze duplex format. "'
+                        )
+                    )
+                )
+            )
+        );
+
+        $copiesContent = array(
+            'category' => array(
+                'title' => 'World cinema project',
+                'slug' => 'world-cinema',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-bandeau-push.jpg'
+                )
+            ),
+            'sections' => array(
+                array(
+                    'film' => array(
+                        array(
+                            'title' => 'Citizen Kane',
+                            'date' => '1941',
+                            'duration' => '1h59',
+                            'author' => array(
+                                'fullName' => 'Orson Welles'
+                            ),
+                            'image' => array(
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
+                            ),
+                            'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
+                                          Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
+                                          de Ned Price. Le négatif original n\'existant plus, image reconstituée
+                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.<br>
+                                          Son optique " RCA squeeze duplex format. "'
+                        ),
+                        array(
+                            'title' => 'Citizen Kane',
+                            'date' => '1941',
+                            'duration' => '1h59',
+                            'author' => array(
+                                'fullName' => 'Orson Welles'
+                            ),
+                            'image' => array(
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
+                            ),
+                            'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
+                                          Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
+                                          de Ned Price. Le négatif original n\'existant plus, image reconstituée
+                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.
+                                          Son optique " RCA squeeze duplex format. "'
+                        ),
+                        array(
+                            'title' => 'Citizen Kane',
+                            'date' => '1941',
+                            'duration' => '1h59',
+                            'author' => array(
+                                'fullName' => 'Orson Welles'
+                            ),
+                            'image' => array(
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
+                            ),
+                            'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
+                                          Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
+                                          de Ned Price. Le négatif original n\'existant plus, image reconstituée
+                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.
+                                          Son optique " RCA squeeze duplex format. "'
+                        ),
+                        array(
+                            'title' => 'Citizen Kane',
+                            'date' => '1941',
+                            'duration' => '1h59',
+                            'author' => array(
+                                'fullName' => 'Orson Welles'
+                            ),
+                            'image' => array(
+                                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
+                            ),
+                            'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
+                                          Motion Picture Imagery par l\'étalonneuse Janet Wilson, sous la supervision
+                                          de Ned Price. Le négatif original n\'existant plus, image reconstituée
+                                          d\'après trois interpositifs noirs et blancs à grain fin support nitrate.
+                                          Son optique " RCA squeeze duplex format. "'
+                        )
+                    )
+                ),
+            )
+        );
+
+
         $content = array();
 
         switch ($slug) {
             case "invites-honneur":
                 $content = $honnorContent;
                 break;
-            case "bar":
-                echo "i est une barre";
+            case "hommage":
+                $content = $hommageContent;
                 break;
-            case "cake":
-                echo "i est un gateau";
+            case "copies-restaurees":
+                $content = $copiesContent;
                 break;
         }
 
         return array(
             'content' => $content,
             'filters' => $filters
+        );
+    }
+
+    /**
+     * @Route("/cinema-de-la-plage")
+     * @Template("FDCEventBundle:Movie:cinema.html.twig")
+     * @return array
+     */
+    public function cinemaAction()
+    {
+        $content = array(
+            'description' => 'Les projections du Cinéma de la Plage, qui se jouent chaque soir sous les étoiles, sont ouvertes au public',
+            'film' => array(
+                array(
+                    'title' => 'Le grand blond avec une chaussure noire',
+                    'author' => array(
+                        'fullName' => 'Yves ROBERT'
+                    ),
+                    'releaseDate' => new \DateTime(),
+                    'projectionDate' => new \DateTime(),
+                    'duration' => '1h30',
+                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                                      son restauré par Diapason en partenariat avec Eclair.',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
+                    )
+                ),
+                array(
+                    'title' => 'Le grand blond avec une chaussure noire',
+                    'author' => array(
+                        'fullName' => 'Yves ROBERT'
+                    ),
+                    'releaseDate' => new \DateTime(),
+                    'projectionDate' => new \DateTime(),
+                    'duration' => '1h30',
+                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                                      son restauré par Diapason en partenariat avec Eclair.',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
+                    )
+                ),
+                array(
+                    'title' => 'Le grand blond avec une chaussure noire',
+                    'author' => array(
+                        'fullName' => 'Yves ROBERT'
+                    ),
+                    'releaseDate' => new \DateTime(),
+                    'projectionDate' => new \DateTime(),
+                    'duration' => '1h30',
+                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                                      son restauré par Diapason en partenariat avec Eclair.',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
+                    )
+                )
+            )
+        );
+
+        return array(
+            'cinemaContent' => $content
         );
     }
 }
