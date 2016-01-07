@@ -11,8 +11,8 @@
     <div id="main" class="single-article loading">
       <span id="addtext">Ajouter à ma sélection</span>
       <div class="container">
-        <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
-        <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
+        <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+        <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
         <div class="info">
           <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
         </div>
