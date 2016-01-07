@@ -13779,29 +13779,19 @@ input[type=submit] {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-align: left;
 }
-.faq section article .fa-plus {
-  background-image: url(../img/participate/case-plus.svg);
-  background-size: 45px;
-  background-position: 1px;
-  background-repeat: no-repeat;
-  width: 51px;
-  height: 51px;
-  display: block;
+.faq section article .icon_case-plus {
   position: absolute;
-  top: 0px;
-  right: -8px;
+  top: 4px;
+  right: -4px;
+  font-size: 2.8rem;
+  color: #E0E0E0;
 }
-.faq section article .fa-minus {
-  background-image: url(../img/participate/minus.svg);
-  background-size: 27px;
-  background-position: 14px 19px;
-  background-repeat: no-repeat;
-  display: block;
-  width: 25px;
-  height: 51px;
+.faq section article .icon_moins {
   position: absolute;
-  top: -12px;
-  right: 13px;
+  top: 21px;
+  right: 12px;
+  font-size: 0.7rem;
+  color: #E0E0E0;
 }
 .faq section article .faq-description {
   width: 660px;
@@ -13884,6 +13874,11 @@ input[type=submit] {
 }
 .evenement .bandeau-list-img {
   height: 444px !important;
+}
+.evenement .bandeau-list-img .icon {
+  font-size: .4rem;
+  vertical-align: middle !important;
+  margin-bottom: 2px;
 }
 .evenement .bandeau-list-img {
   height: 443px !important;

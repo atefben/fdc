@@ -60,12 +60,18 @@
   }
   .bandeau-list-img {
     height: 444px !important;
+    .icon{
+      font-size: .4rem;
+      vertical-align: middle !important;
+      margin-bottom: 2px;
+    }
   }
   .bandeau-list-img {
     height: 443px !important;
     @include transition(all 0.9s $linear);
   }
 }
+
 
 .evenement:after {
   content: ".";
