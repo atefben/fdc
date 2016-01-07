@@ -45,9 +45,9 @@ class SocialGraph
     protected $count;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $lastTweetId;
 
@@ -60,6 +60,7 @@ class SocialGraph
 
     public function __construct()
     {
+        $this->date = new DateTime();
     }
 
     /**
