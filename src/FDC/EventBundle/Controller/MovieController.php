@@ -920,4 +920,64 @@ class MovieController extends Controller
             'filters' => $filters
         );
     }
+
+    /**
+     * @Route("/cinema-de-la-plage")
+     * @Template("FDCEventBundle:Movie:cinema.html.twig")
+     * @return array
+     */
+    public function cinemaAction()
+    {
+        $content = array(
+            'description' => 'Les projections du Cinéma de la Plage, qui se jouent chaque soir sous les étoiles, sont ouvertes au public',
+            'film' => array(
+                array(
+                    'title' => 'Le grand blond avec une chaussure noire',
+                    'author' => array(
+                        'fullName' => 'Yves ROBERT'
+                    ),
+                    'releaseDate' => new \DateTime(),
+                    'projectionDate' => new \DateTime(),
+                    'duration' => '1h30',
+                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                                      son restauré par Diapason en partenariat avec Eclair.',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
+                    )
+                ),
+                array(
+                    'title' => 'Le grand blond avec une chaussure noire',
+                    'author' => array(
+                        'fullName' => 'Yves ROBERT'
+                    ),
+                    'releaseDate' => new \DateTime(),
+                    'projectionDate' => new \DateTime(),
+                    'duration' => '1h30',
+                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                                      son restauré par Diapason en partenariat avec Eclair.',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
+                    )
+                ),
+                array(
+                    'title' => 'Le grand blond avec une chaussure noire',
+                    'author' => array(
+                        'fullName' => 'Yves ROBERT'
+                    ),
+                    'releaseDate' => new \DateTime(),
+                    'projectionDate' => new \DateTime(),
+                    'duration' => '1h30',
+                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                                      son restauré par Diapason en partenariat avec Eclair.',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
+                    )
+                )
+            )
+        );
+
+        return array(
+            'cinemaContent' => $content
+        );
+    }
 }
