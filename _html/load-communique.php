@@ -1,9 +1,9 @@
 <div>
   <div class="gridelement" class="grid-wrapper" data-type="articles">
     <div class="grid-sizer"></div>
-    <div class="item theme1 date1 date theme  communique">
+    <div class="item theme1 date1 date theme communique">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span>
           <a href="article.php"><img src='img/press/actu01.jpg' /></a>
         </div>
         <div class="info">
@@ -14,7 +14,7 @@
     </div>
     <div class="item theme1 date1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu02.jpg' /></a>
         </div>
         <div class="info">
@@ -25,7 +25,7 @@
     </div>
     <div class="item theme1 date1 date article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu03.jpg' /></a>
         </div>
         <div class="info">
@@ -36,7 +36,7 @@
     </div>
     <div class="item theme1 date1 theme  communique">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -47,7 +47,7 @@
     </div>
     <div class="item theme1 date1 theme communique">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span>
           <a href="article.php"><img src='img/press/actu04.jpg' /></a>
         </div>
         <div class="info">
@@ -58,7 +58,7 @@
     </div>
     <div class="item theme1 date1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu06.jpg' /></a>
         </div>
         <div class="info">
@@ -69,7 +69,7 @@
     </div>
     <div class="item theme1 date1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -80,7 +80,7 @@
     </div>
     <div class="item theme1 date theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -91,7 +91,7 @@
     </div>
     <div class="item theme1 date1 date article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -102,7 +102,7 @@
     </div>
     <div class="item theme1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -113,7 +113,7 @@
     </div>
     <div class="item theme1 date1 article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -124,7 +124,7 @@
     </div>
     <div class="item theme1 date1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -135,7 +135,7 @@
     </div>
     <div class="item theme1 date1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -146,7 +146,7 @@
     </div>
     <div class="item theme1 date1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -157,7 +157,7 @@
     </div>
     <div class="item theme1 date1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -168,7 +168,7 @@
     </div>
     <div class="item theme1 date1 theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">
@@ -179,7 +179,7 @@
     </div>
     <div class="item theme1 date1 date theme article">
       <article class="article">
-        <div class="img"><span class="picto"></span>
+        <div class="img"><span class="picto"><i class="icon icon_article"></i></span>
           <a href="article.php"><img src='img/press/actu05.jpg' /></a>
         </div>
         <div class="info">

@@ -10367,8 +10367,6 @@ article .read-later.rAlign span:after {
   transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .single-movie .poster .picto {
-  background-image: url("../img/svg/video.svg");
-  background-size: 45px;
   height: 80px;
   top: 50%;
   left: 50%;
@@ -10380,6 +10378,11 @@ article .read-later.rAlign span:after {
   -o-transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.single-movie .poster .picto .icon {
+  font-size: 2rem;
+  margin-top: 24px;
+  margin-left: 26px;
 }
 .single-movie .poster .picto:hover + img {
   -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -10648,7 +10651,6 @@ article .read-later.rAlign span:after {
   float: left;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.6rem;
-  padding-left: 20px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -10657,12 +10659,22 @@ article .read-later.rAlign span:after {
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie .main-image .links a.movies {
-  background: url("../img/svg/arrow-left-white.svg") no-repeat left 20px;
-  background-size: 8px;
+  padding-left: 0px;
+}
+.single-movie .main-image .links a.movies .icon {
+  font-size: .35rem;
+  margin-right: 13px;
+  vertical-align: middle !important;
+  margin-bottom: 1px;
 }
 .single-movie .main-image .links a.programmation {
-  background: url("../img/svg/programmation-white.svg") left 18px no-repeat;
-  background-size: 13px;
+  padding-left: 0px;
+}
+.single-movie .main-image .links a.programmation .icon {
+  font-size: .6rem;
+  margin-right: 8px;
+  vertical-align: middle !important;
+  margin-bottom: 2px;
 }
 .single-movie .main-image .links a:last-child {
   float: right;
@@ -10733,6 +10745,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie #nav-movie .buttons {
   float: right;
+  position: relative;
 }
 .single-movie #nav-movie .buttons a {
   border-top: none;
@@ -10743,26 +10756,13 @@ article .read-later.rAlign span:after {
 }
 .single-movie #nav-movie .buttons a:hover {
   background-color: #fff;
+  color: #c8a461;
 }
-.single-movie #nav-movie .buttons a.facebook {
-  background: url("../img/svg/facebook-gold.svg") no-repeat center;
-  background-size: 19px;
-}
-.single-movie #nav-movie .buttons a.twitter {
-  background: url("../img/svg/twitter-gold.svg") no-repeat center;
-  background-size: 16px;
-}
-.single-movie #nav-movie .buttons a.email {
-  background: url("../img/svg/mail.svg") no-repeat center;
-  background-size: 16px;
-}
-.single-movie #nav-movie .buttons a.link {
-  background: url("../img/svg/link.svg") no-repeat center;
-  background-size: 16px;
-}
-.single-movie #nav-movie .buttons a.print {
-  background: url("../img/svg/print.svg") no-repeat center;
-  background-size: 16px;
+.single-movie #nav-movie .buttons .icon {
+  font-size: .8rem;
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
 .single-movie #nav-movie .buttons #share-box {
   top: -3px;
@@ -10779,6 +10779,11 @@ article .read-later.rAlign span:after {
   height: 80px;
   width: 80px;
   z-index: 3;
+}
+.single-movie .videos .video-player .picto .icon {
+  font-size: 1.8rem;
+  margin-top: 25px;
+  margin-left: 27px;
 }
 .single-movie .videos .video-player .info {
   height: 80px;
@@ -10827,10 +10832,6 @@ article .read-later.rAlign span:after {
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.single-movie .videos #slider-movie-videos .slide-video .info .picto {
-  background-image: url("../img/svg/video.svg");
-  background-size: 22px;
 }
 .single-movie .videos #slider-movie-videos .slide-video .info .category {
   font-size: 0.650rem;
@@ -18695,7 +18696,13 @@ input[type=submit] {
   padding-top: 35px;
 }
 .press-actu .item.communique .picto {
-  background: url("../img/press/picto-communique.png") no-repeat center;
+  background-color: #c8a461;
+  color: #000;
+}
+.press-actu .item.communique .picto .icon {
+  font-size: 1.2rem;
+  margin-left: 13px;
+  margin-top: 13px;
 }
 .press-actu .read-more {
   border: 1px solid #d9d9d9;
