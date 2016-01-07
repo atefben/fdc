@@ -480,8 +480,12 @@
 }
 
 .playlist .picto {
-  background-image: url('../img/svg/playlist.svg');
-  background-size: 16px;
+  color: $gold;
+  .icon{
+    font-size: .8rem;
+    margin-top: 16px;
+    margin-left: 15px;
+  }
 }
 
 .picto {

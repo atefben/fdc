@@ -269,6 +269,18 @@
     font-size: 0.625rem;
     margin: 0 0 65px 0;
     text-transform: uppercase;
+    @include transition(all 0.3s $smoothTransition);
+
+    &:hover{
+      opacity: .5;
+    }
+
+    .icon{
+      font-size: .4rem;
+      vertical-align: middle !important;
+      margin-bottom: 2px;
+      margin-right: 10px;
+    }
   }
   .channel {
     &:after {
@@ -285,10 +297,6 @@
       width: 100%;
       z-index: 2;
       @include transition(all 0.3s $smoothTransition);
-    }
-    .picto {
-      background-image: url('../img/svg/video.svg');
-      background-size: 22px;
     }
   }
   .owl-item.center .channel:after {
@@ -334,33 +342,24 @@
         z-index: 3;
         top:-4px;
         right: 1px;
+        .icon{
+          font-size: .8rem;
+          position: absolute;
+          top: 30px;
+          left: 30px;
+          }
          a{
           border-color: #2c2c2c;
-           border-top: none;
+          border-top: none;
+            &:hover{
+              background-color:  #141414;
+              color: $gold;
+              border-color: $gold;
+            }
          }
-         a.facebook {
-             background: url("../img/svg/facebook-gold.svg") no-repeat center;
-             background-size: 19px;
-         }
-         a.twitter {
-             background: url("../img/svg/twitter-gold.svg") no-repeat center;
-             background-size: 16px;
-         }
-          a.link {
-             background: url("../img/svg/link.svg") no-repeat center;
-             background-size: 16px;
-         }
-         a.email {
-             background: url("../img/svg/mail.svg") no-repeat center;
-             background-size: 16px;
-         }
-         a:hover{
-           border-color: $gold;
-
-         & + a {
-            border-left-color: $gold;
-           }
-         }
+         a:hover + .button {
+              border-left-color: $gold;
+          }
        }
      }
   }

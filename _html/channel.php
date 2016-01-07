@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <?php include('head.html'); ?> 
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -10,12 +10,11 @@
 
     <div id="main" class="webtv single-channel loading">
       <div class="container">
-        <a href="#" class="back">Retour aux chaînes</a>
+        <a href="#" class="back"><i class="icon icon_flecheGauche"></i> Retour aux chaînes</a>
       </div>
       <h2 class="title">Conférences de presse</h2>
-<!--      TODO TICKET-->
      <div class="small-container">
-        <div class="player"> 
+        <div class="player">
           <img src="img/webtv/playervideo.jpg" alt="">
         </div>
         <div class="infos-videos">
@@ -24,11 +23,13 @@
             <span class="time">18.05.2015  . 19h00</span>
             <p>Interview des réalisateurs des Courts Métrages en Compétition</p>
          </div>
-  <div class="buttons square">
-              <a href="#" class="button facebook"></a>
-              <a href="#" class="button twitter"></a>
-              <a href="#" class="button link"></a>
-              <a href="#" class="button email"></a>
+            <div class="buttons square">
+              <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
+              <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+              <a href="#" class="button link"><i class="icon icon_link"></i>
+</a>
+              <a href="#" class="button email"><i class="icon icon_lettre"></i>
+</a>
             </div>
        </div>
      </div>
@@ -38,7 +39,7 @@
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -53,7 +54,7 @@
             <img src="img/slider-channels/02.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -68,7 +69,7 @@
             <img src="img/slider-channels/03.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -83,7 +84,7 @@
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -98,7 +99,7 @@
             <img src="img/slider-channels/02.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -113,7 +114,7 @@
             <img src="img/slider-channels/03.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -133,7 +134,7 @@
             <img src="http://dummyimage.com/463x291/000/fff" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -148,7 +149,7 @@
             <img src="http://dummyimage.com/463x291/000/fff" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">

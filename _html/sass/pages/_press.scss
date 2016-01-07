@@ -1636,62 +1636,30 @@
       border-right: 0px solid #fff;
     }
       .create{
-//        border-color: $gold;
-        background-image: url('../img/press/svg/creer-gold.svg');
-        background-repeat: no-repeat;
-        background-position: 15px 12px;
-        background-size: 14px;
-//        position: relative;
+          color:$gold;
+          .icon{
+            margin-right: 10px;
+            font-size: 0.8rem;
+            vertical-align: middle !important;
+          }
       }
       .create:hover{
         background-color: #c8a461;
         border-color: #c8a461;
         color: #fff;
       }
-      .create:after {
-        background: url("../img/press/svg/creer-white.svg") no-repeat 15px 12px;
-        background-size: 14px;
-        content: '';
-        display: block;
-        height: 100%;
-        position: absolute;
-        width: 48%;
-        top: 1px;
-        left:1px;
-//        background-color: red;
-        opacity: 0;
-        visibility: hidden;
-        @include transition(all 0.6s $smoothTransition);
-      }
       .export{
-        background-image: url('../img/svg/telecharger-gold.svg');
-        background-repeat: no-repeat;
-        background-position: 15px 12px;
-        background-size: 14px;
+        color:$gold;
+        .icon{
+          margin-right: 10px;
+          font-size: 0.8rem;
+          vertical-align: middle !important;
+        }
       }
       .export:hover{
         background-color: #c8a461;
         border-color: #c8a461;
         color: #fff;
-      }
-      .export:after {
-        background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
-        background-size: 14px;
-        content: '';
-        display: block;
-        height: 100%;
-        position: absolute;
-        width: 51%;
-        top: 1px;
-        right: 1px;
-//        background-color: rgba(255, 0, 0, 0.44);
-        opacity: 0;
-        visibility: hidden;
-        @include transition(all 0.6s $smoothTransition);
-      }
-      .button:hover:after {
-          opacity: 1;
-          visibility: visible;
       }
     }
   }
