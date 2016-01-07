@@ -268,16 +268,15 @@ class GlobalController extends Controller
     }
 
     /**
-     * @Route("/search/{searchTerm}")
+     * @Route("/search/{searchTerm}", options={"expose"=true})
      * @Template("FDCEventBundle:Global:search.page.html.twig")
      * @param $searchTerm
+     * @param null $resultFilter
      * @return array
      */
-    public function searchSubmitAction( $searchTerm)
+    public function searchSubmitAction($searchTerm, $resultFilter=null)
     {
-
-        $searchResult = array(
-            'nbResult' => 548,
+        $result = array(
             'category' => array(
                 'actualite' => array(
                     array(
@@ -325,66 +324,123 @@ class GlobalController extends Controller
                         )
                     ),
                 ),
-                'artiste' => array(
+                'artist' => array(
                     array(
                         'fullName' => 'Vincent Cassel',
+                        'slug' => 'vincent-cassel',
                         'role' => 'Comédien',
                         'from' => 'France',
                         'image' => array(
-                            'path' => '//dummyimage.com/52x66/000/fff'
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
                         )
                     ),
                     array(
                         'fullName' => 'Vincent Cassel',
+                        'slug' => 'vincent-cassel',
                         'role' => 'Comédien',
                         'from' => 'France',
                         'image' => array(
-                            'path' => '//dummyimage.com/52x66/000/fff'
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
                         )
                     ),
                     array(
                         'fullName' => 'Vincent Cassel',
+                        'slug' => 'vincent-cassel',
                         'role' => 'Comédien',
                         'from' => 'France',
                         'image' => array(
-                            'path' => '//dummyimage.com/52x66/000/fff'
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
                         )
                     ),
                     array(
                         'fullName' => 'Vincent Cassel',
+                        'slug' => 'vincent-cassel',
                         'role' => 'Comédien',
                         'from' => 'France',
                         'image' => array(
-                            'path' => '//dummyimage.com/52x66/000/fff'
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
                         )
                     ),
                     array(
                         'fullName' => 'Vincent Cassel',
+                        'slug' => 'vincent-cassel',
                         'role' => 'Comédien',
                         'from' => 'France',
                         'image' => array(
-                            'path' => '//dummyimage.com/52x66/000/fff'
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
                         )
                     ),
                     array(
                         'fullName' => 'Vincent Cassel',
+                        'slug' => 'vincent-cassel',
                         'role' => 'Comédien',
                         'from' => 'France',
                         'image' => array(
-                            'path' => '//dummyimage.com/52x66/000/fff'
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
                         )
                     )
                 ),
                 'film' => array(
                     array(
                         'title' => 'La Haine',
-                        'date' => 2005,
+                        'slug' => 'la-haine',
+                        'releaseDate' => 2005,
                         'author' => array(
                             'fullName' => 'Matthieu Kassovitz',
+                            'slug' => 'matthieu-kassovitz',
                             'from' => 'France'
                         ),
                         'image' => array(
-                            'path' => 'http://dummyimage.com/52x66/000/fff'
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    ),
+                    array(
+                        'title' => 'La Haine',
+                        'slug' => 'la-haine',
+                        'releaseDate' => 2005,
+                        'author' => array(
+                            'fullName' => 'Matthieu Kassovitz',
+                            'slug' => 'matthieu-kassovitz',
+                            'from' => 'France'
+                        ),
+                        'image' => array(
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    ),
+                    array(
+                        'title' => 'La Haine',
+                        'slug' => 'la-haine',
+                        'releaseDate' => 2005,
+                        'author' => array(
+                            'fullName' => 'Matthieu Kassovitz',
+                            'slug' => 'matthieu-kassovitz',
+                            'from' => 'France'
+                        ),
+                        'image' => array(
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
+                        )
+                    ),
+                    array(
+                        'title' => 'La Haine',
+                        'slug' => 'la-haine',
+                        'releaseDate' => 2005,
+                        'author' => array(
+                            'fullName' => 'Matthieu Kassovitz',
+                            'slug' => 'matthieu-kassovitz',
+                            'from' => 'France'
+                        ),
+                        'image' => array(
+                            'path' => '//dummyimage.com/136x185/000/fff',
+                            'min' => '//dummyimage.com/52x66/000/fff'
                         )
                     )
                 ),
@@ -414,6 +470,7 @@ class GlobalController extends Controller
                 ),
                 'media' => array(
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -424,6 +481,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -434,6 +492,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -444,6 +503,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -452,10 +512,11 @@ class GlobalController extends Controller
                         'image' => array(
                             'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                         )
-                    )
+                    ),
                 ),
                 'event' => array(
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -466,6 +527,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -476,6 +538,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -486,6 +549,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -494,10 +558,11 @@ class GlobalController extends Controller
                         'image' => array(
                             'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                         )
-                    )
+                    ),
                 ),
                 'participate' => array(
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -508,6 +573,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -518,6 +584,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -528,6 +595,7 @@ class GlobalController extends Controller
                         )
                     ),
                     array(
+                        'id' => 0,
                         'title' => 'Stéphane Brizé interroge la loi du marché',
                         'type'  => 'article',
                         'slug'  => 'stephane-brize-interroge',
@@ -536,14 +604,57 @@ class GlobalController extends Controller
                         'image' => array(
                             'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                         )
-                    )
+                    ),
                 ),
             )
+        );
 
+        if ($resultFilter == null) {
+            $searchResult = $result;
+        }
+        else {
+            $searchResult = $result[$resultFilter];
+        }
+
+        $searchFilters = array(
+            'date' => array(
+                array(
+                    'createdAt' => new \DateTime(),
+                )
+            ),
+            'format' => array(
+                array(
+                    'name' => 'Photo',
+                    'slug' => 'photo',
+                ),
+                array(
+                    'name' => 'Vidéo',
+                    'slug' => 'video',
+                ),
+                array(
+                    'name' => 'Audio',
+                    'slug' => 'audio',
+                ),
+                array(
+                    'name' => 'Article',
+                    'slug' => 'article',
+                )
+            ),
+            'theme' => array(
+                array(
+                    'name' => 'Conférence de presse',
+                    'slug' => 'press',
+                ),
+                array(
+                    'name' => 'Montée des marches',
+                    'slug' => 'steps',
+                )
+            )
         );
 
         return array(
             'searchResult' => $searchResult,
+            'searchFilters' => $searchFilters,
             'searchTerm' => $searchTerm
         );
     }
