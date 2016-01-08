@@ -33,9 +33,7 @@ class NewsController extends Controller
 
         $lockedContentForm = $this->createForm( new LockedContentType($translator) );
 
-        if ( $request->isMethod( 'POST' ) ) {
-
-        }
+        $popinLockedForm = $this->createForm( new LockedContentType($translator));
 
         $homeNews = array(
             array(
@@ -297,7 +295,7 @@ class NewsController extends Controller
             )
         );
 
-        $downloads = array(
+        $festivalDownloads = array(
             array(
                 'format' => 'portrait',
                 'resolution' => array(
@@ -335,15 +333,107 @@ class NewsController extends Controller
             )
         );
 
+        $contact = array(
+            'section' => array(
+                array(
+                    'title' => 'Festival de Cannes - Service de Presse',
+                    'contacts' => array(
+                        array(
+                            'content' => '3, rue Amélie F-75007 Paris<br>Tel : +33 (0)1 53 59 61 85<br>Fax : +33 (0)1 53 59 61 84'
+                        ),
+                        array(
+                            'content' => '<strong>Presse écrite et digitale - Agences de Presse</strong><br><a class="mail" href="mailto:presse@festival-cannes.fr">presse@festival-cannes.fr</a>'
+                        ),
+                        array(
+                            'content' => '<strong>Médias Web</strong><br><a class="mail" href="mailto:webmedia@festival-cannes.fr">webmedia@festival-cannes.fr</a>'
+                        )
+                    )
+                ),
+                array(
+                    'title' => 'Festival de Cannes - Service de Presse',
+                    'contacts' => array(
+                        array(
+                            'content' => '3, rue Amélie F-75007 Paris<br>Tel : +33 (0)1 53 59 61 85<br>Fax : +33 (0)1 53 59 61 84'
+                        ),
+                        array(
+                            'content' => '<strong>Presse écrite et digitale - Agences de Presse</strong><br><a class="mail" href="mailto:presse@festival-cannes.fr">presse@festival-cannes.fr</a>'
+                        ),
+                        array(
+                            'content' => '<strong>Médias Web</strong><br><a class="mail" href="mailto:webmedia@festival-cannes.fr">webmedia@festival-cannes.fr</a>'
+                        )
+                    )
+                ),
+                array(
+                    'title' => 'Festival de Cannes - Service de Presse',
+                    'contacts' => array(
+                        array(
+                            'content' => '3, rue Amélie F-75007 Paris<br>Tel : +33 (0)1 53 59 61 85<br>Fax : +33 (0)1 53 59 61 84'
+                        ),
+                        array(
+                            'content' => '<strong>Presse écrite et digitale - Agences de Presse</strong><br><a class="mail" href="mailto:presse@festival-cannes.fr">presse@festival-cannes.fr</a>'
+                        ),
+                        array(
+                            'content' => '<strong>Médias Web</strong><br><a class="mail" href="mailto:webmedia@festival-cannes.fr">webmedia@festival-cannes.fr</a>'
+                        )
+                    )
+                )
+            )
+        );
+
+        $movieDownload = array(
+            'description' => 'Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et
+                                  extraits de films fournis par les productions. Ces contenus sont mis à jour tout au
+                                  long du Festival. Ce service est fourni pour faciliter le traitement des films sur
+                                  vos propres médias. Nous vous prions instamment de ne pas les publier sur les réseaux
+                                  sociaux ou les portails de partage de type Youtube ou Dailymotion sans l’accord des
+                                  ayants-droits du film.<br><strong>Chaque fois que possible, les fichiers mis à disposition
+                                  seront en HD 1080p. Le Festival reste tributaire de la qualité du matériel qui lui est
+                                  adressé. 1 à 3 fichiers sont mis à disposition en fonction du fichier source reçu :</strong>',
+            'movie' => array(
+                'title' => 'Il racconto dei racconti',
+                'author' => array(
+                    'fullName' => 'Matteo GARRONE'
+                ),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/media/img6.jpg'
+                ),
+                'trailers' => array(
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    )
+                )
+            ),
+        );
+
         return array(
             'lockedForm' => $lockedContentForm->createView(),
+            'popinLockedForm' => $popinLockedForm->createView(),
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $schedulingDays,
             'schedulingEvents' => $events,
             'pressMedias' => $medias,
-            'pressDownloads' => $downloads,
-            'pressStats' => $stats
+            'pressFestivalDownloads' => $festivalDownloads,
+            'pressMovieDownloads' => $movieDownload,
+            'pressStats' => $stats,
+            'pressContact' => $contact
         );
     }
 
