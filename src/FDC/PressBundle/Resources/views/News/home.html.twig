@@ -1,0 +1,366 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="press press-home loading calendar-open lock">
+
+        {% include 'FDCPressBundle:News:components/headerPress.html.twig' %}
+
+        {% include 'FDCPressBundle:News:components/lockedContents.html.twig' %}
+
+
+
+        <div class="wrapper">
+            <div id='calendar'>
+                <div id="calendar-wrapper">
+                    <h2 class="title-calendar">{{ 'press.home.title.monagenda'|trans }}</h2>
+                    <div id="mycalendar" class="side"></div>
+
+                    <p class="link"><a href="calendar.php">
+                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                            <img src="{{ asset_url }}" alt="{{ 'press.home.btn.toutmonagenda'|trans }}" />
+                            {% endimage %}
+                            {{ 'press.home.btn.toutmonagenda'|trans }}
+                        </a>
+                    </p>
+
+                    <div class="drag">
+                        <h2>
+                            {{ 'press.home.title.preparezvotresejour'|trans }}
+                        </h2>
+                        {% image '@FDCEventBundle/Resources/public/img/svg/main-drag.svg' %}
+                        <img width="43" src="{{ asset_url }}" alt="{{ 'press.home.btn.toutmonagenda'|trans }}" />
+                        {% endimage %}
+                        <p>
+                            <strong>{{ 'press.home.label.cliquezdeposez'|trans }}</strong>
+                            {{ 'press.home.text.lesevenementsdansvotreagenda'|trans }}
+                        </p>
+                        <a href="#" id="okDrag">{{ 'press.home.btn.ok'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="communiques">
+                <div class="chap">
+                    <h3 class="title-press">{{ 'press.agenda.title.communiqueetinfos'|trans }}</h3>
+                    <p class="link">
+                        <a href="press-actu.php">
+                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                            <img src="{{ asset_url }}" alt="{{ 'press.home.btn.touslescommuniquesetinfos'|trans }}" />
+                            {% endimage %}
+                            {{ 'press.home.btn.touslescommuniquesetinfos'|trans }}
+                        </a>
+                    </p>
+                </div>
+                <div class="grid-container">
+                    <div class="grid-wrapper">
+                        {% for article in homeNews %}
+                            {% include 'FDCPressBundle:News:widgets/article.html.twig' %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="programmation">
+                <div class="chap">
+                    <h3 class="title-press">
+                        {{ 'press.home.title.programmedu'|trans }}
+                        <span id="dateProgram">{{ "now"|localizeddate('long', 'none', app.request.locale)  }}</span>
+                    </h3>
+                    <p class="link">
+                        <a href="programmation.php">
+                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                            <img src="{{ asset_url }}" alt="{{ 'press.home.btn.toutelaprogrammation'|trans }}" />
+                            {% endimage %}
+                            {{ 'press.home.btn.toutelaprogrammation'|trans }}
+                        </a>
+                    </p>
+                </div>
+                <div id="calendar-programmation">
+                    <div id="timeline">
+                        {% for day in schedulingDays %}
+                            <a href="#" class="" data-date="{{ day.date|date('Y-m-d') }}">{{ day.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}<span class="day">{{ day.date|date('d') }}</span></a>
+                        {% endfor %}
+                    </div>
+                    <div class="calendar">
+                        <div class="timeCol">
+                            {% set currentHour = "now"|date('H') %}
+                            <div class="empty"></div>
+                            <div class="time">{{ currentHour }}</div>
+                            <div class="time">{{ currentHour + 1}}</div>
+                            <div class="time">{{ currentHour + 2}}</div>
+                            <div class="time">{{ currentHour + 3}}</div>
+                            <div class="time">{{ currentHour + 4}}</div>
+                            <div class="time">{{ currentHour + 5}}</div>
+                        </div>
+                        <div class="venues">
+                            <a href="#" class="nav prev"></a>
+                            <a href="#" class="nav next"></a>
+                            <div class="v-wrapper">
+                                <div class="venue">
+                                    <div class="v-head">{{ 'press.home.salle.grandtheatrelumière'|trans }}</div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.grandTheatre is defined %}
+                                            {% for event in schedulingEvents.place.grandTheatre.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="venue">
+                                    <div class="v-head">{{ 'press.home.salle.salledebussy'|trans }}</div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleDebussy is defined %}
+                                            {% for event in schedulingEvents.place.salleDebussy.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="venue">
+                                    <div class="v-head">{{ 'press.home.salle.salledu60e'|trans }}</div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salle60 is defined %}
+                                            {% for event in schedulingEvents.place.salle60.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="venue">
+                                    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleBunuel is defined %}
+                                            {% for event in schedulingEvents.place.salleBunuel.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="venue">
+                                    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleBunuel is defined %}
+                                            {% for event in schedulingEvents.place.salleBunuel.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="venue">
+                                    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleBunuel is defined %}
+                                            {% for event in schedulingEvents.place.salleBunuel.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="venue">
+                                    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
+                                    <div class="v-container">
+                                        {% if schedulingEvents.place.salleBunuel is defined %}
+                                            {% for event in schedulingEvents.place.salleBunuel.events %}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mediatheque">
+                <div class="chap">
+                    <h3 class="title-press">{{ 'press.home.title.mediatheque'|trans }}</h3>
+                    <p class="link">
+                        <a href="press-media.php">
+                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                            <img src="{{ asset_url }}" alt="{{ 'press.home.btn.toutelamediatheque'|trans }}" />
+                            {% endimage %}
+                            {{ 'press.home.btn.toutelamediatheque'|trans }}
+                        </a>
+                    </p>
+                </div>
+                <div class="table">
+                    {% for media in pressMedias %}
+                        <div class="line">
+                            <div class="container">
+                                <div class="info">
+                                    <img src="{{ media.image.path }}" alt="" />
+                                    <div class="txt">
+                                        <div class="vCenter">
+                                            <div class="vCenterKid">
+                                                <p>{{ media.title }}
+                                                    <a href="#" class="director">{{ media.author.fullName }}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media folder">
+                                    <span>{{ 'press.home.label.dossiersdepresse'|trans }}</span> ({{ media.folder }})
+                                </div>
+                                <div class="media trailer"><span>{{ 'press.home.label.bandeannonces'|trans }}</span> ({{ media.trailer }})</div>
+                                <div class="media photo"><span>{{ 'press.home.label.photos'|trans }}</span> ({{ media.photo }})</div>
+                                <a class="button" href="press-media.php">
+                                    {{ 'press.home.btn.decouvrir'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="download">
+                <div class="chap">
+                    <h3 class="title-press">{{ 'press.home.title.atelecharger'|trans }}</h3>
+                    <p class="link">
+                        <a href="press-telecharger.php">
+                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                            <img src="{{ asset_url }}" alt="{{ 'press.home.btn.touslestelechargements'|trans }}" />
+                            {% endimage %}
+                            {{ 'press.home.btn.touslestelechargements'|trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="affiche">
+                <div class="container">
+                    <h3 class="title-press">{{ 'press.home.title.afficheofficielle'|trans }}</h3>
+                    {% for download in pressDownloads %}
+                            <div class="portrait">
+                                <img src="{{ asset('bundles/fdcevent/img/press/press-' ~ download.format ~ '.jpg') }}" alt="" />
+                                <span class="caption">{{ download.caption }}</span>
+                                <p>Format {{ download.format }}</p>
+                                <div class="buttons">
+                                    {% for resolution in download.resolution %}
+                                        <a href="#" class="button">{{ resolution.size }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="section participate">
+                <div class="img"></div>
+                <div class="txt vCenter">
+                    <div class="vCenterKid">
+                        <h2 class="title">{{ 'press.home.title.participer'|trans }}</h2>
+                        <p class="link">
+                            <a href="#">
+                                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                                <img src="{{ asset_url }}" alt="{{ 'press.home.btn.acceder'|trans }}" />
+                                {% endimage %}
+                                {{ 'press.home.btn.acceder'|trans }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="section accrediter">
+                <div class="img"></div>
+                <div class="txt vCenter">
+                    <div class="vCenterKid">
+                        <h2 class="title">{{ 'press.home.title.saccrediter'|trans }}</h2>
+                        <p class="link">
+                            <a href="#">
+                                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                                <img src="{{ asset_url }}" alt="{{ 'press.home.btn.acceder'|trans }}" />
+                                {% endimage %}
+                                {{ 'press.home.btn.acceder'|trans }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="chap">
+                    <h3 class="title-press">{{ 'press.home.title.statistiques'|trans }}</h3>
+                </div>
+                <div class="container">
+                    <h3>{{ pressStats.title }}</h3>
+                    <p>
+                        {{ pressStats.description }}
+                    </p>
+                    <p>
+                        <img src="{{ pressStats.image.path }}" alt="" />
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-press">
+            <h2 class="title">{{ 'press.home.title.contacteznous'|trans }}</h2>
+            <div class="container">
+                <div class="col">
+                    <h3>Festival de Cannes - Service de Presse</h3>
+                    <p>3, rue Amélie F-75007 Paris<br />Tel : +33 (0)1 53 59 61 85<br />Fax : +33 (0)1 53 59 61 84</p>
+                    <p><strong>Presse écrite et digitale - Agences de Presse</strong><br /><a class="mail" href="mailto:presse@festival-cannes.fr">presse@festival-cannes.fr</a></p>
+                    <p><strong>Médias Web</strong><br /><a class="mail" href="mailto:webmedia@festival-cannes.fr">webmedia@festival-cannes.fr</a></p>
+                </div>
+                <div class="col">
+                    <h3>Service de Presse Audiovisuelle</h3>
+                    <p>Tel : +33 (0)1 53 59 61 88 / 61 92<br />Fax : +33 (0)1 53 59 61 10</p>
+                    <p class="pressaudio"><strong>Télévision - Radio<br />Média Web (Image & son)<br />Agence de Presse Audiovisuelle & Vidéo<br />Agence Photo - Photographe :</strong><br /><a class="mail" href="mailto:presseaudio@festival-cannes.fr">presseaudio@festival-cannes.fr</a></p>
+                </div>
+                <div class="col">
+                    <h3>Vous avez une demande à formuler ou souhaitez faire une suggestion ?</h3>
+                    <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
+                    <a href="contact.php" class="button">formulaire de contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popin-press" class='popin'>
+        <div class="container-popin">
+            <strong>Contenu verouillé</strong>
+            <p>Ce contenu est exclusivement réservé à la presse,
+                veuillez renseigner votre mot de passe.</p>
+            <form action="#">
+                <input type="text" placeholder="Mot de passe" />
+                <input type="submit" value="valider" />
+            </form>
+        </div>
+    </div>    <div id="popin-download-press" class='popin'>
+    <div class="container-popin">
+        <div class="contain-info-item">
+            <img src="img/press/media/img6.jpg" alt="image">
+            <div class="contain-text vCenter">
+                <div class="vCenterKid">
+                    <h3>il racconto deI racconti</h3>
+                    <span class="name">Matteo GARRONE</span>
+                </div>
+            </div>
+        </div>
+
+        <h4>Bandes Annonces (4)</h4>
+        <p>Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et extraits de films fournis par les productions. Ces contenus sont mis à jour tout au long du Festival. Ce service est fourni pour faciliter le traitement des films sur vos propres médias. Nous vous prions instamment de ne pas les publier sur les réseaux sociaux ou les portails de partage de type Youtube ou Dailymotion sans l’accord des ayants-droits du film.</p>
+        <strong>Chaque fois que possible, les fichiers mis à disposition seront en HD 1080p. Le Festival reste tributaire de la qualité du matériel qui lui est adressé. 1 à 3 fichiers sont mis à disposition en fonction du fichier source reçu :</strong>
+        <table>
+            <tbody>
+            <tr>
+                <td>Lorem ipsum</td>
+                <td>lorem ipsum</td>
+                <td><a href="#" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>Télécharger</a></td>
+            </tr>
+            <tr>
+                <td>Lorem ipsum</td>
+                <td>lorem ipsum</td>
+                <td><a href="#" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>Télécharger</a></td>
+            </tr>
+            <tr>
+                <td>Lorem ipsum</td>
+                <td>lorem ipsum</td>
+                <td><a href="#" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>Télécharger</a></td>
+            </tr>
+            <tr>
+                <td>Lorem ipsum</td>
+                <td>lorem ipsum</td>
+                <td><a href="#" class="button"><img src="img/press/svg/telecharger.svg" alt="" class='svg'>Télécharger</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

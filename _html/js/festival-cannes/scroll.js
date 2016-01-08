@@ -170,7 +170,7 @@ $(document).ready(function() {
     // Render the path of hashtag graph
     if($('#graph').length) {
       if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
-        makePath(points);
+        makePath(GLOBALS.socialWall.points);
       }
     }
 

@@ -1,4 +1,4 @@
-<script> //todo dev//
+<script>
 var GLOBALS = {
   "locale" : "fr",
   "defaultDate" : "2016-05-12",
@@ -58,6 +58,10 @@ var GLOBALS = {
       "fr" : "H [H]",
       "default" : "h A"
     }
+  },
+  "socialWall": {
+    "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
+    "heightGraph" : 200
   }
 }
 </script>
