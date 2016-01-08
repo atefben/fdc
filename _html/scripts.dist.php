@@ -1,4 +1,4 @@
-<script> //todo dev// 
+<script>
 var GLOBALS = {
   "locale" : "fr",
   "defaultDate" : "2016-05-12",
@@ -30,6 +30,8 @@ var GLOBALS = {
     "popin" : {
       "error" : "valide",
       "empty" : "renseignée",
+      "valid" : "Votre email a bien été envoyé !",
+      "copy"  :  "lien copié ! "
     },
     "googleMap" : {
       "title" : "Festival de Cannes"
@@ -47,9 +49,19 @@ var GLOBALS = {
     }
   },
   "player": {
-  "file" : "./files/mov_bbb.mp4",
-  "image" : "//dummyimage.com/960x540/c8a461/000.png",
-  "title" : "Video 1"
+    "file" : "./files/mov_bbb.mp4",
+    "image" : "//dummyimage.com/960x540/c8a461/000.png",
+    "title" : "Video 1"
+  },
+  "calendar": {
+    "labelFormat": {
+      "fr" : "H [H]",
+      "default" : "h A"
+    }
+  },
+  "socialWall": {
+    "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
+    "heightGraph" : 200
   }
 }
 </script>
