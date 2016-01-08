@@ -13268,11 +13268,14 @@ input[type=submit] {
   color: #fff;
   text-transform: uppercase;
   font-size: 9.6px;
-  background: url("../img/svg/arrow-left-white.svg") no-repeat left 3px;
-  background-size: 9px;
   font-family: "Camphor W01 Bold";
   letter-spacing: 0.1em;
-  padding-left: 20px;
+}
+.webtv-ba-video .title-container a .icon {
+  margin-right: 10px;
+  font-size: .45rem;
+  vertical-align: middle !important;
+  margin-bottom: 2px;
 }
 .webtv-ba-video .title-container h1 {
   margin: 10px 0 0 0;
@@ -13443,38 +13446,26 @@ input[type=submit] {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.webtv-ba-video .informations-video .share a.facebook {
-  background: url("../img/svg/facebook-gold.svg") no-repeat center;
-  background-size: 19px;
-}
-.webtv-ba-video .informations-video .share a.twitter {
-  background: url("../img/svg/twitter-gold.svg") no-repeat center;
-  background-size: 16px;
-}
-.webtv-ba-video .informations-video .share a.email {
-  background: url("../img/svg/mail.svg") no-repeat center;
-  background-size: 16px;
-}
-.webtv-ba-video .informations-video .share a.link {
-  background: url("../img/svg/link.svg") no-repeat center;
-  background-size: 16px;
-}
-.webtv-ba-video .informations-video .share a.print {
-  background: url("../img/svg/print.svg") no-repeat center;
-  background-size: 16px;
-}
 .webtv-ba-video .informations-video .share .button:hover {
   border-color: #c8a461;
+  background-color: #141414;
+  color: #c8a461;
 }
 .webtv-ba-video .informations-video .share .button:hover + .button {
   border-left: 1px solid #c8a461;
 }
+.webtv-ba-video .informations-video .share .icon {
+  font-size: .8rem;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
 .webtv-ba-video #slider-trailer {
   padding: 10px 0px 72px 0;
 }
-.webtv-ba-video #content-trailers #slider-trailer .picto {
-  background-image: url("../img/svg/video.svg");
-  background-size: 22px;
+.webtv-ba-video #content-trailers #slider-trailer .picto .icon {
+  margin-top: 15px;
+  margin-left: 15px;
 }
 .webtv-ba-video #content-trailers #slider-trailer .info span {
   color: #ffffff;
@@ -13564,10 +13555,11 @@ input[type=submit] {
   font-size: 0.75rem;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
-.webtv-ba-video .bandeau-list-img .bandeau-lien .svg-arrow {
-  width: 12px;
-  vertical-align: baseline;
-  padding-right: 3px;
+.webtv-ba-video .bandeau-list-img .bandeau-lien .icon {
+  font-size: .5rem;
+  margin-bottom: 2px;
+  vertical-align: middle !important;
+  margin-right: 6px;
 }
 @media screen and (min-width: 1920px) {
   .webtv-ba-video .bandeau-list-img {
