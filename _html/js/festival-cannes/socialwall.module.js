@@ -1,16 +1,14 @@
 // selection of points for the graph
-var points = [50,60,50,45,70,50,100,120,70,80,90,70],
-    heightGraph = 200,
-    posts = [],
+var posts = [],
     s = null;
 
 
 function convertToPath(points){
-  var path = 'M4,' + (heightGraph - points[0]);
+  var path = 'M4,' + (GLOBALS.socialWall.heightGraph - points[0]);
   
   for (var i=0; i<points.length; i++){
     var x = i*80 + 4;
-    var y = -points[i]+heightGraph;
+    var y = -points[i]+GLOBALS.socialWall.heightGraph;
     if (i===0){
       path += 'L'+x+','+y+' ';
     }
@@ -57,7 +55,7 @@ function makePath(data){
   setTimeout(function() {
     for (var i = 0, length = data.length; i < length; i++) {
       var xPos = i*80 + 4;
-      var yPos = heightGraph - data[i];
+      var yPos = GLOBALS.socialWall.heightGraph - data[i];
       
       var circle = s.circle(xPos, yPos, radius);
 
@@ -109,8 +107,8 @@ function makePath(data){
 
  function makeGrid(){
   
-  var dataLength = points.length;
-  var maxValue = heightGraph;
+  var dataLength = GLOBALS.socialWall.points.length;
+  var maxValue = GLOBALS.socialWall.heightGraph;
   var minValue = 35;
 
   s = Snap('#graphSVG');
