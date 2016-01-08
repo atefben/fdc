@@ -2,7 +2,7 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press press-programmation loading calendar-open lock events-site">
+    <div id="main" class="press press-programmation loading calendar-open events-site">
         <div class="header-press">
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
@@ -11,17 +11,6 @@
                     <a href="#" class="button list">{{ 'programmation.btn.telechargerformatpdf'|trans }}</a>
                     <a href="#" class="button list">{{ 'programmation.btn.telechargerformatics'|trans }}</a>
                 </div>
-            </div>
-        </div>
-        <div class="locked">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <h3 class="title-press">{{ 'programmation.title.contenusverrouilles'|trans }}</h3>
-                    <p>{{ 'programmation.text.journalisteveuillezvousrendredanslespacepresse'|trans }}</p>
-                </div>
-            </div>
-            <div class="buttons">
-                <a href="{{ path('fdc_press_news_home') }}">{{ 'programmation.btn.allerdanslespacepresse'|trans }}</a>
             </div>
         </div>
         <div class="wrapper">

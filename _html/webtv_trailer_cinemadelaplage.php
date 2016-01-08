@@ -13,7 +13,7 @@
 				<div id="live" style="background-image:url(http://dummyimage.com/1920x450/cfcfcf/fff&text=+)">
 					<div class="vCenter">
 						<div class="vCenterKid">
-							<a href="#" class="play"></a>
+							<a href="#" class="play"><i class="icon icon_video"></i></a>
 							<h2>Les bandes annonces et extraits</h2>
 						</div>
 					</div>
@@ -34,7 +34,7 @@
 			</div>
     </div>
 
-   
+
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

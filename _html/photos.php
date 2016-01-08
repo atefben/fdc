@@ -14,7 +14,7 @@
         <div id="theme" class="filter">
           <span class="label">Dates :</span>
           <span class="select">
-            <span class="active" data-filter="all">Toutes</span>
+            <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
             <span data-filter="date">Date 1</span>
             <span data-filter="date1">Date 2</span>
           </span>
@@ -22,7 +22,7 @@
         <div id="format" class="filter">
           <span class="label">Thèmes :</span>
           <span class="select">
-            <span class="active" data-filter="all">Tous</span>
+            <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
             <span data-filter="theme1">Thème 1</span>
             <span data-filter="theme2">Thème 2</span>
           </span>
@@ -33,7 +33,7 @@
         <div class="item theme1 date theme portrait shadow-bottom photo">
           <a id="photo1" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -46,7 +46,7 @@
         <div class="item theme2 date1 theme shadow-bottom photo">
           <a id="photo2" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -59,7 +59,7 @@
         <div class="item theme2 date2 date theme shadow-bottom photo">
           <a id="photo3" class="ajax chocolat-image" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -72,7 +72,7 @@
         <div class="item theme2 date theme portrait shadow-bottom photo">
           <a id="photo4" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -85,7 +85,7 @@
         <div class="item theme2 theme shadow-bottom photo">
           <a id="photo5" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -98,7 +98,7 @@
         <div class="item theme2 date1 theme shadow-bottom photo">
           <a id="photo6" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -111,7 +111,7 @@
         <div class="item theme1 date2 theme shadow-bottom photo">
           <a id="photo7" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -124,7 +124,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a id="photo8" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -137,7 +137,7 @@
         <div class="item theme2 date1 theme portrait shadow-bottom photo">
           <a id="photo9" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -150,7 +150,7 @@
         <div class="item theme2 date2 theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -163,7 +163,7 @@
         <div class="item theme2 date1 theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -176,7 +176,7 @@
         <div class="item theme1 date2 theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -189,7 +189,7 @@
         <div class="item theme2 date1 theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -202,7 +202,7 @@
         <div class="item theme2 date2 theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -215,7 +215,7 @@
         <div class="item theme1 date1 date theme portrait shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -228,7 +228,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -241,7 +241,7 @@
         <div class="item theme2 date1 theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -254,7 +254,7 @@
         <div class="item theme2 theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -267,7 +267,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -280,7 +280,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -293,7 +293,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -306,7 +306,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -319,7 +319,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -332,7 +332,7 @@
         <div class="item theme2 date2 theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -345,7 +345,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -358,7 +358,7 @@
         <div class="item theme2 date theme shadow-bottom photo">
           <a class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">

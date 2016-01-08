@@ -144,7 +144,7 @@
         <div class="bandeau-list push-footer vCenter">
           <div class="bandeau-list-img  bandeau-list-footer vCenterKid" style="background-image:url(http://dummyimage.com/1920x450/9e6844/fff&text=+);">
                <h2 class="title title-list-header">Rétrospective</h2>
-               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"><i class="icon icon_fleche-right"></i> Découvrir la rubrique</a>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // =========================
@@ -27,16 +27,17 @@
           font-family: $CamphorBold;
           padding: 15px 22px;
           cursor: pointer;
+          position: relative;
           @include transition(padding 0.3s $smoothTransition);
         }
         .active{
           background-color: #c8a461;
           color: #fff;
-          background-image: url('../img/svg/participate-white.svg');
-          background-repeat: no-repeat;
-          background-size: 19px;
           padding-left: 43px;
-          background-position: 16px;
+          .icon{
+            position: absolute;
+            left: 19px;
+          }
         }
         li:hover{
           background-color: #e8ce9e;

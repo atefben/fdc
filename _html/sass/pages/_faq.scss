@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // =========================
@@ -92,29 +92,19 @@
         font-family: $CamphorBold;
         text-align: left;
       }
-      .fa-plus {
-        background-image: url(../img/participate/case-plus.svg); 
-        background-size: 45px;
-        background-position: 1px;
-        background-repeat: no-repeat;
-        width: 51px;
-        height: 51px;
-        display: block;
+      .icon_case-plus {
         position: absolute;
-        top: 0px;
-        right: -8px;
+        top: 4px;
+        right: -4px;
+        font-size: 2.8rem;
+        color: #E0E0E0;
       }
-      .fa-minus{
-        background-image: url(../img/participate/minus.svg);
-        background-size: 27px;
-        background-position: 14px 19px;
-        background-repeat: no-repeat;
-        display: block;
-        width: 25px;
-        height: 51px;
+      .icon_moins{
         position: absolute;
-        top: -12px;
-        right: 13px;
+        top: 21px;
+        right: 12px;
+        font-size: 0.7rem;
+        color: #E0E0E0;
       }
       .faq-description {
         width: 660px;

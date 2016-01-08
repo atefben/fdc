@@ -37,10 +37,10 @@
   <div id="logo-wrapper">
     <div class="container">
       <div id="logo">
-        <a href="/"><img src="img/svg/palme.svg" alt="Festival de Cannes" class="palm" /></a>
-        <h1><a href="/"><img width="200" src="img/svg/logo.svg" alt="Festival de Cannes" /></a></h1>
+        <a href="/"><img src="img/palme.svg" alt="Festival de Cannes" class="palm" /></a>
+        <h1><a href="/"><img width="200" src="img/logo.svg" alt="Festival de Cannes" /></a></h1>
         <h2><a href="/">11-22 Mai 2016</a></h2>
-        <p class="stick"><a href="/"><img width="178" src="img/svg/logo.svg" alt="Festival de Cannes" /></a></p>
+        <p class="stick"><a href="/"><img width="178" src="img/logo.svg" alt="Festival de Cannes" /></a></p>
       </div>
       <div id="partners">
         <a href="//www.chopard.fr/" target="_blank"><img width="84" src="img/header/Logo_Chopard.svg" alt="Chopard" class="chopard" /></a>
@@ -51,7 +51,7 @@
         <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank"><img width="57" src="img/header/mastercard.png" alt="Mastercard" class="mastercard" /></a>
       </div>
       <div id="search">
-        <a href="#" class="search"></a>
+        <a href="#" class="search"><i class="icon icon_recherche"></i></a>
       </div>
       <div id="sticky-user">
         <ul class="user-nav">
@@ -103,9 +103,9 @@
             <a href="evenements.php">Les évènements</a>
           </li>
         </ul>
-        <ul class="user">
+        <ul class="user"> <!-- todo -->
           <li  class="programmation-wrapper">
-            <a href="programmation-evenementiel.php" class="programmation">Programmation</a>
+            <a href="programmation-evenementiel.php" class="programmation"><i class="icon icon_programmation"></i> Programmation</a>
             <ul>
               <li><a href="programmation-evenementiel.php">Programmation</a></li>
               <li><a href="calendar-evenementiel.php">Agenda</a></li>
@@ -113,7 +113,7 @@
             </ul>
           </li>
           <li class="participate-wrapper">
-            <a href="participer_sejour.php" class="participate">Participer</a>
+            <a href="participer_sejour.php" class="participate"><i class="icon icon_participer"></i>Participer</a>
             <ul>
               <li><a href="participer_sejour.php">Préparer son séjour</a></li>
               <li><a href="participer_modeemploi.php">Festival mode d'emploi</a></li>
@@ -123,7 +123,7 @@
             </ul>
           </li>
           <li>
-            <a href="press.php" class="press">Espace presse</a>
+            <a href="press.php" class="press"><i class="icon icon_espace-presse"></i>Espace presse</a>
           </li>
         </ul>
       </nav>
@@ -161,7 +161,7 @@
     <div class="container">
       <form action="search.php">
         <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." autocomplete="off" />
-        <input id="submitSearch" type="submit" value="" />
+        <i class="icon icon_recherche"></i><input id="submitSearch" type="submit" value="" /> <!-- todo -->
       </form>
       <ul id="suggest"></ul>
     </div>

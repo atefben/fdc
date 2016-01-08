@@ -14,7 +14,7 @@
 <div id="main" class="list-article participate manual">
   <div class="bandeau-list vCenter">
     <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/manual.jpg)">
-      <h2 class="title title-list-header"> <img src="img/svg/palme-white.svg" alt="" class="logo palm">  <br> Festival mode d'emploi</h2>
+      <h2 class="title title-list-header"> <i class="icon icon_palme"></i> <br> Festival mode d'emploi</h2>
     </div>
   </div>
   <div class="title-bandeau">
@@ -24,8 +24,9 @@
   </div>
   <section class="content-manual">
     <div class="contain-section participate-active">
-      <h3 class="title-section"><img src="img/participate/horaires.svg" alt="" class="logo-title svg">Horaires</h3><i class="fa fa-minus"></i>
-      
+      <h3 class="title-section"><i class="icon icon_horaires"></i>Horaires</h3><i class="icon icon_moins accordion"></i>
+
+
       <div class="descrip-section">
         <p>
           Autour du Palais des Festivals et du Riviera, la zone Festival s’étend du Village international Pantiero au Village international Riviera jusqu’au Cinéma de la Plage.  La zone Festival est accessible aux badges professionnels par toutes les entrées, de 9h à 18h30.
@@ -35,7 +36,7 @@
         <div class="contain-img">
           <img src="img/participate/item-manual1.jpg" alt="">
           <img src="img/participate/item-manual2.jpg" alt="">
-          
+
         </div>
         <div class="text-manual">
           <h4 class="title-manual">Cas particuliers</h4>
@@ -59,19 +60,19 @@
             <li>Jusqu'à 22h45 pour les projections Lérins et Riveria</li>
             <li>De 9h à 18h30 pour les badges Festival et Presse</li>
           </ul>
-          <p class="descrip-manual title-descript"><strong>Village international (Pantiero et Riveria) :</strong> pour les badges Marché</p> 
+          <p class="descrip-manual title-descript"><strong>Village international (Pantiero et Riveria) :</strong> pour les badges Marché</p>
           <ul>
             <li>De 8h à 20h pour les exposants des Pavillions du 13 au 24 mai (de 8h à 16h le 24 mai)</li>
             <li>De 9h à 18h30 pour les Badges Professionnels</li>
           </ul>
           <p class="descrip-manual">(de 9h à 16h le 15 mai)</p>
         </div>
-      </div>     
+      </div>
     </div>
-  </section> 
+  </section>
   <section class="content-manual">
     <div class="contain-section">
-      <h3 class="title-section"><img src="img/participate/acces.svg" alt="" class="logo-title svg acces">Accès aux accréditations</h3><i class="fa fa-plus"></i>
+      <h3 class="title-section"><i class="icon icon_acces"></i>Accès aux accréditations</h3><i class="icon icon_case-plus accordion"></i>
       <div class="item-manual">
         <div class="contain-img">
           <img src="img/participate/item-manual3.png" alt="">
@@ -112,32 +113,32 @@
             <p class="descrip-manual title-descript"> Dans la zonne " accréditqtion ", des hôtesses sont à votre disposition pour vous orienter.</p>
             <p class="descrip-manual title-descript">Sur présentation de votre confirmation d'accréditation et d'une pièce d'identité, vous recevrez votre badge.
   Un document de bienvenue vous sera également remis. Lisez-le attentivement et conservez-le : ce document renseigne notamment le festivalier sur son système de billetterie et sur les conditions d’accès aux différentes séances de la Sélection.
-  En cas de perte de ce document, un duplicata peut être retiré au bureau des accréditations tardives.</p> 
+  En cas de perte de ce document, un duplicata peut être retiré au bureau des accréditations tardives.</p>
             <strong class="title-item-manual">Retrait du sac</strong>
             <p class="descrip-manual title-descript">Vous pourrez retirer votre Sac Festival ou Marché aux comptoirs situés face aux banques d’accréditations, sur présentation de votre badge. En fonction de votre accréditation, votre sac contient les publications officielles du Festival
-              ou du Marché du Film.</p> 
+              ou du Marché du Film.</p>
           </div>
         </div>
-      </div>     
+      </div>
     </div>
-  </section>  
+  </section>
   <section class="content-manual">
     <div class="contain-section">
-      <h3 class="title-section"> <img src="img/participate/info-me.svg" alt="" class="svg information logo-title">Informations utiles</h3><i class="fa fa-plus"></i>
+      <h3 class="title-section"> <i class="icon icon_informations"></i>Informations utiles</h3><i class="icon icon_case-plus accordion"></i>
       <div class="item-manual">
         <div class="contain-infos">
           <div class="item-infos">
-            <img src="img/participate/points-infos.svg" alt="">
+            <i class="icon icon_point-infos"></i>
             <strong class="title-infos">Points infos</strong>
             <p class="descrip">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
           </div>
           <div class="item-infos">
-            <img src="img/participate/consigne-png.png" alt="">
+            <i class="icon icon_consignes"></i>
             <strong class="title-infos">consignes</strong>
             <p class="descrip">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
           </div>
           <div class="item-infos">
-            <img src="img/participate/objets-trouves.svg" alt="">
+            <i class="icon icon_objets-trouves"></i>
             <strong class="title-infos">objets trouvés</strong>
             <div class="descrip">
               <p><strong>Horaires d'ouvertures :</strong> 9h - 13h / 14h-18h</p>
@@ -146,7 +147,7 @@
             </div>
           </div>
           <div class="item-infos">
-            <img src="img/participate/n-urgences.svg" alt="">
+            <i class="icon icon_n-urgences"></i>
             <strong class="title-infos">N° Urgence</strong>
             <div class="descrip">
               <p><strong>Plan VIGIPIRATE : signaler un colis suspect :</strong> </p>
@@ -156,14 +157,14 @@
             </div>
           </div>
         </div>
-      </div>     
+      </div>
     </div>
-  </section>  
+  </section>
 </div>
     <?php include('footer.html'); ?>
 
       <!-- //// SCRIPTS \\\\ -->
-      
+
       <?php include('scripts.inc.php'); ?>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 </body>

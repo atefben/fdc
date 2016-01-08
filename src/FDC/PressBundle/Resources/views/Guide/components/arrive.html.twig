@@ -1,0 +1,20 @@
+<div class="contain-title-pg">
+    <h3 class="title-pguide ">
+        <span class="logo">
+            {% image '@FDCEventBundle/Resources/public/img/press/svg/a-votre-service-grey.svg' %}
+            <img src="{{ asset_url }}" class="svg" alt="{{ section.title }}" />
+            {% endimage %}
+        </span>
+        {{ section.title }}
+    </h3>
+    <span class="plus"></span>
+</div>
+
+<div class="contain-article">
+    <div class="aside">
+        <img src="{{ section.image.path }}" alt="">
+    </div>
+    <div class="texts">
+        {{ section.content|raw }}
+    </div>
+</div>

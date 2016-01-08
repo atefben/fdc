@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // =========================
@@ -22,7 +22,7 @@ a {
   height: 38px;
   line-height: 38px;
   margin: 0 0 0 0;
-  padding: 0 22px 0 42px;
+  padding: 0 19px 0 19px;
   text-transform: uppercase;
   @include transition(all 0.9s $smoothTransition);
 
@@ -43,7 +43,8 @@ a {
 
   &.square .button {
     height: 73px;
-    line-height: 73px;
+    // line-height: 73px;
+    position: relative;
     padding: 0;
     text-align: center;
     width: 73px;

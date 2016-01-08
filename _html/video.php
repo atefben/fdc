@@ -27,7 +27,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -45,7 +45,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -63,7 +63,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -81,7 +81,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -99,7 +99,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -115,7 +115,7 @@
         </div>
         <div class="video-overlay"></div>
         <div class="infos-bar">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -141,7 +141,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -159,7 +159,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -177,7 +177,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -195,7 +195,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -213,7 +213,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -229,7 +229,7 @@
         </div>
         <div class="video-overlay"></div>
         <div class="infos-bar">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -250,7 +250,7 @@
         </div>
         <div class="video-overlay"></div>
         <div class="infos-bar">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">

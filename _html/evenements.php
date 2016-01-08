@@ -14,7 +14,7 @@
           <div id="date" class="filter">
             <span class="label">Dates :</span>
             <span class="select">
-              <span class="active" data-filter="all">Toutes</span>
+              <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
 			  <span data-filter="photo">Date 1</span>
               <span data-filter="photo">Date 2</span>
               <span data-filter="video">Date 3</span>
@@ -25,7 +25,7 @@
           <div id="theme" class="filter">
             <span class="label">Thèmes :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous</span>
+              <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
               <span data-filter="press">Conférence de Presse</span>
               <span data-filter="steps">Montée des marches</span>
             </span>
@@ -183,12 +183,13 @@
         <div class="bandeau-list vCenter push-footer">
           <div class="bandeau-list-img vCenterKid" style="background-image:url(img/jurys/push.jpg);">
                <h2 class="title title-list-header">Rétrospective</h2>
-               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"><i class="icon icon_fleche-right"></i>
+ Découvrir la rubrique</a>
           </div>
         </div>
       </div>
     </div>
-    
+
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

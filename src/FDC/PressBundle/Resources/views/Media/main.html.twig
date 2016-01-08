@@ -1,0 +1,133 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressBundle::layout.html.twig' %}
+
+{% block body %}
+
+<div id="main" class="press loading press-media lock">
+
+    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
+
+    <div class="container-mediapress">
+        <div class="nav-mediapress">
+
+            <div class="wrapper">
+                <h2>{{ 'mediatheque.title.choixdelaselection'|trans }}</h2>
+
+                <table>
+                    <tr>
+                        {% for key,mediaFilter in mediaSection.section %}
+                        <td data-cat="{{ mediaFilter.slug }}" class="{% if key == 0 %}active{% endif %}">{{ mediaFilter.title }}</td>
+                        {% if  loop.index % 3 == 0 %}
+                    </tr>
+                    <tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        {% for section in mediaSection.section %}
+            <div class="nav-container active mediatheque" data-cat="{{ section.slug }}">
+                <div class="wrapper">
+                    <div class="container-small">
+                        <div class="table">
+                            {% for film in section.film %}
+                                <div class="line">
+                                    <div class="container">
+                                        <div class="info">
+                                            <img src="{{ film.image.path }}" alt="" />
+                                            <div class="txt">
+                                                <div class="vCenter">
+                                                    <div class="vCenterKid">
+                                                        <p>{{ film.title }}
+                                                            <a href="#" class="director">{{ film.author.fullName }}</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="media folder">{{ 'mediatheque.label.dossiersdepresse'|trans }} ({{ film.medias.press|length }})</div>
+                                        <div class="media trailer">{{ 'mediatheque.label.bandesannonces'|trans }} ({{ film.medias.trailer|length }})</div>
+                                        <div class="media photo">{{ 'mediatheque.label.photos'|trans }} ({{ film.medias.photo|length }})</div>
+                                        <span class="plus"></span>
+                                        <div class="contain">
+                                            <div class="contain-buttons">
+                                                <strong>{{ 'mediatheque.label.dossiersdepresse'|trans }}<span>({{ film.medias.press|length }})</span></strong>
+
+                                                {% for press in film.medias.press %}
+                                                    <div class="buttons active-btn">
+                                                        <a href="{{ press.link }}" class="button"> {{ press.title }}</a>
+                                                        <a href="{{ press.linkEN }}" class="button"> {{ press.titleEN }}</a>
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+                                            <div class="contain-buttons">
+                                                <strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}<span>({{ film.medias.trailer|length }})</span></strong>
+
+                                                {% for trailer in film.medias.trailer %}
+                                                    <div class="buttons">
+                                                        <a href="{{ trailer.link }}" class="button"> {{ trailer.title }}</a>
+                                                        <a href="{{ trailer.link }}" class="button"> {{ trailer.title }}</a>
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+                                            <div class="photos block slideshow">
+                                                <div class="container">
+                                                    <div class="container-title">
+                                                        <h3 class="title-press">
+                                                            {{ 'mediatheque.title.photoshd'|trans }}
+                                                            <span class="number">({{ film.medias.photo|length }})</span>
+                                                        </h3>
+                                                        <div class="download-btns right-btn buttons ">
+                                                            <a href="{{ film.medias.photo.globalLink }}" class="alldl button">
+                                                                {{ 'mediatheque.btn.touttelecharger'|trans }}
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="grid-wrapper images">
+                                                        <div class="grid-sizer"></div>
+
+                                                        {% for image in film.medias.photo.image %}
+                                                            <div class="item">
+                                                                <a id='photo1' href="{{ image.large }}" class="chocolat-image ajax" title='<h2>{{ image.title }}</h2>' data-credit="{{ image.credit }}">
+                                                                    <img src="{{ image.path }}" alt="{{ image.credit }}">
+                                                                </a>
+                                                            </div>
+                                                        {% endfor %}
+
+                                                        <div class="owl-carousel thumbnails">
+
+                                                            {% for key, image in film.medias.photo.image %}
+                                                                <div data-id="photo1" class="thumb active" data-caption="{{ image.caption }}">
+                                                                    <img src="{{ image.path }}" />
+                                                                </div>
+                                                            {% endfor %}
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {{ render(controller('FDCPressBundle:Global:contact')) }}
+    </div>
+
+    {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
+
+    {% include 'FDCPressBundle:Global:components/popinDownload.html.twig' %}
+
+</div>
+{% endblock body %}

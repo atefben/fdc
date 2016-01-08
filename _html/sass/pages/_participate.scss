@@ -13,38 +13,45 @@
   .participate-active {
     height: auto !important;
   }
-  .title-list-header {
-//    padding-top: 102px !important;
-  }
   .logo {
     margin-bottom: 26px;
     height: 39px;
   }
-  .logo.palm {
-    //    height: auto;
+
+  .title-list-header{
+    .icon{
+      font-size: 4.5rem;
+      margin-bottom: 12px;
+      vertical-align: middle !important;
+      margin-left: 18px;
+      margin-top: -17px;
+    }
+    .icon_mains{
+      font-size: 4rem;
+    }
   }
-  .fa {
+
+  .icon_case-plus, .icon_moins {
     margin-bottom: 40px;
     color: #c1c1c1;
     position: absolute;
     right: 1px;
     top: 22px;
+
+    &:hover{
+      cursor: pointer;
+    }
   }
-  .fa-plus {
-    background-image: url(../img/participate/case-plus.svg);
-    background-size: 45px;
-    background-position: 1px;
-    background-repeat: no-repeat;
-    width: 51px;
-    height: 51px;
+  .icon_case-plus {
+    font-size: 2.7rem;
+    top: 29px;
+    right: 0px;
   }
-  .fa-minus {
-    background-image: url(../img/participate/minus.svg);
-    background-size: 15px;
-    background-position: 14px 19px;
-    background-repeat: no-repeat;
-    width: 51px;
-    height: 51px;
+  .icon_moins {
+    top: 44px;
+    right: 15px;
+    font-size: .7rem;
+    color: $gold;
   }
   .contain-participate {
     background-color: #fff;
@@ -99,9 +106,6 @@
       .title-participate:hover {
         cursor: pointer;
       }
-      .fa:hover {
-        cursor: pointer;
-      }
       .title-participate {
         font: .875rem $CamphorBold;
         color: #c1c1c1;
@@ -116,17 +120,13 @@
           padding-right: 22px;
           margin-bottom: -12px;
         }
-        .svg {
-          width: 33px;
-          height: 19px;
-          padding-right: 13px;
-          vertical-align: bottom;
+        .icon{
+          font-size: 1.3rem;
+          margin-right: 22px;
         }
-        .svg path {
-          fill: currentColor;
-        }
-        .svg .st0 {
-          stroke: currentColor;
+        .icon_les-salles-de-projections{
+          font-size: 1.5rem;
+          vertical-align: sub !important;
         }
       }
       .part-plus-info {
@@ -134,9 +134,6 @@
       }
       .participate-active {
         .title-participate {
-          color: #c29f5f;
-        }
-        .fa {
           color: #c29f5f;
         }
       }
@@ -151,9 +148,9 @@
         height: 269px;
         display: inline-block;
         vertical-align: text-top;
-        .svg-item {
-          height: 41px;
-          width: 86px;
+        .icon{
+          font-size: 5rem;
+          color:$gold;
         }
         .transport {
           color: #000000;
@@ -199,19 +196,22 @@
           text-decoration: none;
           font-family: $CamphorHeavy;
           @include transition(all 0.9s $linear);
-          .svg {
-            width: 10px;
-            height: 10px;
-            padding-right: 10px;
-            vertical-align: text-top;
-          }
-          .svg polygon {
-            fill: currentColor;
+
+          .icon{
+            font-size: .5rem;
+            margin-right: 10px;
+            vertical-align: middle !important;
+            margin-bottom: 3px;
+            @include transition(all 0.9s $linear);
           }
         }
         .btn:hover {
           border-color: #000;
           color: #000;
+
+          & .icon{
+            color: #000;
+          }
         }
       }
       .large {
@@ -253,14 +253,10 @@
           width: 130px;
           margin: 0 auto;
           @include transition(all 0.9s $linear);
-          .svg {
-            width: 15px;
-            height: 15px;
-            padding-right: 10px;
-            vertical-align: sub;
-          }
-          .svg polygon {
-            fill: currentColor;
+
+          .icon{
+            margin-right: 10px;
+            font-size: .7rem;
           }
         }
         .btn:hover {
@@ -280,14 +276,11 @@
           a:hover {
             color: #966505;
           }
-          .svg {
-            width: 12px;
-            height: 15px;
+
+          .icon{
             padding-right: 9px;
             @include transition(all 0.9s $linear);
-          }
-          .svg .st0 {
-            fill: currentColor;
+            vertical-align: text-top;
           }
         }
         .link:hover {
@@ -318,10 +311,8 @@
         font-family: $CamphorBold;
         font-size: .75rem;
         padding-bottom: 20px;
-        img {
-          height: 15px;
-          padding-right: 5px;
-          vertical-align: text-bottom;
+        .icon{
+          font-size: .85rem;
         }
       }
       .descript-acces {
@@ -432,21 +423,28 @@
           margin: 0 auto;
           line-height: 24px;
         }
-        img {
-          width: 20%;
+        .icon{
+          font-size: 2.4rem;
+          color: #B0B0B0;
+          margin-bottom: 13px;
         }
       }
     }
   }
 }
 
+.prepare{
+  .title-list-header{
+    .icon{
+      font-size: 2.75rem;
+      margin-top: -6px;
+    }
+  }
+}
 // 3. Partners
 // ========================
 .partners {
   .title-section:hover {
-    cursor: pointer;
-  }
-  .fa:hover {
     cursor: pointer;
   }
   .content-partners {
@@ -458,9 +456,6 @@
       position: relative;
       overflow: hidden;
       height: 97px;
-      .fa {
-        top: 25px;
-      }
       .title-section {
         font-family: $CamphorBold;
         text-transform: uppercase;
@@ -566,9 +561,7 @@
       margin: 0 auto;
       width: 975px;
       position: relative;
-      .fa {
-        top: 45px;
-      }
+
       .title-section {
         text-transform: uppercase;
         color: #c8a461;
@@ -675,9 +668,6 @@
       position: relative;
       overflow: hidden;
       height: 100px;
-      .fa {
-        top: 25px;
-      }
       .title-section {
         font-family: $CamphorBold;
         text-transform: uppercase;
@@ -686,27 +676,14 @@
         letter-spacing: 2px;
         padding-top: 41px;
         @include transition(all 0.9s $linear);
-        .logo-title {
-          padding-right: 22px;
-          vertical-align: bottom;
-        }
-        .information {}
-        .svg path {
-          fill: currentColor;
-          stroke: currentColor;
-        }
-        .svg .st0 {
-          stroke: currentColor;
-        }
-        .acces path {
-          fill: white;
+        .icon{
+          font-size: 1.3rem;
+          margin-right: 20px;
+          margin-left: 2px;
         }
       }
       .title-section:hover {
         color: #c8a461;
-        cursor: pointer;
-      }
-      .fa:hover {
         cursor: pointer;
       }
       .descrip-section {
@@ -832,10 +809,8 @@
             text-align: center;
             font-size: 0.81rem;
             line-height: 24px;
-            img {
-              width: 50px;
-              display: block;
-              margin: 0 auto;
+            .icon{
+              font-size: 3rem;
             }
             .title-infos {
               font-size: 0.75rem;

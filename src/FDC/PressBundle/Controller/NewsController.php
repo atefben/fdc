@@ -33,9 +33,7 @@ class NewsController extends Controller
 
         $lockedContentForm = $this->createForm( new LockedContentType($translator) );
 
-        if ( $request->isMethod( 'POST' ) ) {
-
-        }
+        $popinLockedForm = $this->createForm( new LockedContentType($translator));
 
         $homeNews = array(
             array(
@@ -297,7 +295,7 @@ class NewsController extends Controller
             )
         );
 
-        $downloads = array(
+        $festivalDownloads = array(
             array(
                 'format' => 'portrait',
                 'resolution' => array(
@@ -335,14 +333,58 @@ class NewsController extends Controller
             )
         );
 
+        $movieDownload = array(
+            'description' => 'Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et
+                                  extraits de films fournis par les productions. Ces contenus sont mis à jour tout au
+                                  long du Festival. Ce service est fourni pour faciliter le traitement des films sur
+                                  vos propres médias. Nous vous prions instamment de ne pas les publier sur les réseaux
+                                  sociaux ou les portails de partage de type Youtube ou Dailymotion sans l’accord des
+                                  ayants-droits du film.<br><strong>Chaque fois que possible, les fichiers mis à disposition
+                                  seront en HD 1080p. Le Festival reste tributaire de la qualité du matériel qui lui est
+                                  adressé. 1 à 3 fichiers sont mis à disposition en fonction du fichier source reçu :</strong>',
+            'movie' => array(
+                'title' => 'Il racconto dei racconti',
+                'author' => array(
+                    'fullName' => 'Matteo GARRONE'
+                ),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/media/img6.jpg'
+                ),
+                'trailers' => array(
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    )
+                )
+            ),
+        );
+
         return array(
             'lockedForm' => $lockedContentForm->createView(),
+            'popinLockedForm' => $popinLockedForm->createView(),
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $schedulingDays,
             'schedulingEvents' => $events,
             'pressMedias' => $medias,
-            'pressDownloads' => $downloads,
+            'pressFestivalDownloads' => $festivalDownloads,
+            'pressMovieDownloads' => $movieDownload,
             'pressStats' => $stats
         );
     }
@@ -388,5 +430,160 @@ class NewsController extends Controller
             'news' => $news,
             //  'article' => $article
         );
+    }
+
+    /**
+     *
+     * @Route("/press-actu")
+     * @Template("FDCPressBundle:News:list.html.twig")
+     * @return array
+     */
+    public function listAction()
+    {
+
+        $headerInfo = array(
+            'title' => 'Communiqués et infos',
+            'description' => 'Communiqués, actualités, retrouvez toute l\'information à ne pas manquer.'
+        );
+
+        $filters = array(
+            'dates' => array(
+                array(
+                    'slug' => '2016',
+                    'content' => '2016',
+                ),
+                array(
+                    'slug' => '2015',
+                    'content' => '2015',
+                ),
+                array(
+                    'slug' => '2014',
+                    'content' => '2014',
+                ),
+            ),
+            'types' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'communique',
+                    'content' => 'Communiqués',
+                ),
+                array(
+                    'slug' => 'info',
+                    'content' => 'Infos',
+                ),
+            ),
+            'themes' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'press',
+                    'content' => 'Conférence de presse',
+                ),
+                array(
+                    'slug' => 'marche',
+                    'content' => 'Montée des marches',
+                )
+            ),
+            'formats' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'article',
+                    'content' => 'Articles',
+                ),
+                array(
+                    'slug' => 'video',
+                    'content' => 'Videos',
+                ),
+                array(
+                    'slug' => 'audio',
+                    'content' => 'Audios',
+                ),
+                array(
+                    'slug' => 'photo',
+                    'content' => 'Photos',
+                ),
+            ),
+        );
+
+        $articles = array(
+            array(
+                'id' => 0,
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'format' => 'article',
+                'theme' => 'cinema',
+                'category' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
+                ),
+                'filters' => array(
+                    array(
+                        'slug' => 'all'
+                    ),
+                    array(
+                        'slug' => 'communique'
+                    )
+                )
+            ),
+            array(
+                'id' => 0,
+                'title' => 'La Loi du Marché par Stéphane Brizé',
+                'format' => 'audio',
+                'theme' => 'press',
+                'category' => 'Conférence de Presse',
+                'createdAt' => new \DateTime(),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/02.jpg',
+                ),
+                'filters' => array(
+                    array(
+                        'slug' => 'all'
+                    ),
+                    array(
+                        'slug' => 'press'
+                    ),
+                    array(
+                        'slug' => 'steps'
+                    ),
+                )
+            ),
+            array(
+                'id' => 0,
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'format' => 'article',
+                'theme' => 'cinema',
+                'category' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                ),
+                'filters' => array(
+                    array(
+                        'slug' => 'all'
+                    ),
+                    array(
+                        'slug' => 'press'
+                    ),
+                    array(
+                        'slug' => 'steps'
+                    ),
+                )
+            ),
+        );
+
+        return array(
+            'headerInfo'  => $headerInfo,
+            'newsFilters' => $filters,
+            'newsArticle' => $articles,
+        );
+
     }
 }

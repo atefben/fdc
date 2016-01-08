@@ -1,0 +1,14 @@
+{% trans_default_domain 'FDCPressBundle' %}
+<div class="contact-press">
+    <h2 class="title">{{ 'press.home.title.contacteznous'|trans }}</h2>
+    <div class="container">
+        {% for colContact in pressContact.section %}
+            <div class="col">
+                <h3>{{ colContact.title }}</h3>
+                {% for contact in colContact.contacts %}
+                    <p>{{ contact.content|raw }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

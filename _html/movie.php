@@ -40,22 +40,23 @@
             </div>
           </div>
         </div>
-        <a href="movie2.php" class="nav prev ajax"></a>
-        <a href="movie3.php" class="nav next ajax"></a>
+        <a href="movie2.php" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+        <a href="movie3.php" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
         <span id="plx"></span>
         <div class="main-image">
           <div class="img" style="background-image: url('img/movie/001.jpg')"></div>
           <div class="links">
             <div class="container">
-              <a class="movies" href="#">Tous les films</a>
-              <a class="programmation" href="#">Voir la programmation</a>
+              <a class="movies" href="#"><i class="icon icon_flecheGauche"></i>Tous les films</a>
+              <a class="programmation" href="#"><i class="icon icon_programmation"></i>Voir la programmation</a>
             </div>
           </div>
           <div class="trailer"></div>
         </div>
         <div class="container container-top">
           <div class="poster video">
-            <a href="#" class="picto"></a>
+            <a href="#" class="picto"><i class="icon icon_video"></i>
+</a>
             <img src="img/movie/002.jpg" alt="" />
           </div>
           <div class="info-film">
@@ -97,12 +98,13 @@
               <li><a href="#audios">audios</a></li>
               <li><a href="#press">infos presse</a></li>
             </ul>
-            <div class="buttons square share">
-              <a href="#" class="button facebook"></a>
-              <a href="#" class="button twitter"></a>
-              <a href="#" class="button link"></a>
-              <a href="#" class="button email"></a>
-              <a href="#" class="button print"></a>
+            <div class="buttons square">
+              <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
+              <a href="#" class="button twitter"><i class="icon icon_twitter"></i>
+    </a>
+              <a href="#" class="button link"><i class="icon icon_link"></i></a>
+              <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+              <a href="#" class="button print"><i class="icon icon_print"></i></a>
             </div>
           </div>
         </div>
@@ -110,7 +112,7 @@
           <div class="container">
             <div class="video-player video">
               <div class="image" style="background-image: url(img/movie/003.jpg);"></div>
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -126,7 +128,7 @@
               <img src="http://dummyimage.com/293x185/000/fff" alt="" />
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -141,7 +143,7 @@
               <img src="http://dummyimage.com/293x185/000/fff" alt="" />
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -156,7 +158,7 @@
               <img src="http://dummyimage.com/293x185/000/fff" alt="" />
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -171,7 +173,7 @@
               <img src="http://dummyimage.com/293x185/000/fff" alt="" />
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -186,7 +188,7 @@
               <img src="http://dummyimage.com/293x185/000/fff" alt="" />
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -312,8 +314,8 @@
                     <img src="img/articles/03.jpg" alt="" />
                   </div>
                   <a href="article.php" class="linkImage"></a>
-                  <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                  <span class="picto"></span>
+                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -326,8 +328,8 @@
                     <img src="img/articles/03.jpg" alt="" />
                   </div>
                   <a href="article.php" class="linkImage"></a>
-                  <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                  <span class="picto"></span>
+                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                  <span class="picto"><i class="icon icon_photo"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -343,7 +345,7 @@
               <div class="off">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <div class="picto"></div>
+                    <div class="picto"><i class="icon icon_audio"></i></div>
                     <div class="info">
                       <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
                       <p>The Lobster de Yoros Lanthinos</p>
