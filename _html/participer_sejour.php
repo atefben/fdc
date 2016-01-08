@@ -22,7 +22,7 @@
         </div>
         <section>
           <div class="contain-section participate-active">
-            <h3 class="title-participate"><i class="icon icon_se-rendre-a-cannes"></i>Se rendre à cannes</h3><i class="icon icon_moins"></i>
+            <h3 class="title-participate"><i class="icon icon_se-rendre-a-cannes"></i>Se rendre à cannes</h3><i class="icon icon_moins accordion"></i>
             <div class="item large">
               <i class="icon icon_train"></i>
               <strong class="transport">Train</strong>

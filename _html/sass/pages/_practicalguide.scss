@@ -34,31 +34,25 @@
               @include transition(all 0.5s $linear);
               cursor: pointer;
               margin-bottom: 46px;
-              .svg{
-                margin-right: 15px;
-                vertical-align: bottom;
-              }
-              .svg path{
-                fill: currentColor;
-              }
-              .svg circle{
-                 fill: currentColor;
+
+              .icon {
+                font-size: 1.3rem;
+                margin-right: 22px;
               }
             }
           .title-pguide:hover{
             color:#c8a461;
           }
-          .plus{
-            background-image:url(../img/press/svg/case-plus.svg);
-            width: 57px;
-            height: 57px;
+          .accordion{
             position: absolute;
-            top: -12px;
+          }
+          .icon_case-plus{
+            font-size: 2.7rem;
+            top: -5px;
             right: 0px;
-            background-repeat: no-repeat;
-            background-size: 122%;
-            cursor: pointer;
-            background-position: -8px 1px;
+            margin-bottom: 40px;
+            color: #c1c1c1;
+            position: absolute;
           }
         }
         .contain-article{
@@ -154,10 +148,26 @@
             display: inline-block;
             margin-top: 5px;
             vertical-align: text-top;
-            img{
-              display: block;
-              margin: 0 auto;
-              margin-bottom: 8px;
+            .icon{
+              font-size: 3rem;
+              margin-bottom: 12px;
+              color: #B5B5B5;
+            }
+            .icon_casier{
+              font-size: 2rem;
+              margin-bottom: 26px;
+            }
+            .icon_plateau-tv{
+              font-size: 2.4rem;
+              margin-bottom: 22px;
+            }
+            .icon_zone-media{
+              font-size: 2.4rem;
+              margin-bottom: 22px;
+            }
+            .icon_divers{
+              font-size: 2.4rem;
+              margin-bottom: 22px;
             }
             strong{
               display: block;
@@ -189,12 +199,11 @@
         .title-pguide{
           color:#c9a562;
         }
-        .plus{
-          background-image:url(../img/press/svg/moins.svg);
-          width: 15px;
-          height: 15px;
-          top: 8px;
-          right: 20px;
+        .icon_moins{
+          top: 10px;
+          right: 15px;
+          font-size: .7rem;
+          color: #c8a461;
         }
       }
     }

@@ -13641,6 +13641,13 @@ input[type=submit] {
   text-transform: uppercase;
   font-size: 0.8rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.sitemap section article a:hover {
+  color: #966505;
 }
 .sitemap section article li {
   padding-bottom: 20px;
@@ -17105,10 +17112,11 @@ input[type=submit] {
   letter-spacing: .2em;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 24px;
-  background-image: url("../img/svg/cadenas.svg");
-  background-repeat: no-repeat;
-  background-size: 12px;
-  padding-left: 22px;
+}
+#popin-press .container-popin strong .icon {
+  font-size: 1rem;
+  vertical-align: middle !important;
+  margin-bottom: 5px;
 }
 #popin-press .container-popin p {
   padding-top: 10px;
@@ -17529,30 +17537,23 @@ input[type=submit] {
   cursor: pointer;
   margin-bottom: 46px;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .title-pguide .svg {
-  margin-right: 15px;
-  vertical-align: bottom;
-}
-.practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .title-pguide .svg path {
-  fill: currentColor;
-}
-.practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .title-pguide .svg circle {
-  fill: currentColor;
+.practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .title-pguide .icon {
+  font-size: 1.3rem;
+  margin-right: 22px;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .title-pguide:hover {
   color: #c8a461;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .plus {
-  background-image: url(../img/press/svg/case-plus.svg);
-  width: 57px;
-  height: 57px;
+.practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .accordion {
   position: absolute;
-  top: -12px;
+}
+.practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .icon_case-plus {
+  font-size: 2.7rem;
+  top: -5px;
   right: 0px;
-  background-repeat: no-repeat;
-  background-size: 122%;
-  cursor: pointer;
-  background-position: -8px 1px;
+  margin-bottom: 40px;
+  color: #c1c1c1;
+  position: absolute;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside {
   width: 364px;
@@ -17651,10 +17652,26 @@ input[type=submit] {
   margin-top: 5px;
   vertical-align: text-top;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service img {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 8px;
+.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: #B5B5B5;
+}
+.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon_casier {
+  font-size: 2rem;
+  margin-bottom: 26px;
+}
+.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon_plateau-tv {
+  font-size: 2.4rem;
+  margin-bottom: 22px;
+}
+.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon_zone-media {
+  font-size: 2.4rem;
+  margin-bottom: 22px;
+}
+.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon_divers {
+  font-size: 2.4rem;
+  margin-bottom: 22px;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service strong {
   display: block;
@@ -17682,12 +17699,11 @@ input[type=submit] {
 .practicalguide #praticalguide .container-pguide.active .contain-title-pg .title-pguide {
   color: #c9a562;
 }
-.practicalguide #praticalguide .container-pguide.active .contain-title-pg .plus {
-  background-image: url(../img/press/svg/moins.svg);
-  width: 15px;
-  height: 15px;
-  top: 8px;
-  right: 20px;
+.practicalguide #praticalguide .container-pguide.active .contain-title-pg .icon_moins {
+  top: 10px;
+  right: 15px;
+  font-size: .7rem;
+  color: #c8a461;
 }
 
 .accreditation #accreditation {
