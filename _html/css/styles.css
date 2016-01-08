@@ -17925,10 +17925,6 @@ input[type=submit] {
 .downloading-press.lock .buttons .button {
   border-color: #b0b0b0;
   color: #b0b0b0;
-  background-image: url("../img/svg/cadenas-grey.svg");
-  background-repeat: no-repeat;
-  background-position: 15px 45%;
-  background-size: 12px;
   border-color: #b0b0b0;
   color: #b0b0b0;
   pointer-events: none;
@@ -17962,39 +17958,14 @@ input[type=submit] {
   color: #b0b0b0;
 }
 .downloading-press.lock .affiche .active-btn .button {
-  padding: 1px 15px 0 39px;
   border-color: #c8a461;
-  background-image: url("../img/svg/telecharger-gold.svg");
-  background-repeat: no-repeat;
-  background-position: 15px 12px;
   background-size: 14px;
   position: relative;
-}
-.downloading-press.lock .affiche .active-btn .button:after {
-  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
-  background-size: 14px;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .downloading-press.lock .affiche .active-btn .button:hover {
   background-color: #c8a461;
   border-color: #c8a461;
   color: #fff;
-}
-.downloading-press.lock .affiche .active-btn .button:hover:after {
-  opacity: 1;
-  visibility: visible;
 }
 .downloading-press.lock .affiche .active-btn .button {
   pointer-events: all;
@@ -18006,39 +17977,13 @@ input[type=submit] {
   background-color: #c29f5f !important;
 }
 .downloading-press.lock .active-btn .button {
-  padding: 1px 15px 0 39px;
   border-color: #c8a461;
-  background-image: url("../img/svg/telecharger-gold.svg");
-  background-repeat: no-repeat;
-  background-position: 15px 12px;
-  background-size: 14px;
   position: relative;
-}
-.downloading-press.lock .active-btn .button:after {
-  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
-  background-size: 14px;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .downloading-press.lock .active-btn .button:hover {
   background-color: #c8a461;
   border-color: #c8a461;
   color: #fff;
-}
-.downloading-press.lock .active-btn .button:hover:after {
-  opacity: 1;
-  visibility: visible;
 }
 .downloading-press.lock .active-btn .button {
   pointer-events: all;
@@ -18050,19 +17995,11 @@ input[type=submit] {
   background-color: #c29f5f !important;
 }
 
-.b-downloading-press.lock div.chocolat-wrapper .share:after {
-  background: url("../img/svg/cadenas-grey.svg") no-repeat center;
-  background-size: 12px;
-}
 .b-downloading-press.lock div.chocolat-wrapper .chocolat-bottom .buttons.show {
   visibility: hidden;
   display: none;
 }
 
-.b-downloading-press div.chocolat-wrapper .share:after {
-  background: url("../img/svg/telecharger-gold.svg") no-repeat center;
-  background-size: 14px;
-}
 .b-downloading-press div.chocolat-wrapper .chocolat-bottom .buttons.show {
   visibility: hidden;
   display: none;
@@ -18078,53 +18015,24 @@ input[type=submit] {
   text-align: left;
 }
 .downloading-press .buttons .button {
-  background-image: url("../img/svg/telecharger-gold.svg");
-  background-repeat: no-repeat;
-  background-position: 15px 12px;
-  background-size: 14px;
   position: relative;
   color: #c29f5f;
   border-color: #c29f5f;
 }
-.downloading-press .buttons .button:after {
-  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
-  background-size: 14px;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
 .downloading-press .buttons .button:hover {
   color: #fff;
 }
-.downloading-press .buttons .button:after {
-  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
-  background-size: 14px;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+.downloading-press .icon_telecharger {
+  margin-right: 10px;
+  font-size: .8rem;
+  vertical-align: middle !important;
+  margin-bottom: 2px;
 }
-.downloading-press .button:hover:after {
-  opacity: 1;
-  visibility: visible;
+.downloading-press .icon_cadenas {
+  margin-right: 10px;
+  font-size: .8rem;
+  vertical-align: middle !important;
+  margin-bottom: 3px;
 }
 .downloading-press .contact-press .button {
   color: #c29f5f;

@@ -17,10 +17,6 @@
   .buttons .button {
     border-color: #b0b0b0;
     color: #b0b0b0;
-    background-image: url('../img/svg/cadenas-grey.svg');
-    background-repeat: no-repeat;
-    background-position: 15px 45%;
-    background-size: 12px;
     border-color: #b0b0b0;
     color: #b0b0b0;
     pointer-events: none;
@@ -57,36 +53,14 @@
   }
 
   .affiche{
-        .active-btn .button {
-      padding: 1px 15px 0 39px;
-      border-color: $gold;
-      background-image: url('../img/svg/telecharger-gold.svg');
-      background-repeat: no-repeat;
-      background-position: 15px 12px;
-      background-size: 14px;
-      position: relative;
-      &:after {
-        background: url('../img/svg/telecharger-white.svg') no-repeat 15px 12px;
+      .active-btn .button {
+        border-color: $gold;
         background-size: 14px;
-        content: '';
-        display: block;
-        height: 100%;
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        visibility: hidden;
-        @include transition(all 0.9s $smoothTransition);
-      }
+        position: relative;
       &:hover {
         background-color: $gold;
         border-color: $gold;
         color: #fff;
-      }
-      &:hover:after {
-        opacity: 1;
-        visibility: visible;
       }
     }
     .active-btn {
@@ -102,35 +76,12 @@
     }
   }
     .active-btn .button {
-    padding: 1px 15px 0 39px;
     border-color: $gold;
-    background-image: url('../img/svg/telecharger-gold.svg');
-    background-repeat: no-repeat;
-    background-position: 15px 12px;
-    background-size: 14px;
     position: relative;
-    &:after {
-      background: url('../img/svg/telecharger-white.svg') no-repeat 15px 12px;
-      background-size: 14px;
-      content: '';
-      display: block;
-      height: 100%;
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all 0.9s $smoothTransition);
-    }
     &:hover {
       background-color: $gold;
       border-color: $gold;
       color: #fff;
-    }
-    &:hover:after {
-      opacity: 1;
-      visibility: visible;
     }
   }
   .active-btn {
@@ -147,10 +98,6 @@
 }
 
 .b-downloading-press.lock{
-  div.chocolat-wrapper .share:after{
-    background: url("../img/svg/cadenas-grey.svg") no-repeat center;
-    background-size: 12px;
-  }
   div.chocolat-wrapper .chocolat-bottom .buttons.show{
     visibility: hidden;
     display: none;
@@ -158,10 +105,6 @@
 }
 
 .b-downloading-press{
-  div.chocolat-wrapper .share:after{
-    background: url("../img/svg/telecharger-gold.svg") no-repeat center;
-    background-size: 14px;
-  }
   div.chocolat-wrapper .chocolat-bottom .buttons.show{
     visibility: hidden;
     display: none;
@@ -179,49 +122,28 @@
   .buttons {
     text-align: left;
     .button {
-      background-image: url('../img/svg/telecharger-gold.svg');
-      background-repeat: no-repeat;
-      background-position: 15px 12px;
-      background-size: 14px;
       position: relative;
       color: #c29f5f;
       border-color: #c29f5f;
-      &:after {
-        background: url('../img/svg/telecharger-white.svg') no-repeat 15px 12px;
-        background-size: 14px;
-        content: '';
-        display: block;
-        height: 100%;
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        visibility: hidden;
-        @include transition(all 0.9s $smoothTransition);
-      }
     }
     .button:hover {
       color: #fff;
     }
   }
-  .buttons .button:after {
-    background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
-    background-size: 14px;
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    @include transition(all 0.9s $smoothTransition);
+
+  .icon_telecharger{
+    margin-right: 10px;
+    font-size: .8rem;
+    vertical-align: middle !important;
+    margin-bottom: 2px;
   }
-  .button:hover:after {
-    opacity: 1;
-    visibility: visible;
+  .icon_cadenas{
+    margin-right: 10px;
+    font-size: .8rem;
+    vertical-align: middle !important;
+    margin-bottom: 3px;
   }
+
   .contact-press {
     .button {
       color: #c29f5f;

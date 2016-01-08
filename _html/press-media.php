@@ -11,7 +11,7 @@
     <div id="main" class="press loading press-media lock">
       <div class="header-press">
         <div class="head">
-          <span>Espace presse</span>
+          <span><i class="icon icon_espace-presse"></i>Espace presse</span>
         </div>
         <div class="container">
           <h2>Médiathèque films</h2>

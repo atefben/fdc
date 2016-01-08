@@ -11,14 +11,14 @@
     <div id="main" class="press loading downloading-press lock ">
       <div class="header-press">
         <div class="head">
-          <span>Espace presse</span>
+          <span><i class="icon icon_espace-presse"></i>Espace presse</span>
         </div>
         <div class="container">
           <h2>À télécharger</h2>
           <p>
             <span class="vCenter">
-              <span class="vCenterKid">Ces élements visuels sont à usage exclusif de la presse et des médias qui couvrent 
-le Festival de Cannes. Aucune utilisation commerciale ou promotionnelle 
+              <span class="vCenterKid">Ces élements visuels sont à usage exclusif de la presse et des médias qui couvrent
+le Festival de Cannes. Aucune utilisation commerciale ou promotionnelle
 de ces visuels n’est autorisée.</span>
             </span>
           </p>
@@ -42,9 +42,9 @@ de ces visuels n’est autorisée.</span>
               <img src="img/press/press-portrait.jpg" alt="" />
               <span class="caption">© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos</span>
               <p>Format portrait</p>
-              <div class="buttons active-btn"> <!-- TODO enlever le active-btn, juste test --> 
-                <a href="#" class="button">JPG 72 DPI</a>
-                <a href="#" class="button">JPG 300 DPI</a>
+              <div class="buttons active-btn"> <!-- TODO enlever le active-btn, juste test -->
+                <a href="#" class="button"><i class="icon icon_telecharger"></i>JPG 72 DPI</a>
+                <a href="#" class="button"><i class="icon icon_telecharger"></i>JPG 300 DPI</a>
               </div>
             </div>
             <div class="landscape">
@@ -52,8 +52,8 @@ de ces visuels n’est autorisée.</span>
               <span class="caption">© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos</span>
               <p>Format portrait</p>
               <div class="buttons">
-                <a href="#" class="button">JPG 72 DPI</a>
-                <a href="#" class="button">JPG 300 DPI</a>
+                <a href="#" class="button"><i class="icon icon_cadenas"></i>JPG 72 DPI</a>
+                <a href="#" class="button"><i class="icon icon_cadenas"></i>JPG 300 DPI</a>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ de ces visuels n’est autorisée.</span>
                 </ul>
               </div>
               <div class="buttons">
-                <a href="#" class=" button">Tout télécharger</a>
+                <a href="#" class=" button"><i class="icon icon_cadenas"></i>Tout télécharger</a>
               </div>
             </div>
             <div class="imgs-container">
@@ -93,7 +93,7 @@ de ces visuels n’est autorisée.</span>
                 </ul>
               </div>
               <div class="buttons">
-                <a href="#" class=" button">Tout télécharger</a>
+                <a href="#" class=" button"><i class="icon icon_cadenas"></i>Tout télécharger</a>
               </div>
             </div>
             <div class="imgs-container last">
@@ -111,7 +111,7 @@ de ces visuels n’est autorisée.</span>
                 </ul>
               </div>
               <div class="buttons">
-                <a href="#" class=" button">Tout télécharger</a>
+                <a href="#" class=" button"><i class="icon icon_cadenas"></i>Tout télécharger</a>
               </div>
             </div>
           </div>
@@ -126,8 +126,8 @@ de ces visuels n’est autorisée.</span>
             <span class="caption">© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos<br>
 Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thème musical du Festival, Le Carnaval des animaux de Camille Saint-Saëns, avec un arrangement imaginé par deux musiciens suédois, Patrik Andersson et Andreas Söderström.</span>
              <div class="buttons">
-                <a href="#" class=" mov extention button">.MOV</a>
-                <a href="#" class=" gif extention button">.GIF</a>
+                <a href="#" class=" mov extention button"><i class="icon icon_cadenas"></i>.MOV</a>
+                <a href="#" class=" gif extention button"><i class="icon icon_cadenas"></i>.GIF</a>
               </div>
           </div>
           </div>
@@ -136,7 +136,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
           <div class="container">
           <div class="container-title">
             <h3 class="title-press">Photos institutionnelles <span class="number">(22)</span></h3>
-          <div class="right-btn buttons"><a href="" class="alldl button">Tout télécharger</a></div>
+          <div class="right-btn buttons"><a href="" class="alldl button"><i class="icon icon_cadenas"></i>Tout télécharger</a></div>
           </div>
           <div class="gridPressDownload grid-wrapper images">
             <div class="grid-sizer"></div>
@@ -185,7 +185,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
                   <img src="img/press/downloading/im-grid9.jpg"  title='<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, minima.</h2>' data-credit="Crédit Image : VALERY HACHE / AFP" alt="" class="chocolat-image ajax">
                 </a>
               </div>
-              
+
             <div class="owl-carousel thumbnails">
               <div data-id="photo1" class="thumb active" data-caption="<strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange">
                 <img src="img/press/media/img2.jpg" />
@@ -215,7 +215,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
                 <img src="img/press/media/img1.jpg" />
               </div>
             </div>
-                            
+
             </div>
           </div>
         </div>
@@ -224,23 +224,23 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
           <h3 class="title-press">Dossier de presse</h3>
           <div class="contain-dp">
             <div class="buttons">
-              <a href="#" class="button">Dossier de presse</a>
+              <a href="#" class="button"><i class="icon icon_cadenas"></i>Dossier de presse</a>
             </div>
             <p class="infos"><strong>Mise à jour : </strong> 19.05.15 . 12:30</p>
           </div>
           <div class="contain-dp">
             <div class="buttons">
-              <a href="#" class="button">Liste des attachés de presse</a>
+              <a href="#" class="button"><i class="icon icon_cadenas"></i>Liste des attachés de presse</a>
             </div>
             <p class="infos"><strong>Mise à jour : </strong> 19.05.15 . 12:30</p>
           </div>
           <div class="contain-dp">
            <div class="buttons">
               <div class="button large">
-                <a href="#" class="download ">Horaire des projections (presse)</a>
+                <a href="#" class="download "><i class="icon icon_cadenas"></i>Horaire des projections (presse)</a>
               </div>
               <div class="button large">
-                <a href="#" class="download ">Horaire des projections (grand public)</a>
+                <a href="#" class="download "><i class="icon icon_cadenas"></i>Horaire des projections (grand public)</a>
               </div>
            </div>
             <p class="infos"><strong>Mise à jour : </strong> 19.05.15 . 12:30</p>
@@ -272,6 +272,7 @@ Film d'animation avec la collaboration de Sonia Tout Court sur un remix du thèm
     </div>
     <!-- POPIN -->
     <?php include('popin-lock-press.html'); ?>
+    <?php include('popin-download-press.html'); ?>
     <!-- fin POPIN -->
     <?php include('footer.html'); ?>
 
