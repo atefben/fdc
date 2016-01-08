@@ -24,6 +24,18 @@
   .button{
     font-size: 0.63rem;
     height: 37px;
+    .icon_telecharger{
+      margin-right: 10px;
+      font-size: .8rem;
+      vertical-align: middle !important;
+      margin-bottom: 2px;
+    }
+    .icon_cadenas{
+      margin-right: 10px;
+      font-size: .8rem;
+      vertical-align: middle !important;
+      margin-bottom: 3px;
+    }
   }
 
   .fc-event {
@@ -65,10 +77,20 @@
       font-family: $CamphorBold;
       font-size: 0.625rem;
       line-height: 28px;
-      padding-left: 40px;
       position: relative;
       text-transform: uppercase;
       width: 100%;
+
+      .icon{
+        font-size: 1rem;
+        margin: 0 13px;
+        vertical-align: middle !important;
+        margin-bottom: 2px;
+      }
+
+      .icon_espace-presse{
+        font-size: .8rem;
+      }
 
       &:after {
         content: '';
@@ -81,34 +103,6 @@
         right: 5px;
         cursor: -webkit-grab;
         cursor: grab;
-      }
-    }
-
-    &.pen {
-      .category {
-        background-image: url('../img/svg/press.svg');
-        background-size: 17px;
-      }
-    }
-
-    &.seance {
-      .category {
-        background-image: url('../img/svg/evt-seance.svg');
-        background-size: 17px;
-      }
-    }
-
-    &.seance-press {
-      .category {
-        background-image: url('../img/svg/evt-seance-presse.svg');
-        background-size: 15px;
-      }
-    }
-
-    &.conference {
-      .category {
-        background-image: url('../img/svg/evt-conference.svg');
-        background-size: 13px;
       }
     }
 
@@ -413,6 +407,7 @@
       a {
         font-size: 0.625rem;
       }
+
     }
   }
 
@@ -509,23 +504,11 @@
           text-align: left;
           @include transition(background-color 0.6s $smoothTransition, color 0.6s $smoothTransition);
 
-          &:hover {
-            background: $gold url('../img/svg/telecharger-white.svg') no-repeat 5% center;
-            background-size: 13px;
-            color: #fff;
-          }
-
           &.show {
             opacity: 1;
             visibility: visible;
           }
         }
-
-        &.subnav, &.list {
-          background: #fff url('../img/svg/telecharger-gold.svg') no-repeat 5% center;
-          background-size: 13px;
-        }
-
         &.subnav:hover {
           background-color: #fff;
           color: $gold;
@@ -566,12 +549,13 @@
     }
 
     h3 {
-      background: url('../img/svg/cadenas.svg') no-repeat left top;
-      background-size: 14px;
-      padding-left: 24px;
       padding-top: 2px;
       line-height: 1.4em;
       margin: 0 0 5px 65px;
+      .icon{
+        font-size: 1.1rem;
+        margin-right: 5px;
+      }
     }
 
     p {
@@ -687,8 +671,11 @@
 
         &.communique .picto {
           background-color: $gold;
-          background-image: url('../img/svg/communique-presse.svg');
-          background-size: 21px 20px;
+          .icon{
+            margin-left: 13px;
+            margin-top: 13px;
+            font-size: 1.2rem;
+          }
         }
 
         .image {
@@ -812,15 +799,25 @@
             z-index: 1;
 
             &.prev {
-              background: #e5e5e5 url('../img/svg/arrow-left-black.svg') no-repeat center;
-              background-size: 12px;
               left: 60px;
+
+              .icon{
+                margin-top: 15px;
+                margin-left: 15px;
+                font-size: .6rem;
+                color: #000;
+              }
             }
 
             &.next {
-              background: #e5e5e5 url('../img/svg/arrow-right-black.svg') no-repeat center;
-              background-size: 12px;
               right: 0;
+
+              .icon{
+                margin-top: 15px;
+                margin-left: 15px;
+                font-size: .6rem;
+                color: #000;
+              }
             }
 
             &.hide {
@@ -947,15 +944,15 @@
             }
 
             &.left {
-              background: #fff url("../img/svg/arrow-left-grey.svg") no-repeat center;
-              background-size: 12px;
+              // background: #fff url("../img/svg/arrow-left-grey.svg") no-repeat center;
+              // background-size: 12px;
               border-left: 1px solid #e5e5e5;
               border-right: 1px dashed #e5e5e5;
             }
 
             &.right {
-              background: #fff url("../img/svg/arrow-right-grey.svg") no-repeat center;
-              background-size: 12px;
+              // background: #fff url("../img/svg/arrow-right-grey.svg") no-repeat center;
+              // background-size: 12px;
               left: auto;
               right: 0;
               border-left: 1px dashed #e5e5e5;
@@ -1162,6 +1159,13 @@
 
       a {
         font-size: 0.625rem;
+
+        .icon{
+          font-size: .45rem;
+          margin-right: 10px;
+          vertical-align: middle !important;
+          margin-bottom: 3px;
+        }
       }
     }
   }
@@ -1169,9 +1173,11 @@
   p.link {
     margin-top: 25px;
 
-    img {
+    .icon{
+      font-size: .45rem;
+      vertical-align: middle !important;
+      margin-bottom: 2px;
       margin-right: 10px;
-      width: 10px;
     }
 
     a {
@@ -1246,31 +1252,7 @@
 
       .button {
         border-color: $gold;
-        background-image: url('../img/svg/telecharger-gold.svg');
-        background-repeat: no-repeat;
-        background-position: 15px 12px;
-        background-size: 14px;
         position: relative;
-
-        &:after {
-          background: url('../img/svg/telecharger-white.svg') no-repeat 15px 12px;
-          background-size: 14px;
-          content: '';
-          display: block;
-          height: 100%;
-          position: absolute;
-          width: 100%;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          visibility: hidden;
-          @include transition(all 0.9s $smoothTransition);
-        }
-
-        &:hover:after {
-          opacity: 1;
-          visibility: visible;
-        }
       }
     }
 
@@ -1397,10 +1379,6 @@
 
   &.lock {
     .affiche .buttons .button {
-      background-image: url('../img/svg/cadenas-grey.svg');
-      background-repeat: no-repeat;
-      background-position: 15px 45%;
-      background-size: 12px;
       border-color: #b0b0b0;
       color: #b0b0b0;
       pointer-events: none;
@@ -2137,7 +2115,7 @@
         padding-left: 12px;
 
         .icon{
-          margin-right: 10px;   
+          margin-right: 10px;
         }
       }
 

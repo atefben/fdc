@@ -16,16 +16,19 @@
         <div class="container">
           <h2>Programmation</h2>
           <div class="buttons">
-            <a href="#" class="button subnav">Télécharger l'horaire des projections presse</a>
-            <a href="#" class="button list">Télécharger au format .pdf</a>
-            <a href="#" class="button list">Télécharger au format .ics</a>
+            <a href="#" class="button subnav"><i class="icon icon_telecharger"></i>
+Télécharger l'horaire des projections presse</a>
+            <a href="#" class="button list"><i class="icon icon_telecharger"></i>
+Télécharger au format .pdf</a>
+            <a href="#" class="button list"><i class="icon icon_telecharger"></i>
+Télécharger au format .ics</a>
           </div>
         </div>
       </div>
       <div class="locked">
         <div class="vCenter">
           <div class="vCenterKid">
-            <h3 class="title-press">contenus verrouillés</h3>
+            <h3 class="title-press"><i class="icon icon_cadenas"></i>contenus verrouillés</h3>
             <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
           </div>
         </div>
@@ -54,7 +57,7 @@
             <div id="category" class="filter">
               <span class="label">Sélections :</span>
               <span class="select">
-                <span class="active" data-filter="all">Toutes</span>
+                <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
                 <span data-filter="competition">Compétition</span>
                 <span data-filter="hors_competition">Hors Compétition</span>
                 <span data-filter="regard">Un Certain Regard</span>
@@ -67,14 +70,14 @@
             <div id="type" class="filter">
               <span class="label">Types :</span>
               <span class="select">
-                <span class="active" data-filter="all">Tous</span>
+                <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
                 <span data-filter="seances">Séances</span>
                 <span data-filter="events">Evènements</span>
               </span>
             </div>
           </div>
             <div id="timeline">
-              <span class="arrow left"></span>
+              <span class="arrow left"><i class="icon icon_flecheGauche"></i></span>
               <div class="timeline-container">
                 <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
                 <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
@@ -89,7 +92,7 @@
                 <a href="#" class="disabled">sam<span class="day">21</span></a>
                 <a href="#" class="disabled">dim<span class="day">22</span></a>
               </div>
-              <span class="arrow right"></span>
+              <span class="arrow right"><i class="icon icon_fleche-right"></i></span>
             </div>
             <div class="calendar">
               <div class="timeCol">
@@ -116,14 +119,14 @@
                 <div class="time">03H</div>
               </div>
               <div class="venues">
-                <a href="#" class="nav prev"></a>
-                <a href="#" class="nav next"></a>
+                <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
+                <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
                 <div class="v-wrapper">
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
                       <div class="fc-event" data-category="reprise" data-type="reprise" data-url="eventPopin.html" data-id="3" data-picto='.pen' data-color='#000' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:00:00" data-time="9" data-duration="120">
-                        <span class="category">séance de reprise</span>
+                        <span class="category"><i class="icon icon_espace-presse"></i>séance de reprise</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff" />
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
@@ -144,7 +147,7 @@
                     <div class="v-head">Salle Buñuel</div>
                     <div class="v-container">
                       <div class="fc-event" data-category="press" data-type="press" data-url="eventPopin.html" data-id="5" data-picto='.pen' data-color='#000' data-start="2016-05-12T15:00:00" data-end="2016-05-12T16:00:00" data-time="15" data-duration="60">
-                        <span class="category">conférence de presse</span>
+                        <span class="category"><i class="icon icon_espace-presse"></i>conférence de presse</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff" />
                           <div class="txt"><span>mad max, fury road</span><strong>Elisabet KAPNIST</strong></div>

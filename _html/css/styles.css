@@ -15431,6 +15431,18 @@ input[type=submit] {
   font-size: 0.63rem;
   height: 37px;
 }
+.press .button .icon_telecharger {
+  margin-right: 10px;
+  font-size: .8rem;
+  vertical-align: middle !important;
+  margin-bottom: 2px;
+}
+.press .button .icon_cadenas {
+  margin-right: 10px;
+  font-size: .8rem;
+  vertical-align: middle !important;
+  margin-bottom: 3px;
+}
 .press .fc-event {
   background-color: #373737;
   border-radius: 0;
@@ -15466,10 +15478,18 @@ input[type=submit] {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   line-height: 28px;
-  padding-left: 40px;
   position: relative;
   text-transform: uppercase;
   width: 100%;
+}
+.press .fc-event .category .icon {
+  font-size: 1rem;
+  margin: 0 13px;
+  vertical-align: middle !important;
+  margin-bottom: 2px;
+}
+.press .fc-event .category .icon_espace-presse {
+  font-size: .8rem;
 }
 .press .fc-event .category:after {
   content: '';
@@ -15482,22 +15502,6 @@ input[type=submit] {
   right: 5px;
   cursor: -webkit-grab;
   cursor: grab;
-}
-.press .fc-event.pen .category {
-  background-image: url("../img/svg/press.svg");
-  background-size: 17px;
-}
-.press .fc-event.seance .category {
-  background-image: url("../img/svg/evt-seance.svg");
-  background-size: 17px;
-}
-.press .fc-event.seance-press .category {
-  background-image: url("../img/svg/evt-seance-presse.svg");
-  background-size: 15px;
-}
-.press .fc-event.conference .category {
-  background-image: url("../img/svg/evt-conference.svg");
-  background-size: 13px;
 }
 .press .fc-event .info img {
   float: left;
@@ -15850,18 +15854,9 @@ input[type=submit] {
   -webkit-transition: background-color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: background-color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.press .header-press .buttons .button.list:hover {
-  background: #c8a461 url("../img/svg/telecharger-white.svg") no-repeat 5% center;
-  background-size: 13px;
-  color: #fff;
-}
 .press .header-press .buttons .button.list.show {
   opacity: 1;
   visibility: visible;
-}
-.press .header-press .buttons .button.subnav, .press .header-press .buttons .button.list {
-  background: #fff url("../img/svg/telecharger-gold.svg") no-repeat 5% center;
-  background-size: 13px;
 }
 .press .header-press .buttons .button.subnav:hover {
   background-color: #fff;
@@ -15898,12 +15893,13 @@ input[type=submit] {
   text-align: center;
 }
 .press .locked h3 {
-  background: url("../img/svg/cadenas.svg") no-repeat left top;
-  background-size: 14px;
-  padding-left: 24px;
   padding-top: 2px;
   line-height: 1.4em;
   margin: 0 0 5px 65px;
+}
+.press .locked h3 .icon {
+  font-size: 1.1rem;
+  margin-right: 5px;
 }
 .press .locked p {
   color: #666;
@@ -16013,8 +16009,11 @@ input[type=submit] {
 }
 .press .communiques .grid-container article.communique .picto {
   background-color: #c8a461;
-  background-image: url("../img/svg/communique-presse.svg");
-  background-size: 21px 20px;
+}
+.press .communiques .grid-container article.communique .picto .icon {
+  margin-left: 13px;
+  margin-top: 13px;
+  font-size: 1.2rem;
 }
 .press .communiques .grid-container article .image {
   width: 265px;
@@ -16116,14 +16115,22 @@ input[type=submit] {
   z-index: 1;
 }
 .press .programmation #calendar-programmation .calendar .venues .nav.prev {
-  background: #e5e5e5 url("../img/svg/arrow-left-black.svg") no-repeat center;
-  background-size: 12px;
   left: 60px;
 }
+.press .programmation #calendar-programmation .calendar .venues .nav.prev .icon {
+  margin-top: 15px;
+  margin-left: 15px;
+  font-size: .6rem;
+  color: #000;
+}
 .press .programmation #calendar-programmation .calendar .venues .nav.next {
-  background: #e5e5e5 url("../img/svg/arrow-right-black.svg") no-repeat center;
-  background-size: 12px;
   right: 0;
+}
+.press .programmation #calendar-programmation .calendar .venues .nav.next .icon {
+  margin-top: 15px;
+  margin-left: 15px;
+  font-size: .6rem;
+  color: #000;
 }
 .press .programmation #calendar-programmation .calendar .venues .nav.hide {
   opacity: 0;
@@ -16239,14 +16246,10 @@ input[type=submit] {
     display: none;
   }
   .press .programmation #calendar-programmation #timeline .arrow.left {
-    background: #fff url("../img/svg/arrow-left-grey.svg") no-repeat center;
-    background-size: 12px;
     border-left: 1px solid #e5e5e5;
     border-right: 1px dashed #e5e5e5;
   }
   .press .programmation #calendar-programmation #timeline .arrow.right {
-    background: #fff url("../img/svg/arrow-right-grey.svg") no-repeat center;
-    background-size: 12px;
     left: auto;
     right: 0;
     border-left: 1px dashed #e5e5e5;
@@ -16422,12 +16425,20 @@ input[type=submit] {
 .press .chap .link a {
   font-size: 0.625rem;
 }
+.press .chap .link a .icon {
+  font-size: .45rem;
+  margin-right: 10px;
+  vertical-align: middle !important;
+  margin-bottom: 3px;
+}
 .press p.link {
   margin-top: 25px;
 }
-.press p.link img {
+.press p.link .icon {
+  font-size: .45rem;
+  vertical-align: middle !important;
+  margin-bottom: 2px;
   margin-right: 10px;
-  width: 10px;
 }
 .press p.link a {
   color: #c8a461;
@@ -16492,32 +16503,7 @@ input[type=submit] {
 }
 .press .affiche .buttons .button {
   border-color: #c8a461;
-  background-image: url("../img/svg/telecharger-gold.svg");
-  background-repeat: no-repeat;
-  background-position: 15px 12px;
-  background-size: 14px;
   position: relative;
-}
-.press .affiche .buttons .button:after {
-  background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
-  background-size: 14px;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.press .affiche .buttons .button:hover:after {
-  opacity: 1;
-  visibility: visible;
 }
 .press .affiche .caption {
   color: #666;
@@ -16624,10 +16610,6 @@ input[type=submit] {
   padding: 5px 22px;
 }
 .press.lock .affiche .buttons .button {
-  background-image: url("../img/svg/cadenas-grey.svg");
-  background-repeat: no-repeat;
-  background-position: 15px 45%;
-  background-size: 12px;
   border-color: #b0b0b0;
   color: #b0b0b0;
   pointer-events: none;
