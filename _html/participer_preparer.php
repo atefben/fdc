@@ -11,17 +11,17 @@
 <body>
   <?php include('header.html'); ?>
 
-    <div id="main" class="list-article participate loading">
+    <div id="main" class="list-article participate loading prepare">
       <div class="bandeau-list vCenter">
         <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/bandeau2.jpg)">
-          <h2 class="title title-list-header"> <img src="img/svg/camera.svg" alt="" class="logo"> <br>Accès aux projections</h2>
+          <h2 class="title title-list-header"><i class="icon icon_camera"></i><br>Accès aux projections</h2>
         </div>
       </div>
       <div class="contain-participate">
         <section>
          <div class="contain-section participate-active">
-          <h3 class="title-participate"> <img src="img/participate/les-differents-type-d-acces.svg" alt="" class="svg">Les différents types d'accès</h3><i class="fa fa-minus"></i>
-          
+          <h3 class="title-participate"><i class="icon icon_les-differents-types-dacces"></i>Les différents types d'accès</h3><i class="icon icon_moins accordion"></i>
+
           <div class="contain-acces">
             <div class="imgs-acces">
               <img src="img/participate/item1.jpg" alt="">
@@ -29,11 +29,11 @@
               <img src="img/participate/item3.jpg" alt="">
             </div>
             <div class="text-acces">
-              <h4 class="title-acces"><img src="img/participate/acces-libre.svg" alt=""> En accès libre</h4>
+              <h4 class="title-acces"><i class="icon icon_acces-libre"></i> En accès libre</h4>
               <p class="descript-acces">Les projections en plein air du Cinéma de la Plage sont ouvertes à tous</p>
-              <h4 class="title-acces"><img src="img/participate/badge.svg" alt=""> Sur badge professionnel</h4>
+              <h4 class="title-acces"><i class="icon icon_badge"></i> Sur badge professionnel</h4>
               <p class="descript-acces">Vous pouvez accéder aux projections de la Sélection Officielle dans les salles Debussy, Buñuel, Bazin et du Soixantième sur simple présentation de votre badge, dans la limite des places disponibles. Vous pouvez également accéder sur badge aux espaces de visionnage de Cannes Court Métrage.</p>
-              <h4 class="title-acces"><img src="img/participate/invitation.svg" alt=""> Sur invitation</h4>
+              <h4 class="title-acces"><i class="icon icon_invitation"></i> Sur invitation</h4>
               <p class="descript-acces">Une invitation est exigée pour assister aux projections du Grand Théâtre Lumière. Ces invitations sont strictement personnelles et incessibles. L'utilisation de l'invitation autorise à ce que vous soyez éventuellement photographié(e) et/ou filmé(e).</p>
               <p class="descript-acces"><strong>Retrait des invitations :</strong>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ullam praesentium reiciendis exercitationem doloremque nulla repellat in laudantium non voluptas consectetur perferendis, consequuntur sunt eius libero nostrum quasi quibusdam? Minima odit adipisci.
@@ -48,7 +48,7 @@
         <section>
          <div class="contain-section">
          <!-- For active svg supp grey in JS -->
-          <h3 class="title-participate"><img src="img/participate/les-salles-de-projection.svg" alt="" class="svg">Les salles de projection</h3><i class="fa fa-plus"></i>
+          <h3 class="title-participate"><i class="icon icon_les-salles-de-projections"></i>Les salles de projection</h3><i class="icon icon_case-plus accordion"></i>
           <div class="contain-cinema">
            <h4 class="title-cinema">Les salles du festival</h4>
            <div class="contain-item-cinema">
@@ -87,7 +87,7 @@
                 <p><strong>Accès :</strong> Parvis du Riveria sur badge.</p>
                 <a href="#">Voir sur le plan</a>
               </div>
-            </div> 
+            </div>
            </div>
           <h4 class="title-cinema">Les salles du marché du film</h4>
           <h4 class="descrip-participate">Le marché du Film dispose de projections situées dans le Palais, le Riviera et en ville.</h4>
@@ -119,22 +119,22 @@
         </section>
         <section>
           <div class="contain-section contain-cinema">
-              <h3 class="title-participate"> <img src="img/participate/les-bonnes-pratiques.svg" alt="" class="svg">Les bonnes pratiques</h3><i class="fa fa-plus"></i>
+              <h3 class="title-participate"><i class="icon icon_les-bonnes-pratiques"></i>Les bonnes pratiques</h3><i class="icon icon_case-plus accordion"></i>
            <div class="contain-good-practice">
               <div class="item-good-practice">
-                <img src="img/participate/enregistreur.svg" alt="svg">
+                <i class="icon icon_enregistreur"></i>
                 <strong>Pas d'utilisation d'enregistreur vidéos/audios/photos</strong>
               </div>
               <div class="item-good-practice">
-                <img src="img/participate/selfie.svg" alt="svg">
+                <i class="icon icon_selfie"></i>
                 <strong>Pas de selfies sur les marches</strong>
               </div>
               <div class="item-good-practice">
-                <img src="img/participate/telephone.svg" alt="svg">
+                <i class="icon icon_telephone"></i>
                 <strong>Pas de téléphone dans les salles</strong>
               </div>
               <div class="item-good-practice">
-                <img src="img/participate/dress-code.svg" alt="svg">
+                <i class="icon icon_dress-code"></i>
                 <strong>Dress Code exigé</strong>
               </div>
            </div>
@@ -145,7 +145,7 @@
     <?php include('footer.html'); ?>
 
       <!-- //// SCRIPTS \\\\ -->
-      
+
       <?php include('scripts.inc.php'); ?>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 </body>

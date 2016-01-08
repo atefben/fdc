@@ -14671,17 +14671,13 @@ input[type=submit] {
   padding-right: 22px;
   margin-bottom: -12px;
 }
-.participate .contain-participate section .title-participate .svg {
-  width: 33px;
-  height: 19px;
-  padding-right: 13px;
-  vertical-align: bottom;
+.participate .contain-participate section .title-participate .icon {
+  font-size: 1.3rem;
+  margin-right: 22px;
 }
-.participate .contain-participate section .title-participate .svg path {
-  fill: currentColor;
-}
-.participate .contain-participate section .title-participate .svg .st0 {
-  stroke: currentColor;
+.participate .contain-participate section .title-participate .icon_les-salles-de-projections {
+  font-size: 1.5rem;
+  vertical-align: sub !important;
 }
 .participate .contain-participate section .part-plus-info {
   padding-top: 27px;
@@ -14701,9 +14697,9 @@ input[type=submit] {
   display: inline-block;
   vertical-align: text-top;
 }
-.participate .contain-participate section .item .svg-item {
-  height: 41px;
-  width: 86px;
+.participate .contain-participate section .item .icon {
+  font-size: 5rem;
+  color: #c8a461;
 }
 .participate .contain-participate section .item .transport {
   color: #000000;
@@ -14756,17 +14752,21 @@ input[type=submit] {
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.participate .contain-participate section .item .btn .svg {
-  width: 10px;
-  height: 10px;
-  padding-right: 10px;
-  vertical-align: text-top;
-}
-.participate .contain-participate section .item .btn .svg polygon {
-  fill: currentColor;
+.participate .contain-participate section .item .btn .icon {
+  font-size: .5rem;
+  margin-right: 10px;
+  vertical-align: middle !important;
+  margin-bottom: 3px;
+  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .participate .contain-participate section .item .btn:hover {
   border-color: #000;
+  color: #000;
+}
+.participate .contain-participate section .item .btn:hover .icon {
   color: #000;
 }
 .participate .contain-participate section .large {
@@ -14813,14 +14813,9 @@ input[type=submit] {
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.participate .contain-participate section .contain-map .btn .svg {
-  width: 15px;
-  height: 15px;
-  padding-right: 10px;
-  vertical-align: sub;
-}
-.participate .contain-participate section .contain-map .btn .svg polygon {
-  fill: currentColor;
+.participate .contain-participate section .contain-map .btn .icon {
+  margin-right: 10px;
+  font-size: .7rem;
 }
 .participate .contain-participate section .contain-map .btn:hover {
   border-color: #000;
@@ -14843,17 +14838,13 @@ input[type=submit] {
 .participate .contain-participate section .contain-map .link a:hover {
   color: #966505;
 }
-.participate .contain-participate section .contain-map .link .svg {
-  width: 12px;
-  height: 15px;
+.participate .contain-participate section .contain-map .link .icon {
   padding-right: 9px;
   -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.participate .contain-participate section .contain-map .link .svg .st0 {
-  fill: currentColor;
+  vertical-align: text-top;
 }
 .participate .contain-participate section .contain-map .link:hover {
   color: #966505;
@@ -14879,10 +14870,8 @@ input[type=submit] {
   font-size: .75rem;
   padding-bottom: 20px;
 }
-.participate .contain-acces .text-acces .title-acces img {
-  height: 15px;
-  padding-right: 5px;
-  vertical-align: text-bottom;
+.participate .contain-acces .text-acces .title-acces .icon {
+  font-size: .85rem;
 }
 .participate .contain-acces .text-acces .descript-acces {
   padding-bottom: 20px;
@@ -14994,8 +14983,15 @@ input[type=submit] {
   margin: 0 auto;
   line-height: 24px;
 }
-.participate .contain-cinema .contain-good-practice .item-good-practice img {
-  width: 20%;
+.participate .contain-cinema .contain-good-practice .item-good-practice .icon {
+  font-size: 2.4rem;
+  color: #B0B0B0;
+  margin-bottom: 13px;
+}
+
+.prepare .title-list-header .icon {
+  font-size: 2.75rem;
+  margin-top: -6px;
 }
 
 .partners .title-section:hover {

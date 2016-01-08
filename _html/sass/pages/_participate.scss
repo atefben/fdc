@@ -117,17 +117,13 @@
           padding-right: 22px;
           margin-bottom: -12px;
         }
-        .svg {
-          width: 33px;
-          height: 19px;
-          padding-right: 13px;
-          vertical-align: bottom;
+        .icon{
+          font-size: 1.3rem;
+          margin-right: 22px;
         }
-        .svg path {
-          fill: currentColor;
-        }
-        .svg .st0 {
-          stroke: currentColor;
+        .icon_les-salles-de-projections{
+          font-size: 1.5rem;
+          vertical-align: sub !important;
         }
       }
       .part-plus-info {
@@ -149,9 +145,9 @@
         height: 269px;
         display: inline-block;
         vertical-align: text-top;
-        .svg-item {
-          height: 41px;
-          width: 86px;
+        .icon{
+          font-size: 5rem;
+          color:$gold;
         }
         .transport {
           color: #000000;
@@ -197,19 +193,22 @@
           text-decoration: none;
           font-family: $CamphorHeavy;
           @include transition(all 0.9s $linear);
-          .svg {
-            width: 10px;
-            height: 10px;
-            padding-right: 10px;
-            vertical-align: text-top;
-          }
-          .svg polygon {
-            fill: currentColor;
+
+          .icon{
+            font-size: .5rem;
+            margin-right: 10px;
+            vertical-align: middle !important;
+            margin-bottom: 3px;
+            @include transition(all 0.9s $linear);
           }
         }
         .btn:hover {
           border-color: #000;
           color: #000;
+
+          & .icon{
+            color: #000;
+          }
         }
       }
       .large {
@@ -251,14 +250,10 @@
           width: 130px;
           margin: 0 auto;
           @include transition(all 0.9s $linear);
-          .svg {
-            width: 15px;
-            height: 15px;
-            padding-right: 10px;
-            vertical-align: sub;
-          }
-          .svg polygon {
-            fill: currentColor;
+
+          .icon{
+            margin-right: 10px;
+            font-size: .7rem;
           }
         }
         .btn:hover {
@@ -278,14 +273,11 @@
           a:hover {
             color: #966505;
           }
-          .svg {
-            width: 12px;
-            height: 15px;
+
+          .icon{
             padding-right: 9px;
             @include transition(all 0.9s $linear);
-          }
-          .svg .st0 {
-            fill: currentColor;
+            vertical-align: text-top;
           }
         }
         .link:hover {
@@ -316,10 +308,8 @@
         font-family: $CamphorBold;
         font-size: .75rem;
         padding-bottom: 20px;
-        img {
-          height: 15px;
-          padding-right: 5px;
-          vertical-align: text-bottom;
+        .icon{
+          font-size: .85rem;
         }
       }
       .descript-acces {
@@ -430,14 +420,24 @@
           margin: 0 auto;
           line-height: 24px;
         }
-        img {
-          width: 20%;
+        .icon{
+          font-size: 2.4rem;
+          color: #B0B0B0;
+          margin-bottom: 13px;
         }
       }
     }
   }
 }
 
+.prepare{
+  .title-list-header{
+    .icon{
+      font-size: 2.75rem;
+      margin-top: -6px;
+    }
+  }
+}
 // 3. Partners
 // ========================
 .partners {
