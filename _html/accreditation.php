@@ -11,7 +11,7 @@
     <div id="main" class="press loading accreditation lock">
       <div class="header-press">
         <div class="head">
-          <span>Espace presse</span>
+          <span><i class="icon icon_espace-presse"></i>Espace presse</span>
         </div>
         <div class="container">
           <h2>S'accréditer</h2>
@@ -66,7 +66,7 @@
     En février, à réception des pièces demandées, le service de presse vous communiquera
     l'adresse Internet d’un portail de pré-inscription ainsi qu'une référence personnalisée
     donnant accès à un formulaire d'accréditation en ligne que vous devez compléter et valider.
-    Ce portail vous permettra également de suivre le traitement de votre inscription en ligne. 
+    Ce portail vous permettra également de suivre le traitement de votre inscription en ligne.
     <br><br>
     Les journalistes ayant pour la plupart une activité web, le Festival de Cannes a établi une «
     Charte de bonne conduite » que nous vous demandons d’accepter au moment de votre
@@ -117,8 +117,9 @@
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
-            <a href="#" class="button save">Enregistrer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()"><i class="icon icon_print"></i>
+Imprimer</a>
+            <a href="#" class="button save"><i class="icon icon_pdf"></i>Enregistrer</a>
           </div>
             <h4>Agence de presse</h4>
             <p>Merci d’adresser au service de presse les éléments nécessaires à votre demande
@@ -135,7 +136,7 @@ Si votre média souhaite mandater plusieurs journalistes, merci de nous précise
 et fonctions. Si votre agence de presse fournit du contenu à des médias web, merci de nous
 préciser si vous mandatez une équipe technique (vidéastes, techniciens).
 Pour un photographe, veuillez vous référer à la rubrique « Agence photo ».
-- vos coordonnées (ligne directe, portable, adresse e-mail) 
+- vos coordonnées (ligne directe, portable, adresse e-mail)
 - la photocopie de votre carte professionnelle (si le journaliste n’en possède pas, merci de
 l’indiquer sur la lettre officielle)
 - 3 dépêches et/ou reportages récents signés de vous ou de l'agence</p>
@@ -159,13 +160,14 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
          </p>
         </div>
         </div>
-       </div> 
+       </div>
        <div class="nav-container" data-cat="mediaweb">
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
-            <a href="#" class="button save">Enregistrer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()"><i class="icon icon_print"></i>
+Imprimer</a>
+            <a href="#" class="button save"><i class="icon icon_pdf"></i>Enregistrer</a>
           </div>
             <h4>Media Web</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, laudantium nesciunt, dignissimos minima error hic assumenda laborum optio consequatur necessitatibus quia explicabo ratione, eligendi vel ipsa dolores, enim architecto deleniti.:</p>
@@ -190,13 +192,14 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
          </p>
         </div>
         </div>
-       </div> 
+       </div>
        <div class="nav-container" data-cat="agencepresse">
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
-            <a href="#" class="button save">Enregistrer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()"><i class="icon icon_print"></i>
+Imprimer</a>
+            <a href="#" class="button save"><i class="icon icon_pdf"></i>Enregistrer</a>
           </div>
             <h4>Agence de presse</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, laudantium nesciunt, dignissimos minima error hic assumenda laborum optio consequatur necessitatibus quia explicabo ratione, eligendi vel ipsa dolores, enim architecto deleniti.:</p>
@@ -226,8 +229,9 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
-            <a href="#" class="button save">Enregistrer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()"><i class="icon icon_print"></i>
+Imprimer</a>
+            <a href="#" class="button save"><i class="icon icon_pdf"></i>Enregistrer</a>
           </div>
             <h4>Agence de presse audiovisuelle</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, laudantium nesciunt, dignissimos minima error hic assumenda laborum optio consequatur necessitatibus quia explicabo ratione, eligendi vel ipsa dolores, enim architecto deleniti.:</p>
@@ -257,8 +261,9 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
-            <a href="#" class="button save">Enregistrer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()"><i class="icon icon_print"></i>
+Imprimer</a>
+            <a href="#" class="button save"><i class="icon icon_pdf"></i>Enregistrer</a>
           </div>
             <h4>Agence photos</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, laudantium nesciunt, dignissimos minima error hic assumenda laborum optio consequatur necessitatibus quia explicabo ratione, eligendi vel ipsa dolores, enim architecto deleniti.:</p>
@@ -288,8 +293,9 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
-            <a href="#" class="button save">Enregistrer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()"><i class="icon icon_print"></i>
+Imprimer</a>
+            <a href="#" class="button save"><i class="icon icon_pdf"></i>Enregistrer</a>
           </div>
             <h4>Photographie de presse</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, laudantium nesciunt, dignissimos minima error hic assumenda laborum optio consequatur necessitatibus quia explicabo ratione, eligendi vel ipsa dolores, enim architecto deleniti.:</p>
@@ -319,8 +325,9 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
-            <a href="#" class="button save">Enregistrer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()"><i class="icon icon_print"></i>
+Imprimer</a>
+            <a href="#" class="button save"><i class="icon icon_pdf"></i>Enregistrer</a>
           </div>
             <h4>télévisision</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, laudantium nesciunt, dignissimos minima error hic assumenda laborum optio consequatur necessitatibus quia explicabo ratione, eligendi vel ipsa dolores, enim architecto deleniti.:</p>
@@ -350,8 +357,9 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
         <div class="wrapper">
           <div class="container-small">
           <div class="buttons">
-            <a id="share-article" href="#" class="button  print" onclick="window.print()">Imprimer</a>
-            <a href="#" class="button save">Enregistrer</a>
+            <a id="share-article" href="#" class="button  print" onclick="window.print()"><i class="icon icon_print"></i>
+Imprimer</a>
+            <a href="#" class="button save"><i class="icon icon_pdf"></i>Enregistrer</a>
           </div>
             <h4>Radio</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, laudantium nesciunt, dignissimos minima error hic assumenda laborum optio consequatur necessitatibus quia explicabo ratione, eligendi vel ipsa dolores, enim architecto deleniti.:</p>
@@ -379,7 +387,7 @@ Les liens Internet adressés par email ne seront pas pris en compte.<br>
        </div>
        <div class="request">
         <div class="wrapper">
-         <a href="//reg.online-festival.com/" class="button request-btn" target="_blank">Faire une demande d'accréditation en ligne *</a>
+         <a href="//reg.online-festival.com/" class="button request-btn" target="_blank"><i class="icon icon_communique-presse"></i>Faire une demande d'accréditation en ligne *</a>
          <span class="legend"><sup>*</sup> Vous allez quitter le site</span>
         </div>
        </div>

@@ -11,16 +11,17 @@
     <div id="main" class="single-article single-evenement loading">
       <div class="content-article">
         <div class="container">
-          <a href="article2.php" class="nav prev"></a>
-          <a href="article3.php" class="nav next"></a>
+          <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+          <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
           <div class="info">
             <a href="#" class="category">Rendez-vous Européen</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
             <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
           </div>
           <h2 class="title-article">Le Rendez-vous Européen</h2>
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
-            <a href="#" class="button print">Imprimer</a>
+            <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
+            <a href="#" class="button print"><i class="icon icon_print"></i>
+  Imprimer</a>
           </div>
           <div class="single-photo">
             <div class="photo-container">
@@ -61,13 +62,14 @@
       </div>
       <div class="share">
       <p>Partagez l'article</p>
-        <div class="buttons square">
-          <a href="#" class="button facebook"></a>
-          <a href="#" class="button twitter"></a>
-          <a href="#" class="button link"></a>
-          <a href="#" class="button email"></a>
-          <a href="#" class="button print"></a>
-        </div>
+      <div class="buttons square">
+        <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
+        <a href="#" class="button twitter"><i class="icon icon_twitter"></i>
+</a>
+        <a href="#" class="button link"><i class="icon icon_link"></i></a>
+        <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+        <a href="#" class="button print"><i class="icon icon_print"></i></a>
+      </div>
       </div>
       <div class="film">
           <div class="programmation-film">

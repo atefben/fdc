@@ -29,7 +29,7 @@
             <div id="count"><span>0</span> Résultats</div>
             <form action="search.php">
               <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." value="<?php if (isset($_GET['name'])): echo $_GET['name']; endif; ?>" />
-              <input id="submitSearch" type="submit" value="" />
+              <i class="icon icon_recherche"></i><input id="submitSearch" type="submit" value="" />
             </form>
             <div id="results">
               <div id="filtered">
@@ -37,14 +37,14 @@
                   <div id="date" class="filter">
                     <span class="label">Date :</span>
                     <span class="select">
-                      <span class="active" data-filter="all">Toutes</span>
+                      <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
                       <span data-filter="18052015">18 Mai 2015</span>
                     </span>
                   </div>
                   <div id="format" class="filter">
                     <span class="label">Format :</span>
                     <span class="select">
-                      <span class="active" data-filter="all">Tous</span>
+                      <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
                       <span data-filter="photo">Photo</span>
                       <span data-filter="video">Vidéo</span>
                       <span data-filter="audio">Audio</span>
@@ -54,7 +54,7 @@
                   <div id="theme" class="filter">
                     <span class="label">Thème :</span>
                     <span class="select">
-                      <span class="active" data-filter="all">Tous</span>
+                      <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
                       <span data-filter="press">Conférence de Presse</span>
                       <span data-filter="steps">Montée des marches</span>
                     </span>
@@ -73,8 +73,8 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                        <span class="picto"></span>
+                        <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                        <span class="picto"><i class="icon icon_article"></i></span>
                       </div>
                       <div class="info">
                         <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -87,8 +87,8 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                        <span class="picto"></span>
+                        <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                        <span class="picto"><i class="icon icon_article"></i></span>
                       </div>
                       <div class="info">
                         <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -101,8 +101,8 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                        <span class="picto"></span>
+                        <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                        <span class="picto"><i class="icon icon_article"></i></span>
                       </div>
                       <div class="info">
                         <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -115,8 +115,8 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>
-                        <span class="picto"></span>
+                        <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                        <span class="picto"><i class="icon icon_article"></i></span>
                       </div>
                       <div class="info">
                         <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -135,7 +135,7 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <span class="picto"></span>
+                        <span class="picto"><i class="icon icon_article"></i></span>
                       </div>
                       <div class="info">
                         <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -148,7 +148,7 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <span class="picto"></span>
+                        <span class="picto"><i class="icon icon_article"></i></span>
                       </div>
                       <div class="info">
                         <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -167,7 +167,7 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <span class="picto"></span>
+                        <span class="picto"><i class="icon icon_audio"></i></span>
                       </div>
                       <div class="info">
                         <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -180,7 +180,7 @@
                           <img src="img/articles/03.jpg" alt="" />
                         </div>
                         <a href="article.php" class="linkImage"></a>
-                        <span class="picto"></span>
+                        <span class="picto"><i class="icon icon_video"></i></span>
                       </div>
                       <div class="info">
                         <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -440,7 +440,7 @@
               <div class="vCenterKid">
                 <h3>Retrouvez d'autres résultats pour les éditions précédentes dans</h3>
                 <h2 class="title">L'encyclopédie du festival</h2>
-                <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />Rechercher</a></p>
+                <p class="link"><a href="#"><i class="icon icon_fleche-right"></i>Rechercher</a></p>
               </div>
             </div>
           </div>

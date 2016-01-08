@@ -14,7 +14,7 @@
     <div id="main" class="list-article films-list loading cannes-classic selection-officielle">
       <div class="bandeau-list">
            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(http://dummyimage.com/1920x450/ffd373/fff&text=+);">
-              <div class="vCenterKid"> 
+              <div class="vCenterKid">
                <h2 class="title title-list-header">Sélection officielle</h2>
               </div>
            </div>
@@ -53,7 +53,7 @@
           <li><a href="films_copiesrestaurees.php" class="ajax active">Copies restaurées </a></li>
           <li><a href="#" class="ajax">World cinema project</a></li>
           <li><a href="films_documentaires.php" class="ajax">Documentaires</a></li>
-        </ul> 
+        </ul>
       </div>
         <section class="categorie-items">
 
@@ -113,9 +113,9 @@
                         <h4 class="sub-title-item">(L'histoire officiel)</h4>
                         <span class="nom-item">Luis PUENZO</span>
                         <span class="date-item">1984 - 1h50</span>
-                        <p class="description-item">Une présentation de Historias Cinematográficas. Prix d'interprétation féminine ex-aequo au Festival de Cannes 1985 pour Norma Aleandro et Oscar du meilleur film en langue étrangère en 1986. Restauration en 4K à partir du négatif original. Réétalonnage mené par le réalisateur et le directeur 
-de la photographie. 
-Son numérisé à partir d’une restauration du support magnétique puis remixé en 5.1 avec de nouveaux effets et orchestrations additionnelles. 
+                        <p class="description-item">Une présentation de Historias Cinematográficas. Prix d'interprétation féminine ex-aequo au Festival de Cannes 1985 pour Norma Aleandro et Oscar du meilleur film en langue étrangère en 1986. Restauration en 4K à partir du négatif original. Réétalonnage mené par le réalisateur et le directeur
+de la photographie.
+Son numérisé à partir d’une restauration du support magnétique puis remixé en 5.1 avec de nouveaux effets et orchestrations additionnelles.
 Financement par le National Film Institute argentin (INCAA) et travail exécuté à Cinecolor Lab sous la supervision du réalisateur/producteur Luis Puenzo.</p>
                     </div>
                 </div>
@@ -126,10 +126,10 @@ Financement par le National Film Institute argentin (INCAA) et travail exécuté
       <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
            <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
                <h2 class="title title-list-header ">World Cinema Project</h2>
-               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"><i class="icon icon_fleche-right"></i> Découvrir la rubrique</a>
            </div>
       </div>
-      
+
     </div>
     <?php include('footer.html'); ?>
 

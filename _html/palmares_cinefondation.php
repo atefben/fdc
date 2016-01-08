@@ -24,7 +24,7 @@
                <li><a href="palmares_cinefondation.php" class="active ajax">Cinéfondation</a></li>
                <li><a href="palmares_camerador.php" class="ajax">Caméra d'or</a></li>
                <li><a href="palmares_toutlepalmares.php" class="ajax">Tout le palmarès</a></li>
-           </ul> 
+           </ul>
       </div>
       <div class="container container-list">
         <section class="categorie-items">
@@ -34,7 +34,7 @@
                 <img src="img/palmares/cover-film-cinefondation1.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Premier prix de la cinéfondation</strong>
                   </div>
                     <h3 class="title-item">Share</h3>
@@ -49,7 +49,7 @@
                 <img src="img/palmares/cover-film-cinefondation2.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Deuxième prix de la cinéfondation</strong>
                   </div>
                     <h3 class="title-item">Locas Perdinas</h3>
@@ -64,7 +64,7 @@
                 <img src="img/palmares/cover-film-cinefondation3.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Troisème prix de la cinéfondation</strong>
                   </div>
                     <h3 class="title-item">victor xx</h3>
@@ -72,14 +72,14 @@
                 </div>
                </div>
             </div>
-            </article>   
-        </section>  
+            </article>
+        </section>
         </div>
 
       <div class="bandeau-list push-footer vCenter">
            <div class="bandeau-list-img bandeau-list-footer vCenterKid" style="background-image:url(img/films/cover-bandeau-push-cinemaplage.jpg);">
                <h2 class="title title-list-header">Cinéma de la plage</h2>
-               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"><i class="icon icon_fleche-right"></i>Découvrir la rubrique</a>
            </div>
       </div>
     </div>

@@ -990,12 +990,12 @@ $(document).ready(function() {
             $(this).attr('src','img/press/svg/telecharger.svg');
           })
         }
-        svgImg();
+
       }
 
   if($('.downloading-press').length){
     initSlideshows();
-      svgImg();
+
   }
 
   //mediatheque AJAX
@@ -1009,7 +1009,6 @@ $(document).ready(function() {
             history.pushState('',GLOBALS.texts.url.title, urlPath);
             ajaxEvent();
             menuMedia();
-            svgImg();
             initSlideshows();
             popinInit();
           });
@@ -1028,40 +1027,13 @@ $(document).ready(function() {
         if(!$parent.hasClass('active')){
             $active.removeClass('active');
             $parent.addClass('active');
+            $('.icon_moins').removeClass('icon_moins').addClass('icon_case-plus');
+            $parent.find('.icon_case-plus').removeClass('icon_case-plus').addClass('icon_moins');
+            console.log($parent.find('.icon_case-plus'));
         }else{
             $active.removeClass('active');
+            $parent.find('.icon_moins').removeClass('icon_moins').addClass('icon_case-plus');
         }
-      });
-    }
-
-    function svgImg(){
-                jQuery('img.svg').each(function(){
-          var $img = jQuery(this);
-          var imgID = $img.attr('id');
-          var imgClass = $img.attr('class');
-          var imgURL = $img.attr('src');
-
-          jQuery.get(imgURL, function(data) {
-              // Get the SVG tag, ignore the rest
-              var $svg = jQuery(data).find('svg');
-
-              // Add replaced image's ID to the new SVG
-              if(typeof imgID !== 'undefined') {
-                  $svg = $svg.attr('id', imgID);
-              }
-              // Add replaced image's classes to the new SVG
-              if(typeof imgClass !== 'undefined') {
-                  $svg = $svg.attr('class', imgClass+' replaced-svg');
-              }
-
-              // Remove any invalid XML tags as per http://validator.w3.org
-              $svg = $svg.removeAttr('xmlns:a');
-
-              // Replace image with new SVG
-              $img.replaceWith($svg);
-
-          }, 'xml');
-
       });
     }
     ajaxEvent();

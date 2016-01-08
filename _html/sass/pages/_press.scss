@@ -13,9 +13,29 @@
   overflow: hidden;
   padding-top: 0!important;
 
+  .download{
+    .icon.icon_telecharger{
+      margin-right: 10px !important;
+      vertical-align: middle !important;
+      margin-bottom: 3px;
+    }
+  }
+
   .button{
     font-size: 0.63rem;
     height: 37px;
+    .icon_telecharger{
+      margin-right: 10px;
+      font-size: .8rem;
+      vertical-align: middle !important;
+      margin-bottom: 2px;
+    }
+    .icon_cadenas{
+      margin-right: 10px;
+      font-size: .8rem;
+      vertical-align: middle !important;
+      margin-bottom: 3px;
+    }
   }
 
   .fc-event {
@@ -57,10 +77,20 @@
       font-family: $CamphorBold;
       font-size: 0.625rem;
       line-height: 28px;
-      padding-left: 40px;
       position: relative;
       text-transform: uppercase;
       width: 100%;
+
+      .icon{
+        font-size: 1rem;
+        margin: 0 13px;
+        vertical-align: middle !important;
+        margin-bottom: 2px;
+      }
+
+      .icon_espace-presse{
+        font-size: .8rem;
+      }
 
       &:after {
         content: '';
@@ -73,34 +103,6 @@
         right: 5px;
         cursor: -webkit-grab;
         cursor: grab;
-      }
-    }
-
-    &.pen {
-      .category {
-        background-image: url('../img/svg/press.svg');
-        background-size: 17px;
-      }
-    }
-
-    &.seance {
-      .category {
-        background-image: url('../img/svg/evt-seance.svg');
-        background-size: 17px;
-      }
-    }
-
-    &.seance-press {
-      .category {
-        background-image: url('../img/svg/evt-seance-presse.svg');
-        background-size: 15px;
-      }
-    }
-
-    &.conference {
-      .category {
-        background-image: url('../img/svg/evt-conference.svg');
-        background-size: 13px;
       }
     }
 
@@ -405,6 +407,7 @@
       a {
         font-size: 0.625rem;
       }
+
     }
   }
 
@@ -417,7 +420,7 @@
     height: 150px;
 
     .head {
-      background: $gold url('../img/svg/press-white.svg') no-repeat center 36%;
+      background: $gold no-repeat center 36%;
       background-size: 40px;
       color: #fff;
       float: left;
@@ -436,6 +439,14 @@
         font-family: $CamphorBold;
         font-size: 0.750rem;
         letter-spacing: 0.1em;
+        position: relative;
+
+        .icon{
+          position: absolute;
+          top: -38px;
+          right: 17px;
+          font-size: 1.75rem;
+        }
       }
     }
 
@@ -493,23 +504,11 @@
           text-align: left;
           @include transition(background-color 0.6s $smoothTransition, color 0.6s $smoothTransition);
 
-          &:hover {
-            background: $gold url('../img/svg/telecharger-white.svg') no-repeat 5% center;
-            background-size: 13px;
-            color: #fff;
-          }
-
           &.show {
             opacity: 1;
             visibility: visible;
           }
         }
-
-        &.subnav, &.list {
-          background: #fff url('../img/svg/telecharger-gold.svg') no-repeat 5% center;
-          background-size: 13px;
-        }
-
         &.subnav:hover {
           background-color: #fff;
           color: $gold;
@@ -550,12 +549,13 @@
     }
 
     h3 {
-      background: url('../img/svg/cadenas.svg') no-repeat left top;
-      background-size: 14px;
-      padding-left: 24px;
       padding-top: 2px;
       line-height: 1.4em;
       margin: 0 0 5px 65px;
+      .icon{
+        font-size: 1.1rem;
+        margin-right: 5px;
+      }
     }
 
     p {
@@ -671,8 +671,11 @@
 
         &.communique .picto {
           background-color: $gold;
-          background-image: url('../img/svg/communique-presse.svg');
-          background-size: 21px 20px;
+          .icon{
+            margin-left: 13px;
+            margin-top: 13px;
+            font-size: 1.2rem;
+          }
         }
 
         .image {
@@ -796,15 +799,25 @@
             z-index: 1;
 
             &.prev {
-              background: #e5e5e5 url('../img/svg/arrow-left-black.svg') no-repeat center;
-              background-size: 12px;
               left: 60px;
+
+              .icon{
+                margin-top: 15px;
+                margin-left: 15px;
+                font-size: .6rem;
+                color: #000;
+              }
             }
 
             &.next {
-              background: #e5e5e5 url('../img/svg/arrow-right-black.svg') no-repeat center;
-              background-size: 12px;
               right: 0;
+
+              .icon{
+                margin-top: 15px;
+                margin-left: 15px;
+                font-size: .6rem;
+                color: #000;
+              }
             }
 
             &.hide {
@@ -931,15 +944,15 @@
             }
 
             &.left {
-              background: #fff url("../img/svg/arrow-left-grey.svg") no-repeat center;
-              background-size: 12px;
+              // background: #fff url("../img/svg/arrow-left-grey.svg") no-repeat center;
+              // background-size: 12px;
               border-left: 1px solid #e5e5e5;
               border-right: 1px dashed #e5e5e5;
             }
 
             &.right {
-              background: #fff url("../img/svg/arrow-right-grey.svg") no-repeat center;
-              background-size: 12px;
+              // background: #fff url("../img/svg/arrow-right-grey.svg") no-repeat center;
+              // background-size: 12px;
               left: auto;
               right: 0;
               border-left: 1px dashed #e5e5e5;
@@ -1077,25 +1090,15 @@
           font-family: $CamphorBold;
           font-size: 0.625rem;
           letter-spacing: 0.1em;
-          padding-left: 25px;
           margin-right: 45px;
           text-transform: uppercase;
 
-          &.folder {
-            background: url('../img/svg/dossier.svg') no-repeat left 47%;
-            background-size: 18px;
+          .icon{
+            font-size: 1rem;
+            margin-right: 10px;
+            vertical-align: middle !important;
+            margin-bottom: 3px;
           }
-
-          &.trailer {
-            background: url('../img/svg/bande-annonce.svg') no-repeat left 47%;
-            background-size: 16px;
-          }
-
-          &.photo {
-            background: url('../img/svg/photo-grey.svg') no-repeat left 47%;
-            background-size: 18px;
-          }
-
           @include breakpoint(1279px) {
             span {
               display: none;
@@ -1156,6 +1159,13 @@
 
       a {
         font-size: 0.625rem;
+
+        .icon{
+          font-size: .45rem;
+          margin-right: 10px;
+          vertical-align: middle !important;
+          margin-bottom: 3px;
+        }
       }
     }
   }
@@ -1163,9 +1173,11 @@
   p.link {
     margin-top: 25px;
 
-    img {
+    .icon{
+      font-size: .45rem;
+      vertical-align: middle !important;
+      margin-bottom: 2px;
       margin-right: 10px;
-      width: 10px;
     }
 
     a {
@@ -1240,31 +1252,7 @@
 
       .button {
         border-color: $gold;
-        background-image: url('../img/svg/telecharger-gold.svg');
-        background-repeat: no-repeat;
-        background-position: 15px 12px;
-        background-size: 14px;
         position: relative;
-
-        &:after {
-          background: url('../img/svg/telecharger-white.svg') no-repeat 15px 12px;
-          background-size: 14px;
-          content: '';
-          display: block;
-          height: 100%;
-          position: absolute;
-          width: 100%;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          visibility: hidden;
-          @include transition(all 0.9s $smoothTransition);
-        }
-
-        &:hover:after {
-          opacity: 1;
-          visibility: visible;
-        }
       }
     }
 
@@ -1391,10 +1379,6 @@
 
   &.lock {
     .affiche .buttons .button {
-      background-image: url('../img/svg/cadenas-grey.svg');
-      background-repeat: no-repeat;
-      background-position: 15px 45%;
-      background-size: 12px;
       border-color: #b0b0b0;
       color: #b0b0b0;
       pointer-events: none;
@@ -1620,62 +1604,30 @@
       border-right: 0px solid #fff;
     }
       .create{
-//        border-color: $gold;
-        background-image: url('../img/press/svg/creer-gold.svg');
-        background-repeat: no-repeat;
-        background-position: 15px 12px;
-        background-size: 14px;
-//        position: relative;
+          color:$gold;
+          .icon{
+            margin-right: 10px;
+            font-size: 0.8rem;
+            vertical-align: middle !important;
+          }
       }
       .create:hover{
         background-color: #c8a461;
         border-color: #c8a461;
         color: #fff;
       }
-      .create:after {
-        background: url("../img/press/svg/creer-white.svg") no-repeat 15px 12px;
-        background-size: 14px;
-        content: '';
-        display: block;
-        height: 100%;
-        position: absolute;
-        width: 48%;
-        top: 1px;
-        left:1px;
-//        background-color: red;
-        opacity: 0;
-        visibility: hidden;
-        @include transition(all 0.6s $smoothTransition);
-      }
       .export{
-        background-image: url('../img/svg/telecharger-gold.svg');
-        background-repeat: no-repeat;
-        background-position: 15px 12px;
-        background-size: 14px;
+        color:$gold;
+        .icon{
+          margin-right: 10px;
+          font-size: 0.8rem;
+          vertical-align: middle !important;
+        }
       }
       .export:hover{
         background-color: #c8a461;
         border-color: #c8a461;
         color: #fff;
-      }
-      .export:after {
-        background: url("../img/svg/telecharger-white.svg") no-repeat 15px 12px;
-        background-size: 14px;
-        content: '';
-        display: block;
-        height: 100%;
-        position: absolute;
-        width: 51%;
-        top: 1px;
-        right: 1px;
-//        background-color: rgba(255, 0, 0, 0.44);
-        opacity: 0;
-        visibility: hidden;
-        @include transition(all 0.6s $smoothTransition);
-      }
-      .button:hover:after {
-          opacity: 1;
-          visibility: visible;
       }
     }
   }
@@ -2006,18 +1958,23 @@
   height: 252px;
   overflow-y: hidden;
   box-sizing: border-box;
+
   .container-popin{
+
     strong{
       text-transform: uppercase;
       font-size: 0.88rem;
       letter-spacing: .2em;
       font-family: $CamphorBold;
       line-height: 24px;
-      background-image: url("../img/svg/cadenas.svg");
-      background-repeat: no-repeat;
-      background-size: 12px;
-      padding-left: 22px;
+
+      .icon{
+        font-size: 1rem;
+        vertical-align: middle !important;
+        margin-bottom: 5px;
+      }
     }
+
     p{
       padding-top: 10px;
       font-size: 0.81rem;
@@ -2025,9 +1982,11 @@
       color:#666666;
       width: 284px;
     }
+
     form{
           height: 50px;
           margin-top: 19px;
+
       input {
         background: none;
         border: 1px solid #c6c6c6;
@@ -2044,6 +2003,7 @@
         height: 50px;
         width: 135px;
       }
+
       input[type="submit"] {
           border: 1px solid #c8a461;
           color: #c8a461;
@@ -2054,6 +2014,7 @@
           width: 95px;
          @include transition(all 0.3s $smoothTransition);
       }
+
       input[type="submit"]:hover {
         border-color: #c8a461;
         color: #fff;
@@ -2152,13 +2113,9 @@
         width: 97px;
         border: 0px;
         padding-left: 12px;
-        .svg{
-          width: 9px;
-          height: 9px;
+
+        .icon{
           margin-right: 10px;
-          polygon{
-            fill:currentColor;
-          }
         }
       }
 
@@ -2318,7 +2275,7 @@
     #mycalendar{
       .fc-day{
           width:234px;
-      } 
+      }
       .fc-day-header{
           width:234px;
       }

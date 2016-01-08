@@ -11,13 +11,13 @@
     <div id="main" class="press loading fullcalendar">
       <div class="header-press">
         <div class="head">
-          <span>Espace presse</span>
+          <span><i class="icon icon_espace-presse"></i> Espace presse</span>
         </div>
         <div class="container">
           <h2>Mon agenda</h2>
           <div class="buttons">
-            <a href="#" class="button create">Créer un évènement</a>
-            <a href="#" class="button export">Exporter mon agenda</a>
+            <a href="#" class="button create"><i class="icon icon_creer"></i>Créer un évènement</a>
+            <a href="#" class="button export"><i class="icon icon_telecharger"></i>Exporter mon agenda</a>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
        <div class="contain-btn">
          <span class="btn-close"></span>
        </div>
-      <div class="container">  
+      <div class="container">
         <h3>Créer un évènement</h3>
         <p>Complétez votre agenda interactif en ajoutant un évènement personnalisé.</p>
         <form action="#">

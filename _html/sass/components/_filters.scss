@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // =========================
@@ -10,6 +10,10 @@
 .filters {
   text-align: center;
 
+  .icon{ //todo css//
+    font-size: .4rem;
+    vertical-align: baseline;
+  }
   div {
     display: inline-block;
     font-family: $CamphorHeavy;
@@ -40,7 +44,7 @@
         background: url('../img/svg/arrow-down-gold.svg') no-repeat right center;
         background-size: 6px;
         display: none;
-        padding-right: 20px;
+        padding-right: 13px; // todo CSS // 
 
         &.active {
           display: inline-block;
@@ -130,7 +134,7 @@
     &:nth-child(9) {
       @include transition(opacity .5s $smoothTransition 0.5s, transform .5s $smoothTransition 0.5s, color .9s $smoothTransition);
     }
-    
+
   }
 }
 
@@ -151,4 +155,3 @@
     opacity: 1;
   }
 }
-

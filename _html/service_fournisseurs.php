@@ -14,7 +14,7 @@
 <div id="main" class="list-article participate contractor">
   <div class="bandeau-list vCenter">
     <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/bandeau4.png);background-size: cover;">
-      <h2 class="title title-list-header"> <img src="img/participate/fournisseurs.png" alt="" class="logo"> <br> fournisseurs</h2>
+      <h2 class="title title-list-header"> <i class="icon icon_camion"></i> <br> fournisseurs</h2>
     </div>
   </div>
   <section class="content-contractor">
@@ -25,7 +25,7 @@
           <img src="img/participate/Logo_fournisseur.jpg" alt="">
 
          </div>
-        <div class="text-contractor"> 
+        <div class="text-contractor">
           <h4 class="title-contractor">Baron Philippe de Rothschild S.A</h4>
           <p class="descrip-contractor">
             Posséde deux champs d'activités distincts, unis par la même volontée d'excellence : les vins de Châteaux et les vins de Marques. Parmi les clés d'une incontestable réussite : l'art de l'assemblage, un art que la Société maîtrise au plus haut degré de virtuosité.</p>
@@ -59,7 +59,7 @@
     <?php include('footer.html'); ?>
 
       <!-- //// SCRIPTS \\\\ -->
-      
+
       <?php include('scripts.inc.php'); ?>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 </body>

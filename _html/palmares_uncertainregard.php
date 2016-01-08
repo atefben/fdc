@@ -24,7 +24,7 @@
                <li><a href="palmares_cinefondation.php" class="ajax">Cinéfondation</a></li>
                <li><a href="palmares_camerador.php" class="ajax">Caméra d'or</a></li>
                <li><a href="palmares_toutlepalmares.php" class="ajax">Tout le palmarès</a></li>
-           </ul> 
+           </ul>
       </div>
       <div class="container container-list">
         <section class="categorie-items">
@@ -34,7 +34,7 @@
                 <img src="img/palmares/cover-film-uncertainregard1.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Prix un certain regard</strong>
                   </div>
                     <h3 class="title-item">HRÚTAR</h3>
@@ -50,7 +50,7 @@
                 <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Prix de la mise en scène un certain regard</strong>
                   </div>
                     <h3 class="title-item">KISHIBE NO TABI</h3>
@@ -66,7 +66,7 @@
                 <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Prix de la mise en scène un certain regard</strong>
                   </div>
                     <h3 class="title-item">KISHIBE NO TABI</h3>
@@ -82,7 +82,7 @@
                 <img src="img/palmares/cover-film-uncertainregard3.jpg" alt="images films">
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
-                      <img src="img/palmares/palmedor-logo.png" alt="palme d or" class="palme-dor-img">
+                      <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Prix de la mise en scène un certain regard</strong>
                   </div>
                     <h3 class="title-item">KISHIBE NO TABI</h3>
@@ -97,7 +97,7 @@
       <div class="bandeau-list push-footer vCenter">
            <div class="bandeau-list-img bandeau-list-footer vCenterKid" style="background-image:url(img/films/cover-bandeau-push.jpg);">
                <h2 class="title title-list-header">Camera d'or</h2>
-               <a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Découvrir la rubrique</a>
+               <a href="#" class="bandeau-lien"><i class="icon icon_fleche-right"></i>Découvrir la rubrique</a>
            </div>
       </div>
     </div>
