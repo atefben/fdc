@@ -113,6 +113,10 @@
       &:hover {
         border-color: rgba(255, 255, 255, 1);
       }
+      .icon{
+        color: #fff;
+        margin: 16px;
+      }
     }
     &.on {
       .img,
@@ -138,6 +142,12 @@
       @include transition(all .9s $smoothTransition);
       &:hover {
         opacity: 0.5;
+      }
+      .icon{
+        font-size: .5rem;
+        margin-bottom: 2px;
+        vertical-align: middle !important;
+        margin-right: 6px;
       }
     }
   }
@@ -197,6 +207,9 @@
     padding: 70px 0;
     position: relative;
     z-index: 2;
+    .icon_video{
+      font-size: 1.2rem;
+    }
     .title {
       margin-bottom: 45px;
     }
@@ -210,10 +223,6 @@
       }
       &.shadow-bottom:before {
         width: 100%;
-      }
-      .picto {
-        background-image: url('../img/svg/video.svg');
-        background-size: 22px;
       }
       .info {
         .titleLink {
