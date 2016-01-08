@@ -30,9 +30,11 @@ header #searchContainer {
   p.link {
     margin-top: 25px;
 
-    img {
+    .icon{
       margin-right: 10px;
-      width: 10px;
+      font-size: .45rem;
+      margin-bottom: 3px;
+      vertical-align: middle !important;
     }
 
     a {
@@ -93,27 +95,24 @@ header #searchContainer {
     width: 100%;
 
   }
-  //todo css
   .icon_recherche{
     position: absolute;
     bottom: 5px;
     right: 0;
     color: $gold;
     font-size: 1.5rem;
-    margin-bottom: 8px;
+    margin-bottom: 13px;
     margin-right: 11px;
     @include transition(all 0.9s $linear);
 
   }
 
-  .icon_recherche:hover{ //todo
+  .icon_recherche:hover{
     opacity: .5;
     cursor: pointer;
   }
 
   #submitSearch {
-    // background: url('../img/svg/search-gold.svg') no-repeat center; //todo css
-    // background-size: 30px;
     opacity: 0;
     visibility: hidden;
     border: none;
