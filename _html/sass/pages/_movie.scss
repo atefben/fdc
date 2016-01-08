@@ -326,52 +326,30 @@
       background-size: 15px;
       left: 2%;
 
-      &:after {
-        background: url('../img/svg/arrow-left-black.svg') no-repeat center;
-        background-size: 15px;
-      }
 
       &.trailer {
         background-color: transparent;
         left: -85px;
       }
-
-      &:hover, &.over, &.black {
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
+      .icon{
+        color: #000;
+        margin: 32px;
       }
 
-      &.black.over, &.black:hover {
-        &:after {
-          opacity: 0;
-          visibility: hidden;
-        }
-      }
     }
 
     &.next {
-      background: url('../img/svg/arrow-right-white.svg') no-repeat center;
-      background-size: 15px;
+
       left: auto;
       right: 2%;
-
-      &:after {
-        background: url('../img/svg/arrow-right-black.svg') no-repeat center;
-        background-size: 15px;
-      }
-
-      &:hover, &.over, &.black {
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
 
       &.trailer {
         background-color: transparent;
         right: -85px;
+      }
+      .icon{
+        color: #000;
+        margin: 32px;
       }
     }
   }
