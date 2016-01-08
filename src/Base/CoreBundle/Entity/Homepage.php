@@ -73,6 +73,13 @@ class Homepage
     private $topNewsType;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $socialWallHashtag;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -143,6 +150,7 @@ class Homepage
         $this->sliderNews = new ArrayCollection();
         $this->topVideos = new ArrayCollection();
         $this->topWebTvs = new ArrayCollection();
+        $this->socialWallHashtag = '';
         $this->displayedPrefooters = false;
         $this->displayedPushsMain = false;
         $this->displayedPushsSecondary = false;
@@ -300,6 +308,29 @@ class Homepage
     {
         return $this->displayedTopWebTv;
     }
+
+    /**
+     * Get socialWallHashtag
+     *
+     * @return string
+     */
+    public function getSocialWallHashtag()
+    {
+        return $this->socialWallHashtag;
+    }
+
+    /**
+     * Get socialWallHashtag
+     *
+     * @return string
+     */
+    public function setSocialWallHashtag($socialWallHashtag)
+    {
+        $this->socialWallHashtag = $socialWallHashtag;
+
+        return $this;
+    }
+
 
     /**
      * Set displayedPushsMain

@@ -26,8 +26,15 @@ class NewsController extends Controller
     {
         $em = $this->get('doctrine')->getManager();
 
-        $timelineDates = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => 75),array('date' => 'ASC'),15,null);
+        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => 75),array('date' => 'ASC'),12,null);
+        $socialTimeline      = array();
+        $socialTimelineCount = array();
 
+        foreach ($timeline as $key => $timelineDate) {
+            $socialTimeline[]['date']  = $timelineDate->getDate();
+            $socialTimelineCount[] = $timelineDate->getCount();
+        }
+        
         $homeSlider = array(
             array(
                 'id'=> 0,
@@ -228,7 +235,9 @@ class NewsController extends Controller
                     )
                 ),
             ),
-            'timeline' => $timelineDates
+            'timeline' => $socialTimeline,
+            'timelineCount' => json_encode($socialTimelineCount)
+
         );
         $homeCategories = array(
             array(
