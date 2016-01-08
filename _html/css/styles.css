@@ -12881,13 +12881,11 @@ input[type=submit] {
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .webtv #live .play {
-  background: url("../img/svg/video-white.svg") no-repeat center;
-  background-size: 20px;
   display: block;
   border: 1px solid rgba(255, 255, 255, 0.5);
   margin: 20px auto 0 auto;
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -13170,9 +13168,13 @@ input[type=submit] {
 .webtv-ba #live .play {
   border-radius: 50%;
   margin-bottom: 10px;
-  border: 2px solid #fff;
+  border: 5px solid #fff;
   cursor: default;
-  background: url("../img/webtv/bandes_annonces_play.svg");
+}
+.webtv-ba #live .play .icon {
+  color: #fff;
+  padding: 17px;
+  font-size: .8rem;
 }
 .webtv-ba .sticky {
   width: 100% !important;
