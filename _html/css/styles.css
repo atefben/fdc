@@ -17405,6 +17405,7 @@ input[type=submit] {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 15px 22px;
   cursor: pointer;
+  position: relative;
   -moz-transition: padding 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: padding 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: padding 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -17413,11 +17414,11 @@ input[type=submit] {
 .seatingchart #seatingchart .nav-map ul .active {
   background-color: #c8a461;
   color: #fff;
-  background-image: url("../img/svg/participate-white.svg");
-  background-repeat: no-repeat;
-  background-size: 19px;
   padding-left: 43px;
-  background-position: 16px;
+}
+.seatingchart #seatingchart .nav-map ul .active .icon {
+  position: absolute;
+  left: 19px;
 }
 .seatingchart #seatingchart .nav-map ul li:hover {
   background-color: #e8ce9e;
