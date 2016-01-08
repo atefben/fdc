@@ -24,6 +24,10 @@ class NewsController extends Controller
      */
     public function indexAction()
     {
+        $em = $this->get('doctrine')->getManager();
+
+        $timelineDates = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => 75),array('date' => 'ASC'),15,null);
+
         $homeSlider = array(
             array(
                 'id'=> 0,
@@ -224,38 +228,7 @@ class NewsController extends Controller
                     )
                 ),
             ),
-            'timeline' => array(
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-                array(
-                    'date' => new \DateTime()
-                ),
-            )
+            'timeline' => $timelineDates
         );
         $homeCategories = array(
             array(

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-01-07T18:14:04Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="0a4b951f16b43de276a696a9f288e5d1d23dfa68" resname="press.header.btn.valider">
+        <source>press.header.btn.valider</source>
+        <target>Valider</target>
+        <jms:reference-file line="10">News/components/lockedContents.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ab53172e7b907fc337196faf1e7323c39541ceb5" resname="press.header.label.espacepresse">
+        <source>press.header.label.espacepresse</source>
+        <target>Espace Presse</target>
+        <jms:reference-file line="3">News/components/headerPress.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1c634e14b934e8ae584d93217e15998f3c89be32" resname="press.header.placeholder.motdepasse">
+        <source>press.header.placeholder.motdepasse</source>
+        <target>Mot de passe</target>
+        <jms:reference-file line="38">Form/Type/LockedContentType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d908a7b300b9113e98e70b2a1bcbdb965852c336" resname="press.header.text.journalistesveuillezsaisirvotremotdepasse">
+        <source>press.header.text.journalistesveuillezsaisirvotremotdepasse</source>
+        <target>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</target>
+        <jms:reference-file line="5">News/components/lockedContents.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4c5b52781adcb1e05cc680995c582525c335ada1" resname="press.header.title.contenusverouilles">
+        <source>press.header.title.contenusverouilles</source>
+        <target>Contenus verrouillés</target>
+        <jms:reference-file line="4">News/components/lockedContents.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

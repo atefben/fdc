@@ -1,0 +1,20 @@
+<div class="fc-event" data-category="{{ event.category.slug }}"
+     data-type="{{ event.category.slug }}" data-url="eventPopin.html"
+     data-id="{{ event.id }}" data-picto='.pen' data-color='#000'
+     data-start="{{ event.startAt|date('Y-m-d') }}T{{ event.startAt|date('H:i:s') }}"
+     data-end="{{ event.endAt|date('Y-m-d') }}T{{ event.endAt|date('H:i:s') }}"
+     data-time="{{ event.startAt|date('H') }}" data-duration="{{ event.duration }}">
+
+    <span class="category">{{ event.category.name }}</span>
+    <div class="info">
+        <img src="{{ event.image.path }}" />
+        <div class="txt">
+            <span>{{ event.title }}</span>
+            <strong>{{ event.author.fullName }}</strong>
+        </div>
+    </div>
+    <div class="bottom">
+        <span class="duration">{{ event.duration }}min</span> - <span class="ven">{{ event.place }}</span>
+        <span class="competition">{{ event.competition }}</span>
+    </div>
+</div>

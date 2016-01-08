@@ -262,7 +262,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_event_news_index') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
+                        <a href="{{ path('fdc_press_news_home') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
                     </li>
                 </ul>
             </nav>
@@ -286,10 +286,7 @@
     </div>
     <div id="searchContainer">
         <div class="container">
-            <form action="{{ path('fdc_event_news_index') }}">
-                <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'header.search.input.entrezrecherche'|trans }}" autocomplete="off" />
-                <input id="submitSearch" type="submit" value="" />
-            </form>
+            {{ render(controller('FDCEventBundle:Global:search')) }}
             <ul id="suggest"></ul>
         </div>
     </div>

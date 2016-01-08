@@ -1,0 +1,13 @@
+<div class="locked">
+    <div class="vCenter">
+        <div class="vCenterKid">
+            <h3 class="title-press">{{ 'press.header.title.contenusverouilles'|trans }}</h3>
+            <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
+        </div>
+    </div>
+    <form action="{{ path('fdc_press_news_home') }}" method="post" {{ form_enctype(lockedForm) }}>
+        {{ form_widget(lockedForm.password) }}
+        <input type="submit" value="{{ 'press.header.btn.valider'|trans }}" />
+        {{ form_rest(lockedForm) }}
+    </form>
+</div>

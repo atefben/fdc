@@ -36,7 +36,9 @@ class FDCListener
             $entity->setCreatedBy($this->tokenStorage->getToken()->getUser());
         }
 
-        $this->setPublishedAt($entity);
+        if (method_exists($entity, 'setPublishedAt')) {
+            $this->setPublishedAt($entity);
+        }
     }
 
 
