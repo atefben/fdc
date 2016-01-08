@@ -1,0 +1,38 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="press loading seatingchart lock">
+    <div class="header-press">
+        <div class="head">
+            <span>{{ 'press.header.label.espacepresse'|trans }}</span>
+        </div>
+        <div class="container">
+            <h2>{{ 'plandessalles.title.plandessalles'|trans }}</h2>
+        </div>
+    </div>
+    <div id="seatingchart">
+        <div class="nav-map">
+            <ul>
+                {% for room in rooms %}
+                    <li data-maps="{{ room.slug }}">{{ room.name }}</li>
+                {% endfor %}
+
+                <li data-maps="zone-festival" id='more-map'>
+                    <strong>{{ 'plandessalles.label.lazonedufestival'|trans }}</strong>
+                    {% for key,room in rooms %}
+                        <img src="{{ room.image.zone }}" alt="" data-image="{{ room.slug }}" class="{% if key == 0 %}visible first{% endif %}">
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+        <div class="maps">
+            {% for key,room in rooms %}
+                <span id="{{ room.slug }}" class="{% if key == 0 %}first active{% endif %}">
+                    <img src="{{ room.image.path }}" alt="">
+                </span>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

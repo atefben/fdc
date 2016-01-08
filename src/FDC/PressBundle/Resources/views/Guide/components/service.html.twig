@@ -1,0 +1,20 @@
+<div class="contain-title-pg">
+    <h3 class="title-pguide ">
+        <span class="logo">
+            {% image '@FDCEventBundle/Resources/public/img/press/svg/service-grey.svg' %}
+            <img src="{{ asset_url }}" class="svg" alt="{{ section.title }}" />
+            {% endimage %}
+        </span>
+        {{ section.title }}
+    </h3>
+    <span class="plus"></span>
+</div>
+
+<div class="contain-article pictos-service">
+    {% for service in section.services %}
+        <div class="contain-service">
+            <img src="{{ service.image.path }}" alt="">
+            {{ service.content|raw }}
+        </div>
+    {% endfor %}
+</div>

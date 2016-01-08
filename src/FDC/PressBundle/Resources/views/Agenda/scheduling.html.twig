@@ -1,9 +1,12 @@
-{% trans_default_domain 'FDCEventBundle' %}
-{% extends 'FDCEventBundle::layout.html.twig' %}
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press press-programmation loading calendar-open events-site">
+    <div id="main" class="press press-programmation loading calendar-open lock">
         <div class="header-press">
+            <div class="head">
+                <span>{{ 'press.header.label.espacepresse'|trans }}</span>
+            </div>
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
                 <div class="buttons">
@@ -11,6 +14,18 @@
                     <a href="#" class="button list">{{ 'programmation.btn.telechargerformatpdf'|trans }}</a>
                     <a href="#" class="button list">{{ 'programmation.btn.telechargerformatics'|trans }}</a>
                 </div>
+            </div>
+        </div>
+
+        <div class="locked">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <h3 class="title-press">{{ 'programmation.title.contenusverrouilles'|trans }}</h3>
+                    <p>{{ 'programmation.text.journalisteveuillezvousrendredanslespacepresse'|trans }}</p>
+                </div>
+            </div>
+            <div class="buttons">
+                <a href="{{ path('fdc_press_news_home') }}">{{ 'programmation.btn.allerdanslespacepresse'|trans }}</a>
             </div>
         </div>
         <div class="wrapper">
@@ -156,7 +171,8 @@
                 </div>
             </div>
         </div>
-        <div class="contact-press">
-        </div>
+
+        {{ render(controller('FDCPressBundle:Global:contact')) }}
+
     </div>
 {% endblock body %}

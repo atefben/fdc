@@ -1,0 +1,73 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="press loading accreditation lock">
+
+    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
+
+    <div id="accreditation">
+        <div class="wrapper">
+            <div class="container-small">
+                {{ commonContent.firstBlock|raw }}
+            </div>
+            <p class="info">
+                {{ commonContent.infoBlock|raw }}
+            </p>
+            <div class="container-small">
+                {{ commonContent.secondBlock|raw }}
+            </div>
+        </div>
+
+        <div class="nav-accre">
+            <div class="wrapper">
+                <h2>{{ 'press.accrediter.title.consultezlaprocédure'|trans }} :</h2>
+                <table>
+                    <tr>
+                    {% for key,sectionFilter in sectionContent.section %}
+                        <td data-cat="{{ sectionFilter.slug }}" class="{% if key == 0 %}active{% endif %}">{{ sectionFilter.title }}</td>
+                        {% if  loop.index % 3 == 0 %}
+                        </tr>
+                        <tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+        {% for key, section in sectionContent.section %}
+            <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.slug }}">
+                <div class="wrapper">
+                    <div class="container-small">
+                        <div class="buttons">
+                            <a id="share-article" href="#" class="button  print" onclick="window.print()">
+                                {{ 'press.accrediter.btn.imprimer'|trans }}
+                            </a>
+                            <a href="#" class="button save">
+                                {{ 'press.accrediter.btn.enregistrer'|trans }}
+                            </a>
+                        </div>
+                        {{ section.content|raw }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <div class="request">
+            <div class="wrapper">
+                <a href="//reg.online-festival.com/" class="button request-btn" target="_blank">
+                    {{ 'press.accrediter.btn.faireunedemandedaccreditation'|trans }}
+                </a>
+                <span class="legend">
+                    <sup>*</sup>
+                    {{ 'press.accrediter.legend.vousallezquitterlesite'|trans }}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    {{ render(controller('FDCPressBundle:Global:contact')) }}
+
+</div>
+{% endblock %}
