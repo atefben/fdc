@@ -15,10 +15,6 @@
           color: #b0b0b0;
         }
         .button {
-          background-image: url('../img/svg/cadenas-grey.svg');
-          background-repeat: no-repeat;
-          background-position: 15px 45%;
-          background-size: 12px;
           border-color: #b0b0b0;
           color: #b0b0b0;
           &:hover:after {
@@ -32,10 +28,6 @@
 }
 
 .b-press-media.lock{
-  div.chocolat-wrapper .share:after{
-    background: url("../img/svg/cadenas-grey.svg") no-repeat center;
-    background-size: 12px;
-  }
   div.chocolat-wrapper .chocolat-bottom .buttons.show{
     visibility: hidden;
     display: none;
@@ -43,10 +35,6 @@
 }
 
 .b-press-media{
-  div.chocolat-wrapper .share:after{
-    background: url("../img/svg/telecharger-gold.svg") no-repeat center;
-    background-size: 14px;
-  }
   div.chocolat-wrapper .chocolat-bottom .buttons.show{
     visibility: hidden;
     display: none;
@@ -86,35 +74,12 @@
         }
         .button,
         .active-btn .button {
-          padding: 1px 15px 0 39px;
           border-color: $gold;
-          background-image: url('../img/svg/telecharger-gold.svg');
-          background-repeat: no-repeat;
-          background-position: 15px 12px;
-          background-size: 14px;
           position: relative;
-          &:after {
-            background: url('../img/svg/telecharger-white.svg') no-repeat 15px 12px;
-            background-size: 14px;
-            content: '';
-            display: block;
-            height: 100%;
-            position: absolute;
-            width: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            visibility: hidden;
-            @include transition(all 0.9s $smoothTransition);
-          }
           &:hover {
             background-color: $gold;
             border-color: $gold;
             color: #fff;
-          }
-          &:hover:after {
-            opacity: 1;
-            visibility: visible;
           }
         }
         .active-btn {
@@ -188,18 +153,6 @@
     }
   }
   .nav-container {
-    .svg {
-      width: 9px;
-      height: 9px;
-      margin-right: 10px;
-      polygon {
-        fill: currentColor;
-      }
-      path {
-        fill: currentColor;
-      }
-    }
-
     .table {
       .line {
         .media,
@@ -228,6 +181,18 @@
             width: 100%;
             padding-top: 63px;
             padding-bottom: 11px;
+            .icon_telecharger{
+              margin-right: 10px;
+              font-size: .8rem;
+              vertical-align: middle !important;
+              margin-bottom: 2px;
+            }
+            .icon_cadenas{
+              margin-right: 10px;
+              font-size: .8rem;
+              vertical-align: middle !important;
+              margin-bottom: 3px;
+            }
             .contain-buttons {
               display: inline-block;
               vertical-align: top;
@@ -246,7 +211,6 @@
                 display: inline-block;
                 .button {
                   margin: 0px;
-                  //                  pointer-events: none;
                   float: none;
                 }
               }
@@ -267,15 +231,12 @@
             display: block;
           }
           .plus {
-            background-image: url(../img/press/svg/moins.svg);
-            width: 18px;
-            height: 18px;
             position: absolute;
-            top: 28px;
-            right: 18px;
-            background-repeat: no-repeat;
-            background-size: 111%;
+            top: 30px;
+            right: -20px;
             cursor: pointer;
+            font-size: .8rem;
+            color: #c8a461;
           }
           .media {
             color: #000;
@@ -285,16 +246,14 @@
           }
         }
         .plus {
-            background-image: url(../img/press/svg/case-plus.svg);
             width: 57px;
             height: 57px;
             position: absolute;
-            top: 8px;
+            top: 11px;
             right: 0px;
-            background-repeat: no-repeat;
-            background-size: 122%;
             cursor: pointer;
-            background-position: -8px 1px;
+            font-size: 3.4rem;
+            color: #CCCCCC;
         }
       }
     }

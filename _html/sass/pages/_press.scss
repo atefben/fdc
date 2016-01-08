@@ -1093,25 +1093,15 @@
           font-family: $CamphorBold;
           font-size: 0.625rem;
           letter-spacing: 0.1em;
-          padding-left: 25px;
           margin-right: 45px;
           text-transform: uppercase;
 
-          &.folder {
-            background: url('../img/svg/dossier.svg') no-repeat left 47%;
-            background-size: 18px;
+          .icon{
+            font-size: 1rem;
+            margin-right: 10px;
+            vertical-align: middle !important;
+            margin-bottom: 3px;
           }
-
-          &.trailer {
-            background: url('../img/svg/bande-annonce.svg') no-repeat left 47%;
-            background-size: 16px;
-          }
-
-          &.photo {
-            background: url('../img/svg/photo-grey.svg') no-repeat left 47%;
-            background-size: 18px;
-          }
-
           @include breakpoint(1279px) {
             span {
               display: none;
@@ -2046,7 +2036,7 @@
           width: 95px;
          @include transition(all 0.3s $smoothTransition);
       }
-      
+
       input[type="submit"]:hover {
         border-color: #c8a461;
         color: #fff;
@@ -2145,13 +2135,9 @@
         width: 97px;
         border: 0px;
         padding-left: 12px;
-        .svg{
-          width: 9px;
-          height: 9px;
-          margin-right: 10px;
-          polygon{
-            fill:currentColor;
-          }
+
+        .icon{
+          margin-right: 10px;   
         }
       }
 
