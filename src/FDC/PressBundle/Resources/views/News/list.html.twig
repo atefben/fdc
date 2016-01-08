@@ -1,0 +1,62 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="press loading press-actu lock all-articles grid">
+
+    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
+
+    <div class="container-pressactu">
+
+        {% include 'FDCPressBundle:News:components/filters.html.twig' %}
+
+        <div id="gridAudios" class="grid-wrapper" data-type="articles">
+            <div class="grid-sizer"></div>
+            {% for article in newsArticle %}
+
+                <div class="item all {% for filter in article.filters %} {{ filter.slug }} {% endfor %}">
+                    <article class="article">
+                        <div class="img">
+                            <span class="picto"></span>
+                            <a href="{{ path('fdc_press_news_get', {'slug': article.id }) }}">
+                                <img src='{{ article.image.path }}' />
+                            </a>
+                        </div>
+                        <div class="info">
+                            <a href="#" class="category">{{ article.theme }}</a>
+                            <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+                            <h3><a href="{{ path('fdc_press_news_get', {'slug': article.id }) }}">{{ article.title }}</a></h3>
+                        </div>
+                    </article>
+                </div>
+
+            {% endfor %}
+
+
+        </div>
+        <a href="#" class="read-more">
+            {{ 'press.actu.btn.afficherplusdarticles'|trans|raw }}
+        </a>
+
+        <div class="section" style="background-image:url({{ asset('bundles/fdcevent/img/press/pushactu.jpg') }})">
+            <div class="img"></div>
+            <div class="txt vCenter">
+                <div class="vCenterKid">
+                    <h2 class="title">{{ 'press.actu.title.lactualitealaune'|trans }}</h2>
+                    <p class="link">
+                        <a href="#">
+                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                            <img src="{{ asset_url }}" alt="{{ 'press.actu.btn.suivezlamanifestation'|trans }}" />
+                            {% endimage %}
+                            {{ 'press.actu.btn.suivezlamanifestation'|trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ render(controller('FDCPressBundle:Global:contact')) }}
+
+</div>
+{% endblock %}

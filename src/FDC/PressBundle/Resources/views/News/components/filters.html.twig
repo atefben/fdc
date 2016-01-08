@@ -1,0 +1,39 @@
+<div class="filters">
+
+    <div id="date" class="filter">
+        <span class="label">{{ 'press.actu.filter.label.annees'|trans }} :</span>
+        <span class="select">
+            {% for key, date in newsFilters.dates %}
+            <span class="{% if key == 0 %}active{% endif %}" data-filter="d{{ date.slug }}">{{ date.content }}</span>
+            {% endfor %}
+        </span>
+    </div>
+
+    <div id="type" class="filter">
+        <span class="label">{{ 'press.actu.filter.label.types'|trans }} :</span>
+        <span class="select">
+            {% for key, type in newsFilters.types %}
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="d{{ type.slug }}">{{ type.content }}</span>
+            {% endfor %}
+        </span>
+    </div>
+
+    <div id="theme" class="filter">
+        <span class="label">{{ 'press.actu.filter.label.themes'|trans }} :</span>
+        <span class="select">
+            {% for key, theme in newsFilters.themes %}
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="d{{ theme.slug }}">{{ theme.content }}</span>
+            {% endfor %}
+        </span>
+    </div>
+
+    <div id="format" class="filter">
+        <span class="label">{{ 'press.actu.filter.label.formats'|trans }} :</span>
+        <span class="select">
+            {% for key, format in newsFilters.formats %}
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="d{{ format.slug }}">{{ format.content }}</span>
+            {% endfor %}
+        </span>
+    </div>
+
+</div>

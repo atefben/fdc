@@ -4,7 +4,7 @@
 {% block body %}
 <div id="main" class="press press-home loading calendar-open lock">
 
-    {% include 'FDCPressBundle:News:components/headerPress.html.twig' %}
+    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
     {% include 'FDCPressBundle:News:components/lockedContents.html.twig' %}
 
@@ -262,19 +262,9 @@
             </div>
         </div>
     </div>
-    <div class="contact-press">
-        <h2 class="title">{{ 'press.home.title.contacteznous'|trans }}</h2>
-        <div class="container">
-            {% for colContact in pressContact.section %}
-                <div class="col">
-                    <h3>{{ colContact.title }}</h3>
-                    {% for contact in colContact.contacts %}
-                    <p>{{ contact.content|raw }}</p>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+
+    {{ render(controller('FDCPressBundle:Global:contact')) }}
+
 </div>
 
 {% include 'FDCPressBundle:News:components/popinPress.html.twig' %}

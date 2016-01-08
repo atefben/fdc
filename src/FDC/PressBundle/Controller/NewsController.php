@@ -333,53 +333,6 @@ class NewsController extends Controller
             )
         );
 
-        $contact = array(
-            'section' => array(
-                array(
-                    'title' => 'Festival de Cannes - Service de Presse',
-                    'contacts' => array(
-                        array(
-                            'content' => '3, rue Amélie F-75007 Paris<br>Tel : +33 (0)1 53 59 61 85<br>Fax : +33 (0)1 53 59 61 84'
-                        ),
-                        array(
-                            'content' => '<strong>Presse écrite et digitale - Agences de Presse</strong><br><a class="mail" href="mailto:presse@festival-cannes.fr">presse@festival-cannes.fr</a>'
-                        ),
-                        array(
-                            'content' => '<strong>Médias Web</strong><br><a class="mail" href="mailto:webmedia@festival-cannes.fr">webmedia@festival-cannes.fr</a>'
-                        )
-                    )
-                ),
-                array(
-                    'title' => 'Festival de Cannes - Service de Presse',
-                    'contacts' => array(
-                        array(
-                            'content' => '3, rue Amélie F-75007 Paris<br>Tel : +33 (0)1 53 59 61 85<br>Fax : +33 (0)1 53 59 61 84'
-                        ),
-                        array(
-                            'content' => '<strong>Presse écrite et digitale - Agences de Presse</strong><br><a class="mail" href="mailto:presse@festival-cannes.fr">presse@festival-cannes.fr</a>'
-                        ),
-                        array(
-                            'content' => '<strong>Médias Web</strong><br><a class="mail" href="mailto:webmedia@festival-cannes.fr">webmedia@festival-cannes.fr</a>'
-                        )
-                    )
-                ),
-                array(
-                    'title' => 'Festival de Cannes - Service de Presse',
-                    'contacts' => array(
-                        array(
-                            'content' => '3, rue Amélie F-75007 Paris<br>Tel : +33 (0)1 53 59 61 85<br>Fax : +33 (0)1 53 59 61 84'
-                        ),
-                        array(
-                            'content' => '<strong>Presse écrite et digitale - Agences de Presse</strong><br><a class="mail" href="mailto:presse@festival-cannes.fr">presse@festival-cannes.fr</a>'
-                        ),
-                        array(
-                            'content' => '<strong>Médias Web</strong><br><a class="mail" href="mailto:webmedia@festival-cannes.fr">webmedia@festival-cannes.fr</a>'
-                        )
-                    )
-                )
-            )
-        );
-
         $movieDownload = array(
             'description' => 'Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et
                                   extraits de films fournis par les productions. Ces contenus sont mis à jour tout au
@@ -432,8 +385,7 @@ class NewsController extends Controller
             'pressMedias' => $medias,
             'pressFestivalDownloads' => $festivalDownloads,
             'pressMovieDownloads' => $movieDownload,
-            'pressStats' => $stats,
-            'pressContact' => $contact
+            'pressStats' => $stats
         );
     }
 
@@ -478,5 +430,160 @@ class NewsController extends Controller
             'news' => $news,
             //  'article' => $article
         );
+    }
+
+    /**
+     *
+     * @Route("/press-actu")
+     * @Template("FDCPressBundle:News:list.html.twig")
+     * @return array
+     */
+    public function listAction()
+    {
+
+        $headerInfo = array(
+            'title' => 'Communiqués et infos',
+            'description' => 'Communiqués, actualités, retrouvez toute l\'information à ne pas manquer.'
+        );
+
+        $filters = array(
+            'dates' => array(
+                array(
+                    'slug' => '2016',
+                    'content' => '2016',
+                ),
+                array(
+                    'slug' => '2015',
+                    'content' => '2015',
+                ),
+                array(
+                    'slug' => '2014',
+                    'content' => '2014',
+                ),
+            ),
+            'types' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'communique',
+                    'content' => 'Communiqués',
+                ),
+                array(
+                    'slug' => 'info',
+                    'content' => 'Infos',
+                ),
+            ),
+            'themes' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'press',
+                    'content' => 'Conférence de presse',
+                ),
+                array(
+                    'slug' => 'marche',
+                    'content' => 'Montée des marches',
+                )
+            ),
+            'formats' => array(
+                array(
+                    'slug' => 'all',
+                    'content' => 'Tous',
+                ),
+                array(
+                    'slug' => 'article',
+                    'content' => 'Articles',
+                ),
+                array(
+                    'slug' => 'video',
+                    'content' => 'Videos',
+                ),
+                array(
+                    'slug' => 'audio',
+                    'content' => 'Audios',
+                ),
+                array(
+                    'slug' => 'photo',
+                    'content' => 'Photos',
+                ),
+            ),
+        );
+
+        $articles = array(
+            array(
+                'id' => 0,
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'format' => 'article',
+                'theme' => 'cinema',
+                'category' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
+                ),
+                'filters' => array(
+                    array(
+                        'slug' => 'all'
+                    ),
+                    array(
+                        'slug' => 'communique'
+                    )
+                )
+            ),
+            array(
+                'id' => 0,
+                'title' => 'La Loi du Marché par Stéphane Brizé',
+                'format' => 'audio',
+                'theme' => 'press',
+                'category' => 'Conférence de Presse',
+                'createdAt' => new \DateTime(),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/02.jpg',
+                ),
+                'filters' => array(
+                    array(
+                        'slug' => 'all'
+                    ),
+                    array(
+                        'slug' => 'press'
+                    ),
+                    array(
+                        'slug' => 'steps'
+                    ),
+                )
+            ),
+            array(
+                'id' => 0,
+                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'format' => 'article',
+                'theme' => 'cinema',
+                'category' => 'Cinéma de la plage',
+                'createdAt' => new \DateTime(),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                ),
+                'filters' => array(
+                    array(
+                        'slug' => 'all'
+                    ),
+                    array(
+                        'slug' => 'press'
+                    ),
+                    array(
+                        'slug' => 'steps'
+                    ),
+                )
+            ),
+        );
+
+        return array(
+            'headerInfo'  => $headerInfo,
+            'newsFilters' => $filters,
+            'newsArticle' => $articles,
+        );
+
     }
 }
