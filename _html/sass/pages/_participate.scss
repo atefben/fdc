@@ -13,38 +13,42 @@
   .participate-active {
     height: auto !important;
   }
-  .title-list-header {
-//    padding-top: 102px !important;
-  }
   .logo {
     margin-bottom: 26px;
     height: 39px;
   }
-  .logo.palm {
-    //    height: auto;
+
+  .title-list-header{
+    .icon{
+      font-size: 4.5rem;
+      margin-bottom: 12px;
+      vertical-align: middle !important;
+      margin-left: 18px;
+      margin-top: -17px;
+    }
   }
-  .fa {
+
+  .icon_case-plus, .icon_moins {
     margin-bottom: 40px;
     color: #c1c1c1;
     position: absolute;
     right: 1px;
     top: 22px;
+
+    &:hover{
+      cursor: pointer;
+    }
   }
-  .fa-plus {
-    background-image: url(../img/participate/case-plus.svg);
-    background-size: 45px;
-    background-position: 1px;
-    background-repeat: no-repeat;
-    width: 51px;
-    height: 51px;
+  .icon_case-plus {
+    font-size: 2.7rem;
+    top: 29px;
+    right: 0px;
   }
-  .fa-minus {
-    background-image: url(../img/participate/minus.svg);
-    background-size: 15px;
-    background-position: 14px 19px;
-    background-repeat: no-repeat;
-    width: 51px;
-    height: 51px;
+  .icon_moins {
+    top: 44px;
+    right: 15px;
+    font-size: .7rem;
+    color: $gold;
   }
   .contain-participate {
     background-color: #fff;
@@ -99,9 +103,6 @@
       .title-participate:hover {
         cursor: pointer;
       }
-      .fa:hover {
-        cursor: pointer;
-      }
       .title-participate {
         font: .875rem $CamphorBold;
         color: #c1c1c1;
@@ -134,9 +135,6 @@
       }
       .participate-active {
         .title-participate {
-          color: #c29f5f;
-        }
-        .fa {
           color: #c29f5f;
         }
       }
@@ -446,9 +444,6 @@
   .title-section:hover {
     cursor: pointer;
   }
-  .fa:hover {
-    cursor: pointer;
-  }
   .content-partners {
     background-color: #fff;
     border-top: 1px solid #e0e0e0;
@@ -458,9 +453,6 @@
       position: relative;
       overflow: hidden;
       height: 97px;
-      .fa {
-        top: 25px;
-      }
       .title-section {
         font-family: $CamphorBold;
         text-transform: uppercase;
@@ -566,9 +558,7 @@
       margin: 0 auto;
       width: 975px;
       position: relative;
-      .fa {
-        top: 45px;
-      }
+
       .title-section {
         text-transform: uppercase;
         color: #c8a461;
@@ -675,9 +665,6 @@
       position: relative;
       overflow: hidden;
       height: 100px;
-      .fa {
-        top: 25px;
-      }
       .title-section {
         font-family: $CamphorBold;
         text-transform: uppercase;
@@ -686,27 +673,14 @@
         letter-spacing: 2px;
         padding-top: 41px;
         @include transition(all 0.9s $linear);
-        .logo-title {
-          padding-right: 22px;
-          vertical-align: bottom;
-        }
-        .information {}
-        .svg path {
-          fill: currentColor;
-          stroke: currentColor;
-        }
-        .svg .st0 {
-          stroke: currentColor;
-        }
-        .acces path {
-          fill: white;
+        .icon{
+          font-size: 1.3rem;
+          margin-right: 20px;
+          margin-left: 2px;
         }
       }
       .title-section:hover {
         color: #c8a461;
-        cursor: pointer;
-      }
-      .fa:hover {
         cursor: pointer;
       }
       .descrip-section {
@@ -832,10 +806,8 @@
             text-align: center;
             font-size: 0.81rem;
             line-height: 24px;
-            img {
-              width: 50px;
-              display: block;
-              margin: 0 auto;
+            .icon{
+              font-size: 3rem;
             }
             .title-infos {
               font-size: 0.75rem;
