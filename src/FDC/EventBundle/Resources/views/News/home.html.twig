@@ -1,6 +1,12 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
+{% block pre_home %}
+    <div id="prehome-container">
+        <div id="prehome"></div>
+    </div>
+{% endblock %}
+
 {% block body %}
     <div id="main" class="home loading">
         <span id="addtext">{{ 'home.btn.ajouteramaselection'|trans }}</span>
