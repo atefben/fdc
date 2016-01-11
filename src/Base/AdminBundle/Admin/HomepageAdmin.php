@@ -81,7 +81,8 @@ class HomepageAdmin extends Admin
             ->add('displayedSlider')
             ->add('displayedTopNews')
             ->add('displayedSocialWall')
-            ->add('socialWallHashtag')
+            ->add('hashtagTwitter')
+            ->add('tagInstagram')
         ;
 
     }

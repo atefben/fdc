@@ -64,16 +64,16 @@ class SocialWallCommand extends ContainerAwareCommand
         print_r($results_twitter);exit; */
 
         // Get instagram api
-        $instagramClient = new Client();
+
         $tag = 'niagara';
         $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/'. $tag .'/media/recent?access_token='. $this->getContainer()->getParameter('instagram_token'));
 
         $instagramResults = json_decode($instagramResponse);
+        $instagramPictures = array();
 
         foreach($instagramResults->data as $result) {
-            var_dump($result->images->standard_resolution->url);
+            $instagramPictures[] = $result->images->standard_resolution->url;
         }
-        exit;
 
         $em = $this->getContainer()->get('doctrine')->getManager();
         $logger = $this->getContainer()->get('logger');
