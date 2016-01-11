@@ -145,16 +145,16 @@
                                     ) }}
                                 </div>
                             {% endif %}
-                            {% if form.parent.children.updatedAt.vars.data and form.parent.children.updatedBy %}
-                                <div>
-                                    {{ 'entity.updated_infos'|trans(
-                                        {
-                                            'date': form.parent.children.updatedAt.vars.data|date('d/m/Y H:i'),
-                                            'user':  form.parent.children.updatedBy.vars.data.fullName
-                                        }
-                                    ) }}
-                                </div>
-                            {% endif %}
+                            {#{% if form.parent.children.updatedAt.vars.data and form.parent.children.updatedBy %}#}
+                                {#<div>#}
+                                    {#{{ 'entity.updated_infos'|trans(#}
+                                        {#{#}
+                                            {#'date': form.parent.children.updatedAt.vars.data|date('d/m/Y H:i'),#}
+                                            {#'user':  form.parent.children.updatedBy.vars.data.fullName#}
+                                        {#}#}
+                                    {#) }}#}
+                                {#</div>#}
+                            {#{% endif %}#}
                             <div class="sonata-ba-collapsed-fields">
                                 {{ form_row(form.parent.children.sites) }}
                                 <div class="form-group">

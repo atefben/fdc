@@ -1,9 +1,9 @@
-<article class="article {% if article.format is defined %}{% if article.double %}double{% endif %}" data-format="{{ article.format }}" data-theme="{{ article.theme }}" {% endif %}>
+<article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.format }}" data-theme="{{ article.theme }}">
     <div class="image">
         <div class="image-wrapper">
             <img src="{{ article.image.path }}" alt="" />
         </div>
-        <a href="{{ path('fdc_event_news_get', {'slug': article.id}) }}" class="linkImage"></a>
+        <a href="{{ path('fdc_event_news_get', {'slug': article.slug}) }}" class="linkImage"></a>
         <a href="#" class="read-later">
             <span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
@@ -13,7 +13,7 @@
         <a href="#" class="category">{{ article.category }}</a>
         <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
         <h2>
-            <a href="{{ path('fdc_event_news_get', {'slug': article.id}) }}">
+            <a href="{{ path('fdc_event_news_get', {'slug': article.slug}) }}">
                 {{ article.title }}
             </a>
         </h2>

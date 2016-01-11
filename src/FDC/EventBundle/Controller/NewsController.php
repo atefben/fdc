@@ -94,78 +94,75 @@ class NewsController extends Controller
         $home = array(
             'article' => array(
                 array(
-                    'id' => 0,
-                    'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
+                    'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                    ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
                     'double' => true,
-                    'format' => 'article',
-                    'theme' => 'cinema',
-                    'category' => 'Cinéma de la plage',
-                    'createdAt' => new \DateTime(),
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                    ),
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'La Loi du Marché par Stéphane Brizé',
-                    'double' => false,
-                    'format' => 'audio',
-                    'theme' => 'press',
-                    'category' => 'Conférence de Presse',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/02.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
+                    'double' => false,
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                    'double' => false,
-                    'format' => 'article',
-                    'theme' => 'cinema',
-                    'category' => 'Cinéma de la plage',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
+                    'double' => false,
                 ),
             ),
             'bottomArticle' => array(
                 array(
-                    'id' => 0,
-                    'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                    'double' => false,
-                    'format' => 'article',
-                    'theme' => 'cinema',
-                    'category' => 'Cinéma de la plage',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'La Loi du Marché par Stéphane Brizé',
-                    'double' => false,
-                    'format' => 'audio',
-                    'theme' => 'press',
-                    'category' => 'Conférence de Presse',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                    'double' => false,
-                    'format' => 'article',
-                    'theme' => 'cinema',
-                    'category' => 'Cinéma de la plage',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
                 ),
             ),
             'widgets' => array(
@@ -609,8 +606,103 @@ class NewsController extends Controller
         // SEO
         $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
+        //FAKE CONTENT
+        $film = array(
+            'title' => 'Enragé',
+            'releaseDate' => new \DateTime(),
+            'duration' => '1h35',
+            'competition' => 'Un certain regard',
+            'author' => array(
+                'fullName' => 'Eric Hannezo',
+                'from' => 'France'
+            ),
+            'image' => array(
+                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/article/007.jpg'
+            ),
+            'programmation' => array(
+                array(
+                    'startAt' => new \DateTime(),
+                    'room' => 'Salle Debussy'
+                ),
+                array(
+                    'startAt' => new \DateTime(),
+                    'room' => 'Salle Debussy'
+                ),
+                array(
+                    'startAt' => new \DateTime(),
+                    'room' => 'Salle Debussy'
+                ),
+                array(
+                    'startAt' => new \DateTime(),
+                    'room' => 'Salle Debussy'
+                )
+            )
+        );
+        $focusArticles = array(
+            array(
+                'title' => 'Stéphane Beizé interroge la loi du marché',
+                'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+            ),
+            array(
+                'title' => 'Stéphane Beizé interroge la loi du marché',
+                'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+            ),
+        );
+        $dayArticles = array(
+            array(
+                'title' => 'Stéphane Beizé interroge la loi du marché',
+                'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+            ),
+            array(
+                'title' => 'Stéphane Beizé interroge la loi du marché',
+                'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+            ),
+            array(
+                'title' => 'Stéphane Beizé interroge la loi du marché',
+                'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+            ),
+        );
+
         return array(
             'news' => $news,
+            'film' => $film,
+            'focusArticles' => $focusArticles,
+            'dayArticles' => $dayArticles,
           //  'article' => $article
         );
     }
@@ -624,59 +716,102 @@ class NewsController extends Controller
 
         $articles = array(
             array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                 ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                 ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                 ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                 ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                 ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                 ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
+            ),
+            array(
+                'title' => 'Stéphane Beizé interroge la loi du marché',
+                'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
+            ),
+            array(
+                'title' => 'Stéphane Beizé interroge la loi du marché',
+                'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             )
+
         );
 
         $filters = array(

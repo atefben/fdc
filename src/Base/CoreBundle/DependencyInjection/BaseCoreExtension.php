@@ -24,7 +24,6 @@ class BaseCoreExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $configFiles = array(
-            'listener.yml',
             'manager.yml',
             'twig.yml',
             'validator.yml'

@@ -64,6 +64,8 @@ twig:
         locales_front: "%locales_front%"
         locale_fallback: "%%locale_fallback%"
         locale_default_translation: "%locale_default_translation%"
+        fdc_app_android_download_url: "%fdc_app_android_download_url%"
+        fdc_app_ios_download_url: "%fdc_app_ios_download_url%"
         header_fdc: "%header_fdc%"
         header_cine: "%header_cine%"
         header_ccm: "%header_ccm%"
