@@ -6,6 +6,7 @@ use Guzzle\Http\Message\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/artist")
@@ -45,6 +46,9 @@ class ArtistController extends Controller
 
         // find the artist info with the current locale
         $artist = $em->getRepository('BaseCoreBundle:FilmPerson')->getArtist($locale, $slug);
+        if ($artist === null) {
+            throw new NotFoundHttpException();
+        }
 
         // find directors randomly, order them after by firstname (cant use mysql, doesnt work)
         $directors = $em->getRepository('BaseCoreBundle:FilmPerson')->getDirectorsRandomly($count);

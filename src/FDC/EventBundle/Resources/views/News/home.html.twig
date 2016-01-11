@@ -76,10 +76,10 @@
             <div class="container">
                 <div id="graph">
                     <ul>
-                        {% for key, date in homeArticles.timeline %}
+                        {% for timeline in homeArticles.timeline %}
                             <li class="active">
-                                {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                                <span>{{ date.date|date('d') }}</span>
+                                {{ timeline.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                <span>{{ timeline.date|date('d') }}</span>
                             </li>
                         {% endfor %}
                     </ul>

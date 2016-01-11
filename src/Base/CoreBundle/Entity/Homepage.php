@@ -73,6 +73,20 @@ class Homepage
     private $topNewsType;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $hashtagTwitter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $tagInstagram;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -143,6 +157,8 @@ class Homepage
         $this->sliderNews = new ArrayCollection();
         $this->topVideos = new ArrayCollection();
         $this->topWebTvs = new ArrayCollection();
+        $this->hashtagTwitter = '';
+        $this->tagInstagram = '';
         $this->displayedPrefooters = false;
         $this->displayedPushsMain = false;
         $this->displayedPushsSecondary = false;
@@ -156,7 +172,7 @@ class Homepage
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -179,7 +195,7 @@ class Homepage
     /**
      * Get topNewsType
      *
-     * @return integer 
+     * @return integer
      */
     public function getTopNewsType()
     {
@@ -202,7 +218,7 @@ class Homepage
     /**
      * Get displayedSlider
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedSlider()
     {
@@ -225,7 +241,7 @@ class Homepage
     /**
      * Get displayedTopNews
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedTopNews()
     {
@@ -248,7 +264,7 @@ class Homepage
     /**
      * Get displayedSocialWall
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedSocialWall()
     {
@@ -271,7 +287,7 @@ class Homepage
     /**
      * Get displayedTopVideos
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedTopVideos()
     {
@@ -294,12 +310,59 @@ class Homepage
     /**
      * Get displayedTopWebTv
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedTopWebTv()
     {
         return $this->displayedTopWebTv;
     }
+
+    /**
+     * Get hashtagTwitter
+     *
+     * @return string
+     */
+    public function getHashtagTwitter()
+    {
+        return $this->hashtagTwitter;
+    }
+
+    /**
+     * Set hashtagTwitter
+     *
+     * @param string $hashtagTwitter
+     * @return Homepage
+     */
+    public function setHashtagTwitter($hashtagTwitter)
+    {
+        $this->hashtagTwitter = $hashtagTwitter;
+
+        return $this;
+    }
+
+    /**
+     * Get tagInstagram
+     *
+     * @return string
+     */
+    public function getTagInstagram()
+    {
+        return $this->tagInstagram;
+    }
+
+    /**
+     * Set tagInstagram
+     *
+     * @param string $tagInstagram
+     * @return Homepage
+     */
+    public function setTagInstagram($tagInstagram)
+    {
+        $this->tagInstagram = $tagInstagram;
+
+        return $this;
+    }
+
 
     /**
      * Set displayedPushsMain
@@ -317,7 +380,7 @@ class Homepage
     /**
      * Get displayedPushsMain
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPushsMain()
     {
@@ -340,7 +403,7 @@ class Homepage
     /**
      * Get displayedPushsSecondary
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPushsSecondary()
     {
@@ -363,7 +426,7 @@ class Homepage
     /**
      * Get displayedPrefooters
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPrefooters()
     {
@@ -397,7 +460,7 @@ class Homepage
     /**
      * Get sliderNews
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSliderNews()
     {
@@ -431,7 +494,7 @@ class Homepage
     /**
      * Get topVideos
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTopVideos()
     {
@@ -465,7 +528,7 @@ class Homepage
     /**
      * Get topWebTvs
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTopWebTvs()
     {
@@ -499,7 +562,7 @@ class Homepage
     /**
      * Get sliderInfos
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSliderInfos()
     {
@@ -533,7 +596,7 @@ class Homepage
     /**
      * Get sliderStatements
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSliderStatements()
     {

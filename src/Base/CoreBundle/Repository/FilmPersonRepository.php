@@ -26,7 +26,7 @@ class FilmPersonRepository extends EntityRepository
             ->where('fp.slug = :slug')
             ->setParameter('slug', $slug)
             ->getQuery()
-            ->getSingleResult();
+            ->getOneOrNullResult();
     }
 
     public function getDirectorsRandomly($count)

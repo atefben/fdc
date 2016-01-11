@@ -91,7 +91,7 @@ base_soif:
 # fdc websites
 fdc_press:
     resource: "@FDCPressBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /press
 
 #fdc_corporate:
 #    resource: "@FDCCorporateBundle/Controller/"

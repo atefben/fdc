@@ -55,6 +55,7 @@ class UpdateCommand extends ContainerAwareCommand
         $end = $input->getOption('end');
         $entity = $input->getOption('entity');
         $save = $input->getOption('save');
+        $logger = $this->getContainer()->get('logger');
         
         // start
         $start = $input->getOption('start');
@@ -66,7 +67,13 @@ class UpdateCommand extends ContainerAwareCommand
                 $this->getContainer()->get('logger')->error($msg);
                 exit;
             }
-            $start = $soifTask->getEndTimestamp();
+            if (get_class($soifTask->getEndTimestamp()) !== 'DateTime') {
+                $msg = 'Last call timestamp is not of type DateTime : '. get_class($soifTask->getEndTimestamp());
+                $output->writeln($msg);
+                $logger->err($msg);
+                exit;
+            }
+            $start = $soifTask->getEndTimestamp()->getTimestamp();
         }
         
         // managers
