@@ -39,11 +39,32 @@ class SocialWall implements SocialWallInterface
     protected $url;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="date")
+     */
+    protected $date;
+
+    /**
      * @var integer
      *
      * @ORM\Column(type="integer")
      */
     protected $network;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    protected $content;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    protected $message;
 
     /**
      * @var boolean
@@ -72,6 +93,20 @@ class SocialWall implements SocialWallInterface
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
     private $festival;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $maxIdTwitter;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $maxIdInstagram;
 
     public function __construct()
     {
@@ -223,5 +258,121 @@ class SocialWall implements SocialWallInterface
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return SocialWall
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return SocialWall
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set maxIdTwitter
+     *
+     * @param string $maxIdTwitter
+     * @return SocialWall
+     */
+    public function setMaxIdTwitter($maxIdTwitter)
+    {
+        $this->maxIdTwitter = $maxIdTwitter;
+
+        return $this;
+    }
+
+    /**
+     * Get maxIdTwitter
+     *
+     * @return string 
+     */
+    public function getMaxIdTwitter()
+    {
+        return $this->maxIdTwitter;
+    }
+
+    /**
+     * Set maxIdInstagram
+     *
+     * @param string $maxIdInstagram
+     * @return SocialWall
+     */
+    public function setMaxIdInstagram($maxIdInstagram)
+    {
+        $this->maxIdInstagram = $maxIdInstagram;
+
+        return $this;
+    }
+
+    /**
+     * Get maxIdInstagram
+     *
+     * @return string 
+     */
+    public function getMaxIdInstagram()
+    {
+        return $this->maxIdInstagram;
+    }
+    
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return SocialWall
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

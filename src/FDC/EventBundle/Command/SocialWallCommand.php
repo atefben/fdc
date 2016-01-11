@@ -42,41 +42,11 @@ class SocialWallCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
 
-        // Get twitter api
-       /* $twitterClient = new Client('https://api.twitter.com/{version}', array(
-            'version' => '1.1'
-        ));
-
-        $twitterClient->addSubscriber(new OauthPlugin(array(
-            'consumer_key'    => $this->getContainer()->getParameter('twitter_consumer_key'),
-            'consumer_secret' => $this->getContainer()->getParameter('twitter_consumer_secret'),
-            'token'           => $this->getContainer()->getParameter('twitter_token'),
-            'token_secret'    => $this->getContainer()->getParameter('twitter_token_secret')
-        )));
-
-        $request = $twitterClient->get('search/tweets.json');
-        $request->getQuery()->set('q', '#cannes2016');
-        $request->getQuery()->set('count', 13);
-        $request->getQuery()->set('result_type', 'recent');
-        $response = $request->send();
-
-        $results_twitter = json_decode($response->getBody());
-        print_r($results_twitter);exit; */
-
-        // Get instagram api
-
-        $tag = 'niagara';
-        $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/'. $tag .'/media/recent?access_token='. $this->getContainer()->getParameter('instagram_token'));
-
-        $instagramResults = json_decode($instagramResponse);
-        $instagramPictures = array();
-
-        foreach($instagramResults->data as $result) {
-            $instagramPictures[] = $result->images->standard_resolution->url;
-        }
 
         $em = $this->getContainer()->get('doctrine')->getManager();
         $logger = $this->getContainer()->get('logger');
+        $datetime = new DateTime();
+        $offset = 100;
 
         // get current festival
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -86,14 +56,125 @@ class SocialWallCommand extends ContainerAwareCommand
             $this->writeError($output, $logger, $msg);
         }
 
-        $em->flush();
-    }
+        // get current social graph twitter hashtag
+        $tagSettings= $em->getRepository('BaseCoreBundle:Homepage')->findOneByFestival($festival->getId());
+        if ($tagSettings === null) {
+            $msg = 'Can\'t find social graph settings';
+            $this->writeError($output, $logger, $msg);
+        }
 
-    private function writeError($output, $logger, $msg)
-    {
-        $output->writeln($msg);
-        $logger->error($msg);
-        exit;
-    }
+        // get all hashtags
+        $tags = explode(', ',$tagSettings->getSocialWallHashtags());
+
+         ////////////////////////////////////////////////////////////////////////
+        ////////////////////////////   TWITTER   ///////////////////////////////
+       ////////////////////////////////////////////////////////////////////////
+
+
+       // Get twitter api
+        $twitterClient = new Client('https://api.twitter.com/{version}', array(
+               'version' => '1.1'
+        ));
+
+        $twitterClient->addSubscriber(new OauthPlugin(array(
+           'consumer_key'    => $this->getContainer()->getParameter('twitter_consumer_key'),
+           'consumer_secret' => $this->getContainer()->getParameter('twitter_consumer_secret'),
+           'token'           => $this->getContainer()->getParameter('twitter_token'),
+           'token_secret'    => $this->getContainer()->getParameter('twitter_token_secret')
+        )));
+
+        // get social graph by date
+        $lastIdTwitter = $em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array(
+           'date'  => $datetime,
+           'network' => 0
+        ));
+
+        // Get last twitter id in db
+        $maxId = (null != $lastIdTwitter) ? $lastIdTwitter->getMaxIdTwitter() : 686506565541703680;
+        $request = $twitterClient->get('search/tweets.json');
+
+        // Get all tweets
+        foreach($tags as $tag) {
+
+            while(true) {
+
+                $request->getQuery()->set('q', $tag);
+                $request->getQuery()->set('count', $offset);
+                $request->getQuery()->set('since', $datetime->format('Y-m-d'));
+                if ($maxId !== null) {
+                   $request->getQuery()->set('max_id', $maxId);
+                }
+                $response = $request->send();
+
+                // Process each tweet returned
+                $results = json_decode($response->getBody());
+                $tweets  = $results->statuses;
+
+                // Exit when no more tweets are returned
+                if (sizeof($tweets) !== $offset) {
+                   $maxId = $maxId = (sizeof($tweets) > 0) ? $tweets[sizeof($tweets) - 1]->id : $maxId;
+                   break;
+                }
+
+            }
+        }
+
+        foreach($tweets as $tweet) {
+            $socialWall =  new SocialWall();
+            $socialWall->setMessage($tweet->text);
+            if(isset($tweet->entities->media[0]->media_url)) {
+               $socialWall->setContent($tweet->entities->media[0]->media_url);
+            } else {
+               $socialWall->setContent('#');
+            }
+            $socialWall->setUrl('https://twitter.com/'.$tweet->user->screen_name.'/status/'.$tweet->id);
+            $socialWall->setNetwork(0);
+            $socialWall->setEnabledMobile(0);
+            $socialWall->setEnabledDesktop(0);
+            $socialWall->setMaxIdTwitter($maxId);
+            $socialWall->setDate($datetime);
+            $socialWall->setTags($tagSettings->getSocialWallHashtags());
+            $em->persist($socialWall);
+        }
+
+         //////////////////////////////////////////////////////////////////////
+        ///////////////////////////   INSTAGRAM   ////////////////////////////
+        //////////////////////////////////////////////////////////////////////
+
+        /*
+
+        // Get instagram api
+
+        foreach($tags as $tag) {
+            $tag = substr($tag, 1);
+            $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/'. $tag .'/media/recent?access_token='. $this->getContainer()->getParameter('instagram_token'));
+            $instagramResults = json_decode($instagramResponse);
+        }
+        echo'<pre>'; print_r($instagramResults); echo '</pre>'; exit;
+        foreach($instagramResults->data as $instagramPost) {
+            $socialWall =  new SocialWall();
+            $socialWall->setMessage($instagramPost->caption->text);
+            $socialWall->setContent($instagramPost->images->standard_resolution->url);
+            $socialWall->setUrl($instagramPost->link);
+            $socialWall->setNetwork(1);
+            $socialWall->setEnabledMobile(0);
+            $socialWall->setEnabledDesktop(0);
+            $socialWall->setDate($datetime);
+            $socialWall->setTags($tagSettings->getSocialWallHashtags());
+            $em->persist($socialWall);
+        }
+
+        */
+
+
+        $em->flush();
+        }
+
+        private function writeError($output, $logger, $msg)
+        {
+            $output->writeln($msg);
+            $logger->error($msg);
+            exit;
+        }
 
 }

@@ -32,7 +32,7 @@ class NewsController extends Controller
 
         foreach ($timeline as $key => $timelineDate) {
             $socialTimeline[]['date']  = $timelineDate->getDate();
-            $socialTimelineCount[] = $timelineDate->getCount();
+            $socialTimelineCount[]     = $timelineDate->getCount();
         }
         
         $homeSlider = array(
