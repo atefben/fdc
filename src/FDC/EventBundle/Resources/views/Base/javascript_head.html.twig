@@ -61,7 +61,9 @@
                 }
             },
             "socialWall": {
+                {% if homeArticles is defined %}
                 "points": {{ homeArticles.timelineCount }},
+                {% endif %}
                 "heightGraph" : 200
             }
         }

@@ -59,6 +59,8 @@ parameters:
     fdc_press_domain: ~
     fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
+    fdc_app_android_download_url: '#'
+    fdc_app_ios_download_url: '#'
     header_fdc: 'http://www.festival-cannes.com/fr.html'
     header_cine: 'http://www.cinefondation.com/fr/'
     header_ccm: 'http://www.cannescourtmetrage.com/fr/'
