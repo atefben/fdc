@@ -1,6 +1,6 @@
 <?php
 
-namespace Base\CoreBundle\Listener;
+namespace Base\AdminBundle\EventListener;
 
 use \DateTime;
 
@@ -12,10 +12,10 @@ use Doctrine\ORM\Event\PostFlushEventArgs;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
- * Class FDCListener
+ * Class NewsListener
  * @package Base\CoreBundle\Listener
  */
-class FDCListener
+class NewsListener
 {
     /**
      * @var TokenStorage
