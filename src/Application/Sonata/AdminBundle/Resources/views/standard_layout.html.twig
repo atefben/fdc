@@ -262,7 +262,7 @@ file that was distributed with this source code.
                                                         <ul class="treeview-menu{% if active %} active{% endif %}">
                                                             {%  if group.label == 'dashboard.group.general' %}
                                                                 <li>
-                                                                    <a href="{{ path('admin_base_core_homepage_edit', {id: 1}) }}">
+                                                                    <a href="{{ path('admin_base_core_homepage_edit', {id: admin_homepage_id}) }}">
                                                                         <i class="fa fa-angle-double-right"></i>
                                                                         {{ 'dashboard.link.homepage'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>

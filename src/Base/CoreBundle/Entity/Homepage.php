@@ -77,14 +77,21 @@ class Homepage
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $hashtagTwitter;
+    private $socialGraphHashtagTwitter;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $tagInstagram;
+    private $socialWallHashtags;
+    
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
 
     /**
      * @var boolean
@@ -601,5 +608,74 @@ class Homepage
     public function getSliderStatements()
     {
         return $this->sliderStatements;
+    }
+
+    /**
+     * Set socialGraphHashtagTwitter
+     *
+     * @param string $socialGraphHashtagTwitter
+     * @return Homepage
+     */
+    public function setSocialGraphHashtagTwitter($socialGraphHashtagTwitter)
+    {
+        $this->socialGraphHashtagTwitter = $socialGraphHashtagTwitter;
+
+        return $this;
+    }
+
+    /**
+     * Get socialGraphHashtagTwitter
+     *
+     * @return string 
+     */
+    public function getSocialGraphHashtagTwitter()
+    {
+        return $this->socialGraphHashtagTwitter;
+    }
+
+    /**
+     * Set socialWallHashtags
+     *
+     * @param string $socialWallHashtags
+     * @return Homepage
+     */
+    public function setSocialWallHashtags($socialWallHashtags)
+    {
+        $this->socialWallHashtags = $socialWallHashtags;
+
+        return $this;
+    }
+
+    /**
+     * Get socialWallHashtags
+     *
+     * @return string 
+     */
+    public function getSocialWallHashtags()
+    {
+        return $this->socialWallHashtags;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return Homepage
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }

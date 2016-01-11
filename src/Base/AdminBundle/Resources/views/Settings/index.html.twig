@@ -4,10 +4,10 @@
 {% block content %}
     <h3>{{ 'settings.fdc'|trans }}</h3>
     {{ form_start(formFDCYear) }}
-        {{ form_errors(formFDCYear) }}
+    {{ form_errors(formFDCYear) }}
 
-        {{ form_row(formFDCYear.festival) }}
-        {{ form_row(formFDCYear.save) }}
+    {{ form_row(formFDCYear.festival) }}
+    {{ form_row(formFDCYear.save) }}
     {{ form_end(formFDCYear) }}
 
     <h3>{{ 'settings.fdc_api'|trans }}</h3>

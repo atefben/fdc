@@ -6,6 +6,9 @@ services:
         arguments: [~, Base\CoreBundle\Entity\Homepage, BaseAdminBundle:HomepageAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+          - [ setTranslationDomain, ['BaseAdminBundle']]
+
     # GROUP GENERAL
     base.admin.tag:
         class: Base\AdminBundle\Admin\TagAdmin
@@ -28,6 +31,14 @@ services:
         arguments: [~, Base\CoreBundle\Entity\ContactTheme, BaseAdminBundle:ContactThemeAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.contact_theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.social_wall:
+        class: Base\AdminBundle\Admin\SocialWallAdmin
+        arguments: [~, Base\CoreBundle\Entity\SocialWall, BaseAdminBundle:SocialWallAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.social_wall, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

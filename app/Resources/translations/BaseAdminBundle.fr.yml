@@ -12,6 +12,7 @@ breadcrumb:
     link_news_article_list: Liste des actualités - articles
     link_news_theme_list: Liste des Thèmes d'actualités
     link_media_image_list : Liste des Médias images
+    link_homepage_list: Homepage
 
 group:
     french_version: Version française
@@ -75,7 +76,13 @@ entity:
     film_projection: Programmations
     country: Pays
     contact_theme: Thèmes de contact
-
+    created_infos: |
+        Crée le date par :
+        user
+    updated_infos: |
+        Modifiée le date par :
+        user
+    social_wall: Social Wall
 list:
     label_id: Identifiant
     label_title: Titre

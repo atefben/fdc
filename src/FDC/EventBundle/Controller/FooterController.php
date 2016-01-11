@@ -20,7 +20,6 @@ class FooterController extends Controller
 {
     /**
      * @Route("/static-{page}")
-     * @Template("FDCEventBundle:Footer:footer.$page.html.twig")
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -601,8 +600,10 @@ class FooterController extends Controller
                 break;
         }
 
-        return array(
-            'content' => $pageContent
+        return $this->render("FDCEventBundle:Footer:{$page}.html.twig",
+            array(
+                'content' => $pageContent
+            )
         );
 
     }

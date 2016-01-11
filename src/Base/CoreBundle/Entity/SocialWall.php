@@ -46,6 +46,27 @@ class SocialWall implements SocialWallInterface
     protected $network;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $enabledMobile;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $enabledDesktop;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="string")
+     */
+    protected $tags;
+
+    /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
@@ -133,5 +154,74 @@ class SocialWall implements SocialWallInterface
     public function getFestival()
     {
         return $this->festival;
+    }
+
+    /**
+     * Set enabledMobile
+     *
+     * @param boolean $enabledMobile
+     * @return SocialWall
+     */
+    public function setEnabledMobile($enabledMobile)
+    {
+        $this->enabledMobile = $enabledMobile;
+
+        return $this;
+    }
+
+    /**
+     * Get enabledMobile
+     *
+     * @return boolean 
+     */
+    public function getEnabledMobile()
+    {
+        return $this->enabledMobile;
+    }
+
+    /**
+     * Set enabledDesktop
+     *
+     * @param boolean $enabledDesktop
+     * @return SocialWall
+     */
+    public function setEnabledDesktop($enabledDesktop)
+    {
+        $this->enabledDesktop = $enabledDesktop;
+
+        return $this;
+    }
+
+    /**
+     * Get enabledDesktop
+     *
+     * @return boolean 
+     */
+    public function getEnabledDesktop()
+    {
+        return $this->enabledDesktop;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param string $tags
+     * @return SocialWall
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

@@ -88,6 +88,7 @@ twig:
         jwplayer_key: "%jwplayer_key%"
         admin_routes_translation_legend: %admin_routes_translation_legend%
         admin_routes_translation_lock: %admin_routes_translation_lock%
+        admin_homepage_id: %admin_homepage_id%
 
 # Assetic Configuration
 assetic:
