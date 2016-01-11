@@ -27,7 +27,7 @@ parameters:
     locale_fallback: en
 
     # admin
-
+    admin_homepage_id: ~
     # routes where are displayed the translation legend
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
