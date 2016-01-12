@@ -47,7 +47,7 @@ class NewsController extends Controller
         if ($homepage === null) {
             throw new NotFoundHttpException();
         }
-        
+
         $homeSlider = array(
             array(
                 'id'=> 0,
@@ -246,7 +246,8 @@ class NewsController extends Controller
                 ),
             ),
             'timeline' => $socialTimeline,
-            'timelineCount' => json_encode($socialTimelineCount)
+            'timelineCount' => json_encode($socialTimelineCount),
+            'timelineCheck' => $socialTimelineCount
 
         );
         $homeCategories = array(
