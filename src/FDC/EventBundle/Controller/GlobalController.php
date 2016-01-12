@@ -225,7 +225,9 @@ class GlobalController extends Controller
                                         'newsletter_email' => $data['email']
                                     )
                                 )
-                            );
+
+                            )
+                            ->setContentType("text/html");
 
                         $this->get('mailer')->send($message);
                     }
