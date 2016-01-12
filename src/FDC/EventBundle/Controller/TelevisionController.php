@@ -21,7 +21,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => true,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -31,7 +31,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => true,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -41,7 +41,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -51,7 +51,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -61,7 +61,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -71,7 +71,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -81,7 +81,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -93,7 +93,7 @@ class TelevisionController extends Controller
         $videos = array(
             array(
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -102,7 +102,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -165,7 +165,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => true,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -175,7 +175,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => true,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -185,7 +185,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -195,7 +195,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -205,7 +205,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -215,7 +215,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',
@@ -225,7 +225,7 @@ class TelevisionController extends Controller
             array(
                 'most_viewed' => false,
                 'image' => array(
-                    'path' => 'image.jpg'
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
                 ),
                 'nbVideos' => 5,
                 'theme' => 'les plus vues',

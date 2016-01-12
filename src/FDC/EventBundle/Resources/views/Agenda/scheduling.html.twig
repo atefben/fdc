@@ -7,9 +7,9 @@
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
                 <div class="buttons">
-                    <a href="#" class="button subnav">{{ 'programmation.btn.telechargerhoraireprojectionpresse'|trans }}</a>
-                    <a href="#" class="button list">{{ 'programmation.btn.telechargerformatpdf'|trans }}</a>
-                    <a href="#" class="button list">{{ 'programmation.btn.telechargerformatics'|trans }}</a>
+                    <a href="#" class="button subnav"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerhoraireprojectionpresse'|trans }}</a>
+                    <a href="#" class="button list"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}</a>
+                    <a href="#" class="button list"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatics'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -20,9 +20,7 @@
                     <div id="mycalendar" class="side"></div>
                     <p class="link">
                         <a href="{{ path('fdc_event_agenda_get') }}">
-                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                            <img src="{{ asset_url }}" alt="{{ 'programmation.btn.toutmonagenda'|trans }}">
-                            {% endimage %}
+                            <i class="icon icon_fleche-right"></i>
                             {{ 'programmation.btn.toutmonagenda'|trans }}
                         </a>
                     </p>
@@ -44,13 +42,13 @@
                     {% include 'FDCEventBundle:Agenda:components/filters.html.twig' %}
 
                     <div id="timeline">
-                        <span class="arrow left"></span>
+                        <span class="arrow left"><i class="icon icon_flecheGauche"></i></span>
                         <div class="timeline-container">
                             {% for day in schedulingDays %}
                                 <a href="#" class="" data-date="{{ day.date|date('Y-m-d') }}">{{ day.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}<span class="day">{{ day.date|date('d') }}</span></a>
                             {% endfor %}
                         </div>
-                        <span class="arrow right"></span>
+                        <span class="arrow right"><i class="icon icon_fleche-right"></i></span>
                     </div>
                     <div class="calendar">
                         <div class="timeCol">
@@ -77,8 +75,8 @@
                             <div class="time">03H</div>
                         </div>
                         <div class="venues">
-                            <a href="#" class="nav prev"></a>
-                            <a href="#" class="nav next"></a>
+                            <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
+                            <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
                             <div class="v-wrapper">
                                 <div class="venue">
                                     <div class="v-head">{{ 'programmation.salle.grandtheatrelumière'|trans }}</div>

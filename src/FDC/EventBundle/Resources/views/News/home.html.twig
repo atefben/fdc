@@ -92,9 +92,7 @@
                     <div id="hashtag">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                {% image '@FDCEventBundle/Resources/public/img/svg/palme.svg' %}
-                                <img width="70" src="{{ asset_url }}" alt="#Cannes2016" />
-                                {% endimage %}
+                                <i class="icon icon_palme"></i>
                                 #Cannes2016
                             </div>
                         </div>
@@ -118,9 +116,7 @@
             <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
             <p class="link">
                 <a href="{{ path('fdc_event_television_live') }}">
-                    {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                    <img src="{{ asset_url }}" alt="{{ 'home.btn.accederalawebtv'|trans }}" />
-                    {% endimage %}
+                    <i class="icon icon_fleche-right"></i>
                     {{ 'home.btn.accederalawebtv'|trans }}
                 </a>
             </p>
@@ -138,7 +134,7 @@
             </div>
         </div>
         <div id="channels">
-            <h2 class="title">Les chaines</h2>
+            <h2 class="title">{{ 'home.title.leschaines'|trans }}</h2>
             <div id="slider-channels" class="owl-carousel sliderDrag">
 
                 {% for video in videos %}
@@ -154,7 +150,7 @@
 
         <div id="featured-movies">
             <div id="slider-movies" class="owl-carousel">
-                {% for video in videoSlider %}
+                {% for video in featuredMovies.video %}
                     {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
                 {% endfor %}
             </div>

@@ -112,7 +112,7 @@ class NewsController extends Controller
                     'image' => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
-                    'format' => 'article',
+                    'format' => 'video',
                     'theme' => 'competition',
                     'category' => 'competition',
                     'double' => false,
@@ -124,7 +124,7 @@ class NewsController extends Controller
                     'image' => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
-                    'format' => 'article',
+                    'format' => 'photo',
                     'theme' => 'competition',
                     'category' => 'competition',
                     'double' => false,
@@ -138,7 +138,7 @@ class NewsController extends Controller
                     'image' => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
-                    'format' => 'article',
+                    'format' => 'audio',
                     'theme' => 'competition',
                     'category' => 'competition',
                 ),
@@ -230,11 +230,47 @@ class NewsController extends Controller
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         )
                     )
-                ),
+                )
             ),
             'timeline' => $socialTimeline,
             'timelineCount' => json_encode($socialTimelineCount)
 
+        );
+        $featuredMovies = array(
+            'type' => 'fullVideo',
+            'video' => array(
+                array(
+                    'film' => array(
+                        'title' => 'Sils Maria',
+                        'theme' => 'Compétition',
+                        'author' => array(
+                            'fullName' => 'Olivier ASSAYAS',
+                            'slug' => 'olivier-assayas'
+                        )
+                    ),
+                    'source' => array(
+                        'm4v' => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                        'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
+                        'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
+                    )
+                ),
+                array(
+                    'film' => array(
+                        'title' => 'Sils Maria',
+                        'theme' => 'Compétition',
+                        'author' => array(
+                            'fullName' => 'Olivier ASSAYAS',
+                            'slug' => 'olivier-assayas'
+                        )
+                    ),
+                    'source' => array(
+                        'm4v' => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                        'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
+                        'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
+                    )
+                )
+
+            )
         );
         $homeCategories = array(
             array(
@@ -563,6 +599,7 @@ class NewsController extends Controller
             'filters' => $filters,
             'videos' => $videos,
             'videoSlider' => $videoSlider,
+            'featuredMovies' => $featuredMovies,
             'homeCategories' => $homeCategories,
             'homeCategoriesFeatured' => $homeCategoriesFeatured,
             'wallPosts' => $wallPosts
