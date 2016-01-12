@@ -26,13 +26,26 @@ class NewsController extends Controller
     {
         $em = $this->get('doctrine')->getManager();
 
-        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => 75),array('date' => 'ASC'),12,null);
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        // SocialGraph
+        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => $settings->getFestival()), array('date' => 'ASC'), 12, null);
         $socialTimeline      = array();
         $socialTimelineCount = array();
 
         foreach ($timeline as $key => $timelineDate) {
             $socialTimeline[]['date']  = $timelineDate->getDate();
             $socialTimelineCount[]     = $timelineDate->getCount();
+        }
+
+        // Homepage
+        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array('festival' => $settings->getFestival()));
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
         }
         
         $homeSlider = array(
@@ -594,6 +607,7 @@ class NewsController extends Controller
         );
 
         return array(
+            'homepage' => $homepage,
             'homeSlider' => $homeSlider,
             'homeArticles' => $home,
             'filters' => $filters,

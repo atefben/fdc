@@ -78,6 +78,7 @@
             </div>
         </div>
 
+    {% if homepage.displayedSocialWall %}
         <div id="social-wall">
             <div class="container">
                 <div id="graph">
@@ -111,6 +112,7 @@
 
             </div>
         </div>
+        {% endif %}
 
         <div id="featured-videos">
             <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
