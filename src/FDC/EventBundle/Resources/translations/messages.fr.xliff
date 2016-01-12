@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-01-12T11:03:23Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-01-12T17:02:18Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -107,11 +107,6 @@
         <source>home.video.text.de</source>
         <target>de</target>
         <jms:reference-file line="16">News/widgets/videos.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="c3443465d9b22352a8fc70087e79b543325f3d8d" resname="movie.article.btn.ajouteramaselection">
-        <source>movie.article.btn.ajouteramaselection</source>
-        <target>Ajouter à ma sélection</target>
-        <jms:reference-file line="8">Movie/widgets/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7fc055ada3acc3ade0d0577b739be0d180988a2a" resname="movie.competition.title.encompetition">
         <source>movie.competition.title.encompetition</source>
@@ -247,13 +242,22 @@
       <trans-unit id="9e9486daa181d4bb53bf7d57d2b91f70869b3331" resname="newsletter.email.subject">
         <source>newsletter.email.subject</source>
         <target>Votre inscription à la newsletter</target>
-        <jms:reference-file line="183">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="220">EventBundle/Controller/GlobalController.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3e12f213a10adb5625e4d7ab250e654bc240d3d3" resname="newsletter.form.error.emaildejaenregistre">
+        <source>newsletter.form.error.emaildejaenregistre</source>
+        <target>Cet email est déjà enregistré !</target>
+        <jms:reference-file line="238">EventBundle/Controller/GlobalController.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8f2153dcfb9a423088a11691433387db818adc5c" resname="newsletter.form.error.ladresseemailnestpasvalide">
+        <source>newsletter.form.error.ladresseemailnestpasvalide</source>
+        <target>L'adresse email n'est pas valide</target>
+        <jms:reference-file line="209">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="088bf9be5aabd3ab9ea123c1b7a6e98fde2cdad7" resname="palmares.btn.decouvrirrubrique">
         <source>palmares.btn.decouvrirrubrique</source>
         <target>Découvrir la rubrique</target>
         <jms:reference-file line="6">Palmares/components/bandeau.html.twig</jms:reference-file>
-        <jms:reference-file line="8">Palmares/components/bandeau.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e724af1a2f6ae42565ec53ffab61dd394b9dd421" resname="palmares.nav.camera-dor">
         <source>palmares.nav.camera-dor</source>
@@ -284,7 +288,6 @@
         <source>palmares.price.palmedor</source>
         <target>Palme d'Or</target>
         <jms:reference-file line="8">Palmares/widgets/movie.html.twig</jms:reference-file>
-        <jms:reference-file line="10">Palmares/widgets/movie.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="efc26341705f5b165514f22587887da8824de5c6" resname="programmation.filters.label.selections">
         <source>programmation.filters.label.selections</source>
@@ -294,7 +297,7 @@
       <trans-unit id="06b016cdf1138db5ce494015844b75ec27d80599" resname="programmation.filters.label.types">
         <source>programmation.filters.label.types</source>
         <target>Types</target>
-        <jms:reference-file line="11">Agenda/components/filters.html.twig</jms:reference-file>
+        <jms:reference-file line="12">Agenda/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a2b2e42546ec34e5430f0e75a261d5aede962a22" resname="search.result.category.actualites">
         <source>search.result.category.actualites</source>

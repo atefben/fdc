@@ -2,11 +2,12 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use Base\CoreBundle\Entity\Newsletter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 use FDC\EventBundle\Form\Type\ShareEmailType;
 use FDC\EventBundle\Form\Type\NewsletterType;
@@ -158,7 +159,7 @@ class GlobalController extends Controller
 
 
     /**
-     * @Route( "/register-newsletter" )
+     * @Route( "/register/newsletter", options={"expose"=true})
      * @Template("FDCEventBundle:Global:newsletter.html.twig")
      * @param Request $request
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
@@ -168,41 +169,76 @@ class GlobalController extends Controller
         $translator = $this->get('translator');
 
         $newsForm = $this->createForm( new NewsletterType($translator) );
+        $registration = new Newsletter();
 
-        if ( $request->isMethod( 'POST' ) ) {
+        if($request->isXmlHttpRequest() && $request->isMethod( 'POST' ) ) {
 
             $newsForm->submit($request);
 
-            if ( $newsForm->isValid( ) ) {
+            if ( $newsForm->isValid() ) {
 
                 $data = $newsForm->getData();
-                $email = $data['email'];
-                $response['success'] = $email;
 
-                $message = \Swift_Message::newInstance()
-                    ->setSubject($translator->trans('newsletter.email.subject'))
-                    ->setFrom('contact@mail.fr')
-                    ->setTo($email)
-                    ->setBody(
-                        $this->renderView(
-                            'FDCEventBundle:Mail:mail.newsletter.html.twig',
-                            array(
-                                'newsletter_email' => $email
-                            )
-                        )
-                    );
+                //Check if entry already exist
+                $exist = $this->getDoctrine()
+                    ->getRepository('BaseCoreBundle:Newsletter')
+                    ->findOneBy(array('email' => $data['email']));
 
-                $this->get('mailer')->send($message);
+                if ($exist == null) {
+
+                    $response['success'] = true;
+
+                    //Find site by slug
+                    $siteSlug = $this->container->getParameter('fdc_event_slug');
+                    $site = $this->getDoctrine()
+                        ->getRepository('BaseCoreBundle:Site')
+                        ->findOneBy(array('slug' => $siteSlug));
+
+                    //Save Email & Enable
+                    $registration->setEmail($data['email']);
+                    $registration->setEnabled(true);
+                    $registration->setSite($site);
+
+                    //Check errors
+                    $validator = $this->get('validator');
+                    $errors = $validator->validate($registration);
+
+                    if (count($errors) > 0) {
+                        $response['success'] = false;
+                        $response['object'] = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
+                    }
+                    else {
+                        // Form is valid
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($registration);
+                        $em->flush();
+
+                        //Send Confirmation Mail
+                        $message = \Swift_Message::newInstance()
+                            ->setSubject($translator->trans('newsletter.email.subject'))
+                            ->setFrom('contact@mail.fr')
+                            ->setTo($data['email'])
+                            ->setBody(
+                                $this->renderView(
+                                    'FDCEventBundle:Mail:newsletter.html.twig',
+                                    array(
+                                        'newsletter_email' => $data['email']
+                                    )
+                                )
+                            );
+
+                        $this->get('mailer')->send($message);
+                    }
+                }
+
+                else {
+                    $response['success'] = false;
+                    $response['object'] = $translator->trans('newsletter.form.error.emaildejaenregistre');
+                }
+
+                return new JsonResponse( $response );
 
             }
-            else{
-
-                $response['success'] = false;
-                $response['cause'] = 'whatever';
-
-            }
-
-            return new JsonResponse( $response );
 
         }
 
