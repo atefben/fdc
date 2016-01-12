@@ -98,10 +98,17 @@ list:
     label__preview: Prévisualiser
     label__edit_translations: Éditer
     label_social_wall_content_none: Pas d'image
+    label_url: Lien
+    label_network: Réseau Social
+    label_content: Contenu
+    label_message: Message
+    label_enabled_mobile: Visible sur mobile
+    label_enabled_desktop: Visible sur le site
     tooltip:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
         since: depuis
+
 
 filter:
     label_id: Identifiant
@@ -110,6 +117,15 @@ filter:
     label_status: Statut
     label_translate: Traduit
     label_priority_status: Priorité
+    label_url: Lien
+    label_network: Réseau Social
+    label_content: Contenu
+    label_message: Message
+    label_enabled_mobile: Visible sur mobile
+    label_enabled_desktop: Visible sur le site
+    label_tags: Hashtag
+    label_created_at: Créé le
+    label_updated_at: Mis à jour le
 
 dashboard:
     group:

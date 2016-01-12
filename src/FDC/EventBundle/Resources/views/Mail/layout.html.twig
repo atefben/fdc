@@ -1,0 +1,31 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block email_title %}{% endblock %}</title>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table cellpadding="0" cellspacing="0" width="100%" style='background-color:#141414,margin:0px;padding:0px' bgcolor="#141414">
+    <tr>
+        <td width="440" align="center">
+            <table cellpadding="0" cellspacing="0" width='440' bgcolor="#141414" style='background-color:#141414;font-family:Arial'>
+                <tr>
+                    <td height="120">
+                        <img src="https://tools.ohwee.fr/FDC/test-emailing/logo.jpg" alt="">
+                        <!-- IMPORTANT TODO PROD  change url of image -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% block email_body %}
+                        {% endblock %}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>

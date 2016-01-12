@@ -81,6 +81,7 @@
     {% if homepage.displayedSocialWall %}
         <div id="social-wall">
             <div class="container">
+                {% if timelineCheck != null %}
                 <div id="graph">
                     <ul>
                         {% for timeline in homeArticles.timeline %}
@@ -93,9 +94,7 @@
                     <div id="hashtag">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                {% image '@FDCEventBundle/Resources/public/img/svg/palme.svg' %}
-                                <img width="70" src="{{ asset_url }}" alt="#Cannes2016" />
-                                {% endimage %}
+                                <i class="icon icon_palme"></i>
                                 #Cannes2016
                             </div>
                         </div>
@@ -103,7 +102,7 @@
                     <svg id="graphSVG" width="891" height="200"></svg>
                     <div id="tipGraph"></div>
                 </div>
-
+                {% endif %}
                 <div id="wall">
                     {% for post in wallPosts %}
                         {% include 'FDCEventBundle:News:widgets/post.html.twig' %}
@@ -120,9 +119,7 @@
             <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
             <p class="link">
                 <a href="{{ path('fdc_event_television_live') }}">
-                    {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                    <img src="{{ asset_url }}" alt="{{ 'home.btn.accederalawebtv'|trans }}" />
-                    {% endimage %}
+                    <i class="icon icon_fleche-right"></i>
                     {{ 'home.btn.accederalawebtv'|trans }}
                 </a>
             </p>
@@ -140,7 +137,7 @@
             </div>
         </div>
         <div id="channels">
-            <h2 class="title">Les chaines</h2>
+            <h2 class="title">{{ 'home.title.leschaines'|trans }}</h2>
             <div id="slider-channels" class="owl-carousel sliderDrag">
 
                 {% for video in videos %}
@@ -156,7 +153,7 @@
 
         <div id="featured-movies">
             <div id="slider-movies" class="owl-carousel">
-                {% for video in videoSlider %}
+                {% for video in featuredMovies.video %}
                     {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
                 {% endfor %}
             </div>

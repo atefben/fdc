@@ -163,14 +163,16 @@ class EventController extends Controller
                     'title' => 'Revivez la Leçon de Cinéma de Marco Bellocchio en audio',
                     'podcast' => array(
                         array(
-                            'title' => 'The lobster',
-                            'theme' => 'Cinéma de la plage',
-                            'sound' => 'sound2.mp3',
+                            'theme' => 'Conférence de presse',
+                            'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
                             'createdAt' => new \DateTime(),
-                            'img' => array(
-                                'path' => 'img.jpg'
+                            'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                            'sound'=> 'audio.mp3',
+                            'image' => array(
+                                'path' => 'img.jpg',
+                                'src'      => 'http://dummyimage.com/320x404/3498db/.png',
+                                'large'    => 'http://dummyimage.com/640x808/000/fff.png',
                             ),
-                            'akamaiId' => 'DAaDo5fgcUc'
                         ),
                     ),
                 ),

@@ -1,6 +1,15 @@
-New message from {{ contact_name }}
-Thème : {{ contact_theme }}
-About {{ contact_subject }}
-IP: {{ contact_ip }}
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle:Mail:layout.html.twig' %}
 
-Message: {{ contact_message|raw }}
+{% block email_title %}
+    Email de contact
+{% endblock %}
+
+{% block email_body %}
+    New message from {{ contact_name }}
+    Thème : {{ contact_theme }}
+    About {{ contact_subject }}
+    IP: {{ contact_ip }}
+
+    Message: {{ contact_message|raw }}
+{% endblock %}

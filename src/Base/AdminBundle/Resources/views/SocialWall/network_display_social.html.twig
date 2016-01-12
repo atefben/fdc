@@ -1,0 +1,14 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+
+{% block field %}
+    <div>
+        {% if object.network == constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER') %}
+            <p style="text-align: center">Twitter</p>
+        {% elseif object.network == constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM') %}
+            <p style="text-align: center">Instagram</p>
+        {% else %}
+            <p style="text-align: center">Tumblr</p>
+        {% endif %}
+    </div>
+{% endblock %}
