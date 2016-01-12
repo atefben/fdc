@@ -43,13 +43,14 @@ class LockController extends Controller
         $entity = $request->get('entity');
         $locale = $request->get('locale');
         $logger = $this->get('logger');
+        $authChecker = $this->get('security.authorization_checker');
         $em = $this->get('doctrine')->getManager();
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $response = new JsonResponse();
 
         if ($entity == null || $id == null || $locale == null) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id or entity missing");
+            $logger->error(__CLASS__. " - Couldnt create the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id / entity / locale missing");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de créer le verrou.'
@@ -73,17 +74,27 @@ class LockController extends Controller
             ));
         }
 
-        $trans = $entity->findTranslationByLocale($locale);
-        if ($trans === null) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for entity ". self::$entityMapper[$entity]. " id '{$id}' locale '{$locale}', translation not found");
-            $response->setStatusCode(400);
-            return $response->setData(array(
-                'message' => 'Impossible de créer le verrou.'
-            ));
+        $translations = array();
+        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+            $translations[] = $entity->findTranslationByLocale($locale);
+        } else {
+            $translations = $entity->getTranslations();
         }
 
-        $trans->setLockedBy($user);
-        $trans->setLockedAt(new DateTime());
+        foreach ($translations as $trans) {
+            if ($trans === null) {
+                $logger->error(__CLASS__ . " - Couldnt create the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
+                $response->setStatusCode(400);
+                return $response->setData(array(
+                    'message' => 'Impossible de créer le verrou.'
+                ));
+            }
+        }
+
+        foreach ($translations as $trans) {
+            $trans->setLockedBy($user);
+            $trans->setLockedAt(new DateTime());
+        }
         $em->flush();
 
         $response->setData(array(
@@ -94,7 +105,7 @@ class LockController extends Controller
     }
 
     /**
-     * hasLockAction function.
+     * checkAction function.
      *
      * @access public
      * @param mixed $slug
@@ -109,12 +120,11 @@ class LockController extends Controller
         $locale = $request->get('locale');
         $logger = $this->get('logger');
         $em = $this->get('doctrine')->getManager();
-        $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $response = new JsonResponse();
 
         if ($entity == null || $id == null || $locale == null) {
-            $logger->error(__CLASS__. " - Couldnt verify the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id or entity missing");
+            $logger->error(__CLASS__. " - Couldnt verify the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id / entity / locale missing");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de vérifier l\'existence du verrou.'
@@ -155,6 +165,88 @@ class LockController extends Controller
     }
 
     /**
+     * checkEntityAction function.
+     *
+     * @access public
+     * @param mixed $slug
+     * @return void
+     *
+     * @Secure(roles="ROLE_ADMIN")
+     * @Route("/check_entity/{id}", options={"expose"=true})
+     */
+    public function checkEntityAction(Request $request, $id)
+    {
+        $entity = $request->get('entity');
+        $locale = $request->get('locale');
+        $logger = $this->get('logger');
+        $em = $this->get('doctrine')->getManager();
+        $authChecker = $this->get('security.authorization_checker');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $response = new JsonResponse();
+
+        if ($entity == null || $id == null || $locale == null) {
+            $logger->error(__CLASS__. " - Couldnt verify the lock for entity '{$entity}' id '{$id}' locale {$locale}, parameter id / entity / locale missing");
+            $response->setStatusCode(400);
+            return $response->setData(array(
+                'message' => 'Impossible de vérifier l\'existence du verrou.'
+            ));
+        }
+
+        if (!isset(self::$entityMapper[$entity])) {
+            $logger->error(__CLASS__. " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
+            $response->setStatusCode(400);
+            return $response->setData(array(
+                'message' => 'Impossible de vérifier l\'existence du verrou.'
+            ));
+        }
+
+        $entity = $em->getRepository('BaseCoreBundle:'. self::$entityMapper[$entity])->findOneById($id);
+        if ($entity === null) {
+            $logger->error(__CLASS__. " - Couldnt verify the lock for entity ". self::$entityMapper[$entity]. " id '{$id}', id not found");
+            $response->setStatusCode(400);
+            return $response->setData(array(
+                'message' => 'Impossible de vérifier l\'existence du verrou.'
+            ));
+        }
+
+        $translations = array();
+        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+            $translations[] = $entity->findTranslationByLocale($locale);
+        } else {
+            $translations = $entity->getTranslations();
+        }
+
+        foreach ($translations as $trans) {
+            if ($trans === null) {
+                $logger->error(__CLASS__. " - Couldnt verify the lock for entity ". self::$entityMapper[$entity]. " id '{$id}' locale '{$locale}', translation not found");
+                $response->setStatusCode(400);
+                return $response->setData(array(
+                    'message' => 'Impossible de vérifier l\'existence du verrou.'
+                ));
+            }
+        }
+
+        foreach ($translations as $trans) {
+            if ($trans->getLockedBy() == null) {
+                $response->setData(array(
+                    'error' => 0
+                ));
+            } else if ($trans->getLockedBy() !== $user) {
+                $response->setData(array(
+                    'error' => 1
+                ));
+            }
+        }
+
+        $response->setData(array(
+            'success' => true
+        ));
+
+        return $response;
+    }
+
+    /**
      * deleteLockAction function.
      *
      * @access public
@@ -170,7 +262,7 @@ class LockController extends Controller
         $locale = $request->get('locale');
         $logger = $this->get('logger');
         $em = $this->get('doctrine')->getManager();
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $authChecker = $this->get('security.authorization_checker');
 
         $response = new JsonResponse();
 
@@ -199,17 +291,27 @@ class LockController extends Controller
             ));
         }
 
-        $trans = $entity->findTranslationByLocale($locale);
-        if ($trans === null) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for entity ". self::$entityMapper[$entity]. " id '{$id}' locale '{$locale}', translation not found");
-            $response->setStatusCode(400);
-            return $response->setData(array(
-                'message' => 'Impossible de supprimer le verrou.'
-            ));
+        $translations = array();
+        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+            $translations[] = $entity->findTranslationByLocale($locale);
+        } else {
+            $translations = $entity->getTranslations();
         }
 
-        $trans->setLockedBy(null);
-        $trans->setLockedAt(null);
+        foreach ($translations as $trans) {
+            if ($trans === null) {
+                $logger->error(__CLASS__ . " - Couldnt create the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
+                $response->setStatusCode(400);
+                return $response->setData(array(
+                    'message' => 'Impossible de créer le verrou.'
+                ));
+            }
+        }
+
+        foreach ($translations as $trans) {
+            $trans->setLockedBy(null);
+            $trans->setLockedAt(null);
+        }
         $em->flush();
 
         $response->setData(array(

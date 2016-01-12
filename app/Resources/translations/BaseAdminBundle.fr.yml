@@ -2,7 +2,7 @@ lang:
     en: Anglais
     fr: Français
     es: Espagnol
-    cn: Chinois
+    zh: Chinois
 
 settings:
     fdc: Paramètres du Festival de Cannes
@@ -77,11 +77,11 @@ entity:
     country: Pays
     contact_theme: Thèmes de contact
     created_infos: |
-        Crée le date par :
-        user
+        Crée le date par :<br/>
+        <b>user</b>
     updated_infos: |
-        Modifiée le date par :
-        user
+        Modifiée le date par :<br/>
+        <b>user</b>
     social_wall: Social Wall
 list:
     label_id: Identifiant

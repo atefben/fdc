@@ -33,7 +33,7 @@ class NewsListener
     public function __construct(TokenStorage $tokenStorage)
     {
         $this->tokenStorage = $tokenStorage;
-        $this->flush  = false;
+        $this->flush = false;
     }
 
     /**
@@ -47,13 +47,15 @@ class NewsListener
         if (method_exists($entity, 'setFestival')) {
             $em = $args->getEntityManager();
             $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-            $entity->setFestival($settings->getFestival());
+            if ($settings !== null) {
+                $entity->setFestival($settings->getFestival());
+            }
         }
 
         // set createdBy
-        if (method_exists($entity, 'getTranslatable') && method_exists($entity, 'setCreatedBy') &&
-            $entity->getCreatedBy() === null && $this->tokenStorage->getToken()) {
-            $entity->setCreatedBy($this->tokenStorage->getToken()->getUser());
+        if (method_exists($entity, 'getTranslatable') && method_exists($entity->getTranslatable(), 'setCreatedBy') &&
+            $entity->getTranslatable()->getCreatedBy() === null && $this->tokenStorage->getToken()) {
+            $entity->getTranslatable()->setCreatedBy($this->tokenStorage->getToken()->getUser());
         }
 
         if (method_exists($entity, 'getTranslatable') && method_exists($entity->getTranslatable(), 'setPublishedAt')) {
@@ -103,7 +105,7 @@ class NewsListener
      */
     public function postFlush(PostFlushEventArgs $eventArgs)
     {
-        if ($this->flush == true) {
+        if ($this->flush === true) {
             $this->flush = false;
             $eventArgs->getEntityManager()->flush();
         }
