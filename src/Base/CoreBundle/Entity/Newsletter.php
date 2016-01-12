@@ -111,4 +111,27 @@ class Newsletter
     {
         return $this->enabled;
     }
+
+    /**
+     * Set site
+     *
+     * @param \Base\CoreBundle\Entity\Site $site
+     * @return Newsletter
+     */
+    public function setSite(\Base\CoreBundle\Entity\Site $site = null)
+    {
+        $this->site = $site;
+
+        return $this;
+    }
+
+    /**
+     * Get site
+     *
+     * @return \Base\CoreBundle\Entity\Site 
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
 }

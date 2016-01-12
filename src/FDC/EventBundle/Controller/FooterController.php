@@ -20,10 +20,7 @@ class FooterController extends Controller
 {
     /**
      * @Route("/static-{page}")
-<<<<<<< Updated upstream
-=======
      * @Template("")
->>>>>>> Stashed changes
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -639,7 +636,7 @@ class FooterController extends Controller
                     ->setTo('lrocher@webqam.fr')
                     ->setBody(
                         $this->renderView(
-                            'FDCEventBundle:Mail:mail.contact.html.twig',
+                            'FDCEventBundle:Mail:contact.html.twig',
                             array(
                                 'contact_ip' => $request->getClientIp(),
                                 'contact_name' => $form->get('name')->getData(),

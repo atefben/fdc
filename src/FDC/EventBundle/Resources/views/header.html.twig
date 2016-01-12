@@ -22,14 +22,21 @@
         <ul class="user-nav">
 
             <li>
-                <a href="#" class="selection"> {{ 'header.usernav.nav.maselection'|trans }} </a>
+                <a href="#" class="selection">
+                    <i class="icon icon_ma-selection"></i>
+                    {{ 'header.usernav.nav.maselection'|trans }}
+                </a>
             </li>
 
             <li>
-                <a href="{{ header_account }}" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
+                <a href="{{ header_account }}" class="account" target="_blank" >
+                    <i class="icon icon_mon-compte"></i>
+                    {{ 'header.usernav.nav.moncompte'|trans }}
+                </a>
             </li>
             <li class="lang">
                 <a href="#" class="language">
+                    <i class="icon icon_langue"></i>
                     {{ app.request.locale|upper }}
                 </a>
                 <ul class="sub-languages">
@@ -113,13 +120,22 @@
             <div id="sticky-user">
                 <ul class="user-nav">
                     <li>
-                        <a href="#" class="selection"> {{ 'header.usernav.nav.maselection'|trans }} </a>
+                        <a href="#" class="selection">
+                            <i class="icon icon_ma-selection"></i>
+                            {{ 'header.usernav.nav.maselection'|trans }}
+                        </a>
                     </li>
                     <li>
-                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" > {{ 'header.usernav.nav.moncompte'|trans }} </a>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank" >
+                            <i class="icon icon_mon-compte"></i>
+                            {{ 'header.usernav.nav.moncompte'|trans }}
+                        </a>
                     </li>
                     <li>
-                        <a href="#" class="search"> {{ 'header.usernav.nav.rechercher'|trans }} </a>
+                        <a href="#" class="search">
+                            <i class="icon icon_recherche"></i>
+                            {{ 'header.usernav.nav.rechercher'|trans }}
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -224,16 +240,16 @@
                     </li>
                     <li>
                         <a href="{{ path('fdc_event_event_getevents') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_event_event_getevents' %}active{% endif %}">
+                           class="{% if app.request.attributes.get('_route') == 'fdc_event_event_getevents'
+                                     or app.request.attributes.get('_route') == 'fdc_event_event_get'%}active{% endif %}">
                             {{ 'header.mainnav.nav.lesevenements'|trans }}
                         </a>
                     </li>
                 </ul>
                 <ul class="user">
                     <li class="programmation-wrapper">
-                        <a href="{{ path('fdc_event_agenda_scheduling') }}"
-                           class="programmation">
-                            {{ 'header.mainnav.nav.programmation'|trans }}
+                        <a href="{{ path('fdc_event_agenda_scheduling') }}" class="programmation">
+                            <i class="icon icon_programmation"></i>{{ 'header.mainnav.nav.programmation'|trans }}
                         </a>
                         <ul>
                             <li>
@@ -254,7 +270,9 @@
                         </ul>
                     </li>
                     <li class="participate-wrapper">
-                        <a href="{{ path('fdc_event_participate_prepare') }}" class="participate"> {{ 'header.mainnav.nav.participer'|trans }} </a>
+                        <a href="{{ path('fdc_event_participate_prepare') }}" class="participate">
+                            <i class="icon icon_participer"></i>{{ 'header.mainnav.nav.participer'|trans }}
+                        </a>
                         <ul>
                             <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ 'header.mainnav.nav.preparersejour'|trans }}</a></li>
                             <li><a href="{{ path('fdc_event_participate_festival') }}"> {{ 'header.mainnav.nav.festivalmodeemploi'|trans }} </a></li>
@@ -264,7 +282,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_press_news_home') }}" class="press"> {{ 'header.mainnav.nav.espacepresse'|trans }} </a>
+                        <a href="{{ path('fdc_press_news_home') }}" class="press">
+                            <i class="icon icon_espace-presse"></i>{{ 'header.mainnav.nav.espacepresse'|trans }}
+                        </a>
                     </li>
                 </ul>
             </nav>

@@ -7,8 +7,8 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <div class="textLive">
-                    <h2>{{ 'webtv.direct.title.suiveztvfestival'|trans }}</h2>
-                    <a href="#" class="play"></a>
+                    <h2>{{ 'webtv.direct.title.suiveztvfestival'|trans|raw }}</h2>
+                    <a href="#" class="play"><i class="icon icon_video"></i></a>
                 </div>
             </div>
         </div>
@@ -18,9 +18,7 @@
         <h2 class="title">{{ 'webtv.direct.title.leschainesdufestival'|trans }}</h2>
         <p class="link">
             <a href="{{ path('fdc_event_television_channels') }}">
-                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                <img src="{{ asset_url }}" alt="{{ 'webtv.direct.btn.toutesleschaines'|trans }}">
-                {% endimage %}
+                <i class="icon icon_fleche-right"></i>
                 {{ 'webtv.direct.btn.toutesleschaines'|trans }}
             </a>
         </p>
@@ -47,15 +45,13 @@
         <h2 class="title">{{ 'webtv.direct.title.lesbandesannonces'|trans }}</h2>
         <p class="link">
             <a href="webtv_trailer_competition.php">
-                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                <img src="{{ asset_url }}" alt="{{ 'webtv.direct.btn.touteslesbandesannonces'|trans }}">
-                {% endimage %}
+                <i class="icon icon_fleche-right"></i>
                 {{ 'webtv.direct.btn.touteslesbandesannonces'|trans }}
             </a>
         </p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
             {% for video in trailers %}
-                <div class="video shadow-bottom">
+                <div class="vid shadow-bottom">
                     {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
                 </div>
             {% endfor %}

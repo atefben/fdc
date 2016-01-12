@@ -4,9 +4,7 @@
             <img src="{{ movie.img }}" alt="{{ movie.title }}">
             <div class="infos-item-list">
                 <div class="logo-palme-dor-container">
-                    {% image '@FDCEventBundle/Resources/public/img/palmares/palmedor-logo.png' %}
-                    <img src="{{ asset_url }}" class="palme-dor-img" alt="{{ 'palmares.price.palmedor'|trans }}" />
-                    {% endimage %}
+                    <i class="icon icon_palme palme-dor-img"></i>
                     <strong class="palme-dor-text verticalline">{{ 'palmares.price.palmedor'|trans }}</strong>
                 </div>
                 {% if movie.status is defined %}

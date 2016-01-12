@@ -44,7 +44,7 @@
 
                                 <div id="newsResults">
                                     {% for article in searchResult.category.actualite %}
-                                        {% include 'FDCEventBundle:Movie:widgets/article.html.twig' %}
+                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
 
                                 <div id="communiquesResults">
                                     {% for article in searchResult.category.actualite %}
-                                        {% include 'FDCEventBundle:Movie:widgets/article.html.twig' %}
+                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
 
                                 <div id="mediasResults">
                                     {% for article in searchResult.category.media %}
-                                        {% include 'FDCEventBundle:Movie:widgets/article.html.twig' %}
+                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
 
                                 <div id="eventsResults">
                                     {% for article in searchResult.category.event %}
-                                        {% include 'FDCEventBundle:Movie:widgets/article.html.twig' %}
+                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
 
                                 <div id="participateResults">
                                     {% for article in searchResult.category.participate %}
-                                        {% include 'FDCEventBundle:Movie:widgets/article.html.twig' %}
+                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -220,9 +220,7 @@
 
                             <p class="link">
                                 <a href="#">
-                                    {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                                    <img src="{{ asset_url }}" alt="{{ 'search.result.btn.rechercher'|trans }}">
-                                    {% endimage %}
+                                    <i class="icon icon_fleche-right"></i>
                                     {{ 'search.result.btn.rechercher'|trans }}
                                 </a>
                             </p>
