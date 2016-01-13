@@ -81,7 +81,6 @@
     {% if homepage.displayedSocialWall %}
         <div id="social-wall">
             <div class="container">
-                {% if timelineCheck is not null %}
                 <div id="graph">
                     <ul>
                         {% for timeline in homeArticles.timeline %}
@@ -102,7 +101,6 @@
                     <svg id="graphSVG" width="891" height="200"></svg>
                     <div id="tipGraph"></div>
                 </div>
-                {% endif %}
                 <div id="wall">
                     {% for post in wallPosts %}
                         {% include 'FDCEventBundle:News:widgets/post.html.twig' %}

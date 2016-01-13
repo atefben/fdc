@@ -246,8 +246,7 @@ class NewsController extends Controller
                 )
             ),
             'timeline' => $socialTimeline,
-            'timelineCount' => json_encode($socialTimelineCount),
-            'timelineCheck' => $socialTimelineCount
+            'timelineCount' => json_encode($socialTimelineCount)
 
         );
         $featuredMovies = array(
