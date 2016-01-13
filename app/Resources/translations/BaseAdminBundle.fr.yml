@@ -165,7 +165,10 @@ form:
         helper_news_film_projection_associated: Sélectionnez un ou plusieurs événements de programmation associés à l'article.
         helper_news_film_film_associated: Sélectionnez les films sur lesquels vous souhaitez voir l'actualité apparaitre.
         helper_news_news_associated: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
-
+    social_wall:
+        twitter: Twitter
+        instagram: Instagram
+        tumblr: Tumblr
     widget:
         text: Module de texte
         video: Module vidéo Amazon

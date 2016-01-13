@@ -125,6 +125,11 @@ class FilmFestival
         $this->statements = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return (string)$this->year;
+    }
+
     /**
      * Set id
      *
