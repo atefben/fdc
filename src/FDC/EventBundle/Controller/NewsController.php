@@ -34,13 +34,18 @@ class NewsController extends Controller
 
         // SocialGraph
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => $settings->getFestival()), array('date' => 'ASC'), 12, null);
-        $socialTimeline      = array();
-        $socialTimelineCount = array();
+
+        $socialGraphTimeline      = array();
+        $socialGraphTimelineCount = array();
+        $socialGraph = array();
 
         foreach ($timeline as $key => $timelineDate) {
-            $socialTimeline[]['date']  = $timelineDate->getDate();
-            $socialTimelineCount[]     = $timelineDate->getCount();
+            $socialGraphTimeline[]['date']  = $timelineDate->getDate();
+            $socialGraphTimelineCount[]     = $timelineDate->getCount();
         }
+
+        $socialGraph['timeline'] = $socialGraphTimeline;
+        $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
 
         // Homepage
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array('festival' => $settings->getFestival()));
@@ -48,6 +53,7 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
+        // TODO: clean this
         $homeSlider = array(
             array(
                 'id'=> 0,
@@ -245,11 +251,8 @@ class NewsController extends Controller
                     )
                 )
             ),
-            'timeline' => $socialTimeline,
-            'timelineCount' => json_encode($socialTimelineCount),
-            'timelineCheck' => $socialTimelineCount
-
         );
+
         $featuredMovies = array(
             'type' => 'fullVideo',
             'video' => array(
@@ -609,6 +612,8 @@ class NewsController extends Controller
 
         return array(
             'homepage' => $homepage,
+            'socialGraph' => $socialGraph,
+            // TODO: clean this
             'homeSlider' => $homeSlider,
             'homeArticles' => $home,
             'filters' => $filters,

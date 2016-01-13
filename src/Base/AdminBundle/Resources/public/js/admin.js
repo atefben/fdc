@@ -31,6 +31,10 @@ function lockEvents()
         content: function() { return $(this).attr('fdc-tooltip') }
     });
 
+    $('a.fdc-is-locked').click(function(e) {
+        e.preventDefault();
+    })
+
     // unlock article
     $('body').on('click', '.fdc-translation-unlock', function (e) {
         e.preventDefault();
@@ -44,7 +48,7 @@ function lockEvents()
                 Le contributeur en cours d'édition de l'article perdra l'ensemble de ses modifications.<br/>\
                 <br/>\
                 La page sera rechargée après confirmation.\
-            ";
+        ";
         // display dialog
         $('#fdc-dialog-text').html(html);
         $('#fdc-dialog').dialog({
@@ -63,8 +67,8 @@ function lockEvents()
         });
     });
 
-    // verify existing locks
-    $('.fdc-check-lock').click(function(e) {
+    // verify existing locks on click list
+    $('.fdc-check-lock-list:not(".fdc-is-locked")').click(function(e) {
         e.preventDefault();
         // set vars
         var url = $(this).attr('href').split('/');
@@ -74,8 +78,22 @@ function lockEvents()
         var isLocked = ($(this).hasClass('fdc-is-locked'));
         var redirect = $(this).attr('href');
 
-        hasLock(entity, id, locale, isLocked, redirect);
+        hasLockList(entity, id, locale, isLocked, redirect);
     });
+
+    // verify locks on submit
+    $('.fdc-lock .btn-success').click(function(e) {
+        e.preventDefault();
+        // set vars
+        var url = window.location.href.split('/');
+        var id = url[url.length - 2];
+        var entity = url[url.length - 3];
+        var locale = $('.a2lix_translationsLocales').find('li.active').attr('data-locale');
+        var redirect = $(this).attr('href');
+
+        hasLockEntity(entity, id, locale, redirect);
+    });
+
 
     // check if our page has the mandatory class
     if ($('body').hasClass('fdc-lock')) {
@@ -85,7 +103,7 @@ function lockEvents()
             // set vars
             var id = url[url.length - 2];
             var entity = url[url.length - 3];
-            var locale = getQueryParams(window.location.search.substr(1), 'locale');
+            var locale = $('.a2lix_translationsLocales').find('li.active').attr('data-locale');
 
              // create lock on open
             createLock(entity, id, locale);
@@ -99,7 +117,7 @@ function lockEvents()
 }
 
 function getQueryParams(url, param) {
-    var found;
+    var found = '';
 
     url.split("&").forEach(function(item) {
         if (param ==  item.split("=")[0]) {
@@ -110,7 +128,69 @@ function getQueryParams(url, param) {
     return found;
 };
 
-function hasLock(entity, id, locale, isLocked, redirect)
+function hasLockEntity(entity, id, locale, redirect)
+{
+    var request = $.ajax({
+        url: Routing.generate('base_admin_lock_checkentity', { id: id }),
+        dataType: 'json',
+        method: 'POST',
+        data: {
+            entity: entity,
+            locale: locale
+        }
+    });
+
+    request.success(function (xhr) {
+        if (xhr.error == 0) {
+            var html = "Un utilisateur a modifié l'actualité entre temps.<br/>\
+                Vous ne pourrez pas enregistrer vos modifications.<br/>\
+                <br/>\
+                Veuilez tout d'abord à copier dans un fichier texte toutes les modifications que vous avez effectuées puis à recharger la page pour réinsérer vos modifications et les enregistrer.\
+            ";
+            $('#fdc-dialog-text').html(html);
+            $('#fdc-dialog').dialog({
+                width: 400,
+                modal: true,
+                title: 'Modifications entre temps',
+                autoOpen: true,
+                buttons: {
+                    'OK': function() {
+                        $(this).dialog('close');
+                    }
+                }
+            });
+        } else if (xhr.error == 1) {
+            var html = "Un utilisateur est en cours d'édition de cette actualité.<br/>\
+                Vous ne pourrez pas enregistrer vos modifications.<br/>\
+                <br/>\
+                Veuilez tout d'abord à copier dans un fichier texte toutes les modifications que vous avez effectuées puis à réimpacter ces modifications lorsque l'actualité sera de nouveau disponible.\
+            ";
+            $('#fdc-dialog-text').html(html);
+            $('#fdc-dialog').dialog({
+                width: 400,
+                modal: true,
+                title: 'Modifications en cours',
+                autoOpen: true,
+                buttons: {
+                    'OK': function() {
+                        $(this).dialog('close');
+                    }
+                }
+            });
+        } else if (xhr.success == true) {
+            $('form').submit();
+        }
+    });
+
+    request.fail(function (xhr) {
+        $('#fdc-dialog-text').html(xhr.responseJSON.message);
+        $('#fdc-dialog').dialog({
+            autoOpen: true
+        });
+    });
+}
+
+function hasLockList(entity, id, locale, isLocked, redirect)
 {
     var request = $.ajax({
         url: Routing.generate('base_admin_lock_check', { id: id }),

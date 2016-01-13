@@ -2,7 +2,7 @@ lang:
     en: Anglais
     fr: Français
     es: Espagnol
-    cn: Chinois
+    zh: Chinois
 
 settings:
     fdc: Paramètres du Festival de Cannes
@@ -13,6 +13,9 @@ breadcrumb:
     link_news_theme_list: Liste des Thèmes d'actualités
     link_media_image_list : Liste des Médias images
     link_homepage_list: Homepage
+
+link:
+    action_soif_refresh: Mettre à jour
 
 group:
     french_version: Version française
@@ -77,11 +80,11 @@ entity:
     country: Pays
     contact_theme: Thèmes de contact
     created_infos: |
-        Crée le date par :
-        user
+        Crée le date par :<br/>
+        <b>user</b>
     updated_infos: |
-        Modifiée le date par :
-        user
+        Modifiée le date par :<br/>
+        <b>user</b>
     social_wall: Social Wall
 list:
     label_id: Identifiant
@@ -162,7 +165,10 @@ form:
         helper_news_film_projection_associated: Sélectionnez un ou plusieurs événements de programmation associés à l'article.
         helper_news_film_film_associated: Sélectionnez les films sur lesquels vous souhaitez voir l'actualité apparaitre.
         helper_news_news_associated: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
-
+    social_wall:
+        twitter: Twitter
+        instagram: Instagram
+        tumblr: Tumblr
     widget:
         text: Module de texte
         video: Module vidéo Amazon

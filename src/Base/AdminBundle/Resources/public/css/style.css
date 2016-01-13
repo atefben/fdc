@@ -136,42 +136,46 @@ form[name="base_adminbundle_settings"] {
     color: #000000;
 }
 
+.fdc-is-locked {
+    cursor: default;
+}
+
 .fdc-status-locked-bg-color {
     border: 1px solid red !important;
 }
 
 .fdc-status-translated-bg-color {
-    background-color: #66CCCC;
+    background-color: #66CCCC !important;
     border: 1px solid #eeeeee;
 }
 
 .fdc-status-translation-validating-bg-color {
-    background-color: #FFCC00;
+    background-color: #FFCC00 !important;
     border: 1px solid #eeeeee;
 }
 
 .fdc-status-translation-pending-bg-color {
-    background-color: #FFFF00;
+    background-color: #FFFF00 !important;
     border: 1px solid #eeeeee;
 }
 
 .fdc-status-draft-bg-color {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     border: 1px solid #eeeeee;
 }
 
 .fdc-status-deactivated-bg-color {
-    background-color: #66CCCC;
+    background-color: #66CCCC !important;
     border: 1px solid #eeeeee;
 }
 
 .fdc-status-published-bg-color {
-    background-color: #00CC00;
+    background-color: #00CC00 !important;
     border: 1px solid #eeeeee;
 }
 
 .fdc-status-validating-bg-color {
-    background-color: #FFCC00;
+    background-color: #FFCC00 !important;
     border: 1px solid #eeeeee;
 }
 
@@ -192,4 +196,36 @@ form[name="base_adminbundle_settings"] {
 
 .fdc-tooltip-lock-icon {
     margin-right: 20px;
+}
+
+.fdc-help {
+    color: #737373;
+}
+
+.a2lix_translationsLocales {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.a2lix_translationsLocales > li {
+    float: left;
+    margin-bottom: -1px;
+    position: relative;
+    display: block;
+}
+.a2lix_translationsLocales > li > a {
+    border: 1px solid #ddd !important;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    width: 100px;
+    color: #555;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border-radius: 4px 4px 0 0;
 }

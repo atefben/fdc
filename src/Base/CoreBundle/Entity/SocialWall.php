@@ -6,6 +6,11 @@ use \DateTime;
 
 use Base\CoreBundle\Interfaces\SocialWallInterface;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SocialWallNetworks;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -21,6 +26,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class SocialWall implements SocialWallInterface
 {
     use Time;
+    use SocialWallNetworks;
+
 
     /**
      * @var integer
@@ -28,6 +35,7 @@ class SocialWall implements SocialWallInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"social_wall_list"})
      */
     protected $id;
 
@@ -35,6 +43,7 @@ class SocialWall implements SocialWallInterface
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Groups({"social_wall_list"})
      */
     protected $url;
 
@@ -42,6 +51,7 @@ class SocialWall implements SocialWallInterface
      * @var string
      *
      * @ORM\Column(type="date")
+     * @Groups({"social_wall_list"})
      */
     protected $date;
 
@@ -49,6 +59,7 @@ class SocialWall implements SocialWallInterface
      * @var integer
      *
      * @ORM\Column(type="integer")
+     * @Groups({"social_wall_list"})
      */
     protected $network;
 
@@ -56,6 +67,7 @@ class SocialWall implements SocialWallInterface
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Groups({"social_wall_list"})
      */
     protected $content;
 
@@ -63,6 +75,7 @@ class SocialWall implements SocialWallInterface
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Groups({"social_wall_list"})
      */
     protected $message;
 
@@ -70,6 +83,7 @@ class SocialWall implements SocialWallInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
+     * @Groups({"social_wall_list"})
      */
     protected $enabledMobile;
 
@@ -84,6 +98,7 @@ class SocialWall implements SocialWallInterface
      * @var boolean
      *
      * @ORM\Column(type="string")
+     * @Groups({"social_wall_list"})
      */
     protected $tags;
 

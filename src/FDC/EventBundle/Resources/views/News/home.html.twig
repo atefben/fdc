@@ -66,7 +66,7 @@
                 </div>
 
                 <div id="timeline">
-                    {% for key, date in homeArticles.timeline %}
+                    {% for key, date in socialGraph.timeline %}
                         <a href="#" data-date="{{ date.date|date('d') }}" class="{% if key == 0 %}active{% endif %}">
                             {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                             <span class="day">{{ date.date|date('d') }}</span>
@@ -81,10 +81,9 @@
     {% if homepage.displayedSocialWall %}
         <div id="social-wall">
             <div class="container">
-                {% if timelineCheck != null %}
                 <div id="graph">
                     <ul>
-                        {% for timeline in homeArticles.timeline %}
+                        {% for timeline in socialGraph.timeline %}
                             <li class="active">
                                 {{ timeline.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                 <span>{{ timeline.date|date('d') }}</span>
@@ -102,7 +101,6 @@
                     <svg id="graphSVG" width="891" height="200"></svg>
                     <div id="tipGraph"></div>
                 </div>
-                {% endif %}
                 <div id="wall">
                     {% for post in wallPosts %}
                         {% include 'FDCEventBundle:News:widgets/post.html.twig' %}

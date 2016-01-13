@@ -45,3 +45,7 @@ news:
 web_tv:
     type:       rest
     resource:   Base\ApiBundle\Controller\WebTvController
+
+social_wall:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\SocialWallController
