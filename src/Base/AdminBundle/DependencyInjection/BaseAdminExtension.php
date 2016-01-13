@@ -25,6 +25,7 @@ class BaseAdminExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         
         $configFiles = array(
+            'acl.yml',
             'admin.yml',
             'block.yml',
             'event.yml',
