@@ -44,7 +44,7 @@ class StatementArticle extends Statement
      * Set header
      *
      * @param MediaImage $header
-     * @return NewsArticle
+     * @return StatementArticle
      */
     public function setHeader(MediaImage $header = null)
     {

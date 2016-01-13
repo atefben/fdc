@@ -240,6 +240,7 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+
     base.admin.news:
         class: Base\AdminBundle\Admin\NewsAdmin
         arguments: [~, Base\CoreBundle\Entity\News, BaseAdminBundle:NewsAdmin]
@@ -296,8 +297,51 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base_admin.statement_tag:
+    #STATEMENT
+    base.admin.statement_widget_image_dummy:
+            class: Base\AdminBundle\Admin\NewsWidgetImageDummyAdmin
+            arguments: [~, Base\CoreBundle\Entity\NewsWidgetImage, BaseAdminBundle:NewsWidgetImageDummyAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
+            calls:
+                 - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.statement:
+        class: Base\AdminBundle\Admin\StatementAdmin
+        arguments: [~, Base\CoreBundle\Entity\Statement, BaseAdminBundle:StatementAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Statement, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.statement_tag:
         class: Base\AdminBundle\Admin\StatementTagAdmin
         arguments: [~, Base\CoreBundle\Entity\StatementTag, BaseAdminBundle:StatementTagAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: StatementTag, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.statement_statement_associated:
+        class: Base\AdminBundle\Admin\StatementStatementAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementStatementAssociated, BaseAdminBundle:StatementStatementAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: StatementStatementAssociated, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.statement_film_projection_associated:
+        class: Base\AdminBundle\Admin\StatementFilmProjectionAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementFilmProjectionAssociated, BaseAdminBundle:StatementFilmProjectionAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: StatementFilmProjectionAssociated, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.statement_film_film_associated:
+        class: Base\AdminBundle\Admin\StatementFilmFilmAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementFilmFilmAssociated, BaseAdminBundle:StatementFilmFilmAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: StatementFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]

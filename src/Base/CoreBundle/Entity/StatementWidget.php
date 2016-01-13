@@ -16,7 +16,15 @@ use Base\CoreBundle\Util\Time;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"text" = "StatementWidgetText", "audio" = "StatementWidgetAudio", "image" = "StatementWidgetImage", "video" = "StatementWidgetVideo"})
+ * @ORM\DiscriminatorMap({
+ *  "text" = "StatementWidgetText",
+ *  "quote" = "StatementWidgetQuote",
+ *  "audio" = "StatementWidgetAudio",
+ *  "image" = "StatementWidgetImage",
+ *  "image_dual_align" = "StatementWidgetImageDualAlign",
+ *  "video" = "StatementWidgetVideo",
+ *  "video_youtube" = "StatementWidgetVideoYoutube",
+ * })
  */
 abstract class StatementWidget
 {
@@ -39,7 +47,7 @@ abstract class StatementWidget
     protected $position;
 
     /**
-     * @var NewsArticle
+     * @var StatementArticle
      *
      * @ORM\ManyToOne(targetEntity="Statement", inversedBy="widgets")
      */
@@ -59,7 +67,7 @@ abstract class StatementWidget
      * Set position
      *
      * @param integer $position
-     * @return NewsWidget
+     * @return StatementWidget
      */
     public function setPosition($position)
     {

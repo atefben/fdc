@@ -23,8 +23,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class StatementTheme implements TranslateMainInterface
 {
     use Time;
-    use TranslateMain;
     use Translatable;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -37,7 +37,6 @@ class StatementTheme implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     *
      */
     protected $translations;
 
@@ -56,6 +55,19 @@ class StatementTheme implements TranslateMainInterface
         }
         return $string;
     }
+
+    public function getName()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getName();
+        }
+
+        return $string;
+    }
+
 
     /**
      * Get id

@@ -306,7 +306,7 @@ abstract class News implements TranslateMainInterface
     /**
      * Set festival
      *
-     * @param fBase\CoreBundle\Entity\FilmFestival $festival
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
      * @return News
      */
     public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)

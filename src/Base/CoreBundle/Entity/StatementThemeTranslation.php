@@ -10,14 +10,9 @@ use Base\CoreBundle\Util\TranslateChild;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity("name")
  */
 class StatementThemeTranslation implements TranslateChildInterface
 {
@@ -28,16 +23,22 @@ class StatementThemeTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     protected $name;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Set name
      *
      * @param string $name
-     * @return StatementThemeTranslation
+     * @return Theme
      */
     public function setName($name)
     {

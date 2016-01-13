@@ -1,4 +1,13 @@
 {# added translations custom display #}
+
+{% block base_admin_statement_article_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:statement.html.twig' %}
+{% endblock %}
+
+{% block base_admin_info_article_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:info.html.twig' %}
+{% endblock %}
+
 {% block base_admin_news_article_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:article.html.twig' %}
 {% endblock %}

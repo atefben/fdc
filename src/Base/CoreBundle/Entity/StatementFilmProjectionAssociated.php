@@ -15,13 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * StatementStatementAssociated
+ * StatementFilmProjectionAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementStatementAssociated
+class StatementFilmProjectionAssociated
 {
     use Time;
 
@@ -37,14 +37,14 @@ class StatementStatementAssociated
     /**
      * @var Statement
      *
-     * @ORM\ManyToOne(targetEntity="Statement", inversedBy="associatedStatement")
+     * @ORM\ManyToOne(targetEntity="Statement", inversedBy="associatedProjections")
      */
     protected $statement;
 
     /**
-     * @var StatementArticle
+     * @var FilmProjection
      *
-     * @ORM\ManyToOne(targetEntity="Statement")
+     * @ORM\ManyToOne(targetEntity="FilmProjection")
      */
     protected $association;
 
@@ -68,7 +68,7 @@ class StatementStatementAssociated
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -91,7 +91,7 @@ class StatementStatementAssociated
     /**
      * Get statement
      *
-     * @return \Base\CoreBundle\Entity\Statement
+     * @return \Base\CoreBundle\Entity\Statement 
      */
     public function getStatement()
     {
@@ -101,10 +101,10 @@ class StatementStatementAssociated
     /**
      * Set association
      *
-     * @param \Base\CoreBundle\Entity\Statement $association
-     * @return StatementStatementAssociated
+     * @param \Base\CoreBundle\Entity\FilmProjection $association
+     * @return StatementFilmProjectionAssociated
      */
-    public function setAssociation(\Base\CoreBundle\Entity\Statement $association = null)
+    public function setAssociation(\Base\CoreBundle\Entity\FilmProjection $association = null)
     {
         $this->association = $association;
 
@@ -114,7 +114,7 @@ class StatementStatementAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\Statement
+     * @return \Base\CoreBundle\Entity\FilmProjection 
      */
     public function getAssociation()
     {

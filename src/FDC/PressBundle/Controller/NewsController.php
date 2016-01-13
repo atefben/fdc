@@ -37,145 +37,125 @@ class NewsController extends Controller
 
         $homeNews = array(
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'communique',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'communique',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'communique',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'communique',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'communique',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'communique-presse',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'communique',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'communique-presse',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'communique',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
-            )
+                ),
+                'format' => 'communique-presse',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
+            ),
         );
 
         $schedulingDays = array(
