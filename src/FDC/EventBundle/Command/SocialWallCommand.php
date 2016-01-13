@@ -55,7 +55,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         // get current social graph twitter hashtag
         $tagSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneByFestival($festival->getId());
         if ($tagSettings === null) {
-            $msg = 'Can\'t find social graph settings';
+            $msg = 'Can\'t find social wall settings';
             $this->writeError($output, $logger, $msg);
         }
 
@@ -65,7 +65,6 @@ class SocialWallCommand extends ContainerAwareCommand {
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////   TWITTER   ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////
-
 
         // Get twitter api
         $twitterClient = new Client('https://api.twitter.com/{version}', array(
@@ -116,6 +115,7 @@ class SocialWallCommand extends ContainerAwareCommand {
             }
         }
 
+        krsort($tweets);
         foreach ($tweets as $tweet) {
 
             $socialWall = new SocialWall();
@@ -133,6 +133,7 @@ class SocialWallCommand extends ContainerAwareCommand {
             $socialWall->setDate($datetime);
             $socialWall->setTags($tagSettings->getSocialWallHashtags());
 
+
             $em->persist($socialWall);
         }
 
@@ -140,21 +141,12 @@ class SocialWallCommand extends ContainerAwareCommand {
         ///////////////////////////   INSTAGRAM   ////////////////////////////
         //////////////////////////////////////////////////////////////////////
 
-
-        // Get instagram api
-
-        /*$lastIdInstagram = $em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array(
-            'date' => $datetime,
-            'network' => 1,
-        )); */
-
         $lastIdInstagram = $em->getRepository('BaseCoreBundle:SocialWall')->findBy(
             array('network' => constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM')),
             array('id' => 'DESC'),
             1,
             null
         );
-
 
         $maxIdInstagram = (isset($lastIdInstagram[0])) ? $lastIdInstagram[0]->getMaxIdInstagram() : null;
 
@@ -182,6 +174,7 @@ class SocialWallCommand extends ContainerAwareCommand {
 
         }
 
+        krsort($instagramPosts);
         foreach ($instagramPosts as $instagramPost) {
             $socialWall = new SocialWall();
             $socialWall->setMessage($instagramPost->caption->text);
@@ -195,6 +188,14 @@ class SocialWallCommand extends ContainerAwareCommand {
             $socialWall->setTags($tagSettings->getSocialWallHashtags());
             $em->persist($socialWall);
         }
+
+        //////////////////////////////////////////////////////////////////////
+        ///////////////////////////   TUMBLR  ////////////////////////////////
+        //////////////////////////////////////////////////////////////////////
+
+        // array('text', 'quote', 'link', 'video', 'audio', 'photo')
+
+
 
 
         $em->flush();

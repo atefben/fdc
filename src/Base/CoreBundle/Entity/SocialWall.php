@@ -6,6 +6,7 @@ use \DateTime;
 
 use Base\CoreBundle\Interfaces\SocialWallInterface;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SocialWallNetworks;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -21,6 +22,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class SocialWall implements SocialWallInterface
 {
     use Time;
+    use SocialWallNetworks;
+
 
     /**
      * @var integer

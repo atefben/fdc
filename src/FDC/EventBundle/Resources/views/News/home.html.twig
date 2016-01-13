@@ -81,7 +81,7 @@
     {% if homepage.displayedSocialWall %}
         <div id="social-wall">
             <div class="container">
-                {% if timelineCheck != null %}
+                {% if timelineCheck is not null %}
                 <div id="graph">
                     <ul>
                         {% for timeline in homeArticles.timeline %}

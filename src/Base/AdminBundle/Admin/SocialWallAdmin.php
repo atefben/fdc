@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\SocialWall;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -18,7 +19,11 @@ class SocialWallAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('url')
-            ->add('network')
+            ->add('network', 'doctrine_orm_choice', array(),'choice',array(
+                'choices' => SocialWall::getNetworks(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+                ))
+            ->add('festival')
             ->add('enabledMobile')
             ->add('enabledDesktop')
             ->add('tags')
