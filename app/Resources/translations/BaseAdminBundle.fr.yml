@@ -14,6 +14,9 @@ breadcrumb:
     link_media_image_list : Liste des Médias images
     link_homepage_list: Homepage
 
+link:
+    action_soif_refresh: Mettre à jour
+
 group:
     french_version: Version française
     main_infos: Informations générales

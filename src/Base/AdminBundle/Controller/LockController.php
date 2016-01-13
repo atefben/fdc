@@ -227,6 +227,10 @@ class LockController extends Controller
             }
         }
 
+        $response->setData(array(
+            'success' => true
+        ));
+
         foreach ($translations as $trans) {
             if ($trans->getLockedBy() == null) {
                 $response->setData(array(
@@ -238,10 +242,6 @@ class LockController extends Controller
                 ));
             }
         }
-
-        $response->setData(array(
-            'success' => true
-        ));
 
         return $response;
     }
