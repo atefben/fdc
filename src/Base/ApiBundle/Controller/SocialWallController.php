@@ -27,13 +27,15 @@ class SocialWallController extends FOSRestController
     private $repository = 'BaseCoreBundle:SocialWall';
 
     /**
-     * Return an array of news, can be filtered with page / offset parameters
+     * Get all social network posts/tweets enabled for mobile
+     *
+     * Networks : 0 = Twitter / 1 = Instagram / 2 = Tumblr
      *
      * @Rest\Get("/social_wall")
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get all SocialWall infos",
+     *   description = "Get all SocialWall informations",
      *   section="SocialWall",
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -70,7 +72,7 @@ class SocialWallController extends FOSRestController
             null);
 
         // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
-        //
+
         $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
 
         // set context view

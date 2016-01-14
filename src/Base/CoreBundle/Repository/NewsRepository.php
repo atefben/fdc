@@ -65,6 +65,62 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
+    public function getNewsArticles($locale,$festival,$dateTime)
+    {
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftjoin('na1.translations', 'na1t')
+            ->where('s.slug = :site_slug')
+            ->andWhere('n.festival = :festival')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+
+        $qb = $qb
+            ->andWhere(
+                '(na1t.locale = :locale AND na1t.status = :status)'
+            )
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+
+        $qb = $qb
+            ->setParameter('festival', $festival)
+            ->setParameter('locale', $locale)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('site_slug', 'site-evenementiel')
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+    }
+
+    public function getNewsPhotos($locale,$festival,$dateTime)
+    {
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftjoin('na3.translations', 'na3t')
+            ->where('s.slug = :site_slug')
+            ->andWhere('n.festival = :festival')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+
+        $qb = $qb
+            ->andWhere(
+                '(na3t.locale = :locale AND na3t.status = :status)'
+            )
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+
+        $qb = $qb
+            ->setParameter('festival', $festival)
+            ->setParameter('locale', $locale)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('site_slug', 'site-evenementiel')
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+    }
+
     /**
      * get an array of only the $locale version News of current $festival and verify publish date is between $dateTime
      *

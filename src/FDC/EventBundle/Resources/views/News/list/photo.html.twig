@@ -11,7 +11,7 @@
         <div class="grid-sizer"></div>
 
         {% for photo in photos %}
-            <div class="item {{ photo.filter.theme }} {{ photo.filter.date }} {{ photo.format }} shadow-bottom photo">
+            <div class="item {{ photo.theme }} {{ photo.filter.date }} {{ photo.format }} shadow-bottom photo">
                 <a id="photo1" class="ajax chocolat-image" href="{{ photo.image.path }}"
                    title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo.createdAt|date('d.m.y') }}</span><h2>{{ photo.title }}</h2>'
                    data-credit="{{ photo.copyright }}"></a>

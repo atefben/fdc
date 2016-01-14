@@ -34,6 +34,10 @@ class NewsController extends Controller
 
         // SocialGraph
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => $settings->getFestival()), array('date' => 'ASC'), 12, null);
+        if ($timeline === null) {
+            throw new NotFoundHttpException();
+        }
+
         $socialTimeline      = array();
         $socialTimelineCount = array();
 
@@ -760,141 +764,58 @@ class NewsController extends Controller
 
     /**
      * @Route("/articles")
+     *
      * @Template("FDCEventBundle:News/list:article.html.twig")
      */
     public function getArticlesAction()
     {
+        //$offset = 30;
+        $dateTime = new DateTime();
 
-        $articles = array(
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-                'double' => false,
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-                'double' => false,
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-                'double' => false,
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-                'double' => false,
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-                'double' => false,
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-                'double' => false,
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-                'double' => false,
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-                'double' => false,
-            )
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
 
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL NEWS ARTICLES
+        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale,$settings->getFestival()->getId(),$dateTime);
+        if ($newsArticles === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $filters = array();
+        $filters['dates'][0] = array(
+            'slug' => 'all',
+            'content' => 'Toutes',
         );
 
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
+        $filters['themes'][0] = array(
+            'slug' => 'all',
+            'content' => 'Tous',
         );
+
+        foreach($newsArticles as $key => $newsArticle) {
+            $newsArticle->image = $newsArticle->getHeader();
+            $newsArticle->theme = $newsArticle->getTheme();
+
+            if(!in_array($newsArticle->getPublishedAt(),$filters['dates'])) {
+                $date = $newsArticle->getPublishedAt();
+                $filters['dates'][$key+1]['slug'] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+                $filters['dates'][$key+1]['content'] = ($date != null) ? $date->format('l j F') : null;
+            }
+
+            if(!in_array($newsArticle->getTheme(),$filters)) {
+                $filters['themes'][$key+1]['slug'] = $newsArticle->getTheme();
+                $filters['themes'][$key+1]['content'] = $newsArticle->getTheme();
+            }
+
+        }
+
+        $articles = $newsArticles;
 
         return array(
             'articles' => $articles,
@@ -908,6 +829,30 @@ class NewsController extends Controller
      */
     public function getPhotosAction()
     {
+        //$offset = 30;
+        $dateTime = new DateTime();
+
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL NEWS ARTICLES
+        $newsPhotos = $em->getRepository('BaseCoreBundle:News')->getNewsPhotos($locale,$settings->getFestival()->getId(),$dateTime);
+
+        foreach($newsPhotos as $newsPhoto) {
+            $newsPhoto->image = $newsPhoto->getHeader();
+            $newsPhoto->theme = $newsPhoto->getTheme();
+        }
+
+        $photos = $newsPhotos;
+
+        //echo'<pre>'; print_r($photos); echo '</pre>';
+
         $photos = array(
             array(
                 'format'    => 'portrait',
