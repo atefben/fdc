@@ -17,9 +17,7 @@
                 <h3 class="title-press">{{ 'press.agenda.title.communiqueetinfos'|trans }}</h3>
                 <p class="link">
                     <a href="press-actu.php">
-                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                        <img src="{{ asset_url }}" alt="{{ 'press.home.btn.touslescommuniquesetinfos'|trans }}" />
-                        {% endimage %}
+                        <i class="icon icon_fleche-right"></i>
                         {{ 'press.home.btn.touslescommuniquesetinfos'|trans }}
                     </a>
                 </p>
@@ -27,7 +25,7 @@
             <div class="grid-container">
                 <div class="grid-wrapper">
                     {% for article in homeNews %}
-                        {% include 'FDCPressBundle:News:widgets/article.html.twig' %}
+                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                     {% endfor %}
                 </div>
             </div>
@@ -41,9 +39,7 @@
                 </h3>
                 <p class="link">
                     <a href="programmation.php">
-                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                        <img src="{{ asset_url }}" alt="{{ 'press.home.btn.toutelaprogrammation'|trans }}" />
-                        {% endimage %}
+                        <i class="icon icon_fleche-right"></i>
                         {{ 'press.home.btn.toutelaprogrammation'|trans }}
                     </a>
                 </p>
@@ -149,9 +145,7 @@
                 <h3 class="title-press">{{ 'press.home.title.mediatheque'|trans }}</h3>
                 <p class="link">
                     <a href="press-media.php">
-                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                        <img src="{{ asset_url }}" alt="{{ 'press.home.btn.toutelamediatheque'|trans }}" />
-                        {% endimage %}
+                        <i class="icon icon_fleche-right"></i>
                         {{ 'press.home.btn.toutelamediatheque'|trans }}
                     </a>
                 </p>
@@ -190,9 +184,7 @@
                 <h3 class="title-press">{{ 'press.home.title.atelecharger'|trans }}</h3>
                 <p class="link">
                     <a href="press-telecharger.php">
-                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                        <img src="{{ asset_url }}" alt="{{ 'press.home.btn.touslestelechargements'|trans }}" />
-                        {% endimage %}
+                        <i class="icon icon_fleche-right"></i>
                         {{ 'press.home.btn.touslestelechargements'|trans }}
                     </a>
                 </p>
@@ -222,9 +214,7 @@
                     <h2 class="title">{{ 'press.home.title.participer'|trans }}</h2>
                     <p class="link">
                         <a href="#">
-                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                            <img src="{{ asset_url }}" alt="{{ 'press.home.btn.acceder'|trans }}" />
-                            {% endimage %}
+                            <i class="icon icon_fleche-right"></i>
                             {{ 'press.home.btn.acceder'|trans }}
                         </a>
                     </p>
@@ -238,9 +228,7 @@
                     <h2 class="title">{{ 'press.home.title.saccrediter'|trans }}</h2>
                     <p class="link">
                         <a href="#">
-                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                            <img src="{{ asset_url }}" alt="{{ 'press.home.btn.acceder'|trans }}" />
-                            {% endimage %}
+                            <i class="icon icon_fleche-right"></i>
                             {{ 'press.home.btn.acceder'|trans }}
                         </a>
                     </p>

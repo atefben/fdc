@@ -49,7 +49,7 @@ class Homepage
      *
      * @ORM\OneToMany(targetEntity="Statement", mappedBy="homepage")
      */
-    private $sliderStatements;
+    private $sliderStatement;
 
     /**
      * @var WebTv
@@ -577,27 +577,27 @@ class Homepage
     }
 
     /**
-     * Add sliderStatements
+     * Add sliderStatement
      *
-     * @param \Base\CoreBundle\Entity\Statement $sliderStatements
+     * @param \Base\CoreBundle\Entity\Statement $sliderStatement
      * @return Homepage
      */
-    public function addSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatements)
+    public function addSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatement)
     {
-        $sliderStatements->setHomepage($this);
-        $this->sliderStatements[] = $sliderStatements;
+        $sliderStatement->setHomepage($this);
+        $this->sliderStatement[] = $sliderStatement;
 
         return $this;
     }
 
     /**
-     * Remove sliderStatements
+     * Remove sliderStatement
      *
-     * @param \Base\CoreBundle\Entity\Statement $sliderStatements
+     * @param \Base\CoreBundle\Entity\Statement $sliderStatement
      */
-    public function removeSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatements)
+    public function removeSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatement)
     {
-        $this->sliderStatements->removeElement($sliderStatements);
+        $this->sliderStatement->removeElement($sliderStatement);
     }
 
     /**
@@ -605,9 +605,9 @@ class Homepage
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSliderStatements()
+    public function getSliderStatement()
     {
-        return $this->sliderStatements;
+        return $this->sliderStatement;
     }
 
     /**

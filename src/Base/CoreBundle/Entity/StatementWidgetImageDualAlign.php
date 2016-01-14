@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 
 /**
- * StatementWidgetImage
+ * StatementWidgetImageDualAlign
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementWidgetImage extends StatementWidget
+class StatementWidgetImageDualAlign extends StatementWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")

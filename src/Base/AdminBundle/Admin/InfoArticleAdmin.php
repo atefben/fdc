@@ -18,7 +18,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsArticleAdmin extends Admin
+class InfoArticleAdmin extends Admin
 {
     protected $formOptions = array(
         'cascade_validation' => true
