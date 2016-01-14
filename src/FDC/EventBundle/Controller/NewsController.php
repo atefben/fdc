@@ -34,7 +34,7 @@ class NewsController extends Controller
 
         // SocialGraph
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => $settings->getFestival()), array('date' => 'ASC'), 12, null);
-        
+
         $socialGraphTimeline      = array();
         $socialGraphTimelineCount = array();
         $socialGraph = array();
@@ -760,7 +760,7 @@ class NewsController extends Controller
             'film' => $film,
             'focusArticles' => $focusArticles,
             'dayArticles' => $dayArticles,
-          //  'article' => $article
+            //  'article' => $article
         );
     }
 
@@ -810,13 +810,13 @@ class NewsController extends Controller
                 $filters['dates'][$key+1]['content'] = ($date != null) ? $date->format('l j F') : null;
             }
 
-            if(!in_array($newsArticle->getTheme(),$filters)) {
-                $filters['themes'][$key+1]['slug'] = $newsArticle->getTheme();
-                $filters['themes'][$key+1]['content'] = $newsArticle->getTheme();
+            if(!in_array($newsArticle->getTheme()->getName(),$filters['themes'])) {
+                $filters['themes'][$key+1]['slug'] = $newsArticle->getTheme()->getName();
+                $filters['themes'][$key+1]['content'] = $newsArticle->getTheme()->getName();
             }
 
         }
-
+        
         $articles = $newsArticles;
 
         return array(
