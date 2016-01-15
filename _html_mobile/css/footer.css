@@ -1,0 +1,133 @@
+/* footer */
+footer {
+  background-color: #141414;
+  padding: 50px 0 0 0;
+  position: relative;
+  z-index: 2;
+  clear: both;
+
+}
+footer .subtitle {
+  padding-right: 7px;
+  font-size:1.2rem;
+}
+footer:after {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+footer:before {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+ footer.dark-container .title {
+  color: #fff;
+  margin: 0px auto 10px;
+  padding: 0;
+}
+footer h3 {
+  color: #fff;
+}
+footer .newsletter {
+  height: 50px;
+  padding: 50px 0;
+  position: relative;
+}
+footer .newsletter form {
+  height: 100%;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+footer .newsletter form.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+footer .newsletter #email {
+  border: 0;
+  border:none;
+  border-radius:0px;
+  font-size:1.4rem;
+  line-height: 50px;
+  display: inline-block;
+  height: 100%;
+  outline: none;
+  padding-left: 20px;
+  width: 400px;
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+footer .newsletter #email.error {
+  color: #e93939;
+}
+footer .newsletter #confirmation {
+  color: #fff;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 0.875rem;
+  line-height: 1.2em;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 55px;
+  text-align: center;
+  width: 100%;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+footer .newsletter #confirmation.show {
+  opacity: 1;
+  visibility: visible;
+}
+footer .newsletter #submit {
+  background: #141414;
+  border: 1px solid #414141;
+  border-radius:0px;
+  -webkit-appearance: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.850rem;
+  line-height: 50px;
+  height: 100%;
+  margin-left: 25px;
+  outline: none;
+  text-transform: uppercase;
+  width: 135px;
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+  -moz-transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
