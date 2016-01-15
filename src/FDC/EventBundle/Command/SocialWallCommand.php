@@ -126,7 +126,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                 $socialWall->setContent('#');
             }
             $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
-            $socialWall->setNetwork(0);
+            $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
             $socialWall->setEnabledMobile(0);
             $socialWall->setEnabledDesktop(0);
             $socialWall->setMaxIdTwitter($maxId);
@@ -180,7 +180,7 @@ class SocialWallCommand extends ContainerAwareCommand {
             $socialWall->setMessage($instagramPost->caption->text);
             $socialWall->setContent($instagramPost->images->standard_resolution->url);
             $socialWall->setUrl($instagramPost->link);
-            $socialWall->setNetwork(1);
+            $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM'));
             $socialWall->setMaxIdInstagram($maxIdInstagram);
             $socialWall->setEnabledMobile(0);
             $socialWall->setEnabledDesktop(0);
@@ -188,15 +188,6 @@ class SocialWallCommand extends ContainerAwareCommand {
             $socialWall->setTags($tagSettings->getSocialWallHashtags());
             $em->persist($socialWall);
         }
-
-        //////////////////////////////////////////////////////////////////////
-        ///////////////////////////   TUMBLR  ////////////////////////////////
-        //////////////////////////////////////////////////////////////////////
-
-        // array('text', 'quote', 'link', 'video', 'audio', 'photo')
-
-
-
 
         $em->flush();
     }

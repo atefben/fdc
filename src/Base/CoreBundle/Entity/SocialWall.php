@@ -28,7 +28,6 @@ class SocialWall implements SocialWallInterface
     use Time;
     use SocialWallNetworks;
 
-
     /**
      * @var integer
      *
@@ -115,6 +114,13 @@ class SocialWall implements SocialWallInterface
      * @ORM\Column(type="string", nullable=true)
      */
     protected $maxIdTwitter;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $tumblrId;
 
     /**
      * @var boolean
@@ -389,5 +395,28 @@ class SocialWall implements SocialWallInterface
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set tumblrId
+     *
+     * @param string $tumblrId
+     * @return SocialWall
+     */
+    public function setTumblrId($tumblrId)
+    {
+        $this->tumblrId = $tumblrId;
+
+        return $this;
+    }
+
+    /**
+     * Get tumblrId
+     *
+     * @return string 
+     */
+    public function getTumblrId()
+    {
+        return $this->tumblrId;
     }
 }
