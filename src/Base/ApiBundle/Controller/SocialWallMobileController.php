@@ -22,20 +22,18 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  *
  * \@extends FOSRestController
  */
-class SocialWallController extends FOSRestController
+class SocialWallMobileController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:SocialWall';
 
     /**
-     * Get all social network posts/tweets enabled for mobile
+     * Get all socialwall datas enabled for mobile
      *
-     * Networks : 0 = Twitter / 1 = Instagram / 2 = Tumblr
-     *
-     * @Rest\Get("/social_wall")
+     * @Rest\Get("/social_wall/mobile")
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get all SocialWall informations",
+     *   description = "Get all SocialWall informations for Mobile",
      *   section="SocialWall",
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -52,7 +50,7 @@ class SocialWallController extends FOSRestController
      *
      * @return View
      */
-    public function getSocialWallAction(Paramfetcher $paramFetcher)
+    public function getSocialWallMobileAction(Paramfetcher $paramFetcher)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
@@ -66,7 +64,7 @@ class SocialWallController extends FOSRestController
         $query = $em->getRepository('BaseCoreBundle:SocialWall')->findBy(array(
             'festival' => $festival,
             'enabledMobile' => true
-            ),
+        ),
             array('date' => 'ASC'),
             null,
             null);

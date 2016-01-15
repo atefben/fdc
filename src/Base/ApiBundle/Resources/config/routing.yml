@@ -46,6 +46,14 @@ web_tv:
     type:       rest
     resource:   Base\ApiBundle\Controller\WebTvController
 
-social_wall:
+social_wall_mobile:
     type:       rest
-    resource:   Base\ApiBundle\Controller\SocialWallController
+    resource:   Base\ApiBundle\Controller\SocialWallMobileController
+
+social_wall_instagram:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\SocialWallInstagramController
+
+social_wall_twitter:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\SocialWallTwitterController
