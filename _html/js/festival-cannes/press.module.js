@@ -238,7 +238,19 @@ $(document).ready(function() {
             $(element).addClass(event.eventPictogram);
             $(element).attr('data-id', event.id);
             $(element).empty();
-            $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#" class="del"></a></span>');
+
+            if(c == '#000'){
+              $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            }else if(c == "#9b9b9b"){
+              $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            }else if(c == "#a68851"){
+              $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            }else if(c == "#fff"){
+              $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-personnel"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            }else{
+              $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            }
+            
             $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           },
@@ -322,7 +334,19 @@ $(document).ready(function() {
               $(element).empty();
               $(element).addClass(event.eventPictogram).addClass('ajax');
               $(element).attr('data-id', event.id);
-              $(element).append('<span class="category" style="background-color:' + c + '">' + event.type + '<a href="#" class="del"></a></span>');
+
+              if(c == '#000'){
+                $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
+              }else if(c == "#9b9b9b"){
+                $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance"></i>' + event.type + '<a href="#" class="del"></a></span>');
+              }else if(c == "#a68851"){
+                $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"></a></span>');
+              }else if(c == "#fff"){
+                $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-personnel"></i>' + event.type + '<a href="#" class="del"></a></span>');
+              }else{
+                $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
+              }
+
               $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
               $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
             },
@@ -1164,6 +1188,5 @@ $(document).ready(function() {
     }
 
   }
-
 
 });

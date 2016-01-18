@@ -1655,6 +1655,16 @@
     top: 20px;
     right: 20px;
     width: 70px;
+    color: $gold;
+    .icon{
+      margin-top: 28px;
+      margin-left: 28px;
+    }
+
+    &:hover{
+      color: #000;
+      border-color: #000;
+    }
   }
 
   &.show {
@@ -2146,17 +2156,23 @@
 
   .contain-btn{
     .btn-close{
-      background-image: url("../img/svg/case-close-or.svg");
       height: 68px;
       width: 68px;
       position: absolute;
       right: 37px;
       top: 38px;
-      background-repeat: no-repeat;
-      background-size: 68px;
+      border: 1px solid $gold;
+      color:$gold;
+      transition: .4s all $linear;
+      cursor: pointer;
 
+      .icon{
+        margin-top: 27px;
+        margin-left: 26px;
+      }
       &:hover{
-        background-image: url("../img/svg/case-close.svg");
+        color: #000;
+        border-color: #000;
       }
     }
   }

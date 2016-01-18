@@ -39,7 +39,7 @@
           <div id="calendar-wrapper">
             <h2 class="title-calendar">mon agenda</h2>
             <div id="mycalendar" class="side"></div>
-            <p class="link"><a href="calendar.php"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
+            <p class="link"><a href="calendar.php"><i class="icon icon_fleche-right"></i>tout mon agenda</a></p>
             <div class="drag">
               <h2>Préparez votre séjour au festival de cannes</h2>
               <img src="img/svg/main-drag.svg" alt="" width="43" />

@@ -1,0 +1,1 @@
+$(function(){$(".section-title").click(function(){$(this).parent().toggleClass("open"),$(this).find(".icon_case-plus").toggleClass("icon_moins")})});

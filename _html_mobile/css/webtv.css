@@ -1,0 +1,146 @@
+.title.one-line{
+    width:100%;
+}
+
+.webtv .title{
+	padding-bottom: 10px;
+}
+.webtv .link {
+
+	text-align: center;
+}
+.webtv .link a {
+    color: #c8a461;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    font-size: 0.750rem;
+    text-transform: uppercase;
+    text-align: center;
+    -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	margin: auto;
+	position: relative;
+}
+
+.webtv .videosSlider{
+    padding: 75px 0;
+}
+
+
+ .informations-video {
+
+  color: #fff;
+  height: 727px;
+  vertical-align: top;
+  width: 100%;
+  position: relative;
+}
+ .informations-video ul li {
+  float: left;
+  text-transform: uppercase;
+  padding: 41px 0px;
+  font-size: 1rem;
+  color: #999999;
+  border-bottom: 1px solid #2c2c2c;
+  border-top: 1px solid #2c2c2c;
+  margin: 0px;
+  width: 50%;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+
+}
+ .informations-video ul li:first-child {
+  border-right: 1px solid #2c2c2c;
+}
+ .informations-video ul .active {
+  color: #c8a461;
+  border-bottom: 0px solid #2c2c2c;
+}
+.informations-video .container-video{
+    clear: both;
+}
+ .informations-video .block {
+  padding-top: 52px;
+}
+ .informations-video .infos-film {
+  text-align: center;
+}
+ .informations-video .infos-film img{
+    width: 254px;
+    height: 346px;
+ }
+ .informations-video .infos-film h4 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding-top: 70px;
+  padding-bottom: 30px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.2em;
+}
+ .informations-video .infos-film strong {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+ .informations-video .infos-film span {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #c8a461;
+  display: block;
+  padding-top: 14px;
+}
+ .informations-video .program-film {
+  text-align: center;
+  display: none;
+}
+ .informations-video .program-film .contain-info {
+  
+  margin-bottom: 26px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+ .informations-video .program-film .infos {
+  padding-bottom: 32px;
+}
+ .informations-video .program-film .infos p {
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #666;
+  padding-bottom: 25px;
+}
+ .informations-video .program-film .infos p .date {
+  color: #bababa;
+  margin-left: 5px;
+}
+ .informations-video .program-film .infos .where {
+  font-size: 1.6rem;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+ .informations-video .program-film .infos hr {
+  width: 45px;
+  border-color: #666;
+  margin-top: 48px;
+}
+ .informations-video .program-film .btn {
+  color: #c8a461;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  padding: 20px 35px;
+      display: inline-block;
+      margin-top: 15px;
+  border: 1px solid rgba(200, 164, 97, 0.53);
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.dark-container.slideshow{
+    margin-bottom: 0;
+    border-bottom:none;
+}

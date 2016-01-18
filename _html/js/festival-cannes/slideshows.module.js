@@ -59,10 +59,10 @@ function initSlideshows() {
 
     slideshows.push(slideshow);
   }
-  
+
 }
 
-// close slideshow on click 
+// close slideshow on click
 $('body').on('click', '.chocolat-close', function(e){
 
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
@@ -82,11 +82,11 @@ $('body').on('click', '.chocolat-close', function(e){
 
     setTimeout(function() {
       for(var i=0; i<slideshows.length; i++) {
-        
+
           slideshows[i].api().close();
           slideshows[i].api().destroy();
           history.pushState("", document.title, window.location.pathname);
-        
+
       }
     }, 1000);
 
@@ -133,8 +133,10 @@ $('body').on('click', '.chocolat-image', function() {
 
   $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
-  $('<a href="#" class="share"></a>').insertBefore('.chocolat-wrapper .chocolat-left');
-  $('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>').appendTo('.chocolat-bottom');
+  $('.chocolat-left').html('<i class="icon icon_flecheGauche"></i>');
+  $('.chocolat-right').html('<i class="icon icon_fleche-right"></i>');
+  $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+  $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
   $('<div class="zoomCursor"></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
@@ -160,7 +162,7 @@ $('body').on('click', '.chocolat-image', function() {
       }
     });
   }
-  
+
   if ($('body').hasClass('mob')) {
     $('.chocolat-bottom').addClass('show');
   }
@@ -253,7 +255,7 @@ $('body').on('mouseout', '.chocolat-content', function(){
 $('body').on('mouseenter', '.chocolat-content', function(){
   $('.zoomCursor').removeClass('hide');
   return false;
-}); 
+});
 
 var timeoutCursor;
 
