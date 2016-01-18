@@ -52,7 +52,9 @@
                 {% endif %}
             {% endfor %}
 
-            <div class="author">{{ 'article.text.redigepar'|trans }} {{ news.signature }}</div>
+            {% if news.signature is not null %}
+                <div class="author">{{ 'article.text.redigepar'|trans }} {{ news.signature }}</div>
+            {% endif %}
         </div>
         <div class="share">
             <p>{{ 'article.text.partagerarticle'|trans }}</p>
@@ -71,14 +73,30 @@
                     <div class="vCenter">
                         <div class="vCenterKid">
                             <div class="poster">
-                                <img src="{{ film.image.path }}" alt="" />
+                                <img src="" alt="" />
                             </div>
                             <div class="text-container">
-                                <span class="category">{{ film.competition }}</span>
-                                <h3><a href="#">{{ film.title }}</a></h3>
-                                <p class="director"><a href="#">{{ film.author.fullName }}</a><p>
-                                <p>{{ film.author.from }} - {{ film.releaseDate}}</p>
-                                <p>{{ film.duration }}</p>
+                                <span class="category">
+                                    {% for section in associatedFilm.selection.sections %}
+                                            {{ section|trans_fallback('name') }}
+                                    {% endfor %}
+                                </span>
+                                <h3>
+                                    <a href="#">
+                                        {{ associatedFilm|trans_fallback('title') }}
+                                    </a>
+                                </h3>
+                                {% for director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                    <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+                                {% endfor %}
+                                <p>
+                                {% for country in associatedFilm.countries %}
+                                    {{ country.country|trans_fallback('name') }}
+                                {% endfor %}
+                                -
+                                {{ associatedFilm.productionYear }}
+                                </p>
+                                <p>{{ associatedFilmDuration }}</p>
                             </div>
                         </div>
                     </div>

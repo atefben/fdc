@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\FilmFunctionInterface;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
@@ -20,7 +21,7 @@ use JMS\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FilmFunction implements TranslateMainInterface
+class FilmFunction implements TranslateMainInterface, FilmFunctionInterface
 {
     use Time;
     use Translatable;
