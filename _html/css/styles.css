@@ -6131,44 +6131,6 @@ div.chocolat-wrapper .zoomCursor.hide {
   width: 550px;
 }
 
-.video-player {
-  height: 400px;
-  position: relative;
-}
-.video-player .image {
-  background-size: cover;
-  background-position: center;
-  left: 0;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-.video-player .image:before {
-  background: transparent;
-  background: -moz-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(57%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
-  background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -o-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -ms-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 0.8) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
-  content: '';
-  display: block;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.single-article .actu_article_video {
-  margin-top: 50px !important;
-  width: 980px !important;
-  height: 610px;
-}
-
 .video-container {
   position: relative;
   overflow: hidden;
@@ -6181,7 +6143,6 @@ div.chocolat-wrapper .zoomCursor.hide {
   color: inherit;
   outline: none;
   cursor: pointer;
-  font: inherit;
   line-height: normal;
   overflow: visible;
   padding: 0;
@@ -6237,11 +6198,10 @@ div.chocolat-wrapper .zoomCursor.hide {
   visibility: visible;
 }
 .video-container .top-bar .channels {
-  background: url("../img/svg/mic.svg") no-repeat center;
-  background-size: 42px;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   display: block;
   float: left;
+  text-align: center;
   height: 100%;
   width: 80px;
   position: relative;
@@ -6253,6 +6213,17 @@ div.chocolat-wrapper .zoomCursor.hide {
 }
 .video-container .top-bar .channels:hover, .video-container .top-bar .channels.active {
   background-color: #c8a461;
+}
+.video-container .top-bar .channels i {
+  display: table;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  color: #fff;
+}
+.video-container .top-bar .channels i:before {
+  display: table-cell;
+  vertical-align: middle;
 }
 .video-container .top-bar .info {
   color: #666;
@@ -6292,15 +6263,23 @@ div.chocolat-wrapper .zoomCursor.hide {
   z-index: 1;
 }
 .video-container .top-bar .buttons .button {
+  background: none;
   border-color: rgba(255, 255, 255, 0.3);
   border-top: none;
   border-bottom: none;
   height: 80px;
   width: 80px;
 }
-.video-container .top-bar .buttons a:hover {
-  background-color: #fff;
-  border-color: rgba(255, 255, 255, 0.3) !important;
+.video-container .top-bar .buttons .button i {
+  display: table;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  color: #c8a461;
+}
+.video-container .top-bar .buttons .button i:before {
+  display: table-cell;
+  vertical-align: middle;
 }
 .video-container .top-bar .buttons a.facebook {
   background: url("../img/svg/facebook-gold.svg") no-repeat center;
@@ -6362,11 +6341,6 @@ div.chocolat-wrapper .zoomCursor.hide {
 }
 .video-container .channels-video .info p {
   font-size: 0.850rem;
-}
-.video-container .channels-video .picto {
-  background-image: url("../img/svg/audio.svg");
-  background-size: 25px;
-  margin-left: 0;
 }
 .video-container .channels-video.active {
   -moz-transform: translate3d(0, 0, 0);
@@ -6457,9 +6431,8 @@ div.chocolat-wrapper .zoomCursor.hide {
   left: 40px;
   right: auto;
   margin: auto;
-}
-.video-container .control-bar .playstate .play-btn.play {
-  background-image: url("../img/player/play.png");
+  color: #fff;
+  font-size: 14px;
 }
 .video-container .control-bar .playstate .play-btn.pause {
   background-image: url("../img/player/pause.png");
@@ -6529,16 +6502,16 @@ div.chocolat-wrapper .zoomCursor.hide {
   width: 135px;
   height: 100%;
 }
-.video-container .control-bar .sound .sound-btn {
+.video-container .control-bar .sound .icon {
   position: absolute;
-  background: url("../img/player/sound.png") left top no-repeat;
   height: 14px;
   width: 10px;
   left: 40px;
   bottom: 40px;
   margin: auto;
+  color: #fff;
 }
-.video-container .control-bar .sound .sound-btn:before {
+.video-container .control-bar .sound .icon:before {
   height: 14px;
 }
 .video-container .control-bar .sound .sound-bar {
@@ -6567,11 +6540,11 @@ div.chocolat-wrapper .zoomCursor.hide {
   width: 80px;
   height: 100%;
 }
-.video-container .control-bar .fs .fs-icon {
+.video-container .control-bar .fs .icon {
   position: absolute;
   width: 18px;
   height: 14px;
-  background-image: url("../img/player/fullscreen.png");
+  color: #fff;
   bottom: 40px;
   right: 40px;
   margin: auto;
@@ -6638,7 +6611,7 @@ div.chocolat-wrapper .zoomCursor.hide {
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
 }
-.video-container.control-hide .video-player:before {
+.video-container.control-hide .jwplayer:before {
   content: '';
   display: block;
   height: 100%;
@@ -7537,9 +7510,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7565,11 +7538,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7585,26 +7558,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -9941,17 +9914,9 @@ article .read-later.rAlign span:after {
   margin: 0 auto 70px auto;
   width: 630px;
 }
-.single-article .video-player,
-.single-article #video-container {
-  height: 400px;
+.single-article .video-container {
   margin: 0 auto 70px auto;
   width: 630px;
-}
-.single-article .video-player.state-pause .jw-title, .single-article .video-player.state-pause .control-bar,
-.single-article #video-container.state-pause .jw-title,
-.single-article #video-container.state-pause .control-bar {
-  opacity: 0;
-  visibility: hidden;
 }
 .single-article .share {
   border-top: 1px solid #e5e5e5;
@@ -18123,7 +18088,7 @@ input[type=submit] {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdf‡;
+  border: 0px solid #dfdfdfÔÇí;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
