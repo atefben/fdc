@@ -48,7 +48,7 @@
     <!-- POPIN CREATE EVENT -->
     <div id="create-event-pop">
        <div class="contain-btn">
-         <span class="btn-close"></span>
+         <span class="btn-close"><i class="icon icon_close"></i></span>
        </div>
       <div class="container">
         <h3>Créer un évènement</h3>
