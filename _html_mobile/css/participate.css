@@ -1,0 +1,86 @@
+
+
+.section-contain h3{
+
+	font: 1.3rem "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: inline-block;
+    padding-bottom: 65px;
+    font-weight: 600;
+}
+
+
+.title-contain{
+	text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 0.70rem;
+    padding-bottom: 30px;
+    font-weight: 600;
+}
+.title-contain .icon{
+	color: #c1c1c1;
+	font-size: 1.8rem;
+	padding-right: 10px;
+	position: relative;
+    top: -4px;
+}
+
+.description.center{
+	text-align: center;
+}
+.description.center .title-contain{
+	text-align: center;
+}
+strong{
+	font-weight: 600;
+}
+strong.color{
+
+	color:#c29f5f;
+}
+.description strong.center{
+	color:#000;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 0.75rem;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    display: block;
+    padding:60px 0 10px 0;
+    letter-spacing: 1px;
+}
+.description a {
+
+	color: #c29f5f;
+    text-decoration: underline;
+}
+.loc{
+	display: block;
+}
+.contain-good-practice{
+	width: 525px;
+	margin: 0 auto;
+}
+.item-good-practice{
+	width: 49%;
+	display: inline-block;
+	text-align: center;
+	height: 235px;
+	vertical-align: top;
+}
+.item-good-practice .icon{
+	font-size: 3rem;
+	color: #c1c1c1;
+	display: block;
+	margin-bottom: 25px;
+}
+.item-good-practice p{
+	width: 240px;
+	height: 115px;
+	display: block;
+	font-size: 1.5rem;
+	line-height: 35px;
+	font-weight: 600;
+	margin:0 auto;
+}
