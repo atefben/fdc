@@ -151,10 +151,9 @@
       }
 
       &:after {
-        background: url('../img/svg/photo-white.svg') no-repeat center;
         background-size: 25px;
         border: 1px solid rgba(255, 255, 255, .35);
-        content: '';
+        content: "\f149";
         display: block;
         height: 80px;
         left: 50%;
@@ -167,6 +166,11 @@
         width: 80px;
         z-index: 3;
         @include transition(all 0.6s $smoothTransition);
+        font-family: icons;
+        color: #fff;
+        line-height: 82px;
+        text-align: center;
+        font-size: 1.4rem;
       }
 
       &:hover {

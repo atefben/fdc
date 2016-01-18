@@ -171,9 +171,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 15px;
 }
 .owl-dot:before {
-  background: url("../img/svg/puce-small.svg") no-repeat center;
-  background-size: 8px;
-  content: '';
+  content: "\f153";
+  font-family: icons;
+  font-size: .5rem;
   display: block;
   position: absolute;
   top: 0;
@@ -188,11 +188,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  color: #fff;
+  line-height: 13px;
 }
 .owl-dot:after {
-  background: url("../img/svg/puce-big.svg") no-repeat center;
-  background-size: 15px;
-  content: '';
+  content: "\f152";
+  font-family: icons;
+  font-size: .8rem;
+  color: #c8a461;
   display: block;
   opacity: 0;
   visibility: hidden;
@@ -4712,10 +4715,9 @@ footer .footer-menu ul li a:hover {
   pointer-events: none;
 }
 .slideshow .slideshow-img .images .img:after {
-  background: url("../img/svg/photo-white.svg") no-repeat center;
   background-size: 25px;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  content: '';
+  content: "\f149";
   display: block;
   height: 80px;
   left: 50%;
@@ -4731,6 +4733,11 @@ footer .footer-menu ul li a:hover {
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  font-family: icons;
+  color: #fff;
+  line-height: 82px;
+  text-align: center;
+  font-size: 1.4rem;
 }
 .slideshow .slideshow-img .images .img:hover:before {
   opacity: 0.6;
@@ -5451,10 +5458,6 @@ div.chocolat-wrapper .zoomCursor.hide {
 .audio-player.bigger .playpause {
   left: 50px;
 }
-.audio-player.pause .playpause {
-  background-image: url("../img/svg/pause.svg");
-  background-size: 15px;
-}
 .audio-player .on {
   opacity: 0;
   visibility: hidden;
@@ -5514,16 +5517,20 @@ div.chocolat-wrapper .zoomCursor.hide {
   display: none;
 }
 .audio-player .playpause {
-  background: url("../img/svg/video-white.svg") no-repeat center;
-  background-size: 25px;
   display: block;
   height: 20px;
-  left: 37px;
+  left: 35px;
   position: absolute;
   width: 20px;
   top: 50%;
   margin-top: -10px;
   z-index: 2;
+}
+.audio-player .playpause .icon {
+  left: 50px;
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 2px;
 }
 .audio-player .volume {
   background-color: rgba(255, 255, 255, 0.2);
@@ -5681,14 +5688,15 @@ div.chocolat-wrapper .zoomCursor.hide {
   width: auto;
 }
 .audio-player .fullscreen {
-  background: url("../img/svg/fullscreen.svg") no-repeat center;
-  background-size: contain;
   bottom: 36px;
   display: block;
   height: 15px;
   position: absolute;
   right: -30px;
   width: 20px;
+}
+.audio-player .fullscreen .icon {
+  color: #fff;
 }
 @media only screen and (max-device-width: 1024px) {
   .audio-player .fullscreen {
@@ -6014,21 +6022,14 @@ div.chocolat-wrapper .zoomCursor.hide {
 .popin-audio .buttons a:hover + .button {
   border-left-color: #c8a461;
 }
-.popin-audio .buttons a.facebook {
-  background: url("../img/svg/facebook-gold.svg") no-repeat center;
-  background-size: 19px;
+.popin-audio .buttons a .icon {
+  font-size: .8rem;
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
-.popin-audio .buttons a.twitter {
-  background: url("../img/svg/twitter-gold.svg") no-repeat center;
-  background-size: 16px;
-}
-.popin-audio .buttons a.email {
-  background: url("../img/svg/mail.svg") no-repeat center;
-  background-size: 16px;
-}
-.popin-audio .buttons a.link {
-  background: url("../img/svg/link.svg") no-repeat center;
-  background-size: 16px;
+.popin-audio .buttons a:hover {
+  color: #c8a461;
 }
 .popin-audio .picto {
   display: none;

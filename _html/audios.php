@@ -354,10 +354,10 @@
           <p></p>
         </div>
         <div class="buttons square">
-          <a href="#" class="button facebook"></a>
-          <a href="#" class="button twitter"></a>
-          <a href="#" class="button link"></a>
-          <a href="#" class="button email"></a>
+          <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
+          <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+          <a href="#" class="button link"><i class="icon icon_link"></i></a>
+          <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
         </div>
       </div>
       <div class="ov"></div>
