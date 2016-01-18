@@ -3,15 +3,31 @@
         <span class="label">{{ 'article.filter.label.date'|trans }} :</span>
           <span class="select">
               {% for key, date in filters.dates %}
-              <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ date.slug }}">{{ date.content }}</span>{% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
+              <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ date }}">
+                  {% if key != 0 %}
+                      {% if app.request.locale != 'cn' %}
+                          {{ date|localizeddate('full', 'none')  }}
+                      {% else %}
+                          {{ date|localizeddate('none', 'none', 'zh', null, 'MM月dd日, eee') }}
+                      {% endif %}
+                  {% else  %}
+                      {{ 'article.filter.select.date.all'|trans }}
+                  {% endif %}
+                  </span>{% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
               {% endfor %}
           </span>
     </div>
     <div id="format" class="filter">
         <span class="label">{{ 'article.filter.label.theme'|trans }} :</span>
           <span class="select">
-              {% for key, theme in filters.themes %}
-              <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ theme.slug }}">{{ theme.content }}</span>{% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
+              {% for key, theme in filters.themes.content %}
+              <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ filters.themes.slug[key] }}">
+                  {% if key != 0 %}
+                      {{ theme|trans_fallback('name') }}
+                  {% else  %}
+                      {{ 'article.filter.select.date.all'|trans }}
+                  {% endif %}
+              </span>{% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
               {% endfor %}
           </span>
     </div>

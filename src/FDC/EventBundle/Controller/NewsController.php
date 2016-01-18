@@ -53,6 +53,12 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
+        //filters init
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
         // TODO: clean this
         $homeSlider = array(
             array(
@@ -80,36 +86,7 @@ class NewsController extends Controller
                 'title'=>'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »',
             ),
         );
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
+
         $home = array(
             'article' => array(
                 array(
@@ -663,11 +640,21 @@ class NewsController extends Controller
         // SEO
        // $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
-
         $associatedFilm = $news->getAssociatedFilm();
-        if ($associatedFilm == null) {
-            throw new NotFoundHttpException();
+        $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
+
+        /*
+        foreach($associatedFilm->getMedias() as $media) {
+            echo'<pre>'; print_r($media->getMedia()); echo '</pre>';
         }
+         exit;
+        */
+
+        /*foreach($associatedFilm->getProjectionProgrammationFilmsList() as $projection) {
+            echo'<pre>'; print_r($projection->getProjection()); echo '</pre>';
+        }
+         exit;
+        */
 
         //FAKE CONTENT
         $film = array(
@@ -762,7 +749,9 @@ class NewsController extends Controller
         );
 
         return array(
+            'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $news,
+            'associatedFilm' => $associatedFilm,
             'film' => $film,
             'focusArticles' => $focusArticles,
             'dayArticles' => $dayArticles,
@@ -795,30 +784,27 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
+        //set default filters
         $filters = array();
-        $filters['dates'][0] = array(
-            'slug' => 'all',
-            'content' => 'Toutes',
-        );
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
 
-        $filters['themes'][0] = array(
-            'slug' => 'all',
-            'content' => 'Tous',
-        );
-
+        $translator = $this->get('translator');
         foreach($newsArticles as $key => $newsArticle) {
             $newsArticle->image = $newsArticle->getHeader();
             $newsArticle->theme = $newsArticle->getTheme();
 
+            //check if filters don't already exist
             if(!in_array($newsArticle->getPublishedAt(),$filters['dates'])) {
                 $date = $newsArticle->getPublishedAt();
-                $filters['dates'][$key+1]['slug'] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
-                $filters['dates'][$key+1]['content'] = ($date != null) ? $date->format('l j F') : null;
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
             }
 
-            if(!in_array($newsArticle->getTheme()->getName(),$filters['themes'])) {
-                $filters['themes'][$key+1]['slug'] = $newsArticle->getTheme()->getName();
-                $filters['themes'][$key+1]['content'] = $newsArticle->getTheme()->getName();
+
+            if(!in_array($newsArticle->getTheme()->getName(),$filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $newsArticle->getTheme()->getName();
+                $filters['themes']['content'][] = $newsArticle->getTheme();
             }
 
         }
