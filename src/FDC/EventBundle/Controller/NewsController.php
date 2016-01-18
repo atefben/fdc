@@ -661,16 +661,22 @@ class NewsController extends Controller
         }
 
         // SEO
-        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+       // $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+
+
+        $associatedFilm = $news->getAssociatedFilm();
+        if ($associatedFilm == null) {
+            throw new NotFoundHttpException();
+        }
 
         //FAKE CONTENT
         $film = array(
-            'title' => 'Enragé',
-            'releaseDate' => new \DateTime(),
-            'duration' => '1h35',
+            'title' => $associatedFilm->getTitleVO(),
+            'releaseDate' => $associatedFilm->getProductionYear(),
+            'duration' => date('H:i', mktime(0,$associatedFilm->getDuration())),
             'competition' => 'Un certain regard',
             'author' => array(
-                'fullName' => 'Eric Hannezo',
+                'fullName' =>'toto',//$associatedFilm->getDuration()->getPersons()->getDirectorsRandomly,
                 'from' => 'France'
             ),
             'image' => array(
@@ -816,7 +822,7 @@ class NewsController extends Controller
             }
 
         }
-        
+
         $articles = $newsArticles;
 
         return array(
@@ -831,7 +837,7 @@ class NewsController extends Controller
      */
     public function getPhotosAction()
     {
-        //$offset = 30;
+       /* //$offset = 30;
         $dateTime = new DateTime();
 
         $em   = $this->getDoctrine()->getManager();
@@ -852,6 +858,8 @@ class NewsController extends Controller
         }
 
         $photos = $newsPhotos;
+
+       */
 
         //echo'<pre>'; print_r($photos); echo '</pre>';
 
