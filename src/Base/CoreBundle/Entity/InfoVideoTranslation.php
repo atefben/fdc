@@ -12,6 +12,8 @@ use Base\CoreBundle\Util\Seo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -41,6 +43,14 @@ class InfoVideoTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      */
     protected $introduction;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * Constructor
@@ -94,5 +104,28 @@ class InfoVideoTranslation implements TranslateChildInterface
     public function getIntroduction()
     {
         return $this->introduction;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return InfoVideoTranslation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
