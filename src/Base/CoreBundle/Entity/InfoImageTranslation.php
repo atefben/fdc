@@ -12,6 +12,8 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\Seo;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -41,6 +43,14 @@ class InfoImageTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      */
     protected $introduction;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * Constructor
@@ -104,5 +114,28 @@ class InfoImageTranslation implements TranslateChildInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return InfoImageTranslation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

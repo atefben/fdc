@@ -117,18 +117,20 @@ class MediaVideoAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('inAllVideos', null, array(
-                'required' => false
-            ))
-            ->add('inHomepage', null, array(
-                'required' => false
-            ))
-            ->add('inWebTv', null, array(
-                'required' => false
-            ))
-            ->add('inTrailer', null, array(
-                'required' => false
-            ))
+
+//            ->add('inAllVideos', null, array(
+//                'required' => false
+//            ))
+//            ->add('inHomepage', null, array(
+//                'required' => false
+//            ))
+//            ->add('inWebTv', null, array(
+//                'required' => false
+//            ))
+//            ->add('inTrailer', null, array(
+//                'required' => false
+//            ))
+
             ->add('film', 'sonata_type_model_list', array(
                 'required' => false
             ))

@@ -8,7 +8,7 @@ var d  = document,
     k  = k || new Konsole('fdc.2016', true),
     timeout = 1000,
     thread,
-    controlBar = 
+    controlBar =
         '<div class="control-bar">\
             <div class="playstate">\
                 <button class="play-btn play icon icon_play"></button>\
@@ -34,7 +34,7 @@ var d  = document,
                 <button class="icon icon_fullscreen"></button>\
             </div>\
         </div>',
-    topBar = 
+    topBar =
         '<div class="top-bar">\
             <a href="#" class="channels"><i class="icon icon_playlist"></i></a>\
             <div class="info"></div>\
@@ -119,17 +119,17 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
             var position = x - volume.offset().left;
             percentage = 100 * position / volume.width();
         }
-        
+
         if (percentage > 100) {
             percentage = 100;
         } else if (percentage < 0) {
             percentage = 0;
         }
-        
+
         $sound.find('.sound-seek').css('width',percentage+'%');
         playerInstance.setVolume(percentage);
     };
-    
+
     function updateMute() {
         if (playerInstance.getMute()) {
             playerInstance.setMute(false);
@@ -164,7 +164,7 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
             $container.removeClass('control-hide');
         }
     }
-    
+
     function initChannel() {
         sliderChannelsVideo = $container.find(".slider-channels-video").owlCarousel({
           nav: false,
@@ -189,7 +189,7 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
             $container.find('.jwplayer').removeClass('overlay-channels');
         });
     }
-    
+
     playerInstance.setup({
         primary: 'html5',
         aspectratio: '16:9',
@@ -353,7 +353,7 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
 };
 
 $(d).ready(function() {
-    play1 = playerInit('video-player', false, $('#video-player').data('playlist'), false);
+    // play1 = playerInit('video-player', false, $('#video-player').data('playlist'), false);
     // play2 = playerInit(false, '.video-player', true, false);
     // play3 = playerInit(false, 'video-live', false, true);
 });

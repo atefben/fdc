@@ -2,6 +2,8 @@
 
 namespace FDC\PressBundle\Controller;
 
+use \DateTime;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -421,148 +423,64 @@ class NewsController extends Controller
     public function listAction()
     {
 
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+        $dateTime = new DateTime();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL NEWS ARTICLES
+        $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
+
+        if ($statementArticles === null) {
+            throw new NotFoundHttpException();
+        }
+
+
+        $filters = array();
+        $filters['dates'][0] = array(
+            'slug' => 'all',
+            'content' => 'Toutes',
+        );
+
+        $filters['themes'][0] = array(
+            'slug' => 'all',
+            'content' => 'Tous',
+        );
+
+        foreach($statementArticles as $key => $statementArticle) {
+
+            $statementArticle->image = $statementArticle->getHeader();
+            $statementArticle->theme = $statementArticle->getTheme();
+
+            if(!in_array($statementArticle->getPublishedAt(),$filters['dates'])) {
+                $date = $statementArticle->getPublishedAt();
+                $filters['dates'][$key+1]['slug'] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+                $filters['dates'][$key+1]['content'] = ($date != null) ? $date->format('l j F') : null;
+            }
+
+            if(!in_array($statementArticle->getTheme()->getName(),$filters['themes'])) {
+                $filters['themes'][$key+1]['slug'] = $statementArticle->getTheme()->getName();
+                $filters['themes'][$key+1]['content'] = $statementArticle->getTheme()->getName();
+            }
+
+        }
+
+        $articles = $statementArticles;
+
         $headerInfo = array(
             'title' => 'Communiqués et infos',
             'description' => 'Communiqués, actualités, retrouvez toute l\'information à ne pas manquer.'
         );
 
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => '2016',
-                    'content' => '2016',
-                ),
-                array(
-                    'slug' => '2015',
-                    'content' => '2015',
-                ),
-                array(
-                    'slug' => '2014',
-                    'content' => '2014',
-                ),
-            ),
-            'types' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'communique',
-                    'content' => 'Communiqués',
-                ),
-                array(
-                    'slug' => 'info',
-                    'content' => 'Infos',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'press',
-                    'content' => 'Conférence de presse',
-                ),
-                array(
-                    'slug' => 'marche',
-                    'content' => 'Montée des marches',
-                )
-            ),
-            'formats' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'article',
-                    'content' => 'Articles',
-                ),
-                array(
-                    'slug' => 'video',
-                    'content' => 'Videos',
-                ),
-                array(
-                    'slug' => 'audio',
-                    'content' => 'Audios',
-                ),
-                array(
-                    'slug' => 'photo',
-                    'content' => 'Photos',
-                ),
-            ),
-        );
-
-        $articles = array(
-            array(
-                'id' => 0,
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'format' => 'article',
-                'theme' => 'cinema',
-                'category' => 'Cinéma de la plage',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                ),
-                'filters' => array(
-                    array(
-                        'slug' => 'all'
-                    ),
-                    array(
-                        'slug' => 'communique'
-                    )
-                )
-            ),
-            array(
-                'id' => 0,
-                'title' => 'La Loi du Marché par Stéphane Brizé',
-                'format' => 'audio',
-                'theme' => 'press',
-                'category' => 'Conférence de Presse',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/02.jpg',
-                ),
-                'filters' => array(
-                    array(
-                        'slug' => 'all'
-                    ),
-                    array(
-                        'slug' => 'press'
-                    ),
-                    array(
-                        'slug' => 'steps'
-                    ),
-                )
-            ),
-            array(
-                'id' => 0,
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'format' => 'article',
-                'theme' => 'cinema',
-                'category' => 'Cinéma de la plage',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
-                ),
-                'filters' => array(
-                    array(
-                        'slug' => 'all'
-                    ),
-                    array(
-                        'slug' => 'press'
-                    ),
-                    array(
-                        'slug' => 'steps'
-                    ),
-                )
-            ),
-        );
-
         return array(
             'headerInfo'  => $headerInfo,
-            'newsFilters' => $filters,
-            'newsArticle' => $articles,
+            'filters' => $filters,
+            'statementArticles' => $articles,
         );
 
     }

@@ -2,7 +2,10 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\NewsAudioTranslation;
+use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Entity\StatementAudio;
+use Base\CoreBundle\Entity\StatementAudioTranslation;
+use Base\CoreBundle\Entity\StatementStatementAssociated;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -19,12 +22,24 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class StatementAudioAdmin extends Admin
 {
-    /**
-     * configure function.
-     * 
-     * @access public
-     * @return void
-     */
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
+
+    protected $translationDomain = 'BaseAdminBundle';
+
+
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+
+        $instance->addAssociatedStatement(new StatementStatementAssociated());
+        $instance->addAssociatedStatement(new StatementStatementAssociated());
+
+        return $instance;
+    }
+    
+    
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
@@ -45,6 +60,41 @@ class StatementAudioAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+
+                    return true;
+                },
+                'field_type' => 'text'
+            ))
+            ->add('theme')
+            ->add('status', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.status = :status');
+                    $queryBuilder->setParameter('status', $value['value']);
+
+                    return true;
+                },
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => StatementAudioTranslation::getStatuses(),
+                    'choice_translation_domain' => 'BaseAdminBundle'
+                ),
+            ))
         ;
     }
 
@@ -55,12 +105,23 @@ class StatementAudioAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('title', null, array('template' => 'BaseAdminBundle:Statement:list_title.html.twig'))
+            ->add('theme')
+            ->add('createdAt')
+            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => StatementAudio::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices' => StatementAudioTranslation::getStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+            ))
+            ->add('_preview', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
             ))
         ;
     }
@@ -74,22 +135,16 @@ class StatementAudioAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
                 'fields' => array(
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'X caractères max.',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
+                        'sonata_help' => 'form.statement.helper_title'
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_introduction',
-                        'translation_domain' => 'BaseAdminBundle',
+                        'translation_domain' => 'BaseAdminBundle'
                     ),
                     'createdAt' => array(
                         'display' => false
@@ -101,12 +156,32 @@ class StatementAudioAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => NewsAudioTranslation::getStatuses(),
+                        'choices' => StatementAudioTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.statement.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.statement.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+
+                    )
                 )
             ))
             ->add('sites', null, array(
+                'label' => 'form.label_publish_on',
                 'class' => 'BaseCoreBundle:Site',
                 'multiple' => true,
                 'expanded' => true
@@ -126,11 +201,15 @@ class StatementAudioAdmin extends Admin
                 )
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
+                'label' => false,
                 'types' => array(
-                    'news_widget_text_type',
-                    'news_widget_audio_type',
-                    'news_widget_image_type',
-                    'news_widget_video_type',
+                    'statement_widget_text_type',
+                    'statement_widget_quote_type',
+                    'statement_widget_audio_type',
+                    'statement_widget_image_type',
+                    'statement_widget_image_dual_align_type',
+                    'statement_widget_video_type',
+                    'statement_widget_video_youtube_type'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -138,33 +217,102 @@ class StatementAudioAdmin extends Admin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
-                'required' => false,
                 'btn_delete' => false
             ))
             ->add('tags', 'sonata_type_collection', array(
+                'label' => 'form.label_article_tags',
+                'help' => 'form.statement.helper_tags',
                 'by_reference' => false,
                 'required' => false,
-                ), array(
+            ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
                 )
             )
+            ->add('signature', null, array(
+                'help' => 'form.statement.helper_signature'
+            ))
             ->add('header', 'sonata_type_model_list', array(
-                'label' => 'form.label_header_audio',
-                'translation_domain' => 'BaseAdminBundle',
+                'label' => 'form.label_header_image',
+                'help' => 'form.statement.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('associatedFilm', 'sonata_type_model_list', array(
+                'help' => 'form.statement.helper_film_film_associated',
                 'required' => false
             ))
-            ->add('associations', 'sonata_type_collection', array(
+            ->add('associatedEvent', 'sonata_type_model_list', array(
+                'help' => 'form.statement.helper_event_associated',
+                'required' => false
+            ))
+            ->add('associatedProjections', 'sonata_type_collection', array(
+                'label' => 'form.label_statement_film_projection_associated',
+                'help' => 'form.statement.helper_statement_film_projection_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedFilms', 'sonata_type_collection', array(
+                'label' => 'form.label_statement_film_film_associated',
+                'help' => 'form.statement.helper_statement_film_film_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedStatement', 'sonata_type_collection', array(
+                'label' => 'form.label_statement_statement_associated',
+                'help' => 'form.statement.helper_statement_statement_associated',
                 'by_reference' => false,
                 'btn_add' => false,
                 'required' => false,
-                ), array(
+            ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
                 )
             )
-            ->add('translate', null, array(), array(
-                'translation_domain' => 'BaseAdminBundle'
+            ->add('displayedHome')
+            ->add('displayedMobile')
+            ->add('translate')
+            ->add('priorityStatus', 'choice', array(
+                'choices' => Statement::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.statement.helper_file',
+                'required' => false
+            ))
+            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
+            ->add('createdAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('createdBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
             ))
             ->end()
         ;

@@ -3,7 +3,7 @@
   width: 100%;
   -webkit-tap-highlight-color: transparent;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .owl-carousel .owl-stage {
@@ -12,7 +12,7 @@
   cursor: -moz-grab;
   cursor: -webkit-grab;
   position: relative;
-  -ms-touch-action: pan-Y; 
+  -ms-touch-action: pan-Y;
 }
 
 .owl-carousel .owl-stage:after {
@@ -115,9 +115,10 @@
   width: 15px;
 
   &:before {
-    background: url('../img/svg/puce-small.svg') no-repeat center;
-    background-size: 8px;
-    content: '';
+    //attention if add new picto font number, nedd change the number of content //
+    content: "\f153";
+    font-family: icons;
+    font-size: .5rem;
     display: block;
     position: absolute;
     top: 0;
@@ -126,12 +127,16 @@
     width: 100%;
     @include transform(translateZ(0));
     @include transition(all 0.6s $smoothTransition);
+    color:#fff;
+    line-height: 13px;
   }
 
   &:after {
-    background: url('../img/svg/puce-big.svg') no-repeat center;
-    background-size: 15px;
-    content: '';
+    //attention if add new picto font number, nedd change the number of content //
+    content: "\f152";
+    font-family: icons;
+    font-size: .8rem;
+    color:$gold;
     display: block;
     opacity: 0;
     visibility: hidden;
