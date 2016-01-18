@@ -1,0 +1,37 @@
+#horizontal-menu{
+  height: 110px;
+  background-color: #202020;
+}
+
+#horizontal-menu .vid {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px 0 20px;
+
+}
+
+#horizontal-menu .vid p{
+  
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 3px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+}
+#horizontal-menu .vid p a{
+  color:  #999999;
+}
+#horizontal-menu .vid p a.active{
+  color: #c8a461;
+}
+#horizontal-menu .owl-stage{
+
+  height: 100%;
+}
