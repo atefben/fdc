@@ -43,7 +43,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var NewsTheme
      *
-     * @ORM\ManyToOne(targetEntity="InfoTheme")
+     * @ORM\ManyToOne(targetEntity="Theme")
      *
      * @Groups({"info_list", "info_show"})
      */
@@ -271,10 +271,10 @@ abstract class Info implements TranslateMainInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @param \Base\CoreBundle\Entity\Theme $theme
      * @return News
      */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
         $this->theme = $theme;
 

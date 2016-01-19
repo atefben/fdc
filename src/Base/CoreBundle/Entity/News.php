@@ -46,9 +46,9 @@ abstract class News implements TranslateMainInterface
     private $id;
 
      /**
-      * @var NewsTheme
+      * @var Theme
       *
-      * @ORM\ManyToOne(targetEntity="NewsTheme")
+      * @ORM\ManyToOne(targetEntity="Theme")
       *
       * @Groups({"news_list", "news_show"})
       * @Assert\NotNull()
@@ -283,10 +283,10 @@ abstract class News implements TranslateMainInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @param \Base\CoreBundle\Entity\Theme $theme
      * @return News
      */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
         $this->theme = $theme;
 

@@ -48,7 +48,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * @var StatementTheme
      *
-     * @ORM\ManyToOne(targetEntity="StatementTheme")
+     * @ORM\ManyToOne(targetEntity="Theme")
      *
      * @Groups({"statement_list", "statement_show"})
      * @Assert\NotNull()
@@ -283,10 +283,10 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\StatementTheme $theme
+     * @param \Base\CoreBundle\Entity\Theme $theme
      * @return Statement
      */
-    public function setTheme(\Base\CoreBundle\Entity\StatementTheme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
         $this->theme = $theme;
 

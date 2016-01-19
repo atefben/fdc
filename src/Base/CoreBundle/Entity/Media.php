@@ -38,9 +38,9 @@ abstract class Media implements TranslateMainInterface
     protected $id;
 
     /**
-     * @var NewsTheme
+     * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="NewsTheme")
+     * @ORM\ManyToOne(targetEntity="Theme")
      *
      * @Assert\NotNull()
      */
@@ -301,10 +301,10 @@ abstract class Media implements TranslateMainInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @param \Base\CoreBundle\Entity\Theme $theme
      * @return Media
      */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
         $this->theme = $theme;
 
@@ -314,7 +314,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\NewsTheme 
+     * @return \Base\CoreBundle\Entity\Theme 
      */
     public function getTheme()
     {
