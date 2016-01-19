@@ -42,6 +42,13 @@ sonata_media:
 
             formats:
 
+        statement_video:
+            providers:
+                - sonata.media.provider.file
+           #     - sonata.media.provider.video
+
+            formats:
+
         media_video_image:
             providers:
                 - sonata.media.provider.image

@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -21,10 +22,6 @@ class MediaVideoAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('inAllVideos')
-            ->add('inHomepage')
-            ->add('inWebTv')
-            ->add('inTrailer')
         ;
     }
 
@@ -34,13 +31,17 @@ class MediaVideoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('title')
+            ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
-            ->add('inAllVideos')
-            ->add('inHomepage')
-            ->add('inWebTv')
-            ->add('inTrailer')
+            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => MediaVideo::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices' => MediaVideoTranslation::getStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -56,12 +57,27 @@ class MediaVideoAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
+
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
                 'fields' => array(
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
+                    'file' => array(
+                        'required' => $requiredFile,
+                        'field_type' => 'sonata_media_type',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'provider' => 'sonata.media.provider.file',
+                        'context' => 'statement_video',
+                    ),
                     'akamaiId' => array(
                         'label' => 'form.label_akamai_id',
                         'translation_domain' => 'BaseAdminBundle',
@@ -93,23 +109,40 @@ class MediaVideoAdmin extends Admin
                         'choices' => MediaVideoTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'createdAt' => array(
-                        'display' => false
-                    ),
-                    'updatedAt' => array(
-                        'display' => false
-                    )
                 )
             ))
             ->add('image', 'sonata_media_type', array(
+                'required' => $requiredFile,
+                'translation_domain' => 'BaseAdminBundle',
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'media_video_image',
-                'required' => ($this->getSubject()->getId() === null) ? true : false
+                'context' => 'media_video_image',
+            ))
+            ->add('sites', null, array(
+                'label' => 'form.label_publish_on',
+                'class' => 'BaseCoreBundle:Site',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
             ))
             ->add('tags', 'sonata_type_collection', array(
+                'label' => 'form.label_tags',
+                'help' => 'form.media.helper_tags',
                 'by_reference' => false,
                 'required' => false,
             ), array(
@@ -117,45 +150,39 @@ class MediaVideoAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-
-//            ->add('inAllVideos', null, array(
+            ->add('translate')
+            ->add('displayedMobile')
+            ->add('displayedAll', null, array(
+                'label' => 'form.media_image.displayed_all'
+            ))
+            ->add('displayedHome', null, array(
+                'label' => 'form.media_image.displayed_home'
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => MediaVideo::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('inAllVideos', null, array(
+                'label' => 'form.media_video.in_all_videos'
+            ))
+            ->add('displayedAll', null, array(
+                'label' => 'form.media_video.displayed_all'
+            ))
+            ->add('displayedHome', null, array(
+                'label' => 'form.media_video.displayed_home'
+            ))
+            ->add('displayedWebTv', null, array(
+                'label' => 'form.media_video.displayed_webTv'
+            ))
+            ->add('displayedTrailer', null, array(
+                'label' => 'form.media_video.displayed_trailer'
+            ))
+            ->add('displayedMobile', null, array(
+                'label' => 'form.media_video.displayed_mobile'
+            ))
+//            ->add('film', 'sonata_type_model_list', array(
 //                'required' => false
 //            ))
-//            ->add('inHomepage', null, array(
-//                'required' => false
-//            ))
-//            ->add('inWebTv', null, array(
-//                'required' => false
-//            ))
-//            ->add('inTrailer', null, array(
-//                'required' => false
-//            ))
-
-            ->add('film', 'sonata_type_model_list', array(
-                'required' => false
-            ))
-            ->add('webTv', 'sonata_type_model_list', array(
-                'required' => false
-            ))
-            ->add('publishedAt', 'sonata_type_datetime_picker', array(
-                'format' => 'dd/MM/yyyy HH:mm',
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                ),
-                'required' => false
-            ))
-            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
-                'format' => 'dd/MM/yyyy HH:mm',
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                ),
-                'required' => false
-            ))
-            ->add('sites', null, array(
-                'class' => 'BaseCoreBundle:Site',
-                'multiple' => true,
-                'expanded' => true
-            ))
         ;
     }
 
@@ -168,10 +195,6 @@ class MediaVideoAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('inAllVideos')
-            ->add('inHomepage')
-            ->add('inWebTv')
-            ->add('inTrailer')
         ;
     }
 }

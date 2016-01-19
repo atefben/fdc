@@ -78,8 +78,8 @@ class MediaImageAdmin extends Admin
                 'label' => false,
                 'fields' => array(
                     'createdAt' => array(
-                            'display' => false
-                        ),
+                        'display' => false
+                    ),
                     'updatedAt' => array(
                         'display' => false
                     ),

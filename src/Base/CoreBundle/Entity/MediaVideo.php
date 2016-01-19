@@ -26,6 +26,13 @@ class MediaVideo extends Media
      *
      * @ORM\Column(type="boolean", nullable=false, options={"default":0})
      */
+    private $inAllVideos;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
+     */
     private $displayedWebTv;
 
     /**
@@ -75,6 +82,105 @@ class MediaVideo extends Media
      *
      */
     private $festival;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * Set inAllVideos
+     *
+     * @param boolean $inAllVideos
+     * @return MediaVideo
+     */
+    public function setInAllVideos($inAllVideos)
+    {
+        $this->inAllVideos = $inAllVideos;
+
+        return $this;
+    }
+
+    /**
+     * Get inAllVideos
+     *
+     * @return boolean 
+     */
+    public function getInAllVideos()
+    {
+        return $this->inAllVideos;
+    }
+
+    /**
+     * Set displayedWebTv
+     *
+     * @param boolean $displayedWebTv
+     * @return MediaVideo
+     */
+    public function setDisplayedWebTv($displayedWebTv)
+    {
+        $this->displayedWebTv = $displayedWebTv;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedWebTv
+     *
+     * @return boolean 
+     */
+    public function getDisplayedWebTv()
+    {
+        return $this->displayedWebTv;
+    }
+
+    /**
+     * Set displayedTrailer
+     *
+     * @param boolean $displayedTrailer
+     * @return MediaVideo
+     */
+    public function setDisplayedTrailer($displayedTrailer)
+    {
+        $this->displayedTrailer = $displayedTrailer;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedTrailer
+     *
+     * @return boolean 
+     */
+    public function getDisplayedTrailer()
+    {
+        return $this->displayedTrailer;
+    }
+
+    /**
+     * Set homepage
+     *
+     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @return MediaVideo
+     */
+    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return \Base\CoreBundle\Entity\Homepage 
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
+    }
 
     /**
      * Set film
@@ -151,7 +257,7 @@ class MediaVideo extends Media
      * @param \Base\CoreBundle\Entity\FilmFestival $festival
      * @return MediaVideo
      */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival)
     {
         $this->festival = $festival;
 
@@ -168,26 +274,4 @@ class MediaVideo extends Media
         return $this->festival;
     }
 
-    /**
-     * Set homepage
-     *
-     * @param \Base\CoreBundle\Entity\Homepage $homepage
-     * @return MediaVideo
-     */
-    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
-    {
-        $this->homepage = $homepage;
-
-        return $this;
-    }
-
-    /**
-     * Get homepage
-     *
-     * @return \Base\CoreBundle\Entity\Homepage 
-     */
-    public function getHomepage()
-    {
-        return $this->homepage;
-    }
 }
