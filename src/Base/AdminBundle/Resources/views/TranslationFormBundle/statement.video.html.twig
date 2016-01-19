@@ -18,7 +18,6 @@
     <div class="a2lix_translationsFields tab-content">
         {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations.unwrap() : null %}
         {% set videoTranslations = (form.parent.children.video.vars.data is not null) ? form.parent.children.video.vars.data.translations.unwrap() : null %}
-        {% set statementStatementTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data.unwrap() : null %}
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
@@ -55,7 +54,7 @@
                                                     {{ themeTranslations.get(locale).name }}
                                                 {% endif %}
                                                 {% if form.parent.children.theme.vars.value is not null %}
-                                                    <a target="_blank" href="{{ path('admin_base_core_statementtheme_edit', {'id': form.parent.children.theme.vars.value}) }}">
+                                                    <a target="_blank" href="{{ path('admin_base_core_theme_edit', {'id': form.parent.children.theme.vars.value}) }}">
                                                         modifier la traduction
                                                     </a>
                                                 {% endif %}
@@ -66,17 +65,7 @@
                                                 Tags de recherche
                                             </label>
                                             <div>
-                                                {% if statementStatementTag is not null %}
-                                                    {% for tmp in statementStatementTag %}
-                                                        {% set tagTranslation = tmp.tag.translations.unwrap() %}
-                                                        {% if tagTranslation.get(locale) is not null %}
-                                                            <div>
-                                                                {{ tagTranslation.get(locale).name }}
-                                                                <a target="_blank" href="{{ path('admin_base_core_statementtag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                {% endif %}
+
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -215,14 +204,7 @@
                                                 Tags de recherche
                                             </label>
                                             <div>
-                                                {% for tmp in statementStatementTag %}
-                                                    {% set tagTranslation = tmp.tag.translations.unwrap() %}
-                                                    {% if tagTranslation.get('fr') is not null %}
-                                                        <div>
-                                                            {{ tagTranslation.get('fr').name }}
-                                                        </div>
-                                                    {% endif %}
-                                                {% endfor %}
+
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -362,7 +344,7 @@
                                     {{ form_row(form.parent.children.associatedProjections) }}
                                     {{ form_row(form.parent.children.associatedFilms) }}
                                     {{ form_row(form.parent.children.associatedStatement) }}
-                                    {{ form_row(form.parent.children.tags) }}
+                                    {#{{ form_row(form.parent.children.tags) }}#}
                                 </div>
                             </div>
                         </div>

@@ -7,7 +7,6 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslationByLocale;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,17 +14,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * InfoTheme
+ * Theme
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class InfoTheme implements TranslateMainInterface
+class Theme implements TranslateMainInterface
 {
     use Time;
-    use TranslateMain;
     use Translatable;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -38,16 +37,15 @@ class InfoTheme implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     *
      */
     protected $translations;
-
+    
     public function __construct()
     {
         $this->translations = new ArrayCollection();
     }
-
-    public function __toString() {
+    
+    public function __toString() { 
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
@@ -58,10 +56,23 @@ class InfoTheme implements TranslateMainInterface
         return $string;
     }
 
+    public function getName()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getName();
+        }
+
+        return $string;
+    }
+
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {

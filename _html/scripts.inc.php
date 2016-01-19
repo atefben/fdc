@@ -31,7 +31,8 @@ var GLOBALS = {
       "error" : "valide",
       "empty" : "renseignée",
       "valid" : "Votre email a bien été envoyé !",
-      "copy"  :  "lien copié ! "
+      "copy"  :  "lien copié ! ",
+      "acces" :  "les contenus qui vous sont réservés sont à présents accessibles."
     },
     "googleMap" : {
       "title" : "Festival de Cannes"

@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsThemeTranslation implements TranslateChildInterface
+class ThemeTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
@@ -38,7 +38,7 @@ class NewsThemeTranslation implements TranslateChildInterface
      * Set name
      *
      * @param string $name
-     * @return Theme
+     * @return ThemeTranslation
      */
     public function setName($name)
     {

@@ -2,8 +2,8 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\NewsTheme;
-use Base\CoreBundle\Entity\NewsThemeTranslation;
+use Base\CoreBundle\Entity\Theme;
+use Base\CoreBundle\Entity\ThemeTranslation;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -14,13 +14,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * NewsThemeAdmin class.
+ * ThemeAdmin class.
  * 
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsThemeAdmin extends Admin
+class ThemeAdmin extends Admin
 {
     protected $formOptions = array(
         'cascade_validation' => true
@@ -54,7 +54,7 @@ class NewsThemeAdmin extends Admin
                 'field_type' => 'text'
             ))
             ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
-              'choices' => NewsTheme::getPriorityStatuses(),
+              'choices' => Theme::getPriorityStatuses(),
               'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ;
@@ -69,7 +69,7 @@ class NewsThemeAdmin extends Admin
             ->add('id')
             ->add('name', null, array('label' => 'list.label_theme_name'))
             ->add('priorityStatus', 'choice', array(
-                'choices' => NewsTheme::getPriorityStatusesList(),
+                'choices' => Theme::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
             ->add('_action', 'actions', array(
@@ -103,7 +103,7 @@ class NewsThemeAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => NewsThemeTranslation::getStatuses(),
+                        'choices' => ThemeTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                         'constraints' => array(
                             new NotBlank()
@@ -119,7 +119,7 @@ class NewsThemeAdmin extends Admin
             ))
             ->add('translate')
             ->add('priorityStatus', 'choice', array(
-                'choices' => NewsTheme::getPriorityStatuses(),
+                'choices' => Theme::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ;

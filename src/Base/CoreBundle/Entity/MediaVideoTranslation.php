@@ -67,80 +67,18 @@ class MediaVideoTranslation implements TranslateChildInterface
     private $copyright;
 
     /**
+     * @var Theme
+     *
+     * @ORM\ManyToOne(targetEntity="Theme")
+     */
+    private $theme;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->sites = new ArrayCollection();
-    }
-
-    /**
-     * Set legend
-     *
-     * @param string $legend
-     * @return MediaImageTranslation
-     */
-    public function setLegend($legend)
-    {
-        $this->legend = $legend;
-
-        return $this;
-    }
-
-    /**
-     * Get legend
-     *
-     * @return string
-     */
-    public function getLegend()
-    {
-        return $this->legend;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return MediaImageTranslation
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set copyright
-     *
-     * @param string $copyright
-     * @return MediaImageTranslation
-     */
-    public function setCopyright($copyright)
-    {
-        $this->copyright = $copyright;
-
-        return $this;
-    }
-
-    /**
-     * Get copyright
-     *
-     * @return string
-     */
-    public function getCopyright()
-    {
-        return $this->copyright;
     }
 
     /**
@@ -190,12 +128,58 @@ class MediaVideoTranslation implements TranslateChildInterface
     }
 
     /**
+     * Set alt
+     *
+     * @param string $alt
+     * @return MediaVideoTranslation
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string 
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * Set copyright
+     *
+     * @param string $copyright
+     * @return MediaVideoTranslation
+     */
+    public function setCopyright($copyright)
+    {
+        $this->copyright = $copyright;
+
+        return $this;
+    }
+
+    /**
+     * Get copyright
+     *
+     * @return string 
+     */
+    public function getCopyright()
+    {
+        return $this->copyright;
+    }
+
+    /**
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaImageTranslation
+     * @return MediaVideoTranslation
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
         $this->file = $file;
 
@@ -205,10 +189,33 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @return MediaVideoTranslation
+     */
+    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \Base\CoreBundle\Entity\NewsTheme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
     }
 }

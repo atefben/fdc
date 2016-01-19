@@ -564,6 +564,16 @@
       margin: 0 0 0 65px;
     }
 
+    p.access{
+      font-size: 0.8rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: $CamphorBold;
+      color:$gold;
+      @include transition(all 0.5s $smoothTransition);
+    }
+
     form {
       position: absolute;
       right: 150px;
@@ -574,7 +584,7 @@
         right: 50px;
       }
 
-      &.error input[type="text"] {
+      &.error input[type="password"] {
         border-color: red;
       }
 
@@ -2030,6 +2040,11 @@
         color: #fff;
         background-color: #c8a461;
       }
+
+      &.error input[type="password"] {
+        border-color: red;
+      }
+
     }
   }
 }
@@ -2235,6 +2250,7 @@
         height: 46px;
 //        font-size: 1rem;
         color:#666;
+        border: 1px solid #CCC;
       }
       .time{
         display: inline-block;
@@ -2246,17 +2262,17 @@
         }
         .pictodate{
           width: 51px;
-          height: 50px;
+          height: 48px;
           border: 1px solid #ccc;
           display: inline-block;
           margin: 12px 0px;
           vertical-align: bottom;
           border-left: 0px solid #fff;
-          background-image: url("../img/press/svg/calendar.svg");
-          background-repeat: no-repeat;
-          background-size: 24px;
-          background-repeat: no-repeat;
-          background-position: 14px;
+          color:$grey;
+          .icon{
+            margin-top: 16px;
+            margin-left: 18px;
+          }
         }
         .hours{
           width: 64px !important;

@@ -143,29 +143,6 @@ class MediaImageTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set theme
-     *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
-     * @return MediaImageTranslation
-     */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \Base\CoreBundle\Entity\NewsTheme
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites

@@ -283,7 +283,6 @@
        }
        .push-footer .title-list-header, .bandeau-listfooter .title-list-header{
          margin-bottom: 20px;
-
        }
        .bandeau-lien {
          color: #c8a461;
@@ -293,6 +292,12 @@
          text-transform: uppercase;
          font-size: 0.75rem;
          font-family: $CamphorHeavy;
+         @include transition(all 1s $linear);
+
+         &:hover {
+           opacity: 0.5;
+         }
+         
          .svg-arrow{
            width: 12px;
            vertical-align: baseline;

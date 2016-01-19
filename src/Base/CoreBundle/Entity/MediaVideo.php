@@ -26,6 +26,13 @@ class MediaVideo extends Media
      *
      * @ORM\Column(type="boolean", nullable=false, options={"default":0})
      */
+    private $inAllVideos;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
+     */
     private $displayedWebTv;
 
     /**
@@ -57,15 +64,6 @@ class MediaVideo extends Media
     private $webTv;
 
     /**
-     * @var NewsTheme
-     *
-     * @ORM\ManyToOne(targetEntity="NewsTheme")
-     *
-     * @Groups({"trailer_list", "trailer_show"})
-     */
-    private $theme;
-
-    /**
      * @var Media
      *
      * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
@@ -86,26 +84,102 @@ class MediaVideo extends Media
     private $festival;
 
     /**
-     * Set theme
+     * Constructor
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * Set inAllVideos
      *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @param boolean $inAllVideos
      * @return MediaVideo
      */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    public function setInAllVideos($inAllVideos)
     {
-        $this->theme = $theme;
+        $this->inAllVideos = $inAllVideos;
 
         return $this;
     }
 
     /**
-     * Get theme
+     * Get inAllVideos
      *
-     * @return \Base\CoreBundle\Entity\NewsTheme 
+     * @return boolean 
      */
-    public function getTheme()
+    public function getInAllVideos()
     {
-        return $this->theme;
+        return $this->inAllVideos;
+    }
+
+    /**
+     * Set displayedWebTv
+     *
+     * @param boolean $displayedWebTv
+     * @return MediaVideo
+     */
+    public function setDisplayedWebTv($displayedWebTv)
+    {
+        $this->displayedWebTv = $displayedWebTv;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedWebTv
+     *
+     * @return boolean 
+     */
+    public function getDisplayedWebTv()
+    {
+        return $this->displayedWebTv;
+    }
+
+    /**
+     * Set displayedTrailer
+     *
+     * @param boolean $displayedTrailer
+     * @return MediaVideo
+     */
+    public function setDisplayedTrailer($displayedTrailer)
+    {
+        $this->displayedTrailer = $displayedTrailer;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedTrailer
+     *
+     * @return boolean 
+     */
+    public function getDisplayedTrailer()
+    {
+        return $this->displayedTrailer;
+    }
+
+    /**
+     * Set homepage
+     *
+     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @return MediaVideo
+     */
+    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return \Base\CoreBundle\Entity\Homepage 
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
     }
 
     /**
@@ -183,7 +257,7 @@ class MediaVideo extends Media
      * @param \Base\CoreBundle\Entity\FilmFestival $festival
      * @return MediaVideo
      */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival)
     {
         $this->festival = $festival;
 
@@ -200,26 +274,4 @@ class MediaVideo extends Media
         return $this->festival;
     }
 
-    /**
-     * Set homepage
-     *
-     * @param \Base\CoreBundle\Entity\Homepage $homepage
-     * @return MediaVideo
-     */
-    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
-    {
-        $this->homepage = $homepage;
-
-        return $this;
-    }
-
-    /**
-     * Get homepage
-     *
-     * @return \Base\CoreBundle\Entity\Homepage 
-     */
-    public function getHomepage()
-    {
-        return $this->homepage;
-    }
 }

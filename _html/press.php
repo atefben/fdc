@@ -30,7 +30,7 @@
           </div>
         </div>
         <form action="">
-          <input type="text" value="" placeholder="Mot de passe" />
+          <input type="password" value="" placeholder="Mot de passe" />
           <input type="submit" value="valider" />
         </form>
       </div>
