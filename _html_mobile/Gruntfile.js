@@ -20,7 +20,22 @@ grunt.initConfig({
 			            './css/articles.css'
 			            
 				        ],
+				    './css-concat/events.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/filters.css',
+			            './css/articles.css'
+			            
+				        ],
 				    './css-concat/trailer.css': [
+			            './css/vendors/*.css',
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/slideshow-video.css',
+			            './css/webtv.css'
+			            
+				        ],
+				  	'./css-concat/channel.css': [
 			            './css/vendors/*.css',
 			            './css/main.css', 
 			            './css/include/*.css',
@@ -112,6 +127,19 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/sitemap.css'
 				        ],
+				    './css-concat/palmares.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/horizontal-menu.css',
+			            './css/palmares.css',
+			            './css/slideshow-video.css'
+				        ],
+				    './css-concat/press.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/slideshow-video.css',
+			            './css/press.css'			            
+				        ]
     			}
 		        
     		},
@@ -120,19 +148,32 @@ grunt.initConfig({
     				'./js-concat/home.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/main.js'
 				        ],
 			        './js-concat/articles.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
+				            './js/filters.js'
+				        ],
+				    './js-concat/events.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js',
 				            './js/filters.js'
 				        ],
 				    './js-concat/trailer.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
+				            './js/webtv.js',
+				            './js/slidervideos.js'
+				        ],
+				    './js-concat/channel.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js',
 				            './js/webtv.js',
 				            './js/slidervideos.js'
 				        ],
@@ -141,20 +182,20 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/isotope.pkgd.min.js',
 				            './js/vendors/packery-mode.pkgd.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/grid-isotope.js'
 				        ],
 			        './js-concat/faq.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/horizontal-menu.js',
 				            './js/accordeon.js'
 				        ],
 			        './js-concat/jury.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/jsonTest.js',
 				            './js/horizontal-menu.js'
 				        ],
@@ -162,20 +203,20 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/wavesurfer.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/slidervideos.js',
 				            './js/movie.js'
 				        ],
 			        './js-concat/participate.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/accordeon.js'
 				        ],
 			        './js-concat/photos.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/vendors/isotope.pkgd.min.js',
 				            'js/vendors/packery-mode.pkgd.min.js',
 				            'js/grid-isotope.js',
@@ -184,26 +225,34 @@ grunt.initConfig({
 			        './js-concat/selection.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/jsonTest.js',
 				            './js/horizontal-menu.js'
+				        ],
+				    './js-concat/palmares.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/menu.js',
+				            './js/jsonTest.js',
+				            './js/horizontal-menu.js',
+				            './js/palmares.js',
 				        ],
 			        './js-concat/videos.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/filters.js'
 				        ],
 			        './js-concat/webtv.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/slidervideos.js'
 				        ],
 				    './js-concat/webtvTrailer.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/vendors/isotope.pkgd.min.js',
 				            './js/vendors/packery-mode.pkgd.min.js',
 				            './js/grid-isotope.js',
@@ -213,24 +262,31 @@ grunt.initConfig({
 				    './js-concat/audios.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/filters.js'
 				        ],
 				        './js-concat/contact.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/contact.js'
 				        ],
-				        './js-concat/legals.js':[
+				    './js-concat/legals.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js'
+				            './js/include/*.js'
 				        ],
 				    './js-concat/sitemap.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js'
+				            './js/include/*.js'
+				        ],
+
+				    './js-concat/press.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/menu.js',
+				            './js/press.js'
 				        ],
 
     			}
@@ -263,7 +319,11 @@ grunt.initConfig({
 	        './audios.html': ['./templates/audios.html'],
 	        './contact.html': ['./templates/contact.html'],
 	        './legals.html': ['./templates/legals.html'],
-	        './sitemap.html': ['./templates/sitemap.html']
+	        './sitemap.html': ['./templates/sitemap.html'],
+	        './events.html': ['./templates/events.html'],
+	        './channel.html': ['./templates/channel.html'],
+	        './palmares_camerador.html': ['./templates/palmares_camerador.html'],
+	        './press.html': ['./templates/press.html']
 	      
 	      }
 	    },
@@ -288,7 +348,11 @@ grunt.initConfig({
 	        './audios.html': ['./templates/audios.html'],
 	        './contact.html': ['./templates/contact.html'],
 	        './legals.html': ['./templates/legals.html'],
-	        './sitemap.html': ['./templates/sitemap.html']
+	        './sitemap.html': ['./templates/sitemap.html'],
+	        './events.html': ['./templates/events.html'],
+	        './channel.html': ['./templates/channel.html'],
+	        './palmares_camerador.html': ['./templates/palmares_camerador.html'],
+	        './press.html': ['./templates/press.html']
 
 	      }
 
@@ -313,7 +377,11 @@ grunt.initConfig({
 	        './js-concat/audios.min.js': ['./js-concat/audios.js'],
 	        './js-concat/contact.min.js': ['./js-concat/contact.js'],
 	        './js-concat/legals.min.js': ['./js-concat/legals.js'],
-	        './js-concat/sitemap.min.js': ['./js-concat/sitemap.js']
+	        './js-concat/sitemap.min.js': ['./js-concat/sitemap.js'],
+	        './js-concat/events.min.js': ['./js-concat/events.js'],
+	        './js-concat/channel.min.js': ['./js-concat/channel.js'],
+	        './js-concat/palmares.min.js': ['./js-concat/palmares.js'],
+	        './js-concat/press.min.js': ['./js-concat/press.js']
 	      }
 	    }
 	  },
@@ -341,7 +409,11 @@ grunt.initConfig({
 	        './css-concat/audios.min.css': ['./css-concat/audios.css'],
 	        './css-concat/contact.min.css': ['./css-concat/contact.css'],
 	        './css-concat/legals.min.css': ['./css-concat/legals.css'],
-	        './css-concat/sitemap.min.css': ['./css-concat/sitemap.css']
+	        './css-concat/sitemap.min.css': ['./css-concat/sitemap.css'],
+	        './css-concat/events.min.css': ['./css-concat/events.css'],
+	        './css-concat/channel.min.css': ['./css-concat/channel.css'],
+	        './css-concat/palmares.min.css': ['./css-concat/palmares.css'],
+	        './css-concat/press.min.css': ['./css-concat/press.css']
 	    }
 	  }
 	},
@@ -354,7 +426,7 @@ grunt.initConfig({
 	        }
 	    },
 	    js: {
-	        files: [ 'js/*.js','js/vendors/*.js'],
+	        files: [ 'js/*.js','js/vendors/*.js','js/include/*.js'],
 	        tasks: ['concat:js'],
 	        options: {
 	            spawn: false
