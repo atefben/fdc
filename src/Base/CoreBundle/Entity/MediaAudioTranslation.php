@@ -49,7 +49,7 @@ class MediaAudioTranslation implements TranslateChildInterface
      /**
       * @var Theme
       *
-      * @ORM\ManyToOne(targetEntity="NewsTheme")
+      * @ORM\ManyToOne(targetEntity="Theme")
       */
     private $theme;
 

@@ -440,7 +440,6 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-
         $filters = array();
         $filters['dates'][0] = array(
             'slug' => 'all',
@@ -453,8 +452,16 @@ class NewsController extends Controller
         );
 
         foreach($statementArticles as $key => $statementArticle) {
-
-            $statementArticle->image = $statementArticle->getHeader();
+            if ($em->getClassMetadata(get_class($statementArticle))->getName() == 'Base\CoreBundle\Entity\StatementImage') {
+                $medias = array();
+                foreach ($statementArticle->getGallery()->getMedias() as $k => $media) {
+                    $medias[$k] = $media;
+                }
+                $statementArticle->image = $medias[0]->getMedia();
+            }
+            else {
+                $statementArticle->image = $statementArticle->getHeader();
+            }
             $statementArticle->theme = $statementArticle->getTheme();
 
             if(!in_array($statementArticle->getPublishedAt(),$filters['dates'])) {

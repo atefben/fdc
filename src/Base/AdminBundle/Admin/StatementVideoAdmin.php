@@ -219,23 +219,15 @@ class StatementVideoAdmin extends Admin
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
             ))
-            ->add('tags', 'sonata_type_collection', array(
-                'label' => 'form.label_article_tags',
-                'help' => 'form.statement.helper_tags',
-                'by_reference' => false,
-                'required' => false,
-            ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                )
-            )
+
             ->add('signature', null, array(
                 'help' => 'form.statement.helper_signature'
             ))
             ->add('video', 'sonata_type_model_list', array(
                 'label' => 'form.label_video_image',
                 'help' => 'form.statement.helper_video_image',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.statement.helper_film_film_associated',
