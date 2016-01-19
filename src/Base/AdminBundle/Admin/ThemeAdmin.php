@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsThemeAdmin extends Admin
+class ThemeAdmin extends Admin
 {
     protected $formOptions = array(
         'cascade_validation' => true

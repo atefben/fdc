@@ -57,15 +57,6 @@ class MediaVideo extends Media
     private $webTv;
 
     /**
-     * @var NewsTheme
-     *
-     * @ORM\ManyToOne(targetEntity="NewsTheme")
-     *
-     * @Groups({"trailer_list", "trailer_show"})
-     */
-    private $theme;
-
-    /**
      * @var Media
      *
      * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
@@ -84,29 +75,6 @@ class MediaVideo extends Media
      *
      */
     private $festival;
-
-    /**
-     * Set theme
-     *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
-     * @return MediaVideo
-     */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \Base\CoreBundle\Entity\NewsTheme 
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
 
     /**
      * Set film

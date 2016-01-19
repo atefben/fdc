@@ -46,13 +46,6 @@ class MediaAudioTranslation implements TranslateChildInterface
      */
     private $cover;
 
-     /**
-      * @var Theme
-      *
-      * @ORM\ManyToOne(targetEntity="NewsTheme")
-      */
-    private $theme;
-
     /**
      * @var string
      *
