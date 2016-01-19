@@ -2,25 +2,18 @@ $(document).ready(function() {
 
 // Films
 // =========================
-  
+
   if($('.list-article').length){
-    
+
     if($('.nav-list').length){
-      
+
       $(window).on('scroll', function() {
-        
+
         var s = $(window).scrollTop();
         var h = $("#main").height()-900;
 
-        console.log(s);
-      
-        
         if($('.nav-movie').length){
           if(s > 343 ){
-//        $('.nav-list.sub-nav-list').addClass('sticky');
-//        $(".nav-list.sub-nav-list").css({position: "fixed",top:90});
-//        $('.nav-movie').addClass('sticky');
-//        $(".nav-movie").css({position: "fixed",top:137});
             $('.nav-list.sub-nav-list').removeClass('sticky');
             $(".sub-nav-list").css({position: "relative",top:1});
             $('.nav-movie').addClass('sticky');
@@ -29,7 +22,7 @@ $(document).ready(function() {
               $(".nav-movie").css({position: "relative",top:1});
               $(".sub-nav-list").css({position: "relative",top:1});
             }
-          
+
         }else{
               if(s > 299 ){
                 $('.nav-list.sub-nav-list').addClass('sticky');
@@ -42,8 +35,8 @@ $(document).ready(function() {
               $(".sub-nav-list").css({position: "relative",top:1});
             }
         }
-        
-        
+
+
 
       });
     }
@@ -55,11 +48,11 @@ $(document).ready(function() {
         if($(this).is(':not(.active)')) {
           var urlPath = $(this).attr('href');
           $.get(urlPath, function(data){
-            
+
             $( ".container-list" ).html( $(data).find('.container-list') );
             $( ".bandeau-list-footer" ).html( $(data).find('.bandeau-list-footer').html() );
             $( ".bandeau-head" ).html( $(data).find('.bandeau-head') );
-            
+
             history.pushState('',GLOBALS.texts.url.title, urlPath);
             $grid = $('#gridFilmSelection').imagesLoaded(function() {
               $grid.isotope({
@@ -67,6 +60,7 @@ $(document).ready(function() {
                 itemSelector: '.item'
               });
             });
+            initAudioPlayers();
             ajaxEvent();
           });
           $('.films-list .sub-nav-list').find('a.active').removeClass('active');
