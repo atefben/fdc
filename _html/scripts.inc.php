@@ -60,9 +60,9 @@ var GLOBALS = {
       "default" : "h A"
     },
     "i18n": {
-      "months" : "['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']",
-      "weekdays" : "['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']",
-      "weekdaysShort" : "['Lun','Mar','Mer','Jeu','Ven','Sam','Dim']"
+      "months" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+      "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "weekdaysShort" : ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"]
     }
   },
   "socialWall": {
@@ -95,9 +95,6 @@ var GLOBALS = {
 <script src="js/components/clipboard.min.js"></script>
 <script src="js/components/pikaday.js"></script>
 <script src="js/components/jquery-ui.min.js"></script>
-
-<!-- test font-->
-<script type="text/javascript" src="http://fast.fonts.net/jsapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.js"></script>
 <!-- endbuild -->
 
 <!-- build:js js/app.min.js -->

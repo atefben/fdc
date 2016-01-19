@@ -1248,11 +1248,13 @@ $(document).ready(function () {
       i18n: {
           previousMonth : 'Previous Month',
           nextMonth     : 'Next Month',
-          months        : ['January','February','March','April','May','June','July','August','September','October','November','December'],
-          weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-          weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+          months        : GLOBALS.calendar.i18n.months,
+          weekdays      : GLOBALS.calendar.i18n.weekdays,
+          weekdaysShort : GLOBALS.calendar.i18n.weekdaysShort
       }
   });
+
+  console.log(GLOBALS.calendar.i18n.weekdays);
 
   var pickerEnd = new Pikaday({
       field: document.getElementById('datepickerEnd'),
