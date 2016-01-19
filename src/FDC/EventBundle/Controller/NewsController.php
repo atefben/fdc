@@ -643,13 +643,6 @@ class NewsController extends Controller
         $associatedFilm = $news->getAssociatedFilm();
         $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
 
-        /*
-        foreach($associatedFilm->getMedias() as $media) {
-            echo'<pre>'; print_r($media->getMedia()); echo '</pre>';
-        }
-         exit;
-        */
-
         /*foreach($associatedFilm->getProjectionProgrammationFilmsList() as $projection) {
             echo'<pre>'; print_r($projection->getProjection()); echo '</pre>';
         }
@@ -800,7 +793,6 @@ class NewsController extends Controller
                 $date = $newsArticle->getPublishedAt();
                 $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
             }
-
 
             if(!in_array($newsArticle->getTheme()->getName(),$filters['themes']['content'])) {
                 $filters['themes']['slug'][] = $newsArticle->getTheme()->getName();

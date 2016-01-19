@@ -14,7 +14,7 @@
                 <span class="date">{{ news.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ news.createdAt|date('H:i') }}</span>
                 <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ news.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.updatedAt|date('H:i') }}</span>
             </div>
-            <h2 class="title-article">{{ news.title }}</h2>
+            <h2 class="title-article">{{ news|trans_fallback('title') }}</h2>
             <div class="buttons">
                 <a id="share-article" href="#" class="button">{{ 'article.btn.partager'|trans }}</a>
                 <a href="#" class="button print">{{ 'article.btn.imprimer'|trans }}</a>
@@ -73,13 +73,11 @@
                     <div class="vCenter">
                         <div class="vCenterKid">
                             <div class="poster">
-                                <img src="" alt="" />
+                                {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_small' %}
                             </div>
                             <div class="text-container">
                                 <span class="category">
-                                    {% for section in associatedFilm.selection.sections %}
-                                            {{ section|trans_fallback('name') }}
-                                    {% endfor %}
+                                    {{ associatedFilm.selectionSection|trans_fallback('name') }}
                                 </span>
                                 <h3>
                                     <a href="#">
@@ -154,5 +152,8 @@
    }))
 }}
 <!-- END POPIN MAIL SHARE -->
+
+    <!-- BREADCRUMB -->
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [{"name" : 'test'},{"name" : news.theme|trans_fallback('name')}]} %}
 
 {% endblock %}

@@ -33,7 +33,7 @@ class FilmFunctionExtension extends Twig_Extension
         $tmp = array();
         foreach ($film->getPersons() as $person) {
             foreach ($person->getFunctions() as $function){
-                if($function->getId() == $functionId) {
+                if($function->getFunction() != null && $function->getFunction()->getId() == $functionId) {
                     $tmp[] = $person->getPerson();
                 }
             }
