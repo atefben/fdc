@@ -301,6 +301,10 @@ from desktop
     text-align: center;
     text-transform: uppercase;
 }
+.title.one-line{
+  width:100%;
+}
+
 .subtitle {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-style: italic;

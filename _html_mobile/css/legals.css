@@ -1,0 +1,40 @@
+
+.legals section {
+  background-color: #fff;
+  margin: 0 10px;
+  color: #666666;
+  padding-bottom: 100px;
+}
+.legals section p{
+  padding-top: 20px;
+}
+.legals section .legals-description {
+  padding-bottom: 50px;
+}
+.legals section .legals-responsable p strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  color: #000;
+}
+.legals section .legals-responsable p:first-child {
+  padding-bottom: 18px;
+}
+.legals section article {
+  height: auto;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  position: relative;
+  width: 100%;
+  padding-top: 50px;
+  line-height: 26px;
+}
+.legals section article h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  color: #c8a461;
+}

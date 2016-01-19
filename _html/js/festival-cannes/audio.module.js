@@ -45,9 +45,12 @@ function initAudioPlayers() {
 
     var $playpause = $('.playpause');
     var $fullscreen = $('.fullscreen');
+    var $volume = $('.volume');
+
 
     $playpause.html('<i class="icon icon_video"></i>');
     $fullscreen.html('<i class="icon icon_fullscreen"></i>');
+    $volume.html('<i class="icon icon_son"></i>');
 
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
@@ -247,8 +250,8 @@ $(document).ready(function() {
         $(audioPlayer).addClass('full');
 
         var info = $(audioPlayer).find('.info').html();
-        $(audioPlayer).append('<div class="top"><a href="#" class="channels"></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
-        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
+        $(audioPlayer).append('<div class="top"><a href="#" class="channels"><i class="icon icon_Micro"></i></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
+        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>')
         $(audioPlayer).append('<div id="channels-audio"></div>');
 
         if (audioPlayer.requestFullscreen) {
