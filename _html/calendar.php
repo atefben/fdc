@@ -58,11 +58,11 @@
           <input type="text">
           <div class="time first">
             <label for="begin">Début</label>
-            <input type="text" value="07/11/2015"><span class="pictodate"></span><input type="text" class="hours" value="15h30">
+            <input type="text" value="07/11/2015"><span class="pictodate"><i class="icon icon_programmation"></i></span><input type="text" class="hours" value="15h30">
           </div>
            <div class="time">
             <label for="end">Fin</label>
-            <input type="text"  value="14/11/2015"><span class="pictodate"></span><input type="text" value="15h30" class="hours">
+            <input type="text"  value="14/11/2015"><span class="pictodate"><i class="icon icon_programmation"></i></span><input type="text" value="15h30" class="hours">
            </div>
           <label for="place">Lieu</label>
           <input type="text">

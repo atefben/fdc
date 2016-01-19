@@ -811,6 +811,11 @@
       text-transform: uppercase;
       font-size: 0.75rem;
       font-family: $CamphorHeavy;
+      @include transition(all 1s $linear);
+
+      &:hover {
+        opacity: 0.5;
+      }
 
       .icon{
         font-size: .5rem;
