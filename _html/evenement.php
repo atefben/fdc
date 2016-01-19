@@ -15,7 +15,6 @@
           <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
           <div class="info">
             <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
           </div>
           <h2 class="title-article">Enragés, polar hybride d'Eric Hannezo</h2>
           <div class="buttons">

@@ -2,11 +2,12 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\StatementArticleTranslation;
-
 use Doctrine\ORM\EntityRepository;
-
 use JMS\DiExtraBundle\Annotation as DI;
+
+use Base\CoreBundle\Entity\StatementArticleTranslation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+
 /**
  * StatementRepository class.
  *
@@ -64,6 +65,34 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
+    public function getStatementArticles($locale, $festival, $dateTime)
+    {
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftjoin('na1.translations', 'na1t')
+            ->where('s.slug = :site_slug')
+            ->andWhere('n.festival = :festival')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+
+        $qb = $qb
+            ->andWhere(
+                '(na1t.locale = :locale AND na1t.status = :status)'
+            )
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+
+        $qb = $qb
+            ->setParameter('festival', $festival)
+            ->setParameter('locale', $locale)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('site_slug', 'site-evenementiel')
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+    }
+
     /**
      * get an array of only the $locale version Statement of current $festival and verify publish date is between $dateTime
      *
@@ -72,28 +101,35 @@ class StatementRepository extends EntityRepository
      * @param $locale
      * @return mixed
      */
-    public function getStatement($festival, $dateTime, $locale)
+    public function getStatements($festival, $dateTime, $locale)
     {
         return $this->createQueryBuilder('n')
             ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftjoin('naa.translations', 'naat')
+            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
             ->leftjoin('na.translations', 'nat')
+            ->leftjoin('naa.translations', 'naat')
+            ->leftjoin('nv.translations', 'nvt')
+            ->leftjoin('ni.translations', 'nit')
             ->where('n.festival = :festival')
             ->andWhere('s.slug = :site')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->andWhere(
-                '(nat.locale = :locale AND nat.status = :status) OR
-                (naat.locale = :locale AND naat.status = :status)'
+                '(nat.locale = :locale AND nat.status = :status)
+                OR (nit.locale = :locale AND nit.status = :status)
+                OR (naat.locale = :locale AND naat.status = :status)
+                OR (nvt.locale = :locale AND nvt.status = :status)'
             )
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
-            ->setParameter('status', StatementTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
-            ->getQuery();
+            ->setParameter('site', 'site-evenementiel')
+            ->getQuery()
+            ->getResult();
     }
 
     /**

@@ -42,8 +42,25 @@ function initAudioPlayers() {
     waves.push(wave);
 
     // on click on play/pause
+
+    var $playpause = $('.playpause');
+    var $fullscreen = $('.fullscreen');
+    var $volume = $('.volume');
+
+
+    $playpause.html('<i class="icon icon_video"></i>');
+    $fullscreen.html('<i class="icon icon_fullscreen"></i>');
+    $volume.html('<i class="icon icon_son"></i>');
+
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
+
+      if($playpause.find('i').hasClass('icon_video')){
+        $playpause.html('<i class="icon icon_pause"></i>');
+      }else{
+        $playpause.html('<i class="icon icon_video"></i>');
+      }
+
 
       if(inter) {
         clearInterval(inter);
@@ -64,7 +81,7 @@ function initAudioPlayers() {
         }
         $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
       }
-      
+
       // update current time
       inter = setInterval(function() {
         var curr = wave.getCurrentTime();
@@ -79,7 +96,7 @@ function initAudioPlayers() {
         $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
       }, 1000);
 
-      
+
       if(!$audioplayer.hasClass('pause')) {
         for(var i = 0; i<waves.length; i++) {
           if(waves[i].isPlaying() && waves[i].container.id != wave.container.id) {
@@ -104,7 +121,7 @@ function initAudioPlayers() {
 $(document).ready(function() {
 
   function FShandler() {
-    
+
     setTimeout(function() {
       redraw();
     }, 200);
@@ -197,7 +214,7 @@ $(document).ready(function() {
       }
       $audioPlayer.find('.duration .total').text(minutes + ':' + seconds);
     });
-    
+
   });
 
   // show audioplayer on fullscreen
@@ -208,10 +225,14 @@ $(document).ready(function() {
     e.preventDefault();
     var audioPlayer = $(this).parents('.audio-player')[0];
 
-
+    $('.fullscreen .icon').removeClass('icon_fullscreen').addClass('icon_reverseFullScreen');
     if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
 
+
       if($(this).parents('.audio-player').hasClass('full')) {
+
+        $('.fullscreen .icon').removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
+
         setTimeout(function() {
           redraw();
         }, 200);
@@ -229,8 +250,8 @@ $(document).ready(function() {
         $(audioPlayer).addClass('full');
 
         var info = $(audioPlayer).find('.info').html();
-        $(audioPlayer).append('<div class="top"><a href="#" class="channels"></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
-        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
+        $(audioPlayer).append('<div class="top"><a href="#" class="channels"><i class="icon icon_Micro"></i></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
+        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>')
         $(audioPlayer).append('<div id="channels-audio"></div>');
 
         if (audioPlayer.requestFullscreen) {
@@ -268,7 +289,7 @@ $(document).ready(function() {
             });
 
             sliderChannelsAudio.owlCarousel();
-            
+
           }
         });
 

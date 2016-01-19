@@ -90,7 +90,28 @@ grunt.initConfig({
 			            './css/grid-isotope.css',
 			            './css/horizontal-menu.css'
 				        ],
-			        
+			        './css-concat/audios.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/filters.css',
+			            './css/videos.css'
+				        ],
+			        './css-concat/contact.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/filters.css',
+			            './css/contact.css'
+				        ],
+			        './css-concat/legals.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/legals.css'
+				        ],
+			        './css-concat/sitemap.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/sitemap.css'
+				        ],
     			}
 		        
     		},
@@ -140,6 +161,7 @@ grunt.initConfig({
 			        './js-concat/movie.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/wavesurfer.min.js',
 				            './js/menu.js',
 				            './js/slidervideos.js',
 				            './js/movie.js'
@@ -187,7 +209,29 @@ grunt.initConfig({
 				            './js/grid-isotope.js',
 				            './js/jsonTest.js',
 				            './js/horizontal-menu.js'
-				        ]
+				        ],
+				    './js-concat/audios.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/menu.js',
+				            './js/filters.js'
+				        ],
+				        './js-concat/contact.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/menu.js',
+				            './js/contact.js'
+				        ],
+				        './js-concat/legals.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/menu.js'
+				        ],
+				    './js-concat/sitemap.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/menu.js'
+				        ],
 
     			}
 		        
@@ -216,6 +260,11 @@ grunt.initConfig({
 	        './webTV.html': ['./templates/webTV.html'],
 	        './webtv_trailer_competition.html': ['./templates/webtv_trailer_competition.html'],
 	        './webtv_trailer_uncertainregard.html': ['./templates/webtv_trailer_uncertainregard.html'],
+	        './audios.html': ['./templates/audios.html'],
+	        './contact.html': ['./templates/contact.html'],
+	        './legals.html': ['./templates/legals.html'],
+	        './sitemap.html': ['./templates/sitemap.html']
+	      
 	      }
 	    },
 	    prod:{
@@ -235,7 +284,12 @@ grunt.initConfig({
 	        './videos.html': ['./templates/videos.html'],
 	        './webTV.html': ['./templates/webTV.html'],
 	        './webtv_trailer_competition.html': ['./templates/webtv_trailer_competition.html'],
-	        './webtv_trailer_uncertainregard.html': ['./templates/webtv_trailer_uncertainregard.html']
+	        './webtv_trailer_uncertainregard.html': ['./templates/webtv_trailer_uncertainregard.html'],
+	        './audios.html': ['./templates/audios.html'],
+	        './contact.html': ['./templates/contact.html'],
+	        './legals.html': ['./templates/legals.html'],
+	        './sitemap.html': ['./templates/sitemap.html']
+
 	      }
 
 	    }
@@ -255,7 +309,11 @@ grunt.initConfig({
 	        './js-concat/selection.min.js': ['./js-concat/selection.js'],
 	        './js-concat/videos.min.js': ['./js-concat/videos.js'],
 	        './js-concat/webTV.min.js': ['./js-concat/webTV.js'],
-	        './js-concat/webtvTrailer.min.js': ['./js-concat/webtvTrailer.js']
+	        './js-concat/webtvTrailer.min.js': ['./js-concat/webtvTrailer.js'],
+	        './js-concat/audios.min.js': ['./js-concat/audios.js'],
+	        './js-concat/contact.min.js': ['./js-concat/contact.js'],
+	        './js-concat/legals.min.js': ['./js-concat/legals.js'],
+	        './js-concat/sitemap.min.js': ['./js-concat/sitemap.js']
 	      }
 	    }
 	  },
@@ -279,7 +337,11 @@ grunt.initConfig({
 	        './css-concat/selection.min.css': ['./css-concat/selection.css'],
 	        './css-concat/videos.min.css': ['./css-concat/videos.css'],
 	        './css-concat/webTV.min.css': ['./css-concat/webTV.css'],
-	        './css-concat/webtvTrailer.min.css': ['./css-concat/webtvTrailer.css']
+	        './css-concat/webtvTrailer.min.css': ['./css-concat/webtvTrailer.css'],
+	        './css-concat/audios.min.css': ['./css-concat/audios.css'],
+	        './css-concat/contact.min.css': ['./css-concat/contact.css'],
+	        './css-concat/legals.min.css': ['./css-concat/legals.css'],
+	        './css-concat/sitemap.min.css': ['./css-concat/sitemap.css']
 	    }
 	  }
 	},
@@ -315,6 +377,7 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-processhtml');
 grunt.loadNpmTasks('grunt-contrib-watch');
 
-grunt.registerTask('default', ['concat', 'uglify', "cssmin","processhtml:prod"]);
+grunt.registerTask('default', ['concat', "processhtml:dist"]);
+grunt.registerTask('prod', ['concat', 'uglify', "cssmin","processhtml:prod"]);
 
 };

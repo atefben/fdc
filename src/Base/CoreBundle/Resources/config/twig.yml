@@ -25,3 +25,9 @@ services:
         arguments: [%locale_fallback%, @request_stack]
         tags:
             - { name: twig.extension }
+
+    base.twig.film_function_extension:
+        class: Base\CoreBundle\Twig\Extension\FilmFunctionExtension
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: twig.extension }

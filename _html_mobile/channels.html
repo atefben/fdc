@@ -8,7 +8,9 @@
     <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
 	<!-- Include css files -->
-    <link rel="stylesheet" href="css-concat/channels.min.css" />
+	<!-- build:[href]:prod css-concat/channels.min.css -->
+    <link rel="stylesheet" href="css-concat/channels.css" />
+    <!-- /build -->
 </head>
 <body>
 <div id="main" class="articles">
@@ -51,7 +53,7 @@
 							<li><a href="articles.html">articles</a></li>
 							<li><a href="photos.html">photos</a></li>
 							<li><a href="videos.html">vidéos</a></li>
-							<li><a href="#">audios</a></li>
+							<li><a href="audios.html">audios</a></li>
 						</ul>
 					</div>
 				</li>
@@ -161,13 +163,13 @@
 		    <div class="footer-menu">
 		    	<p>© Copyright 2016</p>
 		      <ul>
-		        <li><a href="#">Contact</a></li>
+		        <li><a href="contact.html">Contact</a></li>
 		        <li><a href="faq.html">FAQ</a></li>
 		        <li><a href="#">Crédits</a></li>
-		        <li><a href="#">Mentions Légales</a></li>
+		        <li><a href="legals.html">Mentions Légales</a></li>
 		        <li><a href="#">Nous rejoindre</a></li>
 		        <li><a href="#">Boutique</a></li>
-		        <li><a href="#">Plan du Site</a></li>
+		        <li><a href="sitemap.html">Plan du Site</a></li>
 		        <li><a href="#">Politique de Confidentialité</a></li>
 		      </ul>
 		      <div class="clear"></div>
@@ -324,11 +326,15 @@
 	
    </footer>
     <div id="landscape">
-    	<img src="img/rotate-mobile.png" alt="">
-    	<p>Tournez votre smartphone pour accéder au site</p>
+      <div class="content">
+      	<img src="img/rotate-mobile.png" alt="">
+      	<p>Tournez votre smartphone pour accéder au site</p>
+      </div>
     </div>
     
-    <script charset="utf-8" src="js-concat/channels.min.js"></script>
+<!-- build:[src]:prod js-concat/channels.min.js -->
+    <script charset="utf-8" src="js-concat/channels.js"></script>
+	<!-- /build -->
 
 </body>
 </html>

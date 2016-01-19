@@ -144,31 +144,38 @@ footer .newsletter #submit {
   display: none;
 
 }
+#landscape .content{
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 #landscape img{
-  width: 113px;
-  height: 217px;
+  height: 55%;
   display: inline-block;
   margin: auto;
-  padding-top: 30px;
+  object-fit:contain;
+  display: block;
+  padding-top: 10px;
 }
 #landscape p{
   color: #c8a461;
-      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-font-size: 0.9rem;
-width: 210px;
-text-align: center;
-margin: auto;
-display: inline-block;
-padding-bottom: 30px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  width: 210px;
+  text-align: center;
+  margin: 0 auto;
+  height: 70px;
 }
 
 @media only screen  and (orientation : landscape) {
 /* Styles pour cette Media Queries */
 #landscape{
   
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  display: block;
+/*  flex-direction: column;
+  justify-content: space-around;*/
 }
 html, body { overflow: hidden; height: 100%; }
     body { margin:0; padding:0; }

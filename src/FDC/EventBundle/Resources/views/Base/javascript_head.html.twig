@@ -6,16 +6,8 @@
             "locale" : "{{ app.request.locale }}",
             "defaultDate" : "2016-05-12",
             "api" : {
-                "instagram" : {
-                    "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
-                    "hashtag" : "Cannes2016",
-                },
-                "twitter" : {
-                    "hashtag" : "%23Cannes2016",
-                    "count" : 15,
-                    "uri" : "search_tweets",
-                    "url" : "twitter.php"
-                }
+                "instagramUrl" : "{{ path('get_social_wall_instagram') }}",
+                "twitterUrl" : "{{ path('get_social_wall_twitter') }}"
             },
             "baseUrl" : "{{ url('fdc_event_news_index') }}",
             "urls" : {
