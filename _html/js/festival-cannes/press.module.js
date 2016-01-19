@@ -1235,4 +1235,35 @@ $(document).ready(function () {
 
   }
 
+
+  //Pikaday init//
+  var minDatePicker = new Date(2016,04,11);
+  var maxDatePicker = new Date(2016,04,22);
+
+  var pickerBegin = new Pikaday({
+      field: document.getElementById('datepickerBegin'),
+      format: 'D/M/YYYY',
+      minDate: minDatePicker,
+      maxDate: maxDatePicker,
+      i18n: {
+          previousMonth : 'Previous Month',
+          nextMonth     : 'Next Month',
+          months        : ['January','February','March','April','May','June','July','August','September','October','November','December'],
+          weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+          weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+      }
+  });
+
+  var pickerEnd = new Pikaday({
+      field: document.getElementById('datepickerEnd'),
+      format: 'D/M/YYYY',
+      minDate: minDatePicker,
+      maxDate: maxDatePicker,
+      onSelect: function() {
+          ;
+      }
+  });
+
+
+
 });
