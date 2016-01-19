@@ -559,7 +559,7 @@ $(document).ready(function() {
 	// STOP PICTOS FIXED BEFORE NEWSLETTER BLOCK
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();
-	    if( s + document.documentElement.clientHeight > $('#main').height() + 150 ) {
+	    if( s + document.documentElement.clientHeight > $('#main').height() + 173) {
 
 	    	$('.pictos-nav').css('position','absolute');
 	    	$('.pictos-nav').css('bottom','50px');

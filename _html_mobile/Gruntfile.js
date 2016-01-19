@@ -232,7 +232,7 @@ grunt.initConfig({
 				    './js-concat/palmares.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/jsonTest.js',
 				            './js/horizontal-menu.js',
 				            './js/palmares.js',
@@ -285,7 +285,7 @@ grunt.initConfig({
 				    './js-concat/press.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/menu.js',
+				            './js/include/*.js',
 				            './js/press.js'
 				        ],
 
