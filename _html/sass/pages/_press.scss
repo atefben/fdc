@@ -564,6 +564,16 @@
       margin: 0 0 0 65px;
     }
 
+    p.access{
+      font-size: 0.8rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: $CamphorBold;
+      color:$gold;
+      @include transition(all 0.5s $smoothTransition);
+    }
+
     form {
       position: absolute;
       right: 150px;
@@ -574,12 +584,12 @@
         right: 50px;
       }
 
-      &.error input[type="text"] {
+      &.error input[type="password"] {
         border-color: red;
       }
 
       input {
-        background: none;
+        background: none; 
         border: 1px solid #c6c6c6;
         border-right: none;
         box-sizing: border-box;
@@ -2030,6 +2040,11 @@
         color: #fff;
         background-color: #c8a461;
       }
+
+      &.error input[type="password"] {
+        border-color: red;
+      }
+
     }
   }
 }
