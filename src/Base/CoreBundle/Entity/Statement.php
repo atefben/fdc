@@ -46,7 +46,7 @@ abstract class Statement implements TranslateMainInterface
     private $id;
 
     /**
-     * @var StatementTheme
+     * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
