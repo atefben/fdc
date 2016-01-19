@@ -55,7 +55,6 @@ trait TranslateChild
      * Set status
      *
      * @param integer $status
-     * @return NewsThemeTranslation
      */
     public function setStatus($status)
     {
@@ -79,7 +78,6 @@ trait TranslateChild
      * Set lockedAt
      *
      * @param \DateTime $lockedAt
-     * @return NewsArticleTranslation
      */
     public function setLockedAt($lockedAt)
     {
@@ -102,7 +100,6 @@ trait TranslateChild
      * Set lockedBy
      *
      * @param \Application\Sonata\UserBundle\Entity\User $lockedBy
-     * @return NewsArticleTranslation
      */
     public function setLockedBy(\Application\Sonata\UserBundle\Entity\User $lockedBy = null)
     {

@@ -41,7 +41,7 @@ abstract class Info implements TranslateMainInterface
     private $id;
 
     /**
-     * @var NewsTheme
+     * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *

@@ -63,19 +63,6 @@ class NewsVideoTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set theme
-     *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
-     * @return Article
-     */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
      * Set title
      *
      * @param string $title
