@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-<<<<<<< HEAD
   <file date="2016-01-20T17:38:54Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
-=======
-  <file date="2016-01-20T17:32:59Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
->>>>>>> 1542dd82b94997f8704dd5de250c98bf3544d46e
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-<<<<<<< HEAD
       <trans-unit id="f17a4998390631380a2431abf0d27a76ec6bc542" resname="press.actu.filter.dates.toutes">
         <source>press.actu.filter.dates.toutes</source>
         <target state="new">press.actu.filter.dates.toutes</target>
@@ -108,12 +103,6 @@
         <source>press.popin.title.contenuverouille</source>
         <target>Contenus verrouillés</target>
         <jms:reference-file line="3">Global/components/popinPress.html.twig</jms:reference-file>
-=======
-      <trans-unit id="1c634e14b934e8ae584d93217e15998f3c89be32" resname="press.header.placeholder.motdepasse">
-        <source>press.header.placeholder.motdepasse</source>
-        <target state="new">press.header.placeholder.motdepasse</target>
-        <jms:reference-file line="39">Form/Type/LockedContentType.php</jms:reference-file>
->>>>>>> 1542dd82b94997f8704dd5de250c98bf3544d46e
       </trans-unit>
     </body>
   </file>
