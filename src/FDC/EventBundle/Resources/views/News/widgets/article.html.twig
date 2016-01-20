@@ -1,20 +1,26 @@
 <article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.format }}" data-theme="{{ article.theme }}">
     <div class="image">
         <div class="image-wrapper">
-            <img src="{{ article.image.path }}" alt="" />
+            {% set img = article.header %}
+            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = img.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+            {% thumbnail file, 'big' with {'alt': img|trans_fallback('alt') } %}
         </div>
-        <a href="{{ path('fdc_event_news_get', {'slug': article.slug}) }}" class="linkImage"></a>
+        <a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
-        <span class="picto"><i class="icon icon_{{ article.format }}"></i></span>
+        <span class="picto"><i class="icon icon_{{ article.newsType }}"></i></span>
     </div>
     <div class="info">
         <a href="#" class="category">{{ article.category }}</a>
         <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
         <h2>
-            <a href="{{ path('fdc_event_news_get', {'slug': article.slug}) }}">
-                {{ article.title }}
+            <a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug')}) }}">
+                {{ article|trans_fallback('title') }}
             </a>
         </h2>
     </div>

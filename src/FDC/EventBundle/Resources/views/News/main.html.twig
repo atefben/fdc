@@ -132,19 +132,21 @@
             <div class="focus">
                 <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                 <div class="articles">
-                    {% for article in focusArticles %}
+                    {% for article in sameDayArticles %}
                         {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                     {% endfor %}
                 </div>
             </div>
+            {% if sameDayArticles != null %}
             <div class="same-day">
                 <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
                 <div class="articles center">
-                    {% for article in dayArticles %}
+                    {% for article in sameDayArticles %}
                         {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
     <span class="anim"></span>
@@ -160,7 +162,6 @@
 }}
 <!-- END POPIN MAIL SHARE -->
 
-    {{ breadcrumb[0] }}
     <!-- BREADCRUMB -->
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
