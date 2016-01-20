@@ -528,7 +528,7 @@ header {
             visibility: hidden;
             @include transition(all .6s $smoothTransition);
           }
-          .icon{ 
+          .icon{
             margin-right: 5px;
             font-size: .6rem;
             margin-left: 14px;

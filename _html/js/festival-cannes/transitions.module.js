@@ -25,7 +25,7 @@ $(document).ready(function() {
   }
 
   setTimeout(function() {
-    $('#main, footer, #breadcrumb').removeClass('loading');
+    $('#main, footer, #breadcrumb, .sub-nav-list').removeClass('loading');
     cl.hide();
 
     $('#logo-wrapper, #logo img, #sticky-user, header #search, a.search').css('transition', '');
@@ -44,7 +44,7 @@ $(document).ready(function() {
 
       if(!isiPad) {
 
-        $('#main, footer, #breadcrumb').addClass('loading');
+        $('#main, footer, #breadcrumb, .sub-nav-list').addClass('loading');
 
         setTimeout(function() {
           cl.show();

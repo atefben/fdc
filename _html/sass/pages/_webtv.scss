@@ -115,7 +115,8 @@
       }
       .icon{
         color: #fff;
-        // margin: 16px;
+        margin-top: 15px;
+        margin-left: 2px;
       }
     }
     &.on {
@@ -420,6 +421,7 @@
       .icon{
         color: #fff;
         font-size: 3.1rem;
+        margin: 0px;
       }
     }
 
@@ -683,8 +685,11 @@
           .date {
             color: #bababa;
             margin-left: 5px;
+            .hour{
+              margin-left: 5px;
+              text-transform: none;
+            }
           }
-          padding-bottom: 12px;
         }
         .where {
           font-size: 16px;
@@ -749,6 +754,8 @@
     padding: 10px 0px 72px 0;
   }
   #content-trailers {
+    padding: 0px;
+
     #slider-trailer {
       .picto {
         .icon{
