@@ -14,7 +14,7 @@
            <div class="texts">
             <h1>Erreur 404</h1>
             <p>The page you are trying to view does not exist. It's possible that its content is currently being translated. Please try again later.</p>
-             <a href="#"><i class="icon icon_fleche-right"></i> return to news</a>
+             <a href="/"><i class="icon icon_fleche-right"></i> return to news</a>
            </div>
          </div>
        </div>
