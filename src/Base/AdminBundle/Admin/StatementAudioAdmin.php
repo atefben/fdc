@@ -232,10 +232,11 @@ class StatementAudioAdmin extends Admin
             ->add('signature', null, array(
                 'help' => 'form.statement.helper_signature'
             ))
-            ->add('header', 'sonata_type_model_list', array(
-                'label' => 'form.label_header_image',
-                'help' => 'form.statement.helper_header_image',
-                'translation_domain' => 'BaseAdminBundle'
+            ->add('audio', 'sonata_type_model_list', array(
+                'label' => 'form.label_media_audio',
+                'help' => 'form.statement.helper_media_audio',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => true
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.statement.helper_film_film_associated',

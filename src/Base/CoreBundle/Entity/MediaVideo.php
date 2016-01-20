@@ -26,13 +26,6 @@ class MediaVideo extends Media
      *
      * @ORM\Column(type="boolean", nullable=false, options={"default":0})
      */
-    private $inAllVideos;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
     private $displayedWebTv;
 
     /**
@@ -83,35 +76,6 @@ class MediaVideo extends Media
      */
     private $festival;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * Set inAllVideos
-     *
-     * @param boolean $inAllVideos
-     * @return MediaVideo
-     */
-    public function setInAllVideos($inAllVideos)
-    {
-        $this->inAllVideos = $inAllVideos;
-
-        return $this;
-    }
-
-    /**
-     * Get inAllVideos
-     *
-     * @return boolean 
-     */
-    public function getInAllVideos()
-    {
-        return $this->inAllVideos;
-    }
 
     /**
      * Set displayedWebTv
@@ -273,5 +237,4 @@ class MediaVideo extends Media
     {
         return $this->festival;
     }
-
 }

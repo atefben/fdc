@@ -17,8 +17,7 @@
 
     <div class="a2lix_translationsFields tab-content">
         {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations.unwrap() : null %}
-        {#{% set galleryTranslations = (form.parent.children.gallery.vars.data is not null) ? form.parent.children.gallery.vars.data.translations.unwrap() : null %}#}
-        {% set statementStatementTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data.unwrap() : null %}
+        {% set audioTranslations = (form.parent.children.audio.vars.data is not null) ? form.parent.children.audio.vars.data.translations.unwrap() : null %}
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
@@ -36,7 +35,7 @@
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(form.parent.children.theme) }}
-                                        {{ form_row(form.parent.children.gallery) }}
+                                        {{ form_row(form.parent.children.audio) }}
                                         {{ form_row(translationsFields.introduction) }}
                                         {{ form_row(form.parent.children.signature) }}
                                     </div>
@@ -66,17 +65,7 @@
                                                 Tags de recherche
                                             </label>
                                             <div>
-                                                {% if statementStatementTag is not null %}
-                                                    {% for tmp in statementStatementTag %}
-                                                        {% set tagTranslation = tmp.tag.translations.unwrap() %}
-                                                        {% if tagTranslation.get(locale) is not null %}
-                                                            <div>
-                                                                {{ tagTranslation.get(locale).name }}
-                                                                <a target="_blank" href="{{ path('admin_base_core_tag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                {% endif %}
+
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -88,10 +77,10 @@
                                                     Légende
                                                 </label>
                                         <span>
-                                        {#{% if galleryTranslations is not null and#}
-                                        {#galleryTranslations.get(locale) is not null %}#}
-                                            {#{{ galleryTranslations.get(locale).legend }}#}
-                                        {#{% endif %}#}
+                                        {% if audioTranslations is not null and
+                                        audioTranslations.get(locale) is not null %}
+                                            {{ audioTranslations.get(locale).legend }}
+                                        {% endif %}
                                         </span>
                                             </div>
                                             <div>
@@ -99,10 +88,10 @@
                                                     Alt
                                                 </label>
                                         <span>
-                                        {#{% if galleryTranslations is not null and#}
-                                        {#galleryTranslations.get(locale) is not null %}#}
-                                            {#{{ galleryTranslations.get(locale).alt }}#}
-                                        {#{% endif %}#}
+                                        {% if audioTranslations is not null and
+                                        audioTranslations.get(locale) is not null %}
+                                            {{ audioTranslations.get(locale).alt }}
+                                        {% endif %}
                                         </span>
                                             </div>
                                             <div>
@@ -110,14 +99,14 @@
                                                     Copyright
                                                 </label>
                                         <span>
-                                        {#{% if galleryTranslations is not null and#}
-                                        {#galleryTranslations.get(locale) is not null %}#}
-                                            {#{{ galleryTranslations.get(locale).copyright }}#}
-                                        {#{% endif %}#}
+                                        {% if audioTranslations is not null and
+                                        audioTranslations.get(locale) is not null %}
+                                            {{ audioTranslations.get(locale).copyright }}
+                                        {% endif %}
                                         </span>
                                             </div>
-                                            {% if form.parent.children.gallery.vars.value is not null %}
-                                                <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.gallery.vars.value}) }}">modifier les traductions</a>
+                                            {% if form.parent.children.audio.vars.value is not null %}
+                                                <a target="_blank" href="{{ path('admin_base_core_mediaaudio_edit', {'id': form.parent.children.audio.vars.value}) }}">modifier les traductions</a>
                                             {% endif %}
                                         </div>
                                         {{ form_row(translationsFields.introduction) }}
@@ -215,14 +204,7 @@
                                                 Tags de recherche
                                             </label>
                                             <div>
-                                                {% for tmp in statementStatementTag %}
-                                                    {% set tagTranslation = tmp.tag.translations.unwrap() %}
-                                                    {% if tagTranslation.get('fr') is not null %}
-                                                        <div>
-                                                            {{ tagTranslation.get('fr').name }}
-                                                        </div>
-                                                    {% endif %}
-                                                {% endfor %}
+
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -234,10 +216,10 @@
                                                     Légende
                                                 </label>
                                         <span>
-                                        {#{% if galleryTranslations is not null and#}
-                                        {#galleryTranslations.get('fr') is not null %}#}
-                                            {#{{ galleryTranslations.get('fr').legend }}#}
-                                        {#{% endif %}#}
+                                        {% if audioTranslations is not null and
+                                        audioTranslations.get('fr') is not null %}
+                                            {{ audioTranslations.get('fr').legend }}
+                                        {% endif %}
                                         </span>
                                             </div>
                                             <div>
@@ -245,10 +227,10 @@
                                                     Alt
                                                 </label>
                                         <span>
-                                        {#{% if galleryTranslations is not null and#}
-                                        {#galleryTranslations.get('fr') is not null %}#}
-                                            {#{{ galleryTranslations.get('fr').alt }}#}
-                                        {#{% endif %}#}
+                                        {% if audioTranslations is not null and
+                                        audioTranslations.get('fr') is not null %}
+                                            {{ audioTranslations.get('fr').alt }}
+                                        {% endif %}
                                         </span>
                                             </div>
                                             <div>
@@ -256,10 +238,10 @@
                                                     Copyright
                                                 </label>
                                         <span>
-                                        {#{% if galleryTranslations is not null and#}
-                                        {#galleryTranslations.get('fr') is not null %}#}
-                                            {#{{ headerTranslations.get('fr').copyright }}#}
-                                        {#{% endif %}#}
+                                        {% if audioTranslations is not null and
+                                        audioTranslations.get('fr') is not null %}
+                                            {{ audioTranslations.get('fr').copyright }}
+                                        {% endif %}
                                         </span>
                                             </div>
                                         </div>
@@ -362,7 +344,7 @@
                                     {{ form_row(form.parent.children.associatedProjections) }}
                                     {{ form_row(form.parent.children.associatedFilms) }}
                                     {{ form_row(form.parent.children.associatedStatement) }}
-                                    {{ form_row(form.parent.children.tags) }}
+                                    {#{{ form_row(form.parent.children.tags) }}#}
                                 </div>
                             </div>
                         </div>

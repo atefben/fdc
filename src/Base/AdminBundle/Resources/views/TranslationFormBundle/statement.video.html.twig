@@ -106,7 +106,7 @@
                                         </span>
                                             </div>
                                             {% if form.parent.children.video.vars.value is not null %}
-                                                <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.video.vars.value}) }}">modifier les traductions</a>
+                                                <a target="_blank" href="{{ path('admin_base_core_mediavideo_edit', {'id': form.parent.children.video.vars.value}) }}">modifier les traductions</a>
                                             {% endif %}
                                         </div>
                                         {{ form_row(translationsFields.introduction) }}
