@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
 
-	var $main = $('#main');
+	var $main = $('body');
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();
 	  // STICKY HEADER
-	    if (s > 95){
+	    if (s > 90){
 	        $main.addClass('sticky');
 	    } else {
 	        $main.removeClass('sticky');

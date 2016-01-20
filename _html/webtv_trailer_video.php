@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-
   <head>
     <?php include('head.html'); ?>
   </head>
@@ -35,57 +34,57 @@
           <div class="program-film block">
             <div class="contain-info">
               <div class="infos">
-                <p>Projection <span class="date">15/07/2015 9h</span></p>
+                <p>Projection <span class="date">15/07/2015 <span class="hour">9h</span></span></p>
                 <span class="where">Grand théâtre Lumière</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015  <span class="hour">15h<</span></span></p>
                 <span class="where">Cinéma de la plage</span>
 
               </div>

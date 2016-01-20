@@ -269,15 +269,15 @@ $(document).ready(function () {
           $(element).empty();
 
           if (c == '#000') {
-            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else if (c == "#9b9b9b") {
-            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else if (c == "#a68851") {
-            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else if (c == "#fff") {
-            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-personnel"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-personnel"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else {
-            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           }
 
           $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
@@ -311,12 +311,6 @@ $(document).ready(function () {
               }
             });
           }
-          // dayRender: function(date, cell){
-          //     if (date > maxDate){
-          //         $(cell).addClass('disabled');
-          //         console.log("ok");
-          //     }
-          // }
       });
     } else {
       // if cookie drag doesn't exist, add class to show message
@@ -1234,5 +1228,43 @@ $(document).ready(function () {
     }
 
   }
+
+
+  //Pikaday init//
+  var minDatePicker = new Date(2016,04,11);
+  var maxDatePicker = new Date(2016,04,22);
+
+  var pickerBegin = new Pikaday({
+      field: document.getElementById('datepickerBegin'),
+      format: 'D/M/YYYY',
+      minDate: minDatePicker,
+      maxDate: maxDatePicker,
+      i18n: {
+          previousMonth : 'Previous Month',
+          nextMonth     : 'Next Month',
+          months        : GLOBALS.calendar.i18n.months,
+          weekdays      : GLOBALS.calendar.i18n.weekdays,
+          weekdaysShort : GLOBALS.calendar.i18n.weekdaysShort
+      }
+  });
+
+
+  var pickerEnd = new Pikaday({
+      field: document.getElementById('datepickerEnd'),
+      format: 'D/M/YYYY',
+      minDate: minDatePicker,
+      maxDate: maxDatePicker,
+      i18n: {
+          previousMonth : 'Previous Month',
+          nextMonth     : 'Next Month',
+          months        : GLOBALS.calendar.i18n.months,
+          weekdays      : GLOBALS.calendar.i18n.weekdays,
+          weekdaysShort : GLOBALS.calendar.i18n.weekdaysShort
+      }
+  });
+
+var time = $('.hours').timepicker({
+  timeFormat: typeof GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] : GLOBALS.calendar.i18n.labelFormat.default
+});
 
 });

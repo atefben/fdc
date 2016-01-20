@@ -6,6 +6,14 @@ sonata_media:
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         # SOIF
+        film_poster:
+            providers:
+                - sonata.media.provider.image
+
+            formats:
+                small: { width: 187 , height: 255 , quality: 100 }
+                big:   { width: 1000 , quality: 100 }
+
         film_image:
             providers:
                 - sonata.media.provider.image

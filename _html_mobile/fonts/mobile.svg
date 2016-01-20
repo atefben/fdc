@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2016 by original authors @ fontello.com</metadata>
+<defs>
+<font id="mobile" horiz-adv-x="1000" >
+<font-face font-family="mobile" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="agenda-personnel" unicode="&#xe800;" d="m653 513c0-133-109-242-242-242s-242 109-242 242 109 242 242 242 242-109 242-242m-64-263c-57-64-181-67-181-67s-115 3-176 67c0 0-166-64-233-278h402 188v278z m384-9v45h-30v-45h-212v45h-30v-45h-30v-302h330v302h-28z m0-266h-272v190h272v-190z" horiz-adv-x="1000" />
+<glyph glyph-name="retour" unicode="&#xe801;" d="m930 250c0 213-186 400-400 400h-241l115 114-86 86-258-259 258-258 85 85-108 109 236 1c148 0 278-129 278-278 0-74-29-144-82-197-52-52-122-81-196-81h-130v-122h130c107 0 207 42 282 117 76 76 117 176 117 283z" horiz-adv-x="1000" />
+<glyph glyph-name="web-tv-play" unicode="&#xe802;" d="m602 341l-195-129c-6-4-14 1-14 9v258c0 8 8 14 14 9l195-129c6-4 6-14 0-18z m388 499v-980h-980v980h980m10 10h-1000v-1000h1000v1000l0 0z" horiz-adv-x="1000" />
+<glyph glyph-name="burger" unicode="&#xe803;" d="m0 742h1000v-160h-1000v160z m0-311h1000v-160h-1000v160z m0-312h1000v-160h-1000v160z" horiz-adv-x="1000" />
+<glyph glyph-name="moins" unicode="&#xe804;" d="m0 431h1000v-160h-1000v160z" horiz-adv-x="1000" />
+<glyph glyph-name="plus" unicode="&#xe805;" d="m387 850v-387h-387v-226h387v-387h226v387h387v226h-387v387h-226z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

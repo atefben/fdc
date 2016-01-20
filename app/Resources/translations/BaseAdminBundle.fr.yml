@@ -77,6 +77,7 @@ entity:
     film_projection: Programmations
     country: Pays
     contact_theme: Thèmes de contact
+    event: Événements
     created_infos: |
         Crée le date par :<br/>
         <b>user</b>
@@ -136,6 +137,7 @@ dashboard:
         news: Actualités
         statement: Communiqués
         info: Infos
+        event: Événements
     link:
         settings: Paramètres
         bo_translation: Traductions

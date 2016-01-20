@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace Base\CoreBundle\Entity;
 
 /**

@@ -58,6 +58,15 @@ var GLOBALS = {
     "labelFormat": {
       "fr" : "H [H]",
       "default" : "h A"
+    },
+    "i18n": {
+      "months" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+      "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "weekdaysShort" : ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"],
+      "labelFormat": {
+        "fr" : "H\\hi",
+        "default" : "g:ia"
+      }
     }
   },
   "socialWall": {
@@ -88,6 +97,8 @@ var GLOBALS = {
 <script src="js/components/jwplayer.js"></script>
 <script src="js/components/konsole.min.js"></script>
 <script src="js/components/clipboard.min.js"></script>
+<script src="js/components/pikaday.js"></script>
+<script src="js/components/jquery.timepicker.min.js"></script>
 <script src="js/components/jquery-ui.min.js"></script>
 <!-- endbuild -->
 

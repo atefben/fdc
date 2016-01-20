@@ -36,3 +36,9 @@ services:
         arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: twig.extension }
+
+    base.twig.film_media_extension:
+        class: Base\CoreBundle\Twig\Extension\FilmMediaExtension
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: twig.extension }
