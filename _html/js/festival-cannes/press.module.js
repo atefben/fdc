@@ -311,12 +311,6 @@ $(document).ready(function () {
               }
             });
           }
-          // dayRender: function(date, cell){
-          //     if (date > maxDate){
-          //         $(cell).addClass('disabled');
-          //         console.log("ok");
-          //     }
-          // }
       });
     } else {
       // if cookie drag doesn't exist, add class to show message
@@ -1254,18 +1248,23 @@ $(document).ready(function () {
       }
   });
 
-  console.log(GLOBALS.calendar.i18n.weekdays);
 
   var pickerEnd = new Pikaday({
       field: document.getElementById('datepickerEnd'),
       format: 'D/M/YYYY',
       minDate: minDatePicker,
       maxDate: maxDatePicker,
-      onSelect: function() {
-          ;
+      i18n: {
+          previousMonth : 'Previous Month',
+          nextMonth     : 'Next Month',
+          months        : GLOBALS.calendar.i18n.months,
+          weekdays      : GLOBALS.calendar.i18n.weekdays,
+          weekdaysShort : GLOBALS.calendar.i18n.weekdaysShort
       }
   });
 
-
+var time = $('.hours').timepicker({
+  timeFormat: typeof GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] : GLOBALS.calendar.i18n.labelFormat.default
+});
 
 });
