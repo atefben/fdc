@@ -404,7 +404,6 @@
     width: 100%;
   }
   #live {
-    background-image: url(../img/webtv/bandeau.jpg);
     background-size: cover;
     h2 {
       font-family: $Playfair;
@@ -414,14 +413,13 @@
     }
     .play {
       border-radius: 50%;
-      margin-bottom: 10px;
-      border: 5px solid #fff;
+      margin-bottom: 18px;
+      border: 0px solid #fff;
       cursor: default;
-
+      margin-top: 0px;
       .icon{
         color: #fff;
-        padding: 17px;
-        font-size: .8rem;
+        font-size: 3.1rem;
       }
     }
 
@@ -470,8 +468,6 @@
   }
   .listtrailer {
     .picto {
-      background-image: url("../img/svg/playlist.svg");
-      background-size: 16px 10px;
       bottom: auto;
       float: left;
       left: auto;
@@ -509,6 +505,41 @@
       vertical-align: middle;
     }
   }
+
+  //MEDIA BANDEAU
+    @media screen and (min-width: 1920px) {
+      #live{
+        height: 448px !important;
+      }
+    }
+
+    @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+      #live{
+        height: 373px !important;
+      }
+    }
+
+    @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+      #live{
+        height: 297px !important;
+      }
+    }
+
+    @media screen and (min-width: 1024px) and (max-width:1279px) {
+      #live{
+        height: 296px !important;
+      }
+    }
+
+    @media screen and (max-width:1023px) {
+      #live{
+        height: 296px !important;
+      }
+    }
+
+
 }
 
 // 5. Single trailer
