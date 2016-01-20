@@ -15822,6 +15822,15 @@ input[type=submit] {
   vertical-align: middle !important;
   margin-bottom: 2px;
 }
+.press .fc-event .category .icon_close {
+  margin: 0px;
+  color: #fff;
+  vertical-align: baseline !important;
+  position: relative;
+  top: -6px;
+  font-size: .7rem;
+  right: -5px;
+}
 .press .fc-event .category .icon_espace-presse {
   font-size: .8rem;
 }
