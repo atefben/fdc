@@ -34,6 +34,9 @@ sonata_admin:
             dashboard.group.news:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            dashboard.group.event:
+                items: ~
+                label_catalogue: BaseAdminBundle
             dashboard.group.statement:
                 items: ~
                 label_catalogue: BaseAdminBundle

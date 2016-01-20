@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 {% for article in articles %}
     <div class="article">
         <article class="{{ article.filter }}" data-format="{{ article.filter }}" data-theme="{{ article.category }}">

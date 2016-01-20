@@ -13,6 +13,9 @@
         <div class="container">
           <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
           <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
+          <div class="info">
+            <a href="#" class="category">Expositions</a>
+          </div>
           <h2 class="title-article">Marco Bellocchio</h2>
           <div class="buttons">
             <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>

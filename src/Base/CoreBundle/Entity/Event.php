@@ -45,6 +45,8 @@ class Event implements TranslateMainInterface
      * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
+     *
+     * @Groups({"event_list", "event_show"})
      */
     private $theme;
 
@@ -85,7 +87,7 @@ class Event implements TranslateMainInterface
     /**
      * @var NewsWidget
      *
-     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="news", cascade={"persist"})
      *
      * @Groups({"event_list", "event_show"})
      */
@@ -101,11 +103,18 @@ class Event implements TranslateMainInterface
     private $sites;
 
     /**
+     * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="news", cascade={"persist"})
+     *
+     * @Groups({"event_list", "event_show"})
+     */
+    private $associatedProjections;
+
+    /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"event_list", "event_show"})
      */
     private $createdBy;
 
@@ -114,7 +123,7 @@ class Event implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"event_list", "event_show"})
      */
     private $updatedBy;
 
@@ -125,22 +134,12 @@ class Event implements TranslateMainInterface
      */
     protected $translations;
 
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
-    }
-
-    /**
-     * Get the class type in the Api
-     *
-     * @VirtualProperty
-     * @Groups({"event_list", "event_show"})
-     */
-    public function getNewsType()
-    {
-        return substr(strrchr(get_called_class(), '\\'), 1);
     }
 
     /**
@@ -153,47 +152,11 @@ class Event implements TranslateMainInterface
         return $this->id;
     }
 
-
-
-    /**
-     * Add widgets
-     *
-     * @param \Base\CoreBundle\Entity\NewsWidget $widgets
-     * @return NewsArticleTranslation
-     */
-    public function addWidget(\Base\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $widgets->setNews($this);
-        $this->widgets[] = $widgets;
-
-        return $this;
-    }
-
-    /**
-     * Remove widgets
-     *
-     * @param \Base\CoreBundle\Entity\NewsWidget $widgets
-     */
-    public function removeWidget(\Base\CoreBundle\Entity\NewsWidget $widgets)
-    {
-        $this->widgets->removeElement($widgets);
-    }
-
-    /**
-     * Get widgets
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getWidgets()
-    {
-        return $this->widgets;
-    }
-
     /**
      * Set publishedAt
      *
      * @param \DateTime $publishedAt
-     * @return News
+     * @return Event
      */
     public function setPublishedAt($publishedAt)
     {
@@ -205,7 +168,7 @@ class Event implements TranslateMainInterface
     /**
      * Get publishedAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getPublishedAt()
     {
@@ -216,7 +179,7 @@ class Event implements TranslateMainInterface
      * Set publishEndedAt
      *
      * @param \DateTime $publishEndedAt
-     * @return News
+     * @return Event
      */
     public function setPublishEndedAt($publishEndedAt)
     {
@@ -228,7 +191,7 @@ class Event implements TranslateMainInterface
     /**
      * Get publishEndedAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getPublishEndedAt()
     {
@@ -239,7 +202,7 @@ class Event implements TranslateMainInterface
      * Set theme
      *
      * @param \Base\CoreBundle\Entity\Theme $theme
-     * @return News
+     * @return Event
      */
     public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
@@ -251,7 +214,7 @@ class Event implements TranslateMainInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme
+     * @return \Base\CoreBundle\Entity\Theme 
      */
     public function getTheme()
     {
@@ -261,8 +224,8 @@ class Event implements TranslateMainInterface
     /**
      * Set festival
      *
-     * @param fBase\CoreBundle\Entity\FilmFestival $festival
-     * @return News
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return Event
      */
     public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
     {
@@ -274,19 +237,84 @@ class Event implements TranslateMainInterface
     /**
      * Get festival
      *
-     * @return \Base\CoreBundle\Entity\FilmFestival
+     * @return \Base\CoreBundle\Entity\FilmFestival 
      */
     public function getFestival()
     {
         return $this->festival;
     }
 
+    /**
+     * Add tags
+     *
+     * @param \Base\CoreBundle\Entity\NewsTag $tags
+     * @return Event
+     */
+    public function addTag(\Base\CoreBundle\Entity\NewsTag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Base\CoreBundle\Entity\NewsTag $tags
+     */
+    public function removeTag(\Base\CoreBundle\Entity\NewsTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add widgets
+     *
+     * @param \Base\CoreBundle\Entity\EventWidget $widgets
+     * @return Event
+     */
+    public function addWidget(\Base\CoreBundle\Entity\EventWidget $widgets)
+    {
+        $this->widgets[] = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgets
+     *
+     * @param \Base\CoreBundle\Entity\EventWidget $widgets
+     */
+    public function removeWidget(\Base\CoreBundle\Entity\EventWidget $widgets)
+    {
+        $this->widgets->removeElement($widgets);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
+    }
 
     /**
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
-     * @return NewsArticleTranslation
+     * @return Event
      */
     public function addSite(\Base\CoreBundle\Entity\Site $sites)
     {
@@ -308,11 +336,44 @@ class Event implements TranslateMainInterface
     /**
      * Get sites
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Add associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\EventFilmProjectionAssociated $associatedProjections
+     * @return Event
+     */
+    public function addAssociatedProjection(\Base\CoreBundle\Entity\EventFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections[] = $associatedProjections;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\EventFilmProjectionAssociated $associatedProjections
+     */
+    public function removeAssociatedProjection(\Base\CoreBundle\Entity\EventFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections->removeElement($associatedProjections);
+    }
+
+    /**
+     * Get associatedProjections
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedProjections()
+    {
+        return $this->associatedProjections;
     }
 
     /**
@@ -359,38 +420,5 @@ class Event implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
-    }
-
-    /**
-     * Add tags
-     *
-     * @param \Base\CoreBundle\Entity\NewsTag $tags
-     * @return Event
-     */
-    public function addTag(\Base\CoreBundle\Entity\NewsTag $tags)
-    {
-        $this->tags[] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param \Base\CoreBundle\Entity\NewsTag $tags
-     */
-    public function removeTag(\Base\CoreBundle\Entity\NewsTag $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 }
