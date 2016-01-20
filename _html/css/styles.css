@@ -14043,6 +14043,9 @@ input[type=submit] {
 .evenement #gridEvent {
   padding-top: 60px;
 }
+.evenement #gridEvent .item .info .category {
+  margin-right: 0px;
+}
 .evenement .grid {
   padding-top: 0px;
 }

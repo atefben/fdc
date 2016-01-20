@@ -14,10 +14,14 @@
   }
   #gridEvent {
     padding-top: 60px;
+    .item .info .category{
+      margin-right: 0px;
+    }
   }
   .grid {
     padding-top: 0px;
   }
+
   .grid-wrapper {
     margin-top: 0px;
     margin-bottom: 70px;

@@ -13,9 +13,6 @@
         <div class="container small-container">
           <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
           <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
-          <div class="info">
-            <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-          </div>
           <h2 class="title-article">Enragés, polar hybride d'Eric Hannezo</h2>
           <div class="buttons">
             <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
