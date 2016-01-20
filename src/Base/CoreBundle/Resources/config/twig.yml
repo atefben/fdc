@@ -14,6 +14,11 @@ services:
         tags:
             - { name: twig.extension }
 
+    base.twig.statement_instance_of_extension:
+        class: Base\CoreBundle\Twig\Extension\StatementInstanceOfExtension
+        tags:
+            - { name: twig.extension }
+
     base.twig.trans_fallback_extension:
         class: Base\CoreBundle\Twig\Extension\TransFallbackExtension
         tags:

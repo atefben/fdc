@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\MediaAudioTranslation;
+use Base\CoreBundle\Entity\MediaAudio;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -58,83 +59,90 @@ class MediaAudioAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $locales = array('fr', 'en', 'es', 'pt', 'ru', 'jp', 'cn', 'ar');
-        $validationGroups = array();
-        $formMapper->add('translations', 'a2lix_translations', array(
-            'label' => false,
-            'required_locales' => $validationGroups,
-            'fields' => array(
-                // remove fields not set by user
-                'createdAt' => array(
+        $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
+
+        $formMapper
+            ->add('translations', 'a2lix_translations', array(
+                'label' => false,
+                'translation_domain' => 'BaseAdminBundle',
+                'required_locales' => array('fr'),
+                'fields' => array(
+                    // remove fields not set by user
+                    'createdAt' => array(
+                            'display' => false
+                        ),
+                    'updatedAt' => array(
                         'display' => false
                     ),
-                'updatedAt' => array(
-                    'display' => false
-                ),
-                'file' => array(
-                    'field_type' => 'sonata_media_type',
-                    'provider' => 'sonata.media.provider.file',
-                    'context'  => 'audio'
-                ),
-                'title' => array(
-                    'sonata_help' => 'X caractères max.',
-                    'locale_options' => array(
-                        'en' => array(
-                            'constraints' => array(
-                                new NotBlank()
+                    'file' => array(
+                        'required' => $requiredFile,
+                        'field_type' => 'sonata_media_type',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'provider' => 'sonata.media.provider.file',
+                        'context' => 'news_audio',
+                    ),
+                    'title' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.helper_title',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
                             )
-                        )
-                    )
-                ),
-                'theme' => array(
-                   // 'field_type' => 'sonata_type_model',
-                    //    'sonata_field_description' => $translationDummyAdmin->getFormFieldDescriptions()['theme'],
-                    //    'model_manager' => $themeAdmin->getModelManager(),
-                    //   'class' => $themeAdmin->getClass(),
-                       'class' => 'BaseCoreBundle:Theme',
-                      //  'allow_add' => true,  
-                ),
-                'cover' => array(
-                    'field_type' => 'sonata_media_type',
-                    'provider' => 'sonata.media.provider.file',
-                    'context'  => 'image'
-                ),
-                'alt' => array(
-                    'sonata_help' => 'X caractères max.',
-                    'locale_options' => array(
-                        'en' => array(
-                            'constraints' => array(
-                                new NotBlank()
-                            )
-                        )
-                    )
-                ),
-                'publishedAt' => array(
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
                         )
                     ),
-                'publishEndedAt' => array(
-                    'field_type' => 'sonata_type_datetime_picker',
-                    'format' => 'dd/MM/yyyy HH:mm',
-                    'attr' => array(
-                        'data-date-format' => 'dd/MM/yyyy HH:mm',
-                    )
-                ),
-                'sites' => array(
-                    'multiple' => true,
-                    'expanded' => true,
-                    'class' => 'BaseCoreBundle:Site'
-                ),
-                'status' => array(
-                    'field_type' => 'choice',
-                    'choices' => MediaAudioTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
+                    'alt' => array(
+                        'label' => 'form.label_image',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.helper_alt',
+                    ),
+                    'sites' => array(
+                        'multiple' => true,
+                        'expanded' => true,
+                        'class' => 'BaseCoreBundle:Site'
+                    ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => MediaAudioTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                )
+            ))
+            ->add('image', 'sonata_media_type', array(
+                'required' => $requiredFile,
+                'sonata_help' => 'form.media_image.helper_file',
+                'translation_domain' => 'BaseAdminBundle',
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'news_header_image',
+            ))
+            ->add('theme', 'sonata_type_model_list', array(
+                'btn_delete' => false
+            ))
+            ->add('film', 'sonata_type_model_list', array(
+                'btn_delete' => false
+            ))
+            ->add('tags', 'sonata_type_collection', array(
+                'label' => 'form.label_tags',
+                'help' => 'form.media.helper_tags',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
                 )
             )
-        ))
+            ->add('translate')
+            ->add('displayedAll', null, array(
+                'label' => 'form.media_video.displayed_all'
+            ))
+            ->add('displayedHome', null, array(
+                'label' => 'form.media_video.displayed_home'
+            ))
+            ->add('displayedMobile', null, array(
+                'label' => 'form.media_video.displayed_mobile'
+            ))
         ->end();
     }
 

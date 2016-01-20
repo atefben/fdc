@@ -24,15 +24,6 @@ class StatementAudio extends Statement
     use Translatable;
 
     /**
-     * @var MediaImage
-     *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
-     *
-     * @Groups({"statement_list", "statement_list"})
-     */
-    private $header;
-
-    /**
      * @var MediaAudio
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio")
@@ -53,33 +44,10 @@ class StatementAudio extends Statement
     }
 
     /**
-     * Set header
-     *
-     * @param MediaImage $header
-     * @return NewsArticle
-     */
-    public function setHeader(MediaImage $header = null)
-    {
-        $this->header = $header;
-
-        return $this;
-    }
-
-    /**
-     * Get header
-     *
-     * @return MediaImage
-     */
-    public function getHeader()
-    {
-        return $this->header;
-    }
-
-    /**
      * Set audio
      *
      * @param \Base\CoreBundle\Entity\MediaAudio $audio
-     * @return NewsAudio
+     * @return StatementAudio
      */
     public function setAudio(\Base\CoreBundle\Entity\MediaAudio $audio = null)
     {
@@ -91,7 +59,7 @@ class StatementAudio extends Statement
     /**
      * Get audio
      *
-     * @return \Base\CoreBundle\Entity\MediaAudio
+     * @return \Base\CoreBundle\Entity\MediaAudio 
      */
     public function getAudio()
     {

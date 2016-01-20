@@ -2,6 +2,7 @@
 
 namespace FDC\PressBundle\Controller;
 
+use Base\CoreBundle\Entity\Statement;
 use \DateTime;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -451,28 +452,39 @@ class NewsController extends Controller
             'content' => 'Tous',
         );
 
-        foreach($statementArticles as $key => $statementArticle) {
-            if ($em->getClassMetadata(get_class($statementArticle))->getName() == 'Base\CoreBundle\Entity\StatementImage') {
-                $medias = array();
-                foreach ($statementArticle->getGallery()->getMedias() as $k => $media) {
-                    $medias[$k] = $media;
-                }
-                $statementArticle->image = $medias[0]->getMedia();
-            }
-            else {
-                $statementArticle->image = $statementArticle->getHeader();
-            }
-            $statementArticle->theme = $statementArticle->getTheme();
+        $filters['format'][0] = array(
+            'slug' => 'all',
+            'content' => 'Tous',
+        );
 
-            if(!in_array($statementArticle->getPublishedAt(),$filters['dates'])) {
-                $date = $statementArticle->getPublishedAt();
-                $filters['dates'][$key+1]['slug'] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
-                $filters['dates'][$key+1]['content'] = ($date != null) ? $date->format('l j F') : null;
+        $statementsTypes = Statement::getTypes();
+
+        $i = 1;
+        foreach ($statementsTypes as $statementsType) {
+            $filters['format'][$i]['slug'] = $statementsType;
+            $filters['format'][$i]['content'] = $statementsType;
+            $i++;
+        }
+
+        $i = 1;
+
+        $years = array();
+        $themes = array();
+
+        foreach($statementArticles as $statementArticle) {
+
+            if (!in_array($statementArticle->getPublishedAt()->format('Y'), $years)) {
+                $filters['dates'][$i]['slug'] =  $statementArticle->getPublishedAt()->format('Y');
+                $filters['dates'][$i]['content'] = $statementArticle->getPublishedAt()->format('Y');
+
+                $years[] = $statementArticle->getPublishedAt()->format('Y');
             }
 
-            if(!in_array($statementArticle->getTheme()->getName(),$filters['themes'])) {
-                $filters['themes'][$key+1]['slug'] = $statementArticle->getTheme()->getName();
-                $filters['themes'][$key+1]['content'] = $statementArticle->getTheme()->getName();
+            if (!in_array($statementArticle->getTheme()->getSlug(), $themes)) {
+                $filters['themes'][$i]['slug'] = $statementArticle->getTheme()->getSlug();
+                $filters['themes'][$i]['content'] = $statementArticle->getTheme()->getName();
+
+                $themes[] = $statementArticle->getTheme()->getSlug();
             }
 
         }

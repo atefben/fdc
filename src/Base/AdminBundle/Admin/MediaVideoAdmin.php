@@ -33,6 +33,7 @@ class MediaVideoAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('createdAt')
+            ->add('updatedAt')
             ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
             ->add('priorityStatus', 'choice', array(
                 'choices' => MediaVideo::getPriorityStatusesList(),
@@ -113,9 +114,10 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('image', 'sonata_media_type', array(
                 'required' => $requiredFile,
+                'sonata_help' => 'form.media_image.helper_file',
                 'translation_domain' => 'BaseAdminBundle',
                 'provider' => 'sonata.media.provider.image',
-                'context' => 'media_video_image',
+                'context' => 'news_header_image',
             ))
             ->add('sites', null, array(
                 'label' => 'form.label_publish_on',
@@ -153,23 +155,14 @@ class MediaVideoAdmin extends Admin
             ->add('translate')
             ->add('displayedMobile')
             ->add('displayedAll', null, array(
-                'label' => 'form.media_image.displayed_all'
-            ))
-            ->add('displayedHome', null, array(
-                'label' => 'form.media_image.displayed_home'
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => MediaVideo::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
-            ))
-            ->add('inAllVideos', null, array(
-                'label' => 'form.media_video.in_all_videos'
-            ))
-            ->add('displayedAll', null, array(
                 'label' => 'form.media_video.displayed_all'
             ))
             ->add('displayedHome', null, array(
                 'label' => 'form.media_video.displayed_home'
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => MediaVideo::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('displayedWebTv', null, array(
                 'label' => 'form.media_video.displayed_webTv'
@@ -180,10 +173,8 @@ class MediaVideoAdmin extends Admin
             ->add('displayedMobile', null, array(
                 'label' => 'form.media_video.displayed_mobile'
             ))
-//            ->add('film', 'sonata_type_model_list', array(
-//                'required' => false
-//            ))
-        ;
+
+        ->end();
     }
 
     /**

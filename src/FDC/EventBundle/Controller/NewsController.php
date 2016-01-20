@@ -640,53 +640,22 @@ class NewsController extends Controller
         // SEO
        // $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
+        //get associated film to the news
         $associatedFilm = $news->getAssociatedFilm();
         $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
 
+        //get film projection
         $programmations = array();
         foreach($associatedFilm->getProjectionProgrammationFilms() as $projection) {
             $programmations[] = $projection->getProjection();
         }
 
-        $translator = $this->get('translator');
+        //get day articles
+        $newsDate = $news->getPublishedAt();
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(),$locale,$newsDate);
 
         //FAKE CONTENT
         $focusArticles = array(
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-        );
-        $dayArticles = array(
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
             array(
                 'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
@@ -717,7 +686,7 @@ class NewsController extends Controller
             'news' => $news,
             'associatedFilm' => $associatedFilm,
             'focusArticles' => $focusArticles,
-            'dayArticles' => $dayArticles,
+            'sameDayArticles' => $sameDayArticles,
         );
     }
 
@@ -742,9 +711,6 @@ class NewsController extends Controller
 
         //GET ALL NEWS ARTICLES
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale,$settings->getFestival()->getId(),$dateTime);
-        if ($newsArticles === null) {
-            throw new NotFoundHttpException();
-        }
 
         //set default filters
         $filters = array();
@@ -769,10 +735,9 @@ class NewsController extends Controller
             }
 
         }
-        $articles = $newsArticles;
 
         return array(
-            'articles' => $articles,
+            'articles' => $newsArticles,
             'filters' => $filters,
         );
     }

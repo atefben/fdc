@@ -26,7 +26,7 @@ class MediaAudioTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $title;
 
@@ -39,17 +39,9 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $file;
 
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
-     *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
-     */
-    private $cover;
-
-    /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $alt;
 
@@ -95,5 +87,137 @@ class MediaAudioTranslation implements TranslateChildInterface
     public function getFile()
     {
         return $this->file;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return MediaAudioTranslation
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     * @return MediaAudioTranslation
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string 
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return MediaAudioTranslation
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * Set publishEndedAt
+     *
+     * @param \DateTime $publishEndedAt
+     * @return MediaAudioTranslation
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishEndedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
+     * Add sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     * @return MediaAudioTranslation
+     */
+    public function addSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites[] = $sites;
+
+        return $this;
+    }
+
+    /**
+     * Remove sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     */
+    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites->removeElement($sites);
+    }
+
+    /**
+     * Get sites
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSites()
+    {
+        return $this->sites;
     }
 }
