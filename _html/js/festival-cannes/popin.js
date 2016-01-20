@@ -155,7 +155,7 @@ $(document).ready(function() {
         $('#share-box').remove();
       }
 
-      if($('.single-movie').length){
+      if($('.single-movie, .webtv-ba-video').length){
         setTimeout(function(){
               $('#share-box').animate({'opacity':0},200,function(){
                 $('#share-box').removeClass('show');

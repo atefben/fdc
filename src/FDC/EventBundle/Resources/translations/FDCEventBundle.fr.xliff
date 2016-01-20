@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-01-20T17:32:44Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-01-20T17:40:15Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -80,27 +80,27 @@
       <trans-unit id="ed9f52b8a08ba392e3303b55e0d2f9832307ace7" resname="article.film.btn.toutelaprojection">
         <source>article.film.btn.toutelaprojection</source>
         <target>Toute la projection</target>
-        <jms:reference-file line="118">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="124">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6014a8cb787871930841a14509449ffea83e2cd2" resname="article.film.label.programmation">
         <source>article.film.label.programmation</source>
         <target>Programmation</target>
-        <jms:reference-file line="107">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="113">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="558fb602ac94ec07494ede50de03eb8219bb6b25" resname="article.film.text.projection">
         <source>article.film.text.projection</source>
         <target>Projection</target>
-        <jms:reference-file line="111">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="117">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bb48663a5c59da47b1977c794bb7c80760bb17ee" resname="article.film.title.focus">
         <source>article.film.title.focus</source>
         <target>Focus</target>
-        <jms:reference-file line="126">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="133">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="60de9eecc42028183ca917bf1e3b2f6430a54eb6" resname="article.film.title.lememejour">
         <source>article.film.title.lememejour</source>
         <target>Le même jour</target>
-        <jms:reference-file line="134">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="141">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a238cddbdd32a40021c53b969fcbc8dde2ea3463" resname="article.filter.label.date">
         <source>article.filter.label.date</source>
@@ -429,6 +429,7 @@
         <source>header.mainnav.nav.articles</source>
         <target>Articles</target>
         <jms:reference-file line="168">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="173">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="dd95a2d3f6d47289618215f02b1b5660494433f8" resname="header.mainnav.nav.audios">
         <source>header.mainnav.nav.audios</source>
@@ -469,6 +470,8 @@
         <source>header.mainnav.nav.jourapresjour</source>
         <target>Jour après jour</target>
         <jms:reference-file line="162">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="191">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="169">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8ce7f0eae1e3a9a768c94d9e6bf3dbf25b45ef89" resname="header.mainnav.nav.lactualite">
         <source>header.mainnav.nav.lactualite</source>

@@ -184,4 +184,14 @@
 
     </div>
 
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+        {
+            "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+            "url"  : path('fdc_event_news_index')
+        }
+    ]
+    } %}
+
 {% endblock body %}

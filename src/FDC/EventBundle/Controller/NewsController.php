@@ -643,44 +643,14 @@ class NewsController extends Controller
         $associatedFilm = $news->getAssociatedFilm();
         $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
 
-        /*foreach($associatedFilm->getProjectionProgrammationFilmsList() as $projection) {
-            echo'<pre>'; print_r($projection->getProjection()); echo '</pre>';
+        $programmations = array();
+        foreach($associatedFilm->getProjectionProgrammationFilms() as $projection) {
+            $programmations[] = $projection->getProjection();
         }
-         exit;
-        */
+
+        $translator = $this->get('translator');
 
         //FAKE CONTENT
-        $film = array(
-            'title' => $associatedFilm->getTitleVO(),
-            'releaseDate' => $associatedFilm->getProductionYear(),
-            'duration' => date('H:i', mktime(0,$associatedFilm->getDuration())),
-            'competition' => 'Un certain regard',
-            'author' => array(
-                'fullName' =>'toto',//$associatedFilm->getDuration()->getPersons()->getDirectorsRandomly,
-                'from' => 'France'
-            ),
-            'image' => array(
-                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/article/007.jpg'
-            ),
-            'programmation' => array(
-                array(
-                    'startAt' => new \DateTime(),
-                    'room' => 'Salle Debussy'
-                ),
-                array(
-                    'startAt' => new \DateTime(),
-                    'room' => 'Salle Debussy'
-                ),
-                array(
-                    'startAt' => new \DateTime(),
-                    'room' => 'Salle Debussy'
-                ),
-                array(
-                    'startAt' => new \DateTime(),
-                    'room' => 'Salle Debussy'
-                )
-            )
-        );
         $focusArticles = array(
             array(
                 'title' => 'Stéphane Beizé interroge la loi du marché',
@@ -742,13 +712,12 @@ class NewsController extends Controller
         );
 
         return array(
+            'programmations' => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $news,
             'associatedFilm' => $associatedFilm,
-            'film' => $film,
             'focusArticles' => $focusArticles,
             'dayArticles' => $dayArticles,
-            //  'article' => $article
         );
     }
 
@@ -800,7 +769,6 @@ class NewsController extends Controller
             }
 
         }
-
         $articles = $newsArticles;
 
         return array(
