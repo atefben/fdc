@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\Event;
 use Base\CoreBundle\Entity\EventTranslation;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -183,7 +184,7 @@ class EventAdmin extends Admin
             ->add('displayedMobile')
             ->add('translate')
             ->add('priorityStatus', 'choice', array(
-                'choices' => News::getPriorityStatuses(),
+                'choices' => Event::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(

@@ -194,6 +194,16 @@ services:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #HIDDEN
+
+    base.admin.event_widget_image_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetImageDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetImage, BaseAdminBundle:EventWidgetImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Event Widget Image, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
     base.admin.news_widget_image_dummy:
         class: Base\AdminBundle\Admin\NewsWidgetImageDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\NewsWidgetImage, BaseAdminBundle:NewsWidgetImageDummyAdmin]
@@ -337,3 +347,9 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: StatementFilmFilmAssociated, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_film_projection_associated:
+        class: Base\AdminBundle\Admin\EventFilmProjectionAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventFilmProjectionAssociated, BaseAdminBundle:EventFilmProjectionAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventFilmProjectionAssociated, show_in_dashboard: false}

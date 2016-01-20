@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 
@@ -26,6 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Event implements TranslateMainInterface
 {
+    use SeoMain;
     use Translatable;
     use Time;
     use TranslateMain;
@@ -49,6 +51,24 @@ class Event implements TranslateMainInterface
      * @Groups({"event_list", "event_show"})
      */
     private $theme;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $displayedMobile;
+
+    /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     *
+     * @Groups({"event_list", "event_show"})
+     * @Assert\NotNull()
+     */
+    private $header;
+
 
     /**
      * @var FilmFestival
@@ -420,5 +440,51 @@ class Event implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * Set displayedMobile
+     *
+     * @param boolean $displayedMobile
+     * @return Event
+     */
+    public function setDisplayedMobile($displayedMobile)
+    {
+        $this->displayedMobile = $displayedMobile;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedMobile
+     *
+     * @return boolean 
+     */
+    public function getDisplayedMobile()
+    {
+        return $this->displayedMobile;
+    }
+
+    /**
+     * Set header
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $header
+     * @return Event
+     */
+    public function setHeader(\Base\CoreBundle\Entity\MediaImage $header = null)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get header
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getHeader()
+    {
+        return $this->header;
     }
 }
