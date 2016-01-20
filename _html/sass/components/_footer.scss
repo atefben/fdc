@@ -246,6 +246,7 @@ footer {
 
 #breadcrumb{
   border-bottom: 1px solid #2c2c2c;
+  position: relative;
 
   &:after {
     background-color: $black;
@@ -266,11 +267,11 @@ footer {
     background-color: $black;
     content: '';
     display: block;
-    height: 100%;
+    height: 110%;
     left: 0;
     opacity: 0;
     position: absolute;
-    top: 0;
+    top: -2px;
     visibility: hidden;
     width: 100%;
     z-index: 5;
