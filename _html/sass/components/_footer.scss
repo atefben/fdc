@@ -246,6 +246,47 @@ footer {
 
 #breadcrumb{
   border-bottom: 1px solid #2c2c2c;
+
+  &:after {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.3s $smoothTransition);
+  }
+
+  &:before {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.9s $smoothTransition);
+  }
+
+  &.loading:before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.overlay:after {
+    opacity: 0.6;
+    visibility: visible;
+  }
+
   .container{
     width: 979px;
     margin: 0 auto;
