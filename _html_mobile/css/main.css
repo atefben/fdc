@@ -434,9 +434,7 @@ from desktop
 #sliderWrapper .owl-theme .owl-controls {
     margin-top: -90px;
     text-align: center;
-    display: flex;
     width: 100%;
-    justify-content: center;
 }
 
 .owl-theme .owl-controls .owl-dot {
@@ -940,6 +938,69 @@ from desktop
   content: "\f16a";
 }
 
+@font-face {
+  font-family: 'mobile';
+  src: url('../fonts/mobile.eot?63083474');
+  src: url('../fonts/mobile.eot?63083474#iefix') format('embedded-opentype'),
+       url('../fonts/mobile.woff?63083474') format('woff'),
+       url('../fonts/mobile.ttf?63083474') format('truetype'),
+       url('../fonts/mobile.svg?63083474#mobile') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'mobile';
+    src: url('../font/mobile.svg?63083474#mobile') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-mobile-"]:before, [class*=" icon-mobile-"]:before {
+  font-family: "mobile";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1rem;
+  margin-right: .2rem;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1rem;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2rem;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-mobile-agenda-personal:before { content: '\e800'; } /* '' */
+.icon-mobile-return:before { content: '\e801'; } /* '' */
+.icon-mobile-web-tv-play:before { content: '\e802'; } /* '' */
+.icon-mobile-burger:before { content: '\e803'; } /* '' */
+.icon-mobile-minus:before { content: '\e804'; } /* '' */
+.icon-mobile-plus:before { content: '\e805'; } /* '' */
+
 /* Socials */
 #socials{
     text-align: center;
@@ -959,11 +1020,10 @@ from desktop
     font-weight: 400;
 }
 #socials .post{
-    width: 50%;
-    height: 50vw;
+    width: 288px;
+    height: 288px;
     display: inline-block;
     position: relative;
-    overflow: hidden;
 }
 #socials .post:nth-child(2n+1){
 
@@ -993,9 +1053,9 @@ from desktop
     font-size: 1.125rem;
 }
 #socials .twitter{
-    display: block;
-    width: 100%;
-    height: 100%;
+  display: table;
+  width: 100%;
+  height: 100%;
     margin: 0;
     padding-top: 0;
     position: relative;
@@ -1007,12 +1067,9 @@ from desktop
     left: 35px;
 }
 #socials .twitter .content{
-    position: absolute;
-    top: 50%;
-    left:30px;
-    right:30px;
+    position: relative;
+    padding-left:30px;
     text-align: left;
-    transform: translateY(-50%);
 
 }
 #socials .twitter .info{
@@ -1051,13 +1108,12 @@ from desktop
 }
 #networks ul{
     margin:40px auto;
-    display: flex;
     width: 100%;
-    justify-content: space-around;
-    flex-direction: row;
 }
 #networks ul li {
     display: inline-block;
+    margin-right: 30px;
+    
 }
 #networks ul li a {
     color: #999;
@@ -1066,6 +1122,7 @@ from desktop
     font-size: 0.875rem;
     line-height: 16px;
     position: relative;
+    padding: 10px;
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
     -webkit-transform: translateZ(0);
@@ -1328,14 +1385,8 @@ from desktop
 #channels .sliderDrag .info .info-container {
   width: 130px;
   height: 69px;
+}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-#channels .sliderDrag .info .info-container .vCenter{
-  display: inline-block;
-}
 #channels #slider-channels .channel .info span {
   color: #fff;
   display: block;
@@ -1676,9 +1727,6 @@ article .picto .icon{
   width: 100%;
   height: 680px;
   position: relative;
-  display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 #today .img-container {
   width: 100%;
@@ -1732,9 +1780,6 @@ article .picto .icon{
   width: 100%;
   height: 280px;
   position: relative;
-  display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 #today .trailer .icon-container{
   border: solid thin #fff;
@@ -1866,7 +1911,15 @@ article .picto .icon{
   text-align: center;
   bottom: 0;
 }
-
+.vCenterKid {
+    display: table-cell;
+    vertical-align: middle;
+}
+.vCenter {
+    display: inline-table;
+    height: 100%;
+    width: 100%;
+}
 
 
 /*BANNER TOP WITH BACKGROUND IMG AND WHITE TEXT CENTER*/
@@ -1875,9 +1928,8 @@ article .picto .icon{
   /*background: center 0 no-repeat fixed;*/
     background-position: center top;
   background-size: cover;
-    display: flex;
-    align-items:center;
-    position: relative;
+  width: 100%;
+  position: relative;
 }
 .banner-img:before{
   background: rgba(0, 0, 0, 0.5);
@@ -1887,12 +1939,13 @@ article .picto .icon{
     width: 100%;
     position: absolute;
     top: 0;
-    z-index: 1;
+    z-index: 0;
 }
 .banner-img .title{
   color:#ffffff;
   font-size: 1.75rem;
   margin: 0 auto;
+  position: relative;
   z-index: 2;
 }
 .banner-img .title .icon{
@@ -1917,12 +1970,3 @@ article .picto .icon{
   padding: 0;
 }
 
-.vCenterKid {
-    display: table-cell;
-    vertical-align: middle;
-}
-.vCenter {
-    display: inline-table;
-    height: 100%;
-    width: 100%;
-}

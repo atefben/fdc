@@ -311,12 +311,6 @@ $(document).ready(function () {
               }
             });
           }
-          // dayRender: function(date, cell){
-          //     if (date > maxDate){
-          //         $(cell).addClass('disabled');
-          //         console.log("ok");
-          //     }
-          // }
       });
     } else {
       // if cookie drag doesn't exist, add class to show message
@@ -1234,5 +1228,43 @@ $(document).ready(function () {
     }
 
   }
+
+
+  //Pikaday init//
+  var minDatePicker = new Date(2016,04,11);
+  var maxDatePicker = new Date(2016,04,22);
+
+  var pickerBegin = new Pikaday({
+      field: document.getElementById('datepickerBegin'),
+      format: 'D/M/YYYY',
+      minDate: minDatePicker,
+      maxDate: maxDatePicker,
+      i18n: {
+          previousMonth : 'Previous Month',
+          nextMonth     : 'Next Month',
+          months        : GLOBALS.calendar.i18n.months,
+          weekdays      : GLOBALS.calendar.i18n.weekdays,
+          weekdaysShort : GLOBALS.calendar.i18n.weekdaysShort
+      }
+  });
+
+
+  var pickerEnd = new Pikaday({
+      field: document.getElementById('datepickerEnd'),
+      format: 'D/M/YYYY',
+      minDate: minDatePicker,
+      maxDate: maxDatePicker,
+      i18n: {
+          previousMonth : 'Previous Month',
+          nextMonth     : 'Next Month',
+          months        : GLOBALS.calendar.i18n.months,
+          weekdays      : GLOBALS.calendar.i18n.weekdays,
+          weekdaysShort : GLOBALS.calendar.i18n.weekdaysShort
+      }
+  });
+
+var time = $('.hours').timepicker({
+  timeFormat: typeof GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] : GLOBALS.calendar.i18n.labelFormat.default
+});
 
 });

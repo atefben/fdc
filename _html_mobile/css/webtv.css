@@ -144,3 +144,16 @@
     margin-bottom: 0;
     border-bottom:none;
 }
+
+
+.ba .slideshow .container, .channel .slideshow .container{
+
+  border-bottom: 1px solid #2c2c2c;
+  width: 100%;
+  padding: 0 5%;
+  box-sizing:border-box;
+}
+.channel .featured-videos {
+    padding-bottom: 60px;
+
+}

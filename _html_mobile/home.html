@@ -12,6 +12,14 @@
     <!-- /build -->
 </head>
 <body>
+<div id="searchContainer">
+    <div class="container">
+      <form action="search.html">
+        <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." autocomplete="off" />
+      </form>
+      <ul id="suggest"></ul>
+    </div>
+  </div>
 <div id="main" class="home st-container">
 	<!-- menu -->
 	<nav class="st-menu st-effect" id="menu">
@@ -91,7 +99,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="events.html">
 						<div class="section-title">
 							<h3 class="title-menu">les événements</h3>
 						</div>
@@ -111,7 +119,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="press.html">
 						<i class="icon icon_espace-presse"></i>Espace presse
 					</a>
 				</li>
@@ -179,9 +187,9 @@
 	<!-- end menu -->
 	<!-- header -->
 	<div class="dark-container" id="header">
-		<div class="container">
+		<div class="header-container">
 			<div id="menu-btn" class='menu-btn'>
-		        <i class="icon icon_recherche"></i>
+		        <i class="icon-mobile-burger"></i>
 		    </div>
 			<div id="logo">
 		        <a href="/"><img src="img/palme.svg" alt="Festival de Cannes" class="palm"></a>
@@ -193,6 +201,8 @@
 		    </div>
 		</div>
 	</div>
+
+	
 	<!-- end header -->
 
 	
@@ -353,16 +363,17 @@
 			</div>
 			<div class="post">
 				<div class="twitter">
-					<div class="content">
+					<div class="content vCenterKid">
 						<p class="info">Le 21 mars à 19h @FdC_Officiel</p>
 						<p class="text">Also out tomorrow is Gabe Polsky's Red Army, produced by Werner Herzog and Jerry Weintraub, <strong>#Cannes2016</strong></p>
 					</div>
+					
 					<i class="icon icon_twitter"></i>
 				</div>
 			</div>
 			<div class="post">
-				<div class="twitter">
-					<div class="content">
+				<div class="twitter vCenter">
+					<div class="content vCenterKid">
 						<p class="text">Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <strong>#Cannes2016</strong> en salles en France demain.</p>
 					</div>
 					<i class="icon icon_twitter"></i>
@@ -480,8 +491,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Photocall</a>
                     <span>103 vidéos</span>
                   </div>
@@ -497,8 +508,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
                     <span>282 vidéos</span>
                   </div>
@@ -514,8 +525,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
                     <span>47 vidéos</span>
                   </div>
@@ -531,8 +542,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Photocall</a>
                     <span>103 vidéos</span>
                   </div>
@@ -548,8 +559,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
                     <span>282 vidéos</span>
                   </div>
@@ -565,8 +576,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
                     <span>47 vidéos</span>
                   </div>
@@ -582,8 +593,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
                     <span>47 vidéos</span>
                   </div>
@@ -604,11 +615,14 @@
 		<div class="img-container">
 	        <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
 	    </div>
-		<div class="info-container">
-			<div class="category">Séance spéciale</div>
-			<h3 class="title">A tale of love and darkness</h3>
-			<div class="title-translate">(une histoire d'amour et de ténèbres)</div>
-			<div class="director">Laurent <strong>Larivière</strong></div>
+		<div class="info-container vCenter">
+			<div class="vCenterKid">
+				<div class="category">Séance spéciale</div>
+				<h3 class="title">A tale of love and darkness</h3>
+				<div class="title-translate">(une histoire d'amour et de ténèbres)</div>
+				<div class="director">Laurent <strong>Larivière</strong></div>
+			</div>
+			
 		</div>
 		<div class="links">
 			<a href="#" class="seances"><i class="icon icon_programmation"></i>Voir les séances</a>
@@ -618,9 +632,11 @@
 		<div class="img-container">
 	        <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	    </div>
-		<div class="info-container">
-			<div class="icon-container"><i class="icon icon_video"></i></div>
-			<h3 class="title">Les bandes annonces et extraits</h3>
+		<div class="info-container vCenter">
+			<div class="vCenterKid">
+				<div class="icon-container"><i class="icon icon_video"></i></div>
+				<h3 class="title">Les bandes annonces et extraits</h3>
+			</div>
 		</div>
 	</div>
 </div>
@@ -677,9 +693,12 @@
 	
    </footer>
     <div id="landscape">
-      <div class="content">
-      	<img src="img/rotate-mobile.png" alt="">
-      	<p>Tournez votre smartphone pour accéder au site</p>
+      <div class="content vCenter">
+        <div class="vCenterKid">
+          <img src="img/rotate-mobile.png" alt="">
+          <p>Tournez votre smartphone pour accéder au site</p>
+        </div>
+      	
       </div>
     </div>
     

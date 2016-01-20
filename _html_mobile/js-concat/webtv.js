@@ -9,11 +9,11 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
 $(document).ready(function() {
 
 
-	var $main = $('#main');
+	var $main = $('body');
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();
 	  // STICKY HEADER
-	    if (s > 95){
+	    if (s > 90){
 	        $main.addClass('sticky');
 	    } else {
 	        $main.removeClass('sticky');
@@ -75,6 +75,214 @@ $(document).ready(function() {
 			});
 		
 		menu.owlCarousel();
+
+});
+function closeSearch() {
+  $('html').removeClass('overlay');
+  
+    $('#searchContainer').removeClass('open');
+  $('#search').removeClass('opened');
+}
+
+$(document).ready(function() {
+
+  // Search
+  // =========================
+  
+
+  function openSearch() {
+    $(' html').addClass('overlay');
+    $('#searchContainer').addClass('open');
+    $('#inputSearch').focus();
+  }  
+
+  $('body').on('click', '#suggest li', function(e) {
+    var link = $(this).data('link');
+
+    window.location = link;
+  });
+
+  $('.suggestSearch').on('input', function(e) {
+    var value = $(this).val();
+    var $suggest = $(this).parent().next();
+    var noWhitespaceValue = value.replace(/\s+/g, '');
+    var noWhitespaceCount = noWhitespaceValue.length;
+    if($('.searchpage').length) {
+      $suggest = $('#main #suggest');
+    }
+    if(value == '') {
+      $suggest.empty();
+      return false;
+    }
+    if (noWhitespaceCount >= 3) {
+
+      $suggest.empty();
+
+      $.ajax({
+        type: "GET",
+        url: 'searchsuggest.json', //TODO a revoir//
+        success: function(data) {
+
+          for (var i=0; i<data.length; i++) {
+            var name = data[i].name,
+                link = data[i].link;
+
+            var txt = name.toLowerCase();
+
+            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
+
+            $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+          }
+        }
+      });
+    }
+
+    
+  });
+
+  $('#search').on('click', function(e) {
+    e.preventDefault();
+    if($('.searchpage').length) {
+      return false;
+    }
+
+    if($(this).hasClass('opened')) {
+      closeSearch();
+      return false;
+    } else {
+      openSearch();
+    }
+
+    $('#search').toggleClass('opened');
+  });
+
+  if($('.searchpage').length) {
+
+      $('#colSearch').css('left', ($(window).width() - 977) / 2);
+    
+    $( window ).resize( function(){
+      $('#colSearch').css('left', ($(window).width() - 977) / 2);
+    });
+
+    $('#colSearch a, .view-all').on('click', function(e) {
+      e.preventDefault();
+
+      var $this = $(this);
+
+      $('#colSearch a').removeClass('active');
+      
+      if($this.parents('#colSearch').length != 0) {
+        $this.addClass('active');
+      } else {
+        var cl = $this.data('class');
+        $('#colSearch a').each(function() {
+          if($(this).hasClass(cl)) {
+            $(this).addClass('active');
+          }
+        });
+      }
+
+      $('html, body').animate({
+        scrollTop: 0
+      }, 500);
+
+      $('.resultWrapper, #filtered').fadeOut(500, function() {
+
+        setTimeout(function() {
+
+          if($this.hasClass('all')) {
+            $('.resultWrapper').fadeIn();
+            return false;
+          }
+
+          var $activeEl = $('#colSearch a.active');
+
+          if($activeEl.hasClass('artists') || $activeEl.hasClass('events') || $activeEl.hasClass('films') || $activeEl.hasClass('participate')) {
+            $('.filters').hide();
+          } else {
+            $('.filters').show();
+          }
+
+          $('#filteredContent').empty();
+          var url = $this.data('ajax');
+
+          $.ajax({
+            type: "GET",
+            url: url,
+            success: function(data) {
+              $('#filteredContent').html(data);
+              $('#filtered').fadeIn();
+
+              $('#filteredContent').infinitescroll({
+                navSelector: ".next:last",
+                nextSelector: ".next:last",
+                itemSelector: ".infinite",
+                debug: false,
+                dataType: 'html',
+                path: function(index) {
+                  if($('.next:last').attr('href') == '#') {
+                    return false;
+                  }
+                  return $('.next:last').attr('href');
+                }
+              });
+            }
+          });
+
+        }, 700);
+      });
+    });
+
+    // test : remove once on server
+    if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') { //TODO a revoir//
+      $('#noResult').show();
+      $('#count span').text('0');
+      return false;
+    }
+
+    $.ajax({
+      type: "GET",
+      url: 'results.json', //TODO  a revoir//
+      success: function(data) {
+
+        if(data.all.count == 0) {
+          $('#noResult').show();
+          return false;
+        } else {
+          $('.resultWrapper').show();
+          $('#count span, #colSearch .all span').text(data.all.count);
+
+          // ARTISTS
+          var artists = data.persons;
+          $('#colSearch .artists span').text(artists.count);
+
+          // FILMS
+          var films = data.films;
+          $('#colSearch .films span').text(films.count);
+
+          // FILMS
+          var medias = data.medias;
+          $('#colSearch .medias span').text(medias.count);
+
+          // NEWS
+          var news = data.news;
+          $('#colSearch .news span').text(news.count);
+
+          // COMMUNIQUES
+          var communiques = data.communiques;
+          $('#colSearch .communiques span').text(communiques.count);
+
+          // EVENTS
+          var events = data.events;
+          $('#colSearch .events span').text(events.count);
+
+          // PARTICIPATE
+          var participate = data.participate;
+          $('#colSearch .participate span').text(participate.count);
+        }
+      }
+    });
+  }
 
 });
 
@@ -188,7 +396,8 @@ $(document).ready(function() {
 
       }
     }
-    if($('.ba').length) {
+    if($('.ba').length || $('.channel').length){
+
 		var sliderThumb = $(".thumbnails").owlCarousel({ 
 	      nav: false,
 	      dots: false,
@@ -220,7 +429,9 @@ $(document).ready(function() {
 	    e.preventDefault();
 
 	    $(this).parents('.slideshow').find('.thumb').removeClass('active');
-	    $(this).parents('.slideshow').find('.images .img').removeClass('active');
+	   
+	    // HERE CHANGE SOURCE OF PLAYER VIDEO
+	    // $(this).parents('.slideshow').find('.images .img').removeClass('active');
 
 	    var i = $(this).index(),
 	        cap = $(this).find('.thumb').data('caption');
@@ -230,6 +441,37 @@ $(document).ready(function() {
 	    $(this).parents('.slideshow').find('.caption').html(cap);
 	    $(this).parents('.slideshow-img').find('.images .img').eq(i).addClass('active');
 	  });
+
+	    if($('.channel').length){
+
+	    	var sliderLastVideos = $("#slider-last-videos").owlCarousel({
+			  nav: false,
+			  dots: false,
+			  smartSpeed: 1300,
+			  margin: 20,
+			  autoWidth: true,
+			  loop: false,
+			  items:1,
+			  onInitialized: function() {
+			    var m = ($(window).width() - $('.container').width()) / 2;
+			    $('#slider-last-videos .owl-stage').css({ 'margin-left': m });
+			    setActiveVideos("#slider-last-videos");
+			  },
+			  onResized: function() {
+			    var m = ($(window).width() - $('.container').width()) / 2;
+			    $('#slider-last-videos .owl-stage').css({ 'margin-left': m });
+			  },
+			  onTranslated: function() {
+			    setActiveVideos("#slider-last-videos");
+			  }
+			});
+
+			sliderLastVideos.owlCarousel();
+
+			$('body').on('click', '#slider-last-videos .owl-item', function() {
+			  sliderLastVideos.trigger('to.owl.carousel', [$(this).index(), 500, true]);
+			});
+	    }
 	}
 
     if($('.movie').length) {

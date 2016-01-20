@@ -13,7 +13,7 @@
         <div id="live" style="background-image:url(http://dummyimage.com/1920x450/969496/fff&text=+)">
           <div class="vCenter">
             <div class="vCenterKid">
-              <a href="#" class="play"><i class="icon icon_video"></i></a>
+              <a href="#" class="play"><i class="icon icon_bandes-annonces-extraits"></i></a>
               <h2>Les bandes annonces et extraits</h2>
             </div>
           </div>

@@ -146,10 +146,6 @@ footer .newsletter #submit {
 }
 #landscape .content{
   position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 #landscape img{
   height: 55%;
@@ -165,17 +161,13 @@ footer .newsletter #submit {
   font-size: 0.9rem;
   width: 210px;
   text-align: center;
-  margin: 0 auto;
-  height: 70px;
+  margin: 10px auto 0;
 }
 
 @media only screen  and (orientation : landscape) {
 /* Styles pour cette Media Queries */
 #landscape{
-  
   display: block;
-/*  flex-direction: column;
-  justify-content: space-around;*/
 }
 html, body { overflow: hidden; height: 100%; }
     body { margin:0; padding:0; }

@@ -15,6 +15,9 @@
     margin-right: 29px;
     position: fixed;
     top: 393px;
+    // @include transition(all 0.5s $smoothTransition);
+    // transform: translateY(0);
+
     ul {
       border-right: 1px solid #dfdfdf;
       li {
