@@ -2,7 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\StatementTranslation;
+use Base\CoreBundle\Entity\EventTranslation;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -76,11 +76,11 @@ class EventAdmin extends Admin
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.helper_title',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
+                    ),
+                    'introduction' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_introduction',
+                        'translation_domain' => 'BaseAdminBundle'
                     ),
                     'createdAt' => array(
                         'display' => false
@@ -88,46 +88,76 @@ class EventAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'publishedAt' => array(
-                        'label' => 'form.label_published_at',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        )
-                    ),
-                    'publishEndedAt' => array(
-                        'label' => 'form.label_publish_ended_at',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'sonata_type_datetime_picker',
-                        'format' => 'dd/MM/yyyy HH:mm',
-                        'attr' => array(
-                            'data-date-format' => 'dd/MM/yyyy HH:mm',
-                        )
-                    ),
                     'status' => array(
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => StatementTranslation::getStatuses(),
+                        'choices' => EventTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+
+                    )
+                )
+            ))
+            ->add('sites', null, array(
+                'label' => 'form.label_publish_on',
+                'class' => 'BaseCoreBundle:Site',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
                 )
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
+                'label' => false,
                 'types' => array(
-                    'news_widget_text_type',
-                    'news_widget_audio_type',
-                    'news_widget_image_type',
-                    'news_widget_video_type',
+                    'event_widget_text_type',
+                    'event_widget_quote_type',
+                    'event_widget_audio_type',
+                    'event_widget_image_type',
+                    'event_widget_image_dual_align_type',
+                    'event_widget_video_type',
+                    'event_widget_video_youtube_type'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
                 'by_reference' => false,
             ))
+            ->add('theme', 'sonata_type_model_list', array(
+                'btn_delete' => false
+            ))
             ->add('tags', 'sonata_type_collection', array(
+                'label' => 'form.label_article_tags',
+                'help' => 'form.news.helper_tags',
                 'by_reference' => false,
                 'required' => false,
             ), array(
@@ -135,12 +165,57 @@ class EventAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('theme', 'sonata_type_model_list', array(
-                'required' => false,
-                'btn_delete' => false
+            ->add('header', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
+                'help' => 'form.news.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('translate', null, array('required' => false), array(
-                'translation_domain' => 'BaseAdminBundle',
+            ->add('associatedProjections', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_projection_associated',
+                'help' => 'form.news.helper_news_film_projection_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('displayedMobile')
+            ->add('translate')
+            ->add('priorityStatus', 'choice', array(
+                'choices' => News::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.news.helper_file',
+                'required' => false
+            ))
+            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
+            ->add('createdAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('createdBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
             ))
             ->end()
         ;
