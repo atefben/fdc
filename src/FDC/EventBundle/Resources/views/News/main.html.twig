@@ -68,50 +68,56 @@
         </div>
 
         <div class="film">
+            {% if associatedFilm is not null %}
             <div class="info-film">
-                <div class="wrapper">
-                    <div class="vCenter">
-                        <div class="vCenterKid">
-                            <div class="poster">
-                                {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_small' %}
-                            </div>
-                            <div class="text-container">
-                                <span class="category">
-                                    {{ associatedFilm.selectionSection|trans_fallback('name') }}
-                                </span>
-                                <h3>
-                                    <a href="#">
-                                        {{ associatedFilm|trans_fallback('title') }}
-                                    </a>
-                                </h3>
-                                {% for director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                    <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
-                                {% endfor %}
-                                <p>
-                                {% for country in associatedFilm.countries %}
-                                    {{ country.country|trans_fallback('name') }}
-                                {% endfor %}
-                                -
-                                {{ associatedFilm.productionYear }}
-                                </p>
-                                <p>{{ associatedFilmDuration }}</p>
+                    <div class="wrapper">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <div class="poster">
+                                    {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_small' %}
+                                </div>
+                                <div class="text-container">
+                                    {% if associatedFilm.selectionSection is not null %}
+                                        <span class="category">
+                                            {{ associatedFilm.selectionSection|trans_fallback('name') }}
+                                        </span>
+                                    {% endif %}
+                                    <h3>
+                                        <a href="#">
+                                            {{ associatedFilm|trans_fallback('title') }}
+                                        </a>
+                                    </h3>
+                                    {% for director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                        <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+                                    {% endfor %}
+                                    <p>
+                                        {% for country in associatedFilm.countries %}
+                                            {{ country.country|trans_fallback('name') }}
+                                        {% endfor %}
+                                        {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
+                                        - {{ associatedFilm.productionYear }}
+                                        {% endif %}
+                                    </p>
+                                    <p>{{ associatedFilmDuration }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
+            {% endif %}
+            {% if programmations is not empty %}
             <div class="programmation-film">
                 <div class="wrapper">
                     <div class="vCenter">
                         <div class="vCenterKid">
                             <span class="category">{{ 'article.film.label.programmation'|trans }}</span>
                             <ul>
-                                {% for programmation in film.programmation %}
+                                {% for programmation in programmations %}
                                     <li>
                                         <span class="type">{{ 'article.film.text.projection'|trans }}</span>
-                                        <span>{{ programmation.startAt|date('d-m-Y') }}</span>
-                                        <span>{{ programmation.startAt|date('H') }}h</span>
-                                        <span class="location">{{ programmation.room }}</span>
+                                        <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
+                                        <span>{{ programmation.startsAt|date('H') }}h</span>
+                                        <span class="location">{{ programmation.room.name }}</span>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -120,6 +126,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
         <div class="container">
             <div class="focus">
@@ -153,7 +160,24 @@
 }}
 <!-- END POPIN MAIL SHARE -->
 
+    {{ breadcrumb[0] }}
     <!-- BREADCRUMB -->
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [{"name" : 'test'},{"name" : news.theme|trans_fallback('name')}]} %}
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+        {
+            "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+            "url"  : path('fdc_event_news_index')
+        },
+        {
+            "name" : 'header.mainnav.nav.articles'|trans ,
+            "url"  : path('fdc_event_news_getarticles')
+        },
+        {
+            "name" : news|trans_fallback('title') ,
+            "url"  : ''
+        }
+    ]
+    } %}
 
 {% endblock %}
