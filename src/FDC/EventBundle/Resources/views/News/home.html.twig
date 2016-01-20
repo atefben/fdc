@@ -40,22 +40,22 @@
                         <div class="articles left">
 
                             {% for article in homeArticles.article %}
-                                {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
-                            {% endfor %}
+                                {# {% include 'FDCEventBundle:News:widgets/article.html.twig' %} #}
+                             {% endfor %}
 
-                        </div>
+                         </div>
 
-                        <!-- SLIDESHOW -->
-                        {% for widget in homeArticles.widgets %}
-                            {% if widget.type == "image" and widget.photos|length > 1 %}
-                                {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
-                            {% endif %}
-                        {% endfor %}
+                         <!-- SLIDESHOW -->
+                         {% for widget in homeArticles.widgets %}
+                             {% if widget.type == "image" and widget.photos|length > 1 %}
+                                 {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                             {% endif %}
+                         {% endfor %}
 
-                        <div class="articles center">
+                         <div class="articles center">
 
-                            {% for article in homeArticles.bottomArticle %}
-                               {# {% include 'FDCEventBundle:News:widgets/article.html.twig' %} #}
+                             {% for article in homeArticles.bottomArticle %}
+                                {# {% include 'FDCEventBundle:News:widgets/article.html.twig' %} #}
                             {% endfor %}
 
                         </div>
