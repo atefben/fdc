@@ -48,6 +48,12 @@ a {
     outline: none;
     text-decoration: none;
 }
+div{
+
+  -webkit-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
 
 /* for clearing any floats <br class=&quot;clearfloat&quot; /> */
 .clearfloat {
@@ -2138,12 +2144,21 @@ footer .newsletter #submit {
 }
 
 @media only screen  and (orientation : landscape) {
-/* Styles pour cette Media Queries */
-#landscape{
-  display: block;
+  /* Styles pour cette Media Queries */
+  #landscape{
+    display: block;
+  }
+  html, body { overflow: hidden; height: 100%; }
+      body { margin:0; padding:0; }
 }
-html, body { overflow: hidden; height: 100%; }
-    body { margin:0; padding:0; }
+
+@media only screen  and (max-aspect-ratio:13/9) {
+  /* Styles pour cette Media Queries */
+  #landscape{
+    display: none;
+  }
+  html, body { overflow: visible; height: inherit; }
+
 }
 
 /* header */
@@ -2961,6 +2976,7 @@ font-weight: 700;
 #horizontal-menu{
   height: 110px;
   background-color: #202020;
+  z-index: 50;
 }
 
 #horizontal-menu .vid {

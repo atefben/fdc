@@ -83,8 +83,7 @@
       text-transform: uppercase;
     }
     .img {
-      background-position: center 30%;
-      background-repeat: no-repeat;
+      background: center 0 no-repeat fixed;
       background-size: cover;
       opacity: 0.5;
       position: absolute;
@@ -405,7 +404,8 @@
     width: 100%;
   }
   #live {
-    background-size: cover;
+    background: center 0 no-repeat fixed;
+    background-size: cover; 
     h2 {
       font-family: $Playfair;
       font-size: 1.75rem;
