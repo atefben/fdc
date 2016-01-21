@@ -5285,10 +5285,12 @@ div.chocolat-wrapper .chocolat-bottom:hover .buttons {
 div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
   font-size: 2rem;
   color: white;
-  position: absolute;
-  left: 38px;
-  top: 22px;
+  position: relative;
   z-index: 100;
+  float: left;
+  line-height: 85px;
+  margin-left: 38px;
+  margin-right: -38px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
@@ -5383,13 +5385,12 @@ div.chocolat-wrapper .share {
   z-index: 20;
   right: 202px;
   position: absolute;
+  text-align: center;
 }
 div.chocolat-wrapper .share .icon {
+  line-height: 100px;
   color: #fff;
-  top: 42px;
-  left: 39px;
   font-size: 1.1rem;
-  position: absolute;
   -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -5416,10 +5417,10 @@ div.chocolat-wrapper .chocolat-left {
   height: 100px;
   margin-top: 0;
   z-index: 20;
+  text-align: center;
 }
 div.chocolat-wrapper .chocolat-left .icon {
-  margin-right: 43px;
-  margin-top: 43px;
+  line-height: 100px;
 }
 div.chocolat-wrapper .chocolat-right {
   background: none;
@@ -5431,10 +5432,10 @@ div.chocolat-wrapper .chocolat-right {
   height: 100px;
   margin-top: 0;
   z-index: 20;
+  text-align: center;
 }
 div.chocolat-wrapper .chocolat-right .icon {
-  margin-right: 43px;
-  margin-top: 43px;
+  line-height: 100px;
 }
 div.chocolat-wrapper .chocolat-content {
   height: 100%;
@@ -5588,6 +5589,21 @@ div.chocolat-wrapper .zoomCursor.hide {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
 
+@media screen and (max-width: 1600px) {
+  div.chocolat-wrapper .chocolat-right .icon, div.chocolat-wrapper .chocolat-left .icon, div.chocolat-wrapper .share .icon {
+    line-height: 80px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
+    font-size: 2rem;
+    color: white;
+    position: relative;
+    z-index: 100;
+    float: left;
+    line-height: 65px;
+    margin-left: 28px;
+    margin-right: -51px;
+  }
+}
 .filters {
   text-align: center;
 }
