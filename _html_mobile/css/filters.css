@@ -5,10 +5,10 @@
 	padding-bottom: 80px;
     position: relative;
 }
-.filters div {
+.filters div,.filters-slider .filter, .filters-slider .select {
     display: inline-block;
     font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-    font-size: 1.4rem;
+    font-size: 20px;
     text-transform: uppercase;
     font-weight: 700;
 }
@@ -20,19 +20,26 @@
     position: absolute;
     right: 10px;
 }
-.filters div .label {
+.filters div .label, .filters-slider .filter .label {
     color: #333;
     margin-right: 5px;
     letter-spacing: 0.1em;
 }
-.filters div .select{
+.filters div .select, .filters-slider .filter .select{
 	 color: #c8a461;
     cursor: pointer;
 }
-.filters div .select i{
-	font-size: 1rem;
+.filters div .select i, .filters-slider .filter .select i{
+  font-size: 1rem;
+  margin-top: -2px;
 }
-.filters div .select span {
+.filters-slider .filter .select span.active{
+    display: inline-block;
+    height: 28px;
+    line-height: 36px;
+    vertical-align: bottom;
+}
+.filters div .select span, .filters-slider .filter .select span  {
 /*    background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
     background-size: 6px;*/
     display: none;
@@ -42,12 +49,27 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.filters div .select span.active {
+.filters div .select span.active{
     display: inline-block;
     height: 28px;
     line-height: 36px;
     vertical-align: bottom;
 }
+
+
+.filters-slider{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.filters-slider .filter{
+  height: 100%;
+  margin: 0;
+}
+.filters-slider .owl-stage{
+  /*margin-left:40px;*/
+}
+
 .vCenter {
     display: inline-table;
     height: 100%;

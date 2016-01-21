@@ -2165,6 +2165,9 @@ html, body { overflow: hidden; height: 100%; }
     padding: 0;
     height: 90px;
 }
+.sticky #header.fixfixed,#header.fixfixed{
+    position: absolute;
+}
 #header .header-container{
 
     display:table-cell;vertical-align:middle;
@@ -2548,6 +2551,9 @@ font-weight: 700;
   height: auto;
   min-height: 1000px;
 
+}
+.sticky #searchContainer.fixfixed{
+  position: absolute;
 }
 .sticky #searchContainer{
   top: 90px;

@@ -17,6 +17,9 @@
   min-height: 1000px;
 
 }
+.sticky #searchContainer.fixfixed{
+  position: absolute;
+}
 .sticky #searchContainer{
   top: 90px;
   position: fixed;
