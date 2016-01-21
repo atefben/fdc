@@ -650,42 +650,27 @@ class NewsController extends Controller
             $programmations[] = $projection->getProjection();
         }
 
-        //get day articles
-        $newsDate = $news->getPublishedAt();
-        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(),$locale,$newsDate);
+        //get focus articles
+        $focusArticles = $news->getAssociatedNews();
 
-        //FAKE CONTENT
-        $focusArticles = array(
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-        );
+        //get day articles
+        $count = 3;
+        $newsDate = $news->getPublishedAt();
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')
+            ->getSameDayNews(
+                $settings->getFestival()->getId(),
+                $locale,
+                $newsDate,
+                $count,
+                $news->getId()
+            );
 
         return array(
+            'focusArticles' => $focusArticles,
             'programmations' => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $news,
             'associatedFilm' => $associatedFilm,
-            'focusArticles' => $focusArticles,
             'sameDayArticles' => $sameDayArticles,
         );
     }

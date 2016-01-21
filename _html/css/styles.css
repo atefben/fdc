@@ -5285,10 +5285,12 @@ div.chocolat-wrapper .chocolat-bottom:hover .buttons {
 div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
   font-size: 2rem;
   color: white;
-  position: absolute;
-  left: 38px;
-  top: 22px;
+  position: relative;
   z-index: 100;
+  float: left;
+  line-height: 85px;
+  margin-left: 38px;
+  margin-right: -38px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
@@ -5383,13 +5385,12 @@ div.chocolat-wrapper .share {
   z-index: 20;
   right: 202px;
   position: absolute;
+  text-align: center;
 }
 div.chocolat-wrapper .share .icon {
+  line-height: 100px;
   color: #fff;
-  top: 42px;
-  left: 39px;
   font-size: 1.1rem;
-  position: absolute;
   -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -5416,10 +5417,10 @@ div.chocolat-wrapper .chocolat-left {
   height: 100px;
   margin-top: 0;
   z-index: 20;
+  text-align: center;
 }
 div.chocolat-wrapper .chocolat-left .icon {
-  margin-right: 43px;
-  margin-top: 43px;
+  line-height: 100px;
 }
 div.chocolat-wrapper .chocolat-right {
   background: none;
@@ -5431,10 +5432,10 @@ div.chocolat-wrapper .chocolat-right {
   height: 100px;
   margin-top: 0;
   z-index: 20;
+  text-align: center;
 }
 div.chocolat-wrapper .chocolat-right .icon {
-  margin-right: 43px;
-  margin-top: 43px;
+  line-height: 100px;
 }
 div.chocolat-wrapper .chocolat-content {
   height: 100%;
@@ -5498,6 +5499,7 @@ div.chocolat-wrapper .zoomCursor {
   position: absolute;
   z-index: 50;
   border: 1px solid #c8a461;
+  text-align: center;
   -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5505,6 +5507,10 @@ div.chocolat-wrapper .zoomCursor {
 }
 div.chocolat-wrapper .zoomCursor.hide {
   opacity: 0;
+}
+div.chocolat-wrapper .zoomCursor .icon {
+  color: #c8a461;
+  line-height: 80px;
 }
 
 .chocolat-zoomable .zoomCursor {
@@ -5588,6 +5594,21 @@ div.chocolat-wrapper .zoomCursor.hide {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
 
+@media screen and (max-width: 1600px) {
+  div.chocolat-wrapper .chocolat-right .icon, div.chocolat-wrapper .chocolat-left .icon, div.chocolat-wrapper .share .icon {
+    line-height: 80px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
+    font-size: 2rem;
+    color: white;
+    position: relative;
+    z-index: 100;
+    float: left;
+    line-height: 65px;
+    margin-left: 28px;
+    margin-right: -51px;
+  }
+}
 .filters {
   text-align: center;
 }
@@ -5745,8 +5766,6 @@ div.chocolat-wrapper .zoomCursor.hide {
 }
 
 .close-button {
-  background: url("../img/svg/close-gold.svg") no-repeat center;
-  background-size: 15px;
   border: 1px solid #c8a461;
   cursor: pointer;
   height: 85px;
@@ -5759,9 +5778,14 @@ div.chocolat-wrapper .zoomCursor.hide {
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  text-align: center;
 }
 .close-button:hover {
   opacity: 1;
+}
+.close-button .icon {
+  color: #c8a461;
+  line-height: 85px;
 }
 
 .audio-player {
@@ -16019,8 +16043,6 @@ input[type=submit] {
   position: absolute;
   top: 7px;
   right: 10px;
-  background: url("../img/svg/close-white.svg") no-repeat center;
-  background-size: cover;
   height: 12px;
   width: 12px;
 }
@@ -17070,6 +17092,23 @@ input[type=submit] {
 
 .fullcalendar .header-press {
   border: none;
+}
+.fullcalendar .header-press .container {
+  position: relative;
+}
+.fullcalendar .header-press .container .buttons {
+  right: 0px;
+  position: absolute;
+  float: right;
+}
+.fullcalendar .header-press .container .buttons .button:hover {
+  color: #fff;
+  background-color: #c8a461;
+}
+.fullcalendar .header-press .container .buttons .export:hover {
+  background-color: #fff;
+  color: #c8a461;
+  opacity: 1;
 }
 .fullcalendar #calendar #mycalendar .fc-time-grid-container {
   height: auto !important;
@@ -18878,6 +18917,11 @@ input[type=submit] {
   margin: 0px;
 }
 
+@media screen and (max-width: 1115px) {
+  .press-actu .header-press p {
+    width: 321px !important;
+  }
+}
 .press-actu .section {
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -18889,7 +18933,7 @@ input[type=submit] {
   border-bottom: 1px solid #e3e3e3 !important;
 }
 .press-actu .header-press p {
-  width: 412px;
+  width: 429px;
 }
 .press-actu .section .txt h2 {
   color: #fff;

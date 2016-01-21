@@ -310,8 +310,6 @@
         position: absolute;
         top: 7px;
         right: 10px;
-        background: url('../img/svg/close-white.svg') no-repeat center;
-        background-size: cover;
         height: 12px;
         width: 12px;
       }
@@ -1553,6 +1551,30 @@
 .fullcalendar {
   .header-press {
     border: none;
+
+    .container{
+      position: relative;
+
+      .buttons{
+        right: 0px;
+        position: absolute;
+        float: right;
+        .button{
+          &:hover{
+            color:#fff;
+            background-color: $gold;
+          }
+        }
+        .export{
+          &:hover{
+            background-color: #fff;
+            color: $gold;
+            opacity: 1;
+          }
+        }
+      }
+
+    }
   }
 
   #calendar {
