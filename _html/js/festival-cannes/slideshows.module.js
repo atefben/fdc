@@ -171,6 +171,7 @@ $('body').on('click', '.chocolat-image', function() {
     $('.chocolat-bottom').addClass('show');
   }
 
+
   $('.chocolat-wrapper .thumbnails').owlCarousel({
     nav: false,
     dots: false,
@@ -263,11 +264,23 @@ $('body').on('mouseenter', '.chocolat-content', function(){
 
 var timeoutCursor;
 
+
+
 $('body').on('mousemove', '.chocolat-content', function(e){
   if ($('body').hasClass('mob')) return false;
 
+  if($('.chocolat-zoomed').length){
+    console.log('ooook');
+    $('.zoomCursor .icon').removeClass('icon_loupePlus').addClass('icon_loupeMoins');
+  }else{
+    console.log('nopppe');
+
+    $('.zoomCursor .icon').removeClass('icon_loupeMoins').addClass('icon_loupePlus');
+  }
   $('.zoomCursor').css('left', e.clientX + 10).css('top', e.clientY);
   $('.chocolat-bottom').addClass('show');
+
+
 
   clearTimeout(timeoutCursor);
   timeoutCursor = setTimeout(function() {

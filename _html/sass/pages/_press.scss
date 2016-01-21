@@ -1451,6 +1451,11 @@
   &.press-home {
     .popin-event {
       height: 1012px;
+
+      @include breakpoint(1024px) {
+        height: auto;
+        min-height: 1012px;
+      }
     }
   }
 
@@ -1699,8 +1704,7 @@
     width: 70px;
     color: $gold;
     .icon{
-      margin-top: 28px;
-      margin-left: 28px;
+      line-height: 72px;
     }
 
     &:hover{
@@ -1819,6 +1823,10 @@
         display: inline-block;
         margin-right: 20px;
         width: 225px;
+
+        @include breakpoint(1024px) {
+          margin-bottom: 22px;
+        }
 
         p {
           margin-bottom: 5px;

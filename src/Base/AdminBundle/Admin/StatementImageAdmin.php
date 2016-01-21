@@ -327,4 +327,24 @@ class StatementImageAdmin extends Admin
             ->add('id')
         ;
     }
+
+    /**
+     * @param mixed $object
+     */
+    public function prePersist($object)
+    {
+        foreach ($object->getAssociatedStatement() as $statement) {
+            $statement->setStatement($object);
+        }
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function preUpdate($object)
+    {
+        foreach ($object->getAssociatedStatement() as $statement) {
+            $statement->setStatement($object);
+        }
+    }
 }

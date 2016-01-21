@@ -59,7 +59,7 @@ class MediaAudioTranslation implements TranslateChildInterface
      */
     private $publishEndedAt;
 
-   /**
+    /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site")
@@ -67,27 +67,13 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $sites;
 
     /**
-     * Set file
+     * @var Media
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaImageTranslation
-     */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
+     * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
-    public function getFile()
-    {
-        return $this->file;
-    }
+    private $image;
+
     /**
      * Constructor
      */
@@ -112,7 +98,7 @@ class MediaAudioTranslation implements TranslateChildInterface
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -135,7 +121,7 @@ class MediaAudioTranslation implements TranslateChildInterface
     /**
      * Get alt
      *
-     * @return string 
+     * @return string
      */
     public function getAlt()
     {
@@ -158,7 +144,7 @@ class MediaAudioTranslation implements TranslateChildInterface
     /**
      * Get publishedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedAt()
     {
@@ -181,11 +167,34 @@ class MediaAudioTranslation implements TranslateChildInterface
     /**
      * Get publishEndedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishEndedAt()
     {
         return $this->publishEndedAt;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return MediaAudioTranslation
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
     /**
@@ -214,10 +223,33 @@ class MediaAudioTranslation implements TranslateChildInterface
     /**
      * Get sites
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     * @return MediaAudioTranslation
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

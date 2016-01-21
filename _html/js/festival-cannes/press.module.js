@@ -844,9 +844,7 @@ $(document).ready(function () {
         });
       }
 
-      $(document).on('click', function (e) {
-
-
+      $(document).on('click',function (e) {
 
         var $element = $(e.target);
         if ($element.hasClass('visible-popin')) {
@@ -865,6 +863,30 @@ $(document).ready(function () {
           }
         }
       });
+
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+        if(isiPad){
+          $(document).on('touchstart',function (e) {
+
+            var $element = $(e.target);
+            if ($element.hasClass('visible-popin')) {
+
+            } else {
+              var $isPopin = $element.closest('.visible-popin');
+              var isButton = $element.hasClass('buttons');
+
+              if ($isPopin.length || isButton) {
+
+              } else {
+                $('#popin-press').removeClass('visible-popin');
+                $("#main").removeClass('overlay-popin');
+                $('footer').removeClass('overlay');
+
+              }
+            }
+          });
+        }
 
     }
 
@@ -918,6 +940,29 @@ $(document).ready(function () {
             }
           }
         });
+
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+        if(isiPad){
+          $(document).on('touchstart', function (e) {
+
+            var $element = $(e.target);
+            if ($element.hasClass('visible-popin')) {
+
+            } else {
+              var $isPopin = $element.closest('.visible-popin');
+              var isButton = $element.hasClass('buttons');
+
+              if ($isPopin.length || isButton) {
+
+              } else {
+                $('#popin-download-press').removeClass('visible-popin');
+                $("#main").removeClass('overlay-popin');
+                $('footer').removeClass('overlay');
+              }
+            }
+          });
+        }
       }
     }
 
@@ -969,6 +1014,28 @@ $(document).ready(function () {
             }
           }
         });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+        if(isiPad){
+          $(document).on('touchstart', function (e) {
+
+            var $element = $(e.target);
+            if ($element.hasClass('visible-popin')) {
+              //do nothing
+            } else {
+              var $isPopin = $element.closest('.visible-popin');
+              var isButton = $element.hasClass('buttons');
+
+              if ($isPopin.length || isButton) {
+                //do nothing
+              } else {
+                $('#popin-download-press').removeClass('visible-popin');
+                $("#main").removeClass('overlay-popin');
+                $('footer').removeClass('overlay');
+              }
+            }
+          });
+        }
       }
     }
   }

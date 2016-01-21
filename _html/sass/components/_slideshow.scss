@@ -343,8 +343,7 @@ div.chocolat-wrapper {
 
       a .icon{
         font-size: 1rem;
-        position: relative;
-        top:18px;
+        line-height: 75px;
       }
     }
 
@@ -691,6 +690,11 @@ div.chocolat-wrapper {
         .button {
           height: 60px;
           width: 60px;
+
+          .icon{
+            top: auto;
+            line-height: 60px;
+          }
 
           &:last-child {
             width: 59px;

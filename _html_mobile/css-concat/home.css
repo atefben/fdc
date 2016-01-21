@@ -4748,7 +4748,6 @@ from desktop
   color: #fff;
 }
 #channels #slider-channels {
-  padding-top: 60px;
 }
 #channels #slider-channels .owl-item.center + .owl-item, #channels #slider-channels .owl-item.center + .owl-item + .owl-item {
   opacity: 1;
@@ -4980,7 +4979,7 @@ article h3 a {
 
 article .image {
   height: 355px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   position: relative;
   width: 100%;
 }
@@ -5112,12 +5111,12 @@ article .picto .icon{
 }
 .slideshow h3 {
     color: #c8a461;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-    margin-top: 25px;
-    text-transform: uppercase;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  text-transform: uppercase;
 }
 .slideshow .caption {
   color: #666;
@@ -5131,8 +5130,7 @@ article .picto .icon{
   font-weight: normal;
 }
 /* today container */
-.darker-container{
-  background: #0e0e0e;
+#today{
   border-top: solid 1px #2c2c2c;
 }
 
@@ -5140,11 +5138,11 @@ article .picto .icon{
   color:white;
   padding: 50px 0;
   margin: 0 auto;
-  width:400px;
+  
 }
 
 #today.darker-container .title{
-  width: 480px;
+  /*width: 480px;*/
 }
 
 #today .special-event{

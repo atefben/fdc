@@ -3300,8 +3300,8 @@ body {
 }
 @font-face {
   font-family: "icons";
-  src: url("../fonts/icons.eot?078519789cf30d43d57e470eff06feb2");
-  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?078519789cf30d43d57e470eff06feb2") format("woff"), url("../fonts/icons.ttf?078519789cf30d43d57e470eff06feb2") format("truetype");
+  src: url("../fonts/icons.eot?16e2b826b80be4a75d3910a5fb350334");
+  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?16e2b826b80be4a75d3910a5fb350334") format("woff"), url("../fonts/icons.ttf?16e2b826b80be4a75d3910a5fb350334") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -3750,7 +3750,7 @@ body {
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -5246,8 +5246,7 @@ div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
 }
 div.chocolat-wrapper .chocolat-bottom .buttons a .icon {
   font-size: 1rem;
-  position: relative;
-  top: 18px;
+  line-height: 75px;
 }
 div.chocolat-wrapper .chocolat-bottom:after {
   content: '';
@@ -5570,6 +5569,10 @@ div.chocolat-wrapper .zoomCursor .icon {
   div.chocolat-wrapper .chocolat-bottom .buttons .button {
     height: 60px;
     width: 60px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons .button .icon {
+    top: auto;
+    line-height: 60px;
   }
   div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
     width: 59px;
@@ -5902,7 +5905,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   pointer-events: none;
   top: 0;
   left: 0;
-  width: 75%;
+  width: 100%;
   height: 100%;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -7824,9 +7827,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7852,11 +7855,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7872,26 +7875,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -10792,20 +10795,21 @@ article .read-later.rAlign span:after {
 }
 @media screen and (max-width: 1024px) {
   .single-movie .nav {
-    top: 62px;
+    top: 57%;
     margin-top: 0;
   }
 }
 .single-movie .nav.black {
   border-color: #dfdfdf;
 }
+.single-movie .nav.black .icon {
+  color: #949494 !important;
+}
 .single-movie .nav.hide {
   opacity: 0;
   visibility: hidden;
 }
 .single-movie .nav.prev {
-  background: url("../img/svg/arrow-left-white.svg") no-repeat center;
-  background-size: 15px;
   left: 2%;
 }
 .single-movie .nav.prev.trailer {
@@ -10815,6 +10819,7 @@ article .read-later.rAlign span:after {
 .single-movie .nav.prev .icon {
   color: #000;
   margin: 32px;
+  color: #fff;
 }
 .single-movie .nav.next {
   left: auto;
@@ -10825,7 +10830,7 @@ article .read-later.rAlign span:after {
   right: -85px;
 }
 .single-movie .nav.next .icon {
-  color: #000;
+  color: #fff;
   margin: 32px;
 }
 .single-movie .main-image {
@@ -17055,6 +17060,12 @@ input[type=submit] {
 .press.press-home .popin-event {
   height: 1012px;
 }
+@media screen and (max-width: 1024px) {
+  .press.press-home .popin-event {
+    height: auto;
+    min-height: 1012px;
+  }
+}
 .press.press-home.calendar-open #calendar, .press.press-programmation #calendar {
   display: block;
 }
@@ -17245,8 +17256,7 @@ input[type=submit] {
   color: #c8a461;
 }
 .popin-event .close-button .icon {
-  margin-top: 28px;
-  margin-left: 28px;
+  line-height: 72px;
 }
 .popin-event .close-button:hover {
   color: #000;
@@ -17356,6 +17366,11 @@ input[type=submit] {
   display: inline-block;
   margin-right: 20px;
   width: 225px;
+}
+@media screen and (max-width: 1024px) {
+  .popin-event .events-container .events-wrapper .event {
+    margin-bottom: 22px;
+  }
 }
 .popin-event .events-container .events-wrapper .event p {
   margin-bottom: 5px;
@@ -18577,7 +18592,7 @@ input[type=submit] {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdf‡;
+  border: 0px solid #dfdfdf;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {

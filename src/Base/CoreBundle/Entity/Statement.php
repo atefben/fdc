@@ -4,7 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use \DateTime;
 
-use Base\CoreBundle\Util\Seo;
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -31,7 +31,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 abstract class Statement implements TranslateMainInterface
 {
     use Time;
-    use Seo;
+    use SeoMain;
     use TranslateMain;
 
     /**

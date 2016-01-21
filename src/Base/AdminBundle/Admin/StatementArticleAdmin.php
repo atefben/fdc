@@ -269,7 +269,7 @@ class StatementArticleAdmin extends Admin
                 'label' => 'form.label_statement_statement_associated',
                 'help' => 'form.statement.helper_statement_statement_associated',
                 'by_reference' => false,
-                'btn_add' => false,
+                'btn_add' => true,
                 'required' => false,
             ), array(
                     'edit' => 'inline',
@@ -327,4 +327,25 @@ class StatementArticleAdmin extends Admin
             ->add('id')
         ;
     }
+
+    /**
+     * @param mixed $object
+     */
+    public function prePersist($object)
+    {
+        foreach ($object->getAssociatedStatement() as $statement) {
+            $statement->setStatement($object);
+        }
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function preUpdate($object)
+    {
+        foreach ($object->getAssociatedStatement() as $statement) {
+            $statement->setStatement($object);
+        }
+    }
+
 }

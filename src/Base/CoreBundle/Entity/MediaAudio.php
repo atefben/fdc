@@ -25,13 +25,6 @@ class MediaAudio extends Media
      */
     private $film;
 
-    /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
-     *
-     */
-    private $image;
 
     /**
      * Set film
@@ -54,28 +47,5 @@ class MediaAudio extends Media
     public function getFilm()
     {
         return $this->film;
-    }
-
-    /**
-     * Set image
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $image
-     * @return MediaAudio
-     */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 }
