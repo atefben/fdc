@@ -1451,6 +1451,11 @@
   &.press-home {
     .popin-event {
       height: 1012px;
+
+      @include breakpoint(1024px) {
+        height: auto;
+        min-height: 1012px;
+      }
     }
   }
 
@@ -1819,6 +1824,10 @@
         display: inline-block;
         margin-right: 20px;
         width: 225px;
+
+        @include breakpoint(1024px) {
+          margin-bottom: 22px;
+        }
 
         p {
           margin-bottom: 5px;

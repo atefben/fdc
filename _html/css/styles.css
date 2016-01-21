@@ -3750,7 +3750,7 @@ body {
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -7827,9 +7827,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7855,11 +7855,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7875,26 +7875,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -17058,6 +17058,12 @@ input[type=submit] {
 .press.press-home .popin-event {
   height: 1012px;
 }
+@media screen and (max-width: 1024px) {
+  .press.press-home .popin-event {
+    height: auto;
+    min-height: 1012px;
+  }
+}
 .press.press-home.calendar-open #calendar, .press.press-programmation #calendar {
   display: block;
 }
@@ -17359,6 +17365,11 @@ input[type=submit] {
   display: inline-block;
   margin-right: 20px;
   width: 225px;
+}
+@media screen and (max-width: 1024px) {
+  .popin-event .events-container .events-wrapper .event {
+    margin-bottom: 22px;
+  }
 }
 .popin-event .events-container .events-wrapper .event p {
   margin-bottom: 5px;
@@ -18580,7 +18591,7 @@ input[type=submit] {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdf‡;
+  border: 0px solid #dfdfdfÔÇí;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
