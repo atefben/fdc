@@ -64,8 +64,6 @@ $(document).ready(function() {
   $('.filters .select span').on('click', function() {
     var h = $(this).parent().html();
 
-    console.log(h);
-
     $('#filters').remove();
     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
     $('#filters .vCenterKid').html(h);

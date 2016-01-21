@@ -1551,6 +1551,30 @@
 .fullcalendar {
   .header-press {
     border: none;
+
+    .container{
+      position: relative;
+
+      .buttons{
+        right: 0px;
+        position: absolute;
+        float: right;
+        .button{
+          &:hover{
+            color:#fff;
+            background-color: $gold;
+          }
+        }
+        .export{
+          &:hover{
+            background-color: #fff;
+            color: $gold;
+            opacity: 1;
+          }
+        }
+      }
+
+    }
   }
 
   #calendar {

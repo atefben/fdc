@@ -17093,6 +17093,23 @@ input[type=submit] {
 .fullcalendar .header-press {
   border: none;
 }
+.fullcalendar .header-press .container {
+  position: relative;
+}
+.fullcalendar .header-press .container .buttons {
+  right: 0px;
+  position: absolute;
+  float: right;
+}
+.fullcalendar .header-press .container .buttons .button:hover {
+  color: #fff;
+  background-color: #c8a461;
+}
+.fullcalendar .header-press .container .buttons .export:hover {
+  background-color: #fff;
+  color: #c8a461;
+  opacity: 1;
+}
 .fullcalendar #calendar #mycalendar .fc-time-grid-container {
   height: auto !important;
 }
@@ -18900,6 +18917,11 @@ input[type=submit] {
   margin: 0px;
 }
 
+@media screen and (max-width: 1115px) {
+  .press-actu .header-press p {
+    width: 321px !important;
+  }
+}
 .press-actu .section {
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -18911,7 +18933,7 @@ input[type=submit] {
   border-bottom: 1px solid #e3e3e3 !important;
 }
 .press-actu .header-press p {
-  width: 412px;
+  width: 429px;
 }
 .press-actu .section .txt h2 {
   color: #fff;
