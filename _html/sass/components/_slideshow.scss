@@ -604,10 +604,15 @@ div.chocolat-wrapper {
     position: absolute;
     z-index: 50;
     border: 1px solid $gold;
+    text-align: center;
     @include transition(opacity 0.3s $smoothTransition);
 
     &.hide {
       opacity: 0;
+    }
+    .icon{
+      color: $gold;
+      line-height: 80px;
     }
   }
 

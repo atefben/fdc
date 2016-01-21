@@ -5499,6 +5499,7 @@ div.chocolat-wrapper .zoomCursor {
   position: absolute;
   z-index: 50;
   border: 1px solid #c8a461;
+  text-align: center;
   -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5506,6 +5507,10 @@ div.chocolat-wrapper .zoomCursor {
 }
 div.chocolat-wrapper .zoomCursor.hide {
   opacity: 0;
+}
+div.chocolat-wrapper .zoomCursor .icon {
+  color: #c8a461;
+  line-height: 80px;
 }
 
 .chocolat-zoomable .zoomCursor {
