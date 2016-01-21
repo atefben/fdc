@@ -5766,8 +5766,6 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 
 .close-button {
-  background: url("../img/svg/close-gold.svg") no-repeat center;
-  background-size: 15px;
   border: 1px solid #c8a461;
   cursor: pointer;
   height: 85px;
@@ -5780,9 +5778,14 @@ div.chocolat-wrapper .zoomCursor .icon {
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  text-align: center;
 }
 .close-button:hover {
   opacity: 1;
+}
+.close-button .icon {
+  color: #c8a461;
+  line-height: 85px;
 }
 
 .audio-player {
@@ -16040,8 +16043,6 @@ input[type=submit] {
   position: absolute;
   top: 7px;
   right: 10px;
-  background: url("../img/svg/close-white.svg") no-repeat center;
-  background-size: cover;
   height: 12px;
   width: 12px;
 }
