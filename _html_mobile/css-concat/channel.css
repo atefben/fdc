@@ -5131,8 +5131,7 @@ article .picto .icon{
   font-weight: normal;
 }
 /* today container */
-.darker-container{
-  background: #0e0e0e;
+#today{
   border-top: solid 1px #2c2c2c;
 }
 
@@ -5140,11 +5139,11 @@ article .picto .icon{
   color:white;
   padding: 50px 0;
   margin: 0 auto;
-  width:400px;
+  
 }
 
 #today.darker-container .title{
-  width: 480px;
+  /*width: 480px;*/
 }
 
 #today .special-event{
