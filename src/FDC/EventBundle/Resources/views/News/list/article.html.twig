@@ -43,5 +43,23 @@
     </div>
     <a id="next" href="articles2.html"></a>
 </div>
+
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.articles'|trans ,
+        "url"  : path('fdc_event_news_getarticles')
+    },
+]
+} %}
+
 {% endblock %}
+
+
 

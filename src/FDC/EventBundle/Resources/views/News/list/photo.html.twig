@@ -13,15 +13,20 @@
         {% for photo in photos %}
             <div class="item {{ photo.theme }} {{ photo.filter.date }} {{ photo.format }} shadow-bottom photo">
                 <a id="photo1" class="ajax chocolat-image" href="{{ photo.image.path }}"
-                   title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo.createdAt|date('d.m.y') }}</span><h2>{{ photo.title }}</h2>'
+                   title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ photo|trans_fallback('title') }}</h2>'
                    data-credit="{{ photo.copyright }}"></a>
-                <img src="{{ photo.image.src }}" srcset="{{ photo.image.src }} 1x, {{ photo.image.large }} 2x" alt="">
+                {% set trans = photo.image.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = photo.image.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                {% thumbnail file, 'big' with {'alt': photo.image|trans_fallback('alt') } %}
                 <div class="picto"></div>
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">{{ photo.theme }}</a><span class="date">{{ photo.createdAt|date('d.m.y') }}</span>
-                            <p>{{ photo.title }}</p>
+                            <a href="#" class="category">{{ photo.theme }}</a><span class="date">{{ photo|trans_fallback('createdAt')|date('d.m.y')}}</span>
+                            <p>{{ photo|trans_fallback('title') }}</p>
                         </div>
                     </div>
                 </div>
@@ -30,5 +35,22 @@
 
     </div>
 </div>
+
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.photos'|trans ,
+        "url"  : path('fdc_event_news_getphotos')
+    },
+]
+} %}
 {% endblock %}
+
+
 

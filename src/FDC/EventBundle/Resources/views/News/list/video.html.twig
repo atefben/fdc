@@ -13,15 +13,20 @@
         {% for video in videos %}
             <div class="item {{ video.filter.theme }} {{ video.filter.date }} shadow-bottom video">
                 <a id="video1" class="ajax chocolat-image" href="{{ video.image.path }}"
-                   title='<span class="category">{{ video.theme }}</span><span class="date">{{ video.createdAt|date('d.m.y') }}</span><h2>{{ video.title }}</h2>'
+                   title='<span class="category">{{ video.theme }}</span><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ video|trans_fallback('title') }}</h2>'
                    data-credit="{{ video.copyright }}"></a>
-                <img src="{{ video.image.src }}" srcset="{{ video.image.src }} 1x, {{ video.image.large }} 2x" alt="">
+                {% set trans = video.image.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = video.image.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                {% thumbnail file, 'big' with {'alt': video.image|trans_fallback('alt') } %}
                 <div class="picto"></div>
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">{{ video.theme }}</a><span class="date">{{ video.createdAt|date('d.m.y') }}</span>
-                            <p>{{ video.title }}</p>
+                            <a href="#" class="category">{{ video.theme }}</a><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span>
+                            <p>{{ video|trans_fallback('title') }}</p>
                         </div>
                     </div>
                 </div>
@@ -30,5 +35,19 @@
 
     </div>
 </div>
-{% endblock %}
 
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.videos'|trans ,
+        "url"  : path('fdc_event_news_getvideos')
+    },
+]
+} %}
+{% endblock %}
