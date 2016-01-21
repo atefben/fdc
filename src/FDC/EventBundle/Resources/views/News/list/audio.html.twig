@@ -11,7 +11,7 @@
         <div class="grid-sizer"></div>
 
         {% for audio in audios %}
-            <div class="item {{ audio.filter.theme }} {{ audio.filter.date }} shadow-bottom video" data-sound="{{ audio.sound }}">
+            <div class="item {{ article.theme|trans_fallback('name') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video" data-sound="{{ audio.sound }}">
 
                 <img src="{{ audio.image.src }}" srcset="{{ audio.image.src }} 1x, {{ audio.image.large }} 2x" alt="">
                 <div class="picto"></div>
