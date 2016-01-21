@@ -96,19 +96,26 @@ if($('.searchpage').length) {
           }
         });
       }
+          if($('#horizontal-menu a.active').hasClass('all')){
+            $('#filtered').css('display','none');
+            $('.result').show();
+          }else{
+            $('#filtered').css('display','block');
+          }
 
-
-      $('.resultWrapper, #filtered').fadeOut(500, function() {
-
+      $('.result, #filtered').animate({'opacity':'0'},200, function() {
+        $('#filteredContent').empty();
+        
         setTimeout(function() {
 
           if($this.hasClass('all')) {
-            $('.result').fadeIn();
+            
+            $('.result').animate({'opacity':'1'},200);
             return false;
           }
 
           var $activeEl = $('#horizontal-menu a.active');
-
+          
           if($activeEl.hasClass('artists') || $activeEl.hasClass('events') || $activeEl.hasClass('films') || $activeEl.hasClass('participate')) {
             $('.filters').hide();
           } else {
@@ -116,7 +123,7 @@ if($('.searchpage').length) {
 
           }
 
-          $('#filteredContent').empty();
+          
           var url = $this.data('ajax');
 
           $.ajax({
@@ -141,7 +148,7 @@ if($('.searchpage').length) {
 
       			    slider.owlCarousel();
               }else{
-              	var sliderArticles = $(" #filteredContent.landscape-carousel").owlCarousel({ 
+              	var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({ 
         			      nav: false,
         			      dots: false,
         			      smartSpeed: 500,
@@ -155,8 +162,8 @@ if($('.searchpage').length) {
 
 	               sliderArticles.owlCarousel();
               }
-                $('#filtered').fadeIn();
-                  var filters = $(".filters-slider").owlCarousel({
+              $('#filtered').animate({'opacity':'1'},200);
+              var filters = $(".filters-slider").owlCarousel({
             			  nav: false,
             			  dots: false,
             			  smartSpeed: 500,
@@ -172,7 +179,7 @@ if($('.searchpage').length) {
             			    $('#filters-menu .owl-stage').css({ 'padding-left': '0' });
             			  }
             			});
-                  $('.result').addClass('hidden');
+                  $('.result').hide();
             }
           });
 
@@ -196,36 +203,36 @@ if($('.searchpage').length) {
           $('#noResult').show();
           return false;
         } else {
-          $('.resultWrapper').show();
-          $('#count span, #colSearch .all span').text(data.all.count);
+          $('.result').show();
+          $('#horizontal-menu .all span').text(data.all.count);
 
           // ARTISTS
           var artists = data.persons;
-          $('#colSearch .artists span').text(artists.count);
+          $('#horizontal-menu .artists span').text(artists.count);
 
           // FILMS
           var films = data.films;
-          $('#colSearch .films span').text(films.count);
+          $('#horizontal-menu .films span').text(films.count);
 
           // FILMS
           var medias = data.medias;
-          $('#colSearch .medias span').text(medias.count);
+          $('#horizontal-menu .medias span').text(medias.count);
 
           // NEWS
           var news = data.news;
-          $('#colSearch .news span').text(news.count);
+          $('#horizontal-menu .news span').text(news.count);
 
           // COMMUNIQUES
           var communiques = data.communiques;
-          $('#colSearch .communiques span').text(communiques.count);
+          $('#horizontal-menu .communiques span').text(communiques.count);
 
           // EVENTS
           var events = data.events;
-          $('#colSearch .events span').text(events.count);
+          $('#horizontal-menu .events span').text(events.count);
 
           // PARTICIPATE
           var participate = data.participate;
-          $('#colSearch .participate span').text(participate.count);
+          $('#horizontal-menu .participate span').text(participate.count);
         }
       }
     });
