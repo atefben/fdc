@@ -10802,13 +10802,14 @@ article .read-later.rAlign span:after {
 .single-movie .nav.black {
   border-color: #dfdfdf;
 }
+.single-movie .nav.black .icon {
+  color: #949494 !important;
+}
 .single-movie .nav.hide {
   opacity: 0;
   visibility: hidden;
 }
 .single-movie .nav.prev {
-  background: url("../img/svg/arrow-left-white.svg") no-repeat center;
-  background-size: 15px;
   left: 2%;
 }
 .single-movie .nav.prev.trailer {
@@ -10818,6 +10819,7 @@ article .read-later.rAlign span:after {
 .single-movie .nav.prev .icon {
   color: #000;
   margin: 32px;
+  color: #fff;
 }
 .single-movie .nav.next {
   left: auto;
@@ -10828,7 +10830,7 @@ article .read-later.rAlign span:after {
   right: -85px;
 }
 .single-movie .nav.next .icon {
-  color: #000;
+  color: #fff;
   margin: 32px;
 }
 .single-movie .main-image {
