@@ -710,7 +710,7 @@ class NewsController extends Controller
             //check if filters don't already exist
             if(!in_array($newsArticle->getPublishedAt(),$filters['dates'])) {
                 $date = $newsArticle->getPublishedAt();
-                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+                $filters['dates'][] = ($date != null) ? $date : null;
             }
 
             if(!in_array($newsArticle->getTheme()->getName(),$filters['themes']['content'])) {
