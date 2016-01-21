@@ -74,12 +74,22 @@ class MediaVideoTranslation implements TranslateChildInterface
     private $theme;
 
     /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     *
+     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
+     */
+    private $image;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->sites = new ArrayCollection();
     }
+
 
     /**
      * Set akamaiId
@@ -199,10 +209,10 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @param \Base\CoreBundle\Entity\Theme $theme
      * @return MediaVideoTranslation
      */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
         $this->theme = $theme;
 
@@ -212,10 +222,33 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\NewsTheme 
+     * @return \Base\CoreBundle\Entity\Theme 
      */
     public function getTheme()
     {
         return $this->theme;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     * @return MediaVideoTranslation
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

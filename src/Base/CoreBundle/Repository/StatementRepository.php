@@ -65,6 +65,48 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
+    public function getSameDayStatement($festival, $locale, $dateTime)
+    {
+        $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
+        $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
+
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'na2', 'WITH', 'na2.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftjoin('na1.translations', 'na1t')
+            ->leftjoin('na2.translations', 'na2t')
+            ->leftjoin('na3.translations', 'na3t')
+            ->leftjoin('na4.translations', 'na4t')
+            ->where('s.slug = :site_slug')
+            ->andWhere('n.festival = :festival')
+            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt < :datetime2)');
+
+        $qb = $qb
+            ->andWhere(
+                '(na1t.locale = :locale AND na1t.status = :status) OR
+                (na2t.locale = :locale AND na2t.status = :status) OR
+                (na3t.locale = :locale AND na3t.status = :status) OR
+                (na4t.locale = :locale AND na4t.status = :status)'
+            )
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+
+
+        $qb = $qb
+            ->setParameter('festival', $festival)
+            ->setParameter('locale', $locale)
+            ->setParameter('datetime', $dateTime1)
+            ->setParameter('datetime2', $dateTime2)
+            ->setParameter('site_slug', 'site-evenementiel')
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+    }
+
     public function getStatementArticles($locale, $festival, $dateTime)
     {
         $qb = $this

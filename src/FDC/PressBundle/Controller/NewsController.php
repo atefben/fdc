@@ -374,7 +374,7 @@ class NewsController extends Controller
 
     /**
      * @Route("/press-articles/{slug}")
-     * @Template("FDCEventBundle:News:main.html.twig")
+     * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
      * @return array
      */
@@ -394,7 +394,7 @@ class NewsController extends Controller
         }
 
         // GET NEWS
-        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug(
+        $statement = $em->getRepository('BaseCoreBundle:Statement')->getStatementBySlug(
             $slug,
             $settings->getFestival()->getId(),
             $locale,
@@ -402,16 +402,35 @@ class NewsController extends Controller
             $isAdmin
         );
 
-        if ($news === null) {
+        if ($statement === null) {
             throw new NotFoundHttpException();
         }
 
         // SEO
-        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+        //$this->get('base.manager.seo')->setFDCPressPageStatementSeo($statement, $locale);
+
+        //get associated film to the news
+        $associatedFilm = $statement->getAssociatedFilm();
+        $associatedFilmDuration = null;
+        $programmations = array();
+
+        if ($associatedFilm !== null) {
+            $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
+            foreach($associatedFilm->getProjectionProgrammationFilms() as $projection) {
+                $programmations[] = $projection->getProjection();
+            }
+        }
+
+        //get day articles
+        $statementDate = $statement->getPublishedAt();
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:Statement')->getSameDayStatement($settings->getFestival()->getId(),$locale,$statementDate);
 
         return array(
-            'news' => $news,
-            //  'article' => $article
+            'programmations' => $programmations,
+            'associatedFilmDuration' => $associatedFilmDuration,
+            'news' => $statement,
+            'associatedFilm' => $associatedFilm,
+            'sameDayArticles' => $sameDayArticles,
         );
     }
 
@@ -435,9 +454,9 @@ class NewsController extends Controller
         }
 
         //GET ALL NEWS ARTICLES
-        $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
+        $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
 
-        if ($statementArticles === null) {
+        if ($statements === null) {
             throw new NotFoundHttpException();
         }
 
@@ -471,25 +490,23 @@ class NewsController extends Controller
         $years = array();
         $themes = array();
 
-        foreach($statementArticles as $statementArticle) {
+        foreach($statements as $statement) {
 
-            if (!in_array($statementArticle->getPublishedAt()->format('Y'), $years)) {
-                $filters['dates'][$i]['slug'] =  $statementArticle->getPublishedAt()->format('Y');
-                $filters['dates'][$i]['content'] = $statementArticle->getPublishedAt()->format('Y');
+            if (!in_array($statement->getPublishedAt()->format('Y'), $years)) {
+                $filters['dates'][$i]['slug'] =  $statement->getPublishedAt()->format('Y');
+                $filters['dates'][$i]['content'] = $statement->getPublishedAt()->format('Y');
 
-                $years[] = $statementArticle->getPublishedAt()->format('Y');
+                $years[] = $statement->getPublishedAt()->format('Y');
             }
 
-            if (!in_array($statementArticle->getTheme()->getSlug(), $themes)) {
-                $filters['themes'][$i]['slug'] = $statementArticle->getTheme()->getSlug();
-                $filters['themes'][$i]['content'] = $statementArticle->getTheme()->getName();
+            if (!in_array($statement->getTheme()->getSlug(), $themes)) {
+                $filters['themes'][$i]['slug'] = $statement->getTheme()->getSlug();
+                $filters['themes'][$i]['content'] = $statement->getTheme()->getName();
 
-                $themes[] = $statementArticle->getTheme()->getSlug();
+                $themes[] = $statement->getTheme()->getSlug();
             }
 
         }
-
-        $articles = $statementArticles;
 
         $headerInfo = array(
             'title' => 'Communiqués et infos',
@@ -499,7 +516,7 @@ class NewsController extends Controller
         return array(
             'headerInfo'  => $headerInfo,
             'filters' => $filters,
-            'statementArticles' => $articles,
+            'statementArticles' => $statements,
         );
 
     }

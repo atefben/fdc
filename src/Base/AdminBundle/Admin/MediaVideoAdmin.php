@@ -79,6 +79,14 @@ class MediaVideoAdmin extends Admin
                         'provider' => 'sonata.media.provider.file',
                         'context' => 'statement_video',
                     ),
+                    'image' => array(
+                        'required' => $requiredFile,
+                        'field_type' => 'sonata_media_type',
+                        'sonata_help' => 'form.media_image.helper_file',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'provider' => 'sonata.media.provider.image',
+                        'context' => 'news_header_image',
+                    ),
                     'akamaiId' => array(
                         'label' => 'form.label_akamai_id',
                         'translation_domain' => 'BaseAdminBundle',
@@ -111,13 +119,6 @@ class MediaVideoAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                 )
-            ))
-            ->add('image', 'sonata_media_type', array(
-                'required' => $requiredFile,
-                'sonata_help' => 'form.media_image.helper_file',
-                'translation_domain' => 'BaseAdminBundle',
-                'provider' => 'sonata.media.provider.image',
-                'context' => 'news_header_image',
             ))
             ->add('sites', null, array(
                 'label' => 'form.label_publish_on',

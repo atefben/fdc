@@ -1,5 +1,5 @@
 <?php
- 
+
 namespace Base\CoreBundle\Twig\Extension;
 
 use \Twig_Extension;
@@ -12,7 +12,7 @@ use Base\CoreBundle\Entity\StatementVideo;
 
 /**
  * StatementInstanceOfExtension class.
- * 
+ *
  * @extends Twig_Extension
  * @author  Antoine Mineau
  * @company Ohwee
@@ -21,7 +21,7 @@ class StatementInstanceOfExtension extends Twig_Extension
 {
     /**
      * getTests function.
-     * 
+     *
      * @access public
      * @return void
      */
@@ -37,7 +37,7 @@ class StatementInstanceOfExtension extends Twig_Extension
 
     /**
      * getName function.
-     * 
+     *
      * @access public
      * @return void
      */
