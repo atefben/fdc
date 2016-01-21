@@ -377,7 +377,7 @@ $(document).ready(function () {
           $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
         },
         eventClick: function (event, jsEvent, view) {
-          if ($(jsEvent.target).hasClass('del')) {
+          if ($(jsEvent.target).hasClass('del') || $(jsEvent.target).hasClass('icon_close')) {
             return;
           } else {
             openPopinEvent(event.url);
