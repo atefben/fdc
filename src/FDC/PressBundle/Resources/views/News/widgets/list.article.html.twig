@@ -1,0 +1,53 @@
+{% if article is statement_article %}
+    {% set trans = article.header.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = article.header.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.file %}
+    {% set articleType = "article" %}
+{% elseif article is statement_audio %}
+    {% set trans = article.audio.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = article.audio.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.image %}
+    {% set articleType = "audio" %}
+{% elseif article is statement_video %}
+    {% set trans = article.video.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = article.video.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.image %}
+    {% set articleType = "video" %}
+{% elseif article is statement_image %}
+    {% set file = "" %}
+    {% for gallery in article.gallery.medias %}
+        {% if loop.first %}
+            {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = gallery.media.file.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+        {% endif %}
+    {% endfor %}
+    {% set articleType = "image" %}
+{% endif %}
+<div class="item all {{ articleType }} {{ article.theme.slug }}">
+    <article class="article">
+        <div class="img">
+            <span class="picto"><i class="icon icon_communique-presse"></i></span>
+            <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
+                {% thumbnail file, 'big' with {'alt': article|trans_fallback('title') } %}
+            </a>
+        </div>
+        <div class="info">
+            <a href="#" class="category">{{ article.theme }}</a>
+            <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+            <h3>
+                <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
+                    {{ article|trans_fallback('title')}}
+                </a>
+            </h3>
+        </div>
+    </article>
+</div>

@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsAdmin extends Admin
+class InfoAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper

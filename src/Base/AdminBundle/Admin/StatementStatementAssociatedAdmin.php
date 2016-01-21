@@ -54,7 +54,7 @@ class StatementStatementAssociatedAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
+            ->add('association', 'sonata_type_model_list', array('btn_delete' => true))
         ;
     }
 
@@ -68,5 +68,13 @@ class StatementStatementAssociatedAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function preUpdate($object)
+    {
+        exit('ok');
+        foreach ($object->getStatement() as $statement) {
+            $statement->setStatement($object);
+        }
     }
 }

@@ -260,12 +260,15 @@ class GlobalController extends Controller
         $breadcrumb = array(
             array(
                 'name' => 'L\'actualité',
+                'url' => '#',
             ),
             array(
                 'name' => 'Jour après jour',
+                'url' => '#',
             ),
             array(
                 'name' => 'Lorem Ipsum',
+                'url' => '#',
             )
         );
 
