@@ -18,8 +18,8 @@
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">{{ audio.theme }}</a><span class="date">{{ audio.createdAt|date('d.m.y') }}</span>
-                            <p>{{ audio.title }}</p>
+                            <a href="#" class="category">{{ audio.theme }}</a><span class="date">{{ audio|trans_fallback('createdAt')|date('d.m.y') }}</span>
+                            <p>{{ audio|trans_fallback('title') }}</p>
                         </div>
                     </div>
                 </div>
@@ -28,5 +28,20 @@
 
     </div>
 </div>
+
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.audios'|trans ,
+        "url"  : path('fdc_event_news_getaudios')
+    },
+]
+} %}
 {% endblock %}
 
