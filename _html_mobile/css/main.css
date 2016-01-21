@@ -1694,12 +1694,12 @@ article .picto .icon{
 }
 .slideshow h3 {
     color: #c8a461;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-    margin-top: 25px;
-    text-transform: uppercase;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  text-transform: uppercase;
 }
 .slideshow .caption {
   color: #666;
