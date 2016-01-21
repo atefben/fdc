@@ -13163,8 +13163,7 @@ input[type=submit] {
   text-transform: uppercase;
 }
 .webtv #live .img {
-  background-position: center 30%;
-  background-repeat: no-repeat;
+  background: center 0 no-repeat fixed;
   background-size: cover;
   opacity: 0.5;
   position: absolute;
@@ -13476,6 +13475,7 @@ input[type=submit] {
   width: 100%;
 }
 .webtv-ba #live {
+  background: center 0 no-repeat fixed;
   background-size: cover;
 }
 .webtv-ba #live h2 {
@@ -14880,12 +14880,43 @@ input[type=submit] {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
 
+@media screen and (min-width: 1920px) {
+  .app {
+    background-position: 424px 113px !important;
+  }
+}
+@media screen and (min-width: 1700px) and (max-width: 1919px) {
+  .app {
+    background-position: 356px 113px !important;
+  }
+}
+@media screen and (min-width: 1401px) and (max-width: 1699px) {
+  .app {
+    background-position: 213px 113px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1400) {
+  .app {
+    background-position: 85px 113px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .app {
+    background-position: -132px 113px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .app {
+    background-position: -132px 113px !important;
+  }
+}
 .app {
   height: 533px;
   background-color: #000 !important;
   background-image: url(../img/app.png);
   background-repeat: no-repeat;
   background-position: 133px 113px;
+  transition: .5s;
 }
 .app .contain-app {
   height: 533px;
