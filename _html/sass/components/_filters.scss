@@ -44,7 +44,7 @@
         background: url('../img/svg/arrow-down-gold.svg') no-repeat right center;
         background-size: 6px;
         display: none;
-        padding-right: 13px; // todo CSS // 
+        padding-right: 13px; // todo CSS //
 
         &.active {
           display: inline-block;
@@ -139,8 +139,6 @@
 }
 
 .close-button {
-  background: url('../img/svg/close-gold.svg') no-repeat center;
-  background-size: 15px;
   border: 1px solid $gold;
   cursor: pointer;
   height: 85px;
@@ -150,8 +148,14 @@
   right: 5%;
   width: 85px;
   @include transition(all 0.9s $smoothTransition);
-
+  text-align: center;
+  
   &:hover {
     opacity: 1;
+  }
+
+  .icon{
+    color:$gold;
+    line-height: 85px;
   }
 }

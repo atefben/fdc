@@ -8,14 +8,14 @@ function filter() {
   $('.filter').each(function() {
     var $that = $(this);
     var a = $that.find('.select span.active').data('filter');
-    
+
     if(a == 'all') {
       $('.content-news .slideshow').show();
       return;
     }
 
     var obj = {'filter': $that.attr('id'), 'value': a};
-    
+
     filters.push(obj);
   });
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
     var h = $(this).parent().html();
 
     $('#filters').remove();
-    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"></div></div>');
+    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
     $('#filters .vCenterKid').html(h);
     $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
 

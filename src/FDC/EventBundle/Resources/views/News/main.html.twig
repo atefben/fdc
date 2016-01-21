@@ -129,15 +129,17 @@
             {% endif %}
         </div>
         <div class="container">
+            {% if focusArticles != null and focusArticles|length > 0 %}
             <div class="focus">
                 <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                 <div class="articles">
-                    {% for article in sameDayArticles %}
+                    {% for article in focusArticles %}
                         {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                     {% endfor %}
                 </div>
             </div>
-            {% if sameDayArticles != null %}
+            {% endif %}
+            {% if sameDayArticles != null and sameDayArticles|length > 0 %}
             <div class="same-day">
                 <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
                 <div class="articles center">
@@ -162,23 +164,23 @@
 }}
 <!-- END POPIN MAIL SHARE -->
 
-    <!-- BREADCRUMB -->
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-    {"breadcrumb":
-    [
-        {
-            "name" : 'header.mainnav.nav.jourapresjour'|trans ,
-            "url"  : path('fdc_event_news_index')
-        },
-        {
-            "name" : 'header.mainnav.nav.articles'|trans ,
-            "url"  : path('fdc_event_news_getarticles')
-        },
-        {
-            "name" : news|trans_fallback('title') ,
-            "url"  : ''
-        }
-    ]
-    } %}
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.articles'|trans ,
+        "url"  : path('fdc_event_news_getarticles')
+    },
+    {
+        "name" : news|trans_fallback('title') ,
+        "url"  : ''
+    }
+]
+} %}
 
 {% endblock %}

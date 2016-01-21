@@ -3300,8 +3300,8 @@ body {
 }
 @font-face {
   font-family: "icons";
-  src: url("../fonts/icons.eot?078519789cf30d43d57e470eff06feb2");
-  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?078519789cf30d43d57e470eff06feb2") format("woff"), url("../fonts/icons.ttf?078519789cf30d43d57e470eff06feb2") format("truetype");
+  src: url("../fonts/icons.eot?16e2b826b80be4a75d3910a5fb350334");
+  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?16e2b826b80be4a75d3910a5fb350334") format("woff"), url("../fonts/icons.ttf?16e2b826b80be4a75d3910a5fb350334") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -5246,8 +5246,7 @@ div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
 }
 div.chocolat-wrapper .chocolat-bottom .buttons a .icon {
   font-size: 1rem;
-  position: relative;
-  top: 18px;
+  line-height: 75px;
 }
 div.chocolat-wrapper .chocolat-bottom:after {
   content: '';
@@ -5285,10 +5284,12 @@ div.chocolat-wrapper .chocolat-bottom:hover .buttons {
 div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
   font-size: 2rem;
   color: white;
-  position: absolute;
-  left: 38px;
-  top: 22px;
+  position: relative;
   z-index: 100;
+  float: left;
+  line-height: 85px;
+  margin-left: 38px;
+  margin-right: -38px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
@@ -5383,13 +5384,12 @@ div.chocolat-wrapper .share {
   z-index: 20;
   right: 202px;
   position: absolute;
+  text-align: center;
 }
 div.chocolat-wrapper .share .icon {
+  line-height: 100px;
   color: #fff;
-  top: 42px;
-  left: 39px;
   font-size: 1.1rem;
-  position: absolute;
   -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -5416,10 +5416,10 @@ div.chocolat-wrapper .chocolat-left {
   height: 100px;
   margin-top: 0;
   z-index: 20;
+  text-align: center;
 }
 div.chocolat-wrapper .chocolat-left .icon {
-  margin-right: 43px;
-  margin-top: 43px;
+  line-height: 100px;
 }
 div.chocolat-wrapper .chocolat-right {
   background: none;
@@ -5431,10 +5431,10 @@ div.chocolat-wrapper .chocolat-right {
   height: 100px;
   margin-top: 0;
   z-index: 20;
+  text-align: center;
 }
 div.chocolat-wrapper .chocolat-right .icon {
-  margin-right: 43px;
-  margin-top: 43px;
+  line-height: 100px;
 }
 div.chocolat-wrapper .chocolat-content {
   height: 100%;
@@ -5498,6 +5498,7 @@ div.chocolat-wrapper .zoomCursor {
   position: absolute;
   z-index: 50;
   border: 1px solid #c8a461;
+  text-align: center;
   -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5505,6 +5506,10 @@ div.chocolat-wrapper .zoomCursor {
 }
 div.chocolat-wrapper .zoomCursor.hide {
   opacity: 0;
+}
+div.chocolat-wrapper .zoomCursor .icon {
+  color: #c8a461;
+  line-height: 80px;
 }
 
 .chocolat-zoomable .zoomCursor {
@@ -5565,6 +5570,10 @@ div.chocolat-wrapper .zoomCursor.hide {
     height: 60px;
     width: 60px;
   }
+  div.chocolat-wrapper .chocolat-bottom .buttons .button .icon {
+    top: auto;
+    line-height: 60px;
+  }
   div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
     width: 59px;
   }
@@ -5588,6 +5597,21 @@ div.chocolat-wrapper .zoomCursor.hide {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
 
+@media screen and (max-width: 1600px) {
+  div.chocolat-wrapper .chocolat-right .icon, div.chocolat-wrapper .chocolat-left .icon, div.chocolat-wrapper .share .icon {
+    line-height: 80px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
+    font-size: 2rem;
+    color: white;
+    position: relative;
+    z-index: 100;
+    float: left;
+    line-height: 65px;
+    margin-left: 28px;
+    margin-right: -51px;
+  }
+}
 .filters {
   text-align: center;
 }
@@ -5745,8 +5769,6 @@ div.chocolat-wrapper .zoomCursor.hide {
 }
 
 .close-button {
-  background: url("../img/svg/close-gold.svg") no-repeat center;
-  background-size: 15px;
   border: 1px solid #c8a461;
   cursor: pointer;
   height: 85px;
@@ -5759,9 +5781,14 @@ div.chocolat-wrapper .zoomCursor.hide {
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  text-align: center;
 }
 .close-button:hover {
   opacity: 1;
+}
+.close-button .icon {
+  color: #c8a461;
+  line-height: 85px;
 }
 
 .audio-player {
@@ -10768,7 +10795,7 @@ article .read-later.rAlign span:after {
 }
 @media screen and (max-width: 1024px) {
   .single-movie .nav {
-    top: 62px;
+    top: 57%;
     margin-top: 0;
   }
 }
@@ -13139,8 +13166,7 @@ input[type=submit] {
   text-transform: uppercase;
 }
 .webtv #live .img {
-  background-position: center 30%;
-  background-repeat: no-repeat;
+  background: center 0 no-repeat fixed;
   background-size: cover;
   opacity: 0.5;
   position: absolute;
@@ -13452,6 +13478,7 @@ input[type=submit] {
   width: 100%;
 }
 .webtv-ba #live {
+  background: center 0 no-repeat fixed;
   background-size: cover;
 }
 .webtv-ba #live h2 {
@@ -14856,12 +14883,43 @@ input[type=submit] {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
 
+@media screen and (min-width: 1920px) {
+  .app {
+    background-position: 424px 113px !important;
+  }
+}
+@media screen and (min-width: 1700px) and (max-width: 1919px) {
+  .app {
+    background-position: 356px 113px !important;
+  }
+}
+@media screen and (min-width: 1401px) and (max-width: 1699px) {
+  .app {
+    background-position: 213px 113px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1400) {
+  .app {
+    background-position: 85px 113px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .app {
+    background-position: -132px 113px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .app {
+    background-position: -132px 113px !important;
+  }
+}
 .app {
   height: 533px;
   background-color: #000 !important;
   background-image: url(../img/app.png);
   background-repeat: no-repeat;
   background-position: 133px 113px;
+  transition: .5s;
 }
 .app .contain-app {
   height: 533px;
@@ -16019,8 +16077,6 @@ input[type=submit] {
   position: absolute;
   top: 7px;
   right: 10px;
-  background: url("../img/svg/close-white.svg") no-repeat center;
-  background-size: cover;
   height: 12px;
   width: 12px;
 }
@@ -17002,6 +17058,12 @@ input[type=submit] {
 .press.press-home .popin-event {
   height: 1012px;
 }
+@media screen and (max-width: 1024px) {
+  .press.press-home .popin-event {
+    height: auto;
+    min-height: 1012px;
+  }
+}
 .press.press-home.calendar-open #calendar, .press.press-programmation #calendar {
   display: block;
 }
@@ -17070,6 +17132,23 @@ input[type=submit] {
 
 .fullcalendar .header-press {
   border: none;
+}
+.fullcalendar .header-press .container {
+  position: relative;
+}
+.fullcalendar .header-press .container .buttons {
+  right: 0px;
+  position: absolute;
+  float: right;
+}
+.fullcalendar .header-press .container .buttons .button:hover {
+  color: #fff;
+  background-color: #c8a461;
+}
+.fullcalendar .header-press .container .buttons .export:hover {
+  background-color: #fff;
+  color: #c8a461;
+  opacity: 1;
 }
 .fullcalendar #calendar #mycalendar .fc-time-grid-container {
   height: auto !important;
@@ -17175,8 +17254,7 @@ input[type=submit] {
   color: #c8a461;
 }
 .popin-event .close-button .icon {
-  margin-top: 28px;
-  margin-left: 28px;
+  line-height: 72px;
 }
 .popin-event .close-button:hover {
   color: #000;
@@ -17286,6 +17364,11 @@ input[type=submit] {
   display: inline-block;
   margin-right: 20px;
   width: 225px;
+}
+@media screen and (max-width: 1024px) {
+  .popin-event .events-container .events-wrapper .event {
+    margin-bottom: 22px;
+  }
 }
 .popin-event .events-container .events-wrapper .event p {
   margin-bottom: 5px;
@@ -18507,7 +18590,7 @@ input[type=submit] {
   margin-bottom: 11px;
 }
 .downloading-press .block .container .imgs-container .container-img img {
-  border: 0px solid #dfdfdf‡;
+  border: 0px solid #dfdfdf;
   vertical-align: middle;
 }
 .downloading-press .block .container .imgs-container .container-img:before {
@@ -18878,6 +18961,11 @@ input[type=submit] {
   margin: 0px;
 }
 
+@media screen and (max-width: 1115px) {
+  .press-actu .header-press p {
+    width: 321px !important;
+  }
+}
 .press-actu .section {
   -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -18889,7 +18977,7 @@ input[type=submit] {
   border-bottom: 1px solid #e3e3e3 !important;
 }
 .press-actu .header-press p {
-  width: 412px;
+  width: 429px;
 }
 .press-actu .section .txt h2 {
   color: #fff;

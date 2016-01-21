@@ -189,7 +189,7 @@ $(document).ready(function () {
     });
   }
 
-  $('.subnav').hover(function () {
+  $('.subnav, .subnav icon').hover(function () {
     $('.button.list').addClass('show');
   });
 
@@ -377,7 +377,7 @@ $(document).ready(function () {
           $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
         },
         eventClick: function (event, jsEvent, view) {
-          if ($(jsEvent.target).hasClass('del')) {
+          if ($(jsEvent.target).hasClass('del') || $(jsEvent.target).hasClass('icon_close')) {
             return;
           } else {
             openPopinEvent(event.url);
@@ -822,8 +822,6 @@ $(document).ready(function () {
 
         $('.buttons:not(".active-btn")').on('click', function () {
 
-          console.log("1, on est ici");
-
           if ($('#popin-press').hasClass('visible-popin')) {
             $('#popin-press').removeClass('visible-popin');
 
@@ -846,9 +844,7 @@ $(document).ready(function () {
         });
       }
 
-      $(document).on('click', function (e) {
-
-          console.log("2, on est ici");
+      $(document).on('click',function (e) {
 
         var $element = $(e.target);
         if ($element.hasClass('visible-popin')) {
@@ -868,6 +864,30 @@ $(document).ready(function () {
         }
       });
 
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+        if(isiPad){
+          $(document).on('touchstart',function (e) {
+
+            var $element = $(e.target);
+            if ($element.hasClass('visible-popin')) {
+
+            } else {
+              var $isPopin = $element.closest('.visible-popin');
+              var isButton = $element.hasClass('buttons');
+
+              if ($isPopin.length || isButton) {
+
+              } else {
+                $('#popin-press').removeClass('visible-popin');
+                $("#main").removeClass('overlay-popin');
+                $('footer').removeClass('overlay');
+
+              }
+            }
+          });
+        }
+
     }
 
     // POPIN DOWNLOAD //
@@ -876,7 +896,7 @@ $(document).ready(function () {
     if ($('.press.lock').length && !$('.connected').length && $('.press-media').length ) {
       if ($('#popin-download-press').length) {
         $('.buttons.active-btn').on('click', function () {
-            console.log("3, on est ici");
+
           if ($('#popin-download-press').hasClass('visible-popin')) {
             $('#popin-download-press').removeClass('visible-popin');
 
@@ -904,7 +924,6 @@ $(document).ready(function () {
 
         $(document).on('click', function (e) {
 
-            console.log("4, on est ici");
           var $element = $(e.target);
           if ($element.hasClass('visible-popin')) {
 
@@ -921,6 +940,29 @@ $(document).ready(function () {
             }
           }
         });
+
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+        if(isiPad){
+          $(document).on('touchstart', function (e) {
+
+            var $element = $(e.target);
+            if ($element.hasClass('visible-popin')) {
+
+            } else {
+              var $isPopin = $element.closest('.visible-popin');
+              var isButton = $element.hasClass('buttons');
+
+              if ($isPopin.length || isButton) {
+
+              } else {
+                $('#popin-download-press').removeClass('visible-popin');
+                $("#main").removeClass('overlay-popin');
+                $('footer').removeClass('overlay');
+              }
+            }
+          });
+        }
       }
     }
 
@@ -929,7 +971,6 @@ $(document).ready(function () {
       if ($('#popin-download-press').length) {
         $('.buttons').on('click', function () {
 
-            console.log("6, on est ici");
           if ($('#popin-download-press').hasClass('visible-popin')) {
             $('#popin-download-press').removeClass('visible-popin');
 
@@ -973,6 +1014,28 @@ $(document).ready(function () {
             }
           }
         });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+        if(isiPad){
+          $(document).on('touchstart', function (e) {
+
+            var $element = $(e.target);
+            if ($element.hasClass('visible-popin')) {
+              //do nothing
+            } else {
+              var $isPopin = $element.closest('.visible-popin');
+              var isButton = $element.hasClass('buttons');
+
+              if ($isPopin.length || isButton) {
+                //do nothing
+              } else {
+                $('#popin-download-press').removeClass('visible-popin');
+                $("#main").removeClass('overlay-popin');
+                $('footer').removeClass('overlay');
+              }
+            }
+          });
+        }
       }
     }
   }
@@ -981,12 +1044,7 @@ $(document).ready(function () {
 
   if ($('#create-event-pop').length) {
     $('.create').on('click', function () {
-
-      if ($('#create-event-pop').hasClass('visible-popin')) {
-        $('#create-event-pop').removeClass('visible-popin');
-      } else {
-        $('#create-event-pop').addClass("visible-popin");
-      }
+      $('#create-event-pop').addClass("visible-popin");
     });
 
     $(document).keyup(function (e) {

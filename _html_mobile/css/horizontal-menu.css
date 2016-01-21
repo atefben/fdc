@@ -1,6 +1,7 @@
 #horizontal-menu{
   height: 110px;
   background-color: #202020;
+  z-index: 50;
 }
 
 #horizontal-menu .vid {

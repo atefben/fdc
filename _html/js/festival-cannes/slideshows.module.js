@@ -123,6 +123,10 @@ $('body').on('mouseover', '.chocolat-pagination', function() {
   $('.chocolat-content').addClass('thumbsOpen');
 });
 
+$('body').on('mouseour', '.chocolat-pagination', function() {
+  $(this).removeClass('active');
+});
+
 $('body').on('click', '.chocolat-bottom .share', function() {
   $('.chocolat-bottom .buttons').toggleClass('show');
 });
@@ -137,7 +141,7 @@ $('body').on('click', '.chocolat-image', function() {
   $('.chocolat-right').html('<i class="icon icon_fleche-right"></i>');
   $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
   $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
-  $('<div class="zoomCursor"></div>').appendTo('.chocolat-wrapper');
+  $('<div class="zoomCursor"><i class="icon icon_loupePlus"></i></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
   setTimeout(function() {
@@ -166,6 +170,7 @@ $('body').on('click', '.chocolat-image', function() {
   if ($('body').hasClass('mob')) {
     $('.chocolat-bottom').addClass('show');
   }
+
 
   $('.chocolat-wrapper .thumbnails').owlCarousel({
     nav: false,
@@ -259,11 +264,23 @@ $('body').on('mouseenter', '.chocolat-content', function(){
 
 var timeoutCursor;
 
+
+
 $('body').on('mousemove', '.chocolat-content', function(e){
   if ($('body').hasClass('mob')) return false;
 
+  if($('.chocolat-zoomed').length){
+    console.log('ooook');
+    $('.zoomCursor .icon').removeClass('icon_loupePlus').addClass('icon_loupeMoins');
+  }else{
+    console.log('nopppe');
+
+    $('.zoomCursor .icon').removeClass('icon_loupeMoins').addClass('icon_loupePlus');
+  }
   $('.zoomCursor').css('left', e.clientX + 10).css('top', e.clientY);
   $('.chocolat-bottom').addClass('show');
+
+
 
   clearTimeout(timeoutCursor);
   timeoutCursor = setTimeout(function() {
