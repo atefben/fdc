@@ -65,7 +65,12 @@
             <div class="title-original">(Adieu au langage)</div>
             <p>Réalisé par : <a href="#">Jean-Luc GODARD</a></p>
             <p>Année de production : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
-
+          </div>
+            <!-- <div class="palmares">
+              <i class="icon icon_palme"></i>
+              <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
+            </div> -->
+            <div class="info-film">
             <div  class="synopsis">
               <h3 class="title-section">Synopsis</h3>
               <p>Le propos est simple<br />

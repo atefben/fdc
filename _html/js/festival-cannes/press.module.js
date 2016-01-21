@@ -189,7 +189,7 @@ $(document).ready(function () {
     });
   }
 
-  $('.subnav').hover(function () {
+  $('.subnav, .subnav icon').hover(function () {
     $('.button.list').addClass('show');
   });
 
