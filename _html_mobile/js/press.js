@@ -76,6 +76,7 @@ $(document).ready(function() {
 
 		$('#popin-press form').on('submit', function(e) {
 
+			$('#popin-press #password').blur();
 		    e.preventDefault();
 
 		    var v = $(this).find('input[type="password"]').val();

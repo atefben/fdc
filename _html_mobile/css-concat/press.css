@@ -48,6 +48,12 @@ a {
     outline: none;
     text-decoration: none;
 }
+div{
+
+  -webkit-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
 
 /* for clearing any floats <br class=&quot;clearfloat&quot; /> */
 .clearfloat {
@@ -3548,7 +3554,7 @@ p{
 	background-color: rgba(0, 0, 0, 0.75);
     content: '';
     display: block;
-    height: 150%;
+    height: 200%;
     left: 0;
     position: absolute;
     top: 0;
