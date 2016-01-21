@@ -2545,6 +2545,9 @@ font-weight: 700;
   width: 100%;
   margin-left: 0;
 }
+#menu .active-page .section-title h3, #menu .second-nav .active-page a,#menu .third-nav .active-page a, #menu .footer-menu .active-page a{
+  color: #c8a461;
+}
 
 
 #searchContainer {
