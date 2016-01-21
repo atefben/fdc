@@ -882,6 +882,7 @@ $(document).ready(function () {
                 $('#popin-press').removeClass('visible-popin');
                 $("#main").removeClass('overlay-popin');
                 $('footer').removeClass('overlay');
+
               }
             }
           });
@@ -943,7 +944,8 @@ $(document).ready(function () {
         var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
         if(isiPad){
-          $(document).on('touchstart',function (e) {
+          $(document).on('touchstart', function (e) {
+
             var $element = $(e.target);
             if ($element.hasClass('visible-popin')) {
 
@@ -960,6 +962,7 @@ $(document).ready(function () {
               }
             }
           });
+        }
       }
     }
 
@@ -1011,11 +1014,10 @@ $(document).ready(function () {
             }
           }
         });
-
         var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
         if(isiPad){
-          $(document).on('touchstart',function (e) {
+          $(document).on('touchstart', function (e) {
 
             var $element = $(e.target);
             if ($element.hasClass('visible-popin')) {
@@ -1033,7 +1035,7 @@ $(document).ready(function () {
               }
             }
           });
-
+        }
       }
     }
   }
