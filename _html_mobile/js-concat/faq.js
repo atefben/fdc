@@ -257,6 +257,22 @@ $(document).ready(function() {
     });
 
 
+	// FIX HORIZONTAL MENU
+	$(window).on('scroll', function() {
+	    var s = $(this).scrollTop();
+	    console.log("s", s, $(".header-container").height() + $('.banner-img').height());
+	    if(s > $(".header-container").height() + $('.banner-img').height()){
+	    	$("#horizontal-menu").css('position','fixed');
+	    	$("#horizontal-menu").css('top',$(".header-container").height());
+	    }
+	    else{
+	    	$("#horizontal-menu").css('position','relative');
+	    	$("#horizontal-menu").css('top','inherit');	
+	    }
+	 });
+
+
+
 
 
 });
