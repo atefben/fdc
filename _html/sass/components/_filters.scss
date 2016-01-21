@@ -41,8 +41,6 @@
       }
 
       span {
-        background: url('../img/svg/arrow-down-gold.svg') no-repeat right center;
-        background-size: 6px;
         display: none;
         padding-right: 13px; // todo CSS //
 
@@ -149,7 +147,7 @@
   width: 85px;
   @include transition(all 0.9s $smoothTransition);
   text-align: center;
-  
+
   &:hover {
     opacity: 1;
   }

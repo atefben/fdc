@@ -35,8 +35,8 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a>
-                    <span>5 vidéos</span>
+                    <a href="#" class="category">bande annonce</a>
+                    <span>Rencontre avec l'équipe de Carol</span>
                   </div>
                 </div>
               </div>
@@ -52,8 +52,8 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a>
-                    <span>5 vidéos</span>
+                    <a href="#" class="category">bande annonce</a>
+                    <span>Rencontre avec l'équipe de Carol</span>
                   </div>
                 </div>
               </div>
@@ -69,8 +69,8 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a>
-                    <span>5 vidéos</span>
+                    <a href="#" class="category">bande annonce</a>
+                    <span>Rencontre avec l'équipe de Carol</span>
                   </div>
                 </div>
               </div>
@@ -86,8 +86,8 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a>
-                    <span>5 vidéos</span>
+                    <a href="#" class="category">bande annonce</a>
+                    <span>Rencontre avec l'équipe de Carol</span>
                   </div>
                 </div>
               </div>
@@ -214,8 +214,8 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">5 vidéos</a>
+                    <a href="#" class="category">bande annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
                   </div>
                 </div>
               </div>
@@ -232,8 +232,8 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">5 vidéos</a>
+                    <a href="#" class="category">bande annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
                   </div>
                 </div>
               </div>
@@ -250,8 +250,8 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">5 vidéos</a>
+                    <a href="#" class="category">bande annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
                   </div>
                 </div>
               </div>
@@ -268,8 +268,8 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">5 vidéos</a>
+                    <a href="#" class="category">bande annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
                   </div>
                 </div>
               </div>

@@ -405,7 +405,7 @@
   }
   #live {
     background: center 0 no-repeat fixed;
-    background-size: cover; 
+    background-size: cover;
     h2 {
       font-family: $Playfair;
       font-size: 1.75rem;
@@ -682,6 +682,7 @@
           font-family: $CamphorBold;
           font-size: 0.625rem;
           color: #666;
+          margin-bottom: 10px;
           .date {
             color: #bababa;
             margin-left: 5px;
