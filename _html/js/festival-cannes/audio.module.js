@@ -151,13 +151,14 @@ $(document).ready(function() {
         for(var i = 0; i < waves.length; i++) {
           waves[i].toggleMute();
         }
-        $(this).toggleClass('mute');
 
         if(!$(this).hasClass('mute')) {
           $('.audio-player .volume span').css('width',  '0%');
         } else {
           $('.audio-player .volume span').css('width',  '100%');
         }
+
+        $(this).toggleClass('mute');
       } else {
 
         var newVolume = e.offsetX / 100;
@@ -172,6 +173,14 @@ $(document).ready(function() {
       for(var i = 0; i < waves.length; i++) {
         waves[i].toggleMute();
       }
+
+      if(!$(this).hasClass('mute')) {
+        $(this).find('span').css('width',  '0%');
+      } else {
+        $(this).find('span').css('width',  '100%');
+      }
+
+      $(this).toggleClass('mute');
     }
   });
 
