@@ -3300,8 +3300,8 @@ body {
 }
 @font-face {
   font-family: "icons";
-  src: url("../fonts/icons.eot?5ffc0881adc0073875c39af97759294f");
-  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?5ffc0881adc0073875c39af97759294f") format("woff"), url("../fonts/icons.ttf?5ffc0881adc0073875c39af97759294f") format("truetype");
+  src: url("../fonts/icons.eot?16e2b826b80be4a75d3910a5fb350334");
+  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?16e2b826b80be4a75d3910a5fb350334") format("woff"), url("../fonts/icons.ttf?16e2b826b80be4a75d3910a5fb350334") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -17254,8 +17254,7 @@ input[type=submit] {
   color: #c8a461;
 }
 .popin-event .close-button .icon {
-  margin-top: 28px;
-  margin-left: 28px;
+  line-height: 72px;
 }
 .popin-event .close-button:hover {
   color: #000;
