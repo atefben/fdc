@@ -77,30 +77,73 @@ $(document).ready(function() {
 		menu.owlCarousel();
 
 });
-function closeSearch() {
-  $('html').removeClass('overlay');
-  
-    $('#searchContainer').removeClass('open');
-  $('#search').removeClass('opened');
-}
+
 
 $(document).ready(function() {
 
-  // Search
-  // =========================
-  
+  var openedKeyboard = false;
+function closeSearch() {
+  $('html').removeClass('overlay');
+    $('#searchContainer').removeClass('open');
+  $('#search').removeClass('opened');
+}
 
   function openSearch() {
     $(' html').addClass('overlay');
     $('#searchContainer').addClass('open');
     $('#inputSearch').focus();
   }  
+  function iosfixedfix(){
+    if ($(this).scrollTop()>90) {
+      $("#searchContainer").css({
+        'top':$(this).scrollTop()+90 +'px'
+      });
+      $("#header").css({
+        'top':$(this).scrollTop() +'px'
+      });
+    }else{
+      $("#searchContainer").css({
+        'top':'180px'
+      });
+      $("#header").css({
+        'top': '0px'
+      });
+    }
+  }
 
   $('body').on('click', '#suggest li', function(e) {
     var link = $(this).data('link');
 
     window.location = link;
   });
+  
+    /* bind events */
+    $("#inputSearch")
+    .on('focus', function() {
+        $("#searchContainer").addClass('fixfixed');
+        $("#header").addClass('fixfixed');
+        openedKeyboard = true;
+        iosfixedfix();
+        $(window).on({
+            'scroll': function(e) { 
+                if (openedKeyboard) {
+                  iosfixedfix();
+                }
+                
+            }
+        });
+    })
+    .on('blur', function() {
+        $("#searchContainer").removeClass('fixfixed');
+        $("#header").removeClass('fixfixed');
+        openedKeyboard = false;
+        $("#searchContainer").css({
+                    'top':''
+                  });
+                  $("#header").css({
+                    'top':''
+                  });
+    });
 
   $('.suggestSearch').on('input', function(e) {
     var value = $(this).val();
@@ -156,133 +199,7 @@ $(document).ready(function() {
     $('#search').toggleClass('opened');
   });
 
-  if($('.searchpage').length) {
 
-      $('#colSearch').css('left', ($(window).width() - 977) / 2);
-    
-    $( window ).resize( function(){
-      $('#colSearch').css('left', ($(window).width() - 977) / 2);
-    });
-
-    $('#colSearch a, .view-all').on('click', function(e) {
-      e.preventDefault();
-
-      var $this = $(this);
-
-      $('#colSearch a').removeClass('active');
-      
-      if($this.parents('#colSearch').length != 0) {
-        $this.addClass('active');
-      } else {
-        var cl = $this.data('class');
-        $('#colSearch a').each(function() {
-          if($(this).hasClass(cl)) {
-            $(this).addClass('active');
-          }
-        });
-      }
-
-      $('html, body').animate({
-        scrollTop: 0
-      }, 500);
-
-      $('.resultWrapper, #filtered').fadeOut(500, function() {
-
-        setTimeout(function() {
-
-          if($this.hasClass('all')) {
-            $('.resultWrapper').fadeIn();
-            return false;
-          }
-
-          var $activeEl = $('#colSearch a.active');
-
-          if($activeEl.hasClass('artists') || $activeEl.hasClass('events') || $activeEl.hasClass('films') || $activeEl.hasClass('participate')) {
-            $('.filters').hide();
-          } else {
-            $('.filters').show();
-          }
-
-          $('#filteredContent').empty();
-          var url = $this.data('ajax');
-
-          $.ajax({
-            type: "GET",
-            url: url,
-            success: function(data) {
-              $('#filteredContent').html(data);
-              $('#filtered').fadeIn();
-
-              $('#filteredContent').infinitescroll({
-                navSelector: ".next:last",
-                nextSelector: ".next:last",
-                itemSelector: ".infinite",
-                debug: false,
-                dataType: 'html',
-                path: function(index) {
-                  if($('.next:last').attr('href') == '#') {
-                    return false;
-                  }
-                  return $('.next:last').attr('href');
-                }
-              });
-            }
-          });
-
-        }, 700);
-      });
-    });
-
-    // test : remove once on server
-    if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') { //TODO a revoir//
-      $('#noResult').show();
-      $('#count span').text('0');
-      return false;
-    }
-
-    $.ajax({
-      type: "GET",
-      url: 'results.json', //TODO  a revoir//
-      success: function(data) {
-
-        if(data.all.count == 0) {
-          $('#noResult').show();
-          return false;
-        } else {
-          $('.resultWrapper').show();
-          $('#count span, #colSearch .all span').text(data.all.count);
-
-          // ARTISTS
-          var artists = data.persons;
-          $('#colSearch .artists span').text(artists.count);
-
-          // FILMS
-          var films = data.films;
-          $('#colSearch .films span').text(films.count);
-
-          // FILMS
-          var medias = data.medias;
-          $('#colSearch .medias span').text(medias.count);
-
-          // NEWS
-          var news = data.news;
-          $('#colSearch .news span').text(news.count);
-
-          // COMMUNIQUES
-          var communiques = data.communiques;
-          $('#colSearch .communiques span').text(communiques.count);
-
-          // EVENTS
-          var events = data.events;
-          $('#colSearch .events span').text(events.count);
-
-          // PARTICIPATE
-          var participate = data.participate;
-          $('#colSearch .participate span').text(participate.count);
-        }
-      }
-    });
-  }
 
 });
 /*!
@@ -327,69 +244,19 @@ function filter() {
       $(".list .item:not(."+a+")").css('display','none');
     }
      
-    // if(a == 'all') {
-    //   $('.content-news .slideshow').show();
-    //   return;
-    // }
-
-    // var obj = {'filter': $that.attr('id'), 'value': a};
-    
-    // filters.push(obj);
   });
 
   if($('.grid').length !== 0){
     $('.grid').isotope();
   }
 
-  
 
-
-  // var exp1 = '',
-  //     exp2 = '';
-
-  // for(var i=0; i<filters.length; i++) {
-  //   exp1 += '[data-' + filters[i].filter + ']';
-  //   exp2 += '[data-' + filters[i].filter + '="' + filters[i].value + '"]';
-  // }
-
-  // if($('#filteredArticles').length) {
-  //   $('#filteredArticles').remove();
-  // }
-
-  // console.log("FILTERS AND EXP", filters, exp1, exp2);
-
-  // if(filters.length !== 0) {
-  //   $('*' + exp1).hide();
-  //   $('*' + exp2).show();
-
-  // }
-
-  //   if($('.articles').length != 0) {
-  //     $('#articles-wrapper').prepend('<div class="articles center" id="filteredArticles"></div>');
-
-  //     $('.articles:not(.nextDay) article').each(function() {
-  //       if($(this).css('display') == 'block') {
-  //         $('#filteredArticles').append($(this).clone().removeClass('double'));
-  //         $(this).hide();
-  //       }
-  //     });
-
-  //     if($('#format .select .active').text() == "Photo") {
-  //       $('.content-news .slideshow').show();
-  //     } else {
-  //       $('.content-news .slideshow').hide();
-  //     }
-
-  //     $('.articles.nextDay article').show();
-  //   }
-  // } else {
-  //   $('*[data-' + id + ']').show();
-  // }
 }
 
 $(document).ready(function() {
 
   // on click on a filter
+  if ($('.filters').length) {
   $('.filters .select span').on('click', function() {
     var h = $(this).parent().html();
 
@@ -406,6 +273,25 @@ $(document).ready(function() {
       $('#filters span').addClass('show');
     }, 400);
   });
+}
+  if ($('.filters-slider').length) {
+    $('.filters-slider .select span').on('click', function() {
+    var h = $(this).parent().html();
+
+    $('#filters').remove();
+    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
+    $('#filters .vCenterKid').html(h);
+    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+
+    setTimeout(function() {
+      $('#filters').addClass('show');
+    }, 100);
+
+    setTimeout(function() {
+      $('#filters span').addClass('show');
+    }, 400);
+  });
+  }
 
   // close filters
   $('body').on('click', '#filters', function() {

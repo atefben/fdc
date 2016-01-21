@@ -139,6 +139,13 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/slideshow-video.css',
 			            './css/press.css'			            
+				        ],
+				    './css-concat/searchpage.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/horizontal-menu.css',
+			            './css/searchpage.css',
+			            './css/filters.css'           
 				        ]
     			}
 		        
@@ -285,8 +292,17 @@ grunt.initConfig({
 				    './js-concat/press.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/jquery.cookie.js',
 				            './js/include/*.js',
 				            './js/press.js'
+				        ],
+				    './js-concat/searchpage.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/menu.js',
+				            './js/jsonTest.js',
+				            './js/searchpage.js',
+				            './js/filters.js'
 				        ],
 
     			}
@@ -323,7 +339,8 @@ grunt.initConfig({
 	        './events.html': ['./templates/events.html'],
 	        './channel.html': ['./templates/channel.html'],
 	        './palmares_camerador.html': ['./templates/palmares_camerador.html'],
-	        './press.html': ['./templates/press.html']
+	        './press.html': ['./templates/press.html'],
+	        './searchpage.html': ['./templates/searchpage.html']
 	      
 	      }
 	    },
@@ -352,7 +369,8 @@ grunt.initConfig({
 	        './events.html': ['./templates/events.html'],
 	        './channel.html': ['./templates/channel.html'],
 	        './palmares_camerador.html': ['./templates/palmares_camerador.html'],
-	        './press.html': ['./templates/press.html']
+	        './press.html': ['./templates/press.html'],
+	        './searchpage.html': ['./templates/searchpage.html']
 
 	      }
 
@@ -381,7 +399,8 @@ grunt.initConfig({
 	        './js-concat/events.min.js': ['./js-concat/events.js'],
 	        './js-concat/channel.min.js': ['./js-concat/channel.js'],
 	        './js-concat/palmares.min.js': ['./js-concat/palmares.js'],
-	        './js-concat/press.min.js': ['./js-concat/press.js']
+	        './js-concat/press.min.js': ['./js-concat/press.js'],
+	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js']
 	      }
 	    }
 	  },
@@ -413,7 +432,8 @@ grunt.initConfig({
 	        './css-concat/events.min.css': ['./css-concat/events.css'],
 	        './css-concat/channel.min.css': ['./css-concat/channel.css'],
 	        './css-concat/palmares.min.css': ['./css-concat/palmares.css'],
-	        './css-concat/press.min.css': ['./css-concat/press.css']
+	        './css-concat/press.min.css': ['./css-concat/press.css'],
+	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css']
 	    }
 	  }
 	},
