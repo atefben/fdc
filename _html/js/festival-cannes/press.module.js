@@ -844,9 +844,7 @@ $(document).ready(function () {
         });
       }
 
-      $(document).on('click', function (e) {
-
-
+      $(document).click(function (e) {
 
         var $element = $(e.target);
         if ($element.hasClass('visible-popin')) {
