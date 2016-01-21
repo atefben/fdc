@@ -1330,7 +1330,6 @@ from desktop
   color: #fff;
 }
 #channels #slider-channels {
-  padding-top: 60px;
 }
 #channels #slider-channels .owl-item.center + .owl-item, #channels #slider-channels .owl-item.center + .owl-item + .owl-item {
   opacity: 1;
