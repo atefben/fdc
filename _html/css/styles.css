@@ -3300,8 +3300,8 @@ body {
 }
 @font-face {
   font-family: "icons";
-  src: url("../fonts/icons.eot?16e2b826b80be4a75d3910a5fb350334");
-  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?16e2b826b80be4a75d3910a5fb350334") format("woff"), url("../fonts/icons.ttf?16e2b826b80be4a75d3910a5fb350334") format("truetype");
+  src: url("../fonts/icons.eot?5ffc0881adc0073875c39af97759294f");
+  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?5ffc0881adc0073875c39af97759294f") format("woff"), url("../fonts/icons.ttf?5ffc0881adc0073875c39af97759294f") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -10795,7 +10795,7 @@ article .read-later.rAlign span:after {
 }
 @media screen and (max-width: 1024px) {
   .single-movie .nav {
-    top: 62px;
+    top: 57%;
     margin-top: 0;
   }
 }
