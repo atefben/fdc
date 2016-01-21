@@ -5246,8 +5246,7 @@ div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
 }
 div.chocolat-wrapper .chocolat-bottom .buttons a .icon {
   font-size: 1rem;
-  position: relative;
-  top: 18px;
+  line-height: 75px;
 }
 div.chocolat-wrapper .chocolat-bottom:after {
   content: '';
@@ -5570,6 +5569,10 @@ div.chocolat-wrapper .zoomCursor .icon {
   div.chocolat-wrapper .chocolat-bottom .buttons .button {
     height: 60px;
     width: 60px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons .button .icon {
+    top: auto;
+    line-height: 60px;
   }
   div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
     width: 59px;
