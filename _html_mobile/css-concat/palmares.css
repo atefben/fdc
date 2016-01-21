@@ -2165,6 +2165,9 @@ html, body { overflow: hidden; height: 100%; }
     padding: 0;
     height: 90px;
 }
+.sticky #header.fixfixed,#header.fixfixed{
+    position: absolute;
+}
 #header .header-container{
 
     display:table-cell;vertical-align:middle;
@@ -2548,6 +2551,9 @@ font-weight: 700;
   height: auto;
   min-height: 1000px;
 
+}
+.sticky #searchContainer.fixfixed{
+  position: absolute;
 }
 .sticky #searchContainer{
   top: 90px;
@@ -2987,6 +2993,170 @@ font-weight: 700;
 
   height: 100%;
 }
+
+.palmares-container{
+	
+	background-color:#141414;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.prize-description, .contain-winner{
+
+	padding: 55px 0;
+	
+}
+.prize-description h2{
+
+	width: 520px;
+	margin: 0 auto;
+	text-align: center;
+	color:#999999;
+	font-size: 22px;
+	line-height: 36px;
+	letter-spacing: -1px;
+
+}
+.prize-description h2 strong{
+
+	color:#fff;
+}
+.img {
+	width: 280px;
+	height: 390px;
+	background-position: center top;
+	background-size: cover;
+	margin:0 auto;
+}
+.contain-winner{
+
+	text-align: center;
+	color:#fff;
+}
+.palme-dor-img{
+
+	font-size: 92px;
+	margin: 16px 0;
+}
+.title-prize, .prize-category, .movie-title{
+	text-transform: uppercase;
+	font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	letter-spacing: 4px;
+	font-weight: 700;
+
+}
+.prize-category{
+
+	font-size: 15px;
+	letter-spacing: 2px;
+	margin: 15px 0 25px 0;
+
+}
+.movie-title{
+	letter-spacing: 0;
+	margin-bottom: 15px;
+
+}
+.verticalline:after{
+
+	content: "";
+    display: block;
+    height: 20px;
+    width: 2px;
+    padding: 0px;
+    margin: 20px auto 15px auto;
+    margin-bottom: 5px;
+    background-color: #434343;
+}
+.movie-real{
+	color:#c8a461;
+	font-family: "Camphor W01 Italic Italic", Arial, Helvetica, sans-serif;
+	font-style: italic;
+	font-size: 16px;
+}
+.title-list-cat{
+	border-bottom: 1px solid #2c2c2c;
+	border-top:1px solid #2c2c2c;
+}
+.title-list-cat .title{
+	color: #fff;
+	width: 470px;
+	margin: 60px auto;
+}
+
+section h3{
+
+	background-color: #202020;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 15px;
+	letter-spacing: 2px;
+	padding: 40px 0;
+	font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+}
+
+/*SLIDERS*/
+.film-slider{
+	margin: 60px 0;
+}
+.film-slider .owl-item{
+
+	width: 280px;
+	height: 530px;
+}
+.film-slider .img-container{
+
+	width: 280px;
+	height: 380px;
+	background-position: center center;
+  	background-size: cover;
+}
+.film-slider .info{
+	margin-top: 35px;
+	text-align: center;
+}
+.film-slider .info p{
+	text-transform: uppercase;
+	color: #fff;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	margin-bottom: 8px;
+}
+.film-slider .info p.subtitle{
+	font-size: 18px;
+
+}
+.film-slider .info p.duration{
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	color:#999999;
+	font-size: 16px;
+	margin-top: 8px;
+}
+.film-slider .info a{
+
+	font-size: 22px;
+	font-style: italic;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	color:#c8a461;
+}
+.film-slider .owl-stage-outer{
+	margin-left: 0;
+}
+
+
+/*SECTION ITEM COLUMN*/
+.item-column{
+
+	text-align: center;
+	margin-top:60px;
+}
+.item-column img{
+
+	margin-bottom: 70px;
+}
+
 
 .slideshow .thumbnails .thumb {
   height: 210px;

@@ -17,6 +17,9 @@
     padding: 0;
     height: 90px;
 }
+.sticky #header.fixfixed,#header.fixfixed{
+    position: absolute;
+}
 #header .header-container{
 
     display:table-cell;vertical-align:middle;
