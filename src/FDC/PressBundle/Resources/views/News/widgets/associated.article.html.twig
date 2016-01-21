@@ -1,0 +1,58 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% if article is statement_article %}
+    {% set trans = article.header.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = article.header.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.file %}
+    {% set articleType = "article" %}
+{% elseif article is statement_audio %}
+    {% set trans = article.audio.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = article.audio.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.image %}
+    {% set articleType = "audio" %}
+{% elseif article is statement_video %}
+    {% set trans = article.video.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = article.video.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.image %}
+    {% set articleType = "video" %}
+{% elseif article is statement_image %}
+    {% set file = "" %}
+    {% for gallery in article.gallery.medias %}
+        {% if loop.first %}
+            {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = gallery.media.file.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+        {% endif %}
+    {% endfor %}
+    {% set articleType = "image" %}
+{% endif %}
+
+<article class="article" data-format="{{ articleType }}" data-theme="{{ article.theme.slug }}">
+    <div class="image">
+        <div class="image-wrapper">
+            {% thumbnail file, 'big' with {'alt': 'test' } %}
+        </div>
+        <a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+        <a href="#" class="read-later">
+            <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
+        </a>
+        <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
+    </div>
+    <div class="info">
+        <a href="#" class="category">{{ article.category }}</a>
+        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+        <h2>
+            <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
+                {{ article|trans_fallback('title')}}
+            </a>
+        </h2>
+    </div>
+</article>

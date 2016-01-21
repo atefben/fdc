@@ -29,7 +29,7 @@ $(document).ready(function() {
 
   $('body').on('touchend', 'a', function(e) {
     if($(this).hasClass('read-more')) return;
-    if($(this).hasClass('ajax')) return;
+    if($(this).hasClass('ajax') && !$(this).hasClass('chocolat-image')) return;
     if($(this).hasClass('selection')) return;
     if (dragging) return;
     $(this).trigger('click');

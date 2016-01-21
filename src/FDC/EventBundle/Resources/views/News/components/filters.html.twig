@@ -5,7 +5,7 @@
         <span class="label">{{ 'article.filter.label.date'|trans }} :</span>
           <span class="select">
               {% for key, date in filters.dates %}
-              <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ date }}">
+              <span class="{% if key == 0 %}active{% endif %}" data-filter="{% if key != 0 %}{{ date|date('d.m.y') }}{% endif %}">
                   {% if key != 0 %}
                       {% if app.request.locale != 'cn' %}
                           {{ date|localizeddate('full', 'none')  }}
@@ -15,7 +15,7 @@
                   {% else  %}
                       {{ 'article.filter.select.date.all'|trans }}
                   {% endif %}
-                  </span>{% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
+                  </span>
               {% endfor %}
           </span>
     </div>
@@ -29,7 +29,7 @@
                   {% else  %}
                       {{ 'article.filter.select.date.all'|trans }}
                   {% endif %}
-              </span>{% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
+              </span>
               {% endfor %}
           </span>
     </div>

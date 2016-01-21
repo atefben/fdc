@@ -85,4 +85,27 @@ abstract class StatementWidget
     {
         return $this->position;
     }
+
+    /**
+     * Set statement
+     *
+     * @param \Base\CoreBundle\Entity\Statement $statement
+     * @return StatementWidget
+     */
+    public function setStatement(\Base\CoreBundle\Entity\Statement $statement = null)
+    {
+        $this->statement = $statement;
+
+        return $this;
+    }
+
+    /**
+     * Get statement
+     *
+     * @return \Base\CoreBundle\Entity\Statement 
+     */
+    public function getStatement()
+    {
+        return $this->statement;
+    }
 }

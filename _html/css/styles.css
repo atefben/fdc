@@ -5646,8 +5646,6 @@ div.chocolat-wrapper .zoomCursor .icon {
   opacity: 0.5;
 }
 .filters div .select span {
-  background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
-  background-size: 6px;
   display: none;
   padding-right: 13px;
 }
@@ -5905,7 +5903,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   pointer-events: none;
   top: 0;
   left: 0;
-  width: 75%;
+  width: 100%;
   height: 100%;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -8044,8 +8042,6 @@ header #searchContainer {
   -webkit-appearance: none;
   text-transform: uppercase;
   padding-right: 10px;
-  background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
-  background-size: 6px;
 }
 .popin-mail #form .errors {
   border: 1px solid #e93939;
@@ -10802,13 +10798,14 @@ article .read-later.rAlign span:after {
 .single-movie .nav.black {
   border-color: #dfdfdf;
 }
+.single-movie .nav.black .icon {
+  color: #949494 !important;
+}
 .single-movie .nav.hide {
   opacity: 0;
   visibility: hidden;
 }
 .single-movie .nav.prev {
-  background: url("../img/svg/arrow-left-white.svg") no-repeat center;
-  background-size: 15px;
   left: 2%;
 }
 .single-movie .nav.prev.trailer {
@@ -10818,6 +10815,7 @@ article .read-later.rAlign span:after {
 .single-movie .nav.prev .icon {
   color: #000;
   margin: 32px;
+  color: #fff;
 }
 .single-movie .nav.next {
   left: auto;
@@ -10828,7 +10826,7 @@ article .read-later.rAlign span:after {
   right: -85px;
 }
 .single-movie .nav.next .icon {
-  color: #000;
+  color: #fff;
   margin: 32px;
 }
 .single-movie .main-image {
@@ -12321,8 +12319,6 @@ input[type=submit] {
   -webkit-appearance: none;
   text-transform: uppercase;
   padding-right: 10px;
-  background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
-  background-size: 6px;
 }
 .contact #form .errors {
   border: 1px solid #e93939;
@@ -13741,6 +13737,7 @@ input[type=submit] {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   color: #666;
+  margin-bottom: 10px;
 }
 .webtv-ba-video .informations-video .program-film .infos p .date {
   color: #bababa;

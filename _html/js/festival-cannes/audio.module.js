@@ -50,17 +50,18 @@ function initAudioPlayers() {
 
     $playpause.html('<i class="icon icon_video"></i>');
     $fullscreen.html('<i class="icon icon_fullscreen"></i>');
-    $volume.html('<i class="icon icon_son"></i>');
+    if($volume.find('.icon_son').length == 0) $volume.append('<i class="icon icon_son"></i>');
+
 
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
 
-      if($playpause.find('i').hasClass('icon_video')){
-        $playpause.html('<i class="icon icon_pause"></i>');
+      $('.playpause').not($(this)).html('<i class="icon icon_video"></i>');
+      if($(this).find('i').hasClass('icon_video')){
+        $(this).html('<i class="icon icon_pause"></i>');
       }else{
-        $playpause.html('<i class="icon icon_video"></i>');
+        $(this).html('<i class="icon icon_video"></i>');
       }
-
 
       if(inter) {
         clearInterval(inter);
@@ -107,7 +108,7 @@ function initAudioPlayers() {
       $('.audio-player').not($audioplayer).removeClass('pause');
 
       // set volume and play or pause
-      wave.setVolume(0.75);
+      wave.setVolume(1);
       wave.playPause();
 
       $audioplayer.toggleClass('pause');
@@ -143,18 +144,43 @@ $(document).ready(function() {
     }
   }
 
-  // volume handler
   $('body').on('click', '.volume', function(e) {
-    if($('.volume').parents('.audio-player').hasClass('full')) {
-      var newVolume = e.offsetX / 100;
+
+    if($(this).parents('.audio-player').hasClass('full')) {
+      if((e.offsetX/100) < 0.15) {
+        for(var i = 0; i < waves.length; i++) {
+          waves[i].toggleMute();
+        }
+
+        if(!$(this).hasClass('mute')) {
+          $('.audio-player .volume span').css('width',  '0%');
+        } else {
+          $('.audio-player .volume span').css('width',  '100%');
+        }
+
+        $(this).toggleClass('mute');
+      } else {
+
+        var newVolume = e.offsetX / 100;
+
+        $('.audio-player .volume span').css('width', newVolume * 100 + "%");
+
+        for(var i = 0; i < waves.length; i++) {
+          waves[i].setVolume(newVolume);
+        }
+      }
     } else {
-      var newVolume = (e.offsetX * 2) / 100;
-    }
+      for(var i = 0; i < waves.length; i++) {
+        waves[i].toggleMute();
+      }
 
-    $('.audio-player .volume span').css('width', newVolume * 100 + "%");
+      if(!$(this).hasClass('mute')) {
+        $(this).find('span').css('width',  '0%');
+      } else {
+        $(this).find('span').css('width',  '100%');
+      }
 
-    for(var i = 0; i < waves.length; i++) {
-      waves[i].setVolume(newVolume);
+      $(this).toggleClass('mute');
     }
   });
 
