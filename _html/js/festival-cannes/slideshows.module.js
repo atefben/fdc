@@ -144,6 +144,8 @@ $('body').on('click', '.chocolat-image', function() {
   $('<div class="zoomCursor"><i class="icon icon_loupePlus"></i></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
+  linkPopinInit();
+  
   setTimeout(function() {
     $('.chocolat-wrapper').addClass('show');
   }, 200);
@@ -270,11 +272,8 @@ $('body').on('mousemove', '.chocolat-content', function(e){
   if ($('body').hasClass('mob')) return false;
 
   if($('.chocolat-zoomed').length){
-    console.log('ooook');
     $('.zoomCursor .icon').removeClass('icon_loupePlus').addClass('icon_loupeMoins');
   }else{
-    console.log('nopppe');
-
     $('.zoomCursor .icon').removeClass('icon_loupeMoins').addClass('icon_loupePlus');
   }
   $('.zoomCursor').css('left', e.clientX + 10).css('top', e.clientY);

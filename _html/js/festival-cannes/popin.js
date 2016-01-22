@@ -133,51 +133,56 @@ $(document).ready(function() {
 
 
   //LINK POPIN//
+  function linkPopinInit(){
+    if($('.share').length || $('.square').length ){
 
-  if($('.share').length || $('.square').length){
-    new Clipboard('.link');
-    var link = document.location.href;
+      console.log("11111");
+      new Clipboard('.link');
+      var link = document.location.href;
 
-    $('.link').attr('data-clipboard-text',link);
+      $('.link').attr('data-clipboard-text',link);
 
-    $('.link').on('click touchstart',function(e){
-      e.preventDefault();
+      $('.link').on('click touchstart',function(e){
+        e.preventDefault();
 
-      if($('.single-channel')){
-        $('.button.email').css('border-right','1px solid #2C2C2C');
-      }
+        console.log("222222");
 
-      if(!$('#share-box').length){
-
-        if($('.share').length){
-          $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
-        }else{
-          $('.square').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+        if($('.single-channel').length){
+          $('.button.email').css('border-right','1px solid #2C2C2C');
         }
+        if($('.all-audios').length){
+          $('.button.email').css('border-right','1px solid #dfdfdf');
+        }
+        if(!$('#share-box').length){
 
-        $('#share-box').animate({'opacity':'1'},400,function(){
+          if($('.share').length){
+            $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+          }else{
+            $('.square').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+          }
 
-           $('#share-box').addClass('show');
-           setTimeout(function(){
-                 $('#share-box .bubble').html('<a href="#">'+link+'</a>');
-           }, 1000);
-        });
-      }else if($('#share-box').hasClass('show')){
-        $('#share-box').removeClass('show');
-        $('#share-box').remove();
-      }
+          $('#share-box').animate({'opacity':'1'},400,function(){
 
-      if($('.single-movie, .webtv-ba-video, .single-channel').length){
+             $('#share-box').addClass('show');
+             setTimeout(function(){
+                   $('#share-box .bubble').html('<a href="#">'+link+'</a>');
+             }, 1000);
+          });
+        }else if($('#share-box').hasClass('show')){
+          $('#share-box').removeClass('show');
+          $('#share-box').remove();
+        }
+          // 
+          // setTimeout(function(){
+          //       $('#share-box').animate({'opacity':0},200,function(){
+          //         $('#share-box').removeClass('show');
+          //         $('#share-box').remove();
+          //       });
+          // }, 3000);
 
+      });
+    }
 
-        setTimeout(function(){
-              $('#share-box').animate({'opacity':0},200,function(){
-                $('#share-box').removeClass('show');
-                $('#share-box').remove();
-              });
-        }, 3000);
-
-      }
-
-    });
   }
+
+  linkPopinInit();
