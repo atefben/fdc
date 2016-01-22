@@ -3734,6 +3734,7 @@ from desktop
   max-width:100%;
   height: 25px;
   line-height: 25px;
+  padding: 0;
 }
 
 .subtitle {
@@ -6507,9 +6508,6 @@ font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-.title.one-line{
-    width:100%;
 }
 
 .webtv .title{

@@ -316,6 +316,7 @@ from desktop
   max-width:100%;
   height: 25px;
   line-height: 25px;
+  padding: 0;
 }
 
 .subtitle {
@@ -2981,12 +2982,6 @@ font-weight: 700;
 #suggest li:nth-child(2n):hover {
   background-color: #ededed;
 }
-.title.one-line{
-	
-	width:100%;
-}
-
-
 
 
 /*  LIST ARTICLES */
