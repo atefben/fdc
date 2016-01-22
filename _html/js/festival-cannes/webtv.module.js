@@ -113,8 +113,16 @@ $(document).ready(function() {
         },
         onTranslated: function() {
           setActiveTrailer();
-        }
+        },
       });
+
+      $('.owl-item ').on('click', function(e){
+          var $this = $(this);
+          $('.center').removeClass('center');
+          $this.addClass('center');
+      });
+
+
        sliderTrailer.owlCarousel();
       $('body').on('click', '#slider-trailer .owl-item', function(e) {
         sliderTrailer.trigger('to.owl.carousel', [$(this).index(), 400, true]);
