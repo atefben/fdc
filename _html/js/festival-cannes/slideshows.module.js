@@ -140,7 +140,7 @@ $('body').on('click', '.chocolat-image', function() {
   $('.chocolat-left').html('<i class="icon icon_flecheGauche"></i>');
   $('.chocolat-right').html('<i class="icon icon_fleche-right"></i>');
 
-  if($('.press-media').length){
+  if($('.press-media').length || $('.downloading-press').length ){
     if($('.lock').length){
       $('<a href="#" class="share cadenas"><i class="icon icon_cadenas"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
     }else{
