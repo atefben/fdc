@@ -892,7 +892,7 @@
                 z-index: 0!important;
 
                 &.ui-draggable-dragging {
-                  z-index: 5!important;
+                  z-index: 10!important;
                 }
 
                 &.ui-draggable-dragging .category:after {
