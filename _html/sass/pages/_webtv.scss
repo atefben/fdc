@@ -289,7 +289,7 @@
       margin-right: 10px;
     }
   }
-  #slider-channels{
+  #slider-trailer{
     .info-container .vCenterKid{
       .hour, .date{
         color: #666;
@@ -571,11 +571,17 @@
       font-size: 9.6px;
       font-family: "Camphor W01 Bold";
       letter-spacing: 0.1em;
+      @include transition(all .5s $smoothTransition);
+
       .icon{
         margin-right: 10px;
         font-size: .45rem;
         vertical-align: middle !important;
         margin-bottom: 2px;
+      }
+
+      &:hover{
+        opacity: .5;
       }
     }
     h1 {

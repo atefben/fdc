@@ -13388,7 +13388,7 @@ input[type=submit] {
   margin-bottom: 2px;
   margin-right: 10px;
 }
-.single-channel #slider-channels .info-container .vCenterKid .hour, .single-channel #slider-channels .info-container .vCenterKid .date {
+.single-channel #slider-trailer .info-container .vCenterKid .hour, .single-channel #slider-trailer .info-container .vCenterKid .date {
   color: #666;
   display: inline-block;
   font-size: 0.625rem;
@@ -13642,12 +13642,19 @@ input[type=submit] {
   font-size: 9.6px;
   font-family: "Camphor W01 Bold";
   letter-spacing: 0.1em;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .webtv-ba-video .title-container a .icon {
   margin-right: 10px;
   font-size: .45rem;
   vertical-align: middle !important;
   margin-bottom: 2px;
+}
+.webtv-ba-video .title-container a:hover {
+  opacity: .5;
 }
 .webtv-ba-video .title-container h1 {
   margin: 10px 0 0 0;

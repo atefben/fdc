@@ -34,7 +34,7 @@
        </div>
      </div>
       <div id="content-channels">
-        <div id="slider-channels" class="owl-carousel sliderDrag">
+        <div id="slider-trailer" class="owl-carousel sliderDrag">
           <div class="channel shadow-bottom">
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
