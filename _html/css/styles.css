@@ -8201,6 +8201,28 @@ header #searchContainer {
   font-size: 0.75rem;
 }
 
+.single-channel #share-box {
+  top: 85px;
+  width: 298px;
+}
+.single-channel #share-box .bubble {
+  background-color: #141414;
+  border: 1px solid #2C2C2C;
+}
+.single-channel #share-box .bubble:before {
+  box-shadow: -1px -1px 0px #2C2C2C;
+  border: 4px solid;
+  border-color: #141414;
+}
+.single-channel #share-box a {
+  color: #999999;
+  font-size: 0.75rem;
+}
+.single-channel #share-box a:hover {
+  color: #999999;
+  background-color: #141414;
+}
+
 .canne-classic #share-box {
   top: 187px;
   z-index: 3;
@@ -13366,6 +13388,11 @@ input[type=submit] {
   margin-bottom: 2px;
   margin-right: 10px;
 }
+.single-channel #slider-channels .info-container .vCenterKid .hour, .single-channel #slider-channels .info-container .vCenterKid .date {
+  color: #666;
+  display: inline-block;
+  font-size: 0.625rem;
+}
 .single-channel .channel:after {
   border: 4px solid #c8a461;
   box-sizing: border-box;
@@ -13394,9 +13421,6 @@ input[type=submit] {
 }
 .single-channel .small-container .player {
   margin-top: 49px;
-}
-.single-channel .small-container #content-channels {
-  padding-top: 26px;
 }
 .single-channel .small-container .infos-videos {
   padding-top: 18px;
@@ -13445,6 +13469,12 @@ input[type=submit] {
 }
 .single-channel .small-container .infos-videos .square a:hover + .button {
   border-left-color: #c8a461;
+}
+.single-channel .small-container .infos-videos .square a:last-child:hover {
+  border-right-color: #c8a461 !important;
+}
+.single-channel #content-channels {
+  padding-top: 23px;
 }
 
 .webtv-ba .item:hover img {

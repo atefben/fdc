@@ -134,15 +134,27 @@ $(document).ready(function() {
 
   //LINK POPIN//
 
-  if($('.share').length){
+  if($('.share').length || $('.square').length){
     new Clipboard('.link');
     var link = document.location.href;
-    $('.share .link').attr('data-clipboard-text',link);
 
-    $('.share .link').on('click touchstart',function(e){
+    $('.link').attr('data-clipboard-text',link);
+
+    $('.link').on('click touchstart',function(e){
       e.preventDefault();
+
+      if($('.single-channel')){
+        $('.button.email').css('border-right','1px solid #2C2C2C');
+      }
+
       if(!$('#share-box').length){
-        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+
+        if($('.share').length){
+          $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+        }else{
+          $('.square').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+        }
+
         $('#share-box').animate({'opacity':'1'},400,function(){
 
            $('#share-box').addClass('show');
@@ -155,7 +167,9 @@ $(document).ready(function() {
         $('#share-box').remove();
       }
 
-      if($('.single-movie, .webtv-ba-video').length){
+      if($('.single-movie, .webtv-ba-video, .single-channel').length){
+
+
         setTimeout(function(){
               $('#share-box').animate({'opacity':0},200,function(){
                 $('#share-box').removeClass('show');
