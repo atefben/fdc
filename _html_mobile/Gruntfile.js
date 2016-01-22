@@ -252,9 +252,11 @@ grunt.initConfig({
 				        ],
 			        './js-concat/videos.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/jwplayer.js',
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
-				            './js/filters.js'
+				            './js/filters.js',
+				            './js/videos.js'
 				        ],
 			        './js-concat/webtv.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
