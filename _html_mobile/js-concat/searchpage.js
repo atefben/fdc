@@ -141,7 +141,7 @@ var GLOBALS = {
     "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
     "heightGraph" : 200
   }
-}
+};
 
 $(document).ready(function() {
  
