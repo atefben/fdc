@@ -78,7 +78,7 @@ Imprimer</a>
         <p>Partagez l'article</p>
         <div class="buttons square">
           <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-          <a href="#" class="button twitter"><i class="icon icon_twitter"></i>
+          <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
 </a>
           <a href="#" class="button link"><i class="icon icon_link"></i></a>
           <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
