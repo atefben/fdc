@@ -602,6 +602,9 @@
         zoomIn : function (e) {
             this.settings.initialZoomState = this.settings.imageSize;
             this.settings.imageSize = 'native';
+            if($('body').hasClass('mob')){
+                $('.zoomCursor .icon').removeClass('icon_loupePlus').addClass('icon_loupeMoins');
+            }
 
             var event = $.Event('mousemove');
             event.pageX = e.pageX;
@@ -615,6 +618,9 @@
         },
 
         zoomOut : function (e, duration) {
+            if($('body').hasClass('mob')) {
+                $('.zoomCursor .icon').removeClass('icon_loupeMoins').addClass('icon_loupePlus');
+            }
             if (this.settings.initialZoomState === null) {
                 return;
             }
