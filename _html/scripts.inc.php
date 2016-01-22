@@ -161,4 +161,19 @@ var GLOBALS = {
   };
 
   return t;
-}(document, "script", "twitter-wjs"));</script>
+}(document, "script", "twitter-wjs"));
+</script>
+
+<script>
+//POPIN facebook SHARE
+
+$.ajaxSetup({ cache: true });
+$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+  FB.init({
+    appId: '{1759803224251615}',
+    version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+  });
+  $('#loginbutton,#feedbutton').removeAttr('disabled');
+  FB.getLoginStatus(updateStatusCallback);
+});
+</script>
