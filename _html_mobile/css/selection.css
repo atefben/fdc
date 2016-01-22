@@ -11,6 +11,18 @@
 	height: 580px;
 	vertical-align: top;
 	background-color: #141414;
+  position: relative;
+
+}
+.selection-item a{
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
 
 }
 .selection-item .img{

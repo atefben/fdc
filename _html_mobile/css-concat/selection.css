@@ -315,6 +315,7 @@ from desktop
 }
 .title.tall{
   max-width:520px;
+  padding:0;
 }
 .title.one-line{
   max-width:100%;
@@ -322,7 +323,10 @@ from desktop
   line-height: 25px;
   padding: 0;
 }
-
+.title.three-lines{
+  margin: 60px auto;
+  height: 110px;
+}
 .subtitle {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-style: italic;
@@ -3077,6 +3081,18 @@ font-weight: 700;
 	height: 580px;
 	vertical-align: top;
 	background-color: #141414;
+  position: relative;
+
+}
+.selection-item a{
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
 
 }
 .selection-item .img{

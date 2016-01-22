@@ -315,6 +315,7 @@ from desktop
 }
 .title.tall{
   max-width:520px;
+  padding:0;
 }
 .title.one-line{
   max-width:100%;
@@ -322,7 +323,10 @@ from desktop
   line-height: 25px;
   padding: 0;
 }
-
+.title.three-lines{
+  margin: 60px auto;
+  height: 110px;
+}
 .subtitle {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-style: italic;
@@ -3565,6 +3569,7 @@ a{
 .info-film .categories span{
 	position: relative;
 	margin-right: 20px;
+	font-size: 20px;
 }
 .info-film .categories span:last-child:after{
 	display: none;
@@ -3596,7 +3601,7 @@ a{
 }
 .info-film p{
 
-	font-size: 15px;
+	font-size: 20px;
 	letter-spacing: -1px;
 	/*font-size: 1.5rem;*/
 	margin-bottom: 20px;
@@ -4058,9 +4063,10 @@ a{
 }
 .contact p:not(.sub){
 
-	font-size: 15px;
+	font-size: 22px;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 	color: #999999;
+	letter-spacing: -1px;
 }
 .contact div:not(.contact-content){
 
