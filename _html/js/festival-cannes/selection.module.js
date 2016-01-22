@@ -11,7 +11,6 @@ $(document).ready(function() {
   if($.cookie('selection')) {
     selectionCookie = JSON.parse($.cookie('selection'));
 
-    console.log(selectionCookie);
     for(var i=0; i<selectionCookie.length; i++) {
       var $art = $('#toClone').clone();
 
