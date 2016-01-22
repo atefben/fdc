@@ -47,3 +47,9 @@ services:
         arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: twig.extension }
+
+    base.twig.news_type_extension:
+        class: Base\CoreBundle\Twig\Extension\NewsTypeExtension
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: twig.extension }
