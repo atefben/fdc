@@ -9,6 +9,8 @@ grunt.initConfig({
     			files:{
     				'./css-concat/home.css': [
 			            './css/vendors/*.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
 			            './css/main.css', 
 			            './css/include/*.css'
 			            
@@ -158,6 +160,9 @@ grunt.initConfig({
     				'./js-concat/home.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',  
 				            './js/include/*.js',
 				            './js/main.js'
 				        ],
