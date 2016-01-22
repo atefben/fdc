@@ -934,12 +934,17 @@
         top: 0;
 
         .arrow {
+          background-color: #fff;
           display: none;
+          font-size: 0.750em;
+          line-height: 40px;
+          text-align: center;
         }
 
         @include breakpoint(1279px) {
           padding: 0 43px;
           width: 260px;
+          overflow: hidden;
 
           .timeline-container {
             width: 600px;

@@ -16630,12 +16630,17 @@ input[type=submit] {
   top: 0;
 }
 .press .programmation #calendar-programmation #timeline .arrow {
+  background-color: #fff;
   display: none;
+  font-size: 0.750em;
+  line-height: 40px;
+  text-align: center;
 }
 @media screen and (max-width: 1279px) {
   .press .programmation #calendar-programmation #timeline {
     padding: 0 43px;
     width: 260px;
+    overflow: hidden;
   }
   .press .programmation #calendar-programmation #timeline .timeline-container {
     width: 600px;
