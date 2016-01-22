@@ -19,14 +19,15 @@ $(document).ready(function() {
     });
   }
 
-  if($('body').hasClass('mob')) {
-    $('.main>li>a, .user>li>a').on('click', function(e) {
+  $('.main>li>a, .user>li>a').on('click', function(e) {
+    if($('body').hasClass('mob')) {
       if($(this).parent().find('ul').length != 0) {
+        e.preventDefault();
         $('#main, footer').addClass('overlay');
         $('.main>li').not($(this).parent()).addClass('fade');
         return false;
       }
-    });
-  }
+    }
+  });
 
 });

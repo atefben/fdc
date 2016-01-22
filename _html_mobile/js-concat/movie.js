@@ -779,11 +779,22 @@ $(document).ready(function() {
 
       slideshows.push(slideshow);
     }
+    if($('.all-photos').length) {
+
+      var slideshow = $('.list').Chocolat({
+        imageSize: 'cover',
+        fullScreen: false,
+        loop:true,
+      }).data('chocolat');
+
+      slideshows.push(slideshow);
+    }
 
 
   // close slideshow on click
   $('body').on('click', '.close-button', function(e){
     $('body').removeClass('allow-landscape');
+    document.body.removeEventListener('touchmove', listener,false);
     // $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
 
     // $('.chocolat-bottom').css('opacity', 0);
@@ -791,6 +802,7 @@ $(document).ready(function() {
 
     setTimeout(function() {
       $('.chocolat-wrapper').removeClass('show');
+
       // $('body').removeClass('fixed');
 
       // if($('.slideshow').length) {
@@ -834,7 +846,7 @@ $(document).ready(function() {
   $('body').on('click', '.chocolat-image', function() {
     var $that = $(this);
     $('body').addClass('allow-landscape');
-    // document.body.addEventListener('touchmove', listener,false);
+    document.body.addEventListener('touchmove', listener,false);
     // $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
     // $('.chocolat-left').html('<i class="icon icon_flecheGauche"></i>');
     // $('.chocolat-right').html('<i class="icon icon_fleche-right"></i>');

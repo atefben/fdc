@@ -12476,9 +12476,9 @@ input[type=submit] {
   color: #ffffff;
   width: 100%;
   min-height: 405px;
-  background-size: cover;
-  background-position: center center;
   overflow: hidden;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
 }
 .categorie-items article .bck-hover {
   background-color: #141414;
@@ -13008,6 +13008,8 @@ input[type=submit] {
 }
 .palmares-list .categorie-items article {
   height: 447px;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
 }
 .palmares-list .categorie-items article .bck-hover {
   height: 447px;
