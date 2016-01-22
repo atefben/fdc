@@ -139,13 +139,22 @@ $('body').on('click', '.chocolat-image', function() {
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
   $('.chocolat-left').html('<i class="icon icon_flecheGauche"></i>');
   $('.chocolat-right').html('<i class="icon icon_fleche-right"></i>');
-  $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+
+  if($('.press-media')){
+    if($('.lock').length){
+      $('<a href="#" class="share cadenas"><i class="icon icon_cadenas"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+    }else{
+      $('<a href="#" class="share download"><i class="icon icon_telecharger"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+    }
+  }else{
+    $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+  }
   $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
   $('<div class="zoomCursor"><i class="icon icon_loupePlus"></i></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
   linkPopinInit();
-  
+
   setTimeout(function() {
     $('.chocolat-wrapper').addClass('show');
   }, 200);
