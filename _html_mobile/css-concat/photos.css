@@ -1981,7 +1981,20 @@ article .picto .icon{
   font-size: 1rem;
   padding: 0;
 }
+.close-button{
+    border: 1px solid #c8a461;
+    cursor: pointer;
+    height: 90px;
+    opacity: 0.6;
+    position: absolute;
+    top: 140px;
+    right: 40px;
+    width: 90px;
+    color:#c8a461;
+    line-height: 90px;
+    text-align: center;
 
+}
 
 /* footer */
 footer {
@@ -2156,6 +2169,10 @@ footer .newsletter #submit {
   }
   html, body { overflow: hidden; height: 100%; }
       body { margin:0; padding:0; }
+
+  .allow-landscape #landscape{
+    display: none;
+  }
 }
 
 @media only screen  and (max-aspect-ratio:13/9) {
@@ -3063,20 +3080,7 @@ font-weight: 700;
     display: table-cell;
     vertical-align: middle;
 }
-.close-button{
-    border: 1px solid #c8a461;
-    cursor: pointer;
-    height: 90px;
-    opacity: 0.6;
-    position: absolute;
-    top: 140px;
-    right: 40px;
-    width: 90px;
-    color:#c8a461;
-    line-height: 90px;
-    text-align: center;
 
-}
 #filters{
     background-color: rgba(0, 0, 0, 0.9);
     height: 100%;
