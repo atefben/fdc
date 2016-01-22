@@ -20,6 +20,8 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    -webkit-text-size-adjust: 100%;
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -301,7 +303,7 @@ from desktop
     font-weight: 700;
     font-size: 24px;
     line-height: 36px;
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.5em;
     margin: 80px auto;
     max-width: 400px;
     padding: 0 120px;
@@ -311,7 +313,9 @@ from desktop
     text-transform: uppercase;
     
 }
-
+.title.tall{
+  max-width:520px;
+}
 .title.one-line{
   max-width:100%;
   height: 25px;
@@ -391,7 +395,7 @@ from desktop
   color: #c8a461;
   display: block;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.1em;
   margin-bottom: 15px;
@@ -409,9 +413,9 @@ from desktop
 #sliderWrapper .owl-item .info h2 {
   color: #fff;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-    font-size: 2.5rem;  f
+    font-size: 42px;  
     font-weight: 400;
-  line-height: 1.2em;
+  line-height: 54px;
   max-width: 90%;
   margin: 0 auto;
   -moz-transform: translate3d(0, 10px, 0);
@@ -446,7 +450,7 @@ from desktop
 }
 
 #sliderWrapper .owl-theme .owl-controls {
-    margin-top: -90px;
+    margin-top: -80px;
     text-align: center;
     width: 100%;
 }
@@ -981,8 +985,7 @@ from desktop
  
   display: inline-block;
   text-decoration: inherit;
-  width: 1rem;
-  margin-right: .2rem;
+
   text-align: center;
   /* opacity: .8; */
  
@@ -995,7 +998,7 @@ from desktop
  
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2rem;
+  
  
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
@@ -1084,23 +1087,27 @@ from desktop
     position: relative;
     padding-left:30px;
     text-align: left;
-
+    font-weight: 700;
 }
 #socials .twitter .info{
-    color:#c8a461;
+    color:#bdbdbd;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 0.9rem;
+    font-size: 11px;
 }
 
 #socials .twitter .text{
     color:black;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 1.75rem;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    line-height: 31px;
     margin-top: -20px;
 }
 #socials .twitter .info + .text{
     font-size: 1.3rem;
     margin-top: 0;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 26px;
 }
 #socials .twitter .text strong{
     color:#c8a461;
@@ -1112,9 +1119,9 @@ from desktop
 }
 #networks p {
     color: #333;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 2.1rem;
-    line-height: 20px;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     width: 100%;
     text-align: center;
@@ -1219,13 +1226,13 @@ from desktop
 .featured-videos .videosSlider .vid .info .titleLink{
   color: #fff;
   display: block;
-  font-size: 1.3rem;
-  margin-top: 3px;
+  font-size: 23px;
+  margin-top: 5px;
 }
 .featured-videos .videosSlider .vid .info span {
   color: #666;
   display: inline-block;
-  font-size: 0.625rem;
+  font-size: 12px;
 }
 .featured-videos .videosSlider .vid .picto {
   color: #c8a461;
@@ -1233,6 +1240,15 @@ from desktop
 .featured-videos .videosSlider .vid .picto .icon {
   margin-left: 14px;
   margin-top: 14px;
+}
+#slider-videos .picto{
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+.featured-videos #slider-videos.videosSlider .vid .picto .icon{
+   font-size: 1.8rem;
+    margin: 0;
 }
 .featured-videos .videosSlider .vid .image-wrapper  {
   overflow: hidden;
@@ -1293,7 +1309,7 @@ from desktop
 .sliderDrag .info .info-container {
   color: #666;
   float: left;
-  height: 44px;
+  height: 70px;
 }
 .sliderDrag .info .picto {
   bottom: auto;
@@ -1310,10 +1326,12 @@ from desktop
 }
 .sliderDrag .info .category {
   color: #c8a461;
-  font-size: 0.825rem;
+  font-size: 15px;
   letter-spacing: 0.1em;
   margin-right: 12px;
   text-transform: uppercase;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 
 /* featured-videos */
@@ -1529,7 +1547,7 @@ article .info {
 article .info .category {
   color: #c8a461;
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.1em;
   margin-right: 12px;
@@ -1538,14 +1556,15 @@ article .info .category {
 article .info span {
   color: #666;
   display: inline-block;
+  font-size: 20px;
 }
 article h2 {
   color: #333;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-size: 2.2rem;
+  font-size: 35px;
   font-weight: 400;
   letter-spacing: 0.02em;
-  line-height: 1.3em;
+  line-height: 46px;
   width: 400px;
   margin: 15px auto 0 auto;
   text-align: center;
@@ -1711,13 +1730,14 @@ article .picto .icon{
 .slideshow .caption {
   color: #666;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 0.950rem;
+  font-size: 17px;
+  height: 17px;
   margin: 20px 0;
 }
 .slideshow .caption strong {
   color: #333;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-weight: normal;
+  font-weight: 700;
 }
 /* today container */
 #today{
@@ -1776,17 +1796,16 @@ article .picto .icon{
     width: 100%;
 }
 #today .category{
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
   letter-spacing: 0.2em;
 }
 #today h3.title{
   margin: auto;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 1.8rem;
-  width: 80%;
-  padding: 10px 0;
+  padding: 10px 0px;
 }
 #today .trailer{
   width: 100%;
@@ -1804,15 +1823,23 @@ article .picto .icon{
 #today .trailer h3.title{
   font-size: 1.4rem;
 }
+#today .special-event h3.title{
+  font-size: 36px;
+  letter-spacing: 0.3em;
+  line-height: 52px;
+  height: auto;
+}
 #today .title-translate{
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 #today .director{
   color: #c8a461;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
     text-transform: none;
+    font-style: italic;
+    font-weight: normal;
     margin-top: 30px;
 }
 #today .director strong{
@@ -1829,8 +1856,8 @@ article .picto .icon{
 #today .links a {
     color: #c8a461;
     display: inline-block;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 1.4rem;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 22px;
     font-weight: 700;
     text-transform: uppercase;
     position: relative;
@@ -1839,7 +1866,7 @@ article .picto .icon{
 #today .links a.seances .icon {
     margin-right: 10px;
     margin-top: -0.4rem;
-    font-size: 1.1rem;
+    font-size: 20px;
 }
 
 /* more container */
@@ -1880,7 +1907,8 @@ article .picto .icon{
   font-weight: 700;
   color: #fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
+  font-size: 22px;
+  letter-spacing: 0.5em;
   margin: 0;
 }
 #more #slider-more .item {
@@ -1955,7 +1983,7 @@ article .picto .icon{
 }
 .banner-img .title{
   color:#ffffff;
-  font-size: 1.75rem;
+  font-size: 24px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -1970,9 +1998,9 @@ article .picto .icon{
     margin: 0 auto;
     display: block;
     text-transform: uppercase;
-    font-size: 1.3rem;
+    font-size: 18px;
     font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     letter-spacing: 1px;
     padding-top: 15px;
@@ -1981,7 +2009,20 @@ article .picto .icon{
   font-size: 1rem;
   padding: 0;
 }
+.close-button{
+    border: 1px solid #c8a461;
+    cursor: pointer;
+    height: 90px;
+    opacity: 0.6;
+    position: absolute;
+    top: 140px;
+    right: 40px;
+    width: 90px;
+    color:#c8a461;
+    line-height: 90px;
+    text-align: center;
 
+}
 
 /* footer */
 footer {
@@ -2156,6 +2197,10 @@ footer .newsletter #submit {
   }
   html, body { overflow: hidden; height: 100%; }
       body { margin:0; padding:0; }
+
+  .allow-landscape #landscape{
+    display: none;
+  }
 }
 
 @media only screen  and (max-aspect-ratio:13/9) {
@@ -3325,20 +3370,7 @@ font-weight: 700;
     display: table-cell;
     vertical-align: middle;
 }
-.close-button{
-    border: 1px solid #c8a461;
-    cursor: pointer;
-    height: 90px;
-    opacity: 0.6;
-    position: absolute;
-    top: 140px;
-    right: 40px;
-    width: 90px;
-    color:#c8a461;
-    line-height: 90px;
-    text-align: center;
 
-}
 #filters{
     background-color: rgba(0, 0, 0, 0.9);
     height: 100%;

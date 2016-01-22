@@ -64,6 +64,8 @@ grunt.initConfig({
 				        ],
 				    './css-concat/movie.css': [
 			            './css/main.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
 			            './css/include/*.css',
 			            './css/movie.css',
 			            './css/slideshow-video.css'
@@ -211,6 +213,9 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/wavesurfer.min.js',
+				            './js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',
 				            './js/include/*.js',
 				            './js/slidervideos.js',
 				            './js/movie.js'
@@ -294,9 +299,9 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/jquery.cookie.js',
-				            './js/jsonTest.js',
 				            './js/vendors/jquery-ui.custom.min.js',
-				            './js/vendors/moment.min.js',
+				            './js/jsonTest.js',
+				   			'./js/vendors/moment.min.js',
 				            './js/vendors/fullcalendar.min.js',
 				            './js/include/*.js',
 				            './js/press.js'

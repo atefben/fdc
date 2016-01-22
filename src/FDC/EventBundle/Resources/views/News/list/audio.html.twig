@@ -14,7 +14,9 @@
             <div class="item {{ article.theme|trans_fallback('name') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video" data-sound="{{ audio.sound }}">
 
                 <img src="{{ audio.image.src }}" srcset="{{ audio.image.src }} 1x, {{ audio.image.large }} 2x" alt="">
-                <div class="picto"></div>
+                <div class="picto">
+                    <i class="icon icon_audio"></i>
+                </div>
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
