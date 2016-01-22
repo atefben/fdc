@@ -34,7 +34,7 @@
        </div>
      </div>
       <div id="content-channels">
-        <div id="slider-channels" class="owl-carousel sliderDrag">
+        <div id="slider-trailer" class="owl-carousel sliderDrag">
           <div class="channel shadow-bottom">
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
@@ -44,6 +44,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Photocall</a>
+                    <span class="date">18.05.15</span>
                     <span>103 vidéos</span>
                   </div>
                 </div>
@@ -59,6 +60,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
+                    <span class="date">18.05.15</span>
                     <span>282 vidéos</span>
                   </div>
                 </div>
@@ -74,6 +76,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
+                    <span class="date">18.05.15</span>
                     <span>47 vidéos</span>
                   </div>
                 </div>
@@ -89,6 +92,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Photocall</a>
+                    <span class="date">18.05.15</span>
                     <span>103 vidéos</span>
                   </div>
                 </div>
@@ -104,6 +108,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
+                    <span class="date">18.05.15</span>
                     <span>282 vidéos</span>
                   </div>
                 </div>
@@ -119,6 +124,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
+                    <span class="date">18.05.15</span>
                     <span>47 vidéos</span>
                   </div>
                 </div>

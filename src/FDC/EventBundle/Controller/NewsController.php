@@ -651,7 +651,11 @@ class NewsController extends Controller
         }
 
         //get focus articles
-        $focusArticles = $news->getAssociatedNews();
+        $associatedNews = $news->getAssociatedNews();
+        $focusArticles = array();
+        foreach($associatedNews as $associatedNew) {
+            $focusArticles[] = $associatedNew->getAssociation();
+        }
 
         //get day articles
         $count = 3;

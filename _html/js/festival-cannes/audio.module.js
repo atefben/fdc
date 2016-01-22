@@ -37,6 +37,7 @@ function initAudioPlayers() {
     wave.on('finish', function() {
       wave.stop();
       $(wave.container).parents('.audio-player').removeClass('pause');
+      $(wave.container).parents('.audio-player').find('.playpause').html('<i class="icon icon_video"></i>');
     });
 
     waves.push(wave);

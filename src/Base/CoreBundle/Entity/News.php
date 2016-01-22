@@ -604,7 +604,7 @@ abstract class News implements TranslateMainInterface
     /**
      * Get associatedNews
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Base\CoreBundle\Entity\NewsNewsAssociated
      */
     public function getAssociatedNews()
     {
