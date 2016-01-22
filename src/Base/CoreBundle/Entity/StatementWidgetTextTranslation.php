@@ -26,7 +26,7 @@ class StatementWidgetTextTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
@@ -34,7 +34,7 @@ class StatementWidgetTextTranslation
      * Set content
      *
      * @param string $content
-     * @return NewsWidgetText
+     * @return StatementWidgetTextTranslation
      */
     public function setContent($content)
     {
@@ -46,7 +46,7 @@ class StatementWidgetTextTranslation
     /**
      * Get content
      *
-     * @return string
+     * @return string 
      */
     public function getContent()
     {

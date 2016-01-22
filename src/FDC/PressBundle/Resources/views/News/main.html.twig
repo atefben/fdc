@@ -29,10 +29,11 @@
             <div class="chapeau">{{ news|trans_fallback('introduction')|raw }}</div>
 
             {% for widget in news.widgets %}
-                {% if widget is statement_widget_image and widget.photos|length == 1 %}
+
+                {% if widget is statement_widget_image and widget.gallery.medias|length == 1 %}
                     <!-- SINGLE PHOTO -->
-                    {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : '' } %}
-                {% elseif widget is statement_widget_image and widget.photos|length > 1 %}
+                    {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' %}
+                {% elseif widget is statement_widget_image and widget.gallery.medias|length > 1 %}
                     <!-- SLIDESHOW -->
                     {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                 {% elseif widget is statement_widget_text %}
@@ -48,8 +49,10 @@
                     {% endif %}
                     {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
                 {% elseif widget is statement_widget_quote %}
+                    <!-- QUOTE -->
                     {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
                 {% elseif widget is statement_widget_image_dual_align %}
+                    <!-- DUAL PHOTO -->
                     {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
                 {% endif %}
             {% endfor %}
@@ -69,8 +72,8 @@
             </div>
         </div>
 
+        {% if associatedFilm is not null %}
         <div class="film">
-            {% if associatedFilm is not null %}
             <div class="info-film">
                     <div class="wrapper">
                         <div class="vCenter">
@@ -106,7 +109,6 @@
                         </div>
                     </div>
             </div>
-            {% endif %}
             {% if programmations is not empty %}
             <div class="programmation-film">
                 <div class="wrapper">
@@ -130,115 +132,26 @@
             </div>
             {% endif %}
         </div>
+        {% endif %}
+
         <div class="container">
-            {% if news.associatedStatement|length > 0 %}
+            {% if news.associatedStatement.association is defined %}
                 <div class="focus">
                     <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                     <div class="articles">
                         {% for article in news.associatedStatement %}
                             {% set article = article.association %}
-                            {% include 'FDCPressBundle:News:widgets/associated.article.html.twig' %}
+                            {% include 'FDCPressBundle:News:widgets/inner.article.html.twig' %}
                         {% endfor %}
                     </div>
                 </div>
             {% endif %}
-            {% if sameDayArticles != null %}
+            {% if sameDayArticles|length > 0 %}
             <div class="same-day">
                 <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
                 <div class="articles center">
                     {% for article in sameDayArticles %}
-                        {% if article is statement_article %}
-                            <div class="item all article {{ article.theme.slug }}">
-                                <article class="article">
-                                    <div class="img">
-                                        <span class="picto"><i class="icon icon_communique-presse"></i></span>
-                                        <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
-                                            {% set trans = article.header.findTranslationByLocale(app.request.locale) %}
-                                            {% if trans is null or trans.file is null %}
-                                                {% set trans = article.header.findTranslationByLocale('fr') %}
-                                            {% endif %}
-                                            {% set file = trans.file %}
-                                            {% thumbnail file, 'big' with {'alt': article.header|trans_fallback('alt') } %}
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="#" class="category">{{ article.theme }}</a>
-                                        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                                        <h3><a href="{{ path('fdc_press_news_get', {'slug': article.id }) }}">{{ article.title }}</a></h3>
-                                    </div>
-                                </article>
-                            </div>
-                        {% elseif article is statement_audio %}
-                            <div class="item all audio">
-                                <article class="article">
-                                    <div class="img">
-                                        <span class="picto"><i class="icon icon_communique-presse"></i></span>
-                                        <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
-                                            {% set trans = article.audio.findTranslationByLocale(app.request.locale) %}
-                                            {% if trans is null or trans.file is null %}
-                                                {% set trans = article.audio.findTranslationByLocale('fr') %}
-                                            {% endif %}
-                                            {% set file = article.audio %}
-                                            {% thumbnail file, 'big' with {'alt': article.audio|trans_fallback('alt') } %}
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="#" class="category">{{ article.theme }}</a>
-                                        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                                        <h3><a href="{{ path('fdc_press_news_get', {'slug': article.id }) }}">{{ article.title }}</a></h3>
-                                    </div>
-                                </article>
-                            </div>
-                        {% elseif article is statement_video %}
-                            <div class="item all video">
-                                <article class="article">
-                                    <div class="img">
-                                        <span class="picto"><i class="icon icon_communique-presse"></i></span>
-                                        <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
-                                            {% set trans = article.video.findTranslationByLocale(app.request.locale) %}
-                                            {% if trans is null or trans.file is null %}
-                                                {% set trans = article.video.findTranslationByLocale('fr') %}
-                                            {% endif %}
-                                            {% set file = article.video %}
-
-                                            {% thumbnail file, 'big' with {'alt': article.video|trans_fallback('alt') } %}
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="#" class="category">{{ article.theme }}</a>
-                                        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                                        <h3><a href="{{ path('fdc_press_news_get', {'slug': article.id }) }}">{{ article.title }}</a></h3>
-                                    </div>
-                                </article>
-                            </div>
-                        {% elseif article is statement_image %}
-                            <div class="item all image">
-
-                                {% for gallery in article.gallery.medias %}
-                                    {% if loop.first %}
-                                        {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans is null or trans.file is null %}
-                                            {% set trans = gallery.media.file.findTranslationByLocale('fr') %}
-                                        {% endif %}
-                                        {% set file = trans.file %}
-                                    {% endif %}
-                                {% endfor %}
-
-                                <article class="article">
-                                    <div class="img">
-                                        <span class="picto"><i class="icon icon_communique-presse"></i></span>
-                                        <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
-                                            {% thumbnail file, 'big' with {'alt': 'test' } %}
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="#" class="category">{{ article.theme }}</a>
-                                        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                                        <h3><a href="{{ path('fdc_press_news_get', {'slug': article.id }) }}">{{ article.title }}</a></h3>
-                                    </div>
-                                </article>
-                            </div>
-                        {% endif %}
+                        {% include 'FDCPressBundle:News:widgets/inner.article.html.twig' %}
                     {% endfor %}
                 </div>
             </div>

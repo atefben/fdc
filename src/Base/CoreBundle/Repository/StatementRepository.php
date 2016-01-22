@@ -65,13 +65,15 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getSameDayStatement($festival, $locale, $dateTime)
+    public function getSameDayStatement($festival, $locale, $dateTime, $count, $id)
     {
         $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
 
         $qb = $this
             ->createQueryBuilder('n')
+            ->select('n,
+                RAND() as HIDDEN rand')
             ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', 'na1.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'na2', 'WITH', 'na2.id = n.id')
@@ -83,7 +85,9 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
+            ->andWhere('n.id != :id')
             ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt < :datetime2)');
+
 
         $qb = $qb
             ->andWhere(
@@ -96,10 +100,13 @@ class StatementRepository extends EntityRepository
 
 
         $qb = $qb
+            ->addOrderBy('rand')
+            ->setMaxResults($count)
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
+            ->setParameter('id', $id)
             ->setParameter('site_slug', 'site-evenementiel')
             ->getQuery()
             ->getResult();

@@ -7,11 +7,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * StatementWidgetAudioType class.
  * 
- * \@extends NewsWidgetType
+ * \@extends StatementWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class StatementWidgetAudioType extends NewsWidgetType
+class StatementWidgetAudioType extends StatementWidgetType
 {
     /**
      * dataClass
@@ -22,25 +22,25 @@ class StatementWidgetAudioType extends NewsWidgetType
      * @access protected
      */
     protected $dataClass = 'Base\\CoreBundle\\Entity\\StatementWidgetAudio';
-    
+
     /**
-     * admin
-     * 
+     * statementWidgetAudioDummyAdmin
+     *
      * @var mixed
      * @access private
      */
-    private $admin;
-    
+    private $statementWidgetAudioDummyAdmin;
+
     /**
-     * setSonataAdmin function.
-     * 
+     * setStatementWidgetAudioDummyAdmin function.
+     *
      * @access public
-     * @param mixed $admin
+     * @param mixed $statementWidgetAudioDummyAdmin
      * @return void
      */
-    public function setSonataAdmin($admin)
+    public function setStatementWidgetAudioDummyAdmin($statementWidgetAudioDummyAdmin)
     {
-        $this->admin = $admin;
+        $this->statementWidgetAudioDummyAdmin = $statementWidgetAudioDummyAdmin;
     }
 
     /**
@@ -54,15 +54,13 @@ class StatementWidgetAudioType extends NewsWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-       /* $builder->add('gallery', 'sonata_type_model', array(
-            'model_manager' => $this->admin->getModelManager(),
-            'class' => $this->admin->getClass()
-        ));*/
 
-      /*  $builder->add('file', 'sonata_type_model', array(
-            'model_manager' => $this->admin->getModelManager(),
-            'class' => $this->admin->getClass()
-        ));*/
+        $builder->add('file', 'sonata_type_model_list', array(
+            'sonata_field_description' =>  $this->statementWidgetAudioDummyAdmin->getFormFieldDescriptions()['file'],
+            'model_manager' => $this->statementWidgetAudioDummyAdmin->getModelManager(),
+            'class' => $this->statementWidgetAudioDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass()
+        ));
+
     }
 
     /**

@@ -325,9 +325,11 @@ class StatementVideoAdmin extends Admin
      */
     public function prePersist($object)
     {
+
         foreach ($object->getAssociatedStatement() as $statement) {
             $statement->setStatement($object);
         }
+
     }
 
     /**
@@ -335,6 +337,7 @@ class StatementVideoAdmin extends Admin
      */
     public function preUpdate($object)
     {
+
         foreach ($object->getAssociatedStatement() as $statement) {
             $statement->setStatement($object);
         }

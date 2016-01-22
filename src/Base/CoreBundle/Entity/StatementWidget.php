@@ -47,7 +47,7 @@ abstract class StatementWidget
     protected $position;
 
     /**
-     * @var StatementArticle
+     * @var Statement
      *
      * @ORM\ManyToOne(targetEntity="Statement", inversedBy="widgets")
      */

@@ -44,11 +44,9 @@ class StatementWidgetTextType extends StatementWidgetType
                     'attr' => array(
                         'class' => 'ckeditor'
                     ),
-                    'constraints' => array(
-                        new NotBlank()
-                    ),
                     'field_type' => 'ckeditor',
-                    'config_name' => 'widget'
+                    'config_name' => 'widget',
+                    'required' => false
                 ),
                 'createdAt' => array(
                     'display' => false

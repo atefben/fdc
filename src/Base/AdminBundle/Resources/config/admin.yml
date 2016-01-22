@@ -301,12 +301,20 @@ services:
 
     #STATEMENT
     base.admin.statement_widget_image_dummy:
-            class: Base\AdminBundle\Admin\StatementWidgetImageDummyAdmin
-            arguments: [~, Base\CoreBundle\Entity\StatementWidgetImage, BaseAdminBundle:StatementWidgetImageDummyAdmin]
-            tags:
-                - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
-            calls:
-                 - [ setTranslationDomain, ['BaseAdminBundle']]
+        class: Base\AdminBundle\Admin\StatementWidgetImageDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementWidgetImage, BaseAdminBundle:StatementWidgetImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+                 
+    base.admin.statement_widget_audio_dummy:
+        class: Base\AdminBundle\Admin\StatementWidgetAudioDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementWidgetAudio, BaseAdminBundle:StatementWidgetAudioDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Audio, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.statement:
         class: Base\AdminBundle\Admin\StatementAdmin
