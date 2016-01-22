@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+	$('.'+ $('#main').data('menu')).addClass('active-page');
 	var $main = $('body');
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();

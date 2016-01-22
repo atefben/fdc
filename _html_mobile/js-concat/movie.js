@@ -13,7 +13,7 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
 //# sourceMappingURL=wavesurfer.min.js.map
 $(document).ready(function() {
 
-
+	$('.'+ $('#main').data('menu')).addClass('active-page');
 	var $main = $('body');
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();
