@@ -6334,7 +6334,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 .popin-audio .on .fullscreen {
   background-size: contain;
-  bottom: 42px;
+  bottom: 44px;
   z-index: 1;
   position: absolute;
   right: -30px;
@@ -8201,6 +8201,28 @@ header #searchContainer {
   font-size: 0.75rem;
 }
 
+.single-channel #share-box {
+  top: 85px;
+  width: 298px;
+}
+.single-channel #share-box .bubble {
+  background-color: #141414;
+  border: 1px solid #2C2C2C;
+}
+.single-channel #share-box .bubble:before {
+  box-shadow: -1px -1px 0px #2C2C2C;
+  border: 4px solid;
+  border-color: #141414;
+}
+.single-channel #share-box a {
+  color: #999999;
+  font-size: 0.75rem;
+}
+.single-channel #share-box a:hover {
+  color: #999999;
+  background-color: #141414;
+}
+
 .canne-classic #share-box {
   top: 187px;
   z-index: 3;
@@ -8234,6 +8256,41 @@ header #searchContainer {
 .canne-classic #share-box a:hover {
   color: #999999;
   background-color: #141414;
+}
+
+.all-audios #share-box {
+  width: 298px;
+  top: 60px;
+}
+.all-audios #share-box .bubble:before {
+  left: 60%;
+}
+.all-audios .square .email:hover {
+  border-right: 1px solid #c8a461 !important;
+}
+
+.chocolat-bottom .share #share-box {
+  top: -76px;
+  z-index: 89;
+  width: 303px;
+}
+.chocolat-bottom .share #share-box .bubble {
+  background: #141414;
+  border: 1px solid #727272;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  opacity: 1;
+  height: 64px;
+}
+.chocolat-bottom .share #share-box .bubble:before {
+  display: none;
+}
+.chocolat-bottom .share #share-box .bubble a {
+  color: #666666;
+  font-size: 0.75rem;
+  margin-top: 23px;
+  display: block;
 }
 
 #prehome-container {
@@ -12419,9 +12476,9 @@ input[type=submit] {
   color: #ffffff;
   width: 100%;
   min-height: 405px;
-  background-size: cover;
-  background-position: center center;
   overflow: hidden;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
 }
 .categorie-items article .bck-hover {
   background-color: #141414;
@@ -12951,6 +13008,8 @@ input[type=submit] {
 }
 .palmares-list .categorie-items article {
   height: 447px;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
 }
 .palmares-list .categorie-items article .bck-hover {
   height: 447px;
@@ -13366,6 +13425,11 @@ input[type=submit] {
   margin-bottom: 2px;
   margin-right: 10px;
 }
+.single-channel #slider-trailer .info-container .vCenterKid .hour, .single-channel #slider-trailer .info-container .vCenterKid .date {
+  color: #666;
+  display: inline-block;
+  font-size: 0.625rem;
+}
 .single-channel .channel:after {
   border: 4px solid #c8a461;
   box-sizing: border-box;
@@ -13394,9 +13458,6 @@ input[type=submit] {
 }
 .single-channel .small-container .player {
   margin-top: 49px;
-}
-.single-channel .small-container #content-channels {
-  padding-top: 26px;
 }
 .single-channel .small-container .infos-videos {
   padding-top: 18px;
@@ -13445,6 +13506,12 @@ input[type=submit] {
 }
 .single-channel .small-container .infos-videos .square a:hover + .button {
   border-left-color: #c8a461;
+}
+.single-channel .small-container .infos-videos .square a:last-child:hover {
+  border-right-color: #c8a461 !important;
+}
+.single-channel #content-channels {
+  padding-top: 23px;
 }
 
 .webtv-ba .item:hover img {
@@ -13612,12 +13679,19 @@ input[type=submit] {
   font-size: 9.6px;
   font-family: "Camphor W01 Bold";
   letter-spacing: 0.1em;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .webtv-ba-video .title-container a .icon {
   margin-right: 10px;
   font-size: .45rem;
   vertical-align: middle !important;
   margin-bottom: 2px;
+}
+.webtv-ba-video .title-container a:hover {
+  opacity: .5;
 }
 .webtv-ba-video .title-container h1 {
   margin: 10px 0 0 0;
@@ -16592,7 +16666,7 @@ input[type=submit] {
   z-index: 0 !important;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event.ui-draggable-dragging {
-  z-index: 5 !important;
+  z-index: 10 !important;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event.ui-draggable-dragging .category:after {
   cursor: -webkit-grabbing;
@@ -16625,12 +16699,17 @@ input[type=submit] {
   top: 0;
 }
 .press .programmation #calendar-programmation #timeline .arrow {
+  background-color: #fff;
   display: none;
+  font-size: 0.750em;
+  line-height: 40px;
+  text-align: center;
 }
 @media screen and (max-width: 1279px) {
   .press .programmation #calendar-programmation #timeline {
     padding: 0 43px;
     width: 260px;
+    overflow: hidden;
   }
   .press .programmation #calendar-programmation #timeline .timeline-container {
     width: 600px;

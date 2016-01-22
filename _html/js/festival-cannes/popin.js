@@ -133,37 +133,54 @@ $(document).ready(function() {
 
 
   //LINK POPIN//
+  function linkPopinInit(){
+    if($('.share').length || $('.square').length ){
 
-  if($('.share').length){
-    new Clipboard('.link');
-    var link = document.location.href;
-    $('.share .link').attr('data-clipboard-text',link);
+      console.log("11111");
+      new Clipboard('.link');
+      var link = document.location.href;
 
-    $('.share .link').on('click touchstart',function(e){
-      e.preventDefault();
-      if(!$('#share-box').length){
-        $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
-        $('#share-box').animate({'opacity':'1'},400,function(){
+      $('.link').attr('data-clipboard-text',link);
 
-           $('#share-box').addClass('show');
-           setTimeout(function(){
-                 $('#share-box .bubble').html('<a href="#">'+link+'</a>');
-           }, 1000);
-        });
-      }else if($('#share-box').hasClass('show')){
-        $('#share-box').removeClass('show');
-        $('#share-box').remove();
-      }
+      $('.link').on('click touchstart',function(e){
+        e.preventDefault();
 
-      if($('.single-movie, .webtv-ba-video').length){
-        setTimeout(function(){
-              $('#share-box').animate({'opacity':0},200,function(){
-                $('#share-box').removeClass('show');
-                $('#share-box').remove();
-              });
-        }, 3000);
+        console.log("222222");
 
-      }
+        if($('.single-channel').length){
+          $('.button.email').css('border-right','1px solid #2C2C2C');
+        }
+        if($('.all-audios').length){
+          $('.button.email').css('border-right','1px solid #dfdfdf');
+        }
+        if(!$('#share-box').length){
 
-    });
+          if($('.share').length){
+            $('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+          }else{
+            $('.square').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+          }
+
+          $('#share-box').animate({'opacity':'1'},400,function(){
+
+             $('#share-box').addClass('show');
+             setTimeout(function(){
+                   $('#share-box .bubble').html('<a href="#">'+link+'</a>');
+             }, 1000);
+          });
+        }else if($('#share-box').hasClass('show')){
+          $('#share-box').removeClass('show');
+          $('#share-box').remove();
+        }
+          setTimeout(function(){
+                $('#share-box').animate({'opacity':0},200,function(){
+                  $('#share-box').removeClass('show');
+                  $('#share-box').remove();
+                });
+          }, 3000);
+      });
+    }
+
   }
+
+  linkPopinInit();

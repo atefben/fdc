@@ -139,10 +139,21 @@ $('body').on('click', '.chocolat-image', function() {
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
   $('.chocolat-left').html('<i class="icon icon_flecheGauche"></i>');
   $('.chocolat-right').html('<i class="icon icon_fleche-right"></i>');
-  $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
-  $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
+
+  if($('.press-media').length || $('.downloading-press').length ){
+    if($('.lock').length){
+      $('<a href="#" class="share cadenas"><i class="icon icon_cadenas"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+    }else{
+      $('<a href="#" class="share download"><i class="icon icon_telecharger"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+    }
+  }else{
+    $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+  }
+  $('<div class="buttons square"><a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700\');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a><a href="#" onclick="window.open(\'https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride\',\'\',\'width=600,height=400\')" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
   $('<div class="zoomCursor"><i class="icon icon_loupePlus"></i></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
+
+  linkPopinInit();
 
   setTimeout(function() {
     $('.chocolat-wrapper').addClass('show');
@@ -270,11 +281,8 @@ $('body').on('mousemove', '.chocolat-content', function(e){
   if ($('body').hasClass('mob')) return false;
 
   if($('.chocolat-zoomed').length){
-    console.log('ooook');
     $('.zoomCursor .icon').removeClass('icon_loupePlus').addClass('icon_loupeMoins');
   }else{
-    console.log('nopppe');
-
     $('.zoomCursor .icon').removeClass('icon_loupeMoins').addClass('icon_loupePlus');
   }
   $('.zoomCursor').css('left', e.clientX + 10).css('top', e.clientY);

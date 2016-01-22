@@ -9,6 +9,8 @@ grunt.initConfig({
     			files:{
     				'./css-concat/home.css': [
 			            './css/vendors/*.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
 			            './css/main.css', 
 			            './css/include/*.css'
 			            
@@ -64,6 +66,8 @@ grunt.initConfig({
 				        ],
 				    './css-concat/movie.css': [
 			            './css/main.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
 			            './css/include/*.css',
 			            './css/movie.css',
 			            './css/slideshow-video.css'
@@ -77,6 +81,8 @@ grunt.initConfig({
 				    './css-concat/photos.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
 			            './css/filters.css',
 			            './css/grid-isotope.css'
 				        ],
@@ -156,6 +162,9 @@ grunt.initConfig({
     				'./js-concat/home.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',  
 				            './js/include/*.js',
 				            './js/main.js'
 				        ],
@@ -211,6 +220,9 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/wavesurfer.min.js',
+				            './js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',
 				            './js/include/*.js',
 				            './js/slidervideos.js',
 				            './js/movie.js'
@@ -225,6 +237,9 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
+				            './js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',
 				            './js/vendors/isotope.pkgd.min.js',
 				            'js/vendors/packery-mode.pkgd.min.js',
 				            'js/grid-isotope.js',
@@ -247,9 +262,11 @@ grunt.initConfig({
 				        ],
 			        './js-concat/videos.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/jwplayer.js',
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
-				            './js/filters.js'
+				            './js/filters.js',
+				            './js/videos.js'
 				        ],
 			        './js-concat/webtv.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -294,9 +311,9 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/jquery.cookie.js',
-				            './js/jsonTest.js',
 				            './js/vendors/jquery-ui.custom.min.js',
-				            './js/vendors/moment.min.js',
+				            './js/jsonTest.js',
+				   			'./js/vendors/moment.min.js',
 				            './js/vendors/fullcalendar.min.js',
 				            './js/include/*.js',
 				            './js/press.js'

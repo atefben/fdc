@@ -10,7 +10,7 @@
 
     <div id="main" class="webtv webtv-ba loading">
       <div class="bandeau">
-        <div id="live" style="background-image:url(http://dummyimage.com/1920x450/969496/fff&text=+)">
+        <div id="live" style="background-image:url(img/webtv/003.jpg)">
           <div class="vCenter">
             <div class="vCenterKid">
               <a href="#" class="play"><i class="icon icon_bandes-annonces-extraits"></i></a>

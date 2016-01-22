@@ -70,6 +70,9 @@
     .categorie-items {
         article{
           height: 447px;
+          background: center 0 no-repeat fixed;
+          background-size: cover;
+          
           .bck-hover{
             height: 447px;
             padding: 0px;

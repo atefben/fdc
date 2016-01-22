@@ -21,7 +21,9 @@
                 {% endif %}
                 {% set file = trans.file %}
                 {% thumbnail file, 'big' with {'alt': video.image|trans_fallback('alt') } %}
-                <div class="picto"></div>
+                <div class="picto">
+                    <i class="icon icon_video"></i>
+                </div>
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">

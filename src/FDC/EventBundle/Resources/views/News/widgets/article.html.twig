@@ -19,7 +19,7 @@
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
-        <span class="picto"><i class="icon icon_{{ article.newsType }}"></i></span>
+        <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type }}"></i></span>
     </div>
     <div class="info">
         <a href="#" class="category">{{ article.category }}</a>
