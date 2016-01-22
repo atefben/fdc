@@ -3643,7 +3643,15 @@ body.chocolat-open>.chocolat-content{
 }
 
 
-
+.item .chocolat-image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
 div.chocolat-wrapper {
   background-color: #080808;
   opacity: 0;

@@ -13,6 +13,16 @@ $(document).ready(function() {
 
       slideshows.push(slideshow);
     }
+    if($('.all-photos').length) {
+
+      var slideshow = $('.list').Chocolat({
+        imageSize: 'cover',
+        fullScreen: false,
+        loop:true,
+      }).data('chocolat');
+
+      slideshows.push(slideshow);
+    }
 
 
   // close slideshow on click

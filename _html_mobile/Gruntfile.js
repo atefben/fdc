@@ -81,6 +81,8 @@ grunt.initConfig({
 				    './css-concat/photos.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
 			            './css/filters.css',
 			            './css/grid-isotope.css'
 				        ],
@@ -235,6 +237,9 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
+				            './js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',
 				            './js/vendors/isotope.pkgd.min.js',
 				            'js/vendors/packery-mode.pkgd.min.js',
 				            'js/grid-isotope.js',
