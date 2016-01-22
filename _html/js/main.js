@@ -1076,7 +1076,7 @@ $(document).ready(function() {
 
         var info = $(audioPlayer).find('.info').html();
         $(audioPlayer).append('<div class="top"><a href="#" class="channels"></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
-        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
+        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="#" class="button facebook"></a><a href="#" onclick="window.open("https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride","","width=600,height=400")" class="button twitter"></a><a href="#" class="button link"></a><a href="#" class="button email"></a></div>')
         $(audioPlayer).append('<div class="bottom"><a href="#" class="playpause" data-action="play"></a></div>');
 
         if (audioPlayer.requestFullscreen) {
