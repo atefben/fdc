@@ -31,6 +31,7 @@ $(document).ready(function() {
     if($(this).hasClass('read-more')) return;
     if($(this).hasClass('ajax') && !$(this).hasClass('chocolat-image')) return;
     if($(this).hasClass('selection')) return;
+    if($(this).hasClass('read-later')) return;
     if (dragging) return;
     $(this).trigger('click');
   });
