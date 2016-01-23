@@ -69,6 +69,7 @@ grunt.initConfig({
 			            './css/slideshows-chocolat.css',
 			            './css/vendors/chocolat.css',
 			            './css/include/*.css',
+			            './css/audioplayer.css',
 			            './css/movie.css',
 			            './css/slideshow-video.css'
 			        ],
@@ -78,6 +79,7 @@ grunt.initConfig({
 			            './css/vendors/chocolat.css',
 			            './css/include/*.css',
 			            './css/article.css',
+			            './css/audioplayer.css',
 			            './css/slideshow-video.css'
 			        ],
 			        './css-concat/participate.css': [
