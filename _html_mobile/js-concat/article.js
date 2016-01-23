@@ -1431,45 +1431,6 @@ var initAudioPlayers = function() {
 
 $(document).ready(function() {
 
-	var creditsCount = $('.credits p').length;
-	var middleCredits = Math.round(creditsCount/2)-1;
-	$('.credits p').eq(middleCredits).addClass('middle');
-
-	var castingCount = $('.casting p').length;
-	var middleCasting = Math.round(castingCount/2)-1;
-	$('.casting p').eq(middleCasting).addClass('middle');
-
-
-
-	// CONTACT AND PRESS SECTION OPENING
-	$('.press .title-section').click(function(){
-
-		$('.press').toggleClass('open');
-		$(this).find('.icon').toggleClass('icon_fleche-top');
-	});	
-
-	$('.contact .title-section').click(function(){
-
-		$('.contact').toggleClass('open');
-		$(this).find('.icon').toggleClass('icon_fleche-top');
-	});	
-
-
-	// STOP PICTOS FIXED BEFORE NEWSLETTER BLOCK
-	$(window).on('scroll', function() {
-	    var s = $(this).scrollTop();
-	    if( s + document.documentElement.clientHeight > $('#main').height() + 173) {
-
-	    	$('.pictos-nav').css('position','absolute');
-	    	$('.pictos-nav').css('bottom','50px');
-	    }
-	    else{
-
-	    	$('.pictos-nav').css('position','fixed');
-	    	$('.pictos-nav').css('bottom','160px');
-	    }
-	 });
-
 
 	// INIT SLIDERS
 	function setActiveThumbnail() {
@@ -1545,26 +1506,20 @@ $(document).ready(function() {
 
 	    sliderArticles.owlCarousel();
 
-	var sliderCompetition = $(".competition .competition-carousel").owlCarousel({ 
-	      nav: false,
-	      dots: false,
-	      smartSpeed: 500,
-	      fluidSpeed: 500,
-	      loop: false,
-	      margin: 55,
-	      autoWidth: true,
-	      dragEndSpeed: 600,
-	      items:1,
-	      center:true
-	    });
+	// var sliderCompetition = $(".competition .competition-carousel").owlCarousel({ 
+	//       nav: false,
+	//       dots: false,
+	//       smartSpeed: 500,
+	//       fluidSpeed: 500,
+	//       loop: false,
+	//       margin: 55,
+	//       autoWidth: true,
+	//       dragEndSpeed: 600,
+	//       items:1,
+	//       center:true
+	//     });
 
-	    sliderCompetition.owlCarousel();
-
-
-
-
-
-
+	//     sliderCompetition.owlCarousel();
 
 
 	// PLAYERS AUDIO
@@ -1572,6 +1527,8 @@ $(document).ready(function() {
 	initAudioPlayers()
 
 
+
+	
 
 
 });
