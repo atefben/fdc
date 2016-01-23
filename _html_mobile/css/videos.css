@@ -102,3 +102,101 @@
 	max-width: 525px;
 }
 /* ************** */
+
+.fullscreenplayer{
+  width: 640px;
+  height: 100%;
+  position: fixed;
+  background: #fff;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  padding: 40px;
+    overflow-y: scroll;
+  box-sizing: border-box;
+}
+.fullscreenplayer .close-button{
+  top:40px;
+}
+.fullscreenplayer p{
+  margin-top: 20px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 22px;
+}
+.fullscreenplayer .category {
+    color: #c8a461;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.fullscreenplayer .buttons {
+  margin-top: 40px;
+}
+.fullscreenplayer .buttons a{
+  font-size: 20px;
+  line-height: 70px;
+}
+.fullscreenplayer .vCenterKid{
+  padding-top: 110px;
+}
+.fullscreenplayer{
+  
+  display: none;
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.fullscreenplayer.show{
+  display: block;
+  opacity: 0;
+}
+.allow-landscape .fullscreenplayer.show{
+  opacity: 1;
+}
+.fullscreenplayer .jw-controlbar {
+    height: 40px;
+}
+.fullscreenplayer .jw-reset{
+  font-size: 20px;
+}
+.jw-skin-five .jw-progress{
+  background: #c8a461;
+}
+.jw-skin-five .jw-slider-horizontal .jw-knob {
+    background-color: #c8a461;
+  }
+.jw-skin-five .jw-controlbar {
+    background: rgba(20,20,20,0.6);
+}
+.jw-skin-five .jw-text {
+    color: #fff;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.jw-skin-five .jw-button-color {
+    color: #fff;
+}
+.fullscreenplayer .jw-tab-focus:focus {
+    outline: none;
+}
+@media only screen  and (orientation : landscape) {
+  
+  .fullscreenplayer .vCenterKid{
+    padding-top: 0px;
+  }
+  .fullscreenplayer{
+    padding: 20px;
+  }
+  .fullscreenplayer .close-button{
+    height: 40px;
+    opacity: 0.6;
+    position: absolute;
+    /*right: 10px;*/
+    width: 40px;
+    line-height: 40px;
+    font-size: 10px;
+    z-index: 9;
+  }
+}
+

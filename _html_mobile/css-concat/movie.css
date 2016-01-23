@@ -2043,7 +2043,7 @@ div.chocolat-wrapper {
   visibility: hidden;
   -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  z-index: 99;
+  z-index: 10001;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 div.chocolat-wrapper .chocolat-img {
