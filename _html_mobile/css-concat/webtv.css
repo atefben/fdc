@@ -6906,6 +6906,7 @@ font-weight: 700;
 .ba .slideshow .caption, .channel .slideshow .caption{
   margin-bottom: 0;
   margin-top: 14px;
+  height: auto;
 }
 .ba .slideshow .container, .channel .slideshow .container{
 

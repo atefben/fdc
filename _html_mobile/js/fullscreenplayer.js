@@ -1,25 +1,19 @@
-var playerInstance = jwplayer("player1");
-        playerInstance.setup({
-        file: "/videos/sample.mp4",
-        width: "100%",
-        aspectratio: "16:9",
-        displaytitle: false
-        });
+
 
 
 $(document).ready(function() {
-	$('.list .item').on("click",function(){
-		console.log('coucou',$(this).data('video'));
+	$('.item-video').on("click",function(){
 		$('.fullscreenplayer').addClass('show');
 		setTimeout(function() {
 	      
-$('body').addClass('allow-landscape');
+			$('body').addClass('allow-landscape');
 	      
 	    }, 900);
 		
 		var playerInstance = jwplayer("player1");
         playerInstance.setup({
         file: $(this).data('video'),
+        image: './img/playervideo.jpg',
         width: "100%",
         aspectratio: "16:9",
         displaytitle: false,

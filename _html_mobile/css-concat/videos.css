@@ -3331,6 +3331,7 @@ font-weight: 700;
 }
 /* ************** */
 
+
 .fullscreenplayer{
   width: 640px;
   height: 100%;
@@ -3383,29 +3384,29 @@ font-weight: 700;
 .allow-landscape .fullscreenplayer.show{
   opacity: 1;
 }
-.fullscreenplayer .jw-controlbar {
+#main .jw-controlbar {
     height: 40px;
 }
-.fullscreenplayer .jw-reset{
+#main .jw-reset{
   font-size: 20px;
 }
-.jw-skin-five .jw-progress{
+#main .jw-skin-five .jw-progress{
   background: #c8a461;
 }
-.jw-skin-five .jw-slider-horizontal .jw-knob {
+#main .jw-skin-five .jw-slider-horizontal .jw-knob {
     background-color: #c8a461;
   }
-.jw-skin-five .jw-controlbar {
+#main .jw-skin-five .jw-controlbar {
     background: rgba(20,20,20,0.6);
 }
-.jw-skin-five .jw-text {
+#main .jw-skin-five .jw-text {
     color: #fff;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
-.jw-skin-five .jw-button-color {
+#main .jw-skin-five .jw-button-color {
     color: #fff;
 }
-.fullscreenplayer .jw-tab-focus:focus {
+#main .jw-tab-focus:focus {
     outline: none;
 }
 @media only screen  and (orientation : landscape) {

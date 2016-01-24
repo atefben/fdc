@@ -42,7 +42,8 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/slideshow-video.css',
-			            './css/webtv.css'
+			            './css/webtv.css',
+			            './css/fullscreenplayer.css'
 			            
 				        ],
 				    './css-concat/channels.css': [
@@ -106,7 +107,8 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/filters.css',
-			            './css/videos.css'
+			            './css/videos.css',
+			            './css/fullscreenplayer.css'
 				        ],
 				    './css-concat/webtv.css': [
 			            './css/vendors/*.css',
@@ -200,9 +202,11 @@ grunt.initConfig({
 				    './js-concat/channel.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/jwplayer.js',
 				            './js/include/*.js',
 				            './js/webtv.js',
-				            './js/slidervideos.js'
+				            './js/slidervideos.js',
+				            './js/channel.js'
 				        ],
 			        './js-concat/channels.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -289,7 +293,7 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
 				            './js/filters.js',
-				            './js/videos.js'
+				            './js/fullscreenplayer.js'
 				        ],
 			        './js-concat/webtv.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
