@@ -14134,8 +14134,12 @@ input[type=submit] {
   vertical-align: top;
   box-sizing: border-box;
   margin-right: 29px;
-  position: fixed;
-  top: 393px;
+  position: absolute;
+  top: 163px;
+  -moz-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .faq .faq-menu ul {
   border-right: 1px solid #dfdfdf;

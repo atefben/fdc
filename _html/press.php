@@ -225,16 +225,16 @@
               <div class="timeline-container">
                 <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
                 <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
-                <a href="#" class="disabled">ven<span class="day">13</span></a>
-                <a href="#" class="disabled">sam<span class="day">14</span></a>
-                <a href="#" class="disabled">dim<span class="day">15</span></a>
-                <a href="#" class="disabled">lun<span class="day">16</span></a>
-                <a href="#" class="disabled">mar<span class="day">17</span></a>
-                <a href="#" class="disabled">mer<span class="day">18</span></a>
-                <a href="#" class="disabled">jeu<span class="day">19</span></a>
-                <a href="#" class="disabled">ven<span class="day">20</span></a>
-                <a href="#" class="disabled">sam<span class="day">21</span></a>
-                <a href="#" class="disabled">dim<span class="day">22</span></a>
+                <a href="#" class="" data-date="2016-05-13">ven<span class="day">13</span></a>
+                <a href="#" class="" data-date="2016-05-14">sam<span class="day">14</span></a>
+                <a href="#" class="" data-date="2016-05-15">dim<span class="day">15</span></a>
+                <a href="#" class="" data-date="2016-05-16">lun<span class="day">16</span></a>
+                <a href="#" class="" data-date="2016-05-17">mar<span class="day">17</span></a>
+                <a href="#" class="" data-date="2016-05-18">mer<span class="day">18</span></a>
+                <a href="#" class="" data-date="2016-05-19">jeu<span class="day">19</span></a>
+                <a href="#" class="" data-date="2016-05-20">ven<span class="day">20</span></a>
+                <a href="#" class="" data-date="2016-05-21">sam<span class="day">21</span></a>
+                <a href="#" class="" data-date="2016-05-22">dim<span class="day">22</span></a>
               </div>
               <span class="arrow right"><i class="icon icon_fleche-right"></i></span>
             </div>
