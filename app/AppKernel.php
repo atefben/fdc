@@ -65,6 +65,8 @@ class AppKernel extends Kernel
             new FDC\EventBundle\FDCEventBundle(),
             new FDC\PressBundle\FDCPressBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle(),
+            /* Console */
+            new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
