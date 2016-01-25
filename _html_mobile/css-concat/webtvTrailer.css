@@ -2027,6 +2027,10 @@ article .picto .icon{
     text-align: center;
 
 }
+.all-photos .container .title{
+  
+  margin: 70px 0 40px 0;
+}
 
 /* footer */
 footer {
@@ -3044,7 +3048,7 @@ font-weight: 700;
   float: left;
   width: 50%;
   height: 205px;
-  background: #0D8;
+  background: #000;
   position: relative;
 
 }
@@ -3113,17 +3117,17 @@ font-weight: 700;
     letter-spacing: 0.05em;
     margin-right: 12px;
     text-transform: uppercase;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     margin-top: 5px;
-    padding-bottom: 5px;
-    font-weight: 600;
+    padding-bottom: 3px;
+    font-weight: 700;
 }
 
 .grid-item .infos p{
 	line-height: 1.5rem;
 	color:#fff;
 	font-size: 1.5rem;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 
   max-width: 185px;
   white-space: nowrap;
@@ -3141,14 +3145,9 @@ font-weight: 700;
 }
 
 .grid-item:before {
-  background: transparent;
-  background: -moz-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(57%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
-  background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -o-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -ms-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 0.8) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+
+  background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 1) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 1) 100%);
   content: '';
   display: block;
   height: 100%;

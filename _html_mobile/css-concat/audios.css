@@ -2027,6 +2027,10 @@ article .picto .icon{
     text-align: center;
 
 }
+.all-photos .container .title{
+  
+  margin: 70px 0 40px 0;
+}
 
 /* footer */
 footer {
@@ -3072,7 +3076,7 @@ font-weight: 700;
     background-size: 6px;*/
     display: none;
     padding-right: 13px;
-    max-width: 120px;
+    max-width: 110px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
