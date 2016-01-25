@@ -85,9 +85,10 @@
      color: #ffffff;
      width: 100%;
      min-height: 405px;
-     background-size: cover;
-     background-position: center center;
      overflow: hidden;
+     background: center 0 no-repeat fixed;
+     background-size: cover;
+
      .bck-hover {
        background-color: #141414;
        width: 100%;

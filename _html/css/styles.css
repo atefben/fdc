@@ -12476,9 +12476,9 @@ input[type=submit] {
   color: #ffffff;
   width: 100%;
   min-height: 405px;
-  background-size: cover;
-  background-position: center center;
   overflow: hidden;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
 }
 .categorie-items article .bck-hover {
   background-color: #141414;
@@ -13008,6 +13008,8 @@ input[type=submit] {
 }
 .palmares-list .categorie-items article {
   height: 447px;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
 }
 .palmares-list .categorie-items article .bck-hover {
   height: 447px;
@@ -14141,7 +14143,7 @@ input[type=submit] {
   padding: 15px;
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: #dfdfdf;
+  color: #ccc;
   transition: .5s;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
@@ -14193,7 +14195,7 @@ input[type=submit] {
   width: 100%;
   padding-top: 0px;
   line-height: 26px;
-  border-top: 1px solid #dfdfdf;
+  border-top: 1px solid #c1c1c1;
   padding: 20px 18px;
   max-height: 100px;
   overflow: hidden;
@@ -14202,29 +14204,46 @@ input[type=submit] {
 .faq section article .faq-question {
   position: relative;
 }
+.faq section article .faq-question:hover .icon_case-plus {
+  color: #c8a461;
+  cursor: pointer;
+}
+.faq section article .faq-question:hover h3 {
+  color: #c8a461;
+  transition: .5s;
+  cursor: pointer;
+}
 .faq section article h3 {
   font-size: 1rem;
   text-transform: uppercase;
-  color: #c1c1c1;
+  color: #999999;
   padding-bottom: 40px;
   width: 533px;
   display: inline-block;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-align: left;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .faq section article .icon_case-plus {
   position: absolute;
   top: 4px;
   right: -4px;
   font-size: 2.8rem;
-  color: #E0E0E0;
+  color: #c1c1c1;
+  -moz-transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .faq section article .icon_moins {
   position: absolute;
   top: 21px;
   right: 12px;
   font-size: 0.7rem;
-  color: #E0E0E0;
+  color: #c8a461;
 }
 .faq section article .faq-description {
   width: 660px;
@@ -14237,11 +14256,6 @@ input[type=submit] {
   text-decoration: underline;
 }
 .faq section article .fa:hover {
-  color: #c8a461;
-  transition: .5s;
-  cursor: pointer;
-}
-.faq section article h3:hover {
   color: #c8a461;
   transition: .5s;
   cursor: pointer;

@@ -281,6 +281,8 @@
                                                     <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
+                                                    <h4><strong>{{ 'form.widget.gallery'|trans }}</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
@@ -289,6 +291,8 @@
                                                 widget.children._type.vars.value == 'statement_widget_quote_type'
                                                 %}
                                                     {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                    {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
+                                                        {{ form_widget(widget.gallery) }}
                                                 {% endif %}
                                                 <a class="btn btn-danger btn-sm btn-outline remove_item">
                                                     <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}

@@ -3,9 +3,9 @@
 
 var play1, play2, play3;
 
-var d  = document,
-    w  = window,
-    k  = k || new Konsole('fdc.2016', true),
+var d = document,
+    w = window,
+    k = k || new Konsole('fdc.2016', true),
     timeout = 1000,
     thread,
     controlBar =
@@ -39,17 +39,41 @@ var d  = document,
             <a href="#" class="channels"><i class="icon icon_playlist"></i></a>\
             <div class="info"></div>\
             <div class="buttons square">\
-                <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>\
-                <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>\
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700\');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
+                <a href="#" onclick="window.open(\'https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride\',\'\',\'width=600,height=400\')" class="button twitter"><i class="icon icon_twitter"></i></a>\
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>\
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>\
+            </div>\
+        </div>',
+    slider =
+        '<div class="channels-video">\
+            <div class="slider-channels-video owl-carousel sliderDrag">\
+            </div>\
+        </div>',
+    slide = 
+        '<div class="channel video shadow-bottom">\
+            <div class="image-wrapper">\
+                <img src="" alt="" width="293" height="185">\
+            </div>\
+            <a class="linkVid" href="#"></a>\
+            <div class="info">\
+                <div class="picto"><i class="icon icon_playlist"></i></div>\
+                    <div class="info-container">\
+                        <div class="vCenter">\
+                            <div class="vCenterKid">\
+                            <a href="#" class="category"></a>\
+                            <span></span>\
+                            <p>Sils Maria</p>\
+                        </div>\
+                    </div>\
+                </div>\
             </div>\
         </div>';
 
 function playerInit(id, cls, havePlaylist, live) {
-    cls = cls || '.video-player';
+    cls          = cls || '.video-player';
     havePlaylist = havePlaylist || false;
-    live = live || false;
+    live         = live || false;
     var tmp;
 
     if (id) {
@@ -100,15 +124,6 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
     $topBar.find('.buttons .twitter').attr('href', $container.data('twitter'));
     $topBar.find('.buttons .link').attr('href', $container.data('link'));
     $topBar.find('.buttons .email').attr('href', $container.data('email'));
-
-    if (!havePlaylist) {
-        $topBar.find('.channels').remove();
-    }
-
-    if (live) {
-        $container.find('.time').addClass('hide');
-        $container.find('.progress').addClass('hide');
-    }
 
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
@@ -174,75 +189,63 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
           loop: false,
           margin: 80,
           autoWidth: true,
-          // onInitialized: function() {
-          //   $('.slider-channels-video .owl-stage').css({ 'margin-left': "-343px" });
-          //   k.log('TEEEEEEEST');
-          // }
         });
 
         sliderChannelsVideo.owlCarousel();
         sliderChannelsVideo.on('click', '.linkVid', function() {
-            k.log('', $(this).closest('.owl-item').index());
+            k.log('', $(this).closest('.owl-item'));
 
             playerInstance.playlistItem($(this).closest('.owl-item').index());
+            
+            console.log($(this).closest('.channel.video'));
+            var infos = $.parseJSON($(this).closest('.channel.video').data('json'));
+            k.log('', infos);
+            $topBar.find('.info .category').text(infos.category);
+            $topBar.find('.info p').text(infos.name);
+            
             $container.find('.channels-video').removeClass('active');
             $container.find('.jwplayer').removeClass('overlay-channels');
         });
     }
 
     playerInstance.setup({
+        file: $container.data('file'),
+        image: $container.data('image'), 
         primary: 'html5',
         aspectratio: '16:9',
         width: $(vid).parent('div').width(),
         height: $(vid).parent('div').height(),
-        controls: false,
-        playlist: [ //TODO change all link//
-            {
-                // file: 'https://www.youtube.com/watch?v=p7t_GWXmgFk',
-                file: './files/mov_bbb.mp4',
-                image: '//dummyimage.com/960x540/000/c8a461.png'
-            }, {
-                file: 'https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s',
-            }, {
-                file: 'https://www.youtube.com/watch?v=NtDG-Cnj-pw',
-                title: 'Video 1'
-            }, {
-                file:'https://www.youtube.com/watch?v=4QmpYuVEwIU',
-                title:'Video 2'
-            }, {
-                file:'https://www.youtube.com/watch?v=YvjBXpmwhmk',
-                title:'Video 3'
-            }
-        ]
+        controls: false
     });
 
-    if (live) {
-        // playerInstance.load([{file:$container.data('video')}]);
-        // playerInstance.load({
-        //     playlist: [ //TODO change all link//
-        //         {
-        //             // file: 'https://www.youtube.com/watch?v=p7t_GWXmgFk',
-        //             file: './files/mov_bbb.mp4',
-        //             image: '//dummyimage.com/960x540/000/c8a461.png'
-        //         }, {
-        //             file: 'https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s',
-        //         }, {
-        //             file: 'https://www.youtube.com/watch?v=NtDG-Cnj-pw',
-        //             title: 'Video 1'
-        //         }, {
-        //             file:'https://www.youtube.com/watch?v=4QmpYuVEwIU',
-        //             title:'Video 2'
-        //         }, {
-        //             file:'https://www.youtube.com/watch?v=YvjBXpmwhmk',
-        //             title:'Video 3'
-        //         }
-        //     ]
-        // });
+    if (havePlaylist) {
+        var tempSlider = $(slider),
+            playlist   = $.parseJSON($container.data('playlist'));
+        $.each(playlist, function(i,p) {
+            var tempSlide = $(slide);
+            tempSlide.find('.image-wrapper img').attr('src',p.image);
+            tempSlide.find('.info-container .category').text(p.category);
+            tempSlide.find('.info-container p').text(p.name)
+            tempSlide.data('json', JSON.stringify(p));
+            tempSlider.find('.slider-channels-video').append(tempSlide);
+        });
+        tempSlider.insertAfter($topBar);
+        initChannel();
+        playerInstance.load(playlist);
+    } else {
+        $topBar.find('.channels').remove();
     }
+
+    if (live) {
+        $container.find('.time').addClass('hide');
+        $container.find('.progress').addClass('hide');
+        $topBar.find('.channels').remove();
+    }
+
 
     playerInstance.on('ready', function() {
         this.setVolume(100)
-        initChannel();
+        // initChannel();
         externeControl();
     }).on('play', function() {
         $container.removeClass('state-init').removeClass('state-complete');
@@ -353,6 +356,7 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
 };
 
 $(d).ready(function() {
+    play1 = playerInit('video-player', false, true, false);
     // play1 = playerInit('video-player', false, $('#video-player').data('playlist'), false);
     // play2 = playerInit(false, '.video-player', true, false);
     // play3 = playerInit(false, 'video-live', false, true);

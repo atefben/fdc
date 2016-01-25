@@ -129,7 +129,7 @@ services:
         tags:
             - { name: form.type, alias: 'statement_widget_audio_type'}
         calls:
-            - ['setSonataAdmin', ['@sonata.media.admin.gallery']]
+            - ['setStatementWidgetAudioDummyAdmin', ['@base.admin.statement_widget_audio_dummy']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.statement_widget_image_type:

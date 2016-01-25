@@ -422,8 +422,16 @@ class NewsController extends Controller
         }
 
         //get day articles
+        $count = 3;
         $statementDate = $statement->getPublishedAt();
-        $sameDayArticles = $em->getRepository('BaseCoreBundle:Statement')->getSameDayStatement($settings->getFestival()->getId(),$locale,$statementDate);
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:Statement')
+            ->getSameDayStatement(
+                $settings->getFestival()->getId(),
+                $locale,
+                $statementDate,
+                $count,
+                $statement->getId()
+            );
 
         return array(
             'programmations' => $programmations,

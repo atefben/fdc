@@ -57,24 +57,13 @@ class StatementWidgetImageType extends StatementWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
+
         $builder->add('gallery', 'sonata_type_model_list', array(
             'sonata_field_description' =>  $this->statementWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
             'model_manager' => $this->statementWidgetImageDummyAdmin->getModelManager(),
-            'class' => $this->statementWidgetImageDummyAdmin->getClass(),
+            'class' => $this->statementWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery']->getAssociationAdmin()->getClass(),
         ));
-       // $builder->add('medias', 'sonata_type_collection', array(
-           // 'sonata_field_description' =>  $this->statementWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
-        //    'model_manager' => $this->statementWidgetImageDummyAdmin->getModelManager(),
-          //  'class' => $this->statementWidgetImageDummyAdmin->getClass(),
-       // ));
-       /* $builder->add('medias', 'sonata_type_collection', array(
-            'by_reference' => false,
-            'sonata_field_description' =>  $this->statementWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
-        ), array(
-            'edit' => 'inline',
-            'inline' => 'table',
-            'sortable' => 'position',
-        ));*/
+
     }
 
     /**
