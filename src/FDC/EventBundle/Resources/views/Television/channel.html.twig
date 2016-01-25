@@ -4,7 +4,9 @@
 {% block body %}
 <div id="main" class="webtv single-channel loading">
     <div class="container">
-        <a href="#" class="back">{{ 'webtv.channel.btn.retourauxchaines'|trans }}</a>
+        <a href="{{ path('fdc_event_television_channels') }}" class="back">
+            <i class="icon icon_flecheGauche"></i>{{ 'webtv.channel.btn.retourauxchaines'|trans }}
+        </a>
     </div>
     <h2 class="title">{{ 'webtv.channel.title.conferencedepresse'|trans }}</h2>
 
@@ -21,10 +23,10 @@
                 <p>{{ channel.description }}</p>
             </div>
             <div class="buttons square">
-                <a href="#" class="button facebook"></a>
-                <a href="#" class="button twitter"></a>
-                <a href="#" class="button link"></a>
-                <a href="#" class="button email"></a>
+                <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
+                <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+                <a href="#" class="button link"><i class="icon icon_link"></i></a>
+                <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
             </div>
         </div>
     </div>

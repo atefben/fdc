@@ -11,7 +11,7 @@
     <div id="main" class="press press-home loading calendar-open lock">
       <div class="header-press">
         <div class="head">
-          <span>Espace presse</span>
+          <span><i class="icon icon_espace-presse"></i>Espace presse</span>
         </div>
         <div class="container">
           <h2>Accueil</h2>
@@ -25,12 +25,12 @@
       <div class="locked">
         <div class="vCenter">
           <div class="vCenterKid">
-            <h3 class="title-press">contenus verrouillés</h3>
+            <h3 class="title-press"><i class="icon icon_cadenas"></i>contenus verrouillés</h3>
             <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
           </div>
         </div>
         <form action="">
-          <input type="text" value="" placeholder="Mot de passe" />
+          <input type="password" value="" placeholder="Mot de passe" />
           <input type="submit" value="valider" />
         </form>
       </div>
@@ -39,7 +39,7 @@
           <div id="calendar-wrapper">
             <h2 class="title-calendar">mon agenda</h2>
             <div id="mycalendar" class="side"></div>
-            <p class="link"><a href="calendar.php"><img src="img/svg/arrow-right-gold.svg" />tout mon agenda</a></p>
+            <p class="link"><a href="calendar.php"><i class="icon icon_fleche-right"></i>tout mon agenda</a></p>
             <div class="drag">
               <h2>Préparez votre séjour au festival de cannes</h2>
               <img src="img/svg/main-drag.svg" alt="" width="43" />
@@ -51,7 +51,7 @@
         <div class="communiques">
           <div class="chap">
             <h3 class="title-press">Communiqués et infos</h3>
-            <p class="link"><a href="press-actu.php"><img src="img/svg/arrow-right-gold.svg" />tous les communiqués et infos</a></p>
+            <p class="link"><a href="press-actu.php"><i class="icon icon_fleche-right"></i>tous les communiqués et infos</a></p>
           </div>
           <div class="grid-container">
             <div class="grid-wrapper">
@@ -61,7 +61,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -74,7 +74,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -87,7 +87,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_communique-presse"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -100,7 +100,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -113,7 +113,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -126,7 +126,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -139,7 +139,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -152,7 +152,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -165,7 +165,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -178,7 +178,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -191,7 +191,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -204,7 +204,7 @@
                     <img src="img/articles/02.jpg" alt="" />
                   </div>
                   <a href="article-press.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Conférence de Presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -217,22 +217,26 @@
         <div class="programmation">
           <div class="chap">
             <h3 class="title-press">Programme du <span id="dateProgram">12 Mai 2016</span></h3>
-            <p class="link"><a href="programmation.php"><img src="img/svg/arrow-right-gold.svg" />toute la programmation</a></p>
+            <p class="link"><a href="programmation.php"><i class="icon icon_fleche-right"></i>toute la programmation</a></p>
           </div>
           <div id="calendar-programmation">
             <div id="timeline">
-              <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
-              <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
-              <a href="#" class="disabled">ven<span class="day">13</span></a>
-              <a href="#" class="disabled">sam<span class="day">14</span></a>
-              <a href="#" class="disabled">dim<span class="day">15</span></a>
-              <a href="#" class="disabled">lun<span class="day">16</span></a>
-              <a href="#" class="disabled">mar<span class="day">17</span></a>
-              <a href="#" class="disabled">mer<span class="day">18</span></a>
-              <a href="#" class="disabled">jeu<span class="day">19</span></a>
-              <a href="#" class="disabled">ven<span class="day">20</span></a>
-              <a href="#" class="disabled">sam<span class="day">21</span></a>
-              <a href="#" class="disabled">dim<span class="day">22</span></a>
+              <span class="arrow left"><i class="icon icon_flecheGauche"></i></span>
+              <div class="timeline-container">
+                <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
+                <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
+                <a href="#" class="disabled">ven<span class="day">13</span></a>
+                <a href="#" class="disabled">sam<span class="day">14</span></a>
+                <a href="#" class="disabled">dim<span class="day">15</span></a>
+                <a href="#" class="disabled">lun<span class="day">16</span></a>
+                <a href="#" class="disabled">mar<span class="day">17</span></a>
+                <a href="#" class="disabled">mer<span class="day">18</span></a>
+                <a href="#" class="disabled">jeu<span class="day">19</span></a>
+                <a href="#" class="disabled">ven<span class="day">20</span></a>
+                <a href="#" class="disabled">sam<span class="day">21</span></a>
+                <a href="#" class="disabled">dim<span class="day">22</span></a>
+              </div>
+              <span class="arrow right"><i class="icon icon_fleche-right"></i></span>
             </div>
             <div class="calendar">
               <div class="timeCol">
@@ -245,14 +249,14 @@
                 <div class="time">13H</div>
               </div>
               <div class="venues">
-                <a href="#" class="nav prev"></a>
-                <a href="#" class="nav next"></a>
+                <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
+                <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
                 <div class="v-wrapper">
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
                       <div class="fc-event" data-url="eventPopin.html" data-id="1" data-picto='.seance' data-start="2016-05-12T09:00:00" data-color='#9b9b9b' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
-                        <span class="category">séance du lendemain</span>
+                        <span class="category"><i class="icon icon_evt-seance"></i>séance du lendemain</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
@@ -269,7 +273,7 @@
                     <div class="v-head">Salle du 60e</div>
                     <div class="v-container">
                       <div class="fc-event" data-url="eventPopin.html" data-id="2" data-picto='.seance' data-start="2016-05-12T09:00:00" data-color='#5b5b5b' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
-                        <span class="category">séance du jour</span>
+                        <span class="category"><i class="icon icon_evt-seance"></i>séance du jour</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
@@ -282,7 +286,7 @@
                     <div class="v-head">Salle Buñuel</div>
                     <div class="v-container">
                       <div class="fc-event" data-url="eventPopin.html" data-id="12" data-picto='.seance-press' data-start="2016-05-12T09:00:00" data-color='#000000' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
-                        <span class="category">séance de presse</span>
+                        <span class="category"><i class="icon icon_evt-seance-presse"></i>séance de presse</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
@@ -295,7 +299,7 @@
                     <div class="v-head">Salle Buñuel</div>
                     <div class="v-container">
                       <div class="fc-event" data-url="eventPopin.html" data-id="10" data-picto='.conference' data-start="2016-05-12T09:00:00" data-color='#a68851' data-end="2016-05-12T09:00:00" data-time="9" data-duration="120">
-                        <span class="category">conférence de presse</span>
+                        <span class="category"><i class="icon icon_evt-conference"></i>conférence de presse</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
                           <div class="txt"><span>orson welles, autopsie d’une légende lorem ipsum lorem</span><strong>Elisabet KAPNIST</strong></div>
@@ -308,7 +312,7 @@
                     <div class="v-head">Salle Buñuel</div>
                     <div class="v-container">
                       <div class="fc-event private" data-url="eventPopin.html" data-id="13" data-picto='.seance' data-start="2016-05-12T09:00:00" data-color='#9b9b9b' data-end="2016-05-12T11:00:00" data-time="11" data-duration="120">
-                        <span class="category">séance du lendemain</span>
+                        <span class="category"><i class="icon icon_evt-seance"></i>séance du lendemain</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff">
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
@@ -329,7 +333,7 @@
         <div class="mediatheque">
           <div class="chap">
             <h3 class="title-press">Médiathèque</h3>
-            <p class="link"><a href="press-media.php"><img src="img/svg/arrow-right-gold.svg" />toute la médiathèque</a></p>
+            <p class="link"><a href="press-media.php"><i class="icon icon_fleche-right"></i>toute la médiathèque</a></p>
           </div>
           <div class="table">
             <div class="line">
@@ -342,9 +346,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media folder"><span>Dossiers de presse</span> (2)</div>
-                <div class="media trailer"><span>Bandes annonces</span> (4)</div>
-                <div class="media photo"><span>Photos</span> (9)</div>
+                <div class="media folder"><span><i class="icon icon_dossier"></i>Dossiers de presse</span> (2)</div>
+                <div class="media trailer"><span><i class="icon icon_bande-annonce"></i>Bandes annonces</span> (4)</div>
+                <div class="media photo"><span><i class="icon icon_photo"></i>Photos</span> (9)</div>
                 <a class="button" href="press-media.php">Découvrir</a>
               </div>
             </div>
@@ -358,9 +362,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media folder"><span>Dossiers de presse</span> (2)</div>
-                <div class="media trailer"><span>Bandes annonces</span> (4)</div>
-                <div class="media photo"><span>Photos</span> (9)</div>
+                <div class="media folder"><span><i class="icon icon_dossier"></i>Dossiers de presse</span> (2)</div>
+                <div class="media trailer"><span><i class="icon icon_bande-annonce"></i>Bandes annonces</span> (4)</div>
+                <div class="media photo"><span><i class="icon icon_photo"></i>Photos</span> (9)</div>
                 <a class="button" href="press-media.php">Découvrir</a>
               </div>
             </div>
@@ -374,9 +378,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media folder"><span>Dossiers de presse</span> (2)</div>
-                <div class="media trailer"><span>Bandes annonces</span> (4)</div>
-                <div class="media photo"><span>Photos</span> (9)</div>
+                <div class="media folder"><span><i class="icon icon_dossier"></i>Dossiers de presse</span> (2)</div>
+                <div class="media trailer"><span><i class="icon icon_bande-annonce"></i>Bandes annonces</span> (4)</div>
+                <div class="media photo"><span><i class="icon icon_photo"></i>Photos</span> (9)</div>
                 <a class="button" href="press-media.php">Découvrir</a>
               </div>
             </div>
@@ -390,9 +394,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="media folder"><span>Dossiers de presse</span> (2)</div>
-                <div class="media trailer"><span>Bandes annonces</span> (4)</div>
-                <div class="media photo"><span>Photos</span> (9)</div>
+                <div class="media folder"><span><i class="icon icon_dossier"></i>Dossiers de presse</span> (2)</div>
+                <div class="media trailer"><span><i class="icon icon_bande-annonce"></i>Bandes annonces</span> (4)</div>
+                <div class="media photo"><span><i class="icon icon_photo"></i>Photos</span> (9)</div>
                 <a class="button" href="press-media.php">Découvrir</a>
               </div>
             </div>
@@ -401,7 +405,7 @@
         <div class="download">
           <div class="chap">
             <h3 class="title-press">à télécharger</h3>
-            <p class="link"><a href="press-telecharger.php"><img src="img/svg/arrow-right-gold.svg" />tous les téléchargements</a></p>
+            <p class="link"><a href="press-telecharger.php"><i class="icon icon_fleche-right"></i>tous les téléchargements</a></p>
           </div>
         </div>
         <div class="affiche">
@@ -412,8 +416,8 @@
               <span class="caption">© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos</span>
               <p>Format portrait</p>
               <div class="buttons">
-                <a href="#" class="button">JPG 72 DPI</a>
-                <a href="#" class="button">JPG 300 DPI</a>
+                <a href="#" class="button"><i class="icon icon_cadenas"></i>JPG 72 DPI</a>
+                <a href="#" class="button"><i class="icon icon_cadenas"></i>JPG 300 DPI</a>
               </div>
             </div>
             <div class="landscape">
@@ -421,8 +425,8 @@
               <span class="caption">© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos</span>
               <p>Format portrait</p>
               <div class="buttons">
-                <a href="#" class="button">JPG 72 DPI</a>
-                <a href="#" class="button">JPG 300 DPI</a>
+                <a href="#" class="button"><i class="icon icon_cadenas"></i>JPG 72 DPI</a>
+                <a href="#" class="button"><i class="icon icon_cadenas"></i>JPG 300 DPI</a>
               </div>
             </div>
           </div>
@@ -432,7 +436,7 @@
           <div class="txt vCenter">
             <div class="vCenterKid">
               <h2 class="title">Participer</h2>
-              <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />Accéder</a></p>
+              <p class="link"><a href="#"><i class="icon icon_fleche-right"></i>Accéder</a></p>
             </div>
           </div>
         </div>
@@ -441,7 +445,7 @@
           <div class="txt vCenter">
             <div class="vCenterKid">
               <h2 class="title">S'accréditer</h2>
-              <p class="link"><a href="#"><img src="img/svg/arrow-right-gold.svg" />Accéder</a></p>
+              <p class="link"><a href="#"><i class="icon icon_fleche-right"></i>Accéder</a></p>
             </div>
           </div>
         </div>

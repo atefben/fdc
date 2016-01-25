@@ -5,6 +5,7 @@ namespace Base\SoifBundle\Manager;
 use \Exception;
 
 use Base\CoreBundle\Entity\FilmMedia;
+use Base\CoreBundle\Entity\FilmFilmMedia;
 
 /**
  * MediaManager class.
@@ -206,8 +207,20 @@ class MediaManager extends CoreManager
         $this->setEntityRelated($resultObject, $entity);
         
         // set related media
-        $this->mediaStreamManager->getById($entity, $resultObject->{$this->entityIdKey}, $this->mimeToExtension($resultObject->ContentType));
-        
+        $this->mediaStreamManager->getById($entity, $resultObject->{$this->entityIdKey}, $this->mimeToExtension($resultObject->ContentType),'sonata.media.provider.image',$this->typeToContext($resultObject->IdType));
+
         return $entity;
+    }
+
+    private function typeToContext($type){
+        $context = 'film_image';
+        switch($type) {
+            case FilmFilmMedia::TYPE_MAIN:
+                $context = 'film_poster';
+                break;
+        }
+
+        return $context;
+
     }
 }

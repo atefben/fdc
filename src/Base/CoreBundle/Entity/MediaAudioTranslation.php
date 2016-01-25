@@ -26,7 +26,7 @@ class MediaAudioTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $title;
 
@@ -39,24 +39,9 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $file;
 
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
-     *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
-     */
-    private $cover;
-
-     /**
-      * @var Theme
-      *
-      * @ORM\ManyToOne(targetEntity="NewsTheme")
-      */
-    private $theme;
-
-    /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $alt;
 
@@ -74,7 +59,7 @@ class MediaAudioTranslation implements TranslateChildInterface
      */
     private $publishEndedAt;
 
-   /**
+    /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site")
@@ -82,12 +67,120 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $sites;
 
     /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     *
+     */
+    private $image;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return MediaAudioTranslation
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     * @return MediaAudioTranslation
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return MediaAudioTranslation
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * Set publishEndedAt
+     *
+     * @param \DateTime $publishEndedAt
+     * @return MediaAudioTranslation
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishEndedAt
+     *
+     * @return \DateTime
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaImageTranslation
+     * @return MediaAudioTranslation
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
         $this->file = $file;
 
@@ -102,5 +195,61 @@ class MediaAudioTranslation implements TranslateChildInterface
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Add sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     * @return MediaAudioTranslation
+     */
+    public function addSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites[] = $sites;
+
+        return $this;
+    }
+
+    /**
+     * Remove sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     */
+    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites->removeElement($sites);
+    }
+
+    /**
+     * Get sites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSites()
+    {
+        return $this->sites;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     * @return MediaAudioTranslation
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

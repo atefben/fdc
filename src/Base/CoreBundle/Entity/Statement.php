@@ -2,15 +2,20 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use \DateTime;
+
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslateMain;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -25,8 +30,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 abstract class Statement implements TranslateMainInterface
 {
-    use TranslateMain;
     use Time;
+    use SeoMain;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -40,11 +46,12 @@ abstract class Statement implements TranslateMainInterface
     private $id;
 
     /**
-     * @var StatementTheme
+     * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="StatementTheme")
+     * @ORM\ManyToOne(targetEntity="Theme")
      *
      * @Groups({"statement_list", "statement_show"})
+     * @Assert\NotNull()
      */
     private $theme;
 
@@ -56,29 +63,36 @@ abstract class Statement implements TranslateMainInterface
     private $festival;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     *
-     * @Groups({"statement_list", "statement_show"})
-     */
-    private $publishedAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     *
-     * @Groups({"statement_list", "statement_show"})
-     */
-    private $publishEndedAt;
-
-    /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderStatements")
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderStatement")
      */
     private $homepage;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $displayedHome;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $displayedMobile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $signature;
 
     /**
      * @var StatementTag
@@ -94,13 +108,42 @@ abstract class Statement implements TranslateMainInterface
      *
      * @Groups({"statement_list", "statement_show"})
      */
-    private $associations;
+    private $associatedStatement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $associatedFilm;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event")
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $associatedEvent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="StatementFilmProjectionAssociated", mappedBy="statement", cascade={"persist"})
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $associatedProjections;
+
+    /**
+     * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="statement", cascade={"persist"})
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $associatedFilms;
 
     /**
      * @var StatementWidget
      *
      * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"persist"})
      *
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"statement_list", "statement_show"})
      */
     private $widgets;
@@ -115,22 +158,20 @@ abstract class Statement implements TranslateMainInterface
     private $sites;
 
     /**
-     * @var User
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
-     *
-     * @Groups({"news_list", "news_show"})
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     * @Groups({"web_tv_list", "web_tv_show"})
      */
-    private $createdBy;
+    private $publishedAt;
 
     /**
-     * @var User
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
-     *
-     * @Groups({"news_list", "news_show"})
+     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     * @Groups({"web_tv_list", "web_tv_show"})
      */
-    private $updatedBy;
+    private $publishEndedAt;
 
     /**
      * ArrayCollection
@@ -139,17 +180,66 @@ abstract class Statement implements TranslateMainInterface
      */
     protected $translations;
 
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $createdBy;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $updatedBy;
 
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+    }
+
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string .= ' #'. $this->getId();
+        }
+
+        return $string;
+    }
+
+    public static function getTypes()
+    {
+        return array(
+            'Base\CoreBundle\Entity\StatementArticle' => 'article',
+            'Base\CoreBundle\Entity\StatementAudio' => 'audio',
+            'Base\CoreBundle\Entity\StatementImage' => 'image',
+            'Base\CoreBundle\Entity\StatementVideo' => 'video'
+        );
+    }
+
+    /**
+     * Get the class type in the Api
+     *
+     * @VirtualProperty
+     * @Groups({"statement_list", "statement_show"})
+     */
+    public function getStatementType()
+    {
+        return substr(strrchr(get_called_class(), '\\'), 1);
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -157,79 +247,10 @@ abstract class Statement implements TranslateMainInterface
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     * @return Statement
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return Statement
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
-
-    /**
-     * Set theme
-     *
-     * @param \Base\CoreBundle\Entity\StatementTheme $theme
-     * @return Statement
-     */
-    public function setTheme(\Base\CoreBundle\Entity\StatementTheme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \Base\CoreBundle\Entity\StatementTheme 
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
      * Add widgets
      *
      * @param \Base\CoreBundle\Entity\StatementWidget $widgets
-     * @return Statement
+     * @return StatementArticleTranslation
      */
     public function addWidget(\Base\CoreBundle\Entity\StatementWidget $widgets)
     {
@@ -252,11 +273,113 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get widgets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWidgets()
     {
         return $this->widgets;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \Base\CoreBundle\Entity\Theme $theme
+     * @return Statement
+     */
+    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \Base\CoreBundle\Entity\Theme
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return Statement
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival
+     */
+    public function getFestival()
+    {
+        return $this->festival;
+    }
+
+    /**
+     * Add sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     * @return StatementArticleTranslation
+     */
+    public function addSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites[] = $sites;
+
+        return $this;
+    }
+
+    /**
+     * Remove sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     */
+    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites->removeElement($sites);
+    }
+
+    /**
+     * Get sites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSites()
+    {
+        return $this->sites;
+    }
+
+    /**
+     * Set homepage
+     *
+     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @return Statement
+     */
+    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return \Base\CoreBundle\Entity\Homepage
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
     }
 
     /**
@@ -286,11 +409,103 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set priorityStatus
+     *
+     * @param integer $priorityStatus
+     * @return Statement
+     */
+    public function setPriorityStatus($priorityStatus)
+    {
+        $this->priorityStatus = $priorityStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get priorityStatus
+     *
+     * @return integer
+     */
+    public function getPriorityStatus()
+    {
+        return $this->priorityStatus;
+    }
+
+    /**
+     * Set displayedHome
+     *
+     * @param boolean $displayedHome
+     * @return Statement
+     */
+    public function setDisplayedHome($displayedHome)
+    {
+        $this->displayedHome = $displayedHome;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedHome
+     *
+     * @return boolean
+     */
+    public function getDisplayedHome()
+    {
+        return $this->displayedHome;
+    }
+
+    /**
+     * Set signature
+     *
+     * @param string $signature
+     * @return Statement
+     */
+    public function setSignature($signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * Get signature
+     *
+     * @return string
+     */
+    public function getSignature()
+    {
+        return $this->signature;
+    }
+
+    /**
+     * Set displayedMobile
+     *
+     * @param boolean $displayedMobile
+     * @return Statement
+     */
+    public function setDisplayedMobile($displayedMobile)
+    {
+        $this->displayedMobile = $displayedMobile;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedMobile
+     *
+     * @return boolean
+     */
+    public function getDisplayedMobile()
+    {
+        return $this->displayedMobile;
     }
 
     /**
@@ -340,92 +555,172 @@ abstract class Statement implements TranslateMainInterface
     }
 
     /**
-     * Set homepage
+     * Add associatedStatement
      *
-     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
      * @return Statement
      */
-    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
+    public function addAssociatedNew(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
     {
-        $this->homepage = $homepage;
+        $this->associatedStatement[] = $associatedStatement;
 
         return $this;
     }
 
     /**
-     * Get homepage
+     * Remove associatedStatement
      *
-     * @return \Base\CoreBundle\Entity\Homepage 
+     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
      */
-    public function getHomepage()
+    public function removeAssociatedNew(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
     {
-        return $this->homepage;
+        $this->associatedStatement->removeElement($associatedStatement);
     }
 
+
     /**
-     * Add associations
+     * Add associatedStatement
      *
-     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associations
+     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
      * @return Statement
      */
-    public function addAssociation(\Base\CoreBundle\Entity\StatementStatementAssociated $associations)
+    public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
     {
-        $this->associations[] = $associations;
+        $this->associatedStatement[] = $associatedStatement;
 
         return $this;
     }
 
     /**
-     * Remove associations
+     * Remove associatedStatement
      *
-     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associations
+     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
      */
-    public function removeAssociation(\Base\CoreBundle\Entity\StatementStatementAssociated $associations)
+    public function removeAssociatedStatement(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
     {
-        $this->associations->removeElement($associations);
+        $this->associatedStatement->removeElement($associatedStatement);
     }
 
     /**
-     * Get associations
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAssociations()
-    {
-        return $this->associations;
-    }
-
-    /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return Statement
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
+     * Get associatedStatement
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSites()
+    public function getAssociatedStatement()
     {
-        return $this->sites;
+        return $this->associatedStatement;
+    }
+
+    /**
+     * Set associatedFilm
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $associatedFilm
+     * @return Statement
+     */
+    public function setAssociatedFilm(\Base\CoreBundle\Entity\FilmFilm $associatedFilm = null)
+    {
+        $this->associatedFilm = $associatedFilm;
+
+        return $this;
+    }
+
+    /**
+     * Get associatedFilm
+     *
+     * @return \Base\CoreBundle\Entity\FilmFilm
+     */
+    public function getAssociatedFilm()
+    {
+        return $this->associatedFilm;
+    }
+
+    /**
+     * Set associatedEvent
+     *
+     * @param \Base\CoreBundle\Entity\Event $associatedEvent
+     * @return Statement
+     */
+    public function setAssociatedEvent(\Base\CoreBundle\Entity\Event $associatedEvent = null)
+    {
+        $this->associatedEvent = $associatedEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get associatedEvent
+     *
+     * @return \Base\CoreBundle\Entity\Event
+     */
+    public function getAssociatedEvent()
+    {
+        return $this->associatedEvent;
+    }
+
+    /**
+     * Add associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\StatementFilmProjectionAssociated $associatedProjections
+     * @return Statement
+     */
+    public function addAssociatedProjection(\Base\CoreBundle\Entity\StatementFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections[] = $associatedProjections;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\StatementFilmProjectionAssociated $associatedProjections
+     */
+    public function removeAssociatedProjection(\Base\CoreBundle\Entity\StatementFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections->removeElement($associatedProjections);
+    }
+
+    /**
+     * Get associatedProjections
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssociatedProjections()
+    {
+        return $this->associatedProjections;
+    }
+
+    /**
+     * Add associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedFilms
+     * @return Statement
+     */
+    public function addAssociatedFilm(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms[] = $associatedFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedFilms
+     */
+    public function removeAssociatedFilm(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms->removeElement($associatedFilms);
+    }
+
+    /**
+     * Get associatedFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssociatedFilms()
+    {
+        return $this->associatedFilms;
     }
 
     /**
@@ -444,7 +739,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get createdBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getCreatedBy()
     {
@@ -467,7 +762,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get updatedBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUpdatedBy()
     {

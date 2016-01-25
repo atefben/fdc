@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-
   <head>
     <?php include('head.html'); ?>
   </head>
@@ -11,7 +10,7 @@
     <div id="main" class=" webtv webtv-ba-video loading">
   <div class="container-webtv-ba-video">
     <div class="title-container">
-      <a href="#" class="bandeannone">Retour aux bandes annonces</a>
+      <a href="#" class="bandeannone"><i class="icon icon_flecheGauche"></i>Retour aux bandes annonces</a>
           <h1 class="title">Valley of love</h1>
     </div>
     <section>
@@ -35,57 +34,57 @@
           <div class="program-film block">
             <div class="contain-info">
               <div class="infos">
-                <p>Projection <span class="date">15/07/2015 9h</span></p>
+                <p>Projection <span class="date">15/07/2015 <span class="hour">9h</span></span></p>
                 <span class="where">Grand théâtre Lumière</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015  <span class="hour">15h<</span></span></p>
                 <span class="where">Cinéma de la plage</span>
 
               </div>
@@ -95,10 +94,10 @@
         </div>
         <div class="share">
           <div class="buttons square">
-            <a href="#" class="button facebook"></a>
-            <a href="#" class="button twitter"></a>
-            <a href="#" class="button link"></a>
-            <a href="#" class="button email"></a>
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+            <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i></a>
+            <a href="#" class="button link"><i class="icon icon_link"></i></a>
+            <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
           </div>
         </div>
       </aside>
@@ -112,7 +111,7 @@
         </div>
         <a class="linkVid" href="#"></a>
         <div class="info">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info-container">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -129,7 +128,7 @@
         </div>
         <a class="linkVid" href="#"></a>
         <div class="info">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info-container">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -146,7 +145,7 @@
         </div>
         <a class="linkVid" href="#"></a>
         <div class="info">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info-container">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -163,7 +162,7 @@
         </div>
         <a class="linkVid" href="#"></a>
         <div class="info">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info-container">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -180,7 +179,7 @@
         </div>
         <a class="linkVid" href="#"></a>
         <div class="info">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info-container">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -197,7 +196,7 @@
         </div>
         <a class="linkVid" href="#"></a>
         <div class="info">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info-container">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -213,7 +212,7 @@
   <div class="bandeau-list vCenter push-footer bandeau-list-footer">
     <div class="bandeau-list-img vCenterKid" style="background-image:url(img/webtv/push.jpg);">
       <h2 class="title title-list-header">La loi du marché</h2>
-      <a href="#" class="bandeau-lien"><a href="#" class="bandeau-lien"> <img src="img/svg/arrow-right-gold.svg" alt="Découvrir la rubrique" class="svg-arrow"> Voir la bande annonce</a></a>
+      <a href="#" class="bandeau-lien"><a href="#" class="bandeau-lien"><i class="icon icon_fleche-right"></i>Voir la bande annonce</a></a>
     </div>
   </div>
 </div>

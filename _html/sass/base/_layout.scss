@@ -7,6 +7,9 @@
 
 // 1. Global
 // =========================
+.icon{
+  vertical-align: baseline !important; //todocss
+}
 
 html {
   font-size: 16px;
@@ -137,9 +140,7 @@ body {
   border-bottom:  1px solid #2C2C2C;
 }
 
-.icon{
-  vertical-align: baseline;
-}
+
 
 // 2. Responsive 768
 // =========================

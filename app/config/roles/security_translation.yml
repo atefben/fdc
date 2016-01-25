@@ -1,0 +1,7 @@
+security:
+    role_hierarchy:
+        ROLE_FDC_TRANSLATOR_MASTER:
+            - ROLE_FDC_TRANSLATOR_FR
+            - ROLE_FDC_TRANSLATOR_EN
+            - ROLE_FDC_TRANSLATOR_ES
+            - ROLE_FDC_TRANSLATOR_ZH

@@ -9,52 +9,48 @@
     border-top: 1px solid #e3e3e3;
     .save {
       font-family: $CamphorHeavy;
-      background: url('../img/press/svg/pdf.svg') no-repeat 15% center;
-      background-size: 18px;
       font-size: 0.625rem;
+      .icon{
+        font-size: 1rem;
+        margin-right: 10px;
+        vertical-align: middle !important;
+      }
       &:hover {
         color: $gold !important;
+        background-color: #fff;
       }
     }
     #share-article {
       font-family: $CamphorHeavy;
-      background: url("../img/svg/print.svg") no-repeat 15% center;
-      background-size: 18px;
+      color: $gold;
       font-size: 0.625rem;
+      .icon{
+        font-size: 1rem;
+        margin-right: 10px;
+        vertical-align: middle !important;
+      }
       &:hover {
         color: $gold;
+        background-color: #fff;
         + .button {
           border-left-color: $gold;
         }
       }
     }
     .request-btn{
-      background: url('../img/press/svg/communique-presse-or.svg') no-repeat 5% 49%;
-      background-size: 18px;
       padding-top: 5px;
       padding-bottom: 4px;
       position: relative;
-      &:after {
-          background: url("../img/press/svg/communique-presse-white.svg") no-repeat 16px 14px;
-          background-size: 18px;
-          content: '';
-          display: block;
-          height: 100%;
-          position: absolute;
-          width: 41px;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          visibility: hidden;
-          @include transition(all 0.9s $smoothTransition);
-        }
+
+      .icon{
+        font-size: 1rem;
+        margin-right: 10px;
+        vertical-align: middle !important;
+      }
+
       &:hover{
         background-color: #c8a461 !important;
         color:#fff !important;
-      }
-      &:hover:after {
-        opacity: 1;
-        visibility: visible;
       }
     }
     .buttons{
@@ -74,7 +70,7 @@
           @include transition(all 0.5s $linear);
         }
         a:hover {
-          color: #8e6d30; 
+          color: #8e6d30;
         }
         h3 {
           font-family: $CamphorBold;
@@ -205,8 +201,7 @@
       opacity: 1;
     }
     .request{
-//      margin:60px auto;
-//      width: 348px;
+
         border-top: 1px solid #e3e3e3;
         padding-top: 60px;
         padding-bottom: 60px;
@@ -214,13 +209,10 @@
         display: block;
         border: 1px solid #dfdfdf !important;
         margin: 0 auto;
-        width: 270px;
+        width: 296px;
         margin-bottom: 11px;
       }
       a:hover{
-//        background-color: #c8a461;
-//        border-color: #c8a461;
-//        color: #fff;
         color: #c8a461;
       }
       span{

@@ -16,4 +16,33 @@
 
     <script>jwplayer.key="{{ jwplayer_key }}";</script>
 
+    <script type="text/javascript">
+
+        $(document).on('click','form#newsletter #submit',function(event){
+
+            event.preventDefault();
+            event.stopPropagation();
+            var input = $('.newsletter #email');
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                cache: false,
+                url: GLOBALS.urls.newsletterUrl,
+                data: $('form#newsletter').serialize(),
+                success: function(data) {
+                    if (data.success == false) {
+                        input.addClass("error").val(data.object);
+                    }
+                    else {
+                        $('.newsletter form').addClass('hide');
+                        $('#confirmation span').html($('#email').val());
+                        $('#confirmation').addClass('show');
+                    }
+                }
+            });
+        });
+
+
+    </script>
 {% endblock %}

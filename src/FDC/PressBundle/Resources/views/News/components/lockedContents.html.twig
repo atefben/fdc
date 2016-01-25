@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
 <div class="locked">
     <div class="vCenter">
         <div class="vCenterKid">
@@ -5,9 +7,9 @@
             <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
         </div>
     </div>
-    <form action="{{ path('fdc_press_news_home') }}" method="post" {{ form_enctype(lockedForm) }}>
-        {{ form_widget(lockedForm.password) }}
+    <form action="{{ path('fdc_press_news_home') }}" method="post" {{ form_enctype(popinLockedForm) }}>
+        {{ form_widget(popinLockedForm.password) }}
         <input type="submit" value="{{ 'press.header.btn.valider'|trans }}" />
-        {{ form_rest(lockedForm) }}
+        {{ form_rest(popinLockedForm) }}
     </form>
 </div>

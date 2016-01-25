@@ -1,0 +1,106 @@
+/* header */
+
+.sticky #main{
+  padding-top: 180px;
+
+}
+#header{
+    z-index: 15;
+    display:table;
+    height: 180px;
+    position: relative;
+
+}
+.sticky #header  {
+    position: fixed;
+    top: 0;
+    padding: 0;
+    height: 90px;
+}
+.sticky #header.fixfixed,#header.fixfixed{
+    position: absolute;
+}
+#header .header-container{
+
+    display:table-cell;vertical-align:middle;
+    width: 100%;
+    text-align: center;
+}
+#header #logo{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    width: 225px;
+    margin: auto;
+}
+
+
+#header #logo img.palm{
+    display: block;
+    margin: 0 auto;
+    width: 156px;
+    -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.sticky #header #logo img.palm{
+  width: 92px;
+}
+#header  #logo h1 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 1.250rem;
+    font-weight: normal;
+    text-align: center;
+}
+#header #logo h2{
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 0.850rem;
+    font-weight: normal;
+    margin-top: 2px;
+    text-align: center;
+}
+.sticky #header  #logo h2, .sticky #header #logo h1{
+  display: none;
+}
+#header #logo h2 a {
+    color: #c8a461;
+    text-transform: uppercase;
+}
+#header #search, #menu-btn {
+    display: inline-block;
+    height: 63px;
+    position: absolute;
+    width: 63px;
+    cursor: pointer;
+    -moz-transition: width 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: width 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: width 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: width 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    color: #fff;
+    display: block;
+    line-height:63px;
+    text-align: center;
+    top: 50%;
+    margin-top: -31px;
+}
+#header #search{
+    right: 40px;
+}
+#header #menu-btn{
+    left:40px;
+}
+#header #search  .icon, #menu-btn .icon-mobile-burger{
+    font-size: 2.8em;
+    -moz-transition: font-size 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: font-size 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: font-size 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: font-size 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.sticky #header #search  .icon, .sticky #header #menu-btn  .icon-mobile-burger{
+    font-size: 2.225em;
+}
+
+
+
+

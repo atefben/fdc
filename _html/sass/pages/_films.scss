@@ -59,34 +59,14 @@
        text-align: center;
        padding-bottom: 20px;
      }
-     #share-article {
-       background: url("../img/svg/share.svg") no-repeat 13% 47%;
-       background-size: 18px;
-     }
-     .button {
-       border: 1px solid #2c2c2c;
-       color: #c8a461;
-       display: inline-block;
-       font-family: "Camphor W01 Bold";
-       font-size: 0.688rem;
-       height: 38px;
-       line-height: 38px;
-       margin: 0 0 0 0;
-       padding: 0 19px 0 39px;
-       text-transform: uppercase;
-       -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-       -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-       -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-       transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-     }
-     .button:hover {
-       border: 1px solid #c8a461;
-     }
-     .print {
-       background: url("../img/svg/print.svg") no-repeat 15% center;
-       background-size: 18px;
-       font-size: 0.63rem;
-     }
+      .button{
+        border-color: #2c2c2c;
+
+        &:hover{
+          background-color: #141414 !important;
+          border-color: $gold;
+        }
+      }
    }
    .sub-cat-title {
      padding: 20px;
@@ -105,9 +85,10 @@
      color: #ffffff;
      width: 100%;
      min-height: 405px;
-     background-size: cover;
-     background-position: center center;
      overflow: hidden;
+     background: center 0 no-repeat fixed;
+     background-size: cover;
+
      .bck-hover {
        background-color: #141414;
        width: 100%;
@@ -254,10 +235,6 @@
          padding-top: 30px;
          position: relative;
          margin-bottom: 80px;
-         .picto {
-           background-image: url("../img/svg/video.svg");
-           background-size: 22px;
-         }
          p {
            padding: 0px;
          }
@@ -283,6 +260,15 @@
    background-color: #141414 !important;
    .bandeau-list {
      background-color: #1b1b1b;
+
+     .icon_fleche-right{
+       font-size: .5rem;
+       margin-bottom: 2px;
+       vertical-align: middle !important;
+       margin-right: 6px;
+     }
+
+
      .bandeau-list-img {
        height: 300px;
 
@@ -307,6 +293,12 @@
          text-transform: uppercase;
          font-size: 0.75rem;
          font-family: $CamphorHeavy;
+         @include transition(all 1s $linear);
+
+         &:hover {
+           opacity: 0.5;
+         }
+
          .svg-arrow{
            width: 12px;
            vertical-align: baseline;
@@ -318,6 +310,48 @@
        width: 1000px;
        margin: 0 auto;
        text-align: center;
+
+       &:after {
+         background-color: $black;
+         content: '';
+         display: block;
+         height: 100%;
+         left: 0;
+         opacity: 0;
+         position: absolute;
+         top: 0;
+         visibility: hidden;
+         width: 100%;
+         z-index: 5;
+         @include transition(all 0.3s $smoothTransition);
+       }
+
+       &:before {
+         background-color: $black;
+         content: '';
+         display: block;
+         height: 110%;
+         left: 0;
+         opacity: 0;
+         position: absolute;
+         top: -2px;
+         visibility: hidden;
+         width: 100%;
+         z-index: 5;
+         @include transition(all 0.9s $smoothTransition);
+       }
+
+       &.loading:before {
+         opacity: 1;
+         visibility: visible;
+       }
+
+       &.overlay:after {
+         opacity: 0.6;
+         visibility: visible;
+       }
+
+
        a {
          color: #686868;
          font-size: 0.8rem;
@@ -342,7 +376,7 @@
        }
      }
      .nav-movie.sticky{
-       z-index: 9;
+       z-index: 5;
        width: 100%;
        background-color: #1b1b1b;
      }
@@ -352,7 +386,7 @@
        font-family: $CamphorBold;
        background-color: #202020;
        width: 100%;
-       z-index: 9;
+       z-index: 5;
        transition: .3s;
        a {
          color: #999999;
@@ -370,6 +404,9 @@
          text-transform: uppercase;
        }
      }
+   }
+   .title-film-detail{
+     border-top: #202020 1px solid !important;
    }
  }
 
@@ -491,6 +528,12 @@
   }
   .title-film-detail{
     margin-bottom: 0px !important;
+  }
+
+  .square{
+    .button:hover{
+      background-color: #141414;
+    }
   }
 }
 

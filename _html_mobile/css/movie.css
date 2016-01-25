@@ -1,0 +1,511 @@
+.banner-img{
+	height: 370px;
+}
+.banner-img .title .icon{
+	font-size: 75px;
+}
+
+a{
+
+	color:#c8a461;;
+}
+.slideshow{
+
+	border: none;
+}
+/*INFOS FILMS*/
+.info-film{
+
+	background-color: #141414;
+	padding: 60px 40px 65px 40px;
+	color:#ffffff;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	text-align: center;
+	position: relative;
+}
+.info-film .categories{
+
+	text-transform: uppercase;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	letter-spacing: 2px;
+	line-height: 30px;
+	margin-bottom: 50px;
+	font-weight: 600;
+}
+.info-film .categories span{
+	position: relative;
+	margin-right: 20px;
+	font-size: 20px;
+}
+.info-film .categories span:last-child:after{
+	display: none;
+}
+.info-film .categories span:after {
+    color: #fff;
+    content: '-';
+    display: block;
+    position: absolute;
+    top:-5px;
+    right: -14px;
+}
+
+
+.info-film h2{
+	font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+/*	font-size: 4rem;*/
+	font-size: 46px;
+	letter-spacing: 3px;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+.info-film .title-original{
+	text-transform: uppercase;
+	/*font-size: 2rem;*/
+	font-size: 22px;
+	margin-bottom: 55px;
+}
+.info-film p{
+
+	font-size: 20px;
+	letter-spacing: -1px;
+	/*font-size: 1.5rem;*/
+	margin-bottom: 20px;
+}
+
+.info-film p span{
+	color:#cccccc;
+}
+
+/*PRIZE*/
+.prize{
+	padding: 60px 0;
+	border-bottom: 1px solid #f1f1f1;
+}
+.prize .icon{
+
+	color:#c8a461;
+	/*font-size: 6rem;*/
+	font-size: 70px;
+}
+.prize .prize-name{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 25px;
+	
+}
+.prize p{
+
+	font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+	color: #a4a4a4;
+	font-style: italic;
+	/*font-size: 1.3rem;*/
+	font-size: 20px;
+	line-height: 30px;
+}
+
+/*PICTOS NAV*/
+
+.pictos-nav{
+
+	/*position: fixed;*/
+	position: fixed;
+	width: 560px;
+	left:40px;
+	bottom: 160px;
+	z-index: 99;
+}
+.pictos-nav div{
+
+	background-color: #fff;
+	width: 120px;
+	height: 120px;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	line-height: 120px;
+	/*font-size: 3rem;*/
+	font-size: 45px;
+	position: absolute;
+}
+.pictos-nav div.back{
+	left:0;
+}
+.pictos-nav div.calendar{
+	right:0;
+}
+
+/*SECTION*/
+
+.section{
+
+	border-bottom: 1px solid #dfdfdf;
+	padding: 60px 0;
+
+}
+.title-section{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	color:#000;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 2px;
+	margin-bottom: 30px;
+	/*font-size: 1.5rem;*/
+	font-size: 22px;
+
+}
+
+.section p{
+
+	color:#666666;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	/*font-size: 1.5rem;*/
+	line-height: 30px;
+	font-size: 24px;
+}
+
+/*SLIDER*/
+
+.owl-stage-outer{
+
+	width: 640px;
+	margin-left: -32px;
+}
+.video{
+	position: relative;
+}
+.video .infos{
+	position: absolute;
+}
+.slideshow .video .info .titleLink{
+
+	font-size: 23px;
+	max-width: 445px;
+}
+.slideshow{
+
+	padding: 0;
+	margin: 0;
+}
+
+/*CREDITS AND CASTING*/
+
+.credits p, .casting p{
+	/*font-size: 0.8rem;*/
+	font-size: 22px;
+	line-height:30px;
+}
+.credits p.middle, .casting p.middle{
+	margin-bottom: 30px;
+}
+
+/*PHOTOS*/
+
+.photos .slideshow .thumbnails .thumb{
+
+	width: 160px;
+	height: 110px;
+}
+.photos .slideshow .thumbnails .thumb.active:before{
+
+	width: 144px;
+	height: 94px;
+}
+
+/*ARTICLES*/
+
+.articles .owl-item{
+
+	width: 516px;
+	height: 490px;
+}
+.articles .img-container{
+
+	position: relative;
+}
+.articles .thumb img{
+	width: 515px;
+}
+.articles .thumb .picto{
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+}
+.articles .thumb .picto .icon{
+
+	color:#c8a461;
+	/*font-size: 1.5rem;*/
+	font-size: 30px;
+}
+.articles  .info{
+	width: 355px;
+	margin: 30px auto 0 auto;
+	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color:#666666;
+}
+.articles  .info .category{
+
+	color: #c8a461;   
+    letter-spacing: 0.1em;
+    margin-right: 12px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+
+}
+.articles  .info h2{
+
+	color: #000;
+	text-align: center;
+	margin-top: 15px;
+	font-family: "Playfair Display", Times New Roman, Times, serif;
+	font-size: 25px;
+	line-height: 30px
+}
+.articles .top-info{
+
+	margin: 0 auto;
+	display: table;
+}
+
+
+
+/*SECTION PRESS*/
+
+.title-section i{
+	right: 115px;
+	position: absolute;
+	font-size: 22px;
+}
+
+.press{
+
+	background-color: #141414;
+	padding: 0;
+	border: none;
+}
+.press .title-section, .contact .title-section{
+
+	color:#c8a461;
+	text-align: center;
+	padding: 60px 0;
+	box-sizing: border-box;
+	margin-bottom: 0;
+	letter-spacing: 0.25rem;
+}
+.press-content{
+
+	max-height: 0;
+	overflow: hidden;
+    -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.open .press-content{
+
+	max-height: 723px;
+}
+.press-folder, .links, .buttons{
+
+	width: 90%;
+	margin: 0 auto;
+	border-top:1px solid #252525;
+}
+.press .vCenter{
+
+	width: 326px;
+    vertical-align: middle;
+    display: table-cell;
+    height: 305px;
+}
+.press .press-folder{
+
+	height: 305px;
+}
+.press .press-folder .img-container{
+
+	width: 250px;
+	height: 100%;
+	float: left;
+}
+.press .press-folder .img-container .img{
+
+  width: 100%;
+  height: 100%;
+  background-position: center top;
+  background-size: cover;
+}
+.press .folder-links{
+	text-align: center;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	line-height: 24px;
+	font-size: 20px;
+	text-transform: uppercase;
+	width: 325px;
+	font-weight: 600;
+	float: left;
+
+}
+.press .folder-links h3{
+	
+	color:#fff;
+	letter-spacing: 2px;
+	padding: 30px 0 15px 0;
+}
+.press .folder-links a{
+
+	line-height: 57px;
+	display: block;
+}
+.press .links, .press .buttons{
+
+	padding: 35px 0;
+}
+.press .sub, .contact .sub{
+
+	color:#fff;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-size: 22px;
+	text-align: center;
+	font-weight: 600;
+}
+.press .links{
+	text-align: center;
+}
+.press .links div{
+	display: inline-block;
+    margin-top: 45px;
+
+}
+
+.press .links a{
+
+	text-transform: uppercase;
+	color: #999999;
+	font-size: 22px;
+	font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+	font-weight: 600;
+    display: inline-block;
+    width: 170px;
+    text-align: center;
+}
+.press .button{
+
+	margin-top: 50px;
+    margin-bottom: 0;
+    border:1px solid #c8a461;
+    height: 80px;
+    line-height: 80px;
+    box-sizing: border-box;
+    padding: 0 40px;
+    font-size: 22px;
+    margin-right: 25px;
+    font-weight: 600;
+}
+.press .button:last-child{
+	margin-right: 0;
+}
+
+/*SECTION CONTACT*/
+.contact{
+
+	background-color: #292929;
+	padding: 0;
+	text-align: center;
+	border: none;
+}
+.contact .title-section{
+
+	color: #fff;
+}
+.contact-content{
+
+	max-height: 0;
+	overflow: hidden;
+    -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    margin:0;
+    width: 556px;
+    margin: 0 auto;
+}
+.open .contact-content{
+
+	max-height: 917px;
+}
+.contact p:not(.sub){
+
+	font-size: 22px;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	color: #999999;
+	letter-spacing: -1px;
+}
+.contact div:not(.contact-content){
+
+	width: 556px;
+	margin: 0 auto 35px auto;
+}
+.contact .prod{
+
+	border-bottom: 1px solid #383838;
+	padding-bottom: 35px;
+}
+
+/*SECTION COMPETITION*/
+.competition{
+	padding: 0;
+}
+.competition h3{
+	font-family: "Playfair Display Bold", Times New Roman, Times, serif;
+	font-size: 24px;
+	letter-spacing: 5px;
+	text-align: center;
+	padding: 55px 0;
+	margin: 0;
+}
+.competition .owl-item{
+
+	width: 280px;
+	height: 530px;
+}
+.competition .img-container{
+
+	width: 280px;
+	height: 380px;
+	background-position: center center;
+  	background-size: cover;
+}
+.competition .info{
+	margin-top: 35px;
+	text-align: center;
+}
+.competition .info p{
+	text-transform: uppercase;
+	color: #000;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+.competition .info a{
+
+	font-size: 22px;
+	font-style: italic;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.competition .owl-stage-outer{
+	margin-left: 0;
+}
+
+
+
+
+
+
+
+

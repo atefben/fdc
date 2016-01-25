@@ -25,7 +25,7 @@ class StatementWidgetImage extends StatementWidget
      * Set gallery
      *
      * @param \Base\CoreBundle\Entity\Gallery $gallery
-     * @return NewsWidgetImage
+     * @return StatementWidgetImage
      */
     public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
     {

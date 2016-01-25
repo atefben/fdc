@@ -6,7 +6,7 @@
 <div id="main" class=" webtv webtv-ba-video loading">
     <div class="container-webtv-ba-video">
         <div class="title-container">
-            <a href="#" class="bandeannone">{{ 'trailer.btn.retourbandeannonces'|trans }}</a>
+            <a href="#" class="bandeannone"><i class="icon icon_flecheGauche"></i>{{ 'trailer.btn.retourbandeannonces'|trans }}</a>
             <h1 class="title">{{ trailer.film.title }}</h1>
         </div>
         <section>
@@ -44,10 +44,10 @@
                 </div>
                 <div class="share">
                     <div class="buttons square">
-                        <a href="#" class="button facebook"></a>
-                        <a href="#" class="button twitter"></a>
-                        <a href="#" class="button link"></a>
-                        <a href="#" class="button email"></a>
+                        <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
+                        <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+                        <a href="#" class="button link"><i class="icon icon_link"></i></a>
+                        <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
                     </div>
                 </div>
             </aside>
@@ -67,9 +67,7 @@
         <div class="bandeau-list-img vCenterKid" style="background-image:url('http://html.festival-cannes-2016.com.ohwee.fr/img/webtv/push.jpg');">
             <h2 class="title title-list-header">La loi du marché</h2>
             <a href="{{ path('fdc_event_movie_selection', {'slug': 'certain-regard'} ) }}" class="bandeau-lien">
-                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                <img src="{{ asset_url }}" alt="{{ 'trailer.btn.voirlabandeannonce'|trans }}" class="svg-arrow">
-                {% endimage %}
+                <i class="icon icon_fleche-right"></i>
                 {{ 'trailer.btn.voirlabandeannonce'|trans }}
             </a>
         </div>

@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <?php include('head.html'); ?> 
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -14,7 +14,7 @@
         <div id="theme" class="filter">
           <span class="label">Dates :</span>
           <span class="select">
-            <span class="active" data-filter="all">Toutes</span>
+            <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
             <span data-filter="date">Date 1</span>
             <span data-filter="date1">Date 2</span>
           </span>
@@ -22,7 +22,7 @@
         <div id="format" class="filter">
           <span class="label">Thèmes :</span>
           <span class="select">
-            <span class="active" data-filter="all">Tous</span>
+            <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
             <span data-filter="theme1">Thème 1</span>
             <span data-filter="theme2">Thème 2</span>
           </span>
@@ -32,7 +32,7 @@
         <div class="grid-sizer"></div>
         <div class="item theme1 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -44,7 +44,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -56,7 +56,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -68,7 +68,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -80,7 +80,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -92,7 +92,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -104,7 +104,7 @@
         </div>
         <div class="item theme1 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -116,7 +116,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -128,7 +128,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -140,7 +140,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -152,7 +152,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -164,7 +164,7 @@
         </div>
         <div class="item theme1 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -176,7 +176,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -188,7 +188,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -200,7 +200,7 @@
         </div>
         <div class="item theme1 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -212,7 +212,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -224,7 +224,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -236,7 +236,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -248,7 +248,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -260,7 +260,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -272,7 +272,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -284,7 +284,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -296,7 +296,7 @@
         </div>
         <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -308,7 +308,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -320,7 +320,7 @@
         </div>
         <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -354,10 +354,10 @@
           <p></p>
         </div>
         <div class="buttons square">
-          <a href="#" class="button facebook"></a>
-          <a href="#" class="button twitter"></a>
-          <a href="#" class="button link"></a>
-          <a href="#" class="button email"></a>
+          <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+          <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i></a>
+          <a href="#" class="button link"><i class="icon icon_link"></i></a>
+          <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
         </div>
       </div>
       <div class="ov"></div>

@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <?php include('head.html'); ?> 
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -11,15 +11,16 @@
     <div id="main" class="single-article artist loading">
       <div class="content-article">
         <div class="container">
-          <a href="article2.php" class="nav prev"></a>
-          <a href="article3.php" class="nav next"></a>
+          <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+          <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
           <div class="info">
             <span href="#" class="category">Réalisateur -</span><span class="city">États-Unis</span>
           </div>
           <h2 class="title-article">Francis Coppola</h2>
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
-            <a href="#" class="button print">Imprimer</a>
+            <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
+            <a href="#" class="button print"><i class="icon icon_print"></i>
+  Imprimer</a>
           </div>
           <div class="single-photo">
             <div class="photo-container">
@@ -70,7 +71,7 @@
                     <span class="item-date">1976</span><span class="item-categ">Hors compétition</span><span class="item-details">Réalisation, Scénario & Dialogues, Musique</span>
                   </div>
                 </div>
-              </div>   
+              </div>
                <h2  class="title title-art-artist">Palmarès</h2>
               <div class="contain-films-list">
                 <div class="item">
@@ -86,9 +87,9 @@
                     <span class="item-title">Apocalypse now</span>
                     <span class="item-date">1976</span><span class="item-categ">Grand prix international du festival</span><span class="item-details">Réalisation, Scénario & Dialogues, Musique</span>
                   </div>
-                </div> 
-            </div> 
-            <h2  class="title title-art-artist">Présences au Jury</h2>        
+                </div>
+            </div>
+            <h2  class="title title-art-artist">Présences au Jury</h2>
             <div class="jury">
               <span class="rank">Président</span><span class="item-separate">-</span><span class="role">Jury des longs métrages</span><span class="item-separate">-</span><span class="date">1996</span>
             </div>
@@ -97,11 +98,12 @@
         <div class="share">
           <p>Partagez l'article</p>
           <div class="buttons square">
-            <a href="#" class="button facebook"></a>
-            <a href="#" class="button twitter"></a>
-            <a href="#" class="button link"></a>
-            <a href="#" class="button email"></a>
-            <a href="#" class="button print"></a>
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+            <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
+  </a>
+            <a href="#" class="button link"><i class="icon icon_link"></i></a>
+            <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+            <a href="#" class="button print"><i class="icon icon_print"></i></a>
           </div>
         </div>
         <div class="realisateurs">
@@ -151,7 +153,7 @@
       </div>
     </div>
 <!-- END POPIN MAIL SHARE -->
-    
+
     <?php include('footer.html'); ?>
 
     <!-- //// SCRIPTS \\\\ -->

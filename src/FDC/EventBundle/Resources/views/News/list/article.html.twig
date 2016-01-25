@@ -12,21 +12,29 @@
         <div class="grid-sizer"></div>
 
         {% for article in articles %}
-            <div class="item theme1 date1 date theme article">
+            <div class="item {{ article.theme|trans_fallback('name') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} article">
                 <article class="article">
                     <div class="img">
-                        <span class="picto"></span>
-                        <a href="{{ path('fdc_event_news_get', {'slug': article.id }) }}">
-                            <img src='{{ article.image.path }}' />
+                        <span class="picto">
+                            <i class="icon icon_article"></i>
+                        </span>
+                        <a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug') }) }}">
+                            {% set trans = article.image.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = article.image.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            {% set file = trans.file %}
+                            {% thumbnail file, 'big' with {'alt': article.image|trans_fallback('alt') } %}
                         </a>
                         <a href="#" class="read-later">
+                            <i class="icon icon_lire-plus-tard"></i>
                             <span>{{ 'article.list.btn.ajouteramaselection'|trans }}</span>
                         </a>
                     </div>
                     <div class="info">
                         <a href="#" class="category">{{ article.theme }}</a>
-                        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
-                        <h3><a href="{{ path('fdc_event_news_get', {'slug': article.id }) }}">{{ article.title }}</a></h3>
+                        <span class="date">{{ article|trans_fallback('createdAt')|date('d.m.y') }}</span> . <span class="hour">{{ article|trans_fallback('createdAt')|date('H:i') }}</span>
+                        <h3><a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title') }}</a></h3>
                     </div>
                 </article>
             </div>
@@ -35,5 +43,23 @@
     </div>
     <a id="next" href="articles2.html"></a>
 </div>
+
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.articles'|trans ,
+        "url"  : path('fdc_event_news_getarticles')
+    },
+]
+} %}
+
 {% endblock %}
+
+
 

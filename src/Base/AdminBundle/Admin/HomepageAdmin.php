@@ -64,9 +64,13 @@ class HomepageAdmin extends Admin
                 'required_locales' => array(),
                 'fields' => array(
                     'createdAt' => array(
+                        'display' => false
                     ),
                     'updatedAt' => array(
                         'display' => false
+                    ),
+                    'pushsMain' => array(
+                        'class' => 'BaseCoreBundle:HomepagePushMain'
                     )
                 )
             ))
@@ -80,7 +84,13 @@ class HomepageAdmin extends Admin
             ))
             ->add('displayedSlider')
             ->add('displayedTopNews')
+            ->add('displayedSocialWall')
+            ->add('socialGraphHashtagTwitter')
+            ->add('socialWallHashtags', null, array(
+                'sonata_help' => 'Séparer par des virgules les tags que vous souhaitez.'
+            ))
         ;
+
     }
 
     /**

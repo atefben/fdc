@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // 2. Override Chocolat
@@ -151,10 +151,9 @@
       }
 
       &:after {
-        background: url('../img/svg/photo-white.svg') no-repeat center;
         background-size: 25px;
         border: 1px solid rgba(255, 255, 255, .35);
-        content: '';
+        content: "\f14a";
         display: block;
         height: 80px;
         left: 50%;
@@ -167,6 +166,11 @@
         width: 80px;
         z-index: 3;
         @include transition(all 0.6s $smoothTransition);
+        font-family: icons;
+        color: #fff;
+        line-height: 82px;
+        text-align: center;
+        font-size: 1.4rem;
       }
 
       &:hover {
@@ -337,24 +341,9 @@ div.chocolat-wrapper {
         }
       }
 
-      a.facebook {
-        background: url('../img/svg/facebook-gold.svg') no-repeat center;
-        background-size: 19px;
-      }
-
-      a.twitter {
-        background: url('../img/svg/twitter-gold.svg') no-repeat center;
-        background-size: 16px;
-      }
-
-      a.email {
-        background: url('../img/svg/mail.svg') no-repeat center;
-        background-size: 16px;
-      }
-
-      a.link {
-        background: url('../img/svg/link.svg') no-repeat center;
-        background-size: 16px;
+      a .icon{
+        font-size: 1rem;
+        line-height: 75px;
       }
     }
 
@@ -390,9 +379,17 @@ div.chocolat-wrapper {
       }
     }
 
+    .icon_diaporama{
+      font-size: 2rem;
+      color: white;
+      position: relative;
+      z-index: 100;
+      float: left;
+      line-height: 85px;
+      margin-left: 38px;
+      margin-right: -38px;
+    }
     .chocolat-pagination {
-      background: url("../img/svg/photo-white.svg") no-repeat center 36%;
-      background-size: 30px;
       border-right: 1px solid rgba(255, 255, 255, 0.4);
       font-family: $CamphorBold;
       cursor: pointer;
@@ -407,6 +404,7 @@ div.chocolat-wrapper {
       width: 100px;
       z-index: 2;
       @include transition(all 0.9s $linear);
+
 
       &.active, &:hover {
         background-color: $gold;
@@ -488,23 +486,21 @@ div.chocolat-wrapper {
     z-index: 20;
     right: 202px;
     position: absolute;
+    text-align: center;
 
-    &:after {
-      background: url('../img/svg/share.svg') no-repeat center;
-      background-size: 22px;
-      content: '';
-      display: block;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
+    .icon {
+      line-height: 100px;
+      color:#fff;
+      font-size: 1.1rem;
       @include transition(opacity 0.9s $linear);
       @include transform(translateZ(0));
+      cursor: pointer;
+      &:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
     }
 
-    &:hover:after {
-      opacity: 0.5;
-    }
   }
 
   .chocolat-left {
@@ -519,22 +515,10 @@ div.chocolat-wrapper {
     height: 100px;
     margin-top: 0;
     z-index: 20;
+    text-align: center;
 
-    &:after {
-      background: url('../img/svg/arrow-left-white.svg') no-repeat center;
-      background-size: 18px;
-      content: '';
-      display: block;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-      @include transition(opacity 0.9s $linear);
-      @include transform(translateZ(0));
-    }
-
-    &:hover:after {
-      opacity: 0.5;
+    .icon{
+        line-height: 100px;
     }
   }
 
@@ -548,22 +532,10 @@ div.chocolat-wrapper {
     height: 100px;
     margin-top: 0;
     z-index: 20;
+    text-align: center;
 
-    &:after {
-      background: url('../img/svg/arrow-right-white.svg') no-repeat center;
-      background-size: 18px;
-      content: '';
-      display: block;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-      @include transition(opacity 0.9s $linear);
-      @include transform(translateZ(0));
-    }
-
-    &:hover:after {
-      opacity: 0.5;
+    .icon{
+      line-height: 100px;
     }
   }
 
@@ -597,25 +569,26 @@ div.chocolat-wrapper {
     top: 20px;
     left: auto;
     right: 20px;
-  }
-
-  .chocolat-close {
-    background: url('../img/svg/close-gold.svg') no-repeat center;
-    background-size: 15px;
     border: 1px solid $gold;
     cursor: pointer;
-    height: 80px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 80px;
-    z-index: 100;
     opacity: 0.6;
     @include transition(all 0.9s $smoothTransition);
 
-    &:hover {
-      opacity: 1;
+    .icon{
+        height: 80px;
+        position: absolute;
+        top: 33px;
+        right: -2px;
+        z-index: 100;
+        color:$gold;
+        &:hover {
+          opacity: 1;
+        }
     }
+  }
+
+  .chocolat-close {
+    background:none;
   }
 
   .chocolat-loader {
@@ -630,10 +603,15 @@ div.chocolat-wrapper {
     position: absolute;
     z-index: 50;
     border: 1px solid $gold;
+    text-align: center;
     @include transition(opacity 0.3s $smoothTransition);
 
     &.hide {
       opacity: 0;
+    }
+    .icon{
+      color: $gold;
+      line-height: 80px;
     }
   }
 
@@ -713,6 +691,11 @@ div.chocolat-wrapper {
           height: 60px;
           width: 60px;
 
+          .icon{
+            top: auto;
+            line-height: 60px;
+          }
+
           &:last-child {
             width: 59px;
           }
@@ -731,16 +714,37 @@ div.chocolat-wrapper {
       .images .img img{
         width: 100%;
       }
-    }    
+    }
     .slideshow-img .thumbnails{
         width: 960px;
     }
   .caption{
     font-family: $CamphorRegular;
     strong{
-     font-family: $CamphorBold !important;     
+     font-family: $CamphorBold !important;
     }
   }
 }
 
 
+@include breakpoint(1600px){
+
+  div.chocolat-wrapper{
+
+    .chocolat-right .icon, .chocolat-left .icon, .share .icon{
+      line-height: 80px;
+    }
+
+    .chocolat-bottom .icon_diaporama{
+      font-size: 2rem;
+      color: white;
+      position: relative;
+      z-index: 100;
+      float: left;
+      line-height: 65px;
+      margin-left: 28px;
+      margin-right: -51px;
+    }
+
+  }
+}

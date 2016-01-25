@@ -119,7 +119,7 @@ class AgendaController extends Controller
                             ),
                             'category' => array(
                                 'name' => 'conférence de presse',
-                                'slug' => 'press'
+                                'slug' => 'presse'
                             ),
                             'startAt' => new \DateTime(),
                             'endAt' => new \DateTime(),

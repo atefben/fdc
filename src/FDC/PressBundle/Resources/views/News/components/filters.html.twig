@@ -1,0 +1,40 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<div class="filters">
+
+    <div id="date" class="filter">
+        <span class="label">{{ 'press.actu.filter.label.annees'|trans }} :</span>
+        <span class="select">
+            {% for key, date in filters.dates %}
+            {% if key == 0 %}
+                <span class="active" data-filter="all">{{ 'press.actu.filter.dates.toutes'|trans }}</span>
+            {% else %}
+                <span data-filter="{{ date.slug }}">
+                {{ date.content }}
+                </span>
+            {% endif %}
+
+            {% endfor %}
+        </span>
+    </div>
+
+    <div id="format" class="filter">
+        <span class="label">{{ 'press.actu.filter.label.format'|trans }} :</span>
+        <span class="select">
+            {% for key, format in filters.format %}
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{{ format.content }}</span>
+            {% endfor %}
+        </span>
+    </div>
+
+    <div id="theme" class="filter">
+        <span class="label">{{ 'press.actu.filter.label.themes'|trans }} :</span>
+        <span class="select">
+            {% for key, theme in filters.themes %}
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="d{{ theme.slug }}">{{ theme.content }}</span>
+            {% endfor %}
+        </span>
+    </div>
+
+
+</div>

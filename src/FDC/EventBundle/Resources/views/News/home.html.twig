@@ -1,6 +1,12 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
+{% block pre_home %}
+    <div id="prehome-container">
+        <div id="prehome"></div>
+    </div>
+{% endblock %}
+
 {% block body %}
     <div id="main" class="home loading">
         <span id="addtext">{{ 'home.btn.ajouteramaselection'|trans }}</span>
@@ -34,22 +40,22 @@
                         <div class="articles left">
 
                             {% for article in homeArticles.article %}
-                                {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
-                            {% endfor %}
+                                {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
+                             {% endfor %}
 
-                        </div>
+                         </div>
 
-                        <!-- SLIDESHOW -->
-                        {% for widget in homeArticles.widgets %}
-                            {% if widget.type == "image" and widget.photos|length > 1 %}
-                                {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
-                            {% endif %}
-                        {% endfor %}
+                         <!-- SLIDESHOW -->
+                         {% for widget in homeArticles.widgets %}
+                             {% if widget.type == "image" and widget.photos|length > 1 %}
+                                 {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                             {% endif %}
+                         {% endfor %}
 
-                        <div class="articles center">
+                         <div class="articles center">
 
-                            {% for article in homeArticles.bottomArticle %}
-                                {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                             {% for article in homeArticles.bottomArticle %}
+                                {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
                             {% endfor %}
 
                         </div>
@@ -60,7 +66,7 @@
                 </div>
 
                 <div id="timeline">
-                    {% for key, date in homeArticles.timeline %}
+                    {% for key, date in socialGraph.timeline %}
                         <a href="#" data-date="{{ date.date|date('d') }}" class="{% if key == 0 %}active{% endif %}">
                             {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                             <span class="day">{{ date.date|date('d') }}</span>
@@ -72,23 +78,22 @@
             </div>
         </div>
 
+    {% if homepage.displayedSocialWall %}
         <div id="social-wall">
             <div class="container">
                 <div id="graph">
                     <ul>
-                        {% for key, date in homeArticles.timeline %}
+                        {% for timeline in socialGraph.timeline %}
                             <li class="active">
-                                {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                                <span>{{ date.date|date('d') }}</span>
+                                {{ timeline.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                <span>{{ timeline.date|date('d') }}</span>
                             </li>
                         {% endfor %}
                     </ul>
                     <div id="hashtag">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                {% image '@FDCEventBundle/Resources/public/img/svg/palme.svg' %}
-                                <img width="70" src="{{ asset_url }}" alt="#Cannes2016" />
-                                {% endimage %}
+                                <i class="icon icon_palme"></i>
                                 #Cannes2016
                             </div>
                         </div>
@@ -96,7 +101,6 @@
                     <svg id="graphSVG" width="891" height="200"></svg>
                     <div id="tipGraph"></div>
                 </div>
-
                 <div id="wall">
                     {% for post in wallPosts %}
                         {% include 'FDCEventBundle:News:widgets/post.html.twig' %}
@@ -107,14 +111,13 @@
 
             </div>
         </div>
+        {% endif %}
 
         <div id="featured-videos">
             <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
             <p class="link">
                 <a href="{{ path('fdc_event_television_live') }}">
-                    {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                    <img src="{{ asset_url }}" alt="{{ 'home.btn.accederalawebtv'|trans }}" />
-                    {% endimage %}
+                    <i class="icon icon_fleche-right"></i>
                     {{ 'home.btn.accederalawebtv'|trans }}
                 </a>
             </p>
@@ -132,7 +135,7 @@
             </div>
         </div>
         <div id="channels">
-            <h2 class="title">Les chaines</h2>
+            <h2 class="title">{{ 'home.title.leschaines'|trans }}</h2>
             <div id="slider-channels" class="owl-carousel sliderDrag">
 
                 {% for video in videos %}
@@ -148,7 +151,7 @@
 
         <div id="featured-movies">
             <div id="slider-movies" class="owl-carousel">
-                {% for video in videoSlider %}
+                {% for video in featuredMovies.video %}
                     {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
                 {% endfor %}
             </div>
@@ -180,5 +183,15 @@
         {% include 'FDCEventBundle:News:components/prefooter.html.twig' %}
 
     </div>
+
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+        {
+            "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+            "url"  : path('fdc_event_news_index')
+        }
+    ]
+    } %}
 
 {% endblock body %}

@@ -1,24 +1,30 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 <div>
     <div class="video">
         <video preload muted>
-            <source src="https://broken-links.com/tests/media/BigBuck.m4v">
-            <source src="https://broken-links.com/tests/media/BigBuck.webm" type="video/webm">
+            <source src="{{ video.source.m4v }}">
+            <source src="{{ video.source.webm }}" type="video/webm">
         </video>
-        <div class="img" style="background-image:url(/img/slider/slider01.jpg)"></div>
+        <div class="img" style="background-image:url({{ video.source.image }})"></div>
     </div>
     <div class="textVideo">
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    <span class="category">Compétition</span>
-                    <h2>Sils Maria</h2>
-                    <p class="director">de <a href="#">Olivier ASSAYAS</a></p>
+                    <span class="category">{{ video.film.theme }}</span>
+                    <h2>{{ video.film.title }}</h2>
+                    <p class="director">
+                        {{ 'home.video.text.de'|trans }}
+                        <a href="#">{{ video.film.author.fullName }}</a>
+                    </p>
                 </div>
             </div>
         </div>
         <div class="links">
-            <a href="#" class="seances">Voir les séances</a>
-            <a href="#" class="all">Tous les films</a>
+            <a href="#" class="seances"><i class="icon icon_programmation"></i>{{ 'home.video.btn.voirlesseances'|trans }}</a>
+            <a href="#" class="all"><i class="icon icon_fleche-right"></i>{{ 'home.video.btn.touslesfilms'|trans }}</a>
         </div>
     </div>
 </div>
+

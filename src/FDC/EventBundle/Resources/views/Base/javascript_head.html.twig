@@ -15,7 +15,9 @@
                     "count" : 15,
                     "uri" : "search_tweets",
                     "url" : "twitter.php"
-                }
+                },
+                "instagramUrl" : "{{ path('get_social_wall_instagram') }}",
+                "twitterUrl" : "{{ path('get_social_wall_twitter') }}"
             },
             "baseUrl" : "{{ url('fdc_event_news_index') }}",
             "urls" : {
@@ -24,7 +26,8 @@
                 "newsUrl" : "news.html",
                 "newsUrlNext" : "news_page2.html",
                 "loadPressRelease" : "load-communique.php",
-                "selectionUrl" : "{{ url('fdc_event_global_suggestion') }}"
+                "selectionUrl" : "{{ url('fdc_event_global_suggestion') }}",
+                "newsletterUrl": "{{ url('fdc_event_global_newsletter') }}"
             },
             "texts" : {
                 "url" : {
@@ -59,6 +62,12 @@
                     "fr" : "H [H]",
                     "default" : "h A"
                 }
+            },
+            "socialWall": {
+                {% if socialGraph is defined %}
+                "points": {{ socialGraph.timelineCount }},
+                {% endif %}
+                "heightGraph" : 200
             }
         }
     </script>

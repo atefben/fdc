@@ -1,0 +1,59 @@
+.selection-container{
+	position: relative;
+	width: 100%;
+	font-size: 0;
+	background-color: #202020;
+	
+}
+.selection-item{
+	display: inline-block;
+	width: 50%;
+	height: 580px;
+	vertical-align: top;
+	background-color: #141414;
+  position: relative;
+
+}
+.selection-item a{
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+
+}
+.selection-item .img{
+  background-position: center top;
+  background-size: cover;
+  width: 100%;
+  height: 435px;
+}
+.selection-item .name, .selection-item .sub-name{
+	color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    padding-top: 25px;
+    font-weight: 600;
+    max-width: 190px;
+    margin: 0 auto;
+
+}
+.selection-item .sub-name
+{
+	font-size: 1rem;
+	padding: 0;
+}
+.selection-item .author, .selection-item .rank{
+
+	text-align: center;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #c8a461;
+  padding-top: 10px;
+  font-style: italic;
+}

@@ -2,6 +2,9 @@
 
 namespace FDC\PressBundle\Controller;
 
+use Base\CoreBundle\Entity\Statement;
+use \DateTime;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -33,151 +36,129 @@ class NewsController extends Controller
 
         $lockedContentForm = $this->createForm( new LockedContentType($translator) );
 
-        if ( $request->isMethod( 'POST' ) ) {
-
-        }
+        $popinLockedForm = $this->createForm( new LockedContentType($translator));
 
         $homeNews = array(
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'communique',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'communique',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'communique',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'article',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'communique',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'article',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'communique',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'communique-presse',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'communique',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
+                ),
+                'format' => 'communique-presse',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
             ),
             array(
-                'id' => 0,
-                'title' => 'Stéphane Brizé interroge la loi du marché',
-                'type'  => 'communique',
-                'slug'  => 'stephane-brize-interroge',
-                'category' => array(
-                    'title' => 'Conférence de presse',
-                    'slug'  => 'press'
-                ),
+                'title' => 'Stéphane Beizé interroge la loi du marché',
                 'createdAt' => new \DateTime(),
+                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                )
-            )
+                ),
+                'format' => 'communique-presse',
+                'theme' => 'competition',
+                'category' => 'competition',
+                'double' => false,
+            ),
         );
 
         $schedulingDays = array(
@@ -297,7 +278,7 @@ class NewsController extends Controller
             )
         );
 
-        $downloads = array(
+        $festivalDownloads = array(
             array(
                 'format' => 'portrait',
                 'resolution' => array(
@@ -335,21 +316,65 @@ class NewsController extends Controller
             )
         );
 
+        $movieDownload = array(
+            'description' => 'Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et
+                                  extraits de films fournis par les productions. Ces contenus sont mis à jour tout au
+                                  long du Festival. Ce service est fourni pour faciliter le traitement des films sur
+                                  vos propres médias. Nous vous prions instamment de ne pas les publier sur les réseaux
+                                  sociaux ou les portails de partage de type Youtube ou Dailymotion sans l’accord des
+                                  ayants-droits du film.<br><strong>Chaque fois que possible, les fichiers mis à disposition
+                                  seront en HD 1080p. Le Festival reste tributaire de la qualité du matériel qui lui est
+                                  adressé. 1 à 3 fichiers sont mis à disposition en fonction du fichier source reçu :</strong>',
+            'movie' => array(
+                'title' => 'Il racconto dei racconti',
+                'author' => array(
+                    'fullName' => 'Matteo GARRONE'
+                ),
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/media/img6.jpg'
+                ),
+                'trailers' => array(
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    ),
+                    array(
+                        'title' => 'Lorem ipsum',
+                        'description' => 'Lorem ipsum',
+                        'path' => '#'
+                    )
+                )
+            ),
+        );
+
         return array(
             'lockedForm' => $lockedContentForm->createView(),
+            'popinLockedForm' => $popinLockedForm->createView(),
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $schedulingDays,
             'schedulingEvents' => $events,
             'pressMedias' => $medias,
-            'pressDownloads' => $downloads,
+            'pressFestivalDownloads' => $festivalDownloads,
+            'pressMovieDownloads' => $movieDownload,
             'pressStats' => $stats
         );
     }
 
     /**
      * @Route("/press-articles/{slug}")
-     * @Template("FDCEventBundle:News:main.html.twig")
+     * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
      * @return array
      */
@@ -369,7 +394,7 @@ class NewsController extends Controller
         }
 
         // GET NEWS
-        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug(
+        $statement = $em->getRepository('BaseCoreBundle:Statement')->getStatementBySlug(
             $slug,
             $settings->getFestival()->getId(),
             $locale,
@@ -377,16 +402,130 @@ class NewsController extends Controller
             $isAdmin
         );
 
-        if ($news === null) {
+        if ($statement === null) {
             throw new NotFoundHttpException();
         }
 
         // SEO
-        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+        //$this->get('base.manager.seo')->setFDCPressPageStatementSeo($statement, $locale);
+
+        //get associated film to the news
+        $associatedFilm = $statement->getAssociatedFilm();
+        $associatedFilmDuration = null;
+        $programmations = array();
+
+        if ($associatedFilm !== null) {
+            $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
+            foreach($associatedFilm->getProjectionProgrammationFilms() as $projection) {
+                $programmations[] = $projection->getProjection();
+            }
+        }
+
+        //get day articles
+        $count = 3;
+        $statementDate = $statement->getPublishedAt();
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:Statement')
+            ->getSameDayStatement(
+                $settings->getFestival()->getId(),
+                $locale,
+                $statementDate,
+                $count,
+                $statement->getId()
+            );
 
         return array(
-            'news' => $news,
-            //  'article' => $article
+            'programmations' => $programmations,
+            'associatedFilmDuration' => $associatedFilmDuration,
+            'news' => $statement,
+            'associatedFilm' => $associatedFilm,
+            'sameDayArticles' => $sameDayArticles,
         );
+    }
+
+    /**
+     *
+     * @Route("/press-actu")
+     * @Template("FDCPressBundle:News:list.html.twig")
+     * @return array
+     */
+    public function listAction()
+    {
+
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+        $dateTime = new DateTime();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL NEWS ARTICLES
+        $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
+
+        if ($statements === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $filters = array();
+        $filters['dates'][0] = array(
+            'slug' => 'all',
+            'content' => 'Toutes',
+        );
+
+        $filters['themes'][0] = array(
+            'slug' => 'all',
+            'content' => 'Tous',
+        );
+
+        $filters['format'][0] = array(
+            'slug' => 'all',
+            'content' => 'Tous',
+        );
+
+        $statementsTypes = Statement::getTypes();
+
+        $i = 1;
+        foreach ($statementsTypes as $statementsType) {
+            $filters['format'][$i]['slug'] = $statementsType;
+            $filters['format'][$i]['content'] = $statementsType;
+            $i++;
+        }
+
+        $i = 1;
+
+        $years = array();
+        $themes = array();
+
+        foreach($statements as $statement) {
+
+            if (!in_array($statement->getPublishedAt()->format('Y'), $years)) {
+                $filters['dates'][$i]['slug'] =  $statement->getPublishedAt()->format('Y');
+                $filters['dates'][$i]['content'] = $statement->getPublishedAt()->format('Y');
+
+                $years[] = $statement->getPublishedAt()->format('Y');
+            }
+
+            if (!in_array($statement->getTheme()->getSlug(), $themes)) {
+                $filters['themes'][$i]['slug'] = $statement->getTheme()->getSlug();
+                $filters['themes'][$i]['content'] = $statement->getTheme()->getName();
+
+                $themes[] = $statement->getTheme()->getSlug();
+            }
+
+        }
+
+        $headerInfo = array(
+            'title' => 'Communiqués et infos',
+            'description' => 'Communiqués, actualités, retrouvez toute l\'information à ne pas manquer.'
+        );
+
+        return array(
+            'headerInfo'  => $headerInfo,
+            'filters' => $filters,
+            'statementArticles' => $statements,
+        );
+
     }
 }

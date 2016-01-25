@@ -278,6 +278,17 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $mediaVideos;
 
     /**
+     * @ORM\OneToMany(targetEntity="MediaAudio", mappedBy="film", cascade={"persist"})
+     *
+     * @Groups({
+     *  "trailer_show",
+     *  "film_list", "film_show",
+     * })
+     */
+    private $mediaAudios;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="film")
      *
      * @Groups({
@@ -326,6 +337,13 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedNews;
 
     /**
+     * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="association")
+     *
+     * @Groups({"statement_list", "statement_show"})
+     */
+    private $associatedStatement;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -335,6 +353,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->awards = new ArrayCollection();
         $this->medias = new ArrayCollection();
         $this->mediaVideos = new ArrayCollection();
+        $this->mediaAudios = new ArrayCollection();
         $this->minorProductions = new ArrayCollection();
         $this->countries = new ArrayCollection();
         $this->translations = new ArrayCollection();
@@ -1470,6 +1489,40 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     }
 
     /**
+     * Add mediaAudios
+     *
+     * @param \Base\CoreBundle\Entity\MediaAudio $mediaAudios
+     * @return FilmFilm
+     */
+    public function addMediaAudio(\Base\CoreBundle\Entity\MediaAudio $mediaAudios)
+    {
+        $this->mediaAudios[] = $mediaAudios;
+        $mediaAudios->setFilm($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove mediaAudios
+     *
+     * @param \Base\CoreBundle\Entity\MediaAudio $mediaAudios
+     */
+    public function removeMediaAudio(\Base\CoreBundle\Entity\MediaAudio $mediaAudios)
+    {
+        $this->mediaAudios->removeElement($mediaAudios);
+    }
+
+    /**
+     * Get mediaAudios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMediaAudios()
+    {
+        return $this->mediaAudios;
+    }
+
+    /**
      * Add awards
      *
      * @param \Base\CoreBundle\Entity\FilmAwardAssociation $awards
@@ -1622,5 +1675,38 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getAssociatedNews()
     {
         return $this->associatedNews;
+    }
+
+    /**
+     * Add associatedStatement
+     *
+     * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement
+     * @return FilmFilm
+     */
+    public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement)
+    {
+        $this->associatedStatement[] = $associatedStatement;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedStatement
+     *
+     * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement
+     */
+    public function removeAssociatedStatement(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement)
+    {
+        $this->associatedStatement->removeElement($associatedStatement);
+    }
+
+    /**
+     * Get associatedStatement
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedStatement()
+    {
+        return $this->associatedStatement;
     }
 }

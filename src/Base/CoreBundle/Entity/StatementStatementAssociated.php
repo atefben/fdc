@@ -35,14 +35,14 @@ class StatementStatementAssociated
     protected $id;
 
     /**
-     * @var Info
+     * @var Statement
      *
-     * @ORM\ManyToOne(targetEntity="Statement", inversedBy="associations")
+     * @ORM\ManyToOne(targetEntity="Statement", inversedBy="associatedStatement")
      */
     protected $statement;
 
     /**
-     * @var Info
+     * @var Statement
      *
      * @ORM\ManyToOne(targetEntity="Statement")
      */
@@ -65,10 +65,11 @@ class StatementStatementAssociated
     {
     }
 
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {

@@ -269,7 +269,7 @@ class NewsArticleAdmin extends Admin
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
-                'btn_add' => false,
+                'btn_add' => true,
                 'required' => false,
                 ), array(
                     'edit' => 'inline',
@@ -288,6 +288,31 @@ class NewsArticleAdmin extends Admin
                 'context'  => 'seo_file',
                 'help' => 'form.news.helper_file',
                 'required' => false
+            ))
+            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
+            ->add('createdAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('createdBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
             ))
             ->end()
         ;

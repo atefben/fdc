@@ -4,3 +4,18 @@ services:
         arguments: ["%kernel.default_locale%"]
         tags:
             - { name: kernel.event_subscriber }
+
+    base.admin.event.homepage_listener:
+        class: Base\AdminBundle\EventListener\HomepageListener
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postFlush }
+
+    base.admin.event.news_listener:
+        class: Base\AdminBundle\EventListener\NewsListener
+        arguments:
+            - "@security.token_storage"
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postFlush }

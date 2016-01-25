@@ -14,7 +14,7 @@
 <div id="main" class="list-article participate partners">
   <div class="bandeau-list vCenter">
     <div class="bandeau-list-img vCenterKid" style="background-image:url(img/participate/bandeau3.jpg);background-size: cover;">
-      <h2 class="title title-list-header"> <img src="img/participate/Handshake.png" alt="" class="logo"> <br> Partenaires</h2>
+      <h2 class="title title-list-header"><i class="icon icon_mains"></i> <br> Partenaires</h2>
     </div>
   </div>
   <section class="content-partners">
@@ -24,7 +24,7 @@
          <div class="contain-img">
           <img src="img/participate/Logo-partners1.jpg" alt="">
          </div>
-        <div class="text-partners"> 
+        <div class="text-partners">
           <h4 class="title-partners">Air france</h4>
           <p class="descrip-partners">
             Air France, partenaire officiel du Festival de Cannes, s'attache à faire vibrer tout au long de l'année le cinéma à bord de ses avions. La compagnie offre l'accès à plus de 1 000 heures de programmation à la demande sur de larges écrans tactiles sur ses vols long-courriers, idéal pour une projection en plein ciel.</p>
@@ -42,7 +42,7 @@
               Angénieux est, depuis 1935, la marque mondialement reconnue d'objectifs pour la production cinématographique. Récompensés à plusieurs reprises à Hollywood, les zooms Angénieux sont appréciés partout dans le monde par les professionnels de l'image les plus exigeants.</p>
               <a href="#" class="link">Site internet</a><a href="#">Contact</a>
            </div>
-            <div class="portrait">  
+            <div class="portrait">
               <img src="img/participate/portrait1.png" alt="">
             <strong class="name">Pierre Andurand</strong>
             <span class="rank">Président</span>
@@ -60,7 +60,7 @@
 Partenaire officiel du Festival de Cannes pour la 22ème année, CANAL+ produit et diffuse en exclusivité, les Cérémonies d'ouverture et de Clôture. La chaîne dédie une large part de son antenne à  cet évènement majeur, avec chaque jour LE GRAND JOURNAL, LA MONTEE DES MARCHES, et une programmation cinéma  éclectique.</p>
               <a href="#" class="link">Site internet</a><a href="#">Contact</a>
            </div>
-            <div class="portrait">  
+            <div class="portrait">
               <img src="img/participate/portrait2.jpg" alt="">
             <strong class="name">Bertrand Méhaut</strong>
             <span class="rank">Président</span>
@@ -83,7 +83,7 @@ Partenaire officiel du Festival de Cannes pour la 22ème année, CANAL+ produit 
               A la pointe de l'innovation dans le domaine de la projection cinématographique depuis 1929 et pionnier des systèmes de projection numérique depuis 1979, Christie est l'un des leaders mondiaux des solutions diversifiées de visualisation, destinées aux marchés de l'entreprise, du spectacle et de l'industrie.</p>
               <a href="#" class="link">Site internet</a><a href="#">Contact</a>
            </div>
-            <div class="portrait">  
+            <div class="portrait">
               <img src="img/participate/portrait3.jpg" alt="">
             <strong class="name">Simon Smith</strong>
             <span class="rank">Vice Président</span>
@@ -102,7 +102,7 @@ Partenaire officiel du Festival de Cannes pour la 22ème année, CANAL+ produit 
 Partenaire officiel du Festival de Cannes pour la 22ème année, CANAL+ produit et diffuse en exclusivité, les Cérémonies d'ouverture et de Clôture. La chaîne dédie une large part de son antenne à  cet évènement majeur, avec chaque jour LE GRAND JOURNAL, LA MONTEE DES MARCHES, et une programmation cinéma  éclectique.</p>
               <a href="#" class="link">Site internet</a><a href="#">Contact</a>
            </div>
-            <div class="portrait">  
+            <div class="portrait">
               <img src="img/participate/portrait2.jpg" alt="">
             <strong class="name">Bertrand Méhaut</strong>
             <span class="rank">Président</span>
@@ -115,7 +115,7 @@ Partenaire officiel du Festival de Cannes pour la 22ème année, CANAL+ produit 
     <?php include('footer.html'); ?>
 
       <!-- //// SCRIPTS \\\\ -->
-      
+
       <?php include('scripts.inc.php'); ?>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 </body>

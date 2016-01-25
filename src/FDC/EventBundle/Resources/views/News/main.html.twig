@@ -2,6 +2,7 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
+    {% include 'FDCEventBundle:News:widgets/social-share.html.twig' %}
 <div id="main" class="single-article loading ">
     <span id="addtext">{{ 'article.text.ajouteramaselection'|trans }}</span>
     <div id="canvasloader" class="canvasloader"></div>
@@ -14,7 +15,7 @@
                 <span class="date">{{ news.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ news.createdAt|date('H:i') }}</span>
                 <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ news.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.updatedAt|date('H:i') }}</span>
             </div>
-            <h2 class="title-article">{{ news.title }}</h2>
+            <h2 class="title-article">{{ news|trans_fallback('title') }}</h2>
             <div class="buttons">
                 <a id="share-article" href="#" class="button">{{ 'article.btn.partager'|trans }}</a>
                 <a href="#" class="button print">{{ 'article.btn.imprimer'|trans }}</a>
@@ -52,149 +53,114 @@
                 {% endif %}
             {% endfor %}
 
-            <div class="author">{{ 'article.text.redigepar'|trans }} {{ news.signature }}</div>
+            {% if news.signature is not null %}
+                <div class="author">{{ 'article.text.redigepar'|trans }} {{ news.signature }}</div>
+            {% endif %}
         </div>
         <div class="share">
             <p>{{ 'article.text.partagerarticle'|trans }}</p>
             <div class="buttons square">
-                <a href="#" class="button facebook"></a>
-                <a href="#" class="button twitter"></a>
-                <a href="#" class="button link"></a>
-                <a href="#" class="button email"></a>
-                <a href="#" class="button print"></a>
+                <a href="#" class="button facebook" onclick="window.open('http://www.facebook.com/sharer.php?u={{ app.request.getUri }}','Share {{ news|trans_fallback('title') }}','width=600,height=400')">
+                    <i class="icon icon_facebook"></i>
+                </a>
+                <a href="#" class="button twitter">
+                    <i class="icon icon_twitter"></i>
+                </a>
+                <a href="#" class="button link">
+                    <i class="icon icon_link"></i>
+                </a>
+                <a href="#" class="button email">
+                    <i class="icon icon_lettre"></i>
+                </a>
+                <a href="#" class="button print">
+                    <i class="icon icon_print"></i>
+                </a>
             </div>
         </div>
 
-        {#<div class="film">#}
-            {#<div class="info-film">#}
-                {#<div class="wrapper">#}
-                    {#<div class="vCenter">#}
-                        {#<div class="vCenterKid">#}
-                            {#<div class="poster">#}
-                                {#<img src="img/article/007.jpg" alt="" />#}
-                            {#</div>#}
-                            {#<div class="text-container">#}
-                                {#<span class="category">Un certain regard</span>#}
-                                {#<h3><a href="#">Enragé</a></h3>#}
-                                {#<p class="director"><a href="#">Eric HANNEZO</a><p>#}
-                                {#<p>France - 2014</p>#}
-                                {#<p>1h35</p>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="programmation-film">#}
-                {#<div class="wrapper">#}
-                    {#<div class="vCenter">#}
-                        {#<div class="vCenterKid">#}
-                            {#<span class="category">Programmation</span>#}
-                            {#<ul>#}
-                                {#<li>#}
-                                    {#<span class="type">Projection</span><span>15/07/2015</span><span>9h</span>#}
-                                    {#<span class="location">Salle Debussy</span>#}
-                                {#</li>#}
-                                {#<li>#}
-                                    {#<span class="type">Projection</span><span>15/07/2015</span><span>10h</span>#}
-                                    {#<span class="location">Cinéma de la plage</span>#}
-                                {#</li>#}
-                                {#<li>#}
-                                    {#<span class="type">Projection</span><span>15/07/2015</span><span>9h</span>#}
-                                    {#<span class="location">Salle du Soixantième</span>#}
-                                {#</li>#}
-                                {#<li>#}
-                                    {#<span class="type">Projection</span><span>15/07/2015</span><span>9h</span>#}
-                                    {#<span class="location">Grand Théâtre Lumière</span>#}
-                                {#</li>#}
-                            {#</ul>#}
-                            {#<a href="#" class="button">Toute la programmation</a>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="container">#}
-            {#<div class="focus">#}
-                {#<h2 class="title">Focus</h2>#}
-                {#<div class="articles">#}
-                    {#<article class="article" data-format="article" data-theme="competition">#}
-                        {#<div class="image">#}
-                            {#<div class="image-wrapper">#}
-                                {#<img src="img/articles/03.jpg" alt="" />#}
-                            {#</div>#}
-                            {#<a href="article.php" class="linkImage"></a>#}
-                            {#<a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>#}
-                            {#<span class="picto"></span>#}
-                        {#</div>#}
-                        {#<div class="info">#}
-                            {#<a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>#}
-                            {#<h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>#}
-                        {#</div>#}
-                    {#</article>#}
-                    {#<article class="video" data-format="video" data-theme="photocall">#}
-                        {#<div class="image">#}
-                            {#<div class="image-wrapper">#}
-                                {#<img src="img/articles/03.jpg" alt="" />#}
-                            {#</div>#}
-                            {#<a href="article.php" class="linkImage"></a>#}
-                            {#<a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>#}
-                            {#<span class="picto"></span>#}
-                        {#</div>#}
-                        {#<div class="info">#}
-                            {#<a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>#}
-                            {#<h2><a href="article.php">Z de Costa-Gravas</a></h2>#}
-                        {#</div>#}
-                    {#</article>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="same-day">#}
-                {#<h2 class="title">Le même jour</h2>#}
-                {#<div class="articles center">#}
-                    {#<article class="article" data-format="article" data-theme="competition">#}
-                        {#<div class="image">#}
-                            {#<div class="image-wrapper">#}
-                                {#<img src="img/articles/03.jpg" alt="" />#}
-                            {#</div>#}
-                            {#<a href="article.php" class="linkImage"></a>#}
-                            {#<a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>#}
-                            {#<span class="picto"></span>#}
-                        {#</div>#}
-                        {#<div class="info">#}
-                            {#<a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>#}
-                            {#<h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>#}
-                        {#</div>#}
-                    {#</article>#}
-                    {#<article class="video" data-format="video" data-theme="photocall">#}
-                        {#<div class="image">#}
-                            {#<div class="image-wrapper">#}
-                                {#<img src="img/articles/03.jpg" alt="" />#}
-                            {#</div>#}
-                            {#<a href="article.php" class="linkImage"></a>#}
-                            {#<a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>#}
-                            {#<span class="picto"></span>#}
-                        {#</div>#}
-                        {#<div class="info">#}
-                            {#<a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>#}
-                            {#<h2><a href="article.php">Z de Costa-Gravas</a></h2>#}
-                        {#</div>#}
-                    {#</article>#}
-                    {#<article class="photo" data-format="photo" data-theme="photograph">#}
-                        {#<div class="image">#}
-                            {#<div class="image-wrapper">#}
-                                {#<img src="img/articles/03.jpg" alt="" />#}
-                            {#</div>#}
-                            {#<a href="article.php" class="linkImage"></a>#}
-                            {#<a href="#" class="read-later"><span>Ajouter à ma sélection</span></a>#}
-                            {#<span class="picto"></span>#}
-                        {#</div>#}
-                        {#<div class="info">#}
-                            {#<a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>#}
-                            {#<h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi / supported by [NEUS]</a></h2>#}
-                        {#</div>#}
-                    {#</article>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
+        <div class="film">
+            {% if associatedFilm is not null %}
+            <div class="info-film">
+                    <div class="wrapper">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <div class="poster">
+                                    {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_small' %}
+                                </div>
+                                <div class="text-container">
+                                    {% if associatedFilm.selectionSection is not null %}
+                                        <span class="category">
+                                            {{ associatedFilm.selectionSection|trans_fallback('name') }}
+                                        </span>
+                                    {% endif %}
+                                    <h3>
+                                        <a href="#">
+                                            {{ associatedFilm|trans_fallback('title') }}
+                                        </a>
+                                    </h3>
+                                    {% for director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                        <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+                                    {% endfor %}
+                                    <p>
+                                        {% for country in associatedFilm.countries %}
+                                            {{ country.country|trans_fallback('name') }}
+                                        {% endfor %}
+                                        {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
+                                        - {{ associatedFilm.productionYear }}
+                                        {% endif %}
+                                    </p>
+                                    <p>{{ associatedFilmDuration }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            {% endif %}
+            {% if programmations is not empty %}
+            <div class="programmation-film">
+                <div class="wrapper">
+                    <div class="vCenter">
+                        <div class="vCenterKid">
+                            <span class="category">{{ 'article.film.label.programmation'|trans }}</span>
+                            <ul>
+                                {% for programmation in programmations %}
+                                    <li>
+                                        <span class="type">{{ 'article.film.text.projection'|trans }}</span>
+                                        <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
+                                        <span>{{ programmation.startsAt|date('H') }}h</span>
+                                        <span class="location">{{ programmation.room.name }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <a href="#" class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="container">
+            {% if focusArticles != null and focusArticles|length > 0 %}
+            <div class="focus">
+                <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
+                <div class="articles">
+                    {% for article in focusArticles %}
+                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% if sameDayArticles != null and sameDayArticles|length > 0 %}
+            <div class="same-day">
+                <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
+                <div class="articles center">
+                    {% for article in sameDayArticles %}
+                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
     </div>
     <span class="anim"></span>
 </div>
@@ -208,5 +174,24 @@
    }))
 }}
 <!-- END POPIN MAIL SHARE -->
+
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.articles'|trans ,
+        "url"  : path('fdc_event_news_getarticles')
+    },
+    {
+        "name" : news|trans_fallback('title') ,
+        "url"  : ''
+    }
+]
+} %}
 
 {% endblock %}

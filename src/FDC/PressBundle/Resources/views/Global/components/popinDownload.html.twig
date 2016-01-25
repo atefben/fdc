@@ -1,0 +1,37 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<div id="popin-download-press" class='popin'>
+    <div class="container-popin">
+        <div class="contain-info-item">
+            <img src="{{ pressMovieDownloads.movie.image.path }}" alt="image">
+            <div class="contain-text vCenter">
+                <div class="vCenterKid">
+                    <h3>{{ pressMovieDownloads.movie.title }}</h3>
+                    <span class="name">{{ pressMovieDownloads.movie.author.fullName }}</span>
+                </div>
+            </div>
+        </div>
+        <h4>{{ 'press.popin.title.bandeannonces'|trans }}({{ pressMovieDownloads.movie.trailers|length }})</h4>
+        <p>
+        {{ pressMovieDownloads.description }}
+        </p>
+        <table>
+            <tbody>
+            {% for trailer in pressMovieDownloads.movie.trailers %}
+                <tr>
+                    <td>{{ trailer.title }}</td>
+                    <td>{{ trailer.description }}</td>
+                    <td>
+                        <a href="{{ trailer.path }}" class="button">
+                            {% image '@FDCEventBundle/Resources/public/img/press/svg/telecharger.svg' %}
+                            <img src="{{ asset_url }}" class='svg' alt="{{ 'press.popin.btn.telecharger'|trans }}" />
+                            {% endimage %}
+                            {{ 'press.popin.btn.telecharger'|trans }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

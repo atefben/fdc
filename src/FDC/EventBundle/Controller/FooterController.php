@@ -20,7 +20,7 @@ class FooterController extends Controller
 {
     /**
      * @Route("/static-{page}")
-     * @Template("FDCEventBundle:Footer:footer.$page.html.twig")
+     * @Template("")
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -601,9 +601,12 @@ class FooterController extends Controller
                 break;
         }
 
-        return array(
-            'content' => $pageContent
+
+        return $this->render(
+            "FDCEventBundle:Footer:$page.html.twig",
+            array('content' => $pageContent)
         );
+
 
     }
 
@@ -633,7 +636,7 @@ class FooterController extends Controller
                     ->setTo('lrocher@webqam.fr')
                     ->setBody(
                         $this->renderView(
-                            'FDCEventBundle:Mail:mail.contact.html.twig',
+                            'FDCEventBundle:Mail:contact.html.twig',
                             array(
                                 'contact_ip' => $request->getClientIp(),
                                 'contact_name' => $form->get('name')->getData(),

@@ -20,14 +20,13 @@ parameters:
 
     #locales
     locale:  fr
-    locales: [fr, en, es, cn]
-    locales_front: [fr, en, es, zh]
+    locales: [fr, en, es, zh]
     locales_admin: [fr]
     locale_default_translation: fr
     locale_fallback: en
 
     # admin
-
+    admin_homepage_id: ~
     # routes where are displayed the translation legend
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
@@ -59,6 +58,8 @@ parameters:
     fdc_press_domain: ~
     fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
+    fdc_app_android_download_url: '#'
+    fdc_app_ios_download_url: '#'
     header_fdc: 'http://www.festival-cannes.com/fr.html'
     header_cine: 'http://www.cinefondation.com/fr/'
     header_ccm: 'http://www.cannescourtmetrage.com/fr/'
@@ -83,3 +84,11 @@ parameters:
     jwplayer_key: ~
     fdc_event_slug: ~
     fdc_year: ~
+    twitter_consumer_key: 'AuXw71nzlXihJxX7L6z1oALZZ'
+    twitter_consumer_secret: 'k3iqAnPmv9bvFit1upeiJGRmUPSKBcT5sSkp4JvYyXcHkj4N6m'
+    twitter_token: '393992891-OqG2GKPBPRDZaMBrm9OyZ60rwBVewHIqmNLWdoZD'
+    twitter_token_secret: 'CMvPEICEojMOjPm6zAIhYzLxSSVXcornsENJd9TLDxxG4'
+    instagram_consumer_key: 'a5a34caba4dd41619ca4d4cde7899374'
+    instagram_consumer_secret: 'c278268c28c043fabc51ea5d5805869c'
+    instagram_token: '2480568612.1677ed0.e6bd83eae8a74220ad07059c7b3ab5bc'
+    tumblr_consumer_key: 'i1jImF1HwZQq8heF0hCQ0VD481ANJcZz51ZniNXCPIiKHw5bFb'

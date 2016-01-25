@@ -21,7 +21,31 @@ class MediaAudio extends Media
     /**
      * @var FilmFilm
      *
-     * @ORM\ManyToMany(targetEntity="FilmFilm")
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="mediaAudios")
      */
-    private $films;
+    private $film;
+
+
+    /**
+     * Set film
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $film
+     * @return MediaAudio
+     */
+    public function setFilm(\Base\CoreBundle\Entity\FilmFilm $film = null)
+    {
+        $this->film = $film;
+
+        return $this;
+    }
+
+    /**
+     * Get film
+     *
+     * @return \Base\CoreBundle\Entity\FilmFilm 
+     */
+    public function getFilm()
+    {
+        return $this->film;
+    }
 }

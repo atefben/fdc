@@ -13,8 +13,8 @@
         <div class="texts">
 
           <div id="logo">
-            <a href="/"><img src="img/svg/palme.svg" alt="Festival de Cannes" class="palm"></a>
-            <a href="/"><img width="200" src="img/svg/logo.svg" alt="Festival de Cannes"></a>
+            <a href="/"><img src="img/palme.svg" alt="Festival de Cannes" class="palm"></a>
+            <a href="/"><img width="200" src="img/logo.svg" alt="Festival de Cannes"></a>
             <a href="/">11-22 Mai 2016</a>
           </div>
           <h1>Votre navigateur n'est pas compatible</h1>
@@ -32,16 +32,14 @@
               </tr>
               <tr>
                 <td>
-                   <i class="icon icon_ie"></i>
-                  <img src="img/svg/firefox.svg" alt="">
-                  <img src="img/svg/chrome.svg" alt="">
-<!-- TODO ADD SVG -->
+                  <i class="icon icon_InternetExplorer"></i>
+                  <i class="icon icon_firefox"></i>
+                  <i class="icon icon_chrome"></i>
                 </td>
                 <td>
-<!-- TODO ADD SVG -->
-                  <img src="img/svg/safari.svg" alt="">
-                  <img src="img/svg/firefox.svg" alt="">
-                  <img src="img/svg/chrome.svg" alt="">
+                  <i class="icon icon_safari"></i>
+                  <i class="icon icon_firefox"></i>
+                  <i class="icon icon_chrome"></i>
                 </td>
               </tr>
             </tbody>

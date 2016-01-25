@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <?php include('head.html'); ?> 
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -10,12 +10,11 @@
 
     <div id="main" class="webtv single-channel loading">
       <div class="container">
-        <a href="#" class="back">Retour aux chaînes</a>
+        <a href="#" class="back"><i class="icon icon_flecheGauche"></i> Retour aux chaînes</a>
       </div>
       <h2 class="title">Conférences de presse</h2>
-<!--      TODO TICKET-->
      <div class="small-container">
-        <div class="player"> 
+        <div class="player">
           <img src="img/webtv/playervideo.jpg" alt="">
         </div>
         <div class="infos-videos">
@@ -24,25 +23,28 @@
             <span class="time">18.05.2015  . 19h00</span>
             <p>Interview des réalisateurs des Courts Métrages en Compétition</p>
          </div>
-  <div class="buttons square">
-              <a href="#" class="button facebook"></a>
-              <a href="#" class="button twitter"></a>
-              <a href="#" class="button link"></a>
-              <a href="#" class="button email"></a>
+            <div class="buttons square">
+              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+              <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i></a>
+              <a href="#" class="button link"><i class="icon icon_link"></i>
+</a>
+              <a href="#" class="button email"><i class="icon icon_lettre"></i>
+</a>
             </div>
        </div>
      </div>
       <div id="content-channels">
-        <div id="slider-channels" class="owl-carousel sliderDrag">
+        <div id="slider-trailer" class="owl-carousel sliderDrag">
           <div class="channel shadow-bottom">
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Photocall</a>
+                    <span class="date">18.05.15</span>
                     <span>103 vidéos</span>
                   </div>
                 </div>
@@ -53,11 +55,12 @@
             <img src="img/slider-channels/02.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
+                    <span class="date">18.05.15</span>
                     <span>282 vidéos</span>
                   </div>
                 </div>
@@ -68,11 +71,12 @@
             <img src="img/slider-channels/03.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
+                    <span class="date">18.05.15</span>
                     <span>47 vidéos</span>
                   </div>
                 </div>
@@ -83,11 +87,12 @@
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Photocall</a>
+                    <span class="date">18.05.15</span>
                     <span>103 vidéos</span>
                   </div>
                 </div>
@@ -98,11 +103,12 @@
             <img src="img/slider-channels/02.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
+                    <span class="date">18.05.15</span>
                     <span>282 vidéos</span>
                   </div>
                 </div>
@@ -113,11 +119,12 @@
             <img src="img/slider-channels/03.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
+                    <span class="date">18.05.15</span>
                     <span>47 vidéos</span>
                   </div>
                 </div>
@@ -133,7 +140,7 @@
             <img src="http://dummyimage.com/463x291/000/fff" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -148,7 +155,7 @@
             <img src="http://dummyimage.com/463x291/000/fff" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">

@@ -1,4 +1,4 @@
-//       SUMMARY TABLE     
+//       SUMMARY TABLE
 // =========================
 // 1. Global
 // =========================
@@ -9,7 +9,7 @@
 
 .sitemap{
     h2{
-     padding: 60px; 
+     padding: 60px;
         font-size: 28px;
     }
     section{
@@ -30,20 +30,25 @@
             padding: 13px;
             vertical-align: top;
             text-align: center;
-            
+
             .title{
                 text-align: center;
                 padding-bottom: 30px;
                 border-bottom: 1px solid #e5e5e5;
                 font-weight: 300;
                 margin-bottom: 27px;
-            }  
-            
+            }
+
             a{
-                color: #c8a461;
+                color: $gold;
                 text-transform: uppercase;
                 font-size: 0.8rem;
                 font-family: $CamphorBold;
+                @include transition(all 0.9s $linear);
+
+                &:hover{
+                    color: #966505;
+                }
             }
             li{
                 padding-bottom: 20px;

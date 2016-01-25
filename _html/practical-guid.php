@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <?php include('head.html'); ?>  
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -11,7 +11,7 @@
     <div id="main" class="press loading practicalguide lock">
       <div class="header-press">
         <div class="head">
-          <span>Espace presse</span>
+          <span><i class="icon icon_espace-presse"></i>Espace presse</span>
         </div>
         <div class="container">
           <h2>Guide pratique</h2>
@@ -21,7 +21,7 @@
         <section class="container-pguide active">
          <div class="wrapper">
             <div class="contain-title-pg">
-              <h3 class="title-pguide "><span class="logo"><img src="img/press/svg/a-votre-service-grey.svg" alt="" class="svg"></span>À votre arrivée</h3><span class="plus"></span>
+              <h3 class="title-pguide "><span class="logo"><i class="icon icon_a-votre-service"></i></span>À votre arrivée</h3><i class="icon icon_moins accordion"></i>
             </div>
             <div class="contain-article">
               <div class="aside">
@@ -41,19 +41,19 @@ Le badge presse n'est pas cessible et doit être porté de façon visible.
         <section class="container-pguide">
          <div class="wrapper">
             <div class="contain-title-pg">
-              <h3 class="title-pguide"><span class="logo"><img src="img/press/svg/informations-grey.svg" alt="" class="svg"></span>Information</h3><span class="plus"></span>
+              <h3 class="title-pguide"><span class="logo"><i class="icon icon_informations"></i></span>Information</h3><i class="icon icon_case-plus accordion"></i>
             </div>
              <div class="contain-article">
               <div class="aside">
                 <img src="img/press/practical-guide/photo2.jpg" alt="">
                 <div class="container-infos">
                   <h5 class="container-title">Informations et tarifs</h5>
-                  <div class="infos">  
+                  <div class="infos">
                     <span class="date">Jusqu'au 31 mai :</span>
                     <strong class="name">Maïténa Chrétien : </strong><a href="mailto:mchretien@2p2l.com" class="addr">mchretien@2p2l.com</a>
                     <span class="num">+33(0)1 53 98 82 14 / +33 (0)7 86 72 98 12</span>
                   </div>
-                  <div class="infos">  
+                  <div class="infos">
                     <span class="date">A partir du 1er juin 2015 :</span>
                     <strong class="name">Muriel Sadoun : </strong><a href="mailto:muriel.sadoun@canal-plus.com" class="addr">muriel.sadoun@canal-plus.com</a>
                     <span class="num"> +33 (0) 1 71 35 28 29</span>
@@ -64,7 +64,7 @@ Le badge presse n'est pas cessible et doit être porté de façon visible.
                 <div class="container-infos">
                   <h5 class="container-title">Pour se procurer<br>
 des archives audiovisuelles</h5>
-                  <div class="infos">  
+                  <div class="infos">
                     <span class="date">Télévision du Festival de Cannes de 2001 à 2014<br>
 Cérémonies d'ouvertures et clôtures de 1993 à 2014</span>
                     <strong class="name">Muriel Sadoun : </strong><a href="mailto:muriel.sadoun@canal-plus.com" class="addr">muriel.sadoun@canal-plus.com</a>
@@ -82,7 +82,7 @@ Cérémonies d'ouvertures et clôtures de 1993 à 2014</span>
                 <p>Il donne les horaires des projections du jour et du lendemain. Il est distribué la veille au soir aux accès du Palais et aux points infos.</p>
                 <strong>La Télévision du Festival</strong>
                 <p>TV Festival de Cannes, coproduite par CANAL +, Orange et le Festival de Cannes, couvre les montées des marches, les conférences de presse, les photo-calls et les interviews ainsi que les événements officiels importants.<br><br>
- 
+
 Diffusée en français et en anglais dans le Palais et des hôtels de la Croisette, la chaîne sera retransmise en exclusivité sur la TV d’Orange, Canal 30 et Canal 32 des offres CANAL+, CANALSAT en OTT. Elle sera également accessible dans le monde entier en direct et en Replay,<br>
 sur <a href="http://www.youtube.com/user/TVFestivaldeCannes" class="media">YouTube</a> et  <a href="http://www.dailymotion.com/CannesFestTV" class="media">Dailymotion</a>, sur ordinateurs, smartphones et tablettes (iOS et Android) ainsi que sur le site officiel du Festival de Cannes.
  <br><br>
@@ -109,7 +109,8 @@ La rubrique Presse permet d'accéder aux informations pratiques et à divers té
         <section class="container-pguide">
          <div class="wrapper">
           <div class="contain-title-pg">
-            <h3 class="title-pguide"><span class="logo"><img src="img/press/svg/rendez-vous-des-medias-grey.svg" alt="" class="svg"></span>Rendez-vous des médias</h3><span class="plus"></span>
+            <h3 class="title-pguide"><span class="logo"><i class="icon icon_rendez-vous-des-medias"></i></span>Rendez-vous des médias</h3><i class="icon icon_case-plus accordion"></i>
+
           </div>
           <div class="contain-article">
               <div class="aside">
@@ -160,7 +161,7 @@ La tenue de soirée (smoking) est obligatoire pour toutes les séances du soir.
               <div class="texts">
                 <strong>Photo-calls</strong>
                 <p>
-                  Le photo-call, qui précède généralement la conférence de presse, permet aux photographes accrédités et munis d'une autorisation spéciale délivrée par le service de presse audiovisuelle de prendre des photos des réalisateurs et acteurs des films de la Sélection officielle. 
+                  Le photo-call, qui précède généralement la conférence de presse, permet aux photographes accrédités et munis d'une autorisation spéciale délivrée par le service de presse audiovisuelle de prendre des photos des réalisateurs et acteurs des films de la Sélection officielle.
 Seule TV Festival de Cannes est autorisée à filmer les photo-calls.
                 </p>
               </div>
@@ -170,47 +171,48 @@ Seule TV Festival de Cannes est autorisée à filmer les photo-calls.
         <section class="container-pguide">
           <div class="wrapper">
             <div class="contain-title-pg">
-             <h3 class="title-pguide"><span class="logo"><img src="img/press/svg/service-grey.svg" alt="" class="svg"></span>Services</h3><span class="plus"></span>
+             <h3 class="title-pguide"><span class="logo"><i class="icon icon_service"></i>
+</span>Services</h3><i class="icon icon_case-plus accordion"></i>
              </div>
              <div class="contain-article pictos-service">
                <div class="contain-service">
-                 <img src="img/press/svg/wifi-grey.svg" alt="">
+                 <i class="icon icon_wifi"></i>
                  <strong class="title-service">Espace wifi</strong>
                  <p>Cet espace met à la disposition de la presse une large gamme de services multimédia et une connexion Wifi gratuite et illimitée dans un espace convivial.</p>
                </div>
                <div class="contain-service">
-                 <img src="img/press/svg/assistance-photo-grey.svg" alt="">
+                 <i class="icon icon_enregistreur"></i>
                  <strong class="title-service">assistance photographie</strong>
-                 <p>Les journalistes et photographes disposent également d’un service allant du tirage des photographies à leur diffusion. Un personnel multilingue conseille et assiste les journalistes 
+                 <p>Les journalistes et photographes disposent également d’un service allant du tirage des photographies à leur diffusion. Un personnel multilingue conseille et assiste les journalistes
 et les photographes.</p>
                </div>
                <div class="contain-service">
-                 <img src="img/press/svg/salle-presse-grey.svg" alt="">
+                 <i class="icon icon_salle-presse"></i>
                  <strong class="title-service">Salle de Presse</strong>
                  <p>La salle de presse est équipée d’imprimantes et d'ordinateurs dotés du Pack Office et d’un accès Internet. Un personnel multilingue se tient à disposition pour conseiller et assister les journalistes.</p>
                </div>
                <div class="contain-service">
-                 <img src="img/press/svg/casier-grey.svg" alt="">
+                 <i class="icon icon_casier"></i>
                  <strong class="title-service">Casiers de Presse</strong>
                  <p>Près de 1800 casiers de presse sont situés dans la zone des bureaux de presse. Les journalistes bénéficiaires d'un casier de presse y trouveront toute une documentation en français ou en anglais.</p>
                </div>
                <div class="contain-service">
-                 <img src="img/press/svg/plateau-tv-grey.svg" alt="">
+                 <i class="icon icon_plateau-tv"></i>
                  <strong class="title-service">Plateaux TV</strong>
                  <p>Les renseignements seront donnés pendant la manifestation par le service de presse audiovisuelle.</p>
                </div>
                <div class="contain-service">
-                 <img src="img/press/svg/zone-media-grey.svg" alt="">
+                 <i class="icon icon_zone-media"></i>
                  <strong class="title-service">Zone Media</strong>
                  <p>Des locaux sont disponibles à la location dans le Palais. Accessibles jour et nuit ces bureaux sont équipés en mobilier, moquette et coffret électrique. Renseignements auprès du service de presse audiovisuelle.</p>
                </div>
                <div class="contain-service">
-                 <img src="img/press/svg/transport-grey.svg" alt="">
+                 <i class="icon icon_transport"></i>
                  <strong class="title-service">Transport</strong>
                  <p>Le Festival met en place un service de transport pour la presse accréditée entre l'aéroport de Nice et la ville de Cannes.</p>
                </div>
                <div class="contain-service">
-                 <img src="img/press/svg/divers-grey.svg" alt="">
+                 <i class="icon icon_divers"></i>
                  <strong class="title-service">Divers</strong>
                  <p>Pour les informations générales sur le Festival et la ville de Cannes, merci de consulter le guide de Festival ou le site de l'office du tourisme de Cannes.</p>
                </div>

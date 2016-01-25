@@ -135,7 +135,6 @@ trait TranslateMain
      * Set translate
      *
      * @param boolean $translate
-     * @return NewsTheme
      */
     public function setTranslate($translate)
     {
@@ -158,7 +157,6 @@ trait TranslateMain
      * Set priorityStatus
      *
      * @param integer $priorityStatus
-     * @return NewsTheme
      */
     public function setPriorityStatus($priorityStatus)
     {

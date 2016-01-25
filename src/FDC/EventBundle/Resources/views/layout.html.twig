@@ -22,11 +22,13 @@
 
     </head>
     <body>
+
+        {% block pre_home %}
+        {% endblock %}
+
         {% include 'FDCEventBundle::header.html.twig' %}
         {% block body %}
         {% endblock %}
-
-        {{ render(controller('FDCEventBundle:Global:breadcrumb')) }}
 
         {% include 'FDCEventBundle:Global:cookies.html.twig' %}
 

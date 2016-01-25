@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <?php include('head.html'); ?> 
+    <?php include('head.html'); ?>
   </head>
 
   <body>
@@ -14,7 +14,8 @@
           <div class="vCenterKid">
             <div class="textLive">
               <h2>Suivez<br />TV Festival de Cannes</h2>
-              <a href="#" class="play"></a>
+              <a href="#" class="play"><i class="icon icon_video"></i>
+</a>
             </div>
           </div>
         </div>
@@ -22,7 +23,7 @@
       </div>
       <div id="content-channels">
         <h2 class="title">Les chaines du festival</h2>
-        <p class="link"><a href="channels.php"><img src="img/svg/arrow-right-gold.svg" />Toutes les chaines</a></p>
+        <p class="link"><a href="channels.php"><i class="icon icon_fleche-right"></i>Toutes les chaines</a></p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
           <div class="vid shadow-bottom">
             <div class="image-wrapper">
@@ -30,12 +31,12 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a>
-                    <span>5 vidéos</span>
+                    <a href="#" class="category">bande annonce</a>
+                    <span>Rencontre avec l'équipe de Carol</span>
                   </div>
                 </div>
               </div>
@@ -47,12 +48,12 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a>
-                    <span>5 vidéos</span>
+                    <a href="#" class="category">bande annonce</a>
+                    <span>Rencontre avec l'équipe de Carol</span>
                   </div>
                 </div>
               </div>
@@ -64,12 +65,12 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a>
-                    <span>5 vidéos</span>
+                    <a href="#" class="category">bande annonce</a>
+                    <span>Rencontre avec l'équipe de Carol</span>
                   </div>
                 </div>
               </div>
@@ -81,12 +82,12 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a>
-                    <span>5 vidéos</span>
+                    <a href="#" class="category">bande annonce</a>
+                    <span>Rencontre avec l'équipe de Carol</span>
                   </div>
                 </div>
               </div>
@@ -100,7 +101,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -117,7 +118,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -134,7 +135,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -151,7 +152,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -168,7 +169,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -185,7 +186,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -200,7 +201,7 @@
       </div>
       <div id="content-trailers">
         <h2 class="title">Les bandes annonces et extraits</h2>
-        <p class="link"><a href="webtv_trailer_competition.php"><img src="img/svg/arrow-right-gold.svg" />Toutes les bandes annonces</a></p>
+        <p class="link"><a href="webtv_trailer_competition.php"><i class="icon icon_fleche-right"></i>Toutes les bandes annonces</a></p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
           <div class="vid shadow-bottom">
             <div class="image-wrapper">
@@ -208,12 +209,13 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i>
+</div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">5 vidéos</a>
+                    <a href="#" class="category">bande annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
                   </div>
                 </div>
               </div>
@@ -225,12 +227,13 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i>
+</div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">5 vidéos</a>
+                    <a href="#" class="category">bande annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
                   </div>
                 </div>
               </div>
@@ -242,12 +245,13 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i>
+</div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">5 vidéos</a>
+                    <a href="#" class="category">bande annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
                   </div>
                 </div>
               </div>
@@ -259,12 +263,13 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i>
+</div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Les plus vues</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">5 vidéos</a>
+                    <a href="#" class="category">bande annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
                   </div>
                 </div>
               </div>
@@ -281,7 +286,8 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i>
+</div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -298,7 +304,8 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"></div>
+              <div class="picto"><i class="icon icon_video"></i>
+</div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">

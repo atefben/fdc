@@ -1,0 +1,8 @@
+services:
+    security.acl.voter.user_permissions:
+        class: Base\AdminBundle\Security\Authorization\Voter\NewsAclVoter
+        public: false
+        arguments: [ @security.acl.provider, @security.acl.object_identity_retrieval_strategy, @security.acl.security_identity_retrieval_strategy, @security.acl.permission.map, @logger ]
+        tags:
+            - { name: monolog.logger, channel: security }
+            - { name: security.voter, priority: voter }

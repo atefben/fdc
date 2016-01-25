@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 <div class="prevmovie">
     <div class="img">
         <img src="{{ movies.prev.image.path }}" alt="" />
@@ -26,5 +28,5 @@
         </div>
     </div>
 </div>
-<a href="{{ path('fdc_event_movie_get', {'slug':  movies.prev.slug }) }}" class="nav prev ajax"></a>
-<a href="{{ path('fdc_event_movie_get', {'slug':  movies.next.slug }) }}" class="nav next ajax"></a>
+<a href="{{ path('fdc_event_movie_get', {'slug':  movies.prev.slug }) }}" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+<a href="{{ path('fdc_event_movie_get', {'slug':  movies.next.slug }) }}" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>

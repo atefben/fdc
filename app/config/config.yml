@@ -4,6 +4,7 @@ imports:
     - { resource: roles/security_all.yml }
     - { resource: roles/security_fdc.yml }
     - { resource: roles/security_soif.yml }
+    - { resource: roles/security_translation.yml }
     - { resource: services.yml }
     - { resource: bundles/a2lix_i18n_doctrine.yml }
     - { resource: bundles/a2lix_translation_form.yml }
@@ -59,11 +60,11 @@ twig:
             - 'InfiniteFormBundle::collection_theme.html.twig'
             - 'SonataCoreBundle:Form:datepicker.html.twig'
     globals:
-        locales_admin: "%locales_admin%"
         locales: "%locales%"
-        locales_front: "%locales_front%"
         locale_fallback: "%%locale_fallback%"
         locale_default_translation: "%locale_default_translation%"
+        fdc_app_android_download_url: "%fdc_app_android_download_url%"
+        fdc_app_ios_download_url: "%fdc_app_ios_download_url%"
         header_fdc: "%header_fdc%"
         header_cine: "%header_cine%"
         header_ccm: "%header_ccm%"
@@ -88,6 +89,7 @@ twig:
         jwplayer_key: "%jwplayer_key%"
         admin_routes_translation_legend: %admin_routes_translation_legend%
         admin_routes_translation_lock: %admin_routes_translation_lock%
+        admin_homepage_id: %admin_homepage_id%
 
 # Assetic Configuration
 assetic:

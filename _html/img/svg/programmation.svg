@@ -1,61 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.1"
-   id="Calque_1"
-   x="0px"
-   y="0px"
-   width="85.635px"
-   height="60px"
-   viewBox="0 0 85.635 60"
-   enable-background="new 0 0 85.635 60"
-   xml:space="preserve"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="programmation.svgz"><metadata
-   id="metadata35"><rdf:RDF><cc:Work
-       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-   id="defs33" /><sodipodi:namedview
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="640"
-   inkscape:window-height="480"
-   id="namedview31"
-   showgrid="false"
-   inkscape:zoom="3.9333333"
-   inkscape:cx="42.817501"
-   inkscape:cy="30"
-   inkscape:window-x="0"
-   inkscape:window-y="0"
-   inkscape:window-maximized="0"
-   inkscape:current-layer="Calque_1"  />
-<g
-   id="g21">
-	<path
-   d="M66,8V0h-5v8H24V0h-5v8h-5v52h57V8H66z M66,54H19V21h47V54z"
-   id="path23" fill="#cecece" />
-	<g
-   id="g25">
-		<path
-   d="M30.825,31.055h-0.068l-4.274,2.033l-0.862-3.93l5.962-2.757h4.308v22.402h-5.065V31.055z"
-   id="path27" fill="#cecece" />
-		<path
-   d="M59.327,26.401v3.31l-9.235,19.093h-5.55l9.236-18.025V30.71H43.508v-4.309H59.327z"
-   id="path29" fill="#cecece" />
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<g>
+	<path d="M89.2,13.3V0h-8.3v13.3H19.2V0h-8.3v13.3H2.5V100h95V13.3H89.2z M89.2,90H10.8V35h78.3L89.2,90L89.2,90z"/>
+	<g>
+		<path d="M30.5,51.8h-0.1l-7.1,3.4l-1.4-6.5l9.9-4.6H39v37.3h-8.4L30.5,51.8L30.5,51.8z"/>
+		<path d="M78,44v5.5L62.7,81.3h-9.2l15.4-30v-0.1H51.7V44H78z"/>
 	</g>
 </g>
 </svg>

@@ -89,10 +89,6 @@ base_soif:
     prefix:   /
 
 # fdc websites
-fdc_press:
-    resource: "@FDCPressBundle/Resources/config/routing.yml"
-    prefix:   /
-
 #fdc_corporate:
 #    resource: "@FDCCorporateBundle/Controller/"
 #    type:     annotation
@@ -102,3 +98,7 @@ fdc_press:
 fdc_event:
     resource: "@FDCEventBundle/Resources/config/routing.yml"
     prefix:   /
+
+fdc_press:
+    resource: "@FDCPressBundle/Resources/config/routing.yml"
+    prefix:   /press

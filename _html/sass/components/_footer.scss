@@ -170,50 +170,11 @@ footer {
             opacity: 0.5;
           }
 
-          &.appli {
-            background: url('../img/svg/appli.svg') center no-repeat;
-            background-size: 26px;
+          .icon{
+            color:#fff;
+            font-size: 1.1rem;
           }
 
-          &.facebook {
-            background: url('../img/svg/facebook.svg') center no-repeat;
-            background-size: 26px;
-          }
-
-          &.twitter {
-            background: url('../img/svg/twitter.svg') center no-repeat;
-            background-size: 22px;
-          }
-
-          &.instagram {
-            background: url('../img/svg/instagram.svg') center no-repeat;
-            background-size: 26px;
-          }
-
-          &.tumblr {
-            background: url('../img/svg/tumblr.svg') center no-repeat;
-            background-size: 26px;
-          }
-
-          &.rss {
-            background: url('../img/svg/rss.svg') center no-repeat;
-            background-size: 22px;
-          }
-
-          &.youtube {
-            background: url('../img/svg/youtube.svg') center no-repeat;
-            background-size: 24px;
-          }
-
-          &.dailymotion {
-            background: url('../img/svg/dailymotion.svg') center no-repeat;
-            background-size: 26px;
-          }
-
-          &.podcast {
-            background: url('../img/svg/podcast.svg') center no-repeat;
-            background-size: 26px;
-          }
         }
       }
     }
@@ -285,14 +246,56 @@ footer {
 
 #breadcrumb{
   border-bottom: 1px solid #2c2c2c;
+  position: relative;
+
+  &:after {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.3s $smoothTransition);
+  }
+
+  &:before {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 110%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: -2px;
+    visibility: hidden;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.9s $smoothTransition);
+  }
+
+  &.loading:before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.overlay:after {
+    opacity: 0.6;
+    visibility: visible;
+  }
+
   .container{
     width: 979px;
     margin: 0 auto;
     li{
       display: inline-block;
-      margin: 16px 0px; 
+      margin: 16px 0px;
     }
-    a, span{
+    a{
       color:#fff;
       font-size: 0.63rem;
       font-family: $CamphorBold;
@@ -300,11 +303,13 @@ footer {
       text-transform: uppercase;
       @include transition(all 0.9s $smoothTransition);
     }
-    span.active{
+    a.active{
       color:$gold;
     }
     .icon{
       color: $gold;
+      font-size: .6rem;
+      vertical-align: middle !important;
     }
     a:hover{
       color:$gold;
@@ -317,6 +322,10 @@ footer {
       text-transform: uppercase;
       float: right;
       margin: 20px 0px;
+      .icon{
+        margin-bottom: 4px;
+        margin-left: 5px;
+      }
     }
 
     .goTop:hover{

@@ -16,8 +16,10 @@
         data-facebook="//www.facebook.com"
         data-twitter="//www.twitter.com"
         data-link="//www.example.com"
-        data-email="//www.gmail.com">
-        <div id="v_<?php echo time();?>" class="video-player">
+        data-email="//www.gmail.com"
+        data-playlist="false"
+        data-live="false">
+        <div id="video-player" class="video-player v_<?php echo time();?>">
         </div>
         <div class="channels-video">
           <div class="slider-channels-video owl-carousel sliderDrag">
@@ -27,7 +29,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_playlist"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -45,7 +47,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_playlist"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -63,7 +65,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_playlist"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -81,7 +83,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_playlist"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -99,7 +101,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_playlist"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -115,7 +117,7 @@
         </div>
         <div class="video-overlay"></div>
         <div class="infos-bar">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -131,7 +133,7 @@
         data-twitter="//www.twitter.com"
         data-link="//www.example.com"
         data-email="//www.gmail.com">
-        <div id="v_<?php echo 1+time();?>" class="video-player2">
+        <div id="v_<?php echo 1+time();?>" class="video-player">
         </div>
         <div class="channels-video">
           <div class="slider-channels-video owl-carousel sliderDrag">
@@ -141,7 +143,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -159,7 +161,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -177,7 +179,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -195,7 +197,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -213,7 +215,7 @@
               </div>
               <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"></div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -229,7 +231,7 @@
         </div>
         <div class="video-overlay"></div>
         <div class="infos-bar">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">
@@ -250,7 +252,7 @@
         </div>
         <div class="video-overlay"></div>
         <div class="infos-bar">
-          <div class="picto"></div>
+          <div class="picto"><i class="icon icon_video"></i></div>
           <div class="info">
             <div class="vCenter">
               <div class="vCenterKid">

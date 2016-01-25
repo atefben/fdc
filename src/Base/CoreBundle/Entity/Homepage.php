@@ -49,7 +49,7 @@ class Homepage
      *
      * @ORM\OneToMany(targetEntity="Statement", mappedBy="homepage")
      */
-    private $sliderStatements;
+    private $sliderStatement;
 
     /**
      * @var WebTv
@@ -71,6 +71,27 @@ class Homepage
      * @ORM\Column(type="integer", nullable=true)
      **/
     private $topNewsType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $socialGraphHashtagTwitter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $socialWallHashtags;
+    
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
 
     /**
      * @var boolean
@@ -143,6 +164,8 @@ class Homepage
         $this->sliderNews = new ArrayCollection();
         $this->topVideos = new ArrayCollection();
         $this->topWebTvs = new ArrayCollection();
+        $this->hashtagTwitter = '';
+        $this->tagInstagram = '';
         $this->displayedPrefooters = false;
         $this->displayedPushsMain = false;
         $this->displayedPushsSecondary = false;
@@ -156,7 +179,7 @@ class Homepage
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -179,7 +202,7 @@ class Homepage
     /**
      * Get topNewsType
      *
-     * @return integer 
+     * @return integer
      */
     public function getTopNewsType()
     {
@@ -202,7 +225,7 @@ class Homepage
     /**
      * Get displayedSlider
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedSlider()
     {
@@ -225,7 +248,7 @@ class Homepage
     /**
      * Get displayedTopNews
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedTopNews()
     {
@@ -248,7 +271,7 @@ class Homepage
     /**
      * Get displayedSocialWall
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedSocialWall()
     {
@@ -271,7 +294,7 @@ class Homepage
     /**
      * Get displayedTopVideos
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedTopVideos()
     {
@@ -294,12 +317,59 @@ class Homepage
     /**
      * Get displayedTopWebTv
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedTopWebTv()
     {
         return $this->displayedTopWebTv;
     }
+
+    /**
+     * Get hashtagTwitter
+     *
+     * @return string
+     */
+    public function getHashtagTwitter()
+    {
+        return $this->hashtagTwitter;
+    }
+
+    /**
+     * Set hashtagTwitter
+     *
+     * @param string $hashtagTwitter
+     * @return Homepage
+     */
+    public function setHashtagTwitter($hashtagTwitter)
+    {
+        $this->hashtagTwitter = $hashtagTwitter;
+
+        return $this;
+    }
+
+    /**
+     * Get tagInstagram
+     *
+     * @return string
+     */
+    public function getTagInstagram()
+    {
+        return $this->tagInstagram;
+    }
+
+    /**
+     * Set tagInstagram
+     *
+     * @param string $tagInstagram
+     * @return Homepage
+     */
+    public function setTagInstagram($tagInstagram)
+    {
+        $this->tagInstagram = $tagInstagram;
+
+        return $this;
+    }
+
 
     /**
      * Set displayedPushsMain
@@ -317,7 +387,7 @@ class Homepage
     /**
      * Get displayedPushsMain
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPushsMain()
     {
@@ -340,7 +410,7 @@ class Homepage
     /**
      * Get displayedPushsSecondary
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPushsSecondary()
     {
@@ -363,7 +433,7 @@ class Homepage
     /**
      * Get displayedPrefooters
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPrefooters()
     {
@@ -397,7 +467,7 @@ class Homepage
     /**
      * Get sliderNews
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSliderNews()
     {
@@ -431,7 +501,7 @@ class Homepage
     /**
      * Get topVideos
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTopVideos()
     {
@@ -465,7 +535,7 @@ class Homepage
     /**
      * Get topWebTvs
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTopWebTvs()
     {
@@ -499,7 +569,7 @@ class Homepage
     /**
      * Get sliderInfos
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSliderInfos()
     {
@@ -507,36 +577,105 @@ class Homepage
     }
 
     /**
-     * Add sliderStatements
+     * Add sliderStatement
      *
-     * @param \Base\CoreBundle\Entity\Statement $sliderStatements
+     * @param \Base\CoreBundle\Entity\Statement $sliderStatement
      * @return Homepage
      */
-    public function addSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatements)
+    public function addSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatement)
     {
-        $sliderStatements->setHomepage($this);
-        $this->sliderStatements[] = $sliderStatements;
+        $sliderStatement->setHomepage($this);
+        $this->sliderStatement[] = $sliderStatement;
 
         return $this;
     }
 
     /**
-     * Remove sliderStatements
+     * Remove sliderStatement
      *
-     * @param \Base\CoreBundle\Entity\Statement $sliderStatements
+     * @param \Base\CoreBundle\Entity\Statement $sliderStatement
      */
-    public function removeSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatements)
+    public function removeSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatement)
     {
-        $this->sliderStatements->removeElement($sliderStatements);
+        $this->sliderStatement->removeElement($sliderStatement);
     }
 
     /**
      * Get sliderStatements
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSliderStatements()
+    public function getSliderStatement()
     {
-        return $this->sliderStatements;
+        return $this->sliderStatement;
+    }
+
+    /**
+     * Set socialGraphHashtagTwitter
+     *
+     * @param string $socialGraphHashtagTwitter
+     * @return Homepage
+     */
+    public function setSocialGraphHashtagTwitter($socialGraphHashtagTwitter)
+    {
+        $this->socialGraphHashtagTwitter = $socialGraphHashtagTwitter;
+
+        return $this;
+    }
+
+    /**
+     * Get socialGraphHashtagTwitter
+     *
+     * @return string 
+     */
+    public function getSocialGraphHashtagTwitter()
+    {
+        return $this->socialGraphHashtagTwitter;
+    }
+
+    /**
+     * Set socialWallHashtags
+     *
+     * @param string $socialWallHashtags
+     * @return Homepage
+     */
+    public function setSocialWallHashtags($socialWallHashtags)
+    {
+        $this->socialWallHashtags = $socialWallHashtags;
+
+        return $this;
+    }
+
+    /**
+     * Get socialWallHashtags
+     *
+     * @return string 
+     */
+    public function getSocialWallHashtags()
+    {
+        return $this->socialWallHashtags;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return Homepage
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }

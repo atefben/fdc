@@ -1,4 +1,4 @@
-<script> //todo dev//
+<script>
 var GLOBALS = {
   "locale" : "fr",
   "defaultDate" : "2016-05-12",
@@ -31,7 +31,8 @@ var GLOBALS = {
       "error" : "valide",
       "empty" : "renseignée",
       "valid" : "Votre email a bien été envoyé !",
-      "copy"  :  "lien copié ! "
+      "copy"  :  "lien copié ! ",
+      "acces" :  "les contenus qui vous sont réservés sont à présents accessibles."
     },
     "googleMap" : {
       "title" : "Festival de Cannes"
@@ -57,7 +58,20 @@ var GLOBALS = {
     "labelFormat": {
       "fr" : "H [H]",
       "default" : "h A"
+    },
+    "i18n": {
+      "months" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+      "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "weekdaysShort" : ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"],
+      "labelFormat": {
+        "fr" : "H\\hi",
+        "default" : "g:ia"
+      }
     }
+  },
+  "socialWall": {
+    "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
+    "heightGraph" : 200
   }
 }
 </script>
@@ -83,7 +97,10 @@ var GLOBALS = {
 <script src="js/components/jwplayer.js"></script>
 <script src="js/components/konsole.min.js"></script>
 <script src="js/components/clipboard.min.js"></script>
+<script src="js/components/pikaday.js"></script>
+<script src="js/components/jquery.timepicker.min.js"></script>
 <script src="js/components/jquery-ui.min.js"></script>
+<script src="js/bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 <!-- endbuild -->
 
 <!-- build:js js/app.min.js -->
@@ -128,3 +145,35 @@ var GLOBALS = {
 <!-- festival-cannes tags end -->
 <!-- endbuild -->
 <script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+<script>
+//POPIN facebook SHARE
+
+$.ajaxSetup({ cache: true });
+$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+  FB.init({
+    appId: '{1759803224251615}',
+    version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+  });
+  $('#loginbutton,#feedbutton').removeAttr('disabled');
+  FB.getLoginStatus(updateStatusCallback);
+});
+</script>

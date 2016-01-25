@@ -1,10 +1,10 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 <div class="bandeau-list push-footer vCenter">
     <div class="bandeau-list-img bandeau-list-footer vCenterKid" style="background-image:url({{ section.bottom_img }});">
         <h2 class="title title-list-header">{{ section.bottom_title }}</h2>
         <a href="{{ section.bottom_link }}" class="bandeau-lien">
-            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-            <img src="{{ asset_url }}" class="svg-arrow" alt="{{ 'palmares.btn.decouvrirrubrique'|trans }}" />
-            {% endimage %}
+            <i class="icon icon_fleche-right"></i>
             {{ 'palmares.btn.decouvrirrubrique'|trans }}
         </a>
     </div>

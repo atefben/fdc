@@ -170,7 +170,7 @@ $(document).ready(function() {
     // Render the path of hashtag graph
     if($('#graph').length) {
       if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
-        makePath(points);
+        makePath(GLOBALS.socialWall.points);
       }
     }
 
@@ -242,6 +242,12 @@ $(document).ready(function() {
       var hght = $header.hasClass('sticky') ? 91 : 230;
       $('#live .textLive').css('top', hght + ($('#live').height() - $('#live .textLive').height()) / 2);
       $('.webtv #live .img').css('top', '');
+
+      if(s > 50 && $('#live').hasClass('on')) {
+        $('#live').removeClass('on');
+        $('#live').height($('#live').data('height'));
+        $('#main').css('padding-top', 0);
+      }
     }
 
     // SINGLE MOVIE

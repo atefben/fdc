@@ -1,0 +1,46 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressBundle::layout.html.twig' %}
+
+{% block body %}
+
+<div id="main" class="press loading press-media lock">
+
+    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
+
+    <div class="container-mediapress">
+        <div class="nav-mediapress">
+
+            <div class="wrapper">
+                <h2>{{ 'mediatheque.title.choixdelaselection'|trans }}</h2>
+
+                <table>
+                    <tr>
+                        {% for key,mediaFilter in mediaSection.section %}
+                        <td data-cat="{{ mediaFilter.slug }}" class="{% if key == 0 %}active{% endif %}">{{ mediaFilter.title }}</td>
+                        {% if  loop.index % 3 == 0 %}
+                    </tr>
+                    <tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        {% for section in mediaSection.section %}
+            {% if section.slug == "long-metrage" %}
+                {% include 'FDCPressBundle:Media:components/content.html.twig' %}
+            {% endif %}
+        {% endfor %}
+
+        {{ render(controller('FDCPressBundle:Global:contact')) }}
+    </div>
+
+    {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
+
+    {% include 'FDCPressBundle:Global:components/popinDownload.html.twig' %}
+
+</div>
+
+{% endblock body %}

@@ -173,8 +173,6 @@
     }
 
     .picto {
-      background-image: url('../img/svg/video.svg');
-      background-size: 45px;
       height: 80px;
       top: 50%;
       left: 50%;
@@ -183,6 +181,12 @@
       width: 80px;
       z-index: 1;
       @include transition(background-color 0.5s $smoothTransition);
+
+      .icon{
+        font-size: 2rem;
+        margin-top: 24px;
+        margin-left: 26px;
+      }
 
       &:hover + img {
         @include transition(all 8s $linear);
@@ -304,12 +308,15 @@
     }
 
     @include breakpoint(1024px) {
-      top: 62px;
+      top: 57%;
       margin-top: 0;
     }
 
     &.black {
       border-color: #dfdfdf;
+      .icon{
+        color:#949494 !important;
+      }
     }
 
     &.hide {
@@ -318,62 +325,40 @@
     }
 
     &.prev {
-      background: url('../img/svg/arrow-left-white.svg') no-repeat center;
-      background-size: 15px;
+
       left: 2%;
 
-      &:after {
-        background: url('../img/svg/arrow-left-black.svg') no-repeat center;
-        background-size: 15px;
-      }
 
       &.trailer {
         background-color: transparent;
         left: -85px;
       }
-
-      &:hover, &.over, &.black {
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
+      .icon{
+        color: #000;
+        margin: 32px;
+        color: #fff;
       }
 
-      &.black.over, &.black:hover {
-        &:after {
-          opacity: 0;
-          visibility: hidden;
-        }
-      }
     }
 
     &.next {
-      background: url('../img/svg/arrow-right-white.svg') no-repeat center;
-      background-size: 15px;
+
       left: auto;
       right: 2%;
-
-      &:after {
-        background: url('../img/svg/arrow-right-black.svg') no-repeat center;
-        background-size: 15px;
-      }
-
-      &:hover, &.over, &.black {
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
 
       &.trailer {
         background-color: transparent;
         right: -85px;
       }
+      .icon{
+        color: #fff;
+        margin: 32px;
+      }
     }
   }
 
   .main-image {
-    background-color: $black;
+    background-color: $black; 
     height: 620px;
     left: 0;
     overflow: hidden;
@@ -464,19 +449,30 @@
         float: left;
         font-family: $CamphorBold;
         font-size: 0.6rem;
-        padding-left: 20px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         @include transition(all 0.8s $smoothTransition);
 
         &.movies {
-          background: url('../img/svg/arrow-left-white.svg') no-repeat left 20px;
-          background-size: 8px;
+          padding-left: 0px;
+
+          .icon{
+            font-size: .35rem;
+            margin-right: 13px;
+            vertical-align: middle !important;
+            margin-bottom: 1px;
+          }
         }
 
         &.programmation {
-          background: url('../img/svg/programmation-white.svg') left 18px no-repeat;
-          background-size: 13px;
+          padding-left: 0px;
+
+          .icon{
+            font-size: .6rem;
+            margin-right: 8px;
+            vertical-align: middle !important;
+            margin-bottom: 2px;
+          }
         }
 
         &:last-child {
@@ -548,6 +544,7 @@
 
     .buttons {
       float: right;
+      position: relative;
 
       a {
         border-top: none;
@@ -556,31 +553,14 @@
 
       a:hover {
         background-color: #fff;
+        color: $gold;
       }
 
-      a.facebook {
-        background: url('../img/svg/facebook-gold.svg') no-repeat center;
-        background-size: 19px;
-      }
-
-      a.twitter {
-        background: url('../img/svg/twitter-gold.svg') no-repeat center;
-        background-size: 16px;
-      }
-
-      a.email {
-        background: url('../img/svg/mail.svg') no-repeat center;
-        background-size: 16px;
-      }
-
-      a.link {
-        background: url('../img/svg/link.svg') no-repeat center;
-        background-size: 16px;
-      }
-
-      a.print {
-        background: url('../img/svg/print.svg') no-repeat center;
-        background-size: 16px;
+      .icon{
+        font-size: .8rem;
+        position: absolute;
+        top: 30px;
+        left: 30px;
       }
 
       #share-box{
@@ -601,6 +581,12 @@
         height: 80px;
         width: 80px;
         z-index: 3;
+
+        .icon{
+          font-size: 1.8rem;
+          margin-top: 25px;
+          margin-left: 27px;
+        }
       }
 
       .info {
@@ -662,8 +648,7 @@
         .info {
 
           .picto {
-            background-image: url('../img/svg/video.svg');
-            background-size: 22px;
+
           }
 
           .category {

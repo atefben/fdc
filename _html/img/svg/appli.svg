@@ -1,49 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.1"
-   id="Calque_1"
-   x="0px"
-   y="0px"
-   width="85.635px"
-   height="60px"
-   viewBox="0 0 85.635 60"
-   enable-background="new 0 0 85.635 60"
-   xml:space="preserve"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="appli.svgz"><metadata
-   id="metadata27"><rdf:RDF><cc:Work
-       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-   id="defs25" /><sodipodi:namedview
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="640"
-   inkscape:window-height="480"
-   id="namedview23"
-   showgrid="false"
-   inkscape:zoom="3.9333333"
-   inkscape:cx="42.817501"
-   inkscape:cy="30"
-   inkscape:window-x="0"
-   inkscape:window-y="0"
-   inkscape:window-maximized="0"
-   inkscape:current-layer="Calque_1" />
-<path
-   d="M27,0v60h33V0H27z M42.912,56.447c-1.318,0-2.391-1.071-2.391-2.393c0-1.319,1.072-2.392,2.391-2.392  c1.319,0,2.392,1.072,2.392,2.392C45.304,55.376,44.231,56.447,42.912,56.447z M56,49H31V4h25V49z"
-   id="path21" fill="#fff" />
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<path d="M22.5,0v100h55V0H22.5z M50,94.1c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4C54,92.3,52.2,94.1,50,94.1z M70.8,81.7H29.2v-75
+	h41.7L70.8,81.7L70.8,81.7z"/>
 </svg>

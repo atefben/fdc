@@ -1,10 +1,12 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 <div class="videos" data-section="videos">
     <div class="container">
         {% for video in videos %}
             {% if video.most_viewed %}
                 <div class="video-player video">
                     <div class="image" style="background-image: url({{ video.image.path }});"></div>
-                    <div class="picto"></div>
+                    <div class="picto"><i class="icon icon_video"></i></div>
                     <div class="info">
                         <div class="vCenter">
                             <div class="vCenterKid">
@@ -26,7 +28,7 @@
                 <img src="{{ video.image.path }}" alt="" />
                 <a class="linkVid" href="#"></a>
                 <div class="info">
-                    <div class="picto"></div>
+                    <div class="picto"><i class="icon icon_video"></i></div>
                     <div class="info-container">
                         <div class="vCenter">
                             <div class="vCenterKid">

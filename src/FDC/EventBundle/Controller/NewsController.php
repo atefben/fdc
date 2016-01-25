@@ -26,8 +26,40 @@ class NewsController extends Controller
     {
         $em = $this->get('doctrine')->getManager();
 
-        $timelineDates = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => 75),array('date' => 'ASC'),15,null);
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
 
+        // SocialGraph
+        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => $settings->getFestival()), array('date' => 'ASC'), 12, null);
+
+        $socialGraphTimeline      = array();
+        $socialGraphTimelineCount = array();
+        $socialGraph = array();
+
+        foreach ($timeline as $key => $timelineDate) {
+            $socialGraphTimeline[]['date']  = $timelineDate->getDate();
+            $socialGraphTimelineCount[]     = $timelineDate->getCount();
+        }
+
+        $socialGraph['timeline'] = $socialGraphTimeline;
+        $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
+
+        // Homepage
+        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array('festival' => $settings->getFestival()));
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+
+        //filters init
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
+        // TODO: clean this
         $homeSlider = array(
             array(
                 'id'=> 0,
@@ -54,111 +86,79 @@ class NewsController extends Controller
                 'title'=>'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »',
             ),
         );
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
+
         $home = array(
             'article' => array(
                 array(
-                    'id' => 0,
-                    'title' => 'Enragés, polar hybride d\'Eric Hannezo',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
+                    'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                    ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
                     'double' => true,
-                    'format' => 'article',
-                    'theme' => 'cinema',
-                    'category' => 'Cinéma de la plage',
-                    'createdAt' => new \DateTime(),
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                    ),
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'La Loi du Marché par Stéphane Brizé',
-                    'double' => false,
-                    'format' => 'audio',
-                    'theme' => 'press',
-                    'category' => 'Conférence de Presse',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/02.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
+                    'format' => 'video',
+                    'theme' => 'competition',
+                    'category' => 'competition',
+                    'double' => false,
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                    'double' => false,
-                    'format' => 'article',
-                    'theme' => 'cinema',
-                    'category' => 'Cinéma de la plage',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
+                    'format' => 'photo',
+                    'theme' => 'competition',
+                    'category' => 'competition',
+                    'double' => false,
                 ),
             ),
             'bottomArticle' => array(
                 array(
-                    'id' => 0,
-                    'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                    'double' => false,
-                    'format' => 'article',
-                    'theme' => 'cinema',
-                    'category' => 'Cinéma de la plage',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
-                ),
-                array(
-                    'id' => 0,
-                    'title' => 'La Loi du Marché par Stéphane Brizé',
-                    'double' => false,
                     'format' => 'audio',
-                    'theme' => 'press',
-                    'category' => 'Conférence de Presse',
-                    'createdAt' => new \DateTime(),
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
-                    ),
+                    'theme' => 'competition',
+                    'category' => 'competition',
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                    'double' => false,
-                    'format' => 'article',
-                    'theme' => 'cinema',
-                    'category' => 'Cinéma de la plage',
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
                     'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg',
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
+                ),
+                array(
+                    'title' => 'Stéphane Beizé interroge la loi du marché',
+                    'createdAt' => new \DateTime(),
+                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
+                    'image' => array(
+                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
+                    ),
+                    'format' => 'article',
+                    'theme' => 'competition',
+                    'category' => 'competition',
                 ),
             ),
             'widgets' => array(
@@ -226,9 +226,45 @@ class NewsController extends Controller
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         )
                     )
-                ),
+                )
             ),
-            'timeline' => $timelineDates
+        );
+
+        $featuredMovies = array(
+            'type' => 'fullVideo',
+            'video' => array(
+                array(
+                    'film' => array(
+                        'title' => 'Sils Maria',
+                        'theme' => 'Compétition',
+                        'author' => array(
+                            'fullName' => 'Olivier ASSAYAS',
+                            'slug' => 'olivier-assayas'
+                        )
+                    ),
+                    'source' => array(
+                        'm4v' => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                        'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
+                        'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
+                    )
+                ),
+                array(
+                    'film' => array(
+                        'title' => 'Sils Maria',
+                        'theme' => 'Compétition',
+                        'author' => array(
+                            'fullName' => 'Olivier ASSAYAS',
+                            'slug' => 'olivier-assayas'
+                        )
+                    ),
+                    'source' => array(
+                        'm4v' => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                        'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
+                        'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
+                    )
+                )
+
+            )
         );
         $homeCategories = array(
             array(
@@ -552,11 +588,15 @@ class NewsController extends Controller
         );
 
         return array(
+            'homepage' => $homepage,
+            'socialGraph' => $socialGraph,
+            // TODO: clean this
             'homeSlider' => $homeSlider,
             'homeArticles' => $home,
             'filters' => $filters,
             'videos' => $videos,
             'videoSlider' => $videoSlider,
+            'featuredMovies' => $featuredMovies,
             'homeCategories' => $homeCategories,
             'homeCategoriesFeatured' => $homeCategoriesFeatured,
             'wallPosts' => $wallPosts
@@ -598,111 +638,94 @@ class NewsController extends Controller
         }
 
         // SEO
-        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+       // $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+
+        //get associated film to the news
+        $associatedFilm = $news->getAssociatedFilm();
+        $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
+
+        //get film projection
+        $programmations = array();
+        foreach($associatedFilm->getProjectionProgrammationFilms() as $projection) {
+            $programmations[] = $projection->getProjection();
+        }
+
+        //get focus articles
+        $associatedNews = $news->getAssociatedNews();
+        $focusArticles = array();
+        foreach($associatedNews as $associatedNew) {
+            $focusArticles[] = $associatedNew->getAssociation();
+        }
+
+        //get day articles
+        $count = 3;
+        $newsDate = $news->getPublishedAt();
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')
+            ->getSameDayNews(
+                $settings->getFestival()->getId(),
+                $locale,
+                $newsDate,
+                $count,
+                $news->getId()
+            );
 
         return array(
+            'focusArticles' => $focusArticles,
+            'programmations' => $programmations,
+            'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $news,
-          //  'article' => $article
+            'associatedFilm' => $associatedFilm,
+            'sameDayArticles' => $sameDayArticles,
         );
     }
 
     /**
      * @Route("/articles")
+     *
      * @Template("FDCEventBundle:News/list:article.html.twig")
      */
     public function getArticlesAction()
     {
+        //$offset = 30;
+        $dateTime = new DateTime();
 
-        $articles = array(
-            array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
-                'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                ),
-            ),
-            array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
-                'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                ),
-            ),
-            array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
-                'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                ),
-            ),
-            array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
-                'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                ),
-            ),
-            array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
-                'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                ),
-            ),
-            array(
-                'id'    => 0,
-                'theme' => 'Cinéma de la plage',
-                'createdAt' => new \DateTime(),
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/01.jpg',
-                ),
-            )
-        );
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
 
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL NEWS ARTICLES
+        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale,$settings->getFestival()->getId(),$dateTime);
+
+        //set default filters
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
+        foreach($newsArticles as $key => $newsArticle) {
+            $newsArticle->image = $newsArticle->getHeader();
+            $newsArticle->theme = $newsArticle->getTheme();
+
+            //check if filters don't already exist
+            if(!in_array($newsArticle->getPublishedAt(),$filters['dates'])) {
+                $date = $newsArticle->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date : null;
+            }
+
+            if(!in_array($newsArticle->getTheme()->getName(),$filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $newsArticle->getTheme()->getName();
+                $filters['themes']['content'][] = $newsArticle->getTheme();
+            }
+
+        }
 
         return array(
-            'articles' => $articles,
+            'articles' => $newsArticles,
             'filters' => $filters,
         );
     }
@@ -713,106 +736,45 @@ class NewsController extends Controller
      */
     public function getPhotosAction()
     {
-        $photos = array(
-            array(
-                'format'    => 'portrait',
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'format'    => 'portrait',
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'format'    => 'portrait',
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'format'    => 'portrait',
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/640x404/000/fff.png',
-                    'large'    => 'http://dummyimage.com/1280x808/ddd/000.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            )
-        );
+        $dateTime = new DateTime();
 
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL PHOTOS ARTICLES
+        $newsPhotos = $em->getRepository('BaseCoreBundle:News')->getNewsPhotos($locale,$settings->getFestival()->getId(),$dateTime);
+
+        //set default filters
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
+        foreach($newsPhotos as $key => $newsPhoto) {
+            $newsPhoto->image = $newsPhoto->getHeader();
+            $newsPhoto->theme = $newsPhoto->getTheme();
+
+            //check if filters don't already exist
+            if(!in_array($newsPhoto->getPublishedAt(),$filters['dates'])) {
+                $date = $newsPhoto->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            }
+
+            if(!in_array($newsPhoto->getTheme()->getName(),$filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $newsPhoto->getTheme()->getName();
+                $filters['themes']['content'][] = $newsPhoto->getTheme();
+            }
+
+        }
 
         return array(
-            'photos' => $photos,
+            'photos' => $newsPhotos,
             'filters' => $filters,
         );
     }
@@ -823,57 +785,45 @@ class NewsController extends Controller
      */
     public function getVideosAction()
     {
-        $videos = array(
-            array(
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-        );
+        $dateTime = new DateTime();
 
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL VIDEOS ARTICLES
+        $newsVideos = $em->getRepository('BaseCoreBundle:News')->getNewsVideos($locale,$settings->getFestival()->getId(),$dateTime);
+
+        //set default filters
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
+        foreach($newsVideos as $key => $newsVideo) {
+            $newsVideo->image = $newsVideo->getHeader();
+            $newsVideo->theme = $newsVideo->getTheme();
+
+            //check if filters don't already exist
+            if(!in_array($newsVideo->getPublishedAt(),$filters['dates'])) {
+                $date = $newsVideo->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            }
+
+            if(!in_array($newsVideo->getTheme()->getName(),$filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $newsVideo->getTheme()->getName();
+                $filters['themes']['content'][] = $newsVideo->getTheme();
+            }
+
+        }
 
         return array(
-            'videos' => $videos,
+            'videos' => $newsVideos,
             'filters' => $filters,
         );
 
@@ -881,62 +831,49 @@ class NewsController extends Controller
 
     /**
      * @Route("/audios")
-     * @Template("FDCEventBundle:News:list-audio.html.twig")
+     * @Template("FDCEventBundle:News/list:audio.html.twig")
      */
     public function getAudiosAction()
     {
-        $audios = array(
-            array(
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'sound'=> 'audio.mp3',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-        );
+        $dateTime = new DateTime();
 
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL AUDIOS ARTICLES
+        $newsAudios = $em->getRepository('BaseCoreBundle:News')->getNewsAudios($locale,$settings->getFestival()->getId(),$dateTime);
+
+        //set default filters
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
+        foreach($newsAudios as $key => $newsAudio) {
+            $newsAudio->image = $newsAudio->getHeader();
+            $newsAudio->theme = $newsAudio->getTheme();
+
+            //check if filters don't already exist
+            if(!in_array($newsAudio->getPublishedAt(),$filters['dates'])) {
+                $date = $newsAudio->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            }
+
+            if(!in_array($newsAudio->getTheme()->getName(),$filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $newsAudio->getTheme()->getName();
+                $filters['themes']['content'][] = $newsAudio->getTheme();
+            }
+
+        }
 
         return array(
-            'audios' => $audios,
+            'audios' => $newsAudios,
             'filters' => $filters,
         );
     }

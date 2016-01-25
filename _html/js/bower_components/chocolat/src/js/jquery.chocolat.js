@@ -253,7 +253,7 @@
                     return that.load(requestedImage);
                 }
             }, 900);
-            
+
         },
 
         arrows: function() {
@@ -322,7 +322,7 @@
                     that.exitFullScreen();
                     return;
                 }
-                
+
                 var els = [
                     that.elems.overlay[0],
                     that.elems.loader[0],
@@ -397,7 +397,7 @@
 
             this.elems.top = $('<div/>', {
                 'class' : 'chocolat-top'
-            }).appendTo(this.elems.wrapper);
+            }).appendTo(this.elems.wrapper).html('<i class="icon icon_close chocolat-close"></i>');
 
             this.elems.left = $('<div/>', {
                 'class' : 'chocolat-left'
@@ -409,7 +409,7 @@
 
             this.elems.bottom = $('<div/>', {
                 'class' : 'chocolat-bottom'
-            }).appendTo(this.elems.wrapper);
+            }).appendTo(this.elems.wrapper).append('<i class="icon icon_diaporama"></i>');
 
             this.elems.fullscreen = $('<span/>', {
                 'class' : 'chocolat-fullscreen'
@@ -420,7 +420,7 @@
             }).appendTo(this.elems.bottom);
 
             this.elems.pagination = $('<span/>', {
-                'class' : 'chocolat-pagination'
+                'class' : 'chocolat-pagination',
             }).appendTo(this.elems.bottom);
 
             this.elems.setTitle = $('<span/>', {
@@ -627,6 +627,9 @@
         zoomIn : function (e) {
             this.settings.initialZoomState = this.settings.imageSize;
             this.settings.imageSize = 'native';
+            if($('body').hasClass('mob')){
+                $('.zoomCursor .icon').removeClass('icon_loupePlus').addClass('icon_loupeMoins');
+            }
 
             var event = $.Event('mousemove');
             event.pageX = e.pageX;
@@ -642,6 +645,9 @@
         zoomOut : function (e, duration) {
             if (this.settings.initialZoomState === null) {
                 return;
+            }
+            if($('body').hasClass('mob')) {
+                $('.zoomCursor .icon').removeClass('icon_loupeMoins').addClass('icon_loupePlus');
             }
             duration = duration || this.settings.duration;
 

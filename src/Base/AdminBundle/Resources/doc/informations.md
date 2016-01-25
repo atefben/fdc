@@ -6,6 +6,18 @@ A lock is applied every time a user access a translation.
 When a user tries to access an article, we check if a lock is active.
 We check the role of each user and if a role matches the translation our user tries to access, we prevent the access.
 
+## Homepage
+
+The homepage must be created manually in the database each year.
+Just insert a new element with valid created_at / updated_at.
+You must set in parameters.yml admin_homepage_id the identifier created.
+
+## Roles
+
+When you create new entities, roles you must do the following commands to refresh ACL :
+* php app/console sonata:admin:setup-acl
+* php app/console sonata:admin:generate-object-acl
+
 ## Translations
 
 We use the bundle A2lix Translations.

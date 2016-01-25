@@ -11,16 +11,16 @@
     <div id="main" class="single-article loading">
       <div class="content-article">
         <div class="container small-container">
-          <a href="article2.php" class="nav prev"></a>
-          <a href="article3.php" class="nav next"></a>
+          <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+          <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
           <div class="info">
-            <a href="#" class="category">Expositions</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
+            <a href="#" class="category">Expositions</a>
           </div>
           <h2 class="title-article">Enragés, polar hybride d'Eric Hannezo</h2>
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
-            <a href="#" class="button print">Imprimer</a>
+            <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
+            <a href="#" class="button print"><i class="icon icon_print"></i>
+  Imprimer</a>
           </div>
           <div class="single-photo">
             <div class="photo-container">
@@ -102,7 +102,7 @@
           </div>
           <div class="video-player video">
             <div class="image" style="background-image: url(img/article/004.jpg);"></div>
-            <div class="picto"></div>
+            <div class="picto"><i class="icon icon_video"></i></div>
             <div class="info">
               <div class="vCenter">
                 <div class="vCenterKid">
@@ -122,7 +122,7 @@
             <div class="off">
               <div class="vCenter">
                 <div class="vCenterKid">
-                  <div class="picto"></div>
+                  <div class="picto"><i class="icon icon_audio"></i></div>
                   <div class="info">
                     <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
                     <p>The Lobster de Yoros Lanthinos</p>
@@ -151,7 +151,7 @@
             <div class="off">
               <div class="vCenter">
                 <div class="vCenterKid">
-                  <div class="picto"></div>
+                  <div class="picto"><i class="icon icon_audio"></i></div>
                   <div class="info">
                     <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
                     <p>Test</p>
@@ -216,11 +216,12 @@
         <div class="share">
           <p>Partagez l'article</p>
           <div class="buttons square">
-            <a href="#" class="button facebook"></a>
-            <a href="#" class="button twitter"></a>
-            <a href="#" class="button link"></a>
-            <a href="#" class="button email"></a>
-            <a href="#" class="button print"></a>
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+            <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
+  </a>
+            <a href="#" class="button link"><i class="icon icon_link"></i></a>
+            <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+            <a href="#" class="button print"><i class="icon icon_print"></i></a>
           </div>
         </div>
         <div class="film">
@@ -278,10 +279,11 @@
               <article class="article" data-format="article" data-theme="competition">
                 <div class="image">
                   <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
+                    <img src="img/articles/03.jpg" alt="">
                   </div>
                   <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                  <span class="picto"><i class="icon icon_article"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -291,10 +293,11 @@
               <article class="video" data-format="video" data-theme="photocall">
                 <div class="image">
                   <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
+                    <img src="img/articles/03.jpg" alt="">
                   </div>
                   <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                  <span class="picto"><i class="icon icon_video"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -309,10 +312,12 @@
               <article class="article" data-format="article" data-theme="competition">
                 <div class="image">
                   <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
+                    <img src="img/articles/03.jpg" alt="">
                   </div>
                   <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                  <span class="picto"><i class="icon icon_article"></i>
+  </span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -322,10 +327,11 @@
               <article class="video" data-format="video" data-theme="photocall">
                 <div class="image">
                   <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
+                    <img src="img/articles/03.jpg" alt="">
                   </div>
                   <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                  <span class="picto"><i class="icon icon_video"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -335,10 +341,11 @@
               <article class="photo" data-format="photo" data-theme="photograph">
                 <div class="image">
                   <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
+                    <img src="img/articles/03.jpg" alt="">
                   </div>
                   <a href="article.php" class="linkImage"></a>
-                  <span class="picto"></span>
+                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                  <span class="picto"><i class="icon icon_photo"></i></span>
                 </div>
                 <div class="info">
                   <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>

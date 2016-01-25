@@ -11,6 +11,7 @@
                 <span class="select">
                     {% for key, date in filters.dates %}
                         <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ date.slug }}">{{ date.content }}</span>
+                        {% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
                     {% endfor %}
                 </span>
             </div>
@@ -19,6 +20,7 @@
                 <span class="select">
                   {% for key, theme in filters.themes %}
                       <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ theme.slug }}">{{ theme.content }}</span>
+                      {% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
                   {% endfor %}
                 </span>
             </div>
@@ -59,9 +61,7 @@
                 <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/push.jpg') }});">
                     <h2 class="title title-list-header">{{ 'event.title.retrospective'|trans }}</h2>
                     <a href="#" class="bandeau-lien">
-                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                        <img src="{{ asset_url }}" class="svg-arrow" alt="{{ 'event.btn.decouvrirlarubrique'|trans }}" />
-                        {% endimage %}
+                        <i class="icon icon_fleche-right"></i>
                         {{ 'event.btn.decouvrirlarubrique'|trans }}
                     </a>
                 </div>

@@ -1,0 +1,7 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<meta property="og:url"                content="{{ app.request.getUri }}" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="{{ news|trans_fallback('title') }}" />
+<meta property="og:description"        content="{{ news|trans_fallback('introduction')|slice(0, 30) }}..." />
+<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />

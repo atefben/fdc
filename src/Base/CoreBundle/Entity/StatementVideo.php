@@ -16,12 +16,11 @@ use JMS\Serializer\Annotation\Since;
  * StatementVideo
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
 class StatementVideo extends Statement
 {
-    use Time;
     use Translatable;
 
     /**

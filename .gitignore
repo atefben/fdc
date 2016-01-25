@@ -44,6 +44,7 @@
 # GruntJS Task
 _html/node_modules/
 node_modules/
+_html_mobile/node_modules
 
 #OS junk files
 # Exclude generated files
@@ -65,3 +66,7 @@ ehthumbs.db
 *.Trashes
 .psd
 .sass-cache
+
+#Mobile
+config.codekit
+.codekit-cache

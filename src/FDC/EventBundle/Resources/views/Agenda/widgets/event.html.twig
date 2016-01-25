@@ -5,7 +5,7 @@
      data-end="{{ event.endAt|date('Y-m-d') }}T{{ event.endAt|date('H:i:s') }}"
      data-time="{{ event.startAt|date('H') }}" data-duration="{{ event.duration }}">
 
-    <span class="category">{{ event.category.name }}</span>
+    <span class="category"><i class="icon icon_espace-{{ event.category.slug }}"></i>{{ event.category.name }}</span>
     <div class="info">
         <img src="{{ event.image.path }}" />
         <div class="txt">

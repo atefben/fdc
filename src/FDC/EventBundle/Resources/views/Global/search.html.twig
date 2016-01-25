@@ -1,4 +1,7 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 <form action="{{ path('fdc_event_global_search') }}" method="get" {{ form_enctype(searchForm) }}>
+    <i class="icon icon_recherche"></i>
     {{ form_widget(searchForm.search, { 'id': 'inputSearch', 'class': 'suggestSearch' }) }}
     <input id="submitSearch" type="submit" value="" />
     {{ form_rest(searchForm) }}

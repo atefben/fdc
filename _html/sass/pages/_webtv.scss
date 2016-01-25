@@ -83,8 +83,7 @@
       text-transform: uppercase;
     }
     .img {
-      background-position: center 30%;
-      background-repeat: no-repeat;
+      background: center 0 no-repeat fixed;
       background-size: cover;
       opacity: 0.5;
       position: absolute;
@@ -104,16 +103,19 @@
       @include transition(all 0.5s $smoothTransition);
     }
     .play {
-      background: url('../img/svg/video-white.svg') no-repeat center;
-      background-size: 20px;
       display: block;
       border: 1px solid rgba(255, 255, 255, 0.5);
       margin: 20px auto 0 auto;
-      height: 50px;
-      width: 50px;
+      height: 45px;
+      width: 45px;
       @include transition(all 0.9s $smoothTransition);
       &:hover {
         border-color: rgba(255, 255, 255, 1);
+      }
+      .icon{
+        color: #fff;
+        margin-top: 15px;
+        margin-left: 2px;
       }
     }
     &.on {
@@ -140,6 +142,12 @@
       @include transition(all .9s $smoothTransition);
       &:hover {
         opacity: 0.5;
+      }
+      .icon{
+        font-size: .5rem;
+        margin-bottom: 2px;
+        vertical-align: middle !important;
+        margin-right: 6px;
       }
     }
   }
@@ -199,6 +207,9 @@
     padding: 70px 0;
     position: relative;
     z-index: 2;
+    .icon_video{
+      font-size: 1.2rem;
+    }
     .title {
       margin-bottom: 45px;
     }
@@ -212,10 +223,6 @@
       }
       &.shadow-bottom:before {
         width: 100%;
-      }
-      .picto {
-        background-image: url('../img/svg/video.svg');
-        background-size: 22px;
       }
       .info {
         .titleLink {
@@ -263,15 +270,33 @@
   background-color: $black!important;
   padding-top: 15px;
   .back {
-    font-size: 9.6px;
-     background: url("../img/svg/arrow-left-white.svg") no-repeat left 3px;
-     background-size: 9px;
-     color: #fff;
-     display: block;
-     font-family: $CamphorHeavy;
-     font-size: 0.625rem;
-     margin: 0 0 65px 0;
-     text-transform: uppercase;
+    color: #fff;
+    display: block;
+    font-family: $CamphorHeavy;
+    font-size: 0.625rem;
+    margin: 0 0 65px 0;
+    text-transform: uppercase;
+    @include transition(all 0.3s $smoothTransition);
+
+    &:hover{
+      opacity: .5;
+    }
+
+    .icon{
+      font-size: .4rem;
+      vertical-align: middle !important;
+      margin-bottom: 2px;
+      margin-right: 10px;
+    }
+  }
+  #slider-trailer{
+    .info-container .vCenterKid{
+      .hour, .date{
+        color: #666;
+        display: inline-block;
+        font-size: 0.625rem;
+      }
+    }
   }
   .channel {
     &:after {
@@ -289,83 +314,74 @@
       z-index: 2;
       @include transition(all 0.3s $smoothTransition);
     }
-    .picto {
-      background-image: url('../img/svg/video.svg');
-      background-size: 22px;
-    }
   }
+
   .owl-item.center .channel:after {
     opacity: 1;
     visibility: visible;
   }
   .small-container{
-   margin: 0 auto;
-   width: 975px;
-   .player{
-     margin-top: 49px;
-   }
-   #content-channels{
-     padding-top: 26px;
-   }
-   .infos-videos{
-     padding-top: 18px;
-    position: relative;
-    .infos{
-       strong{
-         color:$gold;
-         font-size: 0.69rem;
-       text-transform: uppercase;
-         letter-spacing: .1em;
-         line-height: 18px;
-        font-family: $CamphorBold;
-       }
-       .time{
-         margin-left: 9px;
-         color:#666666;
-         font-size: 0.69rem;
-         text-transform: uppercase;
-         line-height: 24px;
-       }
-       p{
-         color: #fff;
-        font-size: 1.13rem;
-         line-height: 24px;
-       }
+     margin: 0 auto;
+     width: 975px;
+     .player{
+       margin-top: 49px;
      }
-   .square{
-      position: absolute;
-      z-index: 3;
-      top:-4px;
-      right: 1px;
-       a{
-        border-color: #2c2c2c;
-         border-top: none;
-       }
-       a.facebook {
-           background: url("../img/svg/facebook-gold.svg") no-repeat center;
-           background-size: 19px;
-       }
-       a.twitter {
-           background: url("../img/svg/twitter-gold.svg") no-repeat center;
-           background-size: 16px;
-       }
-        a.link {
-           background: url("../img/svg/link.svg") no-repeat center;
-           background-size: 16px;
-       }
-       a.email {
-           background: url("../img/svg/mail.svg") no-repeat center;
-           background-size: 16px;
-       }
-       a:hover{
-         border-color: $gold;
-
-       & + a {
-          border-left-color: $gold;
+     .infos-videos{
+       padding-top: 18px;
+      position: relative;
+      .infos{
+         strong{
+           color:$gold;
+           font-size: 0.69rem;
+         text-transform: uppercase;
+           letter-spacing: .1em;
+           line-height: 18px;
+          font-family: $CamphorBold;
+         }
+         .time{
+           margin-left: 9px;
+           color:#666666;
+           font-size: 0.69rem;
+           text-transform: uppercase;
+           line-height: 24px;
+         }
+         p{
+           color: #fff;
+          font-size: 1.13rem;
+           line-height: 24px;
          }
        }
+     .square{
+        position: absolute;
+        z-index: 3;
+        top:-4px;
+        right: 1px;
+        .icon{
+          font-size: .8rem;
+          position: absolute;
+          top: 30px;
+          left: 30px;
+          }
+         a{
+          border-color: #2c2c2c;
+          border-top: none;
+            &:hover{
+              background-color:  #141414;
+              color: $gold;
+              border-color: $gold;
+            }
+         }
+         a:hover + .button {
+              border-left-color: $gold;
+          }
+          a:last-child:hover{
+            border-right-color: $gold !important;
+          }
+       }
      }
-   }
+  }
+  #content-channels{
+    padding-top: 23px;
   }
 }
 
@@ -401,7 +417,7 @@
     width: 100%;
   }
   #live {
-    background-image: url(../img/webtv/bandeau.jpg);
+    background: center 0 no-repeat fixed;
     background-size: cover;
     h2 {
       font-family: $Playfair;
@@ -411,10 +427,15 @@
     }
     .play {
       border-radius: 50%;
-      margin-bottom: 10px;
-      border: 2px solid #fff;
+      margin-bottom: 18px;
+      border: 0px solid #fff;
       cursor: default;
-      background: url('../img/webtv/bandes_annonces_play.svg');
+      margin-top: 0px;
+      .icon{
+        color: #fff;
+        font-size: 3.1rem;
+        margin: 0px;
+      }
     }
 
   }
@@ -462,8 +483,6 @@
   }
   .listtrailer {
     .picto {
-      background-image: url("../img/svg/playlist.svg");
-      background-size: 16px 10px;
       bottom: auto;
       float: left;
       left: auto;
@@ -501,6 +520,41 @@
       vertical-align: middle;
     }
   }
+
+  //MEDIA BANDEAU
+    @media screen and (min-width: 1920px) {
+      #live{
+        height: 448px !important;
+      }
+    }
+
+    @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+      #live{
+        height: 373px !important;
+      }
+    }
+
+    @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+      #live{
+        height: 297px !important;
+      }
+    }
+
+    @media screen and (min-width: 1024px) and (max-width:1279px) {
+      #live{
+        height: 296px !important;
+      }
+    }
+
+    @media screen and (max-width:1023px) {
+      #live{
+        height: 296px !important;
+      }
+    }
+
+
 }
 
 // 5. Single trailer
@@ -515,11 +569,20 @@
       color: #fff;
       text-transform: uppercase;
       font-size: 9.6px;
-      background: url("../img/svg/arrow-left-white.svg") no-repeat left 3px;
-      background-size: 9px;
       font-family: "Camphor W01 Bold";
       letter-spacing: 0.1em;
-      padding-left: 20px;
+      @include transition(all .5s $smoothTransition);
+
+      .icon{
+        margin-right: 10px;
+        font-size: .45rem;
+        vertical-align: middle !important;
+        margin-bottom: 2px;
+      }
+
+      &:hover{
+        opacity: .5;
+      }
     }
     h1 {
       margin: 10px 0 0 0;
@@ -598,7 +661,6 @@
       padding-top: 73px;
       border-right: 1px solid #2c2c2c;
       border-bottom: 1px solid #2c2c2c;
-      padding-bottom: 7px;
     }
     .infos-film {
       text-align: center;
@@ -639,11 +701,15 @@
           font-family: $CamphorBold;
           font-size: 0.625rem;
           color: #666;
+          margin-bottom: 10px;
           .date {
             color: #bababa;
             margin-left: 5px;
+            .hour{
+              margin-left: 5px;
+              text-transform: none;
+            }
           }
-          padding-bottom: 12px;
         }
         .where {
           font-size: 16px;
@@ -686,33 +752,20 @@
         border-color: #2c2c2c;
         @include transition(all .5s $smoothTransition);
       }
-      a.facebook {
-        background: url('../img/svg/facebook-gold.svg') no-repeat center;
-        background-size: 19px;
-      }
-      a.twitter {
-        background: url('../img/svg/twitter-gold.svg') no-repeat center;
-        background-size: 16px;
-      }
-      a.email {
-        background: url('../img/svg/mail.svg') no-repeat center;
-        background-size: 16px;
-      }
-      a.link {
-        background: url('../img/svg/link.svg') no-repeat center;
-        background-size: 16px;
-      }
-      a.print {
-        background: url('../img/svg/print.svg') no-repeat center;
-        background-size: 16px;
-      }
-
       .button:hover{
         border-color: $gold;
+        background-color: #141414;
+        color: $gold;
       }
       .button:hover + .button{
         border-left: 1px solid $gold;
+      }
 
+      .icon{
+        font-size: .8rem;
+        position: absolute;
+        top: 30px;
+        left: 30px;
       }
     }
   }
@@ -721,10 +774,14 @@
     padding: 10px 0px 72px 0;
   }
   #content-trailers {
+    padding: 0px;
+
     #slider-trailer {
       .picto {
-        background-image: url("../img/svg/video.svg");
-        background-size: 22px;
+        .icon{
+          margin-top: 15px;
+          margin-left: 15px;
+        }
       }
       .info {
         span {
@@ -812,10 +869,17 @@
       text-transform: uppercase;
       font-size: 0.75rem;
       font-family: $CamphorHeavy;
-      .svg-arrow {
-          width: 12px;
-          vertical-align: baseline;
-          padding-right: 3px;
+      @include transition(all 1s $linear);
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      .icon{
+        font-size: .5rem;
+        margin-bottom: 2px;
+        vertical-align: middle !important;
+        margin-right: 6px;
       }
     }
   }

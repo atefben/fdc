@@ -11,16 +11,16 @@
     <div id="main" class="single-article single-evenement loading">
       <div class="content-article">
         <div class="container">
-          <a href="article2.php" class="nav prev"></a>
-          <a href="article3.php" class="nav next"></a>
+          <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+          <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
           <div class="info">
-            <a href="#" class="category">Leçon de cinéma</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
+            <a href="#" class="category">Expositions</a>
           </div>
           <h2 class="title-article">Marco Bellocchio</h2>
           <div class="buttons">
-            <a id="share-article" href="#" class="button">Partager</a>
-            <a href="#" class="button print">Imprimer</a>
+            <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
+            <a href="#" class="button print"><i class="icon icon_print"></i>
+  Imprimer</a>
           </div>
           <div class="single-photo">
             <div class="photo-container">
@@ -118,7 +118,7 @@
             <div class="off">
               <div class="vCenter">
                 <div class="vCenterKid">
-                  <div class="picto"></div>
+                  <div class="picto"><i class="icon icon_audio"></i></div>
                   <div class="info">
                     <a href="#" class="category">Leçon de cinéma</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
                     <p>Marco Bellocchio</p>
@@ -224,11 +224,12 @@
         <div class="share">
           <p>Partagez l'article</p>
           <div class="buttons square">
-            <a href="#" class="button facebook"></a>
-            <a href="#" class="button twitter"></a>
-            <a href="#" class="button link"></a>
-            <a href="#" class="button email"></a>
-            <a href="#" class="button print"></a>
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+            <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
+  </a>
+            <a href="#" class="button link"><i class="icon icon_link"></i></a>
+            <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+            <a href="#" class="button print"><i class="icon icon_print"></i></a>
           </div>
         </div>
       </div>
