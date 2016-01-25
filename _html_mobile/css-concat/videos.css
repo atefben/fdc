@@ -2027,7 +2027,7 @@ article .picto .icon{
     text-align: center;
 
 }
-.all-photos .container .title{
+.all-photos .container .title, .all-videos .container .title{
   
   margin: 70px 0 40px 0;
 }
@@ -3277,10 +3277,10 @@ font-weight: 700;
     letter-spacing: 0.05em;
     margin-right: 12px;
     text-transform: uppercase;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     margin-top: 5px;
-    padding-bottom: 5px;
-    font-weight: 600;
+    padding-bottom: 3px;
+    font-weight: 700;
 }
 
 .item .infos p{

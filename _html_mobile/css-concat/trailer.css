@@ -5672,7 +5672,7 @@ article .picto .icon{
     text-align: center;
 
 }
-.all-photos .container .title{
+.all-photos .container .title, .all-videos .container .title{
   
   margin: 70px 0 40px 0;
 }
