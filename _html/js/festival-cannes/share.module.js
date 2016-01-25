@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-//setup twitter
+  //setup twitter
+
   window.twttr = (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
@@ -22,8 +23,9 @@ $(document).ready(function () {
     window.open(this.href,'','width=600,height=400');
     return false;
   });
-//POPIN facebook SHARE
 
+
+  //POPIN facebook SHARE
 
   $.ajaxSetup({ cache: true });
   $.getScript('//connect.facebook.net/en_US/sdk.js', function(){

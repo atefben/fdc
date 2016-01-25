@@ -58,16 +58,25 @@ $(document).ready(function() {
         var s = $(window).scrollTop();
         var h = $("#main").height()-900;
         var footer = $('footer').offset().top - 750;
+
+        var position = s+114;
+
         if($('header').hasClass('sticky')){
           if(s < h && s > 30) {
-            $(".faq-menu").css({position: "fixed", top: 389});
+            $(".faq-menu").css({position: "absolute", top: position});
           } else if(s > footer - 200 ){
             $(".faq-menu").css({position: "absolute",top: footer});
           } else if (s<30){
-            $(".faq-menu").css({position: "fixed", top: 389});
+            $(".faq-menu").css({position: "absolute", top: 163});
           }
+        }else{
+            $(".faq-menu").css({position: "absolute", top: 163});
         }
     });
+
+    if(!$('header').hasClass('sticky')){
+      $(".faq-menu").css({position: "absolute", top: 163});
+    }
 
   }
 });

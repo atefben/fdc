@@ -276,7 +276,7 @@ $(document).ready(function () {
           } else if (c == "#a68851") {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else if (c == "#fff") {
-            $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_evt-personnel"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_evt-personnel"></i>' + event.title + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
           } else {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           }
@@ -377,7 +377,7 @@ $(document).ready(function () {
           } else if (c == "#a68851") {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else if (c == "#fff") {
-            $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_evt-personnel"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
+            $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_evt-personnel"></i>' + event.title + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
           } else {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           }
@@ -1106,7 +1106,7 @@ $(document).ready(function () {
            hour1 = data.hoursbegin;
            hour1 = hour1.replace('h',':');
 
-           date1 = date1+"T"+hour1+":00";
+           date1 = date1+"T"+hour1;
 
 
            date2 = data.dateend;
@@ -1115,11 +1115,17 @@ $(document).ready(function () {
            hour2 = data.hoursend;
            hour2 = hour2.replace('h',':');
 
-           date2 = date2+"T"+hour2+":00";
+           date2 = date2+"T"+hour2;
 
 
            var dateBegin = new Date(date1);
            var dateEnd = new Date(date2);
+
+           console.log("date1   : "+date1);
+           console.log("hours :"+dateBegin.getHours());
+           console.log("dateBegin :"+dateBegin);
+
+           console.log(dateEnd);
 
            //Création de l'évènement et affichage sur le calendrier
            var myEvent = {
