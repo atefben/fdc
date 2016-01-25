@@ -35,6 +35,7 @@ a{
 .info-film .categories span{
 	position: relative;
 	margin-right: 20px;
+	font-size: 20px;
 }
 .info-film .categories span:last-child:after{
 	display: none;
@@ -67,6 +68,7 @@ a{
 .info-film p{
 
 	font-size: 20px;
+	letter-spacing: -1px;
 	/*font-size: 1.5rem;*/
 	margin-bottom: 20px;
 }
@@ -106,9 +108,11 @@ a{
 
 .pictos-nav{
 
+	/*position: fixed;*/
 	position: fixed;
 	width: 560px;
 	left:40px;
+	bottom: 160px;
 	z-index: 99;
 }
 .pictos-nav div{
@@ -164,7 +168,7 @@ a{
 .owl-stage-outer{
 
 	width: 640px;
-	margin-left: -31px;
+	margin-left: -32px;
 }
 .video{
 	position: relative;
@@ -174,7 +178,6 @@ a{
 }
 .slideshow .video .info .titleLink{
 
-	/*font-size: 1.5rem;*/
 	font-size: 23px;
 	max-width: 445px;
 }
@@ -268,10 +271,12 @@ a{
 	display: table;
 }
 
+
+
 /*SECTION PRESS*/
 
 .title-section i{
-	margin-left: 90px;
+	right: 115px;
 	position: absolute;
 	font-size: 22px;
 }
@@ -310,11 +315,16 @@ a{
 	margin: 0 auto;
 	border-top:1px solid #252525;
 }
+.press .vCenter{
+
+	width: 326px;
+    vertical-align: middle;
+    display: table-cell;
+    height: 305px;
+}
 .press .press-folder{
 
 	height: 305px;
-	display: flex;
-    align-items: center;
 }
 .press .press-folder .img-container{
 
@@ -337,17 +347,18 @@ a{
 	text-transform: uppercase;
 	width: 325px;
 	font-weight: 600;
+	float: left;
 
 }
 .press .folder-links h3{
 	
 	color:#fff;
 	letter-spacing: 2px;
-	padding: 30px 0 30px 0;
+	padding: 30px 0 15px 0;
 }
 .press .folder-links a{
 
-	line-height: 62px;
+	line-height: 57px;
 	display: block;
 }
 .press .links, .press .buttons{
@@ -362,10 +373,13 @@ a{
 	text-align: center;
 	font-weight: 600;
 }
+.press .links{
+	text-align: center;
+}
 .press .links div{
-	display: flex;
+	display: inline-block;
     margin-top: 45px;
-    justify-content: space-around;
+
 }
 
 .press .links a{
@@ -416,6 +430,9 @@ a{
     -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    margin:0;
+    width: 556px;
+    margin: 0 auto;
 }
 .open .contact-content{
 
@@ -423,11 +440,12 @@ a{
 }
 .contact p:not(.sub){
 
-	font-size: 15px;
+	font-size: 22px;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 	color: #999999;
+	letter-spacing: -1px;
 }
-.contact div{
+.contact div:not(.contact-content){
 
 	width: 556px;
 	margin: 0 auto 35px auto;
@@ -437,6 +455,53 @@ a{
 	border-bottom: 1px solid #383838;
 	padding-bottom: 35px;
 }
+
+/*SECTION COMPETITION*/
+.competition{
+	padding: 0;
+}
+.competition h3{
+	font-family: "Playfair Display Bold", Times New Roman, Times, serif;
+	font-size: 24px;
+	letter-spacing: 5px;
+	text-align: center;
+	padding: 55px 0;
+	margin: 0;
+}
+.competition .owl-item{
+
+	width: 280px;
+	height: 530px;
+}
+.competition .img-container{
+
+	width: 280px;
+	height: 380px;
+	background-position: center center;
+  	background-size: cover;
+}
+.competition .info{
+	margin-top: 35px;
+	text-align: center;
+}
+.competition .info p{
+	text-transform: uppercase;
+	color: #000;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+.competition .info a{
+
+	font-size: 22px;
+	font-style: italic;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.competition .owl-stage-outer{
+	margin-left: 0;
+}
+
 
 
 

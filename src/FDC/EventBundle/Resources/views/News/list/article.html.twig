@@ -12,7 +12,7 @@
         <div class="grid-sizer"></div>
 
         {% for article in articles %}
-            <div class="item theme2 date2 article">
+            <div class="item {{ article.theme|trans_fallback('name') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} article">
                 <article class="article">
                     <div class="img">
                         <span class="picto">
@@ -43,5 +43,23 @@
     </div>
     <a id="next" href="articles2.html"></a>
 </div>
+
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.articles'|trans ,
+        "url"  : path('fdc_event_news_getarticles')
+    },
+]
+} %}
+
 {% endblock %}
+
+
 

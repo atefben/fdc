@@ -57,24 +57,6 @@ class MediaVideo extends Media
     private $webTv;
 
     /**
-     * @var NewsTheme
-     *
-     * @ORM\ManyToOne(targetEntity="NewsTheme")
-     *
-     * @Groups({"trailer_list", "trailer_show"})
-     */
-    private $theme;
-
-    /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
-     *
-     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
-     */
-    private $image;
-
-    /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="mediaVideos")
@@ -85,27 +67,74 @@ class MediaVideo extends Media
      */
     private $festival;
 
+
     /**
-     * Set theme
+     * Set displayedWebTv
      *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @param boolean $displayedWebTv
      * @return MediaVideo
      */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    public function setDisplayedWebTv($displayedWebTv)
     {
-        $this->theme = $theme;
+        $this->displayedWebTv = $displayedWebTv;
 
         return $this;
     }
 
     /**
-     * Get theme
+     * Get displayedWebTv
      *
-     * @return \Base\CoreBundle\Entity\NewsTheme 
+     * @return boolean 
      */
-    public function getTheme()
+    public function getDisplayedWebTv()
     {
-        return $this->theme;
+        return $this->displayedWebTv;
+    }
+
+    /**
+     * Set displayedTrailer
+     *
+     * @param boolean $displayedTrailer
+     * @return MediaVideo
+     */
+    public function setDisplayedTrailer($displayedTrailer)
+    {
+        $this->displayedTrailer = $displayedTrailer;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedTrailer
+     *
+     * @return boolean 
+     */
+    public function getDisplayedTrailer()
+    {
+        return $this->displayedTrailer;
+    }
+
+    /**
+     * Set homepage
+     *
+     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @return MediaVideo
+     */
+    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return \Base\CoreBundle\Entity\Homepage 
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
     }
 
     /**
@@ -155,35 +184,12 @@ class MediaVideo extends Media
     }
 
     /**
-     * Set image
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $image
-     * @return MediaVideo
-     */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Set festival
      *
      * @param \Base\CoreBundle\Entity\FilmFestival $festival
      * @return MediaVideo
      */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival)
     {
         $this->festival = $festival;
 
@@ -198,28 +204,5 @@ class MediaVideo extends Media
     public function getFestival()
     {
         return $this->festival;
-    }
-
-    /**
-     * Set homepage
-     *
-     * @param \Base\CoreBundle\Entity\Homepage $homepage
-     * @return MediaVideo
-     */
-    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
-    {
-        $this->homepage = $homepage;
-
-        return $this;
-    }
-
-    /**
-     * Get homepage
-     *
-     * @return \Base\CoreBundle\Entity\Homepage 
-     */
-    public function getHomepage()
-    {
-        return $this->homepage;
     }
 }

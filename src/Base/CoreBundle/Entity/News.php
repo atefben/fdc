@@ -4,7 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use \DateTime;
 
-use Base\CoreBundle\Util\Seo;
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -31,7 +31,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 abstract class News implements TranslateMainInterface
 {
     use Time;
-    use Seo;
+    use SeoMain;
     use TranslateMain;
     
     /**
@@ -46,9 +46,9 @@ abstract class News implements TranslateMainInterface
     private $id;
 
      /**
-      * @var NewsTheme
+      * @var Theme
       *
-      * @ORM\ManyToOne(targetEntity="NewsTheme")
+      * @ORM\ManyToOne(targetEntity="Theme")
       *
       * @Groups({"news_list", "news_show"})
       * @Assert\NotNull()
@@ -283,10 +283,10 @@ abstract class News implements TranslateMainInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\NewsTheme $theme
+     * @param \Base\CoreBundle\Entity\Theme $theme
      * @return News
      */
-    public function setTheme(\Base\CoreBundle\Entity\NewsTheme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
         $this->theme = $theme;
 
@@ -604,7 +604,7 @@ abstract class News implements TranslateMainInterface
     /**
      * Get associatedNews
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Base\CoreBundle\Entity\NewsNewsAssociated
      */
     public function getAssociatedNews()
     {

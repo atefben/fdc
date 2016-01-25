@@ -1,0 +1,15 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+<div>
+    {% if object is statement_article %}
+        article
+    {% elseif object is statement_audio %}
+        audio
+    {% elseif object is statement_video %}
+        video
+    {% elseif object is statement_image %}
+        image
+    {% endif %}
+</div>
+{% endblock %}

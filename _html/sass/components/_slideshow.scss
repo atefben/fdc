@@ -153,7 +153,7 @@
       &:after {
         background-size: 25px;
         border: 1px solid rgba(255, 255, 255, .35);
-        content: "\f149";
+        content: "\f14a";
         display: block;
         height: 80px;
         left: 50%;
@@ -343,8 +343,7 @@ div.chocolat-wrapper {
 
       a .icon{
         font-size: 1rem;
-        position: relative;
-        top:18px;
+        line-height: 75px;
       }
     }
 
@@ -383,10 +382,12 @@ div.chocolat-wrapper {
     .icon_diaporama{
       font-size: 2rem;
       color: white;
-      position: absolute;
-      left: 38px;
-      top: 22px;
+      position: relative;
       z-index: 100;
+      float: left;
+      line-height: 85px;
+      margin-left: 38px;
+      margin-right: -38px;
     }
     .chocolat-pagination {
       border-right: 1px solid rgba(255, 255, 255, 0.4);
@@ -485,13 +486,12 @@ div.chocolat-wrapper {
     z-index: 20;
     right: 202px;
     position: absolute;
+    text-align: center;
 
     .icon {
+      line-height: 100px;
       color:#fff;
-      top: 42px;
-      left: 39px;
       font-size: 1.1rem;
-      position: absolute;
       @include transition(opacity 0.9s $linear);
       @include transform(translateZ(0));
       cursor: pointer;
@@ -515,10 +515,10 @@ div.chocolat-wrapper {
     height: 100px;
     margin-top: 0;
     z-index: 20;
+    text-align: center;
 
     .icon{
-      margin-right: 43px;
-      margin-top: 43px;
+        line-height: 100px;
     }
   }
 
@@ -532,10 +532,10 @@ div.chocolat-wrapper {
     height: 100px;
     margin-top: 0;
     z-index: 20;
+    text-align: center;
 
     .icon{
-      margin-right: 43px;
-      margin-top: 43px;
+      line-height: 100px;
     }
   }
 
@@ -603,10 +603,15 @@ div.chocolat-wrapper {
     position: absolute;
     z-index: 50;
     border: 1px solid $gold;
+    text-align: center;
     @include transition(opacity 0.3s $smoothTransition);
 
     &.hide {
       opacity: 0;
+    }
+    .icon{
+      color: $gold;
+      line-height: 80px;
     }
   }
 
@@ -686,6 +691,11 @@ div.chocolat-wrapper {
           height: 60px;
           width: 60px;
 
+          .icon{
+            top: auto;
+            line-height: 60px;
+          }
+
           &:last-child {
             width: 59px;
           }
@@ -713,5 +723,28 @@ div.chocolat-wrapper {
     strong{
      font-family: $CamphorBold !important;
     }
+  }
+}
+
+
+@include breakpoint(1600px){
+
+  div.chocolat-wrapper{
+
+    .chocolat-right .icon, .chocolat-left .icon, .share .icon{
+      line-height: 80px;
+    }
+
+    .chocolat-bottom .icon_diaporama{
+      font-size: 2rem;
+      color: white;
+      position: relative;
+      z-index: 100;
+      float: left;
+      line-height: 65px;
+      margin-left: 28px;
+      margin-right: -51px;
+    }
+
   }
 }

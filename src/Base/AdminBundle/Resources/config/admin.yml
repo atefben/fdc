@@ -41,6 +41,14 @@ services:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.social_wall, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+            
+    base.admin.theme:
+        class: Base\AdminBundle\Admin\ThemeAdmin
+        arguments: [~, Base\CoreBundle\Entity\Theme, BaseAdminBundle:ThemeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
 
     # GROUP EVENT
     base.admin.event:
@@ -84,14 +92,6 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.statement_theme:
-        class: Base\AdminBundle\Admin\StatementThemeAdmin
-        arguments: [~, Base\CoreBundle\Entity\StatementTheme, BaseAdminBundle:StatementThemeAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.statement, label: entity.statement_theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-            - [ setTranslationDomain, ['BaseAdminBundle']]
-
     #GROUP NEWS
     base.admin.news_article:
         class: Base\AdminBundle\Admin\NewsArticleAdmin
@@ -122,14 +122,6 @@ services:
         arguments: [~, Base\CoreBundle\Entity\NewsAudio, BaseAdminBundle:NewsAudioAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.news, label: entity.news_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
-
-    base.admin.news_theme:
-        class: Base\AdminBundle\Admin\NewsThemeAdmin
-        arguments: [~, Base\CoreBundle\Entity\NewsTheme, BaseAdminBundle:NewsThemeAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.news, label: entity.news_theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -202,6 +194,16 @@ services:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #HIDDEN
+
+    base.admin.event_widget_image_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetImageDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetImage, BaseAdminBundle:EventWidgetImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Event Widget Image, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
     base.admin.news_widget_image_dummy:
         class: Base\AdminBundle\Admin\NewsWidgetImageDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\NewsWidgetImage, BaseAdminBundle:NewsWidgetImageDummyAdmin]
@@ -299,12 +301,20 @@ services:
 
     #STATEMENT
     base.admin.statement_widget_image_dummy:
-            class: Base\AdminBundle\Admin\NewsWidgetImageDummyAdmin
-            arguments: [~, Base\CoreBundle\Entity\NewsWidgetImage, BaseAdminBundle:NewsWidgetImageDummyAdmin]
-            tags:
-                - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
-            calls:
-                 - [ setTranslationDomain, ['BaseAdminBundle']]
+        class: Base\AdminBundle\Admin\StatementWidgetImageDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementWidgetImage, BaseAdminBundle:StatementWidgetImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+                 
+    base.admin.statement_widget_audio_dummy:
+        class: Base\AdminBundle\Admin\StatementWidgetAudioDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementWidgetAudio, BaseAdminBundle:StatementWidgetAudioDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Audio, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.statement:
         class: Base\AdminBundle\Admin\StatementAdmin
@@ -345,3 +355,9 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: StatementFilmFilmAssociated, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_film_projection_associated:
+        class: Base\AdminBundle\Admin\EventFilmProjectionAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventFilmProjectionAssociated, BaseAdminBundle:EventFilmProjectionAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventFilmProjectionAssociated, show_in_dashboard: false}

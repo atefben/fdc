@@ -25,7 +25,7 @@ $(document).ready(function() {
   }
 
   setTimeout(function() {
-    $('#main, footer').removeClass('loading');
+    $('#main, footer, #breadcrumb, .sub-nav-list').removeClass('loading');
     cl.hide();
 
     $('#logo-wrapper, #logo img, #sticky-user, header #search, a.search').css('transition', '');
@@ -35,7 +35,7 @@ $(document).ready(function() {
   $('body').on('click', "a[target!='_blank']:not(.ajax)", function(e) {
     var href = $(this).attr('href');
     var isiPad = navigator.userAgent.match(/iPad/i) != null;
-    
+
     if(!isiPad) {
       e.preventDefault();
     }
@@ -44,7 +44,7 @@ $(document).ready(function() {
 
       if(!isiPad) {
 
-        $('#main, footer').addClass('loading');
+        $('#main, footer, #breadcrumb, .sub-nav-list').addClass('loading');
 
         setTimeout(function() {
           cl.show();

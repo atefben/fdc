@@ -88,6 +88,16 @@
         margin-bottom: 2px;
       }
 
+      .icon_close{
+        margin: 0px;
+        color: #fff;
+        vertical-align: baseline !important;
+        position: relative;
+        top: -6px;
+        font-size: .7rem;
+        right: -5px;
+      }
+
       .icon_espace-presse{
         font-size: .8rem;
       }
@@ -300,8 +310,6 @@
         position: absolute;
         top: 7px;
         right: 10px;
-        background: url('../img/svg/close-white.svg') no-repeat center;
-        background-size: cover;
         height: 12px;
         width: 12px;
       }
@@ -564,6 +572,16 @@
       margin: 0 0 0 65px;
     }
 
+    p.access{
+      font-size: 0.8rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: $CamphorBold;
+      color:$gold;
+      @include transition(all 0.5s $smoothTransition);
+    }
+
     form {
       position: absolute;
       right: 150px;
@@ -574,7 +592,7 @@
         right: 50px;
       }
 
-      &.error input[type="text"] {
+      &.error input[type="password"] {
         border-color: red;
       }
 
@@ -874,7 +892,7 @@
                 z-index: 0!important;
 
                 &.ui-draggable-dragging {
-                  z-index: 5!important;
+                  z-index: 10!important;
                 }
 
                 &.ui-draggable-dragging .category:after {
@@ -916,12 +934,17 @@
         top: 0;
 
         .arrow {
+          background-color: #fff;
           display: none;
+          font-size: 0.750em;
+          line-height: 40px;
+          text-align: center;
         }
 
         @include breakpoint(1279px) {
           padding: 0 43px;
           width: 260px;
+          overflow: hidden;
 
           .timeline-container {
             width: 600px;
@@ -1433,6 +1456,11 @@
   &.press-home {
     .popin-event {
       height: 1012px;
+
+      @include breakpoint(1024px) {
+        height: auto;
+        min-height: 1012px;
+      }
     }
   }
 
@@ -1533,6 +1561,30 @@
 .fullcalendar {
   .header-press {
     border: none;
+
+    .container{
+      position: relative;
+
+      .buttons{
+        right: 0px;
+        position: absolute;
+        float: right;
+        .button{
+          &:hover{
+            color:#fff;
+            background-color: $gold;
+          }
+        }
+        .export{
+          &:hover{
+            background-color: #fff;
+            color: $gold;
+            opacity: 1;
+          }
+        }
+      }
+
+    }
   }
 
   #calendar {
@@ -1657,8 +1709,7 @@
     width: 70px;
     color: $gold;
     .icon{
-      margin-top: 28px;
-      margin-left: 28px;
+      line-height: 72px;
     }
 
     &:hover{
@@ -1777,6 +1828,10 @@
         display: inline-block;
         margin-right: 20px;
         width: 225px;
+
+        @include breakpoint(1024px) {
+          margin-bottom: 22px;
+        }
 
         p {
           margin-bottom: 5px;
@@ -2030,6 +2085,11 @@
         color: #fff;
         background-color: #c8a461;
       }
+
+      &.error input[type="password"] {
+        border-color: red;
+      }
+
     }
   }
 }
@@ -2235,6 +2295,7 @@
         height: 46px;
 //        font-size: 1rem;
         color:#666;
+        border: 1px solid #CCC;
       }
       .time{
         display: inline-block;
@@ -2246,17 +2307,17 @@
         }
         .pictodate{
           width: 51px;
-          height: 50px;
+          height: 48px;
           border: 1px solid #ccc;
           display: inline-block;
           margin: 12px 0px;
           vertical-align: bottom;
           border-left: 0px solid #fff;
-          background-image: url("../img/press/svg/calendar.svg");
-          background-repeat: no-repeat;
-          background-size: 24px;
-          background-repeat: no-repeat;
-          background-position: 14px;
+          color:$grey;
+          .icon{
+            margin-top: 16px;
+            margin-left: 18px;
+          }
         }
         .hours{
           width: 64px !important;

@@ -55,7 +55,7 @@
                                                     {{ themeTranslations.get(locale).name }}
                                                 {% endif %}
                                                 {% if form.parent.children.theme.vars.value is not null %}
-                                                    <a target="_blank" href="{{ path('admin_base_core_statementtheme_edit', {'id': form.parent.children.theme.vars.value}) }}">
+                                                    <a target="_blank" href="{{ path('admin_base_core_theme_edit', {'id': form.parent.children.theme.vars.value}) }}">
                                                         modifier la traduction
                                                     </a>
                                                 {% endif %}
@@ -72,7 +72,7 @@
                                                         {% if tagTranslation.get(locale) is not null %}
                                                             <div>
                                                                 {{ tagTranslation.get(locale).name }}
-                                                                <a target="_blank" href="{{ path('admin_base_core_statementtag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>
+                                                                <a target="_blank" href="{{ path('admin_base_core_tag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>
                                                             </div>
                                                         {% endif %}
                                                     {% endfor %}

@@ -12,7 +12,15 @@
     <!-- /build -->
 </head>
 <body>
-<div id="main" class="home st-container">
+<div id="searchContainer">
+    <div class="container">
+      <form action="searchpage.html">
+        <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." autocomplete="off" />
+      </form>
+      <ul id="suggest"></ul>
+    </div>
+  </div>
+<div id="main" class="home st-container" data-menu="actu">
 	<!-- build:include ../include/menu.html -->
 	<!-- /build -->
 	<!-- build:include ../include/header.html -->
@@ -55,7 +63,7 @@
 	  	</div>
 	</div>
 	<div  id="news">
-		<h2 class="title">L'actualité à la une</h2>
+		<h2 class="title">L'actualité<br>à la une</h2>
 		<div id="calendar">
 			<a href="#" class="prev"><i class="icon icon_flecheGauche"></i></a>
 			<div id="timeline" class="" >
@@ -85,35 +93,35 @@
                 <div class="slideshow-img">
                   <div class="images">
                     <div class="img active">
-                      <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
+                      <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'>
                         <img src="img/slide001.jpg" alt="" />
                       </a>
                     </div>
                     <div class="img">
-                      <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                      <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title='<span class="category">portfolio</span><span class="date">20.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'>
                         <img src="img/slide002.jpg" alt="" />
                       </a>
                     </div>
                     <div class="img">
-                      <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                     <div class="img">
-                      <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                      <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><span class="credit">Crédit Image : VALERY HACHE / AFP</span>'><img src="img/slide002.jpg" alt="" /></a>
                     </div>
                   </div>
                   <div class="owl-carousel thumbnails">
@@ -146,7 +154,7 @@
                     </div>
                   </div>
                 </div>
-                <h3>Portfolio du jour</h3>
+                <h3 class="category">Portfolio du jour</h3>
                 <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
               </div>
 			
@@ -176,16 +184,17 @@
 			</div>
 			<div class="post">
 				<div class="twitter">
-					<div class="content">
+					<div class="content vCenterKid">
 						<p class="info">Le 21 mars à 19h @FdC_Officiel</p>
 						<p class="text">Also out tomorrow is Gabe Polsky's Red Army, produced by Werner Herzog and Jerry Weintraub, <strong>#Cannes2016</strong></p>
 					</div>
+					
 					<i class="icon icon_twitter"></i>
 				</div>
 			</div>
 			<div class="post">
-				<div class="twitter">
-					<div class="content">
+				<div class="twitter vCenter">
+					<div class="content vCenterKid">
 						<p class="text">Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <strong>#Cannes2016</strong> en salles en France demain.</p>
 					</div>
 					<i class="icon icon_twitter"></i>
@@ -229,11 +238,13 @@
 	            </div>
 	            <a class="linkVid" href="#"></a>
 	            <div class="info">
-	              <div class="picto"><i class="icon icon_video"></i></div>
+	              <div class="picto vCenter">
+	                  <div class="vCenterKid"><i class="icon icon_video"></i></div>
+	              </div>
 	              <div class="info-container">
 	                <div class="vCenter">
 	                  <div class="vCenterKid">
-	                    <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+	                    <a href="#" class="category">Conférence de presse</a>
 	                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
 	                  </div>
 	                </div>
@@ -246,11 +257,13 @@
 	            </div>
 	            <a class="linkVid" href="#"></a>
 	            <div class="info">
-	              <div class="picto"><i class="icon icon_video"></i></div>
+	              <div class="picto vCenter">
+	                  <div class="vCenterKid"><i class="icon icon_video"></i></div>
+	              </div>
 	              <div class="info-container">
 	                <div class="vCenter">
 	                  <div class="vCenterKid">
-	                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+	                    <a href="#" class="category">Montée des marches</a>
 	                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
 	                  </div>
 	                </div>
@@ -263,11 +276,13 @@
 	            </div>
 	            <a class="linkVid" href="#"></a>
 	            <div class="info">
-	              <div class="picto"><i class="icon icon_video"></i></div>
+	              <div class="picto vCenter">
+	                  <div class="vCenterKid"><i class="icon icon_video"></i></div>
+	              </div>
 	              <div class="info-container">
 	                <div class="vCenter">
 	                  <div class="vCenterKid">
-	                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+	                    <a href="#" class="category">Montée des marches</a>
 	                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
 	                  </div>
 	                </div>
@@ -280,11 +295,13 @@
 	            </div>
 	            <a class="linkVid" href="#"></a>
 	            <div class="info">
-	              <div class="picto"><i class="icon icon_video"></i></div>
+	              <div class="picto vCenter">
+	                  <div class="vCenterKid"><i class="icon icon_video"></i></div>
+	              </div>
 	              <div class="info-container">
 	                <div class="vCenter">
 	                  <div class="vCenterKid">
-	                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+	                    <a href="#" class="category">Montée des marches</a>
 	                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
 	                  </div>
 	                </div>
@@ -299,13 +316,13 @@
             <div class="image-wrapper">
               <img src="img/slider-channels/01.jpg" alt="" />
             </div>
-            <a class="linkVid" href="#"></a>
+            <a class="linkVid" href="channel.html"></a>
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
-                    <a href="#" class="category">Photocall</a>
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a  class="category">Photocall</a>
                     <span>103 vidéos</span>
                   </div>
                 </div>
@@ -316,13 +333,13 @@
             <div class="image-wrapper">
               <img src="img/slider-channels/02.jpg" alt="" />
             </div>
-            <a class="linkVid" href="#"></a>
+            <a class="linkVid" href="channel.html"></a>
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
-                    <a href="#" class="category">Montée des marches</a>
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a class="category">Montée des marches</a>
                     <span>282 vidéos</span>
                   </div>
                 </div>
@@ -333,13 +350,13 @@
             <div class="image-wrapper">
               <img src="img/slider-channels/03.jpg" alt="" />
             </div>
-            <a class="linkVid" href="#"></a>
+            <a class="linkVid" href="channel.html"></a>
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
-                    <a href="#" class="category">Conférence de presse</a>
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a class="category">Conférence de presse</a>
                     <span>47 vidéos</span>
                   </div>
                 </div>
@@ -350,13 +367,13 @@
             <div class="image-wrapper">
               <img src="img/slider-channels/01.jpg" alt="" />
             </div>
-            <a class="linkVid" href="#"></a>
+            <a class="linkVid" href="channel.html"></a>
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
-                    <a href="#" class="category">Photocall</a>
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a class="category">Photocall</a>
                     <span>103 vidéos</span>
                   </div>
                 </div>
@@ -367,13 +384,13 @@
             <div class="image-wrapper">
               <img src="img/slider-channels/02.jpg" alt="" />
             </div>
-            <a class="linkVid" href="#"></a>
+            <a class="linkVid" href="channel.html"></a>
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
-                    <a href="#" class="category">Montée des marches</a>
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <a class="category">Montée des marches</a>
                     <span>282 vidéos</span>
                   </div>
                 </div>
@@ -388,8 +405,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
                     <span>47 vidéos</span>
                   </div>
@@ -405,8 +422,8 @@
             <div class="info">
               <div class="picto"><i class="icon icon_playlist"></i></div>
               <div class="info-container">
-                <div class="">
-                  <div class="">
+                <div class="vCenter">
+                  <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
                     <span>47 vidéos</span>
                   </div>
@@ -419,19 +436,22 @@
 		</div>
 	</div>
 </div>
-<div class="darker-container" id="today">
-	<div class="container">
-		<h2 class="title">La programmation du jour</h2>
-	</div>
+<div class="dark-container" id="today">
+	
+		<h2 class="title one-line">Focus du jour</h2>
+	
 	<div class="special-event">
 		<div class="img-container">
 	        <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
 	    </div>
-		<div class="info-container">
-			<div class="category">Séance spéciale</div>
-			<h3 class="title">A tale of love and darkness</h3>
-			<div class="title-translate">(une histoire d'amour et de ténèbres)</div>
-			<div class="director">Laurent <strong>Larivière</strong></div>
+		<div class="info-container vCenter">
+			<div class="vCenterKid">
+				<div class="category">Séance spéciale</div>
+				<h3 class="title tall">A tale of love and darkness</h3>
+				<div class="title-translate">(une histoire d'amour et de ténèbres)</div>
+				<div class="director">Laurent <strong>Larivière</strong></div>
+			</div>
+			
 		</div>
 		<div class="links">
 			<a href="#" class="seances"><i class="icon icon_programmation"></i>Voir les séances</a>
@@ -441,9 +461,11 @@
 		<div class="img-container">
 	        <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	    </div>
-		<div class="info-container">
-			<div class="icon-container"><i class="icon icon_video"></i></div>
-			<h3 class="title">Les bandes annonces et extraits</h3>
+		<div class="info-container vCenter">
+			<div class="vCenterKid">
+				<div class="icon-container"><i class="icon icon_video"></i></div>
+				<h3 class="title tall">Les bandes annonces et extraits</h3>
+			</div>
 		</div>
 	</div>
 </div>

@@ -219,23 +219,15 @@ class StatementVideoAdmin extends Admin
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
             ))
-            ->add('tags', 'sonata_type_collection', array(
-                'label' => 'form.label_article_tags',
-                'help' => 'form.statement.helper_tags',
-                'by_reference' => false,
-                'required' => false,
-            ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                )
-            )
+
             ->add('signature', null, array(
                 'help' => 'form.statement.helper_signature'
             ))
             ->add('video', 'sonata_type_model_list', array(
-                'label' => 'form.label_video_image',
-                'help' => 'form.statement.helper_video_image',
-                'translation_domain' => 'BaseAdminBundle'
+                'label' => 'form.label_video_file',
+                'help' => 'form.statement.helper_video_file',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.statement.helper_film_film_associated',
@@ -269,7 +261,7 @@ class StatementVideoAdmin extends Admin
                 'label' => 'form.label_statement_statement_associated',
                 'help' => 'form.statement.helper_statement_statement_associated',
                 'by_reference' => false,
-                'btn_add' => false,
+                'btn_add' => true,
                 'required' => false,
             ), array(
                     'edit' => 'inline',
@@ -326,5 +318,28 @@ class StatementVideoAdmin extends Admin
         $showMapper
             ->add('id')
         ;
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function prePersist($object)
+    {
+
+        foreach ($object->getAssociatedStatement() as $statement) {
+            $statement->setStatement($object);
+        }
+
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function preUpdate($object)
+    {
+
+        foreach ($object->getAssociatedStatement() as $statement) {
+            $statement->setStatement($object);
+        }
     }
 }

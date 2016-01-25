@@ -83,8 +83,7 @@
       text-transform: uppercase;
     }
     .img {
-      background-position: center 30%;
-      background-repeat: no-repeat;
+      background: center 0 no-repeat fixed;
       background-size: cover;
       opacity: 0.5;
       position: absolute;
@@ -115,7 +114,8 @@
       }
       .icon{
         color: #fff;
-        margin: 16px;
+        margin-top: 15px;
+        margin-left: 2px;
       }
     }
     &.on {
@@ -289,6 +289,15 @@
       margin-right: 10px;
     }
   }
+  #slider-trailer{
+    .info-container .vCenterKid{
+      .hour, .date{
+        color: #666;
+        display: inline-block;
+        font-size: 0.625rem;
+      }
+    }
+  }
   .channel {
     &:after {
       border: 4px solid $gold;
@@ -306,6 +315,7 @@
       @include transition(all 0.3s $smoothTransition);
     }
   }
+
   .owl-item.center .channel:after {
     opacity: 1;
     visibility: visible;
@@ -315,9 +325,6 @@
      width: 975px;
      .player{
        margin-top: 49px;
-     }
-     #content-channels{
-       padding-top: 26px;
      }
      .infos-videos{
        padding-top: 18px;
@@ -367,8 +374,14 @@
          a:hover + .button {
               border-left-color: $gold;
           }
+          a:last-child:hover{
+            border-right-color: $gold !important;
+          }
        }
      }
+  }
+  #content-channels{
+    padding-top: 23px;
   }
 }
 
@@ -404,7 +417,7 @@
     width: 100%;
   }
   #live {
-    background-image: url(../img/webtv/bandeau.jpg);
+    background: center 0 no-repeat fixed;
     background-size: cover;
     h2 {
       font-family: $Playfair;
@@ -414,14 +427,14 @@
     }
     .play {
       border-radius: 50%;
-      margin-bottom: 10px;
-      border: 5px solid #fff;
+      margin-bottom: 18px;
+      border: 0px solid #fff;
       cursor: default;
-
+      margin-top: 0px;
       .icon{
         color: #fff;
-        padding: 17px;
-        font-size: .8rem;
+        font-size: 3.1rem;
+        margin: 0px;
       }
     }
 
@@ -470,8 +483,6 @@
   }
   .listtrailer {
     .picto {
-      background-image: url("../img/svg/playlist.svg");
-      background-size: 16px 10px;
       bottom: auto;
       float: left;
       left: auto;
@@ -509,6 +520,41 @@
       vertical-align: middle;
     }
   }
+
+  //MEDIA BANDEAU
+    @media screen and (min-width: 1920px) {
+      #live{
+        height: 448px !important;
+      }
+    }
+
+    @media screen and (min-width: 1600px) and (max-width:1919px) {
+
+      #live{
+        height: 373px !important;
+      }
+    }
+
+    @media screen and (min-width: 1280px) and (max-width:1599px) {
+
+      #live{
+        height: 297px !important;
+      }
+    }
+
+    @media screen and (min-width: 1024px) and (max-width:1279px) {
+      #live{
+        height: 296px !important;
+      }
+    }
+
+    @media screen and (max-width:1023px) {
+      #live{
+        height: 296px !important;
+      }
+    }
+
+
 }
 
 // 5. Single trailer
@@ -525,11 +571,17 @@
       font-size: 9.6px;
       font-family: "Camphor W01 Bold";
       letter-spacing: 0.1em;
+      @include transition(all .5s $smoothTransition);
+
       .icon{
         margin-right: 10px;
         font-size: .45rem;
         vertical-align: middle !important;
         margin-bottom: 2px;
+      }
+
+      &:hover{
+        opacity: .5;
       }
     }
     h1 {
@@ -649,11 +701,15 @@
           font-family: $CamphorBold;
           font-size: 0.625rem;
           color: #666;
+          margin-bottom: 10px;
           .date {
             color: #bababa;
             margin-left: 5px;
+            .hour{
+              margin-left: 5px;
+              text-transform: none;
+            }
           }
-          padding-bottom: 12px;
         }
         .where {
           font-size: 16px;
@@ -718,6 +774,8 @@
     padding: 10px 0px 72px 0;
   }
   #content-trailers {
+    padding: 0px;
+
     #slider-trailer {
       .picto {
         .icon{
@@ -811,6 +869,11 @@
       text-transform: uppercase;
       font-size: 0.75rem;
       font-family: $CamphorHeavy;
+      @include transition(all 1s $linear);
+
+      &:hover {
+        opacity: 0.5;
+      }
 
       .icon{
         font-size: .5rem;

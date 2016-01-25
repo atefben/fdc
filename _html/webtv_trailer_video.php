@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-
   <head>
     <?php include('head.html'); ?>
   </head>
@@ -63,57 +62,57 @@
           <div class="program-film block">
             <div class="contain-info">
               <div class="infos">
-                <p>Projection <span class="date">15/07/2015 9h</span></p>
+                <p>Projection <span class="date">15/07/2015 <span class="hour">9h</span></span></p>
                 <span class="where">Grand théâtre Lumière</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015 <span class="hour">15h</span></span></p>
                 <span class="where">Cinéma de la plage</span>
                 <hr>
               </div>
               <div class="infos">
-                <p>Projection <span class="date">12/07/2015 15h</span></p>
+                <p>Projection <span class="date">12/07/2015  <span class="hour">15h<</span></span></p>
                 <span class="where">Cinéma de la plage</span>
 
               </div>
@@ -123,8 +122,8 @@
         </div>
         <div class="share">
           <div class="buttons square">
-            <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-            <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+            <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i></a>
             <a href="#" class="button link"><i class="icon icon_link"></i></a>
             <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
           </div>

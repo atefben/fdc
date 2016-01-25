@@ -13,7 +13,8 @@
     <!-- /build -->
 </head>
 <body>
-<div id="main" class="contact">
+
+<div id="main" class="contact st-container" data-menu="contact">
 	<!-- menu -->
 	<nav class="st-menu st-effect" id="menu">
 		<div id="top-menu" class="owl-carousel sliderDrag">
@@ -42,7 +43,7 @@
 		</div>
 		<div id="main-nav" class="menu-section">
 		    <ul id="main-nav-list" class="">
-				<li class="">
+				<li class="actu">
 					<div class="section-title has-subsection">
 						<h3 class="title-menu">l'actualité <span class="more-minus">+</span></h3>
 						
@@ -57,7 +58,7 @@
 						</ul>
 					</div>
 				</li>
-				<li>
+				<li class="webtv">
 					<div class="section-title has-subsection">
 						<h3 class="title-menu">web tv <span class="more-minus">+</span></h3>
 						
@@ -70,29 +71,29 @@
 						</ul>
 					</div>
 				</li>
-				<li>
+				<li class="selection">
 					<a href="selectionofficielle_competition.html">
 						<div class="section-title">
 							<h3 class="title-menu">La séléction</h3>
 						</div>
 					</a>
 				</li>
-				<li>
+				<li class="jury">
 					<a href="jury_longsmetrages.html">
 						<div class="section-title">
 							<h3 class="title-menu">Les jurys</h3>
 						</div>
 					</a>
 				</li>
-				<li>
-					<a href="">
+				<li class="palmares">
+					<a href="palmares_camerador.html">
 						<div class="section-title">
 							<h3 class="title-menu">le palmarès</h3>
 						</div>
 					</a>
 				</li>
-				<li>
-					<a href="">
+				<li class="events">
+					<a href="events.html">
 						<div class="section-title">
 							<h3 class="title-menu">les événements</h3>
 						</div>
@@ -101,35 +102,35 @@
 			</ul>
 			<div class="small-separator"></div>
 			<ul class="second-nav">
-				<li>
+				<li class="prog">
 					<a href="">
 						<i class="icon icon_programmation"></i>Programmation
 					</a>
 				</li>
-				<li>
+				<li class="participate">
 					<a href="participate_access.html">
 						<i class="icon icon_participer"></i>Participer
 					</a>
 				</li>
-				<li>
-					<a href="">
+				<li class="press">
+					<a href="press.html">
 						<i class="icon icon_espace-presse"></i>Espace presse
 					</a>
 				</li>
 			</ul>
 			<div class="small-separator"></div>
 			<ul class="third-nav">
-				<li>
+				<li class="my-selection">
 					<a href="">
 						<i class="icon icon_ma-selection"></i>Ma sélection
 					</a>
 				</li>
-				<li>
+				<li class="">
 					<a href="http://sub.festival-cannes.fr/" target="_blank">
 						<i class="icon icon_mon-compte"></i>mon Compte
 					</a>
 				</li>
-				<li>
+				<li class="">
 					<a href="">
 						<i class="icon icon_langue"></i>FR
 					</a>
@@ -163,14 +164,14 @@
 		    <div class="footer-menu">
 		    	<p>© Copyright 2016</p>
 		      <ul>
-		        <li><a href="contact.html">Contact</a></li>
-		        <li><a href="faq.html">FAQ</a></li>
-		        <li><a href="#">Crédits</a></li>
-		        <li><a href="legals.html">Mentions Légales</a></li>
-		        <li><a href="#">Nous rejoindre</a></li>
-		        <li><a href="#">Boutique</a></li>
-		        <li><a href="sitemap.html">Plan du Site</a></li>
-		        <li><a href="#">Politique de Confidentialité</a></li>
+		        <li class="contact"><a href="contact.html">Contact</a></li>
+		        <li class="faq"><a href="faq.html">FAQ</a></li>
+		        <li class="credits"><a href="#">Crédits</a></li>
+		        <li class="legals"><a href="legals.html">Mentions Légales</a></li>
+		        <li class=""><a href="#">Nous rejoindre</a></li>
+		        <li class=""><a href="#">Boutique</a></li>
+		        <li class="sitemap"><a href="sitemap.html">Plan du Site</a></li>
+		        <li class="policy"><a href="#">Politique de Confidentialité</a></li>
 		      </ul>
 		      <div class="clear"></div>
 		    </div>
@@ -180,9 +181,9 @@
 	<!-- end menu -->
 	<!-- header -->
 	<div class="dark-container" id="header">
-		<div class="container">
+		<div class="header-container">
 			<div id="menu-btn" class='menu-btn'>
-		        <i class="icon icon_recherche"></i>
+		        <i class="icon-mobile-burger"></i>
 		    </div>
 			<div id="logo">
 		        <a href="/"><img src="img/palme.svg" alt="Festival de Cannes" class="palm"></a>
@@ -194,8 +195,11 @@
 		    </div>
 		</div>
 	</div>
+
+	
 	<!-- end header -->
-		<h2 class="title one-line">contact</h2>
+    <div class="contact-container">
+        <h2 class="title one-line">contact</h2>
         <div class="coords">
             <h3>Festival de Cannes</h3>
             <p>3, rue Amélie 75007 Paris - France</p>
@@ -233,10 +237,12 @@
               </div>
             </div>
       </div>
+    </div>
+		
 </div>
 <footer class="dark-container">
   <div class="container">
-    <h2 class="title">Newsletter</h2>
+    <h2 class="title one-line">Newsletter</h2>
     <h3 class="subtitle">Toute l'actualité du festival</h3>
 
     <div class="newsletter">
@@ -252,9 +258,12 @@
 	
    </footer>
     <div id="landscape">
-      <div class="content">
-      	<img src="img/rotate-mobile.png" alt="">
-      	<p>Tournez votre smartphone pour accéder au site</p>
+      <div class="content vCenter">
+        <div class="vCenterKid">
+          <img src="img/rotate-mobile.png" alt="">
+          <p>Tournez votre smartphone pour accéder au site</p>
+        </div>
+      	
       </div>
     </div>
     

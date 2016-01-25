@@ -269,7 +269,7 @@ class NewsArticleAdmin extends Admin
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
-                'btn_add' => false,
+                'btn_add' => true,
                 'required' => false,
                 ), array(
                     'edit' => 'inline',

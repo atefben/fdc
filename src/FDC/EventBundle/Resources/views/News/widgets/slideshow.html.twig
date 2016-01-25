@@ -1,24 +1,35 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 {% if widget.title is defined %}
     <h2 class="title">{{ widget.title }}</h2>
 {% endif %}
 <div class="slideshow">
+    {% set file = "" %}
     <div class="slideshow-img">
         <div class="images">
-            {% for key, photo in widget.photos %}
-                <div class="img {% if key == 0 %}active{% endif %}">
-                    <a id="photo1" class="chocolat-image ajax" href="{{ photo.path }}" title="{{ photo.title }}" data-credit="{{ photo.copyright }}">
-                        <img src="{{ photo.path }}" alt="" />
-                    </a>
-                </div>
+            {% for key, gallery in widget.gallery.medias %}
+
+            {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = gallery.media.file.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+            <div class="img {% if key == 0 %}active{% endif %}">
+                <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, 'big' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{{ trans.copyright }}">
+                    {% thumbnail file, 'big' with {'alt': trans.alt} %}
+                </a>
+            </div>
             {% endfor %}
+
         </div>
         <div class="owl-carousel thumbnails">
-            {% for key, photo in widget.photos %}
-                <div data-id="photo1" class="thumb {% if key == 0 %}active{% endif %}">
-                    <img src="{{ photo.thumb }}" />
+            {% for key, gallery in widget.gallery.medias %}
+                <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}">
+                    {% thumbnail file, 'small' %}
                 </div>
             {% endfor %}
         </div>
     </div>
-    <p class="caption">{{ widget.copyright|raw }}</p>
+    {#<p class="caption">{{ widget.gallery.copyright|raw }}</p>#}
+
 </div>

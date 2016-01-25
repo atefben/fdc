@@ -124,20 +124,8 @@
     vertical-align: middle;
     position: relative;
     width: 0;
-    height: 3px;
-    margin-left: 34px;
-
-    &:before {
-      content: '';
-      display: block;
-      height: 15px;
-      width: 15px;
-      background: url('../img/svg/volume.svg') no-repeat center;
-      background-size: contain;
-      position: absolute;
-      margin-top: -6px;
-      margin-left: -20px;
-    }
+    margin-right: 27px;
+    margin-left: 18px;
 
     span {
       background-color: #fff;
@@ -147,9 +135,13 @@
       pointer-events: none;
       top: 0;
       left: 0;
-      width: 75%;
+      width: 100%;
       height: 100%;
       @include transition(all 0.3s $smoothTransition);
+    }
+
+    .icon{
+      color:#fff;
     }
   }
 
@@ -303,6 +295,13 @@
     .volume {
       margin-left: 55px;
       width: 100px;
+
+      .icon{
+        margin-left: -28px;
+        position: relative;
+        top: 1px;
+
+      }
     }
 
     .playpause {
@@ -347,9 +346,8 @@
     }
 
     .fullscreen {
-      bottom: 43px;
-      right: 40px;
-      background: url('../img/svg/FullScreenInverse.svg') no-repeat center;
+      bottom: 43px !important;
+      right: 40px !important;
     }
 
     #channels-audio {
@@ -391,9 +389,13 @@
       }
 
       .picto {
-        background-image: url('../img/svg/audio.svg');
+        // background-image: url('../img/svg/audio.svg');
         background-size: 25px;
         margin-left: 0;
+        .icon{
+          margin-left: 0px;
+          margin-top: 15px;
+        }
       }
 
       &.active {
@@ -439,8 +441,7 @@
       }
 
       .channels {
-        background: url('../img/svg/mic.svg') no-repeat center;
-        background-size: 42px;
+
         border-right: 1px solid rgba(255, 255, 255, 0.3);
         display: block;
         float: left;
@@ -452,6 +453,13 @@
 
         &:hover, &.active {
           background-color: $gold;
+        }
+
+        .icon{
+          margin-top: 30px;
+          font-size: 1.3rem;
+          color:#fff;
+          margin-left: 30px;
         }
       }
 
@@ -492,24 +500,18 @@
           border-color: rgba(255, 255, 255, 0.3)!important;
         }
 
-        a.facebook {
-          background: url('../img/svg/facebook-gold.svg') no-repeat center;
-          background-size: 19px;
-        }
+        a{
+          .icon{
+            font-size: .8rem;
+            position: absolute;
+            top: 35px;
+            left: 30px;
+          }
 
-        a.twitter {
-          background: url('../img/svg/twitter-gold.svg') no-repeat center;
-          background-size: 16px;
-        }
-
-        a.email {
-          background: url('../img/svg/mail.svg') no-repeat center;
-          background-size: 16px;
-        }
-
-        a.link {
-          background: url('../img/svg/link.svg') no-repeat center;
-          background-size: 16px;
+          &:hover{
+            background-color: rgb(20, 20, 20);
+            color:$gold;
+          }
         }
       }
     }
@@ -595,7 +597,7 @@
 
     .fullscreen {
       background-size: contain;
-      bottom: 42px;
+      bottom: 44px;
       z-index: 1;
       position: absolute;
       right: -30px;
@@ -666,6 +668,17 @@
       color: #333;
       font-size: 1rem;
       margin-top: 5px;
+    }
+  }
+
+  #slider-channels-audio{
+    .info{
+      .picto{
+        .icon_playlist{
+          margin-left: 14px;
+          margin-top: 14px;
+        }
+      }
     }
   }
 }

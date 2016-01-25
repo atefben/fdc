@@ -1,0 +1,274 @@
+.item .chocolat-image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
+div.chocolat-wrapper {
+  background-color: #080808;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  z-index: 10001;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+div.chocolat-wrapper .chocolat-img {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(1.1) translateZ(0);
+  transform: scale(1.1) translateZ(0);
+  -webkit-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 1s;
+  transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+}
+div.chocolat-wrapper .chocolat-overlay {
+  opacity: 1;
+  background-color: #080808;
+}
+div.chocolat-wrapper.show {
+  opacity: 1;
+  visibility: visible;
+}
+div.chocolat-wrapper.show .chocolat-img {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1) translateZ(0);
+  transform: scale(1) translateZ(0);
+}
+div.chocolat-wrapper.show .chocolat-img.close {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(1.1) translateZ(0);
+  transform: scale(1.1) translateZ(0);
+}
+div.chocolat-wrapper .chocolat-top{
+
+  height: 250px;
+}
+div.chocolat-wrapper .chocolat-top .close-button{
+
+  top:20px;
+  right: 20px;
+}
+div.chocolat-wrapper .chocolat-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  line-height: initial;
+  padding: 0;
+  height: 100px;
+  opacity: 0;
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom .buttons {
+  position: absolute;
+  right: 0;
+  z-index: 5;
+  bottom: 101px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  width: auto;
+  background-color: rgba(20,20,20,0.8);
+  border: none;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons.show {
+  opacity: 1;
+  visibility: visible;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons .button {
+  border-color: rgba(255, 255, 255, 0.4);
+  border-bottom: none;
+  height: 75px;
+  width: 75px;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
+  border-right: none;
+  width: 74px;
+}
+div.chocolat-wrapper .chocolat-bottom .buttons a .icon {
+  font-size: 1.5rem;
+  line-height: 75px;
+}
+div.chocolat-wrapper .chocolat-bottom:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #141414;
+  opacity: 0.8;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom.show {
+  opacity: 1;
+}
+
+div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
+  font-size: 2rem;
+  color: white;
+  position: relative;
+  z-index: 100;
+  float: left;
+  line-height: 85px;
+  margin-left: 38px;
+  margin-right: -38px;
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  font-size: 0.750rem;
+  height: 100%;
+  line-height: 140px;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  width: 100px;
+  z-index: 2;
+  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+div.chocolat-wrapper .chocolat-bottom .chocolat-description {
+  box-sizing: border-box;
+  padding-top: 15px;
+  padding-left: 85px;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-description.hide {
+  opacity: 0;
+}
+div.chocolat-wrapper .chocolat-content{
+    -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-content.hide{
+  opacity: 0;
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-description span.category {
+    color: #c8a461;
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    margin-right: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-description span.date, div.chocolat-wrapper .chocolat-bottom .chocolat-description span.credit {
+    color: #999;
+    display: inline-block;
+    font-size: 12px;
+}
+.chocolat-bottom .chocolat-description span.credit{
+  margin-top: 10px;
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-description h2 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-top: 5px;
+    max-width: 415px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+div.chocolat-wrapper .share {
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    display: block;
+    width: 100px;
+    height: 100%;
+    bottom: 0;
+    z-index: 20;
+    right: 0;
+    position: absolute;
+    text-align: center;
+}
+div.chocolat-wrapper .share .icon {
+    line-height: 100px;
+    color: #c8a461;
+    font-size: 1.1rem;
+    -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    cursor: pointer;
+}
+@media only screen  and (orientation : landscape) {
+  div.chocolat-wrapper .chocolat-top .close-button{
+
+    height: 40px;
+    opacity: 0.6;
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 10px
+  }
+  div.chocolat-wrapper .chocolat-bottom .chocolat-description span.category {
+    font-size: 10px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .chocolat-description span.date, div.chocolat-wrapper .chocolat-bottom .chocolat-description span.credit{
+    font-size: 11px;
+    margin:0;
+  }
+  div.chocolat-wrapper .chocolat-bottom .chocolat-description h2{
+    font-size: 14px;
+    margin-top:0;
+  }
+  div.chocolat-wrapper .chocolat-bottom{
+    height: 60px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .icon_diaporama{
+    line-height: 45px;
+    margin-left: 15px;
+    font-size: 30px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .chocolat-pagination{
+    width: 60px;
+    line-height: 90px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .chocolat-description{
+    padding-top: 3px;
+    padding-left: 75px;
+  }
+  div.chocolat-wrapper .share {
+    width: 60px;
+  }
+  div.chocolat-wrapper .share .icon{
+    line-height: 60px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons{
+    bottom: 61px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons .button{
+    height: 50px;
+    width: 50px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons .button:last-child {
+    width: 49px;
+  }
+  div.chocolat-wrapper .chocolat-bottom .buttons a .icon{
+    line-height: 50px;
+    font-size: 1rem;
+  }
+}

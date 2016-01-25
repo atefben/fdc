@@ -47,7 +47,7 @@ abstract class StatementWidget
     protected $position;
 
     /**
-     * @var StatementArticle
+     * @var Statement
      *
      * @ORM\ManyToOne(targetEntity="Statement", inversedBy="widgets")
      */
@@ -84,5 +84,28 @@ abstract class StatementWidget
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Set statement
+     *
+     * @param \Base\CoreBundle\Entity\Statement $statement
+     * @return StatementWidget
+     */
+    public function setStatement(\Base\CoreBundle\Entity\Statement $statement = null)
+    {
+        $this->statement = $statement;
+
+        return $this;
+    }
+
+    /**
+     * Get statement
+     *
+     * @return \Base\CoreBundle\Entity\Statement 
+     */
+    public function getStatement()
+    {
+        return $this->statement;
     }
 }

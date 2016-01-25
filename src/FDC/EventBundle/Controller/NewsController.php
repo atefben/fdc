@@ -640,122 +640,42 @@ class NewsController extends Controller
         // SEO
        // $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
+        //get associated film to the news
         $associatedFilm = $news->getAssociatedFilm();
         $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
 
-        /*
-        foreach($associatedFilm->getMedias() as $media) {
-            echo'<pre>'; print_r($media->getMedia()); echo '</pre>';
+        //get film projection
+        $programmations = array();
+        foreach($associatedFilm->getProjectionProgrammationFilms() as $projection) {
+            $programmations[] = $projection->getProjection();
         }
-         exit;
-        */
 
-        /*foreach($associatedFilm->getProjectionProgrammationFilmsList() as $projection) {
-            echo'<pre>'; print_r($projection->getProjection()); echo '</pre>';
+        //get focus articles
+        $associatedNews = $news->getAssociatedNews();
+        $focusArticles = array();
+        foreach($associatedNews as $associatedNew) {
+            $focusArticles[] = $associatedNew->getAssociation();
         }
-         exit;
-        */
 
-        //FAKE CONTENT
-        $film = array(
-            'title' => $associatedFilm->getTitleVO(),
-            'releaseDate' => $associatedFilm->getProductionYear(),
-            'duration' => date('H:i', mktime(0,$associatedFilm->getDuration())),
-            'competition' => 'Un certain regard',
-            'author' => array(
-                'fullName' =>'toto',//$associatedFilm->getDuration()->getPersons()->getDirectorsRandomly,
-                'from' => 'France'
-            ),
-            'image' => array(
-                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/article/007.jpg'
-            ),
-            'programmation' => array(
-                array(
-                    'startAt' => new \DateTime(),
-                    'room' => 'Salle Debussy'
-                ),
-                array(
-                    'startAt' => new \DateTime(),
-                    'room' => 'Salle Debussy'
-                ),
-                array(
-                    'startAt' => new \DateTime(),
-                    'room' => 'Salle Debussy'
-                ),
-                array(
-                    'startAt' => new \DateTime(),
-                    'room' => 'Salle Debussy'
-                )
-            )
-        );
-        $focusArticles = array(
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-        );
-        $dayArticles = array(
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-            array(
-                'title' => 'Stéphane Beizé interroge la loi du marché',
-                'createdAt' => new \DateTime(),
-                'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                ),
-                'format' => 'article',
-                'theme' => 'competition',
-                'category' => 'competition',
-            ),
-        );
+        //get day articles
+        $count = 3;
+        $newsDate = $news->getPublishedAt();
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')
+            ->getSameDayNews(
+                $settings->getFestival()->getId(),
+                $locale,
+                $newsDate,
+                $count,
+                $news->getId()
+            );
 
         return array(
+            'focusArticles' => $focusArticles,
+            'programmations' => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $news,
             'associatedFilm' => $associatedFilm,
-            'film' => $film,
-            'focusArticles' => $focusArticles,
-            'dayArticles' => $dayArticles,
-            //  'article' => $article
+            'sameDayArticles' => $sameDayArticles,
         );
     }
 
@@ -780,9 +700,6 @@ class NewsController extends Controller
 
         //GET ALL NEWS ARTICLES
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale,$settings->getFestival()->getId(),$dateTime);
-        if ($newsArticles === null) {
-            throw new NotFoundHttpException();
-        }
 
         //set default filters
         $filters = array();
@@ -790,7 +707,6 @@ class NewsController extends Controller
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['slug'][0] = 'all';
 
-        $translator = $this->get('translator');
         foreach($newsArticles as $key => $newsArticle) {
             $newsArticle->image = $newsArticle->getHeader();
             $newsArticle->theme = $newsArticle->getTheme();
@@ -798,9 +714,8 @@ class NewsController extends Controller
             //check if filters don't already exist
             if(!in_array($newsArticle->getPublishedAt(),$filters['dates'])) {
                 $date = $newsArticle->getPublishedAt();
-                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+                $filters['dates'][] = ($date != null) ? $date : null;
             }
-
 
             if(!in_array($newsArticle->getTheme()->getName(),$filters['themes']['content'])) {
                 $filters['themes']['slug'][] = $newsArticle->getTheme()->getName();
@@ -809,10 +724,8 @@ class NewsController extends Controller
 
         }
 
-        $articles = $newsArticles;
-
         return array(
-            'articles' => $articles,
+            'articles' => $newsArticles,
             'filters' => $filters,
         );
     }
@@ -823,7 +736,6 @@ class NewsController extends Controller
      */
     public function getPhotosAction()
     {
-       /* //$offset = 30;
         $dateTime = new DateTime();
 
         $em   = $this->getDoctrine()->getManager();
@@ -835,120 +747,34 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        //GET ALL NEWS ARTICLES
+        //GET ALL PHOTOS ARTICLES
         $newsPhotos = $em->getRepository('BaseCoreBundle:News')->getNewsPhotos($locale,$settings->getFestival()->getId(),$dateTime);
 
-        foreach($newsPhotos as $newsPhoto) {
+        //set default filters
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
+        foreach($newsPhotos as $key => $newsPhoto) {
             $newsPhoto->image = $newsPhoto->getHeader();
             $newsPhoto->theme = $newsPhoto->getTheme();
+
+            //check if filters don't already exist
+            if(!in_array($newsPhoto->getPublishedAt(),$filters['dates'])) {
+                $date = $newsPhoto->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            }
+
+            if(!in_array($newsPhoto->getTheme()->getName(),$filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $newsPhoto->getTheme()->getName();
+                $filters['themes']['content'][] = $newsPhoto->getTheme();
+            }
+
         }
 
-        $photos = $newsPhotos;
-
-       */
-
-        //echo'<pre>'; print_r($photos); echo '</pre>';
-
-        $photos = array(
-            array(
-                'format'    => 'portrait',
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'format'    => 'portrait',
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'format'    => 'portrait',
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'format'    => 'portrait',
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/640x404/000/fff.png',
-                    'large'    => 'http://dummyimage.com/1280x808/ddd/000.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            )
-        );
-
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
-
         return array(
-            'photos' => $photos,
+            'photos' => $newsPhotos,
             'filters' => $filters,
         );
     }
@@ -959,57 +785,45 @@ class NewsController extends Controller
      */
     public function getVideosAction()
     {
-        $videos = array(
-            array(
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-        );
+        $dateTime = new DateTime();
 
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL VIDEOS ARTICLES
+        $newsVideos = $em->getRepository('BaseCoreBundle:News')->getNewsVideos($locale,$settings->getFestival()->getId(),$dateTime);
+
+        //set default filters
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
+        foreach($newsVideos as $key => $newsVideo) {
+            $newsVideo->image = $newsVideo->getHeader();
+            $newsVideo->theme = $newsVideo->getTheme();
+
+            //check if filters don't already exist
+            if(!in_array($newsVideo->getPublishedAt(),$filters['dates'])) {
+                $date = $newsVideo->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            }
+
+            if(!in_array($newsVideo->getTheme()->getName(),$filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $newsVideo->getTheme()->getName();
+                $filters['themes']['content'][] = $newsVideo->getTheme();
+            }
+
+        }
 
         return array(
-            'videos' => $videos,
+            'videos' => $newsVideos,
             'filters' => $filters,
         );
 
@@ -1017,62 +831,49 @@ class NewsController extends Controller
 
     /**
      * @Route("/audios")
-     * @Template("FDCEventBundle:News:list-audio.html.twig")
+     * @Template("FDCEventBundle:News/list:audio.html.twig")
      */
     public function getAudiosAction()
     {
-        $audios = array(
-            array(
-                'theme' => 'Conférence de presse',
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'sound'=> 'audio.mp3',
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-        );
+        $dateTime = new DateTime();
 
-        $filters = array(
-            'dates' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug' => 'date',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug' => 'date1',
-                    'content' => 'Date 2',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug' => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug' => 'theme1',
-                    'content' => 'Thème 1',
-                ),
-                array(
-                    'slug' => 'theme2',
-                    'content' => 'Thème 2',
-                ),
-            )
-        );
+        $em   = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null && $settings->getFestival() !== null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET ALL AUDIOS ARTICLES
+        $newsAudios = $em->getRepository('BaseCoreBundle:News')->getNewsAudios($locale,$settings->getFestival()->getId(),$dateTime);
+
+        //set default filters
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['slug'][0] = 'all';
+
+        foreach($newsAudios as $key => $newsAudio) {
+            $newsAudio->image = $newsAudio->getHeader();
+            $newsAudio->theme = $newsAudio->getTheme();
+
+            //check if filters don't already exist
+            if(!in_array($newsAudio->getPublishedAt(),$filters['dates'])) {
+                $date = $newsAudio->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            }
+
+            if(!in_array($newsAudio->getTheme()->getName(),$filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $newsAudio->getTheme()->getName();
+                $filters['themes']['content'][] = $newsAudio->getTheme();
+            }
+
+        }
 
         return array(
-            'audios' => $audios,
+            'audios' => $newsAudios,
             'filters' => $filters,
         );
     }

@@ -1,15 +1,17 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 <div id="breadcrumb">
     <div class="container">
         <ul>
             {% for crumb in breadcrumb %}
                 {% if loop.last == false %}
                     <li>
-                        <a href="#">{{ crumb.name }}</a>
+                        <a href="{{ crumb.url }}">{{ crumb.name }}</a>
                         <i class="icon icon_fleche-right"></i>
                     </li>
                 {% else %}
                     <li>
-                        <a href="#" class="active">{{ crumb.name }}...</a>
+                        <a href="" class="active">{{ crumb.name }} ...</a>
                     </li>
                 {% endif %}
             {% endfor %}

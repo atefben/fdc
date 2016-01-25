@@ -1,0 +1,14 @@
+<div class="video-player video actu_article_video">
+
+    {% set trans = news.video.findTranslationByLocale(app.request.locale) %}
+
+
+
+    <div class="image" style="background-image: url({% path trans.image, 'big' %});"></div>
+    <div class="picto"></div>
+    <div class="info">
+        <a href="{% path trans.file, 'reference' %}" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
+        <span class="date">{{ news.video.theme|trans_fallback('createdAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme|trans_fallback('createdAt')|date('H:i') }}</span>
+        <p>{{ trans.title }}</p>
+    </div>
+</div>

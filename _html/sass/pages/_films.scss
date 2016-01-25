@@ -85,9 +85,10 @@
      color: #ffffff;
      width: 100%;
      min-height: 405px;
-     background-size: cover;
-     background-position: center center;
      overflow: hidden;
+     background: center 0 no-repeat fixed;
+     background-size: cover;
+
      .bck-hover {
        background-color: #141414;
        width: 100%;
@@ -283,7 +284,6 @@
        }
        .push-footer .title-list-header, .bandeau-listfooter .title-list-header{
          margin-bottom: 20px;
-
        }
        .bandeau-lien {
          color: #c8a461;
@@ -293,6 +293,12 @@
          text-transform: uppercase;
          font-size: 0.75rem;
          font-family: $CamphorHeavy;
+         @include transition(all 1s $linear);
+
+         &:hover {
+           opacity: 0.5;
+         }
+
          .svg-arrow{
            width: 12px;
            vertical-align: baseline;
@@ -304,6 +310,48 @@
        width: 1000px;
        margin: 0 auto;
        text-align: center;
+
+       &:after {
+         background-color: $black;
+         content: '';
+         display: block;
+         height: 100%;
+         left: 0;
+         opacity: 0;
+         position: absolute;
+         top: 0;
+         visibility: hidden;
+         width: 100%;
+         z-index: 5;
+         @include transition(all 0.3s $smoothTransition);
+       }
+
+       &:before {
+         background-color: $black;
+         content: '';
+         display: block;
+         height: 110%;
+         left: 0;
+         opacity: 0;
+         position: absolute;
+         top: -2px;
+         visibility: hidden;
+         width: 100%;
+         z-index: 5;
+         @include transition(all 0.9s $smoothTransition);
+       }
+
+       &.loading:before {
+         opacity: 1;
+         visibility: visible;
+       }
+
+       &.overlay:after {
+         opacity: 0.6;
+         visibility: visible;
+       }
+
+
        a {
          color: #686868;
          font-size: 0.8rem;
@@ -328,7 +376,7 @@
        }
      }
      .nav-movie.sticky{
-       z-index: 9;
+       z-index: 5;
        width: 100%;
        background-color: #1b1b1b;
      }
@@ -338,7 +386,7 @@
        font-family: $CamphorBold;
        background-color: #202020;
        width: 100%;
-       z-index: 9;
+       z-index: 5;
        transition: .3s;
        a {
          color: #999999;

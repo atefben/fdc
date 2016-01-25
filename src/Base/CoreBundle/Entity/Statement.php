@@ -4,7 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use \DateTime;
 
-use Base\CoreBundle\Util\Seo;
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -31,7 +31,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 abstract class Statement implements TranslateMainInterface
 {
     use Time;
-    use Seo;
+    use SeoMain;
     use TranslateMain;
 
     /**
@@ -46,9 +46,9 @@ abstract class Statement implements TranslateMainInterface
     private $id;
 
     /**
-     * @var StatementTheme
+     * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="StatementTheme")
+     * @ORM\ManyToOne(targetEntity="Theme")
      *
      * @Groups({"statement_list", "statement_show"})
      * @Assert\NotNull()
@@ -283,10 +283,10 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\StatementTheme $theme
+     * @param \Base\CoreBundle\Entity\Theme $theme
      * @return Statement
      */
-    public function setTheme(\Base\CoreBundle\Entity\StatementTheme $theme = null)
+    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
         $this->theme = $theme;
 

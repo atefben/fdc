@@ -14,8 +14,7 @@
           <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
           <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
           <div class="info">
-            <a href="#" class="category">Leçon de cinéma</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
+            <a href="#" class="category">Expositions</a>
           </div>
           <h2 class="title-article">Marco Bellocchio</h2>
           <div class="buttons">
@@ -225,8 +224,8 @@
         <div class="share">
           <p>Partagez l'article</p>
           <div class="buttons square">
-            <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-            <a href="#" class="button twitter"><i class="icon icon_twitter"></i>
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+            <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
   </a>
             <a href="#" class="button link"><i class="icon icon_link"></i></a>
             <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
