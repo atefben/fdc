@@ -15,7 +15,7 @@
             {% if trans is null or trans.image is null %}
                 {% set trans = audio.findTranslationByLocale('fr') %}
             {% endif %}
-            <div class="item {{ audio.theme|trans_fallback('name') }} {{ audio|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video" data-sound="{% path trans.file , 'small'%}">
+            <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video" data-sound="{% path trans.file , 'small'%}">
                 <img src="{% path trans.image , 'big' %}" srcset="{% path trans.image , 'big' %} 1x, {% path trans.image , 'big' %} 2x" alt="">
                 <div class="picto">
                     <i class="icon icon_audio"></i>
@@ -23,7 +23,7 @@
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">{{ audio.theme }}</a><span class="date">{{ audio|trans_fallback('createdAt')|date('d.m.y') }}</span>
+                            <a href="#" class="category">{{ audio.theme|trans_fallback('name') }}</a><span class="date">{{ audio|trans_fallback('createdAt')|date('d.m.y') }}</span>
                             <p>{{ audio|trans_fallback('title') }}</p>
                         </div>
                     </div>

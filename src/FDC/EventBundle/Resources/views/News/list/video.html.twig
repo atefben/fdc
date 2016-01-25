@@ -15,7 +15,7 @@
             {% if trans is null or trans.file is null %}
                 {% set trans = video.findTranslationByLocale('fr') %}
             {% endif %}
-            <div class="item {{ video.theme|trans_fallback('name') }} {{ video|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video">
+            <div class="item {{ video.theme|trans_fallback('slug') }} {{ video|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video">
                 <a id="video1" class="ajax chocolat-image" href="{% path trans.image , 'big' %}"
                    title='<span class="category">{{ video.theme }}</span><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ video|trans_fallback('title') }}</h2>'
                    data-credit="{{ video.copyright }}"></a>
@@ -26,7 +26,7 @@
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">{{ video.theme }}</a><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span>
+                            <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span>
                             <p>{{ video|trans_fallback('title') }}</p>
                         </div>
                     </div>
