@@ -110,6 +110,7 @@
             data-email="//www.gmail.com"
             data-playlist="false"
             data-live="false"
+            data-file=""
             data-img="/img/article/004.jpg">
             <div id="video-player" class="video-player v_<?php echo time();?>">
             </div>
