@@ -16,7 +16,35 @@
     </div>
     <section>
       <article class="video">
-        <img src="img/webtv/video1.jpg" alt="video">
+        <div class="video-container state-init video"
+          data-facebook="//www.facebook.com"
+          data-twitter="//www.twitter.com"
+          data-link="//www.example.com"
+          data-email="//www.gmail.com"
+          data-playlist="false"
+          data-live="false"
+          data-file=""
+          data-img="/img/article/004.jpg">
+          <div id="video-player" class="video-player v_<?php echo time();?>">
+          </div>
+          <div class="video-overlay"></div>
+          <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+              <div class="vCenter">
+                <div class="vCenterKid">
+                  <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <p>The Lobster</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            play1 = playerInit('video-player', false, $('#video-player').data('playlist'), false);
+        });
+        </script>
         <span class="type-video">Bande annonce</span>
         <span class="name-video">Valley of Love</span>
       </article>
