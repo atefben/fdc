@@ -23,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Info
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\StatementRepository")
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\InfoRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "InfoArticle", "audio" = "InfoAudio", "image" = "InfoImage", "video" = "InfoVideo"})
