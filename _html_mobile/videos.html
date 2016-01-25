@@ -13,7 +13,7 @@
     <!-- /build -->
 </head>
 <body>
-<div id="main" class="articles">
+<div id="main" class="all-videos" data-menu="actu">
 	<!-- menu -->
 	<nav class="st-menu st-effect" id="menu">
 		<div id="top-menu" class="owl-carousel sliderDrag">
@@ -42,7 +42,7 @@
 		</div>
 		<div id="main-nav" class="menu-section">
 		    <ul id="main-nav-list" class="">
-				<li class="">
+				<li class="actu">
 					<div class="section-title has-subsection">
 						<h3 class="title-menu">l'actualité <span class="more-minus">+</span></h3>
 						
@@ -57,7 +57,7 @@
 						</ul>
 					</div>
 				</li>
-				<li>
+				<li class="webtv">
 					<div class="section-title has-subsection">
 						<h3 class="title-menu">web tv <span class="more-minus">+</span></h3>
 						
@@ -70,28 +70,28 @@
 						</ul>
 					</div>
 				</li>
-				<li>
+				<li class="selection">
 					<a href="selectionofficielle_competition.html">
 						<div class="section-title">
 							<h3 class="title-menu">La séléction</h3>
 						</div>
 					</a>
 				</li>
-				<li>
+				<li class="jury">
 					<a href="jury_longsmetrages.html">
 						<div class="section-title">
 							<h3 class="title-menu">Les jurys</h3>
 						</div>
 					</a>
 				</li>
-				<li>
-					<a href="">
+				<li class="palmares">
+					<a href="palmares_camerador.html">
 						<div class="section-title">
 							<h3 class="title-menu">le palmarès</h3>
 						</div>
 					</a>
 				</li>
-				<li>
+				<li class="events">
 					<a href="events.html">
 						<div class="section-title">
 							<h3 class="title-menu">les événements</h3>
@@ -101,17 +101,17 @@
 			</ul>
 			<div class="small-separator"></div>
 			<ul class="second-nav">
-				<li>
+				<li class="prog">
 					<a href="">
 						<i class="icon icon_programmation"></i>Programmation
 					</a>
 				</li>
-				<li>
+				<li class="participate">
 					<a href="participate_access.html">
 						<i class="icon icon_participer"></i>Participer
 					</a>
 				</li>
-				<li>
+				<li class="press">
 					<a href="press.html">
 						<i class="icon icon_espace-presse"></i>Espace presse
 					</a>
@@ -119,17 +119,17 @@
 			</ul>
 			<div class="small-separator"></div>
 			<ul class="third-nav">
-				<li>
+				<li class="my-selection">
 					<a href="">
 						<i class="icon icon_ma-selection"></i>Ma sélection
 					</a>
 				</li>
-				<li>
+				<li class="">
 					<a href="http://sub.festival-cannes.fr/" target="_blank">
 						<i class="icon icon_mon-compte"></i>mon Compte
 					</a>
 				</li>
-				<li>
+				<li class="">
 					<a href="">
 						<i class="icon icon_langue"></i>FR
 					</a>
@@ -163,14 +163,14 @@
 		    <div class="footer-menu">
 		    	<p>© Copyright 2016</p>
 		      <ul>
-		        <li><a href="contact.html">Contact</a></li>
-		        <li><a href="faq.html">FAQ</a></li>
-		        <li><a href="#">Crédits</a></li>
-		        <li><a href="legals.html">Mentions Légales</a></li>
-		        <li><a href="#">Nous rejoindre</a></li>
-		        <li><a href="#">Boutique</a></li>
-		        <li><a href="sitemap.html">Plan du Site</a></li>
-		        <li><a href="#">Politique de Confidentialité</a></li>
+		        <li class="contact"><a href="contact.html">Contact</a></li>
+		        <li class="faq"><a href="faq.html">FAQ</a></li>
+		        <li class="credits"><a href="#">Crédits</a></li>
+		        <li class="legals"><a href="legals.html">Mentions Légales</a></li>
+		        <li class=""><a href="#">Nous rejoindre</a></li>
+		        <li class=""><a href="#">Boutique</a></li>
+		        <li class="sitemap"><a href="sitemap.html">Plan du Site</a></li>
+		        <li class="policy"><a href="#">Politique de Confidentialité</a></li>
 		      </ul>
 		      <div class="clear"></div>
 		    </div>
@@ -197,6 +197,23 @@
 
 	
 	<!-- end header -->
+	<div class="fullscreenplayer">
+		<div class="close-button"><i class="icon icon_close"></i></div>
+		<div class="vCenter">
+			<div class="vCenterKid">
+				<div id="player1"></div>
+				<p class="category">Conférence de presse</p>
+		        <p>Rencontre avec l'équipe de Carol</p>
+		        <div class="buttons square">
+		          <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&amp;t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+		          <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i></a>
+		          <a href="#" class="button link" data-clipboard-text="http://html.festival-cannes-2016.com.ohwee.fr/audios.php"><i class="icon icon_link"></i></a>
+		          <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+		        </div>
+			</div>
+		</div>
+	</div>
+	
 	<div class="container">
 		<h2 class="title one-line">Toutes les vidéos</h2>
 
@@ -227,12 +244,12 @@
 
 
 	<div class="list" id="list-videos">
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">Conférence de presse</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -242,12 +259,12 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample2.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">PHOTOCALL</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -257,12 +274,12 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">montée des marches</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -272,12 +289,12 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample2.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">Conférence de presse</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -287,12 +304,12 @@
 
 
 		</div>
-		<div class="item theme1">
+		<div class="item item-video theme1" data-video="/videos/sample.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">Conférence de presse</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -302,12 +319,12 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample2.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">Conférence de presse</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -317,12 +334,12 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">Conférence de presse</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -332,12 +349,12 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample2.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">Conférence de presse</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -347,12 +364,12 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">Conférence de presse</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -362,12 +379,12 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item item-video" data-video="/videos/sample2.mp4">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_video"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">Conférence de presse</a></p>
+		              	<p class="category">Conférence de presse</p>
 		              	<p>Rencontre avec l'équipe de Carol</p>
 	              	</div>
             	</div>
@@ -382,7 +399,7 @@
 </div>
 <footer class="dark-container">
   <div class="container">
-    <h2 class="title">Newsletter</h2>
+    <h2 class="title one-line">Newsletter</h2>
     <h3 class="subtitle">Toute l'actualité du festival</h3>
 
     <div class="newsletter">

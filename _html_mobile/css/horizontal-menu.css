@@ -1,6 +1,7 @@
 #horizontal-menu{
   height: 110px;
   background-color: #202020;
+  z-index: 50;
 }
 
 #horizontal-menu .vid {
@@ -32,4 +33,25 @@
 #horizontal-menu .owl-stage{
 
   height: 100%;
+}
+.content-selection{
+    opacity: 0;
+    -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
+    -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+
+}
+.content-selection.show{
+
+  opacity: 1;
+}
+#main{
+  background-color: #141414;
+}
+#banner-top, #banner-bottom{
+    background-size: 0 0;
+}
+#banner-top.show, #banner-bottom.show{
+  background-size: cover;
 }

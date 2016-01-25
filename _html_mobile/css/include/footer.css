@@ -165,10 +165,23 @@ footer .newsletter #submit {
 }
 
 @media only screen  and (orientation : landscape) {
-/* Styles pour cette Media Queries */
-#landscape{
-  display: block;
+  /* Styles pour cette Media Queries */
+  #landscape{
+    display: block;
+  }
+  html, body { overflow: hidden; height: 100%; }
+      body { margin:0; padding:0; }
+
+  .allow-landscape #landscape{
+    display: none;
+  }
 }
-html, body { overflow: hidden; height: 100%; }
-    body { margin:0; padding:0; }
+
+@media only screen  and (max-aspect-ratio:13/9) {
+  /* Styles pour cette Media Queries */
+  #landscape{
+    display: none;
+  }
+  html, body { overflow: visible; height: inherit; }
+
 }

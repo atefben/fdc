@@ -27,7 +27,7 @@ class StatementWidgetAudio extends StatementWidget
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return NewsWidgetAudio
+     * @return StatementWidgetAudio
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
     {

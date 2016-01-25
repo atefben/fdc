@@ -58,13 +58,14 @@ $(document).ready(function() {
         var s = $(window).scrollTop();
         var h = $("#main").height()-900;
         var footer = $('footer').offset().top - 750;
-
-        if(s < h && s > 30) {
-          $(".faq-menu").css({position: "fixed", top: 389});
-        } else if(s > footer - 200 ){
-          $(".faq-menu").css({position: "absolute",top: footer});
-        } else if (s<30){
-          $(".faq-menu").css({position: "fixed", top: 389});
+        if($('header').hasClass('sticky')){
+          if(s < h && s > 30) {
+            $(".faq-menu").css({position: "fixed", top: 389});
+          } else if(s > footer - 200 ){
+            $(".faq-menu").css({position: "absolute",top: footer});
+          } else if (s<30){
+            $(".faq-menu").css({position: "fixed", top: 389});
+          }
         }
     });
 

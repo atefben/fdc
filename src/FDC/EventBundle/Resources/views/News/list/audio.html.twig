@@ -11,15 +11,17 @@
         <div class="grid-sizer"></div>
 
         {% for audio in audios %}
-            <div class="item {{ audio.filter.theme }} {{ audio.filter.date }} shadow-bottom video" data-sound="{{ audio.sound }}">
+            <div class="item {{ article.theme|trans_fallback('name') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video" data-sound="{{ audio.sound }}">
 
                 <img src="{{ audio.image.src }}" srcset="{{ audio.image.src }} 1x, {{ audio.image.large }} 2x" alt="">
-                <div class="picto"></div>
+                <div class="picto">
+                    <i class="icon icon_audio"></i>
+                </div>
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">{{ audio.theme }}</a><span class="date">{{ audio.createdAt|date('d.m.y') }}</span>
-                            <p>{{ audio.title }}</p>
+                            <a href="#" class="category">{{ audio.theme }}</a><span class="date">{{ audio|trans_fallback('createdAt')|date('d.m.y') }}</span>
+                            <p>{{ audio|trans_fallback('title') }}</p>
                         </div>
                     </div>
                 </div>
@@ -28,5 +30,20 @@
 
     </div>
 </div>
+
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.audios'|trans ,
+        "url"  : path('fdc_event_news_getaudios')
+    },
+]
+} %}
 {% endblock %}
 

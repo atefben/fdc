@@ -224,8 +224,8 @@ class StatementVideoAdmin extends Admin
                 'help' => 'form.statement.helper_signature'
             ))
             ->add('video', 'sonata_type_model_list', array(
-                'label' => 'form.label_video_image',
-                'help' => 'form.statement.helper_video_image',
+                'label' => 'form.label_video_file',
+                'help' => 'form.statement.helper_video_file',
                 'translation_domain' => 'BaseAdminBundle',
                 'required' => false
             ))
@@ -261,7 +261,7 @@ class StatementVideoAdmin extends Admin
                 'label' => 'form.label_statement_statement_associated',
                 'help' => 'form.statement.helper_statement_statement_associated',
                 'by_reference' => false,
-                'btn_add' => false,
+                'btn_add' => true,
                 'required' => false,
             ), array(
                     'edit' => 'inline',
@@ -318,5 +318,28 @@ class StatementVideoAdmin extends Admin
         $showMapper
             ->add('id')
         ;
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function prePersist($object)
+    {
+
+        foreach ($object->getAssociatedStatement() as $statement) {
+            $statement->setStatement($object);
+        }
+
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function preUpdate($object)
+    {
+
+        foreach ($object->getAssociatedStatement() as $statement) {
+            $statement->setStatement($object);
+        }
     }
 }

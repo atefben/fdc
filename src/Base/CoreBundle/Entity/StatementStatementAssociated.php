@@ -42,7 +42,7 @@ class StatementStatementAssociated
     protected $statement;
 
     /**
-     * @var StatementArticle
+     * @var Statement
      *
      * @ORM\ManyToOne(targetEntity="Statement")
      */
@@ -65,10 +65,11 @@ class StatementStatementAssociated
     {
     }
 
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -79,7 +80,7 @@ class StatementStatementAssociated
      * Set statement
      *
      * @param \Base\CoreBundle\Entity\Statement $statement
-     * @return StatementAssociatedStatement
+     * @return StatementStatementAssociated
      */
     public function setStatement(\Base\CoreBundle\Entity\Statement $statement = null)
     {
@@ -91,7 +92,7 @@ class StatementStatementAssociated
     /**
      * Get statement
      *
-     * @return \Base\CoreBundle\Entity\Statement
+     * @return \Base\CoreBundle\Entity\Statement 
      */
     public function getStatement()
     {
@@ -114,7 +115,7 @@ class StatementStatementAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\Statement
+     * @return \Base\CoreBundle\Entity\Statement 
      */
     public function getAssociation()
     {

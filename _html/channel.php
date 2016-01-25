@@ -24,8 +24,8 @@
             <p>Interview des réalisateurs des Courts Métrages en Compétition</p>
          </div>
             <div class="buttons square">
-              <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-              <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+              <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i></a>
               <a href="#" class="button link"><i class="icon icon_link"></i>
 </a>
               <a href="#" class="button email"><i class="icon icon_lettre"></i>
@@ -34,7 +34,7 @@
        </div>
      </div>
       <div id="content-channels">
-        <div id="slider-channels" class="owl-carousel sliderDrag">
+        <div id="slider-trailer" class="owl-carousel sliderDrag">
           <div class="channel shadow-bottom">
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
@@ -44,6 +44,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Photocall</a>
+                    <span class="date">18.05.15</span>
                     <span>103 vidéos</span>
                   </div>
                 </div>
@@ -59,6 +60,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
+                    <span class="date">18.05.15</span>
                     <span>282 vidéos</span>
                   </div>
                 </div>
@@ -74,6 +76,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
+                    <span class="date">18.05.15</span>
                     <span>47 vidéos</span>
                   </div>
                 </div>
@@ -89,6 +92,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Photocall</a>
+                    <span class="date">18.05.15</span>
                     <span>103 vidéos</span>
                   </div>
                 </div>
@@ -104,6 +108,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a>
+                    <span class="date">18.05.15</span>
                     <span>282 vidéos</span>
                   </div>
                 </div>
@@ -119,6 +124,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Conférence de presse</a>
+                    <span class="date">18.05.15</span>
                     <span>47 vidéos</span>
                   </div>
                 </div>

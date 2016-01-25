@@ -19,6 +19,11 @@ services:
         tags:
             - { name: twig.extension }
 
+    base.twig.statement_widget_instance_of_extension:
+        class: Base\CoreBundle\Twig\Extension\StatementWidgetInstanceOfExtension
+        tags:
+            - { name: twig.extension }
+
     base.twig.trans_fallback_extension:
         class: Base\CoreBundle\Twig\Extension\TransFallbackExtension
         tags:
@@ -39,6 +44,12 @@ services:
 
     base.twig.film_media_extension:
         class: Base\CoreBundle\Twig\Extension\FilmMediaExtension
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: twig.extension }
+
+    base.twig.news_type_extension:
+        class: Base\CoreBundle\Twig\Extension\NewsTypeExtension
         arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: twig.extension }

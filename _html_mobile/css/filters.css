@@ -1,53 +1,70 @@
 /*FILTERS*/
 .filters{
-	width:100%;
-	margin: 0 auto;
-	padding-bottom: 80px;
-    position: relative;
+
+	padding-bottom: 75px;
+  text-align: center;
 }
-.filters div {
+.filters div,.filters-slider .filter, .filters-slider .select {
     display: inline-block;
     font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-    font-size: 1.4rem;
+    font-size: 20px;
     text-transform: uppercase;
     font-weight: 700;
 }
 .filters .filter{
-	margin-right: 40px;
+	margin:0 20px;
 }
-.filters .filter:last-child{
-	margin-right: 0;
-    position: absolute;
-    right: 10px;
-}
-.filters div .label {
+
+.filters div .label, .filters-slider .filter .label {
     color: #333;
     margin-right: 5px;
     letter-spacing: 0.1em;
 }
-.filters div .select{
+.filters div .select, .filters-slider .filter .select{
 	 color: #c8a461;
     cursor: pointer;
 }
-.filters div .select i{
-	font-size: 1rem;
+.filters div .select i, .filters-slider .filter .select i{
+  font-size: 1rem;
+  margin-top: -2px;
 }
-.filters div .select span {
-/*    background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
-    background-size: 6px;*/
-    display: none;
-    padding-right: 13px;
-    max-width: 120px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-.filters div .select span.active {
+.filters-slider .filter .select span.active{
     display: inline-block;
     height: 28px;
     line-height: 36px;
     vertical-align: bottom;
 }
+.filters div .select span, .filters-slider .filter .select span  {
+/*    background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
+    background-size: 6px;*/
+    display: none;
+    padding-right: 13px;
+    max-width: 110px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.filters div .select span.active{
+    display: inline-block;
+    height: 28px;
+    line-height: 36px;
+    vertical-align: bottom;
+}
+
+
+.filters-slider{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.filters-slider .filter{
+  height: 100%;
+  margin: 0;
+}
+.filters-slider .owl-stage{
+  /*margin-left:40px;*/
+}
+
 .vCenter {
     display: inline-table;
     height: 100%;
@@ -57,20 +74,7 @@
     display: table-cell;
     vertical-align: middle;
 }
-.close-button{
-    border: 1px solid #c8a461;
-    cursor: pointer;
-    height: 90px;
-    opacity: 0.6;
-    position: absolute;
-    top: 140px;
-    right: 40px;
-    width: 90px;
-    color:#c8a461;
-    line-height: 90px;
-    text-align: center;
 
-}
 #filters{
     background-color: rgba(0, 0, 0, 0.9);
     height: 100%;

@@ -40,8 +40,7 @@ class StatementWidgetType extends BaseType
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
-            ->add('position', 'hidden')
-        ;
+            ->add('position', 'integer');
     }
     
     /**
@@ -58,7 +57,32 @@ class StatementWidgetType extends BaseType
             'model_class' => $this->dataClass,
         ));
     }
-    
+
+    /**
+     * @param mixed $object
+     */
+    public function prePersist($object)
+    {
+
+        foreach ($object->getWidgets() as $widget) {
+            $object->addWidget($widget);
+        }
+
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function preUpdate($object)
+    {
+
+        foreach ($object->getWidgets() as $widget) {
+            $object->addWidget($widget);
+        }
+
+    }
+
+
     /**
      * getName function.
      * 

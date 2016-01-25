@@ -83,8 +83,7 @@
       text-transform: uppercase;
     }
     .img {
-      background-position: center 30%;
-      background-repeat: no-repeat;
+      background: center 0 no-repeat fixed;
       background-size: cover;
       opacity: 0.5;
       position: absolute;
@@ -290,6 +289,15 @@
       margin-right: 10px;
     }
   }
+  #slider-trailer{
+    .info-container .vCenterKid{
+      .hour, .date{
+        color: #666;
+        display: inline-block;
+        font-size: 0.625rem;
+      }
+    }
+  }
   .channel {
     &:after {
       border: 4px solid $gold;
@@ -307,6 +315,7 @@
       @include transition(all 0.3s $smoothTransition);
     }
   }
+
   .owl-item.center .channel:after {
     opacity: 1;
     visibility: visible;
@@ -316,9 +325,6 @@
      width: 975px;
      .player{
        margin-top: 49px;
-     }
-     #content-channels{
-       padding-top: 26px;
      }
      .infos-videos{
        padding-top: 18px;
@@ -368,8 +374,14 @@
          a:hover + .button {
               border-left-color: $gold;
           }
+          a:last-child:hover{
+            border-right-color: $gold !important;
+          }
        }
      }
+  }
+  #content-channels{
+    padding-top: 23px;
   }
 }
 
@@ -405,6 +417,7 @@
     width: 100%;
   }
   #live {
+    background: center 0 no-repeat fixed;
     background-size: cover;
     h2 {
       font-family: $Playfair;
@@ -558,11 +571,17 @@
       font-size: 9.6px;
       font-family: "Camphor W01 Bold";
       letter-spacing: 0.1em;
+      @include transition(all .5s $smoothTransition);
+
       .icon{
         margin-right: 10px;
         font-size: .45rem;
         vertical-align: middle !important;
         margin-bottom: 2px;
+      }
+
+      &:hover{
+        opacity: .5;
       }
     }
     h1 {
@@ -682,6 +701,7 @@
           font-family: $CamphorBold;
           font-size: 0.625rem;
           color: #666;
+          margin-bottom: 10px;
           .date {
             color: #bababa;
             margin-left: 5px;

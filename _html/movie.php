@@ -65,7 +65,12 @@
             <div class="title-original">(Adieu au langage)</div>
             <p>Réalisé par : <a href="#">Jean-Luc GODARD</a></p>
             <p>Année de production : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
-
+          </div>
+            <!-- <div class="palmares">
+              <i class="icon icon_palme"></i>
+              <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
+            </div> -->
+            <div class="info-film">
             <div  class="synopsis">
               <h3 class="title-section">Synopsis</h3>
               <p>Le propos est simple<br />
@@ -99,8 +104,8 @@
               <li><a href="#press">infos presse</a></li>
             </ul>
             <div class="buttons square">
-              <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-              <a href="#" class="button twitter"><i class="icon icon_twitter"></i>
+              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+              <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
     </a>
               <a href="#" class="button link"><i class="icon icon_link"></i></a>
               <a href="#" class="button email"><i class="icon icon_lettre"></i></a>

@@ -2,6 +2,7 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
+    {% include 'FDCEventBundle:News:widgets/social-share.html.twig' %}
 <div id="main" class="single-article loading ">
     <span id="addtext">{{ 'article.text.ajouteramaselection'|trans }}</span>
     <div id="canvasloader" class="canvasloader"></div>
@@ -59,11 +60,21 @@
         <div class="share">
             <p>{{ 'article.text.partagerarticle'|trans }}</p>
             <div class="buttons square">
-                <a href="#" class="button facebook"></a>
-                <a href="#" class="button twitter"></a>
-                <a href="#" class="button link"></a>
-                <a href="#" class="button email"></a>
-                <a href="#" class="button print"></a>
+                <a href="#" class="button facebook" onclick="window.open('http://www.facebook.com/sharer.php?u={{ app.request.getUri }}','Share {{ news|trans_fallback('title') }}','width=600,height=400')">
+                    <i class="icon icon_facebook"></i>
+                </a>
+                <a href="#" class="button twitter">
+                    <i class="icon icon_twitter"></i>
+                </a>
+                <a href="#" class="button link">
+                    <i class="icon icon_link"></i>
+                </a>
+                <a href="#" class="button email">
+                    <i class="icon icon_lettre"></i>
+                </a>
+                <a href="#" class="button print">
+                    <i class="icon icon_print"></i>
+                </a>
             </div>
         </div>
 
@@ -129,15 +140,17 @@
             {% endif %}
         </div>
         <div class="container">
+            {% if focusArticles != null and focusArticles|length > 0 %}
             <div class="focus">
                 <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                 <div class="articles">
-                    {% for article in sameDayArticles %}
+                    {% for article in focusArticles %}
                         {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
                     {% endfor %}
                 </div>
             </div>
-            {% if sameDayArticles != null %}
+            {% endif %}
+            {% if sameDayArticles != null and sameDayArticles|length > 0 %}
             <div class="same-day">
                 <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
                 <div class="articles center">
@@ -162,23 +175,23 @@
 }}
 <!-- END POPIN MAIL SHARE -->
 
-    <!-- BREADCRUMB -->
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-    {"breadcrumb":
-    [
-        {
-            "name" : 'header.mainnav.nav.jourapresjour'|trans ,
-            "url"  : path('fdc_event_news_index')
-        },
-        {
-            "name" : 'header.mainnav.nav.articles'|trans ,
-            "url"  : path('fdc_event_news_getarticles')
-        },
-        {
-            "name" : news|trans_fallback('title') ,
-            "url"  : ''
-        }
-    ]
-    } %}
+<!-- BREADCRUMB -->
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+    {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+        "url"  : path('fdc_event_news_index')
+    },
+    {
+        "name" : 'header.mainnav.nav.articles'|trans ,
+        "url"  : path('fdc_event_news_getarticles')
+    },
+    {
+        "name" : news|trans_fallback('title') ,
+        "url"  : ''
+    }
+]
+} %}
 
 {% endblock %}

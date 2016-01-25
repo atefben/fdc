@@ -310,8 +310,6 @@
         position: absolute;
         top: 7px;
         right: 10px;
-        background: url('../img/svg/close-white.svg') no-repeat center;
-        background-size: cover;
         height: 12px;
         width: 12px;
       }
@@ -894,7 +892,7 @@
                 z-index: 0!important;
 
                 &.ui-draggable-dragging {
-                  z-index: 5!important;
+                  z-index: 10!important;
                 }
 
                 &.ui-draggable-dragging .category:after {
@@ -936,12 +934,17 @@
         top: 0;
 
         .arrow {
+          background-color: #fff;
           display: none;
+          font-size: 0.750em;
+          line-height: 40px;
+          text-align: center;
         }
 
         @include breakpoint(1279px) {
           padding: 0 43px;
           width: 260px;
+          overflow: hidden;
 
           .timeline-container {
             width: 600px;
@@ -1453,6 +1456,11 @@
   &.press-home {
     .popin-event {
       height: 1012px;
+
+      @include breakpoint(1024px) {
+        height: auto;
+        min-height: 1012px;
+      }
     }
   }
 
@@ -1553,6 +1561,30 @@
 .fullcalendar {
   .header-press {
     border: none;
+
+    .container{
+      position: relative;
+
+      .buttons{
+        right: 0px;
+        position: absolute;
+        float: right;
+        .button{
+          &:hover{
+            color:#fff;
+            background-color: $gold;
+          }
+        }
+        .export{
+          &:hover{
+            background-color: #fff;
+            color: $gold;
+            opacity: 1;
+          }
+        }
+      }
+
+    }
   }
 
   #calendar {
@@ -1677,8 +1709,7 @@
     width: 70px;
     color: $gold;
     .icon{
-      margin-top: 28px;
-      margin-left: 28px;
+      line-height: 72px;
     }
 
     &:hover{
@@ -1797,6 +1828,10 @@
         display: inline-block;
         margin-right: 20px;
         width: 225px;
+
+        @include breakpoint(1024px) {
+          margin-bottom: 22px;
+        }
 
         p {
           margin-bottom: 5px;
@@ -2261,6 +2296,10 @@
 //        font-size: 1rem;
         color:#666;
         border: 1px solid #CCC;
+
+        &.error{
+          border-color: red;
+        }
       }
       .time{
         display: inline-block;
