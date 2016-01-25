@@ -3675,6 +3675,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
+    
 }
 ol, ul {
     list-style: none;
@@ -5872,11 +5873,12 @@ footer .newsletter #submit {
     display:table;
     height: 180px;
     position: relative;
-
+    -webkit-transform: translate3D(0,0,0);
+    transform: translate3D(0,0,0);
 }
 .sticky #header  {
     position: fixed;
-    top: 0;
+    top: 0px;
     padding: 0;
     height: 90px;
 }
