@@ -345,7 +345,7 @@ $(document).ready(function() {
     }
     if($('.ba').length || $('.channel').length){
     	var first = $(".thumbnails .thumb").first();
-    	var playerInstance = jwplayer("player1");
+    	var playerInstance = jwplayer("player");
     	first.parents('.slideshow').find('.title-video').html(first.find('.category').html());
 	    first.parents('.slideshow').find('.caption').html(first.find('.titleLink').html());
 
@@ -396,7 +396,7 @@ $(document).ready(function() {
 	    // HERE CHANGE SOURCE OF PLAYER VIDEO
 	    // $(this).parents('.slideshow').find('.images .img').removeClass('active');
 
-	    var i = $(this).index(),
+	    	var i = $(this).index(),
 	        vid = $(this).find('.thumb').data('video'), image = $(this).find('.thumb').data('poster');
 	        jwplayer().load({
                 file: vid,
