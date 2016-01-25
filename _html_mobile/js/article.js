@@ -91,6 +91,21 @@ $(document).ready(function() {
 	//     sliderCompetition.owlCarousel();
 
 
+	// INIT VIDEO PLAYER
+
+	var playerInstance = jwplayer("player");
+    playerInstance.setup({
+	    file: $("#player").data('video'),
+	    image: $("#player").data('poster'),
+	    width: "100%",
+	    aspectratio: "16:9",
+	    displaytitle: false,
+	    skin: {
+		  name: "five"
+		}
+    });
+
+
 	// PLAYERS AUDIO
 
 	initAudioPlayers()
