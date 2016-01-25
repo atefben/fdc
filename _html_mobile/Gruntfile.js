@@ -209,7 +209,8 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/webtv.js',
 				            './js/slidervideos.js',
-				            './js/channel.js'
+				            './js/channel.js',
+				            './js/fullscreenplayer.js'
 				        ],
 			        './js-concat/channels.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 

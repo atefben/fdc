@@ -307,7 +307,8 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-	$('.item-video').on("click",function(){
+	$('.item-video').on("click",function(e){
+		e.preventDefault();
 		$('.fullscreenplayer').addClass('show');
 		setTimeout(function() {
 	      
@@ -318,7 +319,7 @@ $(document).ready(function() {
 		var playerInstance = jwplayer("player1");
         playerInstance.setup({
         file: $(this).data('video'),
-        image: './img/playervideo.jpg',
+        image: $(this).data('poster'),
         width: "100%",
         aspectratio: "16:9",
         displaytitle: false,
@@ -327,7 +328,8 @@ $(document).ready(function() {
 		  name: "five"
 		 }
         });
-		
+		$('.fullscreenplayer').find('.category').html($(this).find('.category').html());
+	    $('.fullscreenplayer').find('.title-video').html($(this).find('.titleLink').html());
 	});
 
 	$('body').on('click', '.close-button', function(e){
