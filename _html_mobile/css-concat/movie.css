@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
+    
 }
 ol, ul {
     list-style: none;
@@ -1251,12 +1252,12 @@ from desktop
   margin-left: 14px;
   margin-top: 14px;
 }
-#slider-videos .picto{
+#slider-videos .picto, #slider-last-videos .picto{
   width: 70px;
   height: 70px;
   text-align: center;
 }
-.featured-videos #slider-videos.videosSlider .vid .picto .icon{
+.featured-videos #slider-videos.videosSlider .vid .picto .icon, .featured-videos #slider-last-videos.videosSlider .vid .picto .icon{
    font-size: 1.8rem;
     margin: 0;
 }
@@ -2587,7 +2588,8 @@ footer:before {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
- footer.dark-container .title {
+ footer.dark-container .title, 
+.all-videos footer .container .title {
   color: #fff;
   margin: 0px auto 10px;
   padding: 0;
@@ -2738,11 +2740,12 @@ footer .newsletter #submit {
     display:table;
     height: 180px;
     position: relative;
-
+    -webkit-transform: translate3D(0,0,0);
+    transform: translate3D(0,0,0);
 }
 .sticky #header  {
     position: fixed;
-    top: 0;
+    top: 0px;
     padding: 0;
     height: 90px;
 }

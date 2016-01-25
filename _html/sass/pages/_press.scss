@@ -2296,6 +2296,10 @@
 //        font-size: 1rem;
         color:#666;
         border: 1px solid #CCC;
+
+        &.error{
+          border-color: red;
+        }
       }
       .time{
         display: inline-block;
