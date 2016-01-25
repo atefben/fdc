@@ -176,6 +176,7 @@ a{
     font-size: 25px;
     line-height: 35px;
     padding: 40px 15px;
+    margin-bottom: 40px;
     text-align: center;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
@@ -392,6 +393,17 @@ a{
 	margin: 0 auto;
 	display: table;
 }
+.articles .owl-item a{
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
+
 
 
 
