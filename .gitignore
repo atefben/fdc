@@ -43,6 +43,7 @@
 
 # GruntJS Task
 _html/node_modules/
+_html/.tmp/
 node_modules/
 _html_mobile/node_modules
 
