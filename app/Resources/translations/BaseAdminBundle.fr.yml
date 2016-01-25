@@ -114,7 +114,7 @@ list:
 
 
 filter:
-    laebel_festival: Festival
+    label_festival: Festival
     label_id: Identifiant
     label_title: Titre
     label_theme: Thème
