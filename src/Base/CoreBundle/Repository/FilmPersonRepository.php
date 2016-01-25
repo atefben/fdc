@@ -2,7 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\FilmFunctionInterface;
+use Base\CoreBundle\Interfaces\FilmFunctionInterface;
 
 use Doctrine\ORM\EntityRepository;
 
