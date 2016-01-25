@@ -15,7 +15,7 @@
     margin-right: 29px;
     position: absolute;
     top: 163px;
-    @include transition(all 0.5s $smoothTransition);
+    @include transition(all 0.2s $linear);
 
     ul {
       border-right: 1px solid #dfdfdf;

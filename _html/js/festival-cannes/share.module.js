@@ -27,16 +27,6 @@ $(document).ready(function () {
 
   //POPIN facebook SHARE
 
-  $.ajaxSetup({ cache: true });
-  $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
-    FB.init({
-      appId: '{1759803224251615}',
-      version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
-    });
-    $('#loginbutton,#feedbutton').removeAttr('disabled');
-    FB.getLoginStatus(updateStatusCallback);
-  });
-
   $('.button.facebook').on('click',function(){
     window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
     return false;
