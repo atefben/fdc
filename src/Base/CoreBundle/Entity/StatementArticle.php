@@ -25,7 +25,7 @@ class StatementArticle extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaImage")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $header;
 

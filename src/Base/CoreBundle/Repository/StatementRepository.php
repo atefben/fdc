@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 
 use Base\CoreBundle\Entity\StatementArticleTranslation;
+use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
@@ -216,5 +217,56 @@ class StatementRepository extends EntityRepository
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    /**
+     * get an array of only the $locale version Info of current $festival and verify publish date is between $dateTime
+     *
+     * @param $festival
+     * @param $dateTime
+     * @param $locale
+     * @return mixed
+     */
+    public function getStatementInfo($festival, $dateTime, $locale)
+    {
+        return $this->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'sa4', 'WITH', 'sa4.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'sa3', 'WITH', 'sa3.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'sa2', 'WITH', 'sa2.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'sa1', 'WITH', 'sa1.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoAudio', 'na2', 'WITH', 'na2.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoImage', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftjoin('na1.translations', 'na1t')
+            ->leftjoin('na2.translations', 'na2t')
+            ->leftjoin('na3.translations', 'na3t')
+            ->leftjoin('na4.translations', 'na4t')
+            ->leftjoin('sa4.translations', 'sa4t')
+            ->leftjoin('sa3.translations', 'sa3t')
+            ->leftjoin('sa2.translations', 'sa2t')
+            ->leftjoin('sa1.translations', 'sa1t')
+            ->where('n.festival = :festival')
+            ->andWhere('s.slug = :site')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->andWhere(
+                '  (na1t.locale = :locale AND na1t.status = :status)
+                OR (na2t.locale = :locale AND na2t.status = :status)
+                OR (na3t.locale = :locale AND na3t.status = :status)
+                OR (na4t.locale = :locale AND na4t.status = :status)
+                OR (sa4t.locale = :locale AND sa4t.status = :status)
+                OR (sa3t.locale = :locale AND sa3t.status = :status)
+                OR (sa2t.locale = :locale AND sa2t.status = :status)
+                OR (sa1t.locale = :locale AND sa1t.status = :status)'
+            )
+            ->setParameter('festival', $festival)
+            ->setParameter('locale', $locale)
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('site', 'site-evenementiel')
+            ->getQuery()
+            ->getResult();
     }
 }

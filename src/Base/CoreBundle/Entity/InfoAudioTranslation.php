@@ -6,8 +6,8 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Util\Seo;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -30,20 +30,23 @@ class InfoAudioTranslation implements TranslateChildInterface
     use Time;
     use Translation;
 
-
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
-    protected $title;
+    private $title;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
-    protected $introduction;
+    private $introduction;
 
     /**
      * @var string
@@ -65,7 +68,7 @@ class InfoAudioTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return NewsAudioTranslation
+     * @return NewsArticleTranslation
      */
     public function setTitle($title)
     {
@@ -88,7 +91,7 @@ class InfoAudioTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsAudioTranslation
+     * @return NewsArticleTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -123,7 +126,7 @@ class InfoAudioTranslation implements TranslateChildInterface
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {

@@ -16,9 +16,8 @@ use Base\CoreBundle\Util\Time;
 class StatementWidgetAudio extends StatementWidget
 {
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="MediaAudio")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
     private $file;
@@ -26,10 +25,10 @@ class StatementWidgetAudio extends StatementWidget
     /**
      * Set file
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @param \Base\CoreBundle\Entity\Media $file
      * @return StatementWidgetAudio
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Base\CoreBundle\Entity\Media $file = null)
     {
         $this->file = $file;
 
@@ -39,7 +38,7 @@ class StatementWidgetAudio extends StatementWidget
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return \Base\CoreBundle\Entity\Media
      */
     public function getFile()
     {

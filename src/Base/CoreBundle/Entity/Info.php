@@ -2,12 +2,16 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\TranslateMain;
+use \DateTime;
+
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -19,15 +23,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Info
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\InfoRepository")
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\StatementRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "InfoArticle", "audio" = "InfoAudio", "image" = "InfoImage", "video" = "InfoVideo"})
  */
 abstract class Info implements TranslateMainInterface
 {
-    use TranslateMain;
     use Time;
+    use SeoMain;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -46,63 +51,100 @@ abstract class Info implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Theme")
      *
      * @Groups({"info_list", "info_show"})
+     * @Assert\NotNull()
      */
     private $theme;
 
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="infos")
      */
     private $festival;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     *
-     * @Groups({"info_list", "info_show"})
-     */
-    private $publishedAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     *
-     * @Groups({"info_list", "info_show"})
-     */
-    private $publishEndedAt;
-
-    /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderInfos")
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderInfo")
      */
     private $homepage;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $displayedHome;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $displayedMobile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $signature;
 
     /**
      * @var InfoTag
      *
      * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"persist"})
      *
-     * @Groups({"info_list", "info_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="InfoInfoAssociated", mappedBy="info", cascade={"persist"})
      *
-     * @Groups({"info_list", "info_show"})
+     * @Groups({"news_list", "news_show"})
      */
-    private $associations;
+    private $associatedInfo;
 
     /**
-     * @var NewsWidget
+     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedFilm;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedEvent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="InfoFilmProjectionAssociated", mappedBy="info", cascade={"persist"})
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedProjections;
+
+    /**
+     * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="info", cascade={"persist"})
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedFilms;
+
+    /**
+     * @var InfoWidget
      *
      * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"persist"})
      *
-     * @Groups({"info_list", "info_show"})
+     * @ORM\OrderBy({"position" = "ASC"})
+     * @Groups({"news_list", "news_show"})
      */
     private $widgets;
 
@@ -111,9 +153,32 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"info_list", "info_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $sites;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     * @Groups({"web_tv_list", "web_tv_show"})
+     */
+    private $publishedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     * @Groups({"web_tv_list", "web_tv_show"})
+     */
+    private $publishEndedAt;
+
+    /**
+     * ArrayCollection
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    protected $translations;
 
     /**
      * @var User
@@ -132,13 +197,6 @@ abstract class Info implements TranslateMainInterface
      * @Groups({"news_list", "news_show"})
      */
     private $updatedBy;
-
-    /**
-     * ArrayCollection
-     *
-     * @Groups({"info_list", "info_show"})
-     */
-    protected $translations;
 
     public function __construct()
     {
@@ -160,10 +218,10 @@ abstract class Info implements TranslateMainInterface
     public static function getTypes()
     {
         return array(
-            'Base\CoreBundle\Entity\NewsArticle' => 'article',
-            'Base\CoreBundle\Entity\NewsAudio' => 'audio',
-            'Base\CoreBundle\Entity\NewsImage' => 'image',
-            'Base\CoreBundle\Entity\NewsVideo' => 'video'
+            'Base\CoreBundle\Entity\InfoArticle' => 'article',
+            'Base\CoreBundle\Entity\InfoAudio' => 'audio',
+            'Base\CoreBundle\Entity\InfoImage' => 'image',
+            'Base\CoreBundle\Entity\InfoVideo' => 'video'
         );
     }
 
@@ -173,7 +231,7 @@ abstract class Info implements TranslateMainInterface
      * @VirtualProperty
      * @Groups({"info_list", "info_show"})
      */
-    public function getNewsType()
+    public function getInfoType()
     {
         return substr(strrchr(get_called_class(), '\\'), 1);
     }
@@ -191,10 +249,10 @@ abstract class Info implements TranslateMainInterface
     /**
      * Add widgets
      *
-     * @param \Base\CoreBundle\Entity\NewsWidget $widgets
-     * @return NewsArticleTranslation
+     * @param \Base\CoreBundle\Entity\InfoWidget $widgets
+     * @return InfoArticleTranslation
      */
-    public function addWidget(\Base\CoreBundle\Entity\NewsWidget $widgets)
+    public function addWidget(\Base\CoreBundle\Entity\InfoWidget $widgets)
     {
         $widgets->setInfo($this);
         $this->widgets[] = $widgets;
@@ -205,9 +263,9 @@ abstract class Info implements TranslateMainInterface
     /**
      * Remove widgets
      *
-     * @param \Base\CoreBundle\Entity\NewsWidget $widgets
+     * @param \Base\CoreBundle\Entity\InfoWidget $widgets
      */
-    public function removeWidget(\Base\CoreBundle\Entity\NewsWidget $widgets)
+    public function removeWidget(\Base\CoreBundle\Entity\InfoWidget $widgets)
     {
         $this->widgets->removeElement($widgets);
     }
@@ -223,56 +281,10 @@ abstract class Info implements TranslateMainInterface
     }
 
     /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return News
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publishEndedAt
-     *
-     * @param \DateTime $publishEndedAt
-     * @return News
-     */
-    public function setPublishEndedAt($publishEndedAt)
-    {
-        $this->publishEndedAt = $publishEndedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishEndedAt
-     *
-     * @return \DateTime
-     */
-    public function getPublishEndedAt()
-    {
-        return $this->publishEndedAt;
-    }
-
-    /**
      * Set theme
      *
      * @param \Base\CoreBundle\Entity\Theme $theme
-     * @return News
+     * @return Info
      */
     public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
@@ -294,8 +306,8 @@ abstract class Info implements TranslateMainInterface
     /**
      * Set festival
      *
-     * @param fBase\CoreBundle\Entity\FilmFestival $festival
-     * @return News
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return Info
      */
     public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
     {
@@ -315,44 +327,10 @@ abstract class Info implements TranslateMainInterface
     }
 
     /**
-     * Add associations
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associations
-     * @return News
-     */
-    public function addAssociation(\Base\CoreBundle\Entity\NewsNewsAssociated $associations)
-    {
-        $associations->setNews($this);
-        $this->associations[] = $associations;
-
-        return $this;
-    }
-
-    /**
-     * Remove associations
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associations
-     */
-    public function removeAssociation(\Base\CoreBundle\Entity\NewsNewsAssociated $associations)
-    {
-        $this->associations->removeElement($associations);
-    }
-
-    /**
-     * Get associations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAssociations()
-    {
-        return $this->associations;
-    }
-
-    /**
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
-     * @return NewsArticleTranslation
+     * @return InfoArticleTranslation
      */
     public function addSite(\Base\CoreBundle\Entity\Site $sites)
     {
@@ -385,7 +363,7 @@ abstract class Info implements TranslateMainInterface
      * Set homepage
      *
      * @param \Base\CoreBundle\Entity\Homepage $homepage
-     * @return News
+     * @return Info
      */
     public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
     {
@@ -431,11 +409,318 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set priorityStatus
+     *
+     * @param integer $priorityStatus
+     * @return Info
+     */
+    public function setPriorityStatus($priorityStatus)
+    {
+        $this->priorityStatus = $priorityStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get priorityStatus
+     *
+     * @return integer
+     */
+    public function getPriorityStatus()
+    {
+        return $this->priorityStatus;
+    }
+
+    /**
+     * Set displayedHome
+     *
+     * @param boolean $displayedHome
+     * @return Info
+     */
+    public function setDisplayedHome($displayedHome)
+    {
+        $this->displayedHome = $displayedHome;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedHome
+     *
+     * @return boolean
+     */
+    public function getDisplayedHome()
+    {
+        return $this->displayedHome;
+    }
+
+    /**
+     * Set signature
+     *
+     * @param string $signature
+     * @return Info
+     */
+    public function setSignature($signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * Get signature
+     *
+     * @return string
+     */
+    public function getSignature()
+    {
+        return $this->signature;
+    }
+
+    /**
+     * Set displayedMobile
+     *
+     * @param boolean $displayedMobile
+     * @return Info
+     */
+    public function setDisplayedMobile($displayedMobile)
+    {
+        $this->displayedMobile = $displayedMobile;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedMobile
+     *
+     * @return boolean
+     */
+    public function getDisplayedMobile()
+    {
+        return $this->displayedMobile;
+    }
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return Info
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * Set publishEndedAt
+     *
+     * @param \DateTime $publishEndedAt
+     * @return Info
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishEndedAt
+     *
+     * @return \DateTime
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
+     * Add associatedInfo
+     *
+     * @param \Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo
+     * @return Info
+     */
+    public function addAssociatedNew(\Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo)
+    {
+        $this->associatedInfo[] = $associatedInfo;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedInfo
+     *
+     * @param \Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo
+     */
+    public function removeAssociatedNew(\Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo)
+    {
+        $this->associatedInfo->removeElement($associatedInfo);
+    }
+
+
+    /**
+     * Add associatedInfo
+     *
+     * @param \Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo
+     * @return Info
+     */
+    public function addAssociatedInfo(\Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo)
+    {
+        $this->associatedInfo[] = $associatedInfo;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedInfo
+     *
+     * @param \Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo
+     */
+    public function removeAssociatedInfo(\Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo)
+    {
+        $this->associatedInfo->removeElement($associatedInfo);
+    }
+
+    /**
+     * Get associatedInfo
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssociatedInfo()
+    {
+        return $this->associatedInfo;
+    }
+
+    /**
+     * Set associatedFilm
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $associatedFilm
+     * @return Info
+     */
+    public function setAssociatedFilm(\Base\CoreBundle\Entity\FilmFilm $associatedFilm = null)
+    {
+        $this->associatedFilm = $associatedFilm;
+
+        return $this;
+    }
+
+    /**
+     * Get associatedFilm
+     *
+     * @return \Base\CoreBundle\Entity\FilmFilm
+     */
+    public function getAssociatedFilm()
+    {
+        return $this->associatedFilm;
+    }
+
+    /**
+     * Set associatedEvent
+     *
+     * @param \Base\CoreBundle\Entity\Event $associatedEvent
+     * @return Info
+     */
+    public function setAssociatedEvent(\Base\CoreBundle\Entity\Event $associatedEvent = null)
+    {
+        $this->associatedEvent = $associatedEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get associatedEvent
+     *
+     * @return \Base\CoreBundle\Entity\Event
+     */
+    public function getAssociatedEvent()
+    {
+        return $this->associatedEvent;
+    }
+
+    /**
+     * Add associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\InfoFilmProjectionAssociated $associatedProjections
+     * @return Info
+     */
+    public function addAssociatedProjection(\Base\CoreBundle\Entity\InfoFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections[] = $associatedProjections;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\InfoFilmProjectionAssociated $associatedProjections
+     */
+    public function removeAssociatedProjection(\Base\CoreBundle\Entity\InfoFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections->removeElement($associatedProjections);
+    }
+
+    /**
+     * Get associatedProjections
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssociatedProjections()
+    {
+        return $this->associatedProjections;
+    }
+
+    /**
+     * Add associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedFilms
+     * @return Info
+     */
+    public function addAssociatedFilm(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms[] = $associatedFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedFilms
+     */
+    public function removeAssociatedFilm(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms->removeElement($associatedFilms);
+    }
+
+    /**
+     * Get associatedFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssociatedFilms()
+    {
+        return $this->associatedFilms;
     }
 
     /**
@@ -454,7 +739,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get createdBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getCreatedBy()
     {
@@ -477,7 +762,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get updatedBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUpdatedBy()
     {

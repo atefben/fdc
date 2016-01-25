@@ -2,8 +2,6 @@
 
     {% set trans = news.video.findTranslationByLocale(app.request.locale) %}
 
-
-
     <div class="image" style="background-image: url({% path trans.image, 'big' %});"></div>
     <div class="picto"></div>
     <div class="info">

@@ -16,7 +16,7 @@ use JMS\Serializer\Annotation\Since;
  * InfoVideo
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
 class InfoVideo extends Info
@@ -54,7 +54,7 @@ class InfoVideo extends Info
      * Set video
      *
      * @param \Base\CoreBundle\Entity\MediaVideo $video
-     * @return NewsVideo
+     * @return InfoVideo
      */
     public function setVideo(\Base\CoreBundle\Entity\MediaVideo $video = null)
     {
@@ -77,7 +77,7 @@ class InfoVideo extends Info
      * Set image
      *
      * @param \Base\CoreBundle\Entity\MediaImage $image
-     * @return NewsVideo
+     * @return InfoVideo
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
     {

@@ -3,6 +3,8 @@
 namespace FDC\PressBundle\Controller;
 
 use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Entity\Info;
+
 use \DateTime;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -461,12 +463,8 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        //GET ALL NEWS ARTICLES
-        $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
-
-        if ($statements === null) {
-            throw new NotFoundHttpException();
-        }
+        //GET ALL STATEMENT ARTICLES
+        $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatementInfo($settings->getFestival()->getId(), $dateTime, $locale);
 
         $filters = array();
         $filters['dates'][0] = array(
@@ -528,4 +526,5 @@ class NewsController extends Controller
         );
 
     }
+
 }
