@@ -68,11 +68,12 @@ grunt.initConfig({
 				        ],
 				    './css-concat/movie.css': [
 			            './css/main.css',
+			            './css/movie.css',
 			            './css/slideshows-chocolat.css',
 			            './css/vendors/chocolat.css',
 			            './css/include/*.css',
 			            './css/audioplayer.css',
-			            './css/movie.css',
+			            './css/fullscreenplayer.css',
 			            './css/slideshow-video.css'
 			        ],
 			        './css-concat/article.css': [
@@ -245,6 +246,7 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/slidervideos.js',
 				            './js/audioplayer.js',
+				            './js/vendors/jwplayer.js',
 				            './js/movie.js'
 				        ],
 				    './js-concat/article.js':[

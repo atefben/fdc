@@ -75,9 +75,20 @@ $(document).ready(function() {
 			$(this).find('.more-minus').html('-');
 			
 		}
-		
-
 	});
+	$('.language li').on('click',function(e){
+		if ($('.language ul').hasClass('show')) {
+			$('.language li').removeClass('active-language');
+			$(this).addClass('active-language');
+			$('.language ul').removeClass('show');
+			$('.language ul').addClass('hide');
+		}else{
+			$('.language ul').removeClass('hide');
+			$('.language ul').addClass('show');
+		}
+		
+	});
+
 	var menu = $("#top-menu").owlCarousel({
 			  nav: false,
 			  dots: false,
