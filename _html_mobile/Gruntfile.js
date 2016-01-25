@@ -34,7 +34,8 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/slideshow-video.css',
-			            './css/webtv.css'
+			            './css/webtv.css',
+			            './css/fullscreenplayer.css'
 			            
 				        ],
 				  	'./css-concat/channel.css': [
@@ -195,9 +196,11 @@ grunt.initConfig({
 				    './js-concat/trailer.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/jwplayer.js',
 				            './js/include/*.js',
 				            './js/webtv.js',
-				            './js/slidervideos.js'
+				            './js/slidervideos.js',
+				            './js/trailer.js'
 				        ],
 				    './js-concat/channel.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -206,7 +209,8 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/webtv.js',
 				            './js/slidervideos.js',
-				            './js/channel.js'
+				            './js/channel.js',
+				            './js/fullscreenplayer.js'
 				        ],
 			        './js-concat/channels.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 

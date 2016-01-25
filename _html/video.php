@@ -13,7 +13,7 @@
 
     <div id="main">
       <div class="video-container state-init video"
-        data-facebook="//www.facebook.com"
+        data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
         data-twitter="//www.twitter.com"
         data-link="//www.example.com"
         data-email="//www.gmail.com"
