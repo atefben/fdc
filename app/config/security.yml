@@ -74,8 +74,9 @@ security:
 
         # Secured part of the site
         - { path: ^/admin/_trans/, role: [ROLE_JMS_TRANSLATION] }
+        - { path: ^/admin/tools/, role: [ROLE_ALL_ADMIN] }
         - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
-        
+
         
         # Global
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

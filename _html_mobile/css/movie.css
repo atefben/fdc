@@ -31,6 +31,7 @@ a{
 	line-height: 30px;
 	margin-bottom: 50px;
 	font-weight: 600;
+	max-height: 30px;
 }
 .info-film .categories span{
 	position: relative;
@@ -55,8 +56,8 @@ a{
 	text-transform: uppercase;
 /*	font-size: 4rem;*/
 	font-size: 46px;
-	letter-spacing: 3px;
-	font-weight: 600;
+	letter-spacing: 4px;
+	font-weight: 700;
 	margin-bottom: 15px;
 }
 .info-film .title-original{
@@ -64,12 +65,12 @@ a{
 	/*font-size: 2rem;*/
 	font-size: 22px;
 	margin-bottom: 55px;
+	max-height: 25px;
 }
 .info-film p{
 
 	font-size: 20px;
-	letter-spacing: -1px;
-	/*font-size: 1.5rem;*/
+	max-height: 30px;
 	margin-bottom: 20px;
 }
 
@@ -81,17 +82,18 @@ a{
 .prize{
 	padding: 60px 0;
 	border-bottom: 1px solid #f1f1f1;
+	max-height: 170px;
 }
 .prize .icon{
 
 	color:#c8a461;
-	/*font-size: 6rem;*/
-	font-size: 70px;
+	font-size: 110px;
+	margin-left: 10px;
 }
 .prize .prize-name{
 	display: inline-block;
 	vertical-align: middle;
-	margin-left: 25px;
+	margin-left: 20px;
 	
 }
 .prize p{
@@ -99,7 +101,6 @@ a{
 	font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 	color: #a4a4a4;
 	font-style: italic;
-	/*font-size: 1.3rem;*/
 	font-size: 20px;
 	line-height: 30px;
 }
@@ -140,6 +141,7 @@ a{
 
 	border-bottom: 1px solid #dfdfdf;
 	padding: 60px 0;
+	max-height: 1000px;
 
 }
 .title-section{
@@ -158,7 +160,6 @@ a{
 
 	color:#666666;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-	/*font-size: 1.5rem;*/
 	line-height: 30px;
 	font-size: 24px;
 }
@@ -271,6 +272,16 @@ a{
 	display: table;
 }
 
+.owl-item a:not(.director, .titleLink, .category){
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
 
 
 /*SECTION PRESS*/

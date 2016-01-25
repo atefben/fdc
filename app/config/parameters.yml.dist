@@ -84,11 +84,11 @@ parameters:
     jwplayer_key: ~
     fdc_event_slug: ~
     fdc_year: ~
-    twitter_consumer_key: 'AuXw71nzlXihJxX7L6z1oALZZ'
-    twitter_consumer_secret: 'k3iqAnPmv9bvFit1upeiJGRmUPSKBcT5sSkp4JvYyXcHkj4N6m'
-    twitter_token: '393992891-OqG2GKPBPRDZaMBrm9OyZ60rwBVewHIqmNLWdoZD'
-    twitter_token_secret: 'CMvPEICEojMOjPm6zAIhYzLxSSVXcornsENJd9TLDxxG4'
-    instagram_consumer_key: 'a5a34caba4dd41619ca4d4cde7899374'
-    instagram_consumer_secret: 'c278268c28c043fabc51ea5d5805869c'
-    instagram_token: '2480568612.1677ed0.e6bd83eae8a74220ad07059c7b3ab5bc'
-    tumblr_consumer_key: 'i1jImF1HwZQq8heF0hCQ0VD481ANJcZz51ZniNXCPIiKHw5bFb'
+    twitter_consumer_key: ~
+    twitter_consumer_secret: ~
+    twitter_token: ~
+    twitter_token_secret: ~
+    instagram_consumer_key: ~
+    instagram_consumer_secret: ~
+    instagram_token: ~
+    tumblr_consumer_key: ~

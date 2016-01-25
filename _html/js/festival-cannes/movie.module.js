@@ -137,7 +137,7 @@ $(document).ready(function() {
       $('html, body').animate({
         scrollTop: 0
       }, 300, function() {
-        $('#video-movie').playerInit('video-movie', false, fak):
+        $('#video-movie').playerInit('video-movie', false, false, false);
         $('.main-image, .poster, .info-film, .nav').addClass('trailer');
         $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
         setTimeout(function() {

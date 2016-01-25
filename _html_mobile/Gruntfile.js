@@ -68,11 +68,12 @@ grunt.initConfig({
 				        ],
 				    './css-concat/movie.css': [
 			            './css/main.css',
+			            './css/movie.css',
 			            './css/slideshows-chocolat.css',
 			            './css/vendors/chocolat.css',
 			            './css/include/*.css',
 			            './css/audioplayer.css',
-			            './css/movie.css',
+			            './css/fullscreenplayer.css',
 			            './css/slideshow-video.css'
 			        ],
 			        './css-concat/article.css': [
@@ -82,6 +83,7 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/article.css',
 			            './css/audioplayer.css',
+			            './css/fullscreenplayer.css',
 			            './css/slideshow-video.css'
 			        ],
 			        './css-concat/participate.css': [
@@ -244,6 +246,7 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/slidervideos.js',
 				            './js/audioplayer.js',
+				            './js/vendors/jwplayer.js',
 				            './js/movie.js'
 				        ],
 				    './js-concat/article.js':[
@@ -256,6 +259,7 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/slidervideos.js',
 				            './js/audioplayer.js',
+				            './js/vendors/jwplayer.js',
 				            './js/article.js'
 				        ],
 			        './js-concat/participate.js':[
@@ -378,6 +382,8 @@ grunt.initConfig({
 	        './jury_longsmetrages.html': ['./templates/jury_longsmetrages.html'],
 	        './movie.html': ['./templates/movie.html'],
 	        './article.html': ['./templates/article.html'],
+	        './article-photos.html': ['./templates/article-photos.html'],
+	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
@@ -415,6 +421,8 @@ grunt.initConfig({
 	        './jury_longsmetrages.html': ['./templates/jury_longsmetrages.html'],
 	        './movie.html': ['./templates/movie.html'],
 	        './article.html': ['./templates/article.html'],
+	        './article-photos.html': ['./templates/article-photos.html'],
+	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],

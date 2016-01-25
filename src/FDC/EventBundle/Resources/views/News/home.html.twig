@@ -46,11 +46,14 @@
                          </div>
 
                          <!-- SLIDESHOW -->
-                         {% for widget in homeArticles.widgets %}
+
+                        {#  A DYNAMISER 
+
+                        {% for widget in homeArticles.widgets %}
                              {% if widget.type == "image" and widget.photos|length > 1 %}
                                  {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                              {% endif %}
-                         {% endfor %}
+                         {% endfor %} #}
 
                          <div class="articles center">
 

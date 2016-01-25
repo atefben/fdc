@@ -3580,10 +3580,14 @@ a{
 	padding-top: 50px;
 	font-size: 0;
 }
+#player{
+    margin-bottom: 40px;
+}
 .article-title{
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
   max-height: 200px;
+  margin-bottom: 40px;
 }
 .article-title .category {
   color: #c8a461;
@@ -3609,6 +3613,13 @@ a{
   width: 420px;
   margin: 15px auto 0 auto;
   text-align: center;
+}
+.text-content{
+    font-size: 24px;
+    color:#666666;
+    max-height: 1000px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 30px;
 }
 
 /*PICTOS NAV*/
@@ -3734,6 +3745,7 @@ a{
     font-size: 25px;
     line-height: 35px;
     padding: 40px 15px;
+    margin-bottom: 40px;
     text-align: center;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
@@ -3752,7 +3764,7 @@ a{
 }
 .film .info-film .wrapper{
 	height: 100%;
-	margin-left: 85px;
+	margin-left: 70px;
 }
 .film .info-film .wrapper .poster {
     display: inline-block;
@@ -3810,12 +3822,12 @@ a{
 .film .programmation-film .wrapper {
     color: #fff;
     height: 100%;
-    margin-left: 85px;
+    margin-left: 70px;
 }
 .film .programmation-film .wrapper .category {
     color: #c8a461;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size:15px;
+    font-size:20px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 700;
@@ -3825,8 +3837,8 @@ a{
 }
 .film .programmation-film .wrapper ul li {
     display: inline-block;
-    font-size: 12px;
-    width: 211px;
+    font-size: 15px;
+    width: 280px;
 }
 .film .programmation-film .wrapper ul li span {
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -3841,7 +3853,7 @@ a{
     color: #fff;
     display: block;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 17px;
+    font-size: 20px;
     margin: 18px 0 40px 0;
     position: relative;
 }
@@ -3860,6 +3872,10 @@ a{
 }
 .film .programmation-film .wrapper .button {
     border-color: #c8a461;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 700;
 }
 /*CREDITS AND CASTING*/
 
@@ -3946,6 +3962,17 @@ a{
 	margin: 0 auto;
 	display: table;
 }
+.articles .owl-item a{
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
+
 
 
 
@@ -4095,6 +4122,98 @@ a{
 .audio-player .picto .icon_pause, .audio-player .picto .icon_play{
 	font-size: 20px;
 }
+.fullscreenplayer{
+  width: 640px;
+  height: 100%;
+  position: fixed;
+  background: #fff;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  padding: 40px;
+    overflow-y: scroll;
+  box-sizing: border-box;
+}
+.fullscreenplayer .close-button{
+  top:40px;
+}
+.fullscreenplayer p{
+  margin-top: 20px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 22px;
+}
+.fullscreenplayer .category {
+    color: #c8a461;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+
+.fullscreenplayer .vCenterKid{
+  /*padding-top: 110px;*/
+}
+.fullscreenplayer{
+  
+  display: none;
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.fullscreenplayer.show{
+  display: block;
+  opacity: 0;
+}
+.allow-landscape .fullscreenplayer.show{
+  opacity: 1;
+}
+#main .jw-controlbar {
+    height: 40px;
+}
+#main .jw-reset{
+  font-size: 20px;
+}
+#main .jw-skin-five .jw-progress{
+  background: #c8a461;
+}
+#main .jw-skin-five .jw-slider-horizontal .jw-knob {
+    background-color: #c8a461;
+  }
+#main .jw-skin-five .jw-controlbar {
+    background: rgba(20,20,20,0.6);
+}
+#main .jw-skin-five .jw-text {
+    color: #fff;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+#main .jw-skin-five .jw-button-color {
+    color: #fff;
+}
+#main .jw-tab-focus:focus {
+    outline: none;
+}
+@media only screen  and (orientation : landscape) {
+  
+  .fullscreenplayer .vCenterKid{
+    padding-top: 0px;
+  }
+  .fullscreenplayer{
+    padding: 20px;
+  }
+  .fullscreenplayer .close-button{
+    height: 40px;
+    opacity: 0.6;
+    position: absolute;
+    /*right: 10px;*/
+    width: 40px;
+    line-height: 40px;
+    font-size: 10px;
+    z-index: 9;
+  }
+}
+
+
 .slideshow .thumbnails .thumb {
   height: 210px;
   overflow: hidden;
