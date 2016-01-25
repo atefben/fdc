@@ -62,7 +62,7 @@ var GLOBALS = {
     "i18n": {
       "months" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
       "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "weekdaysShort" : ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"],
+      "weekdaysShort" : ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],
       "labelFormat": {
         "fr" : "H\\hi",
         "default" : "g:ia"
