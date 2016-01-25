@@ -3300,8 +3300,8 @@ body {
 }
 @font-face {
   font-family: "icons";
-  src: url("../fonts/icons.eot?16e2b826b80be4a75d3910a5fb350334");
-  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?16e2b826b80be4a75d3910a5fb350334") format("woff"), url("../fonts/icons.ttf?16e2b826b80be4a75d3910a5fb350334") format("truetype");
+  src: url("../fonts/icons.eot?851398c17c9e7e1541eace453daf44bd");
+  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?851398c17c9e7e1541eace453daf44bd") format("woff"), url("../fonts/icons.ttf?851398c17c9e7e1541eace453daf44bd") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -6865,8 +6865,9 @@ div.chocolat-wrapper .zoomCursor .icon {
   margin: auto;
 }
 .video-container:-webkit-full-screen {
-  width: 100vw;
-  height: 100vh;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
 }
 .video-container.state-init .control-bar {
   opacity: 0;
@@ -14133,8 +14134,12 @@ input[type=submit] {
   vertical-align: top;
   box-sizing: border-box;
   margin-right: 29px;
-  position: fixed;
-  top: 393px;
+  position: absolute;
+  top: 163px;
+  -moz-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .faq .faq-menu ul {
   border-right: 1px solid #dfdfdf;
@@ -17860,6 +17865,9 @@ input[type=submit] {
   height: 46px;
   color: #666;
   border: 1px solid #CCC;
+}
+#create-event-pop .container form input[type="text"].error {
+  border-color: red;
 }
 #create-event-pop .container form .time {
   display: inline-block;

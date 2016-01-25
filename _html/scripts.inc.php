@@ -62,7 +62,7 @@ var GLOBALS = {
     "i18n": {
       "months" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
       "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "weekdaysShort" : ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"],
+      "weekdaysShort" : ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],
       "labelFormat": {
         "fr" : "H\\hi",
         "default" : "g:ia"
@@ -129,6 +129,7 @@ var GLOBALS = {
 <script src="js/festival-cannes/search.module.js"></script>
 <script src="js/festival-cannes/seating-chart.module.js"></script>
 <script src="js/festival-cannes/selection.module.js"></script>
+<script src="js/festival-cannes/share.module.js"></script>
 <script src="js/festival-cannes/sliderartist.module.js"></script>
 <script src="js/festival-cannes/sliderchannels.module.js"></script>
 <script src="js/festival-cannes/sliderhome.module.js"></script>
@@ -145,35 +146,3 @@ var GLOBALS = {
 <!-- festival-cannes tags end -->
 <!-- endbuild -->
 <script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>
-
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));
-</script>
-
-<script>
-//POPIN facebook SHARE
-
-$.ajaxSetup({ cache: true });
-$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
-  FB.init({
-    appId: '{1759803224251615}',
-    version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
-  });
-  $('#loginbutton,#feedbutton').removeAttr('disabled');
-  FB.getLoginStatus(updateStatusCallback);
-});
-</script>

@@ -85,9 +85,13 @@ class HomepageAdmin extends Admin
             ->add('displayedSlider')
             ->add('displayedTopNews')
             ->add('displayedSocialWall')
-            ->add('socialGraphHashtagTwitter')
+            ->add('socialGraphHashtagTwitter', null, array(
+                'sonata_help' => 'form.homepage.helper_social_graph',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
             ->add('socialWallHashtags', null, array(
-                'sonata_help' => 'Séparer par des virgules les tags que vous souhaitez.'
+                'sonata_help' => 'form.homepage.helper_social_graph',
+                'translation_domain' => 'BaseAdminBundle'
             ))
         ;
 

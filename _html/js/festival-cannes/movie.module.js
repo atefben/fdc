@@ -1,3 +1,5 @@
+var playmovie;
+
 // Single Movie
 // =========================
 $(document).ready(function() {
@@ -80,7 +82,7 @@ $(document).ready(function() {
 
       sliderCompetition.owlCarousel();
     }
-    
+
     initSliders();
 
     // go to item
@@ -112,7 +114,7 @@ $(document).ready(function() {
 
       var $el = $(this)
         , id = $el.attr('href').substr(1);
-     
+
       var posT = $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height();
 
       if(!$('#nav-movie').hasClass('sticky')) {
@@ -135,13 +137,14 @@ $(document).ready(function() {
       $('html, body').animate({
         scrollTop: 0
       }, 300, function() {
+        $('#video-movie').playerInit('video-movie', false, false, false);
         $('.main-image, .poster, .info-film, .nav').addClass('trailer');
         $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
         setTimeout(function() {
           $('header').addClass('sticky');
           $('body').css('padding-top', 0);
         }, 800);
-        
+
       });
     });
 

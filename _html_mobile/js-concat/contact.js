@@ -56,9 +56,20 @@ $(document).ready(function() {
 			$(this).find('.more-minus').html('-');
 			
 		}
-		
-
 	});
+	$('.language li').on('click',function(e){
+		if ($('.language ul').hasClass('show')) {
+			$('.language li').removeClass('active-language');
+			$(this).addClass('active-language');
+			$('.language ul').removeClass('show');
+			$('.language ul').addClass('hide');
+		}else{
+			$('.language ul').removeClass('hide');
+			$('.language ul').addClass('show');
+		}
+		
+	});
+
 	var menu = $("#top-menu").owlCarousel({
 			  nav: false,
 			  dots: false,
@@ -219,7 +230,7 @@ $(document).ready(function() {
       else{
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="' + input.attr('name') + '">' + input.data('error') + '</li>');
+        $('.errors ul').append('<li class="' + input.attr('name') + '">- ' + input.data('error') + '</li>');
       }
 
       if($('.invalid').length) {
@@ -275,7 +286,7 @@ $(document).ready(function() {
       else{
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="' + input.attr('name') + '">' + input.data('error') + '</li>');
+        $('.errors ul').append('<li class="' + input.attr('name') + '">- ' + input.data('error') + '</li>');
       }
 
       if($('.invalid').length) {
@@ -292,7 +303,7 @@ $(document).ready(function() {
       if($('select').val() == 'default') {
         $('.select').addClass('invalid');
         $('.errors .select').remove();
-        $('.errors ul').append('<li class=".select">' + $('.select select').data('error') + '</li>');
+        $('.errors ul').append('<li class=".select">- ' + $('.select select').data('error') + '</li>');
       } else {
         $('.select').removeClass('invalid');
       }

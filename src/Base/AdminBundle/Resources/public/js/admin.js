@@ -82,7 +82,7 @@ function lockEvents()
     });
 
     // verify locks on submit
-    $('.fdc-lock .btn-success').click(function(e) {
+    $('.fdc-lock button[type="submit"].btn-success').click(function(e) {
         e.preventDefault();
         // set vars
         var url = window.location.href.split('/');

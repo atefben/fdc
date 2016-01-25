@@ -15,15 +15,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * Class NewsController
  * @package FDC\EventBundle\Controller
  */
-class NewsController extends Controller
-{
+class NewsController extends Controller {
 
     /**
      * @Route("/")
      * @Template("FDCEventBundle:News:home.html.twig")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->get('doctrine')->getManager();
 
         // GET FDC SETTINGS
@@ -33,58 +31,64 @@ class NewsController extends Controller
         }
 
         // SocialGraph
-        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array('festival' => $settings->getFestival()), array('date' => 'ASC'), 12, null);
+        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
+            'festival' => $settings->getFestival()
+        ), array(
+            'date' => 'ASC'
+        ), 12, null);
 
         $socialGraphTimeline      = array();
         $socialGraphTimelineCount = array();
-        $socialGraph = array();
+        $socialGraph              = array();
 
         foreach ($timeline as $key => $timelineDate) {
-            $socialGraphTimeline[]['date']  = $timelineDate->getDate();
-            $socialGraphTimelineCount[]     = $timelineDate->getCount();
+            $socialGraphTimeline[]['date'] = $timelineDate->getDate();
+            $socialGraphTimelineCount[]    = $timelineDate->getCount();
         }
 
-        $socialGraph['timeline'] = $socialGraphTimeline;
+        $socialGraph['timeline']      = $socialGraphTimeline;
         $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
 
         // Homepage
-        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array('festival' => $settings->getFestival()));
+        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
+            'festival' => $settings->getFestival()
+        ));
         if ($homepage === null) {
             throw new NotFoundHttpException();
         }
 
         //filters init
-        $filters = array();
-        $filters['dates'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
+        $filters['themes']['slug'][0]    = 'all';
 
         // TODO: clean this
         $homeSlider = array(
             array(
-                'id'=> 0,
-                'image'=>array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg',
+                'id' => 0,
+                'image' => array(
+                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
                 ),
-                'theme'=>'Rencontre',
-                'title'=>'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »',
+                'theme' => 'Rencontre',
+                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
             ),
             array(
-                'id'=> 0,
-                'image'=>array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg',
+                'id' => 0,
+                'image' => array(
+                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
                 ),
-                'theme'=>'Rencontre',
-                'title'=>'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »',
+                'theme' => 'Rencontre',
+                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
             ),
             array(
-                'id'=> 0,
-                'image'=>array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg',
+                'id' => 0,
+                'image' => array(
+                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
                 ),
-                'theme'=>'Rencontre',
-                'title'=>'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »',
-            ),
+                'theme' => 'Rencontre',
+                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
+            )
         );
 
         $home = array(
@@ -99,7 +103,7 @@ class NewsController extends Controller
                     'format' => 'article',
                     'theme' => 'competition',
                     'category' => 'competition',
-                    'double' => true,
+                    'double' => true
                 ),
                 array(
                     'title' => 'Stéphane Beizé interroge la loi du marché',
@@ -111,7 +115,7 @@ class NewsController extends Controller
                     'format' => 'video',
                     'theme' => 'competition',
                     'category' => 'competition',
-                    'double' => false,
+                    'double' => false
                 ),
                 array(
                     'title' => 'Stéphane Beizé interroge la loi du marché',
@@ -123,8 +127,8 @@ class NewsController extends Controller
                     'format' => 'photo',
                     'theme' => 'competition',
                     'category' => 'competition',
-                    'double' => false,
-                ),
+                    'double' => false
+                )
             ),
             'bottomArticle' => array(
                 array(
@@ -136,7 +140,7 @@ class NewsController extends Controller
                     ),
                     'format' => 'audio',
                     'theme' => 'competition',
-                    'category' => 'competition',
+                    'category' => 'competition'
                 ),
                 array(
                     'title' => 'Stéphane Beizé interroge la loi du marché',
@@ -147,7 +151,7 @@ class NewsController extends Controller
                     ),
                     'format' => 'article',
                     'theme' => 'competition',
-                    'category' => 'competition',
+                    'category' => 'competition'
                 ),
                 array(
                     'title' => 'Stéphane Beizé interroge la loi du marché',
@@ -158,8 +162,8 @@ class NewsController extends Controller
                     ),
                     'format' => 'article',
                     'theme' => 'competition',
-                    'category' => 'competition',
-                ),
+                    'category' => 'competition'
+                )
             ),
             'widgets' => array(
                 array(
@@ -227,10 +231,10 @@ class NewsController extends Controller
                         )
                     )
                 )
-            ),
+            )
         );
 
-        $featuredMovies = array(
+        $featuredMovies         = array(
             'type' => 'fullVideo',
             'video' => array(
                 array(
@@ -266,7 +270,7 @@ class NewsController extends Controller
 
             )
         );
-        $homeCategories = array(
+        $homeCategories         = array(
             array(
                 'title' => 'Le jury',
                 'blank' => false,
@@ -274,7 +278,7 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push01.jpg'
-                ),
+                )
             ),
             array(
                 'title' => 'Le palmares',
@@ -283,7 +287,7 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push02.jpg'
-                ),
+                )
             ),
             array(
                 'title' => 'La programmation',
@@ -292,8 +296,8 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push03.jpg'
-                ),
-            ),
+                )
+            )
         );
         $homeCategoriesFeatured = array(
             array(
@@ -303,7 +307,7 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push04.jpg'
-                ),
+                )
             ),
             array(
                 'title' => '',
@@ -312,7 +316,7 @@ class NewsController extends Controller
                 'href' => '',
                 'image' => array(
                     'path' => ''
-                ),
+                )
             ),
             array(
                 'title' => 'Participer <br> au festival',
@@ -321,7 +325,7 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push05.jpg'
-                ),
+                )
             ),
             array(
                 'title' => 'L\'oeil du photographe',
@@ -330,7 +334,7 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push06.jpg'
-                ),
+                )
             ),
             array(
                 'title' => 'Lorem ipsum',
@@ -339,7 +343,7 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'img.jpg'
-                ),
+                )
             ),
             array(
                 'title' => 'Lorem ipsum',
@@ -348,7 +352,7 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'img.jpg'
-                ),
+                )
             ),
             array(
                 'title' => 'Les évènements',
@@ -357,7 +361,7 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push07.jpg'
-                ),
+                )
             ),
             array(
                 'title' => '69 ans d\'archives',
@@ -366,10 +370,10 @@ class NewsController extends Controller
                 'href' => '/category',
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push08.jpg'
-                ),
+                )
             )
         );
-        $videos = array(
+        $videos                 = array(
             array(
                 'theme' => 'Conférence de presse',
                 'most_viewed' => true,
@@ -379,12 +383,12 @@ class NewsController extends Controller
                 'nbVideos' => 125,
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             ),
             array(
@@ -396,12 +400,12 @@ class NewsController extends Controller
                 'nbVideos' => 125,
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             ),
             array(
@@ -413,12 +417,12 @@ class NewsController extends Controller
                 'nbVideos' => 125,
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             ),
             array(
@@ -430,12 +434,12 @@ class NewsController extends Controller
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             ),
             array(
@@ -447,12 +451,12 @@ class NewsController extends Controller
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             ),
             array(
@@ -464,12 +468,12 @@ class NewsController extends Controller
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             ),
             array(
@@ -481,12 +485,12 @@ class NewsController extends Controller
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             ),
             array(
@@ -498,12 +502,12 @@ class NewsController extends Controller
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             ),
             array(
@@ -515,21 +519,21 @@ class NewsController extends Controller
                 'copyright' => 'Crédit Image : VALERY HACHE / AFP',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
-                    'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
+                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
                 'filter' => array(
                     'date' => 'date1',
-                    'theme' => 'theme1',
+                    'theme' => 'theme1'
                 )
             )
         );
-        $videoSlider = array(
+        $videoSlider            = array(
             array(
                 'title' => 'Lorem Ipsum',
                 'source' => array(
                     'mp4' => 'https://broken-links.com/tests/media/BigBuck.m4v',
-                    'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
+                    'webm' => 'https://broken-links.com/tests/media/BigBuck.webm'
                 ),
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
@@ -543,7 +547,7 @@ class NewsController extends Controller
                 'title' => 'Lorem Ipsum',
                 'source' => array(
                     'mp4' => 'https://broken-links.com/tests/media/BigBuck.m4v',
-                    'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
+                    'webm' => 'https://broken-links.com/tests/media/BigBuck.webm'
                 ),
                 'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
@@ -552,39 +556,39 @@ class NewsController extends Controller
                 'author' => array(
                     'fullName' => 'Lorem Ipsum'
                 )
-            ),
+            )
         );
-        $wallPosts = array(
+        $wallPosts              = array(
             array(
-                'big' => true,
+                'big' => true
             ),
             array(
-                'big' => true,
+                'big' => true
             ),
             array(
-                'big' => false,
+                'big' => false
             ),
             array(
-                'big' => false,
+                'big' => false
             ),
             array(
-                'big' => false,
+                'big' => false
             ),
             array(
-                'big' => false,
+                'big' => false
             ),
             array(
-                'big' => false,
+                'big' => false
             ),
             array(
-                'big' => false,
+                'big' => false
             ),
             array(
-                'big' => false,
+                'big' => false
             ),
             array(
-                'big' => false,
-            ),
+                'big' => false
+            )
         );
 
         return array(
@@ -609,13 +613,12 @@ class NewsController extends Controller
      * @param $slug
      * @return array
      */
-    public function getAction($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $locale = $this->getRequest()->getLocale();
+    public function getAction($slug) {
+        $em       = $this->getDoctrine()->getManager();
+        $locale   = $this->getRequest()->getLocale();
         //$token = $this->get('security.token_storage')->getToken();
         //$isAdmin = ($token) ? true : false;
-        $isAdmin = true;
+        $isAdmin  = true;
         $dateTime = new DateTime();
 
         // GET FDC SETTINGS
@@ -625,49 +628,36 @@ class NewsController extends Controller
         }
 
         // GET NEWS
-        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug(
-            $slug,
-            $settings->getFestival()->getId(),
-            $locale,
-            $dateTime->format('Y-m-d H:i:s'),
-            $isAdmin
-        );
+        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug($slug, $settings->getFestival()->getId(), $locale, $dateTime->format('Y-m-d H:i:s'), $isAdmin);
 
         if ($news === null) {
             throw new NotFoundHttpException();
         }
 
         // SEO
-       // $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+        // $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
         //get associated film to the news
-        $associatedFilm = $news->getAssociatedFilm();
-        $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
+        $associatedFilm         = $news->getAssociatedFilm();
+        $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
 
         //get film projection
         $programmations = array();
-        foreach($associatedFilm->getProjectionProgrammationFilms() as $projection) {
+        foreach ($associatedFilm->getProjectionProgrammationFilms() as $projection) {
             $programmations[] = $projection->getProjection();
         }
 
         //get focus articles
         $associatedNews = $news->getAssociatedNews();
-        $focusArticles = array();
-        foreach($associatedNews as $associatedNew) {
+        $focusArticles  = array();
+        foreach ($associatedNews as $associatedNew) {
             $focusArticles[] = $associatedNew->getAssociation();
         }
 
         //get day articles
-        $count = 3;
-        $newsDate = $news->getPublishedAt();
-        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')
-            ->getSameDayNews(
-                $settings->getFestival()->getId(),
-                $locale,
-                $newsDate,
-                $count,
-                $news->getId()
-            );
+        $count           = 3;
+        $newsDate        = $news->getPublishedAt();
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
 
         return array(
             'focusArticles' => $focusArticles,
@@ -675,7 +665,7 @@ class NewsController extends Controller
             'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $news,
             'associatedFilm' => $associatedFilm,
-            'sameDayArticles' => $sameDayArticles,
+            'sameDayArticles' => $sameDayArticles
         );
     }
 
@@ -684,12 +674,11 @@ class NewsController extends Controller
      *
      * @Template("FDCEventBundle:News/list:article.html.twig")
      */
-    public function getArticlesAction()
-    {
+    public function getArticlesAction() {
         //$offset = 30;
         $dateTime = new DateTime();
 
-        $em   = $this->getDoctrine()->getManager();
+        $em     = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
 
         // GET FDC SETTINGS
@@ -699,26 +688,26 @@ class NewsController extends Controller
         }
 
         //GET ALL NEWS ARTICLES
-        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale,$settings->getFestival()->getId(),$dateTime);
+        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
-        $filters = array();
-        $filters['dates'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
+        $filters['themes']['slug'][0]    = 'all';
 
-        foreach($newsArticles as $key => $newsArticle) {
+        foreach ($newsArticles as $key => $newsArticle) {
             $newsArticle->image = $newsArticle->getHeader();
             $newsArticle->theme = $newsArticle->getTheme();
 
             //check if filters don't already exist
-            if(!in_array($newsArticle->getPublishedAt(),$filters['dates'])) {
-                $date = $newsArticle->getPublishedAt();
+            $date = $newsArticle->getPublishedAt();
+            if (!in_array($date->format('d-m-y'), $filters['dates'])) {
                 $filters['dates'][] = ($date != null) ? $date : null;
             }
 
-            if(!in_array($newsArticle->getTheme()->getName(),$filters['themes']['content'])) {
-                $filters['themes']['slug'][] = $newsArticle->getTheme()->getName();
+            if (!in_array($newsArticle->getTheme()->getName(), $filters['themes']['slug'])) {
+                $filters['themes']['slug'][]    = $newsArticle->getTheme()->getName();
                 $filters['themes']['content'][] = $newsArticle->getTheme();
             }
 
@@ -726,7 +715,7 @@ class NewsController extends Controller
 
         return array(
             'articles' => $newsArticles,
-            'filters' => $filters,
+            'filters' => $filters
         );
     }
 
@@ -734,40 +723,34 @@ class NewsController extends Controller
      * @Route("/photos")
      * @Template("FDCEventBundle:News/list:photo.html.twig")
      */
-    public function getPhotosAction()
-    {
-        $dateTime = new DateTime();
+    public function getPhotosAction() {
 
-        $em   = $this->getDoctrine()->getManager();
-        $locale = $this->getRequest()->getLocale();
+        $em = $this->getDoctrine()->getManager();
 
-        // GET FDC SETTINGS
-        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
-            throw new NotFoundHttpException();
-        }
-
-        //GET ALL PHOTOS ARTICLES
-        $newsPhotos = $em->getRepository('BaseCoreBundle:News')->getNewsPhotos($locale,$settings->getFestival()->getId(),$dateTime);
+        //GET ALL MEDIA PHOTOS
+        $newsPhotos = $em->getRepository('BaseCoreBundle:MediaImage')->findBy(array(
+            'displayedAll' => true
+        ), array(
+            'publishedAt' => 'ASC'
+        ), null, null);
 
         //set default filters
-        $filters = array();
-        $filters['dates'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
+        $filters['themes']['slug'][0]    = 'all';
 
-        foreach($newsPhotos as $key => $newsPhoto) {
-            $newsPhoto->image = $newsPhoto->getHeader();
+        foreach ($newsPhotos as $key => $newsPhoto) {
             $newsPhoto->theme = $newsPhoto->getTheme();
 
             //check if filters don't already exist
-            if(!in_array($newsPhoto->getPublishedAt(),$filters['dates'])) {
-                $date = $newsPhoto->getPublishedAt();
+            if (!in_array($newsPhoto->getPublishedAt(), $filters['dates'])) {
+                $date               = $newsPhoto->getPublishedAt();
                 $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
             }
 
-            if(!in_array($newsPhoto->getTheme()->getName(),$filters['themes']['content'])) {
-                $filters['themes']['slug'][] = $newsPhoto->getTheme()->getName();
+            if (!in_array($newsPhoto->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][]    = $newsPhoto->getTheme()->getName();
                 $filters['themes']['content'][] = $newsPhoto->getTheme();
             }
 
@@ -775,7 +758,7 @@ class NewsController extends Controller
 
         return array(
             'photos' => $newsPhotos,
-            'filters' => $filters,
+            'filters' => $filters
         );
     }
 
@@ -783,40 +766,33 @@ class NewsController extends Controller
      * @Route("/videos")
      * @Template("FDCEventBundle:News/list:video.html.twig")
      */
-    public function getVideosAction()
-    {
-        $dateTime = new DateTime();
+    public function getVideosAction() {
+        $em = $this->getDoctrine()->getManager();
 
-        $em   = $this->getDoctrine()->getManager();
-        $locale = $this->getRequest()->getLocale();
-
-        // GET FDC SETTINGS
-        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
-            throw new NotFoundHttpException();
-        }
-
-        //GET ALL VIDEOS ARTICLES
-        $newsVideos = $em->getRepository('BaseCoreBundle:News')->getNewsVideos($locale,$settings->getFestival()->getId(),$dateTime);
+        //GET ALL MEDIA AUDIOS
+        $newsVideos = $em->getRepository('BaseCoreBundle:MediaVideo')->findBy(array(
+            'displayedAll' => true
+        ), array(
+            'publishedAt' => 'ASC'
+        ), null, null);
 
         //set default filters
-        $filters = array();
-        $filters['dates'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
+        $filters['themes']['slug'][0]    = 'all';
 
-        foreach($newsVideos as $key => $newsVideo) {
-            $newsVideo->image = $newsVideo->getHeader();
+        foreach ($newsVideos as $key => $newsVideo) {
             $newsVideo->theme = $newsVideo->getTheme();
 
             //check if filters don't already exist
-            if(!in_array($newsVideo->getPublishedAt(),$filters['dates'])) {
-                $date = $newsVideo->getPublishedAt();
+            if (!in_array($newsVideo->getPublishedAt(), $filters['dates'])) {
+                $date               = $newsVideo->getPublishedAt();
                 $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
             }
 
-            if(!in_array($newsVideo->getTheme()->getName(),$filters['themes']['content'])) {
-                $filters['themes']['slug'][] = $newsVideo->getTheme()->getName();
+            if (!in_array($newsVideo->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][]    = $newsVideo->getTheme()->getName();
                 $filters['themes']['content'][] = $newsVideo->getTheme();
             }
 
@@ -824,7 +800,7 @@ class NewsController extends Controller
 
         return array(
             'videos' => $newsVideos,
-            'filters' => $filters,
+            'filters' => $filters
         );
 
     }
@@ -833,40 +809,33 @@ class NewsController extends Controller
      * @Route("/audios")
      * @Template("FDCEventBundle:News/list:audio.html.twig")
      */
-    public function getAudiosAction()
-    {
-        $dateTime = new DateTime();
+    public function getAudiosAction() {
+        $em = $this->getDoctrine()->getManager();
 
-        $em   = $this->getDoctrine()->getManager();
-        $locale = $this->getRequest()->getLocale();
-
-        // GET FDC SETTINGS
-        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
-            throw new NotFoundHttpException();
-        }
-
-        //GET ALL AUDIOS ARTICLES
-        $newsAudios = $em->getRepository('BaseCoreBundle:News')->getNewsAudios($locale,$settings->getFestival()->getId(),$dateTime);
+        //GET ALL MEDIA AUDIOS
+        $newsAudios = $em->getRepository('BaseCoreBundle:MediaAudio')->findBy(array(
+            'displayedAll' => true
+        ), array(
+            'publishedAt' => 'ASC'
+        ), null, null);
 
         //set default filters
-        $filters = array();
-        $filters['dates'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
+        $filters['themes']['slug'][0]    = 'all';
 
-        foreach($newsAudios as $key => $newsAudio) {
-            $newsAudio->image = $newsAudio->getHeader();
+        foreach ($newsAudios as $key => $newsAudio) {
             $newsAudio->theme = $newsAudio->getTheme();
 
             //check if filters don't already exist
-            if(!in_array($newsAudio->getPublishedAt(),$filters['dates'])) {
-                $date = $newsAudio->getPublishedAt();
+            if (!in_array($newsAudio->getPublishedAt(), $filters['dates'])) {
+                $date               = $newsAudio->getPublishedAt();
                 $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
             }
 
-            if(!in_array($newsAudio->getTheme()->getName(),$filters['themes']['content'])) {
-                $filters['themes']['slug'][] = $newsAudio->getTheme()->getName();
+            if (!in_array($newsAudio->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][]    = $newsAudio->getTheme()->getName();
                 $filters['themes']['content'][] = $newsAudio->getTheme();
             }
 
@@ -874,7 +843,7 @@ class NewsController extends Controller
 
         return array(
             'audios' => $newsAudios,
-            'filters' => $filters,
+            'filters' => $filters
         );
     }
 

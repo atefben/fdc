@@ -65,9 +65,20 @@ $(document).ready(function() {
 			$(this).find('.more-minus').html('-');
 			
 		}
-		
-
 	});
+	$('.language li').on('click',function(e){
+		if ($('.language ul').hasClass('show')) {
+			$('.language li').removeClass('active-language');
+			$(this).addClass('active-language');
+			$('.language ul').removeClass('show');
+			$('.language ul').addClass('hide');
+		}else{
+			$('.language ul').removeClass('hide');
+			$('.language ul').addClass('show');
+		}
+		
+	});
+
 	var menu = $("#top-menu").owlCarousel({
 			  nav: false,
 			  dots: false,
@@ -344,11 +355,14 @@ $(document).ready(function() {
       }
     }
     if($('.ba').length || $('.channel').length){
+    	var first = $(".thumbnails .thumb").first();
+    	var playerInstance = jwplayer("player");
+    	first.parents('.slideshow').find('.title-video').html(first.find('.category').html());
+	    first.parents('.slideshow').find('.caption').html(first.find('.titleLink').html());
 
-    	var playerInstance = jwplayer("player1");
         playerInstance.setup({
-        file: './videos/sample.mp4',
-        image: './img/playervideo.jpg',
+        file: first.data('video'),
+        image: first.data('poster'),
         width: "100%",
         aspectratio: "16:9",
         displaytitle: false,
@@ -393,8 +407,8 @@ $(document).ready(function() {
 	    // HERE CHANGE SOURCE OF PLAYER VIDEO
 	    // $(this).parents('.slideshow').find('.images .img').removeClass('active');
 
-	    var i = $(this).index(),
-	        vid = $(this).find('.thumb').data('video'), image = './img/playervideo.jpg';
+	    	var i = $(this).index(),
+	        vid = $(this).find('.thumb').data('video'), image = $(this).find('.thumb').data('poster');
 	        jwplayer().load({
                 file: vid,
                 image: (typeof image != 'undefined') ? image : ""
@@ -488,4 +502,47 @@ $(document).ready(function() {
 	  });
 	}
 
+});
+
+
+
+$(document).ready(function() {
+	$('.item-video').on("click",function(e){
+		e.preventDefault();
+		$('.fullscreenplayer').addClass('show');
+		setTimeout(function() {
+	      
+			$('body').addClass('allow-landscape');
+	      
+	    }, 900);
+		
+		var playerInstance = jwplayer("player1");
+        playerInstance.setup({
+        file: $(this).data('video'),
+        image: $(this).data('poster'),
+        width: "100%",
+        aspectratio: "16:9",
+        displaytitle: false,
+        mediaid: '123456',
+        skin: {
+		  name: "five"
+		 }
+        });
+		$('.fullscreenplayer').find('.category').html($(this).find('.category').html());
+	    $('.fullscreenplayer').find('.title-video').html($(this).find('.titleLink').html());
+	});
+
+	$('body').on('click', '.close-button', function(e){
+    $('body').removeClass('allow-landscape');
+    //document.body.removeEventListener('touchmove', listener,false);
+    
+
+    setTimeout(function() {
+      $('.fullscreenplayer').removeClass('show');
+
+      
+    }, 900);
+  });
+
+	
 });

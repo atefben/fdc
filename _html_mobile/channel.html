@@ -129,10 +129,14 @@
 						<i class="icon icon_mon-compte"></i>mon Compte
 					</a>
 				</li>
-				<li class="">
-					<a href="">
-						<i class="icon icon_langue"></i>FR
-					</a>
+				<li class="language">
+						<i class="icon icon_langue"></i>
+						<ul class='hide'>
+							<li class="active-language">FR</li>
+							<li>EN</li>
+							<li>ES</li>
+							<li>ZH</li>
+						</ul>
 				</li>
 			</ul>		
 		</div>
@@ -198,7 +202,16 @@
 	
 	<!-- end header -->
 	
-
+<div class="fullscreenplayer">
+    <div class="close-button"><i class="icon icon_close"></i></div>
+    <div class="vCenter">
+      <div class="vCenterKid">
+        <div id="player1"></div>
+        <p class="category caption">Conférence de presse</p>
+            <p class="title-video">Rencontre avec l'équipe de Carol</p>
+      </div>
+    </div>
+  </div>
 
 		
 
@@ -208,7 +221,7 @@
 
                   <!-- replace by player video -->
                   <div class="images">
-                    <div id="player1"></div>
+                    <div id="player"></div>
                   </div>
 
 
@@ -219,8 +232,8 @@
 
 
                   <div class="owl-carousel thumbnails">
-                    <div data-id="photo1" class="thumb active" data-video="/videos/sample.mp4">
-                      <img src="img/thumb01.jpg" />
+                    <div data-id="photo1" class="thumb active" data-video="/videos/sample.mp4" data-poster='./img/playervideo.jpg'>
+                      <img src='./img/playervideo.jpg' />
                       <div class="info">
     			              <div class="picto"><i class="icon icon_video"></i></div>
     			              <div class="info-container">
@@ -233,8 +246,8 @@
     			              </div>
 			                </div>
                     </div>
-                    <div data-id="photo2" class="thumb" data-video="/videos/sample2.mp4">
-                      <img src="img/thumb01.jpg" />
+                    <div data-id="photo2" class="thumb" data-video="/videos/sample2.mp4" data-poster='./img/playervideo2.jpg'>
+                      <img src='./img/playervideo2.jpg' />
                       <div class="info">
     			              <div class="picto"><i class="icon icon_video"></i></div>
     			              <div class="info-container">
@@ -247,29 +260,29 @@
     			              </div>
 			                </div>
                     </div>
-                    <div data-id="photo3" class="thumb" data-video="/videos/sample.mp4">
-                      <img src="img/thumb01.jpg" />
+                    <div data-id="photo3" class="thumb" data-video="/videos/sample.mp4" data-poster='./img/playervideo3.jpg'>
+                      <img src='./img/playervideo3.jpg' />
                       <div class="info">
     			              <div class="picto"><i class="icon icon_video"></i></div>
     			              <div class="info-container">
     			                <div class="vCenter">
     			                  <div class="vCenterKid">
     			                    <a href="#" class="category">Bande annonce</a>
-    			                    <a href="#" class="titleLink">Bande annonce 01</a>
+    			                    <a href="#" class="titleLink">Bande annonce 02</a>
     			                  </div>
     			                </div>
     			              </div>
 			                 </div>
                     </div>
-                    <div data-id="photo4" class="thumb" data-video="/videos/sample2.mp4">
-                      <img src="img/thumb01.jpg" />
+                    <div data-id="photo4" class="thumb" data-video="/videos/sample2.mp4" data-poster='./img/playervideo.jpg'>
+                      <img src='./img/playervideo.jpg' />
                       <div class="info">
     			              <div class="picto"><i class="icon icon_video"></i></div>
     			              <div class="info-container">
     			                <div class="vCenter">
     			                  <div class="vCenterKid">
     			                    <a href="#" class="category">Bande annonce</a>
-    			                    <a href="#" class="titleLink">Bande annonce 01</a>
+    			                    <a href="#" class="titleLink">Bande annonce 03</a>
     			                  </div>
     			                </div>
     			              </div>
@@ -289,13 +302,14 @@
           </div>
           
           <div id="slider-last-videos" class="owl-carousel sliderDrag videosSlider">
-            <div class="vid">
+            <div class="vid item-video" data-video="/videos/sample.mp4" data-poster='./img/playervideo.jpg'>
               <div class="image-wrapper">
-                <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+                <div class="img" style="background-image:url(img/playervideo.jpg)"></div>
               </div>
-              <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="picto vCenter">
+                    <div class="vCenterKid"><i class="icon icon_video"></i></div>
+                </div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
@@ -306,47 +320,50 @@
                 </div>
               </div>
             </div>
-            <div class="vid">
+            <div class="vid item-video" data-video="/videos/sample2.mp4" data-poster='./img/playervideo2.jpg'>
               <div class="image-wrapper">
-                <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+                <div class="img" style="background-image:url(img/playervideo2.jpg)"></div>
               </div>
-              <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="picto vCenter">
+                    <div class="vCenterKid"><i class="icon icon_video"></i></div>
+                </div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
                       <a href="#" class="category">Montée des marches</a>
-                      <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                      <a href="#" class="titleLink">Rencontre l'équipe de Carol</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="vid">
+            <div class="vid item-video" data-video="/videos/sample.mp4" data-poster='./img/playervideo3.jpg'>
               <div class="image-wrapper">
-                <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+                <div class="img" style="background-image:url(img/playervideo3.jpg)"></div>
               </div>
-              <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="picto vCenter">
+                    <div class="vCenterKid"><i class="icon icon_video"></i></div>
+                </div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">
                       <a href="#" class="category">Montée des marches</a>
-                      <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                      <a href="#" class="titleLink">L'équipe de Carol</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="vid">
+            <div class="vid item-video" data-video="/videos/sample.mp4" data-poster='./img/playervideo.jpg'>
               <div class="image-wrapper">
-                <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+                <div class="img" style="background-image:url(img/playervideo.jpg)"></div>
               </div>
-              <a class="linkVid" href="#"></a>
               <div class="info">
-                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="picto vCenter">
+                    <div class="vCenterKid"><i class="icon icon_video"></i></div>
+                </div>
                 <div class="info-container">
                   <div class="vCenter">
                     <div class="vCenterKid">

@@ -13,8 +13,9 @@
     vertical-align: top;
     box-sizing: border-box;
     margin-right: 29px;
-    position: fixed;
-    top: 393px;
+    position: absolute;
+    top: 163px;
+    @include transition(all 0.2s $linear);
 
     ul {
       border-right: 1px solid #dfdfdf;

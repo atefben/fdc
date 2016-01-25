@@ -11,16 +11,15 @@
         <div class="grid-sizer"></div>
 
         {% for video in videos %}
-            <div class="item {{ article.theme|trans_fallback('name') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video">
-                <a id="video1" class="ajax chocolat-image" href="{{ video.image.path }}"
+            {% set trans = video.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = video.findTranslationByLocale('fr') %}
+            {% endif %}
+            <div class="item {{ video.theme|trans_fallback('name') }} {{ video|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video">
+                <a id="video1" class="ajax chocolat-image" href="{% path trans.image , 'big' %}"
                    title='<span class="category">{{ video.theme }}</span><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ video|trans_fallback('title') }}</h2>'
                    data-credit="{{ video.copyright }}"></a>
-                {% set trans = video.image.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is null %}
-                    {% set trans = video.image.findTranslationByLocale('fr') %}
-                {% endif %}
-                {% set file = trans.file %}
-                {% thumbnail file, 'big' with {'alt': video.image|trans_fallback('alt') } %}
+                {% thumbnail trans.image , 'big' with {'alt': video|trans_fallback('alt') } %}
                 <div class="picto">
                     <i class="icon icon_video"></i>
                 </div>

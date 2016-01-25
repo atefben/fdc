@@ -56,9 +56,20 @@ $(document).ready(function() {
 			$(this).find('.more-minus').html('-');
 			
 		}
-		
-
 	});
+	$('.language li').on('click',function(e){
+		if ($('.language ul').hasClass('show')) {
+			$('.language li').removeClass('active-language');
+			$(this).addClass('active-language');
+			$('.language ul').removeClass('show');
+			$('.language ul').addClass('hide');
+		}else{
+			$('.language ul').removeClass('hide');
+			$('.language ul').addClass('show');
+		}
+		
+	});
+
 	var menu = $("#top-menu").owlCarousel({
 			  nav: false,
 			  dots: false,
@@ -269,6 +280,12 @@ var GLOBALS = {
 };
 $(document).ready(function() {
 
+
+	$( ".content-selection" ).addClass('show');
+	$("#banner-top").addClass('show');
+	$("#banner-bottom").addClass('show');
+
+	
 	var menu = $("#horizontal-menu").owlCarousel({
 		  nav: false,
 		  dots: false,
@@ -292,10 +309,20 @@ $(document).ready(function() {
 
     $('#horizontal-menu a').on('click',function(e){
       e.preventDefault();
+      $( ".content-selection" ).removeClass('show');
+	  $("#banner-top").removeClass('show');
+      $("#banner-bottom").removeClass('show');
+
       if($(this).is(':not(.active)')) {
         var urlPath = $(this).attr('data-url');
         $.get(urlPath, function(data){
           $( ".content-selection" ).html( $(data).find('.content-selection').html() );
+
+           setTimeout(function() {
+      			$( ".content-selection" ).addClass('show');
+      			$("#banner-top").addClass('show');
+      			$("#banner-bottom").addClass('show');
+    		}, 300);
 
 
           if($("#banner-top").length !== 0){
@@ -330,6 +357,7 @@ $(document).ready(function() {
 	    	$("#horizontal-menu").css('position','fixed');
 	    	$("#horizontal-menu").css('top',$(".header-container").height());
 	    	$(".selection-container").css('margin-top',$(".header-container").height());
+	    	$(".content-selection").css('margin-top',$(".header-container").height());
 	    	
 	    	if($(".palmares-container").length !== 0){
 	    		$(".palmares-container").css('margin-top',$(".header-container").height());
@@ -340,7 +368,7 @@ $(document).ready(function() {
 	    	$("#horizontal-menu").css('position','relative');
 	    	$("#horizontal-menu").css('top','inherit');	
 	    	$(".selection-container").css('margin-top',0);
-
+	    	$(".content-selection").css('margin-top',0);
 	    	if($(".palmares-container").length !== 0){
 	    		$(".palmares-container").css('margin-top',0);
 	    	}

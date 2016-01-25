@@ -28,17 +28,6 @@ class NewsArticleAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-    
-    public function getNewInstance()
-    {
-       $instance = parent::getNewInstance();
-       
-       $instance->addAssociatedNews(new NewsNewsAssociated());
-       $instance->addAssociatedNews(new NewsNewsAssociated());
-
-       return $instance;
-    }
-
 
     public function configure()
     {
@@ -269,7 +258,7 @@ class NewsArticleAdmin extends Admin
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
-                'btn_add' => true,
+                'btn_add' => false,
                 'required' => false,
                 ), array(
                     'edit' => 'inline',

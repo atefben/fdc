@@ -13,9 +13,14 @@ breadcrumb:
     link_theme_list: Liste des Thèmes
     link_media_image_list : Liste des Médias images
     link_homepage_list: Homepage
+    link_social_wall_list: Liste du Social Wall
 
 link:
     action_soif_refresh: Mettre à jour
+
+homepage:
+    group:
+        social_wall: Social Wall
 
 group:
     french_version: Version française
@@ -113,6 +118,7 @@ list:
 
 
 filter:
+    label_festival: Festival
     label_id: Identifiant
     label_title: Titre
     label_theme: Thème
@@ -144,6 +150,9 @@ dashboard:
         homepage: Homepage
 
 form:
+    homepage:
+        helper_social_graph: Séparer par des virgules les tags que vous souhaitez.
+        helper_social_wall: Séparer par des virgules les tags que vous souhaitez.
     flashbag:
         modified: Modification effectuée.
     settings:
@@ -188,6 +197,9 @@ form:
         displayed_all: Remonter dans "Toutes les photos"
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
+    label_social_graph_hashtag_twitter: Social graph - hashtags
+    label_displayed_social_wall: Afficher le social wall
+    label_social_wall_hashtags: Social Wall - hashtags
     label_save: Sauvegarder
     label_copyright: Copyright
     label_tags: Tags de recherche
@@ -196,6 +208,7 @@ form:
     label_signature: Signature
     label_introduction: Chapô
     label_header_image: Image principale
+    label_header_gallery: Galerie principale
     label_associated_film: Film & programmation associés
     label_associated_event: Événement & programmation associés
     label_news_film_projection_associated: Objets de programmation associés

@@ -34,7 +34,8 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/slideshow-video.css',
-			            './css/webtv.css'
+			            './css/webtv.css',
+			            './css/fullscreenplayer.css'
 			            
 				        ],
 				  	'./css-concat/channel.css': [
@@ -67,11 +68,12 @@ grunt.initConfig({
 				        ],
 				    './css-concat/movie.css': [
 			            './css/main.css',
+			            './css/movie.css',
 			            './css/slideshows-chocolat.css',
 			            './css/vendors/chocolat.css',
 			            './css/include/*.css',
 			            './css/audioplayer.css',
-			            './css/movie.css',
+			            './css/fullscreenplayer.css',
 			            './css/slideshow-video.css'
 			        ],
 			        './css-concat/article.css': [
@@ -81,6 +83,7 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/article.css',
 			            './css/audioplayer.css',
+			            './css/fullscreenplayer.css',
 			            './css/slideshow-video.css'
 			        ],
 			        './css-concat/participate.css': [
@@ -195,9 +198,11 @@ grunt.initConfig({
 				    './js-concat/trailer.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/jwplayer.js',
 				            './js/include/*.js',
 				            './js/webtv.js',
-				            './js/slidervideos.js'
+				            './js/slidervideos.js',
+				            './js/trailer.js'
 				        ],
 				    './js-concat/channel.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -206,7 +211,8 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/webtv.js',
 				            './js/slidervideos.js',
-				            './js/channel.js'
+				            './js/channel.js',
+				            './js/fullscreenplayer.js'
 				        ],
 			        './js-concat/channels.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -240,6 +246,7 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/slidervideos.js',
 				            './js/audioplayer.js',
+				            './js/vendors/jwplayer.js',
 				            './js/movie.js'
 				        ],
 				    './js-concat/article.js':[
@@ -252,6 +259,7 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/slidervideos.js',
 				            './js/audioplayer.js',
+				            './js/vendors/jwplayer.js',
 				            './js/article.js'
 				        ],
 			        './js-concat/participate.js':[
@@ -374,6 +382,8 @@ grunt.initConfig({
 	        './jury_longsmetrages.html': ['./templates/jury_longsmetrages.html'],
 	        './movie.html': ['./templates/movie.html'],
 	        './article.html': ['./templates/article.html'],
+	        './article-photos.html': ['./templates/article-photos.html'],
+	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
@@ -382,6 +392,12 @@ grunt.initConfig({
 	        './webTV.html': ['./templates/webTV.html'],
 	        './webtv_trailer_competition.html': ['./templates/webtv_trailer_competition.html'],
 	        './webtv_trailer_uncertainregard.html': ['./templates/webtv_trailer_uncertainregard.html'],
+	      	'./webtv_trailer_cinemadelaplage.html': ['./templates/webtv_trailer_cinemadelaplage.html'],
+	        './webtv_trailer_cannesclassics.html': ['./templates/webtv_trailer_cannesclassics.html'],
+	        './webtv_trailer_courtmetrage.html': ['./templates/webtv_trailer_courtmetrage.html'],
+	        './webtv_trailer_cinefondation.html': ['./templates/webtv_trailer_cinefondation.html'],
+	        './webtv_trailer_seancesspeciales.html': ['./templates/webtv_trailer_seancesspeciales.html'],
+	        './webtv_trailer_horscompetition.html': ['./templates/webtv_trailer_horscompetition.html'],
 	        './audios.html': ['./templates/audios.html'],
 	        './contact.html': ['./templates/contact.html'],
 	        './legals.html': ['./templates/legals.html'],
@@ -405,6 +421,8 @@ grunt.initConfig({
 	        './jury_longsmetrages.html': ['./templates/jury_longsmetrages.html'],
 	        './movie.html': ['./templates/movie.html'],
 	        './article.html': ['./templates/article.html'],
+	        './article-photos.html': ['./templates/article-photos.html'],
+	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
@@ -413,6 +431,12 @@ grunt.initConfig({
 	        './webTV.html': ['./templates/webTV.html'],
 	        './webtv_trailer_competition.html': ['./templates/webtv_trailer_competition.html'],
 	        './webtv_trailer_uncertainregard.html': ['./templates/webtv_trailer_uncertainregard.html'],
+	      	'./webtv_trailer_cinemadelaplage.html': ['./templates/webtv_trailer_cinemadelaplage.html'],
+	        './webtv_trailer_cannesclassics.html': ['./templates/webtv_trailer_cannesclassics.html'],
+	        './webtv_trailer_courtmetrage.html': ['./templates/webtv_trailer_courtmetrage.html'],
+	        './webtv_trailer_cinefondation.html': ['./templates/webtv_trailer_cinefondation.html'],
+	        './webtv_trailer_seancesspeciales.html': ['./templates/webtv_trailer_seancesspeciales.html'],
+	        './webtv_trailer_horscompetition.html': ['./templates/webtv_trailer_horscompetition.html'],
 	        './audios.html': ['./templates/audios.html'],
 	        './contact.html': ['./templates/contact.html'],
 	        './legals.html': ['./templates/legals.html'],
