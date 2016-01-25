@@ -27,15 +27,9 @@
     text-transform: uppercase;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-.fullscreenplayer .buttons {
-  margin-top: 40px;
-}
-.fullscreenplayer .buttons a{
-  font-size: 20px;
-  line-height: 70px;
-}
+
 .fullscreenplayer .vCenterKid{
-  padding-top: 110px;
+  /*padding-top: 110px;*/
 }
 .fullscreenplayer{
   
