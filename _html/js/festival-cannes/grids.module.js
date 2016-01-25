@@ -151,7 +151,7 @@ function setImages(grid, dom, init){
 
       $grid = $('#gridPhotos').imagesLoaded(function () {
 
-        setImages($grid, $('#gridPhotos'), false);
+        setImages($grid, $('#gridPhotos'), true);
         $grid.isotope({
           itemSelector: '.item',
           percentPosition: true,
@@ -166,6 +166,17 @@ function setImages(grid, dom, init){
             $grid.isotope({ sortBy : 'original-order' });
           }, 500);
         }
+      });
+
+      $('#gridPhotos').infinitescroll({
+        navSelector: "#next:last",
+        nextSelector: "#next:last",
+        itemSelector: "#gridPhotos",
+        debug: false,
+        dataType: 'html'
+      }, function (newElements, data, url) {
+        console.log('ok');
+        setGrid($grid, newElements, false);
       });
     }
 
@@ -261,15 +272,10 @@ function setImages(grid, dom, init){
         navSelector: "#next:last",
         nextSelector: "#next:last",
         itemSelector: "#gridAudios",
-        debug: false,
-        dataType: 'html',
-        path: function (index) {
-          //TODO dev// 
-          return $('#gridAudios').data('type') + index + ".html";
-        }
+        debug: true,
+        dataType: 'html'
       }, function (newElements, data, url) {
         setGrid($grid, newElements, false);
-
       });
     }
 
