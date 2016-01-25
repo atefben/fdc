@@ -356,7 +356,8 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
 };
 
 $(d).ready(function() {
-    play1 = playerInit('video-player', false, true, false);
+    if ($('#video-player').length > 0)
+        play1 = playerInit('video-player', false, true, false);
     // play1 = playerInit('video-player', false, $('#video-player').data('playlist'), false);
     // play2 = playerInit(false, '.video-player', true, false);
     // play3 = playerInit(false, 'video-live', false, true);
