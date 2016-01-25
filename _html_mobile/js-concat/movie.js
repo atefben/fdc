@@ -1499,6 +1499,12 @@ $(document).ready(function() {
 	    }
 	 });
 
+	// ADD BACK ACTION
+	$('.back').on('click', function(){
+		window.history.back();
+
+	});
+
 	// INIT VIDEO PLAYER
 
 	var playerInstance = jwplayer("player");

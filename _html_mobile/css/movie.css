@@ -272,7 +272,7 @@ a{
 	display: table;
 }
 
-.owl-item a:not(.director, .titleLink, .category){
+.container .owl-item a:not(.director, .titleLink, .category), .film .owl-item a:not(.director, .titleLink, .category){
 
     display: block;
     position: absolute;
