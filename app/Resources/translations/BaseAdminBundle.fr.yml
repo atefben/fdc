@@ -13,6 +13,7 @@ breadcrumb:
     link_theme_list: Liste des Thèmes
     link_media_image_list : Liste des Médias images
     link_homepage_list: Homepage
+    link_social_wall_list: Liste du Social Wall
 
 link:
     action_soif_refresh: Mettre à jour
@@ -113,6 +114,7 @@ list:
 
 
 filter:
+    laebel_festival: Festival
     label_id: Identifiant
     label_title: Titre
     label_theme: Thème
