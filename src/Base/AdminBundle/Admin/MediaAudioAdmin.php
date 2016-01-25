@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\Media;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;

@@ -7,6 +7,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Util\Seo;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -24,9 +25,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class InfoArticleTranslation implements TranslateChildInterface
 {
+    use Seo;
+    use TranslateChild;
     use Time;
     use Translation;
-    use TranslateChild;
 
     /**
      * @var string
@@ -108,6 +110,7 @@ class InfoArticleTranslation implements TranslateChildInterface
         return $this->introduction;
     }
 
+
     /**
      * Set slug
      *
@@ -124,7 +127,7 @@ class InfoArticleTranslation implements TranslateChildInterface
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {

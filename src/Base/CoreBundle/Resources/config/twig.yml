@@ -24,6 +24,16 @@ services:
         tags:
             - { name: twig.extension }
 
+    base.twig.info_instance_of_extension:
+        class: Base\CoreBundle\Twig\Extension\InfoInstanceOfExtension
+        tags:
+            - { name: twig.extension }
+
+    base.twig.info_widget_instance_of_extension:
+        class: Base\CoreBundle\Twig\Extension\InfoWidgetInstanceOfExtension
+        tags:
+            - { name: twig.extension }
+
     base.twig.trans_fallback_extension:
         class: Base\CoreBundle\Twig\Extension\TransFallbackExtension
         tags:

@@ -36,7 +36,7 @@ class LockedContentType extends AbstractType
         $builder
             ->add('password',  new PasswordType() , array(
                 'attr' => array(
-                    'placeholder' => $this->translator->trans('press.header.placeholder.motdepasse', 'FDCPressBundle')
+                    'placeholder' => $this->translator->trans('press.header.placeholder.motdepasse', array(), 'FDCPressBundle')
                 ),
                 'label' => false
             ));

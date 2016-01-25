@@ -3,6 +3,8 @@
 namespace FDC\PressBundle\Controller;
 
 use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Entity\Info;
+
 use \DateTime;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +24,7 @@ class NewsController extends Controller
      * @param Request $request
      * @return array
      */
-    public function homeAction( Request $request )
+    public function homeAction(Request $request)
     {
         $headerInfo = array(
             'title' => 'Accueil',
@@ -34,9 +36,9 @@ class NewsController extends Controller
 
         $translator = $this->get('translator');
 
-        $lockedContentForm = $this->createForm( new LockedContentType($translator) );
+        $lockedContentForm = $this->createForm(new LockedContentType($translator));
 
-        $popinLockedForm = $this->createForm( new LockedContentType($translator));
+        $popinLockedForm = $this->createForm(new LockedContentType($translator));
 
         $homeNews = array(
             array(
@@ -415,8 +417,8 @@ class NewsController extends Controller
         $programmations = array();
 
         if ($associatedFilm !== null) {
-            $associatedFilmDuration = date('H:i', mktime(0,$associatedFilm->getDuration()));
-            foreach($associatedFilm->getProjectionProgrammationFilms() as $projection) {
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            foreach ($associatedFilm->getProjectionProgrammationFilms() as $projection) {
                 $programmations[] = $projection->getProjection();
             }
         }
@@ -451,7 +453,7 @@ class NewsController extends Controller
     public function listAction()
     {
 
-        $em   = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
         $dateTime = new DateTime();
 
@@ -461,12 +463,23 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        //GET ALL NEWS ARTICLES
+        //GET ALL STATEMENT ARTICLES
         $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
 
-        if ($statements === null) {
+        //GET ALL STATEMENT ARTICLES
+        $infos = $em->getRepository('BaseCoreBundle:Info')->getInfos($settings->getFestival()->getId(), $dateTime, $locale);
+
+        if ($statements === null && $infos === null) {
             throw new NotFoundHttpException();
         }
+        $pressNews = array_merge($infos, $statements);
+
+        usort($pressNews, function ($a, $b) {
+            if ($a->getCreatedAt()->format('Y-m-d H:i:s') == $b->getCreatedAt()->format('Y-m-d H:i:s')) {
+                return 0;
+            }
+            return ($a->getCreatedAt()->format('Y-m-d H:i:s') < $b->getCreatedAt()->format('Y-m-d H:i:s')) ? -1 : 1;
+        });
 
         $filters = array();
         $filters['dates'][0] = array(
@@ -498,10 +511,10 @@ class NewsController extends Controller
         $years = array();
         $themes = array();
 
-        foreach($statements as $statement) {
+        foreach ($pressNews as $statement) {
 
             if (!in_array($statement->getPublishedAt()->format('Y'), $years)) {
-                $filters['dates'][$i]['slug'] =  $statement->getPublishedAt()->format('Y');
+                $filters['dates'][$i]['slug'] = $statement->getPublishedAt()->format('Y');
                 $filters['dates'][$i]['content'] = $statement->getPublishedAt()->format('Y');
 
                 $years[] = $statement->getPublishedAt()->format('Y');
@@ -522,10 +535,11 @@ class NewsController extends Controller
         );
 
         return array(
-            'headerInfo'  => $headerInfo,
+            'headerInfo' => $headerInfo,
             'filters' => $filters,
-            'statementArticles' => $statements,
+            'statementArticles' => $pressNews,
         );
 
     }
+
 }

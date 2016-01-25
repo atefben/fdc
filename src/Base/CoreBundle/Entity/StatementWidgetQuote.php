@@ -24,7 +24,7 @@ class StatementWidgetQuote extends StatementWidget
     /**
      * @var ArrayCollection
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     protected $translations;
 

@@ -44,7 +44,7 @@ class InfoArticle extends Info
      * Set header
      *
      * @param MediaImage $header
-     * @return NewsArticle
+     * @return InfoArticle
      */
     public function setHeader(MediaImage $header = null)
     {

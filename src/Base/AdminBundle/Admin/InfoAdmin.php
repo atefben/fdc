@@ -2,9 +2,9 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\News;
-use Base\CoreBundle\Entity\NewsArticle;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\InfoArticle;
+use Base\CoreBundle\Entity\InfoArticleTranslation;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -13,7 +13,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsAdmin class.
+ * InfoAdmin class.
  * 
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
@@ -61,7 +61,7 @@ class InfoAdmin extends Admin
                 },
                 'field_type' => 'choice',
                 'field_options' => array(
-                    'choices' => NewsArticleTranslation::getStatuses(),
+                    'choices' => InfoArticleTranslation::getStatuses(),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
@@ -78,7 +78,7 @@ class InfoAdmin extends Admin
                 },
                 'field_type' => 'choice',
                 'field_options' => array(
-                    'choices' => News::getTypes()
+                    'choices' => Info::getTypes()
                 )
             ))
         ;

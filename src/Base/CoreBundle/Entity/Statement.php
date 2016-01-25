@@ -41,7 +41,7 @@ abstract class Statement implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $id;
 
@@ -50,7 +50,7 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
      */
     private $theme;
@@ -74,7 +74,7 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $displayedHome;
 
@@ -90,7 +90,7 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $signature;
 
@@ -99,42 +99,42 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="StatementTag", mappedBy="statement", cascade={"persist"})
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="StatementStatementAssociated", mappedBy="statement", cascade={"persist"})
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $associatedStatement;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $associatedFilm;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $associatedEvent;
 
     /**
      * @ORM\OneToMany(targetEntity="StatementFilmProjectionAssociated", mappedBy="statement", cascade={"persist"})
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $associatedProjections;
 
     /**
      * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="statement", cascade={"persist"})
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $associatedFilms;
 
@@ -144,7 +144,7 @@ abstract class Statement implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"persist"})
      *
      * @ORM\OrderBy({"position" = "ASC"})
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $widgets;
 
@@ -153,7 +153,7 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $sites;
 
@@ -176,7 +176,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * ArrayCollection
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     protected $translations;
 
@@ -185,7 +185,7 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $createdBy;
 
@@ -194,7 +194,7 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $updatedBy;
 
@@ -229,7 +229,7 @@ abstract class Statement implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     public function getStatementType()
     {

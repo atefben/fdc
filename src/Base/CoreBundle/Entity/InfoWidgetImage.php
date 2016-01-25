@@ -25,7 +25,7 @@ class InfoWidgetImage extends InfoWidget
      * Set gallery
      *
      * @param \Base\CoreBundle\Entity\Gallery $gallery
-     * @return NewsWidgetImage
+     * @return InfoWidgetImage
      */
     public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
     {

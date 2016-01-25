@@ -105,7 +105,7 @@ class StatementVideoAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:Statement:list_title.html.twig'))
+            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
             ->add('theme')
             ->add('createdAt')
             ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
@@ -139,7 +139,7 @@ class StatementVideoAdmin extends Admin
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.statement.helper_title'
+                        'sonata_help' => 'form.news.helper_title'
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
@@ -164,7 +164,7 @@ class StatementVideoAdmin extends Admin
                             'placeholder' => 'form.placeholder_seo_title'
                         ),
                         'label' => 'form.label_seo_title',
-                        'sonata_help' => 'form.statement.helper_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
                     ),
@@ -173,7 +173,7 @@ class StatementVideoAdmin extends Admin
                             'placeholder' => 'form.placeholder_seo_description'
                         ),
                         'label' => 'form.label_seo_description',
-                        'sonata_help' => 'form.statement.helper_description',
+                        'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
 
@@ -221,25 +221,25 @@ class StatementVideoAdmin extends Admin
             ))
 
             ->add('signature', null, array(
-                'help' => 'form.statement.helper_signature'
+                'help' => 'form.news.helper_signature'
             ))
             ->add('video', 'sonata_type_model_list', array(
                 'label' => 'form.label_video_file',
-                'help' => 'form.statement.helper_video_file',
+                'help' => 'form.news.helper_video_file',
                 'translation_domain' => 'BaseAdminBundle',
                 'required' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
-                'help' => 'form.statement.helper_film_film_associated',
+                'help' => 'form.news.helper_film_film_associated',
                 'required' => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
-                'help' => 'form.statement.helper_event_associated',
+                'help' => 'form.news.helper_event_associated',
                 'required' => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
-                'label' => 'form.label_statement_film_projection_associated',
-                'help' => 'form.statement.helper_statement_film_projection_associated',
+                'label' => 'form.label_news_film_projection_associated',
+                'help' => 'form.news.helper_news_film_projection_associated',
                 'by_reference' => false,
                 'required' => false,
             ), array(
@@ -248,8 +248,8 @@ class StatementVideoAdmin extends Admin
                 )
             )
             ->add('associatedFilms', 'sonata_type_collection', array(
-                'label' => 'form.label_statement_film_film_associated',
-                'help' => 'form.statement.helper_statement_film_film_associated',
+                'label' => 'form.label_news_film_film_associated',
+                'help' => 'form.news.helper_news_film_film_associated',
                 'by_reference' => false,
                 'required' => false,
             ), array(
@@ -258,8 +258,8 @@ class StatementVideoAdmin extends Admin
                 )
             )
             ->add('associatedStatement', 'sonata_type_collection', array(
-                'label' => 'form.label_statement_statement_associated',
-                'help' => 'form.statement.helper_statement_statement_associated',
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
                 'btn_add' => true,
                 'required' => false,
@@ -278,7 +278,7 @@ class StatementVideoAdmin extends Admin
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
-                'help' => 'form.statement.helper_file',
+                'help' => 'form.news.helper_file',
                 'required' => false
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
@@ -320,9 +320,6 @@ class StatementVideoAdmin extends Admin
         ;
     }
 
-    /**
-     * @param mixed $object
-     */
     public function prePersist($object)
     {
 
@@ -332,9 +329,6 @@ class StatementVideoAdmin extends Admin
 
     }
 
-    /**
-     * @param mixed $object
-     */
     public function preUpdate($object)
     {
 

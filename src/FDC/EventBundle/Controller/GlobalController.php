@@ -212,24 +212,6 @@ class GlobalController extends Controller
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($registration);
                         $em->flush();
-
-                        //Send Confirmation Mail
-                        $message = \Swift_Message::newInstance()
-                            ->setSubject($translator->trans('newsletter.email.subject'))
-                            ->setFrom('contact@mail.fr')
-                            ->setTo($data['email'])
-                            ->setBody(
-                                $this->renderView(
-                                    'FDCEventBundle:Mail:newsletter.html.twig',
-                                    array(
-                                        'newsletter_email' => $data['email']
-                                    )
-                                )
-
-                            )
-                            ->setContentType("text/html");
-
-                        $this->get('mailer')->send($message);
                     }
                 }
 
