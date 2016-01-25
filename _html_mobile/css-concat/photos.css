@@ -3534,10 +3534,9 @@ body.chocolat-open>.chocolat-content{
 */
 /*FILTERS*/
 .filters{
-	width:100%;
-	margin: 0 auto;
-	padding-bottom: 80px;
-    position: relative;
+
+	padding-bottom: 75px;
+  text-align: center;
 }
 .filters div,.filters-slider .filter, .filters-slider .select {
     display: inline-block;
@@ -3547,13 +3546,9 @@ body.chocolat-open>.chocolat-content{
     font-weight: 700;
 }
 .filters .filter{
-	margin-right: 40px;
+	margin:0 20px;
 }
-.filters .filter:last-child{
-	margin-right: 0;
-    position: absolute;
-    right: 10px;
-}
+
 .filters div .label, .filters-slider .filter .label {
     color: #333;
     margin-right: 5px;
