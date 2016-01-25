@@ -165,18 +165,19 @@ function setImages(grid, dom, init){
           setTimeout(function() {
             $grid.isotope({ sortBy : 'original-order' });
           }, 500);
-        }
-      });
 
-      $('#gridPhotos').infinitescroll({
-        navSelector: "#next:last",
-        nextSelector: "#next:last",
-        itemSelector: "#gridPhotos",
-        debug: false,
-        dataType: 'html'
-      }, function (newElements, data, url) {
-        console.log('ok');
-        setGrid($grid, newElements, false);
+          $grid.infinitescroll({
+            navSelector: "#next:last",
+            nextSelector: "#next:last",
+            itemSelector: "#gridPhotos",
+            debug: false,
+            dataType: 'html'
+          }, function (newElements, data, url) {
+            console.log('ok');
+            setGrid($grid, newElements, false);
+          });
+
+        }
       });
     }
 
@@ -254,7 +255,7 @@ function setImages(grid, dom, init){
               $popinAudio = $('.popin-audio');
 
             $popinAudio.attr('data-sound', s);
-            $popinAudio.find('.image').css('background-image', 'url(' + img + ')'); // TODO URL A VERIFIER besoin du json ? //
+            $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
             $popinAudio.find('.category').text(category);
             $popinAudio.find('.date').text(date);
             $popinAudio.find('.hour').text(hour);
