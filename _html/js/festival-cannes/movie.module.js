@@ -82,7 +82,7 @@ $(document).ready(function() {
 
       sliderCompetition.owlCarousel();
     }
-    
+
     initSliders();
 
     // go to item
@@ -114,7 +114,7 @@ $(document).ready(function() {
 
       var $el = $(this)
         , id = $el.attr('href').substr(1);
-     
+
       var posT = $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height();
 
       if(!$('#nav-movie').hasClass('sticky')) {
@@ -144,7 +144,7 @@ $(document).ready(function() {
           $('header').addClass('sticky');
           $('body').css('padding-top', 0);
         }, 800);
-        
+
       });
     });
 
