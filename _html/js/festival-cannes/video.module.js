@@ -39,8 +39,13 @@ var d = document,
             <a href="#" class="channels"><i class="icon icon_playlist"></i></a>\
             <div class="info"></div>\
             <div class="buttons square">\
+<<<<<<< Updated upstream
             <a href="#" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700\');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
                 <a href="#" onclick="window.open(\'https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride\',\'\',\'width=600,height=400\')" class="button twitter"><i class="icon icon_twitter"></i></a>\
+=======
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
+                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>\
+>>>>>>> Stashed changes
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>\
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>\
             </div>\
@@ -50,7 +55,7 @@ var d = document,
             <div class="slider-channels-video owl-carousel sliderDrag">\
             </div>\
         </div>',
-    slide = 
+    slide =
         '<div class="channel video shadow-bottom">\
             <div class="image-wrapper">\
                 <img src="" alt="" width="293" height="185">\
@@ -196,13 +201,13 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
             k.log('', $(this).closest('.owl-item'));
 
             playerInstance.playlistItem($(this).closest('.owl-item').index());
-            
+
             console.log($(this).closest('.channel.video'));
             var infos = $.parseJSON($(this).closest('.channel.video').data('json'));
             k.log('', infos);
             $topBar.find('.info .category').text(infos.category);
             $topBar.find('.info p').text(infos.name);
-            
+
             $container.find('.channels-video').removeClass('active');
             $container.find('.jwplayer').removeClass('overlay-channels');
         });
@@ -210,7 +215,7 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
 
     playerInstance.setup({
         file: $container.data('file'),
-        image: $container.data('image'), 
+        image: $container.data('image'),
         primary: 'html5',
         aspectratio: '16:9',
         width: $(vid).parent('div').width(),
