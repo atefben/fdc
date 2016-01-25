@@ -318,6 +318,9 @@ from desktop
   max-width:520px;
   padding:0;
 }
+.title.tallIcon{
+  height: 140px;
+}
 .title.one-line{
   max-width:100%;
   height: 25px;
@@ -514,11 +517,10 @@ from desktop
 #sliderWrapper .owl-stage-outer, #sliderWrapper .owl-stage, #sliderWrapper .owl-item > div {
   height: 100%;
 }
-/* Icons */
 @font-face {
   font-family: "icons";
-  src: url("../fonts/icons.eot?f5b16abecc52ee5b31ba444ecaaa3701");
-  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?f5b16abecc52ee5b31ba444ecaaa3701") format("woff"), url("../fonts/icons.ttf?f5b16abecc52ee5b31ba444ecaaa3701") format("truetype");
+  src: url("../fonts/icons.eot?16e2b826b80be4a75d3910a5fb350334");
+  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff?16e2b826b80be4a75d3910a5fb350334") format("woff"), url("../fonts/icons.ttf?16e2b826b80be4a75d3910a5fb350334") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -593,372 +595,376 @@ from desktop
   content: "\f10e";
 }
 
-.icon_bus:before {
+.icon_bandes-annonces-extraits:before {
   content: "\f10f";
 }
 
-.icon_cadenas:before {
+.icon_bus:before {
   content: "\f110";
 }
 
-.icon_camera:before {
+.icon_cadenas:before {
   content: "\f111";
 }
 
-.icon_camion:before {
+.icon_camera:before {
   content: "\f112";
 }
 
-.icon_case-fermer:before {
+.icon_camion:before {
   content: "\f113";
 }
 
-.icon_case-plus:before {
+.icon_case-fermer:before {
   content: "\f114";
 }
 
-.icon_casier:before {
+.icon_case-plus:before {
   content: "\f115";
 }
 
-.icon_chrome:before {
+.icon_casier:before {
   content: "\f116";
 }
 
-.icon_close:before {
+.icon_chrome:before {
   content: "\f117";
 }
 
-.icon_communique-presse:before {
+.icon_close:before {
   content: "\f118";
 }
 
-.icon_consignes:before {
+.icon_communique-presse:before {
   content: "\f119";
 }
 
-.icon_creer:before {
+.icon_consignes:before {
   content: "\f11a";
 }
 
-.icon_dailymotion:before {
+.icon_creer:before {
   content: "\f11b";
 }
 
-.icon_diaporama:before {
+.icon_dailymotion:before {
   content: "\f11c";
 }
 
-.icon_divers:before {
+.icon_diaporama:before {
   content: "\f11d";
 }
 
-.icon_dossier:before {
+.icon_divers:before {
   content: "\f11e";
 }
 
-.icon_drag:before {
+.icon_dossier:before {
   content: "\f11f";
 }
 
-.icon_dress-code:before {
+.icon_drag:before {
   content: "\f120";
 }
 
-.icon_enregistreur:before {
+.icon_dress-code:before {
   content: "\f121";
 }
 
-.icon_espace-presse:before {
+.icon_enregistreur:before {
   content: "\f122";
 }
 
-.icon_evt-conference:before {
+.icon_espace-presse:before {
   content: "\f123";
 }
 
-.icon_evt-personnel:before {
+.icon_evt-conference:before {
   content: "\f124";
 }
 
-.icon_evt-seance-presse:before {
+.icon_evt-personnel:before {
   content: "\f125";
 }
 
-.icon_evt-seance:before {
+.icon_evt-seance-presse:before {
   content: "\f126";
 }
 
-.icon_facebook:before {
+.icon_evt-seance:before {
   content: "\f127";
 }
 
-.icon_fermer-cookies:before {
+.icon_facebook:before {
   content: "\f128";
 }
 
-.icon_firefox:before {
+.icon_fermer-cookies:before {
   content: "\f129";
 }
 
-.icon_fleche-down:before {
+.icon_firefox:before {
   content: "\f12a";
 }
 
-.icon_fleche-right:before {
+.icon_fleche-down:before {
   content: "\f12b";
 }
 
-.icon_fleche-top:before {
+.icon_fleche-right:before {
   content: "\f12c";
 }
 
-.icon_flecheGauche:before {
+.icon_fleche-top:before {
   content: "\f12d";
 }
 
-.icon_fullscreen:before {
+.icon_flecheGauche:before {
   content: "\f12e";
 }
 
-.icon_hebergement:before {
+.icon_fullscreen:before {
   content: "\f12f";
 }
 
-.icon_horaires:before {
+.icon_hebergement:before {
   content: "\f130";
 }
 
-.icon_informations:before {
+.icon_horaires:before {
   content: "\f131";
 }
 
-.icon_instagram:before {
+.icon_informations:before {
   content: "\f132";
 }
 
-.icon_invitation:before {
+.icon_instagram:before {
   content: "\f133";
 }
 
-.icon_langue:before {
+.icon_invitation:before {
   content: "\f134";
 }
 
-.icon_les-bonnes-pratiques:before {
+.icon_langue:before {
   content: "\f135";
 }
 
-.icon_les-differents-types-dacces:before {
+.icon_les-bonnes-pratiques:before {
   content: "\f136";
 }
 
-.icon_les-salles-de-projections:before {
+.icon_les-differents-types-dacces:before {
   content: "\f137";
 }
 
-.icon_lettre:before {
+.icon_les-salles-de-projections:before {
   content: "\f138";
 }
 
-.icon_link:before {
+.icon_lettre:before {
   content: "\f139";
 }
 
-.icon_lire-plus-tard:before {
+.icon_link:before {
   content: "\f13a";
 }
 
-.icon_loupeMoins:before {
+.icon_lire-plus-tard:before {
   content: "\f13b";
 }
 
-.icon_loupePlus:before {
+.icon_loupeMoins:before {
   content: "\f13c";
 }
 
-.icon_ma-selection:before {
+.icon_loupePlus:before {
   content: "\f13d";
 }
 
-.icon_main-drag:before {
+.icon_ma-selection:before {
   content: "\f13e";
 }
 
-.icon_mains:before {
+.icon_main-drag:before {
   content: "\f13f";
 }
 
-.icon_media:before {
+.icon_mains:before {
   content: "\f140";
 }
 
-.icon_moins:before {
+.icon_media:before {
   content: "\f141";
 }
 
-.icon_mon-compte:before {
+.icon_moins:before {
   content: "\f142";
 }
 
-.icon_n-urgences:before {
+.icon_mon-compte:before {
   content: "\f143";
 }
 
-.icon_objets-trouves:before {
+.icon_n-urgences:before {
   content: "\f144";
 }
 
-.icon_palme:before {
+.icon_objets-trouves:before {
   content: "\f145";
 }
 
-.icon_participer:before {
+.icon_palme:before {
   content: "\f146";
 }
 
-.icon_pause:before {
+.icon_participer:before {
   content: "\f147";
 }
 
-.icon_pdf:before {
+.icon_pause:before {
   content: "\f148";
 }
 
-.icon_photo:before {
+.icon_pdf:before {
   content: "\f149";
 }
 
-.icon_plateau-tv:before {
+.icon_photo:before {
   content: "\f14a";
 }
 
-.icon_play:before {
+.icon_plateau-tv:before {
   content: "\f14b";
 }
 
-.icon_player:before {
+.icon_play:before {
   content: "\f14c";
 }
 
-.icon_playlist:before {
+.icon_player:before {
   content: "\f14d";
 }
 
-.icon_podcast:before {
+.icon_playlist:before {
   content: "\f14e";
 }
 
-.icon_point-infos:before {
+.icon_podcast:before {
   content: "\f14f";
 }
 
-.icon_print:before {
+.icon_point-infos:before {
   content: "\f150";
 }
 
-.icon_programmation:before {
+.icon_print:before {
   content: "\f151";
 }
 
-.icon_puce-big:before {
+.icon_programmation:before {
   content: "\f152";
 }
 
-.icon_puce-small:before {
+.icon_puce-big:before {
   content: "\f153";
 }
 
-.icon_recherche:before {
+.icon_puce-small:before {
   content: "\f154";
 }
 
-.icon_rendez-vous-des-medias:before {
+.icon_recherche:before {
   content: "\f155";
 }
 
-.icon_reverseFullScreen:before {
+.icon_rendez-vous-des-medias:before {
   content: "\f156";
 }
 
-.icon_rss:before {
+.icon_reverseFullScreen:before {
   content: "\f157";
 }
 
-.icon_safari:before {
+.icon_rss:before {
   content: "\f158";
 }
 
-.icon_salle-presse:before {
+.icon_safari:before {
   content: "\f159";
 }
 
-.icon_se-rendre-a-cannes:before {
+.icon_salle-presse:before {
   content: "\f15a";
 }
 
-.icon_selfie:before {
+.icon_se-rendre-a-cannes:before {
   content: "\f15b";
 }
 
-.icon_service:before {
+.icon_selfie:before {
   content: "\f15c";
 }
 
-.icon_share:before {
+.icon_service:before {
   content: "\f15d";
 }
 
-.icon_son:before {
+.icon_share:before {
   content: "\f15e";
 }
 
-.icon_taxi:before {
+.icon_son:before {
   content: "\f15f";
 }
 
-.icon_telecharger:before {
+.icon_taxi:before {
   content: "\f160";
 }
 
-.icon_telephone:before {
+.icon_telecharger:before {
   content: "\f161";
 }
 
-.icon_train:before {
+.icon_telephone:before {
   content: "\f162";
 }
 
-.icon_transport:before {
+.icon_train:before {
   content: "\f163";
 }
 
-.icon_tumblr:before {
+.icon_transport:before {
   content: "\f164";
 }
 
-.icon_twitter:before {
+.icon_tumblr:before {
   content: "\f165";
 }
 
-.icon_video:before {
+.icon_twitter:before {
   content: "\f166";
 }
 
-.icon_voiture:before {
+.icon_video:before {
   content: "\f167";
 }
 
-.icon_wifi:before {
+.icon_voiture:before {
   content: "\f168";
 }
 
-.icon_youtube:before {
+.icon_wifi:before {
   content: "\f169";
 }
 
-.icon_zone-media:before {
+.icon_youtube:before {
   content: "\f16a";
+}
+
+.icon_zone-media:before {
+  content: "\f16b";
 }
 
 @font-face {
@@ -2027,6 +2033,10 @@ article .picto .icon{
     line-height: 90px;
     text-align: center;
 
+}
+.all-photos .container .title, .all-videos .container .title, .audios .container .title{
+  
+  margin: 70px 0 40px 0;
 }
 
 /* footer */
@@ -3536,10 +3546,9 @@ body.chocolat-open>.chocolat-content{
 */
 /*FILTERS*/
 .filters{
-	width:100%;
-	margin: 0 auto;
-	padding-bottom: 80px;
-    position: relative;
+
+	padding-bottom: 75px;
+  text-align: center;
 }
 .filters div,.filters-slider .filter, .filters-slider .select {
     display: inline-block;
@@ -3549,13 +3558,9 @@ body.chocolat-open>.chocolat-content{
     font-weight: 700;
 }
 .filters .filter{
-	margin-right: 40px;
+	margin:0 20px;
 }
-.filters .filter:last-child{
-	margin-right: 0;
-    position: absolute;
-    right: 10px;
-}
+
 .filters div .label, .filters-slider .filter .label {
     color: #333;
     margin-right: 5px;
@@ -3580,7 +3585,7 @@ body.chocolat-open>.chocolat-content{
     background-size: 6px;*/
     display: none;
     padding-right: 13px;
-    max-width: 120px;
+    max-width: 110px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -3742,7 +3747,7 @@ body.chocolat-open>.chocolat-content{
   float: left;
   width: 50%;
   height: 205px;
-  background: #0D8;
+  background: #000;
   position: relative;
 
 }
@@ -3811,17 +3816,17 @@ body.chocolat-open>.chocolat-content{
     letter-spacing: 0.05em;
     margin-right: 12px;
     text-transform: uppercase;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     margin-top: 5px;
-    padding-bottom: 5px;
-    font-weight: 600;
+    padding-bottom: 3px;
+    font-weight: 700;
 }
 
 .grid-item .infos p{
 	line-height: 1.5rem;
 	color:#fff;
 	font-size: 1.5rem;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 
   max-width: 185px;
   white-space: nowrap;
@@ -3839,14 +3844,9 @@ body.chocolat-open>.chocolat-content{
 }
 
 .grid-item:before {
-  background: transparent;
-  background: -moz-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(57%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
-  background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -o-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: -ms-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 0.8) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+
+  background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 1) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 1) 100%);
   content: '';
   display: block;
   height: 100%;
@@ -3856,5 +3856,14 @@ body.chocolat-open>.chocolat-content{
   left:0;
   z-index: 1;
 }
+.grid-item a{
 
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
 /* ************** */
