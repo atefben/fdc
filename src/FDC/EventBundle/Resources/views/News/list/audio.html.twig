@@ -11,9 +11,12 @@
         <div class="grid-sizer"></div>
 
         {% for audio in audios %}
-            <div class="item {{ article.theme|trans_fallback('name') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video" data-sound="{{ audio.sound }}">
-
-                <img src="{{ audio.image.src }}" srcset="{{ audio.image.src }} 1x, {{ audio.image.large }} 2x" alt="">
+            {% set trans = audio.findTranslationByLocale('fr') %}
+            {% if trans is null or trans.image is null %}
+                {% set trans = audio.findTranslationByLocale('fr') %}
+            {% endif %}
+            <div class="item {{ audio.theme|trans_fallback('name') }} {{ audio|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video" data-sound="{% path trans.file , 'small'%}">
+                <img src="{% path trans.image , 'big' %}" srcset="{% path trans.image , 'big' %} 1x, {% path trans.image , 'big' %} 2x" alt="">
                 <div class="picto">
                     <i class="icon icon_audio"></i>
                 </div>

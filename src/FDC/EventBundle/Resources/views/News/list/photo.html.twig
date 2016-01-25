@@ -11,24 +11,23 @@
         <div class="grid-sizer"></div>
 
         {% for photo in photos %}
-            <div class="item {{ article.theme|trans_fallback('name') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} {{ photo.format }} shadow-bottom photo">
-                <a id="photo1" class="ajax chocolat-image" href="{{ photo.image.path }}"
-                   title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ photo|trans_fallback('title') }}</h2>'
-                   data-credit="{{ photo.copyright }}"></a>
-                {% set trans = photo.image.findTranslationByLocale(app.request.locale) %}
+            <div class="item {{ photo.theme|trans_fallback('name') }} {{ photo|trans_fallback('createdAt')|date('d.m.y') }} {{ photo.format }} shadow-bottom photo">
+                {% set trans = photo.findTranslationByLocale('fr') %}
                 {% if trans is null or trans.file is null %}
-                    {% set trans = photo.image.findTranslationByLocale('fr') %}
+                    {% set trans = photo.findTranslationByLocale('fr') %}
                 {% endif %}
-                {% set file = trans.file %}
-                {% thumbnail file, 'big' with {'alt': photo.image|trans_fallback('alt') } %}
+                <a id="photo1" class="ajax chocolat-image" href="{% path trans.file , 'big' %}"
+                   title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'
+                   data-credit="{{ photo.copyright }}"></a>
+                {% thumbnail trans.file , 'big' with {'alt': photo|trans_fallback('alt') } %}
                 <div class="picto">
-                    <i class="icon icon_image"></i>
+                    <i class="icon icon_photo"></i>
                 </div>
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
                             <a href="#" class="category">{{ photo.theme }}</a><span class="date">{{ photo|trans_fallback('createdAt')|date('d.m.y')}}</span>
-                            <p>{{ photo|trans_fallback('title') }}</p>
+                            <p>{{ photo|trans_fallback('legend') }}</p>
                         </div>
                     </div>
                 </div>

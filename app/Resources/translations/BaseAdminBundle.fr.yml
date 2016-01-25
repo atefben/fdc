@@ -196,6 +196,7 @@ form:
     label_signature: Signature
     label_introduction: Chapô
     label_header_image: Image principale
+    label_header_gallery: Galerie principale
     label_associated_film: Film & programmation associés
     label_associated_event: Événement & programmation associés
     label_news_film_projection_associated: Objets de programmation associés
