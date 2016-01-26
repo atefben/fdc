@@ -3095,12 +3095,22 @@ display: inline-block;
 	position: relative;
     top: -4px;
 }
+.description.half{
 
+	width: 50%;
+	float: left;
+}
 .description.center{
 	text-align: center;
 }
 .description.center .title-contain{
 	text-align: center;
+}
+.description.center{
+
+	max-height: 500px;
+	padding-top: 40px;
+
 }
 img{
 	display: inline-block;
@@ -3110,7 +3120,7 @@ strong{
 	font-weight: 700;
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-strong.color{
+strong.color, span.number{
 
 	color:#c29f5f;
 }
@@ -3129,10 +3139,14 @@ strong.color{
 	color: #c29f5f;
     text-decoration: underline;
 }
+.description li{
+	list-style: disc;
+    list-style-position: inside;
+}
 .loc{
 	display: block;
 }
-.contain-good-practice{
+.contain-good-practice, .contain-infos{
 	width: 525px;
 	margin: 0 auto;
 }
@@ -3143,11 +3157,21 @@ strong.color{
 	height: 235px;
 	vertical-align: top;
 }
-.item-good-practice .icon{
+.item-info{
+	height: auto;
+	max-height: 1000px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+.item-good-practice .icon, .item-info .icon{
 	font-size: 3rem;
 	color: #999999;
 	display: block;
 	margin-bottom: 25px;
+}
+.item-info .icon{
+	font-size: 80px;
+	line-height: 90px;
 }
 .item-good-practice p{
 	width: 240px;
@@ -3189,6 +3213,11 @@ strong.color{
 .faq-container .section-title{
     max-height: 200px;
     max-height: 500px;
+}
+
+.banner-img .title .icon_palme{
+    font-size: 80px;
+    padding-bottom: 5px;
 }
 section{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
