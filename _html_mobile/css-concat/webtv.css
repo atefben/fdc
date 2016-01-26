@@ -3377,7 +3377,6 @@
     margin-left:-16px;
     margin-top:-16px;
     z-index:11;
-    background:url(../images/loader.gif);
     display:none;
 }
 .chocolat-content{
@@ -3403,7 +3402,6 @@
     top: 50%;
     margin-top: -50px;
     cursor:pointer;
-    background:url(../images/left.png) 50% 50% no-repeat;
     z-index: 17;
     display: none;
 
@@ -3416,7 +3414,6 @@
     top: 50%;
     margin-top: -50px;
     cursor:pointer;
-    background:url(../images/right.png)  50% 50% no-repeat;
     z-index: 17;
     display: none;
 }
@@ -3444,7 +3441,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    background:url(../images/close.png) 50% 50% no-repeat;
 }
 .chocolat-wrapper .chocolat-bottom{
     position:absolute;
@@ -3478,7 +3474,6 @@
 .chocolat-wrapper .chocolat-fullscreen{
     width: 16px;
     height: 40px;
-    background: url(../images/fullscreen.png) 50% 50% no-repeat;
     display: block;
     margin:auto;
     cursor: pointer;
@@ -5105,15 +5100,17 @@ from desktop
   line-height: 130px;
   display: inline-block;
   font-size: 2rem;
-  vertical-align: middle;
   color:#cbcbcb;
 }
 #news #timeline{
-  height: 130px;
+  height: 150px;
+  width: 390px;
   font-size: 0;
 vertical-align: middle;
   display: inline-block;
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
 }
 #news #timeline.stick {
   position: fixed;
@@ -5129,7 +5126,7 @@ vertical-align: middle;
 #news #timeline a {
   display: inline-block;
   width: 130px;
-  height: 100px;
+  height: 130px;
   padding-top: 30px;
   /*border: 2px solid #e5e5e5;*/
   color: #adadad;
@@ -5138,6 +5135,15 @@ vertical-align: middle;
   text-align: center;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  box-sizing:border-box;
+}
+#news #timeline .timeline-container{
+  width: 1560px;
+  position: absolute;
+  top: 0;
+  left: -260px;
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
@@ -5178,13 +5184,16 @@ vertical-align: middle;
   font-size: 2.5rem;
   margin-top: 5px;
 }
-#news #timeline a:first-child {
+#news #timeline a.show:first-child {
   border-left: 4px dotted #e5e5e5;
 }
-#news #timeline a:last-child {
+#news #timeline a.show:last-child {
   border-right: 4px dotted #e5e5e5;
 }
 
+#news #timeline a.show{
+  display: inline-block;
+}
 /* articles */
 
 #articles .article{

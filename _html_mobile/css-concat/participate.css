@@ -1460,15 +1460,17 @@ from desktop
   line-height: 130px;
   display: inline-block;
   font-size: 2rem;
-  vertical-align: middle;
   color:#cbcbcb;
 }
 #news #timeline{
-  height: 130px;
+  height: 150px;
+  width: 390px;
   font-size: 0;
 vertical-align: middle;
   display: inline-block;
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
 }
 #news #timeline.stick {
   position: fixed;
@@ -1484,7 +1486,7 @@ vertical-align: middle;
 #news #timeline a {
   display: inline-block;
   width: 130px;
-  height: 100px;
+  height: 130px;
   padding-top: 30px;
   /*border: 2px solid #e5e5e5;*/
   color: #adadad;
@@ -1493,6 +1495,15 @@ vertical-align: middle;
   text-align: center;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  box-sizing:border-box;
+}
+#news #timeline .timeline-container{
+  width: 1560px;
+  position: absolute;
+  top: 0;
+  left: -260px;
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
@@ -1533,13 +1544,16 @@ vertical-align: middle;
   font-size: 2.5rem;
   margin-top: 5px;
 }
-#news #timeline a:first-child {
+#news #timeline a.show:first-child {
   border-left: 4px dotted #e5e5e5;
 }
-#news #timeline a:last-child {
+#news #timeline a.show:last-child {
   border-right: 4px dotted #e5e5e5;
 }
 
+#news #timeline a.show{
+  display: inline-block;
+}
 /* articles */
 
 #articles .article{
@@ -3182,6 +3196,23 @@ strong.color, span.number{
 	line-height: 35px;
 	font-weight: 700;
 	margin:0 auto;
+}
+.contain-transport .item-info .icon{
+	color:#c8a461;
+	font-size: 130px;
+	margin-bottom: 30px;
+}
+.contain-transport .button{
+	border: 1px solid #c8a461;
+	font-size: 18px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: 700;
+	margin: 20px 0;
+}
+.item-info p{
+	font-size: 18px;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .title-participate{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;

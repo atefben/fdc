@@ -12,7 +12,8 @@ grunt.initConfig({
 			            './css/slideshows-chocolat.css',
 			            './css/vendors/chocolat.css',
 			            './css/main.css', 
-			            './css/include/*.css'
+			            './css/include/*.css',
+			            './css/fullscreenplayer.css'
 			            
 				        ],
 				    './css-concat/articles.css': [
@@ -189,9 +190,12 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/jquery.chocolat.js',
 				            './js/vendors/hammer.min.js',
+				            './js/vendors/jwplayer.js',
 				            './js/slideshows-chocolat.js',  
 				            './js/include/*.js',
-				            './js/main.js'
+				            './js/main.js',
+				            './js/fullscreenplayer.js',
+				            './js/home.js'
 				        ],
 			        './js-concat/articles.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -413,6 +417,7 @@ grunt.initConfig({
 	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
+	        './participate_sejour.html': ['./templates/participate_sejour.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
@@ -454,6 +459,7 @@ grunt.initConfig({
 	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
+	        './participate_sejour.html': ['./templates/participate_sejour.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
