@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 
 use Base\CoreBundle\Entity\StatementArticleTranslation;
-use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
@@ -231,14 +230,14 @@ class StatementRepository extends EntityRepository
     {
         return $this->createQueryBuilder('n')
             ->join('n.sites', 's')
-            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'sa4', 'WITH', 'sa4.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'sa3', 'WITH', 'sa3.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'sa2', 'WITH', 'sa2.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'sa1', 'WITH', 'sa1.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\InfoArticle', 'na1', 'WITH', 'na1.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\InfoAudio', 'na2', 'WITH', 'na2.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\InfoImage', 'na3', 'WITH', 'na3.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\InfoVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'sa4', 'WITH', 'sa4.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'sa3', 'WITH', 'sa3.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'sa2', 'WITH', 'sa2.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'sa1', 'WITH', 'sa1.id = n.id')
             ->leftjoin('na1.translations', 'na1t')
             ->leftjoin('na2.translations', 'na2t')
             ->leftjoin('na3.translations', 'na3t')
@@ -252,14 +251,10 @@ class StatementRepository extends EntityRepository
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->andWhere(
-                '  (na1t.locale = :locale AND na1t.status = :status)
-                OR (na2t.locale = :locale AND na2t.status = :status)
-                OR (na3t.locale = :locale AND na3t.status = :status)
-                OR (na4t.locale = :locale AND na4t.status = :status)
-                OR (sa4t.locale = :locale AND sa4t.status = :status)
-                OR (sa3t.locale = :locale AND sa3t.status = :status)
-                OR (sa2t.locale = :locale AND sa2t.status = :status)
-                OR (sa1t.locale = :locale AND sa1t.status = :status)'
+                '(na1.locale = :locale AND na1.status = :status)
+                OR (na1.locale = :locale AND nit.status = :status)
+                OR (naat.locale = :locale AND naat.status = :status)
+                OR (nvt.locale = :locale AND nvt.status = :status)'
             )
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)

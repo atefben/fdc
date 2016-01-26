@@ -242,6 +242,21 @@ if($('.ba').length){
         }
     }
   });
+}else if($('.webtv').length){
+  $('#banner-top').on('click',function(){
+      if($('.banner-video').hasClass('active')){
+        $('.banner-video').removeClass('active');
+        $('.banner-img').addClass('active');
+      }else if($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')){
+        $('.banner-img-text .before').addClass('show');
+        $('.banner-img-text .off').removeClass('show');
+        $('.banner-video').addClass('active');
+        $('.banner-img').removeClass('active');
+      }else{
+        $('.banner-img-text .before').removeClass('show');
+        $('.banner-img-text .off').addClass('show');
+      }
+  });
 }
 
 $(document).ready(function() {

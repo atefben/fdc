@@ -405,7 +405,13 @@ class NewsController extends Controller
         );
 
         if ($statement === null) {
-            throw new NotFoundHttpException();
+            $statement = $em->getRepository('BaseCoreBundle:Info')->getInfoBySlug(
+                $slug,
+                $settings->getFestival()->getId(),
+                $locale,
+                $dateTime->format('Y-m-d H:i:s'),
+                $isAdmin
+            );
         }
 
         // SEO
@@ -537,7 +543,7 @@ class NewsController extends Controller
         return array(
             'headerInfo' => $headerInfo,
             'filters' => $filters,
-            'statementArticles' => $pressNews,
+            'pressNews' => $pressNews,
         );
 
     }

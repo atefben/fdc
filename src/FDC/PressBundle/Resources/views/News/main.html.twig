@@ -20,9 +20,9 @@
                 <a href="#" class="button print">{{ 'article.btn.imprimer'|trans }}</a>
             </div>
 
-            {% if news is statement_article %}
+            {% if class(news) == "StatementArticle" or class(news) == "InfoArticle" %}
                 {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : news.header } %}
-            {% elseif news is statement_video %}
+            {% elseif class(news) == "StatementVideo" or class(news) == "InfoVideo" %}
                 {% include 'FDCEventBundle:News:widgets/single-video.html.twig' %}
             {% endif %}
 
@@ -30,31 +30,60 @@
 
             {% for widget in news.widgets %}
 
-                {% if widget is statement_widget_image and widget.gallery.medias|length == 1 %}
-                    <!-- SINGLE PHOTO -->
-                    {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' %}
-                {% elseif widget is statement_widget_image and widget.gallery.medias|length > 1 %}
-                    <!-- SLIDESHOW -->
-                    {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
-                {% elseif widget is statement_widget_text %}
-                    <!-- TEXT -->
-                    {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
-                {% elseif  widget is statement_widget_video or widget is news_widget_video_youtube %}
-                    <!-- VIDEO -->
-                    {% include 'FDCEventBundle:News:widgets/video.html.twig' %}
-                {% elseif widget is statement_widget_audio %}
-                    <!-- AUDIO -->
-                    {% if widget.title is defined %}
-                        <h2 class="title">{{ widget.title }}</h2>
+                {% if class(news) == "StatementArticle" or "StatementVideo" or "StatementImage" or "StatementAudio" %}
+                    {% if widget is statement_widget_image and widget.gallery.medias|length == 1 %}
+                        <!-- SINGLE PHOTO -->
+                        {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' %}
+                    {% elseif widget is statement_widget_image and widget.gallery.medias|length > 1 %}
+                        <!-- SLIDESHOW -->
+                        {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                    {% elseif widget is statement_widget_text %}
+                        <!-- TEXT -->
+                        {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
+                    {% elseif  widget is statement_widget_video or widget is news_widget_video_youtube %}
+                        <!-- VIDEO -->
+                        {% include 'FDCEventBundle:News:widgets/video.html.twig' %}
+                    {% elseif widget is statement_widget_audio %}
+                        <!-- AUDIO -->
+                        {% if widget.title is defined %}
+                            <h2 class="title">{{ widget.title }}</h2>
+                        {% endif %}
+                        {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
+                    {% elseif widget is statement_widget_quote %}
+                        <!-- QUOTE -->
+                        {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
+                    {% elseif widget is statement_widget_image_dual_align %}
+                        <!-- DUAL PHOTO -->
+                        {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
                     {% endif %}
-                    {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
-                {% elseif widget is statement_widget_quote %}
-                    <!-- QUOTE -->
-                    {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
-                {% elseif widget is statement_widget_image_dual_align %}
-                    <!-- DUAL PHOTO -->
-                    {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
+                {% else %}
+                    {% if widget is info_widget_image and widget.gallery.medias|length == 1 %}
+                        <!-- SINGLE PHOTO -->
+                        {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' %}
+                    {% elseif widget is info_widget_image and widget.gallery.medias|length > 1 %}
+                        <!-- SLIDESHOW -->
+                        {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                    {% elseif widget is info_widget_text %}
+                        <!-- TEXT -->
+                        {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
+                    {% elseif  widget is info_widget_video or widget is news_widget_video_youtube %}
+                        <!-- VIDEO -->
+                        {% include 'FDCEventBundle:News:widgets/video.html.twig' %}
+                    {% elseif widget is info_widget_audio %}
+                        <!-- AUDIO -->
+                        {% if widget.title is defined %}
+                            <h2 class="title">{{ widget.title }}</h2>
+                        {% endif %}
+                        {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
+                    {% elseif widget is info_widget_quote %}
+                        <!-- QUOTE -->
+                        {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
+                    {% elseif widget is info_widget_image_dual_align %}
+                        <!-- DUAL PHOTO -->
+                        {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
+                    {% endif %}
                 {% endif %}
+                
             {% endfor %}
 
             {% if news.signature is not null %}
