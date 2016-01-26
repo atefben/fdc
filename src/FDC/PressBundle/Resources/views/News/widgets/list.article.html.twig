@@ -35,7 +35,13 @@
 <div class="item all {{ articleType }} {{ article.theme.slug }}">
     <article class="article">
         <div class="img">
-            <span class="picto"><i class="icon icon_communique-presse"></i></span>
+            <span class="picto">
+                {% if class(article) matches '{^Statement*}' %}
+                    <i class="icon icon_communique-presse"></i>
+                {% else %}
+                    <i class="icon icon_article"></i>
+                {% endif %}
+            </span>
             <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
                 {% thumbnail file, 'big' with {'alt': article|trans_fallback('title') } %}
             </a>
