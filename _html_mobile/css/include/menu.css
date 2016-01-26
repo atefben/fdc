@@ -117,7 +117,7 @@
   color: #fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 35px;
-  font-weight: 700;
+  font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
 }
@@ -130,14 +130,14 @@
     top: 21px;
     right: 60px;
     font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-font-weight: 700;
+font-weight: bolder;
     font-size: 2rem;
 }
 #menu .section-contain a{
   color:#fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: bolder;
   letter-spacing: 0.1em;
   padding: 25px 0;
   text-transform: uppercase;

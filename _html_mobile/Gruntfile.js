@@ -195,6 +195,7 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/main.js',
 				            './js/fullscreenplayer.js',
+				            './js/jsonTest.js',
 				            './js/home.js'
 				        ],
 			        './js-concat/articles.js':[
