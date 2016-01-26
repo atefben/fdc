@@ -3333,6 +3333,7 @@ input[type=submit], textarea {
   color: #999;
   float: right;
   font-size: 20px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .contact #form input, .contact #form textarea {
   background: #fff;
