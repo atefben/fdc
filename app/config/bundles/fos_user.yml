@@ -4,8 +4,5 @@ fos_user:
     user_class: Application\Sonata\UserBundle\Entity\User
     group:
         group_class: Application\Sonata\UserBundle\Entity\Group
-    registration:
-            form:
-                type: fdc_press_password
     service:
         user_manager: sonata.user.orm.user_manager

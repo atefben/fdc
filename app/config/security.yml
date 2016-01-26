@@ -43,7 +43,7 @@ security:
                  login_path:     /fr/press/login
                  use_forward:    false
                  check_path:     /fr/press/login_check
-                 failure_path:   null
+                 failure_path:   /fr/press/
                  always_use_default_target_path: true
              logout:
                  path:           /logout

@@ -10,7 +10,7 @@
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
-    {% include 'FDCPressBundle:Security:login.html.twig' %}
+    {{ render(controller('FDCPressBundle:Security:login')) }}
 
     <div class="wrapper">
 

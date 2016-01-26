@@ -7,8 +7,12 @@
                 <div class="vCenterKid">
                     <h3 class="title-press">{{ 'press.header.title.contenusverouilles'|trans }}</h3>
                     <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
+                    {% if error %}
+                        <p class="errors">{{ error|trans({}, 'FDCPressBundle') }}</p>
+                    {% endif %}
                 </div>
             </div>
+
             <form action="{{ path("fdc_press_security_check") }}" method="post" id="lockedForm">
 
                 <input type="hidden" id="username" name="_username" value="press" required="required" />
