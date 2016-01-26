@@ -36,15 +36,15 @@ security:
         press:
              host: ^%fdc_press_domain_regexp%$
              context:            user
-             pattern:            /press(.*)
+             pattern:            /
              form_login:
                  provider:       fos_userbundle
-                 login_path:     /press/login
+                 login_path:     /fr/press/
                  use_forward:    false
-                 check_path:     /press/login_check
+                 check_path:     /fr/press/login_check
                  failure_path:   null
              logout:
-                 path:           /press/logout
+                 path:           /logout
              anonymous:          true
 
         #main:

@@ -1,0 +1,25 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{#{% extends "FOSUserBundle::layout.html.twig" %}#}
+{% block fos_user_content %}
+<div class="locked">
+    <div class="vCenter">
+        <div class="vCenterKid">
+            <h3 class="title-press">{{ 'press.header.title.contenusverouilles'|trans }}</h3>
+            <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
+        </div>
+    </div>
+    {% if is_granted("ROLE_FDC_PRESS_REPORTER") %}
+        DEJA LOGUE
+    {% else %}
+        <form action="{{ path("fos_user_security_check") }}" method="post" id="lockedForm">
+
+            <input type="text" id="username" name="_username" value="press" required="required" hidden />
+
+            <input type="password" id="password" name="_password" required="required" />
+
+            <input type="submit" id="_submit" name="_submit" value="submit" />
+        </form>
+    {% endif %}
+
+</div>
+{% endblock %}
