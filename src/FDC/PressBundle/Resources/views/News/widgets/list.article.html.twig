@@ -1,25 +1,25 @@
-{% if article is statement_article %}
+{% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
     {% set trans = article.header.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
         {% set trans = article.header.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.file %}
     {% set articleType = "article" %}
-{% elseif article is statement_audio %}
+{% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
     {% set trans = article.audio.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
         {% set trans = article.audio.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.image %}
     {% set articleType = "audio" %}
-{% elseif article is statement_video %}
+{% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
     {% set trans = article.video.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
         {% set trans = article.video.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.image %}
     {% set articleType = "video" %}
-{% elseif article is statement_image %}
+{% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
     {% set file = "" %}
     {% for gallery in article.gallery.medias %}
         {% if loop.first %}
@@ -35,7 +35,13 @@
 <div class="item all {{ articleType }} {{ article.theme.slug }}">
     <article class="article">
         <div class="img">
-            <span class="picto"><i class="icon icon_communique-presse"></i></span>
+            <span class="picto">
+                {% if class(article) matches '{^Statement*}' %}
+                    <i class="icon icon_communique-presse"></i>
+                {% else %}
+                    <i class="icon icon_article"></i>
+                {% endif %}
+            </span>
             <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
                 {% thumbnail file, 'big' with {'alt': article|trans_fallback('title') } %}
             </a>

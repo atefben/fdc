@@ -14,18 +14,13 @@ services:
         tags:
             - { name: twig.extension }
 
-    base.twig.statement_instance_of_extension:
-        class: Base\CoreBundle\Twig\Extension\StatementInstanceOfExtension
+    base.twig.get_class_extension:
+        class: Base\CoreBundle\Twig\Extension\GetClassExtension
         tags:
             - { name: twig.extension }
 
     base.twig.statement_widget_instance_of_extension:
         class: Base\CoreBundle\Twig\Extension\StatementWidgetInstanceOfExtension
-        tags:
-            - { name: twig.extension }
-
-    base.twig.info_instance_of_extension:
-        class: Base\CoreBundle\Twig\Extension\InfoInstanceOfExtension
         tags:
             - { name: twig.extension }
 
