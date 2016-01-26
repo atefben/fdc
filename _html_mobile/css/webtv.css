@@ -49,6 +49,10 @@
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
+  display:none;
+}
+.webtv #banner-top .banner-img .banner-img-text p.show{
+  display: block;
 }
 .webtv #banner-top .banner-img p.before span{
   color: #c8a461;
