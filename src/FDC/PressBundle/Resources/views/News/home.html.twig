@@ -6,7 +6,7 @@
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
-    {% include 'FDCPressBundle:News:components/lockedContents.html.twig' %}
+    {% include 'FDCPressBundle:Security:lockedContents.html.twig' %}
 
     <div class="wrapper">
 
@@ -24,9 +24,9 @@
             </div>
             <div class="grid-container">
                 <div class="grid-wrapper">
-                    {% for article in homeNews %}
-                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
-                    {% endfor %}
+                    {#{% for article in homeNews %}#}
+                        {#{% include 'FDCEventBundle:News:widgets/article.html.twig' %}#}
+                    {#{% endfor %}#}
                 </div>
             </div>
         </div>

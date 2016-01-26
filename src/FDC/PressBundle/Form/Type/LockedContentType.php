@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
 
 /**
  * Class LockedContentType
@@ -14,17 +15,17 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  */
 
-class LockedContentType extends AbstractType
+class LockedContentType extends BaseType
 {
     private $translator;
 
-    /**
-     * @param $translator
-     */
-    public function __construct($translator)
-    {
-        $this->translator = $translator;
-    }
+//    /**
+//     * @param $translator
+//     */
+//    public function __construct($translator)
+//    {
+//        $this->translator = $translator;
+//    }
 
     /**
      * @param FormBuilderInterface $builder
@@ -33,13 +34,7 @@ class LockedContentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('password',  new PasswordType() , array(
-                'attr' => array(
-                    'placeholder' => $this->translator->trans('press.header.placeholder.motdepasse', array(), 'FDCPressBundle')
-                ),
-                'label' => false
-            ));
+        parent::buildForm($builder, $options);
 
     }
 
@@ -49,7 +44,7 @@ class LockedContentType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'translation_domain' => 'FDCPressBundle'
+            'translation_domain' => 'FOSUserBundle'
         ));
     }
 
@@ -60,6 +55,6 @@ class LockedContentType extends AbstractType
 
     public function getName()
     {
-        return 'pressPassword';
+        return 'fdc_press_password';
     }
 }

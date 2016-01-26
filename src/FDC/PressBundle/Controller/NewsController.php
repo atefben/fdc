@@ -38,6 +38,8 @@ class NewsController extends Controller
 
         $lockedContentForm = $this->createForm(new LockedContentType($translator));
 
+//        dump($lockedContentForm);exit;
+
         $popinLockedForm = $this->createForm(new LockedContentType($translator));
 
         $homeNews = array(
