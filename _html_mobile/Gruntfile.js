@@ -12,7 +12,8 @@ grunt.initConfig({
 			            './css/slideshows-chocolat.css',
 			            './css/vendors/chocolat.css',
 			            './css/main.css', 
-			            './css/include/*.css'
+			            './css/include/*.css',
+			            './css/fullscreenplayer.css'
 			            
 				        ],
 				    './css-concat/articles.css': [
@@ -189,9 +190,12 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/jquery.chocolat.js',
 				            './js/vendors/hammer.min.js',
+				            './js/vendors/jwplayer.js',
 				            './js/slideshows-chocolat.js',  
 				            './js/include/*.js',
-				            './js/main.js'
+				            './js/main.js',
+				            './js/fullscreenplayer.js',
+				            './js/home.js'
 				        ],
 			        './js-concat/articles.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
