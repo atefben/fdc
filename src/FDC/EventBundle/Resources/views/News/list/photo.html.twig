@@ -11,7 +11,7 @@
         <div class="grid-sizer"></div>
 
         {% for photo in photos %}
-            <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo|trans_fallback('createdAt')|date('d.m.y') }} {{ photo.format }} shadow-bottom photo">
+            <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo|trans_fallback('createdAt')|date('d-m-y') }} {{ photo.format }} shadow-bottom photo">
                 {% set trans = photo.findTranslationByLocale('fr') %}
                 {% if trans is null or trans.file is null %}
                     {% set trans = photo.findTranslationByLocale('fr') %}

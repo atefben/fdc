@@ -12,7 +12,7 @@
         <div class="grid-sizer"></div>
 
         {% for article in articles %}
-            <div class="item {{ article.theme|trans_fallback('slug') }} {{ article|trans_fallback('createdAt')|date('d.m.y') }} article">
+            <div class="item {{ article.theme|trans_fallback('slug') }} {{ article|trans_fallback('createdAt')|date('d-m-y') }} article">
                 <article class="article">
                     <div class="img">
                         <span class="picto">
