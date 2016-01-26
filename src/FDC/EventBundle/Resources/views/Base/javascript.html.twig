@@ -10,9 +10,9 @@
     {% endjavascripts %}
 
     <!-- //// Script \\\\ -->
-    {% javascripts '@FDCEventBundle/Resources/public/js/app.min.js' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    {#{% javascripts '@FDCEventBundle/Resources/public/js/app.min.js' %}#}
+    {#<script src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
 
     <script>jwplayer.key="{{ jwplayer_key }}";</script>
 
@@ -45,4 +45,14 @@
 
 
     </script>
+
+    <script type="text/javascript">
+        $('#_submit').on('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            $('form#lockedForm').submit();
+        });
+    </script>
+
 {% endblock %}

@@ -39,10 +39,12 @@ security:
              pattern:            /
              form_login:
                  provider:       fos_userbundle
-                 login_path:     /fr/press/
+                 default_target_path: /fr/press/
+                 login_path:     /fr/press/login
                  use_forward:    false
                  check_path:     /fr/press/login_check
                  failure_path:   null
+                 always_use_default_target_path: true
              logout:
                  path:           /logout
              anonymous:          true
