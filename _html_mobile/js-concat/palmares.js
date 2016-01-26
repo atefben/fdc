@@ -308,7 +308,7 @@ $(document).ready(function() {
 
 	// NO AJAX FOR FAQ
 
-	if($('.faq').length !== 0){
+	if($('.faq-page').length !== 0){
 
 		$('#horizontal-menu a').on('click',function(e){
 	      	e.preventDefault();
@@ -323,6 +323,7 @@ $(document).ready(function() {
 	else
 
 	{
+		console.log("coucou");
 
 	// AJAX CALL
 

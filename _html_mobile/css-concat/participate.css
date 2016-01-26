@@ -1460,15 +1460,17 @@ from desktop
   line-height: 130px;
   display: inline-block;
   font-size: 2rem;
-  vertical-align: middle;
   color:#cbcbcb;
 }
 #news #timeline{
-  height: 130px;
+  height: 150px;
+  width: 390px;
   font-size: 0;
 vertical-align: middle;
   display: inline-block;
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
 }
 #news #timeline.stick {
   position: fixed;
@@ -1484,7 +1486,7 @@ vertical-align: middle;
 #news #timeline a {
   display: inline-block;
   width: 130px;
-  height: 100px;
+  height: 130px;
   padding-top: 30px;
   /*border: 2px solid #e5e5e5;*/
   color: #adadad;
@@ -1493,6 +1495,15 @@ vertical-align: middle;
   text-align: center;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  box-sizing:border-box;
+}
+#news #timeline .timeline-container{
+  width: 1560px;
+  position: absolute;
+  top: 0;
+  left: -260px;
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
@@ -1533,13 +1544,16 @@ vertical-align: middle;
   font-size: 2.5rem;
   margin-top: 5px;
 }
-#news #timeline a:first-child {
+#news #timeline a.show:first-child {
   border-left: 4px dotted #e5e5e5;
 }
-#news #timeline a:last-child {
+#news #timeline a.show:last-child {
   border-right: 4px dotted #e5e5e5;
 }
 
+#news #timeline a.show{
+  display: inline-block;
+}
 /* articles */
 
 #articles .article{
@@ -3095,12 +3109,22 @@ display: inline-block;
 	position: relative;
     top: -4px;
 }
+.description.half{
 
+	width: 50%;
+	float: left;
+}
 .description.center{
 	text-align: center;
 }
 .description.center .title-contain{
 	text-align: center;
+}
+.description.center{
+
+	max-height: 3000px;
+	padding-top: 40px;
+
 }
 img{
 	display: inline-block;
@@ -3110,9 +3134,16 @@ strong{
 	font-weight: 700;
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-strong.color{
+strong.color, span.number, .item-info a, .link .icon{
 
 	color:#c29f5f;
+}
+.link .icon{
+	padding-right: 10px;
+	margin-top: -3px;
+}
+.item-info a:not(.button){
+	text-decoration: underline;
 }
 .description strong.center{
 	color:#000;
@@ -3129,10 +3160,14 @@ strong.color{
 	color: #c29f5f;
     text-decoration: underline;
 }
+.description li{
+	list-style: disc;
+    list-style-position: inside;
+}
 .loc{
 	display: block;
 }
-.contain-good-practice{
+.contain-good-practice, .contain-infos{
 	width: 525px;
 	margin: 0 auto;
 }
@@ -3143,11 +3178,21 @@ strong.color{
 	height: 235px;
 	vertical-align: top;
 }
-.item-good-practice .icon{
+.item-info{
+	height: auto;
+	max-height: 1000px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+.item-good-practice .icon, .item-info .icon{
 	font-size: 3rem;
 	color: #999999;
 	display: block;
 	margin-bottom: 25px;
+}
+.item-info .icon{
+	font-size: 80px;
+	line-height: 90px;
 }
 .item-good-practice p{
 	width: 240px;
@@ -3159,6 +3204,43 @@ strong.color{
 	font-weight: 700;
 	margin:0 auto;
 }
+.contain-transport .item-info .icon{
+	color:#c8a461;
+	font-size: 180px;
+	margin-bottom: 30px;
+}
+section .button{
+	border: 1px solid #c8a461;
+	font-size: 18px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: 700;
+	margin: 20px 0;
+	text-decoration: none;
+}
+section .button:last-child{
+	border: 1px solid #c8a461;	
+}
+section .button .icon{
+	padding-right: 20px;
+}
+
+.item-info p{
+	font-size: 24px;
+	line-height: 36px;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.instructions-container .item-info{
+
+	width: 490px;
+	margin:0 auto 80px auto;
+}
+#google-map{
+	width: 100%;
+	height: 300px;
+	margin-bottom: 40px;
+}
+
 .title-participate{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     color: #999999;
@@ -3189,6 +3271,11 @@ strong.color{
 .faq-container .section-title{
     max-height: 200px;
     max-height: 500px;
+}
+
+.banner-img .title .icon_palme{
+    font-size: 80px;
+    padding-bottom: 5px;
 }
 section{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;

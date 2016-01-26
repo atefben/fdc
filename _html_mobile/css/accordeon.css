@@ -29,6 +29,11 @@
     max-height: 200px;
     max-height: 500px;
 }
+
+.banner-img .title .icon_palme{
+    font-size: 80px;
+    padding-bottom: 5px;
+}
 section{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     border-bottom: 1px solid #e0e0e0;
