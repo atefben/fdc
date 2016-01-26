@@ -817,7 +817,7 @@ $(document).ready(function() {
 
 
   var listener = function (event) {
-    // event.preventDefault();
+    event.preventDefault();
   };
 
   // zoom
