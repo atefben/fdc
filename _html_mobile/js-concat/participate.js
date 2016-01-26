@@ -246,7 +246,7 @@ var GLOBALS = {
     "calendarProgrammationUrl" : "calendarprogrammation.html",
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
-    "newsUrlNext" : "news_page2.html",
+    "newsUrlNext" : "more-news.html",
     "loadPressRelease" : "load-communique.php",
     "selectionUrl" : "selection.html"
   },
