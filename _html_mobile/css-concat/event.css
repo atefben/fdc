@@ -1450,27 +1450,36 @@ from desktop
   font-size: 0;
   border-bottom: 2px solid #e5e5e5;
   border-top: 2px solid #e5e5e5;
+  box-sizing:border-box;
 }
 #news #calendar .next{
   background-color: #f2f2f2;
 }
 #news #calendar .prev, #news #calendar .next{
   width: 121px;
-  height: 130px;
+  height: 126px;
   line-height: 130px;
   display: inline-block;
   font-size: 2rem;
   color:#cbcbcb;
+  vertical-align: top;
+}
+#news #calendar .prev{
+  border-right: 4px dotted #e5e5e5;
+}
+#news #calendar .next{
+  border-left: 4px dotted #e5e5e5;
 }
 #news #timeline{
   height: 150px;
   width: 390px;
+  margin: 0;
   font-size: 0;
-vertical-align: middle;
   display: inline-block;
   font-weight: 700;
   position: relative;
   overflow: hidden;
+  box-sizing:border-box;
 }
 #news #timeline.stick {
   position: fixed;
@@ -1486,7 +1495,7 @@ vertical-align: middle;
 #news #timeline a {
   display: inline-block;
   width: 130px;
-  height: 130px;
+  height: 126px;
   padding-top: 30px;
   /*border: 2px solid #e5e5e5;*/
   color: #adadad;
@@ -1498,10 +1507,13 @@ vertical-align: middle;
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   box-sizing:border-box;
+  
 }
 #news #timeline .timeline-container{
   width: 1560px;
+  height: 130px;
   position: absolute;
+  box-sizing:border-box;
   top: 0;
   left: -260px;
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -1524,6 +1536,7 @@ vertical-align: middle;
   border-style: solid;
   color: #fff;
   position: relative;
+  border-left: none;
 }
 #news #timeline a.active:after {
   content: '';
@@ -1544,16 +1557,10 @@ vertical-align: middle;
   font-size: 2.5rem;
   margin-top: 5px;
 }
-#news #timeline a.show:first-child {
-  border-left: 4px dotted #e5e5e5;
-}
-#news #timeline a.show:last-child {
-  border-right: 4px dotted #e5e5e5;
-}
 
-#news #timeline a.show{
-  display: inline-block;
-}
+
+
+
 /* articles */
 
 #articles .article{
@@ -2965,7 +2972,7 @@ footer .newsletter #submit {
   color: #fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 35px;
-  font-weight: 700;
+  font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
 }
@@ -2978,14 +2985,14 @@ footer .newsletter #submit {
     top: 21px;
     right: 60px;
     font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-font-weight: 700;
+font-weight: bolder;
     font-size: 2rem;
 }
 #menu .section-contain a{
   color:#fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: bolder;
   letter-spacing: 0.1em;
   padding: 25px 0;
   text-transform: uppercase;

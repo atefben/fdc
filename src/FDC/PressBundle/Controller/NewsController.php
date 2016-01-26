@@ -14,7 +14,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use FDC\PressBundle\Form\Type\LockedContentType;
 
 class NewsController extends Controller
 {
@@ -36,11 +35,9 @@ class NewsController extends Controller
 
         $translator = $this->get('translator');
 
-        $lockedContentForm = $this->createForm(new LockedContentType($translator));
-
 //        dump($lockedContentForm);exit;
 
-        $popinLockedForm = $this->createForm(new LockedContentType($translator));
+        //$popinLockedForm = $this->createForm(new LockedContentType($translator));
 
         $homeNews = array(
             array(
@@ -363,8 +360,6 @@ class NewsController extends Controller
         );
 
         return array(
-            'lockedForm' => $lockedContentForm->createView(),
-            'popinLockedForm' => $popinLockedForm->createView(),
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $schedulingDays,

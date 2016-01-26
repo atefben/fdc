@@ -1448,22 +1448,125 @@ $(document).ready(function() {
 
 	
 });
+var GLOBALS = {
+  "locale" : "fr",
+  "defaultDate" : "2016-05-12",
+  "api" : {
+    "instagram" : {
+      "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
+      "hashtag" : "Cannes2016",
+    },
+    "twitter" : {
+      "hashtag" : "%23Cannes2016",
+      "count" : 15,
+      "uri" : "search_tweets",
+      "url" : "twitter.php"
+    }
+  },
+  "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
+  "urls" : {
+    "calendarProgrammationUrl" : "calendarprogrammation.html",
+    "eventUrl" : "load-evenements.php",
+    "newsUrl" : "news.html",
+    "newsUrlNext" : "more-news.html",
+    "loadPressRelease" : "load-communique.php",
+    "selectionUrl" : "selection.html"
+  },
+  "texts" : {
+    "url" : {
+      "title" : "titre test"
+    },
+    "popin" : {
+      "error" : "valide",
+      "empty" : "renseignée",
+      "valid" : "Votre email a bien été envoyé !",
+      "copy"  :  "lien copié ! "
+    },
+    "googleMap" : {
+      "title" : "Festival de Cannes"
+    },
+    "readMore" : {
+      "more" : "Afficher <strong>plus d'actualités</strong>",
+      "nextDay" : "Passer au <strong>jour précédent</strong>"
+    },
+    "newsletter" : {
+      "errorsNotValide" : "L'adresse e-mail n'est pas valide",
+      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+    },
+    'agenda' : {
+      'delete' : "Supprimer de votre agenda"
+    }
+  },
+  "player": {
+    "file" : "./files/mov_bbb.mp4",
+    "image" : "//dummyimage.com/960x540/c8a461/000.png",
+    "title" : "Video 1"
+  },
+  "calendar": {
+    "labelFormat": {
+      "fr" : "H [H]",
+      "default" : "h A"
+    }
+  },
+  "socialWall": {
+    "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
+    "heightGraph" : 200
+  }
+};
 
 $(document).ready(function() {
  
 
-	$('.read-more').on('click',function(e){
-		e.preventDefault();
-		var url = "more-news.html";
+	// $('.read-more').on('click',function(e){
+	// 	e.preventDefault();
+	// 	var url = "more-news.html";
 
-		  $.ajax({
-		    type: "GET",
-		    url: url,
-		    success: function(data) {
-		      $('.articles-container').append(data);
-		    }
-		  });
-	});
+	// 	  $.ajax({
+	// 	    type: "GET",
+	// 	    url: url,
+	// 	    success: function(data) {
+	// 	      $('.articles-container').append(data);
+	// 	    }
+	// 	  });
+	// });
+
+
+
+// load more
+  $('.read-more').on('click', function(e) {
+    e.preventDefault();
+
+    $('#timeline').removeClass('bottom');
+    // load previous day
+    if($(this).hasClass('prevDay')) {
+      
+      	$('.read-more').html( GLOBALS.texts.readMore.more ).removeClass('prevDay');
+      	var day = $('.timeline-container').find('.active').data('date');
+
+  		if(day == 11){
+	    	return false;
+	    }else{
+	    	var url =  "more-news.html";
+	    	moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1, url);
+	    }
+	    $('html, body').animate({
+            scrollTop: 750
+          }, 500);
+    } else {
+      
+	    $.ajax({
+	        type: "GET",
+	        dataType: "html",
+	        cache: false,
+	        url: GLOBALS.urls.newsUrlNext , 
+	        success: function(data) {
+	          	$('.articles-container').append(data);
+	          	$('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+
+	        }
+	    });
+    }
+});
 
 	function moveTimeline(element, day,url){
 		var numDay = 0; 
@@ -1572,7 +1675,7 @@ $(document).ready(function() {
 	    if($(this).hasClass('active') || $(this).hasClass('disabled')) {
 	      return false;
 	    }
-	    var url =  "more-news.html";
+	    var url =  GLOBALS.urls.newsUrl;
 	    moveTimeline($(this), $(this).data('date'),url);
   	});
 
@@ -1584,7 +1687,7 @@ $(document).ready(function() {
   		if(day == 11){
 	    	return false;
 	    }else{
-	    	var url =  "more-news.html";
+	    	var url =  GLOBALS.urls.newsUrl ;
 	    	moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1, url);
 	    }
 	    
@@ -1598,7 +1701,7 @@ $(document).ready(function() {
   		if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')){
 	    	return false;
 	    }else{
-	    	var url =  "more-news.html";
+	    	var url =  GLOBALS.urls.newsUrl;
 	    	moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1, url);
 	    }
   	});

@@ -67,11 +67,26 @@ class SettingsController extends Controller
             ));
         }
 
+        //Password form
+        $formPressPassword = $this->container->get('fos_user.change_password.form');
+        $pressFormHandler = $this->container->get('fos_user.change_password.form.handler');
+
+        // Get Press user
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->findUserByUsername('press');
+        $process = $pressFormHandler->process($user);
+        if ($process) {
+            $request->getSession()->getFlashBag()->add('success', $msgModified);
+            return $this->redirectToRoute('base_admin_settings_index', array(
+                'admin_pool' => $admin_pool
+            ));
+        }
 
         return array(
             'admin_pool' => $admin_pool,
             'formFDCYear' => $formFDCYear->createView(),
-            'formFDCApiYear' => $formFDCApiYear->createView()
+            'formFDCApiYear' => $formFDCApiYear->createView(),
+            'formPressPassword' => $formPressPassword->createView(),
         );
     }
 }

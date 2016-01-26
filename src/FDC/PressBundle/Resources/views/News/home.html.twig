@@ -2,11 +2,15 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="press press-home loading calendar-open lock">
+{% if is_granted("ROLE_FDC_PRESS_REPORTER") %}
+<div id="main" class="press press-home calendar-open conected">
+{% else %}
+<div id="main" class="press press-home calendar-open lock">
+{% endif %}
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
-    {% include 'FDCPressBundle:Security:lockedContents.html.twig' %}
+    {{ render(controller('FDCPressBundle:Security:login')) }}
 
     <div class="wrapper">
 
