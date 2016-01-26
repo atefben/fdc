@@ -293,7 +293,9 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
-				            './js/accordeon.js'
+				            './js/accordeon.js',
+				            './js/jsonTest.js',
+				            './js/googlemap.js'
 				        ],
 			        './js-concat/photos.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
