@@ -15,7 +15,7 @@
             {% if trans is null or trans.image is null %}
                 {% set trans = audio.findTranslationByLocale('fr') %}
             {% endif %}
-            <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio|trans_fallback('createdAt')|date('d.m.y') }} shadow-bottom video" data-sound="{% path trans.file , 'small'%}">
+            <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio|trans_fallback('createdAt')|date('d-m-y') }} shadow-bottom video" data-sound="{% path trans.file , 'small'%}">
                 <img src="{% path trans.image , 'big' %}" srcset="{% path trans.image , 'big' %} 1x, {% path trans.image , 'big' %} 2x" alt="">
                 <div class="picto">
                     <i class="icon icon_audio"></i>
