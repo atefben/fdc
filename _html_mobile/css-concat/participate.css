@@ -3129,7 +3129,7 @@ display: inline-block;
 }
 .description.center{
 
-	max-height: 500px;
+	max-height: 3000px;
 	padding-top: 40px;
 
 }
@@ -3141,9 +3141,16 @@ strong{
 	font-weight: 700;
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-strong.color, span.number{
+strong.color, span.number, .item-info a, .link .icon{
 
 	color:#c29f5f;
+}
+.link .icon{
+	padding-right: 10px;
+	margin-top: -3px;
+}
+.item-info a:not(.button){
+	text-decoration: underline;
 }
 .description strong.center{
 	color:#000;
@@ -3206,21 +3213,41 @@ strong.color, span.number{
 }
 .contain-transport .item-info .icon{
 	color:#c8a461;
-	font-size: 130px;
+	font-size: 180px;
 	margin-bottom: 30px;
 }
-.contain-transport .button{
+section .button{
 	border: 1px solid #c8a461;
 	font-size: 18px;
 	height: 50px;
 	line-height: 50px;
 	font-weight: 700;
 	margin: 20px 0;
+	text-decoration: none;
 }
+section .button:last-child{
+	border: 1px solid #c8a461;	
+}
+section .button .icon{
+	padding-right: 20px;
+}
+
 .item-info p{
-	font-size: 18px;
+	font-size: 24px;
+	line-height: 36px;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
+.instructions-container .item-info{
+
+	width: 490px;
+	margin:0 auto 80px auto;
+}
+#google-map{
+	width: 100%;
+	height: 300px;
+	margin-bottom: 40px;
+}
+
 .title-participate{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     color: #999999;

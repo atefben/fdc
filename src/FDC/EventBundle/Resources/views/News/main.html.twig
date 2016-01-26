@@ -140,22 +140,26 @@
             {% endif %}
         </div>
         <div class="container">
-            {% if focusArticles != null and focusArticles|length > 0 %}
+            {% if focusArticles is not empty %}
             <div class="focus">
                 <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                 <div class="articles">
                     {% for article in focusArticles %}
-                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                        {% if article is not null %}
+                            {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
             {% endif %}
-            {% if sameDayArticles != null and sameDayArticles|length > 0 %}
+            {% if sameDayArticles is not empty %}
             <div class="same-day">
                 <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
                 <div class="articles center">
                     {% for article in sameDayArticles %}
-                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                        {% if article is not null %}
+                            {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
