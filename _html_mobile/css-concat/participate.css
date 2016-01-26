@@ -3163,6 +3163,10 @@ strong.color{
     vertical-align: middle;
     padding: 60px 40px 60px 40px;
     font-weight: 600;
+    -moz-transition: all 0.6s ;
+    -o-transition: all 0.6s ;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s ;
 }
 .open .title-participate{
 	color:#c29f5f;
@@ -3170,28 +3174,28 @@ strong.color{
 .faq-container .title-participate{
     padding: 30px 20px 30px 0;
     width: 485px;
-    font-size: 0.9rem;
+    font-size: 20px;
     letter-spacing: 0.02rem;
-    line-height: 20px;
+    line-height: 30px;
 }
 .faq-container .section-title{
     border-top: 1px solid #c1c1c1;
+    max-height: 200px;
 }
 section{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .section-contain{
 	overflow: hidden;	
-	height: 0;
-/*	max-height: 0;
+    max-height: 0;
 	-moz-transition: all 0.6s ;
     -o-transition: all 0.6s ;
     -webkit-transition: all 0.6s;
-    transition: all 0.6s ;*/
+    transition: all 0.6s ;
 	/*display: none;*/
 }
 .open .section-contain{
-    /*max-height: 1000px;*/
+    max-height: 1000px;
     height: auto;
 
 }
@@ -3214,5 +3218,20 @@ section{
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     line-height: 25px;
     margin-bottom: 50px;
+    font-size: 25px;
+    line-height: 30px; 
 
+}
+#main{
+    background-color: #fff;
+}
+.faq-section-container{
+    display: none;
+}
+.faq-section-container.active{
+    display: block;
+
+}
+.faq .title{
+    font-size: 28px;
 }

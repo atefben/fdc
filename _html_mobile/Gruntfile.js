@@ -86,6 +86,16 @@ grunt.initConfig({
 			            './css/fullscreenplayer.css',
 			            './css/slideshow-video.css'
 			        ],
+			     	'./css-concat/event.css': [
+			            './css/main.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
+			            './css/include/*.css',
+			            './css/article.css',
+			            './css/audioplayer.css',
+			            './css/fullscreenplayer.css',
+			            './css/slideshow-video.css'
+			        ],
 			        './css-concat/participate.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
@@ -262,6 +272,19 @@ grunt.initConfig({
 				            './js/vendors/jwplayer.js',
 				            './js/article.js'
 				        ],
+				    './js-concat/event.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/wavesurfer.min.js',
+				            './js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',
+				            './js/include/*.js',
+				            './js/slidervideos.js',
+				            './js/audioplayer.js',
+				            './js/vendors/jwplayer.js',
+				            './js/article.js'
+				        ],
 			        './js-concat/participate.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
@@ -385,6 +408,7 @@ grunt.initConfig({
 	        './jury_longsmetrages.html': ['./templates/jury_longsmetrages.html'],
 	        './movie.html': ['./templates/movie.html'],
 	        './article.html': ['./templates/article.html'],
+	        './event.html': ['./templates/event.html'],
 	        './article-photos.html': ['./templates/article-photos.html'],
 	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
@@ -424,6 +448,7 @@ grunt.initConfig({
 	        './jury_longsmetrages.html': ['./templates/jury_longsmetrages.html'],
 	        './movie.html': ['./templates/movie.html'],
 	        './article.html': ['./templates/article.html'],
+	        './event.html': ['./templates/event.html'],
 	        './article-photos.html': ['./templates/article-photos.html'],
 	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
@@ -465,6 +490,7 @@ grunt.initConfig({
 	        './js-concat/jury.min.js': ['./js-concat/jury.js'],
 	        './js-concat/movie.min.js': ['./js-concat/movie.js'],
 	        './js-concat/article.min.js': ['./js-concat/article.js'],
+	        './js-concat/event.min.js': ['./js-concat/event.js'],
 	        './js-concat/participate.min.js': ['./js-concat/participate.js'],
 	        './js-concat/photos.min.js': ['./js-concat/photos.js'],
 	        './js-concat/selection.min.js': ['./js-concat/selection.js'],
@@ -499,6 +525,7 @@ grunt.initConfig({
 	        './css-concat/jury.min.css': ['./css-concat/jury.css'],
 	        './css-concat/movie.min.css': ['./css-concat/movie.css'],
 	        './css-concat/article.min.css': ['./css-concat/article.css'],
+	        './css-concat/event.min.css': ['./css-concat/event.css'],
 	        './css-concat/participate.min.css': ['./css-concat/participate.css'],
 	        './css-concat/photos.min.css': ['./css-concat/photos.css'],
 	        './css-concat/selection.min.css': ['./css-concat/selection.css'],

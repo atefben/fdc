@@ -26,47 +26,68 @@ $(document).ready(function() {
 		menu.owlCarousel();
 
 
+	// NO AJAX FOR FAQ
 
-    $('#horizontal-menu a').on('click',function(e){
-      e.preventDefault();
-      $( ".content-selection" ).removeClass('show');
-	  $("#banner-top").removeClass('show');
-      $("#banner-bottom").removeClass('show');
+	if($('.faq').length !== 0){
 
-      if($(this).is(':not(.active)')) {
-        var urlPath = $(this).attr('data-url');
-        $.get(urlPath, function(data){
-          $( ".content-selection" ).html( $(data).find('.content-selection').html() );
+		$('#horizontal-menu a').on('click',function(e){
+	      	e.preventDefault();
+  			$('#horizontal-menu a').removeClass('active');
+	        $(this).addClass('active');
 
-           setTimeout(function() {
-      			$( ".content-selection" ).addClass('show');
-      			$("#banner-top").addClass('show');
-      			$("#banner-bottom").addClass('show');
-    		}, 300);
+	        $(".faq-section-container").removeClass('active');
+	        $("."+$(this).data('section')).addClass('active');
+	    });
+	}
+
+	else
+
+	{
+
+	// AJAX CALL
+
+	    $('#horizontal-menu a').on('click',function(e){
+	      e.preventDefault();
+	      $( ".content-selection" ).removeClass('show');
+		  $("#banner-top").removeClass('show');
+	      $("#banner-bottom").removeClass('show');
+
+	      if($(this).is(':not(.active)')) {
+	        var urlPath = $(this).attr('data-url');
+	        $.get(urlPath, function(data){
+	          $( ".content-selection" ).html( $(data).find('.content-selection').html() );
+
+	           setTimeout(function() {
+	      			$( ".content-selection" ).addClass('show');
+	      			$("#banner-top").addClass('show');
+	      			$("#banner-bottom").addClass('show');
+	    		}, 300);
 
 
-          if($("#banner-top").length !== 0){
-          	$("#banner-top" ).html( $(data).find('#banner-top').html() );
-          }
-          if($("#banner-bottom").length !== 0){
-          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
-          }
-   //        // refresh isotope
-   //         if($('.grid').length !== 0){
-			//     $('.grid').isotope();
-			// }
+	          if($("#banner-top").length !== 0){
+	          	$("#banner-top" ).html( $(data).find('#banner-top').html() );
+	          }
+	          if($("#banner-bottom").length !== 0){
+	          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
+	          }
+	   //        // refresh isotope
+	   //         if($('.grid').length !== 0){
+				//     $('.grid').isotope();
+				// }
 
 
-           history.pushState('',GLOBALS.texts.url.title, urlPath);
-          
+	           history.pushState('',GLOBALS.texts.url.title, urlPath);
+	          
 
 
-        });
+	        });
 
-        $('#horizontal-menu a').removeClass('active');
-        $(this).addClass('active');
-      }
-    });
+	        $('#horizontal-menu a').removeClass('active');
+	        $(this).addClass('active');
+	      }
+	    });
+
+	}
 
 
 	// FIX HORIZONTAL MENU
