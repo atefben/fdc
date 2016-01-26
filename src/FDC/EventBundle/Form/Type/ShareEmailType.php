@@ -80,17 +80,19 @@ class ShareEmailType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $collectionConstraint = new Collection(array(
-            'email-dest' => array(
-                new GreaterThan(array('value' => 0, 'message' => $this->translator->trans('contact.form.errors.theme'))),
+            'email' => array(
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
                 new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
             ),
-            'email-user' => array(
-                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.nom'))),
+            'user' => array(
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
                 new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
             ),
             'message' => array(
                 new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))
-            ))
+            )),
+            'copy'=> array(),
+            'newsletter' => array()
         ));
 
         $resolver->setDefaults(array(

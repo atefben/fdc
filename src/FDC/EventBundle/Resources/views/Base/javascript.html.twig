@@ -43,6 +43,28 @@
             });
         });
 
+        $(document).on('click','form#form #share_mail',function(event){
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                cache: false,
+                url: GLOBALS.urls.shareEmailUrl,
+                data: $('form#form').serialize(),
+                success: function(data) {
+                    if (data.success == false) {
+                        alert('error');
+                    }
+                    else {
+                        alert('ok');
+                    }
+                }
+            });
+        });
+
 
     </script>
 {% endblock %}

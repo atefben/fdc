@@ -114,7 +114,7 @@ class GlobalController extends Controller
     }
 
     /**
-     * @Route("/share-email")
+     * @Route("/share-email", options={"expose"=true})
      * @Template("FDCEventBundle:Global:share-email.html.twig")
      * @param Request $request
      * @param $section
@@ -123,7 +123,7 @@ class GlobalController extends Controller
      * @param $description
      * @return array
      */
-    public function shareEmailAction(Request $request, $section, $detail, $title, $description)
+    public function shareEmailAction(Request $request, $section=null, $detail=null, $title=null, $description=null)
     {
         $email = array(
             'section' => $section,
@@ -138,10 +138,26 @@ class GlobalController extends Controller
         $form = $this->createForm(new ShareEmailType($translator));
 
         if ($request->isMethod('POST')) {
-
             $form->submit($request);
 
             if ($form->isValid()) {
+
+                $data = $form->getData();
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Hello Email')
+                    ->setFrom('a.mineau@ohwee.fr')
+                    ->setTo('p.bellenger@ohwee.fr')
+                    ->setBody(
+                        $this->renderView(
+                            'FDCEventBundle:Emails:share.html.twig',
+                            array('name' => 'test')
+                        ),
+                        'text/html'
+                    )
+                ;
+                $mailer = $this->get('mailer');
+
+                $mailer->send($message);
 
             }
             else {
@@ -156,6 +172,8 @@ class GlobalController extends Controller
             'hasErrors' => $hasErrors
         );
     }
+
+
 
 
     /**
