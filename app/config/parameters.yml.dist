@@ -55,6 +55,7 @@ parameters:
     fdc_event_domain: ~
     fdc_event_scheme: ~
     fdc_press_domain: ~
+    fdc_press_scheme: ~
     fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
     fdc_app_android_download_url: '#'
