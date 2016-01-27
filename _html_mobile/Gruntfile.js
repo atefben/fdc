@@ -440,7 +440,11 @@ grunt.initConfig({
 	        './sitemap.html': ['./templates/sitemap.html'],
 	        './events.html': ['./templates/events.html'],
 	        './channel.html': ['./templates/channel.html'],
+	        './palmares_competition.html': ['./templates/palmares_competition.html'],
 	        './palmares_camerador.html': ['./templates/palmares_camerador.html'],
+	        './palmares_uncertainregard.html': ['./templates/palmares_uncertainregard.html'],
+	        './palmares_cinefondation.html': ['./templates/palmares_cinefondation.html'],
+	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
 	        './searchpage.html': ['./templates/searchpage.html']
 	      
@@ -482,7 +486,11 @@ grunt.initConfig({
 	        './sitemap.html': ['./templates/sitemap.html'],
 	        './events.html': ['./templates/events.html'],
 	        './channel.html': ['./templates/channel.html'],
+	        './palmares_competition.html': ['./templates/palmares_competition.html'],
 	        './palmares_camerador.html': ['./templates/palmares_camerador.html'],
+	        './palmares_uncertainregard.html': ['./templates/palmares_uncertainregard.html'],
+	        './palmares_cinefondation.html': ['./templates/palmares_cinefondation.html'],
+	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
 	        './searchpage.html': ['./templates/searchpage.html']
 

@@ -3209,24 +3209,46 @@ display: inline-block;
 	text-align: center;
 	color:#fff;
 }
+
 .palme-dor-img{
 
 	font-size: 92px;
 	margin: 16px 0;
 }
-.title-prize, .prize-category, .movie-title{
+.title-prize, .prize-category, .movie-title, .people-name{
 	text-transform: uppercase;
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	font-size: 25px;
+	font-size: 28px;
 	letter-spacing: 4px;
 	font-weight: 700;
+	max-width: 500px;
+	margin: 0 auto;
 
+}
+.title-prize{
+	line-height: 35px;
+}
+.contain-winner .subtitle{
+	text-transform: uppercase;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	font-style: normal;
+	margin-bottom: 5px;
+}
+img.portrait{
+	display: inline-block;
+	margin-bottom: 30px;
+	max-width: 80px;
+
+}
+.movie-title, .people-name{
+	font-size: 25px;
 }
 .prize-category{
 
 	font-size: 15px;
 	letter-spacing: 2px;
-	margin: 15px 0 25px 0;
+	margin: 15px auto 25px auto;
 
 }
 .movie-title{
@@ -3248,7 +3270,7 @@ display: inline-block;
 	color:#c8a461;
 	font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 	font-style: italic;
-	font-size: 16px;
+	font-size: 20px;
 }
 .title-list-cat{
 	border-bottom: 1px solid #2c2c2c;
@@ -3260,7 +3282,7 @@ display: inline-block;
 	margin: 60px auto;
 }
 
-section h3{
+section h3:not(.movie-title):not(.people-name){
 
 	background-color: #202020;
 	text-align: center;
