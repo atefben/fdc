@@ -71,7 +71,11 @@ class ShareEmailType extends AbstractType
                 ),
                 'data' => false,
                 'required' => false
-            ));
+            ))
+            ->add('section', 'hidden', array('label' => false))
+            ->add('detail', 'hidden', array('label' => false))
+            ->add('title', 'hidden', array('label' => false))
+            ->add('description', 'hidden', array('label' => false));
     }
 
     /**
@@ -80,17 +84,23 @@ class ShareEmailType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $collectionConstraint = new Collection(array(
-            'email-dest' => array(
-                new GreaterThan(array('value' => 0, 'message' => $this->translator->trans('contact.form.errors.theme'))),
+            'email' => array(
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
                 new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
             ),
-            'email-user' => array(
-                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.nom'))),
+            'user' => array(
+                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
                 new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
             ),
             'message' => array(
                 new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))
-            ))
+            )),
+            'copy'=> array(),
+            'newsletter' => array(),
+            'section' => array(),
+            'detail' => array(),
+            'title' => array(),
+            'description' => array()
         ));
 
         $resolver->setDefaults(array(

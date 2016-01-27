@@ -13,6 +13,14 @@
     <!-- /build -->
 </head>
 <body>
+<div id="searchContainer">
+    <div class="container">
+      <form action="searchpage.html">
+        <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." autocomplete="off" />
+      </form>
+      <ul id="suggest"></ul>
+    </div>
+  </div>
 <div id="main" class="articles" data-menu="jury">
 <!-- menu -->
 	<nav class="st-menu st-effect" id="menu">
@@ -85,7 +93,7 @@
 					</a>
 				</li>
 				<li class="palmares">
-					<a href="palmares_camerador.html">
+					<a href="palmares_competition.html">
 						<div class="section-title">
 							<h3 class="title-menu">le palmarès</h3>
 						</div>
@@ -212,7 +220,7 @@
 	<div class="selection-container">
         <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
           <div class="vid">
-            <p><a href="#" data-url="jury_longsmetrages.html">longs métrages</p>
+            <p><a href="#" data-url="jury_longsmetrages.html">longs métrages</a></p>
           </div>
           <div class="vid">
             <p><a href="#" class="active">cinéfondation & courts métrages</a></p>
@@ -235,7 +243,7 @@
             </div>
           </div>
 
-          <h1 class="title title-jury">Membres du jury de la cinéfondation et des courts métrages</h1>
+          <h1 class="title title-jury tall three-lines">Membres du jury de la cinéfondation et des courts métrages</h1>
 
           <div class="selection-item">
               <div class="img" style="background-image:url(./img/jurys/jury-1.jpg)"></div>
@@ -263,7 +271,7 @@
   <div id="banner-bottom">
     <div class="banner-img vCenter" style="background-image:url(./img/selection-officielle/push.jpg);">
       <div class="vCenterKid">
-        <h2 class="title">un certain regard
+        <h2 class="title one-line">un certain regard
          <a href="selectionofficielle_uncertainregard.html"><i class="icon icon_fleche-right"></i> Découvrir la rubrique</a>
          </h2>
       </div>

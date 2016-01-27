@@ -1068,30 +1068,40 @@ from desktop
 #socials .instagram{
     position: relative;
     color:white;
-    background-position: center center;
-  background-size: cover;
+    
     width: 100%;
     height: 100%;
 }
-#socials .text-container{
-  background: #fff;
-  opacity: 0;
+#socials .img-container{
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-font-smoothing: antialiased;
     -webkit-transform: translate( 0, 0);
     transform: translate( 0, 0);
   width: 288px;
+  z-index: 2;
 }
-#socials .show-text .text-container{
-  opacity: 1;
+#socials .show-text .img-container{
+  opacity: 0;
 }
-#socials .instagram .icon{
+#socials  .instagram .icon{
     position: absolute;
     bottom: 10px;
 }
+#socials .show-text  .instagram .icon{
+  color:#c8a461;
+}
 #socials .post .icon{
     font-size: 1.125rem;
+    z-index: 3;
 }
 #socials .twitter{
   width: 100%;
@@ -1099,8 +1109,7 @@ from desktop
     margin: 0;
     padding-top: 0;
     position: relative;
-    background-position: center center;
-  background-size: cover;
+    
 }
 #socials .twitter .icon{
     color: #c8a461;
@@ -1110,7 +1119,7 @@ from desktop
 }
 #socials .content{
     position: relative;
-    padding-left:30px;
+    padding:0 30px;
     text-align: left;
     font-weight: 700;
     opacity: 1;
@@ -1128,7 +1137,8 @@ from desktop
     line-height: 31px;
     margin-top: -20px;
     word-break:break-word;
-    
+    max-height: 220px;
+    overflow: hidden;
 }
 #socials .twitter .info + .text{
     font-size: 1.3rem;
@@ -2276,7 +2286,7 @@ footer .newsletter #submit {
 
 }
 #header{
-    z-index: 15;
+    z-index: 51;
     display:table;
     height: 180px;
     position: relative;
@@ -2289,7 +2299,7 @@ footer .newsletter #submit {
     padding: 0;
     height: 90px;
 }
-.sticky #header.fixfixed,#header.fixfixed{
+.sticky #header.fixfixed{
     position: absolute;
 }
 #header .header-container{
@@ -2499,6 +2509,9 @@ footer .newsletter #submit {
   font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
+  text-align: left;
+  margin:0;
+  letter-spacing: inherit;
 }
 #menu .section-title h3.open{
   
@@ -2620,6 +2633,7 @@ font-weight: bolder;
 #menu .footer-menu li{
   float: left;
   width: 50%;
+    text-align: left;
 }
 #menu .footer-menu .clear{
   clear: both;
@@ -2684,7 +2698,7 @@ display: inline-block;
 }
 
 #searchContainer {
-  z-index: 9;
+  z-index: 51;
   background-color: #fff;
   left: 0;
   height: 0;
@@ -2692,7 +2706,9 @@ display: inline-block;
   overflow-y: scroll;
   position: absolute;
   top: 180px;
-  width: 100%;
+  width: 100%;  
+  -webkit-transform: translate3D(0,0,0);
+    transform: translate3D(0,0,0);
   -webkit-transition: min-height 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: min-height 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
@@ -2707,12 +2723,13 @@ display: inline-block;
 .sticky #searchContainer{
   top: 90px;
   position: fixed;
+
 }
 #searchContainer .container {
   position: relative;
   width: 90%;
   margin: 0 auto;
-  
+  padding: 0;
 }
 #searchContainer p.link {
   margin-top: 25px;
@@ -3155,7 +3172,7 @@ display: inline-block;
 
   opacity: 1;
 }
-#main{
+#main:not(.searchpage, .faq-page){
   background-color: #141414;
 }
 #banner-top, #banner-bottom{
@@ -3226,7 +3243,7 @@ display: inline-block;
 
 .selection-item{
 	background-color: #fff;
-
+  position: relative;
 }
 .selection-item .name, .selection-item .sub-name{
 	color:#000;
@@ -3242,10 +3259,20 @@ display: inline-block;
   width: 100%;
   height: 875px;
 }
+.jury-president a, .selection-item a{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
 .jury-president{
 
 	height: 1120px;
 	background-color: #fff;
+  position: relative;
 }
 .jury-president p:not(.rank){
 

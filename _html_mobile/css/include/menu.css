@@ -120,6 +120,9 @@
   font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
+  text-align: left;
+  margin:0;
+  letter-spacing: inherit;
 }
 #menu .section-title h3.open{
   
@@ -241,6 +244,7 @@ font-weight: bolder;
 #menu .footer-menu li{
   float: left;
   width: 50%;
+    text-align: left;
 }
 #menu .footer-menu .clear{
   clear: both;
