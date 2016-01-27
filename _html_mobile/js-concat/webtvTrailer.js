@@ -149,11 +149,11 @@ function closeSearch() {
         $("#header").removeClass('fixfixed');
         openedKeyboard = false;
         $("#searchContainer").css({
-                    'top':''
-                  });
-                  $("#header").css({
-                    'top':''
-                  });
+            'top':''
+          });
+          $("#header").css({
+            'top':''
+          });
     });
 
   $('.suggestSearch').on('input', function(e) {
@@ -174,7 +174,7 @@ function closeSearch() {
 
       $.ajax({
         type: "GET",
-        url: 'searchsuggest.json', //TODO a revoir//
+        url: 'searchsuggest.json', 
         success: function(data) {
 
           for (var i=0; i<data.length; i++) {
@@ -182,10 +182,12 @@ function closeSearch() {
                 link = data[i].link;
 
             var txt = name.toLowerCase();
+            if (txt.indexOf(value.toLowerCase()) != -1){
+              txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
 
-            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
-
-            $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+              $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+            }
+            
           }
         }
       });
@@ -332,6 +334,12 @@ $(document).ready(function() {
 		});
 		menu.owlCarousel();
 
+		if($('.faq-page').length == 0){
+			var toIndex = $('a.active').parents('.owl-item').index() - 1;
+			menu.trigger("to.owl.carousel", [toIndex, 2, true]);	
+
+		}
+
 
 	// NO AJAX FOR FAQ
 
@@ -356,11 +364,14 @@ $(document).ready(function() {
 
 	    $('#horizontal-menu a').on('click',function(e){
 	      e.preventDefault();
-	      $( ".content-selection" ).removeClass('show');
-		  $("#banner-top").removeClass('show');
-	      $("#banner-bottom").removeClass('show');
+
 
 	      if($(this).is(':not(.active)')) {
+
+		      $( ".content-selection" ).removeClass('show');
+			  $("#banner-top").removeClass('show');
+		      $("#banner-bottom").removeClass('show');
+
 	        var urlPath = $(this).attr('data-url');
 	        $.get(urlPath, function(data){
 	          $( ".content-selection" ).html( $(data).find('.content-selection').html() );
@@ -379,7 +390,7 @@ $(document).ready(function() {
 	          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
 	          }
 
-	          if($('.palmares').length !== 0){
+	          if($('.palmares-container').length !== 0){
 	          	$.initFilmsSliders()
 	          }
 	          

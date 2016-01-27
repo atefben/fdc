@@ -27,6 +27,7 @@ parameters:
 
     # admin
     admin_homepage_id: ~
+    admin_press_homepage_id: ~
     # routes where are displayed the translation legend
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
@@ -55,6 +56,7 @@ parameters:
     fdc_event_domain: ~
     fdc_event_scheme: ~
     fdc_press_domain: ~
+    fdc_press_scheme: ~
     fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
     fdc_app_android_download_url: '#'

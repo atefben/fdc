@@ -635,16 +635,31 @@ class NewsController extends Controller {
         }
 
         // SEO
-        // $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
         //get associated film to the news
-        $associatedFilm         = $news->getAssociatedFilm();
-        $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
+
+        $associatedFilm = null;
+        $associatedProgrammation = null;
+        $associatedFilmDuration = null;
+        if ($news->getAssociatedFilm() !== null) {
+            $associatedFilm = $news->getAssociatedFilm();
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
+        } elseif ($news->getAssociatedEvent() !== null) {
+            $associatedFilm = $news->getAssociatedEvent()->getAssociatedFilm();
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
+        } elseif ($news->getAssociatedProjections()->count() > 0) {
+            $associatedProgrammation = $news->getAssociatedProjections();
+        }
 
         //get film projection
         $programmations = array();
-        foreach ($associatedFilm->getProjectionProgrammationFilms() as $projection) {
-            $programmations[] = $projection->getProjection();
+        if ($associatedProgrammation !== null) {
+            foreach ($associatedProgrammation as $projection) {
+                $programmations[] = $projection->getProjection();
+            }
         }
 
         //get focus articles

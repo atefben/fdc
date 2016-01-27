@@ -452,3 +452,20 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: InfoFilmFilmAssociated, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    #Press
+    base.admin.contact_page:
+        class: Base\AdminBundle\Admin\ContactPageAdmin
+        arguments: [~, Base\CoreBundle\Entity\ContactPage, BaseAdminBundle:ContactPageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.contact_page, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdcpress_homepage:
+        class: Base\AdminBundle\Admin\FDCPressHomepageAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPressHomepage, BaseAdminBundle:FDCPressHomepageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.fdcpress_homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]

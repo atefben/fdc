@@ -60,7 +60,7 @@
         <div class="share">
             <p>{{ 'article.text.partagerarticle'|trans }}</p>
             <div class="buttons square">
-                <a href="#" class="button facebook" onclick="window.open('http://www.facebook.com/sharer.php?u={{ app.request.getUri }}','Share {{ news|trans_fallback('title') }}','width=600,height=400')">
+                <a href="#" class="button facebook">
                     <i class="icon icon_facebook"></i>
                 </a>
                 <a href="#" class="button twitter">
@@ -173,7 +173,7 @@
 {{ render(controller('FDCEventBundle:Global:shareEmail',
    {'section': news.theme|trans_fallback('name'),
     'detail': news.createdAt|date('d.m.y'),
-    'title': news.title,
+    'title': news|trans_fallback('title'),
     'description': news|trans_fallback('introduction')|raw
    }))
 }}

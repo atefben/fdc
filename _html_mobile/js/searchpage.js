@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
  
-var menu = $("#horizontal-menu").owlCarousel({
+    var menu = $("#horizontal-menu").owlCarousel({
 		  nav: false,
 		  dots: false,
 		  smartSpeed: 500,
@@ -20,30 +20,68 @@ var menu = $("#horizontal-menu").owlCarousel({
 		});
 		menu.owlCarousel();
 
-		
+		$('.suggestSearch').on('input', function(e) {
+    var value = $(this).val();
+    var $suggest = $(this).parent().next();
+    var noWhitespaceValue = value.replace(/\s+/g, '');
+    var noWhitespaceCount = noWhitespaceValue.length;
+    if($('.searchpage').length) {
+      $suggest = $('#main #suggest');
+    }
+    if(value == '') {
+      $suggest.empty();
+      return false;
+    }
+    if (noWhitespaceCount >= 3) {
+
+      $suggest.empty();
+
+      $.ajax({
+        type: "GET",
+        url: 'searchsuggest.json', 
+        success: function(data) {
+
+          for (var i=0; i<data.length; i++) {
+            var name = data[i].name,
+                link = data[i].link;
+
+            var txt = name.toLowerCase();
+            if (txt.indexOf(value.toLowerCase()) != -1){
+              txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
+
+              $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+            }
+            
+          }
+        }
+      });
+    }
+
+    
+  });
 
 
 
-    $('#horizontal-menu a').on('click',function(e){
-      e.preventDefault();
-      if($(this).is(':not(.active)')) {
-        var urlPath = $(this).attr('data-url');
-        $.get(urlPath, function(data){
-          $( ".content-selection" ).html( $(data).find('.content-selection').html() );
+    // $('#horizontal-menu a').on('click',function(e){
+    //   e.preventDefault();
+    //   if($(this).is(':not(.active)')) {
+    //     var urlPath = $(this).attr('data-url');
+    //     $.get(urlPath, function(data){
+    //       $( ".content-selection" ).html( $(data).find('.content-selection').html() );
 
 
 
 
-           history.pushState('',GLOBALS.texts.url.title, urlPath);
+    //        history.pushState('',GLOBALS.texts.url.title, urlPath);
           
 
 
-        });
+    //     });
 
-        $('#horizontal-menu a').removeClass('active');
-        $(this).addClass('active');
-      }
-    });
+    //     $('#horizontal-menu a').removeClass('active');
+    //     $(this).addClass('active');
+    //   }
+    // });
 
 	
 	var slider = $(".portrait-slider").owlCarousel({ 
@@ -81,11 +119,20 @@ if($('.searchpage').length) {
       
     $('.view-all, #horizontal-menu a').on('click', function(e) {
       e.preventDefault();
-
+      var fromAll = false;
+      var fromfiltered = false;
+      if($('#horizontal-menu a.active').hasClass('all')){
+        fromAll = true;
+      }
+      if($('#horizontal-menu a.active').hasClass('news') || $('#horizontal-menu a.active').hasClass('communiques') || $('#horizontal-menu a.active').hasClass('medias')) {
+        fromfiltered = true;
+      }
       var $this = $(this);
-
+      if ($this.hasClass('active')){
+        return false;
+      }
       $('#horizontal-menu a').removeClass('active');
-
+      
       if($this.parents('#horizontal-menu').length != 0) {
         $this.addClass('active');
       } else {
@@ -96,97 +143,164 @@ if($('.searchpage').length) {
           }
         });
       }
-          if($('#horizontal-menu a.active').hasClass('all')){
-            $('#filtered').css('display','none');
-            $('.result').show();
-          }else{
-            $('#filtered').css('display','block');
-          }
 
-      $('.result, #filtered').animate({'opacity':'0'},200, function() {
-        $('#filteredContent').empty();
+      if($('#horizontal-menu a.active').hasClass('all')){
+        $('#filtered').fadeOut(900,function(){
+          $('.result').fadeIn(900);
+        });
         
-        setTimeout(function() {
-
-          if($this.hasClass('all')) {
-            
-            $('.result').animate({'opacity':'1'},200);
-            return false;
-          }
-
-          var $activeEl = $('#horizontal-menu a.active');
-          
-          if($activeEl.hasClass('artists') || $activeEl.hasClass('events') || $activeEl.hasClass('films') || $activeEl.hasClass('participate')) {
-            $('.filters').hide();
-          } else {
-            $('.filters').show();
-
-          }
-
-          
+      }else{
+        
           var url = $this.data('ajax');
 
-          $.ajax({
-            type: "GET",
-            url: url,
-            success: function(data) {
-              $('#filteredContent').html(data);
+          
+          if (fromAll) {
+              $.ajax({
+                  type: "GET",
+                  url: url,
+                  success: function(data) {
+                    $('#filteredContent').html(data);
 
-              if($activeEl.hasClass('artists') || $activeEl.hasClass('films')){
-                var slider = $("#filteredContent .portrait-slider").owlCarousel({ 
-      			      nav: false,
-      			      dots: false,
-      			      smartSpeed: 500,
-      			      fluidSpeed: 500,
-      			      loop: false,
-      			      margin: 60,
-      			      autoWidth: true,
-      			      dragEndSpeed: 600,
-      			      items:1,
-      			      center:true
-      			    });
+                    if($this.hasClass('artists') || $this.hasClass('films')){
+                      var slider = $("#filteredContent .portrait-slider").owlCarousel({ 
+                        nav: false,
+                        dots: false,
+                        smartSpeed: 500,
+                        fluidSpeed: 500,
+                        loop: false,
+                        margin: 60,
+                        autoWidth: true,
+                        dragEndSpeed: 600,
+                        items:1,
+                        center:true
+                      });
+                      slider.owlCarousel();
+                    }else{
+                      var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({ 
+                          nav: false,
+                          dots: false,
+                          smartSpeed: 500,
+                          fluidSpeed: 500,
+                          loop: false,
+                          margin: 20,
+                          autoWidth: true,
+                          dragEndSpeed: 600,
+                          items:1
+                        });
+                       sliderArticles.owlCarousel();
+                    }
+                    
+                    $('.result').fadeOut(900,function(){
+                      $('#filtered').fadeIn(900,function(){
+                            if($this.hasClass('artists') || $this.hasClass('events') || $this.hasClass('films') || $this.hasClass('participate')) {
+                          
+                        } else {
+                          var filters = $(".filters-slider").owlCarousel({
+                                  nav: false,
+                                  dots: false,
+                                  smartSpeed: 500,
+                                  stagePadding: 40,
+                                  autoWidth: false,
+                                  loop: false,
+                                  items:2,
+                                  onInitialized: function() {
+                                    
+                                    $('#filters-menu .owl-stage').css({ 'padding-left': '0' });
+                                  },
+                                  onResized: function() {
+                                    $('#filters-menu .owl-stage').css({ 'padding-left': '0' });
+                                  }
+                                });
+                            filters.owlCarousel();
+                          $('#filtered .filters-slider').fadeIn(900,function(){
+                            
+                          });
+                          
 
-      			    slider.owlCarousel();
-              }else{
-              	var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({ 
-        			      nav: false,
-        			      dots: false,
-        			      smartSpeed: 500,
-        			      fluidSpeed: 500,
-        			      loop: false,
-        			      margin: 20,
-        			      autoWidth: true,
-        			      dragEndSpeed: 600,
-        			      items:1
-        			    });
+                        }
+                      });
+                    });
+                  }
+                });
+            }else{
+                if(fromfiltered) {
+                      $('#filtered .filters-slider').fadeOut(900);
+                }
+                $('#filteredContent').animate({'opacity':'0'},900,function(){
+                  $.ajax({
+                  type: "GET",
+                  url: url,
+                  success: function(data) {
+                    $('#filteredContent').html(data);
 
-	               sliderArticles.owlCarousel();
-              }
-              $('#filtered').animate({'opacity':'1'},200);
-              var filters = $(".filters-slider").owlCarousel({
-            			  nav: false,
-            			  dots: false,
-            			  smartSpeed: 500,
-            			  stagePadding: 40,
-            			  autoWidth: false,
-            			  loop: false,
-            			  items:2,
-            			  onInitialized: function() {
-            			    
-            			    $('#filters-menu .owl-stage').css({ 'padding-left': '0' });
-            			  },
-            			  onResized: function() {
-            			    $('#filters-menu .owl-stage').css({ 'padding-left': '0' });
-            			  }
-            			});
-                  $('.result').hide();
+                    if($this.hasClass('artists') || $this.hasClass('films')){
+                      var slider = $("#filteredContent .portrait-slider").owlCarousel({ 
+                        nav: false,
+                        dots: false,
+                        smartSpeed: 500,
+                        fluidSpeed: 500,
+                        loop: false,
+                        margin: 60,
+                        autoWidth: true,
+                        dragEndSpeed: 600,
+                        items:1,
+                        center:true
+                      });
+                      slider.owlCarousel();
+                    }else{
+                      var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({ 
+                          nav: false,
+                          dots: false,
+                          smartSpeed: 500,
+                          fluidSpeed: 500,
+                          loop: false,
+                          margin: 20,
+                          autoWidth: true,
+                          dragEndSpeed: 600,
+                          items:1
+                        });
+                       sliderArticles.owlCarousel();
+                    }
+                    if($this.hasClass('artists') || $this.hasClass('events') || $this.hasClass('films') || $this.hasClass('participate')) {
+                      
+                    } else {
+                      var filters = $(".filters-slider").owlCarousel({
+                                  nav: false,
+                                  dots: false,
+                                  smartSpeed: 500,
+                                  stagePadding: 40,
+                                  autoWidth: false,
+                                  loop: false,
+                                  items:2,
+                                  onInitialized: function() {
+                                    
+                                    $('#filters-menu .owl-stage').css({ 'padding-left': '0' });
+                                  },
+                                  onResized: function() {
+                                    $('#filters-menu .owl-stage').css({ 'padding-left': '0' });
+                                  }
+                                });
+                            filters.owlCarousel();
+                          $('#filtered .filters-slider').fadeIn(900,function(){
+                            
+                          });
+                      
+
+                    }
+                    $('#filteredContent').animate({'opacity':'1'},900);
+                    
+                  }
+                });
+
+                });
             }
-          });
+            
+          
 
-        }, 700);
-      });
-    });
-
+      
+       
+}
+});
     // test : remove once on server
     if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') { //TODO a revoir//
       $('#noResult').show();

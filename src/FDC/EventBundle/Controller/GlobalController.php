@@ -114,7 +114,7 @@ class GlobalController extends Controller
     }
 
     /**
-     * @Route("/share-email")
+     * @Route("/share-email", options={"expose"=true})
      * @Template("FDCEventBundle:Global:share-email.html.twig")
      * @param Request $request
      * @param $section
@@ -123,7 +123,7 @@ class GlobalController extends Controller
      * @param $description
      * @return array
      */
-    public function shareEmailAction(Request $request, $section, $detail, $title, $description)
+    public function shareEmailAction(Request $request, $section=null, $detail=null, $title=null, $description=null)
     {
         $email = array(
             'section' => $section,
@@ -138,16 +138,96 @@ class GlobalController extends Controller
         $form = $this->createForm(new ShareEmailType($translator));
 
         if ($request->isMethod('POST')) {
-
             $form->submit($request);
 
             if ($form->isValid()) {
 
+                $data = $form->getData();
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($data['title'])
+                    ->setFrom($data['user'])
+                    ->setTo($data['email'])
+                    ->setBody(
+                        $this->renderView(
+                            'FDCEventBundle:Emails:share.html.twig',
+                            array(
+                                'message' => $data['message'],
+                                'section' => $data['section'],
+                                'title' => $data['title'],
+                                'description' => $data['description'],
+                                'detail' => $data['detail'],
+                            )
+                        ),
+                        'text/html'
+                    )
+                ;
+                $mailer = $this->get('mailer');
+                $mailer->send($message);
+
+                $response['success'] = true;
+
+                //send mail copy
+                if($data['copy']) {
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject($data['title'])
+                        ->setFrom($data['user'])
+                        ->setTo($data['user'])
+                        ->setBody(
+                            $this->renderView(
+                                'FDCEventBundle:Emails:share.html.twig',
+                                array(
+                                    'message' => $data['message'],
+                                    'section' => $data['section'],
+                                    'title' => $data['title'],
+                                    'description' => $data['description'],
+                                    'detail' => $data['detail'],
+                                )
+                            ),
+                            'text/html'
+                        )
+                    ;
+                    $mailer = $this->get('mailer');
+                    $mailer->send($message);
+                }
+
+                // subscribe to newsletter
+                if($data['newsletter']) {
+                    $registration = new Newsletter();
+
+                    //Find site by slug
+                    $siteSlug = $this->container->getParameter('fdc_event_slug');
+                    $site = $this->getDoctrine()
+                        ->getRepository('BaseCoreBundle:Site')
+                        ->findOneBy(array('slug' => $siteSlug));
+
+                    //Save Email & Enable
+                    $registration->setEmail($data['email']);
+                    $registration->setEnabled(true);
+                    $registration->setSite($site);
+
+                    //Check errors
+                    $validator = $this->get('validator');
+                    $errors = $validator->validate($registration);
+
+                    if (count($errors) > 0) {
+                        $response['success'] = false;
+                        $response['object'] = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
+                    }
+                    else {
+                        // Form is valid
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($registration);
+                        $em->flush();
+                    }
+                }
+
             }
             else {
-                $hasErrors = true;
+                $response['object'] = $this->getErrorsAsArray($form);
+                $response['success'] = false;
             }
 
+            return new JsonResponse( $response );
         }
 
         return array(
@@ -155,6 +235,20 @@ class GlobalController extends Controller
             'form' => $form,
             'hasErrors' => $hasErrors
         );
+    }
+
+    //get form errors message
+    protected function getErrorsAsArray($form)
+    {
+        $errors = array();
+        foreach ($form->getErrors() as $error)
+            $errors[] = $error->getMessage();
+
+        foreach ($form->all() as $key => $child) {
+            if ($err = $this->getErrorsAsArray($child))
+                $errors[$key] = $err;
+        }
+        return $errors;
     }
 
 

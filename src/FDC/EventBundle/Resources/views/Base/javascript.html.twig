@@ -43,6 +43,53 @@
             });
         });
 
+        $(document).on('click','form#form #share_mail',function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            var empty = false;
+
+            if ($('select').val() == 'default') {
+                $('.select').addClass('invalid');
+            } else {
+                $('.select').removeClass('invalid');
+            }
+
+            $('.popin-mail input[type="text"], .popin-mail input[type="email"], .popin-mail textarea').each(function () {
+                if ($(this).val() == '') empty = true;
+            });
+
+            if (empty) {
+                $('.popin-mail input[type="email"], .popin-mail input[type="text"], textarea').trigger('input');
+            }
+
+            if ($('.invalid').length || empty) {
+                return false;
+            }else{
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    cache: false,
+                    url: GLOBALS.urls.shareEmailUrl,
+                    data: $('form#form').serialize(),
+                    success: function (data) {
+                        if (data.success == false) {
+
+                        }
+                        else {
+                            // TODO envoie du mail //
+                            $('#form').remove();
+                            $('.info-popin').remove();
+                            $('.contain-popin').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
+                            $('.popin-mail').css('height', '31%');
+                            return false;
+                        }
+                    }
+                });
+            }
+        });
+
 
     </script>
 

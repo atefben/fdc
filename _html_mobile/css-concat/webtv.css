@@ -5926,7 +5926,7 @@ footer .newsletter #submit {
 
 }
 #header{
-    z-index: 15;
+    z-index: 51;
     display:table;
     height: 180px;
     position: relative;
@@ -5939,7 +5939,7 @@ footer .newsletter #submit {
     padding: 0;
     height: 90px;
 }
-.sticky #header.fixfixed,#header.fixfixed{
+.sticky #header.fixfixed{
     position: absolute;
 }
 #header .header-container{
@@ -6149,6 +6149,9 @@ footer .newsletter #submit {
   font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
+  text-align: left;
+  margin:0;
+  letter-spacing: inherit;
 }
 #menu .section-title h3.open{
   
@@ -6270,6 +6273,7 @@ font-weight: bolder;
 #menu .footer-menu li{
   float: left;
   width: 50%;
+    text-align: left;
 }
 #menu .footer-menu .clear{
   clear: both;
@@ -6334,7 +6338,7 @@ display: inline-block;
 }
 
 #searchContainer {
-  z-index: 9;
+  z-index: 51;
   background-color: #fff;
   left: 0;
   height: 0;
@@ -6342,7 +6346,9 @@ display: inline-block;
   overflow-y: scroll;
   position: absolute;
   top: 180px;
-  width: 100%;
+  width: 100%;  
+  -webkit-transform: translate3D(0,0,0);
+    transform: translate3D(0,0,0);
   -webkit-transition: min-height 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: min-height 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
@@ -6357,6 +6363,7 @@ display: inline-block;
 .sticky #searchContainer{
   top: 90px;
   position: fixed;
+
 }
 #searchContainer .container {
   position: relative;
