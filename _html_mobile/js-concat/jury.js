@@ -305,8 +305,12 @@ $(document).ready(function() {
 		});
 		menu.owlCarousel();
 
-		var toIndex = $('a.active').parents('.owl-item').index() - 1;
-		menu.trigger("to.owl.carousel", [toIndex, 1, true]);	
+		if($('.faq-page').length == 0){
+			var toIndex = $('a.active').parents('.owl-item').index() - 1;
+			console.log('index', toIndex);
+			menu.trigger("to.owl.carousel", [toIndex, 2, true]);	
+
+		}
 
 
 	// NO AJAX FOR FAQ
@@ -355,7 +359,7 @@ $(document).ready(function() {
 	          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
 	          }
 
-	          if($('.palmares').length !== 0){
+	          if($('.palmares-container').length !== 0){
 	          	$.initFilmsSliders()
 	          }
 	          

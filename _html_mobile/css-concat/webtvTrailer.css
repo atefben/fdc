@@ -3302,7 +3302,7 @@ display: inline-block;
 
   opacity: 1;
 }
-#main:not(.searchpage, .faq){
+#main:not(.searchpage, .faq-page){
   background-color: #141414;
 }
 #banner-top, #banner-bottom{
