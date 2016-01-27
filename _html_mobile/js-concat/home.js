@@ -1002,11 +1002,11 @@ function closeSearch() {
         $("#header").removeClass('fixfixed');
         openedKeyboard = false;
         $("#searchContainer").css({
-                    'top':''
-                  });
-                  $("#header").css({
-                    'top':''
-                  });
+            'top':''
+          });
+          $("#header").css({
+            'top':''
+          });
     });
 
   $('.suggestSearch').on('input', function(e) {
@@ -1169,7 +1169,10 @@ $(document).ready(function() {
     function pauseOnDragging(){
       isPause = true;
     }
- 
+  //play while dragging 
+    function playAfterDragging(){
+      isPause = false;
+    }
     // moved callback
     function moved(){
       // clear interval
@@ -1198,6 +1201,7 @@ $(document).ready(function() {
       onTranslated: moved,
       mouseDrag: true,
       onDrag: pauseOnDragging,
+      onDragged: playAfterDragging,
       navSpeed: 800,
       dotsSpeed: 800,
       smartSpeed: 800,
@@ -1458,7 +1462,7 @@ var GLOBALS = {
     },
     "twitter" : {
       "hashtag" : "%23Cannes2016",
-      "count" : 15,
+      "count" : 10,
       "uri" : "search_tweets",
       "url" : "twitter.php"
     }
@@ -1530,7 +1534,29 @@ $(document).ready(function() {
 	// 	  });
 	// });
 
+// parse URL in string
+String.prototype.parseURL = function() {
+  return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
+    return '<strong>' + url + '</strong>';
+  });
+};
 
+// parse twitter username in String
+String.prototype.parseUsername = function(twitter) {
+  return this.replace(/[@]+[A-Za-z0-9-_]+/g, function(u) {
+    var username = u;
+    return '<strong>' + username + '</strong>';
+  });
+};
+
+// parse Twitter hashtag in String
+String.prototype.parseHashtag = function(twitter) {
+  return this.replace(/[#]+[A-Za-z0-9-_]+/g, function(t) {
+    var tag = t.replace("#","%23")
+    return '<strong>' + t + '</strong>';
+    
+  });
+};
 
 // load more
   $('.read-more').on('click', function(e) {
@@ -1706,4 +1732,113 @@ $(document).ready(function() {
 	    }
   	});
 	
+var url = "https://api.instagram.com/v1/tags/"+GLOBALS.api.instagram.hashtag+"/media/recent/?access_token="+GLOBALS.api.instagram.token;
+    
+  // load Instagram pictures and build array
+  var posts = [];
+  function loadInstagram(url, callback){
+
+    $.ajax({
+      type: "GET",
+      dataType: "jsonp",
+      cache: false,
+      url: url ,
+      success: function(data) {
+
+        var count = 10; 
+        for (var i = 0; i < count; i++) {
+          if (typeof data.data[i] !== 'undefined' ) {
+          	console.log(data.data[i].images);
+            posts.push({'type': 'instagram', 'img': data.data[i].images.standard_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div>', 'user': data.data[i].user.username});
+          }
+          if( i == count - 1) {
+            callback();
+          }
+        }
+      }
+    });
+
+  }
+
+  // TWITTER
+  // load Twitter posts and pictures and build array
+  function loadTweets(callback) {
+    var request = {
+      q: GLOBALS.api.twitter.hashtag,
+      count:  GLOBALS.api.twitter.count,
+      api:  GLOBALS.api.twitter.uri
+    };
+
+    $.ajax({
+      url: GLOBALS.api.twitter.url,
+      type: 'POST',
+      datatype: 'json',
+      data: request,
+      success: function(data, textStatus, xhr) {
+        data = JSON.parse(data);
+        console.log(data);
+        data = data.statuses;
+        var img = '';
+
+        for (var i = 0; i < data.length; i++) {
+        
+          img = '';
+          url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
+          try {
+            if (data[i].entities['media']) {
+              img = data[i].entities['media'][0].media_url;
+            }
+          } catch (e) {
+            // no media
+          }
+        	var textTweet = data[i].text.parseURL().parseUsername(true).parseHashtag(true);
+        	if (textTweet.length>180) {
+		        textTweet = (textTweet.substr(0, 180) + "...");
+		    }
+          posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + textTweet + '</p></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
+
+          if(i==data.length - 1) {
+            callback();
+          }
+        }
+       
+      }   
+    });
+  }
+function shuffle(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+}
+  loadInstagram(url, function() {
+  	
+    loadTweets(function() {
+    	
+    	shuffle(posts);
+      // once all data is loaded, build html and display the grid
+      $('.post-container').html('');
+       for (var i = 0; i < 6; ++i){
+       		var noPhoto = "";
+       		if(posts[i].img ==""){
+       			noPhoto = "show-text always-show";
+       		}
+			var html = '<div class="post '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+			$('.post-container').append(html);
+		}
+      	$('.post').on('click',function(){
+      		if($(this).hasClass('always-show')){
+      			return false;
+      		}else if($(this).hasClass('show-text')){
+      			$(this).removeClass('show-text');
+      		}else{
+      			$('.post').removeClass('show-text');
+      			$('.always-show').addClass("show-text");
+      			$(this).addClass('show-text')
+      		}
+      	});
+
+    });
+  });
+
+
+
 });

@@ -149,11 +149,11 @@ function closeSearch() {
         $("#header").removeClass('fixfixed');
         openedKeyboard = false;
         $("#searchContainer").css({
-                    'top':''
-                  });
-                  $("#header").css({
-                    'top':''
-                  });
+            'top':''
+          });
+          $("#header").css({
+            'top':''
+          });
     });
 
   $('.suggestSearch').on('input', function(e) {
@@ -250,7 +250,7 @@ var GLOBALS = {
     },
     "twitter" : {
       "hashtag" : "%23Cannes2016",
-      "count" : 15,
+      "count" : 10,
       "uri" : "search_tweets",
       "url" : "twitter.php"
     }
@@ -332,6 +332,12 @@ $(document).ready(function() {
 		});
 		menu.owlCarousel();
 
+		if($('.faq-page').length == 0){
+			var toIndex = $('a.active').parents('.owl-item').index() - 1;
+			menu.trigger("to.owl.carousel", [toIndex, 2, true]);	
+
+		}
+
 
 	// NO AJAX FOR FAQ
 
@@ -350,17 +356,20 @@ $(document).ready(function() {
 	else
 
 	{
-		console.log("coucou");
+
 
 	// AJAX CALL
 
 	    $('#horizontal-menu a').on('click',function(e){
 	      e.preventDefault();
-	      $( ".content-selection" ).removeClass('show');
-		  $("#banner-top").removeClass('show');
-	      $("#banner-bottom").removeClass('show');
+
 
 	      if($(this).is(':not(.active)')) {
+
+		      $( ".content-selection" ).removeClass('show');
+			  $("#banner-top").removeClass('show');
+		      $("#banner-bottom").removeClass('show');
+
 	        var urlPath = $(this).attr('data-url');
 	        $.get(urlPath, function(data){
 	          $( ".content-selection" ).html( $(data).find('.content-selection').html() );
@@ -378,6 +387,11 @@ $(document).ready(function() {
 	          if($("#banner-bottom").length !== 0){
 	          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
 	          }
+
+	          if($('.palmares-container').length !== 0){
+	          	$.initFilmsSliders()
+	          }
+	          
 	   //        // refresh isotope
 	   //         if($('.grid').length !== 0){
 				//     $('.grid').isotope();
@@ -401,7 +415,7 @@ $(document).ready(function() {
 	// FIX HORIZONTAL MENU
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();
-	    console.log("s", s, $(".header-container").height() + $('.banner-img').height());
+
 	    if(s > $(".header-container").height() + $('.banner-img').height()){
 	    	$("#horizontal-menu").css('position','fixed');
 	    	$("#horizontal-menu").css('top',$(".header-container").height());

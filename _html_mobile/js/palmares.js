@@ -1,9 +1,9 @@
 
 $(document).ready(function() {
  
+	$.initFilmsSliders = function(){
 
-	
-	var slider = $(".film-slider").owlCarousel({ 
+		var slider = $(".film-slider").owlCarousel({ 
 	      nav: false,
 	      dots: false,
 	      smartSpeed: 500,
@@ -17,5 +17,10 @@ $(document).ready(function() {
 	    });
 
 	    slider.owlCarousel();
+
+	}
+
+	$.initFilmsSliders();
+	
 
 });

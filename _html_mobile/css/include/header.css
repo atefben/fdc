@@ -5,7 +5,7 @@
 
 }
 #header{
-    z-index: 15;
+    z-index: 51;
     display:table;
     height: 180px;
     position: relative;
@@ -18,7 +18,7 @@
     padding: 0;
     height: 90px;
 }
-.sticky #header.fixfixed,#header.fixfixed{
+.sticky #header.fixfixed{
     position: absolute;
 }
 #header .header-container{

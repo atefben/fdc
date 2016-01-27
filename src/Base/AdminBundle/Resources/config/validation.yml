@@ -1,0 +1,12 @@
+FOS\UserBundle\Model\User:
+   properties:
+      plainPassword:
+        - Length:
+            min: 8
+            max: 50
+            minMessage: 'The password must be at least {{ limit }} characters long'
+            maxMessage: 'The password cannot be longer than {{ limit }} characters'
+        - Regex:
+            pattern: /^[A-Za-z0-9]{6,55}$/
+            match:   false
+            message: 'You need to use at least one upper and one number'

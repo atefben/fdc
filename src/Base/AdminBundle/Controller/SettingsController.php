@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Controller;
 
+use Base\AdminBundle\Form\Type\PressPasswordType;
 use Base\AdminBundle\Form\Type\SettingsFDCApiYearType;
 use Base\AdminBundle\Form\Type\SettingsFDCYearType;
 use Base\CoreBundle\Entity\Settings;
@@ -67,19 +68,26 @@ class SettingsController extends Controller
             ));
         }
 
-        //Password form
-        $formPressPassword = $this->container->get('fos_user.change_password.form');
-        $pressFormHandler = $this->container->get('fos_user.change_password.form.handler');
-
         // Get Press user
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByUsername('press');
-        $process = $pressFormHandler->process($user);
-        if ($process) {
+        if ($user === null ) {
+            throw new NotFoundHttpException();
+        }
+        //Password form
+        $formPressPassword = $this->get('form.factory')->create(new PressPasswordType(), $user);
+        $formPressPassword->handleRequest($request);
+
+        if ($formPressPassword->isValid()) {
+            $em->persist($user);
+            $this->get('fos_user.user_manager')->updateUser($user, false);
+
+            $this->getDoctrine()->getManager()->flush();
             $request->getSession()->getFlashBag()->add('success', $msgModified);
             return $this->redirectToRoute('base_admin_settings_index', array(
                 'admin_pool' => $admin_pool
             ));
+
         }
 
         return array(

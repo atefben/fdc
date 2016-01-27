@@ -61,7 +61,7 @@ class SocialWallInstagramController extends FOSRestController
 
         //create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository('BaseCoreBundle:SocialWall')->findBy(array(
+        $query = $em->getRepository($this->repository)->findBy(array(
             'festival' => $festival,
             'enabledDesktop' => true,
             'network' => constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM')
@@ -77,8 +77,6 @@ class SocialWallInstagramController extends FOSRestController
         // set context view
         $groups = array('social_wall_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
         $context->setVersion($version);
 
         // create view

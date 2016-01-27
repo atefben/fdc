@@ -150,7 +150,7 @@ var GLOBALS = {
     },
     "twitter" : {
       "hashtag" : "%23Cannes2016",
-      "count" : 15,
+      "count" : 10,
       "uri" : "search_tweets",
       "url" : "twitter.php"
     }
@@ -364,11 +364,11 @@ function closeSearch() {
         $("#header").removeClass('fixfixed');
         openedKeyboard = false;
         $("#searchContainer").css({
-                    'top':''
-                  });
-                  $("#header").css({
-                    'top':''
-                  });
+            'top':''
+          });
+          $("#header").css({
+            'top':''
+          });
     });
 
   $('.suggestSearch').on('input', function(e) {
