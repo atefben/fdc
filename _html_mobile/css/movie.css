@@ -470,6 +470,7 @@ a{
 /*SECTION COMPETITION*/
 .competition{
 	padding: 0;
+	background-color: #f6f6f6;
 }
 .competition h3{
 	font-family: "Playfair Display Bold", Times New Roman, Times, serif;

@@ -242,8 +242,11 @@ $(document).ready(function() {
 		});
 		menu.owlCarousel();
 
-		var toIndex = $('a.active').parents('.owl-item').index() - 1;
-		menu.trigger("to.owl.carousel", [toIndex, 1, true]);	
+		if($('.faq-page').length == 0){
+			var toIndex = $('a.active').parents('.owl-item').index() - 1;
+			menu.trigger("to.owl.carousel", [toIndex, 2, true]);	
+
+		}
 
 
 	// NO AJAX FOR FAQ
@@ -269,11 +272,14 @@ $(document).ready(function() {
 
 	    $('#horizontal-menu a').on('click',function(e){
 	      e.preventDefault();
-	      $( ".content-selection" ).removeClass('show');
-		  $("#banner-top").removeClass('show');
-	      $("#banner-bottom").removeClass('show');
+
 
 	      if($(this).is(':not(.active)')) {
+
+		      $( ".content-selection" ).removeClass('show');
+			  $("#banner-top").removeClass('show');
+		      $("#banner-bottom").removeClass('show');
+
 	        var urlPath = $(this).attr('data-url');
 	        $.get(urlPath, function(data){
 	          $( ".content-selection" ).html( $(data).find('.content-selection').html() );
@@ -292,7 +298,7 @@ $(document).ready(function() {
 	          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
 	          }
 
-	          if($('.palmares').length !== 0){
+	          if($('.palmares-container').length !== 0){
 	          	$.initFilmsSliders()
 	          }
 	          
@@ -350,12 +356,13 @@ $(document).ready(function() {
 $( function() {
 
   $('.section-title').click(function(){
-  		if($(this).parents('#menu').length){
-  			return false;
+
+  		if($(this).parents('#menu').length == 0 ){
+  			$(this).parent().toggleClass('open');
+  			$(this).find('.icon_case-plus').toggleClass('icon_moins');
   		}
   		// $(this).parent().parent().find(".section-contain").slideToggle('slow');
-  		$(this).parent().toggleClass('open');
-  		$(this).find('.icon_case-plus').toggleClass('icon_moins');
+  		
   });
   
 });

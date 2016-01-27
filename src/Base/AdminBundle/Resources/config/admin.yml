@@ -34,6 +34,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.contact_page:
+        class: Base\AdminBundle\Admin\ContactPageAdmin
+        arguments: [~, Base\CoreBundle\Entity\ContactPage, BaseAdminBundle:ContactPageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.contact_page, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.social_wall:
         class: Base\AdminBundle\Admin\SocialWallAdmin
         arguments: [~, Base\CoreBundle\Entity\SocialWall, BaseAdminBundle:SocialWallAdmin]

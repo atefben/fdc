@@ -2509,6 +2509,9 @@ footer .newsletter #submit {
   font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
+  text-align: left;
+  margin:0;
+  letter-spacing: inherit;
 }
 #menu .section-title h3.open{
   
@@ -3169,7 +3172,7 @@ display: inline-block;
 
   opacity: 1;
 }
-#main:not(.searchpage, .faq){
+#main:not(.searchpage, .faq-page){
   background-color: #141414;
 }
 #banner-top, #banner-bottom{

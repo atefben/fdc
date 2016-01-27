@@ -87,6 +87,14 @@ grunt.initConfig({
 			            './css/fullscreenplayer.css',
 			            './css/slideshow-video.css'
 			        ],
+				    './css-concat/artist.css': [
+			            './css/main.css',
+			            './css/include/*.css',
+			            './css/article.css',
+			            './css/slideshow-video.css',
+			            './css/artist.css'
+			            
+				    ],			     
 			     	'./css-concat/event.css': [
 			            './css/main.css',
 			            './css/slideshows-chocolat.css',
@@ -277,6 +285,13 @@ grunt.initConfig({
 				            './js/vendors/jwplayer.js',
 				            './js/article.js'
 				        ],
+				    './js-concat/artist.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js',
+				            './js/palmares.js',
+				            './js/artist.js'
+				        ],				        
 				    './js-concat/event.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
@@ -413,6 +428,8 @@ grunt.initConfig({
 	        './faq.html': ['./templates/faq.html'],
 	        './jury_courtsmetrages.html': ['./templates/jury_courtsmetrages.html'],
 	        './jury_longsmetrages.html': ['./templates/jury_longsmetrages.html'],
+	        './jury_uncertainregard.html': ['./templates/jury_uncertainregard.html'],
+	        './jury_camerador.html': ['./templates/jury_camerador.html'],
 	        './movie.html': ['./templates/movie.html'],
 	        './article.html': ['./templates/article.html'],
 	        './event.html': ['./templates/event.html'],
@@ -421,6 +438,8 @@ grunt.initConfig({
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
 	        './participate_sejour.html': ['./templates/participate_sejour.html'],
+	        './participate_partners.html': ['./templates/participate_partners.html'],
+	        './participate_provider.html': ['./templates/participate_provider.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
@@ -446,7 +465,8 @@ grunt.initConfig({
 	        './palmares_cinefondation.html': ['./templates/palmares_cinefondation.html'],
 	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
-	        './searchpage.html': ['./templates/searchpage.html']
+	        './searchpage.html': ['./templates/searchpage.html'],
+	        './artist.html': ['./templates/artist.html']
 	      
 	      }
 	    },
@@ -459,6 +479,8 @@ grunt.initConfig({
 	        './faq.html': ['./templates/faq.html'],
 	        './jury_courtsmetrages.html': ['./templates/jury_courtsmetrages.html'],
 	        './jury_longsmetrages.html': ['./templates/jury_longsmetrages.html'],
+	        './jury_uncertainregard.html': ['./templates/jury_uncertainregard.html'],
+	        './jury_camerador.html': ['./templates/jury_camerador.html'],
 	        './movie.html': ['./templates/movie.html'],
 	        './article.html': ['./templates/article.html'],
 	        './event.html': ['./templates/event.html'],
@@ -467,6 +489,8 @@ grunt.initConfig({
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
 	        './participate_sejour.html': ['./templates/participate_sejour.html'],
+	        './participate_partners.html': ['./templates/participate_partners.html'],
+	        './participate_provider.html': ['./templates/participate_provider.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
@@ -492,7 +516,8 @@ grunt.initConfig({
 	        './palmares_cinefondation.html': ['./templates/palmares_cinefondation.html'],
 	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
-	        './searchpage.html': ['./templates/searchpage.html']
+	        './searchpage.html': ['./templates/searchpage.html'],
+	        './artist.html': ['./templates/artist.html']
 
 	      }
 
@@ -524,7 +549,8 @@ grunt.initConfig({
 	        './js-concat/channel.min.js': ['./js-concat/channel.js'],
 	        './js-concat/palmares.min.js': ['./js-concat/palmares.js'],
 	        './js-concat/press.min.js': ['./js-concat/press.js'],
-	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js']
+	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js'],
+	        './js-concat/artist.min.js': ['./js-concat/artist.js']
 	      }
 	    }
 	  },
@@ -559,7 +585,8 @@ grunt.initConfig({
 	        './css-concat/channel.min.css': ['./css-concat/channel.css'],
 	        './css-concat/palmares.min.css': ['./css-concat/palmares.css'],
 	        './css-concat/press.min.css': ['./css-concat/press.css'],
-	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css']
+	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css'],
+	        './css-concat/artist.min.css': ['./css-concat/artist.css']
 	    }
 	  }
 	},
