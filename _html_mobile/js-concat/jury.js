@@ -323,7 +323,7 @@ $(document).ready(function() {
 	else
 
 	{
-		console.log("coucou");
+
 
 	// AJAX CALL
 
@@ -351,6 +351,11 @@ $(document).ready(function() {
 	          if($("#banner-bottom").length !== 0){
 	          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
 	          }
+
+	          if($('.palmares').length !== 0){
+	          	$.initFilmsSliders()
+	          }
+	          
 	   //        // refresh isotope
 	   //         if($('.grid').length !== 0){
 				//     $('.grid').isotope();
@@ -374,7 +379,7 @@ $(document).ready(function() {
 	// FIX HORIZONTAL MENU
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();
-	    console.log("s", s, $(".header-container").height() + $('.banner-img').height());
+
 	    if(s > $(".header-container").height() + $('.banner-img').height()){
 	    	$("#horizontal-menu").css('position','fixed');
 	    	$("#horizontal-menu").css('top',$(".header-container").height());
