@@ -6423,6 +6423,9 @@ footer .newsletter #submit {
   font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
+  text-align: left;
+  margin:0;
+  letter-spacing: inherit;
 }
 #menu .section-title h3.open{
   

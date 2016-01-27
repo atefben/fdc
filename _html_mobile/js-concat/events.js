@@ -174,7 +174,7 @@ function closeSearch() {
 
       $.ajax({
         type: "GET",
-        url: 'searchsuggest.json', //TODO a revoir//
+        url: 'searchsuggest.json', 
         success: function(data) {
 
           for (var i=0; i<data.length; i++) {
@@ -182,10 +182,12 @@ function closeSearch() {
                 link = data[i].link;
 
             var txt = name.toLowerCase();
+            if (txt.indexOf(value.toLowerCase()) != -1){
+              txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
 
-            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
-
-            $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+              $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+            }
+            
           }
         }
       });
@@ -233,7 +235,36 @@ function filter() {
   if($('.grid').length !== 0){
     $('.grid').isotope();
   }
-
+  if($('#filteredContent').length){
+    console.log('refreshed');
+      
+    var $owl = $(" #filteredContent .landscape-carousel").owlCarousel({ 
+                          nav: false,
+                          dots: false,
+                          smartSpeed: 500,
+                          fluidSpeed: 500,
+                          loop: false,
+                          margin: 20,
+                          autoWidth: true,
+                          dragEndSpeed: 600,
+                          items:1
+                        });
+    $owl.trigger('destroy.owl.carousel');
+    $owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
+    $owl = $(" #filteredContent .landscape-carousel").owlCarousel({ 
+                          nav: false,
+                          dots: false,
+                          smartSpeed: 500,
+                          fluidSpeed: 500,
+                          loop: false,
+                          margin: 20,
+                          autoWidth: true,
+                          dragEndSpeed: 600,
+                          items:1
+                        });
+    $owl.owlCarousel();
+  }
+  
 
 }
 
