@@ -69,10 +69,14 @@ class ContactThemeAdmin extends Admin
                     ),
                     'updatedAt' => array(
                         'display' => false
+                    ),
+                    'status' => array(
+                        'data' => '1'
                     )
                 )
             ))
             ->add('email')
+            ->add('translate')
         ;
     }
 

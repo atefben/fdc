@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
@@ -22,6 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class MediaImageTranslation implements TranslateChildInterface
 {
+    use Seo;
     use Time;
     use Translation;
     use TranslateChild;
@@ -31,6 +33,7 @@ class MediaImageTranslation implements TranslateChildInterface
      *
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     * @Assert\Valid()
      */
     private $file;
 

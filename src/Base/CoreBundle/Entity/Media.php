@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 
@@ -26,6 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 abstract class Media implements TranslateMainInterface
 {
     use Time;
+    use SeoMain;
     use TranslateMain;
 
     /**
@@ -100,8 +102,24 @@ abstract class Media implements TranslateMainInterface
     /**
      * @var ArrayCollection
      * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
+     *
+     * @Assert\Valid()
      */
     protected $translations;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     */
+    private $createdBy;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     */
+    private $updatedBy;
 
     public function __construct()
     {
@@ -342,5 +360,51 @@ abstract class Media implements TranslateMainInterface
     public function getDisplayedMobile()
     {
         return $this->displayedMobile;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
+     * @return Media
+     */
+    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
+     * @return Media
+     */
+    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
     }
 }

@@ -13,6 +13,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\Valid;
 
 /**
  * MediaImageAdmin class.
@@ -89,7 +90,7 @@ class MediaImageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.media_image.helper_file',
                         'provider' => 'sonata.media.provider.image',
-                        'context' => 'news_header_image',
+                        'context' => 'media_image_file'
                     ),
                     'legend' => array(
                         'label' => 'form.label_legend_img',
