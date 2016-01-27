@@ -1169,7 +1169,10 @@ $(document).ready(function() {
     function pauseOnDragging(){
       isPause = true;
     }
- 
+  //play while dragging 
+    function playAfterDragging(){
+      isPause = false;
+    }
     // moved callback
     function moved(){
       // clear interval
@@ -1198,6 +1201,7 @@ $(document).ready(function() {
       onTranslated: moved,
       mouseDrag: true,
       onDrag: pauseOnDragging,
+      onDragged: playAfterDragging,
       navSpeed: 800,
       dotsSpeed: 800,
       smartSpeed: 800,
@@ -1817,7 +1821,7 @@ function shuffle(o){
        		if(posts[i].img ==""){
        			noPhoto = "show-text always-show";
        		}
-			var html = '<div class="post '+noPhoto+'"><div class="'+posts[i].type+'" style="background-image:url('+posts[i].img+')">'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+			var html = '<div class="post '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
 			$('.post-container').append(html);
 		}
       	$('.post').on('click',function(){
