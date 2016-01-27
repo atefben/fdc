@@ -46,7 +46,7 @@
 
   opacity: 1;
 }
-#main:not(.searchpage){
+#main:not(.searchpage, .faq){
   background-color: #141414;
 }
 #banner-top, #banner-bottom{
