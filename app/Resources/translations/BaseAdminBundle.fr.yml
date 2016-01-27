@@ -186,6 +186,13 @@ form:
         image: Module photo(s)
         image_dual_align: Module 2 photos / ligne
         quote: Module citation
+    media_video:
+        helper_title: X caractères max.
+        displayed_all: Remonter dans "Toutes les vidéos"
+        displayed_home: Remonter en tant qu'actualité sur la homepage
+        displayed_webTv: Afficher dans une chaîne de la webTV
+        displayed_trailer: Afficher en tant que bande-annonce de la webTV
+        displayed_mobile: Flux mobiles
     media:
         helper_legend: X caractères max.
         helper_alt: X caractères max.
@@ -201,6 +208,7 @@ form:
     label_displayed_social_wall: Afficher le social wall
     label_social_wall_hashtags: Social Wall - hashtags
     label_save: Sauvegarder
+    label_email: Email
     label_copyright: Copyright
     label_tags: Tags de recherche
     label_legend_img: Légende de l'image
@@ -230,6 +238,9 @@ form:
     label_seo_file: Vignette partage
     label_theme_name: Nom du thème
     label_file: Fichier
+    label_media_video_image: Image cover
+    contact_theme:
+        helper_theme: X caractères max.
     status:
         draft: Brouillon
         translation_pending: À traduire

@@ -57,6 +57,15 @@ class MediaVideo extends Media
     private $webTv;
 
     /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
+     *
+     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
+     */
+    private $image;
+
+    /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="mediaVideos")
@@ -66,6 +75,14 @@ class MediaVideo extends Media
      *
      */
     private $festival;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
+     *
+     * @Groups({"trailer_list", "trailer_show"})
+     */
+    private $associatedFilms;
+
 
 
     /**
@@ -204,5 +221,61 @@ class MediaVideo extends Media
     public function getFestival()
     {
         return $this->festival;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $image
+     * @return MediaVideo
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Add associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms
+     * @return MediaVideo
+     */
+    public function addAssociatedFilm(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms[] = $associatedFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms
+     */
+    public function removeAssociatedFilm(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms->removeElement($associatedFilms);
+    }
+
+    /**
+     * Get associatedFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedFilms()
+    {
+        return $this->associatedFilms;
     }
 }

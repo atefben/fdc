@@ -337,6 +337,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedNews;
 
     /**
+     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association")
+     *
+     */
+    private $associatedMediaVideos;
+
+    /**
      * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="association")
      *
      * @Groups({"statement_list", "statement_show"})
@@ -1708,5 +1714,38 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getAssociatedStatement()
     {
         return $this->associatedStatement;
+    }
+
+    /**
+     * Add associatedMediaVideos
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedMediaVideos
+     * @return FilmFilm
+     */
+    public function addAssociatedMediaVideo(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedMediaVideos)
+    {
+        $this->associatedMediaVideos[] = $associatedMediaVideos;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedMediaVideos
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedMediaVideos
+     */
+    public function removeAssociatedMediaVideo(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedMediaVideos)
+    {
+        $this->associatedMediaVideos->removeElement($associatedMediaVideos);
+    }
+
+    /**
+     * Get associatedMediaVideos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedMediaVideos()
+    {
+        return $this->associatedMediaVideos;
     }
 }

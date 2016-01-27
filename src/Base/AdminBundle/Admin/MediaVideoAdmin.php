@@ -13,6 +13,12 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class MediaVideoAdmin extends Admin
 {
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
+
+    protected $translationDomain = 'BaseAdminBundle';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -76,40 +82,18 @@ class MediaVideoAdmin extends Admin
                         'required' => $requiredFile,
                         'field_type' => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
-                        'provider' => 'sonata.media.provider.file',
-                        'context' => 'statement_video',
-                    ),
-                    'image' => array(
-                        'required' => $requiredFile,
-                        'field_type' => 'sonata_media_type',
-                        'sonata_help' => 'form.media_image.helper_file',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'provider' => 'sonata.media.provider.image',
-                        'context' => 'news_header_image',
-                    ),
-                    'akamaiId' => array(
-                        'label' => 'form.label_akamai_id',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
+                        'provider' => 'sonata.media.provider.video',
+                        'context' => 'media_video_file',
                     ),
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.helper_title',
+                        'sonata_help' => 'form.media_video.helper_title',
                         'locale_options' => array(
                             'fr' => array(
                                 'required' => true
                             )
                         )
-                    ),
-                    'alt' => array(
-                        'label' => 'form.label_image',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.helper_alt',
                     ),
                     'status' => array(
                         'label' => 'form.label_status',
@@ -118,6 +102,24 @@ class MediaVideoAdmin extends Admin
                         'choices' => MediaVideoTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    )
                 )
             ))
             ->add('sites', null, array(
@@ -139,6 +141,9 @@ class MediaVideoAdmin extends Admin
                 'attr' => array(
                     'data-date-format' => 'dd/MM/yyyy HH:mm',
                 )
+            ))
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_media_video_image'
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
@@ -174,7 +179,38 @@ class MediaVideoAdmin extends Admin
             ->add('displayedMobile', null, array(
                 'label' => 'form.media_video.displayed_mobile'
             ))
-
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.news.helper_file',
+                'required' => false
+            ))
+            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
+            ->add('createdAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('createdBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->end()
         ->end();
     }
 

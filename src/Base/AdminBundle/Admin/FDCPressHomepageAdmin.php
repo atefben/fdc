@@ -6,10 +6,21 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ContactThemeAdmin extends Admin
+class FDCPressHomepageAdmin extends Admin
 {
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('list');
+        $collection->remove('create');
+        $collection->remove('show');
+        $collection->remove('batch');
+        $collection->remove('delete');
+        $collection->remove('export');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -17,7 +28,6 @@ class ContactThemeAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('email')
             ->add('createdAt')
             ->add('updatedAt')
         ;
@@ -30,7 +40,6 @@ class ContactThemeAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('email')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_action', 'actions', array(
@@ -52,12 +61,12 @@ class ContactThemeAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array('fr'),
+                'required_locales' => array(),
                 'fields' => array(
-                    'theme' => array(
-                        'label' => 'form.label_theme',
+                    'title' => array(
+                        'label' => 'form.press_homepage.title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.contact_theme.helper_theme',
+                        'sonata_help' => 'form.press_homepage.helper_page',
                         'locale_options' => array(
                             'fr' => array(
                                 'required' => true
@@ -70,14 +79,26 @@ class ContactThemeAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'status' => array(
-                        'data' => '1'
-                    )
+                    'pushsMain' => array(
+                        'class' => 'BaseCoreBundle:FDCPressHomepagePushMain'
+                    ),
+                    'pushsSecondary' => array(
+                        'class' => 'BaseCoreBundle:FDCPressHomepagePushSecondary'
+                    ),
                 )
             ))
-            ->add('email')
-            ->add('translate')
+            ->add('section', 'infinite_form_polycollection', array(
+                'label' => false,
+                'types' => array(
+                    'fdc_press_homepage_section_type',
+                ),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
         ;
+
     }
 
     /**
@@ -87,7 +108,6 @@ class ContactThemeAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('email')
             ->add('createdAt')
             ->add('updatedAt')
         ;
