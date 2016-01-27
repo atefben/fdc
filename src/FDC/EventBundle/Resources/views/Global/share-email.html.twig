@@ -30,7 +30,10 @@
         {% else %}
             {{ form_widget(form.message) }}
         {% endif %}
-
+        {{ form_widget(form.section, {'value' : share_email.section}) }}
+        {{ form_widget(form.detail, {'value' : share_email.detail}) }}
+        {{ form_widget(form.title, {'value' : share_email.title}) }}
+        {{ form_widget(form.description, {'value' : share_email.description}) }}
         <span class="complet-infos newsletter popin">
             {{ form_widget(form.newsletter) }}
             <label class="popin" for="contact_newsletter">
@@ -39,7 +42,7 @@
         </span>
 
         <span class="detail popin">* {{ 'sharemail.text.champsobligatoires'|trans }}</span>
-        <input type="submit" value='{{ 'sharemail.btn.envoyer'|trans }}' class='popin'>
+        <input type="submit" value='{{ 'sharemail.btn.envoyer'|trans }}' class='popin' id="share_mail">
     {{ form_rest(form) }}
 
     {{ form_end(form) }}

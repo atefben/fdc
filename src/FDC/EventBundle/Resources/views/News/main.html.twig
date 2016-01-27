@@ -173,7 +173,7 @@
 {{ render(controller('FDCEventBundle:Global:shareEmail',
    {'section': news.theme|trans_fallback('name'),
     'detail': news.createdAt|date('d.m.y'),
-    'title': news.title,
+    'title': news|trans_fallback('title'),
     'description': news|trans_fallback('introduction')|raw
    }))
 }}
