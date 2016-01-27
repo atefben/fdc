@@ -334,6 +334,9 @@ $(document).ready(function() {
 		});
 		menu.owlCarousel();
 
+		var toIndex = $('a.active').parents('.owl-item').index() - 1;
+		menu.trigger("to.owl.carousel", [toIndex, 1, true]);	
+
 
 	// NO AJAX FOR FAQ
 
