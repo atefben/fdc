@@ -237,7 +237,7 @@ class GlobalController extends Controller
         );
     }
 
-
+    //get form errors message
     protected function getErrorsAsArray($form)
     {
         $errors = array();
