@@ -1,0 +1,16 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+
+{% block content %}
+
+    <h3>{{ 'settings.fdc_press_contact'|trans }}</h3>
+    {{ form_errors(formContact) }}
+
+    {{ form_start(formContact) }}
+
+
+    {{ form_row(formContact.save) }}
+    {{ form_end(formContact) }}
+
+
+{% endblock %}
