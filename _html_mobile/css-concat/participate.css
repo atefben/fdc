@@ -3284,7 +3284,43 @@ section .button .icon{
 	height: 300px;
 	margin-bottom: 40px;
 }
+.img-container{
 
+	text-align: center;
+	margin-bottom: 40px;
+}
+.partners-container .title-participate{
+	padding:60px 0;
+	width: 450px
+}
+a.partners-link{
+	text-transform: uppercase;
+	color: #c8a461;
+    font-size: 20px;
+    padding-right: 20px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+.partner{
+	border-bottom: 1px solid #e0e0e0;
+	padding: 40px 0;
+	text-align: center;
+}
+.portrait img{
+	float: left;
+	padding-right: 20px;
+}
+.portrait {
+	min-height: 85px;
+	margin-top: 40px;
+	font-size: 20px;
+	line-height: 36px;
+	display: inline-block;
+	text-align: left;
+}
+.portrait .rank{
+	line-height: 20px;
+}
 .title-participate{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     color: #999999;

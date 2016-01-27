@@ -84,7 +84,7 @@ function closeSearch() {
 
       $.ajax({
         type: "GET",
-        url: 'searchsuggest.json', //TODO a revoir//
+        url: 'searchsuggest.json', 
         success: function(data) {
 
           for (var i=0; i<data.length; i++) {
@@ -92,10 +92,12 @@ function closeSearch() {
                 link = data[i].link;
 
             var txt = name.toLowerCase();
+            if (txt.indexOf(value.toLowerCase()) != -1){
+              txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
 
-            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
-
-            $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+              $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+            }
+            
           }
         }
       });

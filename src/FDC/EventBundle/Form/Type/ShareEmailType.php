@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Form\Type;
 
+use Base\CoreBundle\Validator\Constraints\NewsletterEmail;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -10,6 +11,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Collection;
+
 
 /**
  * Class ContactType
@@ -96,7 +98,9 @@ class ShareEmailType extends AbstractType
                 new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))
             )),
             'copy'=> array(),
-            'newsletter' => array(),
+            'newsletter' => array(
+                new NewsletterEmail(array('message' => 'test')
+            )),
             'section' => array(),
             'detail' => array(),
             'title' => array(),

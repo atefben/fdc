@@ -30,10 +30,12 @@
         {% else %}
             {{ form_widget(form.message) }}
         {% endif %}
+
         {{ form_widget(form.section, {'value' : share_email.section}) }}
         {{ form_widget(form.detail, {'value' : share_email.detail}) }}
         {{ form_widget(form.title, {'value' : share_email.title}) }}
         {{ form_widget(form.description, {'value' : share_email.description}) }}
+        {{ form_widget(form._token) }}
         <span class="complet-infos newsletter popin">
             {{ form_widget(form.newsletter) }}
             <label class="popin" for="contact_newsletter">
@@ -53,6 +55,7 @@
                 {{ form_errors(form.email) }}
                 {{ form_errors(form.user) }}
                 {{ form_errors(form.message) }}
+                {{ form_errors(form.newsletter) }}
             </ul>
         </div>
     {% endif %}
