@@ -3210,6 +3210,9 @@ display: inline-block;
   outline: none;
   width: 100%;
 }
+.searchpage #suggest{
+	z-index: 51;
+}
 #filtered{
 	display: none;
 }
@@ -3396,12 +3399,17 @@ display: inline-block;
 .searchpage #filtered{
 	-webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   	transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  	opacity: 0;
+  	/*opacity: 0;*/
 	display: none;
 }
 
 #filteredContent{
-	min-height: 640px;
+}
+#filtered .filters-slider{
+	width: 640px;
+}
+#filtered .filters-slider .owl-stage{
+	    padding-left: 40px;
 }
 /*FILTERS*/
 .filters{
@@ -3489,7 +3497,7 @@ display: inline-block;
   /*  visibility: hidden;*/
     top: 0;
     width: 100%;
-    z-index: 15;
+    z-index: 55;
     -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
     -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);

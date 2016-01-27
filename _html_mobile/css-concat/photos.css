@@ -3703,7 +3703,7 @@ body.chocolat-open>.chocolat-content{
   /*  visibility: hidden;*/
     top: 0;
     width: 100%;
-    z-index: 15;
+    z-index: 55;
     -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
     -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
