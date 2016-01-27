@@ -307,7 +307,6 @@ $(document).ready(function() {
 
 		if($('.faq-page').length == 0){
 			var toIndex = $('a.active').parents('.owl-item').index() - 1;
-			console.log('index', toIndex);
 			menu.trigger("to.owl.carousel", [toIndex, 2, true]);	
 
 		}
@@ -336,11 +335,14 @@ $(document).ready(function() {
 
 	    $('#horizontal-menu a').on('click',function(e){
 	      e.preventDefault();
-	      $( ".content-selection" ).removeClass('show');
-		  $("#banner-top").removeClass('show');
-	      $("#banner-bottom").removeClass('show');
+
 
 	      if($(this).is(':not(.active)')) {
+
+		      $( ".content-selection" ).removeClass('show');
+			  $("#banner-top").removeClass('show');
+		      $("#banner-bottom").removeClass('show');
+
 	        var urlPath = $(this).attr('data-url');
 	        $.get(urlPath, function(data){
 	          $( ".content-selection" ).html( $(data).find('.content-selection').html() );
