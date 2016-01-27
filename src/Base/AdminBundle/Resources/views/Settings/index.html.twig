@@ -19,10 +19,12 @@
     {{ form_end(formFDCApiYear) }}
 
     <h3>{{ 'settings.fdc_press_password'|trans }}</h3>
-    <form action="{{ path('fos_user_change_password') }}" {{ form_enctype(formPressPassword) }} method="POST" class="fos_user_change_password">
-        {{ form_widget(formPressPassword) }}
-        <input type="submit" value="{{ 'change_password.submit'|trans({}, 'FOSUserBundle') }}" />
-    </form>
+    {{ form_errors(formPressPassword) }}
+
+    {{ form_start(formPressPassword) }}
+    {{ form_row(formPressPassword.plainPassword) }}
+    {{ form_row(formPressPassword.save) }}
+    {{ form_end(formPressPassword) }}
 
 
 {% endblock %}
