@@ -41,6 +41,7 @@ class FilmController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      * @Rest\QueryParam(name="festival_id", description="The festival year")
@@ -56,6 +57,7 @@ class FilmController extends FOSRestController
         // parameters
         $selection = $paramFetcher->get('selection_id');
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         // get festival
         $festival = $coreManager->getApiFestivalYear();
@@ -71,7 +73,7 @@ class FilmController extends FOSRestController
         $groups = array('film_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
         // create view
         $view = $this->view($items, 200);
@@ -107,6 +109,7 @@ class FilmController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      *
      * @return View
      */
@@ -117,6 +120,7 @@ class FilmController extends FOSRestController
 
         // parameters
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         // get festival
         $festival = $coreManager->getApiFestivalYear();
@@ -129,7 +133,7 @@ class FilmController extends FOSRestController
         $context = SerializationContext::create();
         $context->setGroups(array('film_show', 'time'));
         $context->setVersion($version);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
         // create view
         $view = $this->view($film, 200);
