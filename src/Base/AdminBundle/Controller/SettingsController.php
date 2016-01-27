@@ -71,7 +71,9 @@ class SettingsController extends Controller
         // Get Press user
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByUsername('press');
-
+        if ($user === null ) {
+            throw new NotFoundHttpException();
+        }
         //Password form
         $formPressPassword = $this->get('form.factory')->create(new PressPasswordType(), $user);
         $formPressPassword->handleRequest($request);
