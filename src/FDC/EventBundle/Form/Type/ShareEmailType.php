@@ -71,7 +71,11 @@ class ShareEmailType extends AbstractType
                 ),
                 'data' => false,
                 'required' => false
-            ));
+            ))
+            ->add('section', 'hidden', array('label' => false))
+            ->add('detail', 'hidden', array('label' => false))
+            ->add('title', 'hidden', array('label' => false))
+            ->add('description', 'hidden', array('label' => false));
     }
 
     /**
@@ -92,7 +96,11 @@ class ShareEmailType extends AbstractType
                 new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))
             )),
             'copy'=> array(),
-            'newsletter' => array()
+            'newsletter' => array(),
+            'section' => array(),
+            'detail' => array(),
+            'title' => array(),
+            'description' => array()
         ));
 
         $resolver->setDefaults(array(

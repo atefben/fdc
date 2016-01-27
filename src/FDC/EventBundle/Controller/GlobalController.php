@@ -144,13 +144,19 @@ class GlobalController extends Controller
 
                 $data = $form->getData();
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Hello Email')
-                    ->setFrom('a.mineau@ohwee.fr')
-                    ->setTo('p.bellenger@ohwee.fr')
+                    ->setSubject($data['title'])
+                    ->setFrom($data['user'])
+                    ->setTo($data['email'])
                     ->setBody(
                         $this->renderView(
                             'FDCEventBundle:Emails:share.html.twig',
-                            array('name' => 'test')
+                            array(
+                                'message' => $data['message'],
+                                'section' => $data['section'],
+                                'title' => $data['title'],
+                                'description' => $data['description'],
+                                'detail' => $data['detail'],
+                            )
                         ),
                         'text/html'
                     )
