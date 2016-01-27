@@ -250,7 +250,7 @@ var GLOBALS = {
     },
     "twitter" : {
       "hashtag" : "%23Cannes2016",
-      "count" : 15,
+      "count" : 10,
       "uri" : "search_tweets",
       "url" : "twitter.php"
     }

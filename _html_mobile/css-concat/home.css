@@ -4425,9 +4425,7 @@ from desktop
     color: #000;
     font-weight: 700;
 }
-#news .read-more:hover,#news .read-more:active, #news .read-more:focus {
-    opacity: 0.5;
-}
+
 #sliderWrapper .owl-stage-outer, #sliderWrapper .owl-stage, #sliderWrapper .owl-item > div {
   height: 100%;
 }
@@ -4966,6 +4964,8 @@ from desktop
     height: 288px;
     display: inline-block;
     position: relative;
+
+    overflow: hidden;
 }
 #socials .post:nth-child(2n+1){
 
@@ -4982,10 +4982,23 @@ from desktop
 #socials .instagram{
     position: relative;
     color:white;
-    background-position: center top;
+    background-position: center center;
   background-size: cover;
     width: 100%;
     height: 100%;
+}
+#socials .text-container{
+  background: #fff;
+  opacity: 0;
+  -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-font-smoothing: antialiased;
+    -webkit-transform: translate( 0, 0);
+    transform: translate( 0, 0);
+  width: 288px;
+}
+#socials .show-text .text-container{
+  opacity: 1;
 }
 #socials .instagram .icon{
     position: absolute;
@@ -4995,12 +5008,13 @@ from desktop
     font-size: 1.125rem;
 }
 #socials .twitter{
-  display: table;
   width: 100%;
   height: 100%;
     margin: 0;
     padding-top: 0;
     position: relative;
+    background-position: center center;
+  background-size: cover;
 }
 #socials .twitter .icon{
     color: #c8a461;
@@ -5008,24 +5022,27 @@ from desktop
     bottom:30px;
     left: 35px;
 }
-#socials .twitter .content{
+#socials .content{
     position: relative;
     padding-left:30px;
     text-align: left;
     font-weight: 700;
+    opacity: 1;
 }
-#socials .twitter .info{
+#socials  .info{
     color:#bdbdbd;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     font-size: 11px;
 }
 
-#socials .twitter .text{
+#socials  .text{
     color:black;
     font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
     font-size: 24px;
     line-height: 31px;
     margin-top: -20px;
+    word-break:break-word;
+    
 }
 #socials .twitter .info + .text{
     font-size: 1.3rem;
@@ -5034,8 +5051,11 @@ from desktop
     font-size: 20px;
     line-height: 26px;
 }
-#socials .twitter .text strong{
+#socials  .text strong{
     color:#c8a461;
+}
+#socials .vCenter{
+  display: table;
 }
 /* Networks */
 #networks {
