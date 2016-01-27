@@ -149,11 +149,11 @@ function closeSearch() {
         $("#header").removeClass('fixfixed');
         openedKeyboard = false;
         $("#searchContainer").css({
-                    'top':''
-                  });
-                  $("#header").css({
-                    'top':''
-                  });
+            'top':''
+          });
+          $("#header").css({
+            'top':''
+          });
     });
 
   $('.suggestSearch').on('input', function(e) {
@@ -216,7 +216,9 @@ function closeSearch() {
 $( function() {
 
   $('.section-title').click(function(){
-
+  		if($(this).parents('#menu').length){
+  			return false;
+  		}
   		// $(this).parent().parent().find(".section-contain").slideToggle('slow');
   		$(this).parent().toggleClass('open');
   		$(this).find('.icon_case-plus').toggleClass('icon_moins');
