@@ -43,12 +43,13 @@ class StatementController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
      * @return View
      */
-    public function getStatementAction(Paramfetcher $paramFetcher)
+    public function getStatementsAction(Paramfetcher $paramFetcher)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
@@ -56,10 +57,11 @@ class StatementController extends FOSRestController
         // get festival year / version
         $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         //create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository('BaseCoreBundle:Statement')->getStatement($festival, new DateTime(), $coreManager->getLocale());
+        $query = $em->getRepository($this->repository)->getStatement($festival, new DateTime(), $lang);
 
         // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
         //
@@ -69,7 +71,7 @@ class StatementController extends FOSRestController
         $groups = array('statement_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new StatusExclusionStrategy());
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view
@@ -107,21 +109,32 @@ class StatementController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      *
      * @return View
      */
-    public function getNewAction(Paramfetcher $paramFetcher, $id)
+    public function getStatementAction(Paramfetcher $paramFetcher, $id)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
+        // get festival year / version
+        $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $projection = $em->getRepository($this->repository)->findOneById($id);
+        $projection = $em->getRepository($this->repository)->getStatementById($id, $festival, new DateTime(), $lang);
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(array('statement_show', 'time'));
+        $groups = array('statement_show', 'time');
+        $context = $coreManager->setContext($groups, $paramFetcher);
+        $context->addExclusionStrategy(new StatusExclusionStrategy());
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
+
+        // create view
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);
 
