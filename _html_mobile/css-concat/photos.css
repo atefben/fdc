@@ -511,9 +511,7 @@ from desktop
     color: #000;
     font-weight: 700;
 }
-#news .read-more:hover,#news .read-more:active, #news .read-more:focus {
-    opacity: 0.5;
-}
+
 #sliderWrapper .owl-stage-outer, #sliderWrapper .owl-stage, #sliderWrapper .owl-item > div {
   height: 100%;
 }
@@ -1052,6 +1050,8 @@ from desktop
     height: 288px;
     display: inline-block;
     position: relative;
+
+    overflow: hidden;
 }
 #socials .post:nth-child(2n+1){
 
@@ -1068,25 +1068,48 @@ from desktop
 #socials .instagram{
     position: relative;
     color:white;
-    background-position: center top;
-  background-size: cover;
+    
     width: 100%;
     height: 100%;
 }
-#socials .instagram .icon{
+#socials .img-container{
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-font-smoothing: antialiased;
+    -webkit-transform: translate( 0, 0);
+    transform: translate( 0, 0);
+  width: 288px;
+  z-index: 2;
+}
+#socials .show-text .img-container{
+  opacity: 0;
+}
+#socials  .instagram .icon{
     position: absolute;
     bottom: 10px;
 }
+#socials .show-text  .instagram .icon{
+  color:#c8a461;
+}
 #socials .post .icon{
     font-size: 1.125rem;
+    z-index: 3;
 }
 #socials .twitter{
-  display: table;
   width: 100%;
   height: 100%;
     margin: 0;
     padding-top: 0;
     position: relative;
+    
 }
 #socials .twitter .icon{
     color: #c8a461;
@@ -1094,24 +1117,28 @@ from desktop
     bottom:30px;
     left: 35px;
 }
-#socials .twitter .content{
+#socials .content{
     position: relative;
-    padding-left:30px;
+    padding:0 30px;
     text-align: left;
     font-weight: 700;
+    opacity: 1;
 }
-#socials .twitter .info{
+#socials  .info{
     color:#bdbdbd;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     font-size: 11px;
 }
 
-#socials .twitter .text{
+#socials  .text{
     color:black;
     font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
     font-size: 24px;
     line-height: 31px;
     margin-top: -20px;
+    word-break:break-word;
+    max-height: 220px;
+    overflow: hidden;
 }
 #socials .twitter .info + .text{
     font-size: 1.3rem;
@@ -1120,8 +1147,11 @@ from desktop
     font-size: 20px;
     line-height: 26px;
 }
-#socials .twitter .text strong{
+#socials  .text strong{
     color:#c8a461;
+}
+#socials .vCenter{
+  display: table;
 }
 /* Networks */
 #networks {
@@ -1450,25 +1480,36 @@ from desktop
   font-size: 0;
   border-bottom: 2px solid #e5e5e5;
   border-top: 2px solid #e5e5e5;
+  box-sizing:border-box;
 }
 #news #calendar .next{
   background-color: #f2f2f2;
 }
 #news #calendar .prev, #news #calendar .next{
   width: 121px;
-  height: 130px;
+  height: 126px;
   line-height: 130px;
   display: inline-block;
   font-size: 2rem;
-  vertical-align: middle;
   color:#cbcbcb;
+  vertical-align: top;
+}
+#news #calendar .prev{
+  border-right: 4px dotted #e5e5e5;
+}
+#news #calendar .next{
+  border-left: 4px dotted #e5e5e5;
 }
 #news #timeline{
-  height: 130px;
+  height: 150px;
+  width: 390px;
+  margin: 0;
   font-size: 0;
-vertical-align: middle;
   display: inline-block;
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  box-sizing:border-box;
 }
 #news #timeline.stick {
   position: fixed;
@@ -1484,7 +1525,7 @@ vertical-align: middle;
 #news #timeline a {
   display: inline-block;
   width: 130px;
-  height: 100px;
+  height: 126px;
   padding-top: 30px;
   /*border: 2px solid #e5e5e5;*/
   color: #adadad;
@@ -1493,6 +1534,18 @@ vertical-align: middle;
   text-align: center;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  box-sizing:border-box;
+  
+}
+#news #timeline .timeline-container{
+  width: 1560px;
+  height: 130px;
+  position: absolute;
+  box-sizing:border-box;
+  top: 0;
+  left: -260px;
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
@@ -1513,6 +1566,7 @@ vertical-align: middle;
   border-style: solid;
   color: #fff;
   position: relative;
+  border-left: none;
 }
 #news #timeline a.active:after {
   content: '';
@@ -1533,12 +1587,9 @@ vertical-align: middle;
   font-size: 2.5rem;
   margin-top: 5px;
 }
-#news #timeline a:first-child {
-  border-left: 4px dotted #e5e5e5;
-}
-#news #timeline a:last-child {
-  border-right: 4px dotted #e5e5e5;
-}
+
+
+
 
 /* articles */
 
@@ -2455,7 +2506,7 @@ footer .newsletter #submit {
   color: #fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 35px;
-  font-weight: 700;
+  font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
 }
@@ -2468,14 +2519,14 @@ footer .newsletter #submit {
     top: 21px;
     right: 60px;
     font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-font-weight: 700;
+font-weight: bolder;
     font-size: 2rem;
 }
 #menu .section-contain a{
   color:#fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: bolder;
   letter-spacing: 0.1em;
   padding: 25px 0;
   text-transform: uppercase;
@@ -2671,7 +2722,7 @@ display: inline-block;
   position: relative;
   width: 90%;
   margin: 0 auto;
-  
+  padding: 0;
 }
 #searchContainer p.link {
   margin-top: 25px;
@@ -3378,7 +3429,6 @@ div.chocolat-wrapper .share .icon {
     margin-left:-16px;
     margin-top:-16px;
     z-index:11;
-    background:url(../images/loader.gif);
     display:none;
 }
 .chocolat-content{
@@ -3404,7 +3454,6 @@ div.chocolat-wrapper .share .icon {
     top: 50%;
     margin-top: -50px;
     cursor:pointer;
-    background:url(../images/left.png) 50% 50% no-repeat;
     z-index: 17;
     display: none;
 
@@ -3417,7 +3466,6 @@ div.chocolat-wrapper .share .icon {
     top: 50%;
     margin-top: -50px;
     cursor:pointer;
-    background:url(../images/right.png)  50% 50% no-repeat;
     z-index: 17;
     display: none;
 }
@@ -3445,7 +3493,6 @@ div.chocolat-wrapper .share .icon {
     position: absolute;
     top: 0;
     right: 0;
-    background:url(../images/close.png) 50% 50% no-repeat;
 }
 .chocolat-wrapper .chocolat-bottom{
     position:absolute;
@@ -3479,7 +3526,6 @@ div.chocolat-wrapper .share .icon {
 .chocolat-wrapper .chocolat-fullscreen{
     width: 16px;
     height: 40px;
-    background: url(../images/fullscreen.png) 50% 50% no-repeat;
     display: block;
     margin:auto;
     cursor: pointer;

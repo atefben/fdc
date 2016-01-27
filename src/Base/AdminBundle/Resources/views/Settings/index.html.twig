@@ -17,4 +17,14 @@
     {{ form_row(formFDCApiYear.festival) }}
     {{ form_row(formFDCApiYear.save) }}
     {{ form_end(formFDCApiYear) }}
+
+    <h3>{{ 'settings.fdc_press_password'|trans }}</h3>
+    {{ form_errors(formPressPassword) }}
+
+    {{ form_start(formPressPassword) }}
+    {{ form_row(formPressPassword.plainPassword) }}
+    {{ form_row(formPressPassword.save) }}
+    {{ form_end(formPressPassword) }}
+
+
 {% endblock %}

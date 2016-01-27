@@ -98,7 +98,7 @@ var GLOBALS = {
     },
     "twitter" : {
       "hashtag" : "%23Cannes2016",
-      "count" : 15,
+      "count" : 10,
       "uri" : "search_tweets",
       "url" : "twitter.php"
     }
@@ -108,7 +108,7 @@ var GLOBALS = {
     "calendarProgrammationUrl" : "calendarprogrammation.html",
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
-    "newsUrlNext" : "news_page2.html",
+    "newsUrlNext" : "more-news.html",
     "loadPressRelease" : "load-communique.php",
     "selectionUrl" : "selection.html"
   },

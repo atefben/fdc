@@ -12,7 +12,8 @@ grunt.initConfig({
 			            './css/slideshows-chocolat.css',
 			            './css/vendors/chocolat.css',
 			            './css/main.css', 
-			            './css/include/*.css'
+			            './css/include/*.css',
+			            './css/fullscreenplayer.css'
 			            
 				        ],
 				    './css-concat/articles.css': [
@@ -189,9 +190,13 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/jquery.chocolat.js',
 				            './js/vendors/hammer.min.js',
+				            './js/vendors/jwplayer.js',
 				            './js/slideshows-chocolat.js',  
 				            './js/include/*.js',
-				            './js/main.js'
+				            './js/main.js',
+				            './js/fullscreenplayer.js',
+				            './js/jsonTest.js',
+				            './js/home.js'
 				        ],
 			        './js-concat/articles.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -289,7 +294,9 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
-				            './js/accordeon.js'
+				            './js/accordeon.js',
+				            './js/jsonTest.js',
+				            './js/googlemap.js'
 				        ],
 			        './js-concat/photos.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -413,6 +420,7 @@ grunt.initConfig({
 	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
+	        './participate_sejour.html': ['./templates/participate_sejour.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
@@ -432,7 +440,11 @@ grunt.initConfig({
 	        './sitemap.html': ['./templates/sitemap.html'],
 	        './events.html': ['./templates/events.html'],
 	        './channel.html': ['./templates/channel.html'],
+	        './palmares_competition.html': ['./templates/palmares_competition.html'],
 	        './palmares_camerador.html': ['./templates/palmares_camerador.html'],
+	        './palmares_uncertainregard.html': ['./templates/palmares_uncertainregard.html'],
+	        './palmares_cinefondation.html': ['./templates/palmares_cinefondation.html'],
+	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
 	        './searchpage.html': ['./templates/searchpage.html']
 	      
@@ -454,6 +466,7 @@ grunt.initConfig({
 	        './article-video.html': ['./templates/article-video.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
+	        './participate_sejour.html': ['./templates/participate_sejour.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
@@ -473,7 +486,11 @@ grunt.initConfig({
 	        './sitemap.html': ['./templates/sitemap.html'],
 	        './events.html': ['./templates/events.html'],
 	        './channel.html': ['./templates/channel.html'],
+	        './palmares_competition.html': ['./templates/palmares_competition.html'],
 	        './palmares_camerador.html': ['./templates/palmares_camerador.html'],
+	        './palmares_uncertainregard.html': ['./templates/palmares_uncertainregard.html'],
+	        './palmares_cinefondation.html': ['./templates/palmares_cinefondation.html'],
+	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
 	        './searchpage.html': ['./templates/searchpage.html']
 

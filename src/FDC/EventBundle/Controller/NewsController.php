@@ -651,7 +651,9 @@ class NewsController extends Controller {
         $associatedNews = $news->getAssociatedNews();
         $focusArticles  = array();
         foreach ($associatedNews as $associatedNew) {
-            $focusArticles[] = $associatedNew->getAssociation();
+            if($associatedNew->getAssociation() != null) {
+                $focusArticles[] = $associatedNew->getAssociation();
+            }
         }
 
         //get day articles
@@ -693,8 +695,9 @@ class NewsController extends Controller {
         //set default filters
         $filters                         = array();
         $filters['dates'][0]             = 'all';
+        $filters['dateFormated'][0]      = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0]    = 'all';
+        $filters['themes']['id'][0]      = 'all';
 
         foreach ($newsArticles as $key => $newsArticle) {
             $newsArticle->image = $newsArticle->getHeader();
@@ -702,12 +705,13 @@ class NewsController extends Controller {
 
             //check if filters don't already exist
             $date = $newsArticle->getPublishedAt();
-            if (!in_array($date->format('d-m-y'), $filters['dates'])) {
+            if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
                 $filters['dates'][] = ($date != null) ? $date : null;
+                $filters['dateFormated'][] = $date->format('d-m-Y');
             }
 
-            if (!in_array($newsArticle->getTheme()->getName(), $filters['themes']['slug'])) {
-                $filters['themes']['slug'][]    = $newsArticle->getTheme()->getName();
+            if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][]    = $newsArticle->getTheme()->getId();
                 $filters['themes']['content'][] = $newsArticle->getTheme();
             }
 
@@ -737,20 +741,22 @@ class NewsController extends Controller {
         //set default filters
         $filters                         = array();
         $filters['dates'][0]             = 'all';
+        $filters['dateFormated'][0]      = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0]    = 'all';
+        $filters['themes']['id'][0]      = 'all';
 
         foreach ($newsPhotos as $key => $newsPhoto) {
             $newsPhoto->theme = $newsPhoto->getTheme();
 
             //check if filters don't already exist
-            if (!in_array($newsPhoto->getPublishedAt(), $filters['dates'])) {
-                $date               = $newsPhoto->getPublishedAt();
-                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            $date = $newsPhoto->getPublishedAt();
+            if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
+                $filters['dates'][] = ($date != null) ? $date : null;
+                $filters['dateFormated'][] = $date->format('d-m-Y');
             }
 
-            if (!in_array($newsPhoto->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][]    = $newsPhoto->getTheme()->getName();
+            if (!in_array($newsPhoto->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][]    = $newsPhoto->getTheme()->getId();
                 $filters['themes']['content'][] = $newsPhoto->getTheme();
             }
 

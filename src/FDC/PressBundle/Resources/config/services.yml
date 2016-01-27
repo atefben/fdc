@@ -1,12 +1,6 @@
 services:
-    fdc_press.password.form.type:
-        class: FDC\PressBundle\Form\Type\LockedContentType
+    fdc_press.form.registration:
+        class: FDC\PressBundle\Form\RegistrationType
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: fdc_press_password }
-
-    fdc_press.form.handler.lockedcontent:
-        class: FDC\PressBundle\Form\Handler\LockedContentFormHandler
-        arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer"]
-        scope: request
-        public: false

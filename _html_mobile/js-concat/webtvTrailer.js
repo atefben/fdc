@@ -250,7 +250,7 @@ var GLOBALS = {
     },
     "twitter" : {
       "hashtag" : "%23Cannes2016",
-      "count" : 15,
+      "count" : 10,
       "uri" : "search_tweets",
       "url" : "twitter.php"
     }
@@ -260,7 +260,7 @@ var GLOBALS = {
     "calendarProgrammationUrl" : "calendarprogrammation.html",
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
-    "newsUrlNext" : "news_page2.html",
+    "newsUrlNext" : "more-news.html",
     "loadPressRelease" : "load-communique.php",
     "selectionUrl" : "selection.html"
   },
@@ -335,7 +335,7 @@ $(document).ready(function() {
 
 	// NO AJAX FOR FAQ
 
-	if($('.faq').length !== 0){
+	if($('.faq-page').length !== 0){
 
 		$('#horizontal-menu a').on('click',function(e){
 	      	e.preventDefault();
@@ -350,6 +350,7 @@ $(document).ready(function() {
 	else
 
 	{
+
 
 	// AJAX CALL
 
@@ -377,6 +378,11 @@ $(document).ready(function() {
 	          if($("#banner-bottom").length !== 0){
 	          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
 	          }
+
+	          if($('.palmares').length !== 0){
+	          	$.initFilmsSliders()
+	          }
+	          
 	   //        // refresh isotope
 	   //         if($('.grid').length !== 0){
 				//     $('.grid').isotope();
@@ -400,7 +406,7 @@ $(document).ready(function() {
 	// FIX HORIZONTAL MENU
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();
-	    console.log("s", s, $(".header-container").height() + $('.banner-img').height());
+
 	    if(s > $(".header-container").height() + $('.banner-img').height()){
 	    	$("#horizontal-menu").css('position','fixed');
 	    	$("#horizontal-menu").css('top',$(".header-container").height());
