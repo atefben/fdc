@@ -3124,80 +3124,402 @@ display: inline-block;
 #suggest li:nth-child(2n):hover {
   background-color: #ededed;
 }
-#horizontal-menu{
-  height: 110px;
-  background-color: #202020;
-  z-index: 50;
-}
 
-#horizontal-menu .vid {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  width: auto;
-  line-height: 110px;
-  padding: 0 20px 0 20px;
+a{
 
+	color:#c8a461;;
 }
+.slideshow{
 
-#horizontal-menu .vid p{
-  
-  display: block;
-  font-size: 1.5rem;
-  margin-top: 3px;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 600;
+	border: none;
 }
-#horizontal-menu .vid p a{
-  color:  #999999;
-}
-#horizontal-menu .vid p a.active{
-  color: #c8a461;
-}
-#horizontal-menu .owl-stage{
-
-  height: 100%;
-}
-.content-selection{
-    opacity: 0;
-    -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
-    -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-
-}
-.content-selection.show{
-
-  opacity: 1;
-}
-#main:not(.searchpage, .faq-page){
-  background-color: #141414;
-}
-#banner-top, #banner-bottom{
-    background-size: 0 0;
-}
-#banner-top.show, #banner-bottom.show{
-  background-size: cover;
-}
-.selection-container{
-	position: relative;
-	width: 100%;
+.container{
+	padding-top: 50px;
 	font-size: 0;
-	background-color: #202020;
-	
 }
-.selection-item{
-	display: inline-block;
-	width: 50%;
-	height: 580px;
-	vertical-align: top;
-	background-color: #141414;
-  position: relative;
+#player{
+    margin-bottom: 40px;
+}
+.article-title{
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  text-align: center;
+  max-height: 200px;
+  margin-bottom: 40px;
+}
+.article-title .category {
+  color: #c8a461;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  text-transform: uppercase;
+}
+.article-title span {
+  color: #666;
+  display: inline-block;
+  font-size: 20px;
+}
+.article-title h2 {
+  color: #333;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 46px;
+  width: 420px;
+  margin: 15px auto 0 auto;
+  text-align: center;
+}
+.text-content{
+    font-size: 24px;
+    color:#666666;
+    max-height: 1000px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 30px;
+}
+
+/*PICTOS NAV*/
+
+/*.pictos-nav{
+
+	position: fixed;
+	width: 560px;
+	left:40px;
+	bottom: 160px;
+	z-index: 99;
+}
+.pictos-nav div{
+
+	background-color: #fff;
+	width: 120px;
+	height: 120px;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	line-height: 120px;
+	font-size: 45px;
+	position: absolute;
+}
+.pictos-nav div.back{
+	left:0;
+}
+.pictos-nav div.calendar{
+	right:0;
+}*/
+
+/*SECTION*/
+
+.section{
+
+
+	padding: 30px 0;
 
 }
-.selection-item a{
+.title-section{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	color:#000;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 2px;
+	margin-bottom: 30px;
+	/*font-size: 1.5rem;*/
+	font-size: 22px;
+
+}
+
+.section p{
+
+	color:#666666;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	/*font-size: 1.5rem;*/
+	line-height: 30px;
+	font-size: 24px;
+}
+
+/*SLIDER*/
+
+.owl-stage-outer{
+
+	width: 640px;
+	margin-left: -32px;
+}
+.video{
+	position: relative;
+}
+.video .infos{
+	position: absolute;
+}
+.slideshow .video .info .titleLink{
+
+	font-size: 23px;
+	max-width: 445px;
+}
+.slideshow{
+
+	padding: 0;
+	margin: 0;
+}
+
+
+/*PHOTO */
+.photo-container{
+	display: inline-block;
+	margin-bottom: 40px;
+	font-size: 0;
+}
+.photo-container img{
+
+	max-width: 100%;
+}
+.photo-container .caption {
+    color: #969696;
+    font-size: .750rem;
+    margin: 10px 0 0 0;
+    text-align: left;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.half-photo{
+	vertical-align: top;
+	width: 47%;
+	height: 410px;
+}
+.half-photo + .half-photo{
+
+	float: right;
+}
+.half-photo img{
+
+	height: 100%;
+	object-fit:cover;
+}
+.quote{
+	margin-top: 40px;
+}
+.quote blockquote {
+    color: #666;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    font-size: 25px;
+    line-height: 35px;
+    padding: 40px 15px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+
+/*INFO FILM*/
+.film {
+    height: 730px;
+    overflow: hidden;
+    background-color: #2e2e2e;
+}
+.info-film {
+    background-color: #2e2e2e;
+    color: #fff;
+    height: 50%;
+    overflow: hidden;
+}
+.film .info-film .wrapper{
+	height: 100%;
+	margin-left: 70px;
+}
+.film .info-film .wrapper .poster {
+    display: inline-block;
+    margin-right: 65px;
+    vertical-align: middle;
+}
+.film .info-film .wrapper .text-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+.film .info-film .wrapper .category {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.film .info-film .wrapper h3 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 25px;
+    margin: 20px 0 10px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.film .info-film .wrapper p.director {
+    color: #c8a461;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-bottom: 35px;
+    position: relative;
+    font-style: italic;
+}
+.film .info-film .wrapper p.director:after {
+    background-color: #bababa;
+    bottom: -18px;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 27px;
+}
+.film .info-film .wrapper p {
+    color: #bababa;
+    font-size: 15px;
+    margin: 10px 0;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.film .programmation-film {
+    background-color: #141414;
+    height: 50%;
+    overflow: hidden;
+}
+.film .programmation-film .wrapper {
+    color: #fff;
+    height: 100%;
+    margin-left: 70px;
+}
+.film .programmation-film .wrapper .category {
+    color: #c8a461;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size:20px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.film .programmation-film .wrapper ul {
+    padding: 38px 0 0 0;
+}
+.film .programmation-film .wrapper ul li {
+    display: inline-block;
+    font-size: 15px;
+    width: 280px;
+}
+.film .programmation-film .wrapper ul li span {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #bababa;
+    margin-right: 8px;
+}
+.film .programmation-film .wrapper ul li span.type {
+    color: #787878;
+    text-transform: uppercase;
+}
+.film .programmation-film .wrapper ul li span.location {
+    color: #fff;
+    display: block;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin: 18px 0 40px 0;
+    position: relative;
+}
+.film .programmation-film .wrapper ul li span.location:after {
+    background-color: #525252;
+    bottom: -18px;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 27px;
+}
+.film .programmation-film .wrapper ul li:nth-child(3) span.location:after, .film .programmation-film .wrapper ul li:nth-child(4) span.location:after {
+  display: none;
+}
+.film .programmation-film .wrapper .button {
+    border-color: #c8a461;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+}
+/*CREDITS AND CASTING*/
+
+.credits p, .casting p{
+	/*font-size: 0.8rem;*/
+	font-size: 22px;
+	line-height:30px;
+}
+.credits p.middle, .casting p.middle{
+	margin-bottom: 30px;
+}
+
+/*PHOTOS*/
+
+.photos .slideshow .thumbnails .thumb{
+
+	width: 160px;
+	height: 110px;
+}
+.photos .slideshow .thumbnails .thumb.active:before{
+
+	width: 144px;
+	height: 94px;
+}
+
+/*ARTICLES*/
+.articles .title{
+	margin: 20px auto;
+}
+.articles .owl-item{
+
+	width: 516px;
+	height: 490px;
+}
+.articles .img-container{
+
+	position: relative;
+}
+.articles .thumb img{
+	width: 515px;
+}
+.articles .thumb .picto{
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+}
+.articles .thumb .picto .icon{
+
+	color:#c8a461;
+	/*font-size: 1.5rem;*/
+	font-size: 30px;
+}
+.articles  .info{
+	width: 355px;
+	margin: 30px auto 0 auto;
+	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color:#666666;
+}
+.articles  .info .category{
+
+	color: #c8a461;   
+    letter-spacing: 0.1em;
+    margin-right: 12px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+
+}
+.articles  .info h2{
+
+	color: #000;
+	text-align: center;
+	margin-top: 15px;
+	font-family: "Playfair Display", Times New Roman, Times, serif;
+	font-size: 25px;
+	line-height: 30px
+}
+.articles .top-info{
+
+	margin: 0 auto;
+	display: table;
+}
+.articles .owl-item a{
 
     display: block;
     position: absolute;
@@ -3206,37 +3528,479 @@ display: inline-block;
     height: 100%;
     width: 100%;
     z-index: 5;
+}
 
-}
-.selection-item .img{
-  background-position: center top;
-  background-size: cover;
-  width: 100%;
-  height: 435px;
-}
-.selection-item .name, .selection-item .sub-name{
-	color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-    padding-top: 25px;
-    font-weight: 600;
-    max-width: 190px;
-    margin: 0 auto;
 
-}
-.selection-item .sub-name
-{
-	font-size: 1rem;
+
+
+
+
+/*SECTION COMPETITION*/
+/*.competition{
 	padding: 0;
 }
-.selection-item .author, .selection-item .rank{
-
+.competition h3{
+	font-family: "Playfair Display Bold", Times New Roman, Times, serif;
+	font-size: 24px;
+	letter-spacing: 5px;
 	text-align: center;
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-  color: #c8a461;
-  padding-top: 10px;
-  font-style: italic;
+	padding: 55px 0;
+	margin: 0;
 }
+.competition .owl-item{
+
+	width: 280px;
+	height: 530px;
+}
+.competition .img-container{
+
+	width: 280px;
+	height: 380px;
+	background-position: center center;
+  	background-size: cover;
+}
+.competition .info{
+	margin-top: 35px;
+	text-align: center;
+}
+.competition .info p{
+	text-transform: uppercase;
+	color: #000;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+.competition .info a{
+
+	font-size: 22px;
+	font-style: italic;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.competition .owl-stage-outer{
+	margin-left: 0;
+}*/
+
+
+
+
+
+
+
+
+
+.slideshow .thumbnails .thumb {
+  height: 210px;
+  overflow: hidden;
+  position: relative;
+  width: 334px;
+}
+.slideshow .thumbnails .thumb:before {
+  background: transparent;
+  background: -moz-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(57%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
+  background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
+  background: -o-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
+  background: -ms-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border:none;
+  z-index: 1;
+}
+.slideshow .thumbnails .thumb.active:before {
+  background: transparent;
+  background: -moz-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(57%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
+  background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
+  background: -o-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
+  background: -ms-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+  content: '';
+  display: block;
+  height: 194px;
+  width: 320px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border:8px solid #c8a461;
+  z-index: 1;
+}
+
+.slideshow .thumbnails {
+  padding-top: 26px;
+  padding-bottom: 25px;
+    width: 100%;
+    margin-left: 0;
+}
+.slideshow .caption{
+    color: #fff;
+    font-size: 1.4rem;
+}
+.slideshow h3{
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.slideshow .info {
+  bottom: 20px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+.slideshow .info .info-container {
+  color: #666;
+  float: left;
+  height: 44px;
+  margin-top: 18px;
+}
+.slideshow .info .picto {
+  bottom: auto;
+  float: left;
+  left: auto;
+  margin: 0 18px 0 20px;
+  position: relative;
+  top: auto;
+  color: #c8a461;
+  height: 69px;
+  width: 69px;
+  text-align: center;
+  line-height: 69px;
+}
+.slideshow .info .picto .icon {
+
+  font-size: 1.5rem;
+}
+
+.slideshow .info .category {
+  color: #c8a461;
+  font-size: 0.925rem;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.slideshow .info .titleLink {
+    color: #fff;
+    display: block;
+    font-size: 1.3rem;
+    margin-top: 8px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a{
+
+	color:#c8a461;
+}
+.slideshow{
+
+	border: none;
+}
+.container{
+	padding-top: 50px;
+	font-size: 0;
+}
+
+.artist-name{
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  text-align: center;
+  max-height: 200px;
+  margin-bottom: 40px;
+}
+.artist-name .category {
+  color: #c8a461;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  text-transform: uppercase;
+}
+.artist-name span {
+  color: #666;
+  display: inline-block;
+  font-size: 20px;
+}
+.artist-name h2 {
+  color: #333;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 46px;
+  width: 420px;
+  margin: 15px auto 0 auto;
+  text-align: center;
+}
+.text-content{
+    font-size: 24px;
+    color:#666666;
+    max-height: 1000px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 30px;
+}
+h3{
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/*PICTOS NAV*/
+
+/*.pictos-nav{
+
+	position: fixed;
+	width: 560px;
+	left:40px;
+	bottom: 160px;
+	z-index: 99;
+}
+.pictos-nav div{
+
+	background-color: #fff;
+	width: 120px;
+	height: 120px;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	line-height: 120px;
+	font-size: 45px;
+	position: absolute;
+}
+.pictos-nav div.back{
+	left:0;
+}
+.pictos-nav div.calendar{
+	right:0;
+}*/
+
+/*SECTION*/
+
+.section{
+
+    border-bottom: 1px solid #dfdfdf;
+	padding: 40px 0;
+
+}
+.title-section{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	color:#000;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 2px;
+	margin-bottom: 30px;
+	/*font-size: 1.5rem;*/
+	font-size: 22px;
+
+}
+
+.section p{
+
+	color:#666666;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	/*font-size: 1.5rem;*/
+	line-height: 30px;
+	font-size: 24px;
+}
+
+/*SLIDER*/
+
+.owl-stage-outer{
+
+	width: 640px;
+	margin-left: -32px;
+}
+
+.slideshow{
+
+	padding: 0;
+	margin: 0;
+}
+
+
+/*PHOTO */
+.photo-container{
+	display: inline-block;
+	margin-bottom: 60px;
+	font-size: 0;
+}
+.photo-container img{
+
+	max-width: 100%;
+}
+.photo-container .caption {
+    color: #969696;
+    font-size: .750rem;
+    margin: 10px 0 0 0;
+    text-align: left;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+
+/*JURY PRESENCE*/
+
+.jury{
+
+    text-align: center;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    max-height: 80px;
+    font-size: 20px;
+}
+.jury .rank{
+    color:#c8a461;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+
+}
+.jury .item-separate {
+    color: #c8a461;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    padding: 0 7px;
+}
+.jury .role , .jury .date{
+    text-transform: uppercase;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+}
+/*SECTION director*/
+.director{
+	padding: 0;
+    background-color: #f6f6f6;
+}
+.director a, .thumb a{
+  
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+
+}
+.director h3{
+	font-family: "Playfair Display Bold", Times New Roman, Times, serif;
+	font-size: 24px;
+	letter-spacing: 5px;
+	text-align: center;
+	padding: 55px 0;
+	margin: 0;
+}
+.director .owl-item{
+
+	width: 280px;
+	height: 530px;
+}
+.director .img-container{
+
+	width: 280px;
+	height: 380px;
+	background-position: center center;
+  	background-size: cover;
+}
+.director .info{
+	margin-top: 35px;
+	text-align: center;
+}
+.director .info p{
+	text-transform: uppercase;
+	color: #000;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+.director .info span{
+
+	font-size: 22px;
+	font-style: italic;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    color:#c8a461;
+}
+.director .owl-stage-outer{
+	margin-left: 0;
+}
+
+
+
+/*SLIDERS*/
+
+.film-slider .owl-item{
+
+    width: 280px;
+    height: 540px;
+}
+.film-slider .img-container{
+
+    width: 280px;
+    height: 380px;
+    background-position: center center;
+    background-size: cover;
+}
+.content-text{
+    max-height: 200px;
+    max-width: 280px;
+    text-align: center;
+}
+.content-text span{
+
+    margin:8px 0;
+}
+.content-text .item-title {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    color: #c8a461;
+    font-size: 25px;
+    display: block;
+    padding-top: 13px;
+    font-weight: 700;
+}
+.content-text .item-sub-title {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: #c8a461;
+    display: block;
+
+}
+.content-text .item-date {
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    color: #999999;
+    font-size: 18px;
+    padding-right: 8px;
+}
+.content-text .item-categ {
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 17px;
+    color: #333333;
+    line-height: 20px;
+
+}
+.content-text .item-details {
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: #666666;
+    display: block;
+}
+.film-slider .owl-stage-outer{
+    margin-left: 0;
+}
+
+
+
+
+
+

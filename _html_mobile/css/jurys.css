@@ -1,6 +1,6 @@
 .selection-item{
 	background-color: #fff;
-
+  position: relative;
 }
 .selection-item .name, .selection-item .sub-name{
 	color:#000;
@@ -16,10 +16,20 @@
   width: 100%;
   height: 875px;
 }
+.jury-president a, .selection-item a{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
 .jury-president{
 
 	height: 1120px;
 	background-color: #fff;
+  position: relative;
 }
 .jury-president p:not(.rank){
 
