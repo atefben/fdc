@@ -2722,7 +2722,7 @@ display: inline-block;
   position: relative;
   width: 90%;
   margin: 0 auto;
-  
+  padding: 0;
 }
 #searchContainer p.link {
   margin-top: 25px;
@@ -3165,7 +3165,7 @@ display: inline-block;
 
   opacity: 1;
 }
-#main{
+#main:not(.searchpage){
   background-color: #141414;
 }
 #banner-top, #banner-bottom{

@@ -46,7 +46,7 @@
 
   opacity: 1;
 }
-#main{
+#main:not(.searchpage){
   background-color: #141414;
 }
 #banner-top, #banner-bottom{

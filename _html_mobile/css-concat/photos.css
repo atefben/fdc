@@ -2722,7 +2722,7 @@ display: inline-block;
   position: relative;
   width: 90%;
   margin: 0 auto;
-  
+  padding: 0;
 }
 #searchContainer p.link {
   margin-top: 25px;
