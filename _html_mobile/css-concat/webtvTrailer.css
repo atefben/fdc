@@ -364,7 +364,9 @@ from desktop
     -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
+#main.dark-background{
+  background: #141414;
+}
 #sliderWrapper .owl-dots {
   text-align: center;
   position: relative;
