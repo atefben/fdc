@@ -1606,6 +1606,7 @@ String.prototype.parseHashtag = function(twitter) {
 	        success: function(data) {
 	          	$('.articles-container').append(data);
 	          	$('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+              $.initAddToSelection();
 
 	        }
 	    });
@@ -1634,11 +1635,13 @@ String.prototype.parseHashtag = function(twitter) {
 		        url:url,
 		        success: function(data) {
 		          $('.articles-container').html(data);
+              $.initAddToSelection();
 		          initSlideshows();
 		          $('.articles-container').animate({
 				    opacity: 1
 				  }, 500);
 		        }
+
 		    });
 
 		  });
@@ -1859,4 +1862,31 @@ function shuffle(o){
 
 
 
+});
+$(document).ready(function() {
+
+	var mySelection = JSON.parse(localStorage.getItem('mySelection')) || [];
+
+
+	$.initAddToSelection = function(){
+
+
+		$('.picto-my-selection').on('click', function(e){
+
+			console.log("keznkl");
+
+			e.stopPropagation();
+			
+			var newItem = $(this).parents('.item').html(); 
+
+			mySelection.push(newItem);
+
+			localStorage.setItem('mySelection', JSON.stringify(mySelection));
+
+
+		});
+	}
+
+	$.initAddToSelection();
+	
 });

@@ -104,32 +104,34 @@ $(document).ready(function() {
 
 	}
 
+	if (!$('#main').hasClass('selection')) {
+		// FIX HORIZONTAL MENU
+		$(window).on('scroll', function() {
+		    var s = $(this).scrollTop();
 
-	// FIX HORIZONTAL MENU
-	$(window).on('scroll', function() {
-	    var s = $(this).scrollTop();
+		    if(s > $(".header-container").height() + $('.banner-img').height()){
+		    	$("#horizontal-menu").css('position','fixed');
+		    	$("#horizontal-menu").css('top',$(".header-container").height());
+		    	$(".selection-container").css('margin-top',$(".header-container").height());
+		    	$(".content-selection").css('margin-top',$(".header-container").height());
+		    	
+		    	if($(".palmares-container").length !== 0){
+		    		$(".palmares-container").css('margin-top',$(".header-container").height());
+		    	}
 
-	    if(s > $(".header-container").height() + $('.banner-img').height()){
-	    	$("#horizontal-menu").css('position','fixed');
-	    	$("#horizontal-menu").css('top',$(".header-container").height());
-	    	$(".selection-container").css('margin-top',$(".header-container").height());
-	    	$(".content-selection").css('margin-top',$(".header-container").height());
-	    	
-	    	if($(".palmares-container").length !== 0){
-	    		$(".palmares-container").css('margin-top',$(".header-container").height());
-	    	}
-
-	    }
-	    else{
-	    	$("#horizontal-menu").css('position','relative');
-	    	$("#horizontal-menu").css('top','inherit');	
-	    	$(".selection-container").css('margin-top',0);
-	    	$(".content-selection").css('margin-top',0);
-	    	if($(".palmares-container").length !== 0){
-	    		$(".palmares-container").css('margin-top',0);
-	    	}
-	    }
-	 });
+		    }
+		    else{
+		    	$("#horizontal-menu").css('position','relative');
+		    	$("#horizontal-menu").css('top','inherit');	
+		    	$(".selection-container").css('margin-top',0);
+		    	$(".content-selection").css('margin-top',0);
+		    	if($(".palmares-container").length !== 0){
+		    		$(".palmares-container").css('margin-top',0);
+		    	}
+		    }
+		 });
+	}
+	
 
 
 

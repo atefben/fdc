@@ -493,3 +493,19 @@ services:
             - {name: sonata.admin, manager_type: orm, label: entity.press_homepage_download, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_homepage_push_main:
+        class: Base\AdminBundle\Admin\PressHomepagePushMainAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressHomepagePushMain, BaseAdminBundle:PressHomepagePushMainAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_homepage_push_main, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_homepage_push_secondary:
+        class: Base\AdminBundle\Admin\PressHomepagePushSecondaryAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressHomepagePushSecondary, BaseAdminBundle:PressHomepagePushSecondaryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_homepage_push_secondary, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]

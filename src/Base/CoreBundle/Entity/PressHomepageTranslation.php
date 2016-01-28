@@ -6,6 +6,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Base\CoreBundle\Util\Seo;
 
 use Base\CoreBundle\Util\Time;
 
@@ -20,6 +21,7 @@ class PressHomepageTranslation
 {
     use Time;
     use Translation;
+    use Seo;
 
     /**
      * @var string
@@ -92,27 +94,33 @@ class PressHomepageTranslation
     protected $sectionDownloadDisplay;
 
     /**
-     * @var PressHomepagePushMain
+     * @var string
      *
-     * @ORM\OneToMany(targetEntity="PressHomepagePushMain", mappedBy="homepageTranslation")
+     * @ORM\Column(name="section_statistic_title", type="string", length=255)
      */
-    public $pushsMain;
+    protected $sectionStatisticTitle;
 
     /**
-     * @var PressHomepagePushSecondary
+     * @var string
      *
-     * @ORM\OneToMany(targetEntity="PressHomepagePushSecondary", mappedBy="homepageTranslation")
+     * @ORM\Column(name="section_statistic_subtitle", type="string", length=255)
      */
-    public $pushsSecondary;
+    protected $sectionStatisticSubtitle;
 
     /**
-     * Constructor
+     * @var string
+     *
+     * @ORM\Column(name="section_statistic_description", type="string", length=255)
      */
-    public function __construct()
-    {
-        $this->pushsMain = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pushsSecondary = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    protected $sectionStatisticDescription;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="section_statistic_display", type="boolean")
+     */
+    protected $sectionStatisticDisplay;
+
 
 
     /**
@@ -345,69 +353,96 @@ class PressHomepageTranslation
         return $this->sectionDownloadDisplay;
     }
 
+
     /**
-     * Add pushsMain
+     * Set sectionStatisticTitle
      *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain
+     * @param string $sectionStatisticTitle
      * @return PressHomepageTranslation
      */
-    public function addPushsMain(\Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain)
+    public function setSectionStatisticTitle($sectionStatisticTitle)
     {
-        $this->pushsMain[] = $pushsMain;
+        $this->sectionStatisticTitle = $sectionStatisticTitle;
 
         return $this;
     }
 
     /**
-     * Remove pushsMain
+     * Get sectionStatisticTitle
      *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain
+     * @return string 
      */
-    public function removePushsMain(\Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain)
+    public function getSectionStatisticTitle()
     {
-        $this->pushsMain->removeElement($pushsMain);
+        return $this->sectionStatisticTitle;
     }
 
     /**
-     * Get pushsMain
+     * Set sectionStatisticSubtitle
      *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPushsMain()
-    {
-        return $this->pushsMain;
-    }
-
-    /**
-     * Add pushsSecondary
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary
+     * @param string $sectionStatisticSubtitle
      * @return PressHomepageTranslation
      */
-    public function addPushsSecondary(\Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary)
+    public function setSectionStatisticSubtitle($sectionStatisticSubtitle)
     {
-        $this->pushsSecondary[] = $pushsSecondary;
+        $this->sectionStatisticSubtitle = $sectionStatisticSubtitle;
 
         return $this;
     }
 
     /**
-     * Remove pushsSecondary
+     * Get sectionStatisticSubtitle
      *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary
+     * @return string 
      */
-    public function removePushsSecondary(\Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary)
+    public function getSectionStatisticSubtitle()
     {
-        $this->pushsSecondary->removeElement($pushsSecondary);
+        return $this->sectionStatisticSubtitle;
     }
 
     /**
-     * Get pushsSecondary
+     * Set sectionStatisticDescription
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param string $sectionStatisticDescription
+     * @return PressHomepageTranslation
      */
-    public function getPushsSecondary()
+    public function setSectionStatisticDescription($sectionStatisticDescription)
     {
-        return $this->pushsSecondary;
+        $this->sectionStatisticDescription = $sectionStatisticDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionStatisticDescription
+     *
+     * @return string 
+     */
+    public function getSectionStatisticDescription()
+    {
+        return $this->sectionStatisticDescription;
+    }
+
+    /**
+     * Set sectionStatisticDisplay
+     *
+     * @param boolean $sectionStatisticDisplay
+     * @return PressHomepageTranslation
+     */
+    public function setSectionStatisticDisplay($sectionStatisticDisplay)
+    {
+        $this->sectionStatisticDisplay = $sectionStatisticDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionStatisticDisplay
+     *
+     * @return boolean 
+     */
+    public function getSectionStatisticDisplay()
+    {
+        return $this->sectionStatisticDisplay;
     }
 }

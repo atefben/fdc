@@ -20,6 +20,7 @@ uniqueConstraints = {@ORM\UniqueConstraint(name="film_person_media", columns={"p
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity({"person", "media"})
+ *
  */
 class FilmPersonMedia implements FilmFilmMediaInterface
 {
