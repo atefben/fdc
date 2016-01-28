@@ -8,8 +8,8 @@
     <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
 	<!-- Include css files -->
-	<!-- build:[href]:prod css-concat/articles.min.css -->
-    <link rel="stylesheet" href="css-concat/articles.css" />
+	<!-- build:[href]:prod css-concat/myselection.min.css -->
+    <link rel="stylesheet" href="css-concat/myselection.css" />
     <!-- /build -->
 </head>
 <body>
@@ -21,7 +21,7 @@
       <ul id="suggest"></ul>
     </div>
   </div>
-<div id="main" class="articles" data-menu="actu">
+<div id="main" class="my-selection" data-menu="my-selection">
 	<!-- menu -->
 	<nav class="st-menu st-effect" id="menu">
 		<div id="top-menu" class="owl-carousel sliderDrag">
@@ -225,122 +225,40 @@
 
 	
 	<!-- end header -->
+	<h2 class="title one-line">ma sélection <span class="count">(<span></span>)</span></h2>
+
+
+     <div id="myselection-filters" class="owl-carousel sliderDrag ">
+      <div class="vid">
+        <p><a class="active" href="#" data-filter="all">tous</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="article">articles</a></p>
+      </div>
+      <div class="vid">
+        <p><a  href="#" data-filter="video">vidéos</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="audio">audios</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="suggestion">suggestions</a></p>
+      </div>
+
+
+    </div>
+
 	<div class="container">
-		<h2 class="title one-line">Tous les articles</h2>
-
-		<div class="filters">
-			
-			<div class="filter" id="date">
-				<span class="label">Dates :</span>
-				<div class="select">
-		            <span class="active" data-filter="all">Toutes</span>
-		            <span data-filter="date1">Date 1</span>
-		            <span data-filter="date2">Date 2</span>
-		            <i class="icon icon_fleche-down"></i>
-	          	</div>
-			</div>
-			<div class="filter" id="theme">
-				<span class="label">Thèmes :</span>
-				<div class="select">
-		            <span class="active" data-filter="all">Tous</span>
-		            <span data-filter="theme1">Theme 1</span>
-		            <span data-filter="theme2">Theme 2</span>
-		            <i class="icon icon_fleche-down"></i>
-	          	</div>
-			</div>
-		</div>
+		
 
 
+		<div class="my-selection-container"></div>
+		<div class="suggestion"></div>
+
+        
 
 
-		<div class="list" id="list-articles">
-			<div class="item date1 theme1">
-				<a href="article.html"></a>
-				<div class="img-container">
-					<div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
-					<div class="picto"><i class="icon icon_article"></i></div>
-					<img src="./img/slider/slider01.jpg" alt="">
-	            	<!-- <img src="./img/slider/slider01.jpg" alt=""> -->
-	            </div>
-	            <div class="info">
-	            	<div class="top-info">
-		              	<p class="category">Cinéma de la plage</p>
-		              	<span class="date">18.05.15</span>.
-		              	<span class="hour">09:00</span>
-	              	</div>
-	              	<h2>Enragés, polar hybride d'Eric Hannezo</h2>
-	            </div>
-
-			</div>
-			<div class="item date1 theme2">
-				<a href="article.html"></a>
-				<div class="img-container">
-					<div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
-					<div class="picto"><i class="icon icon_article"></i></div>
-	            	<img src="./img/slider/slider01.jpg" alt="">
-	            </div>
-	            <div class="info">
-	                <div class="top-info">
-		              	<p class="category">Cinéma de la plage</p>
-		              	<span class="date">18.05.15</span>.
-		              	<span class="hour">09:00</span>
-	              	</div>
-	              	<h2>Enragés, polar hybride d'Eric Hannezo</h2>
-	            </div>
-
-			</div>
-			<div class="item date1 theme1">
-				<a href="article.html"></a>
-				<div class="img-container">
-					<div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
-					<div class="picto"><i class="icon icon_article"></i></div>
-	            	<img src="./img/slider/slider01.jpg" alt="">
-	            </div>
-	            <div class="info">
-	              	<div class="top-info">
-		              	<p class="category">Cinéma de la plage</p>
-		              	<span class="date">18.05.15</span>.
-		              	<span class="hour">09:00</span>
-	              	</div>
-	              	<h2>Enragés, polar hybride d'Eric Hannezo</h2>
-	            </div>
-
-			</div>
-			<div class="item date2 theme2">
-				<a href="article.html"></a>
-				<div class="img-container">
-					<div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
-					<div class="picto"><i class="icon icon_audio"></i></div>
-	            	<img src="./img/slider/slider01.jpg" alt="">
-	            </div>
-	            <div class="info">
-	              	<div class="top-info">
-		              	<p class="category">Cinéma de la plage</p>
-		              	<span class="date">18.05.15</span>.
-		              	<span class="hour">09:00</span>
-	              	</div>
-	              	<h2>Enragés, polar hybride d'Eric Hannezo</h2>
-	            </div>
-
-			</div>
-			<div class="item date2 theme1">
-				<a href="article.html"></a>
-				<div class="img-container">
-					<div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
-					<div class="picto"><i class="icon icon_article"></i></div>
-	            	<img src="./img/slider/slider01.jpg" alt="">
-	            </div>
-	            <div class="info">
-	              	<div class="top-info">
-		              	<p class="category">Cinéma de la plage</p>
-		              	<span class="date">18.05.15</span>.
-		              	<span class="hour">09:00</span>
-	              	</div>
-	              	<h2>Enragés, polar hybride d'Eric Hannezo</h2>
-	            </div>
-
-			</div>
-		</div>
+		
 		
 	</div>
 	
@@ -372,8 +290,8 @@
       </div>
     </div>
     
-	<!-- build:[src]:prod js-concat/articles.min.js -->
-    <script charset="utf-8" src="js-concat/articles.js"></script>
+	<!-- build:[src]:prod js-concat/myselection.min.js -->
+    <script charset="utf-8" src="js-concat/myselection.js"></script>
 	<!-- /build -->
 
 </body>

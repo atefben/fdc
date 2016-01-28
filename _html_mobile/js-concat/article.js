@@ -1549,17 +1549,21 @@ $(document).ready(function() {
 
 	// INIT VIDEO PLAYER
 
-	var playerInstance = jwplayer("player");
-    playerInstance.setup({
-	    file: $("#player").data('video'),
-	    image: $("#player").data('poster'),
-	    width: "100%",
-	    aspectratio: "16:9",
-	    displaytitle: false,
-	    skin: {
-		  name: "five"
-		}
-    });
+	if($("#player").length !== 0){
+		
+		var playerInstance = jwplayer("player");
+	    playerInstance.setup({
+		    file: $("#player").data('video'),
+		    image: $("#player").data('poster'),
+		    width: "100%",
+		    aspectratio: "16:9",
+		    displaytitle: false,
+		    skin: {
+			  name: "five"
+			}
+	    });
+	}
+
 
 
 	// PLAYERS AUDIO
@@ -1571,4 +1575,31 @@ $(document).ready(function() {
 	
 
 
+});
+$(document).ready(function() {
+
+	var mySelection = JSON.parse(localStorage.getItem('mySelection')) || [];
+
+
+	$.initAddToSelection = function(){
+
+
+		$('.picto-my-selection').on('click', function(e){
+
+			console.log("keznkl");
+
+			e.stopPropagation();
+			
+			var newItem = $(this).parents('.item').html(); 
+
+			mySelection.push(newItem);
+
+			localStorage.setItem('mySelection', JSON.stringify(mySelection));
+
+
+		});
+	}
+
+	$.initAddToSelection();
+	
 });

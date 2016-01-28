@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Festival de Cannes 2016</title>
+    <meta name="viewport" content="user-scalable=no, width=640" />
+    <!-- Include css ressources -->
+    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
+	<!-- Include css files -->
+	<!-- build:[href]:prod css-concat/myselection.min.css -->
+    <link rel="stylesheet" href="css-concat/myselection.css" />
+    <!-- /build -->
+</head>
+<body>
+<!-- build:include ../include/search.html -->
+<!-- /build -->
+<div id="main" class="my-selection" data-menu="my-selection">
+	<!-- build:include ../include/menu.html -->
+	<!-- /build -->
+	<!-- build:include ../include/header.html -->
+	<!-- /build -->
+	<h2 class="title one-line">ma sélection <span class="count">(<span></span>)</span></h2>
+
+
+     <div id="myselection-filters" class="owl-carousel sliderDrag ">
+      <div class="vid">
+        <p><a class="active" href="#" data-filter="all">tous</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="article">articles</a></p>
+      </div>
+      <div class="vid">
+        <p><a  href="#" data-filter="video">vidéos</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="audio">audios</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="suggestion">suggestions</a></p>
+      </div>
+
+
+    </div>
+
+	<div class="container">
+		
+
+
+		<div class="my-selection-container"></div>
+		<div class="suggestion"></div>
+
+        
+
+
+		
+		
+	</div>
+	
+</div>
+<!-- build:include ../include/footer.html -->
+<!-- /build -->
+    
+	<!-- build:[src]:prod js-concat/myselection.min.js -->
+    <script charset="utf-8" src="js-concat/myselection.js"></script>
+	<!-- /build -->
+
+</body>
+</html>

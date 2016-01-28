@@ -5,10 +5,3 @@ services:
             - { name: validator.constraint_validator, alias: base_validator_locale }
         calls:
             - ['setLocales', ['%locales%']]
-
-    base.validator.newsletter_email:
-        class: Base\CoreBundle\Validator\Constraints\NewsletterEmailValidator
-        tags:
-            - { name: validator.constraint_validator, alias: base_validator_newsletter_email }
-        calls:
-            - ['setEntityManager', ['@doctrine.orm.entity_manager']]
