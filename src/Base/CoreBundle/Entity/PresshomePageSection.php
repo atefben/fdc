@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,13 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 
 /**
- * FDCPressHomepageSection
+ * PressHomepageSection
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPressHomepageSection
+class PressHomepageSection
 {
     use Time;
 
@@ -38,17 +39,23 @@ class FDCPressHomepageSection
 
     /**
      * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false)
+     * @Gedmo\SortablePosition
+     * @ORM\Column(name="position", type="integer")
      */
     protected $position;
 
     /**
-     * @var FDCPressHomepage
+     * @var PressHomepage
      *
-     * @ORM\ManyToOne(targetEntity="FDCPressHomepage", inversedBy="section")
+     * @ORM\ManyToOne(targetEntity="PressHomepage", inversedBy="section")
      */
     protected $homepage;
+
+
+    public function __toString() {
+
+        return $this->getClass();
+    }
 
     /**
      * Get id
@@ -64,7 +71,7 @@ class FDCPressHomepageSection
      * Set class
      *
      * @param string $class
-     * @return FDCPressHomepageSection
+     * @return PressHomepageSection
      */
     public function setClass($class)
     {
@@ -87,7 +94,7 @@ class FDCPressHomepageSection
      * Set position
      *
      * @param integer $position
-     * @return FDCPressHomepageSection
+     * @return PressHomepageSection
      */
     public function setPosition($position)
     {
@@ -109,10 +116,10 @@ class FDCPressHomepageSection
     /**
      * Set homepage
      *
-     * @param \Base\CoreBundle\Entity\FDCPressHomepage $homepage
-     * @return FDCPressHomepageSection
+     * @param \Base\CoreBundle\Entity\PressHomepage $homepage
+     * @return PressHomepageSection
      */
-    public function setHomepage(\Base\CoreBundle\Entity\FDCPressHomepage $homepage = null)
+    public function setHomepage(\Base\CoreBundle\Entity\PressHomepage $homepage = null)
     {
         $this->homepage = $homepage;
 
@@ -122,7 +129,7 @@ class FDCPressHomepageSection
     /**
      * Get homepage
      *
-     * @return \Base\CoreBundle\Entity\FDCPressHomepage 
+     * @return \Base\CoreBundle\Entity\PressHomepage 
      */
     public function getHomepage()
     {

@@ -267,13 +267,6 @@ file that was distributed with this source code.
                                                                         {{ 'dashboard.link.homepage'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>
                                                                 </li>
-                                                            {% elseif group.label == 'dashboard.group.press' %}
-                                                                <li>
-                                                                    <a href="{{ path('admin_base_core_fdcpresshomepage_edit', {id: admin_press_homepage_id}) }}">
-                                                                        <i class="fa fa-angle-double-right"></i>
-                                                                        {{ 'dashboard.link.press_homepage'|trans({}, 'BaseAdminBundle') }}
-                                                                    </a>
-                                                                </li>
                                                             {%  endif %}
                                                             {% for admin in group.items %}
                                                                 {% if admin.hasroute('list') and admin.isGranted('LIST') %}

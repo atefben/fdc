@@ -462,10 +462,18 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.fdcpress_homepage:
-        class: Base\AdminBundle\Admin\FDCPressHomepageAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCPressHomepage, BaseAdminBundle:FDCPressHomepageAdmin]
+    base.admin.press_homepage:
+        class: Base\AdminBundle\Admin\PressHomepageAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressHomepage, BaseAdminBundle:PressHomepageAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.fdcpress_homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_homepage_section:
+        class: Base\AdminBundle\Admin\PressHomepageSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressHomepageSection, BaseAdminBundle:PressHomepageSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_homepage_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]

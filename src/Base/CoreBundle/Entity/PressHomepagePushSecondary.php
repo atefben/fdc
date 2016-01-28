@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 
 /**
- * FDCPressHomepagePushMain
+ * PressHomepagePushSecondary
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPressHomepagePushMain
+class PressHomepagePushSecondary
 {
     use Time;
 
@@ -55,10 +55,11 @@ class FDCPressHomepagePushMain
     private $file;
 
     /**
-     * @var FDCPressHomepageTranslation
-     * @ORM\ManyToOne(targetEntity="FDCPressHomepageTranslation", inversedBy="pushsMain")
+     * @var PressHomepageTranslation
+     * @ORM\ManyToOne(targetEntity="PressHomepageTranslation", inversedBy="pushsSecondary")
      */
     private $homepageTranslation;
+
 
 
     /**
@@ -75,7 +76,7 @@ class FDCPressHomepagePushMain
      * Set title
      *
      * @param string $title
-     * @return FDCPressHomepagePushMain
+     * @return PressHomepagePushSecondary
      */
     public function setTitle($title)
     {
@@ -98,7 +99,7 @@ class FDCPressHomepagePushMain
      * Set alt
      *
      * @param string $alt
-     * @return FDCPressHomepagePushMain
+     * @return PressHomepagePushSecondary
      */
     public function setAlt($alt)
     {
@@ -121,7 +122,7 @@ class FDCPressHomepagePushMain
      * Set url
      *
      * @param string $url
-     * @return FDCPressHomepagePushMain
+     * @return PressHomepagePushSecondary
      */
     public function setUrl($url)
     {
@@ -144,7 +145,7 @@ class FDCPressHomepagePushMain
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return FDCPressHomepagePushMain
+     * @return PressHomepagePushSecondary
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
@@ -166,10 +167,10 @@ class FDCPressHomepagePushMain
     /**
      * Set homepageTranslation
      *
-     * @param \Base\CoreBundle\Entity\FDCPressHomepageTranslation $homepageTranslation
-     * @return FDCPressHomepagePushMain
+     * @param \Base\CoreBundle\Entity\PressHomepageTranslation $homepageTranslation
+     * @return PressHomepagePushSecondary
      */
-    public function setHomepageTranslation(\Base\CoreBundle\Entity\FDCPressHomepageTranslation $homepageTranslation = null)
+    public function setHomepageTranslation(\Base\CoreBundle\Entity\PressHomepageTranslation $homepageTranslation = null)
     {
         $this->homepageTranslation = $homepageTranslation;
 
@@ -179,7 +180,7 @@ class FDCPressHomepagePushMain
     /**
      * Get homepageTranslation
      *
-     * @return \Base\CoreBundle\Entity\FDCPressHomepageTranslation 
+     * @return \Base\CoreBundle\Entity\PressHomepageTranslation 
      */
     public function getHomepageTranslation()
     {

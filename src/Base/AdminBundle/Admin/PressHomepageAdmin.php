@@ -6,20 +6,10 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class FDCPressHomepageAdmin extends Admin
+class PressHomepageAdmin extends Admin
 {
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->remove('list');
-        $collection->remove('create');
-        $collection->remove('show');
-        $collection->remove('batch');
-        $collection->remove('delete');
-        $collection->remove('export');
-    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -42,13 +32,6 @@ class FDCPressHomepageAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
         ;
     }
 
@@ -80,23 +63,24 @@ class FDCPressHomepageAdmin extends Admin
                         'display' => false
                     ),
                     'pushsMain' => array(
-                        'class' => 'BaseCoreBundle:FDCPressHomepagePushMain'
+                        'class' => 'BaseCoreBundle:PressHomepagePushMain'
                     ),
                     'pushsSecondary' => array(
-                        'class' => 'BaseCoreBundle:FDCPressHomepagePushSecondary'
+                        'class' => 'BaseCoreBundle:PressHomepagePushSecondary'
                     ),
                 )
             ))
-            ->add('section', 'infinite_form_polycollection', array(
-                'label' => false,
-                'types' => array(
-                    'fdc_press_homepage_section_type',
+            ->add('section', 'sonata_type_collection',
+                array(
+                    'cascade_validation' => true,
+                    'by_reference' => false,
                 ),
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
-            ))
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable'  => 'position'
+                )
+            )
         ;
 
     }

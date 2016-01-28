@@ -3,20 +3,19 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
 /**
- * FDCPressHomepage
+ * PressHomepage
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPressHomepage
+class PressHomepage
 {
     use Translatable;
     use Time;
@@ -31,10 +30,9 @@ class FDCPressHomepage
     private $id;
 
     /**
-     * @var FDCPressHomepageSection
-     *
-     * @ORM\OneToMany(targetEntity="FDCPressHomepageSection", mappedBy="homepage", cascade={"persist"})
-     *
+     * @var PressHomepageSection
+     * @ORM\OneToMany(targetEntity="PressHomepageSection", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $section;
 
@@ -66,10 +64,10 @@ class FDCPressHomepage
     /**
      * Add section
      *
-     * @param \Base\CoreBundle\Entity\FDCPressHomepageSection $section
-     * @return FDCPressHomepage
+     * @param \Base\CoreBundle\Entity\PressHomepageSection $section
+     * @return PressHomepage
      */
-    public function addSection(\Base\CoreBundle\Entity\FDCPressHomepageSection $section)
+    public function addSection(\Base\CoreBundle\Entity\PressHomepageSection $section)
     {
         $this->section[] = $section;
 
@@ -79,9 +77,9 @@ class FDCPressHomepage
     /**
      * Remove section
      *
-     * @param \Base\CoreBundle\Entity\FDCPressHomepageSection $section
+     * @param \Base\CoreBundle\Entity\PressHomepageSection $section
      */
-    public function removeSection(\Base\CoreBundle\Entity\FDCPressHomepageSection $section)
+    public function removeSection(\Base\CoreBundle\Entity\PressHomepageSection $section)
     {
         $this->section->removeElement($section);
     }
