@@ -171,40 +171,38 @@ var GLOBALS = {
 $(document).ready(function() {
     var dataForFilter = "";
     $.getUrlParameter = function(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
         }
-    }
-};
+    };
     console.log($.getUrlParameter('name'));
     $('#inputSearch').val($.getUrlParameter('name'));
     var menu = $("#horizontal-menu").owlCarousel({
         nav: false,
         dots: false,
         smartSpeed: 500,
-        margin: 40,
+        margin: 0,
         autoWidth: true,
         loop: false,
-        items: 2,
+        items: 1,
         onInitialized: function() {
-            var m = ($(window).width() - $('.container').width()) / 2;
-            $('#horizontal-menu .owl-stage').css({
-                'margin-left': m
-            });
+            // var m = ($(window).width() - $('.container').width()) / 2;
+            // $('#horizontal-menu .owl-stage').css({
+            //     'margin-left': m
+            // });
         },
         onResized: function() {
-            var m = ($(window).width() - $('.container').width()) / 2;
-            $('#horizontal-menu .owl-stage').css({
-                'margin-left': m
-            });
+            // var m = ($(window).width() - $('.container').width()) / 2;
+            // $('#horizontal-menu .owl-stage').css({
+            //     'margin-left': m
+            // });
         }
     });
     menu.owlCarousel();
@@ -239,7 +237,6 @@ $(document).ready(function() {
             });
         }
     });
-
     var slider = $(".portrait-slider").owlCarousel({
         nav: false,
         dots: false,
@@ -280,7 +277,11 @@ $(document).ready(function() {
             if ($this.hasClass('active')) {
                 return false;
             }
-            
+            if ($this.hasClass('view-all')) {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 'slow');
+            }
             $('#horizontal-menu a').removeClass('active');
             if ($this.parents('#horizontal-menu').length != 0) {
                 $this.addClass('active');
@@ -297,14 +298,14 @@ $(document).ready(function() {
                     $('.result').fadeIn(900);
                 });
             } else {
-                var url = $this.data('ajax');
+                var url = $('#horizontal-menu a.active').data('ajax');
                 if (fromAll) {
                     $.ajax({
                         type: "GET",
                         url: url,
                         success: function(data) {
                             $('#filteredContent').html(data);
-                            if ($this.hasClass('artists') || $this.hasClass('films')) {
+                            if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('films')) {
                                 var slider = $("#filteredContent .portrait-slider").owlCarousel({
                                     nav: false,
                                     dots: false,
@@ -334,7 +335,7 @@ $(document).ready(function() {
                             }
                             $('.result').fadeOut(900, function() {
                                 $('#filtered').fadeIn(900, function() {
-                                    if ($this.hasClass('artists') || $this.hasClass('events') || $this.hasClass('films') || $this.hasClass('participate')) {} else {
+                                    if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('events') || $('#horizontal-menu a.active').hasClass('films') || $('#horizontal-menu a.active').hasClass('participate')) {} else {
                                         dataForFilter = data;
                                         var filters = $(".filters-slider").owlCarousel({
                                             nav: false,
@@ -374,7 +375,7 @@ $(document).ready(function() {
                             url: url,
                             success: function(data) {
                                 $('#filteredContent').html(data);
-                                if ($this.hasClass('artists') || $this.hasClass('films')) {
+                                if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('films')) {
                                     var slider = $("#filteredContent .portrait-slider").owlCarousel({
                                         nav: false,
                                         dots: false,
@@ -402,7 +403,7 @@ $(document).ready(function() {
                                     });
                                     sliderArticles.owlCarousel();
                                 }
-                                if ($this.hasClass('artists') || $this.hasClass('events') || $this.hasClass('films') || $this.hasClass('participate')) {} else {
+                                if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('events') || $('#horizontal-menu a.active').hasClass('films') || $('#horizontal-menu a.active').hasClass('participate')) {} else {
                                     dataForFilter = data;
                                     var filters = $(".filters-slider").owlCarousel({
                                         nav: false,
