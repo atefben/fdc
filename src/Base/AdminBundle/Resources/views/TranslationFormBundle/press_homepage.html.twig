@@ -35,12 +35,12 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.pushsMain) }}
+                                    {{ form_row(form.parent.children.pushsMain) }}
                                 </div>
                             </div>
-                            <div class="box-body">
+                            <div class="box-body TEST">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.pushsSecondary) }}
+                                    {{ form_widget(form.parent.children.pushsSecondary) }}
                                 </div>
                             </div>
                             <div class="box-body">
@@ -54,12 +54,68 @@
                                 </div>
                             </div>
                             <div class="box-body">
+
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_widget(form.parent.children.homeDownload) }}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
+                                    <h4 class="box-title">
+                                        {{ 'group.seo'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                            </div>
+                        </div>
+                    </div>
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-4">
+                            <p>
+                                {{ 'group.helper_seo_example'|trans|nl2br }}
+                            </p>
+                        </div>
+                    {% else %}
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_title'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoTitle.vars.value }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_description'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="col-md-4">
                         {#{% if form.vars.default_locale == locale %}#}
                             {#<div class="box box-success">#}
