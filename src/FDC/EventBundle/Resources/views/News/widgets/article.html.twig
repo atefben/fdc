@@ -2,7 +2,7 @@
 <article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
     <div class="image">
         <div class="image-wrapper">
-        {% if article.header is defined %}
+        {% if article.header is defined and article.header is not null %}
             {% set img = article.header %}
             {% set trans = img.findTranslationByLocale(app.request.locale) %}
             {% if trans is null or trans.file is null %}
@@ -10,8 +10,6 @@
             {% endif %}
             {% set file = trans.file %}
             {% thumbnail file, 'big' with {'alt': img|trans_fallback('alt') } %}
-        {% else %}
-            <img src="{{ article.image.path }}" alt="" />
         {% endif %}
         </div>
         <a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
