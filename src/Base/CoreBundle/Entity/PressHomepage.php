@@ -37,6 +37,20 @@ class PressHomepage
     private $section;
 
     /**
+     * @var PressHomepageMedia
+     * @ORM\OneToMany(targetEntity="PressHomepageMedia", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $homeMedia;
+
+    /**
+     * @var PressHomepageDownload
+     * @ORM\OneToMany(targetEntity="PressHomepageDownload", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $homeDownload;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -46,10 +60,11 @@ class PressHomepage
      */
     public function __construct()
     {
-        $this->section = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->section = new ArrayCollection();
+        $this->homeMedia = new ArrayCollection();
+        $this->homeDownload = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -92,5 +107,92 @@ class PressHomepage
     public function getSection()
     {
         return $this->section;
+    }
+
+    /**
+     * Add homeMedia
+     *
+     * @param \Base\CoreBundle\Entity\PressHomepageMedia $homeMedia
+     * @return PressHomepage
+     */
+    public function addHomeMedia(\Base\CoreBundle\Entity\PressHomepageMedia $homeMedia)
+    {
+        $homeMedia->setHomepage($this);
+        $this->homeMedia->add($homeMedia);
+    }
+
+    /**
+     * @param $homeMedia
+     * @return $this
+     */
+    public function setHomeMedia($homeMedia)
+    {
+
+        $this->homeMedia = $homeMedia;
+        return $this;
+    }
+
+    /**
+     * Remove homeMedia
+     *
+     * @param \Base\CoreBundle\Entity\PressHomepageMedia $homeMedia
+     */
+    public function removeHomeMedia(\Base\CoreBundle\Entity\PressHomepageMedia $homeMedia)
+    {
+        $this->homeMedia->removeElement($homeMedia);
+    }
+
+    /**
+     * Get homeMedia
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHomeMedia()
+    {
+        return $this->homeMedia;
+    }
+
+
+    /**
+     * Add homeDownload
+     *
+     * @param \Base\CoreBundle\Entity\PressHomepageDownload $homeDownload
+     * @return PressHomepage
+     */
+    public function addHomeDownload(\Base\CoreBundle\Entity\PressHomepageDownload $homeDownload)
+    {
+        $homeDownload->setHomepage($this);
+        $this->homeDownload->add($homeDownload);
+    }
+
+    /**
+     * @param $homeDownload
+     * @return $this
+     */
+    public function setHomeDownload($homeDownload)
+    {
+
+        $this->homeDownload = $homeDownload;
+        return $this;
+    }
+
+    /**
+     * Remove homeDownload
+     *
+     * @param \Base\CoreBundle\Entity\PressHomepageDownload $homeDownload
+     */
+    public function removeHomeDownload(\Base\CoreBundle\Entity\PressHomepageDownload $homeDownload)
+    {
+        $this->homeDownload->removeElement($homeDownload);
+    }
+
+    /**
+     * Get homeDownload
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHomeDownload()
+    {
+        return $this->homeDownload;
     }
 }

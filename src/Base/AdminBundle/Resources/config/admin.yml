@@ -474,6 +474,22 @@ services:
         class: Base\AdminBundle\Admin\PressHomepageSectionAdmin
         arguments: [~, Base\CoreBundle\Entity\PressHomepageSection, BaseAdminBundle:PressHomepageSectionAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_homepage_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_homepage_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_homepage_media:
+        class: Base\AdminBundle\Admin\PressHomepageMediaAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressHomepageMedia, BaseAdminBundle:PressHomepageMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_homepage_media, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_homepage_download:
+        class: Base\AdminBundle\Admin\PressHomepageDownloadAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressHomepageDownload, BaseAdminBundle:PressHomepageDownloadAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_homepage_download, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
