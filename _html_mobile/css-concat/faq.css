@@ -2584,7 +2584,7 @@ font-weight: bolder;
   text-transform: uppercase;
   display: block;
 }
-#menu .section-open .open .section-title h3{
+#menu .section-open .open .section-title h3, #menu .section-open .open .section-title h3 i{
   color:#c8a461;
 }
 #menu .section-open .section-title h3, #menu .section-open .section-title h3 i{
@@ -2606,9 +2606,12 @@ font-weight: bolder;
   height: 220px;
 }
 #menu .open .section-contain.subsection-3{
-  height: 375px;
+  height: 275px;
 }
-#menu .section-contain.subsection-3{
+#menu .open .section-contain.subsection-4{
+  height: 235px;
+}
+#menu .section-contain.subsection-3, #menu .section-contain.subsection-4{
   padding: 0 50px;
 }
 #menu .second-nav{
@@ -2629,7 +2632,7 @@ font-weight: bolder;
   text-transform: uppercase;
   font-size: 26px;
 }
-#menu .second-nav .subsection-3 a{
+#menu .second-nav .subsection-3 a, #menu .second-nav .subsection-4 a{
   font-size: 22px;
 
 }
