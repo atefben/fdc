@@ -187,6 +187,12 @@ grunt.initConfig({
 			            './css/horizontal-menu.css',
 			            './css/searchpage.css',
 			            './css/filters.css'           
+				        ],
+				    './css-concat/myselection.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/myselection.css'
+	         
 				        ]
     			}
 		        
@@ -204,13 +210,15 @@ grunt.initConfig({
 				            './js/main.js',
 				            './js/fullscreenplayer.js',
 				            './js/jsonTest.js',
-				            './js/home.js'
+				            './js/home.js',
+				            './js/add-to-selection.js'
 				        ],
 			        './js-concat/articles.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
-				            './js/filters.js'
+				            './js/filters.js',
+				            './js/add-to-selection.js'
 				        ],
 				    './js-concat/events.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -270,7 +278,8 @@ grunt.initConfig({
 				            './js/slidervideos.js',
 				            './js/audioplayer.js',
 				            './js/vendors/jwplayer.js',
-				            './js/movie.js'
+				            './js/movie.js',
+				            './js/add-to-selection.js'
 				        ],
 				    './js-concat/article.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -283,7 +292,8 @@ grunt.initConfig({
 				            './js/slidervideos.js',
 				            './js/audioplayer.js',
 				            './js/vendors/jwplayer.js',
-				            './js/article.js'
+				            './js/article.js',
+				            './js/add-to-selection.js'
 				        ],
 				    './js-concat/artist.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -409,6 +419,14 @@ grunt.initConfig({
 				            './js/searchpage.js',
 				            './js/filters.js'
 				        ],
+				    './js-concat/myselection.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/menu.js',
+				            './js/searchpage.js',
+				            './js/jsonTest.js',
+				            './js/myselection.js'
+				        ],
 
     			}
 		        
@@ -466,7 +484,8 @@ grunt.initConfig({
 	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
 	        './searchpage.html': ['./templates/searchpage.html'],
-	        './artist.html': ['./templates/artist.html']
+	        './artist.html': ['./templates/artist.html'],
+	        './myselection.html': ['./templates/myselection.html']
 	      
 	      }
 	    },
@@ -517,7 +536,8 @@ grunt.initConfig({
 	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
 	        './searchpage.html': ['./templates/searchpage.html'],
-	        './artist.html': ['./templates/artist.html']
+	        './artist.html': ['./templates/artist.html'],
+	        './myselection.html': ['./templates/myselection.html']
 
 	      }
 
@@ -550,7 +570,8 @@ grunt.initConfig({
 	        './js-concat/palmares.min.js': ['./js-concat/palmares.js'],
 	        './js-concat/press.min.js': ['./js-concat/press.js'],
 	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js'],
-	        './js-concat/artist.min.js': ['./js-concat/artist.js']
+	        './js-concat/artist.min.js': ['./js-concat/artist.js'],
+	        './js-concat/myselection.min.js': ['./js-concat/myselection.js']
 	      }
 	    }
 	  },
@@ -586,7 +607,8 @@ grunt.initConfig({
 	        './css-concat/palmares.min.css': ['./css-concat/palmares.css'],
 	        './css-concat/press.min.css': ['./css-concat/press.css'],
 	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css'],
-	        './css-concat/artist.min.css': ['./css-concat/artist.css']
+	        './css-concat/artist.min.css': ['./css-concat/artist.css'],
+	        './css-concat/myselection.min.css': ['./css-concat/myselection.css']
 	    }
 	  }
 	},

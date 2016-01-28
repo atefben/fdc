@@ -3179,13 +3179,121 @@ display: inline-block;
 #suggest li:nth-child(2n):hover {
   background-color: #ededed;
 }
-#horizontal-menu{
+.count{
+
+	color:#c8a461;;
+}
+
+
+/*ARTICLES*/
+
+
+.my-selection .img-container{
+
+	position: relative;
+	width: 530px;
+	height: 340px;
+}
+.my-selection .thumb{
+	position: relative;
+	margin-bottom: 40px;
+}
+.my-selection .thumb .img{
+	width: 515px;
+}
+.my-selection .thumb  img{
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
+}
+.my-selection .thumb .picto{
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+	z-index: 2;
+}
+.my-selection .thumb .picto .icon{
+
+	color:#c8a461;
+	/*font-size: 1.5rem;*/
+	font-size: 30px;
+}
+.my-selection  .info{
+	width: 355px;
+	margin: 30px auto 0 auto;
+	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color:#666666;
+}
+.my-selection  .info .category{
+
+	color: #c8a461;   
+    letter-spacing: 0.1em;
+    margin-right: 12px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+
+}
+.my-selection  .info h2{
+
+	color: #000;
+	text-align: center;
+	margin-top: 15px;
+	font-family: "Playfair Display", Times New Roman, Times, serif;
+	font-size: 25px;
+	line-height: 30px
+}
+.my-selection .top-info{
+
+	margin: 0 auto;
+	display: table;
+	text-align: center;
+}
+
+.my-selection .thumb a:not(.delete){
+
+  display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
+.delete{
+    background: #fff url("../img/svg/close.svg") no-repeat center;
+    background-size: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    content: '';
+    display: block;
+    height: 40px;
+    position: absolute;
+    right: 36px;
+    top: -14px;
+    width: 40px;
+    z-index: 5;
+}
+.container .owl-item a:not(.director):not(.titleLink):not(.category),.film .owl-item a:not(.director):not(.titleLink):not(.category){
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
+/*FILTERS*/
+#myselection-filters{
   height: 110px;
-  background-color: #202020;
   z-index: 50;
 }
 
-#horizontal-menu .vid {
+#myselection-filters .vid {
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -3195,7 +3303,7 @@ display: inline-block;
 
 }
 
-#horizontal-menu .vid p{
+#myselection-filters .vid p{
   
   display: block;
   font-size: 1.5rem;
@@ -3205,93 +3313,16 @@ display: inline-block;
   text-align: center;
   font-weight: 600;
 }
-#horizontal-menu .vid p a{
+#myselection-filters .vid p a{
   color:  #999999;
 }
-#horizontal-menu .vid p a.active{
+#myselection-filters .vid p a.active{
   color: #c8a461;
 }
-#horizontal-menu .owl-stage{
+#myselection-filters .owl-stage{
 
   height: 100%;
 }
-.content-selection{
-    opacity: 0;
-    -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
-    -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-
-}
-.content-selection.show{
-
-  opacity: 1;
-}
-#main:not(.searchpage, .faq-page){
-  background-color: #141414;
-}
-#banner-top, #banner-bottom{
-    background-size: 0 0;
-}
-#banner-top.show, #banner-bottom.show{
-  background-size: cover;
-}
-.selection-container{
-	position: relative;
-	width: 100%;
-	font-size: 0;
-	background-color: #202020;
-	
-}
-.selection-item{
-	display: inline-block;
-	width: 50%;
-	height: 580px;
-	vertical-align: top;
-	background-color: #141414;
-  position: relative;
-
-}
-.selection-item a{
-
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 5;
-
-}
-.selection-item .img{
-  background-position: center top;
-  background-size: cover;
-  width: 100%;
-  height: 435px;
-}
-.selection-item .name, .selection-item .sub-name{
-	color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-    padding-top: 25px;
-    font-weight: 600;
-    max-width: 190px;
-    margin: 0 auto;
-
-}
-.selection-item .sub-name
-{
-	font-size: 1rem;
-	padding: 0;
-}
-.selection-item .author, .selection-item .rank{
-
-	text-align: center;
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-  color: #c8a461;
-  padding-top: 10px;
-  font-style: italic;
+.suggestion{
+	display: none;
 }

@@ -69,6 +69,7 @@ String.prototype.parseHashtag = function(twitter) {
 	        success: function(data) {
 	          	$('.articles-container').append(data);
 	          	$('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+              $.initAddToSelection();
 
 	        }
 	    });
@@ -97,11 +98,13 @@ String.prototype.parseHashtag = function(twitter) {
 		        url:url,
 		        success: function(data) {
 		          $('.articles-container').html(data);
+              $.initAddToSelection();
 		          initSlideshows();
 		          $('.articles-container').animate({
 				    opacity: 1
 				  }, 500);
 		        }
+
 		    });
 
 		  });
