@@ -2575,7 +2575,10 @@ font-weight: bolder;
 #menu .section-contain.subsection-3{
   padding: 0 50px;
 }
-#menu .second-nav, #menu .third-nav{
+#menu .second-nav{
+  padding: 25px 60px 0px;
+}
+#menu .third-nav{
   padding: 25px 60px;
 }
 #menu .third-nav a, #menu .third-nav ul{
