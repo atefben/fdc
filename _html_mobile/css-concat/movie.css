@@ -3533,8 +3533,21 @@ footer .newsletter #submit {
   margin:0;
   letter-spacing: inherit;
 }
-#menu .section-title h3.open{
-  
+#menu .second-nav .section-title h3{
+
+    color: #9d9d9d;
+    padding: 25px 0;
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+
+#menu .second-nav .section-title{
+  padding: 0;
+}
+#menu .section-title .icon{
+  font-size: inherit;
 }
 #menu .section-title .more-minus{
   display: block;
@@ -3558,12 +3571,10 @@ font-weight: bolder;
 #menu .section-open .open .section-title h3{
   color:#c8a461;
 }
-#menu .section-open .section-title h3{
+#menu .section-open .section-title h3, #menu .section-open .section-title h3 i{
   color:#434343;
 }
-#menu .section-open .open .section-title h3{
-  color:#c8a461;
-}
+
 #menu .section-contain {
   height: 0;
   -moz-transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -3578,10 +3589,19 @@ font-weight: bolder;
 #menu .open .section-contain.subsection-2{
   height: 220px;
 }
-#menu .second-nav, #menu .third-nav{
+#menu .open .section-contain.subsection-3{
+  height: 375px;
+}
+#menu .section-contain.subsection-3{
+  padding: 0 50px;
+}
+#menu .second-nav{
+  padding: 25px 60px 0px;
+}
+#menu .third-nav{
   padding: 25px 60px;
 }
-#menu .second-nav a, #menu .third-nav a, #menu .third-nav ul{
+#menu .third-nav a, #menu .third-nav ul{
   color:#9d9d9d;
   padding: 25px 0;
   display: block;
@@ -3592,6 +3612,10 @@ font-weight: bolder;
 #menu .second-nav a{
   text-transform: uppercase;
   font-size: 26px;
+}
+#menu .second-nav .subsection-3 a{
+  font-size: 22px;
+
 }
 #menu .third-nav a, #menu .third-nav ul, #menu .third-nav .language .icon{
   color:white;
@@ -3697,7 +3721,7 @@ font-weight: bolder;
   width: 100%;
   margin-left: 0;
 }
-#menu .active-page .section-title h3, #menu .second-nav .active-page a,#menu .third-nav .active-page a, #menu .footer-menu .active-page a{
+#menu .active-page .section-title h3,#menu .active-page .section-title h3 i,#menu .third-nav .active-page a, #menu .footer-menu .active-page a{
   color: #c8a461;
 }
 #menu .language ul{

@@ -162,6 +162,16 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/legals.css'
 				        ],
+				    './css-concat/credits.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/legals.css'
+				        ],
+				    './css-concat/privacy_policy.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/legals.css'
+				        ],
 			        './css-concat/sitemap.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
@@ -384,6 +394,16 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js'
 				        ],
+				    './js-concat/credits.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js'
+				        ],
+				    './js-concat/privacy_policy.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js'
+				        ],
 				    './js-concat/sitemap.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
@@ -456,6 +476,8 @@ grunt.initConfig({
 	        './audios.html': ['./templates/audios.html'],
 	        './contact.html': ['./templates/contact.html'],
 	        './legals.html': ['./templates/legals.html'],
+	        './privacy_policy.html': ['./templates/privacy_policy.html'],
+	        './credits.html': ['./templates/credits.html'],
 	        './sitemap.html': ['./templates/sitemap.html'],
 	        './events.html': ['./templates/events.html'],
 	        './channel.html': ['./templates/channel.html'],
@@ -506,7 +528,9 @@ grunt.initConfig({
 	        './webtv_trailer_horscompetition.html': ['./templates/webtv_trailer_horscompetition.html'],
 	        './audios.html': ['./templates/audios.html'],
 	        './contact.html': ['./templates/contact.html'],
+	        './credits.html': ['./templates/credits.html'],
 	        './legals.html': ['./templates/legals.html'],
+	        './privacy_policy.html': ['./templates/privacy_policy.html'],
 	        './sitemap.html': ['./templates/sitemap.html'],
 	        './events.html': ['./templates/events.html'],
 	        './channel.html': ['./templates/channel.html'],
@@ -544,6 +568,8 @@ grunt.initConfig({
 	        './js-concat/audios.min.js': ['./js-concat/audios.js'],
 	        './js-concat/contact.min.js': ['./js-concat/contact.js'],
 	        './js-concat/legals.min.js': ['./js-concat/legals.js'],
+	        './js-concat/credits.min.js': ['./js-concat/credits.js'],
+	        './js-concat/privacy_policy.min.js': ['./js-concat/privacy_policy.js'],
 	        './js-concat/sitemap.min.js': ['./js-concat/sitemap.js'],
 	        './js-concat/events.min.js': ['./js-concat/events.js'],
 	        './js-concat/channel.min.js': ['./js-concat/channel.js'],
@@ -580,6 +606,8 @@ grunt.initConfig({
 	        './css-concat/audios.min.css': ['./css-concat/audios.css'],
 	        './css-concat/contact.min.css': ['./css-concat/contact.css'],
 	        './css-concat/legals.min.css': ['./css-concat/legals.css'],
+	        './css-concat/credits.min.css': ['./css-concat/credits.css'],
+	        './css-concat/privacy_policy.min.css': ['./css-concat/privacy_policy.css'],
 	        './css-concat/sitemap.min.css': ['./css-concat/sitemap.css'],
 	        './css-concat/events.min.css': ['./css-concat/events.css'],
 	        './css-concat/channel.min.css': ['./css-concat/channel.css'],
