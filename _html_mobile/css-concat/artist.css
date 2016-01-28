@@ -3219,6 +3219,7 @@ a{
   letter-spacing: 0.1em;
   margin-right: 12px;
   text-transform: uppercase;
+  line-height: 30px;
 }
 .article-title span {
   color: #666;
@@ -3242,8 +3243,19 @@ a{
     max-height: 1000px;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     line-height: 30px;
+    margin-bottom: 40px;
 }
+.text-content .chapeau{
 
+    font-weight: 700;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.text-content strong{
+
+    font-weight: 700;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif; 
+}
 /*PICTOS NAV*/
 
 /*.pictos-nav{
