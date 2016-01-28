@@ -120,8 +120,13 @@ grunt.initConfig({
 			            './css/grid-isotope.css'
 				        ],
 				    './css-concat/selection.css': [
-			            './css/main.css', 
+				    	'./css/main.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
 			            './css/include/*.css',
+			            './css/audioplayer.css',
+			            './css/fullscreenplayer.css',
+			            './css/slideshow-video.css',
 			            './css/horizontal-menu.css',
 			            './css/selection.css'
 				        ],
@@ -348,10 +353,18 @@ grunt.initConfig({
 			        './js-concat/selection.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/wavesurfer.min.js',
+				            './js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',
+				            './js/slidervideos.js',
+				            './js/audioplayer.js',
+				            './js/vendors/jwplayer.js',
 				            './js/include/*.js',
 				            './js/jsonTest.js',
 				            './js/horizontal-menu.js',
 				            './js/palmares.js',
+				            './js/article.js',
 				            './js/selection.js'
 				        ],
 				    './js-concat/palmares.js':[
@@ -483,6 +496,7 @@ grunt.initConfig({
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_cannesclassic_hommage.html': ['./templates/selectionofficielle_cannesclassic_hommage.html'],
+	        './selectionofficielle_cannesclassic_invit.html': ['./templates/selectionofficielle_cannesclassic_invit.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
 	        './videos.html': ['./templates/videos.html'],
 	        './webTV.html': ['./templates/webTV.html'],
@@ -538,6 +552,7 @@ grunt.initConfig({
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_cannesclassic_hommage.html': ['./templates/selectionofficielle_cannesclassic_hommage.html'],
+	        './selectionofficielle_cannesclassic_invit.html': ['./templates/selectionofficielle_cannesclassic_invit.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
 	        './videos.html': ['./templates/videos.html'],
 	        './webTV.html': ['./templates/webTV.html'],
