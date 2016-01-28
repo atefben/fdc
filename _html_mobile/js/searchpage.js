@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
- 
+  var dataForFilter = "";
     var menu = $("#horizontal-menu").owlCarousel({
 		  nav: false,
 		  dots: false,
@@ -195,6 +195,7 @@ if($('.searchpage').length) {
                             if($this.hasClass('artists') || $this.hasClass('events') || $this.hasClass('films') || $this.hasClass('participate')) {
                           
                         } else {
+                          dataForFilter = data;
                           var filters = $(".filters-slider").owlCarousel({
                                   nav: false,
                                   dots: false,
@@ -264,6 +265,7 @@ if($('.searchpage').length) {
                     if($this.hasClass('artists') || $this.hasClass('events') || $this.hasClass('films') || $this.hasClass('participate')) {
                       
                     } else {
+                      dataForFilter = data;
                       var filters = $(".filters-slider").owlCarousel({
                                   nav: false,
                                   dots: false,
@@ -300,6 +302,46 @@ if($('.searchpage').length) {
       
        
 }
+});
+$('body').off('click', '#filters span');
+$('body').on('click', '#filters span', function() {
+  console.log("test");
+  var id = $('#filters').data('id'),
+          i = $(this).index();
+
+      $('#' + id + ' .select span').removeClass('active');
+      $('#' + id + ' .select span').eq(i).addClass('active');
+
+
+
+      // $(".list .item:not(."+$(this).data('filter')+")").css('display','none');
+      // $(".list .item."+$(this).data('filter')).css('display','block');
+
+
+      $(".list .item").css("display","block");
+  $('#filteredContent').html(dataForFilter);
+  $('.filter').each(function() {
+    var $that = $(this);
+    var a = $that.find('.select span.active').data('filter');
+    console.log("test2",a);
+    if(a !== 'all'){
+      $(".list .item:not(."+a+")").remove();
+      console.log("test3");
+    }
+     
+  });
+  var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({ 
+      nav: false,
+      dots: false,
+      smartSpeed: 500,
+      fluidSpeed: 500,
+      loop: false,
+      margin: 20,
+      autoWidth: true,
+      dragEndSpeed: 600,
+      items:1
+    });
+   sliderArticles.owlCarousel();
 });
     // test : remove once on server
     if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') { //TODO a revoir//
