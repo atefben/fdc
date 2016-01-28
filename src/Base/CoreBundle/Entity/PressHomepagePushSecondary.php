@@ -39,7 +39,7 @@ class PressHomepagePushSecondary
      *
      * @ORM\Column(type="string", nullable=false)
      **/
-    private $alt;
+    private $description;
 
     /**
      * @var string
@@ -55,12 +55,21 @@ class PressHomepagePushSecondary
     private $file;
 
     /**
-     * @var PressHomepageTranslation
-     * @ORM\ManyToOne(targetEntity="PressHomepageTranslation", inversedBy="pushsSecondary")
+     * @var PressHomepage
+     * @ORM\ManyToOne(targetEntity="PressHomepage", inversedBy="pushsSecondary")
      */
-    private $homepageTranslation;
+    private $homepage;
 
+    public function __toString()
+    {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
 
+        if ($this->getId()) {
+            $string .= ' #'. $this->getId();
+        }
+
+        return $string;
+    }
 
     /**
      * Get id
@@ -96,26 +105,26 @@ class PressHomepagePushSecondary
     }
 
     /**
-     * Set alt
+     * Set description
      *
-     * @param string $alt
+     * @param string $description
      * @return PressHomepagePushSecondary
      */
-    public function setAlt($alt)
+    public function setDescription($description)
     {
-        $this->alt = $alt;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get alt
+     * Get description
      *
      * @return string 
      */
-    public function getAlt()
+    public function getDescription()
     {
-        return $this->alt;
+        return $this->description;
     }
 
     /**
@@ -165,25 +174,25 @@ class PressHomepagePushSecondary
     }
 
     /**
-     * Set homepageTranslation
+     * Set homepage
      *
-     * @param \Base\CoreBundle\Entity\PressHomepageTranslation $homepageTranslation
-     * @return PressHomepagePushSecondary
+     * @param \Base\CoreBundle\Entity\PressHomepage $homepage
+     * @return PressHomepagePushMain
      */
-    public function setHomepageTranslation(\Base\CoreBundle\Entity\PressHomepageTranslation $homepageTranslation = null)
+    public function setHomepage(\Base\CoreBundle\Entity\PressHomepage $homepage = null)
     {
-        $this->homepageTranslation = $homepageTranslation;
+        $this->homepage = $homepage;
 
         return $this;
     }
 
     /**
-     * Get homepageTranslation
+     * Get homepage
      *
-     * @return \Base\CoreBundle\Entity\PressHomepageTranslation 
+     * @return \Base\CoreBundle\Entity\PressHomepage
      */
-    public function getHomepageTranslation()
+    public function getHomepage()
     {
-        return $this->homepageTranslation;
+        return $this->homepage;
     }
 }
