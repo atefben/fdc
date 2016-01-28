@@ -57,6 +57,18 @@ sonata_media:
 
             formats:
 
+        media_image_file:
+            providers:
+                - sonata.media.provider.image
+
+            formats:
+
+        media_video_file:
+            providers:
+                - sonata.media.provider.video
+
+            formats:
+
         media_video_image:
             providers:
                 - sonata.media.provider.image
@@ -78,9 +90,11 @@ sonata_media:
     providers:
         image:
             filesystem: sonata.media.filesystem.s3
-    #    video:
-    #        allowed_extensions: ['mp4', 'flv']
-    #        allowed_mime_types: ['video/mp4', 'video/x-flv']
+            allowed_extensions: ['jpg', 'png', 'jpeg']
+            allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png']
+     #   video:
+     #       allowed_extensions: ['mp4', 'flv']
+     #       allowed_mime_types: ['video/mp4', 'video/x-flv']
 
     filesystem:
         s3:

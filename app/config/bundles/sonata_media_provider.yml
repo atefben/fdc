@@ -1,0 +1,13 @@
+services:
+    sonata.media.provider.video:
+        class: Application\Sonata\MediaBundle\Provider\VideoProvider
+        tags:
+            - { name: sonata.media.provider }
+        arguments:
+            - sonata.media.provider.video
+            - @sonata.media.filesystem.s3
+            - @sonata.media.cdn.server
+            - @sonata.media.generator.default
+            - @sonata.media.thumbnail.format
+            - ['mp4', 'flv']
+            - ['video/mp4', 'video/x-flv']

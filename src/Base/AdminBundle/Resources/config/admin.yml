@@ -34,14 +34,6 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.contact_page:
-        class: Base\AdminBundle\Admin\ContactPageAdmin
-        arguments: [~, Base\CoreBundle\Entity\ContactPage, BaseAdminBundle:ContactPageAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.contact_page, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-            - [ setTranslationDomain, ['BaseAdminBundle']]
-
     base.admin.social_wall:
         class: Base\AdminBundle\Admin\SocialWallAdmin
         arguments: [~, Base\CoreBundle\Entity\SocialWall, BaseAdminBundle:SocialWallAdmin]
@@ -458,5 +450,30 @@ services:
         arguments: [~, Base\CoreBundle\Entity\InfoFilmFilmAssociated, BaseAdminBundle:InfoFilmFilmAssociatedAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: InfoFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    #Press
+    base.admin.contact_page:
+        class: Base\AdminBundle\Admin\ContactPageAdmin
+        arguments: [~, Base\CoreBundle\Entity\ContactPage, BaseAdminBundle:ContactPageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.contact_page, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_homepage:
+        class: Base\AdminBundle\Admin\PressHomepageAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressHomepage, BaseAdminBundle:PressHomepageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_homepage_section:
+        class: Base\AdminBundle\Admin\PressHomepageSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressHomepageSection, BaseAdminBundle:PressHomepageSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_homepage_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]

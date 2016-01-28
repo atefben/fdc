@@ -4,21 +4,24 @@
 function filter() {
 
   // var filters = [];
+  
+    $('.filter').each(function() {
+      var $that = $(this);
+      var a = $that.find('.select span.active').data('filter');
 
-  $('.filter').each(function() {
-    var $that = $(this);
-    var a = $that.find('.select span.active').data('filter');
+      if(a !== 'all'){
+        $(".list .item:not(."+a+")").css('display','none');
+      }
+       
+    });
 
-    if(a !== 'all'){
-      $(".list .item:not(."+a+")").css('display','none');
+    if($('.grid').length !== 0){
+      $('.grid').isotope();
     }
-     
-  });
-
-  if($('.grid').length !== 0){
-    $('.grid').isotope();
-  }
-
+    
+      
+  
+  
 
 }
 

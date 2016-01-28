@@ -4,7 +4,9 @@ services:
         arguments:
             - %fdc_year%
             - %fdc_event_domain%
+            - %fdc_press_domain%
             - %fdc_event_scheme%
+            - %fdc_press_scheme%
             - %social_twitter%
             - %locale_default_translation%
             - "@sonata.seo.page"

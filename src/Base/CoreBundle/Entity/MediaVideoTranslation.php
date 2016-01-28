@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
@@ -22,6 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class MediaVideoTranslation implements TranslateChildInterface
 {
+    use Seo;
     use Time;
     use Translation;
     use TranslateChild;
@@ -31,16 +33,9 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     * @Assert\Valid()
      */
     private $file;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
-     */
-    private $akamaiId;
 
     /**
      * @var string
@@ -51,36 +46,11 @@ class MediaVideoTranslation implements TranslateChildInterface
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
-     */
-    private $alt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
-     */
-    private $copyright;
-
-    /**
      * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      */
     private $theme;
-
-    /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
-     *
-     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
-     */
-    private $image;
 
     /**
      * Constructor
@@ -227,28 +197,5 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function getTheme()
     {
         return $this->theme;
-    }
-
-    /**
-     * Set image
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $image
-     * @return MediaVideoTranslation
-     */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 }

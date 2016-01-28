@@ -106,7 +106,6 @@ services:
                 - { name: form.type, alias: 'event_widget_video_youtube_type'}
 
     #Statement services
-
     base.admin.form.statement_widget_type:
         class: Base\AdminBundle\Form\Type\StatementWidgetType
         tags:
@@ -161,7 +160,6 @@ services:
                 - { name: form.type, alias: 'statement_widget_video_youtube_type'}
                 
     #Info services
-
     base.admin.form.info_widget_type:
         class: Base\AdminBundle\Form\Type\InfoWidgetType
         tags:
@@ -206,11 +204,11 @@ services:
             - ['setInfoWidgetImageDummyAdmin', ['@base.admin.info_widget_image_dummy']]
 
     base.admin.form.info_widget_video_type:
-            class: Base\AdminBundle\Form\Type\InfoWidgetVideoType
-            tags:
-                - { name: form.type, alias: 'info_widget_video_type'}
+        class: Base\AdminBundle\Form\Type\InfoWidgetVideoType
+        tags:
+            - { name: form.type, alias: 'info_widget_video_type'}
 
     base.admin.form.info_widget_video_youtube_type:
-            class: Base\AdminBundle\Form\Type\InfoWidgetVideoYoutubeType
-            tags:
-                - { name: form.type, alias: 'info_widget_video_youtube_type'}
+        class: Base\AdminBundle\Form\Type\InfoWidgetVideoYoutubeType
+        tags:
+            - { name: form.type, alias: 'info_widget_video_youtube_type'}

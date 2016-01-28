@@ -165,7 +165,6 @@ class NewsArticleAdmin extends Admin
                         'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
-
                     )
                 )
             ))

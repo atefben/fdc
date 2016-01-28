@@ -889,18 +889,33 @@ $(document).ready(function() {
 
 	$('.has-subsection').on('click',function(){
 		
+		var parentUl = $(this).parents('ul');
+
 		if($(this).parent().hasClass('open')){
-			$('#main-nav-list li').removeClass('open');
-			$('#main-nav-list').removeClass('section-open');
+			
+			parentUl.removeClass('section-open');
+			parentUl.find('li').removeClass('open');
+
+
+			// $('#main-nav-list li').removeClass('open');
+			// $('#main-nav-list').removeClass('section-open');
 			$(this).find('.more-minus').html('+');
 		}else{
-			if($('#main-nav-list').hasClass('section-open')){
-				$('#main-nav-list li').removeClass('open');
-				$('#main-nav-list .more-minus').html('+');
+
+			if(parentUl.hasClass('section-open')){
+				parentUl.find('li').removeClass('open');
+				parentUl.find('.more-minus').html('+');
 			}else{
-				$('#main-nav-list').addClass('section-open');
-				
+				parentUl.addClass('section-open');
 			}
+
+			// if($('#main-nav-list').hasClass('section-open')){
+			// 	$('#main-nav-list li').removeClass('open');
+			// 	$('#main-nav-list .more-minus').html('+');
+			// }else{
+			// 	$('#main-nav-list').addClass('section-open');
+				
+			// }
 			$(this).parent().addClass('open');
 			$(this).find('.more-minus').html('-');
 			
@@ -1023,7 +1038,7 @@ function closeSearch() {
 
       $.ajax({
         type: "GET",
-        url: 'searchsuggest.json', //TODO a revoir//
+        url: 'searchsuggest.json', 
         success: function(data) {
 
           for (var i=0; i<data.length; i++) {
@@ -1031,10 +1046,12 @@ function closeSearch() {
                 link = data[i].link;
 
             var txt = name.toLowerCase();
+            if (txt.indexOf(value.toLowerCase()) != -1){
+              txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
 
-            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
-
-            $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+              $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
+            }
+            
           }
         }
       });
