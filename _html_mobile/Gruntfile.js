@@ -341,7 +341,8 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/jsonTest.js',
 				            './js/horizontal-menu.js',
-				            './js/palmares.js'
+				            './js/palmares.js',
+				            './js/selection.js'
 				        ],
 				    './js-concat/palmares.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -463,7 +464,7 @@ grunt.initConfig({
 	        './participate_provider.html': ['./templates/participate_provider.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
-	        './selectionofficielle_cannesclassic.html': ['./templates/selectionofficielle_cannesclassic.html'],
+	        './selectionofficielle_cannesclassic_hommage.html': ['./templates/selectionofficielle_cannesclassic_hommage.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
 	        './videos.html': ['./templates/videos.html'],
 	        './webTV.html': ['./templates/webTV.html'],
@@ -517,7 +518,7 @@ grunt.initConfig({
 	        './participate_provider.html': ['./templates/participate_provider.html'],
 	        './photos.html': ['./templates/photos.html'],
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
-	        './selectionofficielle_cannesclassic.html': ['./templates/selectionofficielle_cannesclassic.html'],
+	        './selectionofficielle_cannesclassic_hommage.html': ['./templates/selectionofficielle_cannesclassic_hommage.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
 	        './videos.html': ['./templates/videos.html'],
 	        './webTV.html': ['./templates/webTV.html'],

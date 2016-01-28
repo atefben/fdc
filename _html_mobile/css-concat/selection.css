@@ -3278,19 +3278,29 @@ display: inline-block;
   width: 470px;
   margin: 60px auto;
 }
+.title-list-cat .subtitle{
+  color: #fff;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding-top: 10px;
+  font-style: italic;
+  line-height: 28px;
+  margin: 0 40px 60px;
+  max-height: 300px;
+}
+
 /*SLIDERS*/
 .film-slider{
   margin: 60px 0;
 }
 .film-slider .owl-item{
-
-  width: 280px;
-  height: 530px;
+  width: 380px;
 }
 .film-slider .img-container{
 
   width: 280px;
   height: 380px;
+  margin: auto;
   background-position: center center;
     background-size: cover;
 }
@@ -3325,4 +3335,57 @@ display: inline-block;
 }
 .film-slider .owl-stage-outer{
   margin-left: 0;
+}
+.film-slider .text{
+  display: block;
+    height: auto;
+    font-size: 20px;
+    width: 380px;
+    text-align: center;
+    color: #fff;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 28px;
+}
+.film-slider .text strong{
+  color: #c8a461;
+}
+.film-slider .text p:last-child{
+  margin-top: 30px;
+}
+
+#horizontal-menu2{
+  height: 110px;
+  background-color: #1b1b1b;
+  z-index: 50;
+}
+
+#horizontal-menu2 .vid {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+  line-height: 110px;
+  /*padding: 0 20px 0 20px;*/
+
+}
+
+#horizontal-menu2 .vid p{
+  
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 3px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+}
+#horizontal-menu2 .vid p a{
+  color:  #999999;
+}
+#horizontal-menu2 .vid p a.active{
+  color: #c8a461;
+}
+#horizontal-menu2 .owl-stage{
+
+  height: 100%;
 }
