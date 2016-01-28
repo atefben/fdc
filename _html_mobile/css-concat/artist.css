@@ -3205,6 +3205,8 @@ a{
   text-align: center;
   max-height: 200px;
   margin-bottom: 40px;
+  font-size: 20px;
+  color: #666;
 }
 .article-title .category {
   color: #c8a461;
@@ -3372,6 +3374,7 @@ a{
     height: 730px;
     overflow: hidden;
     background-color: #2e2e2e;
+    margin-top: 40px;
 }
 .info-film {
     background-color: #2e2e2e;
