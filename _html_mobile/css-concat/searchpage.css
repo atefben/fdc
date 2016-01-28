@@ -364,7 +364,9 @@ from desktop
     -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
+#main.dark-background{
+  background: #141414;
+}
 #sliderWrapper .owl-dots {
   text-align: center;
   position: relative;
@@ -2609,7 +2611,10 @@ font-weight: bolder;
 #menu .section-contain.subsection-3{
   padding: 0 50px;
 }
-#menu .second-nav, #menu .third-nav{
+#menu .second-nav{
+  padding: 25px 60px 0px;
+}
+#menu .third-nav{
   padding: 25px 60px;
 }
 #menu .third-nav a, #menu .third-nav ul{
@@ -3309,6 +3314,15 @@ display: inline-block;
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
+.searchpage #horizontal-menu .vid p{
+	text-align: left;
+}
+.searchpage #horizontal-menu .vid{
+	box-sizing:border-box;
+}
+.searchpage #horizontal-menu .owl-stage {
+    padding-left: 20px;
+}
 /*SLIDERS*/
 .portrait-slider{
 	margin: 60px 0;

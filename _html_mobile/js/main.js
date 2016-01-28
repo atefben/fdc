@@ -1,6 +1,7 @@
 $(document).ready(function() {
   
 
+
   var time = 7; // time in seconds
  
   var $progressBar,

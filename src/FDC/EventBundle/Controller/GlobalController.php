@@ -16,20 +16,18 @@ use FDC\EventBundle\Form\Type\SearchType;
 /**
  * @Route("/")
  */
-class GlobalController extends Controller
-{
+class GlobalController extends Controller {
 
     /**
      * @Route("/suggestion", options={"expose"=true})
      * @Template("FDCEventBundle:Global:suggestion.html.twig")
      * @return array
      */
-    public function suggestionAction()
-    {
+    public function suggestionAction() {
         $articles = array();
-        $request = $this->get('request');
+        $request  = $this->get('request');
 
-        if($request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
 
             $queryArticle = array(
                 array(
@@ -37,9 +35,9 @@ class GlobalController extends Controller
                     'content' => 'Contenu de l\'article',
                     'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
                     'filter' => 'suggestion',
-                    'link'   => '/article/article1.php',
-                    'date'   => '18.05.15',
-                    'time'   => '09:00',
+                    'link' => '/article/article1.php',
+                    'date' => '18.05.15',
+                    'time' => '09:00',
                     'category' => 'presse'
                 ),
                 array(
@@ -47,9 +45,9 @@ class GlobalController extends Controller
                     'content' => 'Contenu de l\'article',
                     'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
                     'filter' => 'suggestion',
-                    'link'   => '/article/article1.php',
-                    'date'   => '18.05.15',
-                    'time'   => '09:00',
+                    'link' => '/article/article1.php',
+                    'date' => '18.05.15',
+                    'time' => '09:00',
                     'category' => 'presse'
                 ),
                 array(
@@ -57,9 +55,9 @@ class GlobalController extends Controller
                     'content' => 'Contenu de l\'article',
                     'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
                     'filter' => 'suggestion',
-                    'link'   => '/article/article1.php',
-                    'date'   => '18.05.15',
-                    'time'   => '09:00',
+                    'link' => '/article/article1.php',
+                    'date' => '18.05.15',
+                    'time' => '09:00',
                     'category' => 'presse'
                 ),
                 array(
@@ -67,9 +65,9 @@ class GlobalController extends Controller
                     'content' => 'Contenu de l\'article',
                     'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
                     'filter' => 'suggestion',
-                    'link'   => '/article/article1.php',
-                    'date'   => '18.05.15',
-                    'time'   => '09:00',
+                    'link' => '/article/article1.php',
+                    'date' => '18.05.15',
+                    'time' => '09:00',
                     'category' => 'presse'
                 ),
                 array(
@@ -77,9 +75,9 @@ class GlobalController extends Controller
                     'content' => 'Contenu de l\'article',
                     'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
                     'filter' => 'suggestion',
-                    'link'   => '/article/article1.php',
-                    'date'   => '18.05.15',
-                    'time'   => '09:00',
+                    'link' => '/article/article1.php',
+                    'date' => '18.05.15',
+                    'time' => '09:00',
                     'category' => 'presse'
                 ),
                 array(
@@ -87,9 +85,9 @@ class GlobalController extends Controller
                     'content' => 'Contenu de l\'article',
                     'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
                     'filter' => 'suggestion',
-                    'link'   => '/article/article1.php',
-                    'date'   => '18.05.15',
-                    'time'   => '09:00',
+                    'link' => '/article/article1.php',
+                    'date' => '18.05.15',
+                    'time' => '09:00',
                     'category' => 'presse'
                 ),
                 array(
@@ -97,13 +95,13 @@ class GlobalController extends Controller
                     'content' => 'Contenu de l\'article',
                     'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
                     'filter' => 'suggestion',
-                    'link'   => '/article/article1.php',
-                    'date'   => '18.05.15',
-                    'time'   => '09:00',
+                    'link' => '/article/article1.php',
+                    'date' => '18.05.15',
+                    'time' => '09:00',
                     'category' => 'presse'
                 )
             );
-            $articles = array_slice($queryArticle, 0, 8);
+            $articles     = array_slice($queryArticle, 0, 8);
 
         }
 
@@ -123,17 +121,16 @@ class GlobalController extends Controller
      * @param $description
      * @return array
      */
-    public function shareEmailAction(Request $request, $section=null, $detail=null, $title=null, $description=null)
-    {
+    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null) {
         $email = array(
             'section' => $section,
-            'detail'  => $detail,
-            'title'  => $title,
-            'description'  => $description
+            'detail' => $detail,
+            'title' => $title,
+            'description' => $description
         );
 
         $translator = $this->get('translator');
-        $hasErrors = false;
+        $hasErrors  = false;
 
         $form = $this->createForm(new ShareEmailType($translator));
 
@@ -142,92 +139,75 @@ class GlobalController extends Controller
 
             if ($form->isValid()) {
 
-                $data = $form->getData();
-                $message = \Swift_Message::newInstance()
-                    ->setSubject($data['title'])
-                    ->setFrom($data['user'])
-                    ->setTo($data['email'])
-                    ->setBody(
-                        $this->renderView(
-                            'FDCEventBundle:Emails:share.html.twig',
-                            array(
-                                'message' => $data['message'],
-                                'section' => $data['section'],
-                                'title' => $data['title'],
-                                'description' => $data['description'],
-                                'detail' => $data['detail'],
-                            )
-                        ),
-                        'text/html'
-                    )
-                ;
-                $mailer = $this->get('mailer');
+                $data    = $form->getData();
+                $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['email'])->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                    'message' => $data['message'],
+                    'section' => $data['section'],
+                    'title' => $data['title'],
+                    'description' => $data['description'],
+                    'detail' => $data['detail']
+                )), 'text/html');
+                $mailer  = $this->get('mailer');
                 $mailer->send($message);
 
                 $response['success'] = true;
 
                 //send mail copy
-                if($data['copy']) {
-                    $message = \Swift_Message::newInstance()
-                        ->setSubject($data['title'])
-                        ->setFrom($data['user'])
-                        ->setTo($data['user'])
-                        ->setBody(
-                            $this->renderView(
-                                'FDCEventBundle:Emails:share.html.twig',
-                                array(
-                                    'message' => $data['message'],
-                                    'section' => $data['section'],
-                                    'title' => $data['title'],
-                                    'description' => $data['description'],
-                                    'detail' => $data['detail'],
-                                )
-                            ),
-                            'text/html'
-                        )
-                    ;
-                    $mailer = $this->get('mailer');
+                if ($data['copy']) {
+                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['user'])->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                        'message' => $data['message'],
+                        'section' => $data['section'],
+                        'title' => $data['title'],
+                        'description' => $data['description'],
+                        'detail' => $data['detail']
+                    )), 'text/html');
+                    $mailer  = $this->get('mailer');
                     $mailer->send($message);
                 }
 
                 // subscribe to newsletter
-                if($data['newsletter']) {
+                if ($data['newsletter']) {
                     $registration = new Newsletter();
 
                     //Find site by slug
                     $siteSlug = $this->container->getParameter('fdc_event_slug');
-                    $site = $this->getDoctrine()
-                        ->getRepository('BaseCoreBundle:Site')
-                        ->findOneBy(array('slug' => $siteSlug));
+                    $site     = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBy(array(
+                        'slug' => $siteSlug
+                    ));
 
-                    //Save Email & Enable
-                    $registration->setEmail($data['email']);
-                    $registration->setEnabled(true);
-                    $registration->setSite($site);
+                    // check if not already in DB and if not, save data
+                    $exist = $this->getDoctrine()->getRepository('BaseCoreBundle:Newsletter')->findOneBy(array(
+                        'email' => $data['user']
+                    ));
 
-                    //Check errors
-                    $validator = $this->get('validator');
-                    $errors = $validator->validate($registration);
+                    if ($exist == null) {
+                        //Save Email & Enable
+                        $registration->setEmail($data['user']);
+                        $registration->setEnabled(true);
+                        $registration->setSite($site);
 
-                    if (count($errors) > 0) {
-                        $response['success'] = false;
-                        $response['object'] = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
+                        //Check errors
+                        $validator = $this->get('validator');
+                        $errors    = $validator->validate($registration);
+
+                        if (count($errors) > 0) {
+                            $response['success'] = false;
+                            $response['object']  = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
+                        } else {
+                            // Form is valid
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($registration);
+                            $em->flush();
+                        }
                     }
-                    else {
-                        // Form is valid
-                        $em = $this->getDoctrine()->getManager();
-                        $em->persist($registration);
-                        $em->flush();
-                    }
+
                 }
 
-            }
-            else {
-                $response['object'] = $this->getErrorsAsArray($form);
+            } else {
                 $response['success'] = false;
             }
 
-            return new JsonResponse( $response );
+            return new JsonResponse($response);
         }
 
         return array(
@@ -237,20 +217,6 @@ class GlobalController extends Controller
         );
     }
 
-    //get form errors message
-    protected function getErrorsAsArray($form)
-    {
-        $errors = array();
-        foreach ($form->getErrors() as $error)
-            $errors[] = $error->getMessage();
-
-        foreach ($form->all() as $key => $child) {
-            if ($err = $this->getErrorsAsArray($child))
-                $errors[$key] = $err;
-        }
-        return $errors;
-    }
-
 
     /**
      * @Route( "/register/newsletter", options={"expose"=true})
@@ -258,25 +224,24 @@ class GlobalController extends Controller
      * @param Request $request
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function newsletterAction( Request $request )
-    {
+    public function newsletterAction(Request $request) {
         $translator = $this->get('translator');
 
-        $newsForm = $this->createForm( new NewsletterType($translator) );
+        $newsForm     = $this->createForm(new NewsletterType($translator));
         $registration = new Newsletter();
 
-        if($request->isXmlHttpRequest() && $request->isMethod( 'POST' ) ) {
+        if ($request->isXmlHttpRequest() && $request->isMethod('POST')) {
 
             $newsForm->submit($request);
 
-            if ( $newsForm->isValid() ) {
+            if ($newsForm->isValid()) {
 
                 $data = $newsForm->getData();
 
                 //Check if entry already exist
-                $exist = $this->getDoctrine()
-                    ->getRepository('BaseCoreBundle:Newsletter')
-                    ->findOneBy(array('email' => $data['email']));
+                $exist = $this->getDoctrine()->getRepository('BaseCoreBundle:Newsletter')->findOneBy(array(
+                    'email' => $data['email']
+                ));
 
                 if ($exist == null) {
 
@@ -284,9 +249,9 @@ class GlobalController extends Controller
 
                     //Find site by slug
                     $siteSlug = $this->container->getParameter('fdc_event_slug');
-                    $site = $this->getDoctrine()
-                        ->getRepository('BaseCoreBundle:Site')
-                        ->findOneBy(array('slug' => $siteSlug));
+                    $site     = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBy(array(
+                        'slug' => $siteSlug
+                    ));
 
                     //Save Email & Enable
                     $registration->setEmail($data['email']);
@@ -295,13 +260,12 @@ class GlobalController extends Controller
 
                     //Check errors
                     $validator = $this->get('validator');
-                    $errors = $validator->validate($registration);
+                    $errors    = $validator->validate($registration);
 
                     if (count($errors) > 0) {
                         $response['success'] = false;
-                        $response['object'] = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
-                    }
-                    else {
+                        $response['object']  = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
+                    } else {
                         // Form is valid
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($registration);
@@ -311,10 +275,10 @@ class GlobalController extends Controller
 
                 else {
                     $response['success'] = false;
-                    $response['object'] = $translator->trans('newsletter.form.error.emaildejaenregistre');
+                    $response['object']  = $translator->trans('newsletter.form.error.emaildejaenregistre');
                 }
 
-                return new JsonResponse( $response );
+                return new JsonResponse($response);
 
             }
 
@@ -331,20 +295,19 @@ class GlobalController extends Controller
      * @Template("FDCEventBundle:Global:breadcrumb.html.twig")
      * @return array
      */
-    public function breadcrumbAction()
-    {
+    public function breadcrumbAction() {
         $breadcrumb = array(
             array(
                 'name' => 'L\'actualité',
-                'url' => '#',
+                'url' => '#'
             ),
             array(
                 'name' => 'Jour après jour',
-                'url' => '#',
+                'url' => '#'
             ),
             array(
                 'name' => 'Lorem Ipsum',
-                'url' => '#',
+                'url' => '#'
             )
         );
 
@@ -361,20 +324,19 @@ class GlobalController extends Controller
      * @param $searchTerm
      * @return array
      */
-    public function searchAction( Request $request, $searchTerm=null )
-    {
+    public function searchAction(Request $request, $searchTerm = null) {
         $translator = $this->get('translator');
 
-        $searchForm = $this->createForm( new SearchType($translator, $searchTerm) );
+        $searchForm = $this->createForm(new SearchType($translator, $searchTerm));
 
         $searchForm->submit($request);
 
-        $formData = $searchForm->getData();
+        $formData   = $searchForm->getData();
         $searchTerm = $formData['search'];
 
-        if ($searchTerm !== null ) {
+        if ($searchTerm !== null) {
             return $this->redirect($this->generateUrl('fdc_event_global_searchsubmit', array(
-                'searchTerm' => $searchTerm,
+                'searchTerm' => $searchTerm
             )));
 
         }
@@ -391,8 +353,7 @@ class GlobalController extends Controller
      * @param null $resultFilter
      * @return array
      */
-    public function searchSubmitAction($searchTerm, $resultFilter=null)
-    {
+    public function searchSubmitAction($searchTerm, $resultFilter = null) {
         $result = array(
             'category' => array(
                 'actualite' => array(
@@ -439,7 +400,7 @@ class GlobalController extends Controller
                         'format' => 'article',
                         'theme' => 'competition',
                         'category' => 'competition'
-                    ),
+                    )
                 ),
                 'artist' => array(
                     array(
@@ -583,7 +544,7 @@ class GlobalController extends Controller
                         'format' => 'article',
                         'theme' => 'competition',
                         'category' => 'competition'
-                    ),
+                    )
                 ),
                 'media' => array(
                     array(
@@ -629,7 +590,7 @@ class GlobalController extends Controller
                         'format' => 'article',
                         'theme' => 'competition',
                         'category' => 'competition'
-                    ),
+                    )
                 ),
                 'event' => array(
                     array(
@@ -675,7 +636,7 @@ class GlobalController extends Controller
                         'format' => 'article',
                         'theme' => 'competition',
                         'category' => 'competition'
-                    ),
+                    )
                 ),
                 'participate' => array(
                     array(
@@ -721,50 +682,49 @@ class GlobalController extends Controller
                         'format' => 'article',
                         'theme' => 'competition',
                         'category' => 'competition'
-                    ),
-                ),
+                    )
+                )
             )
         );
 
         if ($resultFilter == null) {
             $searchResult = $result;
-        }
-        else {
+        } else {
             $searchResult = $result[$resultFilter];
         }
 
         $searchFilters = array(
             'date' => array(
                 array(
-                    'createdAt' => new \DateTime(),
+                    'createdAt' => new \DateTime()
                 )
             ),
             'format' => array(
                 array(
                     'name' => 'Photo',
-                    'slug' => 'photo',
+                    'slug' => 'photo'
                 ),
                 array(
                     'name' => 'Vidéo',
-                    'slug' => 'video',
+                    'slug' => 'video'
                 ),
                 array(
                     'name' => 'Audio',
-                    'slug' => 'audio',
+                    'slug' => 'audio'
                 ),
                 array(
                     'name' => 'Article',
-                    'slug' => 'article',
+                    'slug' => 'article'
                 )
             ),
             'theme' => array(
                 array(
                     'name' => 'Conférence de presse',
-                    'slug' => 'press',
+                    'slug' => 'press'
                 ),
                 array(
                     'name' => 'Montée des marches',
-                    'slug' => 'steps',
+                    'slug' => 'steps'
                 )
             )
         );

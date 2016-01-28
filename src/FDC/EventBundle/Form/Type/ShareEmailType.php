@@ -98,9 +98,7 @@ class ShareEmailType extends AbstractType
                 new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))
             )),
             'copy'=> array(),
-            'newsletter' => array(
-                new NewsletterEmail(array('message' => 'test')
-            )),
+            'newsletter' => array(),
             'section' => array(),
             'detail' => array(),
             'title' => array(),
