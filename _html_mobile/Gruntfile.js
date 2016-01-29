@@ -216,6 +216,17 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/myselection.css'
 	         
+				        ],
+				    './css-concat/practical_guide.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/participate.css',
+			            './css/accordeon.css',
+			            './css/press.css',
+			            './css/practical_guide.css'
+
+			            
+	         
 				        ]
     			}
 		        
@@ -481,6 +492,13 @@ grunt.initConfig({
 				            './js/jsonTest.js',
 				            './js/myselection.js'
 				        ],
+				    './js-concat/practical_guide.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js',
+				            './js/accordeon.js',
+				            './js/press.js'
+				        ],
 
     			}
 		        
@@ -545,7 +563,8 @@ grunt.initConfig({
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
 	        './myselection.html': ['./templates/myselection.html'],
-	        './press_communiques.html': ['./templates/press_communiques.html']
+	        './press_communiques.html': ['./templates/press_communiques.html'],
+	        './press_practical_guide.html': ['./templates/press_practical_guide.html']
 	      
 	      }
 	    },
@@ -603,7 +622,8 @@ grunt.initConfig({
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
 	        './myselection.html': ['./templates/myselection.html'],
-	        './press_communiques.html': ['./templates/press_communiques.html']
+	        './press_communiques.html': ['./templates/press_communiques.html'],
+	        './press_practical_guide.html': ['./templates/press_practical_guide.html']
 
 	      }
 
@@ -640,7 +660,8 @@ grunt.initConfig({
 	        './js-concat/press.min.js': ['./js-concat/press.js'],
 	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js'],
 	        './js-concat/artist.min.js': ['./js-concat/artist.js'],
-	        './js-concat/myselection.min.js': ['./js-concat/myselection.js']
+	        './js-concat/myselection.min.js': ['./js-concat/myselection.js'],
+	        './js-concat/practical_guide.min.js': ['./js-concat/practical_guide.js']
 	      }
 	    }
 	  },
@@ -680,7 +701,8 @@ grunt.initConfig({
 	        './css-concat/press.min.css': ['./css-concat/press.css'],
 	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css'],
 	        './css-concat/artist.min.css': ['./css-concat/artist.css'],
-	        './css-concat/myselection.min.css': ['./css-concat/myselection.css']
+	        './css-concat/myselection.min.css': ['./css-concat/myselection.css'],
+	        './css-concat/practical_guide.min.css': ['./css-concat/practical_guide.css']
 	    }
 	  }
 	},
