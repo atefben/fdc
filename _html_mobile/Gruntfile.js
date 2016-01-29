@@ -23,6 +23,14 @@ grunt.initConfig({
 			            './css/articles.css'
 			            
 				        ],
+				    './css-concat/communiques.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/filters.css',
+			            './css/articles.css',
+			            './css/press.css'
+			            
+				        ],
 				    './css-concat/events.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
@@ -234,6 +242,14 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/filters.js',
 				            './js/add-to-selection.js'
+				        ],
+				    './js-concat/communiques.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js',
+				            './js/filters.js',
+				            './js/add-to-selection.js',
+				            './js/horizontal-filters.js'
 				        ],
 				    './js-concat/events.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -488,6 +504,7 @@ grunt.initConfig({
 	        './event.html': ['./templates/event.html'],
 	        './article-photos.html': ['./templates/article-photos.html'],
 	        './article-video.html': ['./templates/article-video.html'],
+	        './article-press.html': ['./templates/article-press.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
 	        './participate_sejour.html': ['./templates/participate_sejour.html'],
@@ -524,7 +541,8 @@ grunt.initConfig({
 	        './press.html': ['./templates/press.html'],
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
-	        './myselection.html': ['./templates/myselection.html']
+	        './myselection.html': ['./templates/myselection.html'],
+	        './press_communiques.html': ['./templates/press_communiques.html']
 	      
 	      }
 	    },
@@ -544,6 +562,7 @@ grunt.initConfig({
 	        './event.html': ['./templates/event.html'],
 	        './article-photos.html': ['./templates/article-photos.html'],
 	        './article-video.html': ['./templates/article-video.html'],
+	        './article-press.html': ['./templates/article-press.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
 	        './participate_sejour.html': ['./templates/participate_sejour.html'],
@@ -580,7 +599,8 @@ grunt.initConfig({
 	        './press.html': ['./templates/press.html'],
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
-	        './myselection.html': ['./templates/myselection.html']
+	        './myselection.html': ['./templates/myselection.html'],
+	        './press_communiques.html': ['./templates/press_communiques.html']
 
 	      }
 
@@ -591,6 +611,7 @@ grunt.initConfig({
 	      files: {
 	        './js-concat/home.min.js': ['./js-concat/home.js'],
 	        './js-concat/articles.min.js': ['./js-concat/articles.js'],
+	        './js-concat/communiques.min.js': ['./js-concat/communiques.js'],
 	        './js-concat/trailer.min.js': ['./js-concat/trailer.js'],
 	        './js-concat/channels.min.js': ['./js-concat/channels.js'],
 	        './js-concat/faq.min.js': ['./js-concat/faq.js'],
@@ -630,6 +651,7 @@ grunt.initConfig({
 	    files: {
 	        './css-concat/home.min.css': ['./css-concat/home.css'],
 	        './css-concat/articles.min.css': ['./css-concat/articles.css'],
+	        './css-concat/communiques.min.css': ['./css-concat/communiques.css'],
 	        './css-concat/trailer.min.css': ['./css-concat/trailer.css'],
 	        './css-concat/channels.min.css': ['./css-concat/channels.css'],
 	        './css-concat/faq.min.css': ['./css-concat/faq.css'],
