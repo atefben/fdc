@@ -84,6 +84,11 @@ $(document).ready(function() {
 	          if($('.palmares-container').length !== 0){
 	          	$.initFilmsSliders()
 	          }
+	          if($(".invit").length !== 0){
+	          	$( ".content-selection2" ).addClass('show');
+	          	$.initMenu2();
+	          	$.initInvit();
+	          }
 	          
 	   //        // refresh isotope
 	   //         if($('.grid').length !== 0){
