@@ -32,20 +32,6 @@ class PressHomepagePushSecondary
      *
      * @ORM\Column(type="string", nullable=false)
      **/
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     **/
-    private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     **/
     private $url;
 
     /**
@@ -59,6 +45,19 @@ class PressHomepagePushSecondary
      * @ORM\ManyToOne(targetEntity="PressHomepage", inversedBy="pushsSecondary")
      */
     private $homepage;
+
+    /**
+     * ArrayCollection
+     */
+    protected $translations;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -79,52 +78,6 @@ class PressHomepagePushSecondary
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return PressHomepagePushSecondary
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return PressHomepagePushSecondary
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**

@@ -25,38 +25,66 @@
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    {{ 'group.press.contact_page.title'|trans }}
+                                    {{ 'group.main_infos'|trans }}
                                 </h4>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.title) }}
+                                    Ordre des blocs
+                                    {{ form_row(form.parent.children.section) }}
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
+                                    Communiqu√©s et infos
+                                    {{ form_row(translationsFields.sectionStatementInfoTitle) }}
+                                    {{ form_row(form.parent.children.sectionStatementInfoDisplay) }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    Programmation du jour
+                                    {{ form_row(translationsFields.sectionSchedulingTitle) }}
+                                    {{ form_row(form.parent.children.sectionSchedulingDisplay) }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    M√©diath√®que
+                                    {{ form_row(translationsFields.sectionMediaTitle) }}
+                                    {{ form_row(translationsFields.sectionMediaSubtitle) }}
+                                    {{ form_row(form.parent.children.homeMedia) }}
+                                    {{ form_row(form.parent.children.sectionMediaDisplay) }}
+
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                A t√©l√©charger
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.sectionDownloadTitle) }}
+                                    {{ form_row(form.parent.children.homeDownload) }}
+                                    {{ form_row(form.parent.children.sectionDownloadDisplay) }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    Push 1
                                     {{ form_row(form.parent.children.pushsMain) }}
                                 </div>
                             </div>
-                            <div class="box-body TEST">
+                            <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_widget(form.parent.children.pushsSecondary) }}
+                                    {{ form_row(form.parent.children.pushsSecondary) }}
                                 </div>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_widget(form.parent.children.section) }}
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_widget(form.parent.children.homeMedia) }}
-                                </div>
-                            </div>
-                            <div class="box-body">
-
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_widget(form.parent.children.homeDownload) }}
+                                    Statistiques
+                                    {{ form_row(translationsFields.sectionStatisticTitle) }}
+                                    {{ form_row(translationsFields.sectionStatisticSubtitle) }}
+                                    {{ form_row(translationsFields.sectionStatisticDescription) }}
+                                    {{ form_row(form.parent.children.statImage) }}
+                                    {{ form_row(form.parent.children.statImage2) }}
                                 </div>
                             </div>
                         </div>
@@ -116,59 +144,7 @@
                             </div>
                         </div>
                     {% endif %}
-                    <div class="col-md-4">
-                        {#{% if form.vars.default_locale == locale %}#}
-                            {#<div class="box box-success">#}
-                                {#<div class="box-header">#}
-                                    {#<h4 class="box-title">#}
-                                        {#{{ 'group.press.publish_parameters'|trans }}#}
-                                    {#</h4>#}
-                                {#</div>#}
-                                {#<div class="box-body">#}
-                                    {#<div class="sonata-ba-collapsed-fields">#}
-                                        {#{{ form_row(form.parent.children.sites) }}#}
-                                        {#{{ form_row(form.parent.children.publishedAt) }}#}
-                                        {#{{ form_row(form.parent.children.publishEndedAt) }}#}
-                                        {#{{ form_row(translationsFields.status) }}#}
-                                        {#<div class="form-group fdc-input-border">#}
-                                            {#{{ form_widget(form.parent.children.translate) }}#}
-                                            {#{{ form_label(form.parent.children.translate) }}#}
-                                        {#</div>#}
-                                        {#{{ form_row(form.parent.children.priorityStatus) }}#}
-
-                                    {#</div>#}
-                                    {#<div>#}
-                                        {#<button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save"></i> CrÈer</button>#}
-                                        {#<button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> CrÈer et retourner ‡ la liste</button>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#{% else %}#}
-                            {#<div class="box box-success">#}
-                                {#<div class="box-header">#}
-                                    {#<h4 class="box-title">#}
-                                        {#{{ 'group.french_version'|trans }}#}
-                                    {#</h4>#}
-                                {#</div>#}
-                                {#<div class="box-body">#}
-                                    {#<div class="sonata-ba-collapsed-fields">#}
-                                        {#<div class="form-group">#}
-                                            {#<label class="control-label">#}
-                                                {#Titre#}
-                                            {#</label>#}
-                                            {#{% if form.children.fr.vars.value is not null %}#}
-                                                {#<div>#}
-                                                    {#{{ form.children.fr.vars.value.title }}#}
-                                                {#</div>#}
-                                            {#{% endif %}#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#{% endif %}#}
-                    </div>
                 </div>
-
             </div>
         {% endfor %}
     </div>

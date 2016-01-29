@@ -90,6 +90,7 @@ entity:
         Modifiée le date par :<br/>
         <b>user</b>
     social_wall: Social Wall
+    press_homepage: Accueil Espace Presse
 list:
     label_id: Identifiant
     label_title: Titre
@@ -257,6 +258,10 @@ form:
         now: Immédiat
     theme:
         helper_name: X caractères max.
+    press_homepage:
+        helper_media: « Sélectionnez de 2 à 4 films ». Elles apparaitront en front-office dans l'ordre des champs.
+        push_link: Lien du push
+
 
 
 nav:
