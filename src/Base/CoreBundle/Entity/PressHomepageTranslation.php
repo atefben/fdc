@@ -82,6 +82,20 @@ class PressHomepageTranslation
     protected $sectionStatisticDescription;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=false)
+     **/
+    private $sectionPushMainTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=false)
+     **/
+    private $sectionPushSecondaryTitle;
+
+    /**
      * Set sectionStatementInfoTitle
      *
      * @param string $sectionStatementInfoTitle
@@ -265,4 +279,50 @@ class PressHomepageTranslation
         return $this->sectionStatisticDescription;
     }
 
+
+    /**
+     * Set sectionPushMainTitle
+     *
+     * @param string $sectionPushMainTitle
+     * @return PressHomepageTranslation
+     */
+    public function setSectionPushMainTitle($sectionPushMainTitle)
+    {
+        $this->sectionPushMainTitle = $sectionPushMainTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionPushMainTitle
+     *
+     * @return string 
+     */
+    public function getSectionPushMainTitle()
+    {
+        return $this->sectionPushMainTitle;
+    }
+
+    /**
+     * Set sectionPushSecondaryTitle
+     *
+     * @param string $sectionPushSecondaryTitle
+     * @return PressHomepageTranslation
+     */
+    public function setSectionPushSecondaryTitle($sectionPushSecondaryTitle)
+    {
+        $this->sectionPushSecondaryTitle = $sectionPushSecondaryTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionPushSecondaryTitle
+     *
+     * @return string 
+     */
+    public function getSectionPushSecondaryTitle()
+    {
+        return $this->sectionPushSecondaryTitle;
+    }
 }

@@ -41,51 +41,13 @@ class PressHomepagePushMainAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('translations', 'a2lix_translations', array(
-                'label' => false,
-                'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
-                'fields' => array(
-                    'createdAt' => array(
-                        'display' => false
-                    ),
-                    'updatedAt' => array(
-                        'display' => false
-                    ),
-                    'title' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
-                    'description' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
-
-                )
-            ))
             ->add('file', 'sonata_type_model_list', array(
                 'help' => 'form.press.helper_push_homepage',
                 'required' => true,
                 'btn_add' => false,
             ))
             ->add('url', 'text', array(
-                'label' => 'form.press_homepage.push_link',
-                'translation_domain' => 'BaseAdminBundle',
-                'locale_options' => array(
-                    'fr' => array(
-                        'required' => true
-                    )
-                )
+                'label' => 'form.press_homepage.push_link'
             ))
 
         ;

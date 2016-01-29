@@ -41,7 +41,12 @@ class PressHomepageSectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('class', 'text',array('disabled' => true))
+            ->add('class', 'text',array(
+                // disabled : true when block are created
+                'disabled' => false,
+                'label' => 'form.press_homepage.label_section',
+                'required' => false
+            ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
 
@@ -57,5 +62,18 @@ class PressHomepageSectionAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function prePersist($homepage)
+    {
+        dump($this);exit;
+        $this->preUpdate($homepage);
+    }
+
+    public function preUpdate($homepage)
+    {
+        dump($homepage);exit;
+
+        $homepage->setSection($homepage->getSection());
     }
 }

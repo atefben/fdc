@@ -4,7 +4,6 @@ namespace Base\CoreBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\CoreBundle\Util\Time;
 
@@ -18,7 +17,6 @@ use Base\CoreBundle\Util\Time;
 class PressHomepagePushMain
 {
     use Time;
-    use Translatable;
 
     /**
      * @var integer
@@ -47,19 +45,6 @@ class PressHomepagePushMain
      * @ORM\ManyToOne(targetEntity="PressHomepage", inversedBy="pushsMain")
      */
     private $homepage;
-
-    /**
-     * ArrayCollection
-     */
-    protected $translations;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
 
     public function __toString()
     {

@@ -91,6 +91,7 @@ entity:
         <b>user</b>
     social_wall: Social Wall
     press_homepage: Accueil Espace Presse
+    contact_page: Page de contact
 list:
     label_id: Identifiant
     label_title: Titre
@@ -145,6 +146,7 @@ dashboard:
         statement: Communiqués
         info: Infos
         event: Événements
+        press: Espace presse
     link:
         settings: Paramètres
         bo_translation: Traductions
@@ -228,6 +230,7 @@ form:
     label_translate: Envoyer en traduction
     label_theme: Thème
     label_title: Titre
+    label_subtitle: Sous-Titre
     label_publish_on: Publié sur
     label_published_at: Date de début de publication
     label_publish_ended_at: Date de fin de publication
@@ -240,6 +243,12 @@ form:
     label_theme_name: Nom du thème
     label_file: Fichier
     label_media_video_image: Image cover
+    label_display: Ne pas afficher cette strate
+    label_film: Films
+    label_content: Description
+    label_image_link: Image et lien
+    label_main_image: Première image
+    label_second_image: Seconde image
     contact_theme:
         helper_theme: X caractères max.
     status:
@@ -261,6 +270,12 @@ form:
     press_homepage:
         helper_media: « Sélectionnez de 2 à 4 films ». Elles apparaitront en front-office dans l'ordre des champs.
         push_link: Lien du push
+        media_film: Medias du film
+        download: A télécharger
+        helper_title: X caractères max.
+        helper_subtitle: X caractères max.
+        helper_desc: X caractères max.
+        label_section: Blocs
 
 
 

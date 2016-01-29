@@ -21,65 +21,110 @@
 
             <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    {{ 'group.main_infos'|trans }}
+                                    Ordre des blocs
                                 </h4>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    Ordre des blocs
                                     {{ form_row(form.parent.children.section) }}
                                 </div>
                             </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Communiqués et infos
+                                </h4>
+                            </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    Communiqués et infos
                                     {{ form_row(translationsFields.sectionStatementInfoTitle) }}
                                     {{ form_row(form.parent.children.sectionStatementInfoDisplay) }}
                                 </div>
                             </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Programmation du jour
+                                </h4>
+                            </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    Programmation du jour
                                     {{ form_row(translationsFields.sectionSchedulingTitle) }}
                                     {{ form_row(form.parent.children.sectionSchedulingDisplay) }}
                                 </div>
                             </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Médiathèque
+                                </h4>
+                            </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    Médiathèque
                                     {{ form_row(translationsFields.sectionMediaTitle) }}
                                     {{ form_row(translationsFields.sectionMediaSubtitle) }}
                                     {{ form_row(form.parent.children.homeMedia) }}
                                     {{ form_row(form.parent.children.sectionMediaDisplay) }}
-
                                 </div>
                             </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    A télécharger
+                                </h4>
+                            </div>
                             <div class="box-body">
-                                A télécharger
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.sectionDownloadTitle) }}
                                     {{ form_row(form.parent.children.homeDownload) }}
                                     {{ form_row(form.parent.children.sectionDownloadDisplay) }}
                                 </div>
                             </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
                                     Push 1
-                                    {{ form_row(form.parent.children.pushsMain) }}
-                                </div>
+                                </h4>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
+
+                                    {{ form_row(translationsFields.sectionPushMainTitle) }}
+                                    {{ form_row(form.parent.children.pushsMain) }}
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Push 2
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.sectionPushSecondaryTitle) }}
                                     {{ form_row(form.parent.children.pushsSecondary) }}
                                 </div>
                             </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Statistiques
+                                </h4>
+                            </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    Statistiques
                                     {{ form_row(translationsFields.sectionStatisticTitle) }}
                                     {{ form_row(translationsFields.sectionStatisticSubtitle) }}
                                     {{ form_row(translationsFields.sectionStatisticDescription) }}
@@ -89,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="box box-success">
                             <div class="box-header">
                                 <div class="clearfix">
@@ -108,13 +153,13 @@
                         </div>
                     </div>
                     {% if form.vars.default_locale == locale %}
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <p>
                                 {{ 'group.helper_seo_example'|trans|nl2br }}
                             </p>
                         </div>
                     {% else %}
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
