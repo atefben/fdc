@@ -635,10 +635,9 @@ class NewsController extends Controller {
         }
 
         // SEO
-        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+        //$this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
         //get associated film to the news
-
         $associatedFilm = null;
         $associatedProgrammation = null;
         $associatedFilmDuration = null;

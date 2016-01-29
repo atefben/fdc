@@ -51,7 +51,6 @@ class PressHomepageMedia
      */
     protected $homepage;
 
-
     public function __toString()
     {
         $string = substr(strrchr(get_class($this), '\\'), 1);
