@@ -3631,6 +3631,7 @@ p{
 	width: 305px;
 	margin: 0 auto;
 	line-height: 18px;
+	max-height: 100px;
 }
 .downloads .landscape .caption{
 	width: 540px;
@@ -3702,10 +3703,12 @@ p{
 .statistics .contain-section p{
 	font-size: 19.5px;
 	line-height: 30px;
+	max-height: 1000px;
 
 }
 
 /*CONTACT*/
+
 .contact .title-section h3{
 
 	text-align: center;
@@ -3722,6 +3725,7 @@ p{
 	padding: 0 40px;
 	border-bottom: 1px solid #d6d6d6;
 	overflow: hidden;
+	max-height: 1000px;
 }
 .sub-section .title-section{
 	text-transform: inherit;
@@ -3755,7 +3759,7 @@ p{
 }
 .contact-content strong{
 	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-	font-size: 15px;
+	font-size: 22px;
 }
 .contact-content p{
 	margin-bottom: 30px;
@@ -3765,21 +3769,22 @@ p{
 	color:#c8a461;
 	font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
 	font-weight: 700;
+	letter-spacing: 0.5px;
 }
 .contact{
 	text-align: center;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .contact .button{
 
 	margin:60px auto;
-	font-size: 25px;
 	font-weight: 700;
     border: 1px solid #c8a461;
     height: 75px;
     line-height: 75px;
     box-sizing: border-box;
     padding: 0 30px;
-    font-size: 22px;
+    font-size: 20px;
 
 
 }
