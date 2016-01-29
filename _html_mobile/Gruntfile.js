@@ -24,9 +24,9 @@ grunt.initConfig({
 			            
 				        ],
 				    './css-concat/communiques.css': [
+				    	'./css/filters.css',
 			            './css/main.css', 
 			            './css/include/*.css',
-			            './css/filters.css',
 			            './css/articles.css',
 			            './css/press.css'
 			            
@@ -216,6 +216,17 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/myselection.css'
 	         
+				        ],
+				    './css-concat/practical_guide.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/participate.css',
+			            './css/accordeon.css',
+			            './css/press.css',
+			            './css/practical_guide.css'
+
+			            
+	         
 				        ]
     			}
 		        
@@ -248,8 +259,11 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
 				            './js/filters.js',
-				            './js/add-to-selection.js',
-				            './js/horizontal-filters.js'
+				            './js/horizontal-filters.js',
+				            './js/communiques.js',
+				            './js/jsonTest.js',
+				            './js/press.js',
+
 				        ],
 				    './js-concat/events.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -372,6 +386,7 @@ grunt.initConfig({
 				            './js/vendors/wavesurfer.min.js',
 				            './js/vendors/jquery.chocolat.js',
 				            './js/vendors/hammer.min.js',
+				            './js/vendors/jwplayer.js',
 				            './js/slideshows-chocolat.js',
 				            './js/slidervideos.js',
 				            './js/audioplayer.js',
@@ -380,7 +395,6 @@ grunt.initConfig({
 				            './js/jsonTest.js',
 				            './js/horizontal-menu.js',
 				            './js/palmares.js',
-				            './js/article.js',
 				            './js/selection.js'
 				        ],
 				    './js-concat/palmares.js':[
@@ -478,6 +492,13 @@ grunt.initConfig({
 				            './js/jsonTest.js',
 				            './js/myselection.js'
 				        ],
+				    './js-concat/practical_guide.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js',
+				            './js/accordeon.js',
+				            './js/press.js'
+				        ],
 
     			}
 		        
@@ -514,6 +535,9 @@ grunt.initConfig({
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_cannesclassic_hommage.html': ['./templates/selectionofficielle_cannesclassic_hommage.html'],
 	        './selectionofficielle_cannesclassic_invit.html': ['./templates/selectionofficielle_cannesclassic_invit.html'],
+	        './selectionofficielle_cannesclassic_copies.html': ['./templates/selectionofficielle_cannesclassic_copies.html'],
+	        './selectionofficielle_cannesclassic_docu.html': ['./templates/selectionofficielle_cannesclassic_docu.html'],
+	        './selectionofficielle_cannesclassic_world.html': ['./templates/selectionofficielle_cannesclassic_world.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
 	        './videos.html': ['./templates/videos.html'],
 	        './webTV.html': ['./templates/webTV.html'],
@@ -542,7 +566,8 @@ grunt.initConfig({
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
 	        './myselection.html': ['./templates/myselection.html'],
-	        './press_communiques.html': ['./templates/press_communiques.html']
+	        './press_communiques.html': ['./templates/press_communiques.html'],
+	        './press_practical_guide.html': ['./templates/press_practical_guide.html']
 	      
 	      }
 	    },
@@ -572,6 +597,9 @@ grunt.initConfig({
 	        './selectionofficielle_competition.html': ['./templates/selectionofficielle_competition.html'],
 	        './selectionofficielle_cannesclassic_hommage.html': ['./templates/selectionofficielle_cannesclassic_hommage.html'],
 	        './selectionofficielle_cannesclassic_invit.html': ['./templates/selectionofficielle_cannesclassic_invit.html'],
+	        './selectionofficielle_cannesclassic_copies.html': ['./templates/selectionofficielle_cannesclassic_copies.html'],
+	        './selectionofficielle_cannesclassic_docu.html': ['./templates/selectionofficielle_cannesclassic_docu.html'],
+	        './selectionofficielle_cannesclassic_world.html': ['./templates/selectionofficielle_cannesclassic_world.html'],
 	        './selectionofficielle_uncertainregard.html': ['./templates/selectionofficielle_uncertainregard.html'],
 	        './videos.html': ['./templates/videos.html'],
 	        './webTV.html': ['./templates/webTV.html'],
@@ -600,7 +628,8 @@ grunt.initConfig({
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
 	        './myselection.html': ['./templates/myselection.html'],
-	        './press_communiques.html': ['./templates/press_communiques.html']
+	        './press_communiques.html': ['./templates/press_communiques.html'],
+	        './press_practical_guide.html': ['./templates/press_practical_guide.html']
 
 	      }
 
@@ -637,7 +666,8 @@ grunt.initConfig({
 	        './js-concat/press.min.js': ['./js-concat/press.js'],
 	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js'],
 	        './js-concat/artist.min.js': ['./js-concat/artist.js'],
-	        './js-concat/myselection.min.js': ['./js-concat/myselection.js']
+	        './js-concat/myselection.min.js': ['./js-concat/myselection.js'],
+	        './js-concat/practical_guide.min.js': ['./js-concat/practical_guide.js']
 	      }
 	    }
 	  },
@@ -677,7 +707,8 @@ grunt.initConfig({
 	        './css-concat/press.min.css': ['./css-concat/press.css'],
 	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css'],
 	        './css-concat/artist.min.css': ['./css-concat/artist.css'],
-	        './css-concat/myselection.min.css': ['./css-concat/myselection.css']
+	        './css-concat/myselection.min.css': ['./css-concat/myselection.css'],
+	        './css-concat/practical_guide.min.css': ['./css-concat/practical_guide.css']
 	    }
 	  }
 	},

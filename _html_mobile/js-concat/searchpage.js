@@ -124,7 +124,7 @@ var GLOBALS = {
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
     "newsUrlNext" : "more-news.html",
-    "loadPressRelease" : "load-communique.php",
+    "loadPressRelease" : "more-communique.html",
     "selectionUrl" : "selection.html"
   },
   "texts" : {

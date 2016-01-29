@@ -17,17 +17,19 @@
     <body>
         <!-- build:include ../include/search.html -->
         <!-- /build -->
-        <div id="main" class="articles dark-background selection" data-menu="selection">
+        <div id="main" class="articles " data-menu="selection">
             <!-- build:include ../include/menu.html -->
             <!-- /build -->
             <!-- build:include ../include/header.html -->
             <!-- /build -->
+            <div id="banner-top">
             <div class="banner-img vCenter" style="background-image:url(./img/selection-officielle/selection-bandeau.jpg)">
                 <div class="vCenterKid">
                     <h2 class="title">
                         sélection officielle
                     </h2>
                 </div>
+            </div>
             </div>
             <div class="selection-container">
                 <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
@@ -75,7 +77,7 @@
                     </div>
                     <div class="vid">
                         <p>
-                            <a class="active" href="#">
+                            <a class="active"  data-url="selectionofficielle_cannesclassic_invit.html">
                                 cannes classics
                             </a>
                         </p>
@@ -88,6 +90,7 @@
                         </p>
                     </div>
                 </div>
+                <div class="content-selection">
                 <div id="horizontal-menu2" class="owl-carousel sliderDrag videosSlider">
                     <div class="vid">
                         <p>
@@ -105,35 +108,39 @@
                     </div>
                     <div class="vid">
                         <p>
-                            <a href="#">
+                            <a  data-url="selectionofficielle_cannesclassic_copies.html">
                                 copies restaurées
                             </a>
                         </p>
                     </div>
                     <div class="vid">
                         <p>
-                            <a href="#">
+                            <a  data-url="selectionofficielle_cannesclassic_world.html">
                                 world cinema project
                             </a>
                         </p>
                     </div>
                     <div class="vid">
                         <p>
-                            <a href="#">
+                            <a  data-url="selectionofficielle_cannesclassic_docu.html">
                                 documentaires
                             </a>
                         </p>
                     </div>
                 </div>
+                <div class="content-selection2 dark-background selection invit">
+                  
+                
                 <div class="article-title">
                       <h2 class="">Lumière sur deux réalisateurs</h2>
                     </div>
-                    <div class="title-list-cat">
-                      <h2 class="title">
-                          Costa gavras
-                      </h2>
-                <section>
                     
+                      
+                <section>
+                <div class="title-list-cat">
+                    <h2 class="title one-line">
+                         Costa gavras
+                    </h2>
                   
                   </div>
                   <div class="photo-container">
@@ -144,16 +151,21 @@
                         <p>Cannes Classics 2015 est placé sous l'égide de Costa-Gavras qui en sera l'invité d'honneur. Palme d’or avec <a href="">Missing</a> en 1982, membre du Jury en 1976 (il récompensa <a href="">Taxi Driver</a>), Prix de la mise en scène avec <a href="">Section spéciale</a> en 1975, c’est en sa présence que sera projeté <a href="">Z</a>, Prix du Jury en 1969.</p>
                     </div>
                     <div class="text-content">
-                        <h3><strong>Z</strong>(1968, 2h07)</h3>
+                        <h3><strong>Z</strong> (1968, 2h07)</h3>
                         <p>Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé en 4K et restauré image par image en 2K par Eclair Group et par LE Diapason pour le son. Restauration et étalonnage supervisés par Costa-Gavras.</p>
                     </div>
                     <div class="trailer-container">
                         <p>Redécouvrez la bande-annonce du film lors de sa sortie en salles:</p>
+                        <div id="player"  data-video="./videos/sample.mp4" data-poster="./img/playervideo.jpg"></div>
+                        <div class="container">
+                          <h3 class="caption">bande annonce</h3>
+                          <p class="title-video">La Bande Annonce de Z</p>
+                        </div>
                     </div>
                 </section>
                 <section>
                   <div class="title-list-cat">
-                      <h2 class="title">
+                      <h2 class="title one-line">
                           Woody Allen
                       </h2>
                   </div>
@@ -171,6 +183,11 @@
                     </div>
                     <div class="trailer-container">
                         <p>Redécouvrez la bande-annonce du film lors de sa sortie en salles:</p>
+                        <div id="player2"  data-video="./videos/sample.mp4" data-poster="./img/playervideo.jpg"></div>
+                        <div class="container">
+                          <h3 class="caption">bande annonce</h3>
+                          <p class="title-video">La Bande Annonce de Minuit à Paris</p>
+                        </div>
                     </div>
                     <div class="section audio">
                       <div class="audio-player" data-sound="./sounds/sound.mp3" style="background-image:url(img/movie/audio.jpg)">
@@ -286,17 +303,23 @@
                             </div>
                           </div>
                     </div>
-                    <div class="photo-container half-photo">
-                      <img src="./img/movie/005.jpg" alt="">
-                      <p class="caption">© FDC / Théophile Delange</p>
+                    <div class="section photos">
+                      <div class="photo-container half-photo">
+                        <img src="./img/movie/005.jpg" alt="">
+                        <p class="caption">© FDC / Théophile Delange</p>
+                      </div>
+                      <div class="photo-container half-photo">
+                        <img src="./img/movie/007.jpg" alt="">
+                        <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+                      </div>
                     </div>
-                    <div class="photo-container half-photo">
-                      <img src="./img/movie/007.jpg" alt="">
-                      <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
-                    </div>
+                    
                 </section>
                 
             </div>
+              </div>
+            </div>
+            <div id="banner-bottom">
             <div class="banner-img vCenter" style="background-image:url(./img/selection-officielle/push.jpg);">
                 <div class="vCenterKid">
                     <h2 class="title tall">
@@ -308,6 +331,7 @@
                         </a>
                     </h2>
                 </div>
+            </div>
             </div>
         </div>
         <!-- build:include ../include/footer.html -->

@@ -278,7 +278,7 @@ var GLOBALS = {
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
     "newsUrlNext" : "more-news.html",
-    "loadPressRelease" : "load-communique.php",
+    "loadPressRelease" : "more-communique.html",
     "selectionUrl" : "selection.html"
   },
   "texts" : {
@@ -407,6 +407,11 @@ $(document).ready(function() {
 
 	          if($('.palmares-container').length !== 0){
 	          	$.initFilmsSliders()
+	          }
+	          if($(".invit").length !== 0){
+	          	$( ".content-selection2" ).addClass('show');
+	          	$.initMenu2();
+	          	$.initInvit();
 	          }
 	          
 	   //        // refresh isotope

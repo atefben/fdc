@@ -3213,785 +3213,872 @@ display: inline-block;
 #suggest li:nth-child(2n):hover {
   background-color: #ededed;
 }
-#horizontal-menu{
-  height: 110px;
-  background-color: #202020;
-  z-index: 50;
-}
 
-#horizontal-menu .vid {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  width: auto;
-  line-height: 110px;
-  padding: 0 20px 0 20px;
+.section-contain h3{
 
-}
-
-#horizontal-menu .vid p{
-  
-  display: block;
-  font-size: 1.5rem;
-  margin-top: 3px;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 600;
-}
-#horizontal-menu .vid p a{
-  color:  #999999;
-}
-#horizontal-menu .vid p a.active{
-  color: #c8a461;
-}
-#horizontal-menu .owl-stage{
-
-  height: 100%;
-}
-.content-selection, .content-selection2{
-    opacity: 0;
-    -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
-    -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-
-}
-.content-selection.show, .content-selection2.show{
-
-  opacity: 1;
-}
-#main:not(.searchpage, .faq-page){
-  background-color: #141414;
-}
-#banner-top, #banner-bottom{
-    background-size: 0 0;
-}
-#banner-top.show, #banner-bottom.show{
-  background-size: cover;
-}
-
-.selection-container{
-	position: relative;
-	width: 100%;
-	font-size: 0;
-	background-color: #202020;
-	
-}
-.dark-background .selection-container{
-  background: none;
-}
-.selection-item{
-	display: inline-block;
-	width: 50%;
-	height: 580px;
-	vertical-align: top;
-	background-color: #141414;
-  position: relative;
-
-}
-.selection-item a{
-
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 5;
-
-}
-.selection-item .img{
-  background-position: center top;
-  background-size: cover;
-  width: 100%;
-  height: 435px;
-}
-.selection-item .name, .selection-item .sub-name{
-	color: #fff;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 23px;
     text-transform: uppercase;
-    text-align: center;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-    padding-top: 25px;
+    letter-spacing: 4px;
+    display: inline-block;
+    padding-bottom: 65px;
     font-weight: 600;
-    max-width: 190px;
-    margin: 0 auto;
+    color: #000;
+}
+
+
+.title-contain{
+	text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 19px;
+    padding-bottom: 30px;
+    font-weight: 600;
+}
+.title-contain .icon{
+	color: #999999;
+	font-size: 1.8rem;
+	padding-right: 10px;
+	position: relative;
+    top: -4px;
+}
+.description.half{
+
+	width: 50%;
+	float: left;
+}
+.description.center{
+	text-align: center;
+}
+.description.center .title-contain{
+	text-align: center;
+}
+.description.center{
+
+	max-height: 3000px;
+	padding-top: 40px;
 
 }
-.selection-item .sub-name
-{
-	font-size: 1rem;
-	padding: 0;
+img{
+	display: inline-block;
+	margin-bottom: 15px;
 }
-.selection-item .author, .selection-item .rank{
+strong{
+	font-weight: 700;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+strong.color, span.number, .item-info a, .link .icon{
+
+	color:#c29f5f;
+}
+.link .icon{
+	padding-right: 10px;
+	margin-top: -3px;
+}
+.item-info a:not(.button){
+	text-decoration: underline;
+}
+.description strong.center{
+	color:#000;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 19px;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    display: block;
+    padding:60px 0 10px 0;
+    letter-spacing: 1px;
+}
+.description a {
+
+	color: #c29f5f;
+    text-decoration: underline;
+}
+.description li{
+	list-style: disc;
+    list-style-position: inside;
+}
+.loc{
+	display: block;
+}
+.contain-good-practice, .contain-infos{
+	width: 525px;
+	margin: 0 auto;
+}
+.item-good-practice{
+	width: 49%;
+	display: inline-block;
+	text-align: center;
+	height: 235px;
+	vertical-align: top;
+}
+.item-info{
+	height: auto;
+	max-height: 1000px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+.item-good-practice .icon, .item-info .icon{
+	font-size: 3rem;
+	color: #999999;
+	display: block;
+	margin-bottom: 25px;
+}
+.item-info .icon{
+	font-size: 80px;
+	line-height: 90px;
+}
+.item-good-practice p{
+	width: 240px;
+	height: 115px;
+	display: block;
+	font-size: 24px;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	line-height: 35px;
+	font-weight: 700;
+	margin:0 auto;
+}
+.contain-transport .item-info .icon{
+	color:#c8a461;
+	font-size: 180px;
+	margin-bottom: 30px;
+}
+section .button{
+	border: 1px solid #c8a461;
+	font-size: 18px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: 700;
+	margin: 20px 0;
+	text-decoration: none;
+}
+section .button:last-child{
+	border: 1px solid #c8a461;	
+}
+section .button .icon{
+	padding-right: 20px;
+}
+
+.item-info p{
+	font-size: 24px;
+	line-height: 36px;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.instructions-container .item-info{
+
+	width: 490px;
+	margin:0 auto 80px auto;
+}
+#google-map{
+	width: 100%;
+	height: 300px;
+	margin-bottom: 40px;
+}
+.img-container{
 
 	text-align: center;
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-  color: #c8a461;
-  padding-top: 10px;
-  font-style: italic;
+	margin-bottom: 40px;
 }
-.title-list-cat{
-  border-bottom: 1px solid #2c2c2c;
-  border-top:1px solid #2c2c2c;
-  width: 640px;
-  margin-left: -40px;
+.partners-container .title-participate{
+	padding:60px 0;
+	width: 450px
 }
-.title-list-cat .title{
-  color: #fff;
-  margin: 60px auto;
+a.partners-link{
+	text-transform: uppercase;
+	color: #c8a461;
+    font-size: 20px;
+    padding-right: 20px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: 700;
 }
-.title-list-cat .subtitle{
-  color: #fff;
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  padding-top: 10px;
-  font-style: italic;
-  line-height: 28px;
-  margin: 0 40px 60px;
-  max-height: 300px;
+.partner{
+	border-bottom: 1px solid #e0e0e0;
+	padding: 40px 0;
+	text-align: center;
 }
-.title-list-cat .subtitle.alone{
-  margin-top: 60px;
-  padding-top: 0;
+.portrait img{
+	float: left;
+	padding-right: 20px;
+}
+.portrait {
+	min-height: 85px;
+	margin-top: 40px;
+	font-size: 20px;
+	line-height: 36px;
+	display: inline-block;
+	text-align: left;
+}
+.portrait .rank{
+	line-height: 20px;
+}
+.title-participate{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #999999;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    width: 365px;
+    display: inline-block;
+    line-height: 35px;
+    vertical-align: middle;
+    padding: 60px 30px 60px 40px;
+    font-weight: 600;
+    -moz-transition: all 0.6s ;
+    -o-transition: all 0.6s ;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s ;
+}
+.open .title-participate{
+	color:#c29f5f;
+}
+.faq-container .title-participate{
+    padding: 30px 20px 30px 0;
+    width: 470px;
+    font-size: 20px;
+    letter-spacing: 0.02rem;
+    line-height: 30px;
+}
+.faq-container .section-title{
+    max-height: 200px;
+    max-height: 500px;
 }
 
+.banner-img .title .icon_palme{
+    font-size: 80px;
+    padding-bottom: 5px;
+}
+section{
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 40px;
+    max-height: 5000px;
+}
+.section-contain{
+	overflow: hidden;	
+    max-height: 0;
+	-moz-transition: all 0.6s ;
+    -o-transition: all 0.6s ;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s ;
+	/*display: none;*/
+}
+.open .section-contain{
+    max-height: 6000px;
+    height: auto;
+
+}
+.section-title .icon{
+    font-size: 3rem;
+    color: #999999;
+}
+.open .section-title .icon{
+    color:#c29f5f
+}
+.section-title .icon_case-plus{
+    font-size: 4rem;
+}
+.section-title .icon_moins{
+    font-size: 1.5rem;
+    position: relative;
+    left: 20px;
+}
+.description{
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    margin-bottom: 50px;
+    font-size: 24px;
+    line-height: 36px; 
+
+}
+#main{
+    background-color: #fff;
+}
+.faq-section-container{
+    display: none;
+
+}
+.faq-section-container.active{
+    display: block;
+
+}
+.faq .title{
+    font-size: 28px;
+}
+
+.press{
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+h3{
+
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+h3 .icon{
+
+	margin-top: -8px;
+	margin-right: 8px
+}
+p{
+	line-height: 28px;
+	font-size: 20px;
+	letter-spacing: -0.5px;
+}
+.img{
+	background-position: center center;
+  	background-size: cover;
+}
+.head{
+
+	background-color: #c8a461;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-size: 18px;
+	letter-spacing: 2px;
+}
+.head i{
+	font-size: 20px;
+	margin:-5px 10px 0 0;
+}
+.header-press .container{
+
+	padding: 60px 0 90px 0;
+}
+.header-press h2{
+
+	color: #c8a461;
+    font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif, "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+.title-section{
+	box-sizing: border-box;
+	height: 143px;
+	padding: 60px 0 60px 40px;
+	position: relative;
+	border-bottom: 1px solid #d6d6d6;
+	border-top: 1px solid #d6d6d6;
+}
+.title-section a {
+	position: absolute;
+	right: 40px;
+	top:60px;
+}
+.title-section  a{
+
+	color: #c8a461;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.title-section a .icon{
+	margin-right: 5px;
+	font-size: 15px;
+	margin-top: -3px;
+}
+
+/*LOCK*/
+.locked{
+
+	background-color: #f4f4f4;
+    border-top: 1px solid #d6d6d6;
+    height: 335px;
+    padding: 60px 40px;
+    box-sizing: border-box;
+}
+.locked p{
+	color: #666666;
+	margin:40px 0 45px 0;
+}
+.locked form input {
+    background: none;
+    border: 1px solid #c6c6c6;
+
+    box-sizing: border-box;
+    color: #999;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    display: block;
+    float: left;
+    outline: none;
+    padding: 0 25px;
+    height: 70px;
+    width: 395px;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+.locked form input[type="submit"] {
+    border: 1px solid #c8a461;
+    color: #c8a461;
+    cursor: pointer;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    width: auto;
+    text-align: center;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+/*COMM & INFOS*/
+.communiques-carousel{
+	margin:40px 0;
+}
+
+
+.communiques-carousel .thumb{
+	width: 516px;
+	padding: 30px;
+	border: 1px solid #d6d6d6;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+
+.communiques-carousel .owl-item{
+
+	width: 516px;
+	height: 530px;
+}
+.communiques-carousel .img-container{
+
+	position: relative;
+}
+.communiques-carousel .thumb img{
+	width: 455px;
+}
+.communiques-carousel .thumb .picto{
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+}
+.communiques-carousel .thumb .picto .icon{
+
+	color:#c8a461;
+	font-size: 30px;
+}
+.communiques-carousel .thumb.communique .picto, .communique .picto{
+	background-color: #c8a461;
+}
+.communiques-carousel .thumb.communique .picto .icon, .communique .picto .icon{
+	color:#000;
+}
+.communiques-carousel  .info{
+	width: 355px;
+	margin: 30px auto 0 auto;
+	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color:#666666;
+}
+.communiques-carousel  .info .category{
+
+	color: #c8a461;   
+    letter-spacing: 0.1em;
+    margin-right: 12px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+
+}
+.communiques-carousel  .info h2{
+
+	color: #000;
+	text-align: center;
+	margin-top: 15px;
+	font-family: "Playfair Display", Times New Roman, Times, serif;
+	font-size: 25px;
+	line-height: 30px
+}
+.communiques-carousel .top-info{
+
+	margin: 0 auto;
+	display: table;
+}
+
+/*MEDIATHEQUE*/
 /*SLIDERS*/
 .film-slider{
-  margin: 60px 0;
+	margin: 60px 0;
+	text-align: center;
 }
 .film-slider .owl-item{
-  width: 380px;
+
+	width: 280px;
+	height: 685px;
 }
 .film-slider .img-container{
 
-  width: 280px;
-  height: 380px;
-  margin: auto;
-  background-position: center center;
-    background-size: cover;
+	width: 280px;
+	height: 380px;
+	background-position: center center;
+  	background-size: cover;
 }
 .film-slider .info{
-  margin-top: 35px;
-  text-align: center;
+	margin-top: 35px;
+	text-align: center;
 }
 .film-slider .info p{
-  text-transform: uppercase;
-  color: #fff;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 25px;
-  margin-bottom: 8px;
-  max-width: 380px;
+	text-transform: uppercase;
+	color: #999999;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	margin-bottom: 8px;
 }
 .film-slider .info p.subtitle{
-  font-size: 18px;
+	font-size: 18px;
 
 }
 .film-slider .info p.duration{
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  color:#999999;
-  font-size: 18px;
-  margin-top: 8px;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	color:#999999;
+	font-size: 16px;
+	margin-top: 8px;
 }
 .film-slider .info a{
 
-  font-size: 22px;
-  font-style: italic;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  color:#c8a461;
+	font-size: 22px;
+	font-style: italic;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	color:#c8a461;
 }
 .film-slider .owl-stage-outer{
-  margin-left: 0;
+	margin-left: 0;
 }
-.film-slider .text{
-  display: block;
-    height: auto;
-    font-size: 20px;
-    width: 380px;
+.film-slider .medias{
+	color: #999999;
     text-align: center;
-    color: #fff;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    line-height: 28px;
-}
-.film-slider .text strong{
-  color: #c8a461;
-}
-.film-slider .text p:last-child{
-  margin-top: 30px;
-}
-
-#horizontal-menu2{
-  height: 110px;
-  background-color: #1b1b1b;
-  z-index: 50;
-}
-
-#horizontal-menu2 .vid {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  width: auto;
-  line-height: 110px;
-  /*padding: 0 20px 0 20px;*/
-
-}
-
-#horizontal-menu2 .vid p{
-  
-  display: block;
-  font-size: 1.5rem;
-  margin-top: 3px;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 600;
-}
-#horizontal-menu2 .vid p a{
-  color:  #999999;
-}
-#horizontal-menu2 .vid p a.active{
-  color: #c8a461;
-}
-#horizontal-menu2 .owl-stage{
-
-  height: 100%;
-}
-
-
-.selection section{
-  padding: 0 40px;
-}
-.selection section h2.title{
-  
-}
-
-a{
-
-  color:#c8a461;;
-}
-.slideshow{
-
-  border: none;
-}
-.selection .container{
-  padding-top: 50px;
-  font-size: 0;
-}
-#player{
-    margin-bottom: 40px;
-}
-.article-title{
-  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-  text-align: center;
-  max-height: 200px;
-  margin-bottom: 40px;
-  font-size: 20px;
-  color: #666;
-}
-.article-title .category {
-  color: #c8a461;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-right: 12px;
-  text-transform: uppercase;
-}
-.article-title span {
-  color: #666;
-  display: inline-block;
-  font-size: 20px;
-}
-.article-title h2 {
-  color: #fff;
-  font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-size: 35px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 46px;
-  width: 420px;
-  margin: 40px auto 0 auto;
-  text-align: center;
-}
-.text-content{
-    font-size: 24px;
-    color:#999999;
-    max-height: 1000px;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    line-height: 30px;
-    margin: 40px auto;
-}
-.text-content h3{
-  color: #999999;
-  margin: 20px 0;
-}
-.text-content h3 strong{
-  color: #c8a461;
-}
-/*SECTION*/
-
-.section{
-  padding: 30px 0;
-
-}
-.title-section{
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  color:#000;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  /*font-size: 1.5rem;*/
-  font-size: 22px;
-
-}
-
-.section p{
-
-  color:#666666;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  /*font-size: 1.5rem;*/
-  line-height: 30px;
-  font-size: 24px;
-}
-
-/*SLIDER*/
-
-section .owl-stage-outer{
-
-  width: 640px;
-  margin-left: -32px;
-}
-.video{
-  position: relative;
-}
-.video .infos{
-  position: absolute;
-}
-.slideshow .video .info .titleLink{
-
-  font-size: 23px;
-  max-width: 445px;
-}
-.slideshow{
-
-  padding: 0;
-  margin: 0;
-}
-
-
-/*PHOTO */
-.photo-container{
-  display: inline-block;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  font-size: 0;
-}
-.photo-container img{
-
-  max-width: 100%;
-}
-.photo-container .caption {
-    color: #969696;
-    font-size: .750rem;
-    line-height: 20px;
-    margin: 10px 0 0 0;
-    text-align: left;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-}
-.half-photo{
-  vertical-align: top;
-  width: 47%;
-  height: 410px;
-}
-.half-photo + .half-photo{
-
-  float: right;
-}
-.half-photo img{
-
-  height: 100%;
-  object-fit:cover;
-}
-.quote{
-  margin-top: 40px;
-}
-.quote blockquote {
-    color: #fff;
-    border-bottom: 1px solid #e5e5e5;
-    border-top: 1px solid #e5e5e5;
-    font-size: 25px;
-    line-height: 35px;
-    padding: 40px 15px;
-    margin-bottom: 40px;
-    text-align: center;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-}
-
-/*INFO FILM*/
-.film {
-    height: 730px;
-    overflow: hidden;
-    background-color: #2e2e2e;
     margin-top: 40px;
+    font-size: 28px;
 }
-.info-film {
-    background-color: #2e2e2e;
-    color: #fff;
-    height: 50%;
-    overflow: hidden;
+.film-slider .medias .icon{
+	margin-top: 5px;
 }
-.film .info-film .wrapper{
-  height: 100%;
-  margin-left: 70px;
+.film-slider .media span{
+	font-size: 20px;
 }
-.film .info-film .wrapper .poster {
-    display: inline-block;
-    margin-right: 65px;
-    vertical-align: middle;
+.film-slider .media{
+
+	display: inline-block;
 }
-.film .info-film .wrapper .text-container {
-    display: inline-block;
-    vertical-align: middle;
+.film-slider .media.trailer{
+	margin: 0 40px;
 }
-.film .info-film .wrapper .category {
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 700;
+.film-slider .discover{
+	margin-top: 60px;
+	font-size: 25px;
+	font-weight: 700;
+    border: 1px solid #c8a461;
+    height: 65px;
+    line-height: 65px;
+    box-sizing: border-box;
+    padding: 0 30px;
+    font-size: 22px;
+
+
 }
-.film .info-film .wrapper h3 {
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    font-size: 25px;
-    margin: 20px 0 10px 0;
-    text-transform: uppercase;
-    font-weight: 700;
+
+/*DOWNLOADS*/
+.contain-section h3{
+	margin:60px 0;
 }
-.film .info-film .wrapper p.director {
-    color: #c8a461;
-    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    margin-bottom: 35px;
-    position: relative;
-    font-style: italic;
+.downloads .portrait{
+	width: 470px;
+	margin: 0 auto;
 }
-.film .info-film .wrapper p.director:after {
-    background-color: #bababa;
-    bottom: -18px;
-    content: '';
-    display: block;
-    height: 1px;
-    left: 0;
-    position: absolute;
-    width: 27px;
+.downloads img{
+
+	margin: 0 auto 20px auto;
+	display: block;
+	border: 1px solid #d6d6d6;
+
 }
-.film .info-film .wrapper p {
-    color: #bababa;
-    font-size: 15px;
-    margin: 10px 0;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+.downloads .portrait img{
+	width: 280px;
+	
 }
-.film .programmation-film {
-    background-color: #141414;
-    height: 50%;
-    overflow: hidden;
+.downloads .caption{
+	font-size: 15px;
+	color:#666666;
+	width: 305px;
+	margin: 0 auto;
+	line-height: 18px;
+	max-height: 100px;
 }
-.film .programmation-film .wrapper {
-    color: #fff;
-    height: 100%;
-    margin-left: 70px;
+.downloads .landscape .caption{
+	width: 540px;
 }
-.film .programmation-film .wrapper .category {
-    color: #c8a461;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size:20px;
+.downloads .type-format{
+
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 700;
+    margin:40px 0 30px 0;
 }
-.film .programmation-film .wrapper ul {
-    padding: 38px 0 0 0;
+.downloads .button-locked{
+	color:#b0b0b0;
 }
-.film .programmation-film .wrapper ul li {
-    display: inline-block;
-    font-size: 15px;
-    width: 280px;
+.downloads .buttons-unlocked .button{
+	border: 1px solid #c8a461;
+	border-right:none;
 }
-.film .programmation-film .wrapper ul li span {
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    color: #bababa;
-    margin-right: 8px;
+.downloads .buttons-unlocked .button:last-child{
+	border-right: 1px solid #c8a461;
 }
-.film .programmation-film .wrapper ul li span.type {
-    color: #787878;
-    text-transform: uppercase;
+.downloads .buttons{
+	text-align: left;
+ 	width: 470px;
+ 	margin: 0 auto 60px auto;
 }
-.film .programmation-film .wrapper ul li span.location {
-    color: #fff;
-    display: block;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+.downloads .button{
+
+	font-weight: 700;
+    height: 80px;
+    line-height: 80px;
+    box-sizing: border-box;
+    padding: 0 40px;
+    font-size: 19px;
+}
+
+.downloads .button .icon{
+	font-size: 25px;
+	margin-top: -5px;
+	margin-right: 20px;
+}
+
+.press-locked .buttons-unlocked{
+
+	display: none;
+}
+.press-unlocked .buttons-locked{
+	display: none;
+}
+/*BANNER IMG*/
+.banner-img:before
+{
+	background: rgba(0, 0, 0, 0.8);
+}
+
+/*STATS*/
+.statistics img{
+
+	width: 100%;
+	margin: 60px auto;
+}
+.statistics .contain-section h3{
+	color: #c8a461;
+	letter-spacing: 2px;
+	margin-bottom: 24px;
+}
+.statistics .contain-section p{
+	font-size: 19.5px;
+	line-height: 30px;
+	max-height: 1000px;
+
+}
+
+/*CONTACT*/
+
+.contact .title-section h3{
+
+	text-align: center;
+	font-family: "Playfair Display", Times New Roman, Times, serif;
+	font-size: 24px;
+	letter-spacing: 10px;
+}
+.contact .title-section{
+
+	padding: 60px 0;
+
+}
+.sub-section{
+	padding: 0 40px;
+	border-bottom: 1px solid #d6d6d6;
+	overflow: hidden;
+	max-height: 1000px;
+}
+.sub-section .title-section{
+	text-transform: inherit;
+	letter-spacing: 0;
+	border:none;
+	font-size: 24px;
+	text-align: left;
+}
+.sub-section .title-section .icon{
+	position: absolute;
+	right: 0;
+	margin: 0;
+
+}
+.sub-section .contact-content{
+	
+	max-height: 0;
+	overflow: hidden;
+    -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    text-align: left;
+
+}
+
+.open .contact-content{
+
+	max-height: 400px;
+	margin-top: -30px;
+}
+.contact-content strong{
+	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+	font-size: 22px;
+	font-weight: 600;
+}
+.contact-content p{
+	margin-bottom: 30px;
+}
+
+.contact-content a{
+	color:#c8a461;
+	font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+}
+.contact{
+	text-align: center;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.contact .button{
+
+	margin:60px auto;
+	font-weight: 700;
+    border: 1px solid #c8a461;
+    height: 75px;
+    line-height: 75px;
+    box-sizing: border-box;
+    padding: 0 30px;
     font-size: 20px;
-    margin: 18px 0 40px 0;
-    position: relative;
+
+
 }
-.film .programmation-film .wrapper ul li span.location:after {
-    background-color: #525252;
-    bottom: -18px;
+
+/*POPIN UNLOCKED*/
+#overlay {
+	opacity: 1;
+	visibility: visible;
+	background-color: rgba(0, 0, 0, 0.75);
     content: '';
     display: block;
-    height: 1px;
+    height: 200%;
     left: 0;
     position: absolute;
-    width: 27px;
-}
-.film .programmation-film .wrapper ul li:nth-child(3) span.location:after, .film .programmation-film .wrapper ul li:nth-child(4) span.location:after {
-  display: none;
-}
-.film .programmation-film .wrapper .button {
-    border-color: #c8a461;
-    height: 40px;
-    line-height: 40px;
-    font-size: 14px;
-    font-weight: 700;
-}
-/*CREDITS AND CASTING*/
-
-.credits p, .casting p{
-  /*font-size: 0.8rem;*/
-  font-size: 22px;
-  line-height:30px;
-}
-.credits p.middle, .casting p.middle{
-  margin-bottom: 30px;
+    top: 0;
+    width: 100%;
+    z-index: 20;
 }
 
-/* SUMMARY */
-.summary{
-  color: #fff;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    line-height: 30px;
-    text-align: center;
+#popin-press {
+    visibility: hidden; 
+    opacity: 0; 
+    transform: translateY(30px);
+    transition: 0.6s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-color: #fff;
+    width: 524px;
+    padding: 59px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 120;
+    overflow-y: hidden;
+    box-sizing: border-box;
 }
-.trailer-container p{
-  margin-bottom: 0;
-    margin-top: 14px;
-    height: auto;
-    color: #fff;
-    font-size:19px;
+#popin-press.visible{
+	
+	visibility: visible;
+    opacity: 1;
+    transform: translateY(-30px);
+    pointer-events: initial;
+}
+#popin-press p{
+	color: #666666;
+	margin:40px 0 45px 0;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+#popin-press form input {
+    background: none;
+    border: 1px solid #c6c6c6;
+    float: left;
+    box-sizing: border-box;
+    color: #999;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    margin: 20px 0;
-}
-.trailer-container .container{
-  padding: 0;
-  margin: 0px 0 40px;
-}
-.trailer-container .jwplayer, .trailer-container .jwplayer#player {
-    margin-bottom: 20px;
-}
-p.title-video {
-    margin-bottom: 0;
-    margin-top: 14px;
-    height: auto;
-    color: #fff;
-    font-size: 24px;
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    margin-top: 20px;
-}
-.caption{
-    color: #c8a461;
-    display: inline-block;
     font-size: 20px;
-    font-weight: 700;
-    margin-right: 12px;
-    text-transform: uppercase;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-
+    display: block;
+    outline: none;
+    padding: 0 25px;
+    height: 70px;
+    width: 230px;
+    border-radius: 0;
+    -webkit-appearance: none;
 }
-
-/* slideshow */
-
-.slideshow {
-  position: relative;
-  width: 100%;
-}
-.slideshow .images{
-  width: 100%;
-  height: 356px;
-  position: relative;
-}
-.slideshow .img{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  display: none;
-}
-.slideshow .img.active{
-  display: block;
-}
-.slideshow .img a{
-  width: 100%;
-  height: 100%;
-}
-.slideshow .img img{
-  width: 100%;
-  height: 100%;
-}
-.slideshow {
-
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    margin-bottom: 0px;
-  padding: 30px 0 0px 0;
-}
-
-.slideshow .thumbnails {
-  padding-top: 26px;
-  padding-bottom: 25px;
-    width: 640px;
-    /*margin-left: -40px;*/
-}
-
-.slideshow .thumbnails .owl-item.center + .owl-item, .slideshow .thumbnails .owl-item.center + .owl-item + .owl-item {
-  opacity: 1;
-}
-.slideshow .thumbnails .owl-item.center + .owl-item .linkVid, .slideshow .thumbnails .owl-item.center + .owl-item + .owl-item .linkVid {
-  display: block;
-}
-
-.slideshow .thumbnails .thumb {
-  height: 106px;
-  overflow: hidden;
-  position: relative;
-  width: 160px;
-}
-.slideshow .thumbnails .thumb img {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
-}
-.slideshow .thumbnails .thumb .image-wrapper img {
-  display: block;
-  position: absolute;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-}
-.slideshow .thumbnails .thumb.active:before {
-  content: '';
-  display: block;
-  height: 90px;
-  width: 144px;
-  position: absolute;
-  top: 0px;
-  left: 0;
-  border:8px solid #c8a461;
-  z-index: 1;
-}
-
-.slideshow .thumbnails .thumb img {
-  display: block;
-}
-.slideshow .thumbnails .owl-nav {
-  display: none;
-}
-.slideshow h3 {
+#popin-press form input[type="submit"] {
+    border: 1px solid #c8a461;
     color: #c8a461;
-  display: inline-block;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-right: 12px;
-  text-transform: uppercase;
-}
-.slideshow .caption {
-  color: #666;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  height: 17px;
-  margin: 20px 0;
-}
-.slideshow .caption strong {
-  color: #333;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-}
-section:last-child{
-  margin-bottom: 40px;
-}
-.section .audio-player p{
-  color: #fff;
-}
-.selection-item{
-	background-color: #fff;
-  position: relative;
-}
-.selection-item .name, .selection-item .sub-name{
-	color:#000;
-	max-width: inherit;
-}
-.selection-item .name{
-	font-size: 1.4rem;
-}
-.jury-president .img{
-
-  background-position: center top;
-  background-size: cover;
-  width: 100%;
-  height: 875px;
-}
-.jury-president a, .selection-item a{
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 5;
-}
-.jury-president{
-
-	height: 1120px;
-	background-color: #fff;
-  position: relative;
-}
-.jury-president p:not(.rank){
-
-	text-transform: uppercase;
-    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: 0.2em;
-    color:#000;
-    font-weight: 600;
+    cursor: pointer;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    width: auto;
     text-align: center;
-    padding-top: 30px;
+    font-weight: 700;
+    margin-left: -1px;
 }
-.jury-president p.president-name{
+#popin-press h3{
+	font-size: 20px;
+}
+.close-button{
+    top: 90px;
+    right: 40px;
 
-    font-size: 3rem;
-    letter-spacing: 0.1em;
-    padding: 30px 0 20px 0;
+}
+.read-more{
+	margin-bottom: 40px;
+	box-sizing: border-box;
+}
+
+.header-press .container {
+    padding: 60px 0 30px 0;
+}
+.guid-container{
+	border-top: 1px solid #e0e0e0;
+}
+i{
+	font-style: italic;
+	display: block;
+	line-height: 10px;
+	margin-bottom: 20px;
 
 }
-.jury-president .rank{
-  text-align: center;
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  font-size: 1.3rem;
-  color: #c8a461;
-  padding-top: 10px;
-  font-style: italic;
-  letter-spacing: 1px;
+.title-contain{
+	line-height: 30px;
 }
-.title-jury{
-	color:#fff;
-	width: 640px;
-	margin: 45px auto;
+.contact-infos strong, .contact-infos a{
+	display: block;
+	margin-bottom: 10px;
+}
+section.contact{
+	padding: 0;
 }

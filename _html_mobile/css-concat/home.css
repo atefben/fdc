@@ -3971,6 +3971,10 @@ div{
   -moz-user-select: none;
   -ms-user-select: none;
 }
+/*  fix font size iOS / Android */
+p,h1,h2,h3,h4,blockquote, pre, a,ul, li{
+  max-height: 50000px;
+}
 
 /* for clearing any floats <br class=&quot;clearfloat&quot; /> */
 .clearfloat {
@@ -4245,6 +4249,10 @@ from desktop
 .title.three-lines{
   margin: 60px auto;
   height: 110px;
+}
+.title.four-lines{
+  margin: 60px auto;
+  height: 144px;
 }
 .subtitle {
   font-family: "Playfair Display", Times New Roman, Times, serif;
@@ -6538,7 +6546,7 @@ font-weight: bolder;
   height: 220px;
 }
 #menu .open .section-contain.subsection-3{
-  height: 275px;
+  height: 355px;
 }
 #menu .open .section-contain.subsection-4{
   height: 235px;
