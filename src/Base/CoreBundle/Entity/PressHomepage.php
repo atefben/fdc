@@ -52,7 +52,7 @@ class PressHomepage
     /**
      * @var PressHomepagePushMain
      *
-     * @ORM\OneToMany(targetEntity="PressHomepagePushMain", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="PressHomepagePushMain", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
      */
     protected $pushsMain;
 

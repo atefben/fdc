@@ -92,6 +92,7 @@ entity:
     social_wall: Social Wall
     press_homepage: Accueil Espace Presse
     contact_page: Page de contact
+    press_accredit: S’accréditer
 list:
     label_id: Identifiant
     label_title: Titre
