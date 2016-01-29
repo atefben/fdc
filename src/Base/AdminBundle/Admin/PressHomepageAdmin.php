@@ -20,7 +20,6 @@ class PressHomepageAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('homeMedia')
         ;
     }
 
@@ -54,16 +53,6 @@ class PressHomepageAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
-                    'title' => array(
-                        'label' => 'form.press_homepage.title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.press_homepage.helper_page',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -71,14 +60,72 @@ class PressHomepageAdmin extends Admin
                         'display' => false
                     ),
                     'sectionStatementInfoTitle' => array(
-                        'label' => 'form.press_homepage_statement_info.title',
+                        'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.press_homepage_statement_info.helper_page',
                         'locale_options' => array(
                             'fr' => array(
                                 'required' => true
                             )
                         )
+                    ),
+                    'sectionSchedulingTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'sectionMediaTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'sectionMediaSubtitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'sectionDownloadTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'sectionStatisticTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'sectionStatisticSubtitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'sectionStatisticDescription' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_content',
+                        'translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
                         'attr' => array(
@@ -98,15 +145,34 @@ class PressHomepageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
 
-                    )
+                    ),
                 )
             ))
-            ->add('pushsMain', 'sonata_type_collection', array(
-                'by_reference' => true
-            ))
-            ->add('pushsSecondary', 'sonata_type_collection', array(
-                'by_reference' => true
-            ))
+            ->add('sectionStatementInfoDisplay')
+            ->add('sectionSchedulingDisplay')
+            ->add('sectionMediaDisplay')
+            ->add('sectionDownloadDisplay')
+            ->add('sectionStatisticDisplay')
+            ->add('pushsMain', 'sonata_type_collection',
+                array(
+                    'by_reference' => false,
+                    'btn_add' => true
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('pushsSecondary', 'sonata_type_collection',
+                array(
+                    'by_reference' => false,
+                    'btn_add' => true
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('section', 'sonata_type_collection',
                 array(
                     'type_options' => array(
@@ -119,7 +185,7 @@ class PressHomepageAdmin extends Admin
                             )
                         )
                     ),
-                    'btn_add' => false,
+                    'btn_add' => true,
                     'cascade_validation' => true,
                     'by_reference' => false,
                 ),
@@ -142,7 +208,8 @@ class PressHomepageAdmin extends Admin
                         )
                     ),
                     'cascade_validation' => true,
-                    'by_reference' => false
+                    'by_reference' => false,
+                    'help' => 'form.press_homepage.helper_media'
                 ),
                 array(
                     'edit' => 'inline',
@@ -166,7 +233,7 @@ class PressHomepageAdmin extends Admin
                     ),
                     'btn_add' => true,
                     'cascade_validation' => true,
-                    'by_reference' => false
+                    'by_reference' => false,
                 ),
                 array(
                     'edit' => 'inline',
@@ -184,6 +251,7 @@ class PressHomepageAdmin extends Admin
                 'help' => 'form.press.helper_stat_image2',
                 'translation_domain' => 'BaseAdminBundle'
             ))
+
         ;
 
     }

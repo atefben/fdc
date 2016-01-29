@@ -45,9 +45,8 @@ class ContactPageAdmin extends Admin
                 'required_locales' => array('fr'),
                 'fields' => array(
                     'title' => array(
-                        'label' => 'form.label_page',
+                        'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.contact_page.helper_page',
                         'locale_options' => array(
                             'fr' => array(
                                 'required' => true
@@ -56,22 +55,22 @@ class ContactPageAdmin extends Admin
                     ),
                     'firstColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_first_column',
+                        'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'secondColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_second_column',
+                        'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'thirdColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_third_column',
+                        'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'fourthColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_fourth_column',
+                        'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'createdAt' => array(
