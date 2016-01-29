@@ -374,7 +374,7 @@ from desktop
     -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#main.dark-background{
+#main.dark-background,.dark-background {
   background: #141414;
 }
 #sliderWrapper .owl-dots {
@@ -3339,6 +3339,7 @@ display: inline-block;
   width: 640px;
   margin-left: -40px;
 }
+
 .title-list-cat .title{
   color: #fff;
   margin: 60px auto;
@@ -3513,7 +3514,8 @@ a{
   letter-spacing: 0.02em;
   line-height: 46px;
   width: 420px;
-  margin: 40px auto 0 auto;
+  margin: 0px auto 0 auto;
+  padding-top: 40px;
   text-align: center;
 }
 .text-content{
@@ -3925,10 +3927,85 @@ p.title-video {
   font-weight: 700;
 }
 section:last-child{
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 .section .audio-player p{
   color: #fff;
+}
+
+
+.movie-container{
+  text-align: center;
+  width: 100%;
+  margin: 40px 0 0px;
+  padding-bottom: 60px;
+}
+.date-pres-item {
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: .2em;
+    margin-bottom: 18px;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 40px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    
+}
+.hour-pres-item {
+    color: #999;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+margin-left: 6px;
+    font-weight: 700;
+}
+.movie-container .title-item {
+    text-transform: uppercase;
+    color: #fff;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 8px;
+    max-width: 480px;
+    line-height: 34px;
+    margin: 20px auto;
+}
+.movie-container .name-item {
+    font-size: 22px;
+    font-style: italic;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    color: #c8a461;
+    margin: 20px auto;
+}
+.movie-container .text{
+      font-size: 20px;
+    width: 480px;
+    text-align: center;
+    color: #fff;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 28px;
+    margin: 10px auto;
+}
+.movie-container .img {
+    width: 280px;
+    height: 380px;
+    margin: auto;
+    background-position: center center;
+    background-size: cover;
+}
+.date-item {
+  display: block;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    color: #999999;
+    font-size: 18px;
+    margin-top: 8px;
+
+    margin: 10px auto;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    max-width: 380px;
 }
 .selection-item{
 	background-color: #fff;

@@ -318,8 +318,17 @@ $(document).ready(function() {
 	          }
 	          if($(".invit").length !== 0){
 	          	$( ".content-selection2" ).addClass('show');
+	          	if (!$('#main').hasClass('cannesclassic')) {
+	          		$('#main').addClass('cannesclassic');
+	          		$('#main').addClass('dark-container');
+	          	};
 	          	$.initMenu2();
 	          	$.initInvit();
+	          }else{
+	          	if ($('#main').hasClass('cannesclassic')) {
+	          		$('#main').removeClass('cannesclassic');
+	          		$('#main').removeClass('dark-container');
+	          	};
 	          }
 	          
 	   //        // refresh isotope
@@ -341,16 +350,17 @@ $(document).ready(function() {
 
 	}
 
-	if (!$('#main').hasClass('selection')) {
+	
 		// FIX HORIZONTAL MENU
 		$(window).on('scroll', function() {
+			if (!$('#main').hasClass('cannesclassic')) {
 		    var s = $(this).scrollTop();
 
 		    if(s > $(".header-container").height() + $('.banner-img').height()){
 		    	$("#horizontal-menu").css('position','fixed');
 		    	$("#horizontal-menu").css('top',$(".header-container").height());
 		    	$(".selection-container").css('margin-top',$(".header-container").height());
-		    	$(".content-selection").css('margin-top',$(".header-container").height());
+		    	$(".content-selection").css('margin-top',$(".header-container").height()+10);
 		    	
 		    	if($(".palmares-container").length !== 0){
 		    		$(".palmares-container").css('margin-top',$(".header-container").height());
@@ -366,8 +376,9 @@ $(document).ready(function() {
 		    		$(".palmares-container").css('margin-top',0);
 		    	}
 		    }
+		}
 		 });
-	}
+	
 	
 
 

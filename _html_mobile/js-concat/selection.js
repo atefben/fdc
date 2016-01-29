@@ -1607,8 +1607,17 @@ $(document).ready(function() {
 	          }
 	          if($(".invit").length !== 0){
 	          	$( ".content-selection2" ).addClass('show');
+	          	if (!$('#main').hasClass('cannesclassic')) {
+	          		$('#main').addClass('cannesclassic');
+	          		$('#main').addClass('dark-container');
+	          	};
 	          	$.initMenu2();
 	          	$.initInvit();
+	          }else{
+	          	if ($('#main').hasClass('cannesclassic')) {
+	          		$('#main').removeClass('cannesclassic');
+	          		$('#main').removeClass('dark-container');
+	          	};
 	          }
 	          
 	   //        // refresh isotope
@@ -1630,16 +1639,17 @@ $(document).ready(function() {
 
 	}
 
-	if (!$('#main').hasClass('selection')) {
+	
 		// FIX HORIZONTAL MENU
 		$(window).on('scroll', function() {
+			if (!$('#main').hasClass('cannesclassic')) {
 		    var s = $(this).scrollTop();
 
 		    if(s > $(".header-container").height() + $('.banner-img').height()){
 		    	$("#horizontal-menu").css('position','fixed');
 		    	$("#horizontal-menu").css('top',$(".header-container").height());
 		    	$(".selection-container").css('margin-top',$(".header-container").height());
-		    	$(".content-selection").css('margin-top',$(".header-container").height());
+		    	$(".content-selection").css('margin-top',$(".header-container").height()+10);
 		    	
 		    	if($(".palmares-container").length !== 0){
 		    		$(".palmares-container").css('margin-top',$(".header-container").height());
@@ -1655,8 +1665,9 @@ $(document).ready(function() {
 		    		$(".palmares-container").css('margin-top',0);
 		    	}
 		    }
+		}
 		 });
-	}
+	
 	
 
 
@@ -1880,27 +1891,19 @@ $.initMenu2 = function(){
 	        $(this).addClass('active');
 	      }
 	    });
-}
-
-	$( ".content-selection2" ).addClass('show');
-	$("#banner-top").addClass('show');
-	$("#banner-bottom").addClass('show');
-
-	
-	
-	$.initMenu2();
-	
-
 
 	// FIX HORIZONTAL MENU
+	
 	$(window).on('scroll', function() {
+		if ($('#main').hasClass('cannesclassic')) {
 	    var s = $(this).scrollTop();
 
 	    if(s > $(".header-container").height() + $('.banner-img').height()+$('#horizontal-menu').height()){
+	    	console.log("sticky");
 	    	$("#horizontal-menu2").css('position','fixed');
 	    	$("#horizontal-menu2").css('top',$(".header-container").height());
-	    	$(".selection-container").css('margin-top',$(".header-container").height());
-	    	$(".content-selection2").css('margin-top',$(".header-container").height());
+	    	$(".selection-container").css('margin-top',$(".header-container").height()+10+'px');
+	    	//$(".content-selection2").css('margin-top',$(".header-container").height()+10+'px');
 	    	
 	    	if($(".palmares-container").length !== 0){
 	    		$(".palmares-container").css('margin-top',$(".header-container").height());
@@ -1916,8 +1919,22 @@ $.initMenu2 = function(){
 	    		$(".palmares-container").css('margin-top',0);
 	    	}
 	    }
+	}
 	 });
+	
+}
 
+	$( ".content-selection2" ).addClass('show');
+	$("#banner-top").addClass('show');
+	$("#banner-bottom").addClass('show');
+
+	
+	
+	$.initMenu2();
+	
+
+
+	
 	$.initInvit();
 	
 
