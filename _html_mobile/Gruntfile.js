@@ -24,9 +24,9 @@ grunt.initConfig({
 			            
 				        ],
 				    './css-concat/communiques.css': [
+				    	'./css/filters.css',
 			            './css/main.css', 
 			            './css/include/*.css',
-			            './css/filters.css',
 			            './css/articles.css',
 			            './css/press.css'
 			            
@@ -248,8 +248,11 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
 				            './js/filters.js',
-				            './js/add-to-selection.js',
-				            './js/horizontal-filters.js'
+				            './js/horizontal-filters.js',
+				            './js/communiques.js',
+				            './js/jsonTest.js',
+				            './js/press.js',
+
 				        ],
 				    './js-concat/events.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 

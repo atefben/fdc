@@ -3484,10 +3484,10 @@ p{
 	color:#c8a461;
 	font-size: 30px;
 }
-.communiques-carousel .thumb.communique .picto{
+.communiques-carousel .thumb.communique .picto, .communique .picto{
 	background-color: #c8a461;
 }
-.communiques-carousel .thumb.communique .picto .icon{
+.communiques-carousel .thumb.communique .picto .icon, .communique .picto .icon{
 	color:#000;
 }
 .communiques-carousel  .info{
@@ -3760,6 +3760,7 @@ p{
 .contact-content strong{
 	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 	font-size: 22px;
+	font-weight: 600;
 }
 .contact-content p{
 	margin-bottom: 30px;
@@ -3868,4 +3869,8 @@ p{
     top: 90px;
     right: 40px;
 
+}
+.read-more{
+	margin-bottom: 40px;
+	box-sizing: border-box;
 }
