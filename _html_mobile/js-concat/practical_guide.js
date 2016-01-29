@@ -230,213 +230,305 @@ function closeSearch() {
 
 
 });
-var GLOBALS = {
-  "locale" : "fr",
-  "defaultDate" : "2016-05-12",
-  "api" : {
-    "instagram" : {
-      "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
-      "hashtag" : "Cannes2016",
-    },
-    "twitter" : {
-      "hashtag" : "%23Cannes2016",
-      "count" : 10,
-      "uri" : "search_tweets",
-      "url" : "twitter.php"
-    }
-  },
-  "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
-  "urls" : {
-    "calendarProgrammationUrl" : "calendarprogrammation.html",
-    "eventUrl" : "load-evenements.php",
-    "newsUrl" : "news.html",
-    "newsUrlNext" : "more-news.html",
-    "loadPressRelease" : "more-communique.html",
-    "selectionUrl" : "selection.html"
-  },
-  "texts" : {
-    "url" : {
-      "title" : "titre test"
-    },
-    "popin" : {
-      "error" : "valide",
-      "empty" : "renseignée",
-      "valid" : "Votre email a bien été envoyé !",
-      "copy"  :  "lien copié ! "
-    },
-    "googleMap" : {
-      "title" : "Festival de Cannes"
-    },
-    "readMore" : {
-      "more" : "Afficher <strong>plus d'actualités</strong>",
-      "nextDay" : "Passer au <strong>jour précédent</strong>"
-    },
-    "newsletter" : {
-      "errorsNotValide" : "L'adresse e-mail n'est pas valide",
-      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
-    },
-    'agenda' : {
-      'delete' : "Supprimer de votre agenda"
-    }
-  },
-  "player": {
-    "file" : "./files/mov_bbb.mp4",
-    "image" : "//dummyimage.com/960x540/c8a461/000.png",
-    "title" : "Video 1"
-  },
-  "calendar": {
-    "labelFormat": {
-      "fr" : "H [H]",
-      "default" : "h A"
-    }
-  },
-  "socialWall": {
-    "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
-    "heightGraph" : 200
-  }
-};
+$( function() {
+
+  $('.section-title').click(function(){
+
+  		if($(this).parents('#menu').length == 0 ){
+  			$(this).parent().toggleClass('open');
+  			$(this).find('.icon_case-plus').toggleClass('icon_moins');
+  		}
+  		// $(this).parent().parent().find(".section-contain").slideToggle('slow');
+  		
+  });
+  
+});
+
+
+
+
 $(document).ready(function() {
+ 
 
-
-	$( ".content-selection" ).addClass('show');
-	$("#banner-top").addClass('show');
-	$("#banner-bottom").addClass('show');
-
-	
-	var menu = $("#horizontal-menu").owlCarousel({
-		  nav: false,
-		  dots: false,
-		  smartSpeed: 500,
-		  margin: 40,
-		  autoWidth: true,
-		  loop: false,
-		  items:1,
-		  onInitialized: function() {
-		    var m = ($(window).width() - $('.container').width()) / 2;
-		    $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
-		  },
-		  onResized: function() {
-		    var m = ($(window).width() - $('.container').width()) / 2;
-		    $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
-		  }
-		});
-		menu.owlCarousel();
-
-		if($('.faq-page').length == 0){
-			var toIndex = $('a.active').parents('.owl-item').index() - 1;
-			menu.trigger("to.owl.carousel", [toIndex, 2, true]);	
-
-		}
-
-
-	// NO AJAX FOR FAQ
-
-	if($('.faq-page').length !== 0){
-
-		$('#horizontal-menu a').on('click',function(e){
-	      	e.preventDefault();
-  			$('#horizontal-menu a').removeClass('active');
-	        $(this).addClass('active');
-
-	        $(".faq-section-container").removeClass('active');
-	        $("."+$(this).data('section')).addClass('active');
-	    });
-	}
-
-	else
-
-	{
-
-
-	// AJAX CALL
-
-	    $('#horizontal-menu a').on('click',function(e){
-	      e.preventDefault();
-
-
-	      if($(this).is(':not(.active)')) {
-
-		      $( ".content-selection" ).removeClass('show');
-			  $("#banner-top").removeClass('show');
-		      $("#banner-bottom").removeClass('show');
-
-	        var urlPath = $(this).attr('data-url');
-	        $.get(urlPath, function(data){
-	          $( ".content-selection" ).html( $(data).find('.content-selection').html() );
-
-	           setTimeout(function() {
-	      			$( ".content-selection" ).addClass('show');
-	      			$("#banner-top").addClass('show');
-	      			$("#banner-bottom").addClass('show');
-	    		}, 300);
-
-
-	          if($("#banner-top").length !== 0){
-	          	$("#banner-top" ).html( $(data).find('#banner-top').html() );
-	          }
-	          if($("#banner-bottom").length !== 0){
-	          	$("#banner-bottom" ).html( $(data).find('#banner-bottom').html() );
-	          }
-
-	          if($('.palmares-container').length !== 0){
-	          	$.initFilmsSliders()
-	          }
-	          if($(".invit").length !== 0){
-	          	$( ".content-selection2" ).addClass('show');
-	          	$.initMenu2();
-	          	$.initInvit();
-	          }
-	          
-	   //        // refresh isotope
-	   //         if($('.grid').length !== 0){
-				//     $('.grid').isotope();
-				// }
-
-
-	           history.pushState('',GLOBALS.texts.url.title, urlPath);
-	          
-
-
-	        });
-
-	        $('#horizontal-menu a').removeClass('active');
-	        $(this).addClass('active');
+	var sliderCommuniques = $(".communiques-carousel").owlCarousel({ 
+	      nav: false,
+	      dots: false,
+	      smartSpeed: 500,
+	      fluidSpeed: 500,
+	      loop: false,
+	      margin: 0,
+	      autoWidth: true,
+	      dragEndSpeed: 600,
+	      items:1,
+	      onInitialized: function() {
+	        var m = ($(window).width() - $('.container').width()) / 2;
+	        $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
+	      },
+	      onResized: function() {
+	        var m = ($(window).width() - $('.container').width()) / 2;
+	        $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
 	      }
 	    });
 
+	    sliderCommuniques.owlCarousel();
+
+
+	var sliderMediatheque = $(".film-slider").owlCarousel({ 
+	      nav: false,
+	      dots: false,
+	      smartSpeed: 500,
+	      fluidSpeed: 500,
+	      loop: false,
+	      margin: 70,
+	      autoWidth: true,
+	      dragEndSpeed: 600,
+	      items:1,
+	      center:true
+	    });
+
+	    sliderMediatheque.owlCarousel();
+
+
+
+	$('.contact .sub-section .title-section').click(function(){
+
+		$(this).parent().toggleClass('open');
+		$(this).find('.icon').toggleClass('icon_fleche-top');
+	});	
+
+	var listener = function (event) {
+ 		event.preventDefault();
+	};
+
+	$('.button-locked').click(function(e){
+		e.preventDefault();
+		$('body').append('<div id="overlay"><div class="close-button"><i class="icon icon_close"></i></div></div>');
+		$("#popin-press").addClass('visible');
+		var scrollTop = $(document).scrollTop();
+		$("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
+		$("#overlay").css('top', scrollTop);
+		$('#password').focus();
+		document.body.addEventListener('touchmove', listener,false);
+
+		$('#overlay').click(function(e){
+			document.body.removeEventListener('touchmove', listener,false);
+			$(this).remove();
+			$("#popin-press").removeClass('visible');
+		});
+
+		$('#popin-press #password').on('blur', function(e) {
+
+			window.scrollTo(0,scrollTop);
+		});
+
+
+		$('#popin-press form').on('submit', function(e) {
+
+			$('#popin-press #password').blur();
+		    e.preventDefault();
+
+		    var v = $(this).find('input[type="password"]').val();
+		    // todo on server : security check password.
+
+		    if(v == "test") {
+		      // $.cookie('press', '1', { expires: 365 });
+		      $('.press').removeClass('press-locked');
+		      $('.press').addClass('press-unlocked');
+		      $('.locked').remove();
+		   	  document.body.removeEventListener('touchmove', listener,false);
+			  $('#overlay').remove();
+			  $("#popin-press").removeClass('visible');
+		    } else {
+		      $(this).addClass('error');
+		    }
+
+		});
+
+	});
+
+
+
+	// if cookie press
+	if($.cookie('press')) {
+	    $('.press').removeClass('press-locked');
+	    $('.press').addClass('press-unlocked');
+	    $('.locked').remove();
 	}
 
-	if (!$('#main').hasClass('selection')) {
-		// FIX HORIZONTAL MENU
-		$(window).on('scroll', function() {
-		    var s = $(this).scrollTop();
 
-		    if(s > $(".header-container").height() + $('.banner-img').height()){
-		    	$("#horizontal-menu").css('position','fixed');
-		    	$("#horizontal-menu").css('top',$(".header-container").height());
-		    	$(".selection-container").css('margin-top',$(".header-container").height());
-		    	$(".content-selection").css('margin-top',$(".header-container").height());
-		    	
-		    	if($(".palmares-container").length !== 0){
-		    		$(".palmares-container").css('margin-top',$(".header-container").height());
-		    	}
+	$('.locked form').on('submit', function(e) {
 
-		    }
-		    else{
-		    	$("#horizontal-menu").css('position','relative');
-		    	$("#horizontal-menu").css('top','inherit');	
-		    	$(".selection-container").css('margin-top',0);
-		    	$(".content-selection").css('margin-top',0);
-		    	if($(".palmares-container").length !== 0){
-		    		$(".palmares-container").css('margin-top',0);
-		    	}
-		    }
-		 });
-	}
-	
+	    e.preventDefault();
+
+	    var v = $(this).find('input[type="password"]').val();
+	    // todo on server : security check password.
+
+	    if(v == "test") {
+	      // $.cookie('press', '1', { expires: 365 });
+	      $('.press').removeClass('press-locked');
+	      $('.press').addClass('press-unlocked');
+	      $('.locked').remove();
+	    } else {
+	      $(this).addClass('error');
+	    }
+
+	});
 
 
+		
+		$('#mycalendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			defaultDate: '2016-01-12',
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+				{
+					title: 'All Day Event',
+					start: '2016-01-01'
+				},
+				{
+					title: 'Long Event',
+					start: '2016-01-07',
+					end: '2016-01-10'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-01-09T16:00:00'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-01-16T16:00:00'
+				},
+				{
+					title: 'Conference',
+					start: '2016-01-11',
+					end: '2016-01-13'
+				},
+				{
+					title: 'Meeting',
+					start: '2016-01-12T10:30:00',
+					end: '2016-01-12T12:30:00'
+				},
+				{
+					title: 'Lunch',
+					start: '2016-01-12T12:00:00'
+				},
+				{
+					title: 'Meeting',
+					start: '2016-01-12T14:30:00'
+				},
+				{
+					title: 'Happy Hour',
+					start: '2016-01-12T17:30:00'
+				},
+				{
+					title: 'Dinner',
+					start: '2016-01-12T20:00:00'
+				},
+				{
+					title: 'Birthday Party',
+					start: '2016-01-13T07:00:00'
+				},
+				{
+					title: 'Click for Google',
+					url: 'http://google.com/',
+					start: '2016-01-28'
+				}
+			]
+		});
+		
 
 
+
+
+
+
+	// // CALENDAR
+
+	// var agenda = localStorage.getItem('agenda_press');
+ //    var events = JSON.parse(agenda);
+
+
+	// // create the 'my calendar' module
+ //      $('#mycalendar').fullCalendar({
+ //        lang: GLOBALS.locale, // TODO a verifier
+ //        defaultDate: GLOBALS.defaultDate, // TODO a supprimer
+ //        header: {
+ //          left: 'prev',
+ //          center: 'title',
+ //          right: 'next'
+ //        },
+ //        titleFormat: 'dddd DD MMMM',
+ //        defaultView: 'agendaDay',
+ //        minTime: "08:00:00",
+ //        maxTime: "28:00:00",
+ //        allDaySlot: false,
+ //        droppable: true,
+ //        selectOverlap: false,
+ //        events: events,
+ //        eventOverlap: false,
+ //        slotEventOverlap: false,
+ //        eventAfterRender: function (event, element, view) {
+ //          // atfer render of each event : change html with all the info
+ //          if (event.duration / 60 < 2) {
+ //            $(element).addClass('one-hour');
+ //          }
+ //          var dur = event.duration / 60 + 'H';
+ //          var c = event.eventColor;
+ //          $(element).empty();
+ //          $(element).addClass(event.eventPictogram).addClass('ajax');
+ //          $(element).attr('data-id', event.id);
+
+ //          if (c == '#000') {
+ //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
+ //          } else if (c == "#9b9b9b") {
+ //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance"></i>' + event.type + '<a href="#" class="del"></a></span>');
+ //          } else if (c == "#a68851") {
+ //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"></a></span>');
+ //          } else if (c == "#fff") {
+ //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-personnel"></i>' + event.type + '<a href="#" class="del"></a></span>');
+ //          } else {
+ //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
+ //          }
+
+ //          $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
+ //          $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
+ //        },
+ //        viewRender: function (view) {
+ //          // limit the min date and max date of the calendar, and change the programmation calendar date
+ //          var moment = $('#mycalendar').fullCalendar('getDate');
+
+ //          $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
+
+ //          if (moment.format('DD') > maxDate) {
+ //            $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
+ //          }
+ //          if (moment.format('DD') < minDate) {
+ //            $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
+ //          }
+
+ //          if (moment.format('DD') == maxDate) {
+ //            $('#mycalendar .fc-right').addClass('hide');
+ //          }
+ //          if (moment.format('DD') == minDate) {
+ //            $('#mycalendar .fc-left').addClass('hide');
+ //          }
+
+ //          var m = $('#mycalendar').fullCalendar('getDate');
+ //          $('#dateProgram').text(m.format('DD MMMM YYYY'));
+ //          $('#timeline a').each(function () {
+ //            var d = $(this).data('date');
+ //            if (d == m.format()) {
+ //              $(this).trigger('click');
+ //            }
+ //          });
+ //        }
+ //      });
 
 });

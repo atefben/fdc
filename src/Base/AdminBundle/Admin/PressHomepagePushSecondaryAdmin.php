@@ -20,7 +20,6 @@ class PressHomepagePushSecondaryAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('film')
         ;
     }
 
@@ -33,7 +32,6 @@ class PressHomepagePushSecondaryAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('film')
         ;
     }
 
@@ -43,14 +41,51 @@ class PressHomepagePushSecondaryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('description')
+            ->add('translations', 'a2lix_translations', array(
+                'label' => false,
+                'translation_domain' => 'BaseAdminBundle',
+                'required_locales' => array(),
+                'fields' => array(
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
+                    'title' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'description' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+
+                )
+            ))
             ->add('file', 'sonata_type_model_list', array(
-                'help' => 'form.news.helper_film_film_associated',
-                'required' => false,
+                'required' => true,
                 'btn_add' => false,
             ))
-            ->add('url')
+            ->add('url', 'text', array(
+                'label' => 'form.press_homepage.push_link',
+                'translation_domain' => 'BaseAdminBundle',
+                'locale_options' => array(
+                    'fr' => array(
+                        'required' => true
+                    )
+                )
+            ))
         ;
 
     }
@@ -67,14 +102,14 @@ class PressHomepagePushSecondaryAdmin extends Admin
         ;
     }
 
-    public function prePersist($homepageTranslation)
+    public function prePersist($homepage)
     {
-        $this->preUpdate($homepageTranslation);
+        $this->preUpdate($homepage);
     }
 
-    public function preUpdate($homepageTranslation)
+    public function preUpdate($homepage)
     {
-        $homepageTranslation->setPushsSecondary($homepageTranslation->getPushsSecondary());
+        $homepage->setPushsSecondary($homepage->getPushsSecondary());
     }
 
 }

@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\CoreBundle\Util\Time;
 
@@ -17,6 +18,7 @@ use Base\CoreBundle\Util\Time;
 class PressHomepagePushMain
 {
     use Time;
+    use Translatable;
 
     /**
      * @var integer
@@ -26,20 +28,6 @@ class PressHomepagePushMain
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=false)
-     **/
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=false)
-     **/
-    private $description;
 
     /**
      * @var string
@@ -60,6 +48,18 @@ class PressHomepagePushMain
      */
     private $homepage;
 
+    /**
+     * ArrayCollection
+     */
+    protected $translations;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -80,52 +80,6 @@ class PressHomepagePushMain
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return PressHomepagePushMain
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return PressHomepagePushMain
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**

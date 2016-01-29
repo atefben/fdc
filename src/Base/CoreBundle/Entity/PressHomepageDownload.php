@@ -50,7 +50,7 @@ class PressHomepageDownload
      * @ORM\ManyToOne(targetEntity="PressHomepage", inversedBy="homeDownload")
      */
     protected $homepage;
-
+    
 
     /**
      * Get id

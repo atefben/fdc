@@ -20,7 +20,6 @@ class PressHomepagePushMainAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('film')
         ;
     }
 
@@ -33,7 +32,6 @@ class PressHomepagePushMainAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('film')
         ;
     }
 
@@ -43,14 +41,52 @@ class PressHomepagePushMainAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('description')
+            ->add('translations', 'a2lix_translations', array(
+                'label' => false,
+                'translation_domain' => 'BaseAdminBundle',
+                'required_locales' => array(),
+                'fields' => array(
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
+                    'title' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'description' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+
+                )
+            ))
             ->add('file', 'sonata_type_model_list', array(
                 'help' => 'form.press.helper_push_homepage',
                 'required' => true,
                 'btn_add' => false,
             ))
-            ->add('url')
+            ->add('url', 'text', array(
+                'label' => 'form.press_homepage.push_link',
+                'translation_domain' => 'BaseAdminBundle',
+                'locale_options' => array(
+                    'fr' => array(
+                        'required' => true
+                    )
+                )
+            ))
 
         ;
 
@@ -68,14 +104,14 @@ class PressHomepagePushMainAdmin extends Admin
         ;
     }
 
-    public function prePersist($homepageTranslation)
+    public function prePersist($homepage)
     {
-        $this->preUpdate($homepageTranslation);
+        $this->preUpdate($homepage);
     }
 
-    public function preUpdate($homepageTranslation)
+    public function preUpdate($homepage)
     {
-        $homepageTranslation->setPushsMain($homepageTranslation->getPushsMain());
+        $homepage->setPushsMain($homepage->getPushsMain());
     }
 
 }

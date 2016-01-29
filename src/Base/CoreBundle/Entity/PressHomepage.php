@@ -33,21 +33,21 @@ class PressHomepage
      * @ORM\OneToMany(targetEntity="PressHomepageSection", mappedBy="homepage", cascade={"persist"})
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $section;
+    protected $section;
 
     /**
      * @var PressHomepageMedia
      * @ORM\OneToMany(targetEntity="PressHomepageMedia", mappedBy="homepage", cascade={"persist"})
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $homeMedia;
+    protected $homeMedia;
 
     /**
      * @var PressHomepageDownload
      * @ORM\OneToMany(targetEntity="PressHomepageDownload", mappedBy="homepage", cascade={"persist"})
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $homeDownload;
+    protected $homeDownload;
 
     /**
      * @var PressHomepagePushMain
@@ -74,6 +74,42 @@ class PressHomepage
      * @ORM\ManyToOne(targetEntity="MediaImage")
      */
     protected $statImage2;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="section_statement_info_display", type="boolean")
+     */
+    protected $sectionStatementInfoDisplay;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="section_scheduling_display", type="boolean")
+     */
+    protected $sectionSchedulingDisplay;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="section_media_display", type="boolean")
+     */
+    protected $sectionMediaDisplay;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="section_download_display", type="boolean")
+     */
+    protected $sectionDownloadDisplay;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="section_statistic_display", type="boolean")
+     */
+    protected $sectionStatisticDisplay;
+
 
     /**
      * ArrayCollection
@@ -258,6 +294,19 @@ class PressHomepage
     }
 
     /**
+     * Set pushsMain
+     *
+     * @param \Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain
+     * @return PressHomepage
+     */
+    public function setPushsMain(\Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain = null)
+    {
+        $this->pushsMain = $pushsMain;
+
+        return $this;
+    }
+
+    /**
      * Add pushsSecondary
      *
      * @param \Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary
@@ -288,6 +337,19 @@ class PressHomepage
     public function getPushsSecondary()
     {
         return $this->pushsSecondary;
+    }
+
+    /**
+     * Set pushsSecondary
+     *
+     * @param \Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary
+     * @return PressHomepage
+     */
+    public function setPushsSecondary(\Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary = null)
+    {
+        $this->pushsSecondary = $pushsSecondary;
+
+        return $this;
     }
 
     /**
@@ -334,5 +396,120 @@ class PressHomepage
     public function getStatImage2()
     {
         return $this->statImage2;
+    }
+
+    /**
+     * Set sectionStatementInfoDisplay
+     *
+     * @param boolean $sectionStatementInfoDisplay
+     * @return PressHomepage
+     */
+    public function setSectionStatementInfoDisplay($sectionStatementInfoDisplay)
+    {
+        $this->sectionStatementInfoDisplay = $sectionStatementInfoDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionStatementInfoDisplay
+     *
+     * @return boolean 
+     */
+    public function getSectionStatementInfoDisplay()
+    {
+        return $this->sectionStatementInfoDisplay;
+    }
+
+    /**
+     * Set sectionSchedulingDisplay
+     *
+     * @param boolean $sectionSchedulingDisplay
+     * @return PressHomepage
+     */
+    public function setSectionSchedulingDisplay($sectionSchedulingDisplay)
+    {
+        $this->sectionSchedulingDisplay = $sectionSchedulingDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionSchedulingDisplay
+     *
+     * @return boolean 
+     */
+    public function getSectionSchedulingDisplay()
+    {
+        return $this->sectionSchedulingDisplay;
+    }
+
+    /**
+     * Set sectionMediaDisplay
+     *
+     * @param boolean $sectionMediaDisplay
+     * @return PressHomepage
+     */
+    public function setSectionMediaDisplay($sectionMediaDisplay)
+    {
+        $this->sectionMediaDisplay = $sectionMediaDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionMediaDisplay
+     *
+     * @return boolean 
+     */
+    public function getSectionMediaDisplay()
+    {
+        return $this->sectionMediaDisplay;
+    }
+
+    /**
+     * Set sectionDownloadDisplay
+     *
+     * @param boolean $sectionDownloadDisplay
+     * @return PressHomepage
+     */
+    public function setSectionDownloadDisplay($sectionDownloadDisplay)
+    {
+        $this->sectionDownloadDisplay = $sectionDownloadDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionDownloadDisplay
+     *
+     * @return boolean 
+     */
+    public function getSectionDownloadDisplay()
+    {
+        return $this->sectionDownloadDisplay;
+    }
+
+    /**
+     * Set sectionStatisticDisplay
+     *
+     * @param boolean $sectionStatisticDisplay
+     * @return PressHomepage
+     */
+    public function setSectionStatisticDisplay($sectionStatisticDisplay)
+    {
+        $this->sectionStatisticDisplay = $sectionStatisticDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get sectionStatisticDisplay
+     *
+     * @return boolean 
+     */
+    public function getSectionStatisticDisplay()
+    {
+        return $this->sectionStatisticDisplay;
     }
 }
