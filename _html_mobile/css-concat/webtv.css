@@ -6502,6 +6502,8 @@ display: inline-block;
 	position: relative;
 	width: 400px;
 	height: 250px;
+  float: none;
+  margin: 0;
 }
 .my-selection .thumb{
 	position: relative;
