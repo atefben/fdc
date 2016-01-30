@@ -3164,6 +3164,9 @@ display: inline-block;
   width: 100%;
   z-index: 3;
 }
+.searchpage #suggest{
+  position: absolute;
+}
 #suggest li {
   background-color: #fff;
   color: #a3a3a3;

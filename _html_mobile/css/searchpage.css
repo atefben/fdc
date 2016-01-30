@@ -1,3 +1,6 @@
+#filteredContent {
+    min-height: 530px;
+}
 .searchpage #horizontal-menu{
 	background: #fff;
 	border-bottom: 1px solid #dfdfdf; 

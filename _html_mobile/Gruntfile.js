@@ -208,6 +208,7 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/horizontal-menu.css',
+			            './css/search.css',
 			            './css/searchpage.css',
 			            './css/filters.css'           
 				        ],
