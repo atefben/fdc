@@ -1028,8 +1028,9 @@ $(document).ready(function() {
 	      $.openSelection();
 	  });
 	 $('#main').on('click', function(e) {
-            
-	   if(!$(e.target).parents('.selection-main-container').length && !$(e.target).parents('#selection-btn').length && !$(e.target).hasClass('delete'))
+        
+        console.log("FKEZ", $(e.target).attr('class'));
+	   if(!$(e.target).parents('.selection-main-container').length && !$(e.target).parents('#selection-btn').length && !$(e.target).hasClass('delete') && !$(e.target).hasClass('icon_close'))
 	   {
 	       if(selectionOpen){
 	          $('#main').removeClass('st-effect st-selection-open');  
