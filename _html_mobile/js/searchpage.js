@@ -12,7 +12,6 @@ $(document).ready(function() {
             }
         }
     };
-    console.log($.getUrlParameter('name'));
     $('#inputSearch').val($.getUrlParameter('name'));
     var menu = $("#horizontal-menu").owlCarousel({
         nav: false,
@@ -92,6 +91,67 @@ $(document).ready(function() {
         items: 1
     });
     sliderArticles.owlCarousel();
+
+function initsearchCategory(data){
+    $('#filteredContent').html(data);
+    if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('films')) {
+        var slider = $("#filteredContent .portrait-slider").owlCarousel({
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            fluidSpeed: 500,
+            loop: false,
+            margin: 60,
+            autoWidth: true,
+            dragEndSpeed: 600,
+            items: 1,
+            center: true
+        });
+        slider.owlCarousel();
+    } else {
+        var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            fluidSpeed: 500,
+            loop: false,
+            margin: 20,
+            autoWidth: true,
+            dragEndSpeed: 600,
+            items: 1
+        });
+        sliderArticles.owlCarousel();
+    }
+}
+function initFilters(data){
+    if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('events') || $('#horizontal-menu a.active').hasClass('films') || $('#horizontal-menu a.active').hasClass('participate')) {
+
+    } else {
+        dataForFilter = data;
+        var filters = $(".filters-slider").owlCarousel({
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            stagePadding: 40,
+            autoWidth: false,
+            loop: false,
+            items: 2,
+            onInitialized: function() {
+                $('#filters-menu .owl-stage').css({
+                    'padding-left': '0'
+                });
+            },
+            onResized: function() {
+                $('#filters-menu .owl-stage').css({
+                    'padding-left': '0'
+                });
+            }
+        });
+        filters.owlCarousel();
+        $('#filtered .filters-slider').fadeIn(900, function() {});
+    }
+}
+
     if ($('.searchpage').length) {
         $('.view-all, #horizontal-menu a').on('click', function(e) {
             e.preventDefault();
@@ -134,61 +194,10 @@ $(document).ready(function() {
                         type: "GET",
                         url: url,
                         success: function(data) {
-                            $('#filteredContent').html(data);
-                            if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('films')) {
-                                var slider = $("#filteredContent .portrait-slider").owlCarousel({
-                                    nav: false,
-                                    dots: false,
-                                    smartSpeed: 500,
-                                    fluidSpeed: 500,
-                                    loop: false,
-                                    margin: 60,
-                                    autoWidth: true,
-                                    dragEndSpeed: 600,
-                                    items: 1,
-                                    center: true
-                                });
-                                slider.owlCarousel();
-                            } else {
-                                var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({
-                                    nav: false,
-                                    dots: false,
-                                    smartSpeed: 500,
-                                    fluidSpeed: 500,
-                                    loop: false,
-                                    margin: 20,
-                                    autoWidth: true,
-                                    dragEndSpeed: 600,
-                                    items: 1
-                                });
-                                sliderArticles.owlCarousel();
-                            }
+                            initsearchCategory(data);
                             $('.result').fadeOut(900, function() {
                                 $('#filtered').fadeIn(900, function() {
-                                    if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('events') || $('#horizontal-menu a.active').hasClass('films') || $('#horizontal-menu a.active').hasClass('participate')) {} else {
-                                        dataForFilter = data;
-                                        var filters = $(".filters-slider").owlCarousel({
-                                            nav: false,
-                                            dots: false,
-                                            smartSpeed: 500,
-                                            stagePadding: 40,
-                                            autoWidth: false,
-                                            loop: false,
-                                            items: 2,
-                                            onInitialized: function() {
-                                                $('#filters-menu .owl-stage').css({
-                                                    'padding-left': '0'
-                                                });
-                                            },
-                                            onResized: function() {
-                                                $('#filters-menu .owl-stage').css({
-                                                    'padding-left': '0'
-                                                });
-                                            }
-                                        });
-                                        filters.owlCarousel();
-                                        $('#filtered .filters-slider').fadeIn(900, function() {});
-                                    }
+                                    initFilters(data);
                                 });
                             });
                         }
@@ -204,59 +213,8 @@ $(document).ready(function() {
                             type: "GET",
                             url: url,
                             success: function(data) {
-                                $('#filteredContent').html(data);
-                                if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('films')) {
-                                    var slider = $("#filteredContent .portrait-slider").owlCarousel({
-                                        nav: false,
-                                        dots: false,
-                                        smartSpeed: 500,
-                                        fluidSpeed: 500,
-                                        loop: false,
-                                        margin: 60,
-                                        autoWidth: true,
-                                        dragEndSpeed: 600,
-                                        items: 1,
-                                        center: true
-                                    });
-                                    slider.owlCarousel();
-                                } else {
-                                    var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({
-                                        nav: false,
-                                        dots: false,
-                                        smartSpeed: 500,
-                                        fluidSpeed: 500,
-                                        loop: false,
-                                        margin: 20,
-                                        autoWidth: true,
-                                        dragEndSpeed: 600,
-                                        items: 1
-                                    });
-                                    sliderArticles.owlCarousel();
-                                }
-                                if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('events') || $('#horizontal-menu a.active').hasClass('films') || $('#horizontal-menu a.active').hasClass('participate')) {} else {
-                                    dataForFilter = data;
-                                    var filters = $(".filters-slider").owlCarousel({
-                                        nav: false,
-                                        dots: false,
-                                        smartSpeed: 500,
-                                        stagePadding: 40,
-                                        autoWidth: false,
-                                        loop: false,
-                                        items: 2,
-                                        onInitialized: function() {
-                                            $('#filters-menu .owl-stage').css({
-                                                'padding-left': '0'
-                                            });
-                                        },
-                                        onResized: function() {
-                                            $('#filters-menu .owl-stage').css({
-                                                'padding-left': '0'
-                                            });
-                                        }
-                                    });
-                                    filters.owlCarousel();
-                                    $('#filtered .filters-slider').fadeIn(900, function() {});
-                                }
+                                initsearchCategory(data);
+                                initFilters(data);
                                 $('#filteredContent').animate({
                                     'opacity': '1'
                                 }, 900);
@@ -269,7 +227,6 @@ $(document).ready(function() {
         //filters action 
         $('body').off('click', '#filters span');
         $('body').on('click', '#filters span', function() {
-            console.log("test");
             var id = $('#filters').data('id'),
                 i = $(this).index();
             $('#' + id + ' .select span').removeClass('active');
@@ -279,10 +236,8 @@ $(document).ready(function() {
             $('.filter').each(function() {
                 var $that = $(this);
                 var a = $that.find('.select span.active').data('filter');
-                console.log("test2", a);
                 if (a !== 'all') {
                     $(".list .item:not(." + a + ")").remove();
-                    console.log("test3");
                 }
             });
             var sliderArticles = $(" #filteredContent .landscape-carousel").owlCarousel({

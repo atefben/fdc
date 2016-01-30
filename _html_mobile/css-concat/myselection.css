@@ -2796,6 +2796,7 @@ display: inline-block;
 
 	color:#c8a461;;
 }
+<<<<<<< HEAD
 .my-selection {
   position: fixed;
   top: 0;
@@ -2841,10 +2842,13 @@ display: inline-block;
   -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+=======
+>>>>>>> 9e6b3f992be0f84f69a676728efff534bf5eb5dd
 
 
 /*ARTICLES*/
 
+<<<<<<< HEAD
 .my-selection .title.one-line{
   margin: 70px 0;
 }
@@ -2861,6 +2865,18 @@ display: inline-block;
 .my-selection .thumb{
 	position: relative;
 	margin-bottom: 60px;
+=======
+
+.my-selection .img-container{
+
+	position: relative;
+	width: 530px;
+	height: 340px;
+}
+.my-selection .thumb{
+	position: relative;
+	margin-bottom: 40px;
+>>>>>>> 9e6b3f992be0f84f69a676728efff534bf5eb5dd
 }
 .my-selection .thumb .img{
 	width: 515px;
@@ -2900,7 +2916,10 @@ display: inline-block;
     text-transform: uppercase;
     font-weight: 700;
     font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+<<<<<<< HEAD
     display: inline-block;
+=======
+>>>>>>> 9e6b3f992be0f84f69a676728efff534bf5eb5dd
 
 }
 .my-selection  .info h2{
@@ -2930,6 +2949,7 @@ display: inline-block;
     z-index: 5;
 }
 .delete{
+<<<<<<< HEAD
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.3);
     content: '';
@@ -2946,6 +2966,19 @@ display: inline-block;
 .delete .icon{
   color:#7f7f7f;
   font-size: 12px;
+=======
+    background: #fff url("../img/svg/close.svg") no-repeat center;
+    background-size: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    content: '';
+    display: block;
+    height: 40px;
+    position: absolute;
+    right: 36px;
+    top: -14px;
+    width: 40px;
+    z-index: 5;
+>>>>>>> 9e6b3f992be0f84f69a676728efff534bf5eb5dd
 }
 .container .owl-item a:not(.director):not(.titleLink):not(.category),.film .owl-item a:not(.director):not(.titleLink):not(.category){
 
@@ -2995,6 +3028,7 @@ display: inline-block;
 }
 .suggestion{
 	display: none;
+<<<<<<< HEAD
 }
 
 #searchContainer {
@@ -3423,4 +3457,6 @@ display: inline-block;
 }
 #suggest li:nth-child(2n):hover {
   background-color: #ededed;
+=======
+>>>>>>> 9e6b3f992be0f84f69a676728efff534bf5eb5dd
 }

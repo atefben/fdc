@@ -2996,35 +2996,73 @@ display: inline-block;
 .suggestion{
 	display: none;
 }
+#horizontal-menu{
+  height: 110px;
+  background-color: #202020;
+  z-index: 50;
+}
+
+#horizontal-menu .vid {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+  line-height: 110px;
+  padding: 0 20px 0 20px;
+
+}
+
+#horizontal-menu .vid p{
+  
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 3px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+}
+#horizontal-menu .vid p a{
+  color:  #999999;
+}
+#horizontal-menu .vid p a.active{
+  color: #c8a461;
+}
+#horizontal-menu .owl-stage{
+
+  height: 100%;
+}
+.content-selection, .content-selection2{
+    opacity: 0;
+    -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
+    -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+
+}
+.content-selection.show, .content-selection2.show{
+
+  opacity: 1;
+}
+#main:not(.searchpage, .faq-page){
+  background-color: #141414;
+}
+#banner-top, #banner-bottom{
+    background-size: 0 0;
+}
+#banner-top.show, #banner-bottom.show{
+  background-size: cover;
+}
 
 #searchContainer {
-  z-index: 51;
+  
   background-color: #fff;
-  left: 0;
-  height: 0;
-  min-height: 0;
-  overflow-y: scroll;
-  position: absolute;
-  top: 180px;
+  position: relative;
   width: 100%;  
-  -webkit-transform: translate3D(0,0,0);
-    transform: translate3D(0,0,0);
-  -webkit-transition: min-height 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: min-height 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#searchContainer.open{
-  height: auto;
-  min-height: 1000px;
+  /*height: 80vh;*/
+  min-height: 700px;
+ }
 
-}
-.sticky #searchContainer.fixfixed{
-  position: absolute;
-}
-.sticky #searchContainer{
-  top: 90px;
-  position: fixed;
-
-}
 #searchContainer .container {
   position: relative;
   width: 90%;
@@ -3392,8 +3430,10 @@ display: inline-block;
 
 #suggest {
   width: 100%;
-  position: absolute;
   z-index: 3;
+}
+.searchpage #suggest{
+  position: absolute;
 }
 #suggest li {
   background-color: #fff;
@@ -3424,62 +3464,8 @@ display: inline-block;
 #suggest li:nth-child(2n):hover {
   background-color: #ededed;
 }
-#horizontal-menu{
-  height: 110px;
-  background-color: #202020;
-  z-index: 50;
-}
-
-#horizontal-menu .vid {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  width: auto;
-  line-height: 110px;
-  padding: 0 20px 0 20px;
-
-}
-
-#horizontal-menu .vid p{
-  
-  display: block;
-  font-size: 1.5rem;
-  margin-top: 3px;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 600;
-}
-#horizontal-menu .vid p a{
-  color:  #999999;
-}
-#horizontal-menu .vid p a.active{
-  color: #c8a461;
-}
-#horizontal-menu .owl-stage{
-
-  height: 100%;
-}
-.content-selection, .content-selection2{
-    opacity: 0;
-    -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
-    -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-
-}
-.content-selection.show, .content-selection2.show{
-
-  opacity: 1;
-}
-#main:not(.searchpage, .faq-page){
-  background-color: #141414;
-}
-#banner-top, #banner-bottom{
-    background-size: 0 0;
-}
-#banner-top.show, #banner-bottom.show{
-  background-size: cover;
+#filteredContent {
+    min-height: 530px;
 }
 .searchpage #horizontal-menu{
 	background: #fff;
