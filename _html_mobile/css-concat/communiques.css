@@ -1203,13 +1203,18 @@ from desktop
   }
 }
 */
- 
+ [class^="icon-mobile-"], [class*=" icon-mobile-"]{
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+      line-height: 1;
+ }
  [class^="icon-mobile-"]:before, [class*=" icon-mobile-"]:before {
   font-family: "mobile";
   font-style: normal;
   font-weight: normal;
   speak: none;
- 
+      line-height: 1;
   display: inline-block;
   text-decoration: inherit;
 
