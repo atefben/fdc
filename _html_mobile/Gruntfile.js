@@ -480,7 +480,7 @@ grunt.initConfig({
 				    './js-concat/searchpage.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/include/menu.js',
+				            './js/include/*.js',
 				            
 				            './js/searchpage.js',
 				            './js/filters.js'

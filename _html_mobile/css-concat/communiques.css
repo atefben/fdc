@@ -3038,7 +3038,7 @@ display: inline-block;
   right: 0;
   background: rgba(0,0,0,0.8);
   content: '';
-  z-index: 10;
+  z-index: 51;
 }
 #main.st-selection-open::after {
   width: 100%;
