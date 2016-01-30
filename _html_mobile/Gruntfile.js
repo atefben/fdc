@@ -211,6 +211,11 @@ grunt.initConfig({
 			            './css/searchpage.css',
 			            './css/filters.css'           
 				        ],
+				    './css-concat/search.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/search.css'         
+				        ],
 				    './css-concat/myselection.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
@@ -484,6 +489,12 @@ grunt.initConfig({
 				            './js/searchpage.js',
 				            './js/filters.js'
 				        ],
+				    './js-concat/search.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/include/*.js',
+				            './js/search.js'
+				        ],
 				    './js-concat/myselection.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
@@ -568,6 +579,7 @@ grunt.initConfig({
 	        './palmares_cinefondation.html': ['./templates/palmares_cinefondation.html'],
 	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
+	        './search.html': ['./templates/search.html'],
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
 	        './myselection.html': ['./templates/myselection.html'],
@@ -635,6 +647,7 @@ grunt.initConfig({
 	        './palmares_cinefondation.html': ['./templates/palmares_cinefondation.html'],
 	        './palmares_all.html': ['./templates/palmares_all.html'],
 	        './press.html': ['./templates/press.html'],
+	        './search.html': ['./templates/search.html'],
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
 	        './myselection.html': ['./templates/myselection.html'],
@@ -674,6 +687,7 @@ grunt.initConfig({
 	        './js-concat/channel.min.js': ['./js-concat/channel.js'],
 	        './js-concat/palmares.min.js': ['./js-concat/palmares.js'],
 	        './js-concat/press.min.js': ['./js-concat/press.js'],
+	        './js-concat/search.min.js': ['./js-concat/search.js'],
 	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js'],
 	        './js-concat/artist.min.js': ['./js-concat/artist.js'],
 	        './js-concat/myselection.min.js': ['./js-concat/myselection.js'],
@@ -715,6 +729,7 @@ grunt.initConfig({
 	        './css-concat/channel.min.css': ['./css-concat/channel.css'],
 	        './css-concat/palmares.min.css': ['./css-concat/palmares.css'],
 	        './css-concat/press.min.css': ['./css-concat/press.css'],
+	        './css-concat/search.min.css': ['./css-concat/search.css'],
 	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css'],
 	        './css-concat/artist.min.css': ['./css-concat/artist.css'],
 	        './css-concat/myselection.min.css': ['./css-concat/myselection.css'],
