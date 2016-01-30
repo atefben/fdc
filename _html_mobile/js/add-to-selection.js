@@ -8,8 +8,6 @@ $(document).ready(function() {
 
 		$('.picto-my-selection').on('click', function(e){
 
-			console.log("keznkl");
-
 			e.stopPropagation();
 			
 			var newItem = $(this).parents('.item').html(); 
@@ -17,6 +15,8 @@ $(document).ready(function() {
 			mySelection.push(newItem);
 
 			localStorage.setItem('mySelection', JSON.stringify(mySelection));
+
+			$.openSelection();
 
 
 		});
