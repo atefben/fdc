@@ -855,6 +855,71 @@ $(document).ready(function() {
 
 
 });
+var GLOBALS = {
+  "locale" : "fr",
+  "defaultDate" : "2016-05-12",
+  "api" : {
+    "instagram" : {
+      "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
+      "hashtag" : "Cannes2016",
+    },
+    "twitter" : {
+      "hashtag" : "%23Cannes2016",
+      "count" : 10,
+      "uri" : "search_tweets",
+      "url" : "twitter.php"
+    }
+  },
+  "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
+  "urls" : {
+    "calendarProgrammationUrl" : "calendarprogrammation.html",
+    "eventUrl" : "load-evenements.php",
+    "newsUrl" : "news.html",
+    "newsUrlNext" : "more-news.html",
+    "loadPressRelease" : "more-communique.html",
+    "selectionUrl" : "selection.html"
+  },
+  "texts" : {
+    "url" : {
+      "title" : "titre test"
+    },
+    "popin" : {
+      "error" : "valide",
+      "empty" : "renseignée",
+      "valid" : "Votre email a bien été envoyé !",
+      "copy"  :  "lien copié ! "
+    },
+    "googleMap" : {
+      "title" : "Festival de Cannes"
+    },
+    "readMore" : {
+      "more" : "Afficher <strong>plus d'actualités</strong>",
+      "nextDay" : "Passer au <strong>jour précédent</strong>"
+    },
+    "newsletter" : {
+      "errorsNotValide" : "L'adresse e-mail n'est pas valide",
+      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+    },
+    'agenda' : {
+      'delete' : "Supprimer de votre agenda"
+    }
+  },
+  "player": {
+    "file" : "./files/mov_bbb.mp4",
+    "image" : "//dummyimage.com/960x540/c8a461/000.png",
+    "title" : "Video 1"
+  },
+  "calendar": {
+    "labelFormat": {
+      "fr" : "H [H]",
+      "default" : "h A"
+    }
+  },
+  "socialWall": {
+    "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
+    "heightGraph" : 200
+  }
+};
 $(document).ready(function() {
 
 	$('.'+ $('#main').data('menu')).addClass('active-page');
@@ -951,6 +1016,132 @@ $(document).ready(function() {
 		
 		menu.owlCarousel();
 
+});
+$(document).ready(function() {
+
+	var selectionOpen = false;
+	 $('#selection-btn').on('click', function() {
+	      $.openSelection();
+	  });
+	 $('#main').on('click', function(e) {
+            
+	   if(!$(e.target).parents('.selection-main-container').length && !$(e.target).parents('#selection-btn').length && !$(e.target).hasClass('delete'))
+	   {
+	       if(selectionOpen){
+	          $('#main').removeClass('st-effect st-selection-open');  
+	          selectionOpen = false;
+	        }                
+	   }
+
+	    
+	  });
+
+	$.openSelection = function(){
+
+		$('#main').addClass('st-effect st-selection-open');  
+	    selectionOpen = true;
+
+	    $('.selection-main-container .thumb').remove();
+
+
+		// console.log(JSON.parse(localStorage.getItem('mySelection')));
+		// console.log(JSON.parse(localStorage.getItem('mySelection')).length);
+		$('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
+
+		for(var i = 0 ; i < JSON.parse(localStorage.getItem('mySelection')).length ; i++){
+		
+			var thumb = $("<div class='thumb'></div>")
+			thumb.html(JSON.parse(localStorage.getItem('mySelection'))[i])
+			thumb.find('.picto-my-selection').remove();
+			thumb.append('<span class="delete"><i class="icon icon_close"></i></span>');
+			$('.my-selection-container').prepend(thumb);
+
+		}
+
+
+		$('.delete').on('click',function(){
+
+			var index = $(this).parent().index();
+			var items = JSON.parse(localStorage.getItem('mySelection'));
+			items.splice(index,1);
+			localStorage.setItem('mySelection', JSON.stringify(items));
+			$(this).parent().remove();
+			$('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
+		});
+
+	 	$.ajax({
+		    type: "GET",
+		    dataType: "html",
+		    cache: false,
+		    url: GLOBALS.urls.selectionUrl ,
+		    success: function(data) {
+
+		    	$('.suggestion').append(data);
+		    }
+
+		});
+
+		// var filters = $("#myselection-filters").owlCarousel({
+		// 	  nav: false,
+		// 	  dots: false,
+		// 	  smartSpeed: 500,
+		// 	  margin: 40,
+		// 	  autoWidth: true,
+		// 	  loop: false,
+		// 	  items:1,
+		// 	  onInitialized: function() {
+		// 	    var m = ($(window).width() - $('.container').width()) / 2;
+		// 	    $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
+		// 	  },
+		// 	  onResized: function() {
+		// 	    var m = ($(window).width() - $('.container').width()) / 2;
+		// 	    $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
+		// 	  }
+		// 	});
+		// 	filters.owlCarousel();
+
+
+		// $("#myselection-filters a").on('click',function(e){
+
+		// 	e.preventDefault();
+		// 	$("#myselection-filters a").removeClass('active');
+		// 	$(this).addClass('active');
+
+		// 	var filter = $(this).data('filter')
+
+		// 	if($(this).data('filter') == 'suggestion'){
+
+		// 		$('.suggestion').css('display','block');
+		// 		$('.my-selection-container').css('display','none');
+		// 		$('.thumb').css('display','block');
+
+		// 	}else{
+
+		// 		$('.my-selection-container').css('display','block');
+		// 		$('.suggestion').css('display','none');
+
+		// 		if($(this).data('filter') == 'all'){
+		// 			$('.thumb').css('display','block');
+		// 		}	
+
+		// 		else{
+
+		// 			$( ".thumb" ).each(function() {
+
+		// 			  if ($(this).find('.icon_'+filter+'').length == 0){
+		// 			  	$(this).css('display','none');
+		// 			  }else{
+		// 			  	$(this).css('display','block');
+		// 			  }
+		// 			});
+	 
+		// 		}
+		// 	}
+			
+		// });
+
+	};
+	
 });
 
 $(document).ready(function() {
@@ -1459,8 +1650,6 @@ $(document).ready(function() {
 
 		$('.picto-my-selection').on('click', function(e){
 
-			console.log("keznkl");
-
 			e.stopPropagation();
 			
 			var newItem = $(this).parents('.item').html(); 
@@ -1468,6 +1657,8 @@ $(document).ready(function() {
 			mySelection.push(newItem);
 
 			localStorage.setItem('mySelection', JSON.stringify(mySelection));
+
+			$.openSelection();
 
 
 		});

@@ -217,12 +217,7 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/search.css'         
 				        ],
-				    './css-concat/myselection.css': [
-			            './css/main.css', 
-			            './css/include/*.css',
-			            './css/myselection.css'
-	         
-				        ],
+
 				    './css-concat/practical_guide.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
@@ -249,7 +244,7 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/main.js',
 				            './js/fullscreenplayer.js',
-				            './js/jsonTest.js',
+				            
 				            './js/home.js',
 				            './js/add-to-selection.js'
 				        ],
@@ -267,7 +262,7 @@ grunt.initConfig({
 				            './js/filters.js',
 				            './js/horizontal-filters.js',
 				            './js/communiques.js',
-				            './js/jsonTest.js',
+				            
 				            './js/press.js',
 
 				        ],
@@ -315,7 +310,7 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
-				            './js/jsonTest.js',
+				            
 				            './js/horizontal-menu.js'
 				        ],
 			        './js-concat/movie.js':[
@@ -371,7 +366,7 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
 				            './js/accordeon.js',
-				            './js/jsonTest.js',
+				            
 				            './js/googlemap.js'
 				        ],
 			        './js-concat/photos.js':[
@@ -398,7 +393,7 @@ grunt.initConfig({
 				            './js/audioplayer.js',
 				            './js/vendors/jwplayer.js',
 				            './js/include/*.js',
-				            './js/jsonTest.js',
+				            
 				            './js/horizontal-menu.js',
 				            './js/palmares.js',
 				            './js/selection.js'
@@ -407,7 +402,7 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
-				            './js/jsonTest.js',
+				            
 				            './js/horizontal-menu.js',
 				            './js/palmares.js',
 				        ],
@@ -435,7 +430,7 @@ grunt.initConfig({
 				            './js/vendors/isotope.pkgd.min.js',
 				            './js/vendors/packery-mode.pkgd.min.js',
 				            './js/grid-isotope.js',
-				            './js/jsonTest.js',
+				            
 				            './js/horizontal-menu.js'
 				        ],
 				    './js-concat/audios.js':[
@@ -476,7 +471,7 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/jquery.cookie.js',
 				            './js/vendors/jquery-ui.custom.min.js',
-				            './js/jsonTest.js',
+				            
 				   			'./js/vendors/moment.min.js',
 				            './js/vendors/fullcalendar.min.js',
 				            './js/include/*.js',
@@ -485,25 +480,19 @@ grunt.initConfig({
 				    './js-concat/searchpage.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
-				            './js/include/menu.js',
-				            './js/jsonTest.js',
+				            './js/include/*.js',
+				            
 				            './js/searchpage.js',
 				            './js/filters.js'
 				        ],
+
 				    './js-concat/search.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/include/*.js',
 				            './js/search.js'
 				        ],
-				    './js-concat/myselection.js':[
-				            './js/vendors/jquery-1.12.0.min.js', 
-				            './js/vendors/owl.carousel.min.js',
-				            './js/include/menu.js',
-				            './js/searchpage.js',
-				            './js/jsonTest.js',
-				            './js/myselection.js'
-				        ],
+
 				    './js-concat/practical_guide.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
@@ -583,7 +572,6 @@ grunt.initConfig({
 	        './search.html': ['./templates/search.html'],
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
-	        './myselection.html': ['./templates/myselection.html'],
 	        './press_communiques.html': ['./templates/press_communiques.html'],
 	        './press_practical_guide.html': ['./templates/press_practical_guide.html']
 	      
@@ -651,7 +639,6 @@ grunt.initConfig({
 	        './search.html': ['./templates/search.html'],
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
-	        './myselection.html': ['./templates/myselection.html'],
 	        './press_communiques.html': ['./templates/press_communiques.html'],
 	        './press_practical_guide.html': ['./templates/press_practical_guide.html']
 
@@ -691,7 +678,6 @@ grunt.initConfig({
 	        './js-concat/search.min.js': ['./js-concat/search.js'],
 	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js'],
 	        './js-concat/artist.min.js': ['./js-concat/artist.js'],
-	        './js-concat/myselection.min.js': ['./js-concat/myselection.js'],
 	        './js-concat/practical_guide.min.js': ['./js-concat/practical_guide.js']
 	      }
 	    }
@@ -733,7 +719,6 @@ grunt.initConfig({
 	        './css-concat/search.min.css': ['./css-concat/search.css'],
 	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css'],
 	        './css-concat/artist.min.css': ['./css-concat/artist.css'],
-	        './css-concat/myselection.min.css': ['./css-concat/myselection.css'],
 	        './css-concat/practical_guide.min.css': ['./css-concat/practical_guide.css']
 	    }
 	  }
