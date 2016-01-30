@@ -1024,8 +1024,7 @@ $(document).ready(function() {
 	      $.openSelection();
 	  });
 	 $('#main').on('click', function(e) {
-        
-        console.log("FKEZ", $(e.target).attr('class'));
+
 	   if(!$(e.target).parents('.selection-main-container').length && !$(e.target).parents('#selection-btn').length && !$(e.target).hasClass('delete') && !$(e.target).hasClass('icon_close'))
 	   {
 	       if(selectionOpen){
@@ -1688,7 +1687,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 
-	var mySelection = JSON.parse(localStorage.getItem('mySelection')) || [];
+	
 
 
 	$.initAddToSelection = function(){
@@ -1696,13 +1695,19 @@ $(document).ready(function() {
 
 		$('.picto-my-selection').on('click', function(e){
 
+			var mySelection = JSON.parse(localStorage.getItem('mySelection')) || [];
+
 			e.stopPropagation();
 			
 			var newItem = $(this).parents('.item').html(); 
 
+
 			mySelection.push(newItem);
 
+
+
 			localStorage.setItem('mySelection', JSON.stringify(mySelection));
+
 
 			$.openSelection();
 
