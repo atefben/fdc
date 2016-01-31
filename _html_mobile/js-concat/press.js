@@ -325,8 +325,7 @@ $(document).ready(function() {
 	      $.openSelection();
 	  });
 	 $('#main').on('click', function(e) {
-        
-        console.log("FKEZ", $(e.target).attr('class'));
+
 	   if(!$(e.target).parents('.selection-main-container').length && !$(e.target).parents('#selection-btn').length && !$(e.target).hasClass('delete') && !$(e.target).hasClass('icon_close'))
 	   {
 	       if(selectionOpen){
