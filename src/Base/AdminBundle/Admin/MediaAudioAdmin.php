@@ -82,14 +82,6 @@ class MediaAudioAdmin extends Admin
                         'provider' => 'sonata.media.provider.file',
                         'context' => 'news_audio',
                     ),
-                    'image' => array(
-                        'required' => $requiredFile,
-                        'field_type' => 'sonata_media_type',
-                        'sonata_help' => 'form.media_image.helper_file',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'provider' => 'sonata.media.provider.image',
-                        'context' => 'news_header_image',
-                    ),
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
@@ -121,6 +113,9 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
+            ))
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_media_video_image'
             ))
             ->add('film', 'sonata_type_model_list', array(
                 'btn_delete' => false
