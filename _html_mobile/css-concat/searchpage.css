@@ -3557,7 +3557,7 @@ display: inline-block;
 	box-sizing:border-box;
 }
 .searchpage #horizontal-menu .owl-stage {
-    padding-left: 20px;
+    padding-left: 40px;
 }
 /*SLIDERS*/
 .portrait-slider{
@@ -3718,6 +3718,14 @@ display: inline-block;
 }
 #filtered .filters-slider .owl-stage{
 	    padding-left: 40px;
+}
+
+#horizontal-menu .vid{
+	/*width: 285px;*/
+	padding: 0;
+}
+.searchpage #horizontal-menu .vid p{
+	text-align: center;
 }
 /*FILTERS*/
 .filters{

@@ -3923,6 +3923,7 @@ display: inline-block;
 .title-list-cat .title{
   color: #fff;
   margin: 60px auto;
+  padding: 0;
 }
 .title-list-cat .subtitle{
   color: #fff;

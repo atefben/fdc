@@ -17,10 +17,10 @@ $(document).ready(function() {
         nav: false,
         dots: false,
         smartSpeed: 500,
-        margin: 0,
+        margin: 40,
         autoWidth: true,
         loop: false,
-        items: 1,
+        items: 2,
         onInitialized: function() {
             // var m = ($(window).width() - $('.container').width()) / 2;
             // $('#horizontal-menu .owl-stage').css({
