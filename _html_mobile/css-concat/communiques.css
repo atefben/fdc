@@ -1207,7 +1207,7 @@ from desktop
   font-style: normal;
   font-weight: normal;
   speak: none;
-      line-height: 1;
+      /*line-height: 1;*/
  }
  [class^="icon-mobile-"]:before, [class*=" icon-mobile-"]:before {
   font-family: "mobile";

@@ -1001,7 +1001,7 @@ from desktop
   font-style: normal;
   font-weight: normal;
   speak: none;
-      line-height: 1;
+      /*line-height: 1;*/
  }
  [class^="icon-mobile-"]:before, [class*=" icon-mobile-"]:before {
   font-family: "mobile";
@@ -3056,6 +3056,9 @@ img{
 	display: inline-block;
 	margin-bottom: 15px;
 }
+#logo img{
+	margin-bottom: 0;
+}
 strong{
 	font-weight: 700;
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -3858,7 +3861,7 @@ p{
 .guid-container{
 	border-top: 1px solid #e0e0e0;
 }
-i{
+.italic{
 	font-style: italic;
 	display: block;
 	line-height: 10px;
