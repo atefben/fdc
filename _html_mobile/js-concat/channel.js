@@ -15,6 +15,53 @@ onControls:b.JWPLAYER_CONTROLS,onQualityLevels:b.JWPLAYER_MEDIA_LEVELS,onQuality
 },function(a,b,c){function d(a,b){for(var c=0;c<a.length;c++){var d=a[c],e=l[d.id];if(e){e.refs++;for(var f=0;f<e.parts.length;f++)e.parts[f](d.parts[f]);for(;f<d.parts.length;f++)e.parts.push(h(d.parts[f],b))}else{for(var g=[],f=0;f<d.parts.length;f++)g.push(h(d.parts[f],b));l[d.id]={id:d.id,refs:1,parts:g}}}}function e(a){for(var b=[],c={},d=0;d<a.length;d++){var e=a[d],f=e[0],g=e[1],h=e[2],i=e[3],j={css:g,media:h,sourceMap:i};c[f]?c[f].parts.push(j):b.push(c[f]={id:f,parts:[j]})}return b}function f(){var a=document.createElement("style"),b=o();return a.type="text/css",b.appendChild(a),a}function g(){var a=document.createElement("link"),b=o();return a.rel="stylesheet",b.appendChild(a),a}function h(a,b){var c,d,e;if(b.singleton){var h=q++;c=p||(p=f()),d=i.bind(null,c,h,!1),e=i.bind(null,c,h,!0)}else a.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(c=g(),d=k.bind(null,c),e=function(){c.parentNode.removeChild(c),c.href&&URL.revokeObjectURL(c.href)}):(c=f(),d=j.bind(null,c),e=function(){c.parentNode.removeChild(c)});return d(a),function(b){if(b){if(b.css===a.css&&b.media===a.media&&b.sourceMap===a.sourceMap)return;d(a=b)}else e()}}function i(a,b,c,d){var e=c?"":d.css;if(a.styleSheet)a.styleSheet.cssText=r(b,e);else{var f=document.createTextNode(e),g=a.childNodes;g[b]&&a.removeChild(g[b]),g.length?a.insertBefore(f,g[b]):a.appendChild(f)}}function j(a,b){var c=b.css,d=b.media;b.sourceMap;if(d&&a.setAttribute("media",d),a.styleSheet)a.styleSheet.cssText=c;else{for(;a.firstChild;)a.removeChild(a.firstChild);a.appendChild(document.createTextNode(c))}}function k(a,b){var c=b.css,d=(b.media,b.sourceMap);d&&(c+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(d))))+" */");var e=new Blob([c],{type:"text/css"}),f=a.href;a.href=URL.createObjectURL(e),f&&URL.revokeObjectURL(f)}var l={},m=function(a){var b;return function(){return"undefined"==typeof b&&(b=a.apply(this,arguments)),b}},n=m(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),o=m(function(){return document.head||document.getElementsByTagName("head")[0]}),p=null,q=0;a.exports=function(a,b){b=b||{},"undefined"==typeof b.singleton&&(b.singleton=n());var c=e(a);return d(c,b),function(a){for(var f=[],g=0;g<c.length;g++){var h=c[g],i=l[h.id];i.refs--,f.push(i)}if(a){var j=e(a);d(j,b)}for(var g=0;g<f.length;g++){var i=f[g];if(0===i.refs){for(var k=0;k<i.parts.length;k++)i.parts[k]();delete l[i.id]}}}};var r=function(){var a=[];return function(b,c){return a[b]=c,a.filter(Boolean).join("\n")}}()},function(a,b,c){var d,e;d=[c(37),c(45),c(54),c(42),c(77),c(50),c(57),c(115),c(88),c(94),c(89),c(75),c(63),c(62),c(68),c(80),c(81),c(157),c(99),c(91)],e=function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t){var u={};return u.api=a,u._=b,u.version=c,u.utils=b.extend(d,f,{canCast:r.available,getCookies:e.getAllItems,saveCookie:e.setItem,css:g,key:i,extend:b.extend,scriptloader:j,rssparser:s,tea:k,UI:h}),u.vid=l,u.events=b.extend({},m,{eventdispatcher:o,state:n}),u.playlist=b.extend({},p,{item:q}),u.plugins=t,u.cast=r,u}.apply(b,d),!(void 0!==e&&(a.exports=e))}])});
 
 jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";
+// Newsletter
+// =========================
+
+$(document).ready(function() {
+
+  $('.newsletter #email').on('focus', function() {
+    if($(this).val() == GLOBALS.texts.newsletter.errorsNotValide || $(this).val() == GLOBALS.texts.newsletter.errorsMailEmpty) {
+      $(this).val('');
+      $(this).removeClass('error');
+    }
+  });
+
+  // on submit : check if there are errors in the form
+  $('.newsletter form').on('submit', function() {
+
+    var input = $('.newsletter #email');
+    var empty = false;
+
+    if($('#email').val() == '') {
+      empty = true;
+      input.addClass("error").val(GLOBALS.texts.newsletter.errorsMailEmpty);
+    } else {
+
+      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      var is_email=re.test(input.val());
+      if(is_email){
+        input.removeClass("error");
+      }
+      else {
+        input.addClass("error").val(GLOBALS.texts.newsletter.errorsNotValide);
+      }
+    }
+
+    if($('.newsletter .error').length || empty) {
+      return false;
+    } else {
+      // ajax call newsletter
+
+      // show confirmation 
+      $('.newsletter form').addClass('hide');
+      $('#confirmation span').html($('#email').val());
+      $('#confirmation').addClass('show');
+
+      return false;
+    }
+  });
+});
 var GLOBALS = {
   "locale" : "fr",
   "defaultDate" : "2016-05-12",
@@ -58,7 +105,7 @@ var GLOBALS = {
     },
     "newsletter" : {
       "errorsNotValide" : "L'adresse e-mail n'est pas valide",
-      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail"
     },
     'agenda' : {
       'delete' : "Supprimer de votre agenda"
