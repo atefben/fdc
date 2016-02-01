@@ -85,7 +85,7 @@ sonata_media:
 
     cdn:
         server:
-            path:  http://%s3_bucket_name%.s3-website-%s3_region%.amazonaws.com
+            path:  http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com
 
     providers:
         image:
@@ -95,10 +95,10 @@ sonata_media:
 
     filesystem:
         s3:
-            bucket: %s3_bucket_name%
+            bucket: %s3_global_bucket_name%
             accessKey: %s3_access_key%
             secretKey: %s3_secret_key%
-            region: %s3_region%
+            region: %s3_global_region%
             storage: standard
             acl: owner_full_control
             create: false
