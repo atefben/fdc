@@ -1,0 +1,304 @@
+.calendar .timeCol{
+	
+	background-color: #f4f4f4;
+    float: left;
+    position: relative;
+    width: 125px;
+	border-top: 1px solid #e5e5e5;
+	z-index: 2;
+ }
+ .calendar .time{
+
+	height: 170px;
+	width: 100%;
+	text-align: center;
+	background-color: #f4f4f4;
+	line-height: 170px;
+	border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+	font-size: 24px;
+    color: #202020;
+    box-sizing:border-box;
+
+}
+.calendar .empty{
+
+	height: 130px;
+	width: 125px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+
+}
+.calendar .venues {
+    float: left;
+    width:calc(100% - 125px);
+}
+.calendar .venues .venue {
+    float: left;
+    height: 3400px;
+    width: 340px;
+}
+.calendar .venues .venue .v-head {
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    height: 130px;
+    line-height: 130px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.calendar .venues .venue .v-container
+{
+    border-right: 1px solid #e5e5e5;
+    height: calc(100% - 130px);
+    position: relative;
+    background: url("../img/press/bg2.jpg") repeat;
+	
+}
+/*  timeline  */
+#timeline-calendar{
+  width: 100%;
+  text-align: center;
+  height: 130px;
+  font-size: 0;
+  border-top: 2px solid #e5e5e5;
+  box-sizing:border-box;
+  position: relative;
+  z-index: 2;
+}
+#timeline-calendar .next{
+  background-color: #f2f2f2;
+}
+#timeline-calendar .prev, #timeline-calendar .next{
+  width: 121px;
+  height: 128px;
+  line-height: 130px;
+  display: inline-block;
+  font-size: 2rem;
+  color:#cbcbcb;
+  vertical-align: top;
+}
+#timeline-calendar .prev{
+  border-right: 4px dotted #e5e5e5;
+}
+#timeline-calendar .next{
+  border-left: 4px dotted #e5e5e5;
+}
+#timeline{
+  height: 150px;
+  width: 390px;
+  margin: 0;
+  font-size: 0;
+  display: inline-block;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  box-sizing:border-box;
+}
+#timeline.stick {
+  position: fixed;
+  top: 120px;
+  z-index: 4;
+}
+#timeline.bottom {
+  position: absolute;
+  top: auto;
+  bottom: 0px;
+  left: auto !important;
+}
+#timeline a {
+  display: inline-block;
+  width: 130px;
+  height: 128px;
+  padding-top: 30px;
+  /*border: 2px solid #e5e5e5;*/
+  color: #adadad;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  box-sizing:border-box;
+  
+}
+#timeline .timeline-container{
+  width: 1560px;
+  height: 130px;
+  position: absolute;
+  box-sizing:border-box;
+  top: 0;
+  left: -260px;
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#timeline a.disabled {
+  background-color: #f2f2f2;
+  cursor: default;
+}
+#timeline a.disabled:hover {
+  background-color: #f2f2f2;
+  color: #adadad;
+}
+#timeline a:hover {
+  color: #c8a461;
+}
+#timeline a.active {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  border-style: solid;
+  color: #fff;
+  position: relative;
+  border-left: none;
+}
+#timeline a.active:after {
+  content: '';
+  display: block;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #c8a461;
+  margin-left: -10px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+}
+#timeline a span {
+  display: block;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  margin-top: 5px;
+}
+
+
+/*EVENTS*/
+
+.fc-event {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    position: absolute;
+    width: 320px;
+    margin-left: 10px;
+
+}
+.fc-event .category {
+	
+	font-size: 20px;
+    height: 45px;
+    display: block;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    line-height: 45px;
+    position: relative;
+    text-transform: uppercase;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+}
+.fc-event .category .icon{
+	margin:-3px 10px 0 20px;
+}
+.fc-event .info{
+	padding-top: 10px;
+	height: 165px;
+	box-sizing:border-box;
+}
+.v-container .fc-event img{
+	width: 120px;
+	height: 147px;
+	margin:0 10px 10px 10px;
+	float: left;
+}
+.fc-event .txt span{
+
+    display: -webkit-box;
+    max-width: 220px;
+    height: 70px;
+	font-size: 18px;
+	line-height: 24px;
+	text-transform: uppercase;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+}
+.fc-event .bottom{
+	border-top: 1px solid #e5e5e5;
+    clear: both;
+    padding: 20px 10px 10px 10px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    height: 105px;
+    box-sizing:border-box;
+}
+.fc-event .bottom .competition {
+    color: #aeaeae;
+    display: block;
+    font-family: "Camphor W01 Bold Italic", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+    font-style: italic;
+}
+.fc-event .info .txt{
+	position: relative;
+	height: 166px;
+}
+.fc-event .info .txt strong {
+    color: #c8a461;
+    display: block;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: italic;
+    margin-top: 10px;
+/*	position: absolute;
+	bottom: 0;
+	left:140px;*/
+	font-size: 18px;
+}
+
+/*ONE HOUR EVENT*/
+.fc-event.one-hour .bottom, .fc-event.one-hour img{
+	display: none;
+}
+.fc-event.one-hour .info{
+	height: 100px;
+}
+.fc-event.one-hour .txt span{
+	max-width: 100%;
+	height: auto;
+
+}
+.fc-event.one-hour .txt{
+	padding-left: 10px;
+}
+
+/*HALF EVENT*/
+.fc-event.half{
+	width: 155px;
+}
+.fc-event.half .cat-title{
+	display: none;
+}
+.fc-event.half img{
+	display: none;
+}
+.fc-event.half .txt{
+	padding-left: 10px;
+}
+.fc-event.half .txt span{
+	max-width: 138px;
+}
+.fc-event.half .ven, .fc-event.half .dash{
+	display: none;
+}
+.fc-event.half + .fc-event.half{
+	left:165px;
+}

@@ -2251,12 +2251,12 @@ footer .newsletter #email.error {
 footer .newsletter #confirmation {
   color: #fff;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-size: 0.875rem;
+  font-size: 18px;
   line-height: 1.2em;
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  top: 55px;
+  top: 35px;
   text-align: center;
   width: 100%;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -3061,6 +3061,8 @@ div.chocolat-wrapper .chocolat-top .close-button{
 
   top:20px;
   right: 20px;
+  opacity: 1;
+  visibility: visible;
 }
 div.chocolat-wrapper .chocolat-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.4);

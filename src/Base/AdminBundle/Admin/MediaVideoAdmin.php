@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
+use Base\CoreBundle\Entity\NewsNewsAssociated;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -151,6 +152,16 @@ class MediaVideoAdmin extends Admin
             ->add('tags', 'sonata_type_collection', array(
                 'label' => 'form.label_tags',
                 'help' => 'form.media.helper_tags',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedFilms', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_film_associated',
+                'help' => 'form.news.helper_news_film_film_associated',
                 'by_reference' => false,
                 'required' => false,
             ), array(

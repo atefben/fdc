@@ -201,7 +201,7 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/slideshow-video.css',
-			            './css/vendors/fullcalendar.min.css',
+			            './css/programmation.css',
 			            './css/press.css'			            
 				        ],
 				    './css-concat/searchpage.css': [
@@ -467,14 +467,15 @@ grunt.initConfig({
 				        ],
 
 				    './js-concat/press.js':[
+
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
 				            './js/vendors/jquery.cookie.js',
 				            './js/vendors/jquery-ui.custom.min.js',
 				            
 				   			'./js/vendors/moment.min.js',
-				            './js/vendors/fullcalendar.min.js',
-				            './js/include/*.js',
+				   			'./js/include/*.js',
+				            './js/programmation.js',
 				            './js/press.js'
 				        ],
 				    './js-concat/searchpage.js':[

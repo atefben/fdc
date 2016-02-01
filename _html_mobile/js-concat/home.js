@@ -150,7 +150,7 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
 
             this.storeImgSize(imgLoader, i);
             fitting = this.fit(i, that.settings.container);
-
+            console.log("place",this.settings.imageSize);
             return this.center(
                 fitting.width,
                 fitting.height,
@@ -614,7 +614,14 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
                 });
             });
         },
+        refresh : function(that){
 
+            that.debounce(50, function() {
+                fitting = that.fit(that.settings.currentImage, that.settings.container);
+                that.center(fitting.width, fitting.height, fitting.left, fitting.top, 0);
+                that.zoomable();
+            });
+        },
         zoomable : function () {
             var currentImage = this.settings.images[this.settings.currentImage];
             var wrapperWidth = this.elems.wrapper.width();
@@ -773,10 +780,11 @@ $(document).ready(function() {
   $.initSlideshow = function(){
     var slideshows = [];
     // init slideshow chocolat
+    var slideshow;
       if($('.slideshow').length) {
 
-        var slideshow = $('.slideshow .images').Chocolat({
-          imageSize: 'cover',
+        slideshow = $('.slideshow .images').Chocolat({
+         imageSize: 'cover',
           fullScreen: false,
           loop: true,
         }).data('chocolat');
@@ -785,7 +793,7 @@ $(document).ready(function() {
       }
       if($('.all-photos').length) {
 
-        var slideshow = $('.list').Chocolat({
+        slideshow = $('.list').Chocolat({
           imageSize: 'cover',
           fullScreen: false,
           loop:true,
@@ -807,8 +815,9 @@ $(document).ready(function() {
 
       }, 900);
     });
-
+    $('body').off('click', '.share');
    $('body').on('click', '.share', function(e){
+    console.log("show");
        e.preventDefault();
         setTimeout(function() {
           $('.buttons.square').toggleClass('show');
@@ -816,7 +825,7 @@ $(document).ready(function() {
        
    });
 
-
+      
     var listener = function (event) {
       event.preventDefault();
     };
@@ -849,6 +858,21 @@ $(document).ready(function() {
       hammertime.on('swiperight', function(ev) {
           slideshow.api().prev();
       });
+      
+      
+     //  $('body').on('click', '.chocolat-img', function(e){
+     //    console.log("tap",slideshow.api().get('imageSize'));
+     //    if(slideshow.api().get('imageSize')=='cover'){
+     //        slideshow.api().set('imageSize', 'contain');
+     //        slideshow.api().set('initialZoomState', null);
+     //        slideshow.api().place();
+     //    }else{
+     //        slideshow.api().set('imageSize', 'cover');
+     //        slideshow.api().set('initialZoomState', null);
+     //        slideshow.api().place();
+     //    }
+         
+     // });
 
     });
   }
@@ -858,6 +882,53 @@ $(document).ready(function() {
   
 
 
+});
+// Newsletter
+// =========================
+
+$(document).ready(function() {
+
+  $('.newsletter #email').on('focus', function() {
+    if($(this).val() == GLOBALS.texts.newsletter.errorsNotValide || $(this).val() == GLOBALS.texts.newsletter.errorsMailEmpty) {
+      $(this).val('');
+      $(this).removeClass('error');
+    }
+  });
+
+  // on submit : check if there are errors in the form
+  $('.newsletter form').on('submit', function() {
+
+    var input = $('.newsletter #email');
+    var empty = false;
+
+    if($('#email').val() == '') {
+      empty = true;
+      input.addClass("error").val(GLOBALS.texts.newsletter.errorsMailEmpty);
+    } else {
+
+      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      var is_email=re.test(input.val());
+      if(is_email){
+        input.removeClass("error");
+      }
+      else {
+        input.addClass("error").val(GLOBALS.texts.newsletter.errorsNotValide);
+      }
+    }
+
+    if($('.newsletter .error').length || empty) {
+      return false;
+    } else {
+      // ajax call newsletter
+
+      // show confirmation 
+      $('.newsletter form').addClass('hide');
+      $('#confirmation span').html($('#email').val());
+      $('#confirmation').addClass('show');
+
+      return false;
+    }
+  });
 });
 var GLOBALS = {
   "locale" : "fr",
@@ -902,7 +973,7 @@ var GLOBALS = {
     },
     "newsletter" : {
       "errorsNotValide" : "L'adresse e-mail n'est pas valide",
-      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail"
     },
     'agenda' : {
       'delete' : "Supprimer de votre agenda"
