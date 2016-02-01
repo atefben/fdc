@@ -92,9 +92,6 @@ sonata_media:
             filesystem: sonata.media.filesystem.s3
             allowed_extensions: ['jpg', 'png', 'jpeg']
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png']
-     #   video:
-     #       allowed_extensions: ['mp4', 'flv']
-     #       allowed_mime_types: ['video/mp4', 'video/x-flv']
 
     filesystem:
         s3:
@@ -105,6 +102,7 @@ sonata_media:
             storage: standard
             acl: owner_full_control
             create: false
+
     #providers:
     #   path: /uploads/media
     #

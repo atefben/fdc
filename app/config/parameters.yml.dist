@@ -47,11 +47,16 @@ parameters:
     #api
     api_version: '1.0'
     api_page_offset: 10
-    # amazon s3
+    # amazon s3 image
     s3_bucket_name: ~
     s3_region: ~
     s3_access_key: ~
     s3_secret_key: ~
+    # amazon s3 video
+    s3_video_bucket_name: ~
+    s3_video_region: ~
+    s3_video_access_key: ~
+    s3_video_secret_key: ~
     # fdc
     fdc_event_domain: ~
     fdc_event_scheme: ~
