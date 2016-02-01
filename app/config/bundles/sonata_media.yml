@@ -2,7 +2,7 @@ sonata_media:
     # if you don't use default namespace configuration
     class:
         media: Application\Sonata\MediaBundle\Entity\Media
-    default_context: news_header_image
+    default_context: media_image
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         # SOIF
@@ -27,23 +27,32 @@ sonata_media:
                 - sonata.media.provider.file
             formats:
         #CMS
-        news_header_image:  # the default context is mandatory
+        media_image:  # the default context is mandatory
             providers:
                 - sonata.media.provider.image
            #     - sonata.media.provider.video
 
             formats:
-                small: { width: 100 , quality: 100 }
-                big:   { width: 500 , quality: 100 }
+                212x134: { width: 212 , height: 134 , quality: 100 }
+                224x142: { width: 224 , height: 142 , quality: 100 }
+                265x167: { width: 265 , height: 167 , quality: 100 }
+                293x185: { width: 293 , height: 185 , quality: 100 }
+                462x292: { width: 462 , height: 292 , quality: 100 }
+                573x362: { width: 573 , height: 362 , quality: 100 }
+                975x616: { width: 975 , height: 616 , quality: 100 }
+                1218x769: { width: 1218 , height: 769 , quality: 100 }
+                1461x923: { width: 1461 , height: 923 , quality: 100 }
 
-        news_audio:
+                big: { width: 500 , quality: 100 }
+
+        media_audio:
             providers:
                - sonata.media.provider.file
 
             formats:
                 mp3: { quality: 100 }
 
-        news_video:
+        media_video:
             providers:
                 - sonata.media.provider.file
            #     - sonata.media.provider.video
