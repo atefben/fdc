@@ -16,10 +16,14 @@
                 {% set trans = video.findTranslationByLocale('fr') %}
             {% endif %}
             <div class="item {{ video.theme|trans_fallback('slug') }} {{ video|trans_fallback('createdAt')|date('d-m-y') }} shadow-bottom video">
-                <a id="video1" class="ajax chocolat-image" href="{% path trans.image , 'big' %}"
+                <a id="video1" class="ajax chocolat-image" href="{% path trans.file , 'big' %}"
                    title='<span class="category">{{ video.theme|trans_fallback('slug') }}</span><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ video|trans_fallback('title') }}</h2>'
-                   data-credit="{{ video|trans_fallback('copyright') }}"></a>
-                {% thumbnail trans.image , 'big' with {'alt': video|trans_fallback('alt') } %}
+                   data-credit=""></a>
+                {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
+                {% if transImage is null or transImage.file is null %}
+                    {% set transImage = video.image.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% thumbnail transImage.file , 'big' %}
                 <div class="picto">
                     <i class="icon icon_video"></i>
                 </div>
