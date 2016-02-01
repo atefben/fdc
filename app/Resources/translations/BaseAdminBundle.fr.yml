@@ -98,6 +98,11 @@ entity:
     press_homepage: Accueil Espace Presse
     contact_page: Page de contact
     press_accredit: S’accréditer
+    press_media_library: Médiathèque
+    press_download: A télécharger
+    press_download_section: Section à télécharger
+    press_projection: Programmation
+    press_cinema_room: Plan des salles
 list:
     label_id: Identifiant
     label_title: Titre
