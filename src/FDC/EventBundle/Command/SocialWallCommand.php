@@ -136,6 +136,7 @@ class SocialWallCommand extends ContainerAwareCommand {
 
             $em->persist($socialWall);
         }
+        $output->writeln('Tweet added: '. count($tweets));
 
         //////////////////////////////////////////////////////////////////////
         ///////////////////////////   INSTAGRAM   ////////////////////////////
@@ -188,6 +189,7 @@ class SocialWallCommand extends ContainerAwareCommand {
             $socialWall->setTags($tagSettings->getSocialWallHashtags());
             $em->persist($socialWall);
         }
+        $output->writeln('Instagram added: '. count($instagramPosts));
 
         $em->flush();
     }
