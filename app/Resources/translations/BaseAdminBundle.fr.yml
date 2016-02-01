@@ -10,8 +10,13 @@ settings:
 
 breadcrumb:
     link_news_article_list: Liste des actualités - articles
+    link_news_video_list: Liste des actualités - vidéos
+    link_news_audio_list: Liste des actualités - audios
+    link_news_image_list: Liste des actualités - photos
     link_theme_list: Liste des Thèmes
     link_media_image_list : Liste des Médias images
+    link_media_video_list: Liste des Médias vidéo
+    link_media_audio_list: Liste des Médias audio
     link_homepage_list: Homepage
     link_social_wall_list: Liste du Social Wall
 
@@ -101,6 +106,7 @@ list:
     label_status_main: Statut
     label_type: Type
     label_created_at: Date de création
+    label_updated_at: Mit à jour le
     label_published_interval: Date(s) de publication
     label__action: Actions
     label_theme_name: Nom du thème
@@ -108,6 +114,7 @@ list:
     label__preview: Prévisualiser
     label__edit_translations: Éditer
     label_social_wall_content_none: Pas d'image
+    label_legend_img: Légende de l'image
     label_url: Lien
     label_network: Réseau Social
     label_content: Contenu
@@ -250,6 +257,8 @@ form:
     label_image_link: Image et lien
     label_main_image: Première image
     label_second_image: Seconde image
+    label_displayed_slider: Afficher le slider
+    label_displayed_top_news: Afficher le "Top News"
     contact_theme:
         helper_theme: X caractères max.
     status:
