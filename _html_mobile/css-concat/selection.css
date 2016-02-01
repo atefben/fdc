@@ -2212,6 +2212,8 @@ div.chocolat-wrapper .chocolat-top .close-button{
 
   top:20px;
   right: 20px;
+  opacity: 1;
+  visibility: visible;
 }
 div.chocolat-wrapper .chocolat-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.4);
