@@ -5804,7 +5804,7 @@ footer {
   position: relative;
   z-index: 2;
   clear: both;
-
+  border-top: 1px solid #2c2c2c;
 }
 footer .subtitle {
   padding-right: 7px;
@@ -6882,16 +6882,28 @@ display: inline-block;
   margin-top: 14px;
   height: auto;
 }
+.ba .slideshow .container{
+   border-bottom: 1px solid #2c2c2c;
+
+  padding:30px 40px;
+}
 .ba .slideshow .container, .channel .slideshow .container{
 
-  border-bottom: 1px solid #2c2c2c;
+ 
   width: 100%;
-  padding:30px 40px;
+  padding:30px 40px 20px;
   box-sizing:border-box;
 }
 .channel .featured-videos {
     padding-bottom: 60px;
 
+}
+.slideshow .info .category{
+  display: block;
+  width: 200px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .fullscreenplayer{
   width: 640px;
