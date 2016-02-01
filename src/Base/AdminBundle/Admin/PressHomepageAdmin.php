@@ -87,7 +87,7 @@ class PressHomepageAdmin extends Admin
                         )
                     ),
                     'sectionMediaSubtitle' => array(
-                        'label' => 'form.label_title',
+                        'label' => 'form.label_subtitle',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -106,6 +106,7 @@ class PressHomepageAdmin extends Admin
                     ),
                     'sectionStatisticTitle' => array(
                         'label' => 'form.label_title',
+                        'sonata_help' => 'form.press_homepage.helper_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -114,7 +115,8 @@ class PressHomepageAdmin extends Admin
                         )
                     ),
                     'sectionStatisticSubtitle' => array(
-                        'label' => 'form.label_title',
+                        'label' => 'form.label_subtitle',
+                        'sonata_help' => 'form.press_homepage.helper_subtitle',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -125,7 +127,28 @@ class PressHomepageAdmin extends Admin
                     'sectionStatisticDescription' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'sectionPushMainTitle' => array(
+                        'label' => 'form.label_title',
+                        'sonata_help' => 'form.press_homepage.helper_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'sectionPushSecondaryTitle' => array(
+                        'label' => 'form.label_title',
+                        'sonata_help' => 'form.press_homepage.helper_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
                     ),
                     'seoTitle' => array(
                         'attr' => array(
@@ -148,15 +171,30 @@ class PressHomepageAdmin extends Admin
                     ),
                 )
             ))
-            ->add('sectionStatementInfoDisplay')
-            ->add('sectionSchedulingDisplay')
-            ->add('sectionMediaDisplay')
-            ->add('sectionDownloadDisplay')
-            ->add('sectionStatisticDisplay')
+            ->add('sectionStatementInfoDisplay', 'checkbox', array(
+                'label' => 'form.label_display',
+                'required' => false,
+            ))
+            ->add('sectionSchedulingDisplay', 'checkbox', array(
+                'label' => 'form.label_display',
+                'required' => false,
+            ))
+            ->add('sectionMediaDisplay', 'checkbox', array(
+                'label' => 'form.label_display',
+                'required' => false,
+            ))
+            ->add('sectionDownloadDisplay', 'checkbox', array(
+                'label' => 'form.label_display',
+                'required' => false,
+            ))
+            ->add('sectionStatisticDisplay', 'checkbox', array(
+                'label' => 'form.label_display',
+                'required' => false,
+            ))
             ->add('pushsMain', 'sonata_type_collection',
                 array(
                     'by_reference' => false,
-                    'btn_add' => true
+                    'label' => 'form.label_image_link'
                 ),
                 array(
                     'edit' => 'inline',
@@ -166,7 +204,7 @@ class PressHomepageAdmin extends Admin
             ->add('pushsSecondary', 'sonata_type_collection',
                 array(
                     'by_reference' => false,
-                    'btn_add' => true
+                    'label' => 'form.label_image_link'
                 ),
                 array(
                     'edit' => 'inline',
@@ -185,7 +223,7 @@ class PressHomepageAdmin extends Admin
                             )
                         )
                     ),
-                    'btn_add' => true,
+                    'label' => false,
                     'cascade_validation' => true,
                     'by_reference' => false,
                 ),
@@ -209,14 +247,13 @@ class PressHomepageAdmin extends Admin
                     ),
                     'cascade_validation' => true,
                     'by_reference' => false,
-                    'help' => 'form.press_homepage.helper_media'
+                    'help' => 'form.press_homepage.helper_media',
+                    'label' => 'form.press_homepage.media_film'
                 ),
                 array(
                     'edit' => 'inline',
                     'inline' => 'table',
                     'sortable'  => 'position',
-                    'embed_min' => 2,
-                    'embed_max' => 4
                 )
             )
             ->add('homeDownload', 'sonata_type_collection',
@@ -231,9 +268,9 @@ class PressHomepageAdmin extends Admin
                             )
                         )
                     ),
-                    'btn_add' => true,
                     'cascade_validation' => true,
                     'by_reference' => false,
+                    'label' => 'form.press_homepage.download'
                 ),
                 array(
                     'edit' => 'inline',
@@ -242,13 +279,11 @@ class PressHomepageAdmin extends Admin
                 )
             )
             ->add('statImage', 'sonata_type_model_list', array(
-                'label' => 'form.label_header_image',
-                'help' => 'form.press.helper_stat_image',
+                'label' => 'form.label_main_image',
                 'translation_domain' => 'BaseAdminBundle'
             ))
             ->add('statImage2', 'sonata_type_model_list', array(
-                'label' => 'form.label_header_image',
-                'help' => 'form.press.helper_stat_image2',
+                'label' => 'form.label_second_image',
                 'translation_domain' => 'BaseAdminBundle'
             ))
 

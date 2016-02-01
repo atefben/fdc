@@ -15,15 +15,8 @@
         <!-- /build -->
     </head>
     <body>
-        <div id="searchContainer">
-    <div class="container">
-      <form action="searchpage.html">
-        <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." autocomplete="off" />
-      </form>
-      <ul id="suggest"></ul>
-    </div>
-  </div>
-        <div id="main" class="articles dark-background selection" data-menu="selection">
+        
+        <div id="main" class="articles dark-background selection cannesclassic" data-menu="selection">
             <!-- menu -->
 	<nav class="st-menu st-effect" id="menu">
 		<div id="top-menu" class="owl-carousel sliderDrag">
@@ -152,9 +145,9 @@
 			</ul>
 			<div class="small-separator"></div>
 			<ul class="third-nav">
-				<li class="my-selection">
-					<a href="myselection.html">
-						<i class="icon icon_ma-selection"></i>Ma sélection
+				<li class="search-nav">
+					<a href="search.html">
+						<i class="icon icon_recherche"></i>Rechercher
 					</a>
 				</li>
 				<li class="">
@@ -215,6 +208,41 @@
 		
 	</nav>	
 	<!-- end menu -->
+            <div class="my-selection st-effect">
+	 
+
+  
+  <h2 class="title one-line">ma sélection <span class="count">(<span></span>)</span></h2>
+
+  <div class="selection-main-container">
+    <div id="myselection-filters" class="owl-carousel sliderDrag ">
+      <div class="vid">
+        <p><a class="active" href="#" data-filter="all">tous</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="article">articles</a></p>
+      </div>
+      <div class="vid">
+        <p><a  href="#" data-filter="video">vidéos</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="audio">audios</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="suggestion">suggestions</a></p>
+      </div>
+
+
+    </div>
+
+    <div class="content-container">
+  	
+  		<div class="my-selection-container"></div>
+  		<div class="suggestion"></div>
+  	
+    </div>
+  </div>
+</div>
             <!-- header -->
 	<div class="dark-container" id="header">
 		<div class="header-container">
@@ -226,8 +254,8 @@
 		        <h1><a href="/"><img width="225" src="img/logo.svg" alt="Festival de Cannes"></a></h1>
 		        <h2><a href="/">du 11 au 22 Mai 2016</a></h2>
 		    </div>
-		    <div id="search">
-		        <i class="icon icon_recherche"></i>
+		    <div id="selection-btn">
+		        <i class="icon icon_lire-plus-tard"></i>
 		    </div>
 		</div>
 	</div>
@@ -247,7 +275,7 @@
                 <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
                     <div class="vid">
                         <p>
-                            <a class="" href="#">
+                            <a class="" data-url="selectionofficielle_competition.html">
                                 compétition
                             </a>
                         </p>
@@ -261,28 +289,28 @@
                     </div>
                     <div class="vid">
                         <p>
-                            <a href="#">
+                            <a class="" data-url="selectionofficielle_horscompetition.html">
                                 hors compétition
                             </a>
                         </p>
                     </div>
                     <div class="vid">
                         <p>
-                            <a href="#">
+                            <a class="" data-url="selectionofficielle_seancesspeciales.html">
                                 séances spéciales
                             </a>
                         </p>
                     </div>
                     <div class="vid">
                         <p>
-                            <a href="#">
+                            <a class="" data-url="selectionofficielle_cinefondation.html">
                                 cinéfondation
                             </a>
                         </p>
                     </div>
                     <div class="vid">
                         <p>
-                            <a href="#">
+                            <a class="" data-url="selectionofficielle_courtsmetrages.html">
                                 courts métrages
                             </a>
                         </p>
@@ -296,7 +324,7 @@
                     </div>
                     <div class="vid">
                         <p>
-                            <a href="#">
+                            <a class="" data-url="selectionofficielle_cinemadelaplage.html">
                                 cinéma de la plage
                             </a>
                         </p>
@@ -341,6 +369,7 @@
                     </div>
                 </div>
                 <div class="content-selection2">
+                <div class="selection dark-background">
                 <section>
                  
                   <div class="owl-carousel film-slider">
@@ -399,7 +428,7 @@
                     </div>
                     </div>
                 </section>
-                
+                </div>
             </div></div>
             </div>
             <div id="banner-bottom">

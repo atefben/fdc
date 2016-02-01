@@ -74,7 +74,7 @@ p,h1,h2,h3,h4,blockquote, pre, a,ul, li{
 .container{
     width: 90%;
     margin: auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .dark-container{
     width: 100%;
@@ -374,7 +374,7 @@ from desktop
     -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#main.dark-background{
+#main.dark-background,.dark-background {
   background: #141414;
 }
 #sliderWrapper .owl-dots {
@@ -997,13 +997,18 @@ from desktop
   }
 }
 */
- 
+ [class^="icon-mobile-"], [class*=" icon-mobile-"]{
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+      /*line-height: 1;*/
+ }
  [class^="icon-mobile-"]:before, [class*=" icon-mobile-"]:before {
   font-family: "mobile";
   font-style: normal;
   font-weight: normal;
   speak: none;
- 
+      line-height: 1;
   display: inline-block;
   text-decoration: inherit;
 

@@ -30,21 +30,21 @@ class PressHomepage
 
     /**
      * @var PressHomepageSection
-     * @ORM\OneToMany(targetEntity="PressHomepageSection", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressHomepageSection", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $section;
 
     /**
      * @var PressHomepageMedia
-     * @ORM\OneToMany(targetEntity="PressHomepageMedia", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressHomepageMedia", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $homeMedia;
 
     /**
      * @var PressHomepageDownload
-     * @ORM\OneToMany(targetEntity="PressHomepageDownload", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressHomepageDownload", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $homeDownload;
@@ -52,14 +52,14 @@ class PressHomepage
     /**
      * @var PressHomepagePushMain
      *
-     * @ORM\OneToMany(targetEntity="PressHomepagePushMain", mappedBy="homepage")
+     * @ORM\OneToMany(targetEntity="PressHomepagePushMain", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
      */
     protected $pushsMain;
 
     /**
      * @var PressHomepagePushSecondary
      *
-     * @ORM\OneToMany(targetEntity="PressHomepagePushSecondary", mappedBy="homepage")
+     * @ORM\OneToMany(targetEntity="PressHomepagePushSecondary", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
      */
     protected $pushsSecondary;
 
@@ -147,9 +147,8 @@ class PressHomepage
      */
     public function addSection(\Base\CoreBundle\Entity\PressHomepageSection $section)
     {
-        $this->section[] = $section;
-
-        return $this;
+        $section->setHomepage($this);
+        $this->section->add($section);
     }
 
     /**
@@ -173,15 +172,15 @@ class PressHomepage
     }
 
     /**
-     * Add homeMedia
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepageMedia $homeMedia
-     * @return PressHomepage
+     * Set section
+     * @param $section
+     * @return $this
      */
-    public function addHomeMedia(\Base\CoreBundle\Entity\PressHomepageMedia $homeMedia)
+    public function setSection($section)
     {
-        $homeMedia->setHomepage($this);
-        $this->homeMedia->add($homeMedia);
+
+        $this->section = $section;
+        return $this;
     }
 
     /**
@@ -190,9 +189,12 @@ class PressHomepage
      */
     public function setHomeMedia($homeMedia)
     {
+        foreach($homeMedia as $media)
+        {
+            $media->setHomepage($this);
+        }
 
         $this->homeMedia = $homeMedia;
-        return $this;
     }
 
     /**
@@ -215,6 +217,17 @@ class PressHomepage
         return $this->homeMedia;
     }
 
+    /**
+     * Add homeMedia
+     *
+     * @param \Base\CoreBundle\Entity\PressHomepageMedia $homeMedia
+     * @return PressHomepage
+     */
+    public function addHomeMedia(\Base\CoreBundle\Entity\PressHomepageMedia $homeMedia)
+    {
+        $homeMedia->setHomepage($this);
+        $this->homeMedia->add($homeMedia);
+    }
 
     /**
      * Add homeDownload
@@ -235,8 +248,12 @@ class PressHomepage
     public function setHomeDownload($homeDownload)
     {
 
+        foreach($homeDownload as $download)
+        {
+            $download->setHomepage($this);
+        }
+
         $this->homeDownload = $homeDownload;
-        return $this;
     }
 
     /**
@@ -268,9 +285,8 @@ class PressHomepage
      */
     public function addPushsMain(\Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain)
     {
-        $this->pushsMain[] = $pushsMain;
-
-        return $this;
+        $pushsMain->setHomepage($this);
+        $this->pushsMain->add($pushsMain);
     }
 
     /**
@@ -314,9 +330,8 @@ class PressHomepage
      */
     public function addPushsSecondary(\Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary)
     {
-        $this->pushsSecondary[] = $pushsSecondary;
-
-        return $this;
+        $pushsSecondary->setHomepage($this);
+        $this->pushsSecondary->add($pushsSecondary);
     }
 
     /**

@@ -70,14 +70,6 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $sites;
 
     /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
-     *
-     */
-    private $image;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -231,28 +223,5 @@ class MediaAudioTranslation implements TranslateChildInterface
     public function getSites()
     {
         return $this->sites;
-    }
-
-    /**
-     * Set image
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $image
-     * @return MediaAudioTranslation
-     */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 }

@@ -46,19 +46,6 @@ class PressHomepagePushSecondary
      */
     private $homepage;
 
-    /**
-     * ArrayCollection
-     */
-    protected $translations;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
-
     public function __toString()
     {
         $string = substr(strrchr(get_class($this), '\\'), 1);

@@ -509,3 +509,19 @@ services:
             - {name: sonata.admin, manager_type: orm, label: entity.press_homepage_push_secondary, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_accredit:
+        class: Base\AdminBundle\Admin\PressAccreditAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressAccredit, BaseAdminBundle:PressAccreditAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_accredit, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_accredit_procedure:
+        class: Base\AdminBundle\Admin\PressAccreditProcedureAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressAccreditProcedure, BaseAdminBundle:PressAccreditProcedureAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_accredit_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]

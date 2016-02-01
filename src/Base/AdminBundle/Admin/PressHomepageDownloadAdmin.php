@@ -47,6 +47,7 @@ class PressHomepageDownloadAdmin extends Admin
                 'help' => 'form.news.helper_film_film_associated',
                 'required' => false,
                 'btn_add' => false,
+                'label' => 'form.label_film'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
@@ -72,7 +73,7 @@ class PressHomepageDownloadAdmin extends Admin
 
     public function preUpdate($homepage)
     {
-        $homepage->setHomeMedia($homepage->getHomeMedia());
+        $homepage->setHomeDownload($homepage->getHomeDownload());
     }
 
 }
