@@ -30,7 +30,6 @@ sonata_media:
         media_image:  # the default context is mandatory
             providers:
                 - sonata.media.provider.image
-           #     - sonata.media.provider.video
 
             formats:
                 212x134: { width: 212 , height: 134 , quality: 100 }
@@ -43,19 +42,16 @@ sonata_media:
                 1218x769: { width: 1218 , height: 769 , quality: 100 }
                 1461x923: { width: 1461 , height: 923 , quality: 100 }
 
-                big: { width: 500 , quality: 100 }
-
         media_audio:
             providers:
-               - sonata.media.provider.file
+               - sonata.media.provider.audio
 
             formats:
                 mp3: { quality: 100 }
 
         media_video:
             providers:
-                - sonata.media.provider.file
-           #     - sonata.media.provider.video
+                - sonata.media.provider.video
 
             formats:
 
@@ -65,26 +61,6 @@ sonata_media:
            #     - sonata.media.provider.video
 
             formats:
-
-        media_image_file:
-            providers:
-                - sonata.media.provider.image
-
-            formats:
-
-        media_video_file:
-            providers:
-                - sonata.media.provider.video
-
-            formats:
-
-        media_video_image:
-            providers:
-                - sonata.media.provider.image
-
-            formats:
-                mobile:  { width: 300, quality: 100 }
-                desktop: { width: 500, quality: 100 }
 
         seo_file:
             providers:

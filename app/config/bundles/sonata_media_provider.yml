@@ -37,7 +37,7 @@ services:
             - %s3_audio_bucket_name%
             - {create: false, region: %s3_audio_region%, directory: '', 'ACL': 'owner_full_control'}
 
-    sonata.media.provider.s3_audio:
+    sonata.media.provider.audio:
         class: Application\Sonata\MediaBundle\Provider\VideoProvider
         tags:
             - { name: sonata.media.provider }
