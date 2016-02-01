@@ -1,11 +1,23 @@
 services:
+    sonata.media.filesystem.s3_video:
+        class: Gaufrette\Filesystem
+        arguments:
+            - @sonata.media.adapter.filesystem.s3_video
+
+    sonata.media.adapter.filesystem.s3_video:
+        class: Gaufrette\Adapter\AwsS3
+        arguments:
+            - @sonata.media.adapter.service.s3
+            - %s3_video_bucket_name%
+            - {create: false, region: %s3_video_region%, directory: '', 'ACL': 'owner_full_control'}
+
     sonata.media.provider.video:
         class: Application\Sonata\MediaBundle\Provider\VideoProvider
         tags:
             - { name: sonata.media.provider }
         arguments:
             - sonata.media.provider.video
-            - @sonata.media.filesystem.s3
+            - @sonata.media.filesystem.s3_video
             - @sonata.media.cdn.server
             - @sonata.media.generator.default
             - @sonata.media.thumbnail.format

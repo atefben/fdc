@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Settings controller.
@@ -71,7 +72,7 @@ class SettingsController extends Controller
         // Get Press user
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByUsername('press');
-        if ($user === null ) {
+        if ($user === null) {
             throw new NotFoundHttpException();
         }
         //Password form
