@@ -82,14 +82,6 @@ class MediaAudioAdmin extends Admin
                         'provider' => 'sonata.media.provider.file',
                         'context' => 'news_audio',
                     ),
-                    'image' => array(
-                        'required' => $requiredFile,
-                        'field_type' => 'sonata_media_type',
-                        'sonata_help' => 'form.media_image.helper_file',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'provider' => 'sonata.media.provider.image',
-                        'context' => 'news_header_image',
-                    ),
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
@@ -122,6 +114,9 @@ class MediaAudioAdmin extends Admin
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
             ))
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_media_video_image'
+            ))
             ->add('film', 'sonata_type_model_list', array(
                 'btn_delete' => false
             ))
@@ -135,15 +130,40 @@ class MediaAudioAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('sites', null, array(
+                'label' => 'form.label_publish_on',
+                'class' => 'BaseCoreBundle:Site',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('theme', 'sonata_type_model_list', array(
+                'btn_delete' => false
+            ))
             ->add('translate')
+            ->add('displayedMobile')
             ->add('displayedAll', null, array(
-                'label' => 'form.media_video.displayed_all'
+                'label' => 'form.media_image.displayed_all'
             ))
             ->add('displayedHome', null, array(
-                'label' => 'form.media_video.displayed_home'
+                'label' => 'form.media_image.displayed_home'
             ))
-            ->add('displayedMobile', null, array(
-                'label' => 'form.media_video.displayed_mobile'
+            ->add('priorityStatus', 'choice', array(
+                'choices' => MediaAudio::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ->end();
     }

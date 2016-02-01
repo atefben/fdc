@@ -74,7 +74,7 @@ p,h1,h2,h3,h4,blockquote, pre, a,ul, li{
 .container{
     width: 90%;
     margin: auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .dark-container{
     width: 100%;
@@ -1001,7 +1001,7 @@ from desktop
   font-style: normal;
   font-weight: normal;
   speak: none;
-      line-height: 1;
+      /*line-height: 1;*/
  }
  [class^="icon-mobile-"]:before, [class*=" icon-mobile-"]:before {
   font-family: "mobile";
@@ -2251,12 +2251,12 @@ footer .newsletter #email.error {
 footer .newsletter #confirmation {
   color: #fff;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-size: 0.875rem;
+  font-size: 18px;
   line-height: 1.2em;
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  top: 55px;
+  top: 35px;
   text-align: center;
   width: 100%;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -3055,6 +3055,9 @@ display: inline-block;
 img{
 	display: inline-block;
 	margin-bottom: 15px;
+}
+#logo img{
+	margin-bottom: 0;
 }
 strong{
 	font-weight: 700;

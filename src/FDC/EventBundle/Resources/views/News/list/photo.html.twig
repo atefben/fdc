@@ -11,7 +11,7 @@
         <div class="grid-sizer"></div>
 
         {% for photo in photos %}
-            <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo|trans_fallback('createdAt')|date('d-m-y') }} {{ photo.format }} shadow-bottom photo">
+            <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo|trans_fallback('createdAt')|date('d-m-y') }} shadow-bottom photo">
                 {% set trans = photo.findTranslationByLocale('fr') %}
                 {% if trans is null or trans.file is null %}
                     {% set trans = photo.findTranslationByLocale('fr') %}
@@ -26,7 +26,7 @@
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">{{ photo.theme|trans_fallback('slug') }}</a><span class="date">{{ photo|trans_fallback('createdAt')|date('d.m.y')}}</span>
+                            <a href="#" class="category">{{ photo.theme|trans_fallback('name') }}</a><span class="date">{{ photo|trans_fallback('createdAt')|date('d.m.y')}}</span>
                             <p>{{ photo|trans_fallback('legend') }}</p>
                         </div>
                     </div>
