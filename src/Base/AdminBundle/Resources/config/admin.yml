@@ -316,6 +316,22 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.media_video_film_film_associated:
+        class: Base\AdminBundle\Admin\MediaVideoFilmFilmAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated, BaseAdminBundle:MediaVideoFilmFilmAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaVideoFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.media_audio_film_film_associated:
+        class: Base\AdminBundle\Admin\MediaAudioFilmFilmAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated, BaseAdminBundle:MediaAudioFilmFilmAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaAudioFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.film_film_media:
         class: Base\AdminBundle\Admin\FilmFilmMediaAdmin
         arguments: [~, Base\CoreBundle\Entity\FilmFilmMedia, BaseAdminBundle:FilmFilmMediaAdmin]

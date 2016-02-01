@@ -35,6 +35,9 @@
                                     {{ form_row(translationsFields.file) }}
                                     {{ form_row(form.parent.children.image) }}
                                     {{ form_row(form.parent.children.tags) }}
+                                    {{ form_row(form.parent.children.associatedFilms) }}
+
+                                    {% if form.vars.default_locale == locale %}
                                     <div class="form-group">
                                         {{ form_widget(form.parent.children.displayedAll) }}
                                         {{ form_label(form.parent.children.displayedAll) }}
@@ -51,6 +54,7 @@
                                         {{ form_widget(form.parent.children.displayedTrailer) }}
                                         {{ form_label(form.parent.children.displayedTrailer) }}
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
