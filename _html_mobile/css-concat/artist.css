@@ -2851,7 +2851,7 @@ display: inline-block;
 /*ARTICLES*/
 
 .my-selection .title.one-line{
-  margin: 70px 0;
+  margin: 70px 0 50px 0;
 }
 .my-selection .content-container{
 
@@ -2968,13 +2968,16 @@ display: inline-block;
 #myselection-filters{
   height: 110px;
   z-index: 50;
+  width: 141%;
+  margin-left: -23%; 
+  margin-bottom: 20px;
 }
 
 #myselection-filters .vid {
   height: 100%;
   overflow: hidden;
   position: relative;
-  width: auto;
+  width: 165px;
   line-height: 110px;
   padding: 0 20px 0 20px;
 
@@ -3066,11 +3069,13 @@ a{
     font-weight: 700;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     text-align: center;
+    color: #333;
 }
 .text-content strong{
 
     font-weight: 700;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif; 
+    color:#333;
 }
 /*PICTOS NAV*/
 
@@ -3101,6 +3106,16 @@ a{
 }*/
 
 /*SECTION*/
+
+.author {
+    border-top: 1px solid #e5e5e5;
+    color: #333;
+    font-size: 0.750rem;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    margin-top: 40px;
+    padding-top: 10px;
+
+}
 
 .section{
 
@@ -3423,8 +3438,6 @@ a{
     width: 100%;
     z-index: 5;
 }
-
-
 
 
 
