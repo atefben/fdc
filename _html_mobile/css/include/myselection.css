@@ -52,7 +52,7 @@
 /*ARTICLES*/
 
 .my-selection .title.one-line{
-  margin: 70px 0;
+  margin: 70px 0 50px 0;
 }
 .my-selection .content-container{
 
@@ -169,13 +169,16 @@
 #myselection-filters{
   height: 110px;
   z-index: 50;
+  width: 141%;
+  margin-left: -23%; 
+  margin-bottom: 20px;
 }
 
 #myselection-filters .vid {
   height: 100%;
   overflow: hidden;
   position: relative;
-  width: auto;
+  width: 165px;
   line-height: 110px;
   padding: 0 20px 0 20px;
 
