@@ -8,11 +8,24 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PressAccreditAdmin extends Admin
+class PressGuideAdmin extends Admin
 {
     protected $formOptions = array(
         'cascade_validation' => true
     );
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
 
 
     /**
@@ -24,7 +37,6 @@ class PressAccreditAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('procedure')
         ;
     }
 
@@ -57,43 +69,40 @@ class PressAccreditAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'commonTitle' => array(
-                        'label' => 'form.label_title',
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
+                        'required' => false
                     ),
-                    'commonContent' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
-                        'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle'
-                    ),
-                    'procedureMainTitle' => array(
-                        'label' => 'form.label_title',
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
+                        'required' => false
+
+                    )
                 )
             ))
-            ->add('procedure', 'sonata_type_collection',
-                array(
-                    'label' => false,
-                    'by_reference' => false,
+            ->add('widgets', 'infinite_form_polycollection', array(
+                'label' => false,
+                'types' => array(
+                    'press_guide_widget_image_type',
+                    'press_guide_widget_column_type',
+                    'press_guide_widget_picto_type',
                 ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable'  => 'position'
-                )
-            )
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
+
             ->end()
         ;
 

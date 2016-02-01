@@ -522,6 +522,30 @@ services:
         class: Base\AdminBundle\Admin\PressAccreditProcedureAdmin
         arguments: [~, Base\CoreBundle\Entity\PressAccreditProcedure, BaseAdminBundle:PressAccreditProcedureAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.press_accredit_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm,group: dashboard.group.press, label: entity.press_accredit_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_guide:
+        class: Base\AdminBundle\Admin\PressGuideAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressGuide, BaseAdminBundle:PressGuideAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm,group: dashboard.group.press, label: entity.press_guide, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_guide_widget_image_dummy:
+        class: Base\AdminBundle\Admin\PressGuideWidgetImageDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressGuideWidgetImage, BaseAdminBundle:PressGuideWidgetImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Guide Image widget, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_guide_widget_column_dummy:
+         class: Base\AdminBundle\Admin\PressGuideWidgetColumnDummyAdmin
+         arguments: [~, Base\CoreBundle\Entity\PressGuideWidgetColumn, BaseAdminBundle:PressGuideWidgetColumnDummyAdmin]
+         tags:
+             - {name: sonata.admin, manager_type: orm, group: admin, label: Guide Column widget, show_in_dashboard: false}
+         calls:
+              - [ setTranslationDomain, ['BaseAdminBundle']]
