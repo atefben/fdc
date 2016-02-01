@@ -6821,7 +6821,7 @@ display: inline-block;
   display: none;
 }
  .informations-video .program-film .contain-info {
-  
+  height: 455px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -6904,6 +6904,16 @@ display: inline-block;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+}
+.program-film ::-webkit-scrollbar {
+  width: 10px;
+}
+.program-film ::-webkit-scrollbar-track {
+  background-color: rgba(102, 102, 102, 0.44);
+}
+.program-film ::-webkit-scrollbar-thumb {
+  height: 10px;
+  background-color: #c8a461;
 }
 .fullscreenplayer{
   width: 640px;
