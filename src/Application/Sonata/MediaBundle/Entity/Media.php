@@ -40,7 +40,9 @@ class Media extends SonataBaseMedia
     protected $sites;
     
     protected $newsWidgetAudios;
-    
+
+    protected $pressGuideWidgetAudios;
+
     public function __construct()
     {
         $this->enabled = true;

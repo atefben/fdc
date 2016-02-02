@@ -16,7 +16,7 @@
     </ul>
 
     <div class="a2lix_translationsFields tab-content">
-        {% set procedureTranslations = (form.parent.children.procedure.vars.data is not null) ? form.parent.children.procedure.vars.data : null %}
+        {% set procedureTranslations = (form.parent.children.procedure.vars.data|length > 0 is not null) ? form.parent.children.procedure.vars.data.translations.unwrap() : null %}
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 

@@ -24,6 +24,7 @@ class PressAccreditAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('procedure')
         ;
     }
 
