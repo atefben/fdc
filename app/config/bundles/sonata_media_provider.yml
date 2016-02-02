@@ -11,6 +11,11 @@ services:
             - %s3_video_bucket_name%
             - {create: false, region: %s3_video_region%, directory: '', 'ACL': 'owner_full_control'}
 
+    sonata.media.cdn.server_video:
+        class: Sonata\MediaBundle\CDN\Server
+        arguments:
+            - http://%s3_video_bucket_name%.s3-website-%s3_video_region%.amazonaws.com
+
     sonata.media.provider.video:
         class: Application\Sonata\MediaBundle\Provider\VideoProvider
         tags:
@@ -18,12 +23,11 @@ services:
         arguments:
             - sonata.media.provider.video
             - @sonata.media.filesystem.s3_video
-            - @sonata.media.cdn.server
+            - @sonata.media.cdn.server_video
             - @sonata.media.generator.default
             - @sonata.media.thumbnail.format
             - ['mp4', 'mov']
             - ['video/mp4', 'video/quicktime']
-
 
     sonata.media.filesystem.s3_audio:
         class: Gaufrette\Filesystem
@@ -37,6 +41,11 @@ services:
             - %s3_audio_bucket_name%
             - {create: false, region: %s3_audio_region%, directory: '', 'ACL': 'owner_full_control'}
 
+    sonata.media.cdn.server_audio:
+        class: Sonata\MediaBundle\CDN\Server
+        arguments:
+            - http://%s3_audio_bucket_name%.s3-website-%s3_audio_region%.amazonaws.com
+
     sonata.media.provider.audio:
         class: Application\Sonata\MediaBundle\Provider\VideoProvider
         tags:
@@ -44,7 +53,7 @@ services:
         arguments:
             - sonata.media.provider.video
             - @sonata.media.filesystem.s3_audio
-            - @sonata.media.cdn.server
+            - @sonata.media.cdn.server_audio
             - @sonata.media.generator.default
             - @sonata.media.thumbnail.format
             - ['mp3']

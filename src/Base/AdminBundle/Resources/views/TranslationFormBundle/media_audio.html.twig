@@ -19,8 +19,6 @@
     <div class="a2lix_translationsFields tab-content">
     {% for translationsFields in form %}
         {% set locale = translationsFields.vars.name %}
-        {#{% if app.request.locale == locale %}#}
-
         <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
             <div class="row">
                 <div class="col-md-8">
@@ -33,10 +31,14 @@
                         <div class="box-body">
                             <div class="sonata-ba-collapsed-fields">
                                 {{ form_row(translationsFields.file) }}
-                                {{ form_row(form.parent.children.image) }}
                                 {{ form_row(translationsFields.title) }}
                                 {{ form_row(form.parent.children.theme) }}
-                                {{ form_row(translationsFields.alt) }}
+                                {{ form_row(form.parent.children.image) }}
+                                {{ form_row(form.parent.children.tags) }}
+                                {{ form_row(form.parent.children.associatedFilms) }}
+                                {% if form.vars.default_locale != locale %}
+                                    {{ form_row(translationsFields.status) }}
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -58,11 +60,11 @@
                                 </div>
                                 {{ form_row(form.parent.children.publishedAt) }}
                                 {{ form_row(form.parent.children.publishEndedAt) }}
-                                {{ form_row(translationsFields.status) }}
                                 <div class="form-group fdc-input-border">
                                     {{ form_widget(form.parent.children.translate) }}
                                     {{ form_label(form.parent.children.translate) }}
                                 </div>
+                                {{ form_row(translationsFields.status) }}
                                 {{ form_row(form.parent.children.priorityStatus) }}
                             </div>
                         </div>
@@ -78,31 +80,11 @@
                             <div class="sonata-ba-collapsed-fields">
                                 <div class="form-group">
                                     <label class="control-label">
-                                        {{ 'form.label_legend_img'|trans }}
+                                        {{ 'form.label_title'|trans }}
                                     </label>
-                                    {% if form.children.fr.vars.value is not null %}
+                                    {% if form.children.fr.vars.value is not null and form.children.fr.vars.value.copyright is defined %}
                                         <div>
-                                            {{ form.children.fr.vars.value.legend }}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">
-                                        {{ 'form.label_alt_img'|trans }}
-                                    </label>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.alt }}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">
-                                        {{ 'form.label_copyright'|trans }}
-                                    </label>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.copyright }}
+                                            {{ form.children.fr.vars.value.title }}
                                         </div>
                                     {% endif %}
                                 </div>

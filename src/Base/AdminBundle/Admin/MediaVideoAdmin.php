@@ -11,6 +11,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MediaVideoAdmin extends Admin
 {
@@ -84,7 +85,10 @@ class MediaVideoAdmin extends Admin
                         'field_type' => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
                         'provider' => 'sonata.media.provider.video',
-                        'context' => 'media_video_file',
+                        'context' => 'media_video',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     ),
                     'title' => array(
                         'label' => 'form.label_title',
@@ -101,7 +105,10 @@ class MediaVideoAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
                         'choices' => MediaVideoTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     ),
                     'seoTitle' => array(
                         'attr' => array(
@@ -122,6 +129,9 @@ class MediaVideoAdmin extends Admin
                         'required' => false
                     )
                 )
+            ))
+            ->add('webTv', 'sonata_type_model_list', array(
+                'btn_delete' => false
             ))
             ->add('sites', null, array(
                 'label' => 'form.label_publish_on',

@@ -279,6 +279,9 @@ $(document).ready(function() {
       if(s > 100 && $('.main-image').hasClass('trailer')) {
         $('.main-image').height($('.main-image').data('height')).css('padding-top', 0);
         $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
+        if(videoMovie.getState() === "playing") {
+          videoMovie.pause();
+        }
       }
 
       var sections = $('*[data-section')

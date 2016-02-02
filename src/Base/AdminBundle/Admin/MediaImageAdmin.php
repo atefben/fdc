@@ -90,50 +90,41 @@ class MediaImageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.media_image.helper_file',
                         'provider' => 'sonata.media.provider.image',
-                        'context' => 'media_image'
+                        'context' => 'media_image',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     ),
                     'legend' => array(
                         'label' => 'form.label_legend_img',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.media.helper_legend',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'constraints' => array(
-                                    new NotBlank()
-                                )
-                            )
+                        'constraints' => array(
+                            new NotBlank()
                         )
                     ),
                     'alt' => array(
                         'label' => 'form.label_alt_img',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.media.helper_alt',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'constraints' => array(
-                                    new NotBlank()
-                                )
-                            )
+                        'constraints' => array(
+                            new NotBlank()
                         )
                     ),
                     'copyright' => array(
                         'sonata_help' => 'form.media.helper_copyright',
                         'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => false
-                            ),
-                            'en' => array(
-                                'required' => false
-                            )
-                        )
+                        'required' => false
                     ),
                     'status' => array(
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
                         'choices' => MediaImageTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     )
                 )
             ))

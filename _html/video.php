@@ -50,103 +50,11 @@
             "category":"Montée des marches"
           }
         ]'
-        data-live="false">
-        <div id="video-player" class="video-player v_<?php echo time();?>">
+        data-live="false"
+        data-file="./files/mov_bbb.mp4"
+        data-img="//dummyimage.com/960x540/000/c8a461.png">
+        <div id="video-player-pl" class="video-player v_<?php echo time();?>">
         </div>
-        <!--<div class="channels-video">
-          <div class="slider-channels-video owl-carousel sliderDrag">
-            <div class="channel video shadow-bottom">
-              <div class="image-wrapper">
-                <img src="//dummyimage.com/960x540/000/c8a461.png" alt="" width="293" height="185">
-              </div>
-              <a class="linkVid" href="#"></a>
-              <div class="info">
-                <div class="picto"><i class="icon icon_playlist"></i></div>
-                <div class="info-container">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <a href="#" class="category">Photocall</a>
-                      <span></span>
-                      <p>Sils Maria</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="channel video shadow-bottom">
-              <div class="image-wrapper">
-                <img src="//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg" alt="" width="293" height="185">
-              </div>
-              <a class="linkVid" href="#"></a>
-              <div class="info">
-                <div class="picto"><i class="icon icon_playlist"></i></div>
-                <div class="info-container">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <a href="#" class="category">Montée des marches</a>
-                      <span></span>
-                      <p>Interviews des réalisateurs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="channel video shadow-bottom">
-              <div class="image-wrapper">
-                <img src="img/slider-channels/03.jpg" alt="" />
-              </div>
-              <a class="linkVid" href="#"></a>
-              <div class="info">
-                <div class="picto"><i class="icon icon_playlist"></i></div>
-                <div class="info-container">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <a href="#" class="category">Conférence de presse</a>
-                      <span></span>
-                      <p>Sils Maria</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="channel video shadow-bottom">
-              <div class="image-wrapper">
-                <img src="img/slider-channels/01.jpg" alt="" />
-              </div>
-              <a class="linkVid" href="#"></a>
-              <div class="info">
-                <div class="picto"><i class="icon icon_playlist"></i></div>
-                <div class="info-container">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <a href="#" class="category">Photocall</a>
-                      <span></span>
-                      <p>Sils Maria</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="channel video shadow-bottom">
-              <div class="image-wrapper">
-                <img src="img/slider-channels/02.jpg" alt="" />
-              </div>
-              <a class="linkVid" href="#"></a>
-              <div class="info">
-                <div class="picto"><i class="icon icon_playlist"></i></div>
-                <div class="info-container">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <a href="#" class="category">Montée des marches</a>
-                      <span></span>
-                      <p>Sils Maria</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>-->
         <div class="video-overlay"></div>
         <div class="infos-bar">
           <div class="picto"><i class="icon icon_video"></i></div>

@@ -211,7 +211,8 @@ var GLOBALS = {
   },
   "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
   "urls" : {
-    "calendarProgrammationUrl" : "calendarprogrammation.html",
+    "calendarDay1":"calendar-day1.html",
+    "calendarDay2":"calendar-day2.html",
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
     "newsUrlNext" : "more-news.html",
@@ -510,31 +511,136 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 
-	$('.calendar .fc-event').each(function () {
+	// init array of events
+	 var events = [];
 
-	    // based on time start and duration, calculate positions of event
-	    var timeStart = $(this).data('time'),
-	      dur = Math.floor($(this).data('duration') / 60),
-	      minutes = $(this).data('duration') % 60;
+	// get local storage
+	var agenda = localStorage.getItem('agenda_press');
 
-	    if (minutes == 0) {
-	      minutes = '';
-	    }
+	// if local storage, get the events
+	if (agenda != null) {
+	   events = JSON.parse(agenda);
+	}
 
-	    if (dur < 2) {
-	      $(this).addClass('one-hour');
-	      $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
-	    }
+	function displayProgrammationDay(day){
 
-	    var base = 8;
-	    $(this).find('.category').css('background-color', $(this).data('color'));
-	    $(this).addClass($(this).data('picto').substr(1));
+		// TODO : à enlever lors de la dynamisation. C'est juste un test pour afficher 2 jours différents
+		var url;
+		if(day%2 == 0){
+			url = GLOBALS.urls.calendarDay2;
+		}else{
+			url = GLOBALS.urls.calendarDay1;
+		}
+		//
 
-	    var mT = timeStart - base;
-	    $(this).css('margin-top', mT*170+10);
+		$.ajax({
+	        type: "GET",
+	        dataType: "html",
+	        cache: false,
+	        url: url,
+	        success: function (data) {
+	            $('.v-wrapper').html(data);
 
-	});
+	            var venues = $(".v-wrapper-content").owlCarousel({
+				  nav: false,
+				  dots: false,
+				  smartSpeed: 500,
+				  margin: 0,
+				  autoWidth: true,
+				  loop: false,
 
+				});
+				venues.owlCarousel();
+
+				$('.calendar .v-container').each(function () {
+				
+					var endDate = new Date("1900-01-01T00:00:00").getTime();
+			
+		
+					$(this).find(".fc-event").each(function () {
+
+
+						// allows to display two events at same hour (or overlap) in the same column 
+						// it works only if element (fc-event) are added in chronologic order
+						var startDate = new Date($(this).data('start')).getTime();
+						if(startDate < endDate){
+							$(this).addClass('half');
+							if(!$(this).prev('.fc-event').hasClass('half')){
+								$(this).prev('.fc-event').addClass('half');
+							}
+							
+						}
+						endDate = new Date($(this).data('end')).getTime();
+
+						//
+						
+						// short event (less than 2 hours)
+					    if (dur < 2) {
+					      $(this).addClass('one-hour');
+					      $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
+					    }
+
+
+					    // based on time start and duration, calculate positions of event
+					    var timeStart = $(this).data('time'),
+					      dur = Math.floor($(this).data('duration') / 60),
+					      minutes = $(this).data('duration') % 60;
+
+					    if (minutes == 0) {
+					      minutes = '';
+					    }
+					    var base = 8;
+
+					    //add color
+					    $(this).find('.category').css('background-color', $(this).data('color'));
+					    $(this).addClass($(this).data('picto').substr(1));
+
+					    var mT = timeStart - base;
+					    $(this).css('margin-top', mT*170+10);
+
+					    // init all the data of the event
+					    var eventObject = {
+					      title: $(this).find('.txt span').text(),
+					      eventColor: $(this).data('color'),
+					      start: $(this).data('start'),
+					      end: $(this).data('end'),
+					      type: $(this).find('.category').text(),
+					      author: $(this).find('.txt strong').text(),
+					      picture: $(this).find('img').attr('src'),
+					      duration: parseInt($(this).find('.bottom .duration').text().substr(0, 2)) * 60,
+					      room: $(this).find('.bottom .ven').text(),
+					      selection: $(this).find('.bottom .competition').text(),
+					      eventPictogram: $(this).data('picto').substr(1),
+					      id: $(this).data('id'),
+					      url: $(this).data('url')
+					    };
+
+					    // store the Event Object in the DOM element so we can get to it later
+					    $(this).data('eventObject', eventObject);
+
+					});
+				});
+
+
+
+			    $('.calendar').on('click', '.fc-event', function (e) {
+			      var url = $(this).data('url');
+			      openPopinEvent(url);
+			    });
+	        }
+      	});
+
+
+
+	}
+
+
+
+	displayProgrammationDay($('.timeline-container .active').data('date'));
+
+
+
+	
 
 	function moveTimeline(element, day){
 		var numDay = 0; 
@@ -558,7 +664,12 @@ $(document).ready(function() {
 	    if($(this).hasClass('active') || $(this).hasClass('disabled')) {
 	      return false;
 	    }
-	    var url =  GLOBALS.urls.newsUrl;
+	    
+	    $('#timeline a').removeClass('active');
+      	$(this).addClass('active');
+
+      	displayProgrammationDay($('.timeline-container .active').data('date'));
+
 	    moveTimeline($(this), $(this).data('date'));
   	});
 
@@ -570,7 +681,7 @@ $(document).ready(function() {
   		if(day == 11){
 	    	return false;
 	    }else{
-	    	var url =  GLOBALS.urls.newsUrl ;
+	    	displayProgrammationDay($('.timeline-container .active').data('date'));
 	    	moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
 	    }
 	    
@@ -584,7 +695,7 @@ $(document).ready(function() {
   		if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')){
 	    	return false;
 	    }else{
-	    	var url =  GLOBALS.urls.newsUrl;
+	    	displayProgrammationDay($('.timeline-container .active').data('date'));
 	    	moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
 	    }
   	});
@@ -592,16 +703,137 @@ $(document).ready(function() {
   	// init timeline
 	moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'));
 
-	var venues = $(".venues .v-wrapper").owlCarousel({
-	  nav: false,
-	  dots: false,
-	  smartSpeed: 500,
-	  margin: 0,
-	  autoWidth: true,
-	  loop: false,
 
-	});
-	venues.owlCarousel();
+
+	function openPopinEvent(url) {
+    $.ajax({
+      type: "GET",
+      dataType: "html",
+      cache: false,
+      url: url,
+      success: function (data) {
+        $('.popin-event').remove();
+        // display the html
+        $('.calendar').append(data);
+        $('#main').addClass('event-open');
+        $('.popin-event').css('top', $(document).scrollTop());
+        $('.popin-event .fc-event').each(function () {
+
+	
+	    	$(this).find('.category').css('background-color', $(this).data('color'));
+	    	$(this).addClass($(this).data('picto').substr(1));
+
+		});
+
+		// test if events are already store in local storage
+        if (events.length != 0) {
+          $('.events-container .fc-event').each(function () {
+            var id = $(this).data('id'),
+              $this = $(this);
+
+            for (var i = 0; i < events.length; i++) {
+              if (id == events[i].id) {
+                $this.parent().addClass('agenda');
+                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
+              }
+            }
+
+	        // init all the data of the event
+		    var eventObject = {
+		      title: $(this).find('.txt span').text(),
+		      eventColor: $(this).data('color'),
+		      start: $(this).data('start'),
+		      end: $(this).data('end'),
+		      type: $(this).find('.category').text(),
+		      author: $(this).find('.txt strong').text(),
+		      picture: $(this).find('img').attr('src'),
+		      duration: parseInt($(this).find('.bottom .duration').text().substr(0, 2)) * 60,
+		      room: $(this).find('.bottom .ven').text(),
+		      selection: $(this).find('.bottom .competition').text(),
+		      eventPictogram: $(this).data('picto').substr(1),
+		      id: $(this).data('id'),
+		      url: $(this).data('url')
+		    };
+
+		    // store the Event Object in the DOM element so we can get to it later
+		    $(this).data('eventObject', eventObject);
+          });
+        }
+
+        // show popin
+        setTimeout(function () {
+          $('.popin-event').addClass('show');
+          $('#main').addClass('event-open');
+        }, 100);
+
+
+
+         // close popin
+        $('.calendar').on('click', '.close-button', function (e) {
+          e.preventDefault();
+
+          $('.popin-event').removeClass('show');
+          $('#main').removeClass('event-open');
+          setTimeout(function () {
+            $('.popin-event').remove();
+          }, 600);
+        });
+
+        // add event
+        $('.calendar').on('click', '.event .add', function (e) {
+          e.preventDefault();
+          var $ev = $(this).parent().find('.fc-event');
+
+          var originalEventObject = $ev.data('eventObject');
+          var copiedEventObject = $.extend({}, originalEventObject);
+        
+         if (events.filter(function (e) {
+              return e.id == copiedEventObject.id;
+            }).length > 0) {
+            return false;
+          }
+          // get local storage
+          var agenda = localStorage.getItem('agenda_press');
+
+          if (agenda == null) {
+            events.push(copiedEventObject);
+
+            localStorage.setItem('agenda_press', JSON.stringify(events));
+          } else {
+            events = JSON.parse(agenda);
+            events.push(copiedEventObject);
+
+            localStorage.setItem('agenda_press', JSON.stringify(events));
+          }
+
+          $(this).parent().addClass('agenda');
+          $(this).removeClass('add').text(GLOBALS.texts.agenda.delete);
+        });
+
+		// delete event
+        $('.calendar').on('click', '.event.agenda .button', function (e) {
+          e.preventDefault();
+
+          var id = parseInt($(this).parent().find('.fc-event').data('id'));
+
+          var agenda = localStorage.getItem('agenda_press');
+          events = JSON.parse(agenda);
+
+          for (var i = 0; i < events.length; i++) {
+            if (events[i].id == id) {
+              events.splice(i, 1);
+            }
+          }
+
+          localStorage.setItem('agenda_press', JSON.stringify(events));
+
+          $(this).parent().removeClass('agenda');
+          $(this).text('Ajouter').addClass('add');
+        });
+
+      }
+    });
+  }
 
 
 
@@ -735,5 +967,94 @@ $(document).ready(function() {
 	});
 
 
+
+});
+// Filters
+// =========================
+
+function filter() {
+
+  // var filters = [];
+  
+    $('.filter').each(function() {
+      var $that = $(this);
+      var a = $that.find('.select span.active').data('filter');
+
+      if(a !== 'all'){
+        $(".list .item:not(."+a+")").css('display','none');
+      }
+       
+    });
+
+    if($('.grid').length !== 0){
+      $('.grid').isotope();
+    }
+    
+      
+  
+  
+
+}
+
+$(document).ready(function() {
+
+  // on click on a filter
+  if ($('.filters').length) {
+  $('.filters .select span').on('click', function() {
+    var h = $(this).parent().html();
+
+    $('#filters').remove();
+    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
+    $('#filters .vCenterKid').html(h);
+    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+
+    setTimeout(function() {
+      $('#filters').addClass('show');
+    }, 100);
+
+    setTimeout(function() {
+      $('#filters span').addClass('show');
+    }, 400);
+  });
+}
+  if ($('.filters-slider').length) {
+    $('.filters-slider .select span').on('click', function() {
+    var h = $(this).parent().html();
+
+    $('#filters').remove();
+    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
+    $('#filters .vCenterKid').html(h);
+    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+
+    setTimeout(function() {
+      $('#filters').addClass('show');
+    }, 100);
+
+    setTimeout(function() {
+      $('#filters span').addClass('show');
+    }, 400);
+  });
+  }
+
+  // close filters
+  $('body').on('click', '#filters', function() {
+    $('#filters').removeClass('show');
+    setTimeout(function() {
+      $('#filters').remove();
+    }, 700);
+  });
+
+  // filter data on page
+  $('body').on('click', '#filters span', function() {
+
+      var id = $('#filters').data('id'),
+          i = $(this).index();
+
+      $('#' + id + ' .select span').removeClass('active');
+      $('#' + id + ' .select span').eq(i).addClass('active');
+
+      $(".list .item").css("display","block");
+      filter();
+  });
 
 });

@@ -82,12 +82,6 @@ $(document).ready(function() {
       $('#' + id + ' .select span').removeClass('active');
       $('#' + id + ' .select span').eq(i).addClass('active');
 
-
-
-      // $(".list .item:not(."+$(this).data('filter')+")").css('display','none');
-      // $(".list .item."+$(this).data('filter')).css('display','block');
-
-
       $(".list .item").css("display","block");
       filter();
   });
