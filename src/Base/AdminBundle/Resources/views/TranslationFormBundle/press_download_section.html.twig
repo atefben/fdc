@@ -20,6 +20,46 @@
             {% set locale = translationsFields.vars.name %}
 
             <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div id="fdc-widgets" data-form-widget="collection">
+                                    {% for widget in form.parent.children.widgets.children %}
+
+                                        <div class="item base-widget">
+                                            {% if widget.children._type.vars.value == 'press_download_section_widget_photo_type' %}
+                                                <h4><strong>Photo widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type' %}
+                                                <h4><strong>Video widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
+                                                <h4><strong>Dossier de presse widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
+                                                <h4><strong>Document widget</strong></h4>
+                                            {% endif %}
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.position) }}
+
+                                            {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                {{ form_widget(widget.gallery) }}
+                                            {% endif %}
+
+                                            <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_file_type)| escape }}"><i class="icon-plus"></i>Module Dossier</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_document_type)| escape }}"><i class="icon-plus"></i>Module Document</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_video_type)| escape }}"><i class="icon-plus"></i>Module Vidéo</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_photo_type)| escape }}"><i class="icon-plus"></i>Module photo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box box-success">
