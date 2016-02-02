@@ -42,24 +42,11 @@ class NewsListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-
-        // set festival year
-        if (method_exists($entity, 'setFestival')) {
-            $em = $args->getEntityManager();
-            $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-            if ($settings !== null) {
-                $entity->setFestival($settings->getFestival());
-            }
-        }
-
+        
         // set createdBy
         if (method_exists($entity, 'getTranslatable') && method_exists($entity->getTranslatable(), 'setCreatedBy') &&
             $entity->getTranslatable()->getCreatedBy() === null && $this->tokenStorage->getToken()) {
             $entity->getTranslatable()->setCreatedBy($this->tokenStorage->getToken()->getUser());
-        }
-
-        if (method_exists($entity, 'getTranslatable') && method_exists($entity->getTranslatable(), 'setPublishedAt')) {
-            $this->setPublishedAt($entity, false);
         }
     }
 
@@ -77,27 +64,6 @@ class NewsListener
             $entity->getTranslatable()->setUpdatedBy($this->tokenStorage->getToken()->getUser());
             $this->flush = true;
         }
-
-        if (method_exists($entity, 'getTranslatable') && method_exists($entity->getTranslatable(), 'setPublishedAt')) {
-            $this->setPublishedAt($entity);
-        }
-    }
-
-    /**
-     * @param $entity
-     * @param bool $update
-     */
-    private function setPublishedAt($entity, $update = true)
-    {
-        if (method_exists($entity->getTranslatable(), 'setPublishedAt') &&
-            method_exists($entity, 'getStatus') && $entity->getStatus() == NewsArticleTranslation::STATUS_PUBLISHED &&
-            ($entity->getTranslatable()->getPublishedAt() === null)) {
-            $entity->getTranslatable()->setPublishedAt(new DateTime());
-            if ($update == true) {
-                $this->flush = true;
-            }
-        }
-
     }
 
     /**
