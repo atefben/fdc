@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * NewsArticleAdmin class.
@@ -128,7 +129,10 @@ class NewsArticleAdmin extends Admin
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title'
+                        'sonata_help' => 'form.news.helper_title',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
