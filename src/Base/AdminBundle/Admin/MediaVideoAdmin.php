@@ -130,6 +130,9 @@ class MediaVideoAdmin extends Admin
                     )
                 )
             ))
+            ->add('webTv', 'sonata_type_model_list', array(
+                'btn_delete' => false
+            ))
             ->add('sites', null, array(
                 'label' => 'form.label_publish_on',
                 'class' => 'BaseCoreBundle:Site',
