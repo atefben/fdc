@@ -6,8 +6,10 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
-
+use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Util\Seo;
 /**
  * PressAccreditProcedureTranslation
  *
@@ -15,8 +17,10 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressAccreditProcedureTranslation
+class PressAccreditProcedureTranslation implements TranslateChildInterface
 {
+    use Seo;
+    use TranslateChild;
     use Time;
     use Translation;
 
@@ -34,6 +38,13 @@ class PressAccreditProcedureTranslation
      */
     protected $procedureContent;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * Set procedureTitle

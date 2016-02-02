@@ -2,12 +2,16 @@
 
 namespace Base\CoreBundle\Entity;
 
+
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-
-use Base\CoreBundle\Util\Time;
 
 /**
  * PressAccreditProcedure
@@ -16,10 +20,13 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressAccreditProcedure
+class PressAccreditProcedure implements TranslateMainInterface
 {
-    use Translatable;
+
     use Time;
+    use Translatable;
+    use TranslateMain;
+
     /**
      * @var integer
      *
@@ -62,7 +69,6 @@ class PressAccreditProcedure
     {
         $this->translations = new ArrayCollection();
     }
-
 
     /**
      * Get id
