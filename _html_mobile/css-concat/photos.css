@@ -3006,6 +3006,18 @@ display: inline-block;
 .suggestion{
 	display: none;
 }
+#choco-container{
+  width: 640px;
+  height: 100vh;
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 51;
+  background: #141414;
+}
+#choco-container.show{
+  display: block;
+}
 .item .chocolat-image {
     display: block;
     position: absolute;
