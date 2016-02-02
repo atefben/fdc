@@ -90,6 +90,7 @@ module.exports = function(grunt) {
     },
     useminPrepare: {
       scripts: './scripts.inc.php',
+      styles: './head.html'
       options: {
           root: './',
           dest: './'
@@ -99,6 +100,9 @@ module.exports = function(grunt) {
       js: {
         scripts: './scripts.dist.php'
       },
+      css: {
+        styles: './head.dist.html'
+      }
     },
     concat: {
       options: {
@@ -146,13 +150,20 @@ module.exports = function(grunt) {
    * Build JavaScript only
    **/
   grunt.registerTask('build:js', [
-      'tags:app',
-      'useminPrepare',
-      'concat:generated',
-      'uglify:generated',
-      'usemin:js',
-      'clean:tmp',
-      'copy:js'
+    'tags:app',
+    'useminPrepare',
+    'concat:generated',
+    'uglify:generated',
+    'usemin:js',
+    'clean:tmp',
+    'copy:js'
+  ]);
+
+  grunt.registerTask('build:css', [
+    'useminPrepare',
+    'cssmin:generated',
+    'usemin:css',
+    // 'copy:css'
   ]);
 
   grunt.registerTask('copyjs', [

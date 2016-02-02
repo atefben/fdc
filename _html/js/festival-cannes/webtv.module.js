@@ -124,9 +124,10 @@ $(document).ready(function() {
 
 
        sliderTrailer.owlCarousel();
-      $('body').on('click', '#slider-trailer .owl-item', function(e) {
-        sliderTrailer.trigger('to.owl.carousel', [$(this).index(), 400, true]);
-      });
+      // $('body').on('click', '#slider-trailer .owl-item', function(e) {
+      //   k.log('', 'click slider 3');
+      //   sliderTrailer.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+      // });
 
 if($('.webtv-ba-video').length){
 
