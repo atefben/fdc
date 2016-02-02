@@ -2,6 +2,12 @@
 // =========================
 // 1. Player
 // =========================
+// 
+
+.single-movie .trailer .video-container {
+  width: 100%;
+  height: 100%;
+}
 
 .video-container {
   position: relative;
@@ -103,6 +109,7 @@
       position: relative;
       text-align: left;
       z-index: 1;
+      max-width: 195px;
 
       .category {
         margin-left: 0;
