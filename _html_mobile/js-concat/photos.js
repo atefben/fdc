@@ -1170,7 +1170,6 @@ $(document).ready(function() {
     });
     $('body').off('click', '.share');
    $('body').on('click', '.share', function(e){
-    console.log("show");
        e.preventDefault();
         setTimeout(function() {
           $('.buttons.square').toggleClass('show');
@@ -1180,7 +1179,6 @@ $(document).ready(function() {
 
    $('body').off('click', '.open-thumbnails');
    $('body').on('click', '.open-thumbnails', function(e){
-    console.log("show thumbnails");
         e.preventDefault();
         setTimeout(function() {
           $('div.chocolat-wrapper .thumbnails').toggleClass('show');
@@ -1209,9 +1207,17 @@ $(document).ready(function() {
       $('<a href="#" class="open-thumbnails"></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
       $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
       $('<div class="thumbnails"></div>').insertAfter('.chocolat-wrapper .chocolat-pagination');
+    
     $('.slideshow').find('.thumbnails .thumb').each(function() {
         $('.chocolat-wrapper .thumbnails').append($(this).clone());
     });
+
+    if($('.all-photos').length) {
+      $('.list').find('.grid-item').each(function() {
+        
+        $('.chocolat-wrapper .thumbnails').append('<div  class="thumb"><img src="'+ $(this).find('.chocolat-image').attr('href')+'" /></div>');
+      });
+    }
 
     // if($('#gridPhotos').length) {
     //   $('#gridPhotos .item').each(function() {
@@ -1225,32 +1231,19 @@ $(document).ready(function() {
       $('.chocolat-bottom').addClass('show');
     }
 
-
-    $('.chocolat-wrapper .thumbnails').owlCarousel({
+    var thumbCarousel = $('.chocolat-wrapper .thumbnails').owlCarousel({
       nav: false,
       dots: false,
       smartSpeed: 500,
       margin: 0,
-      responsive:{
-        0:{
-          items:4
-        },
-        1280: {
-          items: 6
-        },
-        1600:{
-          items:7
-        },
-        1800:{
-          items:8
-        },
-        1920: {
-          items: 9
-        }
-      }
+      items:4
+      
     });
+    thumbCarousel.owlCarousel();
     // on click on thumb from the list : change pic and update hash
-  $('body').on('click', '.chocolat-wrapper .thumb', function() {
+  $('body').on('click', '.chocolat-wrapper .thumb', function(e) {
+    e.preventDefault();
+
     var j = $(this).parent().index();
 
     $('.chocolat-wrapper .thumb').removeClass('active');
@@ -1261,8 +1254,8 @@ $(document).ready(function() {
     // for(var i=0; i<slideshows.length; i++) {
     //   slideshows[i].api().goto(j);
     // }
-
-    window.location.hash = $(this).data('id');
+    history.pushState(null,null, '#'+$(this).data('id'));
+    //window.location.hash = $(this).data('id');
   });
 
       window.location.hash = $that.attr('id');
@@ -1277,14 +1270,24 @@ $(document).ready(function() {
       var myElement = document.getElementById('chocolat-content-1');
       var hammertime = new Hammer(myElement);
       hammertime.on('swipeleft', function(ev) {
+        var bottomHeight = $(".chocolat-bottom").height();
+        if($('.chocolat-wrapper .thumbnails').hasClass('show')){
+          bottomHeight+= $('.chocolat-wrapper .thumbnails').height();
+        }
+        if(ev.center.y< $(window).height()-bottomHeight){
           slideshow.api().next();
+        }
       });
       hammertime.on('swiperight', function(ev) {
+          var bottomHeight = $(".chocolat-bottom").height();
+        if($('.chocolat-wrapper .thumbnails').hasClass('show')){
+          bottomHeight+= $('.chocolat-wrapper .thumbnails').height();
+        }
+        if(ev.center.y< $(window).height()-bottomHeight){
           slideshow.api().prev();
+        }
       });
-      hammertime.on('pan', function(ev){
-        console.log(ev);
-      });
+      
       
      //  $('body').on('click', '.chocolat-img', function(e){
      //    console.log("tap",slideshow.api().get('imageSize'));
