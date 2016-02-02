@@ -7,23 +7,23 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * PressGuideWidgetType class.
+ * PressDownloadSectionWidgetType class.
  * 
  * \@extends BaseType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class PressGuideWidgetType extends BaseType
+class PressDownloadSectionWidgetType extends BaseType
 {
     /**
      * dataClass
      * 
-     * (default value: 'Base\CoreBundle\Entity\PressGuideWidget')
+     * (default value: 'Base\CoreBundle\Entity\PressDownloadSectionWidget')
      * 
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\CoreBundle\Entity\PressGuideWidget';
+    protected $dataClass = 'Base\CoreBundle\Entity\PressDownloadSectionWidget';
     
     /**
      * buildForm function.
@@ -40,10 +40,6 @@ class PressGuideWidgetType extends BaseType
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
-//            ->add('pressSection', 'hidden', array(
-//                'data'   => 'test',
-//                'mapped' => false
-//            ))
             ->add('position', 'integer');
 
     }

@@ -58,7 +58,19 @@ class PressDownloadSectionAdmin extends Admin
                     ),
                 )
             ))
-
+            ->add('widgets', 'infinite_form_polycollection', array(
+                'label' => false,
+                'types' => array(
+                    'press_download_section_widget_photo_type',
+                    'press_download_section_widget_document_type',
+                    'press_download_section_widget_file_type',
+                    'press_download_section_widget_video_type',
+                ),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
             ->end()
         ;
 
