@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 
 /**
  * @Route("")
@@ -22,7 +23,10 @@ class NewsController extends Controller {
      * @Template("FDCEventBundle:News:home.html.twig")
      */
     public function indexAction() {
+
         $em = $this->get('doctrine')->getManager();
+        $dateTime = new DateTime();
+        $locale = $this->getRequest()->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -30,7 +34,10 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
-        // SocialGraph
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
             'festival' => $settings->getFestival()
         ), array(
@@ -57,11 +64,36 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
-        //filters init
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////       ARTICLE HOME         ///////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime);
+
+        //set default filters
         $filters                         = array();
         $filters['dates'][0]             = 'all';
+        $filters['dateFormated'][0]      = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0]    = 'all';
+        $filters['themes']['id'][0]      = 'all';
+
+        foreach ($homeArticles as $key => $newsArticle) {
+            $newsArticle->image = $newsArticle->getHeader();
+            $newsArticle->theme = $newsArticle->getTheme();
+
+            //check if filters don't already exist
+            $date = $newsArticle->getPublishedAt();
+            if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
+                $filters['dates'][] = ($date != null) ? $date : null;
+                $filters['dateFormated'][] = $date->format('d-m-Y');
+            }
+
+            if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][]    = $newsArticle->getTheme()->getId();
+                $filters['themes']['content'][] = $newsArticle->getTheme();
+            }
+
+        }
 
         // TODO: clean this
         $homeSlider = array(
@@ -629,8 +661,9 @@ class NewsController extends Controller {
 
         // GET NEWS
         $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug($slug, $settings->getFestival()->getId(), $locale, $dateTime->format('Y-m-d H:i:s'), $isAdmin);
+        $isPublished = ($news->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED);
 
-        if ($news === null) {
+        if ($news === null || (!$isAdmin && !$isPublished)) {
             throw new NotFoundHttpException();
         }
 
@@ -656,7 +689,6 @@ class NewsController extends Controller {
             $associatedProgrammation = $news->getAssociatedProjections();
             $type = 'event';
         }
-
 
         //get film projection
         $programmations = array();
@@ -715,6 +747,9 @@ class NewsController extends Controller {
 
         //GET ALL NEWS ARTICLES
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime);
+        if ($newsArticles === null) {
+            throw new NotFoundHttpException();
+        }
 
         //set default filters
         $filters                         = array();
@@ -723,22 +758,27 @@ class NewsController extends Controller {
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0]      = 'all';
 
+
         foreach ($newsArticles as $key => $newsArticle) {
-            $newsArticle->image = $newsArticle->getHeader();
-            $newsArticle->theme = $newsArticle->getTheme();
+            $isPublished = ($newsArticles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
+            if($isPublished) {
+                $newsArticle->image = $newsArticle->getHeader();
+                $newsArticle->theme = $newsArticle->getTheme();
 
-            //check if filters don't already exist
-            $date = $newsArticle->getPublishedAt();
-            if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
-                $filters['dates'][] = ($date != null) ? $date : null;
-                $filters['dateFormated'][] = $date->format('d-m-Y');
+                //check if filters don't already exist
+                $date = $newsArticle->getPublishedAt();
+                if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
+                    $filters['dates'][] = ($date != null) ? $date : null;
+                    $filters['dateFormated'][] = $date->format('d-m-Y');
+                }
+
+                if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                    $filters['themes']['id'][]    = $newsArticle->getTheme()->getId();
+                    $filters['themes']['content'][] = $newsArticle->getTheme();
+                }
+            } else {
+                unset($newsArticle);
             }
-
-            if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][]    = $newsArticle->getTheme()->getId();
-                $filters['themes']['content'][] = $newsArticle->getTheme();
-            }
-
         }
 
         return array(

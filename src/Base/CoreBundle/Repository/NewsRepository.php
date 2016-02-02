@@ -43,14 +43,25 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale AND na4t.slug = :news_slug)'
                 );
         } else {
-            $qb = $qb
-                ->andWhere(
+            if( $locale != 'fr'){
+                $qb = $qb
+                    ->andWhere(
                     '(na1t.locale = :locale AND na1t.status = :status AND na1t.slug = :news_slug) OR
                     (na2t.locale = :locale AND na2t.status = :status AND na2t.slug = :news_slug) OR
                     (na3t.locale = :locale AND na3t.status = :status AND na3t.slug = :news_slug) OR
                     (na4t.locale = :locale AND na4t.status = :status AND na4t.slug = :news_slug)'
-                )
-                ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+                    )
+                ->setParameter('status', NewsArticleTranslation::STATUS_TRANSLATED);
+            } else {
+                $qb = $qb
+                    ->andWhere(
+                        '(na1t.locale = fr AND na1t.status = :status AND na1t.slug = :news_slug) OR
+                    (na2t.locale = fr AND na2t.status = :status AND na2t.slug = :news_slug) OR
+                    (na3t.locale = fr AND na3t.status = :status AND na3t.slug = :news_slug) OR
+                    (na4t.locale = fr AND na4t.status = :status AND na4t.slug = :news_slug)'
+                    )
+                    ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            }
         }
 
         $qb = $qb
@@ -125,15 +136,24 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
 
-        $qb = $qb
-            ->andWhere(
-                '(na1t.locale = :locale AND na1t.status = :status)'
-            )
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+        if($locale != 'fr') {
+            $qb = $qb
+                ->andWhere(
+                    '(na1t.locale = :locale AND na1t.status = :status)'
+                )
+                ->setParameter('status', NewsArticleTranslation::STATUS_TRANSLATED);
+        } else {
+            $qb = $qb
+                ->andWhere(
+                    '(na1t.locale = :locale AND na1t.status = :status)'
+                )
+                ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+        }
+
 
         $qb = $qb
-            ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
+            ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel')
             ->getQuery()
