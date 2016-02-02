@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Base\CoreBundle\Entity\PressGuideTranslation;
 use Base\CoreBundle\Entity\PressGuide;
 
@@ -71,10 +72,6 @@ class PressDownloadSectionAdmin extends Admin
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
-            ->add('translate', new CheckboxType() , array(
-                'label'    => 'Traduction',
-                'required' => false,
-            ))
         ;
     }
 
@@ -87,11 +84,11 @@ class PressDownloadSectionAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('priorityStatus', 'choice', array(
-                'choices' => NewsArticle::getPriorityStatusesList(),
+                'choices' => PressGuide::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
             ->add('statusMain', 'choice', array(
-                'choices' => NewsArticleTranslation::getStatuses(),
+                'choices' => PressGuideTranslation::getStatuses(),
                 'catalogue' => 'BaseAdminBundle'
             ))
             ->add('_edit_translations', null, array(
