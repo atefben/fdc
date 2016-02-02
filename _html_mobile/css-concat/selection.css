@@ -2157,6 +2157,22 @@ article .picto .icon{
   box-sizing:border-box;
 }
 
+.film-slider .info p{
+  font-style: normal;
+}
+
+#choco-container{
+  width: 640px;
+  height: 100vh;
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 51;
+  background: #141414;
+}
+#choco-container.show{
+  display: block;
+}
 .item .chocolat-image {
     display: block;
     position: absolute;
@@ -2349,6 +2365,38 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description h2 {
     white-space: nowrap;
     overflow: hidden;
 }
+div.chocolat-wrapper .open-thumbnails {
+    display: block;
+    width: 100px;
+    height: 100%;
+    bottom: 0;
+    z-index: 20;
+    left: 0;
+    position: absolute;
+    text-align: center;
+}
+div.chocolat-wrapper .thumbnails{
+    opacity: 0;
+  visibility: hidden;
+    width: 100%;
+    position: absolute;
+    bottom: 100px;
+}
+div.chocolat-wrapper .thumbnails.show {
+  opacity: 1;
+  visibility: visible;
+}
+div.chocolat-wrapper .thumbnails .thumb.active:before {
+  content: '';
+  display: block;
+  height: 97px;
+  width: 144px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border:8px solid #c8a461;
+  z-index: 1;
+}
 div.chocolat-wrapper .share {
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     display: block;
@@ -2399,6 +2447,10 @@ div.chocolat-wrapper .share .icon {
   div.chocolat-wrapper .chocolat-bottom{
     height: 60px;
   }
+  div.chocolat-wrapper .thumbnails{
+
+    bottom: 60px;
+}
   div.chocolat-wrapper .chocolat-bottom .icon_diaporama{
     line-height: 45px;
     margin-left: 15px;
@@ -2411,6 +2463,9 @@ div.chocolat-wrapper .share .icon {
   div.chocolat-wrapper .chocolat-bottom .chocolat-description{
     padding-top: 3px;
     padding-left: 75px;
+  }
+  div.chocolat-wrapper .open-thumbnails{
+    width: 60px;
   }
   div.chocolat-wrapper .share {
     width: 60px;

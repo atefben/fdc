@@ -29,6 +29,15 @@ class PressDownloadSection
     private $id;
 
     /**
+     * @var PressDownloadSectionWidget
+     *
+     * @ORM\OneToMany(targetEntity="PressDownloadSectionWidget", mappedBy="pressDownload", cascade={"persist"})
+     *
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $widgets;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -52,4 +61,37 @@ class PressDownloadSection
         return $this->id;
     }
 
+
+    /**
+     * Add widgets
+     *
+     * @param \Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets
+     * @return PressDownloadSection
+     */
+    public function addWidget(\Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets)
+    {
+        $this->widgets[] = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgets
+     *
+     * @param \Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets
+     */
+    public function removeWidget(\Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets)
+    {
+        $this->widgets->removeElement($widgets);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
+    }
 }

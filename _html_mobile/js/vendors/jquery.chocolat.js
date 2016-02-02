@@ -125,7 +125,7 @@
 
             setTimeout(function() {
               $('.chocolat-content, .chocolat-description, .credit').removeClass('hide');
-            }, 1200);
+            }, 500);
 
             return deferred;
 
@@ -252,7 +252,7 @@
                 else {
                     return that.load(requestedImage);
                 }
-            }, 900);
+            }, 800);
 
         },
 

@@ -58,7 +58,6 @@ sonata_media:
         statement_video:
             providers:
                 - sonata.media.provider.file
-           #     - sonata.media.provider.video
 
             formats:
 

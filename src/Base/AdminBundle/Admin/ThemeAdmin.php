@@ -28,7 +28,8 @@ class ThemeAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-    public function configure() {
+    public function configure()
+    {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
 

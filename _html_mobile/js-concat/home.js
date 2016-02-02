@@ -133,7 +133,7 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
 
             setTimeout(function() {
               $('.chocolat-content, .chocolat-description, .credit').removeClass('hide');
-            }, 1200);
+            }, 500);
 
             return deferred;
 
@@ -260,7 +260,7 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
                 else {
                     return that.load(requestedImage);
                 }
-            }, 900);
+            }, 800);
 
         },
 
@@ -786,7 +786,7 @@ $(document).ready(function() {
         slideshow = $('.slideshow .images').Chocolat({
          imageSize: 'cover',
           fullScreen: false,
-          loop: true,
+          loop: true
         }).data('chocolat');
 
         slideshows.push(slideshow);
@@ -796,7 +796,7 @@ $(document).ready(function() {
         slideshow = $('.list').Chocolat({
           imageSize: 'cover',
           fullScreen: false,
-          loop:true,
+          loop:true
         }).data('chocolat');
 
         slideshows.push(slideshow);
@@ -809,6 +809,7 @@ $(document).ready(function() {
       $('body').removeClass('allow-landscape chocolat-open chocolat-cover');
       document.body.removeEventListener('touchmove', listener,false);
 
+      $('#choco-container').removeClass('show');
 
       setTimeout(function() {
         $('.chocolat-wrapper').removeClass('show');
@@ -825,21 +826,92 @@ $(document).ready(function() {
        
    });
 
+   $('body').off('click', '.open-thumbnails');
+   $('body').on('click', '.open-thumbnails', function(e){
+    console.log("show thumbnails");
+        e.preventDefault();
+        setTimeout(function() {
+          $('div.chocolat-wrapper .thumbnails').toggleClass('show');
+        }, 200);
+       
+   });
       
     var listener = function (event) {
       event.preventDefault();
     };
+
+
+
 
     // zoom
     $('body').off('click', '.chocolat-image');
     $('body').on('click', '.chocolat-image', function() {
       var $that = $(this);
       $('body').addClass('allow-landscape');
+      $('#choco-container').addClass('show');
       document.body.addEventListener('touchmove', listener,false);
       $('.chocolat-top').html('<div class="close-button"><i class="icon icon_close"></i></div>');
       $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
-      $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
 
+      
+      $('<a href="#" class="open-thumbnails"></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
+      $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
+      $('<div class="thumbnails"></div>').insertAfter('.chocolat-wrapper .chocolat-pagination');
+    $('.slideshow').find('.thumbnails .thumb').each(function() {
+        $('.chocolat-wrapper .thumbnails').append($(this).clone());
+    });
+
+    // if($('#gridPhotos').length) {
+    //   $('#gridPhotos .item').each(function() {
+    //     if($(this).css('display') != 'none') {
+    //       $('.chocolat-wrapper .thumbnails').append('<div data-id="' + $(this).find('.chocolat-image').attr('id') + '" class="thumb"><img src="' + $(this).find('img').attr('src') + '" /></div>');
+    //     }
+    //   });
+    // }
+
+    if ($('body').hasClass('mob')) {
+      $('.chocolat-bottom').addClass('show');
+    }
+
+
+    $('.chocolat-wrapper .thumbnails').owlCarousel({
+      nav: false,
+      dots: false,
+      smartSpeed: 500,
+      margin: 0,
+      responsive:{
+        0:{
+          items:4
+        },
+        1280: {
+          items: 6
+        },
+        1600:{
+          items:7
+        },
+        1800:{
+          items:8
+        },
+        1920: {
+          items: 9
+        }
+      }
+    });
+    // on click on thumb from the list : change pic and update hash
+  $('body').on('click', '.chocolat-wrapper .thumb', function() {
+    var j = $(this).parent().index();
+
+    $('.chocolat-wrapper .thumb').removeClass('active');
+    $(this).addClass('active');
+
+    //var slideshow = $('.slideshow .images').data('chocolat');
+    slideshow.api().goto(j);
+    // for(var i=0; i<slideshows.length; i++) {
+    //   slideshows[i].api().goto(j);
+    // }
+
+    window.location.hash = $(this).data('id');
+  });
 
       window.location.hash = $that.attr('id');
 
@@ -858,7 +930,9 @@ $(document).ready(function() {
       hammertime.on('swiperight', function(ev) {
           slideshow.api().prev();
       });
-      
+      hammertime.on('pan', function(ev){
+        console.log(ev);
+      });
       
      //  $('body').on('click', '.chocolat-img', function(e){
      //    console.log("tap",slideshow.api().get('imageSize'));
