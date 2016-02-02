@@ -19,6 +19,7 @@ breadcrumb:
     link_media_audio_list: Liste des Médias audio
     link_homepage_list: Homepage
     link_social_wall_list: Liste du Social Wall
+    link_web_tv_list: Liste des Web TV
 
 link:
     action_soif_refresh: Mettre à jour
@@ -108,6 +109,7 @@ entity:
 list:
     label_id: Identifiant
     label_title: Titre
+    label_name: Nom
     label_theme: Thème
     label_status: Statut
     label_status_main: Statut
@@ -151,6 +153,7 @@ filter:
     label_tags: Hashtag
     label_created_at: Créé le
     label_updated_at: Mis à jour le
+    label_name: Nom
 
 dashboard:
     group:
@@ -261,11 +264,16 @@ form:
     label_display: Ne pas afficher cette strate
     label_film: Films
     label_content: Description
+    label_image: Image
     label_image_link: Image et lien
     label_main_image: Première image
     label_second_image: Seconde image
     label_displayed_slider: Afficher le slider
-    label_displayed_top_news: Afficher le "Top News"
+    label_displayed_top_news:
+    label_web_tv_name: Nom de la chaîne
+    web_tv:
+        helper_name: 255 caractères max.
+        helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
     contact_theme:
         helper_theme: X caractères max.
     status:
@@ -298,3 +306,8 @@ form:
 
 nav:
     site_modal: Ouvrir la sélection des sites
+
+show:
+    label_id: Id
+    label_created_at: Créé le
+    label_updated_at: Mis à jour le
