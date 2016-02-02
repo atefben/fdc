@@ -138,7 +138,7 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
 
             setTimeout(function() {
               $('.chocolat-content, .chocolat-description, .credit').removeClass('hide');
-            }, 1200);
+            }, 200);
 
             return deferred;
 
@@ -265,7 +265,7 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
                 else {
                     return that.load(requestedImage);
                 }
-            }, 900);
+            }, 500);
 
         },
 
@@ -782,7 +782,7 @@ $(document).ready(function() {
         slideshow = $('.slideshow .images').Chocolat({
          imageSize: 'cover',
           fullScreen: false,
-          loop: true,
+          loop: true
         }).data('chocolat');
 
         slideshows.push(slideshow);
@@ -792,7 +792,7 @@ $(document).ready(function() {
         slideshow = $('.list').Chocolat({
           imageSize: 'cover',
           fullScreen: false,
-          loop:true,
+          loop:true
         }).data('chocolat');
 
         slideshows.push(slideshow);
@@ -805,6 +805,7 @@ $(document).ready(function() {
       $('body').removeClass('allow-landscape chocolat-open chocolat-cover');
       document.body.removeEventListener('touchmove', listener,false);
 
+      $('#choco-container').removeClass('show');
 
       setTimeout(function() {
         $('.chocolat-wrapper').removeClass('show');
@@ -831,6 +832,7 @@ $(document).ready(function() {
     $('body').on('click', '.chocolat-image', function() {
       var $that = $(this);
       $('body').addClass('allow-landscape');
+      $('#choco-container').addClass('show');
       document.body.addEventListener('touchmove', listener,false);
       $('.chocolat-top').html('<div class="close-button"><i class="icon icon_close"></i></div>');
       $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
@@ -854,7 +856,9 @@ $(document).ready(function() {
       hammertime.on('swiperight', function(ev) {
           slideshow.api().prev();
       });
-      
+      hammertime.on('pan', function(ev){
+        console.log(ev);
+      });
       
      //  $('body').on('click', '.chocolat-img', function(e){
      //    console.log("tap",slideshow.api().get('imageSize'));
