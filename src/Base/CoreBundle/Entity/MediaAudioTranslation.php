@@ -42,42 +42,6 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $file;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $alt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     */
-    private $publishedAt;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     */
-    private $publishEndedAt;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site")
-     */
-    private $sites;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Set title
      *
      * @param string $title
@@ -101,75 +65,6 @@ class MediaAudioTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return MediaAudioTranslation
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return MediaAudioTranslation
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publishEndedAt
-     *
-     * @param \DateTime $publishEndedAt
-     * @return MediaAudioTranslation
-     */
-    public function setPublishEndedAt($publishEndedAt)
-    {
-        $this->publishEndedAt = $publishEndedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get publishEndedAt
-     *
-     * @return \DateTime
-     */
-    public function getPublishEndedAt()
-    {
-        return $this->publishEndedAt;
-    }
-
-    /**
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
@@ -190,38 +85,5 @@ class MediaAudioTranslation implements TranslateChildInterface
     public function getFile()
     {
         return $this->file;
-    }
-
-    /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return MediaAudioTranslation
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSites()
-    {
-        return $this->sites;
     }
 }
