@@ -150,6 +150,17 @@ module.exports = function(grunt) {
             dest: "../src/FDC/EventBundle/Resources/public/styles/app.min.css"
           }
         ]
+      },
+      fonts: {
+        files: [
+          {
+            expand: true,
+            cwd: './fonts/',
+            src: ["icons.*"],
+            dest: "../src/FDC/EventBundle/Resources/public/fonts/",
+            filter: 'isFile'
+          },
+        ]
       }
     }
   });
@@ -182,6 +193,14 @@ module.exports = function(grunt) {
 
   grunt.registerTask('copyjs', [
     'copy:js'
+  ]);
+
+  grunt.registerTask('copycss', [
+    'copy:css'
+  ]);
+
+  grunt.registerTask('copyfonts', [
+    'copy:fonts'
   ]);
 
   grunt.loadNpmTasks('grunt-webfont');
