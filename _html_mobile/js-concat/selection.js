@@ -2069,7 +2069,6 @@ $.initMenu2 = function(){
 	    var s = $(this).scrollTop();
 
 	    if(s > $(".header-container").height() + $('.banner-img').height()+$('#horizontal-menu').height()){
-	    	console.log("sticky");
 	    	$("#horizontal-menu2").css('position','fixed');
 	    	$("#horizontal-menu2").css('top',$(".header-container").height());
 	    	$(".selection-container").css('margin-top',$(".header-container").height()+10+'px');

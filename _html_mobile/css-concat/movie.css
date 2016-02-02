@@ -2157,6 +2157,10 @@ article .picto .icon{
   box-sizing:border-box;
 }
 
+.film-slider .info p{
+  font-style: normal;
+}
+
 .banner-img{
 	height: 370px;
 }

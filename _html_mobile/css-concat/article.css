@@ -2157,6 +2157,10 @@ article .picto .icon{
   box-sizing:border-box;
 }
 
+.film-slider .info p{
+  font-style: normal;
+}
+
 #choco-container{
   width: 640px;
   height: 100vh;

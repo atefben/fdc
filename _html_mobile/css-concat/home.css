@@ -6119,6 +6119,10 @@ article .picto .icon{
   box-sizing:border-box;
 }
 
+.film-slider .info p{
+  font-style: normal;
+}
+
 /* footer */
 footer {
   background-color: #141414;
