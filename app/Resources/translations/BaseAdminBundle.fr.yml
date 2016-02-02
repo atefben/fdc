@@ -266,6 +266,7 @@ form:
     label_second_image: Seconde image
     label_displayed_slider: Afficher le slider
     label_displayed_top_news: Afficher le "Top News"
+    label_btn: Libellé du bouton
     contact_theme:
         helper_theme: X caractères max.
     status:

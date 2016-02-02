@@ -26,25 +26,6 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
      */
     protected $dataClass = 'Base\\CoreBundle\\Entity\\PressDownloadSectionWidgetDocument';
 
-    /**
-     * PressGuideWidgetColumnDummyAdmin
-     *
-     * @var mixed
-     * @access private
-     */
-    private $PressDownloadSectionWidgetDocumentDummyAdmin;
-
-    /**
-     * setPressDownloadSectionWidgetDocumentDummyAdmin function.
-     *
-     * @access public
-     * @param mixed $PressDownloadSectionWidgetDocumentDummyAdmin
-     * @return void
-     */
-    public function setPressDownloadSectionWidgetDocumentDummyAdmin($PressDownloadSectionWidgetDocumentDummyAdmin)
-    {
-        $this->PressDownloadSectionWidgetDocumentDummyAdmin = $PressDownloadSectionWidgetDocumentDummyAdmin;
-    }
 
     /**
      * buildForm function.
@@ -65,14 +46,6 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
-                    'title' => array(
-                        'label' => 'form.label_title',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
                     'label' => array(
                         'label' => 'Légende',
                         'translation_domain' => 'BaseAdminBundle',
@@ -83,7 +56,7 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                         )
                     ),
                     'btnLabel' => array(
-                        'label' => 'Libellé bouton',
+                        'label' => 'form.label_btn',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -97,14 +70,19 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
+                    'copyright' => array(
+                        'label' => 'Copyright',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
                 )
             ))
 
-            ->add('image', 'sonata_type_model_list', array(
-                'sonata_field_description' =>  $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['image'],
-                'model_manager' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getModelManager(),
-                'class' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getClass(),
-            ))
+            ->add('image')
             ->add('file');
 
     }

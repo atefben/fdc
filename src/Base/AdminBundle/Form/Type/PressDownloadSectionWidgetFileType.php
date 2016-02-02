@@ -46,16 +46,29 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
-                    'title' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
-                        'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle'
+                    'copyright' => array(
+                        'label' => 'form.label_copyright',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'btnLabel' => array(
+                        'label' => 'form.label_btn',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
                     ),
                 )
             ))
 
-            ->add('file', 'sonata_type_model_list');
+            ->add('file')
+            ->add('updatedAt');
 
     }
 

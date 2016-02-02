@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * PressDownloadSectionWidgetType class.
+ * PressGuideWidgetType class.
  * 
  * \@extends BaseType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
@@ -27,7 +27,7 @@ class PressDownloadSectionWidgetType extends BaseType
     
     /**
      * buildForm function.
-     * 
+     *
      * @access public
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -35,12 +35,15 @@ class PressDownloadSectionWidgetType extends BaseType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+            $builder
             ->add('_type', 'hidden', array(
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
-            ->add('position', 'integer');
+            ->add('lockedContent', 'checkbox', array(
+                'required' => false
+            ));
+
 
     }
 
@@ -58,30 +61,6 @@ class PressDownloadSectionWidgetType extends BaseType
             'model_class' => $this->dataClass,
         ));
     }
-    /**
-     * @param mixed $object
-     */
-    public function prePersist($object)
-    {
-
-        foreach ($object->getWidgets() as $widget) {
-            $object->addWidget($widget);
-        }
-
-    }
-
-    /**
-     * @param mixed $object
-     */
-    public function preUpdate($object)
-    {
-
-        foreach ($object->getWidgets() as $widget) {
-            $object->addWidget($widget);
-        }
-
-    }
-
 
     /**
      * getName function.
@@ -91,6 +70,6 @@ class PressDownloadSectionWidgetType extends BaseType
      */
     public function getName()
     {
-        return 'press_guide_widget_type';
+        return 'press_download_section_widget_type';
     }
 }

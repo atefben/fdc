@@ -5,7 +5,7 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Base\CoreBundle\Entity\Guide;
 use Base\CoreBundle\Util\Time;
 
 /**
@@ -15,7 +15,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressDownloadSection
+class PressDownloadSection extends Guide
 {
     use Translatable;
     use Time;
@@ -47,7 +47,9 @@ class PressDownloadSection
      */
     public function __construct()
     {
+        parent::__construct();
         $this->translations = new ArrayCollection();
+        $this->widgets = new ArrayCollection();
     }
 
 
