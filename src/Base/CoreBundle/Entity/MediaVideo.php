@@ -66,17 +66,6 @@ class MediaVideo extends Media
     private $image;
 
     /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="mediaVideos")
-     * @ORM\JoinColumn(nullable=false)
-     *
-     * @Groups({"trailer_list", "trailer_show"})
-     *
-     */
-    private $festival;
-
-    /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
      *
      * @Groups({"trailer_list", "trailer_show"})
@@ -191,34 +180,11 @@ class MediaVideo extends Media
     /**
      * Get webTv
      *
-     * @return \Base\CoreBundle\Entity\WebTv 
+     * @return \Base\CoreBundle\Entity\WebTv
      */
     public function getWebTv()
     {
         return $this->webTv;
-    }
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return MediaVideo
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
     }
 
     /**

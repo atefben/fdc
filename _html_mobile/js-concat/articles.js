@@ -70,7 +70,8 @@ var GLOBALS = {
   },
   "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
   "urls" : {
-    "calendarProgrammationUrl" : "calendarprogrammation.html",
+    "calendarDay1":"calendar-day1.html",
+    "calendarDay2":"calendar-day2.html",
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
     "newsUrlNext" : "more-news.html",
@@ -450,12 +451,6 @@ $(document).ready(function() {
 
       $('#' + id + ' .select span').removeClass('active');
       $('#' + id + ' .select span').eq(i).addClass('active');
-
-
-
-      // $(".list .item:not(."+$(this).data('filter')+")").css('display','none');
-      // $(".list .item."+$(this).data('filter')).css('display','block');
-
 
       $(".list .item").css("display","block");
       filter();
