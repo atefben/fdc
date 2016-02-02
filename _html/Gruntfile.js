@@ -90,7 +90,7 @@ module.exports = function(grunt) {
     },
     useminPrepare: {
       scripts: './scripts.inc.php',
-      styles: './head.html'
+      styles: './head.html',
       options: {
           root: './',
           dest: './'
@@ -138,6 +138,18 @@ module.exports = function(grunt) {
               dest: "../src/FDC/EventBundle/Resources/public/js/app.min.js"
            }
         ]
+      },
+      css: {
+        files: [
+          {
+            src: "./dist/vendor.min.css",
+            dest: "../src/FDC/EventBundle/Resources/public/styles/vendor.min.css"
+          },
+          {
+            src: "./dist/app.min.css",
+            dest: "../src/FDC/EventBundle/Resources/public/styles/app.min.css"
+          }
+        ]
       }
     }
   });
@@ -161,9 +173,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build:css', [
     'useminPrepare',
+    'concat:generated',
     'cssmin:generated',
     'usemin:css',
-    // 'copy:css'
+    'clean:tmp',
+    'copy:css'
   ]);
 
   grunt.registerTask('copyjs', [
