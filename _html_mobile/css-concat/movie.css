@@ -2912,6 +2912,14 @@ div.chocolat-wrapper .thumbnails.show {
   opacity: 1;
   visibility: visible;
 }
+div.chocolat-wrapper .thumb{
+  height: 113px;
+}
+div.chocolat-wrapper .thumb img{
+  object-fit:cover;
+  width: 100%;
+  height: 100%;
+}
 div.chocolat-wrapper .thumbnails .thumb.active:before {
   content: '';
   display: block;
