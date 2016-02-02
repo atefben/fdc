@@ -58,7 +58,7 @@ parameters:
     s3_video_region: ~
     # amazon s3 audio
     s3_audio_bucket_name: ~
-    s3_audi_region: ~
+    s3_audio_region: ~
     # fdc
     fdc_event_domain: ~
     fdc_event_scheme: ~
