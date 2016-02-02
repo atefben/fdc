@@ -7,7 +7,6 @@ use Sonata\MediaBundle\Model\MediaInterface;
 
 class VideoProvider extends FileProvider
 {
-
     /**
      * {@inheritdoc}
      */
