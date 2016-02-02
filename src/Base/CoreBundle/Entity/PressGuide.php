@@ -5,6 +5,8 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Entity\Guide;
 
 use Base\CoreBundle\Util\Time;
 
@@ -15,7 +17,7 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressGuide
+class PressGuide extends Guide
 {
     use Translatable;
     use Time;
@@ -31,43 +33,77 @@ class PressGuide
     /**
      * @var string
      *
-     * @ORM\Column(name="guide_icon", type="string", length=122)
+     * @ORM\Column(name="guide_arrive_icon", type="string", length=122)
      */
-    protected $guideIcon;
+    protected $arriveIcon;
 
     /**
      * @var PressGuideWidget
      *
-     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuide", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideArrive", cascade={"persist"})
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $widgets;
-
+    private $arriveWidgets;
 
     /**
-     * ArrayCollection
+     * @var string
+     *
+     * @ORM\Column(name="guide_meeting_icon", type="string", length=122)
      */
-    protected $translations;
+    protected $meetingIcon;
+
+    /**
+     * @var PressGuideWidget
+     *
+     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideMeeting", cascade={"persist"})
+     *
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $meetingWidgets;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="guide_information_icon", type="string", length=122)
+     */
+    protected $informationIcon;
+
+    /**
+     * @var PressGuideWidget
+     *
+     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideInformation", cascade={"persist"})
+     *
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $informationWidgets;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="guide_service_icon", type="string", length=122)
+     */
+    protected $serviceIcon;
+
+    /**
+     * @var PressGuideWidget
+     *
+     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideService", cascade={"persist"})
+     *
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $serviceWidgets;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-
-        $this->translations = new ArrayCollection();
-        $this->widgets = new ArrayCollection();
-    }
-
-    public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        if ($this->getId()) {
-            $string .= ' #'. $this->getId();
-        }
-
-        return $string;
+        parent::__construct();
+        $this->serviceWidgets = new ArrayCollection();
+        $this->arriveWidgets = new ArrayCollection();
+        $this->informationWidgets = new ArrayCollection();
+        $this->meetingWidgets = new ArrayCollection();
     }
 
     /**
@@ -80,61 +116,227 @@ class PressGuide
         return $this->id;
     }
 
-
     /**
-     * Set guideIcon
+     * Set arriveIcon
      *
-     * @param string $guideIcon
+     * @param string $arriveIcon
      * @return PressGuide
      */
-    public function setGuideIcon($guideIcon)
+    public function setArriveIcon($arriveIcon)
     {
-        $this->guideIcon = $guideIcon;
+        $this->arriveIcon = $arriveIcon;
 
         return $this;
     }
 
     /**
-     * Get guideIcon
+     * Get arriveIcon
      *
      * @return string 
      */
-    public function getGuideIcon()
+    public function getArriveIcon()
     {
-        return $this->guideIcon;
+        return $this->arriveIcon;
     }
 
     /**
-     * Add widgets
+     * Set meetingIcon
      *
-     * @param \Base\CoreBundle\Entity\PressGuideWidget $widgets
+     * @param string $meetingIcon
      * @return PressGuide
      */
-    public function addWidget(\Base\CoreBundle\Entity\PressGuideWidget $widgets)
+    public function setMeetingIcon($meetingIcon)
     {
-        $widgets->setPressGuide($this);
-        $this->widgets[] = $widgets;
+        $this->meetingIcon = $meetingIcon;
 
         return $this;
     }
 
     /**
-     * Remove widgets
+     * Get meetingIcon
      *
-     * @param \Base\CoreBundle\Entity\PressGuideWidget $widgets
+     * @return string 
      */
-    public function removeWidget(\Base\CoreBundle\Entity\PressGuideWidget $widgets)
+    public function getMeetingIcon()
     {
-        $this->widgets->removeElement($widgets);
+        return $this->meetingIcon;
     }
 
     /**
-     * Get widgets
+     * Set informationIcon
+     *
+     * @param string $informationIcon
+     * @return PressGuide
+     */
+    public function setInformationIcon($informationIcon)
+    {
+        $this->informationIcon = $informationIcon;
+
+        return $this;
+    }
+
+    /**
+     * Get informationIcon
+     *
+     * @return string 
+     */
+    public function getInformationIcon()
+    {
+        return $this->informationIcon;
+    }
+
+    /**
+     * Set serviceIcon
+     *
+     * @param string $serviceIcon
+     * @return PressGuide
+     */
+    public function setServiceIcon($serviceIcon)
+    {
+        $this->serviceIcon = $serviceIcon;
+
+        return $this;
+    }
+
+    /**
+     * Get serviceIcon
+     *
+     * @return string 
+     */
+    public function getServiceIcon()
+    {
+        return $this->serviceIcon;
+    }
+
+    /**
+     * Add arriveWidgets
+     *
+     * @param \Base\CoreBundle\Entity\PressGuideWidget $arriveWidgets
+     * @return PressGuide
+     */
+    public function addArriveWidget(\Base\CoreBundle\Entity\PressGuideWidget $arriveWidgets)
+    {
+        $this->arriveWidgets[] = $arriveWidgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove arriveWidgets
+     *
+     * @param \Base\CoreBundle\Entity\PressGuideWidget $arriveWidgets
+     */
+    public function removeArriveWidget(\Base\CoreBundle\Entity\PressGuideWidget $arriveWidgets)
+    {
+        $this->arriveWidgets->removeElement($arriveWidgets);
+    }
+
+    /**
+     * Get arriveWidgets
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getWidgets()
+    public function getArriveWidgets()
     {
-        return $this->widgets;
+        return $this->arriveWidgets;
+    }
+
+    /**
+     * Add meetingWidgets
+     *
+     * @param \Base\CoreBundle\Entity\PressGuideWidget $meetingWidgets
+     * @return PressGuide
+     */
+    public function addMeetingWidget(\Base\CoreBundle\Entity\PressGuideWidget $meetingWidgets)
+    {
+        $this->meetingWidgets[] = $meetingWidgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove meetingWidgets
+     *
+     * @param \Base\CoreBundle\Entity\PressGuideWidget $meetingWidgets
+     */
+    public function removeMeetingWidget(\Base\CoreBundle\Entity\PressGuideWidget $meetingWidgets)
+    {
+        $this->meetingWidgets->removeElement($meetingWidgets);
+    }
+
+    /**
+     * Get meetingWidgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMeetingWidgets()
+    {
+        return $this->meetingWidgets;
+    }
+
+    /**
+     * Add informationWidgets
+     *
+     * @param \Base\CoreBundle\Entity\PressGuideWidget $informationWidgets
+     * @return PressGuide
+     */
+    public function addInformationWidget(\Base\CoreBundle\Entity\PressGuideWidget $informationWidgets)
+    {
+        $this->informationWidgets[] = $informationWidgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove informationWidgets
+     *
+     * @param \Base\CoreBundle\Entity\PressGuideWidget $informationWidgets
+     */
+    public function removeInformationWidget(\Base\CoreBundle\Entity\PressGuideWidget $informationWidgets)
+    {
+        $this->informationWidgets->removeElement($informationWidgets);
+    }
+
+    /**
+     * Get informationWidgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInformationWidgets()
+    {
+        return $this->informationWidgets;
+    }
+
+    /**
+     * Add serviceWidgets
+     *
+     * @param \Base\CoreBundle\Entity\PressGuideWidget $serviceWidgets
+     * @return PressGuide
+     */
+    public function addServiceWidget(\Base\CoreBundle\Entity\PressGuideWidget $serviceWidgets)
+    {
+        $this->serviceWidgets[] = $serviceWidgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove serviceWidgets
+     *
+     * @param \Base\CoreBundle\Entity\PressGuideWidget $serviceWidgets
+     */
+    public function removeServiceWidget(\Base\CoreBundle\Entity\PressGuideWidget $serviceWidgets)
+    {
+        $this->serviceWidgets->removeElement($serviceWidgets);
+    }
+
+    /**
+     * Get serviceWidgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getServiceWidgets()
+    {
+        return $this->serviceWidgets;
     }
 }
