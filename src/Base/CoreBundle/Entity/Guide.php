@@ -20,7 +20,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * News
+ * Guide
  *
  * @ORM\Table()
  * @ORM\InheritanceType("JOINED")

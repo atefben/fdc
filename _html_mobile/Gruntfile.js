@@ -202,7 +202,15 @@ grunt.initConfig({
 			            './css/include/*.css',
 			            './css/slideshow-video.css',
 			            './css/programmation.css',
-			            './css/press.css'			            
+			            './css/press.css',
+			            './css/filters.css'			            
+				        ],
+				    './css-concat/programmation-press.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/programmation.css',
+			            './css/press.css',
+			            './css/filters.css'			            
 				        ],
 				    './css-concat/searchpage.css': [
 			            './css/main.css', 
@@ -476,8 +484,21 @@ grunt.initConfig({
 				   			'./js/vendors/moment.min.js',
 				   			'./js/include/*.js',
 				            './js/programmation.js',
-				            './js/press.js'
+				            './js/press.js',
+				            './js/filters.js'
 				        ],
+				    './js-concat/programmation-press.js':[
+
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/jquery.cookie.js',
+				            './js/vendors/jquery-ui.custom.min.js',
+				   			'./js/include/*.js',
+				            './js/programmation.js',
+				            './js/press.js',
+				            './js/filters.js'
+
+				    	],
 				    './js-concat/searchpage.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
@@ -574,7 +595,8 @@ grunt.initConfig({
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
 	        './press_communiques.html': ['./templates/press_communiques.html'],
-	        './press_practical_guide.html': ['./templates/press_practical_guide.html']
+	        './press_practical_guide.html': ['./templates/press_practical_guide.html'],
+	        './press_programmation.html': ['./templates/press_programmation.html']
 	      
 	      }
 	    },
@@ -641,7 +663,8 @@ grunt.initConfig({
 	        './searchpage.html': ['./templates/searchpage.html'],
 	        './artist.html': ['./templates/artist.html'],
 	        './press_communiques.html': ['./templates/press_communiques.html'],
-	        './press_practical_guide.html': ['./templates/press_practical_guide.html']
+	        './press_practical_guide.html': ['./templates/press_practical_guide.html'],
+	        './press_programmation.html': ['./templates/press_programmation.html']
 
 	      }
 
@@ -679,7 +702,8 @@ grunt.initConfig({
 	        './js-concat/search.min.js': ['./js-concat/search.js'],
 	        './js-concat/searchpage.min.js': ['./js-concat/searchpage.js'],
 	        './js-concat/artist.min.js': ['./js-concat/artist.js'],
-	        './js-concat/practical_guide.min.js': ['./js-concat/practical_guide.js']
+	        './js-concat/practical_guide.min.js': ['./js-concat/practical_guide.js'],
+	        './js-concat/programmation-press.min.js': ['./templates/programmation-press.js']
 	      }
 	    }
 	  },
@@ -720,7 +744,8 @@ grunt.initConfig({
 	        './css-concat/search.min.css': ['./css-concat/search.css'],
 	        './css-concat/searchpage.min.css': ['./css-concat/searchpage.css'],
 	        './css-concat/artist.min.css': ['./css-concat/artist.css'],
-	        './css-concat/practical_guide.min.css': ['./css-concat/practical_guide.css']
+	        './css-concat/practical_guide.min.css': ['./css-concat/practical_guide.css'],
+	        './css-concat/programmation-press.min.css': ['./css-concat/programmation-press.css']
 	    }
 	  }
 	},

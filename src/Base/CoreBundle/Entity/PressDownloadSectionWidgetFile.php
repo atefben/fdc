@@ -19,19 +19,13 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
 {
 
     use Translatable;
+    use Time;
 
     /**
      * @ORM\ManyToOne(targetEntity="Media")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
     private $file;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
-     */
-    private $updatedAt;
 
     /**
      * ArrayCollection
@@ -69,4 +63,5 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
     {
         return $this->file;
     }
+
 }

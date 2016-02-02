@@ -51,7 +51,30 @@
               <a class="programmation" href="#"><i class="icon icon_programmation"></i>Voir la programmation</a>
             </div>
           </div>
-          <div class="trailer"></div>
+          <div class="trailer">
+            <div class="video-container state-init video"
+              data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+              data-twitter="//www.twitter.com"
+              data-link="//www.example.com"
+              data-email="//www.gmail.com"
+              data-file="./files/mov_bbb.mp4"
+              data-img="//dummyimage.com/960x540/c8a461/000.png">
+              <div id="video-movie-trailer" class="video-player">
+              </div>
+              <div class="video-overlay"></div>
+              <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="container container-top">
           <div class="poster video">
@@ -104,9 +127,8 @@
               <li><a href="#press">infos presse</a></li>
             </ul>
             <div class="buttons square">
-              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-              <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
-    </a>
+              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+              <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
               <a href="#" class="button link"><i class="icon icon_link"></i></a>
               <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
               <a href="#" class="button print"><i class="icon icon_print"></i></a>
@@ -115,19 +137,34 @@
         </div>
         <div class="videos" data-section="videos">
           <div class="container">
-            <div class="video-player video">
-              <div class="image" style="background-image: url(img/movie/003.jpg);"></div>
-              <div class="picto"><i class="icon icon_video"></i></div>
-              <div class="info">
-                <div class="vCenter">
-                  <div class="vCenterKid">
-                    <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <p>The Lobster</p>
+            <div class="video-container state-init video"
+              data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+              data-twitter="//www.twitter.com"
+              data-link="//www.example.com"
+              data-email="//www.gmail.com"
+              data-file="./files/mov_bbb.mp4"
+              data-img="//dummyimage.com/960x540/c8a461/000.png">
+              <div id="video-player-ba" class="video-player">
+              </div>
+              <div class="video-overlay"></div>
+              <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+              var playba = playerInit('video-player-ba', false, false, false);
+            });
+          </script>
           <div id="slider-movie-videos" class="owl-carousel sliderDrag">
             <div class="slide-video shadow-bottom">
               <img src="http://dummyimage.com/293x185/000/fff" alt="" />

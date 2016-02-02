@@ -27,7 +27,6 @@ use JMS\Serializer\Annotation\VirtualProperty;
  */
 abstract class PressDownloadSectionWidget
 {
-    use Time;
 
     /**
      * @var integer
