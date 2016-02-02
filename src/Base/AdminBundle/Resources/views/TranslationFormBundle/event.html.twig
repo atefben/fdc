@@ -50,7 +50,7 @@
                                                     {{ themeTranslations.get(locale).name }}
                                                 {% endif %}
                                                 {% if form.parent.children.theme.vars.value is not null %}
-                                                    <a target="_blank" href="{{ path(admin_edit_theme_route, {'id': form.parent.children.theme.vars.value}) }}">
+                                                    <a target="_blank" href="">
                                                         modifier la traduction
                                                     </a>
                                                 {% endif %}
@@ -71,8 +71,8 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.publishedAt) }}
-                                        {{ form_row(translationsFields.publishEndedAt) }}
+                                    {#  {{ form_row(translationsFields.publishedAt) }}
+                                        {{ form_row(translationsFields.publishEndedAt) }} #}
                                         {{ form_row(translationsFields.status) }}
                                         {{ form_row(form.parent.children.translate) }}
                                     </div>

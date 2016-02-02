@@ -74,8 +74,13 @@
                 }
             },
             "socialWall": {
+<<<<<<< Updated upstream
                 {% if socialGraph is defined %}
                 "points": {{ socialGraph.timelineCount }},
+=======
+                {% if homeArticles is defined %}
+                "points": {{ homeArticles.timelineCount }},
+>>>>>>> Stashed changes
                 {% endif %}
                 "heightGraph" : 200
             }

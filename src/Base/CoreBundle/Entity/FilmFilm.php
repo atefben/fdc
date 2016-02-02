@@ -343,6 +343,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedMediaVideos;
 
     /**
+     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association")
+     *
+     */
+    private $associatedMediaAudios;
+
+    /**
      * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="association")
      *
      * @Groups({"statement_list", "statement_show"})

@@ -232,7 +232,6 @@ var url = "https://api.instagram.com/v1/tags/"+GLOBALS.api.instagram.hashtag+"/m
         var count = 10; 
         for (var i = 0; i < count; i++) {
           if (typeof data.data[i] !== 'undefined' ) {
-          	console.log(data.data[i].images);
             posts.push({'type': 'instagram', 'img': data.data[i].images.standard_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div>', 'user': data.data[i].user.username});
           }
           if( i == count - 1) {
@@ -260,7 +259,6 @@ var url = "https://api.instagram.com/v1/tags/"+GLOBALS.api.instagram.hashtag+"/m
       data: request,
       success: function(data, textStatus, xhr) {
         data = JSON.parse(data);
-        console.log(data);
         data = data.statuses;
         var img = '';
 

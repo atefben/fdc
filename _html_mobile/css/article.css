@@ -61,11 +61,13 @@ a{
     font-weight: 700;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     text-align: center;
+    color: #333;
 }
 .text-content strong{
 
     font-weight: 700;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif; 
+    color:#333;
 }
 /*PICTOS NAV*/
 
@@ -96,6 +98,16 @@ a{
 }*/
 
 /*SECTION*/
+
+.author {
+    border-top: 1px solid #e5e5e5;
+    color: #333;
+    font-size: 0.750rem;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    margin-top: 40px;
+    padding-top: 10px;
+
+}
 
 .section{
 
@@ -418,8 +430,6 @@ a{
     width: 100%;
     z-index: 5;
 }
-
-
 
 
 

@@ -90,7 +90,7 @@ class MediaImageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.media_image.helper_file',
                         'provider' => 'sonata.media.provider.image',
-                        'context' => 'media_image_file'
+                        'context' => 'media_image'
                     ),
                     'legend' => array(
                         'label' => 'form.label_legend_img',

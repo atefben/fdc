@@ -280,7 +280,7 @@ p,h1,h2,h3,h4,blockquote, pre, a,ul, li{
 .container{
     width: 90%;
     margin: auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .dark-container{
     width: 100%;
@@ -1207,7 +1207,7 @@ from desktop
   font-style: normal;
   font-weight: normal;
   speak: none;
-      line-height: 1;
+      /*line-height: 1;*/
  }
  [class^="icon-mobile-"]:before, [class*=" icon-mobile-"]:before {
   font-family: "mobile";
@@ -2370,7 +2370,7 @@ footer {
   position: relative;
   z-index: 2;
   clear: both;
-
+  border-top: 1px solid #2c2c2c;
 }
 footer .subtitle {
   padding-right: 7px;
@@ -2457,12 +2457,12 @@ footer .newsletter #email.error {
 footer .newsletter #confirmation {
   color: #fff;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-size: 0.875rem;
+  font-size: 18px;
   line-height: 1.2em;
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  top: 55px;
+  top: 35px;
   text-align: center;
   width: 100%;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -3057,7 +3057,7 @@ display: inline-block;
 /*ARTICLES*/
 
 .my-selection .title.one-line{
-  margin: 70px 0;
+  margin: 70px 0 50px 0;
 }
 .my-selection .content-container{
 
@@ -3174,13 +3174,16 @@ display: inline-block;
 #myselection-filters{
   height: 110px;
   z-index: 50;
+  width: 141%;
+  margin-left: -23%; 
+  margin-bottom: 20px;
 }
 
 #myselection-filters .vid {
   height: 100%;
   overflow: hidden;
   position: relative;
-  width: auto;
+  width: 165px;
   line-height: 110px;
   padding: 0 20px 0 20px;
 
@@ -3344,6 +3347,9 @@ p{
 .head i{
 	font-size: 20px;
 	margin:-5px 10px 0 0;
+}
+.header-press{
+	clear: both;
 }
 .header-press .container{
 

@@ -601,7 +601,10 @@ class FooterController extends Controller
                 break;
         }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         return $this->render(
             "FDCEventBundle:Footer:$page.html.twig",
             array('content' => $pageContent)

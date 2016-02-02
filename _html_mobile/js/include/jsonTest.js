@@ -41,7 +41,7 @@ var GLOBALS = {
     },
     "newsletter" : {
       "errorsNotValide" : "L'adresse e-mail n'est pas valide",
-      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail"
     },
     'agenda' : {
       'delete' : "Supprimer de votre agenda"

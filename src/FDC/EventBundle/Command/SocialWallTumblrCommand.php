@@ -112,6 +112,7 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
                 $em->persist($socialWall);
             }
         }
+        $output->writeln('Tumblr added: '. count($tumblrPosts));
 
         $em->flush();
     }

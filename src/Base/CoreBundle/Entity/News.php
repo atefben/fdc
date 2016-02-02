@@ -203,6 +203,9 @@ abstract class News implements TranslateMainInterface
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->associatedNews = new ArrayCollection();
+        $this->associatedProjections = new ArrayCollection();
+        $this->associatedFilms = new ArrayCollection();
     }
     
     public function __toString() {

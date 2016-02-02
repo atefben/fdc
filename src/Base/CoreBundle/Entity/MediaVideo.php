@@ -83,8 +83,6 @@ class MediaVideo extends Media
      */
     private $associatedFilms;
 
-
-
     /**
      * Set displayedWebTv
      *
@@ -245,6 +243,7 @@ class MediaVideo extends Media
     {
         return $this->image;
     }
+
 
     /**
      * Add associatedFilms

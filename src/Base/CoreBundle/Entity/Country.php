@@ -41,7 +41,7 @@ class Country implements TranslateMainInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", length=3, nullable=true)
      *
      * @Groups({
      *  "film_list", "film_show",

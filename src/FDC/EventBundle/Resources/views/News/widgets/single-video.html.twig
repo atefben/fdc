@@ -2,7 +2,7 @@
 
     {% set trans = news.video.findTranslationByLocale(app.request.locale) %}
 
-    <div class="image" style="background-image: url({% path trans.image, 'big' %});"></div>
+    <div class="image" style="background-image: url({% path trans.image, '975x616' %});"></div>
     <div class="picto"></div>
     <div class="info">
         <a href="{% path trans.file, 'reference' %}" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
