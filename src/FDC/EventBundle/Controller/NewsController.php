@@ -26,7 +26,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
@@ -623,7 +623,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
@@ -709,7 +709,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
@@ -754,13 +754,19 @@ class NewsController extends Controller {
     public function getPhotosAction() {
 
         $em = $this->getDoctrine()->getManager();
+        $dateTime = new DateTime();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
 
         //GET ALL MEDIA PHOTOS
-        $newsPhotos = $em->getRepository('BaseCoreBundle:MediaImage')->findBy(array(
-            'displayedAll' => true
-        ), array(
-            'publishedAt' => 'ASC'
-        ), null, null);
+        $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId(), $dateTime);
+
+        //echo'<pre>'; var_dump($newsPhotos); echo '</pre>';exit;
 
         //set default filters
         $filters                         = array();
@@ -769,25 +775,25 @@ class NewsController extends Controller {
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0]      = 'all';
 
-        foreach ($newsPhotos as $key => $newsPhoto) {
-            $newsPhoto->theme = $newsPhoto->getTheme();
+        foreach ($photos as $key => $photo) {
+            $photo->theme = $photo->getTheme();
 
             //check if filters don't already exist
-            $date = $newsPhoto->getPublishedAt();
+            $date = $photo->getPublishedAt();
             if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
                 $filters['dates'][] = ($date != null) ? $date : null;
                 $filters['dateFormated'][] = $date->format('d-m-Y');
             }
 
-            if (!in_array($newsPhoto->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][]    = $newsPhoto->getTheme()->getId();
-                $filters['themes']['content'][] = $newsPhoto->getTheme();
+            if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][]    = $photo->getTheme()->getId();
+                $filters['themes']['content'][] = $photo->getTheme();
             }
 
         }
 
         return array(
-            'photos' => $newsPhotos,
+            'photos' => $photos,
             'filters' => $filters
         );
     }
@@ -797,14 +803,19 @@ class NewsController extends Controller {
      * @Template("FDCEventBundle:News/list:video.html.twig")
      */
     public function getVideosAction() {
+
         $em = $this->getDoctrine()->getManager();
+        $dateTime = new DateTime();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
 
         //GET ALL MEDIA AUDIOS
-        $newsVideos = $em->getRepository('BaseCoreBundle:MediaVideo')->findBy(array(
-            'displayedAll' => true
-        ), array(
-            'publishedAt' => 'ASC'
-        ), null, null);
+        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
         $filters                         = array();
@@ -812,24 +823,24 @@ class NewsController extends Controller {
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['slug'][0]    = 'all';
 
-        foreach ($newsVideos as $key => $newsVideo) {
-            $newsVideo->theme = $newsVideo->getTheme();
+        foreach ($videos as $key => $video) {
+            $video->theme = $video->getTheme();
 
             //check if filters don't already exist
-            if (!in_array($newsVideo->getPublishedAt(), $filters['dates'])) {
-                $date               = $newsVideo->getPublishedAt();
+            if (!in_array($video->getPublishedAt(), $filters['dates'])) {
+                $date               = $video->getPublishedAt();
                 $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
             }
 
-            if (!in_array($newsVideo->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][]    = $newsVideo->getTheme()->getName();
-                $filters['themes']['content'][] = $newsVideo->getTheme();
+            if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][]    = $video->getTheme()->getName();
+                $filters['themes']['content'][] = $video->getTheme();
             }
 
         }
 
         return array(
-            'videos' => $newsVideos,
+            'videos' => $videos,
             'filters' => $filters
         );
 
@@ -840,14 +851,19 @@ class NewsController extends Controller {
      * @Template("FDCEventBundle:News/list:audio.html.twig")
      */
     public function getAudiosAction() {
+
         $em = $this->getDoctrine()->getManager();
+        $dateTime = new DateTime();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
 
         //GET ALL MEDIA AUDIOS
-        $newsAudios = $em->getRepository('BaseCoreBundle:MediaAudio')->findBy(array(
-            'displayedAll' => true
-        ), array(
-            'publishedAt' => 'ASC'
-        ), null, null);
+        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
         $filters                         = array();
@@ -855,24 +871,24 @@ class NewsController extends Controller {
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['slug'][0]    = 'all';
 
-        foreach ($newsAudios as $key => $newsAudio) {
-            $newsAudio->theme = $newsAudio->getTheme();
+        foreach ($audios as $key => $audio) {
+            $audio->theme = $audio->getTheme();
 
             //check if filters don't already exist
-            if (!in_array($newsAudio->getPublishedAt(), $filters['dates'])) {
-                $date               = $newsAudio->getPublishedAt();
+            if (!in_array($audio->getPublishedAt(), $filters['dates'])) {
+                $date               = $audio->getPublishedAt();
                 $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
             }
 
-            if (!in_array($newsAudio->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][]    = $newsAudio->getTheme()->getName();
-                $filters['themes']['content'][] = $newsAudio->getTheme();
+            if (!in_array($audio->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][]    = $audio->getTheme()->getName();
+                $filters['themes']['content'][] = $audio->getTheme();
             }
 
         }
 
         return array(
-            'audios' => $newsAudios,
+            'audios' => $audios,
             'filters' => $filters
         );
     }

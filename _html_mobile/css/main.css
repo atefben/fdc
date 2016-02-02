@@ -2156,3 +2156,7 @@ article .picto .icon{
   padding-right: 10px;
   box-sizing:border-box;
 }
+
+.film-slider .info p{
+  font-style: normal;
+}

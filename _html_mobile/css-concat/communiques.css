@@ -2363,6 +2363,10 @@ article .picto .icon{
   box-sizing:border-box;
 }
 
+.film-slider .info p{
+  font-style: normal;
+}
+
 /* footer */
 footer {
   background-color: #141414;
@@ -3306,7 +3310,10 @@ display: inline-block;
 
 
 /* ************** */
-.press{
+section{
+	clear: both;
+}
+.press, .programmation-press{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 h3{
@@ -3355,6 +3362,9 @@ p{
 
 	padding: 60px 0 90px 0;
 }
+.programmation-press .header-press .container{
+	padding: 60px 0 30px 0;
+}
 .header-press h2{
 
 	color: #c8a461;
@@ -3364,6 +3374,23 @@ p{
     letter-spacing: -1px;
     text-transform: uppercase;
     margin-bottom: 40px;
+}
+.header-press .container .button{
+
+    display: block;
+    width: 390px;
+    height: 60px;
+    margin-bottom: 30px;
+    font-size: 17px;
+    line-height: 60px;
+    border-color: #c8a461;
+    font-weight: 700;
+    border-right: 1px solid #c8a461;
+    letter-spacing: 0;
+    font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
+} 
+.header-press .container .button .icon{
+	margin-right: 10px;
 }
 .title-section{
 	box-sizing: border-box;
@@ -3435,6 +3462,12 @@ p{
     margin-left: 20px;
 }
 
+
+/*CALENDAR*/
+.press .contain-section .calendar .timeCol, .press .contain-section .calendar .venues{
+	height: 1152px;
+    overflow-y: hidden;
+}
 /*COMM & INFOS*/
 .communiques-carousel{
 	margin:40px 0;

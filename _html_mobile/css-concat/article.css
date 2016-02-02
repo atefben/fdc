@@ -2157,6 +2157,10 @@ article .picto .icon{
   box-sizing:border-box;
 }
 
+.film-slider .info p{
+  font-style: normal;
+}
+
 #choco-container{
   width: 640px;
   height: 100vh;
@@ -2296,11 +2300,12 @@ div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
   line-height: 85px;
   margin-left: 38px;
   margin-right: -38px;
+  pointer-events: none;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  cursor: pointer;
+  pointer-events: none;
   font-size: 0.750rem;
   height: 100%;
   line-height: 140px;
@@ -2375,6 +2380,7 @@ div.chocolat-wrapper .thumbnails{
     opacity: 0;
   visibility: hidden;
     width: 100%;
+    height: 113px;
     position: absolute;
     bottom: 100px;
 }

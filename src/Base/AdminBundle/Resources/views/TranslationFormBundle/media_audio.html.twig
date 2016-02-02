@@ -19,8 +19,6 @@
     <div class="a2lix_translationsFields tab-content">
     {% for translationsFields in form %}
         {% set locale = translationsFields.vars.name %}
-        {#{% if app.request.locale == locale %}#}
-
         <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
             <div class="row">
                 <div class="col-md-8">
@@ -84,7 +82,7 @@
                                     <label class="control-label">
                                         {{ 'form.label_title'|trans }}
                                     </label>
-                                    {% if form.children.fr.vars.value is not null %}
+                                    {% if form.children.fr.vars.value is not null and form.children.fr.vars.value.copyright is defined %}
                                         <div>
                                             {{ form.children.fr.vars.value.title }}
                                         </div>
