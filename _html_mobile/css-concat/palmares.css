@@ -3221,6 +3221,7 @@ section h3:not(.movie-title):not(.people-name){
 	font-weight: 700;
 	font-size: 25px;
 	margin-bottom: 8px;
+	font-style: normal;
 }
 .film-slider .info p.subtitle{
 	font-size: 18px;
