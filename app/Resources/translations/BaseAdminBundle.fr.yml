@@ -273,6 +273,7 @@ form:
     label_displayed_slider: Afficher le slider
     label_displayed_top_news:
     label_web_tv_name: Nom de la chaîne
+    label_web_tv: Chaîne
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.

@@ -19,7 +19,6 @@
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
-            {#{% if app.request.locale == locale %}#}
 
             <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
                 <div class="row">
@@ -27,33 +26,70 @@
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    Informations de base
+                                    Chaîne WebTV
                                 </h4>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.name) }}
+                                    {% if form.vars.default_locale == locale %}
+                                        {{ form_row(form.parent.children.image) }}
+                                    {% endif %}
+                                    {% if form.vars.default_locale != locale %}
+                                        {{ form_row(translationsFields.status) }}
+                                    {% endif %}
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    Paramètres de publication
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.status) }}
+                            {% if form.vars.default_locale == locale %}
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        Paramètres de publication
+                                    </h4>
                                 </div>
-                            </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group fdc-input-border">
+                                            {{ form_widget(form.parent.children.translate) }}
+                                            {{ form_label(form.parent.children.translate) }}
+                                        </div>
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                        <div class="status-hidden">
+                                            {{ form_row(translationsFields.status) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        VERSION FRANÇAISE
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+
+                                        <label class="control-label">
+                                            {{ 'form.label_web_tv_name'|trans }}
+                                        </label>
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <div>
+                                                {{ form.children.fr.vars.value.name }}
+                                            </div>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
             </div>
-            {# {% endif %} #}
         {% endfor %}
     </div>
 </div>
