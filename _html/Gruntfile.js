@@ -90,6 +90,7 @@ module.exports = function(grunt) {
     },
     useminPrepare: {
       scripts: './scripts.inc.php',
+      styles: './head.html',
       options: {
           root: './',
           dest: './'
@@ -99,6 +100,9 @@ module.exports = function(grunt) {
       js: {
         scripts: './scripts.dist.php'
       },
+      css: {
+        styles: './head.dist.html'
+      }
     },
     concat: {
       options: {
@@ -134,6 +138,18 @@ module.exports = function(grunt) {
               dest: "../src/FDC/EventBundle/Resources/public/js/app.min.js"
            }
         ]
+      },
+      css: {
+        files: [
+          {
+            src: "./dist/vendor.min.css",
+            dest: "../src/FDC/EventBundle/Resources/public/styles/vendor.min.css"
+          },
+          {
+            src: "./dist/app.min.css",
+            dest: "../src/FDC/EventBundle/Resources/public/styles/app.min.css"
+          }
+        ]
       }
     }
   });
@@ -146,13 +162,22 @@ module.exports = function(grunt) {
    * Build JavaScript only
    **/
   grunt.registerTask('build:js', [
-      'tags:app',
-      'useminPrepare',
-      'concat:generated',
-      'uglify:generated',
-      'usemin:js',
-      'clean:tmp',
-      'copy:js'
+    'tags:app',
+    'useminPrepare',
+    'concat:generated',
+    'uglify:generated',
+    'usemin:js',
+    'clean:tmp',
+    'copy:js'
+  ]);
+
+  grunt.registerTask('build:css', [
+    'useminPrepare',
+    'concat:generated',
+    'cssmin:generated',
+    'usemin:css',
+    'clean:tmp',
+    'copy:css'
   ]);
 
   grunt.registerTask('copyjs', [

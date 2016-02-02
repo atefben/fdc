@@ -207,6 +207,8 @@ form:
         image: Module photo(s)
         image_dual_align: Module 2 photos / ligne
         quote: Module citation
+    media_audio:
+        helper_title: X caractères max.
     media_video:
         helper_title: X caractères max.
         displayed_all: Remonter dans "Toutes les vidéos"

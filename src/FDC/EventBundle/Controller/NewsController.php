@@ -26,7 +26,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
@@ -623,7 +623,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
@@ -709,7 +709,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
@@ -759,7 +759,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
@@ -810,7 +810,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
@@ -858,7 +858,7 @@ class NewsController extends Controller {
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null && $settings->getFestival() !== null) {
+        if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
 
