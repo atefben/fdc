@@ -325,6 +325,8 @@
   width: 70px;
   height: 70px;
   line-height: 70px;
+  opacity: 1;
+  visibility: visible;
 }
 .popin-event .fc-event{
   position: relative;
