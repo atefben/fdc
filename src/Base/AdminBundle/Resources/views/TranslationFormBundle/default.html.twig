@@ -164,6 +164,15 @@
                         <strong>{{ value.name }}</strong>
                     {% endif %}
                     <br />
+                {% elseif value.providerName == 'sonata.media.provider.audio'%}
+                    <div class="pull-left" style="margin-right: 5px">
+                    </div>
+                    {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
+                        <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
+                    {% else %}
+                        <strong>{{ value.name }}</strong>
+                    {% endif %}
+                    <br />
                 {% else %}
                     <div class="pull-left" style="margin-right: 5px">
                         {% thumbnail value, 'admin' with {'class': 'img-polaroid media-object'} %}

@@ -79,28 +79,18 @@ class MediaAudioAdmin extends Admin
                         'required' => $requiredFile,
                         'field_type' => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
-                        'provider' => 'sonata.media.provider.file',
+                        'provider' => 'sonata.media.provider.audio',
                         'context' => 'media_audio',
                     ),
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.helper_title',
+                        'sonata_help' => 'form.media_audio.helper_title',
                         'locale_options' => array(
                             'fr' => array(
                                 'required' => true
                             )
                         )
-                    ),
-                    'alt' => array(
-                        'label' => 'form.label_image',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.helper_alt',
-                    ),
-                    'sites' => array(
-                        'multiple' => true,
-                        'expanded' => true,
-                        'class' => 'BaseCoreBundle:Site'
                     ),
                     'status' => array(
                         'label' => 'form.label_status',
