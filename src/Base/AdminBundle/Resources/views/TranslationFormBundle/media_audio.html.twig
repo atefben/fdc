@@ -80,7 +80,7 @@
                                     <label class="control-label">
                                         {{ 'form.label_legend_img'|trans }}
                                     </label>
-                                    {% if form.children.fr.vars.value is not null %}
+                                    {% if form.children.fr.vars.value is not null and form.children.fr.vars.value.legend is defined %}
                                         <div>
                                             {{ form.children.fr.vars.value.legend }}
                                         </div>
@@ -90,7 +90,7 @@
                                     <label class="control-label">
                                         {{ 'form.label_alt_img'|trans }}
                                     </label>
-                                    {% if form.children.fr.vars.value is not null %}
+                                    {% if form.children.fr.vars.value is not null and form.children.fr.vars.value.alt is defined %}
                                         <div>
                                             {{ form.children.fr.vars.value.alt }}
                                         </div>
@@ -100,7 +100,7 @@
                                     <label class="control-label">
                                         {{ 'form.label_copyright'|trans }}
                                     </label>
-                                    {% if form.children.fr.vars.value is not null %}
+                                    {% if form.children.fr.vars.value is not null and form.children.fr.vars.value.copyright is defined %}
                                         <div>
                                             {{ form.children.fr.vars.value.copyright }}
                                         </div>
