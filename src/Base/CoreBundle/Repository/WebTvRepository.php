@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
+use Base\CoreBundle\Entity\WebTv;
 use Base\CoreBundle\Entity\WebTvTranslationInterface;
 
 use Doctrine\ORM\EntityRepository;
@@ -85,5 +86,25 @@ class WebTvRepository extends EntityRepository
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    /**
+     * @param $slug
+     * @param $locale
+     * @param $festival
+     * @return WebTv
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getWebTvBySlug($slug, $locale, $festival) {
+        $qb = $this->createQueryBuilder('wt');
+        $qb->join('wt.translations', 'wtt')
+            ->where('wtt.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->andWhere('wtt.locale = :locale')
+            ->setParameter('locale', $locale)
+            ->andWhere('wt.festival = :festival')
+            ->setParameter('festival', $festival);
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }

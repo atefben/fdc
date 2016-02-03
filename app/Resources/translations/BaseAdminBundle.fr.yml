@@ -19,6 +19,8 @@ breadcrumb:
     link_media_audio_list: Liste des Médias audio
     link_homepage_list: Homepage
     link_social_wall_list: Liste du Social Wall
+    link_web_tv_list: Liste des Web TV
+    link_f_d_c_page_web_tv_channels_list: Page WebTV - Les chaînes
 
 link:
     action_soif_refresh: Mettre à jour
@@ -60,6 +62,23 @@ group:
         article:author : [valeur signature actualité]
         article:published_time : [valeur date de publication de l'actu]
         article:modified_time : [valeur date de modif actualité]
+    helper_seo_fdc_page_web_tv_channels_example: |
+        <title> : WebTV - Toutes les chaînes - Festival de Cannes 2016
+        meta desc  : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016
+
+        og:site_name : Festival de Cannes 2016
+        og:type : website
+        og:title : WebTV - Toutes les chaînes - Festival de Cannes 2016
+        og:description : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016
+        og:url : [URL page]
+        og:image : [preset chaîne à la une]
+
+        twitter:card : summary_large_image
+        twitter:site : Festival de Cannes 2016
+        twitter:creator : @Festival_Cannes
+        twitter:title : WebTV - Toutes les chaînes - Festival de Cannes 2016
+        twitter:description : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016
+        twitter:image : [preset chaîne à la une]
 
 entity:
     news_article: Articles
@@ -108,6 +127,7 @@ entity:
 list:
     label_id: Identifiant
     label_title: Titre
+    label_name: Nom
     label_theme: Thème
     label_status: Statut
     label_status_main: Statut
@@ -151,6 +171,7 @@ filter:
     label_tags: Hashtag
     label_created_at: Créé le
     label_updated_at: Mis à jour le
+    label_name: Nom
 
 dashboard:
     group:
@@ -162,10 +183,12 @@ dashboard:
         info: Infos
         event: Événements
         press: Espace presse
+        seo: SEO + TETIERES
     link:
         settings: Paramètres
         bo_translation: Traductions
         homepage: Homepage
+        fdc_page_web_tv_channels: WEBTV - Les chaînes
 
 form:
     homepage:
@@ -263,6 +286,7 @@ form:
     label_display: Ne pas afficher cette strate
     label_film: Films
     label_content: Description
+    label_image: Image
     label_image_link: Image et lien
     label_main_image: Première image
     label_second_image: Seconde image
@@ -270,6 +294,11 @@ form:
     label_displayed_top_news: Afficher le "Top News"
     label_btn: Libellé du bouton
     label_label: Légende
+    label_web_tv_name: Nom de la chaîne
+    label_web_tv: Chaîne
+    web_tv:
+        helper_name: 255 caractères max.
+        helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
     contact_theme:
         helper_theme: X caractères max.
     status:
@@ -297,8 +326,19 @@ form:
         helper_subtitle: X caractères max.
         helper_desc: X caractères max.
         label_section: Blocs
+    fdc_page_web_tv_channels:
+        image: Image cover
+        helper_image: Dimensions attendues : YxZpx. Format attendu.
+        sticky: Chaîne à la une
 
-
+        helper_sticky: Sélectionnez la première chaîne que vous souhaitez voir apparaître en haut à gauche de la page.
 
 nav:
     site_modal: Ouvrir la sélection des sites
+
+show:
+    label_id: Id
+    label_created_at: Créé le
+    label_updated_at: Mis à jour le
+
+FDCPageWebTvChannels: Page WebTV - Les chaînes

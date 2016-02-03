@@ -20,7 +20,7 @@ imports:
     - { resource: bundles/sonata_doctrine_orm_admin.yml }
     - { resource: bundles/sonata_intl.yml }
     - { resource: bundles/sonata_media.yml }
-    - { resource: bundles/sonata_media_provider.yml }
+    - { resource: bundles/sonata_media_services.yml }
     - { resource: bundles/sonata_seo.yml }
     - { resource: bundles/stof_doctrine_extensions.yml }
 
@@ -91,6 +91,7 @@ twig:
         admin_routes_translation_legend: %admin_routes_translation_legend%
         admin_routes_translation_lock: %admin_routes_translation_lock%
         admin_homepage_id: %admin_homepage_id%
+        admin_fdc_page_web_tv_channels_id: %admin_fdc_page_web_tv_channels_id%
         admin_press_homepage_id: %admin_homepage_id%
 
 # Assetic Configuration
