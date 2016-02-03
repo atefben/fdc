@@ -276,6 +276,7 @@ class TelevisionController extends Controller
         $channels = array(
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -293,6 +294,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -310,6 +312,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -327,6 +330,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -344,6 +348,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -361,6 +366,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -378,6 +384,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',

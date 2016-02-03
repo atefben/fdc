@@ -219,13 +219,14 @@ services:
 
     #HIDDEN
 
-
     #seo
     base.admin.fdc_page_web_tv_channels:
         class: Base\AdminBundle\Admin\FDCPageWebTvChannelsAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvChannels, BaseAdminBundle:FDCPageWebTvChannelsAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageWebTvChannels, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #Homepage
     base.admin.homepage:
@@ -234,7 +235,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Homepage, label_translator_strategy: sonata.admin.label.strategy.underscore, show_in_dashboard: false}
         calls:
-          - [ setTranslationDomain, ['BaseAdminBundle']]
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.event_widget_image_dummy:
         class: Base\AdminBundle\Admin\EventWidgetImageDummyAdmin

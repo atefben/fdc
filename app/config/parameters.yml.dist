@@ -28,6 +28,7 @@ parameters:
     # admin
     admin_homepage_id: ~
     admin_press_homepage_id: ~
+    admin_fdc_page_web_tv_channels_id: ~
     # routes where are displayed the translation legend
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
