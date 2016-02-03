@@ -526,6 +526,21 @@ $(document).ready(function() {
 	   events = JSON.parse(agenda);
 	}
 
+	// STOP AGENDA PICTOS FIXED BEFORE NEWSLETTER BLOCK
+	$(window).on('scroll', function() {
+	    var s = $(this).scrollTop();
+	    if( s + document.documentElement.clientHeight > $('#main').height() + 173) {
+
+	    	$('.agenda-access:not(.no-fixed)').css('position','absolute');
+	    	$('.agenda-access:not(.no-fixed)').css('bottom','50px');
+	    }
+	    else{
+
+	    	$('.agenda-access:not(.no-fixed)').css('position','fixed');
+	    	$('.agenda-access:not(.no-fixed)').css('bottom','40px');
+	    }
+	 });
+
 	function displayProgrammationDay(day){
 
 		// TODO : à enlever lors de la dynamisation. C'est juste un test pour afficher 2 jours différents

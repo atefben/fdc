@@ -32,8 +32,30 @@ parameters:
     # routes where are displayed the translation legend
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
+        - admin_base_core_webtv_list
+        - admin_base_core_tag_list
+        - admin_base_core_theme_list
+        - admin_base_core_contacttheme_list
+        - admin_base_core_event_list
+        - admin_base_core_mediaimage_list
+        - admin_base_core_mediaaudio_list
+        - admin_base_core_mediavideo_list
+        - admin_base_core_newsimage_list
+        - admin_base_core_newsaudio_list
+        - admin_base_core_newsvideo_list
     admin_routes_translation_lock:
         - admin_base_core_newsarticle_edit
+        - admin_base_core_webtv_edit
+        - admin_base_core_tag_edit
+        - admin_base_core_theme_edit
+        - admin_base_core_contacttheme_edit
+        - admin_base_core_event_edit
+        - admin_base_core_mediaimage_edit
+        - admin_base_core_mediaaudio_edit
+        - admin_base_core_mediavideo_edit
+        - admin_base_core_newsimage_edit
+        - admin_base_core_newsaudio_edit
+        - admin_base_core_newsvideo_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~

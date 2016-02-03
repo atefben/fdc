@@ -71,7 +71,14 @@ class NewsController extends Controller {
          /////////////////////////       ARTICLE HOME         ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime);
+        //get articles of the day, if no article today : get article from the day before
+
+//        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime);
+//        if($homeArticles == null) {
+//            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'));
+//        }
+
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime); ///juste pour test
 
         //set default filters
         $filters                         = array();
@@ -83,6 +90,10 @@ class NewsController extends Controller {
         foreach ($homeArticles as $key => $newsArticle) {
             $newsArticle->image = $newsArticle->getHeader();
             $newsArticle->theme = $newsArticle->getTheme();
+
+            if(($key % 3) == 0){
+                $newsArticle->double = true;
+            }
 
             //check if filters don't already exist
             $date = $newsArticle->getPublishedAt();
@@ -97,6 +108,13 @@ class NewsController extends Controller {
             }
 
         }
+
+        //split articles in two array
+        $homeArticles = $this->partition($homeArticles, 2);
+        $homeArticlesBottom = $homeArticles[1];
+        $homeArticles = $homeArticles[0];
+
+        //$homeArticleSlider = $em->getRepository('BaseCoreBundle:News')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateTime);
 
         // TODO: clean this
         $homeSlider = array(
@@ -198,73 +216,6 @@ class NewsController extends Controller {
                     'format' => 'article',
                     'theme' => 'competition',
                     'category' => 'competition'
-                )
-            ),
-            'widgets' => array(
-                array(
-                    'type' => 'image',
-                    'copyright' => "Équipe du film - Photocall - The Lobster",
-                    'photos' => array(
-                        array(
-                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        ),
-                        array(
-                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        ),
-                        array(
-                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        ),
-                        array(
-                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        )
-                    )
-                ),
-                array(
-                    'type' => 'video',
-                    'videos' => array(
-                        array(
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        ),
-                        array(
-                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        ),
-                        array(
-                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        ),
-                        array(
-                            'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
-                            'copyright' => 'Crédit Image : VALERY HACHE / AFP'
-                        )
-                    )
                 )
             )
         );
@@ -629,9 +580,10 @@ class NewsController extends Controller {
         return array(
             'homepage' => $homepage,
             'socialGraph' => $socialGraph,
+            'homeArticles' => $homeArticles,
+            'homeArticlesBottom' => $homeArticlesBottom,
             // TODO: clean this
             'homeSlider' => $homeSlider,
-            'homeArticles' => $home,
             'filters' => $filters,
             'videos' => $videos,
             'videoSlider' => $videoSlider,
@@ -768,6 +720,10 @@ class NewsController extends Controller {
                 $newsArticle->image = $newsArticle->getHeader();
                 $newsArticle->theme = $newsArticle->getTheme();
 
+                if(($key % 3) == 0){
+                    $newsArticle->double = true;
+                }
+
                 //check if filters don't already exist
                 $date = $newsArticle->getPublishedAt();
                 if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
@@ -821,6 +777,10 @@ class NewsController extends Controller {
 
             if($isPublished == true) {
                 $photo->theme = $photo->getTheme();
+
+                if(($key % 3) == 0){
+                    $photo->double = true;
+                }
 
                 //check if filters don't already exist
                 $date = $photo->getPublishedAt();
@@ -877,6 +837,10 @@ class NewsController extends Controller {
             if($isPublished == true) {
                 $video->theme = $video->getTheme();
 
+                if(($key % 3) == 0){
+                    $video->double = true;
+                }
+
                 //check if filters don't already exist
                 if (!in_array($video->getPublishedAt(), $filters['dates'])) {
                     $date               = $video->getPublishedAt();
@@ -932,6 +896,10 @@ class NewsController extends Controller {
 
                 $audio->theme = $audio->getTheme();
 
+                if(($key % 3) == 0){
+                    $audio->double = true;
+                }
+
                 //check if filters don't already exist
                 if (!in_array($audio->getPublishedAt(), $filters['dates'])) {
                     $date = $audio->getPublishedAt();
@@ -953,6 +921,28 @@ class NewsController extends Controller {
             'audios' => $audios,
             'filters' => $filters
         );
+    }
+
+
+    /**
+     * split array
+     *
+     * @param $list
+     * @param $p
+     * @return array
+     */
+    private function partition($list, $p ) {
+        $listlen = count( $list );
+        $partlen = floor( $listlen / $p );
+        $partrem = $listlen % $p;
+        $partition = array();
+        $mark = 0;
+        for ($px = 0; $px < $p; $px++) {
+            $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
+            $partition[$px] = array_slice( $list, $mark, $incr );
+            $mark += $incr;
+        }
+        return $partition;
     }
 
 }
