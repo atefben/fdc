@@ -1,7 +1,4 @@
-.calendar{
-  position: relative;
-  height: 1390px;
-}
+
 .calendar .timeCol{
 	
 	background-color: #f4f4f4;
@@ -35,6 +32,7 @@
 
 }
 .calendar .venues {
+    position: relative;
     float: left;
     width:calc(100% - 125px);
 }
