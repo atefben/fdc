@@ -29,6 +29,8 @@ You have to configure the parameters.yml
 
 Have the mandatory php extensions and php.ini
 
+Add the sql scripts in database which are in [https://github.com/Ohwee/festival-cannes-2016/tree/master/src/Base/CoreBundle/Resources/doc/sql]
+
 Launch the command : 
 ```
 php app/console d:d:c && php app/console d:s:u --force && php app/console d:f:l
@@ -37,14 +39,6 @@ php app/console assets:install --symlink web
 php app/console sonata:admin:setup-acl
 php app/console sonata:admin:generate-object-acl
 ```
-add the following script in database
-
-CREATE TABLE `sessions` (
-    `sess_id` VARBINARY(128) NOT NULL PRIMARY KEY,
-    `sess_data` BLOB NOT NULL,
-    `sess_time` INTEGER UNSIGNED NOT NULL,
-    `sess_lifetime` MEDIUMINT NOT NULL
-) COLLATE utf8_bin, ENGINE = InnoDB;
 
 ## Bundles
 
