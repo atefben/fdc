@@ -42,7 +42,7 @@ abstract class PressDownloadSectionWidget
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $position;
 
@@ -61,6 +61,16 @@ abstract class PressDownloadSectionWidget
      */
     private $lockedContent;
 
+
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string .= ' #'. $this->getId();
+        }
+
+        return $string;
+    }
 
     /**
      * Get id
@@ -135,7 +145,7 @@ abstract class PressDownloadSectionWidget
     /**
      * Get position
      *
-     * @return integer 
+     * @return integer
      */
     public function getPosition()
     {

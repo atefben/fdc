@@ -599,6 +599,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.press_download_has_section:
+        class: Base\AdminBundle\Admin\PressDownloadHasSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressDownloadHasSection, BaseAdminBundle:PressDownloadHasSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_download_has_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.press_download_section_widget_photo_dummy:
          class: Base\AdminBundle\Admin\PressDownloadSectionWidgetPhotoDummyAdmin
          arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetPhoto, BaseAdminBundle:PressDownloadSectionWidgetPhotoDummyAdmin]
@@ -612,6 +620,22 @@ services:
         arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetVideo, BaseAdminBundle:PressDownloadSectionWidgetVideoDummyAdmin]
         tags:
            - {name: sonata.admin, manager_type: orm, group: admin, label: Download Video widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+            
+    base.admin.press_download_section_widget_document_dummy:
+        class: Base\AdminBundle\Admin\PressDownloadSectionWidgetDocumentDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetDocument, BaseAdminBundle:PressDownloadSectionWidgetDocumentDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Document widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+            
+    base.admin.press_download_section_widget_file_dummy:
+        class: Base\AdminBundle\Admin\PressDownloadSectionWidgetFileDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetFile, BaseAdminBundle:PressDownloadSectionWidgetFileDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download File widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
             

@@ -5,7 +5,7 @@ var GLOBALS = {
   "defaultDate" : "2016-05-12",
   "api" : {
     "instagramUrl" : "https://api.instagram.com/v1/tags/Cannes2016/media/recent/?access_token=18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
-    "twitterUrl" : ""
+    "twitterUrl" : "./json/twitter.json"
   },
   "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
   "urls" : {

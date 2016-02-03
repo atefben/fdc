@@ -17,6 +17,7 @@ use Base\CoreBundle\Util\Time;
  */
 class PressDownloadSectionWidgetPhoto extends PressDownloadSectionWidget
 {
+    use Time;
 
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")

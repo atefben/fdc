@@ -246,14 +246,6 @@ services:
         tags:
             - { name: form.type, alias: 'press_download_section_widget_type'}
 
-    base.admin.form.press_download_section_widget_video_type:
-        scope: prototype
-        class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetVideoType
-        tags:
-            - { name: form.type, alias: 'press_download_section_widget_video_type'}
-        calls:
-            - ['setPressDownloadSectionWidgetVideoDummyAdmin', ['@base.admin.press_download_section_widget_video_dummy']]
-
     base.admin.form.press_download_section_widget_photo_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetPhotoType
@@ -263,11 +255,25 @@ services:
             - ['setPressDownloadSectionWidgetPhotoDummyAdmin', ['@base.admin.press_download_section_widget_photo_dummy']]
 
     base.admin.form.press_download_section_widget_file_type:
+        scope: prototype
         class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetFileType
         tags:
             - { name: form.type, alias: 'press_download_section_widget_file_type'}
+        calls:
+            - ['setPressDownloadSectionWidgetFileDummyAdmin', ['@base.admin.press_download_section_widget_file_dummy']]
 
     base.admin.form.press_download_section_widget_document_type:
+        scope: prototype
         class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetDocumentType
         tags:
             - { name: form.type, alias: 'press_download_section_widget_document_type'}
+        calls:
+            - ['setPressDownloadSectionWidgetDocumentDummyAdmin', ['@base.admin.press_download_section_widget_document_dummy']]
+
+    base.admin.form.press_download_section_widget_video_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetVideoType
+        tags:
+            - { name: form.type, alias: 'press_download_section_widget_video_type'}
+        calls:
+            - ['setPressDownloadSectionWidgetVideoDummyAdmin', ['@base.admin.press_download_section_widget_video_dummy']]

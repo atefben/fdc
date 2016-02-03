@@ -36,16 +36,15 @@ class PressDownloadSectionWidgetType extends BaseType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
             $builder
-            ->add('_type', 'hidden', array(
-                'data'   => $this->getName(),
-                'mapped' => false
-            ))
-            ->add('position', 'integer')
-            ->add('lockedContent', 'checkbox', array(
-                'required' => false
-            ));
-
-
+                ->add('_type', 'hidden', array(
+                    'data'   => $this->getName(),
+                    'mapped' => false
+                ))
+                ->add('position', 'hidden')
+                ->add('lockedContent', 'checkbox', array(
+                    'required' => false
+                ))
+            ;
 
     }
 

@@ -1,7 +1,7 @@
 section{
 	clear: both;
 }
-.press, .programmation-press{
+.press, .programmation-press, .calendar-press{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 h3{

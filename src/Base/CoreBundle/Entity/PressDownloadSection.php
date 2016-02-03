@@ -2,7 +2,6 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
@@ -21,7 +20,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PressDownloadSection implements TranslateMainInterface
 {
-    use Time;
     use Translatable;
     use TranslateMain;
 
@@ -35,13 +33,6 @@ class PressDownloadSection implements TranslateMainInterface
     private $id;
 
     /**
-     * @var integer
-     * @Gedmo\SortablePosition
-     * @ORM\Column(name="order", type="integer")
-     */
-    protected $order;
-
-    /**
      * @var PressDownloadSectionWidget
      *
      * @ORM\OneToMany(targetEntity="PressDownloadSectionWidget", mappedBy="pressDownload", cascade={"persist"})
@@ -49,6 +40,13 @@ class PressDownloadSection implements TranslateMainInterface
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private $widgets;
+
+    /**
+     * @var PressDownload
+     *
+     * @ORM\ManyToOne(targetEntity="PressDownload", inversedBy="section")
+     */
+    protected $download;
 
     /**
      * ArrayCollection
@@ -94,7 +92,7 @@ class PressDownloadSection implements TranslateMainInterface
     public function addWidget(\Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets)
     {
 
-        $widgets->setPressDownload($this);
+        $widgets->setDownload($this);
         $this->widgets[] = $widgets;
 
         return $this;
@@ -121,25 +119,42 @@ class PressDownloadSection implements TranslateMainInterface
     }
 
     /**
-     * Set order
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * Set download
      *
-     * @param integer $order
+     * @param \Base\CoreBundle\Entity\PressDownload $download
      * @return PressDownloadSection
      */
-    public function setOrder($order)
+    public function setDownload(\Base\CoreBundle\Entity\PressDownload $download = null)
     {
-        $this->order = $order;
+        $this->download = $download;
 
         return $this;
     }
 
     /**
-     * Get order
+     * Get download
      *
-     * @return integer 
+     * @return \Base\CoreBundle\Entity\PressDownload
      */
-    public function getOrder()
+    public function getDownload()
     {
-        return $this->order;
+        return $this->download;
     }
+    
 }
