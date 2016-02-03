@@ -2,6 +2,9 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\MediaAudioTranslation;
+use Base\CoreBundle\Entity\MediaImageTranslation;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use \DateTime;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -777,7 +780,7 @@ class NewsController extends Controller {
                     $filters['themes']['content'][] = $newsArticle->getTheme();
                 }
             } else {
-                unset($newsArticle);
+                unset($newsArticles[$key]);
             }
         }
 
@@ -806,8 +809,6 @@ class NewsController extends Controller {
         //GET ALL MEDIA PHOTOS
         $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
-        //echo'<pre>'; var_dump($newsPhotos); echo '</pre>';exit;
-
         //set default filters
         $filters                         = array();
         $filters['dates'][0]             = 'all';
@@ -816,18 +817,25 @@ class NewsController extends Controller {
         $filters['themes']['id'][0]      = 'all';
 
         foreach ($photos as $key => $photo) {
-            $photo->theme = $photo->getTheme();
+            $isPublished = ($photo !== null) ? ($photo->findTranslationByLocale('fr')->getStatus() === MediaImageTranslation::STATUS_PUBLISHED) : false;
 
-            //check if filters don't already exist
-            $date = $photo->getPublishedAt();
-            if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
-                $filters['dates'][] = ($date != null) ? $date : null;
-                $filters['dateFormated'][] = $date->format('d-m-Y');
-            }
+            if($isPublished == true) {
+                $photo->theme = $photo->getTheme();
 
-            if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][]    = $photo->getTheme()->getId();
-                $filters['themes']['content'][] = $photo->getTheme();
+                //check if filters don't already exist
+                $date = $photo->getPublishedAt();
+                if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
+                    $filters['dates'][] = ($date != null) ? $date : null;
+                    $filters['dateFormated'][] = $date->format('d-m-Y');
+                }
+
+                if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
+                    $filters['themes']['id'][] = $photo->getTheme()->getId();
+                    $filters['themes']['content'][] = $photo->getTheme();
+                }
+
+            } else {
+                unset($photos[$key]);
             }
 
         }
@@ -864,19 +872,25 @@ class NewsController extends Controller {
         $filters['themes']['slug'][0]    = 'all';
 
         foreach ($videos as $key => $video) {
-            $video->theme = $video->getTheme();
+            $isPublished = ($video !== null) ? ($video->findTranslationByLocale('fr')->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED) : false;
 
-            //check if filters don't already exist
-            if (!in_array($video->getPublishedAt(), $filters['dates'])) {
-                $date               = $video->getPublishedAt();
-                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            if($isPublished == true) {
+                $video->theme = $video->getTheme();
+
+                //check if filters don't already exist
+                if (!in_array($video->getPublishedAt(), $filters['dates'])) {
+                    $date               = $video->getPublishedAt();
+                    $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+                }
+
+                if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
+                    $filters['themes']['slug'][]    = $video->getTheme()->getName();
+                    $filters['themes']['content'][] = $video->getTheme();
+                }
+
+            } else {
+                unset($videos[$key]);
             }
-
-            if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][]    = $video->getTheme()->getName();
-                $filters['themes']['content'][] = $video->getTheme();
-            }
-
         }
 
         return array(
@@ -912,17 +926,25 @@ class NewsController extends Controller {
         $filters['themes']['slug'][0]    = 'all';
 
         foreach ($audios as $key => $audio) {
-            $audio->theme = $audio->getTheme();
+            $isPublished = ($audio !== null) ? ($audio->findTranslationByLocale('fr')->getStatus() === MediaAudioTranslation::STATUS_PUBLISHED) : false;
 
-            //check if filters don't already exist
-            if (!in_array($audio->getPublishedAt(), $filters['dates'])) {
-                $date               = $audio->getPublishedAt();
-                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
-            }
+            if($isPublished == true) {
 
-            if (!in_array($audio->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][]    = $audio->getTheme()->getName();
-                $filters['themes']['content'][] = $audio->getTheme();
+                $audio->theme = $audio->getTheme();
+
+                //check if filters don't already exist
+                if (!in_array($audio->getPublishedAt(), $filters['dates'])) {
+                    $date = $audio->getPublishedAt();
+                    $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+                }
+
+                if (!in_array($audio->getTheme()->getName(), $filters['themes']['content'])) {
+                    $filters['themes']['slug'][] = $audio->getTheme()->getName();
+                    $filters['themes']['content'][] = $audio->getTheme();
+                }
+
+            } else {
+                unset($audios[$key]);
             }
 
         }
