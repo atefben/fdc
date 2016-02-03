@@ -6930,6 +6930,10 @@ display: inline-block;
 .fullscreenplayer .close-button{
   top:40px;
 }
+.fullscreenplayer.show .close-button{
+    opacity: 1;
+    visibility: visible;
+}
 .fullscreenplayer p{
   margin-top: 20px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
