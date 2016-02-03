@@ -54,11 +54,11 @@ section{
     height: auto;
 
 }
-.section-title .icon{
+.section-title .icon, .section-title .icon-mobile-participer{
     font-size: 3rem;
     color: #999999;
 }
-.open .section-title .icon{
+.open .section-title .icon, .open .section-title .icon-mobile-participer{
     color:#c29f5f
 }
 .section-title .icon_case-plus{
