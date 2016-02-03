@@ -590,6 +590,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.press_download_has_section:
+        class: Base\AdminBundle\Admin\PressDownloadHasSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressDownloadHasSection, BaseAdminBundle:PressDownloadHasSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_download_has_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.press_download_section_widget_photo_dummy:
          class: Base\AdminBundle\Admin\PressDownloadSectionWidgetPhotoDummyAdmin
          arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetPhoto, BaseAdminBundle:PressDownloadSectionWidgetPhotoDummyAdmin]

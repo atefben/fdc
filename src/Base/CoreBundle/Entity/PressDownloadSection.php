@@ -2,7 +2,6 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
@@ -34,13 +33,6 @@ class PressDownloadSection implements TranslateMainInterface
     private $id;
 
     /**
-     * @var integer
-     * @Gedmo\SortablePosition
-     * @ORM\Column(name="position", type="integer")
-     */
-    protected $position;
-
-    /**
      * @var PressDownloadSectionWidget
      *
      * @ORM\OneToMany(targetEntity="PressDownloadSectionWidget", mappedBy="pressDownload", cascade={"persist"})
@@ -48,6 +40,13 @@ class PressDownloadSection implements TranslateMainInterface
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private $widgets;
+
+    /**
+     * @var PressDownload
+     *
+     * @ORM\ManyToOne(targetEntity="PressDownload", inversedBy="section")
+     */
+    protected $download;
 
     /**
      * ArrayCollection
@@ -93,7 +92,7 @@ class PressDownloadSection implements TranslateMainInterface
     public function addWidget(\Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets)
     {
 
-        $widgets->setPressDownload($this);
+        $widgets->setDownload($this);
         $this->widgets[] = $widgets;
 
         return $this;
@@ -134,4 +133,28 @@ class PressDownloadSection implements TranslateMainInterface
     {
         $this->position = $position;
     }
+
+    /**
+     * Set download
+     *
+     * @param \Base\CoreBundle\Entity\PressDownload $download
+     * @return PressDownloadSection
+     */
+    public function setDownload(\Base\CoreBundle\Entity\PressDownload $download = null)
+    {
+        $this->download = $download;
+
+        return $this;
+    }
+
+    /**
+     * Get download
+     *
+     * @return \Base\CoreBundle\Entity\PressDownload
+     */
+    public function getDownload()
+    {
+        return $this->download;
+    }
+    
 }

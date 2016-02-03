@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PressDownloadAdmin extends Admin
+class PressDownloadHasSectionAdmin extends Admin
 {
 
     /**
@@ -20,6 +20,7 @@ class PressDownloadAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('section')
         ;
     }
 
@@ -32,13 +33,7 @@ class PressDownloadAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+            ->add('section')
         ;
     }
 
@@ -48,33 +43,12 @@ class PressDownloadAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('translations', 'a2lix_translations', array(
-                'label' => false,
-                'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
-                'fields' => array(
-                    'createdAt' => array(
-                        'display' => false
-                    ),
-                    'updatedAt' => array(
-                        'display' => false
-                    ),
-                )
+            ->add('section', 'sonata_type_model_list', array(
+                'required' => false,
+                'btn_add' => false,
+                'label' => 'form.label_section'
             ))
-            ->add('downloadSection', 'sonata_type_collection',
-                array(
-                    'cascade_validation' => true,
-                    'by_reference' => false,
-                    'label' => 'form.label_image_link'
-                ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable'  => 'position'
-                )
-            )
-
-            ->end()
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
 
     }
@@ -90,4 +64,15 @@ class PressDownloadAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
+    public function prePersist($downloadSection)
+    {
+        $this->preUpdate($downloadSection);
+    }
+
+    public function preUpdate($downloadSection)
+    {
+        $downloadSection->setSection($downloadSection->getSection());
+    }
+
 }

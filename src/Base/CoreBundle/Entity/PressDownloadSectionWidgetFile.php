@@ -21,7 +21,7 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
     use Translatable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaVideo")
+     * @ORM\ManyToOne(targetEntity="Media")
      */
     private $file;
 
