@@ -9,13 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * PressDownloadSectionWidgetVideoDummyAdmin class.
+ * PressDownloadSectionWidgetDocumentDummyAdmin class.
  * 
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class PressDownloadSectionWidgetVideoDummyAdmin extends Admin
+class PressDownloadSectionWidgetDocumentDummyAdmin extends Admin
 {
     /**
      * @param FormMapper $formMapper

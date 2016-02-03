@@ -66,14 +66,11 @@ class PressHomepageSectionAdmin extends Admin
 
     public function prePersist($homepage)
     {
-        dump($this);exit;
         $this->preUpdate($homepage);
     }
 
     public function preUpdate($homepage)
     {
-        dump($homepage);exit;
-
         $homepage->setSection($homepage->getSection());
     }
 }

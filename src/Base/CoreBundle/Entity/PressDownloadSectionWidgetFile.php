@@ -19,11 +19,9 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
 {
 
     use Translatable;
-    use Time;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
      */
     private $file;
 
@@ -49,6 +47,7 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
      */
     public function setFile(\Base\CoreBundle\Entity\Media $file)
     {
+
         $this->file = $file;
 
         return $this;

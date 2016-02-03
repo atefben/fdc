@@ -26,6 +26,25 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
      */
     protected $dataClass = 'Base\\CoreBundle\\Entity\\PressDownloadSectionWidgetDocument';
 
+    /**
+     * PressGuideWidgetDocumentDummyAdmin
+     *
+     * @var mixed
+     * @access private
+     */
+    private $PressDownloadSectionWidgetDocumentDummyAdmin;
+
+    /**
+     * setPressDownloadSectionWidgetDocumentDummyAdmin function.
+     *
+     * @access public
+     * @param mixed $PressDownloadSectionWidgetDocumentDummyAdmin
+     * @return void
+     */
+    public function setPressDownloadSectionWidgetDocumentDummyAdmin($PressDownloadSectionWidgetDocumentDummyAdmin)
+    {
+        $this->PressDownloadSectionWidgetDocumentDummyAdmin = $PressDownloadSectionWidgetDocumentDummyAdmin;
+    }
 
     /**
      * buildForm function.
@@ -39,7 +58,6 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
     {
 
         parent::buildForm($builder, $options);
-
         $builder
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
@@ -79,11 +97,28 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                             )
                         )
                     ),
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
                 )
             ))
 
-            ->add('image')
-            ->add('file');
+            ->add('image', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['image'],
+                'model_manager' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getModelManager(),
+                'class' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
+            ))
+            ->add('file', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['file'],
+                'model_manager' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getModelManager(),
+                'class' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
+            ))
+//            ->add('createdAt', 'hidden')
+//            ->add('updatedAt', 'hidden')
+            ;
 
     }
 

@@ -21,7 +21,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PressDownloadSection implements TranslateMainInterface
 {
-    use Time;
     use Translatable;
     use TranslateMain;
 
@@ -37,9 +36,9 @@ class PressDownloadSection implements TranslateMainInterface
     /**
      * @var integer
      * @Gedmo\SortablePosition
-     * @ORM\Column(name="order", type="integer")
+     * @ORM\Column(name="position", type="integer")
      */
-    protected $order;
+    protected $position;
 
     /**
      * @var PressDownloadSectionWidget
@@ -121,25 +120,18 @@ class PressDownloadSection implements TranslateMainInterface
     }
 
     /**
-     * Set order
-     *
-     * @param integer $order
-     * @return PressDownloadSection
+     * @return int
      */
-    public function setOrder($order)
+    public function getPosition()
     {
-        $this->order = $order;
-
-        return $this;
+        return $this->position;
     }
 
     /**
-     * Get order
-     *
-     * @return integer 
+     * @param int $position
      */
-    public function getOrder()
+    public function setPosition($position)
     {
-        return $this->order;
+        $this->position = $position;
     }
 }
