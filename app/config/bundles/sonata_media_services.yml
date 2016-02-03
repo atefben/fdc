@@ -1,4 +1,5 @@
 services:
+    #custom sonata services to handle upload for video elements
     sonata.media.filesystem.s3_video:
         class: Gaufrette\Filesystem
         arguments:
@@ -29,6 +30,7 @@ services:
             - ['mp4', 'mov']
             - ['video/mp4', 'video/quicktime']
 
+    # custom sonata service to handle upload for audio elements
     sonata.media.filesystem.s3_audio:
         class: Gaufrette\Filesystem
         arguments:
@@ -58,3 +60,11 @@ services:
             - @sonata.media.thumbnail.format
             - ['mp3']
             - ['audio/mpeg', 'audio/mp3']
+
+    #override sonata_media_type to add an option to show/hide the unlink button
+    sonata.form.type_extension.media:
+        class: Application\Sonata\MediaBundle\Form\Extension\MediaTypeExtension
+        tags:
+            -
+                name: form.type_extension
+                alias: sonata_media_type

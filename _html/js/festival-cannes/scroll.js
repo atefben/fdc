@@ -168,9 +168,11 @@ $(document).ready(function() {
     }
 
     // Render the path of hashtag graph
-    if($('#graph').length) {
-      if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
-        makePath(GLOBALS.socialWall.points);
+    if (GLOBALS.socialWall.points.length > 0) {
+      if($('#graph').length) {
+        if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
+          makePath(GLOBALS.socialWall.points);
+        }
       }
     }
 

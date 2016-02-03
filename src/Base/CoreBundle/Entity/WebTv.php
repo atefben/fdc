@@ -41,6 +41,13 @@ class WebTv implements TranslateMainInterface
     private $id;
 
     /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
+
+    /**
      * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="webTv")
      *
      * @Groups({"web_tv_list", "web_tv_show"})
@@ -53,6 +60,13 @@ class WebTv implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topWebTvs")
      */
     private $homepage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     *
+     * @Groups({"web_tv_list", "web_tv_show"})
+     */
+    private $image;
 
     /**
      * @var ArrayCollection
@@ -152,5 +166,52 @@ class WebTv implements TranslateMainInterface
     public function getHomepage()
     {
         return $this->homepage;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $image
+     * @return WebTv
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return WebTv
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }

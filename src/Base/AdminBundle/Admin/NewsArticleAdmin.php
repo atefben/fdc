@@ -279,7 +279,7 @@ class NewsArticleAdmin extends Admin
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
                 'help' => 'form.news.helper_file',
-                'required' => false
+                'required' => false,
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
             ->add('createdAt', null, array(

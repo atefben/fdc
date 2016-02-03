@@ -31,10 +31,10 @@ file that was distributed with this source code.
             {% stylesheets
                 '@BaseAdminBundle/Resources/public/css/*.css'
             %}
-        
+
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
-            
+
             {% for stylesheet in admin_pool.getOption('stylesheets', []) %}
                 <link rel="stylesheet" href="{{ asset(stylesheet) }}">
             {% endfor %}
@@ -77,7 +77,7 @@ file that was distributed with this source code.
             <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
         {% endblock %}
-        
+
         {% set userSite = app.session.get('base_site') %}
         {% if userSite is not null %}
             <script type="text/javascript">
@@ -268,11 +268,17 @@ file that was distributed with this source code.
                                                                     </a>
                                                                 </li>
                                                             {%  endif %}
-                                                            {% for admin in group.items %}
-                                                                {% if admin.hasroute('list') and admin.isGranted('LIST') %}
-                                                                    <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}><a href="{{ admin.generateUrl('list')}}"><i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}</a></li>
-                                                                {% endif %}
-                                                            {% endfor %}
+                                                            {%  if group.label != 'dashboard.group.seo' %}
+                                                                {% for admin in group.items %}
+                                                                    {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                                                                        <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}>
+                                                                            <a href="{{ admin.generateUrl('list') }}">
+                                                                                <i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}
+                                                                            </a>
+                                                                        </li>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% endif %}
                                                         </ul>
                                                     </li>
                                                 {% endif %}
@@ -293,6 +299,7 @@ file that was distributed with this source code.
                                                 </li>
                                                 {% endif %}
                                             {% endblock side_bar_li %}
+                                            {% include 'ApplicationSonataAdminBundle::group_seo.html.twig' %}
                                         </ul>
                                     {% endif %}
                                 {% endblock side_bar_nav %}
