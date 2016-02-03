@@ -9,15 +9,15 @@
     <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
 	<!-- Include css files -->
-    <!-- build:[href]:prod css-concat/programmation-press.min.css -->
-    <link rel="stylesheet" href="css-concat/programmation-press.css" />
+    <!-- build:[href]:prod css-concat/programmation.min.css -->
+    <link rel="stylesheet" href="css-concat/programmation.css" />
     <!-- /build -->
 
 </head>
 <body>
 
-<div id="main" class="programmation-press press-locked" data-menu="programmation">
-	<!-- build:include ../include/menu_press.html -->
+<div id="main" class="programmation-press" data-menu="prog">
+	<!-- build:include ../include/menu.html -->
 	<!-- /build -->
 		<!-- build:include ../include/my_selection.html -->
 	<!-- /build -->
@@ -26,9 +26,6 @@
 
 
 	<div class="header-press">
-        <div class="head">
-          <span><i class="icon icon_espace-presse"></i>Espace presse</span>
-        </div>
         <div class="container">
         	<h2>programmation</h2>
         	<a href="" class="button"><i class="icon icon_telecharger"></i>horaire des projections presse .PDF</a>
@@ -38,15 +35,11 @@
 
     <div class="locked">
 	    <h3><i class="icon icon_cadenas"></i>contenus verrouillés</h3>
-	    <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
-
-	    <form action="">
-	      <input type="password" value="" placeholder="Mot de passe">
-	      <input type="submit" value="valider">
-	    </form>
+	    <p>Journalistes, veuillez vous rendre dans l'espace presse et vous identifier pour déverrouiller les contenus qui vous sont réservés.</p>
+	    <a href="press_programmation.html" class="button go-to-press">aller dans l'espace presse</a>
 	</div>
 
-	<a class="agenda-access" href="press_agenda.html"><i class="icon icon_agenda-personnel"></i></a>
+	<a class="agenda-access" href="agenda.html"><i class="icon icon_agenda-personnel"></i></a>
 
 	<section>
 
@@ -143,22 +136,12 @@
 	
 </div>
 
-<div id="popin-press" class="popin">
-    <h3><i class="icon icon_cadenas"></i>contenus verrouillés</h3>
-    <p>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</p>
-
-    <form action="">
-      <input type="password" value="" placeholder="Mot de passe" id="password">
-      <input type="submit" value="valider">
-    </form>
-</div>
 
 
-
-<!-- build:include ../include/footer_press.html -->
+<!-- build:include ../include/footer.html -->
 <!-- /build -->
-<!-- build:[src]:prod js-concat/programmation-press.min.js -->
-    <script charset="utf-8" src="js-concat/programmation-press.js"></script>
+<!-- build:[src]:prod js-concat/programmation.min.js -->
+    <script charset="utf-8" src="js-concat/programmation.js"></script>
   <!-- /build -->
 
 </body>

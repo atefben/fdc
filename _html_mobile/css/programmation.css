@@ -1,3 +1,7 @@
+.calendar{
+  position: relative;
+  height: 1390px;
+}
 .calendar .timeCol{
 	
 	background-color: #f4f4f4;
@@ -514,3 +518,37 @@
   border-top: 1px solid #e5e5e5;
 }
 
+.go-to-press{
+  display: block;
+  width: 275px;
+  height: 60px;
+  margin-bottom: 30px;
+  font-size: 17px;
+  line-height: 60px;
+  border-color: #c8a461;
+  font-weight: 700;
+  border-right: 1px solid #c8a461;
+  letter-spacing: 0;
+  font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
+}
+.go-to-press:last-child{
+  border-right: 1px solid #c8a461;
+}
+
+/*AGENDA ACCESS BUTTON*/
+.agenda-access{
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  background-color: #333333;
+  font-size: 60px;
+  color: #c29f5f;
+  right: 40px;
+  bottom: 40px;
+  z-index: 5;
+}
+.agenda-access.no-fixed{
+  position: absolute;
+}
