@@ -2987,6 +2987,18 @@ display: inline-block;
   padding: 0 20px 0 20px;
 
 }
+#myselection-filters .owl-item:last-child:after {
+  
+    background-color: #c8a461;
+    left: 0px;
+    content: '';
+    display: block;
+    width: 2px;
+    top: 50%;
+    margin-top: -14px;
+    position: absolute;
+    height: 32px;
+}
 
 #myselection-filters .vid p{
   
@@ -3079,6 +3091,9 @@ div.chocolat-wrapper .chocolat-top .close-button{
   top:20px;
   right: 20px;
   opacity: 1;
+}
+
+div.chocolat-wrapper.show .chocolat-top .close-button{
   visibility: visible;
 }
 div.chocolat-wrapper .chocolat-bottom {

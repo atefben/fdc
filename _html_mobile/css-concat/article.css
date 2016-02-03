@@ -2230,6 +2230,9 @@ div.chocolat-wrapper .chocolat-top .close-button{
   top:20px;
   right: 20px;
   opacity: 1;
+}
+
+div.chocolat-wrapper.show .chocolat-top .close-button{
   visibility: visible;
 }
 div.chocolat-wrapper .chocolat-bottom {
@@ -3545,6 +3548,18 @@ display: inline-block;
   padding: 0 20px 0 20px;
 
 }
+#myselection-filters .owl-item:last-child:after {
+  
+    background-color: #c8a461;
+    left: 0px;
+    content: '';
+    display: block;
+    width: 2px;
+    top: 50%;
+    margin-top: -14px;
+    position: absolute;
+    height: 32px;
+}
 
 #myselection-filters .vid p{
   
@@ -4164,6 +4179,10 @@ a{
 .fullscreenplayer .close-button{
   top:40px;
 }
+.fullscreenplayer.show .close-button{
+    opacity: 1;
+    visibility: visible;
+}
 .fullscreenplayer p{
   margin-top: 20px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -4191,9 +4210,11 @@ a{
 .fullscreenplayer.show{
   display: block;
   opacity: 0;
+  visibility: hidden;
 }
 .allow-landscape .fullscreenplayer.show{
   opacity: 1;
+  visibility: visible;
 }
 #main .jw-controlbar {
     height: 40px;
