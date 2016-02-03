@@ -1,0 +1,70 @@
+services:
+    #custom sonata services to handle upload for video elements
+    sonata.media.filesystem.s3_video:
+        class: Gaufrette\Filesystem
+        arguments:
+            - @sonata.media.adapter.filesystem.s3_video
+
+    sonata.media.adapter.filesystem.s3_video:
+        class: Gaufrette\Adapter\AwsS3
+        arguments:
+            - @sonata.media.adapter.service.s3
+            - %s3_video_bucket_name%
+            - {create: false, region: %s3_video_region%, directory: '', 'ACL': 'owner_full_control'}
+
+    sonata.media.cdn.server_video:
+        class: Sonata\MediaBundle\CDN\Server
+        arguments:
+            - http://%s3_video_bucket_name%.s3-website-%s3_video_region%.amazonaws.com
+
+    sonata.media.provider.video:
+        class: Application\Sonata\MediaBundle\Provider\VideoProvider
+        tags:
+            - { name: sonata.media.provider }
+        arguments:
+            - sonata.media.provider.video
+            - @sonata.media.filesystem.s3_video
+            - @sonata.media.cdn.server_video
+            - @sonata.media.generator.default
+            - @sonata.media.thumbnail.format
+            - ['mp4', 'mov']
+            - ['video/mp4', 'video/quicktime']
+
+    # custom sonata service to handle upload for audio elements
+    sonata.media.filesystem.s3_audio:
+        class: Gaufrette\Filesystem
+        arguments:
+            - @sonata.media.adapter.filesystem.s3_audio
+
+    sonata.media.adapter.filesystem.s3_audio:
+        class: Gaufrette\Adapter\AwsS3
+        arguments:
+            - @sonata.media.adapter.service.s3
+            - %s3_audio_bucket_name%
+            - {create: false, region: %s3_audio_region%, directory: '', 'ACL': 'owner_full_control'}
+
+    sonata.media.cdn.server_audio:
+        class: Sonata\MediaBundle\CDN\Server
+        arguments:
+            - http://%s3_audio_bucket_name%.s3-website-%s3_audio_region%.amazonaws.com
+
+    sonata.media.provider.audio:
+        class: Application\Sonata\MediaBundle\Provider\VideoProvider
+        tags:
+            - { name: sonata.media.provider }
+        arguments:
+            - sonata.media.provider.video
+            - @sonata.media.filesystem.s3_audio
+            - @sonata.media.cdn.server_audio
+            - @sonata.media.generator.default
+            - @sonata.media.thumbnail.format
+            - ['mp3']
+            - ['audio/mpeg', 'audio/mp3']
+
+    #override sonata_media_type to add an option to show/hide the unlink button
+    sonata.form.type_extension.media:
+        class: Application\Sonata\MediaBundle\Form\Extension\MediaTypeExtension
+        tags:
+            -
+                name: form.type_extension
+                alias: sonata_media_type

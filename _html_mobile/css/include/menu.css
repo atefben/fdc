@@ -221,7 +221,7 @@ font-weight: bolder;
 #menu .third-nav a, #menu .third-nav ul, #menu .third-nav .language .icon{
   color:white;
 }
-#menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon{
+#menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon, #menu .second-nav .icon-mobile-participer{
   margin-right: 25px
 }
 #menu .third-nav .language .icon{

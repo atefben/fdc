@@ -1043,7 +1043,8 @@ from desktop
 .icon-mobile-burger:before { content: '\e803'; } /* '' */
 .icon-mobile-minus:before { content: '\e804'; } /* '' */
 .icon-mobile-plus:before { content: '\e805'; } /* '' */
-
+.icon-mobile-dailymotion:before { content: '\e806'; vertical-align: middle; } /* '' */
+.icon-mobile-participer:before { content: '\e807'; vertical-align: middle;} /* '' */
 /* Socials */
 #socials{
     text-align: center;
@@ -1211,10 +1212,14 @@ from desktop
     -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#networks ul li .icon {
+#networks ul li .icon, #networks ul li .icon-mobile-dailymotion {
     margin-left: 10px;
     font-size: 2rem;
 }
+#networks ul li .icon-mobile-dailymotion {
+  vertical-align: middle;
+}
+
 #networks ul li a:after {
     content: '';
     display: block;
@@ -2198,7 +2203,9 @@ footer {
 }
 footer .subtitle {
   padding-right: 7px;
-  font-size:1.2rem;
+  font-size:18px;
+  text-transform: none;
+  letter-spacing: 0;
 }
 footer:after {
   background-color: #141414;
@@ -2707,7 +2714,7 @@ font-weight: bolder;
 #menu .third-nav a, #menu .third-nav ul, #menu .third-nav .language .icon{
   color:white;
 }
-#menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon{
+#menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon, #menu .second-nav .icon-mobile-participer{
   margin-right: 25px
 }
 #menu .third-nav .language .icon{
@@ -3011,6 +3018,18 @@ display: inline-block;
   line-height: 110px;
   padding: 0 20px 0 20px;
 
+}
+#myselection-filters .owl-item:last-child:after {
+  
+    background-color: #c8a461;
+    left: 0px;
+    content: '';
+    display: block;
+    width: 2px;
+    top: 50%;
+    margin-top: -14px;
+    position: absolute;
+    height: 32px;
 }
 
 #myselection-filters .vid p{
@@ -3358,6 +3377,10 @@ display: inline-block;
 .fullscreenplayer .close-button{
   top:40px;
 }
+.fullscreenplayer.show .close-button{
+    opacity: 1;
+    visibility: visible;
+}
 .fullscreenplayer p{
   margin-top: 20px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -3385,9 +3408,11 @@ display: inline-block;
 .fullscreenplayer.show{
   display: block;
   opacity: 0;
+  visibility: hidden;
 }
 .allow-landscape .fullscreenplayer.show{
   opacity: 1;
+  visibility: visible;
 }
 #main .jw-controlbar {
     height: 40px;

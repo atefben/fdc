@@ -24,4 +24,10 @@ jQuery(document).ready(function($) {
             }
         });
     });
+
+    // Hide the status for french translation
+    if ($('.status-hidden').length) {
+        $('.status-hidden select').val(1).change();
+        $('.status-hidden').hide();
+    }
 });

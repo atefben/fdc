@@ -171,20 +171,18 @@ $(document).ready(function() {
 
   // GRAPH SVG
 
-  makeGrid();
+  if(GLOBALS.socialWall.points.length > 0) {
+    makeGrid();
+  }
 
-  //instagram
-
-  var url = "https://api.instagram.com/v1/tags/"+GLOBALS.api.instagram.hashtag+"/media/recent/?access_token="+GLOBALS.api.instagram.token;
-    
+  // INSTAGRAM
   // load Instagram pictures and build array
-  function loadInstagram(url, callback){
-
+  function loadInstagram(callback){
     $.ajax({
       type: "GET",
       dataType: "jsonp",
       cache: false,
-      url: url ,
+      url: GLOBALS.api.instagramUrl ,
       success: function(data) {
 
         var count = 15; 
@@ -204,15 +202,25 @@ $(document).ready(function() {
   // TWITTER
   // load Twitter posts and pictures and build array
   function loadTweets(callback) {
-    var request = {
-      q: GLOBALS.api.twitter.hashtag,
-      count:  GLOBALS.api.twitter.count,
-      api:  GLOBALS.api.twitter.uri
-    };
+    var request, url, type;
+    
+    if (GLOBALS.env == "html") {
+      url     = "twitter.php";
+      type    = "POST";
+      request = {
+        q: "%23Cannes2016",
+        count:  15,
+        api:  "search_tweets"
+      };
+    } else {
+      url     = GLOBALS.api.twitterUrl;
+      type    = "GET";
+      request = {};
+    }
 
     $.ajax({
-      url: GLOBALS.api.twitter.url,
-      type: 'POST',
+      url: url,
+      type: type,  
       datatype: 'json',
       data: request,
       success: function(data, textStatus, xhr) {
@@ -244,7 +252,7 @@ $(document).ready(function() {
     });
   }
 
-  loadInstagram(url, function() {
+  loadInstagram(function() {
     loadTweets(function() {
 
       // once all data is loaded, build html and display the grid

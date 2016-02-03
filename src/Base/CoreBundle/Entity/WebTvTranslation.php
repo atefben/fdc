@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -37,6 +39,14 @@ class WebTvTranslation implements TranslateChildInterface
     protected $name;
 
     /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
+
+    /**
      * Set name
      *
      * @param string $name
@@ -57,5 +67,28 @@ class WebTvTranslation implements TranslateChildInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return WebTvTranslation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

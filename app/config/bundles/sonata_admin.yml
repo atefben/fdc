@@ -49,6 +49,9 @@ sonata_admin:
             dashboard.group.soif:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            dashboard.group.seo:
+                items: ~
+                label_catalogue: BaseAdminBundle
             dashboard.group.press:
                 items: ~
                 label_catalogue: BaseAdminBundle
