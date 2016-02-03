@@ -2379,7 +2379,9 @@ footer {
 }
 footer .subtitle {
   padding-right: 7px;
-  font-size:1.2rem;
+  font-size:18px;
+  text-transform: none;
+  letter-spacing: 0;
 }
 footer:after {
   background-color: #141414;
