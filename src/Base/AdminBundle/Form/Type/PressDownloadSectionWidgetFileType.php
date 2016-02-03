@@ -28,6 +28,26 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
 
 
     /**
+     * PressGuideWidgetFileDummyAdmin
+     *
+     * @var mixed
+     * @access private
+     */
+    private $PressDownloadSectionWidgetFileDummyAdmin;
+
+    /**
+     * setPressDownloadSectionWidgetFileDummyAdmin function.
+     *
+     * @access public
+     * @param mixed $PressDownloadSectionWidgetFileDummyAdmin
+     * @return void
+     */
+    public function setPressDownloadSectionWidgetFileDummyAdmin($PressDownloadSectionWidgetFileDummyAdmin)
+    {
+        $this->PressDownloadSectionWidgetFileDummyAdmin = $PressDownloadSectionWidgetFileDummyAdmin;
+    }
+    
+    /**
      * buildForm function.
      *
      * @access public
@@ -64,11 +84,26 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                             )
                         )
                     ),
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
                 )
             ))
+//            ->add('createdAt', 'hidden')
 
-            ->add('file')
-            ->add('updatedAt');
+            ->add('updatedAt', 'date')
+
+            ->add('file', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['file'],
+                'model_manager' => $this->PressDownloadSectionWidgetFileDummyAdmin->getModelManager(),
+                'class' => $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
+            ))
+
+            ->add('lockedContent')
+        ;
 
     }
 

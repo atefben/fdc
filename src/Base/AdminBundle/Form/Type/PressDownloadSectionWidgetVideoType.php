@@ -92,15 +92,28 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                             )
                         )
                     ),
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
                 )
             ))
 
             ->add('image', 'sonata_type_model_list', array(
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getModelManager(),
-                'class' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getClass(),
+                'class' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
             ))
-            ->add('file');
+            ->add('file', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['file'],
+                'model_manager' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getModelManager(),
+                'class' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
+            ))
+//            ->add('createdAt', 'hidden')
+//            ->add('updatedAt', 'hidden')
+            ;
 
     }
 

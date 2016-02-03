@@ -18,6 +18,7 @@ class PressDownloadSectionWidgetDocumentTranslation
 {
 
     use Translation;
+    use Time;
 
     /**
      * @var string

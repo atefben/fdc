@@ -29,6 +29,13 @@ class PressDownload
     private $id;
 
     /**
+     * @var PressDownloadHasSection
+     * @ORM\OneToMany(targetEntity="PressDownloadHasSection", mappedBy="download", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $downloadSection;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -39,8 +46,8 @@ class PressDownload
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->downloadSection = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -51,5 +58,52 @@ class PressDownload
     {
         return $this->id;
     }
+
+    /**
+     * Add downloadSection
+     *
+     * @param \Base\CoreBundle\Entity\PressDownloadHasSection $downloadSection
+     * @return PressDownloadHasSection
+     */
+    public function addDownloadSection(\Base\CoreBundle\Entity\PressDownloadHasSection $downloadSection)
+    {
+        $downloadSection->setDownload($this);
+        $this->downloadSection->add($downloadSection);
+    }
+    
+    /**
+     * Remove downloadSection
+     *
+     * @param \Base\CoreBundle\Entity\PressDownloadHasSection $downloadSection
+     */
+    public function removeDownloadSection(\Base\CoreBundle\Entity\PressDownloadHasSection $downloadSection)
+    {
+        $this->downloadSection->removeElement($downloadSection);
+    }
+
+    /**
+     * Get downloadSection
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDownloadSection()
+    {
+        return $this->downloadSection;
+    }
+
+    /**
+     * @param PressDownloadSection $downloadSection
+     */
+    public function setDownloadSection($downloadSection)
+    {
+
+        foreach($downloadSection as $section)
+        {
+            $section->setDownload($this);
+        }
+
+        $this->downloadSection = $downloadSection;
+    }
+
 
 }

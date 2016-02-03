@@ -40,7 +40,30 @@ class PressDownloadSectionAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
+            ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
+                'choices' => PressDownloadSection::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('status', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.status = :status');
+                    $queryBuilder->setParameter('status', $value['value']);
+
+                    return true;
+                },
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => PressDownloadSectionTranslation::getStatuses(),
+                    'choice_translation_domain' => 'BaseAdminBundle'
+                ),
+            ))
+            ->add('translate')
         ;
     }
 
@@ -51,7 +74,6 @@ class PressDownloadSectionAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('createdAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -111,10 +133,8 @@ class PressDownloadSectionAdmin extends Admin
                     )
                 )
             ))
-            ->add('order')
-            ->add('translate', 'checkbox' , array(
-                'required' => false
-            ))
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
+            ->add('translate')
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressDownloadSection::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
@@ -131,13 +151,6 @@ class PressDownloadSectionAdmin extends Admin
                 'allow_delete' => true,
                 'prototype' => true,
                 'by_reference' => false,
-            ))
-            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
-            ->add('createdAt', null, array(
-                'label' => false,
-                'attr' => array (
-                    'class' => 'hidden'
-                )
             ))
             ->end()
         ;

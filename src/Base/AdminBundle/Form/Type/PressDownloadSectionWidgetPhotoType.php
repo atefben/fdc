@@ -64,7 +64,12 @@ class PressDownloadSectionWidgetPhotoType extends PressDownloadSectionWidgetType
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetPhotoDummyAdmin->getFormFieldDescriptions()['gallery'],
                 'model_manager' => $this->PressDownloadSectionWidgetPhotoDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetPhotoDummyAdmin->getClass(),
-            ));
+            ))
+//            ->add('createdAt', 'hidden')
+//            ->add('updatedAt', 'hidden')
+        ;
+
+
 
     }
 
