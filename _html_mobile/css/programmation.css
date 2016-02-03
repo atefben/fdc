@@ -1,3 +1,7 @@
+.calendar{
+  position: relative;
+  height: 1390px;
+}
 .calendar .timeCol{
 	
 	background-color: #f4f4f4;
@@ -544,4 +548,7 @@
   right: 40px;
   bottom: 40px;
   z-index: 5;
+}
+.agenda-access.no-fixed{
+  position: absolute;
 }

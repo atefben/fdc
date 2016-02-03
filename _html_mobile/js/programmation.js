@@ -16,13 +16,13 @@ $(document).ready(function() {
 	    var s = $(this).scrollTop();
 	    if( s + document.documentElement.clientHeight > $('#main').height() + 173) {
 
-	    	$('.agenda-access').css('position','absolute');
-	    	$('.agenda-access').css('bottom','50px');
+	    	$('.agenda-access:not(.no-fixed)').css('position','absolute');
+	    	$('.agenda-access:not(.no-fixed)').css('bottom','50px');
 	    }
 	    else{
 
-	    	$('.agenda-access').css('position','fixed');
-	    	$('.agenda-access').css('bottom','40px');
+	    	$('.agenda-access:not(.no-fixed)').css('position','fixed');
+	    	$('.agenda-access:not(.no-fixed)').css('bottom','40px');
 	    }
 	 });
 

@@ -3055,6 +3055,10 @@ display: inline-block;
 .suggestion{
 	display: none;
 }
+.calendar{
+  position: relative;
+  height: 1390px;
+}
 .calendar .timeCol{
 	
 	background-color: #f4f4f4;
@@ -3602,6 +3606,9 @@ display: inline-block;
   bottom: 40px;
   z-index: 5;
 }
+.agenda-access.no-fixed{
+  position: absolute;
+}
 section{
 	clear: both;
 }
@@ -3760,7 +3767,7 @@ p{
 
 /*CALENDAR*/
 .press .contain-section .calendar .timeCol, .press .contain-section .calendar .venues{
-	height: 1152px;
+	height: 1150px;
     overflow-y: hidden;
 }
 /*COMM & INFOS*/
