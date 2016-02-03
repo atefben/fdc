@@ -275,6 +275,13 @@ grunt.initConfig({
 			            './css/press_maps.css'   
 				        ],
 
+				    './css-concat/press_accreditation.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/press.css',
+			            './css/horizontal-menu.css',
+			            './css/press_accreditation.css'   
+				        ],
     			}
 		        
     		},
@@ -605,7 +612,17 @@ grunt.initConfig({
 				   			'./js/include/*.js',
 				   			'./js/press_maps.js'
 
-				    	]
+				    	],
+				    './js-concat/press_accreditation.js':[
+
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				   			'./js/include/*.js',
+				            './js/vendors/jquery.cookie.js',
+				            './js/press.js',
+				   			'./js/press_accreditation.js'
+
+				    	],
     			}
 		        
     		}
@@ -684,7 +701,8 @@ grunt.initConfig({
 	        './press_agenda.html': ['./templates/press_agenda.html'],
 	        './agenda.html': ['./templates/agenda.html'],
 	        './press_maps.html': ['./templates/press_maps.html'],
-	        './maps.html': ['./templates/maps.html']
+	        './maps.html': ['./templates/maps.html'],
+	        './press_accreditation.html': ['./templates/press_accreditation.html']
 
 	      
 	      }
@@ -758,7 +776,8 @@ grunt.initConfig({
 	        './press_agenda.html': ['./templates/press_agenda.html'],
 	        './agenda.html': ['./templates/agenda.html'],
 	        './press_maps.html': ['./templates/press_maps.html'],
-	        './maps.html': ['./templates/maps.html']
+	        './maps.html': ['./templates/maps.html'],
+	        './press_accreditation.html': ['./templates/press_accreditation.html']
 
 
 	      }
@@ -803,7 +822,8 @@ grunt.initConfig({
 	        './js-concat/calendar-press.min.js': ['./templates/calendar-press.js'],
 	        './js-concat/calendar.min.js': ['./templates/calendar.js'],
 	        './js-concat/press_maps.min.js': ['./templates/press_maps.js'],
-	        './js-concat/maps.min.js': ['./templates/maps.js']
+	        './js-concat/maps.min.js': ['./templates/maps.js'],
+	        './js-concat/press_accreditation.min.js': ['./templates/press_accreditation.js']
 
 	      }
 	    }
@@ -851,7 +871,8 @@ grunt.initConfig({
 	        './css-concat/calendar-press.min.css': ['./css-concat/calendar-press.css'],
 	        './css-concat/calendar.min.css': ['./css-concat/calendar.css'],
 	        './css-concat/press_maps.min.css': ['./css-concat/press_maps.css'],
-	        './css-concat/maps.min.css': ['./css-concat/maps.css']
+	        './css-concat/maps.min.css': ['./css-concat/maps.css'],
+	        './css-concat/press_accreditation.min.css': ['./css-concat/press_accreditation.css']
 
 	    }
 	  }
