@@ -1,8 +1,4 @@
-// Todo generate structure à la volée
-// playlist à la volée
-
 var play1, play2, play3;
-
 var d = document,
     w = window,
     k = k || new Konsole('fdc.2016', true),
@@ -165,11 +161,11 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
     function mouseMoving(listen) {
         if(listen) {
             $container.on('mousemove', function(event) {
-                k.log('mousemove');
+                // k.log('mousemove');
                 $container.removeClass('control-hide');
                 clearTimeout(thread);
                 thread = setTimeout(function() {
-                    k.log('mouse stopped');
+                    // k.log('mouse stopped');
                     $container.addClass('control-hide');
                 }, timeout);
             });
@@ -196,12 +192,17 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
             playerInstance.playlistItem($(this).closest('.owl-item').index());
 
             var infos = $.parseJSON($(this).closest('.channel.video').data('json'));
-            // k.log('', infos);
             $topBar.find('.info .category').text(infos.category);
             $topBar.find('.info p').text(infos.name);
 
             $container.find('.channels-video').removeClass('active');
             $container.find('.jwplayer').removeClass('overlay-channels');
+
+            sliderChannelsVideo.trigger('to.owl.carousel',[$(this).closest('.owl-item').index(),1,true]);
+            if($('#slider-trailer').length > 0) {
+                sliderTrailerVideo = $('#slider-trailer').owlCarousel();
+                sliderTrailerVideo.trigger('to.owl.carousel',[$(this).closest('.owl-item').index(),1000,true]);
+            }
         });
 
         if($('#slider-trailer').length > 0) {
@@ -209,18 +210,20 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
                 playerInstance.playlistItem($(this).index());
 
                 var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[$(this).closest('.owl-item').index()]).data('json'));
-                // k.log('', infos);
                 $topBar.find('.info .category').text(infos.category);
                 $topBar.find('.info p').text(infos.name);
 
                 $container.find('.channels-video').removeClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
+
+                sliderChannelsVideo.trigger('to.owl.carousel',[$(this).index(),1000,true]);
             });
         }
     }
 
     playerInstance.setup({
-        file: $container.data('file'),
+        // file: $container.data('file'),
+        sources: $container.data('file'),
         image: $container.data('img'),
         primary: 'html5',
         aspectratio: '16:9',
@@ -230,8 +233,9 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
     });
 
     if (havePlaylist) {
+        k
         var tempSlider = $(slider),
-            playlist   = $.parseJSON($container.data('playlist'));
+            playlist   = $container.data('playlist');
         $.each(playlist, function(i,p) {
             var tempSlide = $(slide);
             tempSlide.find('.image-wrapper img').attr('src',p.image);
@@ -278,11 +282,9 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
         duration_secs = Math.floor(_duration - duration_mins * 60);
         $durationTime.html(duration_mins + ":" + duration_secs);
     }).on('bufferChange', function(e) {
-        // k.log("buffer", e);
         var currentBuffer = e.bufferPercent;
         $progressBar.find('.buffer-bar').css('width', currentBuffer+'%');
     }).on('time', function(e) {
-        // k.log("time progress", e);
         if (_duration == 0) {
             duration_mins = Math.floor(e.duration / 60);
             duration_secs = Math.floor(e.duration - duration_mins * 60);
@@ -366,7 +368,7 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
 
 $(d).ready(function() {
     if ($('#video-player-pl').length > 0)
-        play1 = playerInit('video-player-pl', false, false, false);
+        play1 = playerInit('video-player-pl', false, true, false);
     // play1 = playerInit('video-player', false, $('#video-player').data('playlist'), false);
     // play2 = playerInit(false, '.video-player', true, false);
     // play3 = playerInit(false, 'video-live', false, true);

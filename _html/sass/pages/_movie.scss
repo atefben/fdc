@@ -159,7 +159,7 @@
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
-      @include transform(translateY(550px));
+      @include transform(translateY(570px));
     }
 
     @include breakpoint(1600px) {

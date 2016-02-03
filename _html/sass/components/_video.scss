@@ -4,7 +4,8 @@
 // =========================
 // 
 
-.single-movie .trailer .video-container {
+.single-movie .trailer .video-container,
+.webtv-live .trailer .video-container {
   width: 100%;
   height: 100%;
 }
@@ -207,6 +208,8 @@
       }
 
       .owl-item {
+        opacity: 1;
+
         .image-wrapper {
           img {
             width: auto;
@@ -219,20 +222,17 @@
         }
       }
 
-      .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
-        opacity: 1;
-
-        .linkVid {
-          display: block;
-        }
-      }
-
       .info {
         bottom: 15px;
         height: auto;
 
         p {
           font-size: 0.850rem;
+
+        }
+
+        i.icon {
+          margin-left: 0;
         }
       }
 
