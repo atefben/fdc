@@ -10,10 +10,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class PressDownloadAdmin extends Admin
 {
-    protected $formOptions = array(
-        'cascade_validation' => true
-    );
-
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -36,6 +32,13 @@ class PressDownloadAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 
@@ -58,6 +61,18 @@ class PressDownloadAdmin extends Admin
                     ),
                 )
             ))
+            ->add('downloadSection', 'sonata_type_collection',
+                array(
+                    'cascade_validation' => true,
+                    'by_reference' => false,
+                    'label' => 'form.label_image_link'
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable'  => 'position'
+                )
+            )
 
             ->end()
         ;

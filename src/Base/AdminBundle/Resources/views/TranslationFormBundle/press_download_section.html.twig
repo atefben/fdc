@@ -41,57 +41,86 @@
                         </div>
                         <div class="box box-success">
                             <div class="box-header">
+                                {% if form.vars.default_locale == locale %}
                                 <div class="clearfix">
                                     <h4 class="box-title">
                                         Modules éditoriaux
                                     </h4>
                                 </div>
-                                {% if form.vars.default_locale == locale %}
-                                    <div id="fdc-widgets" data-form-widget="collection">
+                                <div id="fdc-widgets" data-form-widget="collection">
 
-                                        {% for widget in form.parent.children.widgets.children %}
+                                    {% for widget in form.parent.children.widgets.children %}
 
-                                            <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'press_download_section_widget_photo_type' %}
-                                                    <h4><strong>Photo widget</strong></h4>
-                                                {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type' %}
-                                                    <h4><strong>Video widget</strong></h4>
-                                                {% elseif widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
-                                                    <h4><strong>Dossier de presse widget</strong></h4>
-                                                {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
-                                                    <h4><strong>Document widget</strong></h4>
-                                                {% endif %}
-                                                {{ form_row(widget._type) }}
-                                                {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' or
-                                                widget.children._type.vars.value == 'press_download_section_widget_document_type'
-                                                %}
+                                        <div class="item base-widget">
+                                            {% if widget.children._type.vars.value == 'press_download_section_widget_photo_type' %}
+                                                <h4><strong>Photo widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type' %}
+                                                <h4><strong>Video widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
+                                                <h4><strong>Dossier de presse widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
+                                                <h4><strong>Document widget</strong></h4>
+                                            {% endif %}
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.lockedContent) }}
+                                            {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
                                                 {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                {% elseif widget.children._type.vars.value == 'press_download_section_widget_photo_type'
-                                                %}
-                                                    {{ form_widget(widget.gallery)}}
-                                                {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type'
-                                                %}
-                                                    {{ form_widget(widget.file)}}
-                                                {% endif %}
-                                                <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                </a>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_file_type)| escape }}"><i class="icon-plus"></i>Module Dossier</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_document_type)| escape }}"><i class="icon-plus"></i>Module Document</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_video_type)| escape }}"><i class="icon-plus"></i>Module Vidéo</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_photo_type)| escape }}"><i class="icon-plus"></i>Module photo</a>
+                                                {{ form_widget(widget.file)}}
+                                                {{ form_widget(widget.updatedAt)}}
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
+                                                {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {{ form_widget(widget.file)}}
+                                                {{ form_widget(widget.image)}}
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_photo_type' %}
+                                                {{ form_widget(widget.gallery)}}
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type' %}
+                                                {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {{ form_widget(widget.image)}}
+                                                {{ form_widget(widget.file)}}
+                                            {% endif %}
+                                            <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_file_type)| escape }}"><i class="icon-plus"></i>Module Dossier</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_document_type)| escape }}"><i class="icon-plus"></i>Module Document</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_video_type)| escape }}"><i class="icon-plus"></i>Module Vidéo</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_photo_type)| escape }}"><i class="icon-plus"></i>Module photo</a>
                                 {% else %}
-                                    {{ form_row(translationsFields.title) }}
+                                    {% for widget in form.parent.children.widgets.children %}
+
+                                        <div class="item base-widget">
+                                            {% if widget.children._type.vars.value == 'press_download_section_widget_photo_type' %}
+                                                <h4><strong>Photo widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type' %}
+                                                <h4><strong>Video widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
+                                                <h4><strong>Dossier de presse widget</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
+                                                <h4><strong>Document widget</strong></h4>
+                                            {% endif %}
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.position) }}
+                                            {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
+                                                {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {{ form_widget(widget.file)}}
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
+                                                {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {{ form_widget(widget.file)}}
+                                                {{ form_widget(widget.image)}}
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_photo_type' %}
+                                                {{ form_widget(widget.gallery)}}
+                                            {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type' %}
+                                                {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {{ form_widget(widget.image)}}
+                                                {{ form_widget(widget.file)}}
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
                                 {% endif %}
-                                {{ dump(form.parent.children.widgets) }}
-                                {% for widget in form.parent.children.widgets %}
-                                    COUCOU
-                                    {{ dump(widget.children.vars.value) }}
-                                {% endfor %}
+
                             </div>
                         </div>
                     </div>
@@ -104,15 +133,6 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
-                                    {% if form.parent.children.createdAt.vars.data %}
-                                        <div class="fdc-help form-group">
-                                            {{ 'entity.created_infos'|trans(
-                                            {
-                                                'date': form.parent.children.createdAt.vars.data|date('d/m/Y H:i'),
-                                            }
-                                            )|raw }}
-                                        </div>
-                                    {% endif %}
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.status) }}
                                         <div class="form-group fdc-input-border">
@@ -135,6 +155,7 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
+                                    {{ form_row(translationsFields.status) }}
                                     <div class="sonata-ba-collapsed-fields">
                                         <div class="form-group">
                                             <label class="control-label">
@@ -172,43 +193,6 @@
                             </div>
                         </div>
                     </div>
-                    {% if form.vars.default_locale == locale %}
-                        <div class="col-md-8">
-                            <p>
-                                {{ 'group.helper_seo_example'|trans|nl2br }}
-                            </p>
-                        </div>
-                    {% else %}
-                        <div class="col-md-8">
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.french_version'|trans|nl2br }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_seo_title'|trans }}
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.children.seoTitle.vars.value }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_seo_description'|trans }}
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
                 </div>
             </div>
         {% endfor %}
