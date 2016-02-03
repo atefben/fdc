@@ -3902,6 +3902,21 @@ display: inline-block;
 .go-to-press:last-child{
   border-right: 1px solid #c8a461;
 }
+
+/*AGENDA ACCESS BUTTON*/
+.agenda-access{
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  background-color: #333333;
+  font-size: 60px;
+  color: #c29f5f;
+  right: 40px;
+  bottom: 40px;
+  z-index: 5;
+}
 section{
 	clear: both;
 }
