@@ -20,7 +20,7 @@ imports:
     - { resource: bundles/sonata_doctrine_orm_admin.yml }
     - { resource: bundles/sonata_intl.yml }
     - { resource: bundles/sonata_media.yml }
-    - { resource: bundles/sonata_media_provider.yml }
+    - { resource: bundles/sonata_media_services.yml }
     - { resource: bundles/sonata_seo.yml }
     - { resource: bundles/stof_doctrine_extensions.yml }
 
