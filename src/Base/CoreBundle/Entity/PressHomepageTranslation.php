@@ -26,7 +26,7 @@ class PressHomepageTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="section_statement_info_title", type="string", length=255)
+     * @ORM\Column(name="section_statement_info_title", type="string", length=255, nullable=true)
      */
     protected $sectionStatementInfoTitle;
 
@@ -34,28 +34,28 @@ class PressHomepageTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="section_scheduling_title", type="string", length=255)
+     * @ORM\Column(name="section_scheduling_title", type="string", length=255, nullable=true)
      */
     protected $sectionSchedulingTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="section_media_title", type="string", length=255)
+     * @ORM\Column(name="section_media_title", type="string", length=255, nullable=true)
      */
     protected $sectionMediaTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="section_media_subtitle", type="string", length=255)
+     * @ORM\Column(name="section_media_subtitle", type="string", length=255, nullable=true)
      */
     protected $sectionMediaSubtitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="section_download_title", type="string", length=255)
+     * @ORM\Column(name="section_download_title", type="string", length=255, nullable=true)
      */
     protected $sectionDownloadTitle;
 
@@ -63,35 +63,35 @@ class PressHomepageTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="section_statistic_title", type="string", length=255)
+     * @ORM\Column(name="section_statistic_title", type="string", length=255, nullable=true)
      */
     protected $sectionStatisticTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="section_statistic_subtitle", type="string", length=255)
+     * @ORM\Column(name="section_statistic_subtitle", type="string", length=255, nullable=true)
      */
     protected $sectionStatisticSubtitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="section_statistic_description", type="string", length=255)
+     * @ORM\Column(name="section_statistic_description", type="string", length=255, nullable=true)
      */
     protected $sectionStatisticDescription;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      **/
     private $sectionPushMainTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      **/
     private $sectionPushSecondaryTitle;
 

@@ -269,6 +269,7 @@ form:
     label_displayed_slider: Afficher le slider
     label_displayed_top_news: Afficher le "Top News"
     label_btn: Libellé du bouton
+    label_label: Légende
     contact_theme:
         helper_theme: X caractères max.
     status:

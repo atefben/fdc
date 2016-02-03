@@ -27,28 +27,28 @@ class PressGuideTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="guide_arrive_title", type="string", length=122)
+     * @ORM\Column(name="guide_arrive_title", type="string", length=122, nullable=true)
      */
     protected $arriveTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="guide_meeting_title", type="string", length=122)
+     * @ORM\Column(name="guide_meeting_title", type="string", length=122, nullable=true)
      */
     protected $meetingTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="guide_information_title", type="string", length=122)
+     * @ORM\Column(name="guide_information_title", type="string", length=122, nullable=true)
      */
     protected $informationTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="guide_service_title", type="string", length=122)
+     * @ORM\Column(name="guide_service_title", type="string", length=122, nullable=true)
      */
     protected $serviceTitle;
 

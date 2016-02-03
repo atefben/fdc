@@ -23,7 +23,7 @@ class PressDownloadSectionWidgetType extends BaseType
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\CoreBundle\Entity\PressDownloadSectionWidget';
+    protected $dataClass = 'Base\\CoreBundle\\Entity\\PressDownloadSectionWidget';
     
     /**
      * buildForm function.
@@ -40,9 +40,11 @@ class PressDownloadSectionWidgetType extends BaseType
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
+            ->add('position', 'integer')
             ->add('lockedContent', 'checkbox', array(
                 'required' => false
             ));
+
 
 
     }
@@ -60,6 +62,30 @@ class PressDownloadSectionWidgetType extends BaseType
             'data_class'  => $this->dataClass,
             'model_class' => $this->dataClass,
         ));
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function prePersist($object)
+    {
+
+        foreach ($object->getWidgets() as $widget) {
+            $object->addWidget($widget);
+        }
+
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function preUpdate($object)
+    {
+
+        foreach ($object->getWidgets() as $widget) {
+            $object->addWidget($widget);
+        }
+
     }
 
     /**

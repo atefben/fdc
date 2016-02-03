@@ -7,20 +7,18 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Base\CoreBundle\Entity\PressGuideTranslation;
-use Base\CoreBundle\Entity\PressGuide;
+
+use Base\CoreBundle\Entity\PressDownloadSectionTranslation;
+use Base\CoreBundle\Entity\PressDownloadSection;
 
 class PressDownloadSectionAdmin extends Admin
 {
+
     protected $formOptions = array(
         'cascade_validation' => true
     );
 
-    public function configure()
-    {
-        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
-    }
+    protected $translationDomain = 'BaseAdminBundle';
 
     public function getFormTheme()
     {
@@ -30,6 +28,11 @@ class PressDownloadSectionAdmin extends Admin
         );
     }
 
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+    
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -38,40 +41,6 @@ class PressDownloadSectionAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('createdAt')
-            ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
-
-                    return true;
-                },
-                'field_type' => 'text'
-            ))
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => PressGuideTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
         ;
     }
 
@@ -83,19 +52,12 @@ class PressDownloadSectionAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('createdAt')
-            ->add('priorityStatus', 'choice', array(
-                'choices' => PressGuide::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices' => PressGuideTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ))
-            ->add('_preview', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
             ))
         ;
     }
@@ -105,6 +67,7 @@ class PressDownloadSectionAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
@@ -125,7 +88,7 @@ class PressDownloadSectionAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => PressGuideTranslation::getStatuses(),
+                        'choices' => PressDownloadSectionTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
@@ -148,11 +111,12 @@ class PressDownloadSectionAdmin extends Admin
                     )
                 )
             ))
+            ->add('order')
             ->add('translate', 'checkbox' , array(
                 'required' => false
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => PressGuide::getPriorityStatuses(),
+                'choices' => PressDownloadSection::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('widgets', 'infinite_form_polycollection', array(

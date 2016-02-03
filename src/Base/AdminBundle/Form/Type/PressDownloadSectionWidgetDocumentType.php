@@ -47,7 +47,7 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                 'required_locales' => array(),
                 'fields' => array(
                     'label' => array(
-                        'label' => 'Légende',
+                        'label' => 'form.label_label',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(

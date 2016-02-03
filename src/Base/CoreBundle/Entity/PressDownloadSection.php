@@ -2,11 +2,15 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Base\CoreBundle\Entity\Guide;
-use Base\CoreBundle\Util\Time;
 
 /**
  * PressDownloadSection
@@ -15,10 +19,12 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressDownloadSection extends Guide
+class PressDownloadSection implements TranslateMainInterface
 {
-    use Translatable;
     use Time;
+    use Translatable;
+    use TranslateMain;
+
     /**
      * @var integer
      *
@@ -27,6 +33,13 @@ class PressDownloadSection extends Guide
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var integer
+     * @Gedmo\SortablePosition
+     * @ORM\Column(name="order", type="integer")
+     */
+    protected $order;
 
     /**
      * @var PressDownloadSectionWidget
@@ -47,11 +60,19 @@ class PressDownloadSection extends Guide
      */
     public function __construct()
     {
-        parent::__construct();
         $this->translations = new ArrayCollection();
         $this->widgets = new ArrayCollection();
     }
 
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string .= ' #'. $this->getId();
+        }
+
+        return $string;
+    }
 
     /**
      * Get id
@@ -72,6 +93,8 @@ class PressDownloadSection extends Guide
      */
     public function addWidget(\Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets)
     {
+
+        $widgets->setPressDownload($this);
         $this->widgets[] = $widgets;
 
         return $this;
@@ -95,5 +118,28 @@ class PressDownloadSection extends Guide
     public function getWidgets()
     {
         return $this->widgets;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     * @return PressDownloadSection
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer 
+     */
+    public function getOrder()
+    {
+        return $this->order;
     }
 }

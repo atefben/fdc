@@ -66,7 +66,7 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                 'required_locales' => array(),
                 'fields' => array(
                     'label' => array(
-                        'label' => 'Libellé',
+                        'label' => 'form.label_label',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -75,7 +75,7 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                         )
                     ),
                     'copyright' => array(
-                        'label' => 'Copyright',
+                        'label' => 'form.label_copyright',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -84,7 +84,7 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                         )
                     ),
                     'btnLabel' => array(
-                        'label' => 'Label du bouton',
+                        'label' => 'form.label_btn',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(

@@ -27,7 +27,7 @@ class PressDownloadSectionTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="section_title", type="string", length=255)
+     * @ORM\Column(name="section_title", type="string", length=255, nullable=true)
      */
     protected $title;
 
