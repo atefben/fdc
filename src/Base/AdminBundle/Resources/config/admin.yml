@@ -598,14 +598,6 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.press_download_section_widget_document_dummy:
-         class: Base\AdminBundle\Admin\PressDownloadSectionWidgetDocumentDummyAdmin
-         arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetDocument, BaseAdminBundle:PressDownloadSectionWidgetDocumentDummyAdmin]
-         tags:
-             - {name: sonata.admin, manager_type: orm, group: admin, label: Download Document widget, show_in_dashboard: false}
-         calls:
-              - [ setTranslationDomain, ['BaseAdminBundle']]
-
     base.admin.press_download_section_widget_photo_dummy:
          class: Base\AdminBundle\Admin\PressDownloadSectionWidgetPhotoDummyAdmin
          arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetPhoto, BaseAdminBundle:PressDownloadSectionWidgetPhotoDummyAdmin]

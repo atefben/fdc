@@ -3,12 +3,13 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Base\CoreBundle\Util\TranslateMain;
-use Base\CoreBundle\Entity\Guide;
-
-use Base\CoreBundle\Util\Time;
 
 /**
  * PressGuide
@@ -17,10 +18,12 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressGuide extends Guide
+class PressGuide implements TranslateMainInterface
 {
-    use Translatable;
     use Time;
+    use Translatable;
+    use TranslateMain;
+
     /**
      * @var integer
      *
@@ -95,11 +98,16 @@ class PressGuide extends Guide
     private $serviceWidgets;
 
     /**
+     * ArrayCollection
+     */
+    protected $translations;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        parent::__construct();
+        $this->translations = new ArrayCollection();
         $this->serviceWidgets = new ArrayCollection();
         $this->arriveWidgets = new ArrayCollection();
         $this->informationWidgets = new ArrayCollection();

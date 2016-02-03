@@ -23,14 +23,14 @@ class PressGuideWidgetPictoTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_picto_title", type="string", length=122)
+     * @ORM\Column(name="press_guide_widget_picto_title", type="string", length=122, nullable=true)
      */
     protected $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_column_text", type="string")
+     * @ORM\Column(name="press_guide_widget_column_text", type="string", nullable=true)
      */
     protected $content;
 

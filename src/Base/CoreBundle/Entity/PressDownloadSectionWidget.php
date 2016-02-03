@@ -27,6 +27,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  */
 abstract class PressDownloadSectionWidget
 {
+
     use Time;
 
     /**
@@ -37,6 +38,13 @@ abstract class PressDownloadSectionWidget
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    protected $position;
 
     /**
      * @var PressDownloadSection
@@ -52,6 +60,7 @@ abstract class PressDownloadSectionWidget
      *
      */
     private $lockedContent;
+
 
     /**
      * Get id
@@ -108,5 +117,28 @@ abstract class PressDownloadSectionWidget
     public function getPressDownload()
     {
         return $this->pressDownload;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return PressDownloadSectionWidget
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

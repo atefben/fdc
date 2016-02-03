@@ -8,13 +8,31 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
+use Base\CoreBundle\Entity\PressDownloadSectionTranslation;
+use Base\CoreBundle\Entity\PressDownloadSection;
+
 class PressDownloadSectionAdmin extends Admin
 {
+
     protected $formOptions = array(
         'cascade_validation' => true
     );
 
+    protected $translationDomain = 'BaseAdminBundle';
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+    
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -23,7 +41,6 @@ class PressDownloadSectionAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 
@@ -35,7 +52,13 @@ class PressDownloadSectionAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 
@@ -44,11 +67,11 @@ class PressDownloadSectionAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
                 'fields' => array(
                     'createdAt' => array(
                         'display' => false
@@ -56,7 +79,45 @@ class PressDownloadSectionAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
+                    'title' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.news.helper_title'
+                    ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => PressDownloadSectionTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    )
                 )
+            ))
+            ->add('order')
+            ->add('translate', 'checkbox' , array(
+                'required' => false
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => PressDownloadSection::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,
@@ -71,6 +132,13 @@ class PressDownloadSectionAdmin extends Admin
                 'prototype' => true,
                 'by_reference' => false,
             ))
+            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
+            ->add('createdAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
             ->end()
         ;
 
@@ -83,8 +151,6 @@ class PressDownloadSectionAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 }

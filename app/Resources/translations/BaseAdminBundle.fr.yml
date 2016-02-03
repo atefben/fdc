@@ -271,7 +271,9 @@ form:
     label_main_image: Première image
     label_second_image: Seconde image
     label_displayed_slider: Afficher le slider
-    label_displayed_top_news:
+    label_displayed_top_news: Afficher le "Top News"
+    label_btn: Libellé du bouton
+    label_label: Légende
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
     web_tv:

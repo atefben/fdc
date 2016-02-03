@@ -27,14 +27,14 @@ class PressAccreditProcedureTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="procedure_title", type="string", length=255)
+     * @ORM\Column(name="procedure_title", type="string", length=255, nullable=true)
      */
     protected $procedureTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="procedure_content", type="string")
+     * @ORM\Column(name="procedure_content", type="string", nullable=true)
      */
     protected $procedureContent;
 

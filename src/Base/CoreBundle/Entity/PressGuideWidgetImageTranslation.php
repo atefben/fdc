@@ -22,14 +22,14 @@ class PressGuideWidgetImageTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_image_title", type="string", length=122)
+     * @ORM\Column(name="press_guide_widget_image_title", type="string", length=122, nullable=true)
      */
     protected $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_image_content", type="string")
+     * @ORM\Column(name="press_guide_widget_image_content", type="string", nullable=true)
      */
     protected $content;
 

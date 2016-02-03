@@ -29,7 +29,7 @@ class InfoWidgetVideoYoutubeTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -38,7 +38,7 @@ class InfoWidgetVideoYoutubeTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      *
      * @Groups({"news_list", "news_show"})
      */

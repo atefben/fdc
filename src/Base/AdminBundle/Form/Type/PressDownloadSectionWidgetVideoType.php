@@ -65,11 +65,32 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
-                    'firstColumn' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
-                        'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle'
+                    'label' => array(
+                        'label' => 'form.label_label',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'copyright' => array(
+                        'label' => 'form.label_copyright',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'btnLabel' => array(
+                        'label' => 'form.label_btn',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
                     ),
                 )
             ))
@@ -78,7 +99,8 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getClass(),
-            ));
+            ))
+            ->add('file');
 
     }
 
