@@ -33,12 +33,8 @@ class ContactThemeAdmin extends Admin
             ->add('email')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
         ;
     }
