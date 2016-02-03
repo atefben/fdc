@@ -3474,7 +3474,10 @@ p{
     font-weight: 700;
     margin-left: 20px;
 }
-
+.locked form.error input, .locked form.error input[type="submit"] {
+	color:#e93939;
+	border: 1px solid #e93939;
+}
 
 /*CALENDAR*/
 .press .contain-section .calendar .timeCol, .press .contain-section .calendar .venues{
@@ -3897,6 +3900,10 @@ p{
     text-align: center;
     font-weight: 700;
     margin-left: -1px;
+}
+#popin-press form.error input, #popin-press form.error input[type="submit"] {
+	color:#e93939;
+	border: 1px solid #e93939;
 }
 #popin-press h3{
 	font-size: 20px;

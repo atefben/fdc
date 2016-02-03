@@ -242,6 +242,10 @@ var GLOBALS = {
     },
     'agenda' : {
       'delete' : "Supprimer de votre agenda"
+    },
+    "press" : {
+      "errorsNotValide" : "Le mot de passe n'est pas valide",
+      "errorsPwdEmpty" : "Veuillez saisir un mot de passe"
     }
   },
   "player": {
@@ -932,7 +936,9 @@ $(document).ready(function() {
 			  $("#popin-press").removeClass('visible');
 		    } else {
 		      $(this).addClass('error');
+		      
 		    }
+		    
 
 		});
 
