@@ -171,7 +171,9 @@ $(document).ready(function() {
 
   // GRAPH SVG
 
-  makeGrid();
+  if(GLOBALS.socialWall.points.length > 0) {
+    makeGrid();
+  }
 
   //instagram
 
