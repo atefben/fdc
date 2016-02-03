@@ -228,6 +228,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 .fc-event .bottom{
 	border-top: 1px solid #e5e5e5;
@@ -307,13 +308,19 @@
 .popin-event{
   position: absolute;
   width: 100%;
+  height: 100vh;
   background-color: #fff;
   z-index: 53;
   padding: 140px 40px 50px 40px;
   box-sizing:border-box;
   opacity: 0;
+  overflow: hidden;
   -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.popin-event-container{
+    height: 100%;
+    overflow-y:scroll;
 }
 .popin-event.show{
   opacity: 1;

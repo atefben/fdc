@@ -567,11 +567,6 @@ $(document).ready(function() {
 
 						//
 						
-						// short event (less than 2 hours)
-					    if (dur < 2) {
-					      $(this).addClass('one-hour');
-					      $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
-					    }
 
 
 					    // based on time start and duration, calculate positions of event
@@ -582,6 +577,13 @@ $(document).ready(function() {
 					    if (minutes == 0) {
 					      minutes = '';
 					    }
+
+					    // short event (less than 2 hours)
+					    if (dur < 2) {
+					      $(this).addClass('one-hour');
+					      $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
+					    }
+
 					    var base = 8;
 
 					    //add color
@@ -597,13 +599,14 @@ $(document).ready(function() {
 					      eventColor: $(this).data('color'),
 					      start: $(this).data('start'),
 					      end: $(this).data('end'),
+					      time:$(this).data('time'),
 					      type: $(this).find('.category').text(),
 					      author: $(this).find('.txt strong').text(),
 					      picture: $(this).find('img').attr('src'),
-					      duration: parseInt($(this).find('.bottom .duration').text().substr(0, 2)) * 60,
+					      duration: $(this).data('duration'),
 					      room: $(this).find('.bottom .ven').text(),
 					      selection: $(this).find('.bottom .competition').text(),
-					      eventPictogram: $(this).data('picto').substr(1),
+					      eventPictogram: $(this).find('.category .icon').attr('class').split(' ')[1],
 					      id: $(this).data('id'),
 					      url: $(this).data('url')
 					    };
@@ -660,10 +663,8 @@ $(document).ready(function() {
 	    
 	    $('#timeline a').removeClass('active');
       	$(this).addClass('active');
-
-      	displayProgrammationDay($('.timeline-container .active').data('date'));
-
 	    moveTimeline($(this), $(this).data('date'));
+	    displayProgrammationDay($('.timeline-container .active').data('date'));
   	});
 
   	$('#timeline-calendar .prev').on('click',function(e){
@@ -674,8 +675,9 @@ $(document).ready(function() {
   		if(day == 11){
 	    	return false;
 	    }else{
-	    	displayProgrammationDay($('.timeline-container .active').data('date'));
+
 	    	moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
+	    	displayProgrammationDay($('.timeline-container .active').data('date'));
 	    }
 	    
   	});
@@ -688,8 +690,9 @@ $(document).ready(function() {
   		if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')){
 	    	return false;
 	    }else{
-	    	displayProgrammationDay($('.timeline-container .active').data('date'));
+	    	
 	    	moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
+	    	displayProgrammationDay($('.timeline-container .active').data('date'));
 	    }
   	});
 
@@ -708,7 +711,6 @@ $(document).ready(function() {
         $('.popin-event').remove();
         // display the html
         $('.calendar').append(data);
-        $('#main').addClass('event-open');
         $('.popin-event').css('top', $(document).scrollTop());
         $('.popin-event .fc-event').each(function () {
 
@@ -718,45 +720,47 @@ $(document).ready(function() {
 
 		});
 
-		// test if events are already store in local storage
-        if (events.length != 0) {
-          $('.events-container .fc-event').each(function () {
-            var id = $(this).data('id'),
-              $this = $(this);
 
-            for (var i = 0; i < events.length; i++) {
-              if (id == events[i].id) {
-                $this.parent().addClass('agenda');
-                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
-              }
-            }
+        
+      $('.events-container .fc-event').each(function () {
+        var id = $(this).data('id'),
+          $this = $(this);
 
-	        // init all the data of the event
-		    var eventObject = {
-		      title: $(this).find('.txt span').text(),
-		      eventColor: $(this).data('color'),
-		      start: $(this).data('start'),
-		      end: $(this).data('end'),
-		      type: $(this).find('.category').text(),
-		      author: $(this).find('.txt strong').text(),
-		      picture: $(this).find('img').attr('src'),
-		      duration: parseInt($(this).find('.bottom .duration').text().substr(0, 2)) * 60,
-		      room: $(this).find('.bottom .ven').text(),
-		      selection: $(this).find('.bottom .competition').text(),
-		      eventPictogram: $(this).data('picto').substr(1),
-		      id: $(this).data('id'),
-		      url: $(this).data('url')
-		    };
-
-		    // store the Event Object in the DOM element so we can get to it later
-		    $(this).data('eventObject', eventObject);
-          });
+        for (var i = 0; i < events.length; i++) {
+          if (id == events[i].id) {
+            $this.parent().addClass('agenda');
+            $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
+          }
         }
+
+        // init all the data of the event
+	    var eventObject = {
+	      title: $(this).find('.txt span').text(),
+	      eventColor: $(this).data('color'),
+	      start: $(this).data('start'),
+	      end: $(this).data('end'),
+	      time:$(this).data('time'),
+	      type: $(this).find('.category').text(),
+	      author: $(this).find('.txt strong').text(),
+	      picture: $(this).find('img').attr('src'),
+	      duration: $(this).data('duration'),
+	      room: $(this).find('.bottom .ven').text(),
+	      selection: $(this).find('.bottom .competition').text(),
+	      eventPictogram: $(this).find('.category .icon').attr('class').split(' ')[1],
+	      id: $(this).data('id'),
+	      url: $(this).data('url')
+	    };
+
+	    // store the Event Object in the DOM element so we can get to it later
+	    $(this).data('eventObject', eventObject);
+      });
+        
 
         // show popin
         setTimeout(function () {
           $('.popin-event').addClass('show');
-          $('#main').addClass('event-open');
+          // $('#main').addClass('event-open');
+          $('body').addClass('overlay');
         }, 100);
 
 
@@ -766,7 +770,7 @@ $(document).ready(function() {
           e.preventDefault();
 
           $('.popin-event').removeClass('show');
-          $('#main').removeClass('event-open');
+          $('body').removeClass('overlay');
           setTimeout(function () {
             $('.popin-event').remove();
           }, 600);
@@ -790,15 +794,13 @@ $(document).ready(function() {
 
           if (agenda == null) {
             events.push(copiedEventObject);
-
             localStorage.setItem('agenda_press', JSON.stringify(events));
           } else {
             events = JSON.parse(agenda);
             events.push(copiedEventObject);
-
             localStorage.setItem('agenda_press', JSON.stringify(events));
           }
-
+          
           $(this).parent().addClass('agenda');
           $(this).removeClass('add').text(GLOBALS.texts.agenda.delete);
         });

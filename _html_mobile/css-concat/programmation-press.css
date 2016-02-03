@@ -2161,6 +2161,32 @@ article .picto .icon{
   font-style: normal;
 }
 
+/*BODY OVERLAY*/
+body{
+  position: relative;
+}
+body::after {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  content: '';
+  z-index: 51;
+}
+body.overlay::after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+
 /* footer */
 footer {
   background-color: #141414;
@@ -3240,6 +3266,7 @@ display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
     font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 .fc-event .bottom{
 	border-top: 1px solid #e5e5e5;
@@ -3319,13 +3346,19 @@ display: inline-block;
 .popin-event{
   position: absolute;
   width: 100%;
+  height: 100vh;
   background-color: #fff;
   z-index: 53;
   padding: 140px 40px 50px 40px;
   box-sizing:border-box;
   opacity: 0;
+  overflow: hidden;
   -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.popin-event-container{
+    height: 100%;
+    overflow-y:scroll;
 }
 .popin-event.show{
   opacity: 1;
@@ -3523,7 +3556,7 @@ display: inline-block;
 section{
 	clear: both;
 }
-.press, .programmation-press{
+.press, .programmation-press, .calendar-press{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 h3{
