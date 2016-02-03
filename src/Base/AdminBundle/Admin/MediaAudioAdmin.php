@@ -95,6 +95,24 @@ class MediaAudioAdmin extends Admin
                         'choices' => MediaAudioTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    )
                 )
             ))
             ->add('theme', 'sonata_type_model_list', array(
@@ -145,6 +163,12 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
+            ))
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.news.helper_file',
+                'required' => false
             ))
             ->add('translate')
             ->add('displayedMobile')
