@@ -3360,9 +3360,11 @@ display: inline-block;
 .fullscreenplayer.show{
   display: block;
   opacity: 0;
+  visibility: hidden;
 }
 .allow-landscape .fullscreenplayer.show{
   opacity: 1;
+  visibility: visible;
 }
 #main .jw-controlbar {
     height: 40px;
