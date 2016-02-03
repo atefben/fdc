@@ -92,7 +92,9 @@ $(document).ready(function() {
 			  $("#popin-press").removeClass('visible');
 		    } else {
 		      $(this).addClass('error');
+		      
 		    }
+		    
 
 		});
 

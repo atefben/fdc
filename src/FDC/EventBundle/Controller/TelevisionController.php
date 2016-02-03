@@ -5,6 +5,7 @@ namespace FDC\EventBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/web-tv")
@@ -17,6 +18,7 @@ class TelevisionController extends Controller
      */
     public function liveAction()
     {
+
         $channels = array(
             array(
                 'most_viewed' => true,
@@ -118,12 +120,36 @@ class TelevisionController extends Controller
     }
 
     /**
-     * @Route("/channel/{id}")
+     * @param Request $request
+     * @param $slug
+     * @return array
+     * @throws NotFoundHttpException
+     *
+     * @Route("/channel/{slug}")
      * @Template("FDCEventBundle:Television:channel.html.twig")
      */
-    public function getChannelAction($id)
+    public function getChannelAction(Request $request, $slug)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $festival = $settings->getFestival();
+        $locale = $request->getLocale();
+
+        $webTv = $em->getRepository('BaseCoreBundle:WebTv')->getWebTvBySlug($slug, $locale, $festival);
+
+
+        if (!$webTv || !$webTv->getMediaVideos()->count()) {
+            throw $this->createNotFoundException('Web TV not found');
+        }
+
         $channel = array(
+            'slug' => $webTv->getSlug(),
             'most_viewed' => true,
             'image' => array(
                 'path' => 'img.jpg',
@@ -132,8 +158,8 @@ class TelevisionController extends Controller
             ),
             'nbVideos' => 5,
             'theme' => 'les plus vues',
-            'createdAt' => new \DateTime(),
-            'title' => 'Conférence de presse',
+            'createdAt' => $webTv->getCreateAt(),
+            'title' => $webTv->getName(),
             'description' => 'Interview des réalisateurs des Courts Métrages en Compétition',
             'filter' => array(
                 'date' => 'date1',
@@ -250,6 +276,7 @@ class TelevisionController extends Controller
         $channels = array(
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -267,6 +294,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -284,6 +312,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -301,6 +330,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -318,6 +348,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -335,6 +366,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
@@ -352,6 +384,7 @@ class TelevisionController extends Controller
             ),
             array(
                 'id' => 1,
+                'slug' => 'test',
                 'most_viewed' => true,
                 'image' => array(
                     'path' => 'img.jpg',
