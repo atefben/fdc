@@ -64,6 +64,50 @@ class MediaRepository extends EntityRepository
         return $qb;
     }
 
+    public function getImageMediaByDay($locale,$festival,$dateTime)
+    {
+
+        $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
+        $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
+
+        $qb = $this->createQueryBuilder('m')
+            ->join('m.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
+            ->leftjoin('mi.translations', 'mit')
+
+            ->where('m.festival = :festival')
+            ->andWhere('s.slug = :site_slug')
+            ->andWhere('(mit.locale = :locale AND mit.status = :status)')
+            ->andWhere('(m.publishedAt >= :datetime) AND (m.publishedAt < :datetime2)');
+
+        if($locale != 'fr') {
+            $qb = $qb
+                ->andWhere(
+                    '(mit.locale = :locale AND mit.status = :status)'
+                )
+                ->setParameter('status', MediaImageTranslation::STATUS_TRANSLATED);
+        } else {
+            $qb = $qb
+                ->andWhere(
+                    '(mit.locale = :locale AND mit.status = :status)'
+                )
+                ->setParameter('status', MediaImageTranslation::STATUS_PUBLISHED);
+        }
+
+        $qb = $qb
+            ->setParameter('datetime', $dateTime1)
+            ->setParameter('datetime2', $dateTime2)
+            ->setParameter('festival', $festival)
+            ->setParameter('locale', $locale)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('site_slug', 'site-evenementiel')
+
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+    }
+
     /**
      * Find all displayed video
      *

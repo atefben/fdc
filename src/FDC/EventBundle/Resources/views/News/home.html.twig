@@ -39,25 +39,22 @@
                     <div id="articles-wrapper">
                         <div class="articles left">
 
-                            {% for article in homeArticles.article %}
+                            {% for article in homeArticles %}
                                 {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
                              {% endfor %}
 
                          </div>
 
                          <!-- SLIDESHOW -->
-
-                        {#  A DYNAMISER 
-
                         {% for widget in homeArticles.widgets %}
                              {% if widget.type == "image" and widget.photos|length > 1 %}
                                  {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                              {% endif %}
-                         {% endfor %} #}
+                         {% endfor %}
 
-                         <div class="articles center">
+                        <div class="articles center">
 
-                             {% for article in homeArticles.bottomArticle %}
+                            {% for article in homeArticlesBottom %}
                                 {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
                             {% endfor %}
 
