@@ -77,8 +77,8 @@ class NewsController extends Controller {
 //        if($homeArticles == null) {
 //            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'));
 //        }
-        $count = 6;
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime, $count); ///juste pour test
+
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime); ///juste pour test
 
         //set default filters
         $filters                         = array();
