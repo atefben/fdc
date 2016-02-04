@@ -9,16 +9,10 @@ $(document).ready(function() {
         loop: false,
         items: 2,
         onInitialized: function() {
-            // var m = ($(window).width() - $('.container').width()) / 2;
-            // $('#horizontal-menu .owl-stage').css({
-            //     'margin-left': m
-            // });
+            
         },
         onResized: function() {
-            // var m = ($(window).width() - $('.container').width()) / 2;
-            // $('#horizontal-menu .owl-stage').css({
-            //     'margin-left': m
-            // });
+            
         }
     });
     menu.owlCarousel();
@@ -32,14 +26,12 @@ $(document).ready(function() {
             }
             $('#horizontal-menu a').removeClass('active');
             $this.addClass('active');
-            //$('.maps div').removeClass('active');
             $('.medias').find('.active').animate({'opacity':0},400,function(){
             	$('.medias div').removeClass('active');
             	$('.medias').find('#'+$this.data('media')).addClass('active');
             	$('.medias').find('#'+$this.data('media')).animate({'opacity':1},400);
             });
             
-            //$('.maps').find('#'+$this.data('map')).addClass('active');
 	});
 
 

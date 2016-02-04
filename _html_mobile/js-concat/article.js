@@ -773,6 +773,55 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
 //# sourceMappingURL=hammer.min.map
 $(document).ready(function() {
 
+  $.removeSlideshow = function(){
+    
+    if($('.chocolat-wrapper').length){
+      var slideshow;
+      
+
+    // close slideshow on click
+    $('body').off('click', '.close-button');
+    $('body').off('click', '.share');
+    $('body').off('click', '.open-thumbnails');
+    $('body').off('click', '.chocolat-image');
+    $('body').off('click', '.chocolat-wrapper .thumb');
+    var myElement = document.getElementById('chocolat-content-1');
+    var hammertime = new Hammer(myElement);
+    hammertime.off('swipeleft');
+    hammertime.off('swiperight');
+    if($('.slideshow').length) {
+
+        slideshow = $('.slideshow .images').Chocolat({
+         imageSize: 'cover',
+          fullScreen: false,
+          loop: true
+        }).data('chocolat').api().destroy();
+
+      }
+      if($('.all-photos').length) {
+
+        slideshow = $('.list').Chocolat({
+          imageSize: 'cover',
+          fullScreen: false,
+          loop:true
+        }).data('chocolat').api().destroy();
+
+      }
+
+      if($('.press_medias').length) {
+
+        slideshow = $('.active .list').Chocolat({
+          imageSize: 'cover',
+          fullScreen: false,
+          loop:true
+        }).data('chocolat').api().destroy();
+
+      }
+      $('.chocolat-wrapper').remove();
+    }
+    
+  };
+
   $.initSlideshow = function(){
     var slideshows = [];
     // init slideshow chocolat
@@ -798,6 +847,16 @@ $(document).ready(function() {
         slideshows.push(slideshow);
       }
 
+      if($('.press_medias').length) {
+
+        slideshow = $('.active .list').Chocolat({
+          imageSize: 'cover',
+          fullScreen: false,
+          loop:true
+        }).data('chocolat');
+
+        slideshows.push(slideshow);
+      }
 
     // close slideshow on click
     $('body').off('click', '.close-button');
@@ -849,9 +908,15 @@ $(document).ready(function() {
       //if first click add elements
       if(!$(".chocolat-top .close-button").length){
         $('.chocolat-top').html('<div class="close-button"><i class="icon icon_close"></i></div>');
-        $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
+        if ($('.press_medias').length) {
+           $('<a href="'+$(this).attr('href')+'" class="download"><i class="icon icon_telecharger"></i></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
+
+        }else{
+           $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
+           $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
+
+        }
         $('<a href="#" class="open-thumbnails"></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
-        $('<div class="buttons square"><a href="#" class="button facebook"><i class="icon icon_facebook"></i></a><a href="#" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
         $('<div class="thumbnails"></div>').insertAfter('.chocolat-wrapper .chocolat-pagination');
       
         $('.slideshow').find('.thumbnails .thumb').each(function() {
@@ -860,6 +925,12 @@ $(document).ready(function() {
 
         if($('.all-photos').length) {
           $('.list').find('.grid-item').each(function() {
+            
+            $('.chocolat-wrapper .thumbnails').append('<div  class="thumb"><img src="'+ $(this).find('.chocolat-image').attr('href')+'" /></div>');
+          });
+        }
+        if ($('.press_medias').length) {
+          $('.active .list').find('.item').each(function() {
             
             $('.chocolat-wrapper .thumbnails').append('<div  class="thumb"><img src="'+ $(this).find('.chocolat-image').attr('href')+'" /></div>');
           });
@@ -893,7 +964,11 @@ $(document).ready(function() {
     $(this).addClass('active');
 
     slideshow.api().goto(j);
-
+    if ($('.press_medias').length) {
+      setTimeout(function(){
+        $('.download').attr('href', $('.chocolat-img').attr('src'));
+      },1000);
+    }
     history.pushState(null,null, '#'+$(this).data('id'));
     //window.location.hash = $(this).data('id');
   });
@@ -911,7 +986,7 @@ $(document).ready(function() {
 
 
       // ADD SWIPE TO NAVIGATE THROUGH PHOTOS
-      var myElement = document.getElementById('chocolat-content-1');
+      var myElement = $('.chocolat-wrapper')[0];
       var hammertime = new Hammer(myElement);
       hammertime.on('swipeleft', function(ev) {
         var bottomHeight = $(".chocolat-bottom").height();
@@ -920,7 +995,11 @@ $(document).ready(function() {
         }
         if(ev.center.y< $(window).height()-bottomHeight){
           slideshow.api().next();
-          
+          if ($('.press_medias').length) {
+            setTimeout(function(){
+              $('.download').attr('href', $('.chocolat-img').attr('src'));
+            },1000);
+          }
           var j = $('.chocolat-wrapper .thumb.active').parent().index();
           $('.chocolat-wrapper .thumb').removeClass('active');
           
@@ -941,6 +1020,11 @@ $(document).ready(function() {
         }
         if(ev.center.y< $(window).height()-bottomHeight){
           slideshow.api().prev();
+          if ($('.press_medias').length) {
+            setTimeout(function(){
+              $('.download').attr('href', $('.chocolat-img').attr('src'));
+            },1000);
+          }
           var j = $('.chocolat-wrapper .thumb.active').parent().index();
           $('.chocolat-wrapper .thumb').removeClass('active');
           
