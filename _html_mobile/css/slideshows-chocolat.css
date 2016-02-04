@@ -250,7 +250,7 @@ div.chocolat-wrapper .thumbnails .thumb.active:before {
   border:8px solid #c8a461;
   z-index: 1;
 }
-div.chocolat-wrapper .share {
+div.chocolat-wrapper .share, div.chocolat-wrapper .download {
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     display: block;
     width: 100px;
@@ -261,7 +261,7 @@ div.chocolat-wrapper .share {
     position: absolute;
     text-align: center;
 }
-div.chocolat-wrapper .share .icon {
+div.chocolat-wrapper .share .icon , div.chocolat-wrapper .download .icon{
     line-height: 100px;
     color: #c8a461;
     font-size: 1.1rem;

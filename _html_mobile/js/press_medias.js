@@ -47,6 +47,8 @@ $(document).ready(function() {
                 $('.medias_movie div').removeClass('active');
                 $('.medias_movie').find('#'+$this.data('media')).addClass('active');
                 $('.medias_movie').find('#'+$this.data('media')).animate({'opacity':1},400);
+                $.removeSlideshow();
+                $.initSlideshow();
             });
             
     });

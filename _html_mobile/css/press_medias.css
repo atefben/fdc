@@ -62,7 +62,7 @@
 	display: block;
 }
 .press_medias .button {
-	border: 1px solid #dfdfdf;
+	border: 1px solid #c8a461;
     border-right: none;
     font-weight: 700;
     height: 80px;
@@ -72,7 +72,7 @@
     font-size: 19px;
 }
 .press_medias .button:last-child {
-    border-right: 1px solid #dfdfdf;
+    border-right: 1px solid #c8a461;
 }
 .press_medias .button .icon {
     font-size: 25px;
@@ -93,6 +93,7 @@
     height: 270px;
     display: inline-block;
     margin-top: 10px;
+    position: relative;
 }
 .photos_container .item:nth-child(2n+2){
     margin-left: 10px;
@@ -122,4 +123,8 @@
 }
 .press_medias .button-locked{
     color:#b0b0b0;
+    border-color:#dfdfdf;
+}
+.press_medias .button-locked:last-child {
+    border-right: 1px solid #dfdfdf;
 }
