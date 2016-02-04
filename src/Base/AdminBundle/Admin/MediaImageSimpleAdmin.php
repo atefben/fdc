@@ -173,28 +173,8 @@ class MediaImageSimpleAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('description')
-            ->add('enabled')
-            ->add('providerName')
-            ->add('providerStatus')
-            ->add('providerReference')
-            ->add('providerMetadata')
-            ->add('width')
-            ->add('height')
-            ->add('length')
-            ->add('contentType')
-            ->add('size')
-            ->add('copyright')
-            ->add('authorName')
-            ->add('context')
-            ->add('cdnIsFlushable')
-            ->add('cdnFlushAt')
-            ->add('cdnStatus')
-            ->add('updatedAt')
-            ->add('createdAt')
-            ->add('soifId')
-            ->add('id');
+            ->add('id')
+            ->add('name');
     }
 
     public function configure()
