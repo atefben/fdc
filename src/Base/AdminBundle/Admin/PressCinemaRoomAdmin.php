@@ -56,9 +56,17 @@ class PressCinemaRoomAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
+                    'title' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.news.helper_title'
+                    ),
                 )
             ))
-
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_map_zone_img',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
             ->end()
         ;
 
@@ -75,4 +83,18 @@ class PressCinemaRoomAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
+    public function prePersist($room)
+    {
+
+        $this->preUpdate($room);
+    }
+
+    public function preUpdate($room)
+    {
+
+        $room->setRoom($room->getRoom());
+
+    }
+
 }

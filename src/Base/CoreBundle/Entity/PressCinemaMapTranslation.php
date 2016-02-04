@@ -21,4 +21,34 @@ class PressCinemaMapTranslation
     use Translation;
     use Seo;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cinema_map_zone", type="string", length=255, nullable=true)
+     */
+    protected $mapZone;
+
+
+    /**
+     * Set mapZone
+     *
+     * @param string $mapZone
+     * @return PressCinemaMapTranslation
+     */
+    public function setMapZone($mapZone)
+    {
+        $this->mapZone = $mapZone;
+
+        return $this;
+    }
+
+    /**
+     * Get mapZone
+     *
+     * @return string 
+     */
+    public function getMapZone()
+    {
+        return $this->mapZone;
+    }
 }

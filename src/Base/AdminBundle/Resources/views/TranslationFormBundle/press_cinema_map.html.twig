@@ -24,6 +24,35 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <div class="box-header">
+                                <h4 class="box-title">
+                                    Salles
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(form.parent.children.mapRoom) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Zone festival
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.mapZone) }}
+                                    {{ form_row(form.parent.children.zoneImage) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
                                 <div class="clearfix">
                                     <h4 class="box-title">
                                         {{ 'group.seo'|trans }}
