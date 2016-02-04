@@ -139,7 +139,6 @@ class LockController extends Controller
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de vérifier l\'existence du verrou.',
-                'test' => 'yahandra',
             ));
         }
 
@@ -148,7 +147,6 @@ class LockController extends Controller
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de vérifier l\'existence du verrou.',
-                'test' => 'yavili',
             ));
         }
 
@@ -158,7 +156,6 @@ class LockController extends Controller
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de vérifier l\'existence du verrou.',
-                'test' => 'yararou',
             ));
         }
 
