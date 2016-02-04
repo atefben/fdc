@@ -147,7 +147,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.news, label: entity.news_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #MEDIAS
 
@@ -157,7 +157,15 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.media, label: entity.media_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.media_image_simple:
+        class: Base\AdminBundle\Admin\MediaImageSimpleAdmin
+        arguments: [~, Base\CoreBundle\Entity\MediaImageSimple, BaseAdminBundle:MediaImageSimpleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.media, label: entity.media_image_simple, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.media_audio:
         class: Base\AdminBundle\Admin\MediaAudioAdmin

@@ -62,7 +62,7 @@ class WebTv implements TranslateMainInterface
     private $homepage;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      * @Groups({"web_tv_list", "web_tv_show"})
      */
@@ -168,28 +168,6 @@ class WebTv implements TranslateMainInterface
         return $this->homepage;
     }
 
-    /**
-     * Set image
-     *
-     * @param \Base\CoreBundle\Entity\MediaImage $image
-     * @return WebTv
-     */
-    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Base\CoreBundle\Entity\MediaImage 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
 
 
     /**
@@ -213,5 +191,28 @@ class WebTv implements TranslateMainInterface
     public function getFestival()
     {
         return $this->festival;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return WebTv
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -25,18 +25,19 @@ class LockController extends Controller
 {
 
     private static $entityMapper = array(
-        'newsarticle'  => 'NewsArticle',
-        'webtv'        => 'WebTv',
-        'tag'          => 'Tag',
-        'theme'        => 'Theme',
-        'contacttheme' => 'ContactTheme',
-        'event'        => 'Event',
-        'mediaimage'   => 'MediaImage',
-        'mediaaudio'   => 'MediaAudio',
-        'mediavideo'   => 'MediaVideo',
-        'newsimage'    => 'NewsImage',
-        'newsaudio'    => 'NewsAudio',
-        'newsvideo'    => 'NewsVideo',
+        'newsarticle'      => 'NewsArticle',
+        'webtv'            => 'WebTv',
+        'tag'              => 'Tag',
+        'theme'            => 'Theme',
+        'contacttheme'     => 'ContactTheme',
+        'event'            => 'Event',
+        'mediaimage'       => 'MediaImage',
+        'mediaimagesimple' => 'MediaImageSimple',
+        'mediaaudio'       => 'MediaAudio',
+        'mediavideo'       => 'MediaVideo',
+        'newsimage'        => 'NewsImage',
+        'newsaudio'        => 'NewsAudio',
+        'newsvideo'        => 'NewsVideo',
     );
 
     /**
@@ -64,7 +65,7 @@ class LockController extends Controller
             $logger->error(__CLASS__ . " - Couldnt create the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id / entity / locale missing");
             $response->setStatusCode(400);
             return $response->setData(array(
-                'message' => 'Impossible de créer le verrou.'
+                'message' => 'Impossible de créer le verrou.',
             ));
         }
 
@@ -243,15 +244,17 @@ class LockController extends Controller
         ));
 
         foreach ($translations as $trans) {
+            /*
             if ($trans->getLockedBy() == null) {
                 $response->setData(array(
                     'error' => 0
                 ));
-            } else if ($trans->getLockedBy() !== $user) {
+            } else if ($trans->getLockedBy() !== $user->getId()) {
                 $response->setData(array(
                     'error' => 1
                 ));
             }
+            //*/
         }
 
         return $response;
