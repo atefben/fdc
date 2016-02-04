@@ -77,44 +77,44 @@ class NewsController extends Controller {
 //        if($homeArticles == null) {
 //            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'));
 //        }
-
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime); ///juste pour test
+        $count = 6;
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime, $count); ///juste pour test
 
         //set default filters
         $filters                         = array();
-        $filters['dates'][0]             = 'all';
-        $filters['dateFormated'][0]      = 'all';
+        $filters['format'][0]            = 'all';
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0]      = 'all';
 
-        foreach ($homeArticles as $key => $newsArticle) {
-            $newsArticle->image = $newsArticle->getHeader();
-            $newsArticle->theme = $newsArticle->getTheme();
+        foreach ($homeArticles as $key => $homeArticle) {
+            $homeArticle->image = $homeArticle->getHeader();
+            $homeArticle->theme = $homeArticle->getTheme();
 
             if(($key % 3) == 0){
-                $newsArticle->double = true;
+                $homeArticle->double = true;
             }
 
             //check if filters don't already exist
-            $date = $newsArticle->getPublishedAt();
-            if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
-                $filters['dates'][] = ($date != null) ? $date : null;
-                $filters['dateFormated'][] = $date->format('d-m-Y');
-            }
-
-            if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][]    = $newsArticle->getTheme()->getId();
-                $filters['themes']['content'][] = $newsArticle->getTheme();
+            if (!in_array($homeArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][]    = $homeArticle->getTheme()->getId();
+                $filters['themes']['content'][] = $homeArticle->getTheme();
             }
 
         }
+        $format = $homeArticles[0]->getTypes();
+        $filters['format'] = array_merge($filters['format'], array_values($format));
 
         //split articles in two array
         $homeArticles = $this->partition($homeArticles, 2);
         $homeArticlesBottom = $homeArticles[1];
+        foreach($homeArticlesBottom as $bottom) {
+            $bottom->double = false;
+        }
+
         $homeArticles = $homeArticles[0];
 
-        //$homeArticleSlider = $em->getRepository('BaseCoreBundle:News')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateTime);
+        //get images for slider articles
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateTime);
 
         // TODO: clean this
         $homeSlider = array(
@@ -141,82 +141,6 @@ class NewsController extends Controller {
                 ),
                 'theme' => 'Rencontre',
                 'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
-            )
-        );
-
-        $home = array(
-            'article' => array(
-                array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
-                    'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                    ),
-                    'format' => 'article',
-                    'theme' => 'competition',
-                    'category' => 'competition',
-                    'double' => true
-                ),
-                array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
-                    'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                    ),
-                    'format' => 'video',
-                    'theme' => 'competition',
-                    'category' => 'competition',
-                    'double' => false
-                ),
-                array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
-                    'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                    ),
-                    'format' => 'photo',
-                    'theme' => 'competition',
-                    'category' => 'competition',
-                    'double' => false
-                )
-            ),
-            'bottomArticle' => array(
-                array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
-                    'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                    ),
-                    'format' => 'audio',
-                    'theme' => 'competition',
-                    'category' => 'competition'
-                ),
-                array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
-                    'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                    ),
-                    'format' => 'article',
-                    'theme' => 'competition',
-                    'category' => 'competition'
-                ),
-                array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
-                    'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
-                    ),
-                    'format' => 'article',
-                    'theme' => 'competition',
-                    'category' => 'competition'
-                )
             )
         );
 
@@ -582,6 +506,7 @@ class NewsController extends Controller {
             'socialGraph' => $socialGraph,
             'homeArticles' => $homeArticles,
             'homeArticlesBottom' => $homeArticlesBottom,
+            'homeArticlesSlider' => $homeArticlesSlider,
             // TODO: clean this
             'homeSlider' => $homeSlider,
             'filters' => $filters,
