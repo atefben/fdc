@@ -24,6 +24,35 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <div class="box-header">
+                                <h4 class="box-title">
+                                    Horaires des projections
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(form.parent.children.projection) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Horaires des projections presse
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(form.parent.children.pressProjection) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
                                 <div class="clearfix">
                                     <h4 class="box-title">
                                         {{ 'group.seo'|trans }}

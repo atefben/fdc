@@ -108,7 +108,8 @@
             data-twitter="//www.twitter.com"
             data-link="//www.example.com"
             data-email="//www.gmail.com"
-            data-file=""
+            data-file='[{"file":"./files/mov_bbb.webm"},
+            {"file":"./files/mov_bbb.mp4"}]'
             data-img="/img/article/004.jpg">
             <div id="video-player" class="video-player v_<?php echo time();?>">
             </div>
@@ -127,7 +128,7 @@
           </div>
           <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function() {
-              var play-article = playerInit(false, 'video-player', false, false);
+              playarticle = playerInit(false, 'video-player', false, false);
             });
           </script>
           <div class="text">

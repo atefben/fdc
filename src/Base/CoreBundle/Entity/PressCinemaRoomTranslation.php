@@ -21,4 +21,34 @@ class PressCinemaRoomTranslation
     use Translation;
     use Seo;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cinema_room_title", type="string", length=255, nullable=true)
+     */
+    protected $title;
+
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return PressCinemaRoomTranslation
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }

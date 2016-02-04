@@ -56,7 +56,37 @@ class PressCinemaMapAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
+                    'mapZone' => array(
+                        'label' => 'form.label_map_zone',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+
                 )
+            ))
+            ->add('mapRoom', 'sonata_type_collection',
+                array(
+                    'type_options' => array(
+                        'delete' => false,
+                        'delete_options' => array(
+                            'type'         => 'hidden',
+                            'type_options' => array(
+                                'mapped'   => false,
+                                'required' => false,
+                            )
+                        )
+                    ),
+                    'cascade_validation' => true,
+                    'by_reference' => false,
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable'  => 'position',
+                )
+            )
+            ->add('zoneImage', 'sonata_type_model_list', array(
+                'label' => 'form.label_map_zone_img',
+                'translation_domain' => 'BaseAdminBundle'
             ))
 
             ->end()
@@ -75,4 +105,5 @@ class PressCinemaMapAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
 }

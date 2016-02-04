@@ -5,31 +5,38 @@ $(document).ready(function() {
 
   if($('.webtv').length) {
     if($('.webtv-live').length) {
-     // play live player on click
-     $('#live .play').on('click', function(e) {
-       e.preventDefault();
-       $('#live').addClass('on');
-       //$('#live .img').addClass('rePosition');
-       $('#live').data('height', $('#live').height()).height($(window).height() - 91);
+      videoWebtv = playerInit('video-webtv-live', false, false, true);
+      videoWebtv.resize('100%','100%');
+      // play live player on click
+      $('#live .play-live').on('click', function(e) {
+        e.preventDefault();
+        $('#live').addClass('on');
+        //$('#live .img').addClass('rePosition');
+        $('#live').data('height', $('#live').height()).height($(window).height() - 91);
 
 
-       $('body').css('padding-top', 0);
-       setTimeout(function() {
+        $('body').css('padding-top', 0);
+        setTimeout(function() {
           if(!$('header').hasClass('sticky')) {
-          $('#main').css('padding-top', '91px');
+            $('#main').css('padding-top', '91px');
           }
-
           $('header').addClass('sticky');
         }, 800);
-     });
 
-     setTimeout(function() {
-      $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
+        setTimeout(function() {
+          videoWebtv.resize('100%','100%');
+          videoWebtv.play();
+          $('#live .trailer').addClass('on');
+        }, 500);
+      });
+
+      setTimeout(function() {
+        $('#live .textLive').css('top', $('header').height() + ($('#live').height() - $('#live .textLive').height()) / 2);
       }, 500);
 
-     if($('header').hasClass('sticky')) {
-      $('.webtv #live .img').css('top', '-10%');
-     }
+      if($('header').hasClass('sticky')) {
+        $('.webtv #live .img').css('top', '-10%');
+      }
 
       // create slide for trailers
 
@@ -116,7 +123,7 @@ $(document).ready(function() {
         },
       });
 
-      $('.owl-item ').on('click', function(e){
+      $('#slider-trailer .owl-item ').on('click', function(e){
           var $this = $(this);
           $('.center').removeClass('center');
           $this.addClass('center');

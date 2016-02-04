@@ -1,6 +1,10 @@
 .calendar-press #timeline a{
 	color: #fff;
 }
+.calendar-press .section-calendar{
+	height: 3531px;
+    background-color: #3a3a3a;
+}
 .calendar-press .header-press .container {
     padding: 60px 0 30px 0;
 }

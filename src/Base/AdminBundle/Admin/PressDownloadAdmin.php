@@ -63,14 +63,23 @@ class PressDownloadAdmin extends Admin
             ))
             ->add('downloadSection', 'sonata_type_collection',
                 array(
+                    'type_options' => array(
+                        'delete' => false,
+                        'delete_options' => array(
+                            'type'         => 'hidden',
+                            'type_options' => array(
+                                'mapped'   => false,
+                                'required' => false,
+                            )
+                        )
+                    ),
                     'cascade_validation' => true,
                     'by_reference' => false,
-                    'label' => 'form.label_image_link'
                 ),
                 array(
                     'edit' => 'inline',
                     'inline' => 'table',
-                    'sortable'  => 'position'
+                    'sortable'  => 'position',
                 )
             )
 

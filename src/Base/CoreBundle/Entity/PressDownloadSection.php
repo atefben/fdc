@@ -42,13 +42,6 @@ class PressDownloadSection implements TranslateMainInterface
     private $widgets;
 
     /**
-     * @var PressDownload
-     *
-     * @ORM\ManyToOne(targetEntity="PressDownload", inversedBy="section")
-     */
-    protected $download;
-
-    /**
      * ArrayCollection
      */
     protected $translations;
@@ -92,7 +85,7 @@ class PressDownloadSection implements TranslateMainInterface
     public function addWidget(\Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets)
     {
 
-        $widgets->setDownload($this);
+        $widgets->setpressDownload($this);
         $this->widgets[] = $widgets;
 
         return $this;
@@ -116,45 +109,6 @@ class PressDownloadSection implements TranslateMainInterface
     public function getWidgets()
     {
         return $this->widgets;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param int $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    }
-
-    /**
-     * Set download
-     *
-     * @param \Base\CoreBundle\Entity\PressDownload $download
-     * @return PressDownloadSection
-     */
-    public function setDownload(\Base\CoreBundle\Entity\PressDownload $download = null)
-    {
-        $this->download = $download;
-
-        return $this;
-    }
-
-    /**
-     * Get download
-     *
-     * @return \Base\CoreBundle\Entity\PressDownload
-     */
-    public function getDownload()
-    {
-        return $this->download;
     }
     
 }

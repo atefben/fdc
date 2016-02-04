@@ -2444,7 +2444,7 @@ div.chocolat-wrapper .thumbnails .thumb.active:before {
   border:8px solid #c8a461;
   z-index: 1;
 }
-div.chocolat-wrapper .share {
+div.chocolat-wrapper .share, div.chocolat-wrapper .download {
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     display: block;
     width: 100px;
@@ -2455,7 +2455,7 @@ div.chocolat-wrapper .share {
     position: absolute;
     text-align: center;
 }
-div.chocolat-wrapper .share .icon {
+div.chocolat-wrapper .share .icon , div.chocolat-wrapper .download .icon{
     line-height: 100px;
     color: #c8a461;
     font-size: 1.1rem;
@@ -3594,7 +3594,7 @@ display: inline-block;
 }
 
 #myselection-filters .vid p{
-  
+  line-height: 110px;
   display: block;
   font-size: 1.5rem;
   margin-top: 3px;
@@ -4107,7 +4107,28 @@ a{
 
 
 /*SECTION AUDIOS*/
-
+.main-audio-player{
+	height: 412px;
+	position: relative;
+	margin-bottom: 30px;
+	background-size: cover;
+}
+.main-audio-player:before{
+	background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 1) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 1) 100%);
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.main-audio-player .audio-player{
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+}
 .audio-player{
 
 	height: 112px;
@@ -4205,8 +4226,11 @@ a{
   left: 0;
   z-index: 10001;
   padding: 40px;
-    overflow-y: scroll;
+  overflow-y: scroll;
   box-sizing: border-box;
+}
+.audios .fullscreenplayer{
+  padding: 30px;
 }
 .fullscreenplayer .close-button{
   top:40px;
@@ -4228,26 +4252,54 @@ a{
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    margin-right: 20px;
+}
+.fullscreenplayer .img-container{
+  width: 100%;
+  height: 412px;
+  position: relative;
+}
+.fullscreenplayer .img-container:before{
+    background: -webkit-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 1) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 57%, rgba(20, 20, 20, 1) 100%);
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
 }
 
-.fullscreenplayer .vCenterKid{
-  /*padding-top: 110px;*/
+.fullscreenplayer .audio-player{
+  position: absolute;
+  bottom: 0;
+  margin:0;
+}
+.fullscreenplayer .img-container .img{
+  background-position: center top;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.fullscreenplayer .date, .fullscreenplayer .hour{
+
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color:#666666;
 }
 .fullscreenplayer{
-  
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .fullscreenplayer.show{
-  display: block;
-  opacity: 0;
-  visibility: hidden;
-}
-.allow-landscape .fullscreenplayer.show{
   opacity: 1;
   visibility: visible;
 }
+
 #main .jw-controlbar {
     height: 40px;
 }

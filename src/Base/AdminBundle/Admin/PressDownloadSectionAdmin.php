@@ -133,7 +133,6 @@ class PressDownloadSectionAdmin extends Admin
                     )
                 )
             ))
-            ->add('position','hidden',array('attr'=>array("hidden" => true)))
             ->add('translate')
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressDownloadSection::getPriorityStatuses(),

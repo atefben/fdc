@@ -249,6 +249,10 @@ $(document).ready(function() {
         $('#live').removeClass('on');
         $('#live').height($('#live').data('height'));
         $('#main').css('padding-top', 0);
+        if(videoWebtv.getState() === "playing") {
+          $('#live .trailer').removeClass('on');
+          videoWebtv.pause();
+        }
       }
     }
 
