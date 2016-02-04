@@ -260,6 +260,34 @@
 
 	
 	<!-- end header -->
+	<div class="fullscreenplayer">
+		<div class="close-button"><i class="icon icon_close"></i></div>
+		<div class="vCenter">
+			<div class="vCenterKid">
+				<div class="img-container">
+					<div class="audio-player on">
+				        <div class="picto playpause">
+				          <i class="icon icon_pause"></i>
+				        </div>
+				        <div class="player-on">
+				          <div class="duration">
+				            <span class="curr">0:00</span>/<span class="total">0:00</span>
+				          </div>
+				          <div class="wave-container" id="wave-0"></div>
+				        </div>
+				    </div>
+					<div class="img"></div>
+				</div>
+				
+			    <p class="category"></p>
+			    <span class="date"></span>
+			           . 
+			    <span class="hour"></span>
+		        <p class="title-audio"></p>
+			</div>
+		</div>
+	</div>
+
 	<div class="container">
 		<h2 class="title one-line">Tous les audios</h2>
 
@@ -290,7 +318,7 @@
 
 
 	<div class="list" id="list-audios">
-		<div class="item">
+		<div class="item" data-sound="./sounds/sound.mp3" data-date="18.05.15" data-hour="09:00" data-title="Rencontre avec l'équipe de Carol">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>
@@ -305,37 +333,52 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item" data-sound="./sounds/sound2.mp3" data-date="21.05.15" data-hour="18:00" data-title="Le photocall de Maïwenn">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>
 					<div class="right">
 		              	<p><a href="#" class="category">PHOTOCALL</a></p>
-		              	<p>Rencontre avec l'équipe de Carol</p>
+		              	<p>Le photocall de Maïwenn</p>
 	              	</div>
             	</div>
 				
-            	<div class="img" style="background-image:url(./img/slider-videos/slider01.jpg)"></div>
+            	<div class="img" style="background-image:url(./img/event.jpg)"></div>
             </div>
 
 
 		</div>
-		<div class="item">
+		<div class="item" data-sound="./sounds/sound.mp3" data-date="13.05.15" data-hour="11:00" data-title="Enragés, polay hybride d'Éric Hannezo">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>
 					<div class="right">
 		              	<p><a href="#" class="category">montée des marches</a></p>
-		              	<p>Rencontre avec l'équipe de Carol</p>
+		              	<p>Enragés, polay hybride d'Éric Hannezo</p>
 	              	</div>
             	</div>
 				
-            	<div class="img" style="background-image:url(./img/slider-videos/slider01.jpg)"></div>
+            	<div class="img" style="background-image:url(./img/palmares/cover-film-camerador.jpg)"></div>
             </div>
 
 
 		</div>
-		<div class="item">
+		<div class="item" data-sound="./sounds/sound2.mp3" data-date="13.05.15" data-hour="11:00" data-title="Rencontre avec l'équipe de Carol">
+			<div class="img-container">
+				<div class="infos">
+					<div class="picto"><i class="icon icon_audio"></i></div>
+					<div class="right">
+		              	<p class="category">Conférence de presse</p>
+		              	<p>Rencontre avec l'équipe de Carol</p>
+	              	</div>
+            	</div>
+				
+            	<div class="img" style="background-image:url(./img/palmares/cover-film-compet4.jpg)"></div>
+            </div>
+
+
+		</div>
+		<div class="item theme1" data-sound="./sounds/sound.mp3" data-date="13.05.15" data-hour="11:00" data-title="Rencontre avec l'équipe de Carol">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>
@@ -350,7 +393,7 @@
 
 
 		</div>
-		<div class="item theme1">
+		<div class="item" data-sound="./sounds/sound2.mp3" data-date="13.05.15" data-hour="11:00" data-title="Rencontre avec l'équipe de Carol">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>
@@ -365,7 +408,7 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item" data-sound="./sounds/sound.mp3" data-date="13.05.15" data-hour="11:00" data-title="Rencontre avec l'équipe de Carol">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>
@@ -380,7 +423,7 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item" data-sound="./sounds/sound2.mp3" data-date="13.05.15" data-hour="11:00" data-title="Rencontre avec l'équipe de Carol">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>
@@ -395,7 +438,7 @@
 
 
 		</div>
-		<div class="item">
+		<div class="item" data-sound="./sounds/sound.mp3" data-date="13.05.15" data-hour="11:00" data-title="Rencontre avec l'équipe de Carol">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>
@@ -410,22 +453,7 @@
 
 
 		</div>
-		<div class="item">
-			<div class="img-container">
-				<div class="infos">
-					<div class="picto"><i class="icon icon_audio"></i></div>
-					<div class="right">
-		              	<p class="category">Conférence de presse</p>
-		              	<p>Rencontre avec l'équipe de Carol</p>
-	              	</div>
-            	</div>
-				
-            	<div class="img" style="background-image:url(./img/slider-videos/slider01.jpg)"></div>
-            </div>
-
-
-		</div>
-		<div class="item">
+		<div class="item" data-sound="./sounds/sound2.mp3" data-date="13.05.15" data-hour="11:00" data-title="Rencontre avec l'équipe de Carol">
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_audio"></i></div>

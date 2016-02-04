@@ -159,7 +159,7 @@ $(document).ready(function() {
 
 	// PLAYERS AUDIO
 
-	initAudioPlayers()
+	$.initAudioPlayers(false)
 
 
 
