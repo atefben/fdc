@@ -162,7 +162,9 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/filters.css',
-			            './css/videos.css'
+			            './css/videos.css',
+			            './css/fullscreenplayer.css',
+			            './css/audioplayer.css'
 				        ],
 			        './css-concat/contact.css': [
 			            './css/main.css', 
@@ -496,8 +498,13 @@ grunt.initConfig({
 				    './js-concat/audios.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/wavesurfer.min.js',
 				            './js/include/*.js',
-				            './js/filters.js'
+				            './js/filters.js',
+				            './js/audioplayer.js',
+				            './js/fullscreenplayer.js',
+
+
 				        ],
 				        './js-concat/contact.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -665,6 +672,7 @@ grunt.initConfig({
 	        './event.html': ['./templates/event.html'],
 	        './article-photos.html': ['./templates/article-photos.html'],
 	        './article-video.html': ['./templates/article-video.html'],
+	        './article-audio.html': ['./templates/article-audio.html'],
 	        './article-press.html': ['./templates/article-press.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
@@ -750,6 +758,7 @@ grunt.initConfig({
 	        './event.html': ['./templates/event.html'],
 	        './article-photos.html': ['./templates/article-photos.html'],
 	        './article-video.html': ['./templates/article-video.html'],
+	        './article-audio.html': ['./templates/article-audio.html'],
 	        './article-press.html': ['./templates/article-press.html'],
 	        './participate_access.html': ['./templates/participate_access.html'],
 	        './participate_instructions.html': ['./templates/participate_instructions.html'],
