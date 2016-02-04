@@ -3447,11 +3447,11 @@ p{
 	margin-right: 20px;
 }
 
-.press-locked .buttons-unlocked{
+.press-locked .buttons-unlocked, .press_medias.press-locked .buttons-unlocked{
 
 	display: none;
 }
-.press-unlocked .buttons-locked{
+.press-unlocked .buttons-locked, .press_medias.press-unlocked .buttons-locked{
 	display: none;
 }
 /*BANNER IMG*/
