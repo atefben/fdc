@@ -566,7 +566,8 @@ $(document).ready(function() {
 				  smartSpeed: 500,
 				  margin: 0,
 				  autoWidth: true,
-				  loop: false,
+				  loop: true,
+				  items:2
 
 				});
 				venues.owlCarousel();
