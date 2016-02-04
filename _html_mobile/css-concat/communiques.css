@@ -3513,7 +3513,7 @@ p{
 
 /*CALENDAR*/
 .press .contain-section .calendar .timeCol, .press .contain-section .calendar .venues{
-	height: 1152px;
+	height: 1150px;
     overflow-y: hidden;
 }
 /*COMM & INFOS*/

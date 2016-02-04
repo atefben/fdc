@@ -83,7 +83,7 @@
                 data-twitter="//www.twitter.com"
                 data-link="//www.example.com"
                 data-email="//www.gmail.com"
-                data-file="./files/mov_bbb.mp4"
+                data-file='[{"file":"./files/mov_bbb.mp4"}]'
                 data-img="img/films/cover-invitespecial.jpg">
                 <div id="video-player-123" class="video-player">
                 </div>
@@ -125,7 +125,7 @@
                 data-twitter="//www.twitter.com"
                 data-link="//www.example.com"
                 data-email="//www.gmail.com"
-                data-file="./files/mov_bbb.mp4"
+                data-file='[{"file":"./files/mov_bbb.mp4"}]'
                 data-img="img/films/cover-invitespecial2.jpg">
                 <div id="video-player-456" class="video-player">
                 </div>
@@ -144,7 +144,7 @@
               </div>
               <script type="text/javascript">
                 document.addEventListener("DOMContentLoaded", function() {
-                  // player = playerInit(false, 'video-player');
+                  player = playerInit(false, 'video-player');
                 });
               </script>
             </div>

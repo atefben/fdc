@@ -102,7 +102,7 @@
       z-index: 1;
       @include transition(all 0.5s $smoothTransition);
     }
-    .play {
+    .play-live {
       display: block;
       border: 1px solid rgba(255, 255, 255, 0.5);
       margin: 20px auto 0 auto;
@@ -118,10 +118,22 @@
         margin-left: 2px;
       }
     }
+    .trailer {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: none;
+    }
     &.on {
       .img,
-      .vCenter {
+      > .vCenter {
         opacity: 0;
+      }
+      .trailer.on {
+        opacity: 1;
+        @include transition(opacity 0.5s $smoothTransition .25s);
       }
     }
   }
@@ -425,7 +437,7 @@
       letter-spacing: 15px;
       font-weight: 700;
     }
-    .play {
+    .play-live {
       border-radius: 50%;
       margin-bottom: 18px;
       border: 0px solid #fff;

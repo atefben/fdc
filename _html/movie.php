@@ -57,7 +57,7 @@
               data-twitter="//www.twitter.com"
               data-link="//www.example.com"
               data-email="//www.gmail.com"
-              data-file="./files/mov_bbb.mp4"
+              data-file='[{"file":"./files/mov_bbb.mp4"}]'
               data-img="//dummyimage.com/960x540/c8a461/000.png">
               <div id="video-movie-trailer" class="video-player">
               </div>
@@ -78,8 +78,7 @@
         </div>
         <div class="container container-top">
           <div class="poster video">
-            <a href="#" class="picto"><i class="icon icon_video"></i>
-</a>
+            <a href="#" class="picto"><i class="icon icon_video"></i></a>
             <img src="img/movie/002.jpg" alt="" />
           </div>
           <div class="info-film">
@@ -142,7 +141,7 @@
               data-twitter="//www.twitter.com"
               data-link="//www.example.com"
               data-email="//www.gmail.com"
-              data-file="./files/mov_bbb.mp4"
+              data-file='[{"file":"./files/mov_bbb.mp4"}]'
               data-img="//dummyimage.com/960x540/c8a461/000.png">
               <div id="video-player-ba" class="video-player">
               </div>

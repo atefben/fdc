@@ -1,0 +1,126 @@
+
+#main.press_accreditation {
+	background: #fff;
+}
+.press_accreditation strong{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+}
+.press_accreditation a{
+	color: #c8a461;
+}
+.press_accreditation h4 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    margin: 10px 0;
+    color: #c8a461;
+}
+.press_accreditation .border-box{
+	display: block;
+	border: 1px solid #c8a461;
+	padding: 20px;
+	margin: 30px 0;
+	width: 100%;
+	box-sizing:border-box;
+}
+.press_accreditation  h5 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    line-height: 24px;
+}
+.press_accreditation ul li p {
+    margin-top: 0px;
+}
+.press_accreditation .section-title {
+	padding: 60px 0 0;
+	margin-bottom: 40px;
+	margin-top: 40px;
+    position: relative;
+    border-bottom: 1px solid #d6d6d6;
+    border-top: 1px solid #d6d6d6;
+}
+.press_accreditation .section-title h2 {
+    line-height: 24px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    letter-spacing: .2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+.press_accreditation #horizontal-menu{
+	margin-top: 20px;
+	background: #fff;
+	border-bottom: 1px solid #dfdfdf; 
+}
+.press_accreditation #horizontal-menu .vid p{
+	text-align: left;
+	line-height: 110px;
+}
+.press_accreditation #horizontal-menu .vid{
+	box-sizing:border-box;
+}
+.press_accreditation #horizontal-menu .owl-stage {
+    padding-left: 40px;
+}
+.press_accreditation .media{
+	padding: 0 40px;
+}
+.medias div.media{
+	display: none;
+	opacity: 0;
+}
+.medias div.active{
+	display: block;
+}
+.medias{
+	min-height: 735px;
+	margin-bottom: 60px;
+}
+.press_accreditation .buttons{
+	margin-bottom: 40px;
+	display: block;
+}
+.press_accreditation .button {
+	border: 1px solid #dfdfdf;
+    border-right: none;
+    font-weight: 700;
+    height: 80px;
+    line-height: 80px;
+    box-sizing: border-box;
+    padding: 0 40px;
+    font-size: 19px;
+}
+.press_accreditation .button:last-child {
+    border-right: 1px solid #dfdfdf;
+}
+.press_accreditation .button .icon {
+    font-size: 25px;
+    margin-top: -5px;
+    margin-right: 20px;
+}
+.press_accreditation .request{
+
+	padding: 60px 0;
+    position: relative;
+    border-top: 1px solid #d6d6d6;
+}
+.press_accreditation .request .buttons{
+	margin-bottom:10px;
+}
+.press_accreditation .request .button{
+	padding: 0 20px;
+}
+.press_accreditation .request .legend{
+	display: block;
+    text-align: center;
+    font-size: 18px;
+}

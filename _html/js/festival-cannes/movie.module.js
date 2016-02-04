@@ -131,7 +131,7 @@ $(document).ready(function() {
       sliderCompetition.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });
 
-    videoMovie = playerInit('video-movie-trailer', false, false, false);
+    videoMovie = playerInit('video-movie-trailer');
     videoMovie.resize('100%','100%');
     // show and play trailer
     $('body').on('click', '.poster .picto', function(e) {

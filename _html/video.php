@@ -17,41 +17,40 @@
         data-twitter="//www.twitter.com"
         data-link="//www.example.com"
         data-email="//www.gmail.com"
-        data-playlist='
-        [
+        data-playlist='[
           {
-            "file":"./files/mov_bbb.mp4",
+            "sources":[{"file":"./files/mov_bbb.mp4"}],
             "image":"//dummyimage.com/960x540/000/c8a461.png",
             "name":"Sils Maria",
             "category":"Photocall"
           },
           {
-            "file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s",
+            "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
             "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
             "name":"Interviews des réalisateurs",
             "category":"Montée des marches"
           },
           {
-            "file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw",
+            "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
             "image":"img/slider-channels/03.jpg",
             "name":"Sils Maria",
             "category":"Conférence de presse"
           },
           {
-            "file":"https://www.youtube.com/watch?v=4QmpYuVEwIU",
+            "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
             "image":"img/slider-channels/01.jpg",
             "name":"Sils Maria",
             "category":"Photocall"
           },
           {
-            "file":"https://www.youtube.com/watch?v=YvjBXpmwhmk",
+            "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
             "image":"img/slider-channels/02.jpg",
             "name":"Sils Maria",
             "category":"Montée des marches"
           }
         ]'
         data-live="false"
-        data-file="./files/mov_bbb.mp4"
+        data-file='[{"file":"./files/mov_bbb.webm"}]'
         data-img="//dummyimage.com/960x540/000/c8a461.png">
         <div id="video-player-pl" class="video-player v_<?php echo time();?>">
         </div>
