@@ -45,7 +45,6 @@ class PressGuide implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideArrive", cascade={"persist"})
      *
-     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $arriveWidgets;
 
@@ -61,7 +60,6 @@ class PressGuide implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideMeeting", cascade={"persist"})
      *
-     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $meetingWidgets;
 
@@ -77,7 +75,6 @@ class PressGuide implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideInformation", cascade={"persist"})
      *
-     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $informationWidgets;
 
@@ -93,7 +90,6 @@ class PressGuide implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideService", cascade={"persist"})
      *
-     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $serviceWidgets;
 

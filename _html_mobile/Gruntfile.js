@@ -284,12 +284,24 @@ grunt.initConfig({
 			            './css/horizontal-menu.css',
 			            './css/press_accreditation.css'   
 				        ],
+
 				    './css-concat/press_download.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/press.css',
 			            './css/horizontal-menu.css'
 				        ],
+
+				    './css-concat/press_medias.css': [
+			            './css/main.css', 
+			            './css/include/*.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
+			            './css/press.css',
+			            './css/horizontal-menu.css',
+			            './css/press_medias.css'   
+				        ]
+
     			}
 		        
     		},
@@ -305,7 +317,6 @@ grunt.initConfig({
 				            './js/include/*.js',
 				            './js/main.js',
 				            './js/fullscreenplayer.js',
-				            
 				            './js/home.js',
 				            './js/add-to-selection.js'
 				        ],
@@ -636,6 +647,7 @@ grunt.initConfig({
 				   			'./js/press_accreditation.js'
 
 				    	],
+
 				   	'./js-concat/press_download.js':[
 
 				            './js/vendors/jquery-1.12.0.min.js', 
@@ -643,7 +655,19 @@ grunt.initConfig({
 				   			'./js/include/*.js',
 				            './js/vendors/jquery.cookie.js',
 				            './js/press.js',
-				            './js/press_download.js'
+				   			'./js/press_download.js'
+				   	],
+
+				    './js-concat/press_medias.js':[
+				            './js/vendors/jquery-1.12.0.min.js', 
+				            './js/vendors/owl.carousel.min.js',
+				   			'./js/include/*.js',
+				            './js/vendors/jquery.cookie.js',
+				            './js/press.js',
+				   			'./js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',  
+				   			'./js/press_medias.js'
 
 				    	],
     			}
@@ -727,7 +751,17 @@ grunt.initConfig({
 	        './press_maps.html': ['./templates/press_maps.html'],
 	        './maps.html': ['./templates/maps.html'],
 	        './press_accreditation.html': ['./templates/press_accreditation.html'],
-	        './press_download.html': ['./templates/press_download.html']
+	        './press_download.html': ['./templates/press_download.html'],
+	        './press_medias.html': ['./templates/press_medias.html'],
+	        './press_medias_courtsmetrages.html': ['./templates/press_medias_courtsmetrages.html'],
+	        './press_medias_horscompetition.html': ['./templates/press_medias_horscompetition.html'],
+	        './press_medias_uncertainregard.html': ['./templates/press_medias_uncertainregard.html'],
+	        './press_medias_seancedeminuit.html': ['./templates/press_medias_seancedeminuit.html'],
+	        './press_medias_seancesspeciales.html': ['./templates/press_medias_seancesspeciales.html'],
+	        './press_medias_cinefondation.html': ['./templates/press_medias_cinefondation.html'],
+	        './press_medias_cannesclassics.html': ['./templates/press_medias_cannesclassics.html'],
+	        './press_medias_cinemadelaplage.html': ['./templates/press_medias_cinemadelaplage.html']
+
 
 	      
 	      }
@@ -804,7 +838,9 @@ grunt.initConfig({
 	        './press_maps.html': ['./templates/press_maps.html'],
 	        './maps.html': ['./templates/maps.html'],
 	        './press_accreditation.html': ['./templates/press_accreditation.html'],
-	        './press_download.html': ['./templates/press_download.html']
+	        './press_download.html': ['./templates/press_download.html'],
+	        './press_medias.html': ['./templates/press_medias.html']
+
 
 
 	      }
@@ -851,7 +887,9 @@ grunt.initConfig({
 	        './js-concat/press_maps.min.js': ['./templates/press_maps.js'],
 	        './js-concat/maps.min.js': ['./templates/maps.js'],
 	        './js-concat/press_accreditation.min.js': ['./templates/press_accreditation.js'],
-	        './js-concat/press_download.min.js': ['./templates/press_download.js']
+	        './js-concat/press_download.min.js': ['./templates/press_download.js'],
+	        './js-concat/press_medias.min.js': ['./templates/press_medias.js']
+
 
 	      }
 	    }
@@ -901,7 +939,9 @@ grunt.initConfig({
 	        './css-concat/press_maps.min.css': ['./css-concat/press_maps.css'],
 	        './css-concat/maps.min.css': ['./css-concat/maps.css'],
 	        './css-concat/press_accreditation.min.css': ['./css-concat/press_accreditation.css'],
-	        './css-concat/press_download.min.css': ['./css-concat/press_download.css']
+	        './css-concat/press_download.min.css': ['./css-concat/press_download.css'],
+	        './css-concat/press_medias.min.css': ['./css-concat/press_medias.css']
+
 
 	    }
 	  }

@@ -122,8 +122,8 @@ entity:
     press_download: A télécharger
     press_download_section: Section à télécharger
     press_projection: Programmation
-    press_cinema_room: Plan des salles
     press_guide: Guide pratique
+    press_cinema_map: Plan des salles
 list:
     label_id: Identifiant
     label_title: Titre

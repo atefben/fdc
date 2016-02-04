@@ -667,6 +667,22 @@ services:
         class: Base\AdminBundle\Admin\PressCinemaRoomAdmin
         arguments: [~, Base\CoreBundle\Entity\PressCinemaRoom, BaseAdminBundle:PressCinemaRoomAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_cinema_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_cinema_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_cinema_map:
+        class: Base\AdminBundle\Admin\PressCinemaMapAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressCinemaMap, BaseAdminBundle:PressCinemaMapAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_cinema_map, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_cinema_map_room:
+        class: Base\AdminBundle\Admin\PressCinemaMapRoomAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressCinemaMapRoom, BaseAdminBundle:PressCinemaMapRoomAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]

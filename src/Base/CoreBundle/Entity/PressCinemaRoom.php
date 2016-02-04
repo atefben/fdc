@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,6 +30,13 @@ class PressCinemaRoom
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="MediaImage", cascade={"persist"})
+     */
+    protected $image;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -41,7 +49,6 @@ class PressCinemaRoom
         $this->translations = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *
@@ -52,4 +59,26 @@ class PressCinemaRoom
         return $this->id;
     }
 
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $image
+     * @return PressCinemaRoom
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }
