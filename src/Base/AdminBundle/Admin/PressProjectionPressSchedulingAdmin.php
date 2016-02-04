@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PressDownloadHasSectionAdmin extends Admin
+class PressProjectionPressSchedulingAdmin extends Admin
 {
 
     /**
@@ -42,14 +42,25 @@ class PressDownloadHasSectionAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $em = $this->modelManager->getEntityManager('Base\CoreBundle\Entity\FilmProjection');
+
+        $query = $em->createQueryBuilder('p')
+            ->select('p')
+            ->from('BaseCoreBundle:FilmProjection', 'p')
+            ->where('c.type : 2')
+            ->orderBy('c.starts_at', 'ASC');
+
         $formMapper
-            ->add('section', 'sonata_type_model_list', array(
-                'required' => false,
-                'btn_add' => true,
-                'label' => 'form.label_section'
-            ))
-            ->add('position','hidden',array('attr'=>array("hidden" => true)))
-        ;
+            ->add('PressPressProjection', 'sonata_type_model_list',
+                array(
+                    'required' => false,
+                    'btn_add' => false,
+                    'label' => 'form.label_projection',
+                ),
+                array(
+                    'query' => $query
+                ))
+            ;
 
     }
 
@@ -65,14 +76,14 @@ class PressDownloadHasSectionAdmin extends Admin
         ;
     }
 
-    public function prePersist($downloadSection)
+    public function prePersist($pressScheduling)
     {
-        $this->preUpdate($downloadSection);
+        $this->preUpdate($pressScheduling);
     }
 
-    public function preUpdate($downloadSection)
+    public function preUpdate($pressScheduling)
     {
-        $downloadSection->setSection($downloadSection->getSection());
+        $pressScheduling->setPressProjection($pressScheduling->getPressProjection());
     }
 
 }

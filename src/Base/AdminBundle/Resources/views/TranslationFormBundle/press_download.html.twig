@@ -18,7 +18,6 @@
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
-            {{ dump(form) }}
             <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
                 <div class="row">
                     <div class="col-md-12">

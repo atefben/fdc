@@ -119,22 +119,6 @@ class PressDownloadSection implements TranslateMainInterface
     }
 
     /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param int $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    }
-
-    /**
      * Set download
      *
      * @param \Base\CoreBundle\Entity\PressDownload $download
