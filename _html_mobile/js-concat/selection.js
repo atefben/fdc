@@ -1249,12 +1249,12 @@ $(document).ready(function() {
 	}
 
 });
+var waves = [];
+var inter = null;
+$.initAudioPlayers = function(autoplay) {
 
-var initAudioPlayers = function() {
 
-	var waves = [],
-    inter = null,
-    duration = null;
+    var duration = null;
 
   $('.audio-player').each(function(i) {
     $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
@@ -1275,6 +1275,21 @@ var initAudioPlayers = function() {
     // once it's ready
     wave.on('ready', function() {
       $(wave.container).parents('.audio-player').removeClass('loading');
+      if(autoplay){
+        wave.play();
+        // update current time
+        inter = setInterval(function() {
+          var curr = wave.getCurrentTime();
+
+          var minutes = parseInt(Math.floor(curr / 60));
+          var seconds = parseInt(curr - minutes * 60);
+
+          if(seconds < 10) {
+            seconds = '0' + seconds;
+          }
+          $('.audio-player').find('.duration .curr').text(minutes + ':' + seconds);
+        }, 1000);
+      }
 
     });
 
@@ -1284,7 +1299,6 @@ var initAudioPlayers = function() {
     });
 
     waves.push(wave);
-
     // on click on play/pause
     $(this).find('.playpause').on('click', function(e) {
 
@@ -1329,7 +1343,6 @@ var initAudioPlayers = function() {
         if(seconds < 10) {
           seconds = '0' + seconds;
         }
-
         $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
       }, 1000);
 
@@ -1353,6 +1366,16 @@ var initAudioPlayers = function() {
       $audioplayer.toggleClass('pause');
     });
   });
+}
+$.stopSound = function(){
+  if(waves[0].isPlaying()){
+    waves[0].stop();
+  }
+  
+}
+$.loadSound = function(url){
+  waves[0].load(url);
+
 }
 
 // Newsletter

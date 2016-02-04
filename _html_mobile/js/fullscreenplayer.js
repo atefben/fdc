@@ -2,14 +2,16 @@
 
 
 $(document).ready(function() {
+
+	// VIDEO PLAYER
 	$('.item-video').on("click",function(e){
 		e.preventDefault();
-		$('.fullscreenplayer').addClass('show');
+		
 		setTimeout(function() {
-	      
+	      	$('.fullscreenplayer').addClass('show');
 			$('body').addClass('allow-landscape');
 	      
-	    }, 900);
+	    }, 200);
 		
 		var playerInstance = jwplayer("player1");
         playerInstance.setup({
@@ -27,17 +29,49 @@ $(document).ready(function() {
 	    $('.fullscreenplayer').find('.title-video').html($(this).find('.titleLink').html());
 	});
 
-	$('body').on('click', '.close-button', function(e){
-    $('body').removeClass('allow-landscape');
-    //document.body.removeEventListener('touchmove', listener,false);
-    
 
-    setTimeout(function() {
-      $('.fullscreenplayer').removeClass('show');
 
-      
-    }, 900);
-  });
 
+	// AUDIO PLAYER
+	$('#list-audios .item').on("click",function(e){
+		e.preventDefault();
+		$('.fullscreenplayer .category').html($(this).find('.category').html());
+		$('.fullscreenplayer .title-audio').html($(this).data('title'));
+		$('.fullscreenplayer .date').html($(this).data('date'));
+		$('.fullscreenplayer .hour').html($(this).data('hour'));
+		$('.fullscreenplayer .img').attr('style',$(this).find('.img').attr('style'));
+
+
+		if($('wave').length == 0){
+			$('.audio-player').attr('data-sound',$(this).data('sound'));
+			$.initAudioPlayers(true);
+		}else{
+			$.loadSound($(this).data('sound'));
+		}
+		
+		setTimeout(function() {
+	      
+			$('.fullscreenplayer').addClass('show');
+	      
+	    }, 200);
+
+	});
+
+
+	// CLOSE FULLSCREEN PLAYER
+	$('body').on('click', '.fullscreenplayer .close-button', function(e){
+		
+    	$('body').removeClass('allow-landscape');
+		
+	    setTimeout(function() {
+	      $('.fullscreenplayer').removeClass('show');
+	      if(('.audios').length !==0){
+	      	$('.playpause').find(".icon").removeClass("icon_play");
+	      	$.stopSound();
+	      }
 	
+	    }, 200);
+
+ 	});
+
 });

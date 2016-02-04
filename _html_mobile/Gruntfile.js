@@ -162,7 +162,9 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/filters.css',
-			            './css/videos.css'
+			            './css/videos.css',
+			            './css/fullscreenplayer.css',
+			            './css/audioplayer.css'
 				        ],
 			        './css-concat/contact.css': [
 			            './css/main.css', 
@@ -489,8 +491,13 @@ grunt.initConfig({
 				    './js-concat/audios.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/owl.carousel.min.js',
+				            './js/vendors/wavesurfer.min.js',
 				            './js/include/*.js',
-				            './js/filters.js'
+				            './js/filters.js',
+				            './js/audioplayer.js',
+				            './js/fullscreenplayer.js',
+
+
 				        ],
 				        './js-concat/contact.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 
