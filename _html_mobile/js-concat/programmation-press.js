@@ -730,7 +730,7 @@ $(document).ready(function() {
         $('.popin-event').remove();
         // display the html
         $('.calendar').append(data);
-        $('.popin-event').css('top', $(document).scrollTop());
+        // $('.popin-event').css('top', $(document).scrollTop());
         $('.popin-event .fc-event').each(function () {
 
 	
