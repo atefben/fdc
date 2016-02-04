@@ -3239,7 +3239,7 @@ display: inline-block;
 }
 
 #myselection-filters .vid p{
-  
+  line-height: 110px;
   display: block;
   font-size: 1.5rem;
   margin-top: 3px;
