@@ -6689,7 +6689,8 @@ font-weight: bolder;
   color:white;
 }
 #menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon, #menu .second-nav .icon-mobile-participer{
-  margin-right: 25px
+  margin-right: 25px;
+  font-size: inherit;
 }
 #menu .third-nav .language .icon{
   font-size: 28px;
