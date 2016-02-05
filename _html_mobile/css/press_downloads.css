@@ -1,0 +1,151 @@
+.press-downloads #horizontal-menu{
+    margin-top: 20px;
+    background: #fff;
+    border-bottom: 1px solid #dfdfdf; 
+    border-top: 1px solid #dfdfdf; 
+}
+.press-downloads #horizontal-menu .vid p{
+    text-align: left;
+    line-height: 110px;
+}
+.press-downloads #horizontal-menu .vid{
+    box-sizing:border-box;
+    padding:0;
+}
+.press-downloads #horizontal-menu .owl-stage {
+    padding-left: 40px;
+}
+
+.press-locked .buttons-unlocked, .press_medias.press-locked .buttons-unlocked{
+
+
+    display: none;
+}
+.press-unlocked .buttons-locked, .press_medias.press-unlocked .buttons-locked{
+    display: none;
+}
+
+/*PAGE PRESS*/
+.press-downloads section{
+    opacity: 0;
+    display: none;
+}
+
+.press-downloads .header-press .container{
+    padding-bottom: 40px;
+}
+.press-downloads .downloads section ul{
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 36px;
+    color:#666666;
+    display: block;
+    margin: 0 auto 50px auto;
+    width: 300px;
+}
+.press-downloads .downloads section li{
+    list-style: disc;
+    list-style-position: inside;
+}
+
+
+.press-downloads .img-container{
+    margin: 0 auto 20px auto;
+    border: 1px solid #d6d6d6;
+    width: 290px;
+    height: 290px;
+    position: relative;
+    text-align: center;
+    line-height: 290px;
+    margin-bottom: 80px;
+}
+.press-downloads .img-container .caption{
+    position: absolute;
+    bottom: -30px;
+    text-align: left;
+}
+.press-downloads .img-container img{
+    margin: 0;
+    display: inline;
+    border: none;
+    vertical-align: middle;
+}
+.press-downloads .type-format, .press-downloads .buttons{
+    text-align: center;
+}
+
+/*section animation*/
+.press-downloads  .animation img{
+    width: 100%;
+    margin-top: 30px;
+}
+.press-downloads  .animation .caption{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.press-downloads  .animation .buttons-locked, .press-downloads  .animation .buttons-unlocked{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.press-downloads  .animation .buttons-locked .button, .press-downloads  .animation .buttons-unlocked .button{
+    width: 175px;
+}
+/*section folder press*/
+.press-downloads .folder-press{
+    margin-top: 30px;
+}
+.press-downloads .folder-press .infos{
+    margin-top: 9px;
+    color: #666666;
+    font-size: 16px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    max-height: 50px;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+.press-downloads .folder-press .infos strong{
+    color: #c8a461;
+}
+.press-downloads .downloads .folder-press .button{
+    border-right: 1px solid #dfdfdf;
+}
+.press-downloads .downloads .folder-press .buttons-unlocked .button{
+    border-right: 1px solid  #c8a461;
+}
+.press-downloads .downloads .folder-press .button.times{
+    width: 540px;
+    padding: 0 10px;
+}
+.press-downloads .downloads .folder-press .buttons{
+    width: 100%;
+}
+.press-downloads .photos_container{
+  
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+.press-downloads .photos_container h3{
+    margin-bottom: 40px;
+}
+.photos_container .item{
+    width: 270px;
+    height: 270px;
+    display: inline-block;
+    margin-top: 10px;
+    position: relative;
+}
+.photos_container .item:nth-child(2n+2){
+    margin-left: 10px;
+}
+.photos_container .item .img-container{
+    width: 100%;
+    height: 100%;
+}
+.photos_container .item .img-container .img{
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+  background-size: cover;
+}

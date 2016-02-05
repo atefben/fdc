@@ -3103,7 +3103,7 @@ display: inline-block;
 
   opacity: 1;
 }
-#main:not(.searchpage, .faq-page){
+#main:not(.searchpage, .faq-page, .press-downloads){
   background-color: #141414;
 }
 #banner-top, #banner-bottom{

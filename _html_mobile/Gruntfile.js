@@ -288,8 +288,11 @@ grunt.initConfig({
 				    './css-concat/press_download.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
+			            './css/slideshows-chocolat.css',
+			            './css/vendors/chocolat.css',
 			            './css/press.css',
-			            './css/horizontal-menu.css'
+			            './css/horizontal-menu.css',
+			            './css/press_downloads.css'
 				        ],
 
 				    './css-concat/press_medias.css': [
@@ -654,6 +657,9 @@ grunt.initConfig({
 				            './js/vendors/owl.carousel.min.js',
 				   			'./js/include/*.js',
 				            './js/vendors/jquery.cookie.js',
+				     		'./js/vendors/jquery.chocolat.js',
+				            './js/vendors/hammer.min.js',
+				            './js/slideshows-chocolat.js',
 				            './js/press.js',
 				   			'./js/press_download.js'
 				   	],
