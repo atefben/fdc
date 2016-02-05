@@ -1043,8 +1043,10 @@ from desktop
 .icon-mobile-burger:before { content: '\e803'; } /* '' */
 .icon-mobile-minus:before { content: '\e804'; } /* '' */
 .icon-mobile-plus:before { content: '\e805'; } /* '' */
-.icon-mobile-dailymotion:before { content: '\e806'; vertical-align: middle; } /* '' */
+.icon-mobile-dailymotion:before { content: '\e806';  } /* '' */
 .icon-mobile-participer:before { content: '\e807'; vertical-align: middle;} /* '' */
+
+.icon-mobile-chaines:before { content: '\e808'; } /* '' */
 /* Socials */
 #socials{
     text-align: center;
@@ -2089,6 +2091,10 @@ article .picto .icon{
   font-size: 3rem;
   padding-bottom: 20px;
 }
+.banner-img .title .icon-mobile-chaines{
+  font-size: 80px;
+  padding-bottom: 20px;
+}
 .banner-img a{
 
     color: #c8a461;
@@ -3022,7 +3028,7 @@ display: inline-block;
 }
 #myselection-filters .owl-item:last-child:after {
   
-    background-color: #c8a461;
+    background-color: #999;
     left: 0px;
     content: '';
     display: block;
@@ -4302,10 +4308,12 @@ p{
 .press-downloads #horizontal-menu .vid p{
     text-align: left;
     line-height: 110px;
+    font-size: 23px;
+    font-weight: 700;
 }
 .press-downloads #horizontal-menu .vid{
     box-sizing:border-box;
-    padding:0;
+    padding: 0;
 }
 .press-downloads #horizontal-menu .owl-stage {
     padding-left: 40px;
@@ -4443,4 +4451,7 @@ p{
     height: 100%;
     background-position: center center;
   background-size: cover;
+}
+.press-downloads .affiche , .press-downloads .signature{
+    margin-top: 40px;
 }

@@ -1730,6 +1730,7 @@ $(document).ready(function() {
         dots: false,
         smartSpeed: 500,
         margin: 40,
+        stagePadding:40,
         autoWidth: true,
         loop: false,
         items: 2
