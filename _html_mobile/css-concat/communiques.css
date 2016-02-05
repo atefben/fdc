@@ -3400,6 +3400,7 @@ p{
 	font-size: 20px;
 	margin:-5px 10px 0 0;
 }
+
 .header-press{
 	clear: both;
 }
@@ -3506,9 +3507,9 @@ p{
     font-weight: 700;
     margin-left: 20px;
 }
-.locked form.error input, .locked form.error input[type="submit"] {
-	color:#e93939;
-	border: 1px solid #e93939;
+.locked form.error input[type="password"] {
+
+	border: 2px solid #e93939;
 }
 
 /*CALENDAR*/
@@ -3727,6 +3728,21 @@ p{
 .downloads .buttons-unlocked .button:last-child, .downloads .button-already-unlocked:last-child{
 	border-right: 1px solid #c8a461;
 }
+.press-locked .buttons-unlocked, .press_medias.press-locked .buttons-unlocked{
+
+
+	display: none;
+}
+.press-unlocked .buttons-locked, .press_medias.press-unlocked .buttons-locked{
+	display: none;
+}
+
+.button-locked:hover{
+	background-color: #fff;
+    border-color: #000;
+    border-right: 1px solid #000;
+    color: #000;
+}
 .downloads .buttons{
 	text-align: left;
  	width: 470px;
@@ -3930,9 +3946,9 @@ p{
     font-weight: 700;
     margin-left: -1px;
 }
-#popin-press form.error input, #popin-press form.error input[type="submit"] {
-	color:#e93939;
-	border: 1px solid #e93939;
+#popin-press form.error input[type="password"] {
+
+	border: 2px solid #e93939;
 }
 #popin-press h3{
 	font-size: 20px;
