@@ -1729,7 +1729,7 @@ $(document).ready(function() {
         nav: false,
         dots: false,
         smartSpeed: 500,
-        margin: 60,
+        margin: 40,
         autoWidth: true,
         loop: false,
         items: 2
