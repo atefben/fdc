@@ -3736,6 +3736,13 @@ p{
 #main.press_accreditation {
 	background: #fff;
 }
+.press_accreditation .header-press .container{
+    padding-bottom: 60px;
+}
+.press_accreditation .header-press {
+    border-bottom: 1px solid #dfdfdf;
+    margin-bottom: 30px;
+}
 .press_accreditation strong{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 	font-weight: 700;
@@ -3749,7 +3756,7 @@ p{
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .2em;
-    margin: 10px 0;
+    margin: 20px 0;
     color: #c8a461;
 }
 .press_accreditation .border-box{
