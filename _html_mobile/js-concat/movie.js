@@ -789,6 +789,9 @@ $(document).ready(function() {
     var hammertime = new Hammer(myElement);
     hammertime.off('swipeleft');
     hammertime.off('swiperight');
+    hammertime.off('press');
+    hammertime.off('panend');
+    hammertime.off('panmove');
     if($('.slideshow').length) {
 
         slideshow = $('.slideshow .images').Chocolat({
@@ -1039,19 +1042,47 @@ $(document).ready(function() {
           
         }
       });
-      var x0=0 , y0=0, newPan=false, x_start = $('.chocolat-content').position().left, y_start = $('.chocolat-content').position().top;
-      console(x_start,y_start);
-      hammertime.on('panstart', function(ev) {
+      var x0=0 , y0=0, newPan=false, 
+      x_start = $('.chocolat-content').position().left, y_start = $('.chocolat-content').position().top,
+      width_img = $('.chocolat-content').width(), height_img = $('.chocolat-content').height();
+      console.log(width_img,height_img);
+      hammertime.get('press').set({
+          time: 50
+      });
+      hammertime.on('press', function(ev) {
         newPan = true;
         x0=ev.center.x;
         y0=ev.center.y;
-
+        x_start = $('.chocolat-content').position().left;
+        y_start = $('.chocolat-content').position().top;
+        width_img = $('.chocolat-content').width();
+        height_img = $('.chocolat-content').height();
+        console.log("press");
       });
       hammertime.on('panmove', function(ev) {
-        console.log(ev.center);
+        
+        if (newPan) {
+            var x = x_start + ev.center.x - x0;
+            var y = y_start + ev.center.y - y0;
+            if (x>0) {
+              x=0;
+            }else if(x< $(window).width()-width_img){
+              x=$(window).width()-width_img;
+            }
+            if (y>0) {
+              y=0;
+            }else if(y<$(window).height()-height_img){
+              y=$(window).height()-height_img;
+            }
+            $('.chocolat-content').css({ top: y, left: x });
+        }
+        
+        
       });
       hammertime.on('panend', function(ev) {
         newPan = false;
+        //.offset({ top: 10, left: 30 });
+        slideshow.api().place();
       });
      
 
