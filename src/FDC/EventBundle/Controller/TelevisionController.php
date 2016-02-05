@@ -2,7 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -150,7 +150,7 @@ class TelevisionController extends Controller
 
         $channel = array(
             'slug' => $webTv->getSlug(),
-            'most_viewed' => true,
+            'most_viewed' => true, //sticky
             'image' => array(
                 'path' => 'img.jpg',
                 'src'       => 'http://dummyimage.com/640x404/000/fff.png',
@@ -271,9 +271,30 @@ class TelevisionController extends Controller
      * @Route("/channels")
      * @Template("FDCEventBundle:Television:channels.html.twig")
      */
-    public function channelsAction()
+    public function channelsAction(Request $request)
     {
-        $channels = array(
+        $festival = $this->getSettings()->getFestival();
+
+        $FDCPageWebTvChannels = $this->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWebTvChannels')
+            ->find($this->get('twig')->getGlobals()['admin_fdc_page_web_tv_channels_id']);
+
+        if (!$FDCPageWebTvChannels) {
+            throw $this->createNotFoundException();
+        }
+
+        $locale = $request->getLocale();
+
+        $channels = $this->getBaseCoreWebTvRepository()->getWebTvByLocale($locale, $festival);
+
+        $hasSticky = (bool)$FDCPageWebTvChannels->getSticky();
+        $stickyIsValid = $hasSticky && $FDCPageWebTvChannels->getSticky()->findTranslationByLocale($locale);
+        $stickyHasVideos = $stickyIsValid && $FDCPageWebTvChannels->getSticky()->getVideos();
+        if ($stickyHasVideos) {
+            array_unshift($channels, $FDCPageWebTvChannels->getSticky());
+        }
+
+        $legacy = array(
             array(
                 'id' => 1,
                 'slug' => 'test',
@@ -292,118 +313,12 @@ class TelevisionController extends Controller
                     'theme' => 'theme1',
                 ),
             ),
-            array(
-                'id' => 1,
-                'slug' => 'test',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id' => 1,
-                'slug' => 'test',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id' => 1,
-                'slug' => 'test',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id' => 1,
-                'slug' => 'test',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id' => 1,
-                'slug' => 'test',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id' => 1,
-                'slug' => 'test',
-                'most_viewed' => true,
-                'image' => array(
-                    'path' => 'img.jpg',
-                    'src'       => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large'    => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos' => 5,
-                'theme' => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum',
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                ),
-            )
         );
+
 
         return array(
             'channels' => $channels,
+            'FDCPageWebTvChannels' => $FDCPageWebTvChannels,
         );
     }
 
