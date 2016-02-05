@@ -66,7 +66,8 @@ grunt.initConfig({
 			            './css/main.css', 
 			            './css/include/*.css',
 			            './css/horizontal-menu.css',
-			            './css/accordeon.css'
+			            './css/accordeon.css',
+			            './css/faq.css'
 				        ],
 				    './css-concat/jury.css': [
 			            './css/main.css', 
