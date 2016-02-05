@@ -11,8 +11,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @Route("")
@@ -25,11 +27,12 @@ class NewsController extends Controller {
      * @Route("/")
      * @Template("FDCEventBundle:News:home.html.twig")
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
 
         $em = $this->get('doctrine')->getManager();
         $dateTime = new DateTime();
-        $locale = $this->getRequest()->getLocale();
+        $locale = $request->getLocale();
+        $isAdmin = true;
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -72,13 +75,11 @@ class NewsController extends Controller {
         ////////////////////////////////////////////////////////////////////////////////////
 
         //get articles of the day, if no article today : get article from the day before
-
-//        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime);
-//        if($homeArticles == null) {
-//            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'));
-//        }
-
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime); ///juste pour test
+        $count = 6;
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count, true);
+        if($homeArticles == null) {
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'), $count, true);
+        }
 
         //set default filters
         $filters                         = array();
@@ -87,7 +88,7 @@ class NewsController extends Controller {
         $filters['themes']['id'][0]      = 'all';
 
         foreach ($homeArticles as $key => $homeArticle) {
-            $homeArticle->image = $homeArticle->getHeader();
+
             $homeArticle->theme = $homeArticle->getTheme();
 
             if(($key % 3) == 0){
@@ -105,16 +106,23 @@ class NewsController extends Controller {
         $filters['format'] = array_merge($filters['format'], array_values($format));
 
         //split articles in two array
-        $homeArticles = $this->partition($homeArticles, 2);
-        $homeArticlesBottom = $homeArticles[1];
-        foreach($homeArticlesBottom as $bottom) {
-            $bottom->double = false;
+
+        if(count($homeArticles) > 3){
+            $homeArticles = $this->partition($homeArticles, 2);
+            $homeArticlesBottom = $homeArticles[1];
+            foreach($homeArticlesBottom as $bottom) {
+                $bottom->double = false;
+            }
+
+            $homeArticles = $homeArticles[0];
+        } else {
+            $homeArticlesBottom = null;
         }
 
-        $homeArticles = $homeArticles[0];
 
         //get images for slider articles
-        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateTime);
+        $dateArticleSlide = new DateTime();
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateArticleSlide);
 
         // TODO: clean this
         $homeSlider = array(
@@ -517,6 +525,36 @@ class NewsController extends Controller {
             'homeCategoriesFeatured' => $homeCategoriesFeatured,
             'wallPosts' => $wallPosts
         );
+    }
+
+    /**
+     * @Route("/homepage-articles/{timestamp}")
+     * @Template("FDCEventBundle:News:widgets/article-home-ajax.html.twig")
+     * @param $timestamp
+     * @return array
+     */
+    public function getArticlesFromAction($timestamp) {
+
+        $em = $this->get('doctrine')->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $date = new DateTime();
+        $dateTime = $date->setTimestamp($timestamp);
+        $count = 6;
+        $isAdmin = true;
+
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count, $isAdmin);
+
+        return array(
+            'homeArticles' => $homeArticles
+        );
+
     }
 
     /**
