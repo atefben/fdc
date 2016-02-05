@@ -575,6 +575,7 @@ $(document).ready(function() {
 		    // todo on server : security check password.
 
 		    if(v == "test") {
+		      localStorage.setItem('press-pwd', v);
 		      // $.cookie('press', '1', { expires: 365 });
 		      $('.press').removeClass('press-locked');
 		      $('.press').addClass('press-unlocked');
@@ -594,8 +595,8 @@ $(document).ready(function() {
 
 
 
-	// if cookie press
-	if($.cookie('press')) {
+	// if password is in localstorage
+	if(localStorage.getItem('press-pwd')) {
 	    $('.press').removeClass('press-locked');
 	    $('.press').addClass('press-unlocked');
 	    $('.locked').remove();
@@ -610,7 +611,7 @@ $(document).ready(function() {
 	    // todo on server : security check password.
 
 	    if(v == "test") {
-	      // $.cookie('press', '1', { expires: 365 });
+	      localStorage.setItem('press-pwd', v);
 	      $('.press').removeClass('press-locked');
 	      $('.press').addClass('press-unlocked');
 	      $('.locked').remove();
@@ -1472,6 +1473,15 @@ $(document).ready(function() {
 
         slideshows.push(slideshow);
       }
+      if($('.press-downloads').length){
+        slideshow = $('.photos_container .list').Chocolat({
+          imageSize: 'cover',
+          fullScreen: false,
+          loop:true
+        }).data('chocolat');
+
+        slideshows.push(slideshow);
+      }
 
     // close slideshow on click
     $('body').off('click', '.close-button');
@@ -1522,8 +1532,9 @@ $(document).ready(function() {
       document.body.addEventListener('touchmove', listener,false);
       //if first click add elements
       if(!$(".chocolat-top .close-button").length){
+        
         $('.chocolat-top').html('<div class="close-button"><i class="icon icon_close"></i></div>');
-        if ($('.press_medias').length) {
+        if ($('.press_medias').length || $('.press-downloads').length) {
            $('<a href="'+$(this).attr('href')+'" class="download"><i class="icon icon_telecharger"></i></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
 
         }else{
@@ -1534,21 +1545,26 @@ $(document).ready(function() {
         $('<a href="#" class="open-thumbnails"></a>').insertAfter('.chocolat-wrapper .chocolat-pagination');
         $('<div class="thumbnails"></div>').insertAfter('.chocolat-wrapper .chocolat-pagination');
       
-        $('.slideshow').find('.thumbnails .thumb').each(function() {
-            $('.chocolat-wrapper .thumbnails').append($(this).clone());
-        });
+ 
 
         if($('.all-photos').length) {
           $('.list').find('.grid-item').each(function() {
             
             $('.chocolat-wrapper .thumbnails').append('<div  class="thumb"><img src="'+ $(this).find('.chocolat-image').attr('href')+'" /></div>');
           });
-        }
-        if ($('.press_medias').length) {
+        } else if ($('.press_medias').length) {
           $('.active .list').find('.item').each(function() {
-            
             $('.chocolat-wrapper .thumbnails').append('<div  class="thumb"><img src="'+ $(this).find('.chocolat-image').attr('href')+'" /></div>');
           });
+        } else if ($('.press_downloads').length){
+          $('.photos_container .list').find('.item').each(function() {
+            $('.chocolat-wrapper .thumbnails').append('<div  class="thumb"><img src="'+ $(this).find('.chocolat-image').attr('href')+'" /></div>');
+          });
+        } else{
+
+            $('.slideshow').find('.thumbnails .thumb').each(function() {
+              $('.chocolat-wrapper .thumbnails').append($(this).clone());
+            });
         }
 
       }

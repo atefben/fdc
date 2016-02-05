@@ -2715,7 +2715,8 @@ font-weight: bolder;
   color:white;
 }
 #menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon, #menu .second-nav .icon-mobile-participer{
-  margin-right: 25px
+  margin-right: 25px;
+  font-size: inherit;
 }
 #menu .third-nav .language .icon{
   font-size: 28px;
@@ -3654,6 +3655,7 @@ p{
 	font-size: 20px;
 	margin:-5px 10px 0 0;
 }
+
 .header-press{
 	clear: both;
 }
@@ -3760,9 +3762,9 @@ p{
     font-weight: 700;
     margin-left: 20px;
 }
-.locked form.error input, .locked form.error input[type="submit"] {
-	color:#e93939;
-	border: 1px solid #e93939;
+.locked form.error input[type="password"] {
+
+	border: 2px solid #e93939;
 }
 
 /*CALENDAR*/
@@ -3981,6 +3983,21 @@ p{
 .downloads .buttons-unlocked .button:last-child, .downloads .button-already-unlocked:last-child{
 	border-right: 1px solid #c8a461;
 }
+.press-locked .buttons-unlocked, .press_medias.press-locked .buttons-unlocked{
+
+
+	display: none;
+}
+.press-unlocked .buttons-locked, .press_medias.press-unlocked .buttons-locked{
+	display: none;
+}
+
+.button-locked:hover{
+	background-color: #fff;
+    border-color: #000;
+    border-right: 1px solid #000;
+    color: #000;
+}
 .downloads .buttons{
 	text-align: left;
  	width: 470px;
@@ -4003,95 +4020,8 @@ p{
 }
 
 /*FILTERS*/
-.press-downloads #horizontal-menu{
-	margin-top: 20px;
-	background: #fff;
-	border-bottom: 1px solid #dfdfdf; 
-	border-top: 1px solid #dfdfdf; 
-}
-.press-downloads #horizontal-menu .vid p{
-	text-align: left;
-	line-height: 110px;
-}
-.press-downloads #horizontal-menu .vid{
-	box-sizing:border-box;
-}
-.press-downloads #horizontal-menu .owl-stage {
-    padding-left: 40px;
-}
-
-.press-locked .buttons-unlocked, .press_medias.press-locked .buttons-unlocked{
 
 
-	display: none;
-}
-.press-unlocked .buttons-locked, .press_medias.press-unlocked .buttons-locked{
-	display: none;
-}
-
-/*PAGE PRESS*/
-.press-downloads section{
-	opacity: 0;
-	display: none;
-}
-
-.press-downloads .header-press .container{
-	padding-bottom: 40px;
-}
-.press-downloads .downloads section ul{
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 36px;
-    color:#666666;
-    display: block;
-    margin: 0 auto 50px auto;
-    width: 300px;
-}
-.press-downloads .downloads section li{
-	list-style: disc;
-    list-style-position: inside;
-}
-
-
-.press-downloads .img-container{
-	margin: 0 auto 20px auto;
-	border: 1px solid #d6d6d6;
-	width: 290px;
-	height: 290px;
-	position: relative;
-	text-align: center;
-	line-height: 290px;
-	margin-bottom: 80px;
-}
-.press-downloads .img-container .caption{
-	position: absolute;
-	bottom: -30px;
-	text-align: left;
-}
-.press-downloads .img-container img{
-	margin: 0;
-    display: inline;
-    border: none;
-    vertical-align: middle;
-}
-.press-downloads .type-format, .press-downloads .buttons{
-	text-align: center;
-}
-.press-downloads  .animation img{
-	width: 100%;
-	margin-top: 30px;
-}
-.press-downloads  .animation .caption{
-	width: 100%;
-	margin-bottom: 30px;
-}
-.press-downloads  .animation .buttons-locked, .press-downloads  .animation .buttons-unlocked{
-	margin-bottom: 30px;
-	text-align: center;
-}
-.press-downloads  .animation .buttons-locked .button, .press-downloads  .animation .buttons-unlocked .button{
-	width: 175px;
-}
 /*BANNER IMG*/
 .banner-img:before
 {
@@ -4271,9 +4201,9 @@ p{
     font-weight: 700;
     margin-left: -1px;
 }
-#popin-press form.error input, #popin-press form.error input[type="submit"] {
-	color:#e93939;
-	border: 1px solid #e93939;
+#popin-press form.error input[type="password"] {
+
+	border: 2px solid #e93939;
 }
 #popin-press h3{
 	font-size: 20px;

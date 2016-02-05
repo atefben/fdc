@@ -493,9 +493,9 @@ $(document).ready(function() {
 	}
 
 	
-		// FIX HORIZONTAL MENU
-		$(window).on('scroll', function() {
-			if (!$('#main').hasClass('cannesclassic')) {
+	// FIX HORIZONTAL MENU
+	$(window).on('scroll', function() {
+		if (!$('#main').hasClass('cannesclassic') && !$('#main').hasClass('faq-page')) {
 		    var s = $(this).scrollTop();
 
 		    if(s > $(".header-container").height() + $('.banner-img').height()){
@@ -519,8 +519,8 @@ $(document).ready(function() {
 		    	}
 		    }
 		}
-		 });
-	
+	 });
+
 	
 
 

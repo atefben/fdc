@@ -4,7 +4,7 @@ $(document).ready(function() {
         nav: false,
         dots: false,
         smartSpeed: 500,
-        margin: 0,
+        margin: 60,
         autoWidth: true,
         loop: false,
         items: 2
