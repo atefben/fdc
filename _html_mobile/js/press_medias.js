@@ -43,14 +43,14 @@ $(document).ready(function() {
         nav: false,
         dots: false,
         smartSpeed: 500,
-        margin: 40,
+        margin: 0,
         autoWidth: true,
         loop: false,
         items: 2
     });
     menu.owlCarousel();
     var toIndex = $('a.active').parents('.owl-item').index() - 1;
-      menu.trigger("to.owl.carousel", [toIndex, 2, true]);  
+    menu.trigger("to.owl.carousel", [toIndex, 2, true]);  
  //    $('#horizontal-menu a').on('click', function(e) {
  //            e.preventDefault();
 
