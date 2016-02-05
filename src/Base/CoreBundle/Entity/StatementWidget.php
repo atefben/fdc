@@ -42,7 +42,7 @@ abstract class StatementWidget
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $position;
 
