@@ -2715,7 +2715,8 @@ font-weight: bolder;
   color:white;
 }
 #menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon, #menu .second-nav .icon-mobile-participer{
-  margin-right: 25px
+  margin-right: 25px;
+  font-size: inherit;
 }
 #menu .third-nav .language .icon{
   font-size: 28px;
@@ -3427,10 +3428,14 @@ a{
 }
 .articles .img-container{
 
-	position: relative;
+    position: relative;
+    width: 515px;
+    height: 325px;
 }
 .articles .thumb img{
-	width: 515px;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
 }
 .articles .thumb .picto{
 	position: absolute;

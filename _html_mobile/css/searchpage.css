@@ -160,9 +160,13 @@
 .landscape-carousel .img-container{
 
 	position: relative;
+	width: 515px;
+	height: 325px;
 }
 .landscape-carousel .thumb img{
-	width: 515px;
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
 }
 .landscape-carousel .thumb .picto{
 	position: absolute;
