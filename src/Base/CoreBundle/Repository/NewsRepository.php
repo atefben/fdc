@@ -136,7 +136,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getNewsByDate($locale,$festival,$dateTime)
+    public function getNewsByDate($locale,$festival,$dateTime,$count,$isAdmin = false)
     {
         $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
@@ -155,7 +155,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt < :datetime2)');
+            ->andWhere('(n.publishedAt > :datetime) AND (n.publishedAt < :datetime2)');
 
         if($locale != 'fr') {
             $qb = $qb
@@ -179,16 +179,26 @@ class NewsRepository extends EntityRepository
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
+            ->setMaxResults($count)
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', 'site-evenementiel');
+
+        if($isAdmin) {
+            $qb = $qb
+                ->setParameter('datetime', $dateTime->modify('-30 day'));
+        }
+
+        $qb = $qb
             ->getQuery()
             ->getResult();
 
         return $qb;
     }
+
+
 
     public function getNewsArticles($locale,$festival,$dateTime)
     {
