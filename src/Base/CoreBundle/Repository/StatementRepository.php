@@ -219,43 +219,39 @@ class StatementRepository extends EntityRepository
     }
 
     /**
-     * get an array of only the $locale version Info of current $festival and verify publish date is between $dateTime
+     * get an array of only the $count last Statement of $locale version of current
+     * $festival and verify publish date is between $dateTime
      *
      * @param $festival
      * @param $dateTime
+     * @param $count
      * @param $locale
      * @return mixed
      */
-    public function getStatementInfo($festival, $dateTime, $locale)
+    public function getLastStatements($festival, $dateTime, $locale, $count)
     {
         return $this->createQueryBuilder('n')
             ->join('n.sites', 's')
-            ->leftjoin('Base\CoreBundle\Entity\InfoArticle', 'na1', 'WITH', 'na1.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\InfoAudio', 'na2', 'WITH', 'na2.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\InfoImage', 'na3', 'WITH', 'na3.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\InfoVideo', 'na4', 'WITH', 'na4.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'sa4', 'WITH', 'sa4.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'sa3', 'WITH', 'sa3.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'sa2', 'WITH', 'sa2.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'sa1', 'WITH', 'sa1.id = n.id')
-            ->leftjoin('na1.translations', 'na1t')
-            ->leftjoin('na2.translations', 'na2t')
-            ->leftjoin('na3.translations', 'na3t')
-            ->leftjoin('na4.translations', 'na4t')
-            ->leftjoin('sa4.translations', 'sa4t')
-            ->leftjoin('sa3.translations', 'sa3t')
-            ->leftjoin('sa2.translations', 'sa2t')
-            ->leftjoin('sa1.translations', 'sa1t')
+            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftjoin('na.translations', 'nat')
+            ->leftjoin('naa.translations', 'naat')
+            ->leftjoin('nv.translations', 'nvt')
+            ->leftjoin('ni.translations', 'nit')
             ->where('n.festival = :festival')
             ->andWhere('s.slug = :site')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->andWhere(
-                '(na1.locale = :locale AND na1.status = :status)
-                OR (na1.locale = :locale AND nit.status = :status)
+                '(nat.locale = :locale AND nat.status = :status)
+                OR (nit.locale = :locale AND nit.status = :status)
                 OR (naat.locale = :locale AND naat.status = :status)
                 OR (nvt.locale = :locale AND nvt.status = :status)'
             )
+            ->addOrderBy('n.publishedAt', 'DESC')
+            ->setMaxResults($count)
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
@@ -264,4 +260,5 @@ class StatementRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
 }

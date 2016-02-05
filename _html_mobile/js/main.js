@@ -43,10 +43,10 @@ $(document).ready(function() {
         });
 
         setTimeout(function() {
-           $bar.css({
-         	   float: 'right',
-             width: 0
-           });
+            $bar.css({
+         	      float: 'right',
+                width: 0
+            });
         }, 200);
       });
     }

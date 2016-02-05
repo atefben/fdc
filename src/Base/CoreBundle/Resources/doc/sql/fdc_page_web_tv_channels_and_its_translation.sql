@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `fdcpage_web_tv_channels` (`id`, `image_id`, `sticky_id`, `created_at`, `updated_at`, `translate`, `translate_options`, `priority_status`, `seo_file_id`) VALUES
-(1, 1, 6, '2016-02-03 14:04:47', '2016-02-03 14:45:27', 0, 'N;', 1, NULL);
+(1, NULL, NULL, '2016-02-03 14:04:47', '2016-02-03 14:45:27', 0, 'N;', 1, NULL);
 
 --
 -- Contenu de la table `fdcpage_web_tv_channels_translation`

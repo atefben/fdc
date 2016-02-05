@@ -938,6 +938,7 @@ $(document).ready(function() {
 		    // todo on server : security check password.
 
 		    if(v == "test") {
+		      localStorage.setItem('press-pwd', v);
 		      // $.cookie('press', '1', { expires: 365 });
 		      $('.press').removeClass('press-locked');
 		      $('.press').addClass('press-unlocked');
@@ -957,8 +958,8 @@ $(document).ready(function() {
 
 
 
-	// if cookie press
-	if($.cookie('press')) {
+	// if password is in localstorage
+	if(localStorage.getItem('press-pwd')) {
 	    $('.press').removeClass('press-locked');
 	    $('.press').addClass('press-unlocked');
 	    $('.locked').remove();
@@ -973,7 +974,7 @@ $(document).ready(function() {
 	    // todo on server : security check password.
 
 	    if(v == "test") {
-	      // $.cookie('press', '1', { expires: 365 });
+	      localStorage.setItem('press-pwd', v);
 	      $('.press').removeClass('press-locked');
 	      $('.press').addClass('press-unlocked');
 	      $('.locked').remove();

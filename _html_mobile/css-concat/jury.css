@@ -1043,8 +1043,10 @@ from desktop
 .icon-mobile-burger:before { content: '\e803'; } /* '' */
 .icon-mobile-minus:before { content: '\e804'; } /* '' */
 .icon-mobile-plus:before { content: '\e805'; } /* '' */
-.icon-mobile-dailymotion:before { content: '\e806'; vertical-align: middle; } /* '' */
+.icon-mobile-dailymotion:before { content: '\e806';  } /* '' */
 .icon-mobile-participer:before { content: '\e807'; vertical-align: middle;} /* '' */
+
+.icon-mobile-chaines:before { content: '\e808'; } /* '' */
 /* Socials */
 #socials{
     text-align: center;
@@ -2089,6 +2091,10 @@ article .picto .icon{
   font-size: 3rem;
   padding-bottom: 20px;
 }
+.banner-img .title .icon-mobile-chaines{
+  font-size: 80px;
+  padding-bottom: 20px;
+}
 .banner-img a{
 
     color: #c8a461;
@@ -2715,7 +2721,8 @@ font-weight: bolder;
   color:white;
 }
 #menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon, #menu .second-nav .icon-mobile-participer{
-  margin-right: 25px
+  margin-right: 25px;
+  font-size: inherit;
 }
 #menu .third-nav .language .icon{
   font-size: 28px;
@@ -3021,7 +3028,7 @@ display: inline-block;
 }
 #myselection-filters .owl-item:last-child:after {
   
-    background-color: #c8a461;
+    background-color: #999;
     left: 0px;
     content: '';
     display: block;
@@ -3103,7 +3110,7 @@ display: inline-block;
 
   opacity: 1;
 }
-#main:not(.searchpage, .faq-page){
+#main:not(.searchpage, .faq-page, .press-downloads){
   background-color: #141414;
 }
 #banner-top, #banner-bottom{

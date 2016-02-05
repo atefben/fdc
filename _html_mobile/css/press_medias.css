@@ -128,3 +128,12 @@
 .press_medias .button-locked:last-child {
     border-right: 1px solid #dfdfdf;
 }
+.press_medias .selections.show{
+    opacity: 1;
+}
+.press_medias .selections{
+    opacity: 0;
+    -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  
+}

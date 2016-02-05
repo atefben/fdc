@@ -185,7 +185,7 @@
 }
 #myselection-filters .owl-item:last-child:after {
   
-    background-color: #c8a461;
+    background-color: #999;
     left: 0px;
     content: '';
     display: block;

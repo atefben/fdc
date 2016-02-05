@@ -26,6 +26,7 @@ class WebTvAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('id')
             ->add('name', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
@@ -67,7 +68,9 @@ class WebTvAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('name', null, array('template' => 'BaseAdminBundle:WebTv:list_name.html.twig'))
+            ->add('name', null, array(
+                'template' => 'BaseAdminBundle:WebTv:list_name.html.twig',
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => WebTv::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'

@@ -102,8 +102,11 @@ class NewsController extends Controller {
             }
 
         }
-        $format = $homeArticles[0]->getTypes();
-        $filters['format'] = array_merge($filters['format'], array_values($format));
+
+        if(!empty($homeArticles)) {
+            $format = $homeArticles[0]->getTypes();
+            $filters['format'] = array_merge($filters['format'], array_values($format));
+        }
 
         //split articles in two array
 
