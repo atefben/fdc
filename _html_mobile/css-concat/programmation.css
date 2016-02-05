@@ -3091,10 +3091,11 @@ display: inline-block;
 .calendar .venues {
     position: relative;
     float: left;
-    width:calc(100% - 125px);
+    width:515px;
+    /*width: 100%*/
 }
 .calendar .venues .venue {
-    float: left;
+    /*float: left;*/
     height: 3400px;
     width: 340px;
 }

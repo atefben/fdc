@@ -41,7 +41,6 @@ abstract class Statement implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $id;
 
@@ -50,7 +49,6 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
      */
     private $theme;
@@ -74,7 +72,6 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $displayedHome;
 
@@ -90,7 +87,6 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $signature;
 
@@ -99,42 +95,36 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="StatementTag", mappedBy="statement", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="StatementStatementAssociated", mappedBy="statement", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedStatement;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedFilm;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedEvent;
 
     /**
      * @ORM\OneToMany(targetEntity="StatementFilmProjectionAssociated", mappedBy="statement", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedProjections;
 
     /**
      * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="statement", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedFilms;
 
@@ -144,7 +134,6 @@ abstract class Statement implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"persist"})
      *
      * @ORM\OrderBy({"position" = "ASC"})
-     * @Groups({"news_list", "news_show"})
      */
     private $widgets;
 
@@ -153,7 +142,6 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $sites;
 
@@ -161,7 +149,6 @@ abstract class Statement implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
      */
     private $publishedAt;
 
@@ -169,14 +156,12 @@ abstract class Statement implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
      */
     private $publishEndedAt;
 
     /**
      * ArrayCollection
      *
-     * @Groups({"news_list", "news_show"})
      */
     protected $translations;
 
@@ -185,7 +170,6 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $createdBy;
 
@@ -194,7 +178,6 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $updatedBy;
 
@@ -203,6 +186,9 @@ abstract class Statement implements TranslateMainInterface
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->associatedStatement = new ArrayCollection();
+        $this->associatedProjections = new ArrayCollection();
+        $this->associatedFilms = new ArrayCollection();
     }
 
     public function __toString() {
@@ -229,7 +215,6 @@ abstract class Statement implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"news_list", "news_show"})
      */
     public function getStatementType()
     {
@@ -279,7 +264,7 @@ abstract class Statement implements TranslateMainInterface
     {
         return $this->widgets;
     }
-
+    
     /**
      * Set theme
      *

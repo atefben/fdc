@@ -52,7 +52,7 @@ class FDCPageWebTvChannels implements TranslateMainInterface
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     private $image;
 
@@ -60,29 +60,6 @@ class FDCPageWebTvChannels implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="WebTv")
      */
     private $sticky;
-
-    /**
-     * Set image
-     *
-     * @param \Base\CoreBundle\Entity\MediaImage $image
-     * @return FDCPageWebTvChannels
-     */
-    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Base\CoreBundle\Entity\MediaImage 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
 
     /**
      * Set sticky
@@ -109,6 +86,29 @@ class FDCPageWebTvChannels implements TranslateMainInterface
 
     public function __toString()
     {
-        return 'Page WebTV - Les chaînes';
+        return 'Les chaînes';
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return FDCPageWebTvChannels
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

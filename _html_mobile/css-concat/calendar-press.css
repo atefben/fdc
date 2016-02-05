@@ -3091,10 +3091,11 @@ display: inline-block;
 .calendar .venues {
     position: relative;
     float: left;
-    width:calc(100% - 125px);
+    width:515px;
+    /*width: 100%*/
 }
 .calendar .venues .venue {
-    float: left;
+    /*float: left;*/
     height: 3400px;
     width: 340px;
 }
@@ -4289,6 +4290,10 @@ p{
 
 .calendar-press #timeline a{
 	color: #fff;
+}
+.calendar-press .section-calendar{
+	height: 3531px;
+    background-color: #3a3a3a;
 }
 .calendar-press .header-press .container {
     padding: 60px 0 30px 0;

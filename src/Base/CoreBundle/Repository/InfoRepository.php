@@ -218,4 +218,47 @@ class InfoRepository extends EntityRepository
             ->getOneOrNullResult();
     }
 
+    /**
+     * get an array of only the $count last Info of $locale version of current
+     * $festival and verify publish date is between $dateTime
+     *
+     * @param $festival
+     * @param $dateTime
+     * @param $count
+     * @param $locale
+     * @return mixed
+     */
+    public function getLastInfos($festival, $dateTime, $locale, $count)
+    {
+        return $this->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftjoin('na.translations', 'nat')
+            ->leftjoin('naa.translations', 'naat')
+            ->leftjoin('nv.translations', 'nvt')
+            ->leftjoin('ni.translations', 'nit')
+            ->where('n.festival = :festival')
+            ->andWhere('s.slug = :site')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->andWhere(
+                '(nat.locale = :locale AND nat.status = :status)
+                OR (nit.locale = :locale AND nit.status = :status)
+                OR (naat.locale = :locale AND naat.status = :status)
+                OR (nvt.locale = :locale AND nvt.status = :status)'
+            )
+            ->addOrderBy('n.publishedAt', 'DESC')
+            ->setMaxResults($count)
+            ->setParameter('festival', $festival)
+            ->setParameter('locale', $locale)
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('site', 'site-evenementiel')
+            ->getQuery()
+            ->getResult();
+    }
+
 }

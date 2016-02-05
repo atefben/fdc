@@ -64,6 +64,12 @@ class MediaRepository extends EntityRepository
         return $qb;
     }
 
+    /**
+     * Find all displayed images of the day
+     *
+     * @param $locale
+     * @return \Doctrine\ORM\Query
+     */
     public function getImageMediaByDay($locale,$festival,$dateTime)
     {
 
@@ -74,7 +80,6 @@ class MediaRepository extends EntityRepository
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
-
             ->where('m.festival = :festival')
             ->andWhere('s.slug = :site_slug')
             ->andWhere('(mit.locale = :locale AND mit.status = :status)')
@@ -99,10 +104,10 @@ class MediaRepository extends EntityRepository
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
-            ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel')
 
             ->getQuery()
+//            ->getParameters();
             ->getResult();
 
         return $qb;

@@ -28,9 +28,9 @@
             </div>
             <div class="grid-container">
                 <div class="grid-wrapper">
-                    {#{% for article in homeNews %}#}
-                        {#{% include 'FDCEventBundle:News:widgets/article.html.twig' %}#}
-                    {#{% endfor %}#}
+                    {% for article in homeNews %}
+                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
