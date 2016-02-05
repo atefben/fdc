@@ -92,7 +92,7 @@ trait TranslateMain
      */
     public function findTranslationByLocale($locale)
     {
-        foreach ($this->translations as $translation) {
+        foreach ($this->getTranslations() as $translation) {
             if ($translation->getLocale() == $locale) {
                 return $translation;
             }

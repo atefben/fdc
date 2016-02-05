@@ -9,27 +9,57 @@
                     <h2>{{ 'webtv.channel.title.leschaines'|trans }}</h2>
                 </div>
             </div>
-            <div class="img" style="background-image:url({{ asset('bundles/fdcevent/img/webtv/002.jpg') }})"></div>
+            {% if FDCPageWebTvChannels.image %}
+                {% if FDCPageWebTvChannels.image|trans_fallback('status') == 5 %}
+                    <div class="img"
+                         style="background-image:url('{% path FDCPageWebTvChannels.image|trans_fallback('file'), '1280x808' %}')"></div>
+                {% else %}
+                    <div class="img"
+                         style="background-image:url('{% path FDCPageWebTvChannels.image|trans_fallback('file', 'fr'), '1280x808' %}')"></div>
+                {% endif %}
+            {% else %}
+                <div class="img" style="background-image:url({{ asset('bundles/fdcevent/img/webtv/002.jpg') }})"></div>
+            {% endif %}
         </div>
         <div id="gridAudios" class="grid grid-wrapper">
             <div class="grid-sizer"></div>
 
             {% for channel in channels %}
-                <div class="item {{ channel.filter.date }} {{ channel.filter.theme }} shadow-bottom playlist">
-                    <img src="{{ channel.image.src }}" srcset="{{ channel.image.src }} 1x, {{ channel.image.large }} 2x"
-                         alt="">
+                <div class="item {{ channel.createdAt|date('d-m-Y') }} {{ channel.theme }} shadow-bottom playlist">
+                    {#{% thumbnail file, '975x616' with {'alt': photo|trans_fallback('alt') } %}#}
+                    {% if channel.image %}
+                        {% if channel.image|trans_fallback('file') %}
+                            <img src="{% path channel.image|trans_fallback('file'), '1280x808' %}"
+                                 srcset="{% path channel.image|trans_fallback('file'), '573x362' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
+                                 alt="">
+                        {% else %}
+                            <img src="{% path channel.image|trans_fallback('file', 'fr'), '1280x808' %}"
+                                 srcset="{% path channel.image|trans_fallback('file', 'fr'), '573x362' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                 alt="">
+                        {% endif %}
+                    {% elseif channel.mediaVideos|length and channel.mediaVideos|last.image %}{# If channel image does not exist #}
+                        {% if channel.mediaVideos|last.image|trans_fallback('file') %}
+                            <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %}"
+                                 srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '573x362' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
+                                 alt="">
+                        {% else %}
+                            <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %}"
+                                 srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '573x362' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                 alt="">
+                        {% endif %}
+                    {% endif %}
                     <div class="picto"><i class="icon icon_playlist"></i></div>
                     <div class="info">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                {#<a href="{{ path('fdc_event_television_getchannel', {'slug': channel.slug }) }}" class="category">{{ channel.title }}</a>#}
-                                <p>{{ channel.nbVideos }} {{ 'webtv.channel.text.videos'|trans }}</p>
+                                <a href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug') }) }}"
+                                   class="category">{% if loop.first %}{{ 'webtv.channel.most_viewed'|trans }}{% else %}{{ channel|trans_fallback('name') }}{% endif %}</a>
+                                <p>{{ channel.mediaVideos|length }} {{ 'webtv.channel.text.videos'|trans }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-
         </div>
     </div>
 {% endblock body %}
