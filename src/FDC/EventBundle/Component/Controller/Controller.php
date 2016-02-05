@@ -24,11 +24,25 @@ class Controller extends BaseController
     public function getSettings() {
         $settings = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
 
-        if ($settings === null || $settings->getFestival() === null) {
-            throw new NotFoundHttpException();
+        if ($settings === null) {
+            throw $this->createNotFoundException();
         }
 
         return $settings;
     }
+
+    /**
+     * @return Settings
+     * @throws NotFoundHttpException
+     */
+    public function getFestival() {
+
+        if (!$this->getSettings() || $this->getSettings()->getFestival() === null) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->getSettings()->getFestival();
+    }
+
 
 }

@@ -11,27 +11,28 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @Route("")
  * Class NewsController
  * @package FDC\EventBundle\Controller
  */
-class NewsController extends Controller
-{
+class NewsController extends Controller {
 
     /**
      * @Route("/")
      * @Template("FDCEventBundle:News:home.html.twig")
      */
-    public function indexAction()
-    {
+    public function indexAction(Request $request) {
 
         $em = $this->get('doctrine')->getManager();
         $dateTime = new DateTime();
-        $locale = $this->getRequest()->getLocale();
+        $locale = $request->getLocale();
+        $isAdmin = true;
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -39,8 +40,8 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
@@ -49,16 +50,16 @@ class NewsController extends Controller
             'date' => 'ASC'
         ), 12, null);
 
-        $socialGraphTimeline = array();
+        $socialGraphTimeline      = array();
         $socialGraphTimelineCount = array();
-        $socialGraph = array();
+        $socialGraph              = array();
 
         foreach ($timeline as $key => $timelineDate) {
             $socialGraphTimeline[]['date'] = $timelineDate->getDate();
-            $socialGraphTimelineCount[] = $timelineDate->getCount();
+            $socialGraphTimelineCount[]    = $timelineDate->getCount();
         }
 
-        $socialGraph['timeline'] = $socialGraphTimeline;
+        $socialGraph['timeline']      = $socialGraphTimeline;
         $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
 
         // Homepage
@@ -69,61 +70,67 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////       ARTICLE HOME         ///////////////////////////////
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////       ARTICLE HOME         ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
         //get articles of the day, if no article today : get article from the day before
-
-//        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime);
-//        if($homeArticles == null) {
-//            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'));
-//        }
-
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime); ///juste pour test
+        $count = 6;
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count, true);
+        if($homeArticles == null) {
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'), $count, true);
+        }
 
         //set default filters
-        $filters = array();
-        $filters['format'][0] = 'all';
+        $filters                         = array();
+        $filters['format'][0]            = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0] = 'all';
+        $filters['themes']['id'][0]      = 'all';
 
         foreach ($homeArticles as $key => $homeArticle) {
-            $homeArticle->image = $homeArticle->getHeader();
+
             $homeArticle->theme = $homeArticle->getTheme();
 
-            if (($key % 3) == 0) {
+            if(($key % 3) == 0){
                 $homeArticle->double = true;
             }
 
             //check if filters don't already exist
             if (!in_array($homeArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][] = $homeArticle->getTheme()->getId();
+                $filters['themes']['id'][]    = $homeArticle->getTheme()->getId();
                 $filters['themes']['content'][] = $homeArticle->getTheme();
             }
 
         }
-        if (array_key_exists(0, $homeArticles)) {
+
+        if(!empty($homeArticles)) {
             $format = $homeArticles[0]->getTypes();
             $filters['format'] = array_merge($filters['format'], array_values($format));
         }
 
         //split articles in two array
-        $homeArticles = $this->partition($homeArticles, 2);
-        $homeArticlesBottom = $homeArticles[1];
-        foreach ($homeArticlesBottom as $bottom) {
-            $bottom->double = false;
+
+        if(count($homeArticles) > 3){
+            $homeArticles = $this->partition($homeArticles, 2);
+            $homeArticlesBottom = $homeArticles[1];
+            foreach($homeArticlesBottom as $bottom) {
+                $bottom->double = false;
+            }
+
+            $homeArticles = $homeArticles[0];
+        } else {
+            $homeArticlesBottom = null;
         }
 
-        $homeArticles = $homeArticles[0];
 
         //get images for slider articles
-        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateTime);
+        $dateArticleSlide = new DateTime();
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateArticleSlide);
 
         // TODO: clean this
         $homeSlider = array(
             array(
-                'id'    => 0,
+                'id' => 0,
                 'image' => array(
                     'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
                 ),
@@ -131,7 +138,7 @@ class NewsController extends Controller
                 'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
             ),
             array(
-                'id'    => 0,
+                'id' => 0,
                 'image' => array(
                     'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
                 ),
@@ -139,7 +146,7 @@ class NewsController extends Controller
                 'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
             ),
             array(
-                'id'    => 0,
+                'id' => 0,
                 'image' => array(
                     'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
                 ),
@@ -148,331 +155,331 @@ class NewsController extends Controller
             )
         );
 
-        $featuredMovies = array(
-            'type'  => 'fullVideo',
+        $featuredMovies         = array(
+            'type' => 'fullVideo',
             'video' => array(
                 array(
-                    'film'   => array(
-                        'title'  => 'Sils Maria',
-                        'theme'  => 'Compétition',
+                    'film' => array(
+                        'title' => 'Sils Maria',
+                        'theme' => 'Compétition',
                         'author' => array(
                             'fullName' => 'Olivier ASSAYAS',
-                            'slug'     => 'olivier-assayas'
+                            'slug' => 'olivier-assayas'
                         )
                     ),
                     'source' => array(
-                        'm4v'   => 'https://broken-links.com/tests/media/BigBuck.m4v',
-                        'webm'  => 'https://broken-links.com/tests/media/BigBuck.webm',
+                        'm4v' => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                        'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
                         'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
                     )
                 ),
                 array(
-                    'film'   => array(
-                        'title'  => 'Sils Maria',
-                        'theme'  => 'Compétition',
+                    'film' => array(
+                        'title' => 'Sils Maria',
+                        'theme' => 'Compétition',
                         'author' => array(
                             'fullName' => 'Olivier ASSAYAS',
-                            'slug'     => 'olivier-assayas'
+                            'slug' => 'olivier-assayas'
                         )
                     ),
                     'source' => array(
-                        'm4v'   => 'https://broken-links.com/tests/media/BigBuck.m4v',
-                        'webm'  => 'https://broken-links.com/tests/media/BigBuck.webm',
+                        'm4v' => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                        'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
                         'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
                     )
                 )
 
             )
         );
-        $homeCategories = array(
+        $homeCategories         = array(
             array(
-                'title'  => 'Le jury',
-                'blank'  => false,
+                'title' => 'Le jury',
+                'blank' => false,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push01.jpg'
                 )
             ),
             array(
-                'title'  => 'Le palmares',
-                'blank'  => false,
+                'title' => 'Le palmares',
+                'blank' => false,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push02.jpg'
                 )
             ),
             array(
-                'title'  => 'La programmation',
-                'blank'  => false,
+                'title' => 'La programmation',
+                'blank' => false,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push03.jpg'
                 )
             )
         );
         $homeCategoriesFeatured = array(
             array(
-                'title'  => 'Espace presse',
-                'blank'  => false,
+                'title' => 'Espace presse',
+                'blank' => false,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push04.jpg'
                 )
             ),
             array(
-                'title'  => '',
-                'blank'  => true,
+                'title' => '',
+                'blank' => true,
                 'bigger' => true,
-                'href'   => '',
-                'image'  => array(
+                'href' => '',
+                'image' => array(
                     'path' => ''
                 )
             ),
             array(
-                'title'  => 'Participer <br> au festival',
-                'blank'  => false,
+                'title' => 'Participer <br> au festival',
+                'blank' => false,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push05.jpg'
                 )
             ),
             array(
-                'title'  => 'L\'oeil du photographe',
-                'blank'  => false,
+                'title' => 'L\'oeil du photographe',
+                'blank' => false,
                 'bigger' => true,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push06.jpg'
                 )
             ),
             array(
-                'title'  => 'Lorem ipsum',
-                'blank'  => true,
+                'title' => 'Lorem ipsum',
+                'blank' => true,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'img.jpg'
                 )
             ),
             array(
-                'title'  => 'Lorem ipsum',
-                'blank'  => true,
+                'title' => 'Lorem ipsum',
+                'blank' => true,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'img.jpg'
                 )
             ),
             array(
-                'title'  => 'Les évènements',
-                'blank'  => false,
+                'title' => 'Les évènements',
+                'blank' => false,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push07.jpg'
                 )
             ),
             array(
-                'title'  => '69 ans d\'archives',
-                'blank'  => false,
+                'title' => '69 ans d\'archives',
+                'blank' => false,
                 'bigger' => false,
-                'href'   => '/category',
-                'image'  => array(
+                'href' => '/category',
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push08.jpg'
                 )
             )
         );
-        $videos = array(
+        $videos                 = array(
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => true,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos'    => 125,
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'nbVideos' => 125,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             ),
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => true,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos'    => 125,
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'nbVideos' => 125,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             ),
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => true,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos'    => 125,
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'nbVideos' => 125,
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             ),
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => false,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'nbVideos'    => 125,
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'nbVideos' => 125,
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             ),
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => false,
-                'nbVideos'    => 125,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'nbVideos' => 125,
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             ),
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => false,
-                'nbVideos'    => 125,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'nbVideos' => 125,
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             ),
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => false,
-                'nbVideos'    => 125,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'nbVideos' => 125,
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             ),
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => false,
-                'nbVideos'    => 125,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'nbVideos' => 125,
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             ),
             array(
-                'theme'       => 'Conférence de presse',
+                'theme' => 'Conférence de presse',
                 'most_viewed' => false,
-                'nbVideos'    => 125,
-                'title'       => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt'   => new \DateTime(),
-                'copyright'   => 'Crédit Image : VALERY HACHE / AFP',
-                'image'       => array(
-                    'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
-                    'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                'nbVideos' => 125,
+                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                'createdAt' => new \DateTime(),
+                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
+                'image' => array(
+                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
+                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
                     'large' => 'http://dummyimage.com/640x808/000/fff.png'
                 ),
-                'filter'      => array(
-                    'date'  => 'date1',
+                'filter' => array(
+                    'date' => 'date1',
                     'theme' => 'theme1'
                 )
             )
         );
-        $videoSlider = array(
+        $videoSlider            = array(
             array(
-                'title'    => 'Lorem Ipsum',
-                'source'   => array(
-                    'mp4'  => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                'title' => 'Lorem Ipsum',
+                'source' => array(
+                    'mp4' => 'https://broken-links.com/tests/media/BigBuck.m4v',
                     'webm' => 'https://broken-links.com/tests/media/BigBuck.webm'
                 ),
-                'image'    => array(
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
                 ),
                 'category' => 'Lorem ipsum',
-                'author'   => array(
+                'author' => array(
                     'fullName' => 'Lorem Ipsum'
                 )
             ),
             array(
-                'title'    => 'Lorem Ipsum',
-                'source'   => array(
-                    'mp4'  => 'https://broken-links.com/tests/media/BigBuck.m4v',
+                'title' => 'Lorem Ipsum',
+                'source' => array(
+                    'mp4' => 'https://broken-links.com/tests/media/BigBuck.m4v',
                     'webm' => 'https://broken-links.com/tests/media/BigBuck.webm'
                 ),
-                'image'    => array(
+                'image' => array(
                     'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
                 ),
                 'category' => 'Lorem ipsum',
-                'author'   => array(
+                'author' => array(
                     'fullName' => 'Lorem Ipsum'
                 )
             )
         );
-        $wallPosts = array(
+        $wallPosts              = array(
             array(
                 'big' => true
             ),
@@ -506,21 +513,51 @@ class NewsController extends Controller
         );
 
         return array(
-            'homepage'               => $homepage,
-            'socialGraph'            => $socialGraph,
-            'homeArticles'           => $homeArticles,
-            'homeArticlesBottom'     => $homeArticlesBottom,
-            'homeArticlesSlider'     => $homeArticlesSlider,
+            'homepage' => $homepage,
+            'socialGraph' => $socialGraph,
+            'homeArticles' => $homeArticles,
+            'homeArticlesBottom' => $homeArticlesBottom,
+            'homeArticlesSlider' => $homeArticlesSlider,
             // TODO: clean this
-            'homeSlider'             => $homeSlider,
-            'filters'                => $filters,
-            'videos'                 => $videos,
-            'videoSlider'            => $videoSlider,
-            'featuredMovies'         => $featuredMovies,
-            'homeCategories'         => $homeCategories,
+            'homeSlider' => $homeSlider,
+            'filters' => $filters,
+            'videos' => $videos,
+            'videoSlider' => $videoSlider,
+            'featuredMovies' => $featuredMovies,
+            'homeCategories' => $homeCategories,
             'homeCategoriesFeatured' => $homeCategoriesFeatured,
-            'wallPosts'              => $wallPosts
+            'wallPosts' => $wallPosts
         );
+    }
+
+    /**
+     * @Route("/homepage-articles/{timestamp}")
+     * @Template("FDCEventBundle:News:widgets/article-home-ajax.html.twig")
+     * @param $timestamp
+     * @return array
+     */
+    public function getArticlesFromAction($timestamp) {
+
+        $em = $this->get('doctrine')->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $date = new DateTime();
+        $dateTime = $date->setTimestamp($timestamp);
+        $count = 6;
+        $isAdmin = true;
+
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count, $isAdmin);
+
+        return array(
+            'homeArticles' => $homeArticles
+        );
+
     }
 
     /**
@@ -529,13 +566,12 @@ class NewsController extends Controller
      * @param $slug
      * @return array
      */
-    public function getAction($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $locale = $this->getRequest()->getLocale();
+    public function getAction($slug) {
+        $em       = $this->getDoctrine()->getManager();
+        $locale   = $this->getRequest()->getLocale();
         //$token = $this->get('security.token_storage')->getToken();
         //$isAdmin = ($token) ? true : false;
-        $isAdmin = true;
+        $isAdmin  = true;
         $dateTime = new DateTime();
 
         // GET FDC SETTINGS
@@ -579,7 +615,7 @@ class NewsController extends Controller
         $programmations = array();
         if ($associatedProgrammation != null) {
             foreach ($associatedProgrammation as $projection) {
-                if ($type == 'event') {
+                if($type == 'event') {
                     $programmations[] = $projection->getAssociation();
                 } else {
                     $programmations[] = $projection->getProjection();
@@ -590,25 +626,25 @@ class NewsController extends Controller
 
         //get focus articles
         $associatedNews = $news->getAssociatedNews();
-        $focusArticles = array();
+        $focusArticles  = array();
         foreach ($associatedNews as $associatedNew) {
-            if ($associatedNew->getAssociation() != null) {
+            if($associatedNew->getAssociation() != null) {
                 $focusArticles[] = $associatedNew->getAssociation();
             }
         }
 
         //get day articles
-        $count = 3;
-        $newsDate = $news->getPublishedAt();
+        $count           = 3;
+        $newsDate        = $news->getPublishedAt();
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
 
         return array(
-            'focusArticles'          => $focusArticles,
-            'programmations'         => $programmations,
+            'focusArticles' => $focusArticles,
+            'programmations' => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
-            'news'                   => $news,
-            'associatedFilm'         => $associatedFilm,
-            'sameDayArticles'        => $sameDayArticles
+            'news' => $news,
+            'associatedFilm' => $associatedFilm,
+            'sameDayArticles' => $sameDayArticles
         );
     }
 
@@ -617,12 +653,11 @@ class NewsController extends Controller
      *
      * @Template("FDCEventBundle:News/list:article.html.twig")
      */
-    public function getArticlesAction()
-    {
+    public function getArticlesAction() {
         //$offset = 30;
         $dateTime = new DateTime();
 
-        $em = $this->getDoctrine()->getManager();
+        $em     = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
 
         // GET FDC SETTINGS
@@ -638,20 +673,20 @@ class NewsController extends Controller
         }
 
         //set default filters
-        $filters = array();
-        $filters['dates'][0] = 'all';
-        $filters['dateFormated'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
+        $filters['dateFormated'][0]      = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0] = 'all';
+        $filters['themes']['id'][0]      = 'all';
 
 
         foreach ($newsArticles as $key => $newsArticle) {
             $isPublished = ($newsArticles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
-            if ($isPublished) {
+            if($isPublished) {
                 $newsArticle->image = $newsArticle->getHeader();
                 $newsArticle->theme = $newsArticle->getTheme();
 
-                if (($key % 3) == 0) {
+                if(($key % 3) == 0){
                     $newsArticle->double = true;
                 }
 
@@ -663,7 +698,7 @@ class NewsController extends Controller
                 }
 
                 if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                    $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
+                    $filters['themes']['id'][]    = $newsArticle->getTheme()->getId();
                     $filters['themes']['content'][] = $newsArticle->getTheme();
                 }
             } else {
@@ -673,7 +708,7 @@ class NewsController extends Controller
 
         return array(
             'articles' => $newsArticles,
-            'filters'  => $filters
+            'filters' => $filters
         );
     }
 
@@ -681,8 +716,7 @@ class NewsController extends Controller
      * @Route("/photos")
      * @Template("FDCEventBundle:News/list:photo.html.twig")
      */
-    public function getPhotosAction()
-    {
+    public function getPhotosAction() {
 
         $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
@@ -698,19 +732,19 @@ class NewsController extends Controller
         $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
-        $filters = array();
-        $filters['dates'][0] = 'all';
-        $filters['dateFormated'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
+        $filters['dateFormated'][0]      = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0] = 'all';
+        $filters['themes']['id'][0]      = 'all';
 
         foreach ($photos as $key => $photo) {
             $isPublished = ($photo !== null) ? ($photo->findTranslationByLocale('fr')->getStatus() === MediaImageTranslation::STATUS_PUBLISHED) : false;
 
-            if ($isPublished == true) {
+            if($isPublished == true) {
                 $photo->theme = $photo->getTheme();
 
-                if (($key % 3) == 0) {
+                if(($key % 3) == 0){
                     $photo->double = true;
                 }
 
@@ -733,7 +767,7 @@ class NewsController extends Controller
         }
 
         return array(
-            'photos'  => $photos,
+            'photos' => $photos,
             'filters' => $filters
         );
     }
@@ -742,8 +776,7 @@ class NewsController extends Controller
      * @Route("/videos")
      * @Template("FDCEventBundle:News/list:video.html.twig")
      */
-    public function getVideosAction()
-    {
+    public function getVideosAction() {
 
         $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
@@ -759,29 +792,29 @@ class NewsController extends Controller
         $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
-        $filters = array();
-        $filters['dates'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
+        $filters['themes']['slug'][0]    = 'all';
 
         foreach ($videos as $key => $video) {
             $isPublished = ($video !== null) ? ($video->findTranslationByLocale('fr')->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED) : false;
 
-            if ($isPublished == true) {
+            if($isPublished == true) {
                 $video->theme = $video->getTheme();
 
-                if (($key % 3) == 0) {
+                if(($key % 3) == 0){
                     $video->double = true;
                 }
 
                 //check if filters don't already exist
                 if (!in_array($video->getPublishedAt(), $filters['dates'])) {
-                    $date = $video->getPublishedAt();
+                    $date               = $video->getPublishedAt();
                     $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
                 }
 
                 if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
-                    $filters['themes']['slug'][] = $video->getTheme()->getName();
+                    $filters['themes']['slug'][]    = $video->getTheme()->getName();
                     $filters['themes']['content'][] = $video->getTheme();
                 }
 
@@ -791,7 +824,7 @@ class NewsController extends Controller
         }
 
         return array(
-            'videos'  => $videos,
+            'videos' => $videos,
             'filters' => $filters
         );
 
@@ -801,8 +834,7 @@ class NewsController extends Controller
      * @Route("/audios")
      * @Template("FDCEventBundle:News/list:audio.html.twig")
      */
-    public function getAudiosAction()
-    {
+    public function getAudiosAction() {
 
         $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
@@ -818,19 +850,19 @@ class NewsController extends Controller
         $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
-        $filters = array();
-        $filters['dates'][0] = 'all';
+        $filters                         = array();
+        $filters['dates'][0]             = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
+        $filters['themes']['slug'][0]    = 'all';
 
         foreach ($audios as $key => $audio) {
             $isPublished = ($audio !== null) ? ($audio->findTranslationByLocale('fr')->getStatus() === MediaAudioTranslation::STATUS_PUBLISHED) : false;
 
-            if ($isPublished == true) {
+            if($isPublished == true) {
 
                 $audio->theme = $audio->getTheme();
 
-                if (($key % 3) == 0) {
+                if(($key % 3) == 0){
                     $audio->double = true;
                 }
 
@@ -852,7 +884,7 @@ class NewsController extends Controller
         }
 
         return array(
-            'audios'  => $audios,
+            'audios' => $audios,
             'filters' => $filters
         );
     }
@@ -865,16 +897,15 @@ class NewsController extends Controller
      * @param $p
      * @return array
      */
-    private function partition($list, $p)
-    {
-        $listlen = count($list);
-        $partlen = floor($listlen / $p);
+    private function partition($list, $p ) {
+        $listlen = count( $list );
+        $partlen = floor( $listlen / $p );
         $partrem = $listlen % $p;
         $partition = array();
         $mark = 0;
         for ($px = 0; $px < $p; $px++) {
             $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
-            $partition[$px] = array_slice($list, $mark, $incr);
+            $partition[$px] = array_slice( $list, $mark, $incr );
             $mark += $incr;
         }
         return $partition;
