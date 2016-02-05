@@ -4308,10 +4308,12 @@ p{
 .press-downloads #horizontal-menu .vid p{
     text-align: left;
     line-height: 110px;
+    font-size: 23px;
+    font-weight: 700;
 }
 .press-downloads #horizontal-menu .vid{
     box-sizing:border-box;
-    padding:0;
+    padding: 0;
 }
 .press-downloads #horizontal-menu .owl-stage {
     padding-left: 40px;
@@ -4449,4 +4451,7 @@ p{
     height: 100%;
     background-position: center center;
   background-size: cover;
+}
+.press-downloads .affiche , .press-downloads .signature{
+    margin-top: 40px;
 }
