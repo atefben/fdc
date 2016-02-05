@@ -24,8 +24,8 @@
             "urls" : {
                 "calendarProgrammationUrl" : "calendarprogrammation.html",
                 "eventUrl" : "load-evenements.php",
-                "newsUrl" : "news.html",
-                "newsUrlNext" : "news_page2.html",
+                "newsUrl" : "{{ path('fdc_event_news_getarticlesfrom',{ 'timestamp': 1453729436 }) }}",
+                "newsUrlNext" : "{{ path('fdc_event_news_getarticlesfrom',{ 'timestamp': '1453729436' }) }}",
                 "loadPressRelease" : "load-communique.php",
                 "selectionUrl" : "{{ url('fdc_event_global_suggestion') }}",
                 "newsletterUrl": "{{ url('fdc_event_global_newsletter') }}",

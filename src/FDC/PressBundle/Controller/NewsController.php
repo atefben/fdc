@@ -71,32 +71,16 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $schedulingDays = array(
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            )
-        );
+
+        $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
+        $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
+
+        $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
+        array_walk($schedulingDays, function (&$value) {
+            $value = "2016-05-" . $value;
+        });
+
+        //$events = $em->getRepository('BaseCoreBundle:PressProjection')->findAll();
 
         $events = array(
             'place' => array(

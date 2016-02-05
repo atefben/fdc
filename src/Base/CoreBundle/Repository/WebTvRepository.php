@@ -96,7 +96,8 @@ class WebTvRepository extends EntityRepository
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function getWebTvBySlug($slug, $locale, $festival) {
+    public function getWebTvBySlug($slug, $locale, $festival)
+    {
         $qb = $this->createQueryBuilder('wt');
         $qb->join('wt.translations', 'wtt')
             ->where('wtt.slug = :slug')
@@ -106,5 +107,26 @@ class WebTvRepository extends EntityRepository
             ->andWhere('wt.festival = :festival')
             ->setParameter('festival', $festival);
         return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @return array
+     */
+    public function getWebTvByLocale($locale, $festival)
+    {
+        $qb = $this->createQueryBuilder('wt');
+
+        $qb->join('wt.translations', 'wtt')
+            ->where('wt.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->andWhere('wtt.locale = :locale')
+            ->setParameter('locale', $locale)
+            ->andWhere('wtt.status in (1, 5)')
+            ->andWhere('SIZE(wt.mediaVideos) >= 1')
+        ;
+
+        return $qb->getQuery()->getResult();
     }
 }

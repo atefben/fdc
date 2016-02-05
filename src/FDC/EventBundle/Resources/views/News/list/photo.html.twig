@@ -12,7 +12,7 @@
 
         {% for photo in photos %}
             <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo|trans_fallback('createdAt')|date('d-m-y') }} shadow-bottom photo">
-                {% set trans = photo.findTranslationByLocale('fr') %}
+                {% set trans = photo.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is null %}
                     {% set trans = photo.findTranslationByLocale('fr') %}
                 {% endif %}
