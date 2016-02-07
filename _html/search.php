@@ -381,7 +381,6 @@
                             <h2><a href="#">La Haine</a></h2>
                             <span class="category">De <a href="#">Mathieu KASSOVITZ</a></span>
                             <span class="country">France</span>
-                            <span class="date">2005</span>
                           </div>
                         </div>
                       </div>
@@ -394,7 +393,6 @@
                             <h2><a href="#">Black Swan</a></h2>
                             <span class="category">De <a href="#">Darren ARONOFSKY</a></span>
                             <span class="country">états-unis</span>
-                            <span class="date">2005</span>
                           </div>
                         </div>
                       </div>
@@ -407,7 +405,6 @@
                             <h2><a href="#">Tale of Tales</a></h2>
                             <span class="category">De <a href="#">Matteo GARONNE</a></span>
                             <span class="country">italie</span>
-                            <span class="date">2005</span>
                           </div>
                         </div>
                       </div>
@@ -420,7 +417,6 @@
                             <h2><a href="#">Irréversible</a></h2>
                             <span class="category">De <a href="#">Gaspar NOE</a></span>
                             <span class="country">france</span>
-                            <span class="date">2005</span>
                           </div>
                         </div>
                       </div>
