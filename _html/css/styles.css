@@ -7017,7 +7017,6 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 #selection #slider-selection, #selection #slider-suggestion {
   min-height: 230px;
-  margin-left: -380px;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -7069,7 +7068,6 @@ div.chocolat-wrapper .zoomCursor .icon {
   transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #selection #slider-selection .article, #selection #slider-suggestion .article {
-  padding-right: 50px;
   height: 230px;
   position: relative;
   width: 212px;
@@ -7103,7 +7101,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   display: block;
   height: 28px;
   position: absolute;
-  right: 36px;
+  right: -14px;
   top: -14px;
   width: 28px;
   z-index: 5;
