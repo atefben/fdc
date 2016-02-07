@@ -6,14 +6,40 @@ $(document).ready(function() {
 	$("#banner-bottom").addClass('show');
 
 	
-	var menu = $("#horizontal-menu").owlCarousel({
+	
+
+	// NO AJAX FOR FAQ
+
+	if($('.faq-page').length){
+		var menu = $("#horizontal-menu").owlCarousel({
 		  nav: false,
 		  dots: false,
 		  smartSpeed: 500,
 		  margin: 40,
 		  autoWidth: true,
 		  loop: false,
-		  items:2,
+		  items:2
+		});
+		menu.owlCarousel();
+		$('.owl-stage').width(2440);
+		console.log($('.owl-stage').width());
+		$('#horizontal-menu a').on('click',function(e){
+	      	e.preventDefault();
+  			$('#horizontal-menu a').removeClass('active');
+	        $(this).addClass('active');
+
+	        $(".faq-section-container").removeClass('active');
+	        $("."+$(this).data('section')).addClass('active');
+	    });
+	} else {
+		var menu = $("#horizontal-menu").owlCarousel({
+		  nav: false,
+		  dots: false,
+		  smartSpeed: 500,
+		  margin: 40,
+		  autoWidth: true,
+		  loop: false,
+		  items:1,
 		  onInitialized: function() {
 		    var m = ($(window).width() - $('.container').width()) / 2;
 		    $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
@@ -30,25 +56,6 @@ $(document).ready(function() {
 			menu.trigger("to.owl.carousel", [toIndex, 2, true]);	
 
 		}
-
-
-	// NO AJAX FOR FAQ
-
-	if($('.faq-page').length !== 0){
-
-		$('#horizontal-menu a').on('click',function(e){
-	      	e.preventDefault();
-  			$('#horizontal-menu a').removeClass('active');
-	        $(this).addClass('active');
-
-	        $(".faq-section-container").removeClass('active');
-	        $("."+$(this).data('section')).addClass('active');
-	    });
-	}
-
-	else
-
-	{
 
 
 	// AJAX CALL
