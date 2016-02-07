@@ -6608,22 +6608,6 @@ div.chocolat-wrapper .zoomCursor .icon {
   display: table-cell;
   vertical-align: middle;
 }
-.video-container .top-bar .buttons a.facebook {
-  background: url("../img/svg/facebook-gold.svg") no-repeat center;
-  background-size: 19px;
-}
-.video-container .top-bar .buttons a.twitter {
-  background: url("../img/svg/twitter-gold.svg") no-repeat center;
-  background-size: 16px;
-}
-.video-container .top-bar .buttons a.email {
-  background: url("../img/svg/mail.svg") no-repeat center;
-  background-size: 16px;
-}
-.video-container .top-bar .buttons a.link {
-  background: url("../img/svg/link.svg") no-repeat center;
-  background-size: 16px;
-}
 .video-container .channels-video {
   height: 185px;
   width: 100%;
