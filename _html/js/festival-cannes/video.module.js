@@ -1,4 +1,3 @@
-var play1, play2, play3;
 var d = document,
     w = window,
     k = k || new Konsole('fdc.2016', true),

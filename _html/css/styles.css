@@ -244,8 +244,8 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 Copyright (c) 2015 Daniel Eden
 */
 .animated {
-  -webkit-animation-duration: 0.8s;
-  animation-duration: 0.8s;
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -6450,6 +6450,11 @@ div.chocolat-wrapper .zoomCursor .icon {
 .webtv-live .trailer .video-container {
   width: 100%;
   height: 100%;
+}
+
+.single-channel .small-container .player.video-container {
+  width: 975px;
+  height: calc(975px*9/16);
 }
 
 .video-container {
@@ -13454,6 +13459,9 @@ input[type=submit] {
   display: inline-block;
   font-size: 0.625rem;
 }
+.single-channel #slider-trailer.sliderDrag .owl-item {
+  opacity: 1;
+}
 .single-channel .channel:after {
   border: 4px solid #c8a461;
   box-sizing: border-box;
@@ -13510,7 +13518,7 @@ input[type=submit] {
 .single-channel .small-container .infos-videos .square {
   position: absolute;
   z-index: 3;
-  top: -4px;
+  top: 0;
   right: 1px;
 }
 .single-channel .small-container .infos-videos .square .icon {

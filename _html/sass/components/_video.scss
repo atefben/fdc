@@ -10,6 +10,11 @@
   height: 100%;
 }
 
+.single-channel .small-container .player.video-container {
+  width: 975px;
+  height: calc(975px*9/16);
+}
+
 .video-container {
   position: relative;
   overflow: hidden;
