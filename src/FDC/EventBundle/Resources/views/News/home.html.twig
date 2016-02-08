@@ -10,9 +10,10 @@
 {% block body %}
     <div id="main" class="home loading">
         <span id="addtext">{{ 'home.btn.ajouteramaselection'|trans }}</span>
+
+        {% if displayHomeSlider %}
         <div id="sliderWrapper">
             <div id="slider" class="owl-carousel">
-
                 {% for slide in homeSlider %}
                     {% if slide != null %}
                         {% if slide.header is not null %}
@@ -33,9 +34,10 @@
                         </div>
                     {% endif %}
                 {% endfor %}
-
             </div>
         </div>
+        {% endif %}
+        
         <div id="news">
             <div id="canvasloader" class="canvasloader"></div>
             <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>

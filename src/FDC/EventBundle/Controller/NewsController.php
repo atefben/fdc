@@ -40,6 +40,9 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
+        // GET HOMEPAGE SETTINGS
+        $homepageSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneById(1);;
+
            /////////////////////////////////////////////////////////////////////////////////////
           /////////////////////////      SLIDER      //////////////////////////////////////////
          /////////////////////////////////////////////////////////////////////////////////////
@@ -50,6 +53,9 @@ class NewsController extends Controller {
             6,
             0
         );
+
+        $displayHomeSlider = $homepageSettings->getDisplayedSlider();
+
         $homeSlider= array();
         foreach($slides as $slide) {
             if($slide->getNews() != null) {
@@ -66,7 +72,7 @@ class NewsController extends Controller {
         ////////////////////////////////////////////////////////////////////////////////////
 
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
-            'festival' => $settings->getFestival()
+            'festival' => $this->getFestival()
         ), array(
             'date' => 'ASC'
         ), 12, null);
@@ -85,7 +91,7 @@ class NewsController extends Controller {
 
         // Homepage
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
-            'festival' => $settings->getFestival()
+            'festival' => $this->getFestival()
         ));
         if ($homepage === null) {
             throw new NotFoundHttpException();
@@ -97,9 +103,9 @@ class NewsController extends Controller {
 
         //get articles of the day, if no article today : get article from the day before
         $count = 6;
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count);
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
         if($homeArticles == null) {
-            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
         }
 
         //set default filters
@@ -145,13 +151,13 @@ class NewsController extends Controller {
 
         //get images for slider articles
         $dateArticleSlide = new DateTime();
-        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateArticleSlide);
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateArticleSlide);
 
 
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////       WEBTV        ///////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
-        
+
         $videos = $this
             ->getBaseCoreMediaVideoRepository()
             ->get2VideosFromTheLast10($locale, $this->getFestival()->getId());
@@ -366,8 +372,9 @@ class NewsController extends Controller {
             'homeArticles' => $homeArticles,
             'homeArticlesBottom' => $homeArticlesBottom,
             'homeArticlesSlider' => $homeArticlesSlider,
-            // TODO: clean this
+            'displayHomeSlider'  => $displayHomeSlider,
             'homeSlider' => $homeSlider,
+            // TODO: clean this
             'filters' => $filters,
             'videos' => $videos,
             'videoSlider' => $videoSlider,
