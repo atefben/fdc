@@ -10,24 +10,34 @@
 {% block body %}
     <div id="main" class="home loading">
         <span id="addtext">{{ 'home.btn.ajouteramaselection'|trans }}</span>
+
+        {% if displayHomeSlider %}
         <div id="sliderWrapper">
             <div id="slider" class="owl-carousel">
-
                 {% for slide in homeSlider %}
-                    <div>
-                        <div class="img-container">
-                            <div class="img" style="background-image:url({{ slide.image.path }})"></div>
+                    {% if slide != null %}
+                        {% if slide.header is not null %}
+                            {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = slide.header.findTranslationByLocale('fr') %}
+                            {% endif %}
+                        {% endif %}
+                        <div>
+                            <div class="img-container">
+                                <div class="img" style="background-image:url({% path trans.file , '1461x923' %})"></div>
+                            </div>
+                            <div class="info">
+                                <span class="category">{{ slide.theme|trans_fallback('name') }}</span>
+                                <h2>{{ slide|trans_fallback('title') }}</h2>
+                            </div>
+                            <a href="{{ path('fdc_event_news_get', {'slug': slide.id }) }}" class="linkArticle"></a>
                         </div>
-                        <div class="info">
-                            <span class="category">{{ slide.theme }}</span>
-                            <h2>{{ slide.title }}</h2>
-                        </div>
-                        <a href="{{ path('fdc_event_news_get', {'slug': slide.id }) }}" class="linkArticle"></a>
-                    </div>
+                    {% endif %}
                 {% endfor %}
-
             </div>
         </div>
+        {% endif %}
+        
         <div id="news">
             <div id="canvasloader" class="canvasloader"></div>
             <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>
@@ -44,7 +54,7 @@
                          </div>
 
                          <!-- SLIDESHOW -->
-                         {% if homeArticlesSlider is not null %}
+                         {% if homeArticlesSlider is not empty %}
                              {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
                          {% endif %}
 
@@ -61,10 +71,11 @@
                 </div>
 
                 <div id="timeline">
-                    {% for key, date in socialGraph.timeline %}
-                        <a href="#" data-date="{{ date.date|date('d') }}" class="{% if key == 0 %}active{% endif %}">
-                            {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                            <span class="day">{{ date.date|date('d') }}</span>
+                    {% for key,date in festivalInterval %}
+                    {#{% for key, date in socialGraph.timeline %}#}
+                        <a href="#" data-date="{{ date|date('d') }}" class="{% if date == "now"|date('Y-m-d') %}active{% elseif date > "now"|date('Y-m-d') %}disabled{% endif %}">
+                            {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                            <span class="day">{{ date|date('d') }}</span>
                         </a>
                     {% endfor %}
                 </div>

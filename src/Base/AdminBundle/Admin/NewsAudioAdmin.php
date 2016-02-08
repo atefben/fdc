@@ -28,18 +28,6 @@ class NewsAudioAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-
-    public function getNewInstance()
-    {
-        $instance = parent::getNewInstance();
-
-        $instance->addAssociatedNews(new NewsNewsAssociated());
-        $instance->addAssociatedNews(new NewsNewsAssociated());
-
-        return $instance;
-    }
-
-
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
@@ -280,6 +268,12 @@ class NewsAudioAdmin extends Admin
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => News::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => News::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

@@ -74,7 +74,6 @@ class HomepageAdmin extends Admin
                     )
                 )
             ))
-            ->add('sliderNews')
             ->add('topNewsType', 'choice', array(
                 'label' => false,
                 'choices' => array(0 => 'homepage.top_news_type.displayed_news', 1 => 'homepage.top_news_type.displayed_events'),
@@ -83,6 +82,16 @@ class HomepageAdmin extends Admin
                 'expanded' => true
             ))
             ->add('displayedSlider')
+            ->add('homepageSlide', 'sonata_type_collection', array(
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.homepage.helper_home_slider',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('displayedTopNews')
             ->add('displayedSocialWall')
             ->add('socialGraphHashtagTwitter', null, array(

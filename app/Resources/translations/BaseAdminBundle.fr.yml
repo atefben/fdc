@@ -9,6 +9,7 @@ settings:
     fdc_api: Paramètres de l'API Festival de Cannes
 
 breadcrumb:
+    link_tag_list: Liste des tags
     link_news_article_list: Liste des actualités - articles
     link_news_video_list: Liste des actualités - vidéos
     link_news_audio_list: Liste des actualités - audios
@@ -88,7 +89,7 @@ entity:
     news_image: Photos
     news_audio: Audios
     theme: Thèmes
-    news_tag: Tags de recherche
+    tag: Tags de recherche
     web_tv: Chaînes
     media_image: Images
     media_image_simple: Images semi-riches
@@ -102,7 +103,6 @@ entity:
     info_image: Images
     info_video: Vidéos
     info_audio: Audios
-    tag: Tags
     film_film: Films
     film_person: Personnes
     film_atelier: Films Atelier
@@ -199,9 +199,16 @@ dashboard:
         fdc_page_web_tv_live: Accueil WebTV
 
 form:
+    tag:
+        helper_name: 255 caractères max.
+    translate_option:
+        en: Anglais
+        zh : Chinois
+        es: Espagnol
     homepage:
         helper_social_graph: Séparer par des virgules les tags que vous souhaitez.
         helper_social_wall: Séparer par des virgules les tags que vous souhaitez.
+        helper_home_slider: Sélectionnez de 3 à 6 actualités ou communiqués ou infos. Elles apparaitront en front-office dans l'ordre des lignes.
     flashbag:
         modified: Modification effectuée.
     settings:
@@ -223,6 +230,8 @@ form:
         helper_news_film_projection_associated: Sélectionnez un ou plusieurs événements de programmation associés à l'article.
         helper_news_film_film_associated: Sélectionnez les films sur lesquels vous souhaitez voir l'actualité apparaitre.
         helper_news_news_associated: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
+        helper_media_audio: Ajouter un fichier au format mp3
+        helper_video_file: Ajouter un fichier au format mp4/mpeg
     social_wall:
         twitter: Twitter
         instagram: Instagram
@@ -253,11 +262,19 @@ form:
         helper_file: Dimensions attendues : YxZpx. Format attendu.
         displayed_home: Remonter dans le diaporama du quotidien en homepage
         displayed_all: Remonter dans "Toutes les photos"
+    news_widget_video_youtube:
+        helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
+    label_tag_name: Nom du tag
     label_social_graph_hashtag_twitter: Social graph - hashtags
     label_displayed_social_wall: Afficher le social wall
+    label_news: Actualités
+    label_infos : Info
+    label_statement : Communiqué
     label_social_wall_hashtags: Social Wall - hashtags
+    label_news_widget_video_youtube_title: Titre de la vidéo
+    label_news_widget_video_youtube_url: Url de la vidéo
     label_save: Sauvegarder
     label_email: Email
     label_copyright: Copyright
@@ -305,11 +322,13 @@ form:
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
     label_name: Nom
+    label_media_audio: Fichier audio
+    label_video_file: Fichier vidéo
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
     contact_theme:
-        helper_theme: X caractères max.
+        helper_theme: 255 caractères max.
     status:
         draft: Brouillon
         translation_pending: À traduire
@@ -325,7 +344,7 @@ form:
         urgent: Urgent
         now: Immédiat
     theme:
-        helper_name: X caractères max.
+        helper_name: 255 caractères max.
     press_homepage:
         helper_media: « Sélectionnez de 2 à 4 films ». Elles apparaitront en front-office dans l'ordre des champs.
         push_link: Lien du push

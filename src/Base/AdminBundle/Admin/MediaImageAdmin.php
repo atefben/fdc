@@ -189,6 +189,12 @@ class MediaImageAdmin extends Admin
             ->add('displayedHome', null, array(
                 'label' => 'form.media_image.displayed_home'
             ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => MediaImage::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => MediaImage::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

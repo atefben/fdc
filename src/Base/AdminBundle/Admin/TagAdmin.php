@@ -2,11 +2,14 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\Tag;
+use Base\CoreBundle\Entity\TagTranslation;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * TagAdmin class.
@@ -17,13 +20,42 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class TagAdmin extends Admin
 {
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
+
+    protected $translationDomain = 'BaseAdminBundle';
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+
+                    return true;
+                },
+                'field_type' => 'text'
+            ))
+            ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
+                'choices' => Tag::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
         ;
     }
 
@@ -34,6 +66,11 @@ class TagAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('name', null, array('label' => 'list.label_theme_name'))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => Tag::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
@@ -55,7 +92,36 @@ class TagAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => TagTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
+                    ),
+                    'name' => array(
+                        'label' => 'form.label_tag_name',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.tag.helper_name',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
+                    ),
                 )
+            ))
+            ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Tag::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => Tag::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ;
     }
@@ -67,6 +133,8 @@ class TagAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }

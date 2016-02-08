@@ -172,7 +172,12 @@ class PressGuideAdmin extends Admin
                 )
             ))
             ->add('translate', 'checkbox' , array())
-
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressGuide::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressGuide::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

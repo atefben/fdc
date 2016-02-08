@@ -207,7 +207,6 @@ class StatementVideoAdmin extends Admin
                     'statement_widget_quote_type',
                     'statement_widget_audio_type',
                     'statement_widget_image_type',
-                    'statement_widget_image_dual_align_type',
                     'statement_widget_video_type',
                     'statement_widget_video_youtube_type'
                 ),
@@ -271,6 +270,12 @@ class StatementVideoAdmin extends Admin
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Statement::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => Statement::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

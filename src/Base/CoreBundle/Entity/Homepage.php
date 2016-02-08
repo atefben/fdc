@@ -31,25 +31,11 @@ class Homepage
     private $id;
 
     /**
-     * @var News
+     * @var HomepageSlide
      *
-     * @ORM\OneToMany(targetEntity="News", mappedBy="homepage")
+     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"persist"})
      */
-    private $sliderNews;
-
-    /**
-     * @var Info
-     *
-     * @ORM\OneToMany(targetEntity="Info", mappedBy="homepage")
-     */
-    private $sliderInfos;
-
-    /**
-     * @var Info
-     *
-     * @ORM\OneToMany(targetEntity="Statement", mappedBy="homepage")
-     */
-    private $sliderStatement;
+    private $homepageSlide;
 
     /**
      * @var WebTv
@@ -161,7 +147,7 @@ class Homepage
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->sliderNews = new ArrayCollection();
+        $this->sliderHomepage = new ArrayCollection();
         $this->topVideos = new ArrayCollection();
         $this->topWebTvs = new ArrayCollection();
         $this->hashtagTwitter = '';
@@ -207,42 +193,6 @@ class Homepage
     public function getTopNewsType()
     {
         return $this->topNewsType;
-    }
-
-    /**
-     * Set displayedSlider
-     *
-     * @param boolean $displayedSlider
-     * @return Homepage
-     */
-    public function setDisplayedSlider($displayedSlider)
-    {
-        $this->displayedSlider = $displayedSlider;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedSlider
-     *
-     * @return boolean
-     */
-    public function getDisplayedSlider()
-    {
-        return $this->displayedSlider;
-    }
-
-    /**
-     * Set displayedTopNews
-     *
-     * @param boolean $displayedTopNews
-     * @return Homepage
-     */
-    public function setDisplayedTopNews($displayedTopNews)
-    {
-        $this->displayedTopNews = $displayedTopNews;
-
-        return $this;
     }
 
     /**
@@ -441,40 +391,6 @@ class Homepage
     }
 
     /**
-     * Add sliderNews
-     *
-     * @param \Base\CoreBundle\Entity\News $sliderNews
-     * @return Homepage
-     */
-    public function addSliderNews(\Base\CoreBundle\Entity\News $sliderNews)
-    {
-        $sliderNews->setHomepage($this);
-        $this->sliderNews[] = $sliderNews;
-
-        return $this;
-    }
-
-    /**
-     * Remove sliderNews
-     *
-     * @param \Base\CoreBundle\Entity\News $sliderNews
-     */
-    public function removeSliderNews(\Base\CoreBundle\Entity\News $sliderNews)
-    {
-        $this->sliderNews->removeElement($sliderNews);
-    }
-
-    /**
-     * Get sliderNews
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSliderNews()
-    {
-        return $this->sliderNews;
-    }
-
-    /**
      * Add topVideos
      *
      * @param \Base\CoreBundle\Entity\MediaVideo $topVideos
@@ -540,74 +456,6 @@ class Homepage
     public function getTopWebTvs()
     {
         return $this->topWebTvs;
-    }
-
-    /**
-     * Add sliderInfos
-     *
-     * @param \Base\CoreBundle\Entity\Info $sliderInfos
-     * @return Homepage
-     */
-    public function addSliderInfo(\Base\CoreBundle\Entity\Info $sliderInfos)
-    {
-        $sliderInfos->setHomepage($this);
-        $this->sliderInfos[] = $sliderInfos;
-
-        return $this;
-    }
-
-    /**
-     * Remove sliderInfos
-     *
-     * @param \Base\CoreBundle\Entity\Info $sliderInfos
-     */
-    public function removeSliderInfo(\Base\CoreBundle\Entity\Info $sliderInfos)
-    {
-        $this->sliderInfos->removeElement($sliderInfos);
-    }
-
-    /**
-     * Get sliderInfos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSliderInfos()
-    {
-        return $this->sliderInfos;
-    }
-
-    /**
-     * Add sliderStatement
-     *
-     * @param \Base\CoreBundle\Entity\Statement $sliderStatement
-     * @return Homepage
-     */
-    public function addSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatement)
-    {
-        $sliderStatement->setHomepage($this);
-        $this->sliderStatement[] = $sliderStatement;
-
-        return $this;
-    }
-
-    /**
-     * Remove sliderStatement
-     *
-     * @param \Base\CoreBundle\Entity\Statement $sliderStatement
-     */
-    public function removeSliderStatement(\Base\CoreBundle\Entity\Statement $sliderStatement)
-    {
-        $this->sliderStatement->removeElement($sliderStatement);
-    }
-
-    /**
-     * Get sliderStatements
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSliderStatement()
-    {
-        return $this->sliderStatement;
     }
 
     /**
@@ -677,5 +525,74 @@ class Homepage
     public function getFestival()
     {
         return $this->festival;
+    }
+
+    /**
+     * Add homepageSlide
+     *
+     * @param \Base\CoreBundle\Entity\HomepageSlide $homepageSlide
+     * @return Homepage
+     */
+    public function addHomepageSlide(\Base\CoreBundle\Entity\HomepageSlide $homepageSlide)
+    {
+        $this->homepageSlide[] = $homepageSlide;
+
+        return $this;
+    }
+
+    /**
+     * Remove homepageSlide
+     *
+     * @param \Base\CoreBundle\Entity\HomepageSlide $homepageSlide
+     */
+    public function removeHomepageSlide(\Base\CoreBundle\Entity\HomepageSlide $homepageSlide)
+    {
+        $this->homepageSlide->removeElement($homepageSlide);
+    }
+
+    /**
+     * Get homepageSlide
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHomepageSlide()
+    {
+        return $this->homepageSlide;
+    }
+
+    /**
+     * Set displayedSlider
+     *
+     * @param boolean $displayedSlider
+     * @return Homepage
+     */
+    public function setDisplayedSlider($displayedSlider)
+    {
+        $this->displayedSlider = $displayedSlider;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedSlider
+     *
+     * @return boolean 
+     */
+    public function getDisplayedSlider()
+    {
+        return $this->displayedSlider;
+    }
+
+    /**
+     * Set displayedTopNews
+     *
+     * @param boolean $displayedTopNews
+     * @return Homepage
+     */
+    public function setDisplayedTopNews($displayedTopNews)
+    {
+        $this->displayedTopNews = $displayedTopNews;
+
+        return $this;
     }
 }

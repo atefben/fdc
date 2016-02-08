@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Aws\S3\Enum\Status;
 use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Entity\StatementAudio;
 use Base\CoreBundle\Entity\StatementAudioTranslation;
@@ -207,7 +208,6 @@ class StatementAudioAdmin extends Admin
                     'statement_widget_quote_type',
                     'statement_widget_audio_type',
                     'statement_widget_image_type',
-                    'statement_widget_image_dual_align_type',
                     'statement_widget_video_type',
                     'statement_widget_video_youtube_type'
                 ),
@@ -280,6 +280,12 @@ class StatementAudioAdmin extends Admin
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Status::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => Statement::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

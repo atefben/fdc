@@ -183,6 +183,12 @@ class MediaVideoAdmin extends Admin
             ->add('displayedHome', null, array(
                 'label' => 'form.media_video.displayed_home'
             ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => MediaVideo::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => MediaVideo::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

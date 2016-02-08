@@ -108,6 +108,12 @@ class FDCPageWebTvChannelsAdmin extends Admin
                 'required' => false,
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => FDCPageWebTvChannels::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => FDCPageWebTvChannels::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

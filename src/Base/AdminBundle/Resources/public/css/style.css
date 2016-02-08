@@ -72,13 +72,23 @@ form[name="base_adminbundle_settings"] {
     padding-left: 10px;
 }
 
-.form-group[id$="priorityStatus"] {
+.form-group[id$="priorityStatus"],
+ul[id$="translateOptions"] {
     display: none;
 }
 
 .fdc-widget-remove-btn {
     margin: 20px 0;
     float: right;
+}
+
+.nav-tabs>li>a {
+    min-height: 62px;
+}
+
+.nav-tab-active {
+    border-top: 3px solid #00a65a;
+    border-radius: 5px;
 }
 
 #fdc-list-translation-container {

@@ -59,7 +59,7 @@ class StatementAudio extends Statement
     /**
      * Get audio
      *
-     * @return \Base\CoreBundle\Entity\MediaAudio 
+     * @return \Base\CoreBundle\Entity\MediaAudio
      */
     public function getAudio()
     {

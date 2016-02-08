@@ -2,10 +2,12 @@ jQuery(document).ready(function($) {
     // translate event
     $('input[name$="[translate]"]').on('ifChecked', function() {
         $('.form-group[id$="priorityStatus"]').show();
+        $('ul[id$="translateOptions"]').show();
     });
 
     $('input[name$="[translate]"]').on('ifUnchecked', function() {
         $('.form-group[id$="priorityStatus"]').hide();
+        $('ul[id$="translateOptions"]').hide();
     });
 
     // remove select2 status option for each language
@@ -23,6 +25,11 @@ jQuery(document).ready(function($) {
                 $(e).remove();
             }
         });
+    });
+
+    $('.a2lix_translationsLocales li').click(function() {
+        $('.a2lix_translationsLocales li').removeClass('nav-tab-active');
+        $(this).addClass('nav-tab-active');
     });
 
     // Hide the status for french translation

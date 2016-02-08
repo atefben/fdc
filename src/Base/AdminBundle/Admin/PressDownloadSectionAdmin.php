@@ -134,6 +134,12 @@ class PressDownloadSectionAdmin extends Admin
                 )
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressDownloadSection::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressDownloadSection::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
