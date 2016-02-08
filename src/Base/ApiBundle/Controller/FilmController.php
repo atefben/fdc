@@ -45,7 +45,7 @@ class FilmController extends FOSRestController
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      * @Rest\QueryParam(name="festival_id", description="The festival year")
-     * @Rest\QueryParam(name="selection_id", description="The festival year")
+     * @Rest\QueryParam(name="selection_id", description="The selection identifier")
      *
      * @return View
      */
