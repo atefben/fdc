@@ -3251,8 +3251,17 @@ section h3:not(.movie-title):not(.people-name){
 }
 
 /*SLIDERS*/
-.film-slider{
+.film-slider, .all-slider{
 	margin: 60px 0;
+}
+.all-slider .contain-winner{
+
+	width: 450px;
+	height: 780px;
+}
+.all-slider .owl-item img.portrait {
+
+    margin: 0 auto 15px;
 }
 .film-slider .owl-item{
 
@@ -3296,7 +3305,7 @@ section h3:not(.movie-title):not(.people-name){
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 	color:#c8a461;
 }
-.film-slider .owl-stage-outer{
+.film-slider .owl-stage-outer, .all-slider .owl-stage-outer{
 	margin-left: 0;
 }
 
