@@ -46,7 +46,6 @@ class ContactPage implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"press_list", "press_show"})
      */
     private $sites;
 
@@ -54,7 +53,6 @@ class ContactPage implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"press_list", "press_show"})
      */
     private $publishedAt;
 
@@ -62,7 +60,6 @@ class ContactPage implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"press_list", "press_show"})
      */
     private $publishEndedAt;
 
@@ -74,17 +71,6 @@ class ContactPage implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-    }
-
-    public function __toString() {
-        $translation = $this->findTranslationByLocale('fr');
-
-        if ($translation !== null) {
-            $string = $translation->getName();
-        } else {
-            $string = strval($this->getId());
-        }
-        return $string;
     }
 
     /**

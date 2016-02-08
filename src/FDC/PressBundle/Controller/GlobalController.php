@@ -5,6 +5,7 @@ namespace FDC\PressBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 /**
@@ -17,10 +18,19 @@ class GlobalController extends Controller
      * @Route("/press-contact")
      * @Template("FDCPressBundle:Global:contact.html.twig")
      * @return array
+     * @throws NotFoundHttpException
      */
     public function contactAction()
     {
 
+        $em = $this->getDoctrine()->getManager();
+
+        // GET FDC SETTINGS
+        $contact = $em->getRepository('BaseCoreBundle:ContactPage')->findAll();
+        $contactPage = $contact[0];
+        if ($contactPage === null ) {
+            throw new NotFoundHttpException();
+        }
         $contact = array(
             'section' => array(
                 array(
@@ -69,7 +79,7 @@ class GlobalController extends Controller
         );
 
         return array(
-            'pressContact' => $contact
+            'pressContact' => $contactPage
         );
 
     }
