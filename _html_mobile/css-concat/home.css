@@ -5480,7 +5480,7 @@ from desktop
   border-top: 2px solid #e5e5e5;
   box-sizing:border-box;
 }
-#news #calendar .next{
+.home #news #calendar .next{
   background-color: #f2f2f2;
 }
 #news #calendar .prev, #news #calendar .next{

@@ -245,6 +245,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.homepage_slide:
+        class: Base\AdminBundle\Admin\HomepageSlideAdmin
+        arguments: [~, Base\CoreBundle\Entity\HomepageSlide, BaseAdminBundle:HomepageSlideAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: HomepageSlide, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.event_widget_image_dummy:
         class: Base\AdminBundle\Admin\EventWidgetImageDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\EventWidgetImage, BaseAdminBundle:EventWidgetImageDummyAdmin]
@@ -694,3 +702,4 @@ services:
             - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+

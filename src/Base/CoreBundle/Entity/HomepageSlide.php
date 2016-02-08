@@ -1,8 +1,6 @@
 <?php
 namespace Base\CoreBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
 use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
@@ -17,61 +15,74 @@ use Symfony\Component\Validator\Constraints as Assert;
 * @ORM\Entity
 * @ORM\HasLifecycleCallbacks()
 */
-class HomepageSlide extends Homepage
+class HomepageSlide
 {
-    use Translatable;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
+     * @var integer
      *
-     * @Groups({"news_list", "news_show"})
+     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var News
+     *
+     * @ORM\ManyToOne(targetEntity="News")
      */
     private $news;
 
     /**
-     * @var MediaImage
+     * @var Info
      *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
-     *
-     * @Groups({"news_list", "news_show"})
-     * @Assert\NotNull()
+     * @ORM\ManyToOne(targetEntity="Info")
      */
-    private $image;
-
+    private $infos;
 
     /**
-     * @ORM\OneToMany(targetEntity="Statement", mappedBy="festival")
+     * @var Info
+     *
+     * @ORM\ManyToOne(targetEntity="Statement")
      */
-    private $statements;
-
+    private $statement;
 
     /**
-     * Add news
+     * @var Homepage
      *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $news
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="homepageSlide")
+     */
+    private $homepage;
+  
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set news
+     *
+     * @param \Base\CoreBundle\Entity\News $news
      * @return HomepageSlide
      */
-    public function addNews(\Base\CoreBundle\Entity\NewsNewsAssociated $news)
+    public function setNews(\Base\CoreBundle\Entity\News $news = null)
     {
-        $this->news[] = $news;
+        $this->news = $news;
 
         return $this;
     }
 
     /**
-     * Remove news
-     *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $news
-     */
-    public function removeNews(\Base\CoreBundle\Entity\NewsNewsAssociated $news)
-    {
-        $this->news->removeElement($news);
-    }
-
-    /**
      * Get news
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Base\CoreBundle\Entity\News 
      */
     public function getNews()
     {
@@ -79,58 +90,71 @@ class HomepageSlide extends Homepage
     }
 
     /**
-     * Set image
+     * Set infos
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $image
+     * @param \Base\CoreBundle\Entity\Info $infos
      * @return HomepageSlide
      */
-    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
+    public function setInfos(\Base\CoreBundle\Entity\Info $infos = null)
     {
-        $this->image = $image;
+        $this->infos = $infos;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get infos
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\Info 
      */
-    public function getImage()
+    public function getInfos()
     {
-        return $this->image;
+        return $this->infos;
     }
 
     /**
-     * Add statements
+     * Set statement
      *
-     * @param \Base\CoreBundle\Entity\Statement $statements
+     * @param \Base\CoreBundle\Entity\Statement $statement
      * @return HomepageSlide
      */
-    public function addStatement(\Base\CoreBundle\Entity\Statement $statements)
+    public function setStatement(\Base\CoreBundle\Entity\Statement $statement = null)
     {
-        $this->statements[] = $statements;
+        $this->statement = $statement;
 
         return $this;
     }
 
     /**
-     * Remove statements
+     * Get statement
      *
-     * @param \Base\CoreBundle\Entity\Statement $statements
+     * @return \Base\CoreBundle\Entity\Statement 
      */
-    public function removeStatement(\Base\CoreBundle\Entity\Statement $statements)
+    public function getStatement()
     {
-        $this->statements->removeElement($statements);
+        return $this->statement;
     }
 
     /**
-     * Get statements
+     * Set homepage
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \Base\CoreBundle\Entity\Homepage $homepage
+     * @return HomepageSlide
      */
-    public function getStatements()
+    public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
     {
-        return $this->statements;
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return \Base\CoreBundle\Entity\Homepage 
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
     }
 }

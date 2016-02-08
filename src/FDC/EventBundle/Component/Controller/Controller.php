@@ -44,7 +44,8 @@ class Controller extends BaseController
      * @return Settings
      * @throws NotFoundHttpException
      */
-    public function getFestival() {
+    public function getFestival()
+    {
 
         if (!$this->getSettings() || $this->getSettings()->getFestival() === null) {
             throw $this->createNotFoundException();

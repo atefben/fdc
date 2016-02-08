@@ -40,6 +40,27 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
+           /////////////////////////////////////////////////////////////////////////////////////
+          /////////////////////////      SLIDER      //////////////////////////////////////////
+         /////////////////////////////////////////////////////////////////////////////////////
+
+        $slides = $em->getRepository('BaseCoreBundle:HomepageSlide')->findBy(
+            array(),
+            array('id' => 'DESC'),
+            6,
+            0
+        );
+        $homeSlider= array();
+        foreach($slides as $slide) {
+            if($slide->getNews() != null) {
+                $homeSlider[] = $slide->getNews();
+            } elseif($slide->getInfos() != null) {
+                $homeSlider[] = $slide->getInfos();
+            } elseif($slide->getStatement() != null){
+                $homeSlider[] = $slide->getStatement();
+            }
+        }
+
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
@@ -76,9 +97,9 @@ class NewsController extends Controller {
 
         //get articles of the day, if no article today : get article from the day before
         $count = 6;
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count, true);
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count);
         if($homeArticles == null) {
-            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'), $count, true);
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
         }
 
         //set default filters
@@ -109,7 +130,6 @@ class NewsController extends Controller {
         }
 
         //split articles in two array
-
         if(count($homeArticles) > 3){
             $homeArticles = $this->partition($homeArticles, 2);
             $homeArticlesBottom = $homeArticles[1];
@@ -128,33 +148,6 @@ class NewsController extends Controller {
         $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateArticleSlide);
 
         // TODO: clean this
-        $homeSlider = array(
-            array(
-                'id' => 0,
-                'image' => array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
-                ),
-                'theme' => 'Rencontre',
-                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
-            ),
-            array(
-                'id' => 0,
-                'image' => array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
-                ),
-                'theme' => 'Rencontre',
-                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
-            ),
-            array(
-                'id' => 0,
-                'image' => array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
-                ),
-                'theme' => 'Rencontre',
-                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
-            )
-        );
-
         $featuredMovies         = array(
             'type' => 'fullVideo',
             'video' => array(
@@ -536,7 +529,7 @@ class NewsController extends Controller {
      * @param $timestamp
      * @return array
      */
-    public function getArticlesFromAction($timestamp) {
+    public function getArticlesFromAction($timestamp = null) {
 
         $em = $this->get('doctrine')->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -550,9 +543,8 @@ class NewsController extends Controller {
         $date = new DateTime();
         $dateTime = $date->setTimestamp($timestamp);
         $count = 6;
-        $isAdmin = true;
 
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count, $isAdmin);
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count);
 
         return array(
             'homeArticles' => $homeArticles

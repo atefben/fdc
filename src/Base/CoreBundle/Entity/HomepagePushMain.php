@@ -2,10 +2,14 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
-
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateMain;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * HomepagePushMain
@@ -14,9 +18,19 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class HomepagePushMain
+class HomepagePushMain implements TranslateMainInterface
 {
     use Time;
+    use Translatable;
+    use TranslateMain;
+    use SeoMain;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @Assert\Valid()
+     */
+    protected $translations;
 
     /**
      * @var integer
@@ -26,33 +40,6 @@ class HomepagePushMain
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     **/
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     **/
-    private $alt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     **/
-    private $url;
-
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     */
-    private $file;
 
     /**
      *
@@ -70,97 +57,6 @@ class HomepagePushMain
         return $this->id;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return HomepagePushMain
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return HomepagePushMain
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string 
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return HomepagePushMain
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set file
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return HomepagePushMain
-     */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
 
     /**
      * Set homepageTranslation

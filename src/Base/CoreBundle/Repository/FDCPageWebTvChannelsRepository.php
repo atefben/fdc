@@ -8,6 +8,6 @@ use Doctrine\ORM\EntityRepository;
  * Class FDCPageChannelsRepository
  * @package Base\CoreBundle\Repository
  */
-class FDCPageChannelsRepository extends EntityRepository
+class FDCPageWebTvChannelsRepository extends EntityRepository
 {
 }

@@ -136,7 +136,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getNewsByDate($locale,$festival,$dateTime,$count,$isAdmin = false)
+    public function getNewsByDate($locale,$festival,$dateTime,$count)
     {
         $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
@@ -185,11 +185,6 @@ class NewsRepository extends EntityRepository
             ->setParameter('datetime', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('site_slug', 'site-evenementiel');
-
-        if($isAdmin) {
-            $qb = $qb
-                ->setParameter('datetime', $dateTime->modify('-30 day'));
-        }
 
         $qb = $qb
             ->getQuery()
@@ -372,7 +367,7 @@ class NewsRepository extends EntityRepository
             )
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
-            ->setParameter('status', NewsTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery();

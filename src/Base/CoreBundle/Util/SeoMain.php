@@ -2,8 +2,6 @@
 
 namespace Base\CoreBundle\Util;
 
-use \DateTime;
-
 
 /**
  * SeoMain trait.
@@ -15,9 +13,9 @@ trait SeoMain
 {
 
     /**
-     * @var Media
+     * @var \Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}))
      */
     private $seoFile;
 
@@ -26,7 +24,7 @@ trait SeoMain
      * Set seoFile
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $seoFile
-     * @return News
+     * @return $this
      */
     public function setSeoFile(\Application\Sonata\MediaBundle\Entity\Media $seoFile = null)
     {
