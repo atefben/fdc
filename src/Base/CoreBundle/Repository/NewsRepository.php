@@ -372,7 +372,7 @@ class NewsRepository extends EntityRepository
             )
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
-            ->setParameter('status', NewsTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery();
