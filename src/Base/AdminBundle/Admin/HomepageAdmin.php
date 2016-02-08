@@ -70,7 +70,6 @@ class HomepageAdmin extends Admin
                         'display' => false
                     ),
                     'pushsMain' => array(
-//                        'field_type' => 'a2lix_translations'
                         'class' => 'BaseCoreBundle:HomepagePushMain'
                     )
                 )
@@ -82,9 +81,10 @@ class HomepageAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle',
                 'expanded' => true
             ))
+            ->add('displayedSlider')
             ->add('homepageSlide', 'sonata_type_collection', array(
                 'label' => 'form.label_news_news_associated',
-                'help' => 'form.news.helper_news_news_associated',
+                'help' => 'form.homepage.helper_home_slider',
                 'by_reference' => false,
                 'required' => false,
             ), array(
@@ -92,7 +92,6 @@ class HomepageAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('displayedSlider')
             ->add('displayedTopNews')
             ->add('displayedSocialWall')
             ->add('socialGraphHashtagTwitter', null, array(

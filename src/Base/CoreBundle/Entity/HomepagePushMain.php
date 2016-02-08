@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
@@ -26,13 +27,6 @@ class HomepagePushMain implements TranslateMainInterface
     use SeoMain;
 
     /**
-     * @var ArrayCollection
-     *
-     * @Assert\Valid()
-     */
-    protected $translations;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -42,10 +36,17 @@ class HomepagePushMain implements TranslateMainInterface
     private $id;
 
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="HomepageTranslation", inversedBy="pushsMain")
+     * @var ArrayCollection
      */
-    private $homepageTranslation;
+    protected $translations;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -56,28 +57,5 @@ class HomepagePushMain implements TranslateMainInterface
     {
         return $this->id;
     }
-
-
-    /**
-     * Set homepageTranslation
-     *
-     * @param \Base\CoreBundle\Entity\HomepageTranslation $homepageTranslation
-     * @return HomepagePushMain
-     */
-    public function setHomepageTranslation(\Base\CoreBundle\Entity\HomepageTranslation $homepageTranslation = null)
-    {
-        $this->homepageTranslation = $homepageTranslation;
-
-        return $this;
-    }
-
-    /**
-     * Get homepageTranslation
-     *
-     * @return \Base\CoreBundle\Entity\HomepageTranslation 
-     */
-    public function getHomepageTranslation()
-    {
-        return $this->homepageTranslation;
-    }
+    
 }

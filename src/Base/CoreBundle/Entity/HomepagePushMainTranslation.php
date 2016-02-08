@@ -17,13 +17,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class HomepagePushMainTranslation implements TranslateChildInterface
+class HomepagePushMainTranslation
 {
     use Time;
     use Translation;
-    use TranslateChild;
     use Seo;
-
 
     /**
      * @var string
@@ -51,7 +49,6 @@ class HomepagePushMainTranslation implements TranslateChildInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     private $file;
-
 
     /**
      * Set title
