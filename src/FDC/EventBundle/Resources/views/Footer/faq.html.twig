@@ -13,7 +13,7 @@
             </ul>
         </inside>
         {% for section in content %}
-            <section class="faq-container" data-name="{{ section.slug }}">
+            <section class="faq-container{% if loop.first %} faq-active{% endif %}" data-name="{{ section.slug }}">
             {% for article in section.articles %}
                 <article>
                     <div class="faq-question">

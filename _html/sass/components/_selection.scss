@@ -37,7 +37,7 @@
 
   #slider-selection, #slider-suggestion {
     min-height: 230px;
-    margin-left: -380px;
+    // margin-left: -380px;
     @include transition(all .5s $smoothTransition);
 
     &.fade {
@@ -83,7 +83,8 @@
     }
 
     .article {
-      padding-right: 50px;
+      // padding-right: 50px;
+      // padding-left:  50px;
       height: 230px;
       position: relative;
       width: 212px;
@@ -114,7 +115,7 @@
         display: block;
         height: 28px;
         position: absolute;
-        right: 36px;
+        right: -14px;
         top: -14px;
         width: 28px;
         z-index: 5;
