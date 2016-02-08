@@ -293,28 +293,23 @@
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
                                                 {% if widget.children._type.vars.value == 'statement_widget_text_type' %}
-                                                    <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                    <h4><strong>Module texte</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_video_youtube_type' %}
                                                     <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
                                                     <h4><strong>{{ 'news.widget.audio'|trans }}</strong></h4>
+                                                    {{ form_widget(widget.file) }}
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
-                                                    <h4><strong>{{ 'form.widget.gallery'|trans }}</strong></h4>
+                                                    <h4><strong>Module gallery</strong></h4>
+                                                    {{ form_widget(widget.gallery) }}
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'statement_widget_text_type' or
-                                                widget.children._type.vars.value == 'statement_widget_video_youtube_type' or
-                                                widget.children._type.vars.value == 'statement_widget_quote_type'
-                                                %}
-                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
-                                                    {{ form_widget(widget.gallery) }}
-                                                {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
-                                                    {{ form_widget(widget.file) }}
-                                                {% endif %}
                                                 <a class="btn btn-danger btn-sm btn-outline remove_item">
                                                     <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
                                                 </a>
@@ -327,7 +322,6 @@
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}

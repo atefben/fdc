@@ -56,12 +56,6 @@ sonata_media:
 
             formats:
 
-        statement_video:
-            providers:
-                - sonata.media.provider.file
-
-            formats:
-
         seo_file:
             providers:
                 - sonata.media.provider.image

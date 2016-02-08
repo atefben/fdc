@@ -12,7 +12,7 @@
     {% if trans is null or trans.file is null %}
         {% set trans = article.audio.findTranslationByLocale('fr') %}
     {% endif %}
-    {% set file = trans.image %}
+    {% set file = trans.file %}
     {% set articleType = "audio" %}
 {% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
     {% set trans = article.video.findTranslationByLocale(app.request.locale) %}
@@ -38,7 +38,7 @@
 <article class="article" data-format="{{ articleType }}" data-theme="{{ article.theme.slug }}">
     <div class="image">
         <div class="image-wrapper">
-            {% thumbnail file, 'big' with {'alt': 'test' } %}
+            {% thumbnail file, 'big' %}
         </div>
         <a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
         <a href="#" class="read-later">

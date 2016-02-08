@@ -304,34 +304,91 @@ class NewsController extends Controller
             );
         }
 
-        // SEO
-        //$this->get('base.manager.seo')->setFDCPressPageStatementSeo($statement, $locale);
-
         //get associated film to the news
-        $associatedFilm = $statement->getAssociatedFilm();
+        $associatedFilm = null;
+        $associatedProgrammation = null;
         $associatedFilmDuration = null;
-        $programmations = array();
-
-        if ($associatedFilm !== null) {
+        $type = null;
+        if ($statement->getAssociatedFilm() != null) {
+            $associatedFilm = $statement->getAssociatedFilm();
             $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
-            foreach ($associatedFilm->getProjectionProgrammationFilms() as $projection) {
-                $programmations[] = $projection->getProjection();
+            $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
+            $type = 'film';
+        } elseif ($statement->getAssociatedEvent() != null) {
+            $associatedFilm = $statement->getAssociatedEvent()->getAssociatedFilm();
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
+            $type = 'film';
+        } elseif ($statement->getAssociatedProjections() != null) {
+            $associatedProgrammation = $statement->getAssociatedProjections();
+            $type = 'event';
+        }
+
+        //get film projection
+        $programmations = array();
+        if ($associatedProgrammation != null) {
+            foreach ($associatedProgrammation as $projection) {
+                if($type == 'event') {
+                    $programmations[] = $projection->getAssociation();
+                } else {
+                    $programmations[] = $projection->getProjection();
+                }
+
             }
         }
 
+        //get focus articles
+        if($statement instanceof Statement) {
+            $associatedNews = $statement->getAssociatedStatement();
+            $focusArticles  = array();
+            foreach ($associatedNews as $associatedNew) {
+                if($associatedNew->getAssociation() != null) {
+                    $focusArticles[] = $associatedNew->getAssociation();
+                }
+            }
+        }
+        else {
+            $associatedNews = $statement->getAssociatedInfo();
+            $focusArticles  = array();
+            foreach ($associatedNews as $associatedNew) {
+                if($associatedNew->getAssociation() != null) {
+                    $focusArticles[] = $associatedNew->getAssociation();
+                }
+            }
+        }
+
+
         //get day articles
         $count = 3;
+
+
         $statementDate = $statement->getPublishedAt();
-        $sameDayArticles = $em->getRepository('BaseCoreBundle:Statement')
-            ->getSameDayStatement(
-                $settings->getFestival()->getId(),
-                $locale,
-                $statementDate,
-                $count,
-                $statement->getId()
-            );
+
+        if($statement instanceof Statement) {
+            $sameDayArticles = $em->getRepository('BaseCoreBundle:Statement')
+                ->getSameDayStatement(
+                    $settings->getFestival()->getId(),
+                    $locale,
+                    $statementDate,
+                    $count,
+                    $statement->getId()
+                );
+        }
+        else {
+            $sameDayArticles = $em->getRepository('BaseCoreBundle:Info')
+                ->getSameDayInfo(
+                    $settings->getFestival()->getId(),
+                    $locale,
+                    $statementDate,
+                    $count,
+                    $statement->getId()
+                );
+        }
+
+
 
         return array(
+            'focusArticles' => $focusArticles,
             'programmations' => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $statement,
@@ -415,6 +472,7 @@ class NewsController extends Controller
 
                 $years[] = $statement->getPublishedAt()->format('Y');
             }
+            dump(!in_array($statement->getTheme()->getSlug(), $themes));
             if (!in_array($statement->getTheme()->getSlug(), $themes)) {
                 $filters['themes'][$i]['slug'] = $statement->getTheme()->getSlug();
                 $filters['themes'][$i]['content'] = $statement->getTheme()->getName();

@@ -60,56 +60,6 @@
                                                 {% endif %}
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Tags de recherche
-                                            </label>
-                                            <div>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <header>
-                                                Image principale
-                                            </header>
-                                            <div>
-                                                <label>
-                                                    Légende
-                                                </label>
-                                        <span>
-                                        {% if audioTranslations is not null and
-                                        audioTranslations.get(locale) is not null %}
-                                            {{ audioTranslations.get(locale).legend }}
-                                        {% endif %}
-                                        </span>
-                                            </div>
-                                            <div>
-                                                <label>
-                                                    Alt
-                                                </label>
-                                        <span>
-                                        {% if audioTranslations is not null and
-                                        audioTranslations.get(locale) is not null %}
-                                            {{ audioTranslations.get(locale).alt }}
-                                        {% endif %}
-                                        </span>
-                                            </div>
-                                            <div>
-                                                <label>
-                                                    Copyright
-                                                </label>
-                                        <span>
-                                        {% if audioTranslations is not null and
-                                        audioTranslations.get(locale) is not null %}
-                                            {{ audioTranslations.get(locale).copyright }}
-                                        {% endif %}
-                                        </span>
-                                            </div>
-                                            {% if form.parent.children.audio.vars.value is not null %}
-                                                <a target="_blank" href="{{ path('admin_base_core_mediaaudio_edit', {'id': form.parent.children.audio.vars.value}) }}">modifier les traductions</a>
-                                            {% endif %}
-                                        </div>
-                                        {{ form_row(translationsFields.introduction) }}
                                     </div>
                                 </div>
                             {% endif %}
@@ -216,10 +166,10 @@
                                                     Légende
                                                 </label>
                                         <span>
-                                        {% if audioTranslations is not null and
-                                        audioTranslations.get('fr') is not null %}
-                                            {{ audioTranslations.get('fr').legend }}
-                                        {% endif %}
+                                        {#{% if audioTranslations is not null and#}
+                                        {#audioTranslations.get('fr') is not null %}#}
+                                            {#{{ audioTranslations.get('fr').legend }}#}
+                                        {#{% endif %}#}
                                         </span>
                                             </div>
                                             <div>
@@ -227,10 +177,10 @@
                                                     Alt
                                                 </label>
                                         <span>
-                                        {% if audioTranslations is not null and
-                                        audioTranslations.get('fr') is not null %}
-                                            {{ audioTranslations.get('fr').alt }}
-                                        {% endif %}
+                                        {#{% if audioTranslations is not null and#}
+                                        {#audioTranslations.get('fr') is not null %}#}
+                                            {#{{ audioTranslations.get('fr').alt }}#}
+                                        {#{% endif %}#}
                                         </span>
                                             </div>
                                             <div>
@@ -238,10 +188,10 @@
                                                     Copyright
                                                 </label>
                                         <span>
-                                        {% if audioTranslations is not null and
-                                        audioTranslations.get('fr') is not null %}
-                                            {{ audioTranslations.get('fr').copyright }}
-                                        {% endif %}
+                                        {#{% if audioTranslations is not null and#}
+                                        {#audioTranslations.get('fr') is not null %}#}
+                                            {#{{ audioTranslations.get('fr').copyright }}#}
+                                        {#{% endif %}#}
                                         </span>
                                             </div>
                                         </div>
@@ -276,28 +226,23 @@
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
                                                 {% if widget.children._type.vars.value == 'info_widget_text_type' %}
-                                                    <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                    <h4><strong>Module texte</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'info_widget_video_youtube_type' %}
                                                     <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'info_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'info_widget_audio_type' %}
                                                     <h4><strong>{{ 'news.widget.audio'|trans }}</strong></h4>
+                                                    {{ form_widget(widget.file) }}
                                                 {% elseif widget.children._type.vars.value == 'info_widget_image_type' %}
-                                                    <h4><strong>{{ 'form.widget.gallery'|trans }}</strong></h4>
+                                                    <h4><strong>Module gallery</strong></h4>
+                                                    {{ form_widget(widget.gallery) }}
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'info_widget_text_type' or
-                                                widget.children._type.vars.value == 'info_widget_video_youtube_type' or
-                                                widget.children._type.vars.value == 'info_widget_quote_type'
-                                                %}
-                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                {% elseif widget.children._type.vars.value == 'info_widget_image_type' %}
-                                                    {{ form_widget(widget.gallery) }}
-                                                {% elseif widget.children._type.vars.value == 'info_widget_audio_type' %}
-                                                    {{ form_widget(widget.file) }}
-                                                {% endif %}
                                                 <a class="btn btn-danger btn-sm btn-outline remove_item">
                                                     <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
                                                 </a>
@@ -310,7 +255,6 @@
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}
