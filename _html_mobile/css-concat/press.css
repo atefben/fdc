@@ -1712,7 +1712,7 @@ from desktop
   border-top: 2px solid #e5e5e5;
   box-sizing:border-box;
 }
-#news #calendar .next{
+.home #news #calendar .next{
   background-color: #f2f2f2;
 }
 #news #calendar .prev, #news #calendar .next{
@@ -3383,7 +3383,7 @@ display: inline-block;
 	background-color: #f4f4f4;
     float: left;
     position: relative;
-    width: 125px;
+    width: 100px;
 	border-top: 1px solid #e5e5e5;
 	z-index: 2;
  }
@@ -3404,7 +3404,7 @@ display: inline-block;
 .calendar .empty{
 
 	height: 130px;
-	width: 125px;
+	width: 100px;
 	background-color: #f4f4f4;
 	border-bottom: 1px solid #e5e5e5;
     border-right: 1px solid #e5e5e5;
@@ -3413,7 +3413,7 @@ display: inline-block;
 .calendar .venues {
     position: relative;
     float: left;
-    width:515px;
+    width:540px;
     /*width: 100%*/
 }
 .calendar .venues .venue {
@@ -3453,9 +3453,7 @@ display: inline-block;
   position: relative;
   z-index: 2;
 }
-#timeline-calendar .next{
-  background-color: #f2f2f2;
-}
+
 #timeline-calendar .prev, #timeline-calendar .next{
   width: 121px;
   height: 128px;
