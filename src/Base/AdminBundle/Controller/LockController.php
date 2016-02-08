@@ -234,7 +234,7 @@ class LockController extends Controller
                 $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
                 $response->setStatusCode(400);
                 return $response->setData(array(
-                    'message' => 'Impossible de vérifier l\'existence du verrou.'
+                    'message' => 'Impossible de vérifier l\'existence du verrou.',
                 ));
             }
         }

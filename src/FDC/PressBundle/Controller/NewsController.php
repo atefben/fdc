@@ -71,32 +71,16 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $schedulingDays = array(
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            )
-        );
+
+        $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
+        $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
+
+        $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
+        array_walk($schedulingDays, function (&$value) {
+            $value = "2016-05-" . $value;
+        });
+
+        //$events = $em->getRepository('BaseCoreBundle:PressProjection')->findAll();
 
         $events = array(
             'place' => array(
@@ -431,14 +415,13 @@ class NewsController extends Controller
 
                 $years[] = $statement->getPublishedAt()->format('Y');
             }
-
             if (!in_array($statement->getTheme()->getSlug(), $themes)) {
                 $filters['themes'][$i]['slug'] = $statement->getTheme()->getSlug();
                 $filters['themes'][$i]['content'] = $statement->getTheme()->getName();
 
                 $themes[] = $statement->getTheme()->getSlug();
             }
-
+            $i++;
         }
 
         $headerInfo = array(

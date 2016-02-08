@@ -110,6 +110,13 @@
                                 </div>
                             </div>
                         {% endif %}
+                        {% if form.vars.default_locale != locale %}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{ form_row(translationsFields.status) }}
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
 

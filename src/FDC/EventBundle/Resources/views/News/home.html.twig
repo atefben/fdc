@@ -87,7 +87,7 @@
                 <div id="graph">
                     <ul>
                         {% for timeline in socialGraph.timeline %}
-                            <li class="active">
+                            <li{% if loop.last %} class="active"{% endif %}>
                                 {{ timeline.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                 <span>{{ timeline.date|date('d') }}</span>
                             </li>

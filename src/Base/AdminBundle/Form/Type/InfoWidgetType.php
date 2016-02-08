@@ -40,7 +40,8 @@ class InfoWidgetType extends BaseType
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
-            ->add('position', 'integer');
+            ->add('position', 'hidden')
+            ;
     }
     
     /**

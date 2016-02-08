@@ -36,6 +36,7 @@
 .press_medias #horizontal-menu .vid p{
 	text-align: left;
 	line-height: 110px;
+    font-size: 23px;
 }
 .press_medias #horizontal-menu .vid{
 	box-sizing:border-box;

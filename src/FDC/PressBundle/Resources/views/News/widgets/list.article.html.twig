@@ -17,7 +17,7 @@
     {% if trans is null or trans.file is null %}
         {% set trans = article.video.findTranslationByLocale('fr') %}
     {% endif %}
-    {% set file = trans.image %}
+    {% set file = trans.file %}
     {% set articleType = "video" %}
 {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
     {% set file = "" %}

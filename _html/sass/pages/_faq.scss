@@ -7,6 +7,7 @@
 .faq {
   width: 978px;
   margin: 0 auto;
+
   .faq-menu {
     width: 210px;
     display: inline-block;
@@ -15,10 +16,23 @@
     margin-right: 29px;
     position: absolute;
     top: 163px;
-    @include transition(all 0.2s $linear);
+
+    &.stick {
+      position: fixed;
+      top: 120px;
+      z-index: 4;
+    }
+
+    &.bottom {
+      position: absolute;
+      top: auto;
+      bottom: 190px;
+      left: auto!important;
+    }
 
     ul {
       border-right: 1px solid #dfdfdf;
+
       li {
         padding: 15px;
         font-size: 0.75rem;
@@ -27,34 +41,41 @@
         transition: .5s;
         font-family: $CamphorBold;
       }
+
       li:hover {
         background-color: #fafafa;
         color: #b2b2b2;
         cursor: pointer;
       }
+
       .active {
         background-color: #dfdfdf;
         color: #000;
       }
     }
   }
+
   .faq-container {
     width: 733px;
     display: none;
     vertical-align: top;
   }
+
   .faq-active {
     display: inline-block;
   }
+
   section[data-name="informations-generales"] {
     top: 1px;
     opacity: 1;
     display: inline-block;
   }
+
   h2 {
     padding: 60px;
     font-size: 1.75rem;
   }
+
   section {
     background-color: #fff;
     width: 630px;
@@ -67,6 +88,7 @@
     display: inline-block;
     top: 200px;
     margin-left: 240px;
+
     article {
       height: auto;
       box-sizing: border-box;
@@ -81,6 +103,7 @@
       max-height: 100px;
       overflow: hidden;
       transition: 1s;
+
       .faq-question{
         position: relative;
 
@@ -89,6 +112,7 @@
             color: $gold;
             cursor: pointer;
           }
+
           h3 {
             color: #c8a461;
             transition: .5s;
@@ -96,6 +120,7 @@
           }
         }
       }
+
       h3 {
         font-size: 1rem;
         text-transform: uppercase;
@@ -107,6 +132,7 @@
         text-align: left;
         @include transition(all 0.5s $smoothTransition);
       }
+
       .icon_case-plus {
         position: absolute;
         top: 4px;
@@ -115,6 +141,7 @@
         color: #c1c1c1;
         @include transition(color 0.5s $smoothTransition);
       }
+
       .icon_moins{
         position: absolute;
         top: 21px;
@@ -122,28 +149,31 @@
         font-size: 0.7rem;
         color: $gold;
       }
+
       .faq-description {
         width: 660px;
         color: #666666;
         font-size: 1rem;
         line-height: 26px;
+
         a {
           color: #c8a461;
           text-decoration: underline;
         }
       }
+
       .fa:hover {
         color: #c8a461;
         transition: .5s;
         cursor: pointer;
       }
-
     }
-    .faq-article-active {
 
+    .faq-article-active {
       h3 {
         color: #c8a461;
       }
+
       .fa {
         color: #c8a461;
       }

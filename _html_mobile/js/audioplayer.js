@@ -2,7 +2,6 @@ var waves = [];
 var inter = null;
 $.initAudioPlayers = function(autoplay) {
 
-
     var duration = null;
 
   $('.audio-player').each(function(i) {
@@ -50,6 +49,7 @@ $.initAudioPlayers = function(autoplay) {
     waves.push(wave);
     // on click on play/pause
     $(this).find('.playpause').on('click', function(e) {
+      e.preventDefault();
 
     	if ($(this).find(".icon").hasClass('icon_audio')){
     		$(this).find(".icon").removeClass('icon_audio');
@@ -60,7 +60,7 @@ $.initAudioPlayers = function(autoplay) {
     	}
     	
 
-      e.preventDefault();
+      
 
       if(inter) {
         clearInterval(inter);

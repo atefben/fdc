@@ -50,7 +50,6 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      */
     private $sites;
 
-
     /**
      * Set alt
      *

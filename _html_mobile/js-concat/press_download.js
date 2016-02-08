@@ -1713,7 +1713,8 @@ $(document).ready(function() {
 	      localStorage.setItem('press-pwd', v);
 	      $('.press').removeClass('press-locked');
 	      $('.press').addClass('press-unlocked');
-	      $('.locked').remove();
+	      $('.locked').addClass('valid');
+	      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
 	    } else {
 	      $(this).addClass('error');
 	    }
@@ -1730,6 +1731,7 @@ $(document).ready(function() {
         dots: false,
         smartSpeed: 500,
         margin: 40,
+        stagePadding:40,
         autoWidth: true,
         loop: false,
         items: 2

@@ -107,6 +107,24 @@ class WebTvAdmin extends Admin
                         'choices' => WebTvTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.new.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -114,6 +132,12 @@ class WebTvAdmin extends Admin
                         'display' => false
                     )
                 )
+            ))
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.media_image.helper_file',
+                'required' => false
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'help' => 'form.web_tv.helper_image',

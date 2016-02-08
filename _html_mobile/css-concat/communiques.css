@@ -1712,7 +1712,7 @@ from desktop
   border-top: 2px solid #e5e5e5;
   box-sizing:border-box;
 }
-#news #calendar .next{
+.home #news #calendar .next{
   background-color: #f2f2f2;
 }
 #news #calendar .prev, #news #calendar .next{
@@ -3701,7 +3701,7 @@ p{
 	margin:60px 0;
 }
 .downloads .portrait{
-	width: 470px;
+	width: 480px;
 	margin: 0 auto;
 }
 .downloads img{
@@ -3763,7 +3763,7 @@ p{
 }
 .downloads .buttons{
 	text-align: left;
- 	width: 470px;
+ 	width: 480px;
  	margin: 0 auto 60px auto;
 }
 .downloads .button{
@@ -3979,4 +3979,19 @@ p{
 .read-more{
 	margin-bottom: 40px;
 	box-sizing: border-box;
+}
+.locked.valid{
+	height: auto;
+}
+.locked .press_confirmation{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	    color: #c8a461;
+    font-size: 25px;
+    font-weight: 700;    
+    line-height: 35px;
+    box-sizing: border-box;
+    padding: 0 30px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
 }

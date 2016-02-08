@@ -1,14 +1,26 @@
 {% trans_default_domain 'FDCPressBundle' %}
 <div class="contact-press">
-    <h2 class="title">{{ 'press.home.title.contacteznous'|trans }}</h2>
+    <h2 class="title">{{ pressContact|trans_fallback('title') }}</h2>
     <div class="container">
-        {% for colContact in pressContact.section %}
+        {% if pressContact.firstColumn is not null %}
             <div class="col">
-                <h3>{{ colContact.title }}</h3>
-                {% for contact in colContact.contacts %}
-                    <p>{{ contact.content|raw }}</p>
-                {% endfor %}
+                {{ pressContact|trans_fallback('firstColumn')|raw }}
             </div>
-        {% endfor %}
+        {% endif %}
+        {% if pressContact.secondColumn is not null %}
+            <div class="col">
+                {{ pressContact|trans_fallback('secondColumn')|raw }}
+            </div>
+        {% endif %}
+        {% if pressContact.thirdColumn is not null %}
+            <div class="col">
+                {{ pressContact|trans_fallback('thirdColumn')|raw }}
+            </div>
+        {% endif %}
+        {% if pressContact.fourthColumn is not null %}
+            <div class="col">
+                {{ pressContact|trans_fallback('fourthColumn')|raw }}
+            </div>
+        {% endif %}
     </div>
 </div>

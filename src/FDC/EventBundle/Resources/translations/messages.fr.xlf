@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="92eaf26503adad3258b009f59368da18" resname="contact.form.errors.email">
+        <source>contact.form.errors.email</source>
+        <target>L'adresse email n'est pas valide</target>
+      </trans-unit>
+      <trans-unit id="7b821cddd0593bc95fae476078bb08ac" resname="contact.form.errors.message">
+        <source>contact.form.errors.message</source>
+        <target>Votre message n'est pas renseigné</target>
+      </trans-unit>
+      <trans-unit id="8308e95e4d03d00f1c1ae32ac3458ea9" resname="contact.form.errors.nom">
+        <source>contact.form.errors.nom</source>
+        <target>Votre nom n'est pas renseigné</target>
+      </trans-unit>
+      <trans-unit id="1a14e610570d8d7594e8b53fe6fdb794" resname="contact.form.errors.objet">
+        <source>contact.form.errors.objet</source>
+        <target>L'objet de votre message n'est pas renseigné</target>
+      </trans-unit>
+      <trans-unit id="7eec51c0825b489c292620af915778b2" resname="contact.form.errors.theme">
+        <source>contact.form.errors.theme</source>
+        <target>Votre thème n'est pas renseigné</target>
+      </trans-unit>
+      <trans-unit id="3c03f3e65ee2a27b87511d235f8a6614" resname="contact.form.placeholder.theme">
+        <source>contact.form.placeholder.theme</source>
+        <target>Sélectionnez un thème</target>
+      </trans-unit>
+      <trans-unit id="136467900fab2438dfc8792d5019f752" resname="footer.newsletter.placeholder.votreadresse">
+        <source>footer.newsletter.placeholder.votreadresse</source>
+        <target>Votre adresse email</target>
+      </trans-unit>
+      <trans-unit id="7177f478af7398b4aeab8785dc2bb454" resname="header.search.input.entrezrecherche">
+        <source>header.search.input.entrezrecherche</source>
+        <target>Entrez votre recherche...</target>
+      </trans-unit>
+      <trans-unit id="53047c0621f5ac3473edade951c3270f" resname="home.article.btn.ajouteramaselection">
+        <source>home.article.btn.ajouteramaselection</source>
+        <target>Ajouter à ma sélection</target>
+      </trans-unit>
+      <trans-unit id="376f5f6568ce28d13f1813608e77b64d" resname="newsletter.form.error.emaildejaenregistre">
+        <source>newsletter.form.error.emaildejaenregistre</source>
+        <target>L'adresse email est déjà enregistré</target>
+      </trans-unit>
+      <trans-unit id="663343b865746856f73cb97fcf52660d" resname="newsletter.form.error.ladresseemailnestpasvalide">
+        <source>newsletter.form.error.ladresseemailnestpasvalide</source>
+        <target>L'adresse email n'est pas valide</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

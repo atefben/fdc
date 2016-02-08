@@ -1506,7 +1506,7 @@ from desktop
   border-top: 2px solid #e5e5e5;
   box-sizing:border-box;
 }
-#news #calendar .next{
+.home #news #calendar .next{
   background-color: #f2f2f2;
 }
 #news #calendar .prev, #news #calendar .next{
@@ -3217,13 +3217,18 @@ section{
 	background: #fff;
 	border-bottom: 1px solid #dfdfdf; 
 	border-top: 1px solid #dfdfdf; 
+	 -webkit-transform: translate3d(0px, 0px, 0px);
 }
 .faq-page #horizontal-menu .vid p{
 	text-align: left;
 	line-height: 110px;
+	font-size: 22px;
+	letter-spacing: -0.5px;
 }
 .faq-page #horizontal-menu .vid{
 	box-sizing:border-box;
+	padding: 0;
+	 -webkit-transform: translate3d(0px, 0px, 0px);
 }
 .faq-page #horizontal-menu .owl-stage {
     padding-left: 40px;

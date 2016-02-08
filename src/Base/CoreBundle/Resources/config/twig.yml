@@ -19,11 +19,21 @@ services:
         tags:
             - { name: twig.extension }
 
+    base.twig.statement_instance_of_extension:
+        class: Base\CoreBundle\Twig\Extension\StatementInstanceOfExtension
+        tags:
+            - { name: twig.extension }
+            
     base.twig.statement_widget_instance_of_extension:
         class: Base\CoreBundle\Twig\Extension\StatementWidgetInstanceOfExtension
         tags:
             - { name: twig.extension }
 
+    base.twig.info_instance_of_extension:
+        class: Base\CoreBundle\Twig\Extension\InfoInstanceOfExtension
+        tags:
+            - { name: twig.extension }
+            
     base.twig.info_widget_instance_of_extension:
         class: Base\CoreBundle\Twig\Extension\InfoWidgetInstanceOfExtension
         tags:
@@ -55,6 +65,18 @@ services:
 
     base.twig.news_type_extension:
         class: Base\CoreBundle\Twig\Extension\NewsTypeExtension
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: twig.extension }
+            
+    base.twig.statement_type_extension:
+        class: Base\CoreBundle\Twig\Extension\StatementTypeExtension
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: twig.extension }
+            
+    base.twig.info_type_extension:
+        class: Base\CoreBundle\Twig\Extension\InfoTypeExtension
         arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: twig.extension }
