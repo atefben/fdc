@@ -7,10 +7,10 @@ use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use \DateTime;
 
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
@@ -40,12 +40,39 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
+        // GET HOMEPAGE SETTINGS
+        $homepageSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneById(1);;
+
+           /////////////////////////////////////////////////////////////////////////////////////
+          /////////////////////////      SLIDER      //////////////////////////////////////////
+         /////////////////////////////////////////////////////////////////////////////////////
+
+        $slides = $em->getRepository('BaseCoreBundle:HomepageSlide')->findBy(
+            array(),
+            array('id' => 'DESC'),
+            6,
+            0
+        );
+
+        $displayHomeSlider = $homepageSettings->getDisplayedSlider();
+
+        $homeSlider= array();
+        foreach($slides as $slide) {
+            if($slide->getNews() != null) {
+                $homeSlider[] = $slide->getNews();
+            } elseif($slide->getInfos() != null) {
+                $homeSlider[] = $slide->getInfos();
+            } elseif($slide->getStatement() != null){
+                $homeSlider[] = $slide->getStatement();
+            }
+        }
+
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
-            'festival' => $settings->getFestival()
+            'festival' => $this->getFestival()
         ), array(
             'date' => 'ASC'
         ), 12, null);
@@ -64,7 +91,7 @@ class NewsController extends Controller {
 
         // Homepage
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
-            'festival' => $settings->getFestival()
+            'festival' => $this->getFestival()
         ));
         if ($homepage === null) {
             throw new NotFoundHttpException();
@@ -76,9 +103,9 @@ class NewsController extends Controller {
 
         //get articles of the day, if no article today : get article from the day before
         $count = 6;
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count, true);
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
         if($homeArticles == null) {
-            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime->modify('-1 day'), $count, true);
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
         }
 
         //set default filters
@@ -109,7 +136,6 @@ class NewsController extends Controller {
         }
 
         //split articles in two array
-
         if(count($homeArticles) > 3){
             $homeArticles = $this->partition($homeArticles, 2);
             $homeArticlesBottom = $homeArticles[1];
@@ -125,36 +151,18 @@ class NewsController extends Controller {
 
         //get images for slider articles
         $dateArticleSlide = new DateTime();
-        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateArticleSlide);
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateArticleSlide);
+
+
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////       WEBTV        ///////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        $videos = $this
+            ->getBaseCoreMediaVideoRepository()
+            ->get2VideosFromTheLast10($locale, $this->getFestival()->getId());
 
         // TODO: clean this
-        $homeSlider = array(
-            array(
-                'id' => 0,
-                'image' => array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
-                ),
-                'theme' => 'Rencontre',
-                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
-            ),
-            array(
-                'id' => 0,
-                'image' => array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
-                ),
-                'theme' => 'Rencontre',
-                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
-            ),
-            array(
-                'id' => 0,
-                'image' => array(
-                    'path' => '/bundles/fdcevent/img/slider/slider01.jpg'
-                ),
-                'theme' => 'Rencontre',
-                'title' => 'Xavier DOLAN : « Tant qu’il y a encore un peu de spontanéité, il y a de l’art »'
-            )
-        );
-
         $featuredMovies         = array(
             'type' => 'fullVideo',
             'video' => array(
@@ -294,161 +302,7 @@ class NewsController extends Controller {
                 )
             )
         );
-        $videos                 = array(
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => true,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos' => 125,
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => true,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos' => 125,
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => true,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos' => 125,
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'nbVideos' => 125,
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            )
-        );
+
         $videoSlider            = array(
             array(
                 'title' => 'Lorem Ipsum',
@@ -518,8 +372,9 @@ class NewsController extends Controller {
             'homeArticles' => $homeArticles,
             'homeArticlesBottom' => $homeArticlesBottom,
             'homeArticlesSlider' => $homeArticlesSlider,
-            // TODO: clean this
+            'displayHomeSlider'  => $displayHomeSlider,
             'homeSlider' => $homeSlider,
+            // TODO: clean this
             'filters' => $filters,
             'videos' => $videos,
             'videoSlider' => $videoSlider,
@@ -536,7 +391,7 @@ class NewsController extends Controller {
      * @param $timestamp
      * @return array
      */
-    public function getArticlesFromAction($timestamp) {
+    public function getArticlesFromAction($timestamp = null) {
 
         $em = $this->get('doctrine')->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -550,9 +405,8 @@ class NewsController extends Controller {
         $date = new DateTime();
         $dateTime = $date->setTimestamp($timestamp);
         $count = 6;
-        $isAdmin = true;
 
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count, $isAdmin);
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count);
 
         return array(
             'homeArticles' => $homeArticles

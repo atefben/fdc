@@ -70,11 +70,11 @@ class HomepageAdmin extends Admin
                         'display' => false
                     ),
                     'pushsMain' => array(
+//                        'field_type' => 'a2lix_translations'
                         'class' => 'BaseCoreBundle:HomepagePushMain'
                     )
                 )
             ))
-            ->add('sliderNews')
             ->add('topNewsType', 'choice', array(
                 'label' => false,
                 'choices' => array(0 => 'homepage.top_news_type.displayed_news', 1 => 'homepage.top_news_type.displayed_events'),
@@ -82,6 +82,16 @@ class HomepageAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle',
                 'expanded' => true
             ))
+            ->add('homepageSlide', 'sonata_type_collection', array(
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('displayedSlider')
             ->add('displayedTopNews')
             ->add('displayedSocialWall')

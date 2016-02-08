@@ -3973,7 +3973,21 @@ p{
 	margin-bottom: 40px;
 	box-sizing: border-box;
 }
-
+.locked.valid{
+	height: auto;
+}
+.locked .press_confirmation{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	    color: #c8a461;
+    font-size: 25px;
+    font-weight: 700;    
+    line-height: 35px;
+    box-sizing: border-box;
+    padding: 0 30px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
 .header-press .container {
     padding: 60px 0 30px 0;
 }
