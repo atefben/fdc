@@ -3250,6 +3250,10 @@ display: inline-block;
     border: 1px solid #e5e5e5;
     position: absolute;
     width: 320px;
+    margin-left: 10px;
+}
+.calendar-press .fc-event{
+
     margin-left: 25px;
 }
 
