@@ -402,7 +402,7 @@ $(document).ready(function() {
 	      w += $that.width()+40;
 	      //console.log($that.width(),w);
 	    });
-		$('.owl-stage').width(w+10);
+		$('.owl-stage').width(w+40);
 		//console.log(w);
 
 		$('#horizontal-menu a').on('click',function(e){
