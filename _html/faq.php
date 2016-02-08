@@ -29,7 +29,7 @@
             <li data-name="documents-d-information">Documents d'information</li>
           </ul>
         </inside>
-        <section class="faq-container" data-name="informations-generales">
+        <section class="faq-container faq-active" data-name="informations-generales">
           <article>
             <div class="faq-question">
               <h3 class="faq-title">Quelle est la date du prochain festival ?</h3><i class="icon icon_case-plus"></i></div>

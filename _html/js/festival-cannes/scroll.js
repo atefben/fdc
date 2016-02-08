@@ -128,10 +128,11 @@ $(document).ready(function() {
 
   // Events on scroll
   // =========================
-  var lastScrollTop = 0,
-      $header = $('header'),
-      $timeline = $('#timeline'),
-      $navMovie = $('#nav-movie');
+    var lastScrollTop = 0,
+        $header       = $('header'),
+        $timeline     = $('#timeline'),
+        $navMovie     = $('#nav-movie'),
+        $faqmenu      = $(".faq-menu");
 
   $(window).on('scroll', function() {
     var s = $(this).scrollTop();
@@ -199,6 +200,19 @@ $(document).ready(function() {
           $timeline.addClass('bottom');
         } else {
           $timeline.removeClass('stick').css('left', 'auto');
+        }
+      }
+    }
+
+    // STICKY Menu on FAQ page on scroll
+    if($('.faq').length) {
+      if(s > $('.faq-container.faq-active').offset().top - 120 && s < ($('.faq-container.faq-active').height() - $('.faq-container.faq-active').offset().top - 70)) {
+        $faqmenu.removeClass('bottom').addClass('stick');
+      } else {
+        if (s >= ($('.faq-container.faq-active').height() - $('.faq-container.faq-active').offset().top - 70)) {
+          $faqmenu.addClass('bottom');
+        } else {
+          $faqmenu.removeClass('stick');
         }
       }
     }

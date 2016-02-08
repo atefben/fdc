@@ -67,6 +67,7 @@ $(document).ready(function() {
     $('#filters').remove();
     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
     $('#filters .vCenterKid').html(h);
+    $('#filters .vCenterKid').find(':not(span)').remove();
     $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
 
     setTimeout(function() {
