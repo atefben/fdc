@@ -22,6 +22,7 @@ breadcrumb:
     link_web_tv_list: Liste des Web TV
     link_f_d_c_page_web_tv_channels_list: Page WebTV - Les chaînes
     link_media_image_simple_list: Images semi-riches
+    link_f_d_c_page_web_tv_live_list: Accueil WebTV
 
 link:
     action_soif_refresh: Mettre à jour
@@ -195,6 +196,7 @@ dashboard:
         bo_translation: Traductions
         homepage: Homepage
         fdc_page_web_tv_channels: WEBTV - Les chaînes
+        fdc_page_web_tv_live: Accueil WebTV
 
 form:
     homepage:
@@ -339,6 +341,39 @@ form:
         sticky: Chaîne à la une
 
         helper_sticky: Sélectionnez la première chaîne que vous souhaitez voir apparaître en haut à gauche de la page.
+    fdc_page_web_tv_live:
+        festival_live: Le festival en direct
+        live_false: Avant le festival
+        live_true: Pendant le festival
+        label_title: Titre
+        label_title: 255 caractères max
+        label_first_sub_head: Sous-titre ligne 1
+        helper_first_sub_head: 255 caractères max. Couleur blanche.
+        label_second_sub_head: Sous-titre ligne 2
+        helper_second_sub_head: 255 caractères max. Couleur dorée.
+        label_direct_url: URL du direct
+        helper_direct_url: |
+          URL du live Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
+          Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.
+        label_teaser_url: URL du teaser
+        helper_teaser_url: |
+          URL Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
+          Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.
+        image: Image cover
+        helper_image: Dimensions attendues : YxZpx. Format attendu.
+        channels: Chaînes WebTV
+        label_web_tvs_associated: Chaînes à la une
+        helper_web_tvs_associated: Sélectionnez de 3 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
+        label_display_web_tv_area: Ne pas afficher cette strate
+        last_videos: Les dernières vidéos
+        label_display_last_video_area: Ne pas afficher cette strate
+        placeholder_seo_title: À saisir manuellement
+        placeholder_seo_description: À saisir manuellement
+        trailers: Bandes-annonces & extraits
+        label_media_videos_associated: Bandes-annonces & extraits à la une
+        helper_media_videos_associated: Sélectionnez de 3 à 10 films. Ils apparaitront en front-office dans l'ordre des champs.
+        label_display_trailer_area: Ne pas afficher cette strate
+
 
 nav:
     site_modal: Ouvrir la sélection des sites
@@ -349,3 +384,4 @@ show:
     label_updated_at: Mis à jour le
 
 FDCPageWebTvChannels: Page WebTV - Les chaînes
+FDCPageWebTvLive: Accueil WebTV

@@ -236,6 +236,31 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_web_tv_live:
+        class: Base\AdminBundle\Admin\FDCPageWebTvLiveAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvLive, BaseAdminBundle:FDCPageWebTvLiveAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageWebTvLive, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_web_tv_live_web_tv_associated:
+        class: Base\AdminBundle\Admin\FDCPageWebTvLiveWebTvAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated, BaseAdminBundle:FDCPageWebTvLiveWebTvAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageWebTvLiveWebTvAssociated, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_web_tv_live_media_video_associated:
+        class: Base\AdminBundle\Admin\FDCPageWebTvLiveMediaVideoAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated, BaseAdminBundle:FDCPageWebTvLiveMediaVideoAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageWebTvLiveMediaVideoAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
     #Homepage
     base.admin.homepage:
         class: Base\AdminBundle\Admin\HomepageAdmin
@@ -694,3 +719,5 @@ services:
             - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
