@@ -409,3 +409,10 @@
 #suggest li:nth-child(2n):hover {
   background-color: #ededed;
 }
+
+.searchpage .link-banner-img{
+    z-index: 8;
+    position: relative;
+    margin-top: 15px;
+    margin-left: -10px;
+}
