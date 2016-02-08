@@ -395,8 +395,16 @@ $(document).ready(function() {
 		  items:2
 		});
 		menu.owlCarousel();
-		$('.owl-stage').width(2440);
-		console.log($('.owl-stage').width());
+		//$('.owl-stage').width(2440);
+		var w = 0;
+		$('#horizontal-menu .owl-item').each(function() {
+	      var $that = $(this);
+	      w += $that.width()+40;
+	      console.log($that.width(),w);
+	    });
+		$('.owl-stage').width(w);
+		console.log(w);
+
 		$('#horizontal-menu a').on('click',function(e){
 	      	e.preventDefault();
   			$('#horizontal-menu a').removeClass('active');
