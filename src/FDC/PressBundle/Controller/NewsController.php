@@ -415,7 +415,6 @@ class NewsController extends Controller
 
                 $years[] = $statement->getPublishedAt()->format('Y');
             }
-            dump(!in_array($statement->getTheme()->getSlug(), $themes));
             if (!in_array($statement->getTheme()->getSlug(), $themes)) {
                 $filters['themes'][$i]['slug'] = $statement->getTheme()->getSlug();
                 $filters['themes'][$i]['content'] = $statement->getTheme()->getName();
