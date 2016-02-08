@@ -294,8 +294,16 @@
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'news_widget_text_type' %}
                                             <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'news_widget_video_type' %}
+                                                <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'news_widget_video_youtube_type' %}
                                                 <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'news_widget_audio_type' %}
+                                                <h4><strong>{{ 'form.widget.audio'|trans }}</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'news_widget_image_type' %}
+                                                <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'news_widget_image_dual_align_type' %}
+                                                <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'news_widget_quote_type' %}
                                                 <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
                                             {% endif %}
@@ -306,6 +314,19 @@
                                                 widget.children._type.vars.value == 'news_widget_quote_type'
                                             %}
                                                 {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                            {% endif %}
+                                            {% if widget.children._type.vars.value == 'news_widget_video_type' or
+                                                widget.children._type.vars.value == 'news_widget_audio_type'
+                                            %}
+                                                {{ form_row(widget.file) }}
+                                            {% endif %}
+                                            {% if widget.children._type.vars.value == 'news_widget_video_youtube_type' %}
+                                                {{ form_row(widget.image) }}
+                                            {% endif %}
+                                            {% if widget.children._type.vars.value == 'news_widget_image_type' or
+                                                widget.children._type.vars.value == 'news_widget_image_dual_align_type'
+                                            %}
+                                                {{ form_row(widget.gallery) }}
                                             {% endif %}
                                             <a class="btn btn-danger btn-sm btn-outline remove_item">
                                                 <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}

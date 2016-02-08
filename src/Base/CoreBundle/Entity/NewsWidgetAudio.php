@@ -16,20 +16,19 @@ use Base\CoreBundle\Util\Time;
 class NewsWidgetAudio extends NewsWidget
 {
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var MediaAudio
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="newsWidgetAudios")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio")
      */
     private $file;
 
     /**
      * Set file
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @param \Base\CoreBundle\Entity\MediaAudio $file
      * @return NewsWidgetAudio
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Base\CoreBundle\Entity\MediaAudio $file = null)
     {
         $this->file = $file;
 
@@ -39,7 +38,7 @@ class NewsWidgetAudio extends NewsWidget
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return \Base\CoreBundle\Entity\MediaAudio 
      */
     public function getFile()
     {

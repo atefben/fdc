@@ -22,7 +22,8 @@ services:
         tags:
             - { name: form.type, alias: 'news_widget_audio_type'}
         calls:
-            - ['setSonataAdmin', ['@sonata.media.admin.gallery']]
+            - ['setSonataAdmin', ['@base.admin.news_widget_audio_dummy']]
+            - ['setMediaAudioAdmin', ['@base.admin.media_audio']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_image_type:
@@ -32,6 +33,7 @@ services:
             - { name: form.type, alias: 'news_widget_image_type'}
         calls:
             - ['setNewsWidgetImageDummyAdmin', ['@base.admin.news_widget_image_dummy']]
+            - ['setGalleryAdmin', ['@base.admin.gallery']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_image_dual_align_type:
@@ -40,17 +42,27 @@ services:
         tags:
             - { name: form.type, alias: 'news_widget_image_dual_align_type'}
         calls:
-            - ['setNewsWidgetImageDummyAdmin', ['@base.admin.news_widget_image_dummy']]
+            - ['setNewsWidgetImageDummyAdmin', ['@base.admin.news_widget_image_dual_align_dummy']]
+            - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
 
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_video_type:
-            class: Base\AdminBundle\Form\Type\NewsWidgetVideoType
-            tags:
-                - { name: form.type, alias: 'news_widget_video_type'}
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\NewsWidgetVideoType
+        tags:
+            - { name: form.type, alias: 'news_widget_video_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.news_widget_video_dummy']]
 
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_video_youtube_type:
-            class: Base\AdminBundle\Form\Type\NewsWidgetVideoYoutubeType
-            tags:
-                - { name: form.type, alias: 'news_widget_video_youtube_type'}
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\NewsWidgetVideoYoutubeType
+        tags:
+            - { name: form.type, alias: 'news_widget_video_youtube_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.news_widget_video_youtube_dummy']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
 
     #event services
     base.admin.form.event_widget_type:

@@ -17,17 +17,17 @@ use Base\CoreBundle\Util\Time;
 class NewsWidgetImageDualAlign extends NewsWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Gallery")
+     * @ORM\ManyToOne(targetEntity="GalleryDualAlign")
      */
     private $gallery;
 
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\Gallery $gallery
-     * @return NewsWidgetImage
+     * @param \Base\CoreBundle\Entity\GalleryDualAlign $gallery
+     * @return NewsWidgetImageDualAlign
      */
-    public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
+    public function setGallery(\Base\CoreBundle\Entity\GalleryDualAlign $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -37,7 +37,7 @@ class NewsWidgetImageDualAlign extends NewsWidget
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\Gallery
+     * @return \Base\CoreBundle\Entity\GalleryDualAlign 
      */
     public function getGallery()
     {

@@ -33,6 +33,8 @@ class NewsWidgetImageType extends NewsWidgetType
      * @access private
      */
     private $newsWidgetImageDummyAdmin;
+
+    private $galleryAdmin;
     
     /**
      * setNewsWidgetImageDummyAdmin function.
@@ -44,6 +46,11 @@ class NewsWidgetImageType extends NewsWidgetType
     public function setNewsWidgetImageDummyAdmin($newsWidgetImageDummyAdmin)
     {
         $this->newsWidgetImageDummyAdmin = $newsWidgetImageDummyAdmin;
+    }
+
+    public function setgalleryAdmin($galleryAdmin)
+    {
+        $this->galleryAdmin = $galleryAdmin;
     }
     
     /**
@@ -59,22 +66,10 @@ class NewsWidgetImageType extends NewsWidgetType
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
             'sonata_field_description' =>  $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager' => $this->newsWidgetImageDummyAdmin->getModelManager(),
-            'class' => $this->newsWidgetImageDummyAdmin->getClass(),
+            'model_manager' => $this->galleryAdmin->getModelManager(),
+            'class' => $this->galleryAdmin->getClass(),
+            'label' => false
         ));
-       // $builder->add('medias', 'sonata_type_collection', array(
-           // 'sonata_field_description' =>  $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
-        //    'model_manager' => $this->newsWidgetImageDummyAdmin->getModelManager(),
-          //  'class' => $this->newsWidgetImageDummyAdmin->getClass(),
-       // ));
-       /* $builder->add('medias', 'sonata_type_collection', array(
-            'by_reference' => false,
-            'sonata_field_description' =>  $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
-        ), array(
-            'edit' => 'inline',
-            'inline' => 'table',
-            'sortable' => 'position',
-        ));*/
     }
 
     /**
