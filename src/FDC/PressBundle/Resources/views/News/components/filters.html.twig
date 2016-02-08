@@ -18,20 +18,30 @@
         </span>
     </div>
 
-    <div id="format" class="filter">
-        <span class="label">{{ 'press.actu.filter.label.format'|trans }} :</span>
-        <span class="select">
-            {% for key, format in filters.format %}
-                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{{ format.content }}</span>
-            {% endfor %}
-        </span>
+    <div id="type" class="filter">
+        <span class="label">Types :</span>
+            <span class="select">
+              <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
+
+              <span data-filter="communique">Communiqués</span>
+              <span data-filter="infos">Infos</span>
+            </span>
     </div>
 
     <div id="theme" class="filter">
         <span class="label">{{ 'press.actu.filter.label.themes'|trans }} :</span>
         <span class="select">
             {% for key, theme in filters.themes %}
-                <span class="{% if key == 0 %}active{% endif %}" data-filter="d{{ theme.slug }}">{{ theme.content }}</span>
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ theme.slug }}">{{ theme.content }}</span>
+            {% endfor %}
+        </span>
+    </div>
+
+    <div id="format" class="filter">
+        <span class="label">{{ 'press.actu.filter.label.format'|trans }} :</span>
+        <span class="select">
+            {% for key, format in filters.format %}
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{{ format.content }}</span>
             {% endfor %}
         </span>
     </div>
