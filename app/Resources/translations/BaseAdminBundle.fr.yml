@@ -251,11 +251,15 @@ form:
         helper_file: Dimensions attendues : YxZpx. Format attendu.
         displayed_home: Remonter dans le diaporama du quotidien en homepage
         displayed_all: Remonter dans "Toutes les photos"
+    news_widget_video_youtube:
+        helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_social_graph_hashtag_twitter: Social graph - hashtags
     label_displayed_social_wall: Afficher le social wall
     label_social_wall_hashtags: Social Wall - hashtags
+    label_news_widget_video_youtube_title: Titre de la vidéo
+    label_news_widget_video_youtube_url: Url de la vidéo
     label_save: Sauvegarder
     label_email: Email
     label_copyright: Copyright

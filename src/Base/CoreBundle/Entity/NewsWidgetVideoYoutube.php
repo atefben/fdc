@@ -32,8 +32,38 @@ class NewsWidgetVideoYoutube extends NewsWidget
      */
     protected $translations;
 
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     */
+    protected $image;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return NewsWidgetVideoYoutube
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
