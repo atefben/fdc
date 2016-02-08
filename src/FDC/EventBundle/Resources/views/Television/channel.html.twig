@@ -2,53 +2,64 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="webtv single-channel loading">
-    <div class="container">
-        <a href="{{ path('fdc_event_television_channels') }}" class="back">
-            <i class="icon icon_flecheGauche"></i>{{ 'webtv.channel.btn.retourauxchaines'|trans }}
-        </a>
-    </div>
-    <h2 class="title">{{ channel.title }}</h2>
+    <div id="main" class="webtv single-channel loading">
+        <div class="container">
+            <a href="{{ path('fdc_event_television_channels') }}" class="back">
+                <i class="icon icon_flecheGauche"></i>{{ 'webtv.channel.btn.retourauxchaines'|trans }}
+            </a>
+        </div>
+        <h2 class="title">{{ channel|trans_fallback('name') }}</h2>
 
-    <div class="small-container">
-        <div class="player">
-            {% image '@FDCEventBundle/Resources/public/img/webtv/playervideo.jpg' %}
-            <img src="{{ asset_url }}" alt="">
-            {% endimage %}
-        </div>
-        <div class="infos-videos">
-            <div class="infos">
-                <strong>{{ channel.title }}</strong>
-                <span class="time">{{ channel.createdAt|date('d.m.y') }} . {{ channel.createdAt|date('H:i') }}</span>
-                <p>{{ channel.description }}</p>
+        <div class="small-container">
+            <div class="player">
+                {% image '@FDCEventBundle/Resources/public/img/webtv/playervideo.jpg' %}
+                <img src="{% path webTvVideos|last.image|trans_fallback('file'), '975x616' %}" alt="">
+                {% endimage %}
             </div>
-            <div class="buttons square">
-                <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-                <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
-                <a href="#" class="button link"><i class="icon icon_link"></i></a>
-                <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+            <div class="infos-videos">
+                <div class="infos">
+                    <strong>{{ webTvVideos|last.theme|trans_fallback('name') }}</strong>
+                    <span class="time">{{ webTvVideos|last.createdAt|date('d.m.y') }}
+                        . {{ webTvVideos|last.createdAt|date('H:i') }}</span>
+                    <p>{{ webTvVideos|last|trans_fallback('title') }}</p>
+                </div>
+                <div class="buttons square">
+                    <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
+                    <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+                    <a href="#" class="button link"><i class="icon icon_link"></i></a>
+                    <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="content-channels">
-        <div id="slider-channels" class="owl-carousel sliderDrag">
-            {% for video in channel %}
-                <div class="channel shadow-bottom">
-                    {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
-                </div>
-            {% endfor %}
+        <div id="content-channels">
+            <div id="slider-channels" class="owl-carousel sliderDrag">
+                {% for video in webTvVideos %}
+                    {% if loop.last == false %}
+                        <div class="channel shadow-bottom">
+                            {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-    <div id="content-latest">
-        <h2 class="title">{{ 'webtv.channel.title.lesdernieresvideos'|trans }}</h2>
-        <div class="container sliderDrag">
-            {% for video in videos %}
-                <div class="video shadow-bottom">
-                    {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
+
+        {% if otherVideos|length %}
+            <div id="content-latest">
+                <h2 class="title">{{ 'webtv.channel.title.lesdernieresvideos'|trans }}</h2>
+                <div class="container sliderDrag">
+                    {% for video in otherVideos %}
+                        <div class="video shadow-bottom">
+                            {% if video.image|trans_fallback('file') %}
+                                <img src="{% path video.image|trans_fallback('file'), '462x292' %}" alt="">
+                            {% else %}
+                                <img src="{% path video.image|trans_fallback('file', 'fr'), '462x292' %}" alt="">
+                            {% endif %}
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endif %}
+
     </div>
-</div>
 {% endblock body %}
