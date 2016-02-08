@@ -11,7 +11,7 @@ use \DateTime;
  * @author  Antoine Mineau
  * \@company Ohwee
  */
-trait Seo
+trait   Seo
 {
     /**
      * @var string

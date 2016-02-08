@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation\Since;
  * MediaVideo
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaVideoRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaVideo extends Media
