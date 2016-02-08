@@ -7,10 +7,10 @@ use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use \DateTime;
 
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
@@ -146,6 +146,15 @@ class NewsController extends Controller {
         //get images for slider articles
         $dateArticleSlide = new DateTime();
         $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $settings->getFestival()->getId(), $dateArticleSlide);
+
+
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////       WEBTV        ///////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+        
+        $videos = $this
+            ->getBaseCoreMediaVideoRepository()
+            ->get2VideosFromTheLast10($locale, $this->getFestival()->getId());
 
         // TODO: clean this
         $featuredMovies         = array(
@@ -287,161 +296,7 @@ class NewsController extends Controller {
                 )
             )
         );
-        $videos                 = array(
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => true,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos' => 125,
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => true,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos' => 125,
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => true,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'nbVideos' => 125,
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'nbVideos' => 125,
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/02.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            ),
-            array(
-                'theme' => 'Conférence de presse',
-                'most_viewed' => false,
-                'nbVideos' => 125,
-                'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
-                'createdAt' => new \DateTime(),
-                'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/03.jpg',
-                    'src' => 'http://dummyimage.com/320x404/3498db/.png',
-                    'large' => 'http://dummyimage.com/640x808/000/fff.png'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1'
-                )
-            )
-        );
+
         $videoSlider            = array(
             array(
                 'title' => 'Lorem Ipsum',

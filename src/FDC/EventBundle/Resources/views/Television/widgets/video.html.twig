@@ -4,7 +4,7 @@
     {% if video.image|trans_fallback('file') %}
         <img src="{% path video.image|trans_fallback('file'), '975x616' %}" alt="">
     {% else %}
-        <img src="{% path video.image|trans_fallback('file'), '975x616' %}" alt="">
+        <img src="{% path video.image|trans_fallback('file', 'fr'), '975x616' %}" alt="">
     {% endif %}
 </div>
 <a class="linkVid" href="#"></a>
