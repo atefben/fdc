@@ -99,7 +99,7 @@ abstract class Statement implements TranslateMainInterface
     private $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="StatementStatementAssociated", mappedBy="statement", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="StatementStatementAssociated", mappedBy="statement", cascade={"persist"}, orphanRemoval=true)
      *
      */
     private $associatedStatement;
@@ -117,13 +117,13 @@ abstract class Statement implements TranslateMainInterface
     private $associatedEvent;
 
     /**
-     * @ORM\OneToMany(targetEntity="StatementFilmProjectionAssociated", mappedBy="statement", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="StatementFilmProjectionAssociated", mappedBy="statement", cascade={"persist"}, orphanRemoval=true)
      *
      */
     private $associatedProjections;
 
     /**
-     * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="statement", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="statement", cascade={"persist"}, orphanRemoval=true)
      *
      */
     private $associatedFilms;
@@ -131,7 +131,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * @var StatementWidget
      *
-     * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"persist"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -752,5 +752,13 @@ abstract class Statement implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * @param StatementWidget $widgets
+     */
+    public function setWidgets($widgets)
+    {
+        $this->widgets = $widgets;
     }
 }

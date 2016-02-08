@@ -35,7 +35,6 @@ class StatementVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $title;
 

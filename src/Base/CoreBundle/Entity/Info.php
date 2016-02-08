@@ -97,14 +97,14 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var InfoTag
      *
-     * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */
     private $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="InfoInfoAssociated", mappedBy="info", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="InfoInfoAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -125,14 +125,14 @@ abstract class Info implements TranslateMainInterface
     private $associatedEvent;
 
     /**
-     * @ORM\OneToMany(targetEntity="InfoFilmProjectionAssociated", mappedBy="info", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="InfoFilmProjectionAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */
     private $associatedProjections;
 
     /**
-     * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="info", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -141,7 +141,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var InfoWidget
      *
-     * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"news_list", "news_show"})
@@ -203,6 +203,9 @@ abstract class Info implements TranslateMainInterface
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->associatedStatement = new ArrayCollection();
+        $this->associatedProjections = new ArrayCollection();
+        $this->associatedFilms = new ArrayCollection();
     }
 
     public function __toString() {

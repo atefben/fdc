@@ -1,32 +1,32 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
-<div class="audio-player audio" data-sound="{% path widget.file, 'reference' %}">
-    <div class="image" style="background-image: url({% path widget.file.image, '975x616' %});"></div>
-    <a href="#" class="playpause"></a>
-    <div class="off">
-        <div class="vCenter">
-            <div class="vCenterKid">
-                <div class="picto"><i class="icon icon_audio"></i></div>
-                <div class="info">
-                    <a href="#" class="category">{{ widget.file.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ widget.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ widget.createdAt|date('H:i') }}</span>
-                    <p>{{ widget.file.image.copyright }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="on">
-        <div class="vCenter">
-            <div class="vCenterKid">
-                <div class="duration">
-                    <span class="curr">0:00</span>/<span class="total">0:00</span>
-                </div>
-                <div class="wave-container"></div>
-                <div class="volume">
-                    <span></span>
-                </div>
-                <a href="#" class="fullscreen"></a>
-            </div>
-        </div>
-    </div>
-</div>
+{{ dump(widget) }}
+{#<div class="audio-player audio" data-sound="{% path widget.audio, 'reference' %}">#}
+    {#<div class="image" style="background-image: url({% path widget.audio.image, '975x616' %});"></div>#}
+    {#<a href="#" class="playpause"></a>#}
+    {#<div class="off">#}
+        {#<div class="vCenter">#}
+            {#<div class="vCenterKid">#}
+                {#<div class="picto"><i class="icon icon_audio"></i></div>#}
+                {#<div class="info">#}
+                    {#<a href="#" class="category">{{ widget.audio.theme|trans_fallback('name') }}</a>#}
+                    {#<span class="date">{{ widget.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ widget.createdAt|date('H:i') }}</span>#}
+                    {#<p>{{ widget.audio.image.copyright }}</p>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+    {#<div class="on">#}
+        {#<div class="vCenter">#}
+            {#<div class="vCenterKid">#}
+                {#<div class="duration">#}
+                    {#<span class="curr">0:00</span>/<span class="total">0:00</span>#}
+                {#</div>#}
+                {#<div class="wave-container"></div>#}
+                {#<div class="volume">#}
+                    {#<span></span>#}
+                {#</div>#}
+                {#<a href="#" class="fullscreen"></a>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{#</div>#}
