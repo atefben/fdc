@@ -25,7 +25,6 @@ class LockController extends Controller
 {
 
     private static $entityMapper = array(
-        'newsarticle'      => 'NewsArticle',
         'webtv'            => 'WebTv',
         'tag'              => 'Tag',
         'theme'            => 'Theme',
@@ -38,6 +37,15 @@ class LockController extends Controller
         'newsimage'        => 'NewsImage',
         'newsaudio'        => 'NewsAudio',
         'newsvideo'        => 'NewsVideo',
+        'newsarticle'      => 'NewsArticle',
+        'statementimage'   => 'StatementImage',
+        'statementaudio'   => 'StatementAudio',
+        'statementarticle' => 'StatementArticle',
+        'statementvideo'   => 'StatementVideo',
+        'infoimage'        => 'InfoImage',
+        'infoaudio'        => 'InfoAudio',
+        'infoarticle'      => 'InfoArticle',
+        'infovideo'        => 'InfoVideo',
     );
 
     /**
@@ -115,6 +123,7 @@ class LockController extends Controller
 
         return $response;
     }
+
 
     /**
      * checkAction function.
