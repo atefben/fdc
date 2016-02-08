@@ -400,10 +400,10 @@ $(document).ready(function() {
 		$('#horizontal-menu .owl-item').each(function() {
 	      var $that = $(this);
 	      w += $that.width()+40;
-	      console.log($that.width(),w);
+	      //console.log($that.width(),w);
 	    });
-		$('.owl-stage').width(w);
-		console.log(w);
+		$('.owl-stage').width(w+10);
+		//console.log(w);
 
 		$('#horizontal-menu a').on('click',function(e){
 	      	e.preventDefault();
