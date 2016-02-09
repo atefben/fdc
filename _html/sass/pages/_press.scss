@@ -38,6 +38,43 @@
     }
   }
 
+  .title-center{
+    width: 607px;
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 36px;
+    text-transform: none;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .descrip-title{
+    text-align: center;
+    line-height: 26px;
+    font-size: 0.81rem;
+
+    strong{
+      color: #c8a461;
+      font-family: $CamphorBold;
+      font-size: 0.81rem;
+    }
+  }
+
+  #google-map {
+    width: 975px;
+    height: 350px;
+    margin-top: 51px;
+  }
+
+  .googlemap-descrip{
+    font-size: .75rem;
+    color: #333333;
+    font-family: $CamphorMedium;
+    margin-top: 10px;
+    display: block;
+  }
+
   .fc-event {
     background-color: #373737;
     border-radius: 0;

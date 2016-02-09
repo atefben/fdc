@@ -15,7 +15,7 @@ breadcrumb:
     link_news_audio_list: Liste des actualités - audios
     link_news_image_list: Liste des actualités - photos
     link_theme_list: Liste des Thèmes
-    link_media_image_list : Liste des Médias images
+    link_media_image_list : Liste des Médias photos
     link_media_video_list: Liste des Médias vidéo
     link_media_audio_list: Liste des Médias audio
     link_homepage_list: Homepage
@@ -92,7 +92,7 @@ entity:
     theme: Thèmes
     tag: Tags de recherche
     web_tv: Chaînes
-    media_image: Images
+    media_image: Photos
     media_image_simple: Images semi-riches
     media_audio: Audios
     media_video: Vidéos
@@ -160,6 +160,7 @@ list:
 
 
 filter:
+    label_legend: Légende contenant
     label_festival: Festival
     label_id: Identifiant
     label_title: Titre
@@ -225,14 +226,14 @@ form:
         festival: Année du festival
     news:
         helper_header_image: "Dimensions attendues : YxZpx - ratio paysage. Format Attendu."
-        helper_title: "X caractères max."
+        helper_title: "255 caractères max."
         helper_seo_title: "Recommandé : 60 caractères"
         helper_description: "Recommandé : 155 caractères"
         helper_file: |
             Par défaut, c'est l'image principale qui est utilisée comme image de partage.
             Dimensions attendues : YxZpx. Format attendu.
         helper_news_association: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
-        helper_signature: X caractères max.
+        helper_signature: 255 caractères max.
         helper_widgets: Ajouter un module de type :
         helper_tags: Ajoutez des tags à l'article pour le voir ressortir dans les résultats de recherche.
         helper_film_film_associated: Sélectionnez un film associé à l'article. La programmation associée apparaitra automatiquement en front-office. Ce champ est prioritaire sur les champs "Événement & programmation associés" et "Programmation associée".
@@ -255,18 +256,18 @@ form:
         image_dual_align: Module 2 photos / ligne
         quote: Module citation
     media_audio:
-        helper_title: X caractères max.
+        helper_title: 255 caractères max.
     media_video:
-        helper_title: X caractères max.
+        helper_title: 255 caractères max.
         displayed_all: Remonter dans "Toutes les vidéos"
         displayed_home: Remonter en tant qu'actualité sur la homepage
         displayed_webTv: Afficher dans une chaîne de la webTV
         displayed_trailer: Afficher en tant que bande-annonce de la webTV
         displayed_mobile: Flux mobiles
     media:
-        helper_legend: X caractères max.
-        helper_alt: X caractères max.
-        helper_copyright: X caractères max. Le symbole © est généré automatiquement.
+        helper_legend: 255 caractères max.
+        helper_alt: 255 caractères max.
+        helper_copyright: 255 caractères max. Le symbole © est généré automatiquement.
         helper_tags: Ajoutez des tags à l'article pour le voir ressortir dans les résultats de recherche.
     media_image:
         helper_file: Dimensions attendues : YxZpx. Format attendu.
@@ -360,9 +361,9 @@ form:
         push_link: Lien du push
         media_film: Medias du film
         download: A télécharger
-        helper_title: X caractères max.
-        helper_subtitle: X caractères max.
-        helper_desc: X caractères max.
+        helper_title: 255 caractères max.
+        helper_subtitle: 255 caractères max.
+        helper_desc: 255 caractères max.
         label_section: Blocs
     fdc_page_web_tv_channels:
         image: Image cover

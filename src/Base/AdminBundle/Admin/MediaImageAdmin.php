@@ -31,8 +31,87 @@ class MediaImageAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('legend', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.legend LIKE :legend');
+                    $queryBuilder->setParameter('legend', '%'. $value['value']. '%');
+
+                    return true;
+                },
+                'field_type' => 'text'
+            ))
+            ->add('theme')
+            ->add('createdBefore', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.createdAt < :before');
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type' => 'date',
+                'field_options' => array(
+                    'widget' => 'single_text',
+                ),
+            ))
+            ->add('createdAfter', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.createdAt > :after');
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type' => 'date',
+                'field_options' => array(
+                    'widget' => 'single_text',
+                ),
+            ))
+            ->add('status', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.status = :status');
+                    $queryBuilder->setParameter('status', $value['value']);
+
+                    return true;
+                },
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => MediaImageTranslation::getStatuses(),
+                    'choice_translation_domain' => 'BaseAdminBundle'
+                ),
+            ))
+            ->add('priorityStatus', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.priorityStatus LIKE :priorityStatus');
+                    $queryBuilder->setParameter('priorityStatus', '%'. $value['value']. '%');
+
+                    return true;
+                },
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => Mediaimage::getPriorityStatusesList(),
+                    'choice_translation_domain' => 'BaseAdminBundle'
+                ),
+            ));
         ;
     }
 
@@ -47,6 +126,7 @@ class MediaImageAdmin extends Admin
                 'label' => 'list.label_legend_img',
                 'template' => 'BaseAdminBundle:MediaImage:list_legend.html.twig'
             ))
+            ->add('theme')
             ->add('createdAt')
             ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
             ->add('priorityStatus', 'choice', array(
