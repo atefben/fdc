@@ -25,7 +25,7 @@
             {% elseif class(news) == "StatementVideo" or class(news) == "InfoVideo" %}
                 {% include 'FDCEventBundle:News:widgets/single-video.html.twig' %}
             {% elseif class(news) == "StatementAudio" or class(news) == "InfoAudio" %}
-                {% include 'FDCEventBundle:News:widgets/audio.html.twig' with {'widget': news} %}
+                {% include 'FDCEventBundle:News:widgets/single-audio.html.twig' %}
             {% elseif class(news) == "StatementImage" or class(news) == "InfoImage" %}
                 {% if news.gallery.medias|length == 2 %}
                     {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' with {'widget': news} %}

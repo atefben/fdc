@@ -1,8 +1,14 @@
+{% set file = news.video %}
+{% set trans = file.findTranslationByLocale(app.request.locale) %}
+{% if trans is null or trans.file is null %}
+    {% set trans = file.findTranslationByLocale('fr') %}
+{% endif %}
+{% set file = trans.file %}
 <div class="video-player video actu_article_video">
 
     {% set trans = news.video.findTranslationByLocale(app.request.locale) %}
 
-    <div class="image" style="background-image: url({% path trans.image, '975x616' %});"></div>
+    <div class="image" style="background-image: url({% path news.video.image, '975x616' %});"></div>
     <div class="picto"></div>
     <div class="info">
         <a href="{% path trans.file, 'reference' %}" class="category">{{ news.video.theme|trans_fallback('name') }}</a>

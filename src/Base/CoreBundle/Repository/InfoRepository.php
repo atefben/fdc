@@ -58,7 +58,7 @@ class InfoRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', 'site-press')
             ->getQuery()
             ->getOneOrNullResult();
 
@@ -107,7 +107,7 @@ class InfoRepository extends EntityRepository
             ->setParameter('datetime', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('id', $id)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', 'site-press')
             ->getQuery()
             ->getResult();
 
@@ -135,7 +135,7 @@ class InfoRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', 'site-press')
             ->getQuery()
             ->getResult();
 
@@ -176,7 +176,7 @@ class InfoRepository extends EntityRepository
             ->setParameter('locale', $locale)
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'site-evenementiel')
+            ->setParameter('site', 'site-press')
             ->getQuery()
             ->getResult();
     }
@@ -256,7 +256,7 @@ class InfoRepository extends EntityRepository
             ->setParameter('locale', $locale)
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'site-evenementiel')
+            ->setParameter('site', 'site-press')
             ->getQuery()
             ->getResult();
     }

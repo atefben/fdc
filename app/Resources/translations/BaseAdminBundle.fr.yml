@@ -221,6 +221,8 @@ form:
         helper_news_film_projection_associated: Sélectionnez un ou plusieurs événements de programmation associés à l'article.
         helper_news_film_film_associated: Sélectionnez les films sur lesquels vous souhaitez voir l'actualité apparaitre.
         helper_news_news_associated: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
+        helper_media_audio: Ajouter un fichier au format mp3
+        helper_video_file: Ajouter un fichier au format mp4/mpeg
     social_wall:
         twitter: Twitter
         instagram: Instagram
@@ -307,6 +309,8 @@ form:
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
     label_name: Nom
+    label_media_audio: Fichier audio
+    label_video_file: Fichier vidéo
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
