@@ -260,6 +260,13 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_web_tv_trailers:
+        class: Base\AdminBundle\Admin\FDCPageWebTvTrailersAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvTrailers, BaseAdminBundle:FDCPageWebTvTrailersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageWebTvTrailers, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #Homepage
     base.admin.homepage:
