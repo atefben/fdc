@@ -21,6 +21,7 @@ class Homepage
 {
     use Translatable;
     use Time;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -677,10 +678,10 @@ class Homepage
     /**
      * Set pushsMainImage1
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $pushsMainImage1
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsMainImage1
      * @return Homepage
      */
-    public function setPushsMainImage1(\Base\CoreBundle\Entity\MediaImage $pushsMainImage1 = null)
+    public function setPushsMainImage1(\Base\CoreBundle\Entity\MediaImageSimple $pushsMainImage1 = null)
     {
         $this->pushsMainImage1 = $pushsMainImage1;
 
@@ -690,7 +691,7 @@ class Homepage
     /**
      * Get pushsMainImage1
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushsMainImage1()
     {
@@ -700,10 +701,10 @@ class Homepage
     /**
      * Set pushsMainImage2
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $pushsMainImage2
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsMainImage2
      * @return Homepage
      */
-    public function setPushsMainImage2(\Base\CoreBundle\Entity\MediaImage $pushsMainImage2 = null)
+    public function setPushsMainImage2(\Base\CoreBundle\Entity\MediaImageSimple $pushsMainImage2 = null)
     {
         $this->pushsMainImage2 = $pushsMainImage2;
 
@@ -713,7 +714,7 @@ class Homepage
     /**
      * Get pushsMainImage2
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushsMainImage2()
     {
@@ -723,10 +724,10 @@ class Homepage
     /**
      * Set pushsMainImage3
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $pushsMainImage3
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsMainImage3
      * @return Homepage
      */
-    public function setPushsMainImage3(\Base\CoreBundle\Entity\MediaImage $pushsMainImage3 = null)
+    public function setPushsMainImage3(\Base\CoreBundle\Entity\MediaImageSimple $pushsMainImage3 = null)
     {
         $this->pushsMainImage3 = $pushsMainImage3;
 
@@ -736,7 +737,7 @@ class Homepage
     /**
      * Get pushsMainImage3
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushsMainImage3()
     {
