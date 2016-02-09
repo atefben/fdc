@@ -6087,6 +6087,7 @@ article .picto .icon{
 .dark-container .banner-img a, .darker-container .banner-img a {
     margin-top: -20px;
     padding-top: 0;
+    padding-bottom: 50px;
 }
 .banner-img .title a .icon{
   font-size: 1rem;
