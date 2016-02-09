@@ -65,6 +65,12 @@ class PressGuideWidgetColumnType extends PressGuideWidgetType
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
                     'firstColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Bloc 1',

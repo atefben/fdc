@@ -16,8 +16,8 @@ use Base\CoreBundle\Util\Time;
  */
 class PressGuideWidgetColumnTranslation
 {
-
     use Translation;
+    use Time;
 
     /**
      * @var string

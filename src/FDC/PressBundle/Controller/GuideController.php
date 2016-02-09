@@ -23,7 +23,7 @@ class GuideController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         // GET GUIDE PAGE
-        $guide = $em->getRepository('BaseCoreBundle:PressGuide')->findOneById(9);
+        $guide = $em->getRepository('BaseCoreBundle:PressGuide')->findOneById(4);
 
         if ($guide === null) {
             throw new NotFoundHttpException();

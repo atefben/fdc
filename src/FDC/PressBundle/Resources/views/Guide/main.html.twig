@@ -9,6 +9,7 @@
 
     <div id='praticalguide'>
 
+        {# SECTION - A VOTRE ARRIVEE #}
         <section class="container-pguide active">
             <div class="wrapper">
                 <div class="contain-title-pg">
@@ -21,34 +22,88 @@
                     <i class="icon accordion icon_moins"></i>
                 </div>
                 {% for widget in guideContent.arriveWidgets %}
-                    {% set img = widget.gallery %}
-                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% if class(widget) == "PressGuideWidgetImage" %}
+                        {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                        {% include 'FDCPressBundle:Guide:widgets/picto.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                        {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
                     {% endif %}
-                    {% set file = trans.file %}
-                    <div class="contain-article">
-                        <div class="aside">
-                            {% thumbnail file, 'big' with {'alt': img|trans_fallback('alt')} %}
-                        </div>
-                        <div class="texts">
-                            <strong>{{ widget|trans_fallback('title') }}</strong>
-                            <p>
-                                {{ widget|trans_fallback('content')|raw }}
-                            </p>
-                        </div>
-                    </div>
                 {% endfor %}
+            </div>
+        </section>
 
-                {#{% if key == 'arrive' %}#}
-                    {#{% include 'FDCPressBundle:Guide:components/arrive.html.twig' %}#}
-                {#{% elseif key == 'infos' %}#}
-                    {#{% include 'FDCPressBundle:Guide:components/infos.html.twig' %}#}
-                {#{% elseif key == 'appointment' %}#}
-                    {#{% include 'FDCPressBundle:Guide:components/appointment.html.twig' %}#}
-                {#{% elseif key == 'service' %}#}
-                    {#{% include 'FDCPressBundle:Guide:components/service.html.twig' %}#}
-                {#{% endif %}#}
+        {# SECTION - INFORMATION #}
+        <section class="container-pguide">
+            <div class="wrapper">
+                <div class="contain-title-pg">
+                    <h3 class="title-pguide ">
+                        <span class="logo">
+                            <i class="icon {{ guideContent.informationIcon }}"></i>
+                        </span>
+                        {{ guideContent|trans_fallback('informationTitle')}}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
+                </div>
+                {% for widget in guideContent.informationWidgets %}
+                    {% if class(widget) == "PressGuideWidgetImage" %}
+                        {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                        {% include 'FDCPressBundle:Guide:widgets/picto.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                        {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        {# SECTION - RENDEZ VOUS DES MEDIAS #}
+        <section class="container-pguide">
+            <div class="wrapper">
+                <div class="contain-title-pg">
+                    <h3 class="title-pguide ">
+                        <span class="logo">
+                            <i class="icon {{ guideContent.meetingIcon }}"></i>
+                        </span>
+                        {{ guideContent|trans_fallback('meetingTitle')}}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
+                </div>
+                {% for widget in guideContent.meetingWidgets %}
+                    {% if class(widget) == "PressGuideWidgetImage" %}
+                        {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                        {% include 'FDCPressBundle:Guide:widgets/picto.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                        {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        {# SECTION - SERVICES #}
+        <section class="container-pguide">
+            <div class="wrapper">
+                <div class="contain-title-pg">
+                    <h3 class="title-pguide ">
+                        <span class="logo">
+                            <i class="icon {{ guideContent.serviceIcon }}"></i>
+                        </span>
+                        {{ guideContent|trans_fallback('serviceTitle')}}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
+                </div>
+                <div class="contain-article pictos-service">
+                    {% for widget in guideContent.serviceWidgets %}
+                        {% if class(widget) == "PressGuideWidgetImage" %}
+                            {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
+                        {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                            {% include 'FDCPressBundle:Guide:widgets/picto.html.twig' %}
+                        {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                            {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </section>
 

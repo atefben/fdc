@@ -5,10 +5,7 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
-use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslateChild;
-use Base\CoreBundle\Util\Seo;
 /**
  * PressGuideWidgetImageTranslation
  *
@@ -16,13 +13,10 @@ use Base\CoreBundle\Util\Seo;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressGuideWidgetImageTranslation implements TranslateChildInterface
+class PressGuideWidgetImageTranslation
 {
-
-    use Seo;
-    use TranslateChild;
-    use Time;
     use Translation;
+    use Time;
 
     /**
      * @var string
