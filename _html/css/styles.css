@@ -16110,6 +16110,38 @@ input[type=submit] {
   vertical-align: middle !important;
   margin-bottom: 3px;
 }
+.press .title-center {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
+  text-transform: none;
+  display: block;
+  margin-bottom: 20px;
+}
+.press .descrip-title {
+  text-align: center;
+  line-height: 26px;
+  font-size: 0.81rem;
+}
+.press .descrip-title strong {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.81rem;
+}
+.press #google-map {
+  width: 975px;
+  height: 350px;
+  margin-top: 51px;
+}
+.press .googlemap-descrip {
+  font-size: .75rem;
+  color: #333333;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+  display: block;
+}
 .press .fc-event {
   background-color: #373737;
   border-radius: 0;
@@ -18419,6 +18451,11 @@ input[type=submit] {
 
 .accreditation #accreditation {
   border-top: 1px solid #e3e3e3;
+}
+.accreditation #accreditation .button:hover {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  color: #fff !important;
 }
 .accreditation #accreditation .save {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;

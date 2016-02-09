@@ -7,6 +7,13 @@
 .accreditation {
   #accreditation {
     border-top: 1px solid #e3e3e3;
+
+    .button:hover {
+      background-color: #c8a461;
+      border-color: #c8a461;
+      color: #fff !important;
+    }
+
     .save {
       font-family: $CamphorHeavy;
       font-size: 0.625rem;
@@ -19,7 +26,7 @@
         color: $gold !important;
         background-color: #fff;
       }
-    }
+    } 
     #share-article {
       font-family: $CamphorHeavy;
       color: $gold;
