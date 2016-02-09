@@ -25,8 +25,8 @@ class AccreditController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
 
-        // GET FDC SETTINGS
-        $accredit = $em->getRepository('BaseCoreBundle:PressAccredit')->findOneById(2);
+        // GET ACCREDIT PAGE
+        $accredit = $em->getRepository('BaseCoreBundle:PressAccredit')->findOneById(1);
 
         if ($accredit === null) {
             throw new NotFoundHttpException();
@@ -38,8 +38,6 @@ class AccreditController extends Controller
                               doivent être accrédités. Les accréditations sont attribuées en fonction de l’activité
                               professionnelle.'
         );
-
-
 
         $commonContent = array(
             'firstBlock' => '<h3>demande d’accréditation</h3>

@@ -4,7 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Util\Time;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * PressGuideWidgetPicto
