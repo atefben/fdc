@@ -3,52 +3,63 @@
 // 1. Global
 // 2. Single Article
 // =========================
-
-
 // 1. Global
 // =========================
-
 .articles {
   overflow: hidden;
-
   &.noOv {
     overflow: initial;
   }
-
   &.pad {
     padding-top: 40px;
   }
-
   &.nextDay {
     height: 90px;
   }
-
   &.right {
     article {
       padding-left: 0;
       padding-right: 45px;
     }
-
     .double {
       float: right;
       padding-right: 0;
     }
   }
-
   &.center {
     article {
       padding: 0;
       width: 29%;
-
       &:nth-child(2) {
         margin: 0 6.5%;
       }
     }
   }
 }
-
 #filteredArticles article:nth-of-type(3n-1) {
   margin: 0 6.5%;
+}
+
+h2.sub-title{
+  font-family: $Playfair;
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+h2.sub-title2{
+  font-family: $Playfair;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 25px 0px;
+}
+
+h3.sub-title{
+  font-family: $CamphorBold;
+  font-size: 0.875rem;
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 article {
@@ -58,11 +69,9 @@ article {
   padding-left: 45px;
   position: relative;
   width: 35%;
-
   .info {
     font-family: $CamphorMedium;
     text-align: center;
-
     .category {
       color: $gold;
       display: inline-block;
@@ -71,7 +80,6 @@ article {
       margin-right: 12px;
       text-transform: uppercase;
     }
-
     span {
       color: #666;
       display: inline-block;
@@ -86,57 +94,49 @@ article {
     font-weight: 400;
     letter-spacing: 0.02em;
     line-height: 1.3em;
-    margin: 15px auto 0 auto;
+    margin: 15px auto 0;
     text-align: center;
-
     a {
       color: #333;
     }
   }
-    h3 {
+
+  h3 {
     color: #333;
     font-family: $Playfair;
     font-size: 1.125rem;
     font-weight: 400;
     letter-spacing: 0.02em;
     line-height: 1.3em;
-    margin: 15px auto 0 auto;
+    margin: 15px auto 0;
     text-align: center;
-
     a {
       color: #333;
     }
   }
-
   &.double {
-
     h2 {
       font-size: 2.250rem;
       line-height: 1.3em;
       margin-top: 20px;
       max-width: 70%;
     }
-
     height: 575px;
     padding-left: 0;
     width: 65%;
-
     .image {
       height: 362px;
       margin-bottom: 35px;
     }
   }
-
   &:hover .image .read-later {
     opacity: 1;
     visibility: visible;
   }
-
   &:hover .image .image-wrapper img {
     @include transition(all 4s $linear);
     @include transform(scale(1.08) translateZ(0));
   }
-
   .image {
     .image-wrapper {
       overflow: hidden;
@@ -144,7 +144,6 @@ article {
       height: 100%;
       width: 100%;
       z-index: 0;
-
       img {
         position: absolute;
         min-width: 100%;
@@ -154,14 +153,11 @@ article {
         height: auto;
         @include transition(all 3s $linear);
       }
-
     }
-
     height: 165px;
     margin-bottom: 20px;
     position: relative;
     width: 100%;
-
     .read-later {
       content: '';
       display: block;
@@ -173,13 +169,12 @@ article {
       top: 15px;
       right: 15px;
       @include transition(all 0.5s $smoothTransition);
-      color:#000;
+      color: #000;
       background-color: #fff;
-      .icon{
+      .icon {
         margin-top: 12px;
         margin-left: 12px;
       }
-
       span {
         background-color: $black;
         position: fixed;
@@ -200,13 +195,11 @@ article {
         text-transform: uppercase;
         @include transform(translateY(6px) translateZ(0));
         @include transition(opacity 0.5s $smoothTransition, visibility .5s $smoothTransition, transform 0.5s $smoothTransition);
-
         &:after {
           content: ' ';
           height: 0;
           position: absolute;
           width: 0;
-
           border: 7px solid transparent;
           border-top-color: $black;
           top: 100%;
@@ -214,7 +207,6 @@ article {
         }
       }
     }
-
     .linkImage {
       display: block;
       height: 100%;
@@ -224,23 +216,18 @@ article {
       width: 100%;
     }
   }
-
   .read-later.rAlign span:after {
     left: 132px;
   }
 }
-
 .mob .read-later {
   opacity: 1!important;
   visibility: visible!important;
 }
-
 // 2. Single Article
 // =========================
-
 .single-article {
   padding: 65px 0;
-
   .anim {
     display: block;
     height: 100%;
@@ -251,26 +238,22 @@ article {
     background-color: $black;
     z-index: 10;
     @include transition(all 0.8s $smoothTransition);
-
     &.show {
       width: 102%;
     }
-
     &.next {
       left: auto;
       right: 0;
     }
   }
-
   .small-container {
     width: 730px;
   }
-
   .print {
     font-family: $CamphorHeavy;
     color: $gold;
     font-size: 0.625rem;
-    .icon{
+    .icon {
       font-size: 1rem;
       margin-right: 10px;
       vertical-align: middle !important;
@@ -283,12 +266,11 @@ article {
       }
     }
   }
-
   #share-article {
     font-family: $CamphorHeavy;
     color: $gold;
     font-size: 0.625rem;
-    .icon{
+    .icon {
       font-size: 1rem;
       margin-right: 10px;
       vertical-align: middle !important;
@@ -301,38 +283,30 @@ article {
       }
     }
   }
-
   .focus {
     .title {
       margin: 50px 0;
     }
-
     .articles {
-
       article {
         height: 430px;
         padding: 0;
         width: 47%;
-
         .image {
           height: 290px;
         }
-
         &:first-child {
           margin-right: 6%;
         }
       }
     }
   }
-
   .same-day {
     border-top: 1px solid #e5e5e5;
-
     .title {
       margin: 50px 0;
     }
   }
-
   .title-article {
     color: #333;
     font-family: $Playfair;
@@ -343,13 +317,12 @@ article {
     max-width: 775px;
     text-align: center;
   }
-
   .info {
     color: #969696;
     font-family: $CamphorMedium;
     text-align: center;
-
-    .category, .update {
+    .category,
+    .update {
       color: $gold;
       font-family: $CamphorBold;
       display: inline-block;
@@ -358,80 +331,66 @@ article {
       margin-right: 12px;
       text-transform: uppercase;
     }
-
     .update {
       border-left: 1px solid #d0cfd0;
       margin-left: 4px;
       margin-right: 5px;
       padding-left: 8px;
     }
-
-
     span {
       color: #969696;
       display: inline-block;
       font-size: 0.625rem;
     }
   }
-
   .single-photo {
     margin: 50px 0;
     max-width: 100%;
     text-align: center;
-
     .photo-container {
       display: inline-block;
     }
-
     img {
       display: block;
       margin: 0 auto;
       max-width: 100%;
     }
-
     .caption {
       color: #969696;
-      font-size: .750rem;
-      margin: 10px 0 0 0;
+      font-size: 0.750rem;
+      margin: 10px 0 0;
       text-align: left;
     }
   }
-
   .author {
     border-top: 1px solid #e5e5e5;
     color: #333;
     font-size: 0.750rem;
     margin: 0 auto;
-    padding: 10px 0 80px 0;
+    padding: 10px 0 80px;
     width: 630px;
   }
-
   .half-photo {
     display: inline-block;
-    margin: 0 0 50px 0;
+    margin: 0 0 50px;
     vertical-align: top;
     width: 50%;
-
     img {
       display: block;
       max-width: 100%;
     }
-
     .caption {
       color: #666;
-      font-size: .750rem;
-      margin: 10px 0 0 0;
+      font-size: 0.750rem;
+      margin: 10px 0 0;
     }
   }
-
   .half-photo + .half-photo {
     margin: 0 0 0 -8px;
-
     .photo-container {
       float: right;
     }
   }
-
   .chapeau {
     font-family: $CamphorBold;
     color: #333;
@@ -439,43 +398,35 @@ article {
     line-height: 2em;
     margin-bottom: 70px;
     text-align: center;
-
     a {
       color: $gold;
     }
   }
-
   .slideshow {
     border: none;
     margin-bottom: 70px;
-
     .slideshow-img {
       height: 460px;
     }
-
     .caption strong {
       color: #666;
       font-family: $CamphorRegular;
     }
-
   }
-
-  .slideshow.article_photo{
-    .slideshow-img{
-      .thumbnails{
+  .slideshow.article_photo {
+    .slideshow-img {
+      .thumbnails {
         bottom: 30px;
-        .thumb{
+        .thumb {
           width: 128px;
           height: 84px;
         }
       }
     }
   }
-
   .quote {
     width: 630px;
     margin: 30px auto;
-
     blockquote {
       border-bottom: 1px solid #e5e5e5;
       border-top: 1px solid #e5e5e5;
@@ -486,18 +437,47 @@ article {
       text-align: center;
     }
   }
+  .big-quote{
+    width: 697px;
+    margin: 0 auto;
+    padding: 70px 70px;
+    box-sizing: border-box;
+    border: 1px solid $gold;
+    margin-bottom: 70px;
+
+    strong{
+      color:$gold;
+      font-family: $CamphorBold;
+      text-transform: uppercase;
+      font-size: 1rem;
+      line-height: 26px;
+      text-align: center;
+      display: block;
+      margin-bottom: 25px;
+    }
+
+    p{
+      color: #b1b1b1;
+      text-align: center;
+      font-size: .875rem;
+      font-family: $CamphorItalic;
+      font-weight: bold;
+      line-height: 26px;
+    }
+  }
 
   .text {
     width: 630px;
-    margin: 0 auto 70px auto;
-
+    margin: 0 auto 70px;
     p {
       color: #666;
       font-size: 1rem;
       line-height: 1.7em;
       margin-bottom: 5px;
+      a {
+        color: #c8a461;
+      }
     }
-
     strong {
       color: #333;
       font-family: $CamphorBold;
@@ -505,20 +485,94 @@ article {
     }
   }
 
+  .big-txt{
+    width: 630px;
+    margin: 0 auto 70px;
+
+    p{
+      color:#333333;
+      font-family: $CamphorRegular;
+      font-size: 1.25rem;
+      line-height: 40px;
+      text-align: center;
+    }
+  }
+
+  .txt-grey-bkg-container{
+    background-color: #f4f4f4;
+    padding: 88px 0px;
+    margin-bottom: 70px;
+
+    .content{
+      width: 634px;
+      margin: 0 auto;
+      display: block;
+
+      strong{
+        font-size: 1rem;
+        font-family: $CamphorBold;
+        color:#333333;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      p{
+        font-size: 1rem;
+        font-family: $CamphorItalic;
+        color:#666666;
+      }
+    }
+  }
+
+  .table-article{
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #dfdfdf;
+
+
+    td, th{
+      font-weight: normal;
+      vertical-align: middle;
+      border: 1px solid #dfdfdf;
+      padding: 15px 0px;
+      width: 320px;
+      text-align: center;
+      color:#666666;
+      font-size: .74rem;
+      font-family: $CamphorMedium;
+      text-align: center;
+    }
+    th{
+      text-transform: uppercase;
+      color:#000;
+    }
+  }
+
+  .caption-table{
+    color: #969696;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    margin-top: 10px; 
+  }
+
   .audio-player {
-    margin: 0 auto 70px auto;
+    margin: 0 auto 70px;
     width: 630px;
   }
-
   .video-container {
-    margin: 0 auto 70px auto;
+    margin: 0 auto 70px;
     width: 630px;
   }
-
   .share {
     border-top: 1px solid #e5e5e5;
     padding: 70px 0;
-
     p {
       font-family: $CamphorBold;
       font-size: 0.750rem;
@@ -527,37 +581,31 @@ article {
       text-align: center;
       text-transform: uppercase;
     }
-
-    a{
+    a {
       color: $gold;
     }
-
     a:hover {
       background-color: #fff;
       border-color: $gold!important;
-
       + .button {
         border-left-color: $gold;
       }
     }
-
-    a .icon{
-      font-size: .8rem;
+    a .icon {
+      font-size: 0.8rem;
       position: absolute;
       top: 30px;
       left: 30px;
     }
-    a:hover .icon{
-      color:$gold;
+    a:hover .icon {
+      color: $gold;
       opacity: 1;
     }
   }
-
   .film {
     height: 365px;
     overflow: hidden;
     background-color: #2e2e2e;
-
     .info-film {
       background-color: #2e2e2e;
       float: left;
@@ -565,70 +613,58 @@ article {
       height: 100%;
       overflow: hidden;
       width: 50%;
-
       .wrapper {
         float: right;
         height: 100%;
         margin-right: 85px;
         max-width: 470px;
-
         .category {
           font-family: $CamphorBold;
           font-size: 0.750rem;
           letter-spacing: 0.1em;
           text-transform: uppercase;
         }
-
         h3 {
           font-family: $CamphorBold;
           font-weight: normal;
           font-size: 1.125rem;
-          margin: 20px 0 10px 0;
+          margin: 20px 0 10px;
           text-transform: uppercase;
-
           a {
             color: #fff;
             @include transform(translateZ(0));
             @include transition(all 0.9s $linear);
-
             &:hover {
               opacity: 0.6;
             }
           }
         }
-
         .poster {
           display: inline-block;
           margin-right: 65px;
           vertical-align: middle;
         }
-
         .text-container {
           display: inline-block;
           vertical-align: middle;
         }
-
         p {
           color: #bababa;
           font-size: 0.813rem;
           margin: 10px 0;
-
           &.director {
             color: $gold;
             font-family: $CamphorItalic;
             font-size: 1rem;
             margin-bottom: 35px;
             position: relative;
-
             a {
               color: $gold;
               @include transition(all 0.9s $linear);
-
               &:hover {
                 opacity: 0.6;
               }
             }
-
             &:after {
               background-color: #bababa;
               bottom: -18px;
@@ -643,21 +679,18 @@ article {
         }
       }
     }
-
     .programmation-film {
       background-color: #141414;
       float: left;
       height: 100%;
       overflow: hidden;
       width: 50%;
-
       .wrapper {
         color: #fff;
         height: 100%;
         float: left;
         margin-left: 85px;
         max-width: 470px;
-
         .category {
           color: $gold;
           font-family: $CamphorBold;
@@ -665,34 +698,28 @@ article {
           letter-spacing: 0.2em;
           text-transform: uppercase;
         }
-
         ul {
-          padding: 38px 0 0 0;
-
+          padding: 38px 0 0;
           li {
             display: inline-block;
             font-size: 0.625rem;
             width: 211px;
-
             span {
               font-family: $CamphorBold;
               color: #bababa;
               margin-right: 8px;
-
               &.type {
                 color: #787878;
                 font-family: $CamphorBold;
                 text-transform: uppercase;
               }
-
               &.location {
                 color: #fff;
                 display: block;
                 font-family: $CamphorRegular;
                 font-size: 0.875rem;
-                margin: 18px 0 40px 0;
+                margin: 18px 0 40px;
                 position: relative;
-
                 &:after {
                   background-color: #525252;
                   bottom: -18px;
@@ -705,25 +732,21 @@ article {
                 }
               }
             }
-
             &:nth-child(3),
             &:nth-child(4) {
               span.location:after {
                 display: none;
               }
             }
-
           }
         }
-
         .button {
           border-color: $gold;
-          margin-left: 0px;
+          margin-left: 0;
           height: 50px;
           line-height: 50px;
           font-family: $CamphorHeavy;
           padding: 0 40px;
-
           &:hover {
             background-color: transparent;
             border-color: #e8c27b;
@@ -732,9 +755,7 @@ article {
         }
       }
     }
-
   }
-
   .nav {
     border: 1px solid #dfdfdf;
     display: block;
@@ -745,13 +766,11 @@ article {
     width: 82px;
     z-index: 3;
     @include transition(all 0.9s $smoothTransition);
-
     &.bottom {
       bottom: 245px;
       position: absolute;
       top: auto;
     }
-
     &:after {
       content: '';
       display: block;
@@ -764,10 +783,9 @@ article {
       visibility: hidden;
       @include transition(all 0.9s $smoothTransition);
     }
-
     &.prev {
       left: 2%;
-      .icon{
+      .icon {
         margin-top: 37px;
         margin-left: 33px;
         color: #000;
@@ -777,22 +795,18 @@ article {
         border-color: $black;
       }
     }
-
     &.next {
       left: auto;
       right: 2%;
-      .icon{
+      .icon {
         margin-top: 37px;
         margin-left: 33px;
         color: #000;
-        font-size: 0.7rem; 
+        font-size: 0.7rem;
       }
       &:hover {
         border-color: $black;
-
       }
     }
   }
-
-
 }
