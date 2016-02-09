@@ -271,6 +271,12 @@ class NewsArticleAdmin extends Admin
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => News::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => News::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

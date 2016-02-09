@@ -144,6 +144,12 @@ class WebTvAdmin extends Admin
                 'required' => false,
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => WebTv::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => WebTv::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

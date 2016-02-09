@@ -278,6 +278,12 @@ class StatementImageAdmin extends Admin
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Statement::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => Statement::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

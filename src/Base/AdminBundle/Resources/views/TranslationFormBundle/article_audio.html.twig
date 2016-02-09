@@ -128,8 +128,9 @@
                                 <div class="form-group fdc-input-border">
                                     {{ form_widget(form.parent.children.translate) }}
                                     {{ form_label(form.parent.children.translate) }}
+                                    {{ form_widget(form.parent.children.translateOptions) }}
+                                    {{ form_row(form.parent.children.priorityStatus) }}
                                 </div>
-                                {{ form_row(form.parent.children.priorityStatus) }}
                             </div>
                             <div>
                                 <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
