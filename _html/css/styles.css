@@ -10364,6 +10364,7 @@ article .read-later.rAlign span:after {
   font-size: 1rem;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   color: #666666;
+  line-height: 26px;
 }
 .single-article .table-article {
   text-align: center;
@@ -10371,7 +10372,6 @@ article .read-later.rAlign span:after {
   margin: 0 auto;
   width: 644px;
   padding-bottom: 50px;
-  border-bottom: 1px solid #dfdfdf;
 }
 .single-article .table-article td, .single-article .table-article th {
   font-weight: normal;
@@ -10389,15 +10389,19 @@ article .read-later.rAlign span:after {
   text-transform: uppercase;
   color: #000;
 }
-.single-article .caption-table {
-  color: #969696;
+.single-article .caption-article {
+  color: #333333;
   font-size: 0.750rem;
   margin: 10px 0 0;
   text-align: left;
   display: block;
   margin: 0 auto;
   width: 644px;
-  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #dfdfdf;
+}
+.single-article .caption-article .name {
+  color: #000;
 }
 .single-article .audio-player {
   margin: 0 auto 70px;
@@ -12709,6 +12713,44 @@ input[type=submit] {
   left: 18px;
   color: #DEDEDE;
   font-size: 0.63rem;
+}
+.categorie-items .contain-article-invit .contain-img-honneur .caption {
+  font-size: .75rem;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.categorie-items .contain-article-invit .big-txt p {
+  color: #999999;
+}
+.categorie-items .contain-article-invit .txt-grey-bkg-container {
+  background-color: #202020;
+}
+.categorie-items .contain-article-invit .txt-grey-bkg-container strong {
+  color: #fff;
+}
+.categorie-items .contain-article-invit .txt-grey-bkg-container p {
+  color: #999999;
+}
+.categorie-items .contain-article-invit .caption-article {
+  color: #999999;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+  display: block;
+  margin: 0 auto;
+  width: 644px;
+  padding-top: 10px;
+  border-top: 1px solid #2c2c2c;
+}
+.categorie-items .contain-article-invit .caption-article .name {
+  color: #fefefe;
+}
+.categorie-items .contain-article-invit .table-article th {
+  text-transform: uppercase;
+  color: #fff !important;
+}
+.categorie-items .contain-article-invit .table-article th, .categorie-items .contain-article-invit .table-article td {
+  border: 1px solid #2c2c2c;
+  color: #999999;
 }
 .categorie-items .contain-article-invit .pres-honneur {
   width: 975px;
