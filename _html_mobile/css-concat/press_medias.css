@@ -4473,8 +4473,13 @@ p{
     box-sizing: border-box;
     opacity: 0;
     visibility: hidden;
+    overflow-y:scroll;
     -webkit-transition: opacity 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: opacity 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#popin-trailer .cover-line{
+    border-bottom: 1px solid #dfdfdf;
+    margin-bottom: 30px;
 }
 #popin-trailer.show{
     opacity: 1;
@@ -4517,6 +4522,9 @@ p{
     line-height: 28px;
     font-size: 20px;
     margin-bottom: 32px;
+}
+#popin-trailer table{
+    margin-bottom: 20px;
 }
 #popin-trailer table td {
     width: 238px;
