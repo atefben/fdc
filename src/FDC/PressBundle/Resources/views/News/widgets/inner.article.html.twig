@@ -40,7 +40,7 @@
         <div class="image-wrapper">
             {% thumbnail file, 'big' %}
         </div>
-        <a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+        <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
@@ -50,7 +50,7 @@
         <a href="#" class="category">{{ article.category }}</a>
         <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
         <h2>
-            <a href="{{ path('fdc_press_news_get', {'slug': article|trans_fallback('slug') }) }}">
+            <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
                 {{ article|trans_fallback('title')}}
             </a>
         </h2>

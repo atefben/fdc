@@ -162,6 +162,13 @@ class Homepage
         $this->displayedTopWebTv = false;
     }
 
+    public function __toString()
+    {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        return $string;
+    }
+
     /**
      * Get id
      *
