@@ -315,6 +315,8 @@ form:
     label_name: Nom
     label_media_audio: Fichier audio
     label_video_file: Fichier vidéo
+    label_procedure: Procédures
+    label_accredit_procedure: Choisissez les procédures à afficher
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.

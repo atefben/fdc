@@ -34,6 +34,7 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.commonTitle) }}
                                     {{ form_row(translationsFields.commonContent) }}
+                                    {{ form_row(translationsFields.procedureMainTitle) }}
                                     {{ form_row(form.parent.children.procedure) }}
                                 </div>
                             </div>
@@ -42,6 +43,7 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.commonTitle) }}
                                     {{ form_row(translationsFields.commonContent) }}
+                                    {{ form_row(translationsFields.procedureMainTitle) }}
                                     <div class="form-group">
                                         <header>
                                             Procédure
@@ -79,9 +81,6 @@
                                         {% endif %}
                                         </span>
                                         </div>
-                                        {% if form.parent.children.procedure.vars.value is not null %}
-                                            <a target="_blank" href="{{ path('admin_base_core_pressaccreditprocedure_edit', {'id': form.parent.children.procedure.vars.value}) }}">modifier les traductions</a>
-                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

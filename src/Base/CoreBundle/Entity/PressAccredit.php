@@ -31,7 +31,7 @@ class PressAccredit
     /**
      * @var PressAccreditProcedure
      *
-     * @ORM\OneToMany(targetEntity="PressAccreditProcedure", mappedBy="accredit", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="PressAccreditHasProcedure", mappedBy="accredit", cascade={"persist"}, orphanRemoval=true)
      */
     protected $procedure;
 
@@ -49,7 +49,6 @@ class PressAccredit
         $this->procedure = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *
@@ -60,35 +59,26 @@ class PressAccredit
         return $this->id;
     }
 
+
     /**
      * Add procedure
      *
-     * @param \Base\CoreBundle\Entity\PressAccreditProcedure $procedure
+     * @param \Base\CoreBundle\Entity\PressAccreditHasProcedure $procedure
      * @return PressAccredit
      */
-    public function addProcedure(\Base\CoreBundle\Entity\PressAccreditProcedure $procedure)
+    public function addProcedure(\Base\CoreBundle\Entity\PressAccreditHasProcedure $procedure)
     {
         $procedure->setAccredit($this);
         $this->procedure->add($procedure);
-    }
 
-    /**
-     * @param $procedure
-     * @return $this
-     */
-    public function setProcedure($procedure)
-    {
-
-        $procedure->setAccredit($this);
-        $this->procedure = $procedure;
     }
 
     /**
      * Remove procedure
      *
-     * @param \Base\CoreBundle\Entity\PressAccreditProcedure $procedure
+     * @param \Base\CoreBundle\Entity\PressAccreditHasProcedure $procedure
      */
-    public function removeProcedure(\Base\CoreBundle\Entity\PressAccreditProcedure $procedure)
+    public function removeProcedure(\Base\CoreBundle\Entity\PressAccreditHasProcedure $procedure)
     {
         $this->procedure->removeElement($procedure);
     }

@@ -10,10 +10,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class PressAccreditAdmin extends Admin
 {
-    protected $formOptions = array(
-        'cascade_validation' => true
-    );
-
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -24,7 +20,6 @@ class PressAccreditAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('procedure')
         ;
     }
 
@@ -37,7 +32,22 @@ class PressAccreditAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
     }
 
     /**
@@ -73,7 +83,7 @@ class PressAccreditAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'procedureMainTitle' => array(
-                        'label' => 'form.label_title',
+                        'label' => 'Titre pour les procédures',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -83,15 +93,27 @@ class PressAccreditAdmin extends Admin
                     ),
                 )
             ))
+
             ->add('procedure', 'sonata_type_collection',
                 array(
-                    'label' => false,
+                    'type_options' => array(
+                        'delete' => false,
+                        'delete_options' => array(
+                            'type'         => 'hidden',
+                            'type_options' => array(
+                                'mapped'   => false,
+                                'required' => false,
+                            )
+                        )
+                    ),
+                    'cascade_validation' => true,
                     'by_reference' => false,
+                    'label' => 'form.label_accredit_procedure',
                 ),
                 array(
                     'edit' => 'inline',
                     'inline' => 'table',
-                    'sortable'  => 'position'
+                    'sortable'  => 'position',
                 )
             )
             ->end()

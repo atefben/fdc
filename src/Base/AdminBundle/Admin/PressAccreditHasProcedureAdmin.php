@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PressDownloadHasSectionAdmin extends Admin
+class PressAccreditHasProcedureAdmin extends Admin
 {
 
     /**
@@ -41,10 +41,10 @@ class PressDownloadHasSectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('section', 'sonata_type_model_list', array(
+            ->add('procedure', 'sonata_type_model_list', array(
                 'required' => false,
-                'btn_add' => true,
-                'label' => 'form.label_section'
+                'btn_add' => false,
+                'label' => 'form.label_procedure'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
@@ -63,14 +63,14 @@ class PressDownloadHasSectionAdmin extends Admin
         ;
     }
 
-    public function prePersist($downloadSection)
+    public function prePersist($procedure)
     {
-        $this->preUpdate($downloadSection);
+        $this->preUpdate($procedure);
     }
 
-    public function preUpdate($downloadSection)
+    public function preUpdate($procedure)
     {
-        $downloadSection->setSection($downloadSection->getSection());
+        $procedure->setAccredit($procedure->getAccredit());
     }
 
 }

@@ -32,7 +32,7 @@ class PressAccreditTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="common_content", type="string")
+     * @ORM\Column(name="common_content", type="text")
      */
     protected $commonContent;
 
