@@ -1,4 +1,4 @@
-<article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article|trans_fallback('createdAt')|date('U') }}" data-time="" data-theme="{{ article.theme|trans_fallback('slug') }}">
+<article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article|trans_fallback('createdAt')|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
     <div class="image">
         <div class="image-wrapper">
             {% if article.header is defined and article.header is not null %}

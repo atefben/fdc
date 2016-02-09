@@ -41,7 +41,11 @@ class NewsController extends Controller {
         }
 
         // GET HOMEPAGE SETTINGS
-        $homepageSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneById(1);;
+        $homepageSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneById(1);
+
+        $festivalStart = $this->getFestival()->getFestivalStartsAt();
+        $festivalEnd =  $this->getFestival()->getFestivalEndsAt();
+        $festivalInterval = $festivalStart->diff($festivalEnd);
 
            /////////////////////////////////////////////////////////////////////////////////////
           /////////////////////////      SLIDER      //////////////////////////////////////////
@@ -374,6 +378,9 @@ class NewsController extends Controller {
             'homeArticlesSlider' => $homeArticlesSlider,
             'displayHomeSlider'  => $displayHomeSlider,
             'homeSlider' => $homeSlider,
+            'festivalStart' => strtotime($festivalStart->format('Y-m-d')),
+            'festivalEnd' => strtotime($festivalEnd->format('Y-m-d')),
+            'festivalInterval' => $this->createDateRangeArray($festivalStart->format('Y-m-d'),$festivalEnd->format('Y-m-d')),
             // TODO: clean this
             'filters' => $filters,
             'videos' => $videos,
@@ -385,13 +392,29 @@ class NewsController extends Controller {
         );
     }
 
+    function createDateRangeArray($strDateFrom,$strDateTo)
+    {
+        $aryRange=array();
+        $iDateFrom=mktime(1,0,0,substr($strDateFrom,5,2),substr($strDateFrom,8,2),substr($strDateFrom,0,4));
+        $iDateTo=mktime(1,0,0,substr($strDateTo,5,2),substr($strDateTo,8,2),substr($strDateTo,0,4));
+        if ($iDateTo>=$iDateFrom) {
+            array_push($aryRange,date('Y-m-d',$iDateFrom));
+            while ($iDateFrom<$iDateTo) {
+                $iDateFrom+=86400;
+                array_push($aryRange,date('Y-m-d',$iDateFrom));
+            }
+        }
+        return array_reverse($aryRange);
+    }
+
     /**
-     * @Route("/homepage-articles/{timestamp}")
+     * @Route("/homepage-articles")
      * @Template("FDCEventBundle:News:widgets/article-home-ajax.html.twig")
      * @param $timestamp
      * @return array
      */
-    public function getArticlesFromAction($timestamp = null) {
+    public function getArticlesFromAction(Request $request) {
+        $timestamp = $request->query->get('timestamp');
 
         $em = $this->get('doctrine')->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -411,7 +434,6 @@ class NewsController extends Controller {
         return array(
             'homeArticles' => $homeArticles
         );
-
     }
 
     /**

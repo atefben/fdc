@@ -71,10 +71,11 @@
                 </div>
 
                 <div id="timeline">
-                    {% for key, date in socialGraph.timeline %}
-                        <a href="#" data-date="{{ date.date|date('d') }}" class="{% if key == 0 %}active{% endif %}">
-                            {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                            <span class="day">{{ date.date|date('d') }}</span>
+                    {% for key,date in festivalInterval %}
+                    {#{% for key, date in socialGraph.timeline %}#}
+                        <a href="#" data-date="{{ date|date('d') }}" class="{% if date == "now"|date('Y-m-d') %}active{% elseif date > "now"|date('Y-m-d') %}disabled{% endif %}">
+                            {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                            <span class="day">{{ date|date('d') }}</span>
                         </a>
                     {% endfor %}
                 </div>
