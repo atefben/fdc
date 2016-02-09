@@ -89,9 +89,8 @@ class PressAccreditProcedureAdmin extends Admin
             ))
 
             ->add('procedureLink', 'text', array(
-                'label' => 'form.press_homepage.push_link'
+                'label' => 'form.label_btn_link'
             ))
-            ->add('position','hidden',array('attr'=>array("hidden" => true)))
 
         ;
 

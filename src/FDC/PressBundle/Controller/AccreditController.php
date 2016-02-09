@@ -5,6 +5,7 @@ namespace FDC\PressBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 /**
@@ -21,12 +22,24 @@ class AccreditController extends Controller
     public function mainAction()
     {
 
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $accredit = $em->getRepository('BaseCoreBundle:PressAccredit')->findOneById(2);
+
+        if ($accredit === null) {
+            throw new NotFoundHttpException();
+        }
+
         $headerInfo = array(
             'title' => 'S\'accréditer',
             'description' => 'Le Festival de Cannes est réservé aux professionels du Cinéma. Pour y participer, ceux-ci
                               doivent être accrédités. Les accréditations sont attribuées en fonction de l’activité
                               professionnelle.'
         );
+
+
 
         $commonContent = array(
             'firstBlock' => '<h3>demande d’accréditation</h3>
@@ -212,7 +225,7 @@ class AccreditController extends Controller
 
         return array(
             'headerInfo' => $headerInfo,
-            'commonContent' => $commonContent,
+            'accredit' => $accredit,
             'sectionContent' => $sectionContent
         );
 

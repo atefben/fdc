@@ -317,6 +317,7 @@ form:
     label_video_file: Fichier vidéo
     label_procedure: Procédures
     label_accredit_procedure: Choisissez les procédures à afficher
+    label_btn_link: Lien du bouton
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.

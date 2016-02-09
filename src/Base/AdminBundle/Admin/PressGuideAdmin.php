@@ -77,16 +77,6 @@ class PressGuideAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => PressGuide::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices' => PressGuideTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-
         ;
     }
 
