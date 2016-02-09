@@ -182,7 +182,16 @@ abstract class CoreManager
     public function setWebserviceUrl($wsUrl)
     {
         $this->wsUrl = $wsUrl;
-        $this->client = new SoapClient($this->wsUrl, array('trace' => true));
+
+        $socket_context = stream_context_create(
+            array('http' => array('protocol_version' => 1.0))
+        );
+
+
+        $this->client = new SoapClient($this->wsUrl, array(
+            'trace' => true,
+            'stream_context' => $socket_context
+        ));
     }
     
     /**

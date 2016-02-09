@@ -179,6 +179,12 @@ class EventAdmin extends Admin
             )
             ->add('displayedMobile')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Event::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => Event::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

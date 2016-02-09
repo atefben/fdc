@@ -53,6 +53,13 @@ class PressGuideAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 
@@ -139,6 +146,12 @@ class PressGuideAdmin extends Admin
             ))
             ->add('translate', 'checkbox' , array(
                 'required' => false,
+                ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressGuide::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressGuide::getPriorityStatuses(),

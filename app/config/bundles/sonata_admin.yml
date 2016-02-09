@@ -6,10 +6,10 @@ sonata_admin:
             WRITER:    [VIEW, LIST, CREATE, EDIT]
             EDITOR: [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE]
             TRANSLATOR: [VIEW, LIST, EDIT, EXPORT]
-            ADMIN:    [MASTER]
+            ADMIN:    [CREATE, LIST, EDIT, VIEW, DELETE, UNDELETE, EXPORT]
         # permissions not related to an object instance and also to be available when objects do not exist
         # the DELETE admin permission means the user is allowed to batch delete objects
-        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
+        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT]
         # permission related to the objects
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
     dashboard:

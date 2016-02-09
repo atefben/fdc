@@ -5730,10 +5730,9 @@ article .picto .icon{
   font-size: 80px;
   padding-bottom: 20px;
 }
-.banner-img a{
-
+.banner-img a {
     color: #c8a461;
-    margin: 0 auto;
+    margin: 10px auto 0;
     display: block;
     text-transform: uppercase;
     font-size: 18px;
@@ -5742,6 +5741,14 @@ article .picto .icon{
     text-align: center;
     letter-spacing: 1px;
     padding-top: 15px;
+    z-index: 2;
+    display: block;
+    position: relative;
+}
+.dark-container .banner-img a, .darker-container .banner-img a {
+    margin-top: -20px;
+    padding-top: 0;
+    padding-bottom: 50px;
 }
 .banner-img .title a .icon{
   font-size: 1rem;
@@ -6709,7 +6716,15 @@ display: inline-block;
   line-height: 40px;
   height: auto;
 }
-
+.banner-img .icon-mobile-chaines{
+  font-size: 80px;
+  text-align: center;
+  position: relative;
+  display: block;
+  color: #fff;
+  z-index: 2;
+  margin:auto;
+}
 .webtv #banner-top .banner-img, .webtv #banner-top .banner-video {
   display: none;
 }

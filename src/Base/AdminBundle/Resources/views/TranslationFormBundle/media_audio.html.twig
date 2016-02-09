@@ -2,24 +2,25 @@
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
     <ul class="a2lix_translationsLocales nav nav-tabs">
-    {% for translationsFields in form %}
-        {% set locale = translationsFields.vars.name %}
+        {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+        {% for translationsFields in form %}
+            {% set locale = translationsFields.vars.name %}
 
-        <li {% if form.vars.default_locale == locale %}class="active"{% endif %} data-locale={{ locale }}>
-            <a href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
-                {% set langKey = 'lang.' ~ locale %}
-                {{ langKey|trans({}, 'BaseAdminBundle') }}
-                {% if form.vars.default_locale == locale %}(MASTER){% endif %}
-                {% if translationsFields.vars.required %}*{% endif %}
-            </a>
-        </li>
-    {% endfor %}
+            <li {% if form.vars.default_locale == locale %}class="active"{% endif %} data-locale={{ locale }}>
+                <a {% if translationsFields.vars.value is not null %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+                    {% set langKey = 'lang.' ~ locale %}
+                    {{ langKey|trans({}, 'BaseAdminBundle') }}
+                    {% if form.vars.default_locale == locale %}(MASTER){% endif %}
+                    {% if translationsFields.vars.required %}*{% endif %}
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 
     <div class="a2lix_translationsFields tab-content">
     {% for translationsFields in form %}
         {% set locale = translationsFields.vars.name %}
-        <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
+        <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
             <div class="row">
                 <div class="col-md-8">
                     <div class="box box-success">
@@ -63,9 +64,10 @@
                                 <div class="form-group fdc-input-border">
                                     {{ form_widget(form.parent.children.translate) }}
                                     {{ form_label(form.parent.children.translate) }}
+                                    {{ form_widget(form.parent.children.translateOptions) }}
+                                    {{ form_row(form.parent.children.priorityStatus) }}
                                 </div>
                                 {{ form_row(translationsFields.status) }}
-                                {{ form_row(form.parent.children.priorityStatus) }}
                             </div>
                         </div>
                     </div>
