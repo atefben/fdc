@@ -274,8 +274,7 @@ class NewsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
-        //$token = $this->get('security.token_storage')->getToken();
-        //$isAdmin = ($token) ? true : false;
+
         $isAdmin = true;
         $dateTime = new DateTime();
 
@@ -385,8 +384,6 @@ class NewsController extends Controller
                 );
         }
 
-
-
         return array(
             'focusArticles' => $focusArticles,
             'programmations' => $programmations,
@@ -472,7 +469,6 @@ class NewsController extends Controller
 
                 $years[] = $statement->getPublishedAt()->format('Y');
             }
-            dump(!in_array($statement->getTheme()->getSlug(), $themes));
             if (!in_array($statement->getTheme()->getSlug(), $themes)) {
                 $filters['themes'][$i]['slug'] = $statement->getTheme()->getSlug();
                 $filters['themes'][$i]['content'] = $statement->getTheme()->getName();

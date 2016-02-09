@@ -236,6 +236,38 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_web_tv_live:
+        class: Base\AdminBundle\Admin\FDCPageWebTvLiveAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvLive, BaseAdminBundle:FDCPageWebTvLiveAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageWebTvLive, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_web_tv_live_web_tv_associated:
+        class: Base\AdminBundle\Admin\FDCPageWebTvLiveWebTvAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated, BaseAdminBundle:FDCPageWebTvLiveWebTvAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageWebTvLiveWebTvAssociated, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_web_tv_live_media_video_associated:
+        class: Base\AdminBundle\Admin\FDCPageWebTvLiveMediaVideoAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated, BaseAdminBundle:FDCPageWebTvLiveMediaVideoAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageWebTvLiveMediaVideoAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_web_tv_trailers:
+        class: Base\AdminBundle\Admin\FDCPageWebTvTrailersAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvTrailers, BaseAdminBundle:FDCPageWebTvTrailersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageWebTvTrailers, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #Homepage
     base.admin.homepage:
         class: Base\AdminBundle\Admin\HomepageAdmin
@@ -604,6 +636,14 @@ services:
         arguments: [~, Base\CoreBundle\Entity\PressAccredit, BaseAdminBundle:PressAccreditAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_accredit, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_accredit_has_procedure:
+        class: Base\AdminBundle\Admin\PressAccreditHasProcedureAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressAccreditHasProcedure, BaseAdminBundle:PressAccreditHasProcedureAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_accredit_has_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

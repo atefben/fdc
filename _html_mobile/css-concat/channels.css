@@ -2095,10 +2095,9 @@ article .picto .icon{
   font-size: 80px;
   padding-bottom: 20px;
 }
-.banner-img a{
-
+.banner-img a {
     color: #c8a461;
-    margin: 0 auto;
+    margin: 10px auto 0;
     display: block;
     text-transform: uppercase;
     font-size: 18px;
@@ -2107,6 +2106,14 @@ article .picto .icon{
     text-align: center;
     letter-spacing: 1px;
     padding-top: 15px;
+    z-index: 2;
+    display: block;
+    position: relative;
+}
+.dark-container .banner-img a, .darker-container .banner-img a {
+    margin-top: -20px;
+    padding-top: 0;
+    padding-bottom: 50px;
 }
 .banner-img .title a .icon{
   font-size: 1rem;
@@ -3213,3 +3220,280 @@ display: inline-block;
   z-index: 5;
 }
 /* ************** */
+
+#main.webtv {
+  background: #141414;
+}
+.webtv #banner-top .banner-img .title{
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  max-width: 640px;
+  padding: 0;
+  font-size: 25px;
+  line-height: 40px;
+  height: auto;
+}
+.banner-img .icon-mobile-chaines{
+  font-size: 80px;
+  text-align: center;
+  position: relative;
+  display: block;
+  color: #fff;
+  z-index: 2;
+  margin:auto;
+}
+.webtv #banner-top .banner-img, .webtv #banner-top .banner-video {
+  display: none;
+}
+.webtv #banner-top .banner-img.active{
+  display: inline-table;
+}
+.webtv #banner-top .banner-video.active {
+  display: block;
+}
+.webtv #banner-top .banner-video .video-container{
+    height: 360px;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+}
+.webtv #banner-top .banner-video p{
+  color: #fff;
+  margin: 40px 0 0 40px;
+  font-size: 20px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.webtv #banner-top .banner-img p{
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+    z-index: 2;
+    position: relative;
+}
+.webtv #banner-top .banner-img p.off{
+  display:none;
+}
+.webtv #banner-top .banner-img p.before{
+  color: #fff;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display:none;
+}
+.webtv #banner-top .banner-img .banner-img-text p.show{
+  display: block;
+}
+.webtv #banner-top .banner-img p.before span{
+  color: #c8a461;
+}
+.webtv #banner-top .banner-img i{
+    font-size: 80px;
+    color: #fff;
+}
+.webtv .featured-videos .title{
+	padding: 60px 0 0px;
+}
+.webtv .link {
+  margin-top: 38px;
+	text-align: center;
+}
+.webtv .link a {
+    color: #c8a461;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+   font-weight: 700;
+	margin: auto;
+	line-height: 20px;
+  height: 20px;
+}
+.webtv .link a .icon{
+  margin-right: 5px;
+  font-size: 15px;
+}
+.webtv .videosSlider{
+    padding: 75px 0;
+}
+.webtv .featured-videos{
+  border-bottom: 1px solid #2c2c2c;
+}
+.webtv .picto{
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+.webtv .featured-videos .videosSlider .vid .picto .icon{
+   font-size: 1.8rem;
+    margin: 0;
+}
+.webtv .sliderDrag .info .info-container{
+  height: 70px;
+}
+ .informations-video {
+
+  color: #fff;
+  height: 736px;
+  vertical-align: top;
+  width: 100%;
+  position: relative;
+}
+ .informations-video ul li {
+  float: left;
+  text-transform: uppercase;
+  padding: 41px 0px;
+  font-size: 24px;
+  height: 100px;
+  color: #999999;
+  border-bottom: 1px solid #2c2c2c;
+  border-top: 1px solid #2c2c2c;
+  margin: 0px;
+  width: 50%;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+ .informations-video ul li:first-child {
+  border-right: 1px solid #2c2c2c;
+}
+ .informations-video ul .active {
+  color: #c8a461;
+  border-bottom: 0px solid #2c2c2c;
+}
+.informations-video .container-video{
+    clear: both;
+}
+ .informations-video .block {
+  padding-top: 50px;
+}
+ .informations-video .infos-film {
+  text-align: center;
+}
+ .informations-video .infos-film img{
+    width: 254px;
+    height: 346px;
+ }
+ .informations-video .infos-film h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  padding-top: 70px;
+  padding-bottom: 26px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.2em;
+}
+ .informations-video .infos-film strong {
+  font-size: 25px;
+  text-transform: uppercase;
+
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+ .informations-video .infos-film span {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #c8a461;
+  display: block;
+  padding-top: 12px;
+}
+ .informations-video .program-film {
+  text-align: center;
+  display: none;
+}
+ .informations-video .program-film .contain-info {
+  height: 455px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+ .informations-video .program-film .infos {
+  padding-bottom: 30px;
+  height: 170px;
+  box-sizing: border-box;
+}
+ .informations-video .program-film .infos:last-child {
+  height: 100px;
+  margin-bottom: 15px;
+}
+ .informations-video .program-film .infos p {
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #666;
+  padding-bottom: 22px;
+}
+ .informations-video .program-film .infos p .date {
+  color: #bababa;
+  margin-left: 5px;
+}
+ .informations-video .program-film .infos .where {
+  font-size: 30px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+ .informations-video .program-film .infos hr {
+  width: 45px;
+  border-color: #666;
+  margin-top: 45px;
+}
+ .informations-video .program-film .btn {
+  color: #c8a461;
+  text-transform: uppercase;
+  font-size: 21px;
+  padding: 33px 48px;
+  font-weight: 700;
+      display: inline-block;
+  border: 1px solid rgba(200, 164, 97, 0.53);
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.dark-container.slideshow{
+    margin-bottom: 0;
+    border-bottom:none;
+}
+.channel .slideshow{
+  padding-top: 0;
+}
+.ba .slideshow .caption, .channel .slideshow .caption{
+  margin-bottom: 0;
+  margin-top: 14px;
+  height: auto;
+}
+.ba .slideshow .container{
+   border-bottom: 1px solid #2c2c2c;
+
+  padding:30px 40px;
+}
+.ba .slideshow .container, .channel .slideshow .container{
+
+ 
+  width: 100%;
+  padding:30px 40px 20px;
+  box-sizing:border-box;
+}
+.channel .featured-videos {
+    padding-bottom: 60px;
+
+}
+.slideshow .info .category{
+  display: block;
+  width: 200px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.program-film ::-webkit-scrollbar {
+  width: 10px;
+}
+.program-film ::-webkit-scrollbar-track {
+  background-color: rgba(102, 102, 102, 0.44);
+}
+.program-film ::-webkit-scrollbar-thumb {
+  height: 10px;
+  background-color: #c8a461;
+}

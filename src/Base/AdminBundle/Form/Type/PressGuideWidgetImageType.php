@@ -57,7 +57,6 @@ class PressGuideWidgetImageType extends PressGuideWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-
         $builder
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
@@ -82,12 +81,14 @@ class PressGuideWidgetImageType extends PressGuideWidgetType
                 )
             ))
             ->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' =>  $this->PressGuideWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager' => $this->PressGuideWidgetImageDummyAdmin->getModelManager(),
-            'class' => $this->PressGuideWidgetImageDummyAdmin->getClass(),
-        ));
+                'sonata_field_description' =>  $this->PressGuideWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
+                'model_manager' => $this->PressGuideWidgetImageDummyAdmin->getModelManager(),
+                'class' => $this->PressGuideWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery']->getAssociationAdmin()->getClass(),
+                'label' => 'form.label_image',
+            ));
 
     }
+
 
     /**
      * getName function.

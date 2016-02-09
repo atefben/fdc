@@ -15,16 +15,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class PressAccreditProcedureAdmin extends Admin
 {
 
-    protected $formOptions = array(
-        'cascade_validation' => true
-    );
-
     protected $translationDomain = 'BaseAdminBundle';
-
-    public function configure()
-    {
-        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
-    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -35,10 +26,6 @@ class PressAccreditProcedureAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
-                'choices' => PressAccreditProcedure::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
-            ))
         ;
     }
 
@@ -51,10 +38,6 @@ class PressAccreditProcedureAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('priorityStatus', 'choice', array(
-                'choices' => PressAccreditProcedure::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
         ;
     }
 
@@ -75,9 +58,6 @@ class PressAccreditProcedureAdmin extends Admin
                         'field_type' => 'choice',
                         'choices' => PressAccreditProcedureTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
-                        'constraints' => array(
-                            new NotBlank()
-                        )
                     ),
                     'createdAt' => array(
                         'display' => false
@@ -103,15 +83,20 @@ class PressAccreditProcedureAdmin extends Admin
                 )
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressAccreditProcedure::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressAccreditProcedure::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
 
             ->add('procedureLink', 'text', array(
-                'label' => 'form.press_homepage.push_link'
+                'label' => 'form.label_btn_link'
             ))
-            ->add('position','hidden',array('attr'=>array("hidden" => true)))
 
         ;
 

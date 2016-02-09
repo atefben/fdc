@@ -267,6 +267,12 @@ file that was distributed with this source code.
                                                                         {{ 'dashboard.link.homepage'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>
                                                                 </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_fdcpagewebtvlive_edit', {id: admin_fdc_page_web_tv_live_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.fdc_page_web_tv_live'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
                                                             {%  endif %}
                                                             {%  if group.label != 'dashboard.group.seo' %}
                                                                 {% for admin in group.items %}

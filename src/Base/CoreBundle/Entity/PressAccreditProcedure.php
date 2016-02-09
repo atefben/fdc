@@ -43,19 +43,6 @@ class PressAccreditProcedure implements TranslateMainInterface
      */
     protected $procedureLink;
 
-    /**
-     * @var integer
-     * @Gedmo\SortablePosition
-     * @ORM\Column(name="position", type="integer")
-     */
-    protected $position;
-
-    /**
-     * @var PressAccredit
-     *
-     * @ORM\ManyToOne(targetEntity="PressAccredit", inversedBy="procedure")
-     */
-    protected $accredit;
 
     /**
      * ArrayCollection
@@ -68,6 +55,16 @@ class PressAccreditProcedure implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+    }
+
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string .= ' #'. $this->getId();
+        }
+
+        return $string;
     }
 
     /**
@@ -101,51 +98,5 @@ class PressAccreditProcedure implements TranslateMainInterface
     public function getProcedureLink()
     {
         return $this->procedureLink;
-    }
-
-    /**
-     * Set position
-     *
-     * @param integer $position
-     * @return PressAccreditProcedure
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer 
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * Set accredit
-     *
-     * @param \Base\CoreBundle\Entity\PressAccredit $accredit
-     * @return PressAccreditProcedure
-     */
-    public function setAccredit(\Base\CoreBundle\Entity\PressAccredit $accredit = null)
-    {
-        $this->accredit = $accredit;
-
-        return $this;
-    }
-
-    /**
-     * Get accredit
-     *
-     * @return \Base\CoreBundle\Entity\PressAccredit 
-     */
-    public function getAccredit()
-    {
-        return $this->accredit;
     }
 }

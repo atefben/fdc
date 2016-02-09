@@ -143,6 +143,12 @@ class MediaImageSimpleAdmin extends Admin
             ))
             ->add('name')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => MediaImageSimple::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => MediaImageSimple::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

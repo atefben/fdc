@@ -281,7 +281,7 @@ $(document).ready(function () {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           }
           if (c == "#fff") {
-            $(element).append('<div class="info"><div class="txt" style="margin-left:10px"><span>' + event.title + '</span></div></div>');
+            $(element).append('<div class="info"><div class="txt" style="margin-left:10px"><span>' + event.description + '</span></div></div>');
           }else{
             $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
           }
@@ -382,7 +382,7 @@ $(document).ready(function () {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           }
           if (c == "#fff") {
-            $(element).append('<div class="info"><div class="txt" style="margin-left:10px"><span>' + event.title + '</span></div></div>');
+            $(element).append('<div class="info"><div class="txt" style="margin-left:10px"><span>' + event.description + '</span></div></div>');
           }else{
             $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
           }
@@ -1093,7 +1093,7 @@ $(document).ready(function () {
 
          if(!$('#create-event-pop input[type=text]').hasClass('error')){
 
-            $('#create-event-pop').removeClass("visible-popin");
+
 
            //récupération des données sous forme de JSON//
            var $form = $(this);
@@ -1117,28 +1117,49 @@ $(document).ready(function () {
 
            date2 = date2+"T"+hour2;
 
-
            var dateBegin = new Date(date1);
            var dateEnd = new Date(date2);
 
            console.log("date1   : "+date1);
            console.log("hours :"+dateBegin.getHours());
            console.log("dateBegin :"+dateBegin);
-
            console.log(dateEnd);
+
+           if(dateEnd<dateBegin){
+             
+           }else{
+             $('#create-event-pop').removeClass("visible-popin");
+           }
+
+
+        /**
+         * Renvoie un UID unique
+          **/
+
+         function guid() {
+              return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+              function s4() {
+                  return Math.floor((1 + Math.random()) * 0x10000)
+                      .toString(16)
+                      .substring(1);
+              }
+          }
+
+          id= guid();
+          console.log(id);
 
            //Création de l'évènement et affichage sur le calendrier
            var myEvent = {
-
                "title": data.title,
                "eventColor": "#fff",
                "start": dateBegin,
                "end": dateEnd,
                "type": data.title,
+               "description" : data.description,
                "duration": (dateEnd-dateBegin)/60000,
                "room": data.place,
                "eventPictogram": "pen",
-               "id": 5,
+               "id": id, //need to change
                "url": "eventPopin.html"
            };
            $('#mycalendar').fullCalendar( 'renderEvent', myEvent );

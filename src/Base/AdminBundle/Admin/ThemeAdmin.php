@@ -115,6 +115,12 @@ class ThemeAdmin extends Admin
                 )
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Theme::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => Theme::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

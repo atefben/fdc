@@ -144,6 +144,12 @@ class WebTvAdmin extends Admin
                 'required' => false,
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => WebTv::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => WebTv::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
@@ -167,4 +173,47 @@ class WebTvAdmin extends Admin
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
+
+
+
+    /**
+     * The filter query
+     *
+     * @author  Antoine Mineau <a.mineau@ohwee.fr>
+     * Company Ohwee <https://www.ohwee.fr/>
+     * @since   0.1
+     */
+//    public function createQuery($context = 'list')
+//    {
+//        $query = parent::createQuery($context);
+//        $filters = $this->getRequest()->get('filter');
+//
+//        $operator = array( 3 => '=', 1 => '>=', 2 => '>', 4 => '<=', 5 => '<');
+//        /* Date challenge StartsAt filter */
+//        if (isset($filters['challengeStartsAt']['value']['value']['start']) && isset($filters['challengeStartsAt']['value']['value']['end'])) {
+//            if(!empty($filters['challengeStartsAt']['value']['value']['start'])
+//                && !empty($filters['challengeStartsAt']['value']['value']['end'])) {
+//                $startsAtStart  = $filters['challengeStartsAt']['value']['value']['start'];
+//                $startsAtEnd  = $filters['challengeStartsAt']['value']['value']['end'];
+//                // Set time to max for include startsAt ended date
+//                $startsAtEnd = $startsAtEnd . '23:59:59';
+//                $query->andWhere($query->getRootAlias().'.challengeStartsAt >= :startsAt')->setParameter('startsAt', $startsAtStart);
+//                $query->andWhere($query->getRootAlias().'.challengeStartsAt <= :endsAt')->setParameter('endsAt', $startsAtEnd);
+//            }
+//        }
+//        /* Date challenge EndsAt filter */
+//        if(isset($filters['challengeEndsAt']['value']['value']['start']) && isset($filters['challengeEndsAt']['value']['value']['end'])) {
+//            if (!empty($filters['challengeEndsAt']['value']['value']['start'])
+//                && !empty($filters['challengeEndsAt']['value']['value']['end'])) {
+//                $endsAtStart  = $filters['challengeEndsAt']['value']['value']['start'];
+//                $endsAtEnd  = $filters['challengeEndsAt']['value']['value']['end'];
+//                // Set time to max for include endsAt ended date
+//                $endsAtEnd = $endsAtEnd . '23:59:59';
+//                $query->andWhere($query->getRootAlias().'.challengeEndsAt >= :startsAt')->setParameter('startsAt', $endsAtStart);
+//                $query->andWhere($query->getRootAlias().'.challengeEndsAt <= :endsAt')->setParameter('endsAt', $endsAtEnd);
+//            }
+//        }
+//
+//        return $query;
+//    }
 }

@@ -110,6 +110,16 @@ class PressGuide implements TranslateMainInterface
         $this->meetingWidgets = new ArrayCollection();
     }
 
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string .= ' #'. $this->getId();
+        }
+
+        return $string;
+    }
+
     /**
      * Get id
      *
@@ -220,9 +230,8 @@ class PressGuide implements TranslateMainInterface
      */
     public function addArriveWidget(\Base\CoreBundle\Entity\PressGuideWidget $arriveWidgets)
     {
-        $this->arriveWidgets[] = $arriveWidgets;
-
-        return $this;
+        $arriveWidgets->setPressGuideArrive($this);
+        $this->arriveWidgets->add($arriveWidgets);
     }
 
     /**
@@ -253,9 +262,8 @@ class PressGuide implements TranslateMainInterface
      */
     public function addMeetingWidget(\Base\CoreBundle\Entity\PressGuideWidget $meetingWidgets)
     {
-        $this->meetingWidgets[] = $meetingWidgets;
-
-        return $this;
+        $meetingWidgets->setPressGuideMeeting($this);
+        $this->meetingWidgets->add($meetingWidgets);
     }
 
     /**
@@ -286,9 +294,8 @@ class PressGuide implements TranslateMainInterface
      */
     public function addInformationWidget(\Base\CoreBundle\Entity\PressGuideWidget $informationWidgets)
     {
-        $this->informationWidgets[] = $informationWidgets;
-
-        return $this;
+        $informationWidgets->setPressGuideInformation($this);
+        $this->informationWidgets->add($informationWidgets);
     }
 
     /**
@@ -319,9 +326,8 @@ class PressGuide implements TranslateMainInterface
      */
     public function addServiceWidget(\Base\CoreBundle\Entity\PressGuideWidget $serviceWidgets)
     {
-        $this->serviceWidgets[] = $serviceWidgets;
-
-        return $this;
+        $serviceWidgets->setPressGuideService($this);
+        $this->serviceWidgets->add($serviceWidgets);
     }
 
     /**
