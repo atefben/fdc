@@ -18456,7 +18456,6 @@ input[type=submit] {
 .accreditation #accreditation .button:hover {
   background-color: #c8a461;
   border-color: #c8a461;
-  color: #fff !important;
 }
 .accreditation #accreditation .save {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
@@ -18499,8 +18498,9 @@ input[type=submit] {
   vertical-align: middle !important;
 }
 .accreditation #accreditation .request-btn:hover {
-  background-color: #c8a461 !important;
-  color: #fff !important;
+  background-color: #fff !important;
+  color: #c8a461 !important;
+  border: 1px solid #c8a461 !important;
 }
 .accreditation #accreditation .buttons {
   padding: 50px 0px;

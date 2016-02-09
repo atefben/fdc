@@ -11,7 +11,6 @@
     .button:hover {
       background-color: #c8a461;
       border-color: #c8a461;
-      color: #fff !important;
     }
 
     .save {
@@ -26,7 +25,7 @@
         color: $gold !important;
         background-color: #fff;
       }
-    } 
+    }
     #share-article {
       font-family: $CamphorHeavy;
       color: $gold;
@@ -56,8 +55,9 @@
       }
 
       &:hover{
-        background-color: #c8a461 !important;
-        color:#fff !important;
+        background-color: #fff !important;
+        color: $gold !important;
+        border: 1px solid $gold !important;
       }
     }
     .buttons{
@@ -212,6 +212,7 @@
         border-top: 1px solid #e3e3e3;
         padding-top: 60px;
         padding-bottom: 60px;
+
       a{
         display: block;
         border: 1px solid #dfdfdf !important;
@@ -219,9 +220,11 @@
         width: 296px;
         margin-bottom: 11px;
       }
+
       a:hover{
         color: #c8a461;
       }
+
       span{
         display: block;
         text-align: center;
