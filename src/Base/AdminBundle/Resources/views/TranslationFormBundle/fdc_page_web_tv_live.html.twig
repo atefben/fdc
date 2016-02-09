@@ -1,0 +1,207 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    <ul class="a2lix_translationsLocales nav nav-tabs">
+        {% for translationsFields in form %}
+            {% set locale = translationsFields.vars.name %}
+
+            <li {% if form.vars.default_locale == locale %}class="active"{% endif %} data-locale="{{ locale }}">
+                <a href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+                    {% set langKey = 'lang.' ~ locale %}
+                    {{ langKey|trans({}, 'BaseAdminBundle') }}
+                    {% if form.vars.default_locale == locale %}(MASTER){% endif %}
+                    {% if translationsFields.vars.required %}*{% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {% set locale = translationsFields.vars.name %}
+
+            <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
+                <div class="row">
+                    <div class="col-md-{% if form.vars.default_locale == locale %}12{% else %}8{% endif %}">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.fdc_page_web_tv_live.festival_live'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {% if form.vars.default_locale == locale %}
+                                        {{ form_row(form.parent.children.live) }}
+                                    {% endif %}
+                                    {{ form_row(translationsFields.title) }}
+                                    {{ form_row(translationsFields.firstSubHead) }}
+                                    {{ form_row(translationsFields.secondSubHead) }}
+                                    {% if form.vars.default_locale == locale %}
+                                        {{ form_row(form.parent.children.image) }}
+                                    {% endif %}
+                                    {{ form_row(translationsFields.directUrl) }}
+                                    {{ form_row(translationsFields.teaserUrl) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if form.vars.default_locale == locale %}
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.fdc_page_web_tv_live.channels'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(form.parent.children.associatedWebTvs) }}
+                                    {{ form_widget(form.parent.children.doNotDisplayWebTvArea) }}
+                                    {{ form_label(form.parent.children.doNotDisplayWebTvArea) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.fdc_page_web_tv_live.trailers'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(form.parent.children.associatedMediaVideos) }}
+                                    {{ form_widget(form.parent.children.doNotDisplayTrailerArea) }}
+                                    {{ form_label(form.parent.children.doNotDisplayTrailerArea) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.fdc_page_web_tv_live.last_videos'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_widget(form.parent.children.doNotDisplayLastVideosArea) }}
+                                    {{ form_label(form.parent.children.doNotDisplayLastVideosArea) }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% if form.vars.default_locale != locale %}
+                        <div class="col-md-4">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    VERSION FRANÇAISE
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <label class="control-label">
+                                        {{ 'form.fdc_page_web_tv_live.label_title'|trans }}
+                                    </label>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.title }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <label class="control-label">
+                                        {{ 'form.fdc_page_web_tv_live.label_first_sub_head'|trans }}
+                                    </label>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.firstSubHead }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <label class="control-label">
+                                        {{ 'form.fdc_page_web_tv_live.label_second_sub_head'|trans }}
+                                    </label>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.secondSubHead }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <label class="control-label">
+                                        {{ 'form.fdc_page_web_tv_live.label_direct_url'|trans }}
+                                    </label>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.directUrl }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <label class="control-label">
+                                        {{ 'form.fdc_page_web_tv_live.label_teaser_url'|trans }}
+                                    </label>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.teaserUrl }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
+                                    <h4 class="box-title">
+                                        {{ 'group.seo'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                                {% if form.vars.default_locale == locale %}
+                                    {{ form_row(form.parent.children.seoFile) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                    </div>
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.status) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

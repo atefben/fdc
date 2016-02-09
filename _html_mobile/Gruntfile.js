@@ -59,8 +59,8 @@ grunt.initConfig({
 				    './css-concat/channels.css': [
 			            './css/main.css', 
 			            './css/include/*.css',
-			            './css/grid-isotope.css'
-			            
+			            './css/grid-isotope.css',
+			            './css/webtv.css'
 				        ],
 				    './css-concat/faq.css': [
 			            './css/main.css', 
