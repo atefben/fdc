@@ -21,7 +21,6 @@ class Homepage
 {
     use Translatable;
     use Time;
-    use TranslateMain;
 
     /**
      * @var integer
@@ -927,6 +926,7 @@ class Homepage
     {
         return $this->pushsSecondaryImage8;
     }
+
     /**
      * findTranslationByLocale function.
      *
