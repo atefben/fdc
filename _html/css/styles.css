@@ -18263,7 +18263,7 @@ input[type=submit] {
 .practicalguide #praticalguide .container-pguide .wrapper {
   width: 976px;
   margin: 0 auto;
-  margin-top: 32px;
+  margin-top: 38px;
   position: relative;
   margin-bottom: 43px;
 }
@@ -18283,6 +18283,7 @@ input[type=submit] {
 .practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .title-pguide .icon {
   font-size: 1.3rem;
   margin-right: 22px;
+  vertical-align: sub !important;
 }
 .practicalguide #praticalguide .container-pguide .wrapper .contain-title-pg .title-pguide:hover {
   color: #c8a461;
