@@ -284,6 +284,53 @@
     }
   }
 
+  .palmares{
+    float: left;
+    width: 63%;
+    padding-bottom: 5px;
+    margin-top: 38px;
+    margin-bottom: -38px;
+
+    i{
+      font-size: 2.6rem;
+      color: $gold;
+      display: inline-block;
+      vertical-align: middle !important;
+    }
+
+    p{
+      display: inline-block;
+      margin-left: 20px;
+      font-size: .875rem;
+      color: #a4a4a4;
+      font-family: $CamphorItalic;
+    }
+
+    &:after{
+      content: "";
+      display: block;
+      padding-left: 332%;
+      height: 1px;
+      position: relative;
+      left: -7.4%;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    @include breakpoint(1600px) {
+      margin-top: 21px;
+    }
+
+    @include breakpoint(1280px) {
+      margin-top: 21px;
+
+    }
+
+    @include breakpoint(1024px) {
+      margin-top: 21px;
+    }
+
+  }
+
   .nav {
     border: 1px solid rgba(255, 255, 255, 0.5);
     display: block;
@@ -358,7 +405,7 @@
   }
 
   .main-image {
-    background-color: $black; 
+    background-color: $black;
     height: 620px;
     left: 0;
     overflow: hidden;
