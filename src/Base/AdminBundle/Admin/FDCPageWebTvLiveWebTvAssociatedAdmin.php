@@ -8,7 +8,11 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class MediaTagAdmin extends Admin
+/**
+ * Class FDCPageWebTvLiveWebTvAssociatedAdmin
+ * @package Base\AdminBundle\Admin
+ */
+class FDCPageWebTvLiveWebTvAssociatedAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -47,7 +51,7 @@ class MediaTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('tag', 'sonata_type_model_list', array('btn_delete' => false))
+            ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
         ;
     }
 
@@ -62,4 +66,6 @@ class MediaTagAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
+
 }
