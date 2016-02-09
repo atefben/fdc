@@ -29,6 +29,8 @@ link:
 homepage:
     group:
         social_wall: Social Wall
+        push_main: Pushs Principaux
+        push_secondary: Pushs Secondaires
 
 group:
     french_version: Version française
@@ -310,6 +312,10 @@ form:
     label_label: Légende
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
+    label_primary_push_title: Titre du push principal
+    label_primary_push_url: URL du push principal
+    label_secondary_push_title: Titre du push secondaire
+    label_secondary_push_url: URL du push secondaire
     label_name: Nom
     web_tv:
         helper_name: 255 caractères max.

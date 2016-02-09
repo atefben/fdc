@@ -35,7 +35,6 @@ class TransFallbackExtension extends Twig_Extension
         $trans = $object->findTranslationByLocale($locale);
         $property = ucfirst($property);
 
-
         if ($trans && $trans->{'get'.$property}()) {
             return $trans->{'get'.$property}();
         }

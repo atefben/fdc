@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,6 +30,83 @@ class Homepage
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsMainImage1;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsMainImage2;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsMainImage3;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsSecondaryImage1;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsSecondaryImage2;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsSecondaryImage3;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsSecondaryImage4;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsSecondaryImage5;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsSecondaryImage6;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsSecondaryImage7;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $pushsSecondaryImage8;
 
     /**
      * @var HomepageSlide
@@ -594,5 +672,275 @@ class Homepage
         $this->displayedTopNews = $displayedTopNews;
 
         return $this;
+    }
+
+    /**
+     * Set pushsMainImage1
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $pushsMainImage1
+     * @return Homepage
+     */
+    public function setPushsMainImage1(\Base\CoreBundle\Entity\MediaImage $pushsMainImage1 = null)
+    {
+        $this->pushsMainImage1 = $pushsMainImage1;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsMainImage1
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getPushsMainImage1()
+    {
+        return $this->pushsMainImage1;
+    }
+
+    /**
+     * Set pushsMainImage2
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $pushsMainImage2
+     * @return Homepage
+     */
+    public function setPushsMainImage2(\Base\CoreBundle\Entity\MediaImage $pushsMainImage2 = null)
+    {
+        $this->pushsMainImage2 = $pushsMainImage2;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsMainImage2
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getPushsMainImage2()
+    {
+        return $this->pushsMainImage2;
+    }
+
+    /**
+     * Set pushsMainImage3
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $pushsMainImage3
+     * @return Homepage
+     */
+    public function setPushsMainImage3(\Base\CoreBundle\Entity\MediaImage $pushsMainImage3 = null)
+    {
+        $this->pushsMainImage3 = $pushsMainImage3;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsMainImage3
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getPushsMainImage3()
+    {
+        return $this->pushsMainImage3;
+    }
+
+    /**
+     * Set pushsSecondaryImage1
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage1
+     * @return Homepage
+     */
+    public function setPushsSecondaryImage1(\Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage1 = null)
+    {
+        $this->pushsSecondaryImage1 = $pushsSecondaryImage1;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsSecondaryImage1
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPushsSecondaryImage1()
+    {
+        return $this->pushsSecondaryImage1;
+    }
+
+    /**
+     * Set pushsSecondaryImage2
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage2
+     * @return Homepage
+     */
+    public function setPushsSecondaryImage2(\Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage2 = null)
+    {
+        $this->pushsSecondaryImage2 = $pushsSecondaryImage2;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsSecondaryImage2
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPushsSecondaryImage2()
+    {
+        return $this->pushsSecondaryImage2;
+    }
+
+    /**
+     * Set pushsSecondaryImage3
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage3
+     * @return Homepage
+     */
+    public function setPushsSecondaryImage3(\Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage3 = null)
+    {
+        $this->pushsSecondaryImage3 = $pushsSecondaryImage3;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsSecondaryImage3
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPushsSecondaryImage3()
+    {
+        return $this->pushsSecondaryImage3;
+    }
+
+    /**
+     * Set pushsSecondaryImage4
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage4
+     * @return Homepage
+     */
+    public function setPushsSecondaryImage4(\Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage4 = null)
+    {
+        $this->pushsSecondaryImage4 = $pushsSecondaryImage4;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsSecondaryImage4
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPushsSecondaryImage4()
+    {
+        return $this->pushsSecondaryImage4;
+    }
+
+    /**
+     * Set pushsSecondaryImage5
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage5
+     * @return Homepage
+     */
+    public function setPushsSecondaryImage5(\Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage5 = null)
+    {
+        $this->pushsSecondaryImage5 = $pushsSecondaryImage5;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsSecondaryImage5
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPushsSecondaryImage5()
+    {
+        return $this->pushsSecondaryImage5;
+    }
+
+    /**
+     * Set pushsSecondaryImage6
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage6
+     * @return Homepage
+     */
+    public function setPushsSecondaryImage6(\Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage6 = null)
+    {
+        $this->pushsSecondaryImage6 = $pushsSecondaryImage6;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsSecondaryImage6
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPushsSecondaryImage6()
+    {
+        return $this->pushsSecondaryImage6;
+    }
+
+    /**
+     * Set pushsSecondaryImage7
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage7
+     * @return Homepage
+     */
+    public function setPushsSecondaryImage7(\Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage7 = null)
+    {
+        $this->pushsSecondaryImage7 = $pushsSecondaryImage7;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsSecondaryImage7
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPushsSecondaryImage7()
+    {
+        return $this->pushsSecondaryImage7;
+    }
+
+    /**
+     * Set pushsSecondaryImage8
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage8
+     * @return Homepage
+     */
+    public function setPushsSecondaryImage8(\Base\CoreBundle\Entity\MediaImageSimple $pushsSecondaryImage8 = null)
+    {
+        $this->pushsSecondaryImage8 = $pushsSecondaryImage8;
+
+        return $this;
+    }
+
+    /**
+     * Get pushsSecondaryImage8
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPushsSecondaryImage8()
+    {
+        return $this->pushsSecondaryImage8;
+    }
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 }

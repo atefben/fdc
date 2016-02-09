@@ -41,7 +41,12 @@ class NewsController extends Controller {
         }
 
         // GET HOMEPAGE SETTINGS
-        $homepageSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneById(1);
+        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
+            'festival' => $this->getFestival()
+        ));
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
 
         $festivalStart = $this->getFestival()->getFestivalStartsAt();
         $festivalEnd =  $this->getFestival()->getFestivalEndsAt();
@@ -58,7 +63,7 @@ class NewsController extends Controller {
             0
         );
 
-        $displayHomeSlider = $homepageSettings->getDisplayedSlider();
+        $displayHomeSlider = $homepage->getDisplayedSlider();
 
         $homeSlider= array();
         foreach($slides as $slide) {
@@ -92,14 +97,6 @@ class NewsController extends Controller {
 
         $socialGraph['timeline']      = $socialGraphTimeline;
         $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
-
-        // Homepage
-        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
-            'festival' => $this->getFestival()
-        ));
-        if ($homepage === null) {
-            throw new NotFoundHttpException();
-        }
 
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////       ARTICLE HOME         ///////////////////////////////
@@ -165,6 +162,11 @@ class NewsController extends Controller {
         $videos = $this
             ->getBaseCoreMediaVideoRepository()
             ->get2VideosFromTheLast10($locale, $this->getFestival()->getId());
+
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////       PUSHS      /////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+
 
         // TODO: clean this
         $featuredMovies         = array(
