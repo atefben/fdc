@@ -41,30 +41,6 @@ class PressGuideAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => PressGuideTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
-            ->add('translate', new CheckboxType() , array(
-                'label'    => 'Traduction',
-                'required' => false,
-            ))
-
         ;
     }
 
@@ -77,16 +53,13 @@ class PressGuideAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => PressGuide::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
             ))
-            ->add('statusMain', 'choice', array(
-                'choices' => PressGuideTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-
         ;
     }
 
@@ -171,7 +144,9 @@ class PressGuideAdmin extends Admin
                     ),
                 )
             ))
-            ->add('translate', 'checkbox' , array())
+            ->add('translate', 'checkbox' , array(
+                'required' => false,
+                ))
             ->add('translateOptions', 'choice', array(
                 'choices' => PressGuide::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
@@ -232,33 +207,37 @@ class PressGuideAdmin extends Admin
             ))
             ->add('arriveIcon', new ChoiceType(), array(
                 'choices' => array(
-                    'icon-article' => 'Icone article',
-                    'icon-communique' => 'Icone communique',
-                    'icon-video' => 'Icone video',
+                    'icon_a-votre-service' => 'A votre arrivée',
+                    'icon_informations' => 'Information',
+                    'icon_rendez-vous-des-medias' => 'Rendez-vous',
+                    'icon_service' => 'Services',
                 ),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('serviceIcon', new ChoiceType(), array(
                 'choices' => array(
-                    'icon-article' => 'Icone article',
-                    'icon-communique' => 'Icone communique',
-                    'icon-video' => 'Icone video',
+                    'icon_a-votre-service' => 'A votre arrivée',
+                    'icon_informations' => 'Information',
+                    'icon_rendez-vous-des-medias' => 'Rendez-vous',
+                    'icon_service' => 'Services',
                 ),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('meetingIcon', new ChoiceType(), array(
                 'choices' => array(
-                    'icon-article' => 'Icone article',
-                    'icon-communique' => 'Icone communique',
-                    'icon-video' => 'Icone video',
+                    'icon_a-votre-service' => 'A votre arrivée',
+                    'icon_informations' => 'Information',
+                    'icon_rendez-vous-des-medias' => 'Rendez-vous',
+                    'icon_service' => 'Services',
                 ),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('informationIcon', new ChoiceType(), array(
                 'choices' => array(
-                    'icon-article' => 'Icone article',
-                    'icon-communique' => 'Icone communique',
-                    'icon-video' => 'Icone video',
+                    'icon_a-votre-service' => 'A votre arrivée',
+                    'icon_informations' => 'Information',
+                    'icon_rendez-vous-des-medias' => 'Rendez-vous',
+                    'icon_service' => 'Services',
                 ),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))

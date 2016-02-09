@@ -3,29 +3,24 @@
 
 {% block body %}
     <div id="main" class="press loading accreditation lock">
-
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
-
     <div id="accreditation">
         <div class="wrapper">
             <div class="container-small">
-                {{ commonContent.firstBlock|raw }}
-            </div>
-            <p class="info">
-                {{ commonContent.infoBlock|raw }}
-            </p>
-            <div class="container-small">
-                {{ commonContent.secondBlock|raw }}
+                <h3>{{ accredit|trans_fallback('commonTitle') }}</h3>
+                {{ accredit|trans_fallback('commonContent')|raw }}
             </div>
         </div>
 
         <div class="nav-accre">
             <div class="wrapper">
-                <h2>{{ 'press.accrediter.title.consultezlaprocédure'|trans }} :</h2>
+                <h2>{{ accredit|trans_fallback('procedureMainTitle') }}</h2>
                 <table>
                     <tr>
-                    {% for key,sectionFilter in sectionContent.section %}
-                        <td data-cat="{{ sectionFilter.slug }}" class="{% if key == 0 %}active{% endif %}">{{ sectionFilter.title }}</td>
+                    {% for key,sectionFilter in accredit.procedure %}
+                        <td data-cat="{{ sectionFilter.procedure.procedureLink }}" class="{% if key == 0 %}active{% endif %}">
+                            {{ sectionFilter.procedure|trans_fallback('procedureTitle') }}
+                        </td>
                         {% if  loop.index % 3 == 0 %}
                         </tr>
                         <tr>
@@ -35,19 +30,22 @@
                 </table>
             </div>
         </div>
-        {% for key, section in sectionContent.section %}
-            <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.slug }}">
+        {% for key, section in accredit.procedure %}
+            <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.procedure.procedureLink }}">
                 <div class="wrapper">
                     <div class="container-small">
                         <div class="buttons">
                             <a id="share-article" href="#" class="button  print" onclick="window.print()">
+                                <i class="icon icon_print"></i>
                                 {{ 'press.accrediter.btn.imprimer'|trans }}
                             </a>
                             <a href="#" class="button save">
+                                <i class="icon icon_pdf"></i>
                                 {{ 'press.accrediter.btn.enregistrer'|trans }}
                             </a>
                         </div>
-                        {{ section.content|raw }}
+                        <h4>{{ section.procedure|trans_fallback('procedureTitle') }}</h4>
+                        {{ section.procedure|trans_fallback('procedureContent')|raw }}
                     </div>
                 </div>
             </div>
@@ -57,6 +55,7 @@
         <div class="request">
             <div class="wrapper">
                 <a href="//reg.online-festival.com/" class="button request-btn" target="_blank">
+                    <i class="icon icon_communique-presse"></i>
                     {{ 'press.accrediter.btn.faireunedemandedaccreditation'|trans }}
                 </a>
                 <span class="legend">

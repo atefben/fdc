@@ -5,8 +5,10 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
-
+use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Util\Seo;
 /**
  * PressGuideWidgetImageTranslation
  *
@@ -14,26 +16,27 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressGuideWidgetImageTranslation
+class PressGuideWidgetImageTranslation implements TranslateChildInterface
 {
 
+    use Seo;
+    use TranslateChild;
+    use Time;
     use Translation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_image_title", type="string", length=122, nullable=true)
+     * @ORM\Column(type="string", length=122, nullable=true)
      */
     protected $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_image_content", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $content;
-
-
 
     /**
      * Set title

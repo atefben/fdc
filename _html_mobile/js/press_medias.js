@@ -37,6 +37,16 @@ $(document).ready(function() {
                 });
                 
         });
+
+        $('.trailer_btn').on('click',function(e){
+          e.preventDefault();
+          $('#popin-trailer').addClass('show');
+        });
+        $('#popin-trailer .close-button').on('click',function(e){
+          e.preventDefault();
+          $('#popin-trailer').removeClass('show');
+        });
+
     }
 
 	var menu = $("#horizontal-menu").owlCarousel({
@@ -99,6 +109,8 @@ $(document).ready(function() {
             },500);
           }
     });
+
+
 
 
     initSelection();

@@ -2,8 +2,6 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\FDCPageWebTvChannels;
-use Base\CoreBundle\Entity\FDCPageWebTvChannelsTranslation;
 use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\FDCPageWebTvLiveTranslation;
 use Sonata\AdminBundle\Admin\Admin;
@@ -182,7 +180,7 @@ class FDCPageWebTvLiveAdmin extends Admin
             ))
             ->add('translate')
             ->add('priorityStatus', 'choice', array(
-                'choices'                   => FDCPageWebTvChannels::getPriorityStatuses(),
+                'choices'                   => FDCPageWebTvLive::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
         ;

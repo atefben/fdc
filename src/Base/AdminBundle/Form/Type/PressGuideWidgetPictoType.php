@@ -63,9 +63,10 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
         ))
         ->add('picto', new ChoiceType() , array(
             'choices' => array(
-                'icon-article' => 'Icone article',
-                'icon-communique' => 'Icone communique',
-                'icon-video' => 'Icone video',
+                'icon_a-votre-service' => 'A votre arrivée',
+                'icon_informations' => 'Information',
+                'icon_rendez-vous-des-medias' => 'Rendez-vous',
+                'icon_service' => 'Services',
             ),
             'choice_translation_domain' => 'BaseAdminBundle'
         ))

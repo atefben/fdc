@@ -8,23 +8,50 @@
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
     <div id='praticalguide'>
-        {% for key, section in guideContent.section %}
 
-            <section class="container-pguide {% if key == 'arrive' %}active{% endif %}">
-                <div class="wrapper">
-                    {% if key == 'arrive' %}
-                        {% include 'FDCPressBundle:Guide:components/arrive.html.twig' %}
-                    {% elseif key == 'infos' %}
-                        {% include 'FDCPressBundle:Guide:components/infos.html.twig' %}
-                    {% elseif key == 'appointment' %}
-                        {% include 'FDCPressBundle:Guide:components/appointment.html.twig' %}
-                    {% elseif key == 'service' %}
-                        {% include 'FDCPressBundle:Guide:components/service.html.twig' %}
-                    {% endif %}
+        <section class="container-pguide active">
+            <div class="wrapper">
+                <div class="contain-title-pg">
+                    <h3 class="title-pguide ">
+                        <span class="logo">
+                            <i class="icon {{ guideContent.arriveIcon }}"></i>
+                        </span>
+                        {{ guideContent|trans_fallback('arriveTitle')}}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
                 </div>
-            </section>
+                {% for widget in guideContent.arriveWidgets %}
+                    {% set img = widget.gallery %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                    <div class="contain-article">
+                        <div class="aside">
+                            {% thumbnail file, 'big' with {'alt': img|trans_fallback('alt')} %}
+                        </div>
+                        <div class="texts">
+                            <strong>{{ widget|trans_fallback('title') }}</strong>
+                            <p>
+                                {{ widget|trans_fallback('content')|raw }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
 
-        {% endfor %}
+                {#{% if key == 'arrive' %}#}
+                    {#{% include 'FDCPressBundle:Guide:components/arrive.html.twig' %}#}
+                {#{% elseif key == 'infos' %}#}
+                    {#{% include 'FDCPressBundle:Guide:components/infos.html.twig' %}#}
+                {#{% elseif key == 'appointment' %}#}
+                    {#{% include 'FDCPressBundle:Guide:components/appointment.html.twig' %}#}
+                {#{% elseif key == 'service' %}#}
+                    {#{% include 'FDCPressBundle:Guide:components/service.html.twig' %}#}
+                {#{% endif %}#}
+            </div>
+        </section>
+
     </div>
 
     {{ render(controller('FDCPressBundle:Global:contact')) }}

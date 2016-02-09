@@ -67,19 +67,19 @@ class PressGuideWidgetColumnType extends PressGuideWidgetType
                 'fields' => array(
                     'firstColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'Bloc 1',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'secondColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'Bloc 2',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'thirdColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'Bloc 3',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
@@ -89,7 +89,8 @@ class PressGuideWidgetColumnType extends PressGuideWidgetType
             ->add('gallery', 'sonata_type_model_list', array(
                 'sonata_field_description' =>  $this->PressGuideWidgetColumnDummyAdmin->getFormFieldDescriptions()['gallery'],
                 'model_manager' => $this->PressGuideWidgetColumnDummyAdmin->getModelManager(),
-                'class' => $this->PressGuideWidgetColumnDummyAdmin->getClass(),
+                'class' => $this->PressGuideWidgetColumnDummyAdmin->getFormFieldDescriptions()['gallery']->getAssociationAdmin()->getClass(),
+                'label' => 'form.label_image',
             ));
 
     }
