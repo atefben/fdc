@@ -205,7 +205,9 @@ Imprimer</a>
             </td>
           </tr>
       </table>
-      <span class="caption-table">Rédigé par Morgane Urbain</span>
+
+
+      <span class="caption-article">Rédigé par <span class="name">Morgane Urbain</span></span>
 
     </div>
 

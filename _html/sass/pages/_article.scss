@@ -520,6 +520,7 @@ article {
         font-size: 1rem;
         font-family: $CamphorItalic;
         color:#666666;
+        line-height: 26px;
       }
     }
   }
@@ -530,7 +531,6 @@ article {
     margin: 0 auto;
     width: 644px;
     padding-bottom: 50px;
-    border-bottom: 1px solid #dfdfdf;
 
 
     td, th{
@@ -551,15 +551,20 @@ article {
     }
   }
 
-  .caption-table{
-    color: #969696;
+  .caption-article{
+    color: #333333;
     font-size: 0.750rem;
     margin: 10px 0 0;
     text-align: left;
     display: block;
     margin: 0 auto;
     width: 644px;
-    margin-top: 10px; 
+    padding-top: 10px;
+    border-top: 1px solid #dfdfdf;
+
+    .name{
+      color:#000;
+    }
   }
 
   .audio-player {
