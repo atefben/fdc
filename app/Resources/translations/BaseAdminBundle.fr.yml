@@ -51,6 +51,15 @@ homepage:
         push_main: Pushs Principaux
         push_secondary: Pushs Secondaires
         prefooter: Pré-footer
+        slider: Slider
+        top_news: L'actualité à la une
+        web_tv: WebTV
+        film: Films
+        seo: Métadonnées & SEO
+
+    top_news_type:
+        displayed_news: Afficher la grille d'actualités (pendant le festival)
+        displayed_events: Afficher la grille de communiqués & infos (avant le festival)
 
 group:
     french_version: Version française
@@ -400,8 +409,6 @@ form:
     label_image_link: Image et lien
     label_main_image: Première image
     label_second_image: Seconde image
-    label_displayed_slider: Afficher le slider
-    label_displayed_top_news: Afficher le "Top News"
     label_btn: Libellé du bouton
     label_label: Légende
     label_web_tv_name: Nom de la chaîne

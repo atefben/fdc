@@ -174,7 +174,10 @@ class HomepageAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle',
                 'expanded' => true
             ))
-            ->add('displayedSlider')
+            ->add('displayedSlider','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
             ->add('homepageSlide', 'sonata_type_collection', array(
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.homepage.helper_home_slider',
@@ -185,8 +188,14 @@ class HomepageAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('displayedTopNews')
-            ->add('displayedSocialWall')
+            ->add('displayedTopNews','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('displayedSocialWall','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
             ->add('socialGraphHashtagTwitter', null, array(
                 'sonata_help' => 'form.homepage.helper_social_graph',
                 'translation_domain' => 'BaseAdminBundle'
@@ -254,6 +263,18 @@ class HomepageAdmin extends Admin
             ->add('prefooterImage4', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_prefooter',
                 'required' => false,
+            ))
+            ->add('displayedPushsMain','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('displayedPushsSecondary','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('displayedPrefooters','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
             ))
 
 
