@@ -118,6 +118,11 @@ class FDCPageWebTvTrailersAdmin extends Admin
                         'choices'                   => FDCPageWebTvTrailersTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'overrideName'       => array(
+                        'label'              => 'form.fdc_page_web_tv_trailers.label_override_name',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                    ),
                     'seoTitle'       => array(
                         'attr'               => array(
                             'placeholder' => 'form.fdc_page_web_tv_trailers.placeholder_seo_title'
@@ -147,6 +152,10 @@ class FDCPageWebTvTrailersAdmin extends Admin
             ->add('image', 'sonata_type_model_list', array(
                 'label'    => 'form.fdc_page_web_tv_trailers.image',
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
+                'required' => false,
+            ))
+            ->add('selectionSection', 'sonata_type_model_list', array(
+                'label'    => 'form.fdc_page_web_tv_trailers.label_festival_section',
                 'required' => false,
             ))
             ->add('seoFile', 'sonata_media_type', array(

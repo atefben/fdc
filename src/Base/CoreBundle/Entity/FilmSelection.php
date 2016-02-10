@@ -193,4 +193,37 @@ class FilmSelection implements TranslateMainInterface
     {
         return $this->subsections;
     }
+
+    /**
+     * Add films
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $films
+     * @return FilmSelection
+     */
+    public function addFilm(\Base\CoreBundle\Entity\FilmFilm $films)
+    {
+        $this->films[] = $films;
+
+        return $this;
+    }
+
+    /**
+     * Remove films
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $films
+     */
+    public function removeFilm(\Base\CoreBundle\Entity\FilmFilm $films)
+    {
+        $this->films->removeElement($films);
+    }
+
+    /**
+     * Get films
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilms()
+    {
+        return $this->films;
+    }
 }

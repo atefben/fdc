@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation\Since;
  * FDCPageWebTvTrailers
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageWebTvTrailersRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageWebTvTrailers implements TranslateMainInterface
@@ -42,9 +42,15 @@ class FDCPageWebTvTrailers implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
-     * @Groups({"web_tv_list", "web_tv_show"})
      */
     private $image;
+
+    /**
+     * @var FilmSelectionSection
+     *
+     * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
+     */
+    private $selectionSection;
 
     /**
      * @var ArrayCollection
@@ -63,13 +69,6 @@ class FDCPageWebTvTrailers implements TranslateMainInterface
     {
         return $this->id;
     }
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     */
-    private $slug;
 
     /**
      * Set image
@@ -99,26 +98,27 @@ class FDCPageWebTvTrailers implements TranslateMainInterface
         return 'Page WebTV - Les bandes-annonces - Compétition';
     }
 
+
     /**
-     * Set slug
+     * Set selectionSection
      *
-     * @param string $slug
+     * @param \Base\CoreBundle\Entity\FilmSelectionSection $selectionSection
      * @return FDCPageWebTvTrailers
      */
-    public function setSlug($slug)
+    public function setSelectionSection(\Base\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
     {
-        $this->slug = $slug;
+        $this->selectionSection = $selectionSection;
 
         return $this;
     }
 
     /**
-     * Get slug
+     * Get selectionSection
      *
-     * @return string 
+     * @return \Base\CoreBundle\Entity\FilmSelectionSection 
      */
-    public function getSlug()
+    public function getSelectionSection()
     {
-        return $this->slug;
+        return $this->selectionSection;
     }
 }

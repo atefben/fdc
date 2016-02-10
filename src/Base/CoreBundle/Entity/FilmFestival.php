@@ -109,11 +109,6 @@ class FilmFestival
     private $medias;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="festival")
-     */
-    private $mediaVideos;
-    
-    /**
      * Constructor
      */
     public function __construct()
@@ -384,49 +379,6 @@ class FilmFestival
     {
         return $this->events;
     }
-
-    /**
-     * Add mediaVideos
-     *
-     * @param \Base\CoreBundle\Entity\MediaVideo $mediaVideos
-     * @return FilmFestival
-     */
-    public function addMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
-    {
-        if ($this->mediaVideos->contains($mediaVideos)) {
-            return;
-        }
-
-        $mediaVideos->setFestival($this);
-        $this->mediaVideos[] = $mediaVideos;
-
-        return $this;
-    }
-
-    /**
-     * Remove mediaVideos
-     *
-     * @param \Base\CoreBundle\Entity\MediaVideo $mediaVideos
-     */
-    public function removeMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
-    {
-        if (!$this->mediaVideos->contains($mediaVideos)) {
-            return;
-        }
-
-        $this->mediaVideos->removeElement($mediaVideos);
-    }
-
-    /**
-     * Get mediaVideos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMediaVideos()
-    {
-        return $this->mediaVideos;
-    }
-
 
     /**
      * Set festivalStartsAt

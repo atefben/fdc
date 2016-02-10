@@ -1711,4 +1711,37 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     {
         return $this->associatedInfo;
     }
+
+    /**
+     * Add associatedMediaAudios
+     *
+     * @param \Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedMediaAudios
+     * @return FilmFilm
+     */
+    public function addAssociatedMediaAudio(\Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedMediaAudios)
+    {
+        $this->associatedMediaAudios[] = $associatedMediaAudios;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedMediaAudios
+     *
+     * @param \Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedMediaAudios
+     */
+    public function removeAssociatedMediaAudio(\Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedMediaAudios)
+    {
+        $this->associatedMediaAudios->removeElement($associatedMediaAudios);
+    }
+
+    /**
+     * Get associatedMediaAudios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedMediaAudios()
+    {
+        return $this->associatedMediaAudios;
+    }
 }

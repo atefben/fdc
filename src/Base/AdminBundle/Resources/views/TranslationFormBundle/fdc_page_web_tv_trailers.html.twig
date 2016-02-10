@@ -3,6 +3,7 @@
 <div class="a2lix_translations tabbable">
     <ul class="a2lix_translationsLocales nav nav-tabs">
         {% for translationsFields in form %}
+            {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
             {% set locale = translationsFields.vars.name %}
 
             <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
@@ -34,7 +35,7 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {% if form.vars.default_locale == locale %}
                                         {{ form_row(form.parent.children.image) }}
-                                        {{ form_row(form.parent.children.selection) }}
+                                        {{ form_row(form.parent.children.selectionSection) }}
                                     {% endif %}
                                     {{ form_row(translationsFields.overrideName) }}
                                 </div>

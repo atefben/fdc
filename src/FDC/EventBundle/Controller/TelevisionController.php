@@ -3,6 +3,8 @@
 namespace FDC\EventBundle\Controller;
 
 use FDC\EventBundle\Component\Controller\Controller;
+use Gedmo\Sluggable\SluggableListener;
+use Gedmo\Sluggable\Util\Urlizer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -202,125 +204,46 @@ class TelevisionController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param null $slug
+     * @return array
      * @Route("/trailers/{slug}")
      * @Template("FDCEventBundle:Television:trailers.html.twig")
      */
-    public function trailersAction($slug)
+    public function trailersAction(Request $request, $slug = null)
     {
+        if ($slug === null) {
+            $page = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findBy(array(), null, 1);
+            $translation = end($page)->findTranslationByLocale($request->getLocale());
+            if ($translation) {
+                return $this->redirectToRoute('fdc_event_television_trailers', array(
+                    'slug' => $translation->getSlug(),
+                ));
+            }
+        }
+        $pageTranslation = $this
+            ->getBaseCoreFDCPageWebTvTrailersTranslationRepository()
+            ->findOneBySlug($slug)
+        ;
 
-        $trailers = array(
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'  => 'img.jpg',
-                    'src'   => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large' => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'  => 'img.jpg',
-                    'src'   => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large' => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'  => 'img.jpg',
-                    'src'   => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large' => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'  => 'img.jpg',
-                    'src'   => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large' => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'  => 'img.jpg',
-                    'src'   => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large' => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'  => 'img.jpg',
-                    'src'   => 'http://dummyimage.com/640x404/e67e22/fff.png',
-                    'large' => 'http://dummyimage.com/1280x808/e67e22/fff.png',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            )
+        if (!$pageTranslation) {
+            throw $this->createNotFoundException();
+        }
+
+        $page = $pageTranslation->getTranslatable();
+
+        $pages = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findAll();
+
+        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers(
+            $this->getFestival()->getId(),
+            $request->getLocale(),
+            $page->getSelectionSection()->getId()
         );
 
         return array(
-            'trailers' => $trailers,
+            'page'     => $page,
+            'pages'    => $pages,
+            'films' => $films,
         );
     }
 
