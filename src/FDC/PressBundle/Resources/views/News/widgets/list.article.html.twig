@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
 {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
     {% set trans = article.header.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}

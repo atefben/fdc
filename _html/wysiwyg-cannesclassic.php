@@ -136,7 +136,7 @@
 
           <!-- image -->
 
-          <div class=" contain-img-honneur">
+          <div class="contain-img-honneur">
             <img src="img/films/image-invitespecial.jpg" alt="invite d honneur" class="photo-realisateur">
 
             <!-- caption -->
@@ -154,8 +154,28 @@
           </div>
 
 
+
           <!-- small column textes -->
           <div class="small-pres">
+
+            <!-- Sous titre 1 -->
+            <h2 class="sub-title">Sous titre 1</h2>
+
+            <!-- Sous titre 2 -->
+            <h2 class="sub-title2">Sous titre 2</h2>
+
+            <!-- Sous titre 3 -->
+            <h3 class="sub-title">Sous titre 3</h3>
+
+            <!-- mise en évidence 2 -->
+            <div class="quote italic">
+              <blockquote>
+                Au cinéma comme en amour, il faut savoir s’abandonner
+              </blockquote>
+            </div>
+
+            <!-- bouton toute la programmation  il faut qu'il soit dans une div texte pour être bien aligné-->
+            <a href="programmation-evenementiel.php" class="button single-button">Toute la programmation</a>
 
              <!--texte -->
 

@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Base\CoreBundle\Util\Time;
 
 /**
  * PressDownloadSectionWidgetPhoto
@@ -17,7 +16,8 @@ use Base\CoreBundle\Util\Time;
  */
 class PressDownloadSectionWidgetPhoto extends PressDownloadSectionWidget
 {
-    use Time;
+
+    use Translatable;
 
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
@@ -25,12 +25,17 @@ class PressDownloadSectionWidgetPhoto extends PressDownloadSectionWidget
     private $gallery;
 
     /**
+     * ArrayCollection
+     */
+    protected $translations;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
+        $this->translations = new ArrayCollection();
     }
-
 
     /**
      * Set gallery

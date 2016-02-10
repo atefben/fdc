@@ -2,10 +2,14 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
@@ -25,10 +29,11 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "file" = "PressDownloadSectionWidgetFile",
  * })
  */
-abstract class PressDownloadSectionWidget
+abstract class PressDownloadSectionWidget implements TranslateMainInterface
 {
-
     use Time;
+    use SeoMain;
+    use TranslateMain;
 
     /**
      * @var integer

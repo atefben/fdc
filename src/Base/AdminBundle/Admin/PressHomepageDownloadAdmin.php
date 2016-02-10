@@ -20,7 +20,6 @@ class PressHomepageDownloadAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('film')
         ;
     }
 
@@ -33,7 +32,6 @@ class PressHomepageDownloadAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('film')
         ;
     }
 
@@ -43,11 +41,11 @@ class PressHomepageDownloadAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('film', 'sonata_type_model_list', array(
-                'help' => 'form.news.helper_film_film_associated',
+            ->add('download', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_download_section',
                 'required' => false,
                 'btn_add' => false,
-                'label' => 'form.label_film'
+                'label' => 'form.label_download_section'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;

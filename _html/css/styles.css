@@ -3122,6 +3122,10 @@ a {
   border-color: #c8a461;
 }
 
+.quote.italic {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+
 .title {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: 700;
@@ -10388,6 +10392,7 @@ article .read-later.rAlign span:after {
 .single-article .table-article th {
   text-transform: uppercase;
   color: #000;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .single-article .caption-article {
   color: #333333;
@@ -12811,6 +12816,9 @@ input[type=submit] {
 .categorie-items .contain-article-invit .table-article th, .categorie-items .contain-article-invit .table-article td {
   border: 1px solid #2c2c2c;
   color: #999999;
+}
+.categorie-items .contain-article-invit .sub-title, .categorie-items .contain-article-invit .sub-title2, .categorie-items .contain-article-invit h3.sub-title {
+  color: #fff;
 }
 .categorie-items .contain-article-invit .pres-honneur {
   width: 975px;
@@ -16169,6 +16177,9 @@ input[type=submit] {
   font-size: .8rem;
   vertical-align: middle !important;
   margin-bottom: 3px;
+}
+.press a.bold {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .press .title-center {
   width: 607px;
