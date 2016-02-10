@@ -48,6 +48,9 @@ class HomepageFilmsAssociatedAdmin extends Admin
     {
         $formMapper
             ->add('association', 'sonata_type_model_list', array('btn_add' => false))
+            ->add('video', 'sonata_type_model_list', array('btn_add' => false))
+            ->add('tabletImage', 'sonata_type_model_list', array('btn_add' => false))
+            ->add('mobileImage', 'sonata_type_model_list', array('btn_add' => false))
         ;
     }
 

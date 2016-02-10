@@ -243,6 +243,13 @@ class Homepage
      *
      * @ORM\Column(type="boolean")
      */
+    private $displayedFilms;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
     private $displayedPushsMain;
 
     /**
@@ -1187,5 +1194,61 @@ class Homepage
     public function getFilmsAssociated()
     {
         return $this->filmsAssociated;
+    }
+
+    /**
+     * Add filmsMediasAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageFilmsMediasAssociated $filmsMediasAssociated
+     * @return Homepage
+     */
+    public function addFilmsMediasAssociated(\Base\CoreBundle\Entity\HomepageFilmsMediasAssociated $filmsMediasAssociated)
+    {
+        $this->filmsMediasAssociated[] = $filmsMediasAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Remove filmsMediasAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageFilmsMediasAssociated $filmsMediasAssociated
+     */
+    public function removeFilmsMediasAssociated(\Base\CoreBundle\Entity\HomepageFilmsMediasAssociated $filmsMediasAssociated)
+    {
+        $this->filmsMediasAssociated->removeElement($filmsMediasAssociated);
+    }
+
+    /**
+     * Get filmsMediasAssociated
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilmsMediasAssociated()
+    {
+        return $this->filmsMediasAssociated;
+    }
+
+    /**
+     * Set displayedFilms
+     *
+     * @param boolean $displayedFilms
+     * @return Homepage
+     */
+    public function setDisplayedFilms($displayedFilms)
+    {
+        $this->displayedFilms = $displayedFilms;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedFilms
+     *
+     * @return boolean 
+     */
+    public function getDisplayedFilms()
+    {
+        return $this->displayedFilms;
     }
 }

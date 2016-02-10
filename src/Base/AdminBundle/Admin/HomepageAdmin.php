@@ -307,7 +307,6 @@ class HomepageAdmin extends Admin
                 'required' => false
             ))
 
-
         ;
 
     }
