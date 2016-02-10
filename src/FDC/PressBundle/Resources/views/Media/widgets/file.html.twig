@@ -1,0 +1,13 @@
+{% trans_default_domain 'FDCPressBundle' %}
+<div class="contain-dp">
+    <div class="buttons">
+        <a href="#" class="button">
+            <i class="icon icon_telecharger"></i>
+            {{ widget|trans_fallback('btnLabel') }}
+        </a>
+    </div>
+    <p class="infos">
+        <strong>{{ 'press.home.label.miseajourle'|trans }} : </strong>
+        {{ widget.updateddAt|date('d.m.y') }} . {{ widget.updateddAt|date('H:i') }}
+    </p>
+</div>

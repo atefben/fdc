@@ -53,6 +53,15 @@
      Photographe de presse, Télévision, Radio.<br>
      Les documents peuvent être adressés :</p>
 
+     <p>
+       <!-- lien gras -->
+       <a href="#" class="bold">lien gras</a>
+       <br>
+       <!-- lien standard -->
+       <br>
+       <a href="#">lien standard</a>
+     </p>
+
                   <!-- liste avec balise a  -->
           <ul>
             <li>

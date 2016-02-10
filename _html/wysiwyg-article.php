@@ -59,6 +59,12 @@ Imprimer</a>
         </blockquote>
       </div>
 
+      <!-- mise en évidence 2 -->
+      <div class="quote italic">
+        <blockquote>
+          Au cinéma comme en amour, il faut savoir s’abandonner
+        </blockquote>
+      </div>
 
       <!-- Sous titre 1 -->
 

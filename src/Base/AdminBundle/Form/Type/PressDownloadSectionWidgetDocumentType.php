@@ -64,6 +64,12 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
                     'label' => array(
                         'label' => 'form.label_label',
                         'translation_domain' => 'BaseAdminBundle',
@@ -96,13 +102,7 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                                 'required' => true
                             )
                         )
-                    ),
-                    'createdAt' => array(
-                        'display' => false
-                    ),
-                    'updatedAt' => array(
-                        'display' => false
-                    ),
+                    )
                 )
             ))
 

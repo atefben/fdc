@@ -8,9 +8,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PressHomepagePushSecondaryAdmin extends Admin
+class HomepageFilmsAssociatedAdmin extends Admin
 {
-
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -32,6 +31,13 @@ class PressHomepagePushSecondaryAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 
@@ -41,16 +47,8 @@ class PressHomepagePushSecondaryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'sonata_type_model_list', array(
-                'help' => 'form.press.helper_push_homepage',
-                'required' => true,
-                'btn_add' => false,
-            ))
-            ->add('url', 'text', array(
-                'label' => 'form.press_homepage.push_link'
-            ))
+            ->add('association', 'sonata_type_model_list', array('btn_add' => false))
         ;
-
     }
 
     /**
@@ -64,15 +62,4 @@ class PressHomepagePushSecondaryAdmin extends Admin
             ->add('updatedAt')
         ;
     }
-
-    public function prePersist($homepage)
-    {
-        $this->preUpdate($homepage);
-    }
-
-    public function preUpdate($homepage)
-    {
-        $homepage->setPushsSecondary($homepage->getPushsSecondary());
-    }
-
 }

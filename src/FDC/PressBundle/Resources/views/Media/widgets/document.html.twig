@@ -1,0 +1,14 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+{% if trans is null or trans.file is null %}
+    {% set trans = widget.image.findTranslationByLocale('fr') %}
+{% endif %}
+{% set file = trans.file %}
+<div class="portrait">
+    {% thumbnail file, 'big' with {'alt': widget.image|trans_fallback('alt')} %}
+    <span class="caption">{{ widget|trans_fallback('copyright') }}</span>
+    {{ widget|trans_fallback('content')|raw }}
+    <div class="buttons">
+        <a href="{% path widget.file.file, 'reference' %}" class="button">{{ widget|trans_fallback('btnLabel') }}</a>
+    </div>
+</div>

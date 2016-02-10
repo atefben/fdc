@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * HomepageTopVideosAssociated
+ * HomepageTopWebTvsAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
