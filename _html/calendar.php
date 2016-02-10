@@ -25,9 +25,11 @@ Télécharger au format .ics</a>
           </div>
         </div>
       </div>
+      <div class="popin"></div>
       <div id='calendar' class="fullwidth">
         <div id="mycalendar"></div>
       </div>
+
       <div class="contact-press">
         <h2 class="title">Contactez-nous</h2>
         <div class="container">
