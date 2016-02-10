@@ -53,6 +53,7 @@ services:
             - { name: form.type, alias: 'news_widget_video_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.news_widget_video_dummy']]
+            - ['setMediaVideoAdmin', ['@base.admin.media_video']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_video_youtube_type:

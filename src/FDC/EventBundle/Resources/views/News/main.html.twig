@@ -3,7 +3,7 @@
 
 {% block body %}
     {% include 'FDCEventBundle:News:widgets/social-share.html.twig' %}
-<div id="main" class="single-article loading ">
+<div id="main" class="single-article loading">
     <span id="addtext">{{ 'article.text.ajouteramaselection'|trans }}</span>
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-article">
@@ -21,6 +21,12 @@
 
             {% if news is news_article %}
                 {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : news.header } %}
+             {% elseif news is news_audio %}
+                 {% include 'FDCEventBundle:News:widgets/single-audio.html.twig'%}
+            {% elseif news is news_video %}
+                <div class="single-video">
+                    {% include 'FDCEventBundle:News:widgets/single-video.html.twig' %}
+                <div>
             {% endif %}
 
             <div class="chapeau">{{ news|trans_fallback('introduction')|raw }}</div>
@@ -35,15 +41,18 @@
                 {% elseif widget is news_widget_text %}
                     <!-- TEXT -->
                     {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
-                {% elseif  widget is news_widget_video or widget is news_widget_video_youtube %}
+                {% elseif widget is news_widget_video %}
                     <!-- VIDEO -->
-                    {% include 'FDCEventBundle:News:widgets/video.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget} %}
+                {% elseif widget is news_widget_video_youtube %}
+                    <!-- VIDEO YOUTUBE -->
+                    {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                 {% elseif widget is news_widget_audio %}
                     <!-- AUDIO -->
                     {% if widget.title is defined %}
                         <h2 class="title">{{ widget.title }}</h2>
                     {% endif %}
-                    {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
+                    {% include 'FDCEventBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
                 {% elseif widget is news_widget_quote %}
                     {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
                 {% elseif widget is news_widget_image_dual_align %}

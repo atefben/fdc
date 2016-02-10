@@ -77,6 +77,8 @@
             "socialWall": {
                 {% if socialGraph is defined %}
                 "points": {{ socialGraph.timelineCount }},
+                {% else %}
+                "points": [],
                 {% endif %}
                 "heightGraph" : 200
             }

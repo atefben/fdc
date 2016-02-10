@@ -32,6 +32,14 @@ class NewsWidgetVideoType extends NewsWidgetType
     private $admin;
 
     /**
+     * mediaVideoAdmin
+     *
+     * @var mixed
+     * @access private
+     */
+    private $mediaVideoAdmin;
+
+    /**
      * setSonataAdmin function.
      *
      * @access public
@@ -41,6 +49,11 @@ class NewsWidgetVideoType extends NewsWidgetType
     public function setSonataAdmin($admin)
     {
         $this->admin = $admin;
+    }
+
+    public function setMediaVideoAdmin($mediaVideoAdmin)
+    {
+        $this->mediaVideoAdmin = $mediaVideoAdmin;
     }
 
     /**
@@ -56,8 +69,8 @@ class NewsWidgetVideoType extends NewsWidgetType
         parent::buildForm($builder, $options);
         $builder->add('file', 'sonata_type_model_list', array(
             'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['file'],
-            'model_manager' => $this->admin->getModelManager(),
-            'class' => $this->admin->getClass(),
+            'model_manager' => $this->mediaVideoAdmin->getModelManager(),
+            'class' => $this->mediaVideoAdmin->getClass(),
             'btn_delete' => false,
             'label' => false
         ));

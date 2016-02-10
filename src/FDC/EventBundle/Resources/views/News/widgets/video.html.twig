@@ -1,43 +1,35 @@
 {% trans_default_domain 'FDCEventBundle' %}
+{% set file = widget.file %}
+{% set trans = file.findTranslationByLocale(app.request.locale) %}
+{% if trans is null or trans.file is null %}
+{% endif %}
 
-<div id="video-container" class="state-init video-player video" data-img="{{ widget.image.path }}">
-    <div id="video-player">
+<div class="video-container state-init video"
+     data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+     data-twitter="//www.twitter.com"
+     data-link="//www.example.com"
+     data-email="//www.gmail.com"
+     {% if playlist is defined %}
+     data-playlist='{{ playlist }}'
+     {% else %}
+     data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
+     {% endif %}
+     data-img="{% path file.image, 'reference' %}"
+>
+
+    <div id="video-player-{{ trans.id }}" class="video-player">
     </div>
+    <div class="video-overlay"></div>
     <div class="infos-bar">
-        <div class="picto"></div>
+        <div class="picto"><i class="icon icon_video"></i></div>
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    <a href="#" class="category">{{ widget.theme }}</a>
-                    <span class="date">{{ widget.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ widget.createdAt|date('H:i') }}</span>
-                    <p>{{ widget.title }}</p>
+                    <a href="{% path trans.file, 'reference' %}" class="category">{{ file.theme|trans_fallback('name') }}</a>
+                    <span class="date">{{ news|trans_fallback('createdAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news|trans_fallback('createdAt')|date('H:i') }}</span>
+                    <p>{{ trans.title }}</p>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="video-overlay"></div>
-    <div class="control-bar">
-        <div class="playstate">
-            <button class="play-btn play"></button>
-        </div>
-        <div class="time">
-            <p class="time-info">
-                <span class="current-time">0:00</span> / <span class="duration-time">0:00</span>
-            </p>
-        </div>
-        <div class="progress">
-            <div class="progress-bar">
-                <div class="current-bar"></div>
-            </div>
-        </div>
-        <div class="sound">
-            <button class="sound-btn"></button>
-            <div class="sound-bar">
-                <div class="sound-seek"></div>
-            </div>
-        </div>
-        <div class="fs">
-            <button class="fs-icon"></button>
         </div>
     </div>
 </div>

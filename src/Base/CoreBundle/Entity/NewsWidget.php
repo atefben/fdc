@@ -67,6 +67,24 @@ abstract class NewsWidget
     }
 
     /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Get id
      *
      * @return integer 

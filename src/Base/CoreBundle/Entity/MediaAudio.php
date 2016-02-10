@@ -31,11 +31,12 @@ class MediaAudio extends Media
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="associatedAudios", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="mediaAudio", cascade={"persist"})
      *
      * @Groups({"trailer_list", "trailer_show"})
      */
     private $associatedFilms;
+
 
     /**
      * Set image
