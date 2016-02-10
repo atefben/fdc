@@ -22,7 +22,7 @@
 
             <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
                 <div class="row">
-                    {% if form.vars.default_locale == locale %}
+
                     <div class="col-md-12">
                         <div class="box box-success">
                             <div class="box-header">
@@ -32,12 +32,16 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(form.parent.children.image) }}
+                                    {% if form.vars.default_locale == locale %}
+                                        {{ form_row(form.parent.children.image) }}
+                                        {{ form_row(form.parent.children.selection) }}
+                                    {% endif %}
+                                    {{ form_row(translationsFields.overrideName) }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {% endif %}
+
                     <div class="col-md-8">
                         <div class="box box-success">
                             <div class="box-header">

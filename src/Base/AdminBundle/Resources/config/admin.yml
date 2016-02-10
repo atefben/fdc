@@ -268,6 +268,15 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+
+    base.admin.film_selection_section:
+        class: Base\AdminBundle\Admin\FilmSelectionSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\FilmSelectionSection, BaseAdminBundle:FilmSelectionSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmSelectionSection, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #Homepage
     base.admin.homepage:
         class: Base\AdminBundle\Admin\HomepageAdmin
@@ -782,3 +791,4 @@ services:
             - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
