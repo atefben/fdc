@@ -34,7 +34,7 @@ class PressAccreditProcedureTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="procedure_content", type="string", nullable=true)
+     * @ORM\Column(name="procedure_content", type="text", nullable=true)
      */
     protected $procedureContent;
 

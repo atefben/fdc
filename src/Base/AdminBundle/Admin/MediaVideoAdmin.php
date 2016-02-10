@@ -21,6 +21,12 @@ class MediaVideoAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
+
     /**
      * @param DatagridMapper $datagridMapper
      */

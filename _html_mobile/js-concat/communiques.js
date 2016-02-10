@@ -219,6 +219,10 @@ $(document).ready(function() {
 		
 		menu.owlCarousel();
 
+	if($('.header-press').length > 0){
+		$("#selection-btn").css("visibility","hidden");
+	}
+
 });
 $(document).ready(function() {
 
@@ -467,8 +471,8 @@ $(document).ready(function() {
 		  nav: false,
 		  dots: false,
 		  smartSpeed: 500,
-		  margin: 0,
-		  autoWidth: false,
+		  margin: 40,
+		  autoWidth: true,
 		  loop: false,
 		  items:2,
 		  onInitialized: function() {

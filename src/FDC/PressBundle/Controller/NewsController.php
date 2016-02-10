@@ -74,14 +74,12 @@ class NewsController extends Controller
 
         $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
         $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
-
         $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
-        array_walk($schedulingDays, function (&$value) {
-            $value = "2016-05-" . $value;
+        $schedulingYearMonth = $festivalStartsAt->format('Y')."-".$festivalStartsAt->format('m');
+        array_walk($schedulingDays, function (&$value, $schedulingYearMonth) use(&$schedulingYearMonth) {
+            $value = $schedulingYearMonth ."-". $value;
         });
-
-        //$events = $em->getRepository('BaseCoreBundle:PressProjection')->findAll();
-
+        
         $events = array(
             'place' => array(
                 'grandTheatre' => array(

@@ -268,27 +268,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $countries;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="film", cascade={"persist"})
-     *
-     * @Groups({
-     *  "trailer_show",
-     *  "film_list", "film_show",
-     * })
-     */
-    private $mediaVideos;
-
-    /**
-     * @ORM\OneToMany(targetEntity="MediaAudio", mappedBy="film", cascade={"persist"})
-     *
-     * @Groups({
-     *  "trailer_show",
-     *  "film_list", "film_show",
-     * })
-     */
-    private $mediaAudios;
-
-
-    /**
      * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="film")
      *
      * @Groups({
@@ -338,13 +317,19 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association")
-     *
+     * @Groups({
+     *  "trailer_show",
+     *  "film_list", "film_show",
+     * })
      */
     private $associatedMediaVideos;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association")
-     *
+     * @Groups({
+     *  "trailer_show",
+     *  "film_list", "film_show",
+     * })
      */
     private $associatedMediaAudios;
 
@@ -371,8 +356,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->contacts = new ArrayCollection();
         $this->awards = new ArrayCollection();
         $this->medias = new ArrayCollection();
-        $this->mediaVideos = new ArrayCollection();
-        $this->mediaAudios = new ArrayCollection();
+        $this->associatedMediaVideos = new ArrayCollection();
+        $this->associatedMediaAudios = new ArrayCollection();
         $this->minorProductions = new ArrayCollection();
         $this->countries = new ArrayCollection();
         $this->translations = new ArrayCollection();
@@ -1471,74 +1456,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getContacts()
     {
         return $this->contacts;
-    }
-
-    /**
-     * Add mediaVideos
-     *
-     * @param \Base\CoreBundle\Entity\MediaVideo $mediaVideos
-     * @return FilmFilm
-     */
-    public function addMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
-    {
-        $this->mediaVideos[] = $mediaVideos;
-        $mediaVideos->setFilm($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove mediaVideos
-     *
-     * @param \Base\CoreBundle\Entity\MediaVideo $mediaVideos
-     */
-    public function removeMediaVideo(\Base\CoreBundle\Entity\MediaVideo $mediaVideos)
-    {
-        $this->mediaVideos->removeElement($mediaVideos);
-    }
-
-    /**
-     * Get mediaVideos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMediaVideos()
-    {
-        return $this->mediaVideos;
-    }
-
-    /**
-     * Add mediaAudios
-     *
-     * @param \Base\CoreBundle\Entity\MediaAudio $mediaAudios
-     * @return FilmFilm
-     */
-    public function addMediaAudio(\Base\CoreBundle\Entity\MediaAudio $mediaAudios)
-    {
-        $this->mediaAudios[] = $mediaAudios;
-        $mediaAudios->setFilm($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove mediaAudios
-     *
-     * @param \Base\CoreBundle\Entity\MediaAudio $mediaAudios
-     */
-    public function removeMediaAudio(\Base\CoreBundle\Entity\MediaAudio $mediaAudios)
-    {
-        $this->mediaAudios->removeElement($mediaAudios);
-    }
-
-    /**
-     * Get mediaAudios
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMediaAudios()
-    {
-        return $this->mediaAudios;
     }
 
     /**

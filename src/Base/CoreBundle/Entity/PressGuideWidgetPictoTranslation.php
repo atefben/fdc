@@ -16,9 +16,8 @@ use Base\CoreBundle\Util\Time;
  */
 class PressGuideWidgetPictoTranslation
 {
-
     use Translation;
-
+    use Time;
 
     /**
      * @var string

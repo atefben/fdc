@@ -44,6 +44,12 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array('fr'),
             'fields' => array(
+                'createdAt' => array(
+                    'display' => false
+                ),
+                'updatedAt' => array(
+                    'display' => false
+                ),
                 'title' => array(
                     'label' => 'form.label_title',
                     'translation_domain' => 'BaseAdminBundle',
@@ -63,9 +69,14 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
         ))
         ->add('picto', new ChoiceType() , array(
             'choices' => array(
-                'icon-article' => 'Icone article',
-                'icon-communique' => 'Icone communique',
-                'icon-video' => 'Icone video',
+                'icon_wifi' => 'Icone Wifi',
+                'icon_enregistreur' => 'Icone enregistreur',
+                'icon_salle-presse' => 'Icone salle presse',
+                'icon_casier' => 'Icone casier',
+                'icon_plateau-tv' => 'Icone plateau TV',
+                'icon_zone-media' => 'Icone zone media',
+                'icon_transport' => 'Icone transport',
+                'icon_divers' => 'Icone divers',
             ),
             'choice_translation_domain' => 'BaseAdminBundle'
         ))

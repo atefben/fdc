@@ -648,6 +648,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.press_accredit_has_procedure:
+        class: Base\AdminBundle\Admin\PressAccreditHasProcedureAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressAccreditHasProcedure, BaseAdminBundle:PressAccreditHasProcedureAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_accredit_has_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.press_accredit_procedure:
         class: Base\AdminBundle\Admin\PressAccreditProcedureAdmin
         arguments: [~, Base\CoreBundle\Entity\PressAccreditProcedure, BaseAdminBundle:PressAccreditProcedureAdmin]

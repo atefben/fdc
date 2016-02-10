@@ -69,9 +69,75 @@ class HomepageAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'pushsMain' => array(
-                        'class' => 'BaseCoreBundle:HomepagePushMain'
-                    )
+                    'primaryPushTitle1' => array(
+                        'label' => 'form.label_primary_push_title'
+                    ),
+                    'primaryPushTitle2' => array(
+                        'label' => 'form.label_primary_push_title'
+                    ),
+                    'primaryPushTitle3' => array(
+                        'label' => 'form.label_primary_push_title'
+                    ),
+
+                    'primaryPushUrl1' => array(
+                        'label' => 'form.label_primary_push_url'
+                    ),
+                    'primaryPushUrl2' => array(
+                        'label' => 'form.label_primary_push_url'
+                    ),
+                    'primaryPushUrl3' => array(
+                        'label' => 'form.label_primary_push_url'
+                    ),
+
+                    'secondaryPushTitle1' => array(
+                        'label' => 'form.label_secondary_push_title'
+                    ),
+                    'secondaryPushTitle2' => array(
+                        'label' => 'form.label_secondary_push_title'
+                    ),
+                    'secondaryPushTitle3' => array(
+                        'label' => 'form.label_secondary_push_title'
+                    ),
+                    'secondaryPushTitle4' => array(
+                        'label' => 'form.label_secondary_push_title'
+                    ),
+                    'secondaryPushTitle5' => array(
+                        'label' => 'form.label_secondary_push_title'
+                    ),
+                    'secondaryPushTitle6' => array(
+                        'label' => 'form.label_secondary_push_title'
+                    ),
+                    'secondaryPushTitle7' => array(
+                        'label' => 'form.label_secondary_push_title'
+                    ),
+                    'secondaryPushTitle8' => array(
+                        'label' => 'form.label_secondary_push_title'
+                    ),
+
+                    'secondaryPushUrl1' => array(
+                        'label' => 'form.label_secondary_push_url'
+                    ),
+                    'secondaryPushUrl2' => array(
+                        'label' => 'form.label_secondary_push_url'
+                    ),
+                    'secondaryPushUrl3' => array(
+                        'label' => 'form.label_secondary_push_url'
+                    ),
+                    'secondaryPushUrl4' => array(
+                        'label' => 'form.label_secondary_push_url'
+                    ),
+                    'secondaryPushUrl5' => array(
+                        'label' => 'form.label_secondary_push_url'
+                    ),
+                    'secondaryPushUrl6' => array(
+                        'label' => 'form.label_secondary_push_url'
+                    ),
+                    'secondaryPushUrl7' => array(
+                        'label' => 'form.label_secondary_push_url'
+                    ),
+                    'secondaryPushUrl8' => array(
+                        'label' => 'form.label_secondary_push_url'
+                    ),
                 )
             ))
             ->add('topNewsType', 'choice', array(
@@ -102,6 +168,51 @@ class HomepageAdmin extends Admin
                 'sonata_help' => 'form.homepage.helper_social_graph',
                 'translation_domain' => 'BaseAdminBundle'
             ))
+            ->add('pushsMainImage1', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsMainImage2', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsMainImage3', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsSecondaryImage1', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsSecondaryImage2', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsSecondaryImage3', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsSecondaryImage4', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsSecondaryImage5', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsSecondaryImage6', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsSecondaryImage7', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+            ->add('pushsSecondaryImage8', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_push',
+                'required' => false,
+            ))
+
         ;
 
     }

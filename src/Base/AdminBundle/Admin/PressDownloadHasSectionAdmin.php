@@ -20,7 +20,6 @@ class PressDownloadHasSectionAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('section')
         ;
     }
 
@@ -33,7 +32,6 @@ class PressDownloadHasSectionAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('section')
         ;
     }
 

@@ -13,6 +13,17 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class EventAdmin extends Admin
 {
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
+
+    protected $translationDomain = 'BaseAdminBundle';
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

@@ -9,6 +9,8 @@ settings:
     fdc_api: Paramètres de l'API Festival de Cannes
 
 breadcrumb:
+    link_film_person_list: Liste des personnes
+    link_film_film_list: Liste des films
     link_tag_list: Liste des tags
     link_news_article_list: Liste des actualités - articles
     link_news_video_list: Liste des actualités - vidéos
@@ -24,7 +26,21 @@ breadcrumb:
     link_f_d_c_page_web_tv_channels_list: Page WebTV - Les chaînes
     link_media_image_simple_list: Images semi-riches
     link_f_d_c_page_web_tv_live_list: Accueil WebTV
+    link_country_list: Liste des pays
+    link_film_projection_list: Programmations
+    link_film_atelier_list: Liste des films ateliers
     link_f_d_c_page_web_tv_trailers_list: WebTV - Les bandes annonces
+    link_contact_theme_list: Liste des thèmes de contact
+    link_event_list: Liste des évènements
+    link_statement_article_list: Liste des communiqués - articles
+    link_statement_video_list: Liste des communiqués - vidéos
+    link_statement_image_list: Liste des communiqués - photos
+    link_statement_audio_list: Liste des communiqués - audios
+    link_info_article_list: Liste des infos - articles
+    link_info_video_list: Liste des infos - vidéos
+    link_info_image_list: Liste des infos - photos
+    link_info_audio_list: Liste des infos - audios
+
 
 link:
     action_soif_refresh: Mettre à jour
@@ -32,6 +48,8 @@ link:
 homepage:
     group:
         social_wall: Social Wall
+        push_main: Pushs Principaux
+        push_secondary: Pushs Secondaires
 
 group:
     french_version: Version française
@@ -128,7 +146,33 @@ entity:
     press_projection: Programmation
     press_guide: Guide pratique
     press_cinema_map: Plan des salles
+
 list:
+    label_starts_at: Date de début
+    label_ends_at: Date de fin
+    label_type: Type
+    label_programmation_section: Section de programmation
+    label_iso: ISO
+    label_budget_estimation : Budget Estimé
+    label_filming_date: Date filmé
+    label_filming_place: Lieu du film
+    label_session_name: Nom de la session
+    label_budget_acquired: Budget acquis
+    label_cinando_url: Url Cinando
+    label_lastname: Nom
+    label_firstname: Prénom
+    label_asian_name: Nom asiatique
+    label_nationality: Nationalité
+    label_nationality2: Nationalité 2
+    label_director_first: Premier film du directeur
+    label_restored: Film restauré
+    label_title_v_o: Titre VO
+    label_title_v_o_alphabet: Titre Alphabet VO
+    label_production_year: Année de production
+    label_duration: Durée
+    label_casting_commentary: Commentaire du casting
+    label_soif_updated_at: Mise à jour SOIF le
+    label_website: Site web
     label_id: Identifiant
     label_title: Titre
     label_name: Nom
@@ -137,7 +181,7 @@ list:
     label_status_main: Statut
     label_type: Type
     label_created_at: Date de création
-    label_updated_at: Mit à jour le
+    label_updated_at: Mis à jour le
     label_published_interval: Date(s) de publication
     label__action: Actions
     label_theme_name: Nom du thème
@@ -160,6 +204,32 @@ list:
 
 
 filter:
+    label_email: Email
+    label_starts_at: Date de début
+    label_ends_at: Date de fin
+    label_type: Type
+    label_programmation_section: Section de programmation
+    label_iso: ISO
+    label_budget_estimation : Budget Estimé
+    label_filming_date: Date filmé
+    label_filming_place: Lieu du film
+    label_session_name: Nom de la session
+    label_budget_acquired: Budget acquis
+    label_cinando_url: Url Cinando
+    label_lastname: Nom
+    label_firstname: Prénom
+    label_asian_name: Nom asiatique
+    label_nationality: Nationalité
+    label_nationality2: Nationalité 2
+    label_director_first: Premier film du directeur
+    label_restored: Film restauré
+    label_title_v_o: Titre VO
+    label_title_v_o_alphabet: Titre Alphabet VO
+    label_production_year: Année de production
+    label_duration: Durée
+    label_casting_commentary: Commentaire du casting
+    label_soif_updated_at: Mise à jour SOIF le
+    label_website: Site web
     label_legend: Légende contenant
     label_festival: Festival
     label_id: Identifiant
@@ -224,6 +294,7 @@ form:
     settings:
         festival: Année du festival
     news:
+        helper_header_audio: Lorem ipsum sit dolor amet.
         helper_header_image: "Dimensions attendues : YxZpx - ratio paysage. Format Attendu."
         helper_title: "255 caractères max."
         helper_seo_title: "Recommandé : 60 caractères"
@@ -276,7 +347,9 @@ form:
         helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
+    label_contact_theme_theme: Theme
     label_tag_name: Nom du tag
+    label_header_audio: Audio principal
     label_social_graph_hashtag_twitter: Social graph - hashtags
     label_displayed_social_wall: Afficher le social wall
     label_news: Actualités
@@ -331,9 +404,16 @@ form:
     label_label: Légende
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
+    label_primary_push_title: Titre du push principal
+    label_primary_push_url: URL du push principal
+    label_secondary_push_title: Titre du push secondaire
+    label_secondary_push_url: URL du push secondaire
     label_name: Nom
     label_media_audio: Fichier audio
     label_video_file: Fichier vidéo
+    label_procedure: Procédures
+    label_accredit_procedure: Choisissez les procédures à afficher
+    label_btn_link: Lien du bouton
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.

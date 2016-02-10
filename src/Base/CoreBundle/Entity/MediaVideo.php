@@ -57,13 +57,6 @@ class MediaVideo extends Media
     private $homepage;
 
     /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="mediaVideos")
-     */
-    private $film;
-
-    /**
      * @var WebTv
      *
      * @ORM\ManyToOne(targetEntity="WebTv", inversedBy="mediaVideos")
@@ -80,7 +73,7 @@ class MediaVideo extends Media
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideos", cascade={"persist"})
      *
      * @Groups({"trailer_list", "trailer_show"})
      */
@@ -153,29 +146,6 @@ class MediaVideo extends Media
     public function getHomepage()
     {
         return $this->homepage;
-    }
-
-    /**
-     * Set film
-     *
-     * @param \Base\CoreBundle\Entity\FilmFilm $film
-     * @return MediaVideo
-     */
-    public function setFilm(\Base\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
     }
 
     /**

@@ -5,6 +5,7 @@ namespace FDC\EventBundle\Controller;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
+use Base\CoreBundle\Entity\News;
 use \DateTime;
 
 use FDC\EventBundle\Component\Controller\Controller;
@@ -41,7 +42,12 @@ class NewsController extends Controller {
         }
 
         // GET HOMEPAGE SETTINGS
-        $homepageSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneById(1);
+        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
+            'festival' => $this->getFestival()
+        ));
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
 
         $festivalStart = $this->getFestival()->getFestivalStartsAt();
         $festivalEnd =  $this->getFestival()->getFestivalEndsAt();
@@ -58,7 +64,7 @@ class NewsController extends Controller {
             0
         );
 
-        $displayHomeSlider = $homepageSettings->getDisplayedSlider();
+        $displayHomeSlider = $homepage->getDisplayedSlider();
 
         $homeSlider= array();
         foreach($slides as $slide) {
@@ -92,14 +98,6 @@ class NewsController extends Controller {
 
         $socialGraph['timeline']      = $socialGraphTimeline;
         $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
-
-        // Homepage
-        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
-            'festival' => $this->getFestival()
-        ));
-        if ($homepage === null) {
-            throw new NotFoundHttpException();
-        }
 
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////       ARTICLE HOME         ///////////////////////////////
@@ -165,6 +163,11 @@ class NewsController extends Controller {
         $videos = $this
             ->getBaseCoreMediaVideoRepository()
             ->get2VideosFromTheLast10($locale, $this->getFestival()->getId());
+
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////       PUSHS      /////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+
 
         // TODO: clean this
         $featuredMovies         = array(
@@ -437,12 +440,12 @@ class NewsController extends Controller {
     }
 
     /**
-     * @Route("/articles/{slug}")
+     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"})
      * @Template("FDCEventBundle:News:main.html.twig")
      * @param $slug
      * @return array
      */
-    public function getAction($slug) {
+    public function getAction($format, $slug) {
         $em       = $this->getDoctrine()->getManager();
         $locale   = $this->getRequest()->getLocale();
         //$token = $this->get('security.token_storage')->getToken();
@@ -456,16 +459,34 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
+        $format = substr($format, 0, -1);
+        $mapper = array_flip(News::getTypes());
+
+        if (!isset($mapper[$format])) {
+            throw  new NotFoundHttpException();
+        }
+
         // GET NEWS
-        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug($slug, $settings->getFestival()->getId(), $locale, $dateTime->format('Y-m-d H:i:s'), $isAdmin);
+        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug(
+            $slug,
+            $settings->getFestival()->getId(),
+            $locale,
+            $dateTime->format('Y-m-d H:i:s'),
+            $isAdmin,
+            $mapper[$format]
+        );
+
+        if ($news === null) {
+            throw new NotFoundHttpException();
+        }
         $isPublished = ($news->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED);
 
-        if ($news === null || (!$isAdmin && !$isPublished)) {
+        if (!$isAdmin && !$isPublished) {
             throw new NotFoundHttpException();
         }
 
         // SEO
-        //$this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
         //get associated film to the news
         $associatedFilm = null;

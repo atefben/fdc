@@ -154,6 +154,15 @@ class Event implements TranslateMainInterface
      */
     protected $translations;
 
+    public function __toString()
+    {
+        $translationFr = $this->findTranslationByLocale('fr');
+        if ($translationFr !== null) {
+            return $translationFr->getName();
+        }
+        return '';
+    }
+
 
     public function __construct()
     {

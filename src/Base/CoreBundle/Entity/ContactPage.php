@@ -42,14 +42,6 @@ class ContactPage implements TranslateMainInterface
     private $id;
 
     /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site")
-     *
-     */
-    private $sites;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
@@ -152,36 +144,4 @@ class ContactPage implements TranslateMainInterface
         return $this->publishEndedAt;
     }
 
-    /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return ContactPage
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSites()
-    {
-        return $this->sites;
-    }
 }

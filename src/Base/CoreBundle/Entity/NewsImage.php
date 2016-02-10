@@ -43,6 +43,11 @@ class NewsImage extends News
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'photos';
+    }
+
     /**
      * Set gallery
      *

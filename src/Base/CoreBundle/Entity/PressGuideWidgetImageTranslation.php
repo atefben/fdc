@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Base\CoreBundle\Util\Time;
-
 /**
  * PressGuideWidgetImageTranslation
  *
@@ -16,24 +15,22 @@ use Base\CoreBundle\Util\Time;
  */
 class PressGuideWidgetImageTranslation
 {
-
     use Translation;
+    use Time;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_image_title", type="string", length=122, nullable=true)
+     * @ORM\Column(type="string", length=122, nullable=true)
      */
     protected $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_image_content", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $content;
-
-
 
     /**
      * Set title

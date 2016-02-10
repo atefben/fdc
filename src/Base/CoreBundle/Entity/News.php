@@ -223,7 +223,7 @@ abstract class News implements TranslateMainInterface
         return array(
             'Base\CoreBundle\Entity\NewsArticle' => 'article',
             'Base\CoreBundle\Entity\NewsAudio' => 'audio',
-            'Base\CoreBundle\Entity\NewsImage' => 'image',
+            'Base\CoreBundle\Entity\NewsImage' => 'photo',
             'Base\CoreBundle\Entity\NewsVideo' => 'video'
         );
     }

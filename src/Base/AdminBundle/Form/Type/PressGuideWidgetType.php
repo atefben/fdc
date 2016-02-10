@@ -40,11 +40,7 @@ class PressGuideWidgetType extends BaseType
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
-//            ->add('pressSection', 'hidden', array(
-//                'data'   => 'test',
-//                'mapped' => false
-//            ))
-            ->add('position', 'integer');
+            ;
 
     }
 
@@ -61,29 +57,6 @@ class PressGuideWidgetType extends BaseType
             'data_class'  => $this->dataClass,
             'model_class' => $this->dataClass,
         ));
-    }
-    /**
-     * @param mixed $object
-     */
-    public function prePersist($object)
-    {
-
-        foreach ($object->getWidgets() as $widget) {
-            $object->addWidget($widget);
-        }
-
-    }
-
-    /**
-     * @param mixed $object
-     */
-    public function preUpdate($object)
-    {
-
-        foreach ($object->getWidgets() as $widget) {
-            $object->addWidget($widget);
-        }
-
     }
 
 
