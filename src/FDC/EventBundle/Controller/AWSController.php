@@ -25,12 +25,12 @@ class AWSController extends Controller
         $logger = $this->get('logger');
         $jobId = 1;
 
-        $media = $em->getRepository('BaseCoreBundle:MediaVideo')->findOneByJob($jobId);
+        $media = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneByJob($jobId);
         if ($media === null) {
             $logger->error('Job id #'. $jobId. ' not found');
             throw new NotFoundHttpException();
         }
-
+        $media->setImageAmazonUrl('http://');
         $media->setState(0);
 
         $em->flush();
