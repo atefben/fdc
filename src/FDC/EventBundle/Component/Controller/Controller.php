@@ -32,6 +32,11 @@ class Controller extends BaseController
         return $settings;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @return \Doctrine\Common\Persistence\ObjectRepository
+     */
     public function __call($name, $arguments)
     {
         if (substr($name, 0, 11) === 'getBaseCore' && substr($name, -10) === 'Repository') {

@@ -43,6 +43,11 @@ class StatementAudio extends Statement
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'audios';
+    }
+
     /**
      * Set audio
      *

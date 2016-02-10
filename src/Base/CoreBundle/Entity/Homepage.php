@@ -109,9 +109,37 @@ class Homepage
     private $pushsSecondaryImage8;
 
     /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $prefooterImage1;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $prefooterImage2;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $prefooterImage3;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $prefooterImage4;
+
+    /**
      * @var HomepageSlide
      *
-     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage")
      */
     private $homepageSlide;
 
@@ -128,6 +156,18 @@ class Homepage
      * @ORM\OneToMany(targetEntity="WebTv", mappedBy="homepage")
      */
     private $topWebTvs;
+
+    /**
+     * @var topVideosAssociated
+     * @ORM\OneToMany(targetEntity="HomepageTopVideosAssociated", mappedBy="homepage", cascade={"persist"})
+     */
+    private $topVideosAssociated;
+
+    /**
+     * @var topVideosAssociated
+     * @ORM\OneToMany(targetEntity="HomepageTopWebTvsAssociated", mappedBy="homepage", cascade={"persist"})
+     */
+    private $topWebTvsAssociated;
 
     /**
      * @var integer
@@ -950,5 +990,163 @@ class Homepage
         }
 
         return null;
+    }
+
+    /**
+     * Set prefooterImage1
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $prefooterImage1
+     * @return Homepage
+     */
+    public function setPrefooterImage1(\Base\CoreBundle\Entity\MediaImageSimple $prefooterImage1 = null)
+    {
+        $this->prefooterImage1 = $prefooterImage1;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterImage1
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPrefooterImage1()
+    {
+        return $this->prefooterImage1;
+    }
+
+    /**
+     * Set prefooterImage2
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $prefooterImage2
+     * @return Homepage
+     */
+    public function setPrefooterImage2(\Base\CoreBundle\Entity\MediaImageSimple $prefooterImage2 = null)
+    {
+        $this->prefooterImage2 = $prefooterImage2;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterImage2
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPrefooterImage2()
+    {
+        return $this->prefooterImage2;
+    }
+
+    /**
+     * Set prefooterImage3
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $prefooterImage3
+     * @return Homepage
+     */
+    public function setPrefooterImage3(\Base\CoreBundle\Entity\MediaImageSimple $prefooterImage3 = null)
+    {
+        $this->prefooterImage3 = $prefooterImage3;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterImage3
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPrefooterImage3()
+    {
+        return $this->prefooterImage3;
+    }
+
+    /**
+     * Set prefooterImage4
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $prefooterImage4
+     * @return Homepage
+     */
+    public function setPrefooterImage4(\Base\CoreBundle\Entity\MediaImageSimple $prefooterImage4 = null)
+    {
+        $this->prefooterImage4 = $prefooterImage4;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterImage4
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPrefooterImage4()
+    {
+        return $this->prefooterImage4;
+    }
+
+    /**
+     * Add topVideosAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated
+     * @return Homepage
+     */
+    public function addTopVideosAssociated(\Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated)
+    {
+        $this->topVideosAssociated[] = $topVideosAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Remove topVideosAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated
+     */
+    public function removeTopVideosAssociated(\Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated)
+    {
+        $this->topVideosAssociated->removeElement($topVideosAssociated);
+    }
+
+    /**
+     * Get topVideosAssociated
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTopVideosAssociated()
+    {
+        return $this->topVideosAssociated;
+    }
+
+    /**
+     * Add topWebTvsAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated
+     * @return Homepage
+     */
+    public function addTopWebTvsAssociated(\Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated)
+    {
+        $this->topWebTvsAssociated[] = $topWebTvsAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Remove topWebTvsAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated
+     */
+    public function removeTopWebTvsAssociated(\Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated)
+    {
+        $this->topWebTvsAssociated->removeElement($topWebTvsAssociated);
+    }
+
+    /**
+     * Get topWebTvsAssociated
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTopWebTvsAssociated()
+    {
+        return $this->topWebTvsAssociated;
     }
 }

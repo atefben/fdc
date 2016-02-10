@@ -35,7 +35,7 @@ class MediaVideoFilmFilmAssociated
     protected $id;
 
     /**
-     * @var News
+     * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo", inversedBy="associatedFilms")
      */

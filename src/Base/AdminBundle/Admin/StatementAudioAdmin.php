@@ -2,7 +2,6 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Aws\S3\Enum\Status;
 use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Entity\StatementAudio;
 use Base\CoreBundle\Entity\StatementAudioTranslation;
@@ -281,7 +280,7 @@ class StatementAudioAdmin extends Admin
             ->add('displayedMobile')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => Status::getAvailableTranslateOptions(),
+                'choices' => Statement::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true

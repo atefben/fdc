@@ -228,4 +228,12 @@ class FilmSelectionSection implements TranslateMainInterface
     {
         return $this->films;
     }
+
+
+    public function __toString()
+    {
+        if ($this->findTranslationByLocale('fr')) {
+            return (string) $this->findTranslationByLocale('fr')->getName();
+        }
+    }
 }

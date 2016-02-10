@@ -6,7 +6,7 @@
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
-            <li {% if form.vars.default_locale == locale %}class="active"{% endif %} data-locale={{ locale }}>
+            <li {% if form.vars.default_locale == locale %}class="nav-tab-active active"{% endif %} data-locale="{{ locale }}">
                 <a {% if translationsFields.vars.value is not null %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
                     {% set langKey = 'lang.' ~ locale %}
                     {{ langKey|trans({}, 'BaseAdminBundle') }}
@@ -61,13 +61,13 @@
                                 </div>
                                 {{ form_row(form.parent.children.publishedAt) }}
                                 {{ form_row(form.parent.children.publishEndedAt) }}
+                                {{ form_row(translationsFields.status) }}
                                 <div class="form-group fdc-input-border">
                                     {{ form_widget(form.parent.children.translate) }}
                                     {{ form_label(form.parent.children.translate) }}
                                     {{ form_widget(form.parent.children.translateOptions) }}
                                     {{ form_row(form.parent.children.priorityStatus) }}
                                 </div>
-                                {{ form_row(translationsFields.status) }}
                             </div>
                         </div>
                     </div>

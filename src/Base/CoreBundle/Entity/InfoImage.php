@@ -40,6 +40,11 @@ class InfoImage extends Info
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'images';
+    }
+
     /**
      * Set gallery
      *

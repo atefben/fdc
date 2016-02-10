@@ -10,6 +10,8 @@ use Base\CoreBundle\Util\Time;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -31,6 +33,14 @@ class FilmSelectionSectionTranslation implements TranslateChildInterface
      * @Groups({"film_selection_list", "film_selection_show"})
      */
     protected $name;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=false)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -58,5 +68,28 @@ class FilmSelectionSectionTranslation implements TranslateChildInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return FilmSelectionSectionTranslation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

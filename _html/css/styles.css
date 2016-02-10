@@ -17522,6 +17522,10 @@ input[type=submit] {
   color: #c8a461;
   opacity: 1;
 }
+.fullcalendar .popin {
+  position: relative;
+  top: 0px;
+}
 .fullcalendar #calendar #mycalendar .fc-time-grid-container {
   height: auto !important;
 }
@@ -17627,10 +17631,16 @@ input[type=submit] {
 }
 .popin-event .close-button .icon {
   line-height: 72px;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .popin-event .close-button:hover {
-  color: #000;
   border-color: #000;
+}
+.popin-event .close-button:hover .icon {
+  color: #000;
 }
 .popin-event.show {
   opacity: 1;
@@ -17663,20 +17673,34 @@ input[type=submit] {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .popin-event .owl-nav div.owl-prev {
-  background: url("../img/svg/arrow-left-black.svg") no-repeat center;
-  background-size: 15px;
+  text-align: center;
   float: left;
+  color: #DFDFDF;
 }
 .popin-event .owl-nav div.owl-prev:hover {
   border-color: #141414;
+  color: #000;
+}
+.popin-event .owl-nav div.owl-prev:after {
+  content: "\f12e";
+  font-family: "icons";
+  font-size: 1rem;
+  line-height: 84px;
 }
 .popin-event .owl-nav div.owl-next {
-  background: url("../img/svg/arrow-right-black.svg") no-repeat center;
-  background-size: 15px;
+  text-align: center;
   float: right;
+  color: #DFDFDF;
 }
 .popin-event .owl-nav div.owl-next:hover {
   border-color: #141414;
+  color: #000;
+}
+.popin-event .owl-nav div.owl-next:after {
+  content: "\f12c";
+  font-family: "icons";
+  font-size: 1rem;
+  line-height: 84px;
 }
 .popin-event .films {
   border-right: 1px solid #ebebeb;
@@ -18187,6 +18211,9 @@ input[type=submit] {
 .press-programmation .header-press .buttons {
   position: absolute;
   right: 1px;
+}
+.press-programmation .header-press .button.list:hover {
+  color: #c8a461 !important;
 }
 
 .press #calendar.fullwidth #mycalendar .fc-day {

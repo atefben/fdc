@@ -177,6 +177,62 @@ class HomepageTranslation
     private $secondaryPushUrl8;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterTitle1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterTitle2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterTitle3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterTitle4;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterUrl1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterUrl2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterUrl3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterUrl4;
+
+    /**
      * @var Prefooter
      *
      * @ORM\OneToMany(targetEntity="Prefooter", mappedBy="homepageTranslation")
@@ -729,5 +785,189 @@ class HomepageTranslation
     public function getSecondaryPushUrl8()
     {
         return $this->secondaryPushUrl8;
+    }
+
+    /**
+     * Set prefooterTitle1
+     *
+     * @param string $prefooterTitle1
+     * @return HomepageTranslation
+     */
+    public function setPrefooterTitle1($prefooterTitle1)
+    {
+        $this->prefooterTitle1 = $prefooterTitle1;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterTitle1
+     *
+     * @return string 
+     */
+    public function getPrefooterTitle1()
+    {
+        return $this->prefooterTitle1;
+    }
+
+    /**
+     * Set prefooterTitle2
+     *
+     * @param string $prefooterTitle2
+     * @return HomepageTranslation
+     */
+    public function setPrefooterTitle2($prefooterTitle2)
+    {
+        $this->prefooterTitle2 = $prefooterTitle2;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterTitle2
+     *
+     * @return string 
+     */
+    public function getPrefooterTitle2()
+    {
+        return $this->prefooterTitle2;
+    }
+
+    /**
+     * Set prefooterTitle3
+     *
+     * @param string $prefooterTitle3
+     * @return HomepageTranslation
+     */
+    public function setPrefooterTitle3($prefooterTitle3)
+    {
+        $this->prefooterTitle3 = $prefooterTitle3;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterTitle3
+     *
+     * @return string 
+     */
+    public function getPrefooterTitle3()
+    {
+        return $this->prefooterTitle3;
+    }
+
+    /**
+     * Set prefooterTitle4
+     *
+     * @param string $prefooterTitle4
+     * @return HomepageTranslation
+     */
+    public function setPrefooterTitle4($prefooterTitle4)
+    {
+        $this->prefooterTitle4 = $prefooterTitle4;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterTitle4
+     *
+     * @return string 
+     */
+    public function getPrefooterTitle4()
+    {
+        return $this->prefooterTitle4;
+    }
+
+    /**
+     * Set prefooterUrl1
+     *
+     * @param string $prefooterUrl1
+     * @return HomepageTranslation
+     */
+    public function setPrefooterUrl1($prefooterUrl1)
+    {
+        $this->prefooterUrl1 = $prefooterUrl1;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterUrl1
+     *
+     * @return string 
+     */
+    public function getPrefooterUrl1()
+    {
+        return $this->prefooterUrl1;
+    }
+
+    /**
+     * Set prefooterUrl2
+     *
+     * @param string $prefooterUrl2
+     * @return HomepageTranslation
+     */
+    public function setPrefooterUrl2($prefooterUrl2)
+    {
+        $this->prefooterUrl2 = $prefooterUrl2;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterUrl2
+     *
+     * @return string 
+     */
+    public function getPrefooterUrl2()
+    {
+        return $this->prefooterUrl2;
+    }
+
+    /**
+     * Set prefooterUrl3
+     *
+     * @param string $prefooterUrl3
+     * @return HomepageTranslation
+     */
+    public function setPrefooterUrl3($prefooterUrl3)
+    {
+        $this->prefooterUrl3 = $prefooterUrl3;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterUrl3
+     *
+     * @return string 
+     */
+    public function getPrefooterUrl3()
+    {
+        return $this->prefooterUrl3;
+    }
+
+    /**
+     * Set prefooterUrl4
+     *
+     * @param string $prefooterUrl4
+     * @return HomepageTranslation
+     */
+    public function setPrefooterUrl4($prefooterUrl4)
+    {
+        $this->prefooterUrl4 = $prefooterUrl4;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterUrl4
+     *
+     * @return string 
+     */
+    public function getPrefooterUrl4()
+    {
+        return $this->prefooterUrl4;
     }
 }

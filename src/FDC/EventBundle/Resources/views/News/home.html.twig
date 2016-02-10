@@ -11,7 +11,7 @@
     <div id="main" class="home loading">
         <span id="addtext">{{ 'home.btn.ajouteramaselection'|trans }}</span>
 
-        {% if displayHomeSlider %}
+        {% if displayHomeSlider == false %}
         <div id="sliderWrapper">
             <div id="slider" class="owl-carousel">
                 {% for slide in homeSlider %}
@@ -37,7 +37,8 @@
             </div>
         </div>
         {% endif %}
-        
+
+    {% if homepage.displayedTopNews == false %}
         <div id="news">
             <div id="canvasloader" class="canvasloader"></div>
             <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>
@@ -83,8 +84,9 @@
                 <div id="shd" class="shadow-bottom"></div>
             </div>
         </div>
+    {% endif %}
 
-    {% if homepage.displayedSocialWall %}
+    {% if homepage.displayedSocialWall == false %}
         <div id="social-wall">
             <div class="container">
                 <div id="graph">
@@ -163,6 +165,7 @@
             </div>
         </div>
 
+        {% if homepage.displayedPushsMain == false %}
         <div class="push-container">
             <div class="container">
 
@@ -222,6 +225,9 @@
 
             </div>
         </div>
+        {% endif %}
+
+        {% if homepage.displayedPushsSecondary == false %}
         <div class="push-container white">
             <div class="container">
 
@@ -387,8 +393,11 @@
 
             </div>
         </div>
+        {% endif %}
 
+    {% if homepage.displayedPrefooters == false %}
         {% include 'FDCEventBundle:News:components/prefooter.html.twig' %}
+    {% endif %}
 
     </div>
 

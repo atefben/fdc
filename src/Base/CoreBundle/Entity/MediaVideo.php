@@ -36,32 +36,11 @@ class MediaVideo extends Media
     private $displayedTrailer;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=false, options={"default":0})
-     */
-    private $state;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $job;
-
-    /**
      * @var Homepage
      *
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topVideos")
      */
     private $homepage;
-
-    /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="mediaVideos")
-     */
-    private $film;
 
     /**
      * @var WebTv
@@ -80,7 +59,7 @@ class MediaVideo extends Media
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
+     * @ORM\oneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
      *
      * @Groups({"trailer_list", "trailer_show"})
      */
@@ -156,29 +135,6 @@ class MediaVideo extends Media
     }
 
     /**
-     * Set film
-     *
-     * @param \Base\CoreBundle\Entity\FilmFilm $film
-     * @return MediaVideo
-     */
-    public function setFilm(\Base\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
-    }
-
-    /**
      * Set webTv
      *
      * @param \Base\CoreBundle\Entity\WebTv $webTv
@@ -233,6 +189,7 @@ class MediaVideo extends Media
      */
     public function addAssociatedFilm(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms)
     {
+        $associatedFilms->setMediaVideo($this);
         $this->associatedFilms[] = $associatedFilms;
 
         return $this;
@@ -256,51 +213,5 @@ class MediaVideo extends Media
     public function getAssociatedFilms()
     {
         return $this->associatedFilms;
-    }
-
-    /**
-     * Set state
-     *
-     * @param integer $state
-     * @return MediaVideo
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return integer 
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
-     * Set job
-     *
-     * @param string $job
-     * @return MediaVideo
-     */
-    public function setJob($job)
-    {
-        $this->job = $job;
-
-        return $this;
-    }
-
-    /**
-     * Get job
-     *
-     * @return string 
-     */
-    public function getJob()
-    {
-        return $this->job;
     }
 }

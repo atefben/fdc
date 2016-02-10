@@ -30,6 +30,17 @@ breadcrumb:
     link_film_projection_list: Programmations
     link_film_atelier_list: Liste des films ateliers
     link_f_d_c_page_web_tv_trailers_list: WebTV - Les bandes annonces
+    link_contact_theme_list: Liste des thèmes de contact
+    link_event_list: Liste des évènements
+    link_statement_article_list: Liste des communiqués - articles
+    link_statement_video_list: Liste des communiqués - vidéos
+    link_statement_image_list: Liste des communiqués - photos
+    link_statement_audio_list: Liste des communiqués - audios
+    link_info_article_list: Liste des infos - articles
+    link_info_video_list: Liste des infos - vidéos
+    link_info_image_list: Liste des infos - photos
+    link_info_audio_list: Liste des infos - audios
+
 
 link:
     action_soif_refresh: Mettre à jour
@@ -39,6 +50,16 @@ homepage:
         social_wall: Social Wall
         push_main: Pushs Principaux
         push_secondary: Pushs Secondaires
+        prefooter: Pré-footer
+        slider: Slider
+        top_news: L'actualité à la une
+        web_tv: WebTV
+        film: Films
+        seo: Métadonnées & SEO
+
+    top_news_type:
+        displayed_news: Afficher la grille d'actualités (pendant le festival)
+        displayed_events: Afficher la grille de communiqués & infos (avant le festival)
 
 group:
     french_version: Version française
@@ -193,6 +214,7 @@ list:
 
 
 filter:
+    label_email: Email
     label_starts_at: Date de début
     label_ends_at: Date de fin
     label_type: Type
@@ -266,7 +288,6 @@ dashboard:
         fdc_page_web_tv_trailers_cannes_classics: WebTV - BA et extraits (Cannes Classics)
         fdc_page_web_tv_trailers_cinema_plage: WebTV - BA et extraits (Cinéma de plage)
 
-
 form:
     tag:
         helper_name: 255 caractères max.
@@ -278,6 +299,8 @@ form:
         helper_social_graph: Séparer par des virgules les tags que vous souhaitez.
         helper_social_wall: Séparer par des virgules les tags que vous souhaitez.
         helper_home_slider: Sélectionnez de 3 à 6 actualités ou communiqués ou infos. Elles apparaitront en front-office dans l'ordre des lignes.
+        helper_top_video_associated: Sélectionnez de 2 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
+        helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
     flashbag:
         modified: Modification effectuée.
     settings:
@@ -336,6 +359,7 @@ form:
         helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
+    label_contact_theme_theme: Theme
     label_tag_name: Nom du tag
     label_header_audio: Audio principal
     label_social_graph_hashtag_twitter: Social graph - hashtags
@@ -386,8 +410,6 @@ form:
     label_image_link: Image et lien
     label_main_image: Première image
     label_second_image: Seconde image
-    label_displayed_slider: Afficher le slider
-    label_displayed_top_news: Afficher le "Top News"
     label_btn: Libellé du bouton
     label_label: Légende
     label_web_tv_name: Nom de la chaîne
@@ -402,6 +424,13 @@ form:
     label_procedure: Procédures
     label_accredit_procedure: Choisissez les procédures à afficher
     label_btn_link: Lien du bouton
+    label_prefooter_title: Titre du Pré-footer
+    label_prefooter_url: URL du Pré-footer
+    label_image_push: Image du push (media image semi-riche)
+    label_image_prefooter: Image du Pré-footer (media image semi-riche)
+    label_homepage_top_video_associated: Vidéos à la une
+    label_homepage_top_web_tvs_associated: Chaînes à la une
+
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
@@ -477,6 +506,8 @@ form:
         helper_image: Dimensions attendues : YxZpx. Format attendu.
         placeholder_seo_title: À saisir manuellement
         placeholder_seo_description: À saisir manuellement
+        label_festival_section: Sélection
+        label_override_name: Surcharger le nom de la sélection
 
 
 nav:
