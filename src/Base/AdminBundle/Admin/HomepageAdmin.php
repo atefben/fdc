@@ -178,6 +178,26 @@ class HomepageAdmin extends Admin
                 'label' => 'form.label_display',
                 'required' => false
             ))
+            ->add('topVideosAssociated', 'sonata_type_collection', array(
+                'label' => 'form.label_homepage_top_video_associated',
+                'help' => 'form.homepage.helper_top_video_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('topWebTvsAssociated', 'sonata_type_collection', array(
+                'label' => 'form.label_homepage_top_web_tvs_associated',
+                'help' => 'form.homepage.helper_top_web_tvs_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('homepageSlide', 'sonata_type_collection', array(
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.homepage.helper_home_slider',

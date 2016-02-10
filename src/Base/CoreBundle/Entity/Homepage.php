@@ -139,7 +139,7 @@ class Homepage
     /**
      * @var HomepageSlide
      *
-     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage")
      */
     private $homepageSlide;
 
@@ -156,6 +156,18 @@ class Homepage
      * @ORM\OneToMany(targetEntity="WebTv", mappedBy="homepage")
      */
     private $topWebTvs;
+
+    /**
+     * @var topVideosAssociated
+     * @ORM\OneToMany(targetEntity="HomepageTopVideosAssociated", mappedBy="homepage", cascade={"persist"})
+     */
+    private $topVideosAssociated;
+
+    /**
+     * @var topVideosAssociated
+     * @ORM\OneToMany(targetEntity="HomepageTopWebTvsAssociated", mappedBy="homepage", cascade={"persist"})
+     */
+    private $topWebTvsAssociated;
 
     /**
      * @var integer
@@ -1070,5 +1082,71 @@ class Homepage
     public function getPrefooterImage4()
     {
         return $this->prefooterImage4;
+    }
+
+    /**
+     * Add topVideosAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated
+     * @return Homepage
+     */
+    public function addTopVideosAssociated(\Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated)
+    {
+        $this->topVideosAssociated[] = $topVideosAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Remove topVideosAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated
+     */
+    public function removeTopVideosAssociated(\Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated)
+    {
+        $this->topVideosAssociated->removeElement($topVideosAssociated);
+    }
+
+    /**
+     * Get topVideosAssociated
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTopVideosAssociated()
+    {
+        return $this->topVideosAssociated;
+    }
+
+    /**
+     * Add topWebTvsAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated
+     * @return Homepage
+     */
+    public function addTopWebTvsAssociated(\Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated)
+    {
+        $this->topWebTvsAssociated[] = $topWebTvsAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Remove topWebTvsAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated
+     */
+    public function removeTopWebTvsAssociated(\Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated)
+    {
+        $this->topWebTvsAssociated->removeElement($topWebTvsAssociated);
+    }
+
+    /**
+     * Get topWebTvsAssociated
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTopWebTvsAssociated()
+    {
+        return $this->topWebTvsAssociated;
     }
 }

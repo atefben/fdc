@@ -300,6 +300,8 @@ form:
         helper_social_graph: Séparer par des virgules les tags que vous souhaitez.
         helper_social_wall: Séparer par des virgules les tags que vous souhaitez.
         helper_home_slider: Sélectionnez de 3 à 6 actualités ou communiqués ou infos. Elles apparaitront en front-office dans l'ordre des lignes.
+        helper_top_video_associated: Sélectionnez de 2 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
+        helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
     flashbag:
         modified: Modification effectuée.
     settings:
@@ -427,6 +429,8 @@ form:
     label_prefooter_url: URL du Pré-footer
     label_image_push: Image du push (media image semi-riche)
     label_image_prefooter: Image du Pré-footer (media image semi-riche)
+    label_homepage_top_video_associated: Vidéos à la une
+    label_homepage_top_web_tvs_associated: Chaînes à la une
 
     web_tv:
         helper_name: 255 caractères max.

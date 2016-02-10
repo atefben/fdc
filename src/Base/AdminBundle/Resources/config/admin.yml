@@ -379,7 +379,17 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.homepage_top_videos_associated:
+        class: Base\AdminBundle\Admin\HomepageTopVideosAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\HomepageTopVideosAssociated, BaseAdminBundle:HomepageTopVideosAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: HomepageTopVideosAssociated, show_in_dashboard: false}
 
+    base.admin.homepage_top_web_tvs_associated:
+        class: Base\AdminBundle\Admin\HomepageTopWebTvsAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\HomepageTopWebTvsAssociated, BaseAdminBundle:HomepageTopWebTvsAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: HomepageTopWebTvsAssociated, show_in_dashboard: false}
 
     base.admin.news:
         class: Base\AdminBundle\Admin\NewsAdmin
