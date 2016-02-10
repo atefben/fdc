@@ -9,9 +9,9 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * FilmFilmRepository class.
- * 
+ *
  * \@extends EntityRepository
- *  @author   Antoine Mineau
+ * @author   Antoine Mineau
  * \@company Ohwee
  */
 class FilmFilmRepository extends EntityRepository
@@ -20,11 +20,13 @@ class FilmFilmRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('f')
             ->where('f.festival = :festival')
-            ->setParameter('festival', $festival);
+            ->setParameter('festival', $festival)
+        ;
 
         if ($selection !== null) {
             $query = $query->andWhere('f.selection = :selection')
-                ->setParameter('selection', $selection);
+                ->setParameter('selection', $selection)
+            ;
         }
 
         return $query;
@@ -38,7 +40,8 @@ class FilmFilmRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('id', $id)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+            ;
     }
 
     public function getApiFilmTrailers($festival, $dateTime, $locale)
@@ -60,7 +63,8 @@ class FilmFilmRepository extends EntityRepository
             ->setParameter('status', MediaTranslationInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
-            ->getQuery();
+            ->getQuery()
+            ;
     }
 
     public function getApiTrailers($id, $festival, $dateTime, $locale)
@@ -85,6 +89,32 @@ class FilmFilmRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()
-            ->getOneOrNullResult();;
+            ->getOneOrNullResult()
+            ;;
+    }
+
+    public function getFilmsThatHaveTrailers($festival, $locale, $selectionSection = null)
+    {
+        $qb = $this->createQueryBuilder('f');
+        $qb
+            ->join('f.translations', 't')
+            ->join('f.associatedMediaVideos', 'fa')
+            ->join('fa.association', 'm')
+            ->join('m.translations', 'mt')
+            ->where('f.festival = :festival')
+            ->setParameter('festival', 66)
+            ->andWhere('t.locale = :locale')
+            ->andWhere('mt.locale = :locale')
+            ->setParameter('locale', $locale)
+        ;
+
+        if ($selectionSection) {
+            $qb
+                ->andWhere('f.selectionSection = :selectionSection')
+                ->setParameter('selectionSection', $selectionSection)
+            ;
+
+        }
+        return $qb->getQuery()->getResult();
     }
 }

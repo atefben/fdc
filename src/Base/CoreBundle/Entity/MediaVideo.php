@@ -59,7 +59,7 @@ class MediaVideo extends Media
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideos", cascade={"persist"})
+     * @ORM\oneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
      *
      * @Groups({"trailer_list", "trailer_show"})
      */
@@ -189,6 +189,7 @@ class MediaVideo extends Media
      */
     public function addAssociatedFilm(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms)
     {
+        $associatedFilms->setMediaVideo($this);
         $this->associatedFilms[] = $associatedFilms;
 
         return $this;

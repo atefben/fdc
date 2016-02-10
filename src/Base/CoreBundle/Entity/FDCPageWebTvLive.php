@@ -78,15 +78,11 @@ class FDCPageWebTvLive implements TranslateMainInterface
 
     /**
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="fDCPageWebTvLive", cascade={"persist"})
-     *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedWebTvs;
 
     /**
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveMediaVideoAssociated", mappedBy="fDCPageWebTvLive", cascade={"persist"})
-     *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedMediaVideos;
 

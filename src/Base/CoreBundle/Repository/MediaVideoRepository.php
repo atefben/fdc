@@ -38,7 +38,9 @@ class MediaVideoRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('mv');
 
-        $qb->join('mv.translations', 'mvt')
+        $qb
+            ->join('mv.translations', 't')
+            ->join('mv.videos', 'mvt')
             ->where('mv.festival = :festival')
             ->setParameter('festival', $festival)
             ->andWhere('mv.webTv = :webTv')
