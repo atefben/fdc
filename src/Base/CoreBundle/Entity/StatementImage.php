@@ -40,6 +40,11 @@ class StatementImage extends Statement
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'images';
+    }
+
     /**
      * Set gallery
      *

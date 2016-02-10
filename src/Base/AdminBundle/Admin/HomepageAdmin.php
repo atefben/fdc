@@ -138,6 +138,33 @@ class HomepageAdmin extends Admin
                     'secondaryPushUrl8' => array(
                         'label' => 'form.label_secondary_push_url'
                     ),
+
+                    'prefooterTitle1' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
+                    'prefooterTitle2' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
+                    'prefooterTitle3' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
+                    'prefooterTitle4' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
+
+                    'prefooterUrl1' => array(
+                        'label' => 'form.label_prefooter_url'
+                    ),
+                    'prefooterUrl2' => array(
+                        'label' => 'form.label_prefooter_url'
+                    ),
+                    'prefooterUrl3' => array(
+                        'label' => 'form.label_prefooter_url'
+                    ),
+                    'prefooterUrl4' => array(
+                        'label' => 'form.label_prefooter_url'
+                    ),
+
                 )
             ))
             ->add('topNewsType', 'choice', array(
@@ -209,9 +236,26 @@ class HomepageAdmin extends Admin
                 'required' => false,
             ))
             ->add('pushsSecondaryImage8', 'sonata_type_model_list', array(
-                'label' => 'form.label_image_push',
+                'label' => 'form.label_image_prefooter',
                 'required' => false,
             ))
+            ->add('prefooterImage1', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'required' => false,
+            ))
+            ->add('prefooterImage2', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'required' => false,
+            ))
+            ->add('prefooterImage3', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'required' => false,
+            ))
+            ->add('prefooterImage4', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'required' => false,
+            ))
+
 
         ;
 

@@ -50,6 +50,12 @@ class StatementVideo extends Statement
 
         return $string;
     }
+
+    public function getNewsFormat()
+    {
+        return 'videos';
+    }
+
     /**
      * Set video
      *

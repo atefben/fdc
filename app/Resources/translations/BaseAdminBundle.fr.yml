@@ -50,6 +50,7 @@ homepage:
         social_wall: Social Wall
         push_main: Pushs Principaux
         push_secondary: Pushs Secondaires
+        prefooter: Pré-footer
 
 group:
     french_version: Version française
@@ -415,6 +416,11 @@ form:
     label_procedure: Procédures
     label_accredit_procedure: Choisissez les procédures à afficher
     label_btn_link: Lien du bouton
+    label_prefooter_title: Titre du Pré-footer
+    label_prefooter_url: URL du Pré-footer
+    label_image_push: Image du push (media image semi-riche)
+    label_image_prefooter: Image du Pré-footer (media image semi-riche)
+
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Format attendu. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.

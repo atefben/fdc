@@ -40,6 +40,11 @@ class StatementArticle extends Statement
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'articles';
+    }
+
     /**
      * Set header
      *
