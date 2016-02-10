@@ -30,7 +30,7 @@
                                 <span class="category">{{ slide.theme|trans_fallback('name') }}</span>
                                 <h2>{{ slide|trans_fallback('title') }}</h2>
                             </div>
-                            <a href="{{ path('fdc_event_news_get', {'slug': slide.id }) }}" class="linkArticle"></a>
+                            <a href="{{ path('fdc_event_news_get', {format: slide.newsFormat, 'slug': slide.id }) }}" class="linkArticle"></a>
                         </div>
                     {% endif %}
                 {% endfor %}

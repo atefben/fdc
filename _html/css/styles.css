@@ -10945,20 +10945,20 @@ article .read-later.rAlign span:after {
   float: left;
   width: 63%;
   padding-bottom: 5px;
-  margin-top: 38px;
+  margin-top: 48px;
   margin-bottom: -38px;
 }
 .single-movie .palmares i {
-  font-size: 2.6rem;
+  font-size: 2.75rem;
   color: #c8a461;
   display: inline-block;
   vertical-align: middle !important;
 }
 .single-movie .palmares p {
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 9px;
   font-size: .875rem;
-  color: #a4a4a4;
+  color: #6f6f6f;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
 .single-movie .palmares:after {
@@ -10967,22 +10967,38 @@ article .read-later.rAlign span:after {
   padding-left: 332%;
   height: 1px;
   position: relative;
-  left: -7.4%;
+  left: -7.3%;
   border-bottom: 1px solid #f1f1f1;
+  padding-top: 10px;
+}
+@media screen and (max-width: 1600px) {
+  .single-movie .palmares:after {
+    padding-top: 11px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .single-movie .palmares:after {
+    padding-top: 11px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .single-movie .palmares:after {
+    padding-top: 11px;
+  }
 }
 @media screen and (max-width: 1600px) {
   .single-movie .palmares {
-    margin-top: 21px;
+    margin-top: 34px;
   }
 }
 @media screen and (max-width: 1280px) {
   .single-movie .palmares {
-    margin-top: 21px;
+    margin-top: 34px;
   }
 }
 @media screen and (max-width: 1024px) {
   .single-movie .palmares {
-    margin-top: 21px;
+    margin-top: 34px;
   }
 }
 .single-movie .nav {

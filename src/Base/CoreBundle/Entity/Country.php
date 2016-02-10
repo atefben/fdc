@@ -104,7 +104,13 @@ class Country implements TranslateMainInterface
     
     public function __toString()
     {
-        return $this->getIso();
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = (string)$this->getISO();
+        }
+
+        return $string;
     }
 
     /**

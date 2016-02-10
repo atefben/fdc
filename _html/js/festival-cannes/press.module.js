@@ -668,11 +668,13 @@ $(document).ready(function () {
 
           $('#timeline a').removeClass('active');
           $(this).addClass('active');
+          date = $(this).data('date');
 
           $.ajax({
             type: "GET",
             dataType: "html",
             cache: false,
+            data:{'date':date},
             url: GLOBALS.urls.calendarProgrammationUrl,
             success: function (data) {
               $('.v-wrapper').html(data);
@@ -1126,7 +1128,7 @@ $(document).ready(function () {
            console.log(dateEnd);
 
            if(dateEnd<dateBegin){
-             
+
            }else{
              $('#create-event-pop').removeClass("visible-popin");
            }

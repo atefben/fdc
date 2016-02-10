@@ -107,21 +107,25 @@ class SeoManager
             $this->sonataSeoPage->addMeta('property', 'og:type', 'article');
             $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getTitle());
             $this->sonataSeoPage->addMeta('property', 'og:url', $this->fdcEventScheme. $this->fdcEventDomain. $this->router->generate('fdc_event_news_get', array(
-               'slug' => $trans->getSlug()
+               'slug' => $trans->getSlug(),
+               'format' => $trans->getTranslatable()->getNewsFormat()
             )));
             $this->sonataSeoPage->addMeta('property', 'og:description', strip_tags($trans->getIntroduction()));
             $this->sonataSeoPage->addMeta('property', 'og:updated_time', $news->getUpdatedAt()->format(DateTime::ISO8601));
 
             // PICTURE
-            $header = $news->getHeader()->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
-            $transImage = $news->getHeader()->findTranslationByLocale($locale);
-            if ($transImage->getFile() !== null) {
-                $header = $transImage->getFile();
-            }
+            $header = null;
+            if ($news->getHeader() !== null) {
+                $header = $news->getHeader()->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
+                $transImage = $news->getHeader()->findTranslationByLocale($locale);
+                if ($transImage->getFile() !== null) {
+                    $header = $transImage->getFile();
+                }
 
-            // OG PICTURE
-            $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'news_header_image_big');
-            $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'news_header_image_big');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+            }
 
             // TWITTER
             $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
@@ -131,8 +135,10 @@ class SeoManager
             $this->sonataSeoPage->addMeta('property', 'twitter:description', html_entity_decode($trans->getIntroduction()));
 
             // TWITTER PICTURE
-            $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'news_header_image_big');
-            $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            if ($header !== null) {
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'news_header_image_big');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
 
             // ARTICLE
             $this->sonataSeoPage->addMeta('property', 'article:author', ($news->getSignature() !== null) ? $news->getSignature() : '');

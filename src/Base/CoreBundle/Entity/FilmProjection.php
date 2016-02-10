@@ -22,10 +22,9 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FilmProjection implements TranslateMainInterface
+class FilmProjection
 {
     use Translatable;
-    use TranslateMain;
     use Time;
     use Soif;
     

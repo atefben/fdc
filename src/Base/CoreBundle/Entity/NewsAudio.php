@@ -52,6 +52,11 @@ class NewsAudio extends News
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'audios';
+    }
+
     /**
      * Set header
      *

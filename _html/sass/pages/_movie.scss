@@ -288,11 +288,11 @@
     float: left;
     width: 63%;
     padding-bottom: 5px;
-    margin-top: 38px;
+    margin-top: 48px;
     margin-bottom: -38px;
 
     i{
-      font-size: 2.6rem;
+      font-size: 2.75rem;
       color: $gold;
       display: inline-block;
       vertical-align: middle !important;
@@ -300,33 +300,46 @@
 
     p{
       display: inline-block;
-      margin-left: 20px;
+      margin-left: 9px;
       font-size: .875rem;
-      color: #a4a4a4;
+      color: #6f6f6f;
       font-family: $CamphorItalic;
     }
 
-    &:after{
+    &:after {
       content: "";
       display: block;
       padding-left: 332%;
       height: 1px;
       position: relative;
-      left: -7.4%;
+      left: -7.3%;
       border-bottom: 1px solid #f1f1f1;
-    }
+      padding-top: 10px;
 
+      @include breakpoint(1600px) {
+        padding-top: 11px;
+
+      }
+
+      @include breakpoint(1280px) {
+        padding-top: 11px;
+
+      }
+
+      @include breakpoint(1024px) {
+        padding-top: 11px;
+      }
+    }
     @include breakpoint(1600px) {
-      margin-top: 21px;
+      margin-top: 34px;
     }
 
     @include breakpoint(1280px) {
-      margin-top: 21px;
-
+      margin-top: 34px;
     }
 
     @include breakpoint(1024px) {
-      margin-top: 21px;
+      margin-top: 34px;
     }
 
   }
