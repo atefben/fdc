@@ -71,194 +71,34 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-
         $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
         $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
         $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
-        $schedulingYearMonth = $festivalStartsAt->format('Y')."-".$festivalStartsAt->format('m');
-        array_walk($schedulingDays, function (&$value, $schedulingYearMonth) use(&$schedulingYearMonth) {
-            $value = $schedulingYearMonth ."-". $value;
+        $schedulingYear = $festivalStartsAt->format('Y');
+        $schedulingMonth = $festivalStartsAt->format('m');
+
+        array_walk($schedulingDays, function (&$value) use(&$schedulingYear, &$schedulingMonth) {
+            $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
         });
-        
-        $events = array(
-            'place' => array(
-                'grandTheatre' => array(
-                    'events' => array(
-                        array(
-                            'id' => 3,
-                            'title' => 'Orson welles, autopsie d’une légende',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'Séance de reprise',
-                                'slug' => 'reprise'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 120,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-                'salleBunuel' => array(
-                    'events' => array(
-                        array(
-                            'id' => 5,
-                            'title' => 'Mad max, fury road',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'conférence de presse',
-                                'slug' => 'press'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 60,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-            )
-        );
 
-        $medias = array(
-            array(
-                'title' => 'Carol',
-                'image' => array(
-                    'path' => '//dummyimage.com/55x75/000/fff'
-                ),
-                'author' => array(
-                    'fullName' => 'Todd HAYNES'
-                ),
-                'trailer' => 4,
-                'folder' => 3,
-                'photo' => 9
-            ),
-            array(
-                'title' => 'Carol',
-                'image' => array(
-                    'path' => '//dummyimage.com/55x75/000/fff'
-                ),
-                'author' => array(
-                    'fullName' => 'Todd HAYNES'
-                ),
-                'trailer' => 4,
-                'folder' => 3,
-                'photo' => 9
-            ),
-            array(
-                'title' => 'Carol',
-                'image' => array(
-                    'path' => '//dummyimage.com/55x75/000/fff'
-                ),
-                'author' => array(
-                    'fullName' => 'Todd HAYNES'
-                ),
-                'trailer' => 4,
-                'folder' => 3,
-                'photo' => 9
-            )
-        );
+        //GET PRESS HOMEPAGE
+        $homepage = $em
+            ->getRepository('BaseCoreBundle:PressHomepage')
+            ->findById(2);
 
-        $festivalDownloads = array(
-            array(
-                'format' => 'portrait',
-                'resolution' => array(
-                    array(
-                        'size' => 'JPG 72 DPI'
-                    ),
-                    array(
-                        'size' => 'JPG 300 DPI'
-                    ),
-                ),
-                'caption' => '© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos',
-            ),
-            array(
-                'format' => 'landscape',
-                'resolution' => array(
-                    array(
-                        'size' => 'JPG 72 DPI'
-                    ),
-                    array(
-                        'size' => 'JPG 300 DPI'
-                    ),
-                ),
-                'caption' => '© FDC / Lagency / Taste (Paris) / Ingrid Bergman © David Seymour / Estate of David Seymour - Magnum Photos',
-            ),
-        );
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+        else {
+            $homepage = $homepage[0];
+        }
 
-        $stats = array(
-            'title' => 'Lorem Ipsum Dolor Sit Amet',
-            'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                              laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                              architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                              sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.',
-            'image' => array(
-                'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/003.jpg'
-            )
-        );
-
-        $movieDownload = array(
-            'description' => 'Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et
-                                  extraits de films fournis par les productions. Ces contenus sont mis à jour tout au
-                                  long du Festival. Ce service est fourni pour faciliter le traitement des films sur
-                                  vos propres médias. Nous vous prions instamment de ne pas les publier sur les réseaux
-                                  sociaux ou les portails de partage de type Youtube ou Dailymotion sans l’accord des
-                                  ayants-droits du film.<br><strong>Chaque fois que possible, les fichiers mis à disposition
-                                  seront en HD 1080p. Le Festival reste tributaire de la qualité du matériel qui lui est
-                                  adressé. 1 à 3 fichiers sont mis à disposition en fonction du fichier source reçu :</strong>',
-            'movie' => array(
-                'title' => 'Il racconto dei racconti',
-                'author' => array(
-                    'fullName' => 'Matteo GARRONE'
-                ),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/media/img6.jpg'
-                ),
-                'trailers' => array(
-                    array(
-                        'title' => 'Lorem ipsum',
-                        'description' => 'Lorem ipsum',
-                        'path' => '#'
-                    ),
-                    array(
-                        'title' => 'Lorem ipsum',
-                        'description' => 'Lorem ipsum',
-                        'path' => '#'
-                    ),
-                    array(
-                        'title' => 'Lorem ipsum',
-                        'description' => 'Lorem ipsum',
-                        'path' => '#'
-                    ),
-                    array(
-                        'title' => 'Lorem ipsum',
-                        'description' => 'Lorem ipsum',
-                        'path' => '#'
-                    )
-                )
-            ),
-        );
 
         return array(
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $schedulingDays,
-            'schedulingEvents' => $events,
-            'pressMedias' => $medias,
-            'pressFestivalDownloads' => $festivalDownloads,
-            'pressMovieDownloads' => $movieDownload,
-            'pressStats' => $stats
+            'pressHome' => $homepage
         );
     }
 

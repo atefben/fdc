@@ -21,7 +21,7 @@
 
             <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
@@ -98,8 +98,9 @@
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
 
-                                    {{ form_row(translationsFields.sectionPushMainTitle) }}
-                                    {{ form_row(form.parent.children.pushsMain) }}
+                                    {{ form_row(translationsFields.pushMainTitle) }}
+                                    {{ form_row(translationsFields.pushMainLink) }}
+                                    {{ form_row(form.parent.children.pushMainImage) }}
 
                                 </div>
                             </div>
@@ -112,8 +113,9 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.sectionPushSecondaryTitle) }}
-                                    {{ form_row(form.parent.children.pushsSecondary) }}
+                                    {{ form_row(translationsFields.pushSecondaryTitle) }}
+                                    {{ form_row(translationsFields.pushSecondaryLink) }}
+                                    {{ form_row(form.parent.children.pushSecondaryImage) }}
                                 </div>
                             </div>
                         </div>
@@ -133,6 +135,43 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-4">
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.news.publish_parameters'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.status) }}
+                                        <div class="form-group fdc-input-border">
+                                            {{ form_widget(form.parent.children.translate) }}
+                                            {{ form_label(form.parent.children.translate) }}
+                                            {{ form_widget(form.parent.children.translateOptions) }}
+                                            {{ form_row(form.parent.children.priorityStatus) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.news.publish_parameters'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            {{ form_row(translationsFields.status) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="col-md-12">
                         <div class="box box-success">

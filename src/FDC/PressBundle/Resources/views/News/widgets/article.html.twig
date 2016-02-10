@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
 <article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
     <div class="image">
         <div class="image-wrapper">

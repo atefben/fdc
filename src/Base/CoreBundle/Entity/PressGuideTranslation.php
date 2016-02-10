@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
-
 use Base\CoreBundle\Util\Time;
+
 /**
  * PressGuideTranslation
  *
