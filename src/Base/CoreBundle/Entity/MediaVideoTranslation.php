@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation\Since;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaVideoTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaVideoTranslation implements TranslateChildInterface
@@ -46,6 +46,27 @@ class MediaVideoTranslation implements TranslateChildInterface
     private $title;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $imageAmazonUrl;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false, options={"default":0})
+     */
+    private $state;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $job;
+
+    /**
      * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
@@ -57,7 +78,6 @@ class MediaVideoTranslation implements TranslateChildInterface
      */
     public function __construct()
     {
-        $this->sites = new ArrayCollection();
     }
 
 
@@ -197,5 +217,74 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function getTheme()
     {
         return $this->theme;
+    }
+
+    /**
+     * Set state
+     *
+     * @param integer $state
+     * @return MediaVideo
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return integer
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * Set job
+     *
+     * @param string $job
+     * @return MediaVideo
+     */
+    public function setJob($job)
+    {
+        $this->job = $job;
+
+        return $this;
+    }
+
+    /**
+     * Get job
+     *
+     * @return string
+     */
+    public function getJob()
+    {
+        return $this->job;
+    }
+
+    /**
+     * Set imageAmazonUrl
+     *
+     * @param string $imageAmazonUrl
+     * @return MediaVideo
+     */
+    public function setImageAmazonUrl($imageAmazonUrl)
+    {
+        $this->imageAmazonUrl = $imageAmazonUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get imageAmazonUrl
+     *
+     * @return string
+     */
+    public function getImageAmazonUrl()
+    {
+        return $this->imageAmazonUrl;
     }
 }

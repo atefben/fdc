@@ -138,6 +138,33 @@ class HomepageAdmin extends Admin
                     'secondaryPushUrl8' => array(
                         'label' => 'form.label_secondary_push_url'
                     ),
+
+                    'prefooterTitle1' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
+                    'prefooterTitle2' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
+                    'prefooterTitle3' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
+                    'prefooterTitle4' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
+
+                    'prefooterUrl1' => array(
+                        'label' => 'form.label_prefooter_url'
+                    ),
+                    'prefooterUrl2' => array(
+                        'label' => 'form.label_prefooter_url'
+                    ),
+                    'prefooterUrl3' => array(
+                        'label' => 'form.label_prefooter_url'
+                    ),
+                    'prefooterUrl4' => array(
+                        'label' => 'form.label_prefooter_url'
+                    ),
+
                 )
             ))
             ->add('topNewsType', 'choice', array(
@@ -147,7 +174,10 @@ class HomepageAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle',
                 'expanded' => true
             ))
-            ->add('displayedSlider')
+            ->add('displayedSlider','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
             ->add('homepageSlide', 'sonata_type_collection', array(
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.homepage.helper_home_slider',
@@ -158,8 +188,14 @@ class HomepageAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('displayedTopNews')
-            ->add('displayedSocialWall')
+            ->add('displayedTopNews','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('displayedSocialWall','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
             ->add('socialGraphHashtagTwitter', null, array(
                 'sonata_help' => 'form.homepage.helper_social_graph',
                 'translation_domain' => 'BaseAdminBundle'
@@ -209,9 +245,38 @@ class HomepageAdmin extends Admin
                 'required' => false,
             ))
             ->add('pushsSecondaryImage8', 'sonata_type_model_list', array(
-                'label' => 'form.label_image_push',
+                'label' => 'form.label_image_prefooter',
                 'required' => false,
             ))
+            ->add('prefooterImage1', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'required' => false,
+            ))
+            ->add('prefooterImage2', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'required' => false,
+            ))
+            ->add('prefooterImage3', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'required' => false,
+            ))
+            ->add('prefooterImage4', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'required' => false,
+            ))
+            ->add('displayedPushsMain','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('displayedPushsSecondary','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('displayedPrefooters','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+
 
         ;
 

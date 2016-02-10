@@ -6,7 +6,7 @@
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
             <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
-                <a {% if translationsFields.vars.value is not null %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+                <a {% if translationsFields.vars.value is not null and translationsFields.vars.value.status is defined %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
                     {{ locale|capitalize }}
                     {% if form.vars.default_locale == locale %}[MASTER]{% endif %}
                     {% if translationsFields.vars.required %}*{% endif %}
@@ -119,6 +119,9 @@
                                         {{  form_row(form.parent.children.pushsMainImage3) }}
                                         {{  form_row(translationsFields.primaryPushUrl3) }}
                                     </div>
+                                    <div class="col-md-12">
+                                        {{  form_row(form.parent.children.displayedPushsMain) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -178,6 +181,9 @@
                                         {{  form_row(form.parent.children.pushsSecondaryImage8) }}
                                         {{  form_row(translationsFields.secondaryPushUrl8) }}
                                     </div>
+                                    <div class="col-md-12">
+                                        {{  form_row(form.parent.children.displayedPushsSecondary) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -191,6 +197,31 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
+                                    <div class="col-md-6">
+                                        {{  form_row(translationsFields.prefooterTitle1) }}
+                                        {{  form_row(form.parent.children.prefooterImage1) }}
+                                        {{  form_row(translationsFields.prefooterUrl1) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{  form_row(translationsFields.prefooterTitle2) }}
+                                        {{  form_row(form.parent.children.prefooterImage2) }}
+                                        {{  form_row(translationsFields.prefooterUrl2) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{  form_row(translationsFields.prefooterTitle3) }}
+                                        {{  form_row(form.parent.children.prefooterImage3) }}
+                                        {{  form_row(translationsFields.prefooterUrl3) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{  form_row(translationsFields.prefooterTitle4) }}
+                                        {{  form_row(form.parent.children.prefooterImage4) }}
+                                        {{  form_row(translationsFields.prefooterUrl4) }}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{  form_row(form.parent.children.displayedPrefooters) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
