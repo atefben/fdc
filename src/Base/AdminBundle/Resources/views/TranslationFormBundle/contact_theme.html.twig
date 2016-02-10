@@ -39,6 +39,7 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.theme) }}
+                                        {{ form_row(translationsFields.status) }}
                                     </div>
                                 </div>
                             {% endif %}
@@ -57,12 +58,37 @@
                                         <div class="form-group fdc-input-border">
                                             {{ form_widget(form.parent.children.translate) }}
                                             {{ form_label(form.parent.children.translate) }}
+                                            {{ form_widget(form.parent.children.translateOptions) }}
+                                            {{ form_row(form.parent.children.priorityStatus) }}
+                                        </div>
+                                        <div class="status-hidden">
+                                            {{ form_row(translationsFields.status) }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        {% else %}
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    VERSION FRANÇAISE
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+
+                                    <label class="control-label">
+                                        {{ 'form.label_contact_theme_theme'|trans }}
+                                    </label>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.theme }}
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
                         {% endif %}
-                        {{ form_widget(translationsFields.status) }}
+
                     </div>
                 </div>
             </div>
