@@ -288,7 +288,9 @@ class FilmAtelier implements TranslateMainInterface
      */
     public function setProductionYear($productionYear)
     {
-        $this->productionYear = $productionYear;
+        if ($this->getProductionYear() != -1) {
+            $this->productionYear = $productionYear;
+        }
 
         return $this;
     }

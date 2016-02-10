@@ -42,19 +42,9 @@ class ContactPage implements TranslateMainInterface
     private $id;
 
     /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site")
-     *
-     * @Groups({"press_list", "press_show"})
-     */
-    private $sites;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"press_list", "press_show"})
      */
     private $publishedAt;
 
@@ -62,7 +52,6 @@ class ContactPage implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"press_list", "press_show"})
      */
     private $publishEndedAt;
 
@@ -74,17 +63,6 @@ class ContactPage implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-    }
-
-    public function __toString() {
-        $translation = $this->findTranslationByLocale('fr');
-
-        if ($translation !== null) {
-            $string = $translation->getName();
-        } else {
-            $string = strval($this->getId());
-        }
-        return $string;
     }
 
     /**
@@ -166,36 +144,4 @@ class ContactPage implements TranslateMainInterface
         return $this->publishEndedAt;
     }
 
-    /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return ContactPage
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSites()
-    {
-        return $this->sites;
-    }
 }

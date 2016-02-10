@@ -5,8 +5,8 @@
         {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
-            <li {% if currentLocale == locale %}class="active"{% endif %}>
-                <a href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+            <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
+                <a {% if translationsFields.vars.value is not null %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
                     {{ ('lang.' ~ locale)|trans() }}
                     {% if form.vars.default_locale == locale %}[MASTER]{% endif %}
                     {% if translationsFields.vars.required %}*{% endif %}
@@ -34,8 +34,8 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.title) }}
-                                        {{ form_row(translationsFields.theme) }}
-                                        {{ form_row(translationsFields.audio) }}
+                                        {{ form_row(form.parent.children.theme) }}
+                                        {{ form_row(form.parent.children.audio) }}
                                         {{ form_row(translationsFields.introduction) }}
                                         {{ form_row(form.parent.children.signature) }}
                                     </div>
@@ -160,12 +160,9 @@
                                         <div class="form-group fdc-input-border">
                                             {{ form_widget(form.parent.children.translate) }}
                                             {{ form_label(form.parent.children.translate) }}
+                                            {{ form_widget(form.parent.children.translateOptions) }}
+                                            {{ form_row(form.parent.children.priorityStatus) }}
                                         </div>
-                                        {{ form_row(form.parent.children.priorityStatus) }}
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
-                                        <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Créer et retourner à la liste</button>
                                     </div>
                                 </div>
                             </div>
@@ -276,28 +273,23 @@
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
                                                 {% if widget.children._type.vars.value == 'statement_widget_text_type' %}
-                                                    <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                    <h4><strong>Module texte</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_video_youtube_type' %}
                                                     <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
                                                     <h4><strong>{{ 'news.widget.audio'|trans }}</strong></h4>
+                                                    {{ form_widget(widget.file) }}
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
-                                                    <h4><strong>{{ 'form.widget.gallery'|trans }}</strong></h4>
+                                                    <h4><strong>Module gallery</strong></h4>
+                                                    {{ form_widget(widget.gallery) }}
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'statement_widget_text_type' or
-                                                widget.children._type.vars.value == 'statement_widget_video_youtube_type' or
-                                                widget.children._type.vars.value == 'statement_widget_quote_type'
-                                                %}
-                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
-                                                    {{ form_widget(widget.gallery) }}
-                                                {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
-                                                    {{ form_widget(widget.file) }}
-                                                {% endif %}
                                                 <a class="btn btn-danger btn-sm btn-outline remove_item">
                                                     <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
                                                 </a>
@@ -310,7 +302,6 @@
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}

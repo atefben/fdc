@@ -36,12 +36,14 @@ sonata_media:
                 224x142: { width: 224 , height: 142 , quality: 100 }
                 265x167: { width: 265 , height: 167 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
+                363x229: { width: 363 , height: 229 , quality: 100 }
                 462x292: { width: 462 , height: 292 , quality: 100 }
                 573x362: { width: 573 , height: 362 , quality: 100 }
                 975x616: { width: 975 , height: 616 , quality: 100 }
                 1218x769: { width: 1218 , height: 769 , quality: 100 }
                 1461x923: { width: 1461 , height: 923 , quality: 100 }
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
+                1980x300: { width: 1980 , height: 300 , quality: 100 }
 
         media_audio:
             providers:
@@ -53,12 +55,6 @@ sonata_media:
         media_video:
             providers:
                 - sonata.media.provider.video
-
-            formats:
-
-        statement_video:
-            providers:
-                - sonata.media.provider.file
 
             formats:
 

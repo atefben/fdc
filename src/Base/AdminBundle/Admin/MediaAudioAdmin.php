@@ -24,6 +24,17 @@ use Symfony\Component\Validator\Constraints\NotNull;
  */
 class MediaAudioAdmin extends Admin
 {
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
+
+    protected $translationDomain = 'BaseAdminBundle';
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -177,6 +188,12 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('displayedHome', null, array(
                 'label' => 'form.media_image.displayed_home'
+            ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => MediaAudio::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => MediaAudio::getPriorityStatuses(),

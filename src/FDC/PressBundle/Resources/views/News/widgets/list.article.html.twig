@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
 {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
     {% set trans = article.header.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
@@ -6,18 +8,19 @@
     {% set file = trans.file %}
     {% set articleType = "article" %}
 {% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
-    {% set trans = article.audio.findTranslationByLocale(app.request.locale) %}
+    {% set trans = article.audio.image.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
         {% set trans = article.audio.findTranslationByLocale('fr') %}
     {% endif %}
-    {% set file = trans.image %}
+    {% set file = trans.file %}
     {% set articleType = "audio" %}
+
 {% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
     {% set trans = article.video.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
         {% set trans = article.video.findTranslationByLocale('fr') %}
     {% endif %}
-    {% set file = trans.image %}
+    {% set file = trans.file %}
     {% set articleType = "video" %}
 {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
     {% set file = "" %}

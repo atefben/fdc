@@ -38,8 +38,6 @@ class Media extends SonataBaseMedia
     protected $filmMedias;
 
     protected $sites;
-    
-    protected $newsWidgetAudios;
 
     protected $pressGuideWidgetAudios;
 

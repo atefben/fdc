@@ -30,6 +30,15 @@ class ContactPageAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 
@@ -109,6 +118,12 @@ class ContactPageAdmin extends Admin
                 )
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => ContactPage::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => ContactPage::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

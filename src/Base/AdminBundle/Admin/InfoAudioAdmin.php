@@ -207,7 +207,6 @@ class InfoAudioAdmin extends Admin
                     'info_widget_quote_type',
                     'info_widget_audio_type',
                     'info_widget_image_type',
-                    'info_widget_image_dual_align_type',
                     'info_widget_video_type',
                     'info_widget_video_youtube_type'
                 ),
@@ -280,6 +279,12 @@ class InfoAudioAdmin extends Admin
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Info::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => Info::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

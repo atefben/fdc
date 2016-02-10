@@ -1721,6 +1721,10 @@ $(document).ready(function() {
 		
 		menu.owlCarousel();
 
+	if($('.header-press').length > 0){
+		$("#selection-btn").css("visibility","hidden");
+	}
+
 });
 $(document).ready(function() {
 
@@ -1882,14 +1886,48 @@ $(document).ready(function() {
 	$("#banner-bottom").addClass('show');
 
 	
-	var menu = $("#horizontal-menu").owlCarousel({
+	
+
+	// NO AJAX FOR FAQ
+
+	if($('.faq-page').length){
+		var menu = $("#horizontal-menu").owlCarousel({
 		  nav: false,
 		  dots: false,
 		  smartSpeed: 500,
 		  margin: 40,
 		  autoWidth: true,
 		  loop: false,
-		  items:2,
+		  items:2
+		});
+		menu.owlCarousel();
+		//$('.owl-stage').width(2440);
+		var w = 0;
+		$('#horizontal-menu .owl-item').each(function() {
+	      var $that = $(this);
+	      w += $that.width()+40;
+	      //console.log($that.width(),w);
+	    });
+		$('.owl-stage').width(w+40);
+		//console.log(w);
+
+		$('#horizontal-menu a').on('click',function(e){
+	      	e.preventDefault();
+  			$('#horizontal-menu a').removeClass('active');
+	        $(this).addClass('active');
+
+	        $(".faq-section-container").removeClass('active');
+	        $("."+$(this).data('section')).addClass('active');
+	    });
+	} else {
+		var menu = $("#horizontal-menu").owlCarousel({
+		  nav: false,
+		  dots: false,
+		  smartSpeed: 500,
+		  margin: 40,
+		  autoWidth: true,
+		  loop: false,
+		  items:1,
 		  onInitialized: function() {
 		    var m = ($(window).width() - $('.container').width()) / 2;
 		    $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
@@ -1906,25 +1944,6 @@ $(document).ready(function() {
 			menu.trigger("to.owl.carousel", [toIndex, 2, true]);	
 
 		}
-
-
-	// NO AJAX FOR FAQ
-
-	if($('.faq-page').length !== 0){
-
-		$('#horizontal-menu a').on('click',function(e){
-	      	e.preventDefault();
-  			$('#horizontal-menu a').removeClass('active');
-	        $(this).addClass('active');
-
-	        $(".faq-section-container").removeClass('active');
-	        $("."+$(this).data('section')).addClass('active');
-	    });
-	}
-
-	else
-
-	{
 
 
 	// AJAX CALL
@@ -2049,6 +2068,21 @@ $(document).ready(function() {
 	    });
 
 	    slider.owlCarousel();
+
+	    var slider_all = $(".all-slider").owlCarousel({ 
+	      nav: false,
+	      dots: false,
+	      smartSpeed: 500,
+	      fluidSpeed: 500,
+	      loop: false,
+	      margin: 0,
+	      autoWidth: true,
+	      dragEndSpeed: 600,
+	      items:1,
+	      center:true
+	    });
+
+	    slider_all.owlCarousel();
 
 	}
 

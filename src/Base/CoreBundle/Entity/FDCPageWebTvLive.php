@@ -1,0 +1,345 @@
+<?php
+
+namespace Base\CoreBundle\Entity;
+
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\SeoMain;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateMain;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * FDCPageWebTvLive
+ *
+ * @ORM\Table()
+ * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks
+ */
+class FDCPageWebTvLive implements TranslateMainInterface
+{
+
+    use Time;
+    use Translatable;
+    use TranslateMain;
+    use SeoMain;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $live;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="displayWebTvArea", type="boolean")
+     */
+    private $doNotDisplayWebTvArea = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="displayTrailerArea", type="boolean")
+     */
+    private $doNotDisplayTrailerArea = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="displayLastVideosArea", type="boolean")
+     */
+    private $doNotDisplayLastVideosArea = false;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     *
+     * @Groups({"web_tv_list", "web_tv_show"})
+     */
+    private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="fDCPageWebTvLive", cascade={"persist"})
+     */
+    private $associatedWebTvs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveMediaVideoAssociated", mappedBy="fDCPageWebTvLive", cascade={"persist"})
+     */
+    private $associatedMediaVideos;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @Assert\Valid()
+     */
+    protected $translations;
+
+
+    public function __construct()
+    {
+        $this->translations =  new ArrayCollection();
+        $this->associatedWebTvs =  new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set live
+     *
+     * @param boolean $live
+     * @return FDCPageWebTvLive
+     */
+    public function setLive($live)
+    {
+        $this->live = $live;
+
+        return $this;
+    }
+
+    /**
+     * Get live
+     *
+     * @return boolean 
+     */
+    public function getLive()
+    {
+        return $this->live;
+    }
+
+    /**
+     * Set doNotDisplayWebTvArea
+     *
+     * @param boolean $doNotDisplayWebTvArea
+     * @return FDCPageWebTvLive
+     */
+    public function setDoNotDisplayWebTvArea($doNotDisplayWebTvArea)
+    {
+        $this->doNotDisplayWebTvArea = $doNotDisplayWebTvArea;
+
+        return $this;
+    }
+
+    /**
+     * Get doNotDisplayWebTvArea
+     *
+     * @return boolean 
+     */
+    public function getDoNotDisplayWebTvArea()
+    {
+        return $this->doNotDisplayWebTvArea;
+    }
+
+    /**
+     * Set doNotDisplayTrailerArea
+     *
+     * @param boolean $doNotDisplayTrailerArea
+     * @return FDCPageWebTvLive
+     */
+    public function setDoNotDisplayTrailerArea($doNotDisplayTrailerArea)
+    {
+        $this->doNotDisplayTrailerArea = $doNotDisplayTrailerArea;
+
+        return $this;
+    }
+
+    /**
+     * Get doNotDisplayTrailerArea
+     *
+     * @return boolean 
+     */
+    public function getDoNotDisplayTrailerArea()
+    {
+        return $this->doNotDisplayTrailerArea;
+    }
+
+    /**
+     * Set doNotDisplayLastVideosArea
+     *
+     * @param boolean $doNotDisplayLastVideosArea
+     * @return FDCPageWebTvLive
+     */
+    public function setDoNotDisplayLastVideosArea($doNotDisplayLastVideosArea)
+    {
+        $this->doNotDisplayLastVideosArea = $doNotDisplayLastVideosArea;
+
+        return $this;
+    }
+
+    /**
+     * Get doNotDisplayLastVideosArea
+     *
+     * @return boolean 
+     */
+    public function getDoNotDisplayLastVideosArea()
+    {
+        return $this->doNotDisplayLastVideosArea;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return FDCPageWebTvLive
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Add webTvs
+     *
+     * @param \Base\CoreBundle\Entity\WebTv $webTvs
+     * @return FDCPageWebTvLive
+     */
+    public function addWebTv(\Base\CoreBundle\Entity\WebTv $webTvs)
+    {
+        $this->webTvs[] = $webTvs;
+
+        return $this;
+    }
+
+    /**
+     * Remove webTvs
+     *
+     * @param \Base\CoreBundle\Entity\WebTv $webTvs
+     */
+    public function removeWebTv(\Base\CoreBundle\Entity\WebTv $webTvs)
+    {
+        $this->webTvs->removeElement($webTvs);
+    }
+
+    /**
+     * Get webTvs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWebTvs()
+    {
+        return $this->webTvs;
+    }
+
+    /**
+     * Add associatedWebTvs
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
+     * @return FDCPageWebTvLive
+     */
+    public function addAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
+    {
+        $associatedWebTvs->setFDCPageWebTvLive($this);
+        $this->associatedWebTvs[] = $associatedWebTvs;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedWebTvs
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
+     */
+    public function removeAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
+    {
+        $this->associatedWebTvs->removeElement($associatedWebTvs);
+    }
+
+    /**
+     * Get associatedWebTvs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedWebTvs()
+    {
+        if ($this->associatedWebTvs->count() != 3) {
+            while ($this->associatedWebTvs->count() != 3) {
+                $this->associatedWebTvs->add(new FDCPageWebTvLiveWebTvAssociated());
+            }
+        }
+        return $this->associatedWebTvs;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getCurrentTranslation()->getTitle();
+    }
+
+
+    /**
+     * Add associatedMediaVideos
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated $associatedMediaVideos
+     * @return FDCPageWebTvLive
+     */
+    public function addAssociatedMediaVideo(\Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated $associatedMediaVideos)
+    {
+        $associatedMediaVideos->setFDCPageWebTvLive($this);
+        $this->associatedMediaVideos[] = $associatedMediaVideos;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedMediaVideos
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated $associatedMediaVideos
+     */
+    public function removeAssociatedMediaVideo(\Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated $associatedMediaVideos)
+    {
+        $this->associatedMediaVideos->removeElement($associatedMediaVideos);
+    }
+
+    /**
+     * Get associatedMediaVideos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedMediaVideos()
+    {
+        if ($this->associatedMediaVideos->count() != 3) {
+            while ($this->associatedMediaVideos->count() != 3) {
+                $this->associatedMediaVideos->add(new FDCPageWebTvLiveMediaVideoAssociated());
+            }
+        }
+        return $this->associatedMediaVideos;
+    }
+}

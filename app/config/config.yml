@@ -91,8 +91,17 @@ twig:
         admin_routes_translation_legend: %admin_routes_translation_legend%
         admin_routes_translation_lock: %admin_routes_translation_lock%
         admin_homepage_id: %admin_homepage_id%
+        admin_fdc_page_web_tv_live_id: %admin_fdc_page_web_tv_live_id%
         admin_fdc_page_web_tv_channels_id: %admin_fdc_page_web_tv_channels_id%
         admin_press_homepage_id: %admin_homepage_id%
+        admin_fdc_page_web_tv_trailers_competition_id: %admin_fdc_page_web_tv_trailers_competition_id%
+        admin_fdc_page_web_tv_trailers_certain_regard_id: %admin_fdc_page_web_tv_trailers_certain_regard_id%
+        admin_fdc_page_web_tv_trailers_hors_competition_id: %admin_fdc_page_web_tv_trailers_hors_competition_id%
+        admin_fdc_page_web_tv_trailers_seances_speciales_id: %admin_fdc_page_web_tv_trailers_seances_speciales_id%
+        admin_fdc_page_web_tv_trailers_cinefondation_id: %admin_fdc_page_web_tv_trailers_cinefondation_id%
+        admin_fdc_page_web_tv_trailers_courts_metrages_id: %admin_fdc_page_web_tv_trailers_courts_metrages_id%
+        admin_fdc_page_web_tv_trailers_cannes_classics_id: %admin_fdc_page_web_tv_trailers_cannes_classics_id%
+        admin_fdc_page_web_tv_trailers_cinema_plage_id: %admin_fdc_page_web_tv_trailers_cinema_plage_id%
 
 # Assetic Configuration
 assetic:

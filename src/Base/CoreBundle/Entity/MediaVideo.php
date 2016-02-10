@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation\Since;
  * MediaVideo
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaVideoRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaVideo extends Media
@@ -43,13 +43,6 @@ class MediaVideo extends Media
     private $homepage;
 
     /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="mediaVideos")
-     */
-    private $film;
-
-    /**
      * @var WebTv
      *
      * @ORM\ManyToOne(targetEntity="WebTv", inversedBy="mediaVideos")
@@ -66,7 +59,7 @@ class MediaVideo extends Media
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
+     * @ORM\oneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
      *
      * @Groups({"trailer_list", "trailer_show"})
      */
@@ -142,29 +135,6 @@ class MediaVideo extends Media
     }
 
     /**
-     * Set film
-     *
-     * @param \Base\CoreBundle\Entity\FilmFilm $film
-     * @return MediaVideo
-     */
-    public function setFilm(\Base\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
-    }
-
-    /**
      * Set webTv
      *
      * @param \Base\CoreBundle\Entity\WebTv $webTv
@@ -219,6 +189,7 @@ class MediaVideo extends Media
      */
     public function addAssociatedFilm(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms)
     {
+        $associatedFilms->setMediaVideo($this);
         $this->associatedFilms[] = $associatedFilms;
 
         return $this;

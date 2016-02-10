@@ -50,6 +50,12 @@ class InfoVideo extends Info
 
         return $string;
     }
+
+    public function getNewsFormat()
+    {
+        return 'videos';
+    }
+
     /**
      * Set video
      *

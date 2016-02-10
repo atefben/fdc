@@ -5,8 +5,8 @@
         {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
-            <li {% if currentLocale == locale %}class="active"{% endif %}>
-                <a href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+            <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
+                <a {% if translationsFields.vars.value is not null and translationsFields.vars.value.status is defined %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
                     {{ locale|capitalize }}
                     {% if form.vars.default_locale == locale %}[MASTER]{% endif %}
                     {% if translationsFields.vars.required %}*{% endif %}
@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{  form_row(form.parent.children.sliderNews) }}
+                                        {{  form_row(form.parent.children.homepageSlide) }}
                                         {{  form_row(form.parent.children.displayedSlider) }}
                                     </div>
                                 </div>
@@ -78,6 +78,8 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
+                                    {{  form_row(form.parent.children.topVideosAssociated) }}
+                                    {{  form_row(form.parent.children.topWebTvsAssociated) }}
                                 </div>
                             </div>
                         </div>
@@ -91,6 +93,7 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
+                                    {{  form_row(form.parent.children.filmsAssociated) }}
                                 </div>
                             </div>
                         </div>
@@ -104,6 +107,24 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.primaryPushTitle1) }}
+                                        {{  form_row(form.parent.children.pushsMainImage1) }}
+                                        {{  form_row(translationsFields.primaryPushUrl1) }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.primaryPushTitle2) }}
+                                        {{  form_row(form.parent.children.pushsMainImage2) }}
+                                        {{  form_row(translationsFields.primaryPushUrl2) }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.primaryPushTitle3) }}
+                                        {{  form_row(form.parent.children.pushsMainImage3) }}
+                                        {{  form_row(translationsFields.primaryPushUrl3) }}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{  form_row(form.parent.children.displayedPushsMain) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +138,55 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle1) }}
+                                        {{  form_row(form.parent.children.pushsSecondaryImage1) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl1) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle2) }}
+                                        {{  form_row(form.parent.children.pushsSecondaryImage2) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl2) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle3) }}
+                                        {{  form_row(form.parent.children.pushsSecondaryImage3) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl3) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle4) }}
+                                        {{  form_row(form.parent.children.pushsSecondaryImage4) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl4) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle5) }}
+                                        {{  form_row(form.parent.children.pushsSecondaryImage5) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl5) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle6) }}
+                                        {{  form_row(form.parent.children.pushsSecondaryImage6) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl6) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle7) }}
+                                        {{  form_row(form.parent.children.pushsSecondaryImage7) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl7) }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle8) }}
+                                        {{  form_row(form.parent.children.pushsSecondaryImage8) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl8) }}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{  form_row(form.parent.children.displayedPushsSecondary) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -130,6 +200,31 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
+                                    <div class="col-md-6">
+                                        {{  form_row(translationsFields.prefooterTitle1) }}
+                                        {{  form_row(form.parent.children.prefooterImage1) }}
+                                        {{  form_row(translationsFields.prefooterUrl1) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{  form_row(translationsFields.prefooterTitle2) }}
+                                        {{  form_row(form.parent.children.prefooterImage2) }}
+                                        {{  form_row(translationsFields.prefooterUrl2) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{  form_row(translationsFields.prefooterTitle3) }}
+                                        {{  form_row(form.parent.children.prefooterImage3) }}
+                                        {{  form_row(translationsFields.prefooterUrl3) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{  form_row(translationsFields.prefooterTitle4) }}
+                                        {{  form_row(form.parent.children.prefooterImage4) }}
+                                        {{  form_row(translationsFields.prefooterUrl4) }}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{  form_row(form.parent.children.displayedPrefooters) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +243,259 @@
                         </div>
                     </div>
                 {% else %}
-                    translation
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'homepage.group.push_main'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.primaryPushTitle1) }}
+                                        {{  form_row(translationsFields.primaryPushUrl1) }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.primaryPushTitle2) }}
+                                        {{  form_row(translationsFields.primaryPushUrl2) }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.primaryPushTitle3) }}
+                                        {{  form_row(translationsFields.primaryPushUrl3) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'homepage.group.push_secondary'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle1) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl1) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle2) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl2) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle3) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl3) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle4) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl4) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle5) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl5) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle6) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl6) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle7) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl7) }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.secondaryPushTitle8) }}
+                                        {{  form_row(translationsFields.secondaryPushUrl8) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_primary_push_title'|trans }}1
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle1 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_primary_push_url'|trans }}1
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl1 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_primary_push_title'|trans }}2
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle2 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_primary_push_url'|trans }}2
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl2 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_primary_push_title'|trans }}3
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle3 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_primary_push_url'|trans }}3
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl3 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_secondary_push_title'|trans }}1
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle1 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_secondary_push_url'|trans }}1
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl1 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_secondary_push_title'|trans }}2
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle2 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_secondary_push_url'|trans }}2
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl2 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_secondary_push_title'|trans }}3
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle3 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_secondary_push_url'|trans }}3
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl3 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_secondary_push_title'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle4 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_secondary_push_url'|trans }}4
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl4 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_secondary_push_title'|trans }}5
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle5 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_secondary_push_url'|trans }}5
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl5 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_secondary_push_title'|trans }}6
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle6 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_secondary_push_url'|trans }}6
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl6 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_secondary_push_title'|trans }}7
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle7 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_secondary_push_url'|trans }}7
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl7 }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_secondary_push_title'|trans }}8
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle8 }}
+                                            </div>
+                                            <label>
+                                                {{ 'form.label_secondary_push_url'|trans }}8
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl8 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         {% endfor %}

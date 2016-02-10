@@ -43,6 +43,11 @@ class StatementAudio extends Statement
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'audios';
+    }
+
     /**
      * Set audio
      *
@@ -59,7 +64,7 @@ class StatementAudio extends Statement
     /**
      * Get audio
      *
-     * @return \Base\CoreBundle\Entity\MediaAudio 
+     * @return \Base\CoreBundle\Entity\MediaAudio
      */
     public function getAudio()
     {

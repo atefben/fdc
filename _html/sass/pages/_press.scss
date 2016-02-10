@@ -38,6 +38,47 @@
     }
   }
 
+  a.bold{
+    font-family: $CamphorBold; 
+  }
+
+  .title-center{
+    width: 607px;
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 36px;
+    text-transform: none;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .descrip-title{
+    text-align: center;
+    line-height: 26px;
+    font-size: 0.81rem;
+
+    strong{
+      color: #c8a461;
+      font-family: $CamphorBold;
+      font-size: 0.81rem;
+    }
+  }
+
+  #google-map {
+    width: 975px;
+    height: 350px;
+    margin-top: 51px;
+  }
+
+  .googlemap-descrip{
+    font-size: .75rem;
+    color: #333333;
+    font-family: $CamphorMedium;
+    margin-top: 10px;
+    display: block;
+  }
+
   .fc-event {
     background-color: #373737;
     border-radius: 0;
@@ -1587,6 +1628,11 @@
     }
   }
 
+  .popin{
+    position: relative;
+    top: 0px;
+  }
+
   #calendar {
     #mycalendar {
       .fc-time-grid-container {
@@ -1708,13 +1754,18 @@
     right: 20px;
     width: 70px;
     color: $gold;
+
     .icon{
       line-height: 72px;
+     @include transition(all 0.6s $smoothTransition);
     }
 
     &:hover{
-      color: #000;
       border-color: #000;
+
+      .icon{
+        color: #000;
+      }
     }
   }
 
@@ -1749,22 +1800,41 @@
     @include transition(all 0.9s $smoothTransition);
 
     &.owl-prev {
-      background: url('../img/svg/arrow-left-black.svg') no-repeat center;
-      background-size: 15px;
+      text-align: center;
       float: left;
+      color: #DFDFDF;
 
       &:hover {
         border-color: $black;
+        color:#000;
+      }
+
+      //attention if add icon font need too change this number !
+      &:after{
+        content: "\f12e";
+        font-family: "icons";
+        font-size: 1rem;
+        line-height: 84px;
       }
     }
 
     &.owl-next {
-      background: url('../img/svg/arrow-right-black.svg') no-repeat center;
-      background-size: 15px;
+      text-align: center;
       float: right;
+      color: #DFDFDF;
+
 
       &:hover {
         border-color: $black;
+        color:#000;
+      }
+
+      //attention if add icon font need too change this number !
+      &:after{
+        content: "\f12c";
+        font-family: "icons";
+        font-size: 1rem;
+        line-height: 84px;
       }
     }
   }
@@ -2347,6 +2417,9 @@
     .buttons{
       position: absolute;
       right: 1px;
+    }
+    .button.list:hover{
+      color:$gold !important;
     }
   }
 }

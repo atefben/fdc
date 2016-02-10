@@ -47,7 +47,7 @@ class MediaTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('tag')
+            ->add('tag', 'sonata_type_model_list', array('btn_delete' => false))
         ;
     }
 

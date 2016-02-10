@@ -10,24 +10,35 @@
 {% block body %}
     <div id="main" class="home loading">
         <span id="addtext">{{ 'home.btn.ajouteramaselection'|trans }}</span>
+
+        {% if displayHomeSlider == false %}
         <div id="sliderWrapper">
             <div id="slider" class="owl-carousel">
-
                 {% for slide in homeSlider %}
-                    <div>
-                        <div class="img-container">
-                            <div class="img" style="background-image:url({{ slide.image.path }})"></div>
+                    {% if slide != null %}
+                        {% if slide.header is not null %}
+                            {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = slide.header.findTranslationByLocale('fr') %}
+                            {% endif %}
+                        {% endif %}
+                        <div>
+                            <div class="img-container">
+                                <div class="img" style="background-image:url({% path trans.file , '1461x923' %})"></div>
+                            </div>
+                            <div class="info">
+                                <span class="category">{{ slide.theme|trans_fallback('name') }}</span>
+                                <h2>{{ slide|trans_fallback('title') }}</h2>
+                            </div>
+                            <a href="{{ path('fdc_event_news_get', {format: slide.newsFormat, 'slug': slide.id }) }}" class="linkArticle"></a>
                         </div>
-                        <div class="info">
-                            <span class="category">{{ slide.theme }}</span>
-                            <h2>{{ slide.title }}</h2>
-                        </div>
-                        <a href="{{ path('fdc_event_news_get', {'slug': slide.id }) }}" class="linkArticle"></a>
-                    </div>
+                    {% endif %}
                 {% endfor %}
-
             </div>
         </div>
+        {% endif %}
+
+    {% if homepage.displayedTopNews == false %}
         <div id="news">
             <div id="canvasloader" class="canvasloader"></div>
             <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>
@@ -44,7 +55,7 @@
                          </div>
 
                          <!-- SLIDESHOW -->
-                         {% if homeArticlesSlider is not null %}
+                         {% if homeArticlesSlider is not empty %}
                              {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
                          {% endif %}
 
@@ -61,10 +72,11 @@
                 </div>
 
                 <div id="timeline">
-                    {% for key, date in socialGraph.timeline %}
-                        <a href="#" data-date="{{ date.date|date('d') }}" class="{% if key == 0 %}active{% endif %}">
-                            {{ date.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                            <span class="day">{{ date.date|date('d') }}</span>
+                    {% for key,date in festivalInterval %}
+                    {#{% for key, date in socialGraph.timeline %}#}
+                        <a href="#" data-date="{{ date|date('d') }}" class="{% if date == "now"|date('Y-m-d') %}active{% elseif date > "now"|date('Y-m-d') %}disabled{% endif %}">
+                            {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                            <span class="day">{{ date|date('d') }}</span>
                         </a>
                     {% endfor %}
                 </div>
@@ -72,8 +84,9 @@
                 <div id="shd" class="shadow-bottom"></div>
             </div>
         </div>
+    {% endif %}
 
-    {% if homepage.displayedSocialWall %}
+    {% if homepage.displayedSocialWall == false %}
         <div id="social-wall">
             <div class="container">
                 <div id="graph">
@@ -152,30 +165,239 @@
             </div>
         </div>
 
+        {% if homepage.displayedPushsMain == false %}
         <div class="push-container">
             <div class="container">
 
-            {% for category in homeCategories %}
-                {% include 'FDCEventBundle:News:widgets/push.html.twig' %}
-            {% endfor %}
+                {% if homepage.pushsMainImage1 is not null %}
+                    {% set trans = homepage.pushsMainImage1.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsMainImage1.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('primaryPushTitle1') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('primaryPushUrl1') }}"></a>
+                    </div>
+                {% endif %}
+
+                {% if homepage.pushsMainImage2 is not null %}
+                    {% set trans = homepage.pushsMainImage2.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsMainImage2.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('primaryPushTitle2') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('primaryPushUrl2') }}"></a>
+                    </div>
+                {% endif %}
+
+                {% if homepage.pushsMainImage3 is not null %}
+                    {% set trans = homepage.pushsMainImage3.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsMainImage3.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('primaryPushTitle3') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('primaryPushUrl3') }}"></a>
+                    </div>
+                {% endif %}
 
             </div>
         </div>
+        {% endif %}
+
+        {% if homepage.displayedPushsSecondary == false %}
         <div class="push-container white">
             <div class="container">
 
-                {% for category in homeCategoriesFeatured %}
-                    {% if category.blank %}
+                    {% if homepage.pushsSecondaryImage1 is null %}
                         <div class="push"></div>
                     {% else %}
-                        {% include 'FDCEventBundle:News:widgets/push.html.twig' %}
+                        {% set trans = homepage.pushsSecondaryImage1 .findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = homepage.pushsSecondaryImage1 .findTranslationByLocale('fr') %}
+                        {% endif %}
+                        <div class="push">
+                            <div class="image-wrapper">
+                                <img src="{% path trans.file, '293x185' %}" alt="" />
+                            </div>
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <h3>{{ homepage|trans_fallback('secondaryPushTitle1') }}</h3>
+                                </div>
+                            </div>
+                            <a href="{{ homepage|trans_fallback('secondaryPushUrl1') }}"></a>
+                        </div>
                     {% endif %}
-                {% endfor %}
+
+                {% if homepage.pushsSecondaryImage2 is null %}
+                    <div class="push"></div>
+                {% else %}
+                    {% set trans = homepage.pushsSecondaryImage2 .findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsSecondaryImage2 .findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('secondaryPushTitle2') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('secondaryPushUrl2') }}"></a>
+                    </div>
+                {% endif %}
+
+                {% if homepage.pushsSecondaryImage3 is null %}
+                    <div class="push"></div>
+                {% else %}
+                    {% set trans = homepage.pushsSecondaryImage3 .findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsSecondaryImage3 .findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('secondaryPushTitle3') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('secondaryPushUrl3') }}"></a>
+                    </div>
+                {% endif %}
+
+                {% if homepage.pushsSecondaryImage4 is null %}
+                    <div class="push bigger"></div>
+                {% else %}
+                    {% set trans = homepage.pushsSecondaryImage4 .findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsSecondaryImage4 .findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('secondaryPushTitle4') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('secondaryPushUrl4') }}"></a>
+                    </div>
+                {% endif %}
+
+                {% if homepage.pushsSecondaryImage5 is null %}
+                    <div class="push"></div>
+                {% else %}
+                    {% set trans = homepage.pushsSecondaryImage5 .findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsSecondaryImage5 .findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('secondaryPushTitle5') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('secondaryPushUrl5') }}"></a>
+                    </div>
+                {% endif %}
+
+                {% if homepage.pushsSecondaryImage6 is null %}
+                    <div class="push"></div>
+                {% else %}
+                    {% set trans = homepage.pushsSecondaryImage6 .findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsSecondaryImage6 .findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('secondaryPushTitle6') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('secondaryPushUrl6') }}"></a>
+                    </div>
+                {% endif %}
+
+                {% if homepage.pushsSecondaryImage7 is null %}
+                    <div class="push"></div>
+                {% else %}
+                    {% set trans = homepage.pushsSecondaryImage7 .findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsSecondaryImage7 .findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('secondaryPushTitle7') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('secondaryPushUrl7') }}"></a>
+                    </div>
+                {% endif %}
+
+                {% if homepage.pushsSecondaryImage8 is null %}
+                    <div class="push"></div>
+                {% else %}
+                    {% set trans = homepage.pushsSecondaryImage8 .findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsSecondaryImage8 .findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <div class="push">
+                        <div class="image-wrapper">
+                            <img src="{% path trans.file, '293x185' %}" alt="" />
+                        </div>
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <h3>{{ homepage|trans_fallback('secondaryPushTitle8') }}</h3>
+                            </div>
+                        </div>
+                        <a href="{{ homepage|trans_fallback('secondaryPushUrl8') }}"></a>
+                    </div>
+                {% endif %}
 
             </div>
         </div>
+        {% endif %}
 
+    {% if homepage.displayedPrefooters == false %}
         {% include 'FDCEventBundle:News:components/prefooter.html.twig' %}
+    {% endif %}
 
     </div>
 

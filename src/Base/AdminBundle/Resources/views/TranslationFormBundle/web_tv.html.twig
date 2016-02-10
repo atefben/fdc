@@ -2,11 +2,13 @@
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
     <ul class="a2lix_translationsLocales nav nav-tabs">
+        {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
-            <li {% if form.vars.default_locale == locale %}class="active"{% endif %} data-locale="{{ locale }}">
-                <a href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+            <li {% if form.vars.default_locale == locale %}class="nav-tab-active active"{% endif %} data-locale="{{ locale }}">
+                <a {% if translationsFields.vars.value is not null %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
                     {% set langKey = 'lang.' ~ locale %}
                     {{ langKey|trans({}, 'BaseAdminBundle') }}
                     {% if form.vars.default_locale == locale %}(MASTER){% endif %}
@@ -20,7 +22,7 @@
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
-            <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if form.vars.default_locale == locale %}active{% endif %}">
+            <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="box box-success">
@@ -56,8 +58,9 @@
                                         <div class="form-group fdc-input-border">
                                             {{ form_widget(form.parent.children.translate) }}
                                             {{ form_label(form.parent.children.translate) }}
+                                            {{ form_widget(form.parent.children.translateOptions) }}
+                                            {{ form_row(form.parent.children.priorityStatus) }}
                                         </div>
-                                        {{ form_row(form.parent.children.priorityStatus) }}
                                         <div class="status-hidden">
                                             {{ form_row(translationsFields.status) }}
                                         </div>
@@ -84,6 +87,28 @@
                                     </div>
                                 </div>
                             {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
+                                    <h4 class="box-title">
+                                        {{ 'group.seo'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                                {% if form.vars.default_locale == locale %}
+                                    {{ form_row(form.parent.children.seoFile) }}
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>

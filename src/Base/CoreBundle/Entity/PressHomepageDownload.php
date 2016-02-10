@@ -33,9 +33,9 @@ class PressHomepageDownload
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="FilmFilm", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PressDownloadSection", cascade={"persist"})
      */
-    protected $film;
+    protected $download;
 
     /**
      * @var integer
@@ -50,7 +50,7 @@ class PressHomepageDownload
      * @ORM\ManyToOne(targetEntity="PressHomepage", inversedBy="homeDownload")
      */
     protected $homepage;
-    
+
 
     /**
      * Get id
@@ -86,26 +86,26 @@ class PressHomepageDownload
     }
 
     /**
-     * Set film
+     * Set download
      *
-     * @param \Base\CoreBundle\Entity\FilmFilm $film
+     * @param \Base\CoreBundle\Entity\PressDownloadSection $download
      * @return PressHomepageDownload
      */
-    public function setFilm(\Base\CoreBundle\Entity\FilmFilm $film = null)
+    public function setDownload(\Base\CoreBundle\Entity\PressDownloadSection $download = null)
     {
-        $this->film = $film;
+        $this->download = $download;
 
         return $this;
     }
 
     /**
-     * Get film
+     * Get download
      *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
+     * @return \Base\CoreBundle\Entity\PressDownloadSection 
      */
-    public function getFilm()
+    public function getDownload()
     {
-        return $this->film;
+        return $this->download;
     }
 
     /**

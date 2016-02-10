@@ -1,4 +1,4 @@
-<article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article|trans_fallback('createdAt')|date('U') }}" data-time="" data-theme="{{ article.theme|trans_fallback('slug') }}">
+<article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article|trans_fallback('createdAt')|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
     <div class="image">
         <div class="image-wrapper">
             {% if article.header is defined and article.header is not null %}
@@ -11,7 +11,7 @@
                 {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
             {% endif %}
         </div>
-        <a href="{{ path('fdc_event_news_get', {'slug': article.slug}) }}" class="linkImage"></a>
+        <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article.slug}) }}" class="linkImage"></a>
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
@@ -20,6 +20,6 @@
     <div class="info">
         <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
         <span class="date">{{ article|trans_fallback('createdAt')|date('d.m.y') }}</span> . <span class="hour">{{ article|trans_fallback('createdAt')|date('H:i') }}</span>
-        <h3><a href="{{ path('fdc_event_news_get', {'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title') }}</a></h3>
+        <h3><a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title') }}</a></h3>
     </div>
 </article>

@@ -30,6 +30,14 @@ class NewsWidgetAudioType extends NewsWidgetType
      * @access private
      */
     private $admin;
+
+    /**
+     * mediaAudioAdmin
+     *
+     * @var mixed
+     * @access private
+     */
+    private $mediaAudioAdmin;
     
     /**
      * setSonataAdmin function.
@@ -43,6 +51,11 @@ class NewsWidgetAudioType extends NewsWidgetType
         $this->admin = $admin;
     }
 
+    public function setMediaAudioAdmin($mediaAudioAdmin)
+    {
+        $this->mediaAudioAdmin = $mediaAudioAdmin;
+    }
+
     /**
      * buildForm function.
      * 
@@ -54,15 +67,14 @@ class NewsWidgetAudioType extends NewsWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-       /* $builder->add('gallery', 'sonata_type_model', array(
-            'model_manager' => $this->admin->getModelManager(),
-            'class' => $this->admin->getClass()
-        ));*/
 
-      /*  $builder->add('file', 'sonata_type_model', array(
-            'model_manager' => $this->admin->getModelManager(),
-            'class' => $this->admin->getClass()
-        ));*/
+        $builder->add('file', 'sonata_type_model_list', array(
+            'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['file'],
+            'model_manager' => $this->mediaAudioAdmin->getModelManager(),
+            'class' => $this->mediaAudioAdmin->getClass(),
+            'btn_delete' => false,
+            'label' => false
+        ));
     }
 
     /**

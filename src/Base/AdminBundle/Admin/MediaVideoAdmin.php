@@ -21,6 +21,12 @@ class MediaVideoAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -183,6 +189,12 @@ class MediaVideoAdmin extends Admin
             ->add('displayedHome', null, array(
                 'label' => 'form.media_video.displayed_home'
             ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => MediaVideo::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => MediaVideo::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
@@ -242,4 +254,23 @@ class MediaVideoAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
+
+    /**
+     * @param string $context
+     * @return \Sonata\AdminBundle\Datagrid\ProxyQueryInterface
+     */
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $pcode = $this->getRequest()->get('pcode') === 'base.admin.fdc_page_web_tv_live_media_video_associated';
+        if ($pcode && $context == 'list')
+        {
+            $query->andWhere($query->getRootAlias() . '.displayedTrailer = 1');
+        }
+
+        return $query;
+
+    }
+
 }

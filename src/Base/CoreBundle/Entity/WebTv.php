@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
@@ -28,6 +29,7 @@ class WebTv implements TranslateMainInterface
     use Time;
     use TranslateMain;
     use Translatable;
+    use SeoMain;
 
     /**
      * @var string

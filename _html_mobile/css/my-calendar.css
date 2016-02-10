@@ -59,6 +59,8 @@
 .calendar .venues .venue .v-container .fc-event.one-hour .txt span{
 	max-width: 100%;
 	font-size: 20px;
+	height: 30px;
+	-webkit-line-clamp:1;
 }
 .calendar .venues .venue .v-container .fc-event .txt strong, .calendar .venues .venue .v-container .fc-event .bottom, .calendar .venues .venue .v-container .fc-event .bottom .competition{
 	font-size: 23px;

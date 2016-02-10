@@ -66,6 +66,12 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
                     'copyright' => array(
                         'label' => 'form.label_copyright',
                         'translation_domain' => 'BaseAdminBundle',
@@ -83,17 +89,9 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                                 'required' => true
                             )
                         )
-                    ),
-                    'createdAt' => array(
-                        'display' => false
-                    ),
-                    'updatedAt' => array(
-                        'display' => false
-                    ),
+                    )
                 )
             ))
-//            ->add('createdAt', 'hidden')
-
             ->add('updatedAt', 'date')
 
             ->add('file', 'sonata_type_model_list', array(

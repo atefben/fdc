@@ -31,7 +31,13 @@ class NewsArticle extends News
      * @Assert\NotNull()
      */
     private $header;
-    
+
+
+    public function getNewsFormat()
+    {
+        return 'articles';
+    }
+
 
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);

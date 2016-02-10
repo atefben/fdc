@@ -61,8 +61,7 @@
             <h2 class="title-big">Lumière sur deux réalisateurs</h2>
             <div class="buttons">
               <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
-              <a href="#" class="button print"><i class="icon icon_print"></i>
-    Imprimer</a>
+              <a href="#" class="button print"><i class="icon icon_print"></i>Imprimer</a>
             </div>
           </div>
           <div class="contain-article-invit">
@@ -71,7 +70,7 @@
             </div>
             <div class=" contain-img-honneur">
               <img src="img/films/image-invitespecial.jpg" alt="invite d honneur" class="photo-realisateur">
-              <span class="copy"> © Lorem ipsum.</span>
+              <span class="copy">Lorem ipsum.</span>
             </div>
             <p class="pres-honneur">Cannes Classics 2015 est placé sous l'égide de Costa-Gavras qui en sera l'invité d'honneur. Palme d’or avec <a href="#">Missing</a> en 1982, membre du Jury en 1976 (il récompensa <a href="#">Taxi Driver</a>), Prix de la mise en scène avec <a href="#">Section spéciale</a> en 1975, c’est en sa présence que sera projeté Z, Prix du Jury en 1969.</p>
             <div class="small-pres">

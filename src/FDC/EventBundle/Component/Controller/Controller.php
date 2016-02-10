@@ -32,6 +32,11 @@ class Controller extends BaseController
         return $settings;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @return \Doctrine\Common\Persistence\ObjectRepository
+     */
     public function __call($name, $arguments)
     {
         if (substr($name, 0, 11) === 'getBaseCore' && substr($name, -10) === 'Repository') {
@@ -44,7 +49,8 @@ class Controller extends BaseController
      * @return Settings
      * @throws NotFoundHttpException
      */
-    public function getFestival() {
+    public function getFestival()
+    {
 
         if (!$this->getSettings() || $this->getSettings()->getFestival() === null) {
             throw $this->createNotFoundException();

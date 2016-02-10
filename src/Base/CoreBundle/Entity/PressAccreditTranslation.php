@@ -5,9 +5,11 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Base\CoreBundle\Util\Seo;
 
+use Base\CoreBundle\Util\Seo;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
 
 /**
  * PressAccreditTranslation
@@ -16,30 +18,31 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressAccreditTranslation
+class PressAccreditTranslation implements TranslateChildInterface
 {
     use Time;
+    use TranslateChild;
     use Translation;
     use Seo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="common_title", type="string", length=255)
+     * @ORM\Column(name="common_title", type="string", length=255, nullable=true)
      */
     protected $commonTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="common_content", type="string")
+     * @ORM\Column(name="common_content", type="text", nullable=true)
      */
     protected $commonContent;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="procedure_main_title", type="string", length=255)
+     * @ORM\Column(name="procedure_main_title", type="string", length=255, nullable=true)
      */
     protected $procedureMainTitle;
 

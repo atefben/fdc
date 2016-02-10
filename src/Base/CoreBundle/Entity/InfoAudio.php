@@ -43,6 +43,11 @@ class InfoAudio extends Info
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'audios';
+    }
+
     /**
      * Set audio
      *

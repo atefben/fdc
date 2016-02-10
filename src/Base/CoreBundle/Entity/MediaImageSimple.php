@@ -80,7 +80,6 @@ class MediaImageSimple implements TranslateMainInterface
      */
     private $sites;
 
-
     /**
      * Get id
      *
@@ -202,6 +201,12 @@ class MediaImageSimple implements TranslateMainInterface
 
     public function __toString()
     {
-        return $this->name;
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = $this->getName();
+        }
+
+        return $string;
     }
 }

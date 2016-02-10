@@ -6,6 +6,8 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 
 /**
@@ -15,10 +17,12 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressHomepage
+class PressHomepage implements TranslateMainInterface
 {
-    use Translatable;
     use Time;
+    use Translatable;
+    use TranslateMain;
+
     /**
      * @var integer
      *
@@ -50,18 +54,16 @@ class PressHomepage
     protected $homeDownload;
 
     /**
-     * @var PressHomepagePushMain
-     *
-     * @ORM\OneToMany(targetEntity="PressHomepagePushMain", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
+     * var MediaImage
+     * @ORM\ManyToOne(targetEntity="MediaImage")
      */
-    protected $pushsMain;
+    protected $pushMainImage;
 
     /**
-     * @var PressHomepagePushSecondary
-     *
-     * @ORM\OneToMany(targetEntity="PressHomepagePushSecondary", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
+     * var MediaImage
+     * @ORM\ManyToOne(targetEntity="MediaImage")
      */
-    protected $pushsSecondary;
+    protected $pushSecondaryImage;
 
     /**
      * var MediaImage
@@ -125,8 +127,6 @@ class PressHomepage
         $this->homeMedia = new ArrayCollection();
         $this->homeDownload = new ArrayCollection();
         $this->translations = new ArrayCollection();
-        $this->pushsMain = new ArrayCollection();
-        $this->pushsSecondary = new ArrayCollection();
     }
 
     /**
@@ -274,97 +274,6 @@ class PressHomepage
     public function getHomeDownload()
     {
         return $this->homeDownload;
-    }
-
-
-    /**
-     * Add pushsMain
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain
-     * @return PressHomepage
-     */
-    public function addPushsMain(\Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain)
-    {
-        $pushsMain->setHomepage($this);
-        $this->pushsMain->add($pushsMain);
-    }
-
-    /**
-     * Remove pushsMain
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain
-     */
-    public function removePushsMain(\Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain)
-    {
-        $this->pushsMain->removeElement($pushsMain);
-    }
-
-    /**
-     * Get pushsMain
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPushsMain()
-    {
-        return $this->pushsMain;
-    }
-
-    /**
-     * Set pushsMain
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain
-     * @return PressHomepage
-     */
-    public function setPushsMain(\Base\CoreBundle\Entity\PressHomepagePushMain $pushsMain = null)
-    {
-        $this->pushsMain = $pushsMain;
-
-        return $this;
-    }
-
-    /**
-     * Add pushsSecondary
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary
-     * @return PressHomepage
-     */
-    public function addPushsSecondary(\Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary)
-    {
-        $pushsSecondary->setHomepage($this);
-        $this->pushsSecondary->add($pushsSecondary);
-    }
-
-    /**
-     * Remove pushsSecondary
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary
-     */
-    public function removePushsSecondary(\Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary)
-    {
-        $this->pushsSecondary->removeElement($pushsSecondary);
-    }
-
-    /**
-     * Get pushsSecondary
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPushsSecondary()
-    {
-        return $this->pushsSecondary;
-    }
-
-    /**
-     * Set pushsSecondary
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary
-     * @return PressHomepage
-     */
-    public function setPushsSecondary(\Base\CoreBundle\Entity\PressHomepagePushSecondary $pushsSecondary = null)
-    {
-        $this->pushsSecondary = $pushsSecondary;
-
-        return $this;
     }
 
     /**
@@ -526,5 +435,51 @@ class PressHomepage
     public function getSectionStatisticDisplay()
     {
         return $this->sectionStatisticDisplay;
+    }
+
+    /**
+     * Set pushMainImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $pushMainImage
+     * @return PressHomepage
+     */
+    public function setPushMainImage(\Base\CoreBundle\Entity\MediaImage $pushMainImage = null)
+    {
+        $this->pushMainImage = $pushMainImage;
+
+        return $this;
+    }
+
+    /**
+     * Get pushMainImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getPushMainImage()
+    {
+        return $this->pushMainImage;
+    }
+
+    /**
+     * Set pushSecondaryImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $pushSecondaryImage
+     * @return PressHomepage
+     */
+    public function setPushSecondaryImage(\Base\CoreBundle\Entity\MediaImage $pushSecondaryImage = null)
+    {
+        $this->pushSecondaryImage = $pushSecondaryImage;
+
+        return $this;
+    }
+
+    /**
+     * Get pushSecondaryImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getPushSecondaryImage()
+    {
+        return $this->pushSecondaryImage;
     }
 }

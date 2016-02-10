@@ -6,9 +6,11 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Base\CoreBundle\Util\Seo;
 
+use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
  * PressHomepageTranslation
@@ -17,8 +19,9 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressHomepageTranslation
+class PressHomepageTranslation implements TranslateChildInterface
 {
+    use TranslateChild;
     use Time;
     use Translation;
     use Seo;
@@ -86,14 +89,29 @@ class PressHomepageTranslation
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      **/
-    private $sectionPushMainTitle;
+    private $pushMainTitle;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      **/
-    private $sectionPushSecondaryTitle;
+    private $pushMainLink;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     **/
+    private $pushSecondaryTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     **/
+    private $pushSecondaryLink;
+
 
     /**
      * Set sectionStatementInfoTitle
@@ -279,50 +297,95 @@ class PressHomepageTranslation
         return $this->sectionStatisticDescription;
     }
 
-
     /**
-     * Set sectionPushMainTitle
+     * Set pushMainTitle
      *
-     * @param string $sectionPushMainTitle
+     * @param string $pushMainTitle
      * @return PressHomepageTranslation
      */
-    public function setSectionPushMainTitle($sectionPushMainTitle)
+    public function setPushMainTitle($pushMainTitle)
     {
-        $this->sectionPushMainTitle = $sectionPushMainTitle;
+        $this->pushMainTitle = $pushMainTitle;
 
         return $this;
     }
 
     /**
-     * Get sectionPushMainTitle
+     * Get pushMainTitle
      *
      * @return string 
      */
-    public function getSectionPushMainTitle()
+    public function getPushMainTitle()
     {
-        return $this->sectionPushMainTitle;
+        return $this->pushMainTitle;
     }
 
     /**
-     * Set sectionPushSecondaryTitle
+     * Set pushMainLink
      *
-     * @param string $sectionPushSecondaryTitle
+     * @param string $pushMainLink
      * @return PressHomepageTranslation
      */
-    public function setSectionPushSecondaryTitle($sectionPushSecondaryTitle)
+    public function setPushMainLink($pushMainLink)
     {
-        $this->sectionPushSecondaryTitle = $sectionPushSecondaryTitle;
+        $this->pushMainLink = $pushMainLink;
 
         return $this;
     }
 
     /**
-     * Get sectionPushSecondaryTitle
+     * Get pushMainLink
      *
      * @return string 
      */
-    public function getSectionPushSecondaryTitle()
+    public function getPushMainLink()
     {
-        return $this->sectionPushSecondaryTitle;
+        return $this->pushMainLink;
+    }
+
+    /**
+     * Set pushSecondaryTitle
+     *
+     * @param string $pushSecondaryTitle
+     * @return PressHomepageTranslation
+     */
+    public function setPushSecondaryTitle($pushSecondaryTitle)
+    {
+        $this->pushSecondaryTitle = $pushSecondaryTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get pushSecondaryTitle
+     *
+     * @return string 
+     */
+    public function getPushSecondaryTitle()
+    {
+        return $this->pushSecondaryTitle;
+    }
+
+    /**
+     * Set pushSecondaryLink
+     *
+     * @param string $pushSecondaryLink
+     * @return PressHomepageTranslation
+     */
+    public function setPushSecondaryLink($pushSecondaryLink)
+    {
+        $this->pushSecondaryLink = $pushSecondaryLink;
+
+        return $this;
+    }
+
+    /**
+     * Get pushSecondaryLink
+     *
+     * @return string 
+     */
+    public function getPushSecondaryLink()
+    {
+        return $this->pushSecondaryLink;
     }
 }

@@ -29,7 +29,7 @@ class TransFallbackExtension extends Twig_Extension
         );
     }
 
-    public function transFallbackFilter($object, $property)
+    public function transFallbackFilter($object, $property, $defaultLocale = 'en')
     {
         $locale = $this->requestStack->getCurrentRequest()->getLocale();
         $trans = $object->findTranslationByLocale($locale);
@@ -39,7 +39,7 @@ class TransFallbackExtension extends Twig_Extension
             return $trans->{'get'.$property}();
         }
 
-        $transEn = $object->findTranslationByLocale('en');
+        $transEn = $object->findTranslationByLocale($defaultLocale);
 
         if ($transEn && $transEn->{'get'.$property}()) {
             return $transEn->{'get'.$property}();

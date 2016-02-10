@@ -5,7 +5,8 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 
 /**
@@ -15,10 +16,12 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressAccredit
+class PressAccredit implements TranslateMainInterface
 {
-    use Translatable;
     use Time;
+    use Translatable;
+    use TranslateMain;
+
     /**
      * @var integer
      *
@@ -31,7 +34,7 @@ class PressAccredit
     /**
      * @var PressAccreditProcedure
      *
-     * @ORM\OneToMany(targetEntity="PressAccreditProcedure", mappedBy="accredit", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="PressAccreditHasProcedure", mappedBy="accredit", cascade={"persist"}, orphanRemoval=true)
      */
     protected $procedure;
 
@@ -49,7 +52,6 @@ class PressAccredit
         $this->procedure = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *
@@ -60,35 +62,26 @@ class PressAccredit
         return $this->id;
     }
 
+
     /**
      * Add procedure
      *
-     * @param \Base\CoreBundle\Entity\PressAccreditProcedure $procedure
+     * @param \Base\CoreBundle\Entity\PressAccreditHasProcedure $procedure
      * @return PressAccredit
      */
-    public function addProcedure(\Base\CoreBundle\Entity\PressAccreditProcedure $procedure)
+    public function addProcedure(\Base\CoreBundle\Entity\PressAccreditHasProcedure $procedure)
     {
         $procedure->setAccredit($this);
         $this->procedure->add($procedure);
-    }
 
-    /**
-     * @param $procedure
-     * @return $this
-     */
-    public function setProcedure($procedure)
-    {
-
-        $procedure->setAccredit($this);
-        $this->procedure = $procedure;
     }
 
     /**
      * Remove procedure
      *
-     * @param \Base\CoreBundle\Entity\PressAccreditProcedure $procedure
+     * @param \Base\CoreBundle\Entity\PressAccreditHasProcedure $procedure
      */
-    public function removeProcedure(\Base\CoreBundle\Entity\PressAccreditProcedure $procedure)
+    public function removeProcedure(\Base\CoreBundle\Entity\PressAccreditHasProcedure $procedure)
     {
         $this->procedure->removeElement($procedure);
     }

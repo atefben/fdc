@@ -219,6 +219,10 @@ $(document).ready(function() {
 		
 		menu.owlCarousel();
 
+	if($('.header-press').length > 0){
+		$("#selection-btn").css("visibility","hidden");
+	}
+
 });
 $(document).ready(function() {
 
@@ -391,6 +395,21 @@ $(document).ready(function() {
 	    });
 
 	    slider.owlCarousel();
+
+	    var slider_all = $(".all-slider").owlCarousel({ 
+	      nav: false,
+	      dots: false,
+	      smartSpeed: 500,
+	      fluidSpeed: 500,
+	      loop: false,
+	      margin: 0,
+	      autoWidth: true,
+	      dragEndSpeed: 600,
+	      items:1,
+	      center:true
+	    });
+
+	    slider_all.owlCarousel();
 
 	}
 

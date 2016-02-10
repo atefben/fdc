@@ -1,10 +1,15 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% for photo in widget.photos %}
+{% for gallery in widget.gallery.medias %}
+    {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = gallery.media.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.file %}
     <div class="half-photo">
         <div class="photo-container">
-            <img src="{{ photo.path }}" alt="{{ photo.alt }}" />
-            <p class="caption">{{ photo.copyright }}</p>
+            {% thumbnail file, '330*380' with {'alt': trans.alt} %}
+            <p class="caption">{{ trans.copyright }}</p>
         </div>
     </div>
 {% endfor %}

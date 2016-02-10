@@ -10,7 +10,15 @@
   line-height: 40px;
   height: auto;
 }
-
+.banner-img .icon-mobile-chaines{
+  font-size: 80px;
+  text-align: center;
+  position: relative;
+  display: block;
+  color: #fff;
+  z-index: 2;
+  margin:auto;
+}
 .webtv #banner-top .banner-img, .webtv #banner-top .banner-video {
   display: none;
 }

@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Base\CoreBundle\Entity\PressHomepageTranslation;
+use Base\CoreBundle\Entity\PressHomepage;
 
 class PressHomepageAdmin extends Admin
 {
@@ -130,7 +132,7 @@ class PressHomepageAdmin extends Admin
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
-                    'sectionPushMainTitle' => array(
+                    'pushMainTitle' => array(
                         'label' => 'form.label_title',
                         'sonata_help' => 'form.press_homepage.helper_title',
                         'translation_domain' => 'BaseAdminBundle',
@@ -140,8 +142,28 @@ class PressHomepageAdmin extends Admin
                             )
                         )
                     ),
-                    'sectionPushSecondaryTitle' => array(
+                    'pushMainLink' => array(
+                        'label' => 'form.label_link',
+                        'sonata_help' => 'form.press_homepage.helper_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'pushSecondaryTitle' => array(
                         'label' => 'form.label_title',
+                        'sonata_help' => 'form.press_homepage.helper_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'pushSecondaryLink' => array(
+                        'label' => 'form.label_link',
                         'sonata_help' => 'form.press_homepage.helper_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
@@ -169,7 +191,27 @@ class PressHomepageAdmin extends Admin
                         'required' => false
 
                     ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => PressHomepageTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
                 )
+            ))
+            ->add('translate', 'checkbox' , array(
+                'required' => false,
+            ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressHomepage::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => PressHomepage::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('sectionStatementInfoDisplay', 'checkbox', array(
                 'label' => 'form.label_display',
@@ -191,26 +233,6 @@ class PressHomepageAdmin extends Admin
                 'label' => 'form.label_display',
                 'required' => false,
             ))
-            ->add('pushsMain', 'sonata_type_collection',
-                array(
-                    'by_reference' => false,
-                    'label' => 'form.label_image_link'
-                ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                )
-            )
-            ->add('pushsSecondary', 'sonata_type_collection',
-                array(
-                    'by_reference' => false,
-                    'label' => 'form.label_image_link'
-                ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                )
-            )
             ->add('section', 'sonata_type_collection',
                 array(
                     'type_options' => array(
@@ -284,6 +306,14 @@ class PressHomepageAdmin extends Admin
             ))
             ->add('statImage2', 'sonata_type_model_list', array(
                 'label' => 'form.label_second_image',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('pushMainImage', 'sonata_type_model_list', array(
+                'label' => 'form.label_push_image',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('pushSecondaryImage', 'sonata_type_model_list', array(
+                'label' => 'form.label_push_image',
                 'translation_domain' => 'BaseAdminBundle'
             ))
 

@@ -219,6 +219,10 @@ $(document).ready(function() {
 		
 		menu.owlCarousel();
 
+	if($('.header-press').length > 0){
+		$("#selection-btn").css("visibility","hidden");
+	}
+
 });
 $(document).ready(function() {
 
@@ -467,8 +471,8 @@ $(document).ready(function() {
 		  nav: false,
 		  dots: false,
 		  smartSpeed: 500,
-		  margin: 0,
-		  autoWidth: false,
+		  margin: 40,
+		  autoWidth: true,
 		  loop: false,
 		  items:2,
 		  onInitialized: function() {
@@ -627,7 +631,8 @@ $(document).ready(function() {
 	      localStorage.setItem('press-pwd', v);
 	      $('.press').removeClass('press-locked');
 	      $('.press').addClass('press-unlocked');
-	      $('.locked').remove();
+	      $('.locked').addClass('valid');
+	      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
 	    } else {
 	      $(this).addClass('error');
 	    }

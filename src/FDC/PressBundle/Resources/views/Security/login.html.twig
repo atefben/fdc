@@ -5,7 +5,10 @@
         <div class="locked">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    <h3 class="title-press">{{ 'press.header.title.contenusverouilles'|trans }}</h3>
+                    <h3 class="title-press">
+                        <i class="icon icon_cadenas"></i>
+                        {{ 'press.header.title.contenusverouilles'|trans }}
+                    </h3>
                     <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
                     {% if error %}
                         <p class="errors">{{ error|trans({}, 'FDCPressBundle') }}</p>
@@ -17,9 +20,9 @@
 
                 <input type="hidden" id="username" name="_username" value="press" required="required" />
 
-                <input type="password" id="password" name="_password" required="required" />
+                <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
 
-                <input type="submit" id="_submit" name="_submit" value="submit" />
+                <input type="submit" id="_submit" name="_submit" value="{{ 'press.header.btn.valider'|trans }}" />
             </form>
         </div>
 {% endif %}
