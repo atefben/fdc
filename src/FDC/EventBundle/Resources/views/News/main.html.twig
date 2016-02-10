@@ -43,7 +43,7 @@
                     {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
                 {% elseif widget is news_widget_video %}
                     <!-- VIDEO -->
-                    {#{% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget}%}#}
+                    {% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                 {% elseif widget is news_widget_video_youtube %}
                     <!-- VIDEO YOUTUBE -->
                     {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}

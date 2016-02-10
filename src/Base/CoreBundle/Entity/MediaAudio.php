@@ -37,6 +37,7 @@ class MediaAudio extends Media
      */
     private $associatedFilms;
 
+
     /**
      * Set image
      *
