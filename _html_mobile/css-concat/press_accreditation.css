@@ -3769,7 +3769,7 @@ p{
 }
 .press_accreditation .header-press {
     border-bottom: 1px solid #dfdfdf;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .press_accreditation strong{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -3784,7 +3784,7 @@ p{
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .2em;
-    margin: 20px 0;
+    margin: 50px 0 30px;
     color: #c8a461;
 }
 .press_accreditation .border-box{
@@ -3802,8 +3802,8 @@ p{
 .press_accreditation  h5 {
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 30px;
     font-weight: 700;
     letter-spacing: .2em;
     text-transform: uppercase;
