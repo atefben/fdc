@@ -3664,6 +3664,9 @@ a{
   text-transform: uppercase;
   line-height: 30px;
 }
+.detail-event .article-title .category{
+    margin-right: 0;
+}
 .article-title span {
   color: #666;
   display: inline-block;
