@@ -92,8 +92,6 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                     ),
                 )
             ))
-//            ->add('createdAt', 'hidden')
-
             ->add('updatedAt', 'date')
 
             ->add('file', 'sonata_type_model_list', array(
