@@ -1327,6 +1327,10 @@ $(document).ready(function() {
 		
 		menu.owlCarousel();
 
+	if($('.header-press').length > 0){
+		$("#selection-btn").css("visibility","hidden");
+	}
+
 });
 $(document).ready(function() {
 
