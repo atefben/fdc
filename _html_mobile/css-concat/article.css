@@ -4071,7 +4071,7 @@ a{
 
 
 /*SECTION COMPETITION*/
-/*.competition{
+.competition{
 	padding: 0;
 }
 .competition h3{
@@ -4095,26 +4095,33 @@ a{
   	background-size: cover;
 }
 .competition .info{
-	margin-top: 35px;
+	margin-top: 25px;
 	text-align: center;
 }
 .competition .info p{
 	text-transform: uppercase;
-	color: #000;
+	color: #c8a461;
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 	font-weight: 700;
-	font-size: 25px;
+	font-size: 23px;
 	margin-bottom: 5px;
 }
-.competition .info a{
-
-	font-size: 22px;
-	font-style: italic;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+.competition .info p.subtitle{
+    font-style: normal;
+    font-size: 18px;
+}
+.competition .info span.date{
+    font-size: 20px;
+    color: #999;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    text-align: center;
+    display: block;
+    line-height: 18px;
+    margin-top: 4px;
 }
 .competition .owl-stage-outer{
 	margin-left: 0;
-}*/
+}
 
 
 

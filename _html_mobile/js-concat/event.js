@@ -1951,20 +1951,24 @@ $(document).ready(function() {
 
 	    sliderArticles.owlCarousel();
 
-	// var sliderCompetition = $(".competition .competition-carousel").owlCarousel({ 
-	//       nav: false,
-	//       dots: false,
-	//       smartSpeed: 500,
-	//       fluidSpeed: 500,
-	//       loop: false,
-	//       margin: 55,
-	//       autoWidth: true,
-	//       dragEndSpeed: 600,
-	//       items:1,
-	//       center:true
-	//     });
+	if($('.competition-carousel').length > 0){
 
-	//     sliderCompetition.owlCarousel();
+		var sliderCompetition = $(".competition .competition-carousel").owlCarousel({ 
+	      nav: false,
+	      dots: false,
+	      smartSpeed: 500,
+	      fluidSpeed: 500,
+	      loop: false,
+	      margin: 55,
+	      autoWidth: true,
+	      dragEndSpeed: 600,
+	      items:1,
+	      center:true
+	    });
+
+	    sliderCompetition.owlCarousel();
+	}
+
 
 
 	// INIT VIDEO PLAYER
