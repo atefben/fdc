@@ -5,7 +5,7 @@
         <span>{{ 'dashboard.group.seo'|trans({}, 'BaseAdminBundle') }}</span>
         <i class="fa pull-right fa-angle-left"></i>
     </a>
-    <ul class="treeview-menu" style="display: block;">
+    <ul class="treeview-menu">
         {%  if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_WEB_TV_CHANNELS_ADMIN') %}
         <li>
             <a href="{{ path('admin_base_core_fdcpagewebtvchannels_edit', {id: admin_fdc_page_web_tv_channels_id}) }}">
