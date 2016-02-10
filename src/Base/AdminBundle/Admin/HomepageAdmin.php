@@ -188,6 +188,16 @@ class HomepageAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('filmsAssociated', 'sonata_type_collection', array(
+                'label' => 'form.label_homepage_films_associated',
+                'help' => 'form.homepage.helper_films_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('topWebTvsAssociated', 'sonata_type_collection', array(
                 'label' => 'form.label_homepage_top_web_tvs_associated',
                 'help' => 'form.homepage.helper_top_web_tvs_associated',

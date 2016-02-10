@@ -301,6 +301,7 @@ form:
         helper_home_slider: Sélectionnez de 3 à 6 actualités ou communiqués ou infos. Elles apparaitront en front-office dans l'ordre des lignes.
         helper_top_video_associated: Sélectionnez de 2 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
         helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
+        helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
     flashbag:
         modified: Modification effectuée.
     settings:
@@ -430,6 +431,7 @@ form:
     label_image_prefooter: Image du Pré-footer (media image semi-riche)
     label_homepage_top_video_associated: Vidéos à la une
     label_homepage_top_web_tvs_associated: Chaînes à la une
+    label_homepage_films_associated: Films présentés
 
     web_tv:
         helper_name: 255 caractères max.

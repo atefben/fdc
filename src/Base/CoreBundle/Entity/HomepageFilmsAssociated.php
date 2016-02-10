@@ -15,13 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * HomepageTopVideosAssociated
+ * HomepageFilmsAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class HomepageTopVideosAssociated
+class HomepageFilmsAssociated
 {
     use Time;
 
@@ -37,14 +37,14 @@ class HomepageTopVideosAssociated
     /**
      * @var News
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topVideosAssociated")
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="filmsAssociated")
      */
     protected $homepage;
 
     /**
      * @var NewsArticle
      *
-     * @ORM\ManyToOne(targetEntity="MediaVideo")
+     * @ORM\ManyToOne(targetEntity="FilmFilm")
      */
     protected $association;
 
@@ -72,7 +72,7 @@ class HomepageTopVideosAssociated
      * Set homepage
      *
      * @param \Base\CoreBundle\Entity\Homepage $homepage
-     * @return HomepageTopVideosAssociated
+     * @return HomepageFilmsAssociated
      */
     public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
     {
@@ -94,10 +94,10 @@ class HomepageTopVideosAssociated
     /**
      * Set association
      *
-     * @param \Base\CoreBundle\Entity\MediaVideo $association
-     * @return HomepageTopVideosAssociated
+     * @param \Base\CoreBundle\Entity\FilmFilm $association
+     * @return HomepageFilmsAssociated
      */
-    public function setAssociation(\Base\CoreBundle\Entity\MediaVideo $association = null)
+    public function setAssociation(\Base\CoreBundle\Entity\FilmFilm $association = null)
     {
         $this->association = $association;
 
@@ -107,7 +107,7 @@ class HomepageTopVideosAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Base\CoreBundle\Entity\FilmFilm 
      */
     public function getAssociation()
     {

@@ -326,6 +326,12 @@ services:
             calls:
                 - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.homepage_films_associated:
+        class: Base\AdminBundle\Admin\HomepageFilmsAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\HomepageFilmsAssociated, BaseAdminBundle:HomepageFilmsAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: HomepageFilmsAssociated, show_in_dashboard: false}
+
     base.admin.news_widget_video_dummy:
         class: Base\AdminBundle\Admin\NewsWidgetVideoDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\NewsWidgetVideo, BaseAdminBundle:NewsWidgetVideoDummyAdmin]

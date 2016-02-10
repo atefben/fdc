@@ -164,10 +164,16 @@ class Homepage
     private $topVideosAssociated;
 
     /**
-     * @var topVideosAssociated
+     * @var topWebTvsAssociated
      * @ORM\OneToMany(targetEntity="HomepageTopWebTvsAssociated", mappedBy="homepage", cascade={"persist"})
      */
     private $topWebTvsAssociated;
+
+    /**
+     * @var filmsAssociated
+     * @ORM\OneToMany(targetEntity="HomepageFilmsAssociated", mappedBy="homepage", cascade={"persist"})
+     */
+    private $filmsAssociated;
 
     /**
      * @var integer
@@ -1148,5 +1154,38 @@ class Homepage
     public function getTopWebTvsAssociated()
     {
         return $this->topWebTvsAssociated;
+    }
+
+    /**
+     * Add filmsAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageFilmsAssociated $filmsAssociated
+     * @return Homepage
+     */
+    public function addFilmsAssociated(\Base\CoreBundle\Entity\HomepageFilmsAssociated $filmsAssociated)
+    {
+        $this->filmsAssociated[] = $filmsAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Remove filmsAssociated
+     *
+     * @param \Base\CoreBundle\Entity\HomepageFilmsAssociated $filmsAssociated
+     */
+    public function removeFilmsAssociated(\Base\CoreBundle\Entity\HomepageFilmsAssociated $filmsAssociated)
+    {
+        $this->filmsAssociated->removeElement($filmsAssociated);
+    }
+
+    /**
+     * Get filmsAssociated
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilmsAssociated()
+    {
+        return $this->filmsAssociated;
     }
 }
