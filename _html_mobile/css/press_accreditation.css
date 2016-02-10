@@ -33,10 +33,15 @@
 	width: 100%;
 	box-sizing:border-box;
 }
+.press_accreditation  p{
+    font-size: 24px;
+    line-height: 36px;
+}
 .press_accreditation  h5 {
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 20px;
+    margin-bottom: 10px;
     font-weight: 700;
     letter-spacing: .2em;
     text-transform: uppercase;
@@ -54,7 +59,7 @@
     border-top: 1px solid #d6d6d6;
 }
 .press_accreditation .section-title-selection h2 {
-    line-height: 24px;
+    line-height: 30px;
     padding: 0 20px;
     font-size: 18px;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
