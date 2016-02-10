@@ -4,15 +4,32 @@
     {% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
 {% set file = trans.file %}
-<div class="video-player video actu_article_video">
+{% set trans = news.video.findTranslationByLocale(app.request.locale) %}
+<div class="video-container state-init video"
+     data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+     data-twitter="//www.twitter.com"
+     data-link="//www.example.com"
+     data-email="//www.gmail.com"
+     {% if playlist %}
+     data-playlist='{{ playlist }}'
+     {% else %}
+     data-file='{{ files }}'
+     data-img="{% path trans.image, 'reference' %}"
+>
 
-    {% set trans = news.video.findTranslationByLocale(app.request.locale) %}
-
-    <div class="image" style="background-image: url({% path news.video.image, '975x616' %});"></div>
-    <div class="picto"></div>
-    <div class="info">
-        <a href="{% path trans.file, 'reference' %}" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
-        <span class="date">{{ news.video.theme|trans_fallback('createdAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme|trans_fallback('createdAt')|date('H:i') }}</span>
-        <p>{{ trans.title }}</p>
+    <div id="video-player-{{ trans.id }}" class="video-player">
+    </div>
+    <div class="video-overlay"></div>
+    <div class="infos-bar">
+        <div class="picto"><i class="icon icon_video"></i></div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="{% path trans.file, 'reference' %}" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
+                    <span class="date">{{ news.video.theme|trans_fallback('createdAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme|trans_fallback('createdAt')|date('H:i') }}</span>
+                    <p>{{ trans.title }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

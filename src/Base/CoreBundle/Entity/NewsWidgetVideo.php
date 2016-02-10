@@ -21,7 +21,7 @@ use Base\CoreBundle\Util\Time;
 class NewsWidgetVideo extends NewsWidget
 {
     /**
-     * @var MediaAudio
+     * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
      */

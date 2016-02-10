@@ -6,15 +6,15 @@
 {% endif %}
 {% set file = trans.file %}
 <div class="audio-player audio" data-sound="{% path file, 'reference' %}">
-    <div class="image" style="background-image: url({% path widget.file.image, '693x95' %});"></div>
-    <a href="#" class="playpause"></a>
+    <div class="image" style="background-image: url({% path widget.file.image, '975x616' %});"></div>
+    <a href="#" class="playpause"><i class="icon icon_video"></i></a>
     <div class="off">
         <div class="vCenter">
             <div class="vCenterKid">
-                <div class="picto"><i class="icon icon_audio"></i></div>
+                <div class="picto"></div>
                 <div class="info">
                     <a href="#" class="category">{{ widget.file.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ widget.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ widget.createdAt|date('H:i') }}</span>
+                    <span class="date">{{ news.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ news.createdAt|date('H:i') }}</span>
                     <p>{{ widget.file.image.copyright }}</p>
                 </div>
             </div>
@@ -26,11 +26,13 @@
                 <div class="duration">
                     <span class="curr">0:00</span>/<span class="total">0:00</span>
                 </div>
-                <div class="wave-container"></div>
+                <div class="wave-container" id="wave-0">
+                    <wave style="display: block; position: relative; -webkit-user-select: none; height: 55px; overflow-x: auto; overflow-y: hidden;"><canvas style="position: absolute; z-index: 1; left: 0px; top: 0px; bottom: 0px; width: 550px;" width="1100" height="110"></canvas><wave style="position: absolute; z-index: 2; left: 0px; top: 0px; bottom: 0px; overflow: hidden; width: 0px; display: block; box-sizing: border-box; border-right-style: solid; border-right-width: 0px; border-right-color: rgb(51, 51, 51);"><canvas width="1100" height="110" style="width: 550px;"></canvas></wave></wave>
+                </div>
                 <div class="volume">
                     <span></span>
-                </div>
-                <a href="#" class="fullscreen"></a>
+                    <i class="icon icon_son"></i></div>
+                <a href="#" class="fullscreen"><i class="icon icon_fullscreen"></i></a>
             </div>
         </div>
     </div>
