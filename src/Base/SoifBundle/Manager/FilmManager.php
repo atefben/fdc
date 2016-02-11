@@ -593,6 +593,7 @@ class FilmManager extends CoreManager
             }
             
             // create / update contact
+            $contactIds = array();
             $collection = new ArrayCollection();
             foreach ($objects as $object) {
                 $filmContact = $this->em->getRepository('BaseCoreBundle:FilmContact')->findOneBy(array('id' => $object->IdContact));
@@ -659,13 +660,16 @@ class FilmManager extends CoreManager
                     $person = $object->PersonneContact;
                     // this api returns sometimes a link on a contact with ID -1 and empty values, dont use it...
                     if ($person->Id != -1) {
-                        $filmContactPerson = $this->em->getRepository('BaseCoreBundle:FilmContactPerson')->findOneById(array('id' => $person->Id));
-                        $filmContactPerson = ($filmContactPerson !== null) ? $filmContactPerson : new FilmContactPerson();
-                        $filmContactPerson->setId($person->Id);
-                        $filmContactPerson->setFirstname($person->Nom);
-                        $filmContactPerson->setFirstname($person->Prenom);
-                        $filmContactPerson->setEmail($person->Email);
-                        $filmContact->setPerson($filmContactPerson);
+                        if (!in_array($person->Id, $contactIds)) {
+                            $contactIds[] = $person->Id;
+                            $filmContactPerson = $this->em->getRepository('BaseCoreBundle:FilmContactPerson')->findOneById(array('id' => $person->Id));
+                            $filmContactPerson = ($filmContactPerson !== null) ? $filmContactPerson : new FilmContactPerson();
+                            $filmContactPerson->setId($person->Id);
+                            $filmContactPerson->setFirstname($person->Nom);
+                            $filmContactPerson->setFirstname($person->Prenom);
+                            $filmContactPerson->setEmail($person->Email);
+                            $filmContact->setPerson($filmContactPerson);
+                        }
                     }
                 }
                 
@@ -690,8 +694,6 @@ class FilmManager extends CoreManager
                     }
                     $this->removeOldRelations($filmContactPerson->getSubordinates(), $collectionSubordinates, $filmContactPerson, 'removeSubordinate');
                 }
-                // update in loop to avoid duplicate contacts...
-                $this->update($entity);
             }
             $this->removeOldRelations($entity->getContacts(), $collection, $entity, 'removeContact');
         }
