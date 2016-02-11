@@ -432,6 +432,8 @@ form:
     label_homepage_top_video_associated: Vidéos à la une
     label_homepage_top_web_tvs_associated: Chaînes à la une
     label_homepage_films_associated: Films présentés
+    label_projection: Projection
+    label_projection_p: Projection presse
 
     web_tv:
         helper_name: 255 caractères max.

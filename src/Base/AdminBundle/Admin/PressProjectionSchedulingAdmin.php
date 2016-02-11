@@ -20,7 +20,6 @@ class PressProjectionSchedulingAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('section')
         ;
     }
 
@@ -33,7 +32,6 @@ class PressProjectionSchedulingAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('section')
         ;
     }
 
@@ -42,22 +40,12 @@ class PressProjectionSchedulingAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $em = $this->modelManager->getEntityManager('Base\CoreBundle\Entity\FilmProjection');
-
-        $query = $em->createQueryBuilder('p')
-            ->select('p')
-            ->from('BaseCoreBundle:FilmProjection', 'p')
-            ->where('p.type = 1')
-            ->orderBy('p.startsAt', 'ASC');
 
         $formMapper
-            ->add('PressProjection', 'sonata_type_model_list', array(
+            ->add('projection', 'sonata_type_model_list', array(
                 'required' => false,
                 'btn_add' => false,
                 'label' => 'form.label_projection',
-            ),
-            array(
-                'query' => $query
             ))
         ;
 

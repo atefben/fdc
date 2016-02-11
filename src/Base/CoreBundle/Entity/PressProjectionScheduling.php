@@ -31,17 +31,17 @@ class PressProjectionScheduling
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="PressProjection", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="FilmProjection", cascade={"persist"})
      */
-    protected $PressProjection;
+    protected $projection;
 
     /**
      * @var FilmProjection
      *
-     * @ORM\ManyToOne(targetEntity="FilmProjection", inversedBy="projection")
+     * @ORM\ManyToOne(targetEntity="PressProjection", inversedBy="projection")
      */
     protected $scheduling;
-    
+
 
     /**
      * Get id
@@ -54,35 +54,35 @@ class PressProjectionScheduling
     }
 
     /**
-     * Set PressProjection
+     * Set projection
      *
-     * @param \Base\CoreBundle\Entity\PressProjection $pressProjection
+     * @param \Base\CoreBundle\Entity\FilmProjection $projection
      * @return PressProjectionScheduling
      */
-    public function setPressProjection(\Base\CoreBundle\Entity\PressProjection $pressProjection = null)
+    public function setProjection(\Base\CoreBundle\Entity\FilmProjection $projection = null)
     {
-        $this->PressProjection = $pressProjection;
+        $this->projection = $projection;
 
         return $this;
     }
 
     /**
-     * Get PressProjection
+     * Get projection
      *
-     * @return \Base\CoreBundle\Entity\PressProjection 
+     * @return \Base\CoreBundle\Entity\FilmProjection 
      */
-    public function getPressProjection()
+    public function getProjection()
     {
-        return $this->PressProjection;
+        return $this->projection;
     }
 
     /**
      * Set scheduling
      *
-     * @param \Base\CoreBundle\Entity\FilmProjection $scheduling
+     * @param \Base\CoreBundle\Entity\PressProjection $scheduling
      * @return PressProjectionScheduling
      */
-    public function setScheduling(\Base\CoreBundle\Entity\FilmProjection $scheduling = null)
+    public function setScheduling(\Base\CoreBundle\Entity\PressProjection $scheduling = null)
     {
         $this->scheduling = $scheduling;
 
@@ -92,7 +92,7 @@ class PressProjectionScheduling
     /**
      * Get scheduling
      *
-     * @return \Base\CoreBundle\Entity\FilmProjection 
+     * @return \Base\CoreBundle\Entity\PressProjection 
      */
     public function getScheduling()
     {

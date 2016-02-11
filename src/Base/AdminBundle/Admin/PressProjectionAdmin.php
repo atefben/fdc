@@ -104,7 +104,7 @@ class PressProjectionAdmin extends Admin
                     'inline' => 'table',
                 )
             )
-            ->add('pressProjection', 'sonata_type_collection',
+            ->add('projectionP', 'sonata_type_collection',
                 array(
                     'type_options' => array(
                         'delete' => false,

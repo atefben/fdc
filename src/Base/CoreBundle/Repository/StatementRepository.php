@@ -17,40 +17,29 @@ use Base\CoreBundle\Interfaces\TranslateChildInterface;
  */
 class StatementRepository extends EntityRepository
 {
-    public function getStatementBySlug($slug, $festival, $locale, $dateTime, $isAdmin)
+    public function getStatementBySlug($slug, $festival, $locale, $dateTime, $isAdmin, $repository)
     {
         $qb = $this
             ->createQueryBuilder('n')
             ->join('n.sites', 's')
-            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', 'na1.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'na2', 'WITH', 'na2.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'na3', 'WITH', 'na3.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftjoin($repository, 'na1', 'WITH', 'na1.id = n.id')
             ->leftjoin('na1.translations', 'na1t')
-            ->leftjoin('na2.translations', 'na2t')
-            ->leftjoin('na3.translations', 'na3t')
-            ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
 
         if ($isAdmin === true) {
-            $qb = $qb
-                ->andWhere(
-                    '(na1t.locale = :locale AND na1t.slug = :statement_slug) OR
-                    (na2t.locale = :locale AND na2t.slug = :statement_slug) OR
-                    (na3t.locale = :locale AND na3t.slug = :statement_slug) OR
-                    (na4t.locale = :locale AND na4t.slug = :statement_slug)'
-                );
+            $qb = $qb->andWhere('(na1t.locale = :locale AND na1t.slug = :statement_slug)');
         } else {
-            $qb = $qb
-                ->andWhere(
-                    '(na1t.locale = :locale AND na1t.status = :status AND na1t.slug = :statement_slug) OR
-                    (na2t.locale = :locale AND na2t.status = :status AND na2t.slug = :statement_slug) OR
-                    (na3t.locale = :locale AND na3t.status = :status AND na3t.slug = :statement_slug) OR
-                    (na4t.locale = :locale AND na4t.status = :status AND na4t.slug = :statement_slug)'
-                )
-                ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+            if($locale != 'fr') {
+                $qb = $qb
+                    ->andWhere('(na1t.locale = :locale AND na1t.status = :status AND na1t.slug = :statement_slug)')
+                    ->setParameter('status', StatementArticleTranslation::STATUS_TRANSLATED);
+            } else {
+                $qb = $qb
+                    ->andWhere('(na1t.locale = fr AND na1t.status = :status AND na1t.slug = :statement_slug)')
+                    ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+            }
         }
 
         $qb = $qb
@@ -61,7 +50,6 @@ class StatementRepository extends EntityRepository
             ->setParameter('site_slug', 'site-press')
             ->getQuery()
             ->getOneOrNullResult();
-
         return $qb;
     }
 

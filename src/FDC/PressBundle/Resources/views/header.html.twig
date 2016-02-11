@@ -129,7 +129,8 @@
                     </li>
                     <li>
                         <a href="{{ path('fdc_press_news_list') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_press_news_list' %}active{% endif %}">
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_news_list'
+                           or app.request.attributes.get('_route') == 'fdc_press_news_get' %}active{% endif %}">
                             {{ 'header.mainnav.nav.communiques'|trans }}
                         </a>
                     </li>

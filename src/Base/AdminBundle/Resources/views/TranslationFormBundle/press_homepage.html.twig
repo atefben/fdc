@@ -6,7 +6,7 @@
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
             <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
-                <a {% if translationsFields.vars.value is not null %}{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
+                <a {% if translationsFields.vars.value is not null and translationsFields.vars.value.status is defined %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
                     {{ locale|capitalize }}
                     {% if form.vars.default_locale == locale %}[MASTER]{% endif %}
                     {% if translationsFields.vars.required %}*{% endif %}
@@ -14,6 +14,7 @@
             </li>
         {% endfor %}
     </ul>
+
 
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
