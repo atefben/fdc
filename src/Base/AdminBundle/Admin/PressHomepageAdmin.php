@@ -316,7 +316,6 @@ class PressHomepageAdmin extends Admin
                 'label' => 'form.label_push_image',
                 'translation_domain' => 'BaseAdminBundle'
             ))
-
         ;
 
     }
