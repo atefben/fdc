@@ -45,7 +45,7 @@ class Theme implements TranslateMainInterface
         $this->translations = new ArrayCollection();
     }
     
-    public function __toString() { 
+    public function __toString() {
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
