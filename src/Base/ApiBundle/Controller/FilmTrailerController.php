@@ -57,7 +57,7 @@ class FilmTrailerController extends FOSRestController
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->getApiFilmTrailers($festival, new DateTime(), $coreManager->getLocale());
+        $query = $em->getRepository($this->repository)->getApiFilmTrailers($festival, new DateTime());
 
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
@@ -121,7 +121,7 @@ class FilmTrailerController extends FOSRestController
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, new DateTime(), $coreManager->getLocale());
+        $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, new DateTime());
 
         // set context view
         $groups = array('trailer_show', 'time');
