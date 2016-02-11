@@ -124,7 +124,7 @@ class PressProjectionAdmin extends Admin
                     'inline' => 'table',
                 )
             )
-
+            ->add('festival')
             ->end()
         ;
 

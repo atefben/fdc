@@ -94,6 +94,13 @@ class PressGuide implements TranslateMainInterface
     private $serviceWidgets;
 
     /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -348,5 +355,28 @@ class PressGuide implements TranslateMainInterface
     public function getServiceWidgets()
     {
         return $this->serviceWidgets;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return PressGuide
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }

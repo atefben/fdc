@@ -40,7 +40,5 @@ class SerializationListener implements EventSubscriberInterface
 
     public function onPostSerializeNews(ObjectEvent $event)
     {
-        var_dump(get_class($event->getObject()));
-        die();
     }
 }

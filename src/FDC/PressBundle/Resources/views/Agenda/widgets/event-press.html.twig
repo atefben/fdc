@@ -1,12 +1,22 @@
 {% trans_default_domain 'FDCEventBundle' %}
+{% trans_default_domain 'FDCEventBundle' %}
 {% set eventDuration = 0 %}
 {% for f in p.projection.programmationFilms %}
     {% set eventDuration = eventDuration + f.film.duration %}
 {% endfor %}
+{% if eventDuration <= 60 %}
+    {% set eventDuration = 60 %}
+{% elseif eventDuration >= 60 %}
+    {% set eventDuration = 120 %}
+{% elseif eventDuration >= 120 %}
+    {% set eventDuration = 180 %}
+{% elseif eventDuration >= 180 %}
+    {% set eventDuration = 240 %}
+{% endif %}
 <div class="fc-event"
      data-url="eventPopin.html"
      data-id="{{ p.projection.id }}"
-     data-picto=".pen" data-color="#000"
+     data-picto='.pen' data-color='#9b9b9b'
      data-start="{{ p.projection.startAt|date('Y-m-d') }}T{{ p.projection.startAt|date('H:i:s') }}"
      data-end="{{ p.projection.endAt|date('Y-m-d') }}T{{ p.projection.endAt|date('H:i:s') }}"
      data-time="{{ p.projection.startAt|date('H') }}"
@@ -17,7 +27,7 @@
     </span>
     <div class="info">
         {% for f in p.projection.programmationFilms %}
-            {% media f.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_small' %}
+            {% media f.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_tiny' %}
         {% endfor %}
         <div class="txt">
             {% for f in p.projection.programmationFilms %}
@@ -29,7 +39,7 @@
         </div>
     </div>
     <div class="bottom">
-        <span class="duration">{{ eventDuration }}</span> - <span class="ven">{{ p.projection.room.name }}</span>
+        <span class="duration">{{ eventDuration/60 }} H</span> - <span class="ven">{{ p.projection.room.name }}</span>
         <span class="competition">{{ p.projection.programmationSection }}</span>
     </div>
 </div>
