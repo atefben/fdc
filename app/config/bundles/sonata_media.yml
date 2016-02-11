@@ -45,6 +45,13 @@ sonata_media:
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
 
+        media_image_simple:
+            providers:
+                - sonata.media.provider.image
+
+            formats:
+                212x134: { width: 293 , height: 185 , quality: 100 }
+
         media_audio:
             providers:
                - sonata.media.provider.audio
