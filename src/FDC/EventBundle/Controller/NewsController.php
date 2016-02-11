@@ -51,7 +51,7 @@ class NewsController extends Controller {
 
         $festivalStart = $this->getFestival()->getFestivalStartsAt();
         $festivalEnd =  $this->getFestival()->getFestivalEndsAt();
-        $festivalInterval = $festivalStart->diff($festivalEnd);
+        $festivalInterval = $this->createDateRangeArray($festivalStart->format('Y-m-d'),$festivalEnd->format('Y-m-d'));
 
            /////////////////////////////////////////////////////////////////////////////////////
           /////////////////////////      SLIDER      //////////////////////////////////////////
@@ -150,20 +150,23 @@ class NewsController extends Controller {
             $homeArticlesBottom = null;
         }
 
-
         //get images for slider articles
         $dateArticleSlide = new DateTime();
         $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateArticleSlide);
-
 
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////       WEBTV        ///////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
-        $videos = $this
-            ->getBaseCoreMediaVideoRepository()
-            ->get2VideosFromTheLast10($locale, $this->getFestival()->getId());
+        $videos = $homepage->getTopVideosAssociated();
+        $channels = $homepage->getTopWebTvsAssociated();
 
+
+          ////////////////////////////////////////////////////////////////////////////////////
+         /////////////////////////       FILMS        ///////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        $films = $homepage->getFilmsAssociated();
 
         // TODO: clean this
         $featuredMovies         = array(
@@ -202,140 +205,8 @@ class NewsController extends Controller {
 
             )
         );
-        $homeCategories         = array(
-            array(
-                'title' => 'Le jury',
-                'blank' => false,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push01.jpg'
-                )
-            ),
-            array(
-                'title' => 'Le palmares',
-                'blank' => false,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push02.jpg'
-                )
-            ),
-            array(
-                'title' => 'La programmation',
-                'blank' => false,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push03.jpg'
-                )
-            )
-        );
-        $homeCategoriesFeatured = array(
-            array(
-                'title' => 'Espace presse',
-                'blank' => false,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push04.jpg'
-                )
-            ),
-            array(
-                'title' => '',
-                'blank' => true,
-                'bigger' => true,
-                'href' => '',
-                'image' => array(
-                    'path' => ''
-                )
-            ),
-            array(
-                'title' => 'Participer <br> au festival',
-                'blank' => false,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push05.jpg'
-                )
-            ),
-            array(
-                'title' => 'L\'oeil du photographe',
-                'blank' => false,
-                'bigger' => true,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push06.jpg'
-                )
-            ),
-            array(
-                'title' => 'Lorem ipsum',
-                'blank' => true,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'img.jpg'
-                )
-            ),
-            array(
-                'title' => 'Lorem ipsum',
-                'blank' => true,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'img.jpg'
-                )
-            ),
-            array(
-                'title' => 'Les évènements',
-                'blank' => false,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push07.jpg'
-                )
-            ),
-            array(
-                'title' => '69 ans d\'archives',
-                'blank' => false,
-                'bigger' => false,
-                'href' => '/category',
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/push/push08.jpg'
-                )
-            )
-        );
 
-        $videoSlider            = array(
-            array(
-                'title' => 'Lorem Ipsum',
-                'source' => array(
-                    'mp4' => 'https://broken-links.com/tests/media/BigBuck.m4v',
-                    'webm' => 'https://broken-links.com/tests/media/BigBuck.webm'
-                ),
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
-                ),
-                'category' => 'Lorem ipsum',
-                'author' => array(
-                    'fullName' => 'Lorem Ipsum'
-                )
-            ),
-            array(
-                'title' => 'Lorem Ipsum',
-                'source' => array(
-                    'mp4' => 'https://broken-links.com/tests/media/BigBuck.m4v',
-                    'webm' => 'https://broken-links.com/tests/media/BigBuck.webm'
-                ),
-                'image' => array(
-                    'path' => 'http://html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
-                ),
-                'category' => 'Lorem ipsum',
-                'author' => array(
-                    'fullName' => 'Lorem Ipsum'
-                )
-            )
-        );
+
         $wallPosts              = array(
             array(
                 'big' => true
@@ -379,14 +250,13 @@ class NewsController extends Controller {
             'homeSlider' => $homeSlider,
             'festivalStart' => strtotime($festivalStart->format('Y-m-d')),
             'festivalEnd' => strtotime($festivalEnd->format('Y-m-d')),
-            'festivalInterval' => $this->createDateRangeArray($festivalStart->format('Y-m-d'),$festivalEnd->format('Y-m-d')),
-            // TODO: clean this
+            'festivalInterval' => $festivalInterval,
             'filters' => $filters,
             'videos' => $videos,
-            'videoSlider' => $videoSlider,
+            'channels' => $channels,
+            'films' => $films,
+            // TODO: clean this
             'featuredMovies' => $featuredMovies,
-            'homeCategories' => $homeCategories,
-            'homeCategoriesFeatured' => $homeCategoriesFeatured,
             'wallPosts' => $wallPosts
         );
     }
