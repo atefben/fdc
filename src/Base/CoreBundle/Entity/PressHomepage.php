@@ -112,6 +112,12 @@ class PressHomepage implements TranslateMainInterface
      */
     protected $sectionStatisticDisplay;
 
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
 
     /**
      * ArrayCollection
@@ -481,5 +487,28 @@ class PressHomepage implements TranslateMainInterface
     public function getPushSecondaryImage()
     {
         return $this->pushSecondaryImage;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return PressHomepage
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }

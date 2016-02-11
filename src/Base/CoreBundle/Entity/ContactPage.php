@@ -56,6 +56,13 @@ class ContactPage implements TranslateMainInterface
     private $publishEndedAt;
 
     /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -144,4 +151,27 @@ class ContactPage implements TranslateMainInterface
         return $this->publishEndedAt;
     }
 
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return ContactPage
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
+    }
 }

@@ -122,6 +122,7 @@ class ContactPageAdmin extends Admin
                 'choices' => ContactPage::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
+            ->add('festival')
         ;
     }
 

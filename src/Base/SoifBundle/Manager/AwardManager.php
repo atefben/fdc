@@ -149,14 +149,15 @@ class AwardManager extends CoreManager
         }
         $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
         $entities = array();
-        
+
         // set entities
         foreach ($resultObjects as $resultObject) {
-            $entities[] = $this->set($resultObject, $result);
+            $entity = $this->set($resultObject, $result);
+            $this->update($entity);
         }
-        
+
         // save entities
-        $this->updateMultiple($entities);
+        //$this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);
@@ -213,7 +214,7 @@ class AwardManager extends CoreManager
         
         // set related entity
         $this->setEntityRelated($resultObject, $entity);
-        
+
         // set associations
         if (property_exists($resultObject, 'ListeFilmPersonne') && property_exists($resultObject->ListeFilmPersonne, 'RecompenseFilmPersonneDto')) {
             $collectionNew = new ArrayCollection();

@@ -82,7 +82,7 @@ class PressDownloadAdmin extends Admin
                     'sortable'  => 'position',
                 )
             )
-
+            ->add('festival')
             ->end()
         ;
 
