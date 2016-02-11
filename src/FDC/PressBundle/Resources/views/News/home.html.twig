@@ -77,106 +77,120 @@
                             <div class="venue">
                                 <div class="v-head">{{ 'press.home.salle.grandtheatrelumière'|trans }}</div>
                                 <div class="v-container">
-                                    {% for p in pressProjection.projection %}
-                                        {% if p.projection.room.name == "Grand Théatre Lumière" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% for p in pressProjection.projectionP %}
-                                        {% if p.projection.room.name == "Grand Théatre Lumière" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event-press.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {% if pressProjection %}
+                                        {% for p in pressProjection.projection %}
+                                            {% if p.projection.room.name == "Grand Théatre Lumière" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for p in pressProjection.projectionP %}
+                                            {% if p.projection.room.name == "Grand Théatre Lumière" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="venue">
                                 <div class="v-head">{{ 'press.home.salle.salledebussy'|trans }}</div>
                                 <div class="v-container">
-                                    {% for p in pressProjection.projection %}
-                                        {% if p.projection.room.name == "Salle Debussy" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% for p in pressProjection.projectionP %}
-                                        {% if p.projection.room.name == "Salle Debussy" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event-press.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {% if pressProjection %}
+                                        {% for p in pressProjection.projection %}
+                                            {% if p.projection.room.name == "Salle Debussy" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for p in pressProjection.projectionP %}
+                                            {% if p.projection.room.name == "Salle Debussy" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="venue">
                                 <div class="v-head">{{ 'press.home.salle.salledu60e'|trans }}</div>
                                 <div class="v-container">
-                                    {% for p in pressProjection.projection %}
-                                        {% if p.projection.room.name == "Salle du Soixantième" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% for p in pressProjection.projectionP %}
-                                        {% if p.projection.room.name == "Salle du Soixantième" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event-press.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {% if pressProjection %}
+                                        {% for p in pressProjection.projection %}
+                                            {% if p.projection.room.name == "Salle du Soixantième" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for p in pressProjection.projectionP %}
+                                            {% if p.projection.room.name == "Salle du Soixantième" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="venue">
                                 <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
                                 <div class="v-container">
-                                    {% for p in pressProjection.projection %}
-                                        {% if p.projection.room.name == "Salle Bunuel" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% for p in pressProjection.projectionP %}
-                                        {% if p.projection.room.name == "Salle Bunuel" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event-press.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {% if pressProjection %}
+                                        {% for p in pressProjection.projection %}
+                                            {% if p.projection.room.name == "Salle Buñuel" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for p in pressProjection.projectionP %}
+                                            {% if p.projection.room.name == "Salle Buñuel" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="venue">
                                 <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
                                 <div class="v-container">
-                                    {% for p in pressProjection.projection %}
-                                        {% if p.projection.room.name == "Salle Bunuel" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% for p in pressProjection.projectionP %}
-                                        {% if p.projection.room.name == "Salle Bunuel" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event-press.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {% if pressProjection %}
+                                        {% for p in pressProjection.projection %}
+                                            {% if p.projection.room.name == "Salle Buñuel" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for p in pressProjection.projectionP %}
+                                            {% if p.projection.room.name == "Salle Buñuel" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="venue">
                                 <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
                                 <div class="v-container">
-                                    {% for p in pressProjection.projection %}
-                                        {% if p.projection.room.name == "Salle Bunuel" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% for p in pressProjection.projectionP %}
-                                        {% if p.projection.room.name == "Salle Bunuel" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event-press.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {% if pressProjection %}
+                                        {% for p in pressProjection.projection %}
+                                            {% if p.projection.room.name == "Salle Buñuel" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for p in pressProjection.projectionP %}
+                                            {% if p.projection.room.name == "Salle Buñuel" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="venue">
                                 <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
                                 <div class="v-container">
-                                    {% for p in pressProjection.projection %}
-                                        {% if p.projection.room.name == "Salle Bunuel" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% for p in pressProjection.projectionP %}
-                                        {% if p.projection.room.name == "Salle Bunuel" %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event-press.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {% if pressProjection %}
+                                        {% for p in pressProjection.projection %}
+                                            {% if p.projection.room.name == "Salle Buñuel" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for p in pressProjection.projectionP %}
+                                            {% if p.projection.room.name == "Salle Buñuel" %}
+                                                {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

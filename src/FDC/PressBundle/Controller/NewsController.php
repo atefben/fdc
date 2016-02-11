@@ -81,19 +81,15 @@ class NewsController extends Controller
             $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
         });
 
-        //GET FILM PROJECTION ROOMS
+        //GET FILM PROJECTION
         $pressProjection = $em
             ->getRepository('BaseCoreBundle:PressProjection')
-            ->findOneById(1);
-
-        if ($pressProjection === null) {
-            throw new NotFoundHttpException();
-        }
+            ->findOneById(2);
 
         //GET PRESS HOMEPAGE
         $homepage = $em
             ->getRepository('BaseCoreBundle:PressHomepage')
-            ->findOneById(1);
+            ->findOneById(3);
 
         if ($homepage === null) {
             throw new NotFoundHttpException();
