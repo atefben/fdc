@@ -16,7 +16,7 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <a href="#" class="category">{{ video.theme }}</a>
-                <span>{{ video.nbVideos }} {{ 'webtv.direct.text.videos'|trans }}</span>
+                <span>{{ video.nbVideos }} {{ video|trans_fallback('title', 'fr') }}</span>
             </div>
         </div>
     </div>
