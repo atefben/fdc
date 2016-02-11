@@ -45,6 +45,7 @@ abstract class NewsWidget
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=false)
+     * @Groups({"news_list", "news_show"})
      */
     protected $position;
 

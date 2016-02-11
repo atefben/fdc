@@ -11,6 +11,9 @@ use Base\CoreBundle\Util\TranslateChild;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
@@ -25,6 +28,8 @@ class ThemeTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     protected $name;
 

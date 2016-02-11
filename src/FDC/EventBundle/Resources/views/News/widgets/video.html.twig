@@ -2,6 +2,7 @@
 {% set file = widget.file %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
 {% if trans is null or trans.file is null %}
+    {% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
 
 <div class="video-container state-init video"

@@ -2,7 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\MediaTranslationInterface;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -44,48 +44,50 @@ class FilmFilmRepository extends EntityRepository
             ;
     }
 
-    public function getApiFilmTrailers($festival, $dateTime, $locale)
+    public function getApiFilmTrailers($festival, $dateTime)
     {
         return $this->createQueryBuilder('f')
-            ->join('f.mediaVideos', 'mv')
+            ->join('f.associatedMediaVideos', 'fa')
+            ->join('fa.mediaVideo', 'mv')
             ->join('mv.sites', 's')
             ->join('mv.translations', 'mvt')
             ->where('mv.festival = :festival')
             ->andWhere('s.slug = :site')
-            ->andWhere('mv.inTrailer = :inTrailer')
-            ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status = :status')
+            ->andWhere('mv.displayedTrailer = :displayedTrailer')
+            ->andWhere('mvt.status = :status OR mvt.status = :status_translated')
             ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
             ->setParameter('festival', $festival)
-            ->setParameter('inTrailer', true)
-            ->setParameter('locale', $locale)
-            ->setParameter('status', MediaTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('displayedTrailer', true)
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+            ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()
             ;
     }
 
-    public function getApiTrailers($id, $festival, $dateTime, $locale)
+    public function getApiTrailers($id, $festival, $dateTime)
     {
         return $this->createQueryBuilder('f')
-            ->join('f.mediaVideos', 'mv')
+            ->join('f.associatedMediaVideos', 'fa')
+            ->join('fa.mediaVideo', 'mv')
             ->join('mv.sites', 's')
             ->join('mv.translations', 'mvt')
             ->where('mv.festival = :festival')
             ->andWhere('f.id = :id')
             ->andWhere('s.slug = :site')
-            ->andWhere('mv.inTrailer = :inTrailer')
+            ->andWhere('mv.displayedTrailer = :displayedTrailer')
             ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status = :status')
+            ->andWhere('mvt.status = :status OR mvt.status = :status_translated')
             ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
             ->setParameter('id', $id)
             ->setParameter('festival', $festival)
-            ->setParameter('inTrailer', true)
+            ->setParameter('displayedTrailer', true)
             ->setParameter('locale', 'fr')
-            ->setParameter('status', MediaTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+            ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()

@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\TranslateChild;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -28,6 +29,7 @@ class MediaAudioTranslation implements TranslateChildInterface
     /**
      * @var string
      *
+     * @Groups({"news_list", "news_show"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $title;
