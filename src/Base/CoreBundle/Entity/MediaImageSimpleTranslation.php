@@ -32,6 +32,8 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
+     *
+     * @Groups({"news_list", "news_show"})
      */
     private $file;
 
@@ -39,6 +41,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      * @Groups({"news_list", "news_show"})
      */
     private $alt;

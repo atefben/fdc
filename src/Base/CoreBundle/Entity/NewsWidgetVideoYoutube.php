@@ -36,6 +36,7 @@ class NewsWidgetVideoYoutube extends NewsWidget
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @Groups({"news_list", "news_show"})
      */
     protected $image;
 

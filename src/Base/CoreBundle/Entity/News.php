@@ -153,7 +153,6 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $sites;
 

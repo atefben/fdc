@@ -11,6 +11,9 @@ use Base\CoreBundle\Util\Time;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -37,6 +40,8 @@ class Theme implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"news_list", "news_show"})
      */
     protected $translations;
     
