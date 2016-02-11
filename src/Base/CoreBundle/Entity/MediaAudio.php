@@ -26,7 +26,7 @@ class MediaAudio extends Media
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
-     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
+     * @Groups({"news_show", "news_list", "trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
      */
     private $image;
 

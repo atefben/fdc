@@ -92,15 +92,12 @@ class MediaCategoryManager extends CoreManager
             return;
         }
         $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
-        $entities = array();
-        
+
         // set entities
         foreach ($resultObjects as $resultObject) {
             $entity = $this->set($resultObject, $result);
+            $this->update($entity);
         }
-
-        // update entities
-        $this->updateMultiple($entity);
         
         // end timer
         $this->end(__METHOD__);

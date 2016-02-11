@@ -3,7 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Entity\WebTv;
-use Base\CoreBundle\Entity\WebTvTranslationInterface;
+use Base\CoreBundle\Entity\WebTvTranslation;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -35,17 +35,18 @@ class WebTvRepository extends EntityRepository
             ->join('mv.translations', 'mvt')
             ->where('mv.festival = :festival')
             ->andWhere('s.slug = :site')
-            ->andWhere('mv.inWebTv = :inWebTv')
+            ->andWhere('mv.displayedWebTv = :displayedWebTv')
             ->andWhere('mvt.locale = :locale')
             ->andWhere('mvt.status = :status')
             ->andWhere('wtt.locale = :locale')
-            ->andWhere('wtt.status = :status')
+            ->andWhere('wtt.status = :status OR wtt.status = :status_translated')
             ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
             ->setParameter('festival', $festival)
-            ->setParameter('inWebTv', true)
+            ->setParameter('displayedWebTv', true)
             ->setParameter('locale', $locale)
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', WebTvTranslation::STATUS_PUBLISHED)
+            ->setParameter('status_translated', WebTvTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery();
@@ -69,19 +70,20 @@ class WebTvRepository extends EntityRepository
             ->join('mv.translations', 'mvt')
             ->where('mv.festival = :festival')
             ->andWhere('s.slug = :site')
-            ->andWhere('mv.inWebTv = :inWebTv')
+            ->andWhere('mv.displayedWebTv = :displayedWebTv')
             ->andWhere('mvt.locale = :locale')
             ->andWhere('mvt.status = :status')
             ->andWhere('wtt.locale = :locale')
-            ->andWhere('wtt.status = :status')
+            ->andWhere('wtt.status = :status OR wtt.status = :status_translated')
             ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
             ->andWhere('mv.id = :id')
             ->setParameter('festival', $festival)
             ->setParameter('id', $id)
-            ->setParameter('inWebTv', true)
+            ->setParameter('displayedWebTv', true)
             ->setParameter('locale', $locale)
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', WebTvTranslation::STATUS_PUBLISHED)
+            ->setParameter('status_translated', WebTvTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()

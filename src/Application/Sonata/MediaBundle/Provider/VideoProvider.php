@@ -19,7 +19,7 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
-        $path = $this->generatePublicUrl($media, $media->getProviderReference());
+        /*$path = $this->generatePublicUrl($media, $media->getProviderReference());
 
         # Region where the sample will be run.
         $region = 'us-east-1';
@@ -78,7 +78,7 @@ class VideoProvider extends FileProvider
                 'Playlists' => array($playlist)
             );
             $create_job_result = $transcoder_client->createJob($create_job_request)->toArray();
-            // return $job = $create_job_result['Job'];
+            // return $job = $create_job_result['Job'];*/
     }
 
     /**

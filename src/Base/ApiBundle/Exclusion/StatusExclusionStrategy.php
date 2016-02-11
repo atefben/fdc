@@ -2,13 +2,14 @@
 
 namespace Base\ApiBundle\Exclusion;
 
+use Base\CoreBundle\Entity\NewsArticleTranslation;
+
 use JMS\DiExtraBundle\Annotation\Service;
 use JMS\Serializer\Exclusion\ExclusionStrategyInterface;
 use JMS\Serializer\Metadata\ClassMetadata;
 use JMS\Serializer\Metadata\PropertyMetadata;
 use JMS\Serializer\Context;
 
-use Base\CoreBundle\Entity\MediaTranslationInterface;
 /**
  * StatusExclusionStrategy
  *
@@ -22,7 +23,7 @@ class StatusExclusionStrategy implements ExclusionStrategyInterface
     public function shouldSkipClass(ClassMetadata $metadata, Context $navigatorContext)
     {
         if (method_exists($navigatorContext->getObject(), 'getStatus') &&
-            $navigatorContext->getObject()->getStatus() != MediaTranslationInterface::STATUS_PUBLISHED) {
+            $navigatorContext->getObject()->getStatus() != NewsArticleTranslation::STATUS_PUBLISHED) {
             return true;
         }
 

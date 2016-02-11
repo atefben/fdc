@@ -55,7 +55,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=false, options={"default":0})
+     * @ORM\Column(type="integer", nullable=true, options={"default":0})
      */
     private $state;
 
@@ -78,6 +78,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      */
     public function __construct()
     {
+        $this->state = 0;
     }
 
 

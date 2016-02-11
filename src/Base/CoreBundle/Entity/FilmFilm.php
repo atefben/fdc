@@ -256,7 +256,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $minorProductions;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"all"})
      *
      * @Groups({
      *  "film_list", "film_show",
@@ -268,7 +268,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $countries;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="film", cascade={"all"})
      *
      * @Groups({
      *  "film_list", "film_show",
@@ -291,7 +291,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $translations;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="film", cascade={"all"})
      *
      * @Groups({
      *  "film_list", "film_show",
@@ -300,7 +300,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $projectionProgrammationFilms;
 
     /**
-     * @ORM\ManyToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="films")
+     * @ORM\ManyToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="films", cascade={"all"})
      *
      * @Groups({
      *  "film_list", "film_show",
@@ -309,14 +309,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $projectionProgrammationFilmsList;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="association")
+     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="association", cascade={"all"})
      *
      * @Groups({"news_list", "news_show"})
      */
     private $associatedNews;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association")
+     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"})
      * @Groups({
      *  "trailer_show",
      *  "film_list", "film_show",
@@ -325,7 +325,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedMediaVideos;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association")
+     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association", cascade={"all"})
      * @Groups({
      *  "trailer_show",
      *  "film_list", "film_show",
@@ -334,14 +334,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedMediaAudios;
 
     /**
-     * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="association")
+     * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="association", cascade={"all"})
      *
      * @Groups({"statement_list", "statement_show"})
      */
     private $associatedStatement;
 
     /**
-     * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="association")
+     * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="association", cascade={"all"})
      *
      * @Groups({"info_list", "info_show"})
      */
