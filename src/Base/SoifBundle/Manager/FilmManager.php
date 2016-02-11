@@ -230,7 +230,7 @@ class FilmManager extends CoreManager
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFilm();
 
-       /* // set soif last update time
+       // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
         
         // set entity properties
@@ -583,7 +583,7 @@ class FilmManager extends CoreManager
         
                 $entity->addPerson($persons[$object->Id]);
             }
-        }*/
+        }
 
         // set contacts
         if (property_exists($resultObject, 'FilmContacts') && property_exists($resultObject->FilmContacts, 'ContactDto')) {
@@ -679,7 +679,7 @@ class FilmManager extends CoreManager
 
                     $subordinates = $this->mixedToArray($subordinates);
                     $collectionSubordinates = new ArrayCollection();
-                    $ids = array();
+
                     foreach ($subordinates as $subordinate) {
                         $filmContactPersonSubordinate = $this->em->getRepository('BaseCoreBundle:FilmContactPerson')->findOneById(array('id' => $subordinate->Id));
                         $filmContactPersonSubordinate = ($filmContactPersonSubordinate !== null) ? $filmContactPersonSubordinate: new FilmContactPerson();
