@@ -33,6 +33,7 @@ sonata_media:
 
             formats:
                 212x134: { width: 212 , height: 134 , quality: 100 }
+                135x185: { width: 135 , height: 185 , quality: 100 }
                 224x142: { width: 224 , height: 142 , quality: 100 }
                 265x167: { width: 265 , height: 167 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
