@@ -139,7 +139,7 @@ class Homepage
     /**
      * @var HomepageSlide
      *
-     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage")
+     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"persist"})
      */
     private $homepageSlide;
 
