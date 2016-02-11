@@ -13,7 +13,7 @@
             </ul>
         </div>
         <div id="slider-prefooter" class="owl-carousel">
-            {% if homepage.prefooterImage1 is defined %}
+            {% if homepage.prefooterImage1 is not null %}
                 {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is not null %}
                     {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
@@ -26,7 +26,7 @@
                 </div>
             </div>
             {% endif %}
-            {% if homepage.prefooterImage2 is defined %}
+            {% if homepage.prefooterImage2 is not null %}
                 {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is not null %}
                     {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
@@ -39,7 +39,7 @@
                 </div>
             </div>
             {% endif %}
-            {% if homepage.prefooterImage3 is defined %}
+            {% if homepage.prefooterImage3 is not null %}
                 {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is not null %}
                     {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
@@ -52,7 +52,7 @@
                 </div>
             </div>
             {% endif %}
-            {% if homepage.prefooterImage4 is defined %}
+            {% if homepage.prefooterImage4 is not null %}
                 {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is not null %}
                     {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}

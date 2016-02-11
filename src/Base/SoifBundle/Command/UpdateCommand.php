@@ -81,12 +81,12 @@ class UpdateCommand extends ContainerAwareCommand
             $this->getContainer()->get('base.soif.country_manager'),
             $this->getContainer()->get('base.soif.festival_manager'),
             $this->getContainer()->get('base.soif.award_manager'),
-            $this->getContainer()->get('base.soif.festival_poster_manager'),
+          /*  $this->getContainer()->get('base.soif.festival_poster_manager'),
             $this->getContainer()->get('base.soif.film_atelier_manager'),
             $this->getContainer()->get('base.soif.film_manager'),
             $this->getContainer()->get('base.soif.person_manager'),
             $this->getContainer()->get('base.soif.jury_manager'),
-            $this->getContainer()->get('base.soif.projection_manager')
+            $this->getContainer()->get('base.soif.projection_manager')*/
         );
         
         // check if manager exist when targetting a specific entity

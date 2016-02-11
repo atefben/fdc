@@ -23,7 +23,7 @@ parameters:
     locales: [fr, en, es, zh]
     locales_admin: [fr]
     locale_default_translation: fr
-    locale_fallback: en
+    locale_fallback: fr
 
     # admin
     admin_homepage_id: ~
