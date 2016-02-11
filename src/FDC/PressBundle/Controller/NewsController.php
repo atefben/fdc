@@ -105,12 +105,12 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/press-articles/{slug}")
+     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "communique|article"})
      * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
      * @return array
      */
-    public function getAction($slug)
+    public function getAction($format, $slug, $type)
     {
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -124,22 +124,35 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        // GET NEWS
-        $statement = $em->getRepository('BaseCoreBundle:Statement')->getStatementBySlug(
-            $slug,
-            $settings->getFestival()->getId(),
-            $locale,
-            $dateTime->format('Y-m-d H:i:s'),
-            $isAdmin
-        );
+        $format = substr($format, 0, -1);
 
-        if ($statement === null) {
+        // GET STATEMENT / INFO
+        if ($type == "article") {
+            $mapper = array_flip(Statement::getTypes());
+            if (!isset($mapper[$format])) {
+                throw  new NotFoundHttpException();
+            }
+            $statement = $em->getRepository('BaseCoreBundle:Statement')->getStatementBySlug(
+                $slug,
+                $settings->getFestival()->getId(),
+                $locale,
+                $dateTime->format('Y-m-d H:i:s'),
+                $isAdmin,
+                $mapper[$format]
+            );
+        }
+        else {
+            $mapper = array_flip(Info::getTypes());
+            if (!isset($mapper[$format])) {
+                throw  new NotFoundHttpException();
+            }
             $statement = $em->getRepository('BaseCoreBundle:Info')->getInfoBySlug(
                 $slug,
                 $settings->getFestival()->getId(),
                 $locale,
                 $dateTime->format('Y-m-d H:i:s'),
-                $isAdmin
+                $isAdmin,
+                $mapper[$format]
             );
         }
 

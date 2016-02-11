@@ -16,7 +16,7 @@
                 {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
             {% endif %}
         </div>
-        <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article.slug}) }}" class="linkImage"></a>
+        <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}" class="linkImage"></a>
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
@@ -29,6 +29,6 @@
     <div class="info">
         <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
         <span class="date">{{ article|trans_fallback('createdAt')|date('d.m.y') }}</span> . <span class="hour">{{ article|trans_fallback('createdAt')|date('H:i') }}</span>
-        <h3><a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article.slug}) }}">{{ article|trans_fallback('title') }}</a></h3>
+        <h3><a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}">{{ article|trans_fallback('title') }}</a></h3>
     </div>
 </article>
