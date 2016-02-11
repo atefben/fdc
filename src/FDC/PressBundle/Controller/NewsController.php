@@ -83,13 +83,14 @@ class NewsController extends Controller
 
         //GET FILM PROJECTION
         $pressProjection = $em
-            ->getRepository('BaseCoreBundle:PressProjection')
-            ->findOneById(2);
+            ->getRepository('BaseCoreBundle:PressProjection')->findOneBy(array(
+                'festival' => $settings->getFestival()->getId()
+            ));
 
         //GET PRESS HOMEPAGE
-        $homepage = $em
-            ->getRepository('BaseCoreBundle:PressHomepage')
-            ->findOneById(3);
+        $homepage = $em->getRepository('BaseCoreBundle:PressHomepage')->findOneBy(array(
+            'festival' => $settings->getFestival()->getId()
+        ));
 
         if ($homepage === null) {
             throw new NotFoundHttpException();
@@ -98,12 +99,62 @@ class NewsController extends Controller
         return array(
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
-            'schedulingDays' => $schedulingDays,
+            'schedulingDays' => $this->createDateRangeArray($festivalStartsAt->format('Y-m-d'),$festivalEndsAt->format('Y-m-d')),
             'pressProjection' => $pressProjection,
             'pressHome' => $homepage
         );
     }
 
+    function createDateRangeArray($strDateFrom,$strDateTo)
+    {
+        $aryRange=array();
+        $iDateFrom=mktime(1,0,0,substr($strDateFrom,5,2),substr($strDateFrom,8,2),substr($strDateFrom,0,4));
+        $iDateTo=mktime(1,0,0,substr($strDateTo,5,2),substr($strDateTo,8,2),substr($strDateTo,0,4));
+        if ($iDateTo>=$iDateFrom) {
+            array_push($aryRange,date('Y-m-d',$iDateFrom));
+            while ($iDateFrom<$iDateTo) {
+                $iDateFrom+=86400;
+                array_push($aryRange,date('Y-m-d',$iDateFrom));
+            }
+        }
+        return $aryRange;
+    }
+
+    /**
+     * @Route("/homepage-projections")
+     * @Template("FDCPressBundle:Agenda:widgets/event-home-ajax.html.twig")
+     * @param Request $request
+     * @return array
+     */
+    public function getProjectionsFromAction(Request $request) {
+
+        if ($request->isXmlHttpRequest() && $request->isMethod('POST')) {
+
+            $date = $request->get('date');
+            $locale = $request->getLocale();
+            $em = $this->get('doctrine')->getManager();
+            // GET FDC SETTINGS
+            $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+            if ($settings === null || $settings->getFestival() === null) {
+                throw new NotFoundHttpException();
+            }
+            // GET PROJECTIONS
+            $projection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')->getProjectionSchedulingByDate($locale, $settings->getFestival()->getId(), $date);
+
+            dump($projection);exit;
+
+        }
+
+
+
+
+
+
+        return array(
+            'homeProjections' => $homeProjections
+        );
+    }
+    
     /**
      * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "communique|article"})
      * @Template("FDCPressBundle:News:main.html.twig")
