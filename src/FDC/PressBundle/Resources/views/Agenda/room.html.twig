@@ -14,22 +14,39 @@
     <div id="seatingchart">
         <div class="nav-map">
             <ul>
-                {% for room in rooms %}
-                    <li data-maps="{{ room.slug }}">{{ room.name }}</li>
+                {% for r in rooms.mapRoom %}
+                    <li data-maps="room{{ r.room.id }}">
+                        {{ r.room|trans_fallback('title') }}</li>
                 {% endfor %}
-
                 <li data-maps="zone-festival" id='more-map'>
-                    <strong>{{ 'plandessalles.label.lazonedufestival'|trans }}</strong>
-                    {% for key,room in rooms %}
-                        <img src="{{ room.image.zone }}" alt="" data-image="{{ room.slug }}" class="{% if key == 0 %}visible first{% endif %}">
+                    <strong>{{ rooms|trans_fallback('mapZone') }}</strong>
+                    {% for key,r in rooms.mapRoom %}
+                        {% set roomActive = "room"~r.room.id %}
+                        {% set active = "" %}
+                        {% if key == 0 %}
+                        {% set active = "visible first" %}
+                        {% endif %}
+                        {% set img = r.room.image %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                        {% thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'class': active ,'data-image': roomActive } %}
                     {% endfor %}
                 </li>
             </ul>
         </div>
         <div class="maps">
-            {% for key,room in rooms %}
-                <span id="{{ room.slug }}" class="{% if key == 0 %}first active{% endif %}">
-                    <img src="{{ room.image.path }}" alt="">
+            {% for key,r in rooms.mapRoom %}
+                <span id="room{{ r.room.id }}" class="{% if key == 0 %}first active{% endif %}">
+                    {% set img = r.room.image %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                    {% thumbnail file, '646x567' with {'alt': img|trans_fallback('alt') } %}
                 </span>
             {% endfor %}
         </div>
