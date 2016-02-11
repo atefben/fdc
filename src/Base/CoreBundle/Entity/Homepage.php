@@ -673,6 +673,7 @@ class Homepage
      */
     public function addHomepageSlide(\Base\CoreBundle\Entity\HomepageSlide $homepageSlide)
     {
+        $homepageSlide->setHomepage($this);
         $this->homepageSlide[] = $homepageSlide;
 
         return $this;
@@ -1128,6 +1129,7 @@ class Homepage
      */
     public function addTopVideosAssociated(\Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated)
     {
+        $topVideosAssociated->setHomepage($this);
         $this->topVideosAssociated[] = $topVideosAssociated;
 
         return $this;
@@ -1161,6 +1163,7 @@ class Homepage
      */
     public function addTopWebTvsAssociated(\Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated)
     {
+        $topWebTvsAssociated->setHomepage($this);
         $this->topWebTvsAssociated[] = $topWebTvsAssociated;
 
         return $this;
@@ -1194,6 +1197,7 @@ class Homepage
      */
     public function addFilmsAssociated(\Base\CoreBundle\Entity\HomepageFilmsAssociated $filmsAssociated)
     {
+        $filmsAssociated->setHomepage($this);
         $this->filmsAssociated[] = $filmsAssociated;
 
         return $this;
