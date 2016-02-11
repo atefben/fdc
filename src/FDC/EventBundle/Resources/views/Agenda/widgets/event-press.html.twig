@@ -14,7 +14,7 @@
         {% endfor %}
         <div class="txt">
             {% for f in p.projection.programmationFilms %}
-            <span>{{ f.film|trans_fallback('title') }}</span>
+                <span>{{ f.film|trans_fallback('title') }}</span>
                 {% for director in f.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                     <strong>{{ director.fullName }}</strong>
                 {% endfor %}

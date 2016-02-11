@@ -81,23 +81,29 @@ class NewsController extends Controller
             $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
         });
 
+        //GET FILM PROJECTION ROOMS
+        $pressProjection = $em
+            ->getRepository('BaseCoreBundle:PressProjection')
+            ->findOneById(1);
+
+        if ($pressProjection === null) {
+            throw new NotFoundHttpException();
+        }
+
         //GET PRESS HOMEPAGE
         $homepage = $em
             ->getRepository('BaseCoreBundle:PressHomepage')
-            ->findById(2);
+            ->findOneById(1);
 
         if ($homepage === null) {
             throw new NotFoundHttpException();
         }
-        else {
-            $homepage = $homepage[0];
-        }
-
 
         return array(
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $schedulingDays,
+            'pressProjection' => $pressProjection,
             'pressHome' => $homepage
         );
     }
@@ -197,8 +203,6 @@ class NewsController extends Controller
 
         //get day articles
         $count = 3;
-
-
         $statementDate = $statement->getPublishedAt();
 
         if($statement instanceof Statement) {

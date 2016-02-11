@@ -55,25 +55,25 @@ class PressHomepage implements TranslateMainInterface
 
     /**
      * var MediaImage
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $pushMainImage;
 
     /**
      * var MediaImage
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $pushSecondaryImage;
 
     /**
      * var MediaImage
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $statImage;
 
     /**
      * var MediaImage
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $statImage2;
 

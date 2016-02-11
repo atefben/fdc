@@ -32,16 +32,14 @@ class PressProjection
     /**
      * @var PressProjectionScheduling
      * @ORM\OneToMany(targetEntity="PressProjectionScheduling", mappedBy="scheduling", cascade={"persist"}, orphanRemoval=true)
-     * @ORM\OrderBy({"date" = "ASC"})
      */
     protected $projection;
 
     /**
      * @var PressProjectionPressScheduling
      * @ORM\OneToMany(targetEntity="PressProjectionPressScheduling", mappedBy="pressScheduling", cascade={"persist"}, orphanRemoval=true)
-     * @ORM\OrderBy({"date" = "ASC"})
      */
-    protected $pressProjection;
+    protected $projectionP;
 
     /**
      * ArrayCollection
@@ -55,8 +53,9 @@ class PressProjection
     {
         $this->translations = new ArrayCollection();
         $this->projection = new ArrayCollection();
-        $this->pressProjection = new ArrayCollection();
+        $this->projectionP = new ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -76,10 +75,10 @@ class PressProjection
      */
     public function addProjection(\Base\CoreBundle\Entity\PressProjectionScheduling $projection)
     {
-        $projection->setPressProjection($this);
-        $this->projection[] = $projection;
 
-        return $this;
+        $projection->setScheduling($this);
+        $this->projection->add($projection);
+
     }
 
     /**
@@ -103,36 +102,36 @@ class PressProjection
     }
 
     /**
-     * Add pressProjection
+     * Add projectionP
      *
-     * @param \Base\CoreBundle\Entity\PressProjectionPressScheduling $pressProjection
+     * @param \Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP
      * @return PressProjection
      */
-    public function addPressProjection(\Base\CoreBundle\Entity\PressProjectionPressScheduling $pressProjection)
+    public function addProjectionP(\Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP)
     {
-        $pressProjection->setPressProjection($this);
-        $this->pressProjection[] = $pressProjection;
 
-        return $this;
+        $projectionP->setPressScheduling($this);
+        $this->projectionP->add($projectionP);
+
     }
 
     /**
-     * Remove pressProjection
+     * Remove projectionP
      *
-     * @param \Base\CoreBundle\Entity\PressProjectionPressScheduling $pressProjection
+     * @param \Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP
      */
-    public function removePressProjection(\Base\CoreBundle\Entity\PressProjectionPressScheduling $pressProjection)
+    public function removeProjectionP(\Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP)
     {
-        $this->pressProjection->removeElement($pressProjection);
+        $this->projectionP->removeElement($projectionP);
     }
 
     /**
-     * Get pressProjection
+     * Get projectionP
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPressProjection()
+    public function getProjectionP()
     {
-        return $this->pressProjection;
+        return $this->projectionP;
     }
 }
