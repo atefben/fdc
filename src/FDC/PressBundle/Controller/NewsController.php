@@ -144,25 +144,23 @@ class NewsController extends Controller
      */
     public function getProjectionsFromAction(Request $request) {
 
-        if ($request->isXmlHttpRequest() && $request->isMethod('POST')) {
 
-            $date = $request->get('date');
-            $locale = $request->getLocale();
-            $em = $this->get('doctrine')->getManager();
-            // GET FDC SETTINGS
-            $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-            if ($settings === null || $settings->getFestival() === null) {
-                throw new NotFoundHttpException();
-            }
-            // GET DAY PROJECTIONS
-            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
-                ->getProjectionByDate($date);
-
-            // GET DAY PROJECTIONS
-            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
-                ->getProjectionByDate($date);
-
+        $date = $request->get('date');
+        $locale = $request->getLocale();
+        $em = $this->get('doctrine')->getManager();
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
         }
+        // GET DAY PROJECTIONS
+        $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+            ->getProjectionByDate($date);
+
+        // GET DAY PROJECTIONS
+        $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+            ->getProjectionByDate($date);
+
 
         return array(
             'homePressProjection' => $homePressProjection,
