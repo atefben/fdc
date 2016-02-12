@@ -3,7 +3,7 @@
 
 {% block body %}
 <div id="main" class="webtv loading webtv-live">
-    <div id="live">
+    {#<div id="live">
         <div class="vCenter">
             <div class="vCenterKid">
                 <div class="textLive">
@@ -13,6 +13,38 @@
             </div>
         </div>
         <div class="img" style="background-image:url({{ asset('bundles/fdcevent/img/webtv/001.jpg') }})"></div>
+    </div>#}
+    <div id="live">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <div class="textLive">
+                    <h2>{{ page|trans_fallback('title') }}</h2>
+                    <a href="#" class="play-live"><i class="icon icon_video"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="main-image">
+            {% if page.image and page.image|trans_fallback('file') %}
+                <div class="img" style="background-image:url('{% path page.image|trans_fallback('file'), '1280x808' %}')"></div>
+            {% endif %}
+            <div class="trailer">
+                <div class="video-container state-init video"
+                     data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+                     data-twitter="//www.twitter.com"
+                     data-link="//www.example.com"
+                     data-email="//www.gmail.com"
+                     data-file='[{"file":"{{ page|trans_fallback('directUrl') }}"}]'
+                    {% if page.image and page.image|trans_fallback('file') %}
+                     data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
+                    {% else %}
+                        data-img=""
+                    {% endif %}>
+                    <div id="video-webtv-live" class="video-player">
+                    </div>
+                    <div class="video-overlay"></div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="content-channels">
         <h2 class="title">{{ 'webtv.direct.title.leschainesdufestival'|trans }}</h2>
@@ -23,24 +55,89 @@
             </a>
         </p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
-            {% for video in channels %}
-                {% if video.most_viewed %}
-                    <div class="vid shadow-bottom">
-                        {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
+            {% for channel in sliderVideos if channel.image or (channel.mediaVideos|length and channel.mediaVideos|last.image) %}
+                <div class="vid shadow-bottom">
+                    <div class="image-wrapper">
+                        {% if channel.image %}
+                            {% if channel.image|trans_fallback('file') %}
+                                <img src="{% path channel.image|trans_fallback('file'), '975x616' %}"
+                                     srcset="{% path channel.image|trans_fallback('file'), '573x362' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
+                                     alt="">
+                            {% else %}
+                                <img src="{% path channel.image|trans_fallback('file', 'fr'), '975x616' %}"
+                                     srcset="{% path channel.image|trans_fallback('file', 'fr'), '573x362' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                     alt="">
+                            {% endif %}
+                        {% elseif channel.mediaVideos|length and channel.mediaVideos|last.image %}{# If channel image does not exist #}
+                            {% if channel.mediaVideos|last.image|trans_fallback('file') %}
+                                <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '975x616' %}"
+                                     srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '573x362' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
+                                     alt="">
+                            {% else %}
+                                <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '975x616' %}"
+                                     srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '573x362' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                     alt="">
+                            {% endif %}
+                        {% endif %}
                     </div>
-                {% endif %}
+                    <a class="linkVid" href="#"></a>
+                    <div class="info">
+                        <div class="picto"><i class="icon icon_video"></i></div>
+                        <div class="info-container">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">{{ channel|trans_fallback('name') }}</a>
+                                    <span>{{ 'webtv.direct.nb_videos'|trans({'%nb_videos%': channel.mediaVideos|length}) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </div>
         <div id="slider-channels" class="owl-carousel sliderDrag">
-            {% for video in channels %}
-                {% if video.most_viewed == false %}
-                    <div class="channel shadow-bottom">
-                        {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
+            {% for channel in sliderChannels if channel.image or (channel.mediaVideos|length and channel.mediaVideos|last.image) %}
+                <div class="channel shadow-bottom">
+                    <div class="image-wrapper">
+                        {% if channel.image %}
+                            {% if channel.image|trans_fallback('file') %}
+                                <img src="{% path channel.image|trans_fallback('file'), '293x185' %}"
+                                     srcset="{% path channel.image|trans_fallback('file'), '293x185' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
+                                     alt="">
+                            {% else %}
+                                <img src="{% path channel.image|trans_fallback('file', 'fr'), '293x185' %}"
+                                     srcset="{% path channel.image|trans_fallback('file', 'fr'), '293x185' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                     alt="">
+                            {% endif %}
+                        {% elseif channel.mediaVideos|length and channel.mediaVideos|last.image %}{# If channel image does not exist #}
+                            {% if channel.mediaVideos|last.image|trans_fallback('file') %}
+                                <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '293x185' %}"
+                                     srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '293x185' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
+                                     alt="">
+                            {% else %}
+                                <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '293x185' %}"
+                                     srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '293x185' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                     alt="">
+                            {% endif %}
+                        {% endif %}
                     </div>
-                {% endif %}
+                    <a class="linkVid" href="#"></a>
+                    <div class="info">
+                        <div class="picto"><i class="icon icon_video"></i></div>
+                        <div class="info-container">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">{{ channel|trans_fallback('name') }}</a>
+                                    <span>{{ 'webtv.direct.nb_videos'|trans({'%nb_videos%': channel.mediaVideos|length}) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </div>
+    {% if page.doNotDisplayTrailerArea == false %}
     <div id="content-trailers">
         <h2 class="title">{{ 'webtv.direct.title.lesbandesannonces'|trans }}</h2>
         <p class="link">
@@ -50,13 +147,13 @@
             </a>
         </p>
         <div id="slider-trailers" class="owl-carousel sliderDrag">
-            {% for video in trailers %}
-                <div class="vid shadow-bottom">
-                    {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
-                </div>
+            {% for trailer in trailers %}
+                {% include 'FDCEventBundle:Television:widgets/live.slider.trailer.html.twig' %}
             {% endfor %}
         </div>
     </div>
+    {% endif %}
+    {#
     <div id="content-latest">
         <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
         <div class="container sliderDrag">
@@ -67,5 +164,6 @@
             {% endfor %}
         </div>
     </div>
+    #}
 </div>
 {% endblock body %}
