@@ -53,9 +53,9 @@ class FilmFilmRepository extends EntityRepository
             ->where('mv.displayedTrailer = :displayedTrailer')
             ->setParameter('displayedTrailer', true);
 
-        //$qb = $this->addMasterQueries($qb, 'mv', $festival);
-        //$qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        //$qb = $this->addMobileQueries($qb, 'mv');
+        $qb = $this->addMasterQueries($qb, 'mv', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $this->addMobileQueries($qb, 'mv');
 
         return $qb->getQuery();
     }
