@@ -42,18 +42,35 @@ class EntityRepository extends BaseRepository
         return $qb;
     }
 
-    public function addTranslationQueries($qb, $alias, $locale)
+    public function addTranslationQueries($qb, $alias, $locale, $slug = null)
     {
-        $qb = $qb
-            ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published)")
-            ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED);
+        if ($slug !== null) {
+            $qb = $qb
+                ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published)")
+                ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
+                ->setParameter('slug', $slug);
 
-        if ($locale != 'fr') {
-           $qb = $qb
-               ->andWhere("({$alias}.locale = :locale AND {$alias}.status = :status_translated)")
-               ->setParameter('locale', $locale)
-               ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED);
+            if ($locale != 'fr') {
+                var_dump('a');
+                $qb = $qb
+                    ->andWhere("({$alias}.locale = :locale AND {$alias}.status = :status_translated AND {$alias}.slug = :slug)")
+                    ->setParameter('locale', $locale)
+                    ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
+                    ->setParameter('slug', $slug);
+            }
+        } else {
+            $qb = $qb
+                ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published)")
+                ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED);
+
+            if ($locale != 'fr') {
+                $qb = $qb
+                    ->andWhere("({$alias}.locale = :locale AND {$alias}.status = :status_translated)")
+                    ->setParameter('locale', $locale)
+                    ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED);
+            }
         }
+
 
         return $qb;
     }

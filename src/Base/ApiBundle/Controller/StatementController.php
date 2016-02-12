@@ -4,7 +4,6 @@ namespace Base\ApiBundle\Controller;
 
 use \DateTime;
 
-use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -70,7 +69,6 @@ class StatementController extends FOSRestController
         // set context view
         $groups = array('statement_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
@@ -130,7 +128,6 @@ class StatementController extends FOSRestController
         // set context view
         $groups = array('statement_show', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 

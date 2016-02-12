@@ -42,28 +42,28 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $live;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="displayWebTvArea", type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $doNotDisplayWebTvArea = false;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="displayTrailerArea", type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $doNotDisplayTrailerArea = false;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="displayLastVideosArea", type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $doNotDisplayLastVideosArea = false;
 
@@ -77,6 +77,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     private $image;
 
     /**
+     * @var FDCPageWebTvLiveWebTvAssociated
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="fDCPageWebTvLive", cascade={"persist"})
      */
     private $associatedWebTvs;
@@ -260,6 +261,24 @@ class FDCPageWebTvLive implements TranslateMainInterface
     }
 
     /**
+     * Get associatedWebTvs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedWebTvs()
+    {
+        if ($this->associatedWebTvs->count() < 3) {
+            while ($this->associatedMediaVideos->count() != 3) {
+                $entity = new FDCPageWebTvLiveMediaVideoAssociated();
+                $entity->setFDCPageWebTvLive($this);
+                $this->associatedMediaVideos->add($entity);
+            }
+        }
+        return $this->associatedWebTvs;
+    }
+
+
+    /**
      * Add associatedWebTvs
      *
      * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
@@ -281,21 +300,6 @@ class FDCPageWebTvLive implements TranslateMainInterface
     public function removeAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
     {
         $this->associatedWebTvs->removeElement($associatedWebTvs);
-    }
-
-    /**
-     * Get associatedWebTvs
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAssociatedWebTvs()
-    {
-        if ($this->associatedWebTvs->count() != 3) {
-            while ($this->associatedWebTvs->count() != 3) {
-                $this->associatedWebTvs->add(new FDCPageWebTvLiveWebTvAssociated());
-            }
-        }
-        return $this->associatedWebTvs;
     }
 
     public function __toString()
@@ -335,9 +339,11 @@ class FDCPageWebTvLive implements TranslateMainInterface
      */
     public function getAssociatedMediaVideos()
     {
-        if ($this->associatedMediaVideos->count() != 3) {
+        if ($this->associatedMediaVideos->count() < 3) {
             while ($this->associatedMediaVideos->count() != 3) {
-                $this->associatedMediaVideos->add(new FDCPageWebTvLiveMediaVideoAssociated());
+                $entity = new FDCPageWebTvLiveMediaVideoAssociated();
+                $entity->setFDCPageWebTvLive($this);
+                $this->associatedMediaVideos->add($entity);
             }
         }
         return $this->associatedMediaVideos;
