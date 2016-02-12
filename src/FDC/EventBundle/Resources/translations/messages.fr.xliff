@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-01-25T19:04:58Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-02-12T14:40:53Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -11,9 +11,11 @@
         <target>L'adresse email n'est pas valide</target>
         <jms:reference-file line="116">Form/Type/ContactType.php</jms:reference-file>
         <jms:reference-file line="117">Form/Type/ContactType.php</jms:reference-file>
-        <jms:reference-file line="85">Form/Type/ShareEmailType.php</jms:reference-file>
-        <jms:reference-file line="89">Form/Type/ShareEmailType.php</jms:reference-file>
-        <jms:reference-file line="92">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="90">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="91">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="94">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="95">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="98">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="08d76bebf9dca034727ab36b9ea6595b433b8bde" resname="contact.form.errors.message">
         <source>contact.form.errors.message</source>
@@ -24,7 +26,6 @@
         <source>contact.form.errors.nom</source>
         <target>Votre nom n'est pas renseigné</target>
         <jms:reference-file line="113">Form/Type/ContactType.php</jms:reference-file>
-        <jms:reference-file line="88">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="ae02ff3398faddcf5c8d799ce620b2efc4805f15" resname="contact.form.errors.objet">
         <source>contact.form.errors.objet</source>
@@ -35,7 +36,6 @@
         <source>contact.form.errors.theme</source>
         <target>Votre thème n'est pas renseigné</target>
         <jms:reference-file line="110">Form/Type/ContactType.php</jms:reference-file>
-        <jms:reference-file line="84">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="3297837e1c6b935cdd8c42ff35ed055f5205dbbc" resname="contact.form.placeholder.theme">
         <source>contact.form.placeholder.theme</source>
@@ -55,17 +55,18 @@
       <trans-unit id="b86d744d13ed71f256ea14a9ae234e5977e3a740" resname="home.article.btn.ajouteramaselection">
         <source>home.article.btn.ajouteramaselection</source>
         <target>Ajouter à ma sélection</target>
-        <jms:reference-file line="8">News/widgets/article-home.html.twig</jms:reference-file>
+        <jms:reference-file line="16">News/widgets/article-home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3e12f213a10adb5625e4d7ab250e654bc240d3d3" resname="newsletter.form.error.emaildejaenregistre">
         <source>newsletter.form.error.emaildejaenregistre</source>
         <target>L'adresse email est déjà enregistré</target>
-        <jms:reference-file line="220">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="278">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="8f2153dcfb9a423088a11691433387db818adc5c" resname="newsletter.form.error.ladresseemailnestpasvalide">
         <source>newsletter.form.error.ladresseemailnestpasvalide</source>
         <target>L'adresse email n'est pas valide</target>
-        <jms:reference-file line="208">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="195">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="267">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>
