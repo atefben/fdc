@@ -737,4 +737,44 @@ class GlobalController extends Controller {
     }
 
 
+    /**
+     * @Route("/programmation/day-projections", options={"expose"=true}))
+     * @Template("FDCEventBundle:Global:projection.html.twig")
+     * @param Request $request
+     * @return array
+     */
+    public function getDayProjectionsAction(Request $request) {
+
+        $em = $this->get('doctrine')->getManager();
+
+        //Get data-date from clicked button
+        //$date = $request->get('date');
+        $date = "20160511";
+
+        $isPressProjection = false;
+        $projection = array();
+
+        if ( $request->headers->get('host') == $this->getParameter('fdc_press_domain') ) {
+            // GET DAY PROJECTIONS
+            $dayProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($date);
+
+            // GET DAY PRESS PROJECTIONS
+            $dayPressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($date);
+
+            $projection = array_merge($dayProjection, $dayPressProjection);
+            $isPressProjection = true;
+        }
+        else {
+            // Grab Event Site projections
+        }
+
+        return array(
+            'dayProjection' => $projection,
+            'isPressProjection' => $isPressProjection
+        );
+    }
+
+
 }

@@ -84,20 +84,20 @@ class NewsController extends Controller
         $date = new \DateTime;
         if (in_array($date->format('Ymd'), $schedulingDays)) {
             // GET DAY PROJECTIONS
-            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+            $dayProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
                 ->getProjectionByDate($date->format('Ymd'));
 
             // GET DAY PROJECTIONS
-            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+            $dayPressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
                 ->getProjectionByDate($date->format('Ymd'));
         }
         else {
             // GET DAY PROJECTIONS
-            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+            $dayProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
                 ->getProjectionByDate($festivalStartsAt->format('Ymd'));
 
             // GET DAY PROJECTIONS
-            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+            $dayPressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
                 ->getProjectionByDate($festivalStartsAt->format('Ymd'));
         }
 
@@ -115,8 +115,8 @@ class NewsController extends Controller
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $this->createDateRangeArray($festivalStartsAt->format('Y-m-d'),$festivalEndsAt->format('Y-m-d')),
-            'homePressProjection' => $homePressProjection,
-            'homeProjection' => $homeProjection,
+            'dayPressProjection' => $dayPressProjection,
+            'dayProjection' => $dayProjection,
             'pressHome' => $homepage
         );
     }
@@ -135,43 +135,13 @@ class NewsController extends Controller
         }
         return $aryRange;
     }
-
-    /**
-     * @Route("/homepage-projections")
-     * @Template("FDCPressBundle:Agenda:widgets/grid.html.twig")
-     * @param Request $request
-     * @return array
-     */
-    public function getProjectionsFromAction(Request $request) {
-
-
-        $date = $request->get('date');
-        $locale = $request->getLocale();
-        $em = $this->get('doctrine')->getManager();
-        // GET FDC SETTINGS
-        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null || $settings->getFestival() === null) {
-            throw new NotFoundHttpException();
-        }
-        // GET DAY PROJECTIONS
-        $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
-            ->getProjectionByDate($date);
-
-        // GET DAY PROJECTIONS
-        $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
-            ->getProjectionByDate($date);
-
-
-        return array(
-            'homePressProjection' => $homePressProjection,
-            'homeProjection' => $homeProjection,
-        );
-    }
     
     /**
      * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "communique|article"})
      * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
+     * @param $format
+     * @param $type
      * @return array
      */
     public function getAction($format, $slug, $type)
