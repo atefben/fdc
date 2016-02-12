@@ -251,9 +251,8 @@ class NewsController extends Controller {
      */
     public function getArticlesFromAction(Request $request) {
 
-//        $timestamp = $request->query->get('timestamp');
-        $timestamp = 1455284640;
-        $nextDay = true;
+       $timestamp = $request->query->get('timestamp');
+        $nextDay = $request->query->get('end');
 
         $em = $this->get('doctrine')->getManager();
         $locale = $this->getRequest()->getLocale();
