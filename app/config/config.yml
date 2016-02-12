@@ -141,6 +141,8 @@ doctrine:
                 dql:
                     numeric_functions:
                         Rand: Base\CoreBundle\Doctrine\Rand
+                    datetime_functions:
+                        Date_Format: Base\CoreBundle\Doctrine\DateFormat
 
 
 # Swiftmailer Configuration

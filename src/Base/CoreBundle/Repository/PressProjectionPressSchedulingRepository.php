@@ -18,23 +18,18 @@ use JMS\DiExtraBundle\Annotation as DI;
 class PressProjectionPressSchedulingRepository extends EntityRepository
 {
 
-    public function getProjectionSchedulingByDate($locale, $festival, $date)
+    public function getProjectionByDate($date)
     {
 
         $qb = $this
             ->createQueryBuilder('p')
             ->select('p')
             ->leftjoin('Base\CoreBundle\Entity\FilmProjection', 'fp', 'WITH', 'fp.id = p.projection')
-            ->leftjoin('fp.translations', 'fpt')
-            ->where('n.festival = :festival')
-            ->andWhere('fpt.locale = :locale')
-            ->andWhere('fp.DATE(startsAt) = :date');
+            ->where("DATE_FORMAT(fp.startsAt,'%Y%m%d') = :date");
 
 
         $qb = $qb
-            ->setParameter('festival', $festival)
             ->setParameter('date', $date)
-            ->setParameter('locale', $locale)
             ->getQuery()
             ->getResult();
 

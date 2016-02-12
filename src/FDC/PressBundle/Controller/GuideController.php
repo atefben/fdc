@@ -22,8 +22,17 @@ class GuideController extends Controller
     public function mainAction()
     {
         $em = $this->getDoctrine()->getManager();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
         // GET GUIDE PAGE
-        $guide = $em->getRepository('BaseCoreBundle:PressGuide')->findOneById(4);
+        $guide = $em->getRepository('BaseCoreBundle:PressGuide')->findOneBy(array(
+            'festival' => $settings->getFestival()->getId()
+        ));
 
         if ($guide === null) {
             throw new NotFoundHttpException();

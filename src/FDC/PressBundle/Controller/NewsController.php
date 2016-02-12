@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Validator\Constraints\Date;
 
 
 class NewsController extends Controller
@@ -70,7 +71,6 @@ class NewsController extends Controller
         if ($homeNews === null) {
             throw new NotFoundHttpException();
         }
-
         $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
         $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
         $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
@@ -81,11 +81,26 @@ class NewsController extends Controller
             $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
         });
 
-        //GET FILM PROJECTION
-        $pressProjection = $em
-            ->getRepository('BaseCoreBundle:PressProjection')->findOneBy(array(
-                'festival' => $settings->getFestival()->getId()
-            ));
+        $date = new \DateTime;
+        if (in_array($date->format('Ymd'), $schedulingDays)) {
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($date->format('Ymd'));
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($date->format('Ymd'));
+        }
+        else {
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+        }
+
 
         //GET PRESS HOMEPAGE
         $homepage = $em->getRepository('BaseCoreBundle:PressHomepage')->findOneBy(array(
@@ -100,7 +115,8 @@ class NewsController extends Controller
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $this->createDateRangeArray($festivalStartsAt->format('Y-m-d'),$festivalEndsAt->format('Y-m-d')),
-            'pressProjection' => $pressProjection,
+            'homePressProjection' => $homePressProjection,
+            'homeProjection' => $homeProjection,
             'pressHome' => $homepage
         );
     }
@@ -122,7 +138,7 @@ class NewsController extends Controller
 
     /**
      * @Route("/homepage-projections")
-     * @Template("FDCPressBundle:Agenda:widgets/event-home-ajax.html.twig")
+     * @Template("FDCPressBundle:Agenda:widgets/grid.html.twig")
      * @param Request $request
      * @return array
      */
@@ -138,20 +154,19 @@ class NewsController extends Controller
             if ($settings === null || $settings->getFestival() === null) {
                 throw new NotFoundHttpException();
             }
-            // GET PROJECTIONS
-            $projection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')->getProjectionSchedulingByDate($locale, $settings->getFestival()->getId(), $date);
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($date);
 
-            dump($projection);exit;
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($date);
 
         }
 
-
-
-
-
-
         return array(
-            'homeProjections' => $homeProjections
+            'homePressProjection' => $homePressProjection,
+            'homeProjection' => $homeProjection,
         );
     }
     
