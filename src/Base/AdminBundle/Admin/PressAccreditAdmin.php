@@ -139,6 +139,7 @@ class PressAccreditAdmin extends Admin
                 'choices' => PressAccredit::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
+            ->add('festival')
             ->end()
         ;
 
