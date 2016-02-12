@@ -588,6 +588,7 @@ abstract class News implements TranslateMainInterface
      */
     public function addAssociatedNews(\Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews)
     {
+        $associatedNews->setNews($this);
         $this->associatedNews[] = $associatedNews;
 
         return $this;
@@ -612,7 +613,9 @@ abstract class News implements TranslateMainInterface
     {
         if ($this->associatedNews->count() < 2) {
             while ($this->associatedNews->count() != 2) {
-                $this->associatedNews->add(new NewsNewsAssociated());
+                $entity = new NewsNewsAssociated();
+                $entity->setNews($this);
+                $this->associatedNews->add($entity);
             }
         }
 

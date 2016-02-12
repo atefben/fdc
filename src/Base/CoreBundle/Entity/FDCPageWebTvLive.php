@@ -267,11 +267,38 @@ class FDCPageWebTvLive implements TranslateMainInterface
     public function getAssociatedWebTvs()
     {
         if ($this->associatedWebTvs->count() < 3) {
-            while ($this->associatedWebTvs->count() != 3) {
-                $this->associatedWebTvs->add(new FDCPageWebTvLiveWebTvAssociated());
+            while ($this->associatedMediaVideos->count() != 3) {
+                $entity = new FDCPageWebTvLiveMediaVideoAssociated();
+                $entity->setFDCPageWebTvLive($this);
+                $this->associatedMediaVideos->add($entity);
             }
         }
         return $this->associatedWebTvs;
+    }
+
+
+    /**
+     * Add associatedWebTvs
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
+     * @return FDCPageWebTvLive
+     */
+    public function addAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
+    {
+        $associatedWebTvs->setFDCPageWebTvLive($this);
+        $this->associatedWebTvs[] = $associatedWebTvs;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedWebTvs
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
+     */
+    public function removeAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
+    {
+        $this->associatedWebTvs->removeElement($associatedWebTvs);
     }
 
     public function __toString()
@@ -313,33 +340,11 @@ class FDCPageWebTvLive implements TranslateMainInterface
     {
         if ($this->associatedMediaVideos->count() < 3) {
             while ($this->associatedMediaVideos->count() != 3) {
-                $this->associatedMediaVideos->add(new FDCPageWebTvLiveMediaVideoAssociated());
+                $entity = new FDCPageWebTvLiveMediaVideoAssociated();
+                $entity->setFDCPageWebTvLive($this);
+                $this->associatedMediaVideos->add($entity);
             }
         }
         return $this->associatedMediaVideos;
-    }
-
-    /**
-     * Add associatedWebTvs
-     *
-     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
-     * @return FDCPageWebTvLive
-     */
-    public function addAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
-    {
-        $associatedWebTvs->setFDCPageWebTvLive($this);
-        $this->associatedWebTvs[] = $associatedWebTvs;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedWebTvs
-     *
-     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
-     */
-    public function removeAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
-    {
-        $this->associatedWebTvs->removeElement($associatedWebTvs);
     }
 }
