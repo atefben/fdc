@@ -1,12 +1,17 @@
 {% trans_default_domain 'FDCPressBundle' %}
-<html>
-    <head>
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+<head {{ sonata_seo_head_attributes() }}>
 
-        <!-- //// META \\\\ -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <!-- //// META \\\\ -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {{ sonata_seo_title() }}
+    {{ sonata_seo_metadatas() }}
+    {{ sonata_seo_link_canonical() }}
+    {{ sonata_seo_lang_alternates() }}
 
         <!-- //// TITLE \\\\ -->
         <title>{{ 'website.title'|trans }}</title>

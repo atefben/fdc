@@ -2,6 +2,8 @@
 
 namespace FDC\PressBundle\Controller;
 
+use Base\CoreBundle\Entity\PressProjection;
+use Base\CoreBundle\Entity\PressProjectionScheduling;
 use Guzzle\Http\Message\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,32 +25,46 @@ class AgendaController extends Controller
      */
     public function schedulingAction()
     {
-        $schedulingDays = array(
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            )
-        );
+
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
+        $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
+        $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
+        $schedulingYear = $festivalStartsAt->format('Y');
+        $schedulingMonth = $festivalStartsAt->format('m');
+
+        array_walk($schedulingDays, function (&$value) use(&$schedulingYear, &$schedulingMonth) {
+            $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
+        });
+
+        $date = new \DateTime;
+
+        if (in_array($date->format('Ymd'), $schedulingDays)) {
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($date->format('Ymd'));
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($date->format('Ymd'));
+        }
+        else {
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+        }
 
         $selectionFilters = array(
             array(
@@ -84,62 +100,12 @@ class AgendaController extends Controller
             ),
         );
 
-        $events = array(
-            'place' => array(
-                'grandTheatre' => array(
-                    'events' => array(
-                        array(
-                            'id' => 3,
-                            'title' => 'Orson welles, autopsie d’une légende',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'Séance de reprise',
-                                'slug' => 'reprise'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 120,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-                'salleBunuel' => array(
-                    'events' => array(
-                        array(
-                            'id' => 5,
-                            'title' => 'Mad max, fury road',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'conférence de presse',
-                                'slug' => 'press'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 60,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-            )
-        );
-
         return array(
             'schedulingDays' => $schedulingDays,
-            'schedulingEvents' => $events,
             'typeFilters' => $typeFilters,
             'selectionFilters' => $selectionFilters,
+            'homePressProjection' => $homePressProjection,
+            'homeProjection' => $homeProjection,
         );
 
     }
