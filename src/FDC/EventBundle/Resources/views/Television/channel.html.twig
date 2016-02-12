@@ -11,17 +11,59 @@
         <h2 class="title">{{ channel|trans_fallback('name') }}</h2>
 
         <div class="small-container">
-            <div class="player">
-                {% image '@FDCEventBundle/Resources/public/img/webtv/playervideo.jpg' %}
-                <img src="{% path webTvVideos|last.image|trans_fallback('file'), '975x616' %}" alt="">
-                {% endimage %}
+            <div class="player video-container state-init video"
+                 data-facebook="//www.facebook.com"
+                 data-twitter="//www.twitter.com"
+                 data-link="//www.example.com"
+                 data-email="//www.gmail.com"
+                 data-playlist='[
+                 {%- for video in webTvVideos %}
+                {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
+                {%- if trans is null or trans.file is null -%}
+                    {%- set trans = video.file.findTranslationByLocale('fr') -%}
+                {%- endif -%}
+                    {
+                      "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
+                      {%- if video.image -%}
+                      "image":"{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}",
+                      {%- else -%}
+                      "image":"{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}",
+                      {%- endif -%}
+                      "category":"{{ video.theme }}"
+                    }
+                    {%- if loop.last == false -%},
+                    {%- endif -%}
+                {%- endfor -%}
+                ]'>
+                <div id="video-player" class="video-player v_1455119933">
+                </div>
+                <div class="video-overlay"></div>
+                <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span
+                                        class="hour">09:00</span>
+                                <p>The Lobster</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            {# To be removed #}
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+                    play1 = playerInit('video-player', false, true, false);
+                });
+            </script>
+            {# /To be removed #}
             <div class="infos-videos">
                 <div class="infos">
-                    <strong>{{ webTvVideos|last.theme|trans_fallback('name') }}</strong>
-                    <span class="time">{{ webTvVideos|last.createdAt|date('d.m.y') }}
-                        . {{ webTvVideos|last.createdAt|date('H:i') }}</span>
-                    <p>{{ webTvVideos|last|trans_fallback('title') }}</p>
+                    <strong>{{ webTvVideos[0].theme|trans_fallback('name') }}</strong>
+                    <span class="time">{{ webTvVideos[0].createdAt|date('d.m.y') }}
+                        . {{ webTvVideos[0].createdAt|date('H:i') }}</span>
+                    <p>{{ webTvVideos[0]|trans_fallback('title') }}</p>
                 </div>
                 <div class="buttons square">
                     <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
@@ -32,14 +74,31 @@
             </div>
         </div>
 
+
         <div id="content-channels">
-            <div id="slider-channels" class="owl-carousel sliderDrag">
+            <div id="slider-trailer" class="owl-carousel sliderDrag">
                 {% for video in webTvVideos %}
-                    {% if loop.last == false %}
-                        <div class="channel shadow-bottom">
-                            {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
+                    <div class="channel shadow-bottom">
+                        {%- if video.image -%}
+                            <img src="{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}" alt=""/>
+                        {%- else -%}
+                            <img src="{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}"
+                                 alt=""/>
+                        {%- endif -%}
+                        <a class="linkVid" href="#"></a>
+                        <div class="info">
+                            <div class="picto"><i class="icon icon_video"></i></div>
+                            <div class="info-container">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <a href="#" class="category">{{ video.theme }}</a>
+                                        <span class="date">{{ video.createdAt|date('d') }}</span>
+                                        <span>{{ video|trans_fallback('title') }}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    {% endif %}
+                    </div>
                 {% endfor %}
             </div>
         </div>

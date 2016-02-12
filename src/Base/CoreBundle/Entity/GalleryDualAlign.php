@@ -71,6 +71,7 @@ class GalleryDualAlign
      */
     public function addMedia(\Base\CoreBundle\Entity\GalleryDualAlignMedia $medias)
     {
+        $medias->setGallery($this);
         $this->medias[] = $medias;
 
         return $this;

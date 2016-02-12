@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
     // translate event
-    if ($('input[name$="[translate]"]').length != 0 && $('input[name$="[translate]"]').val() == 1) {
+    if ($('input[name$="[translate]"]').is(':checked')) {
         $('.form-group[id$="priorityStatus"]').show();
         $('ul[id$="translateOptions"]').show();
     } else {

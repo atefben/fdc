@@ -44,6 +44,27 @@ class HomepageFilmsAssociated
     /**
      * @var NewsArticle
      *
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
+     */
+    protected $video;
+
+    /**
+     * @var NewsArticle
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     */
+    protected $tabletImage;
+
+    /**
+     * @var NewsArticle
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     */
+    protected $mobileImage;
+
+    /**
+     * @var NewsArticle
+     *
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      */
     protected $association;
@@ -112,5 +133,74 @@ class HomepageFilmsAssociated
     public function getAssociation()
     {
         return $this->association;
+    }
+
+    /**
+     * Set video
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $video
+     * @return HomepageFilmsAssociated
+     */
+    public function setVideo(\Base\CoreBundle\Entity\MediaVideo $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Base\CoreBundle\Entity\MediaVideo 
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set tabletImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $tabletImage
+     * @return HomepageFilmsAssociated
+     */
+    public function setTabletImage(\Base\CoreBundle\Entity\MediaImage $tabletImage = null)
+    {
+        $this->tabletImage = $tabletImage;
+
+        return $this;
+    }
+
+    /**
+     * Get tabletImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getTabletImage()
+    {
+        return $this->tabletImage;
+    }
+
+    /**
+     * Set mobileImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImage $mobileImage
+     * @return HomepageFilmsAssociated
+     */
+    public function setMobileImage(\Base\CoreBundle\Entity\MediaImage $mobileImage = null)
+    {
+        $this->mobileImage = $mobileImage;
+
+        return $this;
+    }
+
+    /**
+     * Get mobileImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImage 
+     */
+    public function getMobileImage()
+    {
+        return $this->mobileImage;
     }
 }

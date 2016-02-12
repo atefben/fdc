@@ -3,15 +3,15 @@ sonata_admin:
     security:
         handler: sonata.admin.security.handler.acl
         information:
-            WRITER:    [VIEW, LIST, CREATE, EDIT]
-            EDITOR: [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE]
+            WRITER:    [VIEW, LIST, CREATE, EDIT, OPERATOR]
+            EDITOR: [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE, OPERATOR]
             TRANSLATOR: [VIEW, LIST, EDIT, EXPORT]
-            ADMIN:    [CREATE, LIST, EDIT, VIEW, DELETE, UNDELETE, EXPORT]
+            ADMIN:    [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE, EXPORT, OPERATOR]
         # permissions not related to an object instance and also to be available when objects do not exist
         # the DELETE admin permission means the user is allowed to batch delete objects
-        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT]
+        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR]
         # permission related to the objects
-        object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, OWNER]
+        object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR]
     dashboard:
         blocks:
            # - { position: top, class: col-md-12, type: base_admin.block.sites }

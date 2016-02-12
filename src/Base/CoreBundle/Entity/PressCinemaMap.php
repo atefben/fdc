@@ -5,7 +5,8 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 
 /**
@@ -15,10 +16,12 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressCinemaMap
+class PressCinemaMap implements TranslateMainInterface
 {
-    use Translatable;
     use Time;
+    use Translatable;
+    use TranslateMain;
+
     /**
      * @var integer
      *
@@ -36,11 +39,11 @@ class PressCinemaMap
     protected $mapRoom;
 
     /**
-     * @var string
+     * @var FilmFestival
      *
-     * @ORM\OneToOne(targetEntity="MediaImage", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    protected $zoneImage;
+    private $festival;
 
     /**
      * ArrayCollection
@@ -102,25 +105,25 @@ class PressCinemaMap
     }
 
     /**
-     * Set zoneImage
+     * Set festival
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $zoneImage
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
      * @return PressCinemaMap
      */
-    public function setZoneImage(\Base\CoreBundle\Entity\MediaImage $zoneImage = null)
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
     {
-        $this->zoneImage = $zoneImage;
+        $this->festival = $festival;
 
         return $this;
     }
 
     /**
-     * Get zoneImage
+     * Get festival
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\FilmFestival 
      */
-    public function getZoneImage()
+    public function getFestival()
     {
-        return $this->zoneImage;
+        return $this->festival;
     }
 }

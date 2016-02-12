@@ -306,8 +306,14 @@ class HomepageAdmin extends Admin
                 'label' => 'form.label_display',
                 'required' => false
             ))
-
-
+            ->add('displayedFilms','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('displayedTopWebTv','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
         ;
 
     }

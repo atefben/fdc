@@ -55,25 +55,25 @@ class PressHomepage implements TranslateMainInterface
 
     /**
      * var MediaImage
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $pushMainImage;
 
     /**
      * var MediaImage
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $pushSecondaryImage;
 
     /**
      * var MediaImage
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $statImage;
 
     /**
      * var MediaImage
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $statImage2;
 
@@ -112,6 +112,12 @@ class PressHomepage implements TranslateMainInterface
      */
     protected $sectionStatisticDisplay;
 
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
 
     /**
      * ArrayCollection
@@ -279,10 +285,10 @@ class PressHomepage implements TranslateMainInterface
     /**
      * Set statImage
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $statImage
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $statImage
      * @return PressHomepage
      */
-    public function setStatImage(\Base\CoreBundle\Entity\MediaImage $statImage = null)
+    public function setStatImage(\Base\CoreBundle\Entity\MediaImageSimple $statImage = null)
     {
         $this->statImage = $statImage;
 
@@ -292,7 +298,7 @@ class PressHomepage implements TranslateMainInterface
     /**
      * Get statImage
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getStatImage()
     {
@@ -302,10 +308,10 @@ class PressHomepage implements TranslateMainInterface
     /**
      * Set statImage2
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $statImage2
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $statImage2
      * @return PressHomepage
      */
-    public function setStatImage2(\Base\CoreBundle\Entity\MediaImage $statImage2 = null)
+    public function setStatImage2(\Base\CoreBundle\Entity\MediaImageSimple $statImage2 = null)
     {
         $this->statImage2 = $statImage2;
 
@@ -315,7 +321,7 @@ class PressHomepage implements TranslateMainInterface
     /**
      * Get statImage2
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getStatImage2()
     {
@@ -440,10 +446,10 @@ class PressHomepage implements TranslateMainInterface
     /**
      * Set pushMainImage
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $pushMainImage
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushMainImage
      * @return PressHomepage
      */
-    public function setPushMainImage(\Base\CoreBundle\Entity\MediaImage $pushMainImage = null)
+    public function setPushMainImage(\Base\CoreBundle\Entity\MediaImageSimple $pushMainImage = null)
     {
         $this->pushMainImage = $pushMainImage;
 
@@ -453,7 +459,7 @@ class PressHomepage implements TranslateMainInterface
     /**
      * Get pushMainImage
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushMainImage()
     {
@@ -463,10 +469,10 @@ class PressHomepage implements TranslateMainInterface
     /**
      * Set pushSecondaryImage
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $pushSecondaryImage
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $pushSecondaryImage
      * @return PressHomepage
      */
-    public function setPushSecondaryImage(\Base\CoreBundle\Entity\MediaImage $pushSecondaryImage = null)
+    public function setPushSecondaryImage(\Base\CoreBundle\Entity\MediaImageSimple $pushSecondaryImage = null)
     {
         $this->pushSecondaryImage = $pushSecondaryImage;
 
@@ -476,10 +482,33 @@ class PressHomepage implements TranslateMainInterface
     /**
      * Get pushSecondaryImage
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushSecondaryImage()
     {
         return $this->pushSecondaryImage;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return PressHomepage
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }

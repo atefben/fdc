@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * NewsWidgetAudio
  *
@@ -19,6 +22,7 @@ class NewsWidgetAudio extends NewsWidget
      * @var MediaAudio
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio")
+     * @Groups({"news_list", "news_show"})
      */
     private $file;
 

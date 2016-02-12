@@ -12,7 +12,7 @@
             {% endif %}
             {% set file = trans.file %}
             <div class="img {% if key == 0 %}active{% endif %}">
-                <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, 'big' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{{ trans.copyright }}">
+                <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, '1461x923' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{{ trans.copyright }}">
                     {% thumbnail file, '1461x923' with {'alt': trans.alt} %}
                 </a>
             </div>
@@ -22,7 +22,7 @@
         <div class="owl-carousel thumbnails">
             {% for key, gallery in widget.gallery.medias %}
                 <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}">
-                    {% thumbnail file, '212x133' %}
+                    {% thumbnail file, '212x134' %}
                 </div>
             {% endfor %}
         </div>

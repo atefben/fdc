@@ -4,7 +4,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
-use Doctrine\ORM\EntityRepository;
+use Base\CoreBundle\Component\Repository\EntityRepository;
 
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -17,37 +17,26 @@ use JMS\DiExtraBundle\Annotation as DI;
  */
 class NewsRepository extends EntityRepository
 {
-    public function getNewsBySlug($slug, $festival, $locale, $dateTime, $isAdmin, $repository)
+    public function getNewsBySlug($slug, $festival, $locale, $isAdmin, $repository)
     {
         $qb = $this
             ->createQueryBuilder('n')
-            ->join('n.sites', 's')
+           // ->join('n.sites', 's')
             ->leftjoin($repository, 'na1', 'WITH', 'na1.id = n.id')
-            ->leftjoin('na1.translations', 'na1t')
-            ->where('s.slug = :site_slug')
-            ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->leftjoin('na1.translations', 'na1t');
 
         if ($isAdmin === true) {
-            $qb = $qb->andWhere('(na1t.locale = :locale AND na1t.slug = :news_slug)');
+            $qb = $qb
+                ->andWhere('(na1t.locale = :locale AND na1t.slug = :slug)')
+                ->setParameter('locale', $locale)
+                ->setParameter('slug', $slug);
         } else {
-            if($locale != 'fr') {
-                $qb = $qb
-                    ->andWhere('(na1t.locale = :locale AND na1t.status = :status AND na1t.slug = :news_slug)')
-                    ->setParameter('status', NewsArticleTranslation::STATUS_TRANSLATED);
-            } else {
-                $qb = $qb
-                    ->andWhere('(na1t.locale = fr AND na1t.status = :status AND na1t.slug = :news_slug)')
-                    ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
-            }
+            $qb = $this->addMasterQueries($qb, 'na1', $festival);
+            $qb = $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
+      //  $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
-            ->setParameter('news_slug', $slug)
-            ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel')
             ->getQuery()
             ->getOneOrNullResult();
 
@@ -327,27 +316,37 @@ class NewsRepository extends EntityRepository
      * @param $locale
      * @return mixed
      */
-    public function getNews($festival, $dateTime, $locale)
+    public function getApiNews($festival, $dateTime, $locale)
     {
         return $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
             ->leftjoin('naa.translations', 'naat')
             ->leftjoin('na.translations', 'nat')
+            ->leftjoin('nai.translations', 'nait')
+            ->leftjoin('nav.translations', 'navt')
             ->where('n.festival = :festival')
-            ->andWhere('s.slug = :site')
+            ->andWhere('n.displayedMobile = :displayed_mobile')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->andWhere(
                 '(nat.locale = :locale AND nat.status = :status) OR
-                (naat.locale = :locale AND naat.status = :status)'
+                (nat.locale = :locale AND nat.status = :status_translated) OR
+                (naat.locale = :locale AND naat.status = :status) OR
+                (naat.locale = :locale AND naat.status = :status_translated) OR
+                (nait.locale = :locale AND nait.status = :status) OR
+                (nait.locale = :locale AND nait.status = :status_translated) OR
+                (navt.locale = :locale AND navt.status = :status) OR
+                (navt.locale = :locale AND navt.status = :status_translated)'
             )
             ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
             ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+            ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
+            ->setParameter('displayed_mobile', true)
             ->getQuery();
     }
 
@@ -360,31 +359,39 @@ class NewsRepository extends EntityRepository
      * @param $locale
      * @return mixed
      */
-    public function getNewsById($id, $festival, $dateTime, $locale)
+    public function getApiNewsById($id, $festival, $dateTime, $locale)
     {
-        return $this->createQueryBuilder('wt')
-            ->join('wt.mediaVideos', 'mv')
-            ->join('mv.sites', 's')
-            ->join('wt.translations', 'wtt')
-            ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->andWhere('s.slug = :site')
-            ->andWhere('mv.inWebTv = :inWebTv')
-            ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status = :status')
-            ->andWhere('wtt.locale = :locale')
-            ->andWhere('wtt.status = :status')
-            ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
-            ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
-            ->andWhere('mv.id = :id')
-            ->setParameter('festival', $festival)
+        return $this->createQueryBuilder('n')
+            ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
+            ->leftjoin('naa.translations', 'naat')
+            ->leftjoin('na.translations', 'nat')
+            ->leftjoin('nai.translations', 'nait')
+            ->leftjoin('nav.translations', 'navt')
+            ->where('n.festival = :festival')
+            ->andWhere('n.id = :id')
+            ->andWhere('n.displayedMobile = :displayed_mobile')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->andWhere(
+                '(nat.locale = :locale AND nat.status = :status) OR
+                (nat.locale = :locale AND nat.status = :status_translated) OR
+                (naat.locale = :locale AND naat.status = :status) OR
+                (naat.locale = :locale AND naat.status = :status_translated) OR
+                (nait.locale = :locale AND nait.status = :status) OR
+                (nait.locale = :locale AND nait.status = :status_translated) OR
+                (navt.locale = :locale AND navt.status = :status) OR
+                (navt.locale = :locale AND navt.status = :status_translated)'
+            )
             ->setParameter('id', $id)
-            ->setParameter('inWebTv', true)
+            ->setParameter('festival', $festival)
             ->setParameter('locale', $locale)
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+            ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
-            ->getQuery()
-            ->getOneOrNullResult();
+            ->setParameter('displayed_mobile', true)
+            ->getQuery();
     }
 }

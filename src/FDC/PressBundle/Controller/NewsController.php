@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Validator\Constraints\Date;
 
 
 class NewsController extends Controller
@@ -70,7 +71,6 @@ class NewsController extends Controller
         if ($homeNews === null) {
             throw new NotFoundHttpException();
         }
-
         $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
         $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
         $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
@@ -81,34 +81,102 @@ class NewsController extends Controller
             $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
         });
 
+        $date = new \DateTime;
+        if (in_array($date->format('Ymd'), $schedulingDays)) {
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($date->format('Ymd'));
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($date->format('Ymd'));
+        }
+        else {
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+        }
+
+
         //GET PRESS HOMEPAGE
-        $homepage = $em
-            ->getRepository('BaseCoreBundle:PressHomepage')
-            ->findById(2);
+        $homepage = $em->getRepository('BaseCoreBundle:PressHomepage')->findOneBy(array(
+            'festival' => $settings->getFestival()->getId()
+        ));
 
         if ($homepage === null) {
             throw new NotFoundHttpException();
         }
-        else {
-            $homepage = $homepage[0];
-        }
-
 
         return array(
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
-            'schedulingDays' => $schedulingDays,
+            'schedulingDays' => $this->createDateRangeArray($festivalStartsAt->format('Y-m-d'),$festivalEndsAt->format('Y-m-d')),
+            'homePressProjection' => $homePressProjection,
+            'homeProjection' => $homeProjection,
             'pressHome' => $homepage
         );
     }
 
+    function createDateRangeArray($strDateFrom,$strDateTo)
+    {
+        $aryRange=array();
+        $iDateFrom=mktime(1,0,0,substr($strDateFrom,5,2),substr($strDateFrom,8,2),substr($strDateFrom,0,4));
+        $iDateTo=mktime(1,0,0,substr($strDateTo,5,2),substr($strDateTo,8,2),substr($strDateTo,0,4));
+        if ($iDateTo>=$iDateFrom) {
+            array_push($aryRange,date('Y-m-d',$iDateFrom));
+            while ($iDateFrom<$iDateTo) {
+                $iDateFrom+=86400;
+                array_push($aryRange,date('Y-m-d',$iDateFrom));
+            }
+        }
+        return $aryRange;
+    }
+
     /**
-     * @Route("/press-articles/{slug}")
+     * @Route("/homepage-projections")
+     * @Template("FDCPressBundle:Agenda:widgets/grid.html.twig")
+     * @param Request $request
+     * @return array
+     */
+    public function getProjectionsFromAction(Request $request) {
+
+        if ($request->isXmlHttpRequest() && $request->isMethod('POST')) {
+
+            $date = $request->get('date');
+            $locale = $request->getLocale();
+            $em = $this->get('doctrine')->getManager();
+            // GET FDC SETTINGS
+            $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+            if ($settings === null || $settings->getFestival() === null) {
+                throw new NotFoundHttpException();
+            }
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($date);
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($date);
+
+        }
+
+        return array(
+            'homePressProjection' => $homePressProjection,
+            'homeProjection' => $homeProjection,
+        );
+    }
+    
+    /**
+     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "communique|article"})
      * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
      * @return array
      */
-    public function getAction($slug)
+    public function getAction($format, $slug, $type)
     {
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -122,22 +190,35 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        // GET NEWS
-        $statement = $em->getRepository('BaseCoreBundle:Statement')->getStatementBySlug(
-            $slug,
-            $settings->getFestival()->getId(),
-            $locale,
-            $dateTime->format('Y-m-d H:i:s'),
-            $isAdmin
-        );
+        $format = substr($format, 0, -1);
 
-        if ($statement === null) {
+        // GET STATEMENT / INFO
+        if ($type == "article") {
+            $mapper = array_flip(Statement::getTypes());
+            if (!isset($mapper[$format])) {
+                throw  new NotFoundHttpException();
+            }
+            $statement = $em->getRepository('BaseCoreBundle:Statement')->getStatementBySlug(
+                $slug,
+                $settings->getFestival()->getId(),
+                $locale,
+                $dateTime->format('Y-m-d H:i:s'),
+                $isAdmin,
+                $mapper[$format]
+            );
+        }
+        else {
+            $mapper = array_flip(Info::getTypes());
+            if (!isset($mapper[$format])) {
+                throw  new NotFoundHttpException();
+            }
             $statement = $em->getRepository('BaseCoreBundle:Info')->getInfoBySlug(
                 $slug,
                 $settings->getFestival()->getId(),
                 $locale,
                 $dateTime->format('Y-m-d H:i:s'),
-                $isAdmin
+                $isAdmin,
+                $mapper[$format]
             );
         }
 
@@ -197,8 +278,6 @@ class NewsController extends Controller
 
         //get day articles
         $count = 3;
-
-
         $statementDate = $statement->getPublishedAt();
 
         if($statement instanceof Statement) {

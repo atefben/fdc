@@ -5,17 +5,23 @@
 <div id="main" class="press loading fullcalendar">
     <div class="header-press">
         <div class="head">
-            <span>{{ 'press.header.label.espacepresse'|trans }}</span>
+            <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
         </div>
         <div class="container">
             <h2>{{ 'agenda.title.monagenda'|trans }}</h2>
             <div class="buttons">
-                <a href="#" class="button create">{{ 'agenda.btn.creerunevenement'|trans }}</a>
-                <a href="#" class="button export">{{ 'agenda.btn.exportermonagenda'|trans }}</a>
+                <a href="#" class="button create"><i class="icon icon_creer"></i>{{ 'agenda.btn.creerunevenement'|trans }}</a>
+                <a href="#" class="button export subnav"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.exportermonagenda'|trans }}</a>
+                <a href="#" class="button list"><i class="icon icon_telecharger"></i>
+                    {{ 'agenda.btn.telechargerformatpdf'|trans }}
+                </a>
+                <a href="#" class="button list"><i class="icon icon_telecharger"></i>
+                    {{ 'agenda.btn.telechargerformatics'|trans }}
+                </a>
             </div>
         </div>
     </div>
-
+    <div class="popin"></div>
     <div id='calendar' class="fullwidth">
         <div id="mycalendar"></div>
     </div>

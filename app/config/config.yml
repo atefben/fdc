@@ -88,6 +88,7 @@ twig:
         social_dailymotion: "%social_dailymotion%"
         social_podcast: "%social_podcast%"
         jwplayer_key: "%jwplayer_key%"
+        admin_routes_translation_legend_without_master: %admin_routes_translation_legend_without_master%
         admin_routes_translation_legend: %admin_routes_translation_legend%
         admin_routes_translation_lock: %admin_routes_translation_lock%
         admin_homepage_id: %admin_homepage_id%
@@ -140,6 +141,8 @@ doctrine:
                 dql:
                     numeric_functions:
                         Rand: Base\CoreBundle\Doctrine\Rand
+                    datetime_functions:
+                        Date_Format: Base\CoreBundle\Doctrine\DateFormat
 
 
 # Swiftmailer Configuration

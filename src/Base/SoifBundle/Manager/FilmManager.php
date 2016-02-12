@@ -172,16 +172,13 @@ class FilmManager extends CoreManager
             return;
         }
         $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
-        $entities = array();
-        
+
         // set entities
         foreach ($resultObjects as $resultObject) {
-            $entities[] = $this->set($resultObject, $result);
+            $entity = $this->set($resultObject, $result);
+            $this->update($entity);
         }
-        
-        // save entities
-        $this->updateMultiple($entities);
-        
+
         // end timer
         $this->end(__METHOD__);
     }
@@ -233,7 +230,7 @@ class FilmManager extends CoreManager
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFilm();
 
-        // set soif last update time
+       // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
         
         // set entity properties
@@ -596,6 +593,7 @@ class FilmManager extends CoreManager
             }
             
             // create / update contact
+            $contactIds = array();
             $collection = new ArrayCollection();
             foreach ($objects as $object) {
                 $filmContact = $this->em->getRepository('BaseCoreBundle:FilmContact')->findOneBy(array('id' => $object->IdContact));
@@ -662,21 +660,26 @@ class FilmManager extends CoreManager
                     $person = $object->PersonneContact;
                     // this api returns sometimes a link on a contact with ID -1 and empty values, dont use it...
                     if ($person->Id != -1) {
-                        $filmContactPerson = $this->em->getRepository('BaseCoreBundle:FilmContactPerson')->findOneById(array('id' => $person->Id));
-                        $filmContactPerson = ($filmContactPerson !== null) ? $filmContactPerson : new FilmContactPerson();
-                        $filmContactPerson->setId($person->Id);
-                        $filmContactPerson->setFirstname($person->Nom);
-                        $filmContactPerson->setFirstname($person->Prenom);
-                        $filmContactPerson->setEmail($person->Email);
-                        $filmContact->setPerson($filmContactPerson);
+                        if (!in_array($person->Id, $contactIds)) {
+                            $contactIds[] = $person->Id;
+                            $filmContactPerson = $this->em->getRepository('BaseCoreBundle:FilmContactPerson')->findOneById(array('id' => $person->Id));
+                            $filmContactPerson = ($filmContactPerson !== null) ? $filmContactPerson : new FilmContactPerson();
+                            $filmContactPerson->setId($person->Id);
+                            $filmContactPerson->setFirstname($person->Nom);
+                            $filmContactPerson->setFirstname($person->Prenom);
+                            $filmContactPerson->setEmail($person->Email);
+                            $filmContact->setPerson($filmContactPerson);
+                        }
                     }
                 }
                 
                 // set subordinates
                 if (property_exists($object, 'ContactSecondaires') && property_exists($object->ContactSecondaires, 'PersonneContactSecondaireDto')) {
                     $subordinates = $object->ContactSecondaires->PersonneContactSecondaireDto;
+
                     $subordinates = $this->mixedToArray($subordinates);
                     $collectionSubordinates = new ArrayCollection();
+
                     foreach ($subordinates as $subordinate) {
                         $filmContactPersonSubordinate = $this->em->getRepository('BaseCoreBundle:FilmContactPerson')->findOneById(array('id' => $subordinate->Id));
                         $filmContactPersonSubordinate = ($filmContactPersonSubordinate !== null) ? $filmContactPersonSubordinate: new FilmContactPerson();
@@ -685,7 +688,7 @@ class FilmManager extends CoreManager
                         $filmContactPersonSubordinate->setLastname($subordinate->Nom);
                         $filmContactPersonSubordinate->setFirstname($subordinate->Prenom);
                         $filmContactPersonSubordinate->setMobilePhone($subordinate->TelephonePortable);
-                        
+
                         $filmContactPerson->addSubordinate($filmContactPersonSubordinate);
                         $collectionSubordinates->add($filmContactPerson);
                     }

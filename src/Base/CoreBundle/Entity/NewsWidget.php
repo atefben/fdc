@@ -45,6 +45,7 @@ abstract class NewsWidget
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=false)
+     * @Groups({"news_list", "news_show"})
      */
     protected $position;
 
@@ -64,6 +65,24 @@ abstract class NewsWidget
     public function getWidgetType()
     {
         return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 
     /**

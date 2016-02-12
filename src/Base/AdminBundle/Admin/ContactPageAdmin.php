@@ -95,39 +95,33 @@ class ContactPageAdmin extends Admin
                         'choices' => ContactPageTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                )
-            ))
-            ->add('sites', null, array(
-                'label' => 'form.label_publish_on',
-                'class' => 'BaseCoreBundle:Site',
-                'multiple' => true,
-                'expanded' => true
-            ))
-            ->add('publishedAt', 'sonata_type_datetime_picker', array(
-                'format' => 'dd/MM/yyyy HH:mm',
-                'required' => false,
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
-            ))
-            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
-                'format' => 'dd/MM/yyyy HH:mm',
-                'required' => false,
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+
+                    )
                 )
             ))
             ->add('translate')
-            ->add('translateOptions', 'choice', array(
-                'choices' => ContactPage::getAvailableTranslateOptions(),
-                'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
-            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => ContactPage::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
+            ->add('festival')
         ;
     }
 

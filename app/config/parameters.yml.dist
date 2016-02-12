@@ -23,7 +23,7 @@ parameters:
     locales: [fr, en, es, zh]
     locales_admin: [fr]
     locale_default_translation: fr
-    locale_fallback: en
+    locale_fallback: fr
 
     # admin
     admin_homepage_id: ~
@@ -39,12 +39,13 @@ parameters:
     admin_fdc_page_web_tv_trailers_cannes_classics_id: ~
     admin_fdc_page_web_tv_trailers_cinema_plage_id: ~
     # routes where are displayed the translation legend
-    admin_routes_translation_legend:
-        - admin_base_core_newsarticle_list
-        - admin_base_core_webtv_list
-        - admin_base_core_tag_list
+    admin_routes_translation_legend_without_master:
         - admin_base_core_theme_list
         - admin_base_core_contacttheme_list
+        - admin_base_core_tag_list
+        - admin_base_core_webtv_list
+    admin_routes_translation_legend:
+        - admin_base_core_newsarticle_list
         - admin_base_core_event_list
         - admin_base_core_mediaimage_list
         - admin_base_core_mediaaudio_list

@@ -4,7 +4,6 @@ namespace Base\ApiBundle\Controller;
 
 use \DateTime;
 
-use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -61,7 +60,7 @@ class NewsController extends FOSRestController
 
         //create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository('BaseCoreBundle:News')->getNews($festival, new DateTime(), $lang);
+        $query = $em->getRepository('BaseCoreBundle:News')->getApiNews($festival, new DateTime(), $lang);
 
         // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
         //
@@ -70,7 +69,6 @@ class NewsController extends FOSRestController
         // set context view
         $groups = array('news_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
@@ -114,16 +112,24 @@ class NewsController extends FOSRestController
      */
     public function getNewAction(Paramfetcher $paramFetcher, $id)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
+        // get festival year / version
+        $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $projection = $em->getRepository($this->repository)->findOneById($id);
+        $projection = $em->getRepository($this->repository)->getApiNewsById($id, $festival, new DateTime(), $lang);
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(array('news_show', 'time'));
+        $groups = array('news_show', 'time');
+        $context = $coreManager->setContext($groups, $paramFetcher);
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
+
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);
 

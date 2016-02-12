@@ -241,6 +241,7 @@ class PressGuideAdmin extends Admin
                 ),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
+            ->add('festival')
 
             ->end()
         ;

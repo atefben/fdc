@@ -3,86 +3,156 @@
 
 {% block body %}
 
-<div id="main" class=" webtv webtv-ba-video loading">
-    <div class="container-webtv-ba-video">
-        <div class="title-container">
-            <a href="#" class="bandeannone"><i class="icon icon_flecheGauche"></i>{{ 'trailer.btn.retourbandeannonces'|trans }}</a>
-            <h1 class="title">{{ trailer.film.title }}</h1>
-        </div>
-        <section>
-            <article class="video">
-                <img src="//html.festival-cannes-2016.com.ohwee.fr/img/webtv/video1.jpg" alt="video">
-                <span class="type-video">{{ trailer.film.type }}</span>
-                <span class="name-video">{{ trailer.film.title }}</span>
-            </article>
-            <aside class="informations-video">
-                <ul class="nav">
-                    <li class="active infos-film-li">{{ 'trailer.nav.film'|trans }}</li>
-                    <li class="program-film-li">{{ 'trailer.nav.programmation'|trans }}</li>
-                </ul>
-                <div class="container-video">
-                    <div class="infos-film block">
-                        <img src="//html.festival-cannes-2016.com.ohwee.fr/img/webtv/cover-film1.jpg" alt="affiche film">
-                        <h4 class="rubric-film">{{ trailer.film.type }}</h4>
-                        <strong class="name-video">{{ trailer.film.title }}</strong>
-                        <span class="name-person">{{ trailer.author.fullName }}</span>
-                    </div>
-                    <div class="program-film block">
-                        <div class="contain-info">
-                            {% for showing in filmShowings %}
-                                <div class="infos">
-                                    <p>{{ 'trailer.text.projection'|trans }} <span class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span></p>
-                                    <span class="where">{{ showing.place }}</span>
-                                    {% if loop.last == false %}
-                                        <hr>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
+    <div id="main" class=" webtv webtv-ba-video loading">
+        <div class="container-webtv-ba-video">
+            <div class="title-container">
+                <a href="#" class="bandeannone"><i
+                            class="icon icon_flecheGauche"></i>{{ 'trailer.btn.retourbandeannonces'|trans }}</a>
+                <h1 class="title">{{ film|trans_fallback('title') }}</h1>
+            </div>
+            <section>
+                <article class="video">
+                    <div class="video-container state-init video"
+                         data-facebook="//www.facebook.com"
+                         data-twitter="//www.twitter.com"
+                         data-link="//www.example.com"
+                         data-email="//www.gmail.com"
+                         data-playlist='[
+                            {%- for video in videos -%}
+                                {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
+                                {%- if trans is null or trans.file is null -%}
+                                    {%- set trans = video.file.findTranslationByLocale('fr') -%}
+                                {%- endif -%}
+                            {
+                              "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
+                              {%- if video.image -%}
+                              "image":"{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}",
+                              {%- else -%}
+                              "image":"{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}",
+                              {%- endif -%}
+                              "name":"{{ video|trans_fallback('title') }}",
+                              "category":"{{ video.theme }}"
+                            }{%- if loop.last == false -%},{%- endif -%}
+                            {%- endfor -%}
+                          ]'
+                         data-live="false"
+                         data-file=""
+                            {%- if videos[0].image -%}
+                        data-img="{%- path videos[0].image|trans_fallback('file', 'fr'), '975x616' -%}"
+                    {%- else -%}
+                        data-img="{%- path videos[0].image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}"
+                            {%- endif -%}>
+                        <div id="video-player" class="video-player v_1455184257">
                         </div>
-                        <a href="{{ path('fdc_event_news_index') }}" class="btn">{{ 'trailer.btn.toutelaprogrammation'|trans }}</a>
+                        <div class="video-overlay"></div>
+                        <div class="infos-bar">
+                            <div class="picto"><i class="icon icon_video"></i></div>
+                            <div class="info">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span>
+                                        . <span class="hour">09:00</span>
+                                        <p>The Lobster</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="share">
-                    <div class="buttons square">
-                        <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-                        <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
-                        <a href="#" class="button link"><i class="icon icon_link"></i></a>
-                        <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+                    <script type="text/javascript">
+                        document.addEventListener("DOMContentLoaded", function () {
+                            play1 = playerInit('video-player', false, true, false);
+                        });
+                    </script>
+                    <span class="type-video">{{ videos[0].theme }}</span>
+                    <span class="name-video">{{ videos[0]|trans_fallback('title') }}</span>
+                </article>
+                <aside class="informations-video">
+                    <ul class="nav">
+                        <li class="active infos-film-li">{{ 'trailer.nav.film'|trans }}</li>
+                        <li class="program-film-li">{{ 'trailer.nav.programmation'|trans }}</li>
+                    </ul>
+                    <div class="container-video">
+                        <div class="infos-film block">
+                            {% if poster %}
+                                <img src="{%- path poster|trans_fallback('file', 'fr'), '135x185' -%}"
+                                     alt="affiche film">
+                            {% endif %}
+                            <h4 class="rubric-film">{{ film.theme }}</h4>
+                            <strong class="name-video">{{ film|trans_fallback('title') }}</strong>
+                            <span class="name-person">
+                                {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                    {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
+                                {%- endfor -%}
+                            </span>
+                        </div>
+                        <div class="program-film block">
+                            <div class="contain-info">
+                                {% for showing in filmShowings %}
+                                    <div class="infos">
+                                        <p>{{ 'trailer.text.projection'|trans }} <span
+                                                    class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span>
+                                        </p>
+                                        <span class="where">{{ showing.place }}</span>
+                                        {% if loop.last == false %}
+                                            <hr>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a href="{{ path('fdc_event_news_index') }}"
+                               class="btn">{{ 'trailer.btn.toutelaprogrammation'|trans }}</a>
+                        </div>
                     </div>
-                </div>
-            </aside>
-        </section>
-    </div>
-    <div id="content-trailers">
-        <div id="slider-trailer" class="owl-carousel sliderDrag">
-            {% for video in channels %}
-                <div class="channel">
-                    {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
-                </div>
-            {% endfor %}
+                    <div class="share">
+                        <div class="buttons square">
+                            <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
+                            <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+                            <a href="#" class="button link"><i class="icon icon_link"></i></a>
+                            <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+                        </div>
+                    </div>
+                </aside>
+            </section>
         </div>
-    </div>
-
-    <div class="bandeau-list vCenter push-footer bandeau-list-footer">
-        <div class="bandeau-list-img vCenterKid" style="background-image:url('http://html.festival-cannes-2016.com.ohwee.fr/img/webtv/push.jpg');">
-            <h2 class="title title-list-header">La loi du marché</h2>
-            <a href="{{ path('fdc_event_movie_selection', {'slug': 'certain-regard'} ) }}" class="bandeau-lien">
-                <i class="icon icon_fleche-right"></i>
-                {{ 'trailer.btn.voirlabandeannonce'|trans }}
-            </a>
+        <div id="content-trailers">
+            <div id="slider-trailer" class="owl-carousel sliderDrag">
+                {% for video in videos %}
+                    <div class="channel">
+                        {% include 'FDCEventBundle:Television:widgets/video.html.twig' %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
+        {% if next %}
+            <div class="bandeau-list vCenter push-footer bandeau-list-footer">
+                <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext|trans_fallback('file', 'fr'), '1280x808' -%}');"{% endif %}>
+                    <h2 class="title title-list-header">{{ next|trans_fallback('title') }}</h2>
+                    <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')} ) }}"
+                       class="bandeau-lien">
+                        <i class="icon icon_fleche-right"></i>
+                        {{ 'trailer.btn.voirlabandeannonce'|trans }}
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+
     </div>
 
-</div>
-
-<!-- POPIN MAIL SHARE ---->
-{{ render(controller('FDCEventBundle:Global:shareEmail',
-{'section': trailer.film.title,
-    'detail': trailer.author.fullName,
-    'title':trailer.author.fullName,
-    'description': trailer.film.title
-}))
-}}
-<!-- END POPIN MAIL SHARE -->
+    <!-- POPIN MAIL SHARE ---->
+    {% set author = '' %}
+    {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+        {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
+        {% if loop.first == false %}
+            {% set author = author ~ ', ' %}
+        {% endif %}
+        {% set author = author ~ director.fullName %}
+    {%- endfor -%}
+    {{ render(controller('FDCEventBundle:Global:shareEmail',
+    {'section': film.theme,
+        'detail': author,
+        'title': film|trans_fallback('title'),
+        'description': film|trans_fallback('synopsis')
+    })) }}
+    <!-- END POPIN MAIL SHARE -->
 
 {% endblock %}

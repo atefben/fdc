@@ -139,7 +139,7 @@ class Homepage
     /**
      * @var HomepageSlide
      *
-     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage")
+     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"persist"})
      */
     private $homepageSlide;
 
@@ -237,6 +237,13 @@ class Homepage
      * @ORM\Column(type="boolean")
      */
     private $displayedTopWebTv;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $displayedFilms;
 
     /**
      * @var boolean
@@ -666,6 +673,7 @@ class Homepage
      */
     public function addHomepageSlide(\Base\CoreBundle\Entity\HomepageSlide $homepageSlide)
     {
+        $homepageSlide->setHomepage($this);
         $this->homepageSlide[] = $homepageSlide;
 
         return $this;
@@ -1089,6 +1097,29 @@ class Homepage
     {
         return $this->prefooterImage4;
     }
+    
+    /**
+     * Set displayedFilms
+     *
+     * @param boolean $displayedFilms
+     * @return Homepage
+     */
+    public function setDisplayedFilms($displayedFilms)
+    {
+        $this->displayedFilms = $displayedFilms;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedFilms
+     *
+     * @return boolean 
+     */
+    public function getDisplayedFilms()
+    {
+        return $this->displayedFilms;
+    }
 
     /**
      * Add topVideosAssociated
@@ -1098,6 +1129,7 @@ class Homepage
      */
     public function addTopVideosAssociated(\Base\CoreBundle\Entity\HomepageTopVideosAssociated $topVideosAssociated)
     {
+        $topVideosAssociated->setHomepage($this);
         $this->topVideosAssociated[] = $topVideosAssociated;
 
         return $this;
@@ -1131,6 +1163,7 @@ class Homepage
      */
     public function addTopWebTvsAssociated(\Base\CoreBundle\Entity\HomepageTopWebTvsAssociated $topWebTvsAssociated)
     {
+        $topWebTvsAssociated->setHomepage($this);
         $this->topWebTvsAssociated[] = $topWebTvsAssociated;
 
         return $this;
@@ -1164,6 +1197,7 @@ class Homepage
      */
     public function addFilmsAssociated(\Base\CoreBundle\Entity\HomepageFilmsAssociated $filmsAssociated)
     {
+        $filmsAssociated->setHomepage($this);
         $this->filmsAssociated[] = $filmsAssociated;
 
         return $this;

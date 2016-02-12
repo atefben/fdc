@@ -1,6 +1,5 @@
 {% trans_default_domain 'FDCPressBundle' %}
-
-<div id='calendar'>
+<div id="calendar">
     <div id="calendar-wrapper">
         <h2 class="title-calendar">{{ 'press.home.title.monagenda'|trans }}</h2>
         <div id="mycalendar" class="side"></div>
@@ -11,9 +10,7 @@
             </a>
         </p>
         <div class="drag">
-            <h2>
-                {{ 'press.home.title.preparezvotresejour'|trans }}
-            </h2>
+            <h2>{{ 'press.home.title.preparezvotresejour'|trans }}</h2>
             {% image '@FDCEventBundle/Resources/public/img/svg/main-drag.svg' %}
             <img width="43" src="{{ asset_url }}" alt="{{ 'press.home.btn.toutmonagenda'|trans }}" />
             {% endimage %}
