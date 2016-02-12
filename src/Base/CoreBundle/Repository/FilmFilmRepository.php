@@ -67,9 +67,9 @@ class FilmFilmRepository extends EntityRepository
             ->join('fa.mediaVideo', 'mv')
             ->join('mv.translations', 'mvt')
             ->where('f.id = :id')
-            ->andWhere('mv.displayedTrailer = :displayedTrailer')
+            ->andWhere('mv.displayedTrailer = :displayed_trailer')
             ->setParameter('id', $id)
-            ->setParameter('displayedTrailer', true);
+            ->setParameter('displayed_trailer', true);
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -81,32 +81,27 @@ class FilmFilmRepository extends EntityRepository
 
     public function getFilmsThatHaveTrailers($festival, $locale, $selectionSection = null)
     {
-        $qb = $this->createQueryBuilder('f');
-        $qb
+        $qb = $this->createQueryBuilder('f')
             ->join('f.translations', 't')
             ->join('f.associatedMediaVideos', 'fa')
             ->join('fa.mediaVideo', 'mv')
             ->join('mv.translations', 'mvt')
-            ->where('f.festival = :festival')
-            ->setParameter('festival', $festival)
-            ->andWhere('t.locale = :locale')
-            ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status IN (1,5)')
-            ->setParameter('locale', $locale)
-            ->andWhere('mv.displayedTrailer = 1')
-            ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
-            ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
-            ->setParameter(':datetime', new \DateTime())
-            ->orderBy('t.title', 'asc')
-        ;
+            ->where('mv.displayedTrailer = :displayed_trailer')
+            ->setParameter('displayed_trailer', true);
+
+        $qb = $this->addMasterQueries($qb, 'mv', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $this->addFDCEventQueries($qb, 'mv');
+        $qb = $qb->orderBy('t.title', 'asc');
+
 
         if ($selectionSection) {
-            $qb
-                ->andWhere('f.selectionSection = :selectionSection')
-                ->setParameter('selectionSection', $selectionSection)
+            $qb = $qb
+                    ->andWhere('f.selectionSection = :selectionSection')
+                    ->setParameter('selectionSection', $selectionSection)
             ;
-
         }
+
         return $qb->getQuery()->getResult();
     }
 }
