@@ -260,37 +260,13 @@ class FDCPageWebTvLive implements TranslateMainInterface
     }
 
     /**
-     * Add associatedWebTvs
-     *
-     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
-     * @return FDCPageWebTvLive
-     */
-    public function addAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
-    {
-        $associatedWebTvs->setFDCPageWebTvLive($this);
-        $this->associatedWebTvs[] = $associatedWebTvs;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedWebTvs
-     *
-     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
-     */
-    public function removeAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
-    {
-        $this->associatedWebTvs->removeElement($associatedWebTvs);
-    }
-
-    /**
      * Get associatedWebTvs
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
     public function getAssociatedWebTvs()
     {
-        if ($this->associatedWebTvs->count() != 3) {
+        if ($this->associatedWebTvs->count() < 3) {
             while ($this->associatedWebTvs->count() != 3) {
                 $this->associatedWebTvs->add(new FDCPageWebTvLiveWebTvAssociated());
             }
@@ -335,11 +311,35 @@ class FDCPageWebTvLive implements TranslateMainInterface
      */
     public function getAssociatedMediaVideos()
     {
-        if ($this->associatedMediaVideos->count() != 3) {
+        if ($this->associatedMediaVideos->count() < 3) {
             while ($this->associatedMediaVideos->count() != 3) {
                 $this->associatedMediaVideos->add(new FDCPageWebTvLiveMediaVideoAssociated());
             }
         }
         return $this->associatedMediaVideos;
+    }
+
+    /**
+     * Add associatedWebTvs
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
+     * @return FDCPageWebTvLive
+     */
+    public function addAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
+    {
+        $associatedWebTvs->setFDCPageWebTvLive($this);
+        $this->associatedWebTvs[] = $associatedWebTvs;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedWebTvs
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
+     */
+    public function removeAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
+    {
+        $this->associatedWebTvs->removeElement($associatedWebTvs);
     }
 }

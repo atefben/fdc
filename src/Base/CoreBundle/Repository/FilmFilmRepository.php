@@ -53,9 +53,9 @@ class FilmFilmRepository extends EntityRepository
             ->where('mv.displayedTrailer = :displayedTrailer')
             ->setParameter('displayedTrailer', true);
 
-        $qb = $this->addMasterQueries($qb, 'mv', $festival);
-        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addMobileQueries($qb, 'mv');
+        //$qb = $this->addMasterQueries($qb, 'mv', $festival);
+        //$qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        //$qb = $this->addMobileQueries($qb, 'mv');
 
         return $qb->getQuery();
     }
@@ -85,13 +85,14 @@ class FilmFilmRepository extends EntityRepository
             ->join('f.translations', 't')
             ->join('f.associatedMediaVideos', 'fa')
             ->join('fa.mediaVideo', 'mv')
+            ->join('mv.sites', 's')
             ->join('mv.translations', 'mvt')
             ->where('mv.displayedTrailer = :displayed_trailer')
             ->setParameter('displayed_trailer', true);
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addFDCEventQueries($qb, 'mv');
+        $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb->orderBy('t.title', 'asc');
 
 

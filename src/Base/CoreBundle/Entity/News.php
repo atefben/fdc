@@ -610,7 +610,7 @@ abstract class News implements TranslateMainInterface
      */
     public function getAssociatedNews()
     {
-        if ($this->associatedNews->count() != 2) {
+        if ($this->associatedNews->count() < 2) {
             while ($this->associatedNews->count() != 2) {
                 $this->associatedNews->add(new NewsNewsAssociated());
             }
