@@ -81,7 +81,8 @@ class WebTvRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('displayed_mobile', true)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+            ;
     }
 
     /**
@@ -101,7 +102,8 @@ class WebTvRepository extends EntityRepository
             ->andWhere('wtt.locale = :locale')
             ->setParameter('locale', $locale)
             ->andWhere('wt.festival = :festival')
-            ->setParameter('festival', $festival);
+            ->setParameter('festival', $festival)
+        ;
         return $qb->getQuery()->getOneOrNullResult();
     }
 
@@ -115,12 +117,15 @@ class WebTvRepository extends EntityRepository
         $qb = $this->createQueryBuilder('wt');
 
         $qb->join('wt.translations', 'wtt')
+            ->join('wt.mediaVideos', 'mv')
+            ->join('mv.translations', 'mvt')
             ->where('wt.festival = :festival')
             ->setParameter('festival', $festival)
             ->andWhere('wtt.locale = :locale')
             ->setParameter('locale', $locale)
             ->andWhere('wtt.status in (1, 5)')
             ->andWhere('SIZE(wt.mediaVideos) >= 1')
+            ->andWhere('mvt.status in (1, 5)')
         ;
 
         return $qb->getQuery()->getResult();

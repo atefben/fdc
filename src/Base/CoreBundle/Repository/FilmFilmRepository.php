@@ -85,13 +85,19 @@ class FilmFilmRepository extends EntityRepository
         $qb
             ->join('f.translations', 't')
             ->join('f.associatedMediaVideos', 'fa')
-            ->join('fa.association', 'm')
-            ->join('m.translations', 'mt')
+            ->join('fa.mediaVideo', 'mv')
+            ->join('mv.translations', 'mvt')
             ->where('f.festival = :festival')
             ->setParameter('festival', $festival)
             ->andWhere('t.locale = :locale')
-            ->andWhere('mt.locale = :locale')
+            ->andWhere('mvt.locale = :locale')
+            ->andWhere('mvt.status IN (1,5)')
             ->setParameter('locale', $locale)
+            ->andWhere('mv.displayedTrailer = 1')
+            ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
+            ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
+            ->setParameter(':datetime', new \DateTime())
+            ->orderBy('t.title', 'asc')
         ;
 
         if ($selectionSection) {
