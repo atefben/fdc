@@ -4,7 +4,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
-use Doctrine\ORM\EntityRepository;
+use Base\CoreBundle\Component\Repository\EntityRepository;
 
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -17,37 +17,26 @@ use JMS\DiExtraBundle\Annotation as DI;
  */
 class NewsRepository extends EntityRepository
 {
-    public function getNewsBySlug($slug, $festival, $locale, $dateTime, $isAdmin, $repository)
+    public function getNewsBySlug($slug, $festival, $locale, $isAdmin, $repository)
     {
         $qb = $this
             ->createQueryBuilder('n')
-            ->join('n.sites', 's')
+           // ->join('n.sites', 's')
             ->leftjoin($repository, 'na1', 'WITH', 'na1.id = n.id')
-            ->leftjoin('na1.translations', 'na1t')
-            ->where('s.slug = :site_slug')
-            ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->leftjoin('na1.translations', 'na1t');
 
         if ($isAdmin === true) {
-            $qb = $qb->andWhere('(na1t.locale = :locale AND na1t.slug = :news_slug)');
+            $qb = $qb
+                ->andWhere('(na1t.locale = :locale AND na1t.slug = :slug)')
+                ->setParameter('locale', $locale)
+                ->setParameter('slug', $slug);
         } else {
-            if($locale != 'fr') {
-                $qb = $qb
-                    ->andWhere('(na1t.locale = :locale AND na1t.status = :status AND na1t.slug = :news_slug)')
-                    ->setParameter('status', NewsArticleTranslation::STATUS_TRANSLATED);
-            } else {
-                $qb = $qb
-                    ->andWhere('(na1t.locale = fr AND na1t.status = :status AND na1t.slug = :news_slug)')
-                    ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
-            }
+            $qb = $this->addMasterQueries($qb, 'na1', $festival);
+            $qb = $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
+      //  $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
-            ->setParameter('news_slug', $slug)
-            ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel')
             ->getQuery()
             ->getOneOrNullResult();
 

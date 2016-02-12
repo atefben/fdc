@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-01-20T17:32:44Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2016-02-12T14:23:55Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -104,17 +104,18 @@
       </trans-unit>
       <trans-unit id="a238cddbdd32a40021c53b969fcbc8dde2ea3463" resname="article.filter.label.date">
         <source>article.filter.label.date</source>
-        <target state="new">article.filter.label.date</target>
+        <target></target>
         <jms:reference-file line="5">News/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="406f081d9d9ca5c0faeffc91ee2f22214aca8f1b" resname="article.filter.label.theme">
         <source>article.filter.label.theme</source>
-        <target state="new">article.filter.label.theme</target>
+        <target></target>
         <jms:reference-file line="23">News/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b8179a951abbb995885a84419bb9ce7db4a5b4d5" resname="article.filter.select.date.all">
         <source>article.filter.select.date.all</source>
-        <target state="new">article.filter.select.date.all</target>
+        <target>
+</target>
         <jms:reference-file line="16">News/components/filters.html.twig</jms:reference-file>
         <jms:reference-file line="30">News/components/filters.html.twig</jms:reference-file>
       </trans-unit>
@@ -175,7 +176,7 @@
       </trans-unit>
       <trans-unit id="15b6e12588f4a992f09d72bca2dcee8a34ebcbc1" resname="breadcrumb.btn.hautdelapage">
         <source>breadcrumb.btn.hautdelapage</source>
-        <target state="new">breadcrumb.btn.hautdelapage</target>
+        <target></target>
         <jms:reference-file line="19">views/Global/breadcrumb.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ff3c0a9ab1d36ff2e779d5fef3f0bea8b9750d91" resname="cannesclassics.btn.decouvrirlarubrique">
@@ -457,7 +458,7 @@
       </trans-unit>
       <trans-unit id="7872397dc60da3bb65daf79d3760b8983b5c3afb" resname="header.mainnav.nav.festivalmodeemploi">
         <source>header.mainnav.nav.festivalmodeemploi</source>
-        <target>Festival user&apos;s guide</target>
+        <target>Festival user's guide</target>
         <jms:reference-file line="278">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4c5c5701f402ab16cbd4c99f472a3370e2537d5e" resname="header.mainnav.nav.fournisseurs">
@@ -583,7 +584,7 @@
       </trans-unit>
       <trans-unit id="89b713b2851c2a524a2a08f1fa006fb62934e557" resname="header.partners.img.loreal">
         <source>header.partners.img.loreal</source>
-        <target>L&apos;Oréal</target>
+        <target>L'Oréal</target>
         <jms:reference-file line="91">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="596308acc833e13513a5d08f835276c206376902" resname="header.partners.img.mastercard">
@@ -640,7 +641,7 @@
       </trans-unit>
       <trans-unit id="b86d744d13ed71f256ea14a9ae234e5977e3a740" resname="home.article.btn.ajouteramaselection">
         <source>home.article.btn.ajouteramaselection</source>
-        <target state="new">home.article.btn.ajouteramaselection</target>
+        <target></target>
         <jms:reference-file line="10">News/widgets/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8e2718b1202f957a2ff384ab476549c69bfd5a02" resname="home.btn.accederalawebtv">
@@ -660,7 +661,7 @@
       </trans-unit>
       <trans-unit id="c40ccf8dd095f834cbd0c71b18a0ae62ff78501c" resname="home.prefooter.subtitle.suivezlefestival">
         <source>home.prefooter.subtitle.suivezlefestival</source>
-        <target state="new">home.prefooter.subtitle.suivezlefestival</target>
+        <target>home.prefooter.subtitle.suivezlefestival</target>
         <jms:reference-file line="7">News/components/prefooter.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a622f6d58300fcdc7f11bd014233ea2424c8649b" resname="home.prefooter.title.vivezlefestivaldecannes">
@@ -1001,7 +1002,7 @@
       </trans-unit>
       <trans-unit id="a6871bf6e5d90c82ea707c874f384a0f190eaf17" resname="palmares.camerador.alt.quinzaine">
         <source>palmares.camerador.alt.quinzaine</source>
-        <target>Quinzaine Director&apos;s Fortnight - Cannes 2015</target>
+        <target>Quinzaine Director's Fortnight - Cannes 2015</target>
         <jms:reference-file line="59">views/Palmares/advanced.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cb8c7a05dcef8aaf9879d5226f0b3f8a951b1cb1" resname="palmares.camerador.alt.semainecritique">
@@ -1091,7 +1092,7 @@
       </trans-unit>
       <trans-unit id="24b2699eef4cdb9c24c2432695f58bebe1c05d97" resname="participer.festival.title.modeemploi">
         <source>participer.festival.title.modeemploi</source>
-        <target>Festival user&apos;s guide</target>
+        <target>Festival user's guide</target>
         <jms:reference-file line="10">views/Participate/festival.html.twig</jms:reference-file>
         <jms:reference-file line="12">views/Participate/festival.html.twig</jms:reference-file>
       </trans-unit>
@@ -1478,7 +1479,7 @@
       </trans-unit>
       <trans-unit id="36278b911584399981f85e88a9bacb72061055cf" resname="sharemail.form.placeholder.email">
         <source>sharemail.form.placeholder.email</source>
-        <target>Recipient&apos;s email address</target>
+        <target>Recipient's email address</target>
         <jms:reference-file line="42">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="7b1dafe6f88c7fb35125e5fb7424125f7f05a776" resname="sharemail.form.placeholder.message">

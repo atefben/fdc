@@ -25,8 +25,16 @@ class AccreditController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
 
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
         // GET ACCREDIT PAGE
-        $accredit = $em->getRepository('BaseCoreBundle:PressAccredit')->findOneById(1);
+        $accredit = $em->getRepository('BaseCoreBundle:PressAccredit')->findOneBy(array(
+            'festival' => $settings->getFestival()->getId()
+        ));
 
         if ($accredit === null) {
             throw new NotFoundHttpException();

@@ -5,7 +5,6 @@ namespace Base\ApiBundle\Controller;
 use \DateTime;
 
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
-use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -47,6 +46,7 @@ class FilmTrailerController extends FOSRestController
      */
     public function getFilmsTrailersAction(Paramfetcher $paramFetcher)
     {
+        error_log('ththth');
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
@@ -57,15 +57,16 @@ class FilmTrailerController extends FOSRestController
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->getApiFilmTrailers($festival, new DateTime(), $lang);
+        $query = $em->getRepository($this->repository)->getApiFilmTrailers($festival, $lang);
 
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
+        error_log(count($items));
+        error_log('wtfwtfwtf');
 
         // set context view
         $groups = array('trailer_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
@@ -111,6 +112,7 @@ class FilmTrailerController extends FOSRestController
      */
     public function getFilmTrailersAction(Paramfetcher $paramFetcher, $id)
     {
+        die('lolaa');
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
@@ -121,12 +123,11 @@ class FilmTrailerController extends FOSRestController
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, new DateTime(), $lang);
+        $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, $lang);
 
         // set context view
         $groups = array('trailer_show', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 

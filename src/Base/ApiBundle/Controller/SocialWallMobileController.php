@@ -4,7 +4,6 @@ namespace Base\ApiBundle\Controller;
 
 use \DateTime;
 
-use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
