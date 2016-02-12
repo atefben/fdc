@@ -90,22 +90,6 @@
             }
         });
 
-        $(document).on('click','#timeline a',function(event){
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            $.ajax({
-                type: "POST",
-                cache: false,
-                url: GLOBALS.urls.calendarPressProgrammationUrl,
-                data: {date : $(this).attr('data-date') },
-                success: function(data) {
-                    $('.v-wrapper').empty().append(data);
-                }
-            });
-        });
-
     </script>
 
     <script type="text/javascript">

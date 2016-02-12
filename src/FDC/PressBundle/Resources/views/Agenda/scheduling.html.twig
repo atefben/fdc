@@ -29,142 +29,38 @@
             </div>
         </div>
         <div class="wrapper">
-            <div id='calendar'>
-                <div id="calendar-wrapper">
-                    <h2 class="title-calendar">{{ 'programmation.title.monagenda'|trans }}</h2>
-                    <div id="mycalendar" class="side"></div>
-                    <p class="link">
-                        <a href="{{ path('fdc_event_agenda_get') }}">
-                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                            <img src="{{ asset_url }}" alt="{{ 'programmation.btn.toutmonagenda'|trans }}">
-                            {% endimage %}
-                            {{ 'programmation.btn.toutmonagenda'|trans }}
-                        </a>
-                    </p>
-                    <div class="drag">
-                        <h2>{{ 'programmation.title.preparezvotresejour'|trans }}</h2>
-                        {% image '@FDCEventBundle/Resources/public/img/svg/main-drag.svg' %}
-                        <img src="{{ asset_url }}" width="43">
-                        {% endimage %}
-                        <p>
-                            {{ 'programmation.text.cliquezdeposezlesevenementsdansvotragenda'|trans|raw }}
-                        </p>
-                        <a href="#" id="okDrag">OK</a>
-                    </div>
-                </div>
-            </div>
+            {% include 'FDCPressBundle:Agenda:components/calendar.html.twig' %}
             <div class="programmation">
                 <div id="calendar-programmation">
 
                     {% include 'FDCEventBundle:Agenda:components/filters.html.twig' %}
 
                     <div id="timeline">
-                        <span class="arrow left"></span>
-                        <div class="timeline-container">
-                            {% for day in schedulingDays %}
-                                <a href="#" class="" data-date="{{ day.date|date('Y-m-d') }}">{{ day.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}<span class="day">{{ day.date|date('d') }}</span></a>
-                            {% endfor %}
-                        </div>
-                        <span class="arrow right"></span>
+                        {% set festivalStarted = 0 %}
+                        {% for key, day in schedulingDays %}
+                            <a href="#" class="{% if day|date('Ymd') == "now"|date('Ymd') %}{% set festivalStarted = 1 %}active
+                                {% elseif festivalStarted == 0 and key == 0 %}active{% endif %}" data-date="{{ day|date('Ymd') }}">
+                                {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                <span class="day">{{ day|date('d') }}</span>
+                            </a>
+                        {% endfor %}
                     </div>
                     <div class="calendar">
                         <div class="timeCol">
+                            {% set currentHour = "now"|date('H') %}
                             <div class="empty"></div>
-                            <div class="time">08H</div>
-                            <div class="time">09H</div>
-                            <div class="time">10H</div>
-                            <div class="time">11H</div>
-                            <div class="time">12H</div>
-                            <div class="time">13H</div>
-                            <div class="time">14H</div>
-                            <div class="time">15H</div>
-                            <div class="time">16H</div>
-                            <div class="time">17H</div>
-                            <div class="time">18H</div>
-                            <div class="time">19H</div>
-                            <div class="time">20H</div>
-                            <div class="time">21H</div>
-                            <div class="time">22H</div>
-                            <div class="time">23H</div>
-                            <div class="time">00H</div>
-                            <div class="time">01H</div>
-                            <div class="time">02H</div>
-                            <div class="time">03H</div>
+                            <div class="time">{{ currentHour }}</div>
+                            <div class="time">{{ currentHour + 1}}</div>
+                            <div class="time">{{ currentHour + 2}}</div>
+                            <div class="time">{{ currentHour + 3}}</div>
+                            <div class="time">{{ currentHour + 4}}</div>
+                            <div class="time">{{ currentHour + 5}}</div>
                         </div>
                         <div class="venues">
                             <a href="#" class="nav prev"></a>
                             <a href="#" class="nav next"></a>
                             <div class="v-wrapper">
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.grandtheatrelumière'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.grandTheatre is defined %}
-                                            {% for event in schedulingEvents.place.grandTheatre.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.salledebussy'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleDebussy is defined %}
-                                            {% for event in schedulingEvents.place.salleDebussy.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.salledu60e'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salle60 is defined %}
-                                            {% for event in schedulingEvents.place.salle60.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleBunuel is defined %}
-                                            {% for event in schedulingEvents.place.salleBunuel.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleBunuel is defined %}
-                                            {% for event in schedulingEvents.place.salleBunuel.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleBunuel is defined %}
-                                            {% for event in schedulingEvents.place.salleBunuel.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleBunuel is defined %}
-                                            {% for event in schedulingEvents.place.salleBunuel.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
+                                {% include 'FDCPressBundle:Agenda:components/grid.html.twig' %}
                             </div>
                         </div>
                     </div>

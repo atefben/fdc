@@ -42,28 +42,28 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $live;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="displayWebTvArea", type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $doNotDisplayWebTvArea = false;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="displayTrailerArea", type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $doNotDisplayTrailerArea = false;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="displayLastVideosArea", type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $doNotDisplayLastVideosArea = false;
 
@@ -77,6 +77,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     private $image;
 
     /**
+     * @var FDCPageWebTvLiveWebTvAssociated
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="fDCPageWebTvLive", cascade={"persist"})
      */
     private $associatedWebTvs;

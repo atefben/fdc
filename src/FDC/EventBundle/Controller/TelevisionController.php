@@ -6,6 +6,7 @@ use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\NewsArticle;
 use FDC\EventBundle\Component\Controller\Controller;
 use Gedmo\Sluggable\SluggableListener;
 use Gedmo\Sluggable\Util\Urlizer;
@@ -24,104 +25,21 @@ class TelevisionController extends Controller
      */
     public function liveAction()
     {
+        $festival = $this->getSettings()->getFestival();
+        $id = $this->get('twig')->getGlobals()['admin_fdc_page_web_tv_live_id'];
+        $page = $this
+            ->getBaseCoreFDCPageWebTvLiveRepository()
+            ->find($id)
+        ;
 
-        $channels = array(
-            array(
-                'most_viewed' => true,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => true,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            )
-        );
+        $webtvs = $this->getBaseCoreWebTvRepository()->findAll();
+        $trailers = $this->getBaseCoreMediaVideoRepository()->findAll();
 
-        $videos = array(
-            array(
-                'image'     => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'  => 5,
-                'theme'     => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title'     => 'Lorem ipsum'
-            ),
-            array(
-                'image'     => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'  => 5,
-                'theme'     => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title'     => 'Lorem ipsum'
-            ),
-        );
         return array(
-            'channels' => $channels,
-            'trailers' => $channels,
-            'videos'   => $videos,
+            'page' => $page,
+            'sliderVideos' => $webtvs,
+            'sliderChannels' => $webtvs,
+            'trailers' => $trailers,
         );
     }
 
@@ -181,10 +99,10 @@ class TelevisionController extends Controller
     public function channelsAction(Request $request)
     {
         $festival = $this->getSettings()->getFestival();
-
-        $FDCPageWebTvChannels = $this->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageWebTvChannels')
-            ->find($this->get('twig')->getGlobals()['admin_fdc_page_web_tv_channels_id'])
+        $id = $this->get('twig')->getGlobals()['admin_fdc_page_web_tv_channels_id'];
+        $FDCPageWebTvChannels = $this
+            ->getBaseCoreFDCPageWebTvChannelsRepository()
+            ->find($id)
         ;
 
         if (!$FDCPageWebTvChannels) {
