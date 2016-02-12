@@ -4,7 +4,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
-use Doctrine\ORM\EntityRepository;
+use Base\CoreBundle\Component\Repository\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
@@ -44,79 +44,64 @@ class FilmFilmRepository extends EntityRepository
             ;
     }
 
-    public function getApiFilmTrailers($festival, $dateTime)
+    public function getApiFilmTrailers($festival, $locale)
     {
-        return $this->createQueryBuilder('f')
+        $qb = $this->createQueryBuilder('f')
             ->join('f.associatedMediaVideos', 'fa')
             ->join('fa.mediaVideo', 'mv')
-            ->join('mv.sites', 's')
             ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->andWhere('s.slug = :site')
-            ->andWhere('mv.displayedTrailer = :displayedTrailer')
-            ->andWhere('mvt.status = :status OR mvt.status = :status_translated')
-            ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
-            ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
-            ->setParameter('festival', $festival)
-            ->setParameter('displayedTrailer', true)
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
-            ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
-            ->getQuery()
-            ;
+            ->where('mv.displayedTrailer = :displayedTrailer')
+            ->setParameter('displayedTrailer', true);
+
+        $qb = $this->addMasterQueries($qb, 'mv', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $this->addMobileQueries($qb, 'mv');
+
+        return $qb->getQuery();
     }
 
-    public function getApiTrailers($id, $festival, $dateTime)
+    public function getApiTrailers($id, $festival, $locale)
     {
-        return $this->createQueryBuilder('f')
+        $qb = $this->createQueryBuilder('f')
             ->join('f.associatedMediaVideos', 'fa')
             ->join('fa.mediaVideo', 'mv')
-            ->join('mv.sites', 's')
             ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->andWhere('f.id = :id')
-            ->andWhere('s.slug = :site')
-            ->andWhere('mv.displayedTrailer = :displayedTrailer')
-            ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status = :status OR mvt.status = :status_translated')
-            ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
-            ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
+            ->where('f.id = :id')
+            ->andWhere('mv.displayedTrailer = :displayed_trailer')
             ->setParameter('id', $id)
-            ->setParameter('festival', $festival)
-            ->setParameter('displayedTrailer', true)
-            ->setParameter('locale', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
-            ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
-            ->getQuery()
-            ->getOneOrNullResult()
-            ;;
+            ->setParameter('displayed_trailer', true);
+
+        $qb = $this->addMasterQueries($qb, 'mv', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $this->addMobileQueries($qb, 'mv');
+
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 
     public function getFilmsThatHaveTrailers($festival, $locale, $selectionSection = null)
     {
-        $qb = $this->createQueryBuilder('f');
-        $qb
+        $qb = $this->createQueryBuilder('f')
             ->join('f.translations', 't')
             ->join('f.associatedMediaVideos', 'fa')
-            ->join('fa.association', 'm')
-            ->join('m.translations', 'mt')
-            ->where('f.festival = :festival')
-            ->setParameter('festival', $festival)
-            ->andWhere('t.locale = :locale')
-            ->andWhere('mt.locale = :locale')
-            ->setParameter('locale', $locale)
-        ;
+            ->join('fa.mediaVideo', 'mv')
+            ->join('mv.translations', 'mvt')
+            ->where('mv.displayedTrailer = :displayed_trailer')
+            ->setParameter('displayed_trailer', true);
+
+        $qb = $this->addMasterQueries($qb, 'mv', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $this->addFDCEventQueries($qb, 'mv');
+        $qb = $qb->orderBy('t.title', 'asc');
+
 
         if ($selectionSection) {
-            $qb
-                ->andWhere('f.selectionSection = :selectionSection')
-                ->setParameter('selectionSection', $selectionSection)
+            $qb = $qb
+                    ->andWhere('f.selectionSection = :selectionSection')
+                    ->setParameter('selectionSection', $selectionSection)
             ;
-
         }
+
         return $qb->getQuery()->getResult();
     }
 }
