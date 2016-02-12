@@ -28,7 +28,6 @@
                         {% for director in film.association|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                         <a href="#">{{ director.fullName }}</a>
                         {% endfor %}
-
                     </p>
                 </div>
             </div>

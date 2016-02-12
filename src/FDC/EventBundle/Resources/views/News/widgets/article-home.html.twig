@@ -1,15 +1,40 @@
-<article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article|trans_fallback('createdAt')|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
+
+<article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}">
     <div class="image">
         <div class="image-wrapper">
-            {% if article.header is defined and article.header is not null %}
-                {% set img = article.header %}
-                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is null %}
-                    {% set trans = img.findTranslationByLocale('fr') %}
-                {% endif %}
-                {% set file = trans.file %}
-                {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+        {% if article.header is defined and article.header is not null %}
+            {% set img = article.header %}
+            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = img.findTranslationByLocale('fr') %}
             {% endif %}
+            {% set file = trans.file %}
+            {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+        {% elseif article.video.image is defined and article.video.image is not null %}
+            {% set img = article.video.image %}
+            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = img.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+            {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+        {% elseif article.audio.image is defined and article.audio.image is not null %}
+            {% set img = article.audio.image %}
+            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = img.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+            {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+        {% elseif article.gallery.medias[0].media  is defined and article.gallery.medias[0].media  is not null %}
+            {% set img = article.gallery.medias[0].media  %}
+            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = img.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+            {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+        {% endif %}
         </div>
         <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article.slug}) }}" class="linkImage"></a>
         <a href="#" class="read-later">
@@ -19,7 +44,7 @@
     </div>
     <div class="info">
         <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
-        <span class="date">{{ article|trans_fallback('createdAt')|date('d.m.y') }}</span> . <span class="hour">{{ article|trans_fallback('createdAt')|date('H:i') }}</span>
+        <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
         <h3><a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title') }}</a></h3>
     </div>
 </article>

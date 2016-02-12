@@ -110,6 +110,11 @@ class NewsController extends Controller {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
         }
 
+        $endOfArticles = false;
+        if(sizeof($homeArticles) < $count || $homeArticles == null){
+            $endOfArticles = true;
+        }
+
         //set default filters
         $filters                         = array();
         $filters['format'][0]            = 'all';
@@ -117,7 +122,6 @@ class NewsController extends Controller {
         $filters['themes']['id'][0]      = 'all';
 
         foreach ($homeArticles as $key => $homeArticle) {
-
             $homeArticle->theme = $homeArticle->getTheme();
 
             if(($key % 3) == 0){
@@ -169,43 +173,6 @@ class NewsController extends Controller {
         $films = $homepage->getFilmsAssociated();
 
         // TODO: clean this
-        $featuredMovies         = array(
-            'type' => 'fullVideo',
-            'video' => array(
-                array(
-                    'film' => array(
-                        'title' => 'Sils Maria',
-                        'theme' => 'Compétition',
-                        'author' => array(
-                            'fullName' => 'Olivier ASSAYAS',
-                            'slug' => 'olivier-assayas'
-                        )
-                    ),
-                    'source' => array(
-                        'm4v' => 'https://broken-links.com/tests/media/BigBuck.m4v',
-                        'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
-                        'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
-                    )
-                ),
-                array(
-                    'film' => array(
-                        'title' => 'Sils Maria',
-                        'theme' => 'Compétition',
-                        'author' => array(
-                            'fullName' => 'Olivier ASSAYAS',
-                            'slug' => 'olivier-assayas'
-                        )
-                    ),
-                    'source' => array(
-                        'm4v' => 'https://broken-links.com/tests/media/BigBuck.m4v',
-                        'webm' => 'https://broken-links.com/tests/media/BigBuck.webm',
-                        'image' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider/slider01.jpg'
-                    )
-                )
-
-            )
-        );
-
 
         $wallPosts              = array(
             array(
@@ -255,8 +222,8 @@ class NewsController extends Controller {
             'videos' => $videos,
             'channels' => $channels,
             'films' => $films,
+            'endOfArticles' => $endOfArticles,
             // TODO: clean this
-            'featuredMovies' => $featuredMovies,
             'wallPosts' => $wallPosts
         );
     }
@@ -283,24 +250,33 @@ class NewsController extends Controller {
      * @return array
      */
     public function getArticlesFromAction(Request $request) {
-        $timestamp = $request->query->get('timestamp');
+
+//        $timestamp = $request->query->get('timestamp');
+        $timestamp = 1455284640;
+        $nextDay = true;
 
         $em = $this->get('doctrine')->getManager();
         $locale = $this->getRequest()->getLocale();
-
-        // GET FDC SETTINGS
-        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null || $settings->getFestival() === null) {
-            throw new NotFoundHttpException();
-        }
 
         $date = new DateTime();
         $dateTime = $date->setTimestamp($timestamp);
         $count = 6;
 
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $settings->getFestival()->getId(), $dateTime , $count);
+        $endOfArticles = false;
+
+        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime , $count);
+
+        if(sizeof($homeArticles) < $count || $homeArticles == null){
+            $endOfArticles = true;
+        }
+
+        if($nextDay == true && $homeArticles == null) {
+            $dateTime = $dateTime->modify('-1 day');
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
+        }
 
         return array(
+            'endOfArticles' => $endOfArticles,
             'homeArticles' => $homeArticles
         );
     }
@@ -312,10 +288,10 @@ class NewsController extends Controller {
      * @return array
      */
     public function getAction($format, $slug) {
+
         $em       = $this->getDoctrine()->getManager();
         $locale   = $this->getRequest()->getLocale();
-        //$token = $this->get('security.token_storage')->getToken();
-        //$isAdmin = ($token) ? true : false;
+
         $isAdmin  = true;
         $dateTime = new DateTime();
 
