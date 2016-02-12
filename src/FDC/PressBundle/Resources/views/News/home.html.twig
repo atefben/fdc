@@ -39,7 +39,7 @@
             <div class="chap">
                 <h3 class="title-press">
                     {{ 'press.home.title.programmedu'|trans }}
-                    <span id="dateProgram">{{ "now"|localizeddate('long', 'none', app.request.locale)  }}</span>
+                    <span id="dateProgram">{{ schedulingDays[0]|localizeddate('long', 'none', app.request.locale)  }}</span>
                 </h3>
                 <p class="link">
                     <a href="programmation.php">
