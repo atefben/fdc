@@ -24,11 +24,10 @@
 
         <ul class="sub-nav-list">
         {% for item in pages if item.selectionSection %}
-            <script>console.log('rest')</script>
             {% if item|trans_fallback('slug') %}
                 {% set slug = item|trans_fallback('slug') %}
-            {% elseif item.selection|trans_fallback('slug') %}
-                {% set slug = item.selection|trans_fallback('slug') %}
+            {% elseif item.selectionSection|trans_fallback('slug') %}
+                {% set slug = item.selectionSection|trans_fallback('slug') %}
             {% endif %}
             {% if slug is defined %}
                 <li>
@@ -38,7 +37,7 @@
                         {% if item|trans_fallback('overrideName') %}
                             {{ item|trans_fallback('overrideName') }}
                         {% else %}
-                            {{ item.selection|trans_fallback('name') }}
+                            {{ item.selectionSection|trans_fallback('name') }}
                         {% endif %}
                     </a>
                 </li>
@@ -63,7 +62,7 @@
                             <div class="info-container">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <a href="{{ path('fdc_event_television_gettrailer', {'id': video.id }) }}" class="category">{{ film|trans_fallback('title') }}</a>
+                                        <a href="{{ path('fdc_event_television_gettrailer', {'slug': film|trans_fallback('slug')}) }}" class="category">{{ film|trans_fallback('title') }}</a>
                                         {% spaceless %}
                                             <span>
                                         {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}

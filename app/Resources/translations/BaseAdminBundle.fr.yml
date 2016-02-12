@@ -22,7 +22,7 @@ breadcrumb:
     link_media_audio_list: Liste des Médias audio
     link_homepage_list: Homepage
     link_social_wall_list: Liste du Social Wall
-    link_web_tv_list: Liste des Web TV
+    link_web_tv_list: Liste des chaînes
     link_f_d_c_page_web_tv_channels_list: Page WebTV - Les chaînes
     link_media_image_simple_list: Images semi-riches
     link_f_d_c_page_web_tv_live_list: Accueil WebTV
@@ -207,6 +207,7 @@ list:
     label_enabled_mobile: Visible sur mobile
     label_enabled_desktop: Visible sur le site
     label_alt: Alt de l'image
+    label_web_tv_name: Nom de la chaîne
     tooltip:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
@@ -261,6 +262,7 @@ filter:
     label_alt: Alt de l'image
     label_created_before: Créé avant le
     label_created_after: Créé après le
+    label_web_tv_name: Nom de la chaîne
 
 dashboard:
     group:

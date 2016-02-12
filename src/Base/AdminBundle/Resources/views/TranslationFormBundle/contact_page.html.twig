@@ -1,19 +1,8 @@
 {% trans_default_domain 'BaseAdminBundle' %}
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
-    <ul class="a2lix_translationsLocales nav nav-tabs">
-        {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
-        {% for translationsFields in form %}
-            {% set locale = translationsFields.vars.name %}
-            <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
-                <a {% if translationsFields.vars.value is not null %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
-                    {{ ('lang.' ~ locale)|trans() }}
-                    {% if form.vars.default_locale == locale %}[MASTER]{% endif %}
-                    {% if translationsFields.vars.required %}*{% endif %}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
 
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
@@ -70,29 +59,29 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(form.parent.children.publishedAt) }}
-                                        {{ form_row(form.parent.children.publishEndedAt) }}
                                         {{ form_row(translationsFields.status) }}
                                         <div class="form-group fdc-input-border">
                                             {{ form_widget(form.parent.children.translate) }}
                                             {{ form_label(form.parent.children.translate) }}
-                                            {{ form_widget(form.parent.children.translateOptions) }}
-                                            {{ form_row(form.parent.children.priorityStatus) }}
                                         </div>
+                                        {{ form_row(form.parent.children.priorityStatus) }}
 
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
+                                        <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Créer et retourner à la liste</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="box box-success">
                                 <div class="box-header">
-                                        <h4 class="box-title">
-                                            Festival
-                                        </h4>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_widget(form.parent.children.festival) }}
-                                        </div>
+                                    <h4 class="box-title">
+                                        Festival
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_widget(form.parent.children.festival) }}
                                     </div>
                                 </div>
                             </div>
@@ -127,8 +116,62 @@
                             </div>
                         {% endif %}
                     </div>
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
+                                    <h4 class="box-title">
+                                        {{ 'group.seo'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                            </div>
+                        </div>
+                    </div>
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-8">
+                            <p>
+                                {{ 'group.helper_seo_example'|trans|nl2br }}
+                            </p>
+                        </div>
+                    {% else %}
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_title'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoTitle.vars.value }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_description'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
-
             </div>
         {% endfor %}
     </div>

@@ -45,7 +45,7 @@ class MediaImageSimple implements TranslateMainInterface
      *
      * @ORM\Column(name="name", type="string", length=255)
      *
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show"})
      */
     protected $name;
     
@@ -69,7 +69,9 @@ class MediaImageSimple implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
+     *
      * @Assert\Valid()
+     * @Groups({"news_list", "news_show"})
      */
     protected $translations;
 

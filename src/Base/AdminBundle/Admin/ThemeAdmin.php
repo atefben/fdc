@@ -39,7 +39,10 @@ class ThemeAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title', 'doctrine_orm_callback', array(
+            ->add('id')
+            ->add('name', 'doctrine_orm_callback', array(
+                'label' => 'form.label_theme_name',
+                'translation_domain' => 'BaseAdminBundle',
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
@@ -47,8 +50,8 @@ class ThemeAdmin extends Admin
                     $queryBuilder->join("{$alias}.translations", 't');
                     $queryBuilder->where('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+                    $queryBuilder->andWhere('t.name LIKE :title');
+                    $queryBuilder->setParameter('name', '%'. $value['value']. '%');
 
                     return true;
                 },

@@ -293,7 +293,6 @@ class NewsController extends Controller {
         $locale   = $this->getRequest()->getLocale();
 
         $isAdmin  = true;
-        $dateTime = new DateTime();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -313,7 +312,6 @@ class NewsController extends Controller {
             $slug,
             $settings->getFestival()->getId(),
             $locale,
-            $dateTime->format('Y-m-d H:i:s'),
             $isAdmin,
             $mapper[$format]
         );
@@ -321,6 +319,8 @@ class NewsController extends Controller {
         if ($news === null) {
             throw new NotFoundHttpException();
         }
+
+        $localeSlugs = $news->getLocaleSlugs();
         $isPublished = ($news->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED);
 
         if (!$isAdmin && !$isPublished) {
@@ -378,6 +378,7 @@ class NewsController extends Controller {
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
 
         return array(
+            'localeSlugs' => $localeSlugs,
             'focusArticles' => $focusArticles,
             'programmations' => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,

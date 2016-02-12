@@ -153,7 +153,6 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $sites;
 
@@ -589,6 +588,7 @@ abstract class News implements TranslateMainInterface
      */
     public function addAssociatedNews(\Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews)
     {
+        $associatedNews->setNews($this);
         $this->associatedNews[] = $associatedNews;
 
         return $this;
@@ -611,9 +611,11 @@ abstract class News implements TranslateMainInterface
      */
     public function getAssociatedNews()
     {
-        if ($this->associatedNews->count() != 2) {
+        if ($this->associatedNews->count() < 2) {
             while ($this->associatedNews->count() != 2) {
-                $this->associatedNews->add(new NewsNewsAssociated());
+                $entity = new NewsNewsAssociated();
+                $entity->setNews($this);
+                $this->associatedNews->add($entity);
             }
         }
 

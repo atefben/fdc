@@ -12,7 +12,7 @@ use Base\CoreBundle\Util\Time;
  * PressProjectionScheduling
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\PressProjectionSchedulingRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class PressProjectionScheduling

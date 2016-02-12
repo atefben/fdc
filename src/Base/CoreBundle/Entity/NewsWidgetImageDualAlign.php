@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 /**
  * NewsWidgetImageDualAlign
  *
@@ -18,6 +20,7 @@ class NewsWidgetImageDualAlign extends NewsWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="GalleryDualAlign")
+     * @Groups({"news_list", "news_show"})
      */
     private $gallery;
 

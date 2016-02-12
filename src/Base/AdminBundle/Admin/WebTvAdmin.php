@@ -45,7 +45,9 @@ class WebTvAdmin extends Admin
 
                     return true;
                 },
-                'field_type' => 'text'
+                'field_type' => 'text',
+                'label' => 'filter.label_web_tv_name',
+                'translation_domain' => 'BaseAdminBundle',
             ))
             ->add('priorityStatus', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
@@ -75,13 +77,15 @@ class WebTvAdmin extends Admin
             ->add('id')
             ->add('name', null, array(
                 'template' => 'BaseAdminBundle:WebTv:list_name.html.twig',
+                'label' => 'list.label_web_tv_name',
+                'translation_domain' => 'BaseAdminBundle',
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => WebTv::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
+                'catalogue' => 'BaseAdminBundle',
             ))
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
         ;
     }

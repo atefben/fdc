@@ -2,6 +2,11 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmFilmMediaInterface;
+use Base\CoreBundle\Entity\FilmFilmTranslation;
+use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\NewsArticle;
 use FDC\EventBundle\Component\Controller\Controller;
 use Gedmo\Sluggable\SluggableListener;
 use Gedmo\Sluggable\Util\Urlizer;
@@ -20,104 +25,21 @@ class TelevisionController extends Controller
      */
     public function liveAction()
     {
+        $festival = $this->getSettings()->getFestival();
+        $id = $this->get('twig')->getGlobals()['admin_fdc_page_web_tv_live_id'];
+        $page = $this
+            ->getBaseCoreFDCPageWebTvLiveRepository()
+            ->find($id)
+        ;
 
-        $channels = array(
-            array(
-                'most_viewed' => true,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => true,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            ),
-            array(
-                'most_viewed' => false,
-                'image'       => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum'
-            )
-        );
+        $webtvs = $this->getBaseCoreWebTvRepository()->findAll();
+        $trailers = $this->getBaseCoreMediaVideoRepository()->findAll();
 
-        $videos = array(
-            array(
-                'image'     => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'  => 5,
-                'theme'     => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title'     => 'Lorem ipsum'
-            ),
-            array(
-                'image'     => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-videos/001.jpg'
-                ),
-                'nbVideos'  => 5,
-                'theme'     => 'les plus vues',
-                'createdAt' => new \DateTime(),
-                'title'     => 'Lorem ipsum'
-            ),
-        );
         return array(
-            'channels' => $channels,
-            'trailers' => $channels,
-            'videos'   => $videos,
+            'page' => $page,
+            'sliderVideos' => $webtvs,
+            'sliderChannels' => $webtvs,
+            'trailers' => $trailers,
         );
     }
 
@@ -139,6 +61,7 @@ class TelevisionController extends Controller
 
         $webTv = $em->getRepository('BaseCoreBundle:WebTv')->getWebTvBySlug($slug, $locale, $festival);
 
+
         if (!$webTv || !$webTv->getMediaVideos()->count()) {
             throw $this->createNotFoundException('Web TV not found');
         }
@@ -149,7 +72,7 @@ class TelevisionController extends Controller
         ;
 
         if (!$webTvVideos) {
-            throw $this->createNotFoundException();
+            throw $this->createNotFoundException('There is no videos for this channel');
         }
 
         $otherVideos = $this
@@ -168,16 +91,18 @@ class TelevisionController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return array
      * @Route("/channels")
      * @Template("FDCEventBundle:Television:channels.html.twig")
      */
     public function channelsAction(Request $request)
     {
         $festival = $this->getSettings()->getFestival();
-
-        $FDCPageWebTvChannels = $this->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageWebTvChannels')
-            ->find($this->get('twig')->getGlobals()['admin_fdc_page_web_tv_channels_id'])
+        $id = $this->get('twig')->getGlobals()['admin_fdc_page_web_tv_channels_id'];
+        $FDCPageWebTvChannels = $this
+            ->getBaseCoreFDCPageWebTvChannelsRepository()
+            ->find($id)
         ;
 
         if (!$FDCPageWebTvChannels) {
@@ -214,7 +139,7 @@ class TelevisionController extends Controller
     {
         if ($slug === null) {
             $page = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findBy(array(), null, 1);
-            $translation = end($page)->findTranslationByLocale($request->getLocale());
+            $translation = current($page)->findTranslationByLocale($request->getLocale());
             if ($translation) {
                 return $this->redirectToRoute('fdc_event_television_trailers', array(
                     'slug' => $translation->getSlug(),
@@ -226,166 +151,84 @@ class TelevisionController extends Controller
             ->findOneBySlug($slug)
         ;
 
+
         if (!$pageTranslation) {
-            throw $this->createNotFoundException();
+            throw $this->createNotFoundException('Page Translation not found');
         }
 
         $page = $pageTranslation->getTranslatable();
 
         $pages = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findAll();
 
-        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers(
-            $this->getFestival()->getId(),
-            $request->getLocale(),
-            $page->getSelectionSection()->getId()
-        );
+        $festivalId = $this->getFestival()->getId();
+        $locale = $request->getLocale();
+        $sectionId = $page->getSelectionSection()->getId();
+
+        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
 
         return array(
-            'page'     => $page,
-            'pages'    => $pages,
+            'page'  => $page,
+            'pages' => $pages,
             'films' => $films,
         );
     }
 
     /**
-     * @Route("/trailer/{id}")
+     * @param Request $request
+     * @param $slug
+     * @return array
+     * @Route("/trailer/{slug}")
      * @Template("FDCEventBundle:Television:trailer.html.twig")
      */
-    public function getTrailerAction($id)
+    public function getTrailerAction(Request $request, $slug)
     {
-        $trailer = array(
-            'id'          => 1,
-            'author'      => array(
-                'fullName' => 'Olivier ASSAYAS',
-            ),
-            'most_viewed' => true,
-            'image'       => array(
-                'path' => 'img.jpg',
-                'src'  => 'http://dummyimage.com/640x404/000/fff.png',
-            ),
-            'nbVideos'    => 5,
-            'theme'       => 'les plus vues',
-            'createdAt'   => new \DateTime(),
-            'filter'      => array(
-                'date'  => 'date1',
-                'theme' => 'theme1',
-            ),
-            'film'        => array(
-                'type'  => 'Bande annonce',
-                'title' => 'Lorem Ipsum'
-            ),
-        );
-        $channels = array(
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'   => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'    => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset' => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'   => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'    => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset' => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'   => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'    => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset' => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'   => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'    => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset' => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'   => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'    => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset' => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-            array(
-                'id'          => 1,
-                'author'      => 'Olivier ASSAYAS',
-                'most_viewed' => true,
-                'image'       => array(
-                    'path'   => '//html.festival-cannes-2016.com.ohwee.fr/img/slider-channels/01.jpg',
-                    'src'    => 'http://dummyimage.com/640x404/000/fff.png',
-                    'srcset' => 'http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x',
-                ),
-                'nbVideos'    => 5,
-                'theme'       => 'les plus vues',
-                'createdAt'   => new \DateTime(),
-                'title'       => 'Lorem ipsum',
-                'filter'      => array(
-                    'date'  => 'date1',
-                    'theme' => 'theme1',
-                ),
-            ),
-        );
+        $locale = $request->getLocale();
 
+        $filmTranslation = $this
+            ->getBaseCoreFilmFilmTranslationRepository()
+            ->findOneBySlug($slug)
+        ;
+
+        if (!($filmTranslation instanceof FilmFilmTranslation)) {
+            throw $this->createNotFoundException('FilmFilmTranslation not found.');
+        }
+
+        $film = $filmTranslation->getTranslatable();
+
+        $festivalId = $this->getFestival()->getId();
+        $sectionId = $film->getSelectionSection()->getId();
+
+        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
+
+
+        $poster = null;
+        foreach ($film->getMedias() as $media) {
+            if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER) {
+                $poster = $media->getFilmMedia();
+            }
+        }
+
+        $videos = $this->getBaseCoreMediaVideoRepository()->getFilmTrailersMediaVideos($locale, $film->getId());
+
+        $next = null;
+        foreach ($films as $key => $value) {
+            if ($next) {
+                $next = $value;
+                break;
+            }
+            if ($value->getId() == $film->getId()) {
+                $next = true;
+            }
+        }
+
+        $posterNext = null;
+        if ($next instanceof FilmFilm) {
+            foreach ($next->getMedias() as $media) {
+                if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER) {
+                    $poster = $media->getFilmMedia();
+                }
+            }
+        }
         $filmShowings = array(
             array(
                 'date'  => new \DateTime(),
@@ -410,9 +253,12 @@ class TelevisionController extends Controller
         );
 
         return array(
-            'trailer'      => $trailer,
-            'channels'     => $channels,
-            'filmShowings' => $filmShowings
+            'film'         => $film,
+            'videos'       => array_values($videos),
+            'filmShowings' => $filmShowings,
+            'poster'       => $poster,
+            'next'         => $next instanceof FilmFilm ? $next : null,
+            'posterNext'   => $posterNext,
         );
     }
 }

@@ -5,8 +5,6 @@ namespace Base\ApiBundle\Controller;
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 use \DateTime;
 
-use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
-
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -68,7 +66,6 @@ class WebTvController extends FOSRestController
         // set context view
         $groups = array('web_tv_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
@@ -128,7 +125,6 @@ class WebTvController extends FOSRestController
         // set context view
         $groups = array('web_tv_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 

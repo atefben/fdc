@@ -27,19 +27,15 @@ class WebTvRepository extends EntityRepository
      */
     public function getApiWebTvs($festival, $dateTime, $locale)
     {
-
         return $this->createQueryBuilder('wt')
             ->join('wt.mediaVideos', 'mv')
-            ->join('mv.sites', 's')
             ->join('wt.translations', 'wtt')
             ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->andWhere('s.slug = :site')
+            ->where('wt.festival = :festival')
             ->andWhere('mv.displayedWebTv = :displayedWebTv')
             ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status = :status')
-            ->andWhere('wtt.locale = :locale')
-            ->andWhere('wtt.status = :status OR wtt.status = :status_translated')
+            ->andWhere('mv.displayedMobile = :displayed_mobile')
+            ->andWhere('mvt.status = :status OR mvt.status = :status_translated')
             ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
             ->setParameter('festival', $festival)
@@ -48,7 +44,7 @@ class WebTvRepository extends EntityRepository
             ->setParameter('status', WebTvTranslation::STATUS_PUBLISHED)
             ->setParameter('status_translated', WebTvTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
+            ->setParameter('displayed_mobile', true)
             ->getQuery();
     }
 
@@ -65,16 +61,14 @@ class WebTvRepository extends EntityRepository
     {
         return $this->createQueryBuilder('wt')
             ->join('wt.mediaVideos', 'mv')
-            ->join('mv.sites', 's')
             ->join('wt.translations', 'wtt')
             ->join('mv.translations', 'mvt')
             ->where('mv.festival = :festival')
-            ->andWhere('s.slug = :site')
             ->andWhere('mv.displayedWebTv = :displayedWebTv')
             ->andWhere('mvt.locale = :locale')
             ->andWhere('mvt.status = :status')
-            ->andWhere('wtt.locale = :locale')
-            ->andWhere('wtt.status = :status OR wtt.status = :status_translated')
+            ->andWhere('mv.displayedMobile = :displayed_mobile')
+            ->andWhere('mv.status = :status OR mv.status = :status_translated')
             ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
             ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
             ->andWhere('mv.id = :id')
@@ -85,9 +79,10 @@ class WebTvRepository extends EntityRepository
             ->setParameter('status', WebTvTranslation::STATUS_PUBLISHED)
             ->setParameter('status_translated', WebTvTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
+            ->setParameter('displayed_mobile', true)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+            ;
     }
 
     /**
@@ -107,7 +102,8 @@ class WebTvRepository extends EntityRepository
             ->andWhere('wtt.locale = :locale')
             ->setParameter('locale', $locale)
             ->andWhere('wt.festival = :festival')
-            ->setParameter('festival', $festival);
+            ->setParameter('festival', $festival)
+        ;
         return $qb->getQuery()->getOneOrNullResult();
     }
 
@@ -121,12 +117,15 @@ class WebTvRepository extends EntityRepository
         $qb = $this->createQueryBuilder('wt');
 
         $qb->join('wt.translations', 'wtt')
+            ->join('wt.mediaVideos', 'mv')
+            ->join('mv.translations', 'mvt')
             ->where('wt.festival = :festival')
             ->setParameter('festival', $festival)
             ->andWhere('wtt.locale = :locale')
             ->setParameter('locale', $locale)
             ->andWhere('wtt.status in (1, 5)')
             ->andWhere('SIZE(wt.mediaVideos) >= 1')
+            ->andWhere('mvt.status in (1, 5)')
         ;
 
         return $qb->getQuery()->getResult();

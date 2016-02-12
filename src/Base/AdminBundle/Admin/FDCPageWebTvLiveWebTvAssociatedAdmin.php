@@ -67,5 +67,4 @@ class FDCPageWebTvLiveWebTvAssociatedAdmin extends Admin
         ;
     }
 
-
 }

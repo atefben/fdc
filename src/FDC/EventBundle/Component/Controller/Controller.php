@@ -28,7 +28,6 @@ class Controller extends BaseController
         if ($settings === null) {
             throw $this->createNotFoundException();
         }
-
         return $settings;
     }
 

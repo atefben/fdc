@@ -127,8 +127,8 @@ class FDCPageWebTvLiveAdmin extends Admin
             ->add('live', 'choice', array(
                 'label'                     => false,
                 'choices'                   => array(
-                    false => 'form.fdc_page_web_tv_live.live_false',
-                    true  => 'form.fdc_page_web_tv_live.live_true',
+                    0 => 'form.fdc_page_web_tv_live.live_false',
+                    1 => 'form.fdc_page_web_tv_live.live_true',
                 ),
                 'expanded'                  => true,
                 'multiple'                  => false,

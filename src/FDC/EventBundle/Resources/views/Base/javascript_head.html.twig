@@ -22,7 +22,7 @@
             },
             "baseUrl" : "{{ url('fdc_event_news_index') }}",
             "urls" : {
-                "calendarProgrammationUrl" : "calendarprogrammation.html",
+                "calendarProgrammationUrl" : "{{ url('fdc_press_news_getprojectionsfrom') }}",
                 "eventUrl" : "load-evenements.php",
                 "newsUrl" : "{{ url('fdc_event_news_getarticlesfrom') }}",
                 "newsUrlNext" : "{{ url('fdc_event_news_getarticlesfrom') }}",

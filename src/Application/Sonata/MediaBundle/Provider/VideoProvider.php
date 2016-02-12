@@ -19,6 +19,7 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
+
         /*$path = $this->generatePublicUrl($media, $media->getProviderReference());
 
         # Region where the sample will be run.
