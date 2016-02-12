@@ -22,7 +22,7 @@ class FilmTrailerController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:FilmFilm';
     /**
-     * Return an array of Film with trailers, can be filtered with page / offset parameters
+     * Return an array of Films with trailers, can be filtered with page / offset parameters
      *
      * @Rest\View()
      * @ApiDoc(
@@ -45,7 +45,7 @@ class FilmTrailerController extends FOSRestController
      *
      * @return View
      */
-    public function getFilmTrailersAction(Paramfetcher $paramFetcher)
+    public function getFilmsTrailersAction(Paramfetcher $paramFetcher)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
@@ -57,7 +57,7 @@ class FilmTrailerController extends FOSRestController
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->getApiFilmTrailers($festival, new DateTime());
+        $query = $em->getRepository($this->repository)->getApiFilmTrailers($festival, new DateTime(), $lang);
 
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
@@ -109,7 +109,7 @@ class FilmTrailerController extends FOSRestController
      *
      * @return View
      */
-    public function getTrailersAction(Paramfetcher $paramFetcher, $id)
+    public function getFilmTrailersAction(Paramfetcher $paramFetcher, $id)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
@@ -121,7 +121,7 @@ class FilmTrailerController extends FOSRestController
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, new DateTime());
+        $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, new DateTime(), $lang);
 
         // set context view
         $groups = array('trailer_show', 'time');

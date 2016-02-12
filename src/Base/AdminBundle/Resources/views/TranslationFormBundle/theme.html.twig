@@ -1,19 +1,8 @@
 {% trans_default_domain 'BaseAdminBundle' %}
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
-    <ul class="a2lix_translationsLocales nav nav-tabs">
     {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
-    {% for translationsFields in form %}
-        {% set locale = translationsFields.vars.name %}
-        <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
-            <a {% if translationsFields.vars.value is not null %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
-                {{ ('lang.' ~ locale)|trans() }}
-                {% if form.vars.default_locale == locale %}[MASTER]{% endif %}
-                {% if translationsFields.vars.required %}*{% endif %}
-            </a>
-        </li>
-    {% endfor %}
-    </ul>
+    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
 
     <div class="a2lix_translationsFields tab-content">
     {% for translationsFields in form %}

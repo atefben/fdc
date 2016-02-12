@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Exclude;
 use JMS\Serializer\Annotation\Expose;
@@ -62,6 +64,14 @@ class FilmFilmTranslation implements TranslateChildInterface
      * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
      */
     private $programSection;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=false, nullable=false)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -158,5 +168,28 @@ class FilmFilmTranslation implements TranslateChildInterface
     public function getProgramSection()
     {
         return $this->programSection;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return FilmFilmTranslation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

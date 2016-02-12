@@ -56,6 +56,19 @@ class Tag implements TranslateMainInterface
         
         return $string;
     }
+
+    public function getName()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getName();
+        }
+
+        return $string;
+    }
+
     /**
      * Get id
      *
