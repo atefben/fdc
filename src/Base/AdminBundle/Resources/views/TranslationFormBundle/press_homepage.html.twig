@@ -1,6 +1,7 @@
 {% trans_default_domain 'BaseAdminBundle' %}
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
     {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
 
 
