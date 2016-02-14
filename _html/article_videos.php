@@ -23,12 +23,26 @@
 Imprimer</a>
         </div>
 
-        <div class="video-player video actu_article_video">
-          <div class="image" style="background-image: url(img/article/004.jpg);"></div>
-          <div class="picto"></div>
-          <div class="info">
-            <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <p>The Lobster</p>
+        <div class="video-container state-init video"
+          data-facebook="//www.facebook.com"
+          data-twitter="//www.twitter.com"
+          data-link="//www.example.com"
+          data-email="//www.gmail.com"
+          data-file='[{"file":"./files/mov_bbb.webm"}]'
+          data-img="//dummyimage.com/960x540/000/c8a461.png">
+          <div id="v_<?php echo 1+time();?>" class="video-player">
+          </div>
+          <div class="video-overlay"></div>
+          <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+              <div class="vCenter">
+                <div class="vCenterKid">
+                  <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <p>The Lobster</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -74,10 +74,12 @@ function playerInit(id, cls, havePlaylist, live) {
     if (id) {
         var videoPlayer = jwplayer(id);
         if(!$(videoPlayer).data('loaded')) {
-            player($("#"+id)[0], videoPlayer, cls, havePlaylist, live, function(vid){
+            playerLoad($("#"+id)[0], videoPlayer, cls, havePlaylist, live, function(vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
             });
+        } else {
+            tmp = videoPlayer
         }
         return tmp;
     } else {
@@ -88,7 +90,7 @@ function playerInit(id, cls, havePlaylist, live) {
             // k.log("",this.id);
             var videoPlayer  = jwplayer(this.id);
             if(!$(videoPlayer).data('loaded')) {
-                player(this, videoPlayer, cls, havePlaylist, live, function(vid){
+                playerLoad(this, videoPlayer, cls, havePlaylist, live, function(vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
                 });
@@ -100,7 +102,7 @@ function playerInit(id, cls, havePlaylist, live) {
     }
 };
 
-function player(vid, playerInstance, cls, havePlaylist, live, callback) {
+function playerLoad(vid, playerInstance, cls, havePlaylist, live, callback) {
     var $container    = $("#"+vid.id).closest('.video-container');
     $container.append(controlBar);
     $(topBar).insertAfter($container.find('#'+vid.id));
@@ -232,20 +234,22 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
     });
 
     if (havePlaylist) {
-        k
-        var tempSlider = $(slider),
-            playlist   = $container.data('playlist');
-        $.each(playlist, function(i,p) {
-            var tempSlide = $(slide);
-            tempSlide.find('.image-wrapper img').attr('src',p.image);
-            tempSlide.find('.info-container .category').text(p.category);
-            tempSlide.find('.info-container p').text(p.name)
-            tempSlide.data('json', JSON.stringify(p));
-            tempSlider.find('.slider-channels-video').append(tempSlide);
-        });
-        tempSlider.insertAfter($topBar);
-        initChannel();
-        playerInstance.load(playlist);
+        if (typeof $container.data('playlist') != "undefined") {
+            var tempSlider = $(slider),
+                playlist   = $container.data('playlist');
+
+            $.each(playlist, function(i,p) {
+                var tempSlide = $(slide);
+                tempSlide.find('.image-wrapper img').attr('src',p.image);
+                tempSlide.find('.info-container .category').text(p.category);
+                tempSlide.find('.info-container p').text(p.name)
+                tempSlide.data('json', JSON.stringify(p));
+                tempSlider.find('.slider-channels-video').append(tempSlide);
+            });
+            tempSlider.insertAfter($topBar);
+            initChannel();
+            playerInstance.load(playlist);
+        }
     } else {
         $topBar.find('.channels').remove();
     }
@@ -324,7 +328,7 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
         // $(this).off('click');
     });
 
-    $sound.on('click', '.sound-btn', function() {
+    $sound.on('click', '.icon_son', function() {
         updateMute();
     });
 
@@ -366,9 +370,11 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
 };
 
 $(d).ready(function() {
-    if ($('#video-player-pl').length > 0)
-        play1 = playerInit('video-player-pl', false, true, false);
-    // play1 = playerInit('video-player', false, $('#video-player').data('playlist'), false);
-    // play2 = playerInit(false, '.video-player', true, false);
-    // play3 = playerInit(false, 'video-live', false, true);
+    if ($('#video-player-pl').length > 0) {
+        videoPlayer = playerInit('video-player-pl', false, true);
+    }
+
+    if ($('.video-player').length > 0) {
+        videoPlayer = playerInit(false, 'video-player', false);
+    }
 });
