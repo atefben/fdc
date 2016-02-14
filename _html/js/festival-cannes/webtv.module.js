@@ -1,3 +1,5 @@
+var videoWebtv;
+
 $(document).ready(function() {
 
 // Webtv
