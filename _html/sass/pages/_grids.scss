@@ -221,7 +221,7 @@
 // =========================
 
 .all-audios #gridAudios,
-.all-videos #gridAudios {
+.all-videos #gridVideos {
   &:after {
     content: '';
     display: block;
@@ -235,7 +235,8 @@
   }
 }
 
-#gridAudios {
+#gridAudios,
+#gridVideos {
   @media screen and (min-width: 1600px) {
     /* 5 columns for larger screens */
     .grid-sizer { width:calc(100%/5); }
@@ -351,7 +352,8 @@
 
   @include breakpoint(1180px) {
 
-    #gridAudios {
+    #gridAudios,
+    #gridVideos {
       @include transform(translateX(15px));
     }
 
