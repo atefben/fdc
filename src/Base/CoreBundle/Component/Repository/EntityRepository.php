@@ -7,9 +7,15 @@ use Base\CoreBundle\Entity\NewsArticleTranslation;
 use \DateTime;
 
 use Doctrine\ORM\EntityRepository as BaseRepository;
+use Doctrine\ORM\QueryBuilder;
 
 class EntityRepository extends BaseRepository
 {
+    /**
+     * @param $qb
+     * @param $alias
+     * @return QueryBuilder
+     */
     public function addFDCEventQueries($qb, $alias)
     {
         $qb = $qb
@@ -19,6 +25,11 @@ class EntityRepository extends BaseRepository
         return $qb;
     }
 
+    /**
+     * @param $qb
+     * @param $alias
+     * @return QueryBuilder
+     */
     public function addFDCPressQueries($qb, $alias)
     {
         $qb = $qb
@@ -28,6 +39,11 @@ class EntityRepository extends BaseRepository
         return $qb;
     }
 
+    /**
+     * @param $qb
+     * @param $alias
+     * @return QueryBuilder
+     */
     public function addMobileQueries($qb, $alias)
     {
         $qb = $qb
@@ -38,6 +54,12 @@ class EntityRepository extends BaseRepository
         return $qb;
     }
 
+    /**
+     * @param $qb
+     * @param $alias
+     * @param $festival
+     * @return QueryBuilder
+     */
     public function addMasterQueries($qb, $alias, $festival)
     {
         $qb = $qb
@@ -51,6 +73,13 @@ class EntityRepository extends BaseRepository
         return $qb;
     }
 
+    /**
+     * @param $qb
+     * @param $alias
+     * @param $locale
+     * @param null $slug
+     * @return QueryBuilder
+     */
     public function addTranslationQueries($qb, $alias, $locale, $slug = null)
     {
         if ($slug !== null) {
@@ -60,7 +89,6 @@ class EntityRepository extends BaseRepository
                 ->setParameter('slug', $slug);
 
             if ($locale != 'fr') {
-                var_dump('a');
                 $qb = $qb
                     ->andWhere("({$alias}.locale = :locale AND {$alias}.status = :status_translated AND {$alias}.slug = :slug)")
                     ->setParameter('locale', $locale)

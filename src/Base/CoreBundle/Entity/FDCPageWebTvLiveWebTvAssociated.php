@@ -39,7 +39,7 @@ class FDCPageWebTvLiveWebTvAssociated
      *
      * @ORM\ManyToOne(targetEntity="FDCPageWebTvLive", inversedBy="associatedWebTvs")
      */
-    protected $fDCPageWebTvLive;
+    protected $FDCPageWebTvLive;
     
      /**
      * @var WebTv
@@ -77,26 +77,26 @@ class FDCPageWebTvLiveWebTvAssociated
 
 
     /**
-     * Set fDCPageWebTvLive
+     * Set FDCPageWebTvLive
      *
-     * @param \Base\CoreBundle\Entity\FDCPageWebTvLive $fDCPageWebTvLive
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLive $FDCPageWebTvLive
      * @return FDCPageWebTvLiveWebTvAssociated
      */
-    public function setFDCPageWebTvLive(\Base\CoreBundle\Entity\FDCPageWebTvLive $fDCPageWebTvLive = null)
+    public function setFDCPageWebTvLive(\Base\CoreBundle\Entity\FDCPageWebTvLive $FDCPageWebTvLive = null)
     {
-        $this->fDCPageWebTvLive = $fDCPageWebTvLive;
+        $this->FDCPageWebTvLive = $FDCPageWebTvLive;
 
         return $this;
     }
 
     /**
-     * Get fDCPageWebTvLive
+     * Get FDCPageWebTvLive
      *
      * @return \Base\CoreBundle\Entity\FDCPageWebTvLive 
      */
     public function getFDCPageWebTvLive()
     {
-        return $this->fDCPageWebTvLive;
+        return $this->FDCPageWebTvLive;
     }
 
     /**

@@ -2,7 +2,8 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
+
+use Base\CoreBundle\Component\Repository\EntityRepository;
 
 class MediaVideoRepository extends EntityRepository
 {
@@ -11,12 +12,15 @@ class MediaVideoRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('mv');
 
-        $qb->join('mv.translations', 'mvt')
+        $qb
+            ->select('mv,
+            RAND() as hidden rand')
+            ->join('mv.translations', 'mvt')
             ->where('mv.festival = :festival')
             ->setParameter('festival', $festival)
-            ->andWhere('mvt.locale = :locale')
-            ->setParameter('locale', $locale)
         ;
+
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
 
         if ($excludeWebTv) {
             $qb
@@ -26,15 +30,11 @@ class MediaVideoRepository extends EntityRepository
         }
 
         $qb
-            ->andWhere('mvt.status in (1, 5)')
-            ->setMaxResults(10)
+            ->orderBy('rand')
+            ->setMaxResults(2)
         ;
 
-        $results = $qb->getQuery()->getResult();
-        if (count($results) > 2) {
-            return array_rand($results, 2);
-        }
-        return $results;
+        return $qb->getQuery()->getResult();
     }
 
     public function getWebTvPublishedVideos($locale, $festival, $webTv)
