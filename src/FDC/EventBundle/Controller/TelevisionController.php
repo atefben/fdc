@@ -16,6 +16,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/web-tv")
@@ -201,7 +203,7 @@ class TelevisionController extends Controller
 
         $page = $pageTranslation->getTranslatable();
 
-        $this->get('base.manager.seo')->setFDCEventPageFDCPageWesbTvTrailersSeo($page, $locale);
+        $this->get('base.manager.seo')->setFDCEventPageFDCPageWebTvTrailersSeo($page, $locale);
 
         $pages = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findAll();
 
@@ -210,7 +212,7 @@ class TelevisionController extends Controller
         $sectionId = $page->getSelectionSection()->getId();
 
         $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
-
+        dump($films);
         return array(
             'page'  => $page,
             'pages' => $pages,
@@ -254,6 +256,22 @@ class TelevisionController extends Controller
         }
 
         $videos = $this->getBaseCoreMediaVideoRepository()->getFilmTrailersMediaVideos($locale, $film->getId());
+
+        $route = $this->generateUrl($request->get('_route'), $request->get('_route_params'), UrlGeneratorInterface::ABSOLUTE_URL);
+        $title = $this
+            ->get('translator')
+            ->trans('seo.trailer.title', array('%film_title%' => $filmTranslation->getTitle()));
+
+        $description = $this
+            ->get('translator')
+            ->trans('seo.trailer.description', array('%film_title%' => $filmTranslation->getTitle()));
+        $updatedAt = end($films)->getUpdatedAt();
+        $image = $film->getImage();
+
+        $this
+            ->get('base.manager.seo')
+            ->setFDCEventPageFDCPageWebTvTrailerSeo($route, $title, $description, $updatedAt, $image)
+        ;
 
         $next = null;
         foreach ($films as $key => $value) {

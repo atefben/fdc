@@ -1,0 +1,25 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<div class="channel">
+    <div class="image-wrapper">
+        {% if video.image %}
+            {% set transImage = video.image|trans_fallback('file') %}
+            {% if transImage %}
+                <img src="{% path transImage, '212x134' %}" alt=""/>
+            {% endif %}
+        {% endif %}
+
+    </div>
+    <a class="linkVid" href="#"></a>
+    <div class="info">
+        <div class="picto"><i class="icon icon_video"></i></div>
+        <div class="info-container">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="#" class="category">{{ video.theme }}</a>
+                    <span>{{ video|trans_fallback('title') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -51,7 +51,8 @@ class FilmFilmRepository extends EntityRepository
             ->join('fa.mediaVideo', 'mv')
             ->join('mv.translations', 'mvt')
             ->where('mv.displayedTrailer = :displayedTrailer')
-            ->setParameter('displayedTrailer', true);
+            ->setParameter('displayedTrailer', true)
+        ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -69,7 +70,8 @@ class FilmFilmRepository extends EntityRepository
             ->where('f.id = :id')
             ->andWhere('mv.displayedTrailer = :displayed_trailer')
             ->setParameter('id', $id)
-            ->setParameter('displayed_trailer', true);
+            ->setParameter('displayed_trailer', true)
+        ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -88,7 +90,8 @@ class FilmFilmRepository extends EntityRepository
             ->join('mv.sites', 's')
             ->join('mv.translations', 'mvt')
             ->where('mv.displayedTrailer = :displayed_trailer')
-            ->setParameter('displayed_trailer', true);
+            ->setParameter('displayed_trailer', true)
+        ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -98,8 +101,8 @@ class FilmFilmRepository extends EntityRepository
 
         if ($selectionSection) {
             $qb = $qb
-                    ->andWhere('f.selectionSection = :selectionSection')
-                    ->setParameter('selectionSection', $selectionSection)
+                ->andWhere('f.selectionSection = :selectionSection')
+                ->setParameter('selectionSection', $selectionSection)
             ;
         }
 
