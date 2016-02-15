@@ -3,14 +3,20 @@
 
 {% set video = video.association %}
 {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
-{% if transImage is null or transImage.file is null %}
+{% if transImage is null %}
     {% set transImage = video.image.findTranslationByLocale('fr') %}
 {% endif %}
 
+{% set transVideo = video.findTranslationByLocale(app.request.locale) %}
+{% if transVideo is null %}
+    {% set transVideo = video.findTranslationByLocale('fr') %}
+{% endif %}
+
+
 <div class="image-wrapper">
-    <img src="{% path transImage.file, '573x362'%}" alt="" />
+    <img src="{% path transImage.file, '573x362'%}" alt="{{ video.image|trans_fallback('alt') }}" />
 </div>
-<a class="linkVid" href="#"></a>
+<a class="linkVid" href="{% path transVideo.file, 'reference'%}"></a>
 <div class="info">
     <div class="picto">
         <i class="icon icon_video"></i>
