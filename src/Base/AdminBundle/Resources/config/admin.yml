@@ -260,11 +260,11 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.fdc_page_web_tv_live_media_video_associated:
-        class: Base\AdminBundle\Admin\FDCPageWebTvLiveMediaVideoAssociatedAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated, BaseAdminBundle:FDCPageWebTvLiveMediaVideoAssociatedAdmin]
+    base.admin.fdc_page_web_tv_live_film_film_associated:
+        class: Base\AdminBundle\Admin\FDCPageWebTvLiveFilmFilmAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWebTvLiveFilmFilmAssociated, BaseAdminBundle:FDCPageWebTvLiveFilmFilmAssociatedAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageWebTvLiveMediaVideoAssociated, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageWebTvLiveFilmFilmAssociated, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -612,7 +612,7 @@ services:
         class: Base\AdminBundle\Admin\ContactPageAdmin
         arguments: [~, Base\CoreBundle\Entity\ContactPage, BaseAdminBundle:ContactPageAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.contact_page, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.contact_page, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -620,7 +620,7 @@ services:
         class: Base\AdminBundle\Admin\PressHomepageAdmin
         arguments: [~, Base\CoreBundle\Entity\PressHomepage, BaseAdminBundle:PressHomepageAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -676,7 +676,7 @@ services:
         class: Base\AdminBundle\Admin\PressGuideAdmin
         arguments: [~, Base\CoreBundle\Entity\PressGuide, BaseAdminBundle:PressGuideAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm,group: dashboard.group.press, label: entity.press_guide, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_guide, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

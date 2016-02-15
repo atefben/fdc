@@ -46,6 +46,11 @@ class MediaVideoAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('legend', null, array(
+                'label' => 'list.label_title_video',
+                'template' => 'BaseAdminBundle:MediaVideo:list_title.html.twig'
+            ))
+            ->add('theme')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))

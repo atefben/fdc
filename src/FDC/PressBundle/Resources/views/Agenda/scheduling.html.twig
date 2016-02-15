@@ -10,9 +10,9 @@
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
                 <div class="buttons">
-                    <a href="#" class="button subnav">{{ 'programmation.btn.telechargerhoraireprojectionpresse'|trans }}</a>
-                    <a href="#" class="button list">{{ 'programmation.btn.telechargerformatpdf'|trans }}</a>
-                    <a href="#" class="button list">{{ 'programmation.btn.telechargerformatics'|trans }}</a>
+                    <a href="#" class="button subnav"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerhoraireprojectionpresse'|trans }}</a>
+                    <a href="#" class="button list"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}</a>
+                    <a href="#" class="button list"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatics'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -47,18 +47,31 @@
                     </div>
                     <div class="calendar">
                         <div class="timeCol">
-                            {% set currentHour = "now"|date('H') %}
                             <div class="empty"></div>
-                            <div class="time">{{ currentHour }}</div>
-                            <div class="time">{{ currentHour + 1}}</div>
-                            <div class="time">{{ currentHour + 2}}</div>
-                            <div class="time">{{ currentHour + 3}}</div>
-                            <div class="time">{{ currentHour + 4}}</div>
-                            <div class="time">{{ currentHour + 5}}</div>
+                            <div class="time">08H</div>
+                            <div class="time">09H</div>
+                            <div class="time">10H</div>
+                            <div class="time">11H</div>
+                            <div class="time">12H</div>
+                            <div class="time">13H</div>
+                            <div class="time">14H</div>
+                            <div class="time">15H</div>
+                            <div class="time">16H</div>
+                            <div class="time">17H</div>
+                            <div class="time">18H</div>
+                            <div class="time">19H</div>
+                            <div class="time">20H</div>
+                            <div class="time">21H</div>
+                            <div class="time">22H</div>
+                            <div class="time">23H</div>
+                            <div class="time">00H</div>
+                            <div class="time">01H</div>
+                            <div class="time">02H</div>
+                            <div class="time">03H</div>
                         </div>
                         <div class="venues">
-                            <a href="#" class="nav prev"></a>
-                            <a href="#" class="nav next"></a>
+                            <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
+                            <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
                             <div class="v-wrapper">
                                 {% include 'FDCPressBundle:Agenda:components/grid.html.twig' %}
                             </div>

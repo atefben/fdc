@@ -40,6 +40,8 @@ breadcrumb:
     link_info_video_list: Liste des infos - vidéos
     link_info_image_list: Liste des infos - photos
     link_info_audio_list: Liste des infos - audios
+    link_press_guide_list: Guide pratique
+    link_contact_page_list: Contactez-nous
 
 
 link:
@@ -294,6 +296,9 @@ dashboard:
         fdc_page_web_tv_trailers_courts_metrages: WebTV - BA et extraits (Courts métrages)
         fdc_page_web_tv_trailers_cannes_classics: WebTV - BA et extraits (Cannes Classics)
         fdc_page_web_tv_trailers_cinema_plage: WebTV - BA et extraits (Cinéma de plage)
+        presshomepage: Homepage
+        pressguide: Guide pratique
+        presscontact: Contactez-nous
 
 form:
     tag:
@@ -444,6 +449,7 @@ form:
     label_homepage_films_associated: Films présentés
     label_projection: Projection
     label_projection_p: Projection presse
+    label_arrive_icon: Pictogramme du titre
 
     web_tv:
         helper_name: 255 caractères max.
@@ -510,8 +516,8 @@ form:
         placeholder_seo_title: À saisir manuellement
         placeholder_seo_description: À saisir manuellement
         trailers: Bandes-annonces & extraits
-        label_media_videos_associated: Bandes-annonces & extraits à la une
-        helper_media_videos_associated: Sélectionnez de 3 à 10 films. Ils apparaitront en front-office dans l'ordre des champs.
+        label_film_films_associated: Bandes-annonces & extraits à la une
+        helper_film_films_associated: Sélectionnez de 3 à 10 films. Ils apparaitront en front-office dans l'ordre des champs.
         label_display_trailer_area: Ne pas afficher cette strate
     fdc_page_web_tv_trailers:
         content_page: Contenu de la page

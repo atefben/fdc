@@ -43,7 +43,7 @@ class PressGuide implements TranslateMainInterface
     /**
      * @var PressGuideWidget
      *
-     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideArrive", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideArrive", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
     private $arriveWidgets;
@@ -58,7 +58,7 @@ class PressGuide implements TranslateMainInterface
     /**
      * @var PressGuideWidget
      *
-     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideMeeting", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideMeeting", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
     private $meetingWidgets;
@@ -73,7 +73,7 @@ class PressGuide implements TranslateMainInterface
     /**
      * @var PressGuideWidget
      *
-     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideInformation", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideInformation", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
     private $informationWidgets;
@@ -88,7 +88,7 @@ class PressGuide implements TranslateMainInterface
     /**
      * @var PressGuideWidget
      *
-     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideService", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideService", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
     private $serviceWidgets;
