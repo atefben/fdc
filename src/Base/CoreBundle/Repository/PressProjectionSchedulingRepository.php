@@ -2,7 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\FilmProjection;
 
 use Doctrine\ORM\EntityRepository;
 

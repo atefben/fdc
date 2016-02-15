@@ -66,11 +66,6 @@
             </div>
           </div>
         </div>
-        <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-            play1 = playerInit('video-player', false, true, false);
-        });
-        </script>
 
         <div class="infos-videos">
          <div class="infos">

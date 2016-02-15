@@ -107,6 +107,7 @@ class NewsController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      *
      * @return View
      */
@@ -122,7 +123,7 @@ class NewsController extends FOSRestController
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $projection = $em->getRepository($this->repository)->getApiNewsById($id, $festival, new DateTime(), $lang);
+        $entity = $em->getRepository($this->repository)->getApiNewsById($id, $festival, new DateTime(), $lang);
 
         // set context view
         $groups = array('news_show', 'time');
@@ -130,7 +131,7 @@ class NewsController extends FOSRestController
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
-        $view = $this->view($projection, 200);
+        $view = $this->view($entity, 200);
         $view->setSerializationContext($context);
 
         return $view;

@@ -5,7 +5,7 @@
     <div id="main" class="press press-programmation loading calendar-open lock">
         <div class="header-press">
             <div class="head">
-                <span>{{ 'press.header.label.espacepresse'|trans }}</span>
+                <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
             </div>
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
@@ -60,7 +60,7 @@
                             <a href="#" class="nav prev"></a>
                             <a href="#" class="nav next"></a>
                             <div class="v-wrapper">
-                                {% include 'FDCEventBundle:Agenda:widgets/grid.html.twig' %}
+                                {% include 'FDCPressBundle:Agenda:components/grid.html.twig' %}
                             </div>
                         </div>
                     </div>

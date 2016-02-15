@@ -46,7 +46,6 @@ class FilmTrailerController extends FOSRestController
      */
     public function getFilmsTrailersAction(Paramfetcher $paramFetcher)
     {
-        error_log('ththth');
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
@@ -61,8 +60,6 @@ class FilmTrailerController extends FOSRestController
 
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
-        error_log(count($items));
-        error_log('wtfwtfwtf');
 
         // set context view
         $groups = array('trailer_list', 'time');
@@ -112,7 +109,6 @@ class FilmTrailerController extends FOSRestController
      */
     public function getFilmTrailersAction(Paramfetcher $paramFetcher, $id)
     {
-        die('lolaa');
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
@@ -124,6 +120,8 @@ class FilmTrailerController extends FOSRestController
         // create query
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, $lang);
+
+        var_dump(count($entity));
 
         // set context view
         $groups = array('trailer_show', 'time');

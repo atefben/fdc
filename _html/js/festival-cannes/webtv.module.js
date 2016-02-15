@@ -1,3 +1,5 @@
+var videoWebtv;
+
 $(document).ready(function() {
 
 // Webtv
@@ -25,7 +27,9 @@ $(document).ready(function() {
 
         setTimeout(function() {
           videoWebtv.resize('100%','100%');
-          videoWebtv.play();
+          if(videoWebtv.getState() == "paused" || videoWebtv.getState() == "idle") {
+            videoWebtv.play();
+          }
           $('#live .trailer').addClass('on');
         }, 500);
       });

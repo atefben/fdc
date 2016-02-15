@@ -1,5 +1,4 @@
-var playmovie,
-    videoMovie;
+var videoMovie;
 
 // Single Movie
 // =========================

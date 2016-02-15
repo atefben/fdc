@@ -213,7 +213,6 @@ list:
         modified_by: En cours de modification par </br>
         since: depuis
 
-
 filter:
     label_email: Email
     label_starts_at: Date de début
@@ -487,7 +486,7 @@ form:
         helper_direct_url: |
           URL du live Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
           Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.
-        label_teaser_url: URL du teaser
+        label_teaser_url: URL du teaser (avant le festival)
         helper_teaser_url: |
           URL Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
           Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.

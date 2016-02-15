@@ -1,18 +1,17 @@
 {% trans_default_domain 'FDCPressBundle' %}
-
 <div class="venue">
     <div class="v-head">{{ 'press.home.salle.grandtheatrelumière'|trans }}</div>
     <div class="v-container">
-        {% if homeProjection %}
-            {% for p in homeProjection %}
-            {% if p.projection.room.name == "Grand Théatre Lumière" %}
+        {% if dayProjection is defined %}
+            {% for p in dayProjection %}
+                {% if p.projection.room.name == "Grand Théatre Lumière" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if homePressProjection %}
-            {% for p in homePressProjection %}
-            {% if p.projection.room.name == "Grand Théatre Lumière" %}
+        {% if dayPressProjection is defined %}
+            {% for p in dayPressProjection %}
+                {% if p.projection.room.name == "Grand Théatre Lumière" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}
             {% endfor %}
@@ -22,15 +21,15 @@
 <div class="venue">
     <div class="v-head">{{ 'press.home.salle.salledebussy'|trans }}</div>
     <div class="v-container">
-        {% if homeProjection %}
-            {% for p in homeProjection %}
+        {% if dayProjection is defined %}
+            {% for p in dayProjection %}
                 {% if p.projection.room.name == "Salle Debussy" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if homePressProjection %}
-            {% for p in homePressProjection %}
+        {% if dayPressProjection is defined %}
+            {% for p in dayPressProjection %}
                 {% if p.projection.room.name == "Salle Debussy" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}
@@ -41,15 +40,15 @@
 <div class="venue">
     <div class="v-head">{{ 'press.home.salle.salledu60e'|trans }}</div>
     <div class="v-container">
-        {% if homeProjection %}
-            {% for p in homeProjection %}
+        {% if dayProjection is defined %}
+            {% for p in dayProjection %}
                 {% if p.projection.room.name == "Salle du Soixantième" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if homePressProjection %}
-            {% for p in homePressProjection %}
+        {% if dayPressProjection is defined %}
+            {% for p in dayPressProjection %}
                 {% if p.projection.room.name == "Salle du Soixantième" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}
@@ -60,15 +59,15 @@
 <div class="venue">
     <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
     <div class="v-container">
-        {% if homeProjection %}
-            {% for p in homeProjection %}
+        {% if dayProjection is defined %}
+            {% for p in dayProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if homePressProjection %}
-            {% for p in homePressProjection %}
+        {% if dayPressProjection is defined %}
+            {% for p in dayPressProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}
@@ -79,15 +78,15 @@
 <div class="venue">
     <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
     <div class="v-container">
-        {% if homeProjection %}
-            {% for p in homeProjection %}
+        {% if dayProjection is defined %}
+            {% for p in dayProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if homePressProjection %}
-            {% for p in homePressProjection %}
+        {% if dayPressProjection is defined %}
+            {% for p in dayPressProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}
@@ -98,15 +97,15 @@
 <div class="venue">
     <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
     <div class="v-container">
-        {% if homeProjection %}
-            {% for p in homeProjection %}
+        {% if dayProjection is defined %}
+            {% for p in dayProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if homePressProjection %}
-            {% for p in homePressProjection %}
+        {% if dayPressProjection is defined %}
+            {% for p in dayPressProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}
@@ -117,15 +116,15 @@
 <div class="venue">
     <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
     <div class="v-container">
-        {% if homeProjection %}
-            {% for p in homeProjection %}
+        {% if dayProjection is defined %}
+            {% for p in dayProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if homePressProjection %}
-            {% for p in homePressProjection %}
+        {% if dayPressProjection is defined %}
+            {% for p in dayPressProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}

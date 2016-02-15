@@ -19,6 +19,15 @@ class EntityRepository extends BaseRepository
         return $qb;
     }
 
+    public function addFDCPressQueries($qb, $alias)
+    {
+        $qb = $qb
+            ->andWhere("{$alias}.slug = 'site-press'")
+        ;
+
+        return $qb;
+    }
+
     public function addMobileQueries($qb, $alias)
     {
         $qb = $qb
