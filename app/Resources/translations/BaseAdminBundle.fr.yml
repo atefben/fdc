@@ -113,6 +113,7 @@ group:
         twitter:image : [preset chaîne à la une]
 
 entity:
+    fdc_event_routes: Menu
     news_article: Articles
     news_video: Vidéos
     news_image: Photos
@@ -158,6 +159,8 @@ entity:
     press_cinema_map: Plan des salles
 
 list:
+    label_route: Route
+    label_enabled: Actif
     label_starts_at: Date de début
     label_ends_at: Date de fin
     label_type: Type
@@ -214,6 +217,9 @@ list:
         since: depuis
 
 filter:
+    label_parent: Parent
+    label_route: Route
+    label_enabled: Actif
     label_email: Email
     label_starts_at: Date de début
     label_ends_at: Date de fin
@@ -361,7 +367,10 @@ form:
         helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
+    label_parent: Parent
     label_contact_theme_theme: Theme
+    label_route: Route
+    label_enabled: Actif
     label_tag_name: Nom du tag
     label_header_audio: Audio principal
     label_social_graph_hashtag_twitter: Social graph - hashtags
@@ -519,6 +528,9 @@ nav:
     site_modal: Ouvrir la sélection des sites
 
 show:
+    label_parent: Parent
+    label_route: Route
+    label_enabled: Actif
     label_id: Id
     label_created_at: Créé le
     label_updated_at: Mis à jour le

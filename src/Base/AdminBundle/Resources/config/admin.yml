@@ -41,6 +41,14 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_event_routes:
+        class: Base\AdminBundle\Admin\FDCEventRoutesAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCEventRoutes, BaseAdminBundle:FDCEventRoutesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.fdc_event_routes, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+                     - [ setTranslationDomain, ['BaseAdminBundle']]
+
     # GROUP EVENT
     base.admin.event:
         class: Base\AdminBundle\Admin\EventAdmin
@@ -799,4 +807,3 @@ services:
             - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-
