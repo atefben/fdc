@@ -39,6 +39,12 @@ class TelevisionController extends Controller
             ->find($id)
         ;
 
+        if (!$page) {
+            $this->createNotFoundException('Page Live not found');
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageFDCPageWebTvLiveSeo($page, $locale);
+
         $sliderChosenChannels = array();
         foreach ($page->getAssociatedWebTvs() as $associatedWebTv) {
             if ($associatedWebTv->getAssociation()) {
@@ -116,7 +122,6 @@ class TelevisionController extends Controller
             ->getBaseCoreMediaVideoRepository()
             ->get2VideosFromTheLast10($locale, $festival->getId(), $webTv->getId())
         ;
-
 
         $this->get('base.manager.seo')->setFDCEventPageWebTvSeo($webTv, $locale);
 
