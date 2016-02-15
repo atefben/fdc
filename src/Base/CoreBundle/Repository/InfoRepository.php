@@ -4,9 +4,9 @@ namespace Base\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use JMS\DiExtraBundle\Annotation as DI;
+use Base\CoreBundle\Component\Repository\EntityRepository as EntityRepo;
 
 use Base\CoreBundle\Entity\InfoArticleTranslation;
-use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
  * InfoRepository class.
@@ -15,7 +15,7 @@ use Base\CoreBundle\Interfaces\TranslateChildInterface;
  * @author   Antoine Mineau
  * \@company Ohwee
  */
-class InfoRepository extends EntityRepository
+class InfoRepository extends EntityRepo
 {
     public function getInfoBySlug($slug, $festival, $locale, $dateTime, $isAdmin, $repository)
     {
