@@ -1811,7 +1811,7 @@ class MediaController extends Controller
                               le Festival de Cannes. Aucune utilisation commerciale ou promotionnelle de ces visuels
                               n’est autorisée.'
         );
-        $translator = $this->get('translator');
+
         $movieDownload = array(
             'description' => 'Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et
                                   extraits de films fournis par les productions. Ces contenus sont mis à jour tout au
@@ -1853,7 +1853,6 @@ class MediaController extends Controller
                 )
             ),
         );
-        $lockedContentForm = $this->createForm( new LockedContentType($translator) );
 
         $download = array(
             'section' => array(
@@ -2094,8 +2093,7 @@ class MediaController extends Controller
         return array(
             'headerInfo' => $headerInfo,
             'pressDownloads' => $download,
-            'pressMovieDownloads' => $movieDownload,
-            'lockedForm' => $lockedContentForm->createView(),
+            'pressMovieDownloads' => $movieDownload
         );
     }
 
