@@ -121,9 +121,6 @@ class FilmTrailerController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, $lang);
 
-        var_dump(count($entity));
-
-        // set context view
         $groups = array('trailer_show', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));

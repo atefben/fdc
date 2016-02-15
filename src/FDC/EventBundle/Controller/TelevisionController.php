@@ -2,6 +2,8 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated;
+use Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
@@ -13,6 +15,7 @@ use Gedmo\Sluggable\Util\Urlizer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/web-tv")
@@ -20,26 +23,60 @@ use Symfony\Component\HttpFoundation\Request;
 class TelevisionController extends Controller
 {
     /**
+     * @param Request $request
      * @Route("/live")
      * @Template("FDCEventBundle:Television:live.html.twig")
+     * @return array
      */
-    public function liveAction()
+    public function liveAction(Request $request)
     {
+        $locale = $request->getLocale();
         $festival = $this->getSettings()->getFestival();
+
         $id = $this->get('twig')->getGlobals()['admin_fdc_page_web_tv_live_id'];
         $page = $this
             ->getBaseCoreFDCPageWebTvLiveRepository()
             ->find($id)
         ;
 
-        $webtvs = $this->getBaseCoreWebTvRepository()->findAll();
-        $trailers = $this->getBaseCoreMediaVideoRepository()->findAll();
+        $sliderChosenChannels = array();
+        foreach ($page->getAssociatedWebTvs() as $associatedWebTv) {
+            if ($associatedWebTv->getAssociation()) {
+                $sliderChosenChannels[$associatedWebTv->getAssociation()->getId()] = $associatedWebTv->getAssociation();
+            }
+        }
+
+        $sliderOtherChannels = $this
+            ->getBaseCoreWebTvRepository()
+            ->getRandomWebTvs($locale, $festival->getId(), array_keys($sliderChosenChannels))
+        ;
+
+        $films = array();
+        foreach ($page->getAssociatedFilmFilms() as $associatedFilmFilm) {
+            if ($associatedFilmFilm->getAssociation()) {
+                $films[$associatedFilmFilm->getAssociation()->getId()] = $associatedFilmFilm->getAssociation();
+            }
+        }
+
+        $lastVideos = $this
+            ->getBaseCoreMediaVideoRepository()
+            ->get2VideosFromTheLast10($locale, $festival->getId())
+        ;
+
+        $videoUrl = null;
+        if ($page->getLive() && $page->getDirectUrl()) {
+            $videoUrl = $page->getDirectUrl();
+        } elseif (!$page->getLive() && $page->getTeaserUrl()) {
+            $videoUrl = $page->getTeaserUrl();
+        }
 
         return array(
-            'page' => $page,
-            'sliderVideos' => $webtvs,
-            'sliderChannels' => $webtvs,
-            'trailers' => $trailers,
+            'page'                 => $page,
+            'sliderChosenChannels' => $sliderChosenChannels,
+            'sliderOtherChannels'  => $sliderOtherChannels,
+            'films'                => $films,
+            'videoUrl'             => $videoUrl,
+            'lastVideos'           => $lastVideos,
         );
     }
 
