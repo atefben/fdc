@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Base\CoreBundle\Util\SeoMain;
 
 use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -19,6 +20,7 @@ use Base\CoreBundle\Util\Time;
  */
 class Homepage
 {
+    use SeoMain;
     use Translatable;
     use Time;
 

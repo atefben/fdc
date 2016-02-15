@@ -1675,6 +1675,10 @@
         <target><![CDATA[Suivez <br> TV Festival de Cannes]]></target>
         <jms:reference-file line="10">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="webtv.direct.nb_videos" resname="webtv.direct.nb_videos">
+        <source>webtv.direct.nb_videos</source>
+        <target>%nb_videos% vidéos</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

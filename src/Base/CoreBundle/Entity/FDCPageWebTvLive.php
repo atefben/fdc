@@ -78,14 +78,14 @@ class FDCPageWebTvLive implements TranslateMainInterface
 
     /**
      * @var FDCPageWebTvLiveWebTvAssociated
-     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="fDCPageWebTvLive", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="FDCPageWebTvLive", cascade={"persist"})
      */
     private $associatedWebTvs;
 
     /**
-     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveMediaVideoAssociated", mappedBy="fDCPageWebTvLive", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveFilmFilmAssociated", mappedBy="FDCPageWebTvLive", cascade={"persist"})
      */
-    private $associatedMediaVideos;
+    private $associatedFilmFilms;
 
     /**
      * @var ArrayCollection
@@ -268,10 +268,10 @@ class FDCPageWebTvLive implements TranslateMainInterface
     public function getAssociatedWebTvs()
     {
         if ($this->associatedWebTvs->count() < 3) {
-            while ($this->associatedMediaVideos->count() != 3) {
-                $entity = new FDCPageWebTvLiveMediaVideoAssociated();
+            while ($this->associatedFilmFilms->count() != 3) {
+                $entity = new FDCPageWebTvLiveFilmFilmAssociated();
                 $entity->setFDCPageWebTvLive($this);
-                $this->associatedMediaVideos->add($entity);
+                $this->associatedFilmFilms->add($entity);
             }
         }
         return $this->associatedWebTvs;
@@ -309,43 +309,43 @@ class FDCPageWebTvLive implements TranslateMainInterface
 
 
     /**
-     * Add associatedMediaVideos
+     * Add associatedFilmFilms
      *
-     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated $associatedMediaVideos
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveFilmFilmAssociated $associatedFilmFilms
      * @return FDCPageWebTvLive
      */
-    public function addAssociatedMediaVideo(\Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated $associatedMediaVideos)
+    public function addAssociatedFilmFilm(\Base\CoreBundle\Entity\FDCPageWebTvLiveFilmFilmAssociated $associatedFilmFilms)
     {
-        $associatedMediaVideos->setFDCPageWebTvLive($this);
-        $this->associatedMediaVideos[] = $associatedMediaVideos;
+        $associatedFilmFilms->setFDCPageWebTvLive($this);
+        $this->associatedFilmFilms[] = $associatedFilmFilms;
 
         return $this;
     }
 
     /**
-     * Remove associatedMediaVideos
+     * Remove associatedFilmFilms
      *
-     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated $associatedMediaVideos
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveFilmFilmAssociated $associatedFilmFilms
      */
-    public function removeAssociatedMediaVideo(\Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated $associatedMediaVideos)
+    public function removeAssociatedFilmFilm(\Base\CoreBundle\Entity\FDCPageWebTvLiveFilmFilmAssociated $associatedFilmFilms)
     {
-        $this->associatedMediaVideos->removeElement($associatedMediaVideos);
+        $this->associatedFilmFilms->removeElement($associatedFilmFilms);
     }
 
     /**
-     * Get associatedMediaVideos
+     * Get associatedFilmFilms
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAssociatedMediaVideos()
+    public function getAssociatedFilmFilms()
     {
-        if ($this->associatedMediaVideos->count() < 3) {
-            while ($this->associatedMediaVideos->count() != 3) {
-                $entity = new FDCPageWebTvLiveMediaVideoAssociated();
+        if ($this->associatedFilmFilms->count() < 3) {
+            while ($this->associatedFilmFilms->count() != 3) {
+                $entity = new FDCPageWebTvLiveFilmFilmAssociated();
                 $entity->setFDCPageWebTvLive($this);
-                $this->associatedMediaVideos->add($entity);
+                $this->associatedFilmFilms->add($entity);
             }
         }
-        return $this->associatedMediaVideos;
+        return $this->associatedFilmFilms;
     }
 }

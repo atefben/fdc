@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageWebTvLiveMediaVideoAssociated
+class FDCPageWebTvLiveFilmFilmAssociated
 {
     use Time;
 
@@ -37,14 +37,14 @@ class FDCPageWebTvLiveMediaVideoAssociated
     /**
      * @var FDCPageWebTvLive
      *
-     * @ORM\ManyToOne(targetEntity="FDCPageWebTvLive", inversedBy="associatedMediaVideos")
+     * @ORM\ManyToOne(targetEntity="FDCPageWebTvLive", inversedBy="associatedFilmFilms")
      */
-    protected $fDCPageWebTvLive;
+    protected $FDCPageWebTvLive;
     
      /**
-     * @var MediaVideo
+     * @var FilmFilm
      *
-     * @ORM\ManyToOne(targetEntity="MediaVideo")
+     * @ORM\ManyToOne(targetEntity="FilmFilm")
      */
     protected $association;
     
@@ -76,35 +76,35 @@ class FDCPageWebTvLiveMediaVideoAssociated
     }
 
     /**
-     * Set fDCPageWebTvLive
+     * Set FDCPageWebTvLive
      *
-     * @param \Base\CoreBundle\Entity\FDCPageWebTvLive $fDCPageWebTvLive
-     * @return FDCPageWebTvLiveMediaVideoAssociated
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLive $FDCPageWebTvLive
+     * @return FDCPageWebTvLiveFilmFilmAssociated
      */
-    public function setFDCPageWebTvLive(\Base\CoreBundle\Entity\FDCPageWebTvLive $fDCPageWebTvLive = null)
+    public function setFDCPageWebTvLive(\Base\CoreBundle\Entity\FDCPageWebTvLive $FDCPageWebTvLive = null)
     {
-        $this->fDCPageWebTvLive = $fDCPageWebTvLive;
+        $this->FDCPageWebTvLive = $FDCPageWebTvLive;
 
         return $this;
     }
 
     /**
-     * Get fDCPageWebTvLive
+     * Get FDCPageWebTvLive
      *
      * @return \Base\CoreBundle\Entity\FDCPageWebTvLive 
      */
     public function getFDCPageWebTvLive()
     {
-        return $this->fDCPageWebTvLive;
+        return $this->FDCPageWebTvLive;
     }
 
     /**
      * Set association
      *
-     * @param \Base\CoreBundle\Entity\MediaVideo $association
-     * @return FDCPageWebTvLiveMediaVideoAssociated
+     * @param \Base\CoreBundle\Entity\FilmFilm $association
+     * @return FDCPageWebTvLiveFilmFilmAssociated
      */
-    public function setAssociation(\Base\CoreBundle\Entity\MediaVideo $association = null)
+    public function setAssociation(\Base\CoreBundle\Entity\FilmFilm $association = null)
     {
         $this->association = $association;
 
@@ -114,7 +114,7 @@ class FDCPageWebTvLiveMediaVideoAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Base\CoreBundle\Entity\FilmFilm 
      */
     public function getAssociation()
     {

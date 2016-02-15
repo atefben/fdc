@@ -23,7 +23,7 @@
                 {% if transImage is null or transImage.file is null %}
                     {% set transImage = video.image.findTranslationByLocale('fr') %}
                 {% endif %}
-                {% thumbnail transImage.file , '573x362' %}
+                {% thumbnail transImage.file , '573x362' with {'alt': photo|trans_fallback('alt') } %}
                 <div class="picto">
                     <i class="icon icon_video"></i>
                 </div>

@@ -2,10 +2,10 @@
 
 namespace Base\CoreBundle\Repository;
 
+use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\WebTv;
 use Base\CoreBundle\Entity\WebTvTranslation;
 
-use Doctrine\ORM\EntityRepository;
 
 /**
  * WebTvRepository class.
@@ -45,7 +45,8 @@ class WebTvRepository extends EntityRepository
             ->setParameter('status_translated', WebTvTranslation::STATUS_TRANSLATED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('displayed_mobile', true)
-            ->getQuery();
+            ->getQuery()
+            ;
     }
 
     /**
@@ -125,8 +126,47 @@ class WebTvRepository extends EntityRepository
             ->setParameter('locale', $locale)
             ->andWhere('wtt.status in (1, 5)')
             ->andWhere('SIZE(wt.mediaVideos) >= 1')
-            ->andWhere('mvt.status in (1, 5)')
         ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @param array $excludes
+     * @param int $limit
+     * @return array
+     */
+    public function getRandomWebTvs($locale, $festival, $excludes = array(), $limit = 10)
+    {
+        $qb = $this->createQueryBuilder('wt');
+
+        $qb->select('wt,
+                RAND() as HIDDEN rand')
+            ->join('wt.translations', 'wtt')
+            ->join('wt.mediaVideos', 'mv')
+            ->join('mv.translations', 'mvt')
+            ->where('wt.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->andWhere('SIZE(wt.mediaVideos) >= 1')
+        ;
+
+        if ($excludes) {
+            $qb
+                ->andWhere('wt.id NOT IN (:excludes)')
+                ->setParameter(':excludes', $excludes)
+            ;
+        }
+
+        $qb = $this->addTranslationQueries($qb, 'wtt', $locale);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+
+        $qb
+            ->orderBy('rand')
+            ->setMaxResults((int)$limit)
+        ;
+
 
         return $qb->getQuery()->getResult();
     }

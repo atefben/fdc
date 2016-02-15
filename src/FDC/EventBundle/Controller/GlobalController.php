@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use \DateTime;
 
 use FDC\EventBundle\Form\Type\ShareEmailType;
 use FDC\EventBundle\Form\Type\NewsletterType;
@@ -27,80 +28,15 @@ class GlobalController extends Controller {
         $articles = array();
         $request  = $this->get('request');
 
+        $em = $this->get('doctrine')->getManager();
+        $dateTime = new DateTime();
+        $locale = $request->getLocale();
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        $count = 8;
+
         if ($request->isXmlHttpRequest()) {
 
-            $queryArticle = array(
-                array(
-                    'title' => 'test',
-                    'content' => 'Contenu de l\'article',
-                    'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
-                    'filter' => 'suggestion',
-                    'link' => '/article/article1.php',
-                    'date' => '18.05.15',
-                    'time' => '09:00',
-                    'category' => 'presse'
-                ),
-                array(
-                    'title' => 'test',
-                    'content' => 'Contenu de l\'article',
-                    'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
-                    'filter' => 'suggestion',
-                    'link' => '/article/article1.php',
-                    'date' => '18.05.15',
-                    'time' => '09:00',
-                    'category' => 'presse'
-                ),
-                array(
-                    'title' => 'test',
-                    'content' => 'Contenu de l\'article',
-                    'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
-                    'filter' => 'suggestion',
-                    'link' => '/article/article1.php',
-                    'date' => '18.05.15',
-                    'time' => '09:00',
-                    'category' => 'presse'
-                ),
-                array(
-                    'title' => 'test',
-                    'content' => 'Contenu de l\'article',
-                    'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
-                    'filter' => 'suggestion',
-                    'link' => '/article/article1.php',
-                    'date' => '18.05.15',
-                    'time' => '09:00',
-                    'category' => 'presse'
-                ),
-                array(
-                    'title' => 'test',
-                    'content' => 'Contenu de l\'article',
-                    'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
-                    'filter' => 'suggestion',
-                    'link' => '/article/article1.php',
-                    'date' => '18.05.15',
-                    'time' => '09:00',
-                    'category' => 'presse'
-                ),
-                array(
-                    'title' => 'test',
-                    'content' => 'Contenu de l\'article',
-                    'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
-                    'filter' => 'suggestion',
-                    'link' => '/article/article1.php',
-                    'date' => '18.05.15',
-                    'time' => '09:00',
-                    'category' => 'presse'
-                ),
-                array(
-                    'title' => 'test',
-                    'content' => 'Contenu de l\'article',
-                    'thumbnail' => '//lorempixel.com/212/133/sports/1/Dummy-Text/',
-                    'filter' => 'suggestion',
-                    'link' => '/article/article1.php',
-                    'date' => '18.05.15',
-                    'time' => '09:00',
-                    'category' => 'presse'
-                )
-            );
+            $queryArticle = $em->getRepository('BaseCoreBundle:News')->getLastsNews($locale, $settings->getFestival()->getId(), $dateTime , $count);
             $articles     = array_slice($queryArticle, 0, 8);
 
         }
