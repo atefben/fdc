@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Manager;
 
 use Base\CoreBundle\Entity\FDCPageWebTvChannels;
+use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\WebTv;
 use \DateTime;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -334,4 +335,54 @@ class SeoManager
             }
         }
     }
+
+
+    /**
+     * @param FDCPageWebTvLives $page
+     * @param $locale
+     */
+    public function setFDCEventPageFDCPageWebTvLiveSeo(FDCPageWebTvLive $page, $locale)
+    {
+        $trans = $page->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+
+            $this->sonataSeoPage->setTitle($trans->getTitle());
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_event_television_live', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@'. substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
 }
