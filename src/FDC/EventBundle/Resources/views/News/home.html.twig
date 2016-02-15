@@ -65,7 +65,6 @@
                                     {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
                                 {% endfor %}
                             </div>
-
                         </div>
 
                         <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans|raw }}</a>
@@ -73,7 +72,6 @@
 
                     <div id="timeline">
                         {% for key,date in festivalInterval %}
-                        {#{% for key, date in socialGraph.timeline %}#}
                             <a href="#" data-date="{{ date|date('d') }}" class="{% if date == "now"|date('Y-m-d') %}active{% elseif date > "now"|date('Y-m-d') %}disabled{% endif %}">
                                 {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                 <span class="day">{{ date|date('d') }}</span>

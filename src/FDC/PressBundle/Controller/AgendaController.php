@@ -66,39 +66,29 @@ class AgendaController extends Controller
                 ->getProjectionByDate($festivalStartsAt->format('Ymd'));
         }
 
-        $selectionFilters = array(
-            array(
-                'name' => 'Toutes',
-                'slug' => 'all'
-            ),
-            array(
-                'name' => 'Compétitions',
-                'slug' => 'competition'
-            ),
-            array(
-                'name' => 'Hors compétitions',
-                'slug' => 'hors-competition'
-            ),
-            array(
-                'name' => 'Un certain regard',
-                'slug' => 'certain-regard'
-            )
-        );
+        $typeFilters = array();
+        $selectionFilters = array();
+        $type = array();
+        $selection = array();
 
-        $typeFilters = array(
-            array(
-                'name' => 'Tout',
-                'slug' => 'all'
-            ),
-            array(
-                'name' => 'Séances',
-                'slug' => 'seances'
-            ),
-            array(
-                'name' => 'Evenements',
-                'slug' => 'evenements'
-            ),
-        );
+        $i = 0;
+
+        foreach ($homeProjection as $projection) {
+
+            if (!in_array($projection->getProjection()->getType(), $type)) {
+                $typeFilters[$i]['name'] = $projection->getProjection()->getType();
+                $typeFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getProjection()->getType()), mb_detect_encoding($projection->getProjection()->getType()));
+
+                $type[] = $projection->getProjection()->getType();
+            }
+            if (!in_array($projection->getProjection()->getProgrammationSection(), $selection)) {
+                $selectionFilters[$i]['name'] = $projection->getProjection()->getProgrammationSection();
+                $selectionFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getProjection()->getProgrammationSection()), mb_detect_encoding($projection->getProjection()->getProgrammationSection()));
+
+                $selection[] = $projection->getProjection()->getProgrammationSection();
+            }
+            $i++;
+        }
 
         return array(
             'schedulingDays' => $schedulingDays,
