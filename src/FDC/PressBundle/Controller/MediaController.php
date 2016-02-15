@@ -22,10 +22,6 @@ class MediaController extends Controller
                               faciliter le traitement des films sur vos propres médias.'
         );
 
-        $translator = $this->get('translator');
-
-        $lockedContentForm = $this->createForm( new LockedContentType($translator) );
-
         $movieDownload = array(
             'description' => 'Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et
                                   extraits de films fournis par les productions. Ces contenus sont mis à jour tout au
@@ -1798,8 +1794,7 @@ class MediaController extends Controller
         return array(
             'headerInfo' => $headerInfo,
             'mediaSection' => $mediaSection,
-            'pressMovieDownloads' => $movieDownload,
-            'lockedForm' => $lockedContentForm->createView(),
+            'pressMovieDownloads' => $movieDownload
         );
     }
 
