@@ -229,11 +229,13 @@ $(document).ready(function() {
   // if url contains a hash : load pic
   if(window.location.hash) {
 
-    if($(window.location.hash).length) {
-      $(window.location.hash).trigger('click');
+    if($('.chocolat-image').length) {
+      if($(window.location.hash).length) {
+        $(window.location.hash).trigger('click');
 
-      $('.chocolat-wrapper .thumb').removeClass('active');
-      $('.chocolat-wrapper .thumb[data-id="' + window.location.hash.substr(1) + '"]').addClass('active');
+        $('.chocolat-wrapper .thumb').removeClass('active');
+        $('.chocolat-wrapper .thumb[data-id="' + window.location.hash.substr(1) + '"]').addClass('active');
+      }
     }
   }
 });

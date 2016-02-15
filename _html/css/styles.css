@@ -3759,7 +3759,7 @@ body {
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -6472,6 +6472,11 @@ div.chocolat-wrapper .zoomCursor .icon {
   height: calc(980px*9/16);
 }
 
+.popin-video .video-container {
+  width: 710px;
+  height: calc(710px*9/16);
+}
+
 .video-container {
   position: relative;
   overflow: hidden;
@@ -6983,6 +6988,94 @@ div.chocolat-wrapper .zoomCursor .icon {
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+.popin-video {
+  background-color: #fff;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  width: 750px;
+  height: 540px;
+  margin: -290px 0 0 -375px;
+  padding: 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 10;
+  -moz-transform: translateY(30px);
+  -ms-transform: translateY(30px);
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
+  -moz-transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.popin-video:after {
+  right: 50%;
+}
+.popin-video:before {
+  visibility: hidden;
+}
+.popin-video.show {
+  opacity: 1;
+  pointer-events: initial;
+  visibility: visible;
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+.popin-video .popin-info {
+  position: absolute;
+  bottom: 20px;
+  height: 80px;
+  left: 20px;
+  margin: 0;
+  text-align: left;
+  width: 710px;
+}
+.popin-video .popin-info p {
+  color: #333;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+.popin-video .popin-info .category {
+  color: #c8a461;
+  display: inline-block;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  text-transform: uppercase;
+}
+.popin-video .popin-info span {
+  color: #969696;
+  display: inline-block;
+  font-size: 0.625rem;
+  letter-spacing: -0.05em;
+}
+.popin-video .popin-buttons {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+}
+.popin-video .popin-buttons a:hover {
+  background-color: #fff;
+  border-color: #c8a461 !important;
+}
+.popin-video .popin-buttons a:hover + .button {
+  border-left-color: #c8a461;
+}
+.popin-video .popin-buttons a .icon {
+  font-size: .8rem;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.popin-video .popin-buttons a:hover {
+  color: #c8a461;
 }
 
 #selection {
@@ -7835,9 +7928,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -7863,11 +7956,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -7883,26 +7976,26 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: 'Ô£ö';
   position: absolute;
   top: 3px;
   left: 2px;
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -11894,7 +11987,7 @@ article .read-later.rAlign span:after {
 }
 
 .all-audios #gridAudios:after,
-.all-videos #gridAudios:after {
+.all-videos #gridVideos:after {
   content: '';
   display: block;
   height: 1px;
@@ -11907,38 +12000,48 @@ article .read-later.rAlign span:after {
 }
 
 @media screen and (min-width: 1600px) {
-  #gridAudios {
+  #gridAudios,
+  #gridVideos {
     /* 5 columns for larger screens */
   }
-  #gridAudios .grid-sizer {
+  #gridAudios .grid-sizer,
+  #gridVideos .grid-sizer {
     width: calc(100%/5);
   }
-  #gridAudios .item {
+  #gridAudios .item,
+  #gridVideos .item {
     width: calc(100%/5);
   }
-  #gridAudios .item.w2 {
+  #gridAudios .item.w2,
+  #gridVideos .item.w2 {
     width: calc(200%/5);
   }
 }
 @media screen and (min-width: 1920px) {
-  #gridAudios {
+  #gridAudios,
+  #gridVideos {
     /* 5 columns for larger screens */
   }
-  #gridAudios .grid-sizer {
+  #gridAudios .grid-sizer,
+  #gridVideos .grid-sizer {
     width: calc(100%/6);
   }
-  #gridAudios .item {
+  #gridAudios .item,
+  #gridVideos .item {
     width: calc(100%/6);
   }
-  #gridAudios .item.w2 {
+  #gridAudios .item.w2,
+  #gridVideos .item.w2 {
     width: calc(200%/6);
   }
 }
-#gridAudios .item {
+#gridAudios .item,
+#gridVideos .item {
   cursor: pointer;
   overflow: hidden;
 }
-#gridAudios .item img {
+#gridAudios .item img,
+#gridVideos .item img {
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -11948,7 +12051,8 @@ article .read-later.rAlign span:after {
   -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-#gridAudios .item:hover img {
+#gridAudios .item:hover img,
+#gridVideos .item:hover img {
   -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -12032,7 +12136,8 @@ article .read-later.rAlign span:after {
   top: auto;
 }
 @media screen and (max-width: 1180px) {
-  .all-articles #gridAudios {
+  .all-articles #gridAudios,
+  .all-articles #gridVideos {
     -moz-transform: translateX(15px);
     -ms-transform: translateX(15px);
     -webkit-transform: translateX(15px);

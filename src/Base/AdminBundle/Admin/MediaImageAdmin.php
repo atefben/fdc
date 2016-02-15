@@ -135,7 +135,7 @@ class MediaImageAdmin extends Admin
             ->add('id')
             ->add('legend', null, array(
                 'label' => 'list.label_legend_img',
-                'template' => 'BaseAdminBundle:MediaImage:list_legend.html.twig'
+                'template' => 'BaseAdminBundle:MediaImage:list_title.html.twig'
             ))
             ->add('theme')
             ->add('createdAt')

@@ -21,6 +21,11 @@
   height: calc(980px*9/16);
 }
 
+.popin-video .video-container {
+  width: 710px;
+  height: calc(710px*9/16);
+}
+
 .video-container {
   position: relative;
   overflow: hidden;
@@ -583,6 +588,98 @@
       opacity: 1;
       @include transform(translate(0,0));
       @include transition(all .3s ease-in-out);
+    }
+  }
+}
+
+.popin-video {
+  background-color: #fff;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  width: 750px;
+  height: 540px;
+  margin: -290px 0 0 -375px;
+  padding: 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 10;
+  @include transform(translateY(30px));
+  @include transition(all 1.2s $smoothTransition);
+
+  &:after {
+    right: 50%;
+  }
+
+  &:before {
+    visibility: hidden;
+  }
+
+  &.show {
+    opacity: 1;
+    pointer-events: initial;
+    visibility: visible;
+    @include transform(translateY(0));
+  }
+
+  .popin-info {
+    position: absolute;
+    bottom: 20px;
+    height: 80px;
+    left: 20px;
+    margin: 0;
+    text-align: left;
+    width: 710px;
+
+    p {
+      color: #333;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+    .category {
+      color: #c8a461;
+      display: inline-block;
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+      margin-right: 12px;
+      text-transform: uppercase;
+    }
+
+    span {
+      color: #969696;
+      display: inline-block;
+      font-size: 0.625rem;
+      letter-spacing: -0.05em;
+    }
+  }
+
+  .popin-buttons {
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+
+    a:hover {
+      background-color: #fff;
+      border-color: $gold!important;
+
+      + .button {
+        border-left-color: $gold;
+      }
+    }
+    a{
+      .icon{
+        font-size: .8rem;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+      }
+
+      &:hover{
+        color: $gold;
+      }
     }
   }
 }

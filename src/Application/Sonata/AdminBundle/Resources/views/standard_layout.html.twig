@@ -285,6 +285,26 @@ file that was distributed with this source code.
                                                                     {% endif %}
                                                                 {% endfor %}
                                                             {% endif %}
+                                                            {%  if group.label == 'dashboard.group.press' %}
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_presshomepage_edit', {id: admin_press_homepage_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.presshomepage'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_pressguide_edit', {id: admin_press_guide_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.pressguide'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_contactpage_edit', {id: admin_press_contact_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.presscontact'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                            {%  endif %}
                                                         </ul>
                                                     </li>
                                                 {% endif %}

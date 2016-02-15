@@ -41,6 +41,14 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_event_routes:
+        class: Base\AdminBundle\Admin\FDCEventRoutesAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCEventRoutes, BaseAdminBundle:FDCEventRoutesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.fdc_event_routes, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+                     - [ setTranslationDomain, ['BaseAdminBundle']]
+
     # GROUP EVENT
     base.admin.event:
         class: Base\AdminBundle\Admin\EventAdmin
@@ -604,7 +612,7 @@ services:
         class: Base\AdminBundle\Admin\ContactPageAdmin
         arguments: [~, Base\CoreBundle\Entity\ContactPage, BaseAdminBundle:ContactPageAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.contact_page, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.contact_page, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -612,7 +620,7 @@ services:
         class: Base\AdminBundle\Admin\PressHomepageAdmin
         arguments: [~, Base\CoreBundle\Entity\PressHomepage, BaseAdminBundle:PressHomepageAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_homepage, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -668,7 +676,7 @@ services:
         class: Base\AdminBundle\Admin\PressGuideAdmin
         arguments: [~, Base\CoreBundle\Entity\PressGuide, BaseAdminBundle:PressGuideAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm,group: dashboard.group.press, label: entity.press_guide, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_guide, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -799,4 +807,3 @@ services:
             - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-

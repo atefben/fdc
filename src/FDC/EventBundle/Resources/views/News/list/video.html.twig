@@ -7,7 +7,7 @@
 
     {% include 'FDCEventBundle:News:components/filters.html.twig' %}
 
-    <div id="gridAudios" class="grid-wrapper">
+    <div id="gridVideos" class="grid-wrapper">
         <div class="grid-sizer"></div>
 
         {% for video in videos %}
@@ -23,7 +23,7 @@
                 {% if transImage is null or transImage.file is null %}
                     {% set transImage = video.image.findTranslationByLocale('fr') %}
                 {% endif %}
-                {% thumbnail transImage.file , '573x362' with {'alt': photo|trans_fallback('alt') } %}
+                {% thumbnail transImage.file , '573x362' with {'alt': video.image|trans_fallback('alt') } %}
                 <div class="picto">
                     <i class="icon icon_video"></i>
                 </div>

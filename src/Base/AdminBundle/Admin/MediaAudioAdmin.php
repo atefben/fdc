@@ -54,6 +54,11 @@ class MediaAudioAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('legend', null, array(
+                'label' => 'list.label_title_audio',
+                'template' => 'BaseAdminBundle:MediaAudio:list_title.html.twig'
+            ))
+            ->add('theme')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_edit_translations', null, array(
