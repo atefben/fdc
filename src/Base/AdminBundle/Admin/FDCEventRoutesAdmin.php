@@ -34,8 +34,10 @@ class FDCEventRoutesAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('name')
             ->add('route')
             ->add('enabled')
+            ->add('parent')
         ;
     }
 
@@ -45,8 +47,10 @@ class FDCEventRoutesAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('name')
             ->add('route')
-            ->add('enabled')
+            ->add('parent')
+            ->add('enabled', null, array('editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -63,10 +67,11 @@ class FDCEventRoutesAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('route')
             ->add('name')
+            ->add('route')
             ->add('enabled')
             ->add('parent')
+            ->add('position')
         ;
     }
 
@@ -77,7 +82,10 @@ class FDCEventRoutesAdmin extends Admin
     {
         $showMapper
             ->add('route')
+            ->add('name')
             ->add('enabled')
+            ->add('parent')
+            ->add('position')
         ;
     }
 }

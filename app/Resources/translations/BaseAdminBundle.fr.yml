@@ -42,6 +42,7 @@ breadcrumb:
     link_info_audio_list: Liste des infos - audios
     link_press_guide_list: Guide pratique
     link_contact_page_list: Contactez-nous
+    link_f_d_c_event_routes_list: Liste des pages
 
 
 link:
@@ -161,6 +162,8 @@ entity:
     press_cinema_map: Plan des salles
 
 list:
+    label_parent: Parent
+    label_position: Position
     label_route: Route
     label_enabled: Actif
     label_starts_at: Date de début
@@ -219,6 +222,7 @@ list:
         since: depuis
 
 filter:
+    label_position: Position
     label_parent: Parent
     label_route: Route
     label_enabled: Actif
@@ -372,6 +376,7 @@ form:
         helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
+    label_position: Position
     label_parent: Parent
     label_contact_theme_theme: Theme
     label_route: Route
@@ -534,6 +539,7 @@ nav:
     site_modal: Ouvrir la sélection des sites
 
 show:
+    label_position: Position
     label_parent: Parent
     label_route: Route
     label_enabled: Actif

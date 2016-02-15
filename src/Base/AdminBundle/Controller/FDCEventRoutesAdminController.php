@@ -15,6 +15,7 @@ class FDCEventRoutesAdminController extends CRUDController
         $datagrid = $this->admin->getDatagrid();
         $formView = $datagrid->getForm()->createView();
         $this->get('twig')->getExtension('form')->renderer->setTheme($formView, $this->admin->getFilterTheme());
+
         return $this->render('BaseAdminBundle:FDCEventRoutes:tree.html.twig', array(
             'action'      => 'translation',
             'objects'       => $objects,
