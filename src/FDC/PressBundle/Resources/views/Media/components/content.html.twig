@@ -4,88 +4,112 @@
     <div class="wrapper">
         <div class="container-small">
             <div class="table">
-                {% for film in section.film %}
+                {% for film in films %}
+                    {% if film.selectionSection|trans_fallback('slug') == section.slug %}
                     <div class="line">
                         <div class="container">
                             <div class="info">
-                                <img src="{{ film.image.path }}" alt="" />
+                                {% media film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_small' %}
                                 <div class="txt">
                                     <div class="vCenter">
                                         <div class="vCenterKid">
-                                            <p>{{ film.title }}
-                                                <a href="#" class="director">{{ film.author.fullName }}</a>
+                                            <p>
+                                                {{ film|trans_fallback('title') }}
+                                                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                                                {% endfor %}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="media folder">{{ 'mediatheque.label.dossiersdepresse'|trans }} ({{ film.medias.press|length }})</div>
-                            <div class="media trailer">{{ 'mediatheque.label.bandesannonces'|trans }} ({{ film.medias.trailer|length }})</div>
-                            <div class="media photo">{{ 'mediatheque.label.photos'|trans }} ({{ film.medias.photo|length }})</div>
-                            <span class="plus"></span>
-                            <div class="contain">
-                                <div class="contain-buttons">
-                                    <strong>{{ 'mediatheque.label.dossiersdepresse'|trans }}<span>({{ film.medias.press|length }})</span></strong>
 
-                                    {% for press in film.medias.press %}
-                                        <div class="buttons active-btn">
-                                            <a href="{{ press.link }}" class="button"> {{ press.title }}</a>
-                                            <a href="{{ press.linkEN }}" class="button"> {{ press.titleEN }}</a>
-                                        </div>
-                                    {% endfor %}
+                            {% set countVideo = 0 %}
+                            {% set countFolder = 0 %}
+                            {% set countImage = 0 %}
+                            {% for video in film.associatedMediaVideos %}
+                                {% if displayedTrailer == 1 %}
+                                {% set countVideo = countVideo + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for media in film.medias %}
+                                {% if media.type == 18 %}
+                                    {% set countFolder = countFolder + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for media in film.medias %}
+                                {% if media.type == 14 %}
+                                    {% set countImage = countImage + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            <div class="media folder">{{ 'mediatheque.label.dossiersdepresse'|trans }} ({{ countFolder }})</div>
+                            <div class="media trailer">{{ 'mediatheque.label.bandesannonces'|trans }} ({{ countVideo }})</div>
+                            <div class="media photo">{{ 'mediatheque.label.photos'|trans }} ({{ countImage }})</div>
+                            <span class="plus"><i class="icon icon_case-plus"></i></span>
+                            {#<div class="contain">#}
+                                {#<div class="contain-buttons">#}
+                                    {#<strong>{{ 'mediatheque.label.dossiersdepresse'|trans }}<span>({{ film.medias.press|length }})</span></strong>#}
 
-                                </div>
-                                <div class="contain-buttons">
-                                    <strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}<span>({{ film.medias.trailer|length }})</span></strong>
+                                    {#{% for press in film.medias.press %}#}
+                                        {#<div class="buttons active-btn">#}
+                                            {#<a href="{{ press.link }}" class="button"> {{ press.title }}</a>#}
+                                            {#<a href="{{ press.linkEN }}" class="button"> {{ press.titleEN }}</a>#}
+                                        {#</div>#}
+                                    {#{% endfor %}#}
 
-                                    {% for trailer in film.medias.trailer %}
-                                        <div class="buttons">
-                                            <a href="{{ trailer.link }}" class="button"> {{ trailer.title }}</a>
-                                            <a href="{{ trailer.link }}" class="button"> {{ trailer.title }}</a>
-                                        </div>
-                                    {% endfor %}
+                                {#</div>#}
+                                {#<div class="contain-buttons">#}
+                                    {#<strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}<span>({{ film.medias.trailer|length }})</span></strong>#}
 
-                                </div>
-                                <div class="photos block slideshow">
-                                    <div class="container">
-                                        <div class="container-title">
-                                            <h3 class="title-press">
-                                                {{ 'mediatheque.title.photoshd'|trans }}
-                                                <span class="number">({{ film.medias.photo|length }})</span>
-                                            </h3>
-                                            <div class="download-btns right-btn buttons ">
-                                                <a href="{{ film.medias.photo.globalLink }}" class="alldl button">
-                                                    {{ 'mediatheque.btn.touttelecharger'|trans }}
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="grid-wrapper images">
-                                            <div class="grid-sizer"></div>
+                                    {#{% for trailer in film.medias.trailer %}#}
+                                        {#<div class="buttons">#}
+                                            {#<a href="{{ trailer.link }}" class="button"> {{ trailer.title }}</a>#}
+                                            {#<a href="{{ trailer.link }}" class="button"> {{ trailer.title }}</a>#}
+                                        {#</div>#}
+                                    {#{% endfor %}#}
 
-                                            {% for image in film.medias.photo.image %}
-                                                <div class="item">
-                                                    <a id='photo1' href="{{ image.large }}" class="chocolat-image ajax" title='<h2>{{ image.title }}</h2>' data-credit="{{ image.credit }}">
-                                                        <img src="{{ image.path }}" alt="{{ image.credit }}">
-                                                    </a>
-                                                </div>
-                                            {% endfor %}
+                                {#</div>#}
+                                {#<div class="photos block slideshow">#}
+                                    {#<div class="container">#}
+                                        {#<div class="container-title">#}
+                                            {#<h3 class="title-press">#}
+                                                {#{{ 'mediatheque.title.photoshd'|trans }}#}
+                                                {#<span class="number">({{ film.medias.photo|length }})</span>#}
+                                            {#</h3>#}
+                                            {#<div class="download-btns right-btn buttons ">#}
+                                                {#<a href="{{ film.medias.photo.globalLink }}" class="alldl button">#}
+                                                    {#{{ 'mediatheque.btn.touttelecharger'|trans }}#}
+                                                {#</a>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<div class="grid-wrapper images">#}
+                                            {#<div class="grid-sizer"></div>#}
 
-                                            <div class="owl-carousel thumbnails">
+                                            {#{% for image in film.medias.photo.image %}#}
+                                                {#<div class="item">#}
+                                                    {#<a id='photo1' href="{{ image.large }}" class="chocolat-image ajax" title='<h2>{{ image.title }}</h2>' data-credit="{{ image.credit }}">#}
+                                                        {#<img src="{{ image.path }}" alt="{{ image.credit }}">#}
+                                                    {#</a>#}
+                                                {#</div>#}
+                                            {#{% endfor %}#}
 
-                                                {% for key, image in film.medias.photo.image %}
-                                                    <div data-id="photo1" class="thumb active" data-caption="{{ image.caption }}">
-                                                        <img src="{{ image.path }}" />
-                                                    </div>
-                                                {% endfor %}
+                                            {#<div class="owl-carousel thumbnails">#}
 
-                                            </div>
+                                                {#{% for key, image in film.medias.photo.image %}#}
+                                                    {#<div data-id="photo1" class="thumb active" data-caption="{{ image.caption }}">#}
+                                                        {#<img src="{{ image.path }}" />#}
+                                                    {#</div>#}
+                                                {#{% endfor %}#}
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            {#</div>#}
+
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
                         </div>
                     </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

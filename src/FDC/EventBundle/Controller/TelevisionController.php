@@ -179,6 +179,8 @@ class TelevisionController extends Controller
      */
     public function trailersAction(Request $request, $slug = null)
     {
+        $locale = $request->getLocale();
+
         if ($slug === null) {
             $page = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findBy(array(), null, 1);
             $translation = current($page)->findTranslationByLocale($request->getLocale());
@@ -193,17 +195,18 @@ class TelevisionController extends Controller
             ->findOneBySlug($slug)
         ;
 
-
         if (!$pageTranslation) {
             throw $this->createNotFoundException('Page Translation not found');
         }
 
         $page = $pageTranslation->getTranslatable();
 
+        $this->get('base.manager.seo')->setFDCEventPageFDCPageWesbTvTrailersSeo($page, $locale);
+
         $pages = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findAll();
 
         $festivalId = $this->getFestival()->getId();
-        $locale = $request->getLocale();
+
         $sectionId = $page->getSelectionSection()->getId();
 
         $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
