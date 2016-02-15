@@ -220,18 +220,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box box-success">
-                                <div class="box-header">
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
                                     <h4 class="box-title">
-                                        {{ 'homepage.group.seo'|trans }}
+                                        {{ 'group.seo'|trans }}
                                     </h4>
                                 </div>
-                                <div class="box-body">
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
                                 </div>
                             </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                                {{ form_row(form.parent.children.seoFile) }}
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p>
+                            {{ 'group.helper_seo_example'|trans|nl2br }}
+                        </p>
                     </div>
                 {% else %}
                     <div class="row">
@@ -480,6 +491,54 @@
                                             </label>
                                             <div>
                                                 {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl8 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <div class="clearfix">
+                                        <h4 class="box-title">
+                                            {{ 'group.seo'|trans }}
+                                        </h4>
+                                    </div>
+                                    <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                        {{ 'group.helper_seo'|trans|nl2br }}
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    {{ form_row(translationsFields.seoTitle) }}
+                                    {{ form_row(translationsFields.seoDescription) }}
+                                    {{ form_row(form.parent.children.seoFile) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_title'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoTitle.vars.value }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_description'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value }}
                                             </div>
                                         </div>
                                     </div>
