@@ -246,12 +246,11 @@ class NewsController extends Controller {
     /**
      * @Route("/homepage-articles")
      * @Template("FDCEventBundle:News:widgets/article-home-ajax.html.twig")
-     * @param $timestamp
      * @return array
      */
     public function getArticlesFromAction(Request $request) {
 
-       $timestamp = $request->query->get('timestamp');
+        $timestamp = $request->query->get('timestamp');
         $nextDay = $request->query->get('end');
 
         $em = $this->get('doctrine')->getManager();
