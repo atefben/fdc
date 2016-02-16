@@ -94,7 +94,6 @@ function lockEvents()
         hasLockEntity(entity, id, locale, $(this));
     });
 
-
     // check if our page has the mandatory class
     if ($('body').hasClass('fdc-lock')) {
         var url = window.location.href.split('/');
@@ -108,12 +107,18 @@ function lockEvents()
              // create lock on open
             createLock(entity, id, locale);
 
+            // delete lock on click on list
+            $('a[href$="/list"]').click(function() {
+                deleteLock(entity, id, locale);
+            });
+
             // delete lock on close
             $(window).unload(function () {
                 deleteLock(entity, id, locale);
             });
         }
     }
+
 }
 
 function getQueryParams(url, param) {
