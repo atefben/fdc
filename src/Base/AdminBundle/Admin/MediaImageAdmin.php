@@ -72,6 +72,7 @@ class MediaImageAdmin extends Admin
                 'field_options' => array(
                     'widget' => 'single_text',
                 ),
+                'label' => 'filter.media_image.label_created_before',
             ))
             ->add('createdAfter', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
@@ -87,6 +88,7 @@ class MediaImageAdmin extends Admin
                 'field_options' => array(
                     'widget' => 'single_text',
                 ),
+                'label' => 'filter.media_image.label_created_after',
             ))
             ->add('status', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
@@ -135,7 +137,7 @@ class MediaImageAdmin extends Admin
             ->add('id')
             ->add('legend', null, array(
                 'label' => 'list.label_legend_img',
-                'template' => 'BaseAdminBundle:MediaImage:list_title.html.twig'
+                'template' => 'BaseAdminBundle:MediaImage:list_legend.html.twig'
             ))
             ->add('theme')
             ->add('createdAt')
