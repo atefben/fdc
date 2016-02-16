@@ -4,7 +4,7 @@ namespace Base\AdminBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController;
 
-class FDCPageWebTvLiveMediaVideoAssociatedAdminController extends CRUDController
+class FDCPageWebTvLiveFilmFilmAssociatedAdminController extends CRUDController
 {
 
 }

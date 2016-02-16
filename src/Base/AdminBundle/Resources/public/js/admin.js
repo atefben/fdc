@@ -178,6 +178,7 @@ function hasLockEntity(entity, id, locale, button)
                 }
             });
         } else if (xhr.success == true) {
+            deleteLock(entity, id, locale);
             button.unbind('click');
             button.click();
         }
@@ -264,6 +265,7 @@ function createLock(entity, id, locale)
 function deleteLock(entity, id, locale, success)
 {
     success = (typeof success === 'undefined') ? false : success;
+
     var request = $.ajax({
         url: Routing.generate('base_admin_lock_delete', { id: id }),
         dataType: 'json',
