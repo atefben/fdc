@@ -4,9 +4,17 @@
     {% set trans = widget.image.findTranslationByLocale('fr') %}
 {% endif %}
 {% set file = trans.file %}
-<div class="portrait">
+{% set sizeClass = 'portrait' %}
+{#{% set fileType = widget.file.file.contentType %}#}
+{% if file.width > 250 %}
+{% set sizeClass = 'landscape' %}
+{% endif %}
+{{ dump(widget.file) }}
+
+<div class="{{ sizeClass }}">
     {% thumbnail file, 'big' with {'alt': widget.image|trans_fallback('alt')} %}
     <span class="caption">{{ widget|trans_fallback('copyright') }}</span>
+    <p>{{ widget|trans_fallback('label')|raw }}</p>
     {{ widget|trans_fallback('content')|raw }}
     <div class="buttons">
         <a href="{% path widget.file.file, 'reference' %}" class="button">{{ widget|trans_fallback('btnLabel') }}</a>

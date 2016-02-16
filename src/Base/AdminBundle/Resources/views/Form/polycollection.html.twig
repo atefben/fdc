@@ -125,7 +125,12 @@
     <div class="item base-widget">
         <h4>Module document</h4>
         {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.image) }}
+        {{ form_row(form.children.file) }}
+        {{ form_row(form.children.secondFile) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_widget(form.children.lockedContent) }}
+
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
                 <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -141,7 +146,11 @@
     <div class="item base-widget">
         <h4>Module dosier de presse</h4>
         {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.file) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_widget(form.children.updatedAt)}}
+        {{ form_widget(form.children.lockedContent) }}
+
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
                 <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -157,7 +166,8 @@
     <div class="item base-widget">
         <h4>Module photo</h4>
         {{ form_widget(form.children._type) }}
-        {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_row(form.children.gallery) }}
+        {{ form_widget(form.children.lockedContent) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
                 <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -173,7 +183,11 @@
     <div class="item base-widget">
         <h4>Module photo</h4>
         {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.file) }}
+        {{ form_row(form.children.image) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_widget(form.children.lockedContent) }}
+
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
                 <a class="btn btn-danger btn-sm btn-outline remove_item">
