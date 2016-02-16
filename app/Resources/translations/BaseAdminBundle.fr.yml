@@ -464,6 +464,7 @@ form:
     label_projection: Projection
     label_projection_p: Projection presse
     label_arrive_icon: Pictogramme du titre
+    label_trans_name: Slug pour traduction
 
     web_tv:
         helper_name: 255 caractères max.
