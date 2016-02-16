@@ -26,7 +26,6 @@
 
             {% for channel in channels %}
                 <div class="item {{ channel.createdAt|date('d-m-Y') }} {{ channel.theme }} shadow-bottom playlist">
-                    {#{% thumbnail file, '975x616' with {'alt': photo|trans_fallback('alt') } %}#}
                     {% if channel.image %}
                         {% if channel.image|trans_fallback('file') %}
                             <img src="{% path channel.image|trans_fallback('file'), '1280x808' %}"

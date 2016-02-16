@@ -30,7 +30,7 @@ class PressDownload
 
     /**
      * @var PressDownloadHasSection
-     * @ORM\OneToMany(targetEntity="PressDownloadHasSection", mappedBy="download", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="PressDownloadHasSection", mappedBy="download", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $downloadSection;
