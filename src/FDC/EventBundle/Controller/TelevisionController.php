@@ -260,11 +260,11 @@ class TelevisionController extends Controller
         $route = $this->generateUrl($request->get('_route'), $request->get('_route_params'), UrlGeneratorInterface::ABSOLUTE_URL);
         $title = $this
             ->get('translator')
-            ->trans('seo.trailer.title', array('%film_title%' => $filmTranslation->getTitle()));
+            ->trans('seo.trailer.title', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle');
 
         $description = $this
             ->get('translator')
-            ->trans('seo.trailer.description', array('%film_title%' => $filmTranslation->getTitle()));
+            ->trans('seo.trailer.description', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle');
         $updatedAt = end($films)->getUpdatedAt();
         $image = $film->getImage();
 
