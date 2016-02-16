@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use Base\CoreBundle\Util\Time;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,10 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Gedmo\Tree(type="nested")
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCEventRoutesRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class FDCEventRoutes
+class FDCEventRoutes implements FDCEventRoutesInterface
 {
     use Time;
 
@@ -45,6 +46,14 @@ class FDCEventRoutes
      *
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false)
+     *
+     */
+    private $transName;
 
     /**
      * @var string
@@ -388,5 +397,28 @@ class FDCEventRoutes
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set transName
+     *
+     * @param string $transName
+     * @return FDCEventRoutes
+     */
+    public function setTransName($transName)
+    {
+        $this->transName = $transName;
+
+        return $this;
+    }
+
+    /**
+     * Get transName
+     *
+     * @return string 
+     */
+    public function getTransName()
+    {
+        return $this->transName;
     }
 }

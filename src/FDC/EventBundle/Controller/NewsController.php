@@ -6,6 +6,7 @@ use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use \DateTime;
 
 use FDC\EventBundle\Component\Controller\Controller;
@@ -164,7 +165,6 @@ class NewsController extends Controller {
 
         $videos = $homepage->getTopVideosAssociated();
         $channels = $homepage->getTopWebTvsAssociated();
-
 
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////       FILMS        ///////////////////////////////////////

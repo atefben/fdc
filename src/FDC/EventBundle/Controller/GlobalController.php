@@ -48,6 +48,54 @@ class GlobalController extends Controller {
     }
 
     /**
+     * @Route("/menu", options={"expose"=true})
+     * @Template("FDCEventBundle:Global:nav.html.twig")
+     * @return array
+     */
+    public function menuAction() {
+
+        $em = $this->get('doctrine')->getManager();
+        $displayedMenus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
+
+        usort($displayedMenus, function($a, $b) {
+            if ($a["position"] == $b["position"]) {
+                return 0;
+            }
+            return ($a["position"] < $b["position"]) ? -1 : 1;
+        });
+
+        foreach ($displayedMenus as $key => $menu) {
+            usort($displayedMenus[$key]['__children'], function($a, $b) {
+                if ($a["position"] == $b["position"]) {
+                    return 0;
+                }
+                return ($a["position"] < $b["position"]) ? -1 : 1;
+            });
+        }
+
+        $routes = array(
+            'fdc_event_news_index',
+            'fdc_event_news_get',
+            'fdc_event_news_getarticles',
+            'fdc_event_news_getphotos',
+            'fdc_event_news_getvideos',
+            'fdc_event_news_getaudios',
+            'fdc_event_television_live',
+            'fdc_event_television_channels',
+            'fdc_event_television_getchannel',
+            'fdc_event_television_gettrailer',
+            'fdc_event_television_trailers'
+        );
+
+        return array(
+            'menus' => $displayedMenus,
+            'routes' => $routes
+        );
+
+    }
+
+
+    /**
      * @Route("/share-email", options={"expose"=true})
      * @Template("FDCEventBundle:Global:share-email.html.twig")
      * @param Request $request
