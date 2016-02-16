@@ -22,7 +22,7 @@ class MediaImageSimpleAdmin extends Admin
             ->add('id')
             ->add('name')
             ->add('alt', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -30,14 +30,14 @@ class MediaImageSimpleAdmin extends Admin
                     $queryBuilder->where('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.alt LIKE :alt');
-                    $queryBuilder->setParameter('alt', '%'. $value['value']. '%');
+                    $queryBuilder->setParameter('alt', '%' . $value['value'] . '%');
 
                     return true;
                 },
                 'field_type' => 'text'
             ))
             ->add('createdBefore', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -46,13 +46,13 @@ class MediaImageSimpleAdmin extends Admin
 
                     return true;
                 },
-                'field_type' => 'date',
+                'field_type'    => 'date',
                 'field_options' => array(
                     'widget' => 'single_text',
                 ),
             ))
             ->add('createdAfter', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -61,27 +61,28 @@ class MediaImageSimpleAdmin extends Admin
 
                     return true;
                 },
-                'field_type' => 'date',
+                'field_type'    => 'date',
                 'field_options' => array(
                     'widget' => 'single_text',
                 ),
             ))
             ->add('priorityStatus', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
                     $queryBuilder->andWhere('o.priorityStatus LIKE :priorityStatus');
-                    $queryBuilder->setParameter('priorityStatus', '%'. $value['value']. '%');
+                    $queryBuilder->setParameter('priorityStatus', '%' . $value['value'] . '%');
 
                     return true;
                 },
-                'field_type' => 'choice',
+                'field_type'    => 'choice',
                 'field_options' => array(
-                    'choices' => MediaImageSimple::getPriorityStatusesList(),
+                    'choices'                   => MediaImageSimple::getPriorityStatusesList(),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
-            ));
+            ))
+        ;
     }
 
     /**
@@ -97,12 +98,13 @@ class MediaImageSimpleAdmin extends Admin
             ))
             ->add('createdAt')
             ->add('priorityStatus', 'choice', array(
-                'choices' => MediaImageSimple::getPriorityStatusesList(),
+                'choices'   => MediaImageSimple::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle',
             ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ));
+            ))
+        ;
     }
 
     /**
@@ -110,6 +112,8 @@ class MediaImageSimpleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
+
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label'  => false,
@@ -126,17 +130,18 @@ class MediaImageSimpleAdmin extends Admin
                         'sonata_help'        => 'form.media_image.helper_file',
                         'provider'           => 'sonata.media.provider.image',
                         'context'            => 'media_image_simple',
+                        'required'           => $requiredFile,
                     ),
                     'alt'       => array(
                         'label'              => 'form.label_alt_img',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.media.helper_alt',
                     ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => MediaImageSimpleTranslation::getStatuses(),
+                    'status'    => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MediaImageSimpleTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                 )
@@ -144,13 +149,13 @@ class MediaImageSimpleAdmin extends Admin
             ->add('name')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => MediaImageSimple::getAvailableTranslateOptions(),
+                'choices'            => MediaImageSimple::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
+                'multiple'           => true,
+                'expanded'           => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => MediaImageSimple::getPriorityStatuses(),
+                'choices'                   => MediaImageSimple::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('sites', null, array(
@@ -170,7 +175,8 @@ class MediaImageSimpleAdmin extends Admin
                 'attr'  => array(
                     'class' => 'hidden'
                 )
-            ));
+            ))
+        ;
     }
 
     /**
@@ -180,7 +186,8 @@ class MediaImageSimpleAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('name');
+            ->add('name')
+        ;
     }
 
     public function configure()

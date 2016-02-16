@@ -33,6 +33,7 @@
                              data-email="//www.gmail.com"
                              data-file='[{"file":"{{ videoUrl }}"}]'
                                 {% if page.image and page.image|trans_fallback('file') %}
+                             data-vid="web-tv-live"
                             data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
                         {% else %}
                             data-img=""
@@ -80,7 +81,7 @@
                                 {% endif %}
                             {% endif %}
                         </div>
-                        <a class="linkVid" href="#"></a>
+                        <a class="linkVid" href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug')}) }}"></a>
                         <div class="info">
                             <div class="picto"><i class="icon icon_video"></i></div>
                             <div class="info-container">
@@ -121,7 +122,7 @@
                                 {% endif %}
                             {% endif %}
                         </div>
-                        <a class="linkVid" href="#"></a>
+                        <a class="linkVid" href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug')}) }}"></a>
                         <div class="info">
                             <div class="picto"><i class="icon icon_video"></i></div>
                             <div class="info-container">

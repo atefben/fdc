@@ -212,7 +212,6 @@ class TelevisionController extends Controller
         $sectionId = $page->getSelectionSection()->getId();
 
         $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
-        dump($films);
         return array(
             'page'  => $page,
             'pages' => $pages,
@@ -242,6 +241,7 @@ class TelevisionController extends Controller
 
         $film = $filmTranslation->getTranslatable();
 
+
         $festivalId = $this->getFestival()->getId();
         $sectionId = $film->getSelectionSection()->getId();
 
@@ -251,7 +251,7 @@ class TelevisionController extends Controller
         $poster = null;
         foreach ($film->getMedias() as $media) {
             if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER) {
-                $poster = $media->getFilmMedia();
+                $poster = $media->getMedia();
             }
         }
 
@@ -260,11 +260,13 @@ class TelevisionController extends Controller
         $route = $this->generateUrl($request->get('_route'), $request->get('_route_params'), UrlGeneratorInterface::ABSOLUTE_URL);
         $title = $this
             ->get('translator')
-            ->trans('seo.trailer.title', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle');
+            ->trans('seo.trailer.title', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle')
+        ;
 
         $description = $this
             ->get('translator')
-            ->trans('seo.trailer.description', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle');
+            ->trans('seo.trailer.description', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle')
+        ;
         $updatedAt = end($films)->getUpdatedAt();
         $image = $film->getImage();
 
@@ -292,28 +294,17 @@ class TelevisionController extends Controller
                 }
             }
         }
-        $filmShowings = array(
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            ),
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            ),
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            ),
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            ),
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            )
-        );
+
+        $projections = $this->getBaseCoreFilmProjectionRepository()->getNextProjectionByFilm($film);
+
+        $filmShowings = array();
+        foreach ($projections as $projection) {
+            $filmShowings[] = array(
+                'type' => $projection->getType(),
+                'date'  => $projection->getStartAt(),
+                'place' => $projection->getRoom()->getName(),
+            );
+        }
 
         return array(
             'film'         => $film,

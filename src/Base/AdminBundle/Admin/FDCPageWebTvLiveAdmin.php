@@ -179,6 +179,12 @@ class FDCPageWebTvLiveAdmin extends Admin
                 'required' => false,
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices'            => FDCPageWebTvLive::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple'           => true,
+                'expanded'           => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => FDCPageWebTvLive::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
