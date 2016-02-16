@@ -99,7 +99,7 @@ function lockEvents()
     if ($('body').hasClass('fdc-lock')) {
         var url = window.location.href.split('/');
         // check if we are in the edition of an article
-        if (url.length == 9 && url[url.length - 1].indexOf('edit') > -1) {
+        if (url[url.length - 1].indexOf('edit') > -1) {
             // set vars
             var id = url[url.length - 2];
             var entity = url[url.length - 3];
