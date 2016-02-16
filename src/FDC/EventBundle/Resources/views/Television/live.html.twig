@@ -33,6 +33,7 @@
                              data-email="//www.gmail.com"
                              data-file='[{"file":"{{ videoUrl }}"}]'
                                 {% if page.image and page.image|trans_fallback('file') %}
+                             data-vid="web-tv-live"
                             data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
                         {% else %}
                             data-img=""
