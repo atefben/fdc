@@ -24,6 +24,7 @@
                 {%- endif -%}
                     {
                       "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
+                      "data-vid":"{{ video.id }}",
                       {%- if video.image -%}
                       "image":"{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}",
                       {%- else -%}
