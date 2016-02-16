@@ -35,7 +35,7 @@ class PressDownloadSection implements TranslateMainInterface
     /**
      * @var PressDownloadSectionWidget
      *
-     * @ORM\OneToMany(targetEntity="PressDownloadSectionWidget", mappedBy="pressDownload", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PressDownloadSectionWidget", mappedBy="pressDownload", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */

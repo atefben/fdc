@@ -31,6 +31,12 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
      */
     private $file;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     */
+    private $secondFile;
+
 
     /**
      * ArrayCollection
@@ -90,5 +96,28 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set secondFile
+     *
+     * @param \Base\CoreBundle\Entity\Media $secondFile
+     * @return PressDownloadSectionWidgetDocument
+     */
+    public function setSecondFile(\Base\CoreBundle\Entity\Media $secondFile)
+    {
+        $this->secondFile = $secondFile;
+
+        return $this;
+    }
+
+    /**
+     * Get secondFile
+     *
+     * @return \Base\CoreBundle\Entity\Media
+     */
+    public function getSecondFile()
+    {
+        return $this->secondFile;
     }
 }

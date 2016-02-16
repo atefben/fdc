@@ -116,6 +116,11 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                 'model_manager' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
             ))
+            ->add('secondFile', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['secondFile'],
+                'model_manager' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getModelManager(),
+                'class' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['secondFile']->getAssociationAdmin()->getClass(),
+            ))
 //            ->add('createdAt', 'hidden')
 //            ->add('updatedAt', 'hidden')
             ;

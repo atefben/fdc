@@ -35,47 +35,47 @@
                         </div>
 
                         {% if form.vars.default_locale == locale %}
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'form.fdc_page_web_tv_live.channels'|trans }}
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(form.parent.children.associatedWebTvs) }}
-                                    {{ form_widget(form.parent.children.doNotDisplayWebTvArea) }}
-                                    {{ form_label(form.parent.children.doNotDisplayWebTvArea) }}
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'form.fdc_page_web_tv_live.channels'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(form.parent.children.associatedWebTvs) }}
+                                        {{ form_widget(form.parent.children.doNotDisplayWebTvArea) }}
+                                        {{ form_label(form.parent.children.doNotDisplayWebTvArea) }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'form.fdc_page_web_tv_live.trailers'|trans }}
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(form.parent.children.associatedFilmFilms) }}
-                                    {{ form_widget(form.parent.children.doNotDisplayTrailerArea) }}
-                                    {{ form_label(form.parent.children.doNotDisplayTrailerArea) }}
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'form.fdc_page_web_tv_live.trailers'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(form.parent.children.associatedFilmFilms) }}
+                                        {{ form_widget(form.parent.children.doNotDisplayTrailerArea) }}
+                                        {{ form_label(form.parent.children.doNotDisplayTrailerArea) }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'form.fdc_page_web_tv_live.last_videos'|trans }}
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_widget(form.parent.children.doNotDisplayLastVideosArea) }}
-                                    {{ form_label(form.parent.children.doNotDisplayLastVideosArea) }}
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'form.fdc_page_web_tv_live.last_videos'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_widget(form.parent.children.doNotDisplayLastVideosArea) }}
+                                        {{ form_label(form.parent.children.doNotDisplayLastVideosArea) }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         {% endif %}
                     </div>
                     {% if form.vars.default_locale != locale %}
@@ -173,6 +173,8 @@
                                     <div class="form-group fdc-input-border">
                                         {{ form_widget(form.parent.children.translate) }}
                                         {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
                                     </div>
                                     {{ form_row(form.parent.children.priorityStatus) }}
                                     <div class="status-hidden">

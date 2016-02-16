@@ -58,8 +58,9 @@
                                     <div class="form-group fdc-input-border">
                                         {{ form_widget(form.parent.children.translate) }}
                                         {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
                                     </div>
-                                    {{ form_row(form.parent.children.priorityStatus) }}
                                     <div class="status-hidden">
                                         {{ form_row(translationsFields.status) }}
                                     </div>

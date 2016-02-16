@@ -68,6 +68,7 @@ class FDCEventRoutesAdmin extends Admin
     {
         $formMapper
             ->add('name')
+            ->add('transName')
             ->add('route')
             ->add('enabled')
             ->add('parent')

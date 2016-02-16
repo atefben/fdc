@@ -165,6 +165,12 @@ class FDCPageWebTvTrailersAdmin extends Admin
                 'required' => false
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => FDCPageWebTvTrailers::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => FDCPageWebTvTrailers::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
