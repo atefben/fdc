@@ -303,6 +303,7 @@ dashboard:
         presshomepage: Homepage
         pressguide: Guide pratique
         presscontact: Contactez-nous
+        pressdownload: A télécharger
 
 form:
     tag:

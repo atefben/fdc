@@ -97,6 +97,7 @@ twig:
         admin_press_homepage_id: %admin_press_homepage_id%
         admin_press_guide_id: %admin_press_guide_id%
         admin_press_contact_id: %admin_press_contact_id%
+        admin_press_download_id: %admin_press_download_id%
         admin_fdc_page_web_tv_trailers_competition_id: %admin_fdc_page_web_tv_trailers_competition_id%
         admin_fdc_page_web_tv_trailers_certain_regard_id: %admin_fdc_page_web_tv_trailers_certain_regard_id%
         admin_fdc_page_web_tv_trailers_hors_competition_id: %admin_fdc_page_web_tv_trailers_hors_competition_id%

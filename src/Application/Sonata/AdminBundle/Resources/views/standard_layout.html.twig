@@ -304,6 +304,12 @@ file that was distributed with this source code.
                                                                         {{ 'dashboard.link.presscontact'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>
                                                                 </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_pressdownload_edit', {id: admin_press_download_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.pressdownload'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
                                                             {%  endif %}
                                                         </ul>
                                                     </li>
