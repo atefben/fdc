@@ -73,7 +73,8 @@ class SlugUpdateCommand extends ContainerAwareCommand
         }
 
         $progress->finish();
-        $output->writeln('<info>The slug have been updated.</info>');
+        $output->writeln('');
+        $output->writeln('<info>The slugs have been updated.</info>');
 
         return;
     }
