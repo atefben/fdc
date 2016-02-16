@@ -212,7 +212,6 @@ class TelevisionController extends Controller
         $sectionId = $page->getSelectionSection()->getId();
 
         $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
-        dump($films);
         return array(
             'page'  => $page,
             'pages' => $pages,
