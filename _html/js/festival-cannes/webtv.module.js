@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   if($('.webtv').length) {
     if($('.webtv-live').length) {
-      if($('#video-webtv-live').lenght) {
+      if($('#video-webtv-live').length) {
         videoWebtv = playerInit('video-webtv-live', false, false, true);
         videoWebtv.resize('100%','100%');
       }
