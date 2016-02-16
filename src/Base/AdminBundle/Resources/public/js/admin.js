@@ -91,7 +91,7 @@ function lockEvents()
         var locale = $('.a2lix_translationsLocales').find('li.active').attr('data-locale');
         var redirect = $(this).attr('href');
 
-        hasLockEntity(entity, id, locale, redirect);
+        hasLockEntity(entity, id, locale, $(this));
     });
 
 
@@ -128,7 +128,7 @@ function getQueryParams(url, param) {
     return found;
 };
 
-function hasLockEntity(entity, id, locale, redirect)
+function hasLockEntity(entity, id, locale, button)
 {
     var request = $.ajax({
         url: Routing.generate('base_admin_lock_checkentity', { id: id }),
@@ -178,7 +178,8 @@ function hasLockEntity(entity, id, locale, redirect)
                 }
             });
         } else if (xhr.success == true) {
-            $('form').submit();
+            button.unbind('click');
+            button.click();
         }
     });
 

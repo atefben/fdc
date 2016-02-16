@@ -253,15 +253,15 @@ class LockController extends Controller
         ));
 
         foreach ($translations as $trans) {
-//            if ($trans->getLockedBy() == null) {
-//                $response->setData(array(
-//                    'error' => 0
-//                ));
-//            } else if ($trans->getLockedBy() !== null && $trans->getLockedBy()->getId() !== $user->getId()) {
-//                $response->setData(array(
-//                    'error' => 1
-//                ));
-//            }
+            if ($trans->getLockedBy() == null) {
+                $response->setData(array(
+                    'error' => 0
+                ));
+            } else if ($trans->getLockedBy() !== null && $trans->getLockedBy()->getId() !== $user->getId()) {
+                $response->setData(array(
+                    'error' => 1
+                ));
+            }
         }
 
         return $response;

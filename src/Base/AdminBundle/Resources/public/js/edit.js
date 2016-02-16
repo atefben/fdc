@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    // translate event
+    // translate event on load
     if ($('input[name$="[translate]"]').is(':checked')) {
         $('.form-group[id$="priorityStatus"]').show();
         $('ul[id$="translateOptions"]').show();
@@ -7,6 +7,17 @@ jQuery(document).ready(function($) {
         $('.form-group[id$="priorityStatus"]').hide();
         $('ul[id$="translateOptions"]').hide();
     }
+
+    // translate event on click
+    $('input[name$="[translate]"]').on('ifChanged', function() {
+       if (!$(this).is(':checked')) {
+           $('.form-group[id$="priorityStatus"]').hide();
+           $('ul[id$="translateOptions"]').hide();
+       } else {
+           $('.form-group[id$="priorityStatus"]').show();
+           $('ul[id$="translateOptions"]').show();
+       }
+    });
 
     // remove select2 status option for each language
     $('select[name*="status"]').each(function(i, e) {
