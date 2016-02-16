@@ -158,7 +158,10 @@
             <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
             <div class="container sliderDrag">
                 {% for video in lastVideos %}
-                    <div class="video shadow-bottom">
+                    <div class="video shadow-bottom"
+                        data-vid="1"
+                        data-file='[{"file":"./files/mov_bbb.webm"},{"file":"./files/mov_bbb.mp4"}]'
+                        data-img="//dummyimage.com/960x540/000/c8a461.png">
                         {% if video.image|trans_fallback('file') %}
                             <img src="{% path video.image|trans_fallback('file'), '462x292' %}" alt="">
                         {% else %}
@@ -168,5 +171,39 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="popin-video video loading">
+            <div class="video-container state-init video"
+                data-facebook="//www.facebook.com"
+                data-twitter="//www.twitter.com"
+                data-link="//www.example.com"
+                data-email="//www.gmail.com"
+                data-file=''
+                data-img="">
+                <div id="video-player-popin" class=""></div>
+                <div class="video-overlay"></div>
+                <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popin-info info">
+                <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                <p></p>
+            </div>
+            <div class="popin-buttons buttons square">
+                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
+                <a href="#" class="button link"><i class="icon icon_link"></i></a>
+                <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+            </div>
+        </div>
+        <div class="ov"></div>
     </div>
 {% endblock body %}

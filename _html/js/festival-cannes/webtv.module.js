@@ -1,4 +1,5 @@
-var videoWebtv;
+var videoWebtv,
+    videoPopin;
 
 $(document).ready(function() {
 
@@ -90,6 +91,55 @@ $(document).ready(function() {
         $('body').on('click', '#slider-trailers .owl-item', function(e) {
           sliderTrailers.trigger('to.owl.carousel', [$(this).index(), 400, true]);
         });
+
+        if($('#content-latest').length) {
+          videoPopin = playerInit('video-player-popin', false, false);
+
+          $('.ov').on('click', function (e) {
+            e.preventDefault();
+            $('.popin-video, .ov').removeClass('show');
+
+            if(videoPopin.getState() != "paused" && videoPopin.getState() != "idle") {
+              videoPopin.pause();
+            }
+          });
+
+          $('#content-latest').on('click', '.video', function(e) {
+            console.log(e.target);
+            console.log($(e.target).closest('.video')[0]);
+            var $popinVideo = $('.popin-video'),
+                vid         = $(e.target).closest('.video').data('vid'),
+                source      = $(e.target).closest('.video').data('file'),
+                img         = $(e.target).closest('.video').data('img'),
+                category    = $(e.target).closest('.video').find('.category').text(),
+                date        = $(e.target).closest('.video').find('.date').text(),
+                hour        = $(e.target).closest('.video').find('.hour').text(),
+                text        = $(e.target).closest('.video').find('p').text();
+
+            if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
+              videoPopin.remove();
+              $(videoPopin).data('loaded',false);
+              $('#video-player-popin').closest('.video-container').data('file',source);
+              $('#video-player-popin').closest('.video-container').data('img',img);
+
+              videoPopin = playerInit('video-player-popin', false, false);
+              videoPopin.play();
+            } else {
+              videoPopin.load([{
+                sources: source,
+                image: img
+              }]);
+              videoPopin.play();
+            }
+
+            $popinVideo.find('.popin-info .category').text(category);
+            $popinVideo.find('.popin-info .date').text(date);
+            $popinVideo.find('.popin-info .hour').text(hour);
+            $popinVideo.find('.popin-info p').text(text);
+            $popinVideo.addClass('video-player show loading');
+            $('.ov').addClass('show');
+          });
+        }
       }
 
     function setActiveTrailer() {

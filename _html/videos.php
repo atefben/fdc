@@ -407,7 +407,7 @@
         </div>
       </div>
       <a id="next" href="videos2.html"></a>
-      <div class="popin-video video loading" data-sound="">
+      <div class="popin-video video loading">
         <div class="video-container state-init video"
           data-facebook="//www.facebook.com"
           data-twitter="//www.twitter.com"

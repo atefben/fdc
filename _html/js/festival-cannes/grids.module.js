@@ -150,9 +150,8 @@ $(document).ready(function () {
   function closePopinVideo() {
     $('.popin-video, .ov').removeClass('show');
 
-    $('.popin-audio').find('.wave-container').empty().removeAttr('id');
-    if(videoPopin.getState() == "paused" || videoPopin.getState() == "idle") {
-      videoPopin.stop();
+    if(videoPopin.getState() != "paused" && videoPopin.getState() != "idle") {
+      videoPopin.pause();
     }
   }
 
@@ -348,7 +347,7 @@ $(document).ready(function () {
 
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);
-          $popinVideo.find('.popin-info .hour').text(hour);   
+          $popinVideo.find('.popin-info .hour').text(hour);
           $popinVideo.find('.popin-info p').text(text);
           $popinVideo.addClass('video-player show loading');
           $('.ov').addClass('show');
