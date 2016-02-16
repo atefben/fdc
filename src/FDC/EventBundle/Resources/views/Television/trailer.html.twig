@@ -74,7 +74,7 @@
                     <div class="container-video">
                         <div class="infos-film block">
                             {% if poster %}
-                                <img src="{%- path poster|trans_fallback('file', 'fr'), '135x185' -%}"
+                                <img src="{%- path poster.file, '135x185' -%}"
                                      alt="affiche film">
                             {% endif %}
                             <h4 class="rubric-film">{{ film.theme }}</h4>
@@ -89,7 +89,7 @@
                             <div class="contain-info">
                                 {% for showing in filmShowings %}
                                     <div class="infos">
-                                        <p>{{ 'trailer.text.projection'|trans }} <span
+                                        <p>{{ showing.type }} <span
                                                     class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span>
                                         </p>
                                         <span class="where">{{ showing.place }}</span>

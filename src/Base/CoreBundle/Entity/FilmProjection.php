@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmProjection
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmProjectionRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmProjection
