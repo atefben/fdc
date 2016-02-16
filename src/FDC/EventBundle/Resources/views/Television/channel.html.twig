@@ -24,6 +24,7 @@
                 {%- endif -%}
                     {
                       "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
+                      "data-vid":"{{ video.id }}",
                       {%- if video.image -%}
                       "image":"{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}",
                       {%- else -%}
@@ -43,9 +44,9 @@
                     <div class="info">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span
-                                        class="hour">09:00</span>
-                                <p>The Lobster</p>
+                                <a href="#" class="category">{{ webTvVideos[0].theme|trans_fallback('name') }}</a><span class="date">{{ webTvVideos[0].createdAt|date('d.m.y') }}</span> . <span
+                                        class="hour">{{ webTvVideos[0].createdAt|date('H:i') }}</span>
+                                <p>{{ webTvVideos[0]|trans_fallback('title') }}</p>
                             </div>
                         </div>
                     </div>

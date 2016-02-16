@@ -3,11 +3,13 @@
 {% set channel = channel.association %}
 <div class="image-wrapper">
 
-{% set transImage = channel.image.findTranslationByLocale(app.request.locale) %}
-{% if transImage is null or transImage.file is null %}
-    {% set transImage = channel.image.findTranslationByLocale('fr') %}
-{% endif %}
+{%  if channel.image is defined and channel.image is not null  %}
+    {% set transImage = channel.image.findTranslationByLocale(app.request.locale) %}
+    {% if transImage is null or transImage.file is null %}
+        {% set transImage = channel.image.findTranslationByLocale('fr') %}
+    {% endif %}
     <img src="{% path transImage.file, '212x134'%}" alt="" />
+{% endif %}
 </div>
 <a class="linkVid" href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"></a>
 <div class="info">

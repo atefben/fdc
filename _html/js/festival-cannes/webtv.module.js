@@ -7,8 +7,10 @@ $(document).ready(function() {
 
   if($('.webtv').length) {
     if($('.webtv-live').length) {
-      videoWebtv = playerInit('video-webtv-live', false, false, true);
-      videoWebtv.resize('100%','100%');
+      if($('#video-webtv-live').length) {
+        videoWebtv = playerInit('video-webtv-live', false, false, true);
+        videoWebtv.resize('100%','100%');
+      }
       // play live player on click
       $('#live .play-live').on('click', function(e) {
         e.preventDefault();

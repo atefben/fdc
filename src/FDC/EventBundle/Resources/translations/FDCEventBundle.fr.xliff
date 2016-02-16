@@ -1679,6 +1679,14 @@
         <source>webtv.direct.nb_videos</source>
         <target>%nb_videos% vidéos</target>
       </trans-unit>
+      <trans-unit id="seo.trailer.title" resname="seo.trailer.title">
+        <source>seo.trailer.title</source>
+        <target>Web TV - %film_title% - Bandes annonces et extraits - Festival de Cannes 2016</target>
+      </trans-unit>
+      <trans-unit id="seo.trailer.description" resname="seo.trailer.description">
+        <source>seo.trailer.description</source>
+        <target>Retrouvez toutes les bandes annonces et extraits du film %film_title% présenté au Festival de Cannes 2016</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

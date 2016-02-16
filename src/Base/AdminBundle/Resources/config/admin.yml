@@ -652,7 +652,7 @@ services:
         class: Base\AdminBundle\Admin\PressAccreditAdmin
         arguments: [~, Base\CoreBundle\Entity\PressAccredit, BaseAdminBundle:PressAccreditAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_accredit, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_accredit, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -700,7 +700,7 @@ services:
         class: Base\AdminBundle\Admin\PressMediaLibraryAdmin
         arguments: [~, Base\CoreBundle\Entity\PressMediaLibrary, BaseAdminBundle:PressMediaLibraryAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_media_library, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_media_library, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -708,7 +708,7 @@ services:
         class: Base\AdminBundle\Admin\PressDownloadAdmin
         arguments: [~, Base\CoreBundle\Entity\PressDownload, BaseAdminBundle:PressDownloadAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_download, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_download, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -764,7 +764,7 @@ services:
         class: Base\AdminBundle\Admin\PressProjectionAdmin
         arguments: [~, Base\CoreBundle\Entity\PressProjection, BaseAdminBundle:PressProjectionAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_projection, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_projection, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -796,7 +796,7 @@ services:
         class: Base\AdminBundle\Admin\PressCinemaMapAdmin
         arguments: [~, Base\CoreBundle\Entity\PressCinemaMap, BaseAdminBundle:PressCinemaMapAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_cinema_map, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_cinema_map, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

@@ -16,6 +16,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/web-tv")
@@ -201,7 +203,7 @@ class TelevisionController extends Controller
 
         $page = $pageTranslation->getTranslatable();
 
-        $this->get('base.manager.seo')->setFDCEventPageFDCPageWesbTvTrailersSeo($page, $locale);
+        $this->get('base.manager.seo')->setFDCEventPageFDCPageWebTvTrailersSeo($page, $locale);
 
         $pages = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findAll();
 
@@ -210,7 +212,6 @@ class TelevisionController extends Controller
         $sectionId = $page->getSelectionSection()->getId();
 
         $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
-
         return array(
             'page'  => $page,
             'pages' => $pages,
@@ -240,6 +241,7 @@ class TelevisionController extends Controller
 
         $film = $filmTranslation->getTranslatable();
 
+
         $festivalId = $this->getFestival()->getId();
         $sectionId = $film->getSelectionSection()->getId();
 
@@ -249,11 +251,29 @@ class TelevisionController extends Controller
         $poster = null;
         foreach ($film->getMedias() as $media) {
             if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER) {
-                $poster = $media->getFilmMedia();
+                $poster = $media->getMedia();
             }
         }
 
         $videos = $this->getBaseCoreMediaVideoRepository()->getFilmTrailersMediaVideos($locale, $film->getId());
+
+        $route = $this->generateUrl($request->get('_route'), $request->get('_route_params'), UrlGeneratorInterface::ABSOLUTE_URL);
+        $title = $this
+            ->get('translator')
+            ->trans('seo.trailer.title', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle')
+        ;
+
+        $description = $this
+            ->get('translator')
+            ->trans('seo.trailer.description', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle')
+        ;
+        $updatedAt = end($films)->getUpdatedAt();
+        $image = $film->getImage();
+
+        $this
+            ->get('base.manager.seo')
+            ->setFDCEventPageFDCPageWebTvTrailerSeo($route, $title, $description, $updatedAt, $image)
+        ;
 
         $next = null;
         foreach ($films as $key => $value) {
@@ -274,28 +294,17 @@ class TelevisionController extends Controller
                 }
             }
         }
-        $filmShowings = array(
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            ),
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            ),
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            ),
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            ),
-            array(
-                'date'  => new \DateTime(),
-                'place' => "Grand théâtre Lumière",
-            )
-        );
+
+        $projections = $this->getBaseCoreFilmProjectionRepository()->getNextProjectionByFilm($film);
+
+        $filmShowings = array();
+        foreach ($projections as $projection) {
+            $filmShowings[] = array(
+                'type' => $projection->getType(),
+                'date'  => $projection->getStartAt(),
+                'place' => $projection->getRoom()->getName(),
+            );
+        }
 
         return array(
             'film'         => $film,

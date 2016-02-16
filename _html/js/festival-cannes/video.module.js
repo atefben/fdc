@@ -204,6 +204,14 @@ function playerLoad(vid, playerInstance, cls, havePlaylist, live, callback) {
                 sliderTrailerVideo = $('#slider-trailer').owlCarousel();
                 sliderTrailerVideo.trigger('to.owl.carousel',[$(this).closest('.owl-item').index(),1000,true]);
             }
+
+            if($('#gridVideos')) {
+                var item = $('#gridVideos .item')[$(this).closest('.owl-item').index()];
+                var vid  = $(item).data('vid');
+
+                var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
+                history.replaceState('', document.title, newURL);
+            }
         });
 
         if($('#slider-trailer').length > 0) {
@@ -234,22 +242,34 @@ function playerLoad(vid, playerInstance, cls, havePlaylist, live, callback) {
     });
 
     if (havePlaylist) {
-        if (typeof $container.data('playlist') != "undefined") {
-            var tempSlider = $(slider),
-                playlist   = $container.data('playlist');
+        var tempSlider = $(slider),
+            playlist   = [];
 
-            $.each(playlist, function(i,p) {
-                var tempSlide = $(slide);
-                tempSlide.find('.image-wrapper img').attr('src',p.image);
-                tempSlide.find('.info-container .category').text(p.category);
-                tempSlide.find('.info-container p').text(p.name)
-                tempSlide.data('json', JSON.stringify(p));
-                tempSlider.find('.slider-channels-video').append(tempSlide);
+        if (havePlaylist === "grid") {
+            $.each($('#gridVideos .item'), function(i,p) {
+                var tempList = {
+                    "sources"  : $(p).data('file'),
+                    "image"    : $(p).data('img'),
+                    "name"     : $(p).find('.info .category').text(),
+                    "category" : $(p).find('.info p').text()
+                }
+                playlist.push(tempList);
             });
-            tempSlider.insertAfter($topBar);
-            initChannel();
-            playerInstance.load(playlist);
+        } else if (typeof $container.data('playlist') != "undefined") {
+            playlist = $container.data('playlist');
         }
+        
+        $.each(playlist, function(i,p) {
+            var tempSlide = $(slide);
+            tempSlide.find('.image-wrapper img').attr('src',p.image);
+            tempSlide.find('.info-container .category').text(p.category);
+            tempSlide.find('.info-container p').text(p.name)
+            tempSlide.data('json', JSON.stringify(p));
+            tempSlider.find('.slider-channels-video').append(tempSlide);
+        });
+        tempSlider.insertAfter($topBar);
+        initChannel();
+        playerInstance.load(playlist);
     } else {
         $topBar.find('.channels').remove();
     }

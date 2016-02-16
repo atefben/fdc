@@ -20,6 +20,7 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
+                tiny:  { width: 146 , quality: 100 }
                 small: { width: 500 , quality: 100 }
                 big:   { width: 1000 , quality: 100 }
                 
