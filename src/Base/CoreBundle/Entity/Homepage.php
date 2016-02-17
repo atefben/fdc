@@ -141,7 +141,7 @@ class Homepage
     /**
      * @var HomepageSlide
      *
-     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      */
     private $homepageSlide;
 
@@ -161,19 +161,19 @@ class Homepage
 
     /**
      * @var topVideosAssociated
-     * @ORM\OneToMany(targetEntity="HomepageTopVideosAssociated", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="HomepageTopVideosAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      */
     private $topVideosAssociated;
 
     /**
      * @var topWebTvsAssociated
-     * @ORM\OneToMany(targetEntity="HomepageTopWebTvsAssociated", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="HomepageTopWebTvsAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      */
     private $topWebTvsAssociated;
 
     /**
      * @var filmsAssociated
-     * @ORM\OneToMany(targetEntity="HomepageFilmsAssociated", mappedBy="homepage", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="HomepageFilmsAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      */
     private $filmsAssociated;
 
