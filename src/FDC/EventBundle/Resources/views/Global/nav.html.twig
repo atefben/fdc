@@ -4,25 +4,39 @@
         {% for menu in menus %}
             {% if menu.id < 7 %}
                 <li>
-                    {% if menu.route == 'fdc_event_television_trailers' or
-                    menu.route == 'fdc_event_movie_selection' %}
+                    {% if menu.route == 'fdc_event_television_trailers' %}
                         <a href="{{ path(menu.route, { 'slug': 'competition' }) }}"
-                           class="{% if app.request.attributes.get('_route') in routes %}active{% endif %}">
+                           class="{% if route =='fdc_event_television_trailers' %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_movie_selection' %}
+                        <a href="{{ path(menu.route, { 'slug': 'competition' }) }}"
+                           class="{% if route =='fdc_event_movie_selection' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
                     {% elseif menu.route == 'fdc_event_jury_get' %}
                         <a href="{{ path(menu.route, { 'type': '1' }) }}"
-                           class="{% if app.request.attributes.get('_route') in routes %}active{% endif %}">
+                           class="{% if route == 'fdc_event_jury_get' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
                     {% elseif menu.route == 'fdc_event_palmares_get' %}
                         <a href="{{ path(menu.route, { 'section': 'competition' }) }}"
-                           class="{% if app.request.attributes.get('_route') in routes %}active{% endif %}">
+                           class="{% if route == 'fdc_event_palmares_get' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
-                    {% else %}
+                    {% elseif menu.route == 'fdc_event_news_index' %}
                         <a href="{{ path(menu.route) }}"
-                           class="{% if app.request.attributes.get('_route') in routes %}active{% endif %}">
+                           class="{% if route in routesArticles %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_television_live' %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route in routesWebTv %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_event_getevents' %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route == 'fdc_event_event_getevents' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
                     {% endif %}
@@ -30,12 +44,12 @@
                         {% if menu['__children'] is defined %}
                             {% for child in menu['__children'] %}
                                 {% if child.enabled %}
-                                <li>
-                                    <a href="{{ path(child.route) }}"
-                                       class="{% if app.request.attributes.get('_route') in routes %}active{% endif %}">
-                                        {{ child.transName|trans }}
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ path(child.route) }}"
+                                           class="{% if route == child.route %}active{% endif %}">
+                                            {{ child.transName|trans }}
+                                        </a>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}

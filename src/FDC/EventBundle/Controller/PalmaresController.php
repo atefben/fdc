@@ -2,7 +2,8 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -17,8 +18,9 @@ class PalmaresController extends Controller
      * @param section
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAction($section)
+    public function getAction(Request $request, $section)
     {
+        $this->isPageEnabled($request->get('_route'));
         $movies = array();
 
         //Exemple de films pour les différentes section (sauf cameré d'or)

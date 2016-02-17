@@ -32,6 +32,7 @@ class TelevisionController extends Controller
      */
     public function liveAction(Request $request)
     {
+        $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();
         $festival = $this->getSettings()->getFestival();
 
@@ -142,6 +143,7 @@ class TelevisionController extends Controller
      */
     public function channelsAction(Request $request)
     {
+        $this->isPageEnabled($request->get('_route'));
         $festival = $this->getSettings()->getFestival();
         $id = $this->get('twig')->getGlobals()['admin_fdc_page_web_tv_channels_id'];
         $FDCPageWebTvChannels = $this
@@ -181,12 +183,16 @@ class TelevisionController extends Controller
      */
     public function trailersAction(Request $request, $slug = null)
     {
+        $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();
 
         if ($slug === null) {
             $page = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findBy(array(), null, 1);
             $translation = current($page)->findTranslationByLocale($request->getLocale());
             if ($translation) {
+                if (!$translation->getSlug()) {
+                    throw $this->createNotFoundException();
+                }
                 return $this->redirectToRoute('fdc_event_television_trailers', array(
                     'slug' => $translation->getSlug(),
                 ));
