@@ -18,6 +18,20 @@ class Controller extends BaseController
     }
 
     /**
+     * @return ObjectManager
+     */
+    public function isPageEnabled($route)
+    {
+        $page = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCEventRoutes')->findOneBy(array(
+            'route' => $route
+        ));
+
+        if(!$page->getEnabled())
+            throw $this->createNotFoundException("This page is disabled.");
+
+    }
+
+    /**
      * @return Settings
      * @throws NotFoundHttpException
      */

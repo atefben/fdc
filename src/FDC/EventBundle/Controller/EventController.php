@@ -2,7 +2,8 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -190,8 +191,9 @@ class EventController extends Controller
      * @Template("FDCEventBundle:Event:list.html.twig")
      * @return array
      */
-    public function getEventsAction()
+    public function getEventsAction(Request $request)
     {
+        $this->isPageEnabled($request->get('_route'));
         $filters = array(
             'dates' => array(
                 array(
