@@ -65,7 +65,7 @@ abstract class News implements TranslateMainInterface
     /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderNews")
+     * @ORM\ManyToOne(targetEntity="Homepage")
      */
     private $homepage;
 
@@ -104,7 +104,7 @@ abstract class News implements TranslateMainInterface
     private $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */

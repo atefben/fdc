@@ -91,6 +91,7 @@ sonata_media:
             filesystem: sonata.media.filesystem.s3
             allowed_extensions: ['jpg', 'png', 'jpeg']
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png']
+            #resizer: sonata.media.resizer.square
 
     filesystem:
         s3:
