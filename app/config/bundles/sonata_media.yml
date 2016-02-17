@@ -76,6 +76,12 @@ sonata_media:
             formats:
                 small: { width: 400 , quality: 100 }
 
+        media_archive:
+            providers:
+                - sonata.media.provider.archive
+            formats:
+
+
     cdn:
         server:
             path:  http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com
