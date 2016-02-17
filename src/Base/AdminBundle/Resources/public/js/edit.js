@@ -1,4 +1,15 @@
 jQuery(document).ready(function($) {
+    editEvents();
+
+    // on modal add, reload function
+    $(window).on('shown.bs.modal', function() {
+        if ($('.modal[aria-hidden="false"]').find('form[action*="create"]').length) {
+            editEvents();
+        }
+    });
+});
+
+function editEvents() {
     // translate event on load
     if ($('input[name$="[translate]"]').is(':checked')) {
         $('.form-group[id$="priorityStatus"]').show();
@@ -10,13 +21,13 @@ jQuery(document).ready(function($) {
 
     // translate event on click
     $('input[name$="[translate]"]').on('ifChanged', function() {
-       if (!$(this).is(':checked')) {
-           $('.form-group[id$="priorityStatus"]').hide();
-           $('ul[id$="translateOptions"]').hide();
-       } else {
-           $('.form-group[id$="priorityStatus"]').show();
-           $('ul[id$="translateOptions"]').show();
-       }
+        if (!$(this).is(':checked')) {
+            $('.form-group[id$="priorityStatus"]').hide();
+            $('ul[id$="translateOptions"]').hide();
+        } else {
+            $('.form-group[id$="priorityStatus"]').show();
+            $('ul[id$="translateOptions"]').show();
+        }
     });
 
     // remove select2 status option for each language
@@ -36,8 +47,8 @@ jQuery(document).ready(function($) {
         });
     });
 
-    // add border on changing lang ta
-    $('.a2lix_translationsLocales li').click(function() {
+    // add border on changing lang
+    $('body').on('click', '.a2lix_translationsLocales li', function() {
         $('.a2lix_translationsLocales li').removeClass('nav-tab-active');
         $(this).addClass('nav-tab-active');
     });
@@ -47,4 +58,4 @@ jQuery(document).ready(function($) {
         $('.status-hidden select').val(1).change();
         $('.status-hidden').hide();
     }
-});
+}
