@@ -38,7 +38,7 @@ class PressProjectionPressScheduling
     /**
      * @var FilmProjection
      *
-     * @ORM\ManyToOne(targetEntity="PressProjection", inversedBy="projectionPress", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="PressProjection", inversedBy="projectionP", cascade={"persist"})
      */
     protected $pressScheduling;
 

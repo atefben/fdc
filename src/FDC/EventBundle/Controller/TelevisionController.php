@@ -190,6 +190,9 @@ class TelevisionController extends Controller
             $page = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findBy(array(), null, 1);
             $translation = current($page)->findTranslationByLocale($request->getLocale());
             if ($translation) {
+                if (!$translation->getSlug()) {
+                    throw $this->createNotFoundException();
+                }
                 return $this->redirectToRoute('fdc_event_television_trailers', array(
                     'slug' => $translation->getSlug(),
                 ));

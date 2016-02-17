@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use JMS\Serializer\Annotation\Groups;
 use Base\CoreBundle\Util\Time;
 
 /**
@@ -26,13 +27,13 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
     private $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=false)
      */
     private $secondFile;
