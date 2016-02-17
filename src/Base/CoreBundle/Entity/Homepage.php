@@ -1154,6 +1154,13 @@ class Homepage
      */
     public function getTopVideosAssociated()
     {
+        if ($this->topVideosAssociated->count() < 2) {
+            while ($this->topVideosAssociated->count() != 2) {
+                $entity = new HomepageTopVideosAssociated();
+                $entity->setHomepage($this);
+                $this->topVideosAssociated->add($entity);
+            }
+        }
         return $this->topVideosAssociated;
     }
 
@@ -1188,6 +1195,13 @@ class Homepage
      */
     public function getTopWebTvsAssociated()
     {
+        if ($this->topWebTvsAssociated->count() < 3) {
+            while ($this->topWebTvsAssociated->count() != 3) {
+                $entity = new HomepageTopWebTvsAssociated();
+                $entity->setHomepage($this);
+                $this->topWebTvsAssociated->add($entity);
+            }
+        }
         return $this->topWebTvsAssociated;
     }
 
