@@ -78,12 +78,12 @@ class FDCPageWebTvLive implements TranslateMainInterface
 
     /**
      * @var FDCPageWebTvLiveWebTvAssociated
-     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="FDCPageWebTvLive", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
      */
     private $associatedWebTvs;
 
     /**
-     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveFilmFilmAssociated", mappedBy="FDCPageWebTvLive", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveFilmFilmAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
      */
     private $associatedFilmFilms;
 
@@ -268,12 +268,13 @@ class FDCPageWebTvLive implements TranslateMainInterface
     public function getAssociatedWebTvs()
     {
         if ($this->associatedWebTvs->count() < 3) {
-            while ($this->associatedFilmFilms->count() != 3) {
+            while ($this->associatedWebTvs->count() != 3) {
                 $entity = new FDCPageWebTvLiveFilmFilmAssociated();
                 $entity->setFDCPageWebTvLive($this);
-                $this->associatedFilmFilms->add($entity);
+                $this->associatedWebTvs->add($entity);
             }
         }
+
         return $this->associatedWebTvs;
     }
 

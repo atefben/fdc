@@ -76,6 +76,12 @@ sonata_media:
             formats:
                 small: { width: 400 , quality: 100 }
 
+        media_archive:
+            providers:
+                - sonata.media.provider.archive
+            formats:
+
+
     cdn:
         server:
             path:  http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com
@@ -85,6 +91,7 @@ sonata_media:
             filesystem: sonata.media.filesystem.s3
             allowed_extensions: ['jpg', 'png', 'jpeg']
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png']
+            #resizer: sonata.media.resizer.square
 
     filesystem:
         s3:
