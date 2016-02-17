@@ -51,7 +51,7 @@ abstract class EventWidget
     /**
      * @var Event
      *
-     * @ORM\ManyToOne(targetEntity="Event", inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="widgets")
      */
     protected $events;
 

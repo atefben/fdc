@@ -65,7 +65,7 @@ abstract class News implements TranslateMainInterface
     /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderNews")
+     * @ORM\ManyToOne(targetEntity="Homepage")
      */
     private $homepage;
 

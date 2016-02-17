@@ -58,14 +58,14 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="infos")
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
     private $festival;
 
     /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderInfo")
+     * @ORM\ManyToOne(targetEntity="Homepage")
      */
     private $homepage;
 

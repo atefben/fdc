@@ -63,7 +63,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderStatement")
+     * @ORM\ManyToOne(targetEntity="Homepage")
      */
     private $homepage;
 
