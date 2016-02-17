@@ -48,7 +48,7 @@ class TagAdmin extends Admin
                     $queryBuilder->join("{$alias}.translations", 't');
                     $queryBuilder->where('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.name LIKE :title');
+                    $queryBuilder->andWhere('t.name LIKE :name');
                     $queryBuilder->setParameter('name', '%'. $value['value']. '%');
 
                     return true;

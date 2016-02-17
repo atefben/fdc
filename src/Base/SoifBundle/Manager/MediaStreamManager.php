@@ -103,6 +103,7 @@ class MediaStreamManager extends CoreManager
         $provider = ($extension == 'pdf') ? 'sonata.media.provider.file' : $provider;
         $context = ($extension == 'pdf') ? 'pdf' : $context;
         $this->sonataMediaManager->save($media, $context, $provider);
+
         // update entity
         $entity->setFile($media);
         
@@ -134,7 +135,7 @@ class MediaStreamManager extends CoreManager
         }
         
         if ($result === false) {
-            $msg = __METHOD__. " - Impossible to create image from base 64 of {$this->wsParameterKey} : {$id}";
+            $msg = __METHOD__. " - Impossible to create image from base 64 of {$this->wsParameterKey} : {$filename}";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
         }
@@ -159,7 +160,7 @@ class MediaStreamManager extends CoreManager
         }
         
         if ($file === false) {
-            $msg = __METHOD__. " - Impossible to create image from string {$this->wsParameterKey} : {$id}";
+            $msg = __METHOD__. " - Impossible to create image from string {$this->wsParameterKey} : {$filename}";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
             return false;

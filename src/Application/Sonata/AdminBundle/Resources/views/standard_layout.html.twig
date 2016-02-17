@@ -382,12 +382,8 @@ file that was distributed with this source code.
                                                 {% endif %}
                                             {% endblock %}
                                             <div class="container-fluid">
-                                                <div class="navbar-left"  {% if app.request.get('_route') in admin_routes_translation_legend or app.request.get('_route') in admin_routes_translation_legend_without_master %}id="fdc-list-translation-container"{% endif %}>
-                                                    {% if app.request.get('_route') in admin_routes_translation_legend %}
-                                                        {% include 'BaseAdminBundle:CRUD:list_translation_legend.html.twig' %}
-                                                    {% elseif app.request.get('_route') in admin_routes_translation_legend_without_master %}
-                                                        {% include 'BaseAdminBundle:CRUD:list_translation_legend_without_master.html.twig' %}
-                                                    {% elseif _tab_menu is not empty %}
+                                                <div class="navbar-left">
+                                                    {% if _tab_menu is not empty %}
                                                         {{ _tab_menu|raw }}
                                                     {% endif %}
                                                 </div>

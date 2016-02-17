@@ -105,9 +105,9 @@ class Event implements TranslateMainInterface
     private $tags;
 
     /**
-     * @var NewsWidget
+     * @var EventWidget
      *
-     * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="events",  cascade={"persist"})
      *
      * @Groups({"event_list", "event_show"})
      */
@@ -123,7 +123,7 @@ class Event implements TranslateMainInterface
     private $sites;
 
     /**
-     * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="event", cascade={"persist"})
      *
      * @Groups({"event_list", "event_show"})
      */

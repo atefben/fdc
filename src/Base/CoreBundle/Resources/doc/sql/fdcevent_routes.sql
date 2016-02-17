@@ -20,33 +20,6 @@ SET time_zone = "+00:00";
 -- Base de données :  `festival_cannes_local2`
 --
 
--- --------------------------------------------------------
-
---
--- Structure de la table `fdcevent_routes`
---
-
-CREATE TABLE `fdcevent_routes` (
-  `id` int(11) NOT NULL,
-  `parent_id` int(11) DEFAULT NULL,
-  `route` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `enabled` tinyint(1) NOT NULL,
-  `lft` int(11) NOT NULL,
-  `lvl` int(11) NOT NULL,
-  `rgt` int(11) NOT NULL,
-  `root` int(11) DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `position` int(11) NOT NULL DEFAULT '0',
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `trans_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Contenu de la table `fdcevent_routes`
---
-
 INSERT INTO `fdcevent_routes` (`id`, `parent_id`, `route`, `name`, `enabled`, `lft`, `lvl`, `rgt`, `root`, `slug`, `position`, `created_at`, `updated_at`, `trans_name`) VALUES
 (1, NULL, 'fdc_event_news_index', 'L''actualité', 1, 1, 0, 12, 1, 'fdc-event-news-index', 1, '2016-02-15 18:14:31', '2016-02-16 18:21:31', 'header.mainnav.nav.lactualite'),
 (2, NULL, 'fdc_event_television_live', 'Web Tv', 1, 1, 0, 8, 2, 'fdc-event-television-live', 0, '2016-02-15 18:16:32', '2016-02-16 15:47:20', 'header.mainnav.nav.webtv'),

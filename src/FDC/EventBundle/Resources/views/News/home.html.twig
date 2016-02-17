@@ -143,15 +143,13 @@
             <div id="channels">
                 <h2 class="title">{{ 'home.title.leschaines'|trans }}</h2>
                 <div id="slider-channels" class="owl-carousel sliderDrag">
-
                     {% for channel in channels %}
-                        {% if channel is defined and channel != null %}
+                        {% if channel is defined and channel.association != null %}
                             <div class="channel">
                                 {% include 'FDCEventBundle:News:widgets/home-channels.html.twig' %}
                             </div>
                         {% endif %}
                     {% endfor %}
-
                 </div>
             </div>
         {% endif %}
@@ -163,7 +161,6 @@
                         {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
                     {% endif %}
                 {% endfor %}
-
             </div>
         {% endif %}
 
