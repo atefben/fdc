@@ -32,9 +32,11 @@
                         </div>
                         <div class="box-body table-responsive">
 
-                            <center> <!-- yeah, center is still awesome ;) -->
-                                {% media object, 'reference' with {'width': null, 'height': null, 'class': 'img-responsive img-rounded'} %}
-                            </center>
+                            {% if object.contentType != "application/zip" %}
+                                <center> <!-- yeah, center is still awesome ;) -->
+                                    {% media object, 'reference' with {'width': null, 'height': null, 'class': 'img-responsive img-rounded'} %}
+                                </center>
+                            {% endif %}
 
                             <table class="table">
                                 <tr>

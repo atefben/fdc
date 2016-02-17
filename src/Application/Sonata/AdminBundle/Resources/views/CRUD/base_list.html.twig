@@ -29,7 +29,7 @@ file that was distributed with this source code.
                 {% include 'BaseAdminBundle:CRUD:list_translation_legend.html.twig' %}
             {% elseif app.request.get('_route') in admin_routes_translation_legend_without_master %}
                 {% include 'BaseAdminBundle:CRUD:list_translation_legend_without_master.html.twig' %}
-            {% elseif _tab_menu is not empty %}
+            {% elseif _tab_menu is defined and _tab_menu is not empty %}
                 {{ _tab_menu|raw }}
             {% endif %}
         </div>

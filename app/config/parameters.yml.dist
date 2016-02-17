@@ -100,6 +100,9 @@ parameters:
     # amazon s3 audio
     s3_audio_bucket_name: ~
     s3_audio_region: ~
+    # amazon s3 archive
+    s3_archive_bucket_name: ~
+    s3_archive_region: ~
     # fdc
     fdc_event_domain: ~
     fdc_event_scheme: ~

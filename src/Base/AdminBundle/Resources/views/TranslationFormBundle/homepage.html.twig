@@ -316,6 +316,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% if form.parent.children.translations.children.fr.vars.value is defined and form.parent.children.translations.children.fr.vars.value is not null  %}
                         <div class="col-md-4">
                             <div class="box box-success">
                                 <div class="box-header">
@@ -497,6 +498,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                         <div class="col-md-8">
                             <div class="box box-success">
                                 <div class="box-header">
