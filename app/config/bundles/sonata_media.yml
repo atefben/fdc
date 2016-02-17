@@ -2,7 +2,7 @@ sonata_media:
     # if you don't use default namespace configuration
     class:
         media: Application\Sonata\MediaBundle\Entity\Media
-    default_context: media_archive
+    default_context: media_image
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         # SOIF
