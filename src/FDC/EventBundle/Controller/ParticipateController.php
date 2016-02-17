@@ -2,8 +2,8 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Guzzle\Http\Message\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -19,9 +19,9 @@ class ParticipateController extends Controller
      * @Template("FDCEventBundle:Participate:prepare.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function prepareAction()
+    public function prepareAction(Request $request)
     {
-
+        $this->isPageEnabled($request->get('_route'));
         $pageContent = "Contenu de la page";
 
         return array(
@@ -34,9 +34,9 @@ class ParticipateController extends Controller
      * @Template("FDCEventBundle:Participate:festival.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function festivalAction()
+    public function festivalAction(Request $request)
     {
-
+        $this->isPageEnabled($request->get('_route'));
         $pageContent = "Contenu de la page";
 
         return array(
@@ -49,9 +49,9 @@ class ParticipateController extends Controller
      * @Template("FDCEventBundle:Participate:access.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function accessAction()
+    public function accessAction(Request $request)
     {
-
+        $this->isPageEnabled($request->get('_route'));
         $pageContent = "Contenu de la page";
 
         return array(
@@ -65,9 +65,9 @@ class ParticipateController extends Controller
      * @Template("FDCEventBundle:Participate:partners.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function partnersAction()
+    public function partnersAction(Request $request)
     {
-
+        $this->isPageEnabled($request->get('_route'));
         $partners = array(
             array(
                 'type' => 0,
@@ -142,9 +142,9 @@ class ParticipateController extends Controller
      * @Template("FDCEventBundle:Participate:suppliers.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function suppliersAction()
+    public function suppliersAction(Request $request)
     {
-
+        $this->isPageEnabled($request->get('_route'));
         $suppliers = array(
             array(
                 'img' => 'img.jpg',

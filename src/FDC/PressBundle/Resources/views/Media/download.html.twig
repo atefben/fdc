@@ -26,7 +26,13 @@
 
                         {% for widget in s.section.widgets %}
                             {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
-                                {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
+                                {% if widget.file.contentType == "application/zip" or
+                                widget.secondFile.contentType == "application/zip"
+                                %}
+                                    {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
+                                {% else %}
+                                    {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
+                                {% endif %}
                             {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
                                 {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
                             {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}

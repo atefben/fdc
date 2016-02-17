@@ -84,6 +84,11 @@ class FDCEventRoutes implements FDCEventRoutesInterface
     private $root;
 
     /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $hidden;
+
+    /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="FDCEventRoutes", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
@@ -115,6 +120,7 @@ class FDCEventRoutes implements FDCEventRoutesInterface
     public function __construct()
     {
         $this->enabled = false;
+        $this->hidden = false;
     }
 
     public function __toString()
@@ -420,5 +426,28 @@ class FDCEventRoutes implements FDCEventRoutesInterface
     public function getTransName()
     {
         return $this->transName;
+    }
+
+    /**
+     * Set hidden
+     *
+     * @param boolean $hidden
+     * @return FDCEventRoutes
+     */
+    public function setHidden($hidden)
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get hidden
+     *
+     * @return boolean 
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
     }
 }

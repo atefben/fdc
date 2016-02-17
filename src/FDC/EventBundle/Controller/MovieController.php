@@ -4,7 +4,8 @@ namespace FDC\EventBundle\Controller;
 
 use \DateTime;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -442,8 +443,10 @@ class MovieController extends Controller
      * @param $slug
      * @return array
      */
-    public function selectionAction($slug)
+    public function selectionAction(Request $request,$slug)
     {
+        $this->isPageEnabled($request->get('_route'));
+
         $em = $this->getDoctrine()->getManager();
 
         // find all selected movies

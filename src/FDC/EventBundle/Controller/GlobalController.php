@@ -3,7 +3,7 @@
 namespace FDC\EventBundle\Controller;
 
 use Base\CoreBundle\Entity\Newsletter;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -48,11 +48,11 @@ class GlobalController extends Controller {
     }
 
     /**
-     * @Route("/menu", options={"expose"=true})
+     * @Route("/menu")
      * @Template("FDCEventBundle:Global:nav.html.twig")
      * @return array
      */
-    public function menuAction() {
+    public function menuAction($route) {
 
         $em = $this->get('doctrine')->getManager();
         $displayedMenus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
@@ -73,13 +73,16 @@ class GlobalController extends Controller {
             });
         }
 
-        $routes = array(
+        $routesArticles = array(
             'fdc_event_news_index',
             'fdc_event_news_get',
             'fdc_event_news_getarticles',
             'fdc_event_news_getphotos',
             'fdc_event_news_getvideos',
             'fdc_event_news_getaudios',
+        );
+
+        $routesWebTv = array(
             'fdc_event_television_live',
             'fdc_event_television_channels',
             'fdc_event_television_getchannel',
@@ -89,7 +92,9 @@ class GlobalController extends Controller {
 
         return array(
             'menus' => $displayedMenus,
-            'routes' => $routes
+            'routesArticles' => $routesArticles,
+            'routesWebTv' => $routesWebTv,
+            'route' => $route
         );
 
     }
