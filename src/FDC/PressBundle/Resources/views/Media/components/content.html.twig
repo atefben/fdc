@@ -60,13 +60,13 @@
                                         {% for m in film.medias %}
                                         {% if m.type == 18 %}
                                             {% if 'French' in m.media.titleVa %}
-                                                <a href="{% path m.media.file, 'reference' %}" class="button">{{ 'mediatheque.label.btn.enfrancais'|trans }}</a>
+                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enfrancais'|trans }}</a>
                                             {% elseif 'English' in m.media.titleVa %}
-                                                <a href="{% path m.media.file, 'reference' %}" class="button">{{ 'mediatheque.label.btn.enanglais'|trans }}</a>
+                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enanglais'|trans }}</a>
                                             {% elseif 'Bilingual' in m.media.titleVa %}
-                                                <a href="{% path m.media.file, 'reference' %}" class="button">{{ 'mediatheque.label.btn.bilingue'|trans }}</a>
+                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.bilingue'|trans }}</a>
                                             {% else %}
-                                                <a href="{% path m.media.file, 'reference' %}" class="button">{{ 'mediatheque.label.btn.telecharger'|trans }}</a>
+                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.telecharger'|trans }}</a>
                                             {% endif %}
                                         {% endif %}
                                         {% endfor %}
@@ -85,7 +85,7 @@
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
                                             {% endif %}
-                                                <a href="{% path trans.file, 'reference' %}" class="button"> {{ trans.title }}</a>
+                                                <a href="{% path trans.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i> {{ trans.title }}</a>
                                         {% endif %}
                                         {% endfor %}
                                     </div>
@@ -101,7 +101,8 @@
                                                 <span class="number">({{ countImage }})</span>
                                             </h3>
                                             <div class="download-btns right-btn buttons ">
-                                                <a href="#" class="alldl button">
+                                                <a href="{{ path('fdc_press_media_downloadarchive', {'id': film.id }) }}" class="alldl button">
+                                                    <i class="icon icon_telecharger"></i>
                                                     {{ 'mediatheque.btn.touttelecharger'|trans }}
                                                 </a>
                                             </div>

@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -17,7 +18,7 @@ class MediaController extends Controller
      * @Template("FDCPressBundle:Media:main.html.twig")
      * @return array
      */
-    public function mainAction( )
+    public function mainAction()
     {
         $headerInfo = array(
             'title' => 'Médiathèque films',
@@ -43,6 +44,7 @@ class MediaController extends Controller
         $section = array();
         foreach ($films as $film) {
 
+            //Construct sections
             if (!in_array($film->getSelectionSection()->findTranslationByLocale($locale)->getSlug(), $section)) {
                 $filmSection[$i]['slug'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
@@ -58,6 +60,59 @@ class MediaController extends Controller
             'filmSection' => $filmSection,
             'films' => $films
         );
+    }
+
+
+    /**
+     * @Route("/media/{id}/archive")
+     * @return array
+     */
+    public function downloadArchiveAction($id)
+    {
+        // GET FDC SETTINGS
+        $em = $this->getDoctrine()->getManager();
+
+        $film = $em->getRepository('BaseCoreBundle:FilmFilm')
+            ->findOneById($id);
+
+        $filmPhotos = array();
+
+        $zipName = $film->getId().'-'.$film->getUpdatedAt()->format('YmdHis').".zip";
+        $zipPath = $this->get('kernel')->getRootDir()."/../web/uploads/archive/".$zipName;
+
+        if (!file_exists($zipPath)) {
+            $zip = new \ZipArchive();
+            $zip->open($zipPath, \ZipArchive::CREATE);
+
+            foreach ($film->getMedias() as $media ) {
+                if ($media->getType() == 14) {
+                    array_push($filmPhotos,$media->getMedia()->getFile());
+                    $provider = $this->container->get($media->getMedia()->getFile()->getProviderName());
+                    $fUrl = $provider->generatePublicUrl($media->getMedia()->getFile(), $media->getMedia()->getFile()->getContext().'_big');
+                    $zip->addFromString(basename($media->getMedia()->getFile()), file_get_contents($fUrl));
+                }
+            }
+            $zip->close();
+
+        }
+
+
+        // Generate response
+        $response = new Response();
+
+        // Set headers
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-type', mime_content_type($zipPath));
+        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
+        $response->headers->set('Content-length', filesize($zipPath));
+
+        // Send headers before outputting anything
+        $response->sendHeaders();
+
+        $response->setContent(file_get_contents($zipPath));
+
+        return $response;
+
     }
 
     /**
