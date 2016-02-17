@@ -239,3 +239,7 @@ ul[id$="translateOptions"] {
     line-height: 1.42857143;
     border-radius: 4px 4px 0 0;
 }
+
+.status-hidden {
+    display: none;
+}
