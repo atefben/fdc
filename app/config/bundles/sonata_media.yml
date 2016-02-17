@@ -2,7 +2,7 @@ sonata_media:
     # if you don't use default namespace configuration
     class:
         media: Application\Sonata\MediaBundle\Entity\Media
-    default_context: media_image
+    default_context: media_archive
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         # SOIF
@@ -75,6 +75,12 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                 small: { width: 400 , quality: 100 }
+
+        media_archive:
+            providers:
+                - sonata.media.provider.archive
+            formats:
+
 
     cdn:
         server:
