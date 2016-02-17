@@ -1236,6 +1236,13 @@ class Homepage
      */
     public function getFilmsAssociated()
     {
+        if ($this->filmsAssociated->count() < 1) {
+            while ($this->filmsAssociated->count() != 1) {
+                $entity = new HomepageFilmsAssociated();
+                $entity->setHomepage($this);
+                $this->filmsAssociated->add($entity);
+            }
+        }
         return $this->filmsAssociated;
     }
 }
