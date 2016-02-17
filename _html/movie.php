@@ -88,11 +88,11 @@
             <p>Réalisé par : <a href="#">Jean-Luc GODARD</a></p>
             <p>Année de production : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
           </div>
-            <div class="palmares">
-              <i class="icon icon_palme"></i>
-              <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
-            </div>
-            <div class="info-film">
+          <div class="palmares">
+            <i class="icon icon_palme"></i>
+            <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
+          </div>
+          <div class="info-film">
             <div  class="synopsis">
               <h3 class="title-section">Synopsis</h3>
               <p>Le propos est simple<br />
@@ -141,10 +141,39 @@
               data-twitter="//www.twitter.com"
               data-link="//www.example.com"
               data-email="//www.gmail.com"
-              data-file='[{"file":"./files/mov_bbb.mp4"}]'
-              data-img="//dummyimage.com/960x540/c8a461/000.png">
-              <div id="video-player-ba" class="video-player">
-              </div>
+              data-playlist='[
+                {
+                  "sources":[{"file":"./files/mov_bbb.mp4"}],
+                  "image":"//dummyimage.com/960x540/000/c8a461.png",
+                  "name":"Sils Maria",
+                  "category":"Photocall"
+                },
+                {
+                  "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
+                  "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
+                  "name":"Interviews des réalisateurs",
+                  "category":"Montée des marches"
+                },
+                {
+                  "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
+                  "image":"img/slider-channels/03.jpg",
+                  "name":"Sils Maria",
+                  "category":"Conférence de presse"
+                },
+                {
+                  "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
+                  "image":"img/slider-channels/01.jpg",
+                  "name":"Sils Maria",
+                  "category":"Photocall"
+                },
+                {
+                  "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
+                  "image":"img/slider-channels/02.jpg",
+                  "name":"Sils Maria",
+                  "category":"Montée des marches"
+                }
+              ]'>
+              <div id="video-player-ba"></div>
               <div class="video-overlay"></div>
               <div class="infos-bar">
                 <div class="picto"><i class="icon icon_video"></i></div>
@@ -159,11 +188,6 @@
               </div>
             </div>
           </div>
-          <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-              var playba = playerInit('video-player-ba', false, false, false);
-            });
-          </script>
           <div id="slider-movie-videos" class="owl-carousel sliderDrag">
             <div class="slide-video shadow-bottom">
               <img src="http://dummyimage.com/293x185/000/fff" alt="" />

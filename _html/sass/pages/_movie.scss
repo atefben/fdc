@@ -291,6 +291,10 @@
     margin-top: 48px;
     margin-bottom: -38px;
 
+    &.trailer {
+      @include transform(translateY(570px));
+    }
+
     i{
       font-size: 2.75rem;
       color: $gold;
@@ -462,6 +466,10 @@
     }
 
     &.trailer {
+      &:after {
+        content: none;
+      }
+      
       .trailer {
         opacity: 1;
         visibility: visible;

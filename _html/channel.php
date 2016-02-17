@@ -51,7 +51,7 @@
               "category":"Montée des marches"
             }
           ]'>
-          <div id="video-player" class="video-player v_<?php echo time();?>">
+          <div id="video-player" class="video-player-pl v_<?php echo time();?>">
           </div>
           <div class="video-overlay"></div>
           <div class="infos-bar">
