@@ -33,7 +33,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=false)
      */
     private $secondFile;
 
