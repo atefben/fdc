@@ -72,7 +72,7 @@ class MediaAudioAdmin extends Admin
                 'field_options' => array(
                     'widget' => 'single_text',
                 ),
-                'label' => 'filter.media_image.label_created_before',
+                'label' => 'filter.media_audio.label_created_before',
             ))
             ->add('createdAfter', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
@@ -88,7 +88,39 @@ class MediaAudioAdmin extends Admin
                 'field_options' => array(
                     'widget' => 'single_text',
                 ),
-                'label' => 'filter.media_image.label_created_after',
+                'label' => 'filter.media_audio.label_created_after',
+            ))
+            ->add('publishedBefore', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->andWhere("{$alias}.publishedAt < :before");
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type' => 'date',
+                'field_options' => array(
+                    'widget' => 'single_text',
+                ),
+                'label' => 'filter.media_audio.label_published_before',
+            ))
+            ->add('publishedAfter', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->andWhere("{$alias}.publishedAt > :after");
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type' => 'date',
+                'field_options' => array(
+                    'widget' => 'single_text',
+                ),
+                'label' => 'filter.media_audio.label_published_after',
             ))
             ->add('status', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
