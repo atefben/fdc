@@ -11,13 +11,16 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * GalleryAdmin class.
- * 
+ *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
 class GalleryAdmin extends Admin
 {
+
+    protected $translationDomain = 'BaseAdminBundle';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -25,6 +28,9 @@ class GalleryAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('name', null, array(
+                'translation_domain' => 'BaseAdminBundle',
+            ))
         ;
     }
 
@@ -35,10 +41,11 @@ class GalleryAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('name')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
+                    'show'   => array(),
+                    'edit'   => array(),
                     'delete' => array(),
                 )
             ))
@@ -51,13 +58,19 @@ class GalleryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('name', null, array(
+                'required' => true,
+            ))
             ->add('medias', 'sonata_type_collection', array(
-                'by_reference' => false,
+                'by_reference'       => false,
+                'label'              => 'form.gallery.medias',
+                'translation_domain' => 'BaseAdminBundle',
             ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
+                'edit'     => 'inline',
+                'inline'   => 'table',
                 'sortable' => 'position',
-            ));
+            ))
+        ;
     }
 
     /**
@@ -66,7 +79,6 @@ class GalleryAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-        ;
+            ->add('id');
     }
 }

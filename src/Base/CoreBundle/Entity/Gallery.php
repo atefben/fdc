@@ -30,7 +30,14 @@ class Gallery
     private $id;
 
     /**
-     * @var Media
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var GalleryMedia
      *
      * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="gallery", cascade={"persist"})
      */
@@ -46,11 +53,13 @@ class Gallery
     
     public function __toString()
     {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
         if ($this->getId()) {
-            return strval($this->getId());
+            $string .= ' #'. $this->getId();
         }
-        
-        return 'New Gallery';
+
+        return $string;
     }
 
     /**
@@ -95,5 +104,28 @@ class Gallery
     public function getMedias()
     {
         return $this->medias;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Gallery
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

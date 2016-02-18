@@ -43,6 +43,9 @@ breadcrumb:
     link_press_guide_list: Guide pratique
     link_contact_page_list: Contactez-nous
     link_f_d_c_event_routes_list: Liste des pages
+    link_gallery_list: Galeries
+    gallery:
+        new: Nouvelle galerie
 
 
 link:
@@ -160,6 +163,7 @@ entity:
     press_projection: Programmation
     press_guide: Guide pratique
     press_cinema_map: Plan des salles
+    gallery: Galeries
 
 list:
     label_header_video: Vidéo principale
@@ -480,6 +484,8 @@ form:
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
     label_locked_content: Locked content
+    gallery:
+        medias: Médias
 
     web_tv:
         helper_name: 255 caractères max.
