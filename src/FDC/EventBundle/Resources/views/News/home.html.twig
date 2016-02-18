@@ -16,22 +16,16 @@
                 <div id="slider" class="owl-carousel">
                     {% for slide in homeSlider %}
                         {% if slide != null %}
-                            {% if slide.header is not null %}
-                                {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
-                                {% if trans is null or trans.file is null %}
-                                    {% set trans = slide.header.findTranslationByLocale('fr') %}
-                                {% endif %}
-                                <div>
-                                    <div class="img-container">
-                                        <div class="img" style="background-image:url({% path trans.file , '1461x923' %})"></div>
-                                    </div>
-                                    <div class="info">
-                                        <span class="category">{{ slide.theme|trans_fallback('name') }}</span>
-                                        <h2>{{ slide|trans_fallback('title') }}</h2>
-                                    </div>
-                                    <a href="{{ path('fdc_event_news_get', {format: slide.newsFormat, 'slug': slide.id }) }}" class="linkArticle"></a>
+                            <div>
+                                <div class="img-container">
+                                    <div class="img" style="background-image:url({% path trans.file , '1461x923' %})"></div>
                                 </div>
-                            {% endif %}
+                                <div class="info">
+                                    <span class="category">{{ slide.theme|trans_fallback('name') }}</span>
+                                    <h2>{{ slide|trans_fallback('title') }}</h2>
+                                </div>
+                                <a href="{{ path('fdc_event_news_get', {format: slide.newsFormat, 'slug': slide.id }) }}" class="linkArticle"></a>
+                            </div>
                         {% endif %}
                     {% endfor %}
                 </div>
