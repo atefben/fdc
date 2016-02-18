@@ -6,14 +6,23 @@ sonata_media:
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         # SOIF
+        film_director:
+            providers:
+               - sonata.media.provider.image
+            formats:
+
         film_poster:
             providers:
                 - sonata.media.provider.image
-
             formats:
                 tiny:  { width: 46 , height: 64 , quality: 100 }
                 small: { width: 187 , height: 255 , quality: 100 }
                 big:   { width: 1000 , quality: 100 }
+
+        film_main:
+            providers:
+                - sonata.media.provider.image
+            formats:
 
         film_film:
             providers:
@@ -23,11 +32,12 @@ sonata_media:
                 tiny:  { width: 146 , quality: 100 }
                 small: { width: 500 , quality: 100 }
                 big:   { width: 1000 , quality: 100 }
-                
+
         pdf:
             providers:
                 - sonata.media.provider.file
             formats:
+
         #CMS
         media_image:  # the default context is mandatory
             providers:
