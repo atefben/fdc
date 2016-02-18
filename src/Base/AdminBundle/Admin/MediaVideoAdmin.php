@@ -210,7 +210,8 @@ class MediaVideoAdmin extends Admin
                 )
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_media_video_image'
+                'label' => 'form.label_media_video_image',
+                'help' => 'form.media_image.helper_file'
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
@@ -265,7 +266,7 @@ class MediaVideoAdmin extends Admin
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
-                'help'     => 'form.news.helper_file',
+                'help'     => 'form.seo.helper_file',
                 'required' => false
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)

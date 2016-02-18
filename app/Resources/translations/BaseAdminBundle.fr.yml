@@ -232,8 +232,13 @@ list:
         label_encoding_state: Encodage (en attent, en cours, prêt)
     media_audio:
         label_published_at: Publié le
+    media_image_simple:
+        label_name: Nom de l'image
+        label_alt: Alt de l'image
     common:
         label_id: Id
+    news_common:
+        label_title: Titre de l'actualité
 
 filter:
     label_position: Position
@@ -347,6 +352,8 @@ dashboard:
         press_projection: Programmation
 
 form:
+    seo:
+        helper_file: Dimensions attendues : 1200x627. Format attendu : .jpg, .png
     tag:
         helper_name: 255 caractères max.
     translate_option:
