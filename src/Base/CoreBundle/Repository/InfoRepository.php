@@ -222,12 +222,18 @@ class InfoRepository extends EntityRepo
             ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED);
 
         if ($locale != 'fr') {
+
             $qb = $qb
+                ->leftjoin('na.translations', 'na5t')
+                ->leftjoin('naa.translations', 'na6t')
+                ->leftjoin('nv.translations', 'na7t')
+                ->leftjoin('ni.translations', 'na8t')
                 ->andWhere(
-                    '(nat.locale = :locale AND nat.status = :status_translated)
-                    OR (nit.locale = :locale AND nit.status = :status_translated)
-                    OR (naat.locale = :locale AND naat.status = :status_translated)
-                    OR (nvt.locale = :locale AND nvt.status = :status_translated)')
+                    '(na5t.locale = :locale AND na1t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na2t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na3t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na4t.status = :status_translated)'
+                )
                 ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale);
         }

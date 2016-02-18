@@ -5,19 +5,32 @@
 {% if trans is null or trans.file is null %}
     {% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
-{% set file = trans.file %}
-{% set trans = news.video.findTranslationByLocale(app.request.locale) %}
+
+{% set header = news.header %}
+{% if header is not null and header.file is not null %}
+    {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = news.header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is not null %}
+    {% set image = imageTrans.file %}
+{% else %}
+    {% set image = file.image.file %}
+{% endif %}
+
 <div class="video-container state-init video"
      data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
      data-twitter="//www.twitter.com"
      data-link="//www.example.com"
      data-email="//www.gmail.com"
-     {% if playlist %}
+    {% if playlist is defined %}
      data-playlist='{{ playlist }}'
-     {% else %}
-     data-file='{{ files }}'
-     data-img="{% path trans.image, 'reference' %}
-     {% endif %}">
+    {% else %}
+     data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
+    {% endif %}"
+    data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% endif %}"
+>
 
     <div id="video-player-{{ trans.id }}" class="video-player">
     </div>

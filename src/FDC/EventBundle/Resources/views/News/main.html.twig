@@ -27,6 +27,10 @@
                 <div class="single-video">
                     {% include 'FDCEventBundle:News:widgets/single-video.html.twig' %}
                 <div>
+            {% elseif news is news_image %}
+                <div class="single-video">
+                    {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
+                <div>
             {% endif %}
 
             <div class="chapeau">{{ news|trans_fallback('introduction')|raw }}</div>

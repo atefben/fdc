@@ -12,7 +12,7 @@ class MediaVideoRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('mv');
 
-        $qb
+        $qb = $qb
             ->select('mv,
             RAND() as hidden rand')
             ->join('mv.translations', 'mvt')
@@ -23,13 +23,13 @@ class MediaVideoRepository extends EntityRepository
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
 
         if ($excludeWebTv) {
-            $qb
+            $qb = $qb
                 ->andWhere('mv.webTv != :webTv')
                 ->setParameter('webTv', $excludeWebTv)
             ;
         }
 
-        $qb
+        $qb = $qb
             ->orderBy('rand')
             ->setMaxResults(2)
         ;
@@ -40,16 +40,15 @@ class MediaVideoRepository extends EntityRepository
     public function getWebTvPublishedVideos($locale, $festival, $webTv)
     {
         $qb = $this->createQueryBuilder('mv');
-
-        $qb
+        $qb = $qb
             ->join('mv.translations', 'mvt')
             ->where('mv.festival = :festival')
             ->setParameter('festival', $festival)
             ->andWhere('mv.webTv = :webTv')
-            ->setParameter('webTv', $webTv)
-            ->andWhere('mvt.locale = :locale')
-            ->setParameter('locale', $locale)
-            ->andWhere('mvt.status in (1, 5)')
+            ->setParameter('webTv', $webTv);
+
+        $qb = $qb->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $qb
             ->orderBy('mvt.title', 'asc')
         ;
         return $qb->getQuery()->getResult();
@@ -59,20 +58,20 @@ class MediaVideoRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('v');
 
-        $qb
+        $qb = $qb
             ->join('v.associatedFilms', 'maf')
-            ->join('v.translations', 't')
+            ->join('v.translations', 'vt')
             ->join('maf.association', 'f')
             ->where('f.id = :film')
-            ->setParameter('film', $film)
-            ->andWhere('t.locale = :locale')
-            ->setParameter('locale', $locale)
-            ->andWhere('t.status IN (1,5)')
+            ->setParameter('film', $film);
+
+        $qb = $qb->addTranslationQueries($qb, 'vt', $locale);
+        $qb = $qb
             ->andWhere('v.displayedTrailer = 1')
             ->andWhere('(v.publishedAt IS NULL OR v.publishedAt <= :datetime)')
             ->andWhere('(v.publishEndedAt IS NULL OR v.publishEndedAt >= :datetime)')
             ->setParameter(':datetime', new \DateTime())
-            ->orderBy('t.title', 'asc')
+            ->orderBy('vt.title', 'asc')
         ;
 
         return $qb->getQuery()->getResult();
@@ -85,8 +84,7 @@ class MediaVideoRepository extends EntityRepository
     public function getVideosByFilm($locale, $film)
     {
         $qb = $this->createQueryBuilder('mv');
-
-        $qb
+        $qb = $qb
             ->join('mv.translations', 'mvt')
             ->where('mv.locale = :locale')
             ->setParameter('locale', $locale)

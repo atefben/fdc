@@ -57,14 +57,28 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="integer", nullable=true, options={"default":0})
      */
-    private $state;
+    private $jobWebmState;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true, options={"default":0})
+     */
+    private $jobMp4State;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $job;
+    private $jobMp4Id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $jobWebmId;
 
     /**
      * @var Theme
@@ -221,52 +235,6 @@ class MediaVideoTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set state
-     *
-     * @param integer $state
-     * @return MediaVideo
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return integer
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
-     * Set job
-     *
-     * @param string $job
-     * @return MediaVideo
-     */
-    public function setJob($job)
-    {
-        $this->job = $job;
-
-        return $this;
-    }
-
-    /**
-     * Get job
-     *
-     * @return string
-     */
-    public function getJob()
-    {
-        return $this->job;
-    }
-
-    /**
      * Set imageAmazonUrl
      *
      * @param string $imageAmazonUrl
@@ -287,5 +255,97 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function getImageAmazonUrl()
     {
         return $this->imageAmazonUrl;
+    }
+
+    /**
+     * Set jobWebmState
+     *
+     * @param integer $jobWebmState
+     * @return MediaVideoTranslation
+     */
+    public function setJobWebmState($jobWebmState)
+    {
+        $this->jobWebmState = $jobWebmState;
+
+        return $this;
+    }
+
+    /**
+     * Get jobWebmState
+     *
+     * @return integer 
+     */
+    public function getJobWebmState()
+    {
+        return $this->jobWebmState;
+    }
+
+    /**
+     * Set jobMp4State
+     *
+     * @param integer $jobMp4State
+     * @return MediaVideoTranslation
+     */
+    public function setJobMp4State($jobMp4State)
+    {
+        $this->jobMp4State = $jobMp4State;
+
+        return $this;
+    }
+
+    /**
+     * Get jobMp4State
+     *
+     * @return integer 
+     */
+    public function getJobMp4State()
+    {
+        return $this->jobMp4State;
+    }
+
+    /**
+     * Set jobMp4Id
+     *
+     * @param string $jobMp4Id
+     * @return MediaVideoTranslation
+     */
+    public function setJobMp4Id($jobMp4Id)
+    {
+        $this->jobMp4Id = $jobMp4Id;
+
+        return $this;
+    }
+
+    /**
+     * Get jobMp4Id
+     *
+     * @return string 
+     */
+    public function getJobMp4Id()
+    {
+        return $this->jobMp4Id;
+    }
+
+    /**
+     * Set jobWebmId
+     *
+     * @param string $jobWebmId
+     * @return MediaVideoTranslation
+     */
+    public function setJobWebmId($jobWebmId)
+    {
+        $this->jobWebmId = $jobWebmId;
+
+        return $this;
+    }
+
+    /**
+     * Get jobWebmId
+     *
+     * @return string 
+     */
+    public function getJobWebmId()
+    {
+        return $this->jobWebmId;
     }
 }

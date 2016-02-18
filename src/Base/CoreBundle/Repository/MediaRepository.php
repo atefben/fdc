@@ -2,13 +2,11 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\Media;
-
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Doctrine\ORM\EntityRepository;
 
+use Base\CoreBundle\Component\Repository\EntityRepository;
 
 /**
  * MediaRepository class.
@@ -26,38 +24,18 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getImageMedia($locale,$festival,$dateTime)
+    public function getImageMedia($locale, $festival)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
+            ->where('m.festival = :festival');
 
-            ->where('m.festival = :festival')
-            ->andWhere('s.slug = :site_slug')
-            ->andWhere('(m.publishedAt IS NULL OR m.publishedAt <= :datetime) AND (m.publishEndedAt IS NULL OR m.publishEndedAt >= :datetime)')
-            ->andWhere('(mit.locale = :locale AND mit.status = :status)');
-
-        if($locale != 'fr') {
-            $qb = $qb
-                ->andWhere(
-                    '(mit.locale = :locale AND mit.status = :status)'
-                )
-                ->setParameter('status', MediaImageTranslation::STATUS_TRANSLATED);
-        } else {
-            $qb = $qb
-                ->andWhere(
-                    '(mit.locale = :locale AND mit.status = :status)'
-                )
-                ->setParameter('status', MediaImageTranslation::STATUS_PUBLISHED);
-        }
-
+        $qb = $this->addMasterQueries($qb, 'mi', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
-            ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel')
-
             ->getQuery()
             ->getResult();
 
@@ -70,7 +48,7 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getImageMediaByDay($locale,$festival,$dateTime)
+    public function getImageMediaByDay($locale, $festival, $dateTime)
     {
 
         $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
@@ -80,34 +58,17 @@ class MediaRepository extends EntityRepository
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
-            ->where('m.festival = :festival')
-            ->andWhere('s.slug = :site_slug')
-            ->andWhere('(mit.locale = :locale AND mit.status = :status)')
-            ->andWhere('(m.publishedAt >= :datetime) AND (m.publishedAt < :datetime2)');
+            ->where('(m.publishedAt >= :datetime) AND (m.publishedAt < :datetime2)');
 
-        if($locale != 'fr') {
-            $qb = $qb
-                ->andWhere(
-                    '(mit.locale = :locale AND mit.status = :status)'
-                )
-                ->setParameter('status', MediaImageTranslation::STATUS_TRANSLATED);
-        } else {
-            $qb = $qb
-                ->andWhere(
-                    '(mit.locale = :locale AND mit.status = :status)'
-                )
-                ->setParameter('status', MediaImageTranslation::STATUS_PUBLISHED);
-        }
-
+        $qb = $this->addMasterQueries($qb, 'mi', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
             ->setParameter('datetime', $dateTime1)
-            ->setParameter('datetime2', $dateTime2)
-            ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('datetime2', $dateTime2);
 
+        $qb = $qb
             ->getQuery()
-//            ->getParameters();
             ->getResult();
 
         return $qb;
@@ -119,38 +80,18 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getVideoMedia($locale,$festival,$dateTime)
+    public function getVideoMedia($locale, $festival)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
+            ->where('m.festival = :festival');
 
-            ->where('m.festival = :festival')
-            ->andWhere('s.slug = :site_slug')
-            ->andWhere('(m.publishedAt IS NULL OR m.publishedAt <= :datetime) AND (m.publishEndedAt IS NULL OR m.publishEndedAt >= :datetime)')
-            ->andWhere('(mit.locale = :locale AND mit.status = :status)');
-
-        if($locale != 'fr') {
-            $qb = $qb
-                ->andWhere(
-                    '(mit.locale = :locale AND mit.status = :status)'
-                )
-                ->setParameter('status', MediaVideoTranslation::STATUS_TRANSLATED);
-        } else {
-            $qb = $qb
-                ->andWhere(
-                    '(mit.locale = :locale AND mit.status = :status)'
-                )
-                ->setParameter('status', MediaVideoTranslation::STATUS_PUBLISHED);
-        }
-
+        $qb = $this->addMasterQueries($qb, 'mi', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
-            ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel')
-
             ->getQuery()
             ->getResult();
 
@@ -163,38 +104,18 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getAudioMedia($locale,$festival,$dateTime)
+    public function getAudioMedia($locale, $festival)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaAudio', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
+            ->where('m.festival = :festival');
 
-            ->where('m.festival = :festival')
-            ->andWhere('s.slug = :site_slug')
-            ->andWhere('(m.publishedAt IS NULL OR m.publishedAt <= :datetime) AND (m.publishEndedAt IS NULL OR m.publishEndedAt >= :datetime)')
-            ->andWhere('(mit.locale = :locale AND mit.status = :status)');
-
-        if($locale != 'fr') {
-            $qb = $qb
-                ->andWhere(
-                    '(mit.locale = :locale AND mit.status = :status)'
-                )
-                ->setParameter('status', MediaAudioTranslation::STATUS_TRANSLATED);
-        } else {
-            $qb = $qb
-                ->andWhere(
-                    '(mit.locale = :locale AND mit.status = :status)'
-                )
-                ->setParameter('status', MediaAudioTranslation::STATUS_PUBLISHED);
-        }
-
+        $qb = $this->addMasterQueries($qb, 'mi', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
-            ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel')
-
             ->getQuery()
             ->getResult();
 

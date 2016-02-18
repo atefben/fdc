@@ -221,6 +221,11 @@ class NewsVideoAdmin extends Admin
             ->add('signature', null, array(
                 'help' => 'form.news.helper_signature'
             ))
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
+                'help' => 'form.news.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle',
+            ))
             ->add('video', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_video',
                 'help' => 'form.news.helper_header_video',

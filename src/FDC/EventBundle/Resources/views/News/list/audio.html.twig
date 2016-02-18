@@ -9,16 +9,23 @@
 
     <div id="gridAudios" class="grid-wrapper" data-type="audios">
         <div class="grid-sizer"></div>
-
+            {{ dump(audios) }}
         {% for audio in audios %}
             {% set trans = audio.findTranslationByLocale(app.request.locale) %}
             {% if trans is null %}
                 {% set trans = audio.findTranslationByLocale('fr') %}
             {% endif %}
             <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio|trans_fallback('createdAt')|date('d-m-y') }} shadow-bottom audio" data-sound="{% path trans.file , 'reference'%}">
-                {% set transImage = audio.image.findTranslationByLocale(app.request.locale) %}
-                {% if transImage is null %}
-                    {% set transImage = audio.image.findTranslationByLocale('fr') %}
+                {% if audio.header is not null %}
+                    {% set transImage = audio.header.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null %}
+                        {% set transImage = audio.header.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% else %}
+                    {% set transImage = audio.image.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null %}
+                        {% set transImage = audio.image.findTranslationByLocale('fr') %}
+                    {% endif %}
                 {% endif %}
                 <img src="{% path transImage.file , '573x362' %}" srcset="{% path transImage.file , '573x362' %} 1x, {% path transImage.file , '1461x923' %} 2x" alt="">
                 <div class="picto">
