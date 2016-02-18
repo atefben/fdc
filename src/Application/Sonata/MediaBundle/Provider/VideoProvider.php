@@ -60,7 +60,7 @@ class VideoProvider extends FileProvider
 		
 		//System preset: Webm 720p ID : 1351620000001-100240
 		$job = $elasticTranscoder->createJob(array(
-		    'PipelineId' => '1351620000001-100240',
+		    'PipelineId' => '1454076999739-uy533t',
 		    'OutputKeyPrefix' => $path_video_output,
 		    'Input' => array(
 		        'Key' => $path_video_input . $media->getProviderReference(),
@@ -74,7 +74,7 @@ class VideoProvider extends FileProvider
 		        array(
 		            'Key' =>  $media->getProviderReference(),
 		            'Rotate' => 'auto',
-		            'PresetId' => '1351620000001-000001',
+		            'PresetId' => '1351620000001-100240',
 		        ),
 		    ),
 		));
