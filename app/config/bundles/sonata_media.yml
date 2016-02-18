@@ -80,7 +80,6 @@ sonata_media:
                 # Articles le même jour
                 590x370: { width: 590 , height: 370 , quality: 100 }
 
-
                 ##### OLDS #####
                 197x142: { width: 197 , height: 142 , quality: 100 }
                 363x229: { width: 363 , height: 229 , quality: 100 }
@@ -94,6 +93,7 @@ sonata_media:
             formats:
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 976x535: { width: 976 , height: 535 , quality: 100 }
+                586x370: { width: 586 , height: 370 , quality: 100 }
 
         media_audio:
             providers:

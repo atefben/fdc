@@ -2,7 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -27,11 +27,13 @@ class GalleryAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('name', null, array(
                 'translation_domain' => 'BaseAdminBundle',
             ))
         ;
+
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
     }
 
     /**
@@ -40,8 +42,9 @@ class GalleryAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('name')
+            ->add('createdAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit'   => array(),
