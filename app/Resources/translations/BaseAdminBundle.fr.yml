@@ -232,6 +232,9 @@ list:
         label_encoding_state: Encodage (en attent, en cours, prêt)
     media_audio:
         label_published_at: Publié le
+    media_image_simple:
+        label_name: Nom de l'image
+        label_alt: Alt de l'image
     common:
         label_id: Id
 
