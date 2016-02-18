@@ -227,6 +227,8 @@ list:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
         since: depuis
+    media_audio:
+        label_published_at: Publié le
 
 filter:
     label_position: Position
