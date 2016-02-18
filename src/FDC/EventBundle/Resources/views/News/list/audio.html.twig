@@ -9,7 +9,6 @@
 
     <div id="gridAudios" class="grid-wrapper" data-type="audios">
         <div class="grid-sizer"></div>
-            {{ dump(audios) }}
         {% for audio in audios %}
             {% set trans = audio.findTranslationByLocale(app.request.locale) %}
             {% if trans is null %}
