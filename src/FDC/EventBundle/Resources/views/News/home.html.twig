@@ -16,20 +16,49 @@
                 <div id="slider" class="owl-carousel">
                     {% for slide in homeSlider %}
                         {% if slide != null %}
-                            {% if slide.header is not null %}
+                            {% if slide is news_article %}
                                 {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
                                 {% if trans is null or trans.file is null %}
                                     {% set trans = slide.header.findTranslationByLocale('fr') %}
                                 {% endif %}
-                            {% elseif slide.audio is not null %}
-                                {% set trans = slide.audio.image.findTranslationByLocale(app.request.locale) %}
-                                {% if trans is null or trans.file is null %}
-                                    {% set trans = slide.audio.image.findTranslationByLocale('fr') %}
+                            {% elseif slide is news_audio %}
+                                {% if slide.header is not null %}
+                                    {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = slide.header.findTranslationByLocale('fr') %}
+                                    {% endif %}
                                 {% endif %}
-                            {% elseif slide.gallery is not null %}
-                                {% set trans = slide.gallery.medias[0].media.findTranslationByLocale(app.request.locale) %}
-                                {% if trans is null or trans.file is null %}
-                                    {% set trans = slide.gallery.medias[0].media.findTranslationByLocale('fr') %}
+                                {% if trans is not defined or trans.file is null %}
+                                    {% set trans = slide.audio.image.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = slide.audio.image.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                {% endif %}
+                            {% elseif slide is news_video %}
+                                {% if slide.header is not null %}
+                                    {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = slide.header.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                {% endif %}
+                                {% if trans is not defined or trans.file is null %}
+                                    {% set trans = slide.video.image.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = slide.video.image.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                {% endif %}
+                            {% elseif slide is news_image %}
+                                {% if slide.header is not null %}
+                                    {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = slide.header.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                {% endif %}
+                                {% if trans is not defined or trans.file is null %}
+                                    {% set trans = slide.gallery.medias[0].media.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = slide.gallery.medias[0].media.findTranslationByLocale('fr') %}
+                                    {% endif %}
                                 {% endif %}
                             {% endif %}
                             <div>

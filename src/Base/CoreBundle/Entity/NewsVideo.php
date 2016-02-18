@@ -56,7 +56,7 @@ class NewsVideo extends News
 
     public function getNewsFormat()
     {
-        return 'articles';
+        return 'videos';
     }
 
     /**
@@ -101,6 +101,17 @@ class NewsVideo extends News
      * @return \Base\CoreBundle\Entity\MediaImage 
      */
     public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Get header
+     *
+     * @return MediaImage
+     */
+    public function getHeader()
     {
         return $this->image;
     }

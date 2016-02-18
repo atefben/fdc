@@ -226,6 +226,11 @@ class NewsImageAdmin extends Admin
                 'help' => 'form.news.helper_header_gallery',
                 'translation_domain' => 'BaseAdminBundle'
             ))
+            ->add('header', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
+                'help' => 'form.news.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle',
+            ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
                 'required' => false

@@ -6,7 +6,8 @@
 
     <div class="a2lix_translationsFields tab-content">
         {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations : null %}
-        {% set headerTranslations = (form.parent.children.video.vars.data is not null) ? form.parent.children.video.vars.data.translations : null %}
+        {% set headerTranslations = (form.parent.children.image.vars.data is not null) ? form.parent.children.image.vars.data.translations : null %}
+        {% set videoTranslations = (form.parent.children.video.vars.data is not null) ? form.parent.children.video.vars.data.translations : null %}
         {% set newsNewsTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data : null %}
 
         {% for translationsFields in form %}
@@ -26,6 +27,7 @@
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(form.parent.children.theme) }}
+                                        {{ form_row(form.parent.children.image) }}
                                         {{ form_row(form.parent.children.video) }}
                                         {{ form_row(translationsFields.introduction) }}
                                         {{ form_row(form.parent.children.signature) }}
@@ -36,6 +38,81 @@
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.title) }}
                                         <div class="form-group">
+                                            <label class="control-label">
+                                                Theme
+                                            </label>
+                                            <div>
+                                                {% if themeTranslations is not null and
+                                                themeTranslations.get(locale) is not null %}
+                                                    {{ themeTranslations.get(locale).name }}
+                                                {% endif %}
+                                                {% if form.parent.children.theme.vars.value is not null %}
+                                                    <a target="_blank" href="{{ path('admin_base_core_theme_edit', {'id': form.parent.children.theme.vars.value}) }}">
+                                                        modifier la traduction
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Tags de recherche
+                                            </label>
+                                            <div>
+                                                {% if newsNewsTag is not null %}
+                                                    {% for tmp in newsNewsTag %}
+                                                        {% set tagTranslation = tmp.tag.translations %}
+                                                        {% if tagTranslation.get(locale) is not null %}
+                                                            <div>
+                                                                {{ tagTranslation.get(locale).name }}
+                                                                <a target="_blank" href="{{ path('admin_base_core_newstag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <header>
+                                                Image principale
+                                            </header>
+                                            <div>
+                                                <label>
+                                                    Légende
+                                                </label>
+                                                <span>
+                                                {% if headerTranslations is not null and
+                                                headerTranslations.get(locale) is not null %}
+                                                    {{ headerTranslations.get(locale).legend }}
+                                                {% endif %}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    Alt
+                                                </label>
+                                                <span>
+                                                {% if headerTranslations is not null and
+                                                headerTranslations.get(locale) is not null %}
+                                                    {{ headerTranslations.get(locale).alt }}
+                                                {% endif %}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    Copyright
+                                                </label>
+                                                <span>
+                                                    {% if headerTranslations is not null and
+                                                    headerTranslations.get(locale) is not null %}
+                                                        {{ headerTranslations.get(locale).copyright }}
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            {% if form.parent.children.image.vars.value is not null %}
+                                                <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.image.vars.value}) }}">modifier les traductions</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="form-group">
                                             <header>
                                                 Vidéo principale
                                             </header>
@@ -44,9 +121,9 @@
                                                     Titre
                                                 </label>
                                                 <span>
-                                                {% if headerTranslations is not null and
-                                                headerTranslations.get(locale) is not null %}
-                                                    {{ headerTranslations.get(locale).title }}
+                                                {% if videoTranslations is not null and
+                                                videoTranslations.get(locale) is not null %}
+                                                    {{ videoTranslations.get(locale).title }}
                                                 {% endif %}
                                                 </span>
                                             </div>
@@ -156,6 +233,47 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <header>
+                                                Informations Image principale
+                                            </header>
+                                            <div>
+                                                <label>
+                                                    Légende
+                                                </label>
+                                                <span>
+                                                {% if headerTranslations is not null and
+                                                headerTranslations.get(locale) is not null %}
+                                                    {{ headerTranslations.get(locale).legend }}
+                                                {% endif %}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    Alt
+                                                </label>
+                                                <span>
+                                                {% if headerTranslations is not null and
+                                                headerTranslations.get(locale) is not null %}
+                                                    {{ headerTranslations.get(locale).alt }}
+                                                {% endif %}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    Copyright
+                                                </label>
+                                                <span>
+                                                    {% if headerTranslations is not null and
+                                                    headerTranslations.get(locale) is not null %}
+                                                        {{ headerTranslations.get(locale).copyright }}
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            {% if form.parent.children.image.vars.value is not null %}
+                                                <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.image.vars.value}) }}">modifier les traductions</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="form-group">
                                             <label class="control-label">
                                                 Informations vidéo principale
                                             </label>
@@ -164,9 +282,9 @@
                                                     Titre
                                                 </label>
                                                 <span>
-                                                    {% if headerTranslations is not null and
-                                                    headerTranslations.get('fr') is not null %}
-                                                        {{ headerTranslations.get('fr').title }}
+                                                    {% if videoTranslations is not null and
+                                                    videoTranslations.get('fr') is not null %}
+                                                        {{ videoTranslations.get('fr').title }}
                                                     {% endif %}
                                                 </span>
                                             </div>
