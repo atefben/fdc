@@ -34,7 +34,7 @@ class VideoProvider extends FileProvider
 		    'PipelineId' => '1454076999739-uy533t',
 		    'OutputKeyPrefix' => 'your/output/prefix/',
 		    'Input' => array(
-		        'Key' => $media->getReferenceImage(),
+		        'Key' => $media->getProviderReference(),
 		        'FrameRate' => 'auto',
 		        'Resolution' => 'auto',
 		        'AspectRatio' => 'auto',
@@ -43,7 +43,7 @@ class VideoProvider extends FileProvider
 		    ),
 		    'Outputs' => array(
 		        array(
-		            'Key' => str_replace('media_video', 'media_video_encoded', $media->getReferenceImage()),
+		            'Key' => str_replace('media_video', 'media_video_encoded', $media->getProviderReference()),
 		            'Rotate' => 'auto',
 		            'PresetId' => '1351620000001-000001',
 		        ),
