@@ -28,12 +28,14 @@
             {{ 'movie.label.pays'|trans }} : <span>{{ movie.author.from }}</span>
             {{ 'movie.label.duree'|trans }} : <span>{{ movie.duration }}</span>
             {{ 'movie.label.datedesortie'|trans }} : <span>{{ movie.releaseYear }}</span></p>
-
+    <div class="palmares">
+        <i class="icon icon_palme"></i>
+        <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
+    </div>
+    <div class="info-film">
         <div  class="synopsis">
             <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
-            <p>
-                {{ movie.synopsis|raw }}
-            </p>
+            <p>{{ movie.synopsis|raw }}</p>
         </div>
     </div>
 </div>

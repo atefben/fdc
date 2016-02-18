@@ -11052,6 +11052,12 @@ article .read-later.rAlign span:after {
   margin-top: 48px;
   margin-bottom: -38px;
 }
+.single-movie .palmares.trailer {
+  -moz-transform: translateY(570px);
+  -ms-transform: translateY(570px);
+  -webkit-transform: translateY(570px);
+  transform: translateY(570px);
+}
 .single-movie .palmares i {
   font-size: 2.75rem;
   color: #c8a461;
@@ -11224,6 +11230,9 @@ article .read-later.rAlign span:after {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition-delay: 0.2s;
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s;
+}
+.single-movie .main-image.trailer:after {
+  content: none;
 }
 .single-movie .main-image.trailer .trailer {
   opacity: 1;

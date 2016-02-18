@@ -4,37 +4,37 @@
         {% for menu in menus %}
             {% if menu.id < 7 %}
                 <li>
-                    {% if menu.route == 'fdc_event_television_trailers' %}
+                    {% if menu.route == 'fdc_event_television_trailers' and menu.enabled == true %}
                         <a href="{{ path(menu.route, { 'slug': 'competition' }) }}"
                            class="{% if route =='fdc_event_television_trailers' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
-                    {% elseif menu.route == 'fdc_event_movie_selection' %}
+                    {% elseif menu.route == 'fdc_event_movie_selection' and menu.enabled == true %}
                         <a href="{{ path(menu.route, { 'slug': 'competition' }) }}"
                            class="{% if route =='fdc_event_movie_selection' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
-                    {% elseif menu.route == 'fdc_event_jury_get' %}
+                    {% elseif menu.route == 'fdc_event_jury_get' and menu.enabled == true %}
                         <a href="{{ path(menu.route, { 'type': '1' }) }}"
                            class="{% if route == 'fdc_event_jury_get' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
-                    {% elseif menu.route == 'fdc_event_palmares_get' %}
+                    {% elseif menu.route == 'fdc_event_palmares_get' and menu.enabled == true %}
                         <a href="{{ path(menu.route, { 'section': 'competition' }) }}"
                            class="{% if route == 'fdc_event_palmares_get' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
-                    {% elseif menu.route == 'fdc_event_news_index' %}
+                    {% elseif menu.route == 'fdc_event_news_index' and menu.enabled == true %}
                         <a href="{{ path(menu.route) }}"
                            class="{% if route in routesArticles %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
-                    {% elseif menu.route == 'fdc_event_television_live' %}
+                    {% elseif menu.route == 'fdc_event_television_live' and menu.enabled == true  %}
                         <a href="{{ path(menu.route) }}"
                            class="{% if route in routesWebTv %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
-                    {% elseif menu.route == 'fdc_event_event_getevents' %}
+                    {% elseif menu.route == 'fdc_event_event_getevents' and menu.enabled == true  %}
                         <a href="{{ path(menu.route) }}"
                            class="{% if route == 'fdc_event_event_getevents' %}active{% endif %}">
                             {{ menu.transName|trans }}
