@@ -2,10 +2,8 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\MediaImageSimple;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 
 use Base\AdminBundle\Component\Admin\Admin;
@@ -54,54 +52,15 @@ class MediaVideoAdmin extends Admin
             ->add('webTv', null, array(
                 'label' => 'filter.media_video.label_web_tv',
             ))
-            ->add('createdBefore', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] == null) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.createdAt < :before');
-                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
 
-                    return true;
-                },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-                'label'         => 'filter.common.label_created_before',
-            ))
-            ->add('createdAfter', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] == null) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.createdAt > :after');
-                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+        ;
 
-                    return true;
-                },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-                'label'         => 'filter.common.label_created_after',
-            ))
-            ->add('priorityStatus', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] !== null) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.priorityStatus LIKE :priorityStatus');
-                    $queryBuilder->setParameter('priorityStatus', '%' . $value['value'] . '%');
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addStatusFilter($datagridMapper);
+        $datagridMapper = $this->addPriorityFilter($datagridMapper);
 
-                    return true;
-                },
-                'field_type'    => 'choice',
-                'field_options' => array(
-                    'choices'                   => MediaImageSimple::getPriorityStatusesList(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
+
+        $datagridMapper
             ->add('displayedHome', null, array(
                 'field_type' => 'checkbox',
                 'label'      => 'filter.media_video.displayed_home',

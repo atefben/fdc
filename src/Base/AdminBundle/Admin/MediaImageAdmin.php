@@ -1,8 +1,9 @@
 <?php
 namespace Base\AdminBundle\Admin;
+
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -10,6 +11,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\Valid;
+
 /**
  * MediaImageAdmin class.
  *
@@ -23,17 +25,19 @@ class MediaImageAdmin extends Admin
         'cascade_validation' => true
     );
     protected $translationDomain = 'BaseAdminBundle';
+
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('legend', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
@@ -46,89 +50,43 @@ class MediaImageAdmin extends Admin
                     $queryBuilder->setParameter('legend', '%' . $value['value'] . '%');
                     return true;
                 },
-                'field_type' => 'text'
+                'field_type' => 'text',
+                'label'      => 'filter.media_image.label_legend'
             ))
             ->add('theme')
-            ->add('createdBefore', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.createdAt < :before');
-                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
-                    return true;
-                },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-                'label'         => 'filter.media_image.label_created_before',
+        ;
+
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addStatusFilter($datagridMapper);
+        $datagridMapper = $this->addPriorityFilter($datagridMapper);
+
+        $datagridMapper
+            ->add('displayedAll', null, array(
+                'field_type' => 'checkbox',
+                'label'      => 'filter.media_image.displayed_all',
+
             ))
-            ->add('createdAfter', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.createdAt > :after');
-                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
-                    return true;
-                },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-                'label'         => 'filter.media_image.label_created_after',
+            ->add('displayedHome', null, array(
+                'field_type' => 'checkbox',
+                'label'      => 'filter.media_image.displayed_home',
+
             ))
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-                    return true;
-                },
-                'field_type'    => 'choice',
-                'field_options' => array(
-                    'choices'                   => MediaImageTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
-            ->add('priorityStatus', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.priorityStatus LIKE :priorityStatus');
-                    $queryBuilder->setParameter('priorityStatus', '%' . $value['value'] . '%');
-                    return true;
-                },
-                'field_type'    => 'choice',
-                'field_options' => array(
-                    'choices'                   => Mediaimage::getPriorityStatusesList(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
-        ;;
+        ;
     }
+
     /**
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('legend', null, array(
                 'label'    => 'list.label_legend_img',
                 'template' => 'BaseAdminBundle:MediaImage:list_legend.html.twig',
-                'sortable' => 'translations.legend',
             ))
-            ->add('theme', null, array(
-                'sortable' => 'theme.translations.name',
-            ))
+            ->add('theme', null, array())
             ->add('createdAt')
             ->add('publishedInterval', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
@@ -138,15 +96,12 @@ class MediaImageAdmin extends Admin
                 'choices'   => MediaImage::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
-            ->add('statusMain', 'choice', array(
-                'choices'   => MediaImageTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
         ;
     }
+
     /**
      * @param FormMapper $formMapper
      */
@@ -285,6 +240,7 @@ class MediaImageAdmin extends Admin
             ->end()
         ;
     }
+
     /**
      * @param ShowMapper $showMapper
      */

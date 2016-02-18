@@ -291,6 +291,9 @@ filter:
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le
+        label_legend: Légende de l'image
+        displayed_home: Photos remontées dans le diaporama du quotidien en home page
+        displayed_all: Photos remontées dans toutes les photos
     media_audio:
         displayed_home: Audios affichés en tant qu'actualités sur la homepage
         displayed_all: Audios remontés dans "Tous les audios"
@@ -301,7 +304,7 @@ filter:
     media_video:
         label_title_video: Titre de la vidéo
         label_web_tv: Chaîne
-        displayed_home: Vidéos affichées en tant qu'actualités sur la homepage
+        displayed_home: Vidéos affichées en tant qu'actualités sur la home page
         displayed_trailer: Bandes annonces et extraits
     common:
         label_id: Id
