@@ -72,7 +72,7 @@ class VideoProvider extends FileProvider
 		    ),
 		    'Outputs' => array(
 		        array(
-		            'Key' =>  $media->getProviderReference(),
+		            'Key' =>  str_replace('.mp4', '.webm', $media->getProviderReference()),
 		            'Rotate' => 'auto',
 		            'PresetId' => '1351620000001-100240',
 		        ),
