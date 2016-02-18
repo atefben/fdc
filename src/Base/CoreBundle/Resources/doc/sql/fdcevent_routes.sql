@@ -46,36 +46,3 @@ INSERT INTO `fdcevent_routes` (`id`, `parent_id`, `route`, `name`, `enabled`, `l
 (23, 8, 'fdc_event_participate_partners', 'Partenaires', 1, 8, 1, 9, 8, 'fdc-event-participate-prepare/fdc-event-participate-partners', 3, '2016-02-16 16:01:47', '2016-02-16 16:01:47', 'header.mainnav.nav.partenaires'),
 (24, 8, 'fdc_event_participate_suppliers', 'Fournisseurs', 1, 10, 1, 11, 8, 'fdc-event-participate-prepare/fdc-event-participate-suppliers', 4, '2016-02-16 16:02:16', '2016-02-16 16:02:16', 'header.mainnav.nav.fournisseurs');
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `fdcevent_routes`
---
-ALTER TABLE `fdcevent_routes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_EAC657DA727ACA70` (`parent_id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `fdcevent_routes`
---
-ALTER TABLE `fdcevent_routes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `fdcevent_routes`
---
-ALTER TABLE `fdcevent_routes`
-  ADD CONSTRAINT `FK_EAC657DA727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `fdcevent_routes` (`id`) ON DELETE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

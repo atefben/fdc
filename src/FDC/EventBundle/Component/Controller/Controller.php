@@ -22,13 +22,14 @@ class Controller extends BaseController
      */
     public function isPageEnabled($route)
     {
-        $page = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCEventRoutes')->findOneBy(array(
-            'route' => $route
-        ));
+        if($route != null) {
+            $page = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCEventRoutes')->findOneBy(array(
+                'route' => $route
+            ));
 
-        if(!$page->getEnabled())
-            throw $this->createNotFoundException("This page is disabled.");
-
+            if(!$page->getEnabled())
+                throw $this->createNotFoundException("This page is disabled.");
+        }
     }
 
     /**
