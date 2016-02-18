@@ -18,7 +18,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                {% thumbnail file, gabarit, with {'alt': img|trans_fallback('alt') } %}
+                {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
             {% elseif article is news_video %}
                 {% set header = article.header %}
                 {% if header is not null and header.file is not null %}
