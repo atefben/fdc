@@ -202,8 +202,7 @@
                       <img src="img/articles/03.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i>
-<span>Ajouter à ma sélection</span></a>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i> <span>Ajouter à ma sélection</span></a>
                     <span class="picto"><i class="icon icon_video"></i></span>
                   </div>
                   <div class="info">
@@ -217,8 +216,7 @@
                       <img src="img/articles/03.jpg" alt="" />
                     </div>
                     <a href="article.php" class="linkImage"></a>
-                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i>
-<span>Ajouter à ma sélection</span></a>
+                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i> <span>Ajouter à ma sélection</span></a>
                     <span class="picto"><i class="icon icon_photo"></i></span>
                   </div>
                   <div class="info">

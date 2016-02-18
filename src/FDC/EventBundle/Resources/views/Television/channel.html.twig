@@ -12,12 +12,12 @@
 
         <div class="small-container">
             <div class="player video-container state-init video"
-                 data-facebook="//www.facebook.com"
-                 data-twitter="//www.twitter.com"
-                 data-link="//www.example.com"
-                 data-email="//www.gmail.com"
-                 data-playlist='[
-                 {%- for video in webTvVideos %}
+                data-facebook="//www.facebook.com"
+                data-twitter="//www.twitter.com"
+                data-link="//www.example.com"
+                data-email="//www.gmail.com"
+                data-playlist='[
+                {%- for video in webTvVideos %}
                 {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
                 {%- if trans is null or trans.file is null -%}
                     {%- set trans = video.file.findTranslationByLocale('fr') -%}
@@ -36,7 +36,7 @@
                     {%- endif -%}
                 {%- endfor -%}
                 ]'>
-                <div id="video-player" class="video-player v_1455119933">
+                <div id="video-player{#todo : video id to add here#}" class="video-player-pl">
                 </div>
                 <div class="video-overlay"></div>
                 <div class="infos-bar">
@@ -44,21 +44,13 @@
                     <div class="info">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <a href="#" class="category">{{ webTvVideos[0].theme|trans_fallback('name') }}</a><span class="date">{{ webTvVideos[0].createdAt|date('d.m.y') }}</span> . <span
-                                        class="hour">{{ webTvVideos[0].createdAt|date('H:i') }}</span>
+                                <a href="#" class="category">{{ webTvVideos[0].theme|trans_fallback('name') }}</a><span class="date">{{ webTvVideos[0].createdAt|date('d.m.y') }}</span> . <span class="hour">{{ webTvVideos[0].createdAt|date('H:i') }}</span>
                                 <p>{{ webTvVideos[0]|trans_fallback('title') }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {# To be removed #}
-            <script type="text/javascript">
-                document.addEventListener("DOMContentLoaded", function () {
-                    play1 = playerInit('video-player', false, true, false);
-                });
-            </script>
-            {# /To be removed #}
             <div class="infos-videos">
                 <div class="infos">
                     <strong>{{ webTvVideos[0].theme|trans_fallback('name') }}</strong>

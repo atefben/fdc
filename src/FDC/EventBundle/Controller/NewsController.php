@@ -36,6 +36,8 @@ class NewsController extends Controller {
         $locale = $request->getLocale();
         $isAdmin = true;
 
+
+
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null || $settings->getFestival() === null) {
@@ -285,8 +287,9 @@ class NewsController extends Controller {
      * @param $slug
      * @return array
      */
-    public function getAction($format, $slug) {
+    public function getAction(Request $request,$format, $slug) {
 
+        $this->isPageEnabled($request->get('_route'));
         $em       = $this->getDoctrine()->getManager();
         $locale   = $this->getRequest()->getLocale();
 
@@ -391,8 +394,10 @@ class NewsController extends Controller {
      *
      * @Template("FDCEventBundle:News/list:article.html.twig")
      */
-    public function getArticlesAction() {
+    public function getArticlesAction(Request $request) {
         //$offset = 30;
+        $this->isPageEnabled($request->get('_route'));
+
         $dateTime = new DateTime();
 
         $em     = $this->getDoctrine()->getManager();
@@ -454,7 +459,9 @@ class NewsController extends Controller {
      * @Route("/photos")
      * @Template("FDCEventBundle:News/list:photo.html.twig")
      */
-    public function getPhotosAction() {
+    public function getPhotosAction(Request $request) {
+
+        $this->isPageEnabled($request->get('_route'));
 
         $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
@@ -514,7 +521,9 @@ class NewsController extends Controller {
      * @Route("/videos")
      * @Template("FDCEventBundle:News/list:video.html.twig")
      */
-    public function getVideosAction() {
+    public function getVideosAction(Request $request) {
+
+        $this->isPageEnabled($request->get('_route'));
 
         $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
@@ -572,7 +581,9 @@ class NewsController extends Controller {
      * @Route("/audios")
      * @Template("FDCEventBundle:News/list:audio.html.twig")
      */
-    public function getAudiosAction() {
+    public function getAudiosAction(Request $request) {
+
+        $this->isPageEnabled($request->get('_route'));
 
         $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();

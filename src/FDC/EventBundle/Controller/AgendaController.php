@@ -2,8 +2,8 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Guzzle\Http\Message\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -21,8 +21,9 @@ class AgendaController extends Controller
      * @Template("FDCEventBundle:Agenda:scheduling.html.twig")
      *
      */
-    public function schedulingAction()
+    public function schedulingAction(Request $request)
     {
+        $this->isPageEnabled($request->get('_route'));
         $schedulingDays = array(
             array(
                 'date' => new \DateTime(),
@@ -149,8 +150,9 @@ class AgendaController extends Controller
      * @Template("FDCEventBundle:Agenda:agenda.html.twig")
      *
      */
-    public function getAction()
+    public function getAction(Request $request)
     {
+        $this->isPageEnabled($request->get('_route'));
         $agenda = array();
 
         return array(
@@ -164,8 +166,9 @@ class AgendaController extends Controller
      * @Template("FDCEventBundle:Agenda:room.html.twig")
      *
      */
-    public function roomAction()
+    public function roomAction(Request $request)
     {
+        $this->isPageEnabled($request->get('_route'));
         $rooms = array(
             array(
                 'name' => 'Grand Théatre Lumière',

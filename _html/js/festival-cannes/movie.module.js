@@ -139,7 +139,7 @@ $(document).ready(function() {
       $('html, body').animate({
         scrollTop: 0
       }, 300, function() {
-        $('.main-image, .poster, .info-film, .nav').addClass('trailer');
+        $('.main-image, .poster, .info-film, .palmares, .nav').addClass('trailer');
         $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
         $('#video-movie-trailer').closest('.video-container').css({
           'margin-top': '91px',
