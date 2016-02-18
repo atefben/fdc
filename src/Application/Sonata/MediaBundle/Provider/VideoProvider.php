@@ -27,14 +27,14 @@ class VideoProvider extends FileProvider
 		    ),
 		    'region' => 'eu-west-1',
 		));
-		error_log('MATDAC DEBUG 1 :: ' . print_r($media->getProviderReference(), true));
+		error_log('MATDAC DEBUG 1 :: ' . print_r($media->getReferenceImage(), true));
 		//System preset generic 1080p MP4 ID : 1351620000001-000001
 		
 		$job = $elasticTranscoder->createJob(array(
 		    'PipelineId' => '1454076999739-uy533t',
 		    'OutputKeyPrefix' => 'your/output/prefix/',
 		    'Input' => array(
-		        'Key' => $media->getProviderReference(),
+		        'Key' => $media->getReferenceImage(),
 		        'FrameRate' => 'auto',
 		        'Resolution' => 'auto',
 		        'AspectRatio' => 'auto',
@@ -43,7 +43,7 @@ class VideoProvider extends FileProvider
 		    ),
 		    'Outputs' => array(
 		        array(
-		            'Key' => str_replace('media_video', 'media_video_encoded', $media->getProviderReference()),
+		            'Key' => str_replace('media_video', 'media_video_encoded', $media->getReferenceImage()),
 		            'Rotate' => 'auto',
 		            'PresetId' => '1351620000001-000001',
 		        ),
