@@ -19,7 +19,7 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
-		//$path = $this->generatePublicUrl($media, $media->getProviderReference());
+		$path = $this->generatePublicUrl($media, $media->getProviderReference());
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
 		        'key' => 'AKIAJHXD67GEPPA2F4TQ',
@@ -27,7 +27,7 @@ class VideoProvider extends FileProvider
 		    ),
 		    'region' => 'eu-west-1',
 		));
-		error_log('MATDAC DEBUG 1 :: ' . print_r($media->path(), true));
+		error_log('MATDAC DEBUG 1 :: ' . print_r($path, true));
 		//System preset generic 1080p MP4 ID : 1351620000001-000001
 		
 		$job = $elasticTranscoder->createJob(array(
