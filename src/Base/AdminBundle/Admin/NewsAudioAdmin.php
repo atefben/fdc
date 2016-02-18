@@ -285,7 +285,7 @@ class NewsAudioAdmin extends Admin
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
-                'help' => 'form.news.helper_file',
+                'help' => 'form.seo.helper_file',
                 'required' => false
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
