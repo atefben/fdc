@@ -93,6 +93,7 @@ sonata_media:
 
             formats:
                 212x134: { width: 212 , height: 134 , quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
 
         media_audio:
             providers:
