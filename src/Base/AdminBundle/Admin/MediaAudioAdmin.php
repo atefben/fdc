@@ -41,13 +41,12 @@ class MediaAudioAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('title', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
-
                     $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
                     $queryBuilder->andWhere('t.title LIKE :title');
                     $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
@@ -55,74 +54,16 @@ class MediaAudioAdmin extends Admin
                     return true;
                 },
                 'field_type' => 'text',
+                'label'      => 'list.label_title_audio',
             ))
             ->add('theme')
-            ->add('createdBefore', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] == null) {
-                        return;
-                    }
-                    $queryBuilder->andWhere("{$alias}.createdAt < :before");
-                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+        ;
 
-                    return true;
-                },
-                'field_type' => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-                'label' => 'filter.media_audio.label_created_before',
-            ))
-            ->add('createdAfter', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] == null) {
-                        return;
-                    }
-                    $queryBuilder->andWhere("{$alias}.createdAt > :after");
-                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
 
-                    return true;
-                },
-                'field_type' => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-                'label' => 'filter.media_audio.label_created_after',
-            ))
-            ->add('publishedBefore', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] === null) {
-                        return;
-                    }
-                    $queryBuilder->andWhere("{$alias}.publishedAt < :before");
-                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
-
-                    return true;
-                },
-                'field_type' => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-                'label' => 'filter.media_audio.label_published_before',
-            ))
-            ->add('publishedAfter', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] === null) {
-                        return;
-                    }
-                    $queryBuilder->andWhere("{$alias}.publishedAt > :after");
-                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
-
-                    return true;
-                },
-                'field_type' => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-                'label' => 'filter.media_audio.label_published_after',
-            ))
+        $datagridMapper
             ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
                     if ($value['value'] === null) {
                         return;
                     }
@@ -132,14 +73,14 @@ class MediaAudioAdmin extends Admin
 
                     return true;
                 },
-                'field_type' => 'choice',
+                'field_type'    => 'choice',
                 'field_options' => array(
-                    'choices' => MediaAudioTranslation::getMainStatuses(),
+                    'choices'                   => MediaAudioTranslation::getMainStatuses(),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
             ->add('priorityStatus', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -148,20 +89,20 @@ class MediaAudioAdmin extends Admin
 
                     return true;
                 },
-                'field_type' => 'choice',
+                'field_type'    => 'choice',
                 'field_options' => array(
-                    'choices' => MediaAudio::getPriorityStatusesList(),
+                    'choices'                   => MediaAudio::getPriorityStatusesList(),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
             ->add('displayedAll', null, array(
                 'field_type' => 'checkbox',
-                'label' => 'filter.media_audio.displayed_all',
+                'label'      => 'filter.media_audio.displayed_all',
 
             ))
             ->add('displayedHome', null, array(
                 'field_type' => 'checkbox',
-                'label' => 'filter.media_audio.displayed_home',
+                'label'      => 'filter.media_audio.displayed_home',
 
             ))
         ;
@@ -173,22 +114,19 @@ class MediaAudioAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('legend', null, array(
+            ->add('id', null, array('label' => 'list.common.label_id'))
+            ->add('title', null, array(
                 'label'    => 'list.label_title_audio',
                 'template' => 'BaseAdminBundle:MediaAudio:list_title.html.twig'
             ))
             ->add('theme')
             ->add('createdAt')
-            ->add('publishedAt', null, array(
-                'label' => 'list.media_audio.label_published_at'
+            ->add('publishedInterval', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
+                'sortable' => 'publishedAt',
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaAudio::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices'   => MediaAudioTranslation::getStatuses(),
                 'catalogue' => 'BaseAdminBundle'
             ))
             ->add('_edit_translations', null, array(
@@ -265,7 +203,7 @@ class MediaAudioAdmin extends Admin
                 'btn_delete' => false
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_media_video_image',
+                'label'       => 'form.label_media_video_image',
                 'constraints' => array(
                     new NotNull(),
                 ),
