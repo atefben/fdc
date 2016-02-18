@@ -211,10 +211,19 @@ class MediaManager extends CoreManager
     }
 
     private function typeToContext($type){
-        $context = 'film_image';
+        $context = 'film_film';
         switch($type) {
-            case FilmFilmMedia::TYPE_MAIN:
+            case FilmFilmMedia::TYPE_DIRECTOR:
+                $context = 'film_director';
+                break;
+            case FilmFilmMedia::TYPE_POSTER:
                 $context = 'film_poster';
+                break;
+            case FilmFilmMedia::TYPE_MAIN:
+                $context = 'film_main';
+                break;
+            case FilmFilmMedia::TYPE_FILM:
+                $context = 'film_film';
                 break;
         }
 

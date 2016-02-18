@@ -15,7 +15,7 @@ sonata_media:
                 small: { width: 187 , height: 255 , quality: 100 }
                 big:   { width: 1000 , quality: 100 }
 
-        film_image:
+        film_film:
             providers:
                 - sonata.media.provider.image
 
@@ -35,7 +35,6 @@ sonata_media:
 
             formats:
                 212x134: { width: 212 , height: 134 , quality: 100 }
-                135x185: { width: 135 , height: 185 , quality: 100 }
                 197x142: { width: 197 , height: 142 , quality: 100 }
                 224x142: { width: 224 , height: 142 , quality: 100 }
                 265x167: { width: 265 , height: 167 , quality: 100 }
@@ -91,7 +90,6 @@ sonata_media:
             filesystem: sonata.media.filesystem.s3
             allowed_extensions: ['jpg', 'png', 'jpeg']
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png']
-            #resizer: sonata.media.resizer.square
 
     filesystem:
         s3:
