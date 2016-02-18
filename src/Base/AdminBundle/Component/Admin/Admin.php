@@ -13,7 +13,8 @@ class Admin extends BaseAdmin
             $queryBuilder
                 ->join("{$alias}.translations", 't')
                 ->where('t.locale = :locale')
-                ->setParameter('locale', 'fr');
+                ->setParameter('locale', 'fr')
+            ;
         }
         $joined = true;
 
