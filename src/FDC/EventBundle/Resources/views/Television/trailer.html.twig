@@ -13,36 +13,35 @@
             <section>
                 <article class="video">
                     <div class="video-container state-init video"
-                         data-facebook="//www.facebook.com"
-                         data-twitter="//www.twitter.com"
-                         data-link="//www.example.com"
-                         data-email="//www.gmail.com"
-                         data-playlist='[
+                        data-facebook="//www.facebook.com"
+                        data-twitter="//www.twitter.com"
+                        data-link="//www.example.com"
+                        data-email="//www.gmail.com"
+                        data-playlist='[
                             {%- for video in videos -%}
                                 {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
                                 {%- if trans is null or trans.file is null -%}
                                     {%- set trans = video.file.findTranslationByLocale('fr') -%}
                                 {%- endif -%}
                             {
-                              "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
-                              {%- if video.image -%}
-                              "image":"{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}",
-                              {%- else -%}
-                              "image":"{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}",
-                              {%- endif -%}
-                              "name":"{{ video|trans_fallback('title') }}",
-                              "category":"{{ video.theme }}"
+                                "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
+                                {%- if video.image -%}
+                                "image":"{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}",
+                                {%- else -%}
+                                "image":"{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}",
+                                {%- endif -%}
+                                "name":"{{ video|trans_fallback('title') }}",
+                                "category":"{{ video.theme }}"
                             }{%- if loop.last == false -%},{%- endif -%}
                             {%- endfor -%}
-                          ]'
-                         data-live="false"
-                         data-file=""
-                            {%- if videos[0].image -%}
+                        ]'
+                        data-file=""
+                        {%- if videos[0].image -%}
                         data-img="{%- path videos[0].image|trans_fallback('file', 'fr'), '975x616' -%}"
-                    {%- else -%}
+                        {%- else -%}
                         data-img="{%- path videos[0].image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}"
                             {%- endif -%}>
-                        <div id="video-player" class="video-player v_1455184257">
+                        <div id="video-player" class="video-player-pl">
                         </div>
                         <div class="video-overlay"></div>
                         <div class="infos-bar">
@@ -58,11 +57,6 @@
                             </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        document.addEventListener("DOMContentLoaded", function () {
-                            play1 = playerInit('video-player', false, true, false);
-                        });
-                    </script>
                     <span class="type-video">{{ videos[0].theme }}</span>
                     <span class="name-video">{{ videos[0]|trans_fallback('title') }}</span>
                 </article>
