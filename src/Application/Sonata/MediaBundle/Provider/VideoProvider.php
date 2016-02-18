@@ -22,11 +22,13 @@ class VideoProvider extends FileProvider
 		//$path = $this->generatePublicUrl($media, $media->getProviderReference());
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
-		        'key' => 'your key',
-		        'secret' => 'your secret',
+		        'key' => 'AKIAJHXD67GEPPA2F4TQ',
+		        'secret' => '8TtlhHgQEIPwQBQiDqCzG7h5Eq856H2jst1PtER6',
 		    ),
-		    'region' => 'eu-west-1', // dont forget to set the region
+		    'region' => 'eu-west-1',
 		));
+		
+		//System preset generic 1080p MP4 ID : 1351620000001-000001
 		
 		$job = $elasticTranscoder->createJob(array(
 		    'PipelineId' => '1454076999739-uy533t',
@@ -43,14 +45,15 @@ class VideoProvider extends FileProvider
 		        array(
 		            'Key' => str_replace('media_video', 'media_video_encoded', $media->getProviderReference()),
 		            'Rotate' => 'auto',
-		            'PresetId' => '<your trancoding preset id>',
+		            'PresetId' => '1351620000001-000001',
 		        ),
 		    ),
 		));
-		error_log(print_r($jobData, true));
+		
 		$jobData = $job->get('Job');
+		error_log('MATDAC DEBUG :: ' . print_r($jobData, true));
 		$jobId = $jobData['Id'];
-		error_log($jobId);
+		error_log('MATDAC DEBUG :: ' . $jobId);
        
     }
 
