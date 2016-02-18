@@ -279,7 +279,8 @@ filter:
         label_created_before: Publié avant le
         label_created_after: Publié après le
     media_audio:
-        displayed_all: Audios affichés en tant qu'actualités sur la homepage
+        displayed_home: Audios affichés en tant qu'actualités sur la homepage
+        displayed_all: Audios remontés dans "Tous les audios"
         label_created_before: Créé avant le
         label_created_after: Créé après le
         label_published_before: Publié avant le

@@ -159,6 +159,11 @@ class MediaAudioAdmin extends Admin
                 'label' => 'filter.media_audio.displayed_all',
 
             ))
+            ->add('displayedHome', null, array(
+                'field_type' => 'checkbox',
+                'label' => 'filter.media_audio.displayed_home',
+
+            ))
         ;
     }
 
