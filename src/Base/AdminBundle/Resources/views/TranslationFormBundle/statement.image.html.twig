@@ -5,9 +5,9 @@
     {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
 
     <div class="a2lix_translationsFields tab-content">
-        {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations.unwrap() : null %}
-        {#{% set galleryTranslations = (form.parent.children.gallery.vars.data is not null) ? form.parent.children.gallery.vars.data.translations.unwrap() : null %}#}
-        {% set statementStatementTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data.unwrap() : null %}
+        {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations : null %}
+        {#{% set galleryTranslations = (form.parent.children.gallery.vars.data is not null) ? form.parent.children.gallery.vars.data.translations : null %}#}
+        {% set statementStatementTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data : null %}
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
@@ -57,7 +57,7 @@
                                             <div>
                                                 {% if statementStatementTag is not null %}
                                                     {% for tmp in statementStatementTag %}
-                                                        {% set tagTranslation = tmp.tag.translations.unwrap() %}
+                                                        {% set tagTranslation = tmp.tag.translations %}
                                                         {% if tagTranslation.get(locale) is not null %}
                                                             <div>
                                                                 {{ tagTranslation.get(locale).name }}
@@ -202,7 +202,7 @@
                                             </label>
                                             <div>
                                                 {% for tmp in statementStatementTag %}
-                                                    {% set tagTranslation = tmp.tag.translations.unwrap() %}
+                                                    {% set tagTranslation = tmp.tag.translations %}
                                                     {% if tagTranslation.get('fr') is not null %}
                                                         <div>
                                                             {{ tagTranslation.get('fr').name }}

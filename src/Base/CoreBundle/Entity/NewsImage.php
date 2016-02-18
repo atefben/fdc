@@ -11,9 +11,10 @@ use Base\CoreBundle\Util\Time;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * NewsImage
@@ -30,6 +31,7 @@ class NewsImage extends News
      * @ORM\ManyToOne(targetEntity="Gallery")
      *
      * @Groups({"news_list", "news_show"})
+     * @Assert\NotNull()
      */
     private $gallery;
 

@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * NewsVideo
  *
@@ -29,6 +31,7 @@ class NewsVideo extends News
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      *
      * @Groups({"news_list", "news_show"})
+     * @Assert\NotNull()
      */
     private $video;
 

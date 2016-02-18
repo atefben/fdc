@@ -162,6 +162,8 @@ entity:
     press_cinema_map: Plan des salles
 
 list:
+    label_header_video: Vidéo principale
+    label_title_video: Titre
     label_parent: Parent
     label_position: Position
     label_route: Route
@@ -395,6 +397,7 @@ form:
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_position: Position
+    label_header_video: Vidéo principale
     label_parent: Parent
     label_contact_theme_theme: Theme
     label_route: Route
