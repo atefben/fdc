@@ -27,7 +27,7 @@ class VideoProvider extends FileProvider
 		    ),
 		    'region' => 'eu-west-1',
 		));
-		
+		error_log('MATDAC DEBUG 1 :: ' . print_r($media->getProviderReference(), true));
 		//System preset generic 1080p MP4 ID : 1351620000001-000001
 		
 		$job = $elasticTranscoder->createJob(array(
@@ -51,9 +51,9 @@ class VideoProvider extends FileProvider
 		));
 		
 		$jobData = $job->get('Job');
-		error_log('MATDAC DEBUG :: ' . print_r($jobData, true));
+		error_log('MATDAC DEBUG 2 :: ' . print_r($jobData, true));
 		$jobId = $jobData['Id'];
-		error_log('MATDAC DEBUG :: ' . $jobId);
+		error_log('MATDAC DEBUG 3 :: ' . $jobId);
        
     }
 
