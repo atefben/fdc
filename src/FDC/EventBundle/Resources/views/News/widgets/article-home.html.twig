@@ -9,7 +9,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
             {% elseif article is news_video %}
                 {% set header = article.header %}
                 {% if header is not null and header.file is not null %}
@@ -30,7 +30,7 @@
                     {% set file = trans.file %}
                 {% endif %}
 
-                {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
             {% elseif article is news_audio %}
                 {% set header = article.header %}
                 {% if header is not null and header.file is not null %}
@@ -51,7 +51,7 @@
                     {% set file = trans.file %}
                 {% endif %}
 
-                {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
             {% elseif article is news_image %}
                 {% set header = article.header %}
                 {% if header is not null and header.file is not null %}
@@ -72,7 +72,7 @@
                     {% set file = trans.file %}
                 {% endif %}
 
-                {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
             {% endif %}
         </div>
         <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>

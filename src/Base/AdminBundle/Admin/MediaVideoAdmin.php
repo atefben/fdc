@@ -2,11 +2,13 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\MediaImageSimple;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -33,9 +35,82 @@ class MediaVideoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('id', null, array('label' => 'id'))
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] !== null) {
+                        return;
+                    }
+                    $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+
+                    return true;
+                },
+                'field_type' => 'text',
+                'label' => 'filter.media_video.label_title_video',
+            ))
+            ->add('theme')
+            ->add('webTv', null, array(
+                'label' => 'filter.media_video.label_web_tv',
+            ))
+            ->add('createdBefore', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] == null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.createdAt < :before');
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'date',
+                'field_options' => array(
+                    'widget' => 'single_text',
+                ),
+                'label'         => 'filter.common.label_created_before',
+            ))
+            ->add('createdAfter', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] == null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.createdAt > :after');
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'date',
+                'field_options' => array(
+                    'widget' => 'single_text',
+                ),
+                'label'         => 'filter.common.label_created_after',
+            ))
+            ->add('priorityStatus', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] !== null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.priorityStatus LIKE :priorityStatus');
+                    $queryBuilder->setParameter('priorityStatus', '%' . $value['value'] . '%');
+
+                    return true;
+                },
+                'field_type'    => 'choice',
+                'field_options' => array(
+                    'choices'                   => MediaImageSimple::getPriorityStatusesList(),
+                    'choice_translation_domain' => 'BaseAdminBundle'
+                ),
+            ))
+            ->add('displayedHome', null, array(
+                'field_type' => 'checkbox',
+                'label'      => 'filter.media_video.displayed_home',
+
+            ))
+            ->add('displayedTrailer', null, array(
+                'label'      => 'filter.media_video.displayed_trailer',
+                'field_type' => 'checkbox',
+            ))
         ;
     }
 
@@ -45,20 +120,24 @@ class MediaVideoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('legend', null, array(
-                'label'                            => 'list.label_title_video',
-                'template'                         => 'BaseAdminBundle:MediaVideo:list_title.html.twig',
-                'sortable'                         => 'translations.title',
+            ->add('id', null, array(
+                'label'              => 'list.media_video.label_id',
+                'translation_domain' => 'BaseAdminBundle',
             ))
-            ->add('theme', null, array(
-                'sortable' => 'theme.translations.name',
+            ->add('title', null, array(
+                'label'              => 'list.media_video.label_title_video',
+                'template'           => 'BaseAdminBundle:MediaVideo:list_title.html.twig',
+                'translation_domain' => 'BaseAdminBundle',
+            ))
+            ->add('theme')
+            ->add('webTv', null, array(
+                'label'              => 'list.media_video.label_web_tv',
+                'translation_domain' => 'BaseAdminBundle',
             ))
             ->add('createdAt')
-            ->add('updatedAt')
             ->add('publishedInterval', null, array(
-                'template'   => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
-                'sortable'   => 'publishedAt',
+                'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
+                'sortable' => 'publishedAt',
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaVideo::getPriorityStatusesList(),
@@ -67,6 +146,11 @@ class MediaVideoAdmin extends Admin
             ->add('statusMain', 'choice', array(
                 'choices'   => MediaVideoTranslation::getStatuses(),
                 'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('state', null, array(
+                'label'              => 'list.media_video.label_encoding_state',
+                'template'           => 'BaseAdminBundle:MediaVideo:list_state.html.twig',
+                'translation_domain' => 'BaseAdminBundle',
             ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'

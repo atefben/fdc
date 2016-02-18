@@ -118,7 +118,7 @@
         </div>
         {% if next %}
             <div class="bandeau-list vCenter push-footer bandeau-list-footer">
-                <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext|trans_fallback('file', 'fr'), '1280x808' -%}');"{% endif %}>
+                <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext|trans_fallback('file', 'fr'), '1920x300' -%}');"{% endif %}>
                     <h2 class="title title-list-header">{{ next|trans_fallback('title') }}</h2>
                     <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')} ) }}"
                        class="bandeau-lien">

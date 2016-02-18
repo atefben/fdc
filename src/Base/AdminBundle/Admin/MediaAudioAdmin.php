@@ -180,7 +180,9 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('theme')
             ->add('createdAt')
-            ->add('updatedAt')
+            ->add('publishedAt', null, array(
+                'label' => 'list.media_audio.label_published_at'
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaAudio::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'

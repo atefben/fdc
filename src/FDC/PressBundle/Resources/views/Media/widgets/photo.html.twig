@@ -1,10 +1,15 @@
 {% trans_default_domain 'FDCPressBundle' %}
-<div class="right-btn buttons">
-    <a href="" class="alldl button">
-        <i class="icon icon_telecharger"></i>
-        {{ 'press.home.btn.touttelecharger'|trans }}
-    </a>
+<div class="container-title">
+    <h3 class="title-press">{{ s.section|trans_fallback('title') }}
+        <span class="number">({{ widget.gallery.medias|length }})</span></h3>
+    <div class="right-btn buttons">
+        <a href="{{ path('fdc_press_media_galleryarchive', {'id': widget.gallery.id }) }}" class="alldl button">
+            <i class="icon icon_telecharger"></i>
+            {{ 'press.home.btn.touttelecharger'|trans }}
+        </a>
+    </div>
 </div>
+
 <div class="gridPressDownload grid-wrapper images">
     <div class="grid-sizer"></div>
     {% for image in widget.gallery.medias %}
@@ -15,10 +20,10 @@
         {% set file = trans.file %}
         <div class="item">
 
-            <a href="{% path file, 'big' %}" class="chocolat-image ajax"
+            <a href="{% path file, 'reference' %}" class="chocolat-image ajax"
                title='<h2>{{image.media|trans_fallback('alt')}}</h2>'
                data-credit="{{ image.media|trans_fallback('copyright')}}">
-                {% thumbnail file, 'small' with {
+                {% thumbnail file, '150x150' with {
                 'class': 'chocolat-image ajax',
                 'title': image.media|trans_fallback('alt'),
                 'data-credit': image.media|trans_fallback('copyright')
@@ -27,7 +32,6 @@
             </a>
         </div>
     {% endfor %}
-
     <div class="owl-carousel thumbnails">
         {% for key, image in widget.gallery.medias %}
             {% set trans = image.media.findTranslationByLocale(app.request.locale) %}
@@ -37,7 +41,7 @@
             {% set file = trans.file %}
             <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}"
                  data-caption="<strong>{{ image.media|trans_fallback('alt')}}</strong>{{ image.media|trans_fallback('copyright')}}">
-                {% thumbnail file, 'small' %}
+                {% thumbnail file, '150x150' with {'alt': image.media|trans_fallback('alt')} %}
             </div>
         {% endfor %}
     </div>

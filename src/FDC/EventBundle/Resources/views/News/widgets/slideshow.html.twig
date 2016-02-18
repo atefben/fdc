@@ -12,8 +12,8 @@
             {% endif %}
             {% set file = trans.file %}
             <div class="img {% if key == 0 %}active{% endif %}">
-                <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, '1461x923' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{{ trans.copyright }}">
-                    {% thumbnail file, '1461x923' with {'alt': trans.alt} %}
+                <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, '2560x1620' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{{ trans.copyright }}">
+                    {% thumbnail file, '1266x798' with {'alt': trans.alt} %}
                 </a>
             </div>
             {% endfor %}
@@ -27,7 +27,7 @@
                 {% endif %}
                 {% set file = trans.file %}
                 <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}">
-                    {% thumbnail file, '212x134' %}
+                    {% thumbnail file, '97x61' %}
                 </div>
             {% endfor %}
         </div>

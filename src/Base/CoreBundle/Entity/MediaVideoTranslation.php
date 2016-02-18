@@ -28,6 +28,10 @@ class MediaVideoTranslation implements TranslateChildInterface
     use Translation;
     use TranslateChild;
 
+    const ENCODING_STATE_PENDING = 0;
+    const ENCODING_STATE_IN_PROGRESS = 1;
+    const ENCODING_STATE_READY = 2;
+
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media
      *
@@ -93,6 +97,23 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function __construct()
     {
         $this->state = 0;
+    }
+
+
+    /**
+     * getStatuses function.
+     *
+     * @access public
+     * @static
+     * @return void
+     */
+    public static function getEncodingStates()
+    {
+        return array(
+            self::ENCODING_STATE_PENDING => 'form.encoding_state.pending',
+            self::ENCODING_STATE_IN_PROGRESS => 'form.encoding_state.in_progress',
+            self::ENCODING_STATE_READY => 'form.encoding_state.ready',
+        );
     }
 
 

@@ -21,18 +21,18 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     use Translatable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
      */
     private $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=true)
      */
     private $secondFile;
@@ -55,10 +55,10 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Set image
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $image
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
      * @return PressDownloadSectionWidgetVideo
      */
-    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
     {
         $this->image = $image;
 
@@ -68,7 +68,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
      */
     public function getImage()
     {
@@ -78,10 +78,10 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Set file
      *
-     * @param \Base\CoreBundle\Entity\Media $file
+     * @param \Base\CoreBundle\Entity\MediaVideo $file
      * @return PressDownloadSectionWidgetVideo
      */
-    public function setFile(\Base\CoreBundle\Entity\Media $file)
+    public function setFile(\Base\CoreBundle\Entity\MediaVideo $file)
     {
         $this->file = $file;
 
@@ -91,7 +91,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Get file
      *
-     * @return \Base\CoreBundle\Entity\Media 
+     * @return \Base\CoreBundle\Entity\MediaVideo 
      */
     public function getFile()
     {
@@ -101,10 +101,10 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Set secondFile
      *
-     * @param \Base\CoreBundle\Entity\Media $secondFile
+     * @param \Base\CoreBundle\Entity\MediaVideo $secondFile
      * @return PressDownloadSectionWidgetVideo
      */
-    public function setSecondFile(\Base\CoreBundle\Entity\Media $secondFile)
+    public function setSecondFile(\Base\CoreBundle\Entity\MediaVideo $secondFile = null)
     {
         $this->secondFile = $secondFile;
 
@@ -114,7 +114,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Get secondFile
      *
-     * @return \Base\CoreBundle\Entity\Media 
+     * @return \Base\CoreBundle\Entity\MediaVideo 
      */
     public function getSecondFile()
     {

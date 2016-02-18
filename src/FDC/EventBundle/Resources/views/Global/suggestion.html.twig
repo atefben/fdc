@@ -12,7 +12,7 @@
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% set file = trans.file %}
-                        {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                        {% thumbnail file, '424x266' with {'alt': img|trans_fallback('alt') } %}
                     {% elseif article.video.image is defined and article.video.image is not null %}
                         {% set img = article.video.image %}
                         {% set trans = img.findTranslationByLocale(app.request.locale) %}
@@ -20,7 +20,7 @@
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% set file = trans.file %}
-                        {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                        {% thumbnail file, '424x266' with {'alt': img|trans_fallback('alt') } %}
                     {% elseif article.audio.image is defined and article.audio.image is not null %}
                         {% set img = article.audio.image %}
                         {% set trans = img.findTranslationByLocale(app.request.locale) %}
@@ -28,7 +28,7 @@
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% set file = trans.file %}
-                        {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                        {% thumbnail file, '424x266' with {'alt': img|trans_fallback('alt') } %}
                     {% elseif article.gallery.medias[0].media  is defined and article.gallery.medias[0].media  is not null %}
                         {% set img = article.gallery.medias[0].media  %}
                         {% set trans = img.findTranslationByLocale(app.request.locale) %}
@@ -36,7 +36,7 @@
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% set file = trans.file %}
-                        {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                        {% thumbnail file, '424x266' with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
                 </div>
                 <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}" class="linkImage"></a>

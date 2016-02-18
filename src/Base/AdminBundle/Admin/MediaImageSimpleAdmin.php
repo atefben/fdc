@@ -127,7 +127,7 @@ class MediaImageSimpleAdmin extends Admin
                     'file'      => array(
                         'field_type'         => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.media_image.helper_file',
+                        'sonata_help'        => 'form.media_image_simple.helper_file',
                         'provider'           => 'sonata.media.provider.image',
                         'context'            => 'media_image_simple',
                         'required'           => $requiredFile,

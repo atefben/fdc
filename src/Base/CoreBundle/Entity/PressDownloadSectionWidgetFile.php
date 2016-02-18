@@ -21,13 +21,13 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
     use Translatable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
      */
     private $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=true)
      */
     private $secondFile;
@@ -49,12 +49,11 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
     /**
      * Set file
      *
-     * @param \Base\CoreBundle\Entity\Media $file
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
      * @return PressDownloadSectionWidgetFile
      */
-    public function setFile(\Base\CoreBundle\Entity\Media $file)
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
     {
-
         $this->file = $file;
 
         return $this;
@@ -63,21 +62,20 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
     /**
      * Get file
      *
-     * @return \Base\CoreBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getFile()
     {
         return $this->file;
     }
 
-
     /**
      * Set secondFile
      *
-     * @param \Base\CoreBundle\Entity\Media $secondFile
+     * @param \Application\Sonata\MediaBundle\Entity\Media $secondFile
      * @return PressDownloadSectionWidgetFile
      */
-    public function setSecondFile(\Base\CoreBundle\Entity\Media $secondFile = null)
+    public function setSecondFile(\Application\Sonata\MediaBundle\Entity\Media $secondFile = null)
     {
         $this->secondFile = $secondFile;
 
@@ -87,7 +85,7 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
     /**
      * Get secondFile
      *
-     * @return \Base\CoreBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getSecondFile()
     {
