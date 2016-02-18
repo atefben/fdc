@@ -55,7 +55,7 @@
           data-live="false"
           data-file=""
           data-img="/img/article/004.jpg">
-          <div id="video-player" class="video-player v_<?php echo time();?>">
+          <div id="video-player" class="video-player-pl v_<?php echo time();?>">
           </div>
           <div class="video-overlay"></div>
           <div class="infos-bar">
@@ -70,11 +70,6 @@
             </div>
           </div>
         </div>
-        <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-            play1 = playerInit('video-player', false, true, false);
-        });
-        </script>
         <span class="type-video">Bande annonce</span>
         <span class="name-video">Valley of Love</span>
       </article>
