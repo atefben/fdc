@@ -352,6 +352,8 @@ dashboard:
         press_projection: Programmation
 
 form:
+    seo:
+        helper_file: Dimensions attendues : 1200x627. Format attendu : .jpg, .png
     tag:
         helper_name: 255 caractères max.
     translate_option:

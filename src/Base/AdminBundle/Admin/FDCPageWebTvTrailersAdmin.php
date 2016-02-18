@@ -161,7 +161,7 @@ class FDCPageWebTvTrailersAdmin extends Admin
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
-                'help'     => 'form.media_image.helper_file',
+                'help'     => 'form.seo.helper_file',
                 'required' => false
             ))
             ->add('translate')
