@@ -1,20 +1,15 @@
 <?php
-
 namespace Base\AdminBundle\Admin;
-
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\Valid;
-
 /**
  * MediaImageAdmin class.
  *
@@ -27,14 +22,11 @@ class MediaImageAdmin extends Admin
     protected $formOptions = array(
         'cascade_validation' => true
     );
-
     protected $translationDomain = 'BaseAdminBundle';
-
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
-
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -52,7 +44,6 @@ class MediaImageAdmin extends Admin
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.legend LIKE :legend');
                     $queryBuilder->setParameter('legend', '%' . $value['value'] . '%');
-
                     return true;
                 },
                 'field_type' => 'text'
@@ -65,7 +56,6 @@ class MediaImageAdmin extends Admin
                     }
                     $queryBuilder->andWhere('o.createdAt < :before');
                     $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
-
                     return true;
                 },
                 'field_type'    => 'date',
@@ -81,7 +71,6 @@ class MediaImageAdmin extends Admin
                     }
                     $queryBuilder->andWhere('o.createdAt > :after');
                     $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
-
                     return true;
                 },
                 'field_type'    => 'date',
@@ -100,7 +89,6 @@ class MediaImageAdmin extends Admin
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.status = :status');
                     $queryBuilder->setParameter('status', $value['value']);
-
                     return true;
                 },
                 'field_type'    => 'choice',
@@ -116,7 +104,6 @@ class MediaImageAdmin extends Admin
                     }
                     $queryBuilder->andWhere('o.priorityStatus LIKE :priorityStatus');
                     $queryBuilder->setParameter('priorityStatus', '%' . $value['value'] . '%');
-
                     return true;
                 },
                 'field_type'    => 'choice',
@@ -127,7 +114,6 @@ class MediaImageAdmin extends Admin
             ))
         ;;
     }
-
     /**
      * @param ListMapper $listMapper
      */
@@ -161,14 +147,12 @@ class MediaImageAdmin extends Admin
             ))
         ;
     }
-
     /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
-
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label'  => false,
@@ -301,7 +285,6 @@ class MediaImageAdmin extends Admin
             ->end()
         ;
     }
-
     /**
      * @param ShowMapper $showMapper
      */

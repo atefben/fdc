@@ -13,7 +13,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                {% thumbnail file, '573x362' with {'alt': img|trans_fallback('alt') } %}
+                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
             {% endif %}
         </div>
         <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}" class="linkImage"></a>

@@ -3,7 +3,8 @@
 
 {% block body %}
 
-    <div id="main" class="press loading downloading-press lock ">
+    {#<div id="main" class="press loading downloading-press lock ">#}
+    <div id="main" class="press downloading-press ">
 
         {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
@@ -11,20 +12,21 @@
             <ul>
                 {% for key,s in pressDownloads %}
                     <!-- Don't change ID value -->
-                    <li><a href="#{{ s.section.slug }}" class="ajax {% if key == 0 %}active{% endif %}">{{ s.section|trans_fallback('title') }}</a></li>
+                    <li><a href="#{{ s.section|trans_fallback('slug') }}" class="ajax {% if key == 0 %}active{% endif %}">{{ s.section|trans_fallback('title') }}</a></li>
                 {% endfor %}
-
             </ul>
         </div>
 
         <div class="wrapper">
-            {% for key,s in pressDownloads %}
-
-                <div class="{% if key == 0 %}affiche{% else %}block{% endif %}" id="{{ s.section.slug }}">
+            {% for k,s in pressDownloads %}
+                {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
+                <div class="{{ attribute(slugSplit, 0) }} {% if k == 0 %} {% elseif k == 3 %} block slideshow {% else %} block {% endif %}" id="{{ s.section|trans_fallback('slug') }}">
                     <div class="container">
-                        <h3 class="title-press">{{ s.section|trans_fallback('title') }}</h3>
+                        {% if attribute(slugSplit, 0) != "photos" %}
+                            <h3 class="title-press">{{ s.section|trans_fallback('title') }}</h3>
+                        {% endif %}
 
-                        {% for widget in s.section.widgets %}
+                        {% for key,widget in s.section.widgets %}
                             {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
                                 {% if widget.file.contentType == "application/zip" or
                                 widget.secondFile.contentType == "application/zip"

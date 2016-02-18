@@ -26,9 +26,9 @@
                       "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
                       "data-vid":"{{ video.id }}",
                       {%- if video.image -%}
-                      "image":"{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}",
+                      "image":"{%- path video.image|trans_fallback('file', 'fr'), '1950x1232' -%}",
                       {%- else -%}
-                      "image":"{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}",
+                      "image":"{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '1950x1232' -%}",
                       {%- endif -%}
                       "category":"{{ video.theme }}"
                     }
@@ -73,9 +73,9 @@
                 {% for video in webTvVideos %}
                     <div class="channel shadow-bottom">
                         {%- if video.image -%}
-                            <img src="{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}" alt=""/>
+                            <img src="{%- path video.image|trans_fallback('file', 'fr'), '1950x1232' -%}" alt=""/>
                         {%- else -%}
-                            <img src="{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}"
+                            <img src="{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '1950x1232' -%}"
                                  alt=""/>
                         {%- endif -%}
                         <a class="linkVid" href="#"></a>
@@ -103,9 +103,9 @@
                     {% for video in otherVideos %}
                         <div class="video shadow-bottom">
                             {% if video.image|trans_fallback('file') %}
-                                <img src="{% path video.image|trans_fallback('file'), '462x292' %}" alt="">
+                                <img src="{% path video.image|trans_fallback('file'), '926x584' %}" alt="">
                             {% else %}
-                                <img src="{% path video.image|trans_fallback('file', 'fr'), '462x292' %}" alt="">
+                                <img src="{% path video.image|trans_fallback('file', 'fr'), '926x584' %}" alt="">
                             {% endif %}
                         </div>
                     {% endfor %}

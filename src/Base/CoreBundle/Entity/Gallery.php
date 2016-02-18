@@ -13,7 +13,7 @@ use Base\CoreBundle\Util\Time;
  * Gallery
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
 class Gallery

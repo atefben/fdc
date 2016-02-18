@@ -4,8 +4,8 @@
 {% set video = film.associatedMediaVideos|last.mediaVideo %}
 <div class="vid shadow-bottom">
     <div class="image-wrapper">
-        <img src="{% path video.image|trans_fallback('file'), '975x616' %}"
-             srcset="{% path video.image|trans_fallback('file'), '573x362' %} 1x, {% path video.image|trans_fallback('file'), '1280x808' %} 2x"
+        <img src="{% path video.image|trans_fallback('file'), '1950x1232' %}"
+             srcset="{% path video.image|trans_fallback('file'), '1950x1232' %} 1x, {% path video.image|trans_fallback('file'), '1950x1232' %} 2x"
              alt="">
     </div>
     <a class="linkVid" href="#"></a>

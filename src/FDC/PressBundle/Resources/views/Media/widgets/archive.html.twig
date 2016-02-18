@@ -9,7 +9,7 @@
     {% set sizeClass = 'landscape' %}
 {% endif %}
 
-<div class="imgs-container first">
+<div class="imgs-container {% if key == 0 %}first{% elseif key == 2 %}last{% endif %}">
     <div class="container-img">
         {% thumbnail file, 'reference' with {'alt': widget.image|trans_fallback('alt')} %}
     </div>
