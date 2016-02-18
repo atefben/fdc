@@ -98,7 +98,10 @@ class NewsArticleAdmin extends Admin
             ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
             ->add('theme')
             ->add('createdAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
+            ->add('publishedInterval', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
+                'sortable' => 'publishedAt',
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => NewsArticle::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'

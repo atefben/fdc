@@ -374,7 +374,7 @@ services:
         class: Base\AdminBundle\Admin\GalleryAdmin
         arguments: [~, Base\CoreBundle\Entity\Gallery, BaseAdminBundle:GalleryAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Gallery, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.media, label: entity.gallery, label_translator_strategy: sonata.admin.label.strategy.underscore }
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 

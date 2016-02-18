@@ -43,6 +43,7 @@ breadcrumb:
     link_press_guide_list: Guide pratique
     link_contact_page_list: Contactez-nous
     link_f_d_c_event_routes_list: Liste des pages
+    link_gallery_list: Galeries photos
 
 
 link:
@@ -160,6 +161,7 @@ entity:
     press_projection: Programmation
     press_guide: Guide pratique
     press_cinema_map: Plan des salles
+    gallery: Galeries photos
 
 list:
     label_header_video: Vidéo principale
@@ -223,6 +225,8 @@ list:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
         since: depuis
+    media_audio:
+        label_published_at: Publié le
 
 filter:
     label_position: Position
@@ -480,6 +484,8 @@ form:
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
     label_locked_content: Locked content
+    gallery:
+        medias: Médias
 
     web_tv:
         helper_name: 255 caractères max.

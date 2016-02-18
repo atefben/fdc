@@ -102,7 +102,9 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
 
                 )
             ))
-            ->add('updatedAt', 'date')
+            ->add('updatedAt', 'sonata_type_datetime_picker',array(
+                'format' => 'yyyy-MM-dd H:m',
+            ))
 
             ->add('file', 'sonata_type_model_list', array(
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['file'],
