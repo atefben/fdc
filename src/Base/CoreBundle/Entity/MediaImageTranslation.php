@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation\Since;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaImageTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaImageTranslation implements TranslateChildInterface

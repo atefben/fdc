@@ -166,6 +166,8 @@ class MediaImageAdmin extends Admin
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
+                'translation_domain' => 'BaseAdminBundle',
+                'required_locales' => array('fr'),
                 'fields' => array(
                     'createdAt' => array(
                         'display' => false
@@ -180,24 +182,30 @@ class MediaImageAdmin extends Admin
                         'sonata_help' => 'form.media_image.helper_file',
                         'provider' => 'sonata.media.provider.image',
                         'context' => 'media_image',
-                        'constraints' => array(
-                            new NotBlank()
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
                         )
                     ),
                     'legend' => array(
                         'label' => 'form.label_legend_img',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.media.helper_legend',
-                        'constraints' => array(
-                            new NotBlank()
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
                         )
                     ),
                     'alt' => array(
                         'label' => 'form.label_alt_img',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.media.helper_alt',
-                        'constraints' => array(
-                            new NotBlank()
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
                         )
                     ),
                     'copyright' => array(
@@ -211,8 +219,10 @@ class MediaImageAdmin extends Admin
                         'field_type' => 'choice',
                         'choices' => MediaImageTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
-                        'constraints' => array(
-                            new NotBlank()
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
                         )
                     ),
                     'seoTitle' => array(

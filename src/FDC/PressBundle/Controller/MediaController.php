@@ -64,10 +64,11 @@ class MediaController extends Controller
 
 
     /**
-     * @Route("/media/{id}/archive")
-     * @return array
+     * @Route("/media/film/{id}/archive")
+     * @param $id
+     * @return Response
      */
-    public function downloadArchiveAction($id)
+    public function filmArchiveAction($id)
     {
         // GET FDC SETTINGS
         $em = $this->getDoctrine()->getManager();
@@ -78,7 +79,7 @@ class MediaController extends Controller
         $filmPhotos = array();
 
         $zipName = $film->getId().'-'.$film->getUpdatedAt()->format('YmdHis').".zip";
-        $zipPath = $this->get('kernel')->getRootDir()."/../web/uploads/archive/".$zipName;
+        $zipPath = $this->get('kernel')->getRootDir()."/../web/uploads/archive/film/".$zipName;
 
         if (!file_exists($zipPath)) {
             $zip = new \ZipArchive();
@@ -96,6 +97,61 @@ class MediaController extends Controller
 
         }
 
+
+        // Generate response
+        $response = new Response();
+
+        // Set headers
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-type', mime_content_type($zipPath));
+        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
+        $response->headers->set('Content-length', filesize($zipPath));
+
+        // Send headers before outputting anything
+        $response->sendHeaders();
+
+        $response->setContent(file_get_contents($zipPath));
+
+        return $response;
+
+    }
+
+    /**
+     * @Route("/media/gallery/{id}/archive")
+     * @param $id
+     * @return Response
+     */
+    public function galleryArchiveAction($id)
+    {
+        // GET FDC SETTINGS
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+
+        $gallery = $em->getRepository('BaseCoreBundle:Gallery')
+            ->findOneById($id);
+
+        $galleryImage = $em->getRepository('BaseCoreBundle:MediaImageTranslation')
+            ->getGalleryImage($id,$locale);
+
+        $galleryPhotos = array();
+
+        $zipName = $gallery->getId().'-'.$gallery->getUpdatedAt()->format('YmdHis').".zip";
+        $zipPath = $this->get('kernel')->getRootDir()."/../web/uploads/archive/gallery/".$zipName;
+
+        if (!file_exists($zipPath)) {
+            $zip = new \ZipArchive();
+            $zip->open($zipPath, \ZipArchive::CREATE);
+
+            foreach ($galleryImage as $media ) {
+                array_push($galleryPhotos,$media->getFile());
+                $provider = $this->container->get($media->getFile()->getProviderName());
+                $fUrl = $provider->generatePublicUrl($media->getFile(), $media->getFile()->getProviderReference());
+                $zip->addFromString(basename($media->getFile()->getId()), file_get_contents($fUrl));
+            }
+            $zip->close();
+
+        }
 
         // Generate response
         $response = new Response();

@@ -68,6 +68,7 @@
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type' %}
                                                 {{ form_row(widget.image)}}
                                                 {{ form_row(widget.file)}}
+                                                {{ form_row(widget.secondFile)}}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
 
                                             {% endif %}
