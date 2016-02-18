@@ -43,9 +43,7 @@ breadcrumb:
     link_press_guide_list: Guide pratique
     link_contact_page_list: Contactez-nous
     link_f_d_c_event_routes_list: Liste des pages
-    link_gallery_list: Galeries
-    gallery:
-        new: Nouvelle galerie
+    link_gallery_list: Galeries photos
 
 
 link:
@@ -163,7 +161,7 @@ entity:
     press_projection: Programmation
     press_guide: Guide pratique
     press_cinema_map: Plan des salles
-    gallery: Galeries
+    gallery: Galeries photos
 
 list:
     label_header_video: Vidéo principale
