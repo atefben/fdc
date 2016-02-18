@@ -16,6 +16,22 @@
                 <div id="slider" class="owl-carousel">
                     {% for slide in homeSlider %}
                         {% if slide != null %}
+                            {% if slide.header is not null %}
+                                {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = slide.header.findTranslationByLocale('fr') %}
+                                {% endif %}
+                            {% elseif slide.audio is not null %}
+                                {% set trans = slide.audio.image.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = slide.audio.image.findTranslationByLocale('fr') %}
+                                {% endif %}
+                            {% elseif slide.gallery is not null %}
+                                {% set trans = slide.gallery.medias[0].media.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = slide.gallery.medias[0].media.findTranslationByLocale('fr') %}
+                                {% endif %}
+                            {% endif %}
                             <div>
                                 <div class="img-container">
                                     <div class="img" style="background-image:url({% path trans.file , '1461x923' %})"></div>
