@@ -4,7 +4,7 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\MediaImageSimple;
 use Base\CoreBundle\Entity\MediaImageSimpleTranslation;
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -19,16 +19,14 @@ class MediaImageSimpleAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('name')
             ->add('alt', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
+                    $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
                     $queryBuilder->andWhere('t.alt LIKE :alt');
                     $queryBuilder->setParameter('alt', '%' . $value['value'] . '%');
 
@@ -36,53 +34,10 @@ class MediaImageSimpleAdmin extends Admin
                 },
                 'field_type' => 'text'
             ))
-            ->add('createdBefore', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.createdAt < :before');
-                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
-
-                    return true;
-                },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-            ))
-            ->add('createdAfter', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.createdAt > :after');
-                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
-
-                    return true;
-                },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
-                ),
-            ))
-            ->add('priorityStatus', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->andWhere('o.priorityStatus LIKE :priorityStatus');
-                    $queryBuilder->setParameter('priorityStatus', '%' . $value['value'] . '%');
-
-                    return true;
-                },
-                'field_type'    => 'choice',
-                'field_options' => array(
-                    'choices'                   => MediaImageSimple::getPriorityStatusesList(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
         ;
+
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addPriorityFilter($datagridMapper);
     }
 
     /**
@@ -91,10 +46,14 @@ class MediaImageSimpleAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('name')
+            ->add('id', null, array('label' => 'list.common.label_id'))
+            ->add('name', null, array(
+                'label' => 'list.media_image_simple.label_name',
+                'sortable' => false,
+            ))
             ->add('alt', null, array(
                 'template' => 'BaseAdminBundle:MediaImageSimple:list_alt.html.twig',
+                'label'    => 'list.media_image_simple.label_alt',
             ))
             ->add('createdAt')
             ->add('priorityStatus', 'choice', array(
