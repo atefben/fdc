@@ -237,6 +237,8 @@ list:
         label_alt: Alt de l'image
     common:
         label_id: Id
+    news_common:
+        label_title: Titre de l'actualité
 
 filter:
     label_position: Position

@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -41,63 +41,6 @@ class NewsArticleAdmin extends Admin
             parent::getFormTheme(),
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
-    }
-
-    /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id')
-            ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
-
-                    return true;
-                },
-                'field_type' => 'text'
-            ))
-            ->add('theme')
-        ;
-
-        $datagridMapper = $this->addStatusFilter($datagridMapper);
-    }
-
-    /**
-     * @param ListMapper $listMapper
-     */
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
-            ->add('theme')
-            ->add('createdAt')
-            ->add('publishedInterval', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
-                'sortable' => 'publishedAt',
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => NewsArticle::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices' => NewsArticleTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ))
-            ->add('_preview', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
-            ))
-        ;
     }
 
     /**
