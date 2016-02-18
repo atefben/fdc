@@ -84,9 +84,10 @@ class EntityRepository extends BaseRepository
     {
         if ($slug !== null) {
             $qb = $qb
-                ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published)")
+                ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published AND {$alias}.slug = :slug)")
                 ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
-                ->setParameter('slug', $slug);
+                ->setParameter('slug', $slug)
+            ;
 
             if ($locale != 'fr') {
                 $aliasTrans = substr($alias, 0, -1);
@@ -95,7 +96,7 @@ class EntityRepository extends BaseRepository
                     ->andWhere("(z2.locale = :locale AND z2.status = :status_translated AND z2.slug = :slug)")
                     ->setParameter('locale', $locale)
                     ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                    ->setParameter('slug', $slug);
+                ;
             }
         } else {
             $qb = $qb
@@ -108,7 +109,8 @@ class EntityRepository extends BaseRepository
                     ->leftJoin("{$aliasTrans}.translations", 'z2')
                     ->andWhere("(z2.locale = :locale AND z2.status = :status_translated)")
                     ->setParameter('locale', $locale)
-                    ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED);
+                    ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
+                ;
             }
         }
 

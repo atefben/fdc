@@ -34,7 +34,7 @@ class NewsController extends Controller {
         $em = $this->get('doctrine')->getManager();
         $dateTime = new DateTime();
         $locale = $request->getLocale();
-        $isAdmin = true;
+        $isAdmin = false;
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -292,7 +292,7 @@ class NewsController extends Controller {
         $em       = $this->getDoctrine()->getManager();
         $locale   = $this->getRequest()->getLocale();
 
-        $isAdmin  = true;
+        $isAdmin  = false;
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');

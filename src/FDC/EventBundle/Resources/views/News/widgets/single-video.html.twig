@@ -13,7 +13,7 @@
         {% set imageTrans = news.header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
-{% if imageTrans is not null %}
+{% if imageTrans is defined %}
     {% set image = imageTrans.file %}
 {% else %}
     {% set image = file.image.file %}
