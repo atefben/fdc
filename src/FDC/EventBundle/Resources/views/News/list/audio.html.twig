@@ -9,7 +9,6 @@
 
     <div id="gridAudios" class="grid-wrapper" data-type="audios">
         <div class="grid-sizer"></div>
-            {{ dump(audios) }}
         {% for audio in audios %}
             {% set trans = audio.findTranslationByLocale(app.request.locale) %}
             {% if trans is null %}
@@ -27,7 +26,7 @@
                         {% set transImage = audio.image.findTranslationByLocale('fr') %}
                     {% endif %}
                 {% endif %}
-                <img src="{% path transImage.file , '640x404' %}" srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x" alt="">
+                <img src="{% path transImage.file , '1144x724' %}" srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x" alt="">
                 <div class="picto">
                     <i class="icon icon_audio"></i>
                 </div>
