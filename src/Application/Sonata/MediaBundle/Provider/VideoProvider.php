@@ -19,9 +19,10 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
-		//error_log(print_r($media, true));
-		$path = $this->generatePublicUrl($media, $media->getProviderReference());
-		error_log(print_r($path, true));
+		error_log(print_r($media, true));
+		
+		//$path = $this->generatePublicUrl($media, $media->getProviderReference());
+		error_log(print_r($media->getProviderReference(), true));
 		exit();
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
