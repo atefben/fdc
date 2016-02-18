@@ -225,8 +225,15 @@ list:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
         since: depuis
+    media_video:
+        label_id: Id
+        label_title_video: Titre de la vidéo
+        label_web_tv: Chaîne
+        label_encoding_state: Encodage (en attent, en cours, prêt)
     media_audio:
         label_published_at: Publié le
+    common:
+        label_id: Id
 
 filter:
     label_position: Position
@@ -291,6 +298,15 @@ filter:
         label_created_after: Créé après le
         label_published_before: Publié avant le
         label_published_after: Publié après le
+    media_video:
+        label_title_video: Titre de la vidéo
+        label_web_tv: Chaîne
+        displayed_home: Vidéos affichées en tant qu'actualités sur la homepage
+        displayed_trailer: Bandes annonces et extraits
+    common:
+        label_id: Id
+        label_created_before: Créé avant le
+        label_created_after: Créé après le
 
 dashboard:
     group:
@@ -488,6 +504,10 @@ form:
     label_locked_content: Locked content
     gallery:
         medias: Médias
+    encoding_state:
+        pending: En attente
+        in_progress: En cours
+        ready: Prêt
 
     web_tv:
         helper_name: 255 caractères max.

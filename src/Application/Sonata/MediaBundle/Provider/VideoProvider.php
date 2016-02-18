@@ -19,24 +19,25 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
-		//error_log(print_r($media, true));
-		
 		$path = $this->generatePublicUrl($media, $media->getProviderReference());
-		error_log(print_r($this->getReferenceImage($media), true));
-		exit();
+		$file_path = explode('/', $path);
+		$path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+		$path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+		
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
-		        'key' => 'your key',
-		        'secret' => 'your secret',
+		        'key' => 'AKIAJHXD67GEPPA2F4TQ',
+		        'secret' => '8TtlhHgQEIPwQBQiDqCzG7h5Eq856H2jst1PtER6',
 		    ),
-		    'region' => 'eu-west-1', // dont forget to set the region
+		    'region' => 'eu-west-1',
 		));
-		
+
+		//System preset generic 1080p MP4 ID : 1351620000001-000001
 		$job = $elasticTranscoder->createJob(array(
-		    'PipelineId' => '<your pipeline id>',
-		    'OutputKeyPrefix' => 'your/output/prefix/',
+		    'PipelineId' => '1454076999739-uy533t',
+		    'OutputKeyPrefix' => $path_video_output,
 		    'Input' => array(
-		        'Key' => 'key/to/your/input/file.mp4',
+		        'Key' => $path_video_input . $media->getProviderReference(),
 		        'FrameRate' => 'auto',
 		        'Resolution' => 'auto',
 		        'AspectRatio' => 'auto',
@@ -45,19 +46,42 @@ class VideoProvider extends FileProvider
 		    ),
 		    'Outputs' => array(
 		        array(
-		            'Key' => 'myOutput.mp4',
+		            'Key' =>  $media->getProviderReference(),
 		            'Rotate' => 'auto',
-		            'PresetId' => '<your trancoding preset id>',
+		            'PresetId' => '1351620000001-000001',
 		        ),
 		    ),
 		));
-
+		
 		$jobData = $job->get('Job');
 		$jobId = $jobData['Id'];
-		error_log($jobId);
+		//TODO MATDAC
 		
-        //
-       
+		
+		//System preset: Webm 720p ID : 1351620000001-100240
+		$job = $elasticTranscoder->createJob(array(
+		    'PipelineId' => '1454076999739-uy533t',
+		    'OutputKeyPrefix' => $path_video_output,
+		    'Input' => array(
+		        'Key' => $path_video_input . $media->getProviderReference(),
+		        'FrameRate' => 'auto',
+		        'Resolution' => 'auto',
+		        'AspectRatio' => 'auto',
+		        'Interlaced' => 'auto',
+		        'Container' => 'auto',
+		    ),
+		    'Outputs' => array(
+		        array(
+		            'Key' =>  $media->getProviderReference(),
+		            'Rotate' => 'auto',
+		            'PresetId' => '1351620000001-100240',
+		        ),
+		    ),
+		));
+		
+		$jobData = $job->get('Job');
+		$jobId = $jobData['Id'];
+  	  	//TODO MATDAC
     }
 
     /**
