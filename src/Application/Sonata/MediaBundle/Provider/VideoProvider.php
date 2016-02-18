@@ -21,8 +21,8 @@ class VideoProvider extends FileProvider
     {
 		$path = $this->generatePublicUrl($media, $media->getProviderReference());
 		$file_path = explode('/', $path);
-		$path_video_input = $file_path['3'] . '/' . $file_path['4'] . $file_path['5'];
-		$path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . $file_path['5'];
+		$path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+		$path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 		
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
