@@ -3,7 +3,6 @@
 namespace Base\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
@@ -17,25 +16,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 class PressDownloadSectionWidgetPhoto extends PressDownloadSectionWidget
 {
 
-    use Translatable;
 
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
      */
     private $gallery;
 
-    /**
-     * ArrayCollection
-     */
-    protected $translations;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
 
     /**
      * Set gallery

@@ -25,6 +25,7 @@ class PressDownloadSectionWidgetVideoDummyAdmin extends Admin
         $formMapper
             ->add('image', 'sonata_type_model_list')
             ->add('file', 'sonata_type_model_list')
+            ->add('secondFile', 'sonata_type_model_list')
         ;
     }
 }

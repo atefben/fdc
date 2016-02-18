@@ -88,6 +88,15 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                             )
                         )
                     ),
+                    'secondBtnLabel' => array(
+                        'label' => 'form.label_second_btn',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
                     'content' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
@@ -120,6 +129,7 @@ class PressDownloadSectionWidgetDocumentType extends PressDownloadSectionWidgetT
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['secondFile'],
                 'model_manager' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetDocumentDummyAdmin->getFormFieldDescriptions()['secondFile']->getAssociationAdmin()->getClass(),
+                'required' => false
             ))
 //            ->add('createdAt', 'hidden')
 //            ->add('updatedAt', 'hidden')
