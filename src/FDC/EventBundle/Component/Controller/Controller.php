@@ -26,7 +26,7 @@ class Controller extends BaseController
             'route' => $route
         ));
 
-        if(!$page->getEnabled())
+        if ($page && !$page->getEnabled())
             throw $this->createNotFoundException("This page is disabled.");
 
     }

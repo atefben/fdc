@@ -5,7 +5,7 @@
     {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
 
     <div class="a2lix_translationsFields tab-content">
-        {% set procedureTranslations = (form.parent.children.procedure.vars.data|length > 0 is not null) ? form.parent.children.procedure.vars.data.translations.unwrap() : null %}
+        {% set procedureTranslations = (form.parent.children.procedure.vars.data|length > 0 is not null) ? form.parent.children.procedure.vars.data.translations : null %}
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 

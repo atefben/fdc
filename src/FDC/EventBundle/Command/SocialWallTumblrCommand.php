@@ -83,9 +83,10 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
         }
 
         krsort($tumblrPosts);
-        foreach ($tumblrPosts as $tumblrPost) {
+        $count = null;
+        foreach ($tumblrPosts as $key => $tumblrPost) {
             $canInsert = true;
-
+            $count = $key;
             //check if the post is'nt already inserted in the 40 last insert
             foreach($lastInsertionsTumblr as $lastInsert) {
                 if($lastInsert->getTumblrId() == $tumblrPost->id) {
@@ -112,7 +113,7 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
                 $em->persist($socialWall);
             }
         }
-        $output->writeln('Tumblr added: '. count($tumblrPosts));
+        $output->writeln('Tumblr added: '. $count);
 
         $em->flush();
     }

@@ -78,7 +78,7 @@ class MediaStreamManager extends CoreManager
      * @param string $context (default: 'image')
      * @return void
      */
-    public function getById($entity, $id, $extension, $provider = 'sonata.media.provider.image', $context = 'film_image')
+    public function getById($entity, $id, $extension, $provider = 'sonata.media.provider.image', $context = 'film_film')
     {
         // start timer
         $this->start(__METHOD__);

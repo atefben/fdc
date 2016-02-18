@@ -220,6 +220,12 @@ class NewsAudioAdmin extends Admin
             ->add('signature', null, array(
                 'help' => 'form.news.helper_signature'
             ))
+            ->add('header', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
+                'help' => 'form.news.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false
+            ))
             ->add('audio', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_audio',
                 'help' => 'form.news.helper_header_audio',
@@ -253,7 +259,7 @@ class NewsAudioAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-           /* ->add('associatedNews', 'sonata_type_collection', array(
+            ->add('associatedNews', 'sonata_type_collection', array(
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
@@ -264,7 +270,6 @@ class NewsAudioAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-           */
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')

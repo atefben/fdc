@@ -159,6 +159,11 @@ class MediaAudioAdmin extends Admin
                 'label' => 'filter.media_audio.displayed_all',
 
             ))
+            ->add('displayedHome', null, array(
+                'field_type' => 'checkbox',
+                'label' => 'filter.media_audio.displayed_home',
+
+            ))
         ;
     }
 
@@ -175,7 +180,9 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('theme')
             ->add('createdAt')
-            ->add('updatedAt')
+            ->add('publishedAt', null, array(
+                'label' => 'list.media_audio.label_published_at'
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaAudio::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
@@ -258,7 +265,10 @@ class MediaAudioAdmin extends Admin
                 'btn_delete' => false
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_media_video_image'
+                'label' => 'form.label_media_video_image',
+                'constraints' => array(
+                    new NotNull(),
+                ),
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label'        => 'form.label_tags',
