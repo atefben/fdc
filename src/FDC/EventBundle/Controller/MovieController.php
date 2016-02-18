@@ -23,7 +23,6 @@ class MovieController extends Controller
      */
     public function getAction($slug)
     {
-
         $movies = array(
             array(
                 'slug' => 'youth',
