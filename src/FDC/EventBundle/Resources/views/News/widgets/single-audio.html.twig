@@ -1,12 +1,26 @@
 {% trans_default_domain 'FDCEventBundle' %}
+
 {% set file = news.audio %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
 {% if trans is null or trans.file is null %}
     {% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
-{% set file = trans.file %}
-<div class="audio-player audio actu-article-audio" data-sound="{% path file, 'reference' %}">
-    <div class="image" style="background-image: url({% path news.audio.image, '1950x1232' %});"></div>
+
+{% set header = news.header %}
+{% if header is not null and header.file is not null %}
+    {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = news.header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is not null %}
+    {% set image = imageTrans.file %}
+{% else %}
+    {% set image = file.image.file %}
+{% endif %}
+
+<div class="audio-player audio actu-article-audio" data-sound="{% path trans.file, 'reference' %}">
+    <div class="image" style="background-image: url({% if image is defined and image is not null %}{% path image, '1950x1232' %}{% endif %});"></div>
     <a href="#" class="playpause"><i class="icon icon_video"></i></a>
     <div class="off">
         <div class="vCenter">

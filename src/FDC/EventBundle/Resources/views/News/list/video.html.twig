@@ -19,10 +19,18 @@
                 <a id="video1" class="ajax chocolat-image" href="{% path trans.file , 'reference' %}"
                    title='<span class="category">{{ video.theme|trans_fallback('slug') }}</span><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ video|trans_fallback('title') }}</h2>'
                    data-credit=""></a>
-                {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
-                {% if transImage is null or transImage.file is null %}
-                    {% set transImage = video.image.findTranslationByLocale('fr') %}
+                {% if video.header is not null %}
+                    {% set transImage = video.header.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null %}
+                        {% set transImage = video.header.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% else %}
+                    {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null or transImage.file is null %}
+                        {% set transImage = video.image.findTranslationByLocale('fr') %}
+                    {% endif %}
                 {% endif %}
+
                 {% thumbnail transImage.file , '640x404' with {'alt': video.image|trans_fallback('alt') } %}
                 <div class="picto">
                     <i class="icon icon_video"></i>

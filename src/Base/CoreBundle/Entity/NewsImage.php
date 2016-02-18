@@ -28,6 +28,15 @@ class NewsImage extends News
     use Translatable;
 
     /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $header;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Gallery")
      *
      * @Groups({"news_list", "news_show"})
@@ -48,6 +57,29 @@ class NewsImage extends News
     public function getNewsFormat()
     {
         return 'photos';
+    }
+
+    /**
+     * Set header
+     *
+     * @param MediaImage $header
+     * @return NewsArticle
+     */
+    public function setHeader(MediaImage $header = null)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get header
+     *
+     * @return MediaImage
+     */
+    public function getHeader()
+    {
+        return $this->header;
     }
 
     /**

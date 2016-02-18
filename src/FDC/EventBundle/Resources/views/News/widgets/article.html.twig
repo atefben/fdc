@@ -11,37 +11,78 @@
             {% else %}
                 {% set gabarit = '1144x724' %}
             {% endif %}
-            {% if article.header is defined and article.header is not null %}
+            {% if article is news_article %}
                 {% set img = article.header %}
                 {% set trans = img.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is null %}
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-            {% elseif article.video.image is defined and article.video.image is not null %}
-                {% set img = article.video.image %}
-                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is null %}
-                    {% set trans = img.findTranslationByLocale('fr') %}
+                {% thumbnail file, gabarit, with {'alt': img|trans_fallback('alt') } %}
+            {% elseif article is news_video %}
+                {% set header = article.header %}
+                {% if header is not null and header.file is not null %}
+                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                    {% if imageTrans is null or imageTrans.file is null %}
+                        {% set imageTrans = article.header.findTranslationByLocale('fr') %}
+                    {% endif %}
                 {% endif %}
-                {% set file = trans.file %}
-                {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-            {% elseif article.audio.image is defined and article.audio.image is not null %}
-                {% set img = article.audio.image %}
-                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is null %}
-                    {% set trans = img.findTranslationByLocale('fr') %}
+                {% if imageTrans is not null %}
+                    {% set file = imageTrans.file %}
+                    {% set img = article.header %}
+                {% else %}
+                    {% set tmp = article.video %}
+                    {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = tmp.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set img = article.video.image %}
+                    {% set file = trans.file %}
                 {% endif %}
-                {% set file = trans.file %}
+
                 {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-            {% elseif article.gallery.medias[0].media  is defined and article.gallery.medias[0].media  is not null %}
-                {% set img = article.gallery.medias[0].media  %}
-                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is null %}
-                    {% set trans = img.findTranslationByLocale('fr') %}
+            {% elseif article is news_audio %}
+                {% set header = article.header %}
+                {% if header is not null and header.file is not null %}
+                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                    {% if imageTrans is null or imageTrans.file is null %}
+                        {% set imageTrans = article.header.findTranslationByLocale('fr') %}
+                    {% endif %}
                 {% endif %}
-                {% set file = trans.file %}
+                {% if imageTrans is not null %}
+                    {% set file = imageTrans.file %}
+                    {% set img = imageTrans %}
+                {% else %}
+                    {% set tmp = article.audio %}
+                    {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = tmp.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set img = article.audio.image %}
+                    {% set file = trans.file %}
+                {% endif %}
+
+                {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
+            {% elseif article is news_image %}
+                {% set header = article.header %}
+                {% if header is not null and header.file is not null %}
+                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                    {% if imageTrans is null or imageTrans.file is null %}
+                        {% set imageTrans = article.header.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% endif %}
+                {% if imageTrans is not null %}
+                    {% set img = article.header %}
+                    {% set file = imageTrans.file %}
+                {% else %}
+                    {% set img = article.gallery.medias[0].media %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                {% endif %}
+
                 {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
             {% endif %}
         </div>

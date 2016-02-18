@@ -36,8 +36,6 @@ class NewsController extends Controller {
         $locale = $request->getLocale();
         $isAdmin = true;
 
-
-
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null || $settings->getFestival() === null) {
@@ -109,6 +107,7 @@ class NewsController extends Controller {
         //get articles of the day, if no article today : get article from the day before
         $count = 6;
         $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
+
         if($homeArticles == null) {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
         }
@@ -484,31 +483,23 @@ class NewsController extends Controller {
         $filters['themes']['id'][0]      = 'all';
 
         foreach ($photos as $key => $photo) {
-            $isPublished = ($photo !== null) ? ($photo->findTranslationByLocale('fr')->getStatus() === MediaImageTranslation::STATUS_PUBLISHED) : false;
+            $photo->theme = $photo->getTheme();
 
-            if($isPublished == true) {
-                $photo->theme = $photo->getTheme();
-
-                if(($key % 3) == 0){
-                    $photo->double = true;
-                }
-
-                //check if filters don't already exist
-                $date = $photo->getPublishedAt();
-                if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
-                    $filters['dates'][] = ($date != null) ? $date : null;
-                    $filters['dateFormated'][] = $date->format('d-m-Y');
-                }
-
-                if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
-                    $filters['themes']['id'][] = $photo->getTheme()->getId();
-                    $filters['themes']['content'][] = $photo->getTheme();
-                }
-
-            } else {
-                unset($photos[$key]);
+            if(($key % 3) == 0){
+                $photo->double = true;
             }
 
+            //check if filters don't already exist
+            $date = $photo->getPublishedAt();
+            if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
+                $filters['dates'][] = ($date != null) ? $date : null;
+                $filters['dateFormated'][] = $date->format('d-m-Y');
+            }
+
+            if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $photo->getTheme()->getId();
+                $filters['themes']['content'][] = $photo->getTheme();
+            }
         }
 
         return array(
@@ -545,28 +536,21 @@ class NewsController extends Controller {
         $filters['themes']['slug'][0]    = 'all';
 
         foreach ($videos as $key => $video) {
-            $isPublished = ($video !== null) ? ($video->findTranslationByLocale('fr')->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED) : false;
+            $video->theme = $video->getTheme();
 
-            if($isPublished == true) {
-                $video->theme = $video->getTheme();
+            if(($key % 3) == 0){
+                $video->double = true;
+            }
 
-                if(($key % 3) == 0){
-                    $video->double = true;
-                }
+            //check if filters don't already exist
+            if (!in_array($video->getPublishedAt(), $filters['dates'])) {
+                $date               = $video->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            }
 
-                //check if filters don't already exist
-                if (!in_array($video->getPublishedAt(), $filters['dates'])) {
-                    $date               = $video->getPublishedAt();
-                    $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
-                }
-
-                if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
-                    $filters['themes']['slug'][]    = $video->getTheme()->getName();
-                    $filters['themes']['content'][] = $video->getTheme();
-                }
-
-            } else {
-                unset($videos[$key]);
+            if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][]    = $video->getTheme()->getName();
+                $filters['themes']['content'][] = $video->getTheme();
             }
         }
 
@@ -605,29 +589,21 @@ class NewsController extends Controller {
         $filters['themes']['slug'][0]    = 'all';
 
         foreach ($audios as $key => $audio) {
-            $isPublished = ($audio !== null) ? ($audio->findTranslationByLocale('fr')->getStatus() === MediaAudioTranslation::STATUS_PUBLISHED) : false;
+            $audio->theme = $audio->getTheme();
 
-            if($isPublished == true) {
+            if(($key % 3) == 0){
+                $audio->double = true;
+            }
 
-                $audio->theme = $audio->getTheme();
+            //check if filters don't already exist
+            if (!in_array($audio->getPublishedAt(), $filters['dates'])) {
+                $date = $audio->getPublishedAt();
+                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            }
 
-                if(($key % 3) == 0){
-                    $audio->double = true;
-                }
-
-                //check if filters don't already exist
-                if (!in_array($audio->getPublishedAt(), $filters['dates'])) {
-                    $date = $audio->getPublishedAt();
-                    $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
-                }
-
-                if (!in_array($audio->getTheme()->getName(), $filters['themes']['content'])) {
-                    $filters['themes']['slug'][] = $audio->getTheme()->getName();
-                    $filters['themes']['content'][] = $audio->getTheme();
-                }
-
-            } else {
-                unset($audios[$key]);
+            if (!in_array($audio->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $audio->getTheme()->getName();
+                $filters['themes']['content'][] = $audio->getTheme();
             }
 
         }
