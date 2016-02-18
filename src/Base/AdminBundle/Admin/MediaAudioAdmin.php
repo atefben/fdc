@@ -6,7 +6,7 @@ use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\Media;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -47,9 +47,8 @@ class MediaAudioAdmin extends Admin
                     if (!$value['value']) {
                         return;
                     }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
+
+                    $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
                     $queryBuilder->andWhere('t.title LIKE :title');
                     $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
 
@@ -60,7 +59,7 @@ class MediaAudioAdmin extends Admin
             ->add('theme')
             ->add('createdBefore', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] == null) {
                         return;
                     }
                     $queryBuilder->andWhere("{$alias}.createdAt < :before");
@@ -76,7 +75,7 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('createdAfter', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] == null) {
                         return;
                     }
                     $queryBuilder->andWhere("{$alias}.createdAt > :after");
@@ -92,7 +91,7 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('publishedBefore', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] === null) {
                         return;
                     }
                     $queryBuilder->andWhere("{$alias}.publishedAt < :before");
@@ -108,7 +107,7 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('publishedAfter', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] === null) {
                         return;
                     }
                     $queryBuilder->andWhere("{$alias}.publishedAt > :after");
@@ -124,12 +123,10 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('status', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] === null) {
                         return;
                     }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
                     $queryBuilder->andWhere('t.status = :status');
                     $queryBuilder->setParameter('status', $value['value']);
 
@@ -137,7 +134,7 @@ class MediaAudioAdmin extends Admin
                 },
                 'field_type' => 'choice',
                 'field_options' => array(
-                    'choices' => MediaAudioTranslation::getStatuses(),
+                    'choices' => MediaAudioTranslation::getMainStatuses(),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
@@ -146,8 +143,8 @@ class MediaAudioAdmin extends Admin
                     if (!$value['value']) {
                         return;
                     }
-                    $queryBuilder->andWhere("{$alias}.priorityStatus LIKE :priorityStatus");
-                    $queryBuilder->setParameter('priorityStatus', '%'. $value['value']. '%');
+                    $queryBuilder->andWhere("{$alias}.priorityStatus = :priorityStatus");
+                    $queryBuilder->setParameter('priorityStatus', $value['value']);
 
                     return true;
                 },
@@ -160,6 +157,11 @@ class MediaAudioAdmin extends Admin
             ->add('displayedAll', null, array(
                 'field_type' => 'checkbox',
                 'label' => 'filter.media_audio.displayed_all',
+
+            ))
+            ->add('displayedHome', null, array(
+                'field_type' => 'checkbox',
+                'label' => 'filter.media_audio.displayed_home',
 
             ))
         ;
@@ -261,7 +263,10 @@ class MediaAudioAdmin extends Admin
                 'btn_delete' => false
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_media_video_image'
+                'label' => 'form.label_media_video_image',
+                'constraints' => array(
+                    new NotNull(),
+                ),
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label'        => 'form.label_tags',

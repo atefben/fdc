@@ -51,14 +51,17 @@
                                                 <h4><strong>Document widget</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
+                                            {{ form_row(widget.position) }}
                                             {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
                                                 {{ form_row(widget.file)}}
-                                                {{ form_row(attribute(widget.children.translations, locale)) }}
+                                                {{ form_row(widget.secondFile)}}
                                                 {{ form_row(widget.updatedAt)}}
+
+                                                {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
+                                                {{ form_row(widget.image)}}
                                                 {{ form_row(widget.file)}}
                                                 {{ form_row(widget.secondFile) }}
-                                                {{ form_row(widget.image)}}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_photo_type' %}
                                                 {{ form_row(widget.gallery)}}
@@ -97,20 +100,23 @@
                                                 <h4><strong>Document widget</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
+                                            {{ form_row(widget.position) }}
                                             {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
                                                 {{ form_row(widget.file)}}
-                                                {{ form_row(attribute(widget.children.translations, locale)) }}
+                                                {{ form_row(widget.secondFile)}}
                                                 {{ form_row(widget.updatedAt)}}
+                                                {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
+                                                {{ form_row(widget.image)}}
                                                 {{ form_row(widget.file)}}
                                                 {{ form_row(widget.secondFile) }}
-                                                {{ form_row(widget.image)}}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_photo_type' %}
                                                 {{ form_row(widget.gallery)}}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_video_type' %}
                                                 {{ form_row(widget.image)}}
                                                 {{ form_row(widget.file)}}
+                                                {{ form_row(widget.secondFile) }}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
 
                                             {% endif %}

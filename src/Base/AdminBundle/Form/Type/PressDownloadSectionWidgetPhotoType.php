@@ -60,19 +60,6 @@ class PressDownloadSectionWidgetPhotoType extends PressDownloadSectionWidgetType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('translations', 'a2lix_translations', array(
-                'label' => false,
-                'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
-                'fields' => array(
-                    'createdAt' => array(
-                        'display' => false
-                    ),
-                    'updatedAt' => array(
-                        'display' => false
-                    ),
-                )
-            ))
             ->add('gallery', 'sonata_type_model_list', array(
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetPhotoDummyAdmin->getFormFieldDescriptions()['gallery'],
                 'model_manager' => $this->PressDownloadSectionWidgetPhotoDummyAdmin->getModelManager(),

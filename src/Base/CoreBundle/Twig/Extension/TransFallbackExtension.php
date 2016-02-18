@@ -32,20 +32,24 @@ class TransFallbackExtension extends Twig_Extension
     public function transFallbackFilter($object, $property)
     {
         $locale = $this->requestStack->getCurrentRequest()->getLocale();
-        $trans = $object->findTranslationByLocale($locale);
-        $property = ucfirst($property);
 
-        if ($trans && $trans->{'get'.$property}()) {
-            return $trans->{'get'.$property}();
+        if (method_exists($object, 'findTranslationByLocale'))
+        {
+            $trans = $object->findTranslationByLocale($locale);
+            $property = ucfirst($property);
+
+            if ($trans && $trans->{'get'.$property}()) {
+                return $trans->{'get'.$property}();
+            }
+
+            $transEn = $object->findTranslationByLocale($this->localeFallback);
+
+            if ($transEn && $transEn->{'get'.$property}()) {
+                return $transEn->{'get'.$property}();
+            }
         }
 
-        $transEn = $object->findTranslationByLocale($this->localeFallback);
-
-        if ($transEn && $transEn->{'get'.$property}()) {
-            return $transEn->{'get'.$property}();
-        }
-
-        return null;
+        return '';
     }
 
     /**

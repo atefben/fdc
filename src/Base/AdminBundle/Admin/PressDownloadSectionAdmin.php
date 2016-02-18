@@ -44,7 +44,7 @@ class PressDownloadSectionAdmin extends Admin
                 'choices' => PressDownloadSection::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('status', 'doctrine_orm_callback', array(
+            ->add('title', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
@@ -52,16 +52,12 @@ class PressDownloadSectionAdmin extends Admin
                     $queryBuilder->join("{$alias}.translations", 't');
                     $queryBuilder->where('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
 
                     return true;
                 },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => PressDownloadSectionTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
+                'field_type' => 'text'
             ))
             ->add('translate')
         ;
@@ -74,6 +70,7 @@ class PressDownloadSectionAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -169,6 +166,7 @@ class PressDownloadSectionAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('title')
         ;
     }
 }

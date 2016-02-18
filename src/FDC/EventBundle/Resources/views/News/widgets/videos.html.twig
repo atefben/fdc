@@ -1,27 +1,37 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% set transVideo = film.video.findTranslationByLocale(app.request.locale) %}
-{% if transVideo is null %}
-    {% set transVideo = film.video.findTranslationByLocale('fr') %}
+{% if film.video is not null %}
+    {% set transVideo = film.video.findTranslationByLocale(app.request.locale) %}
+    {% if transVideo is null %}
+        {% set transVideo = film.video.findTranslationByLocale('fr') %}
+    {% endif %}
 {% endif %}
 
-{% set transImage = film.video.image.findTranslationByLocale(app.request.locale) %}
-{% if transImage is null %}
-    {% set transImage = film.video.image.findTranslationByLocale('fr') %}
+{% if film.video is not null and film.video.image is not null %}
+    {% set transImage = film.video.image.findTranslationByLocale(app.request.locale) %}
+    {% if transImage is null %}
+        {% set transImage = film.video.image.findTranslationByLocale('fr') %}
+    {% endif %}
 {% endif %}
 
 <div>
     <div class="video">
         <video preload muted>
-            <source src="{% path transVideo.file , 'reference' %}" type="video/webm">
+            {% if transVideo is defined and transVideo is not null %}
+                <source src="{% path transVideo.file , 'reference' %}" type="video/webm">
+            {% endif %}
         </video>
-        <div class="img" style="background-image:url({% path transImage.file, '212x134' %})"></div>
+        {% if transImage is defined and transImage is not null %}
+            <div class="img" style="background-image:url({% path transImage.file, '212x134' %})"></div>
+        {% endif %}
     </div>
     <div class="textVideo">
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    <span class="category">{{ film.association.selectionSection|trans_fallback('name') }}</span>
+                    {% if film.association is not null %}
+                        <span class="category">{{ film.association.selectionSection|trans_fallback('name') }}</span>
+                    {% endif %}
                     <h2>{{ film.association|trans_fallback('title')  }}</h2>
                     <p class="director">
                         {{ 'home.video.text.de'|trans }}

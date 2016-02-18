@@ -74,7 +74,7 @@ function playerInit(id, cls, havePlaylist, live) {
     if (id) {
         var videoPlayer = jwplayer(id);
         if(!$(videoPlayer).data('loaded')) {
-            playerLoad($("#"+id)[0], videoPlayer, cls, havePlaylist, live, function(vid) {
+            playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
             });
@@ -90,7 +90,7 @@ function playerInit(id, cls, havePlaylist, live) {
             // k.log("",this.id);
             var videoPlayer  = jwplayer(this.id);
             if(!$(videoPlayer).data('loaded')) {
-                playerLoad(this, videoPlayer, cls, havePlaylist, live, function(vid) {
+                playerLoad(this, videoPlayer, havePlaylist, live, function(vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
                 });
@@ -102,7 +102,7 @@ function playerInit(id, cls, havePlaylist, live) {
     }
 };
 
-function playerLoad(vid, playerInstance, cls, havePlaylist, live, callback) {
+function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container    = $("#"+vid.id).closest('.video-container');
     $container.append(controlBar);
     $(topBar).insertAfter($container.find('#'+vid.id));
@@ -204,6 +204,10 @@ function playerLoad(vid, playerInstance, cls, havePlaylist, live, callback) {
                 sliderTrailerVideo = $('#slider-trailer').owlCarousel();
                 sliderTrailerVideo.trigger('to.owl.carousel',[$(this).closest('.owl-item').index(),1000,true]);
             }
+            if($('#slider-movie-videos').length > 0) {
+                sliderMovieVideo = $('#slider-movie-videos').owlCarousel();
+                sliderMovieVideo.trigger('to.owl.carousel',[$(this).closest('.owl-item').index(),1000,true]);
+            }
 
             if($('#gridVideos')) {
                 var item = $('#gridVideos .item')[$(this).closest('.owl-item').index()];
@@ -216,6 +220,21 @@ function playerLoad(vid, playerInstance, cls, havePlaylist, live, callback) {
 
         if($('#slider-trailer').length > 0) {
             $('body').on('click', '#slider-trailer .owl-item', function(e) {
+                playerInstance.playlistItem($(this).index());
+
+                var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[$(this).closest('.owl-item').index()]).data('json'));
+                $topBar.find('.info .category').text(infos.category);
+                $topBar.find('.info p').text(infos.name);
+
+                $container.find('.channels-video').removeClass('active');
+                $container.find('.jwplayer').removeClass('overlay-channels');
+
+                sliderChannelsVideo.trigger('to.owl.carousel',[$(this).index(),1000,true]);
+            });
+        }
+
+        if($('#slider-movie-videos').length > 0) {
+            $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
                 playerInstance.playlistItem($(this).index());
 
                 var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[$(this).closest('.owl-item').index()]).data('json'));
@@ -258,7 +277,7 @@ function playerLoad(vid, playerInstance, cls, havePlaylist, live, callback) {
         } else if (typeof $container.data('playlist') != "undefined") {
             playlist = $container.data('playlist');
         }
-        
+
         $.each(playlist, function(i,p) {
             var tempSlide = $(slide);
             tempSlide.find('.image-wrapper img').attr('src',p.image);
@@ -390,11 +409,19 @@ function playerLoad(vid, playerInstance, cls, havePlaylist, live, callback) {
 };
 
 $(d).ready(function() {
-    if ($('#video-player-pl').length > 0) {
-        videoPlayer = playerInit('video-player-pl', false, true);
+    // if($('#video-player-pl').length > 0) {
+    //     videoPlayer = playerInit('video-player-pl', false, true);
+    // }
+
+    if($('#video-player-ba').length > 0) {
+        videoMovieBa = playerInit('video-player-ba', false, true)
     }
 
-    if ($('.video-player').length > 0) {
+    if($('.video-player').length > 0) {
         videoPlayer = playerInit(false, 'video-player', false);
+    }
+
+    if($('.video-player-pl').length > 0) {
+        videoPlayer = playerInit(false, 'video-player-pl', true);
     }
 });

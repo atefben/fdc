@@ -254,18 +254,17 @@ class NewsVideoAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            /* ->add('associatedNews', 'sonata_type_collection', array(
-                 'label' => 'form.label_news_news_associated',
-                 'help' => 'form.news.helper_news_news_associated',
-                 'by_reference' => false,
-                 'btn_add' => false,
-                 'required' => false,
-             ), array(
-                     'edit' => 'inline',
-                     'inline' => 'table'
-                 )
-             )
-            */
+            ->add('associatedNews', 'sonata_type_collection', array(
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
+                'by_reference' => false,
+                'btn_add' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')

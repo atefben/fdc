@@ -97,6 +97,15 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                                 'required' => true
                             )
                         )
+                    ),
+                    'secondBtnLabel' => array(
+                        'label' => 'form.label_second_btn',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
                     )
                 )
             ))
@@ -111,8 +120,12 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                 'model_manager' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
             ))
-//            ->add('createdAt', 'hidden')
-//            ->add('updatedAt', 'hidden')
+            ->add('secondFile', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['secondFile'],
+                'model_manager' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getModelManager(),
+                'class' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['secondFile']->getAssociationAdmin()->getClass(),
+                'required' => false
+            ))
             ;
 
     }

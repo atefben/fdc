@@ -31,10 +31,12 @@ class FilmFunctionExtension extends Twig_Extension
     public function getPersonFunctionByFilm($film, $functionId)
     {
         $tmp = array();
-        foreach ($film->getPersons() as $person) {
-            foreach ($person->getFunctions() as $function){
-                if($function->getFunction() != null && $function->getFunction()->getId() == $functionId) {
-                    $tmp[] = $person->getPerson();
+        if (method_exists($film, 'getPersons')) {
+            foreach ($film->getPersons() as $person) {
+                foreach ($person->getFunctions() as $function) {
+                    if ($function->getFunction() != null && $function->getFunction()->getId() == $functionId) {
+                        $tmp[] = $person->getPerson();
+                    }
                 }
             }
         }

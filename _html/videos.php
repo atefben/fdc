@@ -14,17 +14,19 @@
         <div id="theme" class="filter">
           <span class="label">Dates :</span>
           <span class="select">
-            <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
+            <span class="active" data-filter="all">Toutes</span>
             <span data-filter="date">Date 1</span>
             <span data-filter="date1">Date 2</span>
+            <i class="icon icon_fleche-down"></i>
           </span>
         </div>
         <div id="format" class="filter">
           <span class="label">Thèmes :</span>
           <span class="select">
-            <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
+            <span class="active" data-filter="all">Tous</span>
             <span data-filter="theme1">Thème 1</span>
             <span data-filter="theme2">Thème 2</span>
+            <i class="icon icon_fleche-down"></i>
           </span>
         </div>
       </div>

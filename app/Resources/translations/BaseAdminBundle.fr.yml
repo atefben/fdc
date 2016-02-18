@@ -162,6 +162,8 @@ entity:
     press_cinema_map: Plan des salles
 
 list:
+    label_header_video: Vidéo principale
+    label_title_video: Titre
     label_parent: Parent
     label_position: Position
     label_route: Route
@@ -279,7 +281,8 @@ filter:
         label_created_before: Publié avant le
         label_created_after: Publié après le
     media_audio:
-        displayed_all: Audios affichés en tant qu'actualités sur la homepage
+        displayed_home: Audios affichés en tant qu'actualités sur la homepage
+        displayed_all: Audios remontés dans "Tous les audios"
         label_created_before: Créé avant le
         label_created_after: Créé après le
         label_published_before: Publié avant le
@@ -395,6 +398,7 @@ form:
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_position: Position
+    label_header_video: Vidéo principale
     label_parent: Parent
     label_contact_theme_theme: Theme
     label_route: Route
@@ -450,6 +454,7 @@ form:
     label_main_image: Première image
     label_second_image: Seconde image
     label_btn: Libellé du bouton
+    label_second_btn: Libellé du second bouton
     label_label: Légende
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
@@ -474,6 +479,7 @@ form:
     label_projection_p: Projection presse
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
+    label_locked_content: Locked content
 
     web_tv:
         helper_name: 255 caractères max.

@@ -34,6 +34,13 @@ class PressDownloadSectionWidgetFileTranslation
      */
     protected $btnLabel;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $secondBtnLabel;
+
 
     /**
      * Set copyright
@@ -79,5 +86,28 @@ class PressDownloadSectionWidgetFileTranslation
     public function getBtnLabel()
     {
         return $this->btnLabel;
+    }
+
+    /**
+     * Set secondBtnLabel
+     *
+     * @param string $secondBtnLabel
+     * @return PressDownloadSectionWidgetFileTranslation
+     */
+    public function setSecondBtnLabel($secondBtnLabel)
+    {
+        $this->secondBtnLabel = $secondBtnLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get secondBtnLabel
+     *
+     * @return string 
+     */
+    public function getSecondBtnLabel()
+    {
+        return $this->secondBtnLabel;
     }
 }
