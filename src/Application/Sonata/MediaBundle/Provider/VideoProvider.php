@@ -19,11 +19,7 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
-		//error_log(print_r($media, true));
-		
-		$path = $this->generatePublicUrl($media, $media->getProviderReference());
-		error_log(print_r($this->getReferenceImage($media), true));
-		exit();
+		//$path = $this->generatePublicUrl($media, $media->getProviderReference());
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
 		        'key' => 'your key',
@@ -33,10 +29,10 @@ class VideoProvider extends FileProvider
 		));
 		
 		$job = $elasticTranscoder->createJob(array(
-		    'PipelineId' => '<your pipeline id>',
+		    'PipelineId' => '1454076999739-uy533t',
 		    'OutputKeyPrefix' => 'your/output/prefix/',
 		    'Input' => array(
-		        'Key' => 'key/to/your/input/file.mp4',
+		        'Key' => $media->getProviderReference(),
 		        'FrameRate' => 'auto',
 		        'Resolution' => 'auto',
 		        'AspectRatio' => 'auto',
@@ -45,18 +41,16 @@ class VideoProvider extends FileProvider
 		    ),
 		    'Outputs' => array(
 		        array(
-		            'Key' => 'myOutput.mp4',
+		            'Key' => str_replace('media_video', 'media_video_encoded', $media->getProviderReference()),
 		            'Rotate' => 'auto',
 		            'PresetId' => '<your trancoding preset id>',
 		        ),
 		    ),
 		));
-
+		error_log(print_r($jobData, true));
 		$jobData = $job->get('Job');
 		$jobId = $jobData['Id'];
 		error_log($jobId);
-		
-        //
        
     }
 
