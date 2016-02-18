@@ -20,6 +20,10 @@ class VideoProvider extends FileProvider
     public function generateThumbnails(MediaInterface $media)
     {
 		$path = $this->generatePublicUrl($media, $media->getProviderReference());
+		$file_path = explode('/', $path);
+		$path_video_input = $file_path['3'] . '/' . $file_path['4'] . $file_path['5'];
+		$path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . $file_path['5'];
+		
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
 		        'key' => 'AKIAJHXD67GEPPA2F4TQ',
@@ -27,14 +31,15 @@ class VideoProvider extends FileProvider
 		    ),
 		    'region' => 'eu-west-1',
 		));
-		error_log('MATDAC DEBUG 1 :: ' . print_r($path, true));
+		error_log('MATDAC DEBUG 1 :: ' . print_r($path_video_input . $media->getProviderReference(), true));
+		error_log('MATDAC DEBUG 2 :: ' . print_r($path_video_output . $media->getProviderReference(), true));
 		//System preset generic 1080p MP4 ID : 1351620000001-000001
 		
 		$job = $elasticTranscoder->createJob(array(
 		    'PipelineId' => '1454076999739-uy533t',
 		    'OutputKeyPrefix' => 'your/output/prefix/',
 		    'Input' => array(
-		        'Key' => $media->getProviderReference(),
+		        'Key' => $path_video_input . $media->getProviderReference(),
 		        'FrameRate' => 'auto',
 		        'Resolution' => 'auto',
 		        'AspectRatio' => 'auto',
@@ -43,7 +48,7 @@ class VideoProvider extends FileProvider
 		    ),
 		    'Outputs' => array(
 		        array(
-		            'Key' => str_replace('media_video', 'media_video_encoded', $media->getProviderReference()),
+		            'Key' => $path_video_output . $media->getProviderReference(),
 		            'Rotate' => 'auto',
 		            'PresetId' => '1351620000001-000001',
 		        ),
@@ -51,7 +56,6 @@ class VideoProvider extends FileProvider
 		));
 		
 		$jobData = $job->get('Job');
-		error_log('MATDAC DEBUG 2 :: ' . print_r($jobData, true));
 		$jobId = $jobData['Id'];
 		error_log('MATDAC DEBUG 3 :: ' . $jobId);
        
