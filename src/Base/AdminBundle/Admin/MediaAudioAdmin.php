@@ -263,7 +263,10 @@ class MediaAudioAdmin extends Admin
                 'btn_delete' => false
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_media_video_image'
+                'label' => 'form.label_media_video_image',
+                'constraints' => array(
+                    new NotNull(),
+                ),
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label'        => 'form.label_tags',
