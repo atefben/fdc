@@ -24,6 +24,7 @@ class PressDownloadSectionWidgetFileDummyAdmin extends Admin
     {
         $formMapper
             ->add('file', 'sonata_type_model_list')
+            ->add('secondFile', 'sonata_type_model_list')
         ;
     }
 }

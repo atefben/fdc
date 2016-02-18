@@ -309,7 +309,7 @@ $(document).ready(function () {
         closePopinVideo();
       })
 
-      var $container,
+      var $container = $('#gridVideos'),
           $grid,
           videoPopin;
 

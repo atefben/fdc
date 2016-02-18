@@ -41,6 +41,13 @@ class PressDownloadSectionWidgetVideoTranslation
      */
     protected $btnLabel;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $secondBtnLabel;
+
 
     /**
      * Set label
@@ -109,5 +116,28 @@ class PressDownloadSectionWidgetVideoTranslation
     public function getBtnLabel()
     {
         return $this->btnLabel;
+    }
+
+    /**
+     * Set secondBtnLabel
+     *
+     * @param string $secondBtnLabel
+     * @return PressDownloadSectionWidgetVideoTranslation
+     */
+    public function setSecondBtnLabel($secondBtnLabel)
+    {
+        $this->secondBtnLabel = $secondBtnLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get secondBtnLabel
+     *
+     * @return string 
+     */
+    public function getSecondBtnLabel()
+    {
+        return $this->secondBtnLabel;
     }
 }

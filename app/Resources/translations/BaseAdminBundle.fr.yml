@@ -451,6 +451,7 @@ form:
     label_main_image: Première image
     label_second_image: Seconde image
     label_btn: Libellé du bouton
+    label_second_btn: Libellé du second bouton
     label_label: Légende
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
@@ -475,6 +476,7 @@ form:
     label_projection_p: Projection presse
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
+    label_locked_content: Locked content
 
     web_tv:
         helper_name: 255 caractères max.
