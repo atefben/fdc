@@ -89,7 +89,17 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                                 'required' => true
                             )
                         )
+                    ),
+                    'secondBtnLabel' => array(
+                        'label' => 'form.label_second_btn',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => false
+                            )
+                        )
                     )
+
                 )
             ))
             ->add('updatedAt', 'date')
@@ -99,8 +109,13 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                 'model_manager' => $this->PressDownloadSectionWidgetFileDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
             ))
+            ->add('secondFile', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['secondFile'],
+                'model_manager' => $this->PressDownloadSectionWidgetFileDummyAdmin->getModelManager(),
+                'class' => $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['secondFile']->getAssociationAdmin()->getClass(),
+                'required' => false
+            ))
 
-            ->add('lockedContent')
         ;
 
     }
